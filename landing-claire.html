@@ -3,9 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>EnerTchad S.A. — Société pétrolière intégrée du Tchad</title>
+<title>EnerTchad S.A. — Présentation claire | Société pétrolière du Tchad</title>
+<link rel="canonical" href="https://www.enertchad.td/landing-claire.html">
 <meta name="description" content="EnerTchad S.A. — société pétrolière intégrée, indépendante et à capitaux tchadiens. De la roche-mère à la pompe : exploration-production, transport, raffinage-distribution.">
-<meta property="og:title" content="EnerTchad S.A. — Société pétrolière intégrée du Tchad">
+<meta property="og:title" content="EnerTchad S.A. — Présentation claire">
 <meta property="og:description" content="De la roche-mère à la pompe — opérateur pétrolier intégré et indépendant du Tchad.">
 <meta property="og:type" content="website">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20rx='13'%20fill='%23FBF7EF'/%3E%3Cg%20transform='translate(32%2032)%20scale(0.27)%20translate(-100%20-100)'%3E%3Ccircle%20cx='100'%20cy='100'%20r='80'%20fill='none'%20stroke='%23C49A35'%20stroke-width='7'/%3E%3Cpath%20d='M100%2042%20C108%2058,128%2070,128%2085%20C128%20100,115%20108,100%20108%20C85%20108,72%20100,72%2085%20C72%2070,92%2058,100%2042Z'%20fill='%23D4A843'/%3E%3Cpath%20d='M42%20100%20C58%2092,70%2072,85%2072%20C100%2072,108%2085,108%20100%20C108%20115,100%20128,85%20128%20C70%20128,58%20108,42%20100Z'%20fill='%232E6BBF'/%3E%3Cpath%20d='M158%20100%20C142%20108,130%20128,115%20128%20C100%20128,92%20115,92%20100%20C92%2085,100%2072,115%2072%20C130%2072,142%2092,158%20100Z'%20fill='%231B8C3D'/%3E%3Cpath%20d='M100%20158%20C92%20142,72%20130,72%20115%20C72%20100,85%2092,100%2092%20C115%2092,128%20100,128%20115%20C128%20130,108%20142,100%20158Z'%20fill='%23E0D0A0'/%3E%3Ccircle%20cx='100'%20cy='100'%20r='9'%20fill='%23FBF7EF'/%3E%3C/g%3E%3C/svg%3E">
@@ -91,11 +92,12 @@
   .c h3{font-size:1.15rem;margin-bottom:8px}
   .c p{color:var(--ink2);font-size:.94rem}
 
-  /* six pôles */
+  /* huit pôles */
   .poles{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:32px}
   @media(max-width:820px){.poles{grid-template-columns:1fr 1fr}}
   @media(max-width:560px){.poles{grid-template-columns:1fr}}
-  .pole{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;border-top:3px solid var(--blue)}
+  .pole{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:22px;border-top:3px solid var(--blue);transition:transform .28s cubic-bezier(.22,1,.36,1),box-shadow .28s,border-color .28s}
+.pole:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,.10);border-color:var(--blue)}
   .pole:nth-child(2){border-top-color:#2E6BBF}.pole:nth-child(3){border-top-color:var(--bronze-deco)}
   .pole:nth-child(4){border-top-color:var(--green)}.pole:nth-child(5){border-top-color:#0E8C8C}.pole:nth-child(6){border-top-color:#7A5Bd0}
   .pole .n{font-family:var(--serif);font-size:.78rem;color:var(--muted)}
@@ -214,32 +216,9 @@
 <section class="band alt" id="poles">
   <div class="wrap reveal">
     <div class="kick">L'architecture</div>
-    <h2>Six pôles d'activité, une seule société.</h2>
-    <p class="intro">EnerTchad n'est pas une holding à filiales : c'est une société intégrée organisée en pôles, qui couvrent ensemble toute la chaîne pétrolière et son écosystème.</p>
-    <div class="poles">
-      <div class="pole"><div class="n">01 · Amont</div><h3>Exploration-Production</h3><p>Champs matures, récupération assistée (EOR) sur brut lourd, services parapétroliers.</p></div>
-      <div class="pole"><div class="n">02 · Intermédiaire</div><h3>Transport & Midstream</h3><p>Participation au transport par pipeline, stockage, logistique des hydrocarbures.</p></div>
-      <div class="pole"><div class="n">03 · Aval</div><h3>Raffinage & Distribution</h3><p>Mini-raffineries modulaires, réseau de stations, produits raffinés au prix ARSAT.</p></div>
-      <div class="pole"><div class="n">04 · Services</div><h3>Conseil & Data</h3><p>Advisory (État, opérateurs, bailleurs), études, formation, valorisation des données.</p></div>
-      <div class="pole"><div class="n">05 · Énergies</div><h3>Transition</h3><p>Hybridation solaire des sites, micro-réseaux, valorisation du gaz, décarbonation.</p></div>
-      <div class="pole"><div class="n">06 · Technologies</div><h3>Numérique & R&D</h3><p>SCADA temps réel, jumeaux numériques, IA prédictive, cybersécurité OT.</p></div>
-    </div>
-  </div>
-</section>
-
-<section class="band" id="projets">
-  <div class="wrap reveal">
-    <div class="kick">Feuille de route · cibles</div>
-    <h2>Le pipeline de projets.</h2>
-    <p class="intro">Des jalons séquencés par horizon (H1 : démarrage · H2 : montée en charge · H3 : transformation). Tous présentés comme objectifs de l'entreprise — aucun actif n'est encore en exploitation.</p>
-    <div class="pipe">
-      <div class="pj"><span class="h">H1</span><div><h3>Réseau de distribution</h3><p>12 stations ultra-premium (concept « Le Relais ») + Mobile Station™ pour une couverture nationale en 24-48 h.</p></div></div>
-      <div class="pj"><span class="h">H1</span><div><h3>Mini-raffineries modulaires 2.0</h3><p>Trains de 500-2000 b/j, amovibles et redéployables — raffiner près de la ressource et de la demande.</p></div></div>
-      <div class="pj"><span class="h h2">H2</span><div><h3>Récupération assistée (EOR)</h3><p>Success-fee au baril additionnel sur champs matures — risque client plafonné, intérêts alignés.</p></div></div>
-      <div class="pj"><span class="h h2">H2</span><div><h3>Valorisation du gaz</h3><p>Gaz de Sédigui et gaz associé : électricité de site, hybridation, intrants pour la transformation.</p></div></div>
-      <div class="pj"><span class="h h3">H3</span><div><h3>Pétrochimie & engrais</h3><p>Transformation locale (gaz → méthanol → engrais) pour la souveraineté agricole et industrielle.</p></div></div>
-      <div class="pj"><span class="h h2">H2</span><div><h3>Hybridation solaire des sites</h3><p>Réduire le diesel des sites isolés par le solaire et le stockage — moins d'OPEX, moins d'émissions.</p></div></div>
-    </div>
+    <h2>Huit pôles d'activité, une seule société.</h2>
+    <p class="intro">EnerTchad n'est pas une holding à filiales : c'est une société intégrée organisée en huit pôles — quatre forment la chaîne pétrolière (notre cœur de métier), quatre la soutiennent.</p>
+    <div class="poles"><div class="pole"><div class="n">01 · Amont</div><h3>Exploration-Production</h3><p>Champs matures, récupération assistée (EOR) sur brut lourd — les barils que les majors laissent.</p></div><div class="pole"><div class="n">02 · Intermédiaire</div><h3>Transport & stockage</h3><p>Participation au corridor d'export, dépôts, logistique et intégrité pipeline.</p></div><div class="pole"><div class="n">03 · Aval</div><h3>Raffinage & distribution</h3><p>Mini-raffineries modulaires, réseau de stations, produits raffinés au prix ARSAT.</p></div><div class="pole"><div class="n">04 · Énergies</div><h3>GreenTech</h3><p>Hybridation solaire des sites, valorisation du gaz, décarbonation de la chaîne — pas un négoce d'électricité.</p></div><div class="pole"><div class="n">05 · Technologies</div><h3>EnerTech</h3><p>Le socle numérique : SCADA temps réel, IA prédictive, robotique frugale, cybersécurité OT.</p></div><div class="pole"><div class="n">06 · Talents</div><h3>EnerTalents</h3><p>L'académie pétrolière : former la relève tchadienne — géosciences, forage, HSE, data.</p></div><div class="pole"><div class="n">07 · Conseil</div><h3>EnerConseils</h3><p>Advisory (État, opérateurs, bailleurs) adossé à l'Atlas du secteur : données, dé-risquage, structuration.</p></div><div class="pole"><div class="n">08 · Chimie</div><h3>EnerChimie</h3><p>Les intrants locaux pour un EOR optimal et une chaîne de valeur de chimie pétrolière : formulations EOR, gaz-vers-engrais, dérivés.</p></div></div>
   </div>
 </section>
 
@@ -334,7 +313,7 @@
       </div>
       <div>
         <h4>Société</h4>
-        <a href="#modele">Le modèle</a><a href="#poles">Six pôles</a><a href="#projets">Projets</a><a href="#investir">Investisseurs</a>
+        <a href="#modele">Le modèle</a><a href="#poles">Huit pôles</a><a href="#projets">Projets</a><a href="#investir">Investisseurs</a>
       </div>
       <div>
         <h4>Contact</h4>
