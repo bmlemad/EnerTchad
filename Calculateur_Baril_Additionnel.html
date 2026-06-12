@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="dark">
+<title>EnerTchad — Calculateur du baril additionnel (EOR)</title>
+<style>
+:root{--navy:#0B1422;--card:#13243E;--hair:rgba(255,255,255,.09);--gold:#D9A84F;--goldl:#E8C36A;--bluel:#5AA7F0;--green:#34D399;--muted:#9DAAC2;--amber:#F59E0B}
+*{box-sizing:border-box;margin:0;padding:0}
+html{color-scheme:dark}
+body{background:linear-gradient(160deg,#060B14,#0B1422 60%,#060B14);color:#F5F7FA;font:15px/1.6 system-ui,-apple-system,'Segoe UI',sans-serif;min-height:100vh;padding:28px 18px 60px}
+.wrap{max-width:1060px;margin:0 auto}
+header{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.mk{width:44px;height:44px;border-radius:50%;background:radial-gradient(circle at 38% 32%,#E8C667,#C49A35);display:grid;place-items:center;font-weight:800;color:#0B1422;font-size:19px;flex:none}
+.kick{font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;color:var(--goldl);font-weight:700}
+h1{font-size:clamp(1.5rem,4vw,2.25rem);line-height:1.12;letter-spacing:-.02em}
+h1 em{font-style:normal;background:linear-gradient(110deg,var(--bluel),var(--goldl));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.sub{color:var(--muted);max-width:72ch;margin-top:10px}
+.lay{display:grid;grid-template-columns:380px 1fr;gap:18px;margin-top:26px}
+@media(max-width:860px){.lay{grid-template-columns:1fr}}
+.panel{background:var(--card);border:1px solid var(--hair);border-radius:18px;padding:24px 22px}
+.panel h2{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--bluel);margin-bottom:18px}
+.ctl{margin-bottom:20px}
+.ctl label{display:flex;justify-content:space-between;font-size:.84rem;color:rgba(245,247,250,.8);margin-bottom:7px}
+.ctl output{font-weight:700;color:var(--goldl);font-variant-numeric:tabular-nums}
+input[type=range]{width:100%;accent-color:var(--gold);height:22px}
+.hint{font-size:.7rem;color:rgba(245,247,250,.4);margin-top:3px}
+.res{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.kpi{background:rgba(11,20,34,.55);border:1px solid var(--hair);border-radius:14px;padding:18px 16px;border-top:3px solid var(--gold)}
+.kpi.b{border-top-color:var(--bluel)}.kpi.g{border-top-color:var(--green)}.kpi.a{border-top-color:var(--amber)}
+.kpi .v{font-size:clamp(1.4rem,3vw,1.9rem);font-weight:800;letter-spacing:-.02em;color:#fff;font-variant-numeric:tabular-nums}
+.kpi .v small{font-size:.55em;color:var(--muted);font-weight:600}
+.kpi .k{font-size:.74rem;color:var(--muted);margin-top:5px;line-height:1.4}
+.bars{margin-top:16px;background:rgba(11,20,34,.55);border:1px solid var(--hair);border-radius:14px;padding:18px}
+.bars h3{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
+.bar{margin-bottom:12px}
+.bar .lab{display:flex;justify-content:space-between;font-size:.78rem;margin-bottom:5px}
+.bar .lab b{font-variant-numeric:tabular-nums}
+.tr{height:14px;border-radius:999px;background:rgba(255,255,255,.06);overflow:hidden}
+.fl{height:100%;border-radius:999px;transition:width .35s}
+.split{display:flex;height:26px;border-radius:999px;overflow:hidden;margin-top:6px}
+.split div{display:grid;place-items:center;font-size:.66rem;font-weight:700;color:#0B1422;white-space:nowrap;overflow:hidden;transition:width .35s}
+.punch{margin-top:16px;background:linear-gradient(120deg,rgba(217,168,79,.12),rgba(46,134,222,.06));border:1px solid rgba(217,168,79,.4);border-radius:14px;padding:16px 20px;font-size:.95rem;line-height:1.6}
+.punch b{color:var(--goldl)}
+.note{font-size:.7rem;color:rgba(245,247,250,.42);margin-top:18px;line-height:1.6}
+.cta{margin-top:18px;display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-block;padding:12px 22px;border-radius:999px;font-weight:700;font-size:.88rem;text-decoration:none;border:none;cursor:pointer;font-family:inherit}
+.btn-g{background:linear-gradient(120deg,var(--goldl),var(--gold));color:#0B1422}
+.btn-o{background:none;border:1px solid var(--hair);color:#F5F7FA}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="mk">E</div>
+    <div>
+      <div class="kick">EnerTchad · EOR sur champs matures</div>
+      <h1>Le calculateur du <em>baril additionnel</em>.</h1>
+    </div>
+  </header>
+  <p class="sub">Votre champ décline ? Réglez les hypothèses : le calculateur estime les barils que la récupération assistée
+  (+8-17 % d'OOIP, chimie à intrants locaux) peut libérer — et ce que chacun y gagne : <strong style="color:#fff">vous, l'État, et tout le corridor d'export</strong>.</p>
+
+  <div class="lay">
+    <div class="panel">
+      <h2>Hypothèses · votre champ</h2>
+      <div class="ctl"><label>OOIP du champ <output id="o_ooip">300 Mbbl</output></label>
+        <input type="range" id="i_ooip" min="50" max="1000" step="10" value="300">
+        <div class="hint">Volume en place initial (oil originally in place)</div></div>
+      <div class="ctl"><label>Gain EOR visé <output id="o_gain">12 % OOIP</output></label>
+        <input type="range" id="i_gain" min="8" max="17" step="0.5" value="12">
+        <div class="hint">Fourchette EnerTchad : +8-17 % (ASP natron/neem, CSS)</div></div>
+      <div class="ctl"><label>Étalement de la récupération <output id="o_yrs">15 ans</output></label>
+        <input type="range" id="i_yrs" min="8" max="25" step="1" value="15"></div>
+      <div class="ctl"><label>Prix du brut (Doba, décoté) <output id="o_px">74,5 $/bbl</output></label>
+        <input type="range" id="i_px" min="40" max="110" step="0.5" value="74.5"></div>
+      <div class="ctl"><label>Part État (fiscalité + profit oil) <output id="o_tax">50 %</output></label>
+        <input type="range" id="i_tax" min="30" max="70" step="1" value="50">
+        <div class="hint">IS 40-75 % négocié par contrat · Facteur R</div></div>
+    </div>
+
+    <div>
+      <div class="res">
+        <div class="kpi"><div class="v" id="k_bbl">—</div><div class="k">barils additionnels récupérés (total)</div></div>
+        <div class="kpi b"><div class="v" id="k_kbd">—</div><div class="k">production additionnelle moyenne</div></div>
+        <div class="kpi g"><div class="v" id="k_rev">—</div><div class="k">revenu brut additionnel (sur la durée)</div></div>
+        <div class="kpi a"><div class="v" id="k_state">—</div><div class="k">dont part État estimée</div></div>
+      </div>
+
+      <div class="bars">
+        <h3>Effet corridor · pipeline d'export (225 kb/j de capacité)</h3>
+        <div class="bar"><div class="lab"><span>Utilisation aujourd'hui (secteur)</span><b>90 kb/j · 40 %</b></div>
+          <div class="tr"><div class="fl" style="width:40%;background:rgba(90,167,240,.5)"></div></div></div>
+        <div class="bar"><div class="lab"><span>Avec vos barils additionnels</span><b id="b_lab">—</b></div>
+          <div class="tr"><div class="fl" id="b_fill" style="width:40%;background:linear-gradient(90deg,#5AA7F0,#E8C36A)"></div></div></div>
+        <div class="bar" style="margin-bottom:0"><div class="lab"><span>Partage du revenu additionnel</span><b id="s_lab">—</b></div>
+          <div class="split"><div id="s_state" style="background:#E8C36A;width:50%">État</div><div id="s_op" style="background:#5AA7F0;width:50%">Opérateur & partenaires</div></div></div>
+      </div>
+
+      <div class="punch" id="punch">—</div>
+
+      <div class="cta">
+        <a class="btn btn-g" id="mailto" href="#">Discuter d'un pilote EOR →</a>
+        <button class="btn btn-o" onclick="navigator.clipboard&&navigator.clipboard.writeText(document.getElementById('punch').innerText+'\n(Hypothèses : '+document.getElementById('o_ooip').value+', gain '+document.getElementById('o_gain').value+', '+document.getElementById('o_yrs').value+', '+document.getElementById('o_px').value+', part État '+document.getElementById('o_tax').value+')').then(()=>this.textContent='Copié ✓')">Copier la synthèse</button>
+      </div>
+    </div>
+  </div>
+
+  <p class="note"><strong>Simulation illustrative</strong> — résultats indicatifs dépendant des hypothèses que vous réglez ; ne constitue ni une promesse de récupération ni un engagement contractuel. Fourchette EOR +8-17 % OOIP : objectif des programmes EnerTchad sur bruts lourds de Doba (21-24° API, water cut &gt; 85 %). Données corridor (225/90 kb/j, 40 %) : secteur national, sources publiques. En mode success-fee, EnerTchad est rémunéré sur les barils additionnels constatés — votre risque est plafonné. EnerTchad S.A., société en phase de structuration · +235 99 29 86 96.</p>
+</div>
+
+<script>
+const $=id=>document.getElementById(id);
+const fmt=(x,d=1)=>x.toLocaleString('fr-FR',{maximumFractionDigits:d,minimumFractionDigits:0});
+function calc(){
+ const ooip=+$('i_ooip').value, gain=+$('i_gain').value, yrs=+$('i_yrs').value, px=+$('i_px').value, tax=+$('i_tax').value;
+ $('o_ooip').textContent=fmt(ooip,0)+" Mbbl";
+ $('o_gain').textContent=fmt(gain)+" % OOIP";
+ $('o_yrs').textContent=yrs+" ans";
+ $('o_px').textContent=fmt(px)+" $/bbl";
+ $('o_tax').textContent=tax+" %";
+ const addM=ooip*gain/100;                    // Mbbl additionnels
+ const kbd=addM*1e6/(yrs*365)/1000;           // kb/j moyens
+ const rev=addM*px/1000;                      // Md$
+ const st=rev*tax/100;
+ $('k_bbl').innerHTML=fmt(addM,0)+' <small>Mbbl</small>';
+ $('k_kbd').innerHTML=fmt(kbd)+' <small>kb/j · '+yrs+' ans</small>';
+ $('k_rev').innerHTML=fmt(rev,2)+' <small>Md$</small>';
+ $('k_state').innerHTML=fmt(st,2)+' <small>Md$</small>';
+ // pipeline : 90 → 90+kbd sur 225
+ const flow=Math.min(90+kbd,225), util=flow/225*100;
+ const tarif=(1-(90/flow))*100*0.8;           // ~80 % de coûts fixes répartis
+ $('b_lab').textContent=fmt(flow,0)+" kb/j · "+fmt(util,0)+" %";
+ $('b_fill').style.width=Math.min(util,100)+"%";
+ $('s_lab').textContent="État "+tax+" % · Opérateur "+(100-tax)+" %";
+ $('s_state').style.width=tax+"%";$('s_op').style.width=(100-tax)+"%";
+ $('punch').innerHTML="Sans forer un seul puits neuf : <b>"+fmt(addM,0)+" millions de barils</b> libérés, <b>"
+   +fmt(st,2)+" Md$</b> pour l'État, et un tarif de transport qui baisse d'environ <b>"
+   +fmt(tarif,0)+" %</b> pour <b>tous</b> les opérateurs du corridor. Le baril additionnel est le baril le moins cher du Tchad — il est déjà découvert.";
+ $('mailto').href="mailto:contact@enertchad.td?subject="+encodeURIComponent("Pilote EOR — baril additionnel")
+   +"&body="+encodeURIComponent("Bonjour,\n\nHypothèses étudiées : OOIP "+ooip+" Mbbl, gain "+gain+" %, "+yrs+" ans, brut "+px+" $/bbl.\nRésultat indicatif : "+fmt(addM,0)+" Mbbl additionnels, "+fmt(rev,2)+" Md$ de revenu brut.\n\nNous souhaitons discuter d'un pilote EOR en success-fee.\n");
+}
+['i_ooip','i_gain','i_yrs','i_px','i_tax'].forEach(id=>$(id).addEventListener('input',calc));
+calc();
+</script>
+</body>
+</html>

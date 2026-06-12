@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="dark">
+<title>EnerTchad — Configurateur Service Intégré</title>
+<style>
+:root{--navy:#0B1422;--navy2:#0E1B30;--card:#13243E;--hair:rgba(255,255,255,.09);--gold:#D9A84F;--goldl:#E8C36A;--blue:#2E86DE;--bluel:#5AA7F0;--green:#34D399;--muted:#9DAAC2;--amber:#F59E0B}
+*{box-sizing:border-box;margin:0;padding:0}
+html{color-scheme:dark}
+body{background:linear-gradient(160deg,#060B14,#0B1422 60%,#060B14);color:#F5F7FA;font:15px/1.6 system-ui,-apple-system,'Segoe UI',sans-serif;min-height:100vh;padding:28px 18px 60px}
+.wrap{max-width:1080px;margin:0 auto}
+header{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:8px}
+.mk{width:44px;height:44px;border-radius:50%;background:radial-gradient(circle at 38% 32%,#E8C667,#C49A35);display:grid;place-items:center;font-weight:800;color:#0B1422;font-size:19px;flex:none}
+h1{font-size:clamp(1.5rem,4vw,2.3rem);line-height:1.12;letter-spacing:-.02em}
+h1 em{font-style:normal;background:linear-gradient(110deg,var(--bluel),var(--goldl));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.kick{font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;color:var(--goldl);font-weight:700}
+.sub{color:var(--muted);max-width:70ch;margin-top:10px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:14px;margin-top:26px}
+.dom{position:relative;text-align:left;background:var(--card);border:1.5px solid var(--hair);border-radius:16px;padding:20px 18px 16px;cursor:pointer;transition:.18s;color:inherit;font:inherit}
+.dom:hover{border-color:rgba(217,168,79,.5);transform:translateY(-2px)}
+.dom.on{border-color:var(--gold);background:linear-gradient(135deg,rgba(217,168,79,.12),rgba(46,134,222,.05))}
+.dom .num{font-size:.62rem;letter-spacing:.14em;color:var(--bluel);font-weight:700}
+.dom h3{font-size:1.02rem;margin:6px 0 6px;color:#fff}
+.dom p{font-size:.82rem;color:var(--muted)}
+.dom .badge{position:absolute;top:14px;right:14px;font-size:.6rem;letter-spacing:.06em;text-transform:uppercase;padding:3px 9px;border-radius:999px}
+.bp{background:rgba(52,211,153,.12);border:1px solid rgba(52,211,153,.4);color:var(--green)}
+.bm{background:rgba(217,168,79,.12);border:1px solid rgba(217,168,79,.4);color:var(--goldl)}
+.dom .tick{position:absolute;bottom:12px;right:14px;width:22px;height:22px;border-radius:50%;border:1.5px solid var(--hair);display:grid;place-items:center;font-size:13px;color:transparent;transition:.18s}
+.dom.on .tick{background:var(--gold);border-color:var(--gold);color:#0B1422}
+.panel{margin-top:30px;background:linear-gradient(135deg,rgba(46,134,222,.08),rgba(217,168,79,.06));border:1px solid rgba(217,168,79,.35);border-radius:20px;padding:28px 26px}
+.panel h2{font-size:1.35rem;color:#fff;line-height:1.2}
+.panel h2 em{font-style:normal;color:var(--goldl)}
+.reco{display:flex;gap:14px;flex-wrap:wrap;margin-top:16px}
+.chip{font-size:.78rem;padding:7px 14px;border-radius:999px;border:1px solid var(--hair);color:var(--muted)}
+.chip.hot{border-color:var(--gold);color:var(--goldl);background:rgba(217,168,79,.1);font-weight:600}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px}
+.box{background:rgba(11,20,34,.55);border:1px solid var(--hair);border-radius:14px;padding:16px 18px}
+.box h4{font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px}
+.box ul{list-style:none}
+.box li{font-size:.84rem;color:rgba(245,247,250,.78);padding:4px 0 4px 16px;position:relative}
+.box li::before{content:"▸";position:absolute;left:0}
+.bx-p h4{color:var(--green)}.bx-p li::before{color:var(--green)}
+.bx-m h4{color:var(--goldl)}.bx-m li::before{color:var(--goldl)}
+.why{margin-top:18px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}
+.why div{font-size:.8rem;color:rgba(245,247,250,.75);background:rgba(255,255,255,.03);border:1px solid var(--hair);border-radius:12px;padding:12px 14px}
+.why strong{color:#fff;display:block;margin-bottom:3px;font-size:.84rem}
+.cta{margin-top:22px;display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.btn{display:inline-block;padding:13px 24px;border-radius:999px;font-weight:700;font-size:.9rem;text-decoration:none;cursor:pointer;border:none;font-family:inherit}
+.btn-g{background:linear-gradient(120deg,var(--goldl),var(--gold));color:#0B1422}
+.btn-o{background:none;border:1px solid var(--hair);color:#F5F7FA}
+.btn-o:hover{border-color:var(--gold)}
+.note{font-size:.72rem;color:rgba(245,247,250,.45);margin-top:18px}
+.empty{color:var(--muted);font-size:.95rem;padding:8px 0}
+@media(max-width:640px){.split{grid-template-columns:1fr}}
+.pulse{animation:pu 2.6s ease-in-out infinite}
+@keyframes pu{0%,100%{opacity:.5}50%{opacity:1}}
+@media(prefers-reduced-motion:reduce){.pulse{animation:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="mk">E</div>
+    <div>
+      <div class="kick">EnerTchad · Services E&amp;P</div>
+      <h1>Composez votre <em>service intégré</em>.</h1>
+    </div>
+  </header>
+  <p class="sub">Sélectionnez les domaines dont votre opération a besoin : nous recommandons le modèle d'engagement,
+  le périmètre <strong style="color:var(--green)">en propre</strong> / <strong style="color:var(--goldl)">via partenaires</strong> —
+  et les raisons de nous confier l'ensemble sous un seul contrat.</p>
+
+  <div class="grid" id="doms"></div>
+
+  <div class="panel" id="panel">
+    <h2 id="ptitle">Votre périmètre intégré</h2>
+    <div id="pbody"><p class="empty pulse">— Sélectionnez au moins un domaine ci-dessus —</p></div>
+  </div>
+
+  <p class="note">Démonstration commerciale · modèle d'offre EnerTchad S.A. (société en phase de structuration — prestations en prospection) · marques en cours de dépôt OAPI · +235 99 29 86 96</p>
+</div>
+
+<script>
+const DOMS=[
+ {id:"geo",n:"01",t:"Géosciences & réservoir",p:"Sismique, interprétation, modélisation P10/P50/P90, FDP, gestion des réserves.",own:true,
+  inhouse:["Interprétation & simulation réservoir","Plans de développement (FDP)","Gestion des réserves 1P/2P/3P"],partner:["Acquisition sismique terrain (équipes équipées)"]},
+ {id:"for",n:"02",t:"Forage & services puits",p:"Ingénierie puits 4 500 m MD, directionnel, complétion, workover, well testing.",own:false,
+  inhouse:["Ingénierie puits & supervision","Programme boues & tubages"],partner:["Appareils de forage & workover","Wireline · coiled tubing · stimulation"]},
+ {id:"eor",n:"03",t:"Levage artificiel & EOR",p:"ESP, gas-lift, PCP · EOR chimique ASP (natron/neem) +8-17 % OOIP · CSS thermique.",own:true,
+  inhouse:["Diagnostic & design EOR","Chimie de production locale","Optimisation du levage"],partner:["Pompage haute puissance & injection"]},
+ {id:"int",n:"04",t:"Intégrité, inspection & robotique",p:"NDT, API 570/653/1160, racleurs ILI, crawlers zéro entrée humaine, drones.",own:true,
+  inhouse:["Programmes d'intégrité & NDT","Drones du corridor","Crawlers d'espaces confinés"],partner:["Racleurs instrumentés (ILI) spécialisés"]},
+ {id:"eau",n:"05",t:"Eau de production & environnement",p:"Water-to-Value™ : traitement (water cut >85 %), réinjection, zéro rejet.",own:true,
+  inhouse:["Études & process de traitement","Suivi piézométrique & remise en état"],partner:["Unités de traitement haute capacité"]},
+ {id:"om",n:"06",t:"O&M · exploitation déléguée",p:"Installations de surface, maintenance prédictive API RP 14C, conduite 24 h/24.",own:true,
+  inhouse:["Exploitation déléguée & conduite remote","Maintenance préventive/prédictive","Personnel certifié OPITO/H₂S"],partner:["Gros entretien mécanique spécialisé"]}
+];
+const WHY=[
+ ["Coût raisonnable, structurellement","Zéro mobilisation internationale, équipes locales, asset-light : chaque franc économisé améliore le point mort de vos puits marginaux."],
+ ["Déjà sur le terrain","Connaissance des bassins tchadiens, mobilisation en 24-48 h — pas en semaines depuis l'étranger."],
+ ["Un seul contrat, un seul responsable","Le mode intégré (IPM) supprime les interfaces entre prestataires — moins de NPT, moins de litiges."],
+ ["Alignés sur votre résultat","Success-fee EOR : nous gagnons sur le baril additionnel, pas sur les jours facturés."],
+ ["Contenu local qui compte","80 % d'équipes tchadiennes (cible) : vos obligations de contenu local sont remplies par le contrat même."]
+];
+const $=s=>document.querySelector(s);
+const sel=new Set();
+function reco(n,hasEOR){
+ if(n>=4) return["IPM · Gestion intégrée","Un contrat unique couvrant "+n+" domaines : coordination EnerTchad, risque partagé, interfaces supprimées."];
+ if(n===3) return["Contrat de services groupé","Trois domaines sous un même contrat-cadre : équipe dédiée, tarification dégressive."];
+ if(hasEOR) return["Success-fee EOR","Pilote rémunéré sur les barils additionnels : votre risque est plafonné, notre intérêt est aligné."];
+ return["Prestation à l'acte","Mission facturée au livrable : la façon la plus simple de nous tester."];
+}
+function render(){
+ const g=$("#doms");g.innerHTML="";
+ DOMS.forEach(d=>{
+  const b=document.createElement("button");
+  b.className="dom"+(sel.has(d.id)?" on":"");
+  b.setAttribute("aria-pressed",sel.has(d.id));
+  b.innerHTML=`<span class="badge ${d.own?'bp':'bm'}">${d.own?'En propre':'Via partenaires'}</span>
+   <div class="num">${d.n} · DOMAINE</div><h3>${d.t}</h3><p>${d.p}</p><span class="tick">✓</span>`;
+  b.onclick=()=>{sel.has(d.id)?sel.delete(d.id):sel.add(d.id);render();};
+  g.appendChild(b);
+ });
+ const picked=DOMS.filter(d=>sel.has(d.id));
+ const body=$("#pbody");
+ if(!picked.length){body.innerHTML='<p class="empty pulse">— Sélectionnez au moins un domaine ci-dessus —</p>';$("#ptitle").textContent="Votre périmètre intégré";return;}
+ const [model,why]=reco(picked.length,sel.has("eor"));
+ const inh=[...new Set(picked.flatMap(d=>d.inhouse))], par=[...new Set(picked.flatMap(d=>d.partner))];
+ $("#ptitle").innerHTML=`Votre périmètre intégré · <em>${picked.length} domaine${picked.length>1?"s":""}</em>`;
+ const mail="mailto:contact@enertchad.td?subject="+encodeURIComponent("Service intégré — "+picked.map(d=>d.t).join(", "))+"&body="+encodeURIComponent("Bonjour,\n\nNous souhaitons étudier un périmètre intégré couvrant : "+picked.map(d=>d.t).join(" · ")+".\nModèle pressenti : "+model+".\n\nCordialement");
+ body.innerHTML=`
+  <div class="reco"><span class="chip hot">Modèle recommandé : ${model}</span>
+   ${picked.map(d=>`<span class="chip">${d.t}</span>`).join("")}</div>
+  <p style="margin-top:12px;font-size:.88rem;color:rgba(245,247,250,.75)">${why}</p>
+  <div class="split">
+   <div class="box bx-p"><h4>EnerTchad réalise en propre</h4><ul>${inh.map(x=>`<li>${x}</li>`).join("")}</ul></div>
+   <div class="box bx-m"><h4>Mobilisé via partenaires équipés</h4><ul>${par.length?par.map(x=>`<li>${x}</li>`).join(""):"<li>Aucun — périmètre 100 % en propre</li>"}</ul></div>
+  </div>
+  <div class="why">${WHY.slice(0,picked.length>=4?5:4).map(w=>`<div><strong>${w[0]}</strong>${w[1]}</div>`).join("")}</div>
+  <div class="cta">
+   <a class="btn btn-g" href="${mail}">Recevoir une proposition →</a>
+   <button class="btn btn-o" onclick="navigator.clipboard&&navigator.clipboard.writeText(document.getElementById('panel').innerText).then(()=>this.textContent='Copié ✓')">Copier le brief</button>
+  </div>`;
+}
+render();
+</script>
+</body>
+</html>
