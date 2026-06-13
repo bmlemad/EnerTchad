@@ -1,18 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-<url><loc>https://www.enertchad.td/</loc></url>
-<url><loc>https://www.enertchad.td/entreprise</loc></url>
-<url><loc>https://www.enertchad.td/activites</loc></url>
-<url><loc>https://www.enertchad.td/innovation</loc></url>
-<url><loc>https://www.enertchad.td/durabilite</loc></url>
-<url><loc>https://www.enertchad.td/investisseurs</loc></url>
-<url><loc>https://www.enertchad.td/pole-amont</loc></url>
-<url><loc>https://www.enertchad.td/pole-intermediaire</loc></url>
-<url><loc>https://www.enertchad.td/pole-aval</loc></url>
-<url><loc>https://www.enertchad.td/pole-greentech</loc></url>
-<url><loc>https://www.enertchad.td/pole-enertech</loc></url>
-<url><loc>https://www.enertchad.td/pole-enertalents</loc></url>
-<url><loc>https://www.enertchad.td/pole-enerconseils</loc></url>
-<url><loc>https://www.enertchad.td/pole-enerchimie</loc></url>
-<url><loc>https://www.enertchad.td/journal-enigme-densite-brut.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+<url><loc>https://enertchad.td/</loc></url>
+<url><loc>https://enertchad.td/pole-amont</loc></url>
+<url><loc>https://enertchad.td/pole-intermediaire</loc></url>
+<url><loc>https://enertchad.td/pole-aval</loc></url>
+<url><loc>https://enertchad.td/pole-greentech</loc></url>
+<url><loc>https://enertchad.td/pole-enertech</loc></url>
+<url><loc>https://enertchad.td/pole-enertalents</loc></url>
+<url><loc>https://enertchad.td/pole-enerconseils</loc></url>
+<url><loc>https://enertchad.td/pole-enerchimie</loc></url>
+<url><loc>https://enertchad.td/mentions-legales.html</loc></url>
+<url><loc>https://enertchad.td/confidentialite.html</loc></url>
+<url><loc>https://enertchad.td/cookies.html</loc></url>
+<url><loc>https://enertchad.td/journal-enigme-densite-brut.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
 </urlset>

@@ -36,12 +36,13 @@ Puis **Settings → Pages → Branch: main /(root) → Save**.
 
 ## Domaine personnalisé enertchad.td (recommandé)
 
-1. Renomme `CNAME.exemple` en **`CNAME`** (édite-le si besoin : `www.enertchad.td`).
-2. Chez ton registrar : `CNAME www → TONPSEUDO.github.io` ; et pour l'apex, 4 `A` vers
-   `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`.
-3. **Settings → Pages → Custom domain** : `www.enertchad.td` → coche **Enforce HTTPS**.
+1. Renomme `CNAME.exemple` en **`CNAME`** (contenu : `enertchad.td`).
+2. Chez ton registrar, pour le domaine apex `enertchad.td` : 4 enregistrements `A` vers
+   `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153` (et, en option,
+   `CNAME www → TONPSEUDO.github.io` pour rediriger www vers l'apex).
+3. **Settings → Pages → Custom domain** : `enertchad.td` → coche **Enforce HTTPS**.
 
-Le `sitemap.xml` cible déjà `https://www.enertchad.td`.
+Le `sitemap.xml` cible déjà `https://enertchad.td`.
 
 ---
 
