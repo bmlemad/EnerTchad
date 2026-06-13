@@ -51,7 +51,7 @@ Le `sitemap.xml` cible déjà `https://www.enertchad.td`.
 cd site-v2
 REL=1 OUT=dist-local python3 build.py
 ```
-Recopie le contenu de `dist-local/` dans le dépôt, puis `push`.
+Recopie le contenu de `dist-local/` dans le dépôt (par-dessus), puis `push`.
 
 ## Notes
 - `.nojekyll` est indispensable (sinon GitHub peut ignorer certains fichiers).
