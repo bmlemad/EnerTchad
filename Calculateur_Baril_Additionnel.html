@@ -112,7 +112,7 @@ input[type=range]{width:100%;accent-color:var(--gold);height:22px}
     </div>
   </div>
 
-  <p class="note"><strong>Simulation illustrative</strong> — résultats indicatifs dépendant des hypothèses que vous réglez ; ne constitue ni une promesse de récupération ni un engagement contractuel. Fourchette EOR +8-17 % OOIP : objectif des programmes EnerTchad sur bruts lourds de Doba (21-24° API, water cut &gt; 85 %). Données corridor (225/90 kb/j, 40 %) : secteur national, sources publiques. En mode success-fee, EnerTchad est rémunéré sur les barils additionnels constatés — votre risque est plafonné. EnerTchad S.A., société en phase de structuration · +235 99 29 86 96.</p>
+  <p class="note"><strong>Simulation illustrative</strong> — résultats indicatifs dépendant des hypothèses que vous réglez ; ne constitue ni une promesse de récupération ni un engagement contractuel. Fourchette EOR +8-17 % OOIP : objectif des programmes EnerTchad sur bruts lourds de Doba (21-24° API, water cut &gt; 85 %). Données corridor (225/90 kb/j, 40 %) : secteur national, sources publiques. En mode rémunération au succès, EnerTchad est rémunéré sur les barils additionnels constatés — votre risque est plafonné. EnerTchad S.A., société en phase de structuration · +235 99 29 86 96.</p>
 </div>
 
 <script>
@@ -144,7 +144,7 @@ function calc(){
    +fmt(st,2)+" Md$</b> pour l'État, et un tarif de transport qui baisse d'environ <b>"
    +fmt(tarif,0)+" %</b> pour <b>tous</b> les opérateurs du corridor. Le baril additionnel est le baril le moins cher du Tchad — il est déjà découvert.";
  $('mailto').href="mailto:contact@enertchad.td?subject="+encodeURIComponent("Pilote EOR — baril additionnel")
-   +"&body="+encodeURIComponent("Bonjour,\n\nHypothèses étudiées : OOIP "+ooip+" Mbbl, gain "+gain+" %, "+yrs+" ans, brut "+px+" $/bbl.\nRésultat indicatif : "+fmt(addM,0)+" Mbbl additionnels, "+fmt(rev,2)+" Md$ de revenu brut.\n\nNous souhaitons discuter d'un pilote EOR en success-fee.\n");
+   +"&body="+encodeURIComponent("Bonjour,\n\nHypothèses étudiées : OOIP "+ooip+" Mbbl, gain "+gain+" %, "+yrs+" ans, brut "+px+" $/bbl.\nRésultat indicatif : "+fmt(addM,0)+" Mbbl additionnels, "+fmt(rev,2)+" Md$ de revenu brut.\n\nNous souhaitons discuter d'un pilote EOR en rémunération au succès.\n");
 }
 ['i_ooip','i_gain','i_yrs','i_px','i_tax'].forEach(id=>$(id).addEventListener('input',calc));
 calc();

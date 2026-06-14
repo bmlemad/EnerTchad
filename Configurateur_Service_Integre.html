@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="color-scheme" content="dark">
 <title>EnerTchad — Configurateur Service Intégré</title>
-<meta name="description" content="Configurateur de service intégré EnerTchad : composez votre offre parapétrolière (Integrated OFS) et estimez la valeur d’un service sur mesure pour vos opérations au Tchad.">
+<meta name="description" content="Configurateur de service intégré EnerTchad : composez votre offre parapétrolière (OFS intégré) et estimez la valeur d’un service sur mesure pour vos opérations au Tchad.">
 <meta property="og:title" content="EnerTchad — Configurateur Service Intégré">
-<meta property="og:description" content="Configurateur de service intégré EnerTchad : composez votre offre parapétrolière (Integrated OFS) et estimez la valeur d’un service sur mesure pour vos opérations au Tchad.">
+<meta property="og:description" content="Configurateur de service intégré EnerTchad : composez votre offre parapétrolière (OFS intégré) et estimez la valeur d’un service sur mesure pour vos opérations au Tchad.">
 <meta property="og:type" content="website">
 <link rel="canonical" href="https://enertchad.td/Configurateur_Service_Integre.html">
 <style>
@@ -103,10 +103,10 @@ const DOMS=[
   inhouse:["Exploitation déléguée & conduite remote","Maintenance préventive/prédictive","Personnel certifié OPITO/H₂S"],partner:["Gros entretien mécanique spécialisé"]}
 ];
 const WHY=[
- ["Coût raisonnable, structurellement","Zéro mobilisation internationale, équipes locales, asset-light : chaque franc économisé améliore le point mort de vos puits marginaux."],
+ ["Coût raisonnable, structurellement","Zéro mobilisation internationale, équipes locales, actif-léger : chaque franc économisé améliore le point mort de vos puits marginaux."],
  ["Déjà sur le terrain","Connaissance des bassins tchadiens, mobilisation en 24-48 h — pas en semaines depuis l'étranger."],
  ["Un seul contrat, un seul responsable","Le mode intégré (IPM) supprime les interfaces entre prestataires — moins de NPT, moins de litiges."],
- ["Alignés sur votre résultat","Success-fee EOR : nous gagnons sur le baril additionnel, pas sur les jours facturés."],
+ ["Alignés sur votre résultat","Rémunération au succès EOR : nous gagnons sur le baril additionnel, pas sur les jours facturés."],
  ["Contenu local qui compte","80 % d'équipes tchadiennes (cible) : vos obligations de contenu local sont remplies par le contrat même."]
 ];
 const $=s=>document.querySelector(s);
@@ -114,7 +114,7 @@ const sel=new Set();
 function reco(n,hasEOR){
  if(n>=4) return["IPM · Gestion intégrée","Un contrat unique couvrant "+n+" domaines : coordination EnerTchad, risque partagé, interfaces supprimées."];
  if(n===3) return["Contrat de services groupé","Trois domaines sous un même contrat-cadre : équipe dédiée, tarification dégressive."];
- if(hasEOR) return["Success-fee EOR","Pilote rémunéré sur les barils additionnels : votre risque est plafonné, notre intérêt est aligné."];
+ if(hasEOR) return["Rémunération au succès EOR","Pilote rémunéré sur les barils additionnels : votre risque est plafonné, notre intérêt est aligné."];
  return["Prestation à l'acte","Mission facturée au livrable : la façon la plus simple de nous tester."];
 }
 function render(){
