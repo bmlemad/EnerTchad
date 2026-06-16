@@ -17,6 +17,8 @@
 /#investir /#investir 301
 /#mini-raffinerie /pole-enertech#mini-raffinerie 301
 /#modele-distribution /pole-aval#modele-distribution 301
+/#modele-eco /#modele-eco 301
+/#parcours /#parcours 301
 /#partenaires /pole-enertalents#partenaires 301
 /#petrochimie /pole-enerchimie#petrochimie 301
 /#poles /#poles 301
@@ -37,3 +39,13 @@
 /#valorisation /pole-amont#valorisation 301
 /#vision /#vision 301
 /#voie /#voie 301
+/amont /pole-amont 301
+/intermediaire /pole-intermediaire 301
+/aval /pole-aval 301
+/greentech /pole-greentech 301
+/enertech /pole-enertech 301
+/enertalents /pole-enertalents 301
+/enerconseils /pole-enerconseils 301
+/enerchimie /pole-enerchimie 301
+/en /index-en.html 301
+/en/ /index-en.html 301

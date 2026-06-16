@@ -2,6 +2,58 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "cleanUrls": true,
   "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/amont",
+      "destination": "/pole-amont",
+      "permanent": true
+    },
+    {
+      "source": "/intermediaire",
+      "destination": "/pole-intermediaire",
+      "permanent": true
+    },
+    {
+      "source": "/aval",
+      "destination": "/pole-aval",
+      "permanent": true
+    },
+    {
+      "source": "/greentech",
+      "destination": "/pole-greentech",
+      "permanent": true
+    },
+    {
+      "source": "/enertech",
+      "destination": "/pole-enertech",
+      "permanent": true
+    },
+    {
+      "source": "/enertalents",
+      "destination": "/pole-enertalents",
+      "permanent": true
+    },
+    {
+      "source": "/enerconseils",
+      "destination": "/pole-enerconseils",
+      "permanent": true
+    },
+    {
+      "source": "/enerchimie",
+      "destination": "/pole-enerchimie",
+      "permanent": true
+    },
+    {
+      "source": "/en",
+      "destination": "/index-en.html",
+      "permanent": true
+    },
+    {
+      "source": "/en/",
+      "destination": "/index-en.html",
+      "permanent": true
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)",
