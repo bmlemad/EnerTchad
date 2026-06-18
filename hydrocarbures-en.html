@@ -67,8 +67,33 @@ ol.h p{font-size:.88rem;color:rgba(245,247,250,.66)}
 footer{padding:36px 0 60px;border-top:1px solid var(--hair);font-size:.78rem;color:rgba(245,247,250,.45);line-height:1.7}
 ::selection{background:var(--gold);color:#0B1422}
 @media print{body{background:#fff;color:#111}*{-webkit-text-fill-color:#111!important;background:#fff!important;color:#111!important;border-color:#ddd!important}.fr,.btn{display:none}}
+
+@media(max-width:680px){
+  .wrap{padding:0 18px}
+  main{padding:34px 0 46px}
+  .hd{padding:12px 16px;gap:10px}
+  .hd-r{gap:9px 13px}
+  .hd-r a{font-size:.82rem;padding:2px 0}
+  .hero .wrap{padding:32px 18px 22px}
+  h1{font-size:clamp(1.65rem,7.5vw,2.1rem)}
+  h2{font-size:1.18rem}
+  .grid{grid-template-columns:1fr;gap:12px}
+  .btn{width:100%;justify-content:center}
+  .pgr{flex-direction:column;padding:24px 18px;gap:10px}
+  .pgr a{flex:1 1 auto}.pgr .next{text-align:left;align-items:flex-start}
+}
+
+/* modern polish 2026 */
+.card{transition:transform .2s ease,border-color .2s ease,background .2s ease}
+.card:hover{transform:translateY(-3px);border-color:color-mix(in srgb,var(--ac,var(--gold-l)) 55%,var(--hair));background:rgba(255,255,255,.055)}
+h1,h2,.lead{text-wrap:balance}
+.btn{transition:transform .16s ease,box-shadow .2s ease}
+.btn:hover{transform:translateY(-2px);box-shadow:0 12px 26px rgba(232,195,106,.22)}
+.pgr a{transition:transform .16s ease,border-color .2s ease}.pgr a:hover{transform:translateY(-2px)}
+a:focus-visible,summary:focus-visible{outline:2px solid var(--gold-l);outline-offset:3px;border-radius:6px}
+@media(prefers-reduced-motion:reduce){.card,.btn,.pgr a{transition:none}.card:hover,.btn:hover,.pgr a:hover{transform:none}}
 </style>
-<style>.skip-link{position:absolute;left:12px;top:-60px;z-index:300;background:#0B1422;color:#fff;border:1px solid #5AA7F0;border-radius:8px;padding:10px 16px;text-decoration:none;font:600 .85rem/1 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;transition:top .2s}.skip-link:focus{top:12px}</style></head>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "name": "EnerTchad S.A.", "url": "https://enertchad.td/", "logo": "https://enertchad.td/icon-512.png", "slogan": "Unité · Innovation · Durabilité", "address": {"@type": "PostalAddress", "addressLocality": "N’Djamena", "addressCountry": "TD"}, "email": "contact@enertchad.td", "telephone": "+235 99 29 86 96", "sameAs": ["https://wa.me/23599298696"]}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "EnerTchad — Executive Brief | From source rock to the pump", "description": "EnerTchad S.A. — Chad exports its crude and imports its fuels. We are reversing that logic: an integrated model designed by Chadian realities — 12 ultra-premium stations, Mobile Stations™, modular mini-refineries.", "url": "https://enertchad.td/en", "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": "EnerTchad", "url": "https://enertchad.td/"}}</script><style>.skip-link{position:absolute;left:12px;top:-60px;z-index:300;background:#0B1422;color:#fff;border:1px solid #5AA7F0;border-radius:8px;padding:10px 16px;text-decoration:none;font:600 .85rem/1 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;transition:top .2s}.skip-link:focus{top:12px}</style><style id="tw-pretty">p,li,figcaption,blockquote,.hx-sub,.sub,.lede,dd{text-wrap:pretty}h1,h2,h3,h4,.kick,.eyebrow,.mu-head span{text-wrap:balance}</style><link rel="manifest" href="/site.webmanifest"></head>
 <body><a href="#main-content" class="skip-link">Aller au contenu principal</a>
 <div class="wrap">
   <header class="top">
@@ -160,5 +185,5 @@ footer{padding:36px 0 60px;border-top:1px solid var(--hair);font-size:.78rem;col
     Company in structuring phase: no assets in operation to date; sector figures from public sources (national production, Doba-Kribi pipeline, Djermaya refinery); all operational capacities, networks and KPIs are company targets. Mobile Station™, Water-to-Value™, NRJ+ and EnerClub are trademarks of EnerTchad, registration in progress with OAPI. © 2026.
   </footer>
 </div>
-</body>
+<button id="scrollcue" class="scrollcue" aria-label="Voir la suite plus bas" title="Plus bas"><span class="sc-lb">Suite</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 6l5 5 5-5M7 13l5 5 5-5"/></svg></button><style>.scrollcue{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);z-index:40;display:inline-flex;align-items:center;gap:7px;padding:8px 15px;border-radius:999px;border:1px solid var(--hair,rgba(90,167,240,.18));background:color-mix(in srgb,#0B1422 78%,transparent);-webkit-backdrop-filter:blur(9px);backdrop-filter:blur(9px);color:var(--gold-l,#F0CE82);font-family:var(--fm,ui-monospace,Menlo,monospace);font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;cursor:pointer;box-shadow:0 12px 30px -14px rgba(0,0,0,.6);transition:opacity .4s var(--ease,ease),transform .4s var(--ease,ease),border-color .25s,background .25s}.scrollcue .sc-lb{line-height:1}.scrollcue svg{width:15px;height:15px;animation:scBob 1.8s ease-in-out infinite}.scrollcue:hover{border-color:color-mix(in srgb,var(--gold-l,#F0CE82) 55%,var(--hair,rgba(90,167,240,.18)));background:color-mix(in srgb,#0B1422 64%,transparent);transform:translateX(-50%) translateY(-2px)}.scrollcue:focus-visible{outline:2px solid var(--gold-l,#F0CE82);outline-offset:3px}.scrollcue.hide{opacity:0;pointer-events:none;transform:translateX(-50%) translateY(10px)}@keyframes scBob{0%,100%{transform:translateY(0)}50%{transform:translateY(3px)}}@media(max-width:560px){.scrollcue{bottom:16px;padding:7px 13px;font-size:.58rem}}@media(prefers-reduced-motion:reduce){.scrollcue svg{animation:none}.scrollcue{transition:opacity .3s}}@media print{.scrollcue{display:none}}</style><script>(function(){var c=document.getElementById("scrollcue");if(!c)return;function u(){var st=window.scrollY||document.documentElement.scrollTop||0;var h=document.documentElement.scrollHeight-window.innerHeight;if(h<170||st>h-150){c.classList.add("hide");}else{c.classList.remove("hide");}}c.addEventListener("click",function(){window.scrollBy({top:Math.round(window.innerHeight*0.82),left:0,behavior:"smooth"});});window.addEventListener("scroll",u,{passive:true});window.addEventListener("resize",u);setTimeout(u,300);})();</script></body>
 </html>

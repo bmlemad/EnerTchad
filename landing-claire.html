@@ -32,7 +32,7 @@
   #prog{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;background:linear-gradient(90deg,var(--bronze-deco),var(--blue));transition:width .1s linear}
 
   /* NAV */
-  header{position:sticky;top:0;z-index:50;background:rgba(251,247,239,.88);backdrop-filter:blur(14px);border-bottom:1px solid var(--line2)}
+  header{position:sticky;top:0;z-index:50;background:rgba(251,247,239,.88);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-bottom:1px solid var(--line2)}
   .nav{display:flex;align-items:center;gap:16px;padding:13px 0}
   .brand{display:flex;align-items:center;gap:11px;font-weight:700;font-size:1.12rem}
   .mk{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;background:#fff;border:1px solid var(--line);box-shadow:0 2px 8px rgba(26,34,48,.06)}
@@ -53,6 +53,7 @@
   .btn-o{border:1px solid var(--line);color:var(--ink)}
   .btn-o:hover{border-color:var(--blue);color:var(--blue)}
   @media(max-width:900px){.nav nav{display:none}}
+  @media(max-width:560px){.nav{flex-wrap:wrap;gap:10px}.cta{margin-left:0}}
 
   /* HERO */
   .hero{position:relative;overflow:hidden;background:
@@ -164,7 +165,7 @@
   .foot-badges span{font-size:.7rem;color:var(--blue);border:1px solid var(--line);padding:5px 11px;border-radius:99px}
   .legal{border-top:1px solid var(--line2);padding-top:16px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font-size:.78rem}
 </style>
-<style>.skip-link{position:absolute;left:12px;top:-60px;z-index:300;background:#0B1422;color:#fff;border:1px solid #5AA7F0;border-radius:8px;padding:10px 16px;text-decoration:none;font:600 .85rem/1 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;transition:top .2s}.skip-link:focus{top:12px}</style></head>
+<style>.skip-link{position:absolute;left:12px;top:-60px;z-index:300;background:#0B1422;color:#fff;border:1px solid #5AA7F0;border-radius:8px;padding:10px 16px;text-decoration:none;font:600 .85rem/1 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;transition:top .2s}.skip-link:focus{top:12px}</style><style id="tw-pretty">p,li,figcaption,blockquote,.hx-sub,.sub,.lede,dd{text-wrap:pretty}h1,h2,h3,h4,.kick,.eyebrow,.mu-head span{text-wrap:balance}</style><meta name="theme-color" content="#060B14"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><link rel="manifest" href="/site.webmanifest"></head>
 <body id="top"><a href="#main-content" class="skip-link">Aller au contenu principal</a>
 <div id="prog" aria-hidden="true"></div>
 <header>
@@ -344,5 +345,5 @@ if('IntersectionObserver' in window){
   Object.keys(map).forEach(function(id){spy.observe(map[id].s);});
 }
 </script>
-</body>
+<button id="scrollcue" class="scrollcue" aria-label="Voir la suite plus bas" title="Plus bas"><span class="sc-lb">Suite</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 6l5 5 5-5M7 13l5 5 5-5"/></svg></button><style>.scrollcue{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);z-index:40;display:inline-flex;align-items:center;gap:7px;padding:8px 15px;border-radius:999px;border:1px solid var(--hair,rgba(90,167,240,.18));background:color-mix(in srgb,#0B1422 78%,transparent);-webkit-backdrop-filter:blur(9px);backdrop-filter:blur(9px);color:var(--gold-l,#F0CE82);font-family:var(--fm,ui-monospace,Menlo,monospace);font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;cursor:pointer;box-shadow:0 12px 30px -14px rgba(0,0,0,.6);transition:opacity .4s var(--ease,ease),transform .4s var(--ease,ease),border-color .25s,background .25s}.scrollcue .sc-lb{line-height:1}.scrollcue svg{width:15px;height:15px;animation:scBob 1.8s ease-in-out infinite}.scrollcue:hover{border-color:color-mix(in srgb,var(--gold-l,#F0CE82) 55%,var(--hair,rgba(90,167,240,.18)));background:color-mix(in srgb,#0B1422 64%,transparent);transform:translateX(-50%) translateY(-2px)}.scrollcue:focus-visible{outline:2px solid var(--gold-l,#F0CE82);outline-offset:3px}.scrollcue.hide{opacity:0;pointer-events:none;transform:translateX(-50%) translateY(10px)}@keyframes scBob{0%,100%{transform:translateY(0)}50%{transform:translateY(3px)}}@media(max-width:560px){.scrollcue{bottom:16px;padding:7px 13px;font-size:.58rem}}@media(prefers-reduced-motion:reduce){.scrollcue svg{animation:none}.scrollcue{transition:opacity .3s}}@media print{.scrollcue{display:none}}</style><script>(function(){var c=document.getElementById("scrollcue");if(!c)return;function u(){var st=window.scrollY||document.documentElement.scrollTop||0;var h=document.documentElement.scrollHeight-window.innerHeight;if(h<170||st>h-150){c.classList.add("hide");}else{c.classList.remove("hide");}}c.addEventListener("click",function(){window.scrollBy({top:Math.round(window.innerHeight*0.82),left:0,behavior:"smooth"});});window.addEventListener("scroll",u,{passive:true});window.addEventListener("resize",u);setTimeout(u,300);})();</script></body>
 </html>
