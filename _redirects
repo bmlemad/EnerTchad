@@ -3,7 +3,9 @@
 /#apps /pole-enertech#apps 301
 /#architecture /pole-enertech#architecture 301
 /#atlas /pole-enerconseils#atlas 301
+/#bitume /pole-aval#bitume 301
 /#contact /#contact 301
+/#crude-trucking /pole-intermediaire#crude-trucking 301
 /#cybersecurite /pole-enertech#cybersecurite 301
 /#distribution /pole-aval#distribution 301
 /#dof /pole-amont#dof 301
@@ -19,11 +21,13 @@
 /#innovations /pole-enertech#innovations 301
 /#investir /#investir 301
 /#logistique /pole-intermediaire#logistique 301
-/#mini-raffinerie /pole-enertech#mini-raffinerie 301
+/#mini-raffinerie /pole-aval#mini-raffinerie 301
+/#mini-raffinerie-rd /pole-enertech#mini-raffinerie-rd 301
 /#modele-distribution /pole-aval#modele-distribution 301
 /#modele-eco /#modele-eco 301
 /#parcours /brochure.html#parcours 301
 /#partenaires /pole-enertalents#partenaires 301
+/#patrimoine /pole-greentech#patrimoine 301
 /#petrochimie /pole-enerchimie#petrochimie 301
 /#poles /#poles 301
 /#produits /pole-aval#produits 301
@@ -53,3 +57,5 @@
 /enerchimie /pole-enerchimie 301
 /en /index-en.html 301
 /en/ /index-en.html 301
+/hydrocarbures-en /enertchad-en 301
+/hydrocarbures-en.html /enertchad-en.html 301
