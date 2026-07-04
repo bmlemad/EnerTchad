@@ -1,0 +1,37 @@
+UPLOAD SUR github.com/bmlemad/EnerTchad — EN UNE FOIS
+======================================================
+
+Ce dossier = le site complet et final (165 fichiers). Un seul upload suffit,
+il ecrase les fichiers racine deja en ligne et ajoute les dossiers manquants.
+
+LE POINT QUI A FAIT ECHOUER LE 1er ESSAI :
+  ne PAS passer par « choose your files » (le selecteur ignore les dossiers).
+  Il faut GLISSER-DEPOSER avec la souris, depuis le Finder vers la page GitHub.
+
+ETAPES
+  1. github.com/bmlemad/EnerTchad  ->  Add file  ->  Upload files
+  2. Dans le Finder, ouvrir ce dossier, Cmd+A (tout selectionner),
+     puis GLISSER la selection (fichiers ET dossiers) sur la zone GitHub.
+     Attendre la fin de la liste (165 elements, ~1 min).
+  3. Commit message : « EnerTchad — release complete 2-3 juillet »  ->  Commit changes.
+
+VERIFICATIONS APRES COMMIT (30 s)
+  - Le dossier « amont » apparait dans la liste du depot  -> les dossiers sont passes.
+  - « .nojekyll » et « .github » presents ? Si NON (fichiers caches parfois ignores) :
+      Add file -> Create new file -> nom « .nojekyll » -> Commit (vide).
+      Add file -> Create new file -> nom « .github/workflows/integrity.yml »
+        -> coller le contenu du meme fichier de ce dossier (Cmd+Shift+. dans le
+           Finder pour voir les fichiers caches) -> Commit.
+
+MENAGE (recommande, 5 min) — vieux fichiers a supprimer sur GitHub
+(ils datent de l ancienne version et masquent les redirections) :
+  entreprise.html, activites.html, atlas.html, durabilite.html,
+  landing-claire.html, enertchad-en.html, hydrocarbures-en.html,
+  pole-amont.html, pole-aval.html, pole-intermediaire.html,
+  pole-enerchimie.html, pole-greentech.html, pole-enertech.html,
+  pole-enertalents.html, pole-enerconseils.html,
+  CNAME.exemple, DEPLOIEMENT-GITHUB-PAGES.md, LISEZMOI-UPLOAD.md
+(ouvrir le fichier sur GitHub -> icone corbeille -> Commit)
+
+Ensuite : Settings -> Pages : branche main, dossier racine, domaine enertchad.td.
+Le site est en ligne 2-3 minutes apres.
