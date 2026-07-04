@@ -1,46 +1,345 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "cleanUrls": true,
-  "trailingSlash": false,
   "redirects": [
     {
-      "source": "/amont",
-      "destination": "/pole-amont",
+      "source": "/pole-amont",
+      "destination": "/amont/",
       "permanent": true
     },
     {
-      "source": "/intermediaire",
-      "destination": "/pole-intermediaire",
+      "source": "/pole-amont.html",
+      "destination": "/amont/",
       "permanent": true
     },
     {
-      "source": "/aval",
-      "destination": "/pole-aval",
+      "source": "/pole-amont-activites",
+      "destination": "/amont/activites.html",
       "permanent": true
     },
     {
-      "source": "/greentech",
-      "destination": "/pole-greentech",
+      "source": "/pole-amont-activites.html",
+      "destination": "/amont/activites.html",
       "permanent": true
     },
     {
-      "source": "/enertech",
-      "destination": "/pole-enertech",
+      "source": "/pole-amont-eor",
+      "destination": "/amont/eor.html",
       "permanent": true
     },
     {
-      "source": "/enertalents",
-      "destination": "/pole-enertalents",
+      "source": "/pole-amont-eor.html",
+      "destination": "/amont/eor.html",
       "permanent": true
     },
     {
-      "source": "/enerconseils",
-      "destination": "/pole-enerconseils",
+      "source": "/pole-amont-services-ep",
+      "destination": "/amont/services-ep.html",
       "permanent": true
     },
     {
-      "source": "/petrochimie",
-      "destination": "/pole-petrochimie",
+      "source": "/pole-amont-services-ep.html",
+      "destination": "/amont/services-ep.html",
+      "permanent": true
+    },
+    {
+      "source": "/pole-intermediaire",
+      "destination": "/intermediaire/",
+      "permanent": true
+    },
+    {
+      "source": "/pole-intermediaire.html",
+      "destination": "/intermediaire/",
+      "permanent": true
+    },
+    {
+      "source": "/pole-intermediaire-logistique",
+      "destination": "/intermediaire/logistique.html",
+      "permanent": true
+    },
+    {
+      "source": "/pole-intermediaire-logistique.html",
+      "destination": "/intermediaire/logistique.html",
+      "permanent": true
+    },
+    {
+      "source": "/pole-intermediaire-services",
+      "destination": "/intermediaire/services.html",
+      "permanent": true
+    },
+    {
+      "source": "/pole-intermediaire-services.html",
+      "destination": "/intermediaire/services.html",
+      "permanent": true
+    },
+    {
+      "source": "/pole-intermediaire-sites",
+      "destination": "/intermediaire/sites.html",
+      "permanent": true
+    },
+    {
+      "source": "/pole-intermediaire-sites.html",
+      "destination": "/intermediaire/sites.html",
+      "permanent": true
+    },
+    {
+      "source": "/pole-aval",
+      "destination": "/aval/",
+      "permanent": true
+    },
+    {
+      "source": "/pole-aval.html",
+      "destination": "/aval/",
+      "permanent": true
+    },
+    {
+      "source": "/pole-aval-distribution",
+      "destination": "/aval/distribution.html",
+      "permanent": true
+    },
+    {
+      "source": "/pole-aval-distribution.html",
+      "destination": "/aval/distribution.html",
+      "permanent": true
+    },
+    {
+      "source": "/pole-aval-produits",
+      "destination": "/aval/produits.html",
+      "permanent": true
+    },
+    {
+      "source": "/pole-aval-produits.html",
+      "destination": "/aval/produits.html",
+      "permanent": true
+    },
+    {
+      "source": "/pole-aval-raffinage",
+      "destination": "/aval/raffinage.html",
+      "permanent": true
+    },
+    {
+      "source": "/pole-aval-raffinage.html",
+      "destination": "/aval/raffinage.html",
+      "permanent": true
+    },
+    {
+      "source": "/pole-aval-reseau",
+      "destination": "/aval/reseau.html",
+      "permanent": true
+    },
+    {
+      "source": "/pole-aval-reseau.html",
+      "destination": "/aval/reseau.html",
+      "permanent": true
+    },
+    {
+      "source": "/pole-petrochimie",
+      "destination": "/petrochimie/",
+      "permanent": true
+    },
+    {
+      "source": "/pole-petrochimie.html",
+      "destination": "/petrochimie/",
+      "permanent": true
+    },
+    {
+      "source": "/pole-petrochimie-chimie-eor",
+      "destination": "/petrochimie/chimie-eor.html",
+      "permanent": true
+    },
+    {
+      "source": "/pole-petrochimie-chimie-eor.html",
+      "destination": "/petrochimie/chimie-eor.html",
+      "permanent": true
+    },
+    {
+      "source": "/pole-petrochimie-produits",
+      "destination": "/petrochimie/produits.html",
+      "permanent": true
+    },
+    {
+      "source": "/pole-petrochimie-produits.html",
+      "destination": "/petrochimie/produits.html",
+      "permanent": true
+    },
+    {
+      "source": "/pole-greentech",
+      "destination": "/greentech/",
+      "permanent": true
+    },
+    {
+      "source": "/pole-greentech.html",
+      "destination": "/greentech/",
+      "permanent": true
+    },
+    {
+      "source": "/pole-greentech-hseq",
+      "destination": "/greentech/hseq.html",
+      "permanent": true
+    },
+    {
+      "source": "/pole-greentech-hseq.html",
+      "destination": "/greentech/hseq.html",
+      "permanent": true
+    },
+    {
+      "source": "/pole-greentech-impact",
+      "destination": "/greentech/impact.html",
+      "permanent": true
+    },
+    {
+      "source": "/pole-greentech-impact.html",
+      "destination": "/greentech/impact.html",
+      "permanent": true
+    },
+    {
+      "source": "/pole-greentech-patrimoine",
+      "destination": "/greentech/patrimoine.html",
+      "permanent": true
+    },
+    {
+      "source": "/pole-greentech-patrimoine.html",
+      "destination": "/greentech/patrimoine.html",
+      "permanent": true
+    },
+    {
+      "source": "/pole-greentech-transition",
+      "destination": "/greentech/transition.html",
+      "permanent": true
+    },
+    {
+      "source": "/pole-greentech-transition.html",
+      "destination": "/greentech/transition.html",
+      "permanent": true
+    },
+    {
+      "source": "/pole-enertech",
+      "destination": "/enertech/",
+      "permanent": true
+    },
+    {
+      "source": "/pole-enertech.html",
+      "destination": "/enertech/",
+      "permanent": true
+    },
+    {
+      "source": "/pole-enertech-innovations",
+      "destination": "/enertech/innovations.html",
+      "permanent": true
+    },
+    {
+      "source": "/pole-enertech-innovations.html",
+      "destination": "/enertech/innovations.html",
+      "permanent": true
+    },
+    {
+      "source": "/pole-enertech-outils",
+      "destination": "/enertech/outils.html",
+      "permanent": true
+    },
+    {
+      "source": "/pole-enertech-outils.html",
+      "destination": "/enertech/outils.html",
+      "permanent": true
+    },
+    {
+      "source": "/pole-enertech-rd",
+      "destination": "/enertech/rd.html",
+      "permanent": true
+    },
+    {
+      "source": "/pole-enertech-rd.html",
+      "destination": "/enertech/rd.html",
+      "permanent": true
+    },
+    {
+      "source": "/pole-enertech-recits",
+      "destination": "/enertech/recits.html",
+      "permanent": true
+    },
+    {
+      "source": "/pole-enertech-recits.html",
+      "destination": "/enertech/recits.html",
+      "permanent": true
+    },
+    {
+      "source": "/pole-enertech-socle",
+      "destination": "/enertech/socle.html",
+      "permanent": true
+    },
+    {
+      "source": "/pole-enertech-socle.html",
+      "destination": "/enertech/socle.html",
+      "permanent": true
+    },
+    {
+      "source": "/pole-enertalents",
+      "destination": "/enertalents/",
+      "permanent": true
+    },
+    {
+      "source": "/pole-enertalents.html",
+      "destination": "/enertalents/",
+      "permanent": true
+    },
+    {
+      "source": "/pole-enertalents-academie",
+      "destination": "/enertalents/academie.html",
+      "permanent": true
+    },
+    {
+      "source": "/pole-enertalents-academie.html",
+      "destination": "/enertalents/academie.html",
+      "permanent": true
+    },
+    {
+      "source": "/pole-enertalents-partenariats",
+      "destination": "/enertalents/partenariats.html",
+      "permanent": true
+    },
+    {
+      "source": "/pole-enertalents-partenariats.html",
+      "destination": "/enertalents/partenariats.html",
+      "permanent": true
+    },
+    {
+      "source": "/pole-enertalents-rayonnement",
+      "destination": "/enertalents/rayonnement.html",
+      "permanent": true
+    },
+    {
+      "source": "/pole-enertalents-rayonnement.html",
+      "destination": "/enertalents/rayonnement.html",
+      "permanent": true
+    },
+    {
+      "source": "/pole-enerconseils",
+      "destination": "/enerconseils/",
+      "permanent": true
+    },
+    {
+      "source": "/pole-enerconseils.html",
+      "destination": "/enerconseils/",
+      "permanent": true
+    },
+    {
+      "source": "/pole-enerconseils-atlas",
+      "destination": "/enerconseils/atlas.html",
+      "permanent": true
+    },
+    {
+      "source": "/pole-enerconseils-atlas.html",
+      "destination": "/enerconseils/atlas.html",
+      "permanent": true
+    },
+    {
+      "source": "/pole-enerconseils-conseil",
+      "destination": "/enerconseils/conseil.html",
+      "permanent": true
+    },
+    {
+      "source": "/pole-enerconseils-conseil.html",
+      "destination": "/enerconseils/conseil.html",
       "permanent": true
     },
     {
