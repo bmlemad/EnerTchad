@@ -1,0 +1,1 @@
+deploy-ping 2026-07-05T14:25:48Z — vague QA home (fix hx-kick)
