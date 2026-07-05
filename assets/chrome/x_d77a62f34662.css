@@ -1,0 +1,39 @@
+
+/* ── Finitions ultra-premium · vague 2 (transverses) ── */
+h1,h2,h3{text-wrap:balance}
+p,li{text-wrap:pretty}
+.stats .v,.panel .big,.big,[class^="kpi"],[class*=" kpi"]{font-variant-numeric:tabular-nums;font-feature-settings:"tnum"}
+::selection{background:rgba(232,195,106,.30);color:#fff}
+::-moz-selection{background:rgba(232,195,106,.30);color:#fff}
+a:focus-visible,button:focus-visible,summary:focus-visible,[tabindex="0"]:focus-visible{outline:2px solid var(--gold-l,#E8C36A);outline-offset:3px;border-radius:6px}
+/* ── Vague 1 · intertitres d'acte (dramaturgie investisseur) ── */
+.act-band{display:flex;align-items:center;gap:clamp(14px,2vw,26px);padding:clamp(40px,6vw,74px) 0 clamp(4px,1.2vw,14px)}
+.act-band .act-no{font-family:var(--fm);font-size:.8rem;font-weight:600;letter-spacing:.32em;color:var(--gold-l);white-space:nowrap;text-transform:uppercase}
+.act-band .act-ti{font-family:var(--fd);font-weight:700;font-size:clamp(1.5rem,3vw,2rem);letter-spacing:-.012em;color:#fff;white-space:nowrap;text-wrap:balance}
+.act-band .act-rule{flex:1;height:1px;background:linear-gradient(90deg,rgba(232,195,106,.55),rgba(232,195,106,.06) 72%,transparent);min-width:36px}
+@media(max-width:640px){.act-band{flex-wrap:wrap;gap:8px}.act-band .act-ti{white-space:normal}.act-band .act-rule{flex-basis:100%;order:3}}
+/* ── Vague 4 · charte dataviz unifiée (valeurs live tabulaires) ── */
+[id^="sc-"],[id^="kpi-"],#dash-pulse{font-variant-numeric:tabular-nums;font-feature-settings:"tnum"}
+.divc,.prj-card,.card-m{box-shadow:inset 0 1px 0 rgba(255,255,255,.04),0 14px 34px -16px rgba(0,0,0,.6)}
+html::before{content:"";position:fixed;inset:0;z-index:9998;pointer-events:none;opacity:.035;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E")}
+/* ── Micro-interactions · vague 3 (sûres, sans clipping) ── */
+.divc,.prj-card,.card-m{transition:transform .22s var(--ease),box-shadow .22s var(--ease),border-color .22s var(--ease)}
+.divc:hover,.prj-card:hover,.card-m:hover{transform:translateY(-3px);box-shadow:inset 0 1px 0 rgba(255,255,255,.05),0 24px 50px -18px rgba(0,0,0,.72)}
+@media(prefers-reduced-motion:reduce){.divc,.prj-card,.card-m{transition:none}.divc:hover,.prj-card:hover,.card-m:hover{transform:none}}
+/* ── Tuiles 2026 · modernisation (accent-aware · crête lumineuse · lift ressort) ── */
+.card-m,.divc,.prj-card,.dx-card{border-radius:18px;transition:transform .4s cubic-bezier(.16,1,.3,1),box-shadow .4s cubic-bezier(.16,1,.3,1),border-color .35s var(--ease)}
+.card-m{--tile-accent:var(--pac,#5AA7F0)}
+.card-m::before{background:linear-gradient(135deg,color-mix(in srgb,var(--tile-accent) 58%,transparent),transparent 52%)!important}
+.card-m::after{content:"";position:absolute;left:16px;right:16px;top:0;height:1px;background:linear-gradient(90deg,transparent,color-mix(in srgb,var(--tile-accent) 55%,rgba(255,255,255,.6)),transparent);opacity:0;transition:opacity .45s var(--ease);pointer-events:none}
+.card-m:hover{transform:translateY(-6px)!important;border-color:color-mix(in srgb,var(--tile-accent) 48%,var(--hair))!important;box-shadow:0 24px 52px -20px color-mix(in srgb,var(--tile-accent) 32%,#000),0 8px 20px -14px rgba(0,0,0,.7),inset 0 1px 0 rgba(255,255,255,.07)!important}
+.card-m:hover::after{opacity:.95}
+.card-m:hover::before{opacity:.75!important}
+@media(prefers-reduced-motion:reduce){.card-m,.divc,.prj-card,.dx-card{transition:none}.card-m::after{transition:none}}
+/* ── Hero · modernisation (Ken-Burns léger + progression des puces) ── */
+.hx-slide{transform:translateY(14px) scale(.985)}
+.hx-slide.on{transform:none}
+.hx-dots button{position:relative;overflow:hidden}
+.hx-dots button[aria-selected="true"]::after{content:"";position:absolute;inset:0;background:rgba(255,255,255,.42);transform:scaleX(0);transform-origin:left;animation:hxDotFill 7s linear}
+@keyframes hxDotFill{to{transform:scaleX(1)}}
+.hero:hover .hx-dots button[aria-selected="true"]::after,.hero:focus-within .hx-dots button[aria-selected="true"]::after{animation-play-state:paused}
+@media(prefers-reduced-motion:reduce){.hx-slide{transform:none}.hx-dots button[aria-selected="true"]::after{display:block;animation:hxDotFill 7s linear}.hero:hover .hx-dots button[aria-selected="true"]::after,.hero:focus-within .hx-dots button[aria-selected="true"]::after{animation-play-state:paused}@media(prefers-reduced-motion:reduce){.hx-dots button[aria-selected="true"]::after{display:none}}}

@@ -1,0 +1,37 @@
+
+.nav-search .sk-hint{display:none}@media(min-width:1400px){#navSearch{width:40px!important;padding:0!important;border-radius:999px!important}.nav-search .sk-hint{display:inline-flex;align-items:center;font-family:var(--fm);font-size:.66rem;letter-spacing:.04em;color:#9FB0C9;border:1px solid var(--hair);border-radius:5px;padding:2px 5px;line-height:1}}
+@media(max-width:1500px){.nav-cta .btn-p{padding:10px 16px;font-size:.84rem}.nav-links{gap:0}}
+
+.nav-item-mini .nav-trigger{padding:8px 7px;gap:3px;font-size:.84rem}.nav-item-ultra .nav-trigger{padding:8px 10px}@media(max-width:1460px){.brand-tx{max-width:175px}.brand-tx small{font-size:.58rem}}
+
+/* ultra méga-menus harmonisés */
+.nav-item-mini{position:relative}.mega-mini{position:absolute;top:100%;left:50%;transform:translate(-50%,-8px);min-width:300px;background:linear-gradient(180deg,rgba(11,17,31,.78),rgba(7,12,21,.88));-webkit-backdrop-filter:blur(28px) saturate(170%);backdrop-filter:blur(20px) saturate(150%);border:1px solid var(--hair);border-radius:16px;box-shadow:0 18px 50px rgba(0,0,0,.5);padding:12px;opacity:0;visibility:hidden;transition:opacity .25s var(--ease),transform .25s var(--ease),visibility .25s;z-index:56}.mega-mini::before{content:"";position:absolute;top:-12px;left:0;right:0;height:12px}.nav-item-mini:hover .mega-mini,.nav-item-mini.kbopen .mega-mini{opacity:1;visibility:visible;transform:translate(-50%,0)}@media(max-width:1240px) and (min-width:1001px){/* fusionné dans le mode burger ≤1240 */}
+
+.nav-item-ultra.kbopen .mega-ultra{opacity:1;visibility:visible;transform:translateY(0)}
+
+@media(max-width:480px){.brand-mk{width:46px!important;height:46px!important;padding:5px!important;border-radius:12px!important}.brand{gap:9px}.brand-tx{font-size:.92rem;max-width:150px}#navSearch{width:36px!important;height:36px!important}.nav-in{padding-left:14px;padding-right:14px}}
+.brand,.brand-mk{flex:none}.brand-tx{max-width:210px}
+
+@media(max-width:768px){#toTop{bottom:calc(64px + env(safe-area-inset-bottom))!important;right:14px}}
+/* nav plate façon vitrine B2C */
+.nav-flat{display:inline-flex;align-items:center;height:40px;padding:0 10px;border-radius:10px;color:rgba(245,247,250,.72);font-size:.84rem;text-decoration:none;transition:color .2s,background .2s;white-space:nowrap}.nav-flat:hover{color:#fff;background:rgba(255,255,255,.06)}@media(max-width:1240px){.nav-flat{display:none}}
+
+@media(max-width:560px){#oilticker{display:none!important}.brand small,.brand .b-sub{display:none}}
+/* ponts de sortie harmonisés */
+.sec-next{display:flex;justify-content:flex-end;margin-top:34px;padding-top:18px;border-top:1px solid var(--hair)}.sec-next a{font-family:var(--fm);font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;color:#A9B6CC;display:inline-flex;align-items:center;gap:8px;transition:color .2s;text-decoration:none}.sec-next a:hover{color:var(--gold-l)}.sec-next a::after{content:"→";color:var(--gold-l);transition:transform .2s}.sec-next a:hover::after{transform:translateX(4px)}
+
+section[id]{scroll-margin-top:96px}
+#nezBar a.nz-on{color:var(--gold-l);background:rgba(217,168,79,.12)}#nezBar a.nz-on svg{stroke:var(--gold-l)}
+@media(max-width:560px){.nav-cta .btn-p{display:none}}
+#nezProg{position:fixed;top:0;left:0;height:3px;width:0;z-index:120;background:linear-gradient(90deg,var(--blue-l),var(--gold-l));pointer-events:none;transition:width .12s linear}
+
+
+
+#nezBar{position:fixed;left:0;right:0;bottom:0;z-index:95;display:none;background:rgba(8,14,26,.96);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);border-top:1px solid var(--hair);padding:6px 4px calc(6px + env(safe-area-inset-bottom));pointer-events:none}
+#nezBar a{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;text-decoration:none;color:rgba(245,247,250,.65);font-family:var(--fm);font-size:.58rem;letter-spacing:.04em;padding:4px 2px;border-radius:8px}
+#nezBar a svg{width:19px;height:19px}
+#nezBar a:active,#nezBar a:hover{color:var(--gold-l)}
+@media(max-width:768px){#nezBar{display:flex}}
+@media print{#nezProg,#nezBar,}
+@media(prefers-reduced-motion:reduce){#nezProg{transition:none}}
+#eor{content-visibility:auto;contain-intrinsic-size:auto 6300px}#services-ep{content-visibility:auto;contain-intrinsic-size:auto 5500px}#sites{content-visibility:auto;contain-intrinsic-size:auto 10800px}#produits{content-visibility:auto;contain-intrinsic-size:auto 6300px}#reseau{content-visibility:auto;contain-intrinsic-size:auto 15400px}#impact{content-visibility:auto;contain-intrinsic-size:auto 4700px}#talents-tchad{content-visibility:auto;contain-intrinsic-size:auto 4500px}
