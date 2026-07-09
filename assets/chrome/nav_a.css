@@ -1,0 +1,94 @@
+/* ============================================================
+   EnerTchad — Navigation « Direction A » (chaîne de valeur)
+   Barre utilitaire + 5 rubriques · méga-menus à colonnes + tuile
+   S'appuie sur le chrome existant : #nav (fixed, .scrolled),
+   #navLinks (.nav-links, .open mobile), .nav-item/.nav-trigger
+   (accordéon mobile via c_ac04328f0f47.js), .nav-tog/.bz (burger).
+   ============================================================ */
+
+/* ---------- Barre utilitaire (desktop) ---------- */
+.nx-util{background:rgba(4,8,15,.92);border-bottom:1px solid var(--hair);
+  transition:margin-top .32s var(--ease),opacity .25s var(--ease)}
+.nx-util-in{display:flex;justify-content:flex-end;align-items:center;gap:20px;
+  height:38px;padding:0 var(--gut);max-width:var(--max);margin:0 auto;font-size:.78rem}
+.nx-util-in>a{color:var(--muted);text-decoration:none;transition:color .2s}
+.nx-util-in>a:hover{color:var(--gold-l)}
+.nx-util-in .nx-lang{font-family:var(--fm,ui-monospace,Menlo,monospace);letter-spacing:.06em;
+  border:1px solid var(--hair);border-radius:6px;padding:3px 9px;color:#B7C3D4}
+.nx-util-in .nx-lang b{color:var(--gold-l);font-weight:700}
+.nx-util-in .nx-lang:hover{border-color:var(--gold-l);color:var(--gold-l)}
+.nx-util-in .nx-invest{color:var(--gold-l);border:1px solid rgba(232,195,106,.42);
+  border-radius:8px;padding:5px 13px;font-weight:600;transition:background .2s,color .2s}
+.nx-util-in .nx-invest:hover{background:rgba(232,195,106,.14);color:var(--gold-l)}
+/* la barre se replie au défilement (nav compacte) */
+.nav.scrolled .nx-util{margin-top:-39px;opacity:0;pointer-events:none}
+
+/* ---------- Rubriques (desktop) ---------- */
+.nx .nav-links{flex:1;margin-left:14px}
+.nx .nav-trigger{font-size:.92rem;font-weight:600;padding:10px 14px}
+.nx .nav-trigger svg{width:11px;height:11px}
+
+/* ---------- Méga-menu (desktop) ---------- */
+.nx-mega{position:absolute;top:calc(100% + 10px);left:0;min-width:680px;max-width:min(90vw,780px);
+  background:linear-gradient(180deg,#0c1728,#0a1422);border:1px solid var(--hair);border-radius:18px;
+  box-shadow:0 44px 90px -34px rgba(0,0,0,.9);padding:20px;z-index:60;
+  opacity:0;visibility:hidden;transform:translateY(8px);
+  transition:opacity .22s var(--ease),transform .22s var(--ease),visibility .22s;
+  display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px 24px}
+@media(min-width:1241px){
+  .nav-item:hover .nx-mega,.nav-item.open .nx-mega,.nav-item:focus-within .nx-mega{
+    opacity:1;visibility:visible;transform:translateY(0)}
+  .nav-item:nth-last-child(-n+3) .nx-mega{left:auto;right:0}
+}
+.nx-col h4{font-family:var(--fm,ui-monospace,Menlo,monospace);font-size:.64rem;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--gold-l);margin:4px 10px 8px;padding-bottom:7px;
+  border-bottom:1px solid var(--hair);font-weight:600}
+.nx-col a{display:block;text-decoration:none;color:var(--cream);padding:8px 10px;border-radius:10px;
+  transition:background .15s}
+.nx-col a:hover{background:rgba(90,167,240,.1)}
+.nx-col a strong{display:block;font-size:.9rem;font-weight:600}
+.nx-col a em{display:block;font-style:normal;font-size:.74rem;color:var(--muted);margin-top:1px}
+.nx-feat{grid-column:3;grid-row:1/span 2;text-decoration:none;color:var(--cream);
+  border:1px solid var(--hair);border-radius:14px;padding:16px;display:flex;flex-direction:column;
+  justify-content:flex-end;min-height:158px;
+  background-image:linear-gradient(160deg,rgba(46,134,222,.18),rgba(6,11,20,.72));transition:border-color .2s}
+.nx-feat:hover{border-color:rgba(232,195,106,.45)}
+.nx-feat .tag{font-family:var(--fm,ui-monospace,Menlo,monospace);font-size:.6rem;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--gold-l)}
+.nx-feat strong{display:block;margin:7px 0 3px;font-size:1rem;font-family:var(--fd)}
+.nx-feat em{font-style:normal;font-size:.78rem;color:#C3CFDE;line-height:1.45;display:block}
+.nx-feat .arr{margin-top:12px;color:var(--gold-l);font-size:.84rem;font-weight:700}
+
+/* ---------- Recherche (pastille existante, restylée) ---------- */
+.nx .nav-search{background:none;border:1px solid var(--hair);color:var(--cream);width:40px;height:40px;
+  border-radius:10px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;
+  transition:border-color .2s,color .2s}
+.nx .nav-search:hover{border-color:var(--gold-l);color:var(--gold-l)}
+
+/* ---------- Liens utilitaires dans le tiroir (mobile) ---------- */
+.nx-util-m{display:none}
+
+/* ---------- Mobile ≤1240px ---------- */
+@media(max-width:1240px){
+  .nx-util{display:none}
+  .nx .nav-links{margin-left:0;min-height:calc(100dvh - var(--nav-h,72px));
+    max-height:calc(100dvh - var(--nav-h,72px));overflow-y:auto;overscroll-behavior:contain;
+    padding-bottom:120px;background:rgba(6,11,20,.99)}
+  .nx .nav-item{border-bottom:1px solid var(--hair)}
+  .nx .nav-trigger{font-family:var(--fd);font-weight:700;font-size:1.06rem;padding:16px 10px}
+  .nx-mega{position:static;min-width:0;max-width:none;display:none;opacity:1;visibility:visible;
+    transform:none;background:none;border:0;border-radius:0;box-shadow:none;padding:2px 10px 16px}
+  .nav-item.open .nx-mega{display:block;animation:nxIn .28s var(--ease)}
+  .nx-col h4{margin:12px 0 4px;padding-bottom:0;border-bottom:0}
+  .nx-col a{padding:9px 0}
+  .nx-col a strong{font-size:.98rem}
+  .nx-feat{display:none}
+  .nx-util-m{display:flex;flex-wrap:wrap;gap:10px 22px;padding:20px 10px 8px}
+  .nx-util-m a{color:var(--muted);text-decoration:none;font-size:.92rem;padding:4px 0}
+  .nx-util-m a.cta{width:100%;text-align:center;color:#04070d;background:var(--gold-l);
+    border-radius:11px;padding:13px;font-weight:700;font-size:1rem}
+}
+@keyframes nxIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){
+  .nx-util,.nx-mega,.nav-item.open .nx-mega{transition:none;animation:none}
+}
