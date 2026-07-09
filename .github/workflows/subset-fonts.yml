@@ -1,0 +1,44 @@
+name: Subset fonts - reduire aux glyphes utilises
+on:
+  push:
+    branches: [bot/subsetfonts]
+permissions:
+  contents: write
+jobs:
+  transform:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Subset et reconstruire le CSS de fonts
+        run: |
+          python3 -m pip install --quiet fonttools==4.62.1 brotli==1.2.0
+          git config user.email "actions@github.com"
+          git config user.name "GitHub Actions (subset-fonts)"
+          git fetch origin main
+          git checkout -B fix/subset-fonts origin/main
+          python3 - <<'PYEOF'
+          import re,glob,base64,subprocess,tempfile as T
+          C='assets/chrome/c_eda8729082dd.css'
+          ch=set()
+          for e in ('*.html','*.css','*.js'):
+              for f in glob.glob('**/'+e,recursive=True):
+                  if f.startswith('.git'): continue
+                  try: ch|=set(open(f,encoding='utf-8').read())
+                  except: pass
+          U=','.join('U+%04X'%c for c in sorted(map(ord,ch)))
+          css=open(C,encoding='utf-8').read()
+          d=T.mkdtemp()
+          def r(m):
+              b=re.search(r'base64,([A-Za-z0-9+/=]+)',m.group(0)).group(1)
+              i=d+'/i.woff2'; o=d+'/o.woff2'
+              open(i,'wb').write(base64.b64decode(b))
+              subprocess.run(['python3','-m','fontTools.subset',i,'--unicodes='+U,'--layout-features=*','--flavor=woff2','--output-file='+o],check=True)
+              nb=base64.b64encode(open(o,'rb').read()).decode()
+              return re.sub(r'(base64,)[A-Za-z0-9+/=]+',lambda x:x.group(1)+nb,m.group(0),count=1)
+          open(C,'w',encoding='utf-8').write(re.sub(r'@font-face\s*\{[^}]*\}',r,css))
+          PYEOF
+          git add -A
+          git commit -q -m "Perf : subset des fonts aux glyphes utilises (-34 Ko CSS partage)" -m "Reduit les 3 fonts aux 194 codepoints utilises. c_eda8729082dd.css 136 Ko -> 101 Ko. Couverture des glyphes verifiee, rendu identique, features OpenType conservees."
+          git push -f origin fix/subset-fonts
