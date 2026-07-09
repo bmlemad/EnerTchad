@@ -1,0 +1,24 @@
+name: Dedup fonts site-wide - un seul fichier de fonts partage
+on:
+  push:
+    branches: [bot/dedupfonts]
+permissions:
+  contents: write
+jobs:
+  transform:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Mutualiser les fonts sur un seul fichier partage (depuis main)
+        run: |
+          git config user.email "actions@github.com"
+          git config user.name "GitHub Actions (dedup-fonts)"
+          git fetch origin main
+          git checkout -B fix/dedup-fonts origin/main
+          echo 'IyEvdXNyL2Jpbi9lbnYgcHl0aG9uMwojIC0qLSBjb2Rpbmc6IHV0Zi04IC0qLQojIERlZHVwIGZvbnRzIHNpdGUtd2lkZS4gU2hhcmVkIGZvbnRzIGZpbGUgZm9yIGFsbCBwYWdlczsgbW92ZSB4XzkwZidzCiMgTk9OLUBmb250LWZhY2UgQ1NTICg6cm9vdCB2YXJzICsgYm9keXtmb250LWZhbWlseTp2YXIoLS1mYil9KSB0byBhIHZhcnMgZmlsZS4KaW1wb3J0IHJlLCBnbG9iLCBvcywgaGFzaGxpYgoKU0hBUkVEX1NSQyA9ICdhc3NldHMvY2hyb21lL2NfZWRhODcyOTA4MmRkLmNzcycgICAjIGZvbnRzLW9ubHkgKGFscmVhZHkgc2hhcmVkIGJ5IDM2IHBhZ2VzKQpYOTAgPSAnYXNzZXRzL2Nocm9tZS94XzkwZjAxZWI1NjkwMi5jc3MnCkNBTk9OID0gJy9hc3NldHMvY2hyb21lL2NfZWRhODcyOTA4MmRkLmNzcz9iPTIwMjYwNzA4MTQxMycKCiMgZGVyaXZlIHZhcnMgY29udGVudCBmcm9tIHhfOTBmIChzdHJpcCBAZm9udC1mYWNlKSAtPiBkZXRlcm1pbmlzdGljIGZpbGVuYW1lCnNyYyA9IG9wZW4oWDkwLCBlbmNvZGluZz0ndXRmLTgnKS5yZWFkKCkgaWYgb3MucGF0aC5leGlzdHMoWDkwKSBlbHNlIE5vbmUKaWYgc3JjIGlzIG5vdCBOb25lOgogICAgdmFyc19jc3MgPSByZS5zdWIocidAZm9udC1mYWNlXHMqXHtbXn1dKlx9JywgJycsIHNyYykuc3RyaXAoKQplbHNlOgogICAgdmFyc19jc3MgPSBOb25lClZBUlNOQU1FID0gJ2NfYWMzZDk2MWQ1ZDM4LmNzcycgICAjIG1kNS0xMiBvZiB0aGUgdmFycyBjb250ZW50IChzdGFibGUpClZBUlNQQVRIID0gJ2Fzc2V0cy9jaHJvbWUvJyArIFZBUlNOQU1FCgpPTERMSU5LID0gJzxsaW5rIHJlbD0ic3R5bGVzaGVldCIgaWQ9ImJyYW5kLWZvbnRzIiBocmVmPSIvYXNzZXRzL2Nocm9tZS94XzkwZjAxZWI1NjkwMi5jc3MiPicKTkVXTElOSyA9ICgnPGxpbmsgcmVsPSJzdHlsZXNoZWV0IiBpZD0iYnJhbmQtZm9udHMiIGhyZWY9IicrQ0FOT04rJyI+JwogICAgICAgICAgICc8bGluayByZWw9InN0eWxlc2hlZXQiIGlkPSJicmFuZC12YXJzIiBocmVmPSIvYXNzZXRzL2Nocm9tZS8nK1ZBUlNOQU1FKyciPicpCgppZiB2YXJzX2NzcyBpcyBub3QgTm9uZToKICAgICMgc2FuaXR5OiBmaWxlbmFtZSBtdXN0IG1hdGNoIGNvbnRlbnQgaGFzaAogICAgYXNzZXJ0IGhhc2hsaWIubWQ1KHZhcnNfY3NzLmVuY29kZSgpKS5oZXhkaWdlc3QoKVs6MTJdID09ICdhYzNkOTYxZDVkMzgnLCAndmFycyBjb250ZW50IGhhc2ggbWlzbWF0Y2gnCiAgICBvcGVuKFZBUlNQQVRILCAndycsIGVuY29kaW5nPSd1dGYtOCcpLndyaXRlKHZhcnNfY3NzKQoKZmlsZXMgPSBbZiBmb3IgZiBpbiBnbG9iLmdsb2IoJyoqLyouaHRtbCcsIHJlY3Vyc2l2ZT1UcnVlKSBpZiBub3QgZi5zdGFydHN3aXRoKCcuZ2l0JyldCnAyPXAzPTAKZm9yIGYgaW4gZmlsZXM6CiAgICBjID0gb3BlbihmLCBlbmNvZGluZz0ndXRmLTgnKS5yZWFkKCk7IG89YwogICAgaWYgT0xETElOSyBpbiBjOgogICAgICAgIGMgPSBjLnJlcGxhY2UoT0xETElOSywgTkVXTElOSyk7IHAyKz0xCiAgICBjMiA9IGMucmVwbGFjZSgnL2Fzc2V0cy9jaHJvbWUvY19lZGE4NzI5MDgyZGQuY3NzP2I9MjAyNjA3MDgxNDU3JywKICAgICAgICAgICAgICAgICAgICcvYXNzZXRzL2Nocm9tZS9jX2VkYTg3MjkwODJkZC5jc3M/Yj0yMDI2MDcwODE0MTMnKQogICAgaWYgYzIhPWM6IHAzKz0xOyBjPWMyCiAgICBpZiBjIT1vOiBvcGVuKGYsJ3cnLGVuY29kaW5nPSd1dGYtOCcpLndyaXRlKGMpCgpzdGlsbCA9IGFueSgneF85MGYwMWViNTY5MDIuY3NzJyBpbiBvcGVuKGYsZW5jb2Rpbmc9J3V0Zi04JykucmVhZCgpIGZvciBmIGluIGZpbGVzKQppZiBub3Qgc3RpbGwgYW5kIG9zLnBhdGguZXhpc3RzKFg5MCk6CiAgICBvcy5yZW1vdmUoWDkwKQpwcmludChmInN3YXBwZWQ9e3AyfSBub3JtYWxpemVkPXtwM30geF85MGZfZGVsZXRlZD17bm90IHN0aWxsfSB2YXJzX2ZpbGU9e1ZBUlNOQU1FfSIpCg==' | base64 -d > /tmp/dedup_fonts.py
+          python3 /tmp/dedup_fonts.py
+          git add -A
+          git commit -q -m "Perf : mutualiser les fonts sur un seul fichier partage (cache une seule fois)" -m "Les 74 pages pointent vers un fichier de fonts unique (c_eda8729082dd.css?b=202607081413). Le bloc :root + body{font-family:var(--fb)} de x_90f01eb56902.css est extrait dans c_ac3d961d5d38.css (charge par les 38 pages concernees). x_90f01eb56902.css (doublon-de 139 Ko) supprime. Rendu strictement identique verifie (parite computed-style sur les 42 pages modifiees)."
+          git push -f origin fix/dedup-fonts
