@@ -59,6 +59,15 @@
 .nx-feat em{font-style:normal;font-size:.78rem;color:#C3CFDE;line-height:1.45;display:block}
 .nx-feat .arr{margin-top:12px;color:var(--gold-l);font-size:.84rem;font-weight:700}
 
+/* ---------- Gabarit compact (héros sous la nav collée) : dégager la nav ---------- */
+body.nx-clear .hero{padding-top:72px}
+@media(max-width:1240px){body.nx-clear .hero{padding-top:48px}}
+
+/* ---------- Fil d'Ariane : dégager la barre utilitaire (desktop) ---------- */
+@media(min-width:1241px){
+  .hero .bcrumb{padding-top:calc(clamp(24px,3vw,32px) + 42px)}
+}
+
 /* ---------- Recherche (pastille existante, restylée) ---------- */
 .nx .nav-search{background:none;border:1px solid var(--hair);color:var(--cream);width:40px;height:40px;
   border-radius:10px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;
