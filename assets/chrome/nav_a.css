@@ -101,3 +101,10 @@ body.nx-clear .hero{padding-top:72px}
 @media(prefers-reduced-motion:reduce){
   .nx-util,.nx-mega,.nav-item.open .nx-mega{transition:none;animation:none}
 }
+
+/* QA mobile : cibles tactiles & anti-chevauchement */
+@media(max-width:1240px){
+  .nav-tog{width:44px;height:44px}
+  .nx-util-in>a,.nx-util-m>a{padding:12px 8px!important;display:inline-block}
+}
+body:has(#navLinks.open) #ckn,body:has(#navLinks.open) .lum-ctl,body:has(#navLinks.open) .scrollcue,body:has(#ckn.show) .lum-ctl{display:none!important}
