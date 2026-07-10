@@ -269,7 +269,7 @@ img,svg{max-width:100%}
     <button class="mx" onclick="closeModal()" aria-label="Fermer">×</button>
     <h3>Votre demande est prête ✓</h3>
     <p>Voici le récapitulatif de votre pré-commande. À l’ouverture commerciale, un conseiller EnerTchad vous recontactera avec un devis au prix ARSAT.</p>
-    <div class="msum" id="msum"></div>
+    <div class="msum" id="msum"></div><div id="mact" style="display:flex;flex-wrap:wrap;gap:10px;margin:16px 0 4px"><a id="mWa" href="#" target="_blank" rel="noopener" style="flex:1;min-width:170px;display:inline-flex;align-items:center;justify-content:center;gap:8px;background:#25D366;color:#08301b;font-weight:700;border-radius:999px;padding:13px 18px;text-decoration:none">Envoyer sur WhatsApp</a><a id="mMail" href="#" style="flex:1;min-width:140px;display:inline-flex;align-items:center;justify-content:center;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);color:#EAF0F8;border-radius:999px;padding:13px 18px;text-decoration:none">Par e-mail</a><button id="mCopy" type="button" onclick="navigator.clipboard.writeText(window.__qtxt||'').then(()=>{this.textContent='Copié ✓'})" style="min-width:100px;background:none;border:1px solid rgba(255,255,255,.2);color:#EAF0F8;border-radius:999px;padding:13px 16px;cursor:pointer;font-family:inherit;font-size:.85rem">Copier</button></div>
     <p style="font-size:.8rem">Cette interface est un aperçu — aucune commande ferme ni paiement n’est enregistré à ce stade (société en constitution).</p>
     <button class="mclose" onclick="closeModal()">Compris</button>
   </div>
@@ -344,6 +344,11 @@ function renderCart(){
 function checkout(){
  var keys=Object.keys(cart);if(!keys.length)return;
  document.getElementById('msum').innerHTML=keys.map(function(k){var p=P[k];return '<div><span>'+p[3]+'</span><span>'+cart[k].q+' × '+cart[k].pack+' · '+p[6]+'</span></div>';}).join('');
+ var txt='Demande de devis — Boutique EnerTchad\n\n'+keys.map(function(k){var p=P[k];return '\u2022 '+cart[k].q+' \u00d7 '+cart[k].pack+' \u2014 '+p[3]+' \u00b7 '+p[6];}).join('\n')+'\n\nMerci de me recontacter avec un devis au prix ARSAT.';
+ window.__qtxt=txt;
+ document.getElementById('mWa').href='https://wa.me/23599298696?text='+encodeURIComponent(txt);
+ document.getElementById('mMail').href='mailto:contact@enertchad.td?subject='+encodeURIComponent('Demande de devis \u2014 Boutique en ligne')+'&body='+encodeURIComponent(txt);
+ var cb=document.getElementById('mCopy');if(cb)cb.textContent='Copier';
  document.getElementById('modal').classList.add('on');
 }
 function closeModal(){document.getElementById('modal').classList.remove('on');}
