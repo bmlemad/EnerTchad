@@ -3,6 +3,11 @@
   "cleanUrls": true,
   "redirects": [
     {
+      "source": "/Configurateur_Service_Integre",
+      "destination": "/Configurateur_Service_Integre_v2",
+      "permanent": true
+    },
+    {
       "source": "/pole-amont",
       "destination": "/amont/",
       "permanent": true
