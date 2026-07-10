@@ -58,7 +58,7 @@ img,svg{max-width:100%}
 .pc{display:flex;flex-direction:column;background:var(--card);border:1px solid var(--hair);border-top:2px solid var(--ac,var(--gold));border-radius:16px;padding:18px 18px 16px;transition:transform .2s,border-color .2s}
 .pc:hover{transform:translateY(-3px);border-color:color-mix(in srgb,var(--ac,var(--gold)) 50%,var(--hair))}
 .pc-ic{width:42px;height:42px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;background:color-mix(in srgb,var(--ac,var(--gold)) 16%,transparent);color:var(--ac,var(--gold-l));margin-bottom:13px}
-.pc-cat{font-family:var(--fm);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ac,var(--gold-l));font-weight:600}
+.pc-cat{font-family:var(--fm);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:color-mix(in srgb,var(--ac,var(--gold-l)) 55%,#EAF0F8);font-weight:600}
 .pc-n{font-family:var(--fd);font-weight:700;font-size:1.08rem;color:#fff;line-height:1.2;margin:4px 0 0}
 .pc-d{font-size:.82rem;color:var(--mut);line-height:1.45;margin:7px 0 0;flex:1}
 .pc-cond{font-size:.78rem;color:var(--ink);margin:11px 0 0;display:flex;align-items:center;gap:7px}
@@ -324,7 +324,7 @@ function renderGrid(){
    +packSel
    +'<div class="pc-cond"><b>'+p[6]+'</b></div>'
    +'<button class="pc-more" onclick="openDetail('+id+')">Fiche produit →</button>'
-   +'<div class="pc-foot"><div class="stepper"><button onclick="bump('+id+',-1)" aria-label="Moins">−</button><input id="q'+id+'" type="number" min="1" value="1" inputmode="numeric"><button onclick="bump('+id+',1)" aria-label="Plus">+</button></div>'
+   +'<div class="pc-foot"><div class="stepper"><button onclick="bump('+id+',-1)" aria-label="Moins">−</button><input id="q'+id+'" type="number" min="1" value="1" inputmode="numeric" aria-label="Quantité"><button onclick="bump('+id+',1)" aria-label="Plus">+</button></div>'
    +'<button class="pc-add" onclick="add('+id+')">Ajouter</button></div></div>';
  }).join('');
  }function bump(id,d){var el=document.getElementById('q'+id);var v=Math.max(1,(parseInt(el.value,10)||1)+d);el.value=v;}
