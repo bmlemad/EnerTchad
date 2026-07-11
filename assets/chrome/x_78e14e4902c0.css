@@ -32,6 +32,6 @@ section[id]{scroll-margin-top:96px}
 #nezBar a svg{width:19px;height:19px}
 #nezBar a:active,#nezBar a:hover{color:var(--gold-l)}
 @media(max-width:768px){#nezBar{display:flex}}
-@media print{#nezProg,#nezBar,}
+@media print{#nezProg,#nezBar{display:none!important}}
 @media(prefers-reduced-motion:reduce){#nezProg{transition:none}}
-#eor{content-visibility:auto;contain-intrinsic-size:auto 6300px}#services-ep{content-visibility:auto;contain-intrinsic-size:auto 5500px}#sites{content-visibility:auto;contain-intrinsic-size:auto 10800px}#produits{content-visibility:auto;contain-intrinsic-size:auto 6300px}#reseau{content-visibility:auto;contain-intrinsic-size:auto 15400px}#impact{content-visibility:auto;contain-intrinsic-size:auto 4700px}#talents-tchad{content-visibility:auto;contain-intrinsic-size:auto 4500px}
+#eor{content-visibility:auto;contain-intrinsic-size:auto 7850px}#services-ep{content-visibility:auto;contain-intrinsic-size:auto 1900px}#sites{content-visibility:auto;contain-intrinsic-size:auto 5150px}#produits{content-visibility:auto;contain-intrinsic-size:auto 8600px}#reseau{content-visibility:auto;contain-intrinsic-size:auto 15500px}#impact{content-visibility:auto;contain-intrinsic-size:auto 8250px}#talents-tchad{content-visibility:auto;contain-intrinsic-size:auto 7200px}
