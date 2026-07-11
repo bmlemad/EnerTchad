@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 <channel>
-<title>EnerTchad — Carnets</title>
+<title>EnerTchad — Carnets &amp; communiqués</title>
 <link>https://enertchad-delta.vercel.app/carnets</link>
 <description>Le journal d’EnerTchad S.A. : récits, analyses et jalons de la construction de la chaîne pétrolière du Tchad — de la roche-mère à la pompe. Société en constitution : objectifs datés, non des actifs en exploitation.</description>
 <language>fr</language>
@@ -85,6 +85,27 @@
 <description>Comment EnerTchad conçoit son champ pétrolier numérique : l&#x27;architecture L1-L4 — capteurs de terrain, lakehouse hébergé au pays, IA de maintenance prédictive, jumeaux numériques — pensée pour les sites isolés du Tchad.</description>
 </item>
 <item>
+<title>Communiqué — Espace presse : kit média officiel et flux RSS des Carnets</title>
+<link>https://enertchad-delta.vercel.app/communiques#cp-006</link>
+<guid isPermaLink="true">https://enertchad-delta.vercel.app/communiques#cp-006</guid>
+<pubDate>Fri, 10 Jul 2026 08:00:00 +0000</pubDate>
+<description>EnerTchad met à disposition des rédactions un kit média officiel — logo, bannière, photos libres de droits, boilerplate FR/EN — et ouvre le flux RSS de ses Carnets pour suivre chaque publication.</description>
+</item>
+<item>
+<title>Communiqué — Avis anti-fraude : aucune souscription ouverte à ce jour</title>
+<link>https://enertchad-delta.vercel.app/communiques#cp-005</link>
+<guid isPermaLink="true">https://enertchad-delta.vercel.app/communiques#cp-005</guid>
+<pubDate>Fri, 10 Jul 2026 08:00:00 +0000</pubDate>
+<description>La société rappelle qu’aucun canal de paiement n’est ouvert : aucun versement en espèces, par Mobile Money ou via un « agent » ne peut être réclamé en son nom.</description>
+</item>
+<item>
+<title>Communiqué — Espace investisseurs : fiche PDF et dossier de présentation</title>
+<link>https://enertchad-delta.vercel.app/communiques#cp-004</link>
+<guid isPermaLink="true">https://enertchad-delta.vercel.app/communiques#cp-004</guid>
+<pubDate>Fri, 10 Jul 2026 08:00:00 +0000</pubDate>
+<description>Fiche investisseur PDF synthétique et dossier de présentation : thèse « de la roche-mère à la pompe », cascade 10 M → 1 Md → 20 Md FCFA, jalons datés et gouvernance.</description>
+</item>
+<item>
 <title>L’Atlas du secteur : la donnée qui dé-risque le baril tchadien</title>
 <link>https://enertchad-delta.vercel.app/journal-atlas-secteur</link>
 <guid isPermaLink="true">https://enertchad-delta.vercel.app/journal-atlas-secteur</guid>
@@ -106,6 +127,13 @@
 <description>Pourquoi EnerTchad veut faire rouler le brut par camion avant de le mettre au tube : hubs-dépôts, flotte HSE, économie du baril transporté et montée en charge progressive vers le pipeline.</description>
 </item>
 <item>
+<title>Communiqué — Ouverture du catalogue en ligne : carburants, EnerLub, NRJ+, EnerPro</title>
+<link>https://enertchad-delta.vercel.app/communiques#cp-003</link>
+<guid isPermaLink="true">https://enertchad-delta.vercel.app/communiques#cp-003</guid>
+<pubDate>Tue, 07 Jul 2026 08:00:00 +0000</pubDate>
+<description>La boutique en ligne présente l’offre cible d’EnerTchad : carburants au prix ARSAT, lubrifiants EnerLub, GPL NRJ+, services EnerPro. Offre cible d’une société en constitution.</description>
+</item>
+<item>
 <title>Natron, neem, coton : la chimie EOR sourcée au Tchad</title>
 <link>https://enertchad-delta.vercel.app/journal-chimie-eor-locale</link>
 <guid isPermaLink="true">https://enertchad-delta.vercel.app/journal-chimie-eor-locale</guid>
@@ -118,6 +146,13 @@
 <guid isPermaLink="true">https://enertchad-delta.vercel.app/journal-mini-raffinerie-modulaire</guid>
 <pubDate>Sun, 05 Jul 2026 08:00:00 +0000</pubDate>
 <description>Pourquoi EnerTchad mise sur des trains de raffinage de 500 à 2 000 b/j, montés sur skid, amovibles et pilotés par la donnée — plutôt que sur une grande raffinerie unique.</description>
+</item>
+<item>
+<title>Communiqué — Le site EnerTchad devient intégralement bilingue français-anglais</title>
+<link>https://enertchad-delta.vercel.app/communiques#cp-002</link>
+<guid isPermaLink="true">https://enertchad-delta.vercel.app/communiques#cp-002</guid>
+<pubDate>Sun, 05 Jul 2026 08:00:00 +0000</pubDate>
+<description>L’ensemble du site institutionnel — pôles, investisseurs, clients, FAQ, glossaire — est désormais disponible en anglais.</description>
 </item>
 <item>
 <title>Doba–Kribi : l’économie du tube de 1 070 km</title>
@@ -139,6 +174,13 @@
 <guid isPermaLink="true">https://enertchad-delta.vercel.app/journal-enigme-densite-brut</guid>
 <pubDate>Fri, 12 Jun 2026 08:00:00 +0000</pubDate>
 <description>Deux densités circulent pour le brut tchadien : la réponse tient en un mot — Ronier. L’acidité du Doba (TAN ~4,7) dicte la métallurgie des mini-raffineries.</description>
+</item>
+<item>
+<title>Communiqué — Mise en ligne du site institutionnel d’EnerTchad S.A.</title>
+<link>https://enertchad-delta.vercel.app/communiques#cp-001</link>
+<guid isPermaLink="true">https://enertchad-delta.vercel.app/communiques#cp-001</guid>
+<pubDate>Fri, 12 Jun 2026 08:00:00 +0000</pubDate>
+<description>EnerTchad S.A., société pétrolière intégrée à capitaux tchadiens en constitution, met en ligne son site institutionnel : la chaîne « de la roche-mère à la pompe », sept pôles, les cibles 2030.</description>
 </item>
 </channel>
 </rss>
