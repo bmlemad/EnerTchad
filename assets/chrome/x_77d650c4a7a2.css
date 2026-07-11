@@ -186,3 +186,6 @@ html.et-navd #preloader{display:none!important}
 .hpx .hpcard-l{flex:1 1 300px;margin:0}
 .hpx .hpcard-go{margin-top:0;margin-left:auto}
 @media(max-width:899px){.hpx .hpcard-body{flex-direction:column;align-items:stretch;gap:10px}.hpx .hpcard-go{margin-left:0}}
+
+/* héro : messages ancrés en haut (pas de trou sous le slogan) */
+.hx-slide{justify-content:flex-start}
