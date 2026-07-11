@@ -127,7 +127,7 @@ footer a{color:var(--muted);text-decoration:none}footer a:hover{color:var(--gold
  document.querySelectorAll('.v[data-count]').forEach(function(e){io.observe(e);});
 
  var GOLD='#F0CE82',BLUE='#5AA7F0',GREEN='#34D399',AMBER='#F2B45A',MUT='#7C8AA2',HAIR='rgba(90,167,240,.16)';
- if(window.Chart){
+ function drawCharts(){if(!window.Chart)return;
   Chart.defaults.color=MUT;Chart.defaults.font.family="ui-monospace,Menlo,monospace";Chart.defaults.font.size=11;
   new Chart(document.getElementById('capChart'),{type:'bar',
     data:{labels:['Fondateur','Court terme','Long terme · 2030'],datasets:[{label:'Capital (FCFA)',
@@ -141,6 +141,7 @@ footer a{color:var(--muted);text-decoration:none}footer a:hover{color:var(--gold
     options:{responsive:true,maintainAspectRatio:false,cutout:'58%',plugins:{legend:{position:'right',labels:{boxWidth:10,padding:8}},
       tooltip:{callbacks:{label:function(c){return c.label;}}}}}});
  }
+ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',drawCharts);}else{drawCharts();}
 
  var HZ=[
   {hz:'court',c:GREEN,k:'Horizon court · filières mûres',t:'Mise en route',items:['GPL domestique — substitution au bois-énergie','Engrais azotés (gaz→urée·NPK)','Intrants EOR (ASP) sur ressources locales','Hybridation gaz-solaire de nos sites']},
