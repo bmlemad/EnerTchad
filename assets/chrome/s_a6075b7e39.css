@@ -16,7 +16,7 @@ html{scroll-behavior:smooth;scroll-padding-top:84px;-webkit-text-size-adjust:100
 body{font-family:var(--fb);background:var(--navy);color:var(--cream);line-height:1.6;overflow-x:clip;-webkit-font-smoothing:antialiased}
 body::after{content:"";position:fixed;inset:0;z-index:-1;background:var(--navy);pointer-events:none}
 /* ── Preloader avec slogans ── */
-#preloader{position:fixed;inset:0;z-index:9999;background:radial-gradient(900px 600px at 50% 40%,rgba(46,134,222,.14),transparent 70%),var(--navy);display:grid;place-items:center;transition:opacity .7s var(--ease),visibility .7s}
+#preloader{position:fixed;inset:0;z-index:9999;background:radial-gradient(900px 600px at 50% 40%,rgba(46,134,222,.14),transparent 70%),var(--navy);display:grid;place-items:center;transition:opacity .7s var(--ease),visibility .7s;pointer-events:none}
 #preloader.done{opacity:0;visibility:hidden;pointer-events:none}
 .pl-inner{display:flex;flex-direction:column;align-items:center;text-align:center;padding:24px}
 .pl-logo{width:96px;height:96px;border-radius:22px;display:grid;place-items:center;padding:14px;background:linear-gradient(145deg,rgba(46,134,222,.16),rgba(217,168,79,.12));border:1px solid rgba(217,168,79,.28);box-shadow:0 12px 40px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.1);animation:plPulse 2.4s var(--ease) infinite}
