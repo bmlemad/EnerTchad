@@ -223,7 +223,7 @@ a.prj-pole{text-decoration:none;cursor:pointer;transition:opacity .2s,filter .2s
           </div>
         </div>
         <div style="margin-top:14px;padding:12px 16px;border-radius:12px;background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.25);display:flex;justify-content:space-between;align-items:center"><span style="font-size:.84rem;color:#34D399">Économie via pipeline</span><strong id="simSave" style="font-family:var(--fd);font-size:1.15rem;color:#34D399">58 %</strong></div>
-        <div style="font-size:.7rem;color:var(--muted);margin-top:10px;line-height:1.5">Estimations indicatives (corridor d’export national) ; les coûts réels dépendent du volume, de la fréquence et des facteurs saisonniers.</div>
+        <div style="font-size:.7rem;color:var(--muted);margin-top:10px;line-height:1.5">Estimations indicatives fondées sur des coûts unitaires sectoriels au baril·kilomètre (corridor d’export national) ; les coûts réels dépendent du volume, de la fréquence, du contrat et des facteurs saisonniers.</div>
       </div>
       <p style="font-family:var(--fm);font-size:.8rem;color:var(--muted);margin:14px 0 0">La supervision temps réel et les données d’infrastructure du corridor relèvent du secteur — voir l’<a href="/enerconseils/atlas#atl-infra" style="color:var(--inter-l);text-decoration:none;border-bottom:1px solid currentColor">Atlas</a>.</p>
     </div>
@@ -234,9 +234,9 @@ a.prj-pole{text-decoration:none;cursor:pointer;transition:opacity .2s,filter .2s
       if(vol&&dist){
         function calc(){
           var v=+vol.value,d=+dist.value;
-          var pc=Math.round(v*d*0.0001), tc=Math.round(v*d*0.00024);
+          var pc=Math.round(v*d*0.003), tc=Math.round(v*d*0.018);
           var pt=(d/120+4), tt=(d/55+6);
-          var pco=(v*d*1e-7), tco=pco*2.4;
+          var pco=(v*d*1.1e-6), tco=pco*7.5;
           document.getElementById('simVolV').textContent=nf(v)+' bbl';
           document.getElementById('simDistV').textContent=nf(d)+' km';
           document.getElementById('simPCost').textContent=nf(pc)+' $';
@@ -353,7 +353,7 @@ a.prj-pole{text-decoration:none;cursor:pointer;transition:opacity .2s,filter .2s
           <span class="kick" style="color:var(--inter-l)">Supervision SCADA · Corridor d’export national</span>
           <h3 style="font-size:1.25rem;color:#fff;margin:8px 0 0">Pilotage temps réel du transport.</h3>
         </div>
-        <span style="display:inline-flex;align-items:center;gap:8px;font-family:var(--fm);font-size:.72rem;color:var(--green-l)"><span id="scada-dot" style="width:8px;height:8px;border-radius:50%;background:var(--green-l);box-shadow:0 0 8px var(--green-l)"></span>LIVE · maj 8 s</span>
+        <span style="display:inline-flex;align-items:center;gap:8px;font-family:var(--fm);font-size:.72rem;color:var(--green-l)"><span id="scada-dot" style="width:8px;height:8px;border-radius:50%;background:var(--amber-l);box-shadow:0 0 8px var(--amber-l)"></span>DÉMO · valeurs simulées</span>
       </div>
 
       <!-- 4 indicateurs live -->
