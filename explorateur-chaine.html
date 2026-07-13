@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="theme-color" content="#070D18">
+<title>EnerTchad — Explorateur de la chaîne de valeur</title>
+<meta name="description" content="Parcourez la chaîne de valeur pétrolière intégrée d'EnerTchad — amont, intermédiaire, aval, pétrochimie et pôles supports — et voyez, maillon par maillon, la valeur retenue au Tchad.">
+<link rel="canonical" href="https://enertchad-delta.vercel.app/explorateur-chaine">
+<meta property="og:title" content="EnerTchad — Explorateur de la chaîne de valeur">
+<meta property="og:description" content="De la roche-mère à la pompe : les activités, les cibles chiffrées et la valeur retenue au pays, à chaque maillon.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://enertchad-delta.vercel.app/explorateur-chaine">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2064%2064%27%3E%3Crect%20width%3D%2764%27%20height%3D%2764%27%20rx%3D%2713%27%20fill%3D%27%23080E1A%27/%3E%3Cg%20transform%3D%27translate%2832%2032%29%20scale%280.27%29%20translate%28-100%20-100%29%27%3E%3Ccircle%20cx%3D%27100%27%20cy%3D%27100%27%20r%3D%2780%27%20fill%3D%27none%27%20stroke%3D%27%23C49A35%27%20stroke-width%3D%277%27/%3E%3C/g%3E%3C/svg%3E">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--navy:#070D18;--cream:#F5F7FA}
+html{-webkit-text-size-adjust:100%}
+body{min-height:100vh;background:radial-gradient(1200px 600px at 78% -8%,rgba(232,195,106,.10),transparent 60%),var(--navy);color:var(--cream);font-family:"Segoe UI",system-ui,-apple-system,sans-serif;line-height:1.5;-webkit-font-smoothing:antialiased}
+.mono{font-family:ui-monospace,"SF Mono",Menlo,monospace;letter-spacing:.14em}
+.wrap{max-width:72rem;margin:0 auto;padding:40px 20px}
+@media(min-width:640px){.wrap{padding:56px 32px}}
+.back{position:fixed;top:14px;left:14px;z-index:50;display:inline-flex;align-items:center;gap:7px;background:rgba(11,20,34,.88);color:#E8C36A;border:1px solid rgba(232,195,106,.4);border-radius:999px;padding:8px 16px;font:600 13px system-ui,sans-serif;text-decoration:none;backdrop-filter:blur(8px)}
+.back:hover{border-color:#E8C36A}
+header.hd{max-width:48rem;margin-bottom:40px}
+.kick{font-size:.66rem;text-transform:uppercase;color:#E8C36A}
+h1{margin-top:12px;font:700 clamp(2.25rem,6vw,3rem)/1.03 Georgia,"Times New Roman",serif;letter-spacing:-.02em}
+h1 .grad{background:linear-gradient(100deg,#E8C36A,#5AA7F0 60%,#34D399);-webkit-background-clip:text;background-clip:text;color:transparent}
+.intro{margin-top:16px;font-size:1rem;color:rgba(245,247,250,.72);line-height:1.65}
+.chips{margin-top:20px;display:flex;flex-wrap:wrap;gap:10px}
+.chip{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.02);border-radius:8px;padding:8px 12px;font-size:.75rem}
+.chip strong{color:#fff;font-weight:600}
+.chip span{color:rgba(245,247,250,.6)}
+.seclbl{font-size:.6rem;text-transform:uppercase;color:rgba(245,247,250,.45)}
+.selector{margin-bottom:32px}
+.chain{margin-top:12px;display:flex;flex-direction:column;gap:8px}
+@media(min-width:640px){.chain{flex-direction:row;align-items:stretch;gap:0}}
+.link{display:flex;align-items:center}
+@media(min-width:640px){.link{flex:1}}
+.node{width:100%;text-align:left;cursor:pointer;border-radius:12px;padding:14px 16px;border:1px solid rgba(255,255,255,.11);background:rgba(255,255,255,.015);color:inherit;transition:border-color .18s,background .18s,box-shadow .18s;font-family:inherit}
+.node .row{display:flex;align-items:center;gap:10px}
+.node .dot{width:9px;height:9px;border-radius:50%;flex:none}
+.node .num{font-size:.62rem}
+.node .nm{margin-top:6px;font-size:.98rem;font-weight:600;color:rgba(245,247,250,.82)}
+.node .sb{font-size:.72rem;color:rgba(245,247,250,.5)}
+.node[aria-selected=true] .nm{color:#fff}
+.arrow{margin:0 4px;color:rgba(245,247,250,.3);flex:none;display:none}
+@media(min-width:640px){.arrow{display:block}}
+.panel{display:grid;grid-template-columns:1fr;gap:1px;overflow:hidden;border-radius:18px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.06)}
+@media(min-width:768px){.panel{grid-template-columns:repeat(5,1fr)}}
+.pane-l{padding:24px;background:rgba(9,14,24,.72)}
+.pane-r{padding:24px;background:rgba(12,18,30,.72)}
+@media(min-width:640px){.pane-l,.pane-r{padding:32px}}
+@media(min-width:768px){.pane-l{grid-column:span 3}.pane-r{grid-column:span 2}}
+.idrow{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 12px}
+.idrow .num{font-size:.875rem}
+.idrow h2{font:700 clamp(1.5rem,4vw,1.875rem) Georgia,serif;letter-spacing:-.01em}
+.idrow .sub{font-size:.875rem;color:rgba(245,247,250,.55)}
+.tagline{margin-top:8px;font-size:1.125rem;font-family:Georgia,serif;font-style:italic}
+.acts{margin-top:24px}
+.acts ul{margin-top:12px;list-style:none;display:flex;flex-direction:column;gap:10px}
+.acts li{display:flex;gap:12px;font-size:.92rem;color:rgba(245,247,250,.85)}
+.acts li .d{flex:none}
+.kpis{margin-top:12px;display:flex;flex-direction:column;gap:12px}
+.kpi{border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.02);border-radius:12px;padding:12px 16px}
+.kpi .v{font:700 1.25rem Georgia,serif;color:#fff}
+.kpi .l{font-size:.72rem;color:rgba(245,247,250,.6)}
+.value{margin-top:20px;border-radius:12px;padding:16px}
+.value p{margin-top:6px;font-size:.9rem;line-height:1.65;color:rgba(245,247,250,.9)}
+.trans{margin-top:32px}
+.grid4{margin-top:12px;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+@media(min-width:640px){.grid4{grid-template-columns:repeat(4,1fr)}}
+.sc{border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.015);border-radius:12px;padding:14px 16px}
+.sc .row{display:flex;align-items:center;gap:8px}
+.sc .dot{width:7px;height:7px;border-radius:50%;flex:none}
+.sc .nm{font-size:.9rem;font-weight:600;color:#fff}
+.sc .sb{margin-top:4px;font-size:.72rem;color:rgba(245,247,250,.55)}
+footer.ft{margin-top:40px;display:flex;flex-wrap:wrap;align-items:center;gap:4px 12px;font-size:.72rem;color:rgba(245,247,250,.4)}
+</style>
+</head>
+<body>
+<a href="/index" class="back">← Site EnerTchad</a>
+<div class="wrap">
+  <header class="hd">
+    <span class="mono kick">EnerTchad · Chaîne intégrée</span>
+    <h1>De la roche-mère <span class="grad">à la pompe</span>.</h1>
+    <p class="intro">Cliquez chaque maillon pour voir les activités, les cibles chiffrées et la valeur retenue au pays. Un modèle 100&nbsp;% intégré, pensé et opéré au Tchad.</p>
+    <div class="chips">
+      <span class="chip"><strong>100 %</strong><span>capitaux &amp; talents tchadiens</span></span>
+      <span class="chip"><strong>7 pôles</strong><span>une société intégrée</span></span>
+      <span class="chip"><strong>Société en constitution</strong><span>cibles datées</span></span>
+    </div>
+  </header>
+
+  <div class="selector">
+    <span class="mono seclbl">La chaîne · 4 maillons</span>
+    <div class="chain" id="chain" role="tablist" aria-label="Maillons de la chaîne de valeur"></div>
+  </div>
+
+  <section class="panel" id="panel" role="tabpanel" aria-live="polite">
+    <div class="pane-l">
+      <div class="idrow">
+        <span class="mono num" id="p-num"></span>
+        <h2 id="p-name"></h2>
+        <span class="sub" id="p-sub"></span>
+      </div>
+      <p class="tagline" id="p-tag"></p>
+      <div class="acts">
+        <span class="mono seclbl">Activités</span>
+        <ul id="p-acts"></ul>
+      </div>
+    </div>
+    <div class="pane-r">
+      <span class="mono seclbl">Cibles</span>
+      <div class="kpis" id="p-kpis"></div>
+      <div class="value" id="p-value">
+        <span class="mono" style="font-size:.58rem;text-transform:uppercase" id="p-vlbl">Valeur retenue au pays</span>
+        <p id="p-vtext"></p>
+      </div>
+    </div>
+  </section>
+
+  <div class="trans">
+    <span class="mono seclbl">Capacités transversales · au service de toute la chaîne</span>
+    <div class="grid4" id="support"></div>
+  </div>
+
+  <footer class="ft">
+    <span>EnerTchad S.A. — société en constitution.</span>
+    <span>Les capacités et chiffres sont des cibles datées, non des actifs en exploitation.</span>
+  </footer>
+</div>
+
+<script>
+var STAGES=[
+{id:"amont",n:"01",name:"Amont",sub:"Exploration-Production",tagline:"Extraire davantage de chaque gisement",accent:"#E8C36A",
+activities:["Récupération assistée (EOR) sur champs matures","Relance des blocs marginaux","Services parapétroliers intégrés (OFS)","Caractérisation sismique — bassins de Doba & Bongor"],
+kpis:[["+8–17 %","OOIP additionnel visé (EOR)"],["21","blocs libres ciblés"],["ASP","intrants locaux (natron, neem)"]],
+value:"Chaque baril récupéré au pays, c’est de la ressource qui cesse de s’évaporer à l’export."},
+{id:"inter",n:"02",name:"Intermédiaire",sub:"Transport & stockage",tagline:"Le maillon qui fait circuler la valeur",accent:"#5AA7F0",
+activities:["Mobilisation du corridor d’export","Réserve stratégique distribuée","Intégrité pipeline — ILI / smart pigging, détection de fuite","Transport par camion HSE"],
+kpis:[["1 070 km","corridor d’export visé"],["30 j","réserve distribuée visée"],["24/7","supervision SCADA"]],
+value:"Une réserve répartie sur le territoire amortit les ruptures — la sécurité d’approvisionnement reste nationale."},
+{id:"aval",n:"03",name:"Aval",sub:"Raffinage & distribution",tagline:"Rapprocher l’énergie du citoyen",accent:"#F2B45A",
+activities:["Mini-raffineries modulaires pilotées par IA","Réseau « Le Relais » & Mobile Stations™","Distribution au prix ARSAT, partout","Gasoil, essence, GPL, Jet A-1, lubrifiants, bitume"],
+kpis:[["500–2 000 b/j","mini-raffinerie modulaire"],["12","stations cible"],["Prix ARSAT","même en zones isolées"]],
+value:"Raffiner et distribuer au pays : du pouvoir d’achat rendu aux ménages, des emplois créés localement."},
+{id:"chimie",n:"04",name:"Pétrochimie",sub:"Extension chimie",tagline:"Monter d’un cran dans la valeur",accent:"#D889BE",
+activities:["Valorisation du gaz et du brut tchadiens","Engrais azotés · Méthanol · GPL","Soufre · Bitume · Polymères","Chimie EOR à intrants locaux"],
+kpis:[["2026–2030+","horizon des cibles"],["Chimie EOR","intrants locaux"],["Valeur ajoutée","produits finis, au pays"]],
+value:"Transformer la molécule au Tchad plutôt que d’exporter le brut : la valeur la plus haute reste au pays."}
+];
+var SUPPORT=[["GreenTech","Durabilité","#34D399"],["EnerTech","Technologies · IA, OT/IT","#7E8AD9"],["EnerTalents","Capital humain","#9B86D6"],["EnerConseils","Conseil · Atlas","#1FA496"]];
+
+var active=0;
+function el(t,c){var e=document.createElement(t);if(c)e.className=c;return e;}
+
+var chain=document.getElementById("chain");
+STAGES.forEach(function(st,i){
+  var link=el("div","link");
+  var b=el("button","node");
+  b.type="button";b.setAttribute("role","tab");b.dataset.i=i;
+  b.innerHTML='<div class="row"><span class="dot" style="background:'+st.accent+'"></span><span class="mono num" style="color:'+st.accent+'">'+st.n+'</span></div>'+
+    '<div class="nm">'+st.name+'</div><div class="sb">'+st.sub+'</div>';
+  b.addEventListener("click",function(){select(i);});
+  link.appendChild(b);
+  if(i<STAGES.length-1){var a=el("span","arrow");a.textContent="→";a.setAttribute("aria-hidden","true");link.appendChild(a);}
+  chain.appendChild(link);
+});
+
+var support=document.getElementById("support");
+SUPPORT.forEach(function(p){
+  var c=el("div","sc");
+  c.innerHTML='<div class="row"><span class="dot" style="background:'+p[2]+'"></span><span class="nm">'+p[0]+'</span></div><div class="sb">'+p[1]+'</div>';
+  support.appendChild(c);
+});
+
+function select(i){
+  active=i;var s=STAGES[i];
+  var nodes=chain.querySelectorAll(".node");
+  nodes.forEach(function(b,j){
+    var st=STAGES[j],on=j===i;
+    b.setAttribute("aria-selected",on?"true":"false");
+    b.style.border="1px solid "+(on?st.accent:"rgba(255,255,255,.11)");
+    b.style.background=on?"linear-gradient(160deg,"+st.accent+"22,rgba(255,255,255,.02))":"rgba(255,255,255,.015)";
+    b.style.boxShadow=on?"0 10px 30px -18px "+st.accent:"none";
+    var dot=b.querySelector(".dot");dot.style.boxShadow=on?"0 0 10px "+st.accent:"none";
+  });
+  document.getElementById("p-num").textContent=s.n;document.getElementById("p-num").style.color=s.accent;
+  document.getElementById("p-name").textContent=s.name;
+  document.getElementById("p-sub").textContent="· "+s.sub;
+  var tag=document.getElementById("p-tag");tag.textContent=s.tagline;tag.style.color=s.accent;
+  var acts=document.getElementById("p-acts");acts.innerHTML="";
+  s.activities.forEach(function(a){var li=el("li");li.innerHTML='<span class="d" style="color:'+s.accent+'">—</span><span>'+a+'</span>';acts.appendChild(li);});
+  var kp=document.getElementById("p-kpis");kp.innerHTML="";
+  s.kpis.forEach(function(k){var d=el("div","kpi");d.innerHTML='<div class="v">'+k[0]+'</div><div class="l">'+k[1]+'</div>';kp.appendChild(d);});
+  var val=document.getElementById("p-value");val.style.borderLeft="3px solid "+s.accent;val.style.background=s.accent+"12";
+  document.getElementById("p-vlbl").style.color=s.accent;
+  document.getElementById("p-vtext").textContent=s.value;
+}
+select(0);
+</script>
+</body>
+</html>
