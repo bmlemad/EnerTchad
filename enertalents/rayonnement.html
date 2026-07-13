@@ -132,13 +132,19 @@ a.prj-pole{text-decoration:none;cursor:pointer;transition:opacity .2s,filter .2s
 <script>
 /* Bandeau produits EnerTchad : positionnement sous la nav + décalage du hero. */
 (function(){
+  /* Valeurs invariantes au scroll (hauteur nav/ticker constantes) : on n'écrit
+     dans le DOM que si la valeur change, et le scroll est throttlé en rAF — plus
+     de reflow forcé du hero à chaque tick (fluidité mobile + réactivité des clics). */
+  var _t=-1,_p=-1,_raf=0;
   function place(){
     const nav=document.getElementById('nav'),tk=document.getElementById('oilticker'),hero=document.querySelector('.hero');
     if(!nav||!tk)return;
-    tk.style.top=nav.getBoundingClientRect().height+'px';
-    if(hero){const th=tk.getBoundingClientRect().height;hero.style.paddingTop=(150+th)+'px';}
+    var nh=Math.round(nav.getBoundingClientRect().height);
+    if(nh!==_t){_t=nh;tk.style.top=nh+'px';}
+    if(hero){var pt=150+Math.round(tk.getBoundingClientRect().height);if(pt!==_p){_p=pt;hero.style.paddingTop=pt+'px';}}
   }
-  place();window.addEventListener("resize",place);window.addEventListener("scroll",place,{passive:true});
+  function onScroll(){if(!_raf){_raf=requestAnimationFrame(function(){_raf=0;place();});}}
+  place();window.addEventListener("resize",place);window.addEventListener("scroll",onScroll,{passive:true});
 })();
 </script>
 
