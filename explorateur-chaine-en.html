@@ -1,20 +1,20 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="index,follow,max-image-preview:large">
 <meta name="theme-color" content="#070D18">
-<title>EnerTchad — Explorateur de la chaîne de valeur</title>
-<meta name="description" content="Parcourez la chaîne de valeur pétrolière intégrée d'EnerTchad — amont, intermédiaire, aval, pétrochimie et pôles supports — et voyez, maillon par maillon, la valeur retenue au Tchad.">
-<link rel="canonical" href="https://enertchad-delta.vercel.app/explorateur-chaine">
+<title>EnerTchad — Value-chain explorer</title>
+<meta name="description" content="Explore EnerTchad's integrated oil value chain — upstream, midstream, downstream, petrochemicals and support divisions — and see, link by link, the value retained in Chad.">
+<link rel="canonical" href="https://enertchad-delta.vercel.app/explorateur-chaine-en">
 <link rel="alternate" hreflang="fr" href="https://enertchad-delta.vercel.app/explorateur-chaine">
 <link rel="alternate" hreflang="en" href="https://enertchad-delta.vercel.app/explorateur-chaine-en">
 <link rel="alternate" hreflang="x-default" href="https://enertchad-delta.vercel.app/explorateur-chaine">
-<meta property="og:title" content="EnerTchad — Explorateur de la chaîne de valeur">
-<meta property="og:description" content="De la roche-mère à la pompe : les activités, les cibles chiffrées et la valeur retenue au pays, à chaque maillon.">
+<meta property="og:title" content="EnerTchad — Value-chain explorer">
+<meta property="og:description" content="From source rock to the pump: the activities, quantified targets and the value retained at home, at every link.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://enertchad-delta.vercel.app/explorateur-chaine">
+<meta property="og:url" content="https://enertchad-delta.vercel.app/explorateur-chaine-en">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2064%2064%27%3E%3Crect%20width%3D%2764%27%20height%3D%2764%27%20rx%3D%2713%27%20fill%3D%27%23080E1A%27/%3E%3Cg%20transform%3D%27translate%2832%2032%29%20scale%280.27%29%20translate%28-100%20-100%29%27%3E%3Ccircle%20cx%3D%27100%27%20cy%3D%27100%27%20r%3D%2780%27%20fill%3D%27none%27%20stroke%3D%27%23C49A35%27%20stroke-width%3D%277%27/%3E%3C/g%3E%3C/svg%3E">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
@@ -86,24 +86,24 @@ footer.ft{margin-top:40px;display:flex;flex-wrap:wrap;align-items:center;gap:4px
 </head>
 <body>
 <div class="topnav">
-  <a href="/index" class="back">← Site EnerTchad</a>
-  <a href="/explorateur-chaine-en" class="lang" hreflang="en" title="English version">EN</a>
+  <a href="/index-en" class="back">← EnerTchad site</a>
+  <a href="/explorateur-chaine" class="lang" hreflang="fr" title="Version française">FR</a>
 </div>
 <div class="wrap">
   <header class="hd">
-    <span class="mono kick">EnerTchad · Chaîne intégrée</span>
-    <h1>De la roche-mère <span class="grad">à la pompe</span>.</h1>
-    <p class="intro">Cliquez chaque maillon pour voir les activités, les cibles chiffrées et la valeur retenue au pays. Un modèle 100&nbsp;% intégré, pensé et opéré au Tchad.</p>
+    <span class="mono kick">EnerTchad · Integrated value chain</span>
+    <h1>From source rock <span class="grad">to the pump</span>.</h1>
+    <p class="intro">Click each link to see the activities, the quantified targets and the value retained at home. A 100&nbsp;% integrated model, designed and operated in Chad.</p>
     <div class="chips">
-      <span class="chip"><strong>100 %</strong><span>capitaux &amp; talents tchadiens</span></span>
-      <span class="chip"><strong>7 pôles</strong><span>une société intégrée</span></span>
-      <span class="chip"><strong>Société en constitution</strong><span>cibles datées</span></span>
+      <span class="chip"><strong>100 %</strong><span>Chadian capital &amp; talent</span></span>
+      <span class="chip"><strong>7 divisions</strong><span>one integrated company</span></span>
+      <span class="chip"><strong>Company in formation</strong><span>dated targets</span></span>
     </div>
   </header>
 
   <div class="selector">
-    <span class="mono seclbl">La chaîne · 4 maillons</span>
-    <div class="chain" id="chain" role="tablist" aria-label="Maillons de la chaîne de valeur"></div>
+    <span class="mono seclbl">The chain · 4 links</span>
+    <div class="chain" id="chain" role="tablist" aria-label="Value-chain links"></div>
   </div>
 
   <section class="panel" id="panel" role="tabpanel" aria-live="polite">
@@ -115,51 +115,51 @@ footer.ft{margin-top:40px;display:flex;flex-wrap:wrap;align-items:center;gap:4px
       </div>
       <p class="tagline" id="p-tag"></p>
       <div class="acts">
-        <span class="mono seclbl">Activités</span>
+        <span class="mono seclbl">Activities</span>
         <ul id="p-acts"></ul>
       </div>
     </div>
     <div class="pane-r">
-      <span class="mono seclbl">Cibles</span>
+      <span class="mono seclbl">Targets</span>
       <div class="kpis" id="p-kpis"></div>
       <div class="value" id="p-value">
-        <span class="mono" style="font-size:.58rem;text-transform:uppercase" id="p-vlbl">Valeur retenue au pays</span>
+        <span class="mono" style="font-size:.58rem;text-transform:uppercase" id="p-vlbl">Value retained at home</span>
         <p id="p-vtext"></p>
       </div>
     </div>
   </section>
 
   <div class="trans">
-    <span class="mono seclbl">Capacités transversales · au service de toute la chaîne</span>
+    <span class="mono seclbl">Cross-cutting capabilities · serving the whole chain</span>
     <div class="grid4" id="support"></div>
   </div>
 
   <footer class="ft">
-    <span>EnerTchad S.A. — société en constitution.</span>
-    <span>Les capacités et chiffres sont des cibles datées, non des actifs en exploitation.</span>
+    <span>EnerTchad S.A. — company in formation.</span>
+    <span>Capabilities and figures are dated targets, not assets in operation.</span>
   </footer>
 </div>
 
 <script>
 var STAGES=[
-{id:"amont",n:"01",name:"Amont",sub:"Exploration-Production",tagline:"Extraire davantage de chaque gisement",accent:"#E8C36A",
-activities:["Récupération assistée (EOR) sur champs matures","Relance des blocs marginaux","Services parapétroliers intégrés (OFS)","Caractérisation sismique — bassins de Doba & Bongor"],
-kpis:[["+8–17 %","OOIP additionnel visé (EOR)"],["21","blocs libres ciblés"],["ASP","intrants locaux (natron, neem)"]],
-value:"Chaque baril récupéré au pays, c’est de la ressource qui cesse de s’évaporer à l’export."},
-{id:"inter",n:"02",name:"Intermédiaire",sub:"Transport & stockage",tagline:"Le maillon qui fait circuler la valeur",accent:"#5AA7F0",
-activities:["Mobilisation du corridor d’export","Réserve stratégique distribuée","Intégrité pipeline — ILI / smart pigging, détection de fuite","Transport par camion HSE"],
-kpis:[["1 070 km","corridor d’export visé"],["30 j","réserve distribuée visée"],["24/7","supervision SCADA"]],
-value:"Une réserve répartie sur le territoire amortit les ruptures — la sécurité d’approvisionnement reste nationale."},
-{id:"aval",n:"03",name:"Aval",sub:"Raffinage & distribution",tagline:"Rapprocher l’énergie du citoyen",accent:"#F2B45A",
-activities:["Mini-raffineries modulaires pilotées par IA","Réseau « Le Relais » & Mobile Stations™","Distribution au prix ARSAT, partout","Gasoil, essence, GPL, Jet A-1, lubrifiants, bitume"],
-kpis:[["500–2 000 b/j","mini-raffinerie modulaire"],["12","stations cible"],["Prix ARSAT","même en zones isolées"]],
-value:"Raffiner et distribuer au pays : du pouvoir d’achat rendu aux ménages, des emplois créés localement."},
-{id:"chimie",n:"04",name:"Pétrochimie",sub:"Extension chimie",tagline:"Monter d’un cran dans la valeur",accent:"#D889BE",
-activities:["Valorisation du gaz et du brut tchadiens","Engrais azotés · Méthanol · GPL","Soufre · Bitume · Polymères","Chimie EOR à intrants locaux"],
-kpis:[["2026–2030+","horizon des cibles"],["Chimie EOR","intrants locaux"],["Valeur ajoutée","produits finis, au pays"]],
-value:"Transformer la molécule au Tchad plutôt que d’exporter le brut : la valeur la plus haute reste au pays."}
+{id:"upstream",n:"01",name:"Upstream",sub:"Exploration-Production",tagline:"Extract more from every field",accent:"#E8C36A",
+activities:["Enhanced oil recovery (EOR) on mature fields","Revival of marginal blocks","Integrated oilfield services (OFS)","Seismic characterisation — Doba & Bongor basins"],
+kpis:[["+8–17 %","additional OOIP targeted (EOR)"],["21","open blocks targeted"],["ASP","local inputs (natron, neem)"]],
+value:"Every barrel recovered at home is resource that stops evaporating to export."},
+{id:"midstream",n:"02",name:"Midstream",sub:"Transport & storage",tagline:"The link that keeps value moving",accent:"#5AA7F0",
+activities:["Mobilising the export corridor","Distributed strategic reserve","Pipeline integrity — ILI / smart pigging, leak detection","HSE trucking"],
+kpis:[["1,070 km","export corridor targeted"],["30 d","distributed reserve targeted"],["24/7","SCADA supervision"]],
+value:"A reserve spread across the territory cushions disruptions — security of supply stays national."},
+{id:"downstream",n:"03",name:"Downstream",sub:"Refining & distribution",tagline:"Bringing energy closer to citizens",accent:"#F2B45A",
+activities:["AI-piloted modular mini-refineries","« Le Relais » network & Mobile Stations™","Distribution at the ARSAT price, everywhere","Diesel, gasoline, LPG, Jet A-1, lubricants, bitumen"],
+kpis:[["500–2,000 b/d","modular mini-refinery"],["12","target stations"],["ARSAT price","even in remote areas"]],
+value:"Refining and distributing at home: purchasing power returned to households, jobs created locally."},
+{id:"petro",n:"04",name:"Petrochemicals",sub:"Chemical extension",tagline:"Moving one rung up in value",accent:"#D889BE",
+activities:["Valorising Chadian gas and crude","Nitrogen fertilisers · Methanol · LPG","Sulphur · Bitumen · Polymers","EOR chemistry with local inputs"],
+kpis:[["2026–2030+","target horizon"],["EOR chemistry","local inputs"],["Added value","finished products, at home"]],
+value:"Transforming the molecule in Chad rather than exporting crude: the highest value stays home."}
 ];
-var SUPPORT=[["GreenTech","Durabilité","#34D399"],["EnerTech","Technologies · IA, OT/IT","#7E8AD9"],["EnerTalents","Capital humain","#9B86D6"],["EnerConseils","Conseil · Atlas","#1FA496"]];
+var SUPPORT=[["GreenTech","Sustainability","#34D399"],["EnerTech","Technology · AI, OT/IT","#7E8AD9"],["EnerTalents","Human capital","#9B86D6"],["EnerConseils","Advisory · Atlas","#1FA496"]];
 
 var active=0;
 function el(t,c){var e=document.createElement(t);if(c)e.className=c;return e;}
