@@ -45,3 +45,14 @@ try{(function(){
     }
   });
 })();}catch(_e){}
+
+/* Bascule linguistique directe : si la page declare un equivalent EN
+   (hreflang), le bouton FR-EN y mene directement plutot qu'au portail /en. */
+try{(function(){
+  if((document.documentElement.getAttribute('lang')||'').slice(0,2)!=='fr')return;
+  var alt=document.querySelector('link[rel="alternate"][hreflang="en"]');if(!alt)return;
+  var href=alt.getAttribute('href');if(!href)return;
+  href=href.replace(/^https?:\/\/[^\/]+/,'')||'/';
+  if(href===location.pathname)return;
+  document.querySelectorAll('a.nx-lang').forEach(function(a){a.href=href;});
+})()}catch(e){}

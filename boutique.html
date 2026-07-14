@@ -41,7 +41,7 @@ img,svg{max-width:100%}
 .bk::before{content:"";width:7px;height:7px;background:var(--gold-l);transform:rotate(45deg)}
 .bhero h1{font-family:var(--fd);font-weight:800;font-size:clamp(2rem,5vw,3.3rem);line-height:1.05;letter-spacing:-.02em;margin:16px 0 0;max-width:18ch}
 .bhero p{color:var(--mut);font-size:clamp(1.02rem,1.4vw,1.18rem);line-height:1.6;max-width:64ch;margin:16px 0 0}
-.bnote{margin:22px 0 0;display:inline-flex;align-items:center;gap:10px;font-size:.82rem;color:var(--ink);background:rgba(232,184,107,.12);border:1px solid rgba(232,184,107,.3);border-radius:12px;padding:10px 15px}
+.bnote{margin:22px 0 0;max-width:100%;box-sizing:border-box;flex-wrap:wrap;display:inline-flex;align-items:center;gap:10px;font-size:.82rem;color:var(--ink);background:rgba(232,184,107,.12);border:1px solid rgba(232,184,107,.3);border-radius:12px;padding:10px 15px}
 .bnote b{color:var(--gold-l)}
 .btrust{display:flex;flex-wrap:wrap;gap:10px 22px;margin:26px 0 0}
 .btrust span{display:inline-flex;align-items:center;gap:8px;font-size:.86rem;color:var(--mut)}
@@ -175,7 +175,7 @@ img,svg{max-width:100%}
 </svg>
 <a href="#main-content" class="skip-link">Aller au contenu principal</a>
 <header class="btop">
-  <a class="bbrand" href="/index"><svg class="bmk" viewBox="0 0 200 200" aria-hidden="true"><circle cx="100" cy="100" r="80" fill="none" stroke="#C49A35" stroke-width="7"/><path d="M100 42 C108 58,128 70,128 85 C128 100,115 108,100 108 C85 108,72 100,72 85 C72 70,92 58,100 42Z" fill="#D4A843"/><path d="M42 100 C58 92,70 72,85 72 C100 72,108 85,108 100 C108 115,100 128,85 128 C70 128,58 108,42 100Z" fill="#2E6BBF"/><path d="M158 100 C142 108,130 128,115 128 C100 128,92 115,92 100 C92 85,100 72,115 72 C130 72,142 92,158 100Z" fill="#1B8C3D"/><path d="M100 158 C92 142,72 130,72 115 C72 100,85 92,100 92 C115 92,128 100,128 115 C128 130,108 142,100 158Z" fill="#E0D0A0"/><circle cx="100" cy="100" r="9" fill="#080E1A"/></svg>Ener<b>Tchad</b> · Boutique</a>
+  <a class="bbrand" href="/"><svg class="bmk" viewBox="0 0 200 200" aria-hidden="true"><circle cx="100" cy="100" r="80" fill="none" stroke="#C49A35" stroke-width="7"/><path d="M100 42 C108 58,128 70,128 85 C128 100,115 108,100 108 C85 108,72 100,72 85 C72 70,92 58,100 42Z" fill="#D4A843"/><path d="M42 100 C58 92,70 72,85 72 C100 72,108 85,108 100 C108 115,100 128,85 128 C70 128,58 108,42 100Z" fill="#2E6BBF"/><path d="M158 100 C142 108,130 128,115 128 C100 128,92 115,92 100 C92 85,100 72,115 72 C130 72,142 92,158 100Z" fill="#1B8C3D"/><path d="M100 158 C92 142,72 130,72 115 C72 100,85 92,100 92 C115 92,128 100,128 115 C128 130,108 142,100 158Z" fill="#E0D0A0"/><circle cx="100" cy="100" r="9" fill="#080E1A"/></svg>Ener<b>Tchad</b> · Boutique</a>
   <div class="btop-r">
     <a class="bback" href="/clients">Devenir client</a><a class="bback" href="/boutique-en" hreflang="en" style="margin-left:8px">EN</a>
     <button class="cart-btn" onclick="document.getElementById('order').scrollIntoView({behavior:'smooth'})">🛒 Ma commande <span class="cc" id="cartCount">0</span></button>
