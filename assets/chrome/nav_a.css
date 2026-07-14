@@ -38,6 +38,7 @@
 @media(min-width:1241px){
   .nav-item:hover .nx-mega,.nav-item.open .nx-mega,.nav-item:focus-within .nx-mega{
     opacity:1;visibility:visible;transform:translateY(0)}
+  .nav-item.kbesc .nx-mega{opacity:0!important;visibility:hidden!important}
   .nav-item:nth-last-child(-n+3) .nx-mega{left:auto;right:0}
 }
 .nx-col h4,.nx-col .nxh{font-family:var(--fm,ui-monospace,Menlo,monospace);font-size:.64rem;letter-spacing:.16em;
