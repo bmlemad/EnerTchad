@@ -1,0 +1,11 @@
+/* sommaire lateral a pastilles (style aurail) */
+#secrail{position:fixed;right:14px;top:50%;transform:translateY(-50%);z-index:46;display:flex;flex-direction:column;align-items:flex-end;gap:8px;pointer-events:none}
+#secrail a{--d:0;display:flex;align-items:center;gap:0;padding:9px 13px;border-radius:999px;background:color-mix(in srgb,#0B1422 56%,transparent);-webkit-backdrop-filter:blur(12px) saturate(135%);backdrop-filter:blur(12px) saturate(135%);border:1px solid rgba(255,255,255,.10);text-decoration:none;color:rgba(245,247,250,.82);font-family:var(--fm,ui-monospace,monospace);font-size:.74rem;letter-spacing:.02em;white-space:nowrap;opacity:0;transform:translateX(26px);pointer-events:auto;transition:opacity .5s var(--ease,ease) calc(var(--d)*.07s),transform .5s var(--ease,ease) calc(var(--d)*.07s),border-color .25s,background .25s,box-shadow .25s,color .25s}
+#secrail.show a{opacity:1;transform:none}
+#secrail a:hover,#secrail a.on{color:#fff;border-color:color-mix(in srgb,var(--c) 60%,rgba(255,255,255,.12));background:color-mix(in srgb,var(--c) 16%,#0B1422);box-shadow:0 8px 26px -10px color-mix(in srgb,var(--c) 60%,transparent);transform:translateX(-4px)}
+#secrail .ad{width:8px;height:8px;border-radius:50%;background:var(--c);flex:none;box-shadow:0 0 8px var(--c);transition:transform .25s var(--ease,ease)}
+#secrail a:hover .ad,#secrail a.on .ad{transform:scale(1.4)}
+#secrail .axl{font-weight:600;max-width:0;overflow:hidden;opacity:0;white-space:nowrap;transition:max-width .4s var(--ease,ease),opacity .3s,margin-left .4s var(--ease,ease)}
+#secrail a:hover .axl,#secrail a:focus-visible .axl,#secrail a.on .axl{max-width:240px;opacity:1;margin-left:9px}
+@media(max-width:1100px){#secrail{display:none}}
+@media(prefers-reduced-motion:reduce){#secrail a{transition:opacity .3s,background .2s,border-color .2s,color .2s}}
