@@ -34,7 +34,7 @@ section[id]{scroll-margin-top:96px}
 @media(max-width:768px){#nezBar{display:flex}}
 @media print{#nezProg,#nezBar{display:none!important}}
 @media(prefers-reduced-motion:reduce){#nezProg{transition:none}}
-#eor{content-visibility:auto;contain-intrinsic-size:auto 7783px}#services-ep{content-visibility:auto;contain-intrinsic-size:auto 1900px}#sites{content-visibility:auto;contain-intrinsic-size:auto 5229px}#produits{content-visibility:auto;contain-intrinsic-size:auto 8961px}#reseau{content-visibility:auto;contain-intrinsic-size:auto 15375px}#impact{content-visibility:auto;contain-intrinsic-size:auto 8517px}#talents-tchad{content-visibility:auto;contain-intrinsic-size:auto 7035px}
+
 @media (prefers-reduced-transparency:reduce){.mega-mini,.nx-mega{background:#0A0F1A!important}.nav-links{background:rgba(6,11,20,.98)!important}#nezBar{background:rgba(8,14,26,.97)!important}}
 @media print{section,article,div{break-inside:auto!important;page-break-inside:auto!important}.reveal,.rv,.reveal-up,.reveal-blur,[data-d]{opacity:1!important;transform:none!important;filter:none!important;animation:none!important;transition:none!important}*{content-visibility:visible!important}header.hero{display:block!important}.diapo,.hero-photos,#scrollcue,.lum-ctl,#homeFab,.share,#toTop,#lum-veil,.rootland,#preloader,#ckn,#cmdk{display:none!important}}
 
