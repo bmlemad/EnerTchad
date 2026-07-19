@@ -99,17 +99,17 @@ input[type=range]{width:100%;accent-color:var(--gold);height:22px}
     <div class="panel">
       <h2>Hypothèses · votre champ</h2>
       <div class="ctl"><label>OOIP du champ <output id="o_ooip">300 Mbbl</output></label>
-        <input type="range" id="i_ooip" min="50" max="1000" step="10" value="300">
+        <input type="range" id="i_ooip" aria-label="OOIP du champ, en millions de barils" min="50" max="1000" step="10" value="300">
         <div class="hint">Volume en place initial (oil originally in place)</div></div>
       <div class="ctl"><label>Gain EOR visé <output id="o_gain">12 % OOIP</output></label>
-        <input type="range" id="i_gain" min="8" max="17" step="0.5" value="12">
+        <input type="range" id="i_gain" aria-label="Gain EOR visé, en pourcentage de l’OOIP" min="8" max="17" step="0.5" value="12">
         <div class="hint">Fourchette EnerTchad : +8-17 % (ASP natron/neem, CSS)</div></div>
       <div class="ctl"><label>Étalement de la récupération <output id="o_yrs">15 ans</output></label>
-        <input type="range" id="i_yrs" min="8" max="25" step="1" value="15"></div>
+        <input type="range" id="i_yrs" aria-label="Étalement de la récupération, en années" min="8" max="25" step="1" value="15"></div>
       <div class="ctl"><label>Prix du brut (Doba, décoté) <output id="o_px">74,5 $/bbl</output></label>
-        <input type="range" id="i_px" min="40" max="110" step="0.5" value="74.5"></div>
+        <input type="range" id="i_px" aria-label="Prix du brut, en dollars par baril" min="40" max="110" step="0.5" value="74.5"></div>
       <div class="ctl"><label>Part État (fiscalité + profit oil) <output id="o_tax">50 %</output></label>
-        <input type="range" id="i_tax" min="30" max="70" step="1" value="50">
+        <input type="range" id="i_tax" aria-label="Part de l’État, en pourcentage" min="30" max="70" step="1" value="50">
         <div class="hint">IS 40-75 % négocié par contrat · Facteur R</div></div>
     </div>
 
