@@ -7,7 +7,7 @@ var all=[].slice.call(main.querySelectorAll('h2'));
 var items=[];
 all.forEach(function(h){
  if(h.closest('footer,nav,#secrail,.nx-mega,.mega-ultra,form,dialog,[hidden],.pgr,template'))return;
- var t=(h.textContent||'').replace(/\s+/g,' ').trim();
+ var hc=h.cloneNode(true);[].slice.call(hc.querySelectorAll('[id$="Count"],[data-secrail-ignore]')).forEach(function(x){x.parentNode.removeChild(x)});var t=(hc.textContent||'').replace(/\s+/g,' ').trim();
  if(!t||t.length<3)return;
  var tgt=h.closest('section[id]')||((h.id&&h)||null)||h.closest('[id]');
  if(!tgt||tgt===document.body||tgt.tagName==='MAIN'){tgt=h;}
