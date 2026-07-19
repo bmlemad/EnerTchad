@@ -2,7 +2,7 @@
 :root{--logo:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20200%20200%22%20width%3D%22200%22%20height%3D%22200%22%20role%3D%22img%22%20aria-label%3D%22EnerTchad%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22pg%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%220%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23DBAE4A%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23C2922E%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Ccircle%20cx%3D%22100%22%20cy%3D%22100%22%20r%3D%2270%22%20fill%3D%22none%22%20stroke%3D%22%23C9992B%22%20stroke-width%3D%224.5%22%2F%3E%3Cpath%20d%3D%22M100.00%2097.60%20L116.20%2081.10%20A22.7%2022.7%200%201%200%2083.80%2081.10%20Z%22%20fill%3D%22url%28%23pg%29%22%2F%3E%3Cpath%20d%3D%22M97.60%20100.00%20L81.10%2083.80%20A22.7%2022.7%200%201%200%2081.10%20116.20%20Z%22%20fill%3D%22%231E6EC2%22%2F%3E%3Cpath%20d%3D%22M102.40%20100.00%20L118.90%20116.20%20A22.7%2022.7%200%201%200%20118.90%2083.80%20Z%22%20fill%3D%22%23218A2C%22%2F%3E%3Cpath%20d%3D%22M100.00%20102.40%20L83.80%20118.90%20A22.7%2022.7%200%201%200%20116.20%20118.90%20Z%22%20fill%3D%22%23F6E8BD%22%2F%3E%3C%2Fsvg%3E");
   --blue:#2E86DE;--blue-l:#5AA7F0;--blue-d:#1B4E8C;--inter:#0EA5E9;--inter-l:#38BDF8;
   --amber:#B45309;--amber-l:#F59E0B;--amber-d:#7C3A06;
-  --gold:#D9A84F;--gold-l:#E8C36A;
+  --gold:#D9A84F;--gold-l:#E8C36A;--gold-xl:#F0CE82;
   --green:#1E7A55;--green-l:#34D399;--green-d:#0B6E4F;
   --navy:#060B14;--ink:#0B1422;--panel:#0E1A2C;--cream:#F5F7FA;--muted:#7C8AA2;--muted-d:#69768B;
   --p-amont:#E8C36A;--p-intermediaire:#5AA7F0;--p-aval:#34D399;--p-greentech:#38BDF8;--p-enertech:#7E8AD9;--p-enertalents:#9B86D6;--p-enerconseils:#1FA496;--p-petrochimie:#D177B4;--p-media:#D177B4;
