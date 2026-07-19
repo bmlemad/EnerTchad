@@ -27,11 +27,13 @@ EnerTchad est une **société unique** (pas un groupe, pas de filiales), organis
 
 ## Palette officielle
 Le logo officiel est un trèfle à quatre pétales dans un anneau d'or, sur fond crème.
-- **Or (anneau / pétale haut)** : #C9992B · #D2A23B
+- **Or du logo (pétale haut, dégradé)** : #DBAE4A → #C2922E
 - **Bleu (pétale gauche)** : #1E6EC2
 - **Vert (pétale droit)** : #218A2C
-- **Crème (pétale bas / fonds)** : #F6E8BD · #F3EAD1
-- **Marine (fonds sombres du site)** : #070D18 · #0B1524
+- **Crème doré (pétale bas)** : #E8CD7F
+- **Crème (fond du logo)** : #F3EAD1
+- **Marine (fonds sombres du site)** : #070D18 · #0B1422
+- **Ors d'interface (site)** : #D9A84F · #E8C36A · #F0CE82
 
 ## Engagements
 Contenu local visé (priorité aux compétences et emplois tchadiens), démarche HSE-Q, arc E-S-G et conformité OHADA/IFRS, normes ISO et standards ITIE visés.
