@@ -23,7 +23,7 @@
 - Partenaire investissement : GCIC
 
 ## Organisation
-EnerTchad est une **société unique** (pas un groupe, pas de filiales), organisée en **huit pôles d'activité internes** : trois forment la chaîne pétrolière (Amont, Intermédiaire, Aval) et cinq la soutiennent (GreenTech, EnerTech, EnerTalents, EnerConseils, EnerChimie).
+EnerTchad est une **société unique** (pas un groupe, pas de filiales), organisée en **sept pôles d'activité internes** : trois forment la chaîne pétrolière (Amont, Intermédiaire, Aval) et quatre la soutiennent (GreenTech, EnerTech, EnerTalents, EnerConseils) — prolongés par une extension chimie (EnerChimie) adossée à l'Aval.
 
 ## Palette officielle
 Le logo officiel est un trèfle à quatre pétales dans un anneau d'or, sur fond crème.

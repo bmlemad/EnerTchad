@@ -1,93 +1,567 @@
 %PDF-1.4
-%“Œ‹ž ReportLab Generated PDF document (opensource)
+%âãÏÓ
 1 0 obj
 <<
-/F1 2 0 R /F2 3 0 R
+/Type /Pages
+/Count 3
+/Kids [ 4 0 R 9 0 R 11 0 R ]
 >>
 endobj
 2 0 obj
 <<
-/BaseFont /Helvetica /Encoding /WinAnsiEncoding /Name /F1 /Subtype /Type1 /Type /Font
+/Producer (pypdf)
+/Title (Fiche\040technique\040\204\040Pôle\040Amont\040\204\040EnerTchad\040S\056A\056)
+/Author (EnerTchad\040S\056A\056)
 >>
 endobj
 3 0 obj
 <<
-/BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding /Name /F2 /Subtype /Type1 /Type /Font
+/Type /Catalog
+/Pages 1 0 R
 >>
 endobj
 4 0 obj
 <<
-/Contents 9 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 8 0 R /Resources <<
-/Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
->> /Rotate 0 /Trans <<
-
->> 
-  /Type /Page
+/Contents 5 0 R
+/MediaBox [ 0 0 595.2756 841.8898 ]
+/Resources <<
+/Font 6 0 R
+/ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
+>>
+/Rotate 0
+/Trans <<
+>>
+/Type /Page
+/Parent 1 0 R
 >>
 endobj
 5 0 obj
 <<
-/Contents 10 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 8 0 R /Resources <<
-/Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
->> /Rotate 0 /Trans <<
-
->> 
-  /Type /Page
+/Length 9821
 >>
+stream
+1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
+BT /F2 6.5 Tf 7.8 TL ET
+.760784 .572549 .180392 rg
+BT 1 0 0 1 56.69291 790.8661 Tm (FICHE TECHNIQUE \227 PÔLE AMONT | JUILLET 2026 | SOCIÉTÉ EN CONSTITUTION) Tj T* ET
+BT /F2 20 Tf 24 TL ET
+.062745 .094118 .14902 rg
+BT 1 0 0 1 56.69291 765.3543 Tm (Amont : EOR & services parapétroliers) Tj T* ET
+BT /F1 9 Tf 10.8 TL ET
+.352941 .396078 .447059 rg
+BT 1 0 0 1 56.69291 748.3465 Tm (Extraire davantage de chaque gisement tchadien : récupération assistée sur champs matures,) Tj T* ET
+BT 1 0 0 1 56.69291 735.5906 Tm (relance des blocs marginaux et force d\222intervention parapétrolière intégrée \(OFS\).) Tj T* ET
+.847059 .862745 .886275 RG
+.8 w
+n
+62.3622 677.4803 m
+165.1181 677.4803 l
+168.2521 677.4803 170.7874 680.0156 170.7874 683.1496 c
+170.7874 711.4961 l
+170.7874 714.63 168.2521 717.1654 165.1181 717.1654 c
+62.3622 717.1654 l
+59.22822 717.1654 56.69291 714.63 56.69291 711.4961 c
+56.69291 683.1496 l
+56.69291 680.0156 59.22822 677.4803 62.3622 677.4803 c
+h
+S
+.760784 .572549 .180392 rg
+n 56.69291 677.4803 3.11811 39.68504 re f*
+BT /F2 11 Tf 13.2 TL ET
+.062745 .094118 .14902 rg
+BT 1 0 0 1 68.0315 701.5748 Tm <3220e02033d7> Tj T* ET
+BT /F1 6.6 Tf 7.92 TL ET
+.352941 .396078 .447059 rg
+BT 1 0 0 1 68.0315 687.4016 Tm (récupération visée par réservoir) Tj T* ET
+.847059 .862745 .886275 RG
+.8 w
+n
+184.9606 677.4803 m
+287.7165 677.4803 l
+290.8505 677.4803 293.3858 680.0156 293.3858 683.1496 c
+293.3858 711.4961 l
+293.3858 714.63 290.8505 717.1654 287.7165 717.1654 c
+184.9606 717.1654 l
+181.8266 717.1654 179.2913 714.63 179.2913 711.4961 c
+179.2913 683.1496 l
+179.2913 680.0156 181.8266 677.4803 184.9606 677.4803 c
+h
+S
+.760784 .572549 .180392 rg
+n 179.2913 677.4803 3.11811 39.68504 re f*
+BT /F2 11 Tf 13.2 TL ET
+.062745 .094118 .14902 rg
+BT 1 0 0 1 190.6299 701.5748 Tm (8 familles) Tj T* ET
+BT /F1 6.6 Tf 7.92 TL ET
+.352941 .396078 .447059 rg
+BT 1 0 0 1 190.6299 687.4016 Tm (de services OFS intégrés) Tj T* ET
+.847059 .862745 .886275 RG
+.8 w
+n
+307.5591 677.4803 m
+410.315 677.4803 l
+413.4489 677.4803 415.9843 680.0156 415.9843 683.1496 c
+415.9843 711.4961 l
+415.9843 714.63 413.4489 717.1654 410.315 717.1654 c
+307.5591 717.1654 l
+304.4251 717.1654 301.8898 714.63 301.8898 711.4961 c
+301.8898 683.1496 l
+301.8898 680.0156 304.4251 677.4803 307.5591 677.4803 c
+h
+S
+.760784 .572549 .180392 rg
+n 301.8898 677.4803 3.11811 39.68504 re f*
+BT /F2 11 Tf 13.2 TL ET
+.062745 .094118 .14902 rg
+BT 1 0 0 1 313.2283 701.5748 Tm (4 matières) Tj T* ET
+BT /F1 6.6 Tf 7.92 TL ET
+.352941 .396078 .447059 rg
+BT 1 0 0 1 313.2283 687.4016 Tm (tchadiennes pour la chimie EOR) Tj T* ET
+.847059 .862745 .886275 RG
+.8 w
+n
+430.1575 677.4803 m
+532.9134 677.4803 l
+536.0474 677.4803 538.5827 680.0156 538.5827 683.1496 c
+538.5827 711.4961 l
+538.5827 714.63 536.0474 717.1654 532.9134 717.1654 c
+430.1575 717.1654 l
+427.0235 717.1654 424.4882 714.63 424.4882 711.4961 c
+424.4882 683.1496 l
+424.4882 680.0156 427.0235 677.4803 430.1575 677.4803 c
+h
+S
+.760784 .572549 .180392 rg
+n 424.4882 677.4803 3.11811 39.68504 re f*
+BT /F2 11 Tf 13.2 TL ET
+.062745 .094118 .14902 rg
+BT 1 0 0 1 435.8268 701.5748 Tm (1 interlocuteur) Tj T* ET
+BT /F1 6.6 Tf 7.92 TL ET
+.352941 .396078 .447059 rg
+BT 1 0 0 1 435.8268 687.4016 Tm (six phases, un contrat) Tj T* ET
+BT /F2 11.5 Tf 13.8 TL ET
+.062745 .094118 .14902 rg
+BT 1 0 0 1 56.69291 654.8031 Tm (L\222approche EOR : les données d\222abord) Tj T* ET
+.760784 .572549 .180392 RG
+1.4 w
+n 56.69291 648.5669 m 164.4094 648.5669 l S
+BT /F2 8.2 Tf 9.84 TL ET
+.062745 .094118 .14902 rg
+BT 1 0 0 1 56.69291 634.9606 Tm (\177 Criblage \(screening\) : ) Tj T* ET
+BT /F1 8.2 Tf 9.84 TL ET
+.352941 .396078 .447059 rg
+BT 1 0 0 1 148.4181 634.9606 Tm (le procédé se choisit dans les données du réservoir \227 perméabilité, viscosité,) Tj T* ET
+BT /F1 8.2 Tf 9.84 TL ET
+.352941 .396078 .447059 rg
+BT 1 0 0 1 56.69291 623.3386 Tm (   salinité, température \227 pas dans le catalogue. Chaque champ reçoit une réponse dédiée.) Tj T* ET
+BT /F2 8.2 Tf 9.84 TL ET
+.062745 .094118 .14902 rg
+BT 1 0 0 1 56.69291 611.7165 Tm (\177 Chimie souveraine : ) Tj T* ET
+BT /F1 8.2 Tf 9.84 TL ET
+.352941 .396078 .447059 rg
+BT 1 0 0 1 142.0467 611.7165 Tm (natron, gomme arabique, coton et neem \227 quatre matières locales pour formuler) Tj T* ET
+BT /F1 8.2 Tf 9.84 TL ET
+.352941 .396078 .447059 rg
+BT 1 0 0 1 56.69291 600.0945 Tm (   polymères et tensioactifs, substituer les intrants importés et ancrer la valeur au Tchad.) Tj T* ET
+BT /F2 8.2 Tf 9.84 TL ET
+.062745 .094118 .14902 rg
+BT 1 0 0 1 56.69291 588.4724 Tm (\177 Démarche par pilote : ) Tj T* ET
+BT /F1 8.2 Tf 9.84 TL ET
+.352941 .396078 .447059 rg
+BT 1 0 0 1 147.9671 588.4724 Tm (modélisation, pilote sur périmètre restreint, mesure du baril additionnel,) Tj T* ET
+BT /F1 8.2 Tf 9.84 TL ET
+.352941 .396078 .447059 rg
+BT 1 0 0 1 56.69291 576.8504 Tm (   puis déploiement \227 le risque technique est étagé et documenté à chaque porte.) Tj T* ET
+BT /F2 8.2 Tf 9.84 TL ET
+.062745 .094118 .14902 rg
+BT 1 0 0 1 56.69291 565.2283 Tm (\177 Champs cibles : ) Tj T* ET
+BT /F1 8.2 Tf 9.84 TL ET
+.352941 .396078 .447059 rg
+BT 1 0 0 1 127.0079 565.2283 Tm (actifs matures et blocs marginaux du bassin de Doba et des bassins voisins,) Tj T* ET
+BT /F1 8.2 Tf 9.84 TL ET
+.352941 .396078 .447059 rg
+BT 1 0 0 1 56.69291 553.6063 Tm (   où chaque point de récupération supplémentaire est du brut national en plus.) Tj T* ET
+BT /F2 11.5 Tf 13.8 TL ET
+.062745 .094118 .14902 rg
+BT 1 0 0 1 56.69291 530.6457 Tm (Huit familles de services OFS) Tj T* ET
+.760784 .572549 .180392 RG
+1.4 w
+n 56.69291 524.4094 m 164.4094 524.4094 l S
+.847059 .862745 .886275 RG
+.8 w
+n
+63.77953 434.2677 m
+282.0472 434.2677 l
+285.9647 434.2677 289.1339 437.4369 289.1339 441.3543 c
+289.1339 500.8819 l
+289.1339 504.7994 285.9647 507.9685 282.0472 507.9685 c
+63.77953 507.9685 l
+59.86205 507.9685 56.69291 504.7994 56.69291 500.8819 c
+56.69291 441.3543 l
+56.69291 437.4369 59.86205 434.2677 63.77953 434.2677 c
+h
+S
+.760784 .572549 .180392 rg
+n 56.69291 434.2677 3.11811 73.70079 re f*
+BT /F2 9 Tf 10.8 TL ET
+.062745 .094118 .14902 rg
+BT 1 0 0 1 68.0315 490.9606 Tm (Puits & interventions) Tj T* ET
+BT /F1 7.6 Tf 9.12 TL ET
+.352941 .396078 .447059 rg
+BT 1 0 0 1 68.0315 478.2047 Tm (Wireline, workover, stimulation, cimentation,) Tj T* ET
+BT /F1 7.6 Tf 9.12 TL ET
+.352941 .396078 .447059 rg
+BT 1 0 0 1 68.0315 467.7165 Tm (tubages \227 remise en production et maintien) Tj T* ET
+BT /F1 7.6 Tf 9.12 TL ET
+.352941 .396078 .447059 rg
+BT 1 0 0 1 68.0315 457.2283 Tm (de l\222intégrité des puits existants.) Tj T* ET
+.847059 .862745 .886275 RG
+.8 w
+n
+313.2283 434.2677 m
+531.4961 434.2677 l
+535.4135 434.2677 538.5827 437.4369 538.5827 441.3543 c
+538.5827 500.8819 l
+538.5827 504.7994 535.4135 507.9685 531.4961 507.9685 c
+313.2283 507.9685 l
+309.3109 507.9685 306.1417 504.7994 306.1417 500.8819 c
+306.1417 441.3543 l
+306.1417 437.4369 309.3109 434.2677 313.2283 434.2677 c
+h
+S
+.760784 .572549 .180392 rg
+n 306.1417 434.2677 3.11811 73.70079 re f*
+BT /F2 9 Tf 10.8 TL ET
+.062745 .094118 .14902 rg
+BT 1 0 0 1 317.4803 490.9606 Tm (Surface & maintenance) Tj T* ET
+BT /F1 7.6 Tf 9.12 TL ET
+.352941 .396078 .447059 rg
+BT 1 0 0 1 317.4803 478.2047 Tm (Maintenance des installations, séparation,) Tj T* ET
+BT /F1 7.6 Tf 9.12 TL ET
+.352941 .396078 .447059 rg
+BT 1 0 0 1 317.4803 467.7165 Tm (traitement de l\222eau de production, mesure) Tj T* ET
+BT /F1 7.6 Tf 9.12 TL ET
+.352941 .396078 .447059 rg
+BT 1 0 0 1 317.4803 457.2283 Tm (et comptage, inspection réglementaire.) Tj T* ET
+.847059 .862745 .886275 RG
+.8 w
+n
+63.77953 349.2283 m
+282.0472 349.2283 l
+285.9647 349.2283 289.1339 352.3975 289.1339 356.315 c
+289.1339 415.8425 l
+289.1339 419.76 285.9647 422.9291 282.0472 422.9291 c
+63.77953 422.9291 l
+59.86205 422.9291 56.69291 419.76 56.69291 415.8425 c
+56.69291 356.315 l
+56.69291 352.3975 59.86205 349.2283 63.77953 349.2283 c
+h
+S
+.760784 .572549 .180392 rg
+n 56.69291 349.2283 3.11811 73.70079 re f*
+BT /F2 9 Tf 10.8 TL ET
+.062745 .094118 .14902 rg
+BT 1 0 0 1 68.0315 405.9213 Tm (Logistique & travaux) Tj T* ET
+BT /F1 7.6 Tf 9.12 TL ET
+.352941 .396078 .447059 rg
+BT 1 0 0 1 68.0315 393.1654 Tm (Terrassement, pistes et plateformes, levage,) Tj T* ET
+BT /F1 7.6 Tf 9.12 TL ET
+.352941 .396078 .447059 rg
+BT 1 0 0 1 68.0315 382.6772 Tm (transport de charges, bacs de stockage \227) Tj T* ET
+BT /F1 7.6 Tf 9.12 TL ET
+.352941 .396078 .447059 rg
+BT 1 0 0 1 68.0315 372.189 Tm (« le bon bac, au bon puits, au bon moment ».) Tj T* ET
+.847059 .862745 .886275 RG
+.8 w
+n
+313.2283 349.2283 m
+531.4961 349.2283 l
+535.4135 349.2283 538.5827 352.3975 538.5827 356.315 c
+538.5827 415.8425 l
+538.5827 419.76 535.4135 422.9291 531.4961 422.9291 c
+313.2283 422.9291 l
+309.3109 422.9291 306.1417 419.76 306.1417 415.8425 c
+306.1417 356.315 l
+306.1417 352.3975 309.3109 349.2283 313.2283 349.2283 c
+h
+S
+.760784 .572549 .180392 rg
+n 306.1417 349.2283 3.11811 73.70079 re f*
+BT /F2 9 Tf 10.8 TL ET
+.062745 .094118 .14902 rg
+BT 1 0 0 1 317.4803 405.9213 Tm (Études & données) Tj T* ET
+BT /F1 7.6 Tf 9.12 TL ET
+.352941 .396078 .447059 rg
+BT 1 0 0 1 317.4803 393.1654 Tm (Retraitement sismique, modélisation réservoir,) Tj T* ET
+BT /F1 7.6 Tf 9.12 TL ET
+.352941 .396078 .447059 rg
+BT 1 0 0 1 317.4803 382.6772 Tm (criblage EOR, supervision HSE-Q, formation) Tj T* ET
+BT /F1 7.6 Tf 9.12 TL ET
+.352941 .396078 .447059 rg
+BT 1 0 0 1 317.4803 372.189 Tm (des équipes locales sur site.) Tj T* ET
+BT /F1 6.4 Tf 7.68 TL ET
+.352941 .396078 .447059 rg
+BT 1 0 0 1 56.69291 34.01575 Tm (EnerTchad S.A. \227 société en constitution \227 Radisson, Block D, Bureau 23, Sabangali, N'Djamena, Tchad) Tj T* ET
+BT 1 0 0 1 56.69291 24.37795 Tm (contact@enertchad.td · +235 99 29 86 96 · enertchad-delta.vercel.app \227 Document indicatif, sans valeur contractuelle.) Tj T* ET
+BT 1 0 0 1 522.5699 24.37795 Tm (p. 1/3) Tj T* ET
+ 
+
+endstream
 endobj
 6 0 obj
 <<
-/PageMode /UseNone /Pages 8 0 R /Type /Catalog
+/F1 7 0 R
+/F2 8 0 R
 >>
 endobj
 7 0 obj
 <<
-/Author (EnerTchad S.A.) /CreationDate (D:20260718094458+00'00') /Creator (anonymous) /Keywords () /ModDate (D:20260718094458+00'00') /Producer (ReportLab PDF Library - \(opensource\)) 
-  /Subject (unspecified) /Title (Fiche technique \204 P\364le Amont \204 EnerTchad S.A.) /Trapped /False
+/BaseFont /Helvetica
+/Encoding /WinAnsiEncoding
+/Name /F1
+/Subtype /Type1
+/Type /Font
 >>
 endobj
 8 0 obj
 <<
-/Count 2 /Kids [ 4 0 R 5 0 R ] /Type /Pages
+/BaseFont /Helvetica-Bold
+/Encoding /WinAnsiEncoding
+/Name /F2
+/Subtype /Type1
+/Type /Font
 >>
 endobj
 9 0 obj
 <<
-/Filter [ /ASCII85Decode /FlateDecode ] /Length 3422
+/Contents 10 0 R
+/MediaBox [ 0 0 595.2756 841.8898 ]
+/Resources <<
+/Font 6 0 R
+/ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
 >>
-stream
-Gau0F>BAT.'n4c<3)?]JD@dF'Gj/-I=g$:PUr6G4?hD4s6>ONPKch+SVE_d"!"!&@E\#8cac*S(U]h7Rq*(;V'gmZS`TH'X!VgpL5J<+$VQddg3$AU00ApYp@W2Z'iVEcsa_.,SBp@]c&=uaj'L:Y?@KhHoVnWkjX7MRO"YF3)MMU>-)T0.;fC.$]5FfRdm.A3Wq/;nNi.fYgI_B/H\N#5N^Kb'IiBQhX:ZiN1B5=.P:%@cMlLb"/`UR.3")!s>H?FMH5$reCT3km<JbAK9rZSM47bV+YS:X-Xbn:L3.Zud:dFtCP^27]/$0)=J`kH<$G(dWHg!rT;"\K2IZ4[N@E[^f(`oD(&C+0@0hhDsTj3#HTN,aa0"(?oW*KVPg,$oZGMBjQ#8\)+cm-?WqEY,H,n&ff)GPF`post!1'!RQl1]jd!&_K_'U:GobXdY3*6TN;lKi0A!7L]W"e"FJ3oEq%-S-GZfqZf);LN11h-oL,qU+Y1mgRqqQGElKGfZCRl^4I3\[N"iL0s4Ka,J";Cdh_:3%6m7*,5_lZm07@Zc0MG)f/IV=?k1;\UQ@c"MRi`%iT!/l8+>\5H]h:D;Mm<U16NalTfIraL`#F0@l7^UTpu<hS4+^HZNS]=,#QS5&7M"S.9%Z)bMnm3'^N.hQB2e^>1V!YN8Wh)3"$^(3C=fdTC@G/RYR:)\Qq7@T!tmu*9PJH6YnrF>MC1n^f/e*kEG63-0NkJn%Q`a_.$dU8TPq!J8r7#@1aU\5Vo#Eq@rb!rur5"aJ'NR89.'S$9'MmJDoUO*@_KbZF<^tT;8`'X#.lg7.JLc6cIhPAP%`s[>NE/n)Ws`ElNAkd$ce%-cMW4%!K]eWp`J""W/g.@6)Y^5Qes0dpW8="3aT_XmJ[A/-snm/.Lg"E@*\?""_`Z<CP+OoDQ"jVo&R^#2#ZXASnWk"(+3CT75a/nhW`OVR.cF$(AbKfuU`?%jZ\gdaRTja%sA:?1u)bErXuq:LYT-1;\;bkiO/,9P$'>$(7HEOsD\CQGf:-GnPca5TCpf((`7:$u+MNN`M&=!?[l'!?YHt`<kW,`\8HZ?9#(mc]4%r$htQHo3pG.Sk'*XH3>>g_T1^^dpJb.gZN(@oD+n[?]^FgZTUo5ogYtiU(0hR]#:U82H&aZkt.+5=@?VinW8p(;1c)K6;DQeOsnERN3f&D*%ORPofV4nl*,]%!G:riZF8)tMZj,1SYZ?9':P&>Z2dNG;CTqkj1BeaUi]^(aoGW[[]JjrGi5VmOO>e09N!3>-/soUmuoL2;[-^)3/qAc?B1=h]00=Iq%`bPV8ArBVA:X4i%^oI2@13,4s)P0<hk1r-Kn%UeQh<Y\*X!cX$.L%@hk#<!Oc:gROUYWMR_G`_`$#a2kl&\5c/47"<1fG^sfZ@#-1CU-X,c>)QoEjji$e2"mYN$#@hfned&gDZOBS6\Z'`+EV!@6K+P/$G;jI0Lkifo@.VF84Zl8E.e[iU)QPN5WV57Ns+<lSn!Hj"3FXeoWWO>=H^1%:/pf<0)D!hQQ6pIOFE(B)C4:K>;g9B^/AYG+:B:HqXC]"[5)Nr$1pQkFN@`V#,,iYhXLm:6#b9TqcZEqN;65PZ%aR>H_B-)Q>,@]?m3$,55Rsdmh1S%qQtk"^_VXmaS*gEfVJ+5tEe34MS7_X;[j<qmm0\#Bdg3a$E[/sh.oc;"eN,U[XUpJ7jrY99XpC47i:U%"9;]QA[@(e"^g6U2JWD#B<5&LLn*5B]M\0X`-s@q/Z5VgV?;PCjW)8S=(^uV)^8os"5;[dI(q,eb@CnZ.P@3kK&9r_GK!e@g7gM$!;2CV]Sh.^,VsV88?f,\2([>SfN@u;l]`$=GhX4*NLg<Yb3jR;AZ^tN+!D2<T*G]aMrXU$ZJjq.?/%c6JjWJ=e[p,iHhhq7I;Wh1T9EncH5"T<#g"2e%ZPgYQ<;%H"QLcN)c`Le4T[dF^,3@,*D]%gm-;+4_o5#?'H.&H:E=@-aPhYa]OLH);<I!gS.pk-[\t4ba@Xh<,LLh=!ST'(]A:geFD"ZlT?+28BVt9u3TF1+/;J>M0Z<elnS.SFcC^G')_iUiM.*+Dce,p?e2>)B7`.R#*"$@TAI?\0WlcT-'=bCC]Y:'!.AA>`GiE.Y.$."Rp+"#2O9>_,23m)*d,b3/685PL09\1PN(uI'2AHg\ND*fWdW+JAj1I+Dm<[3>nA=@$MUNo.7`X5,<!+]18GpJ76'Xp,C(rr[;cf;mDjfjDK7A2(QoBJHd=&I8Zg#.t7gZgIK_S[Teggf2&bN]*`gCOe`S?9U=c^i.ZmS82oYGY(agm=<2+N*<",53"+KCSV5L3WJ<?c)c!XAeTq_HH@1]kM)J!"@'BVKkaf3lc3-4o^4>_g2]KK0R!,98>A3VV4mVcCYbA-&j1p_\$]V1LISLdfq=8AQ-Ae)N"-U<rC<]Voi6XG`t!e6]K_k+2J_aq0Nl7?dEe=4$BkaWOYQH'.<<MW_o**:E.-^#sk4mcK8FlcnNM+/W!WGB%Mca`]M+SfO9>c")LifZFX,s@RHesB5=/K();MA;;j5FV9&0d=?Sp>L)h%CfON*]h!/3n#QB&!AB?EN4:SWAR59L?^7L)6Z4\Qq_c5%K(I0WD<ki@Iia;UaL7t!kYqNBqf!Vh5Z-)%%<U>^uP;0L+UFkUD'a^tY[j"Z>;L0D%Q;GSG@8pO]lPG+&m?M#1Mo:i&]36cI`Y2^S/U<$rL#"9#_[[(FYes^(`A?Iu1*.X=RHk&k=:^&UK^pf+-ZO^epIR?<PaHRS$\8HfP-DiU,j[4Wna+uGo=TR7Jep6/&=Ur)Q?MFSo[HepYkuj'1N8#-Up6c>7CU0-h6\-)!-rsI"ng%d)HJORr7"rR`@t\.DO@BW2Ds3o^.7i'h0nVR>V5A#K9'CIOp8*[\d0)eK!!N"c@":/]f0M69Am(U^6m"XIHV^3G?^5-,XGj#.uK;%*cQa(`U-a<M:\@oicS$k2`H]:MW^ho5e\lL"nHe-dU=bjHHLSFOg!*R?G6GP-0DMF';;H-]R5.qoCDPlEl!./ZYKfl:;.50ndV8f/8f1*])thl-2AT\^Ab\SorJ,VAXmiHHkjjdO-!oG,lCLB.8NOcfP0*RREXNtob^8F:Wq9DLH`?HW/#$!DIA_fj2:QCO2%g@@*dJJ$qgXRlX8q/s"VVZ(bY*iP`cOcC%P&Y`4k;'TD99h=S"uD]oVuITN2J5!!q3;/[<!Cl7+Rj[O&U@Y<L0LdDX0)b/\NQQ-tB/cY2kcG_[BF?GW[tZ5$W2S$Lk8[9UQ0?f(`f@cY^tSMU8;57bVcTBV;JK@F?&;2p&ABVTiC8B*6!T4[Ror?A;X0"lctKd*q'qn4)\U)lsZh-)+>;YId]qV=7E_b+Pl.u`mJL0dZuk?4a3_c)PYW9a>PGF%6r_Ge-jBPC6breUj:J<U!71oV_4~>endstream
+/Rotate 0
+/Trans <<
+>>
+/Type /Page
+/Parent 1 0 R
+>>
 endobj
 10 0 obj
 <<
-/Filter [ /ASCII85Decode /FlateDecode ] /Length 2647
+/Length 6470
 >>
 stream
-Gau0EgN)&i&Ui84oLg0LQQ"mB\0N`t9(^h;?Ji]6nRVi`W,Y'&$OiEI<^&^F#8_uT[Slg^jXM,f!gkcl3ISL'PD=Y%qj[&1ITk."2a7$<XmX;l6q"*MZs6nHomgKpq27Y:_n&BJ01dB$1'qKUOml:&bQ;Ofr.mSM?,e)6K$:,<o0aM;5-9!Mq<$N+gEitff5Emdqu"bdXb.ai:[9]jhCn-d0-<E[keFM&Yl(f<If&trDT-D]P#bq(otq28i%^m4`$r>Y80UXBb9Gh>JLAUQ5DBhE&]uMDE3?7i2Cc2I+goo^/PFp$ncuRJ\uG/mG4<D%+hhgR0GA.78@S-P:>&+cY1fsEknUe+I"9Z0U0USs;Hr7:VRO%XX3WRYIq8I15@=3TgqPMbq2V/)]f;f.q(_dSR"r)$DTANK_RZ8sIG`0!+ZS!*:D2qeC2'HBe]lt338=<#j."fr9DTSj[]BG`k+N3f/Vu1AZ]^-=`08lLh>J1OKX%%j2^R7hf;1?)8ZJQ_Wju3N;Ut<8];jQJ7]UDm]%j<fhVh36ft[W;gD*cBdt'TJ`_/aVgDD%F[9Z-=e(.N5mS%%?mnF][pnCT^m1Z4]70\7?MlrmGeHU9M@H>g2>7M`\ir1Xsp5OMJ:&_4uj"(t&`7ZKpIVL?:jV8>DJ2:T[[KEBC<1BVfR[,&1SCYg?N[.?[0c$&;Cn$_K<EV'_KNMHp6m$;Q0.:b_>lb0`32LY$]6Jjcol#4nhXTbbGWJTrnA?q!?0s1r1`e4.kbV=>"Yta:$fAAGCeGS"UY?O6<FZ:"@bo##-EH`ndeqgi`Q:\",i:L?q2K-4=/Mcp%^*oJXdf\nl;oE'&>dM=p2sm!iUBBM5!']+Yd?2teJP=q@\-N^Y,LoWG,j5a;K]`oMM&9[26Y]9dI#p5%ZYt"VV.3W)ca>:SCk!q3HDV3pE:DhQPN:q(fV6n`PcF+JF%F/=e):1(?HC+^"IS?CX1mAl%pO;6g)tS,/-a[6cO#5WiLI^4K2uP:s\`sj6_%=$68j1Rk"8>W19DT.<'SI4N*\W>HVOqWE_Gqg_kMMLPDda,FOK#?!mSYrU-+iYLs"Ccd",b<a?m2\43O17Wn,D[(="jZpX)X2kj(kRh:3"-0D5qN,>2,lCV)hYqH9Z`aO>"#E_h,4WP,PX5'Yc6@Yn@LqO3T9@LFZR+>"\(h=s(;TOQhP;t!"6u:g,%NfOg,If:'.=7K_@lgl"4.I*/']aminYhotat`H)C1aYCYom&Hi]jPgMo]<hI28E:BdA;GP@I]QRYubH[q*W$$@p;'L]d5B@6rH"=)a52Vr(c<<CiPW*\cR)oC*+H8B?`3SkD7QG!gGFPYH`@2gWU9VQ!(8@41,+qsI2EjHM0kNR"$=3dP#7'&9H`#-^q6Jko6=TFT9+^Xs3&&kA_s`Y-)JYc72R0f`h`,empY)m@THY:)Ih4O.="d.cp[$i_$U1#$?fU8KU6Jaf3$jp5?(Q8j#2<u<<'T[T.+inQ7R&ZK5YS*KRIA;VlEW"?#T,huptLa3DGWNH>n14<_]W1%m_#Jp]Sk5TpE[#*)1_J[Xbne,5QP5'H:>.SmR@<ICW+n+.YfFHe*n.P,EKIc0f5HRW_IfcB7=X;c+TA\b2eC4!-Va]M3+EuWK%,M@Qa>fKU\o^8W;S<?.Vq`5Ujkot7LU./tnrY0B&/nCQqXKaJ'^JC=>75nB+[&"%<g+(m!Q85)eXf.h+b6(6jb*(0qhCmqa0'@EO,o]ECoYcX>,&s-`5AZd"2(Dk)9o`XYGZT7TO'GHaCna]h=k&L8e6/]htJKoFj;G/JjjrY!N;oFF-PYoYA_q)kS>O\En?CM_$q:!m?M.s$:22jVIlp[3s_n[bJiu<.pY$BA*<d_^qq1jS:*O15H]*V%eG@Y8H!YobqF-L<DfHR+?*t:d'Y@oY3<b:NQI`+%!;5UA(\Vo/i`c*[dVUl$pf9.f?hllD4Q%:c37GX8u)QYV0jGSC<DGo"D;;e%=T_J@\7f[1)qpE[/t,A7"-NpCD&s=VMKZ)OGIBabZBOWr*iif]XVUp@^bEGLht,o_qQDJ?^ZX*@@1*d"4h/qn&kE-hYbL;g=+fSPn=+;NGB3Y@_OalBRK]!lDO?u0-2``017]d6KUX(,VZNbO@VAEAkYBO'FN>'+0Q&?(^DH<RdPYB.oGHOOS<U'.-]p&&VX@GdD[^&Ds%=:W'fc0>jZ]Cnhdr6W0j>AN5$gQ%i_G;0GTseZ>LRS]!\'.T[MC0gC9p7^'C]=5'1XiKgEhbDDm/Y/uGMJIiMalMg='!\`G*PM]NJ`;d;m>d,5*<fBZ;*F=m4Na%T7YE60RMBs^!N6n\k<rO[^G5bZ<PiqcL:J.PIcOQ.&@rrRb\dkH[V+h"i3!93'*46qF,lU'_3ltFjDb'raSE>49>\$c^qbnM0@Y/@CCa/>;=Dkh.K1_24]/*j&di4`i[53AIFpt('VrB;P9,N8GROjEjW'uZkTHfB?qb81G#n9DL:T29/"75qa?Gh>YT\=d&K#E,Y"/EjuYDn[\L411_o`r&W:"d''N7sj4kN97qLEC)koi0u9m+JUcj/FHT;qlVigYY)_#\LrQ8lQ5]CcjPAA2[0D&mMFCD9PG"@gbn[F"H(6`^BnV)[OC:?k=BAS_5gu;"C:p9dB/k1~>endstream
+1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
+BT /F2 6.5 Tf 7.8 TL ET
+.760784 .572549 .180392 rg
+BT 1 0 0 1 56.69291 790.8661 Tm (FICHE TECHNIQUE \227 PÔLE AMONT | ENERTCHAD S.A.) Tj T* ET
+BT /F2 20 Tf 24 TL ET
+.062745 .094118 .14902 rg
+BT 1 0 0 1 56.69291 765.3543 Tm (Contracter avec EnerTchad) Tj T* ET
+BT /F2 11.5 Tf 13.8 TL ET
+.062745 .094118 .14902 rg
+BT 1 0 0 1 56.69291 739.8425 Tm (Quatre modèles contractuels, un socle HSE-Q) Tj T* ET
+.760784 .572549 .180392 RG
+1.4 w
+n 56.69291 733.6063 m 164.4094 733.6063 l S
+BT /F2 8.2 Tf 9.84 TL ET
+.062745 .094118 .14902 rg
+BT 1 0 0 1 56.69291 720 Tm (\177 Contrat de services \(OFS\) : ) Tj T* ET
+BT /F1 8.2 Tf 9.84 TL ET
+.352941 .396078 .447059 rg
+BT 1 0 0 1 169.8365 720 Tm (intervention au forfait ou au bordereau, engagement de résultat) Tj T* ET
+BT /F1 8.2 Tf 9.84 TL ET
+.352941 .396078 .447059 rg
+BT 1 0 0 1 56.69291 708.378 Tm (   sur disponibilité et délais \227 le modèle le plus rapide à mettre en \234uvre.) Tj T* ET
+BT /F2 8.2 Tf 9.84 TL ET
+.062745 .094118 .14902 rg
+BT 1 0 0 1 56.69291 696.7559 Tm (\177 Protocole d\222étude & pilote EOR : ) Tj T* ET
+BT /F1 8.2 Tf 9.84 TL ET
+.352941 .396078 .447059 rg
+BT 1 0 0 1 190.7875 696.7559 Tm (accès données sous NDA, criblage, conception et exécution) Tj T* ET
+BT /F1 8.2 Tf 9.84 TL ET
+.352941 .396078 .447059 rg
+BT 1 0 0 1 56.69291 685.1339 Tm (   d\222un pilote avec partage des enseignements \227 la porte d\222entrée technique.) Tj T* ET
+BT /F2 8.2 Tf 9.84 TL ET
+.062745 .094118 .14902 rg
+BT 1 0 0 1 56.69291 673.5118 Tm (\177 Farm-in / participation : ) Tj T* ET
+BT /F1 8.2 Tf 9.84 TL ET
+.352941 .396078 .447059 rg
+BT 1 0 0 1 155.2487 673.5118 Tm (prise d\222intérêt minoritaire sur blocs marginaux ou champs matures,) Tj T* ET
+BT /F1 8.2 Tf 9.84 TL ET
+.352941 .396078 .447059 rg
+BT 1 0 0 1 56.69291 661.8898 Tm (   dans le respect du Code pétrolier tchadien et des autorisations en vigueur.) Tj T* ET
+BT /F2 8.2 Tf 9.84 TL ET
+.062745 .094118 .14902 rg
+BT 1 0 0 1 56.69291 650.2677 Tm (\177 Consortium & groupement : ) Tj T* ET
+BT /F1 8.2 Tf 9.84 TL ET
+.352941 .396078 .447059 rg
+BT 1 0 0 1 173.0017 650.2677 Tm (montage local avec opérateurs, parapétroliers et académie) Tj T* ET
+BT /F1 8.2 Tf 9.84 TL ET
+.352941 .396078 .447059 rg
+BT 1 0 0 1 56.69291 638.6457 Tm (   \(GCIC, universités\) pour les appels d\222offres et les campagnes multi-puits.) Tj T* ET
+BT /F2 11.5 Tf 13.8 TL ET
+.062745 .094118 .14902 rg
+BT 1 0 0 1 56.69291 615.685 Tm (Le socle non négociable) Tj T* ET
+.760784 .572549 .180392 RG
+1.4 w
+n 56.69291 609.4488 m 164.4094 609.4488 l S
+BT /F2 8.2 Tf 9.84 TL ET
+.062745 .094118 .14902 rg
+BT 1 0 0 1 56.69291 595.8425 Tm (\177 HSE-Q : ) Tj T* ET
+BT /F1 8.2 Tf 9.84 TL ET
+.352941 .396078 .447059 rg
+BT 1 0 0 1 95.10171 595.8425 Tm (politique unique sur tous les chantiers, permis de travail, analyses de risques,) Tj T* ET
+BT /F1 8.2 Tf 9.84 TL ET
+.352941 .396078 .447059 rg
+BT 1 0 0 1 56.69291 584.2205 Tm (   reporting incidents en 24 h, objectif zéro accident majeur.) Tj T* ET
+BT /F2 8.2 Tf 9.84 TL ET
+.062745 .094118 .14902 rg
+BT 1 0 0 1 56.69291 572.5984 Tm (\177 Contenu local : ) Tj T* ET
+BT /F1 8.2 Tf 9.84 TL ET
+.352941 .396078 .447059 rg
+BT 1 0 0 1 123.3507 572.5984 Tm (80 % de contenu local visé \227 recrutement, formation et sous-traitance) Tj T* ET
+BT /F1 8.2 Tf 9.84 TL ET
+.352941 .396078 .447059 rg
+BT 1 0 0 1 56.69291 560.9764 Tm (   tchadiennes documentés contrat par contrat.) Tj T* ET
+BT /F2 8.2 Tf 9.84 TL ET
+.062745 .094118 .14902 rg
+BT 1 0 0 1 56.69291 549.3543 Tm (\177 Éthique & conformité : ) Tj T* ET
+BT /F1 8.2 Tf 9.84 TL ET
+.352941 .396078 .447059 rg
+BT 1 0 0 1 152.0507 549.3543 Tm (charte publiée, canaux de signalement, aucune sollicitation) Tj T* ET
+BT /F1 8.2 Tf 9.84 TL ET
+.352941 .396078 .447059 rg
+BT 1 0 0 1 56.69291 537.7323 Tm (   de paiement hors canaux officiels @enertchad.td.) Tj T* ET
+BT /F2 11.5 Tf 13.8 TL ET
+.062745 .094118 .14902 rg
+BT 1 0 0 1 56.69291 514.7717 Tm (Engager la discussion) Tj T* ET
+.760784 .572549 .180392 RG
+1.4 w
+n 56.69291 508.5354 m 164.4094 508.5354 l S
+BT /F1 8.2 Tf 9.84 TL ET
+.352941 .396078 .447059 rg
+BT 1 0 0 1 56.69291 494.9291 Tm (Opérateur E&P, détenteur de blocs ou partenaire technique : écrivez à contact@enertchad.td) Tj T* ET
+BT /F1 8.2 Tf 9.84 TL ET
+.352941 .396078 .447059 rg
+BT 1 0 0 1 56.69291 483.3071 Tm (\(objet « Opérateur E&P »\) en précisant champ ou bloc concerné et service visé \227 étude,) Tj T* ET
+BT /F1 8.2 Tf 9.84 TL ET
+.352941 .396078 .447059 rg
+BT 1 0 0 1 56.69291 471.685 Tm (pilote EOR ou intervention OFS. Première réponse sous 48 h ouvrées.) Tj T* ET
+BT /F1 8.2 Tf 9.84 TL ET
+.352941 .396078 .447059 rg
+BT 1 0 0 1 56.69291 460.063 Tm  T* ET
+BT /F1 8.2 Tf 9.84 TL ET
+.352941 .396078 .447059 rg
+BT 1 0 0 1 56.69291 448.4409 Tm (Ressources en ligne : /amont \(vue d\222ensemble\), /amont/eor \(méthode EOR\), /amont/services-ep) Tj T* ET
+BT /F1 8.2 Tf 9.84 TL ET
+.352941 .396078 .447059 rg
+BT 1 0 0 1 56.69291 436.8189 Tm (\(catalogue OFS\), Calculateur du baril additionnel et Configurateur de service intégré.) Tj T* ET
+.847059 .862745 .886275 RG
+n
+63.77953 351.4961 m
+531.4961 351.4961 l
+535.4135 351.4961 538.5827 354.6652 538.5827 358.5827 c
+538.5827 406.7717 l
+538.5827 410.6891 535.4135 413.8583 531.4961 413.8583 c
+63.77953 413.8583 l
+59.86205 413.8583 56.69291 410.6891 56.69291 406.7717 c
+56.69291 358.5827 l
+56.69291 354.6652 59.86205 351.4961 63.77953 351.4961 c
+h
+S
+.952941 .917647 .819608 rg
+n 56.69291 351.4961 3.11811 62.3622 re f*
+BT /F2 9 Tf 10.8 TL ET
+.062745 .094118 .14902 rg
+BT 1 0 0 1 70.86614 399.685 Tm (Statut de la société) Tj T* ET
+BT /F1 7.8 Tf 9.36 TL ET
+.352941 .396078 .447059 rg
+BT 1 0 0 1 70.86614 385.5118 Tm (EnerTchad S.A. est en constitution : les capacités décrites sont l\222offre en cours de structuration.) Tj T* ET
+BT 1 0 0 1 70.86614 374.1732 Tm (Aucune souscription publique n\222est ouverte ; les échanges partenaires se font sous NDA.) Tj T* ET
+BT 1 0 0 1 70.86614 362.8346 Tm (Cette fiche est remplacée dès qu\222une version plus récente paraît \(datée en en-tête\).) Tj T* ET
+BT /F1 6.4 Tf 7.68 TL ET
+.352941 .396078 .447059 rg
+BT 1 0 0 1 56.69291 34.01575 Tm (EnerTchad S.A. \227 société en constitution \227 Radisson, Block D, Bureau 23, Sabangali, N'Djamena, Tchad) Tj T* ET
+BT 1 0 0 1 56.69291 24.37795 Tm (contact@enertchad.td · +235 99 29 86 96 · enertchad-delta.vercel.app \227 Document indicatif, sans valeur contractuelle.) Tj T* ET
+BT 1 0 0 1 522.5699 24.37795 Tm (p. 2/3) Tj T* ET
+ 
+
+endstream
+endobj
+11 0 obj
+<<
+/Contents 12 0 R
+/MediaBox [ 0 0 595.2756 841.8898 ]
+/Resources <<
+/Font 13 0 R
+/ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
+>>
+/Rotate 0
+/Trans <<
+>>
+/Type /Page
+/Parent 1 0 R
+>>
+endobj
+12 0 obj
+<<
+/Filter [ /ASCII85Decode /FlateDecode ]
+/Length 2625
+>>
+stream
+Gau0D?$G$]&q/B8QmXh,AXZsKV=paGUpTR[b%`Krfa#4+'I4n(5=1HHZY+dc%R?-Z74O;/g>l?K6#pRf_7b%H%bUR6d@X8En88[omi?@P=RX&q/K`R<YZQtY\-mj+fKj0SPN**&S4m1KJ/*Ur"I$V1+lB?@SYP;^K.rftPK=MGM;c_V]@j@q=>+:$0(47=>/8.s=&p9dp$W]9qi?No)ZBiJbN7_jl<Y%=DbkTOpPUo=[N"/,a+r@(`cIZXqLHNtAe3)*p"fIYIJ9sn$gWkXrn`I`[8k"[4V,`@SS@#tl$#@(ijCMuJ!]SH3J5<$$8rrF$C5L$G3[;&M<-1);em<$r]L,i:;?]*4OX*']qbhCMeGR)?7:jIkf:'[58jGQnQnLM\h=q31oHb%.Sg4\H*sC$&d3VXF'>@Z9l3#M`W;0##R4M?S`1?._=Z44R@$j^^?*mBYlZ,@Hq&n=-OEqYHsT`#=o9gmN+47L'b4b-<,+&kc;Z(:$]QqMjuQ,W"oJWW@<mFagZpF)"gngkO-m.bQJKnI9o9n3ncOr?]OmQD*c=^!fs2r'PrUi&rpU<PJj2`H#e+L**#CIR\J&EU?>,9(*1L'Em20@$e?5F4=H6%u&_F1WM+6mb1h^^5@oFm#*kkc]%rLKC]oJd(M,]_aPo'\CEkS+d_%\a"o^AGucYFa<qPoSNBVUuZ\IR$NAb>Ef+jf5[\X'93Y&[JpSA'%0!9(3&e^UTI_QiIZ@4T:C-@WSYIo2[ZPn@X8AfInsD;.Q_Lrn0Qo3R2+jY_-`Y;;WF77$YV*S0/j?G8u0\R]3C#o-em7^MsS)K=I"7*2o3%`:]&%NNZq9l"!1_.=#*[G'iKGn]^\_)?5P&>r`T(E]@T:D;+DW#^r*54=3`@b4peNd\5Xpc#V$YS&ciE778e9Vbh2@[7_lo)3sDH)p)39r17$3,dWn%G[A(M?i0c<]BI3``lHUJd=l1RR%Xd+f>(,j)U^"le.TY:^HKlMMiGnO>nXacpP,nf&&j+B2;=-*KQ!q>&Hk4'CQ&kZ+[+k7Qe//lA2$TUr@[Bf&GL&46!TOhOq?7_8(C2X+>TC7^Je$N-Vj]_C!8nd+\%d\4INIoo'gTc)gg.ohE),K[?rU&]+]3_K3Sh<Kem"P!\QW6m2bCFeD<*60rVKd5j2-ifPQl-(%;4OY?Dg7>tpuKIe]r*5FOM#mhdn+-S+jgI`$4;:0\EH/fD^";FNF4P@2D#(hJ!8\'Ma'Eu8&L7`aB@_93Y,FA=n$^3F>*&_-]$Uifk^..-YCLe[$:UEKbiABRcJ2uHV'^(mtE:s`)9^:8N[$K]&+pg=^1)*`!=D:<3)+_T=:BFC#Ys>DG`es']-M10jaFM?q!Ke`mOXE;S-NbPg#"5'T6pBgkI*`K$TI9;]+nEP_H.!:MdLgbF,4`Y`H1G.$-QS<s(D_:*6MJ3[MkniOc]ud^<8C+NYU/iC(T<4R/jls-h3O1(>1^O*igA\bPY0+CUm#%HF&p&3M:&bH<kER4MWi>M;Nt@"Wr(iCG(,?;U!%Ra)TPj7_8#!L`9GI3k8Xj>f[G=W,F_NJ`u%"+0uI23>X>4P=O<t.Xs20GmblQ!%R`A$dTf^GWp:e/]GOQ#'l<DjELj"Ar4e+E)%^@7+NgK-b+pE-A3cC$J1-VQ-jMn4%L,<](_Gf%-d&54b%*c%aabe'Sg]eo.)-847L4E>^*oit]'gbg<?2:g6_?jEs$;i1&>/3NBS?Qm#TI27GUUP;k2O]\UcHo9>2RZ:7.fQO^[N&neq*kVW3<82@AU3(:=rVRTRt3heot`HqR@qL%l/P\-MTN<((VM,TWm:h.[KUi>r<EUT&k*W^Uh#D(=.V.9GYG%53q&+ehCf`5_DDt"Eo0"*\$$WQMP[+f@&rn<ufg9H978@2H]m6dI<O"Z(?h6!Hu$q;Geu6Jr30O%i>>;JOM/.rkttui4)O/WK?WB(tH"iNLZ3j"/@rbEP`9YYb[BiK*9/kl6qC<1L4m,M$cIRY$'h=Y2p<S-Sl$n^8<3PSYl4S-IjOZp?MP_6H.HJH&6l.!Ju<P9VsqOc?NV?T;hfV%"Pj)GA'KVIdAZ:XW-%u^l>)e\>:Cf8EK'NEiCtRZb"c-ZFSR>O=r7Lak,m5mrl6V!:X(u.b:`@7FOY@.h$g7lPh35l_(=b0""XsCO2*SN,b.U%J1YW@lU7c$NO<Mjf=%*=C#Tli5PL;\Nu^\&pGctNXUXP[p51.#DT-*(',0kCo=dJ2+Au01KBaj8ZR@c/IQrMO1,g&0:X-)3Q]T09p/ug75YV[=7gIRo_>+kLXWD=>[Jal=ncQF;6;dKK+t71(/(r0E<ob<0@sd+:=gW$IaU=UaO7X%Wuef'"?k@0_L1$[RkL;CA<F<#-E?(SVKB*XBPA0Wq6lKEYLI,Lc&Gg<`beG(=&!sjaf&/WbEQU%$*Fk(FSag'oYB'50+sRP%Bi:feuH0?9I"&L=ER:iGYr3Zd#WRi,H$d+,^kFOm3e:]%nm2-T^-#X9qNm&4i,1Cr9d[-O/p"Kg#b0^RmSigMP$AuZW1fl-2g-oa)m3Z5F;S(X/&83GG_E+k@mo\1t;$JNBtu\_LW&Z."00+LF&PT]/94U$`V952fS*H1CLi7c`dJGrrTe)?Y]~>
+endstream
+endobj
+13 0 obj
+<<
+/F1 14 0 R
+/F2 15 0 R
+>>
+endobj
+14 0 obj
+<<
+/BaseFont /Helvetica
+/Encoding /WinAnsiEncoding
+/Name /F1
+/Subtype /Type1
+/Type /Font
+>>
+endobj
+15 0 obj
+<<
+/BaseFont /Helvetica-Bold
+/Encoding /WinAnsiEncoding
+/Name /F2
+/Subtype /Type1
+/Type /Font
+>>
 endobj
 xref
-0 11
+0 16
 0000000000 65535 f 
-0000000061 00000 n 
-0000000102 00000 n 
-0000000209 00000 n 
-0000000321 00000 n 
-0000000524 00000 n 
-0000000728 00000 n 
-0000000796 00000 n 
-0000001108 00000 n 
-0000001173 00000 n 
-0000004686 00000 n 
+0000000015 00000 n 
+0000000087 00000 n 
+0000000248 00000 n 
+0000000297 00000 n 
+0000000496 00000 n 
+0000010369 00000 n 
+0000010410 00000 n 
+0000010517 00000 n 
+0000010629 00000 n 
+0000010829 00000 n 
+0000017352 00000 n 
+0000017554 00000 n 
+0000020272 00000 n 
+0000020316 00000 n 
+0000020424 00000 n 
 trailer
 <<
-/ID 
-[<a4403b111b4caa9309df251e980b25a7><a4403b111b4caa9309df251e980b25a7>]
-% ReportLab generated PDF document -- digest (opensource)
-
-/Info 7 0 R
-/Root 6 0 R
-/Size 11
+/Size 16
+/Root 3 0 R
+/Info 2 0 R
 >>
 startxref
-7425
+20537
 %%EOF
