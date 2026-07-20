@@ -1,5 +1,5 @@
 
-:root{--navy:#0B1422;--cream:#F5F7FA;--gold:#E8C36A;--gold-l:#F0CE82;--blue-l:#5AA7F0;--green:#34D399;--cyan:#38BDF8;--amber-l:#F2B45A;--muted:#7C8AA2;--hair:rgba(90,167,240,.14)}
+:root{--navy:#0B1422;--cream:#F5F7FA;--gold:#E8C36A;--gold-l:var(--gold-xl,#F0CE82);--blue-l:#5AA7F0;--green:#34D399;--cyan:#38BDF8;--amber-l:#F2B45A;--muted:#7C8AA2;--hair:rgba(90,167,240,.14)}
 *{box-sizing:border-box}html{scroll-behavior:smooth}
 body{margin:0;background:var(--navy);color:var(--cream);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.7}
 .wrap{max-width:980px;margin:0 auto;padding:0 24px}

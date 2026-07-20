@@ -1,2 +1,2 @@
 /* dedoublonnage v2 */
-.et-soc-foot a{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border:1px solid rgba(255,255,255,.12);border-radius:10px;color:rgba(245,247,250,.62);transition:border-color .2s,color .2s,transform .2s}.et-soc-foot a:hover{border-color:#F0CE82;color:#F0CE82;transform:translateY(-2px)}.et-soc-foot svg{width:17px;height:17px}
+.et-soc-foot a{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border:1px solid rgba(255,255,255,.12);border-radius:10px;color:rgba(245,247,250,.62);transition:border-color .2s,color .2s,transform .2s}.et-soc-foot a:hover{border-color:var(--gold-xl,#F0CE82);color:var(--gold-xl,#F0CE82);transform:translateY(-2px)}.et-soc-foot svg{width:17px;height:17px}

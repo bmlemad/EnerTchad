@@ -7,7 +7,7 @@
 .cmdk-item .ci-ic{flex:none;width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;background:rgba(90,167,240,.10);color:var(--blue-l)}
 .cmdk-item .ci-tx{min-width:0}
 .cmdk-item .ci-t{font-family:var(--fd);font-size:.94rem;color:var(--cream);display:block;line-height:1.25}
-.cmdk-item .ci-k{font-size:.74rem;color:#9FB0C9;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cmdk-item .ci-k{font-size:.74rem;color:var(--muted-l,#9FB0C9);display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .cmdk-item.on{background:rgba(90,167,240,.13);border-color:rgba(90,167,240,.32)}
 .cmdk-item.on .ci-t{color:#fff}
 .cmdk-item.on .ci-ic{background:rgba(232,195,106,.16);color:var(--gold-l)}
