@@ -174,3 +174,12 @@ html.et-plight main button:not(#plightBtn):not(#_):not(#__):not(#___){color:#1A2
 html.et-plight [class^="fcta"]:not(#_):not(#__):not(#___),html.et-plight [class^="fcta"] *:not(#_):not(#__):not(#___){color:#0B1422!important}
 html.et-plight main a[href$="investisseurs#cadre-eco"]:not(#_){text-decoration:underline!important}
 html.et-plight a[href$="investisseurs#cadre-eco"]:not(#_){text-decoration:underline!important}
+
+/* Hubs AR/EN en mode clair */
+html[dir="rtl"] #plightBtn{left:auto;right:14px}
+html.et-plight main .wrap>a[href]:not([class]):not(#_):not(#__){text-decoration:underline!important}
+html.et-plight .lang a:not(#_):not(#__){color:#0B1422!important}
+html.et-plight header .lang a:not(#_):not(#__):not(#___){color:#F5F7FA!important}
+html.et-plight .wrap>a:not([class]):not(#_):not(#__){text-decoration:underline!important;color:#155FA8!important}
+html.et-plight footer .wrap>a:not(#_):not(#__):not(#___){color:#EAD9A8!important;text-decoration:underline!important}
+html.et-plight header .lang a[aria-current="page"]:not(#_):not(#__):not(#___):not(#____),html.et-plight header .lang a.on:not(#_):not(#__):not(#___):not(#____){color:#0B1422!important;background:#E8C36A!important}
