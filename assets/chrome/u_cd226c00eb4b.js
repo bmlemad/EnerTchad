@@ -12,7 +12,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 
 /* Mode clair des pages editoriales (liste blanche) : bouton fixe en bas a gauche, persistant. */
 try{(function(){var KEY='et-plight';
-var PAGES=['/communiques','/communiques-en','/faq','/faq-en','/glossaire-petrolier','/glossaire-petrolier-en','/avertissements','/mentions-legales','/cookies','/accessibilite','/publications'];
+var PAGES=['/communiques','/communiques-en','/faq','/faq-en','/glossaire-petrolier','/glossaire-petrolier-en','/avertissements','/mentions-legales','/cookies','/accessibilite','/publications','/carnets','/carnets-en','/ethique','/ethique-en','/societe','/societe-en','/engagements','/engagements-en','/communautes','/cibles-2030','/investisseurs','/investisseurs-en','/projets','/projets-en','/clients','/clients-en'];
 var p=location.pathname.replace(/\.html$/,'').replace(/\/$/,'')||'/';
 if(PAGES.indexOf(p)<0)return;
 function apply(on){document.documentElement.classList.toggle('et-plight',on)}
