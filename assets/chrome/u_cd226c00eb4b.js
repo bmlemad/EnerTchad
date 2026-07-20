@@ -9,3 +9,17 @@ b.setAttribute('aria-pressed',document.documentElement.classList.contains('et-jl
 b.addEventListener('click',function(){var on=!document.documentElement.classList.contains('et-jlight');apply(on);b.setAttribute('aria-pressed',on?'true':'false');try{localStorage.setItem(KEY,on?'1':'0')}catch(e){}});
 bar.appendChild(b)}
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init()})()}catch(e){}
+
+/* Mode clair des pages editoriales (liste blanche) : bouton fixe en bas a gauche, persistant. */
+try{(function(){var KEY='et-plight';
+var PAGES=['/communiques','/communiques-en','/faq','/faq-en','/glossaire-petrolier','/glossaire-petrolier-en','/avertissements','/mentions-legales','/cookies','/accessibilite','/publications'];
+var p=location.pathname.replace(/\.html$/,'').replace(/\/$/,'')||'/';
+if(PAGES.indexOf(p)<0)return;
+function apply(on){document.documentElement.classList.toggle('et-plight',on)}
+try{if(localStorage.getItem(KEY)==='1')apply(true)}catch(e){}
+function init(){if(document.getElementById('plightBtn'))return;
+var b=document.createElement('button');b.id='plightBtn';b.type='button';b.title='Basculer lecture claire / sombre';b.setAttribute('aria-label','Basculer lecture claire ou sombre');
+b.setAttribute('aria-pressed',document.documentElement.classList.contains('et-plight')?'true':'false');b.textContent='☀';
+b.addEventListener('click',function(){var on=!document.documentElement.classList.contains('et-plight');apply(on);b.setAttribute('aria-pressed',on?'true':'false');try{localStorage.setItem(KEY,on?'1':'0')}catch(e){}});
+document.body.appendChild(b)}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init()})()}catch(e){}

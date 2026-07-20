@@ -71,3 +71,23 @@ html.et-jlight a:not(#_):not(.jback):not(.jlang){color:#155FA8}
 html.et-jlight{background:#FAF7F1!important}
 html.et-jlight .jtop a b:not(#_){color:#E8C36A!important}
 html.et-jlight #secrail a:not(#_){background:rgba(11,20,34,.85)!important;color:rgba(245,247,250,.85)!important;border-color:rgba(255,255,255,.14)!important}
+
+/* Mode clair des pages editoriales : contenu principal seulement, chrome et heros restent sombres */
+#plightBtn{position:fixed;left:14px;bottom:14px;z-index:70;width:38px;height:38px;border-radius:999px;border:1px solid rgba(245,247,250,.28);background:rgba(11,20,34,.72);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);color:#F5F7FA;cursor:pointer;font-size:1rem;line-height:1}
+#plightBtn:hover{border-color:#E8C36A}
+@media(max-width:720px){#plightBtn{bottom:74px}}
+html.et-plight main:not(#_){background:#FAF7F1!important;color:#1A2330!important}
+html.et-plight main section:not(#_),html.et-plight main article:not(#_),html.et-plight main div:not(#_){background-color:transparent!important;box-shadow:none!important;color:#1A2330}
+html.et-plight main .subland{display:none!important}
+html.et-plight main h1:not(#_),html.et-plight main h2:not(#_),html.et-plight main h3:not(#_),html.et-plight main h4:not(#_),html.et-plight main b:not(#_),html.et-plight main strong:not(#_),html.et-plight main dt:not(#_){color:#10161F!important;text-shadow:none!important;-webkit-text-fill-color:#10161F!important;background:none!important}
+html.et-plight main p:not(#_),html.et-plight main li:not(#_),html.et-plight main span:not(#_),html.et-plight main td:not(#_),html.et-plight main th:not(#_),html.et-plight main i:not(#_),html.et-plight main em:not(#_),html.et-plight main small:not(#_),html.et-plight main dd:not(#_),html.et-plight main figcaption:not(#_),html.et-plight main blockquote:not(#_),html.et-plight main label:not(#_){color:#2A3648!important;text-shadow:none!important}
+html.et-plight main h1 em:not(#_),html.et-plight main h2 em:not(#_),html.et-plight main .kick:not(#_),html.et-plight main [class*="kick"]:not(#_){color:#7A5C14!important}
+html.et-plight main a:not(#_){color:#155FA8!important}
+html.et-plight main .card:not(#_),html.et-plight main [class*="card"]:not(#_),html.et-plight main [class*="panel"]:not(#_){background:#FFFFFF!important;border:1px solid rgba(26,35,48,.16)!important;box-shadow:0 2px 10px rgba(26,35,48,.06)!important}
+html.et-plight main td:not(#_),html.et-plight main th:not(#_){border-color:rgba(26,35,48,.2)!important;background:#fff!important}
+html.et-plight .subland{display:none!important}
+html.et-plight body{background:#FAF7F1!important}
+html.et-plight main .cp-ct a:not(#_) b{color:#10161F!important}
+html.et-plight main section:not(#_),html.et-plight main article:not(#_),html.et-plight main div:not(#_){background-image:none!important}
+html.et-plight main article:not(#_){background-color:#fff!important;border:1px solid rgba(26,35,48,.16)!important;box-shadow:0 2px 10px rgba(26,35,48,.06)!important}
+html.et-plight #secrail a:not(#_){background:rgba(11,20,34,.85)!important;color:rgba(245,247,250,.85)!important;border-color:rgba(255,255,255,.14)!important}
