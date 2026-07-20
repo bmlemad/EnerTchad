@@ -93,3 +93,69 @@ html.et-plight main article:not(#_){background-color:#fff!important;border:1px s
 html.et-plight #secrail a:not(#_){background:rgba(11,20,34,.85)!important;color:rgba(245,247,250,.85)!important;border-color:rgba(255,255,255,.14)!important}
 html.et-plight main button:not(#_):not(#plightBtn){color:#1A2330!important}
 html.et-plight main [role="tab"]:not(#_),html.et-plight main [role="button"]:not(#_){color:#1A2330!important}
+/* Exceptions heros photo : le texte y reste clair */
+html.et-plight main .pghero h1:not(#_),html.et-plight main .pghero h2:not(#_),html.et-plight main [class*="hero"] h1:not(#_),html.et-plight main .diapo h1:not(#_),html.et-plight main .diapo h2:not(#_),html.et-plight main .pghero b:not(#_),html.et-plight main [class*="hero"] h1 b:not(#_){color:#FFFFFF!important;-webkit-text-fill-color:#FFFFFF!important}
+html.et-plight main .pghero h1 em:not(#_),html.et-plight main [class*="hero"] h1 em:not(#_){color:#F0CE82!important;-webkit-text-fill-color:#F0CE82!important}
+html.et-plight main .pghero p:not(#_),html.et-plight main .pghero li:not(#_),html.et-plight main .pghero span:not(#_),html.et-plight main [class*="hero"] p:not(#_),html.et-plight main .diapo p:not(#_),html.et-plight main .diapo span:not(#_){color:rgba(245,247,250,.92)!important}
+html.et-plight main .pghero .pgk:not(#_),html.et-plight main .pghero .kick:not(#_){color:#F0CE82!important}
+html.et-plight main .pghero a:not(#_){color:#F5F7FA!important}
+html.et-plight main .pghero .crumb a:not(#_),html.et-plight main .pghero .crumb span:not(#_),html.et-plight main .pghero .bcrumb a:not(#_){color:rgba(245,247,250,.78)!important}
+
+/* Contraste AA du mode clair : pied de page en sombre plein, accents assombris */
+html.et-plight footer:not(#_),html.et-jlight footer:not(#_){background:#0B1422!important}
+html.et-plight footer *:not(#_):not(a),html.et-jlight footer *:not(#_):not(a){color:rgba(245,247,250,.85)!important}
+html.et-plight footer a:not(#_),html.et-jlight footer a:not(#_){color:#EAD9A8!important}
+html.et-plight footer h3:not(#_),html.et-jlight footer h3:not(#_),html.et-plight footer b:not(#_),html.et-jlight footer b:not(#_){color:#FFFFFF!important}
+html.et-jlight .jfoot:not(#_){background:#0B1422!important;color:rgba(245,247,250,.85)!important}
+html.et-jlight .jfoot a:not(#_){color:#EAD9A8!important}
+html.et-plight main .kick:not(#_),html.et-plight main [class*="kick"]:not(#_),html.et-plight main h1 em:not(#_),html.et-plight main h2 em:not(#_){color:#6B500F!important}
+html.et-jlight h1 em:not(#_),html.et-jlight h2 em:not(#_),html.et-jlight .jkick:not(#_),html.et-jlight .sc-lb:not(#_),html.et-jlight .cb-k:not(#_){color:#6B500F!important}
+html.et-plight main .esg-t td:not(#_),html.et-plight main .esg-t th:not(#_),html.et-plight main .esg-t b:not(#_),html.et-plight main .epw-no:not(#_),html.et-plight main .epw-k:not(#_){color:#1A2330!important;background:#fff!important}
+
+/* Pages dont les sections vivent hors <main> (ex. cibles-2030) : miroir des regles d'encre */
+html.et-plight body>section:not(#_){background:#FAF7F1!important;background-image:none!important;box-shadow:none!important}
+html.et-plight body>section div:not(#_){background-color:transparent!important;background-image:none!important;box-shadow:none!important}
+html.et-plight body>section h1:not(#_),html.et-plight body>section h2:not(#_),html.et-plight body>section h3:not(#_),html.et-plight body>section h4:not(#_),html.et-plight body>section b:not(#_),html.et-plight body>section strong:not(#_),html.et-plight body>section dt:not(#_){color:#10161F!important;text-shadow:none!important;-webkit-text-fill-color:#10161F!important;background:none!important}
+html.et-plight body>section p:not(#_),html.et-plight body>section li:not(#_),html.et-plight body>section span:not(#_),html.et-plight body>section td:not(#_),html.et-plight body>section th:not(#_),html.et-plight body>section i:not(#_),html.et-plight body>section em:not(#_),html.et-plight body>section small:not(#_),html.et-plight body>section dd:not(#_),html.et-plight body>section caption:not(#_),html.et-plight body>section label:not(#_),html.et-plight body>section button:not(#_){color:#2A3648!important;text-shadow:none!important}
+html.et-plight body>section a:not(#_){color:#155FA8!important}
+html.et-plight body>section td:not(#_),html.et-plight body>section th:not(#_){background:#fff!important;border-color:rgba(26,35,48,.2)!important}
+html.et-plight body>section .card:not(#_),html.et-plight body>section [class*="card"]:not(#_){background:#FFFFFF!important;border:1px solid rgba(26,35,48,.16)!important}
+html.et-plight body>section [class*="kick"]:not(#_),html.et-plight body>section h2 em:not(#_),html.et-plight body>section [class*="-no"]:not(#_),html.et-plight body>section [class*="-k"]:not(#_){color:#6B500F!important}
+html.et-plight body>header.pghero h1:not(#_),html.et-plight body>header.pghero h2:not(#_){color:#fff!important}
+html.et-plight body>header.pghero p:not(#_),html.et-plight body>header.pghero span:not(#_){color:rgba(245,247,250,.92)!important}
+
+/* Finitions AA du mode clair */
+html.et-plight main .ivt-cta:not(#_),html.et-plight body>section .ivt-cta:not(#_){background:#0B1422!important;color:#F5F7FA!important;border-color:#0B1422!important}
+html.et-plight [style*="E8C36A"]:not(#_),html.et-plight [style*="F0CE82"]:not(#_){color:#8A6210!important}
+html.et-plight [style*="5AA7F0"]:not(#_),html.et-plight [style*="7FB8F5"]:not(#_){color:#1B4E8C!important}
+html.et-plight [style*="34D399"]:not(#_){color:#0E7A55!important}
+html.et-jlight .hero-cap:not(#_){color:rgba(245,247,250,.9)!important;background:rgba(8,13,22,.78)!important}
+html.et-jlight .sc-lb:not(#_){color:#F0CE82!important}
+html.et-jlight .more-k:not(#_){color:#6B500F!important}
+html.et-jlight .cb-k:not(#_){color:#F0CE82!important}
+html.et-jlight .cb:not(#_),html.et-jlight [class*="cta-band"]:not(#_){background:#0B1422!important}
+html.et-jlight .cb-btn:not(#_){background:#E8C36A!important;color:#0B1422!important}
+html.et-jlight .jfoot *:not(#_):not(a){color:rgba(245,247,250,.85)!important}
+html.et-plight .share-k:not(#_),html.et-plight main [class*="share-k"]:not(#_){color:#55647C!important}
+html.et-plight [class^="pgr"] .pgr-t:not(#_),html.et-plight .pgr-t:not(#_){color:#10161F!important}
+html.et-plight .pgr-dir:not(#_){color:#6B500F!important}
+html.et-plight .back:not(#_){color:rgba(245,247,250,.88)!important}
+html.et-plight body>header:not([class*="pghero"]) h1:not(#_),html.et-plight body>header:not([class*="pghero"]) h2:not(#_){color:#10161F!important}
+html.et-plight body>header:not([class*="pghero"]) p:not(#_),html.et-plight body>header:not([class*="pghero"]) span:not(#_){color:#2A3648!important}
+html.et-plight main summary:not(#_),html.et-plight body>section summary:not(#_){color:#10161F!important}
+
+/* Ultimes finitions AA */
+html.et-plight footer a:not(#_):not(#__){color:#EAD9A8!important}
+html.et-jlight footer a:not(#_):not(#__),html.et-jlight .jfoot a:not(#_):not(#__){color:#EAD9A8!important}
+html.et-plight main section.hero h1:not(#_):not(#__),html.et-plight main section.hero h2:not(#_):not(#__){color:#10161F!important;-webkit-text-fill-color:#10161F!important}
+html.et-plight main section.hero p:not(#_):not(#__),html.et-plight main section.hero span:not(#_):not(#__){color:#2A3648!important}
+html.et-jlight section:has(.cb-in):not(#_){background:#0B1422!important}
+html.et-jlight section:has(.cb-in) h2:not(#_):not(#__),html.et-jlight section:has(.cb-in) h3:not(#_):not(#__){color:#FFFFFF!important}
+html.et-jlight section:has(.cb-in) p:not(#_):not(#__):not(.cb-k){color:rgba(245,247,250,.85)!important}
+html.et-plight #modele div:not([class]):not(#_){color:#2A3648!important}
+html.et-plight .cta div:not([class]):not(#_){color:#2A3648!important}
+html.et-plight .btn:not(#_):not(#plightBtn){background:#0B1422!important;color:#F5F7FA!important;border-color:#0B1422!important}
+html.et-plight #contact-rapide a:not(#_):not(#__){color:#0B1422!important}
+html.et-plight main section.hero h1 em:not(#_):not(#__){background:none!important;-webkit-text-fill-color:#6B500F!important;color:#6B500F!important}
+html.et-plight .corp-nav a:not(#_):not(#__){color:#EAD9A8!important}
+html.et-plight #kit-media div:not(#_):not(#__){color:#2A3648!important}
