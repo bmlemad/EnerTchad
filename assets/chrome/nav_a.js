@@ -56,3 +56,25 @@ try{(function(){
   if(href===location.pathname)return;
   document.querySelectorAll('a.nx-lang').forEach(function(a){a.href=href;});
 })()}catch(e){}
+
+/* Orientation : surligner la page courante dans les megamenus.
+   Compare le pathname aux href des liens .nx-mega ; pose aria-current="page"
+   (stylé en CSS). Si aucun onglet n'est actif, allume aussi le déclencheur parent. */
+try{(function(){
+  var norm=function(u){u=(u||'').replace(/^https?:\/\/[^\/]+/,'').split('#')[0].split('?')[0];
+    u=u.replace(/index\.html$/,'').replace(/\.html$/,'');
+    if(u.length>1)u=u.replace(/\/$/,'');return u||'/';};
+  var here=norm(location.pathname);if(here==='/')return;
+  var hit=null;
+  document.querySelectorAll('.nx-mega a[href]').forEach(function(a){
+    if(norm(a.getAttribute('href'))===here){a.setAttribute('aria-current','page');hit=a;}
+  });
+  if(!hit)return;
+  if(!document.querySelector('.nav-trigger.is-active')){
+    var mega=hit.closest('.nx-mega');
+    if(mega&&mega.id){
+      var t=document.querySelector('.nav-trigger[aria-controls="'+mega.id+'"]');
+      if(t){t.classList.add('is-active');t.setAttribute('aria-current','page');}
+    }
+  }
+})()}catch(e){}

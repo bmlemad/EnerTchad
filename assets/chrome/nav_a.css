@@ -113,3 +113,8 @@ body:has(#navLinks.open) #ckn,body:has(#navLinks.open) .lum-ctl,body:has(#navLin
 /* ── méga-menu translucide (verre) ── */
 @media(min-width:1241px){@supports((-webkit-backdrop-filter:blur(1px)) or (backdrop-filter:blur(1px))){.nx-mega{background:linear-gradient(180deg,rgba(12,23,40,.72),rgba(9,18,32,.80));-webkit-backdrop-filter:blur(26px) saturate(160%);backdrop-filter:blur(26px) saturate(160%);border-color:rgba(255,255,255,.14)}}}
 @media(prefers-reduced-transparency:reduce){.nx-mega{background:linear-gradient(180deg,#0c1728,#0a1422)!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}}
+
+/* Orientation : page courante dans les megamenus + barre utilitaire */
+.nx-col a[aria-current="page"]{background:linear-gradient(90deg,rgba(217,168,79,.14),transparent 80%);box-shadow:inset 2px 0 0 var(--gold-l,#E8C36A);padding-left:10px;border-radius:6px}
+.nx-col a[aria-current="page"] strong{color:var(--gold-l,#E8C36A)}
+.nx-util-in>a[aria-current]{color:var(--gold-l,#E8C36A);font-weight:600}
