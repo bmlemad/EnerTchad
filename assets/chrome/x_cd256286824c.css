@@ -157,3 +157,20 @@ html.et-plight #contact-rapide a:not(#_):not(#__){color:#0B1422!important}
 html.et-plight main section.hero h1 em:not(#_):not(#__){background:none!important;-webkit-text-fill-color:#6B500F!important;color:#6B500F!important}
 html.et-plight .corp-nav a:not(#_):not(#__){color:#EAD9A8!important}
 html.et-plight #kit-media div:not(#_):not(#__){color:#2A3648!important}
+
+/* QA mode clair : finitions passe B */
+html.et-plight body>header.hero:not(#_){background:#0B1422!important;background-image:none!important}
+html.et-plight a[style*="F59E0B"]:not(#_):not(#__),html.et-plight a[style*="f59e0b"]:not(#_):not(#__),html.et-plight body>section a[href$="#partenariats"]:not(#_):not(#__){color:#0B1422!important}
+html.et-plight main code:not(#_):not(#__),html.et-plight body>section code:not(#_):not(#__){color:#6B500F!important;background:rgba(138,98,16,.08)!important}
+html.et-plight .pof-ct:not(#_):not(#__){color:#10161F!important}
+html.et-plight .ets-lv:not(#_):not(#__){color:#0B1422!important}
+html.et-plight .ets-lv:not(#_):not(#__){color:#0B1422!important;background:rgba(255,255,255,.88)!important;border-radius:6px;padding:0 6px}
+html.et-plight body>section div:not(#_):not(#__){color:#2A3648!important}
+html.et-plight #secrail a:not(#_):not(#__),html.et-jlight #secrail a:not(#_):not(#__){background:rgba(11,20,34,.96)!important}
+html.et-plight main div:not(#_):not(#__){color:#2A3648!important}
+html.et-plight main .pghero div:not(#_):not(#__):not(#___),html.et-plight main [class*="hero"] div:not(#_):not(#__):not(#___),html.et-plight main .diapo div:not(#_):not(#__):not(#___){color:rgba(245,247,250,.92)!important}
+html.et-plight main section.hero div:not(#_):not(#__):not(#___):not(#____){color:#2A3648!important}
+html.et-plight main button:not(#plightBtn):not(#_):not(#__):not(#___){color:#1A2330!important}
+html.et-plight [class^="fcta"]:not(#_):not(#__):not(#___),html.et-plight [class^="fcta"] *:not(#_):not(#__):not(#___){color:#0B1422!important}
+html.et-plight main a[href$="investisseurs#cadre-eco"]:not(#_){text-decoration:underline!important}
+html.et-plight a[href$="investisseurs#cadre-eco"]:not(#_){text-decoration:underline!important}
