@@ -20,8 +20,6 @@
 .nx-util-in .nx-invest{color:var(--gold-l);border:1px solid rgba(232,195,106,.42);
   border-radius:8px;padding:5px 13px;font-weight:600;transition:background .2s,color .2s}
 .nx-util-in .nx-invest:hover{background:rgba(232,195,106,.14);color:var(--gold-l)}
-/* la barre se replie au défilement (nav compacte) */
-.nav.scrolled .nx-util{margin-top:-39px;opacity:0;pointer-events:none}
 
 /* ---------- Rubriques (desktop) ---------- */
 .nx .nav-links{flex:1;margin-left:14px}
@@ -40,8 +38,7 @@
     opacity:1;visibility:visible;transform:translateY(0)}
   .nav-item.kbesc .nx-mega{opacity:0!important;visibility:hidden!important}
   .nav-item:nth-last-child(-n+3) .nx-mega{left:auto;right:0}
-}
-.nx-col h4,.nx-col .nxh{font-family:var(--fm,ui-monospace,Menlo,monospace);font-size:.64rem;letter-spacing:.16em;
+}.nx-col .nxh{font-family:var(--fm,ui-monospace,Menlo,monospace);font-size:.64rem;letter-spacing:.16em;
   text-transform:uppercase;color:var(--gold-l);margin:4px 10px 8px;padding-bottom:7px;
   border-bottom:1px solid var(--hair);font-weight:600}
 .nx-col a{display:block;text-decoration:none;color:var(--cream);padding:8px 10px;border-radius:10px;
@@ -88,8 +85,7 @@ body.nx-clear .hero{padding-top:72px}
   .nx .nav-trigger{font-family:var(--fd);font-weight:700;font-size:1.06rem;padding:16px 10px}
   .nx-mega{position:static;min-width:0;max-width:none;display:none;opacity:1;visibility:visible;
     transform:none;background:none;border:0;border-radius:0;box-shadow:none;padding:2px 10px 16px}
-  .nav-item.open .nx-mega{display:block;animation:nxIn .28s var(--ease)}
-  .nx-col h4,.nx-col .nxh{margin:12px 0 4px;padding-bottom:0;border-bottom:0}
+  .nav-item.open .nx-mega{display:block;animation:nxIn .28s var(--ease)}.nx-col .nxh{margin:12px 0 4px;padding-bottom:0;border-bottom:0}
   .nx-col a{padding:9px 0}
   .nx-col a strong{font-size:.98rem}
   .nx-feat{display:none}

@@ -19,7 +19,6 @@
 .hx-gauge .fill{width:0;background:linear-gradient(90deg,var(--gold),var(--gold-l));animation:hxg 1.6s cubic-bezier(.2,.7,.3,1) .5s forwards}
 @keyframes hxg{to{width:14%}}
 .hx-pulse{transform-box:fill-box;transform-origin:center;animation:hxp 2.6s ease-in-out infinite}
-.hx-pulse.d2{animation-delay:.6s}.hx-pulse.d3{animation-delay:1.2s}.hx-pulse.d4{animation-delay:1.8s}
 @keyframes hxp{0%,100%{opacity:.45;transform:scale(.85)}50%{opacity:1;transform:scale(1.25)}}
 .hx-flow{stroke-dasharray:6 8;animation:hxf 1.3s linear infinite}
 @keyframes hxf{to{stroke-dashoffset:-28}}
