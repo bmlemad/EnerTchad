@@ -114,3 +114,6 @@ body:has(#navLinks.open) #ckn,body:has(#navLinks.open) .lum-ctl,body:has(#navLin
 .nx-col a[aria-current="page"]{background:linear-gradient(90deg,rgba(217,168,79,.14),transparent 80%);box-shadow:inset 2px 0 0 var(--gold-l,#E8C36A);padding-left:10px;border-radius:6px}
 .nx-col a[aria-current="page"] strong{color:var(--gold-l,#E8C36A)}
 .nx-util-in>a[aria-current]{color:var(--gold-l,#E8C36A);font-weight:600}
+
+/* Etat replié universel (accompagne le repli JS de nav_a.js) */
+.nav.nx.scrolled{background:rgba(8,14,26,.82);-webkit-backdrop-filter:blur(20px) saturate(150%);backdrop-filter:blur(20px) saturate(150%);border-bottom:1px solid var(--hair);box-shadow:0 8px 32px rgba(0,0,0,.3)}

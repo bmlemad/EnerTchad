@@ -78,3 +78,9 @@ try{(function(){
     }
   }
 })()}catch(e){}
+
+/* Nav au scroll : repli universel (certaines pages ne chargent pas le script nav historique).
+   Idempotent avec le gestionnaire existant. */
+try{(function(){var nav=document.getElementById('nav')||document.querySelector('.nav.nx');if(!nav)return;
+var f=function(){nav.classList.toggle('scrolled',(window.scrollY||window.pageYOffset||0)>20)};
+addEventListener('scroll',f,{passive:true});f();})()}catch(e){}
