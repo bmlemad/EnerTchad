@@ -42,7 +42,8 @@ Le script `scripts/check_integrity.py` signale déjà (avant ces correctifs) 144
 ### 1 · Mode clair — deux mécanismes, un fichier de gouvernance chacun
 - **Carnets (46 pages)** : classe `html.et-jlight`, bouton ☀ injecté dans `.jtop`. JS et thème dans `assets/chrome/u_cd226c00eb4b.js` + `x_cd256286824c.css`. Fonctionne par **redéfinition des variables** `--bg/--ink/--gold…` du `:root` des journaux.
 - **89 autres pages** : classe `html.et-plight`, bouton fixe en bas à gauche. **La liste blanche des chemins vit dans `u_cd226c00eb4b.js`** (`var PAGES=[…]`) — pour ajouter une page au mode clair : ajouter son chemin (sans `.html`, sans `/index`) ET vérifier le rendu + axe avant.
-- Persistance localStorage séparée (`et-jlight` / `et-plight`).
+- **Préférence unifiée** : les deux clés localStorage (`et-jlight` / `et-plight`) sont écrites ensemble à chaque bascule et lues l'une comme repli de l'autre — le choix suit le visiteur entre carnets et pages classiques.
+- **Auto-thème** : sans choix stocké, `prefers-color-scheme: light` applique le clair automatiquement ; le bouton ☀ reste prioritaire dans les deux sens.
 
 ### 2 · Les règles d'or du thème clair (durement apprises)
 - **Spécificité** : les thèmes de page utilisent `!important` ; les règles claires les battent avec `:not(#_)` (niveau ID) et, pour surclasser une règle claire antérieure, `:not(#_):not(#__)` (2 niveaux).
