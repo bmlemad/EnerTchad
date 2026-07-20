@@ -140,8 +140,6 @@ html.et-plight .share-k:not(#_),html.et-plight main [class*="share-k"]:not(#_){c
 html.et-plight [class^="pgr"] .pgr-t:not(#_),html.et-plight .pgr-t:not(#_){color:#10161F!important}
 html.et-plight .pgr-dir:not(#_){color:#6B500F!important}
 html.et-plight .back:not(#_){color:rgba(245,247,250,.88)!important}
-html.et-plight body>header:not([class*="pghero"]) h1:not(#_),html.et-plight body>header:not([class*="pghero"]) h2:not(#_){color:#10161F!important}
-html.et-plight body>header:not([class*="pghero"]) p:not(#_),html.et-plight body>header:not([class*="pghero"]) span:not(#_){color:#2A3648!important}
 html.et-plight main summary:not(#_),html.et-plight body>section summary:not(#_){color:#10161F!important}
 
 /* Ultimes finitions AA */
