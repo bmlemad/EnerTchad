@@ -47,3 +47,8 @@ html{scrollbar-gutter:stable}
 .biz-clab{font-size:.66rem!important}
 .scrollcue{font-size:.68rem!important}
 }
+
+/* QA mobile : libelles de la barre d onglets un cran plus lisibles */
+#nezBar a{font-size:.64rem}
+/* QA mobile : zone tactile du bouton de langue des journaux */
+.jlang{padding:10px 12px!important;margin:-10px -12px -10px 0;border-radius:10px}
