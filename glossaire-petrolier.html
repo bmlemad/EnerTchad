@@ -194,7 +194,7 @@ footer a{color:var(--muted);text-decoration:none}footer a:hover{color:var(--gold
     var okc=(fc==='all'||fc===cat);
     var oks=(!term||norm(ab+' '+name+' '+def).indexOf(term)>=0);
     if(!(okc&&oks))return '';n++;
-    return '<div class="term" style="--ac:'+C[cat]+'"><dt>'+name+'</dt><div class="ab">'+ab+' · '+CN[cat]+'</div><dd>'+def+'</dd></div>';
+    return '<div class="term" style="--ac:'+C[cat]+'"><dt>'+name+'</dt><dd><div class="ab">'+ab+' · '+CN[cat]+'</div>'+def+'</dd></div>';
   }).join('');
   empty.hidden=n>0;
  }
