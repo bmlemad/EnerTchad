@@ -164,3 +164,9 @@ h1,h2,h3{text-wrap:balance}
 
 /* Bandeau cookies compact sur mobile : une ligne, les CTA du bas restent visibles */
 @media(max-width:520px){#ckn{display:flex;align-items:center;gap:8px;font-size:0;line-height:1.2;padding:8px 10px 8px 14px}#ckn b{font-size:.73rem;white-space:nowrap}#ckn .ck-row{margin-top:0;margin-left:auto;flex:none;gap:6px}#ckn a{font-size:.69rem;padding:10px 2px!important}#ckn button{padding:9px 12px;font-size:.69rem;white-space:nowrap}}
+
+/* Verre liquide accueil — repli opaque sous prefers-reduced-transparency (ticker + legende carrousel gardaient un fond translucide sans flou) */
+@media (prefers-reduced-transparency:reduce){
+#oilticker:not(#_){-webkit-backdrop-filter:none!important;backdrop-filter:none!important;background:rgba(8,13,22,.97)!important}
+#diapo-cap:not(#_){-webkit-backdrop-filter:none!important;backdrop-filter:none!important;background:rgba(8,13,22,.96)!important}
+}

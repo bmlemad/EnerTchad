@@ -193,3 +193,9 @@ html.et-plight main a.cb-p:not(#_){color:#0B1422!important}
 html.et-plight main a.hxi-cta:not(#_){color:#0B1422!important}
 html.et-plight main a.iv-pivot:not(#_){color:#0a1322!important}
 html.et-plight main .mkt-nav a:not(#_){color:rgba(245,247,250,.74)!important}
+
+/* Verre liquide — repli opaque complet sous prefers-reduced-transparency (le reset universel perdait contre les blurs !important à spécificité id/classe) */
+@media (prefers-reduced-transparency:reduce){
+.nav:not(#_),.nav.scrolled:not(#_){-webkit-backdrop-filter:none!important;backdrop-filter:none!important;background:rgba(8,13,24,.97)!important}
+#ckn:not(#_){-webkit-backdrop-filter:none!important;backdrop-filter:none!important;background:#0B1422!important}
+}
