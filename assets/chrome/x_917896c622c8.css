@@ -17,3 +17,6 @@ td:not(#_),th:not(#_){border:1px solid #999!important;background:#fff!important}
 img{max-width:100%!important}
 *{animation:none!important}
 }
+
+/* variateur retire — controle sans pilote JS, masque universellement */
+.lum-ctl{display:none!important}
