@@ -170,3 +170,9 @@ h1,h2,h3{text-wrap:balance}
 #oilticker:not(#_){-webkit-backdrop-filter:none!important;backdrop-filter:none!important;background:rgba(8,13,22,.97)!important}
 #diapo-cap:not(#_){-webkit-backdrop-filter:none!important;backdrop-filter:none!important;background:rgba(8,13,22,.96)!important}
 }
+
+/* Verre liquide accueil — repli navigateurs sans backdrop-filter */
+@supports not ((-webkit-backdrop-filter:blur(1px)) or (backdrop-filter:blur(1px))){
+#oilticker:not(#_){background:rgba(8,13,22,.97)!important}
+#diapo-cap:not(#_){background:rgba(8,13,22,.96)!important}
+}

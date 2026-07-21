@@ -199,3 +199,11 @@ html.et-plight main .mkt-nav a:not(#_){color:rgba(245,247,250,.74)!important}
 .nav:not(#_),.nav.scrolled:not(#_){-webkit-backdrop-filter:none!important;backdrop-filter:none!important;background:rgba(8,13,24,.97)!important}
 #ckn:not(#_){-webkit-backdrop-filter:none!important;backdrop-filter:none!important;background:#0B1422!important}
 }
+
+/* Verre liquide — meme repli pour navigateurs sans backdrop-filter */
+@supports not ((-webkit-backdrop-filter:blur(1px)) or (backdrop-filter:blur(1px))){
+.nav:not(#_),.nav.scrolled:not(#_){background:rgba(8,13,24,.97)!important}
+#ckn:not(#_){background:#0B1422!important}
+.nx-mega:not(#_){background:linear-gradient(180deg,#0c1728,#0a1422)!important}
+.pole-subnav:not(#_){background:#0B1422!important}
+}

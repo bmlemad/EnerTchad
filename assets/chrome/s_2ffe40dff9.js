@@ -17,7 +17,7 @@ all.forEach(function(h){
 });
 if(items.length<3||items.length>14)return;
 if(items.length>9)items=items.slice(0,9);
-var cols=['var(--gold-l,#E8C36A)','#34D399','var(--blue-l,#5AA7F0)','#9B86D6','var(--amber-l,#F2A65A)','#38BDF8','#D177B4','#7EE08A','#E8C36A'];
+var cols=['var(--gold-l,#E8C36A)','#34D399','var(--blue-l,#5AA7F0)','#C4B5FD','var(--amber-l,#F2A65A)','#38BDF8','#D177B4','#7EE08A','#E8C36A'];
 var r=document.createElement('nav');r.id='secrail';
 var lang=(document.documentElement.lang||'').indexOf('en')===0;
 r.setAttribute('aria-label',lang?'On this page':'Sommaire de la page');
