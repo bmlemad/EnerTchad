@@ -149,6 +149,140 @@ a.prj-pole{text-decoration:none;cursor:pointer;transition:opacity .2s,filter .2s
 <div class="epw-g">
 <div class="epw-c"><span class="epw-no">Discipline 1</span><h3>Inspecter</h3><p>Contrôles réglementaires, inspection visuelle et instrumentée des bacs, lignes et pompes : chaque équipement a son dossier et son échéancier — rien ne vieillit sans être vu.</p></div><div class="epw-c"><span class="epw-no">Discipline 2</span><h3>Surveiller la corrosion</h3><p>Coupons témoins, mesures d’épaisseur, injection d’inhibiteurs : la corrosion ne s’arrête jamais, sa surveillance non plus.</p></div><div class="epw-c"><span class="epw-no">Discipline 3</span><h3>Entretenir avant la panne</h3><p>Maintenance préventive planifiée sur les organes critiques — vannes, pompes, instrumentation : l’heure d’entretien programmée vaut toujours moins cher que l’arrêt subi.</p></div><div class="epw-c"><span class="epw-no">Discipline 4</span><h3>Se préparer au pire</h3><p>Exercices de déversement, plans d’urgence testés, kits de première intervention positionnés : le scénario noir se répète à blanc, régulièrement.</p></div><div class="epw-c"><span class="epw-no">Discipline 5</span><h3>Compter juste</h3><p>Métrologie des comptages aux interfaces : bilans matière réconciliés, écarts investigués — l’intégrité, c’est aussi celle des chiffres.</p></div>
 </div></div></section>
+<section class="isv-find reveal" id="trouver" aria-label="Trouvez votre service" style="scroll-margin-top:128px"><style>
+.isv-find{padding:clamp(44px,6vw,72px) 0;border-top:1px solid var(--hair)}
+.isv-find .wrap,.isv-eng .wrap,.isv-lect .wrap{max-width:1140px;margin:0 auto;padding:0 var(--gut,24px)}
+.isv-k{font-family:var(--fm);font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;color:var(--blue-l,#5AA7F0);display:inline-flex;align-items:center;gap:9px}
+.isv-k::before{content:"";width:7px;height:7px;background:var(--blue-l,#5AA7F0);transform:rotate(45deg);flex:none}
+.isv-find h2,.isv-eng h2,.isv-lect h2{font-family:var(--fd);font-weight:800;font-size:clamp(1.5rem,3vw,2.1rem);line-height:1.15;margin:10px 0 8px;color:var(--cream,#F5F7FA)}
+.isv-lead{color:var(--muted,#9FB0C3);max-width:70ch;line-height:1.65;margin:0 0 22px}
+.isv-fl{font-family:var(--fm);font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted,#9FB0C3);margin:14px 0 8px}
+.isv-chips{display:flex;flex-wrap:wrap;gap:8px}
+.isv-chip{font-family:var(--fm);font-size:.8rem;font-weight:600;padding:9px 16px;border-radius:999px;border:1px solid var(--hair);background:rgba(255,255,255,.03);color:rgba(245,247,250,.82);cursor:pointer;transition:border-color .18s,background .18s,color .18s;min-height:38px}
+.isv-chip:hover{border-color:var(--blue-l,#5AA7F0)}
+.isv-chip[aria-pressed="true"]{background:var(--blue-l,#5AA7F0);border-color:var(--blue-l,#5AA7F0);color:#0B1422}
+.isv-chip:focus-visible{outline:2px solid var(--gold-l,#E8C36A);outline-offset:2px}
+.isv-count{font-family:var(--fm);font-size:.74rem;color:var(--muted,#9FB0C3);margin:18px 0 4px;min-height:1.2em}
+.isv-count b{color:var(--blue-l,#5AA7F0)}
+.isv-sg{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:14px}
+@media(max-width:980px){.isv-sg{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){.isv-sg{grid-template-columns:1fr}}
+.isv-s{border:1px solid var(--hair);border-top:3px solid var(--blue-l,#5AA7F0);border-radius:16px;padding:20px 19px;background:rgba(255,255,255,.03);display:flex;flex-direction:column}
+.isv-s[hidden]{display:none}
+.isv-s .no{font-family:var(--fm);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--blue-l,#5AA7F0)}
+.isv-s h3{font-family:var(--fd);font-weight:700;font-size:1.08rem;margin:7px 0 9px;color:var(--cream,#F5F7FA)}
+.isv-s p{margin:0 0 10px;color:var(--muted,#9FB0C3);font-size:.89rem;line-height:1.6}
+.isv-s ul{margin:0 0 14px;padding:0;list-style:none}
+.isv-s li{position:relative;padding-left:15px;margin:6px 0;color:var(--muted,#9FB0C3);font-size:.84rem;line-height:1.5}
+.isv-s li::before{content:"—";position:absolute;left:0;color:var(--blue-l,#5AA7F0)}
+.isv-s .go{margin-top:auto;font-family:var(--fm);font-size:.78rem;font-weight:600;color:var(--blue-l,#5AA7F0);text-decoration:none}
+.isv-s .go:hover{text-decoration:underline}
+.isv-cta{display:inline-flex;align-items:center;gap:8px;margin-top:22px;padding:13px 22px;border-radius:12px;background:var(--blue-l,#5AA7F0);color:#0B1422;font-family:var(--fd);font-weight:700;font-size:.9rem;text-decoration:none}
+.isv-cta:hover{filter:brightness(1.08)}
+.isv-reset{font-family:var(--fm);font-size:.74rem;color:var(--muted,#9FB0C3);background:none;border:none;cursor:pointer;text-decoration:underline;margin-left:12px;padding:6px}
+.isv-note{font-family:var(--fm);font-size:.66rem;letter-spacing:.08em;color:rgba(245,247,250,.6);margin-top:18px}
+@media(prefers-reduced-motion:reduce){.isv-chip{transition:none}}
+html.et-plight a.isv-cta:not(#_):not(#__){color:#0B1422!important}
+</style><div class="wrap">
+<span class="isv-k">Intermédiaire · Trouvez votre service</span>
+<h2>Dites-nous qui vous êtes, nous vous montrons par où entrer.</h2>
+<p class="isv-lead">L'Intermédiaire ne vend pas un produit : il vend la certitude que le baril part, arrive et se compte. Filtrez nos services selon votre profil et votre besoin — ou parcourez les six.</p>
+<div class="isv-fl" id="lblProfil">Je suis…</div>
+<div class="isv-chips" role="group" aria-labelledby="lblProfil">
+<button type="button" class="isv-chip" data-facet="profil" data-val="operateur" aria-pressed="false">Opérateur producteur</button>
+<button type="button" class="isv-chip" data-facet="profil" data-val="etat" aria-pressed="false">État &amp; institution</button>
+<button type="button" class="isv-chip" data-facet="profil" data-val="marketeur" aria-pressed="false">Marketeur / distributeur</button>
+<button type="button" class="isv-chip" data-facet="profil" data-val="industriel" aria-pressed="false">Grand consommateur</button>
+</div>
+<div class="isv-fl" id="lblBesoin">J'ai besoin de…</div>
+<div class="isv-chips" role="group" aria-labelledby="lblBesoin">
+<button type="button" class="isv-chip" data-facet="besoin" data-val="transporter" aria-pressed="false">Transporter</button>
+<button type="button" class="isv-chip" data-facet="besoin" data-val="stocker" aria-pressed="false">Stocker</button>
+<button type="button" class="isv-chip" data-facet="besoin" data-val="securiser" aria-pressed="false">Sécuriser mes installations</button>
+<button type="button" class="isv-chip" data-facet="besoin" data-val="compter" aria-pressed="false">Compter juste</button>
+</div>
+<p class="isv-count" aria-live="polite"><b id="isvN">6</b> services affichés<button type="button" class="isv-reset" id="isvReset" hidden>Tout réafficher</button></p>
+<div class="isv-sg" id="isvGrid">
+<div class="isv-s" data-profils="operateur" data-besoins="transporter compter"><span class="no">Service 01 · Transport</span><h3>Transport contractuel de brut</h3><p>Faire rouler le baril avant le tube : camions-citernes spécialisés, itinéraires surveillés, comptage contradictoire au départ et à l'arrivée.</p><ul><li>Enlèvement au champ &amp; convoyage sécurisé</li><li>Suivi GPS et journal de bord numérique</li><li>Bilan matière remis à chaque rotation</li></ul><a class="go" href="/contact">Discuter une évacuation →</a></div>
+<div class="isv-s" data-profils="marketeur industriel" data-besoins="stocker"><span class="no">Service 02 · Stockage</span><h3>Capacité dépôt &amp; mise à disposition</h3><p>De l'espace dans nos dépôts, pas seulement des mètres cubes : réception, garde, rotation et restitution sous bilan contradictoire.</p><ul><li>Stockage brut &amp; produits raffinés</li><li>Rotation premier entré, premier sorti</li><li>Restitution mesurée, écarts investigués</li></ul><a class="go" href="/contact">Réserver de la capacité →</a></div>
+<div class="isv-s" data-profils="operateur industriel" data-besoins="securiser"><span class="no">Service 03 · Intégrité</span><h3>Intégrité pour tiers</h3><p>Nos cinq disciplines au service de vos installations : inspection instrumentée, surveillance corrosion, préparation d'urgence.</p><ul><li>Campagnes d'inspection réglementaire</li><li>Coupons témoins &amp; inhibiteurs</li><li>Plans d'urgence testés avec vos équipes</li></ul><a class="go" href="/Configurateur_Service_Integre_v2#p=operateur&amp;d=int">Configurer un périmètre intégrité →</a></div>
+<div class="isv-s" data-profils="operateur etat marketeur" data-besoins="compter"><span class="no">Service 04 · Métrologie</span><h3>Métrologie &amp; comptage</h3><p>L'intégrité, c'est aussi celle des chiffres : étalonnage des comptages, bilans matière réconciliés, écarts documentés — auditables par vos propres contrôleurs.</p><ul><li>Comptage contradictoire aux interfaces</li><li>Réconciliation mensuelle publiée</li><li>Assistance à l'audit des volumes</li></ul><a class="go" href="/contact">Parler métrologie →</a></div>
+<div class="isv-s" data-profils="etat" data-besoins="stocker securiser"><span class="no">Service 05 · Réserve</span><h3>Réserve stratégique distribuée</h3><p>L'outil par lequel la puissance publique voit, mesure et sécurise ce qui circule : stocks distribués, traçabilité, bilans auditables.</p><ul><li>Dépôts répartis, aucun point unique de défaillance</li><li>Visibilité temps réel des volumes</li><li>Cadre contractuel État–opérateur</li></ul><a class="go" href="/journal-stockage-strategique">Comprendre la réserve distribuée →</a></div>
+<div class="isv-s" data-profils="marketeur industriel" data-besoins="transporter stocker"><span class="no">Service 06 · Dernier km</span><h3>Mise à disposition au plus près</h3><p>Le baril livré là où votre activité en a besoin : transport aval, stations mobiles, dépotage sur site — aucune région n'est le bout du monde.</p><ul><li>Livraison sur site industriel ou agricole</li><li>Stations mobiles pour zones sans béton</li><li>Programmation récurrente ou à la demande</li></ul><a class="go" href="/journal-mobile-stations">Voir les stations mobiles →</a></div>
+</div>
+<a class="isv-cta" id="isvCta" href="/contact">Discuter ce périmètre avec nous →</a>
+<p class="isv-note">(offres cibles · société en constitution — chaque périmètre se contractualise à l'ouverture commerciale)</p>
+</div>
+<script>(function(){
+var sel={profil:new Set(),besoin:new Set()};
+var chips=document.querySelectorAll('.isv-chip');
+var cards=document.querySelectorAll('#isvGrid .isv-s');
+var n=document.getElementById('isvN'),reset=document.getElementById('isvReset');
+function apply(){
+  var count=0;
+  cards.forEach(function(c){
+    var ok=true;
+    if(sel.profil.size){ok=ok&&Array.from(sel.profil).some(function(v){return (c.dataset.profils||'').split(' ').indexOf(v)>=0});}
+    if(sel.besoin.size){ok=ok&&Array.from(sel.besoin).some(function(v){return (c.dataset.besoins||'').split(' ').indexOf(v)>=0});}
+    c.hidden=!ok; if(ok)count++;
+  });
+  n.textContent=count;
+  reset.hidden=!(sel.profil.size||sel.besoin.size);
+}
+chips.forEach(function(ch){ch.addEventListener('click',function(){
+  var f=ch.dataset.facet,v=ch.dataset.val;
+  if(sel[f].has(v)){sel[f].delete(v);ch.setAttribute('aria-pressed','false');}
+  else{sel[f].add(v);ch.setAttribute('aria-pressed','true');}
+  apply();
+});});
+reset.addEventListener('click',function(){
+  sel.profil.clear();sel.besoin.clear();
+  chips.forEach(function(c){c.setAttribute('aria-pressed','false')});
+  apply();
+});
+})();</script></section>
+
+<section class="isv-eng reveal" id="engagements" aria-label="Nos engagements d'exploitation" style="scroll-margin-top:128px"><style>
+.isv-eng{padding:clamp(40px,5.5vw,64px) 0;border-top:1px solid var(--hair)}
+.isv-eng .eg{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:22px}
+@media(max-width:880px){.isv-eng .eg{grid-template-columns:repeat(2,1fr)}}
+.isv-e{border:1px solid var(--hair);border-left:3px solid var(--blue-l,#5AA7F0);border-radius:14px;padding:16px 17px;background:rgba(255,255,255,.02)}
+.isv-e b{display:block;font-family:var(--fd);font-weight:800;font-size:clamp(1.25rem,2.2vw,1.6rem);color:var(--cream,#F5F7FA);line-height:1.1}
+.isv-e i{display:block;font-style:normal;font-family:var(--fm);font-size:.64rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted,#9FB0C3);margin-top:7px;line-height:1.5}
+</style><div class="wrap">
+<span class="isv-k">La promesse, en chiffres tenables</span>
+<h2>Nos engagements d'exploitation — des cibles datées, pas des slogans.</h2>
+<p class="isv-lead">Un logisticien se juge sur quatre chiffres. Voici ceux sur lesquels nous accepterons d'être jugés, publiés et réconciliés — dès la première rotation.</p>
+<div class="eg">
+<div class="isv-e"><b>≥ 98 %</b><i>Disponibilité visée des dépôts en exploitation</i></div>
+<div class="isv-e"><b>&lt; 0,5 %</b><i>Pertes en ligne cibles, au bilan matière réconcilié</i></div>
+<div class="isv-e"><b>&lt; 72 h</b><i>Mobilisation d'un convoi sur le corridor, sur demande ferme</i></div>
+<div class="isv-e"><b>100 %</b><i>Des comptages réconciliés chaque mois, écarts documentés</i></div>
+</div>
+<p class="isv-note" style="font-family:var(--fm);font-size:.66rem;letter-spacing:.08em;color:rgba(245,247,250,.6);margin-top:16px">(cibles d'exploitation · objectifs de mise en service, non des résultats constatés)</p>
+</div></section>
+
+<section class="isv-lect reveal" id="lectures" aria-label="À lire au journal" style="scroll-margin-top:128px"><style>
+.isv-lect{padding:clamp(40px,5.5vw,60px) 0;border-top:1px solid var(--hair)}
+.isv-lect .lg{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:20px}
+@media(max-width:980px){.isv-lect .lg{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.isv-lect .lg{grid-template-columns:1fr}}
+.isv-l{display:block;border:1px solid var(--hair);border-radius:14px;padding:16px 17px;background:rgba(255,255,255,.02);text-decoration:none;transition:border-color .2s,transform .2s}
+.isv-l:hover{border-color:var(--blue-l,#5AA7F0);transform:translateY(-2px)}
+.isv-l .lk{font-family:var(--fm);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--blue-l,#5AA7F0)}
+.isv-l strong{display:block;font-family:var(--fd);font-weight:700;font-size:.98rem;color:var(--cream,#F5F7FA);margin:6px 0 6px;line-height:1.3}
+.isv-l span{display:block;color:var(--muted,#9FB0C3);font-size:.82rem;line-height:1.5}
+@media(prefers-reduced-motion:reduce){.isv-l{transition:none}.isv-l:hover{transform:none}}
+</style><div class="wrap">
+<span class="isv-k">Pour aller plus loin</span>
+<h2>Le maillon du milieu, raconté au journal.</h2>
+<div class="lg">
+<a class="isv-l" href="/journal-corridor-doba-kribi"><span class="lk">Carnet · Corridor</span><strong>Doba–Kribi, l'artère de 1 070 km</strong><span>Comment un pays enclavé s'est donné un accès à la mer — et ce que nous en ferons.</span></a>
+<a class="isv-l" href="/journal-brut-par-camion"><span class="lk">Carnet · Transport</span><strong>Le brut par camion, sérieusement</strong><span>Faire rouler le baril avant le tube : l'économie réelle du transport routier de brut.</span></a>
+<a class="isv-l" href="/journal-stockage-strategique"><span class="lk">Carnet · Réserve</span><strong>La réserve stratégique distribuée</strong><span>Transformer l'enclavement en résilience : des stocks partout où le pays en a besoin.</span></a>
+<a class="isv-l" href="/journal-mobile-stations"><span class="lk">Carnet · Dernier km</span><strong>Les stations mobiles</strong><span>Quand la station va au client : servir les régions sans attendre le béton.</span></a>
+</div></div></section>
+
 <section id="cta-band" aria-label="Travailler avec EnerTchad"><div class="cb-in"><div><p class="cb-k">◆ Unité · Innovation · Durabilité</p><h2>De la roche-mère à la pompe, <em>bâti au Tchad</em>.</h2></div><div class="cb-a"><a class="cb-btn cb-p" href="/investisseurs">Investir →</a><a class="cb-btn cb-g" href="/contact">Nous contacter</a></div></div></section><footer>
   <div class="wrap">
     
