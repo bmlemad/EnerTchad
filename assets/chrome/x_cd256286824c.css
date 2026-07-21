@@ -183,3 +183,8 @@ html.et-plight header .lang a:not(#_):not(#__):not(#___){color:#F5F7FA!important
 html.et-plight .wrap>a:not([class]):not(#_):not(#__){text-decoration:underline!important;color:#155FA8!important}
 html.et-plight footer .wrap>a:not(#_):not(#__):not(#___){color:#EAD9A8!important;text-decoration:underline!important}
 html.et-plight header .lang a[aria-current="page"]:not(#_):not(#__):not(#___):not(#____),html.et-plight header .lang a.on:not(#_):not(#__):not(#___):not(#____){color:#0B1422!important;background:#E8C36A!important}
+
+html.et-plight main .pghero a.pgh-btn:not(#_){color:#0B1422!important}
+html.et-plight main a.ppt-cta:not(#_){color:#0B1422!important}
+html.et-plight main a.mad-cta:not(#_){color:#0B1422!important}
+html.et-plight main .mkt-cta a:not(#_):not(#__){color:#0B1422!important}
