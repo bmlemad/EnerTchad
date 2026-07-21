@@ -176,3 +176,5 @@ h1,h2,h3{text-wrap:balance}
 #oilticker:not(#_){background:rgba(8,13,22,.97)!important}
 #diapo-cap:not(#_){background:rgba(8,13,22,.96)!important}
 }
+
+@media(max-width:768px){#homeFab{display:none!important}}

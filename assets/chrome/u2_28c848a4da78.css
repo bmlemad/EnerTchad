@@ -10,3 +10,6 @@
 @media(prefers-reduced-transparency:reduce){.pmani-k{background:#0B1422;-webkit-backdrop-filter:none;backdrop-filter:none}}
 @supports not ((-webkit-backdrop-filter:blur(1px)) or (backdrop-filter:blur(1px))){.pmani-k{background:#0B1422}}
 html.et-plight .pmani-k:not(#_):not(#__):not(#___){color:var(--pac)!important}
+
+/* mobile : halo derriere le texte hero — les mots croisant le point chaud du ciel restent lisibles */
+@media(max-width:768px){header.pghero .pgh-flash:not(#_),header.pghero .pgl:not(#_),header.pghero .pgl strong:not(#_){text-shadow:0 1px 3px rgba(4,8,16,.85),0 0 16px rgba(4,8,16,.7),0 0 34px rgba(4,8,16,.5)!important}}

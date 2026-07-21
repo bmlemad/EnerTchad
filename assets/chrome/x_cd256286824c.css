@@ -207,3 +207,7 @@ html.et-plight main .mkt-nav a:not(#_){color:rgba(245,247,250,.74)!important}
 .nx-mega:not(#_){background:linear-gradient(180deg,#0c1728,#0a1422)!important}
 .pole-subnav:not(#_){background:#0B1422!important}
 }
+
+/* mobile : cible tactile 44px pour la loupe ; indices clavier du cmdk masques au tactile */
+@media(max-width:768px){#nav .nav-search{width:44px!important;height:44px!important}}
+@media(hover:none) and (pointer:coarse){.cmdk-foot{display:none!important}}
