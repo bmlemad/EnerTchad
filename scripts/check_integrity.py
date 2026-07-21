@@ -13,7 +13,7 @@ for p in pages:
     h = open(p, encoding='utf-8').read()
     for m in re.finditer(r'(?:href|src)="([^"#?{$]+?)(?:[#?][^"]*)?"', h):
         u = m.group(1)
-        if u.startswith(('http', 'mailto', 'tel', '//', 'data:', 'javascript:')) or "'" in u: continue
+        if u.startswith(('http', 'mailto', 'tel', '//', 'data:', 'javascript:', '/_vercel/')) or "'" in u: continue
         t = u.lstrip('/') if u.startswith('/') else os.path.normpath(os.path.join(os.path.dirname(p), u)).replace('\\', '/')
         if t in ('', '.') or t.startswith('photos/'): continue
         if not exists(t): errs.append(f'{p}: lien cassé {u}')
