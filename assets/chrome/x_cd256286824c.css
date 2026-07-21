@@ -188,3 +188,8 @@ html.et-plight main .pghero a.pgh-btn:not(#_){color:#0B1422!important}
 html.et-plight main a.ppt-cta:not(#_){color:#0B1422!important}
 html.et-plight main a.mad-cta:not(#_){color:#0B1422!important}
 html.et-plight main .mkt-cta a:not(#_):not(#__){color:#0B1422!important}
+html.et-plight main a.btn:not(.btn-p):not(.btn-g):not(.btn-ghost):not(.btn-shop):not(#_){color:#0B1422!important}
+html.et-plight main a.cb-p:not(#_){color:#0B1422!important}
+html.et-plight main a.hxi-cta:not(#_){color:#0B1422!important}
+html.et-plight main a.iv-pivot:not(#_){color:#0a1322!important}
+html.et-plight main .mkt-nav a:not(#_){color:rgba(245,247,250,.74)!important}
