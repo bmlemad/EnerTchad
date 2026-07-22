@@ -313,3 +313,17 @@ html.et-plight main .mkt-nav a:not(#_){color:rgba(245,247,250,.74)!important}
 
 /* RTL : miroir complet des flottants — plightBtn a droite, toTop a gauche */
 html[dir="rtl"] #toTop{right:auto!important;left:16px!important}
+
+/* ===== QA MOBILE — zones de tap etendues (2026-07) ===== */
+@media(pointer:coarse){
+.flip-cta:not(#_x),.sc-link:not(#_x),.pj-go:not(#_x),.hnews-all:not(#_x){
+ padding-top:9px!important;padding-bottom:9px!important;margin-top:-9px!important;margin-bottom:-9px!important;position:relative;z-index:1}
+a.ttl:not(#_x),nav.bcrumb a{padding:8px 4px;margin:-8px -4px}
+a[style*="underline"]{padding-top:8px;padding-bottom:8px}
+.pj-syn a{padding-top:8px;padding-bottom:8px}
+.foot-sep+a,a:has(+.foot-sep){padding:8px 3px}
+html[lang="ar"] a{padding-top:6px;padding-bottom:6px}
+}
+@media(max-width:768px){
+#navLinks.open:not(#_x),.nav-links.open:not(#_x){background:linear-gradient(180deg,rgba(9,15,27,.985),rgba(6,10,18,.995))!important}
+}
