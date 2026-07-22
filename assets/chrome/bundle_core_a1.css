@@ -17,6 +17,7 @@ main a[href^="http"]::after{content:" (" attr(href) ")";font-size:.72em;color:#6
 .card:not(#_),[class*="card"]:not(#_),[class*="panel"]:not(#_),.pgh-kpi:not(#_){background:#fff!important;border:1px solid #bbb!important;box-shadow:none!important}
 table{border-collapse:collapse!important}
 td:not(#_),th:not(#_){border:1px solid #999!important;background:#fff!important}
+.foot-desc:not(#_):not(#__),footer p:not(#_):not(#__),footer a:not(#_):not(#__){color:#222!important}
 img{max-width:100%!important}
 *{animation:none!important}
 }
