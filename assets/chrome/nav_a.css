@@ -117,3 +117,39 @@ body:has(#navLinks.open) #ckn,body:has(#navLinks.open) .lum-ctl,body:has(#navLin
 
 /* Etat replié universel (accompagne le repli JS de nav_a.js) */
 .nav.nx.scrolled{background:rgba(8,14,26,.82);-webkit-backdrop-filter:blur(20px) saturate(150%);backdrop-filter:blur(20px) saturate(150%);border-bottom:1px solid var(--hair);box-shadow:0 8px 32px rgba(0,0,0,.3)}
+
+/* ===== ULTRA MEGA — couche 2026-07 ===== */
+@media(min-width:769px){
+.nx .nx-mega:not(#_x){min-width:720px;max-width:min(92vw,820px);
+ background:linear-gradient(180deg,rgba(12,21,36,.94),rgba(8,14,25,.97))!important;
+ -webkit-backdrop-filter:blur(28px) saturate(1.5);backdrop-filter:blur(28px) saturate(1.5);
+ border:1px solid rgba(255,255,255,.09);border-radius:20px;padding:22px 22px 18px;gap:8px 26px;
+ box-shadow:0 24px 70px -18px rgba(0,0,0,.85),0 0 0 1px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.06);
+ transform:translateY(14px) scale(.985)}
+@media(min-width:1241px){
+ .nav-item:hover .nx-mega:not(#_x),.nav-item.open .nx-mega:not(#_x),.nav-item:focus-within .nx-mega:not(#_x){transform:translateY(0) scale(1)}}
+.nav-item.open .nx-mega:not(#_x),.nav-item:focus-within .nx-mega:not(#_x){transform:translateY(0) scale(1)}
+.nx .nx-mega::before{content:"";position:absolute;top:0;left:22px;right:22px;height:2px;border-radius:2px;
+ background:linear-gradient(90deg,transparent,rgba(219,174,74,.75),rgba(194,146,46,.3),transparent)}
+.nx .nx-col .nxh{color:#DBAE4A;border-bottom-color:rgba(219,174,74,.22)}
+.nx .nx-col a{position:relative;padding:9px 26px 9px 12px;transition:background .16s,transform .16s}
+.nx .nx-col a::after{content:"\2192";position:absolute;right:12px;top:50%;translate:0 -50%;opacity:0;
+ color:#DBAE4A;font-size:.82rem;transition:opacity .16s,right .16s}
+.nx .nx-col a:hover{background:rgba(255,255,255,.055);transform:translateX(2px)}
+.nx .nx-col a:hover::after{opacity:1;right:8px}
+.nx .nx-col a strong{transition:color .16s}
+.nx .nx-col a:hover strong{color:#F3D9A0}
+.nx .nx-feat{border:1px solid rgba(219,174,74,.28);transition:border-color .2s,transform .2s;
+ background-image:linear-gradient(165deg,rgba(46,134,222,.16),rgba(8,14,25,.9)),
+  radial-gradient(120% 90% at 100% 0%,rgba(219,174,74,.13),transparent 55%);
+ box-shadow:inset 0 1px 0 rgba(255,255,255,.06)}
+.nx .nx-feat:hover{border-color:rgba(219,174,74,.55);transform:translateY(-2px)}
+.nx .nx-feat .tag{color:#DBAE4A}
+.nx .nx-feat .arr{color:#DBAE4A;transition:letter-spacing .2s}
+.nx .nx-feat:hover .arr{letter-spacing:.04em}
+}
+@media(prefers-reduced-motion:reduce){
+.nx .nx-mega:not(#_x),.nx .nx-col a,.nx .nx-col a::after,.nx .nx-feat,.nx .nx-feat .arr{transition:none!important}
+.nx .nx-mega:not(#_x){transform:none}}
+@media(prefers-reduced-transparency:reduce){
+.nx .nx-mega:not(#_x){background:#0A1120!important;-webkit-backdrop-filter:none;backdrop-filter:none}}
