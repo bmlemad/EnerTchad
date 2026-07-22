@@ -178,3 +178,24 @@ h1,h2,h3{text-wrap:balance}
 }
 
 @media(max-width:768px){#homeFab{display:none!important}}
+
+/* ===== FUSION IV — tuile unique harmonisee (2026-07) ===== */
+.iv-rows:not(#_x){border:1px solid rgba(255,255,255,.09);border-radius:22px;
+ background:linear-gradient(180deg,rgba(16,25,42,.72),rgba(9,15,27,.78));
+ -webkit-backdrop-filter:blur(16px) saturate(1.2);backdrop-filter:blur(16px) saturate(1.2);
+ box-shadow:0 30px 70px -30px rgba(0,0,0,.75),inset 0 1px 0 rgba(255,255,255,.05);overflow:hidden}
+.iv-rows>.iv-card:not(#_x){border:0;border-radius:0;background:none;
+ -webkit-backdrop-filter:none;backdrop-filter:none;box-shadow:none}
+.iv-rows>.iv-card:hover:not(#_x){transform:none;box-shadow:none}
+.iv-rows>.iv-new:not(#_x){background:linear-gradient(180deg,color-mix(in srgb,var(--gold-l,#E8C36A) 7%,transparent),transparent)}
+.iv-rows>.iv-old{padding-bottom:14px}
+.iv-rows>.iv-new{padding-top:14px}
+.iv-mid:not(#_x){display:flex;flex-direction:row;width:100%;align-self:stretch;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;
+ padding:4px 22px;margin:0;position:relative;z-index:2}
+.iv-mid::before,.iv-mid::after{content:"";flex:1;height:1px;min-width:20px;
+ background:linear-gradient(90deg,transparent,rgba(219,174,74,.45))}
+.iv-mid::after{background:linear-gradient(90deg,rgba(219,174,74,.45),transparent)}
+.iv-mid .iv-pivot{margin:0}
+.iv-mid .iv-out{color:var(--gold-l,#E8C36A);border-color:rgba(219,174,74,.38);
+ background:rgba(219,174,74,.08)}
+@media(max-width:560px){.iv-mid::before,.iv-mid::after{display:none}.iv-mid{padding:10px 16px}}
