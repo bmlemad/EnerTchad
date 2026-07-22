@@ -42,3 +42,5 @@ footer .brand{display:inline-flex;align-items:center;gap:12px;text-decoration:no
 @font-face{font-family:'Space Grotesk';src:url('/assets/fonts/SpaceGrotesk-latin-ext.woff2') format('woff2');font-weight:500 700;font-display:optional}
 @font-face{font-family:'Inter';src:url('/assets/fonts/Inter-latin-ext.woff2') format('woff2');font-weight:400 700;font-display:optional}
 @font-face{font-family:'JetBrains Mono';src:url('/assets/fonts/JetBrainsMono-latin-ext.woff2') format('woff2');font-weight:500 600;font-display:optional}
+
+/* jtop-mobile-fix */@media(max-width:600px){.jtop{gap:10px;padding-left:14px;padding-right:14px}}

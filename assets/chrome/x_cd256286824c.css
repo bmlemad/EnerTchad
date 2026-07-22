@@ -223,6 +223,7 @@ a.ttl:not(#_x),nav.bcrumb a{padding:8px 4px;margin:-8px -4px}
 a[style*="underline"]{padding-top:8px;padding-bottom:8px}
 .pj-syn a{padding-top:8px;padding-bottom:8px}
 .foot-sep+a,a:has(+.foot-sep){padding:8px 3px}
+.go:not(#_x),.pmore-home:not(#_x),.foot-col a:not(.foot-pole):not(#_x),a[download]:not(#_x){padding-top:7px!important;padding-bottom:7px!important;margin-top:-7px!important;margin-bottom:-7px!important;position:relative;z-index:1}
 html[lang="ar"] a{padding-top:6px;padding-bottom:6px}
 }
 @media(max-width:768px){
