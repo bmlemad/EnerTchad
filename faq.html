@@ -22,7 +22,7 @@ h1{font-size:clamp(1.9rem,4.4vw,2.6rem);font-weight:800;letter-spacing:-.02em;ma
 details{border:1px solid var(--hair);border-radius:14px;background:rgba(255,255,255,.02);margin:0 0 10px;overflow:hidden;transition:border-color .2s,background .2s}
 details[open]{border-color:rgba(232,195,106,.34);background:rgba(255,255,255,.035);box-shadow:inset 3px 0 0 var(--gold-l)}
 summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:14px;padding:16px 18px;font-weight:600;font-size:1rem;color:#fff}
-summary::-webkit-details-marker{display:none}details{interpolate-size:allow-keywords}@supports (interpolate-size:allow-keywords){details::details-content{block-size:0;overflow:clip;transition:block-size .32s cubic-bezier(.22,.61,.36,1),content-visibility .32s allow-discrete;content-visibility:hidden}details[open]::details-content{block-size:auto;content-visibility:visible}}@media(prefers-reduced-motion:reduce){details::details-content{transition:none}}
+summary::-webkit-details-marker{display:none}
 summary:hover{background:rgba(217,168,79,.05)}
 .chev{margin-left:auto;width:22px;height:22px;border:1px solid var(--hair);border-radius:7px;display:grid;place-items:center;color:var(--gold-l);transition:transform .25s,border-color .25s;flex:none}
 .chev::before{content:"";width:7px;height:7px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg) translate(-1px,-1px)}
