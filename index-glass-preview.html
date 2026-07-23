@@ -60,110 +60,122 @@
 @media(max-width:768px){.hubdrawer{position:static;opacity:1;visibility:visible;transform:none;pointer-events:auto;box-shadow:none;margin-top:8px;background:rgba(255,255,255,.02)}}
 </style>
 <style id="liquidglass-v1">
-/* ============ EnerTchad · Liquid Glass design layer (preview v1) ============ */
+/* ============ EnerTchad · Liquid Glass design layer (v2 — dramatic) ============ */
 :root{
-  --g-bg:linear-gradient(158deg, rgba(255,255,255,.11), rgba(255,255,255,.045) 60%, rgba(255,255,255,.03));
-  --g-bg-2:rgba(255,255,255,.10);
-  --g-brd:rgba(255,255,255,.17);
-  --g-brd-str:rgba(255,255,255,.24);
-  --g-blur:saturate(165%) blur(22px);
-  --g-spec:inset 0 1px 0 rgba(255,255,255,.22), inset 0 -1px 0 rgba(0,0,0,.16);
-  --g-shadow:0 10px 34px rgba(0,0,0,.42);
-  --g-radius:20px;
+  --g-bg:linear-gradient(158deg, rgba(255,255,255,.16), rgba(255,255,255,.055) 55%, rgba(255,255,255,.03));
+  --g-brd:rgba(255,255,255,.22);
+  --g-brd-str:rgba(255,255,255,.34);
+  --g-blur:saturate(185%) blur(30px);
+  --g-spec:inset 0 1px 0 rgba(255,255,255,.38), inset 0 0 0 1px rgba(255,255,255,.05), inset 0 -14px 30px rgba(0,0,0,.20);
+  --g-shadow:0 16px 46px rgba(0,0,0,.52);
+  --g-radius:22px;
 }
-/* ---- ambient aurora backdrop (behind everything) ---- */
-body{position:relative;background:#080d17!important;isolation:isolate}
+/* ---- ambient aurora backdrop — brighter, dual-layer (body::before + html::before), more mobile ---- */
+html{background:#070c15!important}
+body{position:relative;background:transparent!important;isolation:isolate}
 body::before{
-  content:"";position:fixed;inset:-15% -15% -15% -15%;z-index:-2;pointer-events:none;
+  content:"";position:fixed;inset:-20%;z-index:-2;pointer-events:none;
   background:
-    radial-gradient(38% 42% at 18% 22%, rgba(219,174,74,.26), transparent 62%),
-    radial-gradient(34% 40% at 82% 16%, rgba(90,167,240,.20), transparent 60%),
-    radial-gradient(46% 48% at 74% 82%, rgba(31,164,150,.20), transparent 62%),
-    radial-gradient(40% 44% at 26% 86%, rgba(224,162,78,.17), transparent 60%),
-    radial-gradient(60% 70% at 50% 50%, rgba(12,20,36,.0), rgba(8,13,23,.55));
-  filter:blur(30px);
-  animation:auroraDrift 42s ease-in-out infinite alternate;
+    radial-gradient(38% 42% at 16% 20%, rgba(219,174,74,.38), transparent 60%),
+    radial-gradient(34% 40% at 84% 14%, rgba(90,167,240,.30), transparent 58%),
+    radial-gradient(48% 50% at 76% 84%, rgba(31,164,150,.30), transparent 60%),
+    radial-gradient(42% 46% at 24% 88%, rgba(224,162,78,.26), transparent 58%),
+    radial-gradient(30% 34% at 52% 46%, rgba(120,90,220,.16), transparent 60%);
+  filter:blur(26px);
+  animation:auroraDrift 30s ease-in-out infinite alternate;
+}
+html::before{
+  content:"";position:fixed;inset:-20%;z-index:-3;pointer-events:none;mix-blend-mode:screen;
+  background:
+    radial-gradient(30% 34% at 70% 30%, rgba(219,174,74,.22), transparent 60%),
+    radial-gradient(28% 32% at 30% 66%, rgba(90,167,240,.20), transparent 60%);
+  filter:blur(34px);animation:auroraDrift2 38s ease-in-out infinite alternate;
 }
 body::after{
-  content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.55;
+  content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.6;
   background:
-    radial-gradient(1px 1px at 20% 30%, rgba(255,255,255,.10), transparent),
-    radial-gradient(1px 1px at 70% 60%, rgba(255,255,255,.08), transparent),
-    radial-gradient(1px 1px at 40% 80%, rgba(255,255,255,.06), transparent);
+    radial-gradient(1px 1px at 20% 30%, rgba(255,255,255,.12), transparent),
+    radial-gradient(1px 1px at 70% 60%, rgba(255,255,255,.10), transparent),
+    radial-gradient(1px 1px at 40% 80%, rgba(255,255,255,.07), transparent),
+    radial-gradient(1px 1px at 88% 42%, rgba(255,255,255,.08), transparent);
 }
 @keyframes auroraDrift{
-  0%{transform:translate3d(0,0,0) scale(1)}
-  50%{transform:translate3d(2.5%,-2%,0) scale(1.06)}
-  100%{transform:translate3d(-2%,2.5%,0) scale(1.03)}
+  0%{transform:translate3d(0,0,0) scale(1) rotate(0deg)}
+  50%{transform:translate3d(4%,-3%,0) scale(1.10) rotate(2deg)}
+  100%{transform:translate3d(-3%,4%,0) scale(1.06) rotate(-1.5deg)}
 }
-@media (prefers-reduced-motion:reduce){body::before{animation:none}}
+@keyframes auroraDrift2{
+  0%{transform:translate3d(0,0,0) scale(1.05)}
+  50%{transform:translate3d(-5%,3%,0) scale(1.12)}
+  100%{transform:translate3d(4%,-4%,0) scale(1.02)}
+}
+@media (prefers-reduced-motion:reduce){body::before,html::before{animation:none}}
 
 /* ---- glass cards (all component families) ---- */
-.hpcard,.hxi-card,.mfo-lever,.hncard,.sc-card,.hx-stat,.hubdrawer,.flip-face,
-.hpcard-kpis{
+.hpcard,.hxi-card,.mfo-lever,.hncard,.sc-card,.hx-stat,.hubdrawer,.flip-face,.hpcard-kpis{
   background:var(--g-bg)!important;
   -webkit-backdrop-filter:var(--g-blur);backdrop-filter:var(--g-blur);
   border:1px solid var(--g-brd)!important;
   border-radius:var(--g-radius)!important;
   box-shadow:var(--g-spec),var(--g-shadow)!important;
-  transition:transform .5s cubic-bezier(.2,.7,.2,1), box-shadow .5s, border-color .5s, background .5s;
+  transition:transform .55s cubic-bezier(.2,.7,.2,1), box-shadow .55s, border-color .55s, background .55s;
 }
-/* flip faces must keep their 3D behaviour; just glassify surface */
 .flip-face{backface-visibility:hidden;-webkit-backface-visibility:hidden}
 .hpcard:hover,.hxi-card:hover,.sc-card:hover,.hncard:hover{
-  transform:translateY(-4px);
+  transform:translateY(-6px) scale(1.012);
   border-color:var(--g-brd-str)!important;
-  box-shadow:var(--g-spec), 0 18px 50px rgba(0,0,0,.5), 0 0 0 1px rgba(219,174,74,.18)!important;
+  box-shadow:var(--g-spec), 0 26px 66px rgba(0,0,0,.6), 0 0 0 1px rgba(219,174,74,.30), 0 0 40px rgba(219,174,74,.12)!important;
 }
-/* pole card inner tint keeps the accent dot legible */
 .hpcard-body,.sc-body{background:transparent!important}
 
-/* ---- hover drawer: deeper frost so it reads over content ---- */
+/* ---- hover drawer: deep frost ---- */
 .hubdrawer{
-  background:rgba(14,21,36,.62)!important;
-  -webkit-backdrop-filter:saturate(180%) blur(28px);backdrop-filter:saturate(180%) blur(28px);
-  box-shadow:var(--g-spec), 0 24px 60px rgba(0,0,0,.6)!important;
+  background:rgba(12,19,33,.58)!important;
+  -webkit-backdrop-filter:saturate(200%) blur(34px);backdrop-filter:saturate(200%) blur(34px);
+  box-shadow:var(--g-spec), 0 30px 70px rgba(0,0,0,.66)!important;
 }
 
 /* ---- frosted sticky nav / header ---- */
 .nav.nx,.nav,header.hero .nav,#nav{
-  background:rgba(10,15,25,.55)!important;
-  -webkit-backdrop-filter:saturate(170%) blur(20px);backdrop-filter:saturate(170%) blur(20px);
+  background:rgba(9,14,23,.5)!important;
+  -webkit-backdrop-filter:saturate(190%) blur(26px);backdrop-filter:saturate(190%) blur(26px);
   border-bottom:1px solid var(--g-brd)!important;
 }
 .nx-mega,.mega,.nx-panel{
-  background:rgba(12,18,30,.72)!important;
-  -webkit-backdrop-filter:saturate(180%) blur(26px);backdrop-filter:saturate(180%) blur(26px);
+  background:rgba(11,17,28,.68)!important;
+  -webkit-backdrop-filter:saturate(200%) blur(32px);backdrop-filter:saturate(200%) blur(32px);
   border:1px solid var(--g-brd)!important;box-shadow:var(--g-shadow)!important;
 }
 
-/* ---- buttons: glass by default, gold accent stays solid & premium ---- */
+/* ---- buttons: glass by default, gold accent stays solid ---- */
 .btn{
   border:1px solid var(--g-brd-str)!important;
-  -webkit-backdrop-filter:saturate(160%) blur(14px);backdrop-filter:saturate(160%) blur(14px);
-  box-shadow:var(--g-spec), 0 6px 20px rgba(0,0,0,.3)!important;
+  -webkit-backdrop-filter:saturate(170%) blur(16px);backdrop-filter:saturate(170%) blur(16px);
+  box-shadow:var(--g-spec), 0 8px 24px rgba(0,0,0,.34)!important;
   transition:transform .35s cubic-bezier(.2,.7,.2,1), box-shadow .35s, border-color .35s;
 }
 .btn:hover{transform:translateY(-2px)}
 
 /* ---- hero bottom-right router aside → glass ---- */
 .hx-slide .rt, .hx-aside, [class*="router"]{
-  background:rgba(14,21,36,.5)!important;
-  -webkit-backdrop-filter:saturate(170%) blur(22px);backdrop-filter:saturate(170%) blur(22px);
+  background:rgba(12,19,33,.46)!important;
+  -webkit-backdrop-filter:saturate(190%) blur(28px);backdrop-filter:saturate(190%) blur(28px);
   border:1px solid var(--g-brd)!important;border-radius:var(--g-radius)!important;
   box-shadow:var(--g-spec),var(--g-shadow)!important;
 }
 
-/* ---- section wrappers: let the aurora breathe (strip solid dark fills) ---- */
+/* ---- section wrappers: let the aurora breathe ---- */
 main > section, .sec, .hx-strip{background:transparent!important}
 
-/* ---- refined top-sheen on the biggest cards (specular highlight) ---- */
+/* ---- specular sheen + diagonal streak on the biggest cards ---- */
+.hpcard,.hxi-card{position:relative;overflow:hidden}
 .hpcard::after,.hxi-card::after{
   content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;
-  background:linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,0) 38%);
-  mix-blend-mode:screen;opacity:.7;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.20), rgba(255,255,255,0) 42%),
+    linear-gradient(115deg, transparent 30%, rgba(255,255,255,.10) 45%, transparent 58%);
+  mix-blend-mode:screen;opacity:.85;
 }
-.hpcard,.hxi-card{position:relative;overflow:hidden}
 
 </style>
 </head>
