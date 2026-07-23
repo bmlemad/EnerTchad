@@ -28,7 +28,7 @@ try{
   /* Hubs réseau : 3 plateformes */
   var hm=document.getElementById('hubmap');
   if(hm){
-    var HUBS=[['HUB CAPITALE','N’Djamena','Plateforme d’un hectare visée : dépôt-réserve, station Le Relais, atelier — tête du corridor d’import et du B2B de la capitale.'],
+    var HUBS=[['HUB CAPITALE','N’Djamena','Plateforme d’un hectare visée : dépôt-réserve, station Tchadium, atelier — tête du corridor d’import et du B2B de la capitale.'],
               ['HUB EST','Abéché','Plateforme visée pour l’est : ravitaillement humanitaire et désenclavement des provinces orientales.'],
               ['HUB SUD','Moundou','Plateforme visée au cœur du bassin pétrolier : B2B champs, mines et BTP du grand sud.']];
     var cs=hm.querySelectorAll('circle');
