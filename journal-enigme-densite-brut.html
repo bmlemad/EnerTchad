@@ -29,6 +29,35 @@ html.et-jlight .jtab thead th:not(#_){color:#16212F!important}
 html.et-jlight .jtab td:nth-child(2):not(#_){color:#8A5806!important}
 html.et-jlight .jtab td:nth-child(3):not(#_){color:#155FA8!important}
 </style>
+<style id="lg-journal">
+/* ===== EnerTchad · Liquid Glass — journal (light theme, component-only, no body/stacking changes) ===== */
+:root{
+  --jg-card:rgba(255,255,255,.60);
+  --jg-brd:rgba(255,255,255,.72);
+  --jg-shadow:0 10px 28px rgba(45,35,22,.12);
+  --jg-spec:inset 0 1px 0 rgba(255,255,255,.9);
+}
+/* frosted journal header (dark bar over the hero photo) */
+.jtop{
+  -webkit-backdrop-filter:saturate(160%) blur(18px);backdrop-filter:saturate(160%) blur(18px);
+  background:rgba(18,24,36,.46)!important;border-bottom:1px solid rgba(255,255,255,.14)!important;
+}
+/* related-article "Go further" links → soft frosted paper cards */
+.more a{
+  -webkit-backdrop-filter:saturate(140%) blur(12px);backdrop-filter:saturate(140%) blur(12px);
+  background:var(--jg-card)!important;border:1px solid var(--jg-brd)!important;border-radius:14px!important;
+  box-shadow:var(--jg-spec),var(--jg-shadow)!important;transition:transform .4s cubic-bezier(.2,.7,.2,1),box-shadow .4s!important;
+}
+.more a:hover{transform:translateY(-3px)!important;box-shadow:var(--jg-spec),0 16px 40px rgba(45,35,22,.18)!important}
+/* key callouts → subtle frosted paper */
+.jkey{
+  -webkit-backdrop-filter:saturate(140%) blur(12px);backdrop-filter:saturate(140%) blur(12px);
+  background:var(--jg-card)!important;border:1px solid var(--jg-brd)!important;border-radius:16px!important;
+  box-shadow:var(--jg-spec),var(--jg-shadow)!important;
+}
+.scrollcue{-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
+
+</style>
 </head>
 <body id="top"><a href="#main-content" class="skip-link">Aller au contenu principal</a>
 
