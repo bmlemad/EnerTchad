@@ -121,9 +121,9 @@ body:has(#navLinks.open) #ckn,body:has(#navLinks.open) .lum-ctl,body:has(#navLin
 /* ===== ULTRA MEGA — couche 2026-07 ===== */
 @media(min-width:769px){
 .nx .nx-mega:not(#_x){min-width:720px;max-width:min(92vw,820px);
- background:linear-gradient(180deg,rgba(12,21,36,.94),rgba(8,14,25,.97))!important;
+ background:linear-gradient(180deg,rgba(11,19,33,.975),rgba(7,13,23,.99))!important;
  -webkit-backdrop-filter:blur(28px) saturate(1.5);backdrop-filter:blur(28px) saturate(1.5);
- border:1px solid rgba(255,255,255,.09);border-radius:20px;padding:22px 22px 18px;gap:8px 26px;
+ border:1px solid rgba(255,255,255,.14);border-radius:20px;padding:22px 22px 18px;gap:8px 26px;
  box-shadow:0 24px 70px -18px rgba(0,0,0,.85),0 0 0 1px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.06);
  transform:translateY(14px) scale(.985)}
 @media(min-width:1241px){
