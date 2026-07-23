@@ -46,7 +46,130 @@ footer a{color:var(--muted);text-decoration:none;margin-right:16px}footer a:hove
 <style id="coh-heads">h1,h2,h3{font-family:var(--fd,'Space Grotesk','Inter',system-ui,sans-serif)}</style>
 <script id="va-init">window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments);};</script><script defer src="/_vercel/insights/script.js"></script>
 <style id="ft-logo">footer .brand-mk{background:none!important;border:0!important;padding:0!important}footer .logo-img{background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20200%20200%22%3E%3Crect%20width%3D%22200%22%20height%3D%22200%22%20rx%3D%2242%22%20fill%3D%22%23F3EAD1%22%2F%3E%3Cg%20transform%3D%22translate%28100%20100%29%20scale%280.86%29%20translate%28-100%20-100%29%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22ftlg%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%220%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23DBAE4A%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23C2922E%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Cpath%20d%3D%22M100.00%2096.00%20L126.98%2067.90%20A37.4%2037.4%200%201%200%2073.02%2067.90%20Z%22%20fill%3D%22url%28%23ftlg%29%22%2F%3E%3Cpath%20d%3D%22M96.00%20100.00%20L67.90%2073.02%20A37.4%2037.4%200%201%200%2067.90%20126.98%20Z%22%20fill%3D%22%231E6EC2%22%2F%3E%3Cpath%20d%3D%22M104.00%20100.00%20L132.10%20126.98%20A37.4%2037.4%200%201%200%20132.10%2073.02%20Z%22%20fill%3D%22%23218A2C%22%2F%3E%3Cpath%20d%3D%22M100.00%20104.00%20L73.02%20132.10%20A37.4%2037.4%200%201%200%20126.98%20132.10%20Z%22%20fill%3D%22%23E8CD7F%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E")!important}</style>
-<style id="bandeaux-fix">/* Sous-titres sur photo : cartes metiers en bandeaux translucides pleins (AA du texte attenue). */.cp{background:rgba(13,22,38,.88);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}@media(prefers-reduced-transparency:reduce){.cp{background:#0D1626;-webkit-backdrop-filter:none;backdrop-filter:none}}@supports not ((-webkit-backdrop-filter:blur(1px)) or (backdrop-filter:blur(1px))){.cp{background:#0D1626}}html.et-plight .cp:not(#_){background:rgba(252,249,243,.94)!important}@media(prefers-reduced-transparency:reduce){html.et-plight .cp:not(#_){background:#FAF7F1!important}}</style></head>
+<style id="bandeaux-fix">/* Sous-titres sur photo : cartes metiers en bandeaux translucides pleins (AA du texte attenue). */.cp{background:rgba(13,22,38,.88);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}@media(prefers-reduced-transparency:reduce){.cp{background:#0D1626;-webkit-backdrop-filter:none;backdrop-filter:none}}@supports not ((-webkit-backdrop-filter:blur(1px)) or (backdrop-filter:blur(1px))){.cp{background:#0D1626}}html.et-plight .cp:not(#_){background:rgba(252,249,243,.94)!important}@media(prefers-reduced-transparency:reduce){html.et-plight .cp:not(#_){background:#FAF7F1!important}}</style><style id="lg-interior">
+/* ============ EnerTchad · Liquid Glass design layer (v2 — dramatic) ============ */
+:root{
+  --g-bg:linear-gradient(158deg, rgba(255,255,255,.16), rgba(255,255,255,.055) 55%, rgba(255,255,255,.03));
+  --g-brd:rgba(255,255,255,.22);
+  --g-brd-str:rgba(255,255,255,.34);
+  --g-blur:saturate(185%) blur(30px);
+  --g-spec:inset 0 1px 0 rgba(255,255,255,.38), inset 0 0 0 1px rgba(255,255,255,.05), inset 0 -14px 30px rgba(0,0,0,.20);
+  --g-shadow:0 16px 46px rgba(0,0,0,.52);
+  --g-radius:22px;
+}
+/* ---- ambient aurora backdrop — brighter, dual-layer (body::before + html::before), more mobile ---- */
+html{background:#070c15!important}
+body{position:relative;background:transparent!important;isolation:isolate}
+body::before{
+  content:"";position:fixed;inset:-20%;z-index:-2;pointer-events:none;
+  background:
+    radial-gradient(38% 42% at 16% 20%, rgba(219,174,74,.38), transparent 60%),
+    radial-gradient(34% 40% at 84% 14%, rgba(90,167,240,.30), transparent 58%),
+    radial-gradient(48% 50% at 76% 84%, rgba(31,164,150,.30), transparent 60%),
+    radial-gradient(42% 46% at 24% 88%, rgba(224,162,78,.26), transparent 58%),
+    radial-gradient(30% 34% at 52% 46%, rgba(120,90,220,.16), transparent 60%);
+  filter:blur(26px);
+  animation:auroraDrift 30s ease-in-out infinite alternate;
+}
+html::before{
+  content:"";position:fixed;inset:-20%;z-index:-3;pointer-events:none;mix-blend-mode:screen;
+  background:
+    radial-gradient(30% 34% at 70% 30%, rgba(219,174,74,.22), transparent 60%),
+    radial-gradient(28% 32% at 30% 66%, rgba(90,167,240,.20), transparent 60%);
+  filter:blur(34px);animation:auroraDrift2 38s ease-in-out infinite alternate;
+}
+body::after{
+  content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.6;
+  background:
+    radial-gradient(1px 1px at 20% 30%, rgba(255,255,255,.12), transparent),
+    radial-gradient(1px 1px at 70% 60%, rgba(255,255,255,.10), transparent),
+    radial-gradient(1px 1px at 40% 80%, rgba(255,255,255,.07), transparent),
+    radial-gradient(1px 1px at 88% 42%, rgba(255,255,255,.08), transparent);
+}
+@keyframes auroraDrift{
+  0%{transform:translate3d(0,0,0) scale(1) rotate(0deg)}
+  50%{transform:translate3d(4%,-3%,0) scale(1.10) rotate(2deg)}
+  100%{transform:translate3d(-3%,4%,0) scale(1.06) rotate(-1.5deg)}
+}
+@keyframes auroraDrift2{
+  0%{transform:translate3d(0,0,0) scale(1.05)}
+  50%{transform:translate3d(-5%,3%,0) scale(1.12)}
+  100%{transform:translate3d(4%,-4%,0) scale(1.02)}
+}
+@media (prefers-reduced-motion:reduce){body::before,html::before{animation:none}}
+
+/* ---- glass cards (all component families) ---- */
+.card,.card-m,.biz-card,.plc-card,.ppj-card,.pmore-card,.segc,.prof,.sc-card,.panel,.hxi-card,.hncard,.mfo-lever,.hubdrawer,.flip-face,.hpcard,.hpcard-kpis,.hx-stat{
+  background:var(--g-bg)!important;
+  -webkit-backdrop-filter:var(--g-blur);backdrop-filter:var(--g-blur);
+  border:1px solid var(--g-brd)!important;
+  border-radius:var(--g-radius)!important;
+  box-shadow:var(--g-spec),var(--g-shadow)!important;
+  transition:transform .55s cubic-bezier(.2,.7,.2,1), box-shadow .55s, border-color .55s, background .55s;
+}
+.flip-face{backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.card:hover,.biz-card:hover,.plc-card:hover,.ppj-card:hover,.segc:hover,.prof:hover,.sc-card:hover,.hxi-card:hover,.hncard:hover{
+  transform:translateY(-6px) scale(1.012);
+  border-color:var(--g-brd-str)!important;
+  box-shadow:var(--g-spec), 0 26px 66px rgba(0,0,0,.6), 0 0 0 1px rgba(219,174,74,.30), 0 0 40px rgba(219,174,74,.12)!important;
+}
+.sc-body{background:transparent!important}
+
+/* ---- hover drawer: deep frost ---- */
+.hubdrawer{
+  background:rgba(12,19,33,.58)!important;
+  -webkit-backdrop-filter:saturate(200%) blur(34px);backdrop-filter:saturate(200%) blur(34px);
+  box-shadow:var(--g-spec), 0 30px 70px rgba(0,0,0,.66)!important;
+}
+
+/* ---- frosted sticky nav / header ---- */
+.nav.nx,.nav,header.hero .nav,#nav{
+  background:rgba(9,14,23,.5)!important;
+  -webkit-backdrop-filter:saturate(190%) blur(26px);backdrop-filter:saturate(190%) blur(26px);
+  border-bottom:1px solid var(--g-brd)!important;
+}
+.nx-mega,.mega,.nx-panel{
+  background:rgba(11,17,28,.68)!important;
+  -webkit-backdrop-filter:saturate(200%) blur(32px);backdrop-filter:saturate(200%) blur(32px);
+  border:1px solid var(--g-brd)!important;box-shadow:var(--g-shadow)!important;
+}
+
+/* ---- buttons: glass by default, gold accent stays solid ---- */
+.btn{
+  border:1px solid var(--g-brd-str)!important;
+  -webkit-backdrop-filter:saturate(170%) blur(16px);backdrop-filter:saturate(170%) blur(16px);
+  box-shadow:var(--g-spec), 0 8px 24px rgba(0,0,0,.34)!important;
+  transition:transform .35s cubic-bezier(.2,.7,.2,1), box-shadow .35s, border-color .35s;
+}
+.btn:hover{transform:translateY(-2px)}
+
+/* ---- hero bottom-right router aside → glass ---- */
+.hx-slide .rt, .hx-aside, [class*="router"]{
+  background:rgba(12,19,33,.46)!important;
+  -webkit-backdrop-filter:saturate(190%) blur(28px);backdrop-filter:saturate(190%) blur(28px);
+  border:1px solid var(--g-brd)!important;border-radius:var(--g-radius)!important;
+  box-shadow:var(--g-spec),var(--g-shadow)!important;
+}
+
+/* ---- section wrappers: let the aurora breathe ---- */
+main > section, .sec, .hx-strip{background:transparent!important}
+
+/* ---- specular sheen + diagonal streak on the biggest cards ---- */
+.card,.biz-card,.plc-card,.hxi-card{position:relative;overflow:hidden}
+.card::after,.biz-card::after,.plc-card::after,.hxi-card::after{
+  content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.20), rgba(255,255,255,0) 42%),
+    linear-gradient(115deg, transparent 30%, rgba(255,255,255,.10) 45%, transparent 58%);
+  mix-blend-mode:screen;opacity:.85;
+}
+/* article reading surfaces stay crisp */
+.jbody,.jkey{background:rgba(12,18,30,.72)!important;-webkit-backdrop-filter:saturate(150%) blur(18px);backdrop-filter:saturate(150%) blur(18px);border:1px solid var(--g-brd)!important;border-radius:var(--g-radius)!important;box-shadow:var(--g-shadow)!important}
+/* command palette + lum panel frost */
+.cmdk-panel,.lum-panel{background:rgba(11,17,28,.7)!important;-webkit-backdrop-filter:saturate(200%) blur(30px);backdrop-filter:saturate(200%) blur(30px);border:1px solid var(--g-brd)!important;box-shadow:var(--g-shadow)!important}
+
+</style>
+</head>
 <body id="top"><a href="#main-content" class="skip-link">Aller au contenu principal</a>
 <header><nav class="nav nx" id="nav" aria-label="Navigation principale">
   <div class="nx-util"><div class="nx-util-in">
