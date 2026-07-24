@@ -6,181 +6,216 @@
 <description>Le journal d’EnerTchad S.A. : récits, analyses et jalons de la construction de la chaîne pétrolière du Tchad — de la roche-mère à la pompe. Société en constitution : objectifs datés, non des actifs en exploitation.</description>
 <language>fr</language>
 <atom:link href="https://enertchad-delta.vercel.app/feed.xml" rel="self" type="application/rss+xml"/>
-<lastBuildDate>Sat, 11 Jul 2026 08:00:00 +0000</lastBuildDate>
+<lastBuildDate>Tue, 14 Jul 2026 08:00:00 +0000</lastBuildDate>
+<item>
+<title>Le criblage EOR : la bonne méthode pour le bon réservoir</title>
+<link>https://enertchad-delta.vercel.app/journal-criblage-eor</link>
+<guid isPermaLink="true">https://enertchad-delta.vercel.app/journal-criblage-eor</guid>
+<pubDate>Tue, 14 Jul 2026 08:00:00 +0000</pubDate>
+<description>Chimie, vapeur ou gaz ? Cinq mesures du réservoir suffisent pour un premier tri : la grille de criblage EOR, expliquée simplement.</description>
+</item>
+<item>
+<title>La production anticipée : convertir le temps en capital</title>
+<link>https://enertchad-delta.vercel.app/journal-production-anticipee</link>
+<guid isPermaLink="true">https://enertchad-delta.vercel.app/journal-production-anticipee</guid>
+<pubDate>Tue, 14 Jul 2026 08:00:00 +0000</pubDate>
+<description>Premier baril en six à douze mois, capital divisé par cinq, brut aux specs dès le premier jour : le modèle économique de la production anticipée.</description>
+</item>
 <item>
 <title>Avant l’appareil de forage : dans les bottes d’un chef de chantier wellpads</title>
 <link>https://enertchad-delta.vercel.app/journal-interview-wellpads</link>
 <guid isPermaLink="true">https://enertchad-delta.vercel.app/journal-interview-wellpads</guid>
 <pubDate>Sat, 11 Jul 2026 08:00:00 +0000</pubDate>
-<description>Nouveau format « L&#x27;interview métier » : terrassement, plateformes de puits, pistes tout-temps, bases vie, saison des pluies et règles d&#x27;or HSE — le métier qui prépare le terrain avant que l&#x27;appareil de forage n&#x27;arrive.</description>
+<description>L’interview métier : l’appareil de forage n’attend pas — terrassement, wellpads, pistes tout-temps et bases vie, racontés depuis le chantier.</description>
 </item>
 <item>
 <title>La rente partagée : ce que le pétrole doit changer pour les territoires</title>
 <link>https://enertchad-delta.vercel.app/journal-rente-partagee</link>
 <guid isPermaLink="true">https://enertchad-delta.vercel.app/journal-rente-partagee</guid>
 <pubDate>Fri, 10 Jul 2026 08:00:00 +0000</pubDate>
-<description>Emplois locaux, PME fournisseurs, santé-éducation, désenclavement au prix ARSAT, dialogue continu : comment EnerTchad conçoit une rente pétrolière qui irrigue les territoires — 80 % de contenu local visé.</description>
+<description>Le contenu local n’est pas une contrainte réglementaire : c’est notre modèle. Emplois, achats, formation, désenclavement — la rente qui reste au pays.</description>
 </item>
 <item>
-<title>Communiqué — Espace presse : kit média officiel et flux RSS des Carnets</title>
+<title>Espace presse : kit média officiel et flux RSS des Carnets</title>
 <link>https://enertchad-delta.vercel.app/communiques#cp-006</link>
 <guid isPermaLink="true">https://enertchad-delta.vercel.app/communiques#cp-006</guid>
 <pubDate>Fri, 10 Jul 2026 08:00:00 +0000</pubDate>
 <description>EnerTchad met à disposition des rédactions un kit média officiel — logo, bannière, photos libres de droits, boilerplate FR/EN — et ouvre le flux RSS de ses Carnets pour suivre chaque publication.</description>
 </item>
 <item>
-<title>Communiqué — Avis anti-fraude : aucune souscription ouverte à ce jour</title>
+<title>Avis anti-fraude : aucune souscription ouverte à ce jour</title>
 <link>https://enertchad-delta.vercel.app/communiques#cp-005</link>
 <guid isPermaLink="true">https://enertchad-delta.vercel.app/communiques#cp-005</guid>
 <pubDate>Fri, 10 Jul 2026 08:00:00 +0000</pubDate>
-<description>La société rappelle qu’aucun canal de paiement n’est ouvert : aucun versement en espèces, par Mobile Money ou via un « agent » ne peut être réclamé en son nom.</description>
+<description>La société rappelle qu’aucun canal de paiement n’est ouvert : aucun versement en espèces, par Mobile Money ou via un « agent » ne peut être réclamé en son nom. Les canaux officiels sont l’e-mail contact@enertchad.td et le WhatsApp officiel.</description>
 </item>
 <item>
-<title>Communiqué — Espace investisseurs : fiche PDF et dossier de présentation</title>
+<title>Espace investisseurs : fiche PDF et dossier de présentation</title>
 <link>https://enertchad-delta.vercel.app/communiques#cp-004</link>
 <guid isPermaLink="true">https://enertchad-delta.vercel.app/communiques#cp-004</guid>
 <pubDate>Fri, 10 Jul 2026 08:00:00 +0000</pubDate>
-<description>Fiche investisseur PDF synthétique et dossier de présentation : thèse « de la roche-mère à la pompe », cascade 10 M → 1 Md → 20 Md FCFA, jalons datés et gouvernance.</description>
+<description>L’espace investisseurs s’enrichit d’une fiche investisseur PDF synthétique et du dossier de présentation : thèse « de la roche-mère à la pompe », cascade de financement visée 10 M → 1 Md → 20 Md FCFA, jalons datés et gouvernance.</description>
 </item>
 <item>
 <title>La bouteille contre la hache : le GPL face au bois-énergie</title>
 <link>https://enertchad-delta.vercel.app/journal-gpl-bois-energie</link>
 <guid isPermaLink="true">https://enertchad-delta.vercel.app/journal-gpl-bois-energie</guid>
 <pubDate>Thu, 09 Jul 2026 08:00:00 +0000</pubDate>
-<description>Chaque repas cuit au bois coûte des arbres, des heures et des poumons. Comment le GPL consigné d&#x27;EnerTchad — bouteilles échangées en points de proximité — veut défendre forêts, gommiers et pâturages par le modèle économique, pas par compensation.</description>
+<description>GPL consigné, points d</description>
 </item>
 <item>
 <title>EnerClub™, Carte EnerPro™, NRJ+™ : la station qui vous connaît</title>
 <link>https://enertchad-delta.vercel.app/journal-marques-clients</link>
 <guid isPermaLink="true">https://enertchad-delta.vercel.app/journal-marques-clients</guid>
 <pubDate>Wed, 08 Jul 2026 08:00:00 +0000</pubDate>
-<description>Fidélité qui récompense, carte flotte qui contrôle plafonds et consommations, appli qui localise, boutique de proximité : comment la maison de marques d&#x27;EnerTchad transforme le plein en relation client.</description>
+<description>Une maison de marques lisible, du réservoir du client à l’industrie : fidélité, cartes flottes, appli et boutique — le plein devient une relation.</description>
 </item>
 <item>
 <title>Sédigui : le gisement qui dort peut nourrir et éclairer le pays</title>
 <link>https://enertchad-delta.vercel.app/journal-gaz-sedigui</link>
 <guid isPermaLink="true">https://enertchad-delta.vercel.app/journal-gaz-sedigui</guid>
 <pubDate>Tue, 07 Jul 2026 08:00:00 +0000</pubDate>
-<description>Découvert près du lac Tchad et jamais exploité, le gaz de Sédigui (~30 Md m³) peut devenir électricité (gas-to-power, 125 MW cible) et engrais (gaz → ammoniac → urée/NPK) : le double destin d&#x27;une molécule oubliée.</description>
+<description>Un gisement de gaz dort au lieu de créer de la valeur : gas-to-power pour l’électricité, filière urée/NPK pour la souveraineté agricole — le lien gaz-power d’EnerTchad.</description>
 </item>
 <item>
-<title>Communiqué — Ouverture du catalogue en ligne : carburants, EnerLub, NRJ+, EnerPro</title>
+<title>Ouverture du catalogue en ligne : carburants, EnerLub, NRJ+, EnerPro</title>
 <link>https://enertchad-delta.vercel.app/communiques#cp-003</link>
 <guid isPermaLink="true">https://enertchad-delta.vercel.app/communiques#cp-003</guid>
 <pubDate>Tue, 07 Jul 2026 08:00:00 +0000</pubDate>
-<description>La boutique en ligne présente l’offre cible d’EnerTchad : carburants au prix ARSAT, lubrifiants EnerLub, GPL NRJ+, services EnerPro. Offre cible d’une société en constitution.</description>
+<description>La boutique en ligne présente l’offre cible d’EnerTchad : carburants au prix ARSAT, lubrifiants EnerLub, GPL NRJ+, services EnerPro — avec demande de devis par WhatsApp ou e-mail. Offre cible d’une société en constitution.</description>
 </item>
 <item>
 <title>Drones, racleurs, crawlers : inspecter sans arrêter, sans risquer personne</title>
 <link>https://enertchad-delta.vercel.app/journal-robotique-terrain</link>
 <guid isPermaLink="true">https://enertchad-delta.vercel.app/journal-robotique-terrain</guid>
 <pubDate>Mon, 06 Jul 2026 08:00:00 +0000</pubDate>
-<description>Arrêter la production pour inspecter coûte cher ; envoyer un homme en espace confiné coûte plus cher encore. Comment la robotique de terrain d&#x27;EnerTchad veut inspecter pipelines, cuves et puits — en ligne, en continu, sans exposition humaine.</description>
+<description>Inspection en ligne, zéro entrée humaine en espace confiné, maintenance prédictive plutôt que subie : la robotique frugale au service de l’intégrité des ouvrages.</description>
 </item>
 <item>
 <title>Former avant d’extraire : l’académie qui précède le baril</title>
 <link>https://enertchad-delta.vercel.app/journal-former-avant-extraire</link>
 <guid isPermaLink="true">https://enertchad-delta.vercel.app/journal-former-avant-extraire</guid>
 <pubDate>Sun, 05 Jul 2026 08:00:00 +0000</pubDate>
-<description>Campus prévu à N&#x27;Djamena, parcours certifiants (SCADA, activation de puits, cybersécurité OT, HSE), vivier mutualisé et 80 % de contenu local visé : pourquoi EnerTchad bâtit son académie avant ses puits.</description>
+<description>Le pétrole du Tchad, développé par ses propres enfants : l’académie EnerTalents™, ses parcours certifiants et son vivier partagé au service de toute la filière.</description>
 </item>
 <item>
-<title>Communiqué — Le site EnerTchad devient intégralement bilingue français-anglais</title>
+<title>Le site EnerTchad devient intégralement bilingue français-anglais</title>
 <link>https://enertchad-delta.vercel.app/communiques#cp-002</link>
 <guid isPermaLink="true">https://enertchad-delta.vercel.app/communiques#cp-002</guid>
 <pubDate>Sun, 05 Jul 2026 08:00:00 +0000</pubDate>
-<description>L’ensemble du site institutionnel — pôles, investisseurs, clients, FAQ, glossaire — est désormais disponible en anglais.</description>
+<description>L’ensemble du site institutionnel — pôles, investisseurs, clients, FAQ, glossaire — est désormais disponible en anglais, pour les partenaires internationaux du corridor Doba-Kribi et au-delà.</description>
 </item>
 <item>
 <title>La réserve distribuée : le pays qui ne tombe plus en panne</title>
 <link>https://enertchad-delta.vercel.app/journal-stockage-strategique</link>
 <guid isPermaLink="true">https://enertchad-delta.vercel.app/journal-stockage-strategique</guid>
 <pubDate>Sat, 04 Jul 2026 08:00:00 +0000</pubDate>
-<description>Un dépôt central unique est un point de défaillance : s&#x27;il tombe, tout le pays s&#x27;arrête. Comment EnerTchad conçoit la réserve stratégique distribuée du Tchad — cinq nœuds, plusieurs semaines de couverture, un effet réseau.</description>
+<description>Frontière fermée, route coupée, tension régionale : la moindre rupture d’import peut assécher des régions entières. La réponse : un maillage de dépôts qui se secourent entre eux.</description>
 </item>
 <item>
 <title>L’hybride gaz-solaire : le champ qui s’alimente lui-même</title>
 <link>https://enertchad-delta.vercel.app/journal-hybride-gaz-solaire</link>
 <guid isPermaLink="true">https://enertchad-delta.vercel.app/journal-hybride-gaz-solaire</guid>
 <pubDate>Fri, 03 Jul 2026 08:00:00 +0000</pubDate>
-<description>Le soleil le jour, le gaz associé la nuit, la batterie entre les deux : comment EnerTchad veut alimenter ses sites pétroliers isolés en micro-réseaux hybrides — et faire disparaître le diesel de groupe électrogène.</description>
+<description>Un champ qui torche paie deux fois : il brûle son gaz et achète son électricité. Le micro-réseau hybride solaire + gaz associé + stockage, pensé pour les sites isolés du Tchad.</description>
 </item>
 <item>
 <title>Mobile Stations™ : la pompe qui va au village</title>
 <link>https://enertchad-delta.vercel.app/journal-mobile-stations</link>
 <guid isPermaLink="true">https://enertchad-delta.vercel.app/journal-mobile-stations</guid>
 <pubDate>Thu, 02 Jul 2026 08:00:00 +0000</pubDate>
-<description>Trois formats de 5 000 à 15 000 litres, déployables en 24 à 48 heures, au prix ARSAT jusqu&#x27;au dernier kilomètre : comment la station mobile d&#x27;EnerTchad veut désenclaver l&#x27;énergie au Tchad.</description>
+<description>Là où l’import ne va pas, la station se déplace : formats 5 000–15 000 L, déploiement 24-48 h, prix ARSAT partout — le dernier kilomètre de l’énergie tchadienne.</description>
 </item>
 <item>
 <title>Le champ numérique : quatre couches, de la vanne au décideur</title>
 <link>https://enertchad-delta.vercel.app/journal-champ-numerique</link>
 <guid isPermaLink="true">https://enertchad-delta.vercel.app/journal-champ-numerique</guid>
 <pubDate>Wed, 01 Jul 2026 08:00:00 +0000</pubDate>
-<description>Comment EnerTchad conçoit son champ pétrolier numérique : l&#x27;architecture L1-L4 — capteurs de terrain, lakehouse hébergé au pays, IA de maintenance prédictive, jumeaux numériques — pensée pour les sites isolés du Tchad.</description>
+<description>L1 capteurs, L2 données, L3 IA, L4 décision : l’architecture souveraine qui pilotera mini-raffineries et réseau, conçue pour le terrain tchadien.</description>
 </item>
 <item>
 <title>L’Atlas du secteur : la donnée qui dé-risque le baril tchadien</title>
 <link>https://enertchad-delta.vercel.app/journal-atlas-secteur</link>
 <guid isPermaLink="true">https://enertchad-delta.vercel.app/journal-atlas-secteur</guid>
 <pubDate>Tue, 30 Jun 2026 08:00:00 +0000</pubDate>
-<description>Pourquoi une pétrolière en constitution publie un atlas public du secteur tchadien : sept bassins, un cadastre 2025 à 21 blocs libres, des sources datées — la donnée comme premier outil de dé-risquage.</description>
+<description>Sept bassins, 21 blocs libres, des sources publiques datées : l’Atlas EnerConseils, ou la donnée mise au service de ceux qui opèrent et investissent.</description>
 </item>
 <item>
 <title>Water-to-Value™ : l’eau de production, second gisement</title>
 <link>https://enertchad-delta.vercel.app/journal-eau-de-production</link>
 <guid isPermaLink="true">https://enertchad-delta.vercel.app/journal-eau-de-production</guid>
 <pubDate>Mon, 29 Jun 2026 08:00:00 +0000</pubDate>
-<description>Sur un champ mature, il sort plus d&#x27;eau que de pétrole. EnerTchad veut faire de cette eau de production une ressource : réinjection, cycle fermé, et valorisation des sels et co-produits en zone sahélienne.</description>
+<description>Réinjecter, boucler, valoriser : comment une pétrolière sahélienne traite l’eau qui remonte avec le brut.</description>
+</item>
+<item>
+<title>Faire durer : l’intégrité, le métier invisible</title>
+<link>https://enertchad-delta.vercel.app/journal-integrite-faire-durer</link>
+<guid isPermaLink="true">https://enertchad-delta.vercel.app/journal-integrite-faire-durer</guid>
+<pubDate>Mon, 29 Jun 2026 08:00:00 +0000</pubDate>
+<description>Un puits sûr, un pipeline propre, un bac étanche : l’intégrité est le métier qui ne se voit que quand il manque. Comment EnerTchad veut faire durer ses actifs — du fond du puits au dernier dépôt.</description>
 </item>
 <item>
 <title>Le baril roule avant le tube : le brut par camion</title>
 <link>https://enertchad-delta.vercel.app/journal-brut-par-camion</link>
 <guid isPermaLink="true">https://enertchad-delta.vercel.app/journal-brut-par-camion</guid>
 <pubDate>Sun, 28 Jun 2026 08:00:00 +0000</pubDate>
-<description>Pourquoi EnerTchad veut faire rouler le brut par camion avant de le mettre au tube : hubs-dépôts, flotte HSE, économie du baril transporté et montée en charge progressive vers le pipeline.</description>
+<description>Avant le pipeline, le camion : comment le trucking de brut désenclave les premiers barils des champs marginaux tchadiens.</description>
 </item>
 <item>
 <title>Natron, neem, coton : la chimie EOR sourcée au Tchad</title>
 <link>https://enertchad-delta.vercel.app/journal-chimie-eor-locale</link>
 <guid isPermaLink="true">https://enertchad-delta.vercel.app/journal-chimie-eor-locale</guid>
 <pubDate>Sat, 27 Jun 2026 08:00:00 +0000</pubDate>
-<description>Pourquoi EnerTchad veut formuler sa chimie de récupération assistée à partir d&#x27;intrants tchadiens — le natron du Lac comme alcalin, le neem et la cellulose de coton comme tensioactifs et polymères.</description>
+<description>Récupérer plus de pétrole avec des intrants du pays : le natron du Lac, le neem et le coton au service du baril additionnel.</description>
 </item>
 <item>
 <title>La mini-raffinerie modulaire : raffiner au plus près</title>
 <link>https://enertchad-delta.vercel.app/journal-mini-raffinerie-modulaire</link>
 <guid isPermaLink="true">https://enertchad-delta.vercel.app/journal-mini-raffinerie-modulaire</guid>
 <pubDate>Fri, 26 Jun 2026 08:00:00 +0000</pubDate>
-<description>Pourquoi EnerTchad mise sur des trains de raffinage de 500 à 2 000 b/j, montés sur skid, amovibles et pilotés par la donnée — plutôt que sur une grande raffinerie unique.</description>
+<description>Des trains de 500 à 2 000 b/j sur skid, amovibles, pilotés par la donnée : l’usine qui suit la demande, pas l’inverse.</description>
 </item>
 <item>
 <title>Doba–Kribi : l’économie du tube de 1 070 km</title>
 <link>https://enertchad-delta.vercel.app/journal-corridor-doba-kribi</link>
 <guid isPermaLink="true">https://enertchad-delta.vercel.app/journal-corridor-doba-kribi</guid>
 <pubDate>Wed, 24 Jun 2026 08:00:00 +0000</pubDate>
-<description>Le pétrole tchadien rejoint l&#x27;Atlantique par 1 070 km d&#x27;oléoduc. Le tarif de transit du corridor Doba–Kribi : une contrainte — et une opportunité — pour la filière.</description>
+<description>Le tarif d’un oléoduc enclavé pèse sur chaque baril. Pourquoi le camion roule parfois avant le tube.</description>
 </item>
 <item>
-<title>« Le baril additionnel » — l’économie de l’EOR</title>
+<title>« Le baril additionnel » : l’économie de la récupération assistée</title>
 <link>https://enertchad-delta.vercel.app/journal-eor-baril-additionnel</link>
 <guid isPermaLink="true">https://enertchad-delta.vercel.app/journal-eor-baril-additionnel</guid>
 <pubDate>Sat, 20 Jun 2026 08:00:00 +0000</pubDate>
-<description>Les champs matures du Tchad gardent la majorité de leur pétrole sous terre. L&#x27;EOR à intrants locaux vise à en extraire une part, sans nouveau forage.</description>
+<description>Pourquoi le pétrole qu’on croyait perdu est le moins cher à produire — l’économie de l’EOR au Tchad.</description>
 </item>
 <item>
-<title>L’énigme du « 28-32° » enfin résolue</title>
+<title>L</title>
 <link>https://enertchad-delta.vercel.app/journal-enigme-densite-brut</link>
 <guid isPermaLink="true">https://enertchad-delta.vercel.app/journal-enigme-densite-brut</guid>
 <pubDate>Fri, 12 Jun 2026 08:00:00 +0000</pubDate>
-<description>Deux densités circulent pour le brut tchadien : la réponse tient en un mot — Ronier. L’acidité du Doba (TAN ~4,7) dicte la métallurgie des mini-raffineries.</description>
+<description>Pourquoi deux densités circulent pour le brut tchadien — et ce que l</description>
 </item>
 <item>
-<title>Communiqué — Mise en ligne du site institutionnel d’EnerTchad S.A.</title>
+<title>La mécanique des fluides, du gisement à la pompe</title>
+<link>https://enertchad-delta.vercel.app/journal-mecanique-fluides</link>
+<guid isPermaLink="true">https://enertchad-delta.vercel.app/journal-mecanique-fluides</guid>
+<pubDate>Fri, 12 Jun 2026 08:00:00 +0000</pubDate>
+<description>Faire couler un brut qui ne veut pas couler : Darcy, analyse nodale, Reynolds et rhéologie, expliqués sur la chaîne tchadienne.</description>
+</item>
+<item>
+<title>De quoi est fait le prix d’un litre à la pompe ?</title>
+<link>https://enertchad-delta.vercel.app/journal-prix-litre</link>
+<guid isPermaLink="true">https://enertchad-delta.vercel.app/journal-prix-litre</guid>
+<pubDate>Fri, 12 Jun 2026 08:00:00 +0000</pubDate>
+<description>Brut, raffinage, logistique, taxes : les quatre étages du prix à la station, expliqués simplement — et ce que l’intégration change pour le Tchad.</description>
+</item>
+<item>
+<title>Mise en ligne du site institutionnel d’EnerTchad S.A.</title>
 <link>https://enertchad-delta.vercel.app/communiques#cp-001</link>
 <guid isPermaLink="true">https://enertchad-delta.vercel.app/communiques#cp-001</guid>
 <pubDate>Fri, 12 Jun 2026 08:00:00 +0000</pubDate>
-<description>EnerTchad S.A., société pétrolière intégrée à capitaux tchadiens en constitution, met en ligne son site institutionnel : la chaîne « de la roche-mère à la pompe », sept pôles, les cibles 2030.</description>
+<description>EnerTchad S.A., société pétrolière intégrée à capitaux tchadiens en constitution, met en ligne son site institutionnel : la chaîne « de la roche-mère à la pompe », sept pôles, les cibles 2030 et la démarche « Former avant d’extraire ».</description>
 </item>
 </channel>
 </rss>
