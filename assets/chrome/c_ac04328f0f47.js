@@ -53,7 +53,21 @@ tog.setAttribute('aria-expanded','false');
 tog.setAttribute('aria-controls','navLinks');
 tog.addEventListener('click',()=>setMenu(!links.classList.contains('open')));
 links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>setMenu(false)));
-/* mobile mega-menu accordion handled by nav_a.js (deduped to avoid double-toggle) */
+/* accordéon méga-menu mobile (chrome commun) — nav_a.js ne gère l'ouverture au clic que sur desktop (>=1241px) ; ici le tactile <1241px */
+(function(){
+  var mqM=window.matchMedia('(max-width:1240px)');
+  links.querySelectorAll('.nav-item>.nav-trigger').forEach(function(btn){
+    var item=btn.closest('.nav-item');if(!item)return;
+    btn.addEventListener('click',function(ev){
+      if(!mqM.matches)return; /* desktop : géré par nav_a.js */
+      ev.preventDefault();
+      var was=item.classList.contains('open');
+      links.querySelectorAll('.nav-item.open').forEach(function(i){if(i!==item){i.classList.remove('open');var b=i.querySelector('.nav-trigger');if(b)b.setAttribute('aria-expanded','false');}});
+      item.classList.toggle('open',!was);
+      btn.setAttribute('aria-expanded',String(!was));
+    });
+  });
+})();
 // fermeture à la touche Échap
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&links.classList.contains('open'))setMenu(false);});
 // fermeture au clic hors du menu
