@@ -53,16 +53,7 @@ tog.setAttribute('aria-expanded','false');
 tog.setAttribute('aria-controls','navLinks');
 tog.addEventListener('click',()=>setMenu(!links.classList.contains('open')));
 links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>setMenu(false)));
-// Méga-menu : accordéon sur mobile (clic sur le trigger ouvre/ferme le panneau)
-links.querySelectorAll('.nav-trigger').forEach(btn=>{
-  btn.addEventListener('click',()=>{
-    if(!window.matchMedia('(max-width:1240px)').matches)return;
-    const item=btn.closest('.nav-item');
-    const isOpen=item.classList.contains('open');
-    links.querySelectorAll('.nav-item.open').forEach(o=>{o.classList.remove('open');o.querySelector('.nav-trigger').setAttribute('aria-expanded','false');});
-    if(!isOpen){item.classList.add('open');btn.setAttribute('aria-expanded','true');}
-  });
-});
+/* mobile mega-menu accordion handled by nav_a.js (deduped to avoid double-toggle) */
 // fermeture à la touche Échap
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&links.classList.contains('open'))setMenu(false);});
 // fermeture au clic hors du menu

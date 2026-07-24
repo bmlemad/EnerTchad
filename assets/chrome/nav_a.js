@@ -84,3 +84,5 @@ try{(function(){
 try{(function(){var nav=document.getElementById('nav')||document.querySelector('.nav.nx');if(!nav)return;
 var f=function(){nav.classList.toggle('scrolled',(window.scrollY||window.pageYOffset||0)>20)};
 addEventListener('scroll',f,{passive:true});f();})()}catch(e){}
+
+;(function(){/* a11y: sync aria-expanded with hover/focus open state on desktop */var mq=window.matchMedia('(max-width:1240px)');document.querySelectorAll('.nav-item.nx-item').forEach(function(item){var btn=item.querySelector('.nav-trigger');if(!btn)return;function sync(){if(mq.matches)return;var open=(item.matches(':hover')||item.matches(':focus-within'))&&!item.classList.contains('kbesc');btn.setAttribute('aria-expanded',open?'true':'false');}['mouseenter','mouseleave','focusin','focusout'].forEach(function(ev){item.addEventListener(ev,function(){setTimeout(sync,0);});});});})();
