@@ -229,3 +229,7 @@ html[lang="ar"] a{padding-top:6px;padding-bottom:6px}
 @media(max-width:768px){
 #navLinks.open:not(#_x),.nav-links.open:not(#_x){background:linear-gradient(180deg,rgba(9,15,27,.985),rgba(6,10,18,.995))!important}
 }
+
+/* light-theme glass (translucent panels) */
+html.et-plight main:not(#_),html.et-plight body>section:not(#_){background:linear-gradient(162deg,#F5F1EA 0%,#EDEDF1 52%,#F3EEE6 100%)!important}
+html.et-plight main .card:not(#_),html.et-plight main [class*="card"]:not(#_),html.et-plight main [class*="panel"]:not(#_),html.et-plight main article:not(#_),html.et-plight body>section .card:not(#_),html.et-plight body>section [class*="card"]:not(#_){background:rgba(255,255,255,.46)!important;background-color:rgba(255,255,255,.46)!important;-webkit-backdrop-filter:blur(20px) saturate(1.6)!important;backdrop-filter:blur(20px) saturate(1.6)!important;border:1px solid rgba(26,35,48,.1)!important;box-shadow:0 8px 30px rgba(26,35,48,.12),inset 0 1px 0 rgba(255,255,255,.65)!important}
