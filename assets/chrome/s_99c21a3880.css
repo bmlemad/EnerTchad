@@ -7,7 +7,7 @@ header{border-bottom:1px solid var(--hair);position:sticky;top:0;background:rgba
 .hd{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;max-width:980px;margin:0 auto;gap:14px}
 .brand{font-weight:700;font-size:1.05rem;color:var(--cream);text-decoration:none;display:inline-flex;align-items:center;gap:9px}.brand b{color:var(--gold)}.brand .bmk{width:27px;height:27px;flex:0 0 auto}
 main{padding:50px 0 60px}
-.kick{font-family:ui-monospace,Menlo,monospace;font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-l)}
+.kick{font-family:ui-monospace,Menlo,monospace;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-l)}
 h1{font-size:clamp(2rem,4.6vw,2.8rem);font-weight:800;letter-spacing:-.02em;margin:10px 0 8px}
 h2{font-size:1.3rem;color:#fff;margin:34px 0 6px}
 .lead{color:rgba(245,247,250,.74);font-size:1.02rem;max-width:66ch;margin:0 0 12px}
