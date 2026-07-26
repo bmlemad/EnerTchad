@@ -199,3 +199,6 @@ h1,h2,h3{text-wrap:balance}
 .iv-mid .iv-out{color:var(--gold-l,#E8C36A);border-color:rgba(219,174,74,.38);
  background:rgba(219,174,74,.08)}
 @media(max-width:560px){.iv-mid::before,.iv-mid::after{display:none}.iv-mid{padding:10px 16px}}
+
+/* iOS safe-area : la barre fixe se decale sous l'encoche / Dynamic Island. No-op sur les appareils sans zone sure. */
+@supports(top:env(safe-area-inset-top)){.nav:not(#_){padding-top:env(safe-area-inset-top);padding-left:env(safe-area-inset-left);padding-right:env(safe-area-inset-right)}}

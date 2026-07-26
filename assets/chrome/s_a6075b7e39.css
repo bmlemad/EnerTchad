@@ -504,3 +504,6 @@ html{color-scheme:dark}h1,h2,h3{text-wrap:balance}p{text-wrap:pretty}@media(pref
 /* ── tuiles pôles · badge sans coupe ── */
 .plc-badge{max-width:100%;letter-spacing:.05em!important;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .plc-card .plc-arr{transform:none}.plc-card:hover .plc-arr{transform:translateX(5px)}.plc-card[data-plc] .plc-arr{transform:rotate(90deg)}.plc-card[data-plc]:hover .plc-arr{transform:rotate(90deg) translateX(4px)}
+
+/* iOS safe-area : la barre fixe se decale sous l'encoche / Dynamic Island. No-op sur les appareils sans zone sure. */
+@supports(top:env(safe-area-inset-top)){.nav:not(#_){padding-top:env(safe-area-inset-top);padding-left:env(safe-area-inset-left);padding-right:env(safe-area-inset-right)}}

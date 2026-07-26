@@ -73,3 +73,6 @@
 .brand-mk{width:46px!important;height:46px!important;border-radius:13px!important;padding:6px!important}
 .brand-tx{font-size:1.08rem!important}
 @media (prefers-reduced-motion:reduce){.nav-cta .nav-search,.nav-cta .btn-p{transition:none!important}}
+
+/* iOS safe-area : la barre fixe se decale sous l'encoche / Dynamic Island. No-op sur les appareils sans zone sure. */
+@supports(top:env(safe-area-inset-top)){.nav:not(#_){padding-top:env(safe-area-inset-top);padding-left:env(safe-area-inset-left);padding-right:env(safe-area-inset-right)}}
