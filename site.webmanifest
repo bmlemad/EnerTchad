@@ -1,7 +1,7 @@
 {
-  "name": "EnerTchad S.A.",
+  "name": "EnerTchad — Accès aux Énergies",
   "short_name": "EnerTchad",
-  "description": "Société pétrolière intégrée à capitaux tchadiens, en constitution — de la roche-mère à la pompe.",
+  "description": "Accès aux Énergies — société pétrolière intégrée à capitaux tchadiens, en constitution : de la roche-mère à la pompe.",
   "lang": "fr",
   "start_url": "/",
   "scope": "/",
@@ -9,10 +9,33 @@
   "background_color": "#060B14",
   "theme_color": "#060B14",
   "icons": [
-    {"src": "/favicon-32.png", "sizes": "32x32", "type": "image/png"},
-    {"src": "/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any"},
-    {"src": "/apple-touch-icon.png", "sizes": "180x180", "type": "image/png"},
-    {"src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any"},
-    {"src": "/icon-512-maskable.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable"}
+    {
+      "src": "/favicon-32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-512-maskable.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
   ]
 }
