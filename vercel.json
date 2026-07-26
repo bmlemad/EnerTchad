@@ -401,6 +401,26 @@
       "source": "/og-enerchimie.png",
       "destination": "/og-petrochimie.jpg",
       "permanent": true
+    },
+    {
+      "source": "/impact",
+      "destination": "/greentech/impact",
+      "permanent": true
+    },
+    {
+      "source": "/impact.html",
+      "destination": "/greentech/impact",
+      "permanent": true
+    },
+    {
+      "source": "/en",
+      "destination": "/index-en",
+      "permanent": true
+    },
+    {
+      "source": "/en.html",
+      "destination": "/index-en",
+      "permanent": true
     }
   ],
   "headers": [
