@@ -238,3 +238,6 @@ html.et-plight main .card:not(#_),html.et-plight main [class*="card"]:not(#_),ht
 header.jtop .hero-cap:not(#_),header.jtop .hero-halo:not(#_){display:none!important}
 @media(max-width:768px){.scrollcue:not(#_){bottom:calc(70px + env(safe-area-inset-bottom))!important}}
 #nezBar:not(#_){background:rgba(8,14,26,.94);-webkit-backdrop-filter:blur(14px) saturate(140%);backdrop-filter:blur(14px) saturate(140%);border-top:1px solid rgba(255,255,255,.12)}
+
+/* iOS safe-area : les commandes flottantes remontent au-dessus de l'indicateur d'accueil et s'ecartent des bords arrondis. No-op sur les appareils sans zone sure. */
+@supports(bottom:env(safe-area-inset-bottom)){#plightBtn:not(#_){margin-bottom:env(safe-area-inset-bottom);margin-left:env(safe-area-inset-left)}}

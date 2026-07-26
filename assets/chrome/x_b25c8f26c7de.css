@@ -10,3 +10,6 @@ h1,h2,h3,h4{letter-spacing:-.022em}
 #toTop .ttr{position:absolute;inset:0;width:52px;height:52px;transform:rotate(-90deg)}
 #toTop .ttt{stroke:rgba(255,255,255,.1);stroke-width:2.5;fill:none}#toTop .ttp{stroke:#E8C36A;stroke-width:2.5;fill:none;stroke-linecap:round;transition:stroke-dashoffset .12s linear}
 @media(max-width:640px){#toTop{width:46px;height:46px;right:16px;bottom:16px}#toTop .ttr{width:46px;height:46px}}
+
+/* iOS safe-area : les commandes flottantes remontent au-dessus de l'indicateur d'accueil et s'ecartent des bords arrondis. No-op sur les appareils sans zone sure. */
+@supports(bottom:env(safe-area-inset-bottom)){#toTop:not(#_){margin-bottom:env(safe-area-inset-bottom);margin-right:env(safe-area-inset-right)}}

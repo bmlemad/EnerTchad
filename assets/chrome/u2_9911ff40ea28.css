@@ -10,3 +10,6 @@
 
 /* mobile : le FAB accueil duplique l onglet Accueil de la tabbar et se retrouve sous elle */
 @media(max-width:768px){#homeFab{display:none!important}}
+
+/* iOS safe-area : les commandes flottantes remontent au-dessus de l'indicateur d'accueil et s'ecartent des bords arrondis. No-op sur les appareils sans zone sure. */
+@supports(bottom:env(safe-area-inset-bottom)){#ckn:not(#_){margin-bottom:env(safe-area-inset-bottom);margin-left:env(safe-area-inset-left);margin-right:env(safe-area-inset-right)}#homeFab:not(#_){margin-bottom:env(safe-area-inset-bottom);margin-left:env(safe-area-inset-left)}}

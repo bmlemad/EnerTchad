@@ -21,3 +21,6 @@ img{max-width:100%!important}
 
 /* variateur retire — controle sans pilote JS, masque universellement */
 .lum-ctl{display:none!important}
+
+/* iOS safe-area : les commandes flottantes remontent au-dessus de l'indicateur d'accueil et s'ecartent des bords arrondis. No-op sur les appareils sans zone sure. */
+@supports(bottom:env(safe-area-inset-bottom)){.lum-ctl:not(#_){margin-bottom:env(safe-area-inset-bottom);margin-right:env(safe-area-inset-right)}}

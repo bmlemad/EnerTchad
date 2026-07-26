@@ -356,3 +356,6 @@ header.jtop .hero-cap:not(#_),header.jtop .hero-halo:not(#_){display:none!import
 
 /* iOS safe-area : la jauge de lecture reste visible sous l'encoche. */
 @supports(top:env(safe-area-inset-top)){#nezProg:not(#_),#prem-prog:not(#_){top:env(safe-area-inset-top)}}
+
+/* iOS safe-area : les commandes flottantes remontent au-dessus de l'indicateur d'accueil et s'ecartent des bords arrondis. No-op sur les appareils sans zone sure. */
+@supports(bottom:env(safe-area-inset-bottom)){.lum-ctl:not(#_){margin-bottom:env(safe-area-inset-bottom);margin-right:env(safe-area-inset-right)}#toTop:not(#_){margin-bottom:env(safe-area-inset-bottom);margin-right:env(safe-area-inset-right)}#plightBtn:not(#_){margin-bottom:env(safe-area-inset-bottom);margin-left:env(safe-area-inset-left)}.scrollcue:not(#_){margin-bottom:env(safe-area-inset-bottom)}}

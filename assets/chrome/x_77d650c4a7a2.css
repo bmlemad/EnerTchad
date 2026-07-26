@@ -202,3 +202,6 @@ h1,h2,h3{text-wrap:balance}
 
 /* iOS safe-area : la barre fixe se decale sous l'encoche / Dynamic Island. No-op sur les appareils sans zone sure. */
 @supports(top:env(safe-area-inset-top)){.nav:not(#_){padding-top:env(safe-area-inset-top);padding-left:env(safe-area-inset-left);padding-right:env(safe-area-inset-right)}}
+
+/* iOS safe-area : les commandes flottantes remontent au-dessus de l'indicateur d'accueil et s'ecartent des bords arrondis. No-op sur les appareils sans zone sure. */
+@supports(bottom:env(safe-area-inset-bottom)){#ckn:not(#_){margin-bottom:env(safe-area-inset-bottom);margin-left:env(safe-area-inset-left);margin-right:env(safe-area-inset-right)}#homeFab:not(#_){margin-bottom:env(safe-area-inset-bottom);margin-left:env(safe-area-inset-left)}#diapo-cap:not(#_){margin-bottom:env(safe-area-inset-bottom);margin-right:env(safe-area-inset-right)}.scrollcue:not(#_){margin-bottom:env(safe-area-inset-bottom)}}
