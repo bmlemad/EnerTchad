@@ -190,7 +190,88 @@ main > section, .sec, .hx-strip{background:transparent!important}
 <div class="apr-step"><span class="apr-no">05</span><h3>Trace quality end to end</h3><p>Batch tracking from depot to pump, specification checks, quality partnerships: customers know what goes into their tank — everywhere, all the time.</p></div>
 </div></div></section>
 <section class="poffer" id="offer" style="--ofpac:var(--amber-l,#F2B45A)">
-<style id="poffer-css">.poffer{padding:46px 0 8px;border-top:1px solid var(--hair)}.poffer .wrap{max-width:var(--max,1240px);margin:0 auto;padding:0 var(--gut,24px)}.pof-k{font-family:var(--fm);font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ofpac);display:inline-flex;align-items:center;gap:9px;margin-bottom:10px}.pof-k::before{content:"";width:7px;height:7px;background:var(--ofpac);transform:rotate(45deg)}.poffer h2{font-family:var(--fd);font-weight:800;font-size:clamp(1.5rem,3vw,2.2rem);color:#fff;letter-spacing:-.01em;margin:0 0 26px;max-width:24ch}.pof-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px}.pof-col{background:rgba(255,255,255,.025);border:1px solid var(--hair);border-top:3px solid var(--ofpac);border-radius:16px;padding:20px 18px}.pof-ct{display:flex;align-items:center;gap:9px;font-family:var(--fd);font-weight:700;color:#fff;font-size:1rem;margin-bottom:14px}.pof-dot{width:9px;height:9px;border-radius:50%;background:var(--ofpac);flex:none;box-shadow:0 0 0 4px color-mix(in srgb,var(--ofpac) 18%,transparent)}.pof-it{padding:10px 0;border-top:1px solid var(--hair)}.pof-it:first-of-type{border-top:none}.pof-it b{display:block;color:#fff;font-size:.92rem;font-weight:600;margin-bottom:2px}.pof-it span{display:block;color:var(--muted);font-size:.82rem;line-height:1.5}.pof-cta{margin-top:26px}.pof-cta a{display:inline-flex;align-items:center;gap:8px;padding:14px 24px;border-radius:12px;background:var(--ofpac);color:#0B1422;font-weight:700;font-size:.92rem;text-decoration:none;font-family:var(--fd)}.pof-cta a:hover{filter:brightness(1.08)}.poffer .pof-grid{align-items:start}</style>
+<style id="poffer-css">.poffer{padding:46px 0 8px;border-top:1px solid var(--hair)}.poffer .wrap{max-width:var(--max,1240px);margin:0 auto;padding:0 var(--gut,24px)}.pof-k{font-family:var(--fm);font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ofpac);display:inline-flex;align-items:center;gap:9px;margin-bottom:10px}.pof-k::before{content:"";width:7px;height:7px;background:var(--ofpac);transform:rotate(45deg)}.poffer h2{font-family:var(--fd);font-weight:800;font-size:clamp(1.5rem,3vw,2.2rem);color:#fff;letter-spacing:-.01em;margin:0 0 26px;max-width:24ch}.pof-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px}.pof-col{background:rgba(255,255,255,.025);border:1px solid var(--hair);border-top:3px solid var(--ofpac);border-radius:16px;padding:20px 18px}.pof-ct{display:flex;align-items:center;gap:9px;font-family:var(--fd);font-weight:700;color:#fff;font-size:1rem;margin-bottom:14px}.pof-dot{width:9px;height:9px;border-radius:50%;background:var(--ofpac);flex:none;box-shadow:0 0 0 4px color-mix(in srgb,var(--ofpac) 18%,transparent)}.pof-it{padding:10px 0;border-top:1px solid var(--hair)}.pof-it:first-of-type{border-top:none}.pof-it b{display:block;color:#fff;font-size:.92rem;font-weight:600;margin-bottom:2px}.pof-it span{display:block;color:var(--muted);font-size:.82rem;line-height:1.5}.pof-cta{margin-top:26px}.pof-cta a{display:inline-flex;align-items:center;gap:8px;padding:14px 24px;border-radius:12px;background:var(--ofpac);color:#0B1422;font-weight:700;font-size:.92rem;text-decoration:none;font-family:var(--fd)}.pof-cta a:hover{filter:brightness(1.08)}.poffer .pof-grid{align-items:start}</style><style id="poffer-premium">
+/* ===== Nos offres & expertises — finition premium ===== */
+.poffer:not(#_){padding:clamp(52px,6vw,84px) 0 clamp(20px,3vw,34px);position:relative;isolation:isolate}
+.poffer::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(120% 62% at 50% 0%,rgba(232,195,106,.055),transparent 62%),linear-gradient(180deg,rgba(6,11,20,.42),rgba(6,11,20,.72))}
+.poffer .pof-k:not(#_){margin-bottom:14px}
+.poffer h2:not(#_){font-size:clamp(1.6rem,3.2vw,2.45rem);line-height:1.12;letter-spacing:-.018em;margin:0 0 12px;max-width:26ch;background:linear-gradient(180deg,#fff 24%,rgba(255,255,255,.74));-webkit-background-clip:text;background-clip:text;color:transparent}
+.poffer .pof-lead:not(#_){color:rgba(233,238,245,.66);font-size:.92rem;line-height:1.62;max-width:62ch;margin:0 0 clamp(26px,3vw,38px)}
+
+/* --- grille : trois cartes de hauteur egale --- */
+.pof-grid:not(#_){grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:clamp(14px,1.6vw,20px);align-items:stretch}
+
+/* --- accent propre a chaque colonne --- */
+.pof-col{--c:var(--ofpac,#E8C36A)}
+.pof-col:nth-of-type(2){--c:#5AA7F0}
+.pof-col:nth-of-type(3){--c:#34D399}
+
+/* --- la carte --- */
+.pof-col:not(#_){position:relative;align-self:stretch;display:flex;flex-direction:column;padding:22px 16px 18px;border-radius:20px;border:1px solid rgba(255,255,255,.10);border-top:1px solid rgba(255,255,255,.10);background:linear-gradient(180deg,rgba(18,29,49,.90),rgba(9,15,27,.94));-webkit-backdrop-filter:blur(18px) saturate(145%);backdrop-filter:blur(18px) saturate(145%);box-shadow:0 1px 0 rgba(255,255,255,.07) inset,0 18px 46px -22px rgba(0,0,0,.85);overflow:hidden;transition:transform .34s cubic-bezier(.22,.61,.36,1),border-color .34s ease,box-shadow .34s ease}
+.pof-col::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--c) 22%,var(--c) 78%,transparent);opacity:.9}
+.pof-col::after{content:"";position:absolute;top:-1px;left:50%;width:52%;height:120px;transform:translateX(-50%);pointer-events:none;background:radial-gradient(60% 100% at 50% 0%,color-mix(in srgb,var(--c) 16%,transparent),transparent 72%);opacity:.65}
+.pof-col:hover{transform:translateY(-3px);border-color:color-mix(in srgb,var(--c) 34%,rgba(255,255,255,.10));box-shadow:0 1px 0 rgba(255,255,255,.09) inset,0 26px 58px -24px rgba(0,0,0,.9),0 0 0 1px color-mix(in srgb,var(--c) 12%,transparent)}
+
+/* --- entete de colonne --- */
+.pof-ct:not(#_){position:relative;z-index:1;align-items:center;gap:10px;margin:2px 8px 14px;padding-bottom:13px;border-bottom:1px solid rgba(255,255,255,.09);font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;font-family:var(--fm,ui-monospace,monospace);font-weight:600;color:rgba(255,255,255,.94)}
+.pof-dot:not(#_){width:8px;height:8px;background:var(--c);box-shadow:0 0 0 4px color-mix(in srgb,var(--c) 16%,transparent),0 0 14px color-mix(in srgb,var(--c) 55%,transparent)}
+.pof-n:not(#_){font-size:.62rem;font-weight:600;letter-spacing:.06em;color:var(--c);background:color-mix(in srgb,var(--c) 12%,transparent);border:1px solid color-mix(in srgb,var(--c) 30%,transparent);border-radius:999px;padding:3px 9px}
+
+/* --- lignes --- */
+.pof-it:not(#_){border-top:1px solid rgba(255,255,255,.065);position:relative;z-index:1}
+.pof-it:first-of-type:not(#_){border-top:none}
+.pof-it>summary:not(#_){min-height:46px;padding:12px 11px;border-radius:12px;gap:12px;transition:background .22s ease,box-shadow .28s ease,padding-left .28s ease}
+.pof-it>summary:hover{background:color-mix(in srgb,var(--c) 10%,transparent);padding-left:15px}
+.pof-it>summary:focus-visible{outline:2px solid var(--c);outline-offset:-2px}
+.pof-it[open]>summary:not(#_){background:linear-gradient(90deg,color-mix(in srgb,var(--c) 13%,transparent),transparent 78%);box-shadow:inset 3px 0 0 var(--c)}
+.pof-it>summary b:not(#_){font-size:.93rem;font-weight:650;letter-spacing:-.005em;color:rgba(255,255,255,.96)}
+.pof-chev:not(#_){width:15px;height:15px;color:var(--c);opacity:.72;transition:transform .34s cubic-bezier(.22,.61,.36,1),opacity .22s ease}
+.pof-it>summary:hover .pof-chev,.pof-it[open]>summary .pof-chev{opacity:1}
+.pof-body span:not(#_),.pof-it>span:not(#_){color:rgba(226,233,243,.74);font-size:.845rem;line-height:1.68;padding:3px 11px 14px}
+/* variante plate (poles EN) */
+.pof-it>b:not(#_){display:block;color:rgba(255,255,255,.96);font-size:.93rem;font-weight:650;margin-bottom:3px;padding:0 2px}
+
+/* --- appel a l'action --- */
+.pof-cta:not(#_){margin-top:auto;padding:16px 8px 2px}
+.pof-col .pof-cta a:not(#_){display:inline-flex;align-items:center;gap:9px;padding:11px 18px;border-radius:999px;border:1px solid color-mix(in srgb,var(--c) 38%,transparent);background:color-mix(in srgb,var(--c) 9%,transparent);color:var(--c);font-family:var(--fm,ui-monospace,monospace);font-size:.71rem;letter-spacing:.09em;text-transform:uppercase;font-weight:600;text-decoration:none;transition:background .24s ease,border-color .24s ease,gap .24s ease,color .24s ease}
+.pof-col .pof-cta a:hover{gap:14px;background:var(--c);border-color:var(--c);color:#08111F}
+
+/* --- theme clair --- */
+html.et-plight .pof-col{--c:#9A6D12}html.et-plight .pof-col:nth-of-type(2){--c:#1A63B4}html.et-plight .pof-col:nth-of-type(3){--c:#0B7150}
+html.et-plight .pof-col:not(#_){background:linear-gradient(180deg,rgba(255,255,255,.94),rgba(246,249,253,.97));border-color:rgba(11,20,34,.12);box-shadow:0 1px 0 rgba(255,255,255,.9) inset,0 16px 40px -24px rgba(11,20,34,.4)}
+html.et-plight .poffer h2:not(#_){background:none;-webkit-background-clip:border-box;background-clip:border-box;color:#0B1422}
+html.et-plight .poffer .pof-lead:not(#_){color:rgba(11,20,34,.66)}
+html.et-plight .pof-ct:not(#_){color:#0B1422;border-bottom-color:rgba(11,20,34,.12)}
+html.et-plight .pof-it:not(#_){border-top-color:rgba(11,20,34,.09)}
+html.et-plight .pof-it>summary b:not(#_),html.et-plight .pof-it>b:not(#_){color:#0B1422}
+html.et-plight .pof-body span:not(#_),html.et-plight .pof-it>span:not(#_){color:rgba(11,20,34,.72)}
+html.et-plight .pof-col .pof-cta a:not(#_){color:var(--c)!important;border-color:color-mix(in srgb,var(--c) 42%,transparent);background:color-mix(in srgb,var(--c) 8%,transparent)}
+html.et-plight .pof-col .pof-cta a:hover:not(#_){color:#fff!important;background:var(--c);border-color:var(--c)}
+html.et-plight .pof-col .pof-cta a:hover{color:#fff}
+html.et-plight .poffer::before{background:radial-gradient(120% 62% at 50% 0%,rgba(232,195,106,.10),transparent 62%)}
+
+/* --- mobile --- */
+@media(max-width:600px){
+  .pof-col:not(#_){padding:18px 12px 14px;border-radius:16px}
+  .pof-it>summary:not(#_){padding:13px 9px}
+  .poffer h2:not(#_){max-width:none}
+}
+
+/* --- preferences systeme --- */
+@media(prefers-reduced-transparency:reduce){
+  .pof-col:not(#_){background:#0D1626;-webkit-backdrop-filter:none;backdrop-filter:none}
+  html.et-plight .pof-col:not(#_){background:#F7F9FC}
+}
+@supports not ((-webkit-backdrop-filter:blur(1px)) or (backdrop-filter:blur(1px))){
+  .pof-col:not(#_){background:#0D1626}
+  html.et-plight .pof-col:not(#_){background:#F7F9FC}
+}
+@media(prefers-reduced-motion:reduce){
+  .pof-col:not(#_),.pof-it>summary:not(#_),.pof-chev:not(#_),.pof-col .pof-cta a:not(#_){transition:none}
+  .pof-col:hover{transform:none}
+  .pof-it>summary:hover{padding-left:11px}
+}
+</style>
 <div class="wrap"><span class="pof-k">Our offer &amp; expertise</span><h2>From depot to pump: distribution &amp; services</h2><div class="pof-grid">
 <div class="pof-col"><div class="pof-ct"><span class="pof-dot"></span>Services</div>
 <div class="pof-it"><b>Fuel distribution</b><span>Diesel, petrol, LPG in bottles &amp; bulk: regional depots, dedicated fleet, batch traceability from depot to pump.</span></div>
