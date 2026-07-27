@@ -241,3 +241,4 @@ header.jtop .hero-cap:not(#_),header.jtop .hero-halo:not(#_){display:none!import
 
 /* iOS safe-area : les commandes flottantes remontent au-dessus de l'indicateur d'accueil et s'ecartent des bords arrondis. No-op sur les appareils sans zone sure. */
 @supports(bottom:env(safe-area-inset-bottom)){#plightBtn:not(#_){margin-bottom:env(safe-area-inset-bottom);margin-left:env(safe-area-inset-left)}}
+html.et-plight a.cb-p:not(#_):not(#__){color:#0B1422!important;-webkit-text-fill-color:#0B1422!important}
