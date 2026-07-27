@@ -279,42 +279,42 @@
     },
     {
       "source": "/pole-enertalents",
-      "destination": "/enertalents/",
+      "destination": "/tchaditude/",
       "permanent": true
     },
     {
       "source": "/pole-enertalents.html",
-      "destination": "/enertalents/",
+      "destination": "/tchaditude/",
       "permanent": true
     },
     {
       "source": "/pole-enertalents-academie",
-      "destination": "/enertalents/academie.html",
+      "destination": "/tchaditude/academie.html",
       "permanent": true
     },
     {
       "source": "/pole-enertalents-academie.html",
-      "destination": "/enertalents/academie.html",
+      "destination": "/tchaditude/academie.html",
       "permanent": true
     },
     {
       "source": "/pole-enertalents-partenariats",
-      "destination": "/enertalents/partenariats.html",
+      "destination": "/tchaditude/partenariats.html",
       "permanent": true
     },
     {
       "source": "/pole-enertalents-partenariats.html",
-      "destination": "/enertalents/partenariats.html",
+      "destination": "/tchaditude/partenariats.html",
       "permanent": true
     },
     {
       "source": "/pole-enertalents-rayonnement",
-      "destination": "/enertalents/rayonnement.html",
+      "destination": "/tchaditude/rayonnement.html",
       "permanent": true
     },
     {
       "source": "/pole-enertalents-rayonnement.html",
-      "destination": "/enertalents/rayonnement.html",
+      "destination": "/tchaditude/rayonnement.html",
       "permanent": true
     },
     {
@@ -420,6 +420,31 @@
     {
       "source": "/en.html",
       "destination": "/index-en",
+      "permanent": true
+    },
+    {
+      "source": "/enertalents",
+      "destination": "/tchaditude/",
+      "permanent": true
+    },
+    {
+      "source": "/enertalents/:path*",
+      "destination": "/tchaditude/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/pole-enertalents-en",
+      "destination": "/pole-tchaditude-en",
+      "permanent": true
+    },
+    {
+      "source": "/pole-enertalents-en.html",
+      "destination": "/pole-tchaditude-en",
+      "permanent": true
+    },
+    {
+      "source": "/og-enertalents.jpg",
+      "destination": "/og-tchaditude.jpg",
       "permanent": true
     }
   ],
