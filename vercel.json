@@ -19,32 +19,32 @@
     },
     {
       "source": "/pole-amont-activites",
-      "destination": "/amont/activites.html",
+      "destination": "/amont/activites",
       "permanent": true
     },
     {
       "source": "/pole-amont-activites.html",
-      "destination": "/amont/activites.html",
+      "destination": "/amont/activites",
       "permanent": true
     },
     {
       "source": "/pole-amont-eor",
-      "destination": "/amont/eor.html",
+      "destination": "/amont/eor",
       "permanent": true
     },
     {
       "source": "/pole-amont-eor.html",
-      "destination": "/amont/eor.html",
+      "destination": "/amont/eor",
       "permanent": true
     },
     {
       "source": "/pole-amont-services-ep",
-      "destination": "/amont/services-ep.html",
+      "destination": "/amont/services-ep",
       "permanent": true
     },
     {
       "source": "/pole-amont-services-ep.html",
-      "destination": "/amont/services-ep.html",
+      "destination": "/amont/services-ep",
       "permanent": true
     },
     {
@@ -59,32 +59,32 @@
     },
     {
       "source": "/pole-intermediaire-logistique",
-      "destination": "/intermediaire/logistique.html",
+      "destination": "/intermediaire/logistique",
       "permanent": true
     },
     {
       "source": "/pole-intermediaire-logistique.html",
-      "destination": "/intermediaire/logistique.html",
+      "destination": "/intermediaire/logistique",
       "permanent": true
     },
     {
       "source": "/pole-intermediaire-services",
-      "destination": "/intermediaire/services.html",
+      "destination": "/intermediaire/services",
       "permanent": true
     },
     {
       "source": "/pole-intermediaire-services.html",
-      "destination": "/intermediaire/services.html",
+      "destination": "/intermediaire/services",
       "permanent": true
     },
     {
       "source": "/pole-intermediaire-sites",
-      "destination": "/intermediaire/sites.html",
+      "destination": "/intermediaire/sites",
       "permanent": true
     },
     {
       "source": "/pole-intermediaire-sites.html",
-      "destination": "/intermediaire/sites.html",
+      "destination": "/intermediaire/sites",
       "permanent": true
     },
     {
@@ -99,42 +99,42 @@
     },
     {
       "source": "/pole-aval-distribution",
-      "destination": "/aval/distribution.html",
+      "destination": "/aval/distribution",
       "permanent": true
     },
     {
       "source": "/pole-aval-distribution.html",
-      "destination": "/aval/distribution.html",
+      "destination": "/aval/distribution",
       "permanent": true
     },
     {
       "source": "/pole-aval-produits",
-      "destination": "/aval/produits.html",
+      "destination": "/aval/produits",
       "permanent": true
     },
     {
       "source": "/pole-aval-produits.html",
-      "destination": "/aval/produits.html",
+      "destination": "/aval/produits",
       "permanent": true
     },
     {
       "source": "/pole-aval-raffinage",
-      "destination": "/aval/raffinage.html",
+      "destination": "/aval/raffinage",
       "permanent": true
     },
     {
       "source": "/pole-aval-raffinage.html",
-      "destination": "/aval/raffinage.html",
+      "destination": "/aval/raffinage",
       "permanent": true
     },
     {
       "source": "/pole-aval-reseau",
-      "destination": "/aval/reseau.html",
+      "destination": "/aval/reseau",
       "permanent": true
     },
     {
       "source": "/pole-aval-reseau.html",
-      "destination": "/aval/reseau.html",
+      "destination": "/aval/reseau",
       "permanent": true
     },
     {
@@ -149,22 +149,22 @@
     },
     {
       "source": "/pole-petrochimie-chimie-eor",
-      "destination": "/petrochimie/chimie-eor.html",
+      "destination": "/petrochimie/chimie-eor",
       "permanent": true
     },
     {
       "source": "/pole-petrochimie-chimie-eor.html",
-      "destination": "/petrochimie/chimie-eor.html",
+      "destination": "/petrochimie/chimie-eor",
       "permanent": true
     },
     {
       "source": "/pole-petrochimie-produits",
-      "destination": "/petrochimie/produits.html",
+      "destination": "/petrochimie/produits",
       "permanent": true
     },
     {
       "source": "/pole-petrochimie-produits.html",
-      "destination": "/petrochimie/produits.html",
+      "destination": "/petrochimie/produits",
       "permanent": true
     },
     {
@@ -179,42 +179,42 @@
     },
     {
       "source": "/pole-greentech-hseq",
-      "destination": "/greentech/hseq.html",
+      "destination": "/greentech/hseq",
       "permanent": true
     },
     {
       "source": "/pole-greentech-hseq.html",
-      "destination": "/greentech/hseq.html",
+      "destination": "/greentech/hseq",
       "permanent": true
     },
     {
       "source": "/pole-greentech-impact",
-      "destination": "/greentech/impact.html",
+      "destination": "/greentech/impact",
       "permanent": true
     },
     {
       "source": "/pole-greentech-impact.html",
-      "destination": "/greentech/impact.html",
+      "destination": "/greentech/impact",
       "permanent": true
     },
     {
       "source": "/pole-greentech-patrimoine",
-      "destination": "/greentech/patrimoine.html",
+      "destination": "/greentech/patrimoine",
       "permanent": true
     },
     {
       "source": "/pole-greentech-patrimoine.html",
-      "destination": "/greentech/patrimoine.html",
+      "destination": "/greentech/patrimoine",
       "permanent": true
     },
     {
       "source": "/pole-greentech-transition",
-      "destination": "/greentech/transition.html",
+      "destination": "/greentech/transition",
       "permanent": true
     },
     {
       "source": "/pole-greentech-transition.html",
-      "destination": "/greentech/transition.html",
+      "destination": "/greentech/transition",
       "permanent": true
     },
     {
@@ -229,52 +229,52 @@
     },
     {
       "source": "/pole-enertech-innovations",
-      "destination": "/enertech/innovations.html",
+      "destination": "/enertech/innovations",
       "permanent": true
     },
     {
       "source": "/pole-enertech-innovations.html",
-      "destination": "/enertech/innovations.html",
+      "destination": "/enertech/innovations",
       "permanent": true
     },
     {
       "source": "/pole-enertech-outils",
-      "destination": "/enertech/outils.html",
+      "destination": "/enertech/outils",
       "permanent": true
     },
     {
       "source": "/pole-enertech-outils.html",
-      "destination": "/enertech/outils.html",
+      "destination": "/enertech/outils",
       "permanent": true
     },
     {
       "source": "/pole-enertech-rd",
-      "destination": "/enertech/rd.html",
+      "destination": "/enertech/rd",
       "permanent": true
     },
     {
       "source": "/pole-enertech-rd.html",
-      "destination": "/enertech/rd.html",
+      "destination": "/enertech/rd",
       "permanent": true
     },
     {
       "source": "/pole-enertech-recits",
-      "destination": "/enertech/recits.html",
+      "destination": "/enertech/recits",
       "permanent": true
     },
     {
       "source": "/pole-enertech-recits.html",
-      "destination": "/enertech/recits.html",
+      "destination": "/enertech/recits",
       "permanent": true
     },
     {
       "source": "/pole-enertech-socle",
-      "destination": "/enertech/socle.html",
+      "destination": "/enertech/socle",
       "permanent": true
     },
     {
       "source": "/pole-enertech-socle.html",
-      "destination": "/enertech/socle.html",
+      "destination": "/enertech/socle",
       "permanent": true
     },
     {
@@ -289,32 +289,32 @@
     },
     {
       "source": "/pole-enertalents-academie",
-      "destination": "/tchaditude/academie.html",
+      "destination": "/tchaditude/academie",
       "permanent": true
     },
     {
       "source": "/pole-enertalents-academie.html",
-      "destination": "/tchaditude/academie.html",
+      "destination": "/tchaditude/academie",
       "permanent": true
     },
     {
       "source": "/pole-enertalents-partenariats",
-      "destination": "/tchaditude/partenariats.html",
+      "destination": "/tchaditude/partenariats",
       "permanent": true
     },
     {
       "source": "/pole-enertalents-partenariats.html",
-      "destination": "/tchaditude/partenariats.html",
+      "destination": "/tchaditude/partenariats",
       "permanent": true
     },
     {
       "source": "/pole-enertalents-rayonnement",
-      "destination": "/tchaditude/rayonnement.html",
+      "destination": "/tchaditude/rayonnement",
       "permanent": true
     },
     {
       "source": "/pole-enertalents-rayonnement.html",
-      "destination": "/tchaditude/rayonnement.html",
+      "destination": "/tchaditude/rayonnement",
       "permanent": true
     },
     {
@@ -329,22 +329,22 @@
     },
     {
       "source": "/pole-enerconseils-atlas",
-      "destination": "/enerconseils/atlas.html",
+      "destination": "/enerconseils/atlas",
       "permanent": true
     },
     {
       "source": "/pole-enerconseils-atlas.html",
-      "destination": "/enerconseils/atlas.html",
+      "destination": "/enerconseils/atlas",
       "permanent": true
     },
     {
       "source": "/pole-enerconseils-conseil",
-      "destination": "/enerconseils/conseil.html",
+      "destination": "/enerconseils/conseil",
       "permanent": true
     },
     {
       "source": "/pole-enerconseils-conseil.html",
-      "destination": "/enerconseils/conseil.html",
+      "destination": "/enerconseils/conseil",
       "permanent": true
     },
     {
@@ -359,12 +359,12 @@
     },
     {
       "source": "/enerchimie/petrochimie.html",
-      "destination": "/petrochimie/produits.html",
+      "destination": "/petrochimie/produits",
       "permanent": true
     },
     {
       "source": "/enerchimie/chimie-eor.html",
-      "destination": "/petrochimie/chimie-eor.html",
+      "destination": "/petrochimie/chimie-eor",
       "permanent": true
     },
     {
@@ -379,22 +379,22 @@
     },
     {
       "source": "/pole-enerchimie-petrochimie",
-      "destination": "/petrochimie/produits.html",
+      "destination": "/petrochimie/produits",
       "permanent": true
     },
     {
       "source": "/pole-enerchimie-petrochimie.html",
-      "destination": "/petrochimie/produits.html",
+      "destination": "/petrochimie/produits",
       "permanent": true
     },
     {
       "source": "/pole-enerchimie-chimie-eor",
-      "destination": "/petrochimie/chimie-eor.html",
+      "destination": "/petrochimie/chimie-eor",
       "permanent": true
     },
     {
       "source": "/pole-enerchimie-chimie-eor.html",
-      "destination": "/petrochimie/chimie-eor.html",
+      "destination": "/petrochimie/chimie-eor",
       "permanent": true
     },
     {
