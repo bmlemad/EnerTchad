@@ -358,8 +358,18 @@
       "permanent": true
     },
     {
+      "source": "/enerchimie/petrochimie",
+      "destination": "/petrochimie/produits",
+      "permanent": true
+    },
+    {
       "source": "/enerchimie/petrochimie.html",
       "destination": "/petrochimie/produits",
+      "permanent": true
+    },
+    {
+      "source": "/enerchimie/chimie-eor",
+      "destination": "/petrochimie/chimie-eor",
       "permanent": true
     },
     {
