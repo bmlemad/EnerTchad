@@ -369,32 +369,32 @@
     },
     {
       "source": "/pole-enerchimie",
-      "destination": "/pole-petrochimie",
+      "destination": "/petrochimie/",
       "permanent": true
     },
     {
       "source": "/pole-enerchimie.html",
-      "destination": "/pole-petrochimie.html",
+      "destination": "/petrochimie/",
       "permanent": true
     },
     {
       "source": "/pole-enerchimie-petrochimie",
-      "destination": "/pole-petrochimie-produits",
+      "destination": "/petrochimie/produits.html",
       "permanent": true
     },
     {
       "source": "/pole-enerchimie-petrochimie.html",
-      "destination": "/pole-petrochimie-produits.html",
+      "destination": "/petrochimie/produits.html",
       "permanent": true
     },
     {
       "source": "/pole-enerchimie-chimie-eor",
-      "destination": "/pole-petrochimie-chimie-eor",
+      "destination": "/petrochimie/chimie-eor.html",
       "permanent": true
     },
     {
       "source": "/pole-enerchimie-chimie-eor.html",
-      "destination": "/pole-petrochimie-chimie-eor.html",
+      "destination": "/petrochimie/chimie-eor.html",
       "permanent": true
     },
     {
