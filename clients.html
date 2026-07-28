@@ -958,5 +958,9 @@ html.et-plight main [style*="text-fill-color:transparent"]:not(#_){
   -webkit-background-clip:border-box!important;background-clip:border-box!important;
   color:#4C380B!important;-webkit-text-fill-color:#4C380B!important;
 }
+
+/* fx2-k accent clair - garder l'accent du pole en l'assombrissant (QA post-91).
+   Bat html.et-plight main span:not(#_) (1,1,2)! grace a (1,2,2)!. */
+html.et-plight main .fx2-k:not(#_){color:color-mix(in srgb, var(--ac,var(--blue-l,#155FA8)) 30%, #0B1422)!important}
 </style>
 </body></html>
