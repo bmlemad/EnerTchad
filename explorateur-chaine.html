@@ -92,9 +92,9 @@ footer.ft{margin-top:40px;display:flex;flex-wrap:wrap;align-items:center;gap:4px
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"EnerTchad — Explorateur de la chaîne de valeur","description":"Parcourez la chaîne de valeur pétrolière intégrée d'EnerTchad — amont, intermédiaire, aval, pétrochimie et pôles supports — et voyez, maillon par maillon, la valeur retenue au Tchad.","url":"https://enertchad-delta.vercel.app/explorateur-chaine","inLanguage":"fr","isPartOf":{"@type":"WebSite","name":"EnerTchad","url":"https://enertchad-delta.vercel.app/"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://enertchad-delta.vercel.app/"},{"@type":"ListItem","position":2,"name":"Outils interactifs","item":"https://enertchad-delta.vercel.app/tchaditech/outils"},{"@type":"ListItem","position":3,"name":"Explorateur de la chaîne de valeur","item":"https://enertchad-delta.vercel.app/explorateur-chaine"}]}</script>
 <link rel="stylesheet" id="secrail-css" href="/assets/chrome/s_d0fc612525.css">
-<script id="va-init">window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments);};</script><script defer src="/_vercel/insights/script.js"></script>
+<script id="va-init">window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments);};</script>
 <style id="skip-css">.skip-link{position:absolute;left:12px;top:-60px;z-index:400;background:#0B1422;color:#fff;border:1px solid #5AA7F0;border-radius:8px;padding:10px 16px;text-decoration:none;font:600 .85rem/1 system-ui,sans-serif;transition:top .2s}.skip-link:focus{top:12px}</style>
-</head>
+<link rel="stylesheet" href="/assets/chrome/plight_extrait.css"></head>
 <body>
 <a class="skip-link" href="#chain">Aller au contenu principal</a>
 <div class="topnav">
@@ -225,5 +225,11 @@ function select(i){
 select(0);
 </script>
 <script defer id="secrail-js" src="/assets/chrome/s_2ffe40dff9.js"></script>
-</body>
+<script>/* bascule lecture claire (autonome) */try{(function(){var KEY='et-plight';
+function app(on){document.documentElement.classList.toggle('et-plight',on);document.documentElement.classList.toggle('et-jlight',on)}
+try{var v=localStorage.getItem('et-jlight')||localStorage.getItem(KEY);if(v==='1'||(v===null&&matchMedia('(prefers-color-scheme: light)').matches))app(true)}catch(e){}
+function init(){if(document.getElementById('plightBtn'))return;var b=document.createElement('button');b.id='plightBtn';b.type='button';b.title='Basculer lecture claire / sombre';b.setAttribute('aria-label','Basculer lecture claire ou sombre');b.setAttribute('aria-pressed',document.documentElement.classList.contains('et-plight')?'true':'false');b.textContent='\u2600';b.style.cssText='position:fixed;left:14px;bottom:14px;z-index:70;width:38px;height:38px;border-radius:50%;border:1px solid rgba(128,148,178,.35);background:rgba(10,16,27,.72);color:#E8C36A;font-size:1rem;cursor:pointer';
+b.addEventListener('click',function(){var on=!document.documentElement.classList.contains('et-plight');app(on);b.setAttribute('aria-pressed',on?'true':'false');try{localStorage.setItem('et-jlight',on?'1':'0');localStorage.setItem(KEY,on?'1':'0')}catch(e){}});
+document.body.appendChild(b)}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init()})()}catch(e){}</script><style id="etLightFix2">/* Mode clair - habillage local. */html.et-plight .hd .kick{color:#7A5C14!important}html.et-plight .grad{background:none!important;-webkit-text-fill-color:#155FA8!important;color:#155FA8!important}html.et-plight .intro{color:#2A3648!important}html.et-plight .chip{background:rgba(26,35,48,.06)!important;border-color:rgba(26,35,48,.18)!important}html.et-plight .chip span,html.et-plight .chip strong{color:#1A2330!important}html.et-plight [style*='#C7D2E4']{color:#2A3648!important}</style></body>
 </html>
