@@ -698,5 +698,79 @@ html.et-plight main [style*="text-fill-color:transparent"]:not(#_){
   color:#4C380B!important;-webkit-text-fill-color:#4C380B!important;
 }
 </style>
+<style id="etDarkFix">/* Reparation contraste theme sombre - tache #92.
+   Portee : inerte des que html porte .et-plight ou .et-jlight (theme clair).
+   Quatre couches, toutes mesurees au pixel (essai.js, 93/93 cibles >= 4.5:1,
+   marge minimale +0.34) :
+
+   D1. Fond — assombrit le voile du decor photo plein ecran (.subland::after,
+       .54/.66 -> .84/.90) et opacifie les sections posees dessus (.50 -> .80).
+       Specificite :not(#_):not(#__) = (0,2,2) pour depasser la regle subland
+       (0,1,2) en restant sous les regles a id.
+   D2. Encres — releve en mode sombre les jetons trop sombres pour un fond
+       nocturne (--green #1E7A55 est arithmetiquement plafonne a 3.97:1 sur
+       noir pur) et les hexas poses en style inline via des selecteurs
+       d'attribut, meme technique que la feuille subland d'origine.
+   D3. Heros photo — un voile discret sur ::before (libre : ::after porte
+       l'accent du pole). bundle_core_a1.css force opacity:.1 sur
+       header.pghero::before, d'ou opacity:1!important. isolation:isolate
+       cree le contexte d'empilement pour z-index:-1 sans toucher aux enfants
+       positionnes (le badge "image d'illustration" reste en place) ;
+       header.jtop garde son position:sticky.
+   D4. Points durs du hero — pastille opaque sous .pgh-live, encre claire pour
+       la chaine integree (.pgc-lab etait a 1.40:1 sur la photo amont). */
+
+/* D1 — fond */
+html:not(.et-plight):not(.et-jlight) .subland::after{
+  background:linear-gradient(180deg,rgba(7,12,21,.84) 0%,rgba(7,12,21,.90) 100%)!important;
+}
+html:not(.et-plight):not(.et-jlight) main>section:not(#_):not(#__){
+  background:rgba(8,13,22,.80)!important;
+  box-shadow:0 0 0 100vmax rgba(8,13,22,.80)!important;
+}
+
+/* D2 — encres */
+html:not(.et-plight):not(.et-jlight){
+  --green:#2E9E6B!important;
+  --blue-l:#7FB8F5!important;
+  --amber-l:#FBBF24!important;
+  --inter-l:#5CC8FA!important;
+  --green-l:#4FDCAA!important;
+}
+html:not(.et-plight):not(.et-jlight) main [style*="color:#2F6FB0"],
+html:not(.et-plight):not(.et-jlight) main [style*="color: #2F6FB0"]{color:#7FB8F5!important}
+html:not(.et-plight):not(.et-jlight) main [style*="color:#B06A3A"],
+html:not(.et-plight):not(.et-jlight) main [style*="color: #B06A3A"]{color:#C98A5E!important}
+html:not(.et-plight):not(.et-jlight) main [style*="color:#2E8C56"],
+html:not(.et-plight):not(.et-jlight) main [style*="color: #2E8C56"]{color:#3FBF7F!important}
+html:not(.et-plight):not(.et-jlight) main [style*="color:#D177B4"],
+html:not(.et-plight):not(.et-jlight) main [style*="color: #D177B4"]{color:#E2A0CE!important}
+html:not(.et-plight):not(.et-jlight) main [style*="color:#1FA496"],
+html:not(.et-plight):not(.et-jlight) main [style*="color: #1FA496"]{color:#35C4B4!important}
+html:not(.et-plight):not(.et-jlight) .ec-tier.bronze{--tc:#C99A6E!important}
+
+/* D3 — voile des heros photo */
+html:not(.et-plight):not(.et-jlight) .hero:not(#_){position:relative}
+html:not(.et-plight):not(.et-jlight) header.pghero,
+html:not(.et-plight):not(.et-jlight) header.jtop,
+html:not(.et-plight):not(.et-jlight) .hero{isolation:isolate}
+html:not(.et-plight):not(.et-jlight) header.pghero::before,
+html:not(.et-plight):not(.et-jlight) header.jtop::before,
+html:not(.et-plight):not(.et-jlight) .hero::before{
+  content:"";position:absolute;inset:0;pointer-events:none;z-index:-1;
+  opacity:1!important;filter:none!important;
+  background:
+    linear-gradient(90deg,rgba(6,11,20,.40) 0%,rgba(6,11,20,.32) 46%,rgba(6,11,20,.14) 76%,rgba(6,11,20,.05) 100%),
+    linear-gradient(180deg,rgba(6,11,20,.26) 0%,rgba(6,11,20,.14) 45%,rgba(6,11,20,.38) 100%);
+}
+
+/* D4 — points durs du hero */
+html:not(.et-plight):not(.et-jlight) header.pghero .pgh-live,
+html:not(.et-plight):not(.et-jlight) header.jtop .pgh-live,
+html:not(.et-plight):not(.et-jlight) .hero .pgh-live{background:rgba(6,11,20,.58)!important}
+html:not(.et-plight):not(.et-jlight) header.pghero :is(.pgc-lab,.pgc-tail,.pgc-arr,.pgh-flabel),
+html:not(.et-plight):not(.et-jlight) header.jtop :is(.pgc-lab,.pgc-tail,.pgc-arr,.pgh-flabel),
+html:not(.et-plight):not(.et-jlight) .hero :is(.pgc-lab,.pgc-tail,.pgc-arr,.pgh-flabel){color:rgba(245,247,250,.88)!important}
+</style>
 </body>
 </html>
