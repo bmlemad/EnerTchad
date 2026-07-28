@@ -476,6 +476,16 @@
       "source": "/pole-enertech-en.html",
       "destination": "/pole-tchaditech-en",
       "permanent": true
+    },
+    {
+      "source": "/enertech/",
+      "destination": "/tchaditech/",
+      "permanent": true
+    },
+    {
+      "source": "/enertalents/",
+      "destination": "/tchaditude/",
+      "permanent": true
     }
   ],
   "headers": [
