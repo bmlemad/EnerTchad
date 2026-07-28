@@ -219,62 +219,62 @@
     },
     {
       "source": "/pole-enertech",
-      "destination": "/enertech/",
+      "destination": "/tchaditech/",
       "permanent": true
     },
     {
       "source": "/pole-enertech.html",
-      "destination": "/enertech/",
+      "destination": "/tchaditech/",
       "permanent": true
     },
     {
       "source": "/pole-enertech-innovations",
-      "destination": "/enertech/innovations",
+      "destination": "/tchaditech/innovations",
       "permanent": true
     },
     {
       "source": "/pole-enertech-innovations.html",
-      "destination": "/enertech/innovations",
+      "destination": "/tchaditech/innovations",
       "permanent": true
     },
     {
       "source": "/pole-enertech-outils",
-      "destination": "/enertech/outils",
+      "destination": "/tchaditech/outils",
       "permanent": true
     },
     {
       "source": "/pole-enertech-outils.html",
-      "destination": "/enertech/outils",
+      "destination": "/tchaditech/outils",
       "permanent": true
     },
     {
       "source": "/pole-enertech-rd",
-      "destination": "/enertech/rd",
+      "destination": "/tchaditech/rd",
       "permanent": true
     },
     {
       "source": "/pole-enertech-rd.html",
-      "destination": "/enertech/rd",
+      "destination": "/tchaditech/rd",
       "permanent": true
     },
     {
       "source": "/pole-enertech-recits",
-      "destination": "/enertech/recits",
+      "destination": "/tchaditech/recits",
       "permanent": true
     },
     {
       "source": "/pole-enertech-recits.html",
-      "destination": "/enertech/recits",
+      "destination": "/tchaditech/recits",
       "permanent": true
     },
     {
       "source": "/pole-enertech-socle",
-      "destination": "/enertech/socle",
+      "destination": "/tchaditech/socle",
       "permanent": true
     },
     {
       "source": "/pole-enertech-socle.html",
-      "destination": "/enertech/socle",
+      "destination": "/tchaditech/socle",
       "permanent": true
     },
     {
@@ -455,6 +455,26 @@
     {
       "source": "/og-enertalents.jpg",
       "destination": "/og-tchaditude.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/enertech",
+      "destination": "/tchaditech/",
+      "permanent": true
+    },
+    {
+      "source": "/enertech/:path*",
+      "destination": "/tchaditech/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/pole-enertech-en",
+      "destination": "/pole-tchaditech-en",
+      "permanent": true
+    },
+    {
+      "source": "/pole-enertech-en.html",
+      "destination": "/pole-tchaditech-en",
       "permanent": true
     }
   ],
