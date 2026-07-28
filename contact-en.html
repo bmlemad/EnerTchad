@@ -199,4 +199,219 @@ main > section, .sec, .hx-strip{background:transparent!important}
 <script src="/assets/chrome/u2_881fcf8bc439.js"></script>
 <script src="/assets/chrome/u2_e8be195d19be.js"></script>
 <script defer id="secrail-js" src="/assets/chrome/s_2ffe40dff9.js"></script>
-<style id="nav-lisible">#nav.nav:not(.scrolled):not(#_):not(#__){background-color:transparent!important;background-image:linear-gradient(180deg,rgba(6,11,20,.94),rgba(6,11,20,.88))!important}#nav.nav:not(.scrolled):not(#_):not(#__)::after{content:"";position:absolute;left:0;right:0;top:100%;height:40px;pointer-events:none;background:linear-gradient(180deg,rgba(6,11,20,.42),rgba(6,11,20,0))}</style></body></html>
+<style id="nav-lisible">#nav.nav:not(.scrolled):not(#_):not(#__){background-color:transparent!important;background-image:linear-gradient(180deg,rgba(6,11,20,.94),rgba(6,11,20,.88))!important}#nav.nav:not(.scrolled):not(#_):not(#__)::after{content:"";position:absolute;left:0;right:0;top:100%;height:40px;pointer-events:none;background:linear-gradient(180deg,rgba(6,11,20,.42),rgba(6,11,20,0))}</style><style id="etLightFix">/* Reparation contraste theme clair - tache #91.
+   Portee : inerte en mode sombre (chaque selecteur est prefixe html.et-plight
+   ou html.et-jlight).
+
+   PRINCIPE DE CASCADE : pour les encres GLOBALES (liens, kick, accents inline)
+   on reprend le selecteur d'origine A L'IDENTIQUE et on se contente d'arriver
+   plus tard dans la cascade. Elever la specificite cassait tout l'ecosysteme
+   d'exceptions deja en place (pghero, footer, .btn, .mkt-nav, .ppt-cta...) :
+   la premiere version de ce bloc a fait passer les echecs de 314 a 1016.
+   Pour les ILOTS SOMBRES, au contraire, on vise juste au-dessus de la regle
+   de base html.et-plight main span:not(#_) = (1,1,3). */
+
+/* ---- G1 : neutraliser les degrades clippes sur le texte (52 echecs) ----
+   Lecon 42 : poser `color` ne fait rien sur un texte peint par
+   background-clip:text. Il faut couper l'image de fond ET remettre
+   -webkit-text-fill-color. currentColor laisse gagner la regle d'encre. */
+html.et-plight main em:not(#_):not(#__),
+html.et-plight main i:not(#_):not(#__),
+html.et-plight body>section em:not(#_):not(#__),
+html.et-plight body>section i:not(#_):not(#__),
+html.et-plight .apps-creed:not(#_):not(#__),
+html.et-jlight main em:not(#_):not(#__),
+html.et-jlight main i:not(#_):not(#__),
+html.et-jlight .apps-creed:not(#_):not(#__){
+  background-image:none!important;
+  -webkit-background-clip:border-box!important;
+  background-clip:border-box!important;
+  -webkit-text-fill-color:currentColor!important;
+}
+
+/* ---- G2 : encres d'accent inline assombries (selecteurs d'origine) ---- */
+html.et-plight [style*="34D399"]:not(#_){color:#094E37!important}
+html.et-plight [style*="E8C36A"]:not(#_),
+html.et-plight [style*="F0CE82"]:not(#_){color:#7A570E!important}
+html.et-plight [style*="075E42"]:not(#_){color:#06533B!important}
+html.et-plight [style*="B4700A"]:not(#_){color:#9E6209!important}
+
+/* ---- G3 : bleu de lien assombri #155FA8 -> #0E4172 (4.60:1) ----
+   Selecteurs d'origine, mot pour mot. */
+html.et-plight main a:not(#_){color:#0E4172!important}
+html.et-plight body>section a:not(#_){color:#0E4172!important}
+html.et-plight .wrap>a:not([class]):not(#_):not(#__){
+  text-decoration:underline!important;color:#0E4172!important}
+html.et-jlight a:not(#_):not(.jback):not(.jlang){color:#0E4172}
+
+/* ---- G4 : or de titraille #6B500F -> #4C380B (4.63:1) ----
+   Selecteurs d'origine, mot pour mot. */
+html.et-plight main .kick:not(#_),
+html.et-plight main [class*="kick"]:not(#_),
+html.et-plight main h1 em:not(#_),
+html.et-plight main h2 em:not(#_){color:#4C380B!important}
+html.et-jlight h1 em:not(#_),
+html.et-jlight h2 em:not(#_),
+html.et-jlight .jkick:not(#_),
+html.et-jlight .sc-lb:not(#_),
+html.et-jlight .cb-k:not(#_){color:#4C380B!important}
+html.et-plight body>section [class*="kick"]:not(#_),
+html.et-plight body>section h2 em:not(#_),
+html.et-plight body>section [class*="-no"]:not(#_),
+html.et-plight body>section [class*="-k"]:not(#_){color:#4C380B!important}
+html.et-jlight .more-k:not(#_){color:#4C380B!important}
+html.et-plight .pgr-dir:not(#_){color:#4C380B!important}
+html.et-plight main section.hero h1 em:not(#_):not(#__){
+  background:none!important;-webkit-text-fill-color:#4C380B!important;color:#4C380B!important}
+html.et-plight main code:not(#_):not(#__),
+html.et-plight body>section code:not(#_):not(#__){
+  color:#4C380B!important;background:rgba(76,56,11,.09)!important}
+
+/* ==== ILOTS SOMBRES : rendre l'encre claire, garder la surface sombre ==== */
+
+/* ---- I1 : heros photo, balises manquantes du bloc d'exception (lecon 43) ----
+   h1/p/li/span/a/.pgk sont deja traites en amont : on ne les reprend pas,
+   pour ne pas ecraser la hierarchie voulue du hero.
+   On NE cible PAS [class*="hero"] : section.hero est une surface CLAIRE sur
+   plusieurs pages (cibles-2030, projets) — seuls .pghero, header[class*=hero]
+   et .diapo sont des surfaces photo. */
+html.et-plight main .pghero :is(i,em,strong,b,small,dt,dd,td,th,label,figcaption,blockquote,summary):not(#_),
+html.et-plight main header[class*="hero"] :is(i,em,strong,b,small,dt,dd,td,th,label,figcaption,blockquote,summary):not(#_),
+html.et-plight main .diapo :is(i,em,strong,b,small,dt,dd,td,th,label,figcaption,blockquote,summary):not(#_){
+  color:#EAF0F8!important;-webkit-text-fill-color:#EAF0F8!important;
+  background-image:none!important;
+  -webkit-background-clip:border-box!important;background-clip:border-box!important;
+}
+/* I2 : pastille or active du hero -> encre sombre restauree */
+html.et-plight main .pgc-node.is-on:not(#_),
+html.et-plight main .pgc-node.is-on :not(#_){
+  color:#0B1422!important;-webkit-text-fill-color:#0B1422!important;
+}
+
+/* ---- I3 : sous-navigation de pole (37 echecs) ---- */
+html.et-plight .pole-subnav :not(#_){
+  color:#CBD5E3!important;-webkit-text-fill-color:#CBD5E3!important;
+}
+html.et-plight .pole-subnav .psn-home:not(#_),
+html.et-plight .pole-subnav a:not(#_){
+  color:#EAD9A8!important;-webkit-text-fill-color:#EAD9A8!important;
+}
+
+/* ---- I4 : cartes .fp-card a voile (32 echecs) ---- */
+html.et-plight .fp-card :not(#_){
+  color:#F5F7FA!important;-webkit-text-fill-color:#F5F7FA!important;
+}
+html.et-plight .fp-card .fp-badge:not(#_){
+  color:#FFFFFF!important;-webkit-text-fill-color:#FFFFFF!important;
+}
+
+/* ---- I5 : cartes .adx code couleur par pole (17 echecs) ---- */
+html.et-plight .adx:not(#_),
+html.et-plight .adx :not(#_){
+  color:#F5F7FA!important;-webkit-text-fill-color:#F5F7FA!important;
+}
+html.et-plight .adx .eyebrow:not(#_){
+  color:var(--ac,#EAD9A8)!important;-webkit-text-fill-color:var(--ac,#EAD9A8)!important;
+}
+
+/* ---- I6 : cartes contact presse .cp-ct (20 echecs) ----
+   Doit battre html.et-plight main .cp-ct a:not(#_) b = (1,3,4). */
+html.et-plight main .cp-ct a:not(#_):not(#__),
+html.et-plight main .cp-ct a:not(#_):not(#__) span{
+  color:#EAF0F8!important;-webkit-text-fill-color:#EAF0F8!important;
+}
+html.et-plight main .cp-ct a:not(#_):not(#__) b{
+  color:#FFFFFF!important;-webkit-text-fill-color:#FFFFFF!important;
+}
+
+/* ---- I7 : bouton .fl-cta sur degrade bleu ---- */
+html.et-plight .fl-cta:not(#_),
+html.et-plight .fl-cta :not(#_){
+  color:#FFFFFF!important;-webkit-text-fill-color:#FFFFFF!important;
+}
+
+/* ---- I8 : boutons fantomes .fcta-s, encre = fond (ratio 1.00) ----
+   Doit battre html.et-plight [class^="fcta"]:not(#_):not(#__):not(#___). */
+html.et-plight .fcta-s:not(#_):not(#__):not(#___):not(#____),
+html.et-plight .fcta-s :not(#_):not(#__):not(#___):not(#____){
+  color:#F5F7FA!important;-webkit-text-fill-color:#F5F7FA!important;
+}
+
+/* ---- I9 : badge .dchg-badge (tchaditude) ---- */
+html.et-plight .dchg-badge:not(#_){
+  color:#EAF0F8!important;-webkit-text-fill-color:#EAF0F8!important;
+}
+
+/* ---- I10 : pastilles .dkpi (aval/distribution) ---- */
+html.et-plight .dkpi span:not(#_){
+  color:#EAF0F8!important;-webkit-text-fill-color:#EAF0F8!important;
+}
+
+/* ---- I11 : legend de formulaire, blanc sur creme ---- */
+html.et-plight main legend:not(#_):not(#__){
+  color:#2A3648!important;-webkit-text-fill-color:#2A3648!important;
+}
+
+/* ---- I12 : marque du pied de page des carnets (36 echecs, lecon 48) ----
+   html.et-jlight redefinit --blue-l / --gold-l pour une surface claire, mais
+   le pied de page reste #0B1422. On restaure les valeurs sombres, limitees
+   au footer, sans toucher --ink / --mut / --hair. */
+html.et-jlight footer,
+html.et-jlight .jfoot,
+html.et-plight footer{
+  --blue-l:#5AA7F0!important;
+  --gold-l:#E8C36A!important;
+}
+
+/* ---- I13 : bouton .pof-cta de la colonne or ----
+   ATTENTION, correctif REECRIT : la version precedente eclaircissait
+   `.pof-col a`, sur la foi de cause.js qui avait vu un `::before` sombre.
+   Ce ::before est en realite un FILET de 2 px en haut de carte, pas un voile :
+   en theme clair .pof-col est une carte CLAIRE (#F7F9FC) sur les trois pages.
+   La regle a donc casse deux liens (intermediaire/index 1.01, aval/index 1.22)
+   sans corriger sa cible. Le vrai defaut est l'or #9A6D12 du bouton, a 3.36
+   sur le fond de carte teinte a 8 %. On assombrit la seule encre du bouton,
+   sans toucher a --c qui dessine aussi la bordure et le halo. */
+html.et-plight .pof-col .pof-cta a:not(#_):not(#__){
+  color:#6E4D0C!important;-webkit-text-fill-color:#6E4D0C!important;
+}
+
+/* ---- I14 : legendes du schema SVG de brochure.html ----
+   Deux div en style inline poses sur un voile marine ; l'encre globale les
+   fait basculer sombre. On les rend claires. */
+html.et-plight [style*="position:absolute"][style*="bottom:0"]:not(#_) > div:not(#_){
+  color:#EAF0F8!important;-webkit-text-fill-color:#EAF0F8!important;
+}
+html.et-plight [style*="position:absolute"][style*="bottom:0"]:not(#_) > div[style*="var(--blue-l)"]:not(#_){
+  color:#8EC5FF!important;-webkit-text-fill-color:#8EC5FF!important;
+}
+
+/* ---- I15 : pastilles .dlnk (aval/distribution) ---- */
+html.et-plight .dlnk a:not(#_){
+  color:#F5F7FA!important;-webkit-text-fill-color:#F5F7FA!important;
+}
+
+/* ---- I16 : chips de synthese .ppj-syn (pages de pole) ---- */
+html.et-plight .ppj-syn:not(#_),
+html.et-plight .ppj-syn :not(#_){
+  color:#EAF0F8!important;-webkit-text-fill-color:#EAF0F8!important;
+}
+
+/* ---- I17 : chaine de poles du hero de brochure.html ----
+   Ce HEADER.hero n'est PAS dans <main> : les regles en `main ...` ne
+   l'atteignent pas. Doit battre G2 [style*="E8C36A"]:not(#_) = (1,2,1). */
+html.et-plight .hchain a:not(#_):not(#__),
+html.et-plight .hchain a :not(#_):not(#__){
+  color:#FFFFFF!important;-webkit-text-fill-color:#FFFFFF!important;
+}
+
+/* ---- I18 : mots-marques peints par un degrade clippe en style inline ----
+   ex. « Tchaditude™ » : background-clip:text + text-fill-color:transparent,
+   degrade or prevu pour un fond sombre, illisible sur le creme. */
+html.et-plight main [style*="text-fill-color:transparent"]:not(#_){
+  background-image:none!important;
+  -webkit-background-clip:border-box!important;background-clip:border-box!important;
+  color:#4C380B!important;-webkit-text-fill-color:#4C380B!important;
+}
+</style>
+</body></html>
