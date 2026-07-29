@@ -8,6 +8,27 @@
 <atom:link href="https://enertchad-delta.vercel.app/feed.xml" rel="self" type="application/rss+xml"/>
 <lastBuildDate>Tue, 14 Jul 2026 08:00:00 +0000</lastBuildDate>
 <item>
+<title>Faire durer : l’intégrité, le métier invisible</title>
+<link>https://enertchad-delta.vercel.app/journal-integrite-faire-durer</link>
+<guid isPermaLink="true">https://enertchad-delta.vercel.app/journal-integrite-faire-durer</guid>
+<pubDate>Wed, 22 Jul 2026 08:00:00 +0000</pubDate>
+<description>Un puits sûr, un pipeline propre, un bac étanche : l’intégrité est le métier qui ne se voit que quand il manque. Comment EnerTchad veut faire durer ses actifs — du fond du puits au dernier dépôt.</description>
+</item>
+<item>
+<title>De quoi est fait le prix d’un litre à la pompe ?</title>
+<link>https://enertchad-delta.vercel.app/journal-prix-litre</link>
+<guid isPermaLink="true">https://enertchad-delta.vercel.app/journal-prix-litre</guid>
+<pubDate>Fri, 17 Jul 2026 08:00:00 +0000</pubDate>
+<description>Brut, raffinage, logistique, taxes : les quatre étages du prix à la station, expliqués simplement — et ce que l’intégration change pour le Tchad.</description>
+</item>
+<item>
+<title>La mécanique des fluides, du gisement à la pompe</title>
+<link>https://enertchad-delta.vercel.app/journal-mecanique-fluides</link>
+<guid isPermaLink="true">https://enertchad-delta.vercel.app/journal-mecanique-fluides</guid>
+<pubDate>Thu, 16 Jul 2026 08:00:00 +0000</pubDate>
+<description>Faire couler un brut qui ne veut pas couler : Darcy, analyse nodale, Reynolds et rhéologie, expliqués sur la chaîne tchadienne.</description>
+</item>
+<item>
 <title>Le criblage EOR : la bonne méthode pour le bon réservoir</title>
 <link>https://enertchad-delta.vercel.app/journal-criblage-eor</link>
 <guid isPermaLink="true">https://enertchad-delta.vercel.app/journal-criblage-eor</guid>
@@ -148,13 +169,6 @@
 <description>Réinjecter, boucler, valoriser : comment une pétrolière sahélienne traite l’eau qui remonte avec le brut.</description>
 </item>
 <item>
-<title>Faire durer : l’intégrité, le métier invisible</title>
-<link>https://enertchad-delta.vercel.app/journal-integrite-faire-durer</link>
-<guid isPermaLink="true">https://enertchad-delta.vercel.app/journal-integrite-faire-durer</guid>
-<pubDate>Mon, 29 Jun 2026 08:00:00 +0000</pubDate>
-<description>Un puits sûr, un pipeline propre, un bac étanche : l’intégrité est le métier qui ne se voit que quand il manque. Comment EnerTchad veut faire durer ses actifs — du fond du puits au dernier dépôt.</description>
-</item>
-<item>
 <title>Le baril roule avant le tube : le brut par camion</title>
 <link>https://enertchad-delta.vercel.app/journal-brut-par-camion</link>
 <guid isPermaLink="true">https://enertchad-delta.vercel.app/journal-brut-par-camion</guid>
@@ -195,20 +209,6 @@
 <guid isPermaLink="true">https://enertchad-delta.vercel.app/journal-enigme-densite-brut</guid>
 <pubDate>Fri, 12 Jun 2026 08:00:00 +0000</pubDate>
 <description>Pourquoi deux densités circulent pour le brut tchadien — et ce que l</description>
-</item>
-<item>
-<title>La mécanique des fluides, du gisement à la pompe</title>
-<link>https://enertchad-delta.vercel.app/journal-mecanique-fluides</link>
-<guid isPermaLink="true">https://enertchad-delta.vercel.app/journal-mecanique-fluides</guid>
-<pubDate>Fri, 12 Jun 2026 08:00:00 +0000</pubDate>
-<description>Faire couler un brut qui ne veut pas couler : Darcy, analyse nodale, Reynolds et rhéologie, expliqués sur la chaîne tchadienne.</description>
-</item>
-<item>
-<title>De quoi est fait le prix d’un litre à la pompe ?</title>
-<link>https://enertchad-delta.vercel.app/journal-prix-litre</link>
-<guid isPermaLink="true">https://enertchad-delta.vercel.app/journal-prix-litre</guid>
-<pubDate>Fri, 12 Jun 2026 08:00:00 +0000</pubDate>
-<description>Brut, raffinage, logistique, taxes : les quatre étages du prix à la station, expliqués simplement — et ce que l’intégration change pour le Tchad.</description>
 </item>
 <item>
 <title>Mise en ligne du site institutionnel d’EnerTchad S.A.</title>

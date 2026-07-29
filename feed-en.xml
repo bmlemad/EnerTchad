@@ -8,6 +8,27 @@
 <atom:link href="https://enertchad-delta.vercel.app/feed-en.xml" rel="self" type="application/rss+xml"/>
 <lastBuildDate>Tue, 14 Jul 2026 08:00:00 +0000</lastBuildDate>
 <item>
+<title>Built to last: integrity, the invisible trade</title>
+<link>https://enertchad-delta.vercel.app/journal-integrite-faire-durer-en</link>
+<guid isPermaLink="true">https://enertchad-delta.vercel.app/journal-integrite-faire-durer-en</guid>
+<pubDate>Wed, 22 Jul 2026 08:00:00 +0000</pubDate>
+<description>A safe well, a clean pipeline, a tight tank: integrity is the trade you only notice when it fails. How EnerTchad intends to make its assets last — from the bottom of the well to the last depot.</description>
+</item>
+<item>
+<title>What is the price of a litre at the pump made of?</title>
+<link>https://enertchad-delta.vercel.app/journal-prix-litre-en</link>
+<guid isPermaLink="true">https://enertchad-delta.vercel.app/journal-prix-litre-en</guid>
+<pubDate>Fri, 17 Jul 2026 08:00:00 +0000</pubDate>
+<description>Crude, refining, logistics, taxes: the four layers of the pump price, explained simply — and what integration changes for Chad.</description>
+</item>
+<item>
+<title>Fluid mechanics, from reservoir to pump</title>
+<link>https://enertchad-delta.vercel.app/journal-mecanique-fluides-en</link>
+<guid isPermaLink="true">https://enertchad-delta.vercel.app/journal-mecanique-fluides-en</guid>
+<pubDate>Thu, 16 Jul 2026 08:00:00 +0000</pubDate>
+<description>Making a reluctant crude flow: Darcy, nodal analysis, Reynolds and rheology, explained on the Chadian chain.</description>
+</item>
+<item>
 <title>EOR screening: the right method for the right reservoir</title>
 <link>https://enertchad-delta.vercel.app/journal-criblage-eor-en</link>
 <guid isPermaLink="true">https://enertchad-delta.vercel.app/journal-criblage-eor-en</guid>
@@ -148,13 +169,6 @@
 <description>Reinject, close the loop, recover value: how a Sahelian oil company treats the water that comes up with the crude.</description>
 </item>
 <item>
-<title>Built to last: integrity, the invisible trade</title>
-<link>https://enertchad-delta.vercel.app/journal-integrite-faire-durer-en</link>
-<guid isPermaLink="true">https://enertchad-delta.vercel.app/journal-integrite-faire-durer-en</guid>
-<pubDate>Mon, 29 Jun 2026 08:00:00 +0000</pubDate>
-<description>A safe well, a clean pipeline, a tight tank: integrity is the trade you only notice when it fails. How EnerTchad intends to make its assets last — from the bottom of the well to the last depot.</description>
-</item>
-<item>
 <title>The barrel rolls before the pipe: crude by truck</title>
 <link>https://enertchad-delta.vercel.app/journal-brut-par-camion-en</link>
 <guid isPermaLink="true">https://enertchad-delta.vercel.app/journal-brut-par-camion-en</guid>
@@ -195,20 +209,6 @@
 <guid isPermaLink="true">https://enertchad-delta.vercel.app/journal-enigme-densite-brut-en</guid>
 <pubDate>Fri, 12 Jun 2026 08:00:00 +0000</pubDate>
 <description>Chad does not have one crude — it has several. Why acidity, not density, is the parameter that decides how you refine Doba.</description>
-</item>
-<item>
-<title>Fluid mechanics, from reservoir to pump</title>
-<link>https://enertchad-delta.vercel.app/journal-mecanique-fluides-en</link>
-<guid isPermaLink="true">https://enertchad-delta.vercel.app/journal-mecanique-fluides-en</guid>
-<pubDate>Fri, 12 Jun 2026 08:00:00 +0000</pubDate>
-<description>Making a reluctant crude flow: Darcy, nodal analysis, Reynolds and rheology, explained on the Chadian chain.</description>
-</item>
-<item>
-<title>What is the price of a litre at the pump made of?</title>
-<link>https://enertchad-delta.vercel.app/journal-prix-litre-en</link>
-<guid isPermaLink="true">https://enertchad-delta.vercel.app/journal-prix-litre-en</guid>
-<pubDate>Fri, 12 Jun 2026 08:00:00 +0000</pubDate>
-<description>Crude, refining, logistics, taxes: the four layers of the pump price, explained simply — and what integration changes for Chad.</description>
 </item>
 <item>
 <title>EnerTchad S.A. corporate website goes live</title>
