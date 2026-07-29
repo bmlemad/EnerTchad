@@ -8,6 +8,8 @@ Site **100 % statique** : 159 pages HTML (FR intégral, EN étendu, AR une page)
 
 Ressources partagées dans `assets/chrome/` (~55 feuilles CSS + scripts). Les pages n'embarquent pas toutes les mêmes feuilles : la famille « index » (accueils, pages héritées à diapo) ne charge pas toutes les feuilles du reste du site — d'où le fichier `plight_extrait.css` (§2).
 
+**Recherche (palette Ctrl+K)** : deux fichiers d'index, `c_abd9013c3955.js` / `c_df4f446df566.js` (78 entrées, index de base intégré dans une IIFE — non exposé) et `cmdk_extra.js` (`window.CMDK_EXTRA`, 143 entrées, extensible). La palette n'existe que sur les **96 pages qui portent la navigation principale** (`nav_a.js`) : les pages « sans chrome » — articles du journal, outils autonomes, boutique, explorateur, pages légales, `/ar` — en sont dépourvues **par construction de gabarit**. Exception délibérée : `404.html` embarque le balisage `#cmdk` + les deux scripts et un bouton « Rechercher sur le site », pour qu'un visiteur égaré ne soit pas en cul-de-sac ; comme cette page ne déclare aucune variable CSS, le bloc y est autonome (variables redéclarées sur `#cmdk`, icône en couleur littérale, styles de bouton pour les deux thèmes).
+
 ## 2. Système de thèmes — le point le plus délicat
 
 **Sombre** = thème par défaut. **Clair** = deux mécanismes distincts :
@@ -55,6 +57,7 @@ Un nouvel article = **une paire FR/EN** sur le gabarit des articles existants. L
 3. héros : photo de `assets/img/` (préchargée `fetchpriority=high`), compressée fort (elle est sous un voile sombre .54/.66 — viser < 90 Ko) ;
 4. liens frères entrants et sortants (« Pour aller plus loin ») ;
 5. insertion : cartes en tête des deux hubs Carnets (ordre chronologique après l'article à la une), entrée en tête de `feed.xml` et `feed-en.xml` (tri décroissant strict, XML valide), `sitemap.xml` (+2 URL), `plan-du-site.html` (+2 liens), rafraîchir le « fil daté » des deux accueils (cartes statiques !), lien retour depuis la page thématique concernée.
+6. **index de recherche** : ajouter une entrée `{c:'Carnets', id:'cn-<slug>', t:'<titre> — Carnet', k:'<mots-clés>', url:'/journal-<slug>'}` dans `assets/chrome/cmdk_extra.js`, puis bumper `V` dans `sw.js`. Oubli constaté : 23 articles sur 25 étaient absents de la palette Ctrl+K — un article non indexé est introuvable par la recherche du site, quelle que soit sa qualité. Vérifier en tapant un mot distinctif dans la palette.
 
 ## 7. Documents PDF
 
