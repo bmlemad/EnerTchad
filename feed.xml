@@ -6,7 +6,14 @@
 <description>Le journal d’EnerTchad S.A. : récits, analyses et jalons de la construction de la chaîne pétrolière du Tchad — de la roche-mère à la pompe. Société en constitution : objectifs datés, non des actifs en exploitation.</description>
 <language>fr</language>
 <atom:link href="https://enertchad-delta.vercel.app/feed.xml" rel="self" type="application/rss+xml"/>
-<lastBuildDate>Tue, 14 Jul 2026 08:00:00 +0000</lastBuildDate>
+<lastBuildDate>Wed, 29 Jul 2026 08:00:00 +0000</lastBuildDate>
+<item>
+<title>La route en noir : le bitume, l’autre produit du baril</title>
+<link>https://enertchad-delta.vercel.app/journal-bitume-routes</link>
+<guid isPermaLink="true">https://enertchad-delta.vercel.app/journal-bitume-routes</guid>
+<pubDate>Wed, 29 Jul 2026 08:00:00 +0000</pubDate>
+<description>Un pays enclavé se désenclave par ses routes — et une route durable se pose au bitume. Pourquoi le fond du baril est un enjeu national, et comment EnerTchad veut le produire au Tchad.</description>
+</item>
 <item>
 <title>Faire durer : l’intégrité, le métier invisible</title>
 <link>https://enertchad-delta.vercel.app/journal-integrite-faire-durer</link>
