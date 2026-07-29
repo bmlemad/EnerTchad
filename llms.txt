@@ -1,0 +1,20 @@
+# EnerTchad S.A.
+
+> Société pétrolière intégrée tchadienne en constitution (droit OHADA) — « de la roche-mère à la pompe ». Tous les chiffres publiés sont des objectifs datés, non des actifs en exploitation. Site en français (référence), anglais et arabe.
+
+## Pages clés
+
+- [Accueil](https://enertchad-delta.vercel.app/) : mission, chaîne intégrée, chiffres cibles
+- [La Société](https://enertchad-delta.vercel.app/societe) : identité, gouvernance OHADA
+- [Espace investisseurs](https://enertchad-delta.vercel.app/investisseurs) : thèse, trajectoire de capital 10 M → 1 Md → 20 Md FCFA, jalons datés
+- [Nos solutions par besoin](https://enertchad-delta.vercel.app/solutions) : entrée par usage (produire, acheminer, transformer, distribuer, décider, financer)
+- [Publications & documents](https://enertchad-delta.vercel.app/publications) : brochures PDF (FR/EN), fiche arabe, fiches techniques
+- [Carnets — journal pédagogique](https://enertchad-delta.vercel.app/carnets) : 25 articles bilingues sur le pétrole tchadien (flux RSS : /feed.xml, /feed-en.xml)
+- [Explorateur de la chaîne de valeur](https://enertchad-delta.vercel.app/explorateur-chaine)
+- [Plan du site](https://enertchad-delta.vercel.app/plan-du-site) · [Version arabe](https://enertchad-delta.vercel.app/ar) · [English](https://enertchad-delta.vercel.app/index-en)
+
+## À savoir
+
+- Contact : contact@enertchad.td · +235 99 29 86 96 (WhatsApp) · N'Djamena, Tchad
+- Aucune souscription n'est ouverte : toute sollicitation contraire est frauduleuse (voir /avertissements)
+- Pôles : Amont, Intermédiaire, Aval, Pétrochimie, GreenTech, TchadiTech, Tchaditude
