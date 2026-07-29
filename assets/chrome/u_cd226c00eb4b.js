@@ -23,3 +23,5 @@ b.setAttribute('aria-pressed',document.documentElement.classList.contains('et-pl
 b.addEventListener('click',function(){var on=!document.documentElement.classList.contains('et-plight');apply(on);b.setAttribute('aria-pressed',on?'true':'false');try{localStorage.setItem('et-jlight',on?'1':'0');localStorage.setItem('et-plight',on?'1':'0')}catch(e){}});
 document.body.appendChild(b)}
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init()})()}catch(e){}
+
+;(function(){try{var s=document.createElement('style');s.id='etFootClear';s.textContent='@media(max-width:520px){footer .foot-legal{padding-bottom:76px}}';(document.head||document.documentElement).appendChild(s)}catch(e){}})();
