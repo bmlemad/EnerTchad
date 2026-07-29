@@ -185,6 +185,13 @@ html.et-plight main a:not(#_){color:#155FA8!important}
 html.et-plight main .card:not(#_),html.et-plight main [class*="card"]:not(#_),html.et-plight main [class*="panel"]:not(#_){background:#FFFFFF!important;border:1px solid rgba(26,35,48,.16)!important;box-shadow:0 2px 10px rgba(26,35,48,.06)!important}
 html.et-plight main td:not(#_),html.et-plight main th:not(#_){border-color:rgba(26,35,48,.2)!important;background:#fff!important}
 html.et-plight .subland{display:none!important}
+html.et-plight:not(#_):not(#__){background:
+ radial-gradient(58% 46% at 10% 4%, rgba(226,178,64,.52), transparent 70%),
+ radial-gradient(54% 44% at 92% 10%, rgba(59,140,231,.46), transparent 70%),
+ radial-gradient(48% 40% at 14% 88%, rgba(28,190,130,.36), transparent 72%),
+ radial-gradient(56% 46% at 86% 94%, rgba(206,108,170,.30), transparent 72%),
+ linear-gradient(180deg,#FAF8F1 0%,#EFEDE4 100%) !important;
+ background-attachment:fixed !important}
 html.et-plight body{background:#FAF7F1!important}
 html.et-plight main .cp-ct a:not(#_) b{color:#10161F!important}
 html.et-plight main section:not(#_),html.et-plight main article:not(#_),html.et-plight main div:not(#_){background-image:none!important}
@@ -225,7 +232,11 @@ html.et-plight body>header.pghero p:not(#_),html.et-plight body>header.pghero sp
 
 /* Finitions AA du mode clair */
 html.et-plight main .ivt-cta:not(#_),html.et-plight body>section .ivt-cta:not(#_){background:#0B1422!important;color:#F5F7FA!important;border-color:#0B1422!important}
-html.et-plight [style*="E8C36A"]:not(#_),html.et-plight [style*="F0CE82"]:not(#_){color:#8A6210!important}
+html.et-plight [style*="E8C36A"]:not(#_),html.et-plight [style*="F0CE82"]:not(#_),
+html.et-plight [style*="var(--gold-l"]:not(#_){color:#77530C!important}
+html.et-plight header.hero [style*="var(--gold-l"]:not(#_):not(#__),
+html.et-plight header.pghero [style*="var(--gold-l"]:not(#_):not(#__),
+html.et-plight .vcx [style*="var(--gold-l"]:not(#_):not(#__){color:#F0CE82!important}
 html.et-plight [style*="5AA7F0"]:not(#_),html.et-plight [style*="7FB8F5"]:not(#_){color:#1B4E8C!important}
 html.et-plight [style*="34D399"]:not(#_){color:#0E7A55!important}
 html.et-jlight .hero-cap:not(#_){color:rgba(245,247,250,.9)!important;background:rgba(8,13,22,.78)!important}
@@ -366,20 +377,33 @@ html.et-plight a.cb-p:not(#_):not(#__){color:#0B1422!important;-webkit-text-fill
    surfaces cartes/panneaux passent en verre givre (translucide + flou).
    Reprend les selecteurs maitres du theme clair, plus tard dans la cascade. */
 html.et-plight body{background:
- radial-gradient(44% 34% at 10% 6%, rgba(232,195,106,.20), transparent 70%),
- radial-gradient(40% 32% at 90% 10%, rgba(90,167,240,.17), transparent 70%),
- radial-gradient(52% 40% at 50% 104%, rgba(52,211,153,.13), transparent 72%),
- linear-gradient(180deg,#FBF9F3 0%,#F1EFE8 100%) !important;
+ radial-gradient(58% 46% at 10% 4%, rgba(226,178,64,.52), transparent 70%),
+ radial-gradient(54% 44% at 92% 10%, rgba(59,140,231,.46), transparent 70%),
+ radial-gradient(48% 40% at 14% 88%, rgba(28,190,130,.36), transparent 72%),
+ radial-gradient(56% 46% at 86% 94%, rgba(206,108,170,.30), transparent 72%),
+ linear-gradient(180deg,#FAF8F1 0%,#EFEDE4 100%) !important;
  background-attachment:fixed !important}
+/* couches photo sombres : eteintes en clair, l'aurore vit derriere le verre */
+html.et-plight .rootland:not(#_){display:none!important}
+html.et-plight .diapo:not(#_),html.et-plight #diapo-cap:not(#_){display:none!important}
+html.et-plight header.hero:not(#_):not(#__){background:radial-gradient(120% 90% at 72% 8%, #17253D 0%, #0B1422 58%, #070D18 100%)!important}
+html.et-plight #aurora:not(#_){z-index:-1!important;opacity:.5}
+/* voile leger : le fond fixe transparait et glisse au defilement */
 html.et-plight main:not(#_),html.et-plight body>section:not(#_){background:
- radial-gradient(44% 34% at 10% 6%, rgba(232,195,106,.20), transparent 70%),
- radial-gradient(40% 32% at 90% 10%, rgba(90,167,240,.17), transparent 70%),
- radial-gradient(52% 40% at 50% 104%, rgba(52,211,153,.13), transparent 72%),
- linear-gradient(180deg,rgba(251,249,243,.96) 0%,rgba(241,239,232,.975) 100%) !important}
+ linear-gradient(180deg,rgba(251,249,243,.40) 0%,rgba(243,241,234,.48) 100%) !important}
 html.et-plight main .card:not(#_),html.et-plight main [class*="card"]:not(#_),
 html.et-plight main [class*="panel"]:not(#_),html.et-plight main article:not(#_),
 html.et-plight body>section .card:not(#_),html.et-plight body>section [class*="card"]:not(#_){
- background:linear-gradient(160deg,rgba(255,255,255,.72),rgba(255,255,255,.46))!important;
- -webkit-backdrop-filter:blur(22px) saturate(170%);backdrop-filter:blur(22px) saturate(170%);
- border:1px solid rgba(255,255,255,.75)!important;
- box-shadow:0 22px 44px -26px rgba(26,35,48,.30), inset 0 1px 0 rgba(255,255,255,.9)!important}
+ background:linear-gradient(160deg,rgba(255,255,255,.58),rgba(255,255,255,.32))!important;
+ -webkit-backdrop-filter:blur(26px) saturate(185%);backdrop-filter:blur(26px) saturate(185%);
+ border:1px solid rgba(255,255,255,.85)!important;
+ box-shadow:0 24px 48px -28px rgba(26,35,48,.32), inset 0 1px 0 rgba(255,255,255,.95)!important}
+
+/* verre v2 : complements certifies */
+html.et-plight main .note:not(#_):not(#__),html.et-plight body>section .note:not(#_):not(#__){
+ color:#3A4657!important;background:rgba(255,255,255,.52)!important;
+ -webkit-backdrop-filter:blur(14px) saturate(160%);backdrop-filter:blur(14px) saturate(160%);
+ border-color:rgba(26,35,48,.22)!important}
+html.et-plight main .note b:not(#_),html.et-plight body>section .note b:not(#_){color:#0B1422!important}
+html.et-plight main .note a:not(#_),html.et-plight body>section .note a:not(#_){color:#0E4172!important}
+html.et-jlight .jtop:not(#_),html.et-plight .jtop:not(#_){background:linear-gradient(180deg,rgba(8,13,22,.84),rgba(8,13,22,.70))!important}
