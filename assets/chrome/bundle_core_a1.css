@@ -360,3 +360,26 @@ header.jtop .hero-cap:not(#_),header.jtop .hero-halo:not(#_){display:none!import
 /* iOS safe-area : les commandes flottantes remontent au-dessus de l'indicateur d'accueil et s'ecartent des bords arrondis. No-op sur les appareils sans zone sure. */
 @supports(bottom:env(safe-area-inset-bottom)){.lum-ctl:not(#_){margin-bottom:env(safe-area-inset-bottom);margin-right:env(safe-area-inset-right)}#toTop:not(#_){margin-bottom:env(safe-area-inset-bottom);margin-right:env(safe-area-inset-right)}#plightBtn:not(#_){margin-bottom:env(safe-area-inset-bottom);margin-left:env(safe-area-inset-left)}.scrollcue:not(#_){margin-bottom:env(safe-area-inset-bottom)}}
 html.et-plight a.cb-p:not(#_):not(#__){color:#0B1422!important;-webkit-text-fill-color:#0B1422!important}
+
+/* ===== Verre clair ultra moderne (theme clair) =====
+   Ambiance lumineuse fixe derriere un chrome transparent ; toutes les
+   surfaces cartes/panneaux passent en verre givre (translucide + flou).
+   Reprend les selecteurs maitres du theme clair, plus tard dans la cascade. */
+html.et-plight body{background:
+ radial-gradient(44% 34% at 10% 6%, rgba(232,195,106,.20), transparent 70%),
+ radial-gradient(40% 32% at 90% 10%, rgba(90,167,240,.17), transparent 70%),
+ radial-gradient(52% 40% at 50% 104%, rgba(52,211,153,.13), transparent 72%),
+ linear-gradient(180deg,#FBF9F3 0%,#F1EFE8 100%) !important;
+ background-attachment:fixed !important}
+html.et-plight main:not(#_),html.et-plight body>section:not(#_){background:
+ radial-gradient(44% 34% at 10% 6%, rgba(232,195,106,.20), transparent 70%),
+ radial-gradient(40% 32% at 90% 10%, rgba(90,167,240,.17), transparent 70%),
+ radial-gradient(52% 40% at 50% 104%, rgba(52,211,153,.13), transparent 72%),
+ linear-gradient(180deg,rgba(251,249,243,.96) 0%,rgba(241,239,232,.975) 100%) !important}
+html.et-plight main .card:not(#_),html.et-plight main [class*="card"]:not(#_),
+html.et-plight main [class*="panel"]:not(#_),html.et-plight main article:not(#_),
+html.et-plight body>section .card:not(#_),html.et-plight body>section [class*="card"]:not(#_){
+ background:linear-gradient(160deg,rgba(255,255,255,.72),rgba(255,255,255,.46))!important;
+ -webkit-backdrop-filter:blur(22px) saturate(170%);backdrop-filter:blur(22px) saturate(170%);
+ border:1px solid rgba(255,255,255,.75)!important;
+ box-shadow:0 22px 44px -26px rgba(26,35,48,.30), inset 0 1px 0 rgba(255,255,255,.9)!important}
