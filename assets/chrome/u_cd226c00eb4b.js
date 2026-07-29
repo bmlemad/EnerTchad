@@ -24,4 +24,4 @@ b.addEventListener('click',function(){var on=!document.documentElement.classList
 document.body.appendChild(b)}
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init()})()}catch(e){}
 
-;(function(){try{var s=document.createElement('style');s.id='etFootClear';s.textContent='@media(max-width:520px){footer .foot-legal{padding-bottom:76px}}';(document.head||document.documentElement).appendChild(s)}catch(e){}})();
+;(function(){try{var s=document.createElement('style');s.id='etFootClear';s.textContent='@media(max-width:520px){footer .foot-legal{padding-bottom:76px}}@media print{#plightBtn,#toTop,#nezBar,#oilticker,#readbar,#ckn{display:none!important}}';(document.head||document.documentElement).appendChild(s)}catch(e){}})();
