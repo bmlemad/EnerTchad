@@ -101,7 +101,7 @@ footer.ft{margin-top:40px;display:flex;flex-wrap:wrap;align-items:center;gap:4px
   <a href="/index-en" class="back">← EnerTchad site</a>
   <a href="/explorateur-chaine" class="lang" hreflang="fr" title="Version française">FR</a>
 </div>
-<div class="wrap">
+<main class="wrap" id="main-content">
   <header class="hd">
     <span class="mono kick">EnerTchad · Integrated value chain</span>
     <h1>From source rock <span class="grad">to the pump</span>.</h1>
@@ -217,7 +217,7 @@ function select(i){
   var acts=document.getElementById("p-acts");acts.innerHTML="";
   s.activities.forEach(function(a){var li=el("li");li.innerHTML='<span class="d" style="color:'+s.accent+'">—</span><span>'+a+'</span>';acts.appendChild(li);});
   var kp=document.getElementById("p-kpis");kp.innerHTML="";
-  s.kpis.forEach(function(k){var d=el("div","kpi");d.innerHTML='<div class="v">'+k[0]+'</div><div class="l">'+k[1]+'</div>';kp.appendChild(d);});
+  s.kpis.forEach(function(k){var d=el("div","kpi");d.innerHTML='<div class="v">'+k[0]+'</div><div class="l">'+k[1]+'</main>';kp.appendChild(d);});
   var val=document.getElementById("p-value");val.style.borderLeft="3px solid "+s.accent;val.style.background=s.accent+"12";
   document.getElementById("p-vlbl").style.color=s.accent;
   document.getElementById("p-vtext").textContent=s.value;
