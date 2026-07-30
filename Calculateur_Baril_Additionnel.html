@@ -92,7 +92,7 @@ input[type=range]{width:100%;accent-color:var(--gold);height:22px}
     </div>
   </header>
   <p class="sub">Votre champ décline ? Réglez les hypothèses : le calculateur estime les barils que la récupération assistée
-  (+8-17 % d’OOIP, chimie à intrants locaux) peut libérer — et ce que chacun y gagne : <strong style="color:#fff">vous, l’État, et tout le corridor d’export</strong>.</p>
+  (+8-17&nbsp;% d’OOIP, chimie à intrants locaux) peut libérer — et ce que chacun y gagne : <strong style="color:#fff">vous, l’État, et tout le corridor d’export</strong>.</p>
 </section>
 
   <div class="lay">
@@ -101,16 +101,16 @@ input[type=range]{width:100%;accent-color:var(--gold);height:22px}
       <div class="ctl"><label>OOIP du champ <output id="o_ooip">300 Mbbl</output></label>
         <input type="range" id="i_ooip" aria-label="OOIP du champ, en millions de barils" min="50" max="1000" step="10" value="300">
         <div class="hint">Volume en place initial (oil originally in place)</div></div>
-      <div class="ctl"><label>Gain EOR visé <output id="o_gain">12 % OOIP</output></label>
+      <div class="ctl"><label>Gain EOR visé <output id="o_gain">12&nbsp;% OOIP</output></label>
         <input type="range" id="i_gain" aria-label="Gain EOR visé, en pourcentage de l’OOIP" min="8" max="17" step="0.5" value="12">
-        <div class="hint">Fourchette EnerTchad : +8-17 % (ASP natron/neem, CSS)</div></div>
+        <div class="hint">Fourchette EnerTchad : +8-17&nbsp;% (ASP natron/neem, CSS)</div></div>
       <div class="ctl"><label>Étalement de la récupération <output id="o_yrs">15 ans</output></label>
         <input type="range" id="i_yrs" aria-label="Étalement de la récupération, en années" min="8" max="25" step="1" value="15"></div>
       <div class="ctl"><label>Prix du brut (Doba, décoté) <output id="o_px">74,5 $/bbl</output></label>
         <input type="range" id="i_px" aria-label="Prix du brut, en dollars par baril" min="40" max="110" step="0.5" value="74.5"></div>
-      <div class="ctl"><label>Part État (fiscalité + profit oil) <output id="o_tax">50 %</output></label>
+      <div class="ctl"><label>Part État (fiscalité + profit oil) <output id="o_tax">50&nbsp;%</output></label>
         <input type="range" id="i_tax" aria-label="Part de l’État, en pourcentage" min="30" max="70" step="1" value="50">
-        <div class="hint">IS 40-75 % négocié par contrat · Facteur R</div></div>
+        <div class="hint">IS 40-75&nbsp;% négocié par contrat · Facteur R</div></div>
     </div>
 
     <div>
@@ -123,7 +123,7 @@ input[type=range]{width:100%;accent-color:var(--gold);height:22px}
 
       <div class="bars">
         <h3>Effet corridor · pipeline d’export (225 kb/j de capacité)</h3>
-        <div class="bar"><div class="lab"><span>Utilisation aujourd’hui (secteur)</span><b>90 kb/j · 40 %</b></div>
+        <div class="bar"><div class="lab"><span>Utilisation aujourd’hui (secteur)</span><b>90 kb/j · 40&nbsp;%</b></div>
           <div class="tr"><div class="fl" style="width:40%;background:rgba(90,167,240,.5)"></div></div></div>
         <div class="bar"><div class="lab"><span>Avec vos barils additionnels</span><b id="b_lab">—</b></div>
           <div class="tr"><div class="fl" id="b_fill" style="width:40%;background:linear-gradient(90deg,#5AA7F0,#E8C36A)"></div></div></div>
@@ -135,12 +135,12 @@ input[type=range]{width:100%;accent-color:var(--gold);height:22px}
 
       <div class="cta">
         <a class="btn btn-g" id="mailto" href="mailto:contact@enertchad.td?subject=Pilote%20EOR%20%E2%80%94%20baril%20additionnel">Discuter d’un pilote EOR →</a>
-        <button class="btn btn-o" onclick="navigator.clipboard&&navigator.clipboard.writeText(document.getElementById('punch').innerText+'\n(Hypothèses : '+document.getElementById('o_ooip').value+', gain '+document.getElementById('o_gain').value+', '+document.getElementById('o_yrs').value+', '+document.getElementById('o_px').value+', part État '+document.getElementById('o_tax').value+')').then(()=>this.textContent='Copié ✓')">Copier la synthèse</button>
+        <button class="btn btn-o" onclick="navigator.clipboard&&navigator.clipboard.writeText(document.getElementById('punch').innerText+'\n(Hypothèses\u00A0: '+document.getElementById('o_ooip').value+', gain '+document.getElementById('o_gain').value+', '+document.getElementById('o_yrs').value+', '+document.getElementById('o_px').value+', part État '+document.getElementById('o_tax').value+')').then(()=>this.textContent='Copié ✓')">Copier la synthèse</button>
       </div>
     </div>
   </div>
 
-  <p class="note"><strong>Simulation illustrative</strong> — résultats indicatifs dépendant des hypothèses que vous réglez ; ne constitue ni une promesse de récupération ni un engagement contractuel. Fourchette EOR +8-17 % OOIP : objectif des programmes EnerTchad sur bruts lourds de Doba (21-24° API, water cut &gt; 85 %). Données corridor (225/90 kb/j, 40 %) : secteur national, sources publiques. En mode rémunération au succès, EnerTchad est rémunéré sur les barils additionnels constatés — votre risque est plafonné. EnerTchad S.A., société en phase de structuration · +235 99 29 86 96.</p>
+  <p class="note"><strong>Simulation illustrative</strong> — résultats indicatifs dépendant des hypothèses que vous réglez ; ne constitue ni une promesse de récupération ni un engagement contractuel. Fourchette EOR +8-17&nbsp;% OOIP : objectif des programmes EnerTchad sur bruts lourds de Doba (21-24° API, water cut &gt;&nbsp;85&nbsp;%). Données corridor (225/90 kb/j, 40&nbsp;%) : secteur national, sources publiques. En mode rémunération au succès, EnerTchad est rémunéré sur les barils additionnels constatés — votre risque est plafonné. EnerTchad S.A., société en phase de structuration · +235 99 29 86 96.</p>
 </div>
 
 <script>
@@ -148,8 +148,8 @@ const $=id=>document.getElementById(id);
 const fmt=(x,d=1)=>x.toLocaleString('fr-FR',{maximumFractionDigits:d,minimumFractionDigits:0});
 function calc(){
  const ooip=+$('i_ooip').value, gain=+$('i_gain').value, yrs=+$('i_yrs').value, px=+$('i_px').value, tax=+$('i_tax').value;
- $('o_ooip').textContent=fmt(ooip,0)+" Mbbl";
- $('o_gain').textContent=fmt(gain)+" % OOIP";
+ $('o_ooip').textContent=fmt(ooip,0)+"\u00A0Mbbl";
+ $('o_gain').textContent=fmt(gain)+"\u00A0% OOIP";
  $('o_yrs').textContent=yrs+" ans";
  $('o_px').textContent=fmt(px)+"\u00A0$/bbl";
  $('o_tax').textContent=tax+"\u00A0%";
@@ -166,13 +166,13 @@ function calc(){
  const tarif=(1-(90/flow))*100*0.8;           // ~80 % de coûts fixes répartis
  $('b_lab').textContent=fmt(flow,0)+" kb/j · "+fmt(util,0)+"\u00A0%";
  $('b_fill').style.width=Math.min(util,100)+"%";
- $('s_lab').textContent="État "+tax+" % · Opérateur "+(100-tax)+"\u00A0%";
+ $('s_lab').textContent="État "+tax+"\u00A0% · Opérateur "+(100-tax)+"\u00A0%";
  $('s_state').style.width=tax+"%";$('s_op').style.width=(100-tax)+"%";
- $('punch').innerHTML="Sans forer un seul puits neuf : <b>"+fmt(addM,0)+" millions de barils</b> libérés, <b>"
-   +fmt(st,2)+" Md$</b> pour l'État, et un tarif de transport qui baisse d'environ <b>"
-   +fmt(tarif,0)+" %</b> pour <b>tous</b> les opérateurs du corridor. Le baril additionnel est le baril le moins cher du Tchad — il est déjà découvert.";
+ $('punch').innerHTML="Sans forer un seul puits neuf\u00A0: <b>"+fmt(addM,0)+" millions de barils</b> libérés, <b>"
+   +fmt(st,2)+"\u00A0Md$</b> pour l’État, et un tarif de transport qui baisse d’environ <b>"
+   +fmt(tarif,0)+"\u00A0%</b> pour <b>tous</b> les opérateurs du corridor. Le baril additionnel est le baril le moins cher du Tchad — il est déjà découvert.";
  $('mailto').href="mailto:contact@enertchad.td?subject="+encodeURIComponent("Pilote EOR — baril additionnel")
-   +"&body="+encodeURIComponent("Bonjour,\n\nHypothèses étudiées : OOIP "+ooip+" Mbbl, gain "+gain+" %, "+yrs+" ans, brut "+px+" $/bbl.\nRésultat indicatif : "+fmt(addM,0)+" Mbbl additionnels, "+fmt(rev,2)+" Md$ de revenu brut.\n\nNous souhaitons discuter d'un pilote EOR en rémunération au succès.\n");
+   +"&body="+encodeURIComponent("Bonjour,\n\nHypothèses étudiées\u00A0: OOIP "+ooip+"\u00A0Mbbl, gain "+gain+"\u00A0%, "+yrs+"\u00A0ans, brut "+px+"\u00A0$/bbl.\nRésultat indicatif\u00A0: "+fmt(addM,0)+"\u00A0Mbbl additionnels, "+fmt(rev,2)+"\u00A0Md$ de revenu brut.\n\nNous souhaitons discuter d’un pilote EOR en rémunération au succès.\n");
 }
 ['i_ooip','i_gain','i_yrs','i_px','i_tax'].forEach(id=>$(id).addEventListener('input',calc));
 calc();
