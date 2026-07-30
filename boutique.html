@@ -437,7 +437,7 @@ function openDetail(id){var p=P[id];
   +'<p style="color:var(--mut);font-size:.9rem">'+p[4]+'</p>'
   +'<div class="dm-k">Spécifications visées</div><ul class="dm-list">'+(p[7]||[]).map(function(s){return '<li>'+s+'</li>';}).join('')+'</ul>'
   +'<div class="dm-k">Applications</div><ul class="dm-list">'+(p[10]||[]).map(function(s){return '<li>'+s+'</li>';}).join('')+'</ul>'
-  +'<div class="dm-k">Conditionnements &amp; prix</div><ul class="dm-list">'+(p[11]||[]).map(function(s){return '<li>'+s+'</li>';}).join('')+'<li>Tarification : <b>'+p[6]+'</b></li></ul>'
+  +'<div class="dm-k">Conditionnements &amp; prix</div><ul class="dm-list">'+(p[11]||[]).map(function(s){return '<li>'+s+'</li>';}).join('')+'<li>Tarification\u00A0: <b>'+p[6]+'</b></li></ul>'
   +'<div class="dm-note"><svg><use href="#i-doc"/></svg><span>Fiche technique et fiche de données de sécurité fournies sur demande à l’ouverture commerciale — <b>société en constitution</b>, spécifications cibles.</span></div>'
   +'<button class="pc-add" style="width:100%;margin-top:16px" onclick="closeDetail();add('+id+')">Ajouter à ma demande de devis</button>';
  document.getElementById('dmodal').classList.add('on');}

@@ -151,8 +151,8 @@ function calc(){
  $('o_ooip').textContent=fmt(ooip,0)+" Mbbl";
  $('o_gain').textContent=fmt(gain)+" % OOIP";
  $('o_yrs').textContent=yrs+" ans";
- $('o_px').textContent=fmt(px)+" $/bbl";
- $('o_tax').textContent=tax+" %";
+ $('o_px').textContent=fmt(px)+"\u00A0$/bbl";
+ $('o_tax').textContent=tax+"\u00A0%";
  const addM=ooip*gain/100;                    // Mbbl additionnels
  const kbd=addM*1e6/(yrs*365)/1000;           // kb/j moyens
  const rev=addM*px/1000;                      // Md$
@@ -164,9 +164,9 @@ function calc(){
  // pipeline : 90 → 90+kbd sur 225
  const flow=Math.min(90+kbd,225), util=flow/225*100;
  const tarif=(1-(90/flow))*100*0.8;           // ~80 % de coûts fixes répartis
- $('b_lab').textContent=fmt(flow,0)+" kb/j · "+fmt(util,0)+" %";
+ $('b_lab').textContent=fmt(flow,0)+" kb/j · "+fmt(util,0)+"\u00A0%";
  $('b_fill').style.width=Math.min(util,100)+"%";
- $('s_lab').textContent="État "+tax+" % · Opérateur "+(100-tax)+" %";
+ $('s_lab').textContent="État "+tax+" % · Opérateur "+(100-tax)+"\u00A0%";
  $('s_state').style.width=tax+"%";$('s_op').style.width=(100-tax)+"%";
  $('punch').innerHTML="Sans forer un seul puits neuf : <b>"+fmt(addM,0)+" millions de barils</b> libérés, <b>"
    +fmt(st,2)+" Md$</b> pour l'État, et un tarif de transport qui baisse d'environ <b>"
