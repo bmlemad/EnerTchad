@@ -16,7 +16,7 @@ try{
   var cad=document.getElementById('cadmap');
   if(cad){
     var M={'rgba(217,168,79,.45)':['BLOC ATTRIBUÉ','Sous licence (secteur 2025)','Détenu par un opérateur en place — terrain de nos services parapétroliers et de l’EOR.'],
-           'rgba(90,167,240,.10)':['BLOC LIBRE','Ouvert aux candidatures','L’un des 21 blocs du cadastre 2025 : notre terrain de chasse pour montage de consortiums.'],
+           'rgba(90,167,240,.10)':['BLOC LIBRE','Ouvert aux candidatures','L’un des 21 blocs du cadastre 2025\u00A0: notre terrain de chasse pour montage de consortiums.'],
            'rgba(245,158,11,.35)':['EN MUTATION','Reprise ou transition en cours','Périmètre en cours de réattribution — fenêtre d’opportunité à suivre.']};
     cad.querySelectorAll('rect').forEach(function(r){
       var m=M[r.getAttribute('fill')];if(!m)return;
@@ -28,9 +28,9 @@ try{
   /* Hubs réseau : 3 plateformes */
   var hm=document.getElementById('hubmap');
   if(hm){
-    var HUBS=[['HUB CAPITALE','N’Djamena','Plateforme d’un hectare visée : dépôt-réserve, station Tchadium, atelier — tête du corridor d’import et du B2B de la capitale.'],
-              ['HUB EST','Abéché','Plateforme visée pour l’est : ravitaillement humanitaire et désenclavement des provinces orientales.'],
-              ['HUB SUD','Moundou','Plateforme visée au cœur du bassin pétrolier : B2B champs, mines et BTP du grand sud.']];
+    var HUBS=[['HUB CAPITALE','N’Djamena','Plateforme d’un hectare visée\u00A0: dépôt-réserve, station Tchadium, atelier — tête du corridor d’import et du B2B de la capitale.'],
+              ['HUB EST','Abéché','Plateforme visée pour l’est\u00A0: ravitaillement humanitaire et désenclavement des provinces orientales.'],
+              ['HUB SUD','Moundou','Plateforme visée au cœur du bassin pétrolier\u00A0: B2B champs, mines et BTP du grand sud.']];
     var cs=hm.querySelectorAll('circle');
     cs.forEach(function(c,i){
       var hub=HUBS[Math.min(Math.floor(i/2),2)];

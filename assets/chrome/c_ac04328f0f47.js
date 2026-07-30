@@ -208,11 +208,11 @@ calcRef();
 
 // APP 3 : BASINS
 const BASINS={
-  doba:{k:'En production',t:'Bassin de Doba',d:"Le bassin historique en production : cœur de l'activité E&P, brut tchadien (~21° API) exporté via le corridor d’export national. EOR chimique ASP (Natron Na₂CO₃, biopolymère, tensioactif local).",s:[['144 kb/j','capacité'],['735','puits'],['+8-17 %','OOIP / EOR']]},
-  bongor:{k:'En production',t:'Bassin de Bongor',d:"Second bassin productif, brut plutôt léger (jusqu'à 31° API). Champs Ronier, Mimosa et Baobab ; pipeline Ronier-Djermaya alimentant la raffinerie nationale.",s:[['~31°','API léger'],['Ronier·Mimosa','champs'],['300 km','pipeline Djermaya']]},
+  doba:{k:'En production',t:'Bassin de Doba',d:"Le bassin historique en production\u00A0: cœur de l’activité E&P, brut tchadien (~21° API) exporté via le corridor d’export national. EOR chimique ASP (Natron Na₂CO₃, biopolymère, tensioactif local).",s:[['144 kb/j','capacité'],['735','puits'],['+8-17\u00A0%','OOIP / EOR']]},
+  bongor:{k:'En production',t:'Bassin de Bongor',d:"Second bassin productif, brut plutôt léger (jusqu’à 31° API). Champs Ronier, Mimosa et Baobab\u00A0; pipeline Ronier-Djermaya alimentant la raffinerie nationale.",s:[['~31°','API léger'],['Ronier·Mimosa','champs'],['300 km','pipeline Djermaya']]},
   lactchad:{k:'Exploration',t:'Zone du Lac Tchad · gaz',d:"Zone gazière (champ de Sédigui) dans la région du Lac Tchad, à fort potentiel gas-to-power, hors des cinq bassins pétroliers.",s:[['exploration','phase'],['frontière','type'],['Nord-Ouest','zone']]},
-  doseo:{k:'Exploration',t:'Bassin de Doséo',d:"Bassin d'exploration de l'Est tchadien, parmi les cinq bassins sédimentaires inventoriés au cadastre pétrolier national.",s:[['exploration','phase'],['Est','localisation'],['cadastre','42 blocs']]},
-  madiago:{k:'Exploration',t:'Bassin de Salamat',d:"Bassin frontière du Sud-Est tchadien, en phase d'évaluation, ouvert au cadastre pétrolier national.",s:[['évaluation','phase'],['frontière','type'],['cadastre','42 blocs']]},
+  doseo:{k:'Exploration',t:'Bassin de Doséo',d:"Bassin d’exploration de l’Est tchadien, parmi les cinq bassins sédimentaires inventoriés au cadastre pétrolier national.",s:[['exploration','phase'],['Est','localisation'],['cadastre','42 blocs']]},
+  madiago:{k:'Exploration',t:'Bassin de Salamat',d:"Bassin frontière du Sud-Est tchadien, en phase d’évaluation, ouvert au cadastre pétrolier national.",s:[['évaluation','phase'],['frontière','type'],['cadastre','42 blocs']]},
   sedigui:{k:'Champ gazier',t:'Champ gazier de Sédigui',d:"Ressource gazière stratégique de la région du Lac, destinée à alimenter notre activité électricité (gas-to-power) (gas-to-power).",s:[['gaz','ressource'],['→ power','débouché'],['Lac','région']]},
 };
 function showBasin(b){
@@ -245,7 +245,7 @@ document.getElementById('cSubmit').addEventListener('click',()=>{
   const msg=document.getElementById('formMsg');
   if(!name||(!phone&&!mail)){
     msg.className='form-msg show';msg.style.background='rgba(217,168,79,.12)';msg.style.borderColor='rgba(217,168,79,.3)';msg.style.color='#E8C36A';
-    msg.textContent='Merci d\'indiquer la raison sociale et au moins un moyen de contact (téléphone ou email).';return;
+    msg.textContent='Merci d’indiquer la raison sociale et au moins un moyen de contact (téléphone ou email).';return;
   }
   // Routage : demandes techniques E&P -> amont@, achats/produits -> distribution@
   const toEP=/parapétrolier|EOR|Force d’intervention|exploitation/i.test(type);
@@ -255,22 +255,22 @@ document.getElementById('cSubmit').addEventListener('click',()=>{
   const body=
 `Demande — EnerTchad
 ─────────────────────────────────────────
-Type de demande : ${type}
-Raison sociale  : ${name}
-Secteur         : ${sector}
-Produit / objet : ${product}
-Volume mensuel  : ${vol}
-Téléphone       : ${phone||'—'}
-Email           : ${mail||'—'}
+Type de demande\u00A0: ${type}
+Raison sociale\u00A0: ${name}
+Secteur\u00A0: ${sector}
+Produit / objet\u00A0: ${product}
+Volume mensuel\u00A0: ${vol}
+Téléphone\u00A0: ${phone||'—'}
+Email\u00A0: ${mail||'—'}
 
-Précisions :
+Précisions\u00A0:
 ${precis||'—'}
 ─────────────────────────────────────────
 Envoyé depuis enertchad.td / EnerTchad`;
   const href=`mailto:${dest}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   window.location.href=href;
   msg.className='form-msg show';msg.style.background='';msg.style.borderColor='';msg.style.color='';
-  msg.innerHTML=`Merci ${name} — votre logiciel de messagerie s'ouvre avec la demande pré-remplie. Validez l'envoi à <strong>${dest}</strong>. Réponse sous 48 h ouvrées. Si rien ne s'ouvre, écrivez directement à ${dest}.`;
+  msg.innerHTML=`Merci ${name} — votre logiciel de messagerie s’ouvre avec la demande pré-remplie. Validez l’envoi à <strong>${dest}</strong>. Réponse sous 48 h ouvrées. Si rien ne s’ouvre, écrivez directement à ${dest}.`;
   msg.scrollIntoView({behavior:'smooth',block:'center'});
 });
 
@@ -291,9 +291,9 @@ Envoyé depuis enertchad.td / EnerTchad`;
       msg.textContent='Merci de renseigner votre nom, un email valide et un message.';return;
     }
     var subject='['+type+'] '+name+(org?' / '+org:'');
-    var body='Type : '+type+'\nNom : '+name+'\nOrganisation : '+(org||'-')+'\nEmail : '+mail+'\n\n'+bodyt+'\n\nEnvoye depuis enertchad.td';
+    var body='Type\u00A0: '+type+'\nNom\u00A0: '+name+'\nOrganisation\u00A0: '+(org||'-')+'\nEmail\u00A0: '+mail+'\n\n'+bodyt+'\n\nEnvoye depuis enertchad.td';
     msg.removeAttribute('style');msg.className='form-msg show';
-    msg.textContent='Merci '+name+', votre messagerie va s\'ouvrir vers contact@enertchad.td pour finaliser l\'envoi.';
+    msg.textContent='Merci '+name+', votre messagerie va s’ouvrir vers contact@enertchad.td pour finaliser l’envoi.';
     window.location.href='mailto:contact@enertchad.td?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body);
   });
 })();
@@ -306,13 +306,13 @@ Envoyé depuis enertchad.td / EnerTchad`;
     var ok=/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(mail);
     if(!ok){
       msg.className='form-msg show';msg.style.background='rgba(217,168,79,.12)';msg.style.borderColor='rgba(217,168,79,.3)';msg.style.color='#E8C36A';
-      msg.textContent='Merci d\'indiquer une adresse email valide.';return;
+      msg.textContent='Merci d’indiquer une adresse email valide.';return;
     }
     var subject='Inscription actualités — EnerTchad';
-    var body='Merci de m\'inscrire à vos actualités et jalons.\n\nEmail : '+mail+'\n\nEnvoyé depuis enertchad.td / EnerTchad';
+    var body='Merci de m’inscrire à vos actualités et jalons.\n\nEmail\u00A0: '+mail+'\n\nEnvoyé depuis enertchad.td / EnerTchad';
     window.location.href='mailto:contact@enertchad.td?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body);
     msg.className='form-msg show';msg.style.background='';msg.style.borderColor='';msg.style.color='';
-    msg.innerHTML='Merci — votre logiciel de messagerie s\'ouvre pour confirmer votre inscription à <strong>contact@enertchad.td</strong>. Si rien ne s\'ouvre, écrivez-nous directement.';
+    msg.innerHTML='Merci — votre logiciel de messagerie s’ouvre pour confirmer votre inscription à <strong>contact@enertchad.td</strong>. Si rien ne s’ouvre, écrivez-nous directement.';
     inp.value='';
   });
 })();
@@ -320,10 +320,10 @@ Envoyé depuis enertchad.td / EnerTchad`;
 /* Dashboard temps réel : KPI animés + statut stations (données illustratives) */
 (function(){
   const stations=[
-    ['N\'Djamena Farcha','Diesel · Super · GPL','ok'],
-    ['N\'Djamena Diguel','Diesel · Super · IRVE','ok'],
-    ['N\'Djamena Dembé','Diesel · Super','busy'],
-    ['N\'Djamena Chagoua','Diesel · Super · GPL','ok'],
+    ['N’Djamena Farcha','Diesel · Super · GPL','ok'],
+    ['N’Djamena Diguel','Diesel · Super · IRVE','ok'],
+    ['N’Djamena Dembé','Diesel · Super','busy'],
+    ['N’Djamena Chagoua','Diesel · Super · GPL','ok'],
     ['Moundou','Diesel · Super · GPL','ok'],
     ['Moundou Zone Ind.','Diesel · Super','ok'],
     ['Sarh','Diesel · Super','ok'],
@@ -356,7 +356,7 @@ Envoyé depuis enertchad.td / EnerTchad`;
     if(tx)tx.textContent=330+Math.floor(Math.random()*40);
     if(vol)vol.textContent=(126+Math.random()*6).toFixed(1);
     if(wait)wait.textContent=(2.1+Math.random()*0.6).toFixed(1);
-    if(pulse)pulse.textContent='Mis à jour à l\'instant';
+    if(pulse)pulse.textContent='Mis à jour à l’instant';
   }
   // ne tourner que quand le dashboard est visible (économie ressources mobile)
   const dash=document.getElementById('dashboard');
@@ -395,16 +395,16 @@ Envoyé depuis enertchad.td / EnerTchad`;
 (function(){
   const data=[
     {c:'var(--gold)',cl:'var(--gold-l)',t:'Approvisionnement local & dépôt',
-     d:"L'approvisionnement privilégie le raffinage local : nos mini-raffineries modulaires, l'import régulé ne servant que de complément en transition. Le carburant est stocké dans des hubs-dépôts d'un hectare (N'Djamena, Moundou, Abéché) : acheter au bon moment, lisser les ruptures, tenir un prix stable.",
+     d:"L’approvisionnement privilégie le raffinage local\u00A0: nos mini-raffineries modulaires, l’import régulé ne servant que de complément en transition. Le carburant est stocké dans des hubs-dépôts d’un hectare (N’Djamena, Moundou, Abéché)\u00A0: acheter au bon moment, lisser les ruptures, tenir un prix stable.",
      tags:['Raffinage local prioritaire','Djermaya (national)','Hubs-dépôts','Autonomie 30 j']},
     {c:'var(--blue)',cl:'var(--blue-l)',t:'Stations-hubs & satellites',
      d:"Chaque hub-dépôt approvisionne en gros un réseau de stations satellites de sa zone. Vente au détail (essence, gasoil, GPL, lampant), services et lubrifiants, au prix homologué ARSAT identique sur tout le territoire. Modèle DODO pour une croissance capital-légère.",
      tags:['Prix ARSAT','Modèle DODO','GPL & services','Marque unique']},
     {c:'var(--amber)',cl:'var(--amber-l)',t:'Mobile Station™',
-     d:"Là où une station fixe n'existe pas ou tombe en rupture, la Mobile Station™ conteneurisée se déploie en 24-48 h. Énergie de site autonome, télésurveillance IoT, certifiée ATEX — elle prolonge le réseau vers mines, chantiers, camps humanitaires et communautés rurales.",
+     d:"Là où une station fixe n’existe pas ou tombe en rupture, la Mobile Station™ conteneurisée se déploie en 24-48 h. Énergie de site autonome, télésurveillance IoT, certifiée ATEX — elle prolonge le réseau vers mines, chantiers, camps humanitaires et communautés rurales.",
      tags:['Déploiement 24-48h','Énergie de site autonome','ATEX Zone 1','Anti-pénurie']},
     {c:'var(--green)',cl:'var(--green-l)',t:'Client final & B2B',
-     d:"Le dernier maillon : particuliers et clients professionnels (flottes, mines, BTP, ONG, agro-industrie). La relation est digitalisée — carte de fidélité NRJ+™, application Mon Espace, cartes flotte, livraison en vrac et eBoutique — pour fidéliser et simplifier l'achat.",
+     d:"Le dernier maillon\u00A0: particuliers et clients professionnels (flottes, mines, BTP, ONG, agro-industrie). La relation est digitalisée — carte de fidélité NRJ+™, application Mon Espace, cartes flotte, livraison en vrac et eBoutique — pour fidéliser et simplifier l’achat.",
      tags:['Carte NRJ+™','App Mon Espace','Cartes flotte B2B','eBoutique']}
   ];
   const btns=[...document.querySelectorAll('.dist-btn')];
