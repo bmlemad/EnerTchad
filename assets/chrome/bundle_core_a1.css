@@ -407,3 +407,7 @@ html.et-plight main .note:not(#_):not(#__),html.et-plight body>section .note:not
 html.et-plight main .note b:not(#_),html.et-plight body>section .note b:not(#_){color:#0B1422!important}
 html.et-plight main .note a:not(#_),html.et-plight body>section .note a:not(#_){color:#0E4172!important}
 html.et-jlight .jtop:not(#_),html.et-plight .jtop:not(#_){background:linear-gradient(180deg,rgba(8,13,22,.84),rgba(8,13,22,.70))!important}
+
+/* jlight: le scrollcue et le bandeau cookies gardent leur fond sombre — leur or doit rester celui du theme sombre (contraste 5.6:1 et 10.9:1), pas l'or-sur-clair #4C380B que le bloc G4 en ligne des pages journal leur applique par erreur (il vise la titraille sur fond clair) et qui tombe a 1.6:1 (axe, 50 pages journal). Specificite: body ajoute pour passer devant ce bloc en ligne; .sc-lb vise directement car la regle G4 le cible directement et bat l'heritage via .scrollcue. */
+html.et-jlight body .scrollcue:not(#_),html.et-jlight body .sc-lb:not(#_){color:#E8C36A!important}
+html.et-jlight body .cb-k:not(#_){color:#E8C36A!important}
