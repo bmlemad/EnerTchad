@@ -153,3 +153,13 @@ body:has(#navLinks.open) #ckn,body:has(#navLinks.open) .lum-ctl,body:has(#navLin
 .nx .nx-mega:not(#_x){transform:none}}
 @media(prefers-reduced-transparency:reduce){
 .nx .nx-mega:not(#_x){background:#0A1120!important;-webkit-backdrop-filter:none;backdrop-filter:none}}
+
+/* Le panneau .nx-mega deborde la fenetre de 2-12 px sur les 29 pages heritees EN (boite non
+   transformee left 572 + 720 de large ; l'ancre de nav tombe plus a droite qu'en francais),
+   d'ou une barre de defilement horizontale fantome. Le panneau vit DANS le nav fixe : sa
+   chaine de blocs conteneurs contourne body, donc aucune regle sur html ou body ne peut le
+   rogner (mesure : scrollX restait a 12). Le clip va sur le nav fixe lui-meme ; overflow-x
+   seul, pour que le panneau ouvert, qui s'etend vers le BAS du nav, reste entierement
+   visible (verifie : 709x396 rendus apres clip). clip et non hidden : pas de contexte de
+   defilement cree. */
+#nav{overflow-x:clip}
