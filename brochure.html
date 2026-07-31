@@ -5349,5 +5349,7 @@ html:not(.et-plight):not(.et-jlight) header.pghero :is(.pgc-lab,.pgc-tail,.pgc-a
 html:not(.et-plight):not(.et-jlight) header.jtop :is(.pgc-lab,.pgc-tail,.pgc-arr,.pgh-flabel),
 html:not(.et-plight):not(.et-jlight) .hero :is(.pgc-lab,.pgc-tail,.pgc-arr,.pgh-flabel){color:rgba(245,247,250,.88)!important}
 </style>
-<style id="etLightFix3">/* Mode clair - le decor sombre de main disparait, le fond redevient editorial. */</style></body>
+<style id="etLightFix3">/* Mode clair - le decor sombre de main disparait, le fond redevient editorial. */</style><style id="mqa-mob">/* QA mobile 31/07/2026 : grilles a styles inline (lg-stats 4 col, seis-grid 3 col, advisory-grid 2 col) debordaient du viewport */
+@media(max-width:760px){.lg-stats{grid-template-columns:1fr 1fr!important}.lg-grid{grid-template-columns:1fr!important}.seis-grid{grid-template-columns:1fr!important}.advisory-grid{grid-template-columns:1fr!important}.compare-grid{overflow-x:auto!important}.compare-grid>div{min-width:112px}.tier1-grid,.tier2-grid,.tier3-grid,.carbon-grid,.prod-synth,.eor-grid,.esg3-grid,.bx292{grid-template-columns:minmax(0,1fr)!important}.bx292 li,.esg3-grid>div,.bx42>*{min-width:0}.bx42{flex-wrap:wrap}}</style>
+</body>
 </html>
