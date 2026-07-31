@@ -95,6 +95,26 @@ Brochures FR/EN (6 p.) et fiche AR (2 p.) : générées depuis les sources HTML 
 
 **Repères actuels.** 95 pages françaises scannées, **0 défaut typographique réel**. Les 7 signalements résiduels sont tous légitimes et ne doivent pas être « corrigés » : quatre guillemets droits qui sont des symboles de pouce (`30"` sur `brochure.html` et `enerconseils/atlas.html`), deux dans une citation anglaise (`"28-32°"` sur `plan-du-site.html`), et un point-virgule collé qui est correct en anglais (`carnets.html`).
 
+**Simulation de parcours clients (test de non-régression).** Huit personas pilotés par
+vrais clics Playwright (`/root/work/journeys.js` — recréable depuis ce guide) : prospect
+(Devenir client → contact), investisseur (pastille Investir → `#souscrire` → brochure),
+client boutique (Ajouter → compteur `#cartCount` → `.cart-btn` → `#order` garni),
+anglophone (bascule EN → nav interne EN → retour FR symétrique), mobile 390px (burger →
+mega « Nos activités » → pôle → nezBar Contact/Investir), recherche (`#navSearch` →
+saisie → clic premier résultat), journaliste (Médias → carnets → article → outils de
+lecture), arabophone (`/ar` en RTL → bascule FR). Chaque étape vérifie l'atterrissage
+(URL + repère) ; `pageerror` et réponses ≥ 400 collectés par parcours. Référence : 30/30
+au 31/07/2026, zéro erreur JS, zéro 4xx.
+
+Trois pièges de harnais, vécus : (1) **cleanUrls** — les liens du site sont propres
+(`/clients`), un `http.server` nu répond 404 partout ; servir via un handler qui essaie
+`chemin`, `chemin.html`, `chemin/index.html` (le `cleanserv.py` du guide). (2) L'ancre
+`#souscrire` atterrit en ~1,2 s (saut différé sur page lourde) : vérifier à 800 ms fabrique
+un faux défaut. (3) Un sélecteur combiné `a, b` suivi de `.first()` clique le premier des
+DEUX listes — sur le nav, c'est le trigger « Groupe », pas celui qu'on visait ; et un lien
+du mega fermé « existe » mais n'est pas cliquable (timeout) : toujours cibler le trigger
+par son texte puis ne cliquer que du visible.
+
 ## 9. Performance — deux couches photo, bundle chrome, et pièges de mesure
 
 **L’architecture à deux couches photo.** Beaucoup de pages peignent deux images : le **héros** (`header.pghero`, contenu au-dessus du pli, peint dans les deux thèmes) et le **fond** (`.subland`/`.rootland`, plein écran fixe en `z-index:-2` sous un voile sombre à .54–.66, que le thème clair passe en `display:none`). Chaque page de ce type porte désormais **deux** préchargements : le héros sans condition avec `fetchpriority="high"`, le fond derrière `media="(prefers-color-scheme: dark)"` — attribut dont l’effet (aucune requête en clair) a été prouvé par une page-sonde jetable, pas supposé. Ne jamais revenir à un préchargement unique : sur 27 pages les deux couches diffèrent, et 19 d’entre elles préchargeaient le fond — invisible pour tout visiteur en thème clair — pendant que le héros attendait son tour.
@@ -199,3 +219,25 @@ Pieges appris :
 - Rituel de verification mobile : viewport 390x844 isMobile, axe serious/critical x2
   themes, hauteurs de page avant/apres, hauteur des cibles (>=44), zero overflow-x,
   et non-regression desktop (grilles en colonnes, zero .minv-btn, h1 desktop intact).
+
+**QA visuel mobile (rituel complet).** Balayage 390x844 des 158 pages, sept contrôles :
+débordement horizontal du document ; éléments hors viewport ; titres tronqués
+(`scrollWidth > clientWidth`) ; images déformées (ratio rendu vs naturel > 12 %) ;
+chevauchement `#ckn`/`#nezBar` ; carrousels cassés (carte plus large que l'écran =
+la couche mobile n'agit pas) ; cibles < 24px dans le chrome. Puis TRIER avant de
+corriger — la grille des faux positifs : internes **SVG** (rognés par leur racine),
+blobs `#aurora` et fonds `.diapo` (décoratifs, volontairement surdimensionnés),
+cellules de tableaux **dans un ancêtre défilant** (contenu atteignable). Le vrai défaut
+est l'élément qui dépasse **sans ancêtre défilant** : rogné par `overflow:hidden` ou par
+le bord de l'écran, son contenu est inatteignable. Classe récurrente : les grilles à
+styles **inline** (`minmax(400px,…)`, `repeat(3,1fr)`, colonnes fixes) qui ne
+s'effondrent pas — rustines `mqa-mob` par page, `grid-template-columns:minmax(0,1fr)
+!important` (le `minmax(0,…)` déjoue aussi le plancher min-content), ou défilement
+horizontal pour les comparatifs dont les colonnes doivent rester côte à côte.
+
+**Piège viewport-dépendant.** `scrollable-region-focusable` ne se déclenche qu'au
+viewport où l'élément défile réellement : le balayage desktop ne le voit JAMAIS sur les
+tableaux qui ne débordent qu'à 390px. Balayer axe AU viewport mobile aussi. Le helper de
+`u_cd226c00eb4b.js` (§ ci-dessus) couvre désormais tout élément défilant sans contenu
+focalisable, y compris les sections héritées vivant **hors de `<main>`** (eor-en,
+raffinage-en… — `main *` seul les rate). Référence : axe mobile 0/158 le 31/07/2026.
