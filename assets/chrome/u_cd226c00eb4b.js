@@ -25,3 +25,17 @@ document.body.appendChild(b)}
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init()})()}catch(e){}
 
 ;(function(){try{var s=document.createElement('style');s.id='etFootClear';s.textContent='@media(max-width:520px){footer .foot-legal{padding-bottom:76px}}@media print{#plightBtn,#toTop,#nezBar,#oilticker,#readbar,#ckn{display:none!important}}';(document.head||document.documentElement).appendChild(s)}catch(e){}})();
+
+/* Carrousels mobiles (modernisation 31/07/2026) : acces clavier + libelle — sans quoi
+   axe leve scrollable-region-focusable (serious) sur les grilles passees en defilement
+   horizontal par la couche mobile de bundle_core_a1.css / suffixe de bundle_head_b2.css.
+   Heberge ici (155 pages dont index.html) et non dans s_2ffe40dff9.js (index ne le charge pas). */
+(function(){
+if(!matchMedia('(max-width:760px)').matches)return;
+var en=(document.documentElement.lang||'').indexOf('en')===0;
+document.querySelectorAll('.plc-grid,.biz-grid,.sb-grid,.pof-grid,.ppt-grid,.ppj-grid,.hpgrid,.hxi-grid,.hnews-grid,.ce-grid').forEach(function(g){
+if(!g.hasAttribute('tabindex'))g.setAttribute('tabindex','0');
+if(!g.getAttribute('role'))g.setAttribute('role','region');
+if(!g.hasAttribute('aria-label'))g.setAttribute('aria-label',en?'Cards — scroll horizontally':'Cartes — faire defiler horizontalement');
+});
+})();

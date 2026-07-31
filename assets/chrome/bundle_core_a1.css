@@ -411,3 +411,19 @@ html.et-jlight .jtop:not(#_),html.et-plight .jtop:not(#_){background:linear-grad
 /* jlight: le scrollcue et le bandeau cookies gardent leur fond sombre — leur or doit rester celui du theme sombre (contraste 5.6:1 et 10.9:1), pas l'or-sur-clair #4C380B que le bloc G4 en ligne des pages journal leur applique par erreur (il vise la titraille sur fond clair) et qui tombe a 1.6:1 (axe, 50 pages journal). Specificite: body ajoute pour passer devant ce bloc en ligne; .sc-lb vise directement car la regle G4 le cible directement et bat l'heritage via .scrollcue. */
 html.et-jlight body .scrollcue:not(#_),html.et-jlight body .sc-lb:not(#_){color:#E8C36A!important}
 html.et-jlight body .cb-k:not(#_){color:#E8C36A!important}
+
+/* == Modernisation mobile (31/07/2026) — benchmark majors (TotalEnergies/Shell/bp) ==
+   Mobile uniquement (<=760px). M1 echelle typo du heros (h1 34-40px, leads >=16px au
+   lieu de 12-14px mesures) ; M2 cibles tactiles >=44px (sous-navs a pastilles, fil
+   d'Ariane) ; M3 carrousels scroll-snap pour les familles de cartes — l'empilement
+   1 colonne donnait des pages de 13 000 a 25 400px de haut. L'acces clavier des
+   carrousels (tabindex/role/aria-label) est pose par s_2ffe40dff9.js — les deux
+   fichiers vont ensemble. Ne touche ni aux themes ni au desktop. */
+@media(max-width:760px){
+header.pghero h1,.hero h1,.hero .hx-h1:not(#_){font-size:clamp(34px,9.2vw,40px)!important;line-height:1.07!important;letter-spacing:-.01em!important}
+header.pghero p,.pgh-lead,.hero .lead{font-size:max(16px,1em)!important;line-height:1.55!important}
+.pole-subnav a,nav.toc a,nav.corp-nav a,#inv-toc a{min-height:44px;display:inline-flex;align-items:center}
+.crumb a,.bcrumb a{padding-block:10px}
+main .plc-grid,main .biz-grid,main .sb-grid,main .pof-grid,main .ppt-grid,main .ppj-grid,main .hpgrid,main .hxi-grid,main .hnews-grid,main .ce-grid{display:grid!important;grid-template-columns:none!important;grid-auto-flow:column;grid-auto-columns:min(82vw,340px);overflow-x:auto;scroll-snap-type:x proximity;column-gap:12px;padding-bottom:12px;-webkit-overflow-scrolling:touch;scrollbar-width:thin;scroll-padding-inline:4px}
+main .plc-grid>*,main .biz-grid>*,main .sb-grid>*,main .pof-grid>*,main .ppt-grid>*,main .ppj-grid>*,main .hpgrid>*,main .hxi-grid>*,main .hnews-grid>*,main .ce-grid>*{scroll-snap-align:start;min-width:0}
+}
