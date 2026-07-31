@@ -793,5 +793,7 @@ html.et-plight main [style*="text-fill-color:transparent"]:not(#_){
   color:#4C380B!important;-webkit-text-fill-color:#4C380B!important;
 }
 </style>
+<style id="mqa-mob">/* QA mobile 31/07/2026 : les 4 KPI (style inline repeat(4,1fr)) debordaient -> 2x2 */
+@media(max-width:760px){.lg-stats{grid-template-columns:1fr 1fr!important}.lg-grid{grid-template-columns:1fr!important}}</style>
 </body>
 </html>
