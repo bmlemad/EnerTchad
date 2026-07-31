@@ -448,7 +448,7 @@ main > section, .sec, .hx-strip{background:transparent!important}
         <h3 class="qx2_64">Hybride hub + mobile vs réseau classique.</h3>
         <p>Le modèle de distribution traditionnel multiplie les stations fixes sur les grands axes. Notre approche hybride couvre davantage de territoire avec moins de capital — et atteint les zones que le modèle classique ignore.</p>
       </div>
-      <div style="display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:0;border:1px solid var(--hair);border-radius:14px;overflow:hidden" class="compare-grid">
+      <div style="display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:0;border:1px solid var(--hair);border-radius:14px;overflow:hidden" class="compare-grid" tabindex="0" role="region" aria-label="Comparatif du reseau — faire defiler horizontalement">
         <!-- en-têtes -->
         <div style="padding:16px 18px;background:rgba(255,255,255,.02);font-family:var(--fm);font-size:.7rem;letter-spacing:.06em;color:var(--muted);text-transform:uppercase">Critère</div>
         <div style="padding:16px 18px;background:rgba(46,134,222,.1);font-family:var(--fd);font-size:.9rem;color:var(--blue-l);font-weight:600;text-align:center">EnerTchad · hybride</div>
@@ -1489,5 +1489,7 @@ html:not(.et-plight):not(.et-jlight) header.pghero :is(.pgc-lab,.pgc-tail,.pgc-a
 html:not(.et-plight):not(.et-jlight) header.jtop :is(.pgc-lab,.pgc-tail,.pgc-arr,.pgh-flabel),
 html:not(.et-plight):not(.et-jlight) .hero :is(.pgc-lab,.pgc-tail,.pgc-arr,.pgh-flabel){color:rgba(245,247,250,.88)!important}
 </style>
-<style id="etLightFix3">/* Mode clair - le decor sombre de main disparait, le fond redevient editorial. */</style></body>
+<style id="etLightFix3">/* Mode clair - le decor sombre de main disparait, le fond redevient editorial. */</style><style id="mqa-mob">/* QA mobile 31/07/2026 : le comparatif 3 colonnes etait rogne par overflow:hidden (3e colonne coupee de 79px) -> defilement horizontal ; acces clavier pose sur l element */
+@media(max-width:760px){.compare-grid{overflow-x:auto!important}.compare-grid>div{min-width:112px}}</style>
+</body>
 </html>
