@@ -16,4 +16,4 @@
 
 /* ckn degagement : le bandeau ouvert ne couvre plus les liens legaux ni les commandes basses */
 body:has(#ckn.show){padding-bottom:104px}
-@media(max-width:520px){#ckn{left:10px;right:10px;max-width:none;bottom:10px}}
+@media(max-width:520px){/* regle bottom:10px supprimee : les 41 pages chargeant cette feuille ont toutes la barre mobile #nezBar (~59px + marge) - a bottom:10px l'avis cookies se retrouvait DERRIERE la barre, invisible et impossible a fermer. La regle bottom:74px du meme bloc media reprend la main et le place au-dessus de la barre. */}

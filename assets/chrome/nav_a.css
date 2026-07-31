@@ -104,7 +104,7 @@ body.nx-clear .hero{padding-top:72px}
   .nav-tog{width:44px;height:44px}
   .nx-util-in>a,.nx-util-m>a{padding:12px 8px!important;display:inline-block}
 }
-body:has(#navLinks.open) #ckn,body:has(#navLinks.open) .lum-ctl,body:has(#navLinks.open) .scrollcue,body:has(#ckn.show) .lum-ctl{display:none!important}
+body:has(#navLinks.open) #ckn,body:has(#navLinks.open) .lum-ctl,body:has(#navLinks.open) .scrollcue,body:has(#ckn.show) .lum-ctl,body:has(#ckn.show) #plightBtn{display:none!important}/* #plightBtn ajoute : sur mobile le bouton de theme (14,732 38x38) se posait DANS l'avis cookies (12,719 366x51) et masquait le debut du texte - meme traitement que .lum-ctl, il revient des que l'avis est ferme */
 
 /* ── méga-menu translucide (verre) ── */
 @media(min-width:1241px){@supports((-webkit-backdrop-filter:blur(1px)) or (backdrop-filter:blur(1px))){.nx-mega{background:linear-gradient(180deg,rgba(12,23,40,.72),rgba(9,18,32,.80));-webkit-backdrop-filter:blur(26px) saturate(160%);backdrop-filter:blur(26px) saturate(160%);border-color:rgba(255,255,255,.14)}}}
