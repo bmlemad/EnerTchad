@@ -39,3 +39,27 @@ if(!g.getAttribute('role'))g.setAttribute('role','region');
 if(!g.hasAttribute('aria-label'))g.setAttribute('aria-label',en?'Cards — scroll horizontally':'Cartes — faire defiler horizontalement');
 });
 })();
+
+/* QA mobile (31/07/2026) : tout element reellement defilant en largeur a <=760px
+   (tableaux, comparatifs, bandeaux) recoit tabindex/role/label s'il n'a ni tabindex
+   ni descendant focalisable — sans quoi axe leve scrollable-region-focusable
+   (serious) au viewport mobile uniquement. Deferre apres load (il faut la mise en page). */
+(function(){
+if(!matchMedia('(max-width:760px)').matches)return;
+function go(){
+  var en=(document.documentElement.lang||'').indexOf('en')===0;
+  document.querySelectorAll('main *, body>section *, body>div section *').forEach(function(el){
+    if(el.hasAttribute('tabindex'))return;
+    if(el.closest('#nav,#nezBar,#cmdk,#ckn,[aria-hidden="true"]'))return;
+    var cs=getComputedStyle(el);
+    if(cs.overflowX!=='auto'&&cs.overflowX!=='scroll')return;
+    if(el.scrollWidth<=el.clientWidth+10)return;
+    if(el.querySelector('a,button,input,select,textarea,[tabindex]'))return;
+    el.setAttribute('tabindex','0');
+    if(!el.getAttribute('role'))el.setAttribute('role','region');
+    if(!el.hasAttribute('aria-label'))el.setAttribute('aria-label',en?'Scrollable content — scroll horizontally':'Contenu defilant — faire defiler horizontalement');
+  });
+}
+if(document.readyState==='complete'){setTimeout(go,300);}
+else addEventListener('load',function(){setTimeout(go,300);});
+})();
