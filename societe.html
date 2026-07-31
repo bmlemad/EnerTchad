@@ -646,4 +646,55 @@ html.et-plight main [style*="text-fill-color:transparent"]:not(#_){
   color:#4C380B!important;-webkit-text-fill-color:#4C380B!important;
 }
 </style>
+<style id="minv-css">
+@media(max-width:760px){
+.minv-hide{display:none!important}
+h2 .minv-btn{all:unset;display:flex;width:100%;align-items:center;justify-content:space-between;gap:12px;cursor:pointer;-webkit-tap-highlight-color:transparent}
+h2 .minv-btn:focus-visible{outline:2px solid var(--blue-l,#5AA7F0);outline-offset:3px}
+h2 .minv-btn::after{content:"";flex:none;width:9px;height:9px;border-right:2px solid var(--gold-l,#E8C36A);border-bottom:2px solid var(--gold-l,#E8C36A);transform:rotate(45deg);transition:transform .25s;margin-right:6px}
+h2 .minv-btn[aria-expanded="true"]::after{transform:rotate(225deg)}
+main section.minv-closed{padding-bottom:14px}
+}
+@media print{.minv-hide{display:revert!important}}
+</style>
+<script id="minv-js">
+/* Accordeon mobile societe (modernisation 31/07/2026) : page a 17 569px en mobile.
+   Variante en CHAPITRES : une section a id + les sections anonymes qui la suivent
+   forment un groupe replie sous le h2 (les chapitres de cette page continuent dans
+   des <section> sans id). Bouton reel aria-expanded, depliage par ancres
+   (nav.corp-nav, hash). Inerte au-dela de 760px et a l'impression. */
+(function(){
+if(!matchMedia('(max-width:760px)').matches)return;
+var keepOpen={'cta-band':1};
+var all=[].slice.call(document.querySelectorAll('main section')).filter(function(s){return !(s.parentElement&&s.parentElement.closest('section'));});
+var map={}; var i=0;
+while(i<all.length){
+  var sec=all[i];
+  if(!sec.id||keepOpen[sec.id]){i++;continue;}
+  var h2=sec.querySelector('h2');
+  if(!h2){i++;continue;}
+  var group=[sec]; var j=i+1;
+  while(j<all.length&&!all[j].id){group.push(all[j]);j++;}
+  var hides=[]; var node=h2;
+  while(node&&node!==sec){var sib=node.nextElementSibling;while(sib){hides.push(sib);sib=sib.nextElementSibling;}node=node.parentElement;}
+  for(var k=1;k<group.length;k++)hides.push(group[k]);
+  if(!hides.length){i=j;continue;}
+  (function(sec,h2,hides){
+    var btn=document.createElement('button');
+    btn.className='minv-btn'; btn.setAttribute('aria-expanded','false');
+    while(h2.firstChild)btn.appendChild(h2.firstChild);
+    h2.appendChild(btn);
+    function set(exp){btn.setAttribute('aria-expanded',exp?'true':'false');hides.forEach(function(el){el.classList.toggle('minv-hide',!exp);});sec.classList.toggle('minv-closed',!exp);}
+    set(false);
+    btn.addEventListener('click',function(){set(btn.getAttribute('aria-expanded')!=='true');});
+    map[sec.id]={set:set};
+  })(sec,h2,hides);
+  i=j;
+}
+function reveal(hash){var id=(hash||'').replace('#','');if(map[id])map[id].set(true);}
+document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href*="#"]');if(a)reveal(a.getAttribute('href').split('#')[1]);});
+addEventListener('hashchange',function(){reveal(location.hash);});
+reveal(location.hash);
+})();
+</script>
 </body></html>

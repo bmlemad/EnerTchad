@@ -166,3 +166,36 @@ Brochures FR/EN (6 p.) et fiche AR (2 p.) : générées depuis les sources HTML 
 **Toute nouvelle page a besoin d'une entrée dans l'index de sa langue** — et une page ayant un équivalent dans l'autre langue en a besoin dans les deux. Audit de couverture : lister les pages qui chargent `nav_a.js`, les convertir en URL propres (`cleanUrls`) et les diffuser contre l'union des URL indexées, ancres retirées. Seul manque attendu : `/404`, volontairement absent de l'index tout en portant la palette. Repères actuels : 242 lignes et 17 en-têtes en FR, 138 lignes et 17 en-têtes en EN, 0 icône de repli, 0 fuite d'URL d'une langue dans l'autre.
 
 **Sondes DOM utiles** (le balisage des lignes n'a **pas** d'attribut `data-url` — se servir de `href`) : lignes `a.cmdk-item`, icône `.ci-ic svg`, titre `.ci-t`, mots-clés `.ci-k`, en-têtes `div.cmdk-group`, champ `#cmdk-input`, conteneur `#cmdk-results`, ouverture programmée `window.openCmdk()`.
+
+## 14. Couche mobile « majors » (31/07/2026)
+
+La modernisation mobile (benchmark TotalEnergies/Shell/bp) vit en TROIS endroits qui
+vont ensemble ; toute retouche doit les garder synchrones :
+
+- **CSS** : bloc `/* == Modernisation mobile == */` present EN DEUX COPIES IDENTIQUES —
+  fin de `bundle_core_a1.css` (151 pages) et suffixe documente de `bundle_head_b2.css`
+  (pour les pages bundle sans core, dont `index.html`). Le doublon sur les pages qui
+  chargent les deux est inoffensif. Contenu : h1 heros 34-40px (`.hero .hx-h1:not(#_)`
+  requis pour battre la regle a !important de l'accueil), leads >=16px, cibles tactiles
+  44px (sous-navs, fil d'Ariane, `.hubdrawer`/`.hchain`/`.flip-cta`/`.hnews-all`/`.iv-cta`),
+  carrousels scroll-snap des dix familles de grilles (plc, biz, sb, pof, ppt, ppj,
+  hpgrid, hxi, hnews, ce). Liens de prose exemptes de la regle 44px (exception WCAG
+  cible-en-ligne).
+- **JS** : acces clavier des carrousels (tabindex/role/aria-label FR-EN selon lang) en
+  fin de `u_cd226c00eb4b.js` — heberge LA et pas dans s_2ffe40dff9.js car index.html ne
+  charge pas ce dernier. Sans ce JS, axe leve scrollable-region-focusable (serious).
+- **Accordeons inline** (`<style id="minv-css">` + `<script id="minv-js">` avant </body>) :
+  investisseurs.html (11 sections, 23.6k -> 11.3k px), societe.html (variante en
+  CHAPITRES : section a id + sections anonymes suivantes = un groupe), index.html
+  (seule #chaine-expliquee). Bouton reel dans le h2 (aria-expanded, focus-visible),
+  depliage automatique par toute ancre (sommaires colles, hash). Inertes au-dela de
+  760px et a l'impression.
+
+Pieges appris :
+- `bundle_head_b2.css` n'est PAS un concat byte-pur de ses 9 sources actuelles
+  (divergence des l'octet 29) — ne jamais le « regenerer » depuis les sources sans
+  verification ; on le suffixe.
+- Toute modif de `assets/chrome/*` => bump de V dans sw.js (rituel §9).
+- Rituel de verification mobile : viewport 390x844 isMobile, axe serious/critical x2
+  themes, hauteurs de page avant/apres, hauteur des cibles (>=44), zero overflow-x,
+  et non-regression desktop (grilles en colonnes, zero .minv-btn, h1 desktop intact).
