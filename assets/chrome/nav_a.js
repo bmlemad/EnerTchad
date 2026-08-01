@@ -86,3 +86,44 @@ var f=function(){nav.classList.toggle('scrolled',(window.scrollY||window.pageYOf
 addEventListener('scroll',f,{passive:true});f();})()}catch(e){}
 
 ;(function(){/* a11y: keyboard-operable mega-menu (desktop) + truthful aria-expanded */var mq=window.matchMedia("(max-width:1240px)");var items=[].slice.call(document.querySelectorAll(".nav-item.nx-item"));function setAria(it,v){var b=it.querySelector(".nav-trigger");if(b)b.setAttribute("aria-expanded",v?"true":"false");}function reveal(it,on){var m=it.querySelector(".nx-mega");if(!m)return;if(on){m.style.setProperty("visibility","visible","important");m.style.setProperty("opacity","1","important");m.style.setProperty("pointer-events","auto","important");m.style.setProperty("transform","translateY(0) scale(1)","important");}else{m.style.removeProperty("visibility");m.style.removeProperty("opacity");m.style.removeProperty("pointer-events");m.style.removeProperty("transform");}}function ariaFromVis(it){if(mq.matches)return;var m=it.querySelector(".nx-mega");if(!m)return;var cs=getComputedStyle(m);setAria(it,cs.visibility!=="hidden"&&parseFloat(cs.opacity)>0.5&&cs.display!=="none");}function closeOthers(except){items.forEach(function(it){if(it!==except){reveal(it,false);if(!it.matches(":hover"))setAria(it,false);}});}items.forEach(function(item){var btn=item.querySelector(".nav-trigger");if(!btn)return;var mega=item.querySelector(".nx-mega");item.addEventListener("focusin",function(){if(mq.matches)return;closeOthers(item);item.classList.remove("kbesc");reveal(item,true);setAria(item,true);});item.addEventListener("focusout",function(){if(mq.matches)return;setTimeout(function(){if(!item.contains(document.activeElement)){reveal(item,false);ariaFromVis(item);}},10);});["mouseenter","mouseleave"].forEach(function(ev){item.addEventListener(ev,function(){setTimeout(function(){ariaFromVis(item);},20);setTimeout(function(){ariaFromVis(item);},340);});});if(mega)mega.addEventListener("transitionend",function(){ariaFromVis(item);});});document.addEventListener("keydown",function(e){if(e.key!=="Escape"||mq.matches)return;items.forEach(function(item){if(item.contains(document.activeElement)){reveal(item,false);setAria(item,false);var b=item.querySelector(".nav-trigger");if(b)b.focus();}});});})();
+/* EnerTchad — Cale d'ancre. La feuille posait scroll-padding-top:116px, une
+   constante qui ne correspond a aucun gabarit reel : la barre principale
+   mesure 77, 93 ou 132 px selon la largeur, et les sous-nav collantes
+   (corp-nav, nav.toc, #inv-toc, #cw-tabs) empilent 40 a 70 px de plus. Un
+   titre vise par une ancre finissait donc sous les barres. On mesure la pile
+   effective et on ecrit --et-anc sur la racine ; la feuille s'en sert et
+   garde une valeur de repli par palier pour les pages sans ce script.
+   Position collee = valeur de `top` calculee + hauteur : inutile de defiler
+   pour la connaitre. Chiffres et protocole dans MAINTENANCE 18. */
+try{(function(){
+  var re=document.documentElement,dernier=-1,tid=0;
+  function pile(){
+    var vh=window.innerHeight||800,vw=window.innerWidth||360,bas=0;
+    var n=document.querySelectorAll('header,nav,div,section,aside'),i,e,c,h,t,r;
+    for(i=0;i<n.length;i++){
+      e=n[i];c=getComputedStyle(e);
+      if(c.position!=='fixed'&&c.position!=='sticky')continue;
+      if(c.display==='none'||c.visibility==='hidden'||+c.opacity===0)continue;
+      if(c.pointerEvents==='none')continue;
+      r=e.getBoundingClientRect();
+      if(r.width<vw*0.6)continue;              /* pas une barre pleine largeur */
+      h=r.height;if(h<12||h>vh*0.45)continue;  /* ni filet ni voile plein ecran */
+      t=c.position==='fixed'?r.top:parseFloat(c.top);
+      if(!isFinite(t)||t<-4||t>vh*0.4)continue;/* ne se colle pas en haut */
+      if(t+h>bas)bas=t+h;
+    }
+    return Math.round(bas);
+  }
+  function pose(){
+    var v=pile();if(v<=0||v===dernier)return;dernier=v;
+    re.style.setProperty('--et-anc',(v+18)+'px');   /* 18 px d'air sous la barre */
+  }
+  function differe(){clearTimeout(tid);tid=setTimeout(pose,120);}
+  pose();
+  addEventListener('load',pose);
+  addEventListener('resize',differe,{passive:true});
+  addEventListener('orientationchange',differe,{passive:true});
+  if(window.ResizeObserver){var ro=new ResizeObserver(differe);
+    var b=document.querySelector('#nav,header');if(b)ro.observe(b);}
+  setTimeout(pose,600);setTimeout(pose,1800);
+})();}catch(e){}

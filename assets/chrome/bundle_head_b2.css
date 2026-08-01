@@ -706,3 +706,19 @@ html:not(#_){scroll-behavior:auto}
 @media(max-width:1024px){
   .hero-halo:not(#_),.prem-mesh:not(#_){mix-blend-mode:normal}
 }
+
+/* ============================================================================
+   CALE D'ANCRE — 01/08/2026
+   scroll-padding-top valait 116px partout : une constante qui ne correspond a
+   aucun gabarit. Mesure de la pile collante reelle (MAINTENANCE 18) :
+     barre principale   390px -> 77   820px -> 93   1440px -> 132
+     + sous-nav collante (corp-nav, nav.toc, #inv-toc, #cw-tabs) : +40 a +70
+   Consequence : sur 54 ancres testees, 4 titres finissaient sous les barres en
+   telephone et 14 en ordinateur — on cliquait un titre du sommaire et il
+   arrivait cache. nav_a.js mesure la pile et pose --et-anc ; les valeurs de
+   repli ci-dessous couvrent les 62 pages qui ne chargent pas ce script (les
+   articles du journal et les pages legales, dont la barre est simple).
+   ========================================================================== */
+html:not(#_){scroll-padding-top:var(--et-anc,95px)}
+@media(min-width:820px){html:not(#_){scroll-padding-top:var(--et-anc,111px)}}
+@media(min-width:1241px){html:not(#_){scroll-padding-top:var(--et-anc,150px)}}
