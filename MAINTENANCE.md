@@ -423,3 +423,134 @@ et le repli est deja meilleur que l'ancienne constante.
 faux positif a connaitre : sur /projets, `.pj-go::after{position:absolute;inset:0}`
 etire le lien sur toute la carte — `elementFromPoint` renvoie le lien, pas le titre.
 C'est le motif « carte entierement cliquable », voulu, pas une occlusion.
+
+---
+
+## 19. iOS / Safari — inspection et QA sous le vrai WebKit (01/08/2026)
+
+**Pourquoi le protocole change tout.** Jusqu'ici le mobile etait audite sous Chromium
+en gabarit iPhone : bonne largeur, mauvais moteur. Or les defauts iOS qui comptent ne
+sont pas des defauts de largeur — le zoom force a la saisie, `100vh` qui vaut la
+hauteur barre d'adresse repliee, `env(safe-area-inset-*)`, la surbrillance grise au
+toucher, le rendu du verre depoli : rien de tout cela ne se reproduit sous Blink.
+L'audit a donc tourne sous **WebKit 26 de Playwright** (`/opt/pw-browsers/webkit-2215`,
+`PLAYWRIGHT_BROWSERS_PATH=/opt/pw-browsers`), profils *iPhone SE* 320x568, *iPhone 13*
+390x664, *iPhone 13 landscape* 750x342 et *iPad (gen 7)* 810x1080, contre le serveur
+local `cleanserv.py`. Deux limites du banc a connaitre : `env(safe-area-inset-*)` y
+vaut toujours zero (l'encoche ne se simule pas — les regles qui en dependent se
+verifient par lecture, pas par mesure), et **les contextes WebKit demarrent en
+`colorScheme:'light'`** ; sans le forcer explicitement on n'audite jamais le theme
+sombre, qui est pourtant le theme par defaut du site.
+
+**Ce que la mesure a innocente**, et qu'il est inutile de re-suspecter : zero erreur
+JavaScript sur les douze pages temoins, zero debordement horizontal, le verre depoli
+fonctionne (`-webkit-backdrop-filter` present partout), aucun melange de calques sous
+1024px, les ancres tiennent (0 titre recouvert sur 64 en iPad, 1 sur 64 en iPhone
+portrait — la cale du 18 tient sous WebKit aussi).
+
+**Les onze constats.** Le zoom automatique des champs venait d'une regle 16px enfermee
+dans `@media(max-width:600px)` : un critere de largeur pour un comportement qui depend
+du materiel. A 750px de large — un iPhone couche — `/contact` servait cinq champs a
+10,56px et `/boutique` ses listes a 12,8px : toute tablette et tout telephone couche
+zoomaient de force. Recadre sur `@media(pointer:coarse)`. Aucune surbrillance de
+toucher n'etait definie, iOS peignait donc son rectangle gris sur fond sombre. Le
+mega-menu se calait en `100vh` et son bas passait sous la barre d'adresse ; il est
+passe en `100dvh` avec repli. Trois en-tetes collants et les cotes de `#nezBar`
+ignoraient l'encoche en paysage — traites par **bordure transparente** et non par
+remplissage, parce que leur remplissage varie de 14 a 40px selon le gabarit et que le
+recopier reviendrait a le figer. En paysage court les barres fixes mangeaient 38 a 45%
+d'une fenetre de 342px : `#nezBar` s'escamote sous 450px de haut, la fenetre revient a
+20-27%. Six pages ne chargent aucun des deux paquets CSS et n'auraient rien recu :
+elles ont leur propre feuille `assets/chrome/ios_hb1.css`. Huit pages racines
+manquaient `viewport-fit=cover`, sans lequel les `env()` ne servent a rien. Restent
+les cibles tactiles, traitees plus bas, et deux defauts de mise en page decrits juste
+apres.
+
+**Le fil d'Ariane sous la barre — le defaut le plus serieux.** Il ne se voyait qu'en
+tablette et en telephone couche, ce qui explique qu'il ait survecu a tous les audits
+precedents. Deux causes independantes, additives.
+
+*Un.* La seule regle qui degageait le haut du hero, `c_c79b7a1d9fec.css`, etait enfermee
+dans `@media(max-width:560px)`. **De 561 a 1240px, plus rien** : `.hero` retombait a
+`padding-top:0` sous une barre fixe de 93px. Au-dela de 1241px le defaut ne se voit pas,
+mais pas par chance — `nav_a.css` donne la au fil d'Ariane ses propres 74px de
+remplissage. Second foyer, visible celui-la meme en portrait : les **37 pages marquees
+`body.nx-clear`** recevaient 48px pour une barre de 77px, donc recouvertes a toutes les
+largeurs. Correctif : deux bandes deterministes, 96px sous 560px (la valeur deja prouvee,
+on ne bouge pas les pages saines) et 112px de 561 a 1240px (93px de barre + les 19px de
+respiration du gabarit telephone), specificite (0,3,0) pour battre `body.nx-clear .hero`
+et **sans `!important`**, afin que le `header.hero{padding-top:152px!important}` de
+l'accueil garde la main.
+
+*Deux.* `--nav-h` etait **fige a 72px pour une barre de 93 a 132px**. `c_ac04328f0f47.js`
+pose la variable au parse puis seulement au redimensionnement ; or sur les gabarits ou
+la barre se replie sur deux rangs, elle grandit *apres coup*, au chargement de la police
+de marque, sans qu'aucun redimensionnement ne survienne. Les deux consommateurs — le
+panneau de menu mobile et le mega-menu, dimensionnes en `calc(100dvh - var(--nav-h))` —
+depassaient donc le bas de la fenetre de 21 a 60px. Correctif dans `u_cd226c00eb4b.js` :
+un **`ResizeObserver` sur `#nav`**, plus `document.fonts.ready` et `load` en ceinture.
+La lecon generale : *observer la barre, pas la fenetre* — un palier de largeur ne peut
+pas decrire une hauteur qui depend d'une police.
+
+**Piege d'instrumentation a ne pas retomber dedans.** Le premier instrument mesurait le
+haut de la *boite* du fil d'Ariane et annonçait un defaut jusqu'en 1440px, donc un
+defaut de bureau. Verification par capture d'ecran : la boite demarre bien a y=72 sous
+une barre finissant a 132, mais elle porte 74px de remplissage propre et le *texte* est
+a 146, parfaitement lisible. Une boite recouverte n'est pas un texte recouvert. L'outil
+honnete est un `TreeWalker(SHOW_TEXT)` + `Range.getBoundingClientRect()` qui cherche le
+premier texte reellement visible, en sautant les descendants de la barre et les noeuds
+hors ecran (`if(b.height<3||b.bottom<2)continue;` — sans quoi il attrape le lien
+d'evitement, place hors champ). Apres correctif : **zero texte recouvert** a 390, 561,
+750, 810, 1024 et 1240px, et aucune regression a 1280/1440 (premier texte a 130-242 pour
+une barre finissant a 132 — inchange). Un point marginal subsiste hors perimetre iOS :
+`/investisseurs` a 1280px place son premier texte a 130 pour une barre a 132.
+
+**Cibles tactiles — cinq passes, et pourquoi cinq.** La recommandation d'Apple est
+44x44. Le releve initial etait de 151 cibles distinctes en portrait, 298 en paysage,
+260 sur iPad. La methode qui a marche n'est pas la regle large mais l'**instrument #6** :
+un vidage du chemin CSS complet (`div.wrap > nav.toc > a`) de chaque cible fautive, qui
+transforme une traine indistincte en une dizaine de familles nommees, traitees d'une
+ligne chacune. La descente :
+
+    passe        portrait   paysage   iPad
+    depart          151       298      260
+    1 (ios.css)     126       245      151
+    2 (ios_b)        49       107       91
+    3 (ios_c)         4        26       82
+    4 (ios_d/_f)      3        13       30
+    5 (rattrapages)   2         7        6
+
+Trois enseignements de la traine. `min-width`/`min-height` **priment toujours** sur
+`width`/`height`, quel que soit l'ordre : quand `.et-soc-foot a` est reste a 36x36
+apres la regle, ce n'etait pas un conflit de cascade mais la page arabe, seule page
+sans paquet CSS — la regle a ete recopiee dans `ios_hb1.css`. Une meme famille visuelle
+peut avoir deux structures : le sommaire de `/investisseurs` accroche ses liens sous
+`.toc-in`, celui de `/engagements` et `/gouvernance` directement sous `nav.toc`. Et
+deux pastilles d'appel a l'action sans aucune classe ont ete rattrapees par
+`a[style*="border-radius:999px"]` — un selecteur d'attribut sur le style en ligne, sur
+lequel on ne s'appuie que parce que la propriete visee n'y est pas declaree, donc sans
+conflit de specificite. Dernier cas du meme genre : le lien « Voir sur la carte » de
+`/contact` pointe vers **OpenStreetMap**, pas Google Maps — la regle de deuxieme passe
+sur `a[href*="maps"]` ne l'attrapait pas.
+
+**Residu assume.** Ce qui reste est documente et volontaire : les liens de
+`.foot-legal-links`, dont la hauteur est bien passee a 44 mais dont la largeur reste de
+20 a 37px — ils sont horizontalement adjacents, les elargir les separerait sur trois
+lignes ; et les **liens en pleine phrase** (« Ouvrir le tableau de bord » 177x12,
+« Ethique & conformite » 164x20, « Nos engagements » 124x17, « Mentions legales »
+115x17, la note arabe 192x30), que la recommandation d'Apple exempte explicitement.
+
+**Etat verifie a la fin.** `champs<16px : 0` sur les trois profils ; surbrillance
+`rgba(0,0,0,0)` partout, page arabe comprise ; `#nezBar` escamote en paysage court ;
+chrome fixe ramene a 20-27% d'une fenetre de 342px ; `--nav-h` rapporte 71/77/93/132 en
+accord avec la barre reelle.
+
+**Deux points ouverts, non traites.** La pastille « Ma commande 0 » de l'en-tete
+boutique passe sur deux lignes a 390px de large. Et `#plightBtn` et `.scrollcue`
+chevauchent le texte en bas a gauche sur certaines pages.
+
+**Ou vivent les correctifs.** Six couches ajoutees a la queue de `bundle_core_a1.css`
+et de `bundle_head_b2.css` (jamais regenerer ce dernier : ce n'est pas une concatenation
+pure de ses neuf sources, on le suffixe) ; `assets/chrome/ios_hb1.css` pour les six
+pages sans paquet ; l'observateur de barre dans `u_cd226c00eb4b.js`. Toute retouche de
+`assets/chrome/*` impose de faire monter `const V` dans `sw.js`.
