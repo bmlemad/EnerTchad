@@ -275,6 +275,18 @@ du sous-ensemble (aucune occurrence sur le site) — un contenu futur en majuscu
 avec Œ tombera en fallback pour ce seul glyphe : regenerer les sous-ensembles si le
 contenu evolue fortement.
 
+**Mesurer sous compression, sinon on répare des fantômes.** Vercel sert en brotli :
+`bundle_head_b2.css` fait 19-22 KB sur le réseau, pas 83 ; la page amont 36 KB, pas 145.
+Un serveur local nu surestime le chemin critique d'un facteur ~4 et fait croire a un
+chantier « CSS critique » inexistant : avec un serveur brotli (le `brotliserv.py` du
+guide), amont mobile vaut ~80 et societe 92 — pas 66 et 77. Le Chromium du conteneur
+ne sort pas vers la production (interstitiel du proxy) : toujours mesurer sur le
+serveur local compresse. Vrai frein residuel de l'accueil : les taches longues JS
+(TBT) — le balayage a11y generique de u_cd226c00eb4b.js coutait 280+ ms en
+getComputedStyle sur 'main *' ; optimise le 01/08 (conteneurs plausibles seulement,
+scrollWidth lu avant le style, execution en idle), TBT accueil 501 -> ~250 ms,
+score ~80. Le reliquat attribue a u_cd226 vient du code historique du fichier.
+
 **Scores de reference (01/08/2026, serveur local cleanUrls).** Desktop : accueil 86-90
 (CLS 0.088), journal 100 (CLS 0.023), aval/societe/investisseurs 97-99, boutique 99.
 Mobile : boutique 93, journal 92, investisseurs 87, societe 77, amont 66, accueil 65
