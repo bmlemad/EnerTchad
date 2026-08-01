@@ -665,3 +665,16 @@ header.pghero p,.pgh-lead,.hero .lead{font-size:max(16px,1em)!important;line-hei
 main .plc-grid,main .biz-grid,main .sb-grid,main .pof-grid,main .ppt-grid,main .ppj-grid,main .hpgrid,main .hxi-grid,main .hnews-grid,main .ce-grid,.ttg-g{display:grid!important;grid-template-columns:none!important;grid-auto-flow:column;grid-auto-columns:min(82vw,340px);overflow-x:auto;scroll-snap-type:x proximity;column-gap:12px;padding-bottom:12px;-webkit-overflow-scrolling:touch;scrollbar-width:thin;scroll-padding-inline:4px}
 main .plc-grid>*,main .biz-grid>*,main .sb-grid>*,main .pof-grid>*,main .ppt-grid>*,main .ppj-grid>*,main .hpgrid>*,main .hxi-grid>*,main .hnews-grid>*,main .ce-grid>*,.ttg-g>*{scroll-snap-align:start;min-width:0}
 }
+
+/* == Encre d'impression (01/08/2026) ==
+   Les fonds ne s'impriment pas par defaut : le papier est blanc. Toute encre claire
+   posee pour un fond sombre devient invisible a l'impression. Encre sombre forcee —
+   specificite montee a TROIS niveaux d'id (les reparations de theme utilisent deja deux :not(#_) — il faut les depasser) car le site est truffe
+   de couleurs a !important plus specifiques que des selecteurs nus. Optimise
+   l'impression par defaut (sans fonds). */
+@media print{
+body :not(#_):not(#__):not(#___){color:#111!important;-webkit-text-fill-color:#111!important;text-shadow:none!important}
+body a[href]:not(#_):not(#__):not(#___){text-decoration:underline}
+body .kick:not(#_):not(#__):not(#___),body .eyebrow:not(#_):not(#__):not(#___){color:#444!important}
+nav.toc,#inv-toc,.corp-nav,.pole-subnav,#secrail,.ttg,#aurora,.grain,.diapo,.pgh-art,.skip-link{display:none!important}
+}
