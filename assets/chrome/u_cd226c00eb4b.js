@@ -112,3 +112,81 @@ try{(function(){
   if(document.fonts&&document.fonts.ready)document.fonts.ready.then(pose);
   window.addEventListener('load',pose);
 })()}catch(e){}
+
+
+/* ---------------------------------------------------------------------------
+   MOBILIER FLOTTANT EN BAS DE PAGE — 01/08/2026
+   Mesure d'occlusion reelle (elementsFromPoint, 10 pages, 1280px et 390px,
+   defilement jusqu'en bas) : trois defauts.
+
+   1. #scrollcue — le bouton « Suite v » invite a descendre, mais restait
+      affiche une fois arrive tout en bas, ou il n'y a plus rien a montrer, et
+      recouvrait « Accessibilite » / « Plan du site » dans le pied (societe,
+      investisseurs, contact, journal, glossaire). La regle .scrollcue.hide
+      existait deja dans la feuille : AUCUN script ne l'ajoutait jamais.
+   2. #scrollcue n'avait aucun gestionnaire de clic. Un <button> annonce
+      « Voir la suite plus bas » qui ne fait rien au clic est un piege pour le
+      clavier autant que pour la souris.
+   3. #secrail — le sommaire lateral chevauchait le lien « Engagements » du
+      pied sur /boutique. Un sommaire de page n'a rien a faire au-dessus du
+      pied ; il s'efface quand celui-ci entre dans le champ.
+   4. #plightBtn recouvrait « FAQ ». Le degagement du pied existait deja sous
+      520px (etFootClear) ; il manquait au-dessus.
+   --------------------------------------------------------------------------- */
+;(function(){try{
+  var s=document.createElement('style');s.id='etFloatClear';
+  s.textContent=
+    '#secrail,#aurail{pointer-events:none}'+
+    '#secrail a,#aurail a{pointer-events:auto}'+
+    '#secrail.pied-off,#aurail.pied-off{opacity:0!important;pointer-events:none!important;'+
+      'transform:translateX(14px)!important}'+
+    '#secrail,#aurail{transition:opacity .28s ease,transform .28s ease}'+
+    '@media(min-width:521px){footer .foot-legal{padding-bottom:64px}}'+
+    '@media(prefers-reduced-motion:reduce){#secrail,#aurail{transition:none}}';
+  (document.head||document.documentElement).appendChild(s);
+
+  var tick=false;
+  function upd(){
+    tick=false;
+    var d=document.documentElement;
+    var y=window.scrollY||d.scrollTop||0;
+    var vh=window.innerHeight||d.clientHeight;
+    var reste=d.scrollHeight-y-vh;          // ce qu'il reste a derouler
+    var f=document.querySelector('footer');
+    var pied=f?f.getBoundingClientRect().top:1e9;
+
+    var cue=document.getElementById('scrollcue');
+    if(cue){
+      // on masque des qu'il n'y a plus rien dessous, des que le pied est
+      // entame, ou si la page n'est pas defilante du tout.
+      var off=(reste<=120)||(pied<vh-40)||((d.scrollHeight-vh)<80);
+      cue.classList.toggle('hide',off);
+      cue.setAttribute('aria-hidden',off?'true':'false');
+      cue.tabIndex=off?-1:0;
+    }
+    var rail=document.getElementById('secrail')||document.getElementById('aurail');
+    if(rail)rail.classList.toggle('pied-off',pied<vh*0.62);
+  }
+  function onS(){if(!tick){tick=true;requestAnimationFrame(upd);}}
+
+  function arme(){
+    var cue=document.getElementById('scrollcue');
+    if(cue&&!cue.getAttribute('data-et-cue')){
+      cue.setAttribute('data-et-cue','1');
+      cue.addEventListener('click',function(){
+        var red=false;
+        try{red=matchMedia('(prefers-reduced-motion: reduce)').matches}catch(e){}
+        var pas=Math.round((window.innerHeight||600)*0.85);
+        if(window.scrollBy)window.scrollBy({top:pas,left:0,behavior:red?'auto':'smooth'});
+        else window.scrollTo(0,(window.scrollY||0)+pas);
+      });
+    }
+    upd();
+  }
+
+  addEventListener('scroll',onS,{passive:true});
+  addEventListener('resize',onS,{passive:true});
+  addEventListener('load',function(){setTimeout(arme,60)});
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',arme);
+  else arme();
+}catch(e){}})();
