@@ -496,3 +496,271 @@ html:not(#_){scroll-behavior:auto}
 html:not(#_){scroll-padding-top:var(--et-anc,95px)}
 @media(min-width:820px){html:not(#_){scroll-padding-top:var(--et-anc,111px)}}
 @media(min-width:1241px){html:not(#_){scroll-padding-top:var(--et-anc,150px)}}
+
+/* ============================================================================
+   iOS / SAFARI — 01/08/2026
+   Audit mene sous le vrai moteur WebKit 26 (et non sous Chromium en gabarit
+   iPhone), profils iPhone SE / 13 / 13 paysage / iPad, portrait et paysage.
+   Ce que la mesure a innocente : zero erreur JS, zero debordement horizontal,
+   le verre depoli fonctionne (prefixe -webkit- present partout), aucun melange
+   de calques sous 1024px, les ancres tiennent (0/64 recouvertes sur iPad,
+   1/64 en iPhone portrait). Ce qui suit corrige ce qui a reellement echoue.
+   Protocole et chiffres dans MAINTENANCE 19.
+
+   1. ZOOM AUTOMATIQUE DES CHAMPS. La regle qui portait les champs a 16px etait
+      enfermee dans @media(max-width:600px) : un critere de largeur, alors que
+      le zoom de Safari depend du materiel, pas de la fenetre. Mesure a 750px
+      de large (iPhone couche) : /contact 10,56px sur cinq champs, /boutique
+      12,8px sur les listes et 14,72px sur les quantites. Sous 16px, iOS zoome
+      de force des qu'on touche le champ et l'utilisateur doit pincer pour
+      revenir. Toutes les tablettes et tous les telephones couches etaient
+      concernes. On recadre sur le pointeur, pas sur la largeur.
+
+   2. CIBLES TACTILES. 151 cibles distinctes sous 44px en portrait, 298 en
+      paysage. On elargit la zone sensible sans toucher au dessin, par
+      remplissage compense ou par calque ::after centre. Deux exceptions qui
+      grandissent pour de bon : les pastilles du pied de page et les compteurs
+      de la boutique — un compteur de 32x34 ne se manipule pas au pouce.
+
+   3. PAYSAGE. Les barres fixes mangeaient 38 a 45% d'une fenetre de 342px de
+      haut (barre principale 71 a 93px + barre du bas 59px), avant meme la
+      barre d'adresse de Safari. On escamote la barre du bas quand la fenetre
+      est basse : le menu principal reste accessible par le bouton.
+
+   4. ENCOCHE EN PAYSAGE. .nav, #toTop, #plightBtn, .scrollcue et le bas de
+      #nezBar traitaient deja les zones sures. Restaient trois en-tetes
+      collants (boutique, journal, page arabe) et les cotes de #nezBar. On
+      passe par une bordure transparente et non par le remplissage : leur
+      remplissage varie d'un gabarit a l'autre (14/30/32px pour .btop,
+      19,5/37,5/40px pour .jtop, 0 pour l'en-tete arabe) et le recopier serait
+      le figer. Sans encoche, env() vaut zero et la bordure est nulle.
+
+   5. SURBRILLANCE AU TOUCHER. Aucun -webkit-tap-highlight-color sur le site :
+      iOS peignait un rectangle gris a chaque appui, ce qui jure sur fond
+      sombre. Les etats :active du site suffisent.
+   ========================================================================== */
+
+/* --- 1. plus jamais de zoom force a la saisie ------------------------------ */
+@media(pointer:coarse){
+  input:not([type=range]):not([type=checkbox]):not([type=radio]):not(#_):not(#__),
+  select:not(#_):not(#__),
+  textarea:not(#_):not(#__){font-size:16px!important}
+}
+
+/* --- 2. cibles tactiles ---------------------------------------------------- */
+@media(pointer:coarse){
+  /* a. zone sensible elargie sans deplacer le dessin (remplissage compense) */
+  .pc-more:not(#_):not(#__){padding-top:13px!important;padding-bottom:13px!important;
+    margin-top:-8px!important;margin-bottom:-8px!important;position:relative;z-index:1}
+  .ppj-tg:not(#_):not(#__){padding-top:12px!important;padding-bottom:12px!important;
+    margin-top:-6px!important;margin-bottom:-6px!important;position:relative;z-index:1}
+
+  /* b. calque de 44px centre : le bouton garde sa taille, la main gagne 13px.
+        On ne pose position:relative que sur les elements encore statiques —
+        .scrollcue et #plightBtn sont deja fixes, .flip-hint est absolue, et
+        les repositionner en relatif les arracherait de leur place. */
+  .f2hint:not(#_):not(#__),a[data-social]:not(#_):not(#__){position:relative}
+  .scrollcue:not(#_):not(#__)::after,#plightBtn:not(#_):not(#__)::after,
+  .flip-hint:not(#_):not(#__)::after,.f2hint:not(#_):not(#__)::after,
+  a[data-social]:not(#_):not(#__)::after{content:"";position:absolute;top:50%;left:50%;
+    transform:translate(-50%,-50%);min-width:44px;min-height:44px;width:100%;height:100%;
+    border-radius:inherit;pointer-events:auto}
+
+  /* c. ceux qui doivent vraiment grandir */
+  .foot-pole:not(#_):not(#__){min-height:44px}
+  .pc-add:not(#_):not(#__){min-height:44px}
+  .stepper:not(#_):not(#__) button{width:44px!important;height:44px!important}
+  .stepper:not(#_):not(#__) input{height:44px!important;width:52px!important}
+}
+
+/* --- 3. paysage : rendre la fenetre au contenu ----------------------------- */
+@media(orientation:landscape) and (max-height:450px){
+  #nezBar:not(#_):not(#__){display:none!important}
+  .scrollcue:not(#_):not(#__){display:none!important}
+}
+
+/* --- 4. encoche sur les cotes en paysage ----------------------------------- */
+@supports(left:env(safe-area-inset-left)){
+  .btop:not(#_):not(#__),.jtop:not(#_):not(#__),header.top:not(#_):not(#__),
+  #nezBar:not(#_):not(#__){
+    border-left:env(safe-area-inset-left) solid transparent;
+    border-right:env(safe-area-inset-right) solid transparent}
+}
+
+/* --- 5. pas de rectangle gris au toucher ----------------------------------- */
+html:not(#_):not(#__){-webkit-tap-highlight-color:transparent}
+
+/* --- 6. le megamenu se fermait sous la barre d'adresse ---------------------- */
+/* 100vh vaut, sur iOS, la hauteur barre d'adresse repliee : le bas du panneau
+   passait dessous. 100dvh suit la fenetre reellement visible ; la ligne 100vh
+   reste en repli pour les moteurs qui ignorent dvh. */
+.mega-ultra:not(#_):not(#__){max-height:calc(100vh - var(--nav-h,72px))}
+@supports(height:100dvh){
+  .mega-ultra:not(#_):not(#__){max-height:calc(100dvh - var(--nav-h,72px))}
+}
+
+/* ============================================================================
+   iOS / SAFARI — deuxieme passe, cibles tactiles nommees — 01/08/2026
+   La premiere passe a ramene les cibles sous 44px de 151 a 126 en portrait et
+   de 298 a 245 en paysage, et ramene a zero les champs qui declenchaient le
+   zoom. Le releve du reste (instrument #6 : chemin CSS complet de chaque cible
+   fautive) montre que le gros du solde n'est pas disperse — ce sont huit
+   familles, presque toutes des listes verticales de liens : pied de page,
+   coordonnees, fil d'Ariane, filtres de la boutique, en-tete des carnets.
+   On leur donne 44px de hauteur pour de bon. La page mobile s'allonge un peu ;
+   c'est le prix d'un pied de page qu'on peut viser au pouce, et cela va dans le
+   sens demande d'une version mobile modernisee.
+   ========================================================================== */
+@media(pointer:coarse){
+  /* le compteur de la boutique se faisait ecraser par la grille en gabarit
+     tablette : la hauteur passait bien, la largeur retombait a 33px. */
+  .stepper:not(#_):not(#__) button{flex:0 0 44px!important;min-width:44px!important}
+  .stepper:not(#_):not(#__) input{flex:0 0 52px!important;min-width:44px!important}
+
+  /* listes verticales de liens : hauteur pleine, texte centre */
+  .foot-col:not(#_):not(#__) a,
+  .foot-brand:not(#_):not(#__) a,
+  .coords:not(#_):not(#__) a,
+  .bcrumb:not(#_):not(#__) a,
+  #contact-rapide:not(#_):not(#__) a,
+  .foot-legal:not(#_):not(#__) button,
+  .jsig:not(#_):not(#__) a{min-height:44px;display:flex;align-items:center}
+  .bcrumb:not(#_):not(#__) a{display:inline-flex}
+  .foot-legal:not(#_):not(#__) button{display:inline-flex;justify-content:center}
+
+  /* boutons et pastilles */
+  .filters:not(#_):not(#__) .chip{min-height:44px}
+  .hx-dots:not(#_):not(#__) button{min-height:44px}
+  .follow-soc:not(#_):not(#__) a{min-width:44px;min-height:44px}
+  .nav-search:not(#_):not(#__){min-width:44px;min-height:44px}
+  .jtop:not(#_):not(#__) .jback,.jtop:not(#_):not(#__) #jlightBtn{min-width:44px;min-height:44px}
+  .foot-pole:not(#_):not(#__){min-width:44px;text-align:center}
+  .skip-link:not(#_):not(#__){min-height:44px}
+
+  /* liens en fin de bloc, poses en ligne : on les passe en ligne-flex pour que
+     leur remplissage compte vraiment dans la hauteur cliquable. */
+  .card:not(#_):not(#__) .d a,
+  .bnote:not(#_):not(#__) a,
+  .layout:not(#_):not(#__) a[href*="maps"]{display:inline-flex;align-items:center;
+    min-height:44px;min-width:44px;justify-content:center}
+}
+
+/* ============================================================================
+   iOS / SAFARI — troisieme et derniere passe tactile — 01/08/2026
+   Apres la deuxieme passe : 49 cibles distinctes sous 44px en portrait (151 au
+   depart), 107 en paysage (298), 151 sur iPad (260). Le solde n'est plus une
+   longue traine : c'est une dizaine de familles nommees, relevees une a une par
+   l'instrument #6. On les traite ici. Ce qui restera ensuite est assume et
+   consigne dans MAINTENANCE 19 : deux liens de plan d'acces et les liens en
+   pleine phrase, que la recommandation d'Apple exempte explicitement.
+   ========================================================================== */
+@media(pointer:coarse){
+  /* la ligne de liens legaux du pied de page : 21px de haut, la plus fine du site */
+  .foot-legal-links:not(#_):not(#__) a{min-height:44px;display:inline-flex;align-items:center}
+
+  /* bandeau cookies : le seul endroit ou rater la cible a une consequence */
+  #ckn:not(#_):not(#__) .ck-row a,#ckn:not(#_):not(#__) .ck-row button{min-height:44px;
+    display:inline-flex;align-items:center;justify-content:center}
+
+  /* onglets de segmentation clientele, entetes depliables, fil de chaine */
+  .cwt:not(#_):not(#__) button{min-height:44px}
+  .minv-btn:not(#_):not(#__){min-height:44px}
+  .pgc-node:not(#_):not(#__){min-height:44px;display:inline-flex;align-items:center}
+  .crumb:not(#_):not(#__) a{min-height:44px;display:inline-flex;align-items:center}
+  .hchain:not(#_):not(#__) a{min-height:44px}
+
+  /* pastilles de partage, pastilles de diaporama, bouton de lecture claire */
+  .share-b:not(#_):not(#__){min-width:44px;min-height:44px}
+  .hx-dots:not(#_):not(#__) button{min-width:44px}
+  #plightBtn:not(#_):not(#__){min-width:44px;min-height:44px}
+
+  /* replis de fiche : 12px de remplissage donnaient 40px, il en manquait quatre */
+  .ppj-tg:not(#_):not(#__){padding-top:14px!important;padding-bottom:14px!important;
+    margin-top:-8px!important;margin-bottom:-8px!important}
+
+  /* lien de rappel en fin de bloc mis en avant */
+  .hx-grid:not(#_):not(#__) > div > div > a{display:inline-flex;align-items:center;min-height:44px}
+}
+
+/* Dernier rattrapage tactile : une famille d'appels a l'action s'arretait entre
+   38 et 43px, soit deux a six pixels sous la recommandation d'Apple. Elles
+   portent toutes un nom, on les nomme. 01/08/2026 */
+@media(pointer:coarse){
+  .flip-cta:not(#_):not(#__),.iv-cta:not(#_):not(#__),.hnews-all:not(#_):not(#__),
+  .ppte-cta:not(#_):not(#__),.bbrand:not(#_):not(#__),.bback:not(#_):not(#__),
+  .cart-btn:not(#_):not(#__),.chip:not(#_):not(#__),.btn2:not(#_):not(#__){min-height:44px}
+}
+
+/* ============================================================================
+   FIL D'ARIANE SOUS LA BARRE — 01/08/2026
+   Mesure : la seule regle qui degageait le haut du hero etait enfermee dans
+   @media(max-width:560px). Au-dessus de 560px et jusqu'a 1240px, plus rien :
+   .hero retombait a padding-top 0 alors que #nav reste fixe et mesure 93px.
+   Resultat, sur /societe /clients /investisseurs /solutions /engagements
+   /gouvernance /contact /carrieres, le fil d'Ariane demarrait a y=45..49 et
+   passait entierement sous la barre — iPhone couche, iPad, et toute tablette.
+   Au-dessus de 1241px le defaut ne se voit pas : nav_a.css donne au fil
+   d'Ariane son propre remplissage de 74px, qui le fait ressortir.
+
+   Deuxieme foyer, celui-la visible meme en portrait : les 37 pages marquees
+   body.nx-clear recevaient 48px pour une barre de 77px. Leur fil d'Ariane
+   etait donc recouvert a toutes les largeurs.
+
+   On pose donc un seul decalage, deterministe, sur toute la bande <=1240px :
+   96px sous 560px (la valeur qui marchait deja, on ne bouge pas les pages
+   saines) et 112px au-dessus, soit la barre de 93px plus les 19px de respiration
+   du gabarit telephone. Pas de !important : l'accueil garde ses 128/152px
+   poses en header.hero!important, et toute page qui voudra son propre dessin
+   n'aura qu'a le declarer de meme.
+   ========================================================================== */
+@media(max-width:560px){
+  .hero:not(#_):not(#__){padding-top:96px}
+}
+@media(min-width:561px) and (max-width:1240px){
+  .hero:not(#_):not(#__){padding-top:112px}
+}
+
+/* Note : --nav-h restait fige a 72px alors que la barre monte a 93px en
+   tablette et 132px en grand ecran ; le panneau de menu mobile et le mega-menu
+   en dependent et depassaient donc la fenetre de 21 a 60px. Correctif en
+   JavaScript (observateur de taille) dans u_cd226c00eb4b.js, la mesure devant
+   suivre la barre et non un palier de largeur. */
+
+/* ============================================================================
+   CIBLES TACTILES — quatrieme et derniere passe, tablette et paysage
+   01/08/2026. Le portrait etait retombe a quatre cibles distinctes ; restaient
+   81 en iPad et paysage, toutes concentrees dans six familles nommees que la
+   mesure a fini par isoler : les sommaires lateraux (nav.toc, #inv-toc), la
+   navigation corporate (.corp-nav), le segmenteur de la boutique (.seg), les
+   pastilles sociales du pied de page (.et-soc-foot, 36x36 pour dix occurrences
+   — le plus gros contingent) et les en-tetes courts de la boutique et du
+   journal. On ajoute les pastilles d'appel a l'action ecrites en style en
+   ligne, reconnaissables a leur border-radius:999px, qui s'arretaient a 42px.
+   ========================================================================== */
+@media(pointer:coarse){
+  .et-soc-foot:not(#_):not(#__) a{min-width:44px;min-height:44px}
+  .corp-nav:not(#_):not(#__) a{min-height:44px;display:flex;align-items:center}
+  .toc:not(#_):not(#__) .toc-in a{min-height:44px;display:flex;align-items:center}
+  #inv-toc:not(#_):not(#__) .ivt-in a{min-height:44px;display:flex;align-items:center}
+  .seg:not(#_):not(#__) button{min-height:44px}
+  .btop:not(#_):not(#__) .bback{min-width:44px;text-align:center}
+  .jtop:not(#_):not(#__) .jbrand{min-height:44px;display:flex;align-items:center}
+  .pof-cta:not(#_):not(#__) a{min-height:44px}
+  #coeurs:not(#_):not(#__) .reveal > a{min-height:44px}
+  a[style*="border-radius:999px"]:not(#_):not(#__){min-height:44px}
+}
+
+/* Rattrapage : le sommaire de /engagements et /gouvernance accroche ses liens
+   directement sous nav.toc (et non sous .toc-in comme /investisseurs), et le
+   sous-menu de pole s'arretait a 39px. 01/08/2026 */
+@media(pointer:coarse){
+  .toc:not(#_):not(#__) > a{min-height:44px;display:flex;align-items:center}
+  .psn-link:not(#_):not(#__){min-height:44px;display:flex;align-items:center}
+}
+
+/* Le lien « Voir sur la carte » de /contact pointe vers OpenStreetMap et non
+   vers Google Maps : la regle posee en deuxieme passe sur a[href*="maps"] ne
+   l'attrapait pas. On elargit au domaine reellement utilise. 01/08/2026 */
+@media(pointer:coarse){
+  a[href*="openstreetmap"]:not(#_):not(#__){min-height:44px;display:inline-flex;align-items:center}
+}

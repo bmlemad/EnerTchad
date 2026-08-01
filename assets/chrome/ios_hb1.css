@@ -1,0 +1,59 @@
+/* ============================================================================
+   iOS / Safari — pages qui ne chargent pas les deux paquets partages.
+   Six pages du site vivent en dehors de bundle_core_a1 / bundle_head_b2 :
+   la page arabe, le calculateur, le configurateur, les deux explorateurs de
+   chaine et la page 404. Elles n'ont donc recu aucun des correctifs iOS du
+   01/08/2026 : mesure faite, elles peignaient encore le rectangle gris au
+   toucher (rgba(0,0,0,.4)) et gardaient des cibles sous 44px. Ce fichier leur
+   porte le strict necessaire, sans rien emprunter d'autre aux paquets.
+   Le retrait vertical d'ancre, lui, se regle page par page : leurs en-tetes
+   collants ne font pas la meme hauteur (74px pour l'arabe, 62px pour le
+   calculateur) et l'ancienne valeur unique de 116px laissait un vide.
+   ========================================================================== */
+html:not(#_):not(#__){-webkit-tap-highlight-color:transparent}
+
+@media(pointer:coarse){
+  input:not([type=range]):not([type=checkbox]):not([type=radio]):not(#_):not(#__),
+  select:not(#_):not(#__),
+  textarea:not(#_):not(#__){font-size:16px!important}
+
+  a:not(#_):not(#__),button:not(#_):not(#__),
+  [role=button]:not(#_):not(#__),summary:not(#_):not(#__){-webkit-tap-highlight-color:transparent}
+
+  .bcrumb:not(#_):not(#__) a,.coords:not(#_):not(#__) a,
+  .foot-col:not(#_):not(#__) a,.foot-brand:not(#_):not(#__) a{min-height:44px;display:flex;align-items:center}
+  .bcrumb:not(#_):not(#__) a{display:inline-flex}
+  .foot-legal:not(#_):not(#__) button{min-height:44px;display:inline-flex;align-items:center;justify-content:center}
+  .skip-link:not(#_):not(#__){min-height:44px}
+  header.top:not(#_):not(#__) a,header.top:not(#_):not(#__) button{min-height:44px;min-width:44px}
+}
+
+/* encoche : les cotes de l'en-tete collant en paysage. Bordure transparente
+   plutot que remplissage, pour ne pas figer un remplissage variable. */
+@supports(left:env(safe-area-inset-left)){
+  header.top:not(#_):not(#__),header:not(#_):not(#__).sticky{
+    border-left:env(safe-area-inset-left) solid transparent;
+    border-right:env(safe-area-inset-right) solid transparent}
+}
+
+/* Complements releves sur la page arabe (instrument #6) : les cartes de la
+   grille portent un lien pose en ligne de 31px, et les appels a l'action du
+   heros s'arretent a 41px. */
+@media(pointer:coarse){
+  .card:not(#_):not(#__) > a{display:inline-flex;align-items:center;min-height:44px}
+  .cta:not(#_):not(#__) .btn2,.cta:not(#_):not(#__) .btn{min-height:44px}
+  .foot-legal-links:not(#_):not(#__) a{min-height:44px;display:inline-flex;align-items:center}
+  .share-b:not(#_):not(#__){min-width:44px;min-height:44px}
+  #ckn:not(#_):not(#__) .ck-row a,#ckn:not(#_):not(#__) .ck-row button{min-height:44px;
+    display:inline-flex;align-items:center;justify-content:center}
+}
+
+/* Complement page arabe : le bouton de mode clair et les liens de pied de page
+   restaient sous les 44px recommandes par Apple. 01/08/2026 */
+@media(pointer:coarse){
+  #plightBtn:not(#_):not(#__){min-width:44px;min-height:44px}
+  footer:not(#_):not(#__) .wrap > a{min-height:44px;display:inline-flex;align-items:center}
+}
+@media(pointer:coarse){
+  .et-soc-foot:not(#_):not(#__) a{min-width:44px;min-height:44px}
+}

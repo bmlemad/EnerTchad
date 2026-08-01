@@ -69,3 +69,46 @@ function idle(){if(window.requestIdleCallback)requestIdleCallback(go,{timeout:20
 if(document.readyState==='complete'){idle();}
 else addEventListener('load',idle);
 })();
+
+/* Barre d'adresse de Safari accordee au theme reellement affiche.
+   Le site declare un seul theme-color, #060B14 : en mode clair, iOS gardait
+   donc une barre bleu nuit au-dessus d'une page ivoire. Une variante statique
+   media="(prefers-color-scheme:light)" ne suffirait pas — le mode clair du site
+   est un choix memorise, qui peut contredire la preference du systeme. On suit
+   donc la classe reellement posee sur <html> (et-plight ou et-jlight). */
+try{(function(){
+  var SOMBRE=null, CLAIR='#FAF7F1';
+  var m=document.querySelector('meta[name="theme-color"]');
+  if(!m)return;
+  SOMBRE=m.getAttribute('content')||'#060B14';
+  function sync(){
+    var c=document.documentElement.classList;
+    var v=(c.contains('et-plight')||c.contains('et-jlight'))?CLAIR:SOMBRE;
+    if(m.getAttribute('content')!==v)m.setAttribute('content',v);
+  }
+  sync();
+  new MutationObserver(sync).observe(document.documentElement,{attributes:true,attributeFilter:['class']});
+})()}catch(e){}
+
+/* Hauteur reelle de la barre, tenue a jour.
+   c_ac04328f0f47.js pose --nav-h au parse puis seulement au redimensionnement.
+   Sur les gabarits ou la barre se replie sur deux lignes, elle grandit apres
+   coup — au chargement de la police de marque — sans qu'aucun redimensionnement
+   ne survienne : la variable restait a 72px pour une barre de 93px en tablette
+   et de 132px en grand ecran. Le panneau de menu mobile et le mega-menu, qui
+   se dimensionnent par calc(100dvh - var(--nav-h)), depassaient donc le bas de
+   la fenetre de 21 a 60px. On observe la barre plutot que la fenetre. */
+try{(function(){
+  var n=document.getElementById('nav');
+  if(!n)return;
+  function pose(){
+    var h=Math.round(n.getBoundingClientRect().height);
+    if(h>0&&document.documentElement.style.getPropertyValue('--nav-h')!==h+'px')
+      document.documentElement.style.setProperty('--nav-h',h+'px');
+  }
+  pose();
+  if(window.ResizeObserver)new ResizeObserver(pose).observe(n);
+  else window.addEventListener('resize',pose);
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(pose);
+  window.addEventListener('load',pose);
+})()}catch(e){}
