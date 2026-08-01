@@ -554,3 +554,94 @@ et de `bundle_head_b2.css` (jamais regenerer ce dernier : ce n'est pas une conca
 pure de ses neuf sources, on le suffixe) ; `assets/chrome/ios_hb1.css` pour les six
 pages sans paquet ; l'observateur de barre dans `u_cd226c00eb4b.js`. Toute retouche de
 `assets/chrome/*` impose de faire monter `const V` dans `sw.js`.
+
+## 20. Eclaircissement du pied de page et de la navigation (01/08/2026)
+
+**Demande.** « Eliminer les bandes sombres du site pour avoir un site plus lumineux »,
+avec deux arbitrages explicites : le pied de page passe en clair, la barre de
+navigation passe en clair, et **rien d'autre**. Les sous-menus collants (`.corp-nav`,
+`nav.toc`, `.btop`, `.jtop`), le bandeau `#cta-band` du journal et les en-tetes photo
+des heros restent tels quels — ne pas les toucher sans nouvelle instruction.
+
+**Ou vit le correctif.** Une couche unique, delimitee par le marqueur
+`ECLARCISSEMENT (2026-08)` en commentaire, ajoutee a la queue des **trois seules
+feuilles porteuses du theme** :
+
+| Feuille | Pages qui la chargent |
+|---|---|
+| `assets/chrome/bundle_core_a1.css` | 151 |
+| `assets/chrome/plight_extrait.css` | 6 (404, Calculateur_Baril_Additionnel, Configurateur_Service_Integre_v2, explorateur-chaine, explorateur-chaine-en, index) |
+| `assets/chrome/x_cd256286824c.css` | 2 (ar.html, index.html) |
+
+Ces trois fichiers couvrent l'integralite des pages qui portent la chrome du site.
+Les quatre pages restantes (`docs-sources/brochure_print*.html`, `docs-sources/fiche_ar.html`,
+`google9146d41010c5e702.html`) n'ont ni barre ni pied — rien a faire pour elles.
+`index.html` recoit la couche deux fois (via `plight_extrait` et `x_cd256286824c`) :
+les declarations sont identiques, c'est sans effet.
+
+**Comment la modifier.** Ne jamais editer les trois feuilles a la main. La source est
+`/root/work/bright1.css` ; `/root/work/apply_bright.py` tronque tout ce qui suit le
+marqueur puis re-ajoute la source courante dans les trois fichiers. Le script est
+idempotent : on peut le relancer autant de fois que voulu.
+
+**Portee et specificite — les deux regles a ne pas casser.**
+
+1. **Portee.** Chaque selecteur est prefixe `html.et-plight` ou `html.et-jlight`.
+   Le theme sombre reste la valeur par defaut et n'est pas modifie (verifie apres coup :
+   pied `rgba(8,13,22,.68)`, barre `linear-gradient(rgba(6,11,20,.94),rgba(6,11,20,.88))`).
+2. **Specificite.** Les reparations de contraste anterieures montent deja a trois
+   negations d'ID (`…:not(#_):not(#__):not(#___)`) et la brochure a quatre. La couche
+   en utilise **cinq** (`:not(#e1)` a `:not(#e5)`). Ne pas les retirer : sans elles les
+   anciennes regles or/creme reprennent la main et les libelles redeviennent illisibles
+   sur fond clair.
+
+Rappel : `html.et-jlight` definit un jeu de variables (`--bg --bg2 --ink --mut --hair
+--gold --gold-l --blue-l`) mais **`html.et-plight` n'a pas d'equivalent** — en mode
+page-claire `var(--muted)`, `var(--hair)` et `var(--cream)` gardent leurs valeurs du
+theme sombre. Toute nouvelle regle doit donc ecrire ses couleurs en dur.
+
+**Les sept sections de la couche.** 1 fond du pied, 2 encre du pied, 3 liens du pied,
+4 verre clair de la barre haute, 5 mega-menus (le bloc de fond est sous
+`@media(min-width:1241px)`), 6 tiroir mobile (toute la section sous
+`@media(max-width:1240px)`), 7 barre basse mobile `#nezBar`.
+Le point de bascule de la navigation est **1240 px**, pas 1024.
+
+**Trois pieges rencontres, et leur correctif.**
+
+- *« Ener » invisible dans le logotype.* Dans `.brand-tx`, « Ener » est un nœud de
+  texte nu — il heritait de `--cream` (quasi blanc) et disparaissait sur la barre
+  claire, ne laissant lire que « Tchad ». Corrige par une regle de couleur sur
+  `.nav .brand-tx` lui-meme.
+- *Filigrane derriere le tiroir mobile.* A 0,985 d'opacite le titre blanc du hero
+  transparaissait derriere les libelles. Le tiroir est un panneau modal : il est
+  desormais **opaque**. La barre haute et `#nezBar`, eux, gardent leur translucidite
+  (`backdrop-filter:blur(16px) saturate(150%)`), conformement a la consigne
+  « permettre au site d'etre translucide ».
+- *`#nezBar` oublie de l'inventaire.* La barre basse mobile (60 px fixes,
+  `rgba(8,14,26,.94)`, presente sur toutes les pages) n'apparaissait pas dans le
+  releve initial des bandes parce que celui-ci tournait a 1280 px. Auditer les bandes
+  aux **deux** largeurs.
+
+**Piege de mesure — a connaitre avant de re-auditer.** Le site pose
+`transition:color .18s` sur les liens de la barre et du pied. Or, dans la cascade CSS,
+**les declarations de transition passent AVANT les `!important` d'auteur**. Injecter
+une feuille avec `page.addStyleTag()` declenche donc une transition de couleur qui,
+en Chromium headless, reste `playState:"running"` plusieurs secondes : toute mesure
+prise pendant cette fenetre lit **l'ancienne couleur**, et meme
+`element.style.setProperty('color',x,'important')` est ignore. C'est ce qui a produit
+39 faux echecs de contraste reproductibles. Remede, avant tout releve :
+
+```js
+await pg.evaluate(()=>document.getAnimations().forEach(a=>{try{a.finish()}catch(e){}}));
+await pg.waitForTimeout(400);
+```
+
+Le probleme est purement lie au harnais d'audit : en production la feuille est
+presente des le premier rendu, aucune transition ne se declenche.
+
+**Etat verifie a la publication.** Contraste WCAG : 0 echec sur 14 pages a 1280 px
+(lecture des fichiers reels, sans injection) et 0 echec dans le tiroir mobile a 390 px.
+Fond du pied `rgb(243,238,229)` L=0,859 (avant `rgb(11,20,34)` L=0,0069) ; barre
+L=0,819-0,932 (avant L=0,0043). Outils : `/root/work/eclair2.js` (contraste, 14 pages)
+et `/root/work/verif.js` (non-regression du theme sombre, captures claires bureau,
+tiroir mobile).
