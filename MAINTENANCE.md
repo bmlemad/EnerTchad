@@ -645,3 +645,53 @@ Fond du pied `rgb(243,238,229)` L=0,859 (avant `rgb(11,20,34)` L=0,0069) ; barre
 L=0,819-0,932 (avant L=0,0043). Outils : `/root/work/eclair2.js` (contraste, 14 pages)
 et `/root/work/verif.js` (non-regression du theme sombre, captures claires bureau,
 tiroir mobile).
+
+## 21. Mobilier flottant en bas de page (01/08/2026)
+
+**Mesure.** Sonde d'occlusion reelle (`elementsFromPoint`, on ne retient un
+recouvrement que si le controle flottant est bien **au-dessus** dans la pile de
+peinture), 10 pages, 1280 px et 390 px, defilement jusqu'en bas.
+Script : `/root/work/occ3.js`. Une premiere version (`flot.js`) ne testait que le
+chevauchement geometrique et produisait des faux positifs — `#toTop` « recouvrant »
+le bandeau cookies alors que celui-ci est en `z-index:60` contre 48.
+
+**Quatre defauts confirmes, tous en bas de page.**
+
+- `#scrollcue`, le bouton « Suite ⌄ », restait affiche une fois arrive tout en bas —
+  la ou il n'y a plus rien a montrer — et recouvrait les liens « Accessibilite » et
+  « Plan du site » du pied sur societe, investisseurs, contact, journal et glossaire.
+  La regle `.scrollcue.hide` (`opacity:0;pointer-events:none`) **existait deja** dans
+  `bundle_core_a1.css` : aucun script du site ne l'ajoutait jamais.
+- `#scrollcue` n'avait **aucun gestionnaire de clic**. Un `<button>` annonce
+  « Voir la suite plus bas » qui ne fait rien est un piege au clavier comme a la souris.
+- `#secrail`, le sommaire lateral a pastilles, chevauchait le lien « Engagements » du
+  pied sur `/boutique`. Un sommaire de la page n'a rien a faire au-dessus du pied.
+- `#plightBtn` recouvrait « FAQ ». Le degagement du pied existait deja sous 520 px
+  (bloc `etFootClear` du meme fichier) ; il manquait au-dessus.
+
+**Correctif.** Un bloc unique en queue de `assets/chrome/u_cd226c00eb4b.js` (155 pages,
+couvre les 151 pages porteuses du `#scrollcue`). Il fait quatre choses :
+
+1. injecte une feuille `#etFloatClear` — `pointer-events:none` sur le conteneur du rail
+   et `auto` sur ses liens, l'etat `.pied-off`, et
+   `@media(min-width:521px){footer .foot-legal{padding-bottom:64px}}` ;
+2. sur `scroll`/`resize`, cadence en `requestAnimationFrame`, pose `.hide` sur le
+   repere des que le reste a derouler tombe sous 120 px, des que le haut du pied
+   remonte au-dessus de `innerHeight-40`, ou si la page n'est pas defilante ;
+3. accompagne `.hide` de `aria-hidden` et `tabIndex=-1` — sans quoi un bouton
+   invisible reste dans l'ordre de tabulation ;
+4. donne au repere un clic qui defile de 0,85 hauteur de fenetre, en `smooth` sauf
+   `prefers-reduced-motion`.
+
+Le rail suit la meme logique avec `.pied-off` des que le pied occupe le tiers bas
+de la fenetre, en fondu de 0,28 s.
+
+**Verification.** `/root/work/occ3.js` : 0 occlusion sur 10 pages aux deux largeurs.
+`/root/work/cue.js` : sur 6 pages, le repere est present en haut et au milieu, masque
+en bas, revient en remontant, et son clic fait descendre de 484 a 765 px selon la page —
+0 anomalie. Contraste : `eclair2.js` toujours a 0 echec sur 14 pages.
+
+**A savoir si l'on retouche.** Ne pas se fier a `getBoundingClientRect()` seul pour
+juger un recouvrement : sans la pile de peinture on accuse des elements qui sont en
+dessous. Et `.foot-legal` porte desormais deux marges basses distinctes (76 px sous
+520 px, 64 px au-dessus) — les deux sont necessaires, les geometries different.
