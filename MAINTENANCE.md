@@ -241,3 +241,45 @@ tableaux qui ne débordent qu'à 390px. Balayer axe AU viewport mobile aussi. Le
 `u_cd226c00eb4b.js` (§ ci-dessus) couvre désormais tout élément défilant sans contenu
 focalisable, y compris les sections héritées vivant **hors de `<main>`** (eor-en,
 raffinage-en… — `main *` seul les rate). Référence : axe mobile 0/158 le 31/07/2026.
+
+## 15. Lighthouse et les polices — audits du 31/07-01/08/2026
+
+**Deux angles morts de nos rituels, revelees par Lighthouse.** (1) Lighthouse audite en
+schema CLAIR par defaut : nos balayages axe tournaient en sombre et n'ont jamais vu
+l'encre jlight du #nezBar a 1.63:1 (bleu nuit #0e4172 epingle sur la barre restee
+sombre — meme classe que les recolorations jlight sur fond fixe). Balayer les deux
+schemas. (2) Lighthouse mesure SOUS THROTTLING (4x CPU, slow-4G) : les CLS de
+recalage tardif n'apparaissent qu'ainsi — jtop qui grandit de 58 a 63px a l'insertion
+du bouton de theme (CLS 0.23), oilticker pose a top:93px alors que le nav reel fait
+110px (>=1241px) ou 71px. Parade generale : les valeurs statiques initiales doivent
+etre EXACTES, le JS ne fait que confirmer ; sinon reserver la hauteur finale.
+
+**Les polices etaient mortes.** Les trois woff2 « -latin-ext » (115 KB par page)
+etaient la tranche Google U+0100+ SEULE : aucune minuscule ASCII, aucun accent —
+todo le texte tombait en police systeme, glyphe par glyphe, depuis toujours. Le
+diagnostic qui le prouve : cmap du fichier ∩ caracteres du site = 6 codepoints.
+Verifier TOUJOURS ca avant de « precharger » ou « optimiser » une police. Remede
+applique : tranches latin + latin-ext de fontsource-variable (npm), sous-ensemblees
+aux caracteres reellement utilises (`fontTools.subset --unicodes-file` sur l'union
+des caracteres de tous les html+js du depot), deux @font-face par famille avec les
+unicode-range officiels, dans les TROIS feuilles porteuses (bundle_head_b2,
+c_eda8729082dd, s_9c80e27170). Bilan : ~88 KB de vraies polices contre 115 KB
+mortes, -50 KB par page.
+
+**`font-display:optional` piege le verificateur.** Premiere visite froide : la police
+se telecharge mais ne s'applique PAS (fallback conserve, zero CLS — c'est voulu) ;
+elle s'applique a la visite suivante. Un instrument qui mesure a froid conclut « la
+police ne marche pas » (document.fonts.check() dit true, la largeur rendue dit
+fallback). Toujours mesurer apres un reload dans le meme contexte. Œ capital absent
+du sous-ensemble (aucune occurrence sur le site) — un contenu futur en majuscules
+avec Œ tombera en fallback pour ce seul glyphe : regenerer les sous-ensembles si le
+contenu evolue fortement.
+
+**Scores de reference (01/08/2026, serveur local cleanUrls).** Desktop : accueil 86-90
+(CLS 0.088), journal 100 (CLS 0.023), aval/societe/investisseurs 97-99, boutique 99.
+Mobile : boutique 93, journal 92, investisseurs 87, societe 77, amont 66, accueil 65
+— le plancher mobile des vitrines est le chemin critique CSS (~230 KB de feuilles
+bloquantes + documents de 117-145 KB) sous slow-4G simulee, FCP ~4 s : c'est le
+prochain gros chantier si on veut le franchir (CSS critique inline + report du reste).
+a11y/best-practices/SEO : 100 partout. Le TBT varie de ±150 ms d'une passe a l'autre
+sur conteneur — comparer des CLS/LCP, pas des scores bruts a une passe.
