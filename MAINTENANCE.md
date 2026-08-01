@@ -315,3 +315,64 @@ faux positif sinon), dans LES DEUX schemas (les reparations plight ne s'activent
 qu'en clair). Reference : 12 pages imprimables a zero encre pale, PDF verifies a
 l'oeil (journal et amont : noir sur blanc, zero chrome). L'accordeon minv est deja
 neutralise a l'impression (§14).
+
+## 17. Sauts de page — diagnostic et correctif (01/08/2026)
+
+Signalement : « ya des sauts de page sur le site surtout sur mobil ». Six hypotheses
+testees, deux causes reelles retenues, quatre ecartees par la mesure. Rien n'a ete
+corrige sans chiffre a l'appui : le reflexe de poser un correctif plausible a coute
+une demi-journee lors du passage precedent, pour zero gain mesure.
+
+**Ecartees, avec le chiffre qui les tue.** Decalage de mise en page : CLS a 0 sur les
+14 pages auditees. Debordement horizontal : `html.scrollWidth` a 390 sur les 21 pages
+testees en 390x844. Blocage du fil principal : recensement des ecouteurs par
+monkey-patch de `addEventListener` dans un `addInitScript` — 0 ecouteur scroll/touch/
+wheel non passif sur 5 pages, et 0 longue tache pendant le defilement sauf /amont/
+(3 taches, 195 ms cumules). Cout de composition du flou d'arriere-plan, de #aurora et
+du reveal : bisection CSS controlee (13 variantes, une propriete neutralisee a la
+fois, mediane des ecarts rAF sous bridage processeur 4x) — **0 %** de gain pour
+backdrop-filter, box-shadow, filter, border-radius, opacity, will-change, transform,
+background-image et le fond fixe. Le correctif de la passe precedente a donc ete
+integralement auto-annule : il degradait la translucidite voulue pour rien.
+
+**Le « voile noir » etait mon propre instrument.** J'ai cru mesurer une zone non
+peinte apres un saut de defilement. Mesure du temps de stabilisation par
+echantillonnage de captures toutes les 120 ms (864 captures, 4 variantes) : mediane
+**0 ms partout**, production comprise. Les captures precedentes etaient prises en
+plein rasterisage, pendant la sequence de defilement. Lecon : une capture n'est pas
+une mesure tant qu'on n'a pas prouve que l'etat est stable.
+
+**Cause 1 — le saut de page proprement dit.** `html{scroll-behavior:smooth}` (declare
+dans le `<style>` en ligne de chaque page). Pendant l'animation (~1 s, plus lente sur
+telephone) le document se replie et se deplie — reveal au defilement, sections
+repliables, images qui arrivent — donc l'offset calcule au clic est perime a
+l'arrivee. Instrument : 28 ancres sur 5 pages, remise a zero *instantanee* entre
+chaque (forcer `scrollBehavior='auto'` sur l'element racine pour la remise a zero,
+sinon elle entre en collision avec le defilement de l'ancre et produit un motif
+reussite/echec alterne — piege vecu), puis attente jusqu'a stabilisation de
+`window.scrollY` pendant 400-500 ms plutot qu'un delai fixe.
+
+    telephone 390x844   doux 12/28 ancres ratees  ->  instantane 1/28
+    ordinateur 1440x900 doux 19/28 ancres ratees  ->  instantane 1/28 (effectif)
+
+Pire cas : `/societe#organisation`, titre depose a 10 720 px de la fenetre. C'est un
+defaut fonctionnel, pas d'agrement. Correctif : `html:not(#_){scroll-behavior:auto}`,
+**sans media query** — je l'avais d'abord limite au mobile, la verification a montre
+l'ordinateur casse pareil. La specificite `html:not(#_)` (0,1,1) bat le `html` (0,0,1)
+des styles en ligne des 162 pages : inutile de toucher au HTML.
+
+**Cause 2 — fluidite mobile.** `.hero-halo` et `.prem-mesh` sont en
+`mix-blend-mode:screen` sur des boites allant jusqu'a 390x1375 px : la fusion prive le
+compositeur de ses chemins rapides. C'est la **seule** propriete que la bisection ait
+retenue. Neutralisee : mediane de frame 50 ms -> 33,4 ms, reproductible 4 essais sur 4,
++11 % de frames affichees, rendu identique a l'oeil sur fond sombre (captures
+comparees). Correctif limite a `max-width:1024px` — l'ordinateur n'en souffre pas.
+
+**Ce que le JavaScript fait encore.** 158 appels a `behavior:'smooth'` recenses : 153
+sont des boutons « retour en haut » (`top:0`, aucune cible a manquer, donc inoffensifs
+et laisses tels quels), 4 des defilements courts vers un formulaire (boutique,
+contact), 1 un message de statut. Aucun ne pilote la navigation par ancre. Le CSS ne
+peut pas les couvrir de toute facon : un `behavior` passe en argument gagne toujours.
+
+**Defaut residuel non corrige.** `/#produits-acces` se depose 7 767 px a cote **dans
+les deux modes** — cause distincte, anterieure, a instruire separement.
