@@ -1104,3 +1104,101 @@ html.et-plight #nezBar a.active:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
   color:#77530C!important}
 html.et-plight #nezBar a:active:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
   background:rgba(184,138,42,.12)!important}
+
+/* ======================================================================
+   MOBILE TACTILE (2026-08) : cibles tactiles portees a 44x44 CSS px sur
+   pointeur grossier (WCAG 2.5.5 AAA, 2.5.8 AA).
+
+   Complete — et ne remplace pas — la couche iOS decrite au MAINTENANCE 19,
+   qui pose des pastilles ::after de 44x44 centrees sur les petits controles.
+   Le releve au toucher (elementFromPoint, pas de 1 px, sonde tap2.js) a
+   montre que ces pastilles se CHEVAUCHENT quand les cibles sont trop
+   rapprochees : dans la zone commune c'est le frere suivant qui gagne le
+   test de toucher, si bien que la zone reellement utile retombe a 38-42 px.
+   On agrandit donc ici la boite reelle et on ecarte les voisines, plutot
+   que d'empiler une pastille de plus.
+
+   Portee stricte : @media(pointer:coarse) — aucun effet sur le bureau.
+   Specificite : :not(#_):not(#__) comme la couche iOS, afin de rester au
+   meme niveau qu'elle et au-dessus des styles <style> en ligne des pages.
+   ====================================================================== */
+
+@media(pointer:coarse){
+
+/* --- pied de page : reseaux sociaux -------------------------------------
+   38x38 dessines + pastille 44 centree => 3 px de debordement de chaque
+   cote dans un ecart de 4 px : les pastilles voisines se recouvraient.
+   On passe la boite elle-meme a 44x44 et l'ecart a 12 px.               */
+.foot-social:not(#_):not(#__),
+footer .foot-social:not(#_):not(#__){gap:12px!important}
+
+.foot-social a:not(#_):not(#__),
+footer .foot-social a:not(#_):not(#__){
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  width:44px!important;height:44px!important;
+  min-width:44px!important;min-height:44px!important;
+  padding:0!important;margin:0!important}
+
+/* --- pied de page : liens legaux (FAQ, Contact, Cookies...) -------------
+   texte de .8rem sur une ligne : 22 px de haut utiles. Marges negatives
+   supprimees pour que deux rangees enroulees ne se recouvrent plus.     */
+.foot-legal-links:not(#_):not(#__){
+  gap:6px 18px!important;align-items:center!important}
+
+.foot-legal-links a:not(#_):not(#__){
+  display:inline-block!important;
+  padding:11px 6px!important;margin:0!important;
+  line-height:1.2!important}
+
+/* --- plan du site : la page dont tout l'objet est de taper des liens ---
+   26 px de haut, 6 a 9 px d'ecart. On monte a 44 et on resserre la
+   marge de <li> pour que la hauteur totale de colonne bouge peu.        */
+.sm-col li:not(#_):not(#__){margin:0 0 2px!important}
+
+.sm-col a:not(#_):not(#__){
+  padding:9px 0!important;min-height:44px!important}
+
+/* --- en-tetes autonomes : « <- Retour au site » ------------------------ */
+.hd .back:not(#_):not(#__),
+a.back:not(#_):not(#__){
+  display:inline-block!important;
+  padding:11px 6px!important;margin:-11px -6px!important}
+
+/* --- glossaire : filtres par theme -------------------------------------
+   29 px de haut, .7rem, ecart 7 px. Egalement un gain de lisibilite :
+   .78rem au lieu de .7rem, cohérent avec les pastilles .chip de /boutique. */
+.cats:not(#_):not(#__){gap:9px!important}
+
+.cats button:not(#_):not(#__){
+  min-height:44px!important;
+  padding:10px 15px!important;
+  font-size:.78rem!important}
+
+/* --- carte du reseau aval : cercles de captage des hubs -----------------
+   propriete geometrique SVG (r) pilotee en CSS ; ignoree sans dommage par
+   les moteurs qui ne la connaissent pas. 19 -> 22 unites = 44 px de
+   diametre pour les hubs isoles (Faya, Fada, Bardai, Abeche, Mao).      */
+.avnet-hit:not(#_):not(#__){r:22px}
+
+/* --- accueil : l'affordance des cartes retournables doit etre visible ---
+   .flip .flip-hint est a opacity:.55 et ne passait a 1 que sur :hover.   */
+.flip .flip-hint:not(#_):not(#__){opacity:1!important}
+
+}
+
+/* --- accueil : cartes retournables au TOUCHER --------------------------
+   Le script en ligne d'index.html bascule la classe « flipped » au clic,
+   mais AUCUNE regle CSS du site ne reagissait a cette classe : seul
+   « .flip:hover .flip-in » retournait la carte. Sur un ecran tactile, ou
+   :hover n'existe pas (ou reste colle apres un appui), la face arriere —
+   son intitule, son texte et son lien .flip-cta — etait donc totalement
+   inatteignable. On rend la classe operante, et sur pointeur sans survol
+   on neutralise :hover pour que l'etat soit pilote par le seul appui.
+   ====================================================================== */
+.flip.flipped:not(#_):not(#__) .flip-in{transform:rotateY(180deg)!important}
+
+@media(hover:none){
+  .flip:not(.flipped):not(#_):not(#__) .flip-in{transform:none!important}
+}
