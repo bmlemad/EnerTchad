@@ -295,3 +295,23 @@ bloquantes + documents de 117-145 KB) sous slow-4G simulee, FCP ~4 s : c'est le
 prochain gros chantier si on veut le franchir (CSS critique inline + report du reste).
 a11y/best-practices/SEO : 100 partout. Le TBT varie de ±150 ms d'une passe a l'autre
 sur conteneur — comparer des CLS/LCP, pas des scores bruts a une passe.
+
+## 16. QA d'impression (01/08/2026)
+
+Les fonds ne s'impriment pas par defaut : le papier est blanc, et toute encre claire
+posee pour un fond sombre devient invisible — 20+ elements sur la brochure seule
+(titres du hub a #F5F7FA, liens blancs, accents or). Regle d'encre partagee en fin de
+bundle_core_a1 + suffixe bundle_head_b2 : `@media print` force `color` ET
+`-webkit-text-fill-color` a #111 — le fill-color est indispensable car les
+reparations de contraste du site posent leurs propres fill-color a !important, et il
+tranche visuellement quel que soit le gagnant de la cascade sur `color`. Guerre de
+specificite vecue : les reparations montent a deux :not(#_) (etDarkFix), la brochure
+a QUATRE — la regle partagee est a TROIS, la brochure porte sa rustine locale a CINQ,
+posee en dernier dans l'ordre du document. Sommaires colles (nav.toc, #inv-toc,
+corp-nav, pole-subnav), rails, decors et lien d'evitement masques a l'impression.
+Verification : scan de l'encre EFFECTIVE (webkitTextFillColor sinon color) sur les
+seuls elements a rects visibles (un texte de nav masque garde son display propre —
+faux positif sinon), dans LES DEUX schemas (les reparations plight ne s'activent
+qu'en clair). Reference : 12 pages imprimables a zero encre pale, PDF verifies a
+l'oeil (journal et amont : noir sur blanc, zero chrome). L'accordeon minv est deja
+neutralise a l'impression (§14).

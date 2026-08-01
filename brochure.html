@@ -5351,5 +5351,10 @@ html:not(.et-plight):not(.et-jlight) .hero :is(.pgc-lab,.pgc-tail,.pgc-arr,.pgh-
 </style>
 <style id="etLightFix3">/* Mode clair - le decor sombre de main disparait, le fond redevient editorial. */</style><style id="mqa-mob">/* QA mobile 31/07/2026 : grilles a styles inline (lg-stats 4 col, seis-grid 3 col, advisory-grid 2 col) debordaient du viewport */
 @media(max-width:760px){.lg-stats{grid-template-columns:1fr 1fr!important}.lg-grid{grid-template-columns:1fr!important}.seis-grid{grid-template-columns:1fr!important}.advisory-grid{grid-template-columns:1fr!important}.compare-grid{overflow-x:auto!important}.compare-grid>div{min-width:112px}.tier1-grid,.tier2-grid,.tier3-grid,.carbon-grid,.prod-synth,.eor-grid,.esg3-grid,.bx292{grid-template-columns:minmax(0,1fr)!important}.bx292 li,.esg3-grid>div,.bx42>*{min-width:0}.bx42{flex-wrap:wrap}}</style>
+<style id="mqa-print">/* Encre d'impression (01/08/2026) : la brochure porte ses propres
+   text-fill-color a !important (reparations de contraste) qui battent la regle d'encre
+   partagee — on la repose ICI, en dernier dans l'ordre du document, avec un cran de
+   specificite en plus — CINQ :not(#_) : les reparations plight de cette page montent a quatre. */
+@media print{html body :not(#_):not(#__):not(#___):not(#____):not(#_____){color:#111!important;-webkit-text-fill-color:#111!important;text-shadow:none!important}}</style>
 </body>
 </html>
