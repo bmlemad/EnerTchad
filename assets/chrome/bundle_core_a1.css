@@ -452,3 +452,31 @@ body a[href]:not(#_):not(#__):not(#___){text-decoration:underline}
 body .kick:not(#_):not(#__):not(#___),body .eyebrow:not(#_):not(#__):not(#___){color:#444!important}
 nav.toc,#inv-toc,.corp-nav,.pole-subnav,#secrail,.ttg,#aurora,.grain,.diapo,.pgh-art,.skip-link{display:none!important}
 }
+
+/* ============================================================================
+   SAUTS DE PAGE — 01/08/2026
+   Deux causes mesurees, deux correctifs. Les pistes non confirmees par la
+   mesure (flou d'arriere-plan, aurora, reveal) ont ete ecartees : aucun effet
+   reproductible. Protocole et chiffres dans MAINTENANCE §17.
+
+   1) LE SAUT DE PAGE PROPREMENT DIT. html portait scroll-behavior:smooth.
+      Pendant l'animation (~1 s, plus lente encore sur telephone) le contenu se
+      deplie — reveal au defilement, sections repliables, images qui arrivent —
+      donc la position calculee au depart n'est plus la bonne a l'arrivee. Le
+      lecteur est depose loin du titre vise. Mesure sur 28 ancres de 5 pages :
+        telephone 390x844 : 12 ancres ratees en doux -> 1 en instantane
+        ordinateur 1440x900 : 19 ratees en doux -> 1 en instantane
+      Pire cas releve : /societe#organisation, titre a 10 720 px de la fenetre.
+      C'est un defaut fonctionnel, pas un defaut d'agrement : on coupe le
+      glissement partout. Le confort perdu est mince, le lien retombe juste.
+
+   2) FLUIDITE MOBILE. .hero-halo et .prem-mesh sont en mix-blend-mode:screen
+      sur une boite de 390x1375 px : la fusion prive le compositeur de ses
+      chemins rapides. Neutralisee, la frame mediane passe de 50 ms a 33,4 ms
+      (4 essais sur 4, +11 % de frames affichees). Rendu identique a l'oeil sur
+      fond sombre — le degrade du halo est deja clair sur du bleu nuit.
+   ========================================================================== */
+html:not(#_){scroll-behavior:auto}
+@media(max-width:1024px){
+  .hero-halo:not(#_),.prem-mesh:not(#_){mix-blend-mode:normal}
+}
