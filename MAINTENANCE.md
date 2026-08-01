@@ -376,3 +376,50 @@ peut pas les couvrir de toute facon : un `behavior` passe en argument gagne touj
 
 **Defaut residuel non corrige.** `/#produits-acces` se depose 7 767 px a cote **dans
 les deux modes** — cause distincte, anterieure, a instruire separement.
+
+## 18. Cale d'ancre — scroll-padding-top mesuré (01/08/2026)
+
+Suite directe de §17. Une fois le glissement supprimé, les ancres arrivent au bon
+endroit — mais « au bon endroit » etait faux : `scroll-padding-top` valait **116px**
+en dur, une constante qui ne correspond a aucun gabarit reel.
+
+**Ce que mesure la pile collante.** La barre principale ne fait pas 116px, elle fait
+77px a 390, 93px a 820 et **132px a 1440** (elle passe sur deux rangs en large), et
+`--nav-h` reste bloque a 72px : cette variable ne decrit pas la hauteur rendue, ne
+pas s'en servir pour caler quoi que ce soit. Par-dessus s'empilent des sous-nav
+collantes selon la page : `.corp-nav` (7 pages), `nav.toc`, `#inv-toc`, `#cw-tabs`.
+Releve, en px du haut de fenetre jusqu'au bas de la pile :
+
+    page             390    820    1440
+    /gouvernance      77     93     132
+    /solutions       124    116     132
+    /investisseurs   135    124     132
+    /engagements     141    135     135
+    /societe          77    150     135
+    /clients         284     93     132
+
+Contre 116 partout, cela donne des titres caches jusqu'a **168px** de profondeur.
+Test d'occlusion : `elementFromPoint` sur le titre de la cible apres arrivee — la
+seule mesure honnete, car comparer des nombres ne dit pas si un titre est lisible.
+Verdict avant correctif : **4 titres recouverts sur 54 en telephone, 14 sur 54 en
+ordinateur**. On cliquait une entree du sommaire et le titre arrivait sous la barre.
+
+**Correctif.** `nav_a.js` mesure la pile et pose `--et-anc` sur la racine ; la
+feuille fait `scroll-padding-top:var(--et-anc, repli)`. Deux points de methode :
+la position **collee** d'un element sticky vaut sa valeur de `top` calculee plus sa
+hauteur — inutile de defiler pour la connaitre, ce qui evite un instrument qui
+dependrait de l'etat de defilement. Et les candidats sont filtres : largeur >= 60 %
+de la fenetre (sinon une carte collante passe pour une barre), hauteur <= 45 % (sinon
+un voile plein ecran), `top` <= 40 % de la fenetre (sinon un element qui ne se colle
+pas en haut). 18px d'air sont ajoutes sous la pile.
+
+**Repli.** `nav_a.js` n'est charge que par 95 pages ; les 62 autres (articles du
+journal, pages legales) ont une barre simple et prennent les valeurs par palier
+95 / 111 / 150px, mesurees de la meme facon. Le fichier est servi avec
+`max-age=3600` : une version en cache degrade au repli pendant une heure au plus,
+et le repli est deja meilleur que l'ancienne constante.
+
+**Apres correctif : 0 titre recouvert sur 97 ancres, aux trois gabarits.** Reste un
+faux positif a connaitre : sur /projets, `.pj-go::after{position:absolute;inset:0}`
+etire le lien sur toute la carte — `elementFromPoint` renvoie le lien, pas le titre.
+C'est le motif « carte entierement cliquable », voulu, pas une occlusion.
