@@ -47,19 +47,25 @@ if(!g.hasAttribute('aria-label'))g.setAttribute('aria-label',en?'Cards — scrol
 (function(){
 if(!matchMedia('(max-width:760px)').matches)return;
 function go(){
+  /* Optimise 01/08/2026 : l'ancien balayage 'main *' + getComputedStyle sur CHAQUE
+     element coutait 280+ ms de tache longue sur l'accueil (TBT mobile). On restreint
+     aux conteneurs plausibles, on lit scrollWidth AVANT le style calcule (rarement
+     vrai -> le style n'est presque jamais calcule), et on tourne en idle. */
   var en=(document.documentElement.lang||'').indexOf('en')===0;
-  document.querySelectorAll('main *, body>section *, body>div section *').forEach(function(el){
+  var sel='main div,main table,main ul,main ol,main pre,main figure,main section,body>section div,body>section table,body>section ul,body>div section div,body>div section table';
+  document.querySelectorAll(sel).forEach(function(el){
+    if(el.scrollWidth<=el.clientWidth+10)return;
     if(el.hasAttribute('tabindex'))return;
     if(el.closest('#nav,#nezBar,#cmdk,#ckn,[aria-hidden="true"]'))return;
     var cs=getComputedStyle(el);
     if(cs.overflowX!=='auto'&&cs.overflowX!=='scroll')return;
-    if(el.scrollWidth<=el.clientWidth+10)return;
     if(el.querySelector('a,button,input,select,textarea,[tabindex]'))return;
     el.setAttribute('tabindex','0');
     if(!el.getAttribute('role'))el.setAttribute('role','region');
     if(!el.hasAttribute('aria-label'))el.setAttribute('aria-label',en?'Scrollable content — scroll horizontally':'Contenu defilant — faire defiler horizontalement');
   });
 }
-if(document.readyState==='complete'){setTimeout(go,300);}
-else addEventListener('load',function(){setTimeout(go,300);});
+function idle(){if(window.requestIdleCallback)requestIdleCallback(go,{timeout:2000});else setTimeout(go,600);}
+if(document.readyState==='complete'){idle();}
+else addEventListener('load',idle);
 })();
