@@ -33,7 +33,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 (function(){
 if(!matchMedia('(max-width:760px)').matches)return;
 var en=(document.documentElement.lang||'').indexOf('en')===0;
-document.querySelectorAll('.plc-grid,.biz-grid,.sb-grid,.pof-grid,.ppt-grid,.ppj-grid,.hpgrid,.hxi-grid,.hnews-grid,.ce-grid').forEach(function(g){
+document.querySelectorAll('.plc-grid,.biz-grid,.sb-grid,.pof-grid,.ppt-grid,.ppj-grid,.hpgrid,.hxi-grid,.hnews-grid,.ce-grid,.ttg-g').forEach(function(g){
 if(!g.hasAttribute('tabindex'))g.setAttribute('tabindex','0');
 if(!g.getAttribute('role'))g.setAttribute('role','region');
 if(!g.hasAttribute('aria-label'))g.setAttribute('aria-label',en?'Cards — scroll horizontally':'Cartes — faire defiler horizontalement');

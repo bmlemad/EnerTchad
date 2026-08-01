@@ -426,8 +426,8 @@ header.pghero p,.pgh-lead,.hero .lead{font-size:max(16px,1em)!important;line-hei
 .crumb a,.bcrumb a{padding-block:10px}
 .hubdrawer a{min-height:44px;display:flex;align-items:center}
 .hchain a,.flip-cta,.hnews-all,.iv-cta{min-height:44px;display:inline-flex;align-items:center}
-main .plc-grid,main .biz-grid,main .sb-grid,main .pof-grid,main .ppt-grid,main .ppj-grid,main .hpgrid,main .hxi-grid,main .hnews-grid,main .ce-grid{display:grid!important;grid-template-columns:none!important;grid-auto-flow:column;grid-auto-columns:min(82vw,340px);overflow-x:auto;scroll-snap-type:x proximity;column-gap:12px;padding-bottom:12px;-webkit-overflow-scrolling:touch;scrollbar-width:thin;scroll-padding-inline:4px}
-main .plc-grid>*,main .biz-grid>*,main .sb-grid>*,main .pof-grid>*,main .ppt-grid>*,main .ppj-grid>*,main .hpgrid>*,main .hxi-grid>*,main .hnews-grid>*,main .ce-grid>*{scroll-snap-align:start;min-width:0}
+main .plc-grid,main .biz-grid,main .sb-grid,main .pof-grid,main .ppt-grid,main .ppj-grid,main .hpgrid,main .hxi-grid,main .hnews-grid,main .ce-grid,.ttg-g{display:grid!important;grid-template-columns:none!important;grid-auto-flow:column;grid-auto-columns:min(82vw,340px);overflow-x:auto;scroll-snap-type:x proximity;column-gap:12px;padding-bottom:12px;-webkit-overflow-scrolling:touch;scrollbar-width:thin;scroll-padding-inline:4px}
+main .plc-grid>*,main .biz-grid>*,main .sb-grid>*,main .pof-grid>*,main .ppt-grid>*,main .ppj-grid>*,main .hpgrid>*,main .hxi-grid>*,main .hnews-grid>*,main .ce-grid>*,.ttg-g>*{scroll-snap-align:start;min-width:0}
 }
 
 /* == Correctifs Lighthouse (01/08/2026) ==
