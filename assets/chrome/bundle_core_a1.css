@@ -764,3 +764,343 @@ html:not(#_):not(#__){-webkit-tap-highlight-color:transparent}
 @media(pointer:coarse){
   a[href*="openstreetmap"]:not(#_):not(#__){min-height:44px;display:inline-flex;align-items:center}
 }
+
+/* ======================================================================
+   ECLAIRCISSEMENT (2026-08) : pied de page et barre de navigation en clair.
+   Remplace le pied sombre #0B1422 et la barre rgba(9,14,23,.5) du mode clair.
+   Portee stricte : html.et-plight / html.et-jlight — le theme sombre est intact.
+   Specificite : 5 negations d'ID pour passer devant les reparations AA
+   anterieures (qui montent a 3). Ne pas reduire.
+   ====================================================================== */
+/* ============================================================
+   ECL1 — Eclaircissement : pied de page et barre de navigation
+   Portee stricte : html.et-plight / html.et-jlight uniquement.
+   Le theme sombre n'est pas touche.
+   Specificite : 5 negations d'ID pour battre
+   html.et-plight footer .wrap>a:not(#_):not(#__):not(#___)
+   ============================================================ */
+
+/* ---------- 1. PIED DE PAGE : fond clair ---------- */
+html.et-plight footer:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-jlight footer:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-jlight .jfoot:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
+  background:linear-gradient(180deg,#F7F3EC 0%,#EFE9DE 100%)!important;
+  background-color:#F3EEE5!important;
+  color:#2A3648!important;
+  border-top:1px solid rgba(26,35,48,.10)!important;
+  text-shadow:none!important}
+
+/* le filet decoratif du haut, reaccorde sur fond clair */
+html.et-plight footer:not(#e1):not(#e2):not(#e3):not(#e4)::before,
+html.et-jlight footer:not(#e1):not(#e2):not(#e3):not(#e4)::before{
+  background:linear-gradient(90deg,transparent,rgba(184,138,42,.95) 16%,rgba(21,95,168,.75) 50%,rgba(33,138,44,.7) 84%,transparent)!important;
+  opacity:1!important}
+
+/* ---------- 2. PIED DE PAGE : encre ---------- */
+html.et-plight footer *:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-jlight footer *:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-jlight .jfoot *:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
+  color:#2A3648!important;text-shadow:none!important}
+
+html.et-plight footer p:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-plight footer small:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-plight footer .foot-desc:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-jlight footer p:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-jlight footer .foot-desc:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
+  color:#4A5668!important}
+
+html.et-plight footer h3:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-jlight footer h3:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-plight footer .foot-col h3:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-jlight footer .foot-col h3:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-plight footer .foot-vals-k:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-plight footer .foot-social-k:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-jlight footer .foot-vals-k:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-jlight footer .foot-social-k:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
+  color:#6B500F!important}
+
+html.et-plight footer b:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-plight footer strong:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-jlight footer b:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-jlight footer strong:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
+  color:#10161F!important}
+
+/* ---------- 3. PIED DE PAGE : liens ---------- */
+html.et-plight footer a:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-jlight footer a:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-jlight .jfoot a:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-plight footer .wrap>a:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-plight footer .foot-col a:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-plight footer .foot-legal a:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-jlight footer .foot-legal a:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
+  color:#0E4172!important;text-decoration:none!important}
+
+html.et-plight footer a:hover:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-plight footer .foot-col a:not(.foot-pole):hover:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-plight footer .foot-legal a:hover:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-jlight footer a:hover:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
+  color:#6B500F!important;text-decoration:underline!important;text-underline-offset:3px}
+
+/* pastilles des poles */
+html.et-plight footer a.foot-pole:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-jlight footer a.foot-pole:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
+  color:#2A3648!important;
+  background:rgba(255,255,255,.62)!important;
+  border:1px solid rgba(26,35,48,.16)!important;
+  box-shadow:0 1px 2px rgba(26,35,48,.05)!important}
+html.et-plight footer a.foot-pole:hover:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
+  color:#6B500F!important;
+  background:rgba(255,255,255,.9)!important;
+  border-color:rgba(138,98,16,.42)!important}
+
+/* jetons de valeurs */
+html.et-plight footer .foot-vals span:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-jlight footer .foot-vals span:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
+  color:#3A4657!important;
+  background:rgba(255,255,255,.58)!important;
+  border-color:rgba(26,35,48,.16)!important}
+
+/* reseaux sociaux */
+html.et-plight footer .foot-social a:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-jlight footer .foot-social a:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
+  color:#3A4657!important;
+  background:rgba(255,255,255,.62)!important;
+  border:1px solid rgba(26,35,48,.16)!important}
+html.et-plight footer .foot-social a:hover:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
+  color:#6B500F!important;
+  background:rgba(184,138,42,.14)!important;
+  border-color:rgba(138,98,16,.4)!important;
+  box-shadow:0 6px 18px -8px rgba(138,98,16,.5)!important}
+
+/* barre legale */
+html.et-plight footer .foot-legal:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-jlight footer .foot-legal:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
+  border-top:1px solid rgba(26,35,48,.14)!important}
+html.et-plight footer .foot-legal:not(#e1):not(#e2):not(#e3):not(#e4) span:not(#e5),
+html.et-jlight footer .foot-legal:not(#e1):not(#e2):not(#e3):not(#e4) span:not(#e5){
+  color:#4A5668!important}
+
+/* marque du pied : la pastille garde sa tuile sombre, le logo reste lisible */
+html.et-plight footer .brand-mk:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-jlight footer .brand-mk:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
+  background:linear-gradient(145deg,#16294A,#0B1422)!important;
+  border:1px solid rgba(138,98,16,.38)!important;
+  box-shadow:0 4px 16px rgba(26,35,48,.22),inset 0 1px 0 rgba(255,255,255,.08)!important}
+html.et-plight footer .brand-tx .s:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-jlight footer .brand-tx .s:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
+  background:linear-gradient(110deg,#12558F,#7A5C14)!important;
+  -webkit-background-clip:text!important;background-clip:text!important;
+  -webkit-text-fill-color:transparent!important}
+html.et-plight footer .brand-tx small:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-jlight footer .brand-tx small:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
+  color:#5C6879!important}
+html.et-plight footer .logo-img:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-jlight footer .logo-img:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
+  filter:none!important}
+
+/* ---------- 4. BARRE DE NAVIGATION : verre clair ---------- */
+html.et-plight .nav:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-jlight .nav:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
+  background:linear-gradient(180deg,rgba(250,247,241,.955),rgba(246,242,234,.925))!important;
+  background-color:rgba(250,247,241,.94)!important;
+  -webkit-backdrop-filter:blur(16px) saturate(150%)!important;
+  backdrop-filter:blur(16px) saturate(150%)!important;
+  border-bottom:1px solid rgba(26,35,48,.10)!important;
+  color:#2A3648!important}
+
+html.et-plight .nav.scrolled:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-plight .nav.nx.scrolled:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-jlight .nav.scrolled:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
+  background:rgba(250,247,241,.94)!important;
+  background-color:rgba(250,247,241,.94)!important;
+  -webkit-backdrop-filter:blur(22px) saturate(165%)!important;
+  backdrop-filter:blur(22px) saturate(165%)!important;
+  box-shadow:0 10px 34px rgba(26,35,48,.13)!important}
+
+html.et-plight .nav.scrolled:not(#e1):not(#e2):not(#e3):not(#e4)::after,
+html.et-jlight .nav.scrolled:not(#e1):not(#e2):not(#e3):not(#e4)::after{
+  background:linear-gradient(90deg,transparent,rgba(138,98,16,.55),rgba(21,95,168,.5),transparent)!important}
+
+/* bandeau utilitaire du haut */
+html.et-plight .nx-util:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-jlight .nx-util:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
+  background:rgba(243,238,229,.96)!important;
+  border-bottom:1px solid rgba(26,35,48,.10)!important}
+html.et-plight .nx-util-in>a:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-jlight .nx-util-in>a:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
+  color:#4A5668!important}
+html.et-plight .nx-util-in>a:hover:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
+  color:#6B500F!important}
+html.et-plight .nx-util-in>a[aria-current]:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
+  color:#6B500F!important;font-weight:600}
+html.et-plight .nx-util-in .nx-lang:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-plight .nx-util-in .nx-langx:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-jlight .nx-util-in .nx-lang:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
+  color:#2A3648!important;border-color:rgba(26,35,48,.22)!important}
+html.et-plight .nx-util-in .nx-lang b:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
+  color:#77530C!important}
+html.et-plight .nx-util-in .nx-lang:hover:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
+  border-color:rgba(138,98,16,.5)!important;color:#6B500F!important}
+html.et-plight .nx-util-in .nx-invest:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-jlight .nx-util-in .nx-invest:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
+  color:#77530C!important;border-color:rgba(138,98,16,.45)!important}
+html.et-plight .nx-util-in .nx-invest:hover:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
+  background:rgba(184,138,42,.13)!important;color:#6B500F!important}
+
+/* marque */
+html.et-plight .nav .brand-mk:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-jlight .nav .brand-mk:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
+  background:linear-gradient(145deg,#16294A,#0B1422)!important;
+  border:1px solid rgba(138,98,16,.38)!important;
+  box-shadow:0 4px 16px rgba(26,35,48,.20),inset 0 1px 0 rgba(255,255,255,.08)!important}
+/* « Ener » est un noeud de texte nu dans .brand-tx : il heritait de --cream
+   (quasi blanc) et devenait invisible sur la barre claire. */
+html.et-plight .nav .brand-tx:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-jlight .nav .brand-tx:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
+  color:#10161F!important;text-shadow:none!important}
+html.et-plight .nav .brand-tx .s:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-jlight .nav .brand-tx .s:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
+  background:linear-gradient(110deg,#12558F,#7A5C14)!important;
+  -webkit-background-clip:text!important;background-clip:text!important;
+  -webkit-text-fill-color:transparent!important}
+html.et-plight .nav .brand-tx small:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-jlight .nav .brand-tx small:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
+  color:#4A5668!important}
+html.et-plight .nav .logo-img:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
+  filter:none!important}
+
+/* declencheurs de menu */
+html.et-plight .nav-trigger:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-plight #nav .nav-links>.nav-item>.nav-trigger:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-jlight .nav-trigger:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
+  color:#2A3648!important;
+  background:linear-gradient(180deg,rgba(255,255,255,.72),rgba(255,255,255,.34))!important;
+  border:1px solid rgba(26,35,48,.13)!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.7)!important}
+html.et-plight .nav-trigger:hover:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-plight #nav .nav-links>.nav-item>.nav-trigger:hover:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-plight #nav .nav-links>.nav-item>.nav-trigger[aria-expanded="true"]:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-plight .nav-trigger[aria-expanded="true"]:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
+  color:#10161F!important;
+  background:linear-gradient(180deg,rgba(255,255,255,.95),rgba(255,255,255,.62))!important;
+  border-color:rgba(138,98,16,.45)!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.9),0 0 22px -8px rgba(138,98,16,.4)!important}
+html.et-plight .nav-trigger.is-active:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
+  color:#10161F!important;
+  background:linear-gradient(180deg,rgba(184,138,42,.20),rgba(184,138,42,.08))!important;
+  box-shadow:inset 0 0 0 1px rgba(138,98,16,.38)!important}
+
+/* bouton recherche et bouton menu */
+html.et-plight .nav-search:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-plight .nav-cta .nav-search:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-plight .nx .nav-search:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-plight .nav-tog:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-jlight .nav-search:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-jlight .nav-tog:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
+  color:#2A3648!important;
+  background:linear-gradient(160deg,rgba(255,255,255,.78),rgba(255,255,255,.4))!important;
+  border:1px solid rgba(26,35,48,.16)!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.75)!important}
+html.et-plight .nav-search:hover:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-plight .nav-cta .nav-search:hover:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-plight .nav-tog:hover:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
+  color:#6B500F!important;
+  background:linear-gradient(160deg,rgba(184,138,42,.16),rgba(255,255,255,.5))!important;
+  border-color:rgba(138,98,16,.5)!important}
+
+/* ---------- 5. MEGA-MENUS ---------- */
+/* le fond du panneau n'existe qu'au-dessus de 1240px : sous ce seuil le
+   mega-menu est deplie a plat dans le tiroir et doit rester transparent */
+@media(min-width:1241px){
+html.et-plight .nx-mega:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-plight .nx .nx-mega:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-jlight .nx-mega:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
+  background:linear-gradient(180deg,rgba(255,255,255,.98),rgba(250,247,241,.99))!important;
+  -webkit-backdrop-filter:blur(28px) saturate(170%)!important;
+  backdrop-filter:blur(28px) saturate(170%)!important;
+  border:1px solid rgba(26,35,48,.12)!important;
+  box-shadow:0 44px 90px -34px rgba(26,35,48,.38)!important;
+  color:#2A3648!important}
+}
+html.et-plight .nx .nx-mega:not(#e1):not(#e2):not(#e3):not(#e4)::before{
+  background:linear-gradient(90deg,transparent,rgba(138,98,16,.7),rgba(138,98,16,.28),transparent)!important}
+html.et-plight .nx-col .nxh:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-plight .nx .nx-col .nxh:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
+  color:#6B500F!important;border-bottom-color:rgba(138,98,16,.25)!important}
+html.et-plight .nx-col a:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-plight .nx .nx-col a:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
+  color:#2A3648!important}
+html.et-plight .nx-col a strong:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){color:#10161F!important}
+html.et-plight .nx-col a em:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){color:#5C6879!important}
+html.et-plight .nx-col a:hover:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-plight .nx .nx-col a:hover:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
+  background:rgba(21,95,168,.09)!important}
+html.et-plight .nx .nx-col a:hover strong:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){color:#6B500F!important}
+html.et-plight .nx .nx-col a:not(#e1):not(#e2):not(#e3):not(#e4)::after{color:#8A6A1E!important}
+html.et-plight .nx-col a[aria-current="page"]:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
+  background:linear-gradient(90deg,rgba(184,138,42,.20),transparent 80%)!important;
+  box-shadow:inset 2px 0 0 #8A6A1E!important}
+html.et-plight .nx-col a[aria-current="page"] strong:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
+  color:#6B500F!important}
+
+/* carte mise en avant du mega-menu */
+html.et-plight .nx-feat:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-plight .nx .nx-feat:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
+  color:#2A3648!important;
+  border:1px solid rgba(138,98,16,.28)!important;
+  background-image:linear-gradient(165deg,rgba(21,95,168,.12),rgba(255,255,255,.94)),radial-gradient(120% 90% at 100% 0%,rgba(184,138,42,.16),transparent 55%)!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.9)!important}
+html.et-plight .nx-feat .tag:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-plight .nx .nx-feat .tag:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-plight .nx-feat .arr:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-plight .nx .nx-feat .arr:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
+  color:#6B500F!important}
+html.et-plight .nx-feat em:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){color:#4A5668!important}
+html.et-plight .nx-feat strong:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){color:#10161F!important}
+
+/* ---------- 6. TIROIR MOBILE (sous 1241px seulement) ---------- */
+@media(max-width:1240px){
+html.et-plight .nav-links:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-plight #navLinks.open:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-plight .nav-links.open:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-plight .nx .nav-links:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-plight #nav .nav-links:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-jlight .nav-links:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
+  /* Panneau modal : fond plein. A .985 le titre blanc du hero transparaissait
+     en filigrane derriere les libelles du tiroir. */
+  background:linear-gradient(180deg,#FAF7F1,#F3EFE7)!important;
+  -webkit-backdrop-filter:blur(24px) saturate(155%)!important;
+  backdrop-filter:blur(24px) saturate(155%)!important;
+  box-shadow:0 34px 70px -22px rgba(26,35,48,.28)!important;
+  border-bottom-color:rgba(26,35,48,.12)!important}
+html.et-plight .nx .nav-item:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
+  border-bottom:1px solid rgba(26,35,48,.10)!important}
+html.et-plight .nav-links a.active:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){color:#10161F!important}
+html.et-plight .nx-util-m a:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){color:#4A5668!important}
+html.et-plight .nx-util-m a.cta:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
+  background:linear-gradient(180deg,#D8A63F,#C08E28)!important;color:#22170A!important;
+  border:1px solid rgba(94,68,10,.42)!important}
+}
+
+/* ---------- 7. BARRE DE NAVIGATION BASSE (mobile, #nezBar) ---------- */
+/* Derniere bande sombre de la navigation : 60px fixes en bas de chaque page
+   mobile, rgba(8,14,26,.94). Meme traitement verre clair que la barre haute. */
+html.et-plight #nezBar:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-jlight #nezBar:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
+  background:linear-gradient(180deg,rgba(250,247,241,.955),rgba(245,241,234,.975))!important;
+  background-color:rgba(250,247,241,.96)!important;
+  -webkit-backdrop-filter:blur(16px) saturate(150%)!important;
+  backdrop-filter:blur(16px) saturate(150%)!important;
+  border-top:1px solid rgba(26,35,48,.12)!important;
+  box-shadow:0 -8px 26px rgba(26,35,48,.10)!important;
+  color:#2A3648!important}
+html.et-plight #nezBar a:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-plight #nezBar button:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-jlight #nezBar a:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
+  color:#3A4657!important;text-shadow:none!important}
+html.et-plight #nezBar a[aria-current]:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-plight #nezBar a.on:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-plight #nezBar a.active:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
+  color:#77530C!important}
+html.et-plight #nezBar a:active:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
+  background:rgba(184,138,42,.12)!important}
