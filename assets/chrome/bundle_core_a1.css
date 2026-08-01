@@ -429,3 +429,13 @@ header.pghero p,.pgh-lead,.hero .lead{font-size:max(16px,1em)!important;line-hei
 main .plc-grid,main .biz-grid,main .sb-grid,main .pof-grid,main .ppt-grid,main .ppj-grid,main .hpgrid,main .hxi-grid,main .hnews-grid,main .ce-grid{display:grid!important;grid-template-columns:none!important;grid-auto-flow:column;grid-auto-columns:min(82vw,340px);overflow-x:auto;scroll-snap-type:x proximity;column-gap:12px;padding-bottom:12px;-webkit-overflow-scrolling:touch;scrollbar-width:thin;scroll-padding-inline:4px}
 main .plc-grid>*,main .biz-grid>*,main .sb-grid>*,main .pof-grid>*,main .ppt-grid>*,main .ppj-grid>*,main .hpgrid>*,main .hxi-grid>*,main .hnews-grid>*,main .ce-grid>*{scroll-snap-align:start;min-width:0}
 }
+
+/* == Correctifs Lighthouse (01/08/2026) ==
+   1. Theme jlight : la barre basse #nezBar reste sombre (fond .94) mais l'encre de ses
+      onglets passait au bleu nuit #0e4172 (1.63:1) — on epingle l'encre du theme sombre.
+      Meme classe de bogue que les recolorations jlight sur fond fixe (voir .scrollcue).
+   2. CLS journal (0.23 au bureau) : header.jtop grandissait de 58 a 63px quand le JS
+      insere le bouton de theme apres la mise en page — on reserve la hauteur finale. */
+html.et-jlight body #nezBar a:not(#_){color:rgba(245,247,250,.65)!important}
+html.et-jlight body #nezBar a[aria-current]:not(#_){color:#fff!important}
+header.jtop{min-height:63px}
