@@ -695,3 +695,91 @@ en bas, revient en remontant, et son clic fait descendre de 484 a 765 px selon l
 juger un recouvrement : sans la pile de peinture on accuse des elements qui sont en
 dessous. Et `.foot-legal` porte desormais deux marges basses distinctes (76 px sous
 520 px, 64 px au-dessus) — les deux sont necessaires, les geometries different.
+
+---
+
+## 20. Cibles tactiles : mesurer la zone sensible, pas la boite dessinee (2026-08)
+
+**Constat.** Le §19 avait pose, sous `@media(pointer:coarse)`, des pastilles
+`::after` de 44x44 centrees sur les petits controles (`.scrollcue`, `#plightBtn`,
+`.flip-hint`, `.f2hint`, `a[data-social]`...). Une relecture a montre que ces
+pastilles se **chevauchent** quand deux cibles sont proches : dans la zone commune
+c'est le frere suivant dans l'ordre de peinture qui gagne le test de toucher, si
+bien que la zone reellement utile retombait a 38-42 px alors que la pastille, elle,
+mesurait bien 44.
+
+**Consequence de methode.** `getBoundingClientRect()` ne dit rien de la surface
+tactile sur ce site, ni dans un sens ni dans l'autre : le dessin peut etre plus
+petit que la zone sensible (pastille) ou plus grand qu'elle (recouvrement). La
+seule mesure valable est un balayage `document.elementFromPoint` depuis le centre
+de la cible.
+
+**Outil.** `/root/work/tap2.js` (sonde de reference). Pour chaque
+`a[href],button,input,select,summary,[role=button],[tabindex="0"]` visible : si la
+boite fait deja 44x44 on passe ; sinon on balaye vers les quatre cotes, **pas de
+1 px**, tant que `elementFromPoint` resout encore sur la cible (ou un descendant,
+ou un ancetre qui la contient). La largeur/hauteur tactile vaut `gauche+droite+1`
+et `haut+bas+1`.
+
+> **Piege de bord — a ne pas reintroduire.** Une cible de 44 px exactement se lit
+> **43** avec cette convention (bras de 21 px de chaque cote : a 22 px du centre on
+> est deja sur la frontiere et c'est le voisin qui repond). Le seuil de conformite
+> est donc `>= 43`, pas `>= 44`. Une premiere version sondait une grille 3x3 a
+> `±22 px` : elle declarait en echec toutes les cibles de 44 px et sortait 314
+> faux positifs. Avec le pas de 1 px et le seuil a 43, le meme parcours de 18 pages
+> tombe a 76 signalements reels, puis a 3 apres correction — et ces 3 la sont des
+> captures prises en cours de defilement, verifiees conformes a l'arret.
+
+**Couche appliquee.** `/root/work/mobile1.css`, marqueur `MOBILE TACTILE (2026-08)`,
+posee par `apply_layer.py` sur les trois feuilles porteuses. Elle **agrandit la
+boite reelle et ecarte les voisines** au lieu d'empiler une pastille de plus :
+
+| cible | avant | apres |
+|---|---|---|
+| `.foot-social a` (153 pages) | 38x38, ecart 10 px, pastilles superposees | 44x44, ecart 12 px |
+| `.foot-legal-links a` | 22 px utiles, marges negatives | `padding:11px 6px`, marges nulles |
+| `.sm-col a` (`/plan-du-site`) | 26 px, ecart 6-9 px | `min-height:44px`, `padding:9px 0` |
+| `.cats button` (`/glossaire-petrolier`) | 29 px, `.7rem`, ecart 7 px | `min-height:44px`, `.78rem`, ecart 9 px |
+| `.back` (en-tetes autonomes, 7 pages) | 22 px | `padding:11px 6px` compense par marge negative |
+| `.avnet-hit` (`/aval/reseau`) | `r=19` (38 px) | `r:22px` en CSS (44 px) |
+
+`r` est une propriete geometrique SVG pilotable en CSS ; les moteurs qui ne la
+connaissent pas l'ignorent sans dommage, l'attribut `r="19"` restant en place.
+
+**Non traite volontairement.** Les hubs voisins de la carte du reseau aval
+(N'Djamena et Moundou sont a 17 unites l'un de l'autre) se recouvriront toujours :
+leur position est dictee par la geographie, c'est le cas « essentiel » prevu par la
+WCAG 2.5.8.
+
+---
+
+## 21. Cartes retournables de l'accueil : la classe `flipped` n'existait qu'en JS (2026-08)
+
+Le script en ligne d'`index.html` bascule `classList.toggle("flipped")` au clic sur
+la carte ou sur `.flip-hint`. **Aucune regle CSS du site ne reagissait a cette
+classe** — verifie : `grep -rl 'flipped'` ne renvoyait qu'`index.html`, et le seul
+declencheur du retournement etait `.flip:hover .flip-in{transform:rotateY(180deg)}`
+(dans `x_77d650c4a7a2.css`). Sur un ecran tactile, ou `:hover` n'existe pas ou reste
+colle apres un appui, **la face arriere etait donc inatteignable** : son intitule
+`.flip-k`, son texte `.flip-lead` et son lien `.flip-cta` n'ont jamais ete lisibles
+sur mobile depuis la mise en ligne de ces cartes.
+
+Corrige dans la couche `MOBILE TACTILE` :
+
+```css
+.flip.flipped:not(#_):not(#__) .flip-in{transform:rotateY(180deg)!important}
+@media(hover:none){
+  .flip:not(.flipped):not(#_):not(#__) .flip-in{transform:none!important}
+}
+```
+
+La seconde regle neutralise `:hover` la ou il n'a pas de sens, pour que l'etat soit
+pilote par le seul appui. Le survol au bureau reste inchange (verifie : `none` ->
+rotation au `hover` en 1280 px). `.flip .flip-hint` passe par ailleurs a
+`opacity:1` sur pointeur grossier — il ne s'eclaircissait qu'au survol, donc
+l'affordance du retournement etait invisible sur mobile.
+
+**A savoir si l'on retouche.** Les deux faces portent `backface-visibility:hidden`,
+la face cachee n'est donc pas testable au toucher — inutile d'ajouter `inert`
+comme le fait le script des `.biz-card`. En revanche elle **reste focusable au
+clavier** ; c'est le seul point encore ouvert sur ces cartes.
