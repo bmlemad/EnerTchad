@@ -1358,3 +1358,239 @@ div.hp:not(#_):not(#__) p{font-size:14.8px!important;line-height:1.7!important}
 div.acq-card:not(#_):not(#__) p{font-size:15.2px!important;line-height:1.64!important}
 div.expand-grid:not(#_):not(#__) p{font-size:15.2px!important;line-height:1.65!important}
 }
+/* ============================================================
+   TUILES UNIFIEES (2026-08)
+   Langage de carte unique pour tout le site.
+   1. Echelle de rayon a 3 crans : 14 / 18 / 22 (9 valeurs mesurees avant).
+   2. Elevation douce et coherente pour les familles restees plates.
+   3. Survol : levee de 2px + ombre renforcee, sous prefers-reduced-motion.
+   4. Filets d'accent superieurs ramenes de 3px a 2px.
+   5. .mseg : la pastille de categorie redevient une puce, plus une barre grise.
+   Les selecteurs sont NOMMES : jamais de ciblage par geometrie mesuree
+   (les parties internes .hpcard-body, .hpcard-l, .sfam-i ressortent
+   comme des fausses tuiles dans les sondes).
+   ============================================================ */
+
+/* ---- 1. RAYONS : cran 22 (cartes editoriales / vitrines) ---- */
+main .card:not(#_):not(#__),
+main .card-m:not(#_):not(#__),
+main .prof:not(#_):not(#__),
+main .hpcard:not(#_):not(#__),
+main .hpcard-kpis:not(#_):not(#__),
+main .hxi-card:not(#_):not(#__),
+main .mfo-lever:not(#_):not(#__),
+main .hncard:not(#_):not(#__),
+main .sc-card:not(#_):not(#__),
+main .glow-card:not(#_):not(#__),
+main .pubc:not(#_):not(#__),
+main .divc:not(#_):not(#__),
+main .esg-card:not(#_):not(#__),
+main .pj:not(#_):not(#__),
+main article.cp:not(#_):not(#__){border-radius:22px!important}
+
+/* ---- 1. RAYONS : cran 18 (tuiles standard) ---- */
+main .ttg-t:not(#_):not(#__),
+main .tri-c:not(#_):not(#__),
+main .tri-step:not(#_):not(#__),
+main .tri-kpi:not(#_):not(#__),
+main .kpi:not(#_):not(#__),
+main a.cp:not(#_):not(#__),
+main .rh-card:not(#_):not(#__),
+main .fam-card:not(#_):not(#__),
+main .acq-card:not(#_):not(#__),
+main .ce-card:not(#_):not(#__),
+main .ppt-card:not(#_):not(#__),
+main .it-card:not(#_):not(#__),
+main .vb-card:not(#_):not(#__),
+main .val:not(#_):not(#__),
+main .sfam:not(#_):not(#__),
+main .dist-btn:not(#_):not(#__),
+main .ngs-p:not(#_):not(#__),
+main .doc:not(#_):not(#__),
+main .gov-c:not(#_):not(#__),
+main .ct-card:not(#_):not(#__),
+main .ets-bar:not(#_):not(#__){border-radius:18px!important}
+
+/* ---- 1. RAYONS : cran 14 (puces compactes / chiffres) ---- */
+main .orgc:not(#_):not(#__),
+main .ckpi:not(#_):not(#__),
+main .mkt-brand:not(#_):not(#__),
+main .stp:not(#_):not(#__),
+main .ppl-tile:not(#_):not(#__),
+main .ngs-t:not(#_):not(#__){border-radius:14px!important}
+
+/* ---- 4. FILETS D'ACCENT : 3px -> 2px ----
+   Uniquement les classes dont la mesure donne 3px partout ;
+   .prof est exclue (1px sur /solutions, 3px sur /clients). */
+main .kpi:not(#_):not(#__),
+main a.cp:not(#_):not(#__),
+main .orgc:not(#_):not(#__),
+main .ngs-p:not(#_):not(#__){border-top-width:2px!important}
+
+/* ---- 2. ELEVATION : familles restees plates, theme clair ---- */
+html.et-plight main .tri-c:not(#_):not(#__),
+html.et-plight main .tri-step:not(#_):not(#__),
+html.et-plight main .tri-kpi:not(#_):not(#__),
+html.et-plight main .kpi:not(#_):not(#__),
+html.et-plight main a.cp:not(#_):not(#__),
+html.et-plight main .pubc:not(#_):not(#__),
+html.et-plight main .gov-c:not(#_):not(#__),
+html.et-plight main .pj:not(#_):not(#__),
+html.et-plight main .orgc:not(#_):not(#__),
+html.et-plight main .doc:not(#_):not(#__),
+html.et-plight main .val:not(#_):not(#__),
+html.et-plight main .ckpi:not(#_):not(#__),
+html.et-plight main .mkt-brand:not(#_):not(#__),
+html.et-plight main .stp:not(#_):not(#__),
+html.et-plight main .sfam:not(#_):not(#__),
+html.et-plight main .dist-btn:not(#_):not(#__),
+html.et-plight main .ppl-tile:not(#_):not(#__),
+html.et-plight main .ngs-p:not(#_):not(#__),
+html.et-plight main .ngs-t:not(#_):not(#__){
+ box-shadow:0 1px 2px rgba(26,35,48,.045),0 12px 30px -22px rgba(26,35,48,.42)!important}
+
+/* ---- 2. ELEVATION : memes familles, theme sombre ---- */
+html:not(.et-plight) main .tri-c:not(#_):not(#__),
+html:not(.et-plight) main .tri-step:not(#_):not(#__),
+html:not(.et-plight) main .tri-kpi:not(#_):not(#__),
+html:not(.et-plight) main .kpi:not(#_):not(#__),
+html:not(.et-plight) main a.cp:not(#_):not(#__),
+html:not(.et-plight) main .pubc:not(#_):not(#__),
+html:not(.et-plight) main .gov-c:not(#_):not(#__),
+html:not(.et-plight) main .pj:not(#_):not(#__),
+html:not(.et-plight) main .orgc:not(#_):not(#__),
+html:not(.et-plight) main .doc:not(#_):not(#__),
+html:not(.et-plight) main .val:not(#_):not(#__),
+html:not(.et-plight) main .ckpi:not(#_):not(#__),
+html:not(.et-plight) main .mkt-brand:not(#_):not(#__),
+html:not(.et-plight) main .stp:not(#_):not(#__),
+html:not(.et-plight) main .sfam:not(#_):not(#__),
+html:not(.et-plight) main .dist-btn:not(#_):not(#__),
+html:not(.et-plight) main .ppl-tile:not(#_):not(#__),
+html:not(.et-plight) main .ngs-p:not(#_):not(#__),
+html:not(.et-plight) main .ngs-t:not(#_):not(#__){
+ box-shadow:0 1px 2px rgba(0,0,0,.22),0 16px 36px -26px rgba(0,0,0,.72)!important}
+
+/* ---- 3. SURVOL : levee coherente sur les tuiles interactives ---- */
+@media (prefers-reduced-motion:no-preference){
+ main a.ttg-t:not(#_):not(#__),
+ main a.prof:not(#_):not(#__),
+ main a.pubc:not(#_):not(#__),
+ main a.cp:not(#_):not(#__),
+ main a.doc:not(#_):not(#__),
+ main a.hncard:not(#_):not(#__),
+ main button.dist-btn:not(#_):not(#__),
+ main button.ets-bar:not(#_):not(#__),
+ main label.ct-card:not(#_):not(#__){
+  transition:transform .22s cubic-bezier(.22,.61,.36,1),box-shadow .22s ease,border-color .22s ease!important}
+ html.et-plight main a.ttg-t:hover:not(#_):not(#__),
+ html.et-plight main a.prof:hover:not(#_):not(#__),
+ html.et-plight main a.pubc:hover:not(#_):not(#__),
+ html.et-plight main a.cp:hover:not(#_):not(#__),
+ html.et-plight main a.doc:hover:not(#_):not(#__),
+ html.et-plight main a.hncard:hover:not(#_):not(#__),
+ html.et-plight main button.dist-btn:hover:not(#_):not(#__),
+ html.et-plight main button.ets-bar:hover:not(#_):not(#__),
+ html.et-plight main label.ct-card:hover:not(#_):not(#__){
+  transform:translateY(-2px)!important;
+  box-shadow:0 2px 4px rgba(26,35,48,.06),0 20px 40px -24px rgba(26,35,48,.5)!important;
+  border-color:rgba(26,35,48,.24)!important}
+ html:not(.et-plight) main a.ttg-t:hover:not(#_):not(#__),
+ html:not(.et-plight) main a.prof:hover:not(#_):not(#__),
+ html:not(.et-plight) main a.pubc:hover:not(#_):not(#__),
+ html:not(.et-plight) main a.cp:hover:not(#_):not(#__),
+ html:not(.et-plight) main a.doc:hover:not(#_):not(#__),
+ html:not(.et-plight) main a.hncard:hover:not(#_):not(#__),
+ html:not(.et-plight) main button.dist-btn:hover:not(#_):not(#__),
+ html:not(.et-plight) main button.ets-bar:hover:not(#_):not(#__),
+ html:not(.et-plight) main label.ct-card:hover:not(#_):not(#__){
+  transform:translateY(-2px)!important;
+  box-shadow:0 2px 6px rgba(0,0,0,.3),0 26px 48px -28px rgba(0,0,0,.85)!important}
+}
+/* Respect strict de la preference systeme */
+@media (prefers-reduced-motion:reduce){
+ main a.ttg-t:not(#_):not(#__),
+ main a.prof:not(#_):not(#__),
+ main a.pubc:not(#_):not(#__),
+ main a.cp:not(#_):not(#__),
+ main a.doc:not(#_):not(#__),
+ main a.hncard:not(#_):not(#__),
+ main button.dist-btn:not(#_):not(#__),
+ main button.ets-bar:not(#_):not(#__),
+ main label.ct-card:not(#_):not(#__){transition:none!important;transform:none!important}
+}
+
+/* ---- 5. .mseg : puce de categorie, non plus bandeau gris ----
+   .mseg n'a AUCUNE regle de base dans le site ; seule une surcharge
+   claire lui donnait un fond, et comme .prof est un flex colonne
+   le span s'etirait sur toute la largeur. */
+main .mseg:not(#_):not(#__){
+ display:inline-flex!important;
+ align-self:flex-start!important;
+ width:auto!important;
+ padding:3px 10px!important;
+ border-radius:999px!important;
+ font-size:12px!important;
+ line-height:1.5!important;
+ font-weight:700!important;
+ letter-spacing:.07em!important;
+ text-transform:uppercase!important;
+ background:color-mix(in srgb, var(--mc,#155FA8) 13%, transparent)!important;
+ border:1px solid color-mix(in srgb, var(--mc,#155FA8) 26%, transparent)!important}
+html.et-plight main .mseg:not(#_):not(#__):not(#___){
+ color:color-mix(in srgb, var(--mc,#155FA8) 42%, #0B1422)!important}
+html:not(.et-plight) main .mseg:not(#_):not(#__):not(#___){
+ color:color-mix(in srgb, var(--mc,#9FB4CE) 72%, #FFFFFF)!important}
+
+/* ============================================================
+   SECONDE PASSE : les familles a classe generique (.d .t .h .hp .pr .step)
+   ne peuvent PAS etre ciblees seules — un selecteur `.t` frapperait tout
+   le site. Elles sont donc ancrees sur leur conteneur de grille, releve
+   par sonde DOM (probe2.js) :
+     .hse-prac>.pr  .hse-tri>.hp  .cli-deep>.d  .offer>.aside
+     .steps>.step   .traj>.t      .hz>.h        .ec-tiers>.ec-tier
+     .ppl-sel>.ppl-f
+   ============================================================ */
+main .hse-tri .hp:not(#_):not(#__),
+main .offer .aside:not(#_):not(#__),
+main .steps .step:not(#_):not(#__),
+main .traj .t:not(#_):not(#__),
+main .hz .h:not(#_):not(#__),
+main .ppl-sel .ppl-f:not(#_):not(#__),
+main .avnet-panel:not(#_):not(#__),
+main .avnet-mapwrap:not(#_):not(#__),
+main .acq-door:not(#_):not(#__),
+main .ppte-tile:not(#_):not(#__){border-radius:18px!important}
+
+main .hse-prac .pr:not(#_):not(#__),
+main .ec-tiers .ec-tier:not(#_):not(#__){border-radius:14px!important}
+
+main .steps .step:not(#_):not(#__),
+main .traj .t:not(#_):not(#__),
+main .ec-tiers .ec-tier:not(#_):not(#__){border-top-width:2px!important}
+
+html.et-plight main .divc:not(#_):not(#__),
+html.et-plight main .prof:not(#_):not(#__),
+html.et-plight main .hse-prac .pr:not(#_):not(#__),
+html.et-plight main .hse-tri .hp:not(#_):not(#__),
+html.et-plight main .cli-deep .d:not(#_):not(#__),
+html.et-plight main .offer .aside:not(#_):not(#__),
+html.et-plight main .steps .step:not(#_):not(#__),
+html.et-plight main .traj .t:not(#_):not(#__),
+html.et-plight main .hz .h:not(#_):not(#__),
+html.et-plight main .ec-tiers .ec-tier:not(#_):not(#__),
+html.et-plight main .ppl-sel .ppl-f:not(#_):not(#__){
+ box-shadow:0 1px 2px rgba(26,35,48,.045),0 12px 30px -22px rgba(26,35,48,.42)!important}
+
+html:not(.et-plight) main .divc:not(#_):not(#__),
+html:not(.et-plight) main .prof:not(#_):not(#__),
+html:not(.et-plight) main .hse-prac .pr:not(#_):not(#__),
+html:not(.et-plight) main .hse-tri .hp:not(#_):not(#__),
+html:not(.et-plight) main .cli-deep .d:not(#_):not(#__),
+html:not(.et-plight) main .offer .aside:not(#_):not(#__),
+html:not(.et-plight) main .steps .step:not(#_):not(#__),
+html:not(.et-plight) main .traj .t:not(#_):not(#__),
+html:not(.et-plight) main .hz .h:not(#_):not(#__),
+html:not(.et-plight) main .ec-tiers .ec-tier:not(#_):not(#__),
+html:not(.et-plight) main .ppl-sel .ppl-f:not(#_):not(#__){
+ box-shadow:0 1px 2px rgba(0,0,0,.22),0 16px 36px -26px rgba(0,0,0,.72)!important}
