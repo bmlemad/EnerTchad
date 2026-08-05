@@ -1105,6 +1105,15 @@ html.et-plight #nezBar a.active:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
 html.et-plight #nezBar a:active:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
   background:rgba(184,138,42,.12)!important}
 
+
+/* --- Tiroirs des cartes maillons (accueil) : bande sombre -> verre clair --- */
+html.et-plight main .hubdrawer:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
+ background:rgba(255,255,255,.66)!important;
+ border-top:1px solid rgba(26,35,48,.14)!important;
+ box-shadow:0 10px 30px -18px rgba(26,35,48,.35)!important}
+html.et-plight main .hubdrawer a:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){color:#155FA8!important}
+html.et-plight main .hubdrawer a:hover:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){background:rgba(26,35,48,.055)!important;color:#0E4172!important}
+html.et-plight main .hubdrawer .hd-h:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){color:#5C6879!important}
 /* ======================================================================
    MOBILE TACTILE (2026-08) : cibles tactiles portees a 44x44 CSS px sur
    pointeur grossier (WCAG 2.5.5 AAA, 2.5.8 AA).
@@ -1201,4 +1210,151 @@ a.back:not(#_):not(#__){
 
 @media(hover:none){
   .flip:not(.flipped):not(#_):not(#__) .flip-in{transform:none!important}
+}
+
+/* ============================================================
+   TYPO MOBILE (2026-08)
+   Objectif : rapprocher le corps de texte mobile des standards
+   des majors (16px / 1.6) sans toucher aux micro-typographies
+   (kickers, badges, pastilles) ni aux blocs deja >= 15px.
+
+   Methode : la couche ne vise QUE des conteneurs dont l'audit
+   (/root/work/ty.js -> ty.json) a montre qu'ils ne contiennent
+   AUCUN texte de contenu >= 15px. Un plancher pose la ne peut
+   donc rien retrecir. Les tailles declarees < 12px (kick, fs,
+   mentions legales) sont volontairement laissees intactes.
+
+   Paliers : 12.0-12.9px -> 14.2 | 13.0-13.9px -> 14.8 | >= 14.0px -> 15.2
+   Interligne porte a 1.6 minimum dans les memes blocs.
+   Portee : @media (max-width:640px) uniquement.
+   Voir MAINTENANCE.md section 24.
+   ============================================================ */
+@media (max-width:640px){
+a.cp:not(#_):not(#__) span,
+a.isv-l:not(#_):not(#__) span,
+a.prof:not(#_):not(#__) p,
+details.cm-more:not(#_):not(#__) li,
+div.atlas-grid:not(#_):not(#__) p,
+div.atlas-timeline:not(#_):not(#__) p,
+div.bit-grid:not(#_):not(#__) p,
+div.bx263:not(#_):not(#__) p,
+div.bx291:not(#_):not(#__) span,
+div.bx325:not(#_):not(#__) p,
+div.bx339:not(#_):not(#__) p,
+div.bx344:not(#_):not(#__) p,
+div.bx359:not(#_):not(#__) p,
+div.bx365:not(#_):not(#__) p,
+div.bx374:not(#_):not(#__) p,
+div.bx410:not(#_):not(#__) p,
+div.bx416:not(#_):not(#__) div,
+div.bx482:not(#_):not(#__) p,
+div.bx95:not(#_):not(#__) p,
+div.carbon-grid:not(#_):not(#__) div,
+div.card-m:not(#_):not(#__) p,
+div.card:not(#_):not(#__) div,
+div.ce-card:not(#_):not(#__) span,
+div.comm-grid:not(#_):not(#__) p,
+div.ct-grid:not(#_):not(#__) p,
+div.eor-grid:not(#_):not(#__) p,
+div.esg-card:not(#_):not(#__) div,
+div.esg3-grid:not(#_):not(#__) li,
+div.expand-grid:not(#_):not(#__) li,
+div.fam6:not(#_):not(#__) span,
+div.fil-grid:not(#_):not(#__) p,
+div.glow-card:not(#_):not(#__) li,
+div.gt-grid:not(#_):not(#__) p,
+div.hub-grid:not(#_):not(#__) p,
+div.hxf-face:not(#_):not(#__) p,
+div.imx-fields:not(#_):not(#__) span,
+div.kpi:not(#_):not(#__) div,
+div.lc-grid:not(#_):not(#__) p,
+div.nextgen-grid:not(#_):not(#__) p,
+div.ofs4-grid:not(#_):not(#__) p,
+div.pc:not(#_):not(#__) p,
+div.ppt-card:not(#_):not(#__) span,
+div.prod-b2b:not(#_):not(#__) p,
+div.qx3_54:not(#_):not(#__) p,
+div.reg-grid:not(#_):not(#__) p,
+div.rh-card:not(#_):not(#__) div,
+div.scard:not(#_):not(#__) span,
+div.sect-row:not(#_):not(#__) div,
+div.stp:not(#_):not(#__) p,
+div.tier1-grid:not(#_):not(#__) p,
+div.tri-det:not(#_):not(#__) li,
+div.tri-step:not(#_):not(#__) span,
+div.tt-grid:not(#_):not(#__) div,
+div.val-levers:not(#_):not(#__) p,
+div.vc-grid:not(#_):not(#__) p,
+div.viz-grid:not(#_):not(#__) p,
+div.voie-card:not(#_):not(#__) div,
+div.welltype-grid:not(#_):not(#__) p,
+li.bx90:not(#_):not(#__) span,
+ol.acq-steps:not(#_):not(#__) span,
+ol.atl-refs:not(#_):not(#__) li,
+table.atl-tbl:not(#_):not(#__) td,
+ul.acq-dlist:not(#_):not(#__) li,
+ul.acq-list:not(#_):not(#__) li,
+ul.bx181:not(#_):not(#__) li,
+ul.bx280:not(#_):not(#__) li,
+ul.bx292:not(#_):not(#__) li,
+ul.bx36:not(#_):not(#__) li,
+ul.bx49:not(#_):not(#__) li,
+ul.bx531:not(#_):not(#__) li,
+ul.ce-li:not(#_):not(#__) li{font-size:14.8px!important;line-height:1.6!important}
+a.fid-card:not(#_):not(#__) span,
+a.ttg-t:not(#_):not(#__) span,
+button.dist-step:not(#_):not(#__) p,
+div.bx110:not(#_):not(#__) span,
+div.bx121:not(#_):not(#__) span,
+div.bx139:not(#_):not(#__) p,
+div.bx152:not(#_):not(#__) span,
+div.bx153:not(#_):not(#__) span,
+div.bx156:not(#_):not(#__) p,
+div.bx15:not(#_):not(#__) span,
+div.bx203:not(#_):not(#__) p,
+div.bx226:not(#_):not(#__) span,
+div.bx276:not(#_):not(#__) p,
+div.bx365:not(#_):not(#__) div,
+div.bx376:not(#_):not(#__) div,
+div.bx388:not(#_):not(#__) p,
+div.bx588:not(#_):not(#__) span,
+div.bx72:not(#_):not(#__) p,
+div.card-m:not(#_):not(#__) div,
+div.fam-card:not(#_):not(#__) p,
+div.ia-grid:not(#_):not(#__) p,
+div.nextgen-grid:not(#_):not(#__) li,
+div.pr:not(#_):not(#__) span,
+div.qx1_18:not(#_):not(#__) p,
+div.qx2_19:not(#_):not(#__) p,
+div.qx2_31:not(#_):not(#__) p,
+div.qx2_53:not(#_):not(#__) div,
+div.qx2_56:not(#_):not(#__) p,
+div.rd-axes:not(#_):not(#__) p,
+div.road-grid:not(#_):not(#__) p,
+div.sfam-i:not(#_):not(#__) span,
+div.tech-future-grid:not(#_):not(#__) p,
+span.fx2-b:not(#_):not(#__) p,
+span.fx2-f:not(#_):not(#__) p,
+span.pmore-body:not(#_):not(#__) span{font-size:14.2px!important;line-height:1.6!important}
+a.adx:not(#_):not(#__) p,
+a.pubc:not(#_):not(#__) p,
+div.bx389:not(#_):not(#__) p,
+div.epw-c:not(#_):not(#__) p,
+div.eth-c:not(#_):not(#__) p,
+div.flip-f:not(#_):not(#__) p,
+div.foot-brand:not(#_):not(#__) p,
+div.glow-card:not(#_):not(#__) p,
+div.glow-card:not(#_):not(#__) span,
+div.gov-c:not(#_):not(#__) p,
+div.hp:not(#_):not(#__) li,
+div.mkt-brand:not(#_):not(#__) p,
+div.pj:not(#_):not(#__) p,
+div.term:not(#_):not(#__) dd,
+div.tri-biz:not(#_):not(#__) p,
+div.tri-c:not(#_):not(#__) p,
+li.bx194:not(#_):not(#__) span,
+table.esg-t:not(#_):not(#__) td{font-size:15.2px!important;line-height:1.6!important}
+div.hp:not(#_):not(#__) p{font-size:14.8px!important;line-height:1.7!important}
+div.acq-card:not(#_):not(#__) p{font-size:15.2px!important;line-height:1.64!important}
+div.expand-grid:not(#_):not(#__) p{font-size:15.2px!important;line-height:1.65!important}
 }
