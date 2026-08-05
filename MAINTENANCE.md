@@ -698,7 +698,7 @@ dessous. Et `.foot-legal` porte desormais deux marges basses distinctes (76 px s
 
 ---
 
-## 20. Cibles tactiles : mesurer la zone sensible, pas la boite dessinee (2026-08)
+## 22. Cibles tactiles : mesurer la zone sensible, pas la boite dessinee (2026-08)
 
 **Constat.** Le §19 avait pose, sous `@media(pointer:coarse)`, des pastilles
 `::after` de 44x44 centrees sur les petits controles (`.scrollcue`, `#plightBtn`,
@@ -753,7 +753,7 @@ WCAG 2.5.8.
 
 ---
 
-## 21. Cartes retournables de l'accueil : la classe `flipped` n'existait qu'en JS (2026-08)
+## 23. Cartes retournables de l'accueil : la classe `flipped` n'existait qu'en JS (2026-08)
 
 Le script en ligne d'`index.html` bascule `classList.toggle("flipped")` au clic sur
 la carte ou sur `.flip-hint`. **Aucune regle CSS du site ne reagissait a cette
@@ -783,3 +783,141 @@ l'affordance du retournement etait invisible sur mobile.
 la face cachee n'est donc pas testable au toucher — inutile d'ajouter `inert`
 comme le fait le script des `.biz-card`. En revanche elle **reste focusable au
 clavier** ; c'est le seul point encore ouvert sur ces cartes.
+
+---
+
+## 24. Typographie mobile : un plancher pose UNIQUEMENT dans des conteneurs « purement petits » (2026-08)
+
+**Le probleme.** 1622 declarations `font-size` inferieures a 15px vivent dans les
+blocs `<style>` en ligne des 162 fichiers. Un correctif fichier par fichier est
+hors de portee ; la correction doit venir d'une couche appendue aux trois feuilles
+porteuses, en `!important`.
+
+**Les deux methodes qui ont echoue.**
+
+1. *Bump global du `rem`* (`html{font-size:17px}` sous 640px). Le site ne declare
+   aucun `html{font-size}` — la racine est le 16px du navigateur — donc tout ce qui
+   est en `rem` grossit d'un coup : chromes de navigation, pastilles, badges,
+   grilles calculees en `rem`. Debordements immediats.
+2. *Plancher par selecteur* (`main p:not(#_):not(#__){font-size:15px!important}`).
+   Un plancher applique a un selecteur large **retrecit** tout ce qui etait deja
+   plus grand que le plancher : les chapeaux a 17px, les citations a 19px. Un
+   `font-size` fixe n'est pas un plancher, c'est une egalite.
+
+**La methode retenue : le conteneur pur.** `/root/work/ty.js` parcourt 36 pages en
+390x844 et ne retient que les **feuilles de texte** (au moins 30 caracteres en
+noeud-texte direct, 40 au total, largeur >= 40px). Chaque feuille est rattachee a
+sa chaine d'ancetres classes (3 niveaux, arret sur `main,.wrap,article,section,footer,body`),
+les classes d'etat (`in`, `rv`, `reveal`, `on`, `active`, `flipped`, `is-`, `js-`)
+etant retirees pour que le selecteur soit stable. Resultat dans `/root/work/ty.json`.
+
+On classe alors chaque conteneur : contient-il, oui ou non, **du texte de contenu
+a 15px ou plus** ? 60 conteneurs n'en contiennent aucun — ce sont les conteneurs
+« purs ». En elargissant aux conteneurs qui ont au plus 1 element >= 15px pour au
+moins 4 elements < 15px, on obtient **127 paires conteneur/balise couvrant 1669
+elements**.
+
+> **La propriete qui rend la couche sure : un plancher pose dans un conteneur pur
+> ne peut rien retrecir**, puisqu'il n'y a rien de plus grand a l'interieur.
+
+`div.wrap` (403 petits pour 319 grands) et les autres conteneurs mixtes sont
+**exclus** : c'est precisement la ou la methode 2 cassait.
+
+**Les paliers.** 12.0-12.9px -> 14.2 | 13.0-13.9px -> 14.8 | >= 14.0px -> 15.2.
+`line-height` porte a 1.6 minimum dans les memes blocs. Tout ce qui est **sous
+12px est laisse intact volontairement** : `.kick` a 11.2, `.fs` a 10.56, les
+mentions legales du pied a 12.48 sont des micro-typographies (surtitres, pastilles,
+badges) — les grossir defigurerait la hierarchie.
+
+**Portee.** `@media (max-width:640px)` uniquement. Le desktop n'est pas touche.
+
+**Le fichier.** `/root/work/typo1.css`, marqueur `TYPO MOBILE (2026-08)`, appendu
+aux trois porteuses par `apply_layer.py`. 6 blocs groupes par declaration
+identique, 4427 octets de regles. Les selecteurs sont de la forme
+`conteneur:not(#_):not(#__) balise` — le conteneur plus la balise nue suffisent,
+les classes generees (`bx###`, `qx#_##`) sont retirees du cote selecteur.
+
+**La verification.** `/root/work/ver.js` repasse les 36 memes pages et cherche
+(a) un debordement horizontal de page, (b) des elements dont le bord droit sort du
+viewport, (c) un `scrollWidth > clientWidth` interne hors scrollers declares,
+(d) du **texte coupe** (`overflow:hidden` et `scrollHeight > clientHeight+3`).
+Resultat : `doc 390/390` sur les 36 pages et **zero texte coupe**.
+
+> **Piege de lecture de `ver.js`.** Le script signale des elements sur presque
+> toutes les pages, mais ce sont des **faux positifs** : sous 640px, `main .hpgrid`,
+> `.hxi-grid`, `.hnews-grid`, `.ttg-g` passent en `grid-auto-flow:column` et
+> deviennent des defileurs horizontaux volontaires. Le controle saute le defileur
+> lui-meme (il a `overflow-x:auto`) mais pas ses enfants hors-ecran. Les seules
+> lignes qui comptent sont `doc` et `coupes`.
+
+---
+
+## 25. Reorganisation de l'accueil autour des trois maillons (2026-08)
+
+**La demande.** Reorganiser la home autour d'Exploration-Production (Amont),
+Transport & stockage (Intermediaire), Raffinage & distribution (Aval) pour que les
+clients se retrouvent.
+
+**Le diagnostic.** L'accueil ouvrait sur le recit — `#combat`, `#conviction`,
+`#vision` — et ne presentait les trois metiers qu'a mi-page, sous des noms internes
+(« Amont », « Intermediaire », « Aval ») qui ne disent rien a un client qui cherche
+un produit ou un partenaire. La page vendait l'entreprise avant d'orienter le
+visiteur.
+
+**Ce qui a change.**
+
+*Ordre des sections dans `main`* : `#coeurs` puis `#chaine-expliquee` sont remontes
+en tete. Le visiteur voit d'abord les trois portes, puis l'explication des trois
+mots, puis seulement le recit (`#combat`, `#conviction`, `#vision`) et le reste.
+
+*Nommage des cartes* : le nom client passe en `h3`, le nom de pole devient une
+etiquette secondaire sur sa propre ligne.
+
+| `.hpcard-n` (avant) | `.hpcard-n` (apres) | `.hpcard-tag` |
+|---|---|---|
+| Amont | Exploration & Production | Amont · upstream |
+| Intermediaire | Transport & stockage | Intermediaire · midstream |
+| Aval | Raffinage & distribution | Aval · downstream |
+
+*Surtitre, titre, chapeau* : « Coeur de metier · Trois maillons, une extension » ->
+« S'orienter · Trouvez votre maillon » ; « Du puits a la pompe : nos trois coeurs de
+metier. » -> « Trois maillons, trois portes d'entree. » ; nouveau chapeau qui
+explique chaque maillon en une proposition.
+
+*Tiroirs* : l'intitule « Departements » devient « Ce que nous faisons » (x3), et un
+quatrieme lien `/amont/parc` (« Parc & mise a disposition ») est ajoute au tiroir
+Amont.
+
+*Accessibilite* : `aria-label="Nos trois coeurs de metier"` ->
+`"Nos trois maillons : Exploration-Production, Transport et stockage, Raffinage et
+distribution"` ; `aria-label="Sous-pages du pole"` -> `"Nos services dans ce maillon"`.
+
+**Le CSS de page qu'il a fallu ajouter.** L'etiquette `.hpcard-tag` etait un
+element en ligne colle au titre dans `.hpcard-top` ; la descendre sur sa propre
+ligne demande deux declarations, placees juste apres la regle `.hubwrap` du
+`<style>` en ligne d'`index.html` :
+
+```css
+.hpcard-body>.hpcard-tag{margin-left:0;margin-top:-5px;align-self:flex-start;white-space:normal}
+.hpcard-top{flex-wrap:wrap}
+```
+
+**Le tiroir sombre decouvert au passage.** En rendant les cartes, `.hubdrawer`
+s'est revele etre une dalle gris fonce (`background:rgba(12,19,33,.58)!important`)
+meme en theme clair, avec du texte bleu illisible dessus — en contradiction
+frontale avec la consigne permanente « eliminer les bandes sombres ». Corrige par
+un bloc verre-clair ajoute a `bright1.css` (`background:rgba(255,255,255,.66)`,
+filet `rgba(26,35,48,.14)`, liens `#155FA8`), toujours porte par les **cinq**
+`:not(#e1)...:not(#e5)` de la couche d'eclaircissement.
+
+**Un defaut cosmetique assume.** Les cartes 1 et 3 ont quatre liens de tiroir, la
+carte 2 (Intermediaire) n'en a que trois — `intermediaire/` ne contient que
+`index`, `logistique`, `services`, `sites`. Le bord haut de son tiroir s'aligne
+donc ~50px plus bas. Le correctif CSS envisage (`display:contents` sur
+`.hpcard-body` + `grid-template-rows:1fr auto` sur `.hubwrap`) casse le defileur
+horizontal mobile et l'effet de levee `.hubwrap:hover` : **rejete**. Le defaut
+disparaitra le jour ou une quatrieme sous-page Intermediaire existera.
+
+**Mesures de controle** (`/root/work/shot.js`, 390x844 et 1280x900) : les trois
+`h3` tiennent sur une ligne (218 / 190 / 210px), les trois etiquettes sur une
+ligne, les trois chapeaux sur exactement 3 lignes ; `doc 390/390` et `doc 1270/1280`.
