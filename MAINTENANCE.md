@@ -921,3 +921,102 @@ disparaitra le jour ou une quatrieme sous-page Intermediaire existera.
 **Mesures de controle** (`/root/work/shot.js`, 390x844 et 1280x900) : les trois
 `h3` tiennent sur une ligne (218 / 190 / 210px), les trois etiquettes sur une
 ligne, les trois chapeaux sur exactement 3 lignes ; `doc 390/390` et `doc 1270/1280`.
+
+## 26. Doublons de l'accueil : la redondance etait structurelle, pas textuelle (2026-08)
+
+Consigne : « eliminer les doublons sur la home page ». La sonde
+`/root/work/dup.js` (blocs de texte feuilles repetes, cibles `main a[href]`
+repetees avec leur section proprietaire, chaines numeriques repetees) a rendu
+**zero phrase repetee et zero chiffre repete**. La redondance etait donc
+architecturale.
+
+**Le doublon reel.** `<section id="chaine-expliquee">` restituait integralement
+le nouveau `#coeurs` : memes trois maillons, memes trois liens « Decouvrir le
+pole → » vers `/amont/`, `/intermediaire/`, `/aval/`, meme explication, meme
+surtitre « S'orienter ». C'est un artefact de la reorganisation decrite en §25 :
+en rapprochant les deux sections, leur equivalence est devenue visible. Section
+supprimee (4238 octets).
+
+**Les trois effets de bord de la suppression.**
+
+1. La pastille doree en pied de `#coeurs` pointait vers `/amont/services-ep`,
+   deja present dans le tiroir Amont. Repointee vers `/explorateur-chaine`
+   (libelle « Explorer la chaine, maillon par maillon → »), page qui existe,
+   repond 200, et n'etait **liee que depuis la section supprimee**.
+2. Six regles CSS `html.et-plight #chaine-expliquee ...` devenues mortes,
+   retirees par boucle `re.search(r'html\.et-plight #chaine-expliquee[^{}]*\{[^{}]*\}', s)`
+   (470 octets).
+3. `<style id="minv-css">` + `<script id="minv-js">` — le mecanisme d'accordeon
+   mobile — n'existaient que pour replier `#chaine-expliquee` (leur propre
+   commentaire le disait : « seule la section pedagogique #chaine-expliquee se
+   replie »). Code mort, supprime (726 + 1543 octets).
+
+**Le surtitre en conflit.** `#vision` et `#combat` affichaient tous deux
+« Notre raison d'etre ». `#vision` passe a « Notre vision ».
+
+**Ce qui a ete deliberement CONSERVE.** `.shortcuts` semble doubler le pied de
+page mais ses liens portent des ancres profondes (`/societe#vision`,
+`/investisseurs#these`, `/carrieres#postuler`) que le pied n'a pas. `#conviction`
+semble doubler `#coeurs` mais defend un angle distinct — la chaine integree en
+mains tchadiennes — avec trois puces colorees propres. Les repetitions de cible
+`/investisseurs` (x3) et `/societe#voie` (x3) sont legitimes : rail de profils,
+appel editorial et carte de navigation sont trois contextes differents.
+
+Bilan : `index.html` 119783 → 114227 octets. Controle :
+`grep -o 'chaine-expliquee\|minv-' index.html | sort | uniq -c` → vide.
+
+## 27. Tuiles : une echelle de rayon a trois crans, et une elevation unique (2026-08)
+
+Consigne : « revoir les tuiles et faire moderniser le design ».
+
+**L'etat mesure avant.** Deux sondes successives (`/root/work/tiles.js` puis
+`tiles2.js`, 25 pages a 1280x900, capture des largeurs de bordure par cote,
+rayon en flottant, ombre, padding, backdrop-filter) ont trouve **610 tuiles**
+reparties sur **9 rayons differents** — 16px (170), 22 (158), 18 (124), 14 (102),
+20 (11), 13 (6), 12 (4), 15 (4), 0 (31) — et surtout **une moitie du parc sans
+aucune ombre**, qui lisait plat et date a cote des cartes verre
+(`backdrop-filter`). 67 tuiles portaient un filet d'accent superieur de **3px**,
+53 de 2px : deux epaisseurs pour le meme dispositif.
+
+**Le traitement.** Nouvelle couche `TUILES UNIFIEES (2026-08)`
+(`/root/work/tiles1.css`, 4e entree de `COUCHES` dans `apply_layer.py`) :
+
+| Axe | Avant | Apres |
+|---|---|---|
+| Rayons | 9 valeurs | **3 crans : 14 / 18 / 22** (+0 pour les parties internes) |
+| Filets d'accent haut | 3px (67) + 2px (53) | 2px partout sauf 8 `a.prof` /clients |
+| Familles sans ombre | ~27 classes | 2 (`.sfam-i`, partie interne ; `.mfo-lever`, carte flip) |
+| Survol | heterogene | levee `translateY(-2px)` + ombre renforcee, sur les tuiles interactives uniquement |
+
+Repartition finale : **18 (300), 22 (242), 14 (37), 0 (31)**.
+
+**La regle de ciblage.** Les selecteurs sont **nommes**, jamais deduits de la
+geometrie mesuree : les sondes remontent `span.hpcard-body`, `p.hpcard-l`,
+`div.sfam-i` comme des tuiles alors que ce sont des parties internes. Une regle
+calee sur « rayon 16 + bordure » les aurait frappees.
+
+**Les classes a nom generique.** `.d` `.t` `.h` `.hp` `.pr` `.step` `.aside`
+`.ppl-f` ne peuvent pas etre ciblees seules — `main .t` frapperait tout le site.
+Elles sont ancrees sur leur conteneur de grille, releve par sonde DOM
+(`/root/work/probe2.js`) : `.hse-prac>.pr`, `.hse-tri>.hp`, `.cli-deep>.d`,
+`.offer>.aside`, `.steps>.step`, `.traj>.t`, `.hz>.h`, `.ec-tiers>.ec-tier`,
+`.ppl-sel>.ppl-f`.
+
+**`.mseg` : un bandeau gris qui n'aurait jamais du exister.** La classe `.mseg`
+(46 occurrences sur `/solutions`, `/clients`, `/solutions-en`) n'a **aucune regle
+de base dans tout le site** — seule une surcharge claire lui donnait
+`background:rgba(26,35,48,.05)`. Comme `.prof` est un flex colonne, le `span`
+s'etirait sur toute la largeur de la carte : une barre grise pleine largeur
+derriere « E&P », « Services », « EOR ». Transforme en puce de categorie
+(`display:inline-flex`, `align-self:flex-start`, rayon 999px, fond et filet
+teintes depuis `var(--mc)`).
+
+**Deux themes, toujours.** Chaque declaration porteuse de couleur est doublee
+`html.et-plight` / `html:not(.et-plight)`. La levee de survol est encadree par
+`prefers-reduced-motion: no-preference`, avec un bloc `reduce` qui neutralise
+`transition` et `transform`.
+
+**Non-regression.** `ver.js` (36 pages, 390x844) : `doc 390/390` sur **les 36**,
+et **11 textes coupes avant comme apres**, sur les deux memes familles
+(`div.voie-card` /brochure, `div.flip-f`) — dont aucune n'est ciblee par la
+couche.
