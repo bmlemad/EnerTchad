@@ -1020,3 +1020,121 @@ teintes depuis `var(--mc)`).
 et **11 textes coupes avant comme apres**, sur les deux memes familles
 (`div.voie-card` /brochure, `div.flip-f`) — dont aucune n'est ciblee par la
 couche.
+
+---
+
+## 28. Les trois maillons en pleine page : quatre pieges de cascade (2026-08)
+
+**Demande.** « fusionner S'orienter · Trouvez votre maillon et la section
+S'orienter · Amont -> Intermediaire -> Aval », puis « mettre les Trois maillons,
+chaque sur une page sur la home et ameliorer le design en ultra ».
+
+**Ce qui a ete fait.** `#coeurs` ne contient plus une grille de trois tuiles mais
+un `<div class="mln-set">` de trois `<article class="mln">` occupant chacun une
+hauteur d'ecran (`min-height:min(100svh,940px)` en desktop, `100svh` en mobile).
+Chaque panneau : photo de fond, voile degrade teinte a l'accent du maillon,
+chiffre fantome 01/02/03, rail d'accent, marqueur d'etape, titre, accroche,
+deux indicateurs, un bouton pilule et un volet « Ce que nous faisons ».
+Le panneau 02 est en miroir (`.mln-rev`) pour casser le rythme.
+
+Generateur : `/root/work/mln.py` (idempotent) + `/root/work/mln.css`, injecte en
+`<style id="mln-css">` dans le `<head>` de `index.html`. **Aucune feuille
+porteuse n'est touchee, donc aucun bump de `sw.js` n'est requis.**
+
+### Piege 1 — `.hpcard` redeclare `--pac` sur lui-meme
+
+`bundle_core_a1.css` **et** `x_9e73ac04de58.css` posent tous deux
+`.hpcard{--pac:var(--gold-l)...}`. Un element qui porte `.hpcard` **redeclare
+donc `--pac` sur lui-meme** et masque toute valeur heritee d'un ancetre.
+Le bouton `a.mln-go` porte `.hpcard` (voir piege 4) : il ne voyait jamais le
+`--pac` pose sur l'`<article>`.
+
+> **Regle.** Une propriete personnalisee destinee a descendre dans un
+> descendant portant `.hpcard` doit avoir **un autre nom**. Ici : `--mac` /
+> `--macl`.
+
+### Piege 2 — une declaration de feuille bat un `style=""` inline seulement avec `!important`
+
+L'`<article>` porte `style="--mac:#E8C36A;--macl:#7A5C14"`. Le theme clair doit
+basculer `--mac` sur `--macl` :
+
+```css
+html.et-plight #coeurs .mln{--mac:var(--macl)!important}
+```
+
+Sans le `!important`, le style inline gagne et le theme clair reste dore vif.
+
+### Piege 3 — la couche eclaircissement tuait le voile
+
+`bundle_core_a1.css` et `x_cd256286824c.css` posent
+
+```css
+html.et-plight main div:not(#_){background-image:none!important}
+```
+
+ce qui supprimait purement et simplement le degrade de `.mln-veil` en theme
+clair : la photo passait a nu et l'accroche devenait illisible sur un ciel
+orange. Specificite de la regle tueuse : `(1 id, 1 classe, 3 types)`.
+Il faut donc **a la fois** `!important` et une specificite superieure :
+
+```css
+#coeurs .mln-veil:not(#_):not(#__){background-image:...!important}
+```
+
+`(3 id, 1 classe, 0 type)` — elle passe devant. Le `::before` de `.mln-bg`
+(la photo) n'est **pas** concerne : la regle vise des `div`, pas leurs
+pseudo-elements.
+
+### Piege 4 — le bouton doit garder `class="hpcard"`
+
+`assets/chrome/s_c07e811055.js` ecoute
+`e.target.closest("a.hpcard,a.plc-card,a.pb-chip")` et ouvre le panneau
+« Pole · explorer les thematiques » quand le `href` figure dans son
+dictionnaire `D` (`/amont/`, `/intermediaire/`, `/aval/`). Retirer `.hpcard`
+du bouton casserait cette fonctionnalite. On garde donc la classe et on
+**neutralise integralement le look tuile** avec une regle a sept crans de
+specificite, y compris `::before`/`::after{content:none!important}`.
+
+Meme raison pour `main>section:not(#_):has(...,.hpcard)` dans
+`s_19895ec63c.css` : `#coeurs` continue de matcher, le fond de section ne
+change pas.
+
+### Piege 5 — `transform:scale()` sur un `inset:0` deborde en horizontal
+
+La photo est agrandie a `scale(1.06)` pour laisser de la marge au zoom au
+survol. Posee directement sur un `.mln-bg{inset:0}`, elle debordait de 28px et
+faisait passer le document a `doc 1308/1280`. Correctif en trois points :
+
+1. la photo passe dans `#coeurs .mln-bg::before` ;
+2. `.mln-bg{overflow:hidden}` ;
+3. `.mln{overflow-x:clip}` (et `.mln-ghost{right:0}` en mobile).
+
+### Mobile : degager la barre fixe
+
+`nav#nezBar` est fixe en bas, hauteur **59px**. Avec `min-height:100svh` le
+contenu du panneau se centrait par-dessus. Correctif :
+`padding-bottom:calc(clamp(44px,11vw,64px) + 76px)` sous 640px.
+Par ailleurs `#coeurs .mln-rev .mln-in>*{align-self:center}` laissait le volet
+services du panneau miroir etroit et centre une fois empile : remis a
+`align-self:stretch` dans la requete `max-width:1080px`.
+
+### Mesures finales
+
+| Combinaison | `doc` | hauteur panneau | bouton |
+|---|---|---|---|
+| desktop sombre | 1270/1280 | 900 | `rgb(232,195,106)` sur `rgb(11,20,34)` |
+| desktop clair | 1270/1280 | 900 | `rgb(122,92,20)` sur blanc |
+| mobile sombre | 390/390 | 844 | idem sombre |
+| mobile clair | 390/390 | 844 | idem clair |
+
+Aucun debordement dans `#coeurs` dans les quatre combinaisons.
+`ver.js` (36 pages) : `doc 390/390` sur les 36, **11 textes coupes** —
+identique a la reference d'avant travaux.
+
+### Translucidite
+
+Conformement a « eliminer les bandeaux noir pour permettre au site etre
+translucide », le voile n'est jamais opaque :
+sombre `rgba(6,11,20,.92) -> .74 -> .34`, clair
+`rgba(250,247,241,.94) -> .80 -> .42`. La photo reste lisible sur les deux
+tiers droits du panneau tout en garantissant le contraste du texte a gauche.
