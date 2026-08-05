@@ -1138,3 +1138,394 @@ translucide », le voile n'est jamais opaque :
 sombre `rgba(6,11,20,.92) -> .74 -> .34`, clair
 `rgba(250,247,241,.94) -> .80 -> .42`. La photo reste lisible sur les deux
 tiers droits du panneau tout en garantissant le contraste du texte a gauche.
+
+## 29. QA de l'accueil : le contraste ne se mesure pas sur une couleur plate (2026-08)
+
+Campagne de QA complete de `index.html` apres la mise en pleine page des trois
+maillons : geometrie (12 largeurs x 2 themes), clavier, liens, SEO, axe-core,
+contraste reel et performance.
+
+### Ce qui etait deja conforme
+
+- **Geometrie** : 24 combinaisons (1512 / 1280 / 1240 / 1140 / 1080 / 992 /
+  834 / 768 / 430 / 390 / 360 / 320 px), `doc == clientWidth` partout, aucun
+  debordement horizontal hors scrollers, **zero texte coupe** dans `#coeurs`.
+  La bande 1080-1240px, jamais testee auparavant, est saine.
+- **Clavier** : 15 liens focusables dans `#coeurs`, ordre DOM = ordre visuel,
+  contour `2px solid` a la couleur d'accent du panneau, aucun piege de focus.
+- **Liens** : les 15 `href` resolvent vers un fichier reel, zero 404, zero 308
+  (verifie contre le tableau `redirects` de `vercel.json`).
+- **SEO** : title, meta description, canonical, og:*, twitter:card, 4 hreflang,
+  5 blocs JSON-LD. Aucun `<img>` donc aucun `alt` manquant.
+- **axe-core** (wcag2a/aa + wcag21a/aa + best-practice, 1280 et 390, 2 themes) :
+  **aucune violation critique ni serieuse**. Restent 2 violations moderees
+  preexistantes : `landmark-unique` (plusieurs `nav.hubdrawer` partagent
+  `aria-label="Sous-pages du pole"`) et `region` (`#oilticker`, `#homeFab`,
+  `#diapo-cap` hors landmark). Les trois nouveaux `nav.mln-nav` ont des noms
+  uniques et ne declenchent rien.
+
+### La seule vraie non-conformite : le voile du panneau 02
+
+Mesure **contre le fond reellement composite** (voile + photo), pas contre une
+couleur declaree. Methode : masquer tout le texte du panneau
+(`color:transparent`), capturer chaque element avec `el.screenshot()`, prendre
+le pixel median par luminance.
+
+Deux pieges de methode, tous deux rencontres :
+
+1. `page.screenshot({fullPage:true})` **decale la mise en page** des panneaux en
+   `min-height:100svh` : les rectangles releves avant la capture ne
+   correspondent plus. Il faut capturer element par element.
+2. La regle de masquage `#coeurs .mln-txt *{color:transparent!important}`
+   (1 id, 1 classe, 0 type) **perd la guerre de specificite** contre
+   `#coeurs .mln-step b` (1 id, 1 classe, 1 type). Des pixels de texte
+   contaminaient alors l'echantillon de fond et sortaient des ratios absurdes
+   (1,03:1). La regle qui gagne :
+   `#coeurs .mln *:not(#qa1)...:not(#qa8){color:transparent!important;
+   -webkit-text-fill-color:transparent!important;text-shadow:none!important;
+   text-decoration-color:transparent!important}`.
+
+Resultat : sur le panneau **Intermediaire en theme sombre**, `.mln-k` (12px
+gras, `#5AA7F0`) tombait a **3,98:1** et `.mln-kpis b` a **3,90:1** (1280) /
+**4,07:1** (390) — sous le seuil AA de 4,5:1. Deux causes cumulees :
+
+- la photo `camion-route.webp` a un ciel tres clair et
+  `--mln-g2:rgba(7,13,24,.74)` ne le compose qu'a environ `rgb(53,67,79)` ;
+- le radial d'accent `color-mix(in srgb,var(--mac) 12%,transparent)` est
+  positionne a `94% 50%` sur le panneau miroir, **exactement sous le texte
+  colore** : il eclaircit le fond vers la teinte meme du texte.
+
+**Fausse piste ecartee** : le panneau miroir paraissait avoir un degrade
+inverse (sombre a droite au lieu de la gauche). Verification isolee d'un
+degrade sur fond blanc (`grad.js`) : `100deg` place bien la butee 0% a gauche,
+`260deg` a droite, `168deg` en haut. Les trois angles sont corrects tels
+qu'ecrits ; il n'y a pas de bug d'inversion.
+
+### Correctifs appliques
+
+| Correctif | Avant | Apres |
+|---|---|---|
+| Voile sombre, butee mediane | `rgba(7,13,24,.74)` | `rgba(7,13,24,.82)` |
+| Voile sombre, butee finale | `rgba(7,13,24,.34)` | `rgba(7,13,24,.40)` |
+| Voile sombre, butee initiale | `rgba(6,11,20,.92)` | `rgba(6,11,20,.93)` |
+| Teinte radiale d'accent (x3) | `var(--mac) 12%` | `var(--mac) 7%` |
+| `--mac` de `#maillon-intermediaire` | `#5AA7F0` | `#7DBBF5` |
+
+Le theme clair n'est pas touche : `html.et-plight #coeurs .mln{--mac:var(--macl)
+!important}` ecrase l'accent en ligne, et les butees claires sont declarees
+separement. La translucidite reste respectee (0,82 et non 1) conformement a
+« eliminer les bandeaux noir pour permettre au site etre translucide ».
+
+Trois correctifs d'accessibilite semantique dans le meme passage :
+
+- les trois `a.mln-go` exposaient **le meme nom accessible** (« Decouvrir le
+  pole → ») pour trois destinations differentes (WCAG 2.4.4) : chacun recoit
+  desormais un `aria-label` distinct ;
+- `.mln-step b` faisait entendre « 01 Maillon 01 sur 3 » : `aria-hidden="true"`
+  sur le `<b>` decoratif, le `<i>` porte deja la formulation complete ;
+- les `&` nus dans quatre `aria-label` passent en `&amp;`.
+
+### Verification apres correctifs
+
+120 mesures de contraste (10 selecteurs x 3 panneaux x 2 largeurs x 2 themes) :
+**zero echec**. Minima par theme : sombre `.mln-kpis b` 5,74 / `.mln-k` 6,15 /
+`.mln-step b` 6,99 ; clair `.mln-nav a` 5,04 / `.mln-go` 6,33. Geometrie
+re-passee sur les 24 combinaisons : inchangee, 0 probleme. axe-core : toujours
+2 violations moderees preexistantes, aucune nouvelle.
+
+### Performance : bon, avec un cout evitable
+
+38 requetes, environ 1088 Ko (image 380,9 / css 345,5 sur 18 feuilles /
+js 157,7 / document 122,5 / polices 81,7). Aucun 4xx/5xx.
+LCP 1248 ms sur `H1.hx-h1` a 1280, 372 ms sur `P.hx-sub` a 390.
+**CLS 0,088 a 1280**, impute a `DIV.hx-strip` (la bande du hero) — preexistant,
+sans rapport avec les maillons ; CLS 0 a 390.
+
+Les trois photos de panneau (75,1 + 100,2 + 118,7 = 294 Ko) sont chargees des
+le load alors que les panneaux 2 et 3 sont 1800 a 2700 px sous la ligne de
+flottaison. `content-visibility:auto` + `contain-intrinsic-size` sur `.mln`
+economiserait environ 175 Ko, mais touche au centrage `min-height:100svh`, aux
+animations `.reveal` et au defilement vers les ancres `#maillon-*` :
+**a tester localement avant tout deploiement**, non fait ici.
+
+### Balisage mort identifie (conserve, non supprime)
+
+- `guepard-savane.webp` (148 Ko) et `pipeline.webp` (109 Ko) ne sont
+  **jamais telecharges**.
+- Le fond en ligne de `#coeurs` est annule dans les deux themes par
+  `main>section:not(#_):has(...,.hpcard){background:...!important}`
+  (`s_19895ec63c.css`) : le CTA du panneau porte `.hpcard`, donc la section
+  correspond.
+- `.acth-photo` calcule `display:none` ; en theme clair il est doublement mort,
+  egalement atteint par `html.et-plight main div:not(#_){background-image:none
+  !important}`.
+
+Les attributs `style` correspondants sont donc des octets morts. Ils sont
+laisses en place dans ce passage pour ne pas melanger nettoyage et correctif de
+contraste ; a traiter separement.
+
+
+## 30. Creation du pole Petrochimie : d'une sous-page de l'Aval a un 4e maillon (2026-08)
+
+Directive : « Cree un pole dedie Petrochimie ». Portee arretee avec l'auteur :
+un **4e panneau pleine page** dans `#coeurs` (Amont -> Intermediaire -> Aval ->
+Petrochimie, meme gabarit « ultra » que les trois autres) et **deux nouvelles
+sous-pages** pour aligner le pole sur les autres (4 sous-pages chacun).
+
+### Ce qui a change
+
+- `petrochimie/complexe.html` (nouveau) : `#unites` (6 cartes), `#phasage`
+  (tableau 3 phases 2026-2028 / 2028-2030 / 2030+, avec conditions de passage),
+  `#prerequis` (4 cartes) + CTA.
+- `petrochimie/marches.html` (nouveau) : `#debouches` (4 cartes), `#substitution`
+  (tableau de substitution aux importations, 5 lignes), `#interlocuteurs`.
+- `petrochimie/index.html` **requalifie** : le hub n'est plus subordonne a
+  l'Aval. Titre, `og:title`, `twitter:title`, `name` du JSON-LD `WebPage`,
+  `BreadcrumbList` (le maillon « Aval » est retire, position 2 devient le pole)
+  et fil d'Ariane visible. Occurrences de `· Aval` : **0**. Les 28 liens
+  `/aval/*` restants sont des liens transverses legitimes.
+- Sous-nav commune a 5 entrees sur les 4 sous-pages
+  (`aria-label="Pages du pole Petrochimie"`), avec `is-active` +
+  `aria-current="page"`.
+- Mega-menu : le tiroir Petrochimie expose desormais les 4 sous-pages, dans
+  l'ordre de la sous-nav — **62 fichiers** porteurs de la navigation.
+- Comptage des poles : `Nos 7 poles` -> `Nos 8 poles` dans 62 fichiers, plus 7
+  formulations en clair (`brochure`, `cibles-2030`, `explorateur-chaine`,
+  `index`, `investisseurs`, `solutions` x2). Trois phrases corrigees a la main :
+  `3 + 4` -> `4 + 4` (accueil, y compris l'`aria-label` de l'hexagone),
+  « Trois coeurs de metier » -> « Quatre coeurs de metier » (`cibles-2030`),
+  `<b>3 poles</b>` -> `<b>4 poles</b>` (`achats`).
+- `sitemap.xml` : +2 URL (159 au total), `lastmod` rafraichi sur `/`,
+  `/petrochimie/`.
+- `plan-du-site.html` : la Petrochimie **sort de la liste imbriquee sous
+  l'Aval** et devient une entree de premier niveau parmi les poles metiers,
+  avec ses 4 sous-pages.
+
+### Piege 1 — `sr-only` n'existe dans aucune feuille de theme
+
+Les deux pages generees utilisaient `<caption class="sr-only">`. La classe
+**n'est definie nulle part** dans les feuilles de theme (seule une definition
+locale existe dans `Configurateur_Service_Integre_v2.html`). Les legendes de
+tableau s'affichaient donc en clair. Toute page qui utilise `sr-only` doit la
+definir elle-meme ; ici la regle est posee dans le `<style id="px-css">` de
+chaque page.
+
+### Piege 2 — la banniere cookies se compose dans `el.screenshot()`
+
+Premiere campagne de mesure de contraste : 27 « echecs », puis 53 apres
+« correction ». Les deux series etaient **fausses**. En agrandissant x3 un des
+PNG et en le regardant, on lisait le texte de la banniere cookies : Playwright
+capture ce qui **recouvre** l'element dans le viewport, pas l'element seul. La
+banniere, en `position:fixed`, empoisonnait l'echantillon de fond (un gris
+`(100,104,112)` fantome sous des cellules blanches).
+
+Correctif dans le harnais : masquer tout element `position:fixed|sticky`
+exterieur a `main` avant capture.
+
+### Piege 3 — une transition CSS fausse la couleur mesuree
+
+Deux echecs residuels sur `.px-cta` en theme clair (2,38 et 2,67) alors que
+`CSS.getMatchedStylesForNode` (CDP) prouvait que
+`html.et-plight .pxc .px-cta:not(#_){color:#8E3A72!important}` **gagnait bien**
+la cascade. Cause : `.px-cta` declare `transition:color .2s` et la classe de
+theme est ajoutee par JS **apres** le chargement ; l'echantillon etait pris en
+pleine interpolation, donc sur la couleur sombre.
+
+Correctif : injecter `*{transition:none!important;animation:none!important}`
+avant toute mesure, et attendre ~1200 ms.
+
+### Piege 4 — `main div:not(#_):not(#__)` vole l'accent en theme clair
+
+Vrai bug de cascade, trouve par sonde de style calcule et non par les pixels :
+en `et-plight`, `.px-k`, `.px-n`, `.px-tag` et `.px-tab th` calculaient
+`rgb(42,54,72)` au lieu de l'accent `#8E3A72`, et `.px-card` perdait son fond
+blanc. Coupables :
+
+```
+html.et-plight main div:not(#_):not(#__){color:#2A3648!important}
+html.et-plight main .card,[class*="card"],[class*="panel"]:not(#_){background:#fff!important;border:1px solid rgba(26,35,48,.16)!important}
+```
+
+Tout `<span>`/`<th>` qui herite a l'interieur d'un `div` se fait donc reprendre
+sa couleur. Correctif : un bloc clair `!important` en fin de `px-css`, de forme
+`html.et-plight .pxc .px-X:not(#_)` (1 id / 3 classes / 1 type), avec
+`-webkit-text-fill-color` en plus de `color` — sans quoi Safari conserve
+l'ancienne teinte.
+
+### Rappel de cascade toujours valable
+
+Les nouvelles sections portent `.pxc` et **jamais** `.hpcard` : la regle
+`main>section:not(#_):has(...,.hpcard){background:rgba(8,13,22,.45)!important}`
+de `s_19895ec63c.css` annulerait sinon leur fond propre. De meme, les variables
+destinees a descendre dans un `.hpcard` ne peuvent pas s'appeler `--pac` (tout
+element `.hpcard` la **redeclare sur lui-meme**) — d'ou `--px-*` ici et
+`--mac`/`--macl` sur l'accueil.
+
+### Verification
+
+- **Contraste, sous-pages** : 112 mesures (11 selecteurs x 2 pages x 2 themes),
+  **zero echec**. Minima sombre `.px-cta` / `.px-k` / `th` 6,49 ; clair
+  `.px-k` 5,45, `.px-cta` 5,57, `th` 7,00.
+- **Contraste, accueil** : 236 mesures (10 selecteurs x 4 panneaux x 2 largeurs
+  x 2 themes), **zero echec**. Le nouveau panneau : sombre min **5,77**, clair
+  min **5,83** — les teintes `--mac:#EBA0D2` (sombre) et `--macl:#8E3A72`
+  (clair) sont donc validees sur le fond `unite-petrochimie.webp`.
+- **Geometrie** : `complexe` 5111 px a 1280 / 7825 px a 390 ; `marches`
+  5166 / 7466. `scrollWidth` 380 pour `innerWidth` 390 : **aucun debordement
+  horizontal**. Les `.psn-link` et les `.px-tab` signales « hors viewport » sont
+  contenus par `overflow-x:auto` (`.psn-wrap`, `.px-scroll`) — comportement
+  voulu, pas un bug.
+- **axe-core** sur `/`, `/petrochimie/`, `/petrochimie/complexe`,
+  `/petrochimie/marches`, `/plan-du-site`, en 1280 et 390 : uniquement les
+  2 violations moderees preexistantes (`landmark-unique`, `region`).
+  **Aucune nouvelle.**
+- **Liens** : 7 pages verifiees contre le disque et contre les `redirects` de
+  `vercel.json`, **0 lien mort**.
+
+### Faux positif axe a connaitre
+
+Une passe a signale `color-contrast` (serious) sur `#debouches > .wrap > .px-k`
+et `.px-l`, non reproductible en 5 executions ulterieures (0 violation,
+seulement des `incomplete` de type `pseudoContent` sur la barre utilitaire).
+Sur ce site les sections sont **translucides au-dessus du diaporama `.diapo`** :
+tant que la photo de fond n'est pas peinte, axe calcule un fond different. La
+mesure par pixels (mediane de luminance du fond reel) reste la reference ;
+une alerte axe isolee sur une section translucide doit etre rejouee avant
+d'etre traitee comme un defaut.
+
+---
+
+## 31. Propagation du pole Petrochimie a la version anglaise et aux pieds de page (2026-08)
+
+La creation du 4e maillon (section 30) avait laisse le site incoherent : la
+version francaise annoncait 8 poles, la version anglaise en annoncait toujours
+7, et **les deux pieds de page n'en listaient que 7**. Cette section couvre la
+mise a niveau.
+
+### Ce qui a change
+
+**Comptage des poles.** `Our 7 poles` -> `Our 8 poles` (35 fichiers, y compris
+`enerconseils/audits-en.html` et `docs-sources/brochure_print_en.html` que le
+glob `*.html` de premier niveau ne voyait pas), `seven poles` / `Seven poles`
+-> `eight poles` / `Eight poles`, et `7 poles, one company` ->
+`8 poles, one company` dans `investisseurs-en.html`. Cote francais il restait
+14 occurrences de `sept poles` reparties sur 8 fichiers (`brochure`, `carnets`,
+`charte`, `cibles-2030`, `communiques`, `faq`, `societe`,
+`tchaditude/index`) : toutes passees a `huit poles`.
+
+**Requalification de la chimie.** La chimie n'est plus « une extension de
+l'Aval » mais un maillon a part entiere :
+
+- `faq.html` : « Trois forment la chaine petroliere — Amont, Intermediaire,
+  Aval — que prolonge la chimie » devient « Quatre forment la chaine
+  petroliere — Amont, Intermediaire, Aval, Petrochimie (chimie &
+  transformation) ». Le texte existe **deux fois** : une fois en clair dans le
+  bloc JSON-LD `FAQPage`, une fois balise `<strong>` dans le `<details>`
+  visible. Les deux doivent etre modifies, sinon le rich snippet Google et la
+  page divergent.
+- `faq-en.html` : meme operation (« Four form the petroleum chain — Upstream,
+  Midstream, Downstream, Petrochemicals »), plus deux reponses FAQ ou
+  `(Petrochemicals extension of the Downstream)` devient
+  `(Petrochemicals pole)`.
+- `index-en.html` : `<h2>Seven poles — extended by chemicals — one integrated
+  chain</h2>` devient `<h2>Eight poles — one integrated chain</h2>` ; le
+  chapeau passe de « modular refining and distribution, extended by chemicals
+  and powered by a digital backbone » a « modular refining, distribution and
+  petrochemicals, powered by a digital backbone ».
+- `activites-en.html` : « Three poles form the oil chain [...] extended by
+  chemicals » devient « Four poles form the oil chain — Upstream, Midstream,
+  Downstream, Petrochemicals ».
+- `pole-enerchimie-en.html` : `<title>` et `<h1>` passent de
+  `Petrochemicals · petroleum chemistry` a
+  `Petrochemicals · chemistry & transformation` (miroir du francais) ; la
+  `meta description`, l'`og:description` et la `description` du JSON-LD
+  `WebPage` (3 occurrences du meme texte) sont reecrites ; le `<div class="note">`
+  de bas de page passe de « Chemistry extension of the Downstream » a
+  « Petrochemicals pole ».
+
+**8e carte dans la grille `#poles` de `index-en.html`.** La grille ne
+contenait que **7 cartes `.card.pk`** alors que 8 liens `pole-*-en` existaient
+dans la page (les 8e vivait uniquement dans le mega-menu et le pied de page).
+Une carte `Petrochemicals` a ete inseree juste apres `Downstream`, avec
+`--ac:#D177B4`, le tag `core business` et les deux KPI
+`Sedigui · complex` / `4 product lines`. Au passage la carte `Downstream` a
+perdu sa mention « chemistry & petrochemicals extension included », devenue
+fausse.
+
+**Grille « Inside this pole » de `pole-enerchimie-en.html`.** Elle ne listait
+que 2 des 4 sous-pages. Ajout de `Complex & units` (`/petrochimie/complexe`,
+accent `#D177B4`) et `Markets & applications` (`/petrochimie/marches`, accent
+`#E8C36A`), au format existant `<a class="card" style="--ac:…"><span
+class="t"></span><span class="d"></span><span class="d" style="…color:…">Read
+in French →</span></a>`. Le chapeau passe de « The full pages » a « The four
+pages ».
+
+**Pied de page, 155 fichiers.** `div.foot-poles` ne listait que 7 poles dans
+*toutes* les langues. Insertion apres l'Aval / le Downstream de :
+
+    <a class="foot-pole" style="--pc:#D177B4" href="/petrochimie/">Petrochimie</a>
+    <a class="foot-pole" style="--pc:#D177B4" href="/pole-enerchimie-en">Petrochemicals</a>
+
+Trois variantes de pied de page coexistent et il faut les traiter separement :
+94 fichiers en francais (`href="/aval/"`, libelle `Aval`), 60 en anglais
+(`href="/pole-aval-en"`, libelle `Downstream`) et **1 hybride**,
+`journal-integrite-faire-durer-en.html`, qui porte des libelles francais sur
+des liens anglais (`href="/pole-aval-en"`, libelle `Aval`). Un simple
+`replace` sur la variante francaise laisse ce fichier de cote sans rien
+signaler.
+
+### Pieges rencontres
+
+**Piege 1 — l'espace insecable, encore.** `societe.html` contient
+`que prolonge la chimie\xa0; quatre capacites` : le `replace` sur une chaine
+saisie avec une espace normale renvoie 0. Meme cause que le piege documente en
+section 30 pour `aval/index.html`. Reflexe : avant tout remplacement portant
+sur une phrase francaise contenant `;`, `:`, `!`, `?` ou `»`, verifier avec
+`repr()` la presence de `\xa0`.
+
+**Piege 2 — le glob de premier niveau.** `glob('*.html')` manque les 43
+fichiers des sous-repertoires. Deux fichiers anglais (`enerconseils/audits-en`,
+`docs-sources/brochure_print_en`) ont ainsi survecu au premier passage. Le
+controle final doit toujours etre un `grep -r --include=*.html`.
+
+**Piege 3 — capture de contraste qui ne se termine pas.** Le script de mesure
+attendait indefiniment sur `faq-en.html` : `scrollIntoViewIfNeeded()` bloque
+sur un element place dans un `<details>` referme, et le JSON n'etant ecrit
+qu'a la toute fin, 457 captures ont ete perdues. Deux corrections a conserver
+dans tout script de ce type : **ecrire le JSON apres chaque page** (pas a la
+fin), et **envelopper chaque capture dans un `Promise.race` avec un delai**
+(`scrollIntoViewIfNeeded({timeout:3000})` + `screenshot({timeout:4000})` +
+garde-fou global a 6 s).
+
+### Verifications
+
+- **Contraste** : 260 mesures (5 groupes de selecteurs x 3 pages x 2 themes x
+  2 largeurs), methode mediane-pixels de la section 30, **0 echec**. Minimum
+  sombre 5.36, minimum clair 5.64. Les 48 mesures propres a la Petrochimie
+  descendent au plus bas a 5.64 (`Read in French →` en clair) et 5.84 (le
+  meme en sombre, `#D177B4`).
+- **Bon a savoir** : les couleurs d'accent posees en **style inline** sur les
+  cartes (`color:#D177B4`, `color:#E8C36A`) sont **remappees automatiquement
+  par le theme clair** vers des equivalents sombres (`rgb(122,87,14)`,
+  `rgb(27,78,140)`, `rgb(9,78,55)`). Il n'y a donc pas besoin de prevoir une
+  variable claire dediee pour ces libelles, contrairement au couple
+  `--mac` / `--macl` de la home.
+- **axe-core**, 7 pages anglaises x 2 fenetres : uniquement le `region`
+  (moderate) preexistant sur `.hero` / `.kick` / `h1`. Aucune nouvelle
+  violation.
+- **Console et reseau** : 0 erreur console, 0 reponse HTTP >= 400 sur les 14
+  chargements.
+- **Geometrie** : `scrollWidth` 380 pour `innerWidth` 390 sur les 7 pages en
+  mobile — aucun debordement horizontal.
+- **Integrite** : 6 blocs JSON-LD par page revalides par `json.loads` sur les
+  10 fichiers les plus retouches ; equilibre `<a>` / `</a>` verifie sur les
+  **164 fichiers HTML** du site (0 desequilibre).
+
+### Point laisse ouvert
+
+Le bandeau `div.hxc` du hero (« La chaine integree · Amont -> Intermediaire ->
+Aval -> la pompe », et son equivalent anglais) n'a **pas** ete modifie. Il
+illustre le trajet physique du carburant « de la roche-mere a la pompe », pas
+la liste des poles ; y inserer la Petrochimie casserait la fin de phrase. Les
+deux langues restent donc identiques sur ce point. A trancher si l'on veut
+faire apparaitre le 4e maillon des le hero.
