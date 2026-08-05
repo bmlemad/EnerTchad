@@ -1529,3 +1529,110 @@ illustre le trajet physique du carburant « de la roche-mere a la pompe », pas
 la liste des poles ; y inserer la Petrochimie casserait la fin de phrase. Les
 deux langues restent donc identiques sur ce point. A trancher si l'on veut
 faire apparaitre le 4e maillon des le hero.
+
+---
+
+## 32. Miroir anglais du bloc `#coeurs` — quatre maillons pleine page (2026-08)
+
+La home francaise ouvre depuis juillet sur `#coeurs` : quatre panneaux pleine
+page (Amont -> Intermediaire -> Aval -> Petrochimie) precedes d'un chapeau
+d'orientation `.acth`. La home anglaise, elle, en etait restee a une simple
+section explicative `#value-chain-explained` (4 218 octets) placee tout en bas,
+apres `#vision`. Cette section a ete **remplacee** par le miroir anglais complet
+du bloc, et celui-ci a ete **remonte en premier enfant du conteneur principal**,
+comme en francais : on oriente le visiteur avant de lui detailler les huit poles.
+
+### Ce qui a ete fait
+
+- `<section id="value-chain-explained">…</section>` supprimee (plus aucune
+  occurrence du terme dans le site ; **rien nulle part ne pointait vers cette
+  ancre**, verification faite avant suppression).
+- Nouveau `<section id="coeurs">` de 8 119 octets, premier enfant de `<main>`,
+  contenant le chapeau `.acth.acth-first`, quatre `<article class="mln">`
+  (`link-upstream`, `link-midstream`, `link-downstream`, `link-petrochemicals`,
+  les deux pairs en `.mln-rev`) et la pastille doree finale vers
+  `/explorateur-chaine-en`.
+- `index-en.html` : 77 095 -> 93 875 octets.
+- Aucun fichier de `assets/chrome/` touche : **pas de bump de `sw.js`**.
+
+### Pourquoi le CSS est inline et non lie
+
+Deux surprises, documentees ici pour la prochaine fois :
+
+1. **Les styles `.mln*` n'existent dans aucune feuille.** Ils vivent uniquement
+   dans `<style id="mln-css">` a l'interieur de `index.html` (10 071 octets).
+   Ils sont integralement portees par `#coeurs`, donc sans fuite possible : le
+   bloc a ete **repris verbatim** dans le head de `index-en.html`.
+2. **Les styles `.acth` de base vivent dans `assets/chrome/x_77d650c4a7a2.css`**
+   (58 484 octets), feuille que `index-en.html` ne charge pas. La lier aurait
+   restyle des elements anglais sans rapport ; lier `x_efffae1a94e5.css`
+   (l'affinage utilise cote FR) aurait impose `main>section{padding:46px}` et un
+   fond force a toute la page anglaise. On a donc **recopie les seules regles
+   `.acth*`, re-portees sous `#coeurs`**, fusionnees avec les affinages FR
+   (`padding:34px 0`, `max-width:1080px`, chapeau a `74ch`, pas de `::before`),
+   dans un nouveau `<style id="acth-css-en">` (2 765 octets).
+
+Corollaire : toute evolution future du design des maillons doit etre repercutee
+**a la main dans les deux fichiers**. C'est le prix a payer pour ne pas charger
+58 Ko de CSS sur la home anglaise.
+
+### Le piege du theme clair
+
+Les regles claires de `bundle_core_a1.css` visant les sections hors conteneur
+principal sont **plus agressives** que leur jumelle : leur clause `span` aplatit
+`.mln-ghost` en `#2A3648` et leur clause `[class*="-k"]` ecrase `.mln-k`,
+`.acth-k` et `.mln-kpis` en `#6B500F`. Cinq surcharges de la forme
+`html.et-plight #coeurs .X:not(#_)` (2 ID de specificite, donc gagnantes)
+rendent au bloc ses accents. Elles sont conservees meme apres la remontee dans
+le conteneur principal : elles coutent 5 lignes et protegent le bloc quel que
+soit son parent.
+
+Note volontaire : `.acth-k` est **laisse** virer au brun `#6B500F` en theme
+clair — c'est plus lisible que l'accent d'origine, et cela corrige une faiblesse
+latente du chapeau francais plutot que de la recopier.
+
+### Liens des volets « What we do »
+
+Toutes les pages anglaises n'existent pas. Les destinations restees francaises
+portent `hreflang="fr"`, un `aria-label` suffixe « — page in French » et une
+petite pastille `FR` (`i.mln-fr`, `aria-hidden`), sur le modele du « Read in
+French -> » deja en place sur les pages de pole anglaises.
+
+- Amont : `/amont/activites` **(FR)**, `/services-ep-en`, `/eor-en`, `/parc-en`
+- Intermediaire : `/intermediaire/logistique`, `/services`, `/sites` — **les 3 en FR**
+- Aval : `/raffinage-en`, `/reseau-en`, `/produits-en`, `/distribution-en` — tout en anglais
+- Petrochimie : `/petrochimie/complexe`, `/produits`, `/marches`, `/chimie-eor` — **les 4 en FR**
+
+Les 20 cibles ont ete verifiees comme existant sur le disque avant publication.
+
+### Animation d'apparition
+
+`index-en.html` n'embarque **aucun IntersectionObserver**, et
+`bundle_core_a1.css` y neutralise `.reveal` (`opacity:1!important`). Les classes
+`reveal` recopiees depuis le francais sont donc inertes : aucun JS a ajouter,
+aucun risque de contenu invisible. C'est voulu — a ne pas « reparer ».
+
+### Recette de verification (280 mesures, 0 echec)
+
+- **Contraste** : `.mln-t`, `.mln-d`, `.mln-k`, `.mln-step`, `.mln-kpis`,
+  `.mln-nav a`, `.mln-nh`, `.mln-go`, `.mln-fr`, `.acth-k`, `.acth h2`,
+  `.acth-l` — 2 themes x 2 fenetres (1280 et 390) = **280 captures, 0 echec
+  AA**. Minima : 4,51 (`.mln-k` clair), 4,69 (`.mln-fr` clair), 4,79 (liens de
+  volet clairs) ; tout le reste au-dessus de 5.
+- **axe-core** : aucune nouvelle violation ; seul subsiste le `region`
+  (moderate) preexistant sur `.hero`.
+- **Console / reseau** : 0 erreur, 0 reponse >= 400.
+- **Geometrie** : panneaux a 900 px en 1280x900 et 844 px en 390x844, `.mln-bg`
+  et `.mln-veil` remplissant l'article — **valeurs identiques a la home FR**.
+  `scrollWidth` 1270/1280 et 380/390 : aucun debordement horizontal.
+- **Balisage** : `<a>`/`</a>` 156/156, `<section>` 3/3, `<article>` 4/4,
+  `<div>` 91/91, `<nav>` 7/7.
+
+### Piege d'outillage rencontre
+
+Le premier deplacement du bloc a ete insere dans un **commentaire CSS** parce
+que la regex `<main[^>]*>` a trouve la chaine `<main>` ecrite dans un
+commentaire de `acth-css-en` situe plus haut dans le head. Le bloc disparaissait
+alors du DOM (hauteur de page 8 048 -> 3 920). Deux lecons : ne jamais ecrire de
+balise litterale dans un commentaire CSS, et **toujours chercher `<main>` apres
+`</head>`**. Le script `/root/work/encoeurs.py` applique desormais les deux.
