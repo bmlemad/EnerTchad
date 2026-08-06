@@ -2626,3 +2626,25 @@ DEUX LECONS DE FABRIQUE :
   (« Tchaditude · capital humain » avec em) suivent un autre motif
   volontaire, non touches.
 - QA locale : 8 pages 200, psn-home verifie, 0 occurrence residuelle.
+
+## 62. Ultra-review integrale (2026-08-06)
+
+- 3 passes a HEAD a975f614 : statique 177 pages (metadonnees, JSON-LD,
+  hreflang bidirectionnel, sitemap, liens+ancres, a11y, residus de
+  langue), runtime Playwright 12 pages x 2 viewports, visuelle
+  (sombre/clair/mobile). Rapport livre : ultra-review-2026-08.md.
+- Socle : 0 titre/desc duplique, 0 JSON-LD invalide, 0 asymetrie
+  hreflang (150 pages), sitemap 172=172, 0 lien casse (faux positifs
+  verifies : /en=308, ?profil= query, #p= etat configurateur), 0 img
+  sans alt, 0 saut de titres, 0 erreur console / >=400 / overflow sur
+  24 combos. TTFB prod 0.37-0.82s.
+- Constats classes : (1) mega-menu chrome EN -> 1337 liens FR non
+  marques, 69 cibles, dont ~200 avec jumelle EN existante (greentech/*
+  en tete) — balayage a faire ; (2) ticker produits FR (pt-chip) sur
+  9 jumelles EN (intermediaire x3, petrochimie x4, enerconseils x2) ;
+  (3) footer FR entier sur journal-integrite-faire-durer-en (vieille
+  generation) ; (4) 4 meta desc >170c (esg 230, esg-en 214,
+  pole-enerchimie-en 186, activites-en 182) ; (5) 8 ancres vides
+  th-cta sur les hubs (cosmetique).
+- Ordre recommande : lot correctif 1a+2+3, puis traduction Tchaditude,
+  puis corporate (~640 liens entrants EN vers cibles corporate FR).
