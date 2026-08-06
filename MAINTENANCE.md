@@ -2749,3 +2749,14 @@ DEUX LECONS DE FABRIQUE :
 - Sitemap 177. QA 4 pages 0 defaut. Reste pour EnerConseils : atlas
   (4 619 mots, la plus grosse page du site). Restent aussi les 5
   pages TchadiTech, puis corporate.
+
+## 68. Finitions ultra-review 4+5 (2026-08-06)
+
+- Meta descriptions resserrees <=165c sur les 4 pages en depassement
+  (esg 230->164, esg-en 214->149, pole-enerchimie-en 186->129,
+  activites-en 182->127) — desc + og:description + twitter alignees.
+- Ancres vides <a id=th-cta></a> -> <span> sur les 8 hubs de pole
+  (verifie : aucun selecteur a#th-cta dans les CSS).
+- Les 5 constats de l'ultra-review sont regles. Restent au backlog
+  traduction : atlas (4 619 mots), TchadiTech (5 pages), corporate
+  (13 pages), et la passe nav mega-menu pour les cibles restantes.
