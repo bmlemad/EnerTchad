@@ -2276,3 +2276,28 @@ boutons restait a faire.
   (aucune ecriture sur le mauvais fichier : la 1re assertion passait sur
   le vieux markup mais l'ancre CSS manquante a tue le script AVANT
   write — toujours garder une assertion sur un marqueur RECENT).
+
+## 48. Home : micro-finitions B4+B5+A5 (2026-08)
+
+Huitieme lot du plan, trois retouches en un commit.
+
+- **B4 compteurs** : `<script id="kpi-count">` avant `</body>` — les 4
+  stats du hero (`.hx-stat b` : 8 poles, 100 %, 20 Md, 12 stations)
+  comptent de 0 a N en 600 ms (ease-out p*(2-p), rAF), au premier
+  40 % de visibilite du `.hx-strip`, une seule fois. Desactive sous
+  `prefers-reduced-motion`. Les chips « En bref » ne sont PAS animees
+  (cartes retournables avec aria-labels riches — ne pas toucher leur
+  textContent). NB verification : echantillonner APRES ~2 s, un
+  echantillon a 1,4 s montre 99 % en plein vol (fausse alerte).
+- **B5 relief** : `background-image` radial dore a 5,5 % d'alpha sur les
+  plages claires (theme clair seulement), cote alterne gauche/droite
+  (#conviction/.inv/#carnets/.shortcuts a gauche ; #vision/.hxi/
+  #produits-acces a droite). Sans `!important` : toutes ces sections
+  etaient a fond transparent (verifie au prealable) — si un fond leur
+  est ajoute un jour, la texture s'efface d'elle-meme.
+- **A5 cartes retournables** : les 9 boutons `.flip-hint` passent de
+  l'icone `↻` (lisible comme « recharger ») au libelle mono
+  « + DETAIL » en pilule (padding 3/10, .58rem, uppercase). Le JS
+  `flip-js` est inchange (clic hint = flip, verifie). Point backlog
+  « flip-card focus » partiellement traite : le bouton est un vrai
+  <button> focusable, libelle explicite.
