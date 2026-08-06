@@ -2399,3 +2399,38 @@ Maillage bidirectionnel :
 - Verifie : 0 erreur, 0 requete >=400, 0 residu FR dans <main>,
   subnav active correcte. Le pole Conseil a desormais 2 pages EN
   (audits-en, esg-en).
+
+## 53. Amont : /activites-en reconstruit — vraie jumelle E&P (2026-08)
+
+La derniere chip FR du #coeurs anglais visait /amont/activites. Enquete :
+**/activites-en existait deja** mais contenait l'ANCIENNE page generique
+« Our business » (vieille generation, main de 3 Ko) — alors que tout
+l'ecosysteme (hreflang de la page elle-meme, bascule nx-lang de
+/amont/activites, subnavs EN du pole via parc-en/eor-en) la designait
+deja comme jumelle de la page E&P moderne. Resolution : RECONSTRUCTION
+EN PLACE (aucun nouveau slug, aucun recablage des ~30 pages qui la
+lient).
+
+- Convention decouverte : les jumelles EN des sous-pages amont vivent a
+  la RACINE (/eor-en, /services-ep-en, /parc-en) — pas en
+  /amont/xxx-en comme intermediaire/petrochimie.
+- Generateur `/root/work/mkacten.py` (la fabrique mkimen a ete perdue
+  dans les rewinds ; recreee en plus simple) : chrome corp transplante
+  de parc-en (meme pole, meme generation), subnav EN de parc-en avec
+  is-active deplace, head transforme (FAQPage FR generique RETIREE,
+  convention §mkpxen), milieu [main..footer) traduit par ~120 paires
+  avec motif() tolerant NBSP/&amp;, footer DOM de parc-en + scripts FR
+  de la page conserves (ils portent le JS accordeon/epw specifique).
+- Liens du milieu re-pointes vers les jumelles EN existantes (eor-en,
+  services-ep-en, parc-en, pole-amont-en, investisseurs-en, contact-en,
+  2 carnets -en). Bascules de langue : nx-lang nav ET lien >Fran du
+  footer transplante -> /amont/activites.
+- Residus FR traques : bandeau noscript + legende diapo
+  "Image d'illustration" (DANS LE JS de queue, echappee \\u2019 — le
+  scan DOM ne la voit pas, verifier aussi les scripts).
+- index-en : le tiroir E&P de #coeurs perd sa derniere chip FR ->
+  /activites-en. Le #coeurs anglais est desormais 100 % sans chip FR
+  sur ses tiroirs maillons. Sitemap : entree deja presente.
+- Verifie : 0 erreur, 0 requete >=400, accordeons fonctionnels
+  (aria-expanded), subnav active correcte, alternates trio coherent
+  des deux cotes (x-default = FR).
