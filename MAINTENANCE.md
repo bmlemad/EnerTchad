@@ -2865,3 +2865,76 @@ DEUX LECONS DE FABRIQUE :
   (4) Faux positif du scanner : 'Mobile Station(TM)(TM)' = artefact
   d'extraction (le TM du titre + celui du tooltip), rien en source.
 - Outil : /root/work/dedup.txt (scan complet, 1615 lignes).
+
+## 74. Simulation de navigation multi-profils (2026-08-06)
+
+- 5 parcours Playwright depuis la home : investisseur, operateur E&P /
+  client B2B, candidat, institutionnel, lecteur anglophone. Script :
+  /root/work/personas.js (log JSON personas.json).
+- RESULTATS : parcours FR courts (1-3 clics) et convertissants —
+  investisseurs -> /investisseurs#souscrire ; B2B -> services-ep ->
+  eor -> clients ; candidat -> carrieres + CTA mailto 'Postuler'
+  pre-rempli ; institutionnel -> gouvernance/ethique/impact -> contact
+  (6 mailto pre-remplis par profil + formulaire). Aucun cul-de-sac.
+- FRICTION REELLE (corrigee) : sur TOUTES les pages EN (79), les liens
+  de chrome vers les pages restees FR (Careers, 2030 Targets,
+  Communities, Innovation, Site map, Accessibility, Disclaimers,
+  brochure, charte, gouvernance) ne signalaient pas le changement de
+  langue -> 788 liens marques hreflang="fr" +
+  aria-label "... (in French)" (liens nx-lang du commutateur exclus).
+  Script re-executable : /root/work/mark-fr-links.py.
+- Non-retenus : ajout d'un twin EN carrieres (backlog traduction
+  corporate), formulaire dedie candidat (mailto pre-rempli suffisant
+  au stade societe en constitution).
+
+## 75. Audit des tuiles (cards) + polish design (2026-08-06)
+
+- Inventaire des familles : pj (projets), art (carnets), ppj-card /
+  pmore-card / pcard / adx / rlk (chrome partage assets/chrome/*.css).
+  Constat : hover/lift DEJA presents partout (pj, art, pcard, adx,
+  ppj-card via s_1a968f2660.css, pmore-card via x_54cf..., rlk via
+  u2_...) — pas de manque d'affordance.
+- DEFAUT REEL (captures) : sur fonds photo/motifs animes, les tuiles
+  pj et art avaient des fonds quasi transparents (rgba blanc .012-.05)
+  -> texte pose sur la texture, lisibilite moyenne, bords flottants.
+- CORRECTIF <style id="tile-polish"> (projets, projets-en, carnets,
+  carnets-en) : verre navy ancre — pj: gradient rgba(20,32,54,.86)->
+  rgba(13,21,36,.62) + backdrop-blur 10px sat 1.15 ; art:
+  rgba(17,27,46,.74) + blur 9px ; hover renforce ; focus-visible or ;
+  fallback @supports not backdrop-filter (fonds quasi opaques).
+  Scope html:not(.et-plight) -> theme clair intact (verifie capture).
+- Assets chrome NON touches (pas de bump sw.js).
+
+## 76. Offre champs matures renforcee (2026-08-06)
+
+- amont/services-ep.html : nouvelle section #champs-matures (apres
+  #packs-phase, style trisec/fam6 existant, --pac orange F2A65A) —
+  5 leviers : diagnostiquer (revue integree), recuperer plus (pilotes
+  EOR par paliers, ASP local), valoriser l'eau (Water-to-Value),
+  etendre la vie (integrite & maintenance predictive), optimiser
+  l'OPEX (configurateur pack EOR) ; bandeau modele commercial 'baril
+  additionnel constate' + mailto pre-rempli operateur E&P.
+- services-ep-en.html (page EN generation anterieure) : section
+  #mature-fields equivalente au format ofsc de cette page (4 cartes).
+- solutions.html / solutions-en.html : lien 'Offre champs matures' /
+  'Mature-fields offer' ajoute dans le tiroir Produire & recuperer.
+- QA Playwright : sections rendues (FR h=1084, EN h=889), 0 erreur
+  console, liens verifies (eor#eor, #eor-science, journaux eau et
+  integrite, configurateur #p=operateur&d=eor). Secrail OK.
+
+## 77. Titres et sous-titres : passe benchmark majors (2026-08-06)
+
+- Audit des h1 du site vs pratique des majors (TotalEnergies, Chevron,
+  Equinor) : home et pages corporate deja au niveau (h1 'benefice',
+  ex. 'Le Tchad exporte son brut et importe ses carburants. Nous
+  inversons.'). Les h1 'etiquette' des sous-pages de poles
+  (ex. 'Logistique & corridor d'export') sont VOULUS : symetrie
+  subnav <-> h1 (wayfinding), avec standfirst fort dessous — meme
+  pattern que les pages sections des majors. Conserves.
+- 4 h1 purement fonctionnels modernises :
+  achats 'Achats & approvisionnement' -> 'Acheter tchadien d'abord,
+  approvisionner sans rupture.' (EN : 'Buy Chadian first, supply
+  without interruption.') ; publications 'Publications & documents'
+  -> 'Ce que nous affirmons, nous le publions.' (EN : 'What we
+  claim, we publish.'). Leads existants conserves.
+- Pages legales laissees en h1 fonctionnels (attendu).
