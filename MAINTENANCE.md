@@ -2434,3 +2434,24 @@ lient).
 - Verifie : 0 erreur, 0 requete >=400, accordeons fonctionnels
   (aria-expanded), subnav active correcte, alternates trio coherent
   des deux cotes (x-default = FR).
+
+## 54. Home : etagere documentaire (reco 6, derniere de l'audit) (2026-08)
+
+Section `#publications` inseree entre #durabilite (hxi) et les
+raccourcis, juste avant la conclusion de page. Derniere recommandation
+code de l'audit majors — le contre-audit n'en laissait plus d'autre.
+
+- 4 cartes de telechargement direct (attribut `download`) vers des PDF
+  DEJA presents a la racine du depot : Brochure (207 Ko), Fiche
+  investisseur (8 Ko), Fiche technique Amont (21 Ko), Fiche technique
+  Aval (7 Ko) — tailles reelles affichees en meta mono. Egalement
+  disponibles mais non retenus : Brochure EN, Fiche AR (place limitee ;
+  la page /publications les porte).
+- Lien « Toutes les publications → » vers /publications (page qui
+  existait deja — la home n'y liait pas).
+- Kicker via `class="sec-k"` (motif A3), titre sur l'echelle commune,
+  cartes en couleurs `currentColor`/herite (robustes clair+sombre,
+  meme approche que foot-news), icone document doree #B08420.
+- Rail : 9e point « Publications » (#F2B45A), scrollspy verifie.
+- 0 erreur, 0 requete >=400 ; capture apres ~2 s (le .reveal en cours
+  rend les captures floues — piege recurent).
