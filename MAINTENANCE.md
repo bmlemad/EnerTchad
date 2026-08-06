@@ -1636,3 +1636,90 @@ commentaire de `acth-css-en` situe plus haut dans le head. Le bloc disparaissait
 alors du DOM (hauteur de page 8 048 -> 3 920). Deux lecons : ne jamais ecrire de
 balise litterale dans un commentaire CSS, et **toujours chercher `<main>` apres
 `</head>`**. Le script `/root/work/encoeurs.py` applique desormais les deux.
+
+---
+
+## 33. ESG/RSE enrichis, site eclairci, QA integrale (2026-08)
+
+Trois directives traitees dans la meme passe : « enrichir ESG et RSE »,
+« rendre le site plus eclaire », « QA de tout le site ».
+
+### 33.1 Enrichissement ESG / RSE
+
+- **`engagements.html` — section `#esg` etoffee** de trois sous-blocs entre la
+  grille des trois piliers et l'alignement ODD : **La double materialite**
+  (deux cartes : materialite financiere / materialite d'impact, lecture
+  CSRD/ESRS), **Les parties prenantes** (quatre cartes : riverains &
+  collectivites, Etat & regulateur, salaries & sous-traitants, partenaires &
+  investisseurs — chacune avec son canal de remontee), **Le mecanisme de
+  griefs** (quatre etapes datees : recevoir, accuser reception, instruire,
+  repondre & tracer — sans represailles, distinct du canal lanceurs d'alerte).
+  Classes existantes reutilisees (`.sk`, `.grid`, `.card`, `.std`) : aucun
+  style ajoute.
+- **`communautes.html` — section `#dialogue` enrichie** : grille passee de 3 a
+  4 cartes (ajout « Mecanisme de griefs » avec lien vers `engagements#esg` et
+  « Mecenat & reinvestissement local » ; cartes existantes densifiees), kicker
+  passe a « 05 · Dialogue, griefs & mecenat ».
+- **`engagements-en.html`** : deux entrees miroir ajoutees (« Double
+  materiality », « Grievance mechanism ») dans son format h2 + p.lead, et
+  **correction d'un lien** : le bouton « Full commitments (French) »
+  s'auto-referencait (`/engagements-en`) — il pointe desormais vers
+  `/engagements`.
+- Les espaces insecables avant `:` sont respectes dans tout le texte ajoute.
+- Le tableau chiffre des indicateurs ESG vit deja sur `cibles-2030` (section
+  « Indicateurs ESG — reference et cibles 2030 ») : pas de duplication, les
+  nouveaux blocs y renvoient conceptuellement. Le FAQPage JSON-LD n'a pas ete
+  modifie.
+
+### 33.2 Eclaircissement du theme sombre (« rendre le site plus eclaire »)
+
+Trois leviers, sans toucher a la translucidite ni aux voiles des maillons
+(`.mln-veil` inchange) ni a la liste des zones gelees (§ anterieurs) :
+
+1. **Couche `lg-interior` (88 fichiers)** : fond de base
+   `html{background:#070c15}` -> **`#0B1424`** ; les cinq nappes aurora de
+   `body::before` remontees (or .38->.46, bleu .30->.38, teal .30->.36, ambre
+   .26->.32, violet .16->.20) et les deux nappes `html::before` (.22->.28,
+   .20->.26).
+2. **Voile de section du theme sombre (102 fichiers)** : la regle
+   `html:not(.et-plight):not(.et-jlight) main>section, ... body>section ...`
+   passe de `rgba(8,13,22,.50)` a **`.38`** — le diaporama respire davantage.
+3. **Feuilles globales** : `x_685ad1e3eb1b.css` (pages EN) .30 -> **.22** (3
+   occurrences : pghero/hero, sections, footer) ; `x_efffae1a94e5.css` (home
+   FR) .28 -> **.20** (3 occurrences). **`sw.js` bumpe** :
+   `et-202608051800` -> `et-202608052300`.
+
+**Verification contraste apres eclaircissement** (methode du fond median,
+theme sombre, 2 largeurs) : 324 mesures sur `/`, `/index-en`, `/engagements`,
+`/communautes`, `/petrochimie/complexe` — **0 echec AA** ; minima 5,82
+(`.mln-nh`) et 5,95 (`.px-tag`), tout le reste > 6.
+
+### 33.3 QA integrale du site
+
+- **Equilibre du balisage (164 fichiers,** style/script/commentaires exclus —
+  les compteurs naifs comptent les `<main>` ecrits dans les commentaires CSS) :
+  4 vrais defauts trouves et corriges :
+  - `explorateur-chaine.html` + `-en` : un `</div>` orphelin apres le footer
+    interne **et** un `<main>` jamais ferme — l'orphelin a ete remplace par
+    `</main>`, reglant les deux d'un coup.
+  - `enerconseils/audits.html` + `-en` : `<main>` jamais ferme — `</main>`
+    insere avant `<footer>` (le DOM effectif ne change pas : les sections
+    restent dans main, le footer en sort).
+- **Liens internes** : 0 lien casse sur les 164 pages (resolution cleanUrls +
+  table `redirects` de `vercel.json` ; les pseudo-hrefs `'+k.u+'` des gabarits
+  JS et « / » sont des faux positifs connus du verificateur).
+- **JSON-LD** : 521 blocs, tous `json.loads`-valides.
+- **axe-core (16 pages x 2 largeurs, theme sombre)** : uniquement les
+  `region`/`landmark-unique` moderes preexistants. Un `color-contrast` serious
+  x42 sur `/aval/raffinage` (`.tri-c p`) s'est revele **faux positif** : la
+  mesure photographique (126 captures, fond median) donne des minima a 8,79 —
+  axe ne sait pas composer les fonds translucides sur photo.
+- **Console/reseau** : 0 erreur, 0 reponse >= 400 sur les 32 chargements.
+- **Geometrie** : aucun debordement horizontal (scrollWidth <= innerWidth
+  partout, 1280 et 390).
+
+### Publication
+
+158 fichiers modifies (116 racine + 40 en sous-dossiers + 2 CSS) + ce journal,
+en 10 commits (un par dossier). Les pages Petrochimie anglaises
+(`petrochimie/*-en.html`, section 32) restent le prochain chantier en attente.

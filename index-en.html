@@ -74,24 +74,24 @@ a:focus-visible,summary:focus-visible{outline:2px solid var(--gold-l);outline-of
   --g-radius:22px;
 }
 /* ---- ambient aurora backdrop — brighter, dual-layer (body::before + html::before), more mobile ---- */
-html{background:#070c15!important}
+html{background:#0B1424!important}
 body{position:relative;background:transparent!important;isolation:isolate}
 body::before{
   content:"";position:fixed;inset:-20%;z-index:-2;pointer-events:none;
   background:
-    radial-gradient(38% 42% at 16% 20%, rgba(219,174,74,.38), transparent 60%),
-    radial-gradient(34% 40% at 84% 14%, rgba(90,167,240,.30), transparent 58%),
-    radial-gradient(48% 50% at 76% 84%, rgba(31,164,150,.30), transparent 60%),
-    radial-gradient(42% 46% at 24% 88%, rgba(224,162,78,.26), transparent 58%),
-    radial-gradient(30% 34% at 52% 46%, rgba(120,90,220,.16), transparent 60%);
+    radial-gradient(38% 42% at 16% 20%, rgba(219,174,74,.46), transparent 60%),
+    radial-gradient(34% 40% at 84% 14%, rgba(90,167,240,.38), transparent 58%),
+    radial-gradient(48% 50% at 76% 84%, rgba(31,164,150,.36), transparent 60%),
+    radial-gradient(42% 46% at 24% 88%, rgba(224,162,78,.32), transparent 58%),
+    radial-gradient(30% 34% at 52% 46%, rgba(120,90,220,.20), transparent 60%);
   filter:blur(26px);
   animation:auroraDrift 30s ease-in-out infinite alternate;
 }
 html::before{
   content:"";position:fixed;inset:-20%;z-index:-3;pointer-events:none;mix-blend-mode:screen;
   background:
-    radial-gradient(30% 34% at 70% 30%, rgba(219,174,74,.22), transparent 60%),
-    radial-gradient(28% 32% at 30% 66%, rgba(90,167,240,.20), transparent 60%);
+    radial-gradient(30% 34% at 70% 30%, rgba(219,174,74,.28), transparent 60%),
+    radial-gradient(28% 32% at 30% 66%, rgba(90,167,240,.26), transparent 60%);
   filter:blur(34px);animation:auroraDrift2 38s ease-in-out infinite alternate;
 }
 body::after{
@@ -185,7 +185,7 @@ main > section, .sec, .hx-strip{background:transparent!important}
 .cmdk-panel,.lum-panel{background:rgba(11,17,28,.7)!important;-webkit-backdrop-filter:saturate(200%) blur(30px);backdrop-filter:saturate(200%) blur(30px);border:1px solid var(--g-brd)!important;box-shadow:var(--g-shadow)!important}
 
 </style>
-<style id="diapoland-css">html:not(.et-plight):not(.et-jlight) .diapo::after{background:radial-gradient(120% 92% at 50% 40%,rgba(4,8,16,.16) 46%,rgba(4,8,16,.44)),linear-gradient(180deg,rgba(7,12,21,.58),rgba(7,12,21,.70))}html:not(.et-plight):not(.et-jlight) main,html:not(.et-plight):not(.et-jlight) header,html:not(.et-plight):not(.et-jlight) footer{--muted:#A8B6C9}html:not(.et-plight):not(.et-jlight) footer{background:rgba(8,13,22,.68)!important;text-shadow:0 1px 10px rgba(0,0,0,.55)}html:not(.et-plight):not(.et-jlight) main>section,html:not(.et-plight):not(.et-jlight) body>section,html:not(.et-plight):not(.et-jlight) section[id]{background:rgba(8,13,22,.50)!important}</style><style id="mln-css">/* ================= MAILLONS PLEINE PAGE (2026-08) =================
+<style id="diapoland-css">html:not(.et-plight):not(.et-jlight) .diapo::after{background:radial-gradient(120% 92% at 50% 40%,rgba(4,8,16,.16) 46%,rgba(4,8,16,.44)),linear-gradient(180deg,rgba(7,12,21,.58),rgba(7,12,21,.70))}html:not(.et-plight):not(.et-jlight) main,html:not(.et-plight):not(.et-jlight) header,html:not(.et-plight):not(.et-jlight) footer{--muted:#A8B6C9}html:not(.et-plight):not(.et-jlight) footer{background:rgba(8,13,22,.68)!important;text-shadow:0 1px 10px rgba(0,0,0,.55)}html:not(.et-plight):not(.et-jlight) main>section,html:not(.et-plight):not(.et-jlight) body>section,html:not(.et-plight):not(.et-jlight) section[id]{background:rgba(8,13,22,.38)!important}</style><style id="mln-css">/* ================= MAILLONS PLEINE PAGE (2026-08) =================
    Trois panneaux plein ecran dans #coeurs : Amont / Intermediaire / Aval.
    Portee : uniquement #coeurs de la page d'accueil. Deux themes. */
 
