@@ -2455,3 +2455,24 @@ code de l'audit majors — le contre-audit n'en laissait plus d'autre.
 - Rail : 9e point « Publications » (#F2B45A), scrollspy verifie.
 - 0 erreur, 0 requete >=400 ; capture apres ~2 s (le .reveal en cours
   rend les captures floues — piege recurent).
+
+## 55. QA globale + benchmark chiffre face aux majors (2026-08)
+
+Apres la serie de 15 commits (§38-54), tour complet SANS RIEN A
+CORRIGER : 173 pages / 0 lien interne casse ; 12 pages cles / 0 erreur
+console, 0 requete >=400, 0 debordement bureau+mobile ; balisage
+equilibre sur les 6 fichiers les plus retouches ; trios hreflang
+coherents ; sitemap valide (168 URL) ; arbre en parite avec le depot ;
+aucun asset chrome modifie sur toute la serie -> pas de bump sw.js.
+
+Benchmark meme sonde/meme navigateur/meme jour, homes de production
+(details : qa-benchmark-majors-2026-08.md, livre en discussion) :
+DCL 244 ms contre 1 784 (TotalEnergies) a 5 250 ms (ExxonMobil) ;
+chargement complet 289 ms contre 5,8-18,3 s ; 5 blocs JSON-LD contre
+0-1 ; 0 image sans alt contre 3-21 ; skip-link que seul Exxon a aussi.
+En retrait : hreflang (4 contre 12 chez Chevron, multi-locales) et
+hauteur de page (16 454 px contre 5-7 000 — parti pris assume, a
+surveiller). CAVEATS de mesure a retenir : le service worker rend le
+"transferKB" flatteur (ressources en cache comptees 0) — citer plutot
+DCL/load et les ~887 Ko declares a froid ; imgTotal=0 car aucune balise
+<img> initiale (fonds CSS) — le zero-sans-alt est trivialement vrai.
