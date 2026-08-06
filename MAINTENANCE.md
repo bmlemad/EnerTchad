@@ -2532,3 +2532,27 @@ remplace par regex.
   tiroir GreenTech de #appuis (chip FR retiree), sitemap +1.
 - Verifie : 0 erreur, 0 requete >=400, residus FR = slogans seuls.
 - Restent dans le pole : impact-en (2 228 mots), hseq-en (2 822).
+
+## 58. GreenTech : /impact-en (3e jumelle — la plus dense en ESG) (2026-08)
+
+Generateur `/root/work/mkimp.py`, ~250 paires (2 228 mots). Page cle
+pour les investisseurs anglophones : realites/reponses ESG, cadre
+E-S-G, engagements bas-carbone, contenu local (1 240 emplois, cible
+80 %), premier domino energie/pouvoir d'achat, gouvernance auditable
+(organigramme complet), 6 ODD, offre a l'Etat (citation presidentielle
+Abu Dhabi), double boucle matiere/capital.
+
+DEUX LECONS DE FABRIQUE :
+- Le heredoc aplatit TOUJOURS les \\u00a0 litteraux (3e occurrence) —
+  motif() doit etre patche apres coup ou le script ecrit par python.
+  4 paires en echec, corrigees par regex ciblees.
+- **Paires courtes dangereuses** : (' ou ',' or ') a mute des phrases
+  FR encore non traduites (« Réseau absent ou instable » ->
+  « absent or instable ») et fait echouer leurs regex de rattrapage.
+  REGLE : jamais de paire < ~8 caracteres sans contexte ; verifier le
+  scan de residus APRES les rattrapages, pas seulement avant.
+- Retro-maj des subnavs des jumelles precedentes appliquee (patrimoine-
+  en, transition-en pointent maintenant /impact-en). Cablage complet :
+  bascules, alternates FR, tiroir #appuis (chip retiree), sitemap.
+- Verifie : 0 erreur, 0 requete >=400, residus = slogan seul.
+- Reste : hseq-en (2 822 mots) — dernier du pole.
