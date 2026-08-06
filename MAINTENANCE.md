@@ -2505,3 +2505,30 @@ conserves, noscript + legende diapo JS traduits.
   subnav active correcte.
 - Restent : hseq-en (2 822 mots — le plus gros), impact-en (2 228),
   transition-en (1 603), puis TchadiTech et Tchaditude.
+
+## 57. GreenTech : /transition-en (2e jumelle du pole) (2026-08)
+
+Generateur `/root/work/mktrans.py`, ~150 paires. PIEGE RESOLU et regle
+mise a jour : dans un heredoc bash, les litteraux U+00A0/U+202F d'un
+script Python deviennent des espaces simples -> le motif() tolerant
+perdait ses classes NBSP (17 paires en echec sur la typographie
+française « : », « ; », « » »). Correction : ecrire motif() avec des
+echappements \\u00a0/\\u202f EXPLICITES, et normaliser l'ancre avant
+re.escape. Meme piege sur le noscript de la queue (NBSP avant « ; ») —
+remplace par regex.
+
+- Contenu traduit : spectre 6 solutions (biomasse/biogaz/biocarburants/
+  eolien/dechets), 3 bandes geographiques, section eolien (BET 7-8 m/s,
+  harmattan), Desert to Power, Vision 2030 (4 KPIs), feuille de route
+  5 jalons, mobilite VE (4 cartes), 6 fiches-leviers accordeon,
+  demarche carbone. Terminologie : torchage -> flaring, valoriser ->
+  put to use/recover, MRV conserve, ITIE -> EITI.
+- Subnav EN GreenTech reutilise (§56) : is-active sur transition,
+  patrimoine desormais pointe en EN — ET retro-mise a jour du subnav de
+  patrimoine-en (transition y passe de hreflang fr a /transition-en).
+  REGLE : a chaque nouvelle jumelle, mettre a jour les subnavs des
+  jumelles EN precedentes du pole.
+- Cablage complet : bascules reciproques, alternates ajoutes cote FR,
+  tiroir GreenTech de #appuis (chip FR retiree), sitemap +1.
+- Verifie : 0 erreur, 0 requete >=400, residus FR = slogans seuls.
+- Restent dans le pole : impact-en (2 228 mots), hseq-en (2 822).
