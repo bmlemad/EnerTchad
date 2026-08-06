@@ -2110,3 +2110,37 @@ Pieges dej-vus a retenir :
   `#coeurs` ; l'ombre ne passe jamais sous le texte. Premier essai a
   55 % d'alpha + voile creme dans le hero : rendu boueux, abandonne.
 - Verifie : FR clair/sombre + EN, aucune retouche du hero lui-meme.
+
+## 42. Home : en-tetes de section & cartes harmonises (A3+A4) (2026-08)
+
+Quatrieme lot du plan « moderniser & harmoniser ». Bloc
+`<style id="sec-head">` en fin de `<head>` + 3 retouches HTML minimes.
+
+- **Kickers** : les glyphes varies vus a l'audit etaient en fait presque
+  tous la meme puce losange CSS (7x7 rotate 45) — la variance reelle
+  etait taille (.64-.7rem), couleur (ardoise vs or selon la classe) et
+  motif (tirets de part et d'autre sur `.mfo-k`). Desormais : mono
+  `.7rem/.2em` partout, puce losange partout (ajoutee a `.hxi-eyebrow`,
+  `.inv-k`, `.sec-k` ; `.mfo-k::before` troque son tiret gauche contre
+  la puce, la ligne fondue de droite est conservee comme sur
+  conviction/vision), couleur or unique : `#77530C` en clair (regle
+  `html.et-plight :is(...)` a triple `:not(#_)` — une simple regle
+  `!important` perdait contre l'override ardoise du theme clair),
+  `var(--gold-l)` en sombre.
+- Les 3 kickers inline (conviction, vision, poles) recoivent
+  `class="sec-k"`.
+- **Titres** : `#poles > .wrap > h3` et `#produits-acces h2` remontes de
+  28.8px a l'echelle commune `clamp(1.55rem,2.9vw,2.2rem)` (=35.2px
+  bureau). PIEGE : le premier selecteur etait initialement `#poles h3`
+  — il attrapait aussi les `h3.hpcard-n` des cartes (18.56 -> 35.2px,
+  titres de cartes explosés) ; toujours cibler `> .wrap >`.
+- **#combat a gauche** : `.mfo .wrap{text-align:center}` etait la source
+  du centrage ; surcharge `text-align:left` + suppression des marges
+  auto de `.mfo-h/.mfo-l/.mfo-foot`. La citation `.mfo-quote` etait deja
+  bordee a gauche.
+- **A4** : chips date/tag des cartes actu en pilule `999px` + padding
+  `3px 9px` (meme langage que les chips KPI de #poles).
+- Verifie : 0 erreur console, 0 debordement (bureau+mobile), captures
+  combat/conviction/poles/produits, sombre ok. Les offsets de page ont
+  bouge (titres plus grands) : les captures par coordonnees fixes
+  montrent du vide — utiliser scrollIntoView.
