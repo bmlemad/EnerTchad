@@ -2301,3 +2301,23 @@ Huitieme lot du plan, trois retouches en un commit.
   `flip-js` est inchange (clic hint = flip, verifie). Point backlog
   « flip-card focus » partiellement traite : le bouton est un vrai
   <button> focusable, libelle explicite.
+
+## 49. Footer : bloc « Etre prevenu(e) » (C2) (2026-08)
+
+Neuvieme et dernier lot « rapide » du plan (reste C3, a valider).
+Bandeau `.foot-news` insere en tete de `<footer>` (avant `.foot-grid`) :
+kicker au motif A3 (losange + mono), titre, champ e-mail pilule +
+bouton or « S'inscrire », note d'honnetete « Le bouton ouvre votre
+messagerie » + alternative WhatsApp (meme lien wa.me que le hero).
+
+- Site statique sans backend : le submit construit un
+  `mailto:contact@enertchad.td` pre-rempli (sujet + corps avec
+  l'adresse saisie) — MEME approche que le formulaire de contact.html,
+  aucun service tiers, aucune collecte silencieuse.
+- CSS dans le bloc sec-head : couleurs en `currentColor`/herite pour
+  suivre le footer dans les deux themes (kicker : or fonce en clair via
+  la regle, or clair sinon). Input `min-height:46px`, focus visible or.
+- Le lien « etre prevenu(e) → » du hero (WhatsApp) est conserve.
+- Verifie : bureau/mobile/sombre, 0 erreur console.
+- A suivre : miroir EN du bloc sur index-en.html (avec les autres
+  miroirs #appuis/rail/cta-band en attente, cf. §37/§44/§46).
