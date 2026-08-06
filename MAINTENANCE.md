@@ -2781,3 +2781,20 @@ DEUX LECONS DE FABRIQUE :
   parfait (21 sections, 8 tables, 16 details).
 - ENERCONSEILS EST LE 7e POLE 100% BILINGUE. Reste UN pole :
   TchadiTech (socle, innovations, outils, rd, recits) + corporate.
+
+## 70. Eclaircissement du theme sombre — site entier (2026-08-06)
+
+- Demande utilisateur 'plus eclairer le site', choix confirme :
+  eclaircir le sombre (pas de bascule clair par defaut). +6 points de
+  luminosite, meme teinte marine : 060B14->0B1322, 0B1422->121D31,
+  070D18->0D1524, 0A111E->101A2C, 0B1424->121D33, 0D1626->142036,
+  0E1B30->15243E, 0E1D30->15263E, 0a1322->101b2e (min. en contexte
+  fond uniquement : html{background}, 2 gradients).
+- Textes tamises releves : rgba(245,247,250,.6/.62/.66/.68/.7/.72/
+  .74/.75) -> .68/.7/.74/.76/.78/.8/.8/.82.
+- GARDE-FOUS : #0b1220 minuscule (traits SVG + texte sur or) NON
+  touche ; #0b1422 minuscule NON touche hors gradients (les selecteurs
+  [style*="color:#0b1422"] du theme clair en dependent) ; accents
+  (0E4172, verts) intacts ; aucun asset touche -> pas de bump sw.js.
+- 179 fichiers HTML modifies. QA : 0 erreur console, theme clair
+  visuellement intact, html bg verifie rgb(18,29,51).
