@@ -2699,3 +2699,21 @@ DEUX LECONS DE FABRIQUE :
   conservee sur la jumelle), sitemap 173.
 - QA : 0 erreur, 0 >=400, 66 cibles liens 200, accordeon
   Learn more/Collapse OK, residus FR 0 (hors slogans).
+
+## 65. partenariats-en — 2/4 Tchaditude (2026-08-06)
+
+- /tchaditude/partenariats-en genere par /root/work/mkpart.py (~110
+  paires). PIEGE motif() 4e occurrence : cette fois l'outil Write a
+  AUSSI aplati les litteraux \xa0/\u202f (comportement non
+  deterministe) — 8 paires en echec. Regle definitive : apres TOUTE
+  ecriture d'un script de traduction, verifier
+  repr(motif) contient \xa0 AVANT de lancer ; sinon patcher motif
+  avec echappements \uXXXX ecrits via replace python.
+- Scrollcue Suite : vit HORS du milieu (region hero pre-main du
+  gabarit journal ou injectee) — le traduire sur le fichier de sortie
+  complet, pas via les paires milieu.
+- Cablage : bascule FR x2 + trio ; retro-maj academie-en (subnav
+  hreflang fr -> partenariats-en + pmore) ; tiroir index-en (chip
+  otee) ; hub 2 liens (dont ancre #partenaires, verifiee presente
+  sur la jumelle) ; sitemap 174.
+- QA : 0 erreur, 0 >=400, 66 cibles 200, residus 0.
