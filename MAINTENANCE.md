@@ -2673,3 +2673,29 @@ DEUX LECONS DE FABRIQUE :
   marqueurs FR (etait 12), runtime 6 pages 0 defaut.
 - Reste du volume EN->FR (~640 liens) = cibles sans jumelle : dossier
   traduction corporate + poles restants.
+
+## 64. academie-en — premiere jumelle Tchaditude (2026-08-06)
+
+- REWIND conteneur (5e) detecte au demarrage (foot-news absent) —
+  restauration git archive FETCH_HEAD, 360 fichiers 0 ecart, serveur
+  relance. Les scripts /root/work (mkhseq, frmap) perdus — reecrits.
+- Convention de nommage tranchee pour Tchaditude : suffixe meme
+  repertoire (/tchaditude/academie-en), comme intermediaire/
+  petrochimie/enerconseils — pas de slug racine (evite l'ambiguite
+  /services-en). Les 3 autres pages du pole suivront ce motif.
+- /tchaditude/academie-en genere par /root/work/mkacad.py (donneur
+  parc-en, motif() NBSP via Write). ~250 paires dont 6 HTML-exactes
+  (strong qx1_9/qx1_13 imbriques). Nouveau subnav EN du pole :
+  psn-home 'Human capital (Tchaditude)', Overview -> hub EN, 3 pages
+  restantes marquees hreflang=fr (Our partnership model, Reach &
+  know-how, Services & solutions) — a rebrancher au fil des jumelles.
+- Pieges page : bouton accordeon 'En savoir plus <span chev>' (texte
+  + JS nodeValue 'Reduire/En savoir plus' dans le script tri-more) ;
+  scrollcue Suite herite du FR (traduit More) ; pmore-cards vers pages
+  FR marquees hreflang=fr des la generation (audit propre d'emblee).
+- Cablage : bascule FR x2 + trio alternates, tiroir index-en (chip
+  otee), hub pole-tchaditude-en (2 liens), liens profonds
+  #talents-tchad de hseq-en/impact-en/journal-integrite (ancre
+  conservee sur la jumelle), sitemap 173.
+- QA : 0 erreur, 0 >=400, 66 cibles liens 200, accordeon
+  Learn more/Collapse OK, residus FR 0 (hors slogans).
