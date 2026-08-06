@@ -1921,3 +1921,60 @@ entier, pas seulement `<main>`**, avant de declarer une traduction complete.
 `/amont/activites` (main ~10 Ko) pour effacer la derniere pastille FR du
 bloc `#coeurs`, puis les vues d'ensemble de pole (`/petrochimie/`,
 `/intermediaire/`, `/amont/`, `/aval/`) — gabarits tilehub plus lourds.
+
+---
+
+## 37. Home : les quatre poles d'appui en panneaux pleine page (#appuis) (2026-08)
+
+Directive : « Sur la home, mettre les poles support sur des pages ». La home
+francaise recoit une section `#appuis`, inseree immediatement apres
+`#coeurs` : les quatre poles d'appui — GreenTech, TchadiTech, Tchaditude,
+EnerConseils — ont desormais chacun leur panneau pleine page (900 px bureau,
+844 px mobile), sur le meme systeme de design `.mln` que les maillons.
+
+### Ce qui a ete fait
+
+- **Portee du design system** : les 88 selecteurs `#coeurs …` de
+  `<style id="mln-css">` sont devenus `:is(#coeurs,#appuis) …` — `:is()`
+  prend la specificite de son argument le plus fort (l'ID), donc **toutes
+  les regles gardent exactement leur poids**, y compris les surcharges du
+  theme clair a double :not(). Aucune duplication de CSS.
+- **En-tete d'orientation** `.acth` : « S'orienter · Les appuis de la
+  chaine — Quatre appuis, une meme chaine. » avec chapeau nommant les
+  quatre poles. Le `.acth` de #appuis n'a pas `acth-first` : il garde son
+  filet superieur, qui separe visuellement les deux series.
+- **4 panneaux** `#appui-{greentech,tchaditech,tchaditude,enerconseils}`,
+  numerotes 01-04 (« Appui 01 sur 4 »), 2e et 4e en `.mln-rev`, avec
+  images de fond : `solaire-champ`, `code-numerique`, `casques-chantier`,
+  `lac-tchad-espace` (~446 Ko charges en avance — a surveiller ; les
+  maillons pesent deja ~294 Ko).
+- Contenus et KPI repris des cartes du grid `#poles` (30 %+ renouvelables,
+  0 torchage, L1-L4, filieres, Atlas, audits…) ; volets « Ce que nous
+  faisons » repris des tiroirs `hubdrawer` (4+4+4+3 sous-pages).
+- Pastille dorée finale « Les huit poles, en un coup d'œil ↓ » vers
+  `#poles` — la section grid reste l'apercu synthetique.
+- Accents : GreenTech `#34D399`/`#0C6B4A`, TchadiTech **`#96A2EC`**
+  (eclairci depuis `#7E8AD9` : le violet de marque ne passait le AA sur
+  photo qu'a 4,52 — a 6,59 apres eclaircissement)/`#454FA0`,
+  Tchaditude `#C4B5FD`/`#5B3FA8`, EnerConseils `#1FA496`/`#0C6B62`.
+
+### Verifications
+
+- **Contraste** (fond median, 2 themes x 2 largeurs) : 232 mesures,
+  **0 echec AA** ; apres eclaircissement TchadiTech, minimum global 4,94.
+- **axe-core** : le `color-contrast` signale sur le panneau TchadiTech
+  etait le declencheur de l'eclaircissement ; les `region`/`landmark`
+  moderes preexistants demeurent, rien de nouveau.
+- 0 erreur console, 0 requete >= 400, aucun debordement horizontal.
+- Hauteur de page : 12 758 -> 16 859 px (bureau), 16 795 -> 20 454 px
+  (mobile) — 4 ecrans de plus, coherent avec le parti pris « chaque pole
+  sur une page ».
+- Balisage : 227/227 liens, 13/13 sections, 11/11 articles.
+
+### A suivre
+
+Miroir anglais de `#appuis` sur `index-en.html` (meme mecanique : mln-css
+y est duplique, la portee `:is()` s'y applique de la meme façon), et
+peut-etre le meme traitement pour les huit cartes du grid `#poles` en
+photo. Les images `guepard-savane.webp` et `pipeline.webp` restent
+disponibles si l'on veut varier les fonds.
