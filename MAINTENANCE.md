@@ -2173,3 +2173,56 @@ EnerConseils (gouvernance) et Tchaditude (social).
 - Verifie : 0 erreur console, 0 requete >=400, 0 debordement.
 - A suivre : jumelle EN `esg-en` (meme mecanique mkimen), lien croise
   depuis `engagements.html`.
+
+## 44. Home : le rail #aurail devient la mini-nav de traversee (B2) (2026-08)
+
+Cinquieme lot du plan « moderniser & harmoniser ». Le rail fixe de droite
+(`<aside id="aurail">`, 4 acces par profil Investir/Client/Partenaire/
+Rejoindre — tous presents par ailleurs dans la topbar) devient le
+scrollspy de traversee : 8 points, un par grande section, libelle +
+description au survol (mecanique .axl/.axd existante), etat actif
+`.on`, clic = saut d'ancre.
+
+- Ids ajoutes aux sections anonymes : `#carnets` (hnews), `#investir`
+  (hxi « Pourquoi investir »).
+- Driver v2 : l'ancien `.on` etait assigne par FRACTION du scroll (d'ou
+  « ne dit pas ou l'on est ») ; le nouveau calcule la derniere section
+  dont le haut passe la ligne `scrollY + 35 % du viewport`.
+  PIEGE 1 : l'aside est place au milieu du body — les sections situees
+  APRES lui dans le source (`#carnets`, `#produits-acces`, `#investir`)
+  n'existent pas quand le script resout ses cibles -> resolution
+  PARESSEUSE dans upd(), sinon le spy plafonne a #vision.
+  PIEGE 2 : `#aurail{display:flex;flex-direction:column}` avec align
+  par defaut (stretch) -> le survol d'UN lien elargissait TOUS les
+  liens ; fix `align-items:flex-end` (dans le bloc sec-head).
+  PIEGE 3 : en theme clair, l'override plight fonce le texte des
+  libelles alors que la pilule de survol reste sombre -> pilule claire
+  `color-mix(var(--c) 16%, #FBF8F2)` + texte `#10161F` en plight.
+- Seuil d'apparition (scroll > 460px) et animation conserves.
+  Mobile : rail masque (regle media existante). EN : pas de rail.
+
+## 45. Home : fusion #poles dans #appuis (2026-08)
+
+Sur directive (« fusionner Le socle · capacites transversales et
+S'orienter · Les appuis de la chaine ») : les deux sections couvraient
+les 4 memes poles d'appui avec les MEMES liens de departements et les
+memes KPI (le grid #poles avait servi de source aux panneaux #appuis,
+cf. §37). Le grid etait devenu 100 % redondant.
+
+- Section `<section id="poles">` supprimee (~4,2 Ko, −715 px de page :
+  16 859 -> 16 144 px).
+- **Ancre de compatibilite** : `<span id="poles">` insere en tete de
+  `#appuis` — tous les liens profonds existants `/#poles` (pagers des
+  pages EN « Our poles », flip-cta « Nos pôles », carte « Nos 8 pôles »
+  du drawer gouvernance, etc.) atterrissent sur la section fusionnee.
+  Verifie : /#poles scrolle a 5 056 pour un #appuis a 5 172.
+- Lede de #appuis enrichi : « quatre forces transversales — le socle —
+  irriguent et font tenir l'ensemble » (absorbe l'identite de l'ancien
+  en-tete « Le socle · capacites transversales »).
+- Pastille doree « Les huit pôles, en un coup d'œil ↓ » retiree (cible
+  disparue). Point #poles retire du rail (9 -> 8 points).
+- CSS morts purges : bloc `poles-fix` entier (§40 — subgrid devenu sans
+  objet), selecteur `#poles > .wrap > h3` du bloc sec-head. Plus aucun
+  `hubdrawer`/`hpgrid` dans le markup de la home.
+- Verifie : 0 erreur console, 0 requete >= 400, 0 debordement bureau et
+  mobile, scrollspy 7/7 sections justes.
