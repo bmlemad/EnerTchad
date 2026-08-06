@@ -2226,3 +2226,23 @@ cf. §37). Le grid etait devenu 100 % redondant.
   `hubdrawer`/`hpgrid` dans le markup de la home.
 - Verifie : 0 erreur console, 0 requete >= 400, 0 debordement bureau et
   mobile, scrollspy 7/7 sections justes.
+
+## 46. Home : bande CTA finale comme les pages interieures (C1) (2026-08)
+
+Sixieme lot du plan. La home etait la seule page sans conclusion : le
+`#cta-band` des pages interieures (« De la roche-mere a la pompe, bati
+au Tchad. » + Investir / Nous contacter) est insere juste avant le
+footer, MARKUP IDENTIQUE a celui des pages profondes (copie de
+enerconseils/audits.html).
+
+- La feuille dediee `assets/chrome/x_1576951582b2.css` (1,4 Ko — tout le
+  style cb-in/cb-btn y vit) n'etait pas chargee par la home : `<link>`
+  ajoute juste avant la section (les regles de themes cb-* de
+  plight_extrait/x_cd256286824c etaient deja chargees).
+- Comportement verifie identique aux pages interieures dans les DEUX
+  themes : bande sombre translucide en sombre ; en clair, plight
+  eclaircit la bande (le degrade sombre est neutralise) exactement comme
+  sur /enerconseils/audits — c'est le comportement de reference, pas un
+  bug. 0 erreur console.
+- La bande vit HORS `<main>` (avant `<!-- FOOTER -->`) : la regle plight
+  `main a.cb-p` ne s'applique pas mais son doublon sans `main` couvre.
