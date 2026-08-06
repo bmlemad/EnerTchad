@@ -2321,3 +2321,29 @@ messagerie » + alternative WhatsApp (meme lien wa.me que le hero).
 - Verifie : bureau/mobile/sombre, 0 erreur console.
 - A suivre : miroir EN du bloc sur index-en.html (avec les autres
   miroirs #appuis/rail/cta-band en attente, cf. §37/§44/§46).
+
+## 50. Home : conviction fusionnee dans vision (C3, valide) (2026-08)
+
+Dernier lot du plan, execute sur validation explicite (« fais C3 »).
+Les sections #conviction et #vision racontaient deux fois la these
+(la chaine tenue par des mains tchadiennes / les energies reunies)
+avec le meme gabarit (kicker + h2 geant degrade + 2-3 paragraphes +
+chips).
+
+- `<section id="conviction">` supprimee (~3 Ko). Sa substance est
+  distillee en CITATION D'OUVERTURE de #vision (italique, filet or a
+  gauche — meme motif que la citation de #combat) : « De l'exploration
+  a la pompe, nous tenons chaque maillon — toute la chaine, entre des
+  mains tchadiennes, pour la premiere fois de A a Z. »
+- Kicker de #vision renomme « Notre conviction · Notre vision »
+  (coherent avec le libelle du rail « Conviction & vision », deja
+  fusionne au lot B2).
+- Chip « Toute la chaine maitrisee · de A a Z » ajoutee en tete des
+  chips de #vision (les 3 chips de conviction disparaissent sinon).
+- Ancre de compatibilite `<span id="conviction">` en tete de #vision.
+- Hauteur de page : ~17 040 -> 16 359 px (~-685 px). La sequence
+  narrative devient : combat (raison d'etre) -> vision (conviction+
+  vision) -> retournement (mecanique du flux) — plus de redite.
+- 4e REWIND conteneur juste avant ce lot — protocole §47 applique
+  (restauration 355 fichiers/0 ecart, recreation de cleanserv.py qui
+  avait disparu de /root/work, relance du serveur).
