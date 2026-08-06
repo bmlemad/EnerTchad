@@ -2144,3 +2144,32 @@ Quatrieme lot du plan « moderniser & harmoniser ». Bloc
   combat/conviction/poles/produits, sombre ok. Les offsets de page ont
   bouge (titres plus grands) : les captures par coordonnees fixes
   montrent du vide — utiliser scrollIntoView.
+
+## 43. Offre ESG aux entreprises : /enerconseils/esg (2026-08)
+
+Nouvelle page FR construite sur le gabarit `enerconseils/audits.html`
+(generateur jetable `/root/work/mkesg.py`). Positionnement : les
+capacites ESG qu'EnerTchad batit pour sa propre chaine, mutualisees pour
+les autres entreprises — portees par GreenTech (environnement),
+EnerConseils (gouvernance) et Tchaditude (social).
+
+- Contenu : pghero (caveat societe en constitution), ttg 7 thematiques,
+  #pourquoi (3 cartes poles), #domaines = les SIX SERVICES (diagnostic &
+  feuille de route ; bilan carbone & decarbonation ; conformite HSE-Q ;
+  contenu local & impact social ; gouvernance & reporting ; solutions
+  terrain GreenTech — chacun avec Pour qui + Livrables), #methode (epw
+  5 temps), #secteurs (6 familles d'acteurs), #referentiels (ISO/GRI/
+  IFC/ITIE/OHADA/GES/ODD), #livrables, #faq-esg (5 Q/R) + FAQPage JSON
+  coherent, cta-band conserve.
+- L'id `domaines` est CONSERVE pour la section offre : une regle CSS
+  mobile du gabarit cible `#domaines div[style*=minmax(4...)]`
+  (anti-debordement 390px). Breadcrumb : la feuille n'a pas d'URL dans
+  ce gabarit. Alternate EN retire (pas de jumelle) ; `nx-lang` -> `/en`.
+- Maillage : entree « Services ESG » ajoutee aux subnavs des 5 pages du
+  pole (index/atlas/conseil/audits en FR — ATTENTION, ces 4 pages
+  utilisent `&` BRUT dans « Audits & évaluation », pas `&amp;` comme
+  audits.html ; audits-en pointe la page FR avec `hreflang="fr"`),
+  au tiroir Conseil du grid #poles de la home, et au sitemap.
+- Verifie : 0 erreur console, 0 requete >=400, 0 debordement.
+- A suivre : jumelle EN `esg-en` (meme mecanique mkimen), lien croise
+  depuis `engagements.html`.
