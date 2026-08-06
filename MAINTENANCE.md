@@ -2938,3 +2938,71 @@ DEUX LECONS DE FABRIQUE :
   -> 'Ce que nous affirmons, nous le publions.' (EN : 'What we
   claim, we publish.'). Leads existants conserves.
 - Pages legales laissees en h1 fonctionnels (attendu).
+
+## 78. Aval enrichi : la gamme mini-raffinerie (2026-08-06)
+
+- aval/raffinage.html + raffinage-en.html : 3 nouvelles sections apres
+  raf-etapes/raf-steps (style epw existant + mrx-css, verre navy
+  html:not(.et-plight) car fond photo) :
+  (1) #modeles / #models — gamme MR-500 'Pionnier' (1 train, 500 b/j,
+  conteneurisable), MR-1000 'Bassin' (2 trains, 1 000-2 000 b/j),
+  MR-2000 'Hub+' (3+ trains, 6 000 b/j, bitume+GPL, metallurgie TAN
+  4,7) ; note echange de trains façon Mobile Station + cumul ~40 kb/j
+  2030 -> /projets#ch-raffinerie (PIEGE : l'ancre projet est
+  ch-raffinerie, pas ch-raffinage).
+  (2) #ultra-moderne / #ultra-modern — 6 tuiles : jumeau numerique,
+  IA des rendements, exploitation a distance/robotique, energie
+  propre de procede (zero torchage), eau en cycle ferme, securite
+  instrumentee (HAZOP/LOPA, SIS/ESD).
+  (3) #cle-acces / #access-key — bandeau 'Acces aux Energies commence
+  a la raffinerie' reliant reseau/produits/distribution/petrochimie
+  + mailto. QA : 0 erreur console, hauteurs FR 682/774/352.
+
+## 79. Manifeste « Les energies du Tchad, entre nos mains » (2026-08-06)
+
+- societe.html : section #entre-nos-mains (apres #vision, pattern
+  sk/h2/note de la page, numerotee 03a) — methode en 4 plans :
+  capitaux, competences (80 %, Tchaditude), decisions (N'Djamena),
+  donnees (in-country, TchadiTech) ; note 'prendre en main est la
+  condition du partage' reliant a Acces aux Energies. corp-nav enrichi
+  (lien L'approche).
+- societe-en.html (page generation anterieure, sans <section>) :
+  ancre #in-our-hands + h2 + lead condense equivalent, avant #model.
+
+## 80. QA de coherence : chiffres et terminologie (2026-08-06)
+
+- CONTRADICTION MAJEURE corrigee : la carte du cadastre 2025 (donnee
+  canonique : 44 blocs = 11 attribues + 26 libres + 5 en changement +
+  2 production, chips affichees) contredisait le texte du site :
+  '21 blocs libres' (x68 FR+EN) et '42 blocs' (x11, legendes de la
+  carte elle-meme). Harmonise sur la carte : 21->26 (blocs libres/
+  ouverts/open/free), 42->44. 53 fichiers.
+- 'societe en structuration' (gabarit ppj-note, x11) -> 'societe en
+  constitution' (standard x304) ; 'company in structuring' -> 'company
+  in formation'. Les usages naturels ('en phase de structuration',
+  'finalise sa structuration') conserves.
+- Marques verifiees : Water-to-Value(TM)/NRJ+(TM)/EnerClub(TM)
+  coherents ; 'Mobile Station' sans TM apres premiere mention = choix
+  editorial, conserve.
+
+## 81. Scan d'ameliorations pages/sections (2026-08-06)
+
+- Scan statique 180 pages : meta desc, canonical, h1 unique, alt
+  d'images, ancres locales, liens internes (conscient des clean URLs).
+  Resultat quasi propre ; 1 vrai defaut : le commutateur de langue
+  href="/en" pointait vers une URL inexistante (404) sur les 9 pages
+  FR sans jumeau (carrieres, innovation, communautes, brochure,
+  tchaditech/*) -> repointe vers /index-en + hreflang + title
+  explicite (2 liens par page, 18 corriges).
+- Faux positifs connus : ancre JS '#i-'+p[9]+' (boutique), pages
+  google-verify/404.
+
+## 82. QA structure du site (2026-08-06)
+
+- Sitemap 178 URLs <-> 180 fichiers servis : correspondance exacte
+  (hors 404 et google-verify). 0 page orpheline (tous les hubs de
+  poles ont des entrees ; attention aux normalisations
+  /amont vs /amont/ dans les scanners — faux orphelins sinon).
+- Alternates hreflang : absents uniquement des 13 pages FR sans
+  jumeau (comportement correct, pas d'auto-reference requise).
+- Breadcrumb absent uniquement de la home (correct).
