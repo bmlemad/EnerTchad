@@ -1797,3 +1797,60 @@ page), hrefs re-pointes (`/cookies-en`, `/index-en`, `/investisseurs-en`,
   nouvelles pages ; **quirk preexistant a corriger un jour sur audits-en**.
 - Restent a traduire : `petrochimie/produits` (main 31 Ko) et
   `petrochimie/chimie-eor` (main 28 Ko) — meme methode, contenu plus long.
+
+---
+
+## 35. Pole Petrochimie 100 % anglais : produits-en et chimie-eor-en (2026-08)
+
+Les deux dernieres pages du pole existent desormais en anglais :
+`petrochimie/produits-en.html` (112,8 Ko) et `petrochimie/chimie-eor-en.html`
+(110,6 Ko). **Le pole Petrochimie est la premiere extension du site
+integralement bilingue** (hors vue d'ensemble `/petrochimie/`).
+
+### Methode (`/root/work/mkpxen2.py`)
+
+Meme assemblage qu'au §34 (head traduit + chrome anglais d'audits-en +
+scripts reconstruits par double SequenceMatcher), mais les mains — beaucoup
+plus longs (31 et 28 Ko), truffes de styles inline, de SVG et de JS de page —
+ont ete traduits **par paires de remplacement verifiees** (162 + 114 paires)
+plutot que reecrits : la structure, les styles et les scripts restent
+byte-identiques au francais, seul le texte change. Les scripts de page
+(planche interactive `ppl-js`, accordeons `tri-more`) sont conserves, leurs
+chaines visibles traduites (« En savoir plus »/« Réduire » ->
+« Learn more »/« Collapse »).
+
+**Piege resolu — les trois graphies de l'espace insecable.** Les gabarits FR
+melangent l'entite `&nbsp;` (zones pmore, pgl, ttg) et le caractere U+00A0
+(prose des sections). Un espace tape « normal » dans une paire de traduction
+ne matche ni l'un ni l'autre. Le moteur de remplacement convertit desormais
+chaque espace du motif en `(?:[  ]|&nbsp;)` et chaque `&amp;` en
+`&(?:amp;)?` — 8 paires echouaient encore avant cette tolerance, 0 apres.
+Regle a retenir pour toute future traduction de gabarit.
+
+### Maillage — le volet Petrochimie de la home EN n'a plus de pastille FR
+
+- `index-en.html` : les 4 liens du volet pointent vers les 4 pages EN.
+- `pole-enerchimie-en.html` : les 4 cartes en « Open the page → ».
+- `complexe-en` / `marches-en` : sous-nav et carte « Continuer » re-pointees
+  vers les jumelles EN (plus de mention « in French » sauf la vue d'ensemble).
+- Jumelles FR : bascule FR·EN corrigee (`/en` -> jumelle) + trio d'alternates.
+- `sitemap.xml` : 2 entrees ajoutees (le pole compte 9 URLs indexees).
+- Le lien « formulation EOR » de chimie-eor-en pointe vers `/eor-en`
+  (la page EN existe) et non plus vers l'ancre FR `/amont/eor#intrants-eor`.
+
+### Verifications
+
+- Balisage equilibre (y c. `figure`/`button`), 5 JSON-LD valides par page,
+  0 lien non resolu, **0 ligne de texte visible encore francaise** (balayage
+  lexical automatise, hors slogans de marque du bandeau, voulus en francais).
+- axe-core 2 pages x 2 largeurs : uniquement les moderes preexistants
+  (`region` homeFab/share, `landmark-unique` ttg) ; aucun serious.
+- 0 erreur console, 0 requete >= 400, aucun debordement horizontal
+  (1270/1280 et 380/390).
+
+### Reste du chantier bilingue
+
+La vue d'ensemble `/petrochimie/` (main ~35 Ko, tilehub interactif) reste
+francaise — c'est la derniere page du pole sans jumelle. Les pages
+`/intermediaire/*` (3) et `/amont/activites` restent aussi a traduire pour
+effacer les dernieres pastilles FR du bloc `#coeurs` de la home anglaise.
