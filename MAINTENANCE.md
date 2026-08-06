@@ -2376,3 +2376,26 @@ des §37, §44, §46, §49) :
   0 residu francais dans #appuis, page 8 245 -> 12 145 px.
 - Restent NON mirrores (choix) : #combat/#carnets/#produits/#investir
   n'existent pas en EN — la home EN est une version condensee assumee.
+
+## 52. Offre ESG : jumelle anglaise /enerconseils/esg-en (2026-08)
+
+Construite par `/root/work/mkesgen.py` sur le gabarit `audits-en.html`
+(meme mecanique que §43 sur audits.html) : head EN complet (canonical/
+og/twitter -> esg-en, trio d'alternates en<->fr avec x-default sur la
+version FR comme audits), Breadcrumb/WebPage/FAQPage traduits, pghero
+EN (crumb vers /index-en et /pole-enerconseils-en), 7 sections + 6
+services traduits, cta-band EN du gabarit conserve.
+
+Maillage bidirectionnel :
+- esg.html : alternate EN ajoute + les 2 bascules de langue passent de
+  `/en` (§43) a `/enerconseils/esg-en`.
+- esg-en : bascules de langue -> `/enerconseils/esg` (regle §34 : SEULES
+  les 2 occurrences toggle, `class="nx-lang"` et `>Fran`).
+- audits-en subnav : l'entree « ESG services » perd son hreflang fr et
+  pointe esg-en (active sur esg-en, simple lien sur audits-en).
+- index-en, tiroir EnerConseils de #appuis : lien -> esg-en, chip FR
+  retiree.
+- sitemap : entree esg-en.
+- Verifie : 0 erreur, 0 requete >=400, 0 residu FR dans <main>,
+  subnav active correcte. Le pole Conseil a desormais 2 pages EN
+  (audits-en, esg-en).
