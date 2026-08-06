@@ -2476,3 +2476,32 @@ surveiller). CAVEATS de mesure a retenir : le service worker rend le
 "transferKB" flatteur (ressources en cache comptees 0) — citer plutot
 DCL/load et les ~887 Ko declares a froid ; imgTotal=0 car aucune balise
 <img> initiale (fonds CSS) — le zero-sans-alt est trivialement vrai.
+
+## 56. GreenTech : /patrimoine-en, premiere jumelle du pole (2026-08)
+
+Debut du chantier « jumelles EN des poles d'appui » par la page la plus
+courte de GreenTech (533 mots de main + 261 d'apres-main). Generateur
+`/root/work/mkpat.py`, meme mecanique que mkacten (§53) : chrome corp
+de parc-en, head transforme (FAQPage generique retiree, trio
+d'alternates INSERE — la page FR n'en avait pas), ~90 paires de
+traduction a motif() tolerant, footer EN transplante, scripts FR
+conserves, noscript + legende diapo JS traduits.
+
+- **Subnav EN GreenTech construit** (premier du pole) : Overview ->
+  /pole-greentech-en, Wildlife & heritage actif -> /patrimoine-en,
+  les 3 pages soeurs encore FR pointees avec hreflang="fr"
+  (hseq, impact, transition). A REUTILISER pour les 3 prochaines
+  jumelles (deplacer is-active, retirer les hreflang au fur et a
+  mesure).
+- Contenu traduit avec soin naturaliste : especes UICN (oryx algazelle
+  -> scimitar-horned oryx, bubale -> hartebeest, tiang), sites UNESCO
+  (Ounianga, Ennedi), galerie Zakouma, hierarchie eviter/reduire/
+  restaurer, regle des trois temps. Slogans de marque restes FR par
+  design (« Acces aux Energies »').
+- Cablage : bascules FR<->EN reciproques, trio d'alternates des DEUX
+  cotes, tiroir GreenTech de #appuis (index-en) sans chip FR pour
+  cette page, sitemap +1.
+- Verifie : 0 erreur, 0 requete >=400, 0 residu FR hors slogans,
+  subnav active correcte.
+- Restent : hseq-en (2 822 mots — le plus gros), impact-en (2 228),
+  transition-en (1 603), puis TchadiTech et Tchaditude.
