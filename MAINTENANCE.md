@@ -2819,3 +2819,27 @@ DEUX LECONS DE FABRIQUE :
 - QA : 0 erreur console FR+EN, chips focusables clavier, filtre Libres
   et infobulle verifies par captures, chips EN 'All/Awarded/Open/
   Changing hands/Production'.
+
+## 72. Bandes noires / espaces vides : bug marginTop du sous-bandeau (2026-08-06)
+
+- SYMPTOME (signale utilisateur) : grandes bandes sombres vides au
+  milieu de certaines pages (jusqu'a +12 000 px de vide insere).
+- CAUSE : dans le script de placement des barres .subsite/.pole-subnav
+  (fonction fix()), le calcul `cur=b0.getBoundingClientRect().top`
+  est relatif au viewport. Si fix() se declenche pendant que la page
+  est defilee (resize — dont la barre d'URL mobile —, setTimeout 400/
+  1200 ms), cur devient tres negatif et marginTop est pousse a
+  ~scrollY px : le sous-bandeau etant le premier enfant en flux, tout
+  le document est repousse d'autant -> bande vide geante couleur fond.
+- CORRECTIF (172 fichiers, toutes pages avec chrome) :
+  `cur = b0.getBoundingClientRect().top + (window.pageYOffset||0)`
+  -> mesure en coordonnees document, insensible au defilement.
+- VERIF Playwright (scroll agressif + resize a chaque pas) : marginTop
+  stable a ~118 px (degagement legitime sous nav+ticker) sur les 9
+  pages autrefois touchees ; re-scan des 180 pages : 0 vide reel
+  restant (les 'gaps' residuels du scanner = photos en background-image
+  sur index/brochure, faux positifs).
+- NOTE : la croissance tardive (~+4 000 px) de /enerconseils/atlas est
+  du contenu qui finit de se rendre (dataset), pas un vide.
+- Scanner reutilisable : /root/work/scan-vide2.js (ndjson, resumable,
+  detecte vides >500 px et bandes noires par luminance de fond).
