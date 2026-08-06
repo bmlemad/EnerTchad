@@ -406,6 +406,24 @@ html.et-plight #coeurs .mln-k em:not(#_){color:inherit!important;opacity:.62}
 html.et-plight #coeurs .mln-ghost:not(#_){color:color-mix(in srgb,var(--mac) 13%,transparent)!important}
 html.et-plight #coeurs .mln-nh:not(#_){color:color-mix(in srgb,var(--mac) 82%,#000000)!important}
 html.et-plight #coeurs .mln-fr:not(#_){color:var(--mac)!important}
+</style><style id="hero-bridge">
+/* ============ B1 - pont hero -> contenu (MAINTENANCE 41) ============
+   Ombre portee du hero sur le haut de #coeurs + filet d'or de couture :
+   le bord franc marine/creme devient une transition intentionnelle.
+   NB : x_efffae1a94e5.css neutralise #coeurs::before (background:none
+   !important, heritage anti-bandeaux) -> tout est redefini ici avec une
+   specificite superieure. Hauteur 90px = le vide au-dessus du kicker,
+   jamais sous le texte. */
+#coeurs:not(#_):not(#__)::before{
+ content:""!important;position:absolute!important;
+ top:0!important;left:0!important;right:0!important;bottom:auto!important;
+ height:90px!important;pointer-events:none!important;z-index:2!important;
+ opacity:1!important;transform:none!important;
+ background:
+  linear-gradient(90deg,rgba(217,168,79,0),rgba(217,168,79,.5) 18%,
+   rgba(240,206,130,.7) 50%,rgba(217,168,79,.5) 82%,rgba(217,168,79,0))
+   top/100% 1px no-repeat,
+  linear-gradient(to bottom,rgba(9,14,23,.26),rgba(9,14,23,0))!important}
 </style></head><body class="nx-clear" id="top"><div class="diapo" aria-hidden="true"><i style="background-image:url(&quot;/assets/img/piste-desert.webp&quot;)"></i><i data-bg="/assets/img/raffinerie-nuit.webp"></i><i data-bg="/assets/img/pipeline.webp"></i><i data-bg="/assets/img/pompe-petrole.webp"></i><i data-bg="/assets/img/reservoirs.webp"></i><i data-bg="/assets/img/station-nuit.webp"></i><i data-bg="/assets/img/casques-chantier.webp"></i></div><script>addEventListener("load",function(){var els=[].slice.call(document.querySelectorAll(".diapo i[data-bg]"));els.forEach(function(el,i){var t=Math.max(0,(i+1)*6000-4500);setTimeout(function(){el.style.backgroundImage='url("'+el.getAttribute("data-bg")+'")'},t)})})</script><a href="#main-content" class="skip-link">Skip to main content</a><header><nav class="nav nx" id="nav" aria-label="Main navigation">
   <div class="nx-util"><div class="nx-util-in">
     <a href="/clients-en">Become a client</a>

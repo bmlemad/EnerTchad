@@ -2083,3 +2083,30 @@ Bloc `<style id="poles-fix">` en fin de `<head>` de `index.html` :
   `align-self:flex-start`, soulignement au survol de la carte.
 - Verifie : clair + sombre + mobile 390 px (carrousel intact) ; or fonce
   `#7A570E` sur carte claire ≈ 5,7:1.
+
+## 41. Home : pont visuel hero -> contenu (proposition B1) (2026-08)
+
+Troisieme lot du plan « moderniser & harmoniser », sur les DEUX homes.
+Avant : le hero marine se terminait par un bord franc contre le creme du
+corps de page (visible surtout en theme clair).
+
+Bloc `<style id="hero-bridge">` en fin de `<head>` : `#coeurs::before`
+porte deux fonds — un filet d'or de 1 px (`top/100% 1px no-repeat`,
+meme langage que le filet du haut de hero `.hero::after`) et une ombre
+portee `rgba(9,14,23,.26) -> 0` sur 90 px. Effet : le hero « projette »
+une ombre sur la section suivante, la couture devient intentionnelle.
+En sombre : l'ombre est invisible (navy sur navy), le filet subsiste.
+
+Pieges dej-vus a retenir :
+
+- `.hero::after` est DEJA pris (filet d'or du HAUT du hero,
+  s_99c21a3880.css en FR, inline en EN) — ne pas y toucher, c'est
+  pourquoi tout est sur `#coeurs::before`.
+- `x_efffae1a94e5.css` (FR seulement) neutralise `#coeurs::before` avec
+  `background:none!important` (heritage anti-bandeaux) : le bloc
+  redefinit TOUTES les proprietes avec `!important` et une specificite
+  superieure (`#coeurs:not(#_):not(#__)::before`).
+- Hauteur 90 px = le vide entre le bord du hero et le kicker de l'intro
+  `#coeurs` ; l'ombre ne passe jamais sous le texte. Premier essai a
+  55 % d'alpha + voile creme dans le hero : rendu boueux, abandonne.
+- Verifie : FR clair/sombre + EN, aucune retouche du hero lui-meme.
