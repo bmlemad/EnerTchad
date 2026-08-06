@@ -2347,3 +2347,32 @@ chips).
 - 4e REWIND conteneur juste avant ce lot — protocole §47 applique
   (restauration 355 fichiers/0 ecart, recreation de cleanserv.py qui
   avait disparu de /root/work, relance du serveur).
+
+## 51. Home EN : miroir des lots recents sur index-en (2026-08)
+
+Rattrapage du retard d'index-en.html sur la home FR (points « A suivre »
+des §37, §44, §46, §49) :
+
+- **#appuis EN** : les 4 panneaux d'appui traduits (Support 01-04 of 4,
+  « What we do », « Explore the pole → » vers les hubs EN
+  `/pole-{greentech,tchaditech,tchaditude,enerconseils}-en` qui
+  existent tous), memes accents/images/data-mimg que FR. Tiroirs :
+  sous-pages FR marquees `hreflang="fr"` + chip `mln-fr` (convention de
+  #coeurs EN) — SEULE exception `audits-en` qui a sa jumelle. Le tiroir
+  EnerConseils inclut le lien ESG (§43). Ancre `<span id="poles">`
+  reprise : les pagers EN pointent `/index-en#poles`.
+- **mln-css EN** : portee elargie `#coeurs` -> `:is(#coeurs,#appuis)`,
+  88 remplacements — MEME compte que FR (§37), bon indicateur de non-
+  divergence des deux copies du bloc.
+- **Rail #aurail EN** : 4 points (Manifesto / The four links / Support
+  poles / Our purpose — la section purpose porte deja id="vision"),
+  driver v2 a cibles paresseuses, x_77d650c4a7a2.css (styles du rail)
+  deja charge par la page.
+- **foot-news EN** : bloc « Be notified on day one » + mailto EN +
+  WhatsApp EN. CSS rail+newsletter regroupes dans `<style
+  id="en-extras">` (l'equivalent EN du bloc sec-head FR).
+- mln-lazy inchange : il ramasse les nouveaux `data-mimg` tout seul.
+- Verifie : 0 erreur, 0 requete >=400, 0 debordement, scrollspy 3/3,
+  0 residu francais dans #appuis, page 8 245 -> 12 145 px.
+- Restent NON mirrores (choix) : #combat/#carnets/#produits/#investir
+  n'existent pas en EN — la home EN est une version condensee assumee.
