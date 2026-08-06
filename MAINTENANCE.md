@@ -2648,3 +2648,28 @@ DEUX LECONS DE FABRIQUE :
   th-cta sur les hubs (cosmetique).
 - Ordre recommande : lot correctif 1a+2+3, puis traduction Tchaditude,
   puis corporate (~640 liens entrants EN vers cibles corporate FR).
+
+## 63. Lot correctif ultra-review — chrome EN rebranche (2026-08-06)
+
+- Balayage chrome EN (constat 1a) : 276 liens reecrits sur 52 pages
+  EN via mapping fr->en derive des alternates hreflang (74 paires,
+  /root/work/frmap.json). Regles : jamais nx-lang/jlang, jamais le
+  lien vers la jumelle FR de la page elle-meme (bascule), fragments et
+  query strings preserves, attributs hreflang="fr" et aria-label
+  "in French" retires des liens rebranches, texte "(in French)"
+  nettoye (psn Overview + pmore-home de 7 pages).
+- PIEGE decouvert : 15 fragments FR n'existent pas sur les jumelles EN
+  (ids traduits) — corriges : #emplois-jeunesse -> #jobs-youth sur
+  pole-tchaditude-en ; fragments abandonnes vers services-ep-en,
+  reseau-en, produits-en (atterrissage haut de page). Lecon : tout
+  rebranchement de lien profond doit verifier l'id sur la cible.
+- Ticker produits traduit (constat 2) : 12 chips pt-chip + libelle
+  'offer & targets' sur les 9 jumelles Intermediaire/Petrochimie/
+  EnerConseils (bloc identique, verifie par empreinte md5).
+- Footer EN retransplante (constat 3) depuis parc-en sur
+  journal-integrite-faire-durer-en (vieille generation) + noscript EN.
+  Residus FR de la page : 9 -> 0.
+- Re-audit complet : 0 lien casse, 0 ancre cassee, 0 page EN >3
+  marqueurs FR (etait 12), runtime 6 pages 0 defaut.
+- Reste du volume EN->FR (~640 liens) = cibles sans jumelle : dossier
+  traduction corporate + poles restants.
