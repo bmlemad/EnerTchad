@@ -2735,3 +2735,17 @@ DEUX LECONS DE FABRIQUE :
   sitemap 176. QA 5 pages : 0 erreur, 0 lien casse.
 - TCHADITUDE EST LE 6e POLE 100% BILINGUE (4 metiers + GreenTech +
   Tchaditude). Restent TchadiTech (5) et EnerConseils (atlas, conseil).
+
+## 67. conseil-en — EnerConseils 3/4 (2026-08-06)
+
+- /enerconseils/conseil-en genere par mkcons.py (~130 paires, motif
+  verifie OK avant lancement). Piege paires courtes x1 : 'secteur
+  petrolier tchadien' a mute 2 phrases (intro fiches + pager) —
+  rescues. Accordeons tri-more traduits (texte + nodeValue JS).
+- Retro-maj notable : les subnavs d'audits-en et esg-en pointaient
+  'Advisory to operators & State' vers le HUB (placeholder) — ils
+  pointent maintenant la vraie jumelle. Balayage nav mega-menu :
+  48 pages EN pointaient encore /enerconseils/conseil -> conseil-en.
+- Sitemap 177. QA 4 pages 0 defaut. Reste pour EnerConseils : atlas
+  (4 619 mots, la plus grosse page du site). Restent aussi les 5
+  pages TchadiTech, puis corporate.
