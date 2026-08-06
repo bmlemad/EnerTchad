@@ -1978,3 +1978,53 @@ y est duplique, la portee `:is()` s'y applique de la meme façon), et
 peut-etre le meme traitement pour les huit cartes du grid `#poles` en
 photo. Les images `guepard-savane.webp` et `pipeline.webp` restent
 disponibles si l'on veut varier les fonds.
+
+## 38. Perf : fonds de panneaux paresseux sur les deux homes (2026-08)
+
+Application de la recommandation nº 1 de l'audit « home vs majors »
+(`audit-home-vs-majors.md`) : les photos de fond des panneaux pleine page
+(`#coeurs` + `#appuis` sur `index.html`, `#coeurs` sur `index-en.html`)
+ne sont plus chargees au premier rendu.
+
+### Mecanique
+
+- Avant : chaque `article.mln` portait
+  `style="--mac:…;--macl:…;--mimg:url(&quot;/assets/img/….webp&quot;)"` ;
+  la photo est peinte par `.mln-bg::before` via `var(--mimg)`, donc les
+  8 (FR) / 4 (EN) webp partaient des le chargement.
+- Apres : l'inline devient `style="--mac:…;--macl:…" data-mimg="/assets/img/….webp"`,
+  et un `<script id="mln-lazy">` (inline, ~540 o, avant `</body>`) pose
+  `--mimg` via `IntersectionObserver` (`rootMargin: 900px 0px` — la photo
+  arrive un ecran avant d'etre visible, aucun flash constate) puis retire
+  `data-mimg`. Sans `IntersectionObserver`, tout est pose immediatement.
+- `--mimg` indefini -> `var()` invalide -> `background:none` sur le
+  `::before` : la degradation est propre par construction (voiles en
+  degrade seuls).
+
+### Mesures (Playwright local, bureau 1280px)
+
+- Octets declares au premier rendu : **1 757 -> 932 Ko (-47 %)** ;
+  requetes 45 -> 38 ; webp 10 (1 038 Ko) -> 3 (213 Ko : preload
+  `pompe-petrole`, hero `piste-desert`, 2e diapo) ; DCL 1536 -> 666 ms ;
+  CLS toujours 0.
+- Apres defilement complet : les 10 webp chargent, tous les `data-mimg`
+  sont consommes, `getComputedStyle(bg,'::before').backgroundImage`
+  rend bien l'URL — attention au piege : verifier le `::before`, pas
+  `.mln-bg` lui-meme (fausse alerte « avecImg:0 » sinon).
+
+### JS desactive : neutre (verifie old vs new)
+
+Les panneaux `.mln` sont a `opacity:0` sans JS **depuis l'origine** (le
+fondu-enchaine de la pile sticky est pilote par le JS de scroll) ; le
+texte reste dans le DOM (SEO, mode lecteur). Le changement est donc
+strictement neutre visuellement sans JS, et epargne meme ~825 Ko de
+telechargements inutiles. Point preexistant a garder en tete : la
+promesse du bandeau `noscript` (« contenu integralement lisible ») est
+approximative pour ces panneaux — retombee eventuelle : une regle
+`noscript` posant `opacity:1` + empilement statique.
+
+### A suivre
+
+Recommandations 2-6 de l'audit : bloc date « Communiques & jalons »,
+inscription newsletter, traversee compacte / mini-nav 01-08, hero
+multi-messages, bloc Publications.
