@@ -2581,3 +2581,30 @@ DEUX LECONS DE FABRIQUE :
 - Ordre recommande : hseq-en, puis doublon site autonome, puis
   harmonisation Tchaditude, puis traductions Tchaditude (4) >
   TchadiTech (5) > atlas+conseil > corporate.
+
+## 60. hseq-en — derniere jumelle GreenTech + scrollcue EN (2026-08-06)
+
+- /hseq-en cree via /root/work/mkhseq.py (donneur chrome parc-en,
+  motif() a echappements explicites — ecrit via Write, pas heredoc :
+  les litteraux \xa0/\u202f survivent). ~250 paires + 8 paires
+  HTML-exact pour les phrases a noeuds courts (strong qx0_2 imbriques :
+  air 4 voies, bowtie, HAZOP/LOPA, MOC, SIS/ESD, API 754) — jamais de
+  paire courte type (' et ',' and ').
+- Piege evite : '>Recuperation assistee<' introuvable car la carte
+  porte un <small class="pmk">(EOR)</small> colle au titre — paire
+  HTML-exacte requise.
+- Cablage : FR hseq bascule x2 + trio alternates ; subnavs des 3
+  jumelles GreenTech (psn-link hreflang fr -> /hseq-en) + pmore-cards ;
+  impact-en btn '#hseq' ; carte du hub pole-greentech-en ; tiroir
+  index-en (chip mln-fr retiree) ; sitemap 172 URL. GreenTech est
+  desormais 100% bilingue — 4 poles metiers + GreenTech complets.
+- Bonus : liens journaux FR -> jumelles -en dans patrimoine-en,
+  transition-en, impact-en (eau-de-production, gpl-bois-energie,
+  rente-partagee — les jumelles existaient, les liens restaient FR).
+- Bonus : scrollcue 'Suite' traduit ('More' + aria-label EN) sur les
+  9 jumelles EN qui l'affichaient — quirk audits-en du backlog regle.
+- QA locale : 0 erreur console, 0 requete >=400, 0 debordement, 71
+  cibles de liens internes toutes 200, residu FR = slogan seul.
+- Reste (backlog nav) : les mega-menus des ~40 pages EN pointent
+  encore vers les sous-pages FR (/greentech/*, etc.) — passe de
+  balayage chrome a planifier quand plus de jumelles existeront.
