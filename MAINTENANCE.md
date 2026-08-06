@@ -2028,3 +2028,32 @@ approximative pour ces panneaux — retombee eventuelle : une regle
 Recommandations 2-6 de l'audit : bloc date « Communiques & jalons »,
 inscription newsletter, traversee compacte / mini-nav 01-08, hero
 multi-messages, bloc Publications.
+
+## 39. Home : systeme de boutons unifie (proposition A1) (2026-08)
+
+Premier lot du plan « moderniser & harmoniser » (`propositions-home-2026-08.md`).
+Avant : 5 styles d'appels a l'action coexistaient sur la home. Apres : 3
+roles, definis dans un bloc `<style id="ui-btn">` en fin de `<head>` de
+`index.html` — on restyle les classes existantes, aucun renommage HTML.
+
+- **Primaire** (pilule doree pleine, mono 700, radius 999, padding 12/24) :
+  `.hxi-cta` (etait radius 12 + fonte display Space Grotesk) et
+  `.ppte-cta` (etait ambre `#F59E0B`, graisse 600). Le bouton
+  « Nos engagements » a perdu son `style="background:#34D399"` inline
+  (vert -> or). ATTENTION : les deux autres `background:#34D399` inline du
+  fichier sont des pastilles `pt-dot` de chips produits — ne pas y toucher.
+- **Fantome** (contour, radius 999) : `.iv-cta` ; en theme clair le texte
+  passe de bleu-lien a `#0B1422` avec bordure or assombrie, survol voile
+  or 22 %.
+- **Lien-fleche** (inchange) : `.flip-cta`, `.sc-link`, `.hnews-all`.
+- Cartes actu : `.hncard-go` (« Lire -> ») etait devenu une boite pleine
+  largeur via le traitement verre des spans ; redevient un lien nu
+  (`background:none`, `align-self:flex-start` sinon le flex l'etire a
+  323 px), soulignement au survol de la carte.
+- Focus clavier commun `outline:2px or` sur les 3 primaires/fantomes.
+- Les pilules des panneaux `.mln-go` etaient deja coherentes (accent du
+  panneau) — non touchees. Boutons du hero non touches (reserves au lot
+  B3 multi-messages). `index-en.html` non touche (aucune des classes
+  concernees n'y figure hors CSS).
+- Verification : styles calcules en clair ET en sombre (retrait de
+  `et-plight` a la volee) — or `#E8C36A` / texte `#0B1422` ≈ 9,9:1.
