@@ -1854,3 +1854,70 @@ La vue d'ensemble `/petrochimie/` (main ~35 Ko, tilehub interactif) reste
 francaise — c'est la derniere page du pole sans jumelle. Les pages
 `/intermediaire/*` (3) et `/amont/activites` restent aussi a traduire pour
 effacer les dernieres pastilles FR du bloc `#coeurs` de la home anglaise.
+
+---
+
+## 36. Pole Intermediaire anglais : logistique-en, services-en, sites-en (2026-08)
+
+Les trois pages du pole Intermediaire existent desormais en anglais :
+`intermediaire/logistique-en.html` (126,6 Ko), `services-en.html` (105,6 Ko)
+et `sites-en.html` (126,1 Ko). Avec la Petrochimie (§34-35), **deux des
+quatre volets du bloc `#coeurs` de la home anglaise sont a present sans
+pastille FR** ; il ne reste que `/amont/activites` (volet Upstream) et les
+vues d'ensemble de pole.
+
+### Methode (`/root/work/mkimen.py`)
+
+Meme assemblage que §34-35 : head traduit (metas, alternates, Breadcrumb et
+WebPage en anglais, FAQPage retire), chrome anglais preleve sur audits-en,
+scripts reconstruits par double SequenceMatcher, contenus traduits par
+paires de remplacement tolerantes aux trois graphies de l'espace insecable.
+356 paires appliquees (147 + 82 + 127 pour les mains), **0 echec** au
+premier passage grace au moteur tolerant du §35.
+
+**Piege decouvert — les sections apres `</main>`.** Sur cette generation de
+pages, la zone entre `</main>` et `<footer>` ne contient pas que le chrome
+(cookies, partage, pager, pole-more, cta-band) : elle porte de **vraies
+sections de contenu** — « Notre methode » (epw), le **trouveur de services**
+interactif a facettes (isv-find, 6 services filtrables), les engagements
+chiffres (isv-eng) et le bloc de lectures (isv-lect). Environ 10 a 22 Ko par
+page. Le balayage lexical de residus francais les a revelees apres une
+premiere passe qui les avait laissees en francais — 129 paires
+supplementaires ont ete necessaires. Regle : **toujours balayer le fichier
+entier, pas seulement `<main>`**, avant de declarer une traduction complete.
+
+### Traductions notables
+
+- Le corridor interactif Doba–Kribi (SVG a 5 noeuds cliquables) : libelles
+  `<text>` du SVG et panneaux d'etapes traduits, JS intact.
+- Le schema hub-and-spoke du transport par camion : libelles SVG traduits.
+- L'estimateur pipeline vs camion et le tableau SCADA de demonstration :
+  indicateurs, statuts de stations et notes traduits, scripts conserves.
+- Les 4 doctrines de la page logistique (reserve distribuee, corridor,
+  integrite par la donnee, dernier kilometre) traduites integralement.
+- Liens re-points vers les jumelles EN quand elles existent
+  (`/services-ep-en`, `/produits-en`, `/pole-amont-en`, `/pole-aval-en`,
+  journaux `-en`) ; l'Atlas et le Configurateur restent FR avec
+  `hreflang="fr"` et mention « (in French) ».
+
+### Maillage
+
+- `index-en.html` : les 3 liens du volet Midstream -> pages EN, pastilles
+  retirees (le volet n'en a plus).
+- `pole-intermediaire-en.html` : les 3 cartes en « Open the page → ».
+- Jumelles FR : bascule FR·EN corrigee (`/en` -> jumelle) + alternates.
+- `sitemap.xml` : 3 entrees ajoutees.
+
+### Verifications
+
+- Balisage equilibre, JSON-LD valides, 0 lien non resolu, 0 texte visible
+  francais residuel (hors slogans de marque).
+- axe-core 3 pages x 2 largeurs : uniquement les `region` moderes
+  preexistants (homeFab, share). 0 erreur console, 0 requete >= 400, aucun
+  debordement horizontal.
+
+### Reste du chantier bilingue
+
+`/amont/activites` (main ~10 Ko) pour effacer la derniere pastille FR du
+bloc `#coeurs`, puis les vues d'ensemble de pole (`/petrochimie/`,
+`/intermediaire/`, `/amont/`, `/aval/`) — gabarits tilehub plus lourds.
