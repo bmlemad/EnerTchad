@@ -2246,3 +2246,33 @@ enerconseils/audits.html).
   bug. 0 erreur console.
 - La bande vit HORS `<main>` (avant `<!-- FOOTER -->`) : la regle plight
   `main a.cb-p` ne s'applique pas mais son doublon sans `main` couvre.
+
+## 47. Hero : 2 pilules + 2 liens mono (B3) (2026-08)
+
+Septieme lot du plan. DECOUVERTE prealable : la moitie « multi-messages »
+de B3 existait deja — le hero porte 5 messages en rotation
+(`.hx-slides` / `hx-slide-1..5`, onglets `role="tab"` aria-controls,
+les tirets au-dessus de « LA CHAINE INTEGREE ») ; l'audit « hero
+mono-message » etait donc perime sur ce point. Seul le rangement des
+boutons restait a faire.
+
+- Avant : 4 boites `.btn` (`btn-p`, `btn-shop2`, `btn-g` x2) qui
+  cassaient en 2 lignes avec « Investir » orphelin. Apres : 2 pilules
+  (`btn-p` « Decouvrir EnerTchad » en or degrade, `btn-g` « Investir »
+  en fantome contour) + 2 liens mono `.hx-links` (« Boutique &
+  stations » avec son icone panier reduite a 14px, « Devenir client »),
+  soulignes fins, min-height 44px (cible tactile).
+- PIEGE specificite : les overrides hero du theme clair
+  (`html.et-plight header.hero .hx-grid a{color:#F0CE82!important}` et
+  un fond fonce) battent une regle a 2 `:not(#_)` — il faut 3 `:not` +
+  la variante prefixee `html.et-plight ... .hx-grid a.btn-p` +
+  `-webkit-text-fill-color`. Verifie par style calcule ET zoom de
+  capture (au 1280 entier, la pilule or parait sombre a l'oeil — zoomer
+  avant de conclure).
+- REWIND CONTENEUR pendant ce lot (3e occurrence) : /root/etc etait
+  revenu a un instantane pre-lazy (125 706 o). Protocole applique :
+  `git archive FETCH_HEAD | tar -x`, verification 355 fichiers / 0
+  ecart, serveur relance. Les scripts d'edition a assertions ont tenu
+  (aucune ecriture sur le mauvais fichier : la 1re assertion passait sur
+  le vieux markup mais l'ancre CSS manquante a tue le script AVANT
+  write — toujours garder une assertion sur un marqueur RECENT).
