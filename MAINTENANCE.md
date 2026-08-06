@@ -2608,3 +2608,21 @@ DEUX LECONS DE FABRIQUE :
 - Reste (backlog nav) : les mega-menus des ~40 pages EN pointent
   encore vers les sous-pages FR (/greentech/*, etc.) — passe de
   balayage chrome a planifier quand plus de jumelles existeront.
+
+## 61. Doublon site autonome tranche + identite Tchaditude (2026-08-06)
+
+- Doublon « energie de site autonome » (QA §59) : DECISION —
+  tchaditech/innovations PORTE le sujet (innovation phare 05, carte
+  vitrine vers /aval/reseau#reseau-carte inchangee) ; tchaditech/rd
+  porte le projet d'ingenierie sous titre scope « Modules d'energie de
+  site autonome » (h3 + entree ttg renommees, id t2- conserve — aucun
+  lien entrant externe sur cette ancre). L'ambiguite ne sera pas
+  exportee lors de la traduction du pole TchadiTech.
+- Identite de pole harmonisee : « Tchaditude · capital humain » ->
+  « Capital humain (Tchaditude) » — 24 occurrences sur 6 fichiers
+  (5 pages du pole : psn-home, aria-label subnav, fil d'Ariane,
+  pagers ; + plan-du-site). Le motif « Metier (Marque) » est desormais
+  uniforme sur les 4 poles d'appui. Les kickers de la home
+  (« Tchaditude · capital humain » avec em) suivent un autre motif
+  volontaire, non touches.
+- QA locale : 8 pages 200, psn-home verifie, 0 occurrence residuelle.
