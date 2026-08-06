@@ -2843,3 +2843,25 @@ DEUX LECONS DE FABRIQUE :
   du contenu qui finit de se rendre (dataset), pas un vide.
 - Scanner reutilisable : /root/work/scan-vide2.js (ndjson, resumable,
   detecte vides >500 px et bandes noires par luminance de fond).
+
+## 73. Doublons de contenu : analyse et arbitrages (2026-08-06)
+
+- Scan complet (paragraphes >=120c + titres h2-h4, hors chrome/subnav/
+  pager/rlk, par langue) : 440 paragraphes et 289 titres partages.
+- CLASSIFICATION :
+  (1) brochure.html = COMPILATION ASSUMEE : ~420 des 440 paires sont
+  brochure <-> sous-page de pole (le document reprend un chapitre de
+  chaque pole ; liens profonds vers les pages detaillees deja presents
+  partout). Decision : conserver — c'est la fusion, pas un doublon.
+  (2) Gabarits par conception : disclaimer 'societe en constitution'
+  (x10), 'Cinq situations' des hubs (x8), pager petrochimie (x3 FR/EN),
+  banniere 'Une qualite par partenariat' (x7), teasers d'articles
+  identiques dans carnets/recits/brochure (meme article, meme resume).
+  Decision : conserver (coherence editoriale voulue).
+  (3) VRAI doublon corrige : note violette 'chomage des jeunes'
+  identique sur carrieres.html et greentech/impact.html -> reecrite
+  sur impact (angle recrutement regional / sous-traitance / parcours
+  Tchaditude), idem impact-en.html ; carrieres garde l'originale.
+  (4) Faux positif du scanner : 'Mobile Station(TM)(TM)' = artefact
+  d'extraction (le TM du titre + celui du tooltip), rien en source.
+- Outil : /root/work/dedup.txt (scan complet, 1615 lignes).
