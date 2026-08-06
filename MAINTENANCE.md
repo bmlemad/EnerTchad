@@ -2798,3 +2798,24 @@ DEUX LECONS DE FABRIQUE :
   (0E4172, verts) intacts ; aucun asset touche -> pas de bump sw.js.
 - 179 fichiers HTML modifies. QA : 0 erreur console, theme clair
   visuellement intact, html bg verifie rgb(18,29,51).
+
+## 71. Carte du cadastre modernisee (2026-08-06)
+
+- Figure 'Cadastre petrolier 2025' (atlas FR+EN) enrichie de 3 couches
+  d'interactivite, style id=cdm-x + script apres la figure :
+  (1) barre de filtres par statut (role=toolbar, aria-pressed) —
+  Tout 44 / Attribues 11 / Libres 26 / En changement 5 / Production 2,
+  via data-f sur #cadmap + selecteurs :not() (blocs non concernes a
+  opacite .10, labels .4) ; (2) infobulle flottante .cdm-tip lisant le
+  <title> du bloc survole (nom + statut, positionnee dans .cdm-frame,
+  clamp aux bords) — bilingue gratuitement puisque les <title> sont
+  deja traduits ; (3) oleoduc d'export anime (dasharray 9 6 +
+  keyframes cdmFlow, coupe par prefers-reduced-motion).
+- Theme clair couvert (chips + tip via :not(#_)). JS-off = carte
+  statique inchangee. PIEGE QA : la figure vit dans un <details>
+  replie — ouvrir la chaine de details parents avant tout test
+  Playwright, et re-mesurer les rects APRES le scroll (les coords
+  prises avant scrollIntoView sont fausses).
+- QA : 0 erreur console FR+EN, chips focusables clavier, filtre Libres
+  et infobulle verifies par captures, chips EN 'All/Awarded/Open/
+  Changing hands/Production'.
