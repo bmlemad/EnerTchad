@@ -2717,3 +2717,21 @@ DEUX LECONS DE FABRIQUE :
   otee) ; hub 2 liens (dont ancre #partenaires, verifiee presente
   sur la jumelle) ; sitemap 174.
 - QA : 0 erreur, 0 >=400, 66 cibles 200, residus 0.
+
+## 66. rayonnement-en + services-en — Tchaditude 100% bilingue (2026-08-06)
+
+- Lot double (mkray.py ~55 paires, mksvc.py ~150 paires). motif()
+  verifie AVANT lancement (regle §65) : mksvc etait aplati -> patche
+  en ecrivant les echappements \uXXXX via .replace() python (les
+  litteraux ne survivent aux heredocs ET a Write que par hasard).
+- Piege paires courtes (§58) x2 sur services-en : 'constitue par
+  metier' et 'Externalisation RH' ont mute deux phrases longues avant
+  leur tour — rescues sur texte mute. Le residu 'arrets programmes'
+  n'etait PAS detecte par le scan (aucun mot-marqueur) : le scan ne
+  suffit pas, relire les echecs d'applique un par un.
+- Cablage : bascules + trios x2 ; retro-maj des 3 jumelles precedentes
+  (subnav + pmore -> plus aucun hreflang fr intra-pole) ; tiroir
+  index-en (2 chips otees — le tiroir Tchaditude est 100% EN) ; hub ;
+  sitemap 176. QA 5 pages : 0 erreur, 0 lien casse.
+- TCHADITUDE EST LE 6e POLE 100% BILINGUE (4 metiers + GreenTech +
+  Tchaditude). Restent TchadiTech (5) et EnerConseils (atlas, conseil).
