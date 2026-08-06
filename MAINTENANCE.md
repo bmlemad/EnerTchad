@@ -2556,3 +2556,28 @@ DEUX LECONS DE FABRIQUE :
   bascules, alternates FR, tiroir #appuis (chip retiree), sitemap.
 - Verifie : 0 erreur, 0 requete >=400, residus = slogan seul.
 - Reste : hseq-en (2 822 mots) — dernier du pole.
+
+## 59. QA des sujets & thematiques (2026-08-06)
+
+- Inventaire programmatique des 176 pages (99 FR, 74 EN, 1 AR) a HEAD
+  7b01da2c : titres, h1, blocs ttg, identites de pole (subnavs),
+  alternates hreflang, maillage entrant. Rapport livre :
+  qa-themes-2026-08.md.
+- Couverture bilingue : 20 jumelles sur 32 sous-pages de pole (62%).
+  Les 4 poles metiers (Amont, Intermediaire, Aval, Petrochimie) sont
+  100% bilingues. Restent : hseq (GreenTech), TchadiTech entier (5),
+  Tchaditude entier (4), atlas + conseil (EnerConseils), plus 13 pages
+  corporate FR sans EN. Les 8 hubs /pole-*-en existent.
+- Identites de pole : motif "Metier (Marque)" partout sauf Tchaditude,
+  affiche "Tchaditude - capital humain" sur ses 5 pages. A harmoniser
+  en "Capital humain (Tchaditude)". Certaines jumelles EN anciennes de
+  l'Amont n'ont pas toutes le meme en-tete de subnav.
+- Doublons thematiques : "Une qualite par partenariat" x3 (bloc-standard
+  assume, a editer en triple si evolution) ; "Energie de site autonome"
+  present dans tchaditech/innovations ET tchaditech/rd — a trancher
+  AVANT de traduire TchadiTech ; audits/esg partagent 2 rubriques de
+  gabarit (voulu).
+- Orphelines : 0 (hors 404.html et fichier de verification Google).
+- Ordre recommande : hseq-en, puis doublon site autonome, puis
+  harmonisation Tchaditude, puis traductions Tchaditude (4) >
+  TchadiTech (5) > atlas+conseil > corporate.
