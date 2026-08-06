@@ -418,6 +418,31 @@ html.et-plight main a.iv-cta:not(#_):hover{
 /* --- focus clavier commun --- */
 main a.hxi-cta:focus-visible,main a.ppte-cta:focus-visible,main a.iv-cta:focus-visible{
  outline:2px solid var(--gold-l,#E8C36A);outline-offset:3px}
+</style><style id="poles-fix">
+/* ============ A2 - grille #poles alignee (MAINTENANCE 40) ============
+   Rangs partages carte/tiroir via subgrid : les 4 cartes ont la meme
+   hauteur, les 4 tiroirs "Departements" demarrent sur la meme ligne.
+   Sans subgrid (vieux navigateurs) : comportement d'avant, rien ne casse. */
+@supports (grid-template-rows:subgrid){
+ #poles .hpgrid.c4{grid-template-rows:auto auto}
+ #poles .hubwrap{display:grid!important;grid-template-rows:subgrid;grid-row:span 2;row-gap:8px}
+}
+#poles .hpcard{height:100%}
+#poles .hpcard-body{flex:1;display:flex!important;flex-direction:column}
+#poles .hpcard-kpis{margin-top:auto}
+/* --- de-fragmentation : la carte redevient une seule surface ; les
+       encadres restent aux seules chips KPI --- */
+#poles .hpcard-top:not(#_):not(#__),#poles .hpcard-n:not(#_):not(#__),
+#poles .hpcard-l:not(#_):not(#__),
+#poles .hpcard-tag:not(#_):not(#__),#poles .hpcard-go:not(#_):not(#__){
+ background:none!important;border:0!important;box-shadow:none!important;
+ -webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+/* --- "Decouvrir le pole ->" : meme langage lien-fleche que les cartes
+       actu (A1), cale en bas de carte --- */
+#poles .hpcard-go:not(#_):not(#__){
+ display:inline-flex!important;align-self:flex-start;width:auto!important;
+ font-weight:700!important;letter-spacing:.04em;margin-top:12px}
+#poles .hpcard:hover .hpcard-go{text-decoration:underline;text-underline-offset:3px}
 </style></head>
 <body><div class="diapo" aria-hidden="true"><i style="background-image:url(&quot;/assets/img/piste-desert.webp&quot;)"></i><i data-bg="/assets/img/raffinerie-nuit.webp"></i><i data-bg="/assets/img/pipeline.webp"></i><i data-bg="/assets/img/pompe-petrole.webp"></i><i data-bg="/assets/img/reservoirs.webp"></i><i data-bg="/assets/img/station-nuit.webp"></i><i data-bg="/assets/img/casques-chantier.webp"></i></div><script>addEventListener("load",function(){var els=[].slice.call(document.querySelectorAll(".diapo i[data-bg]"));els.forEach(function(el,i){var t=Math.max(0,(i+1)*6000-4500);setTimeout(function(){el.style.backgroundImage='url("'+el.getAttribute("data-bg")+'")'},t)})})</script><div class="rdprog" aria-hidden="true"></div>
 <a href="#main-content" class="skip-link">Aller au contenu principal</a>

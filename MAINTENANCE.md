@@ -2057,3 +2057,29 @@ roles, definis dans un bloc `<style id="ui-btn">` en fin de `<head>` de
   concernees n'y figure hors CSS).
 - Verification : styles calcules en clair ET en sombre (retrait de
   `et-plight` a la volee) — or `#E8C36A` / texte `#0B1422` ≈ 9,9:1.
+
+## 40. Home : grille #poles alignee (proposition A2) (2026-08)
+
+Deuxieme lot du plan « moderniser & harmoniser ». Avant : cartes de
+317/268/312/357 px, tiroirs « Departements » demarrant a 322/272/317/362 px
+du haut de colonne, et chaque enfant de carte (titre, accroche, KPI,
+lien) encadre par le traitement verre des spans -> cartes fragmentees.
+
+Bloc `<style id="poles-fix">` en fin de `<head>` de `index.html` :
+
+- **Subgrid** : `#poles .hubwrap{display:grid;grid-template-rows:subgrid;
+  grid-row:span 2}` + `grid-template-rows:auto auto` sur `.hpgrid.c4`
+  -> cartes toutes a 314 px, tiroirs tous a 327 px, sur les 4 colonnes.
+  Enveloppe dans `@supports (grid-template-rows:subgrid)` : sans support,
+  comportement d'avant (rien ne casse).
+- `.hpcard-body` en colonne flex avec `.hpcard-kpis{margin-top:auto}` :
+  chips KPI et lien ancres en bas de carte.
+- **De-fragmentation** : `background:none;border:0` sur `.hpcard-top`,
+  `.hpcard-n`, `.hpcard-l`, `.hpcard-tag`, `.hpcard-go` — la carte
+  redevient une seule surface ; les encadres pilule restent aux seules
+  chips KPI (`.hpcard-kpis span`, voulues). NOTE : `.hpcard-top` fait
+  partie de la liste, sinon un cadre subsiste autour du rang titre.
+- `.hpcard-go` : meme langage lien-fleche que `.hncard-go` (A1),
+  `align-self:flex-start`, soulignement au survol de la carte.
+- Verifie : clair + sombre + mobile 390 px (carrousel intact) ; or fonce
+  `#7A570E` sur carte claire ≈ 5,7:1.
