@@ -2760,3 +2760,24 @@ DEUX LECONS DE FABRIQUE :
 - Les 5 constats de l'ultra-review sont regles. Restent au backlog
   traduction : atlas (4 619 mots), TchadiTech (5 pages), corporate
   (13 pages), et la passe nav mega-menu pour les cibles restantes.
+
+## 69. atlas-en — EnerConseils 100% bilingue, 7 poles sur 8 (2026-08-06)
+
+- /enerconseils/atlas-en genere par mkatl.py — LA plus grosse jumelle
+  du site (4 619 mots, 19 sections, 8 tableaux, 16 accordeons, carte
+  interactive + cadastre 42 blocs). ~420 paires dont 12 HTML-exactes.
+- 21 echecs en cascade au 1er passage (paires courtes du sommaire/
+  stats passees avant les phrases longues : 'bassins sedimentaires',
+  'oleoduc Doba-Kribi', 'Comment entrer au Tchad', '42 blocs'...) —
+  tous rescues sur texte mute, re-scan final 0 residu. Lecon
+  confirmee : sur une page a sommaire, les libelles de sommaire
+  DOIVENT passer apres les paragraphes qui les contiennent.
+- Motifs repetes du cadastre traduits par 3 paires suffixes
+  (' · libre · ouvert a l'attribution' etc.) couvrant ~40 blocs.
+- Cablage : bascule FR + trio ; retro-maj des 3 jumelles EnerConseils
+  (subnav placeholder hub -> atlas-en) ; tiroir index-en (derniere
+  chip EnerConseils otee — tiroir 100% EN) ; hub ; sweep nav 78 pages
+  EN ; sitemap 178. QA : 0 erreur, 68 cibles 200, equilibre balisage
+  parfait (21 sections, 8 tables, 16 details).
+- ENERCONSEILS EST LE 7e POLE 100% BILINGUE. Reste UN pole :
+  TchadiTech (socle, innovations, outils, rd, recits) + corporate.
