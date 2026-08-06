@@ -1723,3 +1723,77 @@ theme sombre, 2 largeurs) : 324 mesures sur `/`, `/index-en`, `/engagements`,
 158 fichiers modifies (116 racine + 40 en sous-dossiers + 2 CSS) + ce journal,
 en 10 commits (un par dossier). Les pages Petrochimie anglaises
 (`petrochimie/*-en.html`, section 32) restent le prochain chantier en attente.
+
+---
+
+## 34. Pages Petrochimie anglaises : complexe-en et marches-en (2026-08)
+
+Les deux pages phares du pole Petrochimie existent desormais en anglais :
+`petrochimie/complexe-en.html` (92,7 Ko) et `petrochimie/marches-en.html`
+(92,6 Ko), accessibles sous `/petrochimie/complexe-en` et
+`/petrochimie/marches-en`.
+
+### Methode de fabrication (`/root/work/mkpxen.py`)
+
+Chaque page est un assemblage de trois sources :
+
+1. **Head** : celui de la jumelle francaise, metas traduites (title,
+   description, og, twitter), `lang="en"`, `og:locale` en, canonical `-en`,
+   trio d'alternates ajoute, BreadcrumbList et WebPage traduits
+   (`inLanguage: en`). Le **FAQPage generique francais est retire** — il
+   vit sur `/faq-en` en anglais, inutile de le dupliquer en francais sur une
+   page anglaise. Les styles inline de la page FR sont conserves verbatim
+   (dont `px-css`).
+2. **Chrome anglais** preleve sur `enerconseils/audits-en.html` (la seule
+   page EN de la meme generation) : bandeau d'avant-nav, mega-menu EN
+   (bascule de langue re-pointee vers la jumelle FR — attention, le nav
+   contient AUSSI un lien de menu vers `/enerconseils/audits` qu'il ne faut
+   pas toucher ; item actif deplace de nxm-3 vers nxm-2 « Our business »),
+   footer EN, et scripts partages reconstruits par **double SequenceMatcher**
+   (audits FR <-> audits EN pour la table de traduction ligne a ligne ;
+   audits FR <-> page FR pour isoler les blocs propres a la page, conserves
+   tels quels).
+3. **Contenu** : sous-nav du pole en anglais (liens EN quand la page existe,
+   `hreflang="fr"` sinon), hero, trois sections traduites, carnets lies
+   pointes vers les jumelles `-en` des articles.
+
+La zone FR entre `</main>` et `<footer>` (bandeau cookies, barre de partage,
+pager, « Continuer dans le pole », `#cta-band`) n'a **pas d'equivalent dans le
+chrome EN existant** : elle a ete traduite en place (19 remplacements par
+page), hrefs re-pointes (`/cookies-en`, `/index-en`, `/investisseurs-en`,
+`/contact-en`).
+
+### Corrections de liens associees
+
+- `index-en.html` (volet `#coeurs` Petrochemicals) : « Complex & units » et
+  « Markets & applications » pointent vers les pages EN, pastilles FR
+  retirees ; « Transformed products » et « Chemistry for the barrel » gardent
+  leur pastille FR.
+- `pole-enerchimie-en.html` : les deux cartes correspondantes pointent vers
+  les pages EN, leur ligne d'action passe de « Read in French → » a « Open
+  the page → ».
+- Jumelles FR (`complexe.html`, `marches.html`) : bascule de langue
+  `FR·EN` re-pointee de `/en` vers la jumelle anglaise, trio d'alternates
+  hreflang ajoute.
+- `sitemap.xml` : deux entrees ajoutees.
+
+### Verifications
+
+- Balisage equilibre, 5 blocs JSON-LD valides par page, 0 lien interne
+  non resolu.
+- axe-core 2 pages x 2 largeurs : seuls les `region` moderes preexistants
+  (`#homeFab`, `.share`) ; le `color-contrast` serious signale sur `#phasage`
+  est le **meme faux positif** que sur `/aval/raffinage` — mesure
+  photographique : 20 captures, 0 echec, minimum 6,27.
+- 0 erreur console, 0 requete >= 400, aucun debordement horizontal.
+
+### Notes
+
+- Le bandeau d'avant-nav EN garde les slogans de marque en francais
+  (« De la roche-mere a la pompe », ticker « le baril roule ») — c'est le
+  chrome EN existant (audits-en identique), conserve pour coherence.
+- L'etiquette du scrollcue etait « Suite » meme dans le chrome EN
+  (audits-en l'affiche toujours) : corrigee en « More » sur les deux
+  nouvelles pages ; **quirk preexistant a corriger un jour sur audits-en**.
+- Restent a traduire : `petrochimie/produits` (main 31 Ko) et
+  `petrochimie/chimie-eor` (main 28 Ko) — meme methode, contenu plus long.
