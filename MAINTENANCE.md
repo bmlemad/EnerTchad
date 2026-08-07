@@ -3121,3 +3121,7 @@ DEUX LECONS DE FABRIQUE :
 - Inspection comparée chevron.com / accueil (navigateur réel + captures) — constats consignés dans le rapport de session.
 - **Bug corrigé** : en sombre, l'image unique du héros restait pilotée par l'animation diapoCycle 42 s (opacité 0 ~85 % du temps → photo invisible en prod ; le clair était protégé par lt-hero). Pin ajouté dans `no-bands` : `.diapo i{animation:none!important;opacity:1!important}` (index + index-en).
 - Constat navigateur utilisateur : localStorage et-plight='0' (préférence sombre stockée) — le défaut clair est bien respecté/écrasé par le choix utilisateur, comportement voulu.
+
+## §92 — 2026-08-07 · Héros d'accueil allégé façon majors (« applique »)
+- Style inline `hero-lite` (index + index-en) : le premier écran ne garde que kicker discret + h1 rotatif (taille montée à clamp 2.6-4.4rem) + CTA principal « Découvrir EnerTchad » + mention société en constitution. Masqués du héros : badge pill, paragraphe lead (hx-sub), rail chaîne (hchain), bouton secondaire Investir (btn-g), liens Boutique/Devenir client (hx-links) — contenus tous repris dans les sections sous le pli (Quatre maillons, stats, CTA investisseurs).
+- QA deux thèmes : photo héros visible, composition déclaration→CTA→tuiles stats, aucune régression console.
