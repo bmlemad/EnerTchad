@@ -3161,3 +3161,12 @@ DEUX LECONS DE FABRIQUE :
   3. **Header verre en thème clair** — rgba(250,247,241,.74) + blur 18px (armure 3×:not(#id) contre l'opaque du bundle).
   4. **FABs compacts** — ☀ 38 px opacité .62, toTop scale .82 opacité .68 (pleine opacité au toucher) : moins d'occlusion du contenu.
 - Bug corrigé en route : insertBefore échouait (.nav-search pas enfant direct de .nx-bar) et avortait tout le script — insertion via sr.parentElement. QA : 8 pages types (FR/EN/journal/brochure/hub), 0 erreur console, hrefs de pastille corrects, desktop inchangé (pas de pastille, 18 liens visibles).
+
+## §98 — 2026-08-07 · Parité FR/EN vague 2 : clients, services-ep, investisseurs (3 jumeaux complets)
+- **Fabrique reconstruite après le rewind n°9** : segx.py (tokenizer raw-aware) réécrit ; frmap régénéré depuis les alternates hreflang (95 paires) ; moisson refaite par jointure d'index de tokens sur 14 jumeaux publiés (mains) + régions chrome (nav/menu/footer/tail) du couple index — 5 872 paires, tokens de marque proscrits.
+- **3 jumeaux complets** construits via build_twin.py (nouveau générateur : traduction pleine page par tokens, head transform — title/desc/og/twitter/canonical/inLanguage, FAQPage retiré —, réécriture frmap des hrefs, switch nx-lang → page FR, JSON-LD et littéraux JS traduits) :
+  · **clients-en** (60 ko → 134 ko) : 7 portes clients, FAQ, programmes — lots c1-c4 (~350 paires).
+  · **services-ep-en** (95 ko → 178 ko, le plus gros jumeau après la brochure) : 8 familles OFS, 10 lignes d'intervention, flotte de captage frac-tanks, 4 modèles contractuels — lots s1-s4 (~600 paires).
+  · **investisseurs-en** (85 ko → 148 ko) : thèse, cascade capitalistique, 5 marges, jalons, souscription, avis anti-fraude — lots i1-i2 (~370 paires).
+- QA Playwright ×3 : 0 erreur console, 1 h1, lang=en, switch FR correct, 0 ancre interne cassée, skip-link présent ; résidus FR : uniquement marque + libellés du switch (voulus).
+- Backlog parité restant : societe, engagements, carnets, faq, solutions, publications, mentions-legales, confidentialite, cookies (~62 ko).
