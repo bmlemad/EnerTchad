@@ -3145,3 +3145,19 @@ DEUX LECONS DE FABRIQUE :
 - **Hub EN** (pole-tchaditech-en) : mêmes 4 sections traduites (liens vers les jumeaux -en, ancres identiques) + correction du texte périmé « currently published in French / Read in French » (les jumeaux EN existent depuis §87-88).
 - **Leçon cascade** : les bandes sombres inline doivent survivre à 3 couches — wipe clair `html.et-plight main section/p/h2:not(#_)` (armure :is(...) à 2 classes), wipe sombre `main>section:not(#_)` du bundle subland, et surtout `etDarkFix` `html:not(.et-plight):not(.et-jlight) main>section:not(#_):not(#__)` → armure finale à 3×:not(#id). Images de cartes : style inline avec !important (seul niveau qui bat tout).
 - QA Playwright deux thèmes + mobile 390 : fonds, textes et images corrects partout ; grilles 1 col mobile ; 0 débordement horizontal ; ancres recits(-en) vérifiées.
+
+## §96 — 2026-08-07 · QA version mobile (balayage sitewide 390 px)
+- **Balayage automatisé de 21 pages** (accueils FR/EN, hub+sous-pages TchadiTech, brochure, aval/produits, aval/reseau, aval/distribution, amont, amont/eor, contact, societe, investisseurs, faq, clients, journal, boutique) : 0 débordement horizontal (scrollW 380 partout), 1 h1 par page, 0 erreur console sur les vraies routes, pas de texte <11 px significatif hors mentions.
+- **Vérifications interactives** : menu hamburger (accordéon propre, lien English, CTA Investir), onglets calculateurs d'outils TchadiTech fonctionnels (slider + profils), barre d'onglets basse app-like OK partout, thème sombre mobile vérifié (hub TchadiTech).
+- **Constats mineurs consignés sans correctif** : la pilule flottante « SUITE » est partiellement recouverte par le bandeau cookies tant qu'il n'est pas accepté (disparaît après « J'ai compris ») ; pastilles du héros 12 px = choix design §94 (rotateur décoratif, non essentiel à la navigation).
+- Leçon d'outillage : les routes FR de l'aval/amont vivent en sous-dossiers (/aval/produits, /amont/eor…) — les 404 initiaux du balayage venaient d'URLs plates inexistantes (aucun lien cassé réel : vérifié sitewide, les switches EN→FR pointent bien vers /aval/*).
+- Rewind conteneur n°9 traversé pendant ce cycle (restauration Git ; cette entrée re-consignée après le rewind).
+
+## §97 — 2026-08-07 · Audit + modernisation header/footer mobiles (sitewide)
+- **Audit 390 px** — header : barre haute déjà en verre (blur) mais opaque crème en thème clair ; pas d'accès langue hors menu. Footer : 2 163 px de haut (≈ 2,5 écrans de listes à plat), boutons flottants ☀/haut-de-page recouvrant les liens de contact, 18 liens + 8 chips toujours dépliés.
+- **Bloc `et-mhf` injecté dans 189 pages** (style + script en fin de body, media query ≤760 px, inertes en desktop) :
+  1. **Accordéons footer** — les 4 colonnes (Nos pôles, Clients & innovation, Groupe, Durabilité & investisseurs) repliées par défaut, ouverture au tap sur le h3 (role=button, tabindex, aria-expanded, indicateur +/− en ::before — le ::after du bundle porte le tiret or, leçon retenue) ; footer accueil 2 163→1 359 px.
+  2. **Pastille langue FR·EN dans la barre haute** — clone JS du switch .nx-lang de nx-util (href correct par page), inséré avant la loupe ; garde-fou : pages journal (chrome propre) non touchées, elles ont déjà leur lien EN.
+  3. **Header verre en thème clair** — rgba(250,247,241,.74) + blur 18px (armure 3×:not(#id) contre l'opaque du bundle).
+  4. **FABs compacts** — ☀ 38 px opacité .62, toTop scale .82 opacité .68 (pleine opacité au toucher) : moins d'occlusion du contenu.
+- Bug corrigé en route : insertBefore échouait (.nav-search pas enfant direct de .nx-bar) et avortait tout le script — insertion via sr.parentElement. QA : 8 pages types (FR/EN/journal/brochure/hub), 0 erreur console, hrefs de pastille corrects, desktop inchangé (pas de pastille, 18 liens visibles).
