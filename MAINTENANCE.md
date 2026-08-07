@@ -3074,3 +3074,20 @@ DEUX LECONS DE FABRIQUE :
 - QA Playwright : lang=en, h1 corrects, 0 ancre cassee, 0 erreur
   console. RESTE au backlog traduction : brochure (compilation),
   charte, plan-du-site.
+
+## 86. Corporate traduit — vague 2 : charte-en + plan-du-site-en (2026-08-07)
+
+- REWIND #7 au prealable : restauration git archive (378 fichiers,
+  parite OK), outillage /root/work reecrit (segx, build_twin,
+  cleanserv, frmap regeneree — 92 paires).
+- 2 jumeaux : charte-en (Design System, 113 segments + hero — PIEGE :
+  conteneur hero = div.dsh, pas div.hero) et plan-du-site-en (105
+  segments FR traduits ; la section 'English version' de la page,
+  deja en anglais, est conservee telle quelle — l'omission d'une cle
+  = segment garde a l'identique, par conception de la fabrique).
+- Cablage : trios alternates FR, commutateurs FR des jumeaux, 93
+  pages EN reecrites (/charte, /plan-du-site -> jumeaux, marques
+  '(in French)' retirees), sitemap 190 -> 192 URLs.
+- QA : lang=en, h1 corrects, 0 ancre cassee, 0 lien interne casse sur
+  plan-du-site-en (verification exhaustive des cibles), 0 erreur
+  console. RESTE : brochure (1264 segments — chantier dedie).
