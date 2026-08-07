@@ -556,5 +556,37 @@ html:not(.et-plight):not(.et-jlight) header.pghero :is(.pgc-lab,.pgc-tail,.pgc-a
 html:not(.et-plight):not(.et-jlight) header.jtop :is(.pgc-lab,.pgc-tail,.pgc-arr,.pgh-flabel),
 html:not(.et-plight):not(.et-jlight) .hero :is(.pgc-lab,.pgc-tail,.pgc-arr,.pgh-flabel){color:rgba(245,247,250,.88)!important}
 </style>
-<style id="etLightFix2">/* Mode clair v2. */html.et-plight main .acq-k:not(#_):not(#__),html.et-plight main .acq-dgo:not(#_):not(#__){color:#7E5006!important}html.et-plight header.pghero :is(.pgk,.kick){background:rgba(6,11,20,.66)!important;border-radius:999px;padding:4px 11px;display:inline-block;color:var(--gold-xl,#F0CE82)!important}</style></body>
+<style id="etLightFix2">/* Mode clair v2. */html.et-plight main .acq-k:not(#_):not(#__),html.et-plight main .acq-dgo:not(#_):not(#__){color:#7E5006!important}html.et-plight header.pghero :is(.pgk,.kick){background:rgba(6,11,20,.66)!important;border-radius:999px;padding:4px 11px;display:inline-block;color:var(--gold-xl,#F0CE82)!important}</style><style id="et-mhf">
+@media(max-width:760px){
+#mLang:not(#_):not(#__){display:inline-flex;align-items:center;font-family:var(--fm,ui-monospace,monospace);font-size:.7rem;letter-spacing:.04em;color:var(--cream,#E9EEF5);border:1px solid var(--hair,rgba(255,255,255,.22));border-radius:20px;padding:6px 11px;text-decoration:none;margin-right:9px;white-space:nowrap}
+#mLang b{font-weight:800}
+html.et-plight #mLang:not(#_):not(#__),html.et-jlight #mLang:not(#_):not(#__){color:#1A2330;border-color:rgba(26,35,48,.28)}
+html.et-plight .nav:not(#_):not(#__):not(#___){background:rgba(250,247,241,.74)!important;-webkit-backdrop-filter:blur(18px) saturate(150%);backdrop-filter:blur(18px) saturate(150%)}
+html.et-plight .nav.scrolled:not(#_):not(#__):not(#___){background:rgba(250,247,241,.88)!important}
+footer .foot-grid .foot-col{border-top:1px solid rgba(128,128,128,.22);margin:0!important;padding:0!important}
+footer .foot-grid .foot-col>h3{position:relative;margin:0!important;padding:15px 26px 15px 0!important;cursor:pointer;-webkit-tap-highlight-color:transparent}
+footer .foot-grid .foot-col>h3::before{content:"+";position:absolute;right:4px;top:50%;transform:translateY(-54%);font-size:1.25rem;font-weight:400;opacity:.55;font-family:var(--fm,ui-monospace,monospace)}
+footer .foot-grid .foot-col.open>h3::before{content:"−"}
+footer .foot-grid .foot-col:not(.open)>*:not(h3){display:none!important}
+footer .foot-grid .foot-col.open{padding-bottom:12px!important}
+footer .foot-grid .foot-col>a{display:block;padding:9px 0!important;margin:0!important}
+#plightBtn:not(#_):not(#__):not(#___){width:38px!important;height:38px!important;min-width:38px!important;min-height:38px!important;opacity:.62;transition:opacity .3s}
+#plightBtn:not(#_):not(#__):not(#___):active,#plightBtn:not(#_):not(#__):not(#___):focus{opacity:1}
+#toTop:not(#_):not(#__):not(#___){transform:scale(.82);transform-origin:bottom right;opacity:.68;transition:opacity .3s}
+#toTop:not(#_):not(#__):not(#___):active{opacity:1}
+footer .foot-legal{padding-bottom:10px!important}
+}
+</style><script id="et-mhf-js">(function(){try{
+if(!window.matchMedia||!matchMedia("(max-width:760px)").matches)return;
+var l=document.querySelector(".nx-util .nx-lang");
+var bar=document.querySelector(".nav-in.nx-bar")||document.querySelector(".nx-bar");
+if(l&&bar&&!document.getElementById("mLang")){var c=l.cloneNode(true);c.id="mLang";c.className="";var sr=bar.querySelector(".nav-search")||bar.querySelector(".nav-tog");if(sr&&sr.parentElement){sr.parentElement.insertBefore(c,sr);}else{bar.appendChild(c);}}
+var cols=document.querySelectorAll("footer .foot-grid .foot-col");
+for(var i=0;i<cols.length;i++)(function(col){var h=col.querySelector("h3");if(!h)return;
+h.setAttribute("role","button");h.setAttribute("tabindex","0");h.setAttribute("aria-expanded","false");
+function tg(){var o=col.classList.toggle("open");h.setAttribute("aria-expanded",o?"true":"false");}
+h.addEventListener("click",tg);
+h.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();tg();}});
+})(cols[i]);
+}catch(e){}})();</script></body>
 </html>
