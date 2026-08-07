@@ -3175,3 +3175,12 @@ DEUX LECONS DE FABRIQUE :
 - **Cause** : règle bundle `@media(max-width:560px){.brand small{display:none}}` (bundle_core_a1 + x_cd256286824c) masquait la devise sous le logo en mobile.
 - **Correctif** : règle ajoutée au bloc `et-mhf` des 190 pages — `@media(max-width:560px){.nav .brand-tx small:not(#_){display:block!important}}`. Vérifié 390 px, deux thèmes : « ACCÈS AUX ÉNERGIES » 115×13 px sous EnerTchad, aucun chevauchement avec la pastille FR·EN, hauteur de barre inchangée (70 px). Le footer, qui affichait déjà la devise, n'est pas concerné.
 - Publication en 10 commits (mêmes lots que §97), parité 190/190, vérifié en production.
+
+## §100 — 2026-08-07 · QA complet du site (statique + dynamique + interactif + production)
+- **Statique (195 pages)** : 0 lien interne cassé, 0 asset/image de fond manquant, 0 id dupliqué, canonical présent partout (sauf 404 et fichier de vérification Google, voulu), et-light-def et et-mhf présents sur toutes les pages concernées. Sitemap 193 URLs : 100 % résolues, seules /404 et le fichier Google hors sitemap (correct). Faux positifs écartés : les <title> multiples de brochure/atlas sont des titres SVG accessibles.
+- **Dynamique (195 pages, Playwright ×6 workers)** : 0 erreur console, 0 erreur JS, 1 h1 par page, 0 débordement horizontal desktop, thème clair par défaut partout, 0 image cassée. Seul signalé : le fichier de vérification Google (non-page).
+- **Thème sombre** (6 pages clés dont les 3 nouveaux jumeaux) : propre, opt-out persistant vérifié dans les deux sens.
+- **Interactif** : bascule ☀ (persistance localStorage OK), recherche Cmd+K (ouverture + champ), méga-menus desktop (rendu solide et lisible une fois la transition finie — le « voile » n'est que l'animation), accordéons footer + pastille FR·EN + devise mobile vérifiés sur les nouveaux jumeaux.
+- **Production** : parité octet-à-octet locale/prod sur 8 routes échantillons, 404 servie correctement avec la page de marque.
+- Rewind conteneur n°10 traversé en début de cycle (restauration Git propre).
+- Verdict : aucun défaut à corriger — site sain sur les 195 pages.
