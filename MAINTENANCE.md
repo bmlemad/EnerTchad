@@ -3170,3 +3170,8 @@ DEUX LECONS DE FABRIQUE :
   · **investisseurs-en** (85 ko → 148 ko) : thèse, cascade capitalistique, 5 marges, jalons, souscription, avis anti-fraude — lots i1-i2 (~370 paires).
 - QA Playwright ×3 : 0 erreur console, 1 h1, lang=en, switch FR correct, 0 ancre interne cassée, skip-link présent ; résidus FR : uniquement marque + libellés du switch (voulus).
 - Backlog parité restant : societe, engagements, carnets, faq, solutions, publications, mentions-legales, confidentialite, cookies (~62 ko).
+
+## §99 — 2026-08-07 · Marque « Accès aux Énergies » visible sur le header mobile (signalement utilisateur)
+- **Cause** : règle bundle `@media(max-width:560px){.brand small{display:none}}` (bundle_core_a1 + x_cd256286824c) masquait la devise sous le logo en mobile.
+- **Correctif** : règle ajoutée au bloc `et-mhf` des 190 pages — `@media(max-width:560px){.nav .brand-tx small:not(#_){display:block!important}}`. Vérifié 390 px, deux thèmes : « ACCÈS AUX ÉNERGIES » 115×13 px sous EnerTchad, aucun chevauchement avec la pastille FR·EN, hauteur de barre inchangée (70 px). Le footer, qui affichait déjà la devise, n'est pas concerné.
+- Publication en 10 commits (mêmes lots que §97), parité 190/190, vérifié en production.
