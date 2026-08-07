@@ -3006,3 +3006,30 @@ DEUX LECONS DE FABRIQUE :
 - Alternates hreflang : absents uniquement des 13 pages FR sans
   jumeau (comportement correct, pas d'auto-reference requise).
 - Breadcrumb absent uniquement de la home (correct).
+
+## 83. TchadiTech traduit : 8/8 poles bilingues (2026-08-07)
+
+- REWIND #6 au prealable : restauration git archive FETCH_HEAD
+  (366 fichiers, parite OK), serveur cleanserv relance.
+- 5 jumeaux crees (convention -en meme dossier) : tchaditech/
+  socle-en, innovations-en, outils-en, rd-en, recits-en.
+- NOUVELLE METHODE de fabrication (build_twin.py + segx.py) :
+  extraction de segments indexes (noeuds texte + attributs aria-label/
+  title/alt/placeholder) du <main> FR, traduction par INDEX (immunisee
+  contre les cascades de sous-chaines du procede par paires §58/§66),
+  reinjection positionnelle avec espaces preserves ; chrome donneur =
+  tchaditude/academie-en.html ([body:main) + (</main>:fin]) ; tete FR
+  transformee (title/desc/og/twitter/canonical + trio alternates,
+  BreadcrumbList EN, WebPage inLanguage/en, og:locale en_US) ;
+  reecriture des liens internes via frmap.json (85 paires, regeneree
+  depuis les alternates du site) + hreflang="fr" sur cibles FR-only.
+  Couverture 335+102+181+153+65 = 836 segments, 0 residu FR detecte.
+- PIEGE : le JS des accordeons tri-more vit dans un <script> du main
+  (non traduit par segments) -> patch 'Reduire /En savoir plus' ->
+  'Collapse /Learn more ' (socle-en).
+- Cablage : trio alternates ajoute aux 5 pages FR + commutateur EN
+  /index-en -> jumeau ; 84 pages EN reecrites vers les jumeaux
+  (mega-menu compris, marques '(in French)' retirees sur ces cibles) ;
+  sitemap 178 -> 183 URLs.
+- QA Playwright : lang=en, h1 corrects, 0 ancre locale cassee,
+  0 erreur console sur les 5 jumeaux.
