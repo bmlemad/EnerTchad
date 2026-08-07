@@ -3116,3 +3116,8 @@ DEUX LECONS DE FABRIQUE :
 
 ## §90 — 2026-08-07 · Home sans bandeaux (directive « caractère immersif et translucide en verre »)
 - Bandeau cotations (#oilticker), barre de progression (#readbar) et rdprog masqués sur index + index-en (style inline `no-bands`) : le héros photo coule désormais bord à bord sous la nav en verre, en clair comme en sombre. Le script de placement tolère l'absence du ticker (padding héros 152px inchangé).
+
+## §91 — 2026-08-07 · Inspection visuelle home vs Chevron + correctif héros sombre
+- Inspection comparée chevron.com / accueil (navigateur réel + captures) — constats consignés dans le rapport de session.
+- **Bug corrigé** : en sombre, l'image unique du héros restait pilotée par l'animation diapoCycle 42 s (opacité 0 ~85 % du temps → photo invisible en prod ; le clair était protégé par lt-hero). Pin ajouté dans `no-bands` : `.diapo i{animation:none!important;opacity:1!important}` (index + index-en).
+- Constat navigateur utilisateur : localStorage et-plight='0' (préférence sombre stockée) — le défaut clair est bien respecté/écrasé par le choix utilisateur, comportement voulu.
