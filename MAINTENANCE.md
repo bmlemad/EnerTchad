@@ -3049,3 +3049,28 @@ DEUX LECONS DE FABRIQUE :
 - Verification calculee : epw-c/ofsc-c/pcard/pj/art/ppj-card tous
   translucides AVEC blur en theme sombre. Capture raffinage (etapes
   sur photo) : lisibilite nette.
+
+## 85. Corporate traduit — vague 1 : 7 jumeaux EN (2026-08-07)
+
+- Nouveaux jumeaux racine (fabrique segments-indexes, donneur
+  parc-en.html) : carrieres-en, gouvernance-en, innovation-en,
+  cibles-2030-en, communautes-en, accessibilite-en, avertissements-en
+  (396 segments + heros traduits, 0 residu FR detecte).
+- PIEGE STRUCTUREL : sur ces pages FR, le hero (h1 + lead + fil
+  d'Ariane + span#main-content) vit AVANT <main> — la composition
+  chrome-donneur + main traduit perdait h1 et cible du lien
+  d'evitement. Correctif : bloc hero FR extrait ([div.hero .. <main)),
+  traduit et insere avant <main> dans chaque jumeau ;
+  span#main-content ajoute a cibles-2030-en.
+- Particularites : gouvernance.html avait deja fr+x-default (trio
+  complete, doublon retire du jumeau) et son commutateur pointait vers
+  /ethique-en (corrige -> /gouvernance-en) ; cibles-2030/accessibilite/
+  avertissements n'ont pas de commutateur EN (chrome utilitaire —
+  choix conserve, alternates presents) ; commutateur FR des jumeaux
+  repointe de /amont/parc (donneur) vers leur page FR.
+- Cablage : trios alternates sur les 7 pages FR, commutateurs /en ->
+  jumeaux, 91 pages EN reecrites (marques '(in French)' retirees sur
+  ces cibles), sitemap 183 -> 190 URLs, frmap 92 paires.
+- QA Playwright : lang=en, h1 corrects, 0 ancre cassee, 0 erreur
+  console. RESTE au backlog traduction : brochure (compilation),
+  charte, plan-du-site.
