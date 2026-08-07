@@ -3091,3 +3091,12 @@ DEUX LECONS DE FABRIQUE :
 - QA : lang=en, h1 corrects, 0 ancre cassee, 0 lien interne casse sur
   plan-du-site-en (verification exhaustive des cibles), 0 erreur
   console. RESTE : brochure (1264 segments — chantier dedie).
+
+## §87 — 2026-08-07 · Brochure bilingue : /brochure-en (dernière page traduite)
+- **Bug majeur corrigé dans la fabrique** : le tokenizer de segx.py n'était pas "raw-text aware" — un `<script>` dans `<main>` contenant la chaîne `'<script>'` bloquait le compteur de skip et masquait tout le reste de la page (la brochure ne remontait que 1 264 segments/63 ko au lieu de 4 960 segments/232 ko réels). Tokenizer réécrit : script/style traités comme éléments raw-text (saut direct au tag fermant).
+- **/brochure-en** créé : jumeau complet pleine page (chrome custom préservé — preloader, dotnav, oil ticker, 28 scripts post-main) : 4 801 segments traduits + 70 littéraux JS (BASINS, CHAIN, PROFILES, HUBS, cadastre M, stations dashboard, formulaires mailto, tags) + unités kb/j→kb/d, toLocaleString fr-FR→en-US. Traduction : 31 lots manuels (~170 ko de dictionnaires, /root/work/btr/) + moisson d'alignement sur jumeaux existants.
+- QA : 0 erreur console, h1/lang EN, calculatrice raffinage + bassins interactifs + tuiles distribution + dashboard OK en EN (FR non régressé), 0 ancre cassée, 64 liens internes 200, balayage accents/stopwords : 0 résidu FR (hors marque « Accès aux Énergies », conservée comme sur tous les jumeaux).
+- Cohérence : « 21 libres » périmé corrigé en « 26 libres » (3×) côté FR (canon §80) ; JSON-LD Organization + Dataset Atlas traduits ; FAQPage retiré ; trio alternates + canonical.
+- Câblage : brochure.html (alternates + nx-lang → /brochure-en), carnets-en/publications-en retargetés, sitemap 193 URL, frmap 95 paires.
+- **Dette découverte (à traiter)** : avec le tokenizer corrigé, 30 paires FR/EN sont désalignées (ex. amont/eor 368 segs FR vs 56 EN) — des jumeaux anciens en retard sur les enrichissements FR (§76/§78) ou touchés par le même bug. Audit de parité FR/EN à programmer.
+- Le site est désormais 100 % bilingue FR/EN : plus aucune page non traduite.
