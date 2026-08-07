@@ -3184,3 +3184,16 @@ DEUX LECONS DE FABRIQUE :
 - **Production** : parité octet-à-octet locale/prod sur 8 routes échantillons, 404 servie correctement avec la page de marque.
 - Rewind conteneur n°10 traversé en début de cycle (restauration Git propre).
 - Verdict : aucun défaut à corriger — site sain sur les 195 pages.
+
+## §101 — 2026-08-07 · Parité FR/EN vague 3 (finale) : 9 jumeaux — le site est 100 % bilingue en versions complètes
+- **Fabrique reconstruite après le rewind n°11** (segx + frmap 95 + moisson 6 901 paires depuis 17 jumeaux publiés + régions chrome). Correction du normalisateur : l'espace fine insécable (U+202F) est désormais repliée comme l'insécable — les clés de dicos avec espace simple matchent.
+- **9 jumeaux complets** (build_twin, ~810 paires traduites en 8 lots l1/p1/so1/u1/f1/ca1/e1/sc1) :
+  · societe-en (63→99 ko) : identité, mission, vision, « entre nos mains », genèse, gouvernance, fonctions support.
+  · engagements-en (61→96 ko) : HSE/ALARP, qualité, sécurité opérationnelle, conformité, arc E-S-G, double matérialité, griefs.
+  · carnets-en (72→94 ko) : les 24 cartes d'articles, fil des jalons, salle de presse, kit média (boilerplates FR/EN conservés).
+  · faq-en (78→85 ko) : les ~25 questions complètes (société, capital, activités, pratique, anti-fraude).
+  · solutions-en (98→103 ko) : les 6 familles de besoins et la recomposition par pôles.
+  · publications-en (64→70 ko) : l'étagère documentaire complète.
+  · mentions-legales-en, confidentialite-en, cookies-en (53→59-60 ko chacune) : pages légales intégrales.
+- JSON-LD et littéraux JS traduits page par page ; QA Playwright ×9 : 0 erreur console, 1 h1, lang=en, switch FR correct, 0 ancre cassée, 0 résidu FR hors marque.
+- **Jalon : les 95 paires FR/EN du site sont désormais toutes des versions complètes** — plus aucun résumé EN. Le backlog de parité ouvert au §87 est soldé.
