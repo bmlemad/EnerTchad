@@ -3033,3 +3033,19 @@ DEUX LECONS DE FABRIQUE :
   sitemap 178 -> 183 URLs.
 - QA Playwright : lang=en, h1 corrects, 0 ancre locale cassee,
   0 erreur console sur les 5 jumeaux.
+
+## 84. QA translucidite des tuiles : verre generalise (2026-08-07)
+
+- Audit Playwright (16 pages, 10 familles) : pj/art (deja verre §75),
+  ppj-card/pmore-card/ttg-t/fam6 (deja translucides + blur via chrome
+  partage), adx (photo ::before, par conception). RESTAIENT PLATES :
+  epw-c (rgba blanc .02, sans blur — 37 pages), ofsc-c (pages EN
+  anciennes generations), pcard (navy .76 sans blur).
+- CORRECTIF <style id="tile-glass"> injecte dans 80 pages :
+  html:not(.et-plight) epw-c/ofsc-c -> rgba(16,26,44,.62) +
+  backdrop-blur 8px sat 1.08 ; pcard -> blur ajoute (fond conserve) ;
+  fallback @supports (fond .92 si pas de backdrop-filter). Theme
+  clair intact (verifie : et-plight non affecte).
+- Verification calculee : epw-c/ofsc-c/pcard/pj/art/ppj-card tous
+  translucides AVEC blur en theme sombre. Capture raffinage (etapes
+  sur photo) : lisibilite nette.
