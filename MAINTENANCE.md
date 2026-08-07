@@ -3197,3 +3197,8 @@ DEUX LECONS DE FABRIQUE :
   · mentions-legales-en, confidentialite-en, cookies-en (53→59-60 ko chacune) : pages légales intégrales.
 - JSON-LD et littéraux JS traduits page par page ; QA Playwright ×9 : 0 erreur console, 1 h1, lang=en, switch FR correct, 0 ancre cassée, 0 résidu FR hors marque.
 - **Jalon : les 95 paires FR/EN du site sont désormais toutes des versions complètes** — plus aucun résumé EN. Le backlog de parité ouvert au §87 est soldé.
+
+## §102 — 2026-08-07 · Audit de cohérence du versant EN complet (après le jalon 100 % bilingue)
+- **Crawl des 95 pages EN** (détection corrigée : `<html lang="en"` strict, le premier détecteur confondait `hreflang="en"`) : métadonnées irréprochables — 0 og:locale français, 0 canonical erroné, 0 switch mal étiqueté.
+- **43 libellés d'accessibilité français** trouvés sur 17 pages EN des premières vagues (aria-label du pager de pôle « Continuer dans le pôle… », curseur « Niveau de luminosité », sommaire « Thématiques de la page », carte cadastre, 2 alt de photos Zakouma) — tous traduits sur 16 pages (brochure-en : « SHT (Société des Hydrocarbures du Tchad) » conservé, raison sociale officielle dans une phrase anglaise).
+- Le versant EN est désormais propre jusqu'aux attributs lus par les lecteurs d'écran.
