@@ -181,7 +181,20 @@ main > section, .sec, .hx-strip{background:transparent!important}
 .cmdk-panel,.lum-panel{background:rgba(11,17,28,.7)!important;-webkit-backdrop-filter:saturate(200%) blur(30px);backdrop-filter:saturate(200%) blur(30px);border:1px solid var(--g-brd)!important;box-shadow:var(--g-shadow)!important}
 
 </style>
-</head>
+<style id="eng-perf">
+.perfw{overflow-x:auto;margin-top:22px;-webkit-overflow-scrolling:touch}
+table.perft{width:100%;min-width:660px;border-collapse:collapse;font-size:.88rem}
+table.perft th,table.perft td{text-align:left;padding:11px 12px;border-bottom:1px solid rgba(128,128,128,.2);vertical-align:top}
+table.perft thead th{font-family:var(--fm,ui-monospace,monospace);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-l,#E8C36A);border-bottom:1px solid rgba(232,195,106,.4);white-space:nowrap}
+table.perft td:first-child{font-weight:700}
+table.perft .na{font-family:var(--fm,ui-monospace,monospace);font-size:.78rem;color:var(--muted,#8C9AB0)}
+table.perft tbody tr:hover{background:rgba(232,195,106,.05)}
+.perf-n{margin-top:14px;font-size:.82rem;line-height:1.55;color:var(--muted,#8C9AB0)}
+.refg{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px;margin-top:20px}
+.refc{border:1px solid rgba(128,128,128,.24);border-left:3px solid var(--gold-l,#E8C36A);border-radius:12px;padding:14px 16px}
+.refc b{display:block;font-family:var(--fd);font-size:.98rem;margin-bottom:4px}
+.refc span{display:block;font-size:.82rem;line-height:1.5;color:var(--muted,#8C9AB0)}
+</style></head>
 <body id="top"><a href="#main-content" class="skip-link">Aller au contenu principal</a>
 <header><nav class="nav nx" id="nav" aria-label="Navigation principale">
   <div class="nx-util"><div class="nx-util-in">
@@ -345,10 +358,54 @@ main > section, .sec, .hx-strip{background:transparent!important}
   <p style="margin-top:14px"><a href="investisseurs#gouvernance" style="color:var(--gold-l);text-decoration:none">Voir la gouvernance côté investisseurs →</a> &nbsp;·&nbsp; <a href="societe" style="color:var(--gold-l);text-decoration:none">La Société →</a></p>
 </section>
 
+<section id="indicateurs" style="--ac:var(--gold-l)">
+  <div class="sk">05b · Tableau des indicateurs</div>
+  <h2>Ce que nous mesurerons, et à partir de quand.</h2>
+  <p>Les majors publient une page de données de performance. Nous n’avons aucun actif en exploitation : nos colonnes « réalisé » sont donc vides, et nous préférons l’écrire que de la masquer. Voici l’engagement de mesure — indicateur, base, cible, échéance, référentiel — que le premier baril rendra exigible.</p>
+  <div class="perfw"><table class="perft">
+    <thead><tr><th>Indicateur</th><th>Base</th><th>Réalisé</th><th>Cible</th><th>Échéance</th><th>Référentiel visé</th></tr></thead>
+    <tbody>
+      <tr><td>Torchage de routine</td><td>Néant — aucun site</td><td class="na">à mesurer dès le 1ᵉʳ baril</td><td>Zéro torchage de routine</td><td>2030</td><td>Zero Routine Flaring</td></tr>
+      <tr><td>Part de renouvelables · énergie de site</td><td>0&nbsp;%</td><td class="na">à mesurer dès le 1ᵉʳ site</td><td>30&nbsp;%+</td><td>2030</td><td>reporting GES</td></tr>
+      <tr><td>Intensité carbone Scope 1+2</td><td>Non applicable</td><td class="na">à mesurer dès le 1ᵉʳ baril</td><td>Sous la médiane du bassin</td><td>2030</td><td>GRI · IPIECA</td></tr>
+      <tr><td>Eau de production réinjectée ou valorisée</td><td>Néant</td><td class="na">à mesurer dès le 1ᵉʳ champ</td><td>Zéro rejet non conforme</td><td>2030</td><td>ISO 14001 visée</td></tr>
+      <tr><td>TRIR — accidents enregistrables</td><td>Néant — aucune heure travaillée</td><td class="na">à mesurer dès le 1ᵉʳ chantier</td><td>Best-in-class du secteur</td><td>annuel</td><td>ISO 45001 visée</td></tr>
+      <tr><td>Personnel tchadien</td><td>100&nbsp;% (équipe fondatrice)</td><td class="na">publié à chaque exercice</td><td>80&nbsp;% à l’échelle</td><td>2030</td><td>contenu local</td></tr>
+      <tr><td>Achats auprès de fournisseurs tchadiens</td><td>Néant — marchés non ouverts</td><td class="na">à mesurer à l’ouverture</td><td>Majoritaire</td><td>2030</td><td>contenu local</td></tr>
+      <tr><td>Revenus versés à l’État</td><td>Néant</td><td class="na">à publier dès le 1ᵉʳ exercice</td><td>Publication intégrale</td><td>annuel</td><td>ITIE visée</td></tr>
+      <tr><td>Signalements éthiques traités</td><td>Canal en cours d’ouverture</td><td class="na">à publier dès le 1ᵉʳ exercice</td><td>100&nbsp;% instruits</td><td>annuel</td><td>ISO 37001 visée</td></tr>
+      <tr><td>Doléances communautaires closes</td><td>Néant — aucune opération</td><td class="na">à publier dès le 1ᵉʳ site</td><td>100&nbsp;% avec réponse datée</td><td>annuel</td><td>mécanisme de griefs</td></tr>
+    </tbody>
+  </table></div>
+  <p class="perf-n">Société en constitution&nbsp;: aucune de ces lignes n’est un résultat. Le tableau engage la <strong>méthode de mesure</strong> et la date à laquelle chaque case cessera d’être vide — il sera repris tel quel dans le premier rapport de durabilité.</p>
+</section>
+
+<section id="referentiels" style="--ac:var(--gold-l)">
+  <div class="sk">05c · Nos référentiels</div>
+  <h2>Les cadres auxquels nous nous mesurons.</h2>
+  <p>Un seul endroit pour tous les référentiels cités sur ce site — ce que chacun couvre, et où nous en sommes.</p>
+  <div class="refg">
+    <div class="refc"><b>OHADA · AUSCGIE</b><span>Droit des sociétés — cadre juridique de la SA. <strong>Appliqué</strong> dès la constitution.</span></div>
+    <div class="refc"><b>IFRS</b><span>Comptes et reporting financier. <strong>Appliqué</strong>, audit externe visé.</span></div>
+    <div class="refc"><b>ITIE</b><span>Transparence des revenus extractifs. <strong>Adhésion visée.</strong></span></div>
+    <div class="refc"><b>ISO 45001</b><span>Santé et sécurité au travail. <strong>Certification visée.</strong></span></div>
+    <div class="refc"><b>ISO 14001</b><span>Management environnemental. <strong>Certification visée.</strong></span></div>
+    <div class="refc"><b>ISO 9001</b><span>Management de la qualité. <strong>Certification visée.</strong></span></div>
+    <div class="refc"><b>ISO 37001</b><span>Dispositif anticorruption. <strong>Certification visée.</strong></span></div>
+    <div class="refc"><b>GRI · IPIECA</b><span>Reporting extra-financier et guide sectoriel pétrole &amp; gaz. <strong>Cadre du rapport</strong> de durabilité.</span></div>
+    <div class="refc"><b>TCFD</b><span>Information financière liée au climat. <strong>Cadre de la note climat.</strong></span></div>
+    <div class="refc"><b>CSRD · ESRS</b><span>Double matérialité. <strong>Grille d’arbitrage</strong> de nos priorités E-S-G.</span></div>
+    <div class="refc"><b>Zero Routine Flaring</b><span>Initiative Banque mondiale. <strong>Objectif 2030.</strong></span></div>
+    <div class="refc"><b>ODD — ONU</b><span>ODD 7, 8, 13 et 16. <strong>Alignement revendiqué.</strong></span></div>
+    <div class="refc"><b>API Spec Q2 · ISO 29001</b><span>Qualité des services parapétroliers. <strong>Référentiels de prestation.</strong></span></div>
+    <div class="refc"><b>NORSOK D-010</b><span>Intégrité de puits et barrières. <strong>Référentiel d’intervention.</strong></span></div>
+  </div>
+</section>
+
 <section id="rapport" style="--ac:var(--gold-l)">
   <div class="sk">06 · Publications de durabilité</div>
   <h2><span class="h2ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v15H6z"/><path d="M15 2v5h5M9 13h6M9 17h6"/></svg></span>Rapport de durabilité</h2>
-  <p>À l’image des majors, EnerTchad publiera un cadre documentaire de durabilité — pour rendre l’extra-financier vérifiable, daté et comparable. Première édition <strong>à paraître</strong> au rythme de la constitution.</p>
+  <p>À l’image des majors, EnerTchad publiera un cadre documentaire de durabilité — pour rendre l’extra-financier vérifiable, daté et comparable. Première édition visée&nbsp;: <strong>à l’issue du premier exercice social complet</strong>, publiée dans les six mois suivant sa clôture. Sommaire annoncé&nbsp;: (1) le tableau des indicateurs ci-dessus, renseigné&nbsp;; (2) climat et énergie de site&nbsp;; (3) eau, sols et biodiversité&nbsp;; (4) sécurité et personnes&nbsp;; (5) contenu local et revenus versés à l’État&nbsp;; (6) gouvernance, éthique et doléances.</p>
   <div class="grid">
     <div class="card"><div class="t">Rapport de durabilité <span style="color:var(--gold-l)">(à paraître)</span></div><div class="d">L’édition annuelle E-S-G : performance, cibles datées et progrès, alignée GRI / IPIECA visés.</div><div class="std">Référentiels visés : <b>GRI · IPIECA · ODD</b></div></div>
     <div class="card"><div class="t">Note climat &amp; trajectoire bas-carbone <span style="color:var(--gold-l)">(à paraître)</span></div><div class="d">Notre ambition climat chiffrée : torchage de routine évité, solaire de site, intensité carbone visée.</div><div class="std">Cadre visé : <b>TCFD</b></div></div>
