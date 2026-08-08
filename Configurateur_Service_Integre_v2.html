@@ -51,4 +51,14 @@ function init(){if(document.getElementById('plightBtn'))return;var b=document.cr
 b.addEventListener('click',function(){var on=!document.documentElement.classList.contains('et-plight');app(on);b.setAttribute('aria-pressed',on?'true':'false');try{localStorage.setItem('et-jlight',on?'1':'0');localStorage.setItem(KEY,on?'1':'0')}catch(e){}});
 document.body.appendChild(b)}
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init()})()}catch(e){}</script><style id="etLightFix2">/* Mode clair v2. */html.et-plight #root button:not(#_):not(#__):not([class*='primary']){background-color:rgba(26,35,48,.07)!important;color:#1A2330!important;border-color:rgba(26,35,48,.22)!important}html.et-plight #root button:not(#_) span{color:inherit!important}html.et-plight h1 em:not(#_):not(#__),html.et-plight h2 em:not(#_):not(#__){color:#7A570E!important;-webkit-text-fill-color:#7A570E!important;background:none!important}/* v3 *//* v4 */</style><style id="mqa-mob">/* QA mobile 31/07/2026 : liens du fil de nav a 16px de haut -> zone tactile elargie */
-@media(max-width:760px){#root nav a{padding-top:12px;padding-bottom:12px}}</style>
+@media(max-width:760px){#root nav a{padding-top:12px;padding-bottom:12px}}</style><style id="aa-reflow">
+@media(max-width:420px){
+  a.inline-flex.whitespace-nowrap:not(#_){white-space:normal;text-align:center;padding-left:14px;padding-right:14px}
+}
+</style>
+<style id="aa-focus">
+/* WCAG 2.4.7 : indicateur de focus visible au clavier (anneau box-shadow, insensible aux resets d'outline) */
+button:focus-visible { box-shadow: 0 0 0 3px #0B1422, 0 0 0 6px #E8C36A !important; outline-width: 3px !important; outline-style: solid !important; outline-color: #E8C36A !important; outline-offset: 2px !important; border-radius: 999px; position: relative; z-index: 5; }
+html.et-plight button:focus-visible { box-shadow: 0 0 0 3px #FBF9F3, 0 0 0 6px #8A6A12 !important; outline-color: #8A6A12 !important; }
+</style>
+

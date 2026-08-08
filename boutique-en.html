@@ -281,6 +281,21 @@ main > section, .sec, .hx-strip{background:transparent!important}
 .cmdk-panel,.lum-panel{background:rgba(11,17,28,.7)!important;-webkit-backdrop-filter:saturate(200%) blur(30px);backdrop-filter:saturate(200%) blur(30px);border:1px solid var(--g-brd)!important;box-shadow:var(--g-shadow)!important}
 
 </style>
+<style id="aa-reflow">
+@media(max-width:400px){
+  header.btop:not(#_){flex-wrap:wrap;row-gap:8px;padding-left:12px;padding-right:12px}
+  .btop-r:not(#_){margin-left:auto;flex-wrap:wrap}
+}
+</style>
+<style id="aa-reflow2">
+.shop:not(#_)>*{min-width:0}
+@media(max-width:420px){.seg:not(#_){flex-wrap:wrap}.grid:not(#_){grid-template-columns:1fr}}
+</style>
+<style id="aa-focus">
+/* WCAG 2.4.7 : indicateur de focus visible au clavier (anneau box-shadow, insensible aux resets d'outline) */
+.seg button:focus-visible, .chip:focus-visible, .filters button:focus-visible, .shop button:focus-visible, .cart-btn:focus-visible { box-shadow: 0 0 0 3px #0B1422, 0 0 0 6px #E8C36A !important; outline-width: 3px !important; outline-style: solid !important; outline-color: #E8C36A !important; outline-offset: 2px !important; border-radius: 999px; position: relative; z-index: 5; }
+html.et-plight .seg button:focus-visible, html.et-plight .chip:focus-visible, html.et-plight .filters button:focus-visible, html.et-plight .shop button:focus-visible, html.et-plight .cart-btn:focus-visible { box-shadow: 0 0 0 3px #FBF9F3, 0 0 0 6px #8A6A12 !important; outline-color: #8A6A12 !important; }
+</style>
 </head>
 <body id="top">
 <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">

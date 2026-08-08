@@ -244,6 +244,12 @@ html:not(.et-plight):not(.et-jlight) .pmore-home:not(#_):not(#__){color:#F0E6D2!
 .pt-tag:not(#_){color:var(--muted,#9FB0C9);font-size:.6rem;letter-spacing:.04em;text-transform:uppercase}
 @media(prefers-reduced-motion:reduce){.pt-track:not(#_){animation:none}}
 </style>
+<style id="aa-focus">
+/* WCAG 2.4.7 : indicateur de focus visible au clavier (anneau box-shadow, insensible aux resets d'outline) */
+main button:focus-visible { box-shadow: 0 0 0 3px #0B1422, 0 0 0 6px #E8C36A !important; outline-width: 3px !important; outline-style: solid !important; outline-color: #E8C36A !important; outline-offset: 2px !important; border-radius: 999px; position: relative; z-index: 5; }
+html.et-plight main button:focus-visible { box-shadow: 0 0 0 3px #FBF9F3, 0 0 0 6px #8A6A12 !important; outline-color: #8A6A12 !important; }
+</style>
+<noscript><style id="aa-noscript">.rv,.reveal,[class*="reveal"],.mln,.plc-card,.acth,.mleg,.intro{opacity:1!important;transform:none!important;visibility:visible!important;filter:none!important;clip-path:none!important;transition:none!important;animation:none!important}</style></noscript>
 </head>
 <body id="top"><div class="rdprog" aria-hidden="true"></div>
 <a href="#main-content" class="skip-link">Skip to main content</a>
@@ -381,7 +387,7 @@ html:not(.et-plight):not(.et-jlight) .pmore-home:not(#_):not(#__){color:#F0E6D2!
 <div class="wrap"><span class="epw-k">Performance data</span>
 <h2 id="donnees-esgT">ESG indicators — baseline and 2030 targets</h2>
 <p class="epw-lead">What the majors publish at the back of an annual report, we publish before the first barrel: the indicators we accept being judged on, their starting point and how they are verified.</p>
-<div class="esg-tw"><table class="esg-t">
+<div class="esg-tw" tabindex="0" role="region" aria-label="ESG indicator table — scrolls horizontally"><table class="esg-t">
 <caption>Target indicators · company in formation — baselines will be consolidated at the first financial year</caption>
 <thead><tr><th scope="col">Indicator</th><th scope="col">Baseline today</th><th scope="col">2030 target</th><th scope="col">Monitoring &amp; verification</th></tr></thead>
 <tbody>

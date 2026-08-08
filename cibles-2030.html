@@ -183,7 +183,13 @@ main > section, .sec, .hx-strip{background:transparent!important}
 .cmdk-panel,.lum-panel{background:rgba(11,17,28,.7)!important;-webkit-backdrop-filter:saturate(200%) blur(30px);backdrop-filter:saturate(200%) blur(30px);border:1px solid var(--g-brd)!important;box-shadow:var(--g-shadow)!important}
 
 </style>
-<style id="tile-glass">html:not(.et-plight) :is(.epw-c,.ofsc-c){background:rgba(16,26,44,.62);-webkit-backdrop-filter:blur(8px) saturate(1.08);backdrop-filter:blur(8px) saturate(1.08)}html:not(.et-plight) .pcard{-webkit-backdrop-filter:blur(8px) saturate(1.08);backdrop-filter:blur(8px) saturate(1.08)}@supports not (backdrop-filter:blur(1px)){html:not(.et-plight) :is(.epw-c,.ofsc-c){background:rgba(16,26,44,.92)}}</style></head>
+<style id="tile-glass">html:not(.et-plight) :is(.epw-c,.ofsc-c){background:rgba(16,26,44,.62);-webkit-backdrop-filter:blur(8px) saturate(1.08);backdrop-filter:blur(8px) saturate(1.08)}html:not(.et-plight) .pcard{-webkit-backdrop-filter:blur(8px) saturate(1.08);backdrop-filter:blur(8px) saturate(1.08)}@supports not (backdrop-filter:blur(1px)){html:not(.et-plight) :is(.epw-c,.ofsc-c){background:rgba(16,26,44,.92)}}</style><style id="aa-focus">
+/* WCAG 2.4.7 : indicateur de focus visible au clavier (anneau box-shadow, insensible aux resets d'outline) */
+main button:focus-visible { box-shadow: 0 0 0 3px #0B1422, 0 0 0 6px #E8C36A !important; outline-width: 3px !important; outline-style: solid !important; outline-color: #E8C36A !important; outline-offset: 2px !important; border-radius: 999px; position: relative; z-index: 5; }
+html.et-plight main button:focus-visible { box-shadow: 0 0 0 3px #FBF9F3, 0 0 0 6px #8A6A12 !important; outline-color: #8A6A12 !important; }
+</style>
+<noscript><style id="aa-noscript">.rv,.reveal,[class*="reveal"],.mln,.plc-card,.acth,.mleg,.intro{opacity:1!important;transform:none!important;visibility:visible!important;filter:none!important;clip-path:none!important;transition:none!important;animation:none!important}</style></noscript>
+</head>
 <body id="top"><a href="#main-content" class="skip-link">Aller au contenu principal</a>
 <header class="hd">
   <a class="brand" href="index">Ener<b>Tchad</b></a>
@@ -244,7 +250,7 @@ main > section, .sec, .hx-strip{background:transparent!important}
 <div class="wrap"><span class="epw-k">Données de performance</span>
 <h2 id="donnees-esgT">Indicateurs ESG — référence et cibles 2030</h2>
 <p class="epw-lead">Ce que les majors publient en fin de rapport annuel, nous l’affichons avant le premier baril&nbsp;: les indicateurs sur lesquels nous acceptons d’être jugés, leur point de départ et leur mode de vérification.</p>
-<div class="esg-tw"><table class="esg-t">
+<div class="esg-tw" tabindex="0" role="region" aria-label="Tableau des indicateurs ESG — défilement horizontal"><table class="esg-t">
 <caption>Indicateurs cibles · société en constitution — les références seront consolidées au premier exercice</caption>
 <thead><tr><th scope="col">Indicateur</th><th scope="col">Référence aujourd’hui</th><th scope="col">Cible 2030</th><th scope="col">Suivi &amp; vérification</th></tr></thead>
 <tbody>
