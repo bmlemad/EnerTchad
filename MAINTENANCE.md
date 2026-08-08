@@ -3202,3 +3202,10 @@ DEUX LECONS DE FABRIQUE :
 - **Crawl des 95 pages EN** (détection corrigée : `<html lang="en"` strict, le premier détecteur confondait `hreflang="en"`) : métadonnées irréprochables — 0 og:locale français, 0 canonical erroné, 0 switch mal étiqueté.
 - **43 libellés d'accessibilité français** trouvés sur 17 pages EN des premières vagues (aria-label du pager de pôle « Continuer dans le pôle… », curseur « Niveau de luminosité », sommaire « Thématiques de la page », carte cadastre, 2 alt de photos Zakouma) — tous traduits sur 16 pages (brochure-en : « SHT (Société des Hydrocarbures du Tchad) » conservé, raison sociale officielle dans une phrase anglaise).
 - Le versant EN est désormais propre jusqu'aux attributs lus par les lecteurs d'écran.
+
+## §103 — 2026-08-08 · Page arabe : mise à jour d'exactitude + correctif RTL
+- **Affirmation périmée corrigée** : la page /ar annonçait « le site complet est disponible en français, avec une section abrégée en anglais » — faux depuis le jalon 100 % bilingue (§101). Remplacé par « disponible en français et en anglais, en versions complètes pour chaque page ».
+- **16 libellés de liens** « (بالفرنسية) » → « (FR · EN) » (CTA du héros, 8 cartes de pôles, communautés, carrières, investisseurs ×2, projets, carnets, contact) : les cibles ont désormais leur jumeau EN.
+- **Correctif RTL** (bloc inline `ar-rtl-fix`) : le rail de sections `#secrail` était fixé à droite — côté où le texte arabe est aligné — et chevauchait titres et cartes. Miroité à gauche (align-items, sens des translations d'entrée/survol, `margin-inline-start` du label) et masqué sous 900 px. Vérifié : plus aucun recouvrement visuel, le chevauchement géométrique résiduel tombe sur le bord déchiqueté (comportement identique aux pages LTR).
+- Contrôle : les FABs ☀ et haut-de-page étaient **déjà** correctement miroités — une première tentative de « correction » les avait inversés, annulée après mesure.
+- QA desktop + mobile 390 : dir=rtl, 1 h1, 0 erreur console, 0 ancre cassée, 0 débordement.
