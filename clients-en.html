@@ -247,7 +247,12 @@ html.et-plight .cmp-cap a:not(#_):not(#__):not(#___),html.et-plight .docn a:not(
 html:not(.et-plight):not(.et-jlight) .cmp-cap a:not(#_):not(#__):not(#___),html:not(.et-plight):not(.et-jlight) .docn a:not(#_):not(#__):not(#___){color:#E8C36A!important;-webkit-text-fill-color:#E8C36A!important}
 @media(prefers-reduced-motion:reduce){.secc{transition:none}.secc:hover{transform:none}}
 @media(max-width:620px){table.cmpt{font-size:.79rem}.docl{grid-template-columns:1fr}}
-</style></head>
+</style><style id="aa-resize">
+/* WCAG 1.4.4 : la carte grandit avec le texte au lieu de le tronquer */
+.fx2:not(#_){min-height:11rem}
+</style>
+<noscript><style id="aa-noscript">.rv,.reveal,[class*="reveal"],.mln,.plc-card,.acth,.mleg,.intro{opacity:1!important;transform:none!important;visibility:visible!important;filter:none!important;clip-path:none!important;transition:none!important;animation:none!important}</style></noscript>
+</head>
 <body id="top"><a href="#main-content" class="skip-link">Skip to main content</a>
 <div id="prog"></div>
 <header><nav class="nav nx" id="nav" aria-label="Main navigation">
