@@ -3266,3 +3266,23 @@ Revue la plus profonde à ce jour, sur quatre dimensions au-delà du QA §100 (q
 **Performance (8 pages types)** : DOM de 327 à 2 436 nœuds, DCL de 131 à 883 ms, 16 à 42 requêtes, **0 image servie hors gabarit** sur tout l'échantillon. Seule exception assumée : la brochure (compilation de tout le site) à 1 004 ko de HTML et 9 808 nœuds pour 1 396 ms — page-document destinée à l'impression, comportement attendu.
 
 **Verdict** : 3 défauts réels sur 195 pages, tous corrigés dans ce cycle ; 3 alertes d'outil réfutées par la mesure. Leçon d'instrument consignée : sur un héros à photo, **axe-core ne peut pas juger le contraste** — il faut échantillonner les pixels rendus (le thème sombre sert de témoin).
+
+## §108 — 2026-08-08 · QA comparé de la page Durabilité vs les majors (TotalEnergies, Shell, Chevron)
+Benchmark des hubs sustainability de TotalEnergies, Shell et Chevron, confronté à notre pôle Durabilité (greentech/index 452 mots + transition 1 603 + impact 2 222 + hseq 2 822 + patrimoine 533), à /engagements (arc E-S-G, double matérialité) et à /cibles-2030.
+
+**Le motif des trois majors** :
+1. **Quatre piliers stables** en entrée de hub — TotalEnergies : « Climate and Sustainable Energy / Safety, respect and well-being / Environment / Positive impact for stakeholders » ; Chevron : Climate / Social investment / Diversity and inclusion / Environment ; Shell : climat, environnement, sécurité, éthique, personnes, communautés. Le hub ne démontre rien lui-même : il oriente vers des sous-pages qui portent la preuve.
+2. **La preuve vit dans un rapport daté et téléchargeable**, pas dans la page — TotalEnergies « Sustainability & Climate 2026 Progress Report » (mars 2026) ; Chevron « 2024 Corporate Sustainability Highlights », « 2023 Climate Change Resilience Report », « 2022 Methane Report » + une rubrique **Performance data** dédiée.
+3. **Des indicateurs chiffrés avec base de référence, réalisé et cible** — TotalEnergies publie : méthane opéré −65 % en 2025 vs 2020 (cible −80 % en 2030), Scope 1+2 opéré 33,1 Mt en 2025 contre 46 Mt en 2015 et une cible de 37 Mt (dépassée), intensité < 16 kg CO₂e/boe, intensité cycle de vie −18,6 % vs 2015. Chaque chiffre porte une année de base et une année cible.
+4. **Ancrage territorial** — Chevron ouvre par « Around the world · Select a location » : la durabilité racontée par région d'opération.
+5. **Actualité datée** en pied de hub (Chevron : 4 brèves datées), qui prouve que le sujet vit.
+
+**Nos forces** : l'arc E-S-G d'/engagements est plus explicite que celui des majors (trois piliers, chacun avec ambition, cibles datées et standards visés) ; la **double matérialité CSRD/ESRS** est traitée frontalement, ce que Chevron et Shell n'affichent pas sur leur hub ; le **mécanisme de griefs en 4 étapes** et les **4 familles de parties prenantes avec leur canal** sont un niveau de détail rare ; les cibles sont honnêtement marquées « visées ».
+
+**Écarts prioritaires** (recommandations, non appliquées) :
+1. **Le hub Durabilité ne tient pas son rôle** : 452 mots et 3 h2, sans un seul chiffre dans le corps de page (les 3 KPI vivent dans le héros). Le hub des majors est court aussi — mais il ouvre sur quatre piliers nommés et un rapport. Le nôtre ouvre sur 5 tuiles de sous-pages sans hiérarchie de piliers.
+2. **Aucune page « données de performance »** — c'est le dispositif central des trois majors. Nous n'avons aucun actif, donc rien à mesurer : la réponse honnête est un tableau « indicateur · base · cible · échéance · standard » qui affiche les cases « à mesurer dès le premier baril ».
+3. **Pas de rapport téléchargeable** : /engagements annonce le rapport E-S-G « à paraître » — mais sans date ni sommaire, l'engagement n'est pas vérifiable. Les majors datent tout.
+4. **Référentiels dispersés** : ODD 65 pages, ITIE 58, ALARP 52, mais GRI 12, IPIECA 6, TCFD 2, CSRD/ESRS 2. Un bloc « nos référentiels » unique et cité depuis le hub éviterait cette dilution.
+5. **Aucune entrée territoriale** : le motif Chevron (« la durabilité, là où nous opérons ») serait puissant pour un opérateur mono-pays — Doba, Bongor, lac Tchad, corridor — et nous avons déjà le matériau dans impact et patrimoine.
+- Contrôle technique du hub au passage : 0 erreur console, 1 h1, héros lisible, 5 tuiles — rien à corriger sur la forme.
