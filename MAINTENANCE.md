@@ -3218,3 +3218,22 @@ Le dernier point de backlog nav — « les mégamenus des pages EN pointent enco
 - **~140 libellés d'accessibilité français** traduits (retour à l'accueil, contenu principal, navigation, recherche, impression, partage, cookies, curseur de luminosité, « Carnets liés », légendes de cartes Doba–Kribi/Komé/Sédigi).
 - **4 méta-descriptions >165 c** resserrées (faq-en 171→150, publications-en 166→137, services-ep-en 184→146, tchaditude/services-en 173→143), desc + og + twitter alignées.
 - QA Playwright sur les 95 pages EN : 0 erreur console, 1 h1, lang=en partout, 216 cibles internes uniques toutes résolues, 0 lien FR résiduel hors commutateurs.
+
+## §105 — 2026-08-08 · Audit comparé services & solutions vs SLB / Halliburton / Baker Hughes
+Benchmark des trois références parapétrolières mondiales (pages Products & Services de SLB, famille Completions de Halliburton, OFSE + Well Production de Baker Hughes), confronté à /amont/services-ep (3 631 mots, 8 h2, 13 cartes) et /solutions (899 mots, 9 h2, 40 liens sortants).
+
+**Motifs communs aux trois** :
+1. **Double axe d'entrée orthogonal** — SLB sépare « Solutions » (par objectif : Production Optimization, Recovery Enhancement, P&A…) et « Products & Services » (par taxonomie technique sur 3-4 niveaux). Baker Hughes croise 4 familles métier avec 4 verbes d'objectif (Improve connectivity, Mitigate risk, Optimize production, Control remotely). Halliburton range par cycle de vie du puits (Subsurface → Well construction → Completions → Production → Abandonment → Integrated services → Software).
+2. **Technologies nommées et déposées** — chaque ligne de service expose des marques : SmartWell®, ZEUS IQ™, Turing®, OCTIV®, Velocity Revolve+™ (Halliburton) ; Tela, Lumi, Electris, Reda Agile (SLB) ; Leucipa, ProductionLink, SureFIELD (Baker Hughes). La marque *est* l'unité de navigation.
+3. **Bandeau de preuves chiffrées** en tête de famille — Halliburton : 30 % d'émissions de frac en moins, 50 % de jours sur site en moins, 30 % de transitions plus rapides, 25+ ans de SmartWell.
+4. **Preuve par le client** — SLB « See our solutions in action / Explore Case Studies » ; Halliburton : études de cas datées + citations de dirigeants nommés (Sr. VP) + communiqués liés.
+5. **CTA expert récurrent** — « Talk to an expert » en tête ET en pied de chaque page famille.
+
+**Nos forces** : le double axe existe déjà (services-ep « Trois entrées : phase de champ / famille / intervention précise » + solutions « par besoin »), et c'est exactement le motif SLB ; le catalogue ligne-par-ligne (10 lignes wireline→P&A) rivalise en granularité avec Halliburton ; l'honnêteté « société en constitution » est un actif que les majors n'ont pas besoin d'avoir.
+
+**Écarts prioritaires** (recommandations, non appliquées) :
+1. **Nommer les offres** — une seule marque (Water-to-Value™) sur toute la page services-ep. Baptiser les 5 packs de phase et les briques transverses (base-vie, supply chain, formation) donnerait des unités de navigation mémorisables, comme les majors.
+2. **Bandeau de preuves chiffrées** en tête de services-ep et de chaque famille (4 chiffres : mobilisation évitée, NPT, % OOIP visé, contenu local) — la page contient déjà les chiffres, dispersés dans le texte.
+3. **Cartes de cas d'usage datées** — nous avons des « cas d'usage chiffrés » par service mais pas de rubrique « nos interventions en situation » ; les 3 carnets liés en fin de page sont le germe à promouvoir en rangée de cartes.
+4. **CTA expert dupliqué en tête** de services-ep (il n'existe qu'en pied) — motif universel chez les trois.
+5. **/solutions trop mince** (899 mots pour 6 familles de besoins) face à son rôle de porte d'entrée : chaque famille mériterait 2-3 lignes de preuve plutôt qu'un simple renvoi.
