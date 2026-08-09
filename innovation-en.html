@@ -237,7 +237,16 @@ html:not(.et-plight):not(.et-jlight) .pmore-home:not(#_):not(#__){color:#F0E6D2!
 @media(prefers-reduced-motion:reduce){.pt-track:not(#_){animation:none}}
 </style>
 <noscript><style id="aa-noscript">.rv,.reveal,[class*="reveal"],.mln,.plc-card,.acth,.mleg,.intro{opacity:1!important;transform:none!important;visibility:visible!important;filter:none!important;clip-path:none!important;transition:none!important;animation:none!important}</style></noscript>
-</head>
+<style id="glass-v3">/* Verre v3 : le decor photographique fixe (rootland/subland) passe derriere les bandes translucides. On ajoute le flou d arriere-plan qui manquait, pour que la matiere se lise a travers sans parasiter le texte. Aucun fond n est modifie ici. Mode sombre uniquement : en mode clair le decor est deja masque. */
+html:not(.et-plight):not(.et-jlight) main section:not(#_){-webkit-backdrop-filter:blur(16px) saturate(140%);backdrop-filter:blur(16px) saturate(140%)}
+html:not(.et-plight):not(.et-jlight) main section section:not(#_){-webkit-backdrop-filter:none;backdrop-filter:none}
+@media (prefers-reduced-transparency:reduce){html:not(.et-plight):not(.et-jlight) main section:not(#_){-webkit-backdrop-filter:none!important;backdrop-filter:none!important}}
+
+/* Cette page n a pas de bandes <section> : sa colonne de contenu devient elle-meme un panneau de verre, sinon le texte repose directement sur la photo de fond. */
+html:not(.et-plight):not(.et-jlight) main>.wrap:not(#_){background:rgba(8,13,22,.45);border-radius:22px;padding-top:34px;padding-bottom:38px;-webkit-backdrop-filter:blur(16px) saturate(140%);backdrop-filter:blur(16px) saturate(140%)}
+@media (prefers-reduced-transparency:reduce){html:not(.et-plight):not(.et-jlight) main>.wrap:not(#_){background:rgba(8,13,22,.94)!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}}
+@media (max-width:700px){html:not(.et-plight):not(.et-jlight) main section:not(#_){-webkit-backdrop-filter:blur(10px) saturate(130%);backdrop-filter:blur(10px) saturate(130%)}html:not(.et-plight):not(.et-jlight) main>.wrap:not(#_){-webkit-backdrop-filter:blur(10px) saturate(130%);backdrop-filter:blur(10px) saturate(130%)}}
+</style></head>
 <body id="top"><div class="rdprog" aria-hidden="true"></div>
 <a href="#main-content" class="skip-link">Skip to main content</a>
 <div id="preloader" aria-hidden="true">

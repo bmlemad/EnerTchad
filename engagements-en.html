@@ -195,7 +195,12 @@ table.perft tbody tr:hover{background:rgba(232,195,106,.05)}
 .refc b{display:block;font-family:var(--fd);font-size:.98rem;margin-bottom:4px}
 .refc span{display:block;font-size:.82rem;line-height:1.5;color:var(--muted,#8C9AB0)}.refc-l{display:block;text-decoration:none;transition:border-color .2s,background .2s}.refc-l:hover{background:rgba(232,195,106,.06)}.refc-l b:not(#_):not(#__):not(#___){color:#E8C36A!important;-webkit-text-fill-color:#E8C36A!important}html.et-plight .refc-l b:not(#_):not(#__):not(#___){color:#8A6A12!important;-webkit-text-fill-color:#8A6A12!important}
 </style><noscript><style id="aa-noscript">.rv,.reveal,[class*="reveal"],.mln,.plc-card,.acth,.mleg,.intro{opacity:1!important;transform:none!important;visibility:visible!important;filter:none!important;clip-path:none!important;transition:none!important;animation:none!important}</style></noscript>
-</head>
+<style id="glass-v3">/* Verre v3 : le decor photographique fixe (rootland/subland) passe derriere les bandes translucides. On ajoute le flou d arriere-plan qui manquait, pour que la matiere se lise a travers sans parasiter le texte. Aucun fond n est modifie ici. Mode sombre uniquement : en mode clair le decor est deja masque. */
+html:not(.et-plight):not(.et-jlight) main section:not(#_){-webkit-backdrop-filter:blur(16px) saturate(140%);backdrop-filter:blur(16px) saturate(140%)}
+html:not(.et-plight):not(.et-jlight) main section section:not(#_){-webkit-backdrop-filter:none;backdrop-filter:none}
+@media (prefers-reduced-transparency:reduce){html:not(.et-plight):not(.et-jlight) main section:not(#_){-webkit-backdrop-filter:none!important;backdrop-filter:none!important}}
+@media (max-width:700px){html:not(.et-plight):not(.et-jlight) main section:not(#_){-webkit-backdrop-filter:blur(10px) saturate(130%);backdrop-filter:blur(10px) saturate(130%)}html:not(.et-plight):not(.et-jlight) main>.wrap:not(#_){-webkit-backdrop-filter:blur(10px) saturate(130%);backdrop-filter:blur(10px) saturate(130%)}}
+</style></head>
 <body id="top"><a href="#main-content" class="skip-link">Skip to main content</a>
 <header><nav class="nav nx" id="nav" aria-label="Main navigation">
   <div class="nx-util"><div class="nx-util-in">
