@@ -296,7 +296,11 @@ main > section, .sec, .hx-strip{background:transparent!important}
 .seg button:focus-visible, .chip:focus-visible, .filters button:focus-visible, .shop button:focus-visible, .cart-btn:focus-visible { box-shadow: 0 0 0 3px #0B1422, 0 0 0 6px #E8C36A !important; outline-width: 3px !important; outline-style: solid !important; outline-color: #E8C36A !important; outline-offset: 2px !important; border-radius: 999px; position: relative; z-index: 5; }
 html.et-plight .seg button:focus-visible, html.et-plight .chip:focus-visible, html.et-plight .filters button:focus-visible, html.et-plight .shop button:focus-visible, html.et-plight .cart-btn:focus-visible { box-shadow: 0 0 0 3px #FBF9F3, 0 0 0 6px #8A6A12 !important; outline-color: #8A6A12 !important; }
 </style>
-</head>
+<style id="glass-v3">/* Verre v3 : cette page n a pas de <main>, on vise les bandes de premier niveau. */
+html:not(.et-plight):not(.et-jlight) body>section:not(#_){-webkit-backdrop-filter:blur(16px) saturate(140%);backdrop-filter:blur(16px) saturate(140%)}
+@media (prefers-reduced-transparency:reduce){html:not(.et-plight):not(.et-jlight) body>section:not(#_){-webkit-backdrop-filter:none!important;backdrop-filter:none!important}}
+@media (max-width:700px){html:not(.et-plight):not(.et-jlight) main section:not(#_){-webkit-backdrop-filter:blur(10px) saturate(130%);backdrop-filter:blur(10px) saturate(130%)}html:not(.et-plight):not(.et-jlight) main>.wrap:not(#_){-webkit-backdrop-filter:blur(10px) saturate(130%);backdrop-filter:blur(10px) saturate(130%)}}
+</style></head>
 <body id="top">
 <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
 <symbol id="i-pump" viewBox="0 0 24 24"><path d="M4 21V5a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v16M4 21h10M6 7h6v4H6zM14 9h2a2 2 0 0 1 2 2v6a1.5 1.5 0 0 0 3 0V9.5L18.5 7" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
