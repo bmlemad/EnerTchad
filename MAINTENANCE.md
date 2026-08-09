@@ -3479,3 +3479,21 @@ Sur ces pages le contenu n'est pas en bandes mais en colonne `main > .wrap` sans
 **Contrôles.** axe-core WCAG 2.1 A + AA sur les deux accueils, à 390 et 1440 px, dans les deux thèmes : 0 erreur console, 0 exception JS, 0 réponse 4xx, 0 débordement horizontal, et pour seule violation le `.hx-slogan` du hero déjà réfuté au pixel au §107 (7,0:1 mesuré) — aucune régression. 520 liens et ancres vérifiés sur les deux pages : 0 cassé.
 
 **Reste ouvert, éditorial.** La home mobile fait toujours 27 écrans, répartis sur dix-sept sections de contenu réel là où Eni en tient trois et Shell cinq ; le collage de fin (1 141 px sur mobile) est fait de photos génériques qui sonnent faux à côté du terrain de Doba.
+
+## §120 — 2026-08-09 · Le défaut 2.2.2 de l'accueil était-il isolé ? Recensement de tout ce qui bouge seul
+
+Le §119 a trouvé un carrousel qui tournait sans commande de pause sur la page d'accueil. La question qui suit est la seule qui vaille : **est-ce le seul endroit du site ?** Recensement dynamique plutôt que grep — sur chacune des 92 pages porteuses d'un marqueur d'animation, on relève l'état du contenu, on attend huit secondes, on relève à nouveau, et on note ce qui a changé sans qu'on y touche, plus les animations infinies effectivement visibles et la présence d'une commande.
+
+**Deux familles réelles, et rien d'autre.**
+
+1. **La brochure, dans les deux langues, portait le même carrousel que l'accueil** — cinq messages, un toutes les six secondes, script identique, aucune commande. Même module que le §119 : bouton de 40 × 40 posé hors du `role="tablist"`, `aria-pressed`, libellé qui bascule, état persistant en `localStorage`. Vérifié : neuf secondes sans changement en pause, reprise au second clic, dans les deux langues.
+
+2. **Onze pages laissaient défiler le ruban de prix** (`ptMarquee`, 42 s, boucle infinie, bande de 3 744 à 4 050 px) : neuf pages anglaises, plus les deux brochures. Les 81 autres pages du site le masquent via le bloc `no-bands`. C'est un reliquat du §110 : j'y avais réparé le ruban sur neuf pages anglaises dont la CSS de chrome manquait — je l'ai rendu *fonctionnel* alors que les jumelles françaises le suppriment. J'ai donc réparé un composant que le site avait décidé de ne pas montrer, et créé au passage une seconde exposition 2.2.2. Correction : `#oilticker` masqué sur les onze, alignement sur les 81. Bénéfice de bord — le fil d'Ariane de `gouvernance-en`, jusque-là caché derrière la bande, redevient visible, et le résidu français « offre & cibles » qui traînait en bout de ruban anglais disparaît avec lui.
+
+**Trois fausses pistes écartées par la mesure**, chacune vérifiée sur 21 secondes plutôt que 8 : `.atl-dc` de l'Atlas, `.pof-body` du pôle amont et `.ans` de la FAQ semblaient changer seuls — ce sont des animations d'apparition qui se stabilisent, le premier relevé tombait pendant la pose des classes. Les trois aurores de fond (26, 32 et 38 s, présentes sur 125 pages) sont ramenées à une durée d'un millionième de seconde sous `prefers-reduced-motion` : elles sont donc bien neutralisées, et leur mouvement lent et décoratif ne relève pas de 2.2.2.
+
+**Une réfutation confirmée au pixel.** axe signale sur la brochure 19 nœuds `.sec-next a` en échec de contraste, thème sombre : le navigateur calcule `color: rgb(14,65,114)` — un bleu marine sur fond sombre, soit 1,33:1. Rendu « fonds seuls » à l'appui, **cette couleur n'est jamais peinte** : les glyphes réellement affichés mesurent 5,39:1 pour le texte et 8,21:1 pour la flèche. C'est la même famille que celle déjà réfutée au §116 ; la valeur calculée n'est pas la valeur peinte, et c'est la troisième fois que le sondage d'arbre se trompe de cette façon.
+
+**Contrôles.** Sur les 11 pages modifiées, axe-core WCAG 2.1 A + AA à 390 et 1440 px dans les deux thèmes : 0 erreur console, 0 exception JS, 0 réponse 4xx, 0 débordement horizontal, et pour seules violations les deux familles réfutées de la brochure (`.btn-ghost`, déjà mesurée à 9,34:1 au §116, et `.sec-next a` ci-dessus). Après correction, **le site entier ne compte plus aucun contenu qui bouge tout seul sans commande de pause.**
+
+**Note d'exploitation.** Le conteneur de travail a été réinitialisé entre la préparation et l'envoi ; les modifications ont été reconstruites à l'identique depuis le dépôt distant, puis revérifiées avant publication.

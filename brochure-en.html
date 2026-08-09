@@ -221,7 +221,19 @@ html:not(.et-plight):not(.et-jlight) main section:not(#_){-webkit-backdrop-filte
 html:not(.et-plight):not(.et-jlight) main section section:not(#_){-webkit-backdrop-filter:none;backdrop-filter:none}
 @media (prefers-reduced-transparency:reduce){html:not(.et-plight):not(.et-jlight) main section:not(#_){-webkit-backdrop-filter:none!important;backdrop-filter:none!important}}
 @media (max-width:700px){html:not(.et-plight):not(.et-jlight) main section:not(#_){-webkit-backdrop-filter:blur(10px) saturate(130%);backdrop-filter:blur(10px) saturate(130%)}}
-</style></head>
+</style><style id="hx-pause-css">/* §120 — commande de pause du carrousel (WCAG 2.2.2, niveau A), identique a celle de l'accueil. */
+.hero-in .hx-dots:not(#_){display:inline-flex;vertical-align:middle}
+.hx-pause:not(#_){display:inline-flex;align-items:center;justify-content:center;vertical-align:middle;width:40px;height:40px;margin:0 0 0 16px;padding:0;border-radius:999px;border:1px solid rgba(232,195,106,.42);background:rgba(8,13,22,.55);color:#E8C36A;cursor:pointer;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);transition:border-color .2s,background .2s}
+.hx-pause:not(#_):hover{border-color:#E8C36A;background:rgba(232,195,106,.14)}
+.hx-pause:not(#_):focus-visible{box-shadow:0 0 0 3px #0B1422,0 0 0 6px #E8C36A;outline:3px solid #E8C36A;outline-offset:2px}
+html.et-plight .hx-pause:not(#_){border-color:rgba(138,106,18,.5);background:rgba(255,255,255,.62);color:#7A5C0B}
+html.et-plight .hx-pause:not(#_):focus-visible{box-shadow:0 0 0 3px #FBF9F3,0 0 0 6px #8A6A12;outline-color:#8A6A12}
+.hx-pause svg{width:15px;height:15px;pointer-events:none;display:block}
+.hx-pause .ic-play{display:none}
+.hx-pause[aria-pressed="true"] .ic-pause{display:none}
+.hx-pause[aria-pressed="true"] .ic-play{display:block}
+@media (prefers-reduced-motion:reduce){.hx-pause:not(#_){display:none}}
+</style><style id="no-ticker">/* §120 — le ruban de prix est masque sur 81 pages du site (bloc no-bands) ; ces pages etaient les seules a le laisser defiler, sans commande de pause. Alignement. */#oilticker:not(#_){display:none!important}</style></head>
 <body><div class="diapo" aria-hidden="true"><i style="background-image:url(&quot;/assets/img/piste-desert.webp&quot;)"></i><i data-bg="/assets/img/raffinerie-nuit.webp"></i><i data-bg="/assets/img/pipeline.webp"></i><i data-bg="/assets/img/pompe-petrole.webp"></i><i data-bg="/assets/img/reservoirs.webp"></i><i data-bg="/assets/img/station-nuit.webp"></i><i data-bg="/assets/img/casques-chantier.webp"></i></div><script>addEventListener("load",function(){var els=[].slice.call(document.querySelectorAll(".diapo i[data-bg]"));els.forEach(function(el,i){var t=Math.max(0,(i+1)*6000-4500);setTimeout(function(){el.style.backgroundImage='url("'+el.getAttribute("data-bg")+'")'},t)})})</script>
 <div class="rdprog" aria-hidden="true"></div>
 <a href="#main-content" class="skip-link">Skip to main content</a>
@@ -338,7 +350,7 @@ html:not(.et-plight):not(.et-jlight) main section section:not(#_){-webkit-backdr
           <button type="button" role="tab" aria-selected="false" aria-controls="hx-slide-3" aria-label="Message 3: the integrated chain"></button>
           <button type="button" role="tab" aria-selected="false" aria-controls="hx-slide-4" aria-label="Message 4: access to energy"></button>
           <button type="button" role="tab" aria-selected="false" aria-controls="hx-slide-5" aria-label="Message 5: Chadian talent"></button>
-        </div>
+        </div><button type="button" id="hxPause" class="hx-pause" aria-pressed="false" aria-label="Pause the rotating messages"><svg class="ic-pause" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/></svg><svg class="ic-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5l12 7-12 7z"/></svg></button>
         <div class="hchain" aria-label="The integrated oil chain"><span class="hc-k">The integrated chain</span><a href="/pole-amont-en" style="--pc:#E8C36A"><i></i>Upstream</a><b>→</b><a href="/pole-intermediaire-en" style="--pc:#5AA7F0"><i></i>Midstream</a><b>→</b><a href="/pole-aval-en" style="--pc:#F09A4A"><i></i>Downstream</a><b>→</b><em>the pump</em></div><style id="hchain-css">.hchain{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin:2px 0 16px}.hchain .hc-k{font-family:var(--fm);font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-l,#F0CE82);margin-right:4px}.hchain a{display:inline-flex;align-items:center;gap:7px;padding:7px 14px;border-radius:999px;text-decoration:none;color:#fff;font-weight:600;font-size:.86rem;background:linear-gradient(180deg,rgba(255,255,255,.085),rgba(255,255,255,.028));-webkit-backdrop-filter:blur(8px) saturate(115%);backdrop-filter:blur(8px) saturate(115%);border:1px solid rgba(255,255,255,.13);box-shadow:inset 0 1px 0 rgba(255,255,255,.08);transition:transform .25s var(--ease,ease),border-color .25s,background .25s}.hchain a i{width:8px;height:8px;border-radius:50%;background:var(--pc);box-shadow:0 0 10px var(--pc);flex:none}.hchain a:hover{transform:translateY(-2px);border-color:color-mix(in srgb,var(--pc) 55%,rgba(255,255,255,.13));background:linear-gradient(180deg,rgba(255,255,255,.13),rgba(255,255,255,.05))}.hchain b{color:rgba(245,247,250,.55);font-weight:400}.hchain em{font-style:italic;color:rgba(245,247,250,.78);font-size:.84rem}@media(max-width:640px){.hchain{gap:6px}.hchain a{padding:6px 11px;font-size:.78rem}.hchain .hc-k{width:100%;margin:0 0 2px}}@media(prefers-reduced-transparency:reduce){.hchain a{-webkit-backdrop-filter:none;backdrop-filter:none;background:rgba(11,18,32,.85)}}</style><div style="display:flex;gap:12px;flex-wrap:wrap"><a href="#poles" class="btn btn-p">Discover EnerTchad ↓</a><a href="/investisseurs-en" class="btn btn-g">Invest →</a><a href="/boutique-en" class="btn btn-shop" aria-label="Shop & stations — ARSAT-approved prices"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8h12l-1.2 12.2a1.8 1.8 0 0 1-1.8 1.6H9a1.8 1.8 0 0 1-1.8-1.6L6 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>Shop &amp; stations</a></div>
         <div class="hx-strip"><span class="hx-stat"><b>8 poles</b><i>An integrated company</i></span><span class="hx-stat"><b>100&nbsp;%</b><i>Chadian capital &amp; talent</i></span><span class="hx-stat"><b>20 bn</b><i>FCFA · target capital</i></span><span class="hx-stat hx-stat-amb"><b>12 stations</b><i>Target · ultra-premium &amp; mobile</i></span></div>
       </div>
@@ -5010,22 +5022,29 @@ Sent from enertchad.td / EnerTchad`;
   var hero=document.getElementById('top');if(!hero)return;
   var slides=hero.querySelectorAll('.hx-slide');
   var dots=hero.querySelectorAll('.hx-dots button');
+  var pb=document.getElementById('hxPause');
   if(slides.length<2)return;
   var i=0,timer=null,REDUCE=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  var paused=false;try{paused=localStorage.getItem("et-hxpause")==="1";}catch(e){}
   function show(n){
     i=(n+slides.length)%slides.length;
     slides.forEach(function(s,k){s.classList.toggle('on',k===i);});
     dots.forEach(function(d,k){d.setAttribute('aria-selected',k===i?'true':'false');});
   }
   function stop(){if(timer){clearInterval(timer);timer=null;}}
-  function play(){if(REDUCE)return;stop();timer=setInterval(function(){show(i+1);},6000);}
+  function play(){if(REDUCE||paused)return;stop();timer=setInterval(function(){show(i+1);},6000);}
+  function sync(){if(!pb)return;pb.setAttribute("aria-pressed",paused?"true":"false");
+    pb.setAttribute("aria-label",paused?"Resume the rotating messages":"Pause the rotating messages");}
+  if(pb){pb.addEventListener("click",function(){paused=!paused;
+    try{localStorage.setItem("et-hxpause",paused?"1":"0");}catch(e){}
+    sync();if(paused){stop();}else{play();}});}
   dots.forEach(function(d,k){d.addEventListener('click',function(){show(k);play();});});
   hero.addEventListener('mouseenter',stop);
   hero.addEventListener('mouseleave',play);
   hero.addEventListener('focusin',stop);
   hero.addEventListener('focusout',play);
   document.addEventListener('visibilitychange',function(){document.hidden?stop():play();});
-  show(0);play();
+  sync();show(0);play();
 })();
 </script>
 <script>
