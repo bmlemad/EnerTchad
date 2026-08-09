@@ -248,7 +248,15 @@ html.et-plight main .ttf-tag:not(#_){color:#0B111A!important;background:#D9A441!
 html.et-plight main :is(.ttf-card,.ttc-card):not(#_){background:#101927!important}
 main>.tt-flag:not(#_):not(#__):not(#___),main>.tt-carnets:not(#_):not(#__):not(#___){background:#0B111A!important;border-radius:0!important}main>.tt-flow:not(#_):not(#__):not(#___){background:#0E1622!important;border-radius:0!important}main>.tt-story:not(#_):not(#__):not(#___){border-radius:0!important;background:transparent!important}
 </style><noscript><style id="aa-noscript">.rv,.reveal,[class*="reveal"],.mln,.plc-card,.acth,.mleg,.intro{opacity:1!important;transform:none!important;visibility:visible!important;filter:none!important;clip-path:none!important;transition:none!important;animation:none!important}</style></noscript>
-</head>
+<style id="glass-v3">/* Verre v3 : le decor photographique fixe (rootland/subland) passe derriere les bandes translucides. On ajoute le flou d arriere-plan qui manquait, pour que la matiere se lise a travers sans parasiter le texte. Aucun fond n est modifie ici. Mode sombre uniquement : en mode clair le decor est deja masque. */
+html:not(.et-plight):not(.et-jlight) main section:not(#_){-webkit-backdrop-filter:blur(16px) saturate(140%);backdrop-filter:blur(16px) saturate(140%)}
+html:not(.et-plight):not(.et-jlight) main section section:not(#_){-webkit-backdrop-filter:none;backdrop-filter:none}
+@media (prefers-reduced-transparency:reduce){html:not(.et-plight):not(.et-jlight) main section:not(#_){-webkit-backdrop-filter:none!important;backdrop-filter:none!important}}
+/* Bandes de ce hub restees opaques : elles rejoignent le verre des sept autres poles (mode sombre seulement, le contraste clair reste voulu). */
+html:not(.et-plight):not(.et-jlight) main section.tt-flag:not(#_):not(#__):not(#___):not(#____),html:not(.et-plight):not(.et-jlight) main section.tt-flow:not(#_):not(#__):not(#___):not(#____),html:not(.et-plight):not(.et-jlight) main section.tt-carnets:not(#_):not(#__):not(#___):not(#____){background:rgba(8,13,22,.45)!important;border-radius:22px!important}
+html:not(.et-plight):not(.et-jlight) main .ttf-card:not(#_):not(#__):not(#___):not(#____),html:not(.et-plight):not(.et-jlight) main .ttc-card:not(#_):not(#__):not(#___):not(#____){background:rgba(9,15,26,.5)!important;-webkit-backdrop-filter:blur(10px) saturate(125%);backdrop-filter:blur(10px) saturate(125%)}
+@media (max-width:700px){html:not(.et-plight):not(.et-jlight) main section:not(#_){-webkit-backdrop-filter:blur(10px) saturate(130%);backdrop-filter:blur(10px) saturate(130%)}html:not(.et-plight):not(.et-jlight) main>.wrap:not(#_){-webkit-backdrop-filter:blur(10px) saturate(130%);backdrop-filter:blur(10px) saturate(130%)}}
+</style></head>
 <body id="top"><div class="rdprog" aria-hidden="true"></div>
 <a href="#main-content" class="skip-link">Aller au contenu principal</a>
 <div id="preloader" aria-hidden="true">
