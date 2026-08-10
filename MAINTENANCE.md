@@ -4029,3 +4029,61 @@ correctifs de ce chapitre ont été re-vérifiés avec la sonde renforcée** —
 **Leçon.** Une sonde de contraste doit neutraliser `color`, `-webkit-text-fill-color` et `text-shadow`,
 avec une spécificité supérieure à celle des règles armées du site. Une sonde sous-spécifiée mesure le
 texte au lieu du fond et rend un verdict d'apparence plausible.
+
+## §132 — Audit d'intégrité et de performance (constats, sans modification du site)
+
+Quatre vérifications menées après les campagnes de la journée. Trois sont propres ; la quatrième produit
+des constats qui relèvent d'une décision, pas d'un correctif automatique.
+
+### 1. Sitemap — conforme
+
+195 URL déclarées pour 195 pages réelles (hors `404.html`, le fichier de vérification Google et les
+sources d'impression désindexées en §130). **0 page absente, 0 doublon, 0 entrée orpheline.**
+Un seul `<loc>` sur 195 n'a pas de `<lastmod>`.
+
+### 2. Liens internes — aucun lien mort
+
+Résolution de tous les `href` internes des 200 pages, fichiers et ancres compris : **0 cible manquante,
+0 ancre inexistante**. Les cinq « liens cassés » et huit « ancres absentes » relevés au premier passage
+étaient des faux positifs de la sonde : des `href="` situés à l'intérieur de gabarits JavaScript, et les
+paramètres d'état du configurateur encodés dans le hash (`#p=operateur&d=geo`).
+
+### 3. Barre de navigation basse en mobile — réfutée
+
+Hypothèse testée : la barre fixe de 59-60 px masquerait la fin du contenu, `body` n'ayant aucun
+`padding-bottom`. Mesure en bas de page sur six pages : **0 élément recouvert sur cinq d'entre elles**,
+et sur `contact.html` un lien de pied de page dont 4 px sur 34 passent sous la barre — 30 px restent
+visibles et cliquables. Pas de défaut.
+
+Les boutons flottants (thème, retour en haut, indicateur « SUITE ») passent en revanche par-dessus le
+texte pendant le défilement. C'est le comportement normal d'un bouton d'action flottant ; le corriger
+proprement supposerait de toucher les 200 pages. **Laissé en l'état, à arbitrer.**
+
+### 4. Poids et performance
+
+Mesures réelles en production (transfert compressé) :
+
+| Page | HTML transféré | Feuilles CSS | Scripts |
+|---|---|---|---|
+| Accueil | 46,6 Ko | **19 fichiers · 89 Ko** | **12 fichiers · 56 Ko** |
+| Clients | 41,7 Ko | — | — |
+| Contact | 30,3 Ko | — | — |
+| Brochure | **231,9 Ko** | — | — |
+
+Le volume n'est pas le problème : environ 190 Ko pour l'accueil, images comprises. Le point sensible est
+le **nombre de requêtes sur le chemin critique — 19 feuilles de style et 12 scripts, soit 31 allers-retours
+avant le premier rendu**. Sur une connexion mobile à forte latence, ce qui domine n'est pas le débit mais
+le nombre d'allers-retours. Une consolidation supposerait de fusionner des fichiers d'`assets/chrome/`,
+que la règle d'exploitation interdit de modifier : **le constat est remonté, la décision revient à la direction.**
+
+`brochure.html` est l'exception à surveiller : 232 Ko de HTML compressé et **9 826 nœuds DOM** (le seuil
+d'alerte usuel se situe autour de 1 500). Le rendu reste rapide en local, mais la page est lourde à
+analyser pour un terminal d'entrée de gamme.
+
+### 5. Images orphelines
+
+Cinq fichiers d'`assets/img/` ne sont référencés par aucune page ni feuille de style, pour **842 Ko** :
+`girafes-dikala.jpg` (273 Ko), `lac-tchad-espace.jpg` (201 Ko), `guelta-archei-chameaux.jpg` (148 Ko),
+`equipe-hse.webp` (142 Ko), `savane-vehicule.webp` (79 Ko). Ils ne pèsent sur aucune page puisqu'ils ne
+sont jamais chargés. **Non supprimés** : ce sont peut-être des visuels réservés pour un usage à venir, et
+la suppression d'actifs n'a pas été demandée.
