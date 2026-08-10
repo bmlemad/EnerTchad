@@ -3594,3 +3594,93 @@ révèle donc ce visuel en parallaxe — vérifié par rendu « fond seul » ava
 
 **QA.** index.html + index-en.html, 1440 clair et 390 sombre : 0 erreur console, 0 exception JS, 0 réponse 4xx,
 0 débordement horizontal. axe-core : seule la famille `.hx-slogan` déjà réfutée au pixel en §107 (7,0:1).
+
+## §125 — Audit et QA des tuiles (site entier) et correctifs
+
+**Méthode.** Sonde headless sur les 136 pages racine à 1440×900 : détection de tous les conteneurs
+`display:grid` / `flex-wrap:wrap` dont au moins deux enfants portent un fond, une bordure ou un rayon —
+**1 346 grilles** relevées, 0 page en erreur. Pour chaque grille : rangées reconstruites par position `y`,
+puis mesure des hauteurs, paddings, rayons, débordements (`scrollWidth`/`scrollHeight` vs `client*`) et
+taille des cibles interactives.
+
+### Défaut 1 — numérotation corrompue dans `.plc-card` (8 pages EN) — **corrigé**
+
+Sur les 8 pages `pole-*-en.html`, deux cartes sur cinq portaient dans le créneau du numéro
+(`<span class="plc-n">`, rendu en très gros caractères) une **phrase parasite** venue d'ailleurs :
+
+| Carte | Contenu erroné | Attendu |
+|---|---|---|
+| 2 | `What the figures on this page rest on` | `02` |
+| 3 | `Fixed euro–CFA franc peg` | `03` |
+
+Conséquence mesurée sur `pole-amont-en.html` : `scrollWidth` 802 px pour `clientWidth` 270 px, avec
+`overflow:hidden` — le titre était tronqué (« What the figu », « Fixed euro–CF ») et **le reste de la carte
+ne s'affichait plus du tout**. Correction : restauration de `02` et `03` sur les 8 pages.
+Après : `scrollWidth = clientWidth = 270`, cartes 01→04 toutes à 197,4 px, contenu complet.
+Vérification : plus aucun `.plc-n` non numérique sur l'ensemble du site.
+
+### Défaut 2 — bas de tuiles irréguliers : `align-items:start` (23 pages) — **corrigé**
+
+Cinq familles de grilles de cartes déclaraient `align-items:start`, si bien que les tuiles d'une même
+rangée ne partageaient pas leur bord inférieur alors qu'elles portent toutes
+`border:1px solid var(--hair)` + `border-radius:14px` + fond :
+
+| Famille | Pages | Écart de hauteur mesuré |
+|---|---|---|
+| `.epw-g` | 15 | 23 → 69 px |
+| `.eth-g` | 2 | 23 → 50 px |
+| `.gov-g` | 2 | 23 → 46 px |
+| `.pubg` | 2 | 23 px |
+| `.glm-g` | 2 | 26 → 49 px |
+
+À noter : `.epw-g` existait déjà **en deux versions** dans le site, l'une avec `align-items:start`,
+l'autre sans — la même famille ne se comportait donc pas de la même façon d'une page à l'autre.
+Correction : suppression de `align-items:start` (retour à `stretch`, le défaut de la grille) sur les 23 pages.
+Après : `.eth-c` toutes à 247,7 px, `.gov-c` toutes à 152,5 px.
+
+### Défaut 3 — cibles pointeur sous 24 px (WCAG 2.2, critère 2.5.8) — **corrigé**
+
+Balayage des 136 pages : les appels à action **autonomes** de tuile (hors liens en ligne dans une phrase,
+exemptés par le critère) mesuraient 19,5 à 23,5 px de haut.
+
+| Classe | Pages | Hauteur avant | Après |
+|---|---|---|---|
+| `.flip-cta`, `.flip-hint` | index, index-en | 21,3 / 21,9 px | 24 px |
+| `.pj-go` | projets, projets-en | 19,5 px | 24 px |
+| `.hcp-all`, `.hnews-all` | index, index-en | 19,9 / 23,5 px | 24 px |
+| `.tri-more` | 5 pages EN | 22 px | 24 px |
+| `.btn-ghost` | brochure, brochure-en | 21,5 px | 24 px |
+
+Correction : bloc `<style id="tap24">` par page, `min-height:24px` (plus `display:inline-flex;
+align-items:center` pour les éléments en flux `block`/`inline-block`, afin que la hauteur ajoutée reste
+centrée sur le libellé).
+
+### Défaut 4 — étiquettes de pilier `.ngs-p .tag` à 4,49:1 (4 pages) — **corrigé**
+
+Relevé au pixel en thème sombre, 390 px : `#2E86DE` sur `rgb(20,29,44)` pour un texte de 10,88 px non gras
+— **4,49:1**, soit 0,01 sous le seuil AA de 4,5:1. Correction : en thème sombre uniquement,
+`color:color-mix(in srgb,var(--c) 52%,#EAF0F8)` — l'accent est conservé mais éclairci.
+Mesure après : `rgb(136,185,234)` sur `rgb(21,29,44)` = **8,18:1**.
+
+### Constats réfutés au pixel (aucune action)
+
+- **`.voie-card` (brochure) — faux débordement.** `scrollHeight` 174 vs `clientHeight` 150 : c'est le
+  pseudo-élément `.voie-card::after` (le grand chiffre fantôme en `bottom:-18px`, `opacity:.06`) qui est
+  **rogné volontairement**. Mesure du texte : `.voie-d` se termine à 19 px du bord de la carte — rien n'est
+  coupé. Le « SUITE ⌄ » qui semblait recouvrir la carte 08 sur une capture est `.scrollcue`, un indicateur
+  ancré au viewport, pas au bloc.
+- **`.presse-grid` (carnets) — mosaïque volontaire.** Hauteurs 476 / 1 048 / 247 / 313 px dans une grille
+  à 3 colonnes : uniformiser imposerait 1 048 px à toute la rangée. Laissé tel quel.
+- **`.zk-grid` (patrimoine-en) — mise en avant volontaire.** Première tuile 520×412 puis 254×200 : c'est le
+  gabarit « vedette + satellites », pas un défaut d'alignement.
+- **`.fcta` (brochure, 390 sombre)** signalée par axe-core : mesurée **13,49:1** sur le fond réellement
+  peint. Faux positif.
+- **`.iv-arr`, `.dist-step`, `.dchg figure`** : débordements de flèches et décors en `overflow:visible`,
+  sans perte de contenu.
+- **1 179 « tuiles < 190 px »** : très majoritairement des puces, badges et boutons — pas des tuiles.
+
+### QA
+
+39 pages modifiées, 1440 clair et 390 sombre : 0 erreur console, 0 exception JS, 0 réponse 4xx,
+0 débordement horizontal. axe-core : seule la famille `.hx-slogan` de l'accueil, déjà réfutée au pixel
+en §107 (7,0:1).
