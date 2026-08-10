@@ -3684,3 +3684,18 @@ Mesure après : `rgb(136,185,234)` sur `rgb(21,29,44)` = **8,18:1**.
 39 pages modifiées, 1440 clair et 390 sombre : 0 erreur console, 0 exception JS, 0 réponse 4xx,
 0 débordement horizontal. axe-core : seule la famille `.hx-slogan` de l'accueil, déjà réfutée au pixel
 en §107 (7,0:1).
+
+### §125 bis — Extension aux 63 pages en sous-dossier
+
+L'audit initial n'avait balayé que les 136 pages de la racine. Vérification en production après publication :
+`/aval/reseau` conservait `align-items:start`. Balayage complet des sous-dossiers :
+
+- `align-items:start` retiré de `.epw-g` sur **24 pages** supplémentaires (`amont/`, `aval/`,
+  `enerconseils/`, `greentech/`, `intermediaire/`, `tchaditech/`, `tchaditude/`).
+- Bloc `tap24` ajouté à **17 pages** portant `.tri-more` (15) ou `.btn-ghost` (2).
+
+Total §125 : **72 pages** modifiées. QA des 33 pages en sous-dossier à 1440 clair :
+0 erreur console, 0 exception JS, 0 réponse 4xx, 0 débordement, 0 violation axe-core.
+
+**Leçon reconduite.** Le balayage `ls *.html` ne couvre pas `*/*.html` : toute campagne site-entier doit
+énumérer les deux. Contrôle systématique en production sur au moins une page de sous-dossier avant clôture.
