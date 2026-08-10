@@ -3893,3 +3893,55 @@ copie restaurée était de nouveau périmée — 162 fichiers divergents. Procé
 restauration par `git archive FETCH_HEAD | tar -x` (0 divergence), puis réexécution intégrale des
 modifications. Le second passage a reproduit les mêmes mesures au chiffre près (404 → 68), ce qui
 confirme que la correction est déterministe.
+
+## §129 — Fin du chantier « reveal » — et correction d'un chiffre annoncé en §128
+
+### Correction d'abord : le chiffre de 540 était surévalué
+
+Le balayage de §128 laissait **500 ms** après le défilement avant de mesurer l'opacité. C'est trop court :
+sur beaucoup de pages, l'IntersectionObserver révèle correctement le contenu, mais un peu plus tard que
+cela. Une partie des 540 éléments comptés comme « jamais révélés » n'étaient que « pas encore révélés
+au moment de la mesure ».
+
+Nouveau balayage des 200 pages avec un délai de stabilisation porté à **2 600 ms** — au-delà du seuil de
+2,2 s du filet, donc au-delà de tout comportement normal :
+
+| Mesure | §128 (500 ms) | §129 (2 600 ms) |
+|---|---|---|
+| Pages avec contenu bloqué | 54 | **11** |
+| Éléments bloqués | 540 | **109** |
+
+Le défaut de fond reste entier — une page entièrement invisible l'est quel que soit le délai, et la
+capture au pixel de `reseau-en.html` (650 px de vide) n'est pas remise en cause. Mais **l'ampleur
+annoncée en §128 était trois à cinq fois trop élevée**, et le protocole de mesure en était la cause.
+
+**Règle ajoutée.** Toute sonde qui mesure un état transitoire (opacité, animation, chargement différé)
+doit laisser un délai supérieur au plus long délai attendu du mécanisme observé, et ce délai doit être
+consigné avec le résultat.
+
+### Traitement du reste
+
+Sur les 109 éléments restants, 68 sont les accordéons volontairement repliés de `clients.html` et
+`clients-en.html` (déjà identifiés en §128). Les 41 autres se répartissaient sur **9 pages**, dont
+`raffinage-en.html` — invisible à 100 % (6 éléments sur 6), la seule page du lot « 100 % masqué » de §128
+restée sous le seuil de traitement.
+
+Bloc `<style id="reveal-safe">` ajouté à ces 9 pages : `brochure.html`, `brochure-en.html`,
+`carnets.html`, `carnets-en.html`, `communiques.html`, `enerconseils/atlas.html`,
+`enerconseils/atlas-en.html`, `raffinage-en.html`, `tchaditech/rd-en.html`.
+
+**Après correction : 0 élément bloqué sur les 9 pages** (0/441 sur les deux brochures, 0/42 sur les deux
+atlas, 0/6 sur `raffinage-en`). Contrôle visuel de `raffinage-en.html` à 1280×900 : le titre
+« The modular & removable mini-refinery », les six cartes de caractéristiques et les quatre étapes
+s'affichent normalement.
+
+**État final du site.** Hors accordéons volontaires, plus aucun contenu ne reste bloqué à l'état masqué
+sur les 200 pages.
+
+### Note d'exploitation — quatre réinitialisations de conteneur
+
+Le travail de §128 et §129 a été perdu et refait à trois reprises, la copie de travail restaurée étant
+à chaque fois périmée (162 fichiers divergents). Le garde-fou institué en §127 — comparer le nombre de
+fichiers divergents au nombre de fichiers volontairement modifiés, et restaurer par
+`git archive FETCH_HEAD | tar -x` si l'écart est anormal — a détecté les quatre cas sans exception.
+Les mesures ont été reproduites à l'identique à chaque passage.
