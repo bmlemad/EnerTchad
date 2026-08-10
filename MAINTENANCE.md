@@ -4087,3 +4087,52 @@ Cinq fichiers d'`assets/img/` ne sont référencés par aucune page ni feuille d
 `equipe-hse.webp` (142 Ko), `savane-vehicule.webp` (79 Ko). Ils ne pèsent sur aucune page puisqu'ils ne
 sont jamais chargés. **Non supprimés** : ce sont peut-être des visuels réservés pour un usage à venir, et
 la suppression d'actifs n'a pas été demandée.
+
+## §133 — Le bloc « Inside this pole » : sans style sur 8 pages, dupliqué sur 3
+
+### Correction d'une affirmation du chapitre précédent
+
+En §132 j'ai annoncé avoir cassé la mise en page de trois pages en retirant des sections dupliquées, et
+j'ai tout restauré. **C'était faux.** Vérification : 11 balises `<section>` ouvrantes pour 11 fermantes
+avant comme après, aucune feuille de style dans ce qui avait été supprimé. Le texte collé que j'avais
+photographié n'était pas la conséquence de ma modification — c'était l'état normal du bloc.
+La preuve : mesure du même bloc sur `pole-intermediaire-en.html`, **jamais modifiée**, qui donne
+exactement le même résultat (`.card` sans remplissage ni fond, `.grid` en `display:block`, `.t` en `inline`).
+
+J'ai donc restauré une correction qui était bonne, sur la foi d'une capture mal lue.
+
+### Défaut 1 — le bloc n'a aucun style, sur les 8 pages de pôle anglaises
+
+`section.pole-inside` emploie les classes `grid`, `card`, `t`, `d` — des noms trop génériques pour être
+définis ailleurs — et rien ne les stylait. Rendu : « Transport & storageThe logistics backbone between
+field, depot and market. » d'un seul tenant, sans carte ni séparation, et les résumés en pavé continu
+avec les « OPEN THE PAGE → » incrustés dans le texte.
+
+Correctif : bloc `<style id="pi-css">` sur les 8 pages, entièrement porté sous `.pole-inside` pour ne
+rien affecter d'autre — grille `auto-fit minmax(252px,1fr)`, cartes en `flex` avec bordure, rayon,
+liseré supérieur à l'accent `var(--ac)` de la carte, titre `.t` en bloc, description `.d` lisible,
+et déclinaison pour le thème clair.
+
+### Défaut 2 — sections dupliquées à l'intérieur du bloc, sur 3 pages
+
+Le bloc « Inside this pole » annonce aux anglophones que les pages détaillées ne sont publiées qu'en
+français, et en résume le contenu. Sur cinq pages il ne contient que ce résumé. Sur trois, des sections
+complètes de la même page y avaient été collées : `pole-greentech-en` répétait `gtp` et `gtt`,
+`pole-tchaditech-en` répétait `tt-flag`, `tt-flow`, `tt-story` et `tt-carnets`, `pole-tchaditude-en` une
+section. L'anglophone lisait donc deux fois le même contenu, dans deux traductions différentes du même
+texte français — « Four pillars, a single requirement » puis « Four pillars, one demand ».
+
+Signature du défaut : l'écart de titres FR/EN valait **+2 sur les cinq pages saines** (les deux titres du
+bloc) contre +8, +14 et +4 sur les trois autres. Après retrait : **+2 partout**, sauf tchaditude à +3
+(un résumé y emploie un niveau de titre, contenu distinct, laissé tel quel).
+
+### Vérifications
+
+Équilibre des balises contrôlé page par page avant écriture (8/8 équilibrées). Rendu des 8 pages à
+1280×1000 : grille active, cartes en `flex` avec 18 px de remplissage, titres en bloc, **0 section
+imbriquée résiduelle**. Hauteur du bloc ramenée de 1 936 px à 704 px sur GreenTech.
+QA des 8 pages en 1440 clair et 390 sombre : 0 erreur console, 0 exception JS, 0 réponse 4xx,
+0 débordement, 0 violation axe-core.
+
+**Leçon.** Avant d'attribuer une régression à sa propre modification, mesurer le même élément sur une
+page témoin non modifiée. J'ai perdu un tour à restaurer une correction valide.

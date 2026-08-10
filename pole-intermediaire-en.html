@@ -186,6 +186,15 @@ html:not(.et-plight):not(.et-jlight) main section:not(#_){-webkit-backdrop-filte
 html:not(.et-plight):not(.et-jlight) main section section:not(#_){-webkit-backdrop-filter:none;backdrop-filter:none}
 @media (prefers-reduced-transparency:reduce){html:not(.et-plight):not(.et-jlight) main section:not(#_){-webkit-backdrop-filter:none!important;backdrop-filter:none!important}}
 @media (max-width:700px){html:not(.et-plight):not(.et-jlight) main section:not(#_){-webkit-backdrop-filter:blur(10px) saturate(130%);backdrop-filter:blur(10px) saturate(130%)}}
+</style><style id="pi-css">/* SS133 - le bloc « Inside this pole » utilisait les classes generiques grid/card/t/d sans qu aucune regle ne les definisse : texte colle, sans cartes. Styles limites au bloc. */
+.pole-inside .grid:not(#_):not(#__){display:grid;grid-template-columns:repeat(auto-fit,minmax(252px,1fr));gap:14px;margin-top:16px}
+.pole-inside .card:not(#_):not(#__){display:flex;flex-direction:column;border:1px solid var(--hair);border-top:3px solid var(--ac,var(--gold-l,#E8C36A));border-radius:14px;padding:18px 17px;background:rgba(255,255,255,.03);color:inherit;transition:border-color .2s}
+a.card:not(#_):not(#__):hover{border-color:var(--ac,var(--gold-l,#E8C36A))}
+.pole-inside .card .t:not(#_):not(#__){display:block;font-family:var(--fd,"Space Grotesk",Inter,sans-serif);font-weight:700;font-size:1rem;line-height:1.3;color:#fff;margin-bottom:8px}
+.pole-inside .card .d:not(#_):not(#__){display:block;font-size:.88rem;line-height:1.6;color:rgba(245,247,250,.74)}
+.pole-inside .note:not(#_):not(#__){margin-top:18px;font-size:.8rem;line-height:1.6;color:var(--muted,#9FB0C3)}
+html.et-plight .pole-inside .card .t:not(#_):not(#__),html.et-jlight .pole-inside .card .t:not(#_):not(#__){color:#16233A}
+html.et-plight .pole-inside .card .d:not(#_):not(#__),html.et-jlight .pole-inside .card .d:not(#_):not(#__){color:#3B4A61}
 </style></head>
 <body id="top"><div class="rdprog" aria-hidden="true"></div>
 <a href="#main-content" class="skip-link">Skip to main content</a>
