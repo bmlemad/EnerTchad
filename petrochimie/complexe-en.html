@@ -187,6 +187,12 @@ html:not(.et-plight):not(.et-jlight) main section:not(#_){-webkit-backdrop-filte
 html:not(.et-plight):not(.et-jlight) main section section:not(#_){-webkit-backdrop-filter:none;backdrop-filter:none}
 @media (prefers-reduced-transparency:reduce){html:not(.et-plight):not(.et-jlight) main section:not(#_){-webkit-backdrop-filter:none!important;backdrop-filter:none!important}}
 @media (max-width:700px){html:not(.et-plight):not(.et-jlight) main section:not(#_){-webkit-backdrop-filter:blur(10px) saturate(130%);backdrop-filter:blur(10px) saturate(130%)}}
+</style><style id="bandes-uni">/* SS134 - harmonisation des bandeaux. 1) Bandeau cookies : le traitement en bande fine ne vivait que dans le bloc home-plus de l accueil (64 px) ; ailleurs il retombait a 112-130 px. 2) Bande d appel final : la regle generique section{padding:var(--sy) 0} s appliquait a #cta-band sur les pages a gabarit complet, doublant le rembourrage deja porte par .cb-in (clamp 38-66 px) -> 380 px contre 237 px ailleurs. */
+#ckn:not(#_):not(#__){left:0!important;right:0!important;bottom:0!important;top:auto!important;width:100%!important;max-width:none!important;border-radius:0!important;padding:9px 22px!important;align-items:center;gap:16px;flex-wrap:wrap;font-size:.8rem!important;box-shadow:0 -8px 30px rgba(4,8,16,.25)}
+#ckn.show:not(#_):not(#__){display:flex!important}
+#ckn .ck-row:not(#_){margin-left:auto;display:flex;align-items:center;gap:10px}
+#ckn .ck-row a:not(#_){padding:6px 8px!important}
+#cta-band:not(#_):not(#__){padding-top:0!important;padding-bottom:0!important}
 </style></head><body id="top"><div class="rdprog" aria-hidden="true"></div>
 <a href="#main-content" class="skip-link">Skip to main content</a>
 <div id="preloader" aria-hidden="true">
