@@ -3543,3 +3543,21 @@ Les §117 à §121 ont touché près de deux cents fichiers — verre sur 175 pa
 **Quatre réfutations au pixel**, pour ne pas les rouvrir : les liens légaux du pied de page signalés sur `tchaditech/index` et `index-en` mesurent **9,03:1 et 9,58:1** — axe compose pessimistement le fond semi-transparent du pied de page, comme au §120 sur `.sec-next`. Les trois autres familles (`.tag` de `aval/reseau`, `.btn-ghost` de la brochure anglaise, le bouton de couche de l'Atlas) sont celles déjà mesurées au §116 à 8,14:1, 9,34:1 et 10,37:1.
 
 Après correction : **sur les 195 pages, plus aucune violation axe autre que les quatre familles réfutées au pixel.**
+
+## §123 — 2026-08-10 · Le saut de page : l'accueil imprimé et exporté en PDF
+
+Le pied de page propose « Imprimer / PDF » sur toutes les pages. L'accueil n'avait **aucune règle `@media print` propre** : seul le bloc partagé du bundle s'appliquait, et il contient `section,article,div{break-inside:auto!important}` — c'est-à-dire l'autorisation explicite de couper n'importe où. Rendu A4 avant correction, 18 pages : panneaux coupés en deux, cartes séparées de leur titre, et trois défauts plus graves.
+
+**Trois défauts, tous vérifiés au rendu.**
+
+1. **Les trois premières lignes du titre ne s'imprimaient pas.** Le bloc d'impression du bundle révèle bien `.reveal`, `.rv` et `[data-d]`, mais **pas les mots `.w`** du H1, qui restent à `opacity:0`. Seul l'`<em>` final, non animé, sortait : le papier portait « Nous inversons. » sans la phrase qui la précède. Mesuré au style calculé avant de corriger.
+
+2. **Le hero est un `<header>` frère de `<main>`.** Toute règle préfixée par `main` le manquait — c'est pourquoi le bouton d'appel s'imprimait en pastille pleine à libellé invisible. Les sélecteurs sont désormais peignés en `:is(main, header.hero, body>section)`.
+
+3. **Les cartes retournables s'imprimaient en double, face arrière en miroir.** Le reset d'impression annule les transformations 3D : la face `rotateY(180deg)` retombait par-dessus la face avant, texte à l'envers. Seule la face avant part maintenant sur le papier.
+
+**Le correctif de fond.** Bloc `<style id="print-home">` sur les deux accueils : blocs insécables sur les unités qui ont un sens (panneaux de maillon, cartes, KPI, lignes d'agenda, documents, tableaux), titres jamais orphelins en bas de page, veuves et orphelines à trois lignes, décor hors papier (chiffres fantômes, mots géants, bouton de pause, puces du carrousel, collage), et **un saut de page avant chaque maillon** — le document se lit désormais en chapitres, un pôle par page, entier.
+
+**Et une impression déterministe.** Le carrousel tournant, le papier portait la diapositive affichée au moment du clic. C'est maintenant toujours le message d'ouverture qui part à l'impression. L'ancre de défilement, sans objet sur papier, est retirée ; le CTA sortant vers l'espace investisseurs, lui, est conservé et imprimé en contour.
+
+**Contrôles.** Rendu A4 avant/après comparé page à page. À l'écran, rien ne bouge — tout est enfermé dans `@media print` : sur les deux accueils, à 390 px en sombre et 1440 px en clair, 0 erreur console, 0 exception JS, 0 réponse 4xx, 0 débordement, et pour seules violations axe les deux familles déjà réfutées au pixel (`.hx-slogan` à 7,0:1 au §107, liens légaux du pied de page à 9,03:1 au §122).

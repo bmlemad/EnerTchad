@@ -634,6 +634,67 @@ html.et-plight #agenda-home .agh li{background:rgba(255,255,255,.52);border-left
 html.et-plight #agenda-home .agh b{color:#7A5C0B}
 html.et-plight #agenda-home .agh-cta a{color:#7A5C0B;-webkit-text-fill-color:#7A5C0B;border-bottom-color:rgba(138,106,18,.45)}
 @media (max-width:560px){#agenda-home .agh li{grid-template-columns:1fr}#agenda-home .agh strong,#agenda-home .agh span{grid-column:1}}
+</style><style id="print-home">/* §123 — mise au propre de l'impression et de l'export PDF de l'accueil.
+   Le bundle partage force break-inside:auto sur toutes les sections, articles et div : rien ne protege
+   les blocs, d'ou des panneaux coupes en deux. Il revele bien .reveal et .rv, mais pas les mots .w du
+   titre, qui restent a opacity:0 — les trois premieres lignes du H1 ne s'imprimaient pas. Et le hero
+   est un <header> frere de <main>, donc hors de portee des regles prefixees par main. */
+@media print{
+  /* 0. le hero est un frere de main : on le prend explicitement dans le peigne */
+  :is(main,header.hero,body>section) :not(#_):not(#__){
+    color:#111!important; -webkit-text-fill-color:#111!important; text-shadow:none!important;
+    -webkit-backdrop-filter:none!important; backdrop-filter:none!important}
+  /* 1. les atomes d'animation qui restaient invisibles a l'impression */
+  .hx-h1 .w:not(#_):not(#__), .hx-slide:not(#_):not(#__), .hx-slide em:not(#_):not(#__),
+  .w:not(#_):not(#__), [class*="reveal"]:not(#_):not(#__), .rv:not(#_):not(#__){
+    opacity:1!important; transform:none!important; filter:none!important;
+    animation:none!important; transition:none!important; visibility:visible!important; clip-path:none!important}
+  /* 2. plus de rectangles blancs derriere le texte */
+  :is(main,header.hero,body>section) :is(p,span,b,strong,em,i,li,h1,h2,h3,h4,figcaption,small,time,td,th):not(#_):not(#__){
+    background:transparent!important; background-image:none!important; box-shadow:none!important}
+  /* 3. boutons imprimes en contour, libelle lisible */
+  :is(main,header.hero) :is(a,button)[class*="btn"]:not(#_):not(#__),
+  :is(main,header.hero) .mln-go:not(#_):not(#__), :is(main,header.hero) .cb-btn:not(#_):not(#__),
+  :is(main,header.hero) .flip-cta:not(#_):not(#__), :is(main,header.hero) .iv-cta:not(#_):not(#__){
+    background:none!important; background-image:none!important; border:1px solid #111!important;
+    color:#111!important; -webkit-text-fill-color:#111!important; box-shadow:none!important;
+    padding:4px 10px!important}
+  /* 4. blocs insecables — le correctif du saut de page proprement dit */
+  main .mln:not(#_):not(#__), main .mln-nav:not(#_):not(#__), main .mln-in:not(#_):not(#__),
+  .hx-strip:not(#_):not(#__), .hx-stat:not(#_):not(#__), main .agh li:not(#_):not(#__),
+  main .pub-c:not(#_):not(#__), main .flip2:not(#_):not(#__), main .hnews article:not(#_):not(#__),
+  main [class*="card"]:not(#_):not(#__), main .frm-c:not(#_):not(#__),
+  main figure:not(#_):not(#__), main table:not(#_):not(#__), main tr:not(#_):not(#__){
+    break-inside:avoid!important; page-break-inside:avoid!important}
+  /* 5. un titre ne reste jamais seul en bas de page */
+  :is(main,header.hero) :is(h1,h2,h3):not(#_):not(#__){break-after:avoid!important; page-break-after:avoid!important}
+  :is(main,header.hero) p:not(#_):not(#__){orphans:3; widows:3}
+  /* 6. chaque maillon commence une page : le document se lit en chapitres */
+  main .mln-set > .mln:not(#_):not(#__){break-before:page!important; page-break-before:always!important}
+  main .mln-set > .mln:first-child:not(#_):not(#__){break-before:auto!important; page-break-before:auto!important}
+  /* 7. decor hors papier */
+  .mln-ghost, .mln-bg, .hwords, #hxPause, .hx-dots, .hcollage, .hbelieve, .hx-cue, .hchain,
+  .sc-cover, .hx-links, .prem-mesh, .pt-vp, #oilticker, .hero-cap, #diapo-cap{display:none!important}
+  /* 8. les pleines pages cessent de l'etre */
+  header.hero:not(#_):not(#__){background:none!important; background-image:none!important;
+    min-height:0!important; height:auto!important; padding:0 0 12px!important}
+  main .mln:not(#_):not(#__){min-height:0!important; padding:14px 0 18px!important}
+  /* 9. impression deterministe : c'est toujours le message d'ouverture qui part sur le papier,
+        pas la diapo qui se trouvait affichee au moment de l'impression. */
+  .hx-slides .hx-slide:not(#_):not(#__){display:none!important}
+  .hx-slides .hx-slide:first-child:not(#_):not(#__){display:block!important; opacity:1!important}
+  /* 10. l'ancre de defilement n'a pas de sens sur papier ; le CTA sortant, si. */
+  header.hero a[href^="#"].btn:not(#_):not(#__){display:none!important}
+  /* 11. cartes retournables : sur papier, la face arriere se superposait en miroir
+        (le reset d'impression annule les transformations 3D). On n'imprime que la face avant. */
+  .flip-b:not(#_):not(#__), .f2b:not(#_):not(#__){display:none!important}
+  .flip-in:not(#_):not(#__), .flip:not(#_):not(#__), .fx2:not(#_):not(#__){
+    display:block!important; transform:none!important; transform-style:flat!important;
+    min-height:0!important; height:auto!important}
+  .flip-f:not(#_):not(#__), .f2f:not(#_):not(#__){
+    position:static!important; transform:none!important; backface-visibility:visible!important;
+    grid-area:auto!important}
+}
 </style></head>
 <body><div class="diapo" aria-hidden="true"><i style="background-image:url(&quot;/assets/img/pompe-petrole.webp&quot;)"></i></div><div class="rdprog" aria-hidden="true"></div>
 <a href="#main-content" class="skip-link">Skip to main content</a>
