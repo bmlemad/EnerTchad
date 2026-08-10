@@ -3699,3 +3699,67 @@ Total §125 : **72 pages** modifiées. QA des 33 pages en sous-dossier à 1440 c
 
 **Leçon reconduite.** Le balayage `ls *.html` ne couvre pas `*/*.html` : toute campagne site-entier doit
 énumérer les deux. Contrôle systématique en production sur au moins une page de sous-dossier avant clôture.
+
+## §126 — « Qui nous sommes » sur l'accueil : de trois mots à quatre principes
+
+**Constat.** La première section de `<main>` sur l'accueil (`section.hwords`), intitulée « Qui nous sommes »,
+occupait 578 px de haut pour trois mots — *Unité, Innovation, Durabilité* — et rien d'autre :
+aucune définition, aucune phrase d'identité, aucun lien de sortie. Un visiteur qui pose la question
+« qui êtes-vous ? » repartait avec trois abstractions.
+
+Trois défauts distincts, tous mesurés :
+
+1. **Contenu.** La page `/societe` publie **quatre** valeurs, chacune avec sa définition
+   (« 04 · Valeurs — Quatre principes guident chaque décision, du forage au dernier kilomètre »).
+   L'accueil n'en affichait que trois, sans définition — et omettait précisément **« Accès aux énergies »**,
+   qui est la signature figurant sous le logo dans l'en-tête de chaque page.
+2. **Sémantique.** L'intitulé « Qui nous sommes » était un `<span class="hw-k">` : la section n'avait aucun
+   titre dans le plan du document. Son `aria-label` annonçait par ailleurs « Nos valeurs » — un nom
+   accessible en contradiction avec le libellé visible (WCAG 2.5.3, *Label in Name*).
+3. **Impasse.** Aucun lien vers `/societe`.
+
+**Correctif.** Reprise du bloc, dans les deux langues :
+
+- `<h2 class="hw-k" id="hwTitle">` + `aria-labelledby` — la section a un titre, le nom accessible
+  correspond au libellé visible.
+- Chapô d'identité : « EnerTchad S.A. est une société pétrolière intégrée tchadienne, en cours de
+  constitution sous droit OHADA à N'Djamena. »
+- Les **quatre** principes, chacun accompagné de sa définition **reprise mot pour mot de `/societe`**
+  (aucune formulation inventée) ; quatrième accent ambre `var(--amber-l)`.
+- Liste sémantique `<ul>`/`<li>` au lieu d'une pile de `<span>`.
+- Lien de sortie « Découvrir la Société → », hauteur de cible 24 px (WCAG 2.5.8).
+- Le décalage typographique en escalier est conservé (4 % / 8 % / 12 %) ; grille à deux colonnes
+  mot + définition, empilée sous 860 px.
+
+**Contrastes mesurés au pixel** (rendu « fond seul », pire pixel de fond sous chaque zone de texte) :
+
+| | Sombre 1440 | Sombre 390 | Clair 1440 |
+|---|---|---|---|
+| Chapô | 5,76:1 | 11,41:1 | 10,76:1 |
+| Unité | 7,76:1 | 9,82:1 | 4,62:1 |
+| Innovation | 6,89:1 | 7,34:1 | 6,80:1 |
+| Durabilité | 10,14:1 | 9,58:1 | 6,62:1 |
+| Accès aux énergies | 9,98:1 | — | 5,78:1 |
+| Définitions | 8,69:1 | 11,44:1 | 10,76:1 |
+| Lien Société | 12,87:1 | — | — |
+
+Deux corrections nées de ces mesures :
+
+- **Mobile, chapô à 3,91:1** — sous le seuil AA. Le texte tombait sur la zone la plus claire du visuel
+  fixe du hero (pixel de fond 134,113,74). Ajout d'un voile propre à la section sous 860 px :
+  `linear-gradient(180deg,rgba(6,11,20,.66),rgba(6,11,20,.46) 32%,rgba(6,11,20,.34))`. Après : **11,41:1**.
+- **Thème clair : les quatre accents étaient écrasés** en un même bleu-nuit par la feuille claire —
+  le code couleur, qui porte ici l'information, disparaissait. Rétablissement avec des tons adaptés au
+  fond crème : `#8A6712`, `#12558F`, `#166046`, `#93490F` — tous ≥ 4,6:1.
+
+**Impression.** `print-home` (§123) masquait `.hwords` : c'était justifié quand la section ne portait que
+trois mots décoratifs. Elle porte maintenant l'identité de la société — règle d'impression dédiée
+(`display:block`, mots à 1,15 rem, `break-inside:avoid` par principe). Vérifié : le bloc figure bien
+en page 1 du PDF de l'accueil.
+
+**QA.** index.html + index-en.html, 1440 clair et 390 sombre : 0 erreur console, 0 exception JS,
+0 réponse 4xx, 0 débordement. axe-core : seule la famille `.hx-slogan` déjà réfutée au pixel en §107.
+
+**Constat non traité (chrome, hors périmètre).** Sur mobile, le bouton de thème (bas gauche) et le retour
+en haut (bas droite) se superposent au texte courant des sections longues. Relevé pendant les mesures,
+à traiter séparément.
