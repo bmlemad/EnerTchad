@@ -3523,3 +3523,23 @@ Le §119 a trouvé un carrousel qui tournait sans commande de pause sur la page 
 **Contrôles.** axe-core WCAG 2.1 A + AA sur les huit pages modifiées, à 390 et 1440 px dans les deux thèmes — 32 mesures : **0 violation**, 0 erreur console, 0 exception JS, 0 réponse 4xx, 0 débordement horizontal. 1 201 liens et ancres vérifiés : 0 cassé. `scroll-margin-top` posé sur les trois nouvelles sections pour que leurs ancres ne passent pas sous la barre fixe.
 
 **Reste ouvert, et qui n'appartient qu'à vous** : nommer les contacts dès que les organes le permettront, et un moteur d'offres d'emploi — TotalEnergies fait tourner Avature sur 999+ postes avec six facettes, Shell branche Workday ; nous en sommes à la candidature spontanée, ce qui est cohérent avec une société sans recrutement ouvert, mais ne le restera pas.
+
+## §122 — 2026-08-10 · QA intégrale après cinq vagues de modifications
+
+Les §117 à §121 ont touché près de deux cents fichiers — verre sur 175 pages, refonte du premier écran, greffe de chrome, nouvelles sections. Chaque vague avait été vérifiée sur son propre périmètre ; aucune ne l'avait été sur l'ensemble depuis le §116. Passe complète, statique puis dynamique, sur les 195 pages du sitemap.
+
+**Statique — 28 378 liens et ancres examinés : 0 lien cassé.** Vingt « ancres mortes » signalées appartiennent toutes au routeur à hash du Configurateur (`#p=operateur&d=geo…`), cas documenté depuis le §116. Deux « liens vides » sur l'accueil sont les `a.sc-cover` porteurs d'un `aria-label` — mon propre sondage était trop grossier. Rien d'autre sur la tête de page, les identifiants dupliqués, la hiérarchie des titres ou les attributs `alt`.
+
+**Dynamique — 195 pages à 390 px en thème sombre, axe-core WCAG 2.1 A + AA : 0 erreur console, 0 exception JS, 0 réponse 4xx, 0 débordement horizontal.** Vingt-quatre nœuds de contraste signalés, sur sept pages seulement.
+
+**Trois défauts réels, tous nés d'un angle mort.**
+
+1. **Le Configurateur déclarait son encodage au 86 903ᵉ octet.** La spécification HTML exige `<meta charset>` dans les 1 024 premiers octets ; ici, 85 Ko de style en ligne le précédaient. Le fichier porte en outre **deux `<meta name=viewport>` aux valeurs divergentes** (`viewport-fit=cover` d'un côté, valeur nue de l'autre). En production l'en-tête HTTP `charset=utf-8` couvrait le risque — mais il suffit d'ouvrir le fichier hors serveur pour que ça casse. Charset et viewport reposés en tête, doublon supprimé, page revérifiée.
+
+2. **`.fp-note` de la brochure à 3,60:1.** Le §116 avait corrigé cette classe sur les pages patrimoine — la brochure porte sa **propre** déclaration, jamais touchée. Mesure au pixel sur rendu « fonds seuls » : `#6F7D93` sur fond mesuré à (42,38,34), soit **3,60:1 au 95ᵉ centile pour du texte de 12,3 px** — échec 1.4.3 franc. Porté à `#93A1B6`, revérifié à **5,99:1** au pixel, et axe repasse à zéro violation sur les deux brochures. Leçon : corriger une classe sur les pages où on l'a trouvée ne suffit pas ; il faut chercher toutes ses déclarations.
+
+3. **Un titre à 66 caractères** sur `tchaditech/socle-en` — ramené à 61 en remplaçant l'esperluette par une virgule.
+
+**Quatre réfutations au pixel**, pour ne pas les rouvrir : les liens légaux du pied de page signalés sur `tchaditech/index` et `index-en` mesurent **9,03:1 et 9,58:1** — axe compose pessimistement le fond semi-transparent du pied de page, comme au §120 sur `.sec-next`. Les trois autres familles (`.tag` de `aval/reseau`, `.btn-ghost` de la brochure anglaise, le bouton de couche de l'Atlas) sont celles déjà mesurées au §116 à 8,14:1, 9,34:1 et 10,37:1.
+
+Après correction : **sur les 195 pages, plus aucune violation axe autre que les quatre familles réfutées au pixel.**
