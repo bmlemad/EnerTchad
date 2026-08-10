@@ -4136,3 +4136,61 @@ QA des 8 pages en 1440 clair et 390 sombre : 0 erreur console, 0 exception JS, 0
 
 **Leçon.** Avant d'attribuer une régression à sa propre modification, mesurer le même élément sur une
 page témoin non modifiée. J'ai perdu un tour à restaurer une correction valide.
+
+## §134 — Harmonisation des bandeaux
+
+Revue des bandes pleine largeur sur les 195 pages, à 1440×900 en thème sombre, après défilement complet.
+Treize familles relevées. Le chrome fixe occupe **110 px en haut** et jusqu'à 64 px en bas sur mobile,
+soit **12,2 % de la hauteur utile confisqués en permanence** — dans la norme du secteur, mais c'est le
+budget dans lequel tout le reste doit tenir.
+
+### Défaut 1 — le bandeau cookies faisait le double de sa taille prévue sur 84 pages
+
+Mesures : **64 px sur les deux pages d'accueil**, **130 px sur 62 pages**, 112 px sur 22 autres.
+Cause : le traitement en bande fine (`padding:9px 22px`, disposition en ligne, `.ck-row` poussée à droite)
+vit dans le bloc inline `home-plus`, présent uniquement sur `index.html` et `index-en.html`. Partout
+ailleurs le bandeau retombait dans sa version par défaut. C'est le premier élément que rencontre un
+visiteur, et il occupait le double de l'espace prévu sur 97 % des pages concernées.
+
+### Défaut 2 — la bande d'appel final mesurait 380 px ou 237 px pour un contenu identique
+
+Même texte (19 mots), mêmes deux boutons — mais `padding: 72px/72px` sur 86 pages contre **0/0 sur 75
+autres**, soit 143 px d'écart (60 %). Cause identifiée par interrogation des feuilles appliquées :
+la règle générique `section{padding:var(--sy) 0}` s'applique à `#cta-band` sur les pages à gabarit
+complet, et **double** le rembourrage déjà porté par `.cb-in` (`clamp(38px,6vw,66px)`, soit 66 px à
+1440). Les pages « légères » (mentions légales, accessibilité, avertissements) ne chargent pas cette
+feuille et affichaient donc la version correcte.
+
+### Correctif — bloc `<style id="bandes-uni">` sur 178 pages
+
+- `#ckn` : bande fine généralisée, `display:flex` conservé sous `.show` uniquement (le bandeau reste
+  masqué tant qu'il n'est pas déclenché).
+- `#cta-band` : `padding-top`/`padding-bottom` remis à 0 — le rembourrage intérieur de `.cb-in` suffit.
+
+**Mesures après correctif** (1440, thème sombre) :
+
+| Page | Cookies avant → après | Bande finale avant → après |
+|---|---|---|
+| `achats.html` | 130 → **64 px** | 380 → **236 px** |
+| `aval/raffinage.html` | 130 → **65 px** | 380 → **236 px** |
+| `accessibilite.html` | — | 237 → **237 px** (inchangée) |
+| `index.html` | 64 → **65 px** (inchangée) | 380 → **236 px** |
+
+Les deux composants sont désormais à la même hauteur sur tout le site.
+
+### Constat exemplaire
+
+`.pole-subnav` : **61 px sur les 80 pages**, sans une exception — la preuve que la cohérence est
+atteignable ici.
+
+### Reste à traiter
+
+La navigation principale mesure **110 px sur 88 pages et 132 px sur 49** — vérifié au repos et après
+défilement, ce n'est pas un état condensé mais bien deux hauteurs. Aucune règle de hauteur explicite ne
+s'applique à `nav#nav` : l'écart vient du contenu ou du rembourrage interne, et demande une analyse
+séparée. Conséquence pratique : les `scroll-margin-top` des ancres ne peuvent pas être justes sur les
+deux familles à la fois.
+
+**QA.** Échantillon de 8 pages des deux gabarits, 1440 clair et 390 sombre : 0 erreur console,
+0 exception JS, 0 réponse 4xx, 0 débordement. axe-core : seule la famille `.hx-slogan` de l'accueil,
+réfutée au pixel en §107.
