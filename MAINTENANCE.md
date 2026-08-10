@@ -3763,3 +3763,75 @@ en page 1 du PDF de l'accueil.
 **Constat non traité (chrome, hors périmètre).** Sur mobile, le bouton de thème (bas gauche) et le retour
 en haut (bas droite) se superposent au texte courant des sections longues. Relevé pendant les mesures,
 à traiter séparément.
+
+## §127 — Modèle de lancement : import B2B depuis cinq pays vers trois hubs
+
+**Origine.** Information métier transmise par la direction : dès l'ouverture commerciale, EnerTchad
+importera des carburants depuis des pays africains pour une clientèle B2B, servie depuis des hubs de
+stockage répartis sur le territoire. Pays retenus : **Niger, Nigeria, Cameroun, Angola, Algérie**.
+Hubs : **N'Djamena, Moundou, Abéché**. Segments B2B : **mines & BTP, transporteurs & flottes,
+agro-industrie, énergie de secours & institutionnels**.
+
+**Diagnostic — le site se contredisait.** Balayage des 199 pages : 88 occurrences liées à l'import,
+dont 60 sont l'intitulé de navigation « Modèle de distribution · Import → dernier km » (déjà cohérent).
+Restaient **28 passages substantiels**, de trois natures :
+
+1. **L'import présenté comme l'adversaire** — « substituer l'import », « un approvisionnement national qui
+   ne dépend plus uniquement de l'import », « amortir les ruptures d'import ». Formulations tenables pour
+   une cible 2030, intenables quand l'import est le métier du premier jour.
+2. **L'import présenté comme défaillant** — « les zones que l'import délaisse », « là où l'import ne va pas ».
+   Le constat est juste, mais la formulation range EnerTchad hors des importateurs.
+3. **L'omission, la plus grave** — la « cascade de distribution » démarrait à l'**étape 01 Raffinage local**,
+   c'est-à-dire à une capacité qui n'existe pas au lancement. Nulle part le site ne disait d'où vient la
+   molécule le premier jour.
+
+À noter : les trois hubs étaient **déjà nommés** sur `intermediaire/sites.html` (« trois hubs-dépôts
+N'Djamena, Moundou, Abéché ») — mais décrits comme approvisionnant des stations, pas des clients B2B,
+et sans dire par quoi ils sont eux-mêmes alimentés.
+
+**Correctifs (9 pages).**
+
+- `aval/distribution.html` — nouvelle **étape 01 « Sourcing & import régional »** en tête de cascade,
+  renumérotation des cinq étapes suivantes (le raffinage local devient l'étape 02, marquée « cible »).
+  Chapeau réécrit : « au lancement, la molécule entre par l'import régional ; à mesure que le raffinage
+  local monte en puissance, elle est produite au pays ».
+- `aval/distribution.html` — **nouveau bloc « Modèle de lancement · B2B »** après la cascade : les cinq pays
+  et leurs deux familles de voies (terrestre régionale depuis Niger/Nigeria/Cameroun ; maritime depuis
+  Angola/Algérie, reprise par le corridor Douala–N'Djamena), les trois hubs et ce que chacun couvre,
+  les quatre clientèles professionnelles. Mention explicite : aucune commande ouverte à ce jour.
+- `distribution-en.html` — étape « Sourcing & regional import » ajoutée en tête, étapes renumérotées 1→5,
+  étape « B2B delivery » précisée, chapeau complété.
+- `clients.html` §industriels — l'origine des volumes au lancement est nommée.
+- `intermediaire/sites.html` — les trois hubs approvisionnent « dès le lancement, les clients
+  professionnels servis par import régional, puis leurs stations satellites ».
+- `index.html` — carte « Marché à reconquérir » réécrite : l'import B2B devient l'étape 1 de la thèse,
+  au lieu d'être seulement l'adversaire à remplacer.
+- Recadrages de formulation sur `brochure.html`, `aval/index.html`, `intermediaire/logistique.html`,
+  `journal-mobile-stations.html` : « les circuits d'import actuels délaissent », « là où les circuits
+  actuels ne vont pas », « ne dépend plus d'une source unique », « ruptures d'approvisionnement ».
+
+**Non modifié, volontairement.** Les mentions « substituer l'import » de `petrochimie/index.html`
+(engrais, méthanol), `aval/produits.html` et `brochure.html` (bitume) et `projets.html` (raffiner sur
+place, cible datée) portent sur d'autres produits ou sur l'horizon 2030 : elles restent exactes.
+
+### Incident — copie de travail périmée, régression de 150 pages évitée
+
+Au moment de préparer la publication, le contrôle de divergence a signalé **162 fichiers** modifiés alors
+que neuf seulement avaient été touchés. Vérification sur un témoin (`journal-prix-litre.html`) :
+**50 979 octets en local contre 55 724 octets publiés**, la version locale étant amputée du script
+`et-light-def` et de la balise `theme-color`. La copie `/root/etc` avait été restaurée depuis un
+instantané ancien lors d'un redémarrage de conteneur, et seuls les fichiers retouchés depuis étaient à jour.
+
+Publier depuis cet état aurait **régressé plus de 150 pages**, dont la perte du script qui applique le
+thème clair par défaut. Procédure appliquée : sauvegarde des neuf fichiers édités, restauration complète
+par `git archive FETCH_HEAD | tar -x` (0 divergence après restauration), puis **réapplication des neuf
+éditions sur les fichiers frais** — les chaînes cibles ont d'ailleurs différé entre la version périmée et
+la version publiée de `distribution-en.html`, ce qui aurait produit une page incohérente.
+
+**Règle ajoutée au protocole de publication.** Avant toute campagne, compter les fichiers divergents.
+Si ce nombre dépasse le nombre de fichiers volontairement modifiés, ne rien publier : restaurer depuis
+`FETCH_HEAD` et rejouer les éditions.
+
+**QA.** 9 pages, 1440 clair et 390 sombre : 0 erreur console, 0 exception JS, 0 réponse 4xx,
+0 débordement. axe-core : uniquement `.hx-slogan` (réfutée au pixel en §107, 7,0:1) et `.fcta` de la
+brochure (réfutée en §125, 13,49:1).
