@@ -3945,3 +3945,43 @@ Le travail de §128 et §129 a été perdu et refait à trois reprises, la copie
 fichiers divergents au nombre de fichiers volontairement modifiés, et restaurer par
 `git archive FETCH_HEAD | tar -x` si l'écart est anormal — a détecté les quatre cas sans exception.
 Les mesures ont été reproduites à l'identique à chaque passage.
+
+## §130 — Vérification complète du site après les campagnes §123-§129, et fichiers internes exposés
+
+**Contrôle intégral.** Les 200 pages passées à 1440 en thème clair, avec axe-core (WCAG 2.0/2.1 A et AA),
+relevé des erreurs de console, des exceptions JavaScript, des réponses 4xx et du débordement horizontal :
+
+| | |
+|---|---|
+| Erreurs de console | **0** |
+| Exceptions JavaScript | **0** |
+| Réponses 4xx | **0** |
+| Débordement horizontal | **0** |
+| Pages entièrement propres | **194 / 200** |
+
+Les six pages signalées se répartissent en trois cas, dont deux déjà réfutés :
+
+- `index.html` et `index-en.html` — famille `.hx-slogan`, mesurée au pixel à **7,0:1** en §107. Réfutée.
+- `google9146d41010c5e702.html` — fichier de vérification Google Search Console, sans `<title>` ni
+  attribut `lang` par construction : son contenu est imposé par Google. Réfutée, non modifiable.
+- `docs-sources/brochure_print.html`, `brochure_print_en.html`, `fiche_ar.html` — voir ci-dessous.
+
+### Fichiers de travail internes servis publiquement
+
+Les trois sources HTML paginées qui servent à générer les PDF (brochure FR, brochure EN, fiche arabe)
+sont **accessibles en production** : `https://enertchad-delta.vercel.app/docs-sources/brochure_print`
+répond 200 avec le titre « EnerTchad — Brochure institutionnelle ». Le `README.md` du dossier, qui décrit
+la chaîne de génération interne, est également servi en clair.
+
+Ces fichiers ne sont liés depuis aucune page et ne figurent pas au sitemap, mais **rien n'empêchait leur
+indexation** : aucune balise `robots`, et `robots.txt` n'autorisait que `Allow: /`. Un moteur qui les
+découvre (lien externe, historique de certificat, exploration) pouvait les faire remonter en concurrence
+des vraies pages — avec, en prime, les défauts de contraste propres à une mise en page destinée à
+l'impression.
+
+**Correctif.** `<meta name="robots" content="noindex,nofollow">` ajouté aux trois fichiers, et
+`Disallow: /docs-sources/` ajouté à `robots.txt`. Les fichiers restent accessibles pour la génération
+des PDF ; ils cessent d'être indexables.
+
+Les défauts de contraste relevés par axe sur ces trois pages ne sont pas corrigés : ce sont des documents
+d'impression sur fond blanc, dont le rendu final est le PDF publié. Ils sortent du périmètre du site web.
