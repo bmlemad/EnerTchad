@@ -343,6 +343,11 @@ html:not(.et-plight):not(.et-jlight) main section:not(#_){-webkit-backdrop-filte
 html:not(.et-plight):not(.et-jlight) main section section:not(#_){-webkit-backdrop-filter:none;backdrop-filter:none}
 @media (prefers-reduced-transparency:reduce){html:not(.et-plight):not(.et-jlight) main section:not(#_){-webkit-backdrop-filter:none!important;backdrop-filter:none!important}}
 @media (max-width:700px){html:not(.et-plight):not(.et-jlight) main section:not(#_){-webkit-backdrop-filter:blur(10px) saturate(130%);backdrop-filter:blur(10px) saturate(130%)}}
+</style><style id="reveal-safe">/* SS128 - filet de securite : un contenu en attente de revelation ne doit jamais rester invisible. Mesure du 10/08 : 540 elements .reveal restaient a opacity 0 apres defilement complet sur 54 pages. */
+@media (scripting:none){.reveal,.reveal-up,.reveal-blur,.rv{opacity:1!important;transform:none!important;filter:none!important}}
+.reveal:not(.in),.reveal-up:not(.in),.reveal-blur:not(.in),.rv:not(.in){animation:rvsafe 0s linear 2.2s forwards}
+@keyframes rvsafe{to{opacity:1;transform:none;filter:none}}
+@media (prefers-reduced-motion:reduce){.reveal,.reveal-up,.reveal-blur,.rv{opacity:1!important;transform:none!important;filter:none!important;animation:none!important}}
 </style></head>
 <body id="top"><a href="#main-content" class="skip-link">Skip to main content</a>
 <div id="prog"></div>

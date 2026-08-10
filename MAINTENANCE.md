@@ -3835,3 +3835,61 @@ Si ce nombre dépasse le nombre de fichiers volontairement modifiés, ne rien pu
 **QA.** 9 pages, 1440 clair et 390 sombre : 0 erreur console, 0 exception JS, 0 réponse 4xx,
 0 débordement. axe-core : uniquement `.hx-slogan` (réfutée au pixel en §107, 7,0:1) et `.fcta` de la
 brochure (réfutée en §125, 13,49:1).
+
+## §128 — Du contenu qui n'apparaissait jamais : 540 blocs bloqués à opacity 0
+
+**Point de départ : audit de parité FR/EN.** Deux écarts de contenu d'abord.
+`achats-en.html` annonçait « **3 poles** — Upstream, Midstream and Downstream » quand la version française
+dit « 4 pôles — Amont, Intermédiaire, Aval et **Pétrochimie** » : un pôle entier manquait au compte et à
+l'énumération. Corrigé. Et `eor-en.html` comptait 29 titres contre 40 en français : la section
+`#eor-science` — physique du piégeage capillaire (01→04), grille de screening EOR, quatre intrants
+tchadiens — n'existait pas en anglais. Traduite et insérée ; 40 titres des deux côtés.
+
+**Ce que l'insertion a révélé.** Les blocs traduits restaient **invisibles** : `opacity:0`,
+`transform:translateY(22px)`, aucune classe `.in`. Le moteur de révélation
+(`assets/chrome/c_ac04328f0f47.js`, qui pose `.in` via IntersectionObserver) n'est pas chargé par
+`eor-en.html` — ni par 109 autres pages.
+
+**Balayage des 200 pages** (chargement, défilement complet, comptage des `.reveal / .reveal-up /
+.reveal-blur / .rv` restés sous 5 % d'opacité) :
+
+| | |
+|---|---|
+| Pages avec du contenu jamais révélé | **54 sur 200** |
+| Éléments concernés | **540 sur 2 866** (18,8 %) |
+| Pages invisibles à 100 % | `reseau-en` (65), `eor-en` (43), `produits-en` (33), `raffinage-en` (6) |
+
+Sur les 110 pages sans moteur, seules 17 sont défectueuses : les autres chargent une feuille qui
+neutralise l'état masqué (`opacity:1!important`). Le défaut naît là où **ni le moteur ni la
+neutralisation** ne s'appliquent.
+
+**Vérification au pixel avant correction.** Capture de `reseau-en.html` à 1280×900 : environ **650 px de
+page vide** entre l'en-tête et le premier contenu visible — la carte interactive du Tchad et la fiche du
+hub-dépôt de N'Djamena ne s'affichaient pas. Défaut réel, pas un artefact de sonde.
+
+**Correctif — bloc `<style id="reveal-safe">` sur 13 pages** (celles à ≥ 10 éléments masqués, soit 404
+des 540) :
+
+- `animation:rvsafe 0s linear 2.2s forwards` sur `.reveal:not(.in)` et variantes : si `.in` n'est pas
+  arrivée au bout de 2,2 s, le contenu se révèle seul. L'animation d'origine reste prioritaire quand le
+  moteur fonctionne.
+- `@media (scripting:none)` : révélation immédiate sans JavaScript.
+- `@media (prefers-reduced-motion:reduce)` : révélation immédiate, sans animation.
+
+**Après correction.** Nouveau balayage : **404 → 68 éléments masqués**, 11 pages sur 13 entièrement
+rétablies. Les 34 restants sur `clients.html` et `clients-en.html` sont dans des accordéons volontairement
+repliés (« 14 thématiques ») — non traités, à confirmer.
+
+**Reste à traiter.** 41 pages comptant moins de 10 éléments masqués chacune (136 éléments au total).
+
+**QA.** Échantillon `reseau-en`, `solutions`, `investisseurs`, `greentech/impact` à 1440 clair, plus
+`eor-en` et `achats-en` en 1440 clair et 390 sombre : 0 erreur console, 0 exception JS, 0 réponse 4xx,
+0 débordement, 0 violation axe-core.
+
+### Incident — deuxième réinitialisation du conteneur
+
+Le travail de §128 a été perdu une première fois (fichiers préparés et copie de travail effacés), et la
+copie restaurée était de nouveau périmée — 162 fichiers divergents. Procédure de §127 appliquée :
+restauration par `git archive FETCH_HEAD | tar -x` (0 divergence), puis réexécution intégrale des
+modifications. Le second passage a reproduit les mêmes mesures au chiffre près (404 → 68), ce qui
+confirme que la correction est déterministe.
