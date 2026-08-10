@@ -3561,3 +3561,36 @@ Le pied de page propose « Imprimer / PDF » sur toutes les pages. L'accueil n'a
 **Et une impression déterministe.** Le carrousel tournant, le papier portait la diapositive affichée au moment du clic. C'est maintenant toujours le message d'ouverture qui part à l'impression. L'ancre de défilement, sans objet sur papier, est retirée ; le CTA sortant vers l'espace investisseurs, lui, est conservé et imprimé en contour.
 
 **Contrôles.** Rendu A4 avant/après comparé page à page. À l'écran, rien ne bouge — tout est enfermé dans `@media print` : sur les deux accueils, à 390 px en sombre et 1440 px en clair, 0 erreur console, 0 exception JS, 0 réponse 4xx, 0 débordement, et pour seules violations axe les deux familles déjà réfutées au pixel (`.hx-slogan` à 7,0:1 au §107, liens légaux du pied de page à 9,03:1 au §122).
+
+## §124 — Bande « conviction » en verre translucide (accueil)
+
+**Constat.** Sur l'accueil, `section.hbelieve` (« Nous croyons que le pétrole du Tchad… ») était la seule
+section de niveau `body` restant **totalement opaque** en thème sombre :
+`radial-gradient(120% 100% at 50% 0%,#16294A,#0F1D36 60%,#0C1729)`. Le bloc `glass-v3` (§117) ne vise que
+`main section` ; `.hbelieve`, `.hcollage` et `#cta-band` sont posés **après `</main>`** et n'étaient donc
+pas couverts. Mesures du 10/08 : `.hcollage` déjà transparente, `#cta-band` déjà translucide
+(`rgba(8,13,22,.55)→.75`) mais **sans `backdrop-filter`**, `.hbelieve` opaque.
+
+**Ce qu'il y a derrière.** `div.diapo` est en `position:fixed` en thème sombre : c'est le **visuel du hero**
+(pompe à balancier au couchant) qui reste fixe derrière toute la page. Rendre `.hbelieve` translucide
+révèle donc ce visuel en parallaxe — vérifié par rendu « fond seul » avant toute écriture de règle.
+
+**Correctif — bloc `<style id="hb-glass">` (index.html, index-en.html)**
+- `.hbelieve` : voile `linear-gradient(180deg,rgba(8,14,26,.58),rgba(9,16,29,.42) 46%,rgba(8,14,26,.64))`
+  + `backdrop-filter:blur(14px) saturate(135%)`.
+- `#cta-band` : ajout du même `backdrop-filter` (le voile existait déjà).
+- Palier mobile `≤700px` : `blur(10px) saturate(128%)`.
+- `prefers-reduced-transparency:reduce` : retour au dégradé opaque d'origine, `backdrop-filter:none`.
+- `@media print` : fond supprimé, `backdrop-filter:none`, marges réduites.
+- Portée limitée à `html:not(.et-plight):not(.et-jlight)` — le **thème clair est inchangé**
+  (fond crème `#F5F1EA→#EDEDF1`, texte `#2A3648`), car la feuille claire l'armure par ID.
+
+**Mesures après correctif (rendu « fond seul », 1440×900, sombre).**
+
+| Zone | Fond peint le plus clair | `.hb-t` #EAF0F8 | `.hb-cta` #F0CE82 |
+|---|---|---|---|
+| Titre | rgb(48,55,51) | **10,65:1** | **8,06:1** |
+| CTA | rgb(22,17,20) | **16,29:1** | **12,32:1** |
+
+**QA.** index.html + index-en.html, 1440 clair et 390 sombre : 0 erreur console, 0 exception JS, 0 réponse 4xx,
+0 débordement horizontal. axe-core : seule la famille `.hx-slogan` déjà réfutée au pixel en §107 (7,0:1).

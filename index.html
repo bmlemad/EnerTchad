@@ -636,6 +636,12 @@ html.et-plight #agenda-home .agh li{background:rgba(255,255,255,.52);border-left
 html.et-plight #agenda-home .agh b{color:#7A5C0B}
 html.et-plight #agenda-home .agh-cta a{color:#7A5C0B;-webkit-text-fill-color:#7A5C0B;border-bottom-color:rgba(138,106,18,.45)}
 @media (max-width:560px){#agenda-home .agh li{grid-template-columns:1fr}#agenda-home .agh strong,#agenda-home .agh span{grid-column:1}}
+</style><style id="hb-glass">/* SS124 - bande conviction en verre translucide : le visuel fixe du hero transparait */
+html:not(.et-plight):not(.et-jlight) .hbelieve:not(#_):not(#__){background:linear-gradient(180deg,rgba(8,14,26,.58) 0%,rgba(9,16,29,.42) 46%,rgba(8,14,26,.64) 100%)!important;-webkit-backdrop-filter:blur(14px) saturate(135%);backdrop-filter:blur(14px) saturate(135%)}
+html:not(.et-plight):not(.et-jlight) #cta-band:not(#_):not(#__){-webkit-backdrop-filter:blur(14px) saturate(135%);backdrop-filter:blur(14px) saturate(135%)}
+@media (max-width:700px){html:not(.et-plight):not(.et-jlight) .hbelieve:not(#_):not(#__),html:not(.et-plight):not(.et-jlight) #cta-band:not(#_):not(#__){-webkit-backdrop-filter:blur(10px) saturate(128%);backdrop-filter:blur(10px) saturate(128%)}}
+@media (prefers-reduced-transparency:reduce){html:not(.et-plight):not(.et-jlight) .hbelieve:not(#_):not(#__){background:radial-gradient(120% 100% at 50% 0%,#16294A 0%,#0F1D36 60%,#0C1729 100%)!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}html:not(.et-plight):not(.et-jlight) #cta-band:not(#_):not(#__){-webkit-backdrop-filter:none!important;backdrop-filter:none!important}}
+@media print{.hbelieve:not(#_):not(#__),#cta-band:not(#_):not(#__){background:none!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important;padding:18px 0!important}}
 </style><style id="print-home">/* §123 — mise au propre de l'impression et de l'export PDF de l'accueil.
    Le bundle partage force break-inside:auto sur toutes les sections, articles et div : rien ne protege
    les blocs, d'ou des panneaux coupes en deux. Il revele bien .reveal et .rv, mais pas les mots .w du
