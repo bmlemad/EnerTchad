@@ -3985,3 +3985,47 @@ des PDF ; ils cessent d'être indexables.
 
 Les défauts de contraste relevés par axe sur ces trois pages ne sont pas corrigés : ce sont des documents
 d'impression sur fond blanc, dont le rendu final est le PDF publié. Ils sortent du périmètre du site web.
+
+## §131 — Vérification mobile du site entier (390 sombre) et correctifs
+
+Complément de §130, qui n'avait couvert que 1440 en thème clair. Les 200 pages repassées à **390 px en
+thème sombre** — la configuration majoritaire du public visé :
+
+| | |
+|---|---|
+| Erreurs de console | **0** |
+| Exceptions JavaScript | **0** |
+| Réponses 4xx | **0** |
+| Pages entièrement propres | **193 / 200** |
+
+Les trois pages en débordement horizontal (+404 px) sont les sources d'impression `docs-sources/*`,
+larges d'une page A4 par construction et désormais désindexées (§130). Réfuté.
+
+### Deux défauts réels, mesurés puis corrigés
+
+- **`.innov-c .no`** (brochure FR/EN, innovations FR/EN) — le numéro de carte prend l'accent de la carte
+  via `color:var(--c)`. Sur la carte bleue, `#2E86DE` sur fond peint (48,45,42) donne **3,64:1** pour un
+  texte de 10,56 px. Même famille de défaut que `.ngs-p .tag` en §125, même remède : en thème sombre,
+  `color-mix(in srgb, var(--c) 52%, #EAF0F8)`. Après : **6,63:1**.
+- **`.mrx-note`** (raffinage EN/FR) — `var(--muted)` résolu à rgb(124,138,162) sur fond (35,43,60) :
+  **4,06:1** pour 14,4 px. Porté à `#C6D2E3` en thème sombre. Après : **9,26:1**.
+- **Lien signalé par la seule couleur** dans un bloc de texte sur les deux pages raffinage
+  (WCAG 1.4.1) : soulignement ajouté.
+
+### Deux signalements réfutés au pixel
+
+- `.btn-ghost` (brochure EN) : **7,04:1** sur le fond réellement peint.
+- `.fp-note` (brochure FR) : **5,60:1**. Le correctif de §116/§122 tient bien ; axe calcule contre un
+  fond d'ancêtre déclaré, pas contre le fond peint.
+
+### Défaut de ma propre sonde, corrigé
+
+La première mesure de `.fp-note` a renvoyé un fond « pire » de rgb(147,161,182) — exactement la couleur
+du texte. Cause : la neutralisation `*{color:transparent!important}` ne suffit pas contre une règle qui
+pose `-webkit-text-fill-color` avec une spécificité armée par identifiants. La sonde a été renforcée
+(`html body *:not(#_):not(#__):not(#___)`, plus les pseudo-éléments et `text-shadow`), et **les deux
+correctifs de ce chapitre ont été re-vérifiés avec la sonde renforcée** — 6,63:1 et 9,26:1 inchangés.
+
+**Leçon.** Une sonde de contraste doit neutraliser `color`, `-webkit-text-fill-color` et `text-shadow`,
+avec une spécificité supérieure à celle des règles armées du site. Une sonde sous-spécifiée mesure le
+texte au lieu du fond et rend un verdict d'apparence plausible.
