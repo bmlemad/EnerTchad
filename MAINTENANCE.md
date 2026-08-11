@@ -4683,3 +4683,82 @@ Note de methode : la variance de l'environnement de mesure est elevee — sur la
 meme page et la meme version, le LCP a varie de 3 608 a 5 872 ms entre deux
 series. Seuls des ecarts larges et repetes ont ete retenus comme concluants ;
 les effets inferieurs a la seconde n'ont pas ete considerees comme demontres.
+
+## §140 — Consolidation CSS : le plafond est mesure, la voie est identifiee, rien n'est encore livrable
+
+Autorisation donnee de modifier `assets/chrome/*`. Avant de toucher au site, trois
+variantes de l'accueil ont ete construites en laboratoire, hors du site, et
+mesurees en 4G emulee avec bridage processeur x4, cinq passes, mediane retenue.
+
+### Ce que la structure interdit d'emblee
+
+Recensement prealable des 196 pages portant des feuilles de style :
+**57 ensembles distincts**, et **36 feuilles occupent une position variable**
+selon la page (`plight_extrait.css` apparait en position 0, 1, 6, 12 ou 13 ;
+`x_a68928222982.css` de 0 a 5). Il n'existe donc **aucun ordre canonique
+global** : concatener toutes les feuilles dans un ordre fixe modifierait la
+cascade sur un grand nombre de pages. Un bundle unique pour tout le site est
+exclu ; il faut un bundle par ensemble, soit 57 fichiers.
+
+### Les trois variantes, mesurees
+
+| Variante | FCP median | LCP median | Requetes CSS |
+|---|---|---|---|
+| A · 19 feuilles bloquantes (etat actuel) | 2 968 ms | 2 968 ms | 19 |
+| B · 1 feuille bloquante (concatenation) | **4 468 ms** | **4 468 ms** | 1 |
+| C · 1 feuille non bloquante, sans critique | 1 024 ms | **7 324 ms** | 1 |
+| D · critique en ligne + reste differe | **1 656 ms** | **1 656 ms** | 1 |
+
+**Resultat contre-intuitif a retenir : la simple concatenation degrade.** Passer
+de 19 fichiers a un seul fichier bloquant de 348 Ko fait perdre 1 500 ms. Les 19
+fichiers se telechargent en parallele ; un seul flux de 348 Ko sur un lien a
+1,6 Mb/s est sequentiel et bloque le rendu jusqu'au dernier octet. « Reduire le
+nombre de requetes » n'est pas un objectif en soi.
+
+La variante C isole les deux effets : sans rien de bloquant le premier rendu
+tombe a 1 024 ms, mais le LCP explose a 7 324 ms parce que l'element LCP est
+l'image de heros, dont la mise en page depend d'une feuille arrivee tard.
+
+**La variante D est la bonne voie** : 1 656 ms contre 2 968 ms, soit **44 % de
+moins**, et pour la premiere fois sous le seuil « bon » de 2 500 ms.
+
+### Pourquoi elle n'est pas livrable en l'etat
+
+Le CSS critique est extrait automatiquement : on charge la page, on releve les
+elements reellement visibles dans le premier ecran (surface non nulle, non
+masques), et on conserve les regles dont un selecteur correspond a l'un d'eux,
+plus les `@font-face`, les `@keyframes` et les selecteurs racine exacts. Union
+des extractions a 1440 et 390 px : 59 Ko.
+
+Diff pixel, D avant l'arrivee du bundle contre A rendu complet :
+
+| | Premiere passe | Apres ajout des keyframes et elargissement a 1,4 ecran |
+|---|---|---|
+| Ecran d'accueil, 390 px | 30,9 % de pixels differents | 13,2 % |
+| Ecran d'accueil, 1440 px | 9,6 % | 24,8 % |
+
+Et surtout, au **chargement complet**, la hauteur du document differe : 18 492 px
+contre 18 153 en 1440, 24 032 contre 23 362 en 390. Le CSS critique ne se
+contente donc pas de manquer des regles pendant une seconde, il perturbe l'etat
+final. Tant que ce n'est pas explique et corrige, deployer sur 199 pages et 57
+gabarits serait imprudent.
+
+### Etat
+
+Copie de travail du site : **0 fichier divergent**. Tout le travail est reste
+dans `/tmp/lab`. Rien n'a ete modifie dans `assets/chrome/*`.
+
+### La suite, dans l'ordre
+
+1. Reprendre l'extraction du critique jusqu'a ce que, **sur un seul gabarit**, le
+   premier rendu soit pixel pour pixel identique au rendu final et que la hauteur
+   du document ne bouge pas. Tant que ce point n'est pas atteint, ne pas etendre.
+2. Une fois le gabarit valide, generer un bundle par ensemble (57 fichiers,
+   nommes par empreinte du contenu pour dedoublonner) en respectant l'ordre exact
+   de chaque page.
+3. Deployer par lots de gabarits, avec diff pixel plein ecran avant chaque
+   publication, dans les deux themes et les deux viewports.
+
+Note de methode : la variance de l'environnement reste elevee. Les ecarts
+retenus ici (1 300 a 5 700 ms entre variantes) sont larges et reproduits sur cinq
+passes ; les differences inferieures a la seconde n'ont pas ete considerees.
