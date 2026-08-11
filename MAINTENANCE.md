@@ -4994,3 +4994,56 @@ et charte (clair) : pastille en place, chapeau de charte degage de la barre.
 sombre dans le meme theme : une couleur unique ne suffit pas, et la premiere
 tentative de pastille est tombee sur l'erreur de generation ci-dessus. A
 reprendre avec la meme methode fichier-CSS-valide ; chantier suivant.
+
+## §144 — Verre immersif final : plus aucune bande entre la photo et les tuiles
+
+### Le diagnostic qui manquait
+
+Demande : « eliminer toutes les bandes et laisser les tuiles sur l'image ».
+L'inventaire des elements larges peignant un fond a revele pourquoi des bandes
+subsistaient apres le chapitre 142 : sur `societe.html` en sombre, la regle
+d'immersion du chapitre 141 **correspondait bien a la section** (verifie par
+`matches()`), declarait `background-image:none!important`, venait plus tard dans
+le document — et perdait quand meme la cascade contre les halos du chapitre 136.
+Le mecanisme exact n'a pas ete arbitre regle par regle : trois generations de
+blocs se disputaient les memes elements, et l'issue dependait de subtilites de
+specificite de `:has()` et `:is()` non maitrisables a cette echelle.
+
+Restaient aussi, mesures : les voiles `rgba(8,13,22,.45)` des sections d'amont,
+les degrades de panneaux (`.cmpw` a 86 % de blanc, `.cw-panel`), le degrade de
+`#cta-band`, et en theme clair un voile creme a .82/.90 qui rendait la photo
+presque invisible.
+
+### Le correctif : un bloc final qui tranche
+
+`verre_final.css`, fichier ecrit tel quel, valide structurellement, injecte **en
+dernier** dans le head des 195 pages, arme a six identifiants — au-dessus de tout
+ce qui precede :
+
+1. toute section et tout panneau large (`main section`, `body>section`, `.cmpw`,
+   `.pj-banner`, `.docn`, `.it-grid`, `.epw-g`, `.biz-grid`) deviennent
+   transparents, fond et ombre ;
+2. `#cta-band` garde une presence mais en verre : degrade leger + flou 10 px,
+   variante claire pour les themes clairs ;
+3. le voile du theme clair descend de .82/.90 a **.66/.78** : la photo traverse
+   desormais aussi en clair ;
+4. `prefers-contrast:more` restitue des panneaux opaques dans les deux themes.
+
+La barre de navigation et le pied de page gardent leur fond : ils portent la
+lisibilite de la navigation, pas le decor.
+
+### Verification
+
+Inventaire des bandes apres correctif (societe, amont, deux themes) : il ne
+reste que la barre de navigation, le pied de page, et le `#cta-band` en verre
+voulu. Tous les halos et voiles de section ont disparu.
+
+Contraste au pixel peint, 8 pages, deux themes, texte du corps :
+
+| Theme | Textes | Echecs AA | Pire |
+|---|---|---|---|
+| Clair (voile allege a .66/.78) | 136 | **0** | 6,04:1 |
+| Sombre | 136 | **0** | 6,39:1 |
+
+L'allegement du voile clair ne coute donc rien en lisibilite : le pire contraste
+reste au double du seuil.
