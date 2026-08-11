@@ -4831,3 +4831,84 @@ identifiants, perdait contre la nouvelle regle armee de quatre. La sonde a ete
 portee a six identifiants de specificite. Rappel de la regle : **toute sonde de
 contraste doit etre plus specifique que la regle la plus armee de la page**,
 sinon elle mesure la couleur du texte au lieu de celle du fond.
+
+## §142 — Verre immersif sans bandes, sur toutes les pages
+
+### L'inspection de coherence qui a declenche le chantier
+
+Apres le chapitre 141, inspection de coherence demandee. Elle a d'abord corrige
+une erreur de recensement que j'avais commise : le test `grep 'rootland'`
+utilisait la simple presence du mot, qui apparait aussi dans des commentaires CSS.
+En testant la balise reelle (`<div class="rootland">`), le compte tombe de 175 a
+**78 pages sur 196**. Le bloc d'immersion avait donc ete injecte sur 175 pages
+mais n'etait actif que sur 78, le garde `:has(.rootland)` le rendant inerte
+ailleurs — sans dommage, mais avec pour effet deux langages de tuiles cohabitant.
+
+Consequences mesurees :
+
+| Constat | Chiffre |
+|---|---|
+| Pages avec decor photographique | 78 sur 196 |
+| Pages sans, dont l'accueil FR et EN et les huit repertoires de poles | 118 |
+| **Paires FR/EN divergentes** | **9** : carrieres, communiques, innovation, contact, communautes, ethique, cibles-2030, gouvernance, projets |
+
+Dans les neuf paires, la page francaise portait la photo et l'anglaise non :
+changer de langue changeait le design.
+
+### Ce qui a ete fait
+
+Le decor a ete etendu a toutes les pages, et les bandes supprimees partout.
+
+**Choix de l'image, par regle et non a la main** : pour les neuf paires, l'image
+de la jumelle, ce qui garantit la parite FR/EN ; sinon l'image de heros de la page
+elle-meme, relevee dans le DOM — c'etait deja la regle de fait, verifiee sur 72
+des 78 pages existantes ; a defaut, `sable-texture.webp` pour les 22 pages
+juridiques et utilitaires sans heros. Repartition finale : 86 pages sur leur
+propre heros, 9 sur celle de leur jumelle, 22 en image neutre.
+
+**Suppression des bandes** : l'ancien bloc `rootland-css` posait
+`background:rgba(8,13,22,.38)` et `border-radius:22px` sur `main>section` — ce
+sont les panneaux arrondis visibles sur les captures. Le nouveau bloc
+`immersion-v2` les rend transparents et sans rayon. Seules les tuiles font
+desormais verre ; la photo court d'un bord a l'autre.
+
+**Compensation mesuree** : sans panneaux, le texte courant repose sur la photo.
+Le voile global de `.rootland::after` est passe de `.54/.66` a **`.68/.78`**, et
+`--muted` de `#A8B6C9` a `#C3D0E0`. Ces valeurs ne sont pas choisies au jugement :
+elles sont le resultat de la mesure ci-dessous. Un repli
+`@media(prefers-contrast:more)` restitue les panneaux opaques pour qui demande
+plus de contraste.
+
+### Verification
+
+Contraste au pixel peint, 20 pages, theme sombre, element amene au centre du
+viewport avant capture :
+
+| | Textes mesures | Echecs AA | Pire |
+|---|---|---|---|
+| Apres correctif | 353 | **2** puis **1** apres renfort du voile | 4,21:1 |
+
+Comparaison stricte avant/apres sur la page la plus exposee,
+`petrochimie/complexe.html`, meme sonde :
+
+| | Echecs AA | Pire |
+|---|---|---|
+| Version publiee | **6** | 3,60:1 |
+| Apres immersion | **1** | 4,21:1 |
+
+Le seul echec restant est le chapeau dore `#F0CE82` du heros, mesure a 4,21:1
+**avant comme apres** : il appartient au traitement du heros, que l'immersion ne
+touche pas. Il est laisse en l'etat et signale ici comme chantier distinct.
+
+### Deux defauts de sonde corriges en cours de route
+
+**Notation `color(srgb r g b)`.** Les composantes y vont de 0 a 1. La sonde les
+lisait comme des valeurs sur 0-255, si bien qu'un dore clair
+`color(srgb .93 .82 .54)` etait pris pour un quasi-noir et sortait a 1,11:1 sur
+l'accueil. Quatre faux echecs. La sonde detecte desormais la notation et remet
+les composantes a l'echelle.
+
+**Specificite de la neutralisation.** Deja signale au chapitre 141 : la feuille
+qui rend le texte transparent doit etre plus specifique que la regle la plus armee
+de la page, faute de quoi elle mesure la couleur du texte. Portee a six
+identifiants.
