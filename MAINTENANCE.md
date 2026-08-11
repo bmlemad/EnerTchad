@@ -4912,3 +4912,39 @@ les composantes a l'echelle.
 qui rend le texte transparent doit etre plus specifique que la regle la plus armee
 de la page, faute de quoi elle mesure la couleur du texte. Portee a six
 identifiants.
+
+### §142 bis — QA des tuiles sans bandeaux : le theme clair etait devenu gris
+
+Controle qualite apres le deploiement du chapitre 142. Le theme sombre etait
+conforme, mais **le theme clair — qui est le theme par defaut — ne l'etait pas** :
+`.rootland` et son voile n'avaient aucun garde de theme, si bien qu'une
+photographie sombre recouverte d'un voile sombre a `.68/.78` s'affichait sous une
+page dont le texte est fonce. Resultat : la page creme devenait un champ gris
+uniforme, la photo invisible.
+
+Precision utile : ce n'etait **pas** un defaut d'accessibilite. Mesure du
+contraste en theme clair avant correctif : 113 textes, **0 echec AA**, pire
+6,04:1. Le texte restait lisible ; c'est l'identite visuelle qui etait perdue.
+
+Correctif : un voile propre au theme clair,
+`rgba(250,247,241,.82) -> .90`, applique sur `html.et-plight` et `html.et-jlight`.
+La photo redevient une teinte tres legere sous un fond creme.
+
+| Verification apres correctif | Textes | Echecs AA | Pire |
+|---|---|---|---|
+| Theme clair, 6 pages | 113 | **0** | 6,01:1 |
+| Theme sombre, 8 pages | 140 | **0** | 5,11:1 |
+
+Pixels de fond releves en theme clair apres correctif : 244,243,236 ·
+254,253,251 · 240,231,228 · 224,220,214 — la page est bien creme.
+
+**Piege de mesure a retenir.** La premiere capture apres correctif montrait
+encore le champ gris alors que le style calcule affichait deja la nouvelle
+valeur : le fichier image n'avait pas ete reecrit. Ne jamais conclure d'une
+capture sans verifier qu'elle date bien de l'etat mesure — ici le releve du pixel
+peint a tranche.
+
+**Rappel d'hygiene.** Un redemarrage de conteneur avait entre-temps restaure une
+copie de travail anterieure : 214 fichiers divergents, `immersion-v2` absent, et
+la premiere passe de QA mesurait donc un site qui n'etait pas celui en ligne.
+Restauration depuis `FETCH_HEAD` avant toute conclusion.
