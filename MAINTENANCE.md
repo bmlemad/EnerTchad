@@ -4762,3 +4762,72 @@ dans `/tmp/lab`. Rien n'a ete modifie dans `assets/chrome/*`.
 Note de methode : la variance de l'environnement reste elevee. Les ecarts
 retenus ici (1 300 a 5 700 ms entre variantes) sont larges et reproduits sur cinq
 passes ; les differences inferieures a la seconde n'ont pas ete considerees.
+
+## §141 — Immersion : supprimer les bandes, rendre les tuiles au fond photographique
+
+### La demande et ce que la mesure a confirme
+
+« Eliminer les bandes de fond et laisser les tuiles adherer a l'image de fond pour
+une immersion. » Verification sur `projets.html`, section « Comment nous
+conduisons un chantier » :
+
+```
+SECTION.epw  background-image = radial-gradient(78% 54% at 8% -4%, rgba(222,172,58,.157)) ...
+.epw-c       background-image = linear-gradient(rgba(255,255,255,.88) -> rgba(252,249,243,.30))
+```
+
+Ce sont exactement les deux regles posees au chapitre 136. Elles avaient ete
+justifiees par une mesure — fond derriere les tuiles a ecart-type 0,00, donc verre
+inutile — mais cette mesure avait ete faite sur des pages ou la photo ne
+remontait pas. Or **175 des 199 pages portent un `DIV.rootland` en
+`position:fixed`, `z-index:-2`, qui affiche une photographie plein ecran**. Sur
+celles-la les halos de section peignent des bandes par-dessus la photo, et le
+remplissage des tuiles en fait des panneaux poses dessus. Le chapitre 136 avait
+raison sur les pages plates et tort sur les pages photographiques.
+
+### Le correctif
+
+Un bloc `<style id="tuiles-immersion">` sur les 175 pages concernees :
+
+1. plus aucun halo de section : `background-image:none` sur les sections
+   porteuses de tuiles ;
+2. la tuile devient du verre : teinte a 56/40 % en clair, 66/54 % en sombre,
+   `backdrop-filter: blur(18px) saturate(1.35)`, filet fin, ombre d'ancrage ;
+3. repli sans flou via `@supports not (backdrop-filter)` : la teinte remonte a
+   90/84 % pour que la tuile reste lisible ;
+4. texte secondaire des tuiles eclairci en theme sombre — voir ci-dessous.
+
+**Piege de selecteur a ne pas rejouer.** La premiere version ecrivait
+`:root:has(.rootland) html:not(.et-plight) ...`. `html` ne peut pas etre
+descendant de `:root` : ce sont le meme element. Le selecteur ne correspondait
+jamais et la variante sombre n'etait tout simplement pas appliquee. Le garde de
+theme et le `:has(.rootland)` doivent porter sur le meme element :
+`html:not(.et-plight):not(.et-jlight):has(.rootland)`.
+
+### Un defaut prealable mis au jour
+
+En mesurant le contraste avant modification, le texte secondaire des tuiles
+ressortait a **3,84:1 en theme sombre, soit cinq echecs AA deja presents** :
+gris `rgb(124,138,162)` sur fond de tuile. Rendre la tuile transparente aurait
+aggrave ce defaut. Le texte secondaire des tuiles passe donc a `#D9E2EE` sur les
+pages a fond photographique.
+
+### Verification
+
+Contraste mesure au pixel peint, huit pages, deux themes, element amene au centre
+du viewport avant capture :
+
+| | Textes mesures | Echecs AA | Pire contraste |
+|---|---|---|---|
+| Avant | 102 | **5** | 3,84:1 |
+| Apres | 102 | **0** | **9,66:1** |
+
+L'immersion ne coute donc rien en lisibilite : elle repare au passage cinq
+non-conformites anterieures.
+
+**Sonde renforcee.** La premiere mesure apres correctif renvoyait 1,00:1 avec
+texte et fond identiques : la feuille de neutralisation du texte, armee de trois
+identifiants, perdait contre la nouvelle regle armee de quatre. La sonde a ete
+portee a six identifiants de specificite. Rappel de la regle : **toute sonde de
+contraste doit etre plus specifique que la regle la plus armee de la page**,
+sinon elle mesure la couleur du texte au lieu de celle du fond.
