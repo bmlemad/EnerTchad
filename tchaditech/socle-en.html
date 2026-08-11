@@ -312,6 +312,59 @@ html:not(.et-plight):not(.et-jlight):has(.rootland) :is(.acq-card,.atc-map,.atc-
     padding:4px 10px!important;
   }
 }
+</style><style id="verre-final">/* Verre immersif final (chapitre 144). Le diagnostic du chapitre est dans
+   MAINTENANCE : la regle d'immersion du chapitre 141 correspondait bien aux
+   sections mais perdait la cascade contre les halos du chapitre 136. Ce bloc,
+   place en dernier dans le head et arme a six identifiants, tranche : plus
+   aucune bande large entre la photo et les tuiles. La barre de navigation et
+   le pied de page gardent leur fond — ils portent la lisibilite de la
+   navigation, pas le decor. */
+
+/* 1. Toute section et tout panneau large deviennent transparents. */
+html:has(.rootland) main section:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
+html:has(.rootland) body > section:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
+html:has(.rootland) main > div > section:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
+html:has(.rootland) .cmpw:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
+html:has(.rootland) .pj-banner:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
+html:has(.rootland) .docn:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
+html:has(.rootland) .it-grid:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
+html:has(.rootland) .epw-g:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
+html:has(.rootland) .biz-grid:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______){
+  background-color:transparent!important;
+  background-image:none!important;
+  box-shadow:none!important;
+}
+
+/* 2. Le bandeau d'appel a l'action garde une presence, mais en verre. */
+html:has(.rootland) #cta-band:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______){
+  background-color:transparent!important;
+  background-image:linear-gradient(180deg,rgba(8,13,22,.30) 0%,rgba(8,13,22,.44) 100%)!important;
+  -webkit-backdrop-filter:blur(10px);
+  backdrop-filter:blur(10px);
+}
+html.et-plight:has(.rootland) #cta-band:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
+html.et-jlight:has(.rootland) #cta-band:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______){
+  background-image:linear-gradient(180deg,rgba(252,250,246,.42) 0%,rgba(252,250,246,.58) 100%)!important;
+}
+
+/* 3. Theme clair : le voile creme s'allege pour que la photo traverse.
+   Valeur fixee par mesure du contraste au pixel peint apres application. */
+html.et-plight .rootland::after,
+html.et-jlight .rootland::after{
+  background:linear-gradient(180deg,rgba(250,247,241,.66) 0%,rgba(250,247,241,.78) 100%)!important;
+}
+
+/* 4. En preference de contraste renforce, les panneaux reviennent opaques. */
+@media (prefers-contrast:more){
+  html:has(.rootland) main section:not(#_):not(#__):not(#___):not(#____),
+  html:has(.rootland) body > section:not(#_):not(#__):not(#___):not(#____){
+    background-color:rgba(8,13,22,.92)!important;
+  }
+  html.et-plight:has(.rootland) main section:not(#_):not(#__):not(#___):not(#____),
+  html.et-plight:has(.rootland) body > section:not(#_):not(#__):not(#___):not(#____){
+    background-color:rgba(250,247,241,.96)!important;
+  }
+}
 </style></head>
 <body id="top"><div class="rdprog" aria-hidden="true"></div>
 <a href="#main-content" class="skip-link">Skip to main content</a>
