@@ -5047,3 +5047,66 @@ Contraste au pixel peint, 8 pages, deux themes, texte du corps :
 
 L'allegement du voile clair ne coute donc rien en lisibilite : le pire contraste
 reste au double du seuil.
+
+## §145 — Fil d'Ariane : la pastille annoncee, et deux lecons de mesure
+
+### Re-mesure d'abord
+
+Le chantier annonce au chapitre 143 partait de 22 echecs a 1,04:1. Mais le
+chapitre 144 a change tous les fonds : re-mesure complete avant d'ecrire une
+ligne de CSS. Inventaire reel : 41 pages portent `<nav class="bcrumb">` (les
+180 occurrences de « bcrumb » au grep comptent aussi les feuilles de style qui
+ne l'utilisent pas — tester la balise, pas le mot). Releve au pixel peint,
+41 pages x 2 themes, 246 mesures :
+
+- **26 echecs**, concentres sur 5 pages : clients, clients-en, solutions,
+  solutions-en (blanc translucide .78 pose sur la photo du heros, 3,17:1 dans
+  les deux themes) et communiques-en (lien gris 90,102,120 a 3,27:1 — la page
+  francaise jumelle, elle, passait : divergence FR/EN de plus).
+- Les 22 echecs d'origine etaient donc largement resorbes par le decor du
+  chapitre 144 ; sans re-mesure, on aurait « corrige » un etat disparu.
+
+### La pastille
+
+`bcrumb.css`, fichier litteral valide (accolades + selecteurs), injecte en
+dernier dans le head des 41 pages sous `<style id="bcrumb-chip">` : meme
+vocabulaire que le chapeau du chapitre 143 — verre sombre en degrade .78/.66,
+filet dore, flou 6 px, liens en blanc .94, separateur en blanc .72, page
+courante et survol en dore `#F2D28C`, focus visible dore.
+
+### Premiere lecon : inline-flex ne se laisse pas pousser
+
+Version initiale en `display:inline-flex` avec le padding-top historique
+converti en marge : le fil est remonte de 35 px et a disparu sous la barre de
+navigation fixe (132 px) — les marges verticales d'une boite inline ne
+deplacent pas la ligne. Diagnostic par `elementFromPoint` sur les 41 pages.
+Correctif : `display:flex` + `width:fit-content`, et la marge haute fixee a
+**74 px**, valeur du padding-top d'origine relevee au calcul sur les 41 pages
+(la clamp() du CSS source est ecrasee ailleurs — relever la valeur calculee,
+pas la valeur ecrite). Verification : 41/41 pages, lien degage de la barre,
+pastille peinte, position a moins de 12 px de l'origine.
+
+### Deuxieme lecon : le neutralisateur doit depasser la page
+
+Le sweep de controle a d'abord rendu 169 « echecs au pire pixel » a ~1:1. Le
+pixel le plus clair sous « Brochure » etait… le texte dore lui-meme : les
+regles de la pastille (6 identifiants + classes) battaient le neutralisateur a
+6 identifiants, le texte restait peint pendant la capture. Le neutralisateur
+passe a **7 identifiants** — la regle du chapitre 142 se generalise : il doit
+toujours depasser d'un cran la regle la plus armee de la page, y compris celles
+qu'on vient soi-meme d'ajouter.
+
+### Verification finale
+
+Sweep complet apres correction, 246 mesures, 41 pages x 2 themes :
+
+| Critere | Echecs | Pire ratio |
+|---|---|---|
+| Ratio moyen sous la boite | **0** | 5,29:1 |
+| Pire pixel sous la boite | **0** | — |
+
+Controle visuel desktop clair/sombre et mobile 375 px sur clients, ethique
+(fil long « Ethique & conformite ») et communiques-en : pastille en place,
+aucune occlusion, pas de retour a la ligne parasite ; le fil et le chapeau
+forment deux pastilles empilees du meme vocabulaire. Le lien gris de
+communiques-en est rentre dans le rang par la meme regle.

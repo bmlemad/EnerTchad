@@ -449,7 +449,64 @@ html.et-jlight .rootland::after{
     background-color:rgba(250,247,241,.96)!important;
   }
 }
-</style></head>
+</style><style id="bcrumb-chip">/* Fil d'Ariane (chapitre 145). Re-mesure apres le verre immersif du chapitre
+   144 : les 22 echecs du releve initial sont retombes a 26 occurrences sur
+   5 pages — blanc translucide .78 pose sur la photo du heros (3,17:1 sur
+   clients, clients-en, solutions, solutions-en, deux themes) et un lien gris
+   90,102,120 a 3,27:1 sur communiques-en. Le fil recoit la meme pastille que
+   le chapeau du chapitre 143 : verre sombre, filet dore, texte clair, page
+   courante et survol dores. Le padding-top historique du fil devient une
+   marge pour que la pastille reste mince. Attention : pas d'inline-flex ici —
+   les marges verticales d'une boite inline ne deplacent pas la ligne, le fil
+   remontait de 35 px sous la barre fixe de 132 px. Flex bloc + fit-content. */
+.bcrumb:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______){
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:9px;
+  width:fit-content;
+  background:linear-gradient(90deg,rgba(8,13,22,.78) 0%,rgba(8,13,22,.66) 100%)!important;
+  padding:6px 14px!important;
+  margin:74px 0 16px!important; /* = padding-top d'origine releve sur les 41 pages */
+  border-radius:999px!important;
+  border:1px solid rgba(240,206,130,.26)!important;
+  -webkit-backdrop-filter:blur(6px);
+  backdrop-filter:blur(6px);
+}
+.bcrumb a:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______){
+  color:rgba(245,247,250,.94)!important;
+  -webkit-text-fill-color:rgba(245,247,250,.94)!important;
+  text-decoration:none;
+  text-shadow:none!important;
+}
+.bcrumb a:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):hover{
+  color:#F2D28C!important;
+  -webkit-text-fill-color:#F2D28C!important;
+}
+.bcrumb a:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):focus-visible{
+  outline:2px solid #F2D28C;
+  outline-offset:2px;
+  border-radius:4px;
+}
+.bcrumb span:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______){
+  color:rgba(245,247,250,.94)!important;
+  -webkit-text-fill-color:rgba(245,247,250,.94)!important;
+  text-shadow:none!important;
+}
+.bcrumb span.bcrumb-sep:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______){
+  color:rgba(245,247,250,.72)!important;
+  -webkit-text-fill-color:rgba(245,247,250,.72)!important;
+}
+.bcrumb span[aria-current="page"]:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______){
+  color:#F2D28C!important;
+  -webkit-text-fill-color:#F2D28C!important;
+}
+@media (max-width:640px){
+  .bcrumb:not(#_):not(#__):not(#___):not(#____){
+    padding:5px 11px!important;
+    gap:7px;
+  }
+}</style></head>
 <body id="top"><div class="rdprog" aria-hidden="true"></div>
 <a href="#main-content" class="skip-link">Skip to main content</a>
 <div id="preloader" aria-hidden="true">
