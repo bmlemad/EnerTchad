@@ -5255,3 +5255,29 @@ balayage de tout le site (etiquettes numerotees).
 axe-core, regles `region`, `landmark-unique`, `landmark-one-main`,
 `landmark-no-duplicate-banner`, 16 pages representatives (racine, journal,
 poles, configurateur, brochure FR/EN) : **0 violation**.
+
+## §149 — P1 : l'abonnement aux communiques existait a moitie
+
+### Correction de la revue d'abord
+
+La revue ultra affirmait « pas de flux RSS » : faux. `feed.xml` et
+`feed-en.xml` existaient (31 items de Carnets), declares sur l'accueil,
+carnets et communiques FR. Le releve exact : les flux, malgre leur titre
+« Carnets & communiques », ne contenaient **aucun communique** ; la page
+`communiques-en` ne declarait pas le flux ; et aucun point d'abonnement
+visible n'existait.
+
+### Correctifs
+
+1. Les 6 communiques (CP-2026-001 a 006) ajoutes aux deux flux avec guid
+   permalien, pubDate RFC-822 et description — 37 items par flux, XML valide
+   (ElementTree).
+2. Declaration `rel="alternate"` du flux sur communiques-en.
+3. Bloc « S'abonner » en tete des deux pages communiques : lien flux RSS +
+   courriel `presse@enertchad.td` pre-rempli. Region etiquetee, verre dore en
+   sombre ; le theme clair reprend ses couleurs d'encre — lisible dans les
+   deux (verifie en capture).
+
+L'abonnement courriel automatise (vraie liste de diffusion) reste un choix
+d'operateur a faire par la direction — un service externe demande un compte ;
+le lien courriel comble l'ecart fonctionnel en attendant.
