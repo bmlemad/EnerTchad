@@ -901,7 +901,7 @@ tl.addEventListener("keydown",function(e){var bs=[].slice.call(tl.children),i=bs
 if(e.key==="ArrowRight"||e.key==="ArrowLeft"){e.preventDefault();var n=(i+(e.key==="ArrowRight"?1:-1)+bs.length)%bs.length;bs[n].focus();bs[n].click()}});
 function open(id,scroll){secs.forEach(function(s){var on=s.id===id;s.classList.toggle("cw-open",on);
 var b=document.getElementById("cwt-"+s.id);b.setAttribute("aria-selected",on?"true":"false");b.tabIndex=on?0:-1});
-if(history.replaceState)history.replaceState(null,"","#"+id);
+if(scroll&&history.replaceState)history.replaceState(null,"","#"+id);/* 138 : ne pas ecrire le fragment au chargement initial. Sinon le navigateur execute son etape "aller au fragment" apres DOMContentLoaded et la page saute a 5 160 px en 1440 et 5 974 px en 390, au-dela du heros. */
 if(scroll){var y=bar.getBoundingClientRect().top+pageYOffset-(parseInt(getComputedStyle(document.documentElement).getPropertyValue("--nav-h"))||72)-6;window.scrollTo({top:y,behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"})}}
 document.body.classList.add("cw-on");
 var h=(location.hash||"").slice(1);

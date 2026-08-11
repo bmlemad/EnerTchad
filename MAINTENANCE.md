@@ -4502,3 +4502,103 @@ onglets, `clients-en.html` annoncait « Profile shown: Collectivités ». Le scr
 `État & B2G`, `Fournisseurs`) et un `aria-label` francais. Traduits :
 `Households`, `Industrial B2B`, `Fleets`, `E&P operators`, `Local authorities`,
 `State & public`, `Suppliers`, et `Client profiles` pour la barre.
+
+## §138 — La page Clients sautait 6 000 px au chargement
+
+### Le constat
+
+Revue de performance face aux standards des majors. Mesure des Core Web Vitals
+en 4G emulee avec bridage processeur x4. Une valeur sort de l'ordinaire :
+
+```
+clients.html  desktop  CLS = 0,315   scrollY apres chargement = 4 510 px
+clients.html  mobile   CLS = 0,884   scrollY apres chargement = 6 000 px
+```
+
+Le seuil Google est 0,10 pour un CLS « bon » et 0,25 au-dela duquel il est
+« mauvais ». 0,884 vaut **8,8 fois le seuil du bon** et 3,5 fois celui du mauvais.
+Mais le chiffre revelateur est le second : **la page se defilait toute seule de
+6 000 px au chargement**. Qui ouvrait `/clients` n'a jamais vu le heros, ni le
+selecteur de profil, ni le tableau comparatif : il atterrissait au milieu de la
+section Particuliers.
+
+### La cause, tracee pas a pas
+
+Instrumentation de `scrollTo`, `scrollIntoView`, `replaceState` et des evenements
+de defilement :
+
+```
+t= 173ms  y=    0  hash=-              replaceState "#particuliers"
+t= 252ms  y=    0  hash=#particuliers  DOMContentLoaded
+t= 259ms  y= 5974  hash=#particuliers  evenement scroll
+t= 264ms  y= 5974  hash=#particuliers  load
+```
+
+Le script `cw-tabs` ecrit le fragment dans l'URL des l'initialisation, via
+`history.replaceState(null,"","#"+id)` appele depuis `open(IDS[0], false)`. Le
+document porte alors un fragment, et le navigateur execute son etape « aller au
+fragment » juste apres DOMContentLoaded. Le saut de 6 000 px suit. Le CLS de
+0,884 n'en est que la consequence : la page reflue alors qu'elle est deja
+positionnee tres bas, si bien que la quasi-totalite du viewport bouge.
+
+### Le correctif
+
+Une condition, dans le script existant de la page :
+
+```js
+if(scroll&&history.replaceState)history.replaceState(null,"","#"+id);
+```
+
+Le fragment n'est plus ecrit qu'a l'occasion d'un changement demande par
+l'utilisateur (`scroll=true`). Au chargement initial l'URL reste propre, donc le
+navigateur n'a nulle part ou aller.
+
+### Verification
+
+| | Avant | Apres |
+|---|---|---|
+| clients.html desktop | CLS 0,315 · defilement 4 510 px | **CLS 0,003 · 0 px** |
+| clients.html mobile | CLS 0,884 · defilement 6 000 px | **CLS 0,004 · 0 px** |
+| clients-en.html desktop | CLS 0,310 · defilement 4 246 px | **CLS 0,007 · 0 px** |
+| clients-en.html mobile | CLS 0,884 · defilement 5 723 px | **CLS 0,004 · 0 px** |
+
+Trois comportements a preserver, verifies un par un :
+
+- lien profond `/clients#flottes` : onglet Flottes actif, section ouverte,
+  defilement a 4 510 px — c'est le comportement voulu pour un lien profond ;
+- clic sur un onglet : le fragment est ecrit (`#operateurs`), la page defile,
+  le lien reste partageable ;
+- clic sur une carte de profil : fragment, panneau et etat de la carte corrects.
+
+axe : total inchange sur les quatre combinaisons page/viewport, aucune violation
+ajoutee. Navigation clavier depuis le tableau : inchangee.
+
+### Balayage du reste du site
+
+Les 199 pages ont ete chargees en 390 px et leur position de defilement relevee
+apres chargement. **Deux pages seulement se defilaient seules** : `clients.html`
+et `clients-en.html`. Les 197 autres restent a 0. Le defaut etait circonscrit,
+et il l'est desormais entierement.
+
+`solutions.html` et `solutions-en.html` embarquent le meme script `cw-tabs` mais
+ne presentent pas le defaut — mesure a 0 px de defilement — car leur garde
+`if(secs.length<3)return` court-circuite l'initialisation. Verifie avant d'y
+toucher, et rien n'y a ete touche.
+
+### Ce qui reste, chiffre, pour la comparaison aux majors
+
+LCP en 4G emulee avec bridage processeur x4, serveur local donc TTFB quasi nul :
+
+| Page | LCP mobile | Requetes bloquantes |
+|---|---|---|
+| index.html | 3 408 ms | 19 feuilles de style + 12 scripts |
+| societe.html | 3 532 ms | 10 + 9 |
+| clients.html | 3 020 ms | 8 + 9 |
+
+Le seuil « bon » de Google est 2 500 ms. Meme avec un temps de reponse serveur
+proche de zero, le front seul depasse le budget. La cause est connue et deja
+consignee : 31 aller-retours avant le premier rendu sur l'accueil. La
+consolidation exige de lever la protection sur `assets/chrome/*` — arbitrage qui
+appartient au proprietaire du site. Une etape intermediaire est possible sans y
+toucher : precharger les polices et l'image du heros, et sortir les feuilles non
+critiques du chemin de rendu depuis le HTML des pages.
