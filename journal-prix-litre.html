@@ -122,6 +122,43 @@ html:not(.et-plight):not(.et-jlight) :is(.acq-card,.atc-map,.atc-stat,.avk-card,
  border-color:rgba(255,255,255,.16)!important;
 }
 </style>
+<style id="tuiles-immersion">
+/* Immersion (chapitre 141). Sur les 175 pages portant le fond photographique
+   .rootland, les halos de section du chapitre 136 peignaient des bandes
+   par-dessus la photo et le remplissage des tuiles en faisait des panneaux
+   poses dessus. Ici les bandes disparaissent et la tuile redevient du verre :
+   la photo la traverse. Le garde de theme et le :has(.rootland) portent sur le
+   meme element html — les separer donne un selecteur qui ne correspond jamais. */
+
+/* 1. Plus aucune bande de fond sur les pages a fond photographique */
+html:has(.rootland) :is(section,.wrap>div):has(.card,.card-m,.pmore-card,.ttg-t,.epw-c,.tri-c,.divc,.kpi,.biz-card,.plc-card,.f2f,.glow-card,.jkey,.eth-c,.gov-c,.refc,.prof,.cp,.tri-kpi,.b111-c,.sc-card,.hxi-card,.hncard,.prc-card,.px-card,.ppt-card,.fam-card,.esg-card,.rh-card,.it-card,.pcard,.scard,.pub-c,.pubc):not(#_):not(#__):not(#___):not(#____){background-image:none!important}
+
+/* 2. La tuile adhere a l'image : teinte legere, vrai flou, filet fin */
+html:has(.rootland) :is(.acq-card,.atc-map,.atc-stat,.avk-card,.avnet-panel,.b111-c,.biz-card,.card,.card-m,.cdm-frame,.ce-card,.ckpi,.cmap-frame,.cp,.cp-note,.ct-cards,.dch-card,.divc,.duo-card,.epw-c,.esg-card,.esg-head,.eth-c,.f2f,.fam-card,.fid-card,.flip-b,.flip-f,.frm-c,.glm-c,.glow-card,.gov-c,.gtt-c,.hncard,.hxi-card,.innov-c,.isv-e,.isv-s,.it-card,.jkey,.kpi,.mad-card,.mfo-lever,.mrc-c,.ngs-t,.oeco-card,.orgc,.pcard,.pe-c,.plc-card,.pmore-card,.pof-col,.ppj-card,.ppl-tile,.ppt-card,.ppte-tile,.prc-card,.presse-card,.prof,.pub-c,.pubc,.px-card,.refc,.rh-card,.rhe-c,.rhl-c,.rhp-c,.sb-card,.sc-card,.scard,.secc,.sfam,.slac,.svc-head,.tri-c,.tri-kpi,.ttc-card,.ttg-t,.vb-card,.voie-card):not(#_):not(#__):not(#___):not(#____){
+ background-color:transparent!important;
+ background-image:linear-gradient(180deg,rgba(252,250,246,.56) 0%,rgba(252,250,246,.40) 100%)!important;
+ border-color:rgba(26,35,48,.12)!important;
+ box-shadow:0 1px 0 rgba(255,255,255,.55) inset,0 20px 40px -30px rgba(30,24,10,.42)!important;
+ -webkit-backdrop-filter:blur(18px) saturate(1.35)!important;backdrop-filter:blur(18px) saturate(1.35)!important;
+}
+html:not(.et-plight):not(.et-jlight):has(.rootland) :is(.acq-card,.atc-map,.atc-stat,.avk-card,.avnet-panel,.b111-c,.biz-card,.card,.card-m,.cdm-frame,.ce-card,.ckpi,.cmap-frame,.cp,.cp-note,.ct-cards,.dch-card,.divc,.duo-card,.epw-c,.esg-card,.esg-head,.eth-c,.f2f,.fam-card,.fid-card,.flip-b,.flip-f,.frm-c,.glm-c,.glow-card,.gov-c,.gtt-c,.hncard,.hxi-card,.innov-c,.isv-e,.isv-s,.it-card,.jkey,.kpi,.mad-card,.mfo-lever,.mrc-c,.ngs-t,.oeco-card,.orgc,.pcard,.pe-c,.plc-card,.pmore-card,.pof-col,.ppj-card,.ppl-tile,.ppt-card,.ppte-tile,.prc-card,.presse-card,.prof,.pub-c,.pubc,.px-card,.refc,.rh-card,.rhe-c,.rhl-c,.rhp-c,.sb-card,.sc-card,.scard,.secc,.sfam,.slac,.svc-head,.tri-c,.tri-kpi,.ttc-card,.ttg-t,.vb-card,.voie-card):not(#_):not(#__):not(#___):not(#____){
+ background-image:linear-gradient(180deg,rgba(9,15,27,.66) 0%,rgba(9,15,27,.54) 100%)!important;
+ border-color:rgba(255,255,255,.15)!important;
+ box-shadow:0 1px 0 rgba(255,255,255,.08) inset,0 22px 46px -30px rgba(0,0,0,.6)!important;
+}
+
+/* 3. Le texte secondaire des tuiles etait deja sous le seuil AA en theme sombre
+   avant cette refonte : gris 124,138,162 mesure a 3,84:1. Sur fond
+   photographique il faut l'eclaircir, sinon l'immersion se paie en lisibilite. */
+html:not(.et-plight):not(.et-jlight):has(.rootland) :is(.acq-card,.atc-map,.atc-stat,.avk-card,.avnet-panel,.b111-c,.biz-card,.card,.card-m,.cdm-frame,.ce-card,.ckpi,.cmap-frame,.cp,.cp-note,.ct-cards,.dch-card,.divc,.duo-card,.epw-c,.esg-card,.esg-head,.eth-c,.f2f,.fam-card,.fid-card,.flip-b,.flip-f,.frm-c,.glm-c,.glow-card,.gov-c,.gtt-c,.hncard,.hxi-card,.innov-c,.isv-e,.isv-s,.it-card,.jkey,.kpi,.mad-card,.mfo-lever,.mrc-c,.ngs-t,.oeco-card,.orgc,.pcard,.pe-c,.plc-card,.pmore-card,.pof-col,.ppj-card,.ppl-tile,.ppt-card,.ppte-tile,.prc-card,.presse-card,.prof,.pub-c,.pubc,.px-card,.refc,.rh-card,.rhe-c,.rhl-c,.rhp-c,.sb-card,.sc-card,.scard,.secc,.sfam,.slac,.svc-head,.tri-c,.tri-kpi,.ttc-card,.ttg-t,.vb-card,.voie-card) :is(p,li,dd,span:not(.epw-no)):not(#_):not(#__):not(#___):not(#____){
+ color:#D9E2EE!important;-webkit-text-fill-color:#D9E2EE!important}
+
+/* 4. Repli sans flou : sans backdrop-filter la tuile doit rester lisible */
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+ html:has(.rootland) :is(.acq-card,.atc-map,.atc-stat,.avk-card,.avnet-panel,.b111-c,.biz-card,.card,.card-m,.cdm-frame,.ce-card,.ckpi,.cmap-frame,.cp,.cp-note,.ct-cards,.dch-card,.divc,.duo-card,.epw-c,.esg-card,.esg-head,.eth-c,.f2f,.fam-card,.fid-card,.flip-b,.flip-f,.frm-c,.glm-c,.glow-card,.gov-c,.gtt-c,.hncard,.hxi-card,.innov-c,.isv-e,.isv-s,.it-card,.jkey,.kpi,.mad-card,.mfo-lever,.mrc-c,.ngs-t,.oeco-card,.orgc,.pcard,.pe-c,.plc-card,.pmore-card,.pof-col,.ppj-card,.ppl-tile,.ppt-card,.ppte-tile,.prc-card,.presse-card,.prof,.pub-c,.pubc,.px-card,.refc,.rh-card,.rhe-c,.rhl-c,.rhp-c,.sb-card,.sc-card,.scard,.secc,.sfam,.slac,.svc-head,.tri-c,.tri-kpi,.ttc-card,.ttg-t,.vb-card,.voie-card):not(#_):not(#__):not(#___):not(#____){background-image:linear-gradient(180deg,rgba(252,250,246,.90) 0%,rgba(252,250,246,.84) 100%)!important}
+ html:not(.et-plight):not(.et-jlight):has(.rootland) :is(.acq-card,.atc-map,.atc-stat,.avk-card,.avnet-panel,.b111-c,.biz-card,.card,.card-m,.cdm-frame,.ce-card,.ckpi,.cmap-frame,.cp,.cp-note,.ct-cards,.dch-card,.divc,.duo-card,.epw-c,.esg-card,.esg-head,.eth-c,.f2f,.fam-card,.fid-card,.flip-b,.flip-f,.frm-c,.glm-c,.glow-card,.gov-c,.gtt-c,.hncard,.hxi-card,.innov-c,.isv-e,.isv-s,.it-card,.jkey,.kpi,.mad-card,.mfo-lever,.mrc-c,.ngs-t,.oeco-card,.orgc,.pcard,.pe-c,.plc-card,.pmore-card,.pof-col,.ppj-card,.ppl-tile,.ppt-card,.ppte-tile,.prc-card,.presse-card,.prof,.pub-c,.pubc,.px-card,.refc,.rh-card,.rhe-c,.rhl-c,.rhp-c,.sb-card,.sc-card,.scard,.secc,.sfam,.slac,.svc-head,.tri-c,.tri-kpi,.ttc-card,.ttg-t,.vb-card,.voie-card):not(#_):not(#__):not(#___):not(#____){background-image:linear-gradient(180deg,rgba(9,15,27,.92) 0%,rgba(9,15,27,.86) 100%)!important}
+}
+</style>
 </head>
 <body id="top"><a href="#main-content" class="skip-link">Aller au contenu principal</a>
 
