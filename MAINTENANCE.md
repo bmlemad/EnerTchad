@@ -4602,3 +4602,84 @@ consolidation exige de lever la protection sur `assets/chrome/*` — arbitrage q
 appartient au proprietaire du site. Une etape intermediaire est possible sans y
 toucher : precharger les polices et l'image du heros, et sortir les feuilles non
 critiques du chemin de rendu depuis le HTML des pages.
+
+## §139 — L'etape intermediaire de performance ne tient pas la mesure
+
+### Ce qui etait propose
+
+Le chapitre 138 concluait qu'un LCP mobile de 3 020 a 3 532 ms, contre un seuil
+« bon » de 2 500 ms, venait des 31 aller-retours precedant le premier rendu de
+l'accueil, et qu'une consolidation exigeait de lever la protection sur
+`assets/chrome/*`. Une etape intermediaire etait annoncee comme possible sans y
+toucher : precharger les polices et l'image du heros, et sortir du chemin de
+rendu ce qui n'y a rien a faire. Elle a ete construite, mesuree, et **elle ne
+tient pas**. Rien n'a ete publie.
+
+### 1. Precharger les polices degrade le LCP
+
+Constat de depart, en 4G emulee avec bridage processeur x4 : les six fichiers
+`woff2` ne sont demandes qu'entre 2 383 et 3 246 ms, parce qu'ils ne sont
+decouverts qu'apres le telechargement et l'analyse de la chaine de feuilles de
+style. Six balises `<link rel="preload" as="font" crossorigin>` placees en tete
+de `<head>` ramenent effectivement la demande a 180-184 ms. Et le LCP empire :
+
+| Page | LCP avant | LCP apres preload | Debut des polices |
+|---|---|---|---|
+| index.html | 3 384 ms | **5 864 ms** (+2 480) | 2 747 → 184 ms |
+| societe.html | 3 608 ms | **4 572 ms** (+964) | 2 383 → 180 ms |
+
+L'explication tient au fait mesure au chapitre precedent : **l'element LCP est
+une image de heros sur 166 des 199 pages**, jamais du texte. Sur un lien bride a
+1,6 Mb/s, 87 Ko de polices prechargees en priorite haute prennent la bande
+passante a l'image qui, elle, determine le LCP. Le prechargement deplace le
+probleme au lieu de le resoudre. Ecart trop large et trop constant pour etre du
+bruit : la piste est abandonnee.
+
+### 2. L'image du heros etait deja prechargee presque partout
+
+Recensement de l'element LCP des 199 pages : 166 ont une image, repartie sur une
+vingtaine de fichiers (`datacenter.webp` sur 19 pages, `raffinerie-nuit.webp` sur
+18, `pompe-petrole.webp` sur 14…). **163 de ces 166 pages preechargeaient deja
+leur image avec `fetchpriority="high"`.** Les trois restantes
+(`accessibilite-en`, `avertissements-en`, `plan-du-site-en`) ont un element LCP
+qui est un SVG en `data:` inline : le precharger n'a aucun sens, il n'y a pas de
+requete reseau a anticiper. Il n'y avait donc rien a gagner de ce cote.
+
+### 3. Differer le script d'effet de survol ne change rien de mesurable
+
+Deux scripts seulement bloquent l'analyseur : `u_cd226c00eb4b.js` (13,4 Ko), qui
+pose la classe de theme depuis `localStorage` et **doit rester bloquant** sous
+peine de flash de theme, et `u2_75a2c4383ddf.js` (10,7 Ko), un effet de survol au
+`pointermove` qui sort immediatement sur les appareils tactiles. Le second a ete
+passe en `defer` sur 90 pages, puis mesure sur sept passes :
+
+| | Avant | Apres |
+|---|---|---|
+| `domInteractive` median | 6 411 ms | 6 406 ms |
+| `DOMContentLoaded` median | 6 746 ms | **7 465 ms** |
+
+Aucun gain sur `domInteractive`, et un `DOMContentLoaded` plus tardif — ce qui
+est logique : un script differe s'execute precisement dans cette fenetre, il
+deplace le travail au lieu de le supprimer. Annule sur les 90 pages.
+
+### Etat apres l'episode
+
+Copie de travail ramenee a **0 fichier divergent** de la version publiee. Aucune
+publication.
+
+### Ce que la mesure dit vraiment
+
+Le budget est consomme par la chaine elle-meme, pas par son ordonnancement :
+19 feuilles de style pour environ 355 Ko non compresses sur l'accueil, dont
+quatre fichiers pesent 292 Ko a eux seuls (`bundle_head_b2.css` 105,9 Ko,
+`x_cd256286824c.css` 65,6 Ko, `plight_extrait.css` 62,2 Ko,
+`x_77d650c4a7a2.css` 58,5 Ko). Tant que ces 355 Ko restent bloquants et repartis
+en 19 requetes, aucun rearrangement depuis le HTML des pages ne ramenera le LCP
+sous 2 500 ms. **La seule voie mesurable passe par la consolidation de
+`assets/chrome/*`, donc par la levee de la protection.** L'arbitrage appartient
+au proprietaire du site.
+
+Note de methode : la variance de l'environnement de mesure est elevee — sur la
+meme page et la meme version, le LCP a varie de 3 608 a 5 872 ms entre deux
+series. Seuls des ecarts larges et repetes ont ete retenus comme concluants ;
+les effets inferieurs a la seconde n'ont pas ete considerees comme demontres.
