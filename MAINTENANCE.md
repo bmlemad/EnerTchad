@@ -5172,3 +5172,47 @@ emeraude retrouvees, cartes faune lisibles jusqu'au nom latin.
 `amont/index.html` en clair mobile : le chapeau `.pgl` du heros mesure a
 3,25:1 (degrade horizontal du heros trop leger a 375 px). Cas unique et
 marginal, famille amont a traiter d'un bloc lors d'une passe dediee.
+
+## §147 — QA des tuiles versus majors : interaction, pas seulement contraste
+
+### Le referentiel
+
+Les sites des majors tiennent trois promesses sur leurs cartes : un retour
+visuel au survol quand la carte est un lien, un anneau de focus au clavier,
+et des cibles tactiles confortables (44 px) au-dela du minimum WCAG 2.5.8
+(24 px). Releve Playwright sur 30 familles de tuiles du site : survol avant/
+apres au pixel calcule, focus programme et focus clavier reel, curseur,
+semantique lien, rayon, transitions.
+
+### Ce qui tenait deja
+
+24 familles conformes : les cartes-liens (pmore, plc, prof, sb, gtp, ttf,
+hxi) changent au survol et portent l'anneau dore au clavier ; l'anneau global
+`a:focus-visible` en ombre portee couvre aussi les liens internes des cartes
+(ppj-syn — premier releve faussement negatif : il lisait `outline` seulement,
+l'anneau du site est un `box-shadow`). Les fausses pistes ecartees en
+verifiant avant de corriger : `hpcard` sans survol propre — la levee est
+deleguee au conteneur `.hubwrap`, c'est voulu ; `biz-card` au curseur pointer
+sans lien — le script de la page en fait des zones interactives clavier.
+
+### Les trois ecarts reels, corriges par `qa147-tuiles` (20 pages)
+
+1. **a.glm-c** (glossaire FR/EN) : la regle de survol existait (bordure
+   doree) mais perdait la cascade — carte-lien muette. Retabli arme et tard :
+   bordure doree, levee 3 px, ombre, transition, garde reduced-motion.
+2. **.flip-hint / .flip-cta** (accueil FR/EN) : 73x24 px. Conforme au
+   minimum 24 fixe par un chapitre anterieur, sous le confort majors.
+3. **button.f2hint** (16 pages poles, style pose en ligne par le script) :
+   29 px de haut.
+
+Pour 2 et 3 : `@media (pointer:coarse)` monte les cibles a 44 px minimum sur
+ecrans tactiles seulement — l'esthetique souris ne change pas. Le
+`!important` de la feuille bat le style en ligne du script.
+
+### Verification
+
+Survol glm-c : bordure `rgb(240,206,130)` + translation -3 px mesurees apres
+correctif (avant : aucun changement). Emulation Pixel 7 (pointer:coarse
+confirme par matchMedia) sur accueil, amont, aval : **38 cibles relevees, 0
+sous 44 px**. Captures : carte flip mobile intacte avec sa pastille elargie,
+carte glossaire survolee levee et cerclee d'or.

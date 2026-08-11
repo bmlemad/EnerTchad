@@ -858,7 +858,47 @@ html.et-jlight .rootland::after{
     background-color:rgba(250,247,241,.96)!important;
   }
 }
-</style></head>
+</style><style id="qa147-tuiles">/* QA des tuiles versus majors (chapitre 147).
+   Releve interaction sur 30 familles de tuiles : survol, focus clavier,
+   curseur, semantique lien, rayon, transition. Trois ecarts mesures :
+   1. a.glm-c (glossaire) : la regle de survol existe (bordure doree) mais
+      perd la cascade — aucun retour visuel au survol d'une carte-lien.
+   2. .flip-hint / .flip-cta (accueil) : 73x24 px — conforme au minimum WCAG
+      2.5.8 (24) mais sous la barre de confort tactile 44 des majors.
+   3. button.f2hint (cartes defi/reponse des 16 pages poles) : 29 px de haut,
+      style pose en ligne par le script — meme ecart de confort tactile.
+   Le confort 44 px ne s'applique qu'aux pointeurs grossiers : l'esthetique
+   souris reste inchangee. */
+a.glm-c:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______){
+  transition:border-color .2s,transform .25s var(--ease,ease),box-shadow .25s!important;
+}
+a.glm-c:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):hover{
+  border-color:var(--gold-l,#E8C36A)!important;
+  transform:translateY(-3px);
+  box-shadow:0 14px 30px -16px rgba(0,0,0,.5);
+}
+a.glm-c:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):focus-visible{
+  border-color:var(--gold-l,#E8C36A)!important;
+}
+@media (pointer:coarse){
+  .flip-hint:not(#_):not(#__):not(#___):not(#____),
+  .flip-cta:not(#_):not(#__):not(#___):not(#____){
+    min-height:44px!important;
+    min-width:44px!important;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+  }
+  button.f2hint:not(#_):not(#__):not(#___):not(#____){
+    min-height:44px!important;
+    padding:10px 16px!important;
+  }
+}
+@media (prefers-reduced-motion:reduce){
+  a.glm-c:not(#_):not(#__):not(#___):hover{
+    transform:none;
+  }
+}</style></head>
 <body><div class="diapo" aria-hidden="true"><i style="background-image:url(&quot;/assets/img/pompe-petrole.webp&quot;)"></i></div><div class="rdprog" aria-hidden="true"></div>
 <a href="#main-content" class="skip-link">Skip to main content</a>
 <div id="preloader" aria-hidden="true">
