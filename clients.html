@@ -1175,4 +1175,190 @@ function tg(){var o=col.classList.toggle("open");h.setAttribute("aria-expanded",
 h.addEventListener("click",tg);
 h.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();tg();}});
 })(cols[i]);
-}catch(e){}})();</script></body></html>
+}catch(e){}})();</script><style id="cl-ux">
+/* ============================================================================
+   Page Clients — confort d'usage (chapitre 137).
+   La page dispose deja d'un systeme d'onglets #cw-tabs, collant et accessible.
+   On ne le remplace pas : on repare ce que la mesure a montre defaillant.
+     - mobile : la reglette d'onglets faisait 925 px de contenu pour 294 px
+       visibles, sans barre de defilement (scrollbar-width:none). Cinq profils
+       sur sept etaient hors champ, sans aucun indice de leur existence.
+     - les sept cartes .prof pilotent les onglets mais n'ont jamais montre
+       lequel etait actif (0 attribut aria-pressed mesure).
+     - le tableau comparatif fait 1 298 px et ignorait l'onglet courant.
+     - le sommaire faisait 1 051 px, soit plus d'un ecran, avant tout contenu.
+   ========================================================================== */
+
+/* -- 1. Reglette d'onglets : tout doit etre atteignable sans defilement cache */
+@media (max-width:900px){
+  #cw-tabs:not(#_){padding:10px 14px}
+  #cw-tabs .cwt:not(#_){flex-wrap:wrap;overflow-x:visible;justify-content:center;
+    border-radius:20px;gap:6px;padding:9px}
+  #cw-tabs [role=tab]:not(#_){padding:9px 13px;font-size:.74rem;min-height:36px}
+}
+/* au-dela, on garde la reglette horizontale mais on signale le debordement */
+#cw-tabs .cwt{scroll-behavior:smooth}
+#cw-tabs{position:sticky}
+
+/* -- 2. Cartes de profil : etat actif lisible.
+   aria-pressed a ete essaye puis retire : axe le classe critique sur un <a>
+   (aria-allowed-attr, 7 noeuds). aria-current est autorise sur un lien et dit
+   exactement la bonne chose : element courant dans un ensemble. */
+.prof{position:relative;transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease,opacity .18s ease}
+.prof:focus-visible{outline:2px solid var(--gold-l,#E8C36A);outline-offset:3px}
+.prof[aria-current="true"]:not(#_):not(#__):not(#___){
+  border-color:rgba(232,195,106,.55)!important;
+  box-shadow:0 0 0 1px rgba(232,195,106,.32),0 16px 34px -22px rgba(58,46,18,.42)!important}
+.prof .cl-now{position:absolute;left:16px;bottom:13px;display:none;align-items:center;gap:6px;
+  font-family:var(--fm,monospace);font-size:.56rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--gold-l,#E8C36A)}
+.prof .cl-now::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
+.prof[aria-current="true"] .cl-now{display:inline-flex}
+.prof[aria-current="true"] .go{opacity:0}
+.profiles:hover .prof:not([aria-current="true"]){opacity:.72}
+.profiles .prof:not([aria-current="true"]):hover,
+.profiles .prof:not([aria-current="true"]):focus-visible{opacity:1}
+
+/* -- 3. Tableau comparatif : relie a l'onglet, et cliquable ---------------- */
+#comparer tbody tr{transition:background-color .2s ease,opacity .2s ease}
+#comparer tbody tr[data-cl-row]{cursor:pointer}
+#comparer tbody tr[data-cl-row]:hover>*{background:rgba(232,195,106,.09)}
+#comparer tbody tr.cl-hit>*{background:rgba(232,195,106,.14)!important}
+#comparer tbody tr.cl-hit>*:first-child{box-shadow:inset 3px 0 0 var(--gold-l,#E8C36A)}
+#comparer tbody tr[data-cl-row]:focus-visible{outline:2px solid var(--gold-l,#E8C36A);outline-offset:-2px}
+#comparer .cl-hint{display:block;margin-top:10px;font-family:var(--fm,monospace);
+  font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;opacity:.6}
+
+/* -- 4. Sommaire : 1 051 px de tuiles ramenes a une reglette de pastilles --
+   Uniquement au-dela de 900 px : en mobile le sommaire mesure deja 264 px et
+   la conversion en pastilles le faisait passer a 761 px. Mesure, puis limite. */
+@media (min-width:901px){
+  section.ttg:not(#_):not(#__) .ttg-g{display:flex!important;flex-wrap:wrap;gap:8px;
+    grid-template-columns:none!important}
+  section.ttg:not(#_):not(#__) .ttg-t{
+    display:inline-flex!important;align-items:baseline;gap:9px;
+    width:auto!important;max-width:none!important;min-height:0!important;
+    padding:9px 15px!important;border-radius:999px!important}
+  section.ttg:not(#_):not(#__) .ttg-t b{font-size:.8rem;font-weight:600;line-height:1.3;
+    display:block;max-width:34ch;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  section.ttg:not(#_):not(#__) .ttg-t>span:not(.ttg-n),
+  section.ttg:not(#_):not(#__) .ttg-t>i{display:none!important}
+  section.ttg:not(#_):not(#__) .ttg-t .ttg-n{font-size:.58rem;opacity:.5;letter-spacing:.1em;flex:none}
+  section.ttg:not(#_):not(#__) .ttg-t:hover{border-color:rgba(232,195,106,.5)!important}
+}
+
+.clux-sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
+  clip:rect(0 0 0 0);white-space:nowrap;border:0}
+
+@media (prefers-reduced-motion:reduce){
+  .prof,#comparer tbody tr{transition:none!important}
+  #cw-tabs .cwt{scroll-behavior:auto}
+}
+/* Sans JavaScript : aucun etat a refleter, on n'attenue rien. */
+@media (scripting:none){
+  .profiles:hover .prof:not([aria-current="true"]){opacity:1}
+  #comparer tbody tr{opacity:1}
+}
+</style>
+<script id="cl-ux-js">
+(function(){
+ "use strict";
+ var IDS = ["particuliers","industriels","flottes","operateurs","collectivites","b2g","fournisseurs"];
+ var T = {"votre": "Votre profil", "choisir": "Afficher ce profil", "tab_aria": "Profils clients", "ligne": "Afficher le parcours de ce profil", "sr": "Profil affiché :", "sommaire": "Sommaire de la page"};
+
+ function pret(fn){
+   if (document.readyState === "complete") fn();
+   else addEventListener("load", fn, {once:true});
+ }
+
+ pret(function(){
+   var tabs = document.querySelectorAll('#cw-tabs [role=tab]');
+   if (!tabs.length) return;                    /* systeme d'onglets absent : on ne fait rien */
+
+   var boutonDe = {};
+   [].forEach.call(tabs, function(b){
+     var id = (b.getAttribute('aria-controls') || '').trim();
+     if (id) boutonDe[id] = b;
+   });
+
+   var cartes = [].slice.call(document.querySelectorAll('a.prof[href^="#"]'));
+   cartes.forEach(function(a){
+     var id = a.getAttribute('href').replace('#','');
+     if (IDS.indexOf(id) === -1) return;
+     a.setAttribute('aria-current','false');
+     a.setAttribute('title', T.choisir);
+     var n = document.createElement('span');
+     n.className = 'cl-now'; n.textContent = T.votre;
+     a.appendChild(n);
+   });
+
+   /* lignes du tableau comparatif : meme ordre que IDS */
+   var lignes = [].slice.call(document.querySelectorAll('#comparer tbody tr'));
+   if (!lignes.length){
+     lignes = [].slice.call(document.querySelectorAll('#comparer tr')).slice(1);
+   }
+   lignes.forEach(function(tr, i){
+     var id = IDS[i];
+     if (!id || !boutonDe[id]) return;
+     tr.setAttribute('data-cl-row', id);
+     tr.setAttribute('tabindex','0');
+     tr.setAttribute('role','button');
+     tr.setAttribute('aria-label', T.ligne);
+     function go(){ boutonDe[id].click(); }
+     tr.addEventListener('click', go);
+     tr.addEventListener('keydown', function(e){
+       if (e.key === 'Enter' || e.key === ' '){ e.preventDefault(); go(); }
+     });
+   });
+   if (lignes.length){
+     var tbl = document.getElementById('comparer');
+     if (tbl && !tbl.querySelector('.cl-hint')){
+       var h = document.createElement('span');
+       h.className = 'cl-hint'; h.textContent = T.ligne;
+       var w = tbl.querySelector('.wrap') || tbl;
+       w.appendChild(h);
+     }
+   }
+
+   var sr = document.createElement('p');
+   sr.className = 'clux-sr'; sr.setAttribute('role','status'); sr.setAttribute('aria-live','polite');
+   document.body.appendChild(sr);
+
+   var dernier = null;
+   function refleter(){
+     var actif = null;
+     for (var id in boutonDe){
+       if (boutonDe[id].getAttribute('aria-selected') === 'true'){ actif = id; break; }
+     }
+     cartes.forEach(function(a){
+       var id = a.getAttribute('href').replace('#','');
+       if (IDS.indexOf(id) === -1) return;
+       if (id === actif) a.setAttribute('aria-current','true'); else a.setAttribute('aria-current','false');
+     });
+     lignes.forEach(function(tr){
+       tr.classList.toggle('cl-hit', tr.getAttribute('data-cl-row') === actif);
+     });
+     if (actif && actif !== dernier){
+       dernier = actif;
+       var b = boutonDe[actif];
+       sr.textContent = T.sr + ' ' + (b.textContent || actif);
+       /* on amene l'onglet actif dans le champ de la reglette si elle deborde */
+       try{
+         var rail = b.parentElement;
+         if (rail && rail.scrollWidth > rail.clientWidth + 4){
+           var dx = b.offsetLeft - (rail.clientWidth - b.offsetWidth) / 2;
+           rail.scrollTo({left: Math.max(0, dx),
+             behavior: matchMedia('(prefers-reduced-motion:reduce)').matches ? 'auto' : 'smooth'});
+         }
+       }catch(e){}
+     }
+   }
+
+   var mo = new MutationObserver(refleter);
+   [].forEach.call(tabs, function(b){ mo.observe(b, {attributes:true, attributeFilter:['aria-selected']}); });
+   addEventListener('hashchange', refleter);
+   refleter();
+ });
+})();
+</script>
+</body></html>

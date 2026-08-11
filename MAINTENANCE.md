@@ -4409,3 +4409,96 @@ mien est a 88 %, l'ecart est nul. Exception retiree.
    de 1,03:1 sur du texte quasi noir pose sur une tuile quasi blanche — physiquement
    impossible. **Regle : pour mesurer un pixel sous un element, l'amener au centre du
    viewport, relire sa position, et capturer le viewport — jamais la page entiere.**
+
+## §137 — Page Clients : reparer le parcours existant plutot qu'en ajouter un second
+
+### La fausse route, d'abord
+
+Demande : refondre la page Clients en « ultra premium » avec l'experience
+utilisateur au centre. Constat de depart : 17 sections, 11 803 px en 1440 et
+15 586 px en 390. J'en ai conclu que tout le monde traversait le contenu de tout
+le monde, et j'ai construit un dispositif complet — barre de profil persistante,
+sections hors profil repliees, ligne du tableau mise en avant, etat dans l'URL.
+Il fonctionnait : zero erreur JavaScript, `?profil=ep` operant, sept sections
+repliees, annonce aux lecteurs d'ecran.
+
+Puis j'ai mesure les hauteurs reelles section par section :
+
+```
+#particuliers   class="cw-panel cw-open"   display:block   1 349 px
+#industriels    class="cw-panel"           display:none        0 px
+```
+
+**La page disposait deja d'un systeme d'onglets par profil.** Un script
+`#cw-tabs` construit une barre `role="tablist"` avec navigation aux fleches,
+`aria-selected`, synchronisation avec l'ancre de l'URL, et il deplace meme
+`#vitrine-boutique` dans `#particuliers`. Une seule section de profil est
+affichee a la fois. Ma prémisse etait fausse et ce que je venais d'ecrire etait
+un second accordeon qui se battait avec le premier. Bloc retire, les deux pages
+sont revenues octet pour octet a la version publiee avant toute publication.
+
+**Regle qui en decoule** : avant de conclure qu'une page manque d'un mecanisme,
+mesurer l'etat calcule de ses sections, pas seulement lire sa hauteur totale.
+Une hauteur de document elevee ne prouve pas que tout est affiche.
+
+### Ce que la mesure a reellement trouve
+
+| Defaut mesure | Valeur avant |
+|---|---|
+| Reglette d'onglets en 390 px : contenu contre visible | 925 px pour **294 px**, soit **2 onglets sur 7** atteignables, sans barre de defilement (`scrollbar-width:none`) |
+| Cartes `.prof` signalant le profil actif | **0** attribut d'etat sur 7 cartes |
+| Lignes du tableau comparatif reliees a l'onglet | **0** sur 7, pour un tableau de 1 298 px |
+| Sommaire avant tout contenu, en 1440 px | **1 051 px**, soit plus d'un ecran |
+
+La barre d'onglets, elle, adherait deja correctement : mesuree a 132 px du haut
+en desktop et 77 px en mobile apres defilement, donc rien a corriger de ce cote.
+
+### Le correctif
+
+Un bloc `<style id="cl-ux">` + `<script id="cl-ux-js">` qui **pilote** le systeme
+existant au lieu de le doubler. Le script lit `aria-selected` sur les onglets via
+un `MutationObserver` et se contente de refleter cet etat ailleurs.
+
+| Correctif | Apres |
+|---|---|
+| Reglette d'onglets sous 900 px : passage en `flex-wrap` | **7 onglets sur 7** visibles, `scrollWidth` 925 → 314 |
+| `aria-current` sur les cartes de profil + pastille « Votre profil » | 7 cartes, la carte active identifiee |
+| Lignes du tableau rendues cliquables et focalisables | 7 lignes, `role="button"`, Entree et Espace actifs |
+| Sommaire converti en reglette de pastilles au-dela de 900 px | **375 px** au lieu de 1 051 |
+
+Chaine verifiee de bout en bout : un clic sur la ligne « Operateur E&P » du
+tableau bascule l'onglet, ouvre `#operateurs`, marque la carte correspondante et
+surligne la ligne. Idem au clavier depuis la ligne « Flottes ».
+
+| Indicateur | Avant | Apres |
+|---|---|---|
+| Hauteur du document, 1440 px | 11 803 | **11 154** |
+| Hauteur du document, 390 px | 15 586 | 15 741 |
+| Violations axe (4 combinaisons page/viewport) | region x6, aria-allowed-role x4, landmark-unique x1 | **identique, aucune ajoutee** |
+| Contraste des 26 elements d'interface ajoutes | — | pire **11,36:1** en clair, **11,74:1** en sombre, 0 echec |
+| Rendu sans JavaScript | 20 sections, 7 cartes | **identique** |
+
+Les 155 px gagnes en mobile sur le document sont perdus volontairement : la
+reglette passe sur quatre rangees au lieu d'une. C'est le prix pour rendre cinq
+profils accessibles au lieu de les laisser hors champ.
+
+### Deux corrections trouvees en chemin
+
+**`aria-pressed` sur un lien est une erreur critique.** Ma premiere version
+posait `aria-pressed` sur les sept cartes `.prof`, qui sont des `<a href>`. axe
+l'a classe `aria-allowed-attr`, gravite critique, 7 noeuds : cet attribut n'est
+autorise que sur un role bouton. Remplace par `aria-current`, autorise sur un
+lien et semantiquement exact — element courant dans un ensemble. Verifie : la
+violation disparait, le total axe redevient identique a l'avant.
+
+**Collision de nom de classe.** J'avais nomme ma zone d'annonce `.cl-sr` ; la
+page utilise deja cette classe pour la description du tableau comparatif, si bien
+que mon test lisait le mauvais element. Renomme en `.clux-sr`.
+
+**Libelles francais sur la page anglaise.** En branchant l'annonce vocale sur les
+onglets, `clients-en.html` annoncait « Profile shown: Collectivités ». Le script
+`cw-tabs` de la page anglaise portait les sept libelles francais verbatim
+(`Particuliers`, `Industriels B2B`, `Flottes`, `Opérateurs E&P`, `Collectivités`,
+`État & B2G`, `Fournisseurs`) et un `aria-label` francais. Traduits :
+`Households`, `Industrial B2B`, `Fleets`, `E&P operators`, `Local authorities`,
+`State & public`, `Suppliers`, et `Client profiles` pour la barre.
