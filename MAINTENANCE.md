@@ -4305,3 +4305,107 @@ soit de remonter l'ouverture de `<main>` avant le héros — avec un vrai risque
 puisque le CSS documente explicitement que « ce HEADER.hero n'est PAS dans `<main>` : les
 règles en `main …` ne l'atteignent pas » — soit un repère étiqueté sur le héros. Chantier
 distinct, à instruire avant d'y toucher.
+
+## §136 — Les tuiles flottaient sur un fond mort : le verre ne revelait rien
+
+### Le constat, mesure
+
+Demande : « faire une meilleure integration des tuiles avec le background ». Avant de
+toucher quoi que ce soit, j'ai photographie ce qu'il y a **derriere** chaque tuile — tuile
+masquee par `visibility:hidden`, capture, ecart-type de la luminance dans le rectangle
+qu'elle occupait.
+
+| Page | Theme | Ecart-type du fond derriere la tuile | Amplitude |
+|---|---|---|---|
+| societe.html, 31 tuiles `.card` | clair | 0,48 | 2 |
+| societe.html, 6 tuiles `.kpi` | clair | 0,18 | 1 |
+| ethique.html, 25 tuiles `.eth-c` | clair | 2,74 | 19 |
+| index.html, 20 tuiles | **sombre** | **0,00** | **0** |
+| index.html, 20 tuiles | clair | 19 a 59 | 164 a 212 |
+
+Un ecart-type de 0,00 sur vingt tuiles : le fond derriere est rigoureusement uniforme. Le
+`backdrop-filter: blur(20px)` a `blur(30px)` floutait donc une surface plate et restituait
+exactement la meme couleur. **Le verre coutait une couche composee par tuile pour un
+resultat identique a un aplat teinte.** Seul l'accueil en theme clair avait un vrai fond,
+grace a l'image du heros et aux chiffres geants.
+
+### La cause : une ambiance hors cadre, pas une ambiance absente
+
+`html` porte bien un halo dore : `radial-gradient(58% 46% at 10% 4%, rgba(226,178,64,.52),
+transparent 70%)`. Mais sa geometrie est calee sur la boite de `html`, c'est-a-dire sur
+**toute la hauteur du document**. A `4%` d'un document de 9 664 px, le halo eclaire les 400
+premiers pixels et rien d'autre. Les 90 % restants de la page sont un aplat.
+
+`#aurora` n'existe que sur 92 pages et vit en `z-index:-1`. `body::before` (grain, opacite
+0,035) et `body::after` (poussiere, opacite 0,6) sont deja pris. Aucune couche disponible.
+
+### Le correctif
+
+Recensement prealable des tuiles sur les 199 pages : 207 classes distinctes, 4 787
+occurrences, reparties en 2 153 « verre », 2 282 « transparent » et 352 « opaque » en theme
+clair — trois traitements coexistant souvent sur la meme page. Selecteur retenu : 81 classes
+(toutes celles portant deja un `backdrop-filter`, plus celles nommees `*card*`, `*tile*`,
+`kpi`, `*-c`, `*-t`), soit 3 182 occurrences sur 181 pages. Les classes trop generiques
+(`.p`, `.c`, `.reveal`, `.st`…) et les familles generees `.bx*` / `.qx*` ont ete ecartees.
+
+Un bloc `<style id="tuiles-fond">` par page, 10,8 Ko, en trois temps :
+
+1. **Relief de fond** — les sections porteuses de tuiles recoivent trois halos radiaux tres
+   doux, calees sur la section et non sur le document. Le verre a enfin quelque chose a
+   reveler.
+2. **Surface de tuile** — un degrade vertical qui *se termine sur la couleur du fond* : le
+   bas de la tuile se fond dans la page, le haut capte la lumiere. Ombre reduite a un
+   ancrage court (`0 14px 28px -20px`) au lieu d'une ombre portee large. Flou ramene de
+   20-30 px a 7 px, puisqu'il a desormais un role reel et n'a plus besoin d'etre massif.
+3. **Exceptions mesurees** — voir ci-dessous.
+
+Selecteurs armes en `:is(…):not(#_):not(#__):not(#___):not(#____)` : `:is()` prend la
+specificite de son argument le plus fort, donc une seule armure suffit pour 81 classes.
+Sans cette astuce le bloc pesait 13,6 Ko ; avec, 10,8 Ko.
+
+### Verification
+
+| Indicateur | Avant | Apres |
+|---|---|---|
+| societe.html — ecart-type du fond derriere les tuiles | 0,45 | **1,57** |
+| index.html — idem | 0,03 | **3,96** |
+| ethique.html — idem | 3,05 | **4,27** |
+| societe.html sombre — idem | 0,32 | **1,43** |
+| Contraste du texte dans les tuiles (5 pages, 2 themes) | pire 8,20 | pire **6,58**, 0 echec AA |
+| Temps de defilement, 3 passes | 2 518 / 2 062 / 4 677 ms | 2 273 / 2 210 / 4 336 ms |
+
+Le temps de defilement est une mesure grossiere (horloge murale, trois passes) : elle
+etablit l'absence de regression, pas un gain chiffrable.
+
+### La regression evitee de justesse
+
+Balayage des 199 pages a la recherche de tuiles contenant du **texte clair en theme clair** :
+14 pages concernees. Sur `ar.html`, les tuiles `.kpi` du heros portent du texte blanc sur un
+bandeau sombre. Mon degre blanc a 88 % les aurait rendues illisibles. Meme cas pour
+`.fp-card` (brochure FR/EN, patrimoine, greentech/patrimoine), `.gtp-c` (greentech,
+pole-greentech-en) et `.ttf-card` (tchaditech, pole-tchaditech-en).
+
+Traitement : `.fp-card`, `.gtp-c` et `.ttf-card` sortis du selecteur ; les bandeaux `.kpis`,
+`.fp-sec`, `.fp-grid`, `.gtp`, `.gtp-g`, `.tt-flag`, `.ttf-grid` neutralises par une regle
+d'exception qui remet `background-image:none` et un filet clair. Verifie tuile par tuile
+apres correctif : les huit cas temoins sont conformes.
+
+`.secg .secc` (clients FR/EN) avait d'abord ete mis en exception a tort — sa couleur ambre
+avait franchi mon seuil de luminance. Sa tuile portait deja un degrade blanc a 86 % ; le
+mien est a 88 %, l'ecart est nul. Exception retiree.
+
+### Quatre erreurs de sonde dans la meme seance, toutes rattrapees
+
+1. **Descriptions « trop courtes »** — regex s'arretant a la premiere apostrophe dans un
+   attribut en guillemets doubles. Zero anomalie reelle.
+2. **Contraste « 1,22:1 » sur le heros de l'accueil** — axe remonte au premier fond opaque
+   quand il ne sait pas echantillonner une image ; mesure au pixel peint : 6,83 a 16,76:1.
+3. **Bandeau cookies** — au premier chargement il assombrit toute la page ; toute mesure de
+   contraste faite sans le retirer est fausse.
+4. **La plus couteuse : coordonnees d'un viewport de 1 000 px appliquees a une capture
+   pleine page de 18 000 px.** Chromium redimensionne reellement le viewport pour une
+   capture `fullPage`, donc les media queries et les hauteurs en `vh` reflowent : les
+   coordonnees relevees avant ne designent plus rien. C'est ce qui produisait des rapports
+   de 1,03:1 sur du texte quasi noir pose sur une tuile quasi blanche — physiquement
+   impossible. **Regle : pour mesurer un pixel sous un element, l'amener au centre du
+   viewport, relire sa position, et capturer le viewport — jamais la page entiere.**
