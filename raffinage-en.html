@@ -276,7 +276,42 @@ html:not(.et-plight):not(.et-jlight):has(.rootland) :is(.acq-card,.atc-map,.atc-
  html:not(.et-plight):not(.et-jlight):has(.rootland) :is(.acq-card,.atc-map,.atc-stat,.avk-card,.avnet-panel,.b111-c,.biz-card,.card,.card-m,.cdm-frame,.ce-card,.ckpi,.cmap-frame,.cp,.cp-note,.ct-cards,.dch-card,.divc,.duo-card,.epw-c,.esg-card,.esg-head,.eth-c,.f2f,.fam-card,.fid-card,.flip-b,.flip-f,.frm-c,.glm-c,.glow-card,.gov-c,.gtt-c,.hncard,.hxi-card,.innov-c,.isv-e,.isv-s,.it-card,.jkey,.kpi,.mad-card,.mfo-lever,.mrc-c,.ngs-t,.oeco-card,.orgc,.pcard,.pe-c,.plc-card,.pmore-card,.pof-col,.ppj-card,.ppl-tile,.ppt-card,.ppte-tile,.prc-card,.presse-card,.prof,.pub-c,.pubc,.px-card,.refc,.rh-card,.rhe-c,.rhl-c,.rhp-c,.sb-card,.sc-card,.scard,.secc,.sfam,.slac,.svc-head,.tri-c,.tri-kpi,.ttc-card,.ttg-t,.vb-card,.voie-card):not(#_):not(#__):not(#___):not(#____){background-image:linear-gradient(180deg,rgba(9,15,27,.92) 0%,rgba(9,15,27,.86) 100%)!important}
 }
 </style>
-<style id="immersion-v2">/* Immersion sans bandes (chapitre 142). Le decor photographique couvre la page ; les sections ne portent plus de panneau translucide, seules les tuiles font verre. Le voile global de .rootland::after est renforce a .68/.78 pour compenser la disparition des panneaux, valeur fixee par mesure du contraste au pixel peint. */.rootland{position:fixed;inset:0;z-index:-2;background:url("/assets/img/raffinerie-nuit.webp") center/cover no-repeat;pointer-events:none}.rootland::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,12,21,.68) 0%,rgba(7,12,21,.78) 100%)}html{background:#0d1524}body{background:transparent!important}main{background:transparent!important}/* plus aucun panneau de section : la photo court d'un bord a l'autre */html:not(.et-plight):not(.et-jlight) main>section,html:not(.et-plight):not(.et-jlight) body>section,html:not(.et-plight):not(.et-jlight) main>div>section{background:transparent!important;border-radius:0!important}html:not(.et-plight):not(.et-jlight) main,html:not(.et-plight):not(.et-jlight) footer{--muted:#C3D0E0}main h2,main h3,section h2,section h3{text-shadow:0 2px 18px rgba(0,0,0,.7)}html:not(.et-plight):not(.et-jlight) main>section>*>p,html:not(.et-plight):not(.et-jlight) main p.lead,html:not(.et-plight):not(.et-jlight) main .intro{text-shadow:0 1px 12px rgba(0,0,0,.55)}html:not(.et-plight):not(.et-jlight) footer{background:rgba(8,13,22,.72)!important;text-shadow:0 1px 10px rgba(0,0,0,.55)}footer a{text-shadow:none}/* pour qui demande plus de contraste, on rend les panneaux */@media(prefers-contrast:more){html:not(.et-plight):not(.et-jlight) main>section,html:not(.et-plight):not(.et-jlight) body>section,html:not(.et-plight):not(.et-jlight) main>div>section{background:rgba(8,13,22,.92)!important}}/* Theme clair : le voile doit etre clair, sinon la photo sombre transforme la page creme en champ gris. Contraste verifie : le texte sombre reste au-dessus de 6:1 sur les six pages temoins. */html.et-plight .rootland::after,html.et-jlight .rootland::after{background:linear-gradient(180deg,rgba(250,247,241,.82) 0%,rgba(250,247,241,.90) 100%)}</style></head>
+<style id="immersion-v2">/* Immersion sans bandes (chapitre 142). Le decor photographique couvre la page ; les sections ne portent plus de panneau translucide, seules les tuiles font verre. Le voile global de .rootland::after est renforce a .68/.78 pour compenser la disparition des panneaux, valeur fixee par mesure du contraste au pixel peint. */.rootland{position:fixed;inset:0;z-index:-2;background:url("/assets/img/raffinerie-nuit.webp") center/cover no-repeat;pointer-events:none}.rootland::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,12,21,.68) 0%,rgba(7,12,21,.78) 100%)}html{background:#0d1524}body{background:transparent!important}main{background:transparent!important}/* plus aucun panneau de section : la photo court d'un bord a l'autre */html:not(.et-plight):not(.et-jlight) main>section,html:not(.et-plight):not(.et-jlight) body>section,html:not(.et-plight):not(.et-jlight) main>div>section{background:transparent!important;border-radius:0!important}html:not(.et-plight):not(.et-jlight) main,html:not(.et-plight):not(.et-jlight) footer{--muted:#C3D0E0}main h2,main h3,section h2,section h3{text-shadow:0 2px 18px rgba(0,0,0,.7)}html:not(.et-plight):not(.et-jlight) main>section>*>p,html:not(.et-plight):not(.et-jlight) main p.lead,html:not(.et-plight):not(.et-jlight) main .intro{text-shadow:0 1px 12px rgba(0,0,0,.55)}html:not(.et-plight):not(.et-jlight) footer{background:rgba(8,13,22,.72)!important;text-shadow:0 1px 10px rgba(0,0,0,.55)}footer a{text-shadow:none}/* pour qui demande plus de contraste, on rend les panneaux */@media(prefers-contrast:more){html:not(.et-plight):not(.et-jlight) main>section,html:not(.et-plight):not(.et-jlight) body>section,html:not(.et-plight):not(.et-jlight) main>div>section{background:rgba(8,13,22,.92)!important}}/* Theme clair : le voile doit etre clair, sinon la photo sombre transforme la page creme en champ gris. Contraste verifie : le texte sombre reste au-dessus de 6:1 sur les six pages temoins. */html.et-plight .rootland::after,html.et-jlight .rootland::after{background:linear-gradient(180deg,rgba(250,247,241,.82) 0%,rgba(250,247,241,.90) 100%)}</style><style id="hero-kick">/* Chapeaux des heros (chapitre 143). Defaut anterieur a l'immersion, verifie
+   sur 99136d2 : dore #F0CE82 pose directement sur la photo du heros, mesure de
+   1,96 a 3,28:1 sur 9 pages dans les deux themes. Le chapeau recoit une pastille
+   au vocabulaire deja employe sur le site : fond sombre maitrise, filet dore,
+   flou leger. Le texte est force au dore clair car sur certaines pages il etait
+   sombre en theme clair, ce qui donnerait du sombre sur du sombre. */
+.hero .kick:not(#_):not(#__):not(#___):not(#____):not(#_____),
+.dsh .kick:not(#_):not(#__):not(#___):not(#____):not(#_____),
+.pghero .kick:not(#_):not(#__):not(#___):not(#____):not(#_____),
+.hx-hero .kick:not(#_):not(#__):not(#___):not(#____):not(#_____){
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  background:linear-gradient(90deg,rgba(8,13,22,.76) 0%,rgba(8,13,22,.64) 100%)!important;
+  padding:5px 13px!important;
+  border-radius:999px!important;
+  border:1px solid rgba(240,206,130,.26)!important;
+  -webkit-backdrop-filter:blur(6px);
+  backdrop-filter:blur(6px);
+  color:#F2D28C!important;
+  -webkit-text-fill-color:#F2D28C!important;
+}
+/* charte.html : le heros .dsh commence a y=0, le chapeau se trouvait a 72 px,
+   entierement masque par la barre fixe. On lui rend la hauteur de la barre. */
+.dsh:not(#_):not(#__):not(#___){
+  padding-top:calc(var(--nav-h,110px) + 26px)!important;
+}
+@media (max-width:640px){
+  .hero .kick:not(#_):not(#__),
+  .dsh .kick:not(#_):not(#__),
+  .pghero .kick:not(#_):not(#__),
+  .hx-hero .kick:not(#_):not(#__){
+    padding:4px 10px!important;
+  }
+}
+</style></head>
 <body class="nx-clear" id="top"><div class="diapo" aria-hidden="true"><i style="background-image:url(&quot;/assets/img/piste-desert.webp&quot;)"></i><i data-bg="/assets/img/raffinerie-nuit.webp"></i><i data-bg="/assets/img/pipeline.webp"></i><i data-bg="/assets/img/pompe-petrole.webp"></i><i data-bg="/assets/img/reservoirs.webp"></i><i data-bg="/assets/img/station-nuit.webp"></i><i data-bg="/assets/img/casques-chantier.webp"></i></div><script>addEventListener("load",function(){var els=[].slice.call(document.querySelectorAll(".diapo i[data-bg]"));els.forEach(function(el,i){var t=Math.max(0,(i+1)*6000-4500);setTimeout(function(){el.style.backgroundImage='url("'+el.getAttribute("data-bg")+'")'},t)})})</script><a href="#main-content" class="skip-link">Skip to main content</a><header><nav class="nav nx" id="nav" aria-label="Main navigation">
   <div class="nx-util"><div class="nx-util-in">
     <a href="/clients-en">Become a client</a>
