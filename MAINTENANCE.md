@@ -4948,3 +4948,49 @@ peint a tranche.
 copie de travail anterieure : 214 fichiers divergents, `immersion-v2` absent, et
 la premiere passe de QA mesurait donc un site qui n'etait pas celui en ligne.
 Restauration depuis `FETCH_HEAD` avant toute conclusion.
+
+## §143 — Chapeaux de heros : pastille lisible sur les neuf pages fautives
+
+### Le defaut
+
+Balayage des 199 pages au premier ecran, deux themes, contraste au pixel peint :
+39 echecs AA sur les elements de heros, en deux familles. Celle traitee ici :
+`.kick`, le chapeau dore `#F0CE82` pose directement sur la photo du heros —
+17 echecs sur 9 pages, de 1,96:1 (clients) a 3,28:1 (engagements), dans les deux
+themes. Verifie sur `99136d2`, la version anterieure a toute l'immersion :
+valeurs identiques. **Defaut preexistant**, pas une regression de la seance.
+
+### Le correctif
+
+Fichier `hero_kick.css` ecrit tel quel — plus de CSS fabrique par concatenation
+de chaines Python : la tentative precedente avait casse le bloc quand
+l'apostrophe de « fil d'Ariane » dans un commentaire a termine la chaine trop
+tot, mettant du texte libre dans les selecteurs (36 echecs au lieu de 39).
+Validation structurelle avant injection : equilibre des accolades et controle
+que chaque selecteur genere est bien un selecteur.
+
+Le chapeau recoit une pastille au vocabulaire deja employe sur le site : fond
+`linear-gradient(90deg, rgba(8,13,22,.76), rgba(8,13,22,.64))`, filet dore a
+26 %, rayon 999px, flou d'arriere-plan 6 px. Le texte est force a `#F2D28C`
+car sur certaines pages il etait sombre en theme clair — sans cela, sombre sur
+pastille sombre.
+
+Decouverte en chemin sur `charte.html` : le heros `.dsh` commence a y=0, si bien
+que le chapeau se trouvait a 72 px, entierement masque par la barre fixe — un
+defaut d'occlusion que la sonde de contraste revelait indirectement (elle
+mesurait la barre, pas le heros). Corrige par
+`padding-top:calc(var(--nav-h,110px) + 26px)`.
+
+### Verification
+
+Balayage complet des 199 pages, deux themes, apres correctif : **0 echec** sur
+les chapeaux (contre 17). Controle visuel sur clients (clair), societe (sombre)
+et charte (clair) : pastille en place, chapeau de charte degage de la barre.
+
+### Reste ouvert
+
+`.bcrumb`, le fil d'Ariane : 22 echecs a 1,04:1 en theme clair — invisible sur
+18 pages. Lui aussi preexistant. Il repose tantot sur un bandeau clair, tantot
+sombre dans le meme theme : une couleur unique ne suffit pas, et la premiere
+tentative de pastille est tombee sur l'erreur de generation ci-dessus. A
+reprendre avec la meme methode fichier-CSS-valide ; chantier suivant.
