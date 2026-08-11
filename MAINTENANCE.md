@@ -5216,3 +5216,42 @@ correctif (avant : aucun changement). Emulation Pixel 7 (pointer:coarse
 confirme par matchMedia) sur accueil, amont, aval : **38 cibles relevees, 0
 sous 44 px**. Captures : carte flip mobile intacte avec sa pastille elargie,
 carte glossaire survolee levee et cerclee d'or.
+
+## §148 — P1 de la revue ultra : tout le contenu dans des landmarks
+
+### Origine
+
+La revue ultra contre les majors a passe axe-core sur 6 gabarits : des noeuds
+`region` (contenu hors landmark) sur 4 pages, et 3 `color-contrast` serieux
+sur l'accueil. Engagement de P1.
+
+### Les contrastes de l'accueil : faux positifs d'axe, prouve au pixel
+
+Les 3 noeuds (`.hx-slogan`, ligne WhatsApp) mesures au pixel peint, deux
+themes : **6,54 a 14,44:1** — tous conformes. axe calcule sans voir le verre
+ni la photo de fond ; la mesure au pixel peint fait foi. Aucun correctif.
+
+### Les regions : cinq familles, 232 pages corrigees
+
+1. **Heros hors `<main>`** (97 pages : section.hero, div.jhero des 50 pages
+   journal, hx-slides de l'accueil et de la brochure, dsh de la charte) :
+   `role="region" aria-label="Introduction"`.
+2. **Bouton flottant accueil `#homeFab`** (86 pages, racine ET sous-dossiers
+   — le premier passage n'avait couvert que la racine) : enveloppe
+   `<nav aria-label>` FR/EN selon la page.
+3. **Bloc de partage `.share`** (84 pages) : il portait deja son etiquette,
+   il recoit `role="region"`.
+4. **`<div>` de pied d'article** des 50 pages journal : region « Autour de
+   l'article » / « Around the article ».
+5. **Configurateur** : lien retour + h1 masque enveloppes dans un `<header>`
+   (banner), skip-link deplace dedans.
+
+Effet de bord traite : plusieurs regions defilantes partageaient la meme
+etiquette sur brochure-en (`landmark-unique`) — dedoublonnage generalise par
+balayage de tout le site (etiquettes numerotees).
+
+### Verification
+
+axe-core, regles `region`, `landmark-unique`, `landmark-one-main`,
+`landmark-no-duplicate-banner`, 16 pages representatives (racine, journal,
+poles, configurateur, brochure FR/EN) : **0 violation**.
