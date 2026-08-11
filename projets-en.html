@@ -366,6 +366,59 @@ html:not(.et-plight):not(.et-jlight):has(.rootland) :is(.acq-card,.atc-map,.atc-
     padding:4px 10px!important;
   }
 }
+</style><style id="verre-final">/* Verre immersif final (chapitre 144). Le diagnostic du chapitre est dans
+   MAINTENANCE : la regle d'immersion du chapitre 141 correspondait bien aux
+   sections mais perdait la cascade contre les halos du chapitre 136. Ce bloc,
+   place en dernier dans le head et arme a six identifiants, tranche : plus
+   aucune bande large entre la photo et les tuiles. La barre de navigation et
+   le pied de page gardent leur fond — ils portent la lisibilite de la
+   navigation, pas le decor. */
+
+/* 1. Toute section et tout panneau large deviennent transparents. */
+html:has(.rootland) main section:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
+html:has(.rootland) body > section:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
+html:has(.rootland) main > div > section:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
+html:has(.rootland) .cmpw:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
+html:has(.rootland) .pj-banner:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
+html:has(.rootland) .docn:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
+html:has(.rootland) .it-grid:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
+html:has(.rootland) .epw-g:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
+html:has(.rootland) .biz-grid:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______){
+  background-color:transparent!important;
+  background-image:none!important;
+  box-shadow:none!important;
+}
+
+/* 2. Le bandeau d'appel a l'action garde une presence, mais en verre. */
+html:has(.rootland) #cta-band:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______){
+  background-color:transparent!important;
+  background-image:linear-gradient(180deg,rgba(8,13,22,.30) 0%,rgba(8,13,22,.44) 100%)!important;
+  -webkit-backdrop-filter:blur(10px);
+  backdrop-filter:blur(10px);
+}
+html.et-plight:has(.rootland) #cta-band:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
+html.et-jlight:has(.rootland) #cta-band:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______){
+  background-image:linear-gradient(180deg,rgba(252,250,246,.42) 0%,rgba(252,250,246,.58) 100%)!important;
+}
+
+/* 3. Theme clair : le voile creme s'allege pour que la photo traverse.
+   Valeur fixee par mesure du contraste au pixel peint apres application. */
+html.et-plight .rootland::after,
+html.et-jlight .rootland::after{
+  background:linear-gradient(180deg,rgba(250,247,241,.66) 0%,rgba(250,247,241,.78) 100%)!important;
+}
+
+/* 4. En preference de contraste renforce, les panneaux reviennent opaques. */
+@media (prefers-contrast:more){
+  html:has(.rootland) main section:not(#_):not(#__):not(#___):not(#____),
+  html:has(.rootland) body > section:not(#_):not(#__):not(#___):not(#____){
+    background-color:rgba(8,13,22,.92)!important;
+  }
+  html.et-plight:has(.rootland) main section:not(#_):not(#__):not(#___):not(#____),
+  html.et-plight:has(.rootland) body > section:not(#_):not(#__):not(#___):not(#____){
+    background-color:rgba(250,247,241,.96)!important;
+  }
+}
 </style></head><style>.pjwrap{max-width:var(--wrap);margin:0 auto;padding:0 24px}.pj-banner{display:flex;gap:12px;align-items:flex-start;background:rgba(232,195,106,.06);border:1px solid color-mix(in srgb,var(--gold-l) 30%,transparent);border-left:3px solid var(--gold-l);border-radius:14px;padding:16px 18px;margin:0 0 30px;font-size:.9rem;color:rgba(245,247,250,.82);line-height:1.6}.pj-grp{font-family:var(--fm);font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-l);display:flex;align-items:center;gap:12px;margin:34px 0 16px}.pj-grp span{flex:1;height:1px;background:linear-gradient(90deg,rgba(217,168,79,.5),transparent)}.pj-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}.pj{position:relative;display:flex;flex-direction:column;background:linear-gradient(158deg,rgba(255,255,255,.05),rgba(255,255,255,.012));border:1px solid var(--hair);border-radius:20px;padding:22px 22px;text-decoration:none;color:inherit;overflow:hidden;transition:transform .3s var(--ease),border-color .3s,box-shadow .3s;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}.pj::after{content:"";position:absolute;left:0;top:0;height:3px;width:100%;background:linear-gradient(90deg,var(--pc),transparent 78%)}.pj:hover{transform:translateY(-5px);border-color:color-mix(in srgb,var(--pc) 50%,var(--hair));box-shadow:0 20px 44px -16px color-mix(in srgb,var(--pc) 36%,transparent)}.pj-top{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:12px}.pj-h{font-family:var(--fm);font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;color:var(--pc);border:1px solid color-mix(in srgb,var(--pc) 32%,transparent);border-radius:999px;padding:4px 10px}.pj-pole{font-family:var(--fm);font-size:.66rem;letter-spacing:.08em;color:var(--muted)}.pj h3{font-family:var(--fd);font-size:1.12rem;color:#fff;margin:0 0 8px;letter-spacing:-.01em;line-height:1.2}.pj p{font-size:.88rem;color:rgba(245,247,250,.78);line-height:1.55;margin:0 0 14px}.pj-k{display:flex;gap:18px;margin-bottom:12px}.pj-k span{font-size:.74rem;color:var(--muted)}.pj-k b{display:block;font-family:var(--fd);font-size:1.02rem;color:var(--pc);font-weight:700}.pj-syn{font-size:.76rem;color:rgba(245,247,250,.76);line-height:1.5;border-top:1px solid var(--hair);padding-top:12px;margin-top:auto}.pj-syn a{color:rgba(245,247,250,.78);text-decoration:none;border-bottom:1px dotted var(--hair)}.pj-syn a:hover{color:#fff}.pj-go{margin-top:14px;font-family:var(--fm);font-size:.74rem;font-weight:600;color:var(--pc)}.pj{position:relative}a.pj-go{display:inline-block;text-decoration:none}a.pj-go::after{content:"";position:absolute;inset:0}.pj-syn a{position:relative;z-index:2}.rv{opacity:0;transform:translateY(14px);transition:opacity .6s var(--ease),transform .6s var(--ease)}.rv.in{opacity:1;transform:none}@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none}.pj{transition:none}}</style><body class="nx-clear" id="top"><div class="diapo" aria-hidden="true"><i style="background-image:url(&quot;/assets/img/piste-desert.webp&quot;)"></i><i data-bg="/assets/img/raffinerie-nuit.webp"></i><i data-bg="/assets/img/pipeline.webp"></i><i data-bg="/assets/img/pompe-petrole.webp"></i><i data-bg="/assets/img/reservoirs.webp"></i><i data-bg="/assets/img/station-nuit.webp"></i><i data-bg="/assets/img/casques-chantier.webp"></i></div><script>addEventListener("load",function(){var els=[].slice.call(document.querySelectorAll(".diapo i[data-bg]"));els.forEach(function(el,i){var t=Math.max(0,(i+1)*6000-4500);setTimeout(function(){el.style.backgroundImage='url("'+el.getAttribute("data-bg")+'")'},t)})})</script><a href="#main-content" class="skip-link">Skip to main content</a><header><nav class="nav nx" id="nav" aria-label="Main navigation">
   <div class="nx-util"><div class="nx-util-in">
     <a href="/clients-en">Become a client</a>
