@@ -4194,3 +4194,114 @@ deux familles à la fois.
 **QA.** Échantillon de 8 pages des deux gabarits, 1440 clair et 390 sombre : 0 erreur console,
 0 exception JS, 0 réponse 4xx, 0 débordement. axe-core : seule la famille `.hx-slogan` de l'accueil,
 réfutée au pixel en §107.
+
+## §135 — Le point de repère « contenu principal » était un repère vide (50 carnets)
+
+### Le constat
+
+Audit `axe-core` sur 16 pages représentatives. Deux règles ressortent : `color-contrast`
+(18 nœuds, gravité « serious », uniquement sur `index.html` / `index-en.html`) et `region`
+(97 nœuds répartis sur 14 pages). La seconde est la vraie.
+
+Sur les pages de carnets (`journal-*.html`), la structure était :
+
+```html
+<article>
+  <div class="jhero">
+    <span class="jkick">…</span>
+    <span id="main-content" role="main" tabindex="-1"></span><h1>…</h1>
+```
+
+Le `role="main"` était porté par un `<span>` **vide**. Conséquence mesurée : le repère
+« contenu principal » existait bien pour les lecteurs d'écran, mais il contenait
+**0 caractère**. Un utilisateur qui saute au contenu principal atterrissait sur une balise
+vide, et l'intégralité de l'article — titre, chapô, corps, encadrés — restait en dehors de
+tout repère. C'est exactement ce que `region` signalait, à raison.
+
+Recensement sur les 199 pages indexables :
+
+| Situation | Pages |
+|---|---|
+| `h1` dans un `<main>` réel | 93 |
+| `<main>` présent mais `h1` en dehors (gabarit `DIV.hero`) | 44 |
+| `role="main"` sur un `<span>` vide, aucun `<main>` | 53 |
+
+Les trois ensembles sont disjoints et couvrent 190 des 199 pages. Le présent chapitre ne
+traite que le troisième, et seulement ses 50 pages de carnets : les 3 restantes
+(`boutique.html`, `boutique-en.html`, `Calculateur_Baril_Additionnel.html`) n'ont pas de
+conteneur unique qui puisse porter le repère, elles demandent un traitement séparé.
+
+### Le correctif
+
+Déplacement du rôle, sans ajout ni suppression d'élément :
+
+```html
+<span id="main-content" tabindex="-1"></span>   <!-- reste la cible du lien d'évitement -->
+<article role="main">                            <!-- porte désormais le repère -->
+```
+
+Le `<span>` garde `id` et `tabindex="-1"` : le lien « Aller au contenu principal » continue
+de fonctionner et reste focalisable. Le rôle passe sur l'`<article>`, qui contient tout.
+
+**Pourquoi `role="main"` et non un vrai `<main>`** : ajouter un élément `<main>` aurait
+activé d'un coup toutes les règles CSS écrites en `main …`, jusque-là inertes sur ces pages.
+Un attribut `role` ne correspond à aucun sélecteur de type — impact cascade nul par
+construction. Les 50 `<article>` étaient de surcroît strictement uniformes (`<article>` sans
+aucun attribut, exactement une occurrence par page), ce qui rend la substitution sûre.
+
+### Vérification
+
+axe-core après correctif, 5 pages échantillon :
+
+| Indicateur | Avant | Après |
+|---|---|---|
+| Nœuds `region` | 8 | 1 |
+| `h1` dans le repère principal | non | oui |
+| Texte contenu dans le repère | 0 car. | 3 814 à 4 276 car. |
+| Cible du lien d'évitement présente et focalisable | oui | oui |
+| Nombre de repères « main » | 1 | 1 |
+
+Diff pixel plein écran, avant/après, rendu depuis deux serveurs distincts (version publiée
+contre version corrigée), animations neutralisées :
+
+```
+journal-gpl-bois-energie.html  1280x3846  pixels differents = 0  (0,0000 %)
+journal-prix-litre-en.html     1280x3767  pixels differents = 0  (0,0000 %)
+journal-atlas-secteur.html     1280x4018  pixels differents = 0  (0,0000 %)
+```
+
+Zéro pixel d'écart sur des pages de près de 4 000 px de haut : le correctif est purement
+sémantique, comme prévu.
+
+### Deux fausses pistes écartées en cours de route (à ne pas rejouer)
+
+**1. Les « 8 méta-descriptions trop courtes ».** Un premier passage signalait des
+descriptions de 9 à 64 caractères (`'Campus in N'`, `'Le GPL consigné d'`, `'How EnerTchad'`).
+C'était une erreur de sonde : l'expression `content=["\'](.*?)["\']` s'arrête à la première
+apostrophe rencontrée, y compris à l'intérieur d'un attribut délimité par des guillemets
+doubles. Relecture avec `html.parser` : **0 description hors norme** sur 200 pages, aucun
+titre dupliqué, aucune image sans attribut `alt`, aucun saut de niveau de titre, un seul
+`h1` par page. Ne jamais parser des attributs HTML à l'expression régulière.
+
+**2. Les « 18 défauts de contraste » de l'accueil.** axe rapportait 1,22:1 sur `.hx-slogan`
+et 1,40:1 sur les mots du `h1`, en prenant pour fond `#eae7e2` / `#d4d2cd` — le beige clair
+du `body`. Le héros est habillé par une image que axe ne sait pas échantillonner : il remonte
+la chaîne des ancêtres jusqu'au premier fond opaque et se trompe de cible. Mesure au pixel
+peint (texte neutralisé, capture, lecture RVB sous chaque mot) :
+
+| Élément | Thème par défaut | Thème sombre |
+|---|---|---|
+| `.hx-slogan` | fond peint 75,63,31 → **6,83:1** | fond peint 32,34,30 → **9,51:1** |
+| mots du `h1` | fonds 59-84 → **7,91 à 11,77:1** | fonds 20-38 → **14,41 à 16,76:1** |
+
+Tout est très au-dessus des seuils AA (4,5:1 et 3:1). **Faux positif intégral.** La règle
+`color-contrast` de axe n'est pas fiable sur un héros à image de fond ; seule la lecture du
+pixel peint fait foi.
+
+### Ce qui reste ouvert sur ce sujet
+
+Les 44 pages du gabarit `DIV.hero` (h1, chapô et fil d'Ariane hors de tout repère) demandent
+soit de remonter l'ouverture de `<main>` avant le héros — avec un vrai risque de cascade,
+puisque le CSS documente explicitement que « ce HEADER.hero n'est PAS dans `<main>` : les
+règles en `main …` ne l'atteignent pas » — soit un repère étiqueté sur le héros. Chantier
+distinct, à instruire avant d'y toucher.
