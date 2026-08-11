@@ -432,7 +432,48 @@ html.et-jlight .rootland::after{
     background-color:rgba(250,247,241,.96)!important;
   }
 }
-</style></head>
+</style><style id="ilots-146">/* Ilots sombres des pages poles + cartes faune (chapitre 146).
+   Les pages TchadiTech et GreenTech portent leur propre couche et-plight qui
+   suppose des sections sombres (kickers indigo/emeraude, textes pales .68-.72,
+   titres blancs). Le verre final du chapitre 144 a retire ces fonds : en theme
+   clair, 24 textes tombaient a ~1:1 sur le voile creme (mesure, desktop et
+   mobile). On restaure ces cinq sections en ilots de verre sombre arrondis —
+   pas des bandes pleine page : la photo reste visible autour. En sombre, le
+   voile du decor suffit deja, l'ilot n'apparait qu'en clair.
+   Injecte apres verre-final : meme armure, plus tard, donc prioritaire. */
+html.et-plight main section.tt-flag:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
+html.et-plight main section.tt-flow:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
+html.et-plight main section.tt-carnets:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
+html.et-plight main section.gtp:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
+html.et-plight main section.gtt:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______){
+  background-color:transparent!important;
+  background-image:linear-gradient(180deg,rgba(11,17,26,.93) 0%,rgba(13,20,31,.90) 100%)!important;
+  border-radius:22px;
+  -webkit-backdrop-filter:blur(8px);
+  backdrop-filter:blur(8px);
+}
+/* Les cartes recits .ttc-card n'etaient pas dans la liste des tuiles sombres
+   exclues du verre clair du chapitre 141 : dans l'ilot, elles devenaient du
+   verre creme sous texte blanc (3,4:1). On leur rend le verre sombre en clair. */
+html.et-plight main .ttc-card:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______){
+  background-color:transparent!important;
+  background-image:linear-gradient(180deg,rgba(13,20,31,.88) 0%,rgba(16,25,39,.84) 100%)!important;
+}
+/* Cartes faune de patrimoine : le texte vit dans le tiers bas, pose sur la
+   photo de l'animal. Le degrade d'origine laisse passer la roche claire
+   (blanc mesure a 1,82:1 en clair, 2,02 en sombre). L'ombre interne peint
+   au-dessus de la photo et sous le texte : voile bas renforce, les deux
+   themes. */
+.fp-card:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______){
+  box-shadow:0 10px 30px rgba(0,0,0,.35),
+    inset 0 -170px 70px -40px rgba(6,10,18,.92)!important;
+}
+/* La legende .fp-cap porte le texte ; son degrade d'origine (0 -> .55) laisse
+   la photo claire traverser sur mobile ou la carte est plus haute que la
+   portee de l'ombre interne. On durcit le degrade de la legende elle-meme. */
+.fp-cap:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______){
+  background-image:linear-gradient(180deg,rgba(6,11,20,.30) 0%,rgba(6,11,20,.88) 22%,rgba(6,11,20,.94) 100%)!important;
+}</style></head>
 <body id="top"><div class="rdprog" aria-hidden="true"></div>
 <a href="#main-content" class="skip-link">Skip to main content</a>
 <div id="preloader" aria-hidden="true">

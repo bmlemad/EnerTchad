@@ -5110,3 +5110,65 @@ Controle visuel desktop clair/sombre et mobile 375 px sur clients, ethique
 aucune occlusion, pas de retour a la ligne parasite ; le fil et le chapeau
 forment deux pastilles empilees du meme vocabulaire. Le lien gris de
 communiques-en est rentre dans le rang par la meme regle.
+
+## §146 — Ce que le verre final avait casse : les ilots sombres des pages poles
+
+### La passe mobile qui devait etre une formalite
+
+QA mobile 375 px sous le verre du chapitre 144, 14 pages, deux themes, 916
+mesures au pixel peint : 42 echecs — tous concentres sur les pages
+TchadiTech et GreenTech (FR et EN) et les deux pages patrimoine. Contre-mesure
+en desktop : memes echecs a 1,0-1,2:1. Ce n'etait pas un probleme mobile,
+c'etait un angle mort de l'echantillon du chapitre 144, qui ne comprenait
+aucune page de pole.
+
+### Le mecanisme
+
+Ces pages portent leur propre couche `et-plight` : kickers indigo ou emeraude,
+textes pales .68-.72, titres blancs — une palette concue pour des sections
+sombres que la couche posait elle-meme (`.tt-flag`, `.tt-flow`, `.tt-carnets`
+en #0B111A/#0E1622 ; `.gtp`, `.gtt` cote GreenTech). Le verre final du
+chapitre 144, plus arme et plus tardif, a retire ces fonds comme il retirait
+toutes les bandes : les textes pales sont tombes nus sur le voile creme du
+theme clair. En sombre, le voile du decor suffisait — rien a corriger.
+
+### Le correctif : des ilots, pas des bandes
+
+`ilots146.css`, valide et injecte apres verre-final dans les 6 pages :
+
+1. les cinq sections redeviennent des **ilots de verre sombre arrondis**
+   (degrade .93/.90, rayon 22 px, flou 8 px), en theme clair seulement — la
+   photo reste visible autour, l'esprit « sans bandes » est preserve ;
+2. `.ttc-card`, absente de la liste des tuiles sombres du chapitre 141,
+   redevenait du verre creme sous texte blanc dans l'ilot (3,4:1) : verre
+   sombre rendu en clair ;
+3. cartes faune `.fp-card` : le texte vit dans le tiers bas, sur la photo de
+   l'animal (blanc a 1,82:1 sur la roche claire de l'oryx). Ombre interne
+   `inset 0 -170px` + durcissement du degrade de la legende `.fp-cap`
+   (.30/.88 des 22 %), les deux themes.
+
+### Une lecon de mesure de plus
+
+Deux passes successives sur patrimoine rendaient des ratios differents pour le
+meme texte (3,6 puis 4,1) : les animations `.reveal` etaient en cours pendant
+la capture — l'etat mesure n'etait pas l'etat final. Le neutralisateur fige
+desormais aussi `animation`, `transition`, `opacity` et `transform`. Regle :
+on mesure l'etat stabilise, pas l'etat transitoire.
+
+### Verification
+
+Apres correctif, probe fige, 6 pages x 2 themes :
+
+| Viewport | Mesures | Echecs AA | Pire |
+|---|---|---|---|
+| Mobile 375 | 471 | **0** | 5,42:1 |
+| Desktop 1440 | 344 | **0** | 5,16:1 |
+
+Controle visuel en clair : ilots nets, tuiles sombres a accents dores et
+emeraude retrouvees, cartes faune lisibles jusqu'au nom latin.
+
+### Reste ouvert
+
+`amont/index.html` en clair mobile : le chapeau `.pgl` du heros mesure a
+3,25:1 (degrade horizontal du heros trop leger a 375 px). Cas unique et
+marginal, famille amont a traiter d'un bloc lors d'une passe dediee.
