@@ -5477,3 +5477,31 @@ Lecon de discipline : une seule session d'ecriture a la fois sur ce depot ;
 avant toute publication, verifier que FETCH_HEAD descend bien du dernier
 etat du journal (les marqueurs de chapitre servent de test), sinon
 s'arreter et demander l'arbitrage — c'est ce qui a ete fait.
+
+## §159 — Revue raffinage appliquee : la preuve au litre pres
+
+Les quatre recommandations applicables de la revue raffinage :
+
+1. **Section « spec-coa »** sur aval/raffinage FR/EN (region etiquetee,
+   trois cartes) : specifications nommees (AFRI/ARSO, equivalents EN 228 /
+   EN 590 vises, soufre cible par coupe) + certificat d'analyse a chaque
+   lot et echantillons temoins — le pendant produit de la custody du
+   chapitre 157 ; HSE de l'unite (torche pilotee, permis de feu,
+   retentions, effluents boucles sur la gestion des eaux) ; et la franchise
+   du procede : ni craquage ni hydrotraitement au premier palier, dit
+   noir sur blanc.
+2. **Tableau des rendements type d'un topping** dans le carnet
+   mini-raffinerie FR/EN : GPL 1-3 %, naphta 5-12 %, distillats moyens
+   25-40 %, residu 45-65 % — fourchettes indicatives sourcees, chaque
+   coupe reliee a son destin maison (NRJ+, gazole, bitume). C'est le
+   residu abondant qui fonde la these bitume, desormais chiffree.
+
+Incident evite : le tableau EN d'abord insere apres le dernier h2 de la
+PAGE (le pied « De la roche-mere... »), hors du corps d'article — detecte
+par la verification (.jbody table absent), replace avant « What it changes
+at the pump ». Regle deja connue, reconfirmee : ancrer sur un texte
+unique du corps, jamais sur un rang.
+
+Verification : sections presentes FR/EN, 3 cartes, 0 violation axe
+(contraste, region) ; tableaux presents dans le .jbody des deux carnets,
+4 lignes chacun ; media query une colonne pour la grille mobile.
