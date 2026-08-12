@@ -6,7 +6,14 @@
 <description>Le journal d’EnerTchad S.A. : récits, analyses et jalons de la construction de la chaîne pétrolière du Tchad — de la roche-mère à la pompe. Société en constitution : objectifs datés, non des actifs en exploitation.</description>
 <language>fr</language>
 <atom:link href="https://enertchad-delta.vercel.app/feed.xml" rel="self" type="application/rss+xml"/>
-<lastBuildDate>Wed, 29 Jul 2026 08:00:00 +0000</lastBuildDate>
+<lastBuildDate>Wed, 12 Aug 2026 08:00:00 +0000</lastBuildDate>
+<item>
+<title>Atteindre trois cibles depuis un seul wellpad — le forage dirigé expliqué</title>
+<link>https://enertchad-delta.vercel.app/journal-forage-directionnel</link>
+<guid isPermaLink="true">https://enertchad-delta.vercel.app/journal-forage-directionnel</guid>
+<pubDate>Wed, 12 Aug 2026 08:00:00 +0000</pubDate>
+<description>Moteur de fond, RSS, MWD, LWD, geosteering : comment on courbe un puits, comment on sait où il passe — et pourquoi l'enclavement tchadien en fait une évidence économique.</description>
+</item>
 <item>
 <title>Espace presse : kit média officiel et flux RSS des Carnets (CP-2026-006)</title>
 <link>https://enertchad-delta.vercel.app/communiques#cp-006</link>

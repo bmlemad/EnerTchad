@@ -5406,3 +5406,26 @@ Verification fonctionnelle des deux pages : 12 cartes dans la grille
 catalogue, accordeon operationnel sur les nouvelles cartes (le script
 partage les prend en charge), fiche appareils rendue, section perimetre et
 IWCF du chapitre 154 intacts.
+
+## §156 — Le carnet « forage dirige » : la derniere reco editoriale de la revue
+
+Cinquantieme-et-unieme carnet du journal, en freres jumeaux FR/EN :
+« Atteindre trois cibles depuis un seul wellpad » — moteur de fond, RSS,
+MWD, LWD, geosteering, ellipse d'incertitude, et la lecture tchadienne
+(emprise minimale, bassins de Doba et Bongor), avec renvoi vers le
+perimetre du chapitre 154. Genere par clonage du gabarit
+journal-mecanique-fluides, cable de bout en bout : title/description/
+OG/Twitter, canonical et hreflang croises, JSON-LD date au 2026-08-12,
+cartes en tete des deux listes Carnets, item dans les deux flux RSS
+(38 items, lastBuildDate rafraichi, XML valide), sitemap a 197 URLs.
+
+Deux pieges de generation consignes : une regex de remplacement de corps
+trop gourmande a d'abord insere l'article... dans le head (detecte par
+position du texte, reconstruit par decoupe indexee — regle : sur un gabarit
+de 80 Ko, les bornes se calculent par index, pas par regex non-greedy) ; et
+une twitter:description residuelle a survecu au premier passage (attrapee
+par l'assertion anti-slug « Darcy »).
+
+Verification : axe 0 violation sur les deux pages (region, landmark, title,
+lang), 6 h2, liens internes valides (perimetre, retours carnets), carte
+rendue en tete de liste, canonical et bascule FR/EN corrects.
