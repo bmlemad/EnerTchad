@@ -5281,3 +5281,34 @@ visible n'existait.
 L'abonnement courriel automatise (vraie liste de diffusion) reste un choix
 d'operateur a faire par la direction — un service externe demande un compte ;
 le lien courriel comble l'ecart fonctionnel en attendant.
+
+## §150 — Chantier performance repris : le mecanisme franchit la barriere
+
+### Acquis de la seance (gabarit pilote : societe.html)
+
+1. **Le sous-ensemble utilise se calcule en navigateur** : 557/1057 regles
+   gardees (103 Ko), regle de prudence « au moindre doute on garde »
+   (pseudo-classes retirees avant test, selecteur imparsable = garde).
+2. **L'ordre est la moitie du probleme** : inline groupe a la position de la
+   premiere feuille = 35-60 % de pixels differents (les feuilles remontent
+   avant les blocs style intercales, la cascade bascule). Inline PAR FEUILLE,
+   chacune a sa position, liens differes en place (`media="print"` +
+   `onload`) : **hauteurs identiques 4/4, residu 0,09-0,43 %** — la barriere
+   du chapitre 140 est franchie par le mecanisme.
+3. **Decouverte font-display:optional** : la reference n'applique presque
+   jamais ses polices web au premier rendu (repli conserve a vie) ; la
+   variante inline fait partir les requetes plus tot et les polices
+   s'APPLIQUENT. C'est une amelioration, mais c'est un changement de rendu —
+   la comparaison honnete se fait a polices egales (bloquees des deux cotes).
+4. Le sous-ensemble laisse un ecart residuel en clair 1440 (28 %, determini-
+   ste) : trois ancres perdent un degrade dore, et l'essentiel vient d'une
+   course de decodage d'images du harnais (bloquer les images l'a montre
+   erratique — harnais a stabiliser avant conclusion).
+
+### Reste avant deploiement
+
+Stabiliser le harnais (images et polices bloquees proprement, un seul route
+handler), reparer la regle des ancres au degrade, re-passer la barriere sur
+le sous-ensemble, mesurer le LCP a 1,6 Mb/s, puis etendre gabarit par
+gabarit. Rien n'est publie de ce chantier : le site en production est
+inchange.
