@@ -5357,3 +5357,26 @@ creme #FBF9F3 en clair, marine #0B1322 en sombre, mise a jour en direct a la
 bascule. Verifie sur societe, clients, amont : couleurs echangees en direct,
 classe d'escamotage posee au defilement, opacite du guide en route vers 0.
 Le Configurateur (sans </body> standard) est volontairement hors perimetre.
+
+## §154 — Revue forage onshore appliquee : le perimetre dit sa verite
+
+Suite de la revue « solutions et services de forage onshore vs SLB/
+Halliburton/Baker Hughes ». Ses deux premieres recommandations sont
+executees sur services-ep FR/EN :
+
+1. **Section « ofs-perimetre »** — « Ce que nous faisons en propre, ce que
+   nous integrons ». Deux cartes : en propre (genie civil wellpads,
+   operations de surface, interventions legeres, essais de puits, eaux de
+   production, logistique, chimie EOR, champ numerique) ; integre sous
+   direction de projet EnerTchad (forage directionnel et MWD/LWD, fluides
+   specialises, cimentation-tubage, appareils lourds). L'ambiguite du
+   qui-fait-quoi — l'ecart de credibilite n° 1 releve par la revue — est
+   levee, avec la mention « perimetre vise · societe en constitution ».
+2. **Controle de puits** ajoute au socle HSE-Q : barrieres puits, BOP
+   testes au calendrier, exercices de controle de venue, certification
+   IWCF/IADC visee — l'absence relevee comme preuve HSE manquante.
+
+Verification : section presente et rendue FR/EN, mention IWCF servie,
+adaptation du theme clair prise en charge par la couche de la page.
+Restent au carnet de la revue : carnet « forage directionnel », fluides et
+cimentation developpes au catalogue, fiche classes d'appareils.
