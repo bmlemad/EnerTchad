@@ -5455,3 +5455,25 @@ query dediee pour une colonne en mobile. Verification : bloc present et
 rendu FR/EN, 3 cartes, 0 violation axe (contraste, region) sur la section,
 grille a 1 colonne confirmee en emulation Pixel 7, capture visuelle propre
 en theme clair.
+
+## §158 — Incident de lignees : main remplace hors session, production restauree
+
+Constat : GitHub main pointait sur une lignee etrangere a ce journal
+(« Home: trois maillons en panneaux », 162 pages), issue d'une session de
+travail parallele, sans aucun des chapitres 143 a 157 — pendant que la
+production Vercel servait encore la lignee du journal (197 pages). Les
+« rembobinages » de fichiers subis tout au long de la session s'expliquent :
+deux sessions se partageaient la meme copie de travail.
+
+Arbitrage utilisateur : restaurer la lignee du journal. Source de verite
+utilisee : la production elle-meme, crawlee integralement (203 fichiers via
+le sitemap + accueil + flux + robots + manifest), controles de contenu aux
+marqueurs (verre-final, cue-tact, ofs-perimetre, log-custody, carnet forage,
+chapitre 157 present). Sept assets references par cette lignee manquaient a
+l'arbre de l'autre : recuperes de meme (2 CSV ESG, 5 images 760px, formats
+verifies). Le commit de l'autre lignee reste dans l'historique GitHub.
+
+Lecon de discipline : une seule session d'ecriture a la fois sur ce depot ;
+avant toute publication, verifier que FETCH_HEAD descend bien du dernier
+etat du journal (les marqueurs de chapitre servent de test), sinon
+s'arreter et demander l'arbitrage — c'est ce qui a ete fait.
