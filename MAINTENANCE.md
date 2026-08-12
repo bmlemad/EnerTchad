@@ -5312,3 +5312,21 @@ handler), reparer la regle des ancres au degrade, re-passer la barriere sur
 le sous-ensemble, mesurer le LCP a 1,6 Mb/s, puis etendre gabarit par
 gabarit. Rien n'est publie de ce chantier : le site en production est
 inchange.
+
+## §151 — Simulation de visiteurs : un artefact ecarte, un vrai bug d'inertie corrige
+
+La simulation de parcours (investisseur, client, journaliste) sur banc a
+reecriture Vercel (`srv_rw.py`, port 9125 — les liens sans extension du site
+exigent cette reecriture, premiere lecon) a rendu 2/3 parcours complets. Le
+pas client mobile « bloque » etait un artefact : le CTA « Nos marches »
+vit sur la face arriere d'une carte a bascule — le visiteur reel bascule
+puis clique, verifie jusqu'a `/clients`.
+
+Mais l'instruction a expose un vrai defaut : la famille `.flip` de l'accueil
+(cartes mfo/hxi, script `flip-js`) ne rendait **jamais inerte la face
+cachee** — ses liens invisibles etaient tabulables au clavier, contrairement
+a la famille `.flip2`/f2f qui gere `inert` depuis son origine. Correctif
+dans `flip-js` (index et index-en) : etat initial inerte pour la face
+arriere, bascule synchronisee. Verifie : avant `bk.inert=true`, apres
+bascule `fr.inert=true`/`bk.inert=false`, re-bascule conforme, navigation
+du CTA intacte.
