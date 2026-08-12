@@ -5330,3 +5330,19 @@ dans `flip-js` (index et index-en) : etat initial inerte pour la face
 arriere, bascule synchronisee. Verifie : avant `bk.inert=true`, apres
 bascule `fr.inert=true`/`bk.inert=false`, re-bascule conforme, navigation
 du CTA intacte.
+
+## §152 — Upgrade mobile : le guide « Suite » s'escamote au defilement
+
+Arbitrage engage par la demande « upgrade mobile versus majors ». Les trois
+flottants mobiles (guide #scrollcue, #toTop, bascule de theme) chevauchaient
+le contenu sur investisseurs et patrimoine (mesure §-QA mobile : 3
+occurrences chacun ; visible aussi en desktop sur le CTA « Rejoindre la
+demarche »). Pattern des majors retenu : un indice de defilement n'a de sens
+que sur le premier ecran — `cue-tact` (style + script, 4 pages :
+investisseurs FR/EN, patrimoine FR/EN) escamote #scrollcue des 140 px de
+defilement (fondu 300 ms, pointer-events coupes) et le restitue au retour en
+haut. Verifie : classe posee au scroll, opacite en transition vers 0,
+restitution au retour. #toTop et la bascule de theme restent — standards du
+secteur, poses aux coins. Reste au carnet : meme traitement pour les ~200
+autres pages si l'essai convainc, et l'effacement pres des CTA du premier
+ecran.
