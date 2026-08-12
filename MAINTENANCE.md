@@ -5380,3 +5380,29 @@ Verification : section presente et rendue FR/EN, mention IWCF servie,
 adaptation du theme clair prise en charge par la couche de la page.
 Restent au carnet de la revue : carnet « forage directionnel », fluides et
 cimentation developpes au catalogue, fiche classes d'appareils.
+
+## §155 — Revue forage, suite : le catalogue passe a 12 lignes, les appareils ont leur gamme
+
+Recommandations 3 et 4 de la revue forage onshore, sur services-ep FR/EN :
+
+1. **Deux lignes ajoutees au catalogue d'interventions** (10 -> 12, compteur
+   KPI mis a jour) : « Fluides de forage & boues » et « Forage directionnel ·
+   MWD/LWD » — meme gabarit tri-c que les dix existantes (detail deroulant,
+   cas d'usage defi/reponse/gain), marquees « ligne integree · voir
+   perimetre » en coherence avec la section du chapitre 154.
+2. **Fiche « Appareils · la gamme visee »** sous le perimetre : unites de
+   workover 150-350 HP adaptees aux bassins de Doba et Bongor, pompage et
+   azote associes ; le forage lourd reste explicitement une ligne integree.
+
+Incident evite et consigne : cote EN, la premiere insertion a vise la
+mauvaise grille tri-g (celle des familles EnerSupply, pas le catalogue) —
+detecte au comptage (13 au lieu de 12), corrige en ancrant sur la carte
+Wireline. Et la restauration `git checkout --` a rendu une version
+anterieure au chapitre 154 : l'index n'avait pas suivi les fetch successifs.
+Regle : apres chaque fetch, `git reset --mixed FETCH_HEAD`, et toute
+restauration passe par `git cat-file blob FETCH_HEAD:`.
+
+Verification fonctionnelle des deux pages : 12 cartes dans la grille
+catalogue, accordeon operationnel sur les nouvelles cartes (le script
+partage les prend en charge), fiche appareils rendue, section perimetre et
+IWCF du chapitre 154 intacts.
