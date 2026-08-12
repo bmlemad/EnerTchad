@@ -5429,3 +5429,29 @@ par l'assertion anti-slug « Darcy »).
 Verification : axe 0 violation sur les deux pages (region, landmark, title,
 lang), 6 h2, liens internes valides (perimetre, retours carnets), carte
 rendue en tete de liste, canonical et bascule FR/EN corrects.
+
+## §157 — Revue logistique appliquee : la discipline du corridor s'affiche
+
+Les quatre recommandations applicables de la revue logistique onshore,
+executees d'un bloc sur intermediaire/logistique FR/EN — section ancree
+« log-custody », region etiquetee, trois cartes + une phrase :
+
+1. **Custody & anti-coulage** : scelles numerotes, pesee au pont-bascule
+   depart/arrivee, jaugeage contradictoire, tolerance de freinte au
+   contrat, reconciliation charge/livre par telematique — le lexique de la
+   preuve physique qui manquait (scelles et pont-bascule etaient a zero
+   occurrence sur tout le site).
+2. **Journey management** : plan de route valide, temps de conduite
+   plafonnes, fatigue, points de repos securises, nuit proscrite, jalons
+   GPS — le pendant routier du controle de puits du chapitre 154.
+3. **Le calendrier tchadien** : pre-positionnement avant l'hivernage,
+   rotation de la reserve distribuee pendant — la justification
+   saisonniere de la these maison, enfin ecrite.
+4. **Multimodal sans langue de bois** : la route domine, le pipeline porte
+   le brut, le rail transcamerounais est une option etudiee.
+
+Mention « protocoles vises · societe en constitution » en cloture. Media
+query dediee pour une colonne en mobile. Verification : bloc present et
+rendu FR/EN, 3 cartes, 0 violation axe (contraste, region) sur la section,
+grille a 1 colonne confirmee en emulation Pixel 7, capture visuelle propre
+en theme clair.
