@@ -5346,3 +5346,14 @@ restitution au retour. #toTop et la bascule de theme restent — standards du
 secteur, poses aux coins. Reste au carnet : meme traitement pour les ~200
 autres pages si l'essai convainc, et l'effacement pres des CTA du premier
 ecran.
+
+## §153 — Application generale : escamotage du guide + theme-color synchronise
+
+Generalisation demandee des acquis du chapitre 152 a tout le site (195
+pages) : le guide « Suite » s'escamote au defilement partout, et une
+synchronisation `theme-color` (script `tcol-js`, MutationObserver sur la
+classe du html) aligne la barre du navigateur mobile sur le theme choisi —
+creme #FBF9F3 en clair, marine #0B1322 en sombre, mise a jour en direct a la
+bascule. Verifie sur societe, clients, amont : couleurs echangees en direct,
+classe d'escamotage posee au defilement, opacite du guide en route vers 0.
+Le Configurateur (sans </body> standard) est volontairement hors perimetre.
