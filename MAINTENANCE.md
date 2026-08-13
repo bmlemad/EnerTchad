@@ -5656,3 +5656,44 @@ duplique, liens conformes §160 (EN vers -en), rendu local FR desktop
 et EN mobile, 0 debordement. Note d'environnement : le serveur local
 via (setsid ... &) en sous-shell meurt desormais (exit 144 du shell
 parent) — relance fiable par nohup ... & disown ; verifier par curl.
+
+## 163 — ESG : assurance externe, foncier, surete & droits humains (2026-08-13)
+
+Seconde revue de « engage toutes » : ESG transverse. Referentiel
+frais : assurance limitee ISAE 3000 des rapports de durabilite, IFC
+Performance Standard 5 (acquisition de terres : eviter-minimiser-
+compenser au cout de remplacement, restauration des moyens de
+subsistance), Voluntary Principles on Security and Human Rights.
+
+Constat : couverture ESG deja forte — paiements aux Etats, ITIE, Zero
+Routine Flaring telemetre, methane chiffre sur impact (LDAR -92 %,
+4,2 kg CO2-eq/bbl), mecanisme de griefs protocolise (4 etapes datees),
+contenu local chiffre, cibles-2030 avec mode de verification par
+indicateur. Trois angles morts reels : personne d'independant ne
+verifie l'extra-financier ; pas un mot du foncier et des cultures ;
+rien sur l'encadrement des forces de securite.
+
+Trois blocs ajoutes (gabarit maison, avant cta-band) :
+1. **assurance-esg / esg-assurance** (engagements FR/EN) : assurance
+   limitee ISAE 3000 visee sur les indicateurs cles, revenus sous ITIE
+   (lien paiements-etats), auditable a la source (telemetrie
+   horodatee, registres — la logique CoA/custody appliquee a
+   l'extra-financier). Note reliant l'ambition climat chiffree
+   d'impact (reco 4 : le maillage existait deja, complete).
+2. **terre-cultures / land-crops** (communautes FR/EN) : eviter puis
+   minimiser (trace discute avant l'arpentage), compenser au cout de
+   remplacement sur bareme public verse avant l'entree en terre,
+   restaurer et suivre les moyens de subsistance ; branchement sur le
+   mecanisme de griefs existant (#dialogue). IFC PS5 nomme.
+3. **surete-droits / security-rights** (ethique FR/EN) : evaluation
+   des risques par site, regles d'engagement (force proportionnee en
+   dernier recours, clauses VPSHR dans chaque contrat de gardiennage),
+   rendre compte (incidents documentes, acces au mecanisme de griefs).
+   VPSHR nommes ; « c'est une realite, pas un tabou ».
+
+Reco 5 dependante des operations (premiere mission d'assurance,
+premiers baremes publies, premier rapport VPSHR), consignee.
+
+Verification : 3 cartes par bloc, 0 id duplique, liens conformes §160
+(EN vers -en, ancres presentes), rendu local FR desktop et EN mobile,
+0 debordement horizontal.
