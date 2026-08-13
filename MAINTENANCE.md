@@ -5505,3 +5505,65 @@ unique du corps, jamais sur un rang.
 Verification : sections presentes FR/EN, 3 cartes, 0 violation axe
 (contraste, region) ; tableaux presents dans le .jbody des deux carnets,
 4 lignes chacun ; media query une colonne pour la grille mobile.
+
+## 160 — Audit de coherence pages/sections/sujets/themes + reparation des liens de langue (2026-08-13)
+
+Demande : « Audit la coherence des pages, sections, sujets, themes »
+puis « Engage ». Audit statique exhaustif sur 202 pages (base f14e9c5),
+puis correction de tout ce qui a ete confirme.
+
+Verifie coherent, sans correction : jumelage FR/EN complet (97 paires,
+hreflang reciproques a 100 %, canonicals conformes) ; sections jumelees
+symetriques (les ecarts d'id type cle-acces/access-key sont des
+traductions, contenu equivalent verifie) ; « 1 070 km » (oleoduc
+Doba-Kribi) et « 1 700 km » (corridor routier Douala-N'Djamena)
+designent deux realites distinctes, usage rigoureux partout ; marques
+avec TM a la premiere mention, Tchadium sans TM uniforme ; « societe en
+constitution » / « company in formation » systematiques ; rubriques FR
+cartes = articles 27/27 ; titres et descriptions EN sans residu FR ;
+ar.html vers pages FR = arbitrage assume, pas un defaut.
+
+Defauts confirmes et corriges (48 fichiers) :
+
+1. **23 selecteurs de langue « Français » casses** — 15 pages EN dont le
+   jumeau FR est en sous-dossier pointaient vers /amont/parc (heritage
+   du gabarit parc-en) : hseq, impact, transition, patrimoine,
+   tchaditech x5, enerconseils/atlas et conseil, tchaditude x4. Et 8
+   pages pole-*-en dont le selecteur pointait vers... la page elle-meme,
+   defaut preexistant attrape par la verification generalisee (cible
+   attendue = jumeau declare par le hreflang fr). Toutes reparees vers
+   le vrai jumeau.
+2. **154 liens internes EN vers pages FR** alors que le jumeau EN
+   existe : les 24 cartes d'articles de carnets-en (+ carte STOP) vers
+   les articles FR, fils d'Ariane « Home » vers index au lieu de
+   index-en, paginations precedent/suivant, CTA de corps de page
+   (contact, investisseurs, engagements, societe, clients...), les 8
+   pole-*-en vers /#poles au lieu de /index-en#poles, et
+   /contact?profil=... au lieu de /contact-en?profil=... — reecrits par
+   script garde-fou : corps uniquement, jamais les selecteurs ni les
+   hreflang/canonical, fragments et parametres conserves, chaque ancre
+   verifiee presente dans la page EN cible (30 fragments, 0 manquant).
+3. **Tableau des specifications absent de produits-en** : section
+   specs-products portee depuis aval/produits (7 produits, EN 590,
+   EN 228, DEF STAN 91-091, bitumes 60/70-80/100, EnerLub API/SAE),
+   traduite, CSS spc-css copie, PDF signale « in French », inseree
+   avant #prd-buy comme en FR.
+4. **« 10 lignes/lines » perimes** depuis le passage du catalogue a 12
+   (chap. 155) : carte d'orientation services-ep FR/EN, solutions.html,
+   pastille pole-amont-en — 4 occurrences passees a 12 (catalogue
+   reverifie : 12 cartes des deux cotes).
+5. **Rubrique EN unifiee** : les cartes « Economics · Education »,
+   « Technical · Education » et « Technical · Explainer » (celle-ci
+   introduite par moi au chap. 156, erreur consignee) alignees sur le
+   libelle des articles « In plain words ». 6. Kicker brochure-en
+   harmonise (« local-content project »).
+
+Verification : re-audit a zero (plus aucun lien EN->FR hors selecteurs
+legitimes, 1 par page ; 0 ecart carte/article ; jumelage inchange) ;
+rendu produits-en controle en local desktop et mobile (theme clair
+adapte, tableau defilant, 0 debordement horizontal) ; aucun id duplique.
+
+Note d'environnement : srv_rw.py avait disparu de /root/work (churn du
+conteneur), recree depuis le gabarit du journal ; un pgrep trompeur
+laissait croire le serveur actif — desormais verifier par curl, pas par
+pgrep.
