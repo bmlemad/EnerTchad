@@ -5567,3 +5567,49 @@ Note d'environnement : srv_rw.py avait disparu de /root/work (churn du
 conteneur), recree depuis le gabarit du journal ; un pgrep trompeur
 laissait croire le serveur actif — desormais verifier par curl, pas par
 pgrep.
+
+## 161 — Distribution & reseau : la preuve jusqu'a la pompe (2026-08-13)
+
+Execution des recommandations 1-4 de la revue distribution/reseau
+(referentiel frais : Vivo Energy ~4 200 stations et modele dealer, Total
+controles qualite + client mystere, Oryx requalification des bouteilles
+GPL en Tanzanie, programmes nationaux de marquage moleculaire Ouganda/
+Kenya). Constat de la revue : la vision etait la (EnerPro, EnerClub,
+Mobile Stations, ARSAT, maillage 12 stations · 8 localites · 3 hubs),
+la preuve manquait a trois endroits. Quatre blocs ajoutes, gabarit
+maison (§157/159), avant cta-band :
+
+1. **preuve-litre / litre-proof** (aval/distribution + distribution-en) :
+   echantillon temoin scelle a chaque livraison station, etalonnage des
+   pompes a cadence reguliere avec certificat affiche, CoA par lot et
+   marquage moleculaire vise — le dernier maillon de la chaine custody
+   (§157) et des CoA (§159), boucle jusqu'a la pompe. Liens vers
+   logistique et raffinage (jumeaux corrects par langue, regle §160).
+2. **bouteille-securite / bottle-safety** (memes pages) : cycle de vie
+   de la bouteille consignee (epreuve periodique et requalification
+   visees, controle valve, retrait des bouteilles hors d'age), pesee
+   devant le client et controle d'etancheite a chaque recharge, gestes
+   du foyer (detendeur 28-30 mbar, eau savonneuse, debout et ventilee).
+   Le pendant securite de « la bouteille contre la hache ».
+3. **gerant / dealer** (aval/reseau + reseau-en) : ce que la marque
+   apporte / ce que le gerant apprend (Tchaditude Academie — pont
+   interne) / ce que l'enseigne verifie (client mystere, audits HSE et
+   metrologie). Le modele DODO desormais outille, pas seulement nomme.
+4. **station-sure / safe-station** (memes pages) : sur la piste (moteur
+   coupe, extincteurs), sous la dalle (double paroi, detection de
+   fuite, jaugeage rapproche), si ca tourne mal (arret d'urgence, kit
+   deversement, exercices). La ligne unique « HSE en station » devient
+   trois cartes concretes. Lien vers HSE-Q.
+
+Verification avant publication : 3 cartes par bloc, insertion avant
+cta-band, 0 id duplique ; 12 liens internes des blocs — cible
+existante, langue conforme (EN vers -en), ancres presentes ; rendu
+local desktop FR + EN et mobile 390 px : une colonne, 0 debordement
+horizontal. Artefact de sonde reconfirme : le gel animation/transition/
+opacity/transform ne fige pas `filter` — un cliche EN flou (blur du
+reveal en cours), sans defaut de la page ; a ajouter au neutraliseur si
+besoin de pixel-diff.
+
+Fichiers : aval/distribution.html, aval/reseau.html, distribution-en,
+reseau-en + MAINTENANCE.md. Reste de la revue : reco 5 dependante des
+operations reelles (indicateurs vecus a l'ouverture), consignee.
