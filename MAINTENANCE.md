@@ -5613,3 +5613,46 @@ besoin de pixel-diff.
 Fichiers : aval/distribution.html, aval/reseau.html, distribution-en,
 reseau-en + MAINTENANCE.md. Reste de la revue : reco 5 dependante des
 operations reelles (indicateurs vecus a l'ouverture), consignee.
+
+## 162 — HSE-Q transverse : regles vitales, apprentissage, sante au climat (2026-08-13)
+
+« Engage toutes » : execution de la revue HSE-Q transverse (premiere des
+deux revues restantes de la serie sectorielle). Referentiel frais :
+IOGP Life-Saving Rules (376 morts 2008-2017 evitables, langage commun
+motive par le fait que les contractants font ~80 % du travail), boucle
+presqu'accident/enquete/REX, programmes chaleur OSHA/NIOSH.
+
+Constat : la primaute de la securite, STOP, ALARP, ISO et la securite
+des procedes construite revue apres revue (§154 BOP, §159 torche, §161
+piste/cuves) etaient la. Manquaient : des regles vitales nommees, la
+boucle d'apprentissage, la sante au travail sahelienne.
+
+Trois blocs ajoutes sur greentech/hseq + hseq-en (avant cta-band,
+gabarit maison) :
+1. **regles-vitales / life-saving-rules** : les regles (permis valide,
+   energies isolees, ligne de feu, feu nu, ceinture, espace confine),
+   STOP en clef de voute (toute personne, quel que soit l'employeur,
+   sans reproche), memes regles pour les entreprises exterieures
+   (induction avant le premier jour, evaluation a la selection, lien
+   achats).
+2. **apprendre-avant / learn-before** : declaration sans blame (ce qui
+   est sanctionne, c'est de taire un risque), enquete a la gravite
+   potentielle (le boulon tombe a cote du casque), REX partage aux
+   equipes et sous-traitants ; ratio presqu'accidents/accidents comme
+   indicateur de culture, publication au calendrier cibles-2030.
+3. **sante-climat / health-climate** : chaleur (eau-ombre-pauses,
+   acclimatation, taches lourdes le matin), paludisme (moustiquaires,
+   depistage, medevac organisee avant le premier jour), aptitude et
+   EPI du climat (harmattan). Le pendant humain du « calendrier
+   tchadien » de §157, lien logistique.
+
+Reco 4 (renvois croises) constatee deja satisfaite : raffinage,
+services-ep et reseau pointent deja vers hseq dans les deux langues —
+le langage commun a desormais sa page d'ancrage. Reco 5 dependante des
+operations reelles (TRIR/LTIF constates), consignee.
+
+Verification : 3 cartes par bloc, insertion avant cta-band, 0 id
+duplique, liens conformes §160 (EN vers -en), rendu local FR desktop
+et EN mobile, 0 debordement. Note d'environnement : le serveur local
+via (setsid ... &) en sous-shell meurt desormais (exit 144 du shell
+parent) — relance fiable par nohup ... & disown ; verifier par curl.
