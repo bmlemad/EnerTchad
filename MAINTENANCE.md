@@ -5752,3 +5752,51 @@ touchee ; regle §158 reconfirmee. Le banc exige : variante servie au
 MEME CHEMIN (moteur de mode clair a liste blanche de chemins), second
 port avec racine en liens symboliques, gzip cote banc pour etre
 representatif de Vercel.
+
+## 165 — Le heros mobile allege : texture 760 px en chargement exclusif (2026-08-13)
+
+Execution du levier identifie au chapitre 164. sable-texture.webp
+(1400x2119, 175 Ko, fond du heros et couche rootland de 35 pages) recoit
+un variant mobile sable-texture-760.webp (760x1150, q68, 77 Ko).
+
+Deux pieges dejoues en route, consignes pour la suite :
+1. **L'ecrasement simple ne suffit pas** : une regle MQ qui surcharge la
+   meme propriete fait tout de meme telecharger l'image de la regle
+   perdante (Chromium charge les images des declarations correspondantes
+   meme battues a la cascade). Premiere forme testee : le mobile
+   telechargeait LES DEUX textures (252 Ko au lieu de 175) — pire
+   qu'avant. Forme retenue : **chargement exclusif** — la declaration de
+   base perd sa couche url (gradients conserves), deux blocs media
+   complementaires (max-width:820px / min-width:820.02px) portent
+   chacun leur url. Un seul telechargement par largeur, verifie par
+   trace reseau.
+2. **Un preload preexistant forcait l'original partout** : les pages
+   portaient <link rel="preload" as="image" ... sable-texture.webp> —
+   remplace par une paire de preloads a attribut media, un par variant.
+
+Formes traitees par le patch (35 pages, 0 anomalie au controle) :
+regles CSS html .hero (11 pages, !important conserve), .rootland (33),
+et attributs style en ligne .cms-photo (2 pages d'entete a cadre photo,
+surcharge :not(#_)!important puisque le style en ligne ne peut porter
+de media query — url retiree de l'attribut, deplacee dans les MQ).
+
+Mesures (banc local, 390 px, 1,6 Mb/s, 5 passes, mediane) :
+- LCP societe : 4 424 -> 4 220 ms (-204 ms) ; -98 Ko par page vue
+  mobile — sur un site dont la these est l'acces depuis le Tchad, le
+  poids compte autant que la vitesse.
+- Fidelite : hauteurs identiques, 0,000 % desktop, 0,041 % mobile
+  (re-echantillonnage de la texture, invisible — controle visuel fait).
+- Reseau en contexte neutre : 390 px -> uniquement la -760 ;
+  1 440 px -> uniquement l'originale. Le double chargement vu dans le
+  harnais de verification etait un artefact du gel de styles injecte.
+
+Note d'environnement : troisieme et quatrieme rembobinages du bac
+locaux constates aujourd'hui (avant la seance, puis EN COURS de seance :
+deux pages patchees — mentions-legales, enerconseils/index — revenues
+en arriere entre deux commandes ; re-patchees et reverifiees). Avant
+CHAQUE constitution de lots : recontroler git diff ET la presence des
+marqueurs du chapitre dans les fichiers stages.
+
+Fichiers : 34 pages racine + enerconseils/index.html + nouvelle image
+assets/img/sable-texture-760.webp (non suivie : a ajouter manuellement
+au lot, lecon du chapitre 156) + MAINTENANCE.md.
