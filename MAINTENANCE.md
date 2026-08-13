@@ -5697,3 +5697,58 @@ premiers baremes publies, premier rapport VPSHR), consignee.
 Verification : 3 cartes par bloc, 0 id duplique, liens conformes §160
 (EN vers -en, ancres presentes), rendu local FR desktop et EN mobile,
 0 debordement horizontal.
+
+## 164 — Chantier performance §150 conclu : mecanisme prouve, deploiement non retenu, vrai levier identifie (2026-08-13)
+
+Reprise du chantier borne au chapitre 150, harnais reconstruit de zero
+(les scripts avaient disparu — rembobinage du bac local, voir note).
+
+**Ce qui a ete etabli, dans l'ordre :**
+1. Extracteur de sous-ensemble rejoue (societe.html pilote, 10 feuilles,
+   ~154 Ko gardes sur 184) avec deux garde-fous nouveaux : union des
+   correspondances sur 4 etats (390/1440 x clair/sombre) apres
+   defilement complet, et union « tokens vivants » (une regle n'est
+   abandonnee que si ses classes/ids n'apparaissent ni dans le HTML ni
+   dans les scripts) — necessaire car le site injecte des classes par
+   JS (prem-mesh, mega-ultra, pghero).
+2. Malgre cela, barriere non franchie en clair (23-67 %). Bissection en
+   trois temps : feuille coupable (bundle_core_a1), puis texte source
+   integral inline = 0,00 % (le mecanisme inline est innocente), puis
+   bundle re-serialise integral = 23 % : **la serialisation cssText de
+   Chromium est en cause** (120 810 octets rendus pour 136 594 source,
+   pertes silencieuses, ecart max 38/255 — invisible a l'oeil, reel au
+   pixel). Le sous-ensemble par cssText est une impasse ; tout
+   extracteur futur devra decouper le TEXTE SOURCE.
+3. Variante retenue pour mesure : les 10 feuilles inlinees en texte
+   source integral. **Barriere franchie : 0,000-0,015 % sur les 4
+   etats, hauteurs identiques.** Faux artefacts ecartes en route :
+   ref-vs-ref 0,00 % (determinisme confirme), styles calcules et
+   pseudo-elements compares un a un (0 ecart sur 928 elements et 1 856
+   pseudo-elements).
+4. Mesure a 1,6 Mb/s (200 Ko/s, 150 ms RTT, CPU x4, gzip des deux
+   cotes, 5 passes, mediane) : **FCP 2 280 -> 748 ms (-67 %)**, LCP
+   2 988 -> 2 720 ms (-9 %). Le CSS bloque le premier rendu ; le LCP,
+   lui, bute sur l'image de fond du heros (element LCP = div.hero,
+   sable-texture.webp, 175 Ko), decouverte tard car en background CSS.
+   Un preload de l'image seul : gain nul (bande passante saturee).
+
+**Decision : deploiement non retenu.** L'inline integral doublerait le
+poids de chaque page HTML, gelerait 196 copies du CSS (toute correction
+future de nav_a.css exigerait de regenerer tout le site) et perdrait le
+cache inter-pages — pour -9 % de LCP. Le chantier se ferme sur un
+mecanisme prouve et un arbitrage assume, consigne avec ses chiffres.
+
+**Vrai levier LCP identifie pour un chantier futur** : variant mobile
+de sable-texture.webp (1400x2119, 175 Ko, quasi incompressible a
+qualite egale : grain haute entropie ; -3 % au re-encodage). Un 760 px
+(~50 Ko estimes) via media query sur les 36 pages qui l'utilisent en
+fond de heros vaudrait ~-0,6 s de LCP mobile au debit teste — a
+executer comme le collage de la home (chapitre anterieur, -28 %).
+
+Notes d'environnement : second rembobinage du bac local constate en
+debut de seance (HEAD local revenu a §161 alors qu'origin portait
+§163) — restauration par git archive FETCH_HEAD, production jamais
+touchee ; regle §158 reconfirmee. Le banc exige : variante servie au
+MEME CHEMIN (moteur de mode clair a liste blanche de chemins), second
+port avec racine en liens symboliques, gzip cote banc pour etre
+representatif de Vercel.
