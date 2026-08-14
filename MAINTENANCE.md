@@ -5889,3 +5889,38 @@ cinquieme manifestation du jour. Confirmation finale en sequentiel :
 12/12 pages propres.
 
 Fichiers : 9 pages EN + intermediaire/logistique(-en) + MAINTENANCE.
+
+## 168 — QA Safari desktop : matrice navigateurs completee, 198/198 propres (2026-08-14)
+
+Complement du chapitre 167 : le site n'avait jamais ete passe sous le
+moteur de Safari en desktop (les QA passees etaient Chromium ; les
+chapitres 166-167 ont couvert WebKit mobile). Balayage des 198 pages
+publiques sous WebKit 26 a 1440x900, theme sombre, par lots de 20 avec
+navigateur frais par lot (le balayage monolithique pendait — voir note
+d'environnement).
+
+**Resultat : 198/198 pages propres.** Zero erreur JS ou console, zero
+debordement horizontal, zero echec HTTP. Les briques modernes du site
+(color-mix, :has, svh, overflow:clip, backdrop-filter, proprietes
+geometriques SVG du chapitre 167) rendent toutes correctement sous le
+moteur Safari courant.
+
+Interactions desktop verifiees : mega-menu s'ouvre au clic (722 px de
+haut, coherent avec les hauteurs de reference), palette de recherche a
+Ctrl+K (ouverte plein ecran, 4 resultats sur « raffinage »), survols.
+Artefact de banc ecarte : le clic sur #plightBtn echoue a 1440 —
+normal, c'est le bouton de theme MOBILE, masque en desktop.
+
+Note d'environnement, la plus lourde du jour : le rembobinage du bac
+s'est accelere — /root/work vide de ses scripts en quelques minutes (a
+deux reprises), et l'installation WebKit de /opt/pw-browsers effacee en
+cours de seance (reinstallee). Parade adoptee : les scripts de banc
+vivent desormais dans /tmp, qui survit ; toute constitution de lots
+reverifie git diff + marqueurs juste avant l'envoi (regle du chapitre
+165). Si une session parallele est ouverte sur cette copie, la fermer —
+regle du chapitre 158 rappelee.
+
+Bilan de la matrice : Chromium desktop et mobile (chapitres anterieurs),
+WebKit/iOS mobile 198 pages (ch. 167), WebKit/Safari desktop 198 pages
+(ce chapitre) — aucune dette navigateur connue. Chapitre de journal
+seul, aucun fichier du site modifie.
