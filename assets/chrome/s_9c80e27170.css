@@ -47,3 +47,5 @@ footer .brand{display:inline-flex;align-items:center;gap:12px;text-decoration:no
 /* jtop-mobile-fix */@media(max-width:600px){.jtop{gap:10px;padding-left:14px;padding-right:14px}}
 /* iOS safe-area : l'en-tete colle des carnets respecte l'encoche. */
 @supports(top:env(safe-area-inset-top)){header.jtop:not(#_){padding-top:calc(14px + env(safe-area-inset-top));padding-left:max(clamp(18px,5vw,40px),env(safe-area-inset-left));padding-right:max(clamp(18px,5vw,40px),env(safe-area-inset-right))}}
+
+.jtop .jback:not(#_){padding:8px 10px;margin:-8px -10px}
