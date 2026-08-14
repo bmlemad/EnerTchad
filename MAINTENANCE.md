@@ -5800,3 +5800,52 @@ marqueurs du chapitre dans les fichiers stages.
 Fichiers : 34 pages racine + enerconseils/index.html + nouvelle image
 assets/img/sable-texture-760.webp (non suivie : a ajouter manuellement
 au lot, lecon du chapitre 156) + MAINTENANCE.md.
+
+## 166 — QA iOS (WebKit/Safari) : le site tient, deux cibles tactiles reprises (2026-08-13)
+
+Demande : « QA de la version mobile sur IOS ». Le bac ne peut pas
+executer Safari reel ; banc au plus pres : moteur WebKit 26 de
+Playwright (celui de Safari), installe pour l'occasion, descripteurs
+iPhone SE (375, x2, tactile) et Pro Max (430, x3), UA iOS 17,
+production comme cible.
+
+Batterie (10 pages archetypes x 2 tailles, clair + sombre, bandeau
+cookies vierge et accepte) : console/erreurs JS, debordement
+horizontal, rectangles de la zone basse (nezBar, cookies, bouton
+theme, scrollcue — regle du chapitre 152), champs < 16 px (zoom iOS au
+focus : AUCUN — le formulaire contact est sain), meta viewport
+(viewport-fit=cover present) et usage de safe-area-inset (present),
+cibles tactiles < 24 px. Interactions au tap : menu mobile, bascule de
+theme, cartes flip (inert §151 au passage), carrousel du heros
+(avance + tap sur point). Resultat : tout passe, zero erreur JS, zero
+debordement, zero collision de zone basse, zero champ zoomant.
+
+Deux faux positifs ecartes et consignes : un OVERFLOW+68 avec nezBar
+geant sur le carnet forage-dirige — une feuille CSS avait echoue au
+chargement (TLS transitoire du bac) ; re-test : 0 debordement. Et le
+bandeau cookies « visible » dans les rectangles : il etait hors ecran
+(etat cache), le controle de zone doit exclure y > viewport.
+
+Deux vraies cibles reprises :
+1. **Les 5 points du carrousel du heros (12x12, pas de 22 px)** sur
+   index et index-en. Le bundle prevoyait deja min 44 px — mais la
+   regle blindee de la page les re-forcait a 12x12!important (erreur
+   maison consignee). Correctif visuellement neutre : contenu 12 px +
+   **bordure transparente de 6 px** (boite de frappe 24x24,
+   background-clip:padding-box, le remplissage ::after reste dans la
+   boite de padding), gap 10 -> 0 (pas de 22 -> 24 px, ecart visuel
+   +2 px par intervalle, imperceptible — capture a l'appui). Premier
+   essai corrige : width:24 avec box-sizing content-box donnait un
+   point VISIBLE de 24 px (boite 36) — le visuel est la boite de
+   padding, pas la largeur declaree.
+2. **Le lien retour des carnets (16x19)** : regle ajoutee a la feuille
+   partagee s_9c80e27170.css (.jtop .jback : padding 8/10 + marges
+   negatives equivalentes) — zone de frappe 44x44 sur les 52 pages
+   journal, barre jtop a hauteur inchangee (124 px), aucun
+   chevauchement.
+
+Verdict QA : la version iOS est saine — rendu WebKit conforme,
+interactions tactiles fonctionnelles, safe-area geree ; les deux seuls
+defauts trouves sont corriges ci-dessus. Rembobinage du bac constate
+encore deux fois pendant la seance (43 fichiers puis /root/work) —
+restaurations par git archive, production intacte.
