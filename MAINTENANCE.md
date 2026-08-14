@@ -5849,3 +5849,43 @@ interactions tactiles fonctionnelles, safe-area geree ; les deux seuls
 defauts trouves sont corriges ci-dessus. Rembobinage du bac constate
 encore deux fois pendant la seance (43 fichiers puis /root/work) —
 restaurations par git archive, production intacte.
+
+## 167 — Balayage iOS complet : 198 pages sous WebKit, trois familles reprises (2026-08-13)
+
+Generalisation de la QA iOS du chapitre 166 a tout le site : 198 pages
+publiques sous WebKit 26, iPhone SE 375 px tactile — erreurs JS,
+debordements, cibles < 24 px, zone basse (rectangles hors ecran exclus,
+lecon du chapitre precedent). Resultat brut : 183/198 propres, 15
+constats, trois familles reelles apres tri.
+
+1. **homeFab sur la barre mobile — 9 pages EN heritees** (accessibilite,
+   avertissements, carrieres, charte, cibles-2030, communautes,
+   gouvernance, innovation, plan-du-site). Ces pages, greffees avec un
+   bloc homeFab autonome, montraient apres defilement un bouton
+   flottant [18,619] 46x46 pose SUR la barre basse [0,607] — en plein
+   sur son bouton Accueil (famille du chapitre 152). En FR le flottant
+   n'existe pas sur mobile. Correctif : bloc fab-mob par page,
+   @media <= 820 px -> #homeFab masque. Verifie apres defilement :
+   display none, plus de chevauchement.
+2. **Nœuds du schema corridor (logistique FR/EN) a 12x12.** Le
+   diagramme SVG Doba->Kribi porte 5 nœuds interactifs (role=button,
+   tabindex) rendus 12 px a l'echelle mobile — alors que chaque nœud
+   possede deja un halo decoratif. Correctif : @media <= 900 px, rayon
+   du halo porte a 38 (propriete geometrique CSS r, supportee WebKit)
+   + pointer-events:all -> cible 24x24 mesuree, tap verifie (noeud
+   actif bascule), halo a peine plus present visuellement.
+3. **Consigne sans correction** : marqueurs de champs de l'atlas
+   (Kome, Miandoum... — cartographie dense, positions geographiques
+   contraintes, contenu equivalent en texte sur la page, accessibles
+   clavier) et bascule du Configurateur (outil autonome hors parcours
+   public) — exceptions assumees, documentees ici.
+
+Faux positifs consignes : OX+14 sur investisseurs (bandeau d'onglets a
+defilement horizontal mesure pendant l'animation d'apparition — au
+repos : 0) ; et un re-balayage qui a re-signale des pages DEJA
+corrigees — les fichiers etaient sains au controle et a la
+reproduction : etat transitoire du gremlin de rembobinage du bac,
+cinquieme manifestation du jour. Confirmation finale en sequentiel :
+12/12 pages propres.
+
+Fichiers : 9 pages EN + intermediaire/logistique(-en) + MAINTENANCE.
