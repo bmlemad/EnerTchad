@@ -1170,5 +1170,18 @@ function tg(){var o=col.classList.toggle("open");h.setAttribute("aria-expanded",
 h.addEventListener("click",tg);
 h.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();tg();}});
 })(cols[i]);
-}catch(e){}})();</script><div class="rootland" aria-hidden="true"></div><style id="cue-tact">#scrollcue{transition:opacity .3s,visibility .3s}html.cue-off #scrollcue{opacity:0!important;visibility:hidden!important;pointer-events:none!important}</style><script id="cue-tact-js">(function(){var h=document.documentElement,t;function m(){var off=scrollY>140;h.classList.toggle("cue-off",off)}addEventListener("scroll",function(){clearTimeout(t);t=setTimeout(m,80)},{passive:true});m();})();</script><script id="tcol-js">(function(){function m(){var el=document.querySelector('meta[name="theme-color"]');if(!el){el=document.createElement("meta");el.name="theme-color";document.head.appendChild(el)}var l=document.documentElement.classList;el.content=(l.contains("et-plight")||l.contains("et-jlight"))?"#FBF9F3":"#0B1322"}m();new MutationObserver(m).observe(document.documentElement,{attributes:true,attributeFilter:["class"]});})();</script></body>
+}catch(e){}})();</script><div class="rootland" aria-hidden="true"></div><style id="cue-tact">#scrollcue{transition:opacity .3s,visibility .3s}html.cue-off #scrollcue{opacity:0!important;visibility:hidden!important;pointer-events:none!important}</style><script id="cue-tact-js">(function(){var h=document.documentElement,t;function m(){var off=scrollY>140;h.classList.toggle("cue-off",off)}addEventListener("scroll",function(){clearTimeout(t);t=setTimeout(m,80)},{passive:true});m();})();</script><script id="tcol-js">(function(){function m(){var el=document.querySelector('meta[name="theme-color"]');if(!el){el=document.createElement("meta");el.name="theme-color";document.head.appendChild(el)}var l=document.documentElement.classList;el.content=(l.contains("et-plight")||l.contains("et-jlight"))?"#FBF9F3":"#0B1322"}m();new MutationObserver(m).observe(document.documentElement,{attributes:true,attributeFilter:["class"]});})();</script><style id="tchad-heure-css">.hero::after{content:"";position:absolute;inset:0;pointer-events:none;mix-blend-mode:soft-light;opacity:0;transition:opacity 1.2s ease;z-index:1}
+html.et-h-aube .hero::after{background:linear-gradient(160deg,rgba(255,196,150,.55),rgba(120,80,140,.3));opacity:.34}
+html.et-h-crep .hero::after{background:linear-gradient(160deg,rgba(255,150,60,.55),rgba(140,50,90,.35));opacity:.38}
+html.et-h-nuit .hero::after{background:linear-gradient(160deg,rgba(30,60,130,.5),rgba(10,20,60,.45));opacity:.3}
+.tchad-heure{font-family:var(--fm,ui-monospace,monospace);font-size:.7rem;letter-spacing:.08em;color:rgba(233,238,245,.5);margin:14px 0 0}
+html.et-plight .tchad-heure{color:rgba(20,32,50,.55)}</style>
+<script id="tchad-heure-js">try{(function(){
+function maj(){var d=new Date(Date.now()+(new Date().getTimezoneOffset()+60)*60000);var h=d.getHours(),mn=d.getMinutes();
+var c=document.documentElement.classList;c.remove('et-h-aube','et-h-crep','et-h-nuit');
+if(h>=5&&h<7)c.add('et-h-aube');else if(h>=17&&h<19)c.add('et-h-crep');else if(h>=19||h<5)c.add('et-h-nuit');
+var el=document.getElementById('tchadHeure');
+if(!el){var f=document.querySelector('footer .wrap');if(f){el=document.createElement('p');el.id='tchadHeure';el.className='tchad-heure';f.appendChild(el);}}
+if(el)el.textContent='Il est '+h+' h '+String(mn).padStart(2,'0')+' \u00e0 N\u2019Djamena \u2014 le site vit \u00e0 l\u2019heure du Tchad.';}
+maj();setInterval(maj,60000);})()}catch(e){}</script></body>
 </html>

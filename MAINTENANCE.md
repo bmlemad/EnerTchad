@@ -5924,3 +5924,55 @@ Bilan de la matrice : Chromium desktop et mobile (chapitres anterieurs),
 WebKit/iOS mobile 198 pages (ch. 167), WebKit/Safari desktop 198 pages
 (ce chapitre) — aucune dette navigateur connue. Chapitre de journal
 seul, aucun fichier du site modifie.
+
+## 169 — Vague wow 1 : compteurs, heure du Tchad, CTA dores (2026-08-14)
+
+Execution de la vague 1 des propositions d'eclat. Decouverte honnete en
+ouverture : la proposition n° 1 (transitions de page View Transitions)
+etait DEJA en production dans bundle_core_a1 — opt-in navigation:auto,
+neutralisation reduced-motion, fondus vtfo/vtfi — posee par un chapitre
+anterieur et oubliee de ma propre revue. Verifiee fonctionnelle,
+consignee, rien a refaire. Trois nouveautes livrees :
+
+1. **Compteurs KPI** (u_cd226c00eb4b.js, 195 pages) : les chiffres des
+   tuiles (.tri-kpi b, .ppj-kpi, .atc-stat b...) se comptent de zero a
+   leur valeur en 900 ms (easing cubic-out) a leur apparition
+   (IntersectionObserver a 60 %), separateurs de milliers, decimales a
+   virgule et suffixes respectes (« 1 070 km · secteur » ; « ~1,5 Md »
+   ignore par prudence, prefixe non numerique). Court-circuite si
+   prefers-reduced-motion. Verifie avant l'incident de bac : sequence
+   78 % -> 96 % -> 100 % capturee sur un KPI hors ecran, texte final
+   restitue a l'identique (le texte d'origine est la source de verite).
+2. **L'heure du Tchad** (index + index-en) : le site sait l'heure de
+   N'Djamena (UTC+1, calculee du fuseau visiteur). Aube 5-7 h,
+   crepuscule 17-19 h, nuit : un voile en soft-light (opacite .30-.38,
+   transition 1,2 s) rechauffe ou bleuit le heros — au crepuscule, le
+   halo radial existant devient un soleil couchant sur le chevalet de
+   pompage, accident heureux capture. Ligne discrete au pied de page :
+   « Il est 18 h 04 a N'Djamena — le site vit a l'heure du Tchad. »
+   En journee : aucun voile, site inchange.
+3. **Balayage dore des CTA** (nav_a.css, 137 pages a nav) : au survol
+   ou focus-visible d'Investir (.nx-util-in .nx-invest) et du CTA
+   principal du bandeau (.cb-btn.cb-p), un eclat de lumiere traverse le
+   bouton (800 ms). Media (hover:hover) et no-preference uniquement.
+   Lecon de placement : d'abord pose dans bundle_core_a1, regle inerte
+   sur la home — la home ne charge PAS ce bundle ; deplace dans
+   nav_a.css, qui couvre par construction toutes les pages portant ces
+   CTA. Verifier la feuille effectivement chargee par la page cible.
+
+Note d'environnement, gravissime : au moment de publier, Chrome a cesse
+de repondre, puis le bac a subi son rembobinage le plus profond —
+/root/etc, /root/work, /tmp et les lots stages ENTIEREMENT effaces.
+Recuperation : re-clonage depuis origin (8a906a8 intact — la production
+n'a jamais rien perdu), re-application integrale des trois nouveautes
+depuis la memoire de session, re-verification des marqueurs avant lots.
+Le clone jetable + le journal comme memoire externe font exactement le
+travail prevu par la discipline des chapitres 158/165.
+
+Verifications d'avant incident (Chromium) : zero erreur console,
+compteur anime puis texte exact, voile nuit/crepuscule captures
+(contraste du titre preserve — la « disparition » du titre sur une
+capture etait la rotation du carrousel), shimmer au survol (animation
+etShine active), reduced-motion : compteurs inertes. Re-verification
+post-recuperation : marqueurs presents, controle rapide au chargement.
+Fichiers : nav_a.css, u_cd226c00eb4b.js, index, index-en + MAINTENANCE.
