@@ -6272,3 +6272,26 @@ retabli (underline + text-underline-offset:3px) ; axe re-execute sur /ar :
 
 VERIFIE. Diff limite a 2 lignes sur ar.html ; axe 0 violation sur /ar ;
 parite md5 apres publication ; production controlee.
+
+## 179 — Cloture de la journee autonome : controles croises tous au vert (2026-08-19)
+
+CONTEXTE. Fin de la journee en autonomie (chapitres 176 a 178). Deux
+controles de cloture avant de rendre la main.
+
+FAIT ET VERIFIE.
+- Production complete : les 198 URL du site repondent 200 sur Vercel
+  (3 echecs reseau transitoires cote sonde, confirmes 200 au second
+  passage — rien cote site).
+- WebKit (moteur Safari) 18.2 reinstalle (le conteneur l'avait encore
+  efface) et fume-test sur les 10 pages les plus touchees par les
+  chapitres 174-178 (home FR/EN, societe, raffinage, explorateur, ar,
+  carrieres-en, impact-en, tchaditech/socle, investisseurs) en
+  desktop + mobile x clair + sombre : 0 erreur console, 0 debordement
+  sur les 40 combinaisons.
+
+ETAT DU SITE EN FIN DE JOURNEE. HEAD f9d01dc + ce chapitre. Site plus
+eclaire (174-176), theme-color coherent sous ses quatre syntaxes,
+depot sans orphelins (177), accessibilite exhaustivement verte (178),
+production 198/198. Les seuls chantiers ouverts dependent de
+l'utilisateur : seance photo (liste livree, plan B1 pour la station de
+jour), noms reels d'equipe, volumes d'import par pays.
