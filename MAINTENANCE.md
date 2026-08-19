@@ -6172,3 +6172,48 @@ final qui a attrape le residu.
 VERIFIE. 0 occurrence residuelle des deux anciennes valeurs ; 197 pages
 porteuses de #111D33 ; parite md5 apres publication ; production
 controlee sur echantillon.
+
+## 176 — Ultra revue : audit complet du site, trois ecarts reels, tout corrige (2026-08-19)
+
+DEMANDE. Ultra review et audit de tout le site, puis application des actions.
+
+METHODE. Batterie statique python sur les 198 pages (liens internes, ancres,
+assets, titres, descriptions, canonical, hreflang, og/twitter, lang, JSON-LD,
+IDs dupliques, img sans alt, sitemap, manifest, placeholders, fuite de
+francais sur les pages EN, poids des images, orphelins) + batterie dynamique
+Chromium headless sur serveur local (erreurs console sur 20 pages x 2 themes,
+axe WCAG AA sur 10 pages x 2 themes, debordement horizontal mobile 390px sur
+10 pages) + controle des en-tetes de securite en production.
+
+BILAN SAIN (rien a corriger) : 0 lien mort, 0 asset manquant, 0 ID duplique,
+0 titre/description absent ou duplique, canonical et hreflang coherents,
+sitemap complet et sans entree morte, JSON-LD valides, 0 image sans alt,
+0 erreur console (40 combinaisons page-theme), 0 debordement mobile,
+0 francais residuel sur les pages EN, CSP/HSTS/nosniff/frame-options en
+place, poids dans les budgets (les 2 seules images >180 Ko sont orphelines).
+
+TROIS ECARTS REELS, CORRIGES.
+1. site.webmanifest : theme_color et background_color encore a #060B14
+   (nuit profonde d'avant le 174) — passes a #111D33, la valeur de la balise
+   meta. Meme famille de residu que le 175 : la couleur vivait sous une
+   quatrieme syntaxe (JSON du manifest) que les balayages 174-175 ne
+   couvraient pas.
+2. Ancre morte #jobs-youth sur carrieres-en et impact-en vers
+   /pole-tchaditude-en : la section s'appelle #emplois-jeunesse (id francais
+   conserve sur la jumelle EN). Lien corrige sur les deux pages.
+3. Explorateur de chaine, theme sombre : 7 violations axe color-contrast
+   (libelles .seclbl a alpha .45 -> 4.28:1, pied de page a alpha .4 ->
+   3.65:1, sous-titres colores a opacity .75 -> 4.33:1). Alphas remontes
+   (.45->.55, .42->.58, footer .4->.6, opacity .75->.9) sur les deux
+   explorateurs FR et EN. Axe re-execute : 0 violation sur les 10 pages
+   x 2 themes.
+
+CONSIGNE SANS ACTION. 6 images orphelines dans assets/img (893 Ko, dont
+raffinerie-nuit.webp orpheline depuis le 174, gardee en reserve pour un
+eventuel retour, et girafes-dikala/lac-tchad-espace les deux seules >180 Ko)
+: aucun impact en production (jamais servies), suppression laissee a un
+arbitrage futur car le flux de publication par televersement ne supprime pas.
+
+VERIFIE. Diff limite a 12 lignes sur 5 fichiers ; axe 0 violation apres
+correction ; ancre #emplois-jeunesse existante sur la cible ; parite md5
+apres publication ; controles production sur echantillon.
