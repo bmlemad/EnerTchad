@@ -190,3 +190,32 @@ try{(function(){
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',arme);
   else arme();
 }catch(e){}})();
+
+/* Ch169 : compteurs KPI — les chiffres se comptent a l'apparition. */
+try{(function etcCount(){
+if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+var els=[].slice.call(document.querySelectorAll('.tri-kpi b,.pgh-kpi b,.ppj-kpi,.atc-stat b,.ilede-stat b,.cb-num'));
+var re=/^(\s*)([0-9]{1,3}(?:[\u00A0\u202F ][0-9]{3})+|[0-9]+(?:[.,][0-9]+)?)/;
+els.forEach(function(el){
+ if(el.childElementCount>0)return;
+ var t=el.textContent,m=re.exec(t);if(!m)return;
+ var raw=m[2],suf=t.slice(m[0].length);
+ var num=parseFloat(raw.replace(/[\u00A0\u202F ]/g,'').replace(',','.'));
+ if(!isFinite(num)||num<=0||num>1e7)return;
+ var dec=(raw.match(/[.,]([0-9]+)/)||[0,''])[1].length;
+ var sepm=raw.match(/[\u00A0\u202F ]/),sep=sepm?sepm[0]:'';
+ var comma=raw.indexOf(',')>=0;
+ var io=new IntersectionObserver(function(en){en.forEach(function(e){
+  if(!e.isIntersecting)return;io.unobserve(el);
+  var t0=performance.now(),D=900;
+  function fmt(v){var s=v.toFixed(dec);if(comma)s=s.replace('.',',');
+   if(sep){var pi=s.search(/[.,]/);if(pi<0)pi=s.length;var ent=s.slice(0,pi).replace(/\B(?=(\d{3})+(?!\d))/g,sep);s=ent+s.slice(pi);}
+   return s;}
+  function step(now){var k=Math.min(1,(now-t0)/D);k=1-Math.pow(1-k,3);
+   el.textContent=m[1]+fmt(num*k)+suf;
+   if(k<1)requestAnimationFrame(step);else el.textContent=t;}
+  requestAnimationFrame(step);
+ })},{threshold:.6});
+ io.observe(el);
+});
+})()}catch(e){}

@@ -163,3 +163,11 @@ body:has(#navLinks.open) #ckn,body:has(#navLinks.open) .lum-ctl,body:has(#navLin
    visible (verifie : 709x396 rendus apres clip). clip et non hidden : pas de contexte de
    defilement cree. */
 #nav{overflow-x:clip}
+
+/* Ch169 : balayage dore des CTA premium */
+@media (hover:hover) and (prefers-reduced-motion: no-preference){
+.nx-util-in .nx-invest,.cb-btn.cb-p{position:relative;overflow:hidden}
+.nx-util-in .nx-invest::after,.cb-btn.cb-p::after{content:"";position:absolute;top:0;bottom:0;left:-70%;width:45%;transform:skewX(-22deg);background:linear-gradient(90deg,transparent,rgba(255,236,190,.4),transparent);opacity:0;pointer-events:none}
+.nx-util-in .nx-invest:hover::after,.cb-btn.cb-p:hover::after,.nx-util-in .nx-invest:focus-visible::after,.cb-btn.cb-p:focus-visible::after{opacity:1;animation:etShine .8s ease}
+@keyframes etShine{from{left:-70%}to{left:110%}}
+}
