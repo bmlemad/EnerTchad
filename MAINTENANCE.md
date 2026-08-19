@@ -5976,3 +5976,38 @@ capture etait la rotation du carrousel), shimmer au survol (animation
 etShine active), reduced-motion : compteurs inertes. Re-verification
 post-recuperation : marqueurs presents, controle rapide au chargement.
 Fichiers : nav_a.css, u_cd226c00eb4b.js, index, index-en + MAINTENANCE.
+
+## 170 — Le fil du baril : la signature scrollytelling de l'accueil (2026-08-14)
+
+Premiere piece signature des propositions wow : « de la roche-mere a la
+pompe » devient un voyage visible. Sur l'accueil FR/EN, un fil dore
+court le long des quatre maillons (#coeurs) : le trait se remplit avec
+le defilement, une goutte doree lumineuse voyage a son front, et un
+jalon s'allume au passage de chaque maillon (E&P, transport, raffinage-
+distribution, petrochimie).
+
+Fabrication : ~60 lignes de CSS + ~50 de JS par page, zero image, zero
+bibliotheque. Rail absolu dans #coeurs, progression par variable CSS
+--filp posee sous requestAnimationFrame (ecouteur scroll passif),
+jalons par seuils calcules au layout (centres reels des panneaux,
+recalcules au resize). Desktop >= 900 px uniquement ; masque ET non
+construit sous prefers-reduced-motion ; pointer-events:none partout.
+
+Deux lecons de fabrication consignees :
+1. **La couche theme clair ecrase les fonds des inconnus** : premiere
+   pose invisible — background:none constate sur le remplissage et la
+   goutte (les degrades neutralises par les regles d'adaptation de la
+   page). Blindage a la discipline maison (:not(#_):not(#__) +
+   !important sur les proprietes visuelles) : degrades presents dans
+   les DEUX themes, verifie par style calcule.
+2. **elementFromPoint ment sur les elements pointer-events:none** (il
+   les saute) — fausse piste d'empilement ecartee ; et le « retard »
+   du fil au banc etait le scroll-behavior:smooth du site (chaque
+   lecture montrait exactement la cible precedente) — confirme en
+   behavior:instant : suivi exact (filp 0.65/0.98, jalons 1100/1111).
+
+Verifications : FR et EN, remplissage et goutte suivent le defilement,
+jalons s'allument dans l'ordre, 4 jalons EN, 0 debordement, 0 erreur
+console, mobile sans rail, reduced-motion sans rail. Capture du fil en
+flanc de panneau (goutte au front, jalon allume au-dessus, eteint
+au-dessous). Fichiers : index, index-en + MAINTENANCE.

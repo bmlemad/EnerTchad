@@ -1181,5 +1181,35 @@ if(h>=5&&h<7)c.add('et-h-aube');else if(h>=17&&h<19)c.add('et-h-crep');else if(h
 var el=document.getElementById('tchadHeure');
 if(!el){var f=document.querySelector('footer .wrap');if(f){el=document.createElement('p');el.id='tchadHeure';el.className='tchad-heure';f.appendChild(el);}}
 if(el)el.textContent='It is '+String(h).padStart(2,'0')+':'+String(mn).padStart(2,'0')+' in N\u2019Djamena \u2014 this site lives on Chad time.';}
-maj();setInterval(maj,60000);})()}catch(e){}</script></body>
+maj();setInterval(maj,60000);})()}catch(e){}</script><style id="fil-css">@media (min-width:900px) and (prefers-reduced-motion: no-preference){
+#coeurs{position:relative}
+#filBaril:not(#_):not(#__){position:absolute;left:34px;top:0;bottom:0;width:2px;z-index:6;pointer-events:none;background:rgba(232,195,106,.14)!important}
+#filBaril:not(#_):not(#__) .fil-fill{position:absolute;left:0;top:0;width:100%;height:100%;background:linear-gradient(180deg,rgba(232,195,106,.9),rgba(232,195,106,.45))!important;transform-origin:top;transform:scaleY(var(--filp,0));will-change:transform}
+#filBaril:not(#_):not(#__) .fil-goutte{position:absolute;left:50%;top:0;width:11px;height:11px;margin-left:-5.5px;border-radius:50%;background:radial-gradient(circle at 38% 32%,#FFE9B8,#E8C36A 58%,#8A6A12)!important;box-shadow:0 0 14px 3px rgba(232,195,106,.55)!important;transform:translateY(calc(var(--filp,0)*var(--filh,0px)));will-change:transform}
+#filBaril:not(#_):not(#__) .fil-dot{position:absolute;left:50%;width:9px;height:9px;margin-left:-4.5px;border-radius:50%;background:#2A2416!important;border:1.5px solid rgba(232,195,106,.5)!important;transition:background .5s,box-shadow .5s,border-color .5s}
+#filBaril:not(#_):not(#__) .fil-dot.on{background:#E8C36A!important;border-color:#FFE9B8!important;box-shadow:0 0 10px 2px rgba(232,195,106,.5)!important}
+}
+@media (max-width:899.98px),(prefers-reduced-motion: reduce){#filBaril{display:none}}</style>
+<script id="fil-js">try{(function(){
+if(matchMedia('(prefers-reduced-motion: reduce)').matches||!matchMedia('(min-width:900px)').matches)return;
+var sec=document.getElementById('coeurs');if(!sec)return;
+var rail=document.createElement('div');rail.id='filBaril';rail.setAttribute('aria-hidden','true');
+rail.innerHTML='<div class="fil-fill"></div><div class="fil-goutte"></div>';
+sec.appendChild(rail);
+var panels=[].slice.call(sec.querySelectorAll('.mln'));
+var dots=panels.map(function(p){var d=document.createElement('div');d.className='fil-dot';rail.appendChild(d);return d});
+function layout(){var sr=sec.getBoundingClientRect(),st=sr.top+scrollY,h=sec.offsetHeight;
+ rail.style.setProperty('--filh',(h-14)+'px');
+ panels.forEach(function(p,i){var r=p.getBoundingClientRect();dots[i].style.top=(r.top+scrollY-st+p.offsetHeight/2-4)+'px'});return {st:st,h:h}}
+var geo=layout();
+addEventListener('resize',function(){geo=layout()},{passive:true});
+var tick=false;
+function maj(){tick=false;
+ var centre=scrollY+innerHeight*.55;
+ var p=Math.max(0,Math.min(1,(centre-geo.st)/geo.h));
+ rail.style.setProperty('--filp',p.toFixed(4));
+ dots.forEach(function(d,i){var seuil=(parseFloat(d.style.top)||0)/geo.h;d.classList.toggle('on',p>=seuil)})}
+addEventListener('scroll',function(){if(!tick){tick=true;requestAnimationFrame(maj)}},{passive:true});
+maj();
+})()}catch(e){}</script></body>
 </html>
