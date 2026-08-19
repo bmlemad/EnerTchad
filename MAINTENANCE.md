@@ -6241,3 +6241,34 @@ ou sitemap.
 VERIFIE. FETCH_HEAD sans les six blobs ; clone local aligne ; production :
 les six URL repondent 404 (jamais referencees), les pages echantillon
 restent en 200 ; poids du dossier img allege de 893 Ko.
+
+## 178 — L'ultra revue passe a l'exhaustif : 198 pages balayees, un vrai ecart (2026-08-19)
+
+CONTEXTE. L'utilisateur m'a laisse la main pour la journee. Le chapitre 176
+avait audite sur echantillon ; ce chapitre etend les balayages dynamiques a
+la totalite des 198 pages, par tranches de 25 avec navigateur frais (lecon
+des chapitres precedents contre les derives de session longue).
+
+BILAN EXHAUSTIF.
+- Console : 0 erreur sur 396 combinaisons (198 pages x 2 themes).
+- Axe WCAG AA, theme clair : 0 violation sur 198 pages.
+- Debordement horizontal mobile 390 px : 0 sur 198 pages.
+- Axe WCAG AA, theme sombre : 5 pages signalees, dont 4 artefacts de
+  mesure et 1 vrai ecart.
+
+LES 4 ARTEFACTS (verifies par 3 re-executions a 400/800/2500 ms) :
+pole-enerchimie-en, amont/activites, intermediaire/services-en ne se
+reproduisent jamais ; tchaditech/socle se reproduit a 400 et 800 ms sur
+des elements .ets-* mais est propre a 2500 ms — axe mesure les couleurs
+pendant les animations d'entree (interpolation), pas l'etat stable.
+Etat stable conforme sur les 4 pages ; aucun changement.
+
+LE VRAI ECART, CORRIGE. Page arabe /ar : 5 liens (selecteur de langue,
+investisseurs, contact, pied de page) distingues du texte par la seule
+couleur — axe link-in-text-block, deterministe a chaque passage. Les
+regles .lang a et footer a portaient text-decoration:none. Souligne
+retabli (underline + text-underline-offset:3px) ; axe re-execute sur /ar :
+0 violation dans les deux themes.
+
+VERIFIE. Diff limite a 2 lignes sur ar.html ; axe 0 violation sur /ar ;
+parite md5 apres publication ; production controlee.
