@@ -6387,3 +6387,42 @@ la validation ITIE Tchad 2026 ; FAQ investisseur individuel.
 VERIFIE. Diff 4 lignes / 4 fichiers ; textes EIA et 64,5/100 rendus sur
 les 4 pages ; axe 0 violation, console 0 erreur sur 4 pages x 2 themes ;
 parite md5 apres publication ; production controlee.
+
+## 182 — Revue sectorielle volet 9, RH et carrieres : l'INSPEM de Mao entre sur le site (2026-08-19)
+
+DEMANDE. « Next » — neuvieme et dernier volet des grands domaines.
+
+INVENTAIRE. Pole complet : carrieres (parcours en cinq etapes, gratuite
+anti-arnaque affichee), academie (quatre parcours, partenariats,
+releve 100 % tchadienne), services capital humain, carnet « Former avant
+d'extraire », cible 80 % de contenu local.
+
+REFERENTIEL. Fait majeur : l'Institut national superieur de petrole de
+Mao (INSPEM) existe et diplome — en decembre 2025 le ministere du Petrole
+recensait ses licencies sans emploi, un vivier national forme et
+disponible. Region : Senegal 50 % de contenu local vise d'ici 2030,
+Niger en chantier — la cible EnerTchad de 80 % est au-dessus des
+standards. Monde : « great crew change », viviers nationaux strategiques.
+
+TROIS ECARTS, CORRIGES (FR+EN, 6 fichiers, 8 lignes).
+1. L'INSPEM etait absent du site alors que les partenariats citaient
+   IFP School et trois etablissements tchadiens : ajoute en tete des
+   partenariats academiques (academie FR+EN) et dans la candidature
+   spontanee (carrieres FR+EN). « Inventorier d'abord » vaut aussi pour
+   les institutions du pays.
+2. La cible 80 % publiee sans etalon : comparee au Senegal (50 % vise
+   2030) sur tchaditude/index et pole-tchaditude-en.
+3. « 1 240 emplois directs » etait le seul chiffre du bloc stats sans
+   etiquette de source : marque « (donnee secteur) » FR+EN.
+
+CINQ RECOS (revue livree) : convention INSPEM reelle ; grille des metiers
+en tension au demarrage du recrutement ; compteur du vivier ; diffusion
+du message anti-arnaque ; veille sur un futur cadre legal tchadien de
+contenu local.
+
+VERIFIE. Diff 8 lignes / 6 fichiers ; INSPEM rendu sur les 4 pages,
+Senegal sur les 2 ; axe 0 violation, console 0 erreur sur 6 pages x 2
+themes ; parite md5 apres publication ; production controlee.
+
+La serie des revues sectorielles est complete : neuf volets, tous les
+grands domaines du site passes au referentiel frais.
