@@ -6138,3 +6138,37 @@ raffinage ; texte blanc des heros lisible sur les nouveaux voiles
 (capture) ; raffinage-en au jour egalement ; 0 erreur console.
 Fichiers : 197 pages + 3 feuilles (bundle_head_b2, s_a6075b7e39,
 s_99c21a3880) + MAINTENANCE.
+
+## 175 — Residu du 174 : la balise theme-color statique rejoint la soiree (2026-08-19)
+
+CONTEXTE. Le controle final du chapitre 174 a revele un residu : la balise
+statique <meta name="theme-color" content="#0B1322"> gardait l'ancienne
+nuit profonde sur la quasi-totalite des pages, et les deux explorateurs de
+chaine portaient #0D1524. Sans effet visible pour l'utilisateur : le script
+tcol (MutationObserver) recrit la valeur des l'analyse de la page, avant
+tout affichage (#FBF9F3 en clair, #111D33 en sombre). Mais un navigateur
+sans JavaScript aurait affiche l'ancienne teinte, et le code source
+contredisait le chapitre 174.
+
+FAIT.
+- 197 pages : content="#0B1322" et content="#0D1524" remplaces par
+  content="#111D33", la valeur sombre exacte que le script tcol applique.
+  Une seule valeur uniforme pour tout le site (les explorateurs compris,
+  leur script utilisant deja #111D33).
+- Purete du diff verifiee : 197 fichiers, 197 lignes changees, toutes sur
+  la balise theme-color, rien d'autre.
+- Hors perimetre (pas de balise theme-color, inchange) : les trois
+  documents d'impression de docs-sources, le fichier de verification
+  Google et Configurateur_Service_Integre_v2.html (document source
+  autonome).
+
+ERREUR CONSIGNEE (la mienne, au 174). La liste de remplacements du 174
+couvrait --navy:#0B1322 (CSS) et :"#0B1322" (JS tcol) mais pas la forme
+content="#0B1322" (HTML). Lecon : quand une couleur vit sous trois
+syntaxes (CSS, JS, attribut HTML), la balayer sous les trois formes ou
+greper le code hexadecimal nu apres coup — c'est le grep nu du controle
+final qui a attrape le residu.
+
+VERIFIE. 0 occurrence residuelle des deux anciennes valeurs ; 197 pages
+porteuses de #111D33 ; parite md5 apres publication ; production
+controlee sur echantillon.
