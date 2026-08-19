@@ -6064,3 +6064,43 @@ Verifications : trait cache avant apparition (offset 960), dessin
 complet apres (0,35 px), 0 debordement mobile 390 (texte agrandi
 14/17 px), 0 erreur console, captures FR sombre et EN clair.
 Fichiers : investisseurs, investisseurs-en + MAINTENANCE.
+
+## 173 — Programme wow solde : la vitrine des outils existait, la liste de plans photo est livree (2026-08-14)
+
+Cloture du programme d'eclat en deux temps.
+
+**1. Proposition « vitrine des outils » : verifiee deja satisfaite.**
+L'inventaire prealable (discipline des chapitres 169 et 171) montre que
+les outils interactifs sont deja richement integres : cartes
+« Calculateur du baril · Le baril additionnel, chiffre » sur eor,
+services-ep, investisseurs et solutions ; le configurateur relie aux
+CINQ packs EnerScope/Build/Run/Revive/Close de services-ep plus une
+carte « Composer votre service · Configurateur en ligne » ; page
+tchaditech/outils dediee a la pile d'outils ; l'explorateur de chaine
+lie depuis la home et les carnets ; et un mini-calculateur EOR embarque
+directement dans amont/eor (#eor-calc). Rien a ajouter qui ne soit du
+doublon — la sobriete maison prime. C'est la TROISIEME proposition du
+programme decouverte deja en place (transitions de page au ch. 169,
+flux de la carte au ch. 171, outils ici) : le site etait plus fini que
+la revue de propositions ne le supposait ; lecon pour toute future
+liste d'idees — inventorier d'abord, proposer ensuite.
+
+**2. La liste de plans photo est livree** (document utilisateur, hors
+site) : 6 blocs, 20 plans cadres sur les 47 visuels generiques actuels
+et leurs usages reels (sable-texture 35 pages a elle seule — le plan
+A1 « laterite au couchant » est le plus rentable de la journee),
+consignes de prise de vue (paysage ET portrait, air dans le haut du
+cadre, golden hours, silhouettes sans autorisations), priorites de
+journee courte, et protocole d'exploitation au retour (WebP aux poids
+maison, substitution page par page avec controle pixel, retrait du
+badge « Image d'illustration », chapitre par substitution).
+
+**Bilan du programme wow (chapitres 169-173)** : vague rapide
+(compteurs KPI 195 pages, heure du Tchad, CTA dores, transitions deja
+en place), fil du baril (ch. 170), carte qui respire (ch. 171),
+trajectoire 2030 auto-dessinee (ch. 172), vitrine outils verifiee et
+liste photo livree (ce chapitre). Toutes les actions en attente
+executables sont soldees ; restent uniquement les arbitrages
+utilisateur (seance photo, noms d'equipe reels, volumes d'import par
+pays) et les recos dependantes des operations reelles, consignes de
+longue date. Chapitre de journal seul.
