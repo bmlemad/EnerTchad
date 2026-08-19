@@ -6104,3 +6104,37 @@ executables sont soldees ; restent uniquement les arbitrages
 utilisateur (seance photo, noms d'equipe reels, volumes d'import par
 pays) et les recos dependantes des operations reelles, consignes de
 longue date. Chapitre de journal seul.
+
+## 174 — Plus eclaire : la soiree remplace la nuit, le jour remplace la nuit (2026-08-14)
+
+Demande : « rendre le site plus eclaire ». Arbitrage utilisateur par
+question directe — deux axes retenus : eclaircir le THEME SOMBRE et
+passer les PHOTOS de nuit au jour (le theme clair, deja par defaut,
+reste inchange ; pas de forcage des preferences memorisees).
+
+**1. Le sombre passe de « nuit profonde » a « soiree »** — remplacements
+precis, jamais de balayage hexa aveugle (le meme code sert parfois de
+couleur de TEXTE ailleurs ; verifie : 0 usage texte/fill des cibles) :
+- --navy : #0B1322 -> #111D33 (50 pages), #060B14 -> #0C1626 (2
+  feuilles), #0B1422 -> #111D33 (1 feuille), #0D1524 -> #131F36 (2) —
+  la hierarchie deux tons est conservee, simplement remontee ;
+- les surfaces et voiles rgba(8,13,22,*) -> rgba(14,22,38,*) : 2 889
+  occurrences sur 197 pages (scrims de heros, verres de panneaux,
+  fonds de sections) ;
+- la barre du navigateur suit : theme-color sombre du script tcol
+  "#0B1322" -> "#111D33" (197 pages).
+
+**2. Les photos de jour remplacent la nuit** : raffinerie-nuit ->
+raffinerie-jour sur 98 occurrences / 42 pages (memes dimensions
+1400x934 et meme poids 51 Ko, aucun attribut a ajuster ; og:image et
+JSON-LD suivent). station-nuit (30 pages) n'a PAS de jumelle de jour —
+conservee en attendant le plan B1 de la liste de plans photo (ch. 173),
+consigne comme reste a faire dependant de la seance.
+
+Verifications : luminance moyenne mesuree au pixel — aval/raffinage
+166,8 -> 188,1 (+13 %, le heros passe au jour et les voiles
+s'allegent) ; axe color-contrast en sombre : 0 violation sur societe et
+raffinage ; texte blanc des heros lisible sur les nouveaux voiles
+(capture) ; raffinage-en au jour egalement ; 0 erreur console.
+Fichiers : 197 pages + 3 feuilles (bundle_head_b2, s_a6075b7e39,
+s_99c21a3880) + MAINTENANCE.
