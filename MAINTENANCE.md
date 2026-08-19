@@ -6349,3 +6349,41 @@ residuelle des anciennes valeurs ; section rendue (3 cartes) sur les deux
 langues ; axe 0 violation et console 0 erreur sur 8 pages x 2 themes ;
 capture visuelle du bloc ; parite md5 apres publication ; production
 controlee.
+
+## 181 — Revue sectorielle volet 8, investisseurs : deux ecarts, un verdict qui tient (2026-08-19)
+
+DEMANDE. « Next » — huitieme volet de la serie de revues sectorielles.
+
+INVENTAIRE. Le dossier investisseurs est l'endroit le plus rigoureux du
+site : these et trajectoire de capital datees et assumees comme cibles,
+hypotheses de planification affichees, facteurs de risque dedies,
+cibles-2030 sur referentiel Ipieca/API/IOGP, paiements aux Etats publies
+en format avant chiffres, gouvernance OHADA, ITIE en ligne de mire.
+
+REFERENTIEL 2026. Brent : consensus EIA ~58 $/b en fevrier 2026, STEO
+d'aout a ~87 $ de moyenne 2026 (~85 $ au T3) et ~69 $ en 2027 — une annee
+de balayage complet. Tchad : 20,5 Md$ d'Abu Dhabi (nov. 2025) confirmes
+et deja correctement dates sur le site ; ITIE : validation 2022 a
+64,5/100, mesures correctives attendues en 2026.
+
+DEUX ECARTS, CORRIGES (FR+EN, 4 fichiers, 4 lignes).
+1. La carte « Marche 60-70 $/b » affirmait la prudence sans la prouver :
+   ajout du fait 2026 (58 $ en fevrier, 85 $ a l'ete, 69 $ vu pour 2027,
+   source EIA) — la fourchette reste sous le milieu du cycle.
+2. La section « norme ITIE en ligne de mire » parlait de l'entreprise
+   sans situer le pays : ajout du contexte national date (membre ITIE,
+   64,5/100 en 2022, correctifs 2026).
+
+PAS DE TROISIEME ECART — CONSIGNE COMME VERDICT. Les chiffres sensibles
+testes tiennent : Abu Dhabi date, trajectoire assumee comme cible,
+reserves 2P et utilisation pipeline etiquetees « secteur », parite FCFA
+exacte, risques dedies. Meme honnetete que les « deja existant » des
+volets precedents.
+
+CINQ RECOS (dans la revue livree) : memorandum versionne ; carte Brent
+revue chaque janvier ; page d'etat de la 1re levee le jour venu ; suivre
+la validation ITIE Tchad 2026 ; FAQ investisseur individuel.
+
+VERIFIE. Diff 4 lignes / 4 fichiers ; textes EIA et 64,5/100 rendus sur
+les 4 pages ; axe 0 violation, console 0 erreur sur 4 pages x 2 themes ;
+parite md5 apres publication ; production controlee.
