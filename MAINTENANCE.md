@@ -6037,3 +6037,30 @@ animes, delais echelonnes effectifs, avcoeur sur le depot, avflow
 intact, 2,41 % de pixels en mouvement entre deux instantanes a 2 s
 (la carte bouge), 0 erreur console, capture a l'appui (phases visibles
 ville par ville). Fichiers : aval/reseau, reseau-en + MAINTENANCE.
+
+## 172 — La trajectoire 2030 se dessine sous les yeux de l'investisseur (2026-08-14)
+
+Troisieme piece signature. Sur investisseurs FR/EN, entre « la
+fenetre » et le capital : une courbe SVG (720x300, ~40 lignes) qui se
+trace d'un trait (stroke-dashoffset 960->0 en 1,9 s a l'apparition,
+IntersectionObserver a 45 %), puis ses cinq jalons s'allument en
+cascade (delais 0,5 a 2 s) avec l'aire doree en fondu.
+
+Les cinq jalons sont les VRAIS jalons du calendrier de la page (aucune
+donnee inventee) : capital fondateur 10 M FCFA (2026 · fait),
+immatriculation (en cours), 1re levee ≈ 1 Md (court terme), pilote EOR
+(2-4 ans), cap 20 Md (4 ans +). Honnetete maison assumee jusque dans la
+forme : pas d'axe chiffre — une echelle lineaire mentirait (x2000
+entre depart et cap) — mais une courbe stylisee explicitement legendee
+« trajectoire visee, pas une promesse chiffree », renvoyant au
+calendrier date. aria-label descriptif sur le SVG.
+
+Reduced-motion : la classe tj-on est posee d'emblee — la courbe et les
+jalons sont VISIBLES immediatement, sans animation (le contenu n'est
+jamais sacrifie au mouvement ; verifie dashoffset 0 des le
+chargement). Deux themes : libelles blancs/soir et encre/clair via
+regles blindees (lecon 170), point cercle avec liseré adapte.
+Verifications : trait cache avant apparition (offset 960), dessin
+complet apres (0,35 px), 0 debordement mobile 390 (texte agrandi
+14/17 px), 0 erreur console, captures FR sombre et EN clair.
+Fichiers : investisseurs, investisseurs-en + MAINTENANCE.

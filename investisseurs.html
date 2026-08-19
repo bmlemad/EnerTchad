@@ -726,7 +726,32 @@ html.et-jlight .rootland::after{
   </div>
 </section>
 
-<section id="capital">
+<section id="trajectoire" class="reveal" role="region" aria-label="Trajectoire de capital visee" style="padding:var(--sy,56px) 0 0"><div class="wrap"><div class="svc-head" style="max-width:860px"><span class="kick" style="color:var(--gold-l)">Trajectoire · Capital</span><h2 style="color:#fff">Du capital fondateur au cap des 20 milliards.</h2><p style="color:rgba(233,238,245,.85);font-size:.95rem;line-height:1.65">Cinq étapes, déjà datées plus haut — dessinées d’un trait. Une trajectoire visée, pas une promesse chiffrée : chaque jalon renvoie au calendrier.</p></div>
+<div class="tj-wrap" style="max-width:860px;margin:18px 0 0"><svg viewBox="0 0 720 300" class="tj-svg" role="img" aria-label="Courbe stylisee des cinq jalons, du capital fondateur 10 M FCFA au cap des 20 milliards" style="width:100%;height:auto;display:block">
+<defs><linearGradient id="tjfade" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E8C36A" stop-opacity=".18"/><stop offset="1" stop-color="#E8C36A" stop-opacity="0"/></linearGradient></defs>
+<path class="tj-aire" d="M60,252 C130,242 160,236 210,224 C280,207 300,196 360,178 C430,157 450,140 510,118 C580,92 610,72 660,54 L660,286 L60,286 Z" fill="url(#tjfade)" stroke="none"/>
+<path class="tj-trait" d="M60,252 C130,242 160,236 210,224 C280,207 300,196 360,178 C430,157 450,140 510,118 C580,92 610,72 660,54" fill="none"/>
+<circle class="tj-dot" cx="60" cy="252" r="5" style="transition-delay:0.5s"/><text class="tj-l1" x="50" y="218" text-anchor="start" style="transition-delay:0.6s">2026 · fait</text><text class="tj-l2" x="50" y="233" text-anchor="start" style="transition-delay:0.6s">10 M FCFA</text><circle class="tj-dot" cx="210" cy="224" r="5" style="transition-delay:0.85s"/><text class="tj-l1" x="210" y="250" text-anchor="middle" style="transition-delay:0.95s">En cours</text><text class="tj-l2" x="210" y="265" text-anchor="middle" style="transition-delay:0.95s">Immatriculation</text><circle class="tj-dot" cx="360" cy="178" r="5" style="transition-delay:1.2s"/><text class="tj-l1" x="360" y="144" text-anchor="middle" style="transition-delay:1.2999999999999998s">Court terme</text><text class="tj-l2" x="360" y="159" text-anchor="middle" style="transition-delay:1.2999999999999998s">1ʳᵉ levée ≈ 1 Md</text><circle class="tj-dot" cx="510" cy="118" r="5" style="transition-delay:1.5499999999999998s"/><text class="tj-l1" x="510" y="144" text-anchor="middle" style="transition-delay:1.65s">2–4 ans</text><text class="tj-l2" x="510" y="159" text-anchor="middle" style="transition-delay:1.65s">Pilote EOR</text><circle class="tj-dot" cx="660" cy="54" r="5" style="transition-delay:1.9s"/><text class="tj-l1" x="670" y="20" text-anchor="end" style="transition-delay:2.0s">4 ans +</text><text class="tj-l2" x="670" y="35" text-anchor="end" style="transition-delay:2.0s">Cap 20 Md</text></svg></div>
+<p style="font-family:var(--fm);font-size:.68rem;letter-spacing:.08em;color:rgba(233,238,245,.55);margin-top:14px">Trajectoire visée · société en constitution — le détail daté est au calendrier des jalons ci-dessous.</p></div></section>
+<style id="tj-css">.tj-svg:not(#_) .tj-trait{stroke:#E8C36A!important;stroke-width:2.6;stroke-linecap:round}
+.tj-svg:not(#_) .tj-dot{fill:#E8C36A!important;stroke:#0B1422;stroke-width:2}
+.tj-svg:not(#_) .tj-l1{font-family:var(--fm,ui-monospace,monospace);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;fill:rgba(233,238,245,.6)}
+.tj-svg:not(#_) .tj-l2{font-family:var(--fd,inherit);font-size:14.5px;font-weight:700;fill:#fff}
+html.et-plight .tj-svg:not(#_) .tj-l1{fill:rgba(20,32,50,.6)}
+html.et-plight .tj-svg:not(#_) .tj-l2{fill:#14202E}
+html.et-plight .tj-svg:not(#_) .tj-dot{stroke:#F5F1E8}
+@media (prefers-reduced-motion: no-preference){
+#trajectoire:not(.tj-on) .tj-trait{stroke-dasharray:960;stroke-dashoffset:960}
+#trajectoire.tj-on .tj-trait{stroke-dasharray:960;stroke-dashoffset:0;transition:stroke-dashoffset 1.9s cubic-bezier(.4,0,.2,1)}
+#trajectoire:not(.tj-on) .tj-dot,#trajectoire:not(.tj-on) .tj-l1,#trajectoire:not(.tj-on) .tj-l2,#trajectoire:not(.tj-on) .tj-aire{opacity:0}
+#trajectoire.tj-on .tj-dot,#trajectoire.tj-on .tj-l1,#trajectoire.tj-on .tj-l2{opacity:1;transition:opacity .5s ease}
+#trajectoire.tj-on .tj-aire{opacity:1;transition:opacity 1.4s ease .8s}
+}
+@media(max-width:640px){.tj-svg:not(#_) .tj-l1{font-size:14px}.tj-svg:not(#_) .tj-l2{font-size:17px}}</style>
+<script id="tj-js">try{(function(){var s=document.getElementById('trajectoire');if(!s)return;
+if(matchMedia('(prefers-reduced-motion: reduce)').matches){s.classList.add('tj-on');return}
+var io=new IntersectionObserver(function(en){en.forEach(function(e){if(e.isIntersecting){s.classList.add('tj-on');io.disconnect()}})},{threshold:.45});
+io.observe(s)})()}catch(e){}</script><section id="capital">
   <div class="sk" style="--ac:var(--gold-l)">04 · Trajectoire de capital</div>
   <h2 class="rv">Démarrage frugal, montée par levées successives.</h2>
   <div class="traj">
