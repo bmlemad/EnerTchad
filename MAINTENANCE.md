@@ -6217,3 +6217,27 @@ arbitrage futur car le flux de publication par televersement ne supprime pas.
 VERIFIE. Diff limite a 12 lignes sur 5 fichiers ; axe 0 violation apres
 correction ; ancre #emplois-jeunesse existante sur la cible ; parite md5
 apres publication ; controles production sur echantillon.
+
+## 177 — Les six images orphelines quittent le depot (2026-08-19)
+
+DEMANDE. « Applique » — suite de l'arbitrage consigne au chapitre 176.
+
+FAIT. Les six images orphelines d'assets/img (893 Ko : equipe-hse.webp,
+girafes-dikala.jpg, guelta-archei-chameaux.jpg, lac-tchad-espace.jpg,
+raffinerie-nuit.webp, savane-vehicule.webp) ont ete supprimees du depot,
+une par une, via l'interface web GitHub (menu du fichier -> Delete file ->
+commit direct sur main), soit six commits de suppression. Le televersement
+ne sait pas supprimer ; c'est le premier usage du flux de suppression web
+dans ce journal. Rien n'est perdu : chaque image reste recuperable dans
+l'historique git (le chapitre 176 documentait la reserve raffinerie-nuit ;
+si la nuit doit revenir un jour, git checkout d'un commit anterieur la
+restitue).
+
+CONTROLE AVANT ACTION. Re-verification par grep du nom nu dans tout le
+depot : la seule mention restante de chacune etait le journal lui-meme
+(mentions historiques), aucune reference dans les pages, CSS, JS, manifest
+ou sitemap.
+
+VERIFIE. FETCH_HEAD sans les six blobs ; clone local aligne ; production :
+les six URL repondent 404 (jamais referencees), les pages echantillon
+restent en 200 ; poids du dossier img allege de 893 Ko.
