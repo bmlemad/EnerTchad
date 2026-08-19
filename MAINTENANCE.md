@@ -6295,3 +6295,57 @@ depot sans orphelins (177), accessibilite exhaustivement verte (178),
 production 198/198. Les seuls chantiers ouverts dependent de
 l'utilisateur : seance photo (liste livree, plan B1 pour la station de
 jour), noms reels d'equipe, volumes d'import par pays.
+
+## 180 — Revue sectorielle volet 7, petrochimie : le chiffre Sedigui degonfle, la conjoncture 2026 racontee (2026-08-19)
+
+DEMANDE. « Next » — septieme volet de la serie de revues sectorielles
+(apres forage, logistique, raffinage, distribution, HSE-Q, ESG). Meme
+methode : inventaire, referentiel web frais, grille, ecarts, execution.
+
+INVENTAIRE. 9 pages petrochimie + hub EN + 3 carnets : architecture six
+unites / trois phases bien racontee ; la these d'intrants locaux (natron,
+neem, coton) reste le point differenciant du site.
+
+REFERENTIEL 2026 (sources dans la revue livree) : uree ~700 $/t projetee
+en 2026 (+60 %), engrais +31 %, gaz = 80-90 % du cout de l'ammoniac ;
+Afrique subsaharienne toujours importatrice de 80-90 % de ses engrais ;
+Dangote vers 8+ Mt/an, Indorama 3e ligne, OCP 9 Mt/an ; accord-cadre
+Tchad-Algerie (avril 2026) pour etudier une raffinerie de 20 kb/j ;
+Djermaya ~14 kb/j reels ; ~840 M$ de produits raffines importes en 2024 ;
+Sedigui documente a ~7 Md m3 de gaz et 15-21 Mb prouves (70 Mb identifies).
+
+TROIS ECARTS, TROIS CORRECTIONS.
+1. FACTUEL — le site annoncait « ~30 Md m3 » de gaz a Sedigui sur 14
+   fichiers (FR+EN, 25 occurrences avec l'equivalent barils et les
+   variantes nbsp/bn/billion). Les donnees publiques d'Etat documentent
+   ~7 Md m3 (7 Md m3 prouves en 2017 ; 212 Gpi3 en 2020). Corrige partout
+   en ~7 Md m3, 150 Mbep ramene a 110 Mbep, « donnee secteur » precise en
+   « donnees d'Etat, 2017-2020 » sur le carnet Sedigui. La these gaz->
+   engrais tient mieux avec le vrai chiffre : 125 MW + une uree modeste
+   consomment ~0,5 Md m3/an.
+2. ARGUMENTAIRE — nouvelle section « La conjoncture 2026 » sur
+   petrochimie/marches FR+EN (gabarit pxc/px-card maison, 3 cartes) :
+   choc de prix, dependance continentale, argument corridor face aux
+   geants nigerians.
+3. CHIFFRAGE — l'intro de « Substituer l'import » porte desormais les
+   ~840 M$ d'imports raffines 2024 (FR+EN).
+
+ERREUR RATTRAPEE AVANT PUBLICATION (la mienne). Le remplacement du label
+« (donnee secteur) » etait trop large : il a d'abord touche des
+occurrences sans rapport (objectif d'acces a l'electricite sur
+greentech/transition, transition-en, brochure x2). Detecte par listing
+des fichiers porteurs du nouveau label, reverte par verification de
+contexte (Sedigui a moins de 260 caracteres). Lecon deja consignee au
+175 : un remplacement global se verifie par l'inventaire de TOUS ses
+points d'impact, pas seulement de ses cibles.
+
+CINQ RECOS (consignees dans la revue livree) : suivre l'accord
+Tchad-Algerie ; carnet « le prix de l'uree » sur le modele du prix du
+litre ; chiffrer la demande nationale d'engrais des qu'une source existe ;
+surveiller les jalons reels de Sedigui ; maintenir le methanol en phase 2.
+
+VERIFIE. 16 fichiers, 81 insertions / 27 suppressions ; 0 occurrence
+residuelle des anciennes valeurs ; section rendue (3 cartes) sur les deux
+langues ; axe 0 violation et console 0 erreur sur 8 pages x 2 themes ;
+capture visuelle du bloc ; parite md5 apres publication ; production
+controlee.
