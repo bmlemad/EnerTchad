@@ -6011,3 +6011,29 @@ jalons s'allument dans l'ordre, 4 jalons EN, 0 debordement, 0 erreur
 console, mobile sans rail, reduced-motion sans rail. Capture du fil en
 flanc de panneau (goutte au front, jalon allume au-dessus, eteint
 au-dessous). Fichiers : index, index-en + MAINTENANCE.
+
+## 171 — La carte qui respire : le reseau Tchadium prend vie (2026-08-14)
+
+Deuxieme piece signature. Decouverte d'inventaire d'abord : la carte du
+reseau (aval/reseau, SVG 300x460, 10 villes, 7 liaisons) avait DEJA son
+flux anime — tirets defilant sur les liaisons (avflow 1,1 s),
+correctement coupe en reduced-motion. Il manquait la vie des points.
+
+Ajoute (CSS pur, ~25 lignes par page, zero JS, zero image) :
+1. **Les halos respirent** : chaque ville pulse doucement (opacite
+   .14->.30, echelle 1->1.5, cycle 5,2 s) en phases decalees ville par
+   ville (delais 0 a 4,8 s) — la carte ondule comme un organisme, pas
+   comme un metronome. transform-box:fill-box pour centrer l'echelle
+   SVG.
+2. **Le depot bat** : N'Djamena (is-depot) recoit un battement de coeur
+   a double temps (avcoeur 2,6 s) — le poumon logistique du reseau.
+3. **Le survol garde la main** : hover/is-on met la respiration en
+   pause et fixe le halo — l'interaction existante reste premiere.
+
+Le tout sous media no-preference (reduced-motion : carte immobile,
+verifie animationName none halos ET liens), selecteurs blindes
+(.avnet-svg:not(#_), lecon du chapitre 170). Verifications : 10 halos
+animes, delais echelonnes effectifs, avcoeur sur le depot, avflow
+intact, 2,41 % de pixels en mouvement entre deux instantanes a 2 s
+(la carte bouge), 0 erreur console, capture a l'appui (phases visibles
+ville par ville). Fichiers : aval/reseau, reseau-en + MAINTENANCE.
