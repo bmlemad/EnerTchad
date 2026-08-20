@@ -6792,3 +6792,24 @@ Re-balayage : 56/56 carnets au bon suffixe, enigme tw==og, fragment disparu. Nav
 
 ### Lecon
 Trier avant de corriger : sur 107 divergences brutes, seules 10 lignes meritaient une correction. Le reflexe "tout harmoniser" aurait ecrase 86 choix editoriaux legitimes. L'audit vaut par son tri, pas par son volume.
+
+## 194 — Audit i18n et ancres : quatre zeros honnetes, deux outils completes (2026-08-20)
+
+### Demande
+"next" : audit de l'appariement des langues (hreflang, commutateur de langue) et de la validite des ancres internes sur tout le site.
+
+### Perimetre et resultats
+1. Clusters hreflang : 199 pages porteuses. Existence de chaque cible, auto-reference du canonical dans le cluster, presence du x-default, reciprocite complete fr<->en (la page A qui declare en->B exige que B declare exactement le meme cluster) — 0 ecart.
+   - Fausse alerte de sonde en route : 32 "cibles inexistantes" au premier passage, toutes de la forme /amont/ — la sonde ne savait pas que amont/index.html se sert en /amont/. Correction du mapping, vrai resultat : 0.
+2. Commutateur de langue visible (nav .lang) contre hreflang declare : 0 divergence sur tout le parc.
+3. Exclusions du sitemap : 404, fichier de verification Google et les trois sources d'impression docs-sources sont bien hors sitemap ; rien a corriger.
+4. Ancres internes : 3 837 liens avec fragment testes contre les id reels des pages cibles. 20 signales, 20 faux positifs : les gabarits JS de la boutique (#i-'+p[9]+' est du code, pas un lien) et les liens profonds du Configurateur (#p=operateur&d=... est un parametre de hash interprete par son JS, pas une ancre d'element). 0 ancre reellement cassee.
+
+### Action appliquee
+Seul manque reel du perimetre : Calculateur_Baril_Additionnel et Configurateur_Service_Integre_v2 sont dans le sitemap mais etaient les deux seules pages indexees sans hreflang. Outils monolingues FR : ajout d'un cluster minimal auto-referent (fr + x-default) apres leur canonical. L'ensemble indexe est desormais couvert a 100 %.
+
+### Verification locale
+Navigateur headless sur les deux outils : hreflang rendus (fr + x-default), console 0. Re-balayage des quatre controles : zeros confirmes.
+
+### Lecon
+Quatrieme audit consecutif ou l'essentiel du parc tient bon : les zeros honnetes s'accumulent et valent preuve. Et deux lecons de sonde de plus dans la meme famille que ch. 191 et 193 : une URL de repertoire (/amont/) et un hash de parametres (#p=...) ne se valident pas comme un chemin de fichier et une ancre d'element.
