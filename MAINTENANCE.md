@@ -6501,3 +6501,40 @@ VERIFIE. Axe 0 violation et console 0 erreur sur les 4 pages touchees
 x 2 themes ; 0 debordement horizontal mobile sur les 3 carnets testes ;
 en-tete mobile recontrole en capture ; parite md5 apres publication ;
 production controlee.
+
+## 185 — La recherche et le flux RSS rattrapent le contenu : le carnet uree indexe, les index depoussieres (2026-08-20)
+
+DEMANDE. « Next » — controle de coherence des sous-systemes de contenu
+(recherche bilingue cmdk, flux RSS) apres les chapitres 174-184.
+
+CONSTAT. Trois retards de synchronisation :
+1. Le carnet « prix de l'uree » (183) etait absent des deux index de
+   recherche (cmdk_extra.js FR, cmdk_en.js EN) et des deux flux
+   (feed.xml, feed-en.xml).
+2. Les index portaient des textes d'avant les corrections : « sept
+   poles » (FR brochure) et « seven poles extended by chemicals » (EN,
+   3 occurrences dont un titre d'entree) alors que le site dit 8 depuis
+   le chapitre 30 et la page arabe depuis le 184 ; « 30 milliards m3 » /
+   « ~30 bn m³ » pour Sedigui alors que le 180 a degonfle a 7 ;
+   et l'ancre morte #jobs-youth corrigee au 176 subsistait dans une
+   URL d'entree EN.
+3. Lecon consignee : les index cmdk et les flux sont des DERIVES du
+   contenu — toute publication qui ajoute une page ou corrige un
+   chiffre doit balayer cmdk_extra.js, cmdk_en.js, feed.xml,
+   feed-en.xml. Ce balayage rejoint le rituel de publication (chapitre
+   8) aux cotes du sitemap.
+
+FAIT.
+- Entrees cn-prix-uree (FR) et en-61b (EN) ajoutees aux index, mots-cles
+  bilingues (uree, engrais, gaz, sedigui, npk...).
+- Corrections d'index : huit poles (FR+EN, 4 occurrences), Sedigui a
+  7 Md m3 (FR+EN), URL #emplois-jeunesse (EN).
+- Items RSS FR et EN ajoutes en tete des deux flux (pubDate 20 aout,
+  lastBuildDate mis a jour), XML revalide par parsing.
+- Controle additif : diff des tableaux JSON avant/apres — 0 entree
+  supprimee, 1 ajoutee par langue (166->167 FR, 138->139 EN).
+
+VERIFIE. Recherche vivante testee au navigateur : la palette ouverte sur
+l'accueil, requete « uree », le carnet ressort avec son lien ; 0 erreur
+console ; XML des deux flux valide ; parite md5 apres publication ;
+production controlee (flux et index servis avec le nouveau contenu).
