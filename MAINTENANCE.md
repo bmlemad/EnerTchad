@@ -6670,3 +6670,47 @@ VERIFIE. Axe 0 violation et console 0 erreur sur les 2 carnets + la
 liste x 2 themes ; JSON-LD 1 Article conforme par page ; les 5 liens
 internes du carnet repondent 200 dans la bonne langue ; parite md5 apres
 publication ; production controlee.
+
+## 190 — Ultra revue des sections : la structure tient, un seul correctif reel (2026-08-20)
+
+DEMANDE. « QA et ultra review des sections » — l'echelle sous les pages.
+
+BATTERIE STATIQUE (200 pages, scripts exclus du comptage) :
+- Hierarchie des titres : 0 page sans h1, 0 h1 multiple, 0 saut de
+  niveau (h2->h4), 2 h2 vides (voir correctif).
+- Reperes : 2 sections sans nom accessible seulement — en realite des
+  sections aria-labellisees sans id, conformes.
+- Ancres internes de meme page : 0 morte reelle (4 faux positifs =
+  gabarits JS de la boutique).
+- Convention « cta-band en dernier » : 2 exceptions sur carnets FR/EN —
+  une section « Ressources & outils » aria-labellisee placee apres,
+  assumee comme bloc de ressources de pied ; consignee, pas un defaut.
+- Sections souches (<15 mots) : 2 — le panneau JS de l'explorateur,
+  rempli a l'initialisation (voir correctif).
+
+SYMETRIE FR/EN (100 paires par hreflang) : 23 asymetries de comptage,
+TOUTES classees apres inspection :
+- ar.html vs index-en : la page arabe est un resume une-page, jumelage
+  par conception.
+- +1 section EN recurrente (17 paires) : le bandeau de navigation
+  « Continue in the X pole » propre aux jumelles EN de racine — idiome
+  structurel, pas un manque.
+- +2/+3 h2 sur les hubs de pole EN : les blocs « What this pole does »
+  / « Inside this pole » (navigation interne rendue en section cote EN,
+  en subnav cote FR) et le couple accroche+titre du vivier — contenu
+  equivalent verifie par lecture, aucune duplication reelle. Le verdict
+  du chapitre 160 (symetrie de contenu) tient.
+
+SANS JS : les sections restent visibles (la classe reveal est posee par
+le JS lui-meme — 0 .reveal dans le DOM sans script, donc 0 contenu
+masque). Verifie au navigateur JS coupe.
+
+LE CORRECTIF REEL. Le panneau de l'explorateur de chaine (FR+EN)
+demarrait avec trois elements vides (p-num, h2 p-name, p-sub) remplis a
+l'initialisation JS — dont un titre h2 vide au premier rendu. Prerempli
+avec les valeurs exactes que le moteur pose a l'init (01 · Amont/
+Upstream · Exploration-Production) : plus de h2 vide, aucun changement
+visuel apres init (le JS recrit les memes valeurs), axe 0 violation et
+console 0 erreur sur les 2 pages x 2 themes.
+
+VERIFIE. Parite md5 apres publication ; production controlee.
