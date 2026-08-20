@@ -6813,3 +6813,24 @@ Navigateur headless sur les deux outils : hreflang rendus (fr + x-default), cons
 
 ### Lecon
 Quatrieme audit consecutif ou l'essentiel du parc tient bon : les zeros honnetes s'accumulent et valent preuve. Et deux lecons de sonde de plus dans la meme famille que ch. 191 et 193 : une URL de repertoire (/amont/) et un hash de parametres (#p=...) ne se valident pas comme un chemin de fichier et une ancre d'element.
+
+## 195 — Simulation des parcours VIP : sept profils, deux corrections (2026-08-20)
+
+### Demande
+"simule la navigation des VIP sur le site pour les solutions et services" : incarner les visiteurs a fort enjeu et suivre leurs parcours reels vers les solutions et services.
+
+### Methode
+Sept personas simules en navigateur headless (1440x900) sur la copie locale fidele a la production : haut fonctionnaire, investisseur institutionnel, DG operateur E&P, industriel B2B/flotte, bailleur de developpement, partenaire technique international (EN), visiteur oriente solutions. Le simulateur ne clique que des liens visibles (textContent pour les menus deroulants — innerText rend vide un lien de menu ferme, premiere version faussee par ce piege), gere les ancres de meme page, et mesure : clics jusqu'au but, page d'atterrissage, presence de CTA.
+
+### Resultats
+Les sept parcours atteignent leur objectif en 2 clics maximum (1 pour le bailleur vers l'Atlas), chaque page d'atterrissage porte 2 a 4 canaux de contact. Le parcours operateur E&P debouche sur les liens profonds pre-parametres du Configurateur. Parcours EN symetriques au FR.
+
+### Deux vrais constats, corriges
+1. Entree de navigation EN vers les services parapetroliers libellee "Go further / From seismic to the pump" sur 22 pages : un partenaire international ne peut pas deviner que c'est l'offre de services petroliers. Le FR dit "Services parapetroliers", l'index cmdk EN dit deja "Oilfield services" — la nav etait l'unique endroit a diverger. Remplace par "Oilfield services" (22 fichiers, 1 occurrence chacun, verifiee unique avant remplacement).
+2. Carte flip "Gouvernance" de l'accueil (FR et EN) : son CTA envoyait vers engagements#conformite alors que la page Gouvernance dediee existe et couvre exactement ce que ministre et bailleur attendent (SA OHADA, IFRS, ITIE, discipline de capital). Retargete vers gouvernance / gouvernance-en.
+
+### Verification locale
+Re-simulation apres correction : la carte Gouvernance atterrit sur les h1 "Une gouvernance a visage decouvert..." / "Governance with faces uncovered...", le libelle nav EN rend "Oilfield services", console 0 partout. Diff git : 23 fichiers, 24 lignes. Derives : rien a propager (libelles de nav et CTA, hors sitemap/feeds/cmdk).
+
+### Lecon
+Simuler le visiteur revele ce que les audits statiques ne voient pas : tout etait valide (liens 200, ancres exactes, hreflang propres) et pourtant un menu anglais cachait les services derriere "Go further" et la carte Gouvernance menait ailleurs que la ou son mot promettait. Le lien peut etre techniquement parfait et editorialement faux.
