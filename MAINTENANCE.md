@@ -6745,3 +6745,25 @@ VERIFIE. Parite md5 apres publication ; production controlee.
 
 ### Lecon
 Un audit de sujets rend deux especes de resultats : des zeros honnetes (rubriques, marques) qui valent d'etre consignes, et des trous reels (glossaire) qui valent d'etre combles. Les deux fausses alertes de la journee (jointure de chemins, serveur mort) rappellent la meme regle : instrumenter la sonde avant d'accuser le site.
+
+## 192 — Audit des donnees structurees : 749 blocs JSON-LD passes au crible, 12 headlines realignes (2026-08-20)
+
+### Demande
+"next" apres l'audit des sujets : j'ai choisi l'angle jamais couvert de front — un audit exhaustif des donnees structurees (JSON-LD) sur tout le site.
+
+### Perimetre et methode
+206 pages, 749 blocs script type application/ld+json. Verifications : validite JSON de chaque bloc, inventaire des types (Organization 126, WebPage 145, BreadcrumbList 198, WebSite 85, Dataset 84, Article 56, FAQPage 47, CollectionPage 4, Blog 2, WebApplication 2), coherence url JSON-LD contre canonical, headline d'Article contre h1 affiche, champs requis des Articles (author, publisher, image, description, dates), sanite des FAQPage (questions et reponses non vides), ordre des dates (dateModified >= datePublished, rien dans le futur), completude des Dataset.
+
+### Constats
+- 749 blocs sur 749 : JSON valide. 0 url divergente du canonical. 0 champ requis manquant. 0 date incoherente. 0 FAQPage ou Dataset defectueux. Le gros du parc est sain — consequence des balayages precedents (ch. 183 avait deja corrige 7 JSON-LD copies-colles).
+- VRAI constat : 12 articles (6 sujets x 2 langues) portaient un headline JSON-LD substantiellement different du h1 affiche — anciens titres de travail jamais realignes apres reecriture du h1, dont deux avec le suffixe "| EnerTchad" qui n'a rien a faire dans un headline. Exemples : forage-directionnel affichait "Atteindre trois cibles depuis un seul wellpad" mais declarait "Le forage dirige, explique" ; eor-baril-additionnel declarait "l'economie de l'EOR | EnerTchad" au lieu du h1 reel.
+- Precision de methode : la premiere heuristique (headline contre title) sortait 36 faux positifs — le title SEO est legitimement plus court que le headline. La bonne reference est le h1 ; apres normalisation typographique (apostrophes, insecables, point final), il reste 12 vrais ecarts.
+
+### Actions appliquees
+Les 12 fichiers : headline := texte exact du h1 (point final retire, typographie conservee), reecriture chirurgicale du seul bloc Article concerne (diff : 1 ligne par fichier). Fichiers : brut-par-camion x2, eor-baril-additionnel, forage-directionnel x2, gaz-torche x2, integrite-faire-durer-en, mecanique-fluides x2, prix-litre x2.
+
+### Verification locale
+Re-balayage complet : 0 ecart substantiel restant sur les 56 Articles. Navigateur headless sur 4 pages modifiees : tous les blocs JSON-LD parsent dans la page, headline == h1, console 0. Diff git : 12 fichiers, 12 lignes.
+
+### Lecon
+Les metadonnees invisibles derivent en silence : le h1 se reecrit au fil des chapitres, le JSON-LD garde l'ancien titre et personne ne le voit — sauf les moteurs. Desormais toute reecriture de h1 doit balayer le headline JSON-LD du meme fichier, au meme titre que les derives (sitemap, cmdk, flux).
