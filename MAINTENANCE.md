@@ -6767,3 +6767,28 @@ Re-balayage complet : 0 ecart substantiel restant sur les 56 Articles. Navigateu
 
 ### Lecon
 Les metadonnees invisibles derivent en silence : le h1 se reecrit au fil des chapitres, le JSON-LD garde l'ancien titre et personne ne le voit — sauf les moteurs. Desormais toute reecriture de h1 doit balayer le headline JSON-LD du meme fichier, au meme titre que les derives (sitemap, cmdk, flux).
+
+## 193 — Audit des metas sociales : 8 suffixes de titre normalises, un fragment orphelin, un couple twitter divergent (2026-08-20)
+
+### Demande
+"next" : dans la lignee du ch. 192 (les metadonnees invisibles derivent en silence), audit des metas sociales et des titres — title, og:title/description, twitter:title/description, og:url — sur les 206 pages.
+
+### Constats et tri
+- 0 og:url divergent du canonical, 0 og:image manquant, une seule page sans title (le fichier de verification Google, normal, intouchable).
+- 86 pages ont meta description differente de og:description : NON retenu comme defaut — la description SEO et la description sociale peuvent legitimement differer ; les forcer identiques n'est pas une correction. De meme, la plupart des variantes twitter plus courtes que og sont des choix editoriaux valides.
+- VRAIS constats apres tri :
+  1. Suffixes de <title> incoherents sur 8 carnets : 3 FR sans le suffixe maison (criblage-eor, eor-baril-additionnel, production-anticipee finissaient en "| EnerTchad" sec) et 5 EN avec des suffixes fantaisistes ("— Notebooks |" sur gaz-torche-en et prix-uree-en, "— Field notes |" sur forage-directionnel-en, rien sur criblage-eor-en et prix-litre-en). Conventions maison : FR "— Carnets | EnerTchad", EN "— Journal | EnerTchad".
+  2. solutions.html : og:description trainait un fragment orphelin "recomposee par besoin. reseau cible et services." — reste d'un copier-coller, minuscule apres un point.
+  3. journal-enigme-densite-brut.html : seul carnet avec twitter:title/description explicites ET divergents du couple og — et la version twitter revelait la reponse de l'enigme (Ronier, TAN ~4,7) que la version og prend soin de taire. Un teaser qui spoile.
+- Piege de sonde evite : le test "'-en' in nom_de_fichier" classait journal-ENigme et journal-gpl-bois-ENergie cote anglais — deux faux positifs de plus au premier passage. Bon test : endswith('-en.html'). Meme famille d'erreur que la jointure de chemins du ch. 191.
+
+### Actions appliquees (10 fichiers, 10 lignes)
+- 8 titles normalises aux conventions maison ; au passage eor-baril-additionnel recupere un title aligne sur son h1 (« le petrole qu'on croyait perdu ») au lieu de l'ancien titre de travail.
+- solutions.html : fragment orphelin retire de og:description.
+- enigme-densite : twitter:title et twitter:description alignes sur og — le teaser ne spoile plus.
+
+### Verification locale
+Re-balayage : 56/56 carnets au bon suffixe, enigme tw==og, fragment disparu. Navigateur headless sur 5 pages modifiees : titles rendus corrects, console 0. Derives : feeds et index cmdk portent leurs propres titres courts sans suffixe — rien a propager. Diff git : 10 fichiers, 10 lignes.
+
+### Lecon
+Trier avant de corriger : sur 107 divergences brutes, seules 10 lignes meritaient une correction. Le reflexe "tout harmoniser" aurait ecrase 86 choix editoriaux legitimes. L'audit vaut par son tri, pas par son volume.
