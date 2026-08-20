@@ -6643,3 +6643,30 @@ DEMANDE. « Next all » — les trois derniers restes executables.
 
 VERIFIE. Configurateur re-sonde (1er Tab, visible) ; WebKit 4/4 ;
 parite md5 apres publication ; production controlee.
+
+## 189 — Le carnet « gaz torche » parait — premier passage complet du rituel des derives (2026-08-20)
+
+DEMANDE. « Next » — troisieme volet de la serie pedagogique economique
+(prix du litre, prix de l'uree, et maintenant la torche).
+
+NOUVEAU CARNET (FR + EN). journal-gaz-torche / journal-gaz-torche-en :
+ce qu'est une torche (le gaz associe sans debouche, le moindre mal face
+au methane), ce qu'elle coute (167 Md m3 brules en 2025, 54 Md$, presque
+la consommation de gaz de toute l'Afrique — troisieme annee de hausse ;
+70-100 Md$ suffiraient a eliminer le torchage de routine ; le Kazakhstan
+a -87 % depuis 2012), le Tchad (gaz associe brule faute de filiere,
+Sedigui ~7 Md m3 dormants — renvoi a l'etage 1 du prix de l'uree), et la
+reponse maison (gas-to-power, GPL, uree ; zero torchage de routine et
+LDAR -92 % deja publies sur impact). Source : Global Gas Flaring Tracker
+2026 (donnees 2025), Banque mondiale/GGFR.
+
+RITUEL DES DERIVES (chapitre 8, premiere application complete) : cartes
+en tete des listes carnets FR/EN ; sitemap (201 entrees) ; index cmdk FR
+(168 entrees) et EN (140) valides par json.loads, edition additive ;
+flux RSS FR/EN (40 items chacun, XML revalide). Navigation continue :
+prix-uree <- gaz-torche -> gaz-sedigui.
+
+VERIFIE. Axe 0 violation et console 0 erreur sur les 2 carnets + la
+liste x 2 themes ; JSON-LD 1 Article conforme par page ; les 5 liens
+internes du carnet repondent 200 dans la bonne langue ; parite md5 apres
+publication ; production controlee.
