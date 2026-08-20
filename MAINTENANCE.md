@@ -6971,3 +6971,19 @@ Contexte mobile reel (viewport 360x740, isMobile, touch, DPR 2) sur les 202 page
 
 ### Lecon
 Cinquieme zero honnete de la serie d'audits (apres rubriques, chips, hreflang, ancres) : la discipline mobile-first des gabarits (wrap + grilles fluides + flex-wrap systematiques) tient jusqu'a 320 px sans exception. Ce zero-la valait 15 minutes de preuve : c'est desormais un fait etabli du site, pas une croyance.
+
+## 203 — QA impression : la brochure, un carnet et le glossaire passent sur papier (2026-08-20)
+
+### Contexte
+Journee autonome, suite. Les VIP impriment : la brochure se pose sur des bureaux de ministeres et de banques. Le rendu papier n'avait jamais ete verifie systematiquement.
+
+### Methode
+Generation de PDF A4 reels (emulation media print, marges 12 mm) pour brochure FR/EN, le carnet du jour (transfert de garde) et le glossaire, puis rasterisation et inspection visuelle page par page.
+
+### Resultats
+- Carnet : 4 pages A4 impeccables — en-tete simplifie, typographie du corps intacte, aucune coupure malheureuse.
+- Glossaire : 11 pages en grille de cartes, les 70 entrees rendues (le contenu JS est bien present a l'impression), lisibilite complete.
+- Brochure : le rendu est propre (fonds neutralises, boutons en contour comme prevu par les regles print du site) mais la page complete sort a 172 pages A4 — c'est le comportement attendu d'une page-fleuve, et c'est precisement pourquoi la page propose en tete « Telecharger la version PDF (6 pages) » (docs-sources/brochure_print). Verdict : pas un defaut, une confirmation que la version d'impression dediee a sa raison d'etre.
+
+### Lecon
+Le circuit d'impression a deux etages (page web fleuve + version print dediee de 6 pages) fonctionne comme concu. A retenir pour les futurs contenus longs : toute page-fleuve destinee aux VIP merite sa version print dediee, car le CSS print le plus propre ne remplace pas une mise en page pensee pour le papier.
