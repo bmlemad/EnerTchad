@@ -6426,3 +6426,35 @@ themes ; parite md5 apres publication ; production controlee.
 
 La serie des revues sectorielles est complete : neuf volets, tous les
 grands domaines du site passes au referentiel frais.
+
+## 183 — Le carnet « prix de l'uree » parait, et sept carnets retrouvent leur identite JSON-LD (2026-08-20)
+
+DEMANDE. « Next to all actions » — execution des actions en attente :
+le carnet « prix de l'uree » (reco 2 du volet 7) et la synthese des neuf
+revues (livree en parallele hors site).
+
+NOUVEAU CARNET (FR + EN). journal-prix-uree / journal-prix-uree-en,
+sur le gabarit du prix du litre : quatre etages (le gaz, 80-90 % du cout
+de l'ammoniac ; l'usine et sa loi d'echelle ; le voyage de 1 700 km,
+l'etage enclave ; le calendrier des semis) puis « ce que le gaz de
+Sedigui change » — chiffres du volet 7 (uree ~700 $/t en 2026, +60 %,
+Banque mondiale ; Sedigui ~7 Md m3 documentes ; Nigeria vers 8 Mt/an).
+Integration complete : cartes en tete des listes carnets FR/EN, sitemap
+(199 entrees), canonical + hreflang croises, JSON-LD Article propre,
+navigation precedent/suivant (prix du litre <-> gaz de Sedigui).
+
+DECOUVERTE EN CHEMIN, CORRIGEE. En etudiant le gabarit : sept carnets
+portaient un JSON-LD Article copie-colle d'un autre article (l'enigme
+densite pour six d'entre eux — headline, description, url et dates d'un
+autre carnet ; integrite-faire-durer-en pointait vers sa version FR).
+Les sept (forage-directionnel FR/EN, mecanique-fluides FR/EN,
+prix-litre FR/EN, integrite-faire-durer-en) ont recu un Article reconstruit
+depuis leur propre title, description, canonical et date affichee.
+Balayage de controle : 0 anomalie sur les 46 carnets. Lecon : le
+copier-coller de gabarit propage aussi les metadonnees — le balayage
+url-JSONLD vs slug rejoint la batterie d'audit standard.
+
+VERIFIE. Console 0 erreur et axe 0 violation sur 6 pages x 2 themes
+(nouveau carnet FR/EN, listes FR/EN, deux carnets repares) ; capture du
+hero ; JSON-LD 1 Article valide par carnet ; parite md5 apres
+publication ; production controlee.
