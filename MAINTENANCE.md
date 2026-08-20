@@ -6837,3 +6837,29 @@ Le controle post-deploiement a revele trois occurrences residuelles du libelle "
 
 ### Lecon
 Simuler le visiteur revele ce que les audits statiques ne voient pas : tout etait valide (liens 200, ancres exactes, hreflang propres) et pourtant un menu anglais cachait les services derriere "Go further" et la carte Gouvernance menait ailleurs que la ou son mot promettait. Le lien peut etre techniquement parfait et editorialement faux.
+
+## 196 — Ultra revue de l'accueil et couche vitrine premium (2026-08-20)
+
+### Demande
+"Ultra review de la page accueil du site et modernise le pour qu'il devienne une page ultra premium vitrine".
+
+### Revue complete
+Inventaire structurel (19 sections, 18 500 px de haut) et balayage visuel integral en desktop 1440, mobile 390, themes clair et sombre. Etat des lieux : la page est deja d'un niveau eleve — hero diaporama avec pilules de progression, fil de lecture (rdprog), cartes flip 3D, sections reveal, navigation par points, verre depoli, double theme jour/nuit automatique. Aucun defaut fonctionnel : console 0, axe 0 sur les deux themes, mobile propre. La modernisation devait donc etre une couche de raffinement, pas une refonte.
+
+### Couche vitrine premium appliquee (bloc style prem196, additif, FR + EN)
+1. Reflet anime sur l'accent or du hero ("Nous inversons." / "We are reversing it.") : balayage lumineux lent dans le degrade texte existant.
+2. Respiration Ken Burns discrete du visuel de fond (scale 1 -> 1.045 sur 28 s, sur le conteneur .diapo — les slides i conservent leur animation:none historique).
+3. Selection de texte aux couleurs maison (fond or, texte marine).
+4. Stats du hero : elevation, filet or et lueur douce au survol.
+5. CTA or principal : lumiere interne + balayage lumineux au survol.
+6. Cartes actualites : lueur coloree douce au survol (variable --pac de chaque carte).
+Le tout sous garde stricte prefers-reduced-motion : verification en contexte reducedMotion=reduce, toutes les animations tombent a none.
+
+### Peripetie consignee
+Premiere version de la respiration sur .diapo i : inerte, car une regle historique .diapo i{animation:none!important} protege les slides (heritage du diaporama JS). Deplacee sur le conteneur. Au passage, un remplacement trop large a brievement vide la ligne diapo de la garde reduced-motion — repere par le test reducedMotion (kb restait actif), corrige, re-teste : none/none.
+
+### Verification locale
+Animations actives en contexte normal (prem-sheen, prem-kb), neutralisees en reduced-motion ; console 0 et axe 0 sur index et index-en, deux themes ; capture mobile propre ; diff git limite au bloc prem196 dans les deux fichiers.
+
+### Lecon
+Sur une page deja mure, "ultra premium" veut dire raffiner, pas refondre : six micro-signaux de qualite (reflet, respiration, selection, survols) changent la perception sans toucher ni structure ni contenu. Et tester reduced-motion n'est pas optionnel : c'est ce test qui a revele la garde cassee.

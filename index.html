@@ -900,7 +900,33 @@ a.glm-c:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):focus-vis
   a.glm-c:not(#_):not(#__):not(#___):hover{
     transform:none;
   }
-}</style></head>
+}</style><style id="prem196">
+/* ===== Couche vitrine ultra premium (ch.196) — additive, sans refonte ===== */
+/* 1. Reflet anime sur l'accent du hero */
+.hx-h1 em{background:linear-gradient(110deg,var(--gold-l) 0%,var(--gold) 34%,#FFF3D6 50%,var(--gold-l) 66%,var(--gold) 100%);background-size:260% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:prem-sheen 7s ease-in-out infinite}
+@keyframes prem-sheen{0%,100%{background-position:0% 0}50%{background-position:100% 0}}
+/* 2. Respiration lente du visuel de fond (Ken Burns discret, sur le conteneur - les slides i gardent leur animation:none historique) */
+.diapo{animation:prem-kb 28s ease-in-out infinite alternate;will-change:transform}
+@keyframes prem-kb{from{transform:scale(1)}to{transform:scale(1.045)}}
+/* 3. Selection de texte aux couleurs maison */
+::selection{background:var(--gold,#E8C36A);color:#0B1526}
+/* 4. Statistiques du hero : elevation et filet or au survol */
+.hx-strip .hx-stat:hover{transform:translateY(-3px);border-color:color-mix(in srgb,var(--gold-l,#F0CE82) 55%,transparent);box-shadow:0 14px 34px -18px rgba(232,195,106,.45)}
+/* 5. CTA or : lumiere interne + balayage au survol */
+.btn.btn-p{position:relative;overflow:hidden;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 10px 26px -14px rgba(232,195,106,.55)}
+.btn.btn-p::after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.35) 50%,transparent 70%);transform:translateX(-120%);transition:transform .7s var(--ease,ease)}
+.btn.btn-p:hover::after{transform:translateX(120%)}
+/* 6. Cartes actualites : lueur dorée douce au survol */
+.hncard:hover{box-shadow:0 22px 44px -24px color-mix(in srgb,var(--pac,#F2B45A) 55%,transparent)}
+/* Respect strict de prefers-reduced-motion */
+@media (prefers-reduced-motion:reduce){
+  .hx-h1 em{animation:none}
+  .diapo{animation:none}
+  .btn.btn-p::after{display:none}
+  .hx-strip .hx-stat:hover{transform:none}
+}
+</style>
+</head>
 <body><div class="diapo" aria-hidden="true"><i style="background-image:url(&quot;/assets/img/pompe-petrole.webp&quot;)"></i></div><div class="rdprog" aria-hidden="true"></div>
 <a href="#main-content" class="skip-link">Aller au contenu principal</a>
 <div id="preloader" aria-hidden="true">
