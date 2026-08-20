@@ -6946,3 +6946,17 @@ Les arbitrages consignes de longue date restent ouverts : convention INSPEM, sea
 
 ### Lecon
 Un journal de maintenance n'est pas une archive : c'est la memoire de travail du site. Les chapitres 1 a 100 ont construit des pages ; les chapitres 101 a 200 ont surtout construit des methodes — et ce sont les methodes qui rendront les 100 prochains chapitres plus courts.
+
+## 201 — Balayage d'integrite de la production et rafraichissement du service worker (2026-08-20)
+
+### Contexte
+Journee autonome, cloture d'apres-midi. Apres huit commits dans la journee, verification que la production entiere tient debout.
+
+### Balayage
+Les 203 URLs du sitemap sondees en production : 203/203 repondent 200 (une seule alerte, /carrieres en timeout curl transitoire, re-sondee trois fois a 200 en moins de 0,4 s). Derives : feeds FR/EN, sitemap, robots.txt, sw.js, index cmdk et bundle CSS tous a 200 ; les trois XML re-valides tels que servis en production ; sitemap servi strictement identique au local (md5). Fausse alerte de sonde consignee : manifest.webmanifest teste 404 — le fichier reel s'appelle site.webmanifest (reference par les pages), 200. Toujours lire le nom dans la page avant de sonder.
+
+### Un vrai constat, une action
+Lecture attentive du service worker : navigations en network-first (pages toujours fraiches), mais scripts et styles en cache-first avec revalidation en arriere-plan — un visiteur regulier recoit les CSS/JS de sa visite precedente, la version fraiche n'arrivant qu'a la visite suivante. Or la journee a modifie le bundle CSS partage (prem197) et les deux index de recherche. Version du cache bumpee et-202608052300 -> et-202608201500 : a l'activation, les anciens caches sont purges et tous les visiteurs recuperent les actifs du jour. Syntaxe validee par parsing node avant publication.
+
+### Lecon
+Un service worker est un maillon de publication a part entiere : tant que sa version ne bouge pas, une partie des visiteurs vit dans le passe. A inscrire au rituel : toute journee qui touche bundle ou index doit se clore par un bump de version SW.
