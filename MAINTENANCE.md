@@ -6863,3 +6863,23 @@ Animations actives en contexte normal (prem-sheen, prem-kb), neutralisees en red
 
 ### Lecon
 Sur une page deja mure, "ultra premium" veut dire raffiner, pas refondre : six micro-signaux de qualite (reflet, respiration, selection, survols) changent la perception sans toucher ni structure ni contenu. Et tester reduced-motion n'est pas optionnel : c'est ce test qui a revele la garde cassee.
+
+## 197 — Signature premium etendue au site, et deux defauts dormants de solutions.html (2026-08-20)
+
+### Demande
+"next" : etendre la signature premium du ch. 196 au-dela de l'accueil, en verifiant au passage les pages vitrines.
+
+### Actions
+1. bundle_core_a1.css (194 pages) recoit le bloc prem197 : selection de texte or/marine et balayage lumineux du CTA or (.btn.btn-p, 16 pages), avec pointer-events:none sur l'overlay et garde prefers-reduced-motion. Le meme pointer-events est ajoute au bloc prem196 de l'accueil pour rester identique.
+2. La verification des pages vitrines a revele deux defauts dormants sur solutions.html et solutions-en.html, invisibles des audits precedents car le theme sombre de ces pages n'avait ete balaye qu'avant l'ajout du bloc sol-proof :
+   - color-contrast x18 (theme sombre) : .solpr b utilisait var(--ink), or --ink vaut #0B1422 dans les DEUX themes (c'est une couleur d'encre pour surfaces claires, pas une couleur adaptative). Les intitules en gras des listes de preuves etaient marine sur marine. Correction : couleur de base #E9EEF5 (sombre), l'override clair scope html.et-plight existant reprend la main en jour.
+   - landmark-unique : six nav.hubdrawer portaient le meme aria-label "Solutions". Chacune recoit desormais un libelle unique derive de son titre de famille ("Solutions — Produire & recuperer plus", etc.), FR et EN.
+
+### Erreur commise et reparee dans la foulee
+En voulant scoper les regles !important de sol-proof au theme clair, j'ai prefixe des regles qui l'etaient DEJA (html.et-plight main ...), fabriquant le selecteur invalide "html.et-plight main html.et-plight ...". Le tracage des regles via document.styleSheets l'a revele ; selecteurs restaures a l'identique. Lecon de methode : lire le selecteur complet de la regle dans la feuille (pas seulement le fragment cherche) avant tout prefixage.
+
+### Verification locale
+axe 0 et console 0 sur solutions FR/EN, brochure, charte — deux themes ; .solpr b rendu #10161F en clair et #E9EEF5 en sombre ; sheen actif (overflow:hidden) sur les pages a CTA or ; reduced-motion neutralise l'overlay.
+
+### Lecon
+Une variable nommee --ink n'est pas forcement adaptative : ici elle designe l'encre sur surface claire, dans les deux themes. Le nom d'une variable ne dit pas son contrat — seul le trace des valeurs par theme le dit.
