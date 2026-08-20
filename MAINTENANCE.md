@@ -6832,5 +6832,8 @@ Les sept parcours atteignent leur objectif en 2 clics maximum (1 pour le bailleu
 ### Verification locale
 Re-simulation apres correction : la carte Gouvernance atterrit sur les h1 "Une gouvernance a visage decouvert..." / "Governance with faces uncovered...", le libelle nav EN rend "Oilfield services", console 0 partout. Diff git : 23 fichiers, 24 lignes. Derives : rien a propager (libelles de nav et CTA, hors sitemap/feeds/cmdk).
 
+### Complement (meme jour, apres verification production)
+Le controle post-deploiement a revele trois occurrences residuelles du libelle "Go further" pointant vers les services E&P hors du menu principal : le pied de page de l'accueil EN (colonne What we do), le sous-menu de solutions-en et la carte solution correspondante. Corrigees en "Oilfield services" (lot complementaire). Precision importante du tri : les autres "Go further" du site (kickers de sections "aller plus loin", liens d'articles lies, glossaire, commentaires CSS) sont de l'anglais legitime et restent en place — seul le libelle designant l'offre de services etait fautif.
+
 ### Lecon
 Simuler le visiteur revele ce que les audits statiques ne voient pas : tout etait valide (liens 200, ancres exactes, hreflang propres) et pourtant un menu anglais cachait les services derriere "Go further" et la carte Gouvernance menait ailleurs que la ou son mot promettait. Le lien peut etre techniquement parfait et editorialement faux.
