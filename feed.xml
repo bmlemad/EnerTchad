@@ -6,7 +6,14 @@
 <description>Le journal d’EnerTchad S.A. : récits, analyses et jalons de la construction de la chaîne pétrolière du Tchad — de la roche-mère à la pompe. Société en constitution : objectifs datés, non des actifs en exploitation.</description>
 <language>fr</language>
 <atom:link href="https://enertchad-delta.vercel.app/feed.xml" rel="self" type="application/rss+xml"/>
-<lastBuildDate>Thu, 20 Aug 2026 09:00:00 +0000</lastBuildDate>
+<lastBuildDate>Thu, 20 Aug 2026 12:00:00 +0000</lastBuildDate>
+<item>
+<title>Le transfert de garde : le chiffre qui fait foi</title>
+<link>https://enertchad-delta.vercel.app/journal-transfert-garde</link>
+<guid isPermaLink="true">https://enertchad-delta.vercel.app/journal-transfert-garde</guid>
+<pubDate>Thu, 20 Aug 2026 12:00:00 +0000</pubDate>
+<description>Des cargaisons de plusieurs millions changent de mains sur la foi d'un compteur étalonné. Comment marche le transfert de garde, ce que coûte 0,1 % d'erreur — et pourquoi la souveraineté pétrolière commence par la mesure.</description>
+</item>
 <item>
 <title>Le gaz torch&#233;&#160;: l&#8217;argent qui br&#251;le au bout du derrick</title>
 <link>https://enertchad-delta.vercel.app/journal-gaz-torche</link>

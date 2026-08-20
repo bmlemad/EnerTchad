@@ -6908,3 +6908,41 @@ Les 9 pages corrigees : axe 0 et console 0 dans les deux themes ; le calculateur
 
 ### Lecon
 Un audit qui s'arrete aux pages vitrines rate les pages outils : c'est precisement la boutique, le calculateur et l'explorateur — les pages les plus interactives — qui vivaient sans structure de landmarks. La ou le contenu est le plus dynamique, la charpente est la plus negligee.
+
+## 199 — Le carnet « transfert de garde » parait : la mesure comme souverainete (2026-08-20)
+
+### Contexte
+Journee autonome, suite. Le ch. 191 avait fait entrer le transfert de garde, la freinte et le proving au glossaire ; le sujet meritait son carnet complet — c'est le prolongement editorial naturel de la serie economique.
+
+### Contenu
+Nouveau carnet FR/EN : « Le transfert de garde : le chiffre qui fait foi » / "Custody transfer: the figure that counts" (rubrique existante Economie · Logistique, ≈ 6 min, date du jour). Structure : le rituel du comptage contractuel, ce qui distingue un compteur de garde (etalonnage, proving, corrections temperature/pression, echantillonnage), l'arithmetique d'une erreur de 0,1 % (exemple illustratif assume comme tel dans la signature), la freinte comme perte sous contrat et symptome d'integrite, le corridor Doba-Kribi et la reconciliation ITIE, et la position d'EnerTchad : un comptage etalonne a chaque interface. Deux liens internes (corridor, prix du litre) + glossaire. Lecture continue : precedent corridor-doba-kribi, suivant prix-litre.
+
+### Rituel des derives (ch. 8) applique integralement
+sitemap +2 URLs (lastmod 2026-08-20) ; index cmdk FR 168->169 et EN 140->141 (entrees validees par json.loads) ; feed.xml et feed-en.xml +1 item chacun (guid isPermaLink et pubDate +0000 conformes au style maison, XML revalide) ; cartes ajoutees en tete des listings carnets FR/EN, rubrique identique au kicker.
+
+### Verification locale
+Les 2 nouvelles pages et les 2 listings : axe 0, console 0, deux themes ; h1 == headline JSON-LD (lecon du ch. 192 appliquee a la source) ; hreflang reciproques verifies entre les jumelles ; cartes visibles avec la bonne rubrique.
+
+### Publication sous reseau degrade (a consigner pour l'avenir)
+La publication du ch. 198 a traverse une panne de connectivite GitHub cote navigateur (~40 min) : pages bloquees en readyState interactive, outils find/file_upload inoperants (ils attendent document_idle), fetch raw en timeout. Contournement construit puis devenu inutile : reconstruction des fichiers COTE PAGE par fetch du blob origin epingle au commit + application d'operations de remplacement verifiees par comptage et SHA-256 (10/10 reconstructions identiques en simulation locale), injection via DataTransfer. L'injection a echoue pour une raison instructive : la page etait une coquille morte — ses bundles JS n'avaient jamais charge, l'element file-attachment n'etait pas defini, donc aucun evenement ne pouvait la reveiller. Au retour du reseau, le flux normal a fonctionne du premier coup. Lecons : (1) diagnostiquer la sante de la page (customElements.get, nombre de scripts) avant d'accuser l'outil ; (2) le patch-par-reference-epinglee + SHA-256 est un plan B valide et pret a resservir ; (3) window.stop() fabrique un readyState complete trompeur.
+
+### Lecon
+Un glossaire nourrit des carnets, un carnet renvoie au glossaire : c'est la boucle editoriale qui fait d'un site une bibliotheque. Et une panne recompensee : le plan B invente sous contrainte est desormais documente.
+
+## 200 — Deux centieme chapitre : ce que le journal sait maintenant (2026-08-20)
+
+### Le jalon
+Deux cents chapitres consignes dans ce fichier — 199 avant celui-ci, environ 78 000 mots — pour un site qui compte aujourd'hui 208 pages HTML en deux langues et une page arabe, un glossaire de 70 entrees par langue, 31 carnets par langue dont trois series (la trilogie economique litre/uree/torche, prolongee par le transfert de garde), neuf revues sectorielles avec leur synthese, deux outils interactifs, des flux RSS et un index de recherche bilingues.
+
+### Ce que les 100 derniers chapitres ont change de methode
+1. La preuve bat la promesse : chaque publication se verifie en production (md5 apres fetch, sondes curl), chaque affirmation chiffree du site cite sa source datee, et chaque "zero defaut" se re-teste au lieu de se presumer — quatre audits consecutifs a zeros honnetes (ch. 191-194) valent autant qu'un correctif.
+2. Inventorier avant de modifier : les erreurs les plus couteuses du journal (remplacement trop large du ch. 180, mauvais div.wrap du ch. 198, prefixage de selecteurs deja scopes du ch. 197) ont toutes la meme racine — agir sur la premiere correspondance au lieu de compter les points d'impact d'abord.
+3. Les metadonnees derivent en silence : titres JSON-LD (12 realignes au ch. 192), suffixes de title (8 au ch. 193), libelles de menu ("Go further", ch. 195) — l'invisible se reecrit moins souvent que le visible, donc il derive. Le rituel des derives (sitemap, cmdk, feeds, ch. 8) existe pour cela.
+4. La sonde se teste avant le site : jointures de chemins (ch. 191), '-en' dans le nom (ch. 193), URLs de repertoire et ancres de hash (ch. 194), serveur local mort (ch. 191), innerText des menus fermes (ch. 195) — cinq familles de faux positifs documentees, toutes attrapees avant de polluer un correctif.
+5. Les selecteurs sont un contrat : --ink n'est pas adaptatif (ch. 197), l'element main declenche des styles (ch. 198), animation:none!important protege un diaporama (ch. 196). Sur un site mur, la CSS est une jurisprudence — on la lit avant de plaider.
+
+### Ce que le site attend encore de son proprietaire
+Les arbitrages consignes de longue date restent ouverts : convention INSPEM, seance photo (la liste de plans est prete ; le plan B1 debloque la station de jour), noms reels de l'equipe, volumes d'import par pays, ticket minimum investisseur. Et les rendez-vous dates : actualisation Brent chaque janvier, validation ITIE Tchad 2026, jalons Sedigui, accord raffinerie Tchad-Algerie.
+
+### Lecon
+Un journal de maintenance n'est pas une archive : c'est la memoire de travail du site. Les chapitres 1 a 100 ont construit des pages ; les chapitres 101 a 200 ont surtout construit des methodes — et ce sont les methodes qui rendront les 100 prochains chapitres plus courts.
