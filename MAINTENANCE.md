@@ -6987,3 +6987,18 @@ Generation de PDF A4 reels (emulation media print, marges 12 mm) pour brochure F
 
 ### Lecon
 Le circuit d'impression a deux etages (page web fleuve + version print dediee de 6 pages) fonctionne comme concu. A retenir pour les futurs contenus longs : toute page-fleuve destinee aux VIP merite sa version print dediee, car le CSS print le plus propre ne remplace pas une mise en page pensee pour le papier.
+
+## 204 — Cloture de la journee autonome : fraicheur verifiee, treize chapitres, un site plus sur (2026-08-20)
+
+### Dernier balayage du jour : la fraicheur des contenus
+Recherche systematique de promesses perimees — echeances T1/T2 2026 encore annoncees au futur, mois passes precedes de "prevu", "a venir", "attendu", en FR et EN. Trois suspects leves par la sonde, trois faux positifs (dates de publication d'articles voisinant par hasard un futur editorial legitime). Zero promesse perimee : l'agenda investisseur (T3 2026 · vise) est dans sa fenetre. Sixieme zero honnete de la serie.
+
+### Bilan de la journee (ch. 191 a 204)
+- Editorial : 26 entrees de glossaire ajoutees (13 FR + 13 EN), un nouveau carnet FR/EN (transfert de garde) avec rituel des derives complet, une chip Sujets du moment.
+- Design : couche vitrine premium sur l'accueil puis etendue au site, avec gardes reduced-motion prouvees.
+- Corrections reelles : 12 headlines JSON-LD, 8 suffixes de title, 3 libelles "Go further", carte Gouvernance retargetee, 18+6+1 contrastes, 9 conteneurs de landmarks, 14 petites mentions sombres, fragment orphelin og:desc, teaser spoilant, 2 hreflang d'outils, bump de version du service worker.
+- Preuves accumulees : rubriques 0 ecart, chips 100 % vivantes, hreflang 100 % reciproques, 3 837 ancres saines, 203/203 URLs de production a 200, 0 debordement responsive a 360 et 320 px, impression verifiee sur papier virtuel, fraicheur sans promesse perimee.
+- Incidents traverses : panne GitHub cote navigateur (~40 min) avec plan B documente, deconnexion d'extension (~25 min), serveur local mort a relancer — aucun n'a laisse de trace dans le depot.
+
+### Lecon
+Une journee autonome reussie n'est pas une journee sans incidents : c'est une journee ou chaque incident a fini en methode consignee, et ou chaque affirmation publiee est repartie avec sa preuve.
