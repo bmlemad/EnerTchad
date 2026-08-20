@@ -1594,3 +1594,10 @@ html:not(.et-plight) main .hz .h:not(#_):not(#__),
 html:not(.et-plight) main .ec-tiers .ec-tier:not(#_):not(#__),
 html:not(.et-plight) main .ppl-sel .ppl-f:not(#_):not(#__){
  box-shadow:0 1px 2px rgba(0,0,0,.22),0 16px 36px -26px rgba(0,0,0,.72)!important}
+
+/* ===== prem197 : signature premium etendue a tout le site (ch.197) ===== */
+::selection{background:var(--gold,#E8C36A);color:#0B1526}
+.btn.btn-p{position:relative;overflow:hidden;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 10px 26px -14px rgba(232,195,106,.55)}
+.btn.btn-p::after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.35) 50%,transparent 70%);transform:translateX(-120%);transition:transform .7s var(--ease,ease);pointer-events:none}
+.btn.btn-p:hover::after{transform:translateX(120%)}
+@media (prefers-reduced-motion:reduce){.btn.btn-p::after{display:none}}
