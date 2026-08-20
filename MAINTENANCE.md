@@ -6458,3 +6458,46 @@ VERIFIE. Console 0 erreur et axe 0 violation sur 6 pages x 2 themes
 (nouveau carnet FR/EN, listes FR/EN, deux carnets repares) ; capture du
 hero ; JSON-LD 1 Article valide par carnet ; parite md5 apres
 publication ; production controlee.
+
+## 184 — QA visuel : trois defauts vus a l'ecran, trois corrections (2026-08-20)
+
+DEMANDE. « Visual QA and apply actions ».
+
+METHODE. 23 captures sur 16 pages representatives (accueil, nouveau
+carnet uree FR/EN, marches petrochimie, investisseurs, gouvernance,
+academie, carrieres, listes carnets FR/EN, explorateur, page arabe,
+tchaditude) en desktop 1280 et mobile 390, themes clair et sombre,
+a trois positions de defilement — puis inspection de chaque cliche.
+
+TROIS DEFAUTS REELS, CORRIGES.
+1. ACCUEIL, carte retournable « Marche a reconquerir » : le texte du
+   recto depassait la hauteur de la carte et se coupait en pleine
+   phrase (« ...le raffinage local monte en p... »), sans ellipse.
+   Les cartes soeurs tenaient ; seul ce texte etait trop long. Racourci
+   d'une ligne (l'import B2B « depuis cinq pays africains » et « en
+   puissance » retires), verifie sans debordement (scrollHeight =
+   clientHeight). La version EN etait deja courte.
+2. CARNETS EN MOBILE 390 : le lien « <- Tous les carnets » de l'en-tete
+   se cassait en plein mot (« CARN / ETS ») entre la marque et le
+   bouton de langue. Correctif dans la feuille partagee s_9c80e27170
+   (chargee par 44 pages) ET dans la regle inline des 10 carnets qui
+   l'embarquent en dur : .jback en white-space:nowrap, .jtop en
+   flex-wrap sous 600 px — l'en-tete se replie en deux rangees propres
+   (capture de controle). Couverture verifiee : 0 carnet sans l'un des
+   deux correctifs.
+3. PAGE ARABE : le compteur affichait « 7 aqtab » (7 poles) et le titre
+   « sept poles et une extension », heritage d'avant la promotion de la
+   petrochimie en pole entier (chapitre 30) — alors que la grille de la
+   meme page liste bien 8 cartes et que tout le site dit 8 poles.
+   Aligne : compteur a 8, titre « huit poles ».
+
+SANS ACTION (constats de captures, comportements normaux) : compteurs
+etcCount a 0 sur un cliche pris avant leur animation d'entree ;
+info-bulles du rail de sections par-dessus les cartes (transitoire) ;
+guide « Suite » chevauchant une puce en mobile (il s'escamote au
+defilement, chapitre 152).
+
+VERIFIE. Axe 0 violation et console 0 erreur sur les 4 pages touchees
+x 2 themes ; 0 debordement horizontal mobile sur les 3 carnets testes ;
+en-tete mobile recontrole en capture ; parite md5 apres publication ;
+production controlee.
