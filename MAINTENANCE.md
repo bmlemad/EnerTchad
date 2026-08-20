@@ -6538,3 +6538,36 @@ VERIFIE. Recherche vivante testee au navigateur : la palette ouverte sur
 l'accueil, requete « uree », le carnet ressort avec son lien ; 0 erreur
 console ; XML des deux flux valide ; parite md5 apres publication ;
 production controlee (flux et index servis avec le nouveau contenu).
+
+## 186 — La demande d'engrais enfin chiffree ; la FAQ investisseur existait deja (2026-08-20)
+
+DEMANDE. « Next all » — execution des deux dernieres actions executables
+du carnet de bord des revues.
+
+1. DEMANDE NATIONALE D'ENGRAIS CHIFFREE (reco 3 du volet 7). Source
+   solide trouvee : FAO (via Our World in Data et Banque mondiale) —
+   le Tchad consomme ~34 600 t/an d'engrais toutes formules (2022-2023,
+   en hausse depuis ~18 000 t en 2012), soit ~6,5 kg/ha de terres
+   arables, contre les 50 kg/ha vises par la declaration d'Abuja.
+   Integre sur petrochimie/marches FR+EN (carte Marche 01 Agriculture) :
+   « la demande part de bas... et l'unite se dimensionne pour ce
+   reel-la, et pour sa croissance ». C'est la donnee qui manquait au
+   volet 7 pour dimensionner l'unite 03 — et elle dit une chose
+   importante : le marche actuel est petit (35 kt), la these repose
+   sur sa croissance et sur la substitution, pas sur un volume acquis.
+
+2. FAQ INVESTISSEUR (reco 5 du volet 8) : ELLE EXISTAIT DEJA. La page
+   FAQ porte deja les questions 05-07-09 : trajectoire de capital,
+   « qui peut souscrire » (particuliers, diaspora, collectifs, part
+   reservee aux publics fragiles), comment manifester son interet
+   (invest@enertchad.td), garde-fous OHADA/ITIE — et l'avertissement
+   anti-fraude « aucune souscription n'est ouverte a ce jour » avec
+   lien vers le CP-2026-005. Le seul element de la reco non couvert
+   (ticket minimum) depend de la Direction et ne peut etre invente.
+   Quatrieme decouverte « deja existant » de la serie — la lecon
+   « inventorier d'abord » se confirme jusque dans nos propres recos.
+
+VERIFIE. Figures rendues FR+EN (grep + rendu navigateur), axe 0
+violation et console 0 erreur sur les 2 pages x 2 themes ; parite md5
+apres publication ; production controlee. Le carnet de bord des revues
+ne contient plus AUCUNE action executable sans l'utilisateur.
