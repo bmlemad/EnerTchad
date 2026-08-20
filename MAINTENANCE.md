@@ -6960,3 +6960,14 @@ Lecture attentive du service worker : navigations en network-first (pages toujou
 
 ### Lecon
 Un service worker est un maillon de publication a part entiere : tant que sa version ne bouge pas, une partie des visiteurs vit dans le passe. A inscrire au rituel : toute journee qui touche bundle ou index doit se clore par un bump de version SW.
+
+## 202 — Balayage responsive : 202 pages a 360 px, 20 pages cles a 320 px, zero debordement (2026-08-20)
+
+### Contexte
+Journee autonome, suite. Le debordement horizontal mobile est le defaut responsive le plus frequent et n'avait jamais ete balaye exhaustivement.
+
+### Methode et resultat
+Contexte mobile reel (viewport 360x740, isMobile, touch, DPR 2) sur les 202 pages : mesure de scrollWidth contre viewport apres stabilisation, avec identification des quatre pires elements en cas de depassement. Resultat : 0 debordement sur 202 pages. Stress test complementaire a 320 px (iPhone SE) sur 20 pages cles — accueils, listings, outils interactifs, boutique, glossaire, formulaires, page arabe : 0 debordement egalement.
+
+### Lecon
+Cinquieme zero honnete de la serie d'audits (apres rubriques, chips, hreflang, ancres) : la discipline mobile-first des gabarits (wrap + grilles fluides + flex-wrap systematiques) tient jusqu'a 320 px sans exception. Ce zero-la valait 15 minutes de preuve : c'est desormais un fait etabli du site, pas une croyance.
