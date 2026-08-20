@@ -6883,3 +6883,28 @@ axe 0 et console 0 sur solutions FR/EN, brochure, charte — deux themes ; .solp
 
 ### Lecon
 Une variable nommee --ink n'est pas forcement adaptative : ici elle designe l'encre sur surface claire, dans les deux themes. Le nom d'une variable ne dit pas son contrat — seul le trace des valeurs par theme le dit.
+
+## 198 — Re-balayage integral du site : les regions oubliees et l'encre trop discrete (2026-08-20)
+
+### Contexte
+Journee autonome. Le defaut dormant du ch. 197 imposait un re-balayage complet : 202 pages x 2 themes, console + axe, 2,9 s de stabilisation par page.
+
+### Resultat du balayage
+Console : 0 erreur sur les 404 passages. Axe : 195 pages sur 202 parfaitement propres dans les deux themes. Sept pages (et leurs jumelles) portaient des defauts dormants de deux especes :
+1. Contraste (theme sombre) : les petites mentions "(perimetre vise · societe en constitution)" de services-ep FR/EN et les fiches "Role: ..." des intrants EOR FR/EN utilisaient var(--muted), trop faible en sombre a cette taille. Correction par variable adaptative --fineok (#A9B7CC en sombre, --muted inchange en clair), appliquee aux 14 spans des 4 fichiers.
+2. Landmarks (regle region) : des pans entiers de contenu hors de tout landmark —
+   - services-ep et eor (FR/EN) : le </main> fermait trop tot, laissant 5 sections entieres dehors ; balise deplacee juste avant le footer.
+   - boutique FR/EN : un span vide portait role="main" (landmark creux !) pendant que tout le contenu vivait dehors ; role retire, le conteneur du catalogue devient le landmark principal, hero et etapes recoivent des aria-label.
+   - Calculateur : aucun main du tout ; le conteneur central devient le landmark principal.
+   - explorateur-chaine FR/EN : la barre de retour div.topnav devient un nav landmark labellise.
+
+### Trois pieges traverses et consignes
+1. Sur boutique, un premier remplacement a converti le MAUVAIS div.wrap (celui du hero, pas du catalogue) : landmark imbrique et 113 regions restantes. Lecon : ancrer le remplacement sur un motif qui identifie la cible (wrap + shop), pas sur la premiere occurrence.
+2. Utiliser l'element <main> declenchait les selecteurs CSS "main ..." des themes, recolorant des panneaux sombres en encre claire (6 contrastes casses sur boutique en clair, 1 sur le Calculateur). Solution : div role="main" — la semantique du landmark sans la surface d'attaque du selecteur d'element. C'est le meme piege que --ink au ch. 197 : la structure du site est calibree au selecteur pres.
+3. Les 47 et 120 violations "region" n'etaient pas 167 problemes mais 9 conteneurs mal fermes ou non labellises : compter les causes, pas les symptomes.
+
+### Verification locale
+Les 9 pages corrigees : axe 0 et console 0 dans les deux themes ; le calculateur calcule toujours (champ i_ooip actif) ; captures visuelles de services-ep (sections reintegrees au main) et de la boutique (panneau commande) impeccables dans les deux themes ; un seul landmark principal par page.
+
+### Lecon
+Un audit qui s'arrete aux pages vitrines rate les pages outils : c'est precisement la boutique, le calculateur et l'explorateur — les pages les plus interactives — qui vivaient sans structure de landmarks. La ou le contenu est le plus dynamique, la charpente est la plus negligee.

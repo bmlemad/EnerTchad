@@ -211,6 +211,7 @@ html.et-jlight .rootland::after{
     <a href="investisseurs" style="color:var(--muted);text-decoration:none;font-size:.84rem">← Espace investisseurs</a>
   </div>
 </header>
+<div role="main">
 <div class="wrap">
 <section class="thero">
 <nav class="thero-bc" aria-label="Fil d’Ariane"><a href="index">Accueil</a><span class="sep">›</span><a href="/tchaditech/outils#apps">Outils</a><span class="sep">›</span><span aria-current="page">Calculateur du baril additionnel</span></nav>
@@ -218,7 +219,7 @@ html.et-jlight .rootland::after{
     <div class="mk">E</div>
     <div>
       <div class="kick">EnerTchad · EOR sur champs matures</div>
-      <span id="main-content" role="main" tabindex="-1"></span><h1>Le calculateur du <em>baril additionnel</em>.</h1>
+      <span id="main-content" tabindex="-1"></span><h1>Le calculateur du <em>baril additionnel</em>.</h1>
     </div>
   </header>
   <p class="sub">Votre champ décline ? Réglez les hypothèses : le calculateur estime les barils que la récupération assistée
@@ -307,6 +308,7 @@ function calc(){
 ['i_ooip','i_gain','i_yrs','i_px','i_tax'].forEach(id=>$(id).addEventListener('input',calc));
 calc();
 </script>
+</div>
 <footer>
   <div class="wrap">
     
