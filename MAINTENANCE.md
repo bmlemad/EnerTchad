@@ -6714,3 +6714,34 @@ visuel apres init (le JS recrit les memes valeurs), axe 0 violation et
 console 0 erreur sur les 2 pages x 2 themes.
 
 VERIFIE. Parite md5 apres publication ; production controlee.
+
+## 191 — Audit des sujets : le glossaire comble ses trous, la trilogie gagne sa chip (2026-08-20)
+
+### Demande
+"audit les sujets" : audit thematique transversal du site — coherence des rubriques editoriales, chips "Sujets du moment", presence des marques maison, couverture du glossaire.
+
+### Constats
+1. Rubriques des carnets : 29 cartes FR + 29 cartes EN comparees au kicker (jkick) de chaque article — 0 ecart. Le vocabulaire des rubriques FR/EN est miroir exact (21 libelles, memes comptes, ex. Durabilite · GreenTech x3 <-> Sustainability · GreenTech x3). Aucun article orphelin.
+   - Erreur de sonde corrigee en route : la premiere passe annoncait 26 "SANS JKICK" cotes EN — bug de jointure de chemins (href commencant par /), corrige par lstrip('/') + split('#'). Le vrai resultat est 0 ecart.
+2. Chips "Sujets du moment" : 10 FR + 10 EN, toutes les cibles repondent 200. Premiere passe : 20 "CHIP KO" — artefact du serveur local mort (curl 000), pas une regression. Regle rappelee : verifier que le serveur repond avant de croire une sonde.
+3. Marques maison : presence coherente sur les pages racine (EnerChimie 79, GreenTech 141, Tchadium 89, EnerClub/EnerPro 24, NRJ+ 28, Mobile Stations 71, Water-to-Value 36). EnerTalen : 0 occurrence — nom jamais lance, rien a corriger.
+4. VRAI constat : trous du glossaire. Termes employes ailleurs sur le site mais absents du glossaire — FR : MWD, LWD, geosteering, IWCF, farm-out, transfert de garde (custody), freinte, journey management, topping, certificat d'analyse, NPK, vaporeformage, LDAR, bep. EN : memes notions cote anglais (custody transfer, shrinkage, steam reforming, boe...).
+5. La trilogie economique (prix du litre, prix de l'uree, gaz torche) n'avait aucune chip "Sujets du moment".
+
+### Actions appliquees
+1. Glossaire FR et EN : 13 entrees ajoutees chacun (57 -> 70), dans le style maison (categorie, terme, sous-titre pedagogique, definition en une ou deux phrases) :
+   - amont : MWD / LWD, Geosteering, IWCF, Farm-out
+   - inter : Transfert de garde / Custody transfer, Freinte / Shrinkage, Journey management
+   - aval : Topping, Certificat d'analyse / Certificate of analysis
+   - chimie : NPK, Vaporeformage / Steam reforming
+   - durab : LDAR
+   - cadre : bep / boe
+2. carnets.html et carnets-en.html : chip ajoutee en fin de rangee — "Les prix, expliques" -> /journal-prix-litre et "Prices, explained" -> /journal-prix-litre-en (--tc #F5D07A).
+
+### Verification locale
+- Tableaux var T : parses par node, 70 entrees x 4 champs, 0 erreur de syntaxe, FR et EN.
+- Rendu navigateur (headless, 2 themes) : 70 dt rendus sur chaque glossaire, recherche "freinte"/"shrinkage" filtre a exactement 1 resultat, 11 chips sur chaque listing avec la nouvelle en derniere position, cibles /journal-prix-litre(-en) 200, console 0, axe 0 sur les 4 pages.
+- Derives : aucune page ajoutee, aucun chiffre corrige — sitemap, index cmdk et flux RSS inchanges a juste titre.
+
+### Lecon
+Un audit de sujets rend deux especes de resultats : des zeros honnetes (rubriques, marques) qui valent d'etre consignes, et des trous reels (glossaire) qui valent d'etre combles. Les deux fausses alertes de la journee (jointure de chemins, serveur mort) rappellent la meme regle : instrumenter la sonde avant d'accuser le site.
