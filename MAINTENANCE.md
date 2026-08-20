@@ -115,6 +115,14 @@ DEUX listes — sur le nav, c'est le trigger « Groupe », pas celui qu'on visai
 du mega fermé « existe » mais n'est pas cliquable (timeout) : toujours cibler le trigger
 par son texte puis ne cliquer que du visible.
 
+**Les derives du contenu (regle du chapitre 185).** Toute publication qui ajoute une
+page ou corrige un chiffre balaie aussi ses quatre derives : `sitemap.xml`, les index
+de recherche `cmdk_extra.js` (FR) et `cmdk_en.js` (EN), et les flux `feed.xml` /
+`feed-en.xml`. Controle rapide : le slug de la nouvelle page present dans les quatre ;
+le chiffre corrige absent des index (grep du nombre nu). Les index sont des tableaux
+JSON dans un `window.CMDK_EXTRA=[...]` — valider par json.loads apres edition, et
+prouver l'edition additive par diff des ids avant/apres.
+
 ## 9. Performance — deux couches photo, bundle chrome, et pièges de mesure
 
 **L’architecture à deux couches photo.** Beaucoup de pages peignent deux images : le **héros** (`header.pghero`, contenu au-dessus du pli, peint dans les deux thèmes) et le **fond** (`.subland`/`.rootland`, plein écran fixe en `z-index:-2` sous un voile sombre à .54–.66, que le thème clair passe en `display:none`). Chaque page de ce type porte désormais **deux** préchargements : le héros sans condition avec `fetchpriority="high"`, le fond derrière `media="(prefers-color-scheme: dark)"` — attribut dont l’effet (aucune requête en clair) a été prouvé par une page-sonde jetable, pas supposé. Ne jamais revenir à un préchargement unique : sur 27 pages les deux couches diffèrent, et 19 d’entre elles préchargeaient le fond — invisible pour tout visiteur en thème clair — pendant que le héros attendait son tour.
@@ -6615,3 +6623,23 @@ focus, palette conforme.
 VERIFIE. Axe 0 violation et console 0 erreur sur 4 pages x 2 themes
 apres correctif ; parite md5 apres publication ; production recontrolee
 dans le vrai Chrome.
+
+## 188 — Solde des restes : le Configurateur tabule dans l'ordre, WebKit valide, le rituel s'enrichit (2026-08-20)
+
+DEMANDE. « Next all » — les trois derniers restes executables.
+
+1. CONFIGURATEUR : le lien d'evitement passait 2e au Tab derriere le
+   lien retour (note du 187). L'element est deplace en tete de <body>,
+   avant l'en-tete : premier Tab = « Aller au contenu principal »,
+   visible (top 12px), verifie.
+2. WEBKIT (moteur Safari) : le correctif skip-link du 187 revalide sous
+   WebKit 18.2 sur 4 pages (accueil, societe, carnet uree, amont/eor) —
+   focus pris, lien visible a top 12px partout. Le correctif est
+   cross-moteur.
+3. RITUEL DE PUBLICATION (chapitre 8) : la regle des derives du contenu
+   (chapitre 185) y est desormais inscrite en dur — sitemap, index cmdk
+   FR/EN, flux RSS FR/EN a balayer a chaque page ajoutee ou chiffre
+   corrige, avec les controles rapides et la preuve d'edition additive.
+
+VERIFIE. Configurateur re-sonde (1er Tab, visible) ; WebKit 4/4 ;
+parite md5 apres publication ; production controlee.
