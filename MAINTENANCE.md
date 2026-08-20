@@ -6571,3 +6571,47 @@ VERIFIE. Figures rendues FR+EN (grep + rendu navigateur), axe 0
 violation et console 0 erreur sur les 2 pages x 2 themes ; parite md5
 apres publication ; production controlee. Le carnet de bord des revues
 ne contient plus AUCUNE action executable sans l'utilisateur.
+
+## 187 — QA clavier : le lien d'evitement etait invisible pour tout le monde, partout (2026-08-20)
+
+DEMANDE. « Continue » — dimension jamais couverte de la serie : la
+navigation au clavier.
+
+SONDES (Playwright, 8 pages puis echantillon elargi) : premier Tab,
+activation du lien d'evitement, visibilite de l'indicateur de focus sur
+25 elements par page, progression de tabulation (30 elements uniques sur
+30, ordre logique), palette de recherche (ouverture, focus dans le champ,
+Escape ferme et rend le focus au bouton — le "dialog" restant etait le
+bandeau cookies, faux positif ecarte).
+
+LE DEFAUT MAJEUR. Le lien « Aller au contenu principal » ne devenait
+JAMAIS visible au focus — sur toutes les pages, dans Chromium headless,
+Chromium complet ET le vrai Chrome de l'utilisateur sur la production
+(verifie : element focus, top calcule fige a -60px bien apres les 200 ms
+de transition). Le lien fonctionnait (Entree menait au contenu) mais un
+utilisateur clavier voyant ne le voyait pas — accessibilite WCAG 2.4.1
+rompue dans les faits. Cause pratique isolee empiriquement : la
+transition « top .2s » sur l'element hors ecran ne s'execute jamais
+(top:12px s'applique instantanement des que la transition est retiree ;
+meme un top:12px !important en ligne restait fige tant qu'elle etait la).
+Le mecanisme profond n'est pas elucide — le correctif ne depend pas de
+lui : la transition est retiree partout, le lien apparait desormais
+instantanement (ce qui est aussi le meilleur comportement pour ce
+composant).
+
+PORTEE DU CORRECTIF. Deux feuilles partagees (bundle_head_b2,
+s_a6075b7e39) + 109 pages au bloc inline + le Configurateur (variante
+propre) = 112 fichiers, 1 ligne chacun. Re-sonde sur 16 pages
+representatives (racine, 8 sous-dossiers, ar, index-en, explorateur,
+Configurateur) : lien premier au Tab, visible au focus (top 12px,
+capture). Note mineure consignee : sur le Configurateur, le lien
+d'evitement est 2e au Tab (un lien retour le precede) — fonctionnel,
+ordre non canonique, page outil autonome.
+
+RAS PAR AILLEURS : indicateurs de focus presents (0 element sans
+indicateur sur 25 par page), pas de tabindex positif, pas de piege de
+focus, palette conforme.
+
+VERIFIE. Axe 0 violation et console 0 erreur sur 4 pages x 2 themes
+apres correctif ; parite md5 apres publication ; production recontrolee
+dans le vrai Chrome.
