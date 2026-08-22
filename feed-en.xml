@@ -6,7 +6,14 @@
 <description>EnerTchad S.A.’s journal: stories, analysis and milestones in building Chad’s integrated oil chain — from source rock to the pump. Company in formation: dated targets, not producing assets.</description>
 <language>en</language>
 <atom:link href="https://enertchad-delta.vercel.app/feed-en.xml" rel="self" type="application/rss+xml"/>
-<lastBuildDate>Thu, 20 Aug 2026 12:00:00 +0000</lastBuildDate>
+<lastBuildDate>Sat, 22 Aug 2026 08:00:00 +0000</lastBuildDate>
+<item>
+<title>Inside the metering cabin: the gauger's interview</title>
+<link>https://enertchad-delta.vercel.app/journal-interview-comptage-en</link>
+<guid isPermaLink="true">https://enertchad-delta.vercel.app/journal-interview-comptage-en</guid>
+<pubDate>Sat, 22 Aug 2026 08:00:00 +0000</pubDate>
+<description>Tape, thermometer, sample bottle and logbooks: second episode of "The trade interview", with the gauger — the one whose figure is binding when product changes hands.</description>
+</item>
 <item>
 <title>Custody transfer: the figure that counts</title>
 <link>https://enertchad-delta.vercel.app/journal-transfert-garde-en</link>

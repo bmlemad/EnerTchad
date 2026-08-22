@@ -7035,3 +7035,23 @@ Trois articles temoins dans les deux themes : liens rendus soulignes avec la cou
 
 ### Lecon
 Une infrastructure ne vaut que par son usage : les ancres du ch. 205 auraient pu rester decoratives ; 91 liens plus tard, chaque terme technique des carnets est a un clic de sa definition — et la sobriete (3 liens max, premiere mention) evite de transformer les articles en sapins de Noel.
+
+## 207 — Le carnet « jaugeur-mesureur » parait : deuxieme interview metier (2026-08-22)
+
+### Contexte
+Suite de la journee autonome. Le format « interview metier » (inaugure avec le chef de chantier wellpads) n'avait qu'un episode ; le fil de la mesure ouvert par le transfert de garde (ch. 199) appelait son incarnation humaine.
+
+### Contenu
+Nouveau carnet FR/EN : « Dans la cabine de comptage : l'interview du jaugeur-mesureur » / "Inside the metering cabin: the gauger's interview" (rubrique nouvelle mais symetrique Intermediaire · L'interview metier / Midstream · The trade interview, 7 questions, ≈ 6 min, figure recomposee comme au premier episode — l'equipe reelle se presentera le moment venu, arbitrage en attente). Matiere : jaugeage manuel (ruban, creux, lectures concordantes), obsession de la temperature, proving et derive du facteur, echantillon (BS&W, certificat d'analyse), enquete de freinte, formation Tchaditude, ethique de la mesure. Trois liens glossaire precis (ancres du ch. 205) et chainage vers transfert-garde et wellpads.
+
+### Piege evite et consigne
+Le remplacement global de slug du gabarit a d'abord transforme mes liens VOULUS vers l'article wellpads en auto-liens (procede connu du ch. 183, replonge dedans quand meme cote FR) ; restaures par remplacement cible, et la version EN a integre la restauration dans son script de construction. Verification : canonical au bon slug, 2 references wellpads par fichier.
+
+### Rituel des derives applique
+Cartes en tete des listings FR/EN (rubrique identique au kicker), sitemap +2 (lastmod 2026-08-22), cmdk FR 169->170 et EN 141->142 (l'ancrage de l'insertion a du s'adapter au format a espaces du serialiseur precedent — les deux formats coexistent, les json.loads valident), feeds +1 item chacun (guid isPermaLink, pubDate +0000), XML revalides.
+
+### Verification locale
+Les 2 articles et les 2 listings, deux themes : axe 0, console 0, 7 questions rendues, 3 glref par article, cartes visibles avec la bonne rubrique.
+
+### Lecon
+Un format editorial vit s'il a une suite : le deuxieme episode transforme l'essai du premier en serie. Et une erreur deja consignee peut se reproduire — la difference, c'est qu'on la reconnait en quelques secondes au compteur de references.

@@ -6,7 +6,14 @@
 <description>Le journal d’EnerTchad S.A. : récits, analyses et jalons de la construction de la chaîne pétrolière du Tchad — de la roche-mère à la pompe. Société en constitution : objectifs datés, non des actifs en exploitation.</description>
 <language>fr</language>
 <atom:link href="https://enertchad-delta.vercel.app/feed.xml" rel="self" type="application/rss+xml"/>
-<lastBuildDate>Thu, 20 Aug 2026 12:00:00 +0000</lastBuildDate>
+<lastBuildDate>Sat, 22 Aug 2026 08:00:00 +0000</lastBuildDate>
+<item>
+<title>Dans la cabine de comptage : l'interview du jaugeur-mesureur</title>
+<link>https://enertchad-delta.vercel.app/journal-interview-comptage</link>
+<guid isPermaLink="true">https://enertchad-delta.vercel.app/journal-interview-comptage</guid>
+<pubDate>Sat, 22 Aug 2026 08:00:00 +0000</pubDate>
+<description>Ruban, thermomètre, éprouvette et registres : deuxième épisode de « L'interview métier », avec le jaugeur-mesureur — celui dont le chiffre fait foi quand le produit change de mains.</description>
+</item>
 <item>
 <title>Le transfert de garde : le chiffre qui fait foi</title>
 <link>https://enertchad-delta.vercel.app/journal-transfert-garde</link>
