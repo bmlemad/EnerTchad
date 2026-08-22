@@ -7084,3 +7084,17 @@ Recherche "freinte" -> "1 terme affiche" ; "shrink" cote EN -> "1 term shown" ; 
 
 ### Lecon
 Le plus court chapitre de la serie : quand le code expose deja le bon compteur, l'accessibilite coute cinq lignes. C'est en general le signe qu'on s'y prend au bon endroit.
+
+## 210 — Chaque carnet renvoie a sa rubrique filtree : 58 liens de retour (2026-08-22)
+
+### Contexte
+Troisieme usage de l'infrastructure d'adressage (ancres ch. 205, filtres ch. 208) : depuis un article, aucun chemin ne menait aux autres carnets de la meme rubrique.
+
+### Realisation
+Chaque article (29 FR + 29 EN) recoit dans son pied "Pour aller plus loin" un lien de retour "Tous les carnets <Rubrique> →" / "All <Rubrique> stories →" vers le listing filtre (/carnets#rub=<slug>), le segment de rubrique etant derive du kicker de l'article et slugifie avec la meme normalisation que les boutons de filtre. Validation systematique : les 58 cibles correspondent toutes a un slug de bouton existant dans la bonne langue (0 invalide).
+
+### Verification locale
+Parcours reel : l'interview du jaugeur -> clic sur "Tous les carnets Intermediaire" -> listing filtre a 1 carnet, bouton Intermediaire presse, annonce "1 carnet affiche" ; console 0, axe 0. Sondage EN : "All Communities stories" correctement forme.
+
+### Lecon
+Trois chapitres, une meme grammaire : rendre l'etat adressable, puis faire pointer le contenu vers ces adresses. Le site se maille tout seul des que ses etats ont des URLs.
