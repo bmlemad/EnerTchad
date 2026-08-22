@@ -7055,3 +7055,18 @@ Les 2 articles et les 2 listings, deux themes : axe 0, console 0, 7 questions re
 
 ### Lecon
 Un format editorial vit s'il a une suite : le deuxieme episode transforme l'essai du premier en serie. Et une erreur deja consignee peut se reproduire — la difference, c'est qu'on la reconnait en quelques secondes au compteur de references.
+
+## 208 — Les listings deviennent adressables : filtres par hash et compteur vocal (2026-08-22)
+
+### Contexte
+Suite de la journee autonome. Meme logique que le glossaire du ch. 205 : les filtres de rubrique des listings de carnets etaient un etat JS ephemere — impossible de partager "les carnets Intermediaire" par un lien, et aucun retour vocal pour les lecteurs d'ecran.
+
+### Realisation (carnets.html et carnets-en.html)
+1. Chaque bouton de filtre porte desormais un slug stable ; cliquer met a jour l'URL en #rub=<slug> (history.replaceState, sans entree d'historique parasite), et l'arrivee sur un lien #rub=... applique le filtre correspondant, hashchange compris. Le filtre "Tous/All" nettoie le hash.
+2. Region aria-live polie sous la barre : "N carnets affiches" / "N stories shown", avec accord du singulier (1 carnet affiche · 1 story shown), annoncee a chaque filtrage.
+
+### Verification locale
+Quatre scenarios : arrivee nue (31 visibles, Tous presse), arrivee sur #rub=intermediaire (1 carnet, bouton Intermediaire presse, annonce au singulier), arrivee sur #rub=economics cote EN (5 stories), clic de filtre qui pousse le hash. Console 0 et axe 0 sur les deux listings, deux themes.
+
+### Lecon
+La meme idee sert deux fois : rendre l'etat adressable (ch. 205 pour les termes, ch. 208 pour les filtres) transforme des widgets en liens partageables — et le surcout de l'accessibilite (une region aria-live) est marginal quand on l'integre au moment ou l'on touche deja le code.
