@@ -7194,3 +7194,39 @@ EST le nom, et cartes dont l'aria-label contient bien le titre visible.
 
 Seize fichiers HTML corriges, aucun script ni style touche : pas de
 bump du service worker (les documents sont network-first).
+
+## 215 — « Fix errors » : la chasse ne trouve rien, et la preuve est consignee (2026-08-22)
+
+Mandat lapidaire du proprietaire : corriger les erreurs. La reponse
+honnete commence par les trouver. Cinq filets ont ete tendus, du plus
+etroit au plus large.
+
+**1. Surface recente.** Les 25 pages touchees depuis le balayage
+vierge du chapitre 211 (accueil x2, glossaires, listings, les seize
+du chapitre 214, outils Tchaditech, services-ep, deux carnets) :
+console + axe, deux themes. Zero anomalie.
+
+**2. Production reelle.** Statuts HTTP des pages modifiees : tous a
+200. Console du vrai Chrome sur l'accueil en production, service
+worker et-202608221200 actif : aucun message, aucune erreur.
+
+**3. Balayage integral.** Les 206 pages dans les deux themes — 412
+charges, console + axe a chaque fois : zero erreur console, zero
+violation d'accessibilite. Le site reste au niveau du chapitre 211,
+malgre les chantiers 212, 213 et 214 passes depuis.
+
+**4. Liens et ancres.** Extraction de tous les href/src internes hors
+gabarits de script : zero lien casse sur l'ensemble du site. Les
+fragments d'etat intentionnels (#p= du Configurateur, #rub=, #cat=,
+#t-) sont reconnus comme grammaire d'adressage, pas comme ancres
+orphelines — le premier passage du filet les avait signales avant que
+l'inventaire des id generes par JS ne les innocente.
+
+**5. Donnees derivees.** sitemap.xml, feed.xml, feed-en.xml parses et
+valides ; cmdk_extra.js (170 entrees) et cmdk_en.js (142 entrees)
+json.loads sans faute ; la totalite des blocs JSON-LD du site (chaque
+page) parsee : zero bloc invalide.
+
+Verdict : aucune erreur a corriger. Le mandat est honore par la
+contre-epreuve, pas par une correction inventee — la preuve bat la
+promesse, y compris quand la preuve dit que tout va bien.
