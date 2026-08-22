@@ -7126,3 +7126,24 @@ Les boutons de categorie poussent desormais leur cle dans l'URL (#cat=amont, #ca
 
 ### Lecon
 Une grammaire se complete : trois chapitres ont rendu adressables les trois etats filtrables du site (terme, rubrique, categorie), avec la meme syntaxe et la meme discipline (replaceState, hashchange, annonce aria-live). La coherence d'un site tient a ces petites conventions repetees.
+
+## 213 — Le saut de page au scroll de l'accueil : settle() apprivoise (2026-08-22)
+
+### Demande
+"Fix le saut de page dans le scroll sur la home".
+
+### Diagnostic
+Trois pistes ecartees par instrumentation dans le vrai Chrome puis en local (couche layout-shift : 0 entree ; poursuite au scroll natif : rien ; hauteurs des slides du hero : strictement egales, pas de derive de mise en page). Le coupable est la fonction settle() de u2_75a2c4383ddf.js (chargee sur 90 pages) : un correcteur d'atterrissage d'ancre qui, apres tout clic sur un lien interne (#combat du CTA hero, #poles de la nav, points de navigation laterale) ou toute arrivee avec ancre, re-force jusqu'a 14 scrollIntoView INSTANTANES pendant ~2,6 s avec une tolerance de 4 px. Or les sections .reveal bougent de 22 px pendant leur animation d'entree (toujours > 4), et les gardes d'annulation (molette, tactile, clavier) ignoraient la barre de defilement et le second clic sur la meme ancre : l'utilisateur qui repartait etait ramene de force — le "saut de page".
+
+### Correctif (settle v6)
+1. Tolerance 4 px -> 28 px : le tremblement de reveal (22 px) ne declenche plus de re-collage ; 14 -> 8 essais, pas de 90/200 ms -> 120/250 ms.
+2. Garde de defilement externe : tout evenement scroll que settle n'a pas cause lui-meme annule la correction — la barre de defilement et toute autre source sont couvertes, la ou les anciens gardes (wheel/touch/keydown) ne voyaient rien.
+3. Deux credits distincts : le saut natif d'ancre est credite dans une fenetre courte (250 ms au clic, 1 500 ms a l'arrivee avec ancre, 0 au hashchange qui suit deja le saut natif), chaque correction propre consomme exactement son propre evenement.
+4. Anti-doublon : un settle qui demarre annule le precedent (le clic + le hashchange armaient DEUX instances pour un meme geste, la seconde heritant d'un credit non merite — c'est elle qui ramenait la page).
+5. Garde pointerdown ajoutee par prudence.
+
+### Verification locale (trois passes identiques)
+Clic CTA -> atterrissage stable a 202 px (marge de defilement respectee), un seul evenement scroll, zero re-collage ; l'utilisateur qui repart de 900 px pendant la fenetre de correction n'est PLUS ramene (avant : ramene systematiquement) ; l'arrivee sur /amont/services-ep#services-ep reste corrigee (~223 px, dans la bande de tolerance) ; pieges poses sur scrollIntoView/scrollTo : zero ecriture parasite ; axe 0 et console 0 sur l'accueil et services-ep ; u2 n'est pas charge sur glossaire/carnets/explorateur — aucune interference avec les ancres des ch. 205-212. Service worker bumpe (et-202608221100), regle du ch. 201.
+
+### Lecon
+Le correcteur etait pense pour un monde statique et vivait dans un monde anime : 4 px de tolerance contre 22 px de reveal, c'est une guerre perpetuelle. Et l'enquete a failli s'egarer deux fois sur ses propres artefacts (intervalle zombie d'une sonde interrompue, scrollTo de mesure) — instrumenter les ECRITURES de scroll avec pile d'appel a designe le vrai coupable en une passe.
