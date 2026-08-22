@@ -7018,3 +7018,20 @@ Trois ancres testees (transfert de garde FR, custody transfer EN, freinte FR) da
 
 ### Lecon
 Une reference n'a de valeur que si on peut la citer : les ancres transforment le glossaire d'une page de destination en une infrastructure de liens — chaque futur carnet peut desormais pointer le terme exact qu'il emploie.
+
+## 206 — Maillage glossaire : 91 premieres mentions reliees dans 45 carnets (2026-08-22)
+
+### Contexte
+Nouvelle journee autonome. Le ch. 205 a rendu le glossaire adressable ; ce chapitre en fait le premier usage a l'echelle : relier la premiere mention des termes techniques des carnets a leur entree precise.
+
+### Methode
+Liste blanche de 22 termes par langue (EOR, ASP, OOIP, TAN, GPL/LPG, SCADA, ITIE/EITI, OHADA, wellpad, wireline, workover, coiled tubing, gas-lift, torchage de routine, LDAR, NPK, freinte/shrinkage, jumeau numerique, maintenance predictive, contenu local, vaporeformage, BS&W). Regles de sobriete : uniquement dans le corps des articles (jbody), premiere occurrence seulement, maximum trois liens par article, jamais dans un lien existant ni un titre (tokenisation qui isole balises et ancres existantes), termes les plus longs d'abord, saut des articles qui pointent deja l'ancre.
+
+### Resultat
+91 liens ajoutes dans 45 articles (couples FR/EN symetriques a une exception pres : integrite-faire-durer, dont la version FR emploie d'autres formulations que "predictive maintenance" — asymetrie legitime d'un maillage opportuniste). Validation systematique : les 91 hrefs pointent la bonne langue de glossaire et un slug existant (0 invalide), regle du ch. 193 appliquee (endswith('-en.html'), pas '-en' in nom).
+
+### Verification locale
+Trois articles temoins dans les deux themes : liens rendus soulignes avec la couleur adaptative du corps (bleu en clair, or en sombre), console 0, axe 0. Parcours de clic reel : gaz-torche -> LDAR atterrit sur /glossaire-petrolier#t-ldar, carte centree et surlignee.
+
+### Lecon
+Une infrastructure ne vaut que par son usage : les ancres du ch. 205 auraient pu rester decoratives ; 91 liens plus tard, chaque terme technique des carnets est a un clic de sa definition — et la sobriete (3 liens max, premiere mention) evite de transformer les articles en sapins de Noel.
