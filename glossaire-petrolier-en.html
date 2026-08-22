@@ -508,6 +508,7 @@ a.glm-c:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):focus-vis
     return '<div class="term" id="'+tid+'" style="--ac:'+C[cat]+'"><dt>'+name+'</dt><dd><div class="ab">'+ab+' · '+CN[cat]+'</div>'+def+'</dd></div>';
   }).join('');
   empty.hidden=n>0;
+  var lv=document.getElementById('gl-live');if(!lv){lv=document.createElement('p');lv.id='gl-live';lv.setAttribute('aria-live','polite');lv.style.cssText='font-family:var(--fm);font-size:.72rem;letter-spacing:.08em;opacity:.75;margin:8px 0 0';grid.insertAdjacentElement('beforebegin',lv);}lv.textContent=n+' '+(n===1?'term shown':'terms shown');
  }
  q.addEventListener('input',render);
  document.querySelectorAll('.cats button').forEach(function(b){b.addEventListener('click',function(){

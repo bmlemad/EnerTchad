@@ -7070,3 +7070,17 @@ Quatre scenarios : arrivee nue (31 visibles, Tous presse), arrivee sur #rub=inte
 
 ### Lecon
 La meme idee sert deux fois : rendre l'etat adressable (ch. 205 pour les termes, ch. 208 pour les filtres) transforme des widgets en liens partageables — et le surcout de l'accessibilite (une region aria-live) est marginal quand on l'integre au moment ou l'on touche deja le code.
+
+## 209 — Le glossaire annonce son compte : aria-live sur la recherche (2026-08-22)
+
+### Contexte
+Complement direct du ch. 208 : la recherche et les filtres de categorie du glossaire (70 entrees par langue) filtraient en silence pour les lecteurs d'ecran.
+
+### Realisation
+Region aria-live polie au-dessus de la grille des deux glossaires : chaque rendu annonce "N termes affiches" / "N terms shown", avec accord du singulier. La region est creee au premier rendu par le script existant (aucun changement de gabarit), le compteur n de render() etant deja disponible.
+
+### Verification locale
+Recherche "freinte" -> "1 terme affiche" ; "shrink" cote EN -> "1 term shown" ; champ vide -> "70 termes affiches". Console 0 et axe 0 sur les deux pages.
+
+### Lecon
+Le plus court chapitre de la serie : quand le code expose deja le bon compteur, l'accessibilite coute cinq lignes. C'est en general le signe qu'on s'y prend au bon endroit.
