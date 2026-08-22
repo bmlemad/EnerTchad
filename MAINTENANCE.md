@@ -7098,3 +7098,17 @@ Parcours reel : l'interview du jaugeur -> clic sur "Tous les carnets Intermediai
 
 ### Lecon
 Trois chapitres, une meme grammaire : rendre l'etat adressable, puis faire pointer le contenu vers ces adresses. Le site se maille tout seul des que ses etats ont des URLs.
+
+## 211 — Cloture : le premier balayage integral parfaitement vierge (2026-08-22)
+
+### Le balayage final
+Apres les 118 fichiers touches de la journee, re-balayage complet : 206 pages x 2 themes, console + axe. Resultat : zero anomalie — ni erreur console, ni violation axe, sur aucune page, dans aucun theme. C'est le premier balayage integral parfaitement vierge de l'histoire du site (celui du ch. 198 avait revele 7 pages defectueuses ; leurs corrections ont tenu, et les 118 fichiers modifies depuis n'ont rien casse).
+
+### Bilan de la journee (ch. 206 a 211)
+- Maillage : 91 liens glossaire dans 45 carnets, 58 liens de retour vers les rubriques filtrees — le site se cite lui-meme.
+- Editorial : deuxieme episode de la serie "L'interview metier" (le jaugeur-mesureur), avec rituel des derives complet.
+- Infrastructure : filtres de rubrique adressables par URL (#rub=), compteurs aria-live sur les listings et la recherche du glossaire.
+- Verification : chaque chapitre verifie en local (deux themes, parcours de clic reels) puis en production (parite md5 systematique : 46/46, 10/10, 3/3, 3/3, 59/59).
+
+### Lecon
+La journee illustre un cycle complet en trois temps : construire une capacite (ancres, filtres adressables), l'utiliser a l'echelle (91 + 58 liens), puis prouver que rien n'a bouge (balayage vierge). Un site qui se maille, se filtre et s'annonce — et qui le prouve.
