@@ -7112,3 +7112,17 @@ Apres les 118 fichiers touches de la journee, re-balayage complet : 206 pages x 
 
 ### Lecon
 La journee illustre un cycle complet en trois temps : construire une capacite (ancres, filtres adressables), l'utiliser a l'echelle (91 + 58 liens), puis prouver que rien n'a bouge (balayage vierge). Un site qui se maille, se filtre et s'annonce — et qui le prouve.
+
+## 212 — Les categories du glossaire deviennent adressables : #cat= (2026-08-22)
+
+### Contexte
+"Next" : la grammaire d'adressage (termes #t- au ch. 205, rubriques #rub= au ch. 208) laissait un etat muet — les sept filtres de categorie du glossaire.
+
+### Realisation (FR et EN)
+Les boutons de categorie poussent desormais leur cle dans l'URL (#cat=amont, #cat=inter, ...) via history.replaceState ; l'arrivee sur un lien #cat=... presse le bon bouton et filtre, hashchange compris ; "all" nettoie le hash. Les deux modes coexistent proprement avec les ancres de terme : #t-xxx continue de centrer et surligner sans toucher au filtre.
+
+### Verification locale
+#cat=inter -> bouton inter presse, "14 termes affiches" ; #cat=chimie cote EN -> "6 terms shown" ; #t-freinte inchange (70 affiches, carte centree) ; clic sur durab -> hash pousse et "6 termes affiches". Console 0, axe 0 partout.
+
+### Lecon
+Une grammaire se complete : trois chapitres ont rendu adressables les trois etats filtrables du site (terme, rubrique, categorie), avec la meme syntaxe et la meme discipline (replaceState, hashchange, annonce aria-live). La coherence d'un site tient a ces petites conventions repetees.
