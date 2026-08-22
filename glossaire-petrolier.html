@@ -321,7 +321,9 @@ a.glm-c:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):focus-vis
   a.glm-c:not(#_):not(#__):not(#___):hover{
     transform:none;
   }
-}</style></head>
+}</style><style id="gloss-anchors">.term.hl{outline:2px solid var(--gold,#E8C36A);outline-offset:4px;border-radius:10px;transition:outline-color 1.2s}
+</style>
+</head>
 <body class="nx-clear" id="top"><a href="#main-content" class="skip-link">Aller au contenu principal</a>
 <header><nav class="nav nx" id="nav" aria-label="Navigation principale">
   <div class="nx-util"><div class="nx-util-in">
@@ -489,7 +491,8 @@ a.glm-c:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):focus-vis
     var okc=(fc==='all'||fc===cat);
     var oks=(!term||norm(ab+' '+name+' '+def).indexOf(term)>=0);
     if(!(okc&&oks))return '';n++;
-    return '<div class="term" style="--ac:'+C[cat]+'"><dt>'+name+'</dt><dd><div class="ab">'+ab+' · '+CN[cat]+'</div>'+def+'</dd></div>';
+    var tid='t-'+norm(ab).replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'');
+    return '<div class="term" id="'+tid+'" style="--ac:'+C[cat]+'"><dt>'+name+'</dt><dd><div class="ab">'+ab+' · '+CN[cat]+'</div>'+def+'</dd></div>';
   }).join('');
   empty.hidden=n>0;
  }
@@ -498,6 +501,16 @@ a.glm-c:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):focus-vis
    document.querySelectorAll('.cats button').forEach(function(x){x.setAttribute('aria-pressed','false');});
    b.setAttribute('aria-pressed','true');fc=b.dataset.c;render();});});
  render();
+
+ function goHash(){
+  var h=location.hash.slice(1);
+  if(!h||h.indexOf('t-')!==0)return;
+  var el=document.getElementById(h);
+  if(!el){q.value='';fc='all';render();el=document.getElementById(h);}
+  if(el){el.scrollIntoView({block:'center'});el.classList.add('hl');setTimeout(function(){el.classList.remove('hl');},2600);}
+ }
+ addEventListener('hashchange',goHash);
+ goHash();
  // JSON-LD DefinedTermSet
  var ld={"@context":"https://schema.org","@type":"DefinedTermSet","name":"Glossaire pétrolier EnerTchad","inLanguage":"fr",
    "hasDefinedTerm":T.map(function(t){return {"@type":"DefinedTerm","name":t[2],"alternateName":t[1],"description":t[3]};})};

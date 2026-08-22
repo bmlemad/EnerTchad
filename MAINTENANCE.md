@@ -7002,3 +7002,19 @@ Recherche systematique de promesses perimees — echeances T1/T2 2026 encore ann
 
 ### Lecon
 Une journee autonome reussie n'est pas une journee sans incidents : c'est une journee ou chaque incident a fini en methode consignee, et ou chaque affirmation publiee est repartie avec sa preuve.
+
+## 205 — Le glossaire devient adressable : ancres profondes par terme (2026-08-20)
+
+### Demande
+"continue" : poursuite de la journee. Le glossaire (70 entrees par langue) etait une bibliotheque sans cotes — aucun moyen de pointer un terme precis depuis un article ou un partage.
+
+### Realisation
+1. Le rendu JS du glossaire attribue desormais a chaque carte un id stable t-<slug de l'abreviation> (slug via la normalisation NFD deja presente pour la recherche ; unicite des 70 slugs verifiee par comptage dans les deux langues avant implementation).
+2. Navigation par ancre : a l'arrivee sur #t-xxx (et a chaque hashchange), la page remet les filtres a zero si necessaire, re-rend, centre la carte a l'ecran et la surligne d'un liseré or qui s'efface en 2,6 s (classe hl, style gloss-anchors).
+3. Premiere utilisation editoriale : les liens "glossaire" du carnet transfert-de-garde pointent desormais l'entree precise (#t-transfert-de-garde / #t-custody-transfer).
+
+### Verification locale
+Trois ancres testees (transfert de garde FR, custody transfer EN, freinte FR) dans les deux themes : carte trouvee, centree a l'ecran, 70 ids generes, console 0, axe 0. Le JSON-LD DefinedTermSet existant est inchange.
+
+### Lecon
+Une reference n'a de valeur que si on peut la citer : les ancres transforment le glossaire d'une page de destination en une infrastructure de liens — chaque futur carnet peut desormais pointer le terme exact qu'il emploie.
