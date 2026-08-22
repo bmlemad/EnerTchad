@@ -7150,3 +7150,47 @@ Rejoue dans le vrai Chrome (ou "reduire les animations" est actif cote systeme :
 
 ### Lecon
 Le correcteur etait pense pour un monde statique et vivait dans un monde anime : 4 px de tolerance contre 22 px de reveal, c'est une guerre perpetuelle. Et l'enquete a failli s'egarer deux fois sur ses propres artefacts (intervalle zombie d'une sonde interrompue, scrollTo de mesure) — instrumenter les ECRITURES de scroll avec pile d'appel a designe le vrai coupable en une passe.
+
+## 214 — La chasse a la classe settle : pas de recidive, mais un bouton anglais qui se prenait pour un slogan (2026-08-22)
+
+Suite logique du chapitre 213 : apres avoir apprivoise settle() sur
+l'accueil, verifier que la meme classe de defaut (une routine qui
+re-corrige la position et combat le defilement de l'utilisateur)
+n'existe nulle part ailleurs.
+
+**Volet 1 — audit des ecrivains de scroll.** Inventaire exhaustif de
+tout code qui ecrit la position de defilement (scrollIntoView,
+scrollTo, scrollBy) hors u2 : la palette de commandes (aller au
+resultat), le rail scrollcue (un pas de page au clic), la messagerie
+(centrer le message), le panneau thematique (nearest apres ouverture),
+goHash du glossaire (centrer le terme), les boutons haut de page.
+Verdict : tous sont des tirs uniques declenches par l'utilisateur,
+sans boucle de re-correction. La classe settle n'a qu'un seul
+representant, deja corrige. Zero modification necessaire.
+
+**Volet 2 — le balayage revele un autre gibier.** En inventoriant les
+boutons, controle croise texte visible / aria-label sur les 208 pages
+(134 paires examinees) : quatorze pages EN affichaient « Working with
+EnerTchad » comme texte visible du bouton retour en haut (aria-label
+« Back to top of page ») — un clobber de traduction : le libelle
+« Haut de page » a ete remplace par la mauvaise entree du dictionnaire
+lors de la generation des jumelles EN ; la version du glossaire EN,
+ajoutee plus tard a la main, y avait echappe. Meme famille sur
+brochure-en : le rail scrollcue affichait « EnerTchad on social
+media » la ou toutes les autres pages disent « More ». Corrections :
+« Back to top » sur les quatorze pages, « More » sur la brochure.
+
+**Volet 3 — trois aria-label incoherents** (Label in Name, WCAG
+2.5.3) sur les onglets des outils Tchaditech : aria-label « Rendement
+de raffinage » pour un texte visible « Rendement raffinage »,
+« Simulateur B2B » pour « Contrat B2B », « B2B simulator » pour « B2B
+contract ». L'attribut n'apportait rien : supprime sur ces trois
+onglets, le texte visible devient le nom accessible. Les onglets dont
+l'aria-label coincide exactement sont conserves tels quels.
+
+Les autres ecarts du balayage sont des faux positifs assumes et
+documentes : boutons symboles (croix, plus, moins) dont l'aria-label
+EST le nom, et cartes dont l'aria-label contient bien le titre visible.
+
+Seize fichiers HTML corriges, aucun script ni style touche : pas de
+bump du service worker (les documents sont network-first).
