@@ -7665,3 +7665,18 @@ pour garder trois items. Les deux flux RSS gagnent l'item CP-007
 (guid permalien #cp-007, convention des CP precedents), lastBuildDate
 avance a 10:00. Quatre pages balayees deux themes (zero console, zero
 axe), ancres cp-007 verifiees des deux cotes, flux reparses valides.
+
+## 230 — Maillage retrograde : les anciens carnets pointent vers les nouveaux (2026-08-23)
+
+Deux controles preliminaires, tous deux vierges : les promesses des
+communiques (chaque lien cp-links resolu, ancre kit-media presente
+dans les deux listings) et l'hygiene des cartes sociales sur les 210
+pages (og:image existante, parite og/twitter — zero ecart).
+
+Puis le maillage dans le sens qui manquait : les nouvelles parutions
+recoivent des liens entrants depuis leurs aines thematiques. « Le
+champ numerique » (FR+EN) renvoie vers l'interview de l'operateur de
+conduite — l'article qui incarne son architecture ; « La rente
+partagee » (FR+EN) renvoie vers « Premiere du genre », dont la
+derniere section (le champion partage) prolonge exactement son
+propos. Quatre pages balayees deux themes : zero console, zero axe.
