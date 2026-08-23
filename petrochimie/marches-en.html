@@ -879,10 +879,12 @@ var bar=document.querySelector(".nav-in.nx-bar")||document.querySelector(".nx-ba
 if(l&&bar&&!document.getElementById("mLang")){var c=l.cloneNode(true);c.id="mLang";c.className="";var sr=bar.querySelector(".nav-search")||bar.querySelector(".nav-tog");if(sr&&sr.parentElement){sr.parentElement.insertBefore(c,sr);}else{bar.appendChild(c);}}
 var cols=document.querySelectorAll("footer .foot-grid .foot-col");
 for(var i=0;i<cols.length;i++)(function(col){var h=col.querySelector("h3");if(!h)return;
-h.setAttribute("role","button");h.setAttribute("tabindex","0");h.setAttribute("aria-expanded","false");
-function tg(){var o=col.classList.toggle("open");h.setAttribute("aria-expanded",o?"true":"false");}
+var b=document.createElement("button");b.type="button";b.setAttribute("aria-expanded","false");
+b.style.cssText="background:none;border:0;padding:0;margin:0;font:inherit;letter-spacing:inherit;text-transform:inherit;color:inherit;text-align:left;width:100%;cursor:pointer;display:block";
+while(h.firstChild)b.appendChild(h.firstChild);
+h.appendChild(b);
+function tg(){var o=col.classList.toggle("open");b.setAttribute("aria-expanded",o?"true":"false");}
 h.addEventListener("click",tg);
-h.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();tg();}});
 })(cols[i]);
 }catch(e){}})();</script><div class="rootland" aria-hidden="true"></div><style id="cue-tact">#scrollcue{transition:opacity .3s,visibility .3s}html.cue-off #scrollcue{opacity:0!important;visibility:hidden!important;pointer-events:none!important}</style><script id="cue-tact-js">(function(){var h=document.documentElement,t;function m(){var off=scrollY>140;h.classList.toggle("cue-off",off)}addEventListener("scroll",function(){clearTimeout(t);t=setTimeout(m,80)},{passive:true});m();})();</script><script id="tcol-js">(function(){function m(){var el=document.querySelector('meta[name="theme-color"]');if(!el){el=document.createElement("meta");el.name="theme-color";document.head.appendChild(el)}var l=document.documentElement.classList;el.content=(l.contains("et-plight")||l.contains("et-jlight"))?"#FBF9F3":"#111D33"}m();new MutationObserver(m).observe(document.documentElement,{attributes:true,attributeFilter:["class"]});})();</script></body>
 </html>
