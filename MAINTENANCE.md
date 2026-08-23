@@ -7276,3 +7276,62 @@ volontaires (« Cookies » pour « Cookie policy ») : assumes, pas
 touches. Validation : les blocs JSON-LD des 208 pages reparses a zero
 faute ; plus aucun maillon etranger, plus aucun « Accueil » sur page
 EN. Aucun script ni style touche : pas de bump du service worker.
+
+## 217 — Ultra revue mobile et parcours du drilling manager : quatre defauts sous le vernis (2026-08-23)
+
+Double mandat : revue approfondie de la version mobile, et simulation
+de la navigation d'un drilling manager. Banc : Chromium 390x844 tactile,
+captures, console, axe, cibles tactiles, debordements — puis parcours
+scripte en sept etapes.
+
+**Volet mobile — ce que le bureau ne montrait pas.** Les balayages
+precedents tournaient a 1440 px ; l'emulation mobile fait apparaitre
+du DOM specifique. Quatre defauts reels :
+
+1. **L'accordeon du pied de page violait ARIA** sur les 202 pages :
+   le script et-mhf-js posait role="button" + tabindex sur les <h3>
+   des colonnes (« Nos poles », « Groupe »...), role interdit sur un
+   heading (axe : aria-allowed-role, 4 noeuds par page). Correction
+   canonique : un vrai <button aria-expanded> est injecte DANS le h3
+   (typographie heritee), le h3 garde le clic pointeur, le bouton
+   apporte clavier et semantique natifs. Toggle et re-fermeture
+   verifies sur six pages.
+
+2. **Les carrousels de cartes partageaient le meme aria-label** de
+   region (landmark-unique sur accueil, clients, investisseurs) :
+   l'etiqueteur de u_cd226c00eb4b.js numerote desormais les doublons
+   — « Cartes ... (2) ». Script modifie => bump SW et-202608231000.
+
+3. **Le placeholder du champ newsletter etait blanc a 38 % sur page
+   claire** — invisible (famille du chapitre 197 : l'encre sombre
+   pensee pour le theme nuit). Derogation ajoutee aux deux feuilles
+   porteuses (bundle_core_a1, x_dd3f8c61af27) : rgba(42,54,72,.55) en
+   clair, l'original intact en sombre.
+
+4. Cibles tactiles : les radios 1x1 px du contact sont des radios
+   stylees par label (le label large est la cible — conforme), les
+   liens en ligne beneficient de l'exception WCAG. Rien a corriger.
+
+**Volet drilling manager — sept etapes, sept verdicts.** Menu burger →
+lien services-ep : ok. Ancre #packs-phase : atterrit a 183 px sous
+l'en-tete. Palette « coiled tubing » : un resultat, le bon (lignes de
+services puits). Configurateur via hash p=operateur&d=for : etat
+applique et complete. Carnet forage directionnel → glref wellpad →
+glossaire : centre a 95 px, surlignage actif a 1,2 s (il expire a
+2,6 s par design — la premiere mesure trop tardive l'avait declare
+mort, contre-epreuve faite). Calculateur : curseur gain 12→16 %,
+sortie o_gain reactive. Contact : radio « Operateur E&P » selectionnable
+au label. Zero erreur console sur tout le parcours.
+
+**Mais le Configurateur cachait deux defauts de theme clair** : sa
+regle d'aplatissement des boutons (background-color 7 % sur TOUS les
+boutons de #root) effacait l'or du profil actif — le drilling manager
+ne voyait pas quel profil etait selectionne (en sombre : or franc) ;
+et le monogramme « E » perdait son disque dore (background-image:none
+du moteur clair sur les div de main). Deux derogations a specificite
+superieure : data-state=active / aria-pressed=true en or #D9A84F, et
+le degrade radial du monogramme reapplique.
+
+Verification finale : echantillon de dix pages cles rebalaye dans les
+deux themes — zero console, zero axe. 203 pages HTML, deux feuilles
+CSS, un script et le SW publies.
