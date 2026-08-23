@@ -7423,3 +7423,41 @@ quels.
 
 Feuilles CSS modifiees => bump SW et-202608231200. Huit pages
 rebalayees dans les deux themes : zero console, zero axe.
+
+## 220 — Test de navigation integral : toutes les versions, tous les chemins (2026-08-23)
+
+Mandat : tester la navigation pour garantir que tout marche sur toutes
+les versions. Trois couches de preuve.
+
+**Couche statique, 206 pages.** Zero cible de bascule de langue
+cassee : les alternates hreflang FR/EN pointent tous vers des
+fichiers existants, et le commutateur visible nx-lang coincide avec
+la jumelle hreflang sur 100 % des pages qui le portent (zero
+divergence). Les 69 pages sans nav standard (carnets en chrome de
+lecture, outils, boutique, explorateur) offrent toutes leur propre
+retour : lien Carnets/Accueil des articles + lien EN vers la jumelle,
+retour-site des outils, commutateur propre de l'explorateur. Le
+Configurateur reste un outil FR unique sans jumelle : choix assume,
+les pages EN y menent directement.
+
+**Couche dynamique, matrice 4 configurations** (mobile/bureau x
+clair/sombre) : ouverture du menu et navigation reelle vers /societe
+(4/4), bascule de langue par le commutateur (cible /societe-en
+correcte), palette Ctrl+K (recherche « glossaire » -> premier
+resultat le glossaire, href valide), accordeon du pied de page mobile
+(toggle + refermeture), atterrissage d'ancre #packs-phase (185 px
+mobile, 224 px bureau clair, 320 px bureau sombre — sous l'en-tete
+dans tous les cas), chrome de lecture des carnets (retour /carnets +
+rublink #rub=), page arabe (liens FR et EN presents). Zero erreur
+console sur les quatre parcours.
+
+**Couche production, vrai Chrome** : commutateur, mega-menu (lien
+visible /societe dans le panneau ouvert) et palette verifies sur
+/societe en ligne.
+
+**Une seule retouche en decoule** : 23 pages FR liaient l'accueil en
+href="index" (relatif, non canonique) — fonctionnel mais via une
+redirection 308 de Vercel a chaque clic. Les 39 liens passent a
+href="/" ; les href="/index-en" des pages EN sont canoniques et
+restent tels quels. Echantillon rebalaye deux themes : zero console,
+zero axe. Aucun script ni style touche : pas de bump SW.
