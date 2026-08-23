@@ -6,7 +6,14 @@
 <description>Le journal d’EnerTchad S.A. : récits, analyses et jalons de la construction de la chaîne pétrolière du Tchad — de la roche-mère à la pompe. Société en constitution : objectifs datés, non des actifs en exploitation.</description>
 <language>fr</language>
 <atom:link href="https://enertchad-delta.vercel.app/feed.xml" rel="self" type="application/rss+xml"/>
-<lastBuildDate>Sat, 22 Aug 2026 08:00:00 +0000</lastBuildDate>
+<lastBuildDate>Sun, 23 Aug 2026 08:00:00 +0000</lastBuildDate>
+<item>
+<title>Dans la salle de contrôle : l'interview de l'opérateur de conduite</title>
+<link>https://enertchad-delta.vercel.app/journal-interview-controle</link>
+<guid isPermaLink="true">https://enertchad-delta.vercel.app/journal-interview-controle</guid>
+<pubDate>Sun, 23 Aug 2026 08:00:00 +0000</pubDate>
+<description>Écrans, alarmes et télémétrie : troisième épisode de « L'interview métier », avec l'opérateur de conduite — celui qui veille sur le champ entier sans le quitter des yeux.</description>
+</item>
 <item>
 <title>Dans la cabine de comptage : l'interview du jaugeur-mesureur</title>
 <link>https://enertchad-delta.vercel.app/journal-interview-comptage</link>

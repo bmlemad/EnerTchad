@@ -7461,3 +7461,39 @@ redirection 308 de Vercel a chaque clic. Les 39 liens passent a
 href="/" ; les href="/index-en" des pages EN sont canoniques et
 restent tels quels. Echantillon rebalaye deux themes : zero console,
 zero axe. Aucun script ni style touche : pas de bump SW.
+
+## 221 — Le carnet « salle de controle » parait : troisieme interview metier (2026-08-23)
+
+La serie « L'interview metier » gagne son troisieme episode : apres le
+chef de chantier wellpads (amont) et le jaugeur-mesureur
+(intermediaire), l'operateur de conduite — figure recomposee — donne
+a voir le champ numerique depuis l'interieur de la salle. Sept
+questions : ecouter un champ plutot que regarder des ecrans, la
+hierarchie des alarmes (« acquitter n'est pas resoudre »), la regle
+d'or de la conduite deportee (jamais d'action a distance ou quelqu'un
+travaille), le jumeau numerique comme contradicteur, les modes
+degrades et la separation OT/IT, la formation a rapatrier, et la
+garde parfaite qui « ressemble a une nuit ordinaire ». Rubrique
+Technologies — la serie touche ainsi son troisieme pole.
+
+Construction par le gabarit du deuxieme episode, avec les garde-fous
+des chapitres 183/207 : remplacement global du slug pour les URL
+canoniques puis reecriture integrale de l'article (aucun lien
+residuel vers l'episode precedent hors citations voulues), fond
+datacenter.webp, dates 2026-08-23, fil d'Ariane au headline propre et
+« Stories » -> /carnets-en cote EN (regles du chapitre 216).
+
+Rituel des derives, complet : sitemap (2 URL), cmdk_extra (171
+entrees) et cmdk_en (172e entree en-61f) valides json.loads, feed.xml
+et feed-en.xml (guid permalien, pubDate +0000, lastBuildDate avance)
+valides minidom, cartes en tete des deux listings (rubrique
+Technologies auto-derivee par le filtre), jseq de l'episode 2 rebranche
+vers l'episode 3 dans les deux langues, glrefs vers #t-scada et
+#t-jumeau-numerique (FR) / #t-digital-twin (EN) — cibles verifiees au
+rendu (atterrissage 95 px, surlignage actif).
+
+Verification : les quatre pages touchees balayees dans les deux
+themes (zero console, zero axe) ; filtre #rub=technologies montre
+trois carnets dont le nouveau ; la palette repond « salle de
+controle » -> l'article en premier. Scripts cmdk modifies => bump SW
+et-202608231300.

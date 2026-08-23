@@ -6,7 +6,14 @@
 <description>EnerTchad S.A.’s journal: stories, analysis and milestones in building Chad’s integrated oil chain — from source rock to the pump. Company in formation: dated targets, not producing assets.</description>
 <language>en</language>
 <atom:link href="https://enertchad-delta.vercel.app/feed-en.xml" rel="self" type="application/rss+xml"/>
-<lastBuildDate>Sat, 22 Aug 2026 08:00:00 +0000</lastBuildDate>
+<lastBuildDate>Sun, 23 Aug 2026 08:00:00 +0000</lastBuildDate>
+<item>
+<title>Inside the control room: the operations controller's interview</title>
+<link>https://enertchad-delta.vercel.app/journal-interview-controle-en</link>
+<guid isPermaLink="true">https://enertchad-delta.vercel.app/journal-interview-controle-en</guid>
+<pubDate>Sun, 23 Aug 2026 08:00:00 +0000</pubDate>
+<description>Screens, alarms and telemetry: third episode of "The trade interview", with the operations controller — the one who watches over the whole field without leaving it out of sight.</description>
+</item>
 <item>
 <title>Inside the metering cabin: the gauger's interview</title>
 <link>https://enertchad-delta.vercel.app/journal-interview-comptage-en</link>
