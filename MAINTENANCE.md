@@ -7544,3 +7544,34 @@ jumelles EN. Verification : cartes ciblant les bons slugs dans les
 deux langues, deux themes balayes — zero console, zero axe — et
 controle visuel du bloc au rendu bureau. Aucun script touche : pas de
 bump SW.
+
+## 224 — L'editorial maille dans les piliers, la serie des interviews gagne son rail (2026-08-23)
+
+Journee autonome, premier chantier : ancrer les parutions d'hier dans
+le tissu du site.
+
+**Images sociales corrigees** : les deux articles du 23 aout
+heritaient de og-amont.jpg (residu de gabarit) — l'interview salle de
+controle passe a og-tchaditech.jpg, l'editorial a og-image.jpg
+(og:image, twitter:image et image du JSON-LD Article, FR et EN).
+
+**Maillage de l'editorial** : la section Vision de la Societe (les
+deux langues) et l'intro du modele economique des pages Investisseurs
+renvoient desormais vers « Premiere du genre » ; les Sujets du moment
+des deux listings gagnent une puce « Champion national & licorne » en
+tete. Le premier balayage a leve un vrai defaut sur ces liens : la
+classe rublink n'est stylee QUE sur les pages journal — sur societe et
+investisseurs, le lien tombait au bleu navigateur #0000EE sur fond
+nuit (contraste 1,78:1, axe color-contrast). Style porte par le lien
+lui-meme : or --gold-l en sombre, que la feuille claire surcharge en
+or fonce 7A570E — lisible des deux cotes, re-balaye a zero.
+
+**Rail de serie** : les six pages de « L'interview metier » (wellpads,
+jaugeur, conduite, FR+EN) affichent un rail numerote 01-02-03 avec
+l'episode courant marque « vous y etes » / « you are here »
+(aria-current="page"), au style des pilules jfoot existantes.
+Controle visuel au rendu mobile : pilules cliquables, episode courant
+en texte.
+
+Quatorze pages balayees dans les deux themes : zero console, zero
+axe. Aucun script touche : pas de bump SW.
