@@ -7230,3 +7230,49 @@ page) parsee : zero bloc invalide.
 Verdict : aucune erreur a corriger. Le mandat est honore par la
 contre-epreuve, pas par une correction inventee — la preuve bat la
 promesse, y compris quand la preuve dit que tout va bien.
+
+## 216 — Les fils d'Ariane recousus : 62 pages ou le JSON-LD racontait le mauvais chemin (2026-08-23)
+
+En preparant le prochain carnet, lecture du gabarit interview-comptage :
+son fil d'Ariane JSON-LD (BreadcrumbList) annoncait le titre de
+l'interview WELLPADS — un residu du gabarit d'origine. Audit immediat
+des BreadcrumbList des 208 pages : 112 signalements bruts, tries en
+familles reelles et faux positifs (l'item du dernier maillon est
+optionnel selon schema.org — ces cas-la sont conformes).
+
+**Familles reelles corrigees, 62 fichiers :**
+
+1. Seize pages journal (8 sujets x FR/EN) dont le dernier maillon
+   portait le nom ET l'URL d'un AUTRE article — l'enigme densite pour
+   six sujets (forage directionnel, gaz torche, mecanique des fluides,
+   prix du litre, prix de l'uree, transfert de garde), Water-to-Value
+   pour integrite-faire-durer, wellpads pour interview-comptage. Le
+   maillon est realigne sur le headline Article de la page meme et son
+   URL propre.
+
+2. Les 30 pages journal EN pointaient leur maillon « Carnets » vers
+   /carnets (FR) : bascule vers « Stories » -> /carnets-en, la
+   convention deja etablie par les rublinks et la palette.
+
+3. Onze pages EN racine (carnets, clients, confidentialite, cookies,
+   engagements, faq, investisseurs, mentions-legales, publications,
+   societe, solutions) dont le dernier maillon pointait l'URL FR :
+   realignees sur l'URL EN ; « Investisseurs » devient « Investors »,
+   « Carnets EnerTchad » devient « Stories ».
+
+4. Vingt pages EN dont le premier maillon disait encore « Accueil » :
+   « Home » — decouvert par la contre-epreuve du correctif precedent,
+   pas par le balayage initial ; la sonde ne regardait que le dernier
+   maillon, lecon retenue : auditer TOUS les maillons.
+
+5. gouvernance et gouvernance-en portaient le fil d'ethique
+   (« Ethique & conformite » -> /ethique) : chacun recoit son propre
+   maillon. Les huit pole-*-en avaient des noms FR : traduits. ar.html
+   normalise (/ar sans extension). Le Calculateur remplace son maillon
+   placeholder « EnerTchad » par son vrai nom.
+
+Les ecarts restants du signalement brut sont des libelles courts
+volontaires (« Cookies » pour « Cookie policy ») : assumes, pas
+touches. Validation : les blocs JSON-LD des 208 pages reparses a zero
+faute ; plus aucun maillon etranger, plus aucun « Accueil » sur page
+EN. Aucun script ni style touche : pas de bump du service worker.
