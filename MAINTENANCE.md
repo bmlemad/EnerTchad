@@ -7650,3 +7650,18 @@ blocs JSON-LD de la page parsent, le FAQPage compte 27 entrees
 alignees sur les 27 questions visibles — y compris la question
 licorne du chapitre 227. Page balayee deux themes : zero console,
 zero axe.
+
+## 229 — CP-2026-007 : les Carnets s'etoffent, et toutes les surfaces le disent (2026-08-23)
+
+La page Communiques etait figee au 10 juillet (CP-2026-006). Le
+communique CP-2026-007 parait dans les deux langues, au format des
+precedents (article cp, ancre #cp-007, time datetime, ref) : il
+annonce le troisieme episode de la serie « L'interview metier » et
+l'editorial « Premiere du genre », en reprenant la formulation de
+conformite (premiere initiative PRIVEE tchadienne INTEGREE, cap
+assume). Les blocs « Communiques officiels » des deux accueils
+tournent : CP-007 entre en tete avec son ancre profonde, CP-004 sort
+pour garder trois items. Les deux flux RSS gagnent l'item CP-007
+(guid permalien #cp-007, convention des CP precedents), lastBuildDate
+avance a 10:00. Quatre pages balayees deux themes (zero console, zero
+axe), ancres cp-007 verifiees des deux cotes, flux reparses valides.
