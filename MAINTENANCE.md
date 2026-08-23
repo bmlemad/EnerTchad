@@ -7384,3 +7384,42 @@ va bien jusqu'a l'etape 2 avec valeurs saisies lisibles.
 Feuilles CSS modifiees => bump SW et-202608231100. Controle final :
 huit pages clefs rebalayees dans les deux themes, zero console, zero
 axe.
+
+## 219 — Solde des actions differees : tout ce qui restait en attente est applique (2026-08-23)
+
+Mandat : appliquer toutes les actions. Inventaire des ecarts notes
+« assumes » ou « mineurs » dans les chapitres 214 a 218, tries entre
+ce qui releve du proprietaire (convention INSPEM, seance photo, noms
+d'equipe, volumes d'import, ticket investisseur — non executables
+ici) et ce qui etait a ma main. Quatre familles executees :
+
+**1. Les dernieres miettes FR sur pages EN.** La contre-sonde lexicale
+(mots francais dans les fils d'Ariane EN) a trouve trois maillons
+echappes au chapitre 216 : « Conseil » sur audits-en et esg-en
+(-> Advisory), « En profondeur — nos recits » sur recits-en (-> In
+depth — technology stories). Plus l'alignement raffinage-en
+(« Modular, movable » -> « Modular & movable », comme le titre).
+
+**2. Cibles tactiles des curseurs** (note du chapitre 217 : 22 px).
+Regle @media(pointer:coarse) dans les trois feuilles porteuses :
+min-height 28 px pour tout input range et le curseur de luminosite.
+Premiere version limitee a main/form : les cinq curseurs du
+Calculateur (page sans <main>) restaient a 22 px — la regle est
+elargie a input[type=range] nu, sans debordement induit.
+
+**3. Contraste du formulaire de contact en theme clair** (note du
+chapitre 218 : blanc sur gris composite ~2,5:1, sous le seuil AA,
+invisible pour axe qui ne sait pas composer les fonds translucides).
+Style dedie dans contact et contact-en : encre #1A2330 sur fond blanc
+.72 en clair, verre nuit intact en sombre. Verifie au rendu : saisie
+noire sur blanc, placeholder lisible, select et textarea alignes.
+
+**4. Assume et documente, sans action** : les libelles courts des
+fils d'Ariane (« Cookies », « Clients & solutions ») sont des choix
+editoriaux ; le chevauchement transitoire compteur/rail « Suite » du
+glossaire est le comportement de tout bouton flottant ; les panneaux
+nuit volontaires (palette, panier, cartes produits) restent tels
+quels.
+
+Feuilles CSS modifiees => bump SW et-202608231200. Huit pages
+rebalayees dans les deux themes : zero console, zero axe.
