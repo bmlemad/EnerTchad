@@ -7575,3 +7575,15 @@ en texte.
 
 Quatorze pages balayees dans les deux themes : zero console, zero
 axe. Aucun script touche : pas de bump SW.
+
+## 225 — Le plan du site rattrape sept carnets (2026-08-23)
+
+Controle de fraicheur des surfaces de listage : les deux plans du
+site s'etaient arretes a l'interview wellpads — sept articles
+manquaient dans chaque langue (forage directionnel, prix de l'uree,
+gaz torche, transfert de garde, les deux interviews recentes et
+l'editorial Premiere du genre). Les quatorze entrees sont ajoutees
+dans l'ordre de parution, titres alignes sur les pages articles.
+Inventaire par difference apres coup : zero manquant des deux cotes
+(33 carnets FR, 33 EN). Les deux pages balayees deux themes : zero
+console, zero axe.
