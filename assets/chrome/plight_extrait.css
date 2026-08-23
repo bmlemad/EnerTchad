@@ -961,3 +961,13 @@ html:not(.et-plight) main .hz .h:not(#_):not(#__),
 html:not(.et-plight) main .ec-tiers .ec-tier:not(#_):not(#__),
 html:not(.et-plight) main .ppl-sel .ppl-f:not(#_):not(#__){
  box-shadow:0 1px 2px rgba(0,0,0,.22),0 16px 36px -26px rgba(0,0,0,.72)!important}
+
+/* Ch218 : sous le seuil 1241px le panneau nx-mega restait peint en sombre par la regle non gardee -> en theme clair le tiroir montrait du texte sombre sur fond nuit. Derogation mobile claire. */
+@media(max-width:1240px){
+html.et-plight .nx-mega:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-plight .nx .nx-mega:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-jlight .nx-mega:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
+background:rgba(250,247,241,.97)!important;
+border:1px solid rgba(26,35,48,.10)!important;
+box-shadow:0 18px 40px -24px rgba(26,35,48,.25)!important}
+}
