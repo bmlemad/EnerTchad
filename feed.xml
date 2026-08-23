@@ -6,7 +6,14 @@
 <description>Le journal d’EnerTchad S.A. : récits, analyses et jalons de la construction de la chaîne pétrolière du Tchad — de la roche-mère à la pompe. Société en constitution : objectifs datés, non des actifs en exploitation.</description>
 <language>fr</language>
 <atom:link href="https://enertchad-delta.vercel.app/feed.xml" rel="self" type="application/rss+xml"/>
-<lastBuildDate>Sun, 23 Aug 2026 08:00:00 +0000</lastBuildDate>
+<lastBuildDate>Sun, 23 Aug 2026 09:00:00 +0000</lastBuildDate>
+<item>
+<title>Première du genre : EnerTchad, le pari du champion national</title>
+<link>https://enertchad-delta.vercel.app/journal-premiere-du-genre</link>
+<guid isPermaLink="true">https://enertchad-delta.vercel.app/journal-premiere-du-genre</guid>
+<pubDate>Sun, 23 Aug 2026 09:00:00 +0000</pubDate>
+<description>Aucune société privée à capitaux tchadiens n'avait encore entrepris de bâtir la chaîne pétrolière entière. EnerTchad est la première initiative de ce genre — champion national visé, licorne en ligne de mire.</description>
+</item>
 <item>
 <title>Dans la salle de contrôle : l'interview de l'opérateur de conduite</title>
 <link>https://enertchad-delta.vercel.app/journal-interview-controle</link>

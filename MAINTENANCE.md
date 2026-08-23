@@ -7497,3 +7497,36 @@ themes (zero console, zero axe) ; filtre #rub=technologies montre
 trois carnets dont le nouveau ; la palette repond « salle de
 controle » -> l'article en premier. Scripts cmdk modifies => bump SW
 et-202608231300.
+
+## 222 — Le carnet « Premiere du genre » parait : champion national et licorne, sans tricher sur les mots (2026-08-23)
+
+Directive du proprietaire : mettre a jour le blog avec des articles
+et dire qu'EnerTchad est la toute premiere initiative de ce genre,
+qu'elle se veut un champion, une licorne. Deux articles paraissent
+donc ce jour : l'interview salle de controle (chapitre 221) et cet
+editorial de positionnement, rubrique Economie · Vision.
+
+Le texte pese ses mots pour rester dans la ligne de conformite du
+site : « premiere du genre » est defini au sens precis — premiere
+societe PRIVEE, a capitaux tchadiens, INTEGREE sur toute la chaine
+(ni la societe nationale, ni les operateurs etrangers, ni les
+negociants) ; le champion national est presente par ses effets de
+filiere, avec le precedent nigerian (raffinerie privee) comme preuve
+de possibilite africaine sans nommer de marque ; la licorne est
+definie (1 Md$), situe APRES le cap 2030 publie (20 Md FCFA — les
+ordres de grandeur sont assumes), et exprimee partout comme objectif
+(« se veut », « viser ») avec le disclaimer societe en constitution
+renforce dans la signature : « ambitions et valorisations evoquees
+sont des objectifs, non des resultats ». Le mot d'ordre editorial est
+la blockquote : une licorne ne se decrete pas.
+
+Construction sur le gabarit du chapitre 221, memes garde-fous. Trois
+glrefs nouveaux : #t-ohada, #t-itie, #t-contenu-local (FR) /
+#t-ohada, #t-eiti, #t-local-content (EN) — cibles verifiees a 95 px.
+Rituel des derives complet : sitemap (2 URL), cmdk 172/144 entrees
+(en-61g), feeds lastBuildDate 09:00, cartes en tete des listings
+(rubrique Economie existante, Vision en sous-libelle), jseq chaine
+vers la rente partagee et l'interview salle de controle. Liens
+internes des deux articles verifies : zero cible manquante. Quatre
+pages balayees deux themes : zero console, zero axe. Bump SW
+et-202608231400.
