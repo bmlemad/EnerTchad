@@ -7530,3 +7530,17 @@ vers la rente partagee et l'interview salle de controle. Liens
 internes des deux articles verifies : zero cible manquante. Quatre
 pages balayees deux themes : zero console, zero axe. Bump SW
 et-202608231400.
+
+## 223 — Le fil date de l'accueil rattrape le blog (2026-08-23)
+
+Les trois cartes « Le fil date · Carnets » des deux accueils etaient
+figees fin juillet (bitume, integrite, production anticipee) — sept
+carnets de retard sur le blog. Elles passent aux trois plus recents :
+l'editorial « Premiere du genre » en tete (accent or, rubrique
+Economie · Vision), puis les interviews salle de controle (accent
+7E8AD9) et jaugeur-mesureur (accent bleu), dates et resumes alignes
+sur les pages articles. Meme rafraichissement sur index-en avec les
+jumelles EN. Verification : cartes ciblant les bons slugs dans les
+deux langues, deux themes balayes — zero console, zero axe — et
+controle visuel du bloc au rendu bureau. Aucun script touche : pas de
+bump SW.
