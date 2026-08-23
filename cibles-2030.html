@@ -486,10 +486,10 @@ html.et-jlight .rootland::after{
       data:[10,1000,20000],backgroundColor:[BLUE,GOLD,'#E8C36A'],borderRadius:8,maxBarThickness:84}]},
     options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},
       tooltip:{callbacks:{label:function(c){var v=c.parsed.y;return v>=1000?(v/1000)+' Md FCFA':v+' M FCFA';}}}},
-      scales:{y:{type:'logarithmic',grid:{color:HAIR},ticks:{callback:function(v){return v>=1000?(v/1000)+' Md':v+' M';}}},x:{grid:{display:false}}}}});
+      scales:{y:{type:'logarithmic',grid:{color:HAIR},ticks:{callback:function(v){var l=Math.log10(v);if(Math.abs(l-Math.round(l))>0.001)return null;return v>=1000?(v/1000)+' Md':v+' M';}}},x:{grid:{display:false}}}}});
   new Chart(document.getElementById('poleChart'),{type:'doughnut',
-    data:{labels:['Amont','Intermédiaire','Aval','Durabilité','Technologies','Capital humain','Conseil'],
-      datasets:[{data:[1,1,1,1,1,1,1],backgroundColor:[GOLD,BLUE,AMBER,GREEN,'#7E8AD9','#C4B5FD','#1FA496'],borderColor:'#121D31',borderWidth:2}]},
+    data:{labels:['Amont','Intermédiaire','Aval','Pétrochimie','Durabilité','Technologies','Capital humain','Conseil'],
+      datasets:[{data:[1,1,1,1,1,1,1,1],backgroundColor:[GOLD,BLUE,AMBER,'#D177B4',GREEN,'#7E8AD9','#C4B5FD','#1FA496'],borderColor:'#121D31',borderWidth:2}]},
     options:{responsive:true,maintainAspectRatio:false,cutout:'58%',plugins:{legend:{position:'right',labels:{boxWidth:10,padding:8}},
       tooltip:{callbacks:{label:function(c){return c.label;}}}}}});
  }

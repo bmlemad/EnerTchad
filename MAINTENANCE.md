@@ -7335,3 +7335,52 @@ le degrade radial du monogramme reapplique.
 Verification finale : echantillon de dix pages cles rebalaye dans les
 deux themes — zero console, zero axe. 203 pages HTML, deux feuilles
 CSS, un script et le SW publies.
+
+## 218 — Navigation mobile libre : le tiroir nuit sur page claire, la recherche invisible et les graphiques anglais jamais nes (2026-08-23)
+
+Mandat : naviguer sur les versions mobiles. Vingt-trois pages
+parcourues a 390 px comme un visiteur (defilement, captures a
+plusieurs profondeurs, FR + EN + AR), puis les organes interactifs :
+menu tiroir et sous-menus, recherche du glossaire, filtres #rub= des
+carnets, panier de la boutique, curseurs EOR, atlas, formulaire de
+contact en trois etapes. Zero erreur console, zero debordement sur
+tout le parcours. Quatre defauts reels, tous vus a l'oeil sur les
+captures — aucun n'etait detectable par les sondes automatiques.
+
+**1. Le sous-menu du tiroir restait peint en nuit sur page claire.**
+La regle claire du panneau nx-mega est volontairement limitee a
+>=1241 px (« en tiroir il doit rester transparent ») — mais une regle
+sombre NON gardee le peint quand meme sous ce seuil : sous-titres
+bleu sombre sur gris nuit, quasi illisibles. Derogation mobile claire
+(fond creme .97) dans les trois feuilles porteuses (bundle_core_a1,
+plight_extrait, x_cd256286824c) ; le sombre reste intact.
+
+**2. La recherche du glossaire tapait en blanc sur fond clair.** La
+valeur saisie (#q) heritait du texte nuit #F5F7FA sur fond
+transparent : le terme tape etait invisible. Style dedie dans les
+deux glossaires : encre #1A2330 et fond blanc .66 en clair, l'original
+en sombre. Balayage systematique de tous les champs du site dans la
+foulee : la palette (modal sombre par design), le panier et les
+cartes produits de la boutique (panneaux nuit volontaires) et le
+formulaire de contact (chips grises, blanc lisible) sont conformes —
+faux positifs assumes.
+
+**3. Les deux graphiques de cibles-2030-en n'ont JAMAIS ete dessines.**
+La page EN portait les canvases mais ni chart.umd.min.js ni le code
+d'initialisation : les investisseurs anglophones voyaient deux cadres
+vides depuis la creation de la page. Bloc porte et traduit (Founder /
+Short term / Long term, Bn au lieu de Md). Au passage, deux defauts
+du graphique FR corriges : les graduations log s'empilaient en mobile
+(10 Md sur 7 Md...) — seules les puissances de dix sont conservees —
+et le donut « Les 8 poles » n'avait que SEPT segments : la Petrochimie
+manquait. Elle entre dans les deux langues (#D177B4).
+
+**4. Verifications d'innocence** : l'ecran noir apres « Ajouter » a la
+boutique etait le tiroir de commande legitime (panneau nuit lisible,
+article ajoute, compteur a 1) ; la couche plein-ecran z-index maximal
+est en pointer-events:none (toast, inoffensive) ; le stepper contact
+va bien jusqu'a l'etape 2 avec valeurs saisies lisibles.
+
+Feuilles CSS modifiees => bump SW et-202608231100. Controle final :
+huit pages clefs rebalayees dans les deux themes, zero console, zero
+axe.
