@@ -7587,3 +7587,29 @@ dans l'ordre de parution, titres alignes sur les pages articles.
 Inventaire par difference apres coup : zero manquant des deux cotes
 (33 carnets FR, 33 EN). Les deux pages balayees deux themes : zero
 console, zero axe.
+
+## 226 — Cloture de la journee autonome : trois chantiers, un site verifie de bout en bout (2026-08-23)
+
+Bilan de la journee (chapitres 224 a 226) : l'editorial « Premiere du
+genre » est desormais ancre partout ou un visiteur decide — vision de
+la Societe, modele economique des Investisseurs, puce en tete des
+Sujets du moment, fil date de l'accueil (chapitre 223 la veille au
+soir) ; la serie des interviews metier a son rail numerote sur ses
+six pages ; les images sociales des deux parutions sont les bonnes ;
+les plans du site ont rattrape leurs sept carnets manquants par
+langue.
+
+Contre-epreuve de cloture, la plus large a ce jour : 210 pages x 2
+themes = 420 charges — zero erreur console, zero violation axe (les
+quatre pages nees cette semaine entrent dans la liste de balayage
+permanente) ; zero lien interne casse hors gabarits de script ; la
+totalite des blocs JSON-LD parsee sans faute ; sitemap et flux valides
+minidom ; les deux index de palette valides json.loads ; production
+sondee (accueil 200, SW et-202608231400 servi, plan du site a jour en
+ligne).
+
+La lecon du jour prolonge celle du chapitre 224 : les classes de
+style sont un contrat par page — rublink n'existe que la ou une
+feuille la definit, et l'utiliser ailleurs, c'est heriter du bleu
+navigateur sur fond nuit. Toute reutilisation d'une classe hors de
+son habitat doit etre verifiee au calcul, pas a l'oeil.
