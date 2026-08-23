@@ -7638,3 +7638,15 @@ Stories · Contact) accueille desormais les anglophones egares.
 
 Cinq pages balayees deux themes (zero console, zero axe) ; question
 27 testee au rendu : ouverture au clic, liens valides.
+
+## 228 — La FAQ anglaise gagne son FAQPage (2026-08-23)
+
+Le constat du chapitre 227 est solde : la page faq-en n'avait aucun
+schema FAQPage la ou le FR en portait un depuis longtemps. Les 27
+paires question-reponse sont extraites des details visibles (source
+de verite : le contenu rendu, pas une copie manuelle), serialisees en
+JSON-LD (10,3 Ko) et inserees dans le head. Verification : les quatre
+blocs JSON-LD de la page parsent, le FAQPage compte 27 entrees
+alignees sur les 27 questions visibles — y compris la question
+licorne du chapitre 227. Page balayee deux themes : zero console,
+zero axe.
