@@ -1601,3 +1601,6 @@ html:not(.et-plight) main .ppl-sel .ppl-f:not(#_):not(#__){
 .btn.btn-p::after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.35) 50%,transparent 70%);transform:translateX(-120%);transition:transform .7s var(--ease,ease);pointer-events:none}
 .btn.btn-p:hover::after{transform:translateX(120%)}
 @media (prefers-reduced-motion:reduce){.btn.btn-p::after{display:none}}
+
+/* Ch217 : placeholder lisible en theme clair (etait blanc a 38% sur fond clair) */
+html.et-plight main ::placeholder,html.et-plight form ::placeholder,html.et-jlight main ::placeholder,html.et-jlight form ::placeholder{color:rgba(42,54,72,.55)!important}
