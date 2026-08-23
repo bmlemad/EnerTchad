@@ -7613,3 +7613,28 @@ style sont un contrat par page — rublink n'existe que la ou une
 feuille la definit, et l'utiliser ailleurs, c'est heriter du bleu
 navigateur sur fond nuit. Toute reutilisation d'une classe hors de
 son habitat doit etre verifiee au calcul, pas a l'oeil.
+
+## 227 — La FAQ repond a la licorne, le 404 parle aussi anglais (2026-08-23)
+
+Trois retouches de coherence dans la foulee de l'editorial.
+
+**FAQ, question 27** (FR et EN) : « Vous parlez de champion national
+et de licorne — est-ce realiste ? » La reponse reprend le cadre de
+conformite de l'editorial : objectifs assumes et non promesses, sens
+precis de « premiere du genre », licorne situee apres le cap 2030,
+renvois vers Cibles 2030 et l'article, rappel societe en
+constitution. Le FAQPage JSON-LD du FR passe a 27 entrees (parse
+valide) ; constat au passage : la page EN n'a pas de FAQPage — etat
+anterieur, note pour un chantier futur.
+
+**Image sociale du jaugeur** : l'interview comptage (Intermediaire)
+portait og-amont.jpg — bascule vers og-intermediaire.jpg (FR+EN, six
+references). La convention est desormais uniforme : og-image generique
+pour les carnets, og de pole pour les interviews.
+
+**404 bilingue** : la page d'erreur, unique pour tout le site chez
+Vercel, ne parlait que francais. Une ligne lang="en" (English home ·
+Stories · Contact) accueille desormais les anglophones egares.
+
+Cinq pages balayees deux themes (zero console, zero axe) ; question
+27 testee au rendu : ouverture au clic, liens valides.
