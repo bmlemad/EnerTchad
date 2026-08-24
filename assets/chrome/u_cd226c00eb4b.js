@@ -219,3 +219,68 @@ els.forEach(function(el){
  io.observe(el);
 });
 })()}catch(e){}
+
+/* Ch231 : le controle de luminosite (#lum-ctl, markup present sur les 207 pages)
+   n'avait AUCUN gestionnaire — bouton, curseur et preregles morts depuis leur pose.
+   Implementation par le voile #lum-veil prevu a cet effet (jamais de filter sur
+   html : il ferait defiler les elements fixed avec la page). */
+try{(function(){
+var btn=document.getElementById('lum-btn'),panel=document.getElementById('lum-panel'),
+    rng=document.getElementById('lum-range'),veil=document.getElementById('lum-veil');
+if(!btn||!panel)return;
+if(veil)veil.style.opacity='0'; /* opacite par defaut = 1 (fond transparent) : sans cette mise a zero, la premiere application animerait 1 vers cible = eclair noir */
+function apply(v,save){
+  v=Math.max(80,Math.min(130,Math.round(v)));
+  if(rng)rng.value=v;
+  if(veil){
+    if(v===100){veil.style.opacity='0';}
+    else if(v<100){veil.style.background='#000';veil.style.opacity=String(((100-v)/20*0.42).toFixed(3));}
+    else{veil.style.background='#fff';veil.style.opacity=String(((v-100)/30*0.28).toFixed(3));}
+    veil.style.transition='opacity .25s ease';
+  }
+  panel.querySelectorAll('button[data-l]').forEach(function(b){
+    b.setAttribute('aria-pressed',(+b.dataset.l===v)?'true':'false');});
+  if(save!==false){try{localStorage.setItem('et-lum',String(v))}catch(e){}}
+}
+function toggle(open){
+  if(open===undefined)open=panel.hidden;
+  panel.hidden=!open;
+  btn.setAttribute('aria-expanded',open?'true':'false');
+  if(open&&rng)try{rng.focus({preventScroll:true})}catch(e){}
+}
+btn.addEventListener('click',function(){toggle();});
+if(rng)rng.addEventListener('input',function(){apply(+rng.value);});
+panel.querySelectorAll('button[data-l]').forEach(function(b){
+  b.addEventListener('click',function(){apply(+b.dataset.l);});});
+document.addEventListener('keydown',function(e){
+  if(e.key==='Escape'&&!panel.hidden){toggle(false);try{btn.focus({preventScroll:true})}catch(_){}}});
+document.addEventListener('click',function(e){
+  if(!panel.hidden&&!(e.target.closest&&e.target.closest('#lum-ctl')))toggle(false);});
+try{var s=localStorage.getItem('et-lum');if(s!==null&&+s!==100)apply(+s,false);}catch(e){}
+})()}catch(e){}
+
+/* Ch231c : barre d'application mobile (#nezBar) - etat actif inter-pages.
+   L'IntersectionObserver existant ne marque que les liens d'ancre (#...) : sur toute
+   page interieure, aucun des 5 onglets n'indiquait la position courante. Ici on marque
+   le lien dont le chemin correspond a la page (aria-current="page" + .nz-on). */
+try{(function(){
+var bar=document.getElementById('nezBar');if(!bar)return;
+if(bar.querySelector('a.nz-on'))return;
+function norm(p){p=(p||'').replace(/\/index(-en)?(\.html)?$/,'/').replace(/\.html$/,'');if(p.length>1)p=p.replace(/\/$/,'');return p||'/';}
+var here=norm(location.pathname);
+var hit=null;
+[].slice.call(bar.querySelectorAll('a[href]')).forEach(function(a){
+  if(hit)return;var h=a.getAttribute('href');if(!h||h.charAt(0)==='#')return;
+  var u;try{u=new URL(h,location.href)}catch(e){return}
+  if(u.origin!==location.origin)return;
+  if(norm(u.pathname)===here)hit=a;});
+if(!hit){
+  /* page pointee par un lien d'ancre du meme document (ex. Services sur /amont/services-ep) :
+     l'IO ne marquera l'onglet qu'a l'intersection de la section — on pose l'etat initial ici */
+  [].slice.call(bar.querySelectorAll('a[href^="#"]')).some(function(a){
+    var id=a.getAttribute('href').slice(1);
+    if(id&&document.getElementById(id)){hit=a;return true}
+    return false});
+}
+if(hit){hit.classList.add('nz-on');hit.setAttribute('aria-current','page');}
+})()}catch(e){}

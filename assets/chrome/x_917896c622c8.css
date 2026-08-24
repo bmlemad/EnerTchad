@@ -19,8 +19,10 @@ img{max-width:100%!important}
 *{animation:none!important}
 }
 
-/* variateur retire — controle sans pilote JS, masque universellement */
-.lum-ctl{display:none!important}
+/* Ch231 : variateur reactive - le pilote JS existe desormais (u_cd226c00eb4b.js), le masque universel est leve */
 
 /* iOS safe-area : les commandes flottantes remontent au-dessus de l'indicateur d'accueil et s'ecartent des bords arrondis. No-op sur les appareils sans zone sure. */
 @supports(bottom:env(safe-area-inset-bottom)){.lum-ctl:not(#_){margin-bottom:env(safe-area-inset-bottom);margin-right:env(safe-area-inset-right)}}
+
+/* Ch231b : etat selectionne des prereglages du variateur — sans cette regle, seul l'anneau de focus distingue le niveau actif */
+.lum-presets button[aria-pressed="true"]{border-color:var(--gold-l,#F0CE82);background:rgba(240,206,130,.14);color:var(--gold-l,#F0CE82);font-weight:600}
