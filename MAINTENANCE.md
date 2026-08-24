@@ -7788,3 +7788,56 @@ par openCmdk() a montre l'ouverture partout : le defaut reel etait la
 langue des donnees, pas l'ouverture. 49 pages EN balayees deux
 themes : zero console, zero axe. HTML seul, pas de bump SW (documents
 en network-first).
+
+## 233 — Les outils interactifs passent au theme clair (2026-08-24)
+
+Revue fonctionnelle des quatre outils du site (calculateur du baril,
+configurateur de service v2, explorateur de chaine, boutique) plus les
+accordeons de la FAQ, dans les deux themes. Cote mecanique, tout
+repond : les six curseurs du calculateur recalculent sans NaN, le
+configurateur change d'onglet et selectionne ses domaines, la boutique
+ajoute au panier dans les deux langues, les 27 questions de la FAQ
+s'ouvrent et le FAQPage est present des deux cotes. Deux faux
+positifs de sonde ecartes par contre-epreuve : le bouton d'ajout
+anglais s'intitule « Add » et non « Add to... » (ma regex le
+manquait), et le premier onglet du configurateur etait deja
+selectionne, d'ou l'absence de changement au clic.
+
+Le vrai defaut etait ailleurs : ces deux outils n'avaient jamais recu
+de traitement clair.
+
+Calculateur. Les quatre tuiles de resultat recevaient le fond clair
+generique des tuiles (blanc a 88 %) mais gardaient l'encre du theme
+sombre : chiffre blanc sur blanc, mesure au pixel peint a 1,35:1 ;
+legende gris-bleu #9DAAC2 sur la meme tuile, 1,05:1 — les quatre
+sorties principales de l'outil etaient illisibles. Le bandeau « effet
+corridor » restait en bleu nuit translucide sur creme (boue a 1,9:1),
+et la mention « Simulation illustrative » etait en blanc a 50 % sur
+creme. Bloc calcLight233 pose en fin de head : panneau, tuiles,
+bandeau et pastilles en blanc a bordure sombre, encre #12203A pour les
+chiffres et #43536E pour les legendes, piste des barres en gris,
+synthese en degrade dore pale a encre sombre. Deux pieges rencontres
+en route : le bouton secondaire « Copier la synthese » recevait deja
+un fond bleu nuit d'une regle claire generique — poser une encre
+sombre dessus l'aurait rendu invisible (1,17:1), il fallait aussi
+forcer le fond blanc ; et le bouton d'action principal avait perdu son
+degrade dore, retabli avec son encre #121D31.
+
+Configurateur. Le correctif clair v2 de la page visait les onglets
+avec un selecteur trop large : button[aria-pressed="true"] remplissait
+en aplat dore #D9A84F. Or les onglets Radix portent
+data-state="active", pas aria-pressed — ce sont les six grandes cartes
+de domaine qui portent aria-pressed. Resultat : chaque domaine
+selectionne devenait un pave dore avec du texte gris-bleu dessus, et
+les pastilles de perimetre perdaient leur code couleur (vert « en
+propre », or « via partenaires ») a cause de la regle
+span{color:inherit}. Correctif Ch233 : les cartes prennent le
+traitement mirroir du theme sombre — teinte doree pale #FBF2DE,
+bordure #C49A35, encre sombre — les onglets gardent l'aplat, et les
+pastilles retrouvent des valeurs sombres lisibles (5,9:1 et 6,6:1).
+Titres a 16,3:1, corps a 7,0:1 apres correctif.
+
+Verifie au pixel et a l'ecran dans les deux themes, plus le
+configurateur a 390 px (aucun debordement). Theme sombre inchange sur
+les deux outils. Balayage des pages d'outils deux themes : zero
+console, zero axe. Pages de documents seules : pas de bump SW.
