@@ -7744,3 +7744,47 @@ Trois faux positifs de sonde ecartes par contre-epreuve (chemins
 d'articles errones, regex EN trop stricte, rail sans aria-label mais
 avec texte interne). SW bumpe et-202608241000 (deux CSS et un JS
 cache-first modifies).
+
+## 232 — La chasse aux organes sans pilote : le formulaire EN revit, la palette parle anglais (2026-08-24)
+
+Suite logique du ch.231 : le variateur mort n'etait peut-etre pas un
+cas isole. Balayage statique de tous les boutons et champs a id sur
+les 210 pages, croise avec l'ensemble des scripts (bundles et
+inline) : quatre suspects, deux faux positifs ecartes par
+contre-epreuve (le bouton de recherche du 404 est cable par onclick
+inline ; le rail de chantiers de projets-en est fait de simples
+ancres, comme son jumeau).
+
+Deux vrais morts. D'abord, grave : le formulaire de contact anglais.
+L'assistant en trois etapes (choix de la demande, coordonnees,
+recapitulatif) avait tout son markup mais AUCUN script — le bouton
+« Continue » ne faisait rien, aucun visiteur anglophone ne pouvait
+envoyer sa demande. Le pilote de contact.html (3,1 ko) est porte avec
+ses chaines traduites (Request/Name/Organisation/Product/Message,
+en-tete To/Subject) et une amelioration : le recapitulatif affiche le
+libelle anglais de la carte choisie, tandis que la valeur francaise
+part dans le mailto — l'equipe de N'Djamena recoit sa taxonomie.
+Parcours complet verifie des deux cotes : etapes, selection produit
+conditionnelle, recapitulatif, repli copie, regression FR intacte.
+
+Ensuite, systemique : la palette Ctrl+K servait des resultats
+FRANCAIS sur la quasi-totalite des pages anglaises. Les deux moteurs
+(c_abd..., c_df4f...) detectent l'anglais en inspectant les donnees
+chargees — or 38 pages EN chargaient cmdk_extra.js (le catalogue
+francais, 172 entrees) et 5 autres n'avaient aucune donnee : partout
+le moteur retombait en francais, titres et cibles /investisseurs au
+lieu de /investisseurs-en. Seules 5 pages EN (glossaire, achats,
+paiements-etats, communiques, ethique) chargeaient cmdk_en.js et
+faisaient bien. Correction : substitution du catalogue sur les 38,
+insertion avant le moteur sur les 5 (l'ordre compte, les differes
+s'executent dans l'ordre du document). Verifie sur sept pages EN
+representatives : resultats anglais, cibles -en ; les pages FR
+inchangees.
+
+Precision de methode : le premier sondage concluait « palette ne
+s'ouvre pas » sur ces pages — faux positif de banc (frappe synthetique
+et premier role=dialog qui etait l'avis cookies). La contre-epreuve
+par openCmdk() a montre l'ouverture partout : le defaut reel etait la
+langue des donnees, pas l'ouverture. 49 pages EN balayees deux
+themes : zero console, zero axe. HTML seul, pas de bump SW (documents
+en network-first).
