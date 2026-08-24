@@ -7680,3 +7680,67 @@ conduite — l'article qui incarne son architecture ; « La rente
 partagee » (FR+EN) renvoie vers « Premiere du genre », dont la
 derniere section (le champion partage) prolonge exactement son
 propos. Quatre pages balayees deux themes : zero console, zero axe.
+
+## 231 — Ultra revue des outils de navigation : le variateur reprend vie (2026-08-24)
+
+Revue systematique des outils de navigation sur les trois langues,
+deux themes, mobile et desktop. Trois familles de defauts, toutes
+corrigees.
+
+Le panneau thematique (th-x) d'abord : les organes ajoutes par le JS
+(bouton de fermeture #th-close, puces #th-chips, outils #th-tools,
+pied #th-foot) n'avaient jamais recu de style — la lecon du ch.224
+encore : une classe n'existe que si une regle la sert. Styles poses
+dans s_0c793eb7ae.css (fermeture ronde en haut a droite, puces en
+pilule a point dore, outils prefixes d'une fleche), plus les
+surcharges claires (le moteur plight ecrasait le fond du panneau —
+gradient creme :not(#e1)... !important pour reprendre la main).
+Verifie visuellement dans les deux themes et a 390 px (aucun
+debordement, fermeture visible, panneau au-dessus de la barre
+d'application).
+
+Le variateur de luminosite ensuite, le gros morceau : le controle
+#lum-ctl est present sur 207 pages (bouton, panneau, curseur 80-130,
+trois prereglages, voile #lum-veil) mais un chapitre passe l'avait
+masque universellement — commentaire dans le CSS : « controle sans
+pilote JS, masque universellement ». Le pilote existe desormais dans
+u_cd226c00eb4b.js (charge exactement sur ces 207 pages) : ouverture
+et fermeture (bouton, Echap avec retour de focus, clic exterieur),
+application par curseur et prereglages (aria-pressed tenu a jour),
+persistance localStorage et-lum, restauration au chargement. Le
+gradateur passe par l'opacite du voile fixe (noir sous 100, blanc
+au-dessus), JAMAIS par un filter sur html : un filtre y creerait un
+contexte de confinement et les elements fixed defileraient avec la
+page. Deux pieges evites en route : le voile a une opacite calculee
+de 1 par defaut (fond transparent) — mise a zero explicite au
+chargement, sinon la premiere application animait 1 vers la cible,
+soit un eclair sombre ; et les deux masques display:none
+(bundle_core_a1.css, x_917896c622c8.css) sont leves avec un
+commentaire date. Regle d'etat actif des prereglages ajoutee dans les
+deux memes fichiers (bordure et fond dores sur aria-pressed).
+Note de banc d'essai : en headless sans production d'images, les
+transitions d'opacite n'avancent pas (lecture a 0 puis 0.252 apres un
+screenshot force) — artefact de compositeur, pas un defaut du site.
+
+La barre d'application mobile (#nezBar) enfin : l'observateur
+d'intersection existant ne marque que les liens d'ancre — sur toute
+page interieure, aucun des cinq onglets n'indiquait la position.
+Nouveau bloc dans u_cd226c00eb4b.js : correspondance de chemin
+normalise (index/-en/.html/barre finale) pour poser aria-current=page
+et .nz-on, avec repli sur le lien d'ancre du meme document (cas
+Services sur /amont/services-ep). Verifie sur investisseurs, contact,
+reseau, services-ep, l'accueil des deux langues.
+
+Le reste de la revue confirme sans retouche : rail de traversee
+#aurail de l'accueil (9 ancres resolues, noms accessibles par texte
+interne, defilement au clic), scrollcue de societe (present en haut,
+opacite 0 et pointer-events none en pied de page), chrome de lecture
+des journaux (bande sombre jtop lisible dans les deux themes, retour
+carnets, lien EN), page arabe (rtl, liens verifies — les cibles
+/petrochimie/ et consorts passent par les rewrites Vercel, 200 en
+production), barre d'application absente des outils immersifs
+(Calculateur, Configurateur, explorateur-chaine) par conception.
+Trois faux positifs de sonde ecartes par contre-epreuve (chemins
+d'articles errones, regex EN trop stricte, rail sans aria-label mais
+avec texte interne). SW bumpe et-202608241000 (deux CSS et un JS
+cache-first modifies).
