@@ -8088,3 +8088,63 @@ sert ; un lien n'a de couleur que si quelqu'un la lui donne.
 
 Balayage des huit pages touchees dans les deux themes : zero console,
 zero axe. SW bumpe et-202608251900.
+
+## 238 — Le verre pour toutes les tuiles, et l'angle mort du banc comble (2026-08-25)
+
+Deux demandes : appliquer les actions en attente, et harmoniser les
+tuiles en verre transparent.
+
+LES ACTIONS EN ATTENTE. Le journal en portait trois sortes. Celles qui
+relevent du proprietaire restent ouvertes et ne peuvent pas etre
+inventees : convention INSPEM, seance photo, noms reels de l'equipe,
+volumes d'import par pays, ticket d'entree investisseur. Les points de
+veille dates ne sont pas echus (carte Brent en janvier, validation ITIE
+2026, jalons Sedigui, accord raffinerie Tchad-Algerie). Restait un point
+technique, ouvert depuis le ch.234 et repete au ch.235 : le banc de
+mesure du contraste lisait « color » et non « fill » sur le texte SVG,
+donc le contraste des etiquettes de schemas et de cartes n'avait JAMAIS
+ete verifie. C'est fait ici, et cela a paye (voir plus bas).
+
+LE VERRE. Constat avant travaux, mesure et non suppose : la famille de
+80 classes du bloc tuiles-immersion (ch.141) est deja vitree partout —
+fond transparent, lavis, flou d'arriere-plan, filet fin. Sur huit pages
+temoins, trois signatures seulement s'ecartaient, et de peu. Le defaut
+n'etait donc pas l'absence de verre mais l'absence d'INSCRIPTION : dix
+classes qui sont visuellement des tuiles n'avaient jamais rejoint la
+famille et gardaient un fond plein — cartes de comparaison, indicateurs
+de heros et de projets, cartes contact, cartes d'application, cartes de
+distribution. Elles recoivent exactement les memes valeurs que la
+famille, pas un second systeme : harmoniser, c'est rejoindre l'existant.
+
+Deux gardes-fous en route. Premiere tentative jetee : j'avais construit
+la liste comme une simple enumeration « .a,.b,.c » avant d'y accrocher
+les crans d'identifiant et le prefixe de theme — or ils ne se collent
+qu'au dernier et au premier element. La regle ne visait donc rien de ce
+qu'elle annoncait, et posait meme un lavis clair non filtre sur 79
+classes. Retiree, refaite avec :is(), comme le site le fait lui-meme.
+Seconde : la classe .hpcard, qui a tout d'une tuile par son nom, s'est
+revelee etre a l'usage huit BOUTONS d'appel a l'action colores de
+l'accueil (« Decouvrir le pole », un aplat par pole). La vitrer aurait
+efface huit CTA. Ecartee apres verification a l'ecran.
+
+L'ANGLE MORT COMBLE. Banc corrige (fill pour le texte SVG), puis passe
+sur dix pages a schemas et cartes. Trois signalements anterieurs
+disparaissent — c'etaient des lectures de « color » sur du texte SVG,
+donc de faux positifs, ce qui confirme la correction. Et un vrai defaut
+apparait, invisible jusqu'ici : sur la carte du reseau en theme clair,
+les etiquettes de villes (N'Djamena, Moundou, Doba, Sarh) etaient en
+blanc a 78 % sur une carte pale — 2,74:1. Les points s'affichaient,
+pas les noms. Encre passee en #25314A ; les sous-titres suivent.
+
+Un dernier defaut, anterieur mais que le verre rendait systematique :
+les indicateurs du heros (.pgh-kpi) sont poses sur la photo et non sur
+une section. Le lavis clair n'y tient pas — blanc gras a 2,7:1 sur les
+zones claires de l'image, deja signale au ch.234. Ils gardent le verre
+mais en teinte nuit dans les deux themes, comme le heros lui-meme qui
+reste photographique en clair comme en sombre. Apres correctif : zero
+echec severe sur les quatre pages a heros mesurees.
+
+Balayage de 18 pages dans les deux themes : zero console, zero axe.
+Mesure au pixel de dix pages a schemas, deux themes : zero echec severe
+hors les titres a degrade clip, que le banc ne sait toujours pas lire.
+SW bumpe et-202608252200 (trois feuilles cache-first modifiees).
