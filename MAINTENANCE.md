@@ -8148,3 +8148,118 @@ Balayage de 18 pages dans les deux themes : zero console, zero axe.
 Mesure au pixel de dix pages a schemas, deux themes : zero echec severe
 hors les titres a degrade clip, que le banc ne sait toujours pas lire.
 SW bumpe et-202608252200 (trois feuilles cache-first modifiees).
+
+## 239 — Le banc exact, et ce qu'il a fini par voir (2026-08-25)
+
+### Pourquoi ce chapitre
+
+Le chapitre 238 avait mis toutes les tuiles sous verre. Restait a verifier, page par
+page et theme par theme, que la transparence n'avait pas coute de la lisibilite. Le
+premier balayage a rendu 245 signalements sur 98 pages. En les ouvrant un par un, la
+moitie n'existait pas : le banc se trompait. Ce chapitre est donc d'abord la
+reconstruction de l'instrument, ensuite seulement la revue qu'il a permise.
+
+### Ce que les bancs precedents ne savaient pas faire
+
+Quatre erreurs de mesure, toutes trouvees par contre-epreuve a l'ecran :
+
+1. **Le menu mega ferme.** Il reste dans le document avec une boite visible mais n'est
+   pas peint. 50 des 54 signalements d'engagements.html et de clients.html venaient de
+   la. Le banc exclut desormais tout descendant de la navigation.
+2. **L'en-tete colle des carnets.** Le texte de l'article defile dessous ; la capture
+   montrait le bandeau, pas le texte. Vingt-deux pages de carnets etaient accusees d'un
+   defaut inexistant. Le banc ne mesure plus que ce qui est au premier plan.
+3. **Le rail de sections.** Il est en pointer-events:none : invisible au test de
+   recouvrement par point d'impact, mais bien peint par-dessus le texte. Le banc masque
+   maintenant tout calque flottant non cliquable — et ce chapitre corrige au passage le
+   defaut reel que cette enquete a mis au jour (voir 239.2).
+4. **Les transitions de couleur.** Pour mesurer l'opacite d'un glyphe, le banc remplit
+   le texte en blanc puis en noir. Au retour a la couleur d'origine, la transition CSS
+   est encore en cours : on relisait un noir de passage la ou la page affiche de l'or.
+   Les transitions sont desormais coupees avant toute mesure.
+
+### Le banc exact
+
+Quatre captures du meme ecran, mise en page identique :
+
+- **a** : le texte normal ;
+- **b** : le remplissage du texte passe en transparent — le glyphe disparait, **l'ombre
+  portee reste**. C'est exactement le sol que voit l'oeil sous chaque lettre ;
+- **w** et **k** : le meme texte rempli en blanc pur, puis en noir pur.
+
+Un pixel peint vaut P = alpha x encre + (1 - alpha) x fond. Donc **w - k = alpha x 255** :
+l'opacite de chaque pixel de glyphe se lit sans rien supposer de la police, du lissage
+ni du fond. On ne retient que les pixels pleins ; l'encre vient de la feuille de style,
+composee sur le fond mesure si elle est semi-transparente ; pour un titre a degrade
+(background-clip:text), elle se demele de la capture a. Le fond variant sous un texte
+pose sur photo, on juge au 15e centile des rapports pixel a pixel : un titre est note
+sur sa portion la plus faible, pas sur sa moyenne. Un indicateur complementaire dit
+quelle part du texte passe sous le seuil, ce qui separe un libelle entierement trop
+pale d'un simple bord mordant sur une zone claire.
+
+**Calibration sur page temoin** : sept encres connues sur blanc, de 9 a 20 pixels.
+Mesures 3,03 et 2,17 pour des verites de 3,03 et 2,17 ; les cinq autres passent
+correctement. Ecart nul. Les deux limites documentees aux chapitres 234 et 235 —
+le texte a degrade impossible a mesurer, la sous-estimation du petit texte fin entre
+4,0 et 4,5 — sont donc levees toutes les deux.
+
+### Ce que la revue a trouve
+
+21 810 elements mesures, 160 pages, deux themes. 690 signalements, 312 apres
+deduplication, **153 sous 3:1**, regroupes en 26 familles. Les 26 ont ete ouvertes a
+l'ecran une par une avant tout correctif : les 26 sont reelles.
+
+- **239.1 — Bandeau de tete des carnets.** Voile de 24 % sur une photo claire : le
+  retour, le selecteur de langue et la marque entre 1,75 et 2,55 pour 1, sur 33 pages.
+  Voile pose en ::before pour ne pas se battre avec le raccourci background des pages.
+- **239.2 — Rail de sections.** Le libelle de la section active restait ouvert en
+  permanence, large de 340 px. Mesure a 1180, 1280, 1366, 1440 et 1600 px : il
+  recouvrait le texte de l'article a chaque largeur. Il ne s'ouvre plus qu'au survol ou
+  au clavier ; l'etat actif se lit toujours a la pastille et a sa couleur.
+- **239.3 — Voile des heros photographiques.** Le meme degrade de 24 % servait 33 pages.
+  Les titres a degrade tombaient a 1,53, les sur-titres a 2,00. Le voile gagne une
+  composante horizontale et un plancher a droite : sur clients.html, le titre passe de
+  1,59 a 6,36 et le sur-titre de 2,00 a 5,63.
+- **239.4 — Panneaux de verre du heros** (routeur de profils, echelle de capital, fil de
+  chantiers). Le verre laissait passer un ciel clair : leurs intitules entre 1,01 et
+  1,51. Le verre est conserve ; c'est ce qui le traverse qui est assombri.
+- **239.5 — Plancher de lisibilite pour la famille de verre du ch.238.** Une tuile posee
+  sur photo heritait du contraste de l'image. On ne touche ni la teinte ni la
+  transparence : on tonalise ce que le verre laisse passer, vers la nuit en theme sombre,
+  vers le jour en theme clair.
+- **239.6 a 239.11** — chiffres a degrade de la brochure (1,00 : litteralement
+  invisibles), renforcements pris dans une bande sombre sur paiements-etats (1,21), lien
+  du chapeau de la FAQ sur texture de sable (1,10), encres bleues trop sombres des cartes
+  ESG et des sur-titres de societe.html.
+
+Apres correctifs, sur le lot de verification : **46 defauts severes ramenes a 6**.
+
+### Mon erreur, dans ce chapitre meme
+
+La regle du 239.7 sur les sur-titres .sk a ete ecrite **sans condition de theme** : un
+bleu clair pose sur le creme du theme clair, 1,27 pour 1 sur ar.html, la ou il n'y avait
+aucun defaut avant mon passage. La verification l'a rattrape dans le quart d'heure ; la
+regle est desormais reservee au theme sombre (239.8). Lecon a garder : une encre claire
+ne se pose jamais sans dire sur quel fond.
+
+Deux versions de banc ont par ailleurs ete jetees avant celle-ci : l'une prenait le
+coeur des glyphes au plus fort ecart, ce qui selectionnait preferentiellement les zones
+a fort contraste et donc absolvait les textes poses sur les parties claires d'une photo ;
+l'autre laissait le degrade se peindre dans la capture de fond, et rendait un rapport de
+1,00 sur un titre parfaitement lisible.
+
+### Reste ouvert
+
+- **Tuiles .gtt-c du pole GreenTech** (pole-greentech-en) : cinq libelles entre 2,31 et
+  2,45 en theme clair. La regle posee au 239.11 ne prend pas ; la couleur vient d'un
+  heritage que je n'ai pas encore localise. A reprendre au chapitre suivant.
+- **aval/distribution** : un paragraphe dont 29 % des pixels mordent sur une zone sombre
+  (mediane 11,18). Chevauchement partiel, pas une encre fautive.
+- **159 signalements entre 3,0 et 4,5**, majoritairement des libelles de 9 a 12 pixels.
+  Ils meritent une passe de fond sur les tailles de texte autant que sur les encres.
+- **Organisation des solutions et services** (question posee pendant ce chapitre) :
+  deux jumeaux anglais ranges a la racine au lieu de leur pole (/services-ep-en,
+  /produits-en), collision de nom entre le /produits-en de l'aval et celui de la
+  petrochimie, et la page /solutions qui ne lie ni amont/services-ep ni aval/produits —
+  la chaine « distribuer » n'a aucun lien sortant. Deux conventions de titre coexistent
+  (— EnerTchad S.A. sur 59 pages, | EnerTchad sur 137).
