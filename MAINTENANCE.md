@@ -7913,3 +7913,58 @@ feuilles cache-first modifiees). Reste au journal des suites : les
 textes clairs poses sur photo, ou l'ombre portee fait le contraste —
 le banc ne sait pas encore la modeliser, ils demandent une mesure a
 l'oeil.
+
+## 235 — Le texte sur photo : mesurer ce que voit l'oeil (2026-08-25)
+
+Le chapitre 234 s'etait arrete sur un aveu : les textes clairs poses
+sur photo echappaient au banc, parce que c'est l'ombre portee qui y
+fait le contraste et qu'une lecture de feuille de style ne la voit
+pas. Le banc de ce chapitre la voit : dans la capture d'ecran, il
+separe les pixels de GLYPHE (ceux proches de l'encre CSS) des pixels
+de FOND, et compare la moyenne des premiers a la mediane des seconds.
+L'ombre portee, cuite dans l'image, entre donc dans le fond mesure —
+exactement comme pour l'oeil.
+
+Limite connue et mesuree : sur les textes petits et fins, la majorite
+des pixels de glyphe sont des pixels partiellement couverts, ce qui
+tire la moyenne vers le fond et SOUS-ESTIME le contraste. Verifie sur
+trois cas : liens or de carrieres mesures 3,93 pour une valeur reelle
+proche de 5,0. Les resultats entre 4,0 et 4,5 sur du texte de moins de
+15 px sont donc tenus pour non concluants, et n'ont declenche aucune
+retouche. Le banc sert ce pour quoi il est fiable : les ecarts francs
+sur de grandes surfaces.
+
+Deux familles reelles, verifiees a l'ecran.
+
+Le voile des heros de page. Le voile vertical existant part de
+rgba(14,22,38,.24) en haut : sur les photos a ciel clair (raffinerie
+de jour, entrepot, station-service), le fil d'Ariane et le surtitre
+tombaient a 2,0:1 et le titre a 2,7:1 — sur cinq pages au moins, et
+dans les DEUX themes, ce n'etait pas un defaut du mode clair. Un voile
+horizontal ancre du cote du texte est ajoute : la colonne de texte
+gagne un fond, la photo garde sa presence a droite. Deux impasses en
+route, consignees parce qu'elles se represententeront : ::after etait
+deja pris par s_fa541870c6.css pour le filet dore de 1 px en haut du
+heros (height:1px), un voile pose la est ecrase a un trait ; et un
+z-index negatif sans contexte d'empilement renvoyait le voile derriere
+la photo. La recette qui marche existait deja, posee sur une seule
+page (pole-enerchimie-en) : isolation:isolate sur le heros, voile en
+::before a z-index -1. Elle est generalisee aux 159 pages a heros.
+Au passage, le fil d'Ariane du heros portait text-shadow:none — or
+c'est justement l'ombre qui le tenait lisible sur photo ; elle lui est
+rendue.
+
+La bande d'indicateurs OFS (services-ep, FR et EN) gardait ses encres
+de theme sombre alors que sa bande passe au creme en clair : chiffre
+dore a 1,4:1 en corps 34 px, legendes quasi invisibles. Encres
+reprises en or sombre et gris ardoise.
+
+Ecartes par contre-epreuve : le sous-menu investisseurs (fond blanc
+reel, le banc avait capte la barre sombre au-dessus), le libelle du
+rail sur eor (pastille sombre, le banc avait pris le ciel autour), les
+titres a degrade clip sur photo (le banc ne sait pas lire un texte
+dont les glyphes SONT le degrade — verification a l'oeil, lisibles).
+Verification que le voile n'empate pas les heros deja sombres : photo
+intacte a droite, colonne de texte un ton plus profond. Balayage de 18
+pages a heros dans les deux themes : zero console, zero axe. SW bumpe
+et-202608250900.
