@@ -1016,3 +1016,113 @@ html.et-jlight header.pghero :is(.pgh-kpi):not(#_):not(#__):not(#___):not(#____)
   background-color:transparent!important;
   background-image:linear-gradient(180deg,rgba(9,15,27,.64) 0%,rgba(9,15,27,.52) 100%)!important;
   border-color:rgba(255,255,255,.20)!important}
+
+/* ============================ Chapitre 239 ============================
+   Revue de contraste au banc exact : encre lue dans la feuille de style, sol lu au
+   pixel sur la capture, opacite de chaque pixel de glyphe mesuree par difference
+   blanc/noir. 21 810 elements passes en revue sur 160 pages et deux themes.
+   Les correctifs ci-dessous traitent les familles ou le texte tombait sous 3:1. */
+
+/* 239.1 — Bandeau de tete des carnets. Le voile valait 24 % en haut : sur une photo
+   claire (feuillage, casque orange, ciel), le retour, le selecteur de langue et la
+   marque tombaient entre 1,75 et 2,55 pour 1. Le voile est pose en ::before pour ne
+   pas se battre avec le raccourci background des pages, qui est en !important. */
+header.jtop:not(#_){isolation:isolate}
+header.jtop:not(#_)::before{content:'';position:absolute;inset:0;z-index:-1;pointer-events:none;
+  opacity:1!important;filter:none!important;
+  background:linear-gradient(180deg,rgba(6,11,20,.60) 0%,rgba(6,11,20,.54) 100%)}
+
+/* 239.2 — Rail de sections. Le libelle de la section active restait ouvert en
+   permanence, large de 340 px : mesure a 1180, 1280, 1366, 1440 et 1600 px, la
+   pastille recouvrait le texte de l'article a chaque fois. L'etat actif se lit
+   toujours a la pastille et a sa couleur ; le libelle ne s'ouvre plus qu'au survol
+   ou au clavier. */
+#secrail a.on:not(:hover):not(:focus-visible) .axl:not(#_):not(#__){max-width:0!important;opacity:0!important;margin-left:0!important}
+
+/* 239.3 — Panneaux de verre poses sur la photo du heros. Le verre laissait passer un
+   ciel clair : « Vous etes... », « Trajectoire de capital », les sous-titres de
+   l'echelle et les intitules du fil de chantiers se mesuraient entre 1,01 et 1,51.
+   Le verre est conserve ; c'est ce qui le traverse qui est assombri, plus une encre
+   claire et un halo pour affranchir ces libelles du hasard de l'image. */
+.hero .router:not(#_):not(#__),.hero aside.snap:not(#_):not(#__),.hero /* Les deux jumeaux divergeaient : le fil anglais avait un fond nuit, le francais un
+   verre blanc a 55 %. L'encre claire posee au 239.9 devenait illisible sur le francais
+   (2,59). Les deux reprennent le fond nuit de la version anglaise — parite retablie. */
+#chantiers-nav:not(#_):not(#__){
+  background-color:transparent!important;
+  background-image:linear-gradient(180deg,rgba(10,16,28,.93) 0%,rgba(10,16,28,.86) 100%)!important;
+  border-color:rgba(255,255,255,.16)!important;
+  -webkit-backdrop-filter:blur(10px) saturate(1.2) brightness(.42)!important;
+  backdrop-filter:blur(10px) saturate(1.2) brightness(.42)!important}
+.hero .router-h:not(#_):not(#__),.hero .snap-h:not(#_):not(#__),
+.hero .ladder .step i:not(#_):not(#__),.hero #chantiers-nav .cn-lbl:not(#_):not(#__){
+  color:#DCE6F4!important;-webkit-text-fill-color:#DCE6F4!important;
+  text-shadow:0 1px 2px rgba(4,8,16,.95),0 0 10px rgba(4,8,16,.8)!important}
+
+/* 239.4 — Plancher de lisibilite pour la famille de verre du ch.238. Une tuile posee
+   sur une photo heritait du contraste de l'image : encre claire sur zone claire en
+   sombre, encre foncee sur zone foncee en clair. On ne change ni la teinte ni la
+   transparence : on tonalise ce que le verre laisse passer, vers la nuit en theme
+   sombre, vers le jour en theme clair. La photo reste lisible derriere. */
+html:not(.et-plight):not(.et-jlight):has(.rootland) :is(.cmp-c,.ppj-kpi,.pgh-kpi,.fp-card,.ct-card,.dx-card,.epw-card,.app-card,.app-panel):not(#_):not(#__):not(#___):not(#____){
+  -webkit-backdrop-filter:blur(18px) saturate(1.35) brightness(.5)!important;
+  backdrop-filter:blur(18px) saturate(1.35) brightness(.5)!important}
+html:is(.et-plight,.et-jlight):has(.rootland) :is(.cmp-c,.ppj-kpi,.fp-card,.ct-card,.dx-card,.epw-card,.app-card,.app-panel):not(#_):not(#__):not(#___):not(#____){
+  -webkit-backdrop-filter:blur(18px) saturate(1.15) brightness(1.5)!important;
+  backdrop-filter:blur(18px) saturate(1.15) brightness(1.5)!important}
+
+/* 239.5 — Chiffres a degrade de la brochure. Le motif clip sur le texte etait pale ;
+   pose sur le fond creme du theme clair, « 250 kb/d » se mesurait a 1,00 pour 1 —
+   litteralement invisible. En theme clair les chiffres reprennent une encre pleine. */
+html:is(.et-plight,.et-jlight) .bx233:not(#_):not(#__){
+  background-image:none!important;-webkit-background-clip:border-box!important;background-clip:border-box!important;
+  color:#7A570E!important;-webkit-text-fill-color:#7A570E!important}
+
+/* 239.6 — Renforcements poses dans une bande sombre. La regle generale du theme clair
+   (b,strong,h1,h2,h3 en #10161F) frappait aussi le texte des bandeaux restes nuit :
+   « le format » se mesurait a 1,21 sur paiements-etats. */
+html:is(.et-plight,.et-jlight) .pgh-main .pgl strong:not(#_):not(#__),
+html:is(.et-plight,.et-jlight) .pgh-main .pgl b:not(#_):not(#__){
+  color:#F2C879!important;-webkit-text-fill-color:#F2C879!important}
+
+/* 239.7 — Deux encres bleues trop sombres pour le fond nuit qui les porte :
+   le numero des cartes ESG (#1B4E8C sur #0D1423) et le sur-titre de section de
+   societe.html (#5AA7F0 sur une photo de sable). */
+html:not(.et-plight):not(.et-jlight) .esg-card .v:not(#_):not(#__){color:#5AA7F0!important}
+html:not(.et-plight):not(.et-jlight) .sk:not(#_):not(#__){color:#9CC7F6!important;text-shadow:0 1px 2px rgba(4,8,16,.9),0 0 10px rgba(4,8,16,.7)!important}
+
+/* 239.8 — correction de ma propre erreur, posee quelques minutes plus tot dans ce meme
+   chapitre : la regle .sk ci-dessus etait ecrite sans condition de theme. Un bleu clair
+   pose sur le creme du theme clair : 1,27 pour 1 sur ar.html, la ou il n'y avait aucun
+   defaut avant mon passage. Elle est desormais reservee au theme sombre. Rappel utile :
+   une encre claire ne se pose jamais sans dire sur quel fond. */
+
+/* 239.9 — Fil de chantiers de projets.html. Le selecteur du 239.3 le cherchait dans le
+   heros ; il vit en realite dans .pjwrap. Intitules et liens restaient a 1,22 et 1,40. */
+/* Les deux jumeaux divergeaient : le fil anglais avait un fond nuit, le francais un
+   verre blanc a 55 %. L'encre claire posee au 239.9 devenait illisible sur le francais
+   (2,59). Les deux reprennent le fond nuit de la version anglaise — parite retablie. */
+#chantiers-nav:not(#_):not(#__){
+  background-color:transparent!important;
+  background-image:linear-gradient(180deg,rgba(10,16,28,.93) 0%,rgba(10,16,28,.86) 100%)!important;
+  border-color:rgba(255,255,255,.16)!important;
+  -webkit-backdrop-filter:blur(10px) saturate(1.2) brightness(.42)!important;
+  backdrop-filter:blur(10px) saturate(1.2) brightness(.42)!important}
+#chantiers-nav .cn-lbl:not(#_):not(#__){color:#DCE6F4!important;-webkit-text-fill-color:#DCE6F4!important;
+  text-shadow:0 1px 2px rgba(4,8,16,.95),0 0 10px rgba(4,8,16,.8)!important}
+#chantiers-nav a:not(#_):not(#__){color:#F2F6FC!important;-webkit-text-fill-color:#F2F6FC!important;
+  text-shadow:0 1px 2px rgba(4,8,16,.9)!important}
+
+/* 239.10 — Le lien du chapeau de la FAQ, or fonce sur une texture de sable : 1,10 avant
+   le renfort du voile, 1,68 apres. L'or clair du theme sombre, avec halo, le porte au-dela
+   du seuil sans changer la couleur de la marque. */
+.hero .lead a:not(#_):not(#__){color:#F0CE82!important;-webkit-text-fill-color:#F0CE82!important;
+  text-shadow:0 1px 2px rgba(4,8,16,.92),0 0 10px rgba(4,8,16,.75)!important;
+  text-decoration-color:rgba(240,206,130,.6)!important}
+
+/* 239.11 — Tuiles .gtt-c du pole GreenTech : meme verre que la famille du ch.238 mais
+   jamais inscrites dedans. En theme clair, le vert d'accent tombait a 2,31 sur la photo. */
+.gtt-c:not(#_):not(#__){
+  -webkit-backdrop-filter:blur(18px) saturate(1.2) brightness(.5)!important;
+  backdrop-filter:blur(18px) saturate(1.2) brightness(.5)!important}
+.gtt-c em:not(#_):not(#__),.gtt-c span:not(#_):not(#__),.gtt-c p:not(#_):not(#__){
+  color:#8FE9C4!important;-webkit-text-fill-color:#8FE9C4!important}
