@@ -3,6 +3,126 @@
   "cleanUrls": true,
   "redirects": [
     {
+      "source": "/activites-en",
+      "destination": "/amont/activites-en",
+      "permanent": true
+    },
+    {
+      "source": "/activites-en.html",
+      "destination": "/amont/activites-en",
+      "permanent": true
+    },
+    {
+      "source": "/eor-en",
+      "destination": "/amont/eor-en",
+      "permanent": true
+    },
+    {
+      "source": "/eor-en.html",
+      "destination": "/amont/eor-en",
+      "permanent": true
+    },
+    {
+      "source": "/parc-en",
+      "destination": "/amont/parc-en",
+      "permanent": true
+    },
+    {
+      "source": "/parc-en.html",
+      "destination": "/amont/parc-en",
+      "permanent": true
+    },
+    {
+      "source": "/services-ep-en",
+      "destination": "/amont/services-ep-en",
+      "permanent": true
+    },
+    {
+      "source": "/services-ep-en.html",
+      "destination": "/amont/services-ep-en",
+      "permanent": true
+    },
+    {
+      "source": "/distribution-en",
+      "destination": "/aval/distribution-en",
+      "permanent": true
+    },
+    {
+      "source": "/distribution-en.html",
+      "destination": "/aval/distribution-en",
+      "permanent": true
+    },
+    {
+      "source": "/produits-en",
+      "destination": "/aval/produits-en",
+      "permanent": true
+    },
+    {
+      "source": "/produits-en.html",
+      "destination": "/aval/produits-en",
+      "permanent": true
+    },
+    {
+      "source": "/raffinage-en",
+      "destination": "/aval/raffinage-en",
+      "permanent": true
+    },
+    {
+      "source": "/raffinage-en.html",
+      "destination": "/aval/raffinage-en",
+      "permanent": true
+    },
+    {
+      "source": "/reseau-en",
+      "destination": "/aval/reseau-en",
+      "permanent": true
+    },
+    {
+      "source": "/reseau-en.html",
+      "destination": "/aval/reseau-en",
+      "permanent": true
+    },
+    {
+      "source": "/hseq-en",
+      "destination": "/greentech/hseq-en",
+      "permanent": true
+    },
+    {
+      "source": "/hseq-en.html",
+      "destination": "/greentech/hseq-en",
+      "permanent": true
+    },
+    {
+      "source": "/impact-en",
+      "destination": "/greentech/impact-en",
+      "permanent": true
+    },
+    {
+      "source": "/impact-en.html",
+      "destination": "/greentech/impact-en",
+      "permanent": true
+    },
+    {
+      "source": "/patrimoine-en",
+      "destination": "/greentech/patrimoine-en",
+      "permanent": true
+    },
+    {
+      "source": "/patrimoine-en.html",
+      "destination": "/greentech/patrimoine-en",
+      "permanent": true
+    },
+    {
+      "source": "/transition-en",
+      "destination": "/greentech/transition-en",
+      "permanent": true
+    },
+    {
+      "source": "/transition-en.html",
+      "destination": "/greentech/transition-en",
+      "permanent": true
+    },
+    {
       "source": "/Configurateur_Service_Integre",
       "destination": "/Configurateur_Service_Integre_v2",
       "permanent": true
@@ -535,6 +655,16 @@
           "value": "public, max-age=3600, stale-while-revalidate=86400"
         }
       ]
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/configurateur-service-integre",
+      "destination": "/Configurateur_Service_Integre_v2"
+    },
+    {
+      "source": "/calculateur-baril-additionnel",
+      "destination": "/Calculateur_Baril_Additionnel"
     }
   ]
 }
