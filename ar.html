@@ -238,7 +238,26 @@ html.et-jlight .rootland::after{
     background-color:rgba(250,247,241,.96)!important;
   }
 }
-</style></head>
+</style><style id="arLight234">/* Ch234 : la page arabe n'avait pas de traitement clair pour ses organes propres.
+   En clair, le moteur eclaircissait les tuiles du heros et le bouton secondaire, alors
+   que le heros reste photographique dans les deux themes : chiffre blanc sur tuile pale
+   (2,2:1), legende (1,1:1) et bouton « explorer le site complet » (1,0:1) disparaissaient.
+   Les tuiles du heros redeviennent sombres, comme sous le titre blanc qui les surplombe. */
+html.et-plight .hero .kpi:not(#_):not(#__):not(#___):not(#____){background-color:rgba(9,14,24,.58)!important;background-image:none!important;border-color:rgba(255,255,255,.20)!important;border-top-color:var(--gold-l,#E8C36A)!important}
+html.et-plight .hero .kpi b:not(#_):not(#__){color:#FFFFFF!important}
+html.et-plight .hero .kpi span:not(#_):not(#__){color:rgba(245,247,250,.88)!important}
+html.et-plight .hero .btn2:not(#_):not(#__){background:rgba(9,14,24,.50)!important;color:#FFFFFF!important;border-color:rgba(255,255,255,.44)!important}
+html.et-plight .hero .lead:not(#_):not(#__){color:rgba(245,247,250,.94)!important}
+/* le lien d'evitement est une puce sombre : son encre doit rester claire en theme clair */
+html.et-plight .skip-link:not(#_):not(#__){color:var(--gold-xl,#F0CE82)!important;background:#121D31!important}
+/* Ch234 : en RTL le rail de sommaire est ancre du cote debut (gauche) mais ses items
+   restaient alignes sur le bord oppose de sa boite : les pastilles se posaient en plein
+   dans la colonne de texte. Reperes ramenes dans la marge, libelles retires de l'affichage
+   mais conserves pour les lecteurs d'ecran. */
+html[dir="rtl"] #secrail:not(#_):not(#__){align-items:flex-start}
+html[dir="rtl"] #secrail a:not(#_):not(#__){flex-direction:row-reverse}
+html[dir="rtl"] #secrail .axl:not(#_):not(#__){position:absolute!important;width:1px!important;height:1px!important;max-width:1px!important;margin:0!important;overflow:hidden!important;clip:rect(0 0 0 0)!important;opacity:1!important;white-space:nowrap}</style>
+</head>
 <body id="top"><a href="#main-content" class="skip-link" style="position:absolute;right:8px;top:8px;z-index:999;background:#121D31;color:var(--gold-xl,#F0CE82);padding:10px 16px;border-radius:8px;transform:translateY(-200%)" onfocus="this.style.transform='none'" onblur="this.style.transform='translateY(-200%)'">الانتقال إلى المحتوى الرئيسي</a>
 <header class="top"><div class="hd">
   <a class="brand" href="/ar"><svg class="bmk" viewBox="0 0 200 200" aria-hidden="true"><rect width="200" height="200" rx="42" fill="#F3EAD1"/><g transform="translate(100 100) scale(0.86) translate(-100 -100)"><defs><linearGradient id="fpvc" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#DBAE4A"/><stop offset="1" stop-color="#C2922E"/></linearGradient></defs><path d="M100.00 96.00 L126.98 67.90 A37.4 37.4 0 1 0 73.02 67.90 Z" fill="url(#fpvc)"/><path d="M96.00 100.00 L67.90 73.02 A37.4 37.4 0 1 0 67.90 126.98 Z" fill="#1E6EC2"/><path d="M104.00 100.00 L132.10 126.98 A37.4 37.4 0 1 0 132.10 73.02 Z" fill="#218A2C"/><path d="M100.00 104.00 L73.02 132.10 A37.4 37.4 0 1 0 126.98 132.10 Z" fill="#E8CD7F"/></g></svg><span dir="ltr">Ener<b>Tchad</b></span></a>

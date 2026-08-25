@@ -7841,3 +7841,75 @@ Verifie au pixel et a l'ecran dans les deux themes, plus le
 configurateur a 390 px (aucun debordement). Theme sombre inchange sur
 les deux outils. Balayage des pages d'outils deux themes : zero
 console, zero axe. Pages de documents seules : pas de bump SW.
+
+## 234 — Le controle de contraste au pixel peint : ce qu'axe ne voit pas (2026-08-24)
+
+Le chapitre 233 avait revele que le calculateur etait illisible en
+theme clair alors que les balayages axe des chapitres precedents
+n'avaient jamais rien signale. La raison est structurelle : axe
+n'evalue pas le contraste quand le fond est un degrade, une image ou
+un empilement translucide — il classe le cas « incomplet » et se
+tait. Or c'est exactement la situation de tout ce site.
+
+D'ou un banc d'essai nouveau : pour chaque texte, l'encre est lue
+dans la feuille de style (valeur exacte, alpha composite) et le fond
+est lu DANS LE PIXEL REELLEMENT PEINT d'une capture d'ecran. Quatre
+hauteurs de defilement par page, 160 pages, theme clair. Deux
+iterations ont ete necessaires pour rendre la mesure fiable : la
+premiere version prenait la couleur dominante de la boite comme
+encre, ce que l'anticrenelage rend faux sur les petits textes ; la
+seconde inversait l'encre et le fond sur les fonds de luminance
+moyenne. La version retenue ne devine plus l'encre : elle la lit.
+
+600 signalements bruts sur 116 pages, tous passes en contre-epreuve
+sur rendu propre avant toute correction — la moitie etaient des
+artefacts de banc (texte glissant sous un bandeau colle, sous-nav
+deplacee parce que le banc masquait la barre principale, texte SVG
+dont la couleur vient de fill et non de color, texte sur photo dont
+l'ombre portee n'est pas modelisee). Sept familles reelles, toutes
+corrigees :
+
+1. Rail de sommaire (#secrail) : son libelle est un <b>, donc capture
+   par la regle generale « html.et-jlight b{color:#10161F} » — encre
+   quasi noire sur pastille bleu nuit, 1,02:1, sur les 64 carnets. Le
+   rail garde desormais son encre claire (17,2:1).
+2. Bandeau precedent/suivant (nav.pgr) : les regles claires posees
+   jadis visaient .pgr-t et .pgr-dir, deux classes absentes du
+   balisage — les vraies sont .ttl et .dir. Titre blanc sur carte
+   claire, 1,15:1, sur 31 pages. Lecon repetee du ch.224 : une regle
+   qui vise une classe inexistante ne proteste pas, elle ne fait
+   rien.
+3. Boutique : puces de categorie et barre de segments — seule
+   l'option active avait une encre claire, les inactives gardaient
+   celle du theme sombre sur creme (1,24 et 1,29:1).
+4. Page arabe : elle n'avait jamais recu de traitement clair pour ses
+   organes propres. Le heros reste photographique dans les deux
+   themes, mais le moteur clair eclaircissait ses tuiles : chiffres
+   blancs sur tuile pale (2,2:1), legendes (1,1:1) et bouton
+   « explorer le site complet » (1,0:1) disparaissaient. Tuiles
+   redevenues sombres sous le titre blanc qui les surplombe.
+5. Page arabe encore, mais de navigation : en RTL le rail de sommaire
+   est ancre du cote debut (gauche) alors que ses items restaient
+   alignes sur le bord oppose de sa boite — les pastilles se posaient
+   EN PLEIN dans la colonne de texte. Reperes ramenes dans la marge,
+   libelles retires de l'affichage mais conserves pour les lecteurs
+   d'ecran : cinq chevauchements mesures, zero apres correctif.
+6. Pastilles flottantes des outils : en clair, le moteur recolorait
+   leur encre en or ou bleu sombre sans toucher leur fond bleu nuit —
+   retour au site 1,95:1 sur le configurateur, pastille de langue
+   2,84:1 sur l'explorateur (FR et EN). Passees en pastilles claires.
+   Au passage, le configurateur posait DEUX controles de retour l'un
+   sur l'autre : le sien (z 50) exactement sous celui du site
+   (z 9999), inatteignable a la souris mais annonce par les lecteurs
+   d'ecran. Celui de l'application est masque.
+7. Finitions AA : mentions de pied des pages achats et parc (4,19:1),
+   numerotation des etapes achats (4,36:1), note du calculateur
+   (4,12:1 sur le degrade dore) — toutes remontees au-dessus de 4,5.
+
+Balayage de controle des 18 pages touchees dans les deux themes :
+zero console, zero axe. Recontrole au pixel des dix pages corrigees :
+les sept familles sont eteintes. SW bumpe et-202608241800 (deux
+feuilles cache-first modifiees). Reste au journal des suites : les
+textes clairs poses sur photo, ou l'ombre portee fait le contraste —
+le banc ne sait pas encore la modeliser, ils demandent une mesure a
+l'oeil.

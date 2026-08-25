@@ -221,7 +221,13 @@ html.et-jlight .rootland::after{
     background-color:rgba(250,247,241,.96)!important;
   }
 }
-</style></head>
+</style><style id="explLight234">/* Ch234 : en theme clair, le moteur recolorait l'encre des pastilles flottantes
+   (bleu #155FA8) sans toucher leur fond bleu nuit : la pastille de langue tombait a 2,84:1.
+   Les deux pastilles passent en clair, encre sombre, bordure teintee. */
+html.et-plight .topnav .back:not(#_):not(#__),html.et-plight .topnav .lang:not(#_):not(#__){background:#FFFFFF!important;border-color:rgba(26,35,48,.24)!important}
+html.et-plight .topnav .back:not(#_):not(#__){color:#1A2330!important}
+html.et-plight .topnav .lang:not(#_):not(#__){color:#155FA8!important;border-color:rgba(21,95,168,.42)!important}</style>
+</head>
 <body>
 <a class="skip-link" href="#chain">Skip to main content</a>
 <nav class="topnav" aria-label="Explorer navigation">
