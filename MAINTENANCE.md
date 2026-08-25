@@ -7968,3 +7968,77 @@ Verification que le voile n'empate pas les heros deja sombres : photo
 intacte a droite, colonne de texte un ton plus profond. Balayage de 18
 pages a heros dans les deux themes : zero console, zero axe. SW bumpe
 et-202608250900.
+
+## 236 — Le pays unique, la navigation unifiee, la revue des bandeaux (2026-08-25)
+
+Trois chantiers demandes ensemble : dire le choix mono-pays, moderniser
+et harmoniser les sous-menus, passer les bandeaux en revue.
+
+LE CHOIX DU PAYS UNIQUE. Nouvelle section « Mono-pays, par choix. »
+(03a-bis) sur la page Societe, FR et EN, entre l'approche et la Voie.
+Trois arguments, dans le cadre de conformite habituel : un seul terrain
+donc toute l'ingenierie sur un seul contexte (geologie de Doba et
+Bongor, bruts lourds et decote, corridor de Kribi, distances, climat,
+competences locales) plutot que des recettes concues ailleurs ;
+optimiser ce qui existe deja (recuperation assistee, gaz torche, eau de
+production, raffinage dimensionne pour la demande locale) plutot que
+courir apres de nouveaux gisements ; et acceder aux meilleures
+technologies de production, choisies parce qu'elles conviennent au
+Tchad — le critere est l'adaptation au contexte, pas la notoriete du
+fournisseur. Encart de rappel : societe en constitution, objectifs et
+choix de conception, pas activites en cours. L'entree est ajoutee au
+sous-menu de page des deux cotes. Typographie anglaise corrigee dans la
+foulee : les espaces insecables avant deux-points, corrects en francais,
+ont ete retires de la version anglaise.
+
+LA NAVIGATION. Etat des lieux avant travaux : 34 structures
+differentes du menu principal sur 87 pages — 20 variantes cote anglais,
+14 cote francais. Deux generations coexistaient en anglais : 27 pages
+sur l'ancienne (« Company / Our business », colonne Tchaditude
+divergente, dix liens de moins) et 22 sur la nouvelle (« Group / Our
+operations », alignee sur le francais). Un gabarit par langue est
+desormais applique aux 87 pages, avec substitution des seules parties
+propres a chaque page : le lien vers la version jumelle (deux
+emplacements), le lien de marque, et l'onglet actif. Resultat : 2
+structures au lieu de 34.
+
+Trois defauts corriges au passage. Le lien vers la version arabe
+n'existait que sur l'accueil (1 page sur 87) : il est desormais partout,
+aux cotes du bascule FR·EN. Son balisage etait casse — hreflang="fr
+class="nx-langx", guillemet fermant manquant, donc attributs fusionnes
+et classe perdue : le lien s'affichait sans sa pastille. La marque
+pointait vers #top sur 17 pages interieures, ce qui ne ramenait pas a
+l'accueil. Et la baseline « Acces aux Energies » est confirmee comme
+signature de marque non traduite (74 pieds de page anglais sur 82) :
+les 8 pages qui la traduisaient sont alignees.
+
+LES BANDEAUX. Inventaire : cta-band 159 pages, sous-nav de pole 154,
+barre d'application 154, legende de heros 131, cotations 42, avis
+cookies 40, precedent/suivant 31, thematiques 24, segments 6,
+sous-menu de page 6. Deux ecarts reels.
+
+L'avis cookies n'existait en dur que sur 40 pages sur 159 : un visiteur
+arrivant par une recherche ou un lien partage sur une page interieure
+ne le voyait jamais. Plutot que d'ajouter le balisage a 119 fichiers,
+un constructeur universel est pose dans u_cd226c00eb4b.js : il ne fait
+rien si le bandeau est deja present, sinon il le construit dans la
+langue de la page (francais, anglais, arabe) avec des styles en ligne,
+pour ne dependre d'aucune feuille — les pages concernees ne chargent
+pas toutes celle du bandeau d'origine. Verifie sur cinq pages : texte
+et lien de politique dans la bonne langue, bouton de 44 px, memorisation
+du consentement, aucun doublon la ou le bandeau existait deja.
+
+Le bandeau de cotations etait sur 28 pages anglaises contre 14
+francaises. Le jeu francais est editorial et coherent (accueil,
+brochure, achats, paiements aux Etats, et les sections amont et aval) ;
+le jeu anglais l'avait etendu a des pages institutionnelles et RH ou
+une cotation du brut n'a pas de sens. Retire des neuf pages anglaises
+concernees (accessibilite, avertissements, carrieres, charte, cibles
+2030, communautes, gouvernance, innovation, plan du site), avec
+controle d'equilibre des balises et de la mise en page : le titre
+principal de carrieres-en revient a 232 px, contre 233 px cote
+francais. Les bandeaux thematiques ont ete verifies : aucun ecart entre
+le nombre annonce et le nombre d'items.
+
+Balayage de 18 pages representatives dans les deux themes : zero
+console, zero axe. SW bumpe et-202608251500 (un JS cache-first modifie).
