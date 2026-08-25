@@ -1619,3 +1619,30 @@ box-shadow:0 18px 40px -24px rgba(26,35,48,.25)!important}
 
 /* Ch231b : etat selectionne des prereglages du variateur — sans cette regle, seul l'anneau de focus distingue le niveau actif */
 .lum-presets button[aria-pressed="true"]{border-color:var(--gold-l,#F0CE82);background:rgba(240,206,130,.14);color:var(--gold-l,#F0CE82);font-weight:600}
+
+/* ===== Ch234 : trois familles d'encre restee sombre-sur-sombre ou claire-sur-clair ======
+   Mesure au pixel peint (le controle axe ne voit pas ces cas : il n'evalue pas le fond
+   reellement peint sous un degrade ou une image). */
+
+/* 1. Rail de sommaire : .axl est un <b>, donc capture par la regle generale
+   « html.et-jlight b{color:#10161F} » — encre quasi noire sur la pastille bleu nuit
+   du rail, 1,02:1, sur toutes les pages de carnet. Le rail garde son encre claire. */
+html.et-jlight #secrail b:not(#_):not(#__),html.et-jlight #secrail .axl:not(#_):not(#__),
+html.et-plight #secrail b:not(#_):not(#__),html.et-plight #secrail .axl:not(#_):not(#__){color:rgba(245,247,250,.92)!important}
+
+/* 2. Bandeau precedent/suivant (nav.pgr) : les regles claires posees jadis visaient
+   .pgr-t et .pgr-dir, deux classes qui n'existent pas dans ce balisage — les vraies
+   sont .ttl et .dir. Le titre restait blanc sur carte claire (1,15:1). */
+html.et-plight .pgr .ttl:not(#_):not(#__),html.et-jlight .pgr .ttl:not(#_):not(#__){color:#10161F!important}
+html.et-plight .pgr .dir:not(#_):not(#__),html.et-jlight .pgr .dir:not(#_):not(#__){color:#6B500F!important}
+
+/* 3. Filtres de la boutique : seule la puce active (fond dore) avait une encre claire ;
+   les puces inactives gardaient l'encre du theme sombre sur fond creme (1,24:1). */
+html.et-plight .chip:not(.on):not(#_):not(#__){color:#2A3648!important;border-color:rgba(26,35,48,.28)!important}
+html.et-plight .chip:not(.on):hover:not(#_):not(#__){color:#10161F!important;border-color:rgba(26,35,48,.5)!important}
+
+/* 4. Boutique : la barre de segments (.seg) souffrait du meme mal que les puces de
+   categorie — seule l'option active avait une encre claire, les autres restaient en
+   encre de theme sombre sur creme (1,3:1). */
+html.et-plight .seg button:not(.on):not(#_):not(#__){color:#2A3648!important;border-color:rgba(26,35,48,.28)!important}
+html.et-plight .seg button:not(.on):hover:not(#_):not(#__){color:#10161F!important;border-color:rgba(26,35,48,.5)!important}
