@@ -8263,3 +8263,96 @@ l'autre laissait le degrade se peindre dans la capture de fond, et rendait un ra
   petrochimie, et la page /solutions qui ne lie ni amont/services-ep ni aval/produits —
   la chaine « distribuer » n'a aucun lien sortant. Deux conventions de titre coexistent
   (— EnerTchad S.A. sur 59 pages, | EnerTchad sur 137).
+
+## 240 — L'arbre anglais range dans ses poles (2026-08-25)
+
+### D'abord, une correction
+
+En repondant a la question « est-ce que nos solutions et services sont bien organises ? »,
+j'ai affirme que /solutions ne liait ni amont/services-ep ni aval/produits, et que la
+chaine « distribuer » n'avait aucun lien sortant. **C'etait faux, et l'erreur venait de ma
+mesure** : l'expression que j'avais utilisee pour extraire les liens refusait les adresses
+contenant une ancre. Or presque tous les liens du carrefour en contiennent une. Verification
+refaite : /solutions pointe cinq fois vers amont/services-ep et quatre fois vers
+aval/produits, et « distribuer » mene bien au reseau, aux produits et aux flottes. Le
+carrefour etait complet ; c'est mon instrument de lecture qui ne l'etait pas. Meme lecon
+qu'au chapitre precedent : verifier l'outil avant d'accuser l'ouvrage.
+
+### Le vrai defaut, lui, etait plus large
+
+En reprenant la mesure proprement, un ecart structurel est apparu : **l'arbre anglais
+n'avait jamais suivi la migration en dossiers de poles**. Le francais range ses pages sous
+/amont/, /aval/, /greentech/ ; l'anglais les laissait a la racine.
+
+| Pole | Pages FR dans le dossier | Pages EN dans le dossier |
+|---|---|---|
+| amont | 5 | 0 |
+| aval | 5 | 0 |
+| greentech | 5 | 0 |
+| intermediaire, petrochimie, tchaditude, enerconseils, tchaditech | 25 | 20 |
+
+Consequences concretes : /produits-en designait la page **aval** tandis que
+/petrochimie/produits-en designait celle de la petrochimie — rien dans l'adresse ne les
+distinguait ; et le carrefour anglais renvoyait vers d'anciennes adresses (/pole-amont-en,
+/raffinage-en, /reseau-en...) qui repondent par une redirection : chaque visiteur anglais
+payait un saut supplementaire la ou le visiteur francais allait droit au but.
+
+### Ce qui a ete fait
+
+**Douze pages deplacees** dans leur pole : activites-en, eor-en, parc-en, services-ep-en
+vers /amont/ ; distribution-en, produits-en, raffinage-en, reseau-en vers /aval/ ;
+hseq-en, impact-en, patrimoine-en, transition-en vers /greentech/.
+
+Les pages d'accueil de pole en anglais **restent a la racine** en /pole-x-en : c'est la
+convention deja suivie par les cinq poles migres, qui n'ont pas d'index-en.html dans leur
+dossier. On aligne sur l'existant, on n'invente pas une seconde regle.
+
+- **1 668 references reecrites** dans 111 fichiers : liens, hreflang, canonical, og:url,
+  donnees structurees, plan du site, palette de commandes.
+- **Dix liens relatifs nus** (href="raffinage-en") rendus absolus dans les pages
+  deplacees : d'un cran plus bas dans l'arbre, ils auraient pointe a cote.
+- **24 redirections permanentes** posees pour les anciennes adresses, forme propre et
+  forme .html.
+- **Controle d'integrite sur les 160 pages : zero lien interne casse**, redirections et
+  reecritures prises en compte.
+- Rendu verifie sur quatre pages deplacees : aucune ressource en erreur, aucune erreur
+  de script, titre et canonical corrects.
+
+### Titres : neuf paires realignees
+
+Deux conventions coexistent sur le site — « … | EnerTchad » sur 143 pages, « … — EnerTchad
+S.A. » sur 65. Plutot que de trancher a la place du proprietaire sur l'ensemble, j'ai
+mesure la coherence **a l'interieur de chaque paire de traduction** : 86 paires coherentes,
+**9 divergentes**. Ce sont celles-la qui sont fautives, parce qu'un lecteur qui bascule de
+langue voit le titre changer de forme. Les neuf anglaises reprennent la forme de leur
+jumelle francaise (« Refined products & derivatives · Downstream | EnerTchad »), et
+projets.html perd le « S.A. » que sa jumelle n'avait pas.
+
+Le partage 143/65 sur le reste du site reste ouvert : c'est une decision de marque, pas un
+defaut. Les deux formes sont defendables ; il suffit de dire laquelle.
+
+### Les deux outils ont une adresse propre
+
+Configurateur_Service_Integre_v2.html et Calculateur_Baril_Additionnel.html gardaient des
+noms de fichiers hors charte, visibles dans la barre d'adresse. Ils sont desormais servis
+sous **/configurateur-service-integre** et **/calculateur-baril-additionnel** par une
+reecriture Vercel : l'adresse propre devient canonique (canonical, og:url, plan du site,
+et les 715 liens internes), sans dupliquer 830 ko de fichier.
+
+**Je n'ai pas encore pose la redirection de l'ancienne adresse vers la nouvelle.** Une
+redirection combinee a une reecriture peut, selon l'ordre d'evaluation, tourner en boucle
+et rendre l'outil inaccessible. L'ordre annonce par Vercel dit que non ; je le verifierai
+en production avant de la poser, plutot que de parier. En attendant, les deux adresses
+repondent et la balise canonique designe la bonne.
+
+### Reste a faire a la main
+
+La publication passe par le televersement web de GitHub, qui ne sait pas supprimer.
+**Quatorze fichiers orphelins** restent donc a la racine du depot : les douze anciennes
+pages anglaises, plus les deux fichiers d'outils sous leur ancien nom. Aucun n'est plus
+jamais servi — les redirections et la reecriture les masquent — mais ils encombrent le
+depot. Ils sont a supprimer d'un geste depuis l'interface GitHub :
+activites-en.html, eor-en.html, parc-en.html, services-ep-en.html, distribution-en.html,
+produits-en.html, raffinage-en.html, reseau-en.html, hseq-en.html, impact-en.html,
+patrimoine-en.html, transition-en.html.
+Les deux fichiers d'outils, eux, doivent rester : la reecriture les sert.
