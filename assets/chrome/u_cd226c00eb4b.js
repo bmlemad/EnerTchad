@@ -284,3 +284,43 @@ if(!hit){
 }
 if(hit){hit.classList.add('nz-on');hit.setAttribute('aria-current','page');}
 })()}catch(e){}
+
+/* Ch236 : avis cookies universel. Le bandeau n'existait en dur que sur 40 pages sur 159 :
+   un visiteur arrivant par une recherche ou un lien partage sur une page interieure ne le
+   voyait jamais. Ce bloc le construit quand il manque, dans la langue de la page, avec des
+   styles en ligne pour ne dependre d'aucune feuille (les 119 pages concernees ne chargent
+   pas toutes celle du bandeau d'origine). Il ne fait rien si le bandeau est deja present. */
+try{(function(){
+if(document.getElementById('ckn'))return;
+try{if(localStorage.getItem('ckok'))return}catch(e){}
+var L=(document.documentElement.lang||'fr').slice(0,2).toLowerCase();
+var T={fr:{t:'Cookies essentiels.',d:'Stockage local de vos préférences d’affichage uniquement — pas de suivi, pas de tiers.',p:'Politique cookies',b:'J’ai compris',u:'/cookies',a:'Avis cookies'},
+       en:{t:'Essential cookies.',d:'Local storage of your display preferences only — no tracking, no third parties.',p:'Cookie policy',b:'Got it',u:'/cookies-en',a:'Cookie notice'},
+       ar:{t:'ملفات تعريف أساسية.',d:'تخزين محلي لتفضيلات العرض فقط — دون تتبع أو أطراف ثالثة.',p:'سياسة ملفات التعريف',b:'فهمت',u:'/cookies',a:'إشعار ملفات التعريف'}};
+var t=T[L]||T.fr;
+function boot(){
+ if(document.getElementById('ckn'))return;
+ var n=document.createElement('div');
+ n.id='ckn'; n.className='show'; n.setAttribute('role','dialog'); n.setAttribute('aria-label',t.a);
+ var S={position:'fixed',left:'0',right:'0',bottom:'0',top:'auto',width:'100%','max-width':'none','z-index':'2147483400',
+   display:'flex','align-items':'center',gap:'16px','flex-wrap':'wrap',padding:'10px 22px',
+   background:'#0B1422',color:'rgba(245,247,250,.92)','font-size':'.8rem','line-height':'1.45',
+   'border-top':'1px solid rgba(232,195,106,.34)','box-shadow':'0 -8px 30px rgba(0,0,0,.42)',
+   'border-radius':'0','font-family':'var(--fs,system-ui,sans-serif)'};
+ for(var k in S)n.style.setProperty(k,S[k],'important');
+ var b=document.createElement('b'); b.textContent=t.t; b.style.setProperty('color','#F0CE82','important');
+ var sp=document.createElement('span'); sp.textContent=' '+t.d;
+ var row=document.createElement('div'); row.className='ck-row';
+ row.style.cssText='margin-inline-start:auto;display:flex;align-items:center;gap:10px;flex-wrap:wrap';
+ var a=document.createElement('a'); a.href=t.u; a.textContent=t.p;
+ a.style.cssText='color:#F0CE82;text-decoration:underline;text-underline-offset:.18em;padding:10px 8px;display:inline-block;min-height:44px;display:inline-flex;align-items:center';
+ var btn=document.createElement('button'); btn.type='button'; btn.textContent=t.b;
+ btn.style.cssText='min-height:44px;padding:9px 18px;border-radius:999px;border:1px solid rgba(232,195,106,.55);background:rgba(232,195,106,.14);color:#F0CE82;font:600 .8rem/1 var(--fs,system-ui,sans-serif);cursor:pointer';
+ btn.addEventListener('click',function(){try{localStorage.setItem('ckok',1)}catch(e){}n.remove();});
+ row.appendChild(a); row.appendChild(btn);
+ n.appendChild(b); n.appendChild(sp); n.appendChild(row);
+ document.body.appendChild(n);
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',function(){setTimeout(boot,1200)});
+else setTimeout(boot,1200);
+})()}catch(e){}
