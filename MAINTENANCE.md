@@ -8042,3 +8042,49 @@ le nombre annonce et le nombre d'items.
 
 Balayage de 18 pages representatives dans les deux themes : zero
 console, zero axe. SW bumpe et-202608251500 (un JS cache-first modifie).
+
+## 237 — Le pays unique, dit la ou les decisions se prennent (2026-08-25)
+
+Le chapitre 236 avait pose l'argument mono-pays sur la page Societe.
+Un argument de positionnement ne sert a rien s'il n'est lisible que la
+ou personne ne va le chercher : il est desormais present aux trois
+endroits ou il pese.
+
+L'accueil, FR et EN. L'accroche de « Qui nous sommes » gagne une
+proposition : pensee pour le Tchad, par des Tchadiens, elle n'opere que
+la — par choix, avec le lien vers le raisonnement complet. Une phrase,
+au point ou le visiteur decide s'il continue.
+
+L'espace investisseurs, FR et EN. La these passe de cinq a six
+raisons : « 06 · FOCUS — Un seul pays, toute l'ingenierie ». C'est un
+argument distinct du « 100 % tchadien » qui le precede : l'un parle de
+propriete du capital, l'autre de profondeur d'expertise. Le titre de
+section et la carte du bandeau thematique sont passes a « Six raisons »
+tous les deux — le second l'avait ete par erreur avant le premier, ce
+que le controle a rattrape.
+
+La FAQ, FR et EN. Question 28 : « Pourquoi EnerTchad n'opere-t-elle
+qu'au Tchad ? ». Reponse en trois temps — le choix et ce qu'il permet,
+ses deux consequences pratiques (optimiser l'existant, choisir les
+technologies pour le Tchad), le renvoi au raisonnement complet — avec
+le rappel de conformite. Le FAQPage JSON-LD passe de 27 a 28 entites
+des deux cotes, relu et revalide.
+
+Rituel des derives : six entrees ajoutees a la palette de recherche
+(trois FR, trois EN), pointant vers la section Societe, la these et la
+FAQ. Fichiers relus en JSON apres ecriture.
+
+Deux fautes de ma main, corrigees avant publication et notees ici parce
+qu'elles sont instructives. La premiere : mon remplacement de l'intro
+de section avait atterri dans la description de la carte du bandeau
+thematique, creant une ancre DANS une ancre — balisage invalide et clic
+de carte compromis. Le controle par comptage d'ancres imbriquees l'a
+attrapee. La seconde est la lecon du ch.224 qui se represente a
+l'identique : un <a> nu dans .intro n'est servi par aucune regle, donc
+bleu par defaut du navigateur (#0000EE) sur fond bleu nuit, 1,84:1 —
+signale par axe en theme sombre. Encre doree posee en ligne, comme pour
+les autres liens de ce type. Une classe n'existe que si une regle la
+sert ; un lien n'a de couleur que si quelqu'un la lui donne.
+
+Balayage des huit pages touchees dans les deux themes : zero console,
+zero axe. SW bumpe et-202608251900.
