@@ -1669,3 +1669,45 @@ header.pghero:not(#_)::before{content:'';position:absolute;inset:0;pointer-event
    sa lisibilite sur photo. On la lui rend. */
 header.pghero .bcrumb span:not(#_),header.pghero .bcrumb a:not(#_),
 header.pghero .crumb span:not(#_),header.pghero .crumb a:not(#_){text-shadow:0 1px 10px rgba(0,0,0,.65)!important}
+
+/* ===== Ch238 : les tuiles restees hors du verre rejoignent la famille =================
+   Constat mesure avant travaux : la famille de 80 classes du bloc tuiles-immersion (ch.141)
+   est bien vitree partout — fond transparent, lavis, flou d'arriere-plan, filet fin. Mais
+   dix classes qui sont visuellement des tuiles n'y avaient jamais ete inscrites et gardaient
+   un fond plein : cartes de comparaison, indicateurs de heros et de projets, cartes contact,
+   cartes d'application. (Les .hpcard de l'accueil ont ete ecartees a la contre-epreuve :
+   ce sont des boutons d'appel a l'action colores, pas des tuiles — voir MAINTENANCE ch.238.) On leur applique LES MEMES valeurs que
+   la famille, pas un second systeme : harmoniser, c'est rejoindre l'existant. */
+html:has(.rootland) :is(.cmp-c,.ppj-kpi,.pgh-kpi,.fp-card,.ct-card,.dx-card,.epw-card,.app-card,.app-panel):not(#_):not(#__):not(#___):not(#____){
+  background-color:transparent!important;
+  background-image:linear-gradient(180deg,rgba(252,250,246,.56) 0%,rgba(252,250,246,.40) 100%)!important;
+  border-color:rgba(26,35,48,.12)!important;
+  box-shadow:0 1px 0 rgba(255,255,255,.55) inset,0 20px 40px -30px rgba(30,24,10,.42)!important;
+  -webkit-backdrop-filter:blur(18px) saturate(1.35)!important;backdrop-filter:blur(18px) saturate(1.35)!important}
+html:not(.et-plight):not(.et-jlight):has(.rootland) :is(.cmp-c,.ppj-kpi,.pgh-kpi,.fp-card,.ct-card,.dx-card,.epw-card,.app-card,.app-panel):not(#_):not(#__):not(#___):not(#____){
+  background-image:linear-gradient(180deg,rgba(9,15,27,.66) 0%,rgba(9,15,27,.54) 100%)!important;
+  border-color:rgba(255,255,255,.15)!important;
+  box-shadow:0 1px 0 rgba(255,255,255,.08) inset,0 22px 46px -30px rgba(0,0,0,.6)!important}
+/* le texte secondaire de ces tuiles suit la meme regle d'eclaircissement que la famille */
+html:not(.et-plight):not(.et-jlight):has(.rootland) :is(.cmp-c,.ppj-kpi,.pgh-kpi,.fp-card,.ct-card,.dx-card,.epw-card,.app-card,.app-panel) :is(p,li,dd,span):not(#_):not(#__):not(#___):not(#____){
+  color:#D9E2EE!important;-webkit-text-fill-color:#D9E2EE!important}
+@media print{ :is(.cmp-c,.ppj-kpi,.pgh-kpi,.fp-card,.ct-card,.dx-card,.epw-card,.app-card,.app-panel):not(#_):not(#__):not(#___):not(#____){background:#fff!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important;box-shadow:none!important;border-color:#bbb!important} }
+
+/* Ch238 : etiquettes de la carte reseau (texte SVG). En theme clair, leur encre restait
+   celle du theme sombre — blanc a 78 % sur une carte pale, 2,74:1 : les points s'affichaient,
+   pas les noms de villes. Defaut jamais vu jusqu'ici parce que le banc de mesure lisait
+   color et non fill sur le texte SVG ; l'angle mort est comble au meme chapitre. */
+html.et-plight .avnet-lab:not(#_):not(#__),html.et-jlight .avnet-lab:not(#_):not(#__){fill:#25314A!important;color:#25314A!important}
+html.et-plight .avnet-sub:not(#_):not(#__),html.et-jlight .avnet-sub:not(#_):not(#__){fill:#4A5668!important;color:#4A5668!important}
+
+/* Ch238 : les indicateurs du heros (.pgh-kpi) sont poses sur la photo, pas sur une section.
+   Le verre clair de la famille n'y suffit pas : blanc gras mesure a 2,7:1 sur les zones
+   claires de l'image — defaut anterieur (deja signale au ch.234) que le passage au verre
+   rendait systematique. Ils gardent le verre, mais teinte nuit dans les deux themes,
+   comme le heros lui-meme qui reste photographique en clair comme en sombre. */
+header.pghero :is(.pgh-kpi):not(#_):not(#__):not(#___):not(#____):not(#_____),
+html.et-plight header.pghero :is(.pgh-kpi):not(#_):not(#__):not(#___):not(#____):not(#_____),
+html.et-jlight header.pghero :is(.pgh-kpi):not(#_):not(#__):not(#___):not(#____):not(#_____){
+  background-color:transparent!important;
+  background-image:linear-gradient(180deg,rgba(9,15,27,.64) 0%,rgba(9,15,27,.52) 100%)!important;
+  border-color:rgba(255,255,255,.20)!important}
