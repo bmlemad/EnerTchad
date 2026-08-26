@@ -8356,3 +8356,71 @@ activites-en.html, eor-en.html, parc-en.html, services-ep-en.html, distribution-
 produits-en.html, raffinage-en.html, reseau-en.html, hseq-en.html, impact-en.html,
 patrimoine-en.html, transition-en.html.
 Les deux fichiers d'outils, eux, doivent rester : la reecriture les sert.
+
+## 241 — Le verre de trop, et l'etalonnage des encres (2026-08-26)
+
+### Les vignettes photo n'etaient pas des tuiles
+
+Le chapitre 239 laissait ouvert un defaut sur le pole GreenTech : cinq libelles entre
+2,31 et 2,45 en theme clair, et une regle posee au 239.11 qui ne prenait pas. Trois
+diagnostics successifs, chacun corrige par le suivant :
+
+1. j'ai cru a un fond photo trop clair et j'ai assombri la tuile — sans effet, ma regle
+   perdait en specificite contre une regle de page a quatre `:not(#_)` ;
+2. j'ai alors lu le fond calcule comme un verre pale sur creme et j'ai fonce l'encre —
+   le rapport est tombe a **1,40**, pire qu'au depart ;
+3. j'ai enfin regarde la vignette a l'ecran. Ce ne sont pas des cartes de contenu mais
+   **des vignettes photo** : une image en haut, un bloc de texte pose dessus. Le lavis de
+   verre du ch.238 les avait laitees, et le texte se retrouvait sur un ton moyen ou ni
+   l'encre claire ni l'encre foncee ne tiennent.
+
+Meme famille d'erreur que `.hpcard`, ecartee de justesse au ch.238 : une vignette photo
+n'est pas une tuile de verre. Le lavis est retire, le bloc de texte reprend un fond nuit
+franc, l'encre reste claire dans les deux themes. **Zero defaut restant sur ces pages,
+clair et sombre.** Lecon : j'ai perdu deux tentatives a raisonner sur des valeurs
+calculees ; la capture d'ecran a tranche en dix secondes.
+
+### Etalonnage des encres de la bande 3,0-4,5
+
+Le ch.239 laissait 159 signalements entre 3,0 et 4,5 — aucun illisible, tous sous le
+seuil AA pour du petit texte. Douze familles d'encre ont ete recalees vers 6:1 sur leur
+fond habituel : signature de la marque, etiquette de partage, sens de pagination, note et
+cartes ESG, etiquettes de norme, liens bleus de section et de paragraphe, sur-titre rose
+de la brochure, lien d'alerte des carrieres, mentions en petit du theme clair.
+
+Sur les douze pages concernees : **0 defaut severe et 0 limite nette dans les deux
+themes**, contre 6 severes et 3 limites avant. Regression sur 65 pages et 9 272 elements :
+**2 severes** — les deux chevauchements partiels deja documentes au ch.239, pas des encres
+— et 9 limites entre 3,66 et 4,25.
+
+### Mon erreur, encore la meme
+
+Le 241.8 sur le sur-titre rose de la brochure a ete pose **sans verifier le fond** : j'ai
+fonce le rose pour le theme clair alors que ces cartes restent nuit dans les deux themes.
+Resultat 1,78 — je fabriquais un defaut deux fois pire que celui que je corrigeais.
+Rattrape au meme chapitre. C'est la troisieme fois en trois chapitres (239.7, 241.8, et la
+tuile GreenTech ci-dessus) : **une encre ne se choisit jamais sans mesurer le sol.** La
+regle de methode est desormais explicite : toute nouvelle encre passe au banc avant
+publication, sur la page ou elle sert, dans les deux themes.
+
+### Inventaire du petit texte, pour arbitrage
+
+Compte fait sur 30 pages : **4 601 elements sous 12 px**, dont 1 143 sous 10 px et 20 sous
+9 px. Repartition : 11 px (2 239), 10 px (914), 9 px (369), 8 px (20). Ce n'est pas un
+accident mais un parti pris de composition — sur-titres, legendes d'indicateurs, pastilles.
+Les seuls cas vraiment hors norme sont les etiquettes de la carte SVG de la brochure, a
+7,5 px.
+
+Je ne touche pas a ce parti pris : remonter l'ensemble a 12 px changerait la mise en page
+de tout le site et releve d'une decision de marque. **C'est un arbitrage a rendre**, avec
+les chiffres ci-dessus en main.
+
+### Reste ouvert
+
+- **aval/distribution** et **journal-champ-numerique-en** : deux textes dont un tiers des
+  pixels mord sur une zone sombre (medianes a 11 et 9). Chevauchement de mise en page, pas
+  une encre fautive — a reprendre par la geometrie.
+- **La signature de la marque** dans la barre, 4,25 a 9,3 px : servie par une regle a
+  quatre `:not(#_)` que je n'ai pas voulu surencherir pour un seul element.
+- **Les 14 fichiers orphelins** a la racine du depot, signales au ch.240, restent a
+  supprimer a la main.
