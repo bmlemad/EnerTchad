@@ -1126,3 +1126,60 @@ html:not(.et-plight):not(.et-jlight) .sk:not(#_):not(#__){color:#9CC7F6!importan
   backdrop-filter:blur(18px) saturate(1.2) brightness(.5)!important}
 .gtt-c em:not(#_):not(#__),.gtt-c span:not(#_):not(#__),.gtt-c p:not(#_):not(#__){
   color:#8FE9C4!important;-webkit-text-fill-color:#8FE9C4!important}
+
+/* ============================ Chapitre 241 ============================
+   Etalonnage des encres restees dans la bande 3,0-4,5 apres le ch.239. Aucune n'etait
+   invisible ; toutes passaient sous le seuil AA pour du petit texte. Les valeurs
+   ci-dessous visent 6:1 sur leur fond habituel, marge prise pour les fonds tramés. */
+
+/* 241.1 — signature de la marque dans la barre, theme clair (4,25) */
+html:is(.et-plight,.et-jlight) .nav .brand-tx small:not(#_):not(#__):not(#___),
+html:is(.et-plight,.et-jlight) .nav-in .brand-tx small:not(#_):not(#__):not(#___){color:#39424F!important}
+
+/* 241.2 — etiquette de partage (3,81) */
+html:is(.et-plight,.et-jlight) .share-k:not(#_):not(#__):not(#___){color:#454F62!important}
+
+/* 241.3 — sens de pagination des communiques et de la FAQ (3,88) */
+html:is(.et-plight,.et-jlight) .pgr .dir:not(#_):not(#__):not(#___){color:#55400C!important}
+
+/* 241.4 — note ESG et liens bleus des sections en theme sombre (3,53) */
+html:not(.et-plight):not(.et-jlight) .esg-note a:not(#_):not(#__):not(#___),
+html:not(.et-plight):not(.et-jlight) .epw a:not(#_):not(#__):not(#___){color:#9CC7F6!important}
+
+/* 241.5 — intitules des cartes ESG en theme sombre (3,82) */
+html:not(.et-plight):not(.et-jlight) .esg-card .k:not(#_):not(#__):not(#___){color:#A7B4C8!important}
+
+/* 241.6 — vert des etiquettes de norme en theme sombre (3,70) */
+html:not(.et-plight):not(.et-jlight) .tag b:not(#_):not(#__):not(#___){color:#8FE9C4!important}
+
+/* 241.7 — bleu des liens de section en theme clair (3,27 sur la boutique) */
+html:is(.et-plight,.et-jlight) body > section a:not(#_):not(#__):not(#___){color:#10406F!important}
+
+/* 241.8 — sur-titre rose des cartes de la brochure (4,35 clair / 4,41 sombre).
+   Premiere tentative fautive, corrigee ici : j'avais fonce le rose pour le theme clair
+   sans verifier le fond. Ces cartes restent nuit dans les deux themes — le rose fonce y
+   est tombe a 1,78, bien pire que le defaut d'origine. Meme erreur qu'au 239.7 : une
+   encre ne se choisit pas sans regarder ce qu'il y a derriere. Rose clair partout. */
+html .adx .eyebrow:not(#_):not(#__):not(#___){color:#E9A8D4!important}
+
+/* 241.9 — liens or du corps de page en theme clair (3,89 sur carrieres) */
+html:is(.et-plight,.et-jlight) main a:not(#_):not(#__):not(#___)[style*="gold"],
+html:is(.et-plight,.et-jlight) .pgl a:not(#_):not(#__):not(#___),
+html:is(.et-plight,.et-jlight) main p a:not(#_):not(#__):not(#___){color:#5E4409!important}
+
+/* 241.10 — etiquettes sourdes sur fond nuit : sur-titres de suite, partage et legendes
+   de tableau restaient entre 3,35 et 4,03 avec l'encre --muted. */
+html:not(.et-plight):not(.et-jlight) :is(.pmore-k,.share-k,caption,.esg-sub):not(#_):not(#__):not(#___){color:#AEBBCF!important}
+
+/* 241.11 — derniers ecarts de la bande, releves un a un : lien d'alerte des carrieres,
+   sous-titre HSE, liens bleus de paragraphe et vert des etiquettes, tous entre 3,89 et
+   4,29 — sous le seuil pour du petit texte, jamais illisibles. */
+html:is(.et-plight,.et-jlight) .b111-note a:not(#_):not(#__):not(#___){color:#4F3A08!important}
+html:not(.et-plight):not(.et-jlight) .esg-hse .esg-sub:not(#_):not(#__):not(#___){color:#C6D2E4!important}
+html:not(.et-plight):not(.et-jlight) main p a:not(#_):not(#__):not(#___){color:#9CC7F6!important}
+html:not(.et-plight):not(.et-jlight) .tag b:not(#_):not(#__):not(#___){color:#B4F2D8!important}
+
+/* 241.12 — deux reliquats qui resistaient a une specificite de trois : le lien d'alerte
+   des carrieres, servi par une regle de page, et les mentions en petit du theme clair. */
+html:is(.et-plight,.et-jlight) .b111-note a:not(#_):not(#__):not(#___):not(#____):not(#_____){color:#4F3A08!important}
+html:is(.et-plight,.et-jlight) small:not(#_):not(#__):not(#___):not(#____){color:#454F62!important}
