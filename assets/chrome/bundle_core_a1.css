@@ -1897,3 +1897,13 @@ html:is(.et-plight,.et-jlight) small:not(#_):not(#__):not(#___):not(#____){color
 .pgr .next{text-align:right;align-items:flex-end}
 @media(max-width:640px){.pgr a{flex:1 1 100%}.pgr .next{text-align:left;align-items:flex-start}}
 @media(prefers-reduced-motion:reduce){.pgr a{transition:none}.pgr a:hover{transform:none}}
+
+/* ====================================================================
+   247 — La signature de la barre, lisible en theme sombre.
+   « Acces aux Energies », 9,3 px sous la marque, se peignait en #8C9AB0 sur le
+   verre bleute de la barre : 4,01 a 4,44 selon la page, mesure au banc sur six
+   ecrans (le pire sol releve est un gris-bleu a 44,48,57, le plus traitre le
+   bleu de la barre marketing a 23,60,91). L'encre passe a #A8B4C7 : 5,45 au
+   pire sol mesure, 6 a 9 ailleurs. Les themes clairs gardent leur #4A5668,
+   servi par des regles a cinq crans qui restent au-dessus de celle-ci. */
+html:not(.et-plight):not(.et-jlight) .brand-tx small:not(#_):not(#__):not(#___){color:#A8B4C7!important}

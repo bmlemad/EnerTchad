@@ -1183,3 +1183,6 @@ html:not(.et-plight):not(.et-jlight) .tag b:not(#_):not(#__):not(#___){color:#B4
    des carrieres, servi par une regle de page, et les mentions en petit du theme clair. */
 html:is(.et-plight,.et-jlight) .b111-note a:not(#_):not(#__):not(#___):not(#____):not(#_____){color:#4F3A08!important}
 html:is(.et-plight,.et-jlight) small:not(#_):not(#__):not(#___):not(#____){color:#454F62!important}
+
+/* 247 — signature de la barre en sombre : #A8B4C7 (voir feuille commune). */
+html:not(.et-plight):not(.et-jlight) .brand-tx small:not(#_):not(#__):not(#___) { color: #A8B4C7 !important; }
