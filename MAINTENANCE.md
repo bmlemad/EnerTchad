@@ -8929,3 +8929,52 @@ arbitrages du proprietaire), les **cibles tactiles** (0 sous la norme depuis le
 ch.246), et la **structure** (0 violation axe-core). Ce qui reste au registre
 releve de decisions de marque — les tailles de texte sous 12 px en tete — pas
 de defauts techniques.
+
+## 251 — La performance, mesuree sur le reseau qu'ont nos lecteurs (2026-08-26)
+
+Le site vise le Tchad, ou l'on lit sur mobile et sur des reseaux qui n'ont rien
+d'une fibre. Dimension jamais encore mesuree ; c'est fait.
+
+### Le banc
+
+Playwright avec bridage CDP : 1,6 Mbit/s descendants, 150 ms de latence, processeur
+ralenti 4x — le telephone d'entree de gamme sur un reseau mobile moyen. Cinq gabarits
+mesures (accueil, page de pole, article du journal, solutions, calculateur), en 390 px.
+Limite assumee : le navigateur du banc n'atteint pas la production (sortie reseau du
+bac a sable), les temps sont donc mesures sur la copie locale servie SANS compression —
+ce sont des majorants ; les poids reels sont releves sur la production, compression
+comprise.
+
+### Les chiffres
+
+- **Premier rendu (FCP), sans compression, sous bridage** : 1,7 s (calculateur) a
+  4,5 s (page de pole). La production sert en brotli, qui divise le texte par 3,9 —
+  le pire gabarit reel passe sous les 3 s sur ce profil de reseau.
+- **Charge utile initiale de l'accueil, compressee, relevee en production** :
+  HTML 53 ko, feuilles ~110 ko, scripts ~60 ko, une seule image au chargement
+  (le heros preleve, 77 ko). Les **cinq autres photos de section (660 ko) ne se
+  chargent pas au demarrage** — elles sont differees, et le banc le confirme :
+  1 image sur 6 transferee a l'evenement load.
+- **Polices** : woff2 auto-hebergees, decoupees par plages unicode, et surtout
+  `font-display:optional` — sur reseau lent le texte s'affiche immediatement en
+  police de repli, sans blocage ni saut. Le meilleur reglage possible pour la cible.
+- **Cache** : images en immutable un an, feuilles en 1 h + stale-while-revalidate
+  (le bon choix pour des fichiers modifies en place), HTML et service worker en
+  must-revalidate, et le service worker versionne par-dessus. Coherent de bout en bout.
+
+### La non-action, justifiee
+
+L'accueil charge 14 feuilles de style dans sa tete. Les consolider reduirait le
+nombre de requetes — mais la production sert en HTTP/2, ou quatorze petites requetes
+multiplexees coutent a peine plus qu'une grosse, et **l'ordre de ces feuilles porte
+tout le moteur de theme clair** : la cascade de specificite des chapitres 234 a 247
+depend de qui vient apres qui. Le gain serait marginal, le risque structurel. On ne
+touche pas.
+
+### Verdict
+
+Aucune correction necessaire : l'architecture fait deja les bons choix pour le
+reseau vise — images differees, polices non bloquantes, cache etage, HTML leger.
+Le chapitre existe pour que ce constat soit mesure et date, pas suppose. A remesurer
+si un jour une page depasse 60 ko de HTML comprime ou charge une image au-dessus
+du pli sans prelevement.
