@@ -477,7 +477,23 @@ a.glm-c:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):focus-vis
   a.glm-c:not(#_):not(#__):not(#___):hover{
     transform:none;
   }
-}</style></head>
+}</style><style id="gtt241">/* Ch241 : correction d'un exces du ch.238. Ces tuiles ne sont pas des cartes de contenu
+mais des vignettes photo : une image en haut, un bloc de texte pose dessus en bas. Le
+lavis de verre clair applique a toute la famille les a laitees, et le texte se retrouvait
+sur un fond moyen ou ni l'encre claire ni l'encre foncee ne tiennent (2,31 puis 1,40
+selon le sens ou je tirais). Meme famille d'erreur que .hpcard, ecartee au ch.238 :
+une vignette photo n'est pas une tuile de verre. Le lavis est retire, le bloc de texte
+reprend un fond nuit franc, l'encre reste claire dans les deux themes. */
+html main a.gtt-c:not(#_):not(#__):not(#___):not(#____):not(#_____){
+  background-color:transparent!important;background-image:none!important;
+  -webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+html main a.gtt-c .gtt-b:not(#_):not(#__):not(#___):not(#____):not(#_____){
+  background-image:linear-gradient(180deg,rgba(8,13,22,.86) 0%,rgba(8,13,22,.94) 100%)!important;
+  background-color:transparent!important}
+html main a.gtt-c :is(b,.gtt-t):not(#_):not(#__):not(#___):not(#____):not(#_____){color:#FFFFFF!important;-webkit-text-fill-color:#FFFFFF!important}
+html main a.gtt-c :is(span,p):not(#_):not(#__):not(#___):not(#____):not(#_____){color:#DCE4EF!important;-webkit-text-fill-color:#DCE4EF!important}
+html main a.gtt-c em:not(#_):not(#__):not(#___):not(#____):not(#_____){color:#8FE9C4!important;-webkit-text-fill-color:#8FE9C4!important}
+</style></head>
 <body id="top"><div class="rdprog" aria-hidden="true"></div>
 <a href="#main-content" class="skip-link">Aller au contenu principal</a>
 <div id="preloader" aria-hidden="true">
