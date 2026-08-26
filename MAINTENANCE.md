@@ -8807,3 +8807,38 @@ uniquement du HTML.
   solutions, achats...) gardent le #155FA8 de la feuille : toutes passent le banc
   aujourd'hui. Les harmoniser demanderait de repliquer aussi les blocs d'exceptions —
   a ne faire que si une mesure l'exige un jour.
+
+## 247 — La famille doree, et la signature de la barre (2026-08-26)
+
+Suite de « applique les actions » : les deux encres laissees ouvertes aux chapitres
+241 et 246 recoivent leur passe dediee.
+
+### La famille des liens dores du theme clair
+
+L'encre #8A6A12 servait les liens et libelles dores du theme clair sur 26 pages —
+notes de bas de bloc, listes de documents, sommaires de reporting. Le banc, passe sur
+tous les elements peints de cette encre, a rendu **13 defauts sur 7 pages**, entre
+4,10 et 4,48 pour 4,5 attendus, le pire sol etant un gris-rose a (236,232,233) sur
+les listes de documents de la gouvernance.
+
+L'encre de la famille passe a **#74570B** : 5,56 au pire sol mesure. Le remplacement
+est fait regle par regle dans les pages, en epargnant deliberement deux usages qui
+partagaient la meme valeur sans etre du texte : les anneaux de focus (un contour
+n'obeit pas au seuil du texte) et la goutte doree du fil du baril (un dessin).
+Le theme sombre n'est pas concerne : ces memes elements y sont servis en or clair
+(232,195,106) par d'autres regles. Verification : **36 elements re-mesures, 0 defaut**,
+sur les 21 pages modifiees comme sur les 5 porteuses de la valeur en usage non-texte.
+
+### La signature de la barre
+
+« Acces aux Energies », 9,3 px sous la marque, se peignait en #8C9AB0 sur le verre
+bleute de la barre de navigation en theme sombre : 4,01 a 4,44 selon la page, mesure
+sur six ecrans — le sol le plus traitre est le bleu de la barre marketing (23,60,91),
+le pire un gris-bleu du pole GreenTech (44,48,57). Au chapitre 242 j'avais renonce a
+la corriger pour ne pas surencherir sur une regle a quatre crans pour un seul element ;
+la consigne d'appliquer les actions leve ce scrupule. L'encre passe a **#A8B4C7** par
+une regle a trois crans dans les trois feuilles communes : 5,39 a 9,35 re-mesures sur
+les memes ecrans, encre peinte relue a (168,180,199). Les themes clairs gardent leur
+#4A5668, servi par des regles a cinq crans qui restent au-dessus.
+
+Bump du service worker (et-202608270300) : la correction touche les feuilles.
