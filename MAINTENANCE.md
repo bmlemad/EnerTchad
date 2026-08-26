@@ -8886,3 +8886,46 @@ Les trois points de veille du chapitre 238 ont ete verifies aux sources.
 
 Reste au calendrier : la carte Brent (janvier), et la validation ITIE quand le
 secretariat en publiera une nouvelle.
+
+## 250 — La passe structurelle : axe-core sur tout le site (2026-08-26)
+
+Les chapitres 239 a 247 ont couvert les encres, les contrastes et les cibles
+tactiles avec des bancs de mesure sur pixels. Restait la dimension que ces bancs
+ne voient pas : la **structure** — roles ARIA, libelles d'elements interactifs,
+landmarks, ordre des titres, attributs de langue, noms accessibles des liens et
+des boutons.
+
+### Le banc
+
+axe-core (le moteur d'audit de reference, celui de Lighthouse), injecte par
+Playwright dans chacune des **214 pages** du site. Une regle ecartee a dessein :
+`color-contrast` — le banc exact des chapitres precedents mesure les pixels
+peints la ou axe estime des couleurs calculees ; on ne melange pas deux juges,
+et le notre est plus severe.
+
+### Le verdict
+
+**Les 210 pages publiques passent sans aucune violation.** Zero — sur les roles,
+les libelles, les landmarks, les titres, les langues, les noms accessibles.
+Les seuls signalements tombent sur quatre fichiers utilitaires, et chacun a une
+raison d'etre tel qu'il est :
+
+- `google9146d41010c5e702.html` — le jeton de verification Google : un fichier
+  volontairement nu, lu par un robot, jamais par un lecteur. On n'habille pas
+  un jeton.
+- `docs-sources/brochure_print`, `brochure_print_en`, `fiche_ar` — les gabarits
+  d'impression qui servent a generer les PDF : des pages de mise en page papier,
+  sans landmarks parce qu'elles n'ont pas de navigation. Elles ne sont ni dans
+  le plan du site ni liees depuis les pages publiques.
+
+Aucune correction necessaire ; les quatre exclusions sont documentees ici comme
+des partis pris, pas des oublis.
+
+### Ce que cela ferme
+
+Avec ce chapitre, le socle d'accessibilite du site est mesure sur ses trois
+dimensions : les **encres** (banc exact par pixels, 0 defaut connu hors les
+arbitrages du proprietaire), les **cibles tactiles** (0 sous la norme depuis le
+ch.246), et la **structure** (0 violation axe-core). Ce qui reste au registre
+releve de decisions de marque — les tailles de texte sous 12 px en tete — pas
+de defauts techniques.
