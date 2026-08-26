@@ -8643,3 +8643,38 @@ Plus aucun fichier orphelin. 214 pages HTML vivantes, chacune sous son adresse
 canonique, plus les deux outils servis par reecriture. Restent les deux arbitrages
 du proprietaire : les tailles de texte sous 12 px, et la convention de titre
 (143 « | EnerTchad » contre 65 « — EnerTchad S.A. »).
+
+## 244 — Une seule maniere de dire son nom (2026-08-26)
+
+### L'arbitrage
+
+Le partage des conventions de titre etait documente depuis le chapitre 239 et laisse
+au proprietaire : 146 pages en « | EnerTchad », 52 en « — EnerTchad S.A. ». L'arbitrage
+est tombe : **« ok pour EnerTchad »** — la forme courte gagne.
+
+### Le geste
+
+Les 52 pages restantes passent a la convention majoritaire, sur les trois balises qui
+portent le titre : `<title>`, `og:title`, `twitter:title`.
+
+- La queue « — EnerTchad S.A. » (et sa variante « — EnerTchad ») devient « | EnerTchad ».
+- Les cinq titres qui portaient un tiret cadratin interne passent au point median de la
+  charte majoritaire : « Carrieres — Batir l'equipe — EnerTchad S.A. » devient
+  « Carrieres · Batir l'equipe | EnerTchad ».
+- En tirant le fil, **9 pages supplementaires** avaient un `<title>` deja realigne au
+  chapitre 240 mais des `og:title`/`twitter:title` restes en arriere (les six pages de
+  pole anglaises, projets, projets-en, communautes) : le partage de lien sur les reseaux
+  affichait encore l'ancienne forme. Alignees aussi.
+
+Controle : **198 pages en « | EnerTchad », zero occurrence de l'ancienne forme** dans
+les trois balises, sur tout le site. Les 12 titres hors motif restent volontairement
+tels quels : l'accueil, la brochure, les deux outils, les carnets, l'explorateur, le 404
+et la page arabe portent des titres ou EnerTchad est le sujet, pas le suffixe — ce sont
+des titres de marque, pas des titres de rubrique.
+
+Non touche, et a dessein : le nom legal « EnerTchad S.A. » partout ou il designe la
+societe — corps de page, JSON-LD, mentions legales. La convention arbitree porte sur
+le suffixe des titres d'onglet, pas sur le nom de l'entreprise.
+
+61 fichiers publies. Pas de bump du service worker : uniquement du HTML, servi
+reseau d'abord.
