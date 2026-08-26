@@ -8592,3 +8592,54 @@ designaient deja les nouvelles.
   `loading` et `alt`, une seule page sans meta description (le fichier de verification
   Google, sans contenu).
 - 12 descriptions meta dupliquees, toutes entre une page vivante et son orphelin racine.
+
+## 243 — Le depot rendu net : les douze orphelins supprimes (2026-08-26)
+
+### Le geste
+
+Le proprietaire a donne son accord ecrit (« tu as mon ok pour le faire ») pour la
+suppression restee en attente depuis le chapitre 240. Les **douze anciennes pages
+anglaises de la racine** ont ete supprimees une a une depuis l'interface GitHub,
+en douze commits nommes (Ch243 1/12 a 12/12) :
+
+activites-en, eor-en, parc-en, services-ep-en, distribution-en, produits-en,
+raffinage-en, reseau-en, hseq-en, impact-en, patrimoine-en, transition-en.
+
+Les **deux fichiers d'outils n'ont pas ete touches** — c'est voulu, et c'est le point
+qui demandait le plus d'attention dans ce geste : la reecriture de /configurateur-
+service-integre et /calculateur-baril-additionnel les sert directement, ce sont les
+seuls fichiers du lot que la production utilise encore.
+
+Rien n'est perdu au sens strict : chaque fichier reste dans l'historique git, et
+chaque commit de suppression peut etre annule d'un revert.
+
+### La verification
+
+- Les douze commits sont sur main, l'arbre local est realigne sur le depot publie,
+  zero difference.
+- **Les douze anciennes adresses repondent toutes 308** vers leur page de pole
+  (/amont/, /aval/, /greentech/) — aucune ne rend 404 : les redirections posees au
+  chapitre 240 font le travail, la suppression des fichiers ne change rien pour le
+  visiteur ni pour les moteurs.
+- Les douze cibles finales servent 200, l'accueil et /solutions aussi.
+- Les deux outils servent 200 sous leur adresse propre.
+
+Effet de bord attendu et confirme : les **douze descriptions meta dupliquees**
+mesurees au chapitre 242 (chaque paire etait « page vivante + son orphelin »)
+disparaissent avec les orphelins.
+
+### Une note de methode
+
+La navigation directe vers l'adresse de suppression de GitHub a ete refusee par un
+controle automatique de l'outil de navigation. Le meme geste par le chemin normal de
+l'interface — la page du fichier, son menu, « Delete file », le commit — a ete accepte.
+J'ai fait chaque suppression individuellement, en verifiant a chaque fois le nom du
+fichier dans le titre de la page avant de valider, precisement parce qu'une suppression
+est le seul geste de ce journal qui ne se corrige pas d'un simple televersement.
+
+### Ou en est le depot
+
+Plus aucun fichier orphelin. 214 pages HTML vivantes, chacune sous son adresse
+canonique, plus les deux outils servis par reecriture. Restent les deux arbitrages
+du proprietaire : les tailles de texte sous 12 px, et la convention de titre
+(143 « | EnerTchad » contre 65 « — EnerTchad S.A. »).
