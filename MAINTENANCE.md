@@ -8424,3 +8424,171 @@ les chiffres ci-dessus en main.
   quatre `:not(#_)` que je n'ai pas voulu surencherir pour un seul element.
 - **Les 14 fichiers orphelins** a la racine du depot, signales au ch.240, restent a
   supprimer a la main.
+
+## 242 — Ce que le banc croyait voir, et le bandeau qui manquait (2026-08-26)
+
+### D'abord, la fermeture de deux points laisses ouverts
+
+Le chapitre 241 laissait deux defauts dits « de geometrie » : sur **aval/distribution** et
+sur **journal-champ-numerique-en**, un texte dont un tiers des pixels mordait sur une zone
+sombre, medianes a 11 et 9. Je les avais classes « chevauchement de mise en page, a
+reprendre par la geometrie ».
+
+Ils n'existent pas. **Ce sont deux artefacts de mon propre banc.**
+
+Le texte incrimine passe sous une barre collante — la barre marketing de la page
+distribution, le bandeau de journal — au moment precis de la capture. Une barre collante
+qui recouvre le texte qui defile dessous ne le rend pas illisible : elle le masque, et le
+lecteur le lit une seconde plus tard, quand il a fini de passer. Le banc, lui, ne testait
+le recouvrement qu'en deux points, au quart et aux trois quarts de la hauteur de la boite.
+Des que la barre n'en couvrait qu'une bande, les deux points passaient a cote, les pixels
+caches restaient dans la mesure, et le banc accusait la page d'un defaut qui n'existait
+que dans son propre decoupage.
+
+**Correction apportee au banc** : avant de mesurer, on calcule la pile contigue de barres
+opaques accrochees au haut de l'ecran, puis on rogne chaque boite de la hauteur couverte ;
+si moins de huit pixels de hauteur restent visibles, la boite est ecartee. Exception : le
+texte porte *par* les barres elles-memes reste mesure integralement — c'est justement lui
+qui doit etre lisible sur le fond de la barre. Sur les deux pages, le banc corrige passe
+de deux signalements a **zero**, tout en examinant 156 elements au lieu de 154 : la
+correction ne cache rien, elle recadre.
+
+### Ensuite, une erreur que j'ai failli publier
+
+Pour verifier ces deux pages, j'ai construit un second banc, celui de la **transparence des
+barres collantes**. Le principe est propre : une barre collante ne bouge pas quand la page
+defile, le contenu si. On capture donc deux fois, a neuf pixels de defilement d'ecart, et
+tout pixel de l'interieur de la barre qui change entre les deux captures est du contenu qui
+transparait. Aucune hypothese sur l'alpha, le flou ou la couleur.
+
+Le banc a rendu un verdict net : le bandeau de journal laissait passer 15 niveaux, la barre
+marketing 13, et surtout la **barre de navigation principale**, en theme sombre, 45 niveaux
+— sur toutes les pages du site. Les captures montraient une ligne de texte de la page
+parfaitement lisible au travers de la barre. J'ai ecrit la correction : remonter l'opacite
+des barres a 0,985 pour que rien ne transparaisse, dans les deux feuilles communes.
+
+**Puis j'ai regarde dans un vrai Chrome. Il n'y a rien.** Ni sous la barre de navigation,
+ni sous la barre marketing, ni sous le bandeau de journal. Le flou d'arriere-plan
+(`backdrop-filter`) fait son travail : ce qui passe dessous est etale au point de
+disparaitre. Le navigateur sans interface que j'utilise pour les bancs applique bien ce
+flou sur un calque absolu ordinaire — je l'ai verifie sur une page temoin, une barre noire
+franche y ressort etalee entre 94 et 134 — mais pas de la meme facon sur une barre en
+`position:fixed` ou `sticky`. Mes 45 niveaux etaient une propriete de mon banc, pas du site.
+
+J'ai annule la modification avant publication. **Regle ajoutee a la methode : aucune mesure
+de transparence ne vaut hors d'un vrai navigateur.** Le banc de contraste, lui, reste
+valable — il ne mesure que des pixels peints, pas des compositions de calques.
+
+C'est la troisieme fois en trois chapitres que je manque de corriger un defaut qui n'existe
+pas. Le point commun est toujours le meme : j'ai fait confiance a une mesure sans aller
+voir ce qu'elle decrivait.
+
+### La geometrie, cette fois mesuree pour de bon
+
+Puisque la question posee etait geometrique, je l'ai posee correctement. Le site empile
+jusqu'a trois barres en haut de l'ecran : la navigation fixe (110 px), la sous-navigation
+de pole, la barre marketing. Quand on suit un lien interne `#cible`, le navigateur amene le
+haut de la cible en haut de l'ecran, moins son `scroll-margin-top`. Si cette marge est plus
+petite que la pile, **on clique sur un titre et on ne le voit pas**. Cela ne demande aucune
+capture : ce sont deux rectangles a comparer.
+
+Balayage : **225 pages, 1 643 ancres suivies une par une**, la pile recalculee apres chaque
+atterrissage. **Zero ancre cachee.** Le `scroll-margin-top` est correctement pose partout.
+C'est un resultat negatif, et il vaut d'etre ecrit : la question est reglee.
+
+### Les cibles tactiles, et un second faux positif
+
+Meme demarche sur la taille des cibles tactiles (WCAG 2.2, 24 x 24 px minimum), a 390 px de
+large. Premier passage : 16 cibles trop petites sur 75 pages, dont une majorite de curseurs
+de reglage hauts de 7 pixels, sur l'atlas et la brochure.
+
+Faux positif, encore, et de mon fait : je mesurais avec un pointeur fin. La regle
+`@media(pointer:coarse){input[type=range]{min-height:28px}}` existe deja dans les feuilles
+communes ; elle ne s'active que sur un appareil tactile, que je n'avais pas simule. Passage
+refait avec un pointeur grossier : **les curseurs sont conformes partout.**
+
+Il reste deux vraies cibles trop petites, les deux pastilles de champ de la carte de
+l'atlas (Kome 28 x 10, Miandoum 46 x 19, FR et EN). Elles sont notees en fin de chapitre :
+les agrandir demande de toucher au trace SVG, ce qui merite un passage a part.
+
+### Le vrai defaut trouve en chemin : le bandeau precedent/suivant
+
+Le troisieme faux positif a fini par montrer quelque chose de reel. Une des cibles signalees
+etait un lien « ← Prev » haut de 19 pixels sur `aval/distribution-en`. Verification : sur
+**dix pages**, le balisage `nav.pgr` etait present mais sa mise en forme absente. Le bandeau
+de bas de page s'y affichait en **liens nus de 19 pixels, colles l'un a l'autre**, au lieu
+des deux cartes bordees des autres pages. Cinq de ces dix pages sont des orphelins a
+supprimer ; les cinq autres sont vivantes : amont/eor-en, aval/distribution-en,
+aval/produits-en, aval/raffinage-en, aval/reseau-en.
+
+La cause : la mise en forme de `.pgr` vivait dans un bloc `<style>` recopie page par page.
+Les pages anglaises reconstruites au chapitre 239 par greffe ont herite du balisage sans le
+bloc. Une regle recopiee 36 fois finit toujours par manquer quelque part.
+
+En tirant le fil, un defaut plus large est apparu. **92 pages portent une sous-navigation de
+pole ; 10 seulement avaient un bandeau de bas de page**, et cette sous-navigation n'est pas
+collante : elle disparait des qu'on lit. Au bas d'une page longue, le lecteur n'avait plus
+rien pour avancer dans le pole. Neuf paires FR/EN etaient par ailleurs desaccordees : cinq
+pages anglaises avaient un bandeau que leur jumelle francaise n'avait pas, quatre francaises
+en avaient un que leur jumelle anglaise n'avait pas.
+
+**Ce qui est fait :**
+
+1. **La mise en forme de `.pgr` passe dans la feuille commune** (`bundle_core_a1.css`),
+   une fois pour toutes, sans `!important` : les pages qui gardent leur bloc en ligne
+   continuent de gagner, avec des declarations identiques. Le repli mobile et le respect de
+   `prefers-reduced-motion` sont inclus.
+2. **Les 80 pages de pole recoivent un bandeau genere depuis leur propre sous-navigation** :
+   precedent, accueil, suivant. Rien n'est invente — l'ordre, les libelles et les adresses
+   sont lus dans le balisage deja present sur la page, ce qui garantit qu'ils sont exacts et
+   qu'ils restent coherents avec le menu du pole. Sur une page de vue d'ensemble, il n'y a
+   pas de precedent : le bandeau n'affiche que l'accueil et le suivant.
+3. **Les quatre jumelles anglaises manquantes** (carrieres-en, communautes-en,
+   gouvernance-en, innovation-en) recoivent le bandeau que leur jumelle francaise portait
+   deja, traduit et repointe vers les adresses anglaises.
+
+Verification : **115 bandeaux, 307 liens, 0 casse**. Rendu controle sur les 84 pages
+touchees dans les deux themes — bloc en `flex`, cartes de 81 px de haut, aucun debordement
+horizontal. Banc de contraste corrige passe sur les memes 84 pages, ecran du bandeau,
+themes sombre et clair : **3 382 elements examines, 1 seul signalement**, et il ne vient
+pas du bandeau (voir « reste ouvert »).
+
+### Les deux outils prennent leur adresse propre pour de bon
+
+Le chapitre 240 avait laisse la redirection en suspens, faute d'avoir verifie qu'une
+redirection posee sur la destination d'une reecriture ne tourne pas en boucle. C'est
+verifie : la documentation Vercel dit que le systeme de fichiers passe **avant** les
+reecritures, donc la destination d'une reecriture n'est pas repassee par la phase des
+redirections. Les deux redirections permanentes sont posees :
+
+- `/Configurateur_Service_Integre_v2` → `/configurateur-service-integre`
+- `/Calculateur_Baril_Additionnel` → `/calculateur-baril-additionnel`
+
+Les anciennes adresses cessent d'exister ; les balises canoniques et le plan du site
+designaient deja les nouvelles.
+
+### Reste ouvert
+
+- **L'encre `.btn2` en theme clair** : mesuree a 4,16 pour 4,5 attendus sur
+  communautes-en, sur un fond bleute a [196, 212, 225]. Le defaut est anterieur a ce
+  chapitre et la classe sert 195 pages : je ne change pas une encre de cette portee sur une
+  seule mesure. A traiter par un balayage dedie, encre et sol, sur les 195 pages.
+- **Les deux pastilles de la carte de l'atlas** (Kome, Miandoum) restent sous la taille de
+  cible recommandee. A reprendre avec le trace SVG, pas avec une regle de feuille.
+- **Les 14 fichiers orphelins** a la racine du depot, signales au ch.240, restent a
+  supprimer a la main. Cinq d'entre eux portaient le bandeau non mis en forme corrige ici :
+  leur suppression reglera aussi les douze descriptions meta dupliquees mesurees au passage.
+- **Les tailles de texte sous 12 px** (4 601 elements sur 30 pages) et **le partage des
+  conventions de titre** (143 `| EnerTchad` contre 65 `— EnerTchad S.A.`) : deux arbitrages
+  qui reviennent au proprietaire, inchanges.
+- **Une sequence de lecture au-dela des poles** : les 115 bandeaux couvrent les poles et
+  quelques pages institutionnelles. Le journal, les publications et les pages legales n'en
+  ont pas. C'est une proposition, pas un defaut.
+
+### Ce qui a ete verifie ce chapitre
+
+- Plan du site : 209 adresses, aucune sans fichier, aucune page vivante absente.
+- 222 pages : 1 titre h1 chacune, JSON-LD partout, 57 images toutes avec `width`, `height`,
+  `loading` et `alt`, une seule page sans meta description (le fichier de verification
+  Google, sans contenu).
+- 12 descriptions meta dupliquees, toutes entre une page vivante et son orphelin racine.

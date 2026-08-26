@@ -606,6 +606,16 @@
       "source": "/enertalents/",
       "destination": "/tchaditude/",
       "permanent": true
+    },
+    {
+      "source": "/Configurateur_Service_Integre_v2",
+      "destination": "/configurateur-service-integre",
+      "permanent": true
+    },
+    {
+      "source": "/Calculateur_Baril_Additionnel",
+      "destination": "/calculateur-baril-additionnel",
+      "permanent": true
     }
   ],
   "headers": [
