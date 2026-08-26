@@ -8743,3 +8743,67 @@ Le seul ecart reel est un ecart d'etape (les services transactionnels), pas un e
 d'organisation. La question du chapitre 239 (« nos solutions et services sont-ils bien
 organises ? ») recoit donc sa contre-preuve externe : oui, et la reorganisation du
 chapitre 240 a mis l'arbre anglais au niveau du decoupage que les majors publient.
+
+## 246 — Les actions ouvertes, appliquees — et une regression evitee de justesse (2026-08-26)
+
+Le proprietaire a dit « applique les actions ». Deux defauts documentes restaient
+ouverts au chapitre 242 : l'encre `.btn2` mesuree a 4,16 en theme clair, et les
+pastilles de la carte de l'atlas sous la taille de cible tactile.
+
+### L'encre .btn2 : le vrai defaut etait une parite, pas une couleur
+
+Le balayage dedie (banc de contraste, boutons `.btn2` des 19 pages porteuses) a
+montre que le bouton n'y etait pour rien. **179 pages assombrissent l'encre generique
+des liens du theme clair a #0E4172 par une regle de page ; huit jumelles anglaises
+n'avaient jamais recu cette regle** (accessibilite-en, avertissements-en, carrieres-en,
+charte-en, cibles-2030-en, communautes-en, innovation-en, plan-du-site-en). Elles
+restaient sur le #155FA8 de la feuille — 4,16 des que le fond fixe bleute passe
+derriere au defilement. Le 4,16 du ch.242 etait donc un symptome de la meme famille
+de derive FR/EN que le bandeau du meme chapitre.
+
+**Ma premiere correction etait fausse, et le banc l'a arretee avant publication.**
+J'avais remonte la valeur harmonisee dans les trois feuilles communes, avec une
+specificite au-dessus des regles de page. Le banc de regression a rendu son verdict
+dans le quart d'heure : les boutons fantomes des heros restes sombres en theme clair
+(achats, paiements-etats) passaient de blanc a bleu nuit — 1,63 de rapport, illisible.
+Ces pages n'ont pas le bloc d'exceptions que les 179 autres associent a leur regle ;
+une regle de feuille plus forte que les pages casse precisement ce que les pages
+savent proteger. **Correction annulee, feuille remise a l'identique.** La lecon du
+241.8 se precise : une encre ne se choisit jamais sans mesurer le sol, et une regle
+commune ne s'ecrit jamais au-dessus des regles de page sans porter leurs exceptions.
+
+**La correction juste** : les huit jumelles recoivent le bloc exact de leur jumelle
+francaise (`<style id="lk246">`, trois regles, meme valeur, meme specificite). Parite
+retablie, rayon d'action nul en dehors. Verifie : les trois `.btn2` signales passent
+a #0E4172 (5,3 a 9,2 au banc, 0 signalement sur les huit pages), le theme sombre est
+inchange, et les pages a heros sombre gardent leurs boutons blancs. Restent les trois
+liens dores de paiements-etats a 4,04-4,25 : la famille 3,89-4,29 documentee au
+ch.241, anterieure et inchangee.
+
+### Les pastilles de l'atlas : des zones de frappe invisibles
+
+Les six champs cliquables de la carte (Kome, Miandoum, Bolobo, Ronier, Mimosa,
+Sedigi) n'offraient que leur point de 3,4 unites et leur etiquette comme cible.
+Chaque groupe recoit une **zone de frappe invisible** (cercle transparent
+`pointer-events:all`, plus un rectangle cote etiquette pour Kome et Bolobo), sans
+changer un seul pixel visible.
+
+La difficulte est la grappe Kome-Miandoum-Bolobo, a 12-13 unites l'une de l'autre :
+des cercles de 12 y faisaient perdre a Kome la propriete de son propre point (le
+cercle de Bolobo, peint apres, le recouvrait a 0,2 unite pres). Le trio est redescendu
+a un rayon de 10, complete par les rectangles d'etiquette — chaque pastille reste
+maitresse de son centre, verifie par test de pointage : six champs, six proprietaires
+corrects, et le panneau de detail repond pour chacun.
+
+Controle tactile a 390 px, pointeur grossier : **0 cible sous la norme** sur les deux
+pages (elles etaient les deux dernieres du site). Aucun bump du service worker :
+uniquement du HTML.
+
+### Ce qui reste ouvert apres ce chapitre
+
+- Les trois liens dores de paiements-etats (4,04-4,25), membres de la famille
+  documentee au ch.241 — a traiter, si on le souhaite, avec toute la famille.
+- Les ~27 pages sans bloc d'assombrissement des liens clairs (outils, accueils,
+  solutions, achats...) gardent le #155FA8 de la feuille : toutes passent le banc
+  aujourd'hui. Les harmoniser demanderait de repliquer aussi les blocs d'exceptions —
+  a ne faire que si une mesure l'exige un jour.
