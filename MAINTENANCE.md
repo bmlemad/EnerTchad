@@ -8678,3 +8678,68 @@ le suffixe des titres d'onglet, pas sur le nom de l'entreprise.
 
 61 fichiers publies. Pas de bump du service worker : uniquement du HTML, servi
 reseau d'abord.
+
+## 245 — La structure des solutions, relue a l'aune des majors (2026-08-26)
+
+### La question
+
+« QA de la structure des Solutions et Services versus les majors. » J'ai releve la
+structure publiee par TotalEnergies, Shell, ExxonMobil et, pour le comparable aval
+africain, Puma Energy, et je l'ai posee a cote de la notre.
+
+### Ce que font les majors
+
+- **TotalEnergies** organise ses expertises par verbes de chaine de valeur :
+  Explore & Produce, Transform & Develop, Ship & Market — les produits et services
+  vivent dans le troisieme.
+- **Shell** presente ses segments financiers (Integrated Gas, Upstream, Marketing,
+  Chemicals & Products, Renewables) ; tout le visage client — stations, carburants B2B,
+  aviation, lubrifiants, cartes — est regroupe sous Marketing.
+- **ExxonMobil** s'est reorganise en trois blocs : Upstream, Product Solutions,
+  Low Carbon Solutions, adosses a une organisation Technologie centrale.
+- **Puma Energy** entre par le produit : Retail, Aviation, Commercial Fuels, LPG,
+  Lubricants, Bitumen — le profil client se lit dans la fiche, pas dans le menu.
+
+### Le verdict, poste par poste
+
+**Entree par la chaine de valeur — conforme.** Nos quatre poles industriels
+(Amont, Intermediaire, Aval, Petrochimie) recouvrent exactement le decoupage
+TotalEnergies ; l'anglais dit deja Upstream/Midstream/Downstream. Nos quatre poles
+transversaux ont chacun leur analogue chez une major : TchadiTech repond a
+l'organisation Technologie centrale d'ExxonMobil, GreenTech a Low Carbon Solutions,
+EnerConseils au conseil integre, Tchaditude au contenu local — ce dernier est le seul
+sans equivalent chez les majors, et c'est voulu : c'est l'argument mono-pays.
+
+**Entree par le besoin — au-dessus du standard.** Aucune des quatre references ne
+propose l'equivalent de /solutions : six familles de besoins qui recomposent la chaine
+(produire, acheminer, transformer, distribuer, decider, financer). Les majors font
+entrer par ce qu'elles sont ; nous offrons en plus une entree par ce que le client
+cherche. L'explorateur de chaine et les deux outils n'ont pas non plus d'equivalent
+public chez elles.
+
+**Entree par le profil — conforme au modele Shell.** /clients fait ce que Shell range
+sous Marketing : sept portes, trois marches (pompe au prix officiel, B2B industriel et
+flottes, Etat et institutions), plus fournisseurs. Puma ne le fait meme pas dans son menu.
+
+**Catalogue produits — conforme, en deux endroits assumes.** La ou Puma expose un
+catalogue plat (Retail, Aviation, LPG, Lubricants, Bitumen), notre offre equivalente
+existe mais en deux pages : aval/produits (diesel EN 590, SP95, Jet A-1, GPL, bitume,
+lubrifiants) et petrochimie/produits (transformes). Les deux sont au menu. Un guichet
+unique « Produits & services » a la Puma n'aurait de sens qu'a l'ouverture commerciale,
+quand il y aura des fiches produit transactionnelles derriere.
+
+### Ce que les majors ont et que nous n'avons pas — normal a ce stade
+
+Un localisateur de stations vivant, une page de prix a la pompe du jour, un espace
+client connecte. Les trois supposent une exploitation reelle ; la carte du reseau
+projete et la page ARSAT en tiennent lieu pour une societe en constitution. A
+inscrire au carnet de l'ouverture commerciale, pas a corriger aujourd'hui.
+
+### Conclusion
+
+Aucun changement de structure a proposer : l'architecture a trois entrees — chaine de
+valeur, besoin, profil — fait ce que les quatre references font, et une chose de plus.
+Le seul ecart reel est un ecart d'etape (les services transactionnels), pas un ecart
+d'organisation. La question du chapitre 239 (« nos solutions et services sont-ils bien
+organises ? ») recoit donc sa contre-preuve externe : oui, et la reorganisation du
+chapitre 240 a mis l'arbre anglais au niveau du decoupage que les majors publient.
