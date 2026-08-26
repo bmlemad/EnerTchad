@@ -8842,3 +8842,47 @@ les memes ecrans, encre peinte relue a (168,180,199). Les themes clairs gardent 
 #4A5668, servi par des regles a cinq crans qui restent au-dessus.
 
 Bump du service worker (et-202608270300) : la correction touche les feuilles.
+
+## 248 — Le journal recoit sa sequence de lecture (2026-08-26)
+
+La proposition laissee ouverte au chapitre 242 est appliquee : les articles du journal
+n'avaient aucun moyen d'avancer d'un article a l'autre — le bandeau de tete ne propose
+que le retour au sommaire, et il disparait au defilement.
+
+**Les 64 articles** (32 francais, 32 anglais) recoivent le meme bandeau
+precedent/suivant que les pages de pole, insere avant le pied de page : article
+precedent, retour aux Carnets (Notebooks en anglais), article suivant. **L'ordre est
+celui du sommaire** (carnets.html), lu dans le balisage — rien n'est invente ; le
+premier article n'a pas de precedent, le dernier pas de suivant. Les intitules des
+cartes sont les titres des articles eux-memes, debarrasses du suffixe de convention.
+
+La mise en forme vient de la regle commune posee au chapitre 242 — aucun style
+nouveau, aucun bump du service worker (uniquement du HTML).
+
+Verification : **64 bandeaux, 188 liens, 0 casse** ; rendu controle dans les deux
+themes (cartes en flex de 84 px, encres conformes, aucun debordement) ; banc de
+contraste sur l'ecran du bandeau de cinq articles dans les deux themes : **486
+elements examines, 0 signalement**.
+
+## 249 — La veille datee, verifiee (2026-08-26)
+
+Les trois points de veille du chapitre 238 ont ete verifies aux sources.
+
+- **ITIE Tchad** : le statut publie par le secretariat international reste celui de la
+  validation d'octobre 2022 — score global 64,5, progres « assez faibles », donnees
+  sectorielles publiees jusqu'a 2019. Aucune nouvelle validation publiee a ce jour.
+  Le site ne cite ni score ni date : rien a corriger, la formulation prudente des
+  pages paiements-etats reste juste.
+- **Sedigui** : aucun jalon nouveau verifiable — les sources publiques recentes
+  evoquent le complexe du Kanem sans calendrier ferme, et le dernier etat documente
+  reste la reprise du projet par la SHT apres les retards constates. Les mentions du
+  site (cible datee, prudence) restent justes.
+- **Accord Tchad-Algerie** : le point de veille s'est materialise. Un accord-cadre a
+  ete signe le 22 avril 2026 a Alger pour l'etude prealable d'une seconde raffinerie
+  d'environ 20 000 b/j au Tchad, dans un paquet de 27 accords de cooperation ; ni
+  site ni calendrier annonces. **Une phrase datee est ajoutee a la note de l'Atlas du
+  secteur** (FR et EN), au stade exact ou en est le fait : une etude, pas un projet.
+  L'Atlas se presente comme « vivant, nourri de sources publiques » — c'est sa place.
+
+Reste au calendrier : la carte Brent (janvier), et la validation ITIE quand le
+secretariat en publiera une nouvelle.
