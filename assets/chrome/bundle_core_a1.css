@@ -1878,3 +1878,22 @@ html:not(.et-plight):not(.et-jlight) .tag b:not(#_):not(#__):not(#___){color:#B4
    des carrieres, servi par une regle de page, et les mentions en petit du theme clair. */
 html:is(.et-plight,.et-jlight) .b111-note a:not(#_):not(#__):not(#___):not(#____):not(#_____){color:#4F3A08!important}
 html:is(.et-plight,.et-jlight) small:not(#_):not(#__):not(#___):not(#____){color:#454F62!important}
+
+/* ====================================================================
+   242 — Le bandeau precedent/suivant devient une regle commune.
+   Le balisage nav.pgr existait sur trente-six pages, mais sa mise en forme
+   vivait dans un bloc <style> recopie page par page. Cinq pages anglaises
+   portaient le balisage sans le style : le bandeau s'y affichait en liens
+   nus de dix-neuf pixels de haut, colles l'un a l'autre. On pose donc la
+   regle ici, une fois, pour toutes les pages qui chargent cette feuille.
+   Aucun !important : les pages qui gardent leur bloc en ligne continuent
+   de gagner, avec des declarations identiques. */
+.pgr{display:flex;gap:14px;flex-wrap:wrap;max-width:1180px;margin:0 auto;padding:38px 24px;border-top:1px solid var(--hair)}
+.pgr a{flex:1 1 220px;display:flex;flex-direction:column;gap:4px;padding:16px 18px;border:1px solid var(--hair);border-radius:14px;text-decoration:none;color:inherit;background:rgba(255,255,255,.03);transition:border-color .25s,background .25s,transform .25s}
+.pgr a:hover{border-color:color-mix(in srgb,var(--gold-l) 48%,var(--hair));background:rgba(255,255,255,.06);transform:translateY(-2px)}
+.pgr .dir{font-family:ui-monospace,monospace;font-size:.68rem;letter-spacing:.07em;text-transform:uppercase;color:var(--gold-l)}
+.pgr .ttl{font-weight:600;font-size:1rem;color:#fff}
+.pgr .home{flex:0 0 150px;align-items:center;justify-content:center;text-align:center}
+.pgr .next{text-align:right;align-items:flex-end}
+@media(max-width:640px){.pgr a{flex:1 1 100%}.pgr .next{text-align:left;align-items:flex-start}}
+@media(prefers-reduced-motion:reduce){.pgr a{transition:none}.pgr a:hover{transform:none}}
