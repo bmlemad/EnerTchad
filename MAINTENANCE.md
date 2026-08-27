@@ -9295,3 +9295,42 @@ corriges :
 Honnetete due : si le saut persiste apres un rechargement force, il me faudra
 un repere de plus — l'endroit de la page ou il se produit, et ordinateur ou
 telephone. Publication : sw.js + c_ac04328f0f47.js + cette page.
+
+## 259 — Solde de tout compte : les sept actions en attente, verifiees et closes (2026-08-27)
+
+Le proprietaire demande d'appliquer toutes les actions en attente. Inventaire
+du registre : sept entrees ouvertes, certaines datant des chapitres 187-192.
+Chacune a ete verifiee contre l'etat reel du site avant cloture — il s'avere
+que toutes avaient ete realisees par des chapitres ulterieurs sans que le
+registre soit mis a jour :
+
+1. **Ranger les deux jumeaux anglais dans leur pole** (services-ep-en,
+   produits-en) : fait — les fichiers vivent dans /amont/ et /aval/, les
+   redirections 308 repondent en production (verifiees a l'instant :
+   /services-ep-en → /amont/services-ep-en, /produits-en → /aval/produits-en),
+   les liens entrants et hreflang suivent (0 lien casse aux ch.252 et 255).
+2. **Relier /solutions a toute l'offre** : fait — services-ep y est lie 5 fois
+   et aval/produits 4 fois, en francais comme en anglais ; la chaine
+   « distribuer », vide a l'epoque du constat, porte ses liens sortants
+   (reseau, produits, flottes).
+3. **Unifier la convention de titre HTML** : fait au ch.244 (198 pages
+   « | EnerTchad », re-verifie au ch.255 : 0 ecart).
+4. **URL propres des deux outils** : fait — reecritures vercel.json en place
+   et verifiees en production.
+5. **QA clavier (ancien ch.187)** : recouvert et depasse par le ch.257
+   (488 arrets de tabulation mesures aux pixels, skip-link repare sur
+   92 pages, bouton toTop ressuscite sur 117).
+6. **Audit des sujets (ch.191)** : chapitre publie, present dans ce carnet.
+7. **Saut de defilement de l'accueil** : traite aux ch.253 et 258.
+
+**La lecon pour le carnet** : six de ces sept entrees etaient restees
+« ouvertes » alors que le travail etait fait — le registre des taches doit
+etre solde au moment de la publication du chapitre qui realise l'action,
+pas des semaines apres. C'est desormais le cas.
+
+Restent ouvertes, et ce n'est pas a moi de les trancher : les arbitrages
+proprietaire (typographie sous 12 px, convention INSPEM, seance photo, noms
+reels de l'equipe, volumes d'import par pays, ticket minimum investisseur)
+et les veilles datees (carte Brent en janvier, prochaine validation ITIE,
+jalons Sedigui). Aucun changement de site dans ce chapitre : publication de
+cette page seulement.
