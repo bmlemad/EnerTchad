@@ -9334,3 +9334,33 @@ reels de l'equipe, volumes d'import par pays, ticket minimum investisseur)
 et les veilles datees (carte Brent en janvier, prochaine validation ITIE,
 jalons Sedigui). Aucun changement de site dans ce chapitre : publication de
 cette page seulement.
+
+## 260 — L'arbitrage typographique rendu : plancher 11 px hors SVG (2026-08-27)
+
+Le proprietaire a approuve l'arbitrage consigne au ch.241 : remonter les
+petits textes vers un plancher lisible. Regle executee : **plancher 11 px
+(0,6875 rem) pour tout texte informatif** ; le parti pris des 11 px existants
+est conserve tel quel (pres de la moitie de l'inventaire) ; les etiquettes
+des cartes SVG restent hors perimetre (leur taille declaree est multipliee
+par l'echelle du viewBox au rendu — les remonter les ferait deborder de la
+carte) ; le decoratif marque aria-hidden est exempte.
+
+Execution : transformation scriptee de **4 437 declarations** font-size dans
+**241 fichiers** (feuilles partagees, blocs de style de page, styles en
+ligne), avec exemption automatique des 24 classes de texte SVG et des 44
+regles qui les portent, et de docs-sources. Les 8-10 px passent a 11 px ;
+la hierarchie au-dessus ne bouge pas. Cas restant attrape au controle des
+tailles RENDUES (et non declarees) : les parentheses `<small class="pmk">`
+en em heritaient sous le plancher — la regle passe a
+`max(.62em, 0.6875rem)` dans ses 4 feuilles porteuses. Apres quoi :
+**0 texte informatif rendu sous 11 px** sur les pages temoins.
+
+Verification avant publication : **856 chargements** (214 pages x 2 themes
+x 2 viewports) — 0 debordement horizontal, 0 erreur console ; banc de
+contraste exact sur les 8 pages les plus touchees, deux themes : 1 243
+elements verifies, **0 echec** ; captures des zones denses (brochure, stats
+EOR, accueil) : composition intacte, pas de retour a la ligne casse.
+
+Bump du service worker (et-202608280200) : feuilles partagees modifiees.
+Restent aux mains du proprietaire : convention INSPEM, seance photo, noms
+reels, volumes d'import, ticket investisseur.
