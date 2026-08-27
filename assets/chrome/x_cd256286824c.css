@@ -97,7 +97,7 @@ html.et-plight main [role="tab"]:not(#_),html.et-plight main [role="button"]:not
 html.et-plight main .pghero h1:not(#_),html.et-plight main .pghero h2:not(#_),html.et-plight main [class*="hero"] h1:not(#_),html.et-plight main .diapo h1:not(#_),html.et-plight main .diapo h2:not(#_),html.et-plight main .pghero b:not(#_),html.et-plight main [class*="hero"] h1 b:not(#_){color:#FFFFFF!important;-webkit-text-fill-color:#FFFFFF!important}
 html.et-plight main .pghero h1 em:not(#_),html.et-plight main [class*="hero"] h1 em:not(#_){color:#F0CE82!important;-webkit-text-fill-color:#F0CE82!important}
 html.et-plight main .pghero p:not(#_),html.et-plight main .pghero li:not(#_),html.et-plight main .pghero span:not(#_),html.et-plight main [class*="hero"] p:not(#_),html.et-plight main .diapo p:not(#_),html.et-plight main .diapo span:not(#_){color:rgba(245,247,250,.92)!important}
-html.et-plight main .pghero .pgk:not(#_),html.et-plight main .pghero .kick:not(#_){color:#F0CE82!important}
+html.et-plight main .pghero .pgk:not(#_),html.et-plight main .pghero .kick:not(#_){color:#F9E5B2!important}
 html.et-plight main .pghero a:not(#_){color:#F5F7FA!important}
 html.et-plight main .pghero .crumb a:not(#_),html.et-plight main .pghero .crumb span:not(#_),html.et-plight main .pghero .bcrumb a:not(#_){color:rgba(245,247,250,.78)!important}
 
