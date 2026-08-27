@@ -9015,3 +9015,49 @@ JavaScript, `console.error`, requetes echouees.
 Triple zero. Le site sort de la serie 240-251 sans un lien casse, sans une ancre
 morte, sans une erreur de console. Rien a corriger ; le chapitre date l'etat de
 reference pour les regressions futures.
+
+## 253 — Le saut de defilement de l'accueil (2026-08-26)
+
+Signale par le proprietaire : la page saute pendant le defilement sur l'accueil.
+
+### Le diagnostic
+
+Le fautif est le **recalage d'ancre** de `u2_75a2c4383ddf.js`, charge par 90 pages.
+Son intention est legitime : apres un clic d'ancre ou un chargement avec `#hash`,
+la mise en page bouge encore (images, sections differees) et la cible derive — une
+boucle la recale par `scrollIntoView`. Mais son execution avait deux defauts :
+
+1. **Elle coupait le glissement en plein vol.** La boucle forcait la correction a
+   intervalle fixe (premier tir a 750 ms), sans regarder si le defilement doux
+   etait encore en cours. Sur une page de 18 000 pixels, le glissement dure plus
+   longtemps : la page se teleportait d'un coup au milieu de l'animation.
+   Reproduit au banc : clic sur `#combat` depuis le haut de l'accueil, position
+   deja a destination a la premiere lecture — le glissement etait sectionne net.
+2. **Pendant sa fenetre d'armement (1,5 s au chargement avec hash), elle avalait
+   les defilements faits a l'ascenseur.** La molette, le clavier et le toucher
+   annulaient bien la boucle, mais le glisser de barre de defilement n'emet que
+   des evenements scroll — que la boucle ignorait pendant la fenetre : elle
+   ramenait la page a l'ancre pendant que le lecteur s'en eloignait. La visite
+   du proprietaire etait justement sur `/#top`.
+
+### La correction
+
+La boucle est reecrite sur trois regles : **jamais de correction tant que la page
+a defile dans les 180 dernieres millisecondes** — un glissement en cours emet des
+evenements scroll en continu, la correction attend donc l'accalmie au lieu de
+couper le geste ; **tout defilement externe apres une correction annule** — plus
+de fenetre qui avale l'ascenseur ; **fenetre totale bornee a 2,6 s**, sortie
+anticipee des que la cible est posee ou ne bouge plus.
+
+### La verification
+
+- Clic d'ancre depuis le haut : 74 lectures a 30 ms d'ecart, **zero discontinuite**
+  — le glissement va au bout, puis la correction s'applique a l'accalmie.
+- Chargement avec `#hash` : la page atterrit sur l'ancre, marge de defilement
+  respectee.
+- Molette pendant la fenetre de recalage : le lecteur garde la main, la page
+  reste ou il l'a mise.
+- Huit pages porteuses re-testees avec et sans hash, deux themes de fait :
+  0 erreur console, ancres posees.
+
+Bump du service worker (et-202608271200) : le correctif touche un script commun.
