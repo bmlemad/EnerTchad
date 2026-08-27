@@ -324,3 +324,8 @@ function boot(){
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',function(){setTimeout(boot,1200)});
 else setTimeout(boot,1200);
 })()}catch(e){}
+
+;/* Ch257 : le bouton toTop etait mort sur 117 pages — le balisage y est mais seul
+   u2_75a2c4383ddf.js (90 pages) l'animait. Bloc repris ici avec garde d'idempotence
+   (les 90 pages saines chargent les deux scripts). */
+try{(function(){var b=document.getElementById('toTop');if(!b||b.dataset.ttInit)return;b.dataset.ttInit='1';var p=b.querySelector('.ttp'),C=2*Math.PI*24;if(p){p.style.strokeDasharray=C;p.style.strokeDashoffset=C;}var r=matchMedia('(prefers-reduced-motion:reduce)').matches,t=false;function u(){var s=scrollY||document.documentElement.scrollTop,hh=document.documentElement.scrollHeight-innerHeight,pr=hh>0?Math.min(s/hh,1):0;if(p)p.style.strokeDashoffset=C*(1-pr);b.classList.toggle('show',s>600);t=false;}addEventListener('scroll',function(){if(!t){t=true;requestAnimationFrame(u);}},{passive:true});b.addEventListener('click',function(){scrollTo({top:0,behavior:r?'auto':'smooth'});});u();})();}catch(_e){}

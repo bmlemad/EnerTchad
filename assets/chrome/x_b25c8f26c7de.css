@@ -13,3 +13,6 @@ h1,h2,h3,h4{letter-spacing:-.022em}
 
 /* iOS safe-area : les commandes flottantes remontent au-dessus de l'indicateur d'accueil et s'ecartent des bords arrondis. No-op sur les appareils sans zone sure. */
 @supports(bottom:env(safe-area-inset-bottom)){#toTop:not(#_){margin-bottom:env(safe-area-inset-bottom);margin-right:env(safe-area-inset-right)}}
+
+/* Ch257 - toTop invisible ne doit pas etre tabulable */
+#toTop{visibility:hidden;transition:opacity .35s,transform .35s,box-shadow .35s,visibility .35s}#toTop.show{visibility:visible}

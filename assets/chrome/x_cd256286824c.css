@@ -1085,3 +1085,6 @@ box-shadow:0 18px 40px -24px rgba(26,35,48,.25)!important}
 
 /* 247 — signature de la barre en sombre : #A8B4C7 (voir feuille commune). */
 html:not(.et-plight):not(.et-jlight) .brand-tx small:not(#_):not(#__):not(#___) { color: #A8B4C7 !important; }
+
+/* Ch257 - anneau de focus par defaut, specificite nulle */
+:where(a,button,[role="button"],[tabindex],select,summary):focus-visible{outline:2px solid var(--etfv,#E8C36A);outline-offset:2px}html.et-plight{--etfv:#74570B}html.et-jlight{--etfv:#74570B}

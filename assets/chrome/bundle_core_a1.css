@@ -1907,3 +1907,9 @@ html:is(.et-plight,.et-jlight) small:not(#_):not(#__):not(#___):not(#____){color
    pire sol mesure, 6 a 9 ailleurs. Les themes clairs gardent leur #4A5668,
    servi par des regles a cinq crans qui restent au-dessus de celle-ci. */
 html:not(.et-plight):not(.et-jlight) .brand-tx small:not(#_):not(#__):not(#___){color:#A8B4C7!important}
+
+/* Ch257 - anneau de focus par defaut, specificite nulle */
+:where(a,button,[role="button"],[tabindex],select,summary):focus-visible{outline:2px solid var(--etfv,#E8C36A);outline-offset:2px}html.et-plight{--etfv:#74570B}html.et-jlight{--etfv:#74570B}
+
+/* Ch257 - toTop invisible ne doit pas etre tabulable */
+#toTop{visibility:hidden;transition:opacity .35s,transform .35s,box-shadow .35s,visibility .35s}#toTop.show{visibility:visible}
