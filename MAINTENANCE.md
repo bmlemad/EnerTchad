@@ -9155,3 +9155,49 @@ confirme ligne a ligne.
 Publication : brochure.html, brochure-en.html, enerconseils/atlas.html,
 enerconseils/atlas-en.html + cette page. Pas de bump du service worker :
 uniquement du HTML.
+
+## 256 — La passe mobile : le kicker dore etait trop juste sur deux poles (2026-08-27)
+
+Toute la verification historique du site tournait au viewport 1280x900. Ce
+chapitre refait les batteries au format mobile (390x844, pointeur tactile,
+densite 2x) :
+
+- **428 chargements** (214 pages x 2 themes) avec defilement complet :
+  0 erreur JS, 0 requete echouee, 0 debordement horizontal.
+- **Cibles tactiles** (pointer coarse, 22 pages temoins, menu ouvert inclus) :
+  11 etiquettes a 22 px de haut, toutes des `<label>` places au-dessus d'un
+  curseur `range` deja dimensionne pour le tactile — l'etiquette ne fait que
+  donner le focus au curseur situe juste dessous, la cible equivalente conforme
+  existe (exemption « equivalent » de WCAG 2.2). Non-defauts, aucun changement.
+- **Banc de contraste exact en disposition mobile** (8 pages temoins x 2
+  themes, puis extension) : **un vrai defaut** — le kicker dore des heros a
+  photo (`.pgk`, encre #F0CE82) mesurait 4,3 sur l'atlas et 3,93 sur
+  l'intermediaire, pour 4,5 requis. Le halo d'accent du pole (sarcelle, bleu)
+  eclaircit le coin bas-gauche du hero juste sous le kicker — et au format
+  mobile le texte s'y assoit davantage qu'au desktop, qui passait de justesse.
+- **Tiroir de menu mobile ouvert** : benche pour la premiere fois (jamais
+  mesure car masque au desktop) — 0 echec dans les deux themes.
+
+La correction : l'encre du kicker passe de #F0CE82 a **#F9E5B2** (4,79 calcule
+au pire point mesure, puis re-verifie au banc). Portee reelle du geste :
+les kickers des trois familles de heros (pghero 84 pages, jtop 64, hero 35),
+leurs losanges decoratifs, et les replis inertes des `h1 em` (l'encre visible
+y est un degrade, le repli ne sert qu'aux navigateurs sans background-clip).
+Miroirs mis a jour dans les trois feuilles partagees (bundle_core_a1,
+x_cd256286824c, plight_extrait).
+
+**Mon erreur, attrapee a temps** : mon premier remplacement automatique a
+touche 185 pages au lieu des 84 attendues — la meme declaration CSS vivait
+aussi dans sept regles de theme clair (skip-link, carte vedette du mega-menu,
+liens de hero) dont je n'avais jamais mesure le sol. Plutot que de publier une
+encre non benchee, j'ai inventorie chaque selecteur touche via le diff,
+reverti ces sept occurrences a l'identique, et borne le geste aux kickers.
+La regle 241.8 s'applique aussi aux remplacements de masse : on ne change pas
+une encre qu'on n'a pas mesuree, meme par accident.
+
+Re-mesures apres correction : mobile clair 227 elements / 0 echec, mobile
+sombre 86 / 0, desktop clair 368 / 0, desktop sombre 370 / 0, menu ouvert
+45+44 / 0. Console propre sur les temoins.
+
+Publication : 186 pages HTML, 3 feuilles partagees, et bump du service worker
+(et-202608271500) — des feuilles CSS changent.
