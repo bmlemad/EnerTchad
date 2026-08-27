@@ -8978,3 +8978,40 @@ reseau vise — images differees, polices non bloquantes, cache etage, HTML lege
 Le chapitre existe pour que ce constat soit mesure et date, pas suppose. A remesurer
 si un jour une page depasse 60 ko de HTML comprime ou charge une image au-dessus
 du pli sans prelevement.
+
+## 252 — L'integrite, mesuree partout : liens, ancres, console (2026-08-26)
+
+Douze chapitres de modifications lourdes — migration de l'arbre anglais,
+suppressions, bandeaux, titres, encres — appellent une passe de regression
+totale. La voici, en trois mesures independantes.
+
+### Les liens
+
+Chaque `href` et `src` interne des 211 pages publiques, resolu contre les
+fichiers du depot ET la table des 123 redirections et 2 reecritures de
+vercel.json, en suivant les chaines de redirection.
+**28 318 liens verifies — 0 casse.**
+
+### Les ancres
+
+Chaque `#cible` verifie contre les `id` de la page visee.
+**4 090 ancres verifiees — 0 sans cible.** Les 113 signalements bruts du
+controle statique etaient tous de la meme famille : les liens des articles du
+journal vers les termes du glossaire (`#t-eor`, `#t-scada`...), dont les cartes
+sont rendues par le script de la page — les `id` n'existent qu'a l'execution.
+Verification faite en navigateur : les **40 termes vises existent tous au rendu**,
+FR comme EN, et la navigation par ancre defile et surligne la carte comme prevu.
+Un controle statique seul aurait accuse un mecanisme qui fonctionne.
+
+### La console
+
+Les 214 pages chargees en navigateur dans les deux themes, avec defilement
+jusqu'en bas pour reveiller le JS differe, en ecoutant trois canaux : erreurs
+JavaScript, `console.error`, requetes echouees.
+**428 chargements — 0 erreur, 0 requete echouee.**
+
+### Verdict
+
+Triple zero. Le site sort de la serie 240-251 sans un lien casse, sans une ancre
+morte, sans une erreur de console. Rien a corriger ; le chapitre date l'etat de
+reference pour les regressions futures.
