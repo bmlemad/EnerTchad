@@ -2,7 +2,7 @@
 .hero .hero-in{display:block!important}
 .hx-grid{display:grid;grid-template-columns:1fr 1.12fr;gap:clamp(24px,3.4vw,48px);align-items:center}
 .hero .hx-h1{font-size:clamp(1.8rem,3.4vw,3rem)!important;line-height:1.08!important;letter-spacing:-.03em!important}
-.hx-kick{font-family:var(--fm);font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-l);display:block;margin-bottom:18px}
+.hx-kick{font-family:var(--fm);font-size:0.6875rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-l);display:block;margin-bottom:18px}
 .hx-sub{color:rgba(245,247,250,.72);font-size:clamp(.9rem,1.15vw,1.02rem);line-height:1.65;max-width:50ch;margin:18px 0 22px}
 .hx-slides{display:grid}
 .hx-slide{grid-area:1/1;opacity:0;visibility:hidden;transform:translateY(12px);transition:opacity .55s var(--ease),transform .55s var(--ease),visibility .55s}
