@@ -38,7 +38,7 @@
     opacity:1;visibility:visible;transform:translateY(0)}
   .nav-item.kbesc .nx-mega{opacity:0!important;visibility:hidden!important}
   .nav-item:nth-last-child(-n+3) .nx-mega{left:auto;right:0}
-}.nx-col .nxh{font-family:var(--fm,ui-monospace,Menlo,monospace);font-size:.64rem;letter-spacing:.16em;
+}.nx-col .nxh{font-family:var(--fm,ui-monospace,Menlo,monospace);font-size:0.6875rem;letter-spacing:.16em;
   text-transform:uppercase;color:var(--gold-l);margin:4px 10px 8px;padding-bottom:7px;
   border-bottom:1px solid var(--hair);font-weight:600}
 .nx-col a{display:block;text-decoration:none;color:var(--cream);padding:8px 10px;border-radius:10px;
@@ -51,7 +51,7 @@
   justify-content:flex-end;min-height:158px;
   background-image:linear-gradient(160deg,rgba(46,134,222,.18),rgba(6,11,20,.72));transition:border-color .2s}
 .nx-feat:hover{border-color:rgba(232,195,106,.45)}
-.nx-feat .tag{font-family:var(--fm,ui-monospace,Menlo,monospace);font-size:.6rem;letter-spacing:.16em;
+.nx-feat .tag{font-family:var(--fm,ui-monospace,Menlo,monospace);font-size:0.6875rem;letter-spacing:.16em;
   text-transform:uppercase;color:var(--gold-l)}
 .nx-feat strong{display:block;margin:7px 0 3px;font-size:1rem;font-family:var(--fd)}
 .nx-feat em{font-style:normal;font-size:.78rem;color:#C3CFDE;line-height:1.45;display:block}
