@@ -9061,3 +9061,42 @@ anticipee des que la cible est posee ou ne bouge plus.
   0 erreur console, ancres posees.
 
 Bump du service worker (et-202608271200) : le correctif touche un script commun.
+
+## 254 — L'accueil recoit sa porte par le besoin (2026-08-26)
+
+L'audit demande par le proprietaire (« l'accueil couvre-t-il toutes les
+activites ? ») avait rendu son verdict : 39 pages d'activites sur 40 accessibles
+depuis le corps de la page, mais la porte par le besoin absente — l'accueil
+faisait entrer par ce que nous sommes, jamais par ce que le visiteur cherche.
+Les quatre gestes approuves sont appliques.
+
+1. **La phrase d'orientation de la section des maillons porte desormais le lien** :
+   « Vous cherchez un service, un produit ou un partenaire industriel ?
+   Entrez par votre besoin → » — vers /solutions, la page aux six familles de
+   besoins que le benchmark du ch.245 avait montree au-dessus du standard des
+   majors et que l'accueil ne liait nulle part.
+2. **Le configurateur de service integre** gagne une pastille a cote de
+   l'explorateur de chaine, en bas de la meme section — l'outil de qualification
+   B2B n'etait accessible que par le pied de page.
+3. **La carte TchadiTech** liste enfin ses cinq portes : les recits
+   technologiques rejoignent socle, innovations, outils et R&D.
+4. **Le mega-menu recoit ses deux entrees manquantes** — Recits technologiques
+   (TchadiTech) et Services ESG (EnerConseils) — sur les **137 pages** qui le
+   portent, FR et EN. La couverture du menu passe de 38 a 40 pages d'activites
+   sur 40.
+
+Le tout en paires FR/EN strictes.
+
+**Et le banc m'a encore arrete avant publication** — quatrieme fois de la serie.
+Ma premiere pastille configurateur etait un contour transparent a encre creme :
+parfaite en theme sombre (15,2), illisible en theme clair ou le moteur repeint
+la section en creme — **1,06** mesure. Refaite en pastille pleine (fond marine,
+encre creme, lisere or), independante du theme : **12,7 dans les deux themes**,
+re-mesuree aux quatre captures sur les huit combinaisons page x theme x element.
+Le lien /solutions mesure 8,0 en clair et 10,9 a 11,4 en sombre. La regle du
+241.8 tient : une encre ne se choisit jamais sans mesurer le sol — et le sol
+change avec le theme.
+
+Verification complementaire : 0 erreur console et 0 debordement sur cinq pages
+temoins dans les deux themes ; liens recits/esg presents dans le menu des pages
+FR comme EN. Pas de bump du service worker : uniquement du HTML.
