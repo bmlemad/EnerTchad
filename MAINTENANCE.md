@@ -9201,3 +9201,55 @@ sombre 86 / 0, desktop clair 368 / 0, desktop sombre 370 / 0, menu ouvert
 
 Publication : 186 pages HTML, 3 feuilles partagees, et bump du service worker
 (et-202608271500) — des feuilles CSS changent.
+
+## 257 — Audit clavier : l'outil ment, les pixels tranchent, et un bouton mort sur 117 pages (2026-08-27)
+
+Audit clavier complet, jamais fait : visibilite de l'anneau de focus, skip-link,
+menu au clavier, Escape, retour de focus ; plus validation JSON-LD et
+prefers-reduced-motion.
+
+**Premiere lecon — mon detecteur mentait.** La version 1 lisait les styles
+calcules et annoncait 43 elements sans indicateur de focus. Verification aux
+pixels : getComputedStyle de ce headless rend "solid 0px" pour un outline qui
+SE PEINT reellement (prouve par capture : anneau rouge de test, 652 pixels
+peints, style calcule a zero). Refait le detecteur en comparant deux captures
+(focus vs blur) : **488 arrets de tabulation sur 10 pages temoins, deux themes,
+0 sans indicateur** — le site etait deja conforme, les 43 etaient des
+artefacts. Meme punition que les 1122 liens du ch.255 : on repare l'outil
+avant de croire ses chiffres.
+
+**Deuxieme lecon — le vrai defaut etait a cote.** Le parcours Tab de la 404
+tombait sur un bouton invisible : #toTop (retour en haut) reste tabulable a
+opacity:0. Et en tirant le fil : **le bouton etait carrement mort sur 117 des
+207 pages qui le portent** — le balisage y est, l'anneau de progression aussi,
+mais le script qui le fait apparaitre (u2_75a2c4383ddf.js) n'est charge que
+par 90 pages. Personne ne l'avait vu parce que le bouton ne s'affiche qu'apres
+600 px de defilement. Corrections :
+
+1. **visibility:hidden hors etat .show** (4 feuilles porteuses du controle,
+   transition ajustee pour garder le fondu) — l'invisible n'est plus tabulable ;
+2. **le bloc d'animation duplique dans u_cd226c00eb4b.js**, charge par les
+   207 pages, avec garde d'idempotence des deux cotes (les 90 pages saines
+   chargent les deux scripts — un seul s'attache). Verifie : le bouton
+   apparait et fonctionne desormais sur les pages autrefois mortes.
+
+**Troisieme geste — skip-link.** « Aller au contenu principal » posait bien le
+focus sur #main-content... sur les ~120 pages ou main porte tabindex="-1".
+Les **92 autres** perdaient le focus (atterrissage sur body). tabindex="-1"
+ajoute aux 92, re-teste : le focus atterrit partout.
+
+En defense en profondeur : une regle d'anneau par defaut a specificite nulle
+(:where(...):focus-visible, encre par theme : #E8C36A sur sombre — 10,2 a 10,9
+mesures ; #74570B sur creme — 6,4) dans les trois feuilles partagees, qui ne
+s'exprime que la ou aucune regle de composant n'existe ; et un halo de focus
+sur les champs petroliers de la carte de l'atlas (trait atc-gold, suivant le
+theme), dont l'indicateur — la pastille qui grossit — etait au seuil du
+perceptible.
+
+Le reste est propre : menu mobile au clavier (ouverture, Escape, focus rendu
+au bouton) ; JSON-LD 767 blocs sur 209 pages, 0 erreur de syntaxe, types
+coherents ; reduced-motion : plus aucune animation infinie ou longue.
+Console : 0 erreur sur les temoins, deux themes.
+
+Publication : 92 pages (tabindex) + atlas FR/EN (halo) + 6 feuilles CSS +
+2 scripts + bump SW (et-202608272000).
