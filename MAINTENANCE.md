@@ -9100,3 +9100,58 @@ change avec le theme.
 Verification complementaire : 0 erreur console et 0 debordement sur cinq pages
 temoins dans les deux themes ; liens recits/esg presents dans le menu des pages
 FR comme EN. Pas de bump du service worker : uniquement du HTML.
+
+## 255 — Ultra QA : trois defauts debusques dans un site "propre" (2026-08-27)
+
+Le proprietaire a demande un ultra QA. Toutes les batteries reprises d'un coup
+sur l'etat post-254, en local sur l'arbre identique au depot :
+
+- **Integrite structurelle** (214 fichiers) : liens internes, ancres, assets,
+  ids dupliques, alt d'images, equilibre des balises, reecritures vercel.json
+  comprises. Trois vrais defauts trouves — voir plus bas.
+- **SEO / metadonnees** : titres (convention « | EnerTchad », titres arabes
+  admis), meta descriptions, canonical, hreflang croises FR/EN, parite
+  sitemap.xml (209 URLs, 0 cassee ; 5 fichiers hors sitemap = utilitaires
+  voulus : 404, sources d'impression, verification Google). Zero ecart.
+- **Accessibilite axe-core** : 210 pages publiques, 0 violation (les seuls
+  ecarts restent sur les 4 fichiers utilitaires non publics, inchanges a
+  dessein — le fichier Google doit rester tel qu'emis).
+- **Console, reseau, debordements** : 214 pages x 2 themes = 428 chargements
+  avec defilement complet : 0 erreur JS, 0 requete echouee, 0 debordement
+  horizontal.
+- **Banc de contraste exact** sur les pages touchees, deux themes : 0 echec
+  apres correction (845 elements verifies au total sur la passe).
+
+Les trois defauts, et ce qu'ils disent :
+
+1. **Brochures FR et EN, PROJET 04 : la balise `<h3>` d'ouverture manquait.**
+   Le titre s'affichait en texte brut, colle a un ancien titre fantome —
+   « Modules d'alimentation de siteEnergie de site autonome ». Deux titres
+   concatenes : la trace d'un remplacement rate qui a mange la balise ouvrante.
+   Le defaut date d'au moins le ch.190 (l'historique du clone ne remonte pas
+   plus loin) et a survecu a 65 chapitres, dont mon « balayage d'integrite »
+   du ch.252. **Mon erreur, deux fois** : c'est tres probablement une de mes
+   propres retouches anciennes qui a produit ce texte, et mes audits suivants
+   ne verifiaient jamais l'equilibre des balises — ils comptaient les liens,
+   pas la structure. Corrige en `<h3>Energie de site autonome</h3>` (le titre
+   le plus recent des deux, arbitrage documente ici), EN idem.
+2. **Atlas FR et EN : `</div></figure>` inverse.** La fermeture de la figure
+   des bassins arrivait apres celle de son parent — le navigateur refermait la
+   figure de force et ignorait le `</figure>` orphelin. Rendu identique, mais
+   structure invalide. Corrige en `</figure></div>`.
+3. **Atlas FR et EN, theme clair : la legende de la carte cadastrale
+   (« REPERES » / « KEY », et la boussole N) mesuree a 3,91** pour 4,5 requis —
+   encre rgba(16,24,36,.55) trop diluee sur le fond creme. Passee a .66 :
+   **5,6 mesure**, re-verifiee au banc quatre captures, 180 elements, 0 echec.
+   Le theme sombre, lui, etait deja conforme et n'a pas bouge.
+
+Le premier passage du verificateur affichait 1122 liens casses — tous des bugs
+de mon propre outil (reecritures vercel.json ignorees, racine « / » non
+resolue, `<title>` des SVG confondus avec celui du document, fragments
+d'etat `#rub=` pris pour des ancres). Comme au ch.252 : on repare l'outil
+avant de croire ses chiffres, et on ne retient que ce que le fichier reel
+confirme ligne a ligne.
+
+Publication : brochure.html, brochure-en.html, enerconseils/atlas.html,
+enerconseils/atlas-en.html + cette page. Pas de bump du service worker :
+uniquement du HTML.
