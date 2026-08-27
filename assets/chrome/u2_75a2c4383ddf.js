@@ -39,7 +39,32 @@ try{
 try{(function(){var bar=document.getElementById('nezBar');if(!bar)return;var links=[].slice.call(bar.querySelectorAll('a[href^="#"]'));var map={};links.forEach(function(a){var id=a.getAttribute('href').slice(1);var el=document.getElementById(id);if(el)map[id]=a;});var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){links.forEach(function(a){a.classList.remove('nz-on');a.removeAttribute('aria-current');});var a=map[e.target.id];if(a){a.classList.add('nz-on');a.setAttribute('aria-current','true');}}});},{rootMargin:'-30% 0px -55% 0px'});Object.keys(map).forEach(function(id){io.observe(document.getElementById(id));});})();
 }catch(_e){/* section absente sur cette page */}
 ;
-try{(function(){var red=matchMedia('(prefers-reduced-motion: reduce)').matches;var prevCxl=null;function settle(id,pre){if(prevCxl)prevCxl();var el=document.getElementById(id);if(!el)return;var H=document.documentElement,pv=H.style.scrollBehavior;var stop=false;var preW=pre||0;var lastTarget=null;var armT=performance.now();function cxl(){stop=true;H.style.scrollBehavior=pv;removeEventListener('scroll',onExt);}prevCxl=cxl;function onExt(){var y=window.scrollY||0;if(lastTarget!==null&&Math.abs(y-lastTarget)<=2){return;}if(preW>0&&performance.now()-armT<preW){return;}cxl();}addEventListener('wheel',cxl,{passive:true,once:true});addEventListener('touchstart',cxl,{passive:true,once:true});addEventListener('keydown',cxl,{once:true});addEventListener('pointerdown',cxl,{passive:true,once:true});addEventListener('scroll',onExt,{passive:true});var tries=0;var last=null;function step(){if(stop)return;if(lastTarget!==null&&Math.abs((window.scrollY||0)-lastTarget)>48){cxl();return;}var t=el.getBoundingClientRect().top;if(last!==null&&Math.abs(t-last)<2){cxl();return;}last=t;if(tries<8){tries++;if(Math.abs(t)>28){H.style.scrollBehavior='auto';el.scrollIntoView({block:'start'});lastTarget=window.scrollY||0;}setTimeout(step,tries<4?120:250);}else{cxl();}}setTimeout(step,red?60:750);}addEventListener('hashchange',function(){var id=location.hash.slice(1);if(id)settle(id,0);});document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href^="#"]');if(!a)return;var id=a.getAttribute('href').slice(1);if(id)settle(id,250);},true);if(location.hash.length>1){setTimeout(function(){settle(location.hash.slice(1),1500);},300);}})();
+try{(function(){var red=matchMedia('(prefers-reduced-motion: reduce)').matches;var prevCxl=null;
+/* Ch253 — recalage d'ancre, version qui ne coupe plus le geste.
+   L'ancienne boucle forcait scrollIntoView a intervalle fixe : elle teleportait la
+   page au milieu du defilement doux (le glissement emet des evenements scroll en
+   continu), et pendant sa fenetre d'armement elle avalait les defilements faits a
+   l'ascenseur. Regles nouvelles : (1) on ne corrige jamais tant que la page a
+   defile dans les 180 dernieres millisecondes — un glissement en cours n'est donc
+   jamais coupe, la correction attend l'accalmie ; (2) tout defilement externe
+   apres une correction annule ; (3) la fenetre totale est bornee a 2,6 s. */
+function settle(id,pre){if(prevCxl)prevCxl();var el=document.getElementById(id);if(!el)return;var H=document.documentElement,pv=H.style.scrollBehavior;var stop=false;var lastTarget=null;var armT=performance.now();var lastScrollT=0;
+function cxl(){stop=true;H.style.scrollBehavior=pv;removeEventListener('scroll',onScr);}
+prevCxl=cxl;
+function onScr(){lastScrollT=performance.now();var y=window.scrollY||0;if(lastTarget!==null&&Math.abs(y-lastTarget)>2){cxl();}}
+addEventListener('wheel',cxl,{passive:true,once:true});addEventListener('touchstart',cxl,{passive:true,once:true});addEventListener('keydown',cxl,{once:true});addEventListener('pointerdown',cxl,{passive:true,once:true});addEventListener('scroll',onScr,{passive:true});
+var tries=0;var last=null;function step(){if(stop)return;var now=performance.now();if(now-armT>2600){cxl();return;}
+if(now-lastScrollT<180){setTimeout(step,120);return;}
+var t=el.getBoundingClientRect().top;
+if(Math.abs(t)<=28){cxl();return;}
+if(last!==null&&Math.abs(t-last)<2){cxl();return;}
+last=t;
+if(tries>=4){cxl();return;}
+tries++;H.style.scrollBehavior='auto';el.scrollIntoView({block:'start'});lastTarget=window.scrollY||0;setTimeout(step,220);}
+setTimeout(step,red?60:250);}
+addEventListener('hashchange',function(){var id=location.hash.slice(1);if(id)settle(id,0);});
+document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href^="#"]');if(!a)return;var id=a.getAttribute('href').slice(1);if(id)settle(id,250);},true);
+if(location.hash.length>1){setTimeout(function(){settle(location.hash.slice(1),1500);},300);}})();
 }catch(_e){/* section absente sur cette page */}
 ;
 try{(function(){function openIt(id){var el=document.getElementById(id);if(!el)return;var d=el.querySelector('details.atl-d');if(d)d.open=true;}document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href^="#atl-"]');if(a)openIt(a.getAttribute('href').slice(1));},true);if(/^#atl-/.test(location.hash))openIt(location.hash.slice(1));addEventListener('hashchange',function(){if(/^#atl-/.test(location.hash))openIt(location.hash.slice(1));});})();
