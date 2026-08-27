@@ -9253,3 +9253,45 @@ Console : 0 erreur sur les temoins, deux themes.
 
 Publication : 92 pages (tabindex) + atlas FR/EN (halo) + 6 feuilles CSS +
 2 scripts + bump SW (et-202608272000).
+
+## 258 — Le saut de la home, deuxieme enquete : la cause introuvable, les causes probables traitees (2026-08-27)
+
+Le proprietaire signale a nouveau un saut de page au defilement de l'accueil —
+memes mots qu'au ch.253. Cette fois l'enquete est allee jusque dans son propre
+navigateur, sur la production :
+
+- scrollTo / scrollBy / scrollIntoView instrumentes avec pile d'appel, puis
+  defilements reels : **aucun appel** pendant le defilement libre ; au clic
+  d'ancre, une seule correction du recalage (comportement voulu du ch.253),
+  et la molette garde toujours la main (scenarios A/B/C rejoues : verts) ;
+- 30 secondes d'observation passive a mi-page : position stable au pixel ;
+- pas de scroll-snap, pas de restauration de position concurrente, images
+  du hero dimensionnees, pas de decalage de mise en page mesurable (CLS 0,005
+  sur 60 pas de molette), unites svh sur le hero ;
+- le service worker de son navigateur portait bien les scripts a jour
+  (cache et-202608272000, correctif 253 et garde 257 presents).
+
+Le saut de position n'est **pas reproductible** dans l'etat actuel du code.
+Deux mecanismes reels pouvaient neanmoins produire le symptome et sont
+corriges :
+
+1. **Fenetres de versions melangees apres deploiement.** Le service worker
+   servait les JS/CSS en cache-d'abord : apres chaque publication, une visite
+   entiere tournait avec un melange vieux/nouveau scripts — le vieux bug de
+   defilement du ch.253 pouvait ressusciter le temps d'une session, et les
+   ch.256-257 ont deploye deux fois la veille du signalement. Le SW passe en
+   **reseau-d'abord pour les scripts et feuilles** (repli cache en echec :
+   le hors-ligne reste couvert). Bump et-202608272300.
+2. **Revelations tardives.** Les sections hautes n'apparaissaient qu'a 16 %
+   de visibilite : des pans entiers restaient invisibles au milieu de l'ecran
+   puis surgissaient (translation 22-34 px sur ~0,8 s) — un « saut » visuel
+   au defilement rapide. Le declencheur passe a l'entree reelle dans le
+   viewport (seuil 0,01, marge basse -6 %) : pas fantomes mesures 9 % → 7 %
+   des pas de defilement, le reste etant la transition elle-meme, choix de
+   design conserve. Non-regression verifiee : les 25 reveals non declenches
+   de l'atlas clair apres teleportation au fond existent a l'identique avec
+   l'ancien seuil (artefact de saut instantane, pas du changement).
+
+Honnetete due : si le saut persiste apres un rechargement force, il me faudra
+un repere de plus — l'endroit de la page ou il se produit, et ordinateur ou
+telephone. Publication : sw.js + c_ac04328f0f47.js + cette page.
