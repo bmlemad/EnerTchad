@@ -10073,3 +10073,39 @@ Bilan des cinq chantiers : 2 calendriers .ics, 2 index plein-texte et
 12 fichiers HTML retouches, 2 bumps de service worker
 (et-202608282120 puis et-202608282220 avec la regeneration des index),
 6 commits. P6 a P10 attendent leurs arbitrages au registre.
+
+## 281 — Les documents telechargeables remis au canon des huit poles (2026-08-28)
+
+Le registre portait "regenerer la brochure PDF" : sa source
+d'impression disait encore "Sept poles". Le tirage du fil a revele bien
+plus.
+
+**Ce qui etait perime dans les documents** : la brochure FR (kicker
+"Sept poles", titre "L'organisation du groupe" — alors que le site
+martele "societe unique, pas un groupe" — et sept cartes de poles,
+EnerConseils absent) ; la brochure EN (source deja passee a "Eight"
+mais PDF publie jamais regenere, il imprimait encore "SEVEN POLES" ;
+et la meme carte manquante) ; la fiche arabe (tuile "7 aqtab · une
+societe"). Corrections : kickers et titres remis au canon, carte
+EnerConseils ajoutee dans les deux langues (la marque conseil, adossee
+a l'Atlas), tuile arabe passee a 8. Les trois PDF sont regeneres par
+impression headless (A4, 6 pages FR/EN, 2 pages AR, page 3 verifiee a
+l'image : huit cartes, mise en page intacte) — le timeout du chapitre
+271 n'a pas recidive avec l'impression en ligne de commande.
+
+**Mon erreur, la vraie lecon du chapitre** : au chapitre 279, j'ai
+"corrige" la fiche de presse en enumerant les huit poles... avec des
+noms inventes — "EnerChimie, EnerTech, EnerTalents" — repris pour
+partie du texte perime que je remplacais, sans verifier le canon du
+site. Le vrai canon, lisible dans la navigation meme : Amont,
+Intermediaire, Aval, Petrochimie pour la chaine ; GreenTech,
+TchadiTech, Tchaditude, EnerConseils pour le soutien. L'erreur s'etait
+propagee a trois livrables publies hier soir : la fiche de presse, la
+feuille Identite du data book, et la copie de la fiche dans le ZIP
+presse. Les trois sont corriges et republies. Corriger un chiffre sans
+verifier les noms qui l'entourent, c'est remplacer une incoherence par
+une autre : desormais, toute enumeration recopiee se verifie contre la
+navigation du site, qui est la seule source des noms de poles.
+
+Publie : trois PDF regeneres, trois sources docs-sources corrigees,
+fiche de presse, data book et ZIP presse republies avec les bons noms.
