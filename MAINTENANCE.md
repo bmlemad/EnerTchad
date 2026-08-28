@@ -9854,3 +9854,31 @@ chapitre, tout ce qui se clique, se tape, defile ou bascule sur les 209
 pages est passe au banc de comportement au moins une fois — menus
 (ch.261, 270), recherche et formulaires (264), panier (269), journal
 (267), sous-menus (266, 268), outils (270), et ces quatre derniers.
+
+## 273 — La production controlee dans un vrai navigateur : le service worker fait son travail (2026-08-28)
+
+Tous les bancs de cette serie tournaient dans un Chromium headless sur
+copie locale — fidele pour la structure et les encres, muet sur UNE
+couche : le service worker en production. Controle mene dans le vrai
+Chrome, sur le vrai site.
+
+**Service worker** : actif et « activated » sur enertchad-delta.vercel.app,
+AUCUNE version en attente (la montee et-202608281508, publiee une heure
+plus tot, s'est installee proprement), et surtout **un seul cache** — les
+versions precedentes ont bien ete purgees par le nettoyage d'activation.
+Le cache vivait sa vie normale pendant la visite : 5 entrees a l'arrivee
+sur l'accueil, 57 apres un parcours accueil → EOR → boutique → societe —
+le reseau-d'abord du ch.258 alimente le cache au fil de l'eau, comme
+concu.
+
+**Parcours reel, zero erreur console** : boutique modernisee (deux ajouts
+au panier, compteur a 2, modale de devis ouverte et refermee), societe
+(panneau du mega-menu ouvert — 358 px —, ferme a Escape, palette Ctrl+K
+ouverte avec 10 resultats sur « raffinerie »), et les tuiles corrigees du
+ch.271 affichent bien « 8 » en production. Theme nuit automatique
+(et-h-nuit) actif comme attendu a cette heure.
+
+Aucun defaut, aucun changement de site : publication de cette page
+seulement. La chaine complete — editeur local, banc headless, depot,
+Vercel, service worker, navigateur reel — est verifiee de bout en bout
+pour la premiere fois dans le meme chapitre.
