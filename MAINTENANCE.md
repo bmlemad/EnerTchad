@@ -9623,3 +9623,36 @@ Mon erreur du chapitre : avoir livre un scrollspy plausible sans le
 regarder marcher — c'est le test de descente qui l'a montre fige sur les
 sections longues. Un composant d'interface se juge en mouvement, pas a
 l'arret.
+
+## 267 — La chaine du journal auditee : 64 articles, un seul fil, une barre harmonisee (2026-08-28)
+
+QA complet de la navigation des 64 articles du journal, jamais testee en
+bloc.
+
+**La chaine precedent/suivant (pgr) est parfaite** : un fil lineaire par
+langue, de « Premiere du genre » a « L'enigme de la densite », 0 cible
+morte, reciprocite totale (le suivant de A a bien A pour precedent, sur
+les 64), aucune fuite de langue (un article EN ne pointe que des cibles
+EN), et symetrie FR/EN entiere : la chaine anglaise est le miroir exact de
+la francaise. Les cartes « continuer la lecture » : 0 lien mort, 0
+auto-reference.
+
+**nezBar, la barre mobile** : visible et fixee en bas sur les 64 articles,
+cibles tactiles de 49 px (au-dessus du plancher de 44), cachee sur
+desktop, 0 erreur console. Un defaut d'uniformite en revanche : les 32
+barres FR menent aux destinations profondes choisies a la conception
+(Services → le catalogue ancre, Reseau → la carte ancree), mais 31 barres
+EN s'arretaient aux moyeux de pole, et une 32e suivait un troisieme
+schema. Harmonisation : les 32 barres EN refletent desormais exactement
+les FR (memes cibles profondes, memes ancres — verifiees existantes sur
+les pages anglaises). Preuve stricte : chaque fichier = l'ancien avec pour
+seuls changements les href de sa barre.
+
+Verification : comportement mobile re-teste apres harmonisation, console
+3 pages x 2 themes 0 erreur. HTML seul : pas de bump du service worker.
+
+Rien a signaler d'autre : c'est le premier chapitre d'audit ou la
+structure auditee etait deja entierement saine — la chaine du journal a
+ete construite avec la discipline que les menus (ch.261) n'avaient pas
+recue. La barre mobile, elle, confirme la lecon : l'uniformite se verifie,
+elle ne se suppose pas.
