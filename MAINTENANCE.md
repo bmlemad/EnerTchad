@@ -9823,3 +9823,34 @@ que le carnet interdit depuis le debut (la restauration passe par git
 archive FETCH_HEAD). Sans consequence ici — l'index etait aligne sur le
 depot publie — mais la regle existe pour les jours ou il ne l'est pas.
 Consigne, et la bonne commande re-memorisee.
+
+## 272 — Les derniers interactifs au banc : quatre systemes, zero defaut (2026-08-28)
+
+QA de comportement des quatre interactifs jamais testes, et avec eux la
+surface interactive du site est integralement couverte.
+
+**Carrousel du hero** (accueil FR et EN) : cinq messages, rotation
+automatique verifiee (message 1 → 2 en ~6 s), acces direct par onglets
+(aria-selected suit), bouton pause qui fige reellement la rotation et
+bascule son libelle (« Mettre en pause » ↔ « Reprendre »). Ma premiere
+lecture accusait la pause francaise — mon selecteur flou avait clique un
+autre bouton ; vise precisement (#hxPause), elle fonctionne.
+
+**Reglage de luminosite** : panneau ouvert au bouton, curseur applique le
+voile, preset « Clair » pousse bien le curseur a 116, preference
+persistee, panneau referme.
+
+**Rail de sections (secrail)** : present la ou il a un sens (pages a
+sections — eor 4 points, engagements 8), clic sur un point defile vers la
+section, un point actif suit le defilement ; absent a l'execution sur les
+pages qui ne s'y pretent pas, par construction.
+
+**Bandeau cookies** : apparait une fois (apres 1,2 s), « J'ai compris »
+le retire et pose la cle locale, il ne revient ni au rechargement ni sur
+les autres pages ; le lien « Politique cookies » pointe /cookies, valide.
+
+Aucun changement de site : publication de cette page seulement. Avec ce
+chapitre, tout ce qui se clique, se tape, defile ou bascule sur les 209
+pages est passe au banc de comportement au moins une fois — menus
+(ch.261, 270), recherche et formulaires (264), panier (269), journal
+(267), sous-menus (266, 268), outils (270), et ces quatre derniers.
