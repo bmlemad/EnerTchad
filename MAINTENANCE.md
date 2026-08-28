@@ -10214,3 +10214,22 @@ d'arbitrage nettement delimites au registre (noms reels, traduction
 arabe complete, infrastructure d'alertes, rapport annuel approuve,
 donnees de jalons futures). Index plein-texte regenere, service worker
 bumpe (et-202608290030).
+
+## 288 — CP-2026-008 : le site annonce ses propres outils (2026-08-28)
+
+Les six outils des vagues 276-287 existaient sans etre annonces — or le
+site a un canal officiel pour cela. Communique CP-2026-008 publie sur
+communiques et communiques-en (article date du 28 aout, liens vers
+l'agenda, la carte et l'etagere), et pousse dans les deux flux RSS
+(feed et feed-en, lastBuildDate mis a jour, XML valide, 46 elements).
+
+Au passage, deux points d'hygiene : le JSON-LD des pages communiques
+listait six communiques alors que sept articles etaient publies —
+le CP-2026-007 du 23 aout n'y avait jamais ete ajoute ; les deux
+listes sont regenerees depuis les articles eux-memes (huit entrees,
+positions recalculees). Et le sitemap a ete repasse a l'heure git
+(une seule adresse corrigee — le gros etait deja juste depuis le
+chapitre 274).
+
+Chapitre sans surprise : benches trois configurations, zero erreur
+console, l'article s'affiche proprement dans les deux themes.
