@@ -9786,3 +9786,40 @@ de langue, toTop, theme, Escape, verrous — un seul defaut reel, tactile
 et mobile, invisible des bancs precedents parce qu'aucun ne mesurait la
 HAUTEUR des cibles dans un accordeon deploye. Ce juge-la rejoint le
 repertoire.
+
+## 271 — La coherence des chiffres : un « 7 poles » fossile sur quatre pages (2026-08-28)
+
+Audit editorial jamais fait : extraire les figures cles de toutes les
+pages et confronter chaque concept a lui-meme. Quinze familles passees au
+crible sur les 209 pages — corridor (1 070 km : uniforme, 58 mentions),
+API de Doba (21-24° : uniforme ; les autres plages de l'article sur la
+densite decrivent d'AUTRES bruts, portee legitime), reseau cible (12
+stations sur 8 localites : uniforme ; les « 85 stations » sont les
+stations piezometriques du pipeline, autre objet), provinces (23/23),
+trajectoire du capital (10 M → 1 Md → 20 Md : uniforme, 97 mentions du
+palier final), cibles EOR (+8-17 % OOIP ; les 20-35/50-65 % sont les taux
+de recuperation sans/avec EOR, autre concept), mini-raffinerie (500-2 000
+b/j : 175 mentions uniformes), maillons (quatre, FR=EN), jalons dates
+(plages differentes = projets differents, verifie).
+
+**Le defaut reel** : les tuiles de synthese de la charte et de La Societe
+affichaient « 7 poles d'activite » — un fossile d'avant le huitieme pole
+(EnerConseils), contredit par les 150 mentions de « 8 poles » partout
+ailleurs, footer compris. Six tuiles corrigees sur quatre pages (charte
+et societe, FR et EN, societe en portant deux chacune). Preuve stricte :
+seuls les <b>7</b> suivis du libelle poles ont change. Console 4 pages x
+2 themes : 0 erreur.
+
+**Consigne au proprietaire, sans action** : les pages EOR datent les
+~144 000 b/j de reference de « 2024 », la fiche secteur de l'atlas et de
+la brochure les datent de « 2025 ». Le chiffre est le meme, le millesime
+non — a arbitrer avec les sources citees (les 140 kb/j de la frise
+historique sont, eux, la production INITIALE de 2003, autre fait,
+coherent).
+
+Mon erreur du chapitre, et elle est de protocole : pour annuler un
+remplacement a moitie applique, j'ai tape un git checkout -- , le geste
+que le carnet interdit depuis le debut (la restauration passe par git
+archive FETCH_HEAD). Sans consequence ici — l'index etait aligne sur le
+depot publie — mais la regle existe pour les jours ou il ne l'est pas.
+Consigne, et la bonne commande re-memorisee.
