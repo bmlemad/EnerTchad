@@ -9542,3 +9542,42 @@ lire le script — la condition indexOf('Approvisionnement') aurait casse en
 silence le selecteur de produit. Le grep des comparaisons AVANT le
 remplacement est ce qui l'a evite : on ne renomme pas une valeur sans
 chercher qui la compare.
+
+## 265 — Audit de charge : ce que pese le site, et trois redondances purgees (2026-08-28)
+
+Premiere mesure systematique du poids des pages. Inventaire statique des
+209 pages : mediane 125 Ko de HTML, moyenne 135 Ko, 26,8 Mo au total ;
+les plus lourdes sont assumees (brochure ~1 Mo par page — un document
+imprimable —, configurateur 830 Ko dont 735 Ko d'outil JavaScript).
+Mesure de chargement en local sur 8 pages representatives : 16 a 37
+requetes, 470 Ko a 1,5 Mo transferes ; un article du journal charge en
+~270 ms, l'accueil en ~1,7 s, la brochure en ~5 s (valeurs relatives,
+serveur local). Preloads orphelins : 0. Rien d'alarmant, mais trois
+redondances reelles :
+
+(1) **Le service worker etait enregistre DEUX FOIS sur 203 pages** — deux
+scripts inline historiques, l'un anonyme et sans garde de protocole,
+l'autre (sw-reg) garde https/localhost. Doublon inoffensif au rendu
+(l'enregistrement est idempotent) mais c'est du code duplique sur presque
+tout le site. Le script anonyme est retire partout ; ar.html, qui n'avait
+QUE lui, le garde ; les trois pages outils n'ont jamais enregistre le SW,
+etat inchange. Apres purge : 0 page a double enregistrement.
+
+(2) **glossaire-petrolier.html chargeait nav_a.js deux fois** — meme URL,
+deux balises. Dedoublonne.
+
+(3) **c_ac04328f0f47.js vivait sous deux cache-busters** (b=202607081413
+sur 68 pages, b=202607081457 sur 22) : meme fichier, deux URL — un
+visiteur traversant le site le telechargeait deux fois et le service
+worker en cachait deux copies. Harmonise sur la version majoritaire :
+90 pages, un seul buster.
+
+Preuve stricte sur les 203 fichiers modifies (chaque nouveau = ancien
+moins exactement les retraits enumeres, remplacement de buster compris) ;
+console 12 pages x 2 themes : 0 erreur ; 0 page a SW multiple, 0 sans SW
+qui en avait un. HTML seul modifie : pas de bump du service worker.
+
+Le reste du constat de poids est un parti pris d'architecture (styles en
+ligne par page, pages autonomes) qui a ses avantages (pas de cascade de
+dependances, cache par page) ; le remettre en cause serait un chantier de
+fond, pas un nettoyage — consigne ici, sans action.
