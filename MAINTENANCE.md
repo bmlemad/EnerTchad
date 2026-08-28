@@ -9882,3 +9882,27 @@ Aucun defaut, aucun changement de site : publication de cette page
 seulement. La chaine complete — editeur local, banc headless, depot,
 Vercel, service worker, navigateur reel — est verifiee de bout en bout
 pour la premiere fois dans le meme chapitre.
+
+## 274 — Hygiene de service : le sitemap remis a l'heure de son propre historique (2026-08-28)
+
+Tour d'hygiene des fichiers de service, apres la vague de chapitres qui a
+touche presque toutes les pages.
+
+**Sitemap** : 209 adresses, mais trois sans lastmod (ar, forage-
+directionnel FR/EN) et des dates posees a la main au fil des chapitres —
+plus en phase avec la realite depuis les publications de masse (260, 262,
+265...). Les 209 lastmod sont desormais DERIVES de l'historique git :
+chaque adresse porte la date du dernier commit de son fichier (4 pages au
+27 aout, 205 au 28), zero entree sans date, XML valide. Les moteurs
+verront des dates exactes, plus des approximations.
+
+**Le reste etait deja en ordre**, verifie en production : robots.txt
+(docs-sources exclus, sitemap declare), og-image et les trois icones
+servies en 200 avec les bons types MIME, manifest valide, et les six
+en-tetes de securite actifs sur les pages vivantes — X-Frame-Options,
+nosniff, Referrer-Policy, Permissions-Policy, HSTS avec preload, CSP.
+Rien a ajouter : la configuration posee dans les chapitres anterieurs
+tient.
+
+Un fichier modifie (sitemap.xml), pas de bump du service worker (il ne
+cache pas le sitemap).
