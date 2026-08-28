@@ -9906,3 +9906,55 @@ tient.
 
 Un fichier modifie (sitemap.xml), pas de bump du service worker (il ne
 cache pas le sitemap).
+
+## 275 — Benchmark face aux majors : dix propositions posees au registre (2026-08-28)
+
+Le proprietaire demande des propositions "versus majors". Plutot qu'une
+liste jetee dans la conversation, le benchmark est livre comme page de
+decision publiee (artifact "EnerTchad face aux majors"), datee d'apres le
+chapitre 274, pour etre relue et partagee.
+
+**Ce qui est deja au niveau des majors, ou au-dessus** : le journal
+pedagogique (64 articles chaines, chapitre 267), les outils interactifs
+(calculateurs, atlas, glossaire — la ou les majors publient des PDF),
+l'accessibilite mesuree (axe 209 pages x 0 violation), l'honnetete de la
+constitution (aucune major n'affiche son statut juridique avec cette
+clarte), zero pistage (aucun tracker tiers, quand les majors en chargent
+des dizaines), et le mode hors-ligne (service worker que meme
+TotalEnergies n'offre pas).
+
+**Les dix propositions, priorisees** :
+- P1 Calendrier investisseur abonnable (.ics) — chantier, effort S, fort.
+- P2 Recherche plein-texte du site (indexer le corps des pages pour la
+  palette cmdk) — chantier, effort M, fort.
+- P3 Carte SVG unifiee des operations cibles — chantier, effort M, fort.
+- P4 Data book investisseur telechargeable — chantier plus validation des
+  chiffres, effort M.
+- P5 Kit presse telechargeable — chantier, effort S ; les photos
+  dependent de l'arbitrage seance photo.
+- P6 Rapport annuel de constitution (PDF) — arbitrage, effort M.
+- P7 Gouvernance incarnee — bloque par l'arbitrage des noms reels.
+- P8 Arabe etendu (~10 pages) — arbitrage traduction, effort L.
+- P9 Alertes e-mail reelles — infrastructure a ouvrir, effort M.
+- P10 Compteur public de jalons de constitution — chantier plus donnees,
+  effort S ; la reponse d'une societe non cotee au ticker boursier des
+  majors.
+
+**Ce que je deconseille de copier** : les chatbots des majors, les videos
+hero lourdes, le pistage publicitaire. Le site tient sa credibilite de sa
+sobriete.
+
+**Ordre de marche propose** : P1, puis P2, P3, P5, P4. Les P6 a P10
+entrent au registre comme arbitrages ou infrastructures, avec leurs
+dependances (noms reels pour P7, traduction pour P8, backend pour P9).
+
+**Mon erreur, consignee** : la premiere version de la page contenait un
+jeton CSS corrompu — un caractere chinois glisse au milieu d'une valeur
+hexadecimale ("--panel-2:#182[CJK]642"), declaration morte doublee par la
+bonne juste apres. Le rendu survivait par chance, pas par rigueur. La
+ligne a ete nettoyee et un controle programme (caracteres suspects,
+jetons utilises contre jetons definis) passe avant publication. Meme sur
+un livrable hors depot, la verification mecanique reste due.
+
+Un fichier modifie (MAINTENANCE.md), pas de bump du service worker
+(changement hors assets).
