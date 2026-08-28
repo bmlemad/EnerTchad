@@ -10233,3 +10233,25 @@ chapitre 274).
 
 Chapitre sans surprise : benches trois configurations, zero erreur
 console, l'article s'affiche proprement dans les deux themes.
+
+## 289 — Les nouveaux outils entrent dans la palette, en entrees redigees (2026-08-28)
+
+La recherche plein-texte (chapitre 277) trouvait deja les nouveaux
+outils par leur texte ; il manquait les entrees redigees, celles qui
+repondent aux mots que les visiteurs tapent vraiment ("ics",
+"alertes", "data book", "compteur"). Quinze entrees rejoignent les
+donnees de la palette : sept en francais (agenda abonnable, alertes,
+compteur de constitution, data book, point d'etape, carte des
+operations, fonctions de tete) et huit en anglais (les memes plus le
+kit presse). Les seize ancres visees ont ete verifiees dans les pages,
+et six requetes de test placent chacune sa cible en premiere position.
+
+Un doublon evite de justesse : une entree "Kit media officiel"
+existait deja cote francais — plutot que d'en ajouter une seconde, ses
+mots-cles ont ete enrichis (zip, telecharger, tout le kit) et la
+nouvelle entree retiree. Cote anglais, aucune entree kit n'existait :
+celle-la reste. Verifier l'existant avant d'ajouter — la lecon du
+chapitre 281 s'applique aussi aux index.
+
+Service worker bumpe (et-202608290145) : les donnees de palette sont
+des scripts, servis reseau d'abord mais versionnes proprement.
