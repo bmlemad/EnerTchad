@@ -9364,3 +9364,50 @@ EOR, accueil) : composition intacte, pas de retour a la ligne casse.
 Bump du service worker (et-202608280200) : feuilles partagees modifiees.
 Restent aux mains du proprietaire : convention INSPEM, seance photo, noms
 reels, volumes d'import, ticket investisseur.
+
+## 261 — QA des menus et sous-menus : symetrie retablie sur 21 pages (2026-08-28)
+
+Inventaire outille de tous les menus du site (extracteur maison, resolution
+des rewrites vercel.json) : 140 pages portent le mega-menu `nx` (5 panneaux,
+tiroir mobile), 64 articles du journal sont volontairement sans en-tete
+(lecture nue, barre mobile nezBar presente sur chacun), 5 pages outils et
+ar.html idem avec lien de sortie verifie. Les 2 pages boutique n'ont pas
+d'en-tete non plus — parti pris deja consigne, symetrique FR/EN. **0 lien
+de menu casse** sur l'ensemble.
+
+Defauts trouves et corriges : (1) **20 pages EN de 5 sous-dossiers**
+(enerconseils, intermediaire, petrochimie, tchaditech, tchaditude)
+portaient un menu d'une generation anterieure — entrees manquantes,
+libelles perimes. Transplantation du menu canonique EN complet, avec liens
+de bascule de langue recalcules page par page et marqueur is-active/
+aria-current pose sur la bonne rubrique. (2) **cibles-2030.html** n'avait
+ni menu ni scripts de navigation (son jumeau EN, si) : en-tete canonique
+FR pose, feuilles et scripts de navigation ajoutes, y compris le lieur du
+bouton burger (u2_e8be195d19be.js) absent au premier passage — detecte
+par le test mobile, pas par la lecture du code.
+
+Apres correction, l'inventaire converge : **69 pages FR et 69 pages EN
+strictement identiques** panneau par panneau, entree par entree.
+
+Verification : ouverture/fermeture au clic et a Escape prouvee en PIXELS
+(347 000 pixels changent a l'ouverture sur atlas-en, 284 000 a la
+fermeture sur societe) ; test mobile 5 pages (burger, accordeon,
+aria-expanded, Escape) : 5/5 vertes ; **banc de contraste du menu OUVERT**
+— jamais benche jusqu'ici — 240 elements x 2 themes, 0 echec ; balayage
+console des 21 pages modifiees, 2 themes : 0 erreur. HTML seul modifie :
+pas de bump du service worker.
+
+Mon erreur, et la lecon du ch.257 confirmee : j'ai d'abord cru le panneau
+transplante invisible (getComputedStyle rendait visibility:hidden apres
+clic) et j'ai passe du temps a chercher une regle CSS concurrente qui
+n'existait pas. La capture d'ecran a tranche en une mesure : le panneau
+peint parfaitement — ma premiere lecture etait prise en pleine transition.
+De meme, l'Escape "casse" sur societe fonctionnait tres bien : mon
+KeyboardEvent synthetique n'etait pas digne de confiance, la vraie touche
+l'est. L'instrument d'abord, le verdict ensuite.
+
+Decouverte consignee sans action : le script d'accordeon x_8dd24c99432e.js
+et le badge mm26 (present sur 205 pages) ciblent un DOM `.mega-ultra` qui
+n'existe plus nulle part au rendu — code dormant, sans effet ni erreur.
+Retrait a envisager lors d'un futur nettoyage de masse, pas dans ce
+chapitre.
