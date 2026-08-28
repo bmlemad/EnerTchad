@@ -56,14 +56,14 @@ h1 em{font-style:normal;background:linear-gradient(110deg,var(--blue-l),var(--go
 .router a:last-child{margin-bottom:0}
 .router a:hover{border-color:var(--blue-l);background:rgba(90,167,240,.08);transform:translateX(3px)}
 .router a .ar{color:var(--blue-l);font-family:var(--fm)}
-.toc{position:sticky;top:57px;z-index:40;background:rgba(6,11,20,.9);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid var(--hair)}
+.toc{position:sticky;top:var(--nav-h,132px);z-index:40;background:rgba(6,11,20,.9);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid var(--hair)}
 .toc-in{display:flex;gap:6px;overflow-x:auto;max-width:var(--wrap);margin:0 auto;padding:11px 24px;scrollbar-width:none}
 .toc-in::-webkit-scrollbar{display:none}
 .toc-in a{flex:none;font-family:var(--fm);font-size:.74rem;color:rgba(245,247,250,.78);border:1px solid transparent;border-radius:999px;padding:7px 14px;text-decoration:none;transition:.2s;white-space:nowrap}
 .toc-in a:hover{color:var(--blue-l)}
 .toc-in a.active{color:#08111f;background:var(--blue-l);font-weight:600}
 main{padding:10px 0 0}
-section{padding:clamp(46px,5.5vw,76px) 0 4px;scroll-margin-top:118px}
+section{padding:clamp(46px,5.5vw,76px) 0 4px;scroll-margin-top:calc(var(--nav-h,132px) + 70px)}
 .sk{font-family:var(--fm);font-size:0.6875rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ac,var(--blue-l));margin-bottom:10px;display:flex;align-items:center;gap:10px}
 .sk::before{content:"";width:24px;height:1px;background:currentColor;opacity:.6}
 h2{font-family:var(--fd);font-weight:700;font-size:clamp(1.55rem,3.3vw,2.35rem);letter-spacing:-.02em;color:#fff;margin:0 0 10px;line-height:1.1}

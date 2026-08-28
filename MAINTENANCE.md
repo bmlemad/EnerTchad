@@ -9656,3 +9656,45 @@ structure auditee etait deja entierement saine — la chaine du journal a
 ete construite avec la discipline que les menus (ch.261) n'avaient pas
 recue. La barre mobile, elle, confirme la lecon : l'uniformite se verifie,
 elle ne se suppose pas.
+
+## 268 — QA visuel de toutes les pages : l'oeil confirme, et attrape un sommaire noye (2026-08-28)
+
+Le proprietaire demande un QA visuel de toutes les pages et sections. Deux
+etages : un depistage geometrique automatique sur les 209 pages, puis une
+revue a l'oeil, tuile par tuile, d'un representant de chaque famille de
+gabarit.
+
+**Le depistage automatique** (par page, apres reveil de toutes les
+sections) : images cassees ou deformees — 0 ; textes qui se chevauchent,
+elements hors cadre, textes coupes — 650 alertes brutes, TOUTES reduites
+en artefacts apres calibrage et verification en pixels : faces avant/
+arriere des cartes a bascule, reponses d'accordeons repliees, texte en
+ligne adjacent. Trois versions du juge ont ete necessaires (exclure les
+elements positionnes, les freres de meme parent, les composants a
+bascule) — la regle des ch.255/263 encore : reparer le juge avant de
+croire le verdict.
+
+**La revue a l'oeil** : accueil (8 ecrans), article du journal, carnets,
+investisseurs, boutique, calculateur, glossaire, publications, 404 — plus
+l'accueil et investisseurs en theme clair, et les zones signalees par le
+depistage (services, brochure, FAQ, page arabe, clients). Tout est net,
+compose, coherent… sauf UN defaut reel : **le sommaire colle
+d'investisseurs glissait sous l'en-tete** — ancre a 57 px alors que
+l'en-tete complet (bandeau + navigation) occupe 132 px : 75 px de
+pastilles cachees et incliquables au defilement, dans les deux langues et
+les deux themes. La meme ancre fautive dormait sur clients et solutions
+(leur sommaire est aujourd'hui masque au profit des onglets cw-tabs, deja
+bien ancres — corrige quand meme, par coherence). Correction : ancrage a
+var(--nav-h) — la variable que la page definit deja — et marge d'ancre
+recalculee en fonction ; verifie au pixel apres coup : 0 px de
+recouvrement, la pastille active dore visible sous l'en-tete.
+
+Preuve stricte sur les 6 fichiers (seuls les deux remplacements enumeres),
+console 6 pages x 2 themes 0 erreur. HTML seul : pas de bump du service
+worker.
+
+Le bilan du QA visuel tient en une ligne : sur 209 pages, l'oeil n'a
+trouve qu'un seul defaut que les bancs n'avaient jamais vu — parce
+qu'aucun banc ne defilait en regardant le HAUT de l'ecran. Un juge de
+plus au repertoire : le recouvrement des elements colles se mesure, lui
+aussi.
