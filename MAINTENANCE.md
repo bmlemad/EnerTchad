@@ -9581,3 +9581,45 @@ Le reste du constat de poids est un parti pris d'architecture (styles en
 ligne par page, pages autonomes) qui a ses avantages (pas de cascade de
 dependances, cache par page) ; le remettre en cause serait un chantier de
 fond, pas un nettoyage — consigne ici, sans action.
+
+## 266 — Les sous-menus refondus dans le langage du site (2026-08-28)
+
+Le proprietaire demande une refonte des sous-menus pour coherence avec le
+site, capture a l'appui : la barre de sections des pages corporate
+(corp-nav) etait une bande grise pleine largeur a pastilles mono cerclees,
+etrangere au langage des autres barres. Etat des lieux prealable : le site
+a TROIS familles de sous-menus — la sous-nav de pole (80 pages, la
+reference : verre bleu, liens sans-serif, actif blanc a soulignement
+dore), les sommaires colles or-actif (investisseurs, clients, solutions —
+deja coherents), et les retardataires : corp-nav (6 pages) et les
+sommaires-pastilles simples (7 pages, survol VERT hors charte).
+
+Refonte, alignee sur la reference : la corp-nav adopte le verre de la
+sous-nav de pole (degrade bleu nuit, flou 14px, filet bas), ses liens
+passent en sans-serif .84rem, repos #CBD5E3, survol blanc sur voile
+discret, et gagnent un **etat actif** qu'elle n'avait jamais eu : pastille
+blanche a soulignement dore degrade, pilotee par un scrollspy pose sur les
+6 pages. Premier scrollspy ecrit a l'IntersectionObserver : il restait
+colle sur les sections longues — reecrit en « derniere section au-dessus
+de la ligne de lecture », verifie en descendant les pages (Conformite →
+ESG → Rapport). Les sommaires-pastilles gagnent un fond de verre (ils
+flottaient nus sur les photos), et le survol passe du vert a l'or.
+
+Au passage, trois defauts reveles par le travail : **ethique-en n'avait
+pas le sommaire** que sa jumelle francaise porte (ajoute, traduit, 5
+ancres verifiees) ; le kicker « Ou en sommes-nous » de societe (11 px or
+sur photo, ratio 3,83) passe a l'encre #F9E5B2 etablie au ch.256 ; les
+boutons gov-btn de gouvernance, dessines or mais rendus BLEUS par une
+regle generique !important des feuilles partagees, reprennent leur or
+(#F9E5B2) par une regle plus specifique — deux allers-retours au banc
+pour la faire gagner.
+
+Banc de contraste des 6 pages temoins, deux themes : 434 + 440 elements,
+**0 echec**. Console 12 pages x 2 themes : 0 erreur. Mobile : barre
+defilante sans debordement. Chaque remplacement pose par chaine exacte
+comptee a 1 avant substitution. HTML seul : pas de bump du service worker.
+
+Mon erreur du chapitre : avoir livre un scrollspy plausible sans le
+regarder marcher — c'est le test de descente qui l'a montre fige sur les
+sections longues. Un composant d'interface se juge en mouvement, pas a
+l'arret.
