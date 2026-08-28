@@ -10144,3 +10144,73 @@ canoniques.
 Bilan de la commande "apply all" : six chapitres (276 a 281), onze
 commits, cinq chantiers livres, trois PDF regeneres, une erreur de
 canon corrigee et consignee, et une QA finale sans correctif.
+
+## 283 — P10 : le compteur public de constitution est en ligne (2026-08-28)
+
+"Next on all" : les cinq dossiers en attente d'arbitrage (P6 a P10)
+sont avances jusqu'a leur limite realisable ; ce qui exige le
+proprietaire reste au registre, nominalement. Cinq chapitres.
+
+P10 d'abord, le plus simple : la reponse d'une societe non cotee au
+ticker des majors n'exigeait aucune donnee nouvelle — les jalons
+publies suffisaient. Une bande compteur s'affiche desormais en tete de
+la feuille de route investisseurs (FR et EN) : 1 jalon franchi (capital
+fondateur), 1 en cours (immatriculation), 3 a venir — avec la mention
+"mis a jour a chaque jalon". Le compte est derive des cinq jalons deja
+publies sur la page, rien d'invente. Benche dans les deux themes.
+
+## 284 — P9 : des alertes sans infrastructure, honnetement (2026-08-28)
+
+L'infrastructure d'envoi (backend, listes, double opt-in) reste au
+registre. Mais trois canaux reels existaient deja et n'etaient pas
+proposes comme alertes : le flux RSS des Carnets, le calendrier .ics
+du chapitre 276, et la boite officielle. La section agenda (FR et EN)
+offre desormais "Flux RSS" et "S'abonner aux alertes par e-mail" — un
+mailto pre-rempli vers contact@enertchad.td — avec la phrase honnete :
+la liste est tenue a la main, sans pistage, et les alertes
+automatisees viendront avec l'infrastructure dediee. Rien de simule.
+
+## 285 — P7 : la gouvernance s'incarne par les mandats, avant les noms (2026-08-28)
+
+Les noms reels restent un arbitrage proprietaire. Ce qui n'en est pas
+un : dire qui fait quoi. La page gouvernance (FR et EN) decrit
+desormais, sous les quatre organes OHADA, six fonctions de tete —
+direction generale, finance & IFRS, technique & operations, HSE-Q,
+conformite & juridique, relations investisseurs — chacune avec son
+mandat, et la mention en lettres capitales : titulaire annonce a la
+formalisation.
+
+Mon erreur du chapitre : un .upper() applique a une chaine contenant
+des entites HTML a produit "&EACUTE;" en toutes lettres a l'ecran —
+attrape au premier banc pixel, corrige en ecrivant l'accent en dur.
+Les entites ne survivent pas aux majuscules mecaniques.
+
+## 286 — P8 : l'arabe s'etend d'une section, pas encore de dix pages (2026-08-28)
+
+La traduction de ~10 pages reste au registre (arbitrage qualite).
+L'increment realisable : la section investisseurs de la page arabe
+recoit le compteur de constitution (1 accomplie, 1 en cours, 3 a
+venir), les cinq jalons en cartes, et l'agenda 2026 (memorandum et
+webinaire au T3, data room avec GCIC au T4) — redige dans le registre
+de langue deja publie sur la page et la fiche arabe, avec la mention
+"objectifs dates, pas des resultats". RTL verifie, deux themes, zero
+erreur console.
+
+## 287 — P6 : un point d'etape, en attendant le premier rapport annuel (2026-08-28)
+
+Le "rapport annuel de constitution" attend la formalisation des
+organes qui l'approuveraient. Ce qui existe des maintenant : un POINT
+D'ETAPE public — Point_Etape_EnerTchad_2026.pdf, quatre pages A4
+imprimees depuis docs-sources comme les brochures : couverture datee
+(aout 2026), l'annee en faits verifiables (compteur, tableau des cinq
+faits), la trajectoire chiffree (paliers de capital, cibles 2030,
+allocation, agenda), et la methode avec l'avertissement complet — "ni
+un rapport annuel approuve, ni un document d'offre". Ajoute a
+l'etagere de l'investisseur FR et EN. Le premier vrai rapport annuel
+reste au registre, la ou il doit etre.
+
+Fin de la vague "next on all" : cinq avancees publiees, cinq restes
+d'arbitrage nettement delimites au registre (noms reels, traduction
+arabe complete, infrastructure d'alertes, rapport annuel approuve,
+donnees de jalons futures). Index plein-texte regenere, service worker
+bumpe (et-202608290030).
