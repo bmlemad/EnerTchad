@@ -9411,3 +9411,36 @@ et le badge mm26 (present sur 205 pages) ciblent un DOM `.mega-ultra` qui
 n'existe plus nulle part au rendu — code dormant, sans effet ni erreur.
 Retrait a envisager lors d'un futur nettoyage de masse, pas dans ce
 chapitre.
+
+## 262 — Solde des actions en attente : le code dormant retire (2026-08-28)
+
+Le proprietaire demande d'appliquer toutes les actions en attente. Revue du
+registre : les sept entrees historiques ont ete soldees au ch.259, les
+orphelins de la racine supprimes au ch.243, le plancher typographique rendu
+au ch.260. Restaient d'un cote les arbitrages proprietaire et les veilles
+datees (qui ne sont pas a moi de trancher), et de l'autre UNE action
+technique consignee au ch.261 : le retrait du code dormant mega-ultra.
+
+Execution : le bloc inline mm26-badge (205 pages, un seul et meme bloc de
+644 caracteres partout, verifie par empreinte) et l'include de l'accordeon
+x_8dd24c99432e.js (203 pages, balise identique partout) sont retires par
+script. Les deux pages boutique portaient le badge sans l'accordeon —
+coherent avec leur absence d'en-tete, retirees comme les autres. Le fichier
+x_8dd24c99432e.js lui-meme, desormais sans aucune reference, est supprime
+du depot via l'interface GitHub. Les regles CSS .mega-ultra/.mu-* des
+feuilles partagees restent en place : inertes, jamais benchees en
+suppression, leur retrait toucherait des feuilles sous cache et n'apporte
+rien au visiteur — hors perimetre de cette action.
+
+Preuve 241.8 avant publication : pour chacun des 205 fichiers, le nouveau
+contenu est STRICTEMENT egal a l'ancien prive des deux blocs — 0 ecart.
+Verification fonctionnelle : menus mobiles 5/5 (burger, accordeon, Escape),
+mega-menu desktop ouvert en pixels (339 000 pixels changent), balayage
+console de 12 pages representatives x 2 themes : 0 erreur. HTML seul
+modifie : pas de bump du service worker (le fichier supprime n'est plus
+demande par personne ; le SW sert les actifs reseau d'abord depuis ch.258).
+
+Pourquoi ce menage : un script qui cherche un DOM disparu ne casse rien,
+mais il trompe le mainteneur — deux chapitres ont deja perdu du temps a
+inventorier un "systeme de menu mega-ultra" qui n'existe plus au rendu.
+Le code qu'on ne retire pas devient de la documentation mensongere.
