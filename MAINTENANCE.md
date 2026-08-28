@@ -10109,3 +10109,38 @@ navigation du site, qui est la seule source des noms de poles.
 
 Publie : trois PDF regeneres, trois sources docs-sources corrigees,
 fiche de presse, data book et ZIP presse republies avec les bons noms.
+
+## 282 — QA de la vague "versus majors" : tout tient, zero correctif (2026-08-28)
+
+Revue de qualite des cinq chantiers et des regenerations, avant de
+rendre la main. Chapitre de journal seulement : aucun fichier de site
+modifie.
+
+**Balayages** : console propre sur les sept pages touchees (accueil,
+investisseurs, cibles-2030, carnets, en FR et EN) dans trois
+configurations — sombre, clair, mobile 390 px ; axe a zero violation
+sur les sept.
+
+**Mobile** : la carte des operations passe en une colonne sans
+debordement horizontal ; les boutons du calendrier investisseur vivent
+dans l'accordeon mobile de la page et mesurent 262x54 et 258x44 une
+fois la section depliee — au-dessus du plancher tactile de 44 px.
+Premier verdict de l'instrument : "boutons 0x0". C'etait l'accordeon
+replie, pas un defaut — verifie au pixel apres expansion.
+
+**Palette plein-texte au clavier** : les fleches descendent jusqu'au
+groupe "Texte des pages", Entree navigue, Echap ferme. La encore,
+une attente fixe de 2,5 s avait conclu "Entree ne navigue pas" ;
+waitForNavigation prouve le contraire en une seconde. Deux fois dans
+la meme vague : l'attente fixe est un juge myope, la promesse de
+navigation est le bon instrument.
+
+**Livrables depuis la production** : les deux .ics passent un parseur
+strict (4 evenements chacun, tous TENTATIVE avec UID et DTSTART) ; le
+ZIP presse est integre (14 entrees, fiche au canon) ; le classeur
+s'ouvre, six feuilles, allocation totale a 100 %, noms de poles
+canoniques.
+
+Bilan de la commande "apply all" : six chapitres (276 a 281), onze
+commits, cinq chantiers livres, trois PDF regeneres, une erreur de
+canon corrigee et consignee, et une QA finale sans correctif.
