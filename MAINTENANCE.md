@@ -9958,3 +9958,118 @@ un livrable hors depot, la verification mecanique reste due.
 
 Un fichier modifie (MAINTENANCE.md), pas de bump du service worker
 (changement hors assets).
+
+## 276 — P1 : l'agenda investisseur devient abonnable (.ics) (2026-08-28)
+
+Premier chantier du plan "versus majors" (chapitre 275). Les majors
+publient des calendriers investisseurs abonnables ; le site avait un
+agenda statique. Deux calendriers iCalendar sont desormais publies :
+agenda-investisseur.ics (FR) et investor-calendar-en.ics (EN), avec les
+quatre rendez-vous de la page investisseurs — memorandum (T3 2026),
+webinaire (T3 2026), data room avec GCIC (T4 2026), point d'etape annuel.
+
+Honnetete de constitution respectee : chaque evenement est
+STATUS:TENTATIVE, en journee entiere, avec une description qui rappelle
+"date indicative — societe en constitution" ; le calendrier s'annonce
+avec un rafraichissement hebdomadaire (REFRESH-INTERVAL) pour que les
+abonnes recoivent les dates confirmees quand elles le seront. Deux
+boutons .btn2 (S'abonner en webcal, Telecharger le .ics) rejoignent la
+section agenda des deux pages, verifies au pixel dans les deux themes.
+En production : text/calendar, BEGIN:VCALENDAR servi.
+
+## 277 — P2 : la palette cherche desormais dans le texte des 208 pages (2026-08-28)
+
+Deuxieme chantier : la recherche plein-texte. La palette Ctrl+K ne
+connaissait que ses 474 entrees a mots-cles rediges. Un index du corps
+des pages est desormais construit (ftx_fr.json, 105 pages ; ftx_en.json,
+103 pages ; 200 mots significatifs par page, normalises sans accents),
+charge paresseusement au premier usage — rien n'est telecharge tant
+qu'on ne cherche pas.
+
+Les deux moteurs (c_abd9013c3955.js, c_df4f446df566.js) recoivent le
+meme greffon : a partir de 3 caracteres, les pages dont le texte contient
+TOUS les mots de la requete s'ajoutent sous un groupe "Texte des pages" /
+"Page text", sans doublonner les resultats a mots-cles (deduplication par
+chemin). Un numero de sequence invalide les reponses tardives pour eviter
+les resultats fantomes en cours de frappe. Teste en local : "sabangali"
+trouve la page Contact des deux cotes, Enter navigue, zero erreur
+console. Service worker bumpe (et-202608282120).
+
+Mon erreur du chapitre : mon premier controle Playwright a declare
+"Enter ne navigue pas" — j'avais attendu 1,2 s quand la navigation
+locale en prenait davantage ; le journal de Playwright montrait la
+navigation bel et bien partie. L'instrument ne juge plus jamais seul,
+meme quand c'est moi qui tiens le chronometre.
+
+## 278 — P3 : une carte SVG unifie les operations cibles (2026-08-28)
+
+Troisieme chantier : la geographie. Chaque pole racontait ses lieux dans
+son coin ; aucune vue d'ensemble. La page cibles-2030 (FR et EN) recoit
+une section "Une carte, toutes les operations cibles" : un Tchad stylise
+en SVG inline (trace simplifie a ~29 sommets, projection equirectangulaire
+maison), avec le siege (N'Djamena), la raffinerie modulaire cible
+(Djarmaya), le gaz de Sedigui au bassin du lac, la reprise de champs au
+bassin de Doba, le corridor d'export en pointilles vers Kribi et les
+villes du reseau (Moundou, Sarh, Abeche) — chaque implantation reprise
+dans une liste laterale cliquable vers sa page. role="img", title et
+desc pour les lecteurs d'ecran ; la legende assume : "carte stylisee —
+positions indicatives".
+
+Deux allers-retours au pixel ont ete necessaires : les etiquettes Doba,
+Moundou et Sarh se chevauchaient au sud (repositionnees), et une
+coordonnee flottante (126.19999...) a fait rater un remplacement ancre
+sur "126.2" — controle par capture apres chaque retouche, dans les deux
+themes et les deux langues.
+
+## 279 — P5 : le kit presse devient telechargeable en un clic (2026-08-28)
+
+Quatrieme chantier. Le kit media du site (logo, banniere, photos,
+boilerplates, palette — chapitre anterieur) restait une collection de
+liens un par un. Un bundle unique kit-presse-enertchad.zip (0,8 Mo) est
+desormais publie : logo SVG et PNG 512, banniere 1200x630, fiche de
+presse, brochures FR et EN, quatre photos d'illustration, boilerplates
+FR/EN en .txt, palette officielle, et un LISEZMOI qui rappelle l'usage
+editorial, les marques en depot (OAPI) et le statut de societe en
+constitution. Lien "Tout le kit (ZIP)" en tete des cartes kit media de
+carnets et carnets-en.
+
+Au passage, une incoherence attrapee : la fiche de presse
+(EnerTchad-fiche-presse.md) disait encore "sept poles d'activite" — le
+document que les redactions copient-collent contredisait le site corrige
+au chapitre 271. Reecrite : huit poles, quatre de chaine (Amont,
+Intermediaire, Aval, EnerChimie) et quatre de soutien. Les photos
+institutionnelles attendront la seance photo (registre).
+
+## 280 — P4 : le data book investisseur, chaque chiffre avec sa source (2026-08-28)
+
+Cinquieme et dernier chantier realisable du plan. Les majors publient
+des data books telecharges par les analystes ; EnerTchad a desormais le
+sien, a l'echelle d'une societe en constitution :
+Data_Book_EnerTchad.xlsx, six feuilles — Lisez-moi (avertissement
+complet, legende des statuts), Identite, Capital et jalons, Cibles 2030,
+Allocation cible (la seule formule du classeur, SUM des parts, verifiee
+a 100 %), Contexte marche. Chaque ligne porte sa page source et son
+millesime ; le 144 kb/j reste au millesime 2025 de l'Atlas (l'arbitrage
+2024/2025 du registre reste ouvert). Carte ajoutee a l'etagere de
+l'investisseur FR et EN.
+
+La traque des "7 poles" du chapitre 271 n'etait pas finie : les tuiles
+data-count de cibles-2030 (FR et EN) affichaient encore "7 poles" — le
+compteur anime avait echappe au motif <b>7</b> — et les meta
+description et og:description de l'accueil FR disaient "Sept poles".
+Corriges (le suffixe FR "poles" de la tuile EN aussi). Il reste, hors
+perimetre publie, docs-sources/brochure_print.html ("Sept poles") : la
+source d'impression de la brochure PDF, a regenerer — inscrit au
+registre.
+
+Mon erreur du chapitre : la premiere version de la carte du data book
+sur l'etagere etait redigee sans accents — mon reflexe de journal
+applique a une page publique. Corrigee avant publication ("publiés",
+"millésimes", "identité", "août") ; le francais du site porte ses
+accents, seul ce journal n'en porte pas.
+
+Bilan des cinq chantiers : 2 calendriers .ics, 2 index plein-texte et
+2 moteurs greffes, 2 cartes SVG, 1 ZIP presse, 1 classeur XLSX,
+12 fichiers HTML retouches, 2 bumps de service worker
+(et-202608282120 puis et-202608282220 avec la regeneration des index),
+6 commits. P6 a P10 attendent leurs arbitrages au registre.
