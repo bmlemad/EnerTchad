@@ -9698,3 +9698,42 @@ trouve qu'un seul defaut que les bancs n'avaient jamais vu — parce
 qu'aucun banc ne defilait en regardant le HAUT de l'ecran. Un juge de
 plus au repertoire : le recouvrement des elements colles se mesure, lui
 aussi.
+
+## 269 — La boutique modernisee : rails de verre, or franc, panier raffine (2026-08-28)
+
+Le proprietaire demande de moderniser la place de marche. Etat des lieux
+prealable complet (deux themes, desktop et mobile, contrat JavaScript du
+panier et du segmenteur) : la boutique etait fonctionnelle mais datee —
+pastilles plates, bouton « Ajouter » gris efface, badges de confiance en
+texte nu, panier au fond mat.
+
+Refonte par UN bloc de styles ajoute en fin de page (shop-modern-2026),
+sans toucher une ligne du JavaScript ni du markup :
+
+- **Badges de confiance** (prix ARSAT, dernier kilometre, qualite tracee,
+  devis) : pastilles de verre bombees, comme les cartes du site.
+- **Segmenteur et filtres** : rails de verre au degrade bleu nuit, survol
+  discret, **actif en or degrade** avec ombre portee — le langage des
+  actifs du site (sous-nav de pole, onglets).
+- **Cartes produits** : levee au survol avec lueur a la couleur d'accent
+  de la categorie (le motif des cartes de l'accueil).
+- **« Ajouter » passe a l'or franc** texte sombre — l'action primaire
+  cesse d'etre grise ; le CTA du devis suit, plus lumineux.
+- **Panier** : verre fluide (degrade + flou + ombre profonde), etat vide
+  raffermi.
+- **Theme clair** : les rails et badges basculent en verre clair a texte
+  sombre (premiere version oubliee — c'est le banc qui l'a montree, 22
+  echecs d'un coup : mes fonds sombres restaient sous les encres claires
+  du theme clair ; adaptation posee, re-banc 0).
+
+Premiere fois que la boutique passe au banc : deux encres faibles
+PRE-EXISTANTES revelees et corrigees au passage (kicker des catalogues a
+55 % d'opacite → 78 %, lien rose des derives #D177B4 → #E9A8D2).
+
+Verification : parcours complet du panier apres refonte (ajout, quantite,
+compteur, modale de devis — ouverte, recapitulee, fermee a la souris
+reelle ; le clic synthetique qui « ne fermait pas » etait l'instrument,
+pas la page, lecon du ch.261 confirmee) ; banc de contraste 330 elements
+x 2 themes : 0 echec ; console 2 pages x 2 themes : 0 erreur ; captures
+avant/apres desktop, mobile, clair. Preuve stricte : nouveau = ancien +
+un bloc + deux encres. HTML seul : pas de bump du service worker.
