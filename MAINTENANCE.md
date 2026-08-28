@@ -9444,3 +9444,55 @@ Pourquoi ce menage : un script qui cherche un DOM disparu ne casse rien,
 mais il trompe le mainteneur — deux chapitres ont deja perdu du temps a
 inventorier un "systeme de menu mega-ultra" qui n'existe plus au rendu.
 Le code qu'on ne retire pas devient de la documentation mensongere.
+
+## 263 — Ultra revue de toutes les pages : le bloc de continuite remis a sa place (2026-08-28)
+
+Revue integrale des 209 pages, en re-passant les juges etablis et en en
+ajoutant de nouveaux jamais passes en bloc.
+
+Juges etablis, tous verts : **836 chargements** (209 pages x 2 themes x
+2 viewports) — 0 erreur console, 0 debordement horizontal, 0 requete
+echouee ; audit statique complet — 0 lien casse, 0 ancre morte, 0 image
+sans alt, 0 page sans titre/description/canonical, 0 incoherence hreflang,
+0 defaut h1, plan du site coherent ; **axe-core sur les 209 pages : 0
+violation**.
+
+Nouveaux juges : validite JSON de chaque bloc JSON-LD (0 invalide) ;
+alignement headline/h1 des articles (57 ecarts releves, TOUS reduits a la
+ponctuation ou aux entites HTML — 0 substantiel) ; doublons de titres et
+de descriptions entre pages distinctes (0) ; mots doubles dans le texte
+visible (109 alertes brutes, toutes des artefacts d'adjacence d'etiquettes ;
+au sein d'un meme noeud de texte il ne reste que « nous nous efforcons »,
+du francais legitime) ; liens externes en http non securise (0) ;
+coherence lang/suffixe (0 ecart).
+
+**Le defaut reel** : le bloc « Continuer dans le pole » etait incoherent
+sur 14 pages anglaises. Neuf pages racine EN (accessibilite, avertissements,
+carrieres, charte, cibles-2030, communautes, gouvernance, innovation, plan
+du site) portaient un bloc « Continue in Upstream » colle la par erreur —
+un bloc Amont sur une declaration d'accessibilite, sans equivalent
+francais. Et cinq pages de pole EN n'avaient PAS le bloc que leur jumelle
+francaise porte : amont/eor-en et les quatre pages aval (distribution,
+produits, raffinage, reseau — le pole Aval n'avait aucun bloc EN nulle
+part). Correction : bloc errant retire des neuf pages ; bloc Amont
+recompose pour eor-en a partir des cartes anglaises existantes ; bloc
+Aval anglais construit (quatre cartes traduites du francais, chaque page
+excluant sa propre carte, moyeu vers /pole-aval-en), pose au meme point
+d'ancrage que cote francais (apres la navigation d'article).
+
+Verification de la correction : preuve stricte sur les 14 fichiers (nouveau
+= ancien plus ou moins exactement un bloc, rien d'autre) ; re-audit des
+liens 0 casse ; console 14 pages x 2 themes 0 erreur ; axe 0 ; captures des
+blocs poses, deux themes — memes classes et memes encres que les 50 blocs
+deja mesures du site. HTML seul : pas de bump du service worker.
+
+Classements sans action : les « jumeaux manquants » signales par mon
+inventaire (pole-amont-en vs amont/index.html, outils FR seuls) sont des
+artefacts de ma convention de nommage — le hreflang, lui, est complet ;
+les 57 ecarts headline/h1 de ponctuation ne meritent pas 57 republications.
+
+Mon erreur, encore la meme famille : mes nouveaux juges ont d'abord crie
+fort (18 jumeaux « manquants », 57 headlines « desalignes », 109 mots
+« doubles ») ; tout sauf quatorze pages etait du bruit d'instrument. La
+regle du ch.255 tient : reparer le juge avant de croire le verdict — et
+c'est le juge repare qui a revele le seul vrai defaut, invisible jusqu'ici.
