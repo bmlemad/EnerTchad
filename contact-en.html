@@ -564,13 +564,13 @@ html.et-jlight .rootland::after{
   <fieldset class="ct-step" data-step="1">
     <legend>What is your request about?</legend>
     <div class="ct-cards">
-      <label class="ct-card"><input type="radio" name="ctType" value="Approvisionnement / Contrat B2B" required><span><strong>Supply &amp; B2B</strong><small>Fuels, LPG, lubricants — fleets, industry, contracts</small></span></label>
-      <label class="ct-card"><input type="radio" name="ctType" value="Opérateur E&amp;P — étude / pilote / OFS"><span><strong>E&amp;P operator</strong><small>EOR, oilfield services, a study or pilot on your fields</small></span></label>
-      <label class="ct-card"><input type="radio" name="ctType" value="Partenariat industriel ou technique"><span><strong>Partnership</strong><small>Industrial, technical or technological</small></span></label><label class="ct-card"><input type="radio" name="ctType" value="Marchés publics / Institutions (B2G)"><span><strong>Institutions &amp; public contracts</strong><small>Government bodies, agencies, framework contracts — at the ARSAT price</small></span></label>
-      <label class="ct-card"><input type="radio" name="ctType" value="Investissement"><span><strong>Investment</strong><small>Capital, 10&nbsp;M → 1&nbsp;bn → 20&nbsp;bn FCFA trajectory</small></span></label>
-      <label class="ct-card"><input type="radio" name="ctType" value="Candidature / Talents"><span><strong>Applications &amp; talent</strong><small>Joining EnerTchad, the Tchaditude academy</small></span></label>
-      <label class="ct-card"><input type="radio" name="ctType" value="Presse"><span><strong>Press</strong><small>Interviews, information, media kit</small></span></label>
-      <label class="ct-card"><input type="radio" name="ctType" value="Autre"><span><strong>Other request</strong><small>Any other question — we will point you the right way</small></span></label>
+      <label class="ct-card"><input type="radio" name="ctType" value="Supply / B2B contract" required><span><strong>Supply &amp; B2B</strong><small>Fuels, LPG, lubricants — fleets, industry, contracts</small></span></label>
+      <label class="ct-card"><input type="radio" name="ctType" value="E&amp;P operator — study / pilot / OFS"><span><strong>E&amp;P operator</strong><small>EOR, oilfield services, a study or pilot on your fields</small></span></label>
+      <label class="ct-card"><input type="radio" name="ctType" value="Industrial or technical partnership"><span><strong>Partnership</strong><small>Industrial, technical or technological</small></span></label><label class="ct-card"><input type="radio" name="ctType" value="Public contracts / Institutions (B2G)"><span><strong>Institutions &amp; public contracts</strong><small>Government bodies, agencies, framework contracts — at the ARSAT price</small></span></label>
+      <label class="ct-card"><input type="radio" name="ctType" value="Investment"><span><strong>Investment</strong><small>Capital, 10&nbsp;M → 1&nbsp;bn → 20&nbsp;bn FCFA trajectory</small></span></label>
+      <label class="ct-card"><input type="radio" name="ctType" value="Application / Talent"><span><strong>Applications &amp; talent</strong><small>Joining EnerTchad, the Tchaditude academy</small></span></label>
+      <label class="ct-card"><input type="radio" name="ctType" value="Press"><span><strong>Press</strong><small>Interviews, information, media kit</small></span></label>
+      <label class="ct-card"><input type="radio" name="ctType" value="Other"><span><strong>Other request</strong><small>Any other question — we will point you the right way</small></span></label>
     </div>
     <p class="ct-err" id="ctErr1" role="alert">Select the subject of your request to continue.</p>
   </fieldset>
@@ -657,7 +657,7 @@ function show(n){step=n;
  ctPrev.hidden=(n===1);ctNext.hidden=(n===3);ctSend.hidden=(n!==3);
  var lg=f.querySelector('.ct-step[data-step="'+n+'"] legend');
  if(lg){lg.setAttribute('tabindex','-1');lg.focus({preventScroll:true});var _y=lg.getBoundingClientRect().top+window.scrollY-215;window.scrollTo({top:_y,behavior:'smooth'});}
- if(n===2){ctProdWrap.hidden=(type().indexOf('Approvisionnement')!==0);}
+ if(n===2){ctProdWrap.hidden=(type().indexOf('Supply')!==0);}
  if(n===3){var rows=[['Request',typeLabel()],['Name',ctName.value],['Organisation',ctOrg.value||'\u2014'],['Email',ctMail.value]];
   if(!ctProdWrap.hidden&&ctProd.value)rows.push(['Product',ctProd.value]);
   rows.push(['Message',ctMsg.value]);

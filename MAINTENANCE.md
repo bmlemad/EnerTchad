@@ -9496,3 +9496,49 @@ fort (18 jumeaux « manquants », 57 headlines « desalignes », 109 mots
 « doubles ») ; tout sauf quatorze pages etait du bruit d'instrument. La
 regle du ch.255 tient : reparer le juge avant de croire le verdict — et
 c'est le juge repare qui a revele le seul vrai defaut, invisible jusqu'ici.
+
+## 264 — QA des interactifs restants : la recherche reparee la ou elle etait morte (2026-08-28)
+
+Apres les menus (ch.261), les systemes interactifs jamais passes au banc :
+la palette de recherche Ctrl+K, la page 404 (exclue de tous les balayages
+depuis toujours) et les formulaires.
+
+**Palette de recherche — trois defauts reels.** (1) **27 resultats
+pointaient des ancres inexistantes** : l'index anglais (cmdk_en.js) visait
+des identifiants traduits (#produce, #mission, #thesis…) alors que les
+pages anglaises ont garde les identifiants francais (#produire, #vision,
+#these…) — 26 entrees EN corrigees une a une apres cartographie section
+par section, plus /faq#faq (les pages FAQ n'ont pas d'ancre de contenu :
+fragment retire). L'utilisateur atterrissait en haut de page au lieu de la
+section promise. (2) **Quatre pages francaises avaient une recherche
+morte** : accessibilite, avertissements, charte et plan-du-site portaient
+le dialogue et le bouton loupe mais aucun moteur — Ctrl+K ne faisait rien.
+Le moteur des pages racine FR y est ajoute, au meme emplacement que sur
+societe.html. (3) Verification totale apres correction : **474 URL
+d'index, 0 cassee, 0 ancre morte** ; tests de comportement sur 6 pages
+(ouverture, resultats groupes, navigation Entree, fermeture Escape) : tout
+fonctionne, y compris sur les 4 pages reparees.
+
+**Page 404** : premiere inspection de sa vie — console 2 themes propre,
+axe 0 violation, liens sortants valides, palette de recherche presente et
+motorisee, et la production sert bien le statut HTTP 404 avec cette page.
+
+**Formulaire de contact EN** : les huit boutons radio portaient des
+valeurs FRANCAISES sous des etiquettes anglaises — le recapitulatif que
+l'utilisateur copie disait « Type: Approvisionnement / Contrat B2B » sur
+la page anglaise. Valeurs traduites, et la condition du script qui ouvre
+le choix de produit (indexOf('Approvisionnement')) basculee sur 'Supply'
+— verifiee en parcourant le formulaire de bout en bout dans les deux
+langues : recapitulatif entierement anglais cote EN, francais intact cote
+FR, le selecteur de produit apparait toujours au bon moment.
+
+Actifs JS modifies (deux index de recherche) : **bump du service worker
+et-202608281212**. Preuve stricte sur les 8 fichiers (chaque nouveau =
+ancien plus exactement les remplacements enumeres) ; console des pages
+touchees 2 themes : 0 erreur.
+
+Mon erreur du chapitre : j'ai failli traduire les valeurs des radios sans
+lire le script — la condition indexOf('Approvisionnement') aurait casse en
+silence le selecteur de produit. Le grep des comparaisons AVANT le
+remplacement est ce qui l'a evite : on ne renomme pas une valeur sans
+chercher qui la compare.
