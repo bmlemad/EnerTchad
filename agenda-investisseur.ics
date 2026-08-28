@@ -1,0 +1,71 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//EnerTchad S.A.//Agenda investisseur//FR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:EnerTchad — Agenda investisseur
+X-WR-CALDESC:Rendez-vous et jalons investisseurs d’EnerTchad S.A. (soci
+ été en constitution) — dates indicatives.
+REFRESH-INTERVAL;VALUE=DURATION:P1W
+X-PUBLISHED-TTL:P1W
+BEGIN:VEVENT
+UID:jalon-memorandum-2026@enertchad.td
+DTSTAMP:20260828T120000Z
+DTSTART;VALUE=DATE:20260915
+DTEND;VALUE=DATE:20260916
+SUMMARY:Publication du mémorandum (cible T3 2026)
+DESCRIPTION:Mise à disposition du mémorandum d’investissement et de l
+ ’étagère documentaire actualisée. Date indicative — société en c
+ onstitution ; cible annoncée sur la page investisseurs. La confirmation 
+ sera publiée sur le site.
+URL:https://enertchad-delta.vercel.app/investisseurs#agenda
+STATUS:TENTATIVE
+TRANSP:TRANSPARENT
+CATEGORIES:EnerTchad
+END:VEVENT
+BEGIN:VEVENT
+UID:jalon-webinaire-2026@enertchad.td
+DTSTAMP:20260828T120000Z
+DTSTART;VALUE=DATE:20260929
+DTEND;VALUE=DATE:20260930
+SUMMARY:Webinaire investisseurs (cible T3 2026)
+DESCRIPTION:Présentation de la thèse et du modèle de capital\, question
+ s-réponses avec la direction. Date indicative — société en constitut
+ ion ; cible annoncée sur la page investisseurs. La confirmation sera pub
+ liée sur le site.
+URL:https://enertchad-delta.vercel.app/investisseurs#agenda
+STATUS:TENTATIVE
+TRANSP:TRANSPARENT
+CATEGORIES:EnerTchad
+END:VEVENT
+BEGIN:VEVENT
+UID:jalon-dataroom-2026@enertchad.td
+DTSTAMP:20260828T120000Z
+DTSTART;VALUE=DATE:20261117
+DTEND;VALUE=DATE:20261118
+SUMMARY:Data room & rencontres investisseurs (cible T4 2026)
+DESCRIPTION:Ouverture d’une data room aux investisseurs qualifiés et re
+ ncontres bilatérales\, avec GCIC. Date indicative — société en const
+ itution ; cible annoncée sur la page investisseurs. La confirmation sera
+  publiée sur le site.
+URL:https://enertchad-delta.vercel.app/investisseurs#agenda
+STATUS:TENTATIVE
+TRANSP:TRANSPARENT
+CATEGORIES:EnerTchad
+END:VEVENT
+BEGIN:VEVENT
+UID:jalon-point-etape-2027@enertchad.td
+DTSTAMP:20260828T120000Z
+DTSTART;VALUE=DATE:20270330
+DTEND;VALUE=DATE:20270331
+SUMMARY:Point d’étape annuel EnerTchad (indicatif)
+DESCRIPTION:Revue des jalons franchis et actualisation des cibles — au r
+ ythme de la constitution. Date indicative — société en constitution ;
+  cible annoncée sur la page investisseurs. La confirmation sera publiée
+  sur le site.
+URL:https://enertchad-delta.vercel.app/investisseurs#agenda
+STATUS:TENTATIVE
+TRANSP:TRANSPARENT
+CATEGORIES:EnerTchad
+END:VEVENT
+END:VCALENDAR
