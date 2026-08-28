@@ -9737,3 +9737,52 @@ pas la page, lecon du ch.261 confirmee) ; banc de contraste 330 elements
 x 2 themes : 0 echec ; console 2 pages x 2 themes : 0 erreur ; captures
 avant/apres desktop, mobile, clair. Preuve stricte : nouveau = ancien +
 un bloc + deux encres. HTML seul : pas de bump du service worker.
+
+## 270 — Ultra revue de la navigation, desktop et mobile — et les angles morts solds (2026-08-28)
+
+Le proprietaire demande un QA et une ultra revue des outils de navigation
+sur les deux formats. Revue en trois etages, precedee du solde des
+derniers angles morts du site.
+
+**Angles morts d'abord** : la page arabe (ar.html) passe sa premiere
+inspection complete — 42 liens tous valides, axe 0 violation, console
+propre 2 themes, banc de contraste 81 elements x 2 themes 0 echec,
+dir=rtl coherent. Les deux outils interactifs repondent : le calculateur
+recalcule quand on bouge ses 6 curseurs (0 NaN, 0 erreur), le
+configurateur recompose a chaque choix. Rendu d'impression : verifie sur
+l'accueil (la brochure d'un mega-octet depasse le budget du generateur
+PDF headless — limite d'instrument consignee, pas defaut de page ; le
+bouton Imprimer de la page appelle l'impression du navigateur, hors de
+cause).
+
+**Statique navigation** : la bascule de langue de CHAQUE page pointe sa
+vraie jumelle (moyeux de pole compris, via leurs adresses reecrites), et
+la jumelle pointe en retour — 0 defaut sur les 209 pages. toTop present
+partout sauf les 3 outils autonomes (choix assume), skip-link partout.
+
+**Matrice desktop** (8 pages representatives) : les 5 panneaux s'ouvrent
+— preuve en pixels, 297 000 pixels changent — Escape ferme (296 000
+pixels reviennent sur publications, page que la lecture computee accusait
+a tort), focus clavier ouvre, le bouton theme bascule sur les pages
+editoriales, toTop peint et REMONTE (scrollY 2500 → 0). La moitie des
+verdicts bruts de ma matrice etaient des mensonges de getComputedStyle en
+plein headless — aria-expanded=true avec visibility:hidden pendant que
+297 000 pixels peignaient le panneau. Troisieme chapitre ou cet
+instrument ment (257, 261, 268) : desormais il ne juge plus jamais seul.
+
+**Matrice mobile** (8 pages) : burger, verrou de defilement du corps pose
+ET retire, exclusivite de l'accordeon (ouvrir un pole ferme l'autre),
+bascule de langue dans le tiroir, Escape — tout vert. **Un defaut reel** :
+les quatre liens de moyeu du tiroir (« Amont › », « Intermediaire › »,
+« Aval › », « Petrochimie › ») ne faisaient que 28 px de haut — sous le
+plancher tactile de 44 px que le site s'impose partout depuis le ch.257.
+Corrige dans le bloc mobile de nav_a.css (min-height 44 px, centrage) ;
+re-matrice : 0 cible petite, tiroir intact a l'oeil, desktop inchange
+(la regle vit dans la media query mobile). Feuille partagee modifiee :
+**bump du service worker et-202608281508**.
+
+Bilan : sur toute la surface de navigation — mega-menu, tiroir, bascules
+de langue, toTop, theme, Escape, verrous — un seul defaut reel, tactile
+et mobile, invisible des bancs precedents parce qu'aucun ne mesurait la
+HAUTEUR des cibles dans un accordeon deploye. Ce juge-la rejoint le
+repertoire.
