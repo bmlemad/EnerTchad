@@ -11004,3 +11004,51 @@ La lecon vaut plus que le resultat : quand un calibrage echoue, la
 premiere hypothese a tester n'est pas que l'instrument ment, c'est
 que le cas de test n'est pas celui qu'on croit. Chapitre journal :
 aucun fichier du site ne change.
+
+## 318 — QA des bandeaux : deux de moins, le reste en verre (2026-08-29)
+
+Inventaire de toutes les bandes horizontales des 210 pages —
+tout element large de plus de 90 % de la fenetre et haut de moins de
+220 px, avec son opacite, son flou et son texte. Puis tri : ce qui
+sert, ce qui double, ce qui ne s'affiche meme pas.
+
+**Le bandeau de cotations ne s'affichait nulle part.** Desactive par
+un display:none!important pose il y a longtemps, son balisage restait
+dans 83 pages : un bloc de 4 Ko chacune, soit **343 Ko de balisage
+mort**. Verifie a huit largeurs, de 360 a 1600 px : jamais visible.
+Retire, avec son commentaire d'entete ; le script de positionnement
+qui le cherchait le gardait deja en garde nulle, et reste en place
+pour les barres collantes.
+
+**Soixante-quinze pages portaient deux pieds de navigation.** Le
+pager riche (« Accueil · Suivant → nom de la page ») et un second
+plus pauvre (« Retour · Nos Poles »), empiles, 290 px de bandes pour
+une seule fonction. Le pauvre est retire ; le retour reste assure par
+le fil d'Ariane et par le lien Accueil du premier.
+
+**Le bandeau utilitaire etait le seul opaque de l'en-tete.** A 0,92
+d'opacite et sans flou, il coupait net l'image de fond en haut de
+138 pages, juste au-dessus d'une barre de navigation en verre. Il
+passe a 0,40 avec flou et saturation ; le theme clair passe de 0,96 a
+0,58. Le sommaire collant des pages investisseurs suit, de 0,90 a
+0,40.
+
+Contraste mesure sur les pixels reellement peints, texte masque, dans
+les deux themes : bandeau utilitaire de 5,20 a 6,66 ; sommaire 13,3
+en sombre et 14,6 en clair — tous au-dessus du seuil AA de 4,5.
+
+**Ma sonde a menti deux fois avant de dire vrai.** Elle prenait comme
+reference le premier texte venu de la bande — parfois la pastille
+active, qui porte son propre fond dore : elle mesurait alors du texte
+sombre sur une bande sombre et annoncait 1,17 puis 1,01. J'ai failli
+durcir le verre pour rien. Corrigee — elle ecarte desormais tout
+element portant un fond propre —, elle a revele le vrai defaut, qui
+etait ailleurs : les liens du sommaire gardaient une couleur claire
+dans les deux themes. Sur le nouveau fond clair ils devenaient
+illisibles ; ils prennent enfin une couleur sombre en theme clair.
+
+Restent, assumes : la barre de chaine a 0,02 et la sous-navigation de
+pole a 0, deja en verre ; et la banniere cookies, opaque sur deux
+pages ou elle est injectee par script — element transitoire, hors du
+decor. Cache-buster de la feuille de navigation et service worker
+portes a 202608291130 ; plan XML redate.
