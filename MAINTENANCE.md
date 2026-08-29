@@ -10774,3 +10774,46 @@ pages au 29 aout) et le service worker passe a et-202608290830, les
 index etant des ressources servies par le cache. QA finale : onze
 pages temoins, deux themes, console, axe, requetes et debordements —
 zero anomalie ; huit pages relues au WebKit iPhone — idem.
+
+## 312 — Des phrases trop grandes : trois debordements, dont deux anciens (2026-08-29)
+
+Signalement du proprietaire : des phrases debordent. Mesure au
+navigateur sur dix-neuf largeurs de fenetre, de 320 a 1920 px, dans
+les deux langues — trois defauts distincts, tous reels.
+
+**Les titres de poles ne tenaient plus dans les demi-panneaux.** Mon
+appariement 2x2 (chapitres 298-299) a reduit chaque panneau de
+moitie sans toucher a la taille des titres, restee calibree pour des
+bandes pleine largeur : 50 px. En anglais, ou les intitules sont plus
+longs, quatre titres debordaient leur boite de 22 a 38 px
+(« Chemistry & petrochemicals » demandait 424 px dans 387).
+Les titres sont plafonnes a l'interieur des grilles appariees
+(2,6 rem au lieu de 3,15) et bornes a 19 caracteres de large, les
+resumes a 34.
+
+**La phrase du bandeau anglais depassait la fenetre depuis toujours.**
+« Building the first 100 % Chadian integrated oil company. », forcee
+sur une seule ligne au-dessus de 680 px, mesure environ 1,01 fois la
+largeur de la fenetre : elle sortait de l'ecran de 47 a 65 px entre
+800 et 1 150 px. Elle ne reste desormais sur une ligne qu'au-dela de
+1 400 px, ou elle tient. Le francais avait le meme defaut a la
+charniere : a 681 px, juste au-dessus de l'ancien seuil, son
+troisieme bandeau sortait de 17 px — le seuil passe a 719 px.
+
+**Mon erreur de methode** : mes balayages testaient deux largeurs,
+1440 et 390. Ces trois defauts vivent entre les deux. Un test qui
+n'echantillonne que les extremes ne prouve rien du milieu ; le
+detecteur de ce chapitre balaie desormais dix-neuf largeurs.
+
+**Et un defaut de traduction trouve au passage** : les bandeaux
+anglais de l'accueil affichaient « Upstream · upstream »,
+« Midstream · midstream », « Downstream · downstream ». Le motif
+francais est « nom du pole · terme anglais » ; traduit mot a mot, il
+se repetait. L'anglais renvoie maintenant le miroir — « Upstream ·
+amont », « Midstream · intermediaire », « Downstream · aval »,
+« Petrochemicals · petrochimie ».
+
+QA : deux accueils, trois largeurs, deux themes — console, axe,
+requetes, debordements : zero. WebKit iPhone idem. Feuille de style
+partagee modifiee : cache-buster et service worker portes a
+202608290900.
