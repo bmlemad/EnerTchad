@@ -10515,3 +10515,26 @@ garde son empilement.
 Verifie en geometrie (deux sections en 2+2, zero debordement) et au
 pixel : l'accueil raconte maintenant les huit poles en quatre rangees
 au lieu de huit ecrans — la chaine en deux, les appuis en deux.
+
+## 300 — Trois cents chapitres : consolidation de la vague accueil (2026-08-29)
+
+Chapitre rond, esprit inchange : verifier avant d'avancer.
+
+**QA de la vague 297-299** : les deux accueils reorganises et un
+echantillon des pages debarrassees de leur FAQ fantome (achats, eor,
+academie, clients, ethique-en) passes a la console et a axe dans les
+deux themes — zero erreur, zero violation ; et dans le WebKit iPhone,
+les deux sections de l'accueil retombent bien en une colonne sous
+1000 px, sans debordement.
+
+**Le sitemap remis a l'heure** : les quinze commits de la vague ont
+date 128 pages au 29 aout — les lastmod sont regeneres de l'historique
+git (129 corrections avec le report de la veille), XML valide.
+
+**Le tableau de bord du registre** est republie a jour du chapitre
+300 : les quatre derniers chapitres ajoutes, compteurs rafraichis.
+
+Etat au chapitre 300 : 209 pages en deux langues et demie, huit poles
+en quatre rangees sur l'accueil, dix outils investisseur, un journal
+public qui n'a jamais saute un chapitre — et huit decisions qui
+attendent le proprietaire, listees au tableau de bord.
