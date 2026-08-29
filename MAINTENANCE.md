@@ -10922,3 +10922,50 @@ au texte extrait des PDF : zero apostrophe droite.
 
 Plan XML redate (24 URL), QA sur un echantillon de douze pages dans
 les deux themes — console, axe, requetes, debordements : zero.
+
+## 316 — QA des poles : trois titres rognes, trois causes distinctes (2026-08-29)
+
+Balayage complet des 80 pages de poles — 8 hubs francais, 8 hubs
+anglais et leurs 64 sous-pages — apres les vagues 313-315. Console,
+requetes, axe et debordements dans les deux themes : zero anomalie.
+WebKit iPhone : zero. Les seize citations d'ouverture tiennent en
+deux a cinq lignes, Petrochimie comprise depuis le chapitre 315.
+
+La geometrie, elle, mesuree sur cinq largeurs de fenetre, a sorti
+trois defauts reels — tous invisibles a 1440 px, tous entre 860 et
+1200 px.
+
+**Le titre de section des hubs sortait de l'ecran.** La regle
+.ilede h2 imposait white-space:nowrap au-dessus de 760 px. En
+anglais, « Processing and distributing as close as possible to
+Chadians » quittait la fenetre coupe en plein mot entre 860 et
+1200 px ; « Training the Chadian next generation » de meme ; et le
+francais d'Aval y passait aussi a 860-1000 px. Le nowrap est retire :
+le titre tient sur une ligne quand il y tient, et se replie sinon
+(text-wrap:balance). Verifie sur les seize pages a sept largeurs.
+
+**Les cartes de R&D rognaient leurs intitules.** La grille
+.prod-grid restait a quatre colonnes jusqu'a 980 px : a 1000 px,
+quatre colonnes de 184 px pour des titres de 25 px — « Distribution
+digitale inclusive » et « Maintenance industrielle 4.0 » etaient
+coupes en plein mot par la carte, qui masque son debordement. Le
+passage a deux colonnes se fait desormais sous 1320 px, largeur en
+dessous de laquelle quatre colonnes ne sont pas lisibles, et une
+garde overflow-wrap protege les mots longs.
+
+**« Petrochemicals » etait coupe dans la brochure.** Un seul mot de
+quatorze lettres a 26 px dans une carte de 196 px : cesure
+automatique posee sur .pcard-name, dans les deux brochures.
+
+**Mon detecteur mentait deux fois.** Le titre de heros .pgh-flash
+porte overflow:hidden et un pseudo-element de reflet place a
+left:-35 % : sa largeur de defilement est gonflee par le reflet, pas
+par le texte — six faux positifs, verifies a la capture. Et les
+11 px de « l'approvisionnement » sur la page distribution sortent
+d'un paragraphe sans clipping, a l'interieur du rembourrage de sa
+carte : rien n'est masque. Regle a retenir : un depassement ne compte
+que si un ancetre le rogne ou s'il sort de la fenetre.
+
+Feuilles partagees modifiees (86, 16 et 2 pages) : cache-buster et
+service worker portes a 202608291030 ; QA de controle sur dix pages
+hors poles qui partagent ces feuilles — verte.
