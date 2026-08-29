@@ -171,3 +171,17 @@ body:has(#navLinks.open) #ckn,body:has(#navLinks.open) .lum-ctl,body:has(#navLin
 .nx-util-in .nx-invest:hover::after,.cb-btn.cb-p:hover::after,.nx-util-in .nx-invest:focus-visible::after,.cb-btn.cb-p:focus-visible::after{opacity:1;animation:etShine .8s ease}
 @keyframes etShine{from{left:-70%}to{left:110%}}
 }
+
+/* Ch290 — petits ecrans iOS : la rangee d'actions ne pousse plus le burger hors ecran */
+@media(max-width:470px){
+  .nav-in.nx-bar,.nx-bar{padding-left:10px!important;padding-right:10px!important}
+  .nav-cta{gap:6px!important}
+  #mLang:not(#_):not(#__):not(#___){font-size:.64rem;padding:5px 7px;margin-right:2px;letter-spacing:.02em}
+  .nav-cta .nav-search{width:38px!important;height:38px!important}
+  .nav-tog{flex:0 0 auto}
+  .brand-tx:not(#_){font-size:.98rem!important}
+  .brand-tx small:not(#_){font-size:.6rem!important;letter-spacing:.055em!important}
+}
+@media(max-width:374px){
+  #mLang:not(#_):not(#__):not(#___){display:none!important}
+}
