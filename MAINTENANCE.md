@@ -10852,3 +10852,42 @@ QA : deux accueils, trois largeurs, deux themes — console, axe,
 requetes, debordements : zero ; dix-neuf largeurs sans debordement ;
 WebKit iPhone idem. Changement HTML seul : pas de bump du service
 worker.
+
+## 314 — L'accueil devient immersif : une seule image, des panneaux translucides (2026-08-29)
+
+Demande du proprietaire : supprimer les photos de l'accueil et ne
+garder que celle du fond, pour que les poles deviennent immersifs et
+translucides.
+
+**Ce qui est retire** : les huit photos de panneau (une par pole),
+leurs conteneurs, les huit attributs data-mimg et le script de
+chargement paresseux qui les posait. L'accueil ne charge plus qu'une
+seule image, celle du fond fixe — une requete image au lieu de neuf.
+
+**Ce qui change dans le rendu** : le panneau ne fabriquait plus son
+propre plan (isolation:isolate) — il laisse desormais passer le fond
+fixe de la page. Le voile passe d'un aplat quasi opaque a une teinte
+translucide en degrade (.62 cote texte, .06 cote image) doublee d'un
+backdrop-filter qui eclaircit la photo derriere le verre. Les huit
+poles se lisent maintenant comme huit fenetres sur une meme scene,
+chacune gardant sa couleur d'accent.
+
+**Un defaut ancien trouve en chemin** : depuis l'appariement 2x2 du
+chapitre 298, les panneaux « inverses » avaient leur texte realigne a
+gauche mais gardaient un voile assombri a droite — le pare-soleil
+etait du mauvais cote. Invisible tant que chaque panneau portait sa
+propre photo sombre ; flagrant des que le fond s'ouvre. Le degrade
+suit maintenant le texte.
+
+**Mesure au pixel, comme la maison le veut** : contraste calcule sur
+les pixels reellement peints derriere chaque bloc de texte, texte
+masque, dans les deux themes. Sombre : de 5,37 a 8,74 (seuil AA 4,5) —
+le pire cas, TchadiTech, etait a 3,52 avant la correction du voile
+inverse. Clair : 10,4 partout. Le chiffre fantome, jusque-la masque
+par la photo, est adouci de 13 a 8 % en theme clair.
+
+Les regles CSS des photos de panneau sont laissees en place, inertes :
+elles ne coutent rien et servent si les photos reviennent un jour.
+QA : deux accueils, trois largeurs, deux themes — console, axe,
+requetes, debordements : zero ; dix-neuf largeurs sans debordement ;
+WebKit iPhone idem. LCP 936 ms, CLS 0,004.
