@@ -10480,3 +10480,24 @@ Au meme chapitre : le tableau de bord du registre publie en artifact
 (compteurs, arbitrages, veilles, chapitres 275-296 filtrables), etabli
 au chapitre 296. 125 fichiers modifies, publies en treize lots ; HTML
 seulement, pas de bump du service worker.
+
+## 298 — L'accueil s'apparie : les quatre maillons deux par deux (2026-08-28)
+
+Demande du proprietaire : sur l'accueil, Amont et Intermediaire
+(upstream, midstream) sur la meme rangee, Aval et Petrochimie sur la
+suivante — une presentation plus dense et plus premium que les quatre
+bandes pleine hauteur empilees.
+
+Realisation en pur CSS, sans toucher au balisage : la grille de la
+section des maillons passe en deux colonnes au-dela de 1000 px
+(bloc style coeurs-duo insere apres mln-css, FR et EN). Chaque
+panneau se compacte (72svh au lieu de 100, gouttieres reduites,
+chiffres fantomes redimensionnes), les panneaux miroirs reprennent
+l'alignement a gauche pour rester lisibles en demi-largeur, et un
+filet vertical separe les paires — theme clair compris. Sous 1000 px,
+rien ne change : l'empilement mobile reste tel quel.
+
+Verifie en geometrie (deux colonnes, rangees 2+2, zero debordement)
+et au pixel dans les deux themes et les deux langues ; l'ecran
+d'accueil montre desormais la chaine complete en deux rangees au lieu
+de quatre ecrans.
