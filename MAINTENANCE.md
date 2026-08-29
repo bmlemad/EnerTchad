@@ -10969,3 +10969,38 @@ que si un ancetre le rogne ou s'il sort de la fenetre.
 Feuilles partagees modifiees (86, 16 et 2 pages) : cache-buster et
 service worker portes a 202608291030 ; QA de controle sur dix pages
 hors poles qui partagent ces feuilles — verte.
+
+## 317 — Le reste du site passe a la mesure sur cinq largeurs (2026-08-29)
+
+Le chapitre 316 a montre que trois defauts vivaient entre les
+breakpoints, invisibles aux deux largeurs que mes balayages
+testaient. Les 128 pages hors poles et hors accueil y passent a leur
+tour : 390, 720, 1000, 1200 et 1440 px, 640 rendus.
+
+Le detecteur est affine. Un depassement ne compte plus des qu'il
+existe : il ne compte que si un ancetre le rogne ou s'il sort de la
+fenetre. Les elements qui se rognent eux-memes sont ecartes — c'est
+le cas du titre de heros, dont le pseudo-element de reflet gonfle la
+largeur de defilement sans que rien ne deborde (six faux positifs au
+chapitre precedent).
+
+**Resultat : zero defaut sur les 128 pages.**
+
+**Mon erreur, deux fois de suite.** Une affirmation « zero defaut »
+ne vaut rien tant que l'instrument n'a pas ete verifie sur un cas a
+defaut connu. J'ai donc reintroduit le defaut du chapitre 316 —
+grille R&D a quatre colonnes sous 980 px — et le harnais a repondu
+« non detecte ». Deux fois. J'allais consigner que l'instrument etait
+aveugle. En instrumentant le calcul, la cause etait ailleurs : mon
+retour arriere etait incomplet. Le premier essai n'avait retire que
+le seuil, laissant en place la garde overflow-wrap qui corrige le
+symptome a elle seule ; le second essai a vu son sed echouer
+silencieusement sur la feuille minifiee. Une fois le defaut
+reellement present — verifie a la mesure, grille a 184 px, titre a
+130 px pour 183 px de texte —, le harnais l'a signale immediatement,
+aux trois titres concernes.
+
+La lecon vaut plus que le resultat : quand un calibrage echoue, la
+premiere hypothese a tester n'est pas que l'instrument ment, c'est
+que le cas de test n'est pas celui qu'on croit. Chapitre journal :
+aucun fichier du site ne change.
