@@ -440,7 +440,7 @@ footer{background:#050a12;background:linear-gradient(180deg,rgba(5,10,18,.8),rgb
 .faq-list details[open] summary span{transform:rotate(45deg)}
 @media(max-width:760px){.reseau-stats{grid-template-columns:1fr 1fr!important}.ms-usecases{grid-template-columns:1fr 1fr!important}.ms-services{grid-template-columns:1fr!important}.ep-models{grid-template-columns:1fr 1fr!important}.prod-synth{grid-template-columns:1fr 1fr!important}.tech-grid{grid-template-columns:1fr 1fr!important}.modref-grid{grid-template-columns:1fr 1fr!important}.recomp-grid{grid-template-columns:1fr 1fr!important}.welltype-grid{grid-template-columns:1fr 1fr!important}.advisory-grid{grid-template-columns:1fr 1fr!important}}
 .prod-grid{grid-template-columns:repeat(4,1fr)}
-@media(max-width:980px){.prod-grid{grid-template-columns:1fr 1fr}}
+/* Ch316 — quatre colonnes ne sont lisibles que si elles sont larges : sous 1320 px les intitules longs (containerisee, Petrochemicals) etaient rognes par la carte. */@media(max-width:1319px){.prod-grid{grid-template-columns:1fr 1fr}}.div-grid :is(h2,h3,h4,p),.prod-grid :is(h2,h3,h4,p){overflow-wrap:break-word}
 @media(max-width:560px){.prod-grid{grid-template-columns:1fr}.prod-b2b{grid-template-columns:1fr!important}}
 
 /* ===================================================== */
