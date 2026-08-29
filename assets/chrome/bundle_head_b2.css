@@ -995,3 +995,18 @@ html:not(#_):not(#__){-webkit-tap-highlight-color:transparent}
 
 /* Ch257 - toTop invisible ne doit pas etre tabulable */
 #toTop{visibility:hidden;transition:opacity .35s,transform .35s,box-shadow .35s,visibility .35s}#toTop.show{visibility:visible}
+
+/* Ch319 — WCAG 1.4.1 : dans le corps de texte, un lien ne peut pas se distinguer
+   par la seule couleur quand celle-ci n'atteint pas 3:1 avec le texte qui l'entoure.
+   Mesure sur les 210 pages : 37 pages concernees, jusqu'au lien exactement de la
+   meme couleur que sa phrase. Les liens de corps portent donc un souligne discret ;
+   les liens habilles d'une classe (boutons, puces, cartes) ne sont pas touches. */
+:is(p,li,dd) a:not([class]):not(#_):not(#__){text-decoration:underline;text-underline-offset:.18em;
+  text-decoration-thickness:.055em;text-decoration-color:color-mix(in srgb,currentColor 42%,transparent)}
+:is(p,li,dd) a:not([class]):not(#_):not(#__):hover{text-decoration-color:currentColor}
+
+/* Ch319 (theme clair) — quelques feuilles de page annulent le souligne des liens
+   de corps ; on le retablit pour eux seuls, sans toucher aux liens habilles. */
+html.et-plight :is(p,li,dd) a:not([class]):not(#_):not(#__){text-decoration:underline!important;
+  text-underline-offset:.18em;text-decoration-thickness:.055em;
+  text-decoration-color:color-mix(in srgb,currentColor 42%,transparent)}
