@@ -10738,3 +10738,39 @@ en attente — neuf desormais —, et deux notes actualisees : le rapport
 annuel voit son perimetre etendu a la durabilite, l'arbitrage arabe
 enregistre le mini-site lance au chapitre 309. Chapitre journal :
 seul MAINTENANCE.md change sur le site.
+
+## 311 — Consolidation : la nouvelle page entre dans les index, et un correctif d'accessibilite (2026-08-29)
+
+Regle de la maison : apres une vague, on verifie avant d'avancer. La
+verification a trouve deux choses, dont une de ma main.
+
+**La page arabe des poles etait invisible du site lui-meme.** Publiee
+au chapitre 309, elle n'existait ni au plan du site, ni dans la
+palette Ctrl+K, ni dans la liste de reference. Corrige : entree au
+plan du site FR et EN sous la version arabe, entree de palette dans
+les deux langues — et, au passage, l'anglais recoit enfin une entree
+vers la page arabe elle-meme, qui lui manquait depuis toujours (183
+entrees FR, 157 EN, identifiants uniques verifies).
+
+**Le glossaire n'etait pas cherchable.** Ses 80 termes sont rendus
+par script : l'index plein-texte, bati sur le HTML statique, ne
+voyait que les mots d'introduction de la page. Le vocabulaire des
+termes est desormais verse dans l'index (44 mots -> 1 044 en
+francais, 47 -> 1 010 en anglais). Verifie au navigateur : « sedigui »,
+« djarmaya » et « rccm » ramenent maintenant le glossaire dans les
+deux langues.
+
+**Mon erreur (chapitre 306)** : en rendant les cinq jalons de la
+courbe cliquables, j'ai laisse le SVG en role="img" — un role de
+feuille, qui ne doit contenir aucun element focable. axe l'a signale
+en nested-interactive sur les deux pages investisseurs, dans les deux
+themes. La courbe n'est plus une image mais un groupe navigable :
+role="group", intitule reecrit pour le dire. J'avais teste le clavier
+et la navigation au chapitre 306, pas passe axe — le test manquant a
+laisse passer une regression que le chantier lui-meme avait creee.
+
+Le plan XML est redate de l'historique git (29 corrections ; 159
+pages au 29 aout) et le service worker passe a et-202608290830, les
+index etant des ressources servies par le cache. QA finale : onze
+pages temoins, deux themes, console, axe, requetes et debordements —
+zero anomalie ; huit pages relues au WebKit iPhone — idem.
