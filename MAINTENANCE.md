@@ -10694,3 +10694,37 @@ fluides, premiere du genre, rente partagee) gardent le generique,
 choix assume plutot qu'un rattachement force. og:image,
 twitter:image et l'image JSON-LD changent ensemble (trois
 occurrences par fichier, 156 remplacements, 52 fichiers).
+
+## 308 — La 404 offre les huit poles (2026-08-29)
+
+La page 404 etait deja mieux que sa reputation : logo, bouton de
+recherche qui ouvre la palette, liens utiles (boutique, clients,
+carnets, contact, plan du site) et ligne anglaise. Il lui manquait
+la carte du site en raccourci : un bloc « Ou repartir d'un pole »
+ajoute huit pastilles aux couleurs des poles — la chaine puis les
+appuis — vers les huit hubs. Verifie au navigateur : les huit liens
+repondent, aucun debordement en 390 px, et le theme clair recolore
+les pastilles de lui-meme (brun fonce sur creme, verifie par style
+calcule et capture). Changement HTML seul.
+
+## 309 — L'espace arabe devient un mini-site (2026-08-29)
+
+L'arbitrage « arabe complet » attendait le proprietaire ; ses huit
+propositions validees d'un « apply all » tranchent le premier pas.
+La page arabe couvrait deja l'investisseur, la FAQ et le contact en
+sections — ce qui manquait vraiment : les huit poles n'existaient
+pas en arabe, et aucune navigation ne reliait rien.
+
+Deux ajouts. Une page ar-poles : les quatre maillons de la chaine
+(al-manba, al-naql wal-takhzin, al-masabb, al-batrukimawiyat) et les
+quatre appuis (noms latins conserves, descripteurs arabes), huit
+cartes avec renvoi « details en francais » vers chaque hub, batie
+sur le squelette RTL existant — memes styles, meme pied de page,
+metadonnees et fils d'Ariane repointes. Et un bandeau de navigation
+arabe sur les deux pages : accueil, poles, investisseurs, FAQ,
+contact, pastille active dorée. Le plan XML passe a 210 URL.
+
+Verifie au navigateur dans les deux formats (1280 et 390 px) : RTL
+conserve, 8 cartes, zero debordement, zero erreur console, et la
+capture confirme le rendu — hero sable, KPI, bandeau actif.
+Changement HTML et sitemap seuls : pas de bump du service worker.
