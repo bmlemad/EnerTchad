@@ -10817,3 +10817,38 @@ QA : deux accueils, trois largeurs, deux themes — console, axe,
 requetes, debordements : zero. WebKit iPhone idem. Feuille de style
 partagee modifiee : cache-buster et service worker portes a
 202608290900.
+
+## 313 — La conviction de l'accueil cesse de crier (2026-08-29)
+
+Capture du proprietaire a l'appui : le bloc « Nous croyons que le
+petrole du Tchad doit d'abord profiter aux Tchadiens... » etait
+compose trop grand. Diagnostic mesure : 188 signes en gras a 34 px
+sur toute la largeur disponible — une phrase de paragraphe traitee
+comme un titre d'affiche, cinq lignes pleine largeur.
+
+Le corps passe de clamp(1,7 ; 3,4vw ; 2,9rem) a
+clamp(1,35 ; 2,5vw ; 2,2rem) et la ligne est bornee a 26 em, mesure
+classique de la citation detachee. Resultat verifie sur six largeurs
+et deux langues : trois a cinq lignes de 38 a 50 signes partout, au
+lieu de cinq a huit lignes pleine largeur. Le texte respire, la
+phrase se lit comme une conviction posee et non comme un cri.
+
+**Au passage, une inegalite typographique** : l'accueil anglais
+utilisait quinze apostrophes droites (« Chad's », « country's »)
+la ou le francais porte partout l'apostrophe typographique. Elles
+sont redressees — sur l'accueil seulement, par substitution limitee
+aux noeuds de texte (les balises, scripts et styles ne sont pas
+touches). Le reste du site en compte encore 520 sur 81 pages,
+inventoriees : ce sera un chapitre a part entiere, pas un ajout
+discret a un correctif d'accueil.
+
+Une observation gardee pour le proprietaire : la citation du hub
+Petrochimie tient 119 signes la ou les sept autres en font 44 a 99 —
+elle deborde a six lignes quand les autres en font deux a cinq. Le
+bloc est dessine pour une phrase-choc ; celle-ci en contient deux.
+C'est une decision d'ecriture, pas de style : je n'y touche pas.
+
+QA : deux accueils, trois largeurs, deux themes — console, axe,
+requetes, debordements : zero ; dix-neuf largeurs sans debordement ;
+WebKit iPhone idem. Changement HTML seul : pas de bump du service
+worker.
