@@ -10390,3 +10390,59 @@ controle synthetique de la page EN avait d'abord repondu "ferme" la ou
 un vrai clic ouvre et deplace cent mille pixels : l'instrument ne juge
 plus jamais seul, une fois de plus. Index plein-texte regeneres,
 service worker bumpe (et-202608290430).
+
+## 294 — QA de consolidation des hubs de chaine (2026-08-28)
+
+Verification d'ensemble apres les chapitres 292 et 293 : les huit hubs
+de la chaine (FR et EN) passes a axe (zero violation) et au balayage
+console dans les deux themes (zero erreur), bandeau de chaine et
+nouvelles sections comprises. Chapitre de journal seulement.
+
+## 295 — QA face aux compagnies nationales : ADNOC et Saudi Aramco (2026-08-28)
+
+Le referentiel change : apres les majors privees (chapitres 275 et
+292), les compagnies nationales — le modele auquel EnerTchad aspire
+reellement ("champion national").
+
+**Ce que font les deux NOC** : ADNOC structure son site en cinq portes
+(Our Story, Our Business, Our Projects, AI & Technology,
+Sustainability), revendique une mission duale ("Maximum Energy.
+Minimum Emissions.") et surtout porte un programme de contenu local
+NOMME et mesure — l'In-Country Value (ICV). Aramco, cotee, met en
+avant sa discipline d'information (rapports intermediaires,
+publications), son magazine editorial (Elements), son ecosysteme
+fournisseurs et son programme local iktva.
+
+**Le verdict pour EnerTchad — l'essentiel du referentiel NOC est deja
+la** : mission nationale nommee ("Acces aux energies", souverainete,
+prix ARSAT) ; page Projets en nav et au footer (l'analogue d'Our
+Projects, FR et EN) ; technologie en porte de nav (Innovation /
+TchadiTech) ; durabilite chiffree (zero torchage vise, 30 %+ energie
+de site, 125 MW solaire) ; magazine editorial (64 carnets, l'analogue
+d'Elements) ; discipline d'information au-dessus de son stade (point
+d'etape, data book, calendrier abonnable) ; et un contenu local
+MESURE : cible publiee de 80 % d'effectifs tchadiens, presente dans le
+tableau d'indicateurs ESG (FR et EN, "80 % a l'echelle, 2030"),
+critere pondere de la grille achats, comparaison assumee aux standards
+regionaux.
+
+**Le seul ecart structurel** : ADNOC dit "ICV", Aramco dit "iktva" —
+un mot, une page, un chiffre. Chez EnerTchad, la substance existe mais
+vit repartie entre engagements, achats et Tchaditude, sans nom de
+programme. Or nommer un programme est une decision de marque du
+proprietaire — la lecon du chapitre 281 (les noms viennent du canon,
+jamais de moi) s'applique : PROPOSITION AU REGISTRE, nommer le
+programme de contenu local d'EnerTchad et lui donner sa page. Aucun
+correctif publie : la QA n'a trouve aucun defaut realisable.
+
+## 296 — L'accueil s'allege : le collage photo retire (2026-08-28)
+
+Demande du proprietaire : supprimer le collage de cinq photos de
+l'accueil pour optimiser l'espace. La section (pipeline, station de
+nuit, champ solaire, casques, reservoirs) est retiree des deux
+accueils, FR et EN, avec ses regles CSS dediees dans les blocs
+home-plus et print-home — pas de style mort laisse derriere. Environ
+1,9 Ko de moins par page ; les cinq images restent utilisees ailleurs
+(autres sections, kit presse), aucun fichier supprime. Verifie dans
+les deux themes : zero erreur console, pas de trou de mise en page,
+pas de debordement.
