@@ -10298,3 +10298,25 @@ un bouton partiellement hors ecran — c'est d'ailleurs ce qui a trahi
 le defaut.
 
 Service worker bumpe (et-202608290300).
+
+## 291 — Balayage WebKit iPhone : 209 pages, zero defaut (2026-08-28)
+
+Suite logique du chapitre 290 : apres les huit pages cles, tout le
+site est passe dans le moteur de Safari en emulation iPhone 14 —
+209 pages, en trois lots paralleles, avec pour chaque page les erreurs
+console, les requetes en echec, le debordement horizontal et le bord
+droit du bouton de menu (le defaut corrige au chapitre precedent).
+
+Resultat : zero erreur console, zero requete en echec, zero
+debordement, zero burger hors ecran. L'unique signal du site entier
+est l'avertissement ResizeObserver deja connu sur cibles-2030 — la
+boucle de redimensionnement des graphiques en canvas, benigne et
+intermittente : elle apparait en passage sequentiel et pas sous charge
+parallele.
+
+Rigueur d'instrument : un balayage qui rend "tout est propre" se
+verifie avant d'etre cru. Le harnais a ete controle sur un cas a
+defauts connus (la page aux graphiques plus une adresse inexistante) —
+il attrape bien l'erreur et le 404 ; et un lot a ete rejoue avec
+comptage pour prouver que les 209 pages ont ete parcourues (12 pages
+en 37 s, soit environ 3 s par page). Chapitre de journal seulement.
