@@ -10367,3 +10367,26 @@ trois autres maillons — le quatrieme pole de chaine est structurellement
 plus mince. Redaction a prevoir, inscrite au registre.
 
 HTML seulement : pas de bump du service worker.
+
+## 293 — Le quatrieme maillon rattrape les trois autres (2026-08-28)
+
+L'observation du chapitre 292 est soldee : les hubs Petrochimie (FR et
+EN) n'avaient ni section "approche" ni section "offre". Les deux sont
+construites — au gabarit exact des autres maillons (frise numerotee
+pour l'approche, colonnes accordeon pour l'offre) — a partir du contenu
+deja publie dans les quatre sous-pages du pole (complexe, chimie-eor,
+marches, produits) : rien d'invente, tout re-assemble.
+
+L'approche en cinq principes : adosser la chimie a l'Aval, sequencer du
+plus mur au plus capitalistique, substituer l'import ligne par ligne,
+la chimie qui fait couler le brut (EOR sur natron et neem, au service
+de l'Amont), une qualite par partenariat. L'offre en deux colonnes :
+cinq familles de molecules (engrais azotes, methanol, GPL, bitume et
+soufre, polymeres) et trois lignes de chimie de production, chacune
+renvoyant a sa sous-page.
+
+Bench dans les deux themes, accordeons verifies au clic reel — le
+controle synthetique de la page EN avait d'abord repondu "ferme" la ou
+un vrai clic ouvre et deplace cent mille pixels : l'instrument ne juge
+plus jamais seul, une fois de plus. Index plein-texte regeneres,
+service worker bumpe (et-202608290430).
