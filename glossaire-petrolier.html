@@ -373,6 +373,7 @@ a.glm-c:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):focus-vis
     <button data-c="tech" aria-pressed="false">Technologies</button>
     <button data-c="durab" aria-pressed="false">Durabilité</button>
     <button data-c="cadre" aria-pressed="false">Cadre &amp; unités</button>
+    <button data-c="tchad" aria-pressed="false">Repères Tchad</button>
   </div>
 </div></section>
 <section><div class="wrap"><dl class="grid" id="grid"></dl><p class="empty" id="empty" hidden>Aucun terme ne correspond à votre recherche.</p>
@@ -407,7 +408,7 @@ a.glm-c:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):focus-vis
 </footer>
 <script>
 (function(){
- var C={amont:'#F0CE82',inter:'#5AA7F0',aval:'#F2B45A',chimie:'#D177B4',tech:'#7E8AD9',durab:'#34D399',cadre:'#7C8AA2'};
+ var C={amont:'#F0CE82',inter:'#5AA7F0',aval:'#F2B45A',chimie:'#D177B4',tech:'#7E8AD9',durab:'#34D399',cadre:'#7C8AA2',tchad:'#5BC8D9'};
  var T=[
   ['amont','EPF','Production anticipée','Mise en production d’un puits avec des équipements mobiles (séparation, bacs, camions) avant les installations définitives — premier baril en 6 à 12 mois, capital divisé par 5 à 10, données réservoir autofinancées.'],
   ['amont','Séparateur trois phases','Le tri gaz · brut · eau','Skid en tête de chaîne qui divise l’effluent du puits\u00A0: gaz vers la mesure, eau de production vers le traitement, brut aux spécifications vers les bacs. Le préalable au « bon brut dans le bon bac ».'],
@@ -478,9 +479,19 @@ a.glm-c:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):focus-vis
   ['chimie','NPK','L’engrais complet','Engrais composé associant azote (N), phosphore (P) et potassium (K) — l’urée issue de la pétrochimie fournit l’azote, premier des trois nutriments.'],
   ['chimie','Vaporeformage','Du méthane à l’hydrogène','Réaction du gaz naturel avec de la vapeur d’eau à haute température pour produire de l’hydrogène — première étape de la chaîne qui mène à l’ammoniac, puis à l’urée.'],
   ['durab','LDAR','La chasse aux fuites','Programme de détection et de réparation des fuites (Leak Detection and Repair) sur les équipements — caméras infrarouges et capteurs traquent le méthane invisible à l’oeil nu.'],
-  ['cadre','bep','Le baril équivalent pétrole','Unité qui convertit gaz et liquides en un volume commun d’énergie (environ 6\u00A0000 pieds cubes de gaz pour 1 bep) — indispensable pour comparer des actifs mixtes.']
+  ['cadre','bep','Le baril équivalent pétrole','Unité qui convertit gaz et liquides en un volume commun d’énergie (environ 6\u00A0000 pieds cubes de gaz pour 1 bep) — indispensable pour comparer des actifs mixtes.'],
+  ['tchad','Bassin de Doba','Le berceau pétrolier du pays','Ensemble de champs du sud entrés en production en 2003, aujourd’hui matures : déclin naturel, eau de production croissante — le terrain type d’une reprise bâtie sur la récupération assistée (EOR).'],
+  ['tchad','Sédigui','Le gaz du bassin du lac','Gisement gazier du bassin du lac Tchad, identifié de longue date et jamais développé à grande échelle. Sa valorisation (électricité, GPL, intrants) est l’un des axes affichés du projet EnerTchad.'],
+  ['tchad','Corridor Doba–Kribi','1 070 km vers l’Atlantique','L’oléoduc qui relie le bassin de Doba au terminal de Kribi (Cameroun) — l’unique débouché d’export du brut tchadien, et la colonne vertébrale logistique de l’intermédiaire.'],
+  ['tchad','Djarmaya','La raffinerie aux portes de N’Djamena','Site de raffinage au nord de la capitale, cible affichée du pôle aval : couvrir la demande intérieure en carburants avant de viser les marchés voisins.'],
+  ['tchad','Contenu local','80 % de valeur tchadienne visée','Part des emplois, achats et services confiés à des Tchadiens et à des entreprises tchadiennes. La cible de 80 % structure les programmes de formation et la chaîne d’achats du groupe.'],
+  ['tchad','RCCM','L’immatriculation OHADA','Registre du commerce et du crédit mobilier — l’acte de naissance juridique d’une société dans l’espace OHADA. L’immatriculation d’EnerTchad S.A. est le jalon en cours du calendrier de constitution.'],
+  ['tchad','FCFA','La monnaie de la zone CEMAC','Franc de la Coopération financière en Afrique centrale, à parité fixe avec l’euro. La trajectoire de capital d’EnerTchad s’exprime en FCFA : 10 millions → 1 milliard → 20 milliards.'],
+  ['tchad','Moundou · Sarh · Abéché','Les villes relais du réseau','Les trois pivots régionaux du réseau de distribution visé : Moundou (sud dense et bassin pétrolier), Sarh (sud-est, axe du Chari), Abéché (est, hub humanitaire).'],
+  ['tchad','144 kb/j','La production nationale de référence','Ordre de grandeur de la production pétrolière du Tchad retenu par le site (environ 144 000 barils par jour). Le millésime exact de cette référence est un arbitrage consigné au registre.'],
+  ['cadre','Brent','La référence de prix','Brut de mer du Nord qui sert d’étalon mondial : le brut tchadien se vend au prix du Brent moins une décote de qualité et de logistique.'],
  ];
- var CN={amont:'Amont',inter:'Intermédiaire',aval:'Aval',chimie:'Chimie',tech:'Technologies',durab:'Durabilité',cadre:'Cadre'};
+ var CN={amont:'Amont',inter:'Intermédiaire',aval:'Aval',chimie:'Chimie',tech:'Technologies',durab:'Durabilité',cadre:'Cadre',tchad:'Repères Tchad'};
  var grid=document.getElementById('grid'),empty=document.getElementById('empty'),q=document.getElementById('q');
  var fc='all';
  function norm(s){return s.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();}

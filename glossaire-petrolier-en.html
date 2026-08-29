@@ -386,6 +386,7 @@ a.glm-c:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):focus-vis
     <button data-c="tech" aria-pressed="false">Technology</button>
     <button data-c="durab" aria-pressed="false">Sustainability</button>
     <button data-c="cadre" aria-pressed="false">Framework &amp; units</button>
+    <button data-c="tchad" aria-pressed="false">Chad landmarks</button>
   </div>
 </div></section>
 <section><div class="wrap"><dl class="grid" id="grid"></dl><p class="empty" id="empty" hidden>No term matches your search.</p>
@@ -420,7 +421,7 @@ a.glm-c:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):focus-vis
 </footer>
 <script>
 (function(){
- var C={amont:'#F0CE82',inter:'#5AA7F0',aval:'#F2B45A',chimie:'#D177B4',tech:'#7E8AD9',durab:'#34D399',cadre:'#7C8AA2'};
+ var C={amont:'#F0CE82',inter:'#5AA7F0',aval:'#F2B45A',chimie:'#D177B4',tech:'#7E8AD9',durab:'#34D399',cadre:'#7C8AA2',tchad:'#5BC8D9'};
  var T=[
   ['amont','EPF','Early production','Bringing a well on stream with mobile equipment (separation, tanks, trucking) before permanent installations — first oil in 6 to 12 months, capital divided by 5 to 10, self-funded reservoir data.'],
   ['amont','Three-phase separator','The gas · oil · water split','A skid at the head of the chain that splits the well effluent: gas to measurement, produced water to treatment, on-spec crude to the tanks. The prerequisite for the right crude in the right tank.'],
@@ -491,9 +492,19 @@ a.glm-c:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):focus-vis
   ['chimie','NPK','The complete fertilizer','Compound fertilizer combining nitrogen (N), phosphorus (P) and potassium (K) — petrochemical urea supplies the nitrogen, first of the three nutrients.'],
   ['chimie','Steam reforming','From methane to hydrogen','Reacting natural gas with high-temperature steam to produce hydrogen — the first step in the chain that leads to ammonia, then urea.'],
   ['durab','LDAR','Hunting the leaks','Leak Detection and Repair programme covering equipment — infrared cameras and sensors track down the methane invisible to the naked eye.'],
-  ['cadre','boe','Barrel of oil equivalent','Unit converting gas and liquids into a common energy volume (about 6,000 cubic feet of gas per boe) — indispensable for comparing mixed assets.']
+  ['cadre','boe','Barrel of oil equivalent','Unit converting gas and liquids into a common energy volume (about 6,000 cubic feet of gas per boe) — indispensable for comparing mixed assets.'],
+  ['tchad','Doba Basin','The country’s oil cradle','Southern fields on stream since 2003, now mature: natural decline and rising produced water — the textbook ground for a takeover built on enhanced oil recovery (EOR).'],
+  ['tchad','Sédigui','Gas from the lake basin','Gas field in the Lake Chad basin, identified decades ago and never developed at scale. Its development (power, LPG, feedstocks) is one of the EnerTchad project’s stated axes.'],
+  ['tchad','Doba–Kribi corridor','1,070 km to the Atlantic','The pipeline linking the Doba basin to the Kribi terminal (Cameroon) — the only export outlet for Chadian crude, and the midstream’s logistical backbone.'],
+  ['tchad','Djarmaya','The refinery at N’Djamena’s gates','Refining site north of the capital, the downstream pole’s stated target: cover domestic fuel demand before addressing neighbouring markets.'],
+  ['tchad','Local content','80% Chadian value targeted','Share of jobs, purchases and services entrusted to Chadians and Chadian companies. The 80% target shapes the group’s training programmes and supply chain.'],
+  ['tchad','RCCM','The OHADA registration','Trade and personal property credit register — a company’s legal birth certificate across the OHADA area. EnerTchad S.A.’s registration is the current milestone of the incorporation calendar.'],
+  ['tchad','FCFA','The CEMAC currency','Franc of the Central African financial cooperation, pegged to the euro. EnerTchad’s capital trajectory is set in FCFA: 10 million → 1 billion → 20 billion.'],
+  ['tchad','Moundou · Sarh · Abéché','The network’s relay cities','The three regional pivots of the target distribution network: Moundou (dense south and oil basin), Sarh (south-east, Chari river axis), Abéché (east, humanitarian hub).'],
+  ['tchad','144 kb/d','The national production benchmark','Order of magnitude of Chad’s oil production used across this site (about 144,000 barrels per day). The exact vintage of that figure is an arbitration logged in the registry.'],
+  ['cadre','Brent','The price benchmark','North Sea crude serving as the world’s pricing yardstick: Chadian crude sells at the Brent price minus a quality and logistics discount.'],
  ];
- var CN={amont:'Upstream',inter:'Midstream',aval:'Downstream',chimie:'Chemistry',tech:'Technology',durab:'Sustainability',cadre:'Framework'};
+ var CN={amont:'Upstream',inter:'Midstream',aval:'Downstream',chimie:'Chemistry',tech:'Technology',durab:'Sustainability',cadre:'Framework',tchad:'Chad landmarks'};
  var grid=document.getElementById('grid'),empty=document.getElementById('empty'),q=document.getElementById('q');
  var fc='all';
  function norm(s){return s.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();}

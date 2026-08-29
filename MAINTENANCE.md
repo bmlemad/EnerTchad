@@ -10558,3 +10558,69 @@ requete en echec.
 
 Verdict : les vagues 292-300 n'ont rien casse. Journal seul publie —
 aucun fichier du site ne change.
+
+## 302 — Audit de performance : l'accueil 2x2 passe la mesure (2026-08-29)
+
+L'accueil venait de changer de structure deux fois (chapitres 298-299) :
+avant d'ouvrir de nouveaux chantiers, mesure de six pages representatives
+(les deux accueils, deux hubs, investisseurs, cibles-2030) au moteur
+Chromium instrumente — LCP, CLS, poids par famille de ressources,
+images surdimensionnees, etat des polices.
+
+**Resultat : rien a corriger.** CLS entre 0 et 0,014 partout (seuil
+Google : 0,10). Chaque page a heros precharge son image LCP avec
+fetchpriority=high — un balayage des 209 pages n'a trouve aucun fond
+de heros sans preload. Les polices sont en font-display:optional, les
+gros scripts (chart.umd, 200 Ko) en defer, les regles de speculation
+prechargent la navigation interne, et la production sert le brotli
+avec des images immutables (verifie sur trois URL Vercel).
+
+Deux leviers restent, consignes comme arbitrages plutot que traites a
+chaud : les 19 feuilles de style bloquantes de l'accueil (389 Ko —
+HTTP/2 attenue, une consolidation toucherait l'ordre de cascade de
+209 pages) et la migration AVIF des heros webp (150-175 Ko piece,
+gain estime 30-40 %, mais les fonds CSS inline ne permettent pas de
+repli progressif simple). Chapitre de mesure : aucun fichier du site
+ne change.
+
+## 303 — Maillage interne : le graphe des 209 pages est sain (2026-08-29)
+
+Graphe de liens reconstruit hors chrome (nav, header, footer retires)
+pour ne compter que les liens de contenu, puis re-verifie chrome
+compris pour les cas limites.
+
+Resultat : aucune page orpheline. Les quatre candidates du premier
+passage (esg, plan du site FR/EN) sont en realite liees par le pied
+de page de tout le site ; les hubs lient leurs sous-pages dans le
+contenu ; les 64 journaux (32 FR + 32 EN) sont tous references par
+les carnets, verifie fichier par fichier ; le plan du site existe en
+deux langues et date d'hier, avec les pages les plus recentes dedans.
+
+**Mon erreur, consignee avant d'etre commise** : deux de mes huit
+propositions du jour — creer un glossaire et un plan du site —
+visaient des pages qui existent deja (glossaire-petrolier, 70 termes
+et JSON-LD, refait hier ; plan-du-site, a jour). J'ai propose sans
+re-verifier l'inventaire. Les chantiers sont requalifies : le
+glossaire recevra une extension ciblee au lieu d'une creation, le
+plan du site n'a besoin de rien. Chapitre d'audit : aucun fichier du
+site ne change.
+
+## 304 — Glossaire : une categorie Reperes Tchad (2026-08-29)
+
+Le glossaire existant (70 termes, chapitre d'hier) couvrait bien la
+technique mais pas le terrain : ni Doba, ni Sedigui, ni le corridor,
+ni le FCFA. Ajout d'une huitieme categorie « Reperes Tchad » (teinte
+cyan distincte) avec neuf entrees — bassin de Doba, Sedigui, corridor
+Doba-Kribi (1 070 km), Djarmaya, contenu local (80 %), RCCM, FCFA,
+les villes relais Moundou-Sarh-Abeche, et le 144 kb/j avec renvoi
+explicite a l'arbitrage du millesime — plus « Brent » dans la
+categorie Cadre, en echo a la veille du registre. Meme travail en
+anglais (« Chad landmarks »). Les definitions reprennent le
+vocabulaire des pages du site, pas d'invention.
+
+**Mon erreur** : l'insertion en fin de tableau JS n'a pas ajoute la
+virgule manquante a l'ancienne derniere entree — le rendu tombait a
+zero terme avec une erreur console. Le test de rendu l'a attrape
+avant publication ; virgule posee, 80 termes affiches et filtre
+« Reperes Tchad » verifies dans les deux langues. Changement HTML
+seul : pas de bump du service worker.
