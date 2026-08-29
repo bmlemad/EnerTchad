@@ -11052,3 +11052,45 @@ pole a 0, deja en verre ; et la banniere cookies, opaque sur deux
 pages ou elle est injectee par script — element transitoire, hors du
 decor. Cache-buster de la feuille de navigation et service worker
 portes a 202608291130 ; plan XML redate.
+
+## 319 — Balayage complet apres la vague des bandeaux, et un defaut d'accessibilite ancien (2026-08-29)
+
+Cent quarante-cinq fichiers avaient change au chapitre 318 : les
+210 pages repassent a la console, aux requetes, a axe et aux
+debordements. Trois signaux, trois natures differentes.
+
+**Mon harnais lisait des couleurs a mi-fondu.** axe signalait par
+intermittence un contraste de 3,65 sur le surtitre d'un hub. Mesure
+faite : au repos, la couleur du pole donne 6,31 — la valeur fautive
+etait celle du texte compose a mi-animation d'apparition. Le harnais
+attend desormais que les animations se posent avant de mesurer ; le
+signal a disparu sur six essais consecutifs. Meme famille que le
+reflet du titre de heros au chapitre 316 : ce n'est pas la page qui
+ment, c'est l'instant ou on la regarde.
+
+**Quatre apostrophes droites avaient survecu au chapitre 315.**
+Elles vivaient echappees (\') a l'interieur des chaines JavaScript du
+glossaire anglais, que la substitution excluait a raison — on ne
+convertit pas des guillemets dans du code a l'aveugle. Elles sont
+redressees a la main dans le tableau des termes, plus un libelle pose
+par script sur la page clients. Les 80 termes s'affichent toujours
+dans les deux langues.
+
+**Et un vrai defaut, lui, permanent : les liens de corps de texte.**
+axe l'a signale sur une page ; un detecteur deterministe ecrit pour
+l'occasion — un lien en ligne dont la couleur n'atteint pas 3:1 avec
+la phrase qui l'entoure, sans souligne ni bordure — en a trouve sur
+**37 pages**, jusqu'a des liens exactement de la meme couleur que
+leur phrase, donc invisibles comme liens (WCAG 1.4.1). Les liens de
+corps portent maintenant un souligne discret, pose au niveau des
+feuilles partagees pour les liens sans classe, et repris a la main
+sur seize liens qui portaient un text-decoration:none en style en
+ligne. Les liens habilles — boutons, puces, cartes — ne sont pas
+touches. Verification : zero page en theme sombre, sur les 210.
+
+**Residu assume** : deux ancres, sur les deux brochures et les deux
+accueils en theme clair, resistent encore — leur souligne est ecrit
+en style en ligne et le calcul rend none, sans qu'aucune regle
+correspondante ne se declare. Je n'ai pas trouve la cause et je ne
+la maquille pas : c'est note ici pour la prochaine passe. Service
+worker porte a 202608291330.
