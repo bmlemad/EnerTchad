@@ -10728,3 +10728,13 @@ Verifie au navigateur dans les deux formats (1280 et 390 px) : RTL
 conserve, 8 cartes, zero debordement, zero erreur console, et la
 capture confirme le rendu — hero sable, KPI, bandeau actif.
 Changement HTML et sitemap seuls : pas de bump du service worker.
+
+## 310 — Le tableau de bord du registre rejoint le chapitre 309 (2026-08-29)
+
+Le tableau de bord artefact est republie a jour de la vague du jour :
+les neuf chapitres 301-309 ajoutes a la liste, l'arbitrage « assistant
+de site par IA » (repere EnergIA d'Eni, ch. 305) ajoute aux decisions
+en attente — neuf desormais —, et deux notes actualisees : le rapport
+annuel voit son perimetre etendu a la durabilite, l'arbitrage arabe
+enregistre le mini-site lance au chapitre 309. Chapitre journal :
+seul MAINTENANCE.md change sur le site.
