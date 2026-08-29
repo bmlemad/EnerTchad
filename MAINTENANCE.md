@@ -10255,3 +10255,46 @@ chapitre 281 s'applique aussi aux index.
 
 Service worker bumpe (et-202608290145) : les donnees de palette sont
 des scripts, servis reseau d'abord mais versionnes proprement.
+
+## 290 — QA iOS : le burger etait hors ecran sur tous les iPhone (2026-08-28)
+
+Revue de la version iOS, menee pour la premiere fois dans un vrai
+moteur WebKit (le moteur de Safari), en emulation iPhone 14, SE et
+14 Pro Max.
+
+**Le defaut principal, corrige** : sur toute la famille des 138 pages
+a mega-menu, la rangee d'actions de l'en-tete (pilule FR·EN clonee,
+loupe, burger) debordait de l'ecran sous ~430 px — le bouton du menu
+sortait de 32 px sur un iPhone 14 (12 px visibles) et de 42 px sur un
+SE. Present dans les DEUX moteurs : la matrice mobile du chapitre 270
+ouvrait le tiroir par script et n'avait jamais mesure le bord droit du
+bouton. Correctif dans nav_a.css : sous 470 px, gouttieres reduites,
+pilule et loupe compactees, marque legerement resserree ; sous 375 px
+la pilule FR·EN s'efface (le tiroir garde le lien English). Verifie
+aux cinq largeurs 320 a 470 dans les deux moteurs : le burger tient.
+
+**Deuxieme correctif** : plight_extrait.css portait trois declarations
+backdrop-filter sans jumelle -webkit- — le flou des cartes en theme
+clair disparaissait sur les Safari anterieurs a la version 18.
+Appariees ; le site est desormais a 100 % de paires sur ses ~4600
+declarations (le seul "impair" restant est la requete @supports du
+repli sans flou, qui est justement la pour ca).
+
+**Ce qui est deja propre pour iOS** : viewport-fit=cover et 104 usages
+de safe-area (l'encoche etait deja pensee), tous les champs de saisie
+a 16 px (pas de zoom force au focus), repli @supports sans flou,
+recherche plein-texte et panier boutique fonctionnels au tap WebKit,
+formulaire contact, zero debordement horizontal sur huit pages cles,
+tiroir et accordeon conformes (liens de rubrique a 44 px).
+
+**Limites d'instrument consignees** : dans ce WebKit headless,
+l'horloge des animations CSS reste gelee sur les pages lourdes (les
+animations restent "running" a t=0) — le tiroir semblait invisible
+alors que seule la premiere image de son animation etait peinte ; en
+forcant la fin des animations, tout s'affiche. Sur un vrai Safari,
+l'horloge tourne. S'y ajoutent un avertissement ResizeObserver benin
+sur cibles-2030 et le fait qu'un tap Playwright ne peut pas atteindre
+un bouton partiellement hors ecran — c'est d'ailleurs ce qui a trahi
+le defaut.
+
+Service worker bumpe (et-202608290300).
