@@ -10891,3 +10891,34 @@ elles ne coutent rien et servent si les photos reviennent un jour.
 QA : deux accueils, trois largeurs, deux themes — console, axe,
 requetes, debordements : zero ; dix-neuf largeurs sans debordement ;
 WebKit iPhone idem. LCP 936 ms, CLS 0,004.
+
+## 315 — L'apostrophe droite disparait du site (2026-08-29)
+
+Deux corrections approuvees par le proprietaire, faites ensemble.
+
+**La citation du hub Petrochimie est ramenee a une phrase.** Le bloc
+est dessine pour une accroche ; celle-ci en contenait deux (119
+signes, six lignes la ou les sept autres poles en font deux a cinq).
+La premiere phrase reste l'accroche — « Un baril ne vaut pas que son
+carburant. » — la seconde ouvre le paragraphe en dessous, ou elle
+etait a sa place. Meme geste en anglais. Mesure apres : deux lignes,
+comme les autres. Aucun mot n'est perdu.
+
+**Les 599 apostrophes droites sont redressees**, sur 97 fichiers.
+La substitution ne touche que les noeuds de texte : les balises, les
+attributs, les scripts, les styles et les blocs code/pre/kbd sont
+ecartes par decoupage prealable, et un garde-fou verifie que le
+nombre de chevrons est identique avant et apres. Trois formes
+traitees : entre lettres (l'import), en fin de mot (Chadians'), et
+devant un guillemet ouvrant (l'« equipe »). Les six apostrophes qui
+suivent un chiffre sont conservees : ce sont des mesures en pieds
+(conteneurs 20' et 40'), pas des elisions.
+
+**La chaine des livrables suit** : les trois sources d'impression
+etaient concernees, donc la brochure FR, la brochure EN et le point
+d'etape sont reimprimes, et le kit presse est reconstruit avec les
+deux brochures a jour et ses cinq fichiers texte corriges. Verifie
+au texte extrait des PDF : zero apostrophe droite.
+
+Plan XML redate (24 URL), QA sur un echantillon de douze pages dans
+les deux themes — console, axe, requetes, debordements : zero.
