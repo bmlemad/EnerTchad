@@ -10501,3 +10501,17 @@ Verifie en geometrie (deux colonnes, rangees 2+2, zero debordement)
 et au pixel dans les deux themes et les deux langues ; l'ecran
 d'accueil montre desormais la chaine complete en deux rangees au lieu
 de quatre ecrans.
+
+## 299 — Les poles de soutien apparies a leur tour (2026-08-28)
+
+Meme exercice que le chapitre 298, demande par le proprietaire pour les
+quatre appuis : sur l'accueil FR et EN, GreenTech et TchadiTech
+partagent desormais la premiere rangee, Tchaditude et EnerConseils la
+seconde. Le bloc coeurs-duo est simplement etendu de #coeurs a
+:is(#coeurs,#appuis) — memes compactages, meme filet vertical, meme
+realignement des panneaux miroirs, theme clair compris ; le mobile
+garde son empilement.
+
+Verifie en geometrie (deux sections en 2+2, zero debordement) et au
+pixel : l'accueil raconte maintenant les huit poles en quatre rangees
+au lieu de huit ecrans — la chaine en deux, les appuis en deux.
