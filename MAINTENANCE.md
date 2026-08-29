@@ -10624,3 +10624,73 @@ zero terme avec une erreur console. Le test de rendu l'a attrape
 avant publication ; virgule posee, 80 termes affiches et filtre
 « Reperes Tchad » verifies dans les deux langues. Changement HTML
 seul : pas de bump du service worker.
+
+## 305 — Revue de structure face a TotalEnergies et Eni (2026-08-29)
+
+Troisieme revue comparative apres Exxon-Chevron (ch. 292) et
+ADNOC-Aramco (ch. 295), cette fois face aux deux europeens
+historiquement lies au petrole tchadien : TotalEnergies (reseau de
+distribution present au pays) et Eni (modele africain du contenu
+local et du developpement accelere). Navigation des deux sites lue le
+jour meme.
+
+Le constat, axe par axe : le modele satellite d'Eni (Plenitude,
+Enilive, Versalis) correspond aux quatre poles d'appui ; son magazine
+et ses recits correspondent aux carnets et aux 64 journaux ; son plan
+strategique 2026-2030 a cibles-2030 ; ses pages ESG et ethique
+existent chez EnerTchad. Le decoupage par verbes de TotalEnergies
+(explorer-produire, transformer-developper, expedier-vendre) est
+deja couvert par l'accueil en 2+2 et ses bandeaux « S'orienter » ;
+ses pages projets par l'atlas et les pages sites. Aucun changement
+de fichier ne s'impose : le referentiel tient.
+
+Deux points remontent au registre : le rapport de durabilite
+periodique (les deux publient un rapport dedie annuel — a fusionner
+avec l'arbitrage « premier rapport annuel » deja consigne, en
+precisant son perimetre durabilite) ; et l'assistant de site par IA
+(EnergIA chez Eni) — la palette et la recherche plein-texte couvrent
+la navigation, l'assistant conversationnel est un arbitrage
+proprietaire nouveau.
+
+## 306 — La trajectoire des jalons devient interactive (2026-08-29)
+
+Troisieme proposition du jour qui visait une chose deja construite :
+la « chronologie interactive » existait aux trois quarts — section
+trajectoire (courbe SVG des cinq jalons animee au defilement),
+feuille de route datee, compteur de jalons, agenda. Requalifie en
+amelioration ciblee plutot qu'en doublon.
+
+Ce qui manquait : la courbe etait purement decorative. Chacun des
+cinq jalons (capital fondateur, immatriculation, premiere levee,
+pilote EOR, cap des 20 milliards) est desormais un lien SVG focable
+au clavier — aria-label complet, grossissement du point et halo au
+survol comme au focus, anneau blanc en focus visible, et le clic
+mene au calendrier detaille de la section jalons. Theme clair
+couvert (texte or fonce sur creme). Meme travail sur la version
+anglaise. Verifie au navigateur : cinq liens focables, navigation
+vers #jalons effective, zero erreur console dans les deux langues.
+Changement HTML seul : pas de bump du service worker.
+
+## 307 — Cartes sociales : les journaux prennent la couleur de leur pole (2026-08-29)
+
+L'audit a d'abord donne tort a la proposition initiale : les 209
+pages ont deja og:image et twitter:card, et neuf visuels 1200x630
+existent (un generique plus un par pole), poses des le 25 aout. Les
+hubs et leurs sous-pages utilisent deja le bon visuel — quatrieme
+proposition du jour largement deja construite.
+
+Le vrai reste a faire etait dans les carnets : 58 des 64 journaux
+partageaient le visuel generique (seules les trois interviews
+etaient rattachees). Vingt-six journaux (et leurs vingt-six
+miroirs anglais) recoivent le visuel de leur pole — forage, EOR,
+Sedigui, criblage et densite vers l'amont ; corridor, camions,
+stockage, transfert de garde et integrite vers l'intermediaire ;
+mini-raffinerie, stations, prix du litre, GPL, bitume et marques
+vers l'aval ; uree et chimie EOR locale vers la petrochimie ; gaz
+torche, eau de production et hybride solaire vers GreenTech ; champ
+numerique et robotique vers TchadiTech ; l'academie vers Tchaditude ;
+l'atlas vers EnerConseils. Trois journaux transverses (mecanique des
+fluides, premiere du genre, rente partagee) gardent le generique,
+choix assume plutot qu'un rattachement force. og:image,
+twitter:image et l'image JSON-LD changent ensemble (trois
+occurrences par fichier, 156 remplacements, 52 fichiers).
