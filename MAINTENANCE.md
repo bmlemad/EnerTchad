@@ -10538,3 +10538,23 @@ Etat au chapitre 300 : 209 pages en deux langues et demie, huit poles
 en quatre rangees sur l'accueil, dix outils investisseur, un journal
 public qui n'a jamais saute un chapitre — et huit decisions qui
 attendent le proprietaire, listees au tableau de bord.
+
+## 301 — Balayage bi-moteur des 209 pages apres les vagues 292-300 (2026-08-29)
+
+Neuf chapitres ont touche une centaine de fichiers (rubans de chaine,
+hubs petrochimie, purge JSON-LD, accueil en 2+2 deux fois) : un
+balayage complet des deux moteurs s'imposait avant d'aller plus loin.
+
+**Chromium desktop, theme sombre, 209 pages** : console, erreurs de
+page, requetes en echec (>=400), debordements horizontaux — zero
+anomalie sur les trois lots paralleles.
+
+**WebKit iPhone 14, 209 pages** : meme grille plus le controle du
+bouton de menu (l'ecueil du chapitre 290) — une seule entree au
+rapport, l'avertissement ResizeObserver de cibles-2030, connu,
+intermittent et benin (le harnais avait ete calibre dessus au
+chapitre 291) ; aucun debordement, aucun bouton hors ecran, aucune
+requete en echec.
+
+Verdict : les vagues 292-300 n'ont rien casse. Journal seul publie —
+aucun fichier du site ne change.
