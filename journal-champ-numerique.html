@@ -264,13 +264,13 @@ html.et-jlight .rootland::after{
 </div>
 <div class="jrule"><hr></div>
 <div class="jbody">
-  <p>Sur un champ mature relancé par l'<a href="/journal-eor-baril-additionnel">EOR</a>, chaque baril supplémentaire se gagne au réglage près : une pression d’injection, un dosage de <a href="/journal-chimie-eor-locale">chimie</a>, une pompe qui fatigue. Ces décisions exigent une chose que les champs isolés n’ont presque jamais : une <strong>donnée fiable, fraîche et auditable</strong>. C’est le rôle du champ numérique — et EnerTchad l’a dessiné avant même son premier puits, en <strong>quatre couches</strong>.</p>
+  <p>Sur un champ mature relancé par l’<a href="/journal-eor-baril-additionnel">EOR</a>, chaque baril supplémentaire se gagne au réglage près : une pression d’injection, un dosage de <a href="/journal-chimie-eor-locale">chimie</a>, une pompe qui fatigue. Ces décisions exigent une chose que les champs isolés n’ont presque jamais : une <strong>donnée fiable, fraîche et auditable</strong>. C’est le rôle du champ numérique — et EnerTchad l’a dessiné avant même son premier puits, en <strong>quatre couches</strong>.</p>
 
   <h2>L1 — le terrain : des capteurs qui tolèrent le Tchad</h2>
   <p>Tout commence à la vanne : capteurs et automates sur les sites (OPC-UA, Modbus, MQTT), avec <strong>calcul local et mémoire tampon de 30 jours</strong>. La contrainte de conception n’est pas l’élégance, c’est le réel tchadien : chaleur, poussière, liaisons satellites intermittentes, maintenance frugale. Un site doit pouvoir fonctionner — et enregistrer — même coupé du monde, puis se resynchroniser sans perdre une mesure.</p>
 
   <h2>L2 — la donnée : un lakehouse hébergé au pays</h2>
-  <p>Les flux remontent, contractualisés, vers un entrepôt de données <strong>hébergé in-country</strong> : zones brute → raffinée → décision, traçabilité complète et « time-travel » d’audit — on peut rejouer l’état du champ à n’importe quelle date, de la mesure à la décision. C’est le prolongement industriel du principe posé par l'<a href="/journal-atlas-secteur">Atlas</a> : <strong>la donnée tchadienne reste au Tchad</strong>, gouvernée par des règles tchadiennes.</p>
+  <p>Les flux remontent, contractualisés, vers un entrepôt de données <strong>hébergé in-country</strong> : zones brute → raffinée → décision, traçabilité complète et « time-travel » d’audit — on peut rejouer l’état du champ à n’importe quelle date, de la mesure à la décision. C’est le prolongement industriel du principe posé par l’<a href="/journal-atlas-secteur">Atlas</a> : <strong>la donnée tchadienne reste au Tchad</strong>, gouvernée par des règles tchadiennes.</p>
 
   <div class="jkey">
     <b>À retenir.</b> L1 capte et tient 30 jours hors ligne ; L2 centralise et trace au pays ; L3 apprend (<a href="/glossaire-petrolier#t-maintenance-predictive" class="glref">maintenance prédictive</a>, détection d’anomalies, optimisation) ; L4 décide — un seul flux de données, auditable de bout en bout, de la vanne au décideur.
