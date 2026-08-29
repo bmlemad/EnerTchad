@@ -7,7 +7,9 @@
    ============================================================ */
 
 /* ---------- Barre utilitaire (desktop) ---------- */
-.nx-util{background:rgba(4,8,15,.92);border-bottom:1px solid var(--hair);
+/* Ch318 — le bandeau utilitaire etait le seul opaque de l en-tete : il coupait
+   l image de fond en haut de 138 pages. Il devient du verre comme le reste. */
+.nx-util{background:rgba(4,8,15,.40);-webkit-backdrop-filter:blur(14px) saturate(130%);backdrop-filter:blur(14px) saturate(130%);border-bottom:1px solid var(--hair);
   transition:margin-top .32s var(--ease),opacity .25s var(--ease)}
 .nx-util-in{display:flex;justify-content:flex-end;align-items:center;gap:20px;
   height:38px;padding:0 var(--gut);max-width:var(--max);margin:0 auto;font-size:.78rem}

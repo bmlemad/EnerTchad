@@ -291,7 +291,7 @@ html.et-jlight .nav.scrolled:not(#e1):not(#e2):not(#e3):not(#e4)::after{
 /* bandeau utilitaire du haut */
 html.et-plight .nx-util:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
 html.et-jlight .nx-util:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
-  background:rgba(243,238,229,.96)!important;
+  background:rgba(243,238,229,.58)!important;-webkit-backdrop-filter:blur(14px) saturate(120%)!important;backdrop-filter:blur(14px) saturate(120%)!important;
   border-bottom:1px solid rgba(26,35,48,.10)!important}
 html.et-plight .nx-util-in>a:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
 html.et-jlight .nx-util-in>a:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
