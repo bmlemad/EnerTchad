@@ -11094,3 +11094,13 @@ en style en ligne et le calcul rend none, sans qu'aucune regle
 correspondante ne se declare. Je n'ai pas trouve la cause et je ne
 la maquille pas : c'est note ici pour la prochaine passe. Service
 worker porte a 202608291330.
+
+## 320 — Le tableau de bord rejoint le chapitre 319 (2026-08-29)
+
+Republication du tableau de bord du registre a jour des dix derniers
+chapitres : consolidation des index (311), phrases trop grandes (312),
+conviction de l'accueil (313), accueil immersif (314), apostrophes
+typographiques (315), QA des poles (316), mesure sur cinq largeurs
+(317), QA des bandeaux (318), liens de corps de texte (319). Les neuf
+arbitrages du proprietaire restent inchanges. Chapitre journal : seul
+MAINTENANCE.md change sur le site.
