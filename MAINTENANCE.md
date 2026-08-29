@@ -10320,3 +10320,50 @@ defauts connus (la page aux graphiques plus une adresse inexistante) —
 il attrape bien l'erreur et le 404 ; et un lot a ete rejoue avec
 comptage pour prouver que les 209 pages ont ete parcourues (12 pages
 en 37 s, soit environ 3 s par page). Chapitre de journal seulement.
+
+## 292 — Ultra review de la chaine face a ExxonMobil et Chevron : le fil manquant (2026-08-28)
+
+Revue demandee : la structure Amont / Intermediaire / Aval du site,
+confrontee a la maniere dont ExxonMobil et Chevron presentent la leur.
+
+**Ce que font les deux majors** : ils ont quitte le decoupage classique.
+ExxonMobil s'organise depuis 2022 en trois affaires — Upstream, Product
+Solutions (l'aval et la chimie fusionnes) et Low Carbon Solutions — et
+se presente comme "societe integree carburants, lubrifiants et chimie" ;
+Chevron ne publie que deux segments (Upstream, Downstream — le midstream
+y est fondu) et son site raconte des themes (energie, technologie,
+operations) plutot que des maillons. Moralite : chez les majors, le
+midstream n'est plus un etage marketing, et l'histoire vendue est
+l'INTEGRATION, pas la tripartition.
+
+**Le verdict pour EnerTchad** : garder la chaine classique est le bon
+choix — un site pedagogique de societe en constitution doit montrer les
+maillons, pas les abstraire ; et au Tchad, l'Intermediaire est une vraie
+these (le corridor Doba-Kribi est l'artere du pays), la ou Chevron peut
+se permettre de le fondre. La revue a confirme une coherence solide :
+ordre Amont -> Intermediaire -> Aval -> Petrochimie identique dans la
+navigation, le pied de page, la societe et la carte ; squelette commun
+des quatre hubs (enjeux, approche, offre, chantiers) ; nommage FR/EN
+aligne (Upstream/Midstream/Downstream/Petrochemicals).
+
+**Le manque, corrige** : l'integration — le message central des majors —
+etait affirmee partout ("de la roche-mere a la pompe") mais les quatre
+hubs ne se RELIAIENT pas : aucun fil d'un maillon au suivant. Les huit
+pages (FR et EN) portent desormais un bandeau "Chaine de valeur · de la
+roche-mere a la pompe" : les quatre maillons en pastilles, le pole
+courant en or, chaque voisin a un tap — l'equivalent EnerTchad du recit
+d'integration d'Exxon, sans copier sa fusion de segments. Benche deux
+themes et mobile, zero debordement.
+
+**Deux retouches au passage** : le h1 de la Petrochimie FR passait en
+minuscule ("chimie") la ou son titre capitalise ; et la page EN disait
+"chemicals & processing" en h1 contre "chemistry & transformation" en
+titre — harmonises en "Chimie & transformation" / "Chemistry &
+transformation".
+
+**Observation consignee, non corrigee** : les hubs Petrochimie (FR et
+EN) n'ont ni section "approche" ni section "offre", contrairement aux
+trois autres maillons — le quatrieme pole de chaine est structurellement
+plus mince. Redaction a prevoir, inscrite au registre.
+
+HTML seulement : pas de bump du service worker.
