@@ -10446,3 +10446,37 @@ home-plus et print-home — pas de style mort laisse derriere. Environ
 (autres sections, kit presse), aucun fichier supprime. Verifie dans
 les deux themes : zero erreur console, pas de trou de mise en page,
 pas de debordement.
+
+## 297 — Audit des donnees structurees : la FAQ fantome de 41 pages (2026-08-28)
+
+Audit complet des blocs JSON-LD du site — 767 blocs sur 209 pages,
+tous parses : zero erreur de syntaxe, un seul nom d'organisation, un
+seul hote canonique. Mais trois derives de fond, toutes corrigees.
+
+**La FAQ fantome** : 41 pages portaient un bloc FAQPage generique dont
+AUCUNE question n'apparaissait sur la page — un balisage decrivant un
+contenu invisible, contraire aux consignes des moteurs (le balisage
+FAQ doit refleter ce que le visiteur voit). Les 41 blocs sont retires ;
+les 6 vraies FAQ (dont faq.html et ses 28 questions visibles) gardent
+le leur. Sur clients.html, deux questions du bloc avaient derive du
+texte visible ("s'applique-t-il partout" vs "vraiment partout") —
+resynchronisees.
+
+**Le fil d'Ariane bilingue** : 72 pages anglaises pointaient leur
+"Home" vers l'accueil francais (/), une vers /en, 29 vers /index-en —
+trois conventions pour un meme fil. Les 102 fils d'Ariane anglais
+pointent desormais tous vers /index-en. Et le Configurateur, seul
+outil sans fil d'Ariane, a recu le sien au modele du Calculateur.
+
+**Mes faux positifs, consignes** : le premier detecteur comparait les
+questions au texte de la page SANS retirer les scripts — chaque bloc
+se validait contre lui-meme (48 FAQ "visibles" en apparence) ; corrige,
+il en restait 41 fantomes. Puis les apostrophes typographiques de la
+page contre les droites du JSON fabriquaient 6 fausses absences sur
+faq.html — normalisation avant comparaison. Deux lecons du meme jour :
+l'instrument se calibre sur un cas connu avant de juger le site.
+
+Au meme chapitre : le tableau de bord du registre publie en artifact
+(compteurs, arbitrages, veilles, chapitres 275-296 filtrables), etabli
+au chapitre 296. 125 fichiers modifies, publies en treize lots ; HTML
+seulement, pas de bump du service worker.
