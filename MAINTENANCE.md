@@ -11999,3 +11999,44 @@ l'ajouter a la vitrine chargerait la home arbitree au chapitre 326 sans
 gain reel.
 
 Changement HTML seul (deux accueils) : pas de bump du service worker.
+
+## 336 — Face aux majors : le benchmark et la recherche pleine page (2026-08-30)
+
+**La commande.** Confronter la vitrine EnerTchad aux sites des majors et
+des champions nationaux. Sources relevees ce jour : TotalEnergies,
+Chevron, Aramco, Petrobras (Shell et Eni inaccessibles au fetch).
+
+**Le canon des majors.** Six sections (societe, activites, durabilite,
+investisseurs, medias, carrieres) et un socle d'outils : recherche,
+langues, bibliotheque de rapports, newsletter, RSS, portail
+fournisseurs, transparence, reseaux sociaux. Cote contenu, EnerTchad
+tient deja ce canon — et le depasse par endroits : paiements aux Etats
+(transparence type ITIE, rare meme chez les majors), outils interactifs
+(calculateur, configurateur, explorateur de chaine), glossaire de 80
+termes, PWA hors-ligne, page arabe. Les ecarts qui restent sont calibres
+par le statut de societe en constitution : pas de cours de bourse, pas
+de rapport annuel — l'agenda et l'etagere documentaire en tiennent lieu.
+
+**L'ecart applicable : la recherche pleine page.** Le site avait deja
+une palette Ctrl+K (index cure d'environ 76 entrees plus extensions FR
+et EN — mon premier constat "pas de recherche" etait faux, la loupe de
+la nav la porte sur 140 pages). Mais aucun moyen de chercher parmi
+TOUTES les pages. Construit ce jour : /recherche et /recherche-en,
+pages au chrome du site (clonees du plan du site, bandeau et JSON-LD
+reecrits), index JSON genere depuis les 104 pages francaises et 102
+anglaises (titre, description, rubriques, sections h2), score pondere
+titre x3 / rubriques x2 / description x1, pliage des accents, etat dans
+le hash (#q=), role=search, statut aria-live. Zero violation axe, zero
+erreur console, un seul h1 par page. Portes d'entree : la palette
+Ctrl+K (entree ajoutee aux deux index), les accueils (ligne sous les
+acces rapides), les plans du site et la page 404. Sitemap porte a 212
+URL.
+
+**Arbitrages du proprietaire, registre enrichi de trois entrees.**
+(1) Etendre l'arabe au-dela des deux pages actuelles — les champions
+nationaux (Aramco) servent six langues. (2) Une mediatheque presse
+dediee (photos HD, logos, dossier) comme les media centers des majors —
+la fiche presse actuelle est un embryon. (3) Une newsletter a backend
+reel : le flux mailto actuel est le plafond d'un site statique.
+
+Service worker : et-202608302205 (cmdk_extra.js et cmdk_en.js modifies).
