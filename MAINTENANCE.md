@@ -12331,3 +12331,23 @@ echeances (scenarios Brent en janvier 2027, ITIE a la validation,
 Sedigui au fil des annonces). Aucune action applicable n'attend.
 
 Seul le journal change dans le depot.
+
+## 345 — CP-2026-009 : la vague d'aout annoncee et cablee (2026-08-30)
+
+**Le communique.** Les livraisons des chapitres 336 a 343 meritaient
+leur annonce officielle, dans la lignee des CP-006 a 008 : CP-2026-009
+(FR et EN, en tete des pages communiques) annonce la recherche pleine
+page, le mini-site arabe porte a cinq pages, l'espace presse et
+l'annuaire "tout le site en un ecran" — et officialise le nom
+TchadiValeur. Les ItemList JSON-LD des deux pages sont renumerotees
+avec le nouvel item en premiere position, et le flux RSS passe a 47
+items, XML valide.
+
+**Le cablage de la palette.** L'espace presse entre dans la palette
+Ctrl+K des deux langues, et les trois nouvelles pages arabes
+rejoignent le groupe References des deux index (188 entrees FR, 162
+EN). Verifie au navigateur : "presse" dans la palette renvoie /presse
+en premiere position, les deux pages communiques affichent CP-009 en
+tete sans erreur console.
+
+Service worker : et-202608302235 (deux index de palette modifies).
