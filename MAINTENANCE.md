@@ -11605,3 +11605,64 @@ documentaire, pas d'une vitrine.
    regroupant agenda, publications et raccourcis.
 
 Chapitre d'analyse : seul MAINTENANCE.md change sur le site.
+
+## 326 — La home devient la vitrine de la chaine (2026-08-30)
+
+Le proprietaire a arbitre : la chaine, c'est Amont, Intermediaire, Aval —
+et la petrochimie la prolonge. Les cinq propositions du chapitre 325 sont
+appliquees dans l'ordre, sur les deux accueils.
+
+**1. Le cadrage, tranche et applique.** La section des maillons disait
+« Quatre maillons, quatre portes d'entree » ; elle dit desormais « Trois
+maillons, une meme molecule ». Les panneaux passent de « Maillon 01 sur 4 »
+a « sur 3 » ; la petrochimie quitte la numerotation pour un badge « + ·
+Prolongement de la chaine ». L'introduction, le fil d'orientation
+(« Amont -> Intermediaire -> Aval -> la pompe »), l'aria-label de la
+section et l'introduction des appuis (« Les trois maillons font circuler
+la molecule, la petrochimie la prolonge ») suivent, en francais et en
+anglais. La formulation « quatre maillons » ne vivait que sur les deux
+accueils : le reste du site (brochure « 3 poles · coeur de metier », les
+« 8 poles » du groupe) etait deja aligne ou compatible.
+
+**2. La hierarchie visuelle.** Les trois maillons forment desormais une
+bande maitresse de trois colonnes pleine largeur ; la petrochimie devient
+une bande de prolongement horizontale, plus basse, sous la bande ; les
+quatre appuis passent en rangee compacte de quatre colonnes (titres et
+fantomes reduits, navigation resserree). Les huit tuiles interchangeables
+d'hier sont remplacees par trois etages lisibles : la chaine, son
+prolongement, son socle. Realise en CSS de page (media 1000px), sans
+toucher au composant commun des panneaux immersifs du chapitre 314.
+
+**3. La chaine remontee d'un cran.** L'ordre passe de
+hero -> Qui nous sommes -> maillons a hero -> maillons -> appuis ->
+Qui nous sommes. Le premier maillon apparait a 0,9 ecran au bureau
+comme au telephone, contre 1,8 et 2,2 avant.
+
+**4. L'entree directe depuis le hero.** Le bouton principal « Decouvrir
+EnerTchad », qui pointait vers la raison d'etre (#combat) en sautant toute
+la chaine, devient « Suivre la molecule » et mene aux maillons. « Investir »
+reste a cote. Le fil de liens directs Amont/Intermediaire/Aval du hero
+etait deja en place.
+
+**5. Le degraissage.** L'agenda investisseur et l'etagere documentaire
+passent cote a cote au bureau (1 397 px -> 909 px), les sections de queue
+sont resserrees. Sur telephone, les panneaux d'appui n'occupent plus un
+ecran entier chacun.
+
+**Mesures avant / apres.** Part de la premiere vue donnee a la chaine :
+le maillon 01 visible des 0,9 ecran (1,8-2,2 avant). Appuis : 1 783 px ->
+1 359 px au bureau. Page entiere : 16,3 -> 15,5 ecrans au bureau, 25,5 ->
+24,7 au telephone. Verification : debordement et rognage a 390, 600, 1024
+et 1440 px dans les deux themes, axe WCAG 2.1 AA a 390 et 1440 px dans les
+deux themes, zero violation, zero erreur console, aucun identifiant en
+double apres le deplacement des sections, ancre du CTA verifiee au clic.
+
+**Observation consignee.** Un debordement transitoire de 3 px du bouton
+hamburger (droite a 393 px pour une fenetre de 390) apparait de facon
+intermittente sur les accueils pendant le chargement des polices — une
+mesure sur trois environ, jamais le meme theme. Anterieur a ce chapitre
+(deja visible dans les balayages du chapitre 324), sans effet une fois la
+page posee. Note, pas maquille.
+
+Pages modifiees : index.html et index-en.html seulement. Aucun actif
+JS/CSS partage touche : pas de changement de version du service worker.
