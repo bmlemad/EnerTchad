@@ -11788,3 +11788,37 @@ reprendre ; les metadonnees des accueils parlent de chaine integree sans
 compter les maillons, elles restent justes. Verifie : les seules occurrences restantes de
 « sur 4 » / « of 4 » sont celles des appuis (« Appui 01 sur 4 »), qui
 sont bien quatre.
+
+## 331 — Le cadrage a trois maillons etendu a tout le site, et la verification d'apres-vague (2026-08-30)
+
+Deux gestes pour clore la sequence ouverte au chapitre 325.
+
+**Le cadrage, partout.** L'arbitrage « chaine = trois maillons, la
+petrochimie en prolongement » ne valait que s'il etait partout. La chasse
+sur les 210 pages a rendu six survivants du cadrage a quatre, tous
+corriges dans les deux langues : la reponse « Quels sont les huit
+poles ? » de la FAQ — dans le texte visible ET dans les donnees
+structurees schema.org, celles que lisent les moteurs — disait « Quatre
+forment la chaine » ; la page Societe la reprenait mot pour mot ; et
+l'explorateur de chaine — la destination du bouton « Explorer la chaine »
+de l'accueil — s'etiquetait encore « La chaine · 4 maillons ». Il dit
+desormais « 3 maillons + prolongement », et son quatrieme onglet portait
+deja le sous-titre « Extension chimie » : la page etait en avance sur son
+propre titre. La brochure (« trois forment la chaine — notre coeur de
+metier ») etait deja alignee. Les JSON-LD des deux FAQ revalides apres
+edition. Les occurrences restantes de « quatre » comptent d'autres
+choses : les quatre appuis, les quatre etages du prix d'un litre, les
+quatre formats de station — toutes justes.
+
+**La verification d'apres-vague.** Regle de la maison : les 210 pages
+balayees dans les deux themes — axe WCAG 2.1 AA, erreurs console,
+debordements : zero partout.
+
+**Et le sitemap remis a l'heure.** Les lastmod des 210 URL regeneres
+depuis l'historique git : 139 dates mises a jour (les vagues 315 a 330
+avaient laisse le fichier en arriere), deux URL a alias (calculateur,
+configurateur) raccordees a leurs vrais fichiers, XML revalide.
+
+Pages modifiees : les deux FAQ, les deux pages Societe, les deux
+explorateurs de chaine, sitemap.xml — pas d'actif partage, pas de
+changement de version du service worker.
