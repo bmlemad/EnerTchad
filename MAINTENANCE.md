@@ -11873,3 +11873,52 @@ Aucun texte perdu dans les tuiles du site.
 debordements) : zero anomalie. JSON-LD des explorateurs revalides.
 
 Service worker : et-202608302040 (quatre feuilles modifiees).
+
+## 333 — QA des formulaires et de l'etagere documentaire (2026-08-30)
+
+**Perimetre.** Le site ne compte que deux formulaires : l'assistant de
+contact en trois etapes (#ctForm, contact.html et contact-en.html) et
+l'inscription newsletter des pages d'accueil (#fnForm, validation native
+plus mailto, par conception). S'y ajoute l'etagere documentaire :
+douze fichiers telechargeables (PDF, PPTX, MD, ICS, CSV).
+
+**Mon erreur : un harnais qui saute les rails.** Mon premier harnais a
+soumis le formulaire de contact en cliquant son bouton d'envoi masque,
+court-circuitant les trois etapes de l'assistant. Resultat : des
+defauts fabriques (erreurs pretendument persistantes, recapitulatif
+"Objet: []") qui n'existent pas quand on parcourt l'assistant comme un
+visiteur. Lecon consignee au registre des instruments : un harnais de
+formulaire doit emprunter le parcours reel (etape par etape, boutons
+visibles), jamais une soumission directe qui contourne la machine a
+etats du composant.
+
+**Parcours reel de l'assistant (FR sombre, FR clair, EN sombre).**
+Tout est conforme : messages d'erreur en role=alert annonces aux
+lecteurs d'ecran, effacement des erreurs des la correction, focus
+replace sur la legende a chaque etape, recapitulatif fidele aux
+saisies, et repli mailto correct (Objet : [type choisi] nom saisi)
+vers contact@enertchad.td quand aucun backend n'existe — le site est
+statique, ce repli est le comportement voulu.
+
+**Le seul defaut reel : la couleur d'erreur en theme clair.** Les
+messages .ct-err restaient lisibles en theme sombre (rgb(248,113,113))
+mais viraient au bleu nuit en theme clair : la repeinture de theme
+passait par-dessus leur couleur. Correction dans les quatre feuilles
+couvrant les 210 pages : #B42318 en themes clairs (contraste 6.3:1
+sur fond clair), via une specificite en :not() qui ne touche pas le
+theme sombre. Verifie apres correction : clair rgb(180,35,24), sombre
+inchange.
+
+**Observation mineure, laissee en l'etat.** Le marqueur de champ
+:invalid (bordure rouge au niveau du champ) est inconsistant ou absent
+selon les champs. Les alertes textuelles role=alert restent le
+mecanisme principal et fonctionnent ; a reprendre si une refonte du
+formulaire est un jour decidee.
+
+**Etagere documentaire : 12 sur 12.** Chaque fichier telechargeable
+verifie en production : type de contenu correct, taille non nulle,
+octets magiques conformes (%PDF pour les PDF, PK pour les PPTX,
+BEGIN:VCALENDAR pour l'ICS, entetes attendues pour MD et CSV).
+Aucun lien mort, aucun fichier corrompu.
+
+Service worker : et-202608302110 (quatre feuilles modifiees).
