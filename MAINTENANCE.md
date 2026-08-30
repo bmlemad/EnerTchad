@@ -12270,3 +12270,32 @@ images og referencees existent toutes dans le depot.
 
 Deux fichiers ICS corriges : changement de donnees seulement, pas de
 bump du service worker.
+
+## 343 — L'annuaire visible : le proprietaire corrige le chapitre 335 (2026-08-30)
+
+**L'arbitrage.** Le chapitre 335 concluait que la home couvrait le site
+parce que tout etait atteignable en deux clics via menus et pied de
+page. Le proprietaire tranche autrement : une navigation intuitive
+exige que le corps de la page montre les portes, pas qu'elles existent
+derriere un menu. Il a raison sur le fond — l'atteignabilite mesuree
+n'est pas la visibilite vecue, et la lecon vaut d'etre consignee :
+mes metriques de graphe ne mesurent pas l'intuition d'un visiteur.
+
+**La reponse : un annuaire en un ecran.** Nouvelle section #annuaire
+sur les deux accueils, placee entre les acces rapides et le bandeau
+final : cinq groupes — la societe (8 portes), la chaine et les poles
+(9, Petrochimie marquee prolongement), s'informer (9), agir (7),
+outils et acces (7, dont le mini-site arabe et la bascule de langue).
+Quarante liens visibles sans ouvrir un menu, pastilles de groupe aux
+couleurs canoniques, libelles courts. La ligne "chercher dans le
+site" du chapitre 335, devenue redondante, est retiree.
+
+**Verification.** Les deux accueils, deux themes, bureau et mobile :
+40 liens et 5 groupes presents, zero debordement, zero erreur console,
+zero violation axe sur la section — la premiere mesure mobile en
+signalait trente, prises pendant l'animation d'apparition ; au calme,
+zero. L'artefact rejoint le registre des instruments (mesurer apres
+la fin des animations, y compris celles declenchees par le
+defilement).
+
+Changement HTML seul (deux accueils) : pas de bump du service worker.
