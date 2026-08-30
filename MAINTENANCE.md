@@ -11104,3 +11104,69 @@ typographiques (315), QA des poles (316), mesure sur cinq largeurs
 (317), QA des bandeaux (318), liens de corps de texte (319). Les neuf
 arbitrages du proprietaire restent inchanges. Chapitre journal : seul
 MAINTENANCE.md change sur le site.
+
+## 321 — Le residu du chapitre 319 elucide : le pied de page ecrasait le souligne (2026-08-30)
+
+Le chapitre 319 s'etait termine sur un aveu : quatre ancres — sur les
+deux brochures et les deux accueils, en theme clair — refusaient de se
+souligner, alors meme que l'une d'elles portait un `text-decoration:
+underline` en style en ligne. Un style en ligne ne se laisse battre que
+par un `!important`, et je n'avais trouve aucune regle correspondante.
+J'avais consigne le fait sans le maquiller. C'est resolu.
+
+**Mon erreur, encore une fois instrumentale.** La sonde que j'avais
+ecrite pour enumerer les regles applicables ne renvoyait rien du tout.
+Elle testait `if (rule.cssRules) { descendre dans le groupe }` avant de
+lire le selecteur — or, depuis que Chrome accepte les regles imbriquees,
+`cssRules` existe aussi sur une simple regle de style, ou il est vide.
+Ma sonde prenait donc chaque regle ordinaire pour un groupe, descendait
+dans un tableau vide et passait a la suivante : 64 feuilles, 0 regle
+lue, 0 correspondance. Un instrument qui repond « rien » n'est pas la
+preuve qu'il n'y a rien. Corrige (lire d'abord `selectorText`, ne
+descendre que s'il est absent), le meme balayage a rendu 2894 regles et
+designe la coupable en une seconde.
+
+**La cause.** Une regle heritee, presente dans les trois feuilles du
+theme clair (`bundle_core_a1.css`, `plight_extrait.css`,
+`x_cd256286824c.css`) :
+
+    html.et-plight footer a:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5)
+    { color:#0E4172!important; text-decoration:none!important }
+
+Elle avait ete ecrite pour rendre lisibles les colonnes de liens du pied
+de page en theme clair, et elle fait bien son travail pour eux. Mais
+elle vise *tous* les liens du pied, sans distinction, et en
+`!important` : elle emportait aussi le lien WhatsApp de la bande
+newsletter des accueils (`.fn-alt a`, qui se soulignait pourtant par sa
+propre feuille de page) et le lien « Investisseurs » du paragraphe
+« moteurs de marge » des brochures, ecrit en style en ligne. Deux liens
+en pleine phrase, distingues par la seule couleur, a 1,40 de contraste
+avec le texte qui les entoure : WCAG 1.4.1 en defaut.
+
+**Inventaire avant correction.** Plutot que d'ecrire une regle au juge,
+j'ai recense sur les 210 pages tous les liens situes dans un `p`, un
+`li` ou un `dd` a l'interieur d'un `footer` ou d'un `.jfoot` : il y en a
+exactement quatre sur tout le site, et ce sont les quatre en cause. Les
+colonnes de navigation du pied n'utilisent pas de liste. Le correctif ne
+peut donc rien atteindre d'autre.
+
+**Le correctif.** Ajoute aux trois memes feuilles, avec une specificite
+superieure a celle de la regle heritee (six identifiants factices contre
+cinq) :
+
+    html.et-plight footer :is(p,li,dd) a:not([class])
+      :not(#e1)...:not(#e6){ text-decoration:underline!important; ... }
+
+Le `:not([class])` reprend la garde du chapitre 319 : aucun bouton,
+aucune pastille, aucun lien habille ne peut etre touche. Les quatre
+sous-proprietes portent `!important` elles aussi, sinon le raccourci
+`text-decoration:none!important` de la regle heritee reimposait son
+epaisseur `auto`.
+
+**Verification.** Detecteur du chapitre 319 relance sur les 210 pages,
+theme clair puis theme sombre : 0 defaut de part et d'autre. Axe
+WCAG 2.1 AA sur les quatre pages touchees, dans les deux themes : 0
+violation, 0 erreur console. Le souligne calcule mesure 0,616 px sur
+les accueils et 0,704 px sur les brochures, dans les deux themes.
+
+Service worker : `et-202608300130` (trois feuilles modifiees).
