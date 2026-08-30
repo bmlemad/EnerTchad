@@ -1328,6 +1328,22 @@ maj();
  .agpub .wrap:not(#_){padding-top:clamp(26px,3vw,40px);padding-bottom:clamp(26px,3vw,40px)}
 }
 .shortcuts .wrap:not(#_),.hbelieve .wrap:not(#_){padding-top:clamp(24px,3vw,40px);padding-bottom:clamp(24px,3vw,40px)}
+/* Ch327 — pendant le chargement des polices, la police de repli elargit la
+   grappe de boutons de l'entete d'environ 6 px : le hamburger depassait
+   transitoirement de 3 px du bord droit (observe une mesure sur trois,
+   accueils seulement). On borne la rangee : rien ne depasse, meme pendant
+   le repli, et le tiroir mobile — positionne sur #nav, pas sur la rangee —
+   n'est pas rogne. */
+@media(max-width:1240px){
+ #nav .nav-in:not(#_){overflow-x:clip}
+ #nav .nav-cta:not(#_){min-width:0}
+}
+/* ... et sur les fenetres etroites, la grappe est resserree pour que le
+   bouton tienne meme quand le raccourci de langue s'y ajoute. */
+@media(max-width:470px){
+ #nav .nav-cta:not(#_){gap:7px}
+ #mLang:not(#_):not(#__):not(#___){padding:5px 6px!important;margin-right:2px!important;letter-spacing:0!important}
+}
 @media(max-width:999px){
  /* telephone : les appuis et le prolongement n'occupent plus un ecran entier chacun */
  #appuis .mln:not(#_),#coeurs #maillon-petrochimie:not(#_){min-height:0;padding:44px 0 60px}

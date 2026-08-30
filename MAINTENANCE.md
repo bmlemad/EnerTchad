@@ -11666,3 +11666,48 @@ page posee. Note, pas maquille.
 
 Pages modifiees : index.html et index-en.html seulement. Aucun actif
 JS/CSS partage touche : pas de changement de version du service worker.
+
+## 327 — L'observation du chapitre 326, elucidee : le hamburger debordait vraiment (2026-08-30)
+
+Le chapitre 326 avait consigne un « debordement transitoire de 3 px du
+bouton hamburger pendant le chargement des polices », observe une mesure
+sur trois. Le proprietaire a demande de l'appliquer — c'est fait, et
+l'enquete a montre que mon diagnostic etait incomplet.
+
+**Ce n'etait pas seulement les polices.** En mesurant en continu des le
+premier rendu (sonde a 60 ms au lieu d'une lecture unique), le
+debordement s'est revele stable une fois present : le bord droit du
+bouton se posait a 393,3 px pour une fenetre de 390 — en permanence, pas
+seulement pendant le repli de police. La variabilite « une mesure sur
+trois » venait d'ailleurs : un script des accueils clone le raccourci de
+langue dans la barre a un moment variable du chargement. Quand le clone
+arrive, la grappe de droite (langue, raccourci, loupe, hamburger)
+depasse la place disponible de 3,3 px ; quand il n'arrive pas avant la
+mesure, tout tient. Le chargement des polices ajoutait ses propres
+oscillations par-dessus. Seuls les deux accueils sont touches : les
+autres gabarits, mesures six fois chacun, tiennent a 380 px constants.
+
+**Le correctif, en deux gardes.** D'abord la cause : sous 470 px, la
+grappe est resserree (espacement 7 px, raccourci de langue a marges
+reduites) — le hamburger se pose desormais a 384-390 px selon que le
+clone est present, toujours dans la fenetre, verifie a 320, 360, 390 et
+430 px sur les deux accueils. Ensuite la ceinture : la rangee d'entete
+est bornee (overflow-x:clip sous 1241 px), si bien que meme la police de
+repli, plus large de quelques pixels pendant une fraction de seconde, ne
+fait plus rien depasser. Le tiroir mobile, positionne sur la barre et
+non sur la rangee, n'est pas rogne — ouverture, fermeture et verrou de
+defilement verifies apres coup.
+
+**Verification.** Sonde continue relancee six fois par accueil : pic a
+380 px, plus aucun episode au-dessus de 390. Debordement, rognage et axe
+WCAG 2.1 AA a 390, 600, 1024 et 1440 px dans les deux themes : tout
+propre. Le bouton garde ses 44 x 44 px.
+
+Lecon versee au registre des instruments : une mesure unique prise
+« apres stabilisation » avait classe ce defaut comme transitoire ; la
+sonde continue a montre un etat stable dependant d'une course au
+chargement. Quand un defaut semble intermittent, chronometrer avant de
+conclure.
+
+Pages modifiees : index.html et index-en.html seulement — pas de
+changement de version du service worker.
