@@ -1114,3 +1114,56 @@ input[type=range]:not(#_):not(#__):focus-visible{
   outline:2px solid var(--etfv,#E8C36A)!important;
   outline-offset:3px!important;
   box-shadow:none!important}
+/* Ch323 — 1. Le minimum automatique d'un element de grille vaut son min-content :
+   un enfant indivisible (bouton insecable, champ, mot long) fait grossir la piste
+   au-dela de la fenetre, et le contenu sort de l'ecran sans que la page defile. */
+.ep-models>*,.ms-usecases>*,.prod-synth>*,.modref-grid>*,.client-grid>*,.tech-grid>*,.prod-b2b>*,
+.truck-grid>*,.carbon-grid>*,.regime-grid>*,.rd-axes>*,.chain-grid>*,.fin-grid>*,.appfeat-grid>*,
+.maint-grid>*,.taskforce-grid>*,.htech-grid>*,.buy-grid>*,.univ-grid>*,.hub-grid>*,.recomp-grid>*,
+.welltype-grid>*,.bit-grid>*,.viz-grid>*,.vc-grid>*,.gt-grid>*,.flotte-grid>*,.compare-grid>*,
+.pole-grid>*,.plc-grid>*,.biz-grid>*,.ppt-grid>*,.pof-grid>*,.sb-grid>*,.ttg-g>*,.hxi-grid>*,
+.ce-grid>*,.zk-grid>*,.hnews-grid>*,.pipe-ops>*,.profiles>*,.ckpis>*,.steps>*,.fx2g>*,
+.cli-deep>*,.vb-grid>*,.mkt-brands>*{min-width:0}
+/* la grille ESG des brochures imbrique grille dans flex : le plancher doit tomber a chaque etage */
+.esg3-grid,.esg3-grid *{min-width:0}
+.esg3-grid :where(li,p,strong,span){overflow-wrap:break-word}
+/* 2. un bouton insecable ne doit jamais depasser son conteneur */
+.btn:not(#_):not(#__){max-width:100%}
+@media(max-width:1040px){.btn,.fcta{white-space:normal!important}}
+@media(max-width:760px){
+  /* 3. les mots trop longs se coupent au lieu de sortir de la boite */
+  body :where(p,li,dd,dt,h1,h2,h3,h4,h5,h6,span,strong,b,em,td,th,label,figcaption,a,div){overflow-wrap:break-word}
+  /* 4. un tableau large defile dans sa propre boite au lieu de pousser la page */
+  :where(article,.jbody,main) table{display:block;max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
+}
+
+/* Ch323 — 5. Accordeon du pied de page sur telephone : un script enveloppe le
+   titre dans un <button> a padding nul, pose au milieu d'un h3 qui, lui, porte
+   30 px de marge interne. Seule la bande centrale de 12 a 20 px etait donc
+   tactile, et le « + » a droite, dessine par le h3, ne repondait pas du tout.
+   On deplace la marge interne sur le bouton : la ligne entiere devient la cible. */
+@media(max-width:760px){
+  footer .foot-grid .foot-col>h3:not(#_):not(#__){padding:0!important}
+  footer .foot-grid .foot-col>h3>button:not(#_):not(#__){
+    display:block;width:100%;text-align:start;
+    padding:15px 26px 15px 0!important;margin:0!important;min-height:50px}
+}
+
+/* Ch323 — 6. Deux gardes de lisibilite et de gene sur telephone.
+   La signature sous le logo tombait a 9,6 px, le plus petit texte du site.
+   Et sur ar.html le bouton de theme se posait sous le variateur de luminosite
+   (chevauchement de 42 x 22 px), donc a moitie inatteignable. */
+@media(max-width:470px){
+  .brand-tx small:not(#_):not(#__){font-size:11px!important;letter-spacing:.06em!important}
+}
+@media(max-width:720px){
+  body:has(.lum-ctl) #plightBtn:not(#_):not(#__){bottom:150px}
+}
+
+/* Ch323 — 7. Le courriel et le telephone du pied de page sont les deux liens
+   qu'on touche le plus depuis un telephone : ils mesuraient 18 px de haut,
+   marge interne comprise. On les porte a 44 px. */
+@media(max-width:760px){
+  footer .foot-col a[href^="mailto:"]:not(#_),footer .foot-col a[href^="tel:"]:not(#_){
+    display:flex!important;align-items:center;min-height:44px;padding:8px 0!important}
+}
