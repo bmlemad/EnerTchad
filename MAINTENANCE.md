@@ -11520,3 +11520,88 @@ les deux themes ; aucun debordement, aucun defilement horizontal parasite,
 aucun chevauchement a 390 px.
 
 Service worker : `et-202608301420`.
+
+## 325 — La home est-elle une vitrine de la chaine ? Diagnostic (2026-08-30)
+
+Analyse demandee par le proprietaire : la page d'accueil devrait etre une
+vitrine articulee autour d'Amont, Intermediaire et Aval. Diagnostic mene
+sur piece — structure des deux accueils, geometrie mesuree a 1440 et
+390 px, comptage des liens et des formulations sur les 210 pages. Aucune
+modification du site dans ce chapitre : les constats appellent des
+arbitrages editoriaux qui n'appartiennent qu'au proprietaire.
+
+### Ce qui est deja coherent
+
+Le recit d'ouverture est bien celui de la chaine. Le hero dit « Le Tchad
+exporte son brut et importe ses carburants. Nous inversons », puis
+« produire, raffiner et distribuer au pays » et « De la roche-mere a la
+pompe » — c'est l'histoire d'Amont-Intermediaire-Aval, sans detour. Le
+megamenu « Nos activites » ouvre dans le bon ordre : amont, intermediaire,
+aval, petrochimie, puis les appuis. La section des maillons precede celle
+des appuis, chaque panneau a sa porte d'entree, et une sortie claire
+(« Explorer la chaine, maillon par maillon ») mene a l'explorateur.
+L'anglais est le miroir exact du francais (memes sections, memes
+hauteurs a 2 % pres).
+
+### Constat 1 — la home traite les huit poles a parite quasi parfaite
+
+La vitrine annoncee n'existe pas dans les proportions. Mesures :
+
+- Surface de page : les maillons occupent 13,3 % de l'accueil au bureau,
+  les appuis 12,1 %. Un point d'ecart.
+- Liens : 10 a 15 liens par pole sur la page, sans hierarchie — Aval en
+  compte 15, TchadiTech aussi.
+- Grammaire visuelle : les deux sections utilisent le meme composant
+  (panneaux immersifs du chapitre 314), le meme gabarit de titre, la meme
+  numerotation (« maillon 01 sur 4 » / « appui 01 sur 4 »), le meme
+  appel « Decouvrir le pole -> ». Seuls l'ordre et les intitules disent
+  que l'un est le coeur et l'autre le soutien ; l'oeil, lui, voit huit
+  tuiles equivalentes.
+
+C'est un choix defendable (le portail des huit poles), mais ce n'est pas
+une vitrine de la chaine.
+
+### Constat 2 — la chaine n'apparait qu'au troisieme bloc
+
+Au bureau, le premier maillon arrive a 1 628 px, soit 1,8 ecran ; au
+telephone, a 2 000 px, soit 2,2 ecrans — apres le bloc « Qui nous
+sommes ». Un visiteur mobile doit defiler plus de deux ecrans avant de
+voir Amont, et six avant d'avoir vu Aval. Le hero, lui, n'offre que
+« Decouvrir EnerTchad » (ancre generique) et « Investir » : aucune entree
+directe vers la chaine depuis le premier ecran.
+
+### Constat 3 — trois cadrages de la chaine cohabitent sur le site
+
+Le site emploie trois formules concurrentes : « 8 poles » (104
+occurrences, le cadrage dominant), « quatre maillons » avec Petrochimie
+dans la chaine (l'accueil), et « 3 poles · coeur de metier » avec la
+chaine reduite a Amont-Intermediaire-Aval (la brochure). La demande du
+proprietaire — une vitrine autour d'Amont, Intermediaire et Aval —
+epouse le troisieme cadrage ; l'accueil est construit sur le deuxieme.
+La question « la chaine, c'est trois maillons ou quatre ? » n'est
+tranchee nulle part, et c'est elle qui commande tout le reste.
+
+### Constat 4 — apres les poles, la home redevient un portail
+
+Onze sections suivent les appuis (raison d'etre, vision, investisseurs,
+carnets, produits, agenda, publications, raccourcis...), soit environ
+55 % de la page ou la chaine n'est plus le fil conducteur. Total : 16,3
+ecrans au bureau, 25,5 au telephone. C'est la longueur d'un portail
+documentaire, pas d'une vitrine.
+
+### Les cinq arbitrages proposes (registre du proprietaire)
+
+1. Trancher le cadrage : chaine = 3 (la molecule, Petrochimie en
+   prolongement industriel) ou chaine = 4. Une seule formule, partout.
+2. Donner la hierarchie visuelle a la chaine : bande maitresse
+   Amont -> Intermediaire -> Aval pleine largeur en tete de section,
+   appuis en rangee compacte secondaire — aujourd'hui les huit tuiles
+   sont interchangeables.
+3. Remonter la chaine d'un cran : hero, chaine, puis « Qui nous
+   sommes » — le parcours de la molecule visible au premier defilement.
+4. Ajouter au hero une entree directe « Suivre la molecule -> » vers la
+   chaine, a cote d'Investir.
+5. Degraisser la seconde moitie de la home (25,5 ecrans mobile) en
+   regroupant agenda, publications et raccourcis.
+
+Chapitre d'analyse : seul MAINTENANCE.md change sur le site.
