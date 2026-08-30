@@ -11170,3 +11170,142 @@ violation, 0 erreur console. Le souligne calcule mesure 0,616 px sur
 les accueils et 0,704 px sur les brochures, dans les deux themes.
 
 Service worker : `et-202608300130` (trois feuilles modifiees).
+
+## 322 — Revue des outils et des commandes de navigation (2026-08-30)
+
+Revue complete des elements sur lesquels on clique : les 210 pages ont ete
+inventoriees (bouton, champ, selecteur, resume repliable, tout ce qui porte
+un role ou un gestionnaire), puis chaque famille a ete exercee au lieu
+d'etre relue. Trois familles existent : la barre principale avec ses cinq
+mega-menus (138 pages), le tiroir mobile (137 pages), et onze outils de
+calcul. Sept defauts reels sont sortis, dont deux francs.
+
+### Ce qui allait deja
+
+Les onze calculateurs repondent, sans NaN, sans Infinity, sans erreur
+console, sur les 210 pages balayees. J'ai verifie leurs formules a la main
+plutot que de me fier au fait qu'un chiffre bouge : l'estimateur
+volumetrique de l'atlas rend 3 000 Mm3 de volume brut pour 100 km2 sur 30 m,
+540 Mm3 de volume poreux a 18 % de porosite, 2,01 Gbbl de STOIIP a 65 % de
+saturation avec Bo=1,1 et 6,29 bbl/m3, et 501,8 Mbbl recuperables a 25 % —
+exact au dernier chiffre affiche, y compris la conversion en 9,5 ans au
+rythme de 144 kb/j. Le calculateur du baril additionnel est juste lui aussi
+(1 000 Mbbl a +8 % = 80 Mbbl, 21,9 kb/j sur dix ans, 6,4 Md$ a 80 $/bbl,
+2,56 Md$ pour l'Etat a 40 %). Le variateur de luminosite est correctement
+construit (bouton nomme, aria-expanded, aria-controls, panneau en role
+group, prereglages en toutes lettres). Le tiroir mobile ouvre, verrouille
+le defilement, se referme a Echap et au second appui sur 131 pages sur 132.
+
+### Defaut 1 — le mega-menu ne se refermait jamais (138 pages)
+
+Un declencheur de divulgation doit refermer au second appui. Ici le second
+clic laissait le panneau ouvert et aria-expanded a "true", sur les 138
+pages, dans les deux themes. Deux scripts du meme fichier se battaient :
+le premier retire la classe .open, le second — celui qui rend le menu
+utilisable au clavier — repose sur le panneau des styles en ligne
+visibility/opacity en !important des que le declencheur prend le focus, et
+un clic donne le focus. La classe partait, la peinture restait.
+
+Le correctif retire ces styles en ligne a la fermeture et pose .kbesc, la
+classe deja utilisee par Echap, qui neutralise :hover et :focus-within tant
+que le declencheur garde le focus.
+
+Deux consequences ont demande deux passes de plus, et je les note parce que
+je ne les avais pas prevues :
+
+- .kbesc etait levee sur `mouseleave`. Refermer d'un clic puis eloigner la
+  souris rouvrait donc le panneau, puisque le declencheur gardait le focus.
+  La levee est passee a `mouseenter` : sortir la souris ne rouvre rien,
+  y revenir rouvre au survol comme avant.
+- Echap depuis l'interieur du panneau ne fermait pas non plus. Le retour du
+  focus au declencheur declenche un `focusin`, et le gestionnaire clavier y
+  retirait .kbesc juste avant que le gestionnaire d'Echap ne s'en serve.
+  aria-expanded disait "false" pendant que le panneau restait peint. Le
+  gestionnaire d'Echap repose maintenant la classe, et un `focusout` qui
+  reste a l'interieur de l'element ne la leve plus.
+
+### Defaut 2 — le menu mobile mort du glossaire francais (1 page)
+
+Sur glossaire-petrolier.html, et sur cette page seule parmi les 138, le
+bouton hamburger n'ouvrait rien : #navLinks restait en display:none, et le
+bouton ne portait ni aria-expanded ni aria-controls. La page n'embarquait
+pas le script qui cable ce menu — la version anglaise, elle, le charge.
+Un visiteur au telephone n'avait aucune navigation sur cette page. Script
+ajoute ; le tiroir s'ouvre desormais sur 703 px de hauteur comme ailleurs.
+
+### Defaut 3 — les curseurs sans anneau de focus (208 pages)
+
+Au clavier, un curseur focalise ne se distinguait plus d'un curseur au
+repos. Mesure au pixel : 15/255 d'ecart maximum, un halo creme sur fond
+creme. La cause est une regle ecrite pour les champs de texte,
+`input:focus-visible{outline:none!important; border-color:...; box-shadow:
+...}` : elle remplace l'anneau par une bordure doree et une lueur, ce qui
+n'a aucun sens sur un curseur, qui n'a pas de bordure. WCAG 2.4.7. Anneau
+retabli pour les seuls `input[type=range]`.
+
+### Defaut 4 — la piste des curseurs a 7 px a la souris
+
+Le chapitre 219 avait garanti 28 px de hauteur de cible aux curseurs, mais
+en enfermant la regle dans `@media(pointer:coarse)`. A la souris la piste
+ne mesurait que 7 px. Sur la pile de cinq curseurs de l'estimateur
+volumetrique, l'exception d'espacement de WCAG 2.5.8 ne joue pas — les
+voisins sont a moins de 24 px. La garantie est desormais inconditionnelle.
+
+### Defaut 5 — la note d'echelle ecrasait sa rangee (2 pages)
+
+Sur les deux atlas, sous le resultat « Recuperable » de l'estimateur
+volumetrique, un script ajoute une note d'echelle (« ~ 9,5 ans au rythme de
+production national »). Il l'insere comme TROISIEME enfant d'une rangee flex
+reglee en space-between : le libelle se retrouvait colle a la valeur, sans
+espace (« Recuperable501,8 »), l'unite « Mbbl » etait renvoyee seule a la
+ligne, et la note se tassait dans une colonne de quelques mots. A toutes les
+largeurs, dans les deux themes. La note passe desormais a la ligne, sous le
+chiffre, comme une legende ; verifie sur six largeurs de 390 a 1440 px.
+
+### Defaut 6 — la pastille active du sommaire, sous le seuil (2 pages)
+
+Dans le sommaire lateral des deux pages « solutions », en theme clair,
+l'onglet actif affichait 4,29:1 la ou il en faut 4,5. La pastille porte son
+propre fond bleu et sa propre couleur de texte (#08111F), mais la regle de
+theme clair qui repeint tous les liens du sommaire a exactement la meme
+specificite et vient apres : elle ramenait le texte a rgba(20,32,50,.78) sur
+ce bleu. C'est le piege deja rencontre au chapitre 318 — un element qui
+porte son fond doit etre exclu des repeintures de theme. Regle d'exclusion
+ajoutee ; on remonte a 7,3:1.
+
+### Defaut 7 — le hamburger a 40 px sur cinq pages anglaises
+
+`.nav-tog{width:44px;height:44px}` de nav_a.css perdait, a specificite
+egale, contre une feuille chargee apres elle sur cinq pages. Specificite
+relevee ; les 137 boutons mesurent maintenant 44 x 44.
+
+### Mon erreur, et ce qu'elle a coute
+
+Le premier harnais a annonce que les mega-menus ne s'ouvraient pas du tout
+au clic sur la moitie des pages. C'etait faux : il lisait l'opacite en
+pleine transition, avec des attentes fixes de 450 ms alors que le script
+resynchronise l'etat a 340 ms et que la transition dure 280 ms. Une capture
+d'ecran a suffi a le montrer — le panneau etait grand ouvert. Le harnais a
+ete refait sans delai fixe : il attend que l'opacite soit stable sur quatre
+lectures consecutives. C'est la meme lecon qu'au chapitre 317, apprise une
+fois de plus : quand la mesure accuse, on soupconne d'abord la mesure.
+
+Deux autres fausses pistes ont ete ecartees de la meme facon. Les curseurs
+paraissaient plafonner a 7 px malgre une regle a 28 px : la regle etait
+simplement gardee par `@media(pointer:coarse)`, que le navigateur sans tete
+ne declare pas — le defaut existe, mais il n'etait pas celui que je croyais.
+Et l'enumeration des regles applicables ne rendait rien du tout tant que je
+n'avais pas corrige, comme au chapitre 321, le test `rule.cssRules` qui
+prend chaque regle ordinaire pour un groupe.
+
+### Observation laissee en l'etat
+
+Le bouton « Imprimer / PDF » du pied de page porte la classe `nav-search`,
+celle du bouton loupe de la barre. Aucun script ne s'y accroche et un style
+en ligne neutralise l'apparence heritee : rien ne casse aujourd'hui, mais
+c'est un piege pour la prochaine regle qui visera `.nav-search`. Renommer
+la classe toucherait 205 fichiers pour un gain nul a l'ecran ; je le note
+ici plutot que de gonfler la publication.
+
+Service worker : `et-202608300720` (nav_a.js, nav_a.css et quatre feuilles
+modifiees ; nouveaux jetons de cache sur les 138 pages qui appellent nav_a).
