@@ -1936,3 +1936,39 @@ html.et-plight footer :is(p,li,dd) a:not([class]):not(#e1):not(#e2):not(#e3):not
   text-decoration:underline!important;text-underline-offset:.18em!important;
   text-decoration-thickness:.055em!important;
   text-decoration-color:color-mix(in srgb,currentColor 55%,transparent)!important}
+
+/* Ch322 : les curseurs (input[type=range]) etaient pris dans deux regles ecrites
+   pour les champs de texte.
+   (1) Cible : la garantie de 28 px du chapitre 219 etait enfermee dans
+       @media(pointer:coarse) ; a la souris la piste ne mesurait que 7 px de haut.
+       Sur la pile de curseurs de l'estimateur volumetrique, l'exception
+       d'espacement de WCAG 2.5.8 ne joue pas (voisins a moins de 24 px).
+   (2) Focus : "input:focus-visible{outline:none!important}" remplace l'anneau
+       par une bordure doree et une lueur — invisible sur un curseur, qui n'a pas
+       de bordure. Au clavier, le curseur focalise ne se distinguait plus du tout
+       (WCAG 2.4.7). Mesure : 15/255 d'ecart au maximum entre focalise et non
+       focalise, sur un halo creme. */
+input[type=range]:not(#_):not(#__){min-height:28px;padding-block:10.5px;background-clip:content-box}
+input[type=range]:not(#_):not(#__):focus-visible{
+  outline:2px solid var(--etfv,#E8C36A)!important;
+  outline-offset:3px!important;
+  box-shadow:none!important}
+
+/* Ch322 : la note d'echelle de l'estimateur volumetrique (« ~ 9,5 ans au rythme
+   de production national ») est injectee par script comme TROISIEME enfant d'une
+   rangee flex en space-between. Elle ecrasait « Recuperable » contre sa valeur et
+   renvoyait l'unite « Mbbl » a la ligne suivante, sur les deux atlas et les deux
+   brochures, a toutes les largeurs. On la fait passer a la ligne, sous le chiffre. */
+:is(div,p,section):has(>#st-scale){flex-wrap:wrap}
+#st-scale:not(#_):not(#__){flex:1 0 100%;width:100%;margin-top:10px;
+  font-size:.74rem;line-height:1.5;text-align:left;color:rgba(245,247,250,.62)}
+html.et-plight #st-scale:not(#_):not(#__){color:rgba(26,35,48,.66)}
+
+/* Ch322 : la pastille active du sommaire lateral porte son propre fond bleu
+   (.toc-in a.active) ; la regle de theme clair qui repeint TOUS les liens du
+   sommaire a la meme specificite passait par-dessus et ramenait le texte a
+   rgba(20,32,50,.78) sur ce bleu — 4,29:1, sous le seuil de 4,5. Meme piege
+   que celui du chapitre 318 : un element qui porte son fond doit etre exclu
+   des repeintures de theme. */
+html.et-plight .toc-in a.active:not(#_):not(#__),
+html.et-jlight .toc-in a.active:not(#_):not(#__){color:#08111F}

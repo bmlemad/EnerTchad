@@ -1198,3 +1198,20 @@ html.et-plight footer :is(p,li,dd) a:not([class]):not(#e1):not(#e2):not(#e3):not
   text-decoration:underline!important;text-underline-offset:.18em!important;
   text-decoration-thickness:.055em!important;
   text-decoration-color:color-mix(in srgb,currentColor 55%,transparent)!important}
+
+/* Ch322 : les curseurs (input[type=range]) etaient pris dans deux regles ecrites
+   pour les champs de texte.
+   (1) Cible : la garantie de 28 px du chapitre 219 etait enfermee dans
+       @media(pointer:coarse) ; a la souris la piste ne mesurait que 7 px de haut.
+       Sur la pile de curseurs de l'estimateur volumetrique, l'exception
+       d'espacement de WCAG 2.5.8 ne joue pas (voisins a moins de 24 px).
+   (2) Focus : "input:focus-visible{outline:none!important}" remplace l'anneau
+       par une bordure doree et une lueur — invisible sur un curseur, qui n'a pas
+       de bordure. Au clavier, le curseur focalise ne se distinguait plus du tout
+       (WCAG 2.4.7). Mesure : 15/255 d'ecart au maximum entre focalise et non
+       focalise, sur un halo creme. */
+input[type=range]:not(#_):not(#__){min-height:28px;padding-block:10.5px;background-clip:content-box}
+input[type=range]:not(#_):not(#__):focus-visible{
+  outline:2px solid var(--etfv,#E8C36A)!important;
+  outline-offset:3px!important;
+  box-shadow:none!important}
