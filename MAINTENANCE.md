@@ -11318,3 +11318,106 @@ ici plutot que de gonfler la publication.
 
 Service worker : `et-202608300720` (nav_a.js, nav_a.css et quatre feuilles
 modifiees ; nouveaux jetons de cache sur les 138 pages qui appellent nav_a).
+
+## 323 — Le site remis d'aplomb sur telephone (2026-08-30)
+
+Revue du rendu mobile : les 210 pages mesurees a 360 et 390 px de large,
+dans les deux themes, puis rejouees sous WebKit avec le profil iPhone 14.
+Cinq defauts, dont trois qui coupaient du texte.
+
+### Du contenu sortait de l'ecran, sans defilement pour aller le chercher
+
+Huit pages laissaient des blocs entiers au-dela du bord droit a 360 px —
+et comme la page ne defile pas horizontalement, ce contenu etait purement
+perdu pour le lecteur. Sur brochure-en.html, la carte « Retail, at the
+pump » mesurait 453 px de large dans une fenetre de 390 : une phrase sur
+deux finissait tronquee au milieu d'un mot.
+
+La cause est la meme partout, et elle est instructive. Le minimum
+automatique d'un element de grille vaut son min-content. Il suffit donc
+d'un seul enfant indivisible pour que la piste `1fr` — qui devrait valoir
+la largeur disponible — grossisse jusqu'a lui. Ici l'enfant coupable etait
+un bouton : `Mining & construction framework contract`, en
+`white-space:nowrap`, 415 px d'un seul tenant. La regle mobile du site
+imposait pourtant bien `grid-template-columns:1fr!important` ; elle etait
+appliquee, et impuissante, parce que ce n'est pas la valeur maximale de la
+piste qui debordait, c'est son plancher.
+
+Trois correctifs, poses ensemble :
+
+- `min-width:0` sur les enfants des grilles du site — le plancher
+  automatique tombe, la piste redevient elastique ;
+- `max-width:100%` sur les boutons, et retour a la ligne autorise en
+  dessous de 1040 px, pour qu'un libelle long ne depasse plus sa carte ;
+- coupure des mots trop longs et tableaux qui defilent dans leur propre
+  boite au lieu de pousser la page.
+
+Un cas a demande un etage de plus : sur la grille ESG des brochures, une
+grille imbriquee dans un flex reproduisait le probleme un niveau plus bas.
+Le plancher doit tomber a chaque etage, pas seulement au premier.
+
+**Resultat mesure** : 8 pages en defaut a 360 px avant, 0 apres ; le
+defilement horizontal parasite de journal-mini-raffinerie-modulaire.html
+(22 px) a disparu ; verifie ensuite a 320, 390, 430, 600, 720, 1024, 1280
+et 1440 px, et sous WebKit iPhone sur les 210 pages.
+
+### L'accordeon du pied de page n'etait tactile que sur 12 px
+
+Sur telephone, chaque colonne du pied devient une ligne depliable d'une
+cinquantaine de pixels de haut, avec un « + » a droite. Un script enveloppe
+le titre dans un `<button>` a marge interne nulle, tandis que les 30 px de
+marge restent sur le `h3` qui l'entoure. Seule la bande centrale de 12 a
+20 px repondait donc au doigt — et le « + », dessine par le `h3`, ne
+repondait pas du tout. Trois quarts de la cible visible etaient morts.
+La marge interne est passee sur le bouton : la ligne entiere, « + »
+compris, mesure desormais 354 x 50 px. Verifie sur les 205 pages
+concernees, sous Chromium et sous WebKit.
+
+### Le courriel et le telephone du pied, a 18 px de haut
+
+Ce sont les deux liens qu'on touche le plus depuis un mobile. Ils
+mesuraient 18 px de haut, marge interne comprise. Portes a 44 px.
+
+### La signature du logo tombait a 9,6 px
+
+Sous 470 px de large, une regle ramenait « ACCES AUX ENERGIES » de 11 a
+9,6 px — le plus petit texte du site, sur l'ecran le plus petit. La mesure
+montre que la prudence etait excessive : a 11 px la signature occupe
+131 px au lieu de 113, et l'entete ne bouge pas d'un pixel, meme a 320 px
+de large. Retour a 11 px. Plus aucun texte du site ne passe sous 11 px sur
+telephone.
+
+### Deux boutons flottants l'un sur l'autre
+
+Sur ar.html, le bouton de theme se posait a 22 px sous le variateur de
+luminosite, et passait dessous (z-index 70 contre 2147483600) : la moitie
+de sa surface etait inatteignable. Il remonte au-dessus du variateur.
+
+### Ce que la mesure a failli me faire dire
+
+Mon detecteur d'elements insecables a d'abord accuse `.chain-flow` sur les
+deux brochures : 522 px de contenu pour une boite de 354. C'etait faux. Il
+mesurait la largeur maximale du conteneur, qui est un flex `wrap` — le
+`nowrap` ne portait que sur un enfant, qui passait tranquillement a la
+ligne. Le detecteur ne retient plus un cas que si le bord droit sort
+vraiment de la fenetre ou si un ancetre rogne.
+
+J'ai aussi essaye un correctif generique, `:where(*){min-width:0}`, a
+specificite nulle. Il reglait le probleme a 1024 px mais en creait un
+autre a 360 : une grille a deux colonnes sans classe voyait sa seconde
+piste tomber a 0 px et son contenu sortir de l'ecran. Le remede general
+etait pire que la liste explicite ; j'ai garde la liste.
+
+### Observations laissees en l'etat
+
+`ResizeObserver loop completed with undelivered notifications` apparait
+par intermittence sous WebKit sur cibles-2030.html. Verifie contre la
+version publiee avant correctif : le message est anterieur et sans effet
+visible. Consigne, pas maquille.
+
+Les cibles tactiles restantes sous 24 px sont des liens en pleine phrase
+(renvois du glossaire, liens de corps de texte), que WCAG 2.5.8 exempte
+explicitement.
+
+Service worker : `et-202608301150` (quatre feuilles modifiees, aucune page
+HTML touchee).
