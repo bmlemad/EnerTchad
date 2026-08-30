@@ -74,3 +74,13 @@ input[type=range]:not(#_):not(#__):focus-visible{
   footer .foot-col a[href^="mailto:"]:not(#_),footer .foot-col a[href^="tel:"]:not(#_){
     display:flex!important;align-items:center;min-height:44px;padding:8px 0!important}
 }
+
+/* Ch324 : sur neuf pages anglaises, la feuille qui sort le preloader du flux
+   n'etait pas chargee : le voile occupait 178 px en haut de page, puis
+   disparaissait vers 4,3 s en tirant tout le contenu vers le haut. Saut de
+   mise en page mesure a 0,22-0,23 sur telephone bride. Le voile est un
+   element de couverture : sa place est hors flux, partout. */
+#preloader:not(#_):not(#__){position:fixed;inset:0;z-index:9999;pointer-events:none}
+/* et le voile doit s'effacer des que le script le marque « done » : sans cette
+   regle il restait opaque une seconde et demie par-dessus la page. */
+#preloader.done:not(#_):not(#__){opacity:0;visibility:hidden;transition:opacity .5s ease,visibility .5s}
