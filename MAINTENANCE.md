@@ -12351,3 +12351,45 @@ en premiere position, les deux pages communiques affichent CP-009 en
 tete sans erreur console.
 
 Service worker : et-202608302235 (deux index de palette modifies).
+
+## 346 — Refonte de la home : institutionnel sobre (2026-08-30)
+
+**Le mandat.** Refonte complete, direction institutionnelle sobre
+(facon TotalEnergies/Aramco), page nettement plus courte — trois choix
+du proprietaire, cadrage arbitre conserve (trois maillons que prolonge
+la petrochimie, quatre appuis).
+
+**Ce que la home est devenue.** Huit blocs au lieu de dix-sept : un
+hero sobre neuf (statut de la societe en exergue, titre "De la
+roche-mere a la pompe", deux appels — Investir, Decouvrir la chaine —
+et un bandeau de quatre chiffres cles : 144→250 kb/j, 8 poles, 80 %
+TchadiValeur, 10 M→20 Md FCFA), puis la chaine (#coeurs, intacte), les
+appuis (intacts), les chiffres de l'ambition, les carnets, une section
+Agir neuve (Investir / Devenir client / Nous rejoindre, plus
+fournisseurs et contact), l'annuaire du chapitre 343, et le bandeau de
+conviction final. Le carrousel du hero a cinq messages, le manifeste,
+le combat, la vision, le retournement, les produits, la bande
+durabilite, l'agenda et l'etagere sur la home, les acces rapides :
+retires — leurs contenus vivent dans les pages interieures et
+l'annuaire y mene. Le rail de traversee est reecrit sur les ancres
+survivantes. La page passe d'environ 206 a 180 Ko ; /#poles, seule
+ancre de la home referencee ailleurs (72 pages), survit.
+
+**Deux erreurs d'instrument consignees.** Un find() sans garde a
+retourne -1 (attribut id place apres class) et t[:-1]+t[9:] a duplique
+le document entier — detecte par le controle de taille, repare par
+restauration depuis le depot et chirurgie a spans equilibres avec
+assertions. Puis une coupe par marqueur a matche une occurrence CSS du
+marqueur dans l'entete au lieu de la section : les coupes prennent
+desormais une position minimale. Au passage, la section carnets avalee
+par une coupe a ete restauree depuis le depot.
+
+**Verification.** FR et EN, deux themes, 1280 et 390 px : huit blocs
+presents, un seul h1, zero debordement, zero erreur console, zero
+violation axe (trois contrastes des petites mentions de l'annuaire en
+theme clair reveles par la mesure et corriges par couleurs explicites
+par theme ; doublon de landmark Agir/bandeau final renomme ; ombre
+portee heritee sur le titre supprimee).
+
+Changement HTML seul (deux accueils, sitemap) : pas de bump du service
+worker.
