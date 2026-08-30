@@ -11761,3 +11761,17 @@ registre des instruments : un banc local sans compression fait passer le
 CSS pour le coupable ; la couverture CSS fait passer les etats pour du
 poids mort. Les deux mesures etaient exactes, et les deux conclusions
 fausses.
+
+## 329 — Le tableau de bord rejoint le chapitre 328 (2026-08-30)
+
+Republication du tableau de bord du registre, a jour des neuf derniers
+chapitres : residu du pied de page elucide (321), revue des outils et de
+la navigation (322), remise d'aplomb mobile (323), stabilite visuelle
+sous le pouce (324), diagnostic puis refonte de la home en vitrine de la
+chaine (325-326), hamburger des accueils (327), chantier du poids CSS
+instruit et referme (328). Compteurs portes a 328 chapitres et 210 pages,
+service worker et date d'etablissement actualises ; le banc mobile bride
+rejoint la liste des outils. Les neuf arbitrages du proprietaire restent
+inchanges — les cinq arbitrages de la home du chapitre 325 ont, eux, ete
+rendus et appliques au chapitre 326. Chapitre journal : seul
+MAINTENANCE.md change sur le site.
