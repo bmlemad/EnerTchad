@@ -11775,3 +11775,16 @@ rejoint la liste des outils. Les neuf arbitrages du proprietaire restent
 inchanges — les cinq arbitrages de la home du chapitre 325 ont, eux, ete
 rendus et appliques au chapitre 326. Chapitre journal : seul
 MAINTENANCE.md change sur le site.
+
+## 330 — Deux survivants du cadrage a quatre (2026-08-30)
+
+Suite courte du chapitre 326. Une chasse aux traces de l'ancien cadrage
+dans les index de recherche et les metadonnees a rendu deux survivants :
+le fil de liens rapides du hero disait encore « Les quatre maillons » /
+« The four links » en pointant vers la section des maillons. Corrige en
+« Les trois maillons » / « The three links ». Les index plein-texte
+(sacs de mots, pas de phrases) et la palette Ctrl+K n'avaient rien a
+reprendre ; les metadonnees des accueils parlent de chaine integree sans
+compter les maillons, elles restent justes. Verifie : les seules occurrences restantes de
+« sur 4 » / « of 4 » sont celles des appuis (« Appui 01 sur 4 »), qui
+sont bien quatre.
