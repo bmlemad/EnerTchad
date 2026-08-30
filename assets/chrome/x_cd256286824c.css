@@ -1194,3 +1194,10 @@ footer .foot-pole[href^="/greentech"],footer .foot-pole[href^="/pole-greentech"]
 footer .foot-pole[href^="/tchaditech"],footer .foot-pole[href^="/pole-tchaditech"]{--pc:#7E8AD9!important}
 footer .foot-pole[href^="/tchaditude"],footer .foot-pole[href^="/pole-tchaditude"]{--pc:#C4B5FD!important}
 footer .foot-pole[href^="/enerconseils"],footer .foot-pole[href^="/pole-enerconseils"]{--pc:#1FA496!important}
+
+/* Ch333 : les messages d'erreur du formulaire de contact (.ct-err, role=alert)
+   restaient rouges en theme sombre mais viraient au bleu nuit en theme clair —
+   la repeinture de theme passait dessus. Un message d'erreur doit rester un
+   message d'erreur : rouge sombre lisible sur fond creme (6,3:1). */
+html.et-plight .ct-err:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5):not(#e6),
+html.et-jlight .ct-err:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5):not(#e6){color:#B42318!important}
