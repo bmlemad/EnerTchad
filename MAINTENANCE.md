@@ -11922,3 +11922,45 @@ BEGIN:VCALENDAR pour l'ICS, entetes attendues pour MD et CSV).
 Aucun lien mort, aucun fichier corrompu.
 
 Service worker : et-202608302110 (quatre feuilles modifiees).
+
+## 334 — Integrite du graphe de liens et reciprocite hreflang (2026-08-30)
+
+**Perimetre.** Audit statique complet du graphe de liens des 212 fichiers
+HTML du depot : chaque href, src, action et poster interne, la resolution
+des ancres #fragment sur leur page cible, la chaine redirects/rewrites de
+vercel.json, la reciprocite des annotations hreflang et la coherence des
+canonicals.
+
+**Mes erreurs d'instrument, en serie.** Le premier passage annoncait
+1880 problemes ; presque tous etaient fabriques par le harnais. Trois
+bugs, consignes au registre : (1) le test d'appartenance au domaine
+cherchait la chaine "enertchad" dans l'URL entiere, classant les liens
+sociaux (linkedin.com/company/enertchad) comme internes casses — il faut
+comparer l'hote, jamais l'URL ; (2) le resolveur appliquait rewrite puis
+redirect, rebouclant les URL propres vers elles-memes (le rewrite
+/calculateur-baril-additionnel -> fichier, puis le redirect inverse du
+fichier vers l'URL propre) — Vercel evalue les redirects d'abord, puis un
+seul rewrite ; (3) un chemin se terminant par / produisait dossier//index.html,
+qui ne correspondait plus a la cle normalisee — huit fausses
+non-reciprocites hreflang sur les pages de poles venaient de la.
+
+**Fragments d'etat, pas ancres mortes.** Les 193 "ancres mortes"
+restantes etaient trois familles de fragments consommes par JavaScript,
+toutes verifiees valeur par valeur : #rub= des carnets (16 rubriques FR
+et 16 EN, toutes presentes dans les cartes .rub2), #t- du glossaire (40
+termes lies, tous generes par la meme normalisation que celle de la
+page, reproduite hors navigateur), et #p=/d=/c= du configurateur (etat
+URLSearchParams, toutes les valeurs presentes dans les options). Zero
+lien interne casse, zero ancre morte reelle sur tout le site.
+
+**Le seul defaut reel : ar-poles et le cluster hreflang de l'accueil.**
+La page arabe des poles declarait fr, en et x-default vers les pages
+d'accueil, qui elles pointent leur alternative arabe vers /ar (l'accueil
+arabe), pas vers /ar-poles. Annotations non reciproques : les moteurs
+les ignorent et le cluster de l'accueil s'en trouvait pollue. La page
+n'ayant pas d'equivalent direct FR/EN, correction par retrait des trois
+annotations non reciproques ; reste l'auto-reference ar et la canonical.
+Reverification : zero probleme hreflang, zero canonical incoherente,
+aucune annotation ne passant par un redirect.
+
+Changement HTML seul : pas de bump du service worker.
