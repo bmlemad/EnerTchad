@@ -12040,3 +12040,52 @@ la fiche presse actuelle est un embryon. (3) Une newsletter a backend
 reel : le flux mailto actuel est le plafond d'un site statique.
 
 Service worker : et-202608302205 (cmdk_extra.js et cmdk_en.js modifies).
+
+## 337 — Les douze arbitrages : decides sur delegation (2026-08-30)
+
+**La commande.** "Decide pour moi." Le registre comptait douze
+arbitrages en attente ; les voici tranches, par categorie, avec la
+regle suivie : je decide tout ce qui est decidable par raisonnement et
+par source verifiable, je decline ce que le socle statique interdit,
+et je n'invente jamais un fait qui appartient au reel du proprietaire.
+
+**Decide et applique ce jour (2).**
+Le programme de contenu local a desormais un nom : <b>TchadiValeur</b>
+— dans la famille TchadiTech / Tchaditude / Tchadium, l'equivalent
+maison de l'iktva d'Aramco ou de l'ICV d'ADNOC. Cible inchangee : 80 %
+de valeur tchadienne. Le nom est pose aux points d'ancrage
+(communautes, engagements, glossaire, FR et EN), sans renommer les
+43 mentions generiques du concept.
+Le millesime du 144 kb/j est tranche par la source : la moyenne 2024
+(l'annee 2025 etait a 137 kb/j sur janvier-mai). Huit occurrences
+"2025" corrigees en "moyenne 2024" (journal-atlas, brochure, atlas,
+blocs statistiques 144 -> 250), et la note d'arbitrage du glossaire
+soldee dans les deux langues.
+
+**Decide et mis en chantier (2).**
+L'extension arabe : oui — par etapes, en commencant par les pages a
+plus fort trafic externe (contact, investisseurs, societe), la qualite
+de langue primant sur la quantite. La mediatheque presse : oui — une
+page construite avec l'existant (logos, couleurs, fiche presse,
+communiques, contact presse), les photos institutionnelles restant
+suspendues a la seance photo. Ces deux chantiers suivent dans les
+prochains chapitres.
+
+**Decline, en connaissance de cause (2 familles).**
+Les alertes e-mail et la newsletter a backend : non sur ce socle — un
+site statique sans serveur ne peut ni envoyer ni stocker ; RSS, ICS et
+boite officielle sont le plafond honnete, et brancher un service tiers
+exigerait des comptes et des cles que seul le proprietaire peut
+ouvrir. L'assistant IA facon EnergIA d'Eni : non — pas d'IA simulee
+sur un site qui se veut honnete ; la palette Ctrl+K et la recherche
+pleine page du chapitre 336 couvrent le besoin de navigation reel.
+
+**Maintenu en attente de faits (4).** Les noms de la direction et du
+conseil (a la formalisation des organes), le premier rapport annuel
+approuve (le point d'etape 2026 fait l'interim), la seance photo
+officielle (action physique), la convention INSPEM et le ticket
+minimum investisseur (deux donnees attendues). Aucun de ces quatre ne
+se decide par raisonnement : les trancher serait les inventer.
+
+Douze fichiers HTML modifies, changement HTML seul : pas de bump du
+service worker.
