@@ -12416,3 +12416,32 @@ decarboner la chaine) en 3,7 Ko — compacte, elle reste.
 
 Deux fichiers de donnees et le journal : pas de bump du service
 worker.
+
+## 348 — QA et QC : l'assurance et le controle (2026-08-30)
+
+**La commande.** Deux regards en un chapitre : l'assurance qualite
+(les processus balayent-ils tout ?) et le controle qualite (le produit
+est-il conforme, piece par piece ?).
+
+**QA — le balayage dynamique.** Les 218 pages en theme sombre, trois
+tranches paralleles, plus cinquante pages en theme clair : axe,
+erreurs console et de page, reponses HTTP, debordements horizontaux.
+Zero anomalie — ne remontent que les metriques informatives de
+citations des pages de poles, inchangees. Les cinq chapitres de la
+vague 343-347 (annuaire, communique, refonte, consolidation) n'ont
+rien casse.
+
+**QC — le controle statique du produit.** Sur les 218 pages : zero
+identifiant duplique, un h1 unique partout, titres et canonicals
+presents, zero regression du cadrage trois maillons (FR, EN, arabe),
+zero millesime errant sur le 144 kb/j. Les chiffres cles du nouveau
+hero (144→250, 80 %, 10 M→20 Md) sont conformes au canon du chapitre
+337.
+
+**Une observation d'archive, laissee en l'etat.** Le journal contient
+4 639 lettres accentuees — toutes cantonnees aux chapitres des
+premiers jours (1 a 14) et au bloc 86-87, ecrits avant la convention
+sans accents. Le journal est un registre en ajout seul : on n'y
+reecrit pas l'histoire, et la convention tient sans exception depuis.
+
+Seul le journal change : pas de bump du service worker.
