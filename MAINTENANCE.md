@@ -11964,3 +11964,38 @@ Reverification : zero probleme hreflang, zero canonical incoherente,
 aucune annotation ne passant par un redirect.
 
 Changement HTML seul : pas de bump du service worker.
+
+## 335 — La home couvre-t-elle tout le site (2026-08-30)
+
+**La question du proprietaire.** Revoir la home pour s'assurer qu'elle
+couvre tout le site. Reponse mesuree avant toute retouche : parcours en
+largeur du graphe de liens depuis chaque accueil.
+
+**Le diagnostic.** La couverture structurelle est deja complete : depuis
+l'accueil francais, les 104 pages francaises sont toutes atteignables en
+deux clics au plus (73 en un clic) ; symetrie parfaite cote anglais.
+Les seules pages hors graphe sont la page 404 et le fichier de
+verification Google, par nature. Les 29 articles du journal sans lien
+direct passent par les carnets, qui sont lies trois fois (corps, menu,
+pied de page) — c'est la structure editoriale voulue, la home met en
+avant trois articles choisis.
+
+**Deux vraies absences dans la vitrine.** Le glossaire petrolier — 80
+termes, l'outil de reference vers lequel trente pages renvoient —
+n'avait aucune porte d'entree depuis la home, dans aucune des deux
+langues. La brochure en version web (la fresque "de la roche-mere a la
+pompe") non plus : la home ne proposait que le PDF. Correction : la
+ligne "Toutes les publications" de l'etagere documentaire devient une
+rangee de trois liens (publications, glossaire, brochure web), FR et
+EN, avec une regle flex d'accompagnement dans le bloc de styles de la
+vitrine. Verifie en local : deux themes, bureau et mobile, aucun
+debordement.
+
+**Laisse en l'etat, en connaissance de cause.** La page charte est un
+design system (documentation interne) : sa place a deux clics via la
+gouvernance est la bonne. La page ethique et conformite a huit portes
+d'entree a deux clics (gouvernance, engagements, contact, societe...) ;
+l'ajouter a la vitrine chargerait la home arbitree au chapitre 326 sans
+gain reel.
+
+Changement HTML seul (deux accueils) : pas de bump du service worker.
