@@ -12125,3 +12125,40 @@ zero violation partout.
 zero debordement horizontal, zero erreur console, zero violation axe.
 Sitemap porte a 215 URL. Changement HTML seul : pas de bump du service
 worker.
+
+## 339 — La mediatheque presse (2026-08-30)
+
+**Le second chantier decide au chapitre 337.** Deux pages nouvelles au
+chrome du site, /presse et /presse-en, construites avec l'existant et
+rien que l'existant : le paragraphe officiel pret a citer (boilerplate
+tenu a jour sur la page), le kit media complet en un telechargement
+(ZIP : logo SVG et PNG, banniere, quatre photos d'illustration libres
+de droits, boilerplates FR/EN, fiche presse, brochures), la fiche
+presse en Markdown, les brochures FR/EN et la fiche arabe, le logo et
+la palette officielle en nuancier avec les codes hexadecimaux et les
+regles d'usage (fond creme ou marine, pas de deformation, marques en
+depot OAPI), les communiques et le flux RSS, et le contact presse a
+double canal (e-mail avec objet "Presse", WhatsApp).
+
+**L'honnetete sur les photos, en clair.** La section 04 dit ce qui
+est : quatre photos d'illustration aujourd'hui, les photos
+institutionnelles (equipe, siege) apres la seance photo officielle —
+l'arbitrage du proprietaire reste en attente et la page le dit sans
+detour.
+
+**Le cadrage rattrape jusque dans le kit.** La fiche presse (racine ET
+copie embarquee dans le ZIP, reconstruit a l'identique) disait encore
+"quatre forment la chaine petroliere et chimique" ; alignee sur
+l'arbitrage : trois maillons que prolonge la Petrochimie. Troisieme
+support rattrape apres les pages arabes du chapitre 338 — le cadrage
+vit dans plus d'endroits que les pages HTML.
+
+**Maillage.** Portes d'entree depuis les communiques (FR/EN) et les
+plans du site ; index de recherche regenere (106 pages FR, 104 EN —
+les pages presse et recherche s'y ajoutent) ; sitemap porte a 217 URL.
+L'index JSON se rafraichit seul (le service worker sert le cache puis
+revalide en arriere-plan) : pas de bump necessaire, changement HTML,
+donnees et documents seulement.
+
+**Verification.** Les deux pages : un seul h1, zero debordement, zero
+erreur console, zero violation axe, dans les deux themes.
