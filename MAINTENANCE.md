@@ -12183,3 +12183,52 @@ livres s'enrichissent de la recherche pleine page, du mini-site arabe,
 de la mediatheque presse et du programme TchadiValeur.
 
 Seul le journal change dans le depot : pas de bump du service worker.
+
+## 341 — Benchmark QA mesure face aux majors (2026-08-30)
+
+**La commande.** Apres le benchmark de contenu du chapitre 336, la
+version mesuree : confronter les signaux de qualite techniques de
+l'accueil EnerTchad a ceux des majors, chiffres a l'appui, depuis le
+meme point de mesure et au meme instant. Panel effectivement mesurable
+ce jour : TotalEnergies, ExxonMobil, Petrobras (Chevron refuse en 403,
+Aramco expire, Shell ne sert qu'une coquille JavaScript de 9 Ko,
+exclue de la comparaison).
+
+**Mon erreur d'instrument, d'abord.** Le premier passage du peseur
+annoncait zero sous-ressource pour EnerTchad et TotalEnergies :
+j'annoncais "Accept-Encoding: gzip, br" mais ne savais decoder que le
+gzip — le HTML servi en brotli devenait du bruit et les expressions
+regulieres n'y trouvaient rien. Lecon au registre des instruments : ne
+jamais annoncer une capacite que le harnais n'a pas ; l'en-tete
+d'annonce fait partie de l'instrument.
+
+**Poids au premier chargement (HTML + sous-ressources declarees, sur
+le fil, gzip).** EnerTchad 215 Ko (51 + 30 ressources) ; TotalEnergies
+305 Ko ; ExxonMobil 429 Ko ; Petrobras 783 Ko. Le site le plus leger
+du panel — et la mesure gzip majore notre cas, la production servant
+du brotli. Seul point ou un major fait mieux : le document HTML seul
+(17 Ko chez TotalEnergies contre 51) — le prix de l'architecture
+auto-portee, deja instruite et assumee au chapitre 328.
+
+**Latence (TTFB + premier kilo-octet, 3 essais).** EnerTchad ~210 ms
+apres echauffement, le plus rapide du panel (TotalEnergies ~230,
+ExxonMobil ~500, Petrobras ~920).
+
+**En-tetes de securite.** EnerTchad est le seul du panel a servir les
+six (HSTS, X-Content-Type-Options, CSP, Referrer-Policy,
+Permissions-Policy, X-Frame-Options) ; les trois majors n'en servent
+que quatre ou cinq.
+
+**Signaux HTML.** Seul site du panel avec JSON-LD (quatre blocs), flux
+RSS declare, manifest + service worker (PWA installable, hors-ligne)
+et theme-color. Titre, description, canonical, hreflang (quatre langues
+declarees dont l'arabe), h1 unique : tout conforme, comme chez les
+majors. Points ou les majors font mieux, notes sans correctif : les
+179 attributs style en ligne (hygiene de l'auto-porte, sans effet
+utilisateur) et l'absence d'images sur l'accueil (choix de design,
+fonds CSS/SVG).
+
+**Limites dites.** Un seul point de mesure, un seul instant, premiers
+chargements statiques ; les majors chargent davantage apres le premier
+rendu et leurs metriques d'usage reel restent inconnues. Aucun
+changement du site : le journal seul est publie.
