@@ -11822,3 +11822,54 @@ configurateur) raccordees a leurs vrais fichiers, XML revalide.
 Pages modifiees : les deux FAQ, les deux pages Societe, les deux
 explorateurs de chaine, sitemap.xml — pas d'actif partage, pas de
 changement de version du service worker.
+
+## 332 — QA et coherence des tuiles sur tout le site (2026-08-30)
+
+Revue des tuiles — les cartes de pole, d'article, de valeur, de stat qui
+portent la moitie de la navigation du site. Trois volets : l'inventaire
+(recolte sur les 210 pages, au rendu, de toutes les tuiles liees a un
+pole avec leur teinte calculee, leur libelle et leur cible), la
+coherence, et la geometrie.
+
+**Ce qui etait deja coherent.** Les libelles des tuiles de pied sont
+exacts sur les 205 pages qui en portent : huit poles, memes noms
+partout, paires FR/EN alignees (Amont/Upstream... Conseil/Advisory).
+Les liens des tuiles menent tous au bon hub dans la bonne langue. Les
+teintes de quatre poles etaient deja unanimes sur tout le site
+(Petrochimie, TchadiTech, Tchaditude, EnerConseils).
+
+**Le defaut principal : la roulette des pastilles du pied.** Les
+pastilles de pole du pied de page tiraient leur teinte des variables de
+theme de chaque page — quatre familles de feuilles, quatre resolutions.
+Resultat mesure au rendu : l'Aval n'avait AUCUNE pastille sur 87 pages
+(variable --amber-l absente, repli sur la couleur du texte), le vert de
+GreenTech existait en trois nuances selon la page (#34D399, #2E9E6B,
+#1E7A55), l'or d'Amont en deux, le bleu de l'Intermediaire en deux.
+Corrige a la racine : une teinte canonique par pole, adressee par le
+lien de la tuile, posee en !important dans les quatre feuilles
+couvrantes (necessaire : l'accent est ecrit en style en ligne dans le
+gabarit du pied). Pastilles decoratives : memes valeurs dans les deux
+themes. Verifie au rendu apres correctif : uniformes, seize liens
+echantillonnes sur huit familles de pages, deux themes.
+
+**Un rose realigne.** L'explorateur de chaine colorait la Petrochimie
+en #D889BE la ou tout le reste du site dit #D177B4. Aligne (FR et EN).
+Reste une declinaison assumee : les panneaux immersifs de l'accueil
+utilisent des pastels eclaircis par pole (la famille --mac du chapitre
+298) — c'est une variante de composant, pas une incoherence, consigne
+comme telle.
+
+**La geometrie : quatre pages accusees, zero coupable.** Le detecteur de
+texte rogne dans les tuiles a designe les cartes de La Voie des deux
+brochures et les panneaux de poles des deux accueils. Verification a
+l'image : rien n'est coupe — dans les deux familles, c'est le grand
+chiffre decoratif en filigrane, volontairement rogne par la tuile, qui
+gonfle scrollHeight. Le registre des instruments s'enrichit d'une
+variante : apres les pseudo-elements du chapitre 316, les enfants
+decoratifs positionnes font eux aussi mentir la mesure de debordement.
+Aucun texte perdu dans les tuiles du site.
+
+**Non-regression.** Les 210 pages rebalayees (axe, console,
+debordements) : zero anomalie. JSON-LD des explorateurs revalides.
+
+Service worker : et-202608302040 (quatre feuilles modifiees).
