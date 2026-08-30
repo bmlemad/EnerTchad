@@ -12162,3 +12162,24 @@ donnees et documents seulement.
 
 **Verification.** Les deux pages : un seul h1, zero debordement, zero
 erreur console, zero violation axe, dans les deux themes.
+
+## 340 — Balayage de non-regression et registre a jour (2026-08-30)
+
+**Le balayage.** Sept chapitres de chantiers (333 a 339) ont touche des
+dizaines de fichiers et cree sept pages ; la liste de reference passe
+de 210 a 218 pages (recherche, presse, trois pages arabes, FR et EN).
+Balayage complet en trois tranches paralleles : axe, erreurs console,
+erreurs de pages, reponses HTTP en echec, debordements horizontaux.
+Resultat : zero anomalie sur les 218 pages — seules remontent les
+metriques informatives de citations des pages de poles, connues et
+sans changement.
+
+**Le tableau de bord rejoint le chapitre 340.** Le registre public
+etait a jour du chapitre 328 ; les douze chapitres manquants y sont
+consignes, les arbitrages en attente passent de neuf a quatre (les
+decisions du chapitre 337), les compteurs passent a 340 chapitres et
+218 pages, la puce service worker a et-202608302205, et les outils
+livres s'enrichissent de la recherche pleine page, du mini-site arabe,
+de la mediatheque presse et du programme TchadiValeur.
+
+Seul le journal change dans le depot : pas de bump du service worker.
