@@ -12393,3 +12393,26 @@ portee heritee sur le titre supprimee).
 
 Changement HTML seul (deux accueils, sitemap) : pas de bump du service
 worker.
+
+## 347 — Consolidation de la refonte (2026-08-30)
+
+**Le rituel apres une grande vague : verifier sur tous les axes.**
+WebKit profil iPhone 14 : zero debordement, zero erreur, couleurs de
+titre justes dans les deux themes, FR et EN. Banc de performance bride
+(processeur x4, 1,6 Mbit/s) : CLS 0 sur l'accueil francais et 0,004
+sur l'anglais — le nouveau hero, textuel et sans carrousel, ne bouge
+pas ; le LCP est un texte, insensible aux images lentes. Parcours
+clavier : les deux appels du hero et les cartes Agir sont focusables
+avec anneau visible de 2 px. Parite FR/EN exacte : 4 chiffres cles,
+3 cartes Agir, 40 portes d'annuaire, 7 arrets du rail. Tous les liens
+et ancres internes des deux accueils resolvent.
+
+**L'index de recherche suit la page.** Les h2 des accueils ont change
+avec la refonte ; l'index JSON est regenere (106 FR, 104 EN) — le
+champ mots-cles de la home reflete les blocs reels. Precision
+d'inventaire au passage : la bande des chiffres abrite en fait trois
+sous-parties (l'ambition en chiffres, le premier integre tchadien,
+decarboner la chaine) en 3,7 Ko — compacte, elle reste.
+
+Deux fichiers de donnees et le journal : pas de bump du service
+worker.
