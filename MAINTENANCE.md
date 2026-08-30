@@ -12089,3 +12089,39 @@ se decide par raisonnement : les trancher serait les inventer.
 
 Douze fichiers HTML modifies, changement HTML seul : pas de bump du
 service worker.
+
+## 338 — Le mini-site arabe triple de volume (2026-08-30)
+
+**Le chantier decide au chapitre 337.** Trois pages arabes nouvelles,
+ecrites en arabe standard moderne et calquees sur le gabarit du
+mini-site existant : ar-societe (l'identite, la voie, la gouvernance,
+le programme TchadiValeur), ar-investisseurs (la these "la banque
+avant le puits", le capital par paliers, l'agenda, la fiche PDF arabe,
+l'avertissement societe en constitution), ar-contact (canaux officiels,
+orientation par profil — investisseur, fournisseur, presse, candidat —
+et renvoi vers l'assistant de contact FR/EN). Le mini-site passe de
+deux a cinq pages, avec une navigation commune en pastilles sur les
+cinq.
+
+**Reciprocite hreflang, la lecon du chapitre 334 appliquee.** Chaque
+page arabe declare fr, en, ar et x-default ; et les six pages
+francaises et anglaises correspondantes (societe, investisseurs,
+contact, FR et EN) declarent en retour leur alternative arabe. Zero
+annotation orpheline : les clusters sont fermes des la naissance.
+
+**Deux defauts d'heritage corriges au passage.** D'abord le cadrage :
+ar-poles portait encore "quatre maillons" — le balayage du chapitre 331
+n'avait pas couvert l'arabe. Aligne sur l'arbitrage du proprietaire :
+trois maillons qui s'etendent par la petrochimie (imtidad), badge
+"extension de la chaine" sur la carte petrochimie, metadonnees et
+descriptions reecrites. Ensuite les boutons : les couches de
+repeinture theme clair du chrome commun ecrasaient le fond dore des
+boutons arabes (contraste mesure a 2.02:1 sur les nouvelles pages, et
+meme le bouton de l'appel a l'action d'ar-poles avait perdu son or).
+Correctif a forte specificite pose sur les cinq pages ; axe repasse a
+zero violation partout.
+
+**Verification.** Les cinq pages arabes : RTL correct, un seul h1,
+zero debordement horizontal, zero erreur console, zero violation axe.
+Sitemap porte a 215 URL. Changement HTML seul : pas de bump du service
+worker.
