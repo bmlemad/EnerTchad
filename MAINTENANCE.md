@@ -12232,3 +12232,41 @@ fonds CSS/SVG).
 chargements statiques ; les majors chargent davantage apres le premier
 rendu et leurs metriques d'usage reel restent inconnues. Aucun
 changement du site : le journal seul est publie.
+
+## 342 — QA des couches invisibles (2026-08-30)
+
+**Le perimetre.** L'audit du graphe de liens (chapitre 334) ne voyait
+que le HTML. Quatre couches lui echappaient : les entrees de la
+palette Ctrl+K (qui vivent dans le JavaScript), les redirections de
+vercel.json (executees par la plateforme), les flux RSS et ICS, et la
+couche Open Graph. Chacune est passee au crible ce jour.
+
+**La palette : 494 entrees, zero defaut.** Les index de base FR, les
+extensions FR et EN — 374 URL uniques, souvent avec ancre — resolus
+contre le meme resolveur que le chapitre 334 (redirects puis rewrite
+puis fichiers) et contre les id reellement presents dans les pages
+cibles. Tout resout.
+
+**Les redirections : 123 sur 123 atterrissent juste, en production.**
+Chaque source testee sur le site en ligne. Cinquante-cinq passent par
+deux sauts (cleanUrls retire le .html avant que la regle propre ne
+s'applique) — atterrissage correct, chaine notee comme cout SEO
+mineur et assume, les deux formes etant declarees expres. Mes deux
+"echecs" initiaux etaient des artefacts d'instrument : j'avais requete
+la chaine litterale ":path*" au lieu d'un chemin reel (les gabarits
+/enertalents/* et /enertech/* fonctionnent), et le premier passage ne
+suivait qu'un saut. Registre des instruments enrichi.
+
+**Les flux.** feed.xml : XML valide, 46 items, tous avec lien et date.
+Les deux calendriers ICS etaient structurellement valides mais en fins
+de ligne LF, la ou la RFC 5545 exige CRLF — certains clients stricts
+rejettent. Corrige : CRLF partout, pliage des lignes de plus de 75
+octets a la norme (coupures respectant l'UTF-8), evenements et UID
+intacts. C'est le seul correctif du chapitre.
+
+**Open Graph : 217 pages, zero probleme.** og:title et og:image
+presents partout, og:url egal a la canonical partout, et les neuf
+images og referencees existent toutes dans le depot.
+
+Deux fichiers ICS corriges : changement de donnees seulement, pas de
+bump du service worker.
