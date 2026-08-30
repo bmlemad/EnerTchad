@@ -11421,3 +11421,102 @@ explicitement.
 
 Service worker : `et-202608301150` (quatre feuilles modifiees, aucune page
 HTML touchee).
+
+## 324 — Ce qui saute sous le pouce : la stabilite visuelle sur telephone (2026-08-30)
+
+Deux passes apres la vague mobile du chapitre 323. D'abord la verification
+d'usage — les 210 pages sur cinq largeurs, 390, 600, 900, 1200 et 1440 px —
+puis une mesure de performance sur telephone bride : reseau a 1,6 Mb/s,
+150 ms de latence, processeur divise par quatre.
+
+### La verification : rien n'a bouge, et l'instrument a encore menti
+
+Les regles du chapitre 323 ne sont pas bornees a une largeur ; il fallait
+donc verifier partout. Sur les 1 050 mesures (210 pages x 5 largeurs),
+**aucun element ne sort de la fenetre**. Calibrage prealable : en
+reintroduisant artificiellement le defaut corrige au chapitre 323, le
+detecteur le retrouve immediatement avec le meme compte qu'avant correction
+(28 elements sur brochure-en.html). L'instrument dit donc vrai quand il se
+tait.
+
+Il a en revanche accuse a tort une famille de textes « rognes ». Mon
+detecteur remontait la chaine des ancetres jusqu'au premier qui coupe, mais
+il ne s'arretait que sur `overflow:hidden` — il traversait donc sans les
+voir les conteneurs en `overflow:auto`, qui defilent et ou le contenu reste
+parfaitement atteignable. Un tableau qui glisse sous le doigt etait compte
+comme du texte perdu. Corrige : on s'arrete au premier ancetre qui borne,
+quel qu'il soit, et on ne signale que s'il cache sans defiler. Les cas
+restants apres correction dependent de la position de defilement au moment
+de la mesure (les blocs `.reveal` sont encore decales) : signal trop faible
+pour agir, consigne comme tel.
+
+### La mesure de performance : deux sauts de mise en page, tres reels
+
+Sur telephone bride, quatorze pages depassaient le seuil de 0,1 de
+Cumulative Layout Shift. Deux causes, toutes deux corrigees.
+
+**cibles-2030.html : 2,13 de CLS, vingt fois le seuil.** Cette page est la
+seule des 210 a ne charger aucune des trois feuilles qui replient la
+navigation sur telephone. Le menu restait donc deploye en permanence
+au-dessus du contenu — et sa hauteur oscillait entre 230 et 660 px, sans
+fin, poussant toute la page de 430 px vers le bas puis la ramenant, environ
+trois fois par seconde. Lire cette page sur un telephone etait
+litteralement impossible.
+
+Ce faisant, je dois corriger une phrase du chapitre 323. J'y avais note un
+message `ResizeObserver loop completed with undelivered notifications`
+apparaissant par intermittence sous WebKit sur cette meme page, et je
+l'avais qualifie de « sans effet visible ». C'etait faux, et je n'avais pas
+cherche assez loin : ce message etait precisement la trace de cette
+oscillation. Le navigateur me disait ou regarder ; je ne l'ai pas ecoute.
+
+Correctif : le repli du menu, avec le meme comportement qu'ailleurs, pose
+en style de page. CLS **2,128 -> 0,004**, puis 0,000 apres le second
+correctif. Tiroir verifie : il ouvre, il ferme, aria-expanded suit.
+
+**Neuf pages anglaises : 0,22 a 0,23 de CLS.** Meme famille de cause. Le
+voile de chargement, `#preloader`, doit etre `position:fixed` — hors flux,
+il ne coute rien quand il disparait. Sur ces neuf pages la feuille qui le
+declare n'etait pas chargee : le voile occupait 178 px en haut de page,
+puis etait retire vers 4,3 s, tirant tout le contenu vers le haut d'un
+coup. Le voile est remis hors flux dans les quatre feuilles communes.
+
+Premiere correction posee, une seconde s'est imposee : sans la regle
+`#preloader.done{opacity:0;visibility:hidden}` — absente des memes
+feuilles — le voile, devenu plein ecran, restait opaque une seconde et
+demie par-dessus la page. On echangeait un saut contre un rideau. Les deux
+regles vont ensemble.
+
+### Ce que la mesure donne, avant et apres
+
+| | avant | apres |
+|---|---|---|
+| pages a CLS > 0,1 | 14 | 0 |
+| pire CLS | 2,128 | 0,004 |
+| CLS moyen | 0,0323 | 0,0092 |
+| CLS p95 | 0,130 | 0,058 |
+| LCP p95 | 7 280 ms | 6 556 ms |
+| FCP median | 3 600 ms | 3 392 ms |
+
+Deux pages de carnets ressortaient encore a 0,130 dans le balayage
+d'apres-correction. Remesurees seules, trois fois de suite : 0,000. Le
+chiffre venait de la contention processeur entre les trois navigateurs
+paralleles du banc, pas du site. La comparaison avant/apres reste valable —
+les deux campagnes ont tourne dans les memes conditions — mais les valeurs
+absolues du balayage sont a lire avec cette reserve.
+
+### Ce qui reste sur la table
+
+Le poids median d'une page est de 590 ko, dont 164 ko pour la seule feuille
+`bundle_core_a1.css`, chargee partout. C'est le premier poste d'economie du
+site, et il demande un travail de fond — decouper cette feuille par famille
+de pages — que je ne fais pas a la sauvette. Le LCP median reste a 3,9 s
+sur ce profil bride ; il tient surtout au poids CSS.
+
+Aucune image surdimensionnee sur les 210 pages.
+
+Non-regression : axe WCAG 2.1 AA et console propres sur les 210 pages dans
+les deux themes ; aucun debordement, aucun defilement horizontal parasite,
+aucun chevauchement a 390 px.
+
+Service worker : `et-202608301420`.

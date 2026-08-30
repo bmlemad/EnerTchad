@@ -376,7 +376,21 @@ html.et-jlight .rootland::after{
     background-color:rgba(250,247,241,.96)!important;
   }
 }
-</style></head>
+</style><style id="ch324-nav-mobile">/* Ch324 : cette page etait la seule des 210 a ne charger aucune des trois
+feuilles qui replient la navigation sur telephone. Le menu restait deploye en
+permanence au-dessus du contenu, et sa hauteur oscillait entre 230 et 660 px
+sans fin — CLS mesure a 2,13, le pire du site de deux ordres de grandeur.
+On replie le menu ici, avec le meme comportement qu'ailleurs. */
+@media(max-width:1240px){
+.nav-links{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:stretch;
+ background:rgba(6,11,20,.74);-webkit-backdrop-filter:blur(24px) saturate(150%);backdrop-filter:blur(24px) saturate(150%);
+ padding:18px var(--gut,18px);gap:2px;border-bottom:1px solid var(--hair);box-shadow:0 24px 50px rgba(0,0,0,.5);
+ max-height:82vh;overflow-y:auto}
+.nav-links.open{display:flex}
+.nav-item{width:100%}
+.nav-trigger{width:100%;justify-content:space-between;font-size:1rem}
+}</style>
+</head>
 <body id="top"><a href="#main-content" class="skip-link">Aller au contenu principal</a>
 <link rel="stylesheet" href="/assets/chrome/nav_a.css?b=202608300720"><link rel="stylesheet" id="cmdk-css" href="/assets/chrome/x_00bf8a1c8438.css"><nav class="nav nx" id="nav" aria-label="Navigation principale">
   <div class="nx-util"><div class="nx-util-in">
