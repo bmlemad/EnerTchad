@@ -11711,3 +11711,53 @@ conclure.
 
 Pages modifiees : index.html et index-en.html seulement — pas de
 changement de version du service worker.
+
+## 328 — Le chantier du poids CSS, mesure avant d'etre lance : verdict (2026-08-30)
+
+Le chapitre 324 avait designe la feuille commune bundle_core_a1.css
+(164 ko, chargee partout) comme « premier poste d'economie du site » et
+renvoye son decoupage a un travail de fond. Avant de lancer ce chantier,
+je l'ai instruit — et les mesures le referment.
+
+**Premiere correction : mon banc mesurait des octets qui ne voyagent
+pas.** Le serveur local du banc ne compresse rien ; Vercel, lui, sert
+tout en Brotli. Sur le fil, bundle_core_a1.css pese 41,2 ko — pas 164.
+Les pages completes, actifs compris, transferent de 131 ko (un carnet) a
+560 ko (la brochure, dont 229 ko pour le seul document), la plupart entre
+200 et 380 ko. Les chiffres de poids du chapitre 324 restent justes en
+octets bruts, mais la conclusion qu'ils portaient — le CSS comme premier
+poste — ne survit pas a la compression : sur le fil, ce sont les images
+qui dominent la plupart des pages (jusqu'a 414 ko de webp sur les
+carnets), le CSS transfere tenant entre 47 et 108 ko selon la page.
+
+**Deuxieme instruction : les images n'ont pas de reserve.** Les plus
+lourdes font 1 400 px de large — la taille qu'il faut pour un fond plein
+ecran sur mobile a double densite — et un re-encodage d'essai a qualite 75
+rend un fichier plus gros que l'original : elles sont deja au plancher.
+Rien a gratter sans toucher a la qualite visuelle.
+
+**Troisieme instruction : la couverture CSS, et ce qu'elle ne voit pas.**
+L'API de couverture de Chromium, passee sur douze pages representatives,
+donne bundle_core_a1.css utilisee a 26 % en moyenne (32 % au maximum).
+Pris au pied de la lettre, cela plaiderait pour le decoupage. Mais la
+mesure est faite dans un theme, a une largeur, sans interaction : les
+regles du theme clair, de l'impression, des autres largeurs et de tous
+les etats (survol, panneaux ouverts, palette de recherche, animations)
+comptent pour inutilisees. Les feuilles a « 0 % » le prouvent : ce sont
+les polices auto-hebergees, la palette Ctrl+K et les etats de survol des
+cartes — toutes bien vivantes. La part reellement morte est tres
+inferieure aux 74 % apparents, et rien d'identifiable n'est mort du tout.
+
+**Verdict.** Un decoupage par famille de pages plafonnerait autour de
+20 ko compresses par page, au prix d'un remaniement de la cascade sur
+210 pages — la categorie d'intervention qui a produit plusieurs des
+defauts corriges aux chapitres 321 a 327. Gain modeste, risque reel :
+chantier declasse, en connaissance de cause. Si un poste de poids merite
+un jour l'effort, c'est le document de la brochure (996 ko bruts), et
+c'est un arbitrage editorial, pas technique.
+
+Chapitre d'instruction : seul MAINTENANCE.md change sur le site. Au
+registre des instruments : un banc local sans compression fait passer le
+CSS pour le coupable ; la couverture CSS fait passer les etats pour du
+poids mort. Les deux mesures etaient exactes, et les deux conclusions
+fausses.
