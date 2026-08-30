@@ -12299,3 +12299,35 @@ la fin des animations, y compris celles declenchees par le
 defilement).
 
 Changement HTML seul (deux accueils) : pas de bump du service worker.
+
+## 344 — Solde de tout compte : les actions en attente (2026-08-30)
+
+**La commande.** Appliquer toutes les actions en attente et pousser.
+Etat des lieux d'abord : l'arbre local est strictement identique a la
+branche main — chaque chapitre a ete publie au fil de l'eau, rien ne
+dormait. Le "push" est donc un constat, pas un geste : le canal de
+publication du projet (depot via l'interface web, jamais de push
+direct) etait deja a jour.
+
+**Le grand livre des taches, reconcilie.** Quatre taches du chapitre
+261 (QA des menus : inventaire, desktop, mobile, banc de contraste du
+mega-menu ouvert) etaient restees ouvertes depuis des mois alors que
+leur substance a ete livree ailleurs : le retrait du code mega-ultra
+(ch.262), les matrices desktop et mobile (ch.270), la revue des
+outils de navigation avec ses sept correctifs (ch.322), la refonte
+mobile (ch.323) et le banc de contraste menu ouvert (ch.256). Les
+quatre sont refermees avec renvoi explicite vers les chapitres qui
+les ont couvertes — une dette de tenue de registre, pas une dette de
+travail.
+
+**Le tableau de bord rejoint le chapitre 343.** Trois chapitres
+d'ecart avec le journal (benchmark QA mesure, couches invisibles,
+annuaire des accueils) : combles, meme adresse publique.
+
+**Ce qui reste en attente ne depend pas de moi.** Quatre arbitrages
+attendent des faits du proprietaire (noms des organes, rapport annuel,
+seance photo, INSPEM et ticket minimum) ; trois veilles ont leurs
+echeances (scenarios Brent en janvier 2027, ITIE a la validation,
+Sedigui au fil des annonces). Aucune action applicable n'attend.
+
+Seul le journal change dans le depot.
