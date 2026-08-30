@@ -1278,3 +1278,20 @@ input[type=range]:not(#_):not(#__):focus-visible{
 /* et le voile doit s'effacer des que le script le marque « done » : sans cette
    regle il restait opaque une seconde et demie par-dessus la page. */
 #preloader.done:not(#_):not(#__){opacity:0;visibility:hidden;transition:opacity .5s ease,visibility .5s}
+
+/* Ch332 : les pastilles de pole du pied de page tiraient leur teinte des
+   variables de theme de chaque page — quatre familles de feuilles, quatre
+   resolutions : l'Aval n'avait aucune pastille sur 87 pages (variable
+   absente, repli sur la couleur du texte), le vert de GreenTech existait en
+   trois nuances, l'or d'Amont en deux. Une seule teinte par pole, partout,
+   adressee par le lien (l'!important est necessaire : l'accent est pose en
+   style en ligne dans le gabarit). Pastille decorative : memes valeurs dans
+   les deux themes. */
+footer .foot-pole[href^="/amont"],footer .foot-pole[href^="/pole-amont"]{--pc:#E8C36A!important}
+footer .foot-pole[href^="/intermediaire"],footer .foot-pole[href^="/pole-intermediaire"]{--pc:#5AA7F0!important}
+footer .foot-pole[href^="/aval"],footer .foot-pole[href^="/pole-aval"]{--pc:#F09A4A!important}
+footer .foot-pole[href^="/petrochimie"],footer .foot-pole[href^="/pole-enerchimie"]{--pc:#D177B4!important}
+footer .foot-pole[href^="/greentech"],footer .foot-pole[href^="/pole-greentech"]{--pc:#34D399!important}
+footer .foot-pole[href^="/tchaditech"],footer .foot-pole[href^="/pole-tchaditech"]{--pc:#7E8AD9!important}
+footer .foot-pole[href^="/tchaditude"],footer .foot-pole[href^="/pole-tchaditude"]{--pc:#C4B5FD!important}
+footer .foot-pole[href^="/enerconseils"],footer .foot-pole[href^="/pole-enerconseils"]{--pc:#1FA496!important}
