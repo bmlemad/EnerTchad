@@ -1189,3 +1189,12 @@ html:not(.et-plight):not(.et-jlight) .brand-tx small:not(#_):not(#__):not(#___) 
 
 /* Ch257 - anneau de focus par defaut, specificite nulle */
 :where(a,button,[role="button"],[tabindex],select,summary):focus-visible{outline:2px solid var(--etfv,#E8C36A);outline-offset:2px}html.et-plight{--etfv:#74570B}html.et-jlight{--etfv:#74570B}
+
+/* Ch321 (theme clair) - le pied de page aplatit TOUS ses liens en !important
+   (regle "html.et-plight footer a" heritee), ce qui defait aussi le souligne
+   des liens en ligne dans un paragraphe. On le retablit pour ces seuls liens
+   nus, avec une specificite superieure (WCAG 1.4.1). */
+html.et-plight footer :is(p,li,dd) a:not([class]):not(#e1):not(#e2):not(#e3):not(#e4):not(#e5):not(#e6){
+  text-decoration:underline!important;text-underline-offset:.18em!important;
+  text-decoration-thickness:.055em!important;
+  text-decoration-color:color-mix(in srgb,currentColor 55%,transparent)!important}
