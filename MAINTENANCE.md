@@ -11298,6 +11298,15 @@ Et l'enumeration des regles applicables ne rendait rien du tout tant que je
 n'avais pas corrige, comme au chapitre 321, le test `rule.cssRules` qui
 prend chaque regle ordinaire pour un groupe.
 
+Une troisieme forme du meme piege est apparue a la verification finale, en
+production cette fois, et elle merite d'entrer au registre : dans un onglet
+Chrome qui n'est pas au premier plan, `getComputedStyle` peut rendre des
+valeurs perimees. Le panneau portait `visibility:visible !important` et
+`opacity:1 !important` en style en ligne — impossible a battre dans la
+cascade — et la lecture repondait pourtant `hidden` et `0`. Une capture
+d'ecran du meme onglet a montre le menu grand ouvert. Regle ajoutee a la
+maison : sur un onglet reel non visible, l'image fait foi, pas la mesure.
+
 ### Observation laissee en l'etat
 
 Le bouton « Imprimer / PDF » du pied de page porte la classe `nav-search`,
