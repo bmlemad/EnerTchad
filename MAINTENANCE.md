@@ -13028,3 +13028,22 @@ en-tetes de securite (les majors en servent 2 a 5) ; seul avec
 JSON-LD (x4), RSS, manifest, service worker et theme-color reunis ;
 title 60 caracteres, canonical, hreflang, un seul h1 — au canon.
 Zero defaut a corriger : chapitre de constat, sans correctif.
+
+## 367 — Consolidation : le sitemap a l'heure git, registre a jour
+
+Apres les vagues 359 a 366 (plus de 190 fichiers touches), les
+lastmod du sitemap dataient pour beaucoup du 29-30 aout. Ils sont
+regeneres depuis git (date du dernier commit par fichier, methode du
+chapitre 331) : 182 entrees mises a jour sur 217, zero URL sans
+fichier correspondant, XML valide. Controle de couverture : les 217
+pages eligibles (hors 404, verification Google et sources
+d'impression) ont toutes leur entree — 217/217, rien en trop.
+
+Tableau de bord registre synchronise : chapitres 364 a 367 ajoutes,
+compteurs et version SW mis a jour, republie sur son adresse
+habituelle.
+
+Aucun actif JS/CSS modifie : pas de bump SW. Publication : le
+sitemap et le journal. Le sitemap frais est aussi le commit
+declencheur qui suit la lecon du chapitre 355 — un deploiement se
+verifie sur le Last-Modified servi.
