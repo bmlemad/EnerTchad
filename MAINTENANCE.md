@@ -12880,3 +12880,66 @@ En attente phase 3 (au prochain next) : QA de consolidation 218 pages,
 communique CP-2026-010, synchronisation du registre, verification
 site-wide de la pilule nav active, et arbitrage sur les libelles
 "Groupe" restants (menu de navigation et colonne du pied de page).
+
+## 361 — Groupe devient Societe sur tout le site
+
+Arbitrage du proprietaire (sur proposition, canon "societe unique, pas
+un groupe") : le libelle de rubrique "Groupe" disparait. Menu de
+navigation "Groupe" -> "Societe" (EN "Group" -> "Company"),
+aria-label du mega-panneau, colonne du pied de page (h3 sur 125
+pages), colonne du plan du site (h2), kicker de la page achats. Les
+"groupes electrogenes" et "groupes diesel" du contenu, legitimes,
+n'ont pas ete touches — remplacements ancres sur les chaines exactes,
+jamais sur le mot seul. 176 fichiers modifies, 412 remplacements,
+zero residu au controle (source, data-attributs, texte rendu au
+navigateur sur les 218 pages en 3 tranches).
+
+Rattrapages du chapitre 359 reveles par l'inventaire — mea culpa, le
+balayage doctrinal avait rate six familles : les kickers des huit
+pages de capacites ("Pole support - Capacite transversale" ->
+"Capacite integree - Au coeur des trois poles", EN "Built-in
+capability - Inside the core poles") ; le plan du site (section
+"Poles supports" -> "Capacites integrees", FR et EN, et les deux
+entrees d'index de recherche assorties) ; la brochure ("les cinq
+poles supports" -> la doctrine) ; cibles-2030 ("Quatre coeurs de
+metier + quatre poles supports" -> "Trois poles de coeur que prolonge
+la petrochimie, quatre capacites integrees") ; l'explorateur de la
+chaine (texte et meta description) ; un mot-cle de palette ("poumon
+financier vise du groupe" -> "de la societe"). Lecon consignee : un
+balayage de cadrage doit aussi passer les kickers pgk, les meta
+descriptions et les mots-cles JS.
+
+Un actif JS modifie (cmdk_extra.js) : service worker bumpe en
+et-202608311253. Syntaxe JS et JSON verifiees.
+
+## 362 — QA de consolidation : 218 pages, deux themes, zero defaut
+
+Apres les vagues 358-361, balayage complet au harnais du chapitre 319
+en six tranches de fond : console, erreurs de page, HTTP >= 400, axe
+WCAG A/AA (apres fin des animations), debordement horizontal,
+apostrophes droites — sur les 218 pages et les deux themes. Zero
+defaut. Seules remontees : la geometrie informative des citations
+pmani-q (42 px, 2 a 5 lignes), conforme au canon. En complement, la
+passe texte rendu (balayage des termes bannis : Groupe, Group, poles
+supports, transversale, huit poles, eight poles) et la passe
+data-attributs sont revenues vides toutes les deux.
+
+## 363 — CP-2026-010 : la reorganisation annoncee, registre a jour
+
+Communique CP-2026-010 (31 aout 2026) publie en francais et en
+anglais : trois poles de coeur que prolonge la petrochimie, quatre
+capacites integrees, plus de 150 pages mises a jour FR/EN/AR,
+adresses inchangees, accueil redessine. Insere en tete de
+/communiques et /communiques-en, verse aux flux RSS (48 items,
+lastBuildDate remis a l'heure, XML valide). Les mini-communiques des
+deux accueils, restes bloques a 007/006/005, passent a 010/009/008
+avec ancres directes.
+
+Tableau de bord registre synchronise : 13 chapitres ajoutes (351 a
+363), compteurs, version SW et periode mis a jour ; republie sur son
+adresse d'artifact habituelle.
+
+En attente (inchange) : noms de direction, rapport annuel, seance
+photo, INSPEM/ticket minimum. Veilles : Brent janvier 2027, ITIE,
+Sedigui. Conflits de canon restants du ch.356 (Mission Delta, VP
+Artificial Lift) toujours a l'arbitrage du proprietaire.
