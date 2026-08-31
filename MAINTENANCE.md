@@ -12704,3 +12704,46 @@ choses en attente ne sont pas des defauts : quatre arbitrages sur des
 faits du proprietaire, trois veilles a echeance.
 
 Seul le journal change : pas de bump du service worker.
+
+## 358 — Reorganisation sur les trois poles de coeur, phase 1 (2026-08-31)
+
+**L'arbitrage du proprietaire.** Reorganiser le site sur les trois
+poles Amont, Intermediaire, Aval, et integrer les poles supports
+directement dans ces poles de coeur. C'est un changement de doctrine :
+le canon "huit poles dont quatre appuis" devient "trois poles de coeur
+— que prolonge la petrochimie — integrant quatre capacites". Les
+quatre ne sont plus un pilier a cote de la chaine : ils vivent dedans.
+
+**La doctrine d'integration, decidee sur delegation.** Chaque capacite
+sert les trois poles de coeur, avec un angle par pole plutot qu'un
+rattachement unique — decouper GreenTech en trois morceaux aurait
+menti sur sa nature transversale. En Amont : l'eau et le torchage
+(GreenTech), le champ numerique et la chimie EOR (TchadiTech), les
+metiers du puits (Tchaditude), les etudes du sous-sol (EnerConseils).
+En Intermediaire : integrite et fuites, comptage et supervision,
+la chaine humaine du transport, l'atlas des flux. En Aval : qualite et
+HSE des stations, outils clients, le reseau humain du service, le
+conseil B2B. Les URL des anciennes pages de pole restent stables :
+la reorganisation est d'architecture d'information, pas de
+demenagement de fichiers — aucun lien ne casse.
+
+**Phase 1, appliquee ce jour.** Les deux accueils : le chiffre cle du
+hero passe de "8 poles" a "3 poles de coeur — quatre capacites
+integrees" ; la section des appuis est retitree "Quatre capacites,
+integrees aux poles de coeur" avec son introduction reecrite dans la
+nouvelle doctrine ; l'annuaire renomme son groupe "La chaine — poles
+de coeur" et marque les quatre capacites "integre". Les six hubs de
+coeur (Amont, Intermediaire, Aval, FR et EN) recoivent chacun une
+bande "Capacites integrees" de quatre cartes, angle par pole, aux
+pastilles canoniques. Verifie : dix pages, deux themes, zero
+violation axe, zero debordement, zero erreur console.
+
+**Phases suivantes, planifiees.** Phase 2 : le balayage du cadrage
+"huit poles" sur les 218 pages (FR, EN, arabe — ar-poles s'appelle
+encore "les huit poles"), la fiche presse et le kit, le glossaire, les
+JSON-LD, l'explorateur de la chaine, les mega-menus. Phase 3 : QA de
+consolidation, communique, registre public. Le rythme des chapitres
+326 a 331 — l'arbitrage d'abord aux points cardinaux, le balayage
+ensuite — a fait ses preuves ; il est reconduit.
+
+Huit pages HTML modifiees, HTML seul : pas de bump du service worker.
