@@ -12665,3 +12665,42 @@ declenche un build frais qui a tout emporte. Lecon d'exploitation :
 verifier le Last-Modified servi, pas seulement le commit pousse.
 
 Aucun changement du site : le journal seul est publie.
+
+## 357 — Audit general : l'etat des lieux mesure du jour (2026-08-31)
+
+**La commande.** Un audit complet, en mesures fraiches — pas en
+souvenirs de chapitres. Tous les harnais ont tourne ce jour, sur le
+site tel qu'il est apres la refonte, le verre et le tiroir.
+
+**Integrite du graphe.** 219 fichiers HTML, chaque href, src, action
+et poster resolu contre la chaine redirects-rewrites-fichiers, chaque
+ancre contre les id reels, les fragments d'etat JavaScript reconnus
+(rub=, t-, p=, q=) : zero probleme.
+
+**Balayage dynamique, les deux themes en entier.** 218 pages en theme
+sombre ET 218 en theme clair, le meme jour : axe, erreurs console et
+de page, reponses HTTP, debordements horizontaux — zero anomalie ;
+seules les metriques informatives de citations remontent, inchangees.
+
+**Donnees structurees.** 747 blocs JSON-LD sur le site, zero invalide ;
+dix types (BreadcrumbList 215, WebPage 153, Organization 131, WebSite
+85, Dataset 84, Article 64, FAQPage, CollectionPage, WebApplication,
+Blog).
+
+**Production.** Six en-tetes de securite sur six ; service worker
+et-202608302320 servi ; premier chargement complet 212 Ko sur le fil
+(30 ressources declarees) ; TTFB 280 ms apres echauffement — le
+premier coup a froid a coute 971 ms, consigne honnetement : c'est le
+reveil du bord, pas le regime de croisiere. Telechargements sondes
+(kit ZIP, brochure PDF, calendrier ICS) : octets magiques conformes.
+
+**Acquis recents reconfirmes par leurs chapitres.** CLS 0 au banc
+bride (ch.347), 83 elements de verre sans un contraste faible
+(ch.354), impression sans chrome flottant (ch.349), redirections 123
+sur 123 (ch.342), palette Ctrl+K 494 entrees saines (ch.342).
+
+**Verdict.** Zero defaut ouvert sur les huit axes mesures. Les seules
+choses en attente ne sont pas des defauts : quatre arbitrages sur des
+faits du proprietaire, trois veilles a echeance.
+
+Seul le journal change : pas de bump du service worker.
