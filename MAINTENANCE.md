@@ -12987,3 +12987,44 @@ propre.
 Service worker : et-202608311413 (bundle CSS modifie).
 Publication : bundle_core_a1.css, index.html, index-en.html, sw.js,
 journal.
+
+## 365 — Les pages hors bundle rejoignent la couche premium
+
+Les huit pages qui ne chargent pas le bundle commun recoivent leur
+propre couche lux365 en ligne : 404, les cinq pages du mini-site
+arabe et les deux explorateurs de la chaine. Halo dore statique
+au-dessus du decor rootland (les huit l'ont), filet d'or du pied de
+page (le 404 n'en a pas), replis transparence reduite et impression.
+Sur les pages arabes, le halo est pose en miroir — lueur principale
+en haut a gauche — pour suivre le sens de lecture RTL.
+
+La capture de controle a revele un residu doctrinal que tous les
+balayages avaient rate : la carte KPI arabe "8 اقطاب متكاملة" (huit
+poles integres) sur les cinq pages du mini-site. Mes listes de
+termes bannis etaient francaises et anglaises — jamais arabes. Mea
+culpa, et lecon consignee : un site trilingue se balaie dans ses
+trois langues. Correctif : "3 / اقطاب قلب — اربع قدرات مدمجة"
+(trois poles de coeur — quatre capacites integrees), conforme a la
+doctrine et au KPI des accueils.
+
+QA ciblee sur les huit pages, deux themes : axe WCAG A/AA zero
+violation, zero erreur console, zero debordement ; controle visuel
+ar-poles avant/apres. Aucun actif JS/CSS modifie : pas de bump SW.
+
+## 366 — Audit mesure face aux majors, apres la vague design
+
+Reprise du banc du chapitre 341 (poids gzip sur le fil, harnais qui
+ne decode que ce qu'il annonce), complete d'un banc en-tetes de
+securite et vitesse (3 mesures, mediane). Panel : TotalEnergies,
+Chevron, Petrobras, ExxonMobil, Shell (Aramco : delai depasse,
+constat identique au ch.341).
+
+Resultats — EnerTchad tient son rang apres les chapitres 360-365 :
+le plus leger du panel en poids total sur le fil (214 Ko contre 305
+TotalEnergies, 429 ExxonMobil, 783 Petrobras) — la vague design n'a
+coute qu'un kilo-octet par rapport aux 215 Ko du ch.341 ; le plus
+rapide (mediane 329 ms contre 489 a 1792) ; seul a servir les six
+en-tetes de securite (les majors en servent 2 a 5) ; seul avec
+JSON-LD (x4), RSS, manifest, service worker et theme-color reunis ;
+title 60 caracteres, canonical, hreflang, un seul h1 — au canon.
+Zero defaut a corriger : chapitre de constat, sans correctif.
