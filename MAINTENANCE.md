@@ -12788,3 +12788,29 @@ fichiers modifies revalides.
 
 Service worker : et-202608310800 (deux index de palette modifies).
 Phase 3 (QA de consolidation, communique, registre) au prochain next.
+
+### 359 bis — Complement post-publication : residus dans les index de palette
+
+La verification de production apres les 16 lots a revele que mon
+balayage declare "zero residu" etait faux sur un point. Deux index de
+la palette de commandes contenaient encore l'ancien cadrage :
+"huit poles" deux fois dans les mots-cles de cmdk_extra.js (entrees
+arabe et brochure) et un titre visible "Eight poles — one integrated
+chain" dans cmdk_en.js (entree en-35, page d'accueil EN).
+
+Mon erreur : les trois passes du balayage (source HTML, attributs
+data-, texte rendu navigateur) ne couvraient pas les chaines de
+mots-cles des fichiers JS. Les mots-cles ne sont jamais rendus a
+l'ecran et mes greps de source ne visaient que les .html. Lecon :
+un balayage de cadrage doit inclure les fichiers de donnees JS/JSON
+de la palette et de la recherche, pas seulement les pages.
+
+Correctif : "huit poles" remplace par "trois poles de coeur" (x2),
+titre EN corrige en "Three core poles — one integrated chain". Au
+passage, mise en conformite avec le canon "societe unique, pas un
+groupe" : la categorie de palette "Groupe" (17 entrees FR) devient
+"Societe" et "Group" (29 entrees EN) devient "Company". Syntaxe JS
+verifiee (new Function) sur les deux index et sw.js.
+
+Service worker : et-202608310855 (deux actifs JS modifies).
+Publication : lot 16 (assets/chrome) puis lot 17 (sw.js + journal).
