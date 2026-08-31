@@ -12445,3 +12445,42 @@ sans accents. Le journal est un registre en ajout seul : on n'y
 reecrit pas l'histoire, et la convention tient sans exception depuis.
 
 Seul le journal change : pas de bump du service worker.
+
+## 349 — QA du rendu d'impression apres la vague (2026-08-30)
+
+**Le constat, d'abord bon.** Huit pages representatives passees au
+media print (accueil refondu, presse, recherche, investisseurs,
+glossaire, un carnet, une page arabe, les communiques) : le socle
+d'impression du chapitre 270 tient — navigation masquee, fonds clairs,
+textes noirs, l'arabe s'imprime en RTL propre, le carnet se lit comme
+un article de journal.
+
+**Le defaut : le chrome flottant se repetait sur chaque page.** Le
+bandeau cookies (position fixe) s'imprimait au bas de chacune des
+quinze pages du PDF de l'accueil ; le rail de traversee et les boutons
+flottants suivaient le meme chemin sur les pages ou le socle ne les
+couvrait pas. Correctif dans les quatre feuilles couvrantes : en
+impression, bandeau cookies, rail, retour accueil, bascules de theme
+et boutons de remontee sont masques. Deux passes ont ete necessaires —
+la regle d'affichage du bandeau (posee 1,2 s apres le chargement)
+portait une specificite superieure ; la mesure trop precoce concluait
+a tort que le correctif tenait. Lecon d'instrument : verifier les
+etats retardes apres leur echeance, pas avant.
+
+Service worker : et-202608302320 (quatre feuilles modifiees).
+
+## 350 — L'annuaire devient acces rapides (2026-08-30)
+
+**La suggestion du proprietaire.** Convertir l'annuaire de l'accueil
+en acces rapides. Avis favorable et motive : la forme en pastilles
+compactes raccourcit la page (mandat du chapitre 346), garde les
+quarante portes visibles sans interaction (l'exigence du chapitre 343
+reste tenue a la lettre), et la densite sied au registre institutionnel.
+
+**La forme.** Meme section, memes cinq groupes aux points de couleur
+canoniques, memes quarante liens — mais en pastilles a bordure sur
+fond semi-opaque (lisibles sur la photo de fond, dans les deux
+themes), groupes empiles au lieu des cinq colonnes. Titre ajuste :
+"Acces rapides." sous le chapeau "Annuaire - Tout le site". Hauteur de
+section reduite d'environ moitie. Zero violation axe dans les deux
+themes, quarante liens verifies.
