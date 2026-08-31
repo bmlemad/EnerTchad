@@ -12606,3 +12606,62 @@ plus opaque. Second passage : tout au-dessus de 5,88:1 en clair et de
 console, les deux accueils.
 
 Deux accueils modifies, HTML seul : pas de bump du service worker.
+
+## 356 — Un audit externe passe au crible des mesures (2026-08-30)
+
+**La piece versee.** Le proprietaire transmet un audit exterieur du
+site, au ton assure et aux recommandations "premium". Regle du
+registre : chaque affirmation se confronte aux mesures consignees,
+pas aux impressions. Verdict en quatre paniers.
+
+**Panier 1 — faux, preuves a l'appui.** "SEO faible, absence de
+balises meta" : l'accueil porte description, canonical, quatre
+hreflang, sept og:, six twitter: et quatre blocs JSON-LD ; 217 URL au
+sitemap (que l'audit recommande... de creer). "Accessibilite limitee,
+manque d'ARIA, contrastes insuffisants" : 8 422 aria-label sur 218
+pages, zero violation axe au balayage complet (ch.348), 83 elements
+de verre mesures au pixel peint sans un seul sous 4,5:1 (ch.354).
+"Responsive incomplet, sections debordent sur mobile" : zero
+debordement sur 218 pages, deux themes (ch.348), WebKit iPhone
+compris (ch.347). "Temps de chargement eleve" : site le plus leger et
+le plus rapide du panel des majors mesure au chapitre 341 (215 Ko,
+~210 ms). "Typographies non institutionnelles, privilegier Inter" :
+le corps du site EST en Inter auto-hebergee depuis l'origine, avec
+Space Grotesk en titrage — une identite, pas un defaut. "Palette non
+harmonisee, viser bleu petrole / or / blanc" : c'est tres exactement
+la palette canonique du site (marine 0B1422, ors E8C36A, creme),
+publiee avec ses codes sur la page presse.
+
+**Panier 2 — deja livre.** Timelines : la chronologie interactive des
+jalons (ch.306). Chiffres cles : le bandeau du hero et la bande de
+l'ambition (ch.346). Cartes interactives : la carte SVG des operations
+(P3). Visuels techniques : pompe, pipeline, raffinerie, stations en
+webp dans les pages et le kit presse. Design system : la charte
+existe (/charte), boutons et cartes unifies par les chapitres 246-247
+et 332.
+
+**Panier 3 — decline, avec motif.** Migrer vers Next.js : le socle
+statique est un choix d'architecture assume, mesure plus rapide que
+les majors ; on ne remplace pas ce qui gagne. Les ratios d'image
+imposes 16:9 : prescription decorative sans probleme constate.
+
+**Panier 4 — au proprietaire, car cela touche le canon.** L'audit
+parle d'un "Groupe EnerTchad" et d'une "Mission Delta" dediee au
+transport-distribution : confusion probable avec le sous-domaine
+technique enertchad-delta.vercel.app — le canon du site, ecrit dans la
+fiche presse, dit societe unique, pas un groupe, pas de filiales, sur
+TOUTE la chaine. En faire un groupe a filiales serait une decision de
+structure d'entreprise, pas un correctif de site. Quant au
+"Vice-President Artificial Lift deja en memoire" : aucun titulaire
+n'existe au registre, et inventer un dirigeant contredirait
+l'arbitrage en attente (les noms reels a la formalisation des
+organes) comme l'honnetete du site. Ces deux points restent la ou ils
+doivent etre : entre les mains du proprietaire.
+
+**Consigne en retard du chapitre 355.** Le build Vercel du commit du
+hero en verre a stagne environ 25 minutes (les precedents prenaient
+une minute) ; un commit de relance utile — lastmod du sitemap — a
+declenche un build frais qui a tout emporte. Lecon d'exploitation :
+verifier le Last-Modified servi, pas seulement le commit pousse.
+
+Aucun changement du site : le journal seul est publie.
