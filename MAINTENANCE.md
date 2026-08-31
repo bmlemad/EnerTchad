@@ -12484,3 +12484,30 @@ themes), groupes empiles au lieu des cinq colonnes. Titre ajuste :
 "Acces rapides." sous le chapeau "Annuaire - Tout le site". Hauteur de
 section reduite d'environ moitie. Zero violation axe dans les deux
 themes, quarante liens verifies.
+
+## 351 — Appliquer les restes ouverts (2026-08-30)
+
+**La commande.** Appliquer. Deux elements applicables restaient
+ouverts au registre ; les voici soldes.
+
+**Le marqueur de champ du formulaire (observation du chapitre 333).**
+L'assistant de contact signalait les erreurs par ses alertes textuelles
+(role=alert), mais le champ fautif lui-meme ne portait aucun marqueur
+coherent. Applique sur contact et contact-en : la validation de
+l'etape 2 pose desormais aria-invalid sur chaque champ fautif (nom,
+courriel, message), le focus va au premier champ en erreur, une regle
+scoped peint la bordure en rouge (visible dans les deux themes), et le
+marqueur s'efface a la saisie des que le champ redevient valide. Une
+erreur d'insertion en chemin, consignee : le premier patch avait loge
+l'ecouteur d'effacement DANS le gestionnaire du clic, derriere des
+return qui l'empechaient de s'attacher — la marche a vide l'a revele
+(marqueur pose mais jamais efface), l'ecouteur vit desormais au niveau
+du formulaire. Verifie au navigateur, FR et EN : pose, focus,
+effacement, passage a l'etape 3, zero erreur console.
+
+**Le registre public rejoint le chapitre 350.** Sept chapitres
+d'ecart (344 a 350 : solde des taches, communique, refonte,
+consolidation, QA-QC, impression, acces rapides) : combles, meme
+adresse, puce service worker a jour.
+
+Deux pages HTML modifiees : pas de bump du service worker.
