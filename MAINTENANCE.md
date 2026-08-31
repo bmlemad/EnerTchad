@@ -12814,3 +12814,69 @@ verifiee (new Function) sur les deux index et sw.js.
 
 Service worker : et-202608310855 (deux actifs JS modifies).
 Publication : lot 16 (assets/chrome) puis lot 17 (sw.js + journal).
+
+## 360 — Home ultra premium : le verre etendu aux huit blocs
+
+Demande du proprietaire : moderniser la home en ultra premium avec son
+caractere translucide. Arbitrages recueillis : portee totale (les huit
+blocs) et halo dore subtil statique en fond.
+
+### Ce qui change (index.html et index-en.html, couche style id lux360)
+
+Halo : le pseudo-element body::after (etoiles de liquidglass) devient un
+halo statique — deux lueurs or et une lueur bleue radiales, aucune
+animation, decline en clair (or profond attenue). Il transparait dans
+tous les panneaux de verre, hero compris, sans toucher au verre du hero
+lui-meme (benche aux chapitres 354-355, laisse intact).
+
+Recette panneau unique "verre feuillete" appliquee aux familles de la
+home : cellules KPI du hero, cartes agir, cartes chiffres (hxf), cartes
+carnets (hncard), mini-cartes communiques (hcp-i), tiroir annuaire
+(annu-t). Degrade froid translucide, blur 18 px sature 1.45, filet or
+rgba(232,195,106,.20), arete speculaire en inset, ombre profonde.
+Survol calme : levee 4 px et filet qui s'eclaire, sans echelle ni lueur
+criarde. Boutons verre : nh-b2 et hb-cta. Bouton or du hero : lueur
+douce. Filets d'or en tete de la bande conviction et de la bande CTA.
+Pastilles KPI des maillons : fond assombri leger sans blur (cout GPU
+maitrise). Theme clair : verre blanc chaud, filets or profonds, memes
+familles. Mobile : blur reduit a 12 px.
+
+Pont nav vers hero : la bande de photo brute (42 px) pincee entre la
+barre de navigation et le panneau du hero — defaut preexistant, criard
+en theme clair — devient un degrade assorti au theme via
+diapo::before (z 1, au-dessus du voile diapo::after).
+
+Fallbacks livres a la meme specificite que les surcharges : supports
+sans backdrop-filter (panneaux opaques), prefers-reduced-transparency
+(opaques, halo eteint), prefers-reduced-motion (pas de levee),
+impression (blanc, sans flou ni halo ni pont).
+
+### QA
+
+Banc de contraste au pixel peint (harnais ch.354 readapte) : 160
+elements de verre mesures sur les deux homes et les deux themes,
+zero sous 4.5:1 apres correctifs. Axe apres defilement complet et fin
+des animations : zero violation sur FR sombre, FR clair, EN sombre et
+FR mobile 390 px ; zero erreur console ; zero debordement horizontal.
+Perf mobile bridee (reseau 1.6 Mbps, CPU x4) : CLS 0.0036, aucun
+regression — la couche est du CSS inline (~11 Ko).
+
+### Deux defauts reveles par le banc, corriges
+
+Un cause par moi : la recette verre appliquee au bouton hxi-cta posait
+un fond sombre sous son texte sombre (contraste 1.47). Le bouton or
+d'origine est retabli — hxi-cta retire de toutes les listes lux360.
+Mea culpa : appliquer une recette a une famille de boutons sans
+verifier la couleur de texte de chacun.
+
+Un preexistant : la pilule de navigation active (nav-trigger is-active)
+affichait un texte marine sombre sur pilule sombre en theme sombre
+(contraste 1.2, home EN). Correctif home : texte or F0CE82. A verifier
+sur le reste du site en phase 3 (la regle vit dans les bundles nav).
+
+Aucun actif JS ou CSS de assets modifie : pas de bump du service
+worker. Publication : index.html, index-en.html, MAINTENANCE.md.
+En attente phase 3 (au prochain next) : QA de consolidation 218 pages,
+communique CP-2026-010, synchronisation du registre, verification
+site-wide de la pilule nav active, et arbitrage sur les libelles
+"Groupe" restants (menu de navigation et colonne du pied de page).
