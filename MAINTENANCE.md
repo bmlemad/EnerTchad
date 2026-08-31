@@ -12747,3 +12747,44 @@ consolidation, communique, registre public. Le rythme des chapitres
 ensuite — a fait ses preuves ; il est reconduit.
 
 Huit pages HTML modifiees, HTML seul : pas de bump du service worker.
+
+## 359 — Reorganisation phase 2 : le balayage doctrinal (2026-08-31)
+
+**Le chantier.** Apres les points cardinaux (chapitre 358), le
+balayage : 248 occurrences de l'ancien cadrage "huit poles" inventoriees
+hors journal — francais, anglais, arabe, entites HTML comprises — et
+reecrites dans la doctrine des trois poles de coeur a capacites
+integrees. Le journal lui-meme n'est pas reecrit : c'est une archive.
+
+**Ce qui a change.** Le gabarit du pied de page "Nos 8 poles / Nos
+domaines d'activite" sur 142 pages devient "Nos poles de coeur / La
+chaine et ses capacites". Les pages de fond suivent : societe ("Une
+societe unique : trois poles de coeur"), FAQ (question 10 et ses
+JSON-LD reecrits), cibles-2030 (le compteur anime passe de 8 a "3
+poles de coeur"), gouvernance ("arbitre entre les poles de coeur et
+leurs capacites" — l'occurrence se cachait en entites HTML),
+brochures, carnets, carrieres, recherche, plans du site, solutions,
+communiques. L'arabe est aligne : ar-poles s'intitule desormais
+"aqtab al-qalb al-thalatha" (les trois poles de coeur), les "huit
+piliers" du titre deviennent trois, les "colonnes de soutien"
+deviennent des "capacites integrees" (qudrat mudmaja), et la
+navigation en pastilles des cinq pages arabes suit. La fiche presse et
+les boilerplates FR/EN du kit sont reecrits et le ZIP reconstruit ; la
+citation officielle des pages presse aussi ; les deux index de la
+palette Ctrl+K suivent (mots-cles et libelles) et l'index de recherche
+est regenere.
+
+**Les lecons d'instrument.** Deux gisements avaient echappe au premier
+passage et ont ete reveles par la verification au TEXTE RENDU plutot
+qu'au source : un compteur anime portait son "8" dans un attribut
+data-count, et une occurrence vivait en entites HTML (p&ocirc;les).
+Le registre s'enrichit : balayer un cadrage exige trois passes — le
+source, les attributs de donnees, et le texte peint au navigateur.
+
+**Verification.** Zero occurrence residuelle sur source ET rendu
+(echantillon de huit pages representatives au navigateur, arabe
+compris), zero erreur console, zero debordement, JSON-LD des 156
+fichiers modifies revalides.
+
+Service worker : et-202608310800 (deux index de palette modifies).
+Phase 3 (QA de consolidation, communique, registre) au prochain next.
