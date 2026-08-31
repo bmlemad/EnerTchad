@@ -1108,8 +1108,8 @@ html.et-plight .agir-c:not(#e1) i{color:#8A6A12}
 .agir-c:not(#e1):hover b,.agir-c:not(#e1):focus b{text-decoration:underline;text-underline-offset:3px}</style>
 </div></section></main><link rel="stylesheet" href="/assets/chrome/s_ebb65a7337.css"><div id="ckn" role="dialog" aria-label="Avis cookies"><b>Cookies essentiels.</b> Stockage local de vos préférences d’affichage uniquement — pas de suivi, pas de tiers.<div class="ck-row"><a href="/cookies" style="padding:12px 8px;display:inline-block">Politique cookies</a><button type="button" onclick="try{localStorage.setItem('ckok',1)}catch(e){}this.closest('#ckn').classList.remove('show')">J’ai compris</button></div></div><script>(function(){try{if(localStorage.getItem("ckok"))return}catch(e){}var n=document.getElementById("ckn");if(n)setTimeout(function(){n.classList.add("show")},1200)})();</script><nav aria-label="Raccourci vers l’accueil"><a id="homeFab" href="/" aria-label="Retour à l’accueil" title="Accueil"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8M5 10v10h5v-6h4v6h5V10"/></svg></a></nav><link rel="stylesheet" href="/assets/chrome/x_1576951582b2.css"><section id="annuaire" class="reveal" aria-label="Tout le site"><div class="wrap" style="max-width:var(--mw,1200px);margin:0 auto;padding:clamp(30px,4vw,52px) var(--gut,24px)">
 <span class="sec-k">Annuaire · Tout le site</span>
-<h2 style="font-family:var(--fd);font-weight:800;font-size:clamp(1.55rem,2.9vw,2.2rem);letter-spacing:-.02em;margin:12px 0 8px">Accès rapides.</h2>
-<p style="font-size:1rem;line-height:1.6;max-width:62ch;opacity:.8;margin:0">Les quarante portes du site, visibles d’ici — sans ouvrir un menu.</p>
+<details class="annu-t" id="annuT">
+<summary><h2 style="font-family:var(--fd);font-weight:800;font-size:clamp(1.25rem,2.2vw,1.6rem);letter-spacing:-.02em;margin:0">Accès rapides.</h2><span class="annu-sub">40 portes · 5 groupes — déplier</span></summary>
 <div class="annu-g">
 <div class="annu-b" style="--adot:#E8C36A"><b><i aria-hidden="true"></i>La société</b><ul>
 <li><a href="/societe">La Société</a></li>
@@ -1161,7 +1161,8 @@ html.et-plight .agir-c:not(#e1) i{color:#8A6A12}
 <li><a href="/ar" lang="ar">العربية <small>· mini-site arabe</small></a></li>
 <li><a href="/index-en" lang="en">English</a></li>
 </ul></div>
-</div></div></section><section class="hbelieve" aria-label="Notre conviction"><div class="hb-in"><p class="hb-t">Nous croyons que le pétrole du Tchad doit d’abord <em>profiter aux Tchadiens</em> — que la valeur d’une ressource se mesure aux compétences formées, aux emplois créés et aux infrastructures bâties.</p><a class="hb-cta" href="/societe#entre-nos-mains">Découvrir qui nous sommes &#8594;</a></div></section><section id="cta-band" aria-label="Travailler avec EnerTchad"><div class="cb-in"><div><p class="cb-k">◆ Unité · Innovation · Durabilité</p><h2>De la roche-mère à la pompe, <em>bâti au Tchad</em>.</h2></div><div class="cb-a"><a class="cb-btn cb-p" href="/investisseurs">Investir →</a><a class="cb-btn cb-g" href="/contact">Nous contacter</a></div></div></section><!-- FOOTER -->
+</div>
+</details><script>(function(){var d=document.getElementById("annuT");if(!d)return;function o(){if(location.hash==="#annuaire")d.open=true}addEventListener("hashchange",o);o()})();</script></div></section><section class="hbelieve" aria-label="Notre conviction"><div class="hb-in"><p class="hb-t">Nous croyons que le pétrole du Tchad doit d’abord <em>profiter aux Tchadiens</em> — que la valeur d’une ressource se mesure aux compétences formées, aux emplois créés et aux infrastructures bâties.</p><a class="hb-cta" href="/societe#entre-nos-mains">Découvrir qui nous sommes &#8594;</a></div></section><section id="cta-band" aria-label="Travailler avec EnerTchad"><div class="cb-in"><div><p class="cb-k">◆ Unité · Innovation · Durabilité</p><h2>De la roche-mère à la pompe, <em>bâti au Tchad</em>.</h2></div><div class="cb-a"><a class="cb-btn cb-p" href="/investisseurs">Investir →</a><a class="cb-btn cb-g" href="/contact">Nous contacter</a></div></div></section><!-- FOOTER -->
 <footer>
   <div class="wrap"><div class="foot-news"><div class="fn-txt"><p class="fn-k">Ouverture commerciale</p><b class="fn-t">Être prévenu(e) au premier jour.</b><p class="fn-d">Un e-mail à l’ouverture commerciale et aux grands jalons — rien d’autre.</p></div><form class="fn-form" id="fnForm"><input type="email" id="fnMail" required placeholder="votre@adresse.td" autocomplete="email" aria-label="Votre adresse e-mail"><button type="submit">S’inscrire →</button></form><p class="fn-alt">Le bouton ouvre votre messagerie — ou passez par <a href="https://wa.me/23599298696?text=Bonjour%2C%20je%20souhaite%20%C3%AAtre%20pr%C3%A9venu%28e%29%20de%20l%E2%80%99ouverture%20commerciale%20d%E2%80%99EnerTchad." target="_blank" rel="noopener">WhatsApp →</a></p></div>
     
@@ -1439,6 +1440,17 @@ html.et-plight .annu-b:not(#_) a{background:rgba(255,255,255,.72);border-color:r
 .annu-b:not(#_) a:hover,.annu-b:not(#_) a:focus{border-color:var(--adot,#E8C36A);text-decoration:none}
 .annu-b:not(#_) a:hover,.annu-b:not(#_) a:focus{outline-offset:2px}
 .annu-g:not(#_){grid-template-columns:1fr;gap:18px}
-.annu-b:not(#_) b{margin:0 0 8px}</style>
+.annu-b:not(#_) b{margin:0 0 8px}details.annu-t:not(#_){border:1px solid rgba(232,195,106,.4);border-radius:14px;background:rgba(10,18,32,.55);overflow:hidden}
+html.et-plight details.annu-t:not(#_){background:rgba(255,255,255,.72);border-color:rgba(138,106,18,.4)}
+.annu-t:not(#_) summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:16px;flex-wrap:wrap;padding:18px 22px;min-height:48px}
+.annu-t:not(#_) summary::-webkit-details-marker{display:none}
+.annu-t:not(#_) summary h2{margin:0!important}
+.annu-t:not(#_) .annu-sub{font-size:.85rem;opacity:.7}
+.annu-t:not(#_) summary::after{content:"";width:11px;height:11px;border-right:2px solid #E8C36A;border-bottom:2px solid #E8C36A;transform:rotate(45deg);margin-left:auto;transition:transform .25s;flex:none}
+html.et-plight .annu-t:not(#_) summary::after{border-color:#8A6A12}
+details.annu-t[open]:not(#_) summary::after{transform:rotate(-135deg)}
+.annu-t:not(#_) summary:hover h2,.annu-t:not(#_) summary:focus-visible h2{text-decoration:underline;text-underline-offset:4px}
+.annu-t:not(#_) .annu-g{padding:4px 22px 24px;margin:0}
+@media(prefers-reduced-motion:reduce){.annu-t:not(#_) summary::after{transition:none}}</style>
 </body>
 </html>

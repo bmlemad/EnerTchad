@@ -12536,3 +12536,48 @@ sain, axe avait raison, le registre des instruments s'enrichit : un
 grep sur du HTML compte les chaines, pas les noeuds.
 
 Deux accueils modifies, HTML seul : pas de bump du service worker.
+
+## 353 — Les acces rapides en tiroir (2026-08-30)
+
+**L'arbitrage du proprietaire.** Le bouton-tiroir remplace l'affichage
+permanent, pour optimiser l'espace — il supersede l'exigence de
+visibilite du chapitre 343, et la lettre en est consignee. Realisation
+en details/summary natif : pas de JavaScript requis pour ouvrir, le
+clavier fonctionne d'office (Entree bascule), et un ecouteur de trois
+lignes ouvre le tiroir automatiquement quand on arrive par l'ancre
+#annuaire (le rail de traversee y mene). Ferme, le tiroir fait 65
+pixels au lieu des 909 de la version deployee — les quarante portes et
+les cinq groupes sont intacts derriere le bouton "Acces rapides -
+40 portes - 5 groupes". Chevron anime (neutralise sous
+prefers-reduced-motion), verre semi-opaque lisible sur la photo de
+fond. Verifie FR et EN, deux themes, bureau et mobile : bascule,
+clavier, ancre, zero violation axe, zero erreur console.
+
+## 354 — QA de la structure translucide (2026-08-30)
+
+**La commande.** Verifier le verre du site : les surfaces
+semi-transparentes et les flous d'arriere-plan qui signent son
+langage visuel.
+
+**Le banc au pixel peint.** Un harnais a inventorie sur neuf pages
+representatives (accueils deux themes, pole, carnet, arabe, boutique,
+contact, presse, glossaire) tout element visible portant du texte
+direct sur fond semi-transparent (alpha entre 0,05 et 0,9) ou avec
+backdrop-filter, puis a mesure le contraste reel : capture d'ecran de
+l'element, couleur de fond estimee sur les pixels peints (le verre
+compose avec ce qu'il recouvre — seule la mesure au pixel dit vrai),
+contre la couleur de texte calculee. Verdict : 83 elements de verre
+mesures, zero sous 4,5:1.
+
+**Les replis, verifies statiquement.** 324 regles utilisent
+backdrop-filter. Le systeme de repli est en place : un bloc @supports
+not donne des fonds pleins a la navigation, au bandeau cookies, aux
+mega-menus et aux sous-navigations de pole quand le flou n'existe pas ;
+prefers-reduced-transparency est honore dans une douzaine de feuilles.
+Les familles de cartes (hpcard, sc-card, ct-card...) reposent sur
+leurs fonds rgba de base, dont le contraste mesure tient. Note
+d'inventaire : le veil de luminosite et les regles de desactivation
+n'ont pas besoin de fond propre, ils n'en portent pas de texte.
+
+Deux accueils modifies (chapitre 353), HTML seul : pas de bump du
+service worker.
