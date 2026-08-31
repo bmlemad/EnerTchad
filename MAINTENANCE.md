@@ -12943,3 +12943,47 @@ En attente (inchange) : noms de direction, rapport annuel, seance
 photo, INSPEM/ticket minimum. Veilles : Brent janvier 2027, ITIE,
 Sedigui. Conflits de canon restants du ch.356 (Mission Delta, VP
 Artificial Lift) toujours a l'arbitrage du proprietaire.
+
+## 364 — La couche premium etendue a tout le site, le hero s'ouvre
+
+Arbitrage du proprietaire : etendre le langage ultra premium
+translucide de la home aux autres pages. Une couche lux364 est
+ajoutee au bundle commun (bundle_core_a1.css, charge par 206 pages) :
+
+Halo dore statique — le pseudo-element body::after des pages a decor
+rootland (217 pages l'ont) recoit les deux lueurs or, la lueur bleue
+et les etoiles discretes, au-dessus de la photo (z -1 contre -2) et
+sous le contenu. Il fallait ce porteur-la : html::after peint sous la
+photo (invisible, teste au navigateur avant d'ecrire la regle) et
+body::before porte le grain. Eteint en transparence reduite et a
+l'impression.
+
+Ombres feuilletees — les familles generiques de cartes du theme
+sombre (.card, [class*="-card"], .kpi, .hpcard, .esg-card, .sb-card)
+recoivent l'arete speculaire en inset et la retombee profonde de la
+home, au survol comme au repos. Les bordures ne sont pas touchees :
+les couleurs d'identite des poles restent.
+
+Filet d'or du pied de page (degrade transparent-or-transparent,
+decline or profond en clair) et pilule de navigation active doree en
+sombre, comme sur la home.
+
+En cours de chantier, demande directe du proprietaire : rendre le
+hero de la home verre translucide. Le verre du ch.355 etait a 78
+pour cent d'opacite — presque opaque a l'oeil. Nouvelle robe dans
+lux360 : 50/42/38 pour cent, flou 18 px, replis opaques reecrits a la
+meme specificite (supports, transparence reduite, impression). Le
+decor et le halo transparaissent nettement, dans les deux themes.
+
+QA : banc de contraste au pixel sur les textes du hero (chapeau, h1,
+accroche, KPI) — un seul passage sous 4.5:1, le chapeau du theme
+clair a 4.18, corrige en #4A3809 (5.33 apres) ; banc verre sur 9
+pages et 2 themes : 85 elements, zero faible ; sweep complet 218
+pages x 2 themes (console, axe, HTTP, debordements, apostrophes) :
+zero defaut. Hors perimetre, consigne : les pages sans bundle (404,
+mini-site arabe, explorateur, calculateurs) gardent leur habillage
+propre.
+
+Service worker : et-202608311413 (bundle CSS modifie).
+Publication : bundle_core_a1.css, index.html, index-en.html, sw.js,
+journal.
