@@ -12511,3 +12511,28 @@ consolidation, QA-QC, impression, acces rapides) : combles, meme
 adresse, puce service worker a jour.
 
 Deux pages HTML modifiees : pas de bump du service worker.
+
+## 352 — La recherche entre au schema : SearchAction (2026-08-30)
+
+**L'occasion.** Le tour d'hygiene de decouvrabilite etait deja
+conforme : security.txt valide (RFC 9116, expiration 2027, trois
+langues), robots.txt propre avec sitemap declare, FAQPage en place sur
+la FAQ, Article et BreadcrumbList sur les carnets. Une seule piece
+manquait : le schema WebSite des accueils ignorait le moteur de
+recherche livre au chapitre 336.
+
+**L'ajout.** potentialAction SearchAction sur les deux accueils
+(EntryPoint vers /recherche#q={search_term_string}, et l'equivalent
+anglais), le gabarit qui permet aux moteurs d'offrir la recherche
+interne directement dans leurs resultats. Valide : quatre blocs
+JSON-LD par accueil, zero invalide, et le parcours reel confirme que
+le gabarit fonctionne — l'URL avec fragment preremplit le champ et
+lance la recherche (6 resultats sur "raffinage").
+
+**Un faux positif d'instrument, consigne.** Un grep a cru voir deux
+elements main sur les pages recherche et presse ; le second etait la
+chaine "<main>" dans un commentaire CSS herite du gabarit. Le DOM est
+sain, axe avait raison, le registre des instruments s'enrichit : un
+grep sur du HTML compte les chaines, pas les noeuds.
+
+Deux accueils modifies, HTML seul : pas de bump du service worker.
