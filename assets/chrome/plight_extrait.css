@@ -1302,3 +1302,8 @@ footer .foot-pole[href^="/enerconseils"],footer .foot-pole[href^="/pole-enercons
    message d'erreur : rouge sombre lisible sur fond creme (6,3:1). */
 html.et-plight .ct-err:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5):not(#e6),
 html.et-jlight .ct-err:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5):not(#e6){color:#B42318!important}
+
+/* Ch349 : a l'impression, le chrome d'ecran a position fixe (bandeau cookies,
+   rail de traversee, retour accueil, bascule de theme) se repetait sur chaque
+   page imprimee. */
+@media print{#ckn:not(#e1):not(#e2):not(#e3),#aurail:not(#e1):not(#e2):not(#e3),#homeFab:not(#e1):not(#e2):not(#e3),#plightBtn:not(#e1):not(#e2):not(#e3),#jlightBtn:not(#e1):not(#e2):not(#e3),#toTop:not(#e1):not(#e2):not(#e3),#toTop-fix:not(#e1):not(#e2):not(#e3){display:none!important}}
