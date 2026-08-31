@@ -12581,3 +12581,28 @@ n'ont pas besoin de fond propre, ils n'en portent pas de texte.
 
 Deux accueils modifies (chapitre 353), HTML seul : pas de bump du
 service worker.
+
+## 355 — Le hero passe au verre (2026-08-30)
+
+**La demande du proprietaire, capture a l'appui.** Rendre le hero
+translucide sur la home : le bloc opaque de la refonte couvrait la
+photo immersive, dont les annotations depassaient maladroitement sur
+la droite. Le hero rejoint le langage de verre du site.
+
+**La realisation.** Fond du hero en degrade semi-transparent (alpha
+0,6 a 0,78 en sombre, 0,74 a 0,86 en clair) avec backdrop-filter
+blur(14px) saturate(1.05) ; les cellules du bandeau de chiffres
+passent a 55 % d'opacite en sombre et 80 % en clair. Les replis du
+chapitre 354 s'appliquent au nouveau venu : @supports not rend les
+degrades opaques d'origine quand le flou n'existe pas, et
+prefers-reduced-transparency fait de meme.
+
+**Le banc au pixel peint, avant publication.** Premier passage : les
+ors du theme clair souffraient sur le verre (chapeau 2,83:1, chiffres
+3,87:1) — la photo assombrit le fond compose. Corrige par des ors
+plus fonces en clair (5C470B et 6B520D) et un verre clair legerement
+plus opaque. Second passage : tout au-dessus de 5,88:1 en clair et de
+11:1 en sombre, sur les cinq familles de texte du hero. Zero erreur
+console, les deux accueils.
+
+Deux accueils modifies, HTML seul : pas de bump du service worker.
