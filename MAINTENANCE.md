@@ -13337,3 +13337,56 @@ zero debordement.
 
 Aucun actif JS/CSS de assets modifie : pas de bump SW. Publication :
 index.html, index-en.html, contact.html, contact-en.html, journal.
+
+## 378 — Consolidation post-transparence : la preuve que le mouvement ne coute rien
+
+Rythme etabli : apres chaque vague, une consolidation. La vague 376-377
+a introduit une nouveaute structurelle — une animation continue de
+transform sur les photos du hero (et-pano, 70 s) — et generalise la
+translucidite. Deux questions a trancher : le mouvement permanent
+coute-t-il quelque chose sur mobile, et le site est-il reste propre.
+
+Performance de et-pano, mesuree et non supposee. Banc dedie
+(/tmp/a378/pano_perf.js) : profil mobile 390 px, processeur bride x4,
+6 secondes de mesure par configuration, 2 accueils x 2 themes.
+Resultats : animation presente et en cours sur les 4 configurations,
+zero tache longue, CLS pendant l animation 0 (total .0004 au pire,
+anterieur a la mesure), cadence rAF ~10 img/s.
+
+Le controle qui donne son sens a la mesure : la meme page avec
+l animation neutralisee tourne exactement a la meme cadence (10.0
+contre 10.4). La cadence basse est donc le cout propre de la page
+(couches de flou sous throttle x4), pas celui de l animation —
+et-pano vit sur le compositeur, le fil principal ne la voit pas.
+Un premier controle contre contact.html (22 img/s) aurait fait
+conclure a tort que l animation coutait la moitie de la cadence :
+comparer deux pages differentes ne controle rien.
+
+Mon erreur, la meme lecon encore : ma premiere injection de
+neutralisation (.diapo i{animation:none!important} en fin de body)
+n a pas pris — l animation tournait toujours. La regle lux360 porte
+trois :not(#id) ; a importance egale, la specificite gagne meme
+contre une feuille injectee plus tard. Le verificateur running:true
+dans la sonde a evite une fausse conclusion. Correction : selecteur
+a quatre :not(#id). Lecon consolidee : une sonde qui pretend
+neutraliser un style doit verifier que la neutralisation a pris,
+jamais la supposer.
+
+Sweep de consolidation : 218 pages x 2 themes (6 tranches
+paralleles) — zero defaut. Trois pages en timeout de chargement
+pendant le passage parallele (accessibilite, gouvernance,
+journal-prix-litre) : rejouees en serie sur les deux themes, toutes
+propres — contention de charge du banc, pas du site. Les geometries
+de citation pmani-q restent informatives, inchangees.
+
+Registre synchronise : entrees 376, 377, 378 ajoutees au tableau de
+bord, compteurs 375 -> 378, re-bundle et republication.
+
+Rappels proprietaire inchanges : noms de direction et conseil,
+premier rapport annuel, seance photo officielle, convention INSPEM
+et ticket minimum investisseur ; conflits "Mission Delta" et "VP
+Artificial Lift" toujours en attente d arbitrage. Veilles datees :
+carte Brent (janvier 2027), adhesion ITIE, jalons Sedigui.
+
+Aucun fichier du site modifie hors journal : pas de bump SW.
+Publication : MAINTENANCE.md seul.
