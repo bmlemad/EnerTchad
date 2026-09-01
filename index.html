@@ -1590,17 +1590,26 @@ html.et-plight .diapo:not(#e1):not(#e2)::before,html.et-jlight .diapo:not(#e1):n
 
 /* Pilule de navigation active : texte lisible en theme sombre (defaut releve au banc de contraste) */
 html:not(.et-plight):not(.et-jlight) .nav-trigger.is-active:not(#e1):not(#e2):not(#e3){color:#F0CE82!important;-webkit-text-fill-color:#F0CE82!important}
-html.et-plight .nh-k:not(#e1):not(#e2):not(#e3){color:#4A3809}
-/* Ch364 - hero nettement plus translucide (demande du proprietaire) : le decor et le halo transparaissent */
-.nh:not(#e1):not(#e2):not(#e3){background:linear-gradient(175deg,rgba(7,13,24,.50) 0%,rgba(11,22,38,.42) 55%,rgba(16,30,51,.38) 100%)!important;-webkit-backdrop-filter:blur(18px) saturate(1.35);backdrop-filter:blur(18px) saturate(1.35)}
-html.et-plight .nh:not(#e1):not(#e2):not(#e3){background:linear-gradient(175deg,rgba(246,241,228,.66) 0%,rgba(251,247,238,.58) 60%,rgba(255,255,255,.54) 100%)!important}
+/* Ch371 - hero en verre clair, transparent et translucide (demande du proprietaire) : givre blanc leger, flou fort, halo local sous le texte pour tenir le contraste */
+.nh:not(#e1):not(#e2):not(#e3){background:linear-gradient(175deg,rgba(255,255,255,.17) 0%,rgba(255,255,255,.10) 55%,rgba(255,255,255,.13) 100%)!important;-webkit-backdrop-filter:blur(24px) saturate(1.35);backdrop-filter:blur(24px) saturate(1.35)}
+.nh-in:not(#e1):not(#e2):not(#e3){position:relative}
+.nh-in:not(#e1):not(#e2):not(#e3)::before{content:"";position:absolute;inset:-30px -10% auto -10%;height:120%;z-index:0;pointer-events:none;background:radial-gradient(62% 58% at 30% 42%,rgba(7,13,24,.34),transparent 72%)}
+.nh-in:not(#e1):not(#e2):not(#e3) > *{position:relative;z-index:1}
+.nh-h1:not(#e1):not(#e2):not(#e3),.nh-l:not(#e1):not(#e2):not(#e3){text-shadow:0 2px 22px rgba(0,0,0,.5)!important}
+html.et-plight .nh:not(#e1):not(#e2):not(#e3){background:linear-gradient(175deg,rgba(255,255,255,.42) 0%,rgba(255,252,244,.32) 55%,rgba(255,255,255,.38) 100%)!important}
+html.et-plight .nh-in:not(#e1):not(#e2):not(#e3)::before{background:radial-gradient(62% 58% at 30% 42%,rgba(250,247,241,.62),transparent 72%)}
+html.et-plight .nh-h1:not(#e1):not(#e2):not(#e3),html.et-plight .nh-l:not(#e1):not(#e2):not(#e3){text-shadow:0 1px 16px rgba(255,255,255,.65)!important}
+html.et-plight .nh-k:not(#e1):not(#e2):not(#e3){color:#332606}
 @supports not ((-webkit-backdrop-filter:blur(1px)) or (backdrop-filter:blur(1px))){
  .nh:not(#e1):not(#e2):not(#e3){background:linear-gradient(175deg,#070D18 0%,#0B1626 55%,#101E33 100%)!important}
- html.et-plight .nh:not(#e1):not(#e2):not(#e3){background:linear-gradient(175deg,#F6F1E4 0%,#FBF7EE 60%,#FFFFFF 100%)!important}}
+ html.et-plight .nh:not(#e1):not(#e2):not(#e3){background:linear-gradient(175deg,#F6F1E4 0%,#FBF7EE 60%,#FFFFFF 100%)!important}
+ .nh-in:not(#e1):not(#e2):not(#e3)::before{display:none}}
 @media (prefers-reduced-transparency:reduce){
  .nh:not(#e1):not(#e2):not(#e3){-webkit-backdrop-filter:none;backdrop-filter:none;background:linear-gradient(175deg,#070D18 0%,#0B1626 55%,#101E33 100%)!important}
- html.et-plight .nh:not(#e1):not(#e2):not(#e3){background:linear-gradient(175deg,#F6F1E4 0%,#FBF7EE 60%,#FFFFFF 100%)!important}}
-@media print{.nh:not(#e1):not(#e2):not(#e3){-webkit-backdrop-filter:none;backdrop-filter:none;background:#fff!important}}
+ html.et-plight .nh:not(#e1):not(#e2):not(#e3){background:linear-gradient(175deg,#F6F1E4 0%,#FBF7EE 60%,#FFFFFF 100%)!important}
+ .nh-in:not(#e1):not(#e2):not(#e3)::before{display:none}}
+@media print{.nh:not(#e1):not(#e2):not(#e3){-webkit-backdrop-filter:none;backdrop-filter:none;background:#fff!important}.nh-in:not(#e1):not(#e2):not(#e3)::before{display:none}.nh-h1:not(#e1):not(#e2):not(#e3),.nh-l:not(#e1):not(#e2):not(#e3){text-shadow:none!important}}
+
 </style>
 </body>
 </html>

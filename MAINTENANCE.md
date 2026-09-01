@@ -13143,3 +13143,31 @@ republie sur son adresse habituelle.
 
 Aucun actif JS/CSS modifie : pas de bump SW. Publication : le journal
 seul.
+
+## 371 — Le hero passe au verre clair
+
+Demande du proprietaire : hero en verre clair, transparent et
+translucide. La robe sombre du chapitre 364 (teinte marine a 50-38
+pour cent) cede la place a un givre blanc leger : teinte blanche a
+17/10/13 pour cent, flou porte a 24 px, saturation 1.35 — le decor
+transparait nettement, le panneau se lit comme du verre clair et non
+plus comme un voile fonce. En theme clair, blanc-creme a 42/32/38
+pour cent, meme logique.
+
+Le contraste est protege par deux moyens locaux, sans assombrir la
+robe : un halo radial discret sous le bloc de texte (34 pour cent en
+sombre, creme 62 pour cent en clair, via nh-in::before sous les
+enfants du bloc) et une ombre portee douce sur le titre et
+l'accroche. Le chapeau du theme clair est fonce en #332606 pour
+tenir la barre.
+
+Banc de contraste au pixel apres deux iterations (la premiere robe,
+plus timide, laissait le chapeau clair EN a 4.37) : pire valeur 4.94
+en clair, 7.42 en sombre, tout le reste entre 5.2 et 18. Axe : zero
+violation sur FR sombre, FR clair, EN sombre et mobile ; zero erreur
+console ; zero debordement. Replis reecrits a la meme specificite :
+sans backdrop-filter et transparence reduite (opaque, halo retire),
+impression (blanc, sans ombre portee).
+
+Aucun actif JS/CSS modifie : pas de bump SW. Publication :
+index.html, index-en.html, journal.
