@@ -13300,3 +13300,40 @@ version SW mise a jour, republie sur son adresse habituelle.
 
 Aucun actif modifie par ce chapitre : pas de bump SW. Publication :
 le journal seul.
+
+## 376 — La home s'ouvre : translucide, transparente, panoramique
+
+Demande du proprietaire : tout le site translucide, et la home
+translucide transparente avec une immersion panoramique.
+
+Cote home : le decor derive desormais lentement — animation et-pano
+(transform seul, echelle 1.14 et translation de -2,4 a +2,4 pour
+cent, 70 s aller-retour), coupee en mouvement reduit, en transparence
+reduite et a l'impression ; CLS mesure a 0 pendant l'animation. Les
+bandes des maillons s'ouvrent d'un tier de plus (voiles 50/26/5 pour
+cent en sombre, 60/48/34 en clair, replis opaques d'origine en
+transparence reduite) et la bande conviction passe a 42/28/48. Le
+panorama court desormais derriere toute la page, du hero au pied.
+Banc pixel sur les textes des bandes eclaircies : pire contraste
+9.29 (sombre) / 10.68 (clair) — les ombres portees de l'immersion
+font le travail.
+
+## 377 — La translucidite generalisee : le site etait deja pret
+
+Avant d'ecrire une couche de plus, mesure : un scanner de surfaces
+(fond a alpha >= 0.85, au moins 180 x 70 px, theme sombre) passe sur
+12 pages representatives. Verdict : UNE seule surface opaque restait
+sur tout l'echantillon — les cartes profils et le bloc
+contact-rapide de la page contact (alpha 0.88). Les chantiers 142,
+314 et 364 avaient deja fait le reste : le site est translucide de
+bout en bout, il ne manquait que ce recoin. Correctif : alpha 0.55,
+flou 14 px sature, sur contact FR et EN (4 regles), replis
+transparence reduite existants conserves. Re-scan : zero surface
+opaque restante.
+
+QA : banc verre 9 pages x 2 themes, 79 elements, zero faible ; axe
+accueils (2 themes + mobile) zero violation, zero erreur console,
+zero debordement.
+
+Aucun actif JS/CSS de assets modifie : pas de bump SW. Publication :
+index.html, index-en.html, contact.html, contact-en.html, journal.

@@ -1625,6 +1625,18 @@ html.et-plight .nh-k:not(#e1):not(#e2):not(#e3){color:#332606}
  html:not(.et-plight):not(.et-jlight) .nh:not(#e1):not(#e2):not(#e3){background:linear-gradient(175deg,#070D18 0%,#0B1626 55%,#101E33 100%)!important}
 }
 @media print{.diapo i:not(#e1):not(#e2){filter:none!important}}
+/* Ch376 - immersion panoramique : le decor derive lentement et les bandes s'ouvrent encore */
+@keyframes et-pano{from{transform:scale(1.14) translateX(-2.4%)}to{transform:scale(1.14) translateX(2.4%)}}
+.diapo i:not(#e1):not(#e2):not(#e3){animation:et-pano 70s ease-in-out infinite alternate!important;will-change:transform}
+@media (prefers-reduced-motion:reduce){.diapo i:not(#e1):not(#e2):not(#e3){animation:none!important}}
+:is(#coeurs,#appuis) .mln:not(#e1):not(#e2){--mln-g1:rgba(6,11,20,.50);--mln-g2:rgba(7,13,24,.26);--mln-g3:rgba(7,13,24,.05)}
+html.et-plight :is(#coeurs,#appuis) .mln:not(#e1):not(#e2){--mln-g1:rgba(250,247,241,.60);--mln-g2:rgba(250,247,241,.48);--mln-g3:rgba(250,247,241,.34)}
+html:not(.et-plight):not(.et-jlight) .hbelieve:not(#e1):not(#e2):not(#e3){background:linear-gradient(180deg,rgba(8,14,26,.42) 0%,rgba(9,16,29,.28) 46%,rgba(8,14,26,.48) 100%)!important}
+@media (prefers-reduced-transparency:reduce){
+ :is(#coeurs,#appuis) .mln:not(#e1):not(#e2){--mln-g1:rgba(6,11,20,.93);--mln-g2:rgba(7,13,24,.82);--mln-g3:rgba(7,13,24,.40)}
+ html.et-plight :is(#coeurs,#appuis) .mln:not(#e1):not(#e2){--mln-g1:rgba(250,247,241,.94);--mln-g2:rgba(250,247,241,.80);--mln-g3:rgba(250,247,241,.42)}
+ .diapo i:not(#e1):not(#e2):not(#e3){animation:none!important}}
+@media print{.diapo i:not(#e1):not(#e2):not(#e3){animation:none!important}}
 </style>
 </body>
 </html>
