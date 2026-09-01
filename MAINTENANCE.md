@@ -13171,3 +13171,52 @@ impression (blanc, sans ombre portee).
 
 Aucun actif JS/CSS modifie : pas de bump SW. Publication :
 index.html, index-en.html, journal.
+
+## 372 — Ultra revue de la home : deux vrais defauts sous le vernis
+
+Demande du proprietaire : revue exhaustive de la home. Methode :
+lecture visuelle bloc par bloc sur trois rendus (desktop sombre,
+desktop clair, mobile sombre, 16 captures), sonde d'interactions
+(tiroir annuaire, ordre de tabulation sur 14 arrets, anneaux de
+focus, palette Ctrl+K, cartes retournables), metadonnees et JSON-LD,
+verification des acquis (contraste hero ch.371, perf ch.364).
+
+Ce qui tient : hierarchie de lecture nette sur les huit blocs, verre
+clair du hero lisible dans les deux themes, tiroir annuaire qui
+s'ouvre, se referme et s'ouvre par ancre, ordre de tabulation logique
+avec lien d'evitement en tete et zero focus sans anneau, palette
+operationnelle, title 60 caracteres, description 155, quatre blocs
+JSON-LD valides (Organization, WebSite, Dataset, WebPage), zero
+violation axe et zero erreur console sur les quatre configurations,
+mobile propre avec sa barre d'onglets.
+
+Deux vrais defauts, corriges :
+
+Un doctrinal — la carte retournable "4 + 4" du bloc chiffres disait
+encore "4 poles metiers + 4 capacites transversales" sur son recto,
+son verso ET son aria-label, en francais et en anglais ; l'intro du
+bloc coeurs disait de meme "Quatre capacites transversales font
+tenir l'ensemble". Huit occurrences de l'ancien cadrage sur les deux
+accueils, passees au travers des balayages 359 et 361 : mes listes
+bannissaient "Capacite transversale" au singulier majuscule et
+"Cross-cutting capability" — pas leurs pluriels en minuscules. Mea
+culpa, listes de bannissement completees dans la tete. La carte
+devient "3 + 1 — poles de coeur + prolongement", verso "Trois poles
+de coeur (Amont - Intermediaire - Aval) que prolonge la Petrochimie
+— quatre capacites integrees".
+
+Un d'accessibilite — les cartes chiffres se retournaient au survol
+seulement (.hxf:hover) : un utilisateur clavier, malgre tabindex et
+aria-label, ne voyait jamais le verso. Regle focus-visible et
+focus-within ajoutee dans lux360. La sonde a d'abord menti (matrice
+identite lue a t=0, transition en cours) — verite lue apres 1,2 s,
+lecon du chapitre 349 confirmee une fois de plus.
+
+Observation consignee sans correctif (portee site, a arbitrer) : la
+colonne de pied de page "Nos poles" liste les huit portes, poles et
+capacites melees ; un libelle comme "La chaine & capacites" serait
+plus juste — c'est un sweep de ~125 pages, hors perimetre de cette
+revue.
+
+Aucun actif JS/CSS modifie : pas de bump SW. Publication :
+index.html, index-en.html, journal.
