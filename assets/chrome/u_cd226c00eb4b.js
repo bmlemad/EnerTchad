@@ -292,7 +292,7 @@ if(hit){hit.classList.add('nz-on');hit.setAttribute('aria-current','page');}
    pas toutes celle du bandeau d'origine). Il ne fait rien si le bandeau est deja present. */
 try{(function(){
 if(document.getElementById('ckn'))return;
-try{if(localStorage.getItem('ckok'))return}catch(e){}
+try{if(localStorage.getItem('ckok')||localStorage.getItem('et-ck'))return}catch(e){}
 var L=(document.documentElement.lang||'fr').slice(0,2).toLowerCase();
 var T={fr:{t:'Cookies essentiels.',d:'Stockage local de vos préférences d’affichage uniquement — pas de suivi, pas de tiers.',p:'Politique cookies',b:'J’ai compris',u:'/cookies',a:'Avis cookies'},
        en:{t:'Essential cookies.',d:'Local storage of your display preferences only — no tracking, no third parties.',p:'Cookie policy',b:'Got it',u:'/cookies-en',a:'Cookie notice'},
@@ -304,10 +304,10 @@ function boot(){
  n.id='ckn'; n.className='show'; n.setAttribute('role','dialog'); n.setAttribute('aria-label',t.a);
  var S={position:'fixed',left:'0',right:'0',bottom:'0',top:'auto',width:'100%','max-width':'none','z-index':'2147483400',
    display:'flex','align-items':'center',gap:'16px','flex-wrap':'wrap',padding:'10px 22px',
-   background:'#0B1422',color:'rgba(245,247,250,.92)','font-size':'.8rem','line-height':'1.45',
+   background:'#0B1422',color:'rgba(245,247,250,.92)','font-size':'.8rem',
    'border-top':'1px solid rgba(232,195,106,.34)','box-shadow':'0 -8px 30px rgba(0,0,0,.42)',
    'border-radius':'0','font-family':'var(--fs,system-ui,sans-serif)'};
- for(var k in S)n.style.setProperty(k,S[k],'important');
+ for(var k in S)n.style.setProperty(k,S[k],'important');n.style.setProperty('line-height','1.45');
  var b=document.createElement('b'); b.textContent=t.t; b.style.setProperty('color','#F0CE82','important');
  var sp=document.createElement('span'); sp.textContent=' '+t.d;
  var row=document.createElement('div'); row.className='ck-row';
@@ -316,7 +316,7 @@ function boot(){
  a.style.cssText='color:#F0CE82;text-decoration:underline;text-underline-offset:.18em;padding:10px 8px;display:inline-block;min-height:44px;display:inline-flex;align-items:center';
  var btn=document.createElement('button'); btn.type='button'; btn.textContent=t.b;
  btn.style.cssText='min-height:44px;padding:9px 18px;border-radius:999px;border:1px solid rgba(232,195,106,.55);background:rgba(232,195,106,.14);color:#F0CE82;font:600 .8rem/1 var(--fs,system-ui,sans-serif);cursor:pointer';
- btn.addEventListener('click',function(){try{localStorage.setItem('ckok',1)}catch(e){}n.remove();});
+ btn.addEventListener('click',function(){try{localStorage.setItem('ckok',1);localStorage.setItem('et-ck','1')}catch(e){}n.remove();});
  row.appendChild(a); row.appendChild(btn);
  n.appendChild(b); n.appendChild(sp); n.appendChild(row);
  document.body.appendChild(n);
