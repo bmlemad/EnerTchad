@@ -13047,3 +13047,80 @@ Aucun actif JS/CSS modifie : pas de bump SW. Publication : le
 sitemap et le journal. Le sitemap frais est aussi le commit
 declencheur qui suit la lecon du chapitre 355 — un deploiement se
 verifie sur le Last-Modified servi.
+
+## 368 — Audit : la structure multipages face au coeur de metier
+
+Demande du proprietaire : auditer la structure multipages du site et
+son integration au coeur du metier. Sept axes mesures sur les 218
+pages, graphe de liens reconstruit depuis la source.
+
+Arborescence — 218 pages : 64 journaux, 77 racine FR/EN, 8 sous-sites
+(4 poles de la chaine : amont 9, intermediaire 7, aval 9, petrochimie
+9 ; 4 capacites : greentech 9, tchaditech 11, tchaditude 9,
+enerconseils 9), 5 pages arabes.
+
+Integration au coeur de metier — l'architecture epouse la doctrine :
+le menu "Nos activites" est structure en quatre colonnes Amont,
+Intermediaire, Aval, Petrochimie (la chaine, rien qu'elle) ; les
+capacites sont servies par leurs angles — TchadiTech et EnerConseils
+sous Innovation, GreenTech et Tchaditude sous Durabilite — et non
+comme un groupe de poles parallele : conforme a "integrees, pas a
+cote". Les huit hubs sont dans le menu. Chaque hub de pole lie les
+quatre capacites ; chaque hub de capacite lie les quatre maillons de
+la chaine ; la chaine se suit de hub en hub (amont -> intermediaire
+-> aval -> petrochimie -> amont). Les 64 journaux renvoient tous vers
+au moins un pole ou une capacite ; ar-poles renvoie vers les huit
+hubs ; fils d'Ariane et BreadcrumbList sur 72/72 sous-pages ;
+profondeur maximale 3 clics depuis l'accueil (5 pages seulement, des
+journaux EN), aucune orpheline.
+
+Un defaut reel : les hubs Petrochimie FR et EN n'avaient pas la bande
+"Capacites integrees" du chapitre 358 — elle n'avait ete posee que
+sur les trois poles de coeur, alors que le prolongement s'appuie sur
+le meme socle. Correctif : bande ajoutee sur les deux hubs avec des
+angles propres au complexe (effluents et chimie propre, conduite
+numerique des unites, operateurs et chimistes formes, marches engrais
+methanol bitume), pastilles aux couleurs canoniques, gabarit et
+styles repris du chapitre 358. QA des deux pages : axe zero
+violation, zero erreur console, zero debordement, deux themes,
+controle visuel.
+
+Note d'instrument : le BFS de profondeur croyait les deux
+calculateurs orphelins — leurs adresses passent par des rewrites
+Vercel que l'analyse statique ne connait pas ; faux positifs ecartes
+a la main.
+
+Aucun actif JS/CSS modifie : pas de bump SW.
+
+## 369 — Chaque pole porte son offre aux tiers
+
+Arbitrage du proprietaire : chaque pole doit avoir des services et
+solutions proposees aux tiers, sous forme de bande standard sur les
+hubs. Une section "Aux tiers - Services & solutions" (id offre-tiers)
+est posee sur les seize hubs — les quatre poles de la chaine et les
+quatre capacites, FR et EN.
+
+Contenu : trois cartes d'offres par pole, tirees des pages
+existantes du sous-site (aucune offre inventee — chaque carte
+resume la meta description de sa page et pointe vers elle) :
+parapetrolier, EOR et parc pour l'Amont ; logistique, exploitation
+du flux et sites pour l'Intermediaire ; distribution ARSAT, gamme
+produits et reseau pour l'Aval ; molecules, marches et chimie EOR
+pour la Petrochimie ; HSE-Q, hybridation et eau-impact pour
+GreenTech ; outils, socle et R&D pour TchadiTech ; academie, lignes
+capital humain et partenariats pour Tchaditude ; conseil, audits et
+ESG pour EnerConseils. Deux CTA par bande : Devenir client
+(/clients) et Le contact direct (/contact), versions -en cote EN.
+
+Style otr-css auto-porte sur chaque hub : cartes verre feuillete au
+filet d'or, pastille a la couleur canonique du pole, survol calme,
+theme clair, replis sans backdrop-filter, mouvement reduit et
+impression. Insertion avant la bande capacites (hubs de la chaine)
+ou avant la fin du main (hubs de capacites).
+
+QA : 48 verifications de liens de cartes (zero invalide), axe WCAG
+A/AA, console, debordement et hauteur de bande sur les 16 pages et
+les 2 themes : tout vert. Controle visuel hub aval.
+
+Aucun actif JS/CSS de assets modifie : pas de bump SW. Publication
+groupee avec le chapitre 368 des le retour du navigateur.
