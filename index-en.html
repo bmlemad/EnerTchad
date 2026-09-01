@@ -1613,6 +1613,19 @@ html.et-plight .nh-k:not(#e1):not(#e2):not(#e3){color:#332606}
 
 /* Ch372 - flip des cartes chiffres accessible au clavier */
 .hxf:focus-visible .hxf-in:not(#e1),.hxf:focus-within .hxf-in:not(#e1){transform:rotateY(180deg)}
+/* Ch374 - mobile : le verre clair du hero retrouve son decor. En portrait, le recadrage cover tombait sur la zone sombre de la photo et les voiles mangeaient le reste : recadrage vise, photo eclaircie, voile allege, robe du verre montee d'un cran. Valeurs posees a l'ecran, contraste benche. */
+@media (max-width:700px){
+ .diapo i:not(#e1):not(#e2){background-position:62% 38%!important;filter:brightness(1.45) saturate(1.2)!important}
+ html:not(.et-plight):not(.et-jlight) .diapo:not(#e1):not(#e2)::after{background:linear-gradient(180deg,rgba(7,12,21,.28),rgba(7,12,21,.44))!important}
+ html:not(.et-plight):not(.et-jlight) .nh:not(#e1):not(#e2):not(#e3){background:linear-gradient(175deg,rgba(255,255,255,.24) 0%,rgba(255,255,255,.15) 55%,rgba(255,255,255,.19) 100%)!important}
+ html:not(.et-plight):not(.et-jlight) .nh-in:not(#e1):not(#e2):not(#e3)::before{background:radial-gradient(62% 58% at 30% 42%,rgba(7,13,24,.30),transparent 72%)}
+}
+@media (max-width:700px) and (prefers-reduced-transparency:reduce){
+ .diapo i:not(#e1):not(#e2){filter:none!important}
+ html:not(.et-plight):not(.et-jlight) .diapo:not(#e1):not(#e2)::after{background:linear-gradient(180deg,rgba(7,12,21,.68),rgba(7,12,21,.78))!important}
+ html:not(.et-plight):not(.et-jlight) .nh:not(#e1):not(#e2):not(#e3){background:linear-gradient(175deg,#070D18 0%,#0B1626 55%,#101E33 100%)!important}
+}
+@media print{.diapo i:not(#e1):not(#e2){filter:none!important}}
 </style>
 </body>
 </html>

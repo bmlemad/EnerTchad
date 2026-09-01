@@ -13236,3 +13236,48 @@ Tableau de bord registre synchronise : chapitres 371 a 373 ajoutes,
 compteurs mis a jour, republie.
 
 Aucun actif JS/CSS modifie : pas de bump SW.
+
+## 374 — Les versions mobiles remises au niveau du desktop
+
+Demande du proprietaire : mettre a jour les versions mobiles. Audit
+390 px (deux themes, pages temoins : accueils, hub amont, hub
+tchaditude, communiques) puis correctifs.
+
+Le hero mobile retrouve son verre clair — en portrait, le recadrage
+cover de la photo tombait sur sa zone sombre et les voiles mangeaient
+le reste : le panneau restait un aplat marine, sans rapport avec le
+desktop du chapitre 371. Correctif dans lux360, mobile seulement :
+recadrage vise (62/38), photo eclaircie (brightness 1.45, saturation
+1.2), voile allege (.28/.44), robe du verre montee d'un cran
+(blanc 24/15/19). Le decor transparait desormais derriere le titre.
+Replis transparence reduite (photo et voile d'origine, panneau
+opaque) et impression. Banc pixel mobile : pire contraste 5.36
+(clair) / 5.49 (sombre), tout le reste entre 5.4 et 15.5.
+
+Lecon d'instrument au passage : trois essais d'ajustement ont
+"echoue" sans effet visible parce que la feuille injectee par la
+sonde atterrissait dans head, AVANT le bloc lux360 de fin de body —
+a specificite egale, l'ordre gagnait contre moi. Verite retrouvee en
+injectant en fin de body. Consigne : une sonde de surcharge CSS
+s'injecte apres la feuille qu'elle veut battre.
+
+Deux defauts du bandeau cookies de secours (u_cd226c00eb4b.js, 119
+pages) reveles par axe mobile sur communiques : sa cle de
+consentement etait 'ckok' alors que le reste du site lit 'et-ck' —
+un visiteur qui avait ferme le bandeau ailleurs le revoyait sur ces
+pages (et inversement) ; correctif : lecture des deux cles, ecriture
+des deux a la fermeture. Et son line-height etait pose en inline
+!important — violation axe avoid-inline-spacing (WCAG 1.4.12) ;
+correctif : meme valeur, sans !important. Syntaxe verifiee.
+
+Cibles tactiles : les pilules de renvoi des communiques (36 px)
+passent a 44 px (FR et EN). Les autres petites cibles relevees sont
+des liens en ligne dans du texte, couverts par l'exception WCAG.
+
+Zero debordement horizontal sur les quatre pages temoins, bandes
+offre-tiers et capacites propres a 390 px, axe mobile 4 pages x 2
+themes : zero violation apres correctifs.
+
+Un actif JS modifie : service worker bumpe en et-202609012058.
+Publication : index.html, index-en.html, communiques.html,
+communiques-en.html, u_cd226c00eb4b.js, sw.js, journal.
