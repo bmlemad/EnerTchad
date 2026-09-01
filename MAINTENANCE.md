@@ -13124,3 +13124,22 @@ les 2 themes : tout vert. Controle visuel hub aval.
 
 Aucun actif JS/CSS de assets modifie : pas de bump SW. Publication
 groupee avec le chapitre 368 des le retour du navigateur.
+
+## 370 — Consolidation : registre a jour, relances refermees
+
+La publication des chapitres 368-369, interrompue par la deconnexion
+du navigateur, s'est achevee en deux temps : deux lots commis avant
+la coupure (hubs EN + journal, amont), les sept restants au retour de
+Chrome. Parite md5 17/17, verification production complete — les 16
+hubs portent leur bande "Services & solutions aux tiers", les hubs
+petrochimie leur bande capacites, le journal est en ligne. Les
+relances programmees pour la reprise automatique sont soldees (la
+premiere a constate l'absence du navigateur et s'est re-planifiee, la
+seconde s'est refermee d'elle-meme).
+
+Tableau de bord registre synchronise : chapitres 368 a 370 ajoutes,
+compteurs et periode mis a jour (275-370, 1er septembre 2026),
+republie sur son adresse habituelle.
+
+Aucun actif JS/CSS modifie : pas de bump SW. Publication : le journal
+seul.
