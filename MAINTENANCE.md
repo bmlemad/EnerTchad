@@ -13220,3 +13220,19 @@ revue.
 
 Aucun actif JS/CSS modifie : pas de bump SW. Publication :
 index.html, index-en.html, journal.
+
+## 373 — Le pied de page dit "La chaine & capacites"
+
+Arbitrage du proprietaire, sur l'observation du chapitre 372 : la
+colonne du pied de page "Nos poles" listait les huit portes en melant
+poles de la chaine et capacites sous un seul mot. Elle devient
+"La chaine & capacites" (EN : "The chain & capabilities"), alignee
+sur la doctrine et sur la porte "Nos poles de coeur / La chaine et
+ses capacites". Sweep : 125 fichiers (104 FR, 21 EN), zero residu,
+rendu controle au navigateur sur trois pages temoins, zero
+debordement.
+
+Tableau de bord registre synchronise : chapitres 371 a 373 ajoutes,
+compteurs mis a jour, republie.
+
+Aucun actif JS/CSS modifie : pas de bump SW.
