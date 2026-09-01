@@ -13281,3 +13281,22 @@ themes : zero violation apres correctifs.
 Un actif JS modifie : service worker bumpe en et-202609012058.
 Publication : index.html, index-en.html, communiques.html,
 communiques-en.html, u_cd226c00eb4b.js, sw.js, journal.
+
+## 375 — Consolidation post-mobile : tout vert
+
+Apres le chantier mobile et la retouche du bandeau de secours (119
+pages touchees par le JS), balayage complet au harnais du chapitre
+319 : 218 pages, deux themes, console, erreurs de page, HTTP, axe
+WCAG A/AA, debordements, apostrophes — zero defaut. Seules remontees,
+comme toujours : la geometrie informative des citations pmani-q,
+conforme.
+
+Complement mobile hors bundle : pages arabes (ar, ar-poles), 404 et
+explorateur controles en 390 px — zero violation axe, zero erreur
+console, zero debordement.
+
+Tableau de bord registre synchronise : chapitres 374 et 375 ajoutes,
+version SW mise a jour, republie sur son adresse habituelle.
+
+Aucun actif modifie par ce chapitre : pas de bump SW. Publication :
+le journal seul.
