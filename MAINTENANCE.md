@@ -13441,3 +13441,55 @@ defaut.
 
 Publication : plan-du-site-en, recherche-en, sitemap.xml, sw.js,
 journal (racine) + 2 JSON d index (assets/data).
+
+## 380 — Les zones meta auditees : trois pages avaient du HTML casse
+
+Prolongement direct de la lecon du chapitre 379 (les termes bannis se
+cachaient dans les zones meta) : audit systematique des zones meta de
+tout le depot — 223 fichiers HTML, title, meta description, og,
+twitter, canonical, og:url, JSON-LD.
+
+Ce que l audit a ecarte comme non-defauts : les 97 pages ou og
+description differe de la meta description et les 11 ou twitter
+differe d og sont des variantes editoriales voulues (accroches plus
+courtes par canal), pas des incoherences. Les pages sans description
+ni canonical sont les sources d impression de docs-sources, le
+fichier de verification Google et la 404 — exclusions normales.
+JSON-LD : zero erreur de parsing sur tout le depot.
+
+Ce que l audit a trouve de reel : trois pages EN du carnet avec des
+attributs content casses, invisibles a l oeil car le rendu retombe
+sur ses pieds. journal-interview-comptage-en portait des guillemets
+droits bruts dans sa description ("The trade interview" non echappe) :
+le navigateur ferme l attribut au premier guillemet, la description
+servie aux moteurs s arretait a "second episode of" et le reste
+devenait des attributs parasites. Pire, journal-interview-controle-en
+et journal-premiere-du-genre-en trainaient chacun un residu de
+copier-coller COLLE APRES la fermeture correcte de leur attribut —
+le fragment de la description du comptage, gauger compris, soude au
+tag. Six tags repares : guillemets typographiques pour comptage
+(l episode 3 les avait deja), residus supprimes pour les deux autres.
+
+Detection outillee, verification au DOM : le detecteur cherche tout
+tag meta dont le contenu apres la fermeture de content n est ni une
+fin de tag ni un attribut legal — re-scan zero apres correction ; et
+au navigateur, les trois descriptions se parsent pleines, zero
+attribut parasite sur les tags. Controle bonus : zero description
+dupliquee entre pages sur tout le site (la contamination croisee du
+chapitre 379 etait la derniere).
+
+Suites logiques : l entree d index de comptage-en (qui portait
+fidelement la description tronquee) resynchronisee, les trois pages
+datees du jour au sitemap, bump SW et-202609020247 (JSON d index
+cache-d abord). QA 3 pages x 2 themes zero defaut. Registre
+synchronise 379-380.
+
+Lecon d instrument : un balayage qui lit les attributs avec une
+regex ne voit pas un attribut casse — il lit jusqu au guillemet et
+trouve un contenu plausible. C est la COMPARAISON avec une autre
+source (l index, la page FR) qui a revele la troncature au 379, et
+le detecteur de forme du tag qui a revele la casse au 380. Verifier
+la forme, pas seulement le contenu.
+
+Publication : 3 pages carnet EN, sitemap.xml, sw.js, journal
+(racine) + recherche-en.json (assets/data).
