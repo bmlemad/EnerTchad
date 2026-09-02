@@ -13817,3 +13817,31 @@ captures des deux themes relues.
 
 Aucun actif de assets modifie : pas de bump SW. Publication :
 index.html, index-en.html, journal.
+
+## 389 — Consolidation post-vagues 385-388
+
+Rythme etabli : apres la sequence doublons / impression / acces
+rapides / reorganisation de la home, une consolidation.
+
+QA cible des dix pages touchees par les vagues 385-388 — les deux
+accueils (bande-chaine, retrait du tiroir, etiquettes du rail), les
+deux explorateurs (H1 differencies), la 404 et les cinq pages arabes
+(regle d impression inline) — sur les deux themes : console, erreurs
+de page, HTTP, axe, debordements, zero defaut. Le dernier sweep
+complet (ch.384) reste valable pour le reste du site : les seules
+modifications intermediaires hors de ces dix pages sont les regles
+@media print du bundle, sans effet a l ecran, deja controlees par
+la QA de non-regression du chapitre 386.
+
+Sitemap remis a l heure git : 5 lastmod regeneres (la plupart des
+pages touchees etaient deja datees du jour par les rafraichissements
+precedents), XML revalide.
+
+Registre synchronise : entrees 387, 388, 389 ajoutees au tableau de
+bord, compteurs a 389.
+
+Veilles actives inchangees : resultat de la prochaine validation
+ITIE, annonce datee sur Sedigui, carte Brent (janvier 2027).
+
+Aucun actif de assets modifie : pas de bump SW. Publication :
+sitemap.xml et journal.
