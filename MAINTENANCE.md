@@ -13390,3 +13390,54 @@ carte Brent (janvier 2027), adhesion ITIE, jalons Sedigui.
 
 Aucun fichier du site modifie hors journal : pas de bump SW.
 Publication : MAINTENANCE.md seul.
+
+## 379 — Les instruments de decouverte remis a l heure
+
+Constat de depart : l index de recherche datait des chapitres 361-363
+et les lastmod du sitemap du chapitre 367 ; depuis, quatorze chapitres
+ont modifie le contenu (offre aux tiers sur 16 hubs, pied de page
+renomme sur 125 pages, carte 3+1, verre, mobile). Les instruments qui
+font decouvrir le site ne connaissaient plus le site.
+
+Audit de l index (106 entrees FR, 104 EN) contre les pages reelles :
+titres tous conformes (suffixe | EnerTchad normalise), mais trois
+familles d ecarts. Un, les 16 hubs indexes ignoraient totalement
+l offre aux tiers — une recherche "propose aux tiers" ne trouvait
+rien. Deux, deux descriptions FR tronquees en plein mot depuis leur
+generation (journal-premiere-du-genre coupait avant "licorne",
+journal-transfert-garde avant "la mesure"). Trois, et la vraie prise :
+la comparaison index-page a revele un residu doctrinal SUR LE SITE
+lui-meme — plan-du-site-en.html portait encore "group pages" dans ses
+quatre descriptions (meta, og, twitter, JSON-LD), et recherche-en.html
+avait herite par copier-coller de la meme description fautive dans son
+twitter:description, avec en prime un og:description tronque ("Find a
+page across more than one hundred."). Le balayage 361 avait couvert le
+texte visible et la nav, pas les zones meta. Lecon : les balayages de
+termes bannis doivent inclure title, meta description, og, twitter et
+JSON-LD — pas seulement le rendu.
+
+Corrections : "group pages" -> "company pages" et "their capabilities"
+-> "their built-in capabilities" (canon doctrinal) sur les 4 zones de
+plan-du-site-en ; recherche-en recoit ses propres og et twitter
+descriptions, alignees sur sa meta. Index : descriptions resynchronisees
+sur les pages (4 entrees), et les titres de cartes de l offre aux tiers
+ajoutes aux mots-cles des 16 entrees de hubs.
+
+Sitemap : 117 lastmod regeneres depuis git (les vagues 368-377 avaient
+change 125+ pages), les deux calculateurs a reecriture Vercel resolus
+vers leurs vrais fichiers, et les deux pages corrigees ce jour datees
+du jour ; XML revalide, 217/217 URLs couvertes.
+
+Le JSON de l index est servi cache-d abord par le service worker
+(stale-while-revalidate) : bump et-202609020011 pour purger, comme
+au chapitre 361.
+
+Verification fonctionnelle, pas seulement structurelle : sur la page
+de recherche locale, "propose aux tiers" retourne les 8 hubs FR,
+"offers third parties" les 8 hubs EN, "licorne" trouve enfin le carnet
+premiere-du-genre, "company pages" trouve le plan du site — zero
+erreur console. QA des 4 pages recherche et plan (2 themes) : zero
+defaut.
+
+Publication : plan-du-site-en, recherche-en, sitemap.xml, sw.js,
+journal (racine) + 2 JSON d index (assets/data).
