@@ -13628,3 +13628,23 @@ au filet fin, pas seulement menus et pieds de page.
 QA post-correction : accueils x 2 themes et echantillon des pages
 corrigees — zero defaut. Publication : 146 pages + journal, en lots
 par repertoire. Registre synchronise 382-383.
+
+## 384 — Consolidation post-vague doctrinale
+
+Rythme etabli : apres la vague 382-383 (hero transparent sur les
+accueils, 146 pages corrigees du residu "du groupe"), une
+consolidation.
+
+Sweep complet : 218 pages x 2 themes en six tranches paralleles —
+console, erreurs de page, HTTP, axe, debordements : zero defaut,
+zero timeout cette fois (les trois timeouts du chapitre 378 etaient
+bien de la contention de banc). Seules remontees : les geometries
+de citation pmani-q, informatives et inchangees.
+
+Sitemap remis a l heure git : 144 lastmod regeneres (la vague 383 a
+touche presque toutes les pages du site), les deux calculateurs a
+reecriture Vercel resolus comme au chapitre 379, XML revalide,
+217/217 URLs couvertes.
+
+Aucun actif JS/CSS de assets modifie : pas de bump SW (reste
+et-202609020247). Publication : sitemap.xml et journal.
