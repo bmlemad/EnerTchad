@@ -13648,3 +13648,47 @@ reecriture Vercel resolus comme au chapitre 379, XML revalide,
 
 Aucun actif JS/CSS de assets modifie : pas de bump SW (reste
 et-202609020247). Publication : sitemap.xml et journal.
+
+## 385 — Audit des doublons : le site est propre, les flux ne l etaient pas
+
+Commande du proprietaire : audit des doublons. Huit familles passees
+au crible sur les 223 fichiers HTML et les donnees.
+
+Ce qui est net, mesure : zero fichier identique (md5), zero titre
+duplique, zero meta description dupliquee, zero canonical ou og:url
+en collision, zero id duplique a l interieur d une page, zero URL en
+double au sitemap, zero doublon d entree dans les deux index de
+recherche, zero asset identique en double.
+
+La vraie prise — les flux RSS : chaque communique de cp-001 a
+cp-006 figurait DEUX FOIS dans feed.xml et feed-en.xml, une fois
+sous son ancien titre nu, une fois sous le titre a reference
+"(CP-2026-00X)" — meme guid, deux items. Un guid duplique fait
+boucler ou fusionner les lecteurs RSS. Origine : la reconstruction
+du flux (ch.288/363) a ajoute les items au nouveau format sans
+retirer les anciens. Correction : les 6 anciens items retires de
+chaque flux (42 items FR, 41 EN, guids desormais uniques), XML
+revalide, lastBuildDate a l heure.
+
+Deuxieme correction, mineure : la home et l explorateur de chaine
+partageaient le meme H1 "De la roche-mere a la pompe." — les H1 des
+explorateurs deviennent "Explorer la chaine, de la roche-mere a la
+pompe." (EN : "Explore the chain, from source rock to the pump."),
+chaque page porte a nouveau un H1 propre.
+
+Le balayage des paragraphes copies-colles entre pages (589 blocs
+de 140+ caracteres partages) n a revele que du voulu : composants
+templates (aide de la palette, bande offre aux tiers), pages
+d agregation (brochure, solutions) qui reprennent leurs sources par
+construction, et boilerplate presse cache (p#bp-en) present en
+double langue a dessein. Un seul suspect leve puis blanchi : le
+paragraphe anglais dans carnets.html est le boilerplate presse
+cache, pas une fuite de langue. Doublon assume et conserve : le H1
+"Exploration & Production" partage entre la page FR et sa jumelle
+EN — le terme est identique dans les deux langues, chaque page a
+son canonical et son hreflang.
+
+QA des explorateurs corriges x 2 themes : zero defaut. Aucun actif
+JS/CSS modifie : pas de bump SW. Publication : feed.xml,
+feed-en.xml, explorateur-chaine FR/EN, sitemap.xml (explorateurs
+dates du jour), journal.
