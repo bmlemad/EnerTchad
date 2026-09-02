@@ -13845,3 +13845,46 @@ ITIE, annonce datee sur Sedigui, carte Brent (janvier 2027).
 
 Aucun actif de assets modifie : pas de bump SW. Publication :
 sitemap.xml et journal.
+
+## 390 — La chimie du brut sous l Amont, la petrochimie sous l Aval
+
+Directive du proprietaire : mettre la chimie petroliere sous l Amont
+et la petrochimie sous l Aval. Deux arbitrages pris avant execution :
+rattachement EDITORIAL (les URLs ne bougent pas, zero lien casse,
+reversible) plutot que restructuration physique ; et la formule
+canon "trois maillons que prolonge la Petrochimie" devient "la
+Petrochimie prolonge l Aval", la bande-chaine du hero gardant sa
+pastille Petrochimie accrochee a l Aval.
+
+Le mega-menu, sur les 142 pages porteuses (71 FR + 71 EN) :
+l entree "Chimie au service du brut" (ASP, intrants EOR) quitte le
+groupe Petrochimie et rejoint la colonne Amont, a cote de la
+recuperation assistee qu elle sert ; le groupe Petrochimie, deja
+range sous l Aval dans la colonne, porte desormais son rattachement
+en toutes lettres : "Petrochimie — prolongement de l Aval"
+(EN : "Petrochemicals — extending Downstream"). Verification au DOM
+sur trois pages : entree presente cote Amont, intitules corrects
+dans les deux langues.
+
+La home, FR et EN : le chapo du hero, la bande-chaine ("prolonge
+par la" avant la pastille Petrochimie ; l anglais "extended by"
+disait deja la bonne chose), l intro de la section coeurs et son
+aria-label, le kicker du maillon petrochimie ("Prolongement de
+l Aval" / "Extending Downstream"), la carte 3+1 (face et dos), et
+la nav du maillon Amont qui gagne le lien "Chimie au service du
+brut".
+
+Les pages vivantes porteuses de la formule : societe, faq (4
+occurrences), presse (boilerplate — au passage, une double virgule
+corrigee), cibles-2030, le hub petrochimie ("prolonge l Aval") et
+pole-enerchimie-en — 14 occurrences reecrites FR/EN. Re-scan : zero
+residu de l ancienne formule hors communiques dates. Les communiques
+publies (CP-2026-010 notamment) restent en l etat : ce sont des
+documents dates, on ne reecrit pas l histoire ; le canon actuel
+vit sur les pages vivantes.
+
+Index de recherche verifie : il ne portait pas la formule. QA :
+accueils, plan du site, explorateurs x 2 themes zero defaut.
+Aucun actif de assets modifie : pas de bump SW.
+
+Publication : 142 pages + journal, en lots par repertoire.
