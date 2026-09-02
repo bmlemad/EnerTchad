@@ -13737,3 +13737,39 @@ et-202609021034. Registre synchronise 384-386.
 
 Publication : bundle_core_a1.css (assets/chrome) + accueils, 404,
 5 pages arabes, 2 explorateurs, sw.js, journal (racine).
+
+## 387 — Les acces rapides quittent la home, le rail retrouve ses etiquettes
+
+Demande du proprietaire : trouver la meilleure place pour le bloc
+acces rapides de la home. Quatre destinations proposees a l arbitrage
+(plan du site — recommandee —, page recherche, page 404, suppression)
+— decision proprietaire : SUPPRIMER, sans replacement. Le mega-menu,
+la palette de recherche et le plan du site couvrent deja l acces.
+
+Retrait complet et propre, sur les deux accueils : la section
+annuaire (tiroir de 40 portes, 3,5 Ko de HTML), son script
+d ouverture par ancre, ses 29 regles CSS dediees dans ch326-vitrine
+et ses 2 regles dans lux360, plus ses references dans les listes de
+selecteurs partagees du verre feuillete (membres avec et sans
+prefixe de theme — la premiere passe ne voyait pas les membres
+prefixes html.et-plight, rattrapee par l assertion zero-residu).
+Bilan : -6,7 Ko par accueil, accolades verifiees equilibrees,
+zero occurrence residuelle d annu dans les deux pages.
+
+La prise inattendue : en retirant la pastille #annuaire du rail de
+traversee (aurail), decouverte que LES SEPT pastilles du rail
+portaient la meme etiquette "Manifeste — Le Tchad inverse le flux"
+depuis la refonte du chapitre 346 : chaque point du rail, au survol,
+annoncait le manifeste quel que soit sa cible. Vingt chapitres de
+QA passes a cote — le scrollspy fonctionnait, les ancres etaient
+bonnes, seuls les libelles etaient dupliques, et aucun banc ne
+lisait le texte des info-bulles du rail. Corrige : chaque pastille
+porte desormais l etiquette de sa section (Manifeste, Poles de
+coeur, Capacites, Chiffres, Carnets, Agir — EN : Manifesto, Core
+poles, Capabilities, Key figures, Stories, Act).
+
+QA accueils x 2 themes zero defaut, captures des deux themes
+relues : pas de trou a l emplacement du tiroir, le pied de page
+suit naturellement les trois portes d Agir. Aucun actif JS/CSS de
+assets modifie : pas de bump SW. Publication : index.html,
+index-en.html, journal.
