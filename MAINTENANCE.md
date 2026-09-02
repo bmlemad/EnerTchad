@@ -13927,3 +13927,34 @@ quatre cartes en ligne, nettes sur la photo.
 
 Aucun actif de assets modifie : pas de bump SW. Publication :
 index.html, index-en.html, journal.
+
+## 392 — Consolidation post-vagues doctrinales
+
+Rythme etabli : apres le rattachement chimie/petrochimie (142 pages
+de menus, ch.390) et la rangee compacte des appuis (ch.391), une
+consolidation complete.
+
+Sweep : 218 pages x 2 themes en six tranches paralleles — console,
+erreurs de page, HTTP, axe, debordements : zero defaut. Seules
+remontees, les geometries de citation informatives, inchangees.
+
+Sitemap deja a l heure : les vagues 390-391 ont ete commises le
+meme jour UTC que le precedent rafraichissement, zero lastmod a
+regenerer — verifie, pas suppose.
+
+Registre synchronise : entrees 390, 391, 392 au tableau de bord,
+compteurs a 392.
+
+Lecon d instrument consignee (observee au ch.391) : le marqueur
+negatif "mln-set absent de la page" a produit douze fausses alertes
+de verification production, car ce conteneur reste legitimement
+dans la section des maillons de coeur — seule la section des appuis
+en etait debarrassee. Regle ajoutee au rituel : un marqueur negatif
+de production se scope a la ZONE CHANGEE (extraire la section, y
+chercher le residu), jamais a la page entiere.
+
+Veilles actives inchangees : resultat de la prochaine validation
+ITIE, annonce datee sur Sedigui, carte Brent (janvier 2027).
+
+Aucun actif de assets modifie : pas de bump SW. Publication :
+journal seul.
