@@ -13888,3 +13888,42 @@ accueils, plan du site, explorateurs x 2 themes zero defaut.
 Aucun actif de assets modifie : pas de bump SW.
 
 Publication : 142 pages + journal, en lots par repertoire.
+
+## 391 — Les appuis passent en rangee compacte
+
+Question du proprietaire : est-il necessaire de faire apparaitre
+les poles supports sur la home ? Reponse mesuree : la section
+appuis pesait 1359 px sur une page de 8900 (15 pour cent du
+defilement), en quatre bandes immersives au meme rang visuel que
+les maillons de coeur — ce que la doctrine dement ("les capacites
+vivent A L INTERIEUR des poles, et non a cote"). Mais le hero
+promet "quatre appuis", la carte 3+1 les compte, et les
+differenciateurs (TchadiValeur, academie, conseil) comptent pour
+les investisseurs. Recommandation : necessaires oui, sous cette
+forme non. Arbitrage proprietaire : rangee compacte.
+
+Applique sur les deux accueils : les quatre bandes deviennent une
+rangee de quatre cartes de verre sobres — pastille de couleur
+canon, kicker (GreenTech durabilite, TchadiTech technologies,
+Tchaditude capital humain, EnerConseils conseil), titre, une ligne,
+fleche — chacune menant a son hub. La tete de section (titre
+"Quatre capacites, integrees aux poles de coeur" et son intro)
+reste. Bilan mesure : section 1359 -> 693 px, page 8900 -> 8234.
+
+Deux corrections en cours de route, revelees par la mesure et la
+capture. Un, la premiere grille s empilait en colonne de 246 px :
+mes cartes avaient ete inserees DANS l ancien conteneur mln-set,
+dont la mise en page contraignait la largeur — le diagnostic au
+DOM (gridTemplateColumns reduit a une seule piste) a pointe le
+parent, le conteneur entier a ete remplace. Deux, les kickers du
+theme clair heritaient des couleurs de pole (#96A2EC sur creme
+~2.4 de contraste) — encre foncee dediee posee pour le clair, la
+pastille gardant la couleur du pole.
+
+Verre, replis supports/transparence reduite, et regle d impression
+poses avec la rangee. QA accueils x 2 themes zero defaut, axe zero
+violation (2 themes + mobile), captures des deux themes relues :
+quatre cartes en ligne, nettes sur la photo.
+
+Aucun actif de assets modifie : pas de bump SW. Publication :
+index.html, index-en.html, journal.
