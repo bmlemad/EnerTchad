@@ -2083,3 +2083,12 @@ html.et-plight footer:not(#e1):not(#e2)::before,html.et-jlight footer:not(#e1):n
 html:not(.et-plight):not(.et-jlight) .nav-trigger.is-active:not(#e1):not(#e2){color:#F0CE82!important;-webkit-text-fill-color:#F0CE82!important}
 @media (prefers-reduced-transparency:reduce){html:not(.et-plight):not(.et-jlight):has(.rootland) body:not(#e1)::after{background:none!important}}
 @media print{html:not(.et-plight):not(.et-jlight):has(.rootland) body:not(#e1)::after{background:none!important}footer:not(#e1):not(#e2)::before{display:none}}
+
+/* Ch386 - impression : fond de page blanc, la toile photo fixe ne s imprime pas */
+@media print{
+ html:not(#e1):not(#e2):not(#e3),html:not(#e1):not(#e2):not(#e3) body{background:#fff!important;color-scheme:light!important}
+ .rootland:not(#e1):not(#e2):not(#e3){display:none!important;background:none!important}
+ body:not(#e1):not(#e2)::before,body:not(#e1):not(#e2)::after{display:none!important}
+ header.jtop:not(#e1):not(#e2):not(#e3){background:#fff!important;border-bottom:1px solid #ccc}
+ header.jtop:not(#e1):not(#e2):not(#e3) a{color:#111!important;text-shadow:none!important}
+}
