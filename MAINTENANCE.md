@@ -13773,3 +13773,47 @@ relues : pas de trou a l emplacement du tiroir, le pied de page
 suit naturellement les trois portes d Agir. Aucun actif JS/CSS de
 assets modifie : pas de bump SW. Publication : index.html,
 index-en.html, journal.
+
+## 388 — La home reorganisee autour du coeur de metier
+
+Commande du proprietaire : reorganiser la home autour d Amont,
+Intermediaire et Aval. La section coeurs portait deja la chaine en
+quatre maillons immersifs ; l arbitrage proprietaire a retenu le
+"fil complet" parmi trois ampleurs proposees : faire de la chaine
+la colonne vertebrale de TOUTE la page, pas d une seule section.
+
+Quatre gestes, sur les deux accueils.
+
+Un, la bande-chaine du hero : sous les deux CTA, une rangee de
+pastilles cliquables — Amont -> Intermediaire -> Aval, "que
+prolonge la" Petrochimie — chacune avec son point de couleur canon,
+menant a son hub. La chaine est desormais visible et actionnable
+des le premier ecran. Premier placement APRES les KPI : la capture
+l a montree noyee sous le bandeau cookies — remontee entre CTA et
+KPI. Verre leger coherent avec la couche lux360, replis supports,
+transparence reduite et impression.
+
+Deux, les KPI du hero reordonnes : "3 poles de coeur" passe en
+tete, avant la production, la valeur locale et le capital — la
+premiere donnee lue est la structure de la chaine.
+
+Trois, les carnets etiquetes : chaque carte porte une pastille de
+position dans la chaine (Toute la chaine, TchadiTech, Intermediaire
+— EN : The whole chain, TchadiTech, Midstream), sur la couleur
+qu elle portait deja.
+
+Quatre, les portes d Agir reliees a la chaine par un kicker :
+Investir "financer les trois maillons", Devenir client "acheter a
+l aval, contracter les services", Nous rejoindre "faire tourner la
+chaine" (EN en miroir).
+
+Lisibilite prouvee au banc pixel dedie (pastilles de la bande sur
+capture peinte, 2 accueils x 2 themes) : premiere passe du theme
+clair a 4.61 — juste au-dessus du seuil mais sans marge ; fond des
+pastilles claires monte de .62 a .74 : pire cas final 4.82 clair,
+19.9 sombre. Banc mobile hero re-passe : pire 7.25. QA accueils
+x 2 themes zero defaut, axe zero violation (2 themes + mobile),
+captures des deux themes relues.
+
+Aucun actif de assets modifie : pas de bump SW. Publication :
+index.html, index-en.html, journal.
