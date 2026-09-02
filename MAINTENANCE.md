@@ -13493,3 +13493,50 @@ la forme, pas seulement le contenu.
 
 Publication : 3 pages carnet EN, sitemap.xml, sw.js, journal
 (racine) + recherche-en.json (assets/data).
+
+## 381 — Solde des actions en attente : veilles executees, conflits arbitres
+
+Le proprietaire a demande d appliquer toutes les actions en attente.
+Trois familles etaient ouvertes : les veilles datees, les deux
+conflits de canon du chapitre 356, et les rappels bloques sur des
+faits proprietaire.
+
+Veille ITIE, executee ce jour sur sources primaires. Le statut public
+du Tchad reste celui que le site enonce : validation d octobre 2022,
+score global 64,5/100 (transparence 72,5, engagement des parties
+prenantes 60, resultats et impact 61), mesures correctives attendues
+en 2026 — la presse de decembre 2025 precisait une echeance d avril
+2026 pour leur mise en oeuvre et un plan de travail 2026 du comite
+national. Aucun resultat de nouvelle validation publie a ce jour sur
+eiti.org : la page gouvernance est exacte, rien a changer. La veille
+se rearme sur la publication du resultat de la prochaine validation.
+
+Veille Sedigui, executee ce jour. Des signaux existent dans la presse
+tchadienne — le DG de la SHT constatant des travaux a 85 pour cent,
+un complexe petrolier et gazier en construction, mais aussi des
+articles d Etat relevant retards et manquements et des ingenieurs du
+Kanem denoncant des deversements — mais aucun des articles n a pu
+etre date de maniere verifiable (l article des 85 pour cent repond
+404 au fetch, les autres sont sans date lisible). Regle du site :
+pas de chiffre sans date verifiable. Le carnet gaz-sedigui reste en
+l etat ; la veille se rearme sur une annonce datee (mise en service,
+production, calendrier officiel).
+
+Conflits du chapitre 356, arbitres par le proprietaire ce jour :
+"Mission Delta" — CLOS, non adopte ; "VP Artificial Lift" — CLOS,
+non adopte. Ni le programme ni le poste n entrent au canon : aucune
+source du site ne les porte, l audit externe qui les citait a ete
+refute preuves en main (ch.356), et la gouvernance du site est par
+roles. Reouvrables si le proprietaire fournit des faits.
+
+Rappels parques (decision proprietaire) : les elements suivants
+attendent des faits que seul le proprietaire detient et ne seront
+plus repetes a chaque rapport — noms de la direction et du conseil,
+premier rapport annuel, seance photo officielle, convention INSPEM
+et ticket minimum investisseur. Ils seront traites des que les
+elements arriveront. Restent actives les deux veilles ci-dessus et
+la carte des scenarios Brent (a rafraichir en janvier 2027).
+
+Aucune page du site modifiee : les conflits clos n existaient sur
+aucune page, les veilles n ont pas declenche. Publication : journal
+seul. Registre synchronise (entree 381).
