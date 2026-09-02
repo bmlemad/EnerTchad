@@ -13692,3 +13692,48 @@ QA des explorateurs corriges x 2 themes : zero defaut. Aucun actif
 JS/CSS modifie : pas de bump SW. Publication : feed.xml,
 feed-en.xml, explorateur-chaine FR/EN, sitemap.xml (explorateurs
 dates du jour), journal.
+
+## 386 — Le rendu d impression repare apres les vagues verre
+
+Le dernier controle d impression datait du chapitre 349 — douze
+vagues de design avant. Echantillon de huit pages imprimees en PDF
+A4 (accueils FR/EN, contact, gouvernance, hub amont, carnet
+gaz-sedigui, investisseurs, cibles-2030), rasterisees et mesurees a
+l encre (ratio de pixels sombres) puis relues a l oeil.
+
+Trois defauts reels, tous invisibles a l ecran.
+
+Un, le cadre noir. Les PDF des accueils et du hub amont sortaient
+encadres de noir sur toutes leurs pages (ratio d encre .25 la ou une
+page propre fait .02) : la toile de la page — html #121D33 en ligne
+sur les accueils, toile photo .rootland ailleurs — peint le canevas
+du PDF jusque dans les marges. Le diagnostic a demande trois sondes :
+les grandes surfaces sombres n existaient pas dans le DOM en media
+print (le contenu, lui, etait bien repasse en blanc), c est le fond
+de canevas qui imprimait sombre. Correction : bloc @media print qui
+force html et body en blanc (color-scheme light), masque .rootland
+et les pseudo-elements de body — pose dans le bundle commun (206
+pages) ET en ligne sur les accueils et les 8 pages hors bundle,
+en selecteurs a trois :not(#id) car les regles de theme montent a
+(2,1,1) important. Premiere pose a un seul :not perdue au combat de
+specificite — releve par la re-mesure, pas par relecture du CSS.
+
+Deux, la barre des carnets. header.jtop imprimait sa robe sombre en
+tete de chaque carnet (64 pages concernees via le bundle) : imprimee
+blanche, encre noire, filet discret.
+
+Trois, les cartes flip de la home imprimaient leur DOS EN MIROIR
+par-dessus la face (backface-visibility ignore par le rendu PDF) —
+le texte OHADA sortait inverse. Dos masques et faces remises a plat
+en print sur les deux accueils.
+
+Apres correction, re-mesure des huit pages : plus aucun cadre
+sombre, pire ratio d encre .11 (le carnet, photo comprise), accueils
+de .25 a .04 ; relecture visuelle des pages reparees propre, texte
+du flip lisible a l endroit. QA ecran de non-regression (accueils
+x 2 themes, page 1, explorateurs) : zero defaut — toutes les regles
+sont cantonnees a @media print. Bundle CSS modifie : bump SW
+et-202609021034. Registre synchronise 384-386.
+
+Publication : bundle_core_a1.css (assets/chrome) + accueils, 404,
+5 pages arabes, 2 explorateurs, sw.js, journal (racine).
