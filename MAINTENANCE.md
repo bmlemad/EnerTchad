@@ -13578,3 +13578,53 @@ lux360 verifiees equilibrees apres chaque passe.
 
 Aucun actif JS/CSS de assets modifie : pas de bump SW. Publication :
 index.html, index-en.html, journal.
+
+## 383 — QA et ultra review de la home face aux majors
+
+Commande du proprietaire apres le hero transparent : re-benchmark
+mesure contre les vitrines des majors et ultra review de la home.
+
+Benchmark, mesure au fil (meme methode qu au chapitre 366, 7 majors
+sondees ce jour) : EnerTchad sert sa home en 420 ms — la plus rapide
+du panel (Eni 503, Shell 589, Exxon 654, Total 665, Chevron 1860,
+ADNOC 1981 ; Aramco refuse le sondage). Seul site du panel avec flux
+RSS declare, mode sombre, et 4 blocs JSON-LD (Organization, WebSite,
+Dataset, WebPage) ; 6 en-tetes de securite sur 6 (seul ADNOC fait
+jeu egal) ; manifest PWA (comme Shell et Chevron seulement) ;
+50 Ko compresses sur le fil. Performance telephone bride (reseau
+1.6 Mbit, CPU x4) : premier rendu 4.3 a 6.1 s, CLS 0.002, ~950 Ko
+tout compris — le poste photos reste le plus lourd, assume.
+
+Hygiene de la home, tout vert : 103 liens internes valides, og-image
+en 200, title 60 caracteres, description 155, JSON-LD parse sans
+erreur, axe zero violation (2 themes + mobile), console zero,
+accolades lux360 equilibrees, revue visuelle par captures aux trois
+profondeurs de defilement sans anomalie.
+
+La vraie prise de l ultra review — un residu doctrinal massif,
+invisible depuis 22 chapitres : la carte vitrine TchadiTech du
+mega-menu Innovation disait encore "Le socle numerique &
+technologique du groupe" (EN : "The group's digital & technology
+foundation") — sur 71 pages FR et 71 pages EN, dans chaque copie de
+la nav. Le balayage 361 avait renomme les libelles du menu, pas le
+texte de cette carte. En tirant le fil : neuf autres occurrences de
+"du groupe / the group's" designant la societe dans le corps meme
+des pages — poumon financier du groupe (aval/distribution x2 FR et
+EN), referentiel HSE-Q (amont/parc), demarche HSE (aval/reseau),
+gestion des eaux (aval/raffinage), chaine d achats (glossaire),
+pole a part entiere (carnet former-avant-extraire), these bitume
+(carnet mini-raffinerie). Total corrige : 160 occurrences sur 146
+fichiers, FR "de la societe", EN "the company's". Les usages
+legitimes conserves : "societe unique, pas un groupe" (doctrine),
+"groupe electrogene", "groupes" de liens, groupes d accordeons.
+Re-scan avec filtre des usages legitimes : zero suspect. Index de
+recherche verifie : il ne portait pas le residu.
+
+Lecon (la meme famille qu aux chapitres 379-380) : un balayage de
+renommage qui traite les libelles de nav rate les cartes vitrines
+de cette meme nav ; et le texte courant merite son propre passage
+au filet fin, pas seulement menus et pieds de page.
+
+QA post-correction : accueils x 2 themes et echantillon des pages
+corrigees — zero defaut. Publication : 146 pages + journal, en lots
+par repertoire. Registre synchronise 382-383.
