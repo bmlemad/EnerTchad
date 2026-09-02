@@ -1528,7 +1528,7 @@ html.et-plight .annu-t:not(#e1):not(#e2):not(#e3),html.et-jlight .annu-t:not(#e1
  -webkit-backdrop-filter:blur(16px) saturate(1.15);backdrop-filter:blur(16px) saturate(1.15);
  border:1px solid rgba(138,106,18,.30)!important;
  box-shadow:inset 0 1px 0 rgba(255,255,255,.85), 0 20px 44px -24px rgba(18,29,49,.28)!important}
-html.et-plight .nh-kpi:not(#e1):not(#e2):not(#e3),html.et-jlight .nh-kpi:not(#e1):not(#e2):not(#e3){background:rgba(138,106,18,.20);border-color:rgba(138,106,18,.26)}
+html.et-plight .nh-kpi:not(#e1):not(#e2):not(#e3),html.et-jlight .nh-kpi:not(#e1):not(#e2):not(#e3){background:rgba(255,251,240,.58);border-color:rgba(138,106,18,.30)}
 html.et-plight .agir-c:not(#e1):not(#e2):not(#e3):hover,html.et-jlight .agir-c:not(#e1):not(#e2):not(#e3):hover,
 html.et-plight .hncard:not(#e1):not(#e2):not(#e3):hover,html.et-jlight .hncard:not(#e1):not(#e2):not(#e3):hover,
 html.et-plight .hcp-i:not(#e1):not(#e2):not(#e3):hover,html.et-jlight .hcp-i:not(#e1):not(#e2):not(#e3):hover{
@@ -1591,19 +1591,19 @@ html.et-plight .diapo:not(#e1):not(#e2)::before,html.et-jlight .diapo:not(#e1):n
 /* Pilule de navigation active : texte lisible en theme sombre (defaut releve au banc de contraste) */
 html:not(.et-plight):not(.et-jlight) .nav-trigger.is-active:not(#e1):not(#e2):not(#e3){color:#F0CE82!important;-webkit-text-fill-color:#F0CE82!important}
 /* Ch371 - hero en verre clair, transparent et translucide (demande du proprietaire) : givre blanc leger, flou fort, halo local sous le texte pour tenir le contraste */
-.nh:not(#e1):not(#e2):not(#e3){background:linear-gradient(175deg,rgba(255,255,255,.17) 0%,rgba(255,255,255,.10) 55%,rgba(255,255,255,.13) 100%)!important;-webkit-backdrop-filter:blur(24px) saturate(1.35);backdrop-filter:blur(24px) saturate(1.35)}
+.nh:not(#e1):not(#e2):not(#e3){background:transparent!important;-webkit-backdrop-filter:none;backdrop-filter:none}
 .nh-in:not(#e1):not(#e2):not(#e3){position:relative}
-.nh-in:not(#e1):not(#e2):not(#e3)::before{content:"";position:absolute;inset:-30px -10% auto -10%;height:120%;z-index:0;pointer-events:none;background:radial-gradient(62% 58% at 30% 42%,rgba(7,13,24,.34),transparent 72%)}
+.nh-in:not(#e1):not(#e2):not(#e3)::before{content:"";position:absolute;inset:-30px -10% auto -10%;height:120%;z-index:0;pointer-events:none;background:radial-gradient(62% 58% at 30% 42%,rgba(7,13,24,.44),transparent 74%)}
 .nh-in:not(#e1):not(#e2):not(#e3) > *{position:relative;z-index:1}
 .nh-h1:not(#e1):not(#e2):not(#e3),.nh-l:not(#e1):not(#e2):not(#e3){text-shadow:0 2px 22px rgba(0,0,0,.5)!important}
-html.et-plight .nh:not(#e1):not(#e2):not(#e3){background:linear-gradient(175deg,rgba(255,255,255,.42) 0%,rgba(255,252,244,.32) 55%,rgba(255,255,255,.38) 100%)!important}
-html.et-plight .nh-in:not(#e1):not(#e2):not(#e3)::before{background:radial-gradient(62% 58% at 30% 42%,rgba(250,247,241,.62),transparent 72%)}
-html.et-plight .nh-h1:not(#e1):not(#e2):not(#e3),html.et-plight .nh-l:not(#e1):not(#e2):not(#e3){text-shadow:0 1px 16px rgba(255,255,255,.65)!important}
+html.et-plight .nh:not(#e1):not(#e2):not(#e3){background:transparent!important}
+html.et-plight .nh-in:not(#e1):not(#e2):not(#e3)::before{background:radial-gradient(70% 66% at 32% 44%,rgba(250,247,241,.88),rgba(250,247,241,.42) 62%,transparent 80%)}
+html.et-plight .nh-h1:not(#e1):not(#e2):not(#e3),html.et-plight .nh-l:not(#e1):not(#e2):not(#e3),html.et-plight .nh-k:not(#e1):not(#e2):not(#e3){text-shadow:0 0 6px rgba(255,255,255,.9),0 1px 18px rgba(255,255,255,.8)!important}
 html.et-plight .nh-k:not(#e1):not(#e2):not(#e3){color:#332606}
 @supports not ((-webkit-backdrop-filter:blur(1px)) or (backdrop-filter:blur(1px))){
- .nh:not(#e1):not(#e2):not(#e3){background:linear-gradient(175deg,#070D18 0%,#0B1626 55%,#101E33 100%)!important}
- html.et-plight .nh:not(#e1):not(#e2):not(#e3){background:linear-gradient(175deg,#F6F1E4 0%,#FBF7EE 60%,#FFFFFF 100%)!important}
- .nh-in:not(#e1):not(#e2):not(#e3)::before{display:none}}
+ .nh:not(#e1):not(#e2):not(#e3){background:transparent!important}
+ html.et-plight .nh:not(#e1):not(#e2):not(#e3){background:transparent!important}
+ }
 @media (prefers-reduced-transparency:reduce){
  .nh:not(#e1):not(#e2):not(#e3){-webkit-backdrop-filter:none;backdrop-filter:none;background:linear-gradient(175deg,#070D18 0%,#0B1626 55%,#101E33 100%)!important}
  html.et-plight .nh:not(#e1):not(#e2):not(#e3){background:linear-gradient(175deg,#F6F1E4 0%,#FBF7EE 60%,#FFFFFF 100%)!important}
@@ -1616,8 +1616,8 @@ html.et-plight .nh-k:not(#e1):not(#e2):not(#e3){color:#332606}
 @media (max-width:700px){
  .diapo i:not(#e1):not(#e2){background-position:62% 38%!important;filter:brightness(1.45) saturate(1.2)!important}
  html:not(.et-plight):not(.et-jlight) .diapo:not(#e1):not(#e2)::after{background:linear-gradient(180deg,rgba(7,12,21,.28),rgba(7,12,21,.44))!important}
- html:not(.et-plight):not(.et-jlight) .nh:not(#e1):not(#e2):not(#e3){background:linear-gradient(175deg,rgba(255,255,255,.24) 0%,rgba(255,255,255,.15) 55%,rgba(255,255,255,.19) 100%)!important}
- html:not(.et-plight):not(.et-jlight) .nh-in:not(#e1):not(#e2):not(#e3)::before{background:radial-gradient(62% 58% at 30% 42%,rgba(7,13,24,.30),transparent 72%)}
+ html:not(.et-plight):not(.et-jlight) .nh:not(#e1):not(#e2):not(#e3){background:transparent!important}
+ html:not(.et-plight):not(.et-jlight) .nh-in:not(#e1):not(#e2):not(#e3)::before{background:radial-gradient(62% 58% at 30% 42%,rgba(7,13,24,.42),transparent 74%)}
 }
 @media (max-width:700px) and (prefers-reduced-transparency:reduce){
  .diapo i:not(#e1):not(#e2){filter:none!important}
@@ -1637,6 +1637,16 @@ html:not(.et-plight):not(.et-jlight) .hbelieve:not(#e1):not(#e2):not(#e3){backgr
  html.et-plight :is(#coeurs,#appuis) .mln:not(#e1):not(#e2){--mln-g1:rgba(250,247,241,.94);--mln-g2:rgba(250,247,241,.80);--mln-g3:rgba(250,247,241,.42)}
  .diapo i:not(#e1):not(#e2):not(#e3){animation:none!important}}
 @media print{.diapo i:not(#e1):not(#e2):not(#e3){animation:none!important}}
+
+/* Ch382 - hero transparent : le voile du fond s ouvre sur desktop pour montrer la photo */
+@media (min-width:701px){
+ html:not(.et-plight):not(.et-jlight) .diapo:not(#e1):not(#e2)::after{background:linear-gradient(180deg,rgba(7,12,21,.30),rgba(7,12,21,.46))!important}
+ html.et-plight .diapo:not(#e1):not(#e2)::after{background:linear-gradient(180deg,rgba(7,12,21,.34),rgba(7,12,21,.48) 80%,#FBF8F2 100%)!important}
+}
+@media (min-width:701px) and (prefers-reduced-transparency:reduce){
+ html:not(.et-plight):not(.et-jlight) .diapo:not(#e1):not(#e2)::after{background:linear-gradient(180deg,rgba(7,12,21,.68),rgba(7,12,21,.78))!important}
+ html.et-plight .diapo:not(#e1):not(#e2)::after{background:linear-gradient(180deg,rgba(7,12,21,.58),rgba(7,12,21,.72) 80%,#FBF8F2 100%)!important}
+}
 </style>
 </body>
 </html>

@@ -13540,3 +13540,41 @@ la carte des scenarios Brent (a rafraichir en janvier 2027).
 Aucune page du site modifiee : les conflits clos n existaient sur
 aucune page, les veilles n ont pas declenche. Publication : journal
 seul. Registre synchronise (entree 381).
+
+## 382 — Le hero devient transparent : la photo prend l arriere-plan
+
+Demande du proprietaire : rendre le hero de la home transparent pour
+laisser la photo s afficher en arriere-plan. Le hero portait depuis
+le chapitre 371 une robe de givre blanc (17/10/13 pour cent, flou
+24 px) : joli verre, mais un filtre entre le visiteur et la photo.
+
+Applique sur index et index-en, dans la couche lux360. Un, la robe
+tombe : fond transparent, plus aucun flou d arriere-plan sur le
+panneau du hero (desktop, mobile, theme clair, et meme le repli
+supports-not qui posait un fond opaque devenu inutile — la
+transparence n a besoin d aucun support navigateur ; son masquage
+de scrim est retire aussi). Deux, la lisibilite se reporte sur les
+protections locales, renforcees : scrim radial sombre .34 -> .44,
+scrim clair passe a un degrade a trois arrets (.88 au coeur, .42 a
+62 pour cent), ombres portees du theme clair etendues au kicker,
+pastilles KPI claires posees sur un blanc creme .58 au lieu du
+dore .20. Trois, le voile du fond s ouvre sur desktop pour que la
+photo se voie vraiment : lineaire sombre .58-.70 -> .30-.46, clair
+.58-.72 -> .34-.48, avec re-imposition des voiles lourds sous
+prefers-reduced-transparency a meme specificite, posee apres dans
+la cascade (le mobile garde ses valeurs du chapitre 374).
+
+Iteration guidee par le banc pixel, pas au jugement : la premiere
+passe laissait le theme clair a 2.58 sur le kicker — insuffisant.
+Apres renforcement des protections locales : pire cas sombre 8.18,
+clair 6.89, mobile 6.90 — tous au-dessus de 4.5 sur les cinq
+familles de texte du hero, sur les deux accueils. Captures des deux
+themes controlees a l oeil : la photo (chevalet de pompage, lignes,
+collines) est nettement visible dans les deux, le texte net.
+
+QA : accueils x 2 themes zero defaut, axe zero violation (2 themes
++ mobile), zero erreur console, zero debordement. Accolades de
+lux360 verifiees equilibrees apres chaque passe.
+
+Aucun actif JS/CSS de assets modifie : pas de bump SW. Publication :
+index.html, index-en.html, journal.
