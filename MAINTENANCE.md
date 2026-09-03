@@ -14366,3 +14366,40 @@ ancres ne referencaient aucune des bandes supprimees. Pas de bump
 SW (HTML inline seul).
 
 Publication : index.html, index-en.html + journal.
+
+## 401 — 2026-09-03 : Solde des actions en attente
+
+Directive du proprietaire : "apply pending actions". Passage des
+veilles actives sur sources primaires et mise a jour des
+instruments de suivi.
+
+Un, veille ITIE : la page pays eiti.org affiche toujours
+64,5/100, date du 12 octobre 2022 — aucun nouveau resultat de
+validation publie. Element neuf releve au passage : un "Chad 2023
+EITI Report" reference au 30 decembre 2025 — c est une
+publication de rapport, pas un resultat de validation ; aucune
+retombee sur les formulations du site ("ITIE visee" reste exact).
+La veille reste armee sur le prochain resultat de validation.
+
+Deux, veille Sedigui : la presse accessible ne fournit toujours
+aucune annonce datable — les articles les plus documentes restent
+ceux deja examines (octobre 2020). La regle "pas de chiffre sans
+date verifiable" maintient le silence editorial du site sur les
+delais Sedigui.
+
+Trois, carte Brent : echeance janvier 2027 — rien a faire ce
+mois-ci, rearmee.
+
+Quatre, sitemap : controle des lastmod contre git — zero ecart,
+les vagues 399 et 400 ne touchaient que les accueils, deja dates
+du 3 septembre depuis la vague chrome.
+
+Cinq, registre proprietaire : entrees 399 a 401, compteurs a 401,
+republie sur le meme artefact.
+
+Les rappels parques (noms de direction, rapport annuel, seance
+photo, convention INSPEM, Mission Delta, VP Artificial Lift)
+restent parques — aucun fait proprietaire nouveau.
+
+Aucune page HTML modifiee. Publication : journal seul. Pas de
+bump SW.
