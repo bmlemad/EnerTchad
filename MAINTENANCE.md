@@ -13958,3 +13958,39 @@ ITIE, annonce datee sur Sedigui, carte Brent (janvier 2027).
 
 Aucun actif de assets modifie : pas de bump SW. Publication :
 journal seul.
+
+## 393 — Inspection visuelle et QA : rien a corriger, tout a expliquer
+
+Commande du proprietaire apres les vagues structurelles 388-391 :
+inspection visuelle et QA.
+
+Depistage geometrique automatique, 20 pages representatives x 2
+themes : images cassees (zero), texte ecrase (zero), elements
+depassant le viewport. Le detecteur a remonte 18 signalements de
+depassement — TOUS expliques apres instruction au DOM : les <i>
+recurrents a droite sont des ornements rognes par construction ;
+les .psn-link de tchaditech et le "Souscrire" d investisseurs
+vivent dans des conteneurs overflow:auto — des rails defilants
+voulus, pas des coupures (le scrollWidth des pages reste net, le
+sweep du chapitre 392 en fait foi). Un signalement n est pas un
+defaut tant que le DOM n a pas parle.
+
+Revue a l oeil, par captures. Le mega-menu "Nos activites" OUVERT,
+les deux themes — premiere inspection visuelle depuis le
+re-parentage du chapitre 390 : la colonne Amont porte bien ses cinq
+entrees dont "Chimie au service du brut", le groupe "Petrochimie —
+prolongement de l Aval" s affiche proprement sous l Aval (l intitule
+passe sur trois lignes en tete de groupe — assume, c est le prix de
+l explicite). Les accueils mobiles a 390 px : le chapo recadre, la
+bande-chaine qui replie ses pastilles sans deborder (scrollWidth
+380), la tete de section des appuis nette, les 4 cartes compactes
+presentes. Rien a corriger.
+
+QA de synthese : le sweep complet 218 x 2 du chapitre 392 (zero
+defaut) couvre console, HTTP, axe et debordements de page ; les
+bancs pixel des chapitres 388 et 391 couvrent les contrastes des
+nouveaux composants (pire cas 4.82) ; l impression a ete requalifiee
+au chapitre 386. L etat visuel du site est conforme au canon :
+chaine en scene, capacites integrees en rangee, menu re-parente.
+
+Aucune page modifiee. Publication : journal seul.
