@@ -14403,3 +14403,71 @@ restent parques — aucun fait proprietaire nouveau.
 
 Aucune page HTML modifiee. Publication : journal seul. Pas de
 bump SW.
+
+## 402 — 2026-09-03 : Le site restructure autour des trois poles de coeur
+
+Directive du proprietaire : restructurer tout le site sur les
+trois poles de coeur de metier, les poles supports, annexes et
+connexes integres au coeur. Trois arbitrages : "Nos activites
+unique", relogement d Engagements et Communautes au panneau
+Societe, URLs conservees (meme principe qu au ch.390 : zero lien
+casse, zero redirection a maintenir).
+
+### Ce qui change
+
+Le menu de tete passe de cinq entrees a trois : Societe - Nos
+activites - Investisseurs. Les panneaux Innovation (TchadiTech,
+EnerConseils) et Durabilite (GreenTech, Tchaditude, cadre et
+territoires) sont supprimes : les capacites ne vivent plus a cote
+du coeur de metier mais dedans.
+
+Le panneau Nos activites devient la carte unique du metier :
+colonne Amont (avec la chimie au service du brut), colonne
+Intermediaire, colonne Aval avec le groupe "Petrochimie —
+prolongement de l Aval", et, en tete de la troisieme colonne, un
+encadre "Integrees aux poles" portant les quatre capacites
+(GreenTech, TchadiTech, Tchaditude, EnerConseils) au-dessus de la
+carte Transversal des solutions. Les sous-pages des capacites
+restent servies par leurs hubs, le footer et le plan du site — le
+panneau reste digeste (24 liens).
+
+Engagements et Communautes — des pages d entreprise, pas de pole
+— rejoignent la colonne Structure du panneau Societe, avec leurs
+libelles d origine.
+
+Etat actif : les 42 pages capacites (FR, EN, et les quatre hubs
+EN pole-*) marquent desormais le declencheur Nos activites comme
+section courante ; les huit hubs marquent en plus leur propre
+lien dans l encadre.
+
+### Les pieges attrapes par la mesure
+
+Un, l alignement des panneaux : la regle nth-last-child(-n+3) qui
+alignait les panneaux de droite devenait fausse avec trois
+entrees (le panneau Societe aurait bascule a droite, hors ecran).
+Alignements poses en dur : Societe et Nos activites a gauche,
+Investisseurs ancre a droite avec un debord de -14 px — mesure de
+1241 a 1680 px, le panneau tient partout (pire cas x=4 px, contre
+-10 px avec l ancrage brut).
+
+Deux, la hauteur du panneau : ma premiere pose ajoutait les
+capacites en bandeau pleine largeur SOUS les colonnes — la
+capture a montre le panneau depassant l ecran a 900 px de haut,
+l encadre invisible sans defilement. Deplace en tete de la
+troisieme colonne (pile au-dessus de la carte solutions), ou il
+se voit sans defiler ; et garde-fou pose sur les trois panneaux :
+max-height 100vh-150px avec defilement interne — ce qui corrige
+au passage un debordement preexistant sur les ecrans bas.
+
+### QA
+
+142 navs replies sur une famille par langue (etat actif et
+bascule de langue neutralises) ; zero lien casse dans les menus ;
+zero residu des panneaux supprimes ; panneaux ouverts au survol
+et captures FR et EN (encadre visible sans defilement) ; menu
+mobile : les trois entrees presentes ; axe sur les accueils x 2
+themes + mobile : zero violation. Pas de bump SW (HTML inline
+seul — nav_a.css et nav_a.js intacts).
+
+Publication : 142 pages + journal, en lots. Le registre et les
+lastmod du sitemap suivront a la prochaine consolidation.
