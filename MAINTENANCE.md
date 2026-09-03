@@ -14315,3 +14315,54 @@ les deux accueils x 2 themes + mobile : zero violation, zero
 debordement. Pas de bump SW (HTML inline seul).
 
 Publication : index.html, index-en.html + journal.
+
+## 400 — 2026-09-03 : Les tuiles absorbent les bandeaux sans fonction
+
+Directive du proprietaire : "revoir les tuiles pour permettre
+eliminer les bandeaux non necessaire sur la home". Deux
+arbitrages : perimetre "ponts + conviction", absorption "deux
+tuiles flip".
+
+### Le constat
+
+Les deux bandeaux-ponts ("Batir le premier integre petrolier
+100 % tchadien", "Decarboner la chaine, baril apres baril") ne
+contenaient aucun lien : des en-tetes orphelins qui
+n introduisaient plus rien — environ 520 px de defilement a vide.
+La bande conviction (639 px) portait un seul lien vers Societe et
+doublait le message de la fin de section Chiffres (meme famille
+de message, meme destination). Le cta-band final, lui, est
+fonctionnel et reste.
+
+### L application
+
+Supprimes des deux accueils : les deux ponts et la bande
+conviction. Absorbes : la grille Chiffres gagne deux tuiles flip
+de la meme famille — "100 %" (tchadien - these d investissement ;
+au dos, la these en une phrase) et "E-S-G" (chaque baril, moins
+d empreinte ; au dos, le socle de confiance). La grille passe de
+4 tuiles sur 5 colonnes (une cellule vide depuis toujours,
+signalee au ch.394) a 6 tuiles sur 3 colonnes — un 3x2 equilibre,
+sans queue de grille. La phrase de la conviction ("le petrole du
+Tchad doit d abord profiter aux Tchadiens") est reprise en une
+ligne sous le titre du cta-band, ou elle donne du sens au geste
+final au lieu d occuper une bande entiere.
+
+Nettoyage au passage : le bloc hb-glass (verre de la bande
+conviction) retire, ainsi que mes regles conviction du bloc
+band399 poses au chapitre precedent ; quelques regles hbelieve
+plus anciennes restent dans des blocs partages — inertes, sans
+element porteur, notees ici.
+
+### QA
+
+Les deux accueils x 2 themes : ponts a zero, conviction absente,
+6 tuiles sur 3 colonnes, ligne du cta-band presente, aucun
+debordement. Hauteur de page : 8 228 -> 7 232 px cote FR
+(-12 %), 7 036 px cote EN. Captures : grille 3x2 propre, cta-band
+avec sa ligne de conviction sur photo. Axe : zero violation sur
+les deux accueils, deux themes et mobile. Le rail lateral et ses
+ancres ne referencaient aucune des bandes supprimees. Pas de bump
+SW (HTML inline seul).
+
+Publication : index.html, index-en.html + journal.
