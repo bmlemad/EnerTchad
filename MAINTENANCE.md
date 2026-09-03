@@ -14489,3 +14489,42 @@ Trois, le registre proprietaire : entrees 402 et 403, compteurs a
 
 Aucune page HTML modifiee. Publication : sitemap.xml + journal.
 Pas de bump SW.
+
+## 404 — 2026-09-03 : QA de coherence apres la restructuration — zero residu
+
+Chapitre auto-choisi : verifier que la disparition des familles
+de menu Innovation et Durabilite (ch.402) n a laisse aucune
+reference orpheline dans le reste du site et de ses instruments.
+
+Un, les formulations de renvoi : balayage des 218 pages sur les
+tournures "menu / rubrique / onglet / section Innovation ou
+Durabilite" (FR et EN) — zero occurrence. Personne sur le site ne
+renvoyait le lecteur vers les menus supprimes.
+
+Deux, les instruments de decouverte : les index de recherche
+(recherche-fr/en.json) ne portent aucune etiquette de famille
+heritee ; la palette de commandes (cmdk) groupe par categories
+THEMATIQUES (Durabilite, Technologie, Conseil, Talents) qui
+decrivent les capacites elles-memes, pas les menus disparus —
+legitimes, conservees ; les index plein-texte (ftx) ne citent
+Innovation et Sustainability que comme titres de pages
+existantes.
+
+Trois, le footer : la colonne "La chaine & capacites" modelait
+deja l architecture cible — Amont, Intermediaire, Aval,
+Petrochimie, puis les quatre capacites par leur theme (Durabilite,
+Technologies, Capital humain, Conseil). Aucune retouche.
+
+Quatre, les pages transversales /innovation et /engagements : des
+pages a kicker propre ("Avantage - Operateur ne numerique",
+"Cadre - Avant le premier baril"), pas des tetes de famille de
+menu — coherentes telles quelles.
+
+Cinq, l integrite technique du nouveau nav : sur les 142 pages,
+les aria-controls des declencheurs correspondent exactement aux
+ids de panneaux presents (nxm-1, nxm-2, nxm-5) — zero renvoi vers
+les panneaux supprimes.
+
+Bilan : la restructuration etait etanche — zero residu, zero
+correctif. Aucune page modifiee. Publication : journal seul. Pas
+de bump SW.
