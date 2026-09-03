@@ -14216,3 +14216,29 @@ panneau ; barre mobile EN verifiee en viewport 390 px ("Invest",
 
 Publication : 195 fichiers (133 racine en 9 lots + 8 lots de
 sous-repertoires) + journal. Pas de bump SW (HTML inline seul).
+
+## 398 — 2026-09-03 : Consolidation apres la vague chrome
+
+Consolidation apres les 195 fichiers du chapitre 397.
+
+Un, le sweep complet : 218 pages x 2 themes au harnais, zero
+defaut — seules ressortent les entrees informatives habituelles
+des blocs citation. La vague chrome n a rien casse.
+
+Deux, le sitemap : 182 lastmod remis a l heure git (les pages de
+la vague 397 qui n etaient pas deja datees du 3 septembre par la
+vague 395).
+
+Trois, le registre proprietaire : entrees 397 et 398, compteurs a
+398, republie sur le meme artefact.
+
+Note d instrument, reprise du chapitre 397 : le marqueur de
+production qui a echoue etait le mien — je testais la bascule
+arabe sur une page journal, famille qui n a jamais porte ce
+chrome (en-tete de lecture minimal voulu, sans nav nx). Un
+marqueur de verification doit viser la famille de gabarit qui
+porte l element, pas une page prise au hasard. Re-verifie sur
+trois pages des bonnes familles : tout etait en ligne.
+
+Aucune page HTML modifiee. Publication : sitemap.xml + journal.
+Pas de bump SW.
