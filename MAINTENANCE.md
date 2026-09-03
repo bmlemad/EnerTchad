@@ -14139,3 +14139,80 @@ meme artefact.
 
 Aucune page HTML modifiee. Publication : sitemap.xml + journal.
 Pas de bump SW.
+
+## 397 — 2026-09-03 : Ultra review du footer, du header et du mega menu
+
+Directive du proprietaire : "Ultra review du footer, header et le
+mega menu". Revue systematique du chrome partage sur les 218 pages
+publiques : empreintes de gabarits normalisees (etat actif et lien
+de bascule de langue neutralises), inventaire des liens, controle
+des libelles, QA dynamique. Resultat : le mega menu est sain, mais
+le footer et les barres laterales du header avaient derive en
+plusieurs familles — 195 fichiers harmonises.
+
+### Ce qui etait sain
+
+Le mega menu : une seule famille FR et une seule famille EN apres
+normalisation, doctrine en place (chimie-eor dans la colonne
+Amont, en-tete "Petrochimie — prolongement de l Aval"), aucun lien
+casse. Zero lien casse non plus dans les footers et les barres
+mobiles — verification exhaustive des cibles, reecritures Vercel
+comprises. Liens sociaux uniformes sur 214 pages. Lien d evitement
+present sur 217 pages sur 218 (manque uniquement le Configurateur,
+page outil autonome). aria-labels de navigation exacts 71 FR /
+71 EN.
+
+### Les derives corrigees
+
+Un, le lien Achats du footer : 41 pages FR ne l avaient pas
+(journaux, pages legales, presse, plan du site...) alors que les
+101 autres pages a footer complet l affichaient — ajoute apres
+"Clients & solutions", a l identique du gabarit majoritaire. Cote
+EN une seule page le manquait : l explorateur, dont le footer
+minimal est voulu (comme son jumeau FR — exclus tous deux).
+
+Deux, le lien arabe du header : 30 pages FR n offraient pas la
+bascule vers le mini-site /ar que les 40 autres pages FR et les
+71 pages EN affichent — ajoutee partout ; les navs FR et EN se
+replient desormais chacun sur une famille unique.
+
+Trois, la marque du footer : 62 pages FR et 63 EN pointaient vers
+#top quand les autres pointaient vers l accueil — harmonise vers
+l accueil (/ et /index-en), la convention qu attend l utilisateur
+en cliquant un logo.
+
+Quatre, les libelles du footer EN, deux vocabulaires en
+circulation : "Online store" contre le nom que la page se donne
+("Online shop", 82 corrections), "Media & field notes" contre
+"Media & journal" (21), "Releases" contre "Press releases" (21),
+"Confidentiality" contre "Privacy" (21), "2030 Targets" contre la
+casse du menu "2030 targets" (31). Arbitrage par la source : le
+titre de la page cible et le libelle du mega menu font foi.
+
+Cinq, la barre mobile (nezBar) des pages EN : 17 pages affichaient
+des libelles francais ("Investir", "Reseau") sur la version
+anglaise, 14 portaient un aria-label deviant, 19 pointaient vers
+les poles au lieu des cibles canoniques services-ep/reseau-carte,
+et 5 avaient perdu les ancres. Tout est realigne : une famille FR
+et une famille EN de 100 pages chacune, plus 8 singletons voulus
+(pages qui s auto-referencent, brochures, accueils).
+
+Six, 5 pages tchaditech FR portaient un hreflang="en" sur les
+liens de bascule que personne d autre n avait — retire, les
+alternates du head portent deja cette information.
+
+### QA
+
+Apres correction : liens du chrome tous resolus (zero casse),
+navs replies sur 2 familles + accueils, nezBar sur 2 familles +
+singletons voulus, footers verifies zero probleme residuel sur
+207 pages. QA dynamique : la bascule arabe s affiche au meme
+pixel sur ancienne et nouvelle page (utilitaire clair dans les
+deux themes, encre #2A3648 sur creme) ; menu ouvert au survol
+verifie en capture ; clavier : Enter ouvre (aria-expanded true),
+Escape ferme et rend le focus au declencheur, Tab entre dans le
+panneau ; barre mobile EN verifiee en viewport 390 px ("Invest",
+"Network", ancres presentes).
+
+Publication : 195 fichiers (133 racine en 9 lots + 8 lots de
+sous-repertoires) + journal. Pas de bump SW (HTML inline seul).
