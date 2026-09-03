@@ -14471,3 +14471,21 @@ seul — nav_a.css et nav_a.js intacts).
 
 Publication : 142 pages + journal, en lots. Le registre et les
 lastmod du sitemap suivront a la prochaine consolidation.
+
+## 403 — 2026-09-03 : Consolidation apres la restructuration
+
+Consolidation apres les 142 fichiers du chapitre 402.
+
+Un, le sweep complet : 218 pages x 2 themes au harnais, zero
+defaut — seules les entrees informatives habituelles des blocs
+citation. La restructuration des menus n a rien casse ailleurs.
+
+Deux, le sitemap : 11 lastmod remis a l heure git — les pages de
+la vague 402 qui n etaient pas deja datees du 3 septembre par les
+vagues precedentes de la journee.
+
+Trois, le registre proprietaire : entrees 402 et 403, compteurs a
+403, republie sur le meme artefact.
+
+Aucune page HTML modifiee. Publication : sitemap.xml + journal.
+Pas de bump SW.
