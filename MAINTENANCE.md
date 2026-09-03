@@ -14114,3 +14114,28 @@ rien de casse.
 
 Aucun bump SW (HTML inline seulement). Publication : 13 fichiers
 racine + 4 index de sous-repertoires + journal.
+
+## 396 — 2026-09-03 : Consolidation — sitemap, veilles, registre
+
+Consolidation apres les vagues 393-395.
+
+Un, le sitemap : seize lastmod remis a l heure git — les seize
+pages de la vague 395 (hubs de chaine, clients, solutions,
+paiements-etats, investisseurs, poles EN) passent du 2 au
+3 septembre. Les 201 autres entrees etaient deja exactes.
+
+Deux, les veilles, passees sur sources primaires. ITIE : la page
+pays eiti.org affiche toujours 64,5/100 date d octobre 2022,
+aucun nouveau resultat de validation publie — la veille reste
+armee. Sedigui : la presse accessible ne fournit toujours aucune
+annonce datable (l article le plus documente remonte a
+octobre 2020) — la regle "pas de chiffre sans date verifiable"
+maintient le silence editorial. Carte Brent : echeance
+janvier 2027, rien a faire ce mois-ci.
+
+Trois, le registre proprietaire : entrees 393 a 396 ajoutees,
+compteurs a 396 chapitres, en-tete au 3 septembre. Publie sur le
+meme artefact.
+
+Aucune page HTML modifiee. Publication : sitemap.xml + journal.
+Pas de bump SW.
