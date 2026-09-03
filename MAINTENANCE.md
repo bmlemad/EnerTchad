@@ -14035,3 +14035,82 @@ meme famille que les chapitres 393 et 391 : le detecteur signale,
 le DOM et la capture jugent.
 
 Aucune page modifiee. Publication : journal seul.
+
+## 395 — 2026-09-03 : QA de toutes les pages et harmonisation des paddings fixes
+
+Directive du proprietaire : "QA de toutes les pages et sections et
+harmoniser". Passage systematique sur les 218 pages publiques :
+inventaire statique des gabarits de section, puis harmonisation du
+seul ecart structurel trouve — les paddings fixes de 64 px.
+
+### Inventaire : ce qui est deja harmonise
+
+Un, les kickers : le glyphe losange est uniforme sur les 196 pages
+qui en portent — aucune variante parasite.
+
+Deux, les 22 pages sans bande CTA finale sont toutes justifiees :
+pages speciales (404, deux calculateurs, cinq pages arabes,
+boutique, brochures, explorateurs) et pages commerciales a CTA de
+cloture sur mesure — clients se termine par "Demander un devis",
+solutions par "Decrire mon besoin", investisseurs par sa section
+Souscrire. Verifie en lisant la fin de chaque page : aucune n est
+orpheline.
+
+Trois, les fils d Ariane manquent uniquement sur les deux accueils
+et la 404 — par construction.
+
+Quatre, le rythme vertical canonique du site est en clamp() :
+clamp(46px,6vw,78px), clamp(34px,5vw,60px), clamp(30px,4vw,50px)
+selon les familles. Les sous-pages petrochimie (.pxc) sont deja en
+clamp(44px,6vw,76px) — rien a toucher.
+
+### L ecart : 64 px fixes sur 16 pages
+
+Seize fichiers portaient des sections a padding fixe de 64 px, qui
+ne respirent pas en mobile la ou tout le reste du site s adapte :
+la regle .apr des huit hubs de chaine (amont, aval, intermediaire,
+petrochimie en FR et EN), les sections reperes/FAQ/engagements de
+clients et solutions (FR et EN), les .pe-sec de paiements-etats
+(FR et EN), et le style inline de la section affectation d
+investisseurs (FR et EN).
+
+Harmonisation appliquee : padding:64px devient
+clamp(34px,5vw,64px) — l aspect bureau est preserve a l identique
+(64 px au max du clamp), le mobile respire a 34 px. Les valeurs
+d accompagnement (0 22px, 24px, border-top) sont intactes.
+
+### Mon erreur : le clamp uniforme cassait la continuite sur paiements-etats
+
+paiements-etats possede deja une regle mobile
+@media(max-width:620px){.pe-sec{padding:46px 0}}. Avec le clamp
+uniforme a plancher 34 px, le padding sautait de 46 px a 34 px en
+passant de 620 a 621 px de large — un rythme inverse, moins d air
+en agrandissant l ecran. Le QA multi-largeurs (390, 620, 621, 760,
+1024, 1280) l a revele. Correctif : plancher a 46 px pour .pe-sec
+— clamp(46px,5vw,64px) — qui raccorde exactement la regle mobile :
+46 px continu jusqu a ~920 px puis rampe vers 64. Lecon : un
+plancher de clamp doit se raccorder aux regles mobiles existantes
+de la page, pas etre plaque uniformement.
+
+Deuxieme observation d instrument : l inventaire par regle CSS ne
+garantit pas un element DOM correspondant. Sur solutions, les
+regles #reperes-clients/#faq-clients existent sans aucun element
+porteur — boilerplate herite de clients, CSS mort et inerte. La
+modification y est sans effet visuel ; conservee pour garder le
+boilerplate identique dans la famille et purger le site de tout
+"padding:64px" residuel. Sur investisseurs, le style vise etait
+sur le div.wrap interieur, pas sur la section — le premier
+selecteur de QA ne trouvait rien.
+
+### QA
+
+Sur les 16 pages, deux viewports (1280 et 390) : padding calcule
+64 px bureau partout, 34 px mobile sur les hubs et investisseurs,
+46 px sur paiements-etats (raccord continu verifie sur six
+largeurs), 56 px sur clients (regle de base preexistante sous
+1100 px, hors perimetre). Aucun debordement horizontal. Captures
+bureau et mobile de la section .apr d amont : espacement regulier,
+rien de casse.
+
+Aucun bump SW (HTML inline seulement). Publication : 13 fichiers
+racine + 4 index de sous-repertoires + journal.
