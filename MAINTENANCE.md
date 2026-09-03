@@ -14528,3 +14528,50 @@ les panneaux supprimes.
 Bilan : la restructuration etait etanche — zero residu, zero
 correctif. Aucune page modifiee. Publication : journal seul. Pas
 de bump SW.
+
+## 405 — 2026-09-03 : L architecture d information face aux majors
+
+Chapitre auto-choisi : apres la restructuration du ch.402,
+confronter l architecture de navigation d EnerTchad a celle des
+majors, et re-mesurer la performance contre la base du ch.383.
+
+### Le panel
+
+Releve des menus de tete sur les sites corporate accessibles :
+ExxonMobil, sept entrees (Who we are, What we do, Sustainability,
+Community, Newsroom, Investors, Careers) avec une carte unifiee
+"What we do" ; TotalEnergies, six entrees SANS carte unifiee des
+activites (l expertise est dispersee sous Our Company) ;
+Chevron, le modele a deux piliers (who we are / what we do) ;
+BP, un en-tete minimal, la carte "What we do" releguee en pied de
+page. Shell n a pas pu etre releve (page servie en coquille
+applicative, seules les meta-donnees sont lisibles) — consigne
+honnetement plutot qu estime.
+
+### Ou se situe EnerTchad
+
+Trois entrees de tete (Societe - Nos activites - Investisseurs) :
+plus resserre que tous les majors mesurables. Le site combine les
+deux meilleures pratiques observees : le modele a piliers de
+Chevron (identite / metier) ET l entree Investisseurs de tete
+d ExxonMobil et TotalEnergies — pertinent pour une societe en
+levee de fonds. La carte unique du metier (poles + capacites
+integrees + solutions transversales dans un seul panneau) est le
+pattern ExxonMobil/Chevron, la ou TotalEnergies disperse encore.
+Careers et Newsroom, de tete chez les majors, vivent chez nous
+dans la barre utilitaire (Carrieres, Medias) — couverts sans
+alourdir le menu.
+
+### La performance retenue
+
+Accueil re-mesure en production (5 tirs) : mediane 325 ms,
+premier tir 741 ms (rechauffement CDN), document 188 Ko. La base
+ch.383 donnait le major le plus rapide a 420 ms : EnerTchad reste
+devant. En-tetes de securite : 6/6 toujours en place (HSTS,
+nosniff, frame-options, referrer-policy, permissions-policy,
+CSP).
+
+Verdict : la restructuration place l architecture au niveau des
+meilleures pratiques du secteur, en plus resserre ; aucune
+retouche necessaire tiree du benchmark. Aucune page modifiee.
+Publication : journal seul. Pas de bump SW.
