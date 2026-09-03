@@ -14575,3 +14575,29 @@ Verdict : la restructuration place l architecture au niveau des
 meilleures pratiques du secteur, en plus resserre ; aucune
 retouche necessaire tiree du benchmark. Aucune page modifiee.
 Publication : journal seul. Pas de bump SW.
+
+## 406 — 2026-09-03 : Consolidation apres le benchmark
+
+Consolidation apres les chapitres 402-405.
+
+Un, le sweep complet : 218 pages x 2 themes au harnais, zero
+defaut — la restructuration du menu (142 pages) n a rien casse ;
+seules ressortent les entrees informatives habituelles des blocs
+citation.
+
+Deux, le sitemap : controle des lastmod contre git — zero ecart,
+toutes les pages de la vague 402 etaient deja datees du
+3 septembre par le rafraichissement du chapitre 403.
+
+Trois, le registre proprietaire : entrees 404 a 406, compteurs a
+406, republie sur le meme artefact. Note d instrument : la
+premiere republication a ete refusee — la version en ligne etait
+celle de la synchronisation du chapitre 403, et le controle de
+version de l artefact exige de verifier qu aucun contenu publie
+ne se perd. Verification faite par comparaison programmatique
+des entrees (128 en ligne, 131 chez moi, zero manquante, zero
+divergence de titre) avant de republier : le meme reflexe que la
+parite md5 cote site.
+
+Aucune page HTML modifiee. Publication : journal seul. Pas de
+bump SW.
