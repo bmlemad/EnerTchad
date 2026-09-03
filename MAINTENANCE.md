@@ -13994,3 +13994,44 @@ au chapitre 386. L etat visuel du site est conforme au canon :
 chaine en scene, capacites integrees en rangee, menu re-parente.
 
 Aucune page modifiee. Publication : journal seul.
+
+## 394 — QA des espaces vides : tous les trous instruits, aucun casse
+
+Commande du proprietaire : QA des espaces vides. Detecteur dedie
+construit pour l occasion : sur chaque page, les intervalles
+verticaux couverts par du contenu reel (noeuds texte visibles,
+images, svg, video) sont fusionnes, et tout trou de 260 px ou plus
+entre deux blocs est signale. Passe sur les 218 pages, revelations
+forcees, en quatre tranches paralleles.
+
+Vingt-six pages signalees, quatre familles — toutes instruites au
+DOM et a la capture, aucune cassee :
+
+Un, le rythme d en-tete (~264 px entre la nav et le premier
+contenu) sur une quinzaine de pages de contenu (faq, charte,
+mentions, cookies, publications, projets...) : uniforme au pixel
+pres d une page a l autre — c est le gabarit, pas un accident.
+
+Deux, les brochures (129 000 px de haut) : mise en page A4 avec
+sauts de page — par construction.
+
+Trois, greentech/patrimoine : les "vides" etaient les photos des
+cartes especes, posees en background-image CSS que le detecteur ne
+compte pas comme contenu ; la capture montre des oryx, addax et
+fennecs bien reels. Angle mort du detecteur consigne : une image
+CSS n est pas un vide.
+
+Quatre, petrochimie complexe et marches (trous 290-340 px) :
+instruction au DOM — 64 px de padding de part et d autre des
+sections + queues de grilles inegales (une colonne plus courte que
+sa voisine en fin de section). Genereux mais regulier, coherent
+avec le reste des hubs ; rien a corriger.
+
+Bilan : zero espace vide accidentel sur le site. Le detecteur
+rejoint l outillage (/tmp/a394/vides.js) avec ses deux angles morts
+documentes : les background-image CSS comptes comme vide, et les
+queues de grilles lues comme des trous. Lecon d instrument, la
+meme famille que les chapitres 393 et 391 : le detecteur signale,
+le DOM et la capture jugent.
+
+Aucune page modifiee. Publication : journal seul.
