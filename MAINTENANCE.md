@@ -14242,3 +14242,76 @@ trois pages des bonnes familles : tout etait en ligne.
 
 Aucune page HTML modifiee. Publication : sitemap.xml + journal.
 Pas de bump SW.
+
+## 399 — 2026-09-03 : Les bandeaux de la home passes au fil d or et au verre
+
+Directive du proprietaire : "revoir les bandeaux et faire une
+meilleure integration sur la home pour une coherence premium".
+Diagnostic mesure d abord, arbitrage ensuite ("Verre et fil d or"
+retenu), application scopee aux deux accueils.
+
+### Le diagnostic
+
+Les bandeaux de la home parlaient trois langages. Un, les filets
+de jointure : quatre variantes coexistaient — bleu froid
+rgba(90,167,240,.12) sur coeurs/chiffres/carnets et les ponts,
+blanc .10 sur le cta-band (invisible sur creme en theme clair),
+dore sur le footer sombre, gris fonce sur le footer clair. Deux,
+le cta-band rendait presque noir en sombre : degrade .30-.44 pose
+sur une zone de photo deja voilee — la bande la plus lourde de la
+page la ou le reste laisse respirer le visuel. Trois, des
+asymetries de theme : la bande conviction avait du flou en sombre
+mais rien en clair, et les deux bandeaux-ponts (these
+d investissement, E-S-G) avaient un lavis en sombre mais des fonds
+disparates en clair.
+
+### L application
+
+Un bloc dedie en fin des deux accueils (style id band399), plus
+deux retouches dans les regles existantes :
+
+Un, le fil d or : toutes les jointures de bandes passent au meme
+filet dore — rgba(232,195,106,.20) en sombre,
+rgba(122,92,20,.16) en clair (footer clair compris). Les fils
+d accent par bande (le degrade colore --pac de chaque bandeau)
+sont conserves : c est leur systeme, il etait deja coherent.
+
+Deux, le verre : le degrade du cta-band sombre allege de .30-.44
+a .22-.34 — la photo transparait desormais sous "bati au Tchad"
+comme sous la bande conviction ; la bande conviction recoit en
+clair le meme traitement verre qu en sombre (degrade creme .45-.30
++ flou 10 px) ; les bandeaux-ponts recoivent en clair un lavis
+creme uniforme rgba(252,250,246,.42).
+
+Garde d accessibilite : prefers-reduced-transparency re-opacifie
+la bande conviction claire et coupe son flou, comme pour les
+vagues verre precedentes.
+
+### Prise au passage
+
+Le kicker du cta-band de la home EN disait encore "Unite -
+Innovation - Durabilite" en francais — passe a "Unity -
+Innovation - Sustainability", les noms que la page anglaise se
+donne partout ailleurs (Our values, chips du footer).
+
+### Mon erreur en cours de route
+
+Ma premiere pose du degrade cta et du verre conviction clair a
+ete perdue : les regles existantes du bloc :has(.rootland)
+portaient six :not() la ou mon bloc en avait trois. La sonde de
+verification (valeurs calculees relues apres pose) l a revele —
+correctif : edition du degrade dans la regle existante elle-meme,
+et montee de la regle conviction claire a la meme armure. Lecon
+deja au canon depuis le chapitre 378 : une pose se verifie en
+calcule, jamais sur la foi du diff.
+
+### QA
+
+Valeurs calculees relues apres pose sur les huit bandes x 2
+themes : filets dores partout, degrade cta .22-.34, verre
+conviction clair actif. Captures bureau sombre et clair (cta
+translucide, ponts uniformes) et mobile 390 px FR et EN. Axe sur
+les deux accueils x 2 themes + mobile : zero violation, zero
+debordement. Pas de bump SW (HTML inline seul).
+
+Publication : index.html, index-en.html + journal.
