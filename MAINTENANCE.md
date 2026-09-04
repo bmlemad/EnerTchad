@@ -15084,3 +15084,67 @@ Verification : quatre cartes de capacites rendues, nouveau
 libelle visible au navigateur dans les deux langues, zero
 debordement, axe zero violation. Deux fichiers plus le journal,
 un lot. Pas de bump SW.
+
+## 419 — 2026-09-04 : Les deux outils au clavier — revue manuelle, constat propre
+
+Septieme piece du plan : la revue clavier et lecteur d ecran des
+deux outils interactifs, la ou axe ne voit pas tout.
+
+Le calculateur du baril additionnel : cinq curseurs, tous
+etiquetes (zero champ sans label), cinq sorties en aria-live, pas
+de tabindex positif, focus visible sur chaque arret de
+tabulation. Manipulation au clavier seul : chaque curseur repond
+aux fleches et les sorties se recalculent — verifie curseur par
+curseur.
+
+Le configurateur de service integre : les trois profils sont de
+vrais onglets (role tab, aria-selected, activation par les
+fleches avec focus itinerant), les cartes de domaines exposent
+leur etat en aria-pressed, la synthese vit en aria-live, le focus
+est visible partout. Manipulation au clavier seul : la fleche
+droite deplace ET active l onglet suivant — le motif standard.
+
+Deux fois, c est l instrument qui a d abord menti, pas la page.
+Ma premiere sonde comparait la sortie o_gain en bougeant le
+curseur i_ooip — qui ne la pilote pas : "pas de mise a jour"
+etait un faux defaut, leve en testant chaque curseur contre
+toutes les sorties. Puis un clic programmatique (el.click()) sur
+les onglets ne declenchait rien — les composants ecoutent les
+evenements de pointeur reels ; les touches reelles du banc, elles,
+fonctionnent. Un defaut d outillage n est pas un defaut de page :
+on ne journalise un constat qu apres l avoir reproduit par le
+chemin d un utilisateur.
+
+Bilan : zero correctif necessaire — les deux outils etaient deja
+au niveau. Publication : journal seul. Pas de bump SW.
+
+## 420 — 2026-09-04 : Le theme clair sur les pages a photo — banc dedie, constat propre
+
+Huitieme piece du plan : le banc systematique du theme clair sur
+les pages a heros photographique — la zone fragile identifiee par
+les ch.238-239 et 411. Cent quatre-vingt-sept pages portent le
+traitement de heros a photo.
+
+Premier passage, une sonde d invariant calculee : "en clair, l
+encre du heros doit etre blanche et ombree". Elle a rendu une
+avalanche de pretendus defauts — et c est la sonde qui avait
+tort, pas les pages. Le theme clair connait DEUX variantes de
+heros legitimes : les familles qui restent photographiques
+(hubs, sous-pages, capacites, contact, FAQ — encre blanche
+forcee) et les familles qui passent au jour (journal, glossaire,
+cibles — encre nuit sur creme). Un invariant unique appliquerait
+la regle d une famille a l autre — la lecon de portee du ch.397,
+retrouvee une fois de plus.
+
+Second passage, le juge de paix : captures en theme clair d une
+page par famille de gabarit — hub, sous-page, capacite, journal,
+glossaire, cibles, achats, carnets, investisseurs, contact, FAQ,
+carrieres — et lecture visuelle des douze heros. Verdict :
+lisibilite conforme partout ; les deux variantes claires jouent
+chacune leur partition, les indicateurs gardent leur verre nuit,
+les titres a degrade restent lisibles sur creme.
+
+Bilan : zero correctif — les protections posees au fil des
+chapitres 238, 239 et 411 tiennent en theme clair sur toutes les
+familles. Publication : journal seul (chapitres 419 et 420
+ensemble). Pas de bump SW.
