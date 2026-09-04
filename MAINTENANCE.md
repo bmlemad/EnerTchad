@@ -15188,3 +15188,38 @@ propres a chaque pole verifies par valeurs calculees, capture du
 heros ar-amont lisible, axe zero violation sur les quatre pages
 arabes touchees, aucun debordement. Six fichiers en un lot.
 Pas de bump SW.
+
+## 422 — 2026-09-04 : Consolidation de cloture du plan en douze propositions
+
+Le plan "appliquer toutes les propositions" est solde : neuf
+chapitres (413 a 421) en une seule journee de travail. Cette
+consolidation ferme la serie.
+
+Le balayage complet, 221 pages desormais (les trois arabes
+neuves) sur deux themes — et il a paye : deux prises. Un, quatre
+apostrophes dactylographiques ASCII dans la bande FAQ des
+investisseurs FR, la ou la maison ecrit l apostrophe typographique
+— posees par moi au ch.417, corrigees. Deux, la pastille active
+du fil de chaine des trois pages arabes tombait a 4,33:1 en theme
+clair (une regle claire recolorait mon encre inline) — armee en
+!important, 4,5:1 retrouve, axe zero violation sur les six prises
+AR. Mon banc du ch.421 n avait teste l arabe qu en theme sombre —
+la lecon des deux themes, encore.
+
+Le sitemap : cent cinq lastmod remis a l heure git — la trace des
+vagues 413 a 421 (hubs, trente sous-pages, brochure, archives et
+64 journaux, investisseurs et FAQ, explorateur, arabes). Le
+registre : dix entrees ajoutees (412 a 421), 147 chapitres au
+tableau, artefact republie sans heurt.
+
+Bilan du plan : six chantiers batis (hubs au modele Amont,
+carnets lies sur trente sous-pages, filtres de poles et RSS,
+FAQ investisseurs ancree, miroir arabe des poles, brochure et
+explorateur realignes), trois constats propres (outils au
+clavier, theme clair des pages a photo, 404 et hors-ligne), un
+refus doctrinal (la carte des blocs, sans source datable), et un
+fil rouge : l inventaire d abord — la moitie de la valeur etait
+dans les coutures, pas dans les edifices.
+
+Publication : investisseurs FR, trois pages arabes, sitemap et
+journal, un lot. Pas de bump SW (tout inline).
