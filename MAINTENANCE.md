@@ -15023,3 +15023,32 @@ carnets, Amont = 3, Downstream = 4, lien profond #rub=petrochimie
 pose, retour a Tous = 33 ; axe zero violation sur archives et
 journaux echantillons, aucun debordement. Soixante-sept fichiers
 en cinq lots. Pas de bump SW.
+
+## 417 — 2026-09-04 : L espace investisseurs — l audit trouve la data room deja batie, la FAQ investisseurs la complete
+
+Cinquieme piece du plan : la "data room legere". L audit d abord,
+et il change le perimetre : la page investisseurs porte DEJA une
+feuille de route datee de la constitution, un agenda investisseur
+avec fichier calendrier, une section "auditable par conception",
+une etagere de documents et une note de sources ("sur quoi
+reposent les chiffres de cette page"). Les images OG par pole,
+que je proposais aussi, existent toutes les neuf et sont cablees.
+La FAQ generale porte deja son balisage FAQPage et six questions
+investisseurs (04 a 09). Construire une chronologie ou une FAQ de
+toutes pieces aurait duplique l existant.
+
+Ce qui manquait, trois prises. Un : aucune question de la FAQ n
+avait d ancre — impossible de pointer une reponse precise ;
+vingt-huit identifiants q01-q28 poses sur les deux langues. Deux :
+la page investisseurs ne menait pas a ces reponses (la jumelle EN
+n avait meme aucun lien vers la FAQ) — une bande "La FAQ ·
+Investisseurs" fermee par le fil d or est posee en fin de page
+sur les deux jumelles, six questions en acces direct plus le lien
+vers la FAQ complete. Trois : un lien profond vers un <details>
+ferme n ouvrait rien — un script leger ouvre la question visee a
+l arrivee et au changement d ancre.
+
+Verification : bande presente et sept liens sur les deux jumelles
+et les deux themes, sans debordement ; navigation profonde
+faq#q07 testee au navigateur — la question arrive ouverte et en
+vue ; axe zero violation. Six fichiers en un lot. Pas de bump SW.
