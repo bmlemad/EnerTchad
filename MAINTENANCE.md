@@ -15052,3 +15052,35 @@ Verification : bande presente et sept liens sur les deux jumelles
 et les deux themes, sans debordement ; navigation profonde
 faq#q07 testee au navigateur — la question arrive ouverte et en
 vue ; axe zero violation. Six fichiers en un lot. Pas de bump SW.
+
+## 418 — 2026-09-04 : Le schema interactif de la chaine — deja bati, remis au vocabulaire de la doctrine
+
+Sixieme piece du plan : le schema interactif de la chaine
+integree. L audit d abord, meme reflexe que les deux chapitres
+precedents : l explorateur de la chaine EXISTE deja
+(/explorateur-chaine et sa jumelle EN) — SVG interactif, maillon
+par maillon, les quatre capacites rendues en cartes, le lien
+epingle en tete de l accueil depuis la vague des tuiles.
+Construire un second schema sur la home aurait duplique l outil.
+
+Ce qui datait : le meme vocabulaire d avant le ch.402 que la
+brochure au ch.415 — "Capacites transversales · au service de
+toute la chaine" en francais, "Cross-cutting capabilities ·
+serving the whole chain" en anglais. Remplaces par la formule de
+la doctrine : "Capacites integrees · elles vivent a l interieur
+des poles" / "Built-in capabilities · they live inside the
+poles". Une seule chaine remplacee par langue, comptee avant
+remplacement.
+
+La lecon transverse de cette serie de chapitres, versee au canon :
+sur un site de 218 pages tenu depuis 400 chapitres, un plan d
+amelioration se confronte d abord a l inventaire — trois des
+propositions du plan (balisage Article, filtre d archives, data
+room, images OG, FAQPage, schema de chaine) existaient deja en
+tout ou partie ; la valeur etait dans les coutures manquantes,
+pas dans de nouveaux edifices.
+
+Verification : quatre cartes de capacites rendues, nouveau
+libelle visible au navigateur dans les deux langues, zero
+debordement, axe zero violation. Deux fichiers plus le journal,
+un lot. Pas de bump SW.
