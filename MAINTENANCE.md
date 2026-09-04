@@ -14956,3 +14956,41 @@ soixante liens de carnets tous resolus sur disque, rendu conforme
 sur huit prises echantillon (deux themes), axe zero violation,
 390px sans debordement. Trente et un fichiers en cinq lots.
 Pas de bump SW.
+
+## 415 — 2026-09-04 : La brochure remise au diapason de la doctrine des trois poles
+
+Troisieme piece du plan : verifier que la brochure A4 — la
+compilation du site par construction — raconte encore la bonne
+doctrine apres la restructuration du ch.402. L essentiel tenait :
+"Une societe, trois poles de coeur" y figure, la petrochimie y
+prolonge l Aval, l orientation decrit bien la chaine et les
+quatre capacites.
+
+Restait le vocabulaire d avant : sept marques "Transversal" en
+francais et sept "Cross-cutting" en anglais — l etiquette de la
+carte solutions, trois pieds de cartes du socle, une pastille de
+titre, le libelle de section "Capacites transversales" et la
+phrase "quatre capacites transversales" — plus l introduction du
+socle qui posait les services "autour de la chaine", quand la
+doctrine du ch.402 les fait vivre "a l interieur des poles".
+
+Les corrections, chirurgicales et comptees une a une avant
+remplacement : "Integre aux poles" / "Built into the poles"
+partout ou l etiquette designait nos capacites, "Capacites
+integrees aux poles" en libelle de section, "quatre capacites
+integrees" dans la phrase de doctrine, et l introduction reecrite
+— "A l interieur des poles de coeur ... les capacites integrees
+poursuivent un seul but". L unique "cross-cutting" restant en
+anglais qualifie une priorite ESG sur l eau — usage normal de la
+langue, conserve.
+
+Note de perimetre : les deux brochures PDF telechargeables
+restent a leur date d edition — ce sont des documents dates, a
+regenerer lors d une prochaine edition, pas a reecrire en place.
+
+Verification : zero "Transversal" residuel en FR, un seul
+"cross-cutting" legitime en EN, rendu sans debordement, axe zero
+violation sur les deux brochures. La sonde innerText a d abord
+rendu zero occurrence — les sections non revelees n exposent pas
+leur texte a innerText ; textContent confirme cinq et six poses.
+Deux fichiers plus le journal, un lot. Pas de bump SW.
