@@ -15257,3 +15257,29 @@ pages arabes historiques, coherent, laisse tel quel.
 
 Apres correctifs, le crible des liens rend zero lien mort sur
 226 fichiers. Seize fichiers en quatre lots. Pas de bump SW.
+
+## 424 — 2026-09-04 : Consolidation — et la veille ITIE rapporte enfin une date
+
+Le balayage complet : 221 pages, deux themes, six tranches — zero
+defaut. Les correctifs du ch.423 n ont rien decale, et les deux
+prises du ch.422 tiennent.
+
+Le sitemap : cinq lastmod remis a l heure git apres les vagues
+422-423 (les autres fichiers touches portaient deja la date du
+jour). Le registre : deux entrees ajoutees (422-423), 149
+chapitres au tableau, artefact republie sans heurt.
+
+La veille ITIE, enfin une date : le site itie-chad.org repond
+toujours en erreur serveur, mais la source primaire eiti.org
+porte la decision du conseil 2025-50, datee du 16 decembre 2025 —
+le demarrage de la validation du Tchad est fixe au 1er juillet
+2026, dans le meme groupe que le Nigeria et la Republique
+dominicaine. La validation est donc EN COURS depuis juillet ; le
+score publie reste 64,5/100 d octobre 2022 tant qu aucun resultat
+n est rendu. Rien a changer sur le site (nos pages citent le
+score publie, qui reste le bon) ; la veille passe de "chercher
+une date" a "guetter le RESULTAT de la validation ouverte le
+1er juillet 2026". Sedigui : rien de neuf depuis la passe du
+ch.412, le meme jour. Carte Brent : echeance janvier 2027.
+
+Publication : journal et sitemap, un lot. Pas de bump SW.
