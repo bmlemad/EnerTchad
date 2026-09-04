@@ -14697,3 +14697,57 @@ terrain.
 Publication : 3 fichiers racine (poles EN) + journal en un lot,
 puis 3 index de sous-repertoires. Pas de bump SW (HTML inline
 seul).
+
+## 409 — 2026-09-04 : La page Amont reorganisee autour des services et solutions
+
+Directive du proprietaire : reorganiser profondement la page
+Amont autour des services et solutions, a l image des majors.
+Deux arbitrages : "catalogue en tete" et fusion du doublon de
+sections capacites.
+
+### Ce qui change
+
+L ancien ordre enterrait le catalogue : l offre (L expertise du
+puits au baril) arrivait en 8e section et l offre aux tiers en
+9e, apres deux ecrans de contexte. Chez les societes de services
+petroliers, la ligne de services est la colonne vertebrale de la
+page ; le contexte vient en preuve, apres.
+
+Nouvel ordre, sur le hub FR et son jumeau EN : conviction et cap
+conserves en ouverture, fil de la chaine de valeur maintenu a sa
+place, puis directement la colonne vertebrale — Nos solutions
+(psol), L expertise du puits au baril (offre), l offre aux tiers
+— et ensuite la preuve : enjeux, methode, cas d usage, capacites
+integrees, chantiers, carnets, cta. La page EN garde sa section
+"Inside this pole" accrochee a l offre.
+
+Le doublon de capacites est resorbe : la bande "capacites
+transversales appliquees a l Amont" (redondante avec "Quatre
+capacites integrees a l Amont") est supprimee avec son style —
+une seule section capacites, conforme a la doctrine. Environ
+3 Ko de moins par page.
+
+### La mecanique, verifiee
+
+Le remontage s est fait par unites bloc-par-bloc (style
+interstitiel + section deplaces ensemble). Piege identifie avant
+de couper : l interstice devant "enjeux" contenait le fil de la
+chaine de valeur (nav .chv), un element de reperage qui devait
+rester sous le cap — separe de sa section et laisse en place.
+Les seuls liens internes de la page (#offre, #chantiers) restent
+valides — #offre remonte meme dans la page, ce qui sert le CTA
+qui y mene.
+
+### QA
+
+Les deux pages x 2 themes : ordre rendu conforme (9 sections FR,
+10 EN), toutes les sections visibles apres defilement (reveal
+verifie), zero debordement, zero erreur JS, axe zero violation
+(une alerte transitoire EN au premier passage, disparue au
+re-test a froid — etat d animation mi-course, pas un defaut).
+Capture : le catalogue enchaine desormais solutions puis
+expertises directement sous le cap, la langue exacte des pages
+services des majors.
+
+Publication : amont/index.html + pole-amont-en.html + journal.
+Pas de bump SW (HTML inline seul).
