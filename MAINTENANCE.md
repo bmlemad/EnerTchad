@@ -14601,3 +14601,64 @@ parite md5 cote site.
 
 Aucune page HTML modifiee. Publication : journal seul. Pas de
 bump SW.
+
+## 407 — 2026-09-03 : La page Amont face aux majors — le terrain entre au hub
+
+Directive du proprietaire : "QA de la page amont versus majors
+and apply recommendations".
+
+### Le releve
+
+Panel restreint par l accessibilite des sites : la page petrole
+et gaz de Chevron a pu etre lue (structure narrative par actifs
+geographiques nommes — Kazakhstan, LNG australien, schistes US —,
+gestion environnementale integree au recit amont : intensite GES,
+torchage, methane ; mais zero chiffre affiche et zero appel a
+l action) ; Shell sert une coquille applicative (meta-donnees
+seules) ; les URLs upstream d ExxonMobil et TotalEnergies testees
+repondent 404 — consigne honnetement, pas d estimation.
+
+### Le QA de notre page
+
+/amont/ tient la comparaison et la depasse sur plusieurs points :
+douze sections structurees (conviction, enjeux, methode, cas
+d usage, capacites transversales, offre aux tiers, chantiers,
+cta-band la ou Chevron n a aucun CTA), des actifs geographiques
+nommes comme chez Chevron (Doba x10, Bongor x4, 19 mentions de
+blocs, 7 de bassins), et l environnement integre au recit amont
+comme le veut la meilleure pratique (GreenTech x27, HSE x15, eau
+x54, torchage x4) — deja conforme a la doctrine "integrees aux
+poles".
+
+Un manque net face au pattern des majors : aucun recit de terrain
+sur le hub. Les majors adossent leurs pages metier a des
+histoires ; notre site possede un journal riche en articles Amont
+(forage dirige, criblage EOR, baril additionnel, wellpads, eau de
+production) — mais le hub n en referencait aucun.
+
+### La recommandation appliquee
+
+Ajout d une section "Carnets de l Amont" avant le cta-band, sur
+les deux hubs (FR et pole-amont-en) : trois articles dates
+(Le forage dirige explique - 12 aout ; Criblage EOR - 14 juillet ;
+Le baril additionnel - 20 juin ; dates EN propres a chaque
+version) plus le lien vers tous les carnets. Bloc autonome
+(style carn407) sur les jetons du site — encre et bordures
+adaptatives verifiees dans les deux themes.
+
+Non retenu, et pourquoi : ajouter des engagements methane a la
+Chevron releverait de l invention de contenu (la regle "pas de
+chiffre sans date verifiable" s applique aussi aux engagements) ;
+nommer Sedigui sur l Amont brouillerait l attribution canonique
+du gaz a la Petrochimie.
+
+### QA
+
+Les deux hubs x 2 themes : 3 cartes, liens exacts vers les
+articles existants, encre adaptative (claire #2A3648, sombre
+#F5F7FA), zero debordement, axe zero violation sur la section et
+les pages. Capture bureau sombre : la section parle la langue de
+la page (kicker losange, cartes datees, lien souligne or).
+
+Publication : amont/index.html + pole-amont-en.html + journal.
+Pas de bump SW (HTML inline seul).
