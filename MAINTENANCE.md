@@ -15316,3 +15316,40 @@ lecon du ch.422 appliquee) ; 390px sans debordement. L empreinte
 hub413 reste unique sur quatorze fichiers, l empreinte carn407
 unique sur quatorze poses. Huit fichiers en trois lots.
 Pas de bump SW.
+
+## 426 — 2026-09-04 : QA de coherence des pages et sections — le bandeau final n etait pas la meme phrase partout
+
+La directive : QA de coherence des pages et sections. Six bancs
+transversaux sur les 221 pages — et le banc du bandeau final a
+paye.
+
+Ce qui tient : un seul h1 par page et zero saut de niveau de
+titre sur tout le site ; les poses carn407 se repartissent en
+exactement deux variantes voulues (trois cartes avec chapeau sur
+les quatorze hubs, deux cartes compactes sur les trente
+sous-pages), kickers tous au losange ; les sequences de sections
+des sous-pages sont propres au regard du bon invariant — chaque
+jumelle FR-EN partage la meme sequence ; les sections a
+identifiant sans aria-label ont toutes un titre interne, conforme.
+
+Ce qui ne tenait pas, trois prises sur le bandeau final. Un : le
+slogan anglais existait en DEUX versions — "From source rock to
+pump" sur 78 pages, "to the pump" sur 18 dont l accueil EN ;
+l accueil est le canon et colle au francais ("la pompe") — les 78
+sont alignees. Deux : onze pages utilitaires EN (accessibilite,
+avertissements, carrieres, charte, cibles, communautes,
+gouvernance, innovation, plan du site, presse, recherche)
+envoyaient leur bouton contact vers un formulaire pre-rempli
+"parc et materiel" — un gabarit clone depuis la page du parc et
+jamais readresse ; realignees sur leurs jumelles FR (contact
+simple, et profil talents pour carrieres). Trois, la plus grosse :
+le bandeau de journal-forage-directionnel-en portait a la place
+de "built in Chad" un paragraphe entier d avertissement editorial
+— une substitution ratee d une vague ancienne, jamais vue parce
+qu aucun banc ne lisait le TEXTE du bandeau ; repare.
+
+Apres correctifs : 99 bandeaux FR identiques, 97 bandeaux EN
+identiques, les deux seuls profils "parc" restants sur les deux
+pages du parc. Verification au navigateur sur trois echantillons,
+axe zero violation. Quatre-vingt-dix fichiers en treize lots.
+Pas de bump SW.
