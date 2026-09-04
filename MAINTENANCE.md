@@ -15148,3 +15148,43 @@ Bilan : zero correctif — les protections posees au fil des
 chapitres 238, 239 et 411 tiennent en theme clair sur toutes les
 familles. Publication : journal seul (chapitres 419 et 420
 ensemble). Pas de bump SW.
+
+## 421 — 2026-09-04 : Le miroir arabe des trois poles — et deux decisions de perimetre
+
+Derniere piece du plan en trois volets. Le volet bati : trois
+nouvelles pages arabes — ar-amont, ar-intermediaire, ar-aval —
+sur le gabarit du mini-site existant (RTL, meme chrome, meme
+langage de tuiles). Chacune porte sa conviction, ses indicateurs
+dates du site (les memes chiffres-cibles que les hubs FR : +8-17
+pour cent d OOIP vise, 21 parcelles libres, 1070 km, 12 stations,
+prix ARSAT), ses services en cartes, sa position dans la chaine
+et ses renvois vers la version francaise complete. La page
+ar-poles gagne un lien "apercu en arabe" sur chacun de ses trois
+poles, et le sitemap passe a 220 URLs. Prise au passage : la
+meme derive d avant-402 que la brochure et l explorateur — "des
+forces transversales" — corrigee en "des capacites qui vivent a
+l interieur des poles", en arabe aussi.
+
+Mon erreur du chapitre : mes gabarits regex exigeaient des
+balises accolees la ou le fichier source les ecrit indentees —
+les indicateurs et les boutons du heros des trois pages restaient
+ceux de ar-poles. C est la CAPTURE, pas le diff, qui l a montre :
+la sonde structurelle disait "4 indicateurs presents" et ne
+voyait pas qu ils etaient les mauvais. Corrige par des motifs
+tolerants aux blancs, re-verifie par valeurs.
+
+Les deux decisions de perimetre, journalisees plutot qu
+executees en force. L outil interactif numero trois (la carte des
+parcelles libres) : aucune source primaire datable trouvee pour une
+liste des blocs libres tchadiens — la regle "pas de chiffre sans
+date verifiable" prime, l outil est differe jusqu a une source
+datable. La page 404 et le repli hors-ligne : l audit les trouve
+deja au niveau — la 404 offre recherche, poles, boutique et plan
+du site ; le service worker replie les navigations vers l accueil
+en cache. Zero retouche.
+
+Verification : trois pages en RTL lang=ar, indicateurs et boutons
+propres a chaque pole verifies par valeurs calculees, capture du
+heros ar-amont lisible, axe zero violation sur les quatre pages
+arabes touchees, aucun debordement. Six fichiers en un lot.
+Pas de bump SW.
