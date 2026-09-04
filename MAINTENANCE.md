@@ -14918,3 +14918,41 @@ prises — liseres, bandeau, indicateurs, capacites, partenariats ;
 390px sans debordement ; axe zero violation sur les six ; capture
 du catalogue Intermediaire propre. Six fichiers, quatre lots.
 Pas de bump SW.
+
+## 414 — 2026-09-04 : Les sous-pages de poles face aux majors — le fil date descend dans les services
+
+Deuxieme piece du plan : la revue comparative des trente
+sous-pages de poles (quinze familles FR-EN : activites, EOR,
+services parapetroliers, parc, logistique, integrite, sites,
+raffinage, reseau, produits, distribution, complexe, produits
+transformes, marches, chimie EOR).
+
+L audit d abord : les trente pages sont deja au niveau sur la
+structure — sous-navigation de pole, fil d Ariane, appel au
+contact, paires hreflang, indicateurs de heros et bandeau final
+presents partout. L ecart avec la pratique des majors est le meme
+que celui releve au ch.407 sur les hubs : les pages de services
+des grands operateurs se terminent sur de l actualite datee
+liee ; nos sous-pages n offraient que le bandeau final.
+
+Le remede, decline du modele des hubs : une bande compacte de
+deux carnets lies, choisis page par page — wellpads et forage
+dirige pour les activites, criblage et baril additionnel pour l
+EOR, corridor Doba-Kribi et brut par camion pour la logistique,
+mini-raffinerie et enigme du 28-32 pour le raffinage, Sedigui et
+gaz torche pour le complexe, et ainsi de suite sur les quinze
+familles. Les jumelles EN recoivent leurs equivalents avec leurs
+propres dates. La feuille de style est la meme famille carn407,
+octet-pour-octet identique aux hubs — une seule empreinte sur les
+trente-huit poses du site.
+
+Les dates et titres ne sont pas re-rediges : ils sont extraits
+des pages d archives des carnets (y compris l article a la une,
+au balisage different — la premiere extraction l avait manque,
+rattrape par la verification de completude avant pose).
+
+Verification : trente sections posees avant le bandeau final,
+soixante liens de carnets tous resolus sur disque, rendu conforme
+sur huit prises echantillon (deux themes), axe zero violation,
+390px sans debordement. Trente et un fichiers en cinq lots.
+Pas de bump SW.
