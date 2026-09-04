@@ -14751,3 +14751,41 @@ services des majors.
 
 Publication : amont/index.html + pole-amont-en.html + journal.
 Pas de bump SW (HTML inline seul).
+
+## 410 — 2026-09-04 : Audit des doublons apres les grandes vagues — proprete confirmee
+
+Directive du proprietaire : "Audit les doublons et applique les
+recommandations". Re-passage complet de l audit du ch.385, elargi
+aux surfaces nees des vagues 397-409.
+
+Onze familles balayees sur les 218 pages et les instruments :
+
+Un, les meta-donnees : zero doublon de titres, de descriptions,
+d og:title et de canonicals — chaque page garde son identite
+propre. Deux, les H1 : un seul appariement, "Exploration &
+Production" partage entre la page FR et sa jumelle EN — le meme
+terme dans les deux langues, l anglicisme normatif du secteur ;
+intentionnel, conserve. Trois, les ids dupliques a l interieur
+d une meme page : zero sur 218. Quatre, le sitemap : 217 URLs
+toutes uniques. Cinq, les flux RSS : 42 et 41 items, guids tous
+uniques — la purge du ch.385 tient. Six, les index de recherche
+(106 et 104 entrees) : zero URL dupliquee. Sept, la palette de
+commandes (188 et 162 entrees) : zero id duplique. Huit, les
+index plein-texte : zero doublon.
+
+Neuf, les blocs inline repliques — la surface neuve : le style
+carn407 est octet-pour-octet identique sur les huit hubs, le bloc
+band399 identique sur les deux accueils, et print386 presente ses
+deux variantes voulues (version etendue des accueils avec les
+regles d impression des cartes flip, version de base ailleurs) —
+verifie par empreinte, la variante des accueils contient bien
+hxf-back, les autres non. Dix, les assets : zero fichier duplique
+par empreinte. Onze, les paragraphes longs dupliques entre pages :
+356 appariements FR et 215 EN releves — TOUS impliquent la
+brochure A4, compilation du site par construction ; hors
+brochure, zero paragraphe duplique dans chaque langue.
+
+Bilan : zero doublon accidentel — le jeu de recommandations est
+vide, rien a appliquer. Les deux prises du ch.385 (guids RSS,
+H1 des explorateurs) tiennent toujours. Aucune page modifiee.
+Publication : journal seul. Pas de bump SW.
