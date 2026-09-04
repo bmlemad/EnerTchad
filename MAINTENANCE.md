@@ -14789,3 +14789,59 @@ Bilan : zero doublon accidentel — le jeu de recommandations est
 vide, rien a appliquer. Les deux prises du ch.385 (guids RSS,
 H1 des explorateurs) tiennent toujours. Aucune page modifiee.
 Publication : journal seul. Pas de bump SW.
+
+## 411 — 2026-09-04 : Modernisation profonde de la page Amont — le fil d or et le verre descendent du seuil
+
+La directive : moderniser profondement la page Amont. La page
+venait d etre reordonnee autour du catalogue (ch.409) ; restait
+la matiere visuelle. L inventaire au banc, calques et captures a
+l appui, a date quatre familles : les liseres de sections
+melangeaient encore les encres (un bleu rgba(90,167,240,.12) sur
+l offre, heritage d avant la doctrine du fil d or), le bandeau
+final gardait son voile lourd de .30/.44 avec un filet blanc —
+l harmonisation du ch.399 n avait touche que l accueil —, les
+cartes des quatre capacites (#capacites) restaient plates sur un
+trait bleu-gris, et les indicateurs du heros semblaient dater.
+
+Le paquet amont411, pose avant </body> des deux jumelles :
+liseres or unifies (rgba(232,195,106,.20) en sombre,
+rgba(122,92,20,.16) en clair) sur l offre, l approche, les cas
+d affaires, les chantiers et le bandeau final ; bandeau final
+allege au voile .22/.34 de l accueil, filet or ; cartes des
+capacites passees au verre nuit (degrade rgba(11,18,32,.50-.34),
+flou 8px, lisere qui s allume a l or au survol, translation
+douce) et au creme .70 en clair ; garde-fous
+prefers-reduced-transparency et reduced-motion.
+
+Mon erreur, la premiere : mon premier jet posait aussi un verre
+clair a lisere or sur les indicateurs du heros (.pgh-kpi). La
+sonde calculee a montre qu il ne prenait pas — et en remontant la
+regle gagnante dans bundle_core, j ai retrouve le correctif de
+contraste des ch.238-239 : ces tuiles sont posees sur la photo,
+le blanc gras y mesurait 2,7:1, et le verre teinte nuit dans les
+deux themes est un correctif journalise, pas une negligence. Mon
+jet l aurait defait. La perte de la bataille de specificite m a
+evite une regression d accessibilite : je n ai garde qu un lisere
+or (rgba(232,195,106,.34)) sur le verre nuit canonique, arme a
+six :not pour passer devant les cinq du ch.238.
+
+Mon erreur, la seconde : ma sonde a rendu des valeurs
+non-deterministes — memes fichiers, resultats differents d une
+prise a l autre. La cause n etait ni le cache ni la cascade :
+a 1200 ms, la sonde lisait des transitions en cours (border-color
+transitionne en .28s, les tuiles entrent en scene avec des delais
+echelonnes). A 3500 ms, quatre prises sur quatre rendent les
+valeurs visees. La lecon complete l instrument-qui-ment : le
+delai de pose fait partie de l instrument, une valeur calculee
+se lit apres que la page a fini de bouger.
+
+Troisieme prise du meme banc : la regle claire des liseres,
+armee a deux :not, perdait contre la regle sombre a trois — le
+clair affichait l encre du sombre. Remontee a quatre :not.
+
+Verification : valeurs calculees conformes sur les deux pages et
+les deux themes (liseres, bandeau, indicateurs, capacites) ;
+captures sombre et clair du heros, des capacites et du bandeau ;
+390px sans debordement ; axe WCAG 2.0 A/AA zero violation sur les
+deux jumelles. Deux fichiers modifies, inline seulement — pas de
+bump SW.
