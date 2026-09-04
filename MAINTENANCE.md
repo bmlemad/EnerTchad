@@ -14876,3 +14876,45 @@ articles connus de chantier et de retards. La carte Brent n echoit
 qu en janvier 2027.
 
 Publication : journal et sitemap. Pas de bump SW.
+
+## 413 — 2026-09-04 : Les trois autres hubs passent au modele Amont — catalogue en tete, fil d or et verre
+
+La directive du proprietaire : appliquer toutes les propositions
+du plan de site. Premiere piece : generaliser aux hubs
+Intermediaire, Aval et Petrochimie ce que l Amont a recu aux
+ch.409 et 411 — l ordre des majors et la matiere moderne. Les
+arbitrages deja rendus (catalogue en tete, fusion des offres,
+verre et fil d or) s appliquent sans nouvelle question.
+
+La reorganisation, sur les six jumelles : le catalogue de
+solutions et l offre montent aussitot apres le cap et le fil de
+chaine ; l offre aux tiers et les partenariats (Aval et
+Petrochimie en ont, l Amont non) restent accoles ; les enjeux de
+marche, l approche et les cas d affaires redescendent en preuve ;
+les capacites ferment l interieur de page. La bande de soutien
+redondante disparait des quatre pages qui l avaient encore
+(Intermediaire et Aval, FR et EN — la Petrochimie n en avait
+pas). Meme technique qu au ch.409 : decoupage a profondeur de
+balise, interstitiels embarques avec leurs sections, le fil de
+chaine detache du gap des enjeux pour rester sous le cap.
+
+La modernisation : bloc hub413, copie conforme du amont411
+(liseres or deux themes, bandeau final allege, verre nuit des
+cartes capacites, lisere or des indicateurs du heros — le verre
+nuit canonique des ch.238-239 garde) plus les partenariats (.ppt)
+ajoutes aux liseres, absents de l Amont. Le bloc est
+octet-pour-octet identique sur les six pages.
+
+Mon erreur reparee au passage : le ch.408 avait pose l identifiant
+carnets-carnets sur les trois bandes carnets FR — un gabarit mal
+substitue, que l audit du ch.410 n avait pas releve parce que
+l identifiant restait unique dans chaque page. Aucun lien entrant
+ne le visait ; renomme en carnets-inter, carnets-aval et
+carnets-petro, alignes sur carnets-amont.
+
+Verification : ordre positionnel conforme sur les six pages ;
+sonde calculee a 3500 ms (lecon du ch.411) conforme sur les douze
+prises — liseres, bandeau, indicateurs, capacites, partenariats ;
+390px sans debordement ; axe zero violation sur les six ; capture
+du catalogue Intermediaire propre. Six fichiers, quatre lots.
+Pas de bump SW.
