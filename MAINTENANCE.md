@@ -14994,3 +14994,32 @@ violation sur les deux brochures. La sonde innerText a d abord
 rendu zero occurrence — les sections non revelees n exposent pas
 leur texte a innerText ; textContent confirme cinq et six poses.
 Deux fichiers plus le journal, un lot. Pas de bump SW.
+
+## 416 — 2026-09-04 : Les carnets valorises — filtres par pole, RSS expose, et un audit qui evite deux chantiers inutiles
+
+Quatrieme piece du plan : archives filtrables, donnees
+structurees Article, fil RSS mieux expose. L audit d abord — et
+il a evite deux chantiers : les 64 pages journal portent DEJA un
+balisage Article complet avec datePublished, et la page d
+archives possede DEJA un filtre par rubrique (chips generees,
+lien profond #rub=, annonce aria-live). Construire par-dessus
+aurait duplique l existant ; le plan se reduit a ce qui manque.
+
+Ce qui manquait, en trois prises. Un : le filtre existant ne
+retenait que le premier segment de la rubrique — "Petrochimie",
+toujours en second segment, n avait aucune chip, et les poles ne
+ramassaient pas leurs articles transverses. Quatre chips de poles
+(Amont, Intermediaire, Aval, Petrochimie et leurs equivalents EN)
+sont epinglees en tete de barre et filtrent sur la rubrique
+entiere ; les chips de rubriques existantes restent inchangees,
+sans doublon. Deux : aucune des 64 pages journal n annoncait le
+fil RSS — le lien rel=alternate est pose sur chacune, feed.xml
+cote FR, feed-en.xml cote EN. Trois, prise au passage : la page d
+archives EN annoncait le fil FRANCAIS (/feed.xml) — corrige vers
+/feed-en.xml.
+
+Verification fonctionnelle au navigateur : chip Petrochimie = 4
+carnets, Amont = 3, Downstream = 4, lien profond #rub=petrochimie
+pose, retour a Tous = 33 ; axe zero violation sur archives et
+journaux echantillons, aucun debordement. Soixante-sept fichiers
+en cinq lots. Pas de bump SW.

@@ -3,7 +3,7 @@
 <title>EnerTchad Notebooks — understanding Chadian oil</title>
 <meta name="description" content="Investigations, analyses and viewpoints on geology, safety, innovation and enhanced recovery — plus official releases, milestones and the media kit.">
 <meta name="robots" content="index,follow">
-<link rel="canonical" href="https://enertchad-delta.vercel.app/carnets-en"><link rel="alternate" type="application/rss+xml" title="EnerTchad — Notebooks &amp; releases" href="/feed.xml">
+<link rel="canonical" href="https://enertchad-delta.vercel.app/carnets-en"><link rel="alternate" type="application/rss+xml" title="EnerTchad — Notebooks &amp; releases" href="/feed-en.xml">
 <meta property="og:type" content="website"><meta property="og:site_name" content="EnerTchad — Accès aux Énergies"><meta property="og:locale" content="en_US"><meta property="og:title" content="EnerTchad Notebooks — understanding Chadian oil"><meta property="og:description" content="Investigations, analyses and viewpoints on geology, safety, innovation and enhanced recovery — plus official releases, milestones and the media kit."><meta property="og:url" content="https://enertchad-delta.vercel.app/carnets-en"><meta property="og:image" content="https://enertchad-delta.vercel.app/og-image.jpg"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="EnerTchad Notebooks — understanding Chadian oil"><meta name="twitter:description" content="Investigations, analyses and viewpoints on geology, safety, innovation and enhanced recovery — plus official releases, milestones and the media kit."><meta name="twitter:image" content="https://enertchad-delta.vercel.app/og-image.jpg">
 <link rel="icon" href="favicon-32.png" sizes="32x32"><link rel="apple-touch-icon" href="apple-touch-icon.png">
 
@@ -393,12 +393,13 @@ html.et-jlight .rootland::after{
     var live=document.createElement('p');live.id='jfil-live';live.setAttribute('aria-live','polite');live.style.cssText='font-family:var(--fm);font-size:.72rem;letter-spacing:.08em;opacity:.75;margin:6px 0 0';
     bar.insertAdjacentElement('afterend',live);
     function slug(x){return x.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'');}
-    arts.forEach(function(a){var r=a.querySelector('.rub2');if(!r)return;var k=r.textContent.split('\u00b7')[0].trim();a.setAttribute('data-rub',k);if(seen.indexOf(k)<0)seen.push(k);});
+    arts.forEach(function(a){var r=a.querySelector('.rub2');if(!r)return;var k=r.textContent.split('\u00b7')[0].trim();a.setAttribute('data-rub',k);a.setAttribute('data-rubfull',r.textContent);if(seen.indexOf(k)<0)seen.push(k);});
+    var poles=['Upstream','Midstream','Downstream','Petrochemicals'];
     function apply(key,btn){
       bar.querySelectorAll('button').forEach(function(x){x.setAttribute('aria-pressed','false')});
       btn.setAttribute('aria-pressed','true');
       var n=0;
-      arts.forEach(function(a){var ok=(!key||a.getAttribute('data-rub')===key);a.style.display=ok?'':'none';if(ok)n++;});
+      arts.forEach(function(a){var ok=(!key||(poles.indexOf(key)>=0?(a.getAttribute('data-rubfull')||'').indexOf(key)>=0:a.getAttribute('data-rub')===key));a.style.display=ok?'':'none';if(ok)n++;});
       live.textContent=document.documentElement.lang==='en'?(n+(n===1?' story shown':' stories shown')):(n+(n===1?' carnet affich\u00e9':' carnets affich\u00e9s'));
       var h=key?'#rub='+slug(key):'';
       if(('#'+location.hash.slice(1))!==('#'+(h?h.slice(1):'')))history.replaceState(null,'',location.pathname+(h||''));
@@ -406,7 +407,7 @@ html.et-jlight .rootland::after{
     function mk(label,key){var b=document.createElement('button');b.type='button';b.textContent=label;b.dataset.key=key;b.dataset.slug=key?slug(key):'';b.setAttribute('aria-pressed',key===''?'true':'false');
       b.addEventListener('click',function(){apply(key,b);});
       bar.appendChild(b);return b;}
-    var all=mk('All','');seen.forEach(function(k){mk(k,k)});
+    var all=mk('All','');poles.forEach(function(k){mk(k,k)});seen.forEach(function(k){if(poles.indexOf(k)<0)mk(k,k)});
     function fromHash(){
       var m=location.hash.match(/^#rub=([a-z0-9-]+)$/);
       var target=all;
