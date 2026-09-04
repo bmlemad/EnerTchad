@@ -14662,3 +14662,38 @@ la page (kicker losange, cartes datees, lien souligne or).
 
 Publication : amont/index.html + pole-amont-en.html + journal.
 Pas de bump SW (HTML inline seul).
+
+## 408 — 2026-09-04 : Les carnets de terrain generalises aux trois autres hubs
+
+Chapitre auto-choisi : etendre aux hubs Intermediaire, Aval et
+Petrochimie la recommandation appliquee a l Amont au ch.407 — les
+pages metier des majors s adossent a des recits de terrain, et
+notre journal en possede pour chaque maillon.
+
+Six hubs equipes (FR et EN) du meme bloc carn407, avec trois
+articles dates choisis par pole dans le journal existant :
+
+Intermediaire — l interview du jaugeur-mesureur (22 aout), le
+transfert de garde (20 aout), Doba-Kribi le tube de 1 070 km
+(24 juin). Aval — le bitume l autre produit du baril (29 juillet),
+de quoi est fait le prix du litre (17 juillet), Mobile Stations
+la pompe au village (2 juillet). Petrochimie — le prix d un sac
+d uree (20 aout), le gaz torche (20 aout), Sedigui le gisement
+qui dort (7 juillet). Les versions EN pointent leurs articles EN
+avec leurs propres dates.
+
+Le fil date garde son identite or sur les six hubs — meme kicker,
+memes cartes, meme lien "Tous les carnets" — plutot qu une
+teinte par pole : c est la langue du fil date etablie sur
+l accueil, et elle evite les pieges de contraste des couleurs de
+pole sur creme releves au ch.391.
+
+QA : les six hubs x 2 themes — 3 cartes partout, encre adaptative
+(claire #2A3648, sombre #F5F7FA), 18 liens tous vers des articles
+existants, zero debordement. Les quatre hubs de chaine plus les
+quatre hubs EN racontent desormais tous leur maillon depuis le
+terrain.
+
+Publication : 3 fichiers racine (poles EN) + journal en un lot,
+puis 3 index de sous-repertoires. Pas de bump SW (HTML inline
+seul).
