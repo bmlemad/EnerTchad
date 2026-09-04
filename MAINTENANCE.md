@@ -14845,3 +14845,34 @@ captures sombre et clair du heros, des capacites et du bandeau ;
 390px sans debordement ; axe WCAG 2.0 A/AA zero violation sur les
 deux jumelles. Deux fichiers modifies, inline seulement — pas de
 bump SW.
+
+## 412 — 2026-09-04 : Consolidation apres la modernisation de l Amont
+
+Le balayage complet : 218 pages, deux themes, six tranches — zero
+defaut ; seules remontent les entrees informatives de citation des
+manifestes, toutes attendues. La vague 411 n a rien decale
+ailleurs.
+
+Le sitemap : huit lastmod remis a l heure git — les quatre hubs FR
+et les quatre jumelles EN touches par les vagues 407 a 411 (bande
+carnets, reorganisation, modernisation). Les 209 autres URLs
+etaient deja justes.
+
+Le registre : cinq entrees ajoutees (407 a 411), 137 chapitres au
+tableau. La publication a d abord ete refusee — version en ligne
+plus recente que ma derniere lecture ; le reflexe du ch.406 a
+joue : diff programmatique des entrees (131 en ligne, toutes
+presentes et identiques dans mes 136, les extras etant exactement
+407-411), relecture de la version en ligne, republication. Pas de
+force.
+
+Les veilles, sur sources primaires : l ITIE affiche toujours
+64,5/100 d octobre 2022 sur eiti.org, aucun resultat plus recent ;
+le site itie-chad.org annonce un article "nouvelle date pour la
+validation" mais repond en erreur serveur — a relire a la
+prochaine consolidation avant d en tirer une date. Sedigui :
+toujours aucune annonce datable de mise en production, seuls les
+articles connus de chantier et de retards. La carte Brent n echoit
+qu en janvier 2027.
+
+Publication : journal et sitemap. Pas de bump SW.
