@@ -15223,3 +15223,37 @@ dans les coutures, pas dans les edifices.
 
 Publication : investisseurs FR, trois pages arabes, sitemap et
 journal, un lot. Pas de bump SW (tout inline).
+
+## 423 — 2026-09-04 : QA de coherence apres le plan — les coutures du multilingue
+
+Le plan solde, la revue de coherence qui le suit. Cinq bancs.
+
+Un, l integrite des liens : les 226 fichiers passes au crible.
+Apres avoir ecarte les faux positifs (les deux reecritures
+d outils servies par la plateforme, les gabarits de chaines dans
+les scripts, le schema webcal), une vraie prise : neuf pages EN
+gardaient un bouton "Back to our business" vers /activites-en —
+une page d avant la restructuration, servie aujourd hui par une
+redirection permanente vers la sous-page Amont. Le lien
+fonctionnait, mais par detour et vers une cible qui n est plus
+la doctrine. Recable en direct vers la section des trois maillons
+de l accueil EN (/index-en#coeurs), l ancre verifiee.
+
+Deux, le maillage des langues : l accueil declare son trio
+hreflang fr-en-ar depuis longtemps, mais les trois nouvelles
+pages arabes restaient orphelines — les hubs ne les declaraient
+pas, et elles ne declaraient qu elles-memes. Les trios sont
+poses des deux cotes : ar sur les six hubs FR et EN concernes,
+fr, en et x-default sur les trois pages arabes — bidirectionnel,
+au modele exact de l accueil. La Petrochimie, sans page arabe,
+reste en paire fr-en.
+
+Trois, les flux RSS desormais annonces sur 64 pages de plus :
+XML valide dans les deux langues, 42 et 41 items, guids tous
+uniques, dates fraiches d aout. Quatre, la sanite des pages
+arabes neuves : zero identifiant duplique. Cinq, les index de
+recherche : le mini-site arabe en reste absent — comme les cinq
+pages arabes historiques, coherent, laisse tel quel.
+
+Apres correctifs, le crible des liens rend zero lien mort sur
+226 fichiers. Seize fichiers en quatre lots. Pas de bump SW.
