@@ -15283,3 +15283,36 @@ une date" a "guetter le RESULTAT de la validation ouverte le
 ch.412, le meme jour. Carte Brent : echeance janvier 2027.
 
 Publication : journal et sitemap, un lot. Pas de bump SW.
+
+## 425 — 2026-09-04 : Les quatre hubs de capacites rejoignent le langage commun
+
+Les hubs de poles parlent "verre et fil d or" depuis les ch.411
+et 413 ; les quatre hubs de capacites (GreenTech, TchadiTech,
+Tchaditude, EnerConseils) restaient a l ancien traitement.
+L inventaire d abord, comme toujours : leur ordre est deja
+catalogue-en-tete (psol aussitot apres le cap), aucune bande de
+soutien a supprimer — pas de reorganisation necessaire. Et
+TchadiTech porte deja sa propre section de carnets (tt-carnets,
+cartes illustrees) — une variante voulue, conservee telle quelle,
+comme les deux variantes de print386.
+
+Le paquet applique : le bloc hub413, octet-pour-octet identique a
+celui des six hubs de poles, pose sur les huit fichiers (les
+selecteurs sans correspondance — offre, approche, partenariats —
+restent inertes) ; et la bande carnets de la famille carn407 sur
+les six fichiers qui n en avaient pas — GreenTech (eau de
+production, hybride gaz-solaire, GPL contre bois), Tchaditude
+(l academie, l interview wellpads, l interview comptage),
+EnerConseils (l Atlas, l enigme du 28-32, la rente partagee) —
+jumelles EN avec leurs propres dates, extraites des archives
+comme au ch.414, sans re-redaction.
+
+Verification : seize prises calculees a 3500 ms toutes conformes
+(liseres or des deux themes, bandeau final allege, indicateurs du
+heros au lisere or, bande a trois cartes sur les six pages
+equipees) ; dix-huit liens de carnets tous resolus ; axe zero
+violation sur quatre pages echantillon dans LES DEUX themes (la
+lecon du ch.422 appliquee) ; 390px sans debordement. L empreinte
+hub413 reste unique sur quatorze fichiers, l empreinte carn407
+unique sur quatorze poses. Huit fichiers en trois lots.
+Pas de bump SW.
