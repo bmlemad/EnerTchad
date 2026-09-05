@@ -15724,3 +15724,33 @@ d ecart. Positions inchangees : resultat ITIE attendu, Sedigui
 sans annonce datable, carte Brent pour janvier 2027.
 
 Publication : journal seul, un lot. Pas de bump SW.
+
+## 438 — 2026-09-05 : Le design des services modernise — deux pages remises au niveau de l amont
+
+La directive : moderniser le design des services. L inventaire
+d abord : trois paires de pages de services. Le catalogue
+parapetrolier de l Amont (services-ep) est deja la reference —
+la modernisation profonde du ch.411 lui a donne kickers colores,
+pastilles et verre. Les deux autres etaient en retrait : les six
+cartes de l Intermediaire, plates (titre nu, bouton "En savoir
+plus" sans relief, aucune identite de pole) ; l offre RH de
+Tchaditude, correcte mais avec un encadre d intro brut et des
+kickers LIGNE sans pastille.
+
+Le chantier : un bloc svc438 byte-identique sur les quatre
+fichiers (intermediaire/services et tchaditude/services, FR et
+EN), qui remonte ces deux familles a la signature de l amont —
+pastille a la couleur du pole devant chaque titre de carte
+(bleu Intermediaire, violet Tchaditude), lisere degrade en tete
+de carte, survol qui leve, bouton "En savoir plus" en pilule
+accentuee avec focus visible, filet colore sur le detail
+deplie ; l encadre d intro RH passe au verre avec liseret or,
+variante claire dediee. Garde-fou mouvement reduit inclus.
+Tout est en CSS scope aux deux sections — zero contenu invente,
+zero balisage retouche.
+
+Verification : les quatre pages a axe zero violation dans les
+deux themes, detail ouvert au clic ; pastilles calculees
+presentes (8 px et 7 px) ; aucun debordement ; captures des deux
+sections conformes. Quatre fichiers plus le journal, trois lots.
+Pas de bump SW.
