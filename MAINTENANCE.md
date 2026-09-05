@@ -15814,3 +15814,33 @@ themes, bande presente et mesuree (1 128 px), formulaire en
 place, aucun debordement, capture du footer de l Aval conforme
 au motif de l accueil. Huit fichiers plus le journal, cinq lots.
 Pas de bump SW.
+
+## 441 — 2026-09-05 : L Atlas retitre — "A la decouverte du secteur petrolier et gazier du Tchad"
+
+La directive : trouver un meilleur titre pour l Atlas, sur le
+modele propose par le proprietaire. L ancien "Atlas & conseil au
+secteur" disait l outil ; le nouveau dit la promesse au lecteur.
+
+Le chantier : le h1 de la paire atlas passe a "A la decouverte
+du secteur petrolier et gazier du Tchad" (accent em sur "secteur
+petrolier et gazier"), l anglais a "Discovering Chad s oil and
+gas sector" ; les balises title, og:title et twitter:title
+suivent, avec le suffixe "L Atlas EnerConseils" / "The
+EnerConseils Atlas" pour garder le nom de l outil dans les
+resultats de recherche. La description, toujours juste, ne
+bouge pas.
+
+La coherence des citations (regle du ch.426) : l ancien titre
+etait cite en toutes lettres dans les navs precedent/suivant et
+la sous-nav du pole sur vingt-et-un fichiers FR (dont les huit
+hubs et le plan du site) et quatre EN — toutes les citations
+suivent le nouveau titre, zero occurrence de l ancien ne reste.
+Le libelle court "Sector atlas" / "Atlas du secteur" de la nav
+generale et du pied de page, qui n est pas une citation de
+titre, ne bouge pas.
+
+Verification : la paire a axe zero violation dans les deux
+themes, h1 et title calcules conformes, aucun debordement,
+capture du hero conforme ; balayage des chaines : 0 ancien titre
+restant, 21 fichiers porteurs du nouveau. Vingt-cinq fichiers
+plus le journal, neuf lots. Pas de bump SW.
