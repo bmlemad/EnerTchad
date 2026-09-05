@@ -15658,3 +15658,38 @@ Verification : les six pages corrigees repassent a axe zero en
 390 px dans les deux themes (brochures : seul l artefact de
 profondeur documente subsiste, en sombre). Six fichiers plus le
 journal, un lot. Pas de bump SW.
+
+## 436 — 2026-09-05 : Offres & expertises — les trois colonnes fusionnees dans Services
+
+La directive : fusionner les trois colonnes (Services, Capacites,
+Avantages) dans la seule colonne Services, pour que tout se
+deplie au meme endroit — et le faire partout ou necessaire.
+
+L inventaire du gabarit "poffer" : huit pages le portent, mais
+sous trois variantes. Les hubs Amont, Aval et Intermediaire
+(FR et EN, six fichiers) ont le trio vise ; l ancre du bas de
+colonne differe (bouton .pof-cta sur l Amont, lien stylise en
+ligne sur Aval et Intermediaire — le script gere les deux). La
+paire Petrochimie, elle, n a PAS ce trio : deux colonnes
+thematiques propres ("Molecules & produits", "Chimie de
+production"), chacune avec son propre appel — hors perimetre de
+la directive, laissee telle quelle et journalisee.
+
+La fusion, sur les six fichiers : une seule colonne Services
+(plafonnee a 840 px pour ne pas etirer les accordeons), les
+services inchanges, puis deux groupes depliables en fin de
+liste — "Capacites" (pastille bleue, compteur 5) et "Avantages"
+(pastille verte, compteur 5) — qui contiennent les accordeons
+des anciennes colonnes, indentes derriere un filet a la couleur
+du groupe. Les accents par groupe reprennent les couleurs des
+anciennes colonnes, variantes theme clair comprises (#1A63B4,
+#0B7150) via regles CSS et non styles en ligne, pour que le
+clair garde ses fonces. Un clic dans Services donne donc bien
+acces a toutes les options, au meme endroit.
+
+Verification : les six pages a axe zero violation dans les deux
+themes, groupes OUVERTS et un item imbrique deplie ; pastille
+calculee bleue en sombre, bleu fonce en clair ; aucune deuxieme
+colonne restante dans la section ; aucun debordement ; capture
+de l etat ouvert conforme. Six fichiers plus le journal, quatre
+lots. Pas de bump SW.
