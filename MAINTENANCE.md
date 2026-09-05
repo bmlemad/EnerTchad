@@ -15408,3 +15408,44 @@ ITIE du Tchad est en cours depuis le 1er juillet 2026 (decision
 sans annonce datable ; carte Brent a echeance janvier 2027.
 
 Publication : journal et sitemap, un lot. Pas de bump SW.
+
+## 429 — 2026-09-05 : Les poles classes dans le menu — la chaine numerotee sur trois colonnes
+
+La directive : classer les poles par menus, bien organises. L
+etat des lieux du panneau "Nos activites" donnait raison a la
+demande : l Intermediaire etait colle sous l Amont en colonne 1,
+et l Aval partageait sa colonne avec la Petrochimie — les poles
+ne se lisaient ni dans l ordre ni d un coup d oeil.
+
+L arbitrage proprietaire : "chaine numerotee, trois colonnes".
+Le nouveau classement, applique aux 142 pages porteuses du menu
+(71 FR, 71 EN) : colonne 1 = 01 Amont entier ; colonne 2 = 02
+Intermediaire puis 03 Aval ; colonne 3 = + Petrochimie
+(prolongement de l Aval) au-dessus de l encadre des quatre
+capacites et de la carte solutions. Chaque en-tete de pole recoit
+sa pastille a la couleur canonique (or, bleu, orange, rose) et
+son numero d ordre — la chaine se lit de gauche a droite, la
+largeur du panneau ne bouge pas.
+
+La methode : deplacements de segments ancres sur les en-tetes de
+poles (tolerants aux cinq variantes par langue — les pages qui
+marquent leur propre lien is-active dans l encadre des
+capacites), pastilles posees par remplacements comptes un a un,
+verification d integrite sur les 142 panneaux (numeros presents
+une fois chacun, zero doublon de libelle).
+
+Prise au passage, la meme derive que la brochure et l explorateur
+: la carte solutions du menu portait encore l etiquette
+"Transversal" / "Cross-cutting" sur 140 pages — passee a
+"Par besoin" / "By need", qui dit ce que la carte fait. Les deux
+brochures, dont l etiquette du menu avait recu par erreur au
+ch.415 le libelle destine a un autre contexte, sont realignees —
+mon tir du ch.415 avait touche la carte du MENU en croyant viser
+celle du corps de page ; corrige et journalise.
+
+Verification : panneau ouvert au navigateur sur cinq pages et
+quatre largeurs (1241 a 1680 px) — ordre 01/02/03/+ partout,
+aucun ecretage, aucun debordement ; captures sombre et clair
+lisibles ; axe zero violation panneau OUVERT ; Escape referme le
+panneau. Cent quarante-deux fichiers en treize lots.
+Pas de bump SW.
