@@ -15592,3 +15592,29 @@ Verification : banc complet re-execute (un seul or par famille),
 axe zero violation sur 7 pages temoins dans les deux themes,
 pied de page calcule a #96A2EC, capture visuelle du pied de
 page. 217 fichiers HTML + 7 feuilles CSS + sw.js, 19 lots.
+
+## 434 — 2026-09-05 : Consolidation apres le benchmark
+
+Le balayage complet : 221 pages, deux themes, six tranches — zero
+defaut. L unification du jeton or, la couleur TchadiTech du pied
+de page et le bump du service worker (433, 225 fichiers) n ont
+rien decale : ni erreur console, ni violation axe, ni
+debordement.
+
+Le sitemap : soixante-quinze lastmod remis a l heure git — la
+vague du benchmark a touche jusqu aux pages journal, qui dataient
+d hier. Deux cent dix-sept URLs sur deux cent vingt portent
+desormais la date du jour ; il faudra s habituer a ce que les
+moteurs voient un site entier rafraichi.
+
+Le registre : deux entrees ajoutees (432 et 433), 159 chapitres
+au tableau, artefact republie.
+
+La veille ITIE re-interrogee a la source : la page pays affiche
+toujours la validation d octobre 2022 et son 64,5/100 — aucun
+resultat de la validation en cours. Sedigui et la carte Brent
+restent sur leurs positions (rien de datable ; echeance janvier
+2027).
+
+Publication : journal et sitemap, un lot. Pas de bump SW — il
+date du chapitre precedent.
