@@ -15693,3 +15693,13 @@ calculee bleue en sombre, bleu fonce en clair ; aucune deuxieme
 colonne restante dans la section ; aucun debordement ; capture
 de l etat ouvert conforme. Six fichiers plus le journal, quatre
 lots. Pas de bump SW.
+
+Complement de directive, meme chapitre : que chaque service ouvre
+les details lies. Un script leger pose dans la section (pof436s,
+ecoute des toggle en capture) : des qu un SERVICE se deplie, les
+deux groupes "Capacites" et "Avantages" s ouvrent d eux-memes
+juste en dessous — les details lies sont visibles sans second
+clic ; deplier un item a l interieur d un groupe ne redeclenche
+rien. Verifie au navigateur sur trois pages (groupes fermes
+avant, ouverts apres, zero erreur console). Les six fichiers
+repassent, ce qui porte le chapitre a sept lots.
