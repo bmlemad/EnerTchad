@@ -15866,3 +15866,35 @@ resultat ITIE attendu, Sedigui sans annonce datable, carte Brent
 pour janvier 2027.
 
 Publication : journal seul, un lot. Pas de bump SW.
+
+## 443 — 2026-09-05 : La colonne Services en ultra premium
+
+La directive, capture a l appui : mieux organiser la colonne
+Services fusionnee (436), en design ultra premium. La capture
+montrait le probleme — huit rangees plates empilees, beaucoup de
+vide, des groupes a peine distingues.
+
+Le traitement, bloc svc443 par-dessus pof436 sur les six
+fichiers du trio (Amont, Aval, Intermediaire, FR/EN), en CSS
+seul :
+- rythme editorial numerote : ordinaux 01 a 08 en mono dore
+  devant chaque service, poses par compteurs CSS — zero balisage
+  ajoute ; les items des groupes en sont exclus (attrape a la
+  re-verification : Equipes heritait d un "09") ;
+- deux colonnes internes des 1000 px : les huit services en
+  grille 2x4, en-tete, groupes et appel a pleine largeur — la
+  colonne perd la moitie de sa hauteur et le vide disparait ;
+- chevrons en pastille cerclee a la couleur du contexte ;
+- bandes de groupes retravaillees : capitales mono espacees,
+  lavis degrade a la couleur du groupe, couture superieure ;
+- matiere enrichie : lueur or externe, rehaut interne, rayon
+  20 px, en-tete souligne d une couture or, appel du catalogue
+  separe d un filet et dote d un halo au survol (desactive en
+  mouvement reduit) ; ombrage dedie au theme clair.
+
+Verification : les six pages a axe zero violation dans les deux
+themes (un service ouvert), grille calculee a deux colonnes,
+ordinaux rendus, aucun debordement ; captures fermee et ouverte
+conformes — services numerotes sur deux colonnes, groupes en
+bandes, items imbriques sans numero. Six fichiers plus le
+journal, quatre lots. Pas de bump SW.
