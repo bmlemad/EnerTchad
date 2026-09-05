@@ -15353,3 +15353,38 @@ identiques, les deux seuls profils "parc" restants sur les deux
 pages du parc. Verification au navigateur sur trois echantillons,
 axe zero violation. Quatre-vingt-dix fichiers en treize lots.
 Pas de bump SW.
+
+## 427 — 2026-09-05 : "What we do" modernise — la surface anglaise disait encore que ses pages n existaient qu en francais
+
+La directive : moderniser "what we do". La surface qui porte ce
+nom est la section "What this pole does" des huit hubs anglais
+(le bloc pole-inside, propre aux jumelles EN — les hubs FR
+passent par le catalogue psol). Les listes "Ce que nous faisons"
+des maillons de l accueil, elles, sont a jour depuis la
+restructuration — auditees, laissees telles quelles.
+
+La prise de contenu, la plus parlante : CINQ hubs anglais
+annoncaient encore "the pages of this pole are currently
+published in French" — alors que les sous-pages anglaises
+existent depuis longtemps et que les cartes de ces memes blocs
+pointent deja vers elles. Le texte contredisait ses propres
+liens. Les cinq intros passent a la formule des hubs deja a jour
+("Each focus area of this pole has its own page — explore them
+below") ; TchadiTech garde sa ligne sur mesure, actuelle et plus
+precise. Soixante liens des huit blocs verifies sur disque au
+passage : zero mort (la reecriture plateforme du configurateur
+mise a part).
+
+La modernisation visuelle : bloc wwd427, octet-pour-octet
+identique sur les huit hubs, qui passe les cartes de ces blocs au
+langage commun — verre nuit en sombre, creme en clair, lisere qui
+s allume a l or au survol avec translation douce, garde-fous
+reduced-transparency et reduced-motion. Le plancher de
+lisibilite des ch.238-239 (flou 18px) s applique par-dessus,
+comme sur les cartes de capacites — coherent.
+
+Verification : sonde calculee a 3500 ms sur quatre hubs et les
+deux themes, toutes valeurs conformes ; l ancienne mention
+francaise absente partout ; axe zero violation en theme clair ;
+aucun debordement. Huit fichiers plus le journal, un lot.
+Pas de bump SW.
