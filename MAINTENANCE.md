@@ -15517,3 +15517,26 @@ Verification : 16 cartes recomptees une a une par fichier, axe
 zero violation dans les deux themes, aucun debordement, capture
 de la section Produire conforme (pastilles, numeros, types).
 Deux fichiers plus le journal, un lot. Pas de bump SW.
+
+## 432 — 2026-09-05 : Consolidation apres le catalogue
+
+Le balayage complet : 221 pages, deux themes, six tranches — zero
+defaut. La recategorisation du catalogue Solutions (431) n a rien
+decale ailleurs.
+
+Le sitemap n avait rien a reprendre : les deux pages solutions
+etaient deja datees du jour par la vague du menu (429) — meme
+date git, meme lastmod.
+
+Le registre : deux entrees ajoutees (430 et 431), 157 chapitres
+au tableau, artefact republie.
+
+Les veilles : verifiees a la source ce matin meme au chapitre
+430 (page pays ITIE sans resultat, Sedigui sans annonce datable,
+carte Brent pour janvier 2027) — pas de re-interrogation a
+quelques heures d ecart, les positions restent les memes.
+
+Reste ouvert, note au 431 : le #7E8AD9 du pied de page (213
+fichiers) a aligner un jour sur le canon TchadiTech #96A2EC.
+
+Publication : journal seul, un lot. Pas de bump SW.
