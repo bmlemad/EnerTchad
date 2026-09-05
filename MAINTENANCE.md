@@ -15703,3 +15703,24 @@ clic ; deplier un item a l interieur d un groupe ne redeclenche
 rien. Verifie au navigateur sur trois pages (groupes fermes
 avant, ouverts apres, zero erreur console). Les six fichiers
 repassent, ce qui porte le chapitre a sept lots.
+
+## 437 — 2026-09-05 : Consolidation apres la fusion des offres
+
+Le balayage complet : 221 pages, deux themes, six tranches — zero
+defaut. Le banc mobile (435) et la fusion des offres (436) n ont
+rien decale en desktop ; les six pages fusionnees passent le
+crible avec leurs groupes en place.
+
+Le sitemap n avait rien a reprendre : les huit fichiers des
+chapitres 435 et 436 portaient deja la date du jour depuis la
+vague du benchmark.
+
+Le registre : trois entrees ajoutees (434, 435 et 436), 162
+chapitres au tableau, artefact republie.
+
+Les veilles : deux verifications a la source aujourd hui meme
+(430 et 434) — pas de troisieme interrogation a quelques heures
+d ecart. Positions inchangees : resultat ITIE attendu, Sedigui
+sans annonce datable, carte Brent pour janvier 2027.
+
+Publication : journal seul, un lot. Pas de bump SW.
