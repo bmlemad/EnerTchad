@@ -15475,3 +15475,45 @@ sur les retards, rien de datable ; carte Brent a echeance
 janvier 2027.
 
 Publication : journal et sitemap, un lot. Pas de bump SW.
+
+## 431 — 2026-09-05 : QA du catalogue Solutions — explications verifiees, cartes recategorisees
+
+La directive : QA des explications des solutions et services, et
+mieux les categoriser. L arbitrage proprietaire : pastilles de
+poles aux couleurs canoniques + types distincts.
+
+Le QA d abord. Les explications tiennent : chiffres du catalogue
+alignes sur le canon du site (corridor 1 070 km / ~60 %, trains
+de 500 a 2 000 b/j, Sedigui ~7 Md m3 / 125 MW, ARSAT 23
+provinces, cadastre 2025 a 26 blocs, 80 % de contenu local vise),
+liens et ancres des 16 cartes tous valides en FR et EN, sections
+symetriques entre les deux langues. Mais deux derives : le kicker
+du hero disait encore "Transversal · A chaque besoin, sa
+solution" (le mot que la doctrine a banni partout ailleurs), et
+les couleurs des cartes dataient d avant le canon — l Amont
+peint en vert GreenTech, l Aval en or Amont, l Intermediaire en
+jaune #F2B45A, TchadiTech en #7E8AD9 : quatre poles sur six
+portaient la couleur d un autre.
+
+La recategorisation, bornee aux sections de besoins (la grille
+"par profil" B2C/B2B/B2G garde son propre code, legitime) :
+chaque carte recoit la couleur canonique de son proprietaire,
+une pastille 7 px, et le numero de chaine du menu ch.429 — 01
+Amont, 02 Intermediaire, 03 Aval, + Petrochimie ; les capacites
+(Atlas, Conseil, TchadiTech, HSE-Q, Territoire, Talents) portent
+la pastille sans numero ; la carte Investir, porte corporate,
+reste or sans pastille. Et le type est enfin dit : "Voir la
+solution" (5 offres), "Voir le service" (6 prestations), "Voir
+l outil" (Atlas, socle TchadiTech), "Decouvrir" (les portes
+d entree) — le libelle unique "Voir la solution" mentait sur
+onze cartes. Kicker passe a "Catalogue". Trois listes de preuves
+realignees aussi (puces or Amont, orange Aval, teal EnerConseils).
+
+Constat pour plus tard, hors perimetre : le pied de page de 213
+fichiers colore "Technologies" en #7E8AD9 la ou le canon
+TchadiTech dit #96A2EC — chantier site entier a part.
+
+Verification : 16 cartes recomptees une a une par fichier, axe
+zero violation dans les deux themes, aucun debordement, capture
+de la section Produire conforme (pastilles, numeros, types).
+Deux fichiers plus le journal, un lot. Pas de bump SW.
