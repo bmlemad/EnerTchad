@@ -15449,3 +15449,29 @@ aucun ecretage, aucun debordement ; captures sombre et clair
 lisibles ; axe zero violation panneau OUVERT ; Escape referme le
 panneau. Cent quarante-deux fichiers en treize lots.
 Pas de bump SW.
+
+## 430 — 2026-09-05 : Consolidation apres la chaine numerotee
+
+Le balayage complet : 221 pages, deux themes, six tranches — zero
+defaut. La reorganisation du menu (429, cent quarante-deux
+fichiers) n a rien decale : ni erreur console, ni violation axe,
+ni debordement, dans les deux themes.
+
+Le sitemap : cent trente-quatre lastmod remis a l heure git — la
+masse vient des 142 pages du menu du ch.429, le reste des vagues
+recentes que le rythme des consolidations n avait pas encore
+datees.
+
+Le registre : deux entrees ajoutees (428 et 429), 155 chapitres
+au tableau, artefact republie. Le script d empaquetage avait
+disparu avec l environnement — reconstruit en ligne (dist vite
+recolle en un seul fichier sans squelette), meme resultat.
+
+Les veilles verifiees a la source : la page pays de l ITIE ne
+publie toujours aucun resultat de la validation en cours depuis
+le 1er juillet 2026 — le score affiche reste 64,5/100 d octobre
+2022 ; sur Sedigui la recherche ne remonte que l article de 2020
+sur les retards, rien de datable ; carte Brent a echeance
+janvier 2027.
+
+Publication : journal et sitemap, un lot. Pas de bump SW.
