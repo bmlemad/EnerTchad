@@ -15790,3 +15790,27 @@ proprietaire deja en attente, rien a batir sans noms.
 
 Audit sans correctif : constat propre, deux recommandations
 posees. Journal seul, un lot. Pas de bump SW.
+
+## 440 — 2026-09-05 : L ecart no 1 de l audit comble — l inscription posee sur les huit hubs
+
+La directive : appliquer. Des deux ecarts du chapitre 439, un
+seul est actionnable sans faits proprietaire : l inscription aux
+nouvelles depuis les hubs de poles (le motif des majors —
+s abonner depuis la page du segment, pas seulement depuis
+l accueil). Les dirigeants par pole restent en attente des noms.
+
+Le chantier : la bande "Etre prevenu(e) au premier jour" de
+l accueil, reprise a l identique sur les huit hubs (Amont, Aval,
+Intermediaire, Petrochimie, FR et EN) — les trois morceaux
+extraits de l accueil et non reecrits : le HTML de la bande
+(texte FR de index, texte EN de index-en), les treize regles CSS
+fn/foot-news isolees du bloc sec-head dans un bloc fnews440, et
+la seule IIFE du formulaire mailto extraite du script de
+l accueil (sujet FR/EN respectif). Bande inseree en tete de
+footer, avant la grille — meme position qu a l accueil.
+
+Verification : les huit pages a axe zero violation dans les deux
+themes, bande presente et mesuree (1 128 px), formulaire en
+place, aucun debordement, capture du footer de l Aval conforme
+au motif de l accueil. Huit fichiers plus le journal, cinq lots.
+Pas de bump SW.
