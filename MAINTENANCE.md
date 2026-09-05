@@ -15754,3 +15754,39 @@ deux themes, detail ouvert au clic ; pastilles calculees
 presentes (8 px et 7 px) ; aucun debordement ; captures des deux
 sections conformes. Quatre fichiers plus le journal, trois lots.
 Pas de bump SW.
+
+## 439 — 2026-09-05 : Audit des poles face a ExxonMobil et Chevron
+
+La directive : auditer nos poles contre les deux majors. La
+methode : relever les motifs de presentation de leurs segments
+(pages divisions et Upstream d ExxonMobil, What we do de
+Chevron), en tirer onze dimensions, puis crible programmatique
+de nos quatre hubs de poles sur chacune.
+
+Ce que font les majors : ExxonMobil decoupe l Upstream en cinq
+unites chiffrees (9,5 M d acres, ~20 pays), pose quatre
+actualites datees par segment, met en avant des projets phares a
+cibles datees (Guyana ~1,3 Mb/j vers 2027, methane quasi nul au
+Permian vers 2030), et a fusionne aval et chimie en "Product
+Solutions". Chevron, lui, presente une page mission sans
+chiffres ni jalons — aucun point de preuve visible.
+
+Le verdict du crible : neuf dimensions sur onze tenues par les
+QUATRE poles — indicateurs a cibles datees, actualites datees
+par pole (bandes carnets), position dans la chaine, carte,
+brochure telechargeable, durabilite integree au pole, lien
+investisseurs, sous-unites quantifiees, projets phares dates.
+Trois validations au passage : la fusion aval+chimie d Exxon est
+structurellement notre "+ Petrochimie prolonge l Aval" ; nos
+chiffres sont TOUS dates la ou Chevron n en montre aucun ; nos
+bandes carnets font le meme travail que les actualites de
+segment d Exxon.
+
+Les deux ecarts, honnetes : pas d inscription aux nouvelles
+DEPUIS les hubs de poles (la bande e-mail n existe qu a
+l accueil — extension possible a huit fichiers, sur decision) ;
+pas de dirigeants par pole — ce point attend les faits
+proprietaire deja en attente, rien a batir sans noms.
+
+Audit sans correctif : constat propre, deux recommandations
+posees. Journal seul, un lot. Pas de bump SW.
