@@ -15388,3 +15388,23 @@ deux themes, toutes valeurs conformes ; l ancienne mention
 francaise absente partout ; axe zero violation en theme clair ;
 aucun debordement. Huit fichiers plus le journal, un lot.
 Pas de bump SW.
+
+## 428 — 2026-09-05 : Consolidation apres la serie "langage commun"
+
+Le balayage complet : 221 pages, deux themes, six tranches — zero
+defaut. Les vagues 425 a 427 (hubs de capacites, bandeau final
+unifie, "What we do") n ont rien decale ailleurs.
+
+Le sitemap : quarante-sept lastmod remis a l heure git — la trace
+des trois vagues (huit hubs de capacites, les quatre-vingt-dix
+fichiers du bandeau final dont beaucoup dataient d avant-hier,
+les huit hubs EN de "What we do"). Le registre : quatre entrees
+ajoutees (424 a 427), 153 chapitres au tableau, artefact republie
+sans heurt.
+
+Les veilles restent sur leurs positions d hier : la validation
+ITIE du Tchad est en cours depuis le 1er juillet 2026 (decision
+2025-50 du 16 decembre 2025), on guette le RESULTAT ; Sedigui
+sans annonce datable ; carte Brent a echeance janvier 2027.
+
+Publication : journal et sitemap, un lot. Pas de bump SW.
