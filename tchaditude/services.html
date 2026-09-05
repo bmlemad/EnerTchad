@@ -353,6 +353,22 @@ html.et-jlight .rootland::after{
     background-color:rgba(250,247,241,.96)!important;
   }
 }
+</style><style id="svc438">/* Services modernises (ch.438) : cartes intermediaire + offre RH tchaditude, FR/EN.
+   Pastille et lisere a la couleur du pole, survol leve, bouton pilule, filet sur le detail. */
+#inter-services .tri-c:not(#_){position:relative;overflow:hidden;transition:transform .28s var(--ease,ease),border-color .28s,box-shadow .28s}
+#inter-services .tri-c:not(#_):hover{transform:translateY(-4px);border-color:color-mix(in srgb,var(--pac,#5AA7F0) 40%,rgba(255,255,255,.10))!important}
+#inter-services .tri-c::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--pac,#5AA7F0) 25%,var(--pac,#5AA7F0) 75%,transparent);opacity:.85}
+#inter-services .tri-c>b{display:flex;align-items:center;gap:9px}
+#inter-services .tri-c>b::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--pac,#5AA7F0);flex:none;box-shadow:0 0 0 4px color-mix(in srgb,var(--pac,#5AA7F0) 16%,transparent)}
+#inter-services .tri-more:not(#_){border:1px solid color-mix(in srgb,var(--pac,#5AA7F0) 34%,transparent);border-radius:999px;padding:7px 14px;background:color-mix(in srgb,var(--pac,#5AA7F0) 10%,transparent);font-family:var(--fm,ui-monospace,monospace);letter-spacing:.04em;cursor:pointer}
+#inter-services .tri-more:not(#_):hover{background:color-mix(in srgb,var(--pac,#5AA7F0) 18%,transparent)}
+#inter-services .tri-more:not(#_):focus-visible{outline:2px solid var(--pac,#5AA7F0);outline-offset:2px}
+#inter-services .tri-det:not(#_){border-left:2px solid color-mix(in srgb,var(--pac,#5AA7F0) 45%,transparent);padding-left:14px;margin-top:10px}
+#offre-rh .svc-head:not(#_){background:rgba(255,255,255,.035);border:1px solid rgba(232,195,106,.20);border-radius:18px;-webkit-backdrop-filter:blur(14px) saturate(140%);backdrop-filter:blur(14px) saturate(140%)}
+#offre-rh .divc .dn:not(#_){display:inline-flex;align-items:center;gap:7px}
+#offre-rh .divc .dn::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--dc,#C4B5FD);flex:none;box-shadow:0 0 0 4px color-mix(in srgb,var(--dc,#C4B5FD) 16%,transparent)}
+html.et-plight #offre-rh .svc-head:not(#_){background:rgba(255,255,255,.72)!important;border-color:rgba(26,35,48,.13)}
+@media (prefers-reduced-motion:reduce){#inter-services .tri-c:not(#_),#inter-services .tri-c:not(#_):hover{transition:none;transform:none}}
 </style></head>
 <body id="top"><div class="rdprog" aria-hidden="true"></div>
 <a href="#main-content" class="skip-link">Aller au contenu principal</a>
