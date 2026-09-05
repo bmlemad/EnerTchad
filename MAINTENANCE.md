@@ -15618,3 +15618,43 @@ restent sur leurs positions (rien de datable ; echeance janvier
 
 Publication : journal et sitemap, un lot. Pas de bump SW — il
 date du chapitre precedent.
+
+## 435 — 2026-09-05 : Le banc mobile — 221 pages en 390 px, premiere
+
+Le "next" ouvrait un creneau : tous les balayages du site tournent
+en 1280x900 depuis toujours. Avant de choisir, l inventaire — le
+socle SEO audite d abord (221 titres et descriptions uniques,
+canonicals justes, les deux "faux" des outils etant les
+reecritures voulues de vercel.json, neuf images OG toutes
+presentes) : rien a batir la. Le chantier retenu : le premier
+balayage mobile complet, 221 pages x 2 themes en 390x844.
+
+Trois prises, trois verdicts.
+
+Un — vrai defaut, corrige : en mobile, la charte transforme les
+tableaux en zones defilantes (display:block / overflow-x:auto),
+et un tableau qui deborde devient inaccessible au clavier. Dix
+tableaux sur six pages (brochures x5 chacune, clients, journal
+mini-raffinerie) recoivent tabindex="0" et un aria-label nomme —
+sans role="region", qui aurait casse la semantique de tableau.
+Les jumelles FR/EN traitees symetriquement meme quand une seule
+langue debordait au pixel pres.
+
+Deux — mensonge d instrument, documente sans correctif : axe
+accuse 15 a 17 contrastes sur les brochures en sombre mobile,
+avec des fonds "blancs" (#ffffff, #ececec). La mesure directe de
+la pile de fonds des noeuds accuses donne partout le marine
+#121D31 — les elements sont a 104 000 px de profondeur dans un
+document-fleuve et axe n y resout plus le fond reel ; la capture
+visuelle confirme une brochure parfaitement lisible. Le juge
+reste la pile calculee et l oeil, pas le verdict d axe a cette
+profondeur.
+
+Trois — non reproduit : aval/reseau signale une fois une zone
+defilante en clair, la sonde dediee ne la retrouve dans aucun
+theme — debordement au pixel pres, sans defaut constant.
+
+Verification : les six pages corrigees repassent a axe zero en
+390 px dans les deux themes (brochures : seul l artefact de
+profondeur documente subsiste, en sombre). Six fichiers plus le
+journal, un lot. Pas de bump SW.
