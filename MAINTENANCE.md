@@ -15540,3 +15540,55 @@ Reste ouvert, note au 431 : le #7E8AD9 du pied de page (213
 fichiers) a aligner un jour sur le canon TchadiTech #96A2EC.
 
 Publication : journal seul, un lot. Pas de bump SW.
+
+## 433 — 2026-09-05 : Benchmark de design — un seul or, une seule couleur TchadiTech
+
+La directive : QA de benchmark, et le meme design pour toutes les
+pages et sections. L instrument : un banc qui mesure sur les 221
+pages les invariants calcules (jeton or, police du h1, kicker,
+rayon des cartes, pied de page), puis compare A L INTERIEUR de
+chaque famille de gabarit — la lecon des chapitres 397 et 420 :
+un invariant unique applique en travers des familles fabrique de
+fausses avalanches.
+
+Les familles propres : les 64 pages journal, le mini-site arabe,
+l explorateur, les pages d erreur — uniformes chacune chez elle.
+Les familles creme (journaux, explorateur, calculateur) portent
+leur or fonce #7A5C14 sur papier, voulu et garde.
+
+Les deux vraies derives, corrigees :
+
+Un — le jeton or. 41 pages utilitaires (et les 8 pages arabes)
+liaient --gold-l a la valeur extra-claire #F0CE82 au lieu du
+canon #E8C36A ; deux pages EN recevaient la meme liaison par la
+feuille s_99c21a3880. Le systeme a DEUX ors (standard et
+extra-clair) — les lier revient a supprimer l un des deux.
+Benchmark apres correctif : 144 pages standard et 8 pages arabes,
+un seul or.
+
+Deux — TchadiTech en deux couleurs sur la meme page : #96A2EC
+dans la rangee des capacites de l accueil, #7E8AD9 dans le pied
+de page (constat du ch.431). Mon premier correctif n a rien
+change a l ecran — le banc l a montre : les couleurs du pied de
+page viennent de regles CSS !important dans quatre feuilles de
+la charte (bundle_core_a1, plight_extrait, x_cd256286824c,
+x_dd3f8c61af27), qui ecrasent le style inline. Corrige aux deux
+etages (les 4 regles CSS + les 209 pieds de page inline), plus
+le jeton --p-tchaditech des deux feuilles de tokens et les 16
+fallbacks inline var(--p-tchaditech,...). Mon erreur evitee de
+justesse : sans re-mesure au navigateur, j aurais publie 209
+fichiers pour un correctif invisible.
+
+Juge legitimes apres scopage par famille : le kicker absent des
+heros photo et des hubs (deux familles de heros assumees), les
+tailles de h1 par famille, et trois rayons de cartes propres a
+leurs composants de page (boutique 16, accueil 20, brochure 24)
+sur un canon verre a 22 — variantes de composants, pas du bruit.
+
+Changements CSS sous assets/ : bump du service worker
+et-202609021034 -> et-202609051245.
+
+Verification : banc complet re-execute (un seul or par famille),
+axe zero violation sur 7 pages temoins dans les deux themes,
+pied de page calcule a #96A2EC, capture visuelle du pied de
+page. 217 fichiers HTML + 7 feuilles CSS + sw.js, 19 lots.
