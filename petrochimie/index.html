@@ -393,7 +393,32 @@ a.glm-c:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):focus-vis
   a.glm-c:not(#_):not(#__):not(#___):hover{
     transform:none;
   }
-}</style></head>
+}</style><style id="fnews440">/* ch.440 : bande inscription posee sur les hubs de poles (motif de l accueil) */
+/* --- C2 : inscription "etre prevenu(e)" en tete de footer --- */
+.foot-news{display:flex;align-items:center;justify-content:space-between;gap:26px;
+ flex-wrap:wrap;padding:26px 0 24px;margin-bottom:26px;
+ border-bottom:1px solid color-mix(in srgb,currentColor 14%,transparent)}
+.fn-k{font-family:var(--fm,ui-monospace,monospace);font-size:0.6875rem;letter-spacing:.2em;
+ text-transform:uppercase;color:#77530C;margin:0 0 6px;display:inline-flex;align-items:center;gap:9px}
+.fn-k::before{content:"";width:7px;height:7px;background:currentColor;transform:rotate(45deg)}
+html:not(.et-plight) .fn-k{color:var(--gold-l,#E8C36A)}
+.fn-t{display:block;font-family:var(--fd,system-ui);font-weight:800;font-size:1.15rem;letter-spacing:-.01em}
+.fn-d{font-size:.86rem;opacity:.75;margin:5px 0 0;max-width:44ch}
+.fn-form{display:flex;gap:10px;flex-wrap:wrap}
+.fn-form input{min-width:240px;min-height:46px;padding:10px 16px;border-radius:999px;
+ border:1px solid color-mix(in srgb,currentColor 26%,transparent);background:transparent;
+ color:inherit;font-family:var(--fm,ui-monospace,monospace);font-size:.84rem}
+.fn-form input:focus-visible{outline:2px solid var(--gold-l,#E8C36A);outline-offset:2px}
+.fn-form button{display:inline-flex;align-items:center;gap:9px;min-height:46px;padding:11px 22px;
+ border:0;border-radius:999px;cursor:pointer;
+ background:linear-gradient(120deg,#E8C36A,#D4A843);color:#121D31;
+ font-family:var(--fm,ui-monospace,monospace);font-weight:700;font-size:.84rem;letter-spacing:.03em;
+ transition:transform .2s,filter .2s}
+.fn-form button:hover{transform:translateY(-2px);filter:brightness(1.06)}
+.fn-alt{flex-basis:100%;font-family:var(--fm,ui-monospace,monospace);font-size:.7rem;
+ letter-spacing:.03em;opacity:.7;margin:0}
+.fn-alt a{color:inherit;text-decoration:underline;text-underline-offset:3px}
+</style></head>
 <body id="top"><div class="rdprog" aria-hidden="true"></div>
 <a href="#main-content" class="skip-link">Aller au contenu principal</a>
 <div id="preloader" aria-hidden="true">
@@ -588,6 +613,7 @@ html.et-plight .poffer::before{background:radial-gradient(120% 62% at 50% 0%,rgb
 <style id="carn407">.carn407{max-width:1200px;margin:0 auto;padding:clamp(34px,5vw,64px) var(--gut,24px)}.carn407 .c7k{font-family:var(--fm);font-size:0.6875rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-l,#E8C36A);margin:0 0 10px;display:block}.carn407 h2{font-size:clamp(1.35rem,2.8vw,1.9rem);margin:0 0 6px}.carn407 .c7l{color:var(--muted);max-width:70ch;margin:0 0 18px;font-size:.93rem}.carn407 .c7g{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}.carn407 .c7c{display:block;padding:15px 17px;border:1px solid var(--hair);border-radius:13px;background:rgba(255,255,255,.02);text-decoration:none;color:inherit;transition:border-color .2s,background .2s}.carn407 .c7c:hover{border-color:var(--gold-l,#E8C36A);background:rgba(232,195,106,.05)}.carn407 .c7d{display:block;font-family:var(--fm);font-size:0.6875rem;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}.carn407 .c7t{display:block;font-size:.92rem;font-weight:600;line-height:1.45}.carn407 .c7all{display:inline-block;margin-top:14px;font-family:var(--fm);font-size:.76rem;color:inherit;text-decoration:none;border-bottom:1px solid var(--gold-l,#E8C36A)}</style><section id="carnets-petro" class="reveal" aria-label="Carnets de la Pétrochimie"><div class="carn407"><span class="c7k">◆ Le fil date · Carnets de la Pétrochimie</span><h2>Le terrain raconte la Pétrochimie.</h2><p class="c7l">Du gaz de Sédigui au sac d’urée — le prolongement de l’Aval vu depuis le terrain.</p><div class="c7g"><a class="c7c" href="/journal-prix-uree"><span class="c7d">20 août 2026 · Prix</span><span class="c7t">De quoi est fait le prix d’un sac d’urée ?</span></a><a class="c7c" href="/journal-gaz-torche"><span class="c7d">20 août 2026 · Gaz</span><span class="c7t">Le gaz torché : l’argent qui brûle</span></a><a class="c7c" href="/journal-gaz-sedigui"><span class="c7d">7 juillet 2026 · Sédigui</span><span class="c7t">Sédigui : le gisement qui dort</span></a></div><a class="c7all" href="/carnets">Tous les carnets →</a></div></section><section id="cta-band" aria-label="Travailler avec EnerTchad"><div class="cb-in"><div><p class="cb-k">◆ Unité · Innovation · Durabilité</p><h2>De la roche-mère à la pompe, <em>bâti au Tchad</em>.</h2></div><div class="cb-a"><a class="cb-btn cb-p" href="/investisseurs">Investir →</a><a class="cb-btn cb-g" href="/contact">Nous contacter</a></div></div></section><footer>
   <div class="wrap">
     
+    <div class="foot-news"><div class="fn-txt"><p class="fn-k">Ouverture commerciale</p><b class="fn-t">Être prévenu(e) au premier jour.</b><p class="fn-d">Un e-mail à l’ouverture commerciale et aux grands jalons — rien d’autre.</p></div><form class="fn-form" id="fnForm"><input type="email" id="fnMail" required placeholder="votre@adresse.td" autocomplete="email" aria-label="Votre adresse e-mail"><button type="submit">S’inscrire →</button></form><p class="fn-alt">Le bouton ouvre votre messagerie — ou passez par <a href="https://wa.me/23599298696?text=Bonjour%2C%20je%20souhaite%20%C3%AAtre%20pr%C3%A9venu%28e%29%20de%20l%E2%80%99ouverture%20commerciale%20d%E2%80%99EnerTchad." target="_blank" rel="noopener">WhatsApp →</a></p></div>
     <div class="foot-grid">
       <div class="foot-brand">
         <a href="/" class="brand">
@@ -1023,5 +1049,5 @@ header.pghero .pgh-kpi:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5):not(#e6){bor
 html.et-plight .capint-c:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5):not(#e6){background:rgba(252,250,246,.70)!important;border-color:rgba(22,35,58,.14)!important}
 @media (prefers-reduced-transparency:reduce){.capint-c:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5):not(#e6){-webkit-backdrop-filter:none!important;backdrop-filter:none!important;background:#0E1626!important}html.et-plight .capint-c:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5):not(#e6){background:#F6F1E8!important}}
 @media (prefers-reduced-motion:reduce){.capint-c:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5):not(#e6):hover{transform:none;border-color:rgba(255,255,255,.09)!important}}
-</style></body>
+</style><script id="fnews440s">(function(){var f=document.getElementById("fnForm");if(!f)return;f.addEventListener("submit",function(e){e.preventDefault();var m=(document.getElementById("fnMail").value||"").trim();if(!m)return;location.href="mailto:contact@enertchad.td?subject="+encodeURIComponent("Être prévenu(e) — ouverture commerciale")+"&body="+encodeURIComponent("Bonjour,\n\nMerci de me prévenir de l’ouverture commerciale et des grands jalons.\nMon adresse : "+m+"\n")});})();</script></body>
 </html>
