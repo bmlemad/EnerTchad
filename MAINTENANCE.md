@@ -16406,3 +16406,34 @@ debordement, sept ancres cibles testees au navigateur.
 
 Publication : quatre fichiers HTML, le journal et le sitemap
 (quatre lastmod), un lot.
+
+## 457 — 2026-09-07 : Les portails modernises, inspires des majors
+
+La directive : moderniser les poles en s inspirant des majors.
+Le canon visuel du 450 (captures en vrai navigateur) donnait le
+motif a transposer : chez ExxonMobil, l actualite datee vit en
+tete de page — carrousel de titres dates au premier ecran, jamais
+relegues en pied. Chez nous, le fil date du pole (carn407)
+vivait tout en bas du portail.
+
+Le geste m457 : le dernier carnet date de chaque pole remonte en
+tete de hero — un ruban sobre aux couleurs du pole, sous les
+indicateurs : etiquette "Le fil du pole", date en mono, titre du
+carnet en lien, et une seconde porte "Tout le fil" qui descend
+vers la section complete. Huit hubs, FR et EN, aucun contenu
+nouveau : le premier carnet de chaque fil, repris tel quel.
+
+Une trouvaille au passage, corrigee : la carte du fil EN de
+l Amont datait "Directional drilling, explained" du 17 juillet —
+l article lui-meme est date du 12 aout dans les deux langues
+(l original FR de la carte disait bien 12 aout). La date EN est
+remise au 12 aout. Le ruban a servi de revelateur : reprendre
+une donnee existante oblige a la relire.
+
+Verification : seize passes (huit hubs, deux themes), ruban
+visible partout avec ses deux liens, la bonne date rendue sur
+chaque page, axe zero violation sur les heros, aucun
+debordement ; plus le mobile 390 sur l Amont, sans debordement.
+
+Publication : huit fichiers HTML et le journal, cinq lots. Le
+sitemap ne bouge pas (les huit hubs etaient deja dates du jour).
