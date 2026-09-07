@@ -15960,3 +15960,56 @@ fait pendant l attente, et les deux chapitres sont partis
 ensemble au retour de l extension.
 
 Publication : journal et sitemap, un lot. Pas de bump SW.
+
+## 446 — 2026-09-07 : Ultra revue du pole Aval face aux majors
+
+Meme methode que le 444, appliquee au pole Raffinage &
+distribution : construire le crible depuis les pages aval
+publiques d ExxonMobil et de Chevron, puis passer nos dix pages
+Aval (cinq FR, cinq EN) au peigne.
+
+Le canon aval des majors, verifie a la source ce jour :
+ExxonMobil ne presente plus un aval classique mais des solutions
+par usage — Transforming Transportation, Materials for Modern
+Living — avec les carburants bas-carbone en tete d affiche, une
+seule statistique datee (le transport, environ 25 pour cent du
+CO2, sourcee vers leur Global Outlook), les preuves par
+partenariat (le sport mecanique comme banc d essai) et les
+marques grand public en pied de page. Chevron organise par
+entite (Oronite, Phillips Chemical en coentreprise 50-50),
+mission d abord, aucun chiffre. Ni l un ni l autre n affiche de
+volumes aval sur ses pages publiques.
+
+Le crible, dix dimensions : organisation par besoin, marques
+consommateur, petrochimie en prolongement, chiffres prudents et
+dates, ancrage source, preuves par partenariat, CTAs types,
+actualites reliees, equilibre mission-chiffres, bas-carbone dans
+l aval. Nos dix pages tiennent neuf dimensions — et sur les
+marques consommateur (Tchadium, la maison de marques, Mobile
+Stations) nous sommes plus explicites que les deux majors.
+
+L unique ecart : le hub Aval n articulait pas sa contribution
+bas-carbone, alors que c est la tete d affiche de l aval
+d ExxonMobil — et que notre carnet La bouteille contre la hache
+(juillet 2026) la demontre depuis des mois. L equivalent tchadien
+des lower-emission fuels existe : le GPL consigne qui epargne
+arbres, gommiers et paturages, le solaire de site. Il etait
+raconte partout sauf sur la vitrine du pole.
+
+Le correctif ep446 : une phrase sobre dans la section enjeux du
+hub, FR et EN, chiffree par renvoi au carnet date — aucun chiffre
+invente, la mention solaire reprise mot pour mot de la page
+(solaire de site). Verification locale : phrase visible dans les
+deux themes, axe zero violation sur la section, aucun
+debordement.
+
+Mon erreur : mon premier script de verification importait
+axe-core/playwright, un module absent de l environnement — les
+balayages precedents injectent axe.min.js directement dans la
+page. Deux echecs de module avant de relire qa.js et de reprendre
+son motif. Le motif etabli etait sous mes yeux depuis le
+chapitre 430 ; verifier l outillage existant avant d ecrire un
+script neuf.
+
+Publication : deux fichiers HTML, le journal et le sitemap, deux
+lots. Pas de bump SW (HTML inline uniquement).
