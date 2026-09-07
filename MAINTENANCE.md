@@ -16304,3 +16304,29 @@ seulement l anatomie.
 
 Publication : un fichier d assets, le sw et le journal, deux
 lots. Pas de sitemap (aucun contenu de page modifie).
+
+## 454 — 2026-09-07 : Consolidation apres la serie home et poles
+
+Le balayage complet : 221 pages, deux themes, six tranches — zero
+defaut. La serie 449 a 453 (capacites dans les chapitres, commande
+Mouvement, rangees de services des hubs, typo de la home,
+navigation directe des CTA de chapitre) n a rien decale.
+
+Le sitemap : rien a toucher — les pages modifiees depuis la
+derniere consolidation etaient deja datees du jour (446, 447,
+451), et les chapitres 450 et 453 n ont change que des assets.
+
+Le registre : six entrees ajoutees (448 a 453), 179 chapitres au
+tableau, artefact republie sans detour cette fois (la version
+live etait la notre).
+
+Les veilles : positions inchangees depuis la verification a la
+source du 448 le jour meme (resultat ITIE toujours au score
+d octobre 2022, rapport 2023 sans nouveau score ; Sedigui sans
+annonce datable ; carte Brent pour janvier 2027).
+
+Etat du service worker : et-202609071615, deux bumps dans la
+journee (450 puis 453) — la regle des assets a ete tenue aux
+deux occasions.
+
+Publication : le journal seul, un lot.
