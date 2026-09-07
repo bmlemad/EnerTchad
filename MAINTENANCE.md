@@ -16067,3 +16067,59 @@ debordement, carnets visibles partout, rail a neuf entrees.
 
 Publication : deux fichiers HTML, le journal et le sitemap, deux
 lots. Pas de bump SW (HTML inline uniquement).
+
+## 448 — 2026-09-07 : Consolidation apres la refonte de la home
+
+Le balayage complet : 221 pages, deux themes, six tranches — zero
+defaut. La refonte de la home (447) n a rien decale ailleurs.
+
+Le sitemap : deja a l heure — les deux pages d accueil avaient
+ete datees au jour lors du 447, aucune retouche.
+
+Le registre : trois entrees ajoutees (445, 446 et 447), 173
+chapitres au tableau, artefact republie. Au passage, l outil de
+publication a exige une relecture de la version en ligne avant
+d accepter la mise a jour — verification faite, la version live
+etait bien notre etat precedent (170 entrees), publication
+passee sans perte.
+
+Les veilles : le resultat ITIE reverifie a la source ce jour —
+toujours le score de 64,5 sur 100 d octobre 2022, aucune
+validation plus recente publiee ; le rapport ITIE Tchad 2023 est
+date du 30 decembre 2025 dans les metadonnees du site, sans
+nouveau score associe. Sedigui et la carte Brent inchangees.
+
+Pas de publication propre a ce chapitre : le journal part avec
+le chapitre suivant, arrive dans le meme tour.
+
+## 449 — 2026-09-07 : Les capacites integrees dans les chapitres de maillon
+
+La directive du proprietaire, arrivee pendant le balayage :
+integrer directement dans les quatre poles les quatre capacites
+— jusqu ici presentees dans une section a part en cloture de
+chaine ("Quatre capacites, integrees aux poles de coeur").
+
+La doctrine disait deja "les capacites vivent a l interieur des
+poles" ; la home les montrait pourtant a cote. Le geste : la
+carte de services de chaque chapitre ("Ce que nous faisons")
+recoit une seconde rangee, "Les capacites, a l oeuvre ici" —
+GreenTech, TchadiTech, Tchaditude, EnerConseils, chacune avec sa
+pastille de couleur et son domaine, en lien vers sa page. Quatre
+chapitres, FR et EN : trente-deux liens de capacite en tout.
+
+La section appuis disparait de la home. Deux precautions prises
+avant de la retirer : l ancre poles, logee dans cette section,
+est referencee par la quasi-totalite du site (le pied de page
+"Nos poles de coeur" pointe vers /#poles) — elle est deplacee en
+tete de la section coeurs, ou elle mene desormais au debut de la
+chaine ; et le rail de traversee perd son entree Capacites
+(huit entrees au lieu de neuf).
+
+Verification locale : FR et EN, bureau et mobile, deux themes —
+huit passes, quatre rangees de capacites visibles partout, seize
+liens par page, ancre poles presente, rail a huit entrees, axe
+zero violation, aucun debordement.
+
+Publication : deux fichiers HTML et le journal, deux lots. Le
+sitemap ne bouge pas (pages d accueil deja datees au jour). Pas
+de bump SW.
