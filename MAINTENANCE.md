@@ -16330,3 +16330,47 @@ journee (450 puis 453) — la regle des assets a ete tenue aux
 deux occasions.
 
 Publication : le journal seul, un lot.
+
+## 455 — 2026-09-07 : Le site reconstruit autour des poles — le verdict du portail
+
+La directive : rebatir le site autour des trois poles. Arbitrage
+rendu par le proprietaire : les hubs deviennent les portails
+complets de leurs poles, sans changement d URL.
+
+L inventaire d abord — et il a rendu un verdict inattendu et
+verifiable : les portails existent deja. La matrice hub x
+dimension (services, solutions liees, tableau de bord, carnets
+dates, projets, capacites integrees, temoignages terrain, CTA),
+passee sur les huit hubs FR et EN, est complete sur toutes les
+lignes. Les chapitres 326 a 451 ont construit le portail piece
+par piece : la colonne de services fusionnee (436, 443), les
+solutions et outils lies (451), les tableaux de bord, le fil
+date du pole (407 — trois carnets dates par hub, FR et EN
+symetriques), les projets (y compris "Projets que cette
+extension pilote" sur la petrochimie), les capacites a l oeuvre.
+Mon instrument s est d abord trompe deux fois : le motif
+"carnets dates" matchait la bande d abonnement du 440, et la
+recherche de time ne voyait pas les dates en texte — la relecture
+du markup reel a retabli les faits avant tout chantier inutile.
+
+Les transversales ensuite : /projets et /carnets sont deja
+organisees par pole (etiquettes et liens de pole presents). La
+seule transversale muette etait /cibles-2030 : un tableau
+d ambitions groupees par theme, sans lecture par le coeur du
+metier — une mention d Amont : zero.
+
+Le correctif pcb455 : une bande "Les cibles, pole par pole"
+inseree avant la carte des operations, FR et EN — quatre cartes
+01/02/03/+ aux couleurs des poles, chacune portant ses cibles
+deja publiees ailleurs (OOIP et blocs pour l Amont, corridor et
+hubs pour l Intermediaire, stations, train et ARSAT pour l Aval,
+Sedigui et filieres pour la petrochimie), en renvoi vers le
+portail de son pole. Aucun chiffre nouveau, que des reprises
+sourcees des tableaux de bord existants.
+
+Verification : huit passes (FR, EN, bureau, mobile, deux
+themes), quatre cartes visibles partout, axe zero violation,
+aucun debordement.
+
+Publication : deux fichiers HTML, le journal et le sitemap
+(deux lastmod), un lot.
