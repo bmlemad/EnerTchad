@@ -15898,3 +15898,65 @@ ordinaux rendus, aucun debordement ; captures fermee et ouverte
 conformes — services numerotes sur deux colonnes, groupes en
 bandes, items imbriques sans numero. Six fichiers plus le
 journal, quatre lots. Pas de bump SW.
+
+## 444 — 2026-09-07 : Ultra revue du pole Exploration & Production face aux majors
+
+La directive : une revue en profondeur du pole E&P contre les
+majors — au-dela de l audit des hubs du ch.439. Le canon des
+majors, cote amont : ExxonMobil chiffre son portefeuille sur la
+page Upstream elle-meme (cinq unites, 9,5 M d acres, ~20 pays),
+nomme ses projets phares a cibles datees (Guyana ~1,3 Mb/j vers
+2027, methane quasi nul au Permian vers 2030) et y pose des
+actualites datees ; Chevron nomme cinq regions d actifs
+(Kazakhstan, GNL Australie, schistes US/Argentine, eaux
+profondes, gaz de Mediterranee orientale) et integre torchage et
+methane au segment. Trait commun remarquable : AUCUN chiffre de
+reserves sur les pages grand public des deux majors — la
+prudence est le canon.
+
+Le crible : dix dimensions amont, passees sur les cinq pages du
+pole (hub, activites E&P, EOR, parc, services parapetroliers).
+Resultat : le hub tient les dix ; les sous-pages tiennent leurs
+dimensions pertinentes (le methane n a rien a faire sur la page
+du parc materiel — variance de perimetre, pas defaut). Deux
+validations fortes : zero chiffre de reserves affirme nulle part
+(notre "pas de chiffre sans date" rejoint la prudence des
+majors), et chaque objectif porte son conditionnel date (vise,
+cible, societe en constitution).
+
+L unique ecart, corrige dans la foulee : la page coeur E&P
+(activites) nommait Doba et Bongor mais n ancrait son terrain de
+jeu chiffre que dans les metadonnees — la ou Exxon chiffre le
+portefeuille sur la page meme. Une phrase posee sous le
+chapeau de la section "Explorer & produire", FR et EN : sept
+bassins sedimentaires, cadastre 2025 a 26 blocs libres, sources
+publiques datees, avec lien vers l Atlas fraichement retitre.
+Chiffres repris du canon de l Atlas, rien d invente.
+
+Verification : la paire activites a axe zero violation dans les
+deux themes, phrase rendue et visible, aucun debordement. Deux
+fichiers plus le journal, deux lots. Pas de bump SW.
+
+## 445 — 2026-09-07 : Consolidation apres l ultra revue E&P
+
+Le balayage complet : 221 pages, deux themes, six tranches — zero
+defaut. L ultra premium de la colonne Services (443) et la phrase
+de portefeuille E&P (444) n ont rien decale.
+
+Le sitemap : les deux fichiers du 444 remis a l heure du jour
+apres leur publication (le rafraichissement lit les dates git —
+il ne peut dater un fichier qu une fois son commit pousse).
+
+Le registre : trois entrees ajoutees (442, 443 et 444), 170
+chapitres au tableau, artefact republie.
+
+Les veilles : positions inchangees depuis les verifications a la
+source du 5 septembre (resultat ITIE attendu, Sedigui sans
+annonce datable, carte Brent pour janvier 2027).
+
+Aleas du tour : l extension navigateur a decroche avant la
+publication du 444 — le travail local de la consolidation a ete
+fait pendant l attente, et les deux chapitres sont partis
+ensemble au retour de l extension.
+
+Publication : journal et sitemap, un lot. Pas de bump SW.
