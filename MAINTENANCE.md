@@ -16178,3 +16178,44 @@ coherent. Bump SW et-202609071510 (regle des assets).
 
 Publication : un fichier d assets, le sw et le journal, deux
 lots. Le sitemap ne bouge pas (aucun contenu de page modifie).
+
+## 451 — 2026-09-07 : Tous les services et solutions inclus au sein de leurs poles
+
+La directive : s assurer que toutes les solutions et tous les
+services lies aux poles de coeur sont bien inclus en leur sein.
+L inventaire d abord, comme toujours.
+
+La matrice croisee : les pages de pole (quatre sous-pages amont,
+trois intermediaire, quatre aval, quatre petrochimie), les seize
+entrees typees du catalogue /solutions, les deux outils
+(calculateur du baril additionnel, configurateur de service
+integre), la boutique — contre trois lieux d inclusion : les
+cartes de chapitre de la home, le menu, et le corps des huit
+pages hub (FR et EN), menu et pied de page exclus du comptage
+car presents partout.
+
+Le verdict de la home : complete. Les quatre chapitres listent
+la totalite des sous-pages de leur pole, y compris la chimie au
+service du brut en pont vers la petrochimie.
+
+Le verdict des hubs, corps de page : huit omissions. Le hub
+Amont ne menait ni vers la chimie au service du brut, ni vers le
+calculateur, ni vers le configurateur ; l Intermediaire ignorait
+le configurateur ; l Aval ignorait la boutique et le
+configurateur ; la Petrochimie ignorait le calculateur et le
+configurateur. Le configurateur de service integre — la solution
+qui compose la chaine entiere — n etait dans le corps d aucun
+hub.
+
+Le correctif svc451 : une rangee sobre de liens sous le pied de
+la colonne de services de chaque hub (la ou vivait deja le lien
+catalogue), aux styles pof-cta existants — treize liens ajoutes
+en FR, treize en EN, les outils en francais signales (in French)
+cote anglais. Aucun style nouveau, aucun script.
+
+Verification : seize passes (huit fichiers, deux themes), rangee
+presente avec le bon compte de liens partout, axe zero violation
+sur les sections, aucun debordement.
+
+Publication : huit fichiers HTML, le journal et le sitemap
+(six lastmod remis au jour, deux deja dates du 446), cinq lots. Pas de bump SW.
