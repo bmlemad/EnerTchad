@@ -16550,3 +16550,30 @@ site. Aucun correctif dans ce chapitre : le benchmark est le
 livrable.
 
 Publication : le journal seul, un lot.
+
+## 461 — 2026-09-07 : Consolidation apres la serie portails et benchmark
+
+Le balayage complet : 221 pages, deux themes, six tranches — zero
+defaut. La serie 455 a 460 (portails, transversales par pole,
+rubans du fil, renommage a l esperluette sur 26 fichiers, matiere
+ultra premium de la home, benchmark elargi) n a rien decale.
+
+Le sitemap : a jour — les vagues du 455, 456 et 458 ont date
+leurs pages le jour meme, et les chapitres 459 et 460 n ont
+touche que la home (deja datee) et le journal.
+
+Le registre : sept entrees ajoutees (454 a 460), 186 chapitres
+au tableau, artefact republie sans detour.
+
+Les veilles : positions inchangees depuis les verifications a la
+source du jour (ITIE au score d octobre 2022 reverifie au 448 ;
+Sedigui sans annonce datable ; carte Brent pour janvier 2027).
+Au benchmark du 460, quatre majors verifies a la source dans la
+meme journee — le canon est frais.
+
+Etat du jour, pour memoire : dix-huit chapitres publies dans la
+journee (444 a 461), de l ultra revue E&P a la consolidation
+presente, avec trois arbitrages du proprietaire rendus et
+appliques (refonte de la home, portails, navigation directe).
+
+Publication : le journal seul, un lot.
