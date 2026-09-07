@@ -16577,3 +16577,29 @@ presente, avec trois arbitrages du proprietaire rendus et
 appliques (refonte de la home, portails, navigation directe).
 
 Publication : le journal seul, un lot.
+
+## 462 — 2026-09-07 : Balayage mobile complet apres la serie de refonte
+
+Le chantier auto-designe du tour : la serie 447-459 (chapitres
+de la home, capacites, rubans, bandes par pole, matiere ultra
+premium) n avait ete verifiee au mobile que par sondages. Le
+balayage complet du 435 est rejoue : 221 pages, ecran 390x844,
+deux themes, six tranches — console, reponses HTTP, axe,
+debordement horizontal.
+
+Le verdict : aucune anomalie sur 219 pages. Les deux restantes
+sont la paire brochure en theme sombre — et c est, trait pour
+trait, le mensonge d instrument documente au 435 : axe signale
+15 a 17 noeuds de contraste sur une page de 130 000 pixels de
+haut, mais la re-mesure au navigateur montre un texte clair sur
+une chaine de fonds entierement transparente jusqu au body — le
+sol visible est le fond marine de la page, qu axe ne sait pas
+composer a cette profondeur. Meme page, meme profondeur, memes
+comptes qu au 435 : le canon tient, aucun correctif.
+
+La lecon confirmee plutot qu apprise : quand l instrument
+recommence a mentir au meme endroit, la re-mesure est un
+controle de non-regression — elle dit que rien n a change, ni
+dans la page, ni dans le mensonge.
+
+Publication : le journal seul, un lot.
