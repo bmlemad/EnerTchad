@@ -16266,3 +16266,41 @@ Agir a l echelle, chapeaux a 68ch, aucun debordement.
 
 Publication : deux fichiers HTML et le journal, un lot. Le
 sitemap ne bouge pas (pages d accueil deja datees du jour).
+
+## 453 — 2026-09-07 : Le bouton Decouvrir le pole ouvre vraiment la page dediee
+
+La directive : des propositions pour que le bouton Decouvrir le
+pole de la home ouvre vraiment la page dediee. Le diagnostic
+avant les propositions : le bouton etait intercepte. Le crochet
+JS de l explorateur de la chaine (s_c07e811055.js) capture tout
+clic sur une carte a.hpcard dont la cible est un pole connu de
+sa table, ouvre la superposition "Pole · explorer les
+thematiques" et appelle preventDefault — les CTA de chapitre
+portent la classe hpcard depuis leur origine, la navigation
+n aboutissait donc jamais.
+
+Trois propositions soumises au proprietaire : navigation directe
+(l explorateur restant aux autres cartes), deux gestes par carte
+(clic = page, bouton secondaire = apercu), ou apercu conserve
+avec un CTA proeminent dans le tiroir. Arbitrage rendu :
+navigation directe.
+
+Le correctif : une ligne dans le crochet — les liens porteurs de
+mln-go sont rendus au navigateur. L explorateur en superposition
+continue de servir ses autres portes (cartes plc-card et puces
+pb-chip, presentes sur les hubs EN et l explorateur de chaine).
+Bump SW et-202609071615 (regle des assets).
+
+Verification : trois clics reels au navigateur local — chapitre
+amont FR vers /amont/, petrochimie FR vers /petrochimie/, aval
+EN vers /pole-aval-en — navigation aboutie a chaque fois ; et
+contre-verification qu aucune autre carte hpcard de pole ne vit
+sur la home (le crochet n y perd donc rien).
+
+Une lecon d inventaire : le hit-test disait le bouton atteignable
+et son href correct — seul le clic reel revelait le
+preventDefault. Tester l intention (l URL apres clic), pas
+seulement l anatomie.
+
+Publication : un fichier d assets, le sw et le journal, deux
+lots. Pas de sitemap (aucun contenu de page modifie).
