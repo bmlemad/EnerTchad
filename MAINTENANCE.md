@@ -16510,3 +16510,43 @@ violation, aucun debordement.
 
 Publication : deux fichiers HTML et le journal, un lot. Le
 sitemap ne bouge pas (pages d accueil deja datees du jour).
+
+## 460 — 2026-09-07 : Le benchmark revu face aux majors
+
+La directive : revoir le benchmark versus les majors. Deux
+nouveautes dans la revue : le panel s elargit (TotalEnergies et
+Shell rejoignent ExxonMobil et Chevron, verifies a la source ce
+jour), et le site est rescore apres la serie 447-459.
+
+Le panel elargi nuance le canon. TotalEnergies fait exception a
+la prudence des deux americains : sa page Exploration &
+Production affiche des metriques riches — 13 000 collaborateurs,
+plus de 3 millions de barils equivalent par jour (base 2019),
+et jusqu a un horizon de reserves prouvees et probables (environ
+20 ans a production constante). Shell reste mission d abord,
+comme Chevron. Le spectre complet va donc de la sobriete de
+Chevron a l abondance datee de TotalEnergies — mais l abondance
+suppose des actifs audites en exploitation. Pour une societe en
+constitution, notre regle "pas de chiffre sans date verifiable,
+zero reserves affichees" reste le bon point du spectre, et le
+plus proche des deux majors de reference.
+
+Le rescoring, douze dimensions consolidees des chapitres 439,
+444, 446, 450 et 457 : dix tenues. Organisation par segments
+(447, 455-456), nommage canonique (458), chiffres prudents
+dates, actualites datees en tete (457), preuves par le terrain,
+marques consommateur (plus explicites que chez les quatre
+majors), bas-carbone integre (446, 449), commande de mouvement
+(450), type display (450), portails complets par segment
+(455-457) — sur ce dernier point, aucun des quatre majors
+n offre l equivalent d un portail par maillon aussi integre.
+Les deux dimensions restantes sont suspendues a des elements
+deja au parking du proprietaire ; rien de nouveau a leur sujet.
+
+Verdict : la ou l audit du 439 comptait 9 dimensions sur 11, la
+serie de refonte porte le site a 10 sur 12 d un crible plus
+exigeant — et les deux manques ne sont pas des chantiers de
+site. Aucun correctif dans ce chapitre : le benchmark est le
+livrable.
+
+Publication : le journal seul, un lot.
