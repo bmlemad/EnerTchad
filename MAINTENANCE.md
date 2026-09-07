@@ -16123,3 +16123,58 @@ zero violation, aucun debordement.
 Publication : deux fichiers HTML et le journal, deux lots. Le
 sitemap ne bouge pas (pages d accueil deja datees au jour). Pas
 de bump SW.
+
+## 450 — 2026-09-07 : QA visuel face aux majors — la commande Mouvement
+
+La directive : QA visuel versus majors. Methode nouvelle pour un
+crible ancien : cette fois les pages des majors sont capturees en
+vrai navigateur, pas seulement lues — la home d ExxonMobil, celle
+de Chevron, et la notre en production, cote a cote.
+
+Le canon visuel releve ce jour. ExxonMobil : photographie reelle
+de terrain avec des humains (sept personnes en premier ecran),
+un seul accent rouge, titre immense en graisse legere, colonnes
+de segments d une sobriete extreme (pas de cartes, des liens
+soulignes), carrousel d actualites avec barres de progression et
+bouton pause visible. Chevron : type display geant centre, navy
+sur blanc casse, recit au defilement, boutons pause sur chaque
+animation. Les deux exposent une commande de pause visible sur
+tout mouvement automatique.
+
+Notre verdict, dix dimensions : neuf tenues. Le type display
+geant tient la comparaison avec Chevron ; la photographie de
+terrain est reelle (la mention "images d illustration" sous le
+hero est une honnetete que les majors n affichent pas) ; les
+humains dans l image restent l affaire de la seance photo du
+proprietaire, deja au parking. La discipline chromatique diverge
+en conscience : la ou les majors tiennent un accent unique, nos
+quatre couleurs de poles portent le codage de la chaine.
+
+Une decouverte en passant : le bouton pause du chapitre 119
+n existe plus dans le DOM — le carrousel du hero est devenu une
+image unique (une seule entree dans la liste du diapo), et le
+bouton est parti avec lui ; sa CSS orpheline reste dans le head,
+inoffensive. Rien a reparer la : sans carrousel, pas de pause.
+
+L ecart reel : neuf animations infinies ambiantes (aurora,
+panoramique du fond, pastilles) tournent sur la home — et jusqu a
+treize sur d autres pages — sans autre issue que le reglage
+systeme prefers-reduced-motion, que la plupart des visiteurs ne
+connaissent pas. Les majors donnent le controle dans la page ;
+nous ne le donnions pas.
+
+Le correctif : le panneau Luminosite (present sur les 218 pages)
+gagne une rangee Mouvement — Anime / Calme, en trois langues
+selon la page (FR, EN, AR). Choix memorise (et-motion), applique
+par html.et-calm qui gele animations et transitions ; sans choix
+enregistre, le reglage systeme fait foi. Tout est porte par le
+bundle partage u_cd226c00eb4b.js, CSS injectee comprise : deux
+fichiers changes en tout, aucun gabarit touche.
+
+Verification : trois pages (home FR, home EN, achats), rangee
+presente et traduite, bascule effective (neuf a treize animations
+infinies gelees), persistance au rechargement, aria-pressed
+coherent. Bump SW et-202609071510 (regle des assets).
+
+Publication : un fichier d assets, le sw et le journal, deux
+lots. Le sitemap ne bouge pas (aucun contenu de page modifie).
