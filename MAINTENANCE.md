@@ -16219,3 +16219,50 @@ sur les sections, aucun debordement.
 
 Publication : huit fichiers HTML, le journal et le sitemap
 (six lastmod remis au jour, deux deja dates du 446), cinq lots. Pas de bump SW.
+
+## 452 — 2026-09-07 : Ultra revue de la home — espaces, tailles, redaction
+
+La directive : ultra revue de la home sur les espaces, les
+tailles d ecriture et le style de redaction. La mesure d abord,
+au navigateur : rythme vertical section par section, echelle des
+titres, histogramme des tailles de paragraphes, largeur des
+lignes en caracteres, accroches.
+
+Ce qui tient. Le rythme vertical est regulier : sections jointes
+bord a bord, chapitres de maillon a 76 pixels de respiration
+haute et basse chacun, aucune couture parasite — le grand vide
+sous le contenu de chaque chapitre est le format chapitre
+lui-meme (hauteur d ecran, contenu centre), pas un defaut. Les
+accroches sont disciplinees (11,2 a 11,8 pixels, meme
+espacement de capitales). Les quatorze tailles de paragraphes
+recensees couvrent des roles distincts (mentions, legendes,
+corps, citation) sans doublon injustifie. Le style de redaction
+est homogene sur toute la page : annonces courtes, deux-points
+d attaque, tirets longs, la molecule comme fil — aucun correctif
+de texte.
+
+Deux defauts mesures, corriges (bloc h452, FR et EN) :
+
+Un, le titre de la section Agir : 24,75 pixels mesures quand ses
+voisins tiennent 35 a 37,6 — le seul H2 de section sous
+l echelle commune. Ramene a clamp(1.6rem, 2.9vw, 2.3rem), soit
+36,8 au bureau, 25,6 au mobile.
+
+Deux, trois paragraphes de tete couraient sur environ 95
+caracteres par ligne (l intro des maillons, les deux chapeaux de
+la section chiffres) — au-dela du confort de lecture. Plafonnes
+a 68ch, verifies a 858 pixels calcules.
+
+Mon erreur, journalisee pour l instrument : ma premiere mesure
+de largeur de ligne divisait la largeur par une demi-taille de
+police (approximation 0.5em par caractere), la ou le caractere
+reel de la page fait 0.69em — les valeurs affichees (94ch)
+etaient surestimees mais l ecart relatif etait juste, et le
+verdict tenait. La verification du correctif s est faite sur la
+valeur calculee de max-width, pas sur l approximation.
+
+Verification : quatre passes (FR, EN, bureau, mobile), titre
+Agir a l echelle, chapeaux a 68ch, aucun debordement.
+
+Publication : deux fichiers HTML et le journal, un lot. Le
+sitemap ne bouge pas (pages d accueil deja datees du jour).
