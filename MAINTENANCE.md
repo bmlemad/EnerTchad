@@ -16437,3 +16437,47 @@ debordement ; plus le mobile 390 sur l Amont, sans debordement.
 
 Publication : huit fichiers HTML et le journal, cinq lots. Le
 sitemap ne bouge pas (les huit hubs etaient deja dates du jour).
+
+## 458 — 2026-09-07 : Ultra review du site pour la refonte sur les trois poles
+
+La directive : une ultra review du site entier au service de la
+refonte sur les trois poles. Trois releves menes page par page
+sur les 221 pages publiques.
+
+Premier releve, l ancrage : 209 pages sur 221 portent leur
+identite de pole (pied de pole) ; les douze restantes sont les
+familles legitimes deja constatees — la page 404, les outils, le
+mini-site arabe et l explorateur. L ancrage est complet la ou il
+doit l etre.
+
+Deuxieme releve, les chemins : depuis la serie 455-457, chaque
+page mene aux portails par le menu, le pied de page et — pour
+les transversales — les bandes par pole. Aucun cul-de-sac.
+
+Troisieme releve, le nommage — et la trouvaille du chapitre. Le
+site parlait de l Exploration-Production avec un trait d union
+dans 26 fichiers (51 occurrences), la ou la home, depuis la
+refonte 447 dictee par le proprietaire, nomme le maillon
+Exploration & Production avec l esperluette. Le trait d union
+vivait jusque dans l identite du portail Amont : titre, balises
+og et twitter, fil d Ariane, H1, donnees structurees, et ses
+citations dans les cartes de poles de tout le site. Deux
+variantes en "et" trainaient aussi dans une etiquette de la
+home.
+
+Le correctif : les 51 occurrences unifiees vers l esperluette,
+avec l encodage du contexte (esperluette nue dans les titres,
+attributs et scripts ; entite HTML dans les noeuds de texte —
+sans quoi la carte des poles du menu aurait affiche l entite en
+toutes lettres ou casse le JSON de l explorateur). La regle de
+coherence des citations du 426 appliquee d office : le renommage
+du titre du portail Amont entraine ses citations partout.
+
+Verification : zero occurrence restante sur les 221 pages, zero
+double echappement, rendu au navigateur sur cinq pages temoins
+(H1 et titres a l esperluette, aucun "amp" visible, zero erreur
+JS — le JSON de l explorateur est intact), recensement du pied
+de pole conforme au constat etabli.
+
+Publication : vingt-six fichiers HTML, le journal et le sitemap
+(seize lastmod), dix lots. Pas de bump SW.
