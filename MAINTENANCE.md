@@ -16481,3 +16481,32 @@ de pole conforme au constat etabli.
 
 Publication : vingt-six fichiers HTML, le journal et le sitemap
 (seize lastmod), dix lots. Pas de bump SW.
+
+## 459 — 2026-09-07 : La home ultra premium sur les trois poles
+
+La directive : rendre la home ultra premium sur les trois poles.
+Le vocabulaire existe depuis le chapitre 443 — matiere, ordinaux,
+bandes, lueurs — il est applique aux chapitres de maillon de la
+home, en CSS seule (bloc u459, aucun markup nouveau).
+
+Le geste, par chapitre et aux couleurs de son pole : les tuiles
+d indicateurs passent en matiere premium (rayon 16, lavis
+degrade, lueur portee, chiffres tabulaires) ; la carte de
+services gagne le verre profond, l ourlet lumineux en tete
+(degrade transparent-couleur-transparent) et l ombre portee du
+443 ; les intitules de carte prennent le marqueur losange et
+l espacement de capitales de la maison ; le carnet du maillon
+passe du pointille au plein, en verre teinte avec sa lueur ;
+l ordinal du chapitre gagne un halo discret ; et chaque chapitre
+s ouvre sur un filet aux couleurs du pole. Au survol, la carte
+de services s eleve — sous reserve du reglage de mouvement du
+450, la transition etant coupee en mode calme comme par le
+reglage systeme.
+
+Verification : quatre passes (FR, EN, deux themes), matiere
+rendue (rayon et ombres calcules aux couleurs du pole dans les
+deux themes), capture de controle sur le chapitre Aval, axe zero
+violation, aucun debordement.
+
+Publication : deux fichiers HTML et le journal, un lot. Le
+sitemap ne bouge pas (pages d accueil deja datees du jour).
