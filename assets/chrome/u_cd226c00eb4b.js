@@ -329,3 +329,41 @@ else setTimeout(boot,1200);
    u2_75a2c4383ddf.js (90 pages) l'animait. Bloc repris ici avec garde d'idempotence
    (les 90 pages saines chargent les deux scripts). */
 try{(function(){var b=document.getElementById('toTop');if(!b||b.dataset.ttInit)return;b.dataset.ttInit='1';var p=b.querySelector('.ttp'),C=2*Math.PI*24;if(p){p.style.strokeDasharray=C;p.style.strokeDashoffset=C;}var r=matchMedia('(prefers-reduced-motion:reduce)').matches,t=false;function u(){var s=scrollY||document.documentElement.scrollTop,hh=document.documentElement.scrollHeight-innerHeight,pr=hh>0?Math.min(s/hh,1):0;if(p)p.style.strokeDashoffset=C*(1-pr);b.classList.toggle('show',s>600);t=false;}addEventListener('scroll',function(){if(!t){t=true;requestAnimationFrame(u);}},{passive:true});b.addEventListener('click',function(){scrollTo({top:0,behavior:r?'auto':'smooth'});});u();})();}catch(_e){}
+
+/* Ch450 : QA visuel face aux majors. Exxon et Chevron exposent une commande de
+   pause visible sur tout mouvement automatique (carrousels, videos) ; chez nous
+   neuf animations infinies ambiantes (aurora, panoramique du fond, pastilles)
+   tournent sans autre issue que le reglage systeme prefers-reduced-motion.
+   Le panneau Luminosite gagne une rangee Mouvement : Anime / Calme, memorisee
+   (et-motion), appliquee par html.et-calm ; la CSS est injectee ici pour
+   couvrir les 218 pages sans toucher aux gabarits. */
+try{(function(){
+var panel=document.getElementById('lum-panel');if(!panel)return;
+if(document.getElementById('et-calm-css'))return;
+var lang=(document.documentElement.lang||'fr').slice(0,2);
+var TXT=lang==='en'?{h:'Motion',on:'Animated',off:'Calm'}:
+        (lang==='ar'?{h:'الحركة',on:'متحركة',off:'هادئة'}:{h:'Mouvement',on:'Animé',off:'Calme'});
+var st=document.createElement('style');st.id='et-calm-css';
+st.textContent='html.et-calm *,html.et-calm *::before,html.et-calm *::after{animation-iteration-count:1!important;animation-duration:.01ms!important;transition-duration:.12s!important}html.et-calm{scroll-behavior:auto!important}';
+document.head.appendChild(st);
+var h=document.createElement('p');h.className='lum-h';h.style.marginTop='12px';h.textContent=TXT.h;
+var row=document.createElement('div');row.className='lum-presets lum-mov';
+function mk(label,val){var b=document.createElement('button');b.type='button';b.dataset.m=val;b.textContent=label;return b;}
+var bOn=mk(TXT.on,'1'),bOff=mk(TXT.off,'0');
+row.appendChild(bOn);row.appendChild(bOff);
+panel.appendChild(h);panel.appendChild(row);
+function apply(calm,save){
+  document.documentElement.classList.toggle('et-calm',calm);
+  bOn.setAttribute('aria-pressed',calm?'false':'true');
+  bOff.setAttribute('aria-pressed',calm?'true':'false');
+  if(save!==false){try{localStorage.setItem('et-motion',calm?'0':'1')}catch(e){}}
+}
+bOn.addEventListener('click',function(){apply(false);});
+bOff.addEventListener('click',function(){apply(true);});
+var calm=false;
+try{
+  var sm=localStorage.getItem('et-motion');
+  calm=sm==='0'||(sm===null&&matchMedia('(prefers-reduced-motion: reduce)').matches);
+}catch(e){}
+apply(calm,false);
+})()}catch(e){}
