@@ -16374,3 +16374,35 @@ aucun debordement.
 
 Publication : deux fichiers HTML, le journal et le sitemap
 (deux lastmod), un lot.
+
+## 456 — 2026-09-07 : La lecture par pole appliquee aux transversales
+
+La directive : appliquer. Le 455 avait rendu son verdict — les
+portails de pole sont complets, et la bande "par pole" posee sur
+/cibles-2030 en etait la premiere lecture transversale. Ce
+chapitre applique la meme lecture aux deux autres transversales
+qui la meritaient : /projets et /carnets, FR et EN.
+
+Quatre bandes inserees, un seul motif (le bloc du 455, cartes
+01/02/03/+ aux couleurs des poles) :
+
+Sur /projets, "Les chantiers, pole par pole" — quatre cartes en
+renvoi vers la section chantiers de chaque portail (l ancre
+chantiers existe sur les huit hubs, verifiee au navigateur).
+
+Sur /carnets, "Le fil de chaque pole" — quatre cartes en renvoi
+vers le fil date de chaque portail (ancres carnets-amont,
+carnets-inter, carnets-aval, carnets-petro en FR ;
+carnets-amont, carnets-midstream, carnets-downstream,
+carnets-petrochemicals en EN — toutes verifiees).
+
+Aucun contenu nouveau : des portes. La lecture par pole est
+desormais posee sur les trois transversales — cibles, projets,
+carnets — et chaque porte mene a une section qui existe.
+
+Verification : huit passes (quatre fichiers, deux themes),
+quatre cartes visibles partout, axe zero violation, aucun
+debordement, sept ancres cibles testees au navigateur.
+
+Publication : quatre fichiers HTML, le journal et le sitemap
+(quatre lastmod), un lot.
