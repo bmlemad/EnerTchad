@@ -16013,3 +16013,57 @@ script neuf.
 
 Publication : deux fichiers HTML, le journal et le sitemap, deux
 lots. Pas de bump SW (HTML inline uniquement).
+
+## 447 — 2026-09-07 : Refonte de la home sur le coeur du metier
+
+La directive du proprietaire : recentrer la home sur les quatre
+segments du metier — Exploration & Production, Transport &
+stockage, Raffinage & distribution, Chimie & petrochimie. Deux
+arbitrages demandes et rendus : home entierement reecrite (et non
+une simple retouche de section), et la petrochimie qui reste un
+prolongement de l Aval, conformement a la doctrine validee par le
+modele Product Solutions d ExxonMobil.
+
+L inventaire d abord : la home portait deja les quatre chapitres
+de maillon (systeme mln, chapitre 312), mais la vitrine du
+chapitre 326 les avait comprimes en bande de trois colonnes,
+petrochimie en bandeau bas, au bureau. Le coeur du metier existait
+— il etait a l etroit.
+
+La refonte, trois gestes :
+
+Un, les chapitres pleine largeur. La grille demi-largeur du 312
+et la bande de trois du 326 sont retirees au profit du format
+chapitre : chaque maillon reprend un ecran, l alternance
+gauche-droite de la base reprend la main, le chiffre fantome
+retrouve sa taille. La petrochimie garde sa marque de
+prolongement — bordure haute pointillee, ordinal "+" — mais au
+meme format que les trois maillons.
+
+Deux, le carnet du maillon. Chaque chapitre recoit son recit
+date : Le baril additionnel (20 juin 2026) pour l E&P, Doba-Kribi
+(24 juin 2026) pour le transport, La bouteille contre la hache
+(9 juillet 2026) pour le raffinage-distribution, Sedigui
+(7 juillet 2026) pour la petrochimie. Les chiffres cibles des
+maillons etaient deja dans les chapitres (mln-kpis) — les carnets
+manquaient. FR et EN, huit carnets en tout.
+
+Trois, le rail de traversee recompose : neuf entrees au lieu de
+six — un point par maillon, aux couleurs des poles, puis
+capacites, chiffres, carnets, agir. Le libelle d orientation
+passe de "S orienter" a "Le coeur du metier".
+
+Mon erreur : ma premiere passe a corrige le bloc media du 312
+dans le head et j ai verifie trop vite — la capture montrait
+toujours des colonnes empilees. La regle vivante etait ailleurs :
+la vitrine du 326, un style place dans le corps de page, plus
+tard dans la cascade. La lecon du 433 s applique aussi au CSS :
+c est la valeur calculee au navigateur qui juge, et une regle
+peut avoir plusieurs proprietaires dans un fichier de 190 Ko.
+
+Verification locale : FR et EN, bureau 1366 et mobile 390, deux
+themes — huit passes, axe zero violation sur la section, aucun
+debordement, carnets visibles partout, rail a neuf entrees.
+
+Publication : deux fichiers HTML, le journal et le sitemap, deux
+lots. Pas de bump SW (HTML inline uniquement).
