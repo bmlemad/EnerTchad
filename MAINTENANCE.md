@@ -16849,3 +16849,61 @@ le 7 ; Sedigui sans annonce datable ; carte Brent pour janvier
 Publication : quatre fichiers arabes corriges, le journal et le
 sitemap (rien a dater de plus — les pages arabes sont deja au
 8 septembre), un lot.
+
+## 470 — Le hero de la home modernise : A la une datee, matiere premium, doctrine a jour (8 septembre 2026)
+
+Directive du proprietaire : moderniser le hero. Arbitrage rendu :
+modernisation complete (A la une datee facon Exxon + matiere premium
+u459 + hierarchie resserree facon Chevron), plutot que l'un des trois
+axes seul.
+
+Ce qui change, sur les deux homes (FR et EN) :
+
+1. A la une datee. Une barre "A la une" entre les CTA et les pilules
+de chaine : date du jour en mono, titre du dernier communique
+(CP-2026-011, 8 septembre) pointant vers /communiques#cp-011, et un
+lien "Tout le fil" vers l'ancre #carnets. C'est le motif des rubans
+m457 des hubs, remonte a l'echelle du hero — le canon Exxon
+(news-first) applique sans carrousel : un seul item, date, sobre.
+Filet degrade or en tete de barre, fond verre sombre, deux themes.
+
+2. Matiere premium u459. Le kicker recoit le marqueur losange, la
+grille des 4 KPI passe en separateurs teintes or, rayon 18px et ombre
+color-mix doree (declinaison claire en #8A6A12), les chiffres montent
+d'un cran, les pilules de chaine recoivent une ombre portee discrete.
+
+3. Doctrine a jour dans la lede. L'ancienne lede disait encore "trois
+maillons... quatre appuis" — le mot "appuis" a disparu de la doctrine
+au chapitre 449 (les capacites vivent dans les poles, la section
+#appuis a ete dissoute). Nouvelle lede, plus courte : "trois poles de
+coeur, quatre capacites integrees". Meme correction en anglais
+("four supports" -> "four built-in capabilities").
+
+4. Nettoyages en passant : les dix lignes CSS orphelines .hx-pause
+(bouton pause du carrousel supprime de longue date — plus aucun
+element ni script ne porte cette classe) retirees des deux fichiers ;
+et sur la home EN, la citation de la section chiffres fermait un
+guillemet anglais ouvrant par un guillemet francais (". >>") —
+fermee proprement en anglais.
+
+Mon erreur (attrapee avant publication) : j'ai d'abord "resserre" la
+typographie du titre en editant le clamp de .nh-h1 dans le bloc
+nh-css... regle inerte. La valeur calculee (89,6 px, interligne 1,
+approche -0,038em) appartient a .hero h1 en !important dans
+x_77d650c4a7a2.css — l'echelle display facon Chevron etait deja en
+place, posee par un chantier anterieur. J'ai reverti mon edit pour ne
+pas laisser une regle qui pretend gouverner ce qu'elle ne gouverne
+pas. Lecon deja journalisee au 447 et reconfirmee : dans un fichier de
+190 Ko plus ses bundles, une propriete a plusieurs proprietaires — le
+juge est la valeur calculee dans le navigateur, pas la regle qu'on
+vient d'ecrire.
+
+Verification : axe (wcag2a/aa/21aa) sur header.hero, FR et EN, themes
+sombre et clair — zero violation ; aucun debordement horizontal a
+1366 ni a 390 ; captures relues sur les deux themes, les deux langues
+et le mobile ; le lien A la une resout vers /communiques#cp-011 (FR)
+et /communiques-en#cp-011 (EN). Sitemap : les deux locs de la home
+etaient deja au 8 septembre (chantier 465), rien a dater.
+
+Publication : les deux homes et le journal, un lot. Pas de fichier
+d'assets touche — pas de bump du service worker.
