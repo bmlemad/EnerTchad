@@ -17125,3 +17125,34 @@ transversales, pages arabes et pieds de page utilisent deja le canon.
 
 Publication : les deux homes et le journal (chapitres 475 et 476),
 un lot.
+
+## 477 — Consolidation apres la serie hero, fil et vitrine (chantiers 470-476) (8 septembre 2026)
+
+Serie couverte : hero FR/EN modernise (470), hero arabe (471), regle
+du fil (472), revue Communiques (473), vitrine ouverte des 8 hubs
+(474), destinations CTA (475), harmonisation des couleurs (476).
+Deux directives du proprietaire et deux arbitrages rendus dans la
+serie ; deux erreurs attrapees par la verification calculee (470
+avant publication, 471 apres) et journalisees.
+
+Balayage desktop complet : 221 pages x 2 themes en six tranches —
+propre. Seules remontees : les entrees citation, informationnelles
+par convention d'instrument.
+
+Registre synchronise : chapitres 469 a 477 ajoutes (204 entrees,
+ch.275-477), tableau de bord reconstruit et republie.
+
+Veilles :
+- ITIE : score inchange (64,5 — octobre 2022, "fairly low",
+  verifie sur eiti.org). Signal neuf : le comite national
+  (itie-chad.org) publie un article "Nouvelle date pour la validation
+  ITIE-Tchad" — page inaccessible ce jour (503), aucune date
+  confirmee cote eiti.org. A re-tenter a la prochaine consolidation ;
+  le site ne change pas tant qu'un fait date n'est pas verifiable.
+- Sedigui : toujours aucune annonce de mise en production datable ;
+  la presse tchadienne evoque un chantier en cours et des retards
+  releves par l'Etat — coherent avec notre formulation prudente
+  ("gaz valorise, non torche" comme objectif, pas comme fait).
+- Carte Brent : echeance janvier 2027, rien a faire.
+
+Publication : le journal seul, un lot.
