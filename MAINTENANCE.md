@@ -16709,3 +16709,35 @@ Les deux flux revalides parseables (44 et 43 entrees).
 Publication : six fichiers (communiques FR/EN, deux flux, deux
 index) plus le journal et le sitemap (quatre lastmod HTML), un
 lot.
+
+## 466 — 2026-09-08 : Les cibles par pole et le fil date portes en arabe
+
+Deuxieme chantier de l arbitrage : porter au mini-site arabe les
+acquis recents qui s y pretent.
+
+Sur ar-poles, la bande "Les cibles, pole par pole" du 455 arrive
+en arabe (pcb466) : quatre cartes RTL aux couleurs des poles —
+la Boucle 01 Amont avec l OOIP vise et les 21 blocs libres du
+cadastre 2025, la 02 avec le corridor de 1 070 km et les trois
+hubs-depots, la 03 avec les 12 stations, les 2 000 b/j par train
+et le prix ARSAT, le + petrochimie avec Sedigui non torche et
+les quatre filieres. Chaque carte renvoie a la bouteille de son
+pole avec la mention etablie du mini-site : bawabat al-qutb
+(bil-faransiyya) — la porte du pole, en francais. Aucun chiffre
+nouveau : les memes valeurs prudentes que partout.
+
+Sur les trois pages de pole arabes, le ruban du dernier carnet
+(motif du 457, m466) : le forage dirige du 12 aout pour le
+Manba (Amont), la mesure du jaugeur du 22 aout pour le Naql
+wal-Takhzin, le bitume du 29 juillet pour le Masabb — dates en
+arabe, etiquette "akhir tadwina · bil-faransiyya", lien vers le
+carnet francais, fleche RTL.
+
+Verification : huit passes (quatre pages, 1366 et 390 pixels),
+direction rtl confirmee, elements visibles, axe zero violation,
+aucun debordement, zero erreur JS, capture de controle de la
+bande — les cartes se lisent de droite a gauche avec leurs
+couleurs de pole.
+
+Publication : quatre fichiers HTML, le journal et le sitemap
+(quatre lastmod), un lot.
