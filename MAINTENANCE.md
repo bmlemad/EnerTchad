@@ -17249,3 +17249,49 @@ les transversales, l'arabe, et les 4 hubs de capacites eux-memes
 
 Prochaine etape : sur feu vert du proprietaire, executer lot par
 lot. Publication : le journal seul, un lot.
+
+## 480 — Repli des capacites, lot 1 : EnerConseils (8 septembre 2026)
+
+Execution du plan 479 sur feu vert du proprietaire. Les trois paires
+conseil / audits / esg deviennent des sections ancrees du hub
+(#conseil, #audits, #esg), FR et EN : titre repris de la page, lede
+reprise de sa description, trois a quatre cartes reprenant les
+themes et leurs premiers paragraphes — texte d'origine, condense,
+zero reecriture. Atlas reste autonome (exception du plan). Douze
+fichiers re-cables vers les ancres, six redirections 301 ajoutees a
+vercel.json, six locs retirees du sitemap. Correctif en passant : les
+entites &nbsp; des textes extraits se rendaient litteralement —
+re-encodees. Axe zero violation sur les sections, deux themes, les
+deux hubs ; ancres atterrissantes ; aucun debordement.
+
+## 481 — Repli des capacites, lot 2 : GreenTech (8 septembre 2026)
+
+Quatre paires repliees (hseq, impact, transition, patrimoine) en
+sections ancrees des deux hubs. Vingt-deux fichiers re-cables (dont
+cibles-2030, engagements et sept carnets), huit 301, huit locs
+retirees. Memes verifications, memes resultats : quatre sections par
+hub, axe zero violation aux deux themes.
+
+## 482 — Repli des capacites, lot 3 : Tchaditude (8 septembre 2026)
+
+Quatre paires repliees (academie, services, rayonnement,
+partenariats — dont les 84 occurrences de partenariats, concentrees
+sur 7 fichiers comme le plan l'avait releve). Treize fichiers
+re-cables, huit 301, huit locs retirees. Quatre sections par hub,
+axe zero violation aux deux themes.
+
+## 483 — Repli des capacites, lot 4 : TchadiTech (8 septembre 2026)
+
+Quatre paires repliees (socle, rd, innovations, recits) ; outils
+reste autonome (exception du plan, pied de page site-wide). Vingt
+fichiers re-cables (dont societe, solutions et les recits du
+journal), huit 301, huit locs retirees. Quatre sections par hub, axe
+zero violation aux deux themes.
+
+Bilan des quatre lots : 30 sous-pages repliees, sitemap passe de 220
+a 190 locs ; 153 redirections actives dans vercel.json ; zero lien
+interne restant vers les URL repliees (greps de controle a zero).
+Les fichiers replies restent au depot comme archive de contenu — la
+surface publique, elle, est reduite ; leur sort definitif se decide
+au lot de cloture. Publication : 51 fichiers en neuf cycles, puis
+verification des redirections en production au chapitre suivant.

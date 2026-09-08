@@ -616,6 +616,156 @@
       "source": "/Calculateur_Baril_Additionnel",
       "destination": "/calculateur-baril-additionnel",
       "permanent": true
+    },
+    {
+      "source": "/enerconseils/conseil",
+      "destination": "/enerconseils/#conseil",
+      "permanent": true
+    },
+    {
+      "source": "/enerconseils/audits",
+      "destination": "/enerconseils/#audits",
+      "permanent": true
+    },
+    {
+      "source": "/enerconseils/esg",
+      "destination": "/enerconseils/#esg",
+      "permanent": true
+    },
+    {
+      "source": "/enerconseils/conseil-en",
+      "destination": "/pole-enerconseils-en#conseil",
+      "permanent": true
+    },
+    {
+      "source": "/enerconseils/audits-en",
+      "destination": "/pole-enerconseils-en#audits",
+      "permanent": true
+    },
+    {
+      "source": "/enerconseils/esg-en",
+      "destination": "/pole-enerconseils-en#esg",
+      "permanent": true
+    },
+    {
+      "source": "/greentech/hseq-en",
+      "destination": "/pole-greentech-en#hseq",
+      "permanent": true
+    },
+    {
+      "source": "/greentech/impact-en",
+      "destination": "/pole-greentech-en#impact",
+      "permanent": true
+    },
+    {
+      "source": "/greentech/transition-en",
+      "destination": "/pole-greentech-en#transition",
+      "permanent": true
+    },
+    {
+      "source": "/greentech/patrimoine-en",
+      "destination": "/pole-greentech-en#patrimoine",
+      "permanent": true
+    },
+    {
+      "source": "/greentech/hseq",
+      "destination": "/greentech/#hseq",
+      "permanent": true
+    },
+    {
+      "source": "/greentech/impact",
+      "destination": "/greentech/#impact",
+      "permanent": true
+    },
+    {
+      "source": "/greentech/transition",
+      "destination": "/greentech/#transition",
+      "permanent": true
+    },
+    {
+      "source": "/greentech/patrimoine",
+      "destination": "/greentech/#patrimoine",
+      "permanent": true
+    },
+    {
+      "source": "/tchaditude/academie-en",
+      "destination": "/pole-tchaditude-en#academie",
+      "permanent": true
+    },
+    {
+      "source": "/tchaditude/services-en",
+      "destination": "/pole-tchaditude-en#services",
+      "permanent": true
+    },
+    {
+      "source": "/tchaditude/rayonnement-en",
+      "destination": "/pole-tchaditude-en#rayonnement",
+      "permanent": true
+    },
+    {
+      "source": "/tchaditude/partenariats-en",
+      "destination": "/pole-tchaditude-en#partenariats",
+      "permanent": true
+    },
+    {
+      "source": "/tchaditude/academie",
+      "destination": "/tchaditude/#academie",
+      "permanent": true
+    },
+    {
+      "source": "/tchaditude/services",
+      "destination": "/tchaditude/#services",
+      "permanent": true
+    },
+    {
+      "source": "/tchaditude/rayonnement",
+      "destination": "/tchaditude/#rayonnement",
+      "permanent": true
+    },
+    {
+      "source": "/tchaditude/partenariats",
+      "destination": "/tchaditude/#partenariats",
+      "permanent": true
+    },
+    {
+      "source": "/tchaditech/socle-en",
+      "destination": "/pole-tchaditech-en#socle",
+      "permanent": true
+    },
+    {
+      "source": "/tchaditech/rd-en",
+      "destination": "/pole-tchaditech-en#rd",
+      "permanent": true
+    },
+    {
+      "source": "/tchaditech/innovations-en",
+      "destination": "/pole-tchaditech-en#innovations",
+      "permanent": true
+    },
+    {
+      "source": "/tchaditech/recits-en",
+      "destination": "/pole-tchaditech-en#recits",
+      "permanent": true
+    },
+    {
+      "source": "/tchaditech/socle",
+      "destination": "/tchaditech/#socle",
+      "permanent": true
+    },
+    {
+      "source": "/tchaditech/rd",
+      "destination": "/tchaditech/#rd",
+      "permanent": true
+    },
+    {
+      "source": "/tchaditech/innovations",
+      "destination": "/tchaditech/#innovations",
+      "permanent": true
+    },
+    {
+      "source": "/tchaditech/recits",
+      "destination": "/tchaditech/#recits",
+      "permanent": true
     }
   ],
   "headers": [
