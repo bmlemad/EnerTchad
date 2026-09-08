@@ -16907,3 +16907,36 @@ etaient deja au 8 septembre (chantier 465), rien a dater.
 
 Publication : les deux homes et le journal, un lot. Pas de fichier
 d'assets touche — pas de bump du service worker.
+
+## 471 — L'Abraz datee sur le hero arabe : le motif 470 etendu au mini-site (8 septembre 2026)
+
+Prolongement naturel du chapitre 470 : la home arabe (/ar) recoit a
+son tour l'element date du hero, pour que les trois langues racontent
+la meme actualite depuis leur porte d'entree.
+
+Ce qui change sur ar.html :
+
+1. Barre "al-abraz" (A la une) sous les CTA du hero : libelle
+"al-abraz · bi-l-faransiya" (A la une · en francais — la cible est la
+page FR des communiques, convention m466 du chantier 466), date du
+8 septembre en chiffres, titre du CP-2026-011 traduit en arabe,
+fleche RTL. Motif visuel du m466 des pages poles arabes (bordure et
+fond color-mix or, accents --mja avec declinaison claire --mjal
+#7A5C14 — la lecon de contraste du 469 appliquee d'emblee), plus le
+filet degrade en tete herite du 470.
+
+2. Matiere premium sur les 4 cartes KPI du hero : ombre color-mix
+doree (declinaison #8A6A12 au theme clair), coherente avec la grille
+KPI de la home FR/EN au 470.
+
+Pas de marqueur losange sur le kicker arabe : il porte deja son
+propre marqueur (tiret dore), un second signe l'aurait alourdi.
+
+Verification : axe (wcag2a/aa/21aa) sur le hero — zero violation aux
+deux themes ; aucun debordement a 1366 ni 390 ; captures relues aux
+deux themes et au mobile, rendu RTL correct (fleche vers la gauche,
+retour a la ligne propre de la barre). Sitemap : /ar date au
+8 septembre.
+
+Publication : ar.html, le sitemap et le journal, un lot. Pas d'asset
+touche — pas de bump du service worker.
