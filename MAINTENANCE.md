@@ -17327,3 +17327,66 @@ liste de pages (l'univers des instruments — /tmp/a263_pages.txt —
 doit etre regenere : lecon 464, l'univers complet avant de juger).
 
 Publication : le journal seul, un lot.
+
+## 485 — QA complete du site sur la nouvelle surface (8 septembre 2026)
+
+Directive du proprietaire : QA du site. Premiere QA complete apres le
+repli 480-484, menee sur un univers regenere (lecon 464 rappelee au
+484) : la liste des pages des instruments passe de 221 a 191 entrees
+(les 30 sous-pages repliees retirees).
+
+- Balayage desktop : 191 pages x 2 themes, six tranches — propre
+  (seules les entrees citation, informationnelles).
+- Balayage mobile 390x844 : 191 pages x 2 themes, six tranches —
+  189 pages sans anomalie ; le couple brochure sombre rend son
+  color-contrast(15/17) documente au 435, trait pour trait (temoin
+  de non-regression).
+- Integrite des liens : tous les href internes des 191 pages
+  resolus contre l'univers COMPLET — fichiers de tous types du
+  depot, 123+30 redirections et rewrites de vercel.json — zero lien
+  casse. Les 30 URL repliees ne sont plus referencees que par leurs
+  redirections.
+
+Verdict : la refonte de surface (221 -> 190 pages publiques) n'a
+rien casse. Chapitre de constat, qui date le controle.
+
+Publication : le journal seul, un lot.
+
+## 486 — La section client de chaque pole, et la fin des doublons d'offres (8 septembre 2026)
+
+Directive du proprietaire : chaque pole doit avoir sa section client,
+et les doublons doivent disparaitre.
+
+Le diagnostic : depuis la vitrine ouverte (474), chaque hub de pole
+portait DEUX sections d'offres — #offre ("Nos offres & expertises",
+la vitrine) et #offre-tiers ("Ce que le pole propose aux tiers") —
+et certaines cibles y figuraient deux fois : a l'Amont, le catalogue
+des services parapetroliers etait a la fois le bouton primaire de la
+vitrine et une carte des tiers ; a la Petrochimie, les produits et
+la chimie EOR apparaissaient dans les deux rangees.
+
+Le traitement, sur les 8 hubs (FR + EN) :
+
+1. #offre-tiers devient LA section client du pole : id="clients",
+   kicker "Cote client · [Pole]", titre "Devenir client de
+   [l'Amont / l'Intermediaire / l'Aval / la Petrochimie]" (EN
+   "Become a ... client"). La vitrine #offre reste la seule section
+   d'offres ; la section client porte les portes d'entree et les
+   deux CTA (Devenir client, Le contact direct). Aucun lien entrant
+   ne pointait vers #offre-tiers — renommage sans casse (grep a
+   zero avant edition).
+2. Doublons elimines, hub par hub : Amont, la carte "Services
+   parapetroliers integres" retiree (le bouton primaire de la
+   vitrine porte deja cette cible) ; Petrochimie, la carte
+   "Molecules transformees" retiree (primaire de la vitrine) et le
+   lien secondaire "Chimie EOR" retire de la vitrine (la carte
+   client le porte). Intermediaire et Aval n'avaient pas de doublon.
+   Controle final : intersection vitrine/cartes client vide sur les
+   8 hubs.
+
+Verification : axe (wcag2a/aa/21aa) sur la section #clients des 8
+hubs x 2 themes — zero violation ; l'ancre #clients atterrit a
+202 px sous le bord ; aucun debordement.
+
+Publication : les 8 hubs et le journal (chapitres 485 et 486), en
+cinq cycles.
