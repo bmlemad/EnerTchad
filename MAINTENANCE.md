@@ -16814,3 +16814,38 @@ l instrument, la carte, et la preuve qu il ne faut pas purger
 sans elle.
 
 Publication : le journal seul, un lot.
+
+## 469 — 2026-09-08 : Consolidation apres la serie des quatre chantiers
+
+La serie arbitree par le proprietaire (465 a 468) est livree ;
+la consolidation la referme.
+
+Le balayage complet : 221 pages, deux themes, six tranches — et
+une trouvaille a la premiere tranche, dans mon propre travail de
+la veille : sur ar-poles en sombre, le sigle Sedigui de la carte
+petrochimie tombait a 4,4 de contraste (4,5 requis) — l opacite
+de 0,85 posee sur les lignes assombrissait aussi l accent du
+pole. Corrige a la racine dans les deux themes : les lignes
+prennent une couleur attenuee au lieu d une opacite (l accent
+n est plus dilue), et la bande comme les rubans arabes recoivent
+des accents clairs dedies (--pcal, --mjal — les memes valeurs
+que les chapitres de la home) pour le theme clair. Les quatre
+pages arabes reverifiees a zero violation dans les deux themes,
+puis les six tranches rejouees : AUCUNE anomalie.
+
+La lecon, en echo au 435 : mon controle du 466 avait vu la
+section a zero — la limite a 4,4 contre 4,5 est le genre d ecart
+qui bascule d une mesure a l autre. Le balayage complet du
+lendemain reste le juge de paix, meme sur le travail verifie la
+veille.
+
+Le registre : huit entrees ajoutees (461 a 468), 194 chapitres
+au tableau, artefact republie.
+
+Les veilles : positions inchangees (ITIE reverifie a la source
+le 7 ; Sedigui sans annonce datable ; carte Brent pour janvier
+2027).
+
+Publication : quatre fichiers arabes corriges, le journal et le
+sitemap (rien a dater de plus — les pages arabes sont deja au
+8 septembre), un lot.
