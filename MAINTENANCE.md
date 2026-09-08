@@ -17181,3 +17181,71 @@ La vitrine ouverte tient donc sur mobile sans correctif. Chapitre de
 constat, qui date le controle.
 
 Publication : le journal seul, un lot.
+
+## 479 — Plan de reduction des pages : replier les capacites, sans rien perdre (8 septembre 2026)
+
+Question du proprietaire : reduire le nombre de pages aux 3 poles.
+Avis rendu et arbitrage : plan d'abord, aucune suppression dans ce
+chapitre — la coupe s'executera sur feu vert, par lots verifiables.
+
+Etat des lieux (221 pages) : 64 de journal, ~42 pour l'univers des
+capacites, 38 pour les poles, ~69 transversales, 8 arabes. Le vrai
+gisement est doctrinal : depuis le 449, les capacites "vivent a
+l'interieur des poles", mais chacune garde un sous-site complet.
+Le journal et les sous-pages de poles ne maigrissent pas (moteur de
+fraicheur ; destinations des vitrines du 474).
+
+Inventaire des 34 sous-pages de capacites (17 paires FR/EN), liens
+entrants comptes sur tout le site :
+
+- EnerConseils : conseil (15), audits (13-16), esg (8) — et atlas,
+  136-140 liens entrants repartis sur 209 fichiers (pied de page
+  site-wide "Atlas du secteur").
+- GreenTech : hseq (23-24), impact (26-27), transition (22),
+  patrimoine (15-16).
+- TchadiTech : socle (34-35), rd (21-23), innovations (20-21),
+  recits (18-19) — et outils, 123-124 liens sur 207 fichiers
+  (pied de page "Outils interactifs").
+- Tchaditude : academie (23-24), services (13), rayonnement (12-13),
+  partenariats (84-85 occurrences mais concentrees sur 7 fichiers).
+
+Le plan — cible : une seule page riche par capacite et par langue
+(le hub actuel, enrichi de sections ancrees), 30 sous-pages
+repliees, 221 -> 191 pages.
+
+Deux exceptions argumentees : /enerconseils/atlas et
+/tchaditech/outils restent des pages autonomes — ce sont des
+destinations fonctionnelles transversales (donnees du secteur,
+index des outils interactifs) referencees par le pied de page des
+~208 pages ; les replier imposerait de re-cabler tout le site pour
+un gain d'une paire chacune. Reexaminables en dernier lot.
+
+Mecanique, par capacite (quatre lots + un lot de cloture) :
+
+1. Enrichir le hub : chaque sous-page devient une section ancree du
+   hub (#hseq, #impact, #academie...), contenu essentiel repris —
+   messages, KPI dates, liens sortants ; rien ne se perd, tout se
+   condense.
+2. Redirections 301 dans vercel.json (le mecanisme existe deja :
+   123 redirections actives, cleanUrls) : /greentech/hseq ->
+   /greentech/#hseq, idem -en -> hub EN, pour les 30 URL.
+3. Re-cabler les liens internes (8 a 35 par page ; 84 pour
+   partenariats mais sur 7 fichiers seulement) vers les ancres —
+   un lien interne ne doit pas transiter par une redirection.
+4. Sitemap : retirer les 30 locs repliees, dater les 8 hubs.
+5. Verification par lot : axe deux themes, mobile, ancres
+   atterrissantes, redirections testees en production, balayage
+   des tranches touchees.
+
+Ordre propose, du plus simple au plus delicat : EnerConseils
+(3 paires, faibles liens), GreenTech (4), Tchaditude (4, dont le
+re-cablage partenariats), TchadiTech (4). Lot de cloture :
+consolidation, re-benchmark du nombre de pages, decision sur les
+deux exceptions.
+
+Ce que le plan ne touche pas : le journal (64), les poles (38),
+les transversales, l'arabe, et les 4 hubs de capacites eux-memes
+(ils restent les pages uniques de leur capacite).
+
+Prochaine etape : sur feu vert du proprietaire, executer lot par
+lot. Publication : le journal seul, un lot.
