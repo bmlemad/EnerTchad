@@ -16674,3 +16674,38 @@ raccourcir romprait la coherence des citations etablie au 426.
 
 Publication : six fichiers HTML, le journal et le sitemap (six
 lastmod), un lot.
+
+## 465 — 2026-09-08 : La fraicheur du fil — CP-2026-011 et les flux remis d equerre
+
+Premier des quatre chantiers arbitres par le proprietaire : la
+fraicheur du fil. L audit d abord, sur les deux flux RSS que 43
+pages referencent.
+
+Deux constats. Le premier : les flux etaient a jour au 31 aout
+(CP-2026-010) — mais le flux anglais avait un trou : le
+CP-2026-009 du 30 aout, present sur la page des communiques EN,
+manquait au feed-en (41 entrees contre 42 cote francais).
+Combler ce trou etait du au lecteur RSS anglophone.
+
+Le second : depuis le 31 aout, dix-huit chapitres de refonte ont
+ete publies sans qu aucun communique ne l annonce. Le CP-2026-011
+du 8 septembre repare cela : la refonte poles est en ligne — la
+home en chapitres pleine largeur, les hubs devenus portails, les
+transversales lisibles pole par pole, le dernier carnet date en
+tete de chaque portail, la commande Mouvement sur toutes les
+pages, les adresses inchangees. FR et EN, sur la page des
+communiques, dans les deux flux, et en tete de la liste des
+communiques de la home (le CP-008 sort de la vitrine des trois).
+
+Mon erreur du tour : mon premier script a echoue au milieu — son
+ancre pour le flux EN supposait item et title colles, ce qui
+n est vrai que pour la premiere entree — et l echec a laisse les
+lignes de la home non posees alors que le script en annoncait le
+succes par anticipation. La verification au navigateur l a
+revele : les trois lignes affichaient encore l ancien trio. Repris
+en deux temps, reverifie : 011-010-009 rendus des deux cotes.
+Les deux flux revalides parseables (44 et 43 entrees).
+
+Publication : six fichiers (communiques FR/EN, deux flux, deux
+index) plus le journal et le sitemap (quatre lastmod HTML), un
+lot.
