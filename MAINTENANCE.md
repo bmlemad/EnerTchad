@@ -16950,3 +16950,42 @@ retour a la ligne propre de la barre). Sitemap : /ar date au
 
 Publication : ar.html, le sitemap et le journal, un lot. Pas d'asset
 touche — pas de bump du service worker.
+
+## 472 — La regle du fil : l'element date d'un pole montre son plus recent carnet (8 septembre 2026)
+
+Apres les chapitres 470/471 (l'A la une datee sur les trois homes),
+inventaire de fraicheur de TOUS les elements dates du site, pole par
+pole, contre la date de publication (datePublished) de chaque carnet :
+
+- Rubans m457 des 8 hubs (FR + EN) : frais. Chaque ruban montre bien
+  le plus recent carnet du fil de son pole (amont 12 aout, inter
+  22 aout, aval 29 juillet, petrochimie 20 aout).
+- Rubans m466 des 3 pages poles arabes : frais (memes dates).
+- Barres A la une des trois homes (470/471) : fraiches (CP-011,
+  8 septembre).
+- Les 4 lignes mln-carnet des chapitres de la home FR et EN : EN
+  RETARD. Elles montraient encore les carnets "signature" choisis au
+  447 (baril additionnel 20 juin, corridor 24 juin, GPL 9 juillet,
+  Sedigui 7 juillet) — jusqu'a deux mois derriere le fil reel du pole.
+
+Decision, posee comme regle de maintenance : "l'element date d'un
+pole montre le plus recent carnet de son fil" — la meme regle que
+suivent deja les hubs. Les 8 lignes (4 FR + 4 EN) sont realignees :
+amont -> Le forage dirige (12 aout), intermediaire -> l'interview du
+jaugeur-mesureur (22 aout), aval -> Le bitume (29 juillet),
+petrochimie -> le prix d'un sac d'uree (20 aout). Les carnets
+signature du 447 restent accessibles par le fil complet et les hubs ;
+le recit thematique des chapitres (texte, KPI) ne dependait pas
+d'eux.
+
+A chaque nouveau carnet publie, la checklist est donc : la ligne
+mln-carnet du pole sur les 2 homes, le ruban m457 du hub (2 langues),
+le ruban m466 arabe s'il s'agit d'un des 3 poles couverts, et les
+barres A la une si c'est un communique.
+
+Verification : les 8 lignes relues dans le navigateur (href, date,
+rendu du chapitre 02 capture) ; les 8 pages cibles repondent 200 en
+FR et EN ; aucun debordement horizontal. Sitemap : les deux locs de
+la home deja au 8 septembre.
+
+Publication : les deux homes et le journal, un lot.
