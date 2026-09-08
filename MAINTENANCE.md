@@ -16773,3 +16773,44 @@ entiere, zero erreur JS.
 
 Publication : deux fichiers HTML, le journal et le sitemap
 (deux lastmod), un lot.
+
+## 468 — 2026-09-08 : Allegement CSS, phase un — l instrument de couverture
+
+Dernier chantier de l arbitrage, phase outillage — comme convenu,
+on mesure avant de purger.
+
+L instrument : la couverture CSS du navigateur (Playwright),
+passee sur 34 pages — une par famille de gabarit, de la home aux
+outils, mini-site arabe compris — en theme sombre, avec
+defilement jusqu au pied de page. Agregation des plages
+utilisees par bundle, fusionnees entre pages.
+
+La carte : 54 bundles observes, 766 Ko au total, 206 Ko utilises
+au chargement. Le noyau (bundle_core_a1, bundle_head_b2, nav_a)
+s utilise a 25-47 pour cent ; les bundles specialises tombent
+plus bas.
+
+Mais la lecon de la phase un est ailleurs : les angles morts de
+l instrument sont demontres, pas supposes. plight_extrait affiche
+6 pour cent — normal, le theme clair n a pas ete mesure dans
+cette passe. Et l unique bundle a zero pour cent sur seize
+chargements (s_0c793eb7ae, 7 Ko) s est revele etre... le tiroir
+thematique de l explorateur des poles — un panneau qui ne
+s ouvre qu au clic : la couverture au chargement ne le verra
+jamais vivant, et il l est. Meme le meilleur candidat a la purge
+etait un faux mort.
+
+Le protocole de la phase deux en decoule, et il est ecrit avant
+d etre execute : aucune regle ne sera retiree sur la seule
+couverture dynamique — il faudra l intersection de trois
+preuves : couverture (les deux themes), analyse statique des
+selecteurs sur les 226 fichiers, et inventaire des classes
+basculees par JS (on, open, et-calm et consorts). Chaque etape
+se mesurera contre la baseline du 463, page par page, avec la
+re-mesure au navigateur comme juge.
+
+Aucune suppression dans ce chapitre — c est le livrable :
+l instrument, la carte, et la preuve qu il ne faut pas purger
+sans elle.
+
+Publication : le journal seul, un lot.
