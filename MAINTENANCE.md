@@ -17390,3 +17390,38 @@ hubs x 2 themes — zero violation ; l'ancre #clients atterrit a
 
 Publication : les 8 hubs et le journal (chapitres 485 et 486), en
 cinq cycles.
+
+## 487 — Consolidation apres la serie client et repli (chantiers 478-486) (8 septembre 2026)
+
+Serie couverte : balayage mobile post-vitrine (478), plan de
+reduction (479), les quatre lots du repli et leur cloture (480-484),
+la QA complete sur la nouvelle surface (485) et la section client
+des poles avec dedoublonnage (486). Trois directives du proprietaire
+et deux arbitrages rendus dans la serie.
+
+Incident d'outillage journalise : l'extension Chrome a cesse de
+repondre au moment de publier les chapitres 485-486 (trois
+tentatives, ~2 minutes). Tout etait pret et verifie en local ; a la
+reprise de la session, la publication est repartie sans perte ni
+re-travail — l'etat prepare dans /mnt/user-data/outputs est le filet.
+
+Verification de production post-publication : section #clients en
+ligne sur les hubs sondes (Amont FR, Petrochimie EN), intersection
+vitrine/cartes client vide, ancien id offre-tiers absent des poles.
+
+Registre synchronise : chapitres 478 a 487 ajoutes (214 entrees,
+ch.275-487), tableau de bord reconstruit et republie.
+
+Veilles :
+- ITIE : l'article "Nouvelle date pour la validation ITIE-Tchad" du
+  comite national reste inaccessible (503 sur robots.txt, deuxieme
+  tentative). Reconduite — rien ne change sur le site tant qu'un
+  fait date n'est pas verifiable.
+- Sedigui et carte Brent : inchangees depuis le 477 (meme journee).
+
+Etat de la serie du jour : dix-huit chapitres publies dans la
+journee (470 a 487), la surface passee de 221 a 190 pages, la
+home, les heros, le fil, les couleurs, les offres et le parcours
+client alignes sur la doctrine des 3 poles.
+
+Publication : le journal seul, un lot.
