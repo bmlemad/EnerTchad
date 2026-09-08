@@ -17295,3 +17295,35 @@ Les fichiers replies restent au depot comme archive de contenu — la
 surface publique, elle, est reduite ; leur sort definitif se decide
 au lot de cloture. Publication : 51 fichiers en neuf cycles, puis
 verification des redirections en production au chapitre suivant.
+
+## 484 — Cloture du repli : 190 pages publiques, redirections verifiees en production (8 septembre 2026)
+
+Verification de production apres les quatre lots (neuf commits,
+parite depot-production nulle a chaque cycle) :
+
+- Redirections : navigation reelle testee sur /enerconseils/conseil
+  — redirigee vers /enerconseils/#conseil, l'ancre atterrit a 224 px sous
+  la navigation, trois sections en ligne. Huit autres URL sondees
+  (deux par capacite, FR et EN melees) : toutes resolvent en 200 sur
+  leur hub via la redirection.
+- Sitemap en production : 190 locs exactement, aucune URL repliee
+  presente, les hubs dates du 8 septembre.
+- Aucun lien interne ne transite par une redirection (greps a zero
+  avant publication).
+
+Bilan de la serie 479-484 : la surface publique passe de 221 a 190
+pages (le sitemap passe de 220 a 190 locs), l'univers des capacites tient desormais en une page riche
+par capacite et par langue, plus les deux exceptions fonctionnelles
+(atlas, outils) — la doctrine "les capacites vivent a l'interieur
+des poles" se lit maintenant dans l'architecture elle-meme.
+
+Restent ouverts, pour decision du proprietaire au fil de l'eau :
+le sort definitif des 30 fichiers archives au depot (invisibles du
+public ; supprimables plus tard sans effet sur le site), et le
+reexamen des deux exceptions si le pied de page est un jour allege.
+
+La prochaine consolidation rejouera les balayages sur la nouvelle
+liste de pages (l'univers des instruments — /tmp/a263_pages.txt —
+doit etre regenere : lecon 464, l'univers complet avant de juger).
+
+Publication : le journal seul, un lot.
