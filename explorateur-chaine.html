@@ -227,7 +227,17 @@ html.et-jlight .rootland::after{
 html.et-plight .topnav .back:not(#_):not(#__),html.et-plight .topnav .lang:not(#_):not(#__){background:#FFFFFF!important;border-color:rgba(26,35,48,.24)!important}
 html.et-plight .topnav .back:not(#_):not(#__){color:#1A2330!important}
 html.et-plight .topnav .lang:not(#_):not(#__){color:#155FA8!important;border-color:rgba(21,95,168,.42)!important}</style>
-</head>
+<style id="m467">/* Ch467 - l explorateur aligne sur les portails : lien de portail par
+   maillon, capacites cliquables. */
+.pgo467{display:inline-flex;align-items:center;gap:8px;margin-top:14px;padding:9px 16px;
+ border-radius:999px;border:1px solid currentColor;text-decoration:none;color:#E8C36A;
+ font-family:ui-monospace,Menlo,monospace;font-size:.72rem;letter-spacing:.07em}
+.pgo467:hover{filter:brightness(1.15)}
+.pgo467:focus-visible{outline:2px solid currentColor;outline-offset:3px}
+a.sc{text-decoration:none;color:inherit;display:block}
+a.sc:hover{border-color:rgba(255,255,255,.4)}
+a.sc:focus-visible{outline:2px solid #E8C36A;outline-offset:2px;border-radius:10px}
+</style></head>
 <body>
 <a class="skip-link" href="#chain">Aller au contenu principal</a>
 <nav class="topnav" aria-label="Navigation de l’explorateur">
@@ -273,7 +283,7 @@ html.et-plight .topnav .lang:not(#_):not(#__){color:#155FA8!important;border-col
       <div class="value" id="p-value">
         <span class="mono" style="font-size:0.6875rem;text-transform:uppercase" id="p-vlbl">Valeur retenue au pays</span>
         <p id="p-vtext"></p>
-      </div>
+      </div><a id="p-go" class="pgo467" href="/amont/">Le portail du pôle sur le site →</a>
     </div>
   </section>
 
@@ -290,24 +300,24 @@ html.et-plight .topnav .lang:not(#_):not(#__){color:#155FA8!important;border-col
 
 <script>
 var STAGES=[
-{id:"amont",n:"01",name:"Amont",sub:"Exploration & Production",tagline:"Extraire davantage de chaque gisement",accent:"#E8C36A",
+{id:"amont",url:"/amont/",n:"01",name:"Amont",sub:"Exploration & Production",tagline:"Extraire davantage de chaque gisement",accent:"#E8C36A",
 activities:["Récupération assistée (EOR) sur champs matures","Relance des blocs marginaux","Services parapétroliers intégrés (OFS)","Caractérisation sismique — bassins de Doba & Bongor"],
 kpis:[["+8–17\u00A0%","OOIP additionnel visé (EOR)"],["21","blocs libres ciblés"],["ASP","intrants locaux (natron, neem)"]],
 value:"Chaque baril récupéré au pays, c’est de la ressource qui cesse de s’évaporer à l’export."},
-{id:"inter",n:"02",name:"Intermédiaire",sub:"Transport & stockage",tagline:"Le maillon qui fait circuler la valeur",accent:"#5AA7F0",
+{id:"inter",url:"/intermediaire/",n:"02",name:"Intermédiaire",sub:"Transport & stockage",tagline:"Le maillon qui fait circuler la valeur",accent:"#5AA7F0",
 activities:["Mobilisation du corridor d’export","Réserve stratégique distribuée","Intégrité pipeline — ILI / smart pigging, détection de fuite","Transport par camion HSE"],
 kpis:[["1 070 km","corridor d’export visé"],["30 j","réserve distribuée visée"],["24/7","supervision SCADA"]],
 value:"Une réserve répartie sur le territoire amortit les ruptures — la sécurité d’approvisionnement reste nationale."},
-{id:"aval",n:"03",name:"Aval",sub:"Raffinage & distribution",tagline:"Rapprocher l’énergie du citoyen",accent:"#F2B45A",
+{id:"aval",url:"/aval/",n:"03",name:"Aval",sub:"Raffinage & distribution",tagline:"Rapprocher l’énergie du citoyen",accent:"#F2B45A",
 activities:["Mini-raffineries modulaires pilotées par IA","Réseau Tchadium & Mobile Stations™","Distribution au prix ARSAT, partout","Diesel, essence, GPL, Jet A-1, lubrifiants, bitume"],
 kpis:[["500–2 000 b/j","mini-raffinerie modulaire"],["12","stations cible"],["Prix ARSAT","même en zones isolées"]],
 value:"Raffiner et distribuer au pays\u00A0: du pouvoir d’achat rendu aux ménages, des emplois créés localement."},
-{id:"chimie",n:"04",name:"Pétrochimie",sub:"Extension chimie",tagline:"Monter d’un cran dans la valeur",accent:"#D177B4",
+{id:"chimie",url:"/petrochimie/",n:"04",name:"Pétrochimie",sub:"Extension chimie",tagline:"Monter d’un cran dans la valeur",accent:"#D177B4",
 activities:["Valorisation du gaz et du brut tchadiens","Engrais azotés · Méthanol · GPL","Soufre · Bitume · Polymères","Chimie EOR à intrants locaux"],
 kpis:[["2026–2030+","horizon des cibles"],["Chimie EOR","intrants locaux"],["Valeur ajoutée","produits finis, au pays"]],
 value:"Transformer la molécule au Tchad plutôt que d’exporter le brut\u00A0: la valeur la plus haute reste au pays."}
 ];
-var SUPPORT=[["GreenTech","Durabilité","#34D399"],["TchadiTech","Technologies · IA, OT/IT","#7E8AD9"],["Tchaditude","Capital humain","#C4B5FD"],["EnerConseils","Conseil · Atlas","#1FA496"]];
+var SUPPORT=[["GreenTech","Durabilité","#34D399","/greentech/"],["TchadiTech","Technologies · IA, OT/IT","#7E8AD9","/tchaditech/"],["Tchaditude","Capital humain","#C4B5FD","/tchaditude/"],["EnerConseils","Conseil · Atlas","#1FA496","/enerconseils/"]];
 
 var active=0;
 function el(t,c){var e=document.createElement(t);if(c)e.className=c;return e;}
@@ -327,7 +337,7 @@ STAGES.forEach(function(st,i){
 
 var support=document.getElementById("support");
 SUPPORT.forEach(function(p){
-  var c=el("div","sc");
+  var c=el("a","sc");c.href=p[3];
   c.innerHTML='<div class="row"><span class="dot" style="background:'+p[2]+'"></span><span class="nm">'+p[0]+'</span></div><div class="sb">'+p[1]+'</div>';
   support.appendChild(c);
 });
@@ -350,10 +360,10 @@ function select(i){
   var acts=document.getElementById("p-acts");acts.innerHTML="";
   s.activities.forEach(function(a){var li=el("li");li.innerHTML='<span class="d" style="color:'+s.accent+'">—</span><span>'+a+'</span>';acts.appendChild(li);});
   var kp=document.getElementById("p-kpis");kp.innerHTML="";
-  s.kpis.forEach(function(k){var d=el("div","kpi");d.innerHTML='<div class="v">'+k[0]+'</div><div class="l">'+k[1]+'</main>';kp.appendChild(d);});
+  s.kpis.forEach(function(k){var d=el("div","kpi");d.innerHTML='<div class="v">'+k[0]+'</div><div class="l">'+k[1]+'</div>';kp.appendChild(d);});
   var val=document.getElementById("p-value");val.style.borderLeft="3px solid "+s.accent;val.style.background=s.accent+"12";
   document.getElementById("p-vlbl").style.color=s.accent;
-  document.getElementById("p-vtext").textContent=s.value;
+  document.getElementById("p-vtext").textContent=s.value;var go=document.getElementById("p-go");if(go&&s.url){go.href=s.url;go.style.color=s.accent;}
 }
 select(0);
 </script>

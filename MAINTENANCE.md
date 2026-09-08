@@ -16741,3 +16741,35 @@ couleurs de pole.
 
 Publication : quatre fichiers HTML, le journal et le sitemap
 (quatre lastmod), un lot.
+
+## 467 — 2026-09-08 : L explorateur de chaine aligne sur les portails
+
+Troisieme chantier de l arbitrage : moderniser l explorateur de
+la chaine. L inventaire d abord : la page-outil etait deja a la
+doctrine (trois maillons + prolongement, capacites "a l interieur
+des poles", avertissement de societe en constitution) — mais
+c etait un cul-de-sac : zero lien vers les poles. On y explorait
+la chaine sans jamais pouvoir entrer dans un portail.
+
+Le geste m467, FR et EN : chaque maillon de la donnee STAGES
+recoit l URL de son portail, et le panneau de detail gagne un
+bouton "Le portail du pole sur le site" — pastille cerclee aux
+couleurs du maillon actif, mise a jour a chaque selection. Les
+quatre cartes de capacites deviennent cliquables vers leurs
+pages (GreenTech, TchadiTech, Tchaditude, EnerConseils — hubs EN
+cote anglais).
+
+Une trouvaille au passage, corrigee : le gabarit des tuiles de
+cibles fermait sa div par une balise main (</main> au lieu de
+</div>) — coquille inoffensive que les navigateurs corrigeaient
+en silence, mais fausse dans la source. Reparee dans les deux
+langues.
+
+Verification : les quatre maillons cliques l un apres l autre
+dans les deux langues — le bouton de portail suit (bonne URL,
+bonne couleur, visible a chaque fois), les quatre capacites
+pointent vers leurs pages, axe zero violation sur la page
+entiere, zero erreur JS.
+
+Publication : deux fichiers HTML, le journal et le sitemap
+(deux lastmod), un lot.
