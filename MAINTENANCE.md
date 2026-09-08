@@ -17026,3 +17026,54 @@ que 470-472 lui ont donne. Chapitre de constat — la revue qui ne
 trouve rien se journalise aussi, pour dater le controle.
 
 Publication : le journal seul, un lot.
+
+## 474 — La vitrine ouverte : les offres des poles sortent des accordeons (8 septembre 2026)
+
+Directive du proprietaire, capture a l'appui : proposer une meilleure
+structure pour la section "Nos offres & expertises" des hubs.
+Arbitrage rendu : vitrine ouverte, plutot que la fusion
+service-benefice ou la correction minimale des accordeons.
+
+Le diagnostic de l'existant (les 8 hubs, 4 poles x FR/EN) : huit
+accordeons fermes qui cachaient chacun une description d'une phrase —
+un clic par ligne pour un contenu minuscule ; deux bandes opaques
+"Capacites (5)" et "Avantages (5)" sans aucune odeur d'information ;
+et quatre pilules CTA de meme poids visuel. Le mot "Capacites" y
+entrait de surcroit en collision avec les quatre capacites integrees
+de la doctrine, alors que ces cinq entrees (equipes, moyens
+techniques, certifications, chaine d'appui, donnees) sont des moyens
+operationnels. Enfin, tout ce contenu clic-dependant etait invisible
+aux instruments (lecon du 468) comme aux visiteurs presses.
+
+La restructuration (vt474), a contenu strictement conserve — chaque
+titre et chaque description repris verbatim des accordeons :
+
+1. Les services en grille de cartes ouvertes, numerotees, description
+visible sans clic — la lecture facon majors.
+2. Les deux bandes deviennent deux colonnes ouvertes cote a cote :
+"Moyens & garanties" (accent bleu) et "Ce que vous y gagnez" (accent
+vert) — renommage qui leve la collision doctrinale ; EN "Resources &
+guarantees" / "What you gain".
+3. La rangee CTA hierarchisee : un bouton primaire plein (catalogue
+des services ; a defaut, le lien commercial du pole — boutique a
+l'aval, configurateur a l'intermediaire, produits a la petrochimie)
+et les autres liens en secondaires soulignes. Les liens svc451
+conserves tels quels.
+4. La lede reecrite ("Tout est affiche en clair...") — l'ancienne
+promettait "se deroule au clic".
+5. Le script pof436s (ouverture en cascade des groupes) supprime des
+8 fichiers : plus rien a deplier. L'ancien CSS pof-it reste en place
+mais inutilise — pas de purge sans mesure (protocole 468) ; accents
+clairs par pole fournis en --ofpacl pour le theme clair.
+
+La petrochimie, structuree differemment (deux familles "Molecules &
+produits" et "Chimie de production", sans bandes), recoit la meme
+grille ouverte a deux blocs.
+
+Verification : axe (wcag2a/aa/21aa) sur la section #offre des 8 hubs
+x 2 themes — zero violation partout ; 18/17/17/8 cartes comptees
+conformes au contenu d'origine, zero <details> restant dans la
+section ; aucun debordement ; captures relues aux deux themes.
+Sitemap : les 8 locs des hubs datees au 8 septembre.
+
+Publication : les 8 hubs, le sitemap et le journal, un lot.
