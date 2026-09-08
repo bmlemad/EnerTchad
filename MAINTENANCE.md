@@ -17077,3 +17077,51 @@ section ; aucun debordement ; captures relues aux deux themes.
 Sitemap : les 8 locs des hubs datees au 8 septembre.
 
 Publication : les 8 hubs, le sitemap et le journal, un lot.
+
+## 475 — Les destinations de la vitrine ouverte : dix cibles sondees, rien a corriger (8 septembre 2026)
+
+Le chantier 474 a promu des liens en boutons primaires : la revue
+verifie ou ils menent avant de laisser le parcours s'installer.
+Les dix cibles uniques des rangees CTA des 8 hubs sondees une par
+une : services-ep (FR/EN), boutique (FR/EN), produits petrochimie
+(FR/EN), chimie-eor (FR/EN), calculateur du baril et configurateur
+(rewrites Vercel vers leurs fichiers). Les dix repondent 200, titres
+et h1 coherents avec la promesse du bouton (le catalogue livre bien
+un catalogue, la boutique une boutique). Les cinq accordeons restants
+de la home arabe controles au passage : ce sont les FAQ — usage
+legitime du motif deroulant, aucun rapport avec l'ancienne section
+offres. Chapitre de constat.
+
+## 476 — QA des couleurs : les accents de pole harmonises au canon (8 septembre 2026)
+
+Directive du proprietaire : QA des couleurs des pages et
+harmonisation sur les poles. Inventaire hexadecimal sur les 226
+fichiers :
+
+- Amont #E8C36A : 2285 occurrences, canon partout.
+- Intermediaire #5AA7F0 : 1497 occurrences canon... et 4 occurrences
+  d'une variante eclaircie #7DBBF5, uniquement sur les deux homes
+  (chapitre mln et rail de traversee aurail).
+- Aval #F09A4A : 220 occurrences, canon partout.
+- Petrochimie #D177B4 : 714 occurrences canon... et 4 occurrences de
+  la variante #EBA0D2, memes deux fichiers, memes deux emplacements.
+
+Le diagnostic : a la refonte 447, les chapitres Intermediaire et
+Petrochimie de la home avaient recu des accents eclaircis pour le
+fond photo, quand Amont et Aval etaient restes au canon — une
+asymetrie entre poles, invisible page a page mais reelle d'une page
+a l'autre. Harmonisation vers le canon doctrinal : les 8 occurrences
+(4 par home, --mac des chapitres + --c du rail) passees a #5AA7F0 et
+#D177B4. Les accents clairs (--macl #155FA8 / #8E3A72) etaient deja
+canon.
+
+Verification : axe (wcag2a/aa/21aa) sur les chapitres 02 et + et sur
+le rail, deux homes x deux themes — zero violation apres
+assombrissement des accents (contrastes calcules ~6,6:1 et ~5,6:1
+sur les fonds sombres) ; les quatre --mac lus au navigateur rendent
+exactement la sequence canon #E8C36A / #5AA7F0 / #F09A4A / #D177B4 ;
+capture du chapitre 02 relue. Hors homes, aucun ecart : les hubs,
+transversales, pages arabes et pieds de page utilisent deja le canon.
+
+Publication : les deux homes et le journal (chapitres 475 et 476),
+un lot.
