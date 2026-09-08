@@ -17156,3 +17156,28 @@ Veilles :
 - Carte Brent : echeance janvier 2027, rien a faire.
 
 Publication : le journal seul, un lot.
+
+## 478 — Balayage mobile apres la vitrine ouverte : rien a corriger (8 septembre 2026)
+
+La consolidation 477 avait rejoue le balayage desktop ; or le
+chantier 474 a change la mise en page des 8 hubs (grilles ouvertes a
+la place des accordeons) et le mobile n'avait pas ete re-mesure
+depuis le 462. Balayage mobile complet rejoue : 221 pages en 390x844,
+deux themes, six tranches (axe wcag2a/aa/21aa, erreurs console,
+reponses HTTP, debordement horizontal).
+
+Resultat : 219 pages sans aucune anomalie. Les deux restantes sont le
+couple brochure (FR et EN, theme sombre) avec ses contrastes
+color-contrast(15/17) — le mensonge d'instrument documente au 435
+(texte sur chaine transparente a grande profondeur, le fond reel est
+la toile marine), retrouve trait pour trait : la re-mesure sert de
+controle de non-regression, comme aux 462 et 469.
+
+Verification visuelle en complement : la section offres du hub Amont
+capturee en 390 px — les cartes passent en colonne unique, numeros et
+descriptions lisibles, aucun debordement.
+
+La vitrine ouverte tient donc sur mobile sans correctif. Chapitre de
+constat, qui date le controle.
+
+Publication : le journal seul, un lot.
