@@ -16603,3 +16603,39 @@ controle de non-regression — elle dit que rien n a change, ni
 dans la page, ni dans le mensonge.
 
 Publication : le journal seul, un lot.
+
+## 463 — 2026-09-08 : Premier releve de performance — la base est posee
+
+Le chantier auto-designe du tour a commence par un constat qui
+en a change l objet. L intention etait d etendre la refonte
+poles au mini-site arabe — mais l inventaire d abord a rendu son
+verdict : la parite doctrinale y est deja. La page des poles dit
+en arabe, mot pour mot, la doctrine du site : trois maillons
+formant la chaine de valeur, la petrochimie en extension
+industrielle (imtidad), quatre capacites integrees dans chaque
+pole ; les trois poles ont leurs pages dediees, les liens
+descendent vers les hubs francais avec la mention honnete
+"details en francais". Rien a construire.
+
+Le tour s est donc porte sur un axe jamais mesure : la
+performance. Premier releve, au navigateur local, home et hub
+Amont, bureau et mobile :
+
+La home pese 947 Ko sur 37 requetes — 194 de HTML, 344 de CSS,
+66 de JS, 75 d images, 85 de polices. Le hub Amont : 883 Ko sur
+37 requetes. Deux bonnes nouvelles dans ces chiffres : les
+images ne pesent que 75 Ko au chargement (une seule photo de
+hero ; les fonds de chapitres se chargent a la demande au
+defilement — le choix d architecture paye), et le JS reste
+sobre. Le poste lourd est la CSS : 344 Ko servis sur 19 bundles
+(sur 57 presents au depot, 778 Ko en tout) — l accumulation des
+chapitres de design.
+
+Aucun correctif dans ce chapitre, et c est voulu : purger de la
+CSS partagee sans outillage de couverture serait un pari, pas un
+chantier. Le releve est la base de comparaison ; si un chantier
+d allegement vient, il se mesurera contre ces chiffres, page par
+page, avec la re-mesure au navigateur comme juge — la lecon
+permanente du 433.
+
+Publication : le journal seul, un lot.
