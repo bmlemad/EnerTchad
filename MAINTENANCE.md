@@ -16989,3 +16989,40 @@ FR et EN ; aucun debordement horizontal. Sitemap : les deux locs de
 la home deja au 8 septembre.
 
 Publication : les deux homes et le journal, un lot.
+
+## 473 — Ultra revue de la page Communiques, destination des A la une : rien a corriger (8 septembre 2026)
+
+Depuis les chantiers 470-471, les trois homes envoient leur trafic
+"A la une" vers /communiques#cp-011 (FR, arabe) et
+/communiques-en#cp-011 (EN). Revue complete de la destination avant
+de laisser ce flux s'installer.
+
+Dimensions passees, FR et EN :
+
+- Exhaustivite : les onze ancres cp-001 a cp-011 presentes sur les
+  deux pages, dates identiques entre les deux langues et coherentes
+  avec les feeds RSS (CP-011 et CP-010 presents dans feed.xml et
+  feed-en.xml — le trou du feed EN avait ete comble au 465).
+- Atterrissage des ancres : #cp-011 se pose a 134 px (FR) et 150 px
+  (EN) sous le bord haut — la carte est pleinement visible sous la
+  navigation.
+- Accessibilite : axe (wcag2a/aa/21aa) sur la page entiere — zero
+  violation, aux deux themes, dans les deux langues.
+- Debordement : aucun a 1366 ni a 390.
+- Liens internes : 64 cibles uniques sondees. Trois "suspects"
+  releves par la sonde... tous les trois des artefacts de l'univers
+  de l'instrument, verifies un par un (lecon du 464) : les deux
+  rewrites Vercel (calculateur-baril-additionnel,
+  configurateur-service-integre) et le PDF investisseur — les trois
+  fichiers cibles existent dans le depot.
+- Tetes de page : titres 33/35 caracteres, descriptions 154/148,
+  JSON-LD, canonical, og: et hreflang presents des deux cotes.
+- Contenu : le CP-011 decrit toujours fidelement l'etat du site
+  (chapitres pleine largeur, hubs portails, fil date au premier
+  ecran, commande Mouvement).
+
+Verdict : rien a corriger. La destination tient la charge du role
+que 470-472 lui ont donne. Chapitre de constat — la revue qui ne
+trouve rien se journalise aussi, pour dater le controle.
+
+Publication : le journal seul, un lot.
