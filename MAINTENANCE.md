@@ -16639,3 +16639,38 @@ page, avec la re-mesure au navigateur comme juge — la lecon
 permanente du 433.
 
 Publication : le journal seul, un lot.
+
+## 464 — 2026-09-08 : Ultra review des pages — l anatomie au complet
+
+La directive : une ultra review des pages. L axe choisi complete
+les balayages au navigateur (461 au bureau, 462 au mobile) par
+ce qu ils ne voient pas : l anatomie statique des 221 pages —
+metadonnees, structure, langues, liens, images.
+
+Ce qui est impeccable, zero defaut sur cinq releves : un H1
+unique par page (221 sur 221) ; les attributs de langue et de
+sens d ecriture corrects sur les trois familles (fr, en, ar avec
+rtl) ; un attribut alt sur chaque image du site ; les balises og
+completes partout ; et l integrite des liens internes — aucun
+lien HTML casse.
+
+Mon erreur, avant le verdict des liens : ma premiere passe
+annoncait seize liens casses. L univers de mon instrument ne
+contenait que les pages HTML — les quinze fichiers vises (fiches
+PDF, flux RSS, calendriers ics, kit presse) existent tous au
+depot. Verification faite fichier par fichier avant d ecrire
+quoi que ce soit : zero lien casse. L instrument doit connaitre
+tout l univers avant de juger les frontieres.
+
+L ecart reel et corrige : six descriptions de pages (trois
+paires FR/EN du journal) depassaient 175 a 220 caracteres — la
+ou les moteurs tronquent vers 160. Reecrites au meme ton, entre
+154 et 161 caracteres, en remplacant chaque occurrence (meta,
+og, twitter et donnees structurees ensemble — trois a quatre par
+fichier), JSON-LD reverifie parseable apres coup. Onze titres
+longs constates mais laisses tels quels : ce sont les titres
+d articles du journal et le titre de l Atlas du 441 — les
+raccourcir romprait la coherence des citations etablie au 426.
+
+Publication : six fichiers HTML, le journal et le sitemap (six
+lastmod), un lot.
