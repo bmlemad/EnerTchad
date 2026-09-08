@@ -16925,12 +16925,22 @@ fond color-mix or, accents --mja avec declinaison claire --mjal
 #7A5C14 — la lecon de contraste du 469 appliquee d'emblee), plus le
 filet degrade en tete herite du 470.
 
-2. Matiere premium sur les 4 cartes KPI du hero : ombre color-mix
-doree (declinaison #8A6A12 au theme clair), coherente avec la grille
-KPI de la home FR/EN au 470.
-
-Pas de marqueur losange sur le kicker arabe : il porte deja son
+2. Pas de marqueur losange sur le kicker arabe : il porte deja son
 propre marqueur (tiret dore), un second signe l'aurait alourdi.
+
+Mon erreur (attrapee en production, corrigee dans la foulee) :
+j'avais aussi pose une ombre doree sur les 4 cartes KPI du hero,
+comme au 470 sur la grille FR/EN... regle inerte. La valeur calculee
+en production montre que le systeme verre-final (.rootland) gouverne
+deja box-shadow de TOUTES les cartes — dont .kpi — en !important
+(surlignage interne + ombre profonde) : c'est la matiere premium du
+site, posee volontairement et globalement. On ne combat pas le
+systeme de matiere pour une teinte locale : les deux regles mortes
+ont ete retirees. Deuxieme prise du meme filet en deux chapitres —
+la verification de la valeur calculee apres publication n'est pas
+une formalite, c'est elle qui juge. (La grille .nh-kpi de la home
+FR/EN, elle, n'est pas dans la liste des cartes du verre-final :
+son ombre doree du 470 s'applique bien, verifiee calculee.)
 
 Verification : axe (wcag2a/aa/21aa) sur le hero — zero violation aux
 deux themes ; aucun debordement a 1366 ni 390 ; captures relues aux
