@@ -17450,3 +17450,47 @@ deux pages x deux themes ; les huit href relus ; aucun debordement a
 
 Publication : les deux pages Clients, le sitemap et le journal, un
 lot.
+
+## 489 — Deux pages rattachees a leur pole : la Boutique a l'Aval, le Calculateur a l'Amont (9 septembre 2026)
+
+Directive du proprietaire : analyser les pages pour que certaines
+deviennent des sous-pages des 3 poles, et harmoniser.
+
+L'analyse, menee par affinite lexicale et fonctionnelle sur les 69
+pages racine (hors journal, hubs, arabe) : la quasi-totalite est
+transversale par nature — societe, investisseurs, gouvernance,
+presse, legal, FAQ, glossaire, explorateur de chaine (toute-chaine
+par essence), configurateur (composition inter-poles). Forcer leur
+rattachement casserait leur role. Deux pages seulement appartiennent
+fonctionnellement a un pole :
+
+- la Boutique (79 % d'affinite Aval — c'est le canal commercial du
+  pole, deja son bouton primaire de vitrine) ;
+- le Calculateur du baril additionnel (80 % Amont — l'outil EOR du
+  pole).
+
+Arbitrage rendu : migrer les deux. Execution :
+
+1. Boutique : fichiers copies sous /aval/ avec canonical, og:url,
+   hreflang et JSON-LD reecrits vers /aval/boutique(-en) ; 301 des
+   anciennes URL ; les anciens fichiers racine restent au depot en
+   archive (meme convention que le repli 480-484).
+2. Calculateur : le fichier reste a la racine mais son URL publique
+   devient /amont/calculateur-baril-additionnel — la rewrite Vercel
+   est deplacee sur la nouvelle source et l'ancienne URL devient un
+   301 ; canonical et og:url reecrits.
+3. Re-cablage : 210 fichiers mis a jour (le calculateur est lie
+   depuis le pied de page de tout le site). Zero lien interne ne
+   transite par une redirection (grep a zero, hors archives).
+4. Sitemap : trois locs deplacees, datees du 9 septembre —
+   toujours 190 locs, la surface ne change pas, seule l'adresse.
+5. Univers des instruments mis a jour (boutique sous aval/).
+
+Verification locale : les deux pages boutique chargent depuis leur
+nouvel emplacement sans aucune erreur de sous-ressource ni de
+script, canonicals conformes ; integrite des liens rejouee sur
+toute la surface avec l'univers complet — zero lien casse.
+Verification de production au prochain passage (redirections et
+rewrite), avant la consolidation.
+
+Publication : ~210 fichiers en une quinzaine de cycles.

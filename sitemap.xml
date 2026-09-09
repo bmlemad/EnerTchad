@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-<url><loc>https://enertchad-delta.vercel.app/calculateur-baril-additionnel</loc><lastmod>2026-09-05</lastmod></url>
+<url><loc>https://enertchad-delta.vercel.app/amont/calculateur-baril-additionnel</loc><lastmod>2026-09-09</lastmod></url>
 <url><loc>https://enertchad-delta.vercel.app/configurateur-service-integre</loc><lastmod>2026-08-29</lastmod></url>
 <url><loc>https://enertchad-delta.vercel.app/explorateur-chaine</loc><lastmod>2026-09-08</lastmod></url>
 <url><loc>https://enertchad-delta.vercel.app/explorateur-chaine-en</loc><lastmod>2026-09-08</lastmod></url>
@@ -19,8 +19,8 @@
 <url><loc>https://enertchad-delta.vercel.app/aval/raffinage</loc><lastmod>2026-09-05</lastmod></url>
 <url><loc>https://enertchad-delta.vercel.app/aval/reseau</loc><lastmod>2026-09-05</lastmod></url>
 <url><loc>https://enertchad-delta.vercel.app/avertissements</loc><lastmod>2026-09-05</lastmod></url>
-<url><loc>https://enertchad-delta.vercel.app/boutique-en</loc><lastmod>2026-09-05</lastmod></url>
-<url><loc>https://enertchad-delta.vercel.app/boutique</loc><lastmod>2026-09-05</lastmod></url>
+<url><loc>https://enertchad-delta.vercel.app/aval/boutique-en</loc><lastmod>2026-09-09</lastmod></url>
+<url><loc>https://enertchad-delta.vercel.app/aval/boutique</loc><lastmod>2026-09-09</lastmod></url>
 <url><loc>https://enertchad-delta.vercel.app/brochure</loc><lastmod>2026-09-07</lastmod></url>
 <url><loc>https://enertchad-delta.vercel.app/brochure-en</loc><lastmod>2026-09-07</lastmod></url>
 <url><loc>https://enertchad-delta.vercel.app/carnets-en</loc><lastmod>2026-09-07</lastmod></url>

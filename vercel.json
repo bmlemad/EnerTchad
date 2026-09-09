@@ -766,6 +766,21 @@
       "source": "/tchaditech/recits",
       "destination": "/tchaditech/#recits",
       "permanent": true
+    },
+    {
+      "source": "/boutique",
+      "destination": "/aval/boutique",
+      "permanent": true
+    },
+    {
+      "source": "/boutique-en",
+      "destination": "/aval/boutique-en",
+      "permanent": true
+    },
+    {
+      "source": "/calculateur-baril-additionnel",
+      "destination": "/amont/calculateur-baril-additionnel",
+      "permanent": true
     }
   ],
   "headers": [
@@ -823,7 +838,7 @@
       "destination": "/Configurateur_Service_Integre_v2"
     },
     {
-      "source": "/calculateur-baril-additionnel",
+      "source": "/amont/calculateur-baril-additionnel",
       "destination": "/Calculateur_Baril_Additionnel"
     }
   ]
