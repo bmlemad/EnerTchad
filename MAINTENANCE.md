@@ -17933,3 +17933,33 @@ Preuve en deux etages :
 
 Publication : 19 cycles (11 lots racine, 8 sous-dossiers), le
 journal dans le dernier lot racine.
+
+## 502 — Consolidation apres la campagne site-wide (9 septembre 2026)
+
+Consolidation apres la serie 496-501 (l exercice de la home, puis
+son extension au site entier).
+
+Balayages QA rejoues sur toute la surface, douze tranches :
+desktop 1366 et mobile 390, 191 pages x 2 themes chacun. Resultat :
+propre — seules sorties, les entrees informatives de citation
+(classe connue) et le temoin brochure en mobile sombre
+(color-contrast 15/17), le mensonge d instrument documente au 435,
+reconfirme tel quel. La fusion CSS n a rien decale.
+
+Integrite des liens : le script du 493 n avait pas ete conserve —
+reconstruit d apres le protocole consigne (resolution des href
+relatifs contre le repertoire de leur page, schemas non-HTTP
+exclus, gabarits JavaScript exclus, univers = fichiers du depot +
+156 redirections + rewrites). Premier passage : 1 687 faux
+casses — deux bugs du script reconstruit (barres obliques finales
+mal normalisees, gabarits non exclus), pas du site. Corrige et
+rejoue : 25 618 liens verifies, ZERO casse.
+
+Registre synchronise : entrees 496 a 502 (229 entrees), en-tete et
+tuiles a jour, artefact republie.
+
+Veilles : inchangees depuis le 495, la meme journee (ITIE 64,5 /
+validation en cours sans resultat, domaine itie-tchad.com ;
+Sedigui sans annonce datable ; carte Brent janvier 2027).
+
+Publication : le journal seul, un lot.
