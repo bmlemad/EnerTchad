@@ -17712,3 +17712,48 @@ Carte Brent : echeance janvier 2027, rien a faire.
 
 Aucune modification des pages : chapitre de registre et de veille.
 Publication : le journal seul, un lot.
+
+## 496 — Audit de la home, volet 1 : le resserrement editorial (9 septembre 2026)
+
+Directive du proprietaire : auditer la page d accueil et proposer.
+Audit mesure d abord : 9,2 ecrans desktop, 14,2 mobile ; la section
+chapitres pese 44 % de la page ; 183 liens, 72 elements interactifs
+au premier ecran ; 194 Ko de HTML dont 116 Ko de CSS inline en 52
+blocs ; axe zero violation, zero erreur console, 50 Ko transferes
+compresses (reseau sain). Quatre faiblesses identifiees : la chaine
+de valeur repetee cinq fois, deux moments "chiffres" redondants,
+une actualite mise en avant qui parle du site plutot que de la
+societe, et deux commandes flottantes quasi identiques aux coins
+opposes. Quatre propositions soumises ; arbitrage rendu : LES
+QUATRE (resserrement editorial, compaction mobile, commande
+flottante unique, assainissement CSS). Execution en chapitres
+separes ; celui-ci porte le volet editorial, FR et EN.
+
+Trois coupes de redites, une addition :
+
+1. Le bandeau KPI du hero perd sa premiere tuile ("3 poles de
+   coeur — quatre capacites integrees") qui repetait mot pour mot
+   la phrase d accroche juste au-dessus. Restent les trois vrais
+   chiffres : 144 -> 250 kb/j, 80 %, 10 M -> 20 Md FCFA.
+2. La section "L ambition, en chiffres" devient "Ce qui fonde
+   l ambition" : ses trois tuiles-redites (3+1, Du puits, 2026)
+   sont retirees — chacune repetait le hero — et restent les trois
+   distinctives (OHADA, 100 %, E-S-G). La precaution que portait
+   la tuile 2026 ("objectifs dates, non des actifs en
+   exploitation") remonte dans le chapeau de la section, qui perd
+   au passage son "100 % tchadienne" (redite de la tuile voisine).
+   L entree du rail passe de "Chiffres" a "Fondations".
+3. La barre "A la une" gagne une seconde entree datee : sous le
+   communique du 8 septembre (qui parle du site), le dernier carnet
+   operationnel — l interview de l operateur de conduite du 23
+   aout. L actualite mise en avant parle desormais aussi du metier.
+   Trois regles CSS posent le libelle et "Tout le fil" sur leur
+   propre rangee.
+
+Verification en geometrie calculee (lecon 494) : 3 tuiles KPI, 2
+entrees datees (113 px, aucun debordement), 3 tuiles fondations sur
+une rangee desktop et deux sur mobile, libelle du rail a jour, axe
+zero violation — FR et EN. Hauteur : -65 px desktop, -94 px mobile
+(le gros du raccourcissement mobile attend le volet compaction).
+
+Publication : les deux pages d accueil et le journal, un lot.
