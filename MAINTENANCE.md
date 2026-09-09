@@ -17650,3 +17650,27 @@ guidee, allegement des 200+ Ko) restent disponibles sur demande.
 
 Publication : les douze pages, le sitemap et le journal, trois
 cycles.
+
+Mon erreur (attrapee en production, corrigee dans l'heure) : la
+premiere publication du rail etait cassee — l'aside se rendait en
+bloc statique pleine largeur en tete de page, au lieu de flotter a
+droite. Cause : le CSS de #aurail (position fixe, pastilles,
+revelation) vit dans un asset que SEULE la home charge
+(x_77d650c4a7a2) ; sur les douze pages, mes regles n'existaient
+pas. Ma verification avant publication avait controle le
+comportement (classe show, scrollspy, clic vers l'ancre) mais
+jamais la geometrie calculee — position, largeur, opacite — et le
+comportement fonctionnait parfaitement sur un element mal pose. La
+sonde de production (rect pleine largeur, position static) a
+revele le defaut. Correctif : le bloc CSS complet du rail (base +
+declinaison claire de la home) inline dans les douze pages, id
+aurail494 ; position fixed a droite, revelation au defilement et
+masquage mobile verifies en calcule cette fois, capture relue.
+Decouverte connexe consignee : le site possede un constructeur
+automatique de sommaire (#secrail, s_2ffe40dff9.js) qui equipait
+deja certaines pages longues et s'efface quand #aurail existe —
+le rail curatif le remplace donc proprement, sans doublon (zero
+#secrail residuel sur les douze pages). Lecon, la quatrieme du
+meme filet : verifier l'intention ne suffit pas, il faut aussi
+verifier l'anatomie calculee quand on introduit un composant
+sur une page qui ne chargeait pas son CSS.
