@@ -17963,3 +17963,36 @@ validation en cours sans resultat, domaine itie-tchad.com ;
 Sedigui sans annonce datable ; carte Brent janvier 2027).
 
 Publication : le journal seul, un lot.
+
+## 503 — QA des pages et des sections : structure et rendu (9 septembre 2026)
+
+Directive du proprietaire. La QA du 502 jugeait les pages (erreurs,
+axe, debordement global) ; celle-ci descend au niveau des sections,
+sur les 191 pages, en deux etages.
+
+Etage statique — six controles sur le document :
+
+- h1 : exactement un par page, 191/191.
+- Hierarchie des titres : aucun saut (h2 vers h4), zero page.
+- Identifiants dupliques : zero.
+- Ancres internes : les 1 093 href="#..." resolvent tous sur un id
+  present dans leur page (rails, sommaires, menus, vt-links).
+- Sections vides (sans texte ni image) : zero, sur 1 096 sections.
+- Reperes d accessibilite : 124 pages ont un element main ; les 67
+  autres (journaux, boutique, calculateur) portent article
+  role="main" — repere equivalent, aucune page sans repere
+  principal. La cible du lien d evitement existe partout.
+
+Etage rendu — chaque section, article et region mesures au
+navigateur, 1366 puis 390, theme sombre : zero section a hauteur
+nulle portant du texte, zero section debordant du viewport hors
+zones defilantes. Un faux positif d instrument attrape et consigne :
+au premier passage mobile, les cartes des carrousels horizontaux
+(biz-card, tableaux defilants) ressortaient en "debordement" alors
+qu elles vivent dans un conteneur overflow-x:auto prevu pour cela
+— l instrument exclut desormais les descendants d un conteneur
+defilant, et le second passage est vierge.
+
+Verdict : la structure des pages et des sections est saine de bout
+en bout — aucune modification du site. Chapitre de constat.
+Publication : le journal seul, un lot.
