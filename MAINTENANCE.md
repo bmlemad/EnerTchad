@@ -17795,3 +17795,37 @@ ferme reste non nul dans le headless — c est la capture et la
 hauteur totale qui jugent, pas le rect isole.
 
 Publication : les deux pages d accueil et le journal, un lot.
+
+## 498 — Audit de la home, volet 3 : une seule commande flottante (9 septembre 2026)
+
+Troisieme volet de l arbitrage du 496 — le seul transversal :
+deux pastilles flottantes quasi identiques se partageaient le bas
+de l ecran sur tout le site. A gauche, le basculeur de theme
+(soleil, cree par u_cd226c00eb4b.js sur liste blanche) ; a droite,
+le reglage d affichage (soleil aussi : luminosite et mouvement,
+panneau du lum-ctl present sur les 220 pages).
+
+Execution — un seul fichier modifie, aucun HTML touche : dans
+u_cd226c00eb4b.js, le basculeur de theme ne se pose plus en bouton
+flottant ; il rejoint le panneau Affichage de la pastille de
+droite, en premiere rangee sous un intitule Theme (bouton pleine
+largeur "Clair / sombre", libelles FR/EN selon la langue de la
+page, aria-pressed conserve). L etiquette du bouton de la pastille
+passe de "Regler la luminosite" a "Reglages d affichage —
+luminosite et theme" (poussee par le meme script, FR/EN). Le style
+est injecte sous l id etOneCtl ; le bouton du panneau prend l id
+etThemeBtn, neuf, pour echapper aux reglages historiques de
+plightBtn (le 38 px !important de la home aurait ecrase la pleine
+largeur). Repli conserve : sur une page sans panneau, l ancien
+bouton flottant reapparait tel quel. Asset modifie donc sw.js
+bumpe : et-202609091330.
+
+Verification en local sur quatre pages (home, investisseurs,
+societe-en, faq) : plus aucun bouton flottant a gauche, rangee
+Theme en tete de panneau (bouton 180 px, position static,
+visible), clic = bascule du theme + persistance localStorage +
+aria-pressed a jour, libelles EN sur la page anglaise, axe zero
+violation, panneau relu en capture (sombre et clair).
+
+Publication : l asset, sw.js et le journal, deux lots (le
+sous-dossier d abord).
