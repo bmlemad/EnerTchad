@@ -105,7 +105,7 @@ html:not(.et-plight):not(.et-jlight):has(.rootland) :is(.cmp-c,.ppj-kpi,.pgh-kpi
    pas les noms de villes. Defaut jamais vu jusqu'ici parce que le banc de mesure lisait
    color et non fill sur le texte SVG ; l'angle mort est comble au meme chapitre. */
 html.et-plight .avnet-lab:not(#_):not(#__),html.et-jlight .avnet-lab:not(#_):not(#__){fill:#25314A!important;color:#25314A!important}
-html.et-plight .avnet-sub:not(#_):not(#__),html.et-jlight .avnet-sub:not(#_):not(#__){fill:#4A5668!important;color:#4A5668!important}
+
 
 /* Ch238 : les indicateurs du heros (.pgh-kpi) sont poses sur la photo, pas sur une section.
    Le verre clair de la famille n'y suffit pas : blanc gras mesure a 2,7:1 sur les zones
