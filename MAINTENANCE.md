@@ -17868,3 +17868,68 @@ versions sous la meme URL, et se mesurer d abord a son propre
 bruit.
 
 Publication : les deux pages d accueil et le journal, un lot.
+
+## 500 — L exercice de la home etendu au site : le census (9 septembre 2026)
+
+Directive du proprietaire : refaire l exercice du 496-499 partout
+ou necessaire. Census d abord, sur les 191 pages, volet par volet :
+
+1. Assainissement CSS — necessaire PARTOUT : 5 253 blocs de style
+   inline au total, dont 2 936 fusionnables par simple adjacence
+   (la brochure en porte 68, les grandes pages racine 33 a 46).
+   Et les deux regles mortes du bouton flottant retire au 498
+   trainent encore sur 178 pages.
+2. Commande flottante unique — deja fait : le 498 etait
+   transversal par construction (un seul asset partage).
+3. Compaction mobile — necessaire NULLE PART ailleurs : le panneau
+   replie au 497 (mln-nav) n existe que sur la home, le pied de
+   page se replie deja en accordeon sur mobile depuis longtemps,
+   et les pages longues ont recu le rail de traversee au 494.
+4. Redites editoriales — necessaire nulle part non plus : le
+   detecteur de fragments dupliques (45+ caracteres, 2+
+   occurrences) releve 28 pages, mais l inspection montre des
+   doublons VOULUS : tuiles de sommaire qui citent le titre et le
+   chapo de leur section (solutions, clients), lignes de donnees
+   identiques (quatre blocs libres de la brochure), titres repris
+   au plan du site. Le cas de la home (redite hero/section au meme
+   ecran) ne se reproduit pas.
+
+Le chantier retenu est donc le volet CSS, seul — execution au 501.
+
+## 501 — Fusion CSS sur 189 pages, prouvee page par page (9 septembre 2026)
+
+Execution du volet CSS du census : sur chaque page, les blocs de
+style strictement adjacents (aucun noeud entre eux) sont concatenes
+dans l ordre du document, origine gardee en commentaire ; les deux
+regles mortes plightBtn sont retirees. La home et son anglaise,
+deja traitees au 499, sont laissees telles quelles.
+
+Bilan : 189 pages reecrites, 5 253 blocs -> 2 317 (-56 %), regles
+mortes retirees sur 178 pages. Aucun attribut media sur les blocs
+fusionnes (verifie), aucun script du depot ne reference un id de
+bloc fusionne (verifie).
+
+Preuve en deux etages :
+
+1. Statique, sur LES 189 pages : la suite des regles CSS extraite
+   du document apres fusion, commentaires retires, est identique
+   caractere pour caractere a celle d avant — l ordre de cascade
+   est preserve par construction, et toute erreur d outil aurait
+   casse l egalite. Deux pages ont refuse la preuve : la home et
+   l anglaise — deja fusionnees au 499, non retouchees.
+2. Dynamique, sur un echantillon stratifie de 12 pages (brochure,
+   clients, solutions-en, investisseurs, societe-en, contact,
+   amont/index, aval/reseau, pole-amont-en, carnets-en,
+   petrochimie/index, glossaire) : empreintes de styles calcules
+   avant/apres SOUS LA MEME URL (lecon du 499). Resultat : 21
+   combinaisons identiques au hash pres ; les ecarts restants
+   appartiennent aux deux classes de bruit deja documentees — la
+   gigue de police Space Grotesk (le meme fichier differe de
+   lui-meme a l identique) et les animations SVG SMIL de la
+   brochure et de la carte reseau, que document.getAnimations ne
+   fige pas. Pour la brochure, contre-preuve dediee : les hauteurs
+   des 8 734 elements HTML (SVG exclus), memes URL, identiques a
+   2 px pres — zero ecart.
+
+Publication : 19 cycles (11 lots racine, 8 sous-dossiers), le
+journal dans le dernier lot racine.
