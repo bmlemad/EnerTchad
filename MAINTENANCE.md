@@ -17494,3 +17494,35 @@ Verification de production au prochain passage (redirections et
 rewrite), avant la consolidation.
 
 Publication : ~210 fichiers en une quinzaine de cycles.
+
+## 490 — QA post-migration : la surface migree est saine (9 septembre 2026)
+
+Apres les 210 fichiers du chantier 489, controle complet sur
+l'univers migre (la boutique lue sous /aval/) : balayages desktop et
+mobile rejoues — 191 pages x 2 themes x 2 viewports, douze tranches.
+Propres : seules les entrees citation informationnelles, et le
+temoin brochure (color-contrast 15/17 en sombre mobile) conforme au
+mensonge d'instrument documente au 435. Integrite des liens contre
+l'univers complet (fichiers de tous types, 156 redirections,
+rewrites) : zero lien casse, zero lien interne transitant par une
+redirection. La migration n'a rien casse. Chapitre de constat.
+
+## 491 — Consolidation apres la serie client et migration (chantiers 488-490) (9 septembre 2026)
+
+Serie couverte : la boucle client de la page Clients (488),
+l'analyse et la migration Boutique/Calculateur (489), la QA
+post-migration (490). Deux directives du proprietaire et un
+arbitrage rendus.
+
+Registre synchronise : chapitres 488 a 491 ajoutes (218 entrees,
+ch.275-491), tableau de bord reconstruit et republie.
+
+Veilles :
+- ITIE : troisieme tentative sur l'article "Nouvelle date pour la
+  validation ITIE-Tchad" du comite national — le site repond
+  toujours 503. Reconduite ; si l'indisponibilite persiste a la
+  prochaine consolidation, la veille passera par une recherche de
+  sources secondaires datees.
+- Sedigui et carte Brent : inchangees depuis le 487.
+
+Publication : le journal seul, un lot.
