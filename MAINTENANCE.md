@@ -17757,3 +17757,41 @@ zero violation — FR et EN. Hauteur : -65 px desktop, -94 px mobile
 (le gros du raccourcissement mobile attend le volet compaction).
 
 Publication : les deux pages d accueil et le journal, un lot.
+
+## 497 — Audit de la home, volet 2 : la compaction mobile des chapitres (9 septembre 2026)
+
+Deuxieme volet de l arbitrage du 496. Sur mobile, chaque chapitre
+de pole deroulait tout son panneau "Ce que nous faisons" (cinq
+services, quatre capacites) : la section chapitres pesait 5 491 px
+sur 11 950 (14,2 ecrans au total).
+
+Execution FR et EN : dans chacun des quatre chapitres, le contenu
+du panneau est enveloppe dans un accordeon natif details/summary
+(classe mfold, ouvert par defaut dans le HTML). Trois pieces :
+
+1. Le summary "Nos services & capacites" / "Our services &
+   capabilities" — masque au-dessus de 640 px (le desktop ne
+   change pas d un pixel), pastille aux couleurs du pole en
+   dessous, marqueur +/- sans JavaScript.
+2. Un script au DOMContentLoaded replie les quatre accordeons
+   uniquement sous 641 px. Sans JavaScript, tout reste ouvert —
+   aucun contenu n est perdu. (Premiere version du script executee
+   avant que les details n existent dans le DOM : reprise au
+   DOMContentLoaded apres constat open=4 en local — attrapee par
+   la verification, pas publiee cassee.)
+3. Etat pose au chargement seulement : un redimensionnement
+   desktop vers mobile garde les panneaux ouverts — assume et
+   consigne.
+
+Verification en geometrie calculee, FR et EN : desktop 1366
+inchange (summary hauteur 0, quatre panneaux ouverts, section a
+3 643 px comme avant) ; mobile 390 : quatre accordeons replies au
+chargement, pastille 52 px, clic du premier summary rouvre le
+panneau (liens a 44 px), aucun debordement horizontal. Hauteur
+mobile FR : 11 950 -> 10 408 px (14,2 -> 12,3 ecrans, -13 %) ; EN
+9 918 px (11,8 ecrans). Theme clair relu en capture. Un mensonge
+d instrument note au passage : le rect des liens d un details
+ferme reste non nul dans le headless — c est la capture et la
+hauteur totale qui jugent, pas le rect isole.
+
+Publication : les deux pages d accueil et le journal, un lot.
