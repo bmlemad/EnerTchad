@@ -17608,3 +17608,45 @@ mentir de cette maniere-la.
 
 Aucune modification du site : chapitre d'instrument et de constat.
 Publication : le journal seul, un lot.
+
+## 494 — Les pages longues mesurees, et le rail de traversee etendu a six paires (9 septembre 2026)
+
+Directive du proprietaire : des propositions pour les pages lourdes
+ou longues. Mesures d'abord, sur les 191 pages :
+
+- Poids HTML : mediane 97 Ko. Trois poids assumes hors serie : la
+  brochure (978/966 Ko — le document imprimable, ~144 ecrans), le
+  configurateur (811 Ko dont 718 de JavaScript — c'est l'application
+  elle-meme). Ensuite reseau Aval 267, atlas 259, services
+  parapetroliers 211.
+- Hauteur rendue (1366 px de large) : reseau Aval ~24 ecrans,
+  services parapetroliers ~22, investisseurs ~18, clients ~13,
+  societe ~12, hubs et home ~9-12. Seule la home avait un rail.
+
+Quatre propositions soumises (rail etendu, sommaire en tete,
+brochure guidee, allegement mesure des 200+ Ko) ; arbitrage rendu :
+le rail de traversee etendu, seul.
+
+Execution : le rail lateral de la home (aside aurail + scrollspy,
+motif du chapitre 44, CSS deja porte par le bundle commun — aucun
+asset touche) est adapte a six paires de pages : reseau Aval
+(accent #F09A4A), services parapetroliers (#E8C36A),
+investisseurs, clients, societe et engagements (or par defaut).
+Cinq a sept entrees par page, libellees et ancrees sur les sections
+reelles (les ancres EN different du FR — dealer, safe-station,
+related-notes — et sont mappees fichier par fichier, chaque ancre
+verifiee avant insertion).
+
+Verification : les douze rails apparaissent au defilement (>460 px),
+le scrollspy marque l'entree active, le clic de la troisieme entree
+de chaque rail atteint sa section (le seul ecart, clients FR, etait
+la minuterie du test — le defilement doux depassait l'attente de
+800 ms ; rejoue a 2,5 s : la cible se pose a 211 px). Aucun
+debordement, aucune erreur de script. Le rail reste masque sur
+mobile, comme sur la home.
+
+Les trois propositions non retenues (sommaire en tete, brochure
+guidee, allegement des 200+ Ko) restent disponibles sur demande.
+
+Publication : les douze pages, le sitemap et le journal, trois
+cycles.
