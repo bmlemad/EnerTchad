@@ -17425,3 +17425,28 @@ home, les heros, le fil, les couleurs, les offres et le parcours
 client alignes sur la doctrine des 3 poles.
 
 Publication : le journal seul, un lot.
+
+## 488 — La page Clients bouclee avec les poles : la lecture "Devenir client, pole par pole" (9 septembre 2026)
+
+Le chantier 486 a donne a chaque pole sa section client, et leurs CTA
+"Devenir client" menent tous a /clients. Revue de la destination :
+la page est riche et bien construite — sept portes, trois marches,
+dix-huit sections par segment de clientele, engagements et parcours.
+Ce qui lui manquait etait le chemin inverse : aucun moyen d'y lire
+l'offre pole par pole, alors que les transversales projets, carnets
+et cibles ont cette lecture depuis les chantiers 455-456.
+
+Ajout, FR et EN : la bande pcb455 "Devenir client, pole par pole"
+(id par-pole), placee apres le comparateur des portes — quatre
+cartes aux couleurs canon vers les sections client des portails
+(/amont/#clients ... /pole-enerchimie-en#clients). Motif strictement
+identique a celui des transversales (le bloc eprouve par trois
+balayages complets), textes adaptes. La boucle est fermee : portail
+-> page Clients par segment, page Clients -> portail par pole.
+
+Verification : axe (wcag2a/aa/21aa) sur la bande — zero violation,
+deux pages x deux themes ; les huit href relus ; aucun debordement a
+1366 ni 390. Sitemap : /clients et /clients-en dates du 9 septembre.
+
+Publication : les deux pages Clients, le sitemap et le journal, un
+lot.
