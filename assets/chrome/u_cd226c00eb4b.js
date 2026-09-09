@@ -21,7 +21,18 @@ function init(){if(document.getElementById('plightBtn'))return;
 var b=document.createElement('button');b.id='plightBtn';b.type='button';b.title='Basculer lecture claire / sombre';b.setAttribute('aria-label','Basculer lecture claire ou sombre');
 b.setAttribute('aria-pressed',document.documentElement.classList.contains('et-plight')?'true':'false');b.textContent='☀';
 b.addEventListener('click',function(){var on=!document.documentElement.classList.contains('et-plight');apply(on);b.setAttribute('aria-pressed',on?'true':'false');try{localStorage.setItem('et-jlight',on?'1':'0');localStorage.setItem('et-plight',on?'1':'0')}catch(e){}});
-document.body.appendChild(b)}
+var lp=document.getElementById('lum-panel');
+if(lp){/* Ch498 : une seule commande flottante — le basculeur de theme rejoint le panneau Affichage (pastille de droite), plus de bouton flottant a gauche. Repli : sans panneau, l ancien bouton flottant. */
+b.id='etThemeBtn';b.classList.add('in-panel');
+var en=(document.documentElement.lang||'').indexOf('en')===0;
+b.textContent=en?'\u2600 Light / dark':'\u2600 Clair / sombre';
+var row=document.createElement('div');row.className='lum-theme';
+var h=document.createElement('p');h.className='lum-h';h.textContent=en?'Theme':'Th\u00e8me';
+row.appendChild(h);row.appendChild(b);lp.insertBefore(row,lp.firstChild);
+var lb=document.getElementById('lum-btn');
+if(lb)lb.setAttribute('aria-label',en?'Display settings \u2014 brightness and theme':'R\u00e9glages d\u2019affichage \u2014 luminosit\u00e9 et th\u00e8me');
+if(!document.getElementById('etOneCtl')){var st=document.createElement('style');st.id='etOneCtl';st.textContent='#etThemeBtn.in-panel{position:static;display:block;width:100%;height:auto;min-height:32px;border-radius:8px;border:1px solid var(--hair,rgba(120,180,250,.18));background:transparent;color:rgba(245,247,250,.82);font-size:.6875rem;letter-spacing:.02em;padding:7px 8px;cursor:pointer;transition:border-color .2s,color .2s}#etThemeBtn.in-panel[aria-pressed=\"true\"]{border-color:var(--gold-l,#F0CE82);color:var(--gold-l,#F0CE82)}.lum-theme{margin:0 0 12px;padding:0 0 12px;border-bottom:1px solid rgba(245,247,250,.12)}';(document.head||document.documentElement).appendChild(st);}
+}else{document.body.appendChild(b);}}
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init()})()}catch(e){}
 
 ;(function(){try{var s=document.createElement('style');s.id='etFootClear';s.textContent='@media(max-width:520px){footer .foot-legal{padding-bottom:76px}}@media print{#plightBtn,#toTop,#nezBar,#oilticker,#readbar,#ckn{display:none!important}}';(document.head||document.documentElement).appendChild(s)}catch(e){}})();
