@@ -17674,3 +17674,41 @@ le rail curatif le remplace donc proprement, sans doublon (zero
 meme filet : verifier l'intention ne suffit pas, il faut aussi
 verifier l'anatomie calculee quand on introduit un composant
 sur une page qui ne chargeait pas son CSS.
+
+## 495 — Consolidation : le registre a jour, et le mystere ITIE resolu (9 septembre 2026)
+
+Consolidation apres la serie navigation et rail (492-494).
+
+Registre synchronise : entrees 492 a 495 ajoutees (222 entrees).
+Trois retards de synchronisation repris au passage dans le tableau
+de bord lui-meme : la tuile des chapitres disait 491 mais le lede
+datait encore du 468, la tuile des pages QA affichait 218 (l univers
+est a 191 depuis le repli du 484), et la puce SW montrait la version
+du 2 septembre au lieu de et-202609071615. Artefact republie apres
+relecture de la version en ligne.
+
+Veille ITIE — le mystere des 503 est resolu : le site du comite
+national a change de domaine. itie-chad.org repond desormais 302
+vers www.itie-tchad.com ; les trois echecs consecutifs des
+consolidations precedentes visaient un domaine en cours d abandon,
+pas un site en panne. Sur le fond, rien ne change : le score reste
+64,5 du 12 octobre 2022 sur eiti.org/countries/chad, et la
+validation demarree le 1er juillet 2026 (decision 2025-50 du
+conseil) n a toujours aucun resultat publie. Le nouveau site
+affiche un bloc "Prochaine Validation du Tchad" date du
+1er avril 2022 — widget visiblement perime, non exploitable comme
+source. Aucun lien du site EnerTchad ne pointait vers l ancien
+domaine (seul le journal le mentionne, en archive) : rien a
+re-cabler. La veille guette toujours le resultat.
+
+Veille Sedigui : la presse continue de relever retards et
+manquements sur le projet, sans annonce datable. Element de
+contexte nouveau : un accord-cadre Tchad-Algerie (avec Sonatrach,
+mai 2026) porte sur l etude d une raffinerie de 20 000 barils par
+jour — c est une etude, pas un jalon Sedigui ; rien a publier cote
+site.
+
+Carte Brent : echeance janvier 2027, rien a faire.
+
+Aucune modification des pages : chapitre de registre et de veille.
+Publication : le journal seul, un lot.
