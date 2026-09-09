@@ -17526,3 +17526,49 @@ Veilles :
 - Sedigui et carte Brent : inchangees depuis le 487.
 
 Publication : le journal seul, un lot.
+
+## 492 — Test de navigation chiffre : quatre personas, tous les buts sous trois clics — et 154 liens fragiles durcis (9 septembre 2026)
+
+Question du proprietaire : le site est-il facile a naviguer pour un
+visiteur ? Reponse mesuree, parcours reellement cliques au
+navigateur (viewport 1366 et 390, home comme point de depart) :
+
+- Investisseur -> souscription : 1 clic (bouton Investir de la
+  barre), atterrissage sur /investisseurs#souscrire.
+- Journaliste -> dernier communique : 1 clic (barre A la une du
+  hero), desktop comme mobile.
+- Candidat -> carrieres : 1 clic (lien direct de la barre).
+- Acheteur de carburant -> boutique : 2 clics (chapitre Aval de la
+  home -> bouton La boutique du portail).
+- Client flotte -> pre-inscription : 3 clics (Devenir client ->
+  porte Flottes -> Pre-inscrire ma flotte), et 2 clics sur mobile
+  jusqu'a la page Clients via le menu.
+- Defilement : la home fait 8 290 px ; les chapitres de pole
+  commencent tot, Agir est a 6 428 px — le rail de traversee et la
+  barre d'onglets mobile compensent la longueur.
+
+Verdict : tous les buts majeurs tiennent en 1 a 3 clics. La
+navigation est facile ; la reserve reste la densite des pages,
+compensee par les raccourcis.
+
+La vraie prise du test : le parcours flotte a d'abord echoue sur mon
+selecteur... parce que le CTA "Pre-inscrire ma flotte" portait un
+href RELATIF (href="contact", sans barre oblique) — hors convention
+du site, fonctionnel uniquement parce que la page est a la racine.
+Inventaire complet : 154 liens relatifs de ce type sur 26 pages
+racine (carnets et ses 33 liens de journal, contact, engagements,
+investisseurs, societe...), invisibles de mon controle d'integrite
+qui ne lisait que les href absolus — angle mort d'instrument, le
+troisieme du genre apres 455 et 464. Tous les 154 normalises en
+absolu (uniquement ceux dont la cible resout : fichier, redirection
+ou rewrite) ; le parcours flotte rejoue passe en 3 clics. Restent
+246 href relatifs volontairement non touches : les icones
+favicon/apple-touch des pages racine (benins — les pages a
+sous-repertoire utilisent deja l'absolu) et les gabarits JavaScript
+dynamiques. La boutique migree au 489 etait saine (zero lien
+relatif) — verifiee en premier.
+
+Verification : integrite des liens absolus rejouee apres
+normalisation — zero casse ; les cinq parcours passent.
+
+Publication : les 26 pages corrigees et le journal, deux cycles.
