@@ -17829,3 +17829,42 @@ violation, panneau relu en capture (sombre et clair).
 
 Publication : l asset, sw.js et le journal, deux lots (le
 sous-dossier d abord).
+
+## 499 — Audit de la home, volet 4 : l assainissement des blocs CSS (9 septembre 2026)
+
+Dernier volet de l arbitrage du 496. La home portait 53 blocs de
+style inline — l empilement de dix-huit mois de correctifs — dont
+deux regles mortes depuis le 498 (les 38 px !important du bouton
+flottant plightBtn, qui n existe plus).
+
+Execution FR et EN, a rendu strictement identique :
+
+1. Fusion par adjacence uniquement : sept groupes de blocs style
+   consecutifs (sans aucun noeud entre eux) sont concatenes dans
+   l ordre exact du document, chaque origine gardee en commentaire
+   (ex-bloc: ...). L ordre de cascade est donc preserve par
+   construction — aucune regle deplacee au-dela d une feuille
+   externe ou d un script. 53 blocs -> 16. Aucun script ne
+   referencait les ids fusionnes (verifie sur tout le depot).
+2. Les deux regles mortes plightBtn retirees.
+
+Verification par empreinte de styles calcules : ~800 elements
+echantillonnes, 18 proprietes + geometrie chacun, haches sur
+2 themes x 2 viewports, avant contre apres. Resultat : 7
+combinaisons sur 8 a empreinte STRICTEMENT identique ; la 8e
+(EN mobile sombre) ne differe que par la largeur des textes en
+Space Grotesk — gigue de chargement de police entre deux
+navigations, l apres etant deterministe contre lui-meme.
+
+Deux mensonges d instrument attrapes en route, dont un nouveau
+genre (le cinquieme du filet) : la premiere comparaison servait la
+version avant sous une AUTRE URL (_a499_avant.html) — et le
+marquage de menu aria-current, qui depend du chemin, ne s
+appliquait pas, faisant croire a un ecart de cascade sur la nav EN.
+Rejouee a URL identique : zero ecart. L autre etait la gigue de
+police ci-dessus, demasquee par un diff du meme fichier contre
+lui-meme. Lecon : une comparaison avant/apres doit servir les deux
+versions sous la meme URL, et se mesurer d abord a son propre
+bruit.
+
+Publication : les deux pages d accueil et le journal, un lot.
