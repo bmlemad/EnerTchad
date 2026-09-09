@@ -18091,3 +18091,46 @@ modifies donc sw.js bumpe : et-202609091920.
 
 Publication 504-507 : cinq lots (racine, amont, aval, assets, puis
 sw et journal).
+
+## 508 — Le sort des 32 fichiers archives : surs a supprimer, la main au proprietaire (9 septembre 2026)
+
+Cinquieme et dernier chantier du go "apply". Le depot garde 32
+fichiers qui ne sont plus jamais servis : les 30 sous-pages de
+capacites repliees au 480-484 et les 2 anciens fichiers boutique
+de la racine (migres au 489). Les redirections 301 priment sur les
+fichiers chez Vercel — ces pages n existent plus pour le public
+depuis leurs chapitres respectifs.
+
+Verifications de surete, toutes passees :
+
+- 32 redirections 301 en place et verifiees en production (484 et
+  490) ;
+- zero lien entrant vers ces fichiers (census 493, integrite 502) ;
+- zero entree sitemap (190 locs depuis le repli) ;
+- zero reference dans le service worker.
+
+La suppression elle-meme ne sera pas de ma main : mon
+environnement bloque les actions destructrices sur GitHub, et
+c est une regle que je respecte. Arbitrage du proprietaire :
+consigner, et lui laisser le geste. La liste exacte :
+
+greentech/ : hseq, hseq-en, impact, impact-en, patrimoine,
+patrimoine-en, transition, transition-en (8)
+tchaditech/ : innovations, innovations-en, rd, rd-en, recits,
+recits-en, socle, socle-en (8)
+tchaditude/ : academie, academie-en, partenariats,
+partenariats-en, rayonnement, rayonnement-en, services,
+services-en (8)
+enerconseils/ : audits, audits-en, conseil, conseil-en, esg,
+esg-en (6)
+racine : boutique.html, boutique-en.html (2)
+
+Marche a suivre au choix : en local, git rm de la liste puis un
+commit ; ou dans l interface GitHub, chaque fichier porte un
+bouton Delete file (32 petits commits). Rien ne presse : tant que
+les fichiers restent, ils sont inertes ; des qu ils partent, les
+301 continuent de servir exactement les memes destinations. Apres
+suppression, me le dire : je rejouerai l integrite des liens et le
+census pour confirmer que rien n a bouge.
+
+Publication : le journal seul, un lot.
