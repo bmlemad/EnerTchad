@@ -17572,3 +17572,39 @@ Verification : integrite des liens absolus rejouee apres
 normalisation — zero casse ; les cinq parcours passent.
 
 Publication : les 26 pages corrigees et le journal, deux cycles.
+
+## 493 — L'instrument d'integrite durci : les liens relatifs resolus, le recensement des liens entrants (9 septembre 2026)
+
+Suite directe de l'angle mort revele au 492 (les href relatifs
+etaient invisibles du controle). Le protocole d'integrite est
+reecrit et rejoue sur les 191 pages :
+
+1. Resolution complete : les href relatifs sont desormais resolus
+   contre le repertoire de leur page (posixpath), puis verifies
+   contre l'univers complet (fichiers de tous types, 156
+   redirections, rewrites). Les schemas non-HTTP (mailto, tel, et
+   webcal — les abonnements calendrier de l'espace investisseurs,
+   d'abord pris pour des liens casses par l'instrument : les deux
+   fichiers .ics existent) sont exclus explicitement.
+   Resultat : ZERO lien casse, absolus et relatifs confondus.
+2. Classes d'exception documentees : les 246 icones relatives
+   (favicon, apple-touch) des pages racine — benignes, les pages a
+   sous-repertoire sont deja en absolu ; et les gabarits de liens
+   construits en JavaScript (recherche, configurateur, hubs).
+3. Mesure nouvelle — les liens entrants par page, rewrites mappes
+   vers leurs fichiers (sans quoi le calculateur et le configurateur
+   paraissaient orphelins alors qu'ils sont lies par ~200 pages via
+   leur rewrite — subtilite d'instrument consignee) : une seule page
+   a zero lien entrant, la 404 — ce qui est son role. Les moins
+   liees ensuite : les pages poles arabes (3 — normal pour un
+   mini-site a navigation propre), la recherche (4 — atteinte par
+   l'interface, pas par des liens), la charte et la presse (5).
+   Aucune orpheline reelle.
+
+Le protocole complet (resolution relative comprise, schemas exclus,
+rewrites mappes) est consigne ici pour les prochains balayages —
+l'instrument qui a menti trois fois (455, 464, 492) ne pourra plus
+mentir de cette maniere-la.
+
+Aucune modification du site : chapitre d'instrument et de constat.
+Publication : le journal seul, un lot.
