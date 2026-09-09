@@ -17996,3 +17996,98 @@ defilant, et le second passage est vierge.
 Verdict : la structure des pages et des sections est saine de bout
 en bout — aucune modification du site. Chapitre de constat.
 Publication : le journal seul, un lot.
+
+## 504 — Sommaire "Sur cette page" : la ou il manquait vraiment (9 septembre 2026)
+
+Premier des trois chantiers appliques sur go du proprietaire (les
+trois propositions non retenues du 494, la purge CSS phase 2 et le
+sort des archives). Le rail du 494 est desktop-only (masque sous
+1101 px) : sur mobile, les pages longues n avaient pas toutes de
+quoi traverser.
+
+Verification d abord, page par page : huit des douze pages a rail
+ont DEJA une navigation de sections visible sur mobile — barre
+pole-subnav (reseau, services parapetroliers), sommaire toc
+(investisseurs, engagements). Une premiere pose du sommaire sur
+les douze en faisait donc doublon sur huit : retiree avant
+publication, attrapee par l inspection rendue (la capture
+d investisseurs montrait trois navigateurs de sections a l ecran).
+Le sommaire n est pose QUE la ou rien n existait : societe et
+clients, FR et EN — quatre pages. (Le toc de clients existe mais
+est masque sur mobile : le sommaire y comble un vrai trou.)
+
+Forme : details/summary "Sur cette page", pastilles aux couleurs
+des sections reprises du rail, masque au-dessus de 1100 px (le
+rail reprend), replie par defaut, sans JavaScript. Verifie en
+geometrie : 51 px replie, toutes les cibles existent, aucun
+debordement, bascule au clic.
+
+## 505 — La brochure guidee : un sommaire de chapitres (9 septembre 2026)
+
+Deuxieme chantier. La brochure (~144 ecrans) n avait pour se
+reperer qu un stepper fixe de deux liens (precedent/suivant),
+masque sur mobile, et le sommaire local de l Atlas a 95 000 px de
+profondeur. Aucune table des chapitres.
+
+Pose d un sommaire "Sommaire de la brochure" / "Brochure contents"
+en tete (avant la section d orientation), FR et EN : seize
+chapitres, pastilles aux accents canon des poles et capacites
+(Amont or, Intermediaire bleu, Aval orange, Petrochimie rose,
+GreenTech vert, TchadiTech indigo, Tchaditude mauve, EnerConseils
+turquoise), depliable, visible a tous les viewports, masque a
+l impression. Les seize ancres verifiees avant insertion ;
+geometrie confirmee (52 px replie, aucune cible manquante, aucun
+debordement), capture mobile relue.
+
+## 506 — Allegement mesure des pages lourdes : le rendu, pas les octets (9 septembre 2026)
+
+Troisieme chantier. Mesures d abord, sur les dix pages de plus de
+200 Ko :
+
+- Sur le fil, la compression fait deja le travail : reseau 66 Ko
+  transferes (271 bruts), atlas 64, services parapetroliers 55,
+  eor 49. La brochure transfere 234 Ko et le configurateur 214 —
+  les deux poids assumes du 494 (document imprimable, application).
+- Dedoublonnage SVG : 0 a 2 Ko de gain possible — rien.
+- La brochure est deja optimisee : images lazy (8/8),
+  content-visibility:auto sur ses sections (l Atlas exclu, choix
+  existant respecte).
+
+Le levier reel etait donc le COUT DE RENDU des autres pages
+longues, avec la technique deja eprouvee sur la brochure :
+content-visibility:auto + contain-intrinsic-size sur les sections
+sous le pli de reseau, services parapetroliers et eor (FR+EN, bloc
+cv506). Surface de mise en page differee au chargement : 67 % de
+la hauteur pour services parapetroliers, 28 % pour reseau, 19 %
+pour eor. Verifie : les ancres du rail atterrissent dans les
+sections differees (le navigateur les force au saut), zero erreur.
+Aucun octet de contenu retire — l allegement mesure portait sur le
+rendu, et le journal le dit tel quel.
+
+## 507 — Purge CSS phase 2 : les regles mortes des assets partages (9 septembre 2026)
+
+Quatrieme chantier. Methode statique sur-prudente, pas de
+couverture d execution (elle ment — lecon 499) : une regle n est
+declaree morte que si CHAQUE selecteur du groupe reference une
+classe ou un id absent de TOUT le corpus — les 191 pages, leurs
+scripts inline et tous les assets JavaScript (27 Mo), au niveau du
+simple mot (un nom cree dynamiquement par script compte donc comme
+vivant).
+
+Bilan : 211 regles retirees sur 12 assets, 23 014 octets — surtout
+les vestiges mega-ultra (mu-acc, mu-band, mu-compact — l ancienne
+mega-nav), les flip-k/flip-lead et mfo-* de x_77d650c4a7a2 (82
+regles sur le seul asset de la home), et quatre variantes pb-fold.
+Chaque fichier reparse proprement apres coupe.
+
+Preuve : empreintes de styles calcules avant/apres sous les memes
+URL sur quatre pages x deux viewports — home, investisseurs, faq,
+reseau. Six combinaisons strictement identiques (dont la home,
+pourtant la plus purgee) ; les deux restantes egalent exactement
+leur propre bruit (reseau : l echantillonnage traverse les
+sections a rendu differe du 506 ; faq mobile : gigue de police) —
+le meme fichier compare a lui-meme donne les memes ecarts. Assets
+modifies donc sw.js bumpe : et-202609091920.
+
+Publication 504-507 : cinq lots (racine, amont, aval, assets, puis
+sw et journal).
