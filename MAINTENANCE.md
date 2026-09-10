@@ -18772,3 +18772,23 @@ institutionnelle et widget de cours (531 les a consignes comme
 incompatibles avec le site statique), report du referentiel des
 neuf domaines dans la fiche technique Amont a sa prochaine
 regeneration.
+
+## 534 — Le referentiel des huit domaines de l Aval (10 septembre 2026)
+
+Contenu canon fourni par le proprietaire, dans la foulee du 532.
+Audit prealable : comme pour l Amont, la matiere vivait eclatee —
+le raffinage sur sa page, la distribution et le reseau sur les
+leurs, la gamme sur produits, sans referentiel metier unifie ;
+le gaz et l energie n apparaissaient qu au detour de Sedigui et
+de l hybride gaz-solaire.
+
+Fait : section #expertises sur le hub /aval/ (et jumelle EN),
+gabarit du 532 a l accent ambre du pole — huit domaines en
+cartes : Raffinage (5 items), Stockage & depots (4),
+Distribution (4), Commercialisation (6 produits, du SP95 au
+lubrifiant), Gaz & energie (5), Clients & services (4), QHSE (4),
+Innovation & transition energetique (4) — 36 items au total.
+Chapeau d honnetete "societe en constitution", note de renvoi
+vers les cinq pages de detail, boutique comprise. Verifie :
+8 cartes, liens resolus FR/EN, deux themes, axe silencieux sur
+la section, aucun debord a 1440 ni 390 px.
