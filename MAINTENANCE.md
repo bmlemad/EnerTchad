@@ -18989,3 +18989,23 @@ intact), 2 plis par page fermes sur mobile (538 intact), aucun
 debord a 1440 ni 390. Le theme clair garde son sol creme — le
 petrole est une matiere du sombre. Reste : etendre au site
 entier sur demande.
+
+## 543 — Consolidation apres l extension de la DA aux hubs (10 septembre 2026)
+
+Consolidation demandee par le proprietaire apres le 542. Registre
+synchronise : deux entrees ajoutees (542 extension DA aux six
+hubs, 543 la presente), 270 entrees au total, tuile et en-tete a
+543, version 32 de l artefact publiee. Veille des sources :
+inchangee depuis le 541, verifie le meme jour — eiti.org a 64,5
+points (12 octobre 2022), validation 2026 sans resultat publie.
+Parite git : diff zero contre FETCH_HEAD apres le lot 4 du 542
+(livre par rappel programme apres une deconnexion Chrome d
+environ une heure — le mecanisme de reprise a fonctionne tel que
+consigne). Etat du front : huit pages vitrines sous la DA
+Glassmorphism Premium (accueil FR/EN, six hubs de coeur), le
+reste du site sur la palette marine d origine — les deux
+cohabitent sans heurt, le chrome commun etant pilote par tokens.
+Prochaines options connues : etendre la DA au site entier
+(capacites, journaux, pages societe), taxonomies des poles de
+capacites et Petrochimie, video institutionnelle si une
+sequence est fournie.
