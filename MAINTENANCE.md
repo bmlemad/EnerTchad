@@ -18716,3 +18716,30 @@ flex a ecarts, le retrait ne laisse aucun separateur orphelin.
 Verifie sur 8 pages (FR, EN, journal, boutique, outil) : grille
 2 colonnes, contact unique, mobile intact (repli accordeon).
 SW bumpe et-202609101540.
+
+## 532 — Le referentiel des neuf domaines de l Amont (10 septembre 2026)
+
+Directive du proprietaire, avec le contenu canon fourni : "audit
+et mettre a jour AMONT" — neuf domaines d expertise, l Artificial
+Lift a mettre particulierement en valeur.
+
+Audit prealable : la matiere existait en partie mais eclatee —
+le parcours en six etapes et les cadres de partenariat sur
+activites, les packs par phase et le catalogue d interventions
+sur services-ep, l EOR et le parc sur leurs pages — sans
+referentiel metier unifie, et l Artificial Lift n apparaissait
+qu en filigrane (levage, diagnostic, remise en ligne).
+
+Fait : section #expertises sur le hub /amont/ (et jumelle EN),
+inseree entre les capacites et la bande en chiffres — les neuf
+domaines en cartes : Exploration (8 items), Forage & completion
+(8), Developpement des gisements (6), Production (7), Artificial
+Lift (8) en carte pleine largeur a accent dore et badge
+"Expertise phare" avec ses items en grille (ESP, Gas Lift, PCP,
+Rod Pump, selection, surveillance, optimisation, analyse),
+Ingenierie de production (8), Maintenance & integrite (7), HSE
+Amont (7), Digitalisation & innovation (7). Chapeau d honnetete
+("expertises visees par une societe en constitution") et note de
+renvoi vers les quatre pages de detail. Verifie : 9 cartes, 8
+items sur la carte phare, liens resolus FR/EN, deux themes,
+aucun debord a 1440 ni 390 px.
