@@ -18617,3 +18617,31 @@ viewport (rootMargin 0 0 38%) au lieu de -6 % : plus d ecran vide
 au defilement — verifie par saut instantane + capture a 120 ms,
 contenu present. Contraste re-mesure au pixel sur la bande la plus
 exposee (9,69:1). SW bumpe et-202609101340.
+
+## 528 — Consolidation de la grande serie (10 septembre 2026)
+
+Cloture de la serie 518-527 : audits mega menu et pied de page,
+harmonisation des familles visuelles (chrome commun sur boutique,
+outils et journaux, Ariane utilitaire, polices arabes), audit des
+tuiles (26 blocs, chaine documentaire regeneree), mise a niveau
+des trois hubs de coeur (bandes en chiffres, fiche Intermediaire,
+documents du pole) et immersion photo de la home sur signalement
+du proprietaire. Parite git 0 apres chaque lot — 31 commits sur
+la serie.
+
+Registre synchronise : 11 entrees ajoutees (518-528), 255 entrees
+au total, en-tete ch.275-528, pastille SW et-202609101340 —
+artefact republie (version 28).
+
+Veilles : re-verifiees a la source ce jour. eiti.org n affiche
+toujours que la validation 2022 (decision 2022-49, score 64,5) ;
+la validation entamee au 1er juillet 2026 n a pas de resultat
+publie ; l ancien domaine itie-chad.org repond encore avec ses
+annonces de report. Sedigui et Brent : rien de neuf datable
+depuis le 514. Aucun chiffre du site a changer.
+
+Reste disponible a la demande : les constats cosmetiques du 518
+(densite de la colonne pastilles, /contact en double), la
+divergence des rayons de CTA notee au 519. Les sujets du
+proprietaire (noms de direction, rapport annuel) demeurent
+chez lui.
