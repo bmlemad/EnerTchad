@@ -18351,3 +18351,44 @@ echue) — reconduites sans nouvel appel, meme journee.
 
 Publication 516-517 : les deux pages d accueil et le journal, un
 lot.
+
+## 518 — Audit du mega menu et du pied de page (10 septembre 2026)
+
+Directive du proprietaire. Audit complet, statique puis rendu.
+
+Le menu (nav nx, trois declencheurs) : 55 liens sur la home, 52
+resolvent en direct, 1 ancre, 1 rewrite — et UN lien perime, le
+seul defaut reel : "Partenariats GCIC · OT · Etat · academique"
+pointait encore vers /tchaditude/partenariats#partenaires, une URL
+repliee au 481 — servie par sa 301, mais un lien interne ne doit
+pas rouler sur une redirection. Present dans le menu partage de
+112 pages (56 FR + 56 EN). Corrige partout vers
+/tchaditude/#partenariats et /pole-tchaditude-en#partenariats ;
+atterrissage verifie au rendu (section a 224 px du haut). Au rendu,
+le reste tient : les trois megas s ouvrent (survol, clic, clavier),
+aria complet (haspopup, controls, expanded), Echap ferme et rend
+le focus au bouton, marquage de la page courante, accordeon mobile
+fonctionnel, parite EN 55/55, aucun debordement.
+
+Le pied de page : 44 liens, tous valides (2 rewrites assumees), le
+lien signalement du 513 en place, quatre colonnes d egale hauteur,
+repli mobile en accordeon operationnel. Deux constats cosmetiques,
+sans correction : la colonne chaine & capacites (8 pastilles) est
+visuellement plus dense que ses voisines, et /contact apparait
+deux fois (colonne et rangee legale) — redondance toleree, la
+rangee legale est un raccourci d usage.
+
+Un mensonge d instrument attrape en route, le septieme du filet et
+le plus sournois : au clavier pur (Tab, Entree), le mega semblait
+rester invisible (opacity 0, visibility hidden) alors que .open et
+aria-expanded etaient poses — tout accusait un defaut d
+accessibilite. En realite le headless GELE les transitions CSS
+(currentTime fige a 0) tout en pretendant visibilityState
+"visible" ; en finissant les transitions a la main, l etat final
+est bien opacity 1, visible. Le clavier fonctionne. Lecon : devant
+une opacite qui ne bouge pas, verifier d abord les transitions en
+cours (deja vu au 494 sur un onglet cache — ici l onglet se disait
+visible).
+
+Publication : 112 pages en 13 cycles (5 lots racine dont le
+journal, 8 sous-dossiers).
