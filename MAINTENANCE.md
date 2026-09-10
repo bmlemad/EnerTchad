@@ -18279,3 +18279,41 @@ Veilles, a la source :
 - Carte Brent : echeance janvier 2027, non echue.
 
 Publication : le journal seul, un lot.
+
+## 515 — La home face aux homepages des majors : la bande durabilite (10 septembre 2026)
+
+Directive du proprietaire : auditer la home contre celles des
+majors. Compositions relevees le matin meme (TotalEnergies,
+Aramco, Petrobras). Le canon commun : heros a la une, identite +
+chiffres, vitrines d activites, BLOC DURABILITE en piliers
+cliquables (les trois l ont), vitrine du magazine maison, CTA
+carrieres, communiques + agenda, rangee de documents de reference.
+
+Audit : la home EnerTchad est au niveau ou au-dessus sur presque
+tout — heros date a deux entrees, chiffres dates plus honnetes que
+leurs slogans, chapitres de poles plus profonds que leurs cartes
+projets, carnets (= leur magazine), trilingue FR/EN/AR, pas de mur
+de cookies. Deux ecarts reels, verifies dans le corps de la page :
+zero lien durabilite (ni engagements, ni communautes, ni
+paiements-etats) et zero document ou agenda. Arbitrage rendu : la
+bande durabilite seule ; la rangee documents + agenda reste
+disponible sur demande.
+
+Execution FR et EN : section id=durabilite entre les fondations et
+les carnets — trois portes cliquables aux accents distincts,
+Engagements (vert, HSE-Q et l arc E-S-G), Communautes (or, contenu
+local), Paiements aux Etats (bleu, les sept categories ITIE).
+Entree ajoutee au rail de traversee. Style dur515 inline,
+theme-aware.
+
+Verification en geometrie et rendu : 3 cartes egales (367 px
+desktop, 344 mobile), entree du rail presente, aucun debordement,
+axe zero violation. Deux lecons de cascade au passage, attrapees
+en local avant publication : le fond de section est neutralise par
+la couche no-bands de la home (assume — la bande herite du
+materiau global) ; et les couleurs du theme clair etaient ecrasees
+par l armure !important des couches claires — les regles dur515
+claires portent desormais la meme armure (:not + !important),
+kicker et liens verifies verts et bleus en calcule.
+
+Publication : les deux pages d accueil et le journal, un lot.
