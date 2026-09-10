@@ -18505,3 +18505,47 @@ vrai sur des glyphes arabes, h1 en Noto Sans Arabic, rtl intact,
 0 erreur console. Les chiffres et mots latins des pages passent
 par les memes regles (la police couvre les chiffres) ; le repli
 Segoe/Tahoma demeure pour tout glyphe hors sous-ensemble.
+
+## 523 — Audit des tuiles (10 septembre 2026)
+
+Directive du proprietaire. 360 tuiles rendues echantillonnees sur
+28 pages, 46 familles recensees, quatre angles : coherence
+visuelle, exactitude des chiffres, accessibilite, geometrie.
+
+Le systeme est sain sur l essentiel : rayons coherents par famille
+avec une hierarchie assumee (22 px grandes cartes, 18 px cartes
+moyennes, 14-16 px pastilles KPI), focus clavier 2 px sur toutes
+les familles-liens testees, rangees d egale hauteur, parite FR/EN
+des valeurs numeriques, tailles des documents des tuiles Reperes
+exactes au kilo-octet. Les debords mobiles releves sont tous des
+carrousels scroll-snap volontaires (hnews, ce-grid, ckpis,
+plc-grid). Deux fausses alertes refutees avant rapport : le
+"12 stations" du chapitre Aval contre le "144 -> 250" du heros
+(le second est en kb/j de production, pas en stations) ; et un
+contraste calcule a 1,71 sur les pastilles des chapitres home en
+theme clair — l instrument composait les fonds par couleur et ne
+voyait pas l image de fond claire ; au pixel reel : 7,64:1.
+Variante du mensonge d instrument : devant un ratio calcule
+absurde, re-mesurer sur la capture.
+
+Un defaut reel, arbitre et corrige : les tuiles KPI de 28 fichiers
+affichaient "21 blocs libres cibles" quand le canon du site — l
+Atlas, le carnet Atlas, la prose de 10 pages, 28 occurrences —
+dit "environ 26 blocs libres au cadastre 2025". La brochure se
+contredisait elle-meme, et meme la page Atlas portait un 21 en
+pastille sous une prose a 26. Corrige partout (home FR/EN, hubs
+de pole FR/EN et leurs payloads de menu, cibles-2030, explorateur,
+brochure, atlas, sources d impression). La correction a ete
+poursuivie jusqu au bout de la chaine documentaire : les deux PDF
+de brochure regeneres depuis leurs sources (diff textuel : une
+seule ligne change, 21 -> 26, 6 pages inchangees), le kit presse
+ZIP reconstruit avec les brochures corrigees, et les etiquettes de
+taille resynchronisees (brochures 208/209 Ko, kit 793 Ko) sur
+home, publications et presse.
+
+Second arbitrage applique : la trajectoire de capital de la tuile
+home passait de "10 M -> 20 Md" a "10 M -> 1 Md -> 20 Md", alignee
+sur societe et investisseurs (l abreviation datait du resserrement
+496). Verifie au rendu : aucun debord a 1440 ni a 390 px,
+l explorateur affiche 26 a l execution, 5 729 liens des 32 pages
+modifiees zero casse.
