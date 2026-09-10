@@ -18684,3 +18684,35 @@ institutionnelle (Aramco, Sonangol) et le widget de cours
 (Sonangol) — pas d actif video ni de flux temps reel sur un site
 statique publie par lots. Verifie : liens resolus, deux themes,
 mobile en repli propre, axe 0 violation sur la home.
+
+## 531 — Le reliquat cosmetique des audits 518-519 (10 septembre 2026)
+
+"Apply" du proprietaire, arbitre sur le reliquat en attente :
+rayons des boutons, densite de la colonne pastilles du pied de
+page, et le doublon /contact.
+
+Rayons. La note du 519 etait reelle : les boutons .btn/.btn2
+variaient par famille — 11 px sur 46 definitions, 13 px sur 16,
+12 px sur 5, plus un 10 px d asset qui n affleurait que sur la
+brochure. Standard retenu : 12 px, la valeur des boutons du heros
+et des hubs. 62 definitions harmonisees dans 33 pages, plus deux
+regles d asset (s_a6075b7e39, et le 10 px partage de
+u2_2588bdebd508 qui coiffait .btn-p/.btn-g sur 56 pages). Les
+pilules volontaires restent : le bouton Investir du heros
+(correctif historique arme), la barre cookies et les boutons du
+calculateur. Verifie au rendu : 12 px partout sur l echantillon
+des familles, 999 px sur les trois exceptions.
+
+Pied de page. La colonne "chaine & capacites" empilait ses
+8 pastilles sur une seule file (335 px de haut, plus dense que
+ses voisines) : regle Ch531 en deux colonnes ajoutee aux deux
+bundles (couverture 178 pages) et en ligne sur le calculateur —
+la colonne tombe a 186 px, les quatre colonnes s equilibrent.
+Et le doublon /contact (colonne Societe + rangee legale) : la
+rangee legale perd le sien via un bloc idempotent de
+u_cd226c00eb4b.js, bilingue, comme le lien ethique du 513 —
+zero page HTML touchee pour ce point. La rangee legale est en
+flex a ecarts, le retrait ne laisse aucun separateur orphelin.
+Verifie sur 8 pages (FR, EN, journal, boutique, outil) : grille
+2 colonnes, contact unique, mobile intact (repli accordeon).
+SW bumpe et-202609101540.
