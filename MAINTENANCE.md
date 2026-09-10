@@ -18830,3 +18830,62 @@ pages de detail. Verifie : 8 cartes, liens resolus FR/EN, deux
 themes, axe silencieux sur la section, aucun debord a 1440 ni
 390 px. Les trois poles de coeur portent desormais leur
 referentiel metier.
+
+## 537 — L echelle typographique unifiee des hubs de coeur (10 septembre 2026)
+
+Premier volet de l harmonisation des trois hubs. Constat mesure :
+les h2 des seize sections d un meme hub oscillaient entre 24,75
+et 39,2 px selon l age du bloc (les sections heritees, les bandes
+du 524, les expertises des 532-536 portaient chacune leur
+clamp), et les kickers vivaient en trois tailles. Fait : bloc
+style#typ537 dans le head des six pages (amont, intermediaire,
+aval, FR et EN) — un seul etage de h2
+(clamp(1.5rem,3.2vw,2.2rem), interlignage 1.15) et un seul corps
+de kicker (.6875rem) pour .sec-k et .doc-k, poses en fin de
+cascade avec une garde de specificite. Verifie au pixel : les h2
+des six pages rendent tous 35,2 px a 1440, les kickers 11 px,
+deux themes, axe silencieux, aucun debord.
+
+## 538 — La compaction mobile des hubs par accordeons natifs (10 septembre 2026)
+
+Deuxieme volet. Les hubs depassaient 11 000 px de defilement
+mobile ; la liste des services de l offre et la grille des huit
+ou neuf expertises en portaient l essentiel. Fait : gabarit des
+accordeons de la home (497) reporte sur les six pages — bloc
+style#m538 + script#m538-js ; la premiere liste vt-grid de l
+offre et la grille des expertises passent sous details.mfold
+(ouvert et sans resume au dela de 640 px, replie en pastille
++/- en dessous, accent du pole : or en amont, bleu en
+intermediaire, ambre en aval). Precaution sur l amont : la carte
+etoile Artificial Lift est remontee en tete de grille et laissee
+hors du pli — seuls les huit autres domaines se replient, l
+expertise phare reste visible des l arrivee. Verifie : bureau
+inchange (plis ouverts, resumes masques, toutes les cartes
+visibles), mobile gagne 2 571 px sur l amont et 2 176 px sur l
+aval, la carte etoile visible pliee, axe silencieux partout.
+
+## 539 — La fusion CSS des hubs, tentee puis refutee (10 septembre 2026)
+
+Troisieme volet arbitre, consigne honnetement. La premiere passe
+de fusion des blocs style contigus a corrompu les six pages : le
+regex de collecte a arrache le style aa-noscript de son
+enveloppe noscript, decalant l appariement des noscript — les
+styles et scripts du theme clair en aval du point de rupture se
+sont retrouves avales, et le balayage axe a explose (50 a 64
+defauts de contraste par page, encres claires posees sur fonds
+sombres). La preuve d identite du texte CSS concatene etait
+vraie et pourtant insuffisante : elle ne voit pas la structure
+HTML qui entoure les blocs. Bisection par service de variantes
+sous la meme URL : FETCH_HEAD propre, typ537 seul propre, m538
+seul propre — la fusion seule coupable. Repare : restauration
+des six pages par git archive FETCH_HEAD, reapplication
+programmatique des volets 537 et 538, puis passe sure avec
+regions noscript masquees avant collecte. Verdict de la passe
+sure : zero fusion possible — tous les blocs style des hubs sont
+separes par du balisage ou des links (le 26 vers 16 de la
+premiere passe etait un artefact de la corruption). Mon erreur :
+avoir pris l identite du texte pour l identite du document.
+Lecon versee au canon : avant toute fusion de styles, masquer
+les regions noscript ; et le balayage axe des deux themes est le
+filet qui a tout attrape avant publication. Etat final : six
+pages en typ537 + m538, sans fusion, parite zero visee.
