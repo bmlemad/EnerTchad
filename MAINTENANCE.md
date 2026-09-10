@@ -18392,3 +18392,64 @@ visible).
 
 Publication : 112 pages en 13 cycles (5 lots racine dont le
 journal, 8 sous-dossiers).
+
+## 519 — Harmonisation visuelle : chrome commun boutique et outils (10 septembre 2026)
+
+Directive du proprietaire : "les pages semblent avoir differentes
+visuelles, audit et harmonise pour eviter d avoir plusieurs styles
+de pages". Benchmark visuel des 191 pages par empreintes rendues
+(familles par structure de heros, tailles de titres, presence du
+chrome) : cinq familles saines (journaux, hubs de pole, corporate,
+utilitaires, home) et des hors-famille reels — la boutique (FR/EN)
+et trois outils (explorateur de la chaine FR/EN, calculateur du
+baril, configurateur de service) vivaient sans le chrome commun :
+pas de nav du site, pas de fil d Ariane, et l explorateur titrait
+en Georgia avec un corps Segoe UI. Arbitrage rendu : chrome commun
+sur boutique + outils, et Ariane unifiee sur la famille utilitaire
+(chapitre 520). Deux options proposees non retenues, disponibles a
+la demande : le chrome complet sur les pages journaux (leur
+depouillement est volontaire) et la declaration d une pile de
+polices arabe sur le mini-site AR (rend en Segoe UI de repli).
+
+Fait sur les six pages : en-tete standard insere (nav nx complete
+extraite de societe, lien de langue repointe par page, nav_a.js et
+le script burger u2_e8be en defer), feuilles manquantes ajoutees
+(fontes de marque, variables, chrome de base c_c79 qui porte le
+.nav fixe et --nav-h, nav_a.css), jetons de nav ancres sur .nav.nx
+pour un rendu identique quel que soit le :root de la page. La
+boutique garde sa commande : l ancien bandeau btop (marque + EN +
+panier) devient une barre sous la nav avec fil d Ariane, Devenir
+client et le bouton Ma commande intact ; l explorateur perd sa
+topnav flottante et passe en Space Grotesk/Inter ; le calculateur
+perd son en-tete colle maison ; le configurateur perd son bouton
+retour fixe (et son doublon interne a l appli est masque), l appli
+React intacte.
+
+Trois reprises attrapees en local avant publication : le c_c79
+ecrasait le --ink de la boutique (h1 devenu marine sur fond
+sombre en theme nuit — re-declare apres les liens) ; le lien
+Devenir client restait creme sur fond clair (regle armee ajoutee
+pour le theme jour) ; les styles de fil .crumb du site sont
+scopes .pghero et ne s appliquaient pas hors heros (styles poses
+dans la page). Verification rendue sur les six : nav fixe a 0,
+megas ouverts (h > 490 px), burger mobile operationnel, panier
+add(0) = 1, calculateur et configurateur fonctionnels, fil sous
+la barre (136-225 px > 132), deux themes, axe 0 violation,
+0 erreur console, 644 liens verifies zero casse.
+
+## 520 — Ariane unifiee sur la famille utilitaire (10 septembre 2026)
+
+Second volet de l arbitrage du 519. Dix pages utilitaires sans fil
+d Ariane (accessibilite, avertissements, plan-du-site, presse,
+recherche, FR et EN) recoivent la pastille standard du chapitre
+145 : blocs bcrumb-css et bcrumb-chip repris verbatim de cookies,
+marquage nav.bcrumb avec aria-current, libelles alignes sur le
+JSON-LD BreadcrumbList deja present dans chaque page.
+
+En route, un defaut preexistant attrape par la geometrie : les
+cinq pages EN n avaient pas la classe nx-clear sur body — leur
+heros commencait a y=0 sous la barre fixe de 132 px (le fil posait
+a 146 au lieu de 219, et le chapeau vivait partiellement masque
+depuis toujours). Classe ajoutee : les dix fils atterrissent a
+218-219 px, au pixel de la reference cookies, deux langues. Axe 0
+violation, 0 erreur console.
