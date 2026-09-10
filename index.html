@@ -1063,7 +1063,62 @@ html.et-plight :is(#coeurs,#appuis) .mln-nav:not(#_):not(#__){background:rgba(25
 html:not(.et-plight):not(.et-jlight) .dur-c:not(#_):not(#__){background:rgba(10,17,30,.44)!important;-webkit-backdrop-filter:blur(12px) saturate(1.25);backdrop-filter:blur(12px) saturate(1.25)}
 html:not(.et-plight):not(.et-jlight) #reperes .doc-c:not(#_):not(#__){background:rgba(10,17,30,.44)!important;-webkit-backdrop-filter:blur(12px) saturate(1.25);backdrop-filter:blur(12px) saturate(1.25)}
 @media (prefers-reduced-transparency:reduce){.nh-une:not(#_):not(#__),.nh-kpi:not(#_):not(#__):not(#___)>div,:is(#coeurs,#appuis) .mln-nav:not(#_):not(#__),html:not(.et-plight):not(.et-jlight) .dur-c:not(#_):not(#__),html:not(.et-plight):not(.et-jlight) #reperes .doc-c:not(#_):not(#__){background:#101B2E!important;-webkit-backdrop-filter:none;backdrop-filter:none}}
-</style></head>
+</style><style id="da540">/* Ch540 - Direction artistique Glassmorphism Premium : petrole #003049, or #FFB703, cyan #00B4D8, verre 20px. */
+:root{--pet:#003049;--pet-d:#00243A;--gold-l:#FFB703;--blue-l:#00B4D8;
+--g-bg:linear-gradient(158deg,rgba(0,55,84,.50),rgba(0,45,69,.60) 55%,rgba(0,34,52,.68));
+--g-brd:rgba(255,255,255,.20);--g-brd-str:rgba(255,255,255,.32);
+--g-blur:saturate(170%) blur(20px);--g-radius:20px}
+html:not(.et-plight){background:#00243A!important}
+html:not(.et-plight) body::before{background:
+ radial-gradient(38% 42% at 16% 20%,rgba(255,183,3,.30),transparent 60%),
+ radial-gradient(34% 40% at 84% 14%,rgba(0,180,216,.30),transparent 58%),
+ radial-gradient(48% 50% at 76% 84%,rgba(0,126,160,.34),transparent 60%),
+ radial-gradient(42% 46% at 24% 88%,rgba(255,183,3,.18),transparent 58%)}
+html:not(.et-plight)::before{background:
+ radial-gradient(30% 34% at 70% 30%,rgba(255,183,3,.22),transparent 60%),
+ radial-gradient(28% 32% at 30% 66%,rgba(0,180,216,.22),transparent 60%)}
+.nav.nx:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5):not(#e6){background:rgba(0,48,73,.38)!important;background-color:rgba(0,48,73,.38)!important;background-image:none!important;-webkit-backdrop-filter:saturate(170%) blur(20px)!important;backdrop-filter:saturate(170%) blur(20px)!important;border-bottom:1px solid rgba(255,255,255,.13);box-shadow:0 12px 34px rgba(0,18,30,.35)}
+html.et-plight .nav.nx:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5):not(#e6){background:rgba(255,255,255,.60)!important;background-color:rgba(255,255,255,.60)!important;background-image:none!important;border-bottom-color:rgba(0,48,73,.14);box-shadow:0 10px 30px rgba(0,48,73,.10)}
+.nh-une:not(#_):not(#__){background:rgba(0,38,58,.40)!important;-webkit-backdrop-filter:saturate(160%) blur(20px)!important;backdrop-filter:saturate(160%) blur(20px)!important;border:1px solid rgba(255,255,255,.16)!important}
+.nh-kpi:not(#_):not(#__):not(#___)>div{background:linear-gradient(168deg,rgba(0,44,67,.46) 0%,rgba(0,36,56,.38) 52%,rgba(0,30,47,.48) 100%)!important;-webkit-backdrop-filter:saturate(160%) blur(20px)!important;backdrop-filter:saturate(160%) blur(20px)!important;border:1px solid rgba(255,255,255,.15)!important}
+:is(#coeurs,#appuis) .mln-nav:not(#_):not(#__){background:rgba(0,40,61,.44)!important;-webkit-backdrop-filter:saturate(160%) blur(20px)!important;backdrop-filter:saturate(160%) blur(20px)!important}
+html:not(.et-plight):not(.et-jlight) .dur-c:not(#_):not(#__),html:not(.et-plight):not(.et-jlight) #reperes .doc-c:not(#_):not(#__){background:rgba(0,38,58,.46)!important;-webkit-backdrop-filter:saturate(160%) blur(20px)!important;backdrop-filter:saturate(160%) blur(20px)!important;border:1px solid rgba(255,255,255,.14)!important}
+html.et-plight .nh-une:not(#_):not(#__),html.et-plight .nh-kpi:not(#_):not(#__):not(#___)>div,html.et-plight :is(#coeurs,#appuis) .mln-nav:not(#_):not(#__){border:1px solid rgba(0,48,73,.16)!important}
+@media (prefers-reduced-transparency:reduce){.nav.nx:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5):not(#e6){background:#003049!important;-webkit-backdrop-filter:none;backdrop-filter:none}html.et-plight .nav.nx:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5):not(#e6){background:#F5F7FA!important}}
+/* ---- carte interactive du Tchad ---- */
+#carte540 .c540-g{display:grid;grid-template-columns:minmax(250px,370px) 1fr;gap:24px;align-items:start}
+@media(max-width:820px){#carte540 .c540-g{grid-template-columns:1fr}}
+#carte540 svg{width:100%;height:auto;display:block}
+.c540-b{cursor:pointer}
+.c540-b ellipse{transition:fill-opacity .25s,stroke-width .25s}
+.c540-b:hover ellipse,.c540-b:focus-visible ellipse,.c540-b.on ellipse{fill-opacity:.38;stroke-width:2.2}
+.c540-b:focus-visible{outline:2px solid var(--blue-l);outline-offset:3px}
+.c540-p{border-radius:var(--g-radius,20px);border:1px solid var(--g-brd);background:var(--g-bg);-webkit-backdrop-filter:var(--g-blur);backdrop-filter:var(--g-blur);padding:20px 22px;min-height:172px;box-shadow:0 16px 40px rgba(0,18,30,.35)}
+html.et-plight #carte540 .c540-p{background:rgba(255,255,255,.62);border-color:rgba(0,48,73,.16);box-shadow:0 12px 30px rgba(0,48,73,.10)}
+.c540-p b{display:block;font-family:var(--fd);font-size:1.06rem;letter-spacing:-.01em;margin:0 0 8px;color:var(--gold-l)}
+.c540-p p{margin:0 0 10px;font-size:.94rem;line-height:1.55;color:var(--muted-l,#B8C6DA)}
+html.et-plight #carte540 .c540-p p{color:#3D4A5C}
+.c540-kpis{display:flex;flex-wrap:wrap;gap:8px}
+.c540-kpis span{font-family:var(--fm);font-size:.6875rem;letter-spacing:.05em;padding:5px 11px;border-radius:12px;border:1px solid var(--g-brd);background:rgba(0,180,216,.10);color:var(--blue-l)}
+html.et-plight #carte540 .c540-kpis span{background:rgba(0,120,155,.08);border-color:rgba(0,48,73,.18)}
+.c540-src{font-size:.78rem;color:var(--muted-l,#8FA1B8);margin:14px 0 0}
+html.et-plight #carte540 .c540-src{color:#5A6472}
+.c540-src a{color:var(--blue-l)}
+.c540-leg{display:flex;flex-wrap:wrap;gap:14px;margin:10px 0 0;font-size:.78rem;color:var(--muted-l,#8FA1B8)}
+html.et-plight #carte540 .c540-leg{color:#5A6472}
+.c540-leg i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;vertical-align:-1px}
+html.et-plight #carte540 .c540-p b{color:#8A6210}
+html.et-plight #carte540 .c540-kpis span{color:#00567A}
+html.et-plight #carte540 .c540-src a{color:#00567A}
+html.et-plight #carte540 .c540-pl{fill:#00567A}
+html.et-plight #carte540 .c540-out{stroke:rgba(0,48,73,.45)}
+html.et-plight #carte540 .c540-b ellipse[stroke="#FFB703"]{stroke:#B07C00}
+html.et-plight #carte540 .c540-b ellipse[stroke="#00B4D8"]{stroke:#00789B}
+html.et-plight .dt:not(#_){opacity:1!important;color:#6B5012!important}
+.c540-lb{font-family:var(--fm);font-size:7.5px;letter-spacing:.08em;fill:#D5E3F0;pointer-events:none}
+html.et-plight #carte540 .c540-lb{fill:#2C3B4D}
+</style>
+</head>
 <body><div class="diapo" aria-hidden="true"><i style="background-image:url(&quot;/assets/img/pompe-petrole.webp&quot;)"></i></div><div class="rdprog" aria-hidden="true"></div>
 <a href="#main-content" class="skip-link">Aller au contenu principal</a>
 <div id="preloader" aria-hidden="true">
@@ -1240,7 +1295,33 @@ html.et-plight #durabilite .dur-c em:not(#_):not(#__){color:var(--cl,var(--c))!i
 <a class="dur-c" href="/communautes" style="--c:#E8C36A;--cl:#7A5C14"><i aria-hidden="true"></i><b>Communautés</b><span>Contenu local, désenclavement : la rente pétrolière doit irriguer les territoires.</span><em>Nos communautés →</em></a>
 <a class="dur-c" href="/paiements-etats" style="--c:#5AA7F0;--cl:#155FA8"><i aria-hidden="true"></i><b>Paiements aux États</b><span>Les sept catégories ITIE que nous déclarerons, publiées noir sur blanc.</span><em>La transparence →</em></a>
 </div></div>
-</section> <section id="carnets" class="hnews reveal" aria-label="Derniers carnets datés"><div class="wrap"><span class="hnews-k">Le fil daté · Carnets</span><h2>Suivre EnerTchad, étape par étape.</h2><p class="hnews-sub">Communiqués fondateurs, enquêtes techniques et jalons datés : l’actualité d’une société pétrolière en construction.</p><div class="hnews-grid"><a class="hncard" style="--pac:#E8C36A" href="/journal-premiere-du-genre"><span class="hncard-meta"><span class="hncard-date">23 août 2026</span><span class="hncard-pole"><i aria-hidden="true"></i>Toute la chaîne</span><span class="hncard-tag">Économie · Vision</span></span><h3>Première du genre&nbsp;: EnerTchad, le pari du champion national</h3><p>Jamais une société privée à capitaux tchadiens n&rsquo;avait entrepris la chaîne entière. Champion national visé, licorne en ligne de mire — sans tricher sur les mots.</p><span class="hncard-go">Lire →</span></a><a class="hncard" style="--pac:#7E8AD9" href="/journal-interview-controle"><span class="hncard-meta"><span class="hncard-date">23 août 2026</span><span class="hncard-pole"><i aria-hidden="true"></i>TchadiTech</span><span class="hncard-tag">Technologies · L&rsquo;interview métier</span></span><h3>Dans la salle de contrôle&nbsp;: l&rsquo;interview de l&rsquo;opérateur de conduite</h3><p>Écrans, alarmes et télémétrie&nbsp;: la parole au veilleur du champ, pour qui la garde parfaite ressemble à une nuit ordinaire.</p><span class="hncard-go">Lire →</span></a><a class="hncard" style="--pac:#5AA7F0" href="/journal-interview-comptage"><span class="hncard-meta"><span class="hncard-date">22 août 2026</span><span class="hncard-pole"><i aria-hidden="true"></i>Intermédiaire</span><span class="hncard-tag">Intermédiaire · L&rsquo;interview métier</span></span><h3>Dans la cabine de comptage&nbsp;: l&rsquo;interview du jaugeur-mesureur</h3><p>Ruban, thermomètre, éprouvette et registres&nbsp;: le gardien du chiffre dont la mesure fait foi quand le produit change de mains.</p><span class="hncard-go">Lire →</span></a></div><div class="hcp"><span class="hcp-k">Communiqués officiels</span><a class="hcp-i" href="/communiques#cp-011"><span class="hcp-d">8 septembre 2026 · CP-2026-011</span><span class="hcp-t">La refonte pôles est en ligne : la home en chapitres, les hubs devenus portails</span></a><a class="hcp-i" href="/communiques#cp-010"><span class="hcp-d">31 août 2026 · CP-2026-010</span><span class="hcp-t">Le site se réorganise : trois pôles de cœur, quatre capacités intégrées</span></a><a class="hcp-i" href="/communiques#cp-009"><span class="hcp-d">30 août 2026 · CP-2026-009</span><span class="hcp-t">Le site s’ouvre grand : recherche pleine page, arabe étendu, espace presse</span></a><a class="hcp-all" href="/communiques">Tous les communiqués →</a></div><a class="hnews-all" href="/carnets">Tous les carnets &amp; communiqués →</a> <a class="hnews-all" href="/investisseurs#agenda" style="margin-left:18px">Agenda investisseur →</a></div></section><section id="agir" class="reveal" aria-label="Trois façons d’entrer"><div class="wrap" style="max-width:var(--mw,1200px);margin:0 auto;padding:clamp(34px,4.6vw,58px) var(--gut,24px)">
+</section> <section id="carnets" class="hnews reveal" aria-label="Derniers carnets datés"><div class="wrap"><span class="hnews-k">Le fil daté · Carnets</span><h2>Suivre EnerTchad, étape par étape.</h2><p class="hnews-sub">Communiqués fondateurs, enquêtes techniques et jalons datés : l’actualité d’une société pétrolière en construction.</p><div class="hnews-grid"><a class="hncard" style="--pac:#E8C36A" href="/journal-premiere-du-genre"><span class="hncard-meta"><span class="hncard-date">23 août 2026</span><span class="hncard-pole"><i aria-hidden="true"></i>Toute la chaîne</span><span class="hncard-tag">Économie · Vision</span></span><h3>Première du genre&nbsp;: EnerTchad, le pari du champion national</h3><p>Jamais une société privée à capitaux tchadiens n&rsquo;avait entrepris la chaîne entière. Champion national visé, licorne en ligne de mire — sans tricher sur les mots.</p><span class="hncard-go">Lire →</span></a><a class="hncard" style="--pac:#7E8AD9" href="/journal-interview-controle"><span class="hncard-meta"><span class="hncard-date">23 août 2026</span><span class="hncard-pole"><i aria-hidden="true"></i>TchadiTech</span><span class="hncard-tag">Technologies · L&rsquo;interview métier</span></span><h3>Dans la salle de contrôle&nbsp;: l&rsquo;interview de l&rsquo;opérateur de conduite</h3><p>Écrans, alarmes et télémétrie&nbsp;: la parole au veilleur du champ, pour qui la garde parfaite ressemble à une nuit ordinaire.</p><span class="hncard-go">Lire →</span></a><a class="hncard" style="--pac:#5AA7F0" href="/journal-interview-comptage"><span class="hncard-meta"><span class="hncard-date">22 août 2026</span><span class="hncard-pole"><i aria-hidden="true"></i>Intermédiaire</span><span class="hncard-tag">Intermédiaire · L&rsquo;interview métier</span></span><h3>Dans la cabine de comptage&nbsp;: l&rsquo;interview du jaugeur-mesureur</h3><p>Ruban, thermomètre, éprouvette et registres&nbsp;: le gardien du chiffre dont la mesure fait foi quand le produit change de mains.</p><span class="hncard-go">Lire →</span></a></div><div class="hcp"><span class="hcp-k">Communiqués officiels</span><a class="hcp-i" href="/communiques#cp-011"><span class="hcp-d">8 septembre 2026 · CP-2026-011</span><span class="hcp-t">La refonte pôles est en ligne : la home en chapitres, les hubs devenus portails</span></a><a class="hcp-i" href="/communiques#cp-010"><span class="hcp-d">31 août 2026 · CP-2026-010</span><span class="hcp-t">Le site se réorganise : trois pôles de cœur, quatre capacités intégrées</span></a><a class="hcp-i" href="/communiques#cp-009"><span class="hcp-d">30 août 2026 · CP-2026-009</span><span class="hcp-t">Le site s’ouvre grand : recherche pleine page, arabe étendu, espace presse</span></a><a class="hcp-all" href="/communiques">Tous les communiqués →</a></div><a class="hnews-all" href="/carnets">Tous les carnets &amp; communiqués →</a> <a class="hnews-all" href="/investisseurs#agenda" style="margin-left:18px">Agenda investisseur →</a></div></section><section id="carte540" class="reveal" aria-label="Carte interactive du Tchad pétrolier"><div class="wrap" style="max-width:var(--mw,1200px);margin:0 auto;padding:clamp(34px,4.6vw,58px) var(--gut,24px)">
+<span class="sec-k">La carte</span>
+<h2 style="font-family:var(--fd);font-weight:800;font-size:clamp(1.55rem,2.9vw,2.2rem);letter-spacing:-.02em;margin:12px 0 14px">Le Tchad pétrolier, en un regard</h2>
+<div class="c540-g"><div><svg viewBox="0 0 300 452" role="group" aria-labelledby="c540mt c540md">
+<title id="c540mt">Le Tchad petrolier — carte stylisee</title><desc id="c540md">Sept bassins sedimentaires, l’oleoduc Doba–Kribi et N’Djamena. Representation stylisee, positions indicatives.</desc>
+<defs><linearGradient id="c540land" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#FFB703" stop-opacity=".10"/><stop offset=".5" stop-color="#00B4D8" stop-opacity=".07"/><stop offset="1" stop-color="#00789B" stop-opacity=".10"/></linearGradient>
+<marker id="c540ar" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="3.8" markerHeight="3.8" orient="auto"><path d="M0 1.5 L9 5 L0 8.5 Z" fill="#00B4D8"/></marker></defs>
+<path d="M45.7 280.6 L48.2 268.5 L32.3 267.9 L32.4 251.4 L22.1 241.9 L32.8 208.1 L64.3 183.9 L65.6 150.6 L75.1 98.5 L80.5 87.5 L70.2 78.7 L69.8 70.6 L60.6 63.9 L54.5 24.0 L79.5 10.0 L178.1 59.1 L276.7 108.2 L277.9 210.0 L256.6 208.2 L245.3 227.1 L238.7 242.9 L243.9 248.9 L235.8 256.8 L238.6 267.4 L232.2 278.1 L229.7 287.5 L238.4 286.0 L243.5 295.9 L243.8 310.8 L252.9 318.4 L252.6 324.6 L237.0 329.0 L224.4 339.3 L206.5 367.3 L183.3 379.2 L159.4 377.6 L152.4 380.0 L154.9 389.0 L142.0 398.0 L131.5 408.0 L100.4 417.8 L94.2 412.0 L90.1 411.5 L85.5 418.1 L65.1 420.0 L69.0 413.1 L61.2 395.4 L57.7 384.8 L46.9 380.4 L32.3 365.4 L37.7 353.3 L49.0 355.9 L56.0 354.1 L69.8 354.3 L56.3 331.0 L57.2 314.0 L55.6 297.0 L45.7 280.6 Z" fill="url(#c540land)" stroke="rgba(255,255,255,.5)" stroke-width="1.5" stroke-linejoin="round" class="c540-out"/>
+<path d="M104 392 C101 407, 92 419, 80 428" fill="none" stroke="#00B4D8" stroke-width="2.2" stroke-linecap="round" marker-end="url(#c540ar)"/>
+<text x="118" y="424" font-size="8.4" fill="#00B4D8" class="c540-pl" style="font-family:var(--fm)">Oleoduc Doba–Kribi · 1 070 km</text>
+<g class="c540-b" tabindex="0" role="button" data-k="doba" aria-label="Bassin de Doba — producteur"><ellipse cx="102" cy="386" rx="20" ry="13" fill="#00B4D8" fill-opacity=".16" stroke="#00B4D8" stroke-opacity=".85" stroke-width="1.4"/></g><text x="102" y="369" text-anchor="middle" class="c540-lb" aria-hidden="true">DOBA</text><g class="c540-b" tabindex="0" role="button" data-k="bongor" aria-label="Bassin de Bongor — producteur"><ellipse cx="76" cy="344" rx="16" ry="12" fill="#00B4D8" fill-opacity=".16" stroke="#00B4D8" stroke-opacity=".85" stroke-width="1.4"/></g><text x="76" y="328" text-anchor="middle" class="c540-lb" aria-hidden="true">BONGOR</text><g class="c540-b" tabindex="0" role="button" data-k="lac" aria-label="Bassin du Lac Tchad"><ellipse cx="54" cy="258" rx="14" ry="13" fill="#FFB703" fill-opacity=".16" stroke="#FFB703" stroke-opacity=".85" stroke-width="1.4" stroke-dasharray="2.5 2.5"/></g><text x="54" y="241" text-anchor="middle" class="c540-lb" aria-hidden="true">LAC TCHAD</text><g class="c540-b" tabindex="0" role="button" data-k="doseo" aria-label="Bassin du Doseo — ouvert"><ellipse cx="172" cy="368" rx="19" ry="11" fill="#FFB703" fill-opacity=".16" stroke="#FFB703" stroke-opacity=".85" stroke-width="1.4"/></g><text x="172" y="384" text-anchor="middle" class="c540-lb" aria-hidden="true">DOSEO</text><g class="c540-b" tabindex="0" role="button" data-k="salamat" aria-label="Bassin du Salamat — ouvert"><ellipse cx="200" cy="332" rx="20" ry="13" fill="#FFB703" fill-opacity=".16" stroke="#FFB703" stroke-opacity=".85" stroke-width="1.4"/></g><text x="200" y="315" text-anchor="middle" class="c540-lb" aria-hidden="true">SALAMAT</text><g class="c540-b" tabindex="0" role="button" data-k="madiago" aria-label="Bassin de Madiago — ouvert"><ellipse cx="108" cy="240" rx="21" ry="16" fill="#FFB703" fill-opacity=".16" stroke="#FFB703" stroke-opacity=".85" stroke-width="1.4"/></g><text x="108" y="220" text-anchor="middle" class="c540-lb" aria-hidden="true">MADIAGO</text><g class="c540-b" tabindex="0" role="button" data-k="erdis" aria-label="Bassin d’Erdis / Koufra — pionnier"><ellipse cx="230" cy="108" rx="20" ry="13" fill="#FFB703" fill-opacity=".16" stroke="#FFB703" stroke-opacity=".85" stroke-width="1.4"/></g><text x="230" y="91" text-anchor="middle" class="c540-lb" aria-hidden="true">ERDIS</text>
+<circle cx="59" cy="300" r="3.1" fill="#FFB703"/><text x="66" y="303" font-size="8.6" fill="currentColor" opacity=".85" style="font-family:var(--fm)">N’Djamena</text>
+</svg><p class="c540-leg"><span><i style="background:#00B4D8"></i>Bassin producteur</span><span><i style="background:#FFB703"></i>Bassin ouvert · découvert</span></p></div>
+<div class="c540-p" id="c540p" aria-live="polite"><b>Sept bassins, un corridor</b><p>26 blocs libres au cadastre petrolier 2025, repartis sur 7 bassins sedimentaires — et l'oleoduc d'export Doba–Kribi, 1 070 km jusqu'a l'Atlantique. Survolez ou touchez un bassin pour le detail.</p><div class="c540-kpis"><span>26 blocs libres</span><span>7 bassins</span><span>1 070 km</span></div></div></div>
+<p class="c540-src">Représentation stylisée, positions indicatives — d’après la carte officielle du Ministère du Pétrole, des Mines et de la Géologie. <a href="/enerconseils/atlas">Explorer l’atlas complet →</a></p>
+</div></section>
+<script id="c540-js">(function(){var D={"doba": {"t": "Bassin de Doba — producteur", "d": "Kome · Miandoum · Bolobo, plus de 900 Mb prouves. Point de depart de l'oleoduc d'export Doba–Kribi.", "k": ["Producteur", "Oleoduc 1 070 km"]}, "bongor": {"t": "Bassin de Bongor — producteur", "d": "Ronier · Mimosa. Alimente la raffinerie de Djermaya, au nord de N’Djamena.", "k": ["Producteur", "Raffinerie Djermaya"]}, "lac": {"t": "Bassin du Lac Tchad", "d": "Sedigui : environ 150 Mb decouverts, toujours inexploites — un potentiel dormant aux portes de la capitale.", "k": ["≈150 Mb decouverts", "Inexploite"]}, "doseo": {"t": "Bassin du Doseo — ouvert", "d": "Rift d’Afrique centrale, exploration. Blocs libres au cadastre 2025.", "k": ["Exploration", "Blocs libres"]}, "salamat": {"t": "Bassin du Salamat — ouvert", "d": "Sud-est, exploration. Blocs libres au cadastre 2025.", "k": ["Exploration", "Blocs libres"]}, "madiago": {"t": "Bassin de Madiago — ouvert", "d": "Centre-ouest, exploration. Blocs libres au cadastre 2025.", "k": ["Exploration", "Blocs libres"]}, "erdis": {"t": "Bassin d’Erdis / Koufra — pionnier", "d": "Extreme nord-est, frontiere d’exploration. Ouvert au cadastre 2025.", "k": ["Pionnier", "Ouvert"]}, "_": {"t": "Sept bassins, un corridor", "d": "26 blocs libres au cadastre petrolier 2025, repartis sur 7 bassins sedimentaires — et l'oleoduc d'export Doba–Kribi, 1 070 km jusqu'a l'Atlantique. Survolez ou touchez un bassin pour le detail.", "k": ["26 blocs libres", "7 bassins", "1 070 km"]}};var P=document.getElementById('c540p');if(!P)return;
+function show(k){var d=D[k]||D['_'];P.innerHTML='<b></b><p></p><div class="c540-kpis"></div>';
+P.querySelector('b').textContent=d.t;P.querySelector('p').textContent=d.d;
+var kp=P.querySelector('.c540-kpis');d.k.forEach(function(x){var s=document.createElement('span');s.textContent=x;kp.appendChild(s)})}
+var bs=document.querySelectorAll('#carte540 .c540-b');
+bs.forEach(function(b){var k=b.getAttribute('data-k');
+function on(){bs.forEach(function(o){o.classList.remove('on')});b.classList.add('on');show(k)}
+b.addEventListener('mouseenter',on);b.addEventListener('focus',on);
+b.addEventListener('click',on);b.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();on()}})});
+})();</script><section id="agir" class="reveal" aria-label="Trois façons d’entrer"><div class="wrap" style="max-width:var(--mw,1200px);margin:0 auto;padding:clamp(34px,4.6vw,58px) var(--gut,24px)">
 <span class="sec-k">Agir</span>
 <h2 style="font-family:var(--fd);font-weight:800;font-size:clamp(1.55rem,2.9vw,2.2rem);letter-spacing:-.02em;margin:12px 0 8px">Trois façons d’entrer.</h2>
 <div class="agir-g">
@@ -1249,7 +1330,7 @@ html.et-plight #durabilite .dur-c em:not(#_):not(#__){color:var(--cl,var(--c))!i
 <a class="agir-c" href="/carrieres"><b>Nous rejoindre</b><em class="agir-ch">Faire tourner la chaîne</em><span>Familles de métiers, académie Tchaditude et relève nationale : les talents tchadiens d’abord.</span><i>Métiers et candidatures →</i></a>
 </div>
 <p style="margin:18px 0 0;font-size:.92rem;opacity:.8">Fournisseurs : <a href="/achats" style="color:inherit;text-decoration:underline;text-underline-offset:3px">référencement &amp; appels d’offres</a> · Une question : <a href="/contact" style="color:inherit;text-decoration:underline;text-underline-offset:3px">le contact direct</a></p>
-<p style="margin:8px 0 0;font-size:.8rem;opacity:.62">Nos seuls canaux officiels : ce site, contact@enertchad.td et le +235 99 29 86 96 — toute autre sollicitation (levée de fonds, recrutement, paiement) est une usurpation. <a href="/avertissements" style="color:inherit;text-decoration:underline;text-underline-offset:3px">Les avertissements →</a></p>
+<p style="margin:8px 0 0;font-size:.8rem;opacity:.8">Nos seuls canaux officiels : ce site, contact@enertchad.td et le +235 99 29 86 96 — toute autre sollicitation (levée de fonds, recrutement, paiement) est une usurpation. <a href="/avertissements" style="color:inherit;text-decoration:underline;text-underline-offset:3px">Les avertissements →</a></p>
 <style>.agir-g:not(#e1){display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px;margin:20px 0 0}
 .agir-c:not(#e1){display:block;border:1px solid rgba(127,150,180,.3);border-radius:14px;padding:20px 20px 18px;text-decoration:none;color:inherit}
 .agir-c:not(#e1) b{display:block;font-family:var(--fd);font-size:1.12rem;font-weight:800;margin:0 0 8px}
@@ -1791,5 +1872,35 @@ html.et-plight #coeurs:not(#e1):not(#e2):not(#e3),html.et-plight .hxi:not(#e1):n
 html.et-plight footer:not(#e1):not(#e2):not(#e3){border-top-color:rgba(122,92,20,.16)!important}
 html.et-plight .acth:not(#e1):not(#e2):not(#e3){background:rgba(252,250,246,.42)!important}
 @media (prefers-reduced-transparency:reduce){}
-</style></body>
+</style><script id="da540-js">(function(){
+if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+var c=document.createElement('canvas');c.id='uni540';c.setAttribute('aria-hidden','true');
+c.style.cssText='position:fixed;inset:0;width:100vw;height:100vh;z-index:-2;pointer-events:none';
+document.body.prepend(c);
+var x=c.getContext('2d');if(!x){c.remove();return}
+var W,H,DPR,t=0,run=true,last=0;
+function rs(){DPR=Math.min(window.devicePixelRatio||1,1.5);W=innerWidth;H=innerHeight;c.width=W*DPR;c.height=H*DPR;x.setTransform(DPR,0,0,DPR,0,0)}
+rs();addEventListener('resize',rs);
+document.addEventListener('visibilitychange',function(){run=!document.hidden;if(run)requestAnimationFrame(fr)});
+function light(){return document.documentElement.classList.contains('et-plight')}
+var STR=[{c:[255,183,3],y:.26,ph:0},{c:[0,180,216],y:.5,ph:2.1},{c:[255,183,3],y:.74,ph:4.2},{c:[0,180,216],y:.62,ph:1.3},{c:[0,150,190],y:.38,ph:3.4}];
+var NP=W<640?26:54,pts=[];
+for(var i=0;i<NP;i++){var s=STR[i%STR.length];pts.push({s:s,u:Math.random(),v:.00045+Math.random()*.0009,r:.7+Math.random()*1.7})}
+function yOf(s,u,tt){return H*(s.y+.085*Math.sin(u*5.1+tt*.00021+s.ph)+.05*Math.sin(u*11.7-tt*.00013+s.ph*1.7))}
+function fr(ts){if(!run)return;requestAnimationFrame(fr);if(ts-last<33)return;last=ts;t=ts;
+var L=light();x.clearRect(0,0,W,H);
+var nR=W<640?3:5;
+x.globalCompositeOperation=L?'source-over':'lighter';
+for(var k=0;k<nR;k++){var s=STR[k];var a=L?.06:.10;
+x.beginPath();for(var u=0;u<=1.001;u+=.033){var px=u*W,py=yOf(s,u,t);u===0?x.moveTo(px,py):x.lineTo(px,py)}
+x.strokeStyle='rgba('+(L?[0,72,100]:s.c).join(',')+','+a+')';x.lineWidth=W<640?18:30;x.lineCap='round';x.stroke();
+x.strokeStyle='rgba('+(L?[0,96,130]:s.c).join(',')+','+(L?.10:.22)+')';x.lineWidth=1.4;x.stroke()}
+for(var j=0;j<pts.length;j++){var p=pts[j];p.u+=p.v;if(p.u>1.03){p.u=-.03;p.r=.7+Math.random()*1.7}
+var px=p.u*W,py=yOf(p.s,p.u,t);var col=L?[0,96,130]:p.s.c;
+var g=x.createRadialGradient(px,py,0,px,py,p.r*6);
+g.addColorStop(0,'rgba('+col.join(',')+','+(L?.35:.8)+')');g.addColorStop(1,'rgba('+col.join(',')+',0)');
+x.fillStyle=g;x.beginPath();x.arc(px,py,p.r*6,0,6.284);x.fill()}
+x.globalCompositeOperation='source-over'}
+requestAnimationFrame(fr);
+})();</script></body>
 </html>

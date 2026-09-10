@@ -18889,3 +18889,53 @@ Lecon versee au canon : avant toute fusion de styles, masquer
 les regions noscript ; et le balayage axe des deux themes est le
 filet qui a tout attrape avant publication. Etat final : six
 pages en typ537 + m538, sans fusion, parite zero visee.
+
+## 540 — L accueil pilote de la direction artistique Glassmorphism Premium (10 septembre 2026)
+
+Direction artistique signee par le proprietaire : petrole #003049,
+or energetique #FFB703, cyan #00B4D8, verre translucide a flou de
+20 px, fond vivant, carte interactive du Tchad. Arbitrage :
+accueil pilote FR+EN d abord, fond en canvas generatif plutot qu
+en video (site statique, aucune sequence detenue, ~4 Ko de code
+contre plusieurs Mo), nouvelle palette signee, module carte —
+les illustrations 3D et les animations type Vision Pro n ont pas
+ete retenues a ce tour.
+
+Fait sur les deux accueils : bloc style#da540 (tokens petrole,
+--gold-l #FFB703, --blue-l #00B4D8, verre --g-blur a 20 px,
+aurora recoloree or/cyan sur fond #00243A) ; barre de navigation
+en verre flottant (fond rgba(0,48,73,.38) + flou 20 px, blanc
+translucide en theme clair) ; bandes et panneaux de l immersion
+527 repasses en verre 20 px teinte petrole avec lisere blanc ;
+script#da540-js : canvas fixe derriere la page, cinq rubans d
+energie ondulants or et cyan avec particules en fusion additive,
+30 i/s plafonnees, DPR limite a 1.5, pause si onglet cache,
+absent si prefers-reduced-motion (l aurora CSS reste alors le
+fond) et allege sous 640 px ; section #carte540 : le Tchad en
+SVG (contour repris de l atlas du 505, sept bassins cliquables
+avec etiquettes, oleoduc Doba-Kribi flechee, N Djamena), panneau
+de verre a droite mis a jour au survol, au clic et au clavier
+(role button, tabindex, aria-live), legende, renvoi vers l atlas
+complet. Donnees canon de l atlas : Doba et Bongor producteurs,
+Sedigui decouvert inexploite, Doseo, Salamat, Madiago, Erdis
+ouverts — 26 blocs libres, 7 bassins, 1 070 km.
+
+Verifications et reprises en chemin : la barre de navigation
+resistait — les regles armees du theme clair portent cinq :not
+d identifiant, mes selecteurs sont montes a six et le flou en
+important ; la ligne des canaux officiels du 530 (opacite .62)
+tombait a 3,64:1 sur le fond petrole plus sombre — opacite
+remontee a .8 des deux cotes ; en theme clair les etiquettes .dt
+des documents oscillaient au seuil des 4,5:1 (le temoin brochure
+connu) — fixees a l opacite 1 et #6B5012 sur l accueil. Lecon de
+mesure versee au canon : les violations de contraste qui vont et
+viennent d un balayage a l autre sont des artefacts de
+transitions inachevees — depuis, le balayage fige transitions et
+animations avant axe et le verdict est devenu deterministe.
+Verifie sur les douze combinaisons (2 pages x 2 themes x bureau,
+plus mobile 390 en mouvement reduit) : axe silencieux, canvas
+vivant (deux prises d image differentes), verre 20 px calcule
+sur la barre et les bandes, 7 bassins au clavier, aucun debord.
+Reste disponible sur demande : etendre la DA aux trois hubs puis
+au site entier, ou une sequence video fournie par le
+proprietaire en remplacement du canvas.
