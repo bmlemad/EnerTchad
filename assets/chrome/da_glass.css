@@ -1,0 +1,21 @@
+/* Ch544 - DA Glassmorphism Premium, couche commune du site.
+   Petrole #003049 · or energetique #FFB703 · cyan #00B4D8 · verre 20 px.
+   Pilote au 540 (accueil), etendue aux hubs au 542, au site entier ici.
+   Le theme clair garde son sol creme : le petrole est une matiere du sombre. */
+:root{--gold-l:#FFB703;--blue-l:#00B4D8;--g-blur:saturate(170%) blur(20px);--g-brd:rgba(255,255,255,.20)}
+html:not(.et-plight):not(.et-jlight){background:#00243A!important}
+html:not(.et-plight):not(.et-jlight) .rootland::after{background:linear-gradient(180deg,rgba(0,28,45,.68) 0%,rgba(0,21,34,.78) 100%)}
+html:not(.et-plight):not(.et-jlight) .subland::after{background:linear-gradient(180deg,rgba(0,28,45,.50) 0%,rgba(0,21,34,.60) 100%)}
+.nav.nx:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5):not(#e6){background:rgba(0,48,73,.38)!important;background-color:rgba(0,48,73,.38)!important;background-image:none!important;-webkit-backdrop-filter:saturate(170%) blur(20px)!important;backdrop-filter:saturate(170%) blur(20px)!important;border-bottom:1px solid rgba(255,255,255,.13);box-shadow:0 12px 34px rgba(0,18,30,.35)}
+html.et-plight .nav.nx:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5):not(#e6),html.et-jlight .nav.nx:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5):not(#e6){background:rgba(255,255,255,.60)!important;background-color:rgba(255,255,255,.60)!important;background-image:none!important;border-bottom-color:rgba(0,48,73,.14);box-shadow:0 10px 30px rgba(0,48,73,.10)}
+@media (prefers-reduced-transparency:reduce){.nav.nx:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5):not(#e6){background:#003049!important;-webkit-backdrop-filter:none;backdrop-filter:none}html.et-plight .nav.nx:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5):not(#e6),html.et-jlight .nav.nx:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5):not(#e6){background:#F5F7FA!important}}
+html.et-plight .dt:not(#_),html.et-jlight .dt:not(#_){opacity:1!important;color:#6B5012!important}
+html:not(.et-plight):not(.et-jlight) .exp-c p:not(#_),html:not(.et-plight):not(.et-jlight) .exp-items span:not(#_),html:not(.et-plight):not(.et-jlight) .exp-note:not(#_){color:#93A1B8!important}
+html:not(.et-plight):not(.et-jlight) .c7d:not(#_){color:#93A1B8!important}
+/* Ch544 - le sourd #7C8AA2 du chrome commun tombait a 4,2:1 sur le composite petrole : eclairci en sombre au niveau du token. */
+html:not(.et-plight):not(.et-jlight){--muted:#93A1B8}
+/* Ch544 - pages a chrome reduit : le logo de la barre n avait pas de couleur propre (bleu UA revele par le fond solide du verre). Filet de securite a faible specificite. */
+.nav .brand{color:#F5F7FA;text-decoration:none}
+html.et-plight .nav .brand,html.et-jlight .nav .brand{color:#13202F}
+.nav .brand-tx small{color:#A8B4C7}
+html.et-plight .nav .brand-tx small,html.et-jlight .nav .brand-tx small{color:#39424F}
