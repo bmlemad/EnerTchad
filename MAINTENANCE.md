@@ -19052,3 +19052,37 @@ date. Verification fonctionnelle sur echantillon (boutique,
 calculateur, societe, recherche, atlas, journal) : verre 20 px
 calcule, canvas present ou absent selon la regle, aucun script
 en erreur.
+
+## 545 — L audit complet de l accueil (10 septembre 2026)
+
+Audit demande par le proprietaire sur la home FR+EN apres la
+vague DA. Perimetre : contenu et canon, SEO, liens,
+accessibilite, poids, interactions, parite des jumelles.
+
+Constats sains : axe silencieux sur les 8 combinaisons (2 pages
+x 2 themes x bureau et mobile), y compris les regles
+best-practice ; 134 liens internes par page, tous resolus ;
+un seul h1, 8 sections, parite structurelle FR/EN exacte ;
+canon en place (26 blocs libres, trajectoire 10 M - 1 Md -
+20 Md, 1 070 km, 2.8 Gbep cote EN) ; SEO complet (title 60-62
+car, description 155-159, canonical, 4 hreflang, og:image
+servie en 200, twitter:card, 4 blocs JSON-LD) ; pas de double
+couche DA (la home garde son bloc 540, la couche 544 ne s y
+attache pas) ; 963 Ko et 37 requetes au chargement, charge en
+moins de 800 ms en local ; canvas vivant, 7 bassins au clavier.
+
+Un defaut attrape et corrige : les textes francais de la carte
+interactive du 540 etaient ecrits sans accents — une vingtaine
+de mots (petrolier, repartis, sedimentaires, oleoduc, Kome,
+prouves, Ronier, Sedigui, decouverts, inexploites, Doseo,
+Extreme, frontiere, stylisee, Representation, detail, depart,
+jusqu a) dans le panneau, les descriptions de bassins, les
+etiquettes aria et le title/desc du SVG. Mon erreur : la regle
+d ecriture sans accents vaut pour ce journal, pas pour le
+contenu du site — je l ai laissee deteindre sur des chaines
+visibles par le public. Corrige mot a mot en francais
+accentue, y compris l etiquette du bassin Doseo sur la carte ;
+interactions et axe reverifies aux deux themes apres
+correction, panneau lu en clair avec ses accents. Reste consigne sans suite : le poids
+CSS du chrome (400 Ko sur 963) est un heritage structurel — la
+fusion a deja ete refutee au 539, aucune action sure a ce tour.
