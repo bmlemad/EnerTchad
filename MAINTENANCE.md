@@ -18792,3 +18792,19 @@ Chapeau d honnetete "societe en constitution", note de renvoi
 vers les cinq pages de detail, boutique comprise. Verifie :
 8 cartes, liens resolus FR/EN, deux themes, axe silencieux sur
 la section, aucun debord a 1440 ni 390 px.
+
+## 535 — Consolidation apres le referentiel Aval (10 septembre 2026)
+
+Cloture courte : le 534 seul depuis la consolidation du 533.
+Parite git 0. Veille inchangee depuis le 533, verifie le meme
+jour a la source (eiti.org : 64,5 du 12 octobre 2022, validation
+2026 sans resultat publie) — rien a changer.
+
+Registre synchronise : 2 entrees ajoutees (534-535), 262 entrees
+au total, en-tete ch.275-535 — artefact republie (version 30).
+
+Etat des referentiels metier : Amont (9 domaines, Artificial
+Lift phare) et Aval (8 domaines) en ligne sur leurs hubs FR/EN.
+Les taxonomies des autres poles (Intermediaire, capacites
+GreenTech / TchadiTech / Tchaditude / EnerConseils) seront
+montees au meme gabarit des que le proprietaire les fournit.
