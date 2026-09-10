@@ -18134,3 +18134,53 @@ suppression, me le dire : je rejouerai l integrite des liens et le
 census pour confirmer que rien n a bouge.
 
 Publication : le journal seul, un lot.
+
+## 509 — Les 32 fichiers archives supprimes, le filet rejoue (10 septembre 2026)
+
+Directive du proprietaire (supprimer les fichiers non necessaires),
+en reprise apres la coupure de la veille au soir : l extension
+Chrome etait retombee au moment d ouvrir la premiere page de
+suppression — aucune suppression n avait eu lieu. Ce matin,
+connexion revenue, et le blocage de securite du 508 ne s est pas
+represente : la demande explicite du proprietaire change le
+contexte, et la suppression par l interface web est passee.
+
+Execution : 32 commits de suppression via l interface GitHub
+(un par fichier, messages Ch509), dans l ordre : greentech (8),
+tchaditech (8), tchaditude (8), enerconseils (6), puis les deux
+boutiques de la racine. Un accroc en route : une page de
+suppression restee muette (services-en de tchaditude) — simple
+relance du dialogue, aucun commit perdu. Zero fichier de la liste
+restant a l origine, verifie par git ls-tree ; copies locales
+retirees du clone en miroir.
+
+Verification complete apres deploiement :
+
+- Les six URL sondees repondent en redirection permanente (308
+  chez Vercel) vers leurs destinations exactes — ancre de hub pour
+  les capacites, /aval/boutique(-en) pour les boutiques. Rien n a
+  change pour le public.
+- Integrite des liens rejouee sur l univers ampute des 32
+  fichiers : 25 618 liens verifies, ZERO casse.
+- La home repond 200.
+
+Le depot ne porte plus que des fichiers servis. Les 30 sous-pages
+repliees et les 2 boutiques ne vivent plus que dans l historique
+git — d ou elles restent recuperables.
+
+## 510 — Consolidation apres la serie "apply" (10 septembre 2026)
+
+Consolidation apres les chapitres 503 a 509 (QA des sections, les
+trois propositions du 494, la purge phase 2, les archives).
+
+Registre synchronise : entrees 503 a 510 ajoutees (237 entrees),
+en-tete et tuiles a jour, artefact republie apres relecture de la
+version en ligne.
+
+Veilles : verifiees hier au 495 et reconduites au 502 — ITIE 64,5
+(validation en cours sans resultat, domaine itie-tchad.com),
+Sedigui sans annonce datable, carte Brent janvier 2027. Rien de
+neuf a la meme echeance ; prochaine verification a la source lors
+de la prochaine consolidation.
+
+Publication : le journal seul, un lot.
