@@ -18256,3 +18256,26 @@ assume et consigne.
 
 Publication 511-513 : deux lots (racine avec le journal, puis
 l asset).
+
+## 514 — Consolidation apres le benchmark majors (10 septembre 2026)
+
+Consolidation apres la serie 511-513.
+
+Registre synchronise : entrees 511 a 514 (241 entrees), en-tete,
+tuiles et puce SW (et-202609101100) a jour, artefact republie
+apres relecture de la version en ligne.
+
+Veilles, a la source :
+
+- ITIE : le score reste 64,5 d octobre 2022 sur eiti.org/countries/
+  chad ; aucun resultat publie de la validation demarree le 1er
+  juillet 2026. Le site du comite national (itie-tchad.com) repond
+  normalement. La veille guette toujours le resultat.
+- Sedigui : la presse denonce desormais des DEVERSEMENTS sur le
+  site (les ingenieurs petroliers du Kanem reclament une reponse
+  du gouvernement), en plus des retards et manquements deja
+  releves. Toujours aucune annonce datable cote jalon projet —
+  rien a publier sur le site, la prudence tient.
+- Carte Brent : echeance janvier 2027, non echue.
+
+Publication : le journal seul, un lot.
