@@ -18958,3 +18958,34 @@ Prochaines options connues : etendre la DA aux hubs puis au
 site entier, taxonomies des poles de capacites et Petrochimie
 au meme gabarit, video institutionnelle si une sequence est
 fournie.
+
+## 542 — La DA Glassmorphism Premium etendue aux six hubs de coeur (10 septembre 2026)
+
+Poussee demandee par le proprietaire apres le pilote du 540.
+Couche additive par page (style#da542 + script#da542-js) sur
+/amont/, /intermediaire/, /aval/ et les trois jumelles EN — la
+photo de decor du pole (pompe, pipeline, raffinerie) reste
+derriere le verre, la DA vient dessus.
+
+Fait : tokens --gold-l #FFB703 et --blue-l #00B4D8 (les
+composants des hubs les consomment par color-mix, le re-teintage
+suit tout seul), fond petrole #00243A en sombre, voiles rootland
+et subland re-teintes du marine au petrole aux memes opacites
+(.68/.78 et .50/.60, calees au 517), barre de navigation en
+verre petrole flou 20 px (selecteurs a six :not d identifiant,
+gabarit du 540), et canvas generatif aux couleurs du pole :
+rubans or dominants en amont, cyan en intermediaire, ambre-or en
+aval — 4 rubans et 44 particules bureau, 3 et 22 mobile, absent
+en mouvement reduit.
+
+Reprises attrapees par le balayage fige : les textes sourds
+#7C8AA2 des cartes d expertises (532-536) et des dates de
+carnets (.c7d) tombaient a 4,35:1 sur le composite petrole
+#05283E, un peu plus bleu que le marine — eclaircis a #93A1B8
+(5,3:1) en sombre seulement. Verifie sur les 12 combinaisons (6
+pages x 2 themes) : axe silencieux, verre 20 px calcule sur la
+barre, canvas vivant, h2 toujours uniformes a 35,2 px (537
+intact), 2 plis par page fermes sur mobile (538 intact), aucun
+debord a 1440 ni 390. Le theme clair garde son sol creme — le
+petrole est une matiere du sombre. Reste : etendre au site
+entier sur demande.
