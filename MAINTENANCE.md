@@ -18645,3 +18645,42 @@ Reste disponible a la demande : les constats cosmetiques du 518
 divergence des rayons de CTA notee au 519. Les sujets du
 proprietaire (noms de direction, rapport annuel) demeurent
 chez lui.
+
+## 529 — QA generale post-serie et le fil des carnets en theme clair (10 septembre 2026)
+
+Balayage complet apres la grande serie : 191 pages x 2 themes x
+2 viewports (1280 et 390), axe AA, erreurs console, requetes 400+,
+debordements. Nuit : zero defaut. Mobile : seul le temoin brochure
+documente (contrast 15/17, connu). Jour : 64 defauts — tous le
+meme, tous a moi : le fil d Ariane pose sur les carnets au 521
+etait calibre sur le theme nuit (#7C8AA2 sur creme = 3,26:1, sous
+le seuil AA). Regles de theme clair ajoutees au bloc s521 des 64
+pages (#5A6472, 5,6:1 mesure, survol ocre, separateurs assombris).
+Re-balayage : zero defaut sur les trois tranches.
+
+## 530 — L accueil face aux compagnies nationales (10 septembre 2026)
+
+Directive : audit de l accueil contre Aramco, ADNOC, QatarEnergy
+et Sonangol — les pairs nationaux, pas les majors privees.
+Compositions relevees a la source sur les quatre accueils. Verdict:
+la home est deja en parite sur l essentiel du standard NOC —
+mission nationale au heros, cibles datees (la logique 2027/2030
+d ADNOC), durabilite en trois volets, actualites datees et carnets
+(l equivalent du magazine Elements et du journal Pacaca), documents
+de reference en pied, chaine des domaines (le slider Sonangol),
+contenu local 80 % (l analogue d iktva et de l ICV) — et deux
+elements qu on croyait manquants existaient deja : la porte
+fournisseurs sous Agir et les outils interactifs en pilules
+(notre reponse au showcase technologique d ADNOC).
+
+Deux ecarts retenus a l arbitrage, appliques : la ligne "canaux
+officiels" sous Agir (l alerte anti-usurpation qu affiche
+QatarEnergy — site, e-mail et telephone officiels, lien vers les
+avertissements, FR/EN) ; et la rangee "ressources rapides" dans
+la bande Reperes (la rangee d icones de QatarEnergy : appels
+d offres, presse, outils, prix ARSAT — en pastilles, sans nouveau
+bandeau, la lecon du 527). Non retenus, consignes : la video
+institutionnelle (Aramco, Sonangol) et le widget de cours
+(Sonangol) — pas d actif video ni de flux temps reel sur un site
+statique publie par lots. Verifie : liens resolus, deux themes,
+mobile en repli propre, axe 0 violation sur la home.
