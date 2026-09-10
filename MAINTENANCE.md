@@ -18939,3 +18939,22 @@ sur la barre et les bandes, 7 bassins au clavier, aucun debord.
 Reste disponible sur demande : etendre la DA aux trois hubs puis
 au site entier, ou une sequence video fournie par le
 proprietaire en remplacement du canvas.
+
+## 541 — Consolidation apres la vague DA et hubs (10 septembre 2026)
+
+Consolidation demandee par le proprietaire apres les chapitres
+536 a 540. Registre synchronise : six entrees ajoutees (536
+referentiel Intermediaire, 537 echelle typo, 538 compaction
+mobile, 539 fusion refutee, 540 accueil pilote DA, 541 la
+presente), 268 entrees au total, tuile et en-tete a 541, version
+31 de l artefact publiee. Veille des sources : eiti.org affiche
+toujours 64,5 points (12 octobre 2022, fairly low) et la
+validation 2026 n a aucun resultat publie — texte du site
+inchange. Parite git : diff zero contre FETCH_HEAD apres la
+publication du 540. Etat du front : l accueil FR+EN porte la DA
+Glassmorphism Premium (pilote), les six hubs de coeur portent
+typo unifiee, accordeons mobiles et leurs referentiels metier.
+Prochaines options connues : etendre la DA aux hubs puis au
+site entier, taxonomies des poles de capacites et Petrochimie
+au meme gabarit, video institutionnelle si une sequence est
+fournie.
