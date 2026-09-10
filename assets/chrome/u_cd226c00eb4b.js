@@ -2,12 +2,12 @@
 /* Mode lecture claire des carnets : bouton dans la barre du haut, persistant. */
 try{(function(){var KEY='et-jlight';
 function apply(on){document.documentElement.classList.toggle('et-jlight',on)}
-try{if(document.querySelector('.jback')){var _v=localStorage.getItem('et-jlight')||localStorage.getItem('et-plight');if(_v==='1'||(_v===null&&matchMedia('(prefers-color-scheme: light)').matches))apply(true)}}catch(e){}
-function init(){var bar=document.querySelector('.jtop');if(!bar||!document.querySelector('.jback'))return;if(document.getElementById('jlightBtn'))return;
+try{if(document.querySelector('.jback,.jbody')){var _v=localStorage.getItem('et-jlight')||localStorage.getItem('et-plight');if(_v==='1'||(_v===null&&matchMedia('(prefers-color-scheme: light)').matches))apply(true)}}catch(e){}
+function init(){var bar=document.querySelector('.jtop');var lp=document.getElementById('lum-panel');if((!bar||!document.querySelector('.jback'))&&!(lp&&document.querySelector('.jbody')))return;if(document.getElementById('jlightBtn'))return;
 var b=document.createElement('button');b.id='jlightBtn';b.type='button';b.title='Basculer lecture claire / sombre';b.setAttribute('aria-label','Basculer lecture claire ou sombre');
 b.setAttribute('aria-pressed',document.documentElement.classList.contains('et-jlight')?'true':'false');b.textContent='☀';
 b.addEventListener('click',function(){var on=!document.documentElement.classList.contains('et-jlight');apply(on);b.setAttribute('aria-pressed',on?'true':'false');try{localStorage.setItem('et-jlight',on?'1':'0');localStorage.setItem('et-plight',on?'1':'0')}catch(e){}});
-bar.appendChild(b)}
+if(bar&&document.querySelector('.jback')){bar.appendChild(b)}else{b.classList.add('in-panel');b.id='jlightBtn';var en=(document.documentElement.lang||'').indexOf('en')===0;b.textContent=en?'\u2600 Light / dark':'\u2600 Clair / sombre';if(!document.getElementById('etOneCtl')){var st=document.createElement('style');st.id='etOneCtl';st.textContent='#jlightBtn.in-panel,#etThemeBtn.in-panel{position:static;display:block;width:100%;height:auto;min-height:32px;border-radius:8px;border:1px solid var(--hair,rgba(120,180,250,.18));background:transparent;color:rgba(245,247,250,.82);font-size:.6875rem;letter-spacing:.02em;padding:7px 8px;cursor:pointer;transition:border-color .2s,color .2s}#jlightBtn.in-panel[aria-pressed="true"],#etThemeBtn.in-panel[aria-pressed="true"]{border-color:var(--gold-l,#F0CE82);color:var(--gold-l,#F0CE82)}.lum-theme{margin:0 0 12px;padding:0 0 12px;border-bottom:1px solid rgba(245,247,250,.12)}';(document.head||document.documentElement).appendChild(st);}var row=document.createElement('div');row.className='lum-theme';var h=document.createElement('p');h.className='lum-h';h.textContent=en?'Theme':'Th\u00e8me';row.appendChild(h);row.appendChild(b);lp.insertBefore(row,lp.firstChild);}}
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init()})()}catch(e){}
 
 /* Mode clair des pages editoriales (liste blanche) : bouton fixe en bas a gauche, persistant. */
