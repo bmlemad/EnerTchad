@@ -18317,3 +18317,37 @@ claires portent desormais la meme armure (:not + !important),
 kicker et liens verifies verts et bleus en calcule.
 
 Publication : les deux pages d accueil et le journal, un lot.
+
+## 516 — Les reperes documentaires en fin de home (10 septembre 2026)
+
+Application de la recommandation restante du 515 (go du
+proprietaire : appliquer toutes les recommandations). En fin de
+home, avant l appel final, la section Reperes aligne quatre
+documents de reference — brochure institutionnelle (PDF, page
+anglaise servie par la brochure anglaise), fiche investisseur
+(PDF), data book (XLSX) et agenda investisseur (.ics, chacun le
+sien par langue) — plus le lien vers le centre de documents.
+Tailles calculees des fichiers reels, badges monospace, entree
+Reperes/Documents ajoutee au rail.
+
+Deux lecons recentes appliquees d emblee plutot que rattrapees :
+l armure !important du theme clair posee des l ecriture (lecon
+515), et un badge d abord ecrit en balise s (barre) reecrit en
+span neutre avant toute publication — une balise de texte barre
+aurait pu etre annoncee comme supprimee par les lecteurs d ecran.
+
+Verification : 4 cartes aux bonnes cibles par langue (brochure EN
+et calendrier EN sur la page anglaise), kicker or fonce en clair
+(armure au calcule), rail a jour, aucun debordement, axe zero
+violation.
+
+## 517 — Consolidation apres la serie homepages (10 septembre 2026)
+
+Registre synchronise : entrees 515 a 517 (244 entrees), artefact
+republie apres relecture de la version en ligne. Veilles :
+verifiees a la source le matin meme au 514 (ITIE 64,5 sans
+resultat de validation, deversements Sedigui notes, Brent non
+echue) — reconduites sans nouvel appel, meme journee.
+
+Publication 516-517 : les deux pages d accueil et le journal, un
+lot.
