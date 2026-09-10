@@ -18184,3 +18184,75 @@ neuf a la meme echeance ; prochaine verification a la source lors
 de la prochaine consolidation.
 
 Publication : le journal seul, un lot.
+
+## 511 — Benchmark contre les majors, et la chronologie Notre histoire (10 septembre 2026)
+
+Directive du proprietaire : auditer les pages face aux majors.
+Structures relevees le matin meme : TotalEnergies, BP, Aramco
+(Shell et Equinor, partiels). Le canon commun tient en sept
+familles — societe, activites, durabilite, investisseurs, presse,
+carrieres, et les pages distinctives (rapport annuel, factbook,
+portail fournisseurs, ligne d alerte, sites regionaux).
+
+Verdict d audit : EnerTchad couvre quasiment tout le canon a son
+echelle, et DEPASSE les majors sur plusieurs points — l Atlas du
+secteur (equivalent d un Energy Outlook), les outils interactifs
+(calculateur, configurateur, explorateur : aucune major n en a),
+la page accessibilite, les paiements aux Etats en page vivante, et
+la regle "pas de chiffre sans date". Trois ecarts reels arbitres
+par le proprietaire : la chronologie (ce chapitre), le centre de
+documents (512), le signalement en pied de page (513). Deux ecarts
+classiques du benchmark correspondent a des elements deja en
+attente cote proprietaire — non redemandes.
+
+Execution : section Notre histoire sur /societe FR et EN — frise
+datee de neuf entrees, du capital fondateur (2026, fait) aux
+communiques dates (12 juin, 5 et 7 juillet, 10 juillet, 23 et 28
+aout, 8 septembre), fermee par "Aujourd hui : immatriculation en
+cours". Division nette avec la feuille de route investisseurs : la
+frise raconte le passe date, /investisseurs#jalons garde le futur
+— aucun doublon. Entree ajoutee au rail et a la nav de page.
+Verifie : 9 entrees, 7 liens vers les communiques, aucune ancre
+morte, integration au repli mobile de la page (les sections de
+/societe se plient en accordeon — la frise herite du motif,
+verifiee ouverte au clic).
+
+Mon erreur, la sixieme du filet : le 504 affirmait que societe et
+clients n avaient "aucune navigation de sections mobile" — mon
+instrument ne cherchait que pole-subnav et toc. Or societe porte
+une corp-nav visible sur mobile (65 px) et les deux pages ont des
+tuiles thematiques ttg. Le sommaire som504 y etait donc un
+troisieme navigateur : retire des quatre pages dans ce meme lot,
+et le 504 se relit comme un chapitre a benefice nul. Lecon :
+chercher la CLASSE de composant (navigateur de sections), pas une
+liste de selecteurs connus.
+
+## 512 — Le centre de documents complete (10 septembre 2026)
+
+Deuxieme ecart du benchmark — et surprise a l inspection :
+/publications est DEJA un centre de documents complet (28 cartes
+typees PDF/CSV/SVG/Markdown/RSS, tailles, descriptions, six
+familles par audience) — l ecart presume "documents eparpilles"
+etait faux. L ecart reel etait l inventaire : cinq documents
+publies n y figuraient pas. Ajoutes FR et EN, aux formats des
+cartes existantes : le dossier de presentation investisseur
+(PPTX, 58 Ko), le point d etape 2026 (PDF, 145 Ko), le data book
+(XLSX, 16 Ko), l agenda investisseur (.ics, FR et EN chacun le
+sien) et la brochure anglaise (PDF, 236 Ko). 28 cartes par page
+desormais, zero carte invisible, grille intacte, aucun
+debordement.
+
+## 513 — Le signalement ethique en acces direct (10 septembre 2026)
+
+Troisieme ecart : le canal d alerte existe (/ethique#alerte) mais
+les majors le mettent en liens rapides. Un lien "Signalement
+ethique" / "Ethics alert line" rejoint la rangee legale du pied de
+page — injecte par l asset partage u_cd226c00eb4b.js (methode du
+498 : aucun HTML touche, langue detectee, idempotent), sw.js bumpe
+et-202609101100. Verifie sur home, societe-en et faq (lien
+present, visible, bonne cible par langue) ; le mini-site arabe a
+son propre pied sans rangee legale — le lien ne s y pose pas,
+assume et consigne.
+
+Publication 511-513 : deux lots (racine avec le journal, puis
+l asset).
