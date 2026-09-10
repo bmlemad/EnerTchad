@@ -390,3 +390,7 @@ a.textContent=en?'Ethics alert line':'Signalement \u00e9thique';
 row.appendChild(a);
 }catch(e){}}
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',go);else go()})();
+
+
+/* Ch531 : /contact figurait deux fois au pied de page (colonne Societe + rangee legale). La rangee legale perd le doublon. */
+try{(function(){function fix(){var col=document.querySelector('.foot-col a[href="/contact"],.foot-col a[href="/contact-en"]');if(!col)return;document.querySelectorAll('.foot-legal-links a[href="/contact"],.foot-legal-links a[href="/contact-en"]').forEach(function(a){a.remove()});}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',fix);else fix()})()}catch(e){}

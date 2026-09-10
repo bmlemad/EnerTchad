@@ -49,7 +49,7 @@ a{color:inherit;text-decoration:none}
 section{padding:var(--sy) 0;position:relative}
 .kick{display:inline-flex;align-items:center;gap:9px;font-family:var(--fm);font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--blue-l);margin-bottom:18px}
 .kick::before{content:"";width:26px;height:1px;background:linear-gradient(90deg,var(--blue),transparent)}
-.btn{display:inline-flex;white-space:nowrap;align-items:center;gap:9px;font-weight:600;font-size:.92rem;padding:13px 22px;border-radius:10px;cursor:pointer;border:1px solid transparent;transition:all .25s var(--ease);font-family:var(--fb)}
+.btn{display:inline-flex;white-space:nowrap;align-items:center;gap:9px;font-weight:600;font-size:.92rem;padding:13px 22px;border-radius:12px;cursor:pointer;border:1px solid transparent;transition:all .25s var(--ease);font-family:var(--fb)}
 .btn-p{background:linear-gradient(135deg,var(--blue),var(--blue-d));color:#fff;box-shadow:0 8px 28px rgba(46,134,222,.3)}
 .btn-p:hover{transform:translateY(-2px);box-shadow:0 12px 36px rgba(46,134,222,.45)}
 .btn-g{background:rgba(90,167,240,.07);border-color:var(--hair);color:var(--cream)}

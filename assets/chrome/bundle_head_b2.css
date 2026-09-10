@@ -1010,3 +1010,6 @@ html:not(#_):not(#__){-webkit-tap-highlight-color:transparent}
 html.et-plight :is(p,li,dd) a:not([class]):not(#_):not(#__){text-decoration:underline!important;
   text-underline-offset:.18em;text-decoration-thickness:.055em;
   text-decoration-color:color-mix(in srgb,currentColor 42%,transparent)}
+
+/* Ch531 - la colonne chaine & capacites (8 pastilles) etait plus dense que ses voisines : deux colonnes. */
+footer .foot-poles:not(#_){display:grid;grid-template-columns:1fr 1fr;gap:8px 12px;justify-items:start}

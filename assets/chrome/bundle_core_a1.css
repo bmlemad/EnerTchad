@@ -2092,3 +2092,6 @@ html:not(.et-plight):not(.et-jlight) .nav-trigger.is-active:not(#e1):not(#e2){co
  header.jtop:not(#e1):not(#e2):not(#e3){background:#fff!important;border-bottom:1px solid #ccc}
  header.jtop:not(#e1):not(#e2):not(#e3) a{color:#111!important;text-shadow:none!important}
 }
+
+/* Ch531 - la colonne chaine & capacites (8 pastilles) etait plus dense que ses voisines : deux colonnes. */
+footer .foot-poles:not(#_){display:grid;grid-template-columns:1fr 1fr;gap:8px 12px;justify-items:start}

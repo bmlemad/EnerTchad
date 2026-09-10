@@ -8,7 +8,7 @@
 .kick{letter-spacing:.2em;font-weight:600}.divc,.card-m,.site,.esg-card,.hstat,.app-card{border-color:var(--hair)!important}.divc:hover,.site:hover,.card-m:hover{transform:translateY(-4px)!important;transition:transform .4s cubic-bezier(.16,1,.3,1),box-shadow .4s,border-color .4s}
 /* Boutons : sobres, assurés */
 .btn{font-weight:600;letter-spacing:.005em}
-.btn-p,.btn-g,.fl-cta{border-radius:10px}
+.btn-p,.btn-g,.fl-cta{border-radius:12px}
 /* Calmer les décors (sobriété) */
 .field{opacity:.6}
 /* Lisibilité corps */
