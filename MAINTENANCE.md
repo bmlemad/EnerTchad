@@ -18808,3 +18808,25 @@ Lift phare) et Aval (8 domaines) en ligne sur leurs hubs FR/EN.
 Les taxonomies des autres poles (Intermediaire, capacites
 GreenTech / TchadiTech / Tchaditude / EnerConseils) seront
 montees au meme gabarit des que le proprietaire les fournit.
+
+## 536 — Le referentiel des huit domaines de l Intermediaire (10 septembre 2026)
+
+Contenu canon fourni par le proprietaire — le troisieme pole de
+coeur rejoint les deux premiers. Audit prealable : le corridor,
+les depots et la supervision vivaient sur les trois pages de
+detail et dans la fiche technique du 525 ; le traitement des
+hydrocarbures (separation, stabilisation, compression) et la
+commercialisation intermediaire (trading, nominations) n etaient
+presque pas ecrits.
+
+Fait : section #expertises sur le hub /intermediaire/ (et jumelle
+EN), gabarit des 532 et 534 a l accent bleu du pole — huit
+domaines en cartes : Transport des hydrocarbures (6 items),
+Traitement des hydrocarbures (6), Stockage (5), Logistique &
+supply chain (5), Terminaux & exportation (5), Commercialisation
+intermediaire (5), Integrite & maintenance (5), HSE Midstream (5)
+— 42 items au total. Chapeau d honnetete, renvois vers les trois
+pages de detail. Verifie : 8 cartes, liens resolus FR/EN, deux
+themes, axe silencieux sur la section, aucun debord a 1440 ni
+390 px. Les trois poles de coeur portent desormais leur
+referentiel metier.
