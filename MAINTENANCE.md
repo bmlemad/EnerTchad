@@ -18743,3 +18743,32 @@ Amont (7), Digitalisation & innovation (7). Chapeau d honnetete
 renvoi vers les quatre pages de detail. Verifie : 9 cartes, 8
 items sur la carte phare, liens resolus FR/EN, deux themes,
 aucun debord a 1440 ni 390 px.
+
+## 533 — Consolidation apres la vague NOC et Amont (10 septembre 2026)
+
+Cloture de la vague 529-532 : la QA generale post-serie (191
+pages, quatre combinaisons, un seul defaut reel — le mien —
+corrige), le benchmark de l accueil contre les quatre compagnies
+nationales avec ses deux applications (canaux officiels,
+ressources rapides), le reliquat cosmetique des audits 518-519
+(rayons 12 px, pastilles en deux colonnes, contact unique) et le
+referentiel des neuf domaines de l Amont fourni par le
+proprietaire, Artificial Lift en tete.
+
+Verifications de cloture : parite git 0 ; axe silencieux sur
+l echantillon des pages touchees (amont FR/EN, societe, home),
+deux themes ; zero erreur console. Veille re-verifiee a la
+source : eiti.org affiche toujours 64,5 (12 octobre 2022,
+"fairly low"), aucun resultat publie pour la validation 2026.
+Aucun chiffre du site a changer.
+
+Registre synchronise : 5 entrees ajoutees (529-533), 260 entrees
+au total, en-tete ch.275-533, pastille SW et-202609101540 —
+artefact republie (version 29).
+
+En attente chez le proprietaire, sans relance de ma part : noms
+de direction, rapport annuel. Disponibles a la demande : video
+institutionnelle et widget de cours (531 les a consignes comme
+incompatibles avec le site statique), report du referentiel des
+neuf domaines dans la fiche technique Amont a sa prochaine
+regeneration.
