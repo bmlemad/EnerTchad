@@ -19009,3 +19009,46 @@ Prochaines options connues : etendre la DA au site entier
 (capacites, journaux, pages societe), taxonomies des poles de
 capacites et Petrochimie, video institutionnelle si une
 sequence est fournie.
+
+## 544 — La DA Glassmorphism Premium etendue au site entier (10 septembre 2026)
+
+Poussee finale demandee par le proprietaire apres le pilote (540)
+et les hubs (542). Cette fois en couche commune plutot qu en
+blocs par page : assets/chrome/da_glass.css et da_glass.js,
+references avec ?v=202609101830 par 173 pages — toutes celles
+qui portent la barre commune, moins l accueil et les six hubs
+(deja servis en ligne par leurs blocs 540 et 542) ; les huit
+pages arabes et la 404, au chrome propre, restent hors perimetre.
+Les 64 journaux recoivent la feuille seule, sans le canvas : une
+page de lecture merite le calme, la matiere petrole et le verre
+suffisent. SW monte a et-202609101830.
+
+La feuille reprend le gabarit du 542 : tokens or #FFB703 et cyan
+#00B4D8, sol petrole #00243A en sombre, voiles rootland et
+subland re-teintes, barre en verre flou 20 px (selecteurs a six
+:not), garde et-jlight ajoutee partout ou le 542 ne visait que
+et-plight. Le script reprend le canvas commun (rubans or et
+cyan) avec une garde d unicite (uni540/542/544).
+
+Balayage complet du site — 191 pages x 2 themes x bureau et
+mobile — et trois familles de defauts attrapees puis corrigees :
+le sourd #7C8AA2 du chrome commun tombait a 4,2:1 sur le
+composite petrole, eclairci au niveau du token (--muted #93A1B8
+en sombre seulement) ; le logo de la barre des pages a chrome
+reduit (explorateur, carnets) n avait jamais recu de couleur
+propre — le bleu UA #0000EE dormait invisible sur l ancien
+degrade, que mon fond solide a revele : filet de securite a
+faible specificite dans la feuille ; la categorie Cadre du
+glossaire portait le meme #7C8AA2 dans sa carte de couleurs JS,
+passee a #93A1B8. En chemin : dix apostrophes droites de la
+carte du 540 passees en typographiques sur l accueil FR, et un
+temoin scrollable-region-focusable qui oscillait au pixel pres
+selon le chargement des fontes (produits, complexe petrochimie)
+— regle une fois pour toutes par un filet a11y dans da_glass.js
+qui rend focalisables au clavier les conteneurs a defilement
+interne. Etat final des balayages : silencieux partout, seul
+demeure le temoin brochure mobile (15/17) documente de longue
+date. Verification fonctionnelle sur echantillon (boutique,
+calculateur, societe, recherche, atlas, journal) : verre 20 px
+calcule, canvas present ou absent selon la regle, aucun script
+en erreur.
