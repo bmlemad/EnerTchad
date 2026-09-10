@@ -18549,3 +18549,71 @@ sur societe et investisseurs (l abreviation datait du resserrement
 496). Verifie au rendu : aucun debord a 1440 ni a 390 px,
 l explorateur affiche 26 a l execution, 5 729 liens des 32 pages
 modifiees zero casse.
+
+## 524 — Bandes en chiffres sur Amont et Intermediaire (10 septembre 2026)
+
+Directive : "est-ce que les 3 pages de coeur obeissent aux
+standards des majors". Benchmark des hubs /amont/, /intermediaire/
+et /aval/ (et jumelles EN) contre les pages segment des majors :
+le gabarit commun tient le standard (manifeste, cap, offre,
+methode, cas, capacites, projets, carnets, sous-navigation,
+Ariane, maillage vers les cartes d actifs). Deux ecarts reels
+arbitres : la bande de chiffres n existait que sur l Aval, et
+aucun document n etait offert sur les hubs.
+
+Premier volet : le gabarit "L Aval en chiffres" (avkpi, style
+autonome de 1 060 caracteres) est clone sur Amont et Intermediaire
+FR/EN avec leurs chiffres canon — Amont : 26 blocs libres,
++8-17 % OOIP, 2,8 Gbep 2P secteur, 2 bassins prioritaires, 2026+,
+0 accident ; Intermediaire : corridor 1 070 km, route 1 700 km,
+3 hubs-depots, 40 % d utilisation pipeline (secteur), 24 h/24
+SCADA, 0 accident. Meme chapeau d honnetete "societe en
+constitution", accent par pole. L armure de theme clair etait deja
+fusee sur les 4 pages (listes :is communes) — verifie : valeurs
+blanches en nuit, encre en jour, aucun debord a 1440 ni 390 px.
+
+## 525 — Fiche technique Intermediaire (10 septembre 2026)
+
+L Intermediaire etait le seul pole de coeur sans fiche technique.
+Source A4 paginee creee dans docs-sources (gabarit brochure_print,
+noindex), 2 pages : heros sombre + 4 reperes, les 7 services
+logistiques, les 4 capacites integrees, moyens et garanties, note
+societe en constitution. PDF genere par la chaine Chromium
+headless (113 Ko, 2 pages). Trois iterations de calage attrapees
+par la geometrie (cartes 05-06 coupees par le pied de page 1,
+puis la note debordant sur le pied de page 2) — verifie a zero
+chevauchement par mesure des rects contre le pied.
+
+## 526 — Documents du pole sur les trois hubs (10 septembre 2026)
+
+Second volet de l arbitrage : rangee "Documents du pole" (gabarit
+doc516 de la home, renomme doc526) inseree avant le CTA sur les
+6 hubs FR/EN — fiche technique du pole, brochure, data book, et
+le lien vers tous les documents. La nouvelle fiche Intermediaire
+est aussi ajoutee au centre de documents (publications FR/EN,
+28 -> 29 cartes par langue). En route, une etiquette inexacte
+corrigee : la fiche Amont annoncait 2 pages, le PDF en a 3.
+Verifie au rendu sur les 6 hubs, deux themes : 3 cartes, liens
+resolus, zero debord, axe silencieux.
+
+## 527 — Immersion photo de la home (10 septembre 2026)
+
+Signalement du proprietaire : "les bandeaux sur la home empechent
+le bon affichage de la photo du background" — les quatre zones
+proposees retenues a l arbitrage. Inspection dans le navigateur
+du proprietaire (theme nuit) : les bandes etaient des verres a
+.58-.74 d opacite, les panneaux lateraux des chapitres quasi
+opaques, et au defilement rapide la molette + scroll-behavior
+smooth laissaient des ecrans de photo nue — le reveal ne se
+declenchait qu a 6 % dans le viewport.
+
+Correctifs : style imm527 sur index FR/EN — bande A la une a .36
+(jour .55), tuiles reperes chiffres a .34-.44 (jour .48-.58),
+panneaux lateraux a .42 et 280 px (jour .58), tuiles durabilite
+et documents en verre .44 avec flou 12 px en theme nuit ; repli
+opaque conserve sous prefers-reduced-transparency. Et dans
+c_ac04328f0f47.js, le reveal se pre-arme desormais 38 % sous le
+viewport (rootMargin 0 0 38%) au lieu de -6 % : plus d ecran vide
+au defilement — verifie par saut instantane + capture a 120 ms,
+contenu present. Contraste re-mesure au pixel sur la bande la plus
+exposee (9,69:1). SW bumpe et-202609101340.
