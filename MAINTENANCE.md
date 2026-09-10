@@ -18453,3 +18453,55 @@ a 146 au lieu de 219, et le chapeau vivait partiellement masque
 depuis toujours). Classe ajoutee : les dix fils atterrissent a
 218-219 px, au pixel de la reference cookies, deux langues. Axe 0
 violation, 0 erreur console.
+
+## 521 — Chrome complet sur les pages journaux (10 septembre 2026)
+
+"Apply all" du proprietaire : les deux options non retenues du 519
+sont appliquees. Premiere : les 64 pages journaux (32 carnets FR +
+32 EN) rejoignent le chrome commun. Leur barre minimale jtop
+(marque · Tous les carnets · bascule de langue) est remplacee par
+l en-tete standard (nav nx, megas, burger u2_e8be, nav_a.js), avec
+un fil d Ariane dans le heros : Accueil - Carnets - titre court —
+le titre est derive du h1 (segment avant les deux-points, entites
+decodees), ce qui donne des feuilles propres sur les 64 pages.
+Feuilles ajoutees : c_c79 (nav fixe, --nav-h) et nav_a.css ;
+jetons de nav ancres sur .nav.nx (navvars521) ; le --ink des
+journaux re-declare apres les liens (la lecon du 519 : le c_c79
+l aurait ecrase — attrape d avance cette fois).
+
+Deux pieges evites en verifiant au meme URL (5e lecon du filet) :
+la premiere comparaison avant/apres servie sous _orig_journal
+faisait croire a un ecart de theme — c etait la liste blanche
+et-plight, dependante du chemin ; au meme URL, couleurs identiques
+dans les deux themes. Et un vrai manque attrape : la bascule
+lecture claire/sombre des carnets (jlightBtn) vivait dans la barre
+jtop supprimee, et son auto-application exigeait .jback — un
+visiteur en preference claire aurait recu la page sombre sans
+bouton. Le bloc jlight de u_cd226c00eb4b.js est amende : le garde
+accepte .jbody, et sans jtop le bouton rejoint le panneau
+Affichage (rangee Theme, comme au Ch498). Verifie : bouton dans le
+panneau, bascule effective, societe intacte (etThemeBtn), premier
+rendu identique a l origine. SW bumpe et-202609101210.
+
+Verification : 8 pages echantillon (FR+EN) — nav fixe, megas,
+fil a 228 px, h1 a 308 px, deux themes au pixel de l origine,
+burger mobile, 0 erreur console ; recensement statique 64/64
+(nav, fil, navvars, burger, zero jtop restant) ; 10 209 liens
+verifies zero casse (avec les 8 pages AR du 522).
+
+## 522 — Pile de polices arabe declaree (10 septembre 2026)
+
+Seconde option appliquee. Le mini-site AR (8 pages) declarait
+'Segoe UI',Tahoma,'Noto Sans Arabic',system-ui — c est-a-dire le
+premier arabe que la plateforme veut bien offrir : Segoe UI Arabic
+sous Windows, Geeza Pro sous macOS, rendu heterogene. La police
+Noto Sans Arabic (variable 100-900, sous-ensemble arabe, woff2 de
+162 Ko, licence OFL) est desormais auto-hebergee dans
+assets/fonts/, comme Space Grotesk et Inter pour le reste du
+site : @font-face avec unicode-range arabe et font-display swap
+dans les 8 pages, pile reordonnee 'Noto Sans Arabic' en tete.
+Verifie au rendu : requete 200, document.fonts loaded, check()
+vrai sur des glyphes arabes, h1 en Noto Sans Arabic, rtl intact,
+0 erreur console. Les chiffres et mots latins des pages passent
+par les memes regles (la police couvre les chiffres) ; le repli
+Segoe/Tahoma demeure pour tout glyphe hors sous-ensemble.
