@@ -19193,3 +19193,55 @@ fiche Amont a jour du referentiel. Restent en attente de
 matiere du proprietaire : taxonomies des poles de capacites et
 Petrochimie, sequence video, noms de direction et rapport
 annuel.
+
+## 550 — Le triptyque immersif des trois poles sur l accueil (11 septembre 2026)
+
+Refonte demandee par le proprietaire — s inspirer des majeurs
+pour recentrer le site sur les trois poles. Premier chantier, le
+gabarit segments d ADNOC : la section coeurs de la home (quatre
+panneaux compacts) devient trois segments pleine largeur, un par
+pole — photo du pole derriere un voile petrole (creme en theme
+clair), panneau de verre alterne gauche-droite, manifeste d une
+phrase, trois KPI canon (26 blocs · +8-17 % OOIP · 2,8 Gbep en
+amont ; 1 070 km · 3 hubs-depots · SCADA 24 h/24 en
+intermediaire ; 12 stations · 23/23 provinces · 2 000 b/j en
+aval), double appel : explorer le hub et telecharger la fiche
+PDF. La Petrochimie et les quatre capacites, qui vivaient dans
+le quatrieme panneau, deviennent une bande de prolongement sous
+le triptyque. En-tete relie a la nouvelle page passerelle du
+551. FR et EN.
+
+## 551 — La page passerelle Nos activites (11 septembre 2026)
+
+Deuxieme chantier, le gabarit What we do d Aramco : Nos
+activites n etait qu un menu, c est desormais une page —
+/nos-activites et /nos-activites-en. La chaine racontee d un
+seul tenant : hero manifeste, les trois poles en cartes reliees
+par des fleches (accent, resume, KPI, renvoi vers le hub), les
+trois ouvrages en vitrine (corridor Doba-Kribi, mini-raffinerie
+modulaire, reseau Tchadium) au gabarit mega-projets, l
+ecosysteme des quatre capacites en pastilles, et une rangee
+Aller plus loin (solutions, explorateur, atlas, investisseurs).
+Squelette repris de la page solutions ; en chemin, la purge du
+hero solutions a d abord emporte la palette de recherche du
+chrome (ESC · naviguer · ouvrir), restauree depuis la source —
+attrape par comparaison avec une page saine. Sitemap complete de
+deux URL. Le meme-menu, duplique dans 190 pages, n est pas
+touche a ce tour : l entree de menu viendrait par une vague de
+masse dediee, consigne comme reste.
+
+## 552 — Le fil de chaine persistant sur les pages de detail (11 septembre 2026)
+
+Troisieme chantier, le repere que les majeurs gardent partout :
+un bandeau compact 01 Amont -> 02 Intermediaire -> 03 Aval, la
+position courante allumee a l accent du pole (aria-current,
+pastille teintee), pose en tete des 24 pages de detail des
+poles (8 amont, 6 intermediaire, 10 aval, FR et EN). Piege
+attrape sur la boutique : la page n a pas d element main — le
+regex a insere le bandeau dans un commentaire CSS qui contenait
+le mot main, revele par le comptage a zero du balayage ;
+reinsertion apres le header avec decalage sous la barre fixe,
+visibilite verifiee au point de clic. Verifie sur echantillon
+et pages reparees : 3 liens partout, position correcte par
+pole et par langue, axe silencieux, aucun debord aux deux
+largeurs et deux themes.
