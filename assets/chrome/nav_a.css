@@ -187,3 +187,23 @@ body:has(#navLinks.open) #ckn,body:has(#navLinks.open) .lum-ctl,body:has(#navLin
 @media(max-width:374px){
   #mLang:not(#_):not(#__):not(#___){display:none!important}
 }
+
+/* --- Ch568 - SC 2.5.8 Taille de cible (minimum) ------------------------
+   Les liens de la rangee legale du pied mesurent 19 px de haut. La regle a
+   44 px qui existe est enfermee dans @media(pointer:coarse) : elle ne couvre
+   donc pas la souris, alors que le critere, lui, ne distingue pas le pointeur.
+   On porte la cible a 24 px sur tous les pointeurs. Le rembourrage est
+   vertical et centre : la rangee garde sa ligne de base.                  */
+.foot-legal-links:not(#_):not(#__) a{display:inline-flex;align-items:center;min-height:24px}
+
+/* --- Ch568 volet 2 - SC 2.5.8, les trois autres familles ----------------
+   Une fois l exception "lien dans une phrase" resserree dans mon harnais,
+   trois rangees de liens apparaissent sous la barre des 24 px, a la souris
+   seulement (en 390 px elles passent deja) : la rangee utilitaire de la
+   navigation (20 px), le fil d Ariane (13 px) et les colonnes du pied
+   (22 px). Aucune n est une phrase : ce sont des listes de liens. On porte
+   la cible a 24 px ; le rembourrage est vertical et centre, les lignes de
+   base ne bougent pas.                                                    */
+.nx-util-in:not(#_):not(#__) a{display:inline-flex;align-items:center;min-height:24px}
+.crumb:not(#_):not(#__) a{display:inline-flex;align-items:center;min-height:24px}
+.foot-col:not(#_):not(#__) a{display:inline-flex;align-items:center;min-height:24px}
