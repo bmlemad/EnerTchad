@@ -19701,3 +19701,44 @@ palette dans les deux langues, plus aucune mention des
 explorateurs hors du journal et des redirections, et balayage
 complet du site aux deux themes — zero alerte, donc aucune image
 supprimee ne manquait a personne.
+
+## 567 — Consolidation apres la QA, le gabarit et le menage (11 septembre 2026)
+
+Registre synchronise (559-566, 292 entrees). Parite git 0.
+Balayages du jour, apres les suppressions : 191 pages x deux
+themes en desktop, puis mobile — silencieux. Controle en
+production sur un echantillon de chaque famille : rail de l
+accueil sans ancre morte, palette vivante partout, hubs
+regroupes, encart de contenu lie, gabarit dans la charte, pied
+sur la 404, sitemap a 190 URL et 587 alternates, service worker
+et-202609111853.
+
+Ou en est le site, en une ligne par chantier de la serie : la
+recherche fonctionne sur les 191 pages et non plus sur 111 ; le
+journal ferme ses articles comme une salle de presse ; la
+brochure a perdu les 290 Kio qu elle recopiait ailleurs ; les
+seize hubs sont passes de dix a quatorze sections a six a huit,
+sous des titres de groupe ; le gabarit qui fixe ces nombres est
+ecrit dans la charte avec ses mesures de reference ; et 810 Kio
+de fichiers que plus rien n atteignait ont quitte le depot.
+
+Veilles verifiees a la source ce jour. eiti.org affiche toujours
+64,5 pour le Tchad, evaluation du 12 octobre 2022, mention
+« fairly low » ; composantes inchangees — transparence 72,5,
+engagement des parties prenantes 60, resultats et impact 61.
+Aucun resultat publie pour la validation ouverte en 2026.
+Sedigui : l Etat releve toujours retards et manquements, rien de
+datable cote jalon.
+
+Un fait nouveau, en revanche, et il touche la these de l Aval.
+Le 22 avril 2026, le Tchad et l Algerie ont signe un accord-
+cadre portant sur l etude d une raffinerie de 20 000 barils par
+jour au Tchad. Stade preliminaire : ni site, ni calendrier
+annonces, l accord ne fixe que les bases d une cooperation
+technique. Contexte : le pays ne raffine aujourd hui qu a
+Djermaya — SRN, 20 kb/j nominaux, environ 14 kb/j reels — chiffre
+que le site enonce deja correctement, verifie. Je n ecris rien
+dans les pages a ce sujet : le canon appartient au proprietaire,
+et un projet d Etat de cette taille change le paysage ou se
+place notre mini-raffinerie modulaire. Le fait est consigne ici,
+date et source ; la decision de l integrer, ou non, lui revient.
