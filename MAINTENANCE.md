@@ -19742,3 +19742,94 @@ dans les pages a ce sujet : le canon appartient au proprietaire,
 et un projet d Etat de cette taille change le paysage ou se
 place notre mini-raffinerie modulaire. Le fait est consigne ici,
 date et source ; la decision de l integrer, ou non, lui revient.
+
+## 568 — Les pages longues au gabarit, et deux familles de cibles trop petites (11 septembre 2026)
+
+Le gabarit du Ch564 dit 4 a 8 sections pour une page corporate,
+8 a 10 pour une page technique. Restait a mesurer qui en sortait
+vraiment. Compte au rendu, sections de premier niveau sous
+<main>, sur les 191 pages : douze pages hors norme, de 10 a 31
+sections. Regroupees comme au 565 — une enveloppe, un titre de
+partie, aucune ligne du proprietaire deplacee, aucun titre
+interne descendu d un cran.
+
+La brochure passe de 31 a 8 sections en sept parties · clients
+et son jumeau anglais de 19 a 6 · services-ep de 18 a 7 ·
+societe de 17 a 5 · investisseurs de 17 a 7 · solutions de 10 a
+5 · engagements de 9 a 6. Preuve d integrite du contenu : le
+texte de <main> compte 184 407 signes avant et 184 407 apres sur
+la brochure, 170 994 avant et apres sur l anglaise ; trente
+sections a identifiant avant, trente apres ; trente ancres
+testees, trente qui arrivent a 224 px du haut — le decalage de
+l en-tete colle, identique avant et apres.
+
+L index de page du 563 prend les parties. Le rang de pastilles
+ne change pas : on insere une etiquette avant chaque suite de
+pastilles d une meme partie. Le suiveur de position ne lit que
+les a[href^="#"] ; une etiquette sans lien lui est invisible, il
+continue sans une ligne de code modifiee.
+
+Mon erreur, la premiere. La brochure porte depuis le 562 une
+mise en page differee : chaque section de premier niveau recoit
+content-visibility:auto avec une hauteur estimee mesuree. Mes
+enveloppes portent un identifiant et sont filles de <main> :
+elles ont capte la regle sans hauteur estimee, et surtout les
+sections internes ont cesse d etre « main>section » — leurs
+hauteurs mesurees devenaient inertes. La page s effondrait de
+266 000 a 259 000 px, et les ancres tombaient a cote tant que le
+navigateur n avait pas rendu la zone. Corrige : la regle vise
+les sections a identifiant partout sous main, jamais les
+enveloppes.
+
+Mon erreur, la seconde, et c est la troisieme fois. J ai ecrit
+les titres de partie francais dans la langue du journal :
+« Decouvrir », « L Intermediaire », « Notre responsabilite »,
+« Par ou commencer », « Notre genese », « La these », « Le
+modele », « specialisees », « parapetrolier ». Le journal s
+ecrit sans accents ; les pages publiques, jamais. Vingt-six
+bandeaux et vingt-six etiquettes d index remis en francais
+accentue, avec un controle automatique qui echoue si un seul de
+ces mots reapparait dans un bandeau.
+
+Trois instruments m ont menti dans la meme journee, et les
+trois de la meme facon — ils mesuraient ce qu ils avaient
+provoque. Lecon 14 : innerText ne rend rien d un sous-arbre
+saute par content-visibility ; la brochure m est d abord apparue
+a 629 mots au lieu de 26 424. Lecon 15 : une remontee d
+ancetres qui s arrete au premier fond non transparent trouve
+« transparent » sur une page dont le fond vient du document, et
+compose alors sur du noir — 1,16:1 annonce pour une encre qui
+mesure 16:1 au pixel. Lecon 16 : sur une page a mise en page
+differee, une capture par rectangle est perimee avant d etre
+prise, la page se remettant en page pendant le defilement ; il
+faut capturer l element, et attendre que sa boite soit stable
+trois mesures de suite. Mesure refaite ainsi : 28 captures des
+bandeaux de la brochure, deux themes, pire rapport 16,00:1.
+
+Et une trouvaille qui ne venait pas du chantier. Axe signalait
+deux liens trop petits dans la rangee legale du pied. En allant
+voir pourquoi mon harnais de taille de cible du 559 ne les avait
+jamais vus, j ai trouve la cause chez moi : son exception « lien
+dans une phrase » regardait si le parent contient plus de texte
+que le lien. Huit liens dans un meme <span> : le test passait,
+et la rangee entiere etait exemptee. Une rangee de liens n est
+pas une phrase. Exception resserree — vrai texte hors liens, 25
+signes, et au plus deux liens dans le parent — et trois autres
+familles sont apparues, a la souris seulement : la rangee
+utilitaire de la navigation a 20 px, le fil d Ariane a 13 px,
+les colonnes du pied a 22 px. La regle a 44 px qui existait
+etait enfermee dans @media(pointer:coarse) : elle ne couvrait
+pas la souris, alors que le critere 2.5.8 ne distingue pas le
+pointeur. Quatre regles ajoutees a nav_a.css — une seule feuille
+partagee, aucun HTML touche, methode du 498 — qui portent les
+quatre familles a 24 px sur 179 a 190 pages. Impact mesure sur
+la mise en page : navigation 132 px inchangee, rangee utilitaire
+39 px inchangee, pied 730 -> 731 px sur societe et 738 -> 788
+sur clients, mobile inchange.
+
+Verification. Les quatorze pages regroupees, axe WCAG 2.0/2.1/
+2.2 AA, deux themes : zero violation. Sections de premier niveau
+au rendu : 5 a 8 partout. Ancres internes mortes : zero.
+Etiquettes de partie : toutes visibles, deux themes. SW porte a
+et-202609112154 pour que la feuille partagee atteigne les
+visiteurs de retour.
