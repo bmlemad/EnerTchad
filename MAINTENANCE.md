@@ -19119,3 +19119,40 @@ les huit combinaisons (2 pages x 2 themes x 2 largeurs)
 reverifiees : axe silencieux, best-practice comprises, aucun
 debord, 3 liens dans la rangee investisseurs, rayon 12 px
 conforme au canon des boutons.
+
+## 547 — Les pages internes face aux majeurs (11 septembre 2026)
+
+Benchmark demande par le proprietaire, dans la foulee du 546 —
+Aramco consulte en direct sur investisseurs, carrieres et
+durabilite ; les pages internes d ADNOC et QatarEnergy
+renvoyaient des 404 sur leurs URL publiques ce jour, consigne
+tel quel. Verdict : parite tenue, et souvent depassee. La page
+investisseurs porte seize sections (these, trajectoire, capital,
+affectation, jalons dates, agenda, gouvernance auditable,
+etagere, hypotheses, souscription, FAQ) la ou Aramco affiche
+rapports, calendrier et FAQ ; la durabilite est couverte par
+engagements + cibles-2030 (axes, indicateurs dates, rapport,
+referentiels) au niveau du standard ; la presse a son kit en un
+telechargement ; et le recrutement loyal anti-arnaque n a pas d
+equivalent chez les majeurs consultes.
+
+Deux affinements retenus a l arbitrage, livres FR et EN. Les
+portraits de metiers sur /carrieres : le gabarit employee
+stories d Aramco est impossible honnetement — personne n a
+encore signe, la societe est en constitution — alors la section
+l assume en clair et decrit au futur quatre journees types
+(l interprete du sous-sol sur les lignes sismiques de Doba et
+Bongor, l operateur de conduite du corridor, la chef de quart de
+la mini-raffinerie, le chef de station du reseau), cartes de
+verre aux accents des poles, chapeau d honnetete en tete. Et la
+rangee Outils de l investisseur dans l etagere de
+/investisseurs : Calculateur du baril additionnel,
+Configurateur de service integre, Atlas du secteur, Explorateur
+de la chaine — le gabarit key financials tool d Aramco adapte a
+une societe pre-revenus, en pastilles cyan au gabarit des
+rangees 530 et 546 (les deux outils calculateur et configurateur
+restent en francais, la version EN le signale).
+
+Verifie : 4 portraits et 4 outils rendus sur les 4 pages x 2
+themes, axe silencieux best-practice comprises, aucun debord,
+liens en URL propre conformes au cleanUrls de Vercel.
