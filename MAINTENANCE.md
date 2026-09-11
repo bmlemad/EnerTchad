@@ -19293,3 +19293,90 @@ seul tenant, un fil les situe sur chaque page de detail, et la
 navigation y mene. Restent en attente de matiere du
 proprietaire : taxonomies des poles de capacites et
 Petrochimie, sequence video, noms de direction, rapport annuel.
+
+## 555 — L harmonisation de famille (11 septembre 2026)
+
+Audit structurel demande par le proprietaire — les 184 pages
+mesurees une par une sur huit elements de mobilier, puis
+comparees au gabarit des majeurs (Aramco, page de niveau
+intermediaire consultee en direct). Le fond est sain : la
+mediane de nos pages est de 1 316 mots quand une page-passerelle
+d Aramco en porte 200 a 250. Les ecarts sont de structure, et
+trois d entre eux venaient de moi.
+
+Fait : le fil de chaine, pose sur 24 pages de detail au 552,
+manquait aux six hubs eux-memes — les filles situaient le pole,
+les meres non ; il y est desormais, la position courante en
+libelle et non en lien vers soi-meme. Le fil d Ariane manquait a
+sept pages — charte FR/EN, cibles-2030 FR/EN, ethique-en, et
+nos-activites FR/EN dont la purge du hero au 551 l avait emporte
+— un composant autonome a faible specificite les sert toutes. La
+boutique FR/EN n avait pas la bande CTA finale que portent 22
+des 24 pages de detail : elle l a.
+
+## 556 — La fusion de l explorateur dans la passerelle (11 septembre 2026)
+
+Une porte de trop. Depuis le 551, trois pages racontaient la
+chaine : la passerelle par pole, les solutions par besoin
+(dense et legitime, elle reste) et l explorateur — 586 mots,
+deux h2, sans bande CTA, titre hors gabarit. Fusion demandee a l
+arbitrage.
+
+Le widget interactif de l explorateur vit dans un bloc de style
+de 6,6 Ko melange aux autres styles de la page et un script
+anonyme de 5,2 Ko : en extraire les seules regles du widget,
+c est refaire l erreur du 539. Sens de fusion inverse : la
+passerelle est reconstruite sur le squelette de l explorateur,
+ou le widget est deja cable, et les sections de la passerelle y
+sont versees. Le bloc statique des trois segments part, il
+doublonnait les cartes de poles. Verifie au comportement, pas a
+la presence : les quatre onglets du widget repondent (Amont,
+Intermediaire, Aval, Petrochimie), trois indicateurs et quatre
+activites chacun, identiques a la page source, sans erreur de
+script. Deux redirections permanentes posees, seize liens
+entrants reecrits, zero lien residuel.
+
+## 557 — Les deux outils : un audit a moitie faux, corrige (11 septembre 2026)
+
+Mon erreur, et elle etait dans le diagnostic. J avais annonce
+deux URL publiques hors convention — majuscules, underscores,
+numero de version expose — et propose de les renommer. En
+tracant les redirections avant d agir, le contraire est apparu :
+les URL publiques sont propres depuis longtemps
+(/amont/calculateur-baril-additionnel et
+/configurateur-service-integre), les anciennes formes y menent
+par redirection permanente, et une reecriture sert le fichier au
+nom ancien. Seuls les noms de fichiers sont laids, ce qu aucun
+visiteur ne voit. Les deux fichiers que j avais deja crees
+auraient ete masques par ces memes redirections : retires.
+
+Reste un vrai defaut, de moi aussi : l etagere investisseur du
+547 pointait vers les formes anciennes, deux sauts de
+redirection avant la page. Canonicalise. Et le chrome manquant,
+lui, etait bien reel : fil d Ariane pose sur les deux outils,
+bande CTA sur le calculateur.
+
+## 558 — L encart contenu lie, et l ecran qui n en voulait pas (11 septembre 2026)
+
+Les majeurs ferment chaque page intermediaire par un encart de
+contenu lie ; nos hubs et la passerelle finissaient sur le pied.
+Fait : trois renvois contextuels en fermeture de la passerelle
+et des six hubs, distincts par page — maillon precedent, maillon
+suivant, la chaine entiere, l outil ou le prolongement selon le
+pole. FR et EN.
+
+La bande CTA du configurateur, elle, a resiste deux fois et j ai
+fini par renoncer. Premiere pose : dans le point de montage de
+son application JavaScript, qui repeint son contenu au demarrage
+et l effacait — le balayage l a vue absente alors que le fichier
+la contenait. Repositionnee hors du point de montage, elle s
+affichait mais en theme clair l armure de la page repeignait ses
+encres sombres sur son fond sombre — trois defauts de contraste
+mesures a 1,01, 2,44 et 2,81, absents de la version publiee donc
+introduits par moi. Une regle scopee n a pas suffi a passer
+devant l armure. Decision : cet ecran d application ne portera
+pas de bande promotionnelle — les majeurs n en mettent pas sur
+leurs outils non plus. Le fil d Ariane, lui, reste : c est le
+gain de reperage qui comptait. Verifie : dix-sept pages x deux
+themes x deux largeurs conformes, puis balayage complet du site
+aux deux themes, silencieux.
