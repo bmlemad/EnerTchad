@@ -781,6 +781,16 @@
       "source": "/calculateur-baril-additionnel",
       "destination": "/amont/calculateur-baril-additionnel",
       "permanent": true
+    },
+    {
+      "source": "/explorateur-chaine",
+      "destination": "/nos-activites",
+      "permanent": true
+    },
+    {
+      "source": "/explorateur-chaine-en",
+      "destination": "/nos-activites-en",
+      "permanent": true
     }
   ],
   "headers": [
