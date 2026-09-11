@@ -19245,3 +19245,51 @@ visibilite verifiee au point de clic. Verifie sur echantillon
 et pages reparees : 3 liens partout, position correcte par
 pole et par langue, axe silencieux, aucun debord aux deux
 largeurs et deux themes.
+
+## 553 — L entree Vue d ensemble dans le mega-menu (11 septembre 2026)
+
+Reste consigne au 551, solde ici : la page passerelle existait
+mais rien n y menait depuis la navigation. Une entree pleine
+largeur est posee en tete du panneau Nos activites, au-dessus
+des colonnes des poles — Vue d ensemble : la chaine d un seul
+tenant (Overview : the chain in one story), en cadre discret
+pour se distinguer des liens de section sans crier plus fort que
+les poles. Injectee dans les 184 pages qui portent le panneau,
+la langue lue sur l attribut lang du document : 93 pages pointent
+vers /nos-activites, 91 vers /nos-activites-en.
+
+Piege de mesure, encore lui : le premier balayage annoncait l
+entree invisible sur trois pages sur quatre. Le clic simule
+ouvrait puis refermait le panneau selon le script de chaque
+page, et la mesure tombait au milieu du fondu — opacite 0,207
+sur societe, 0 sur l accueil, 1 sur le journal. La verification
+refaite ouvre le panneau par la classe, fige l animation, puis
+mesure : douze combinaisons (6 pages x 2 themes) toutes
+conformes — lien correct par langue, entree contenue dans le
+panneau, cible cliquable au point de clic, quatre colonnes
+intactes, ordre en tete, axe silencieux. Mobile verifie aussi :
+le panneau statique du menu burger accueille l entree sans
+debord (322 px dans 390). Balayage des liens du site : aucun
+lien casse hors scripts, les deux seuls signalements etant des
+abonnements webcal vers les .ics d agenda, presents et
+legitimes.
+
+## 554 — Consolidation apres la refonte des trois poles (11 septembre 2026)
+
+Registre synchronise : cinq entrees ajoutees (550 triptyque
+immersif, 551 page passerelle, 552 fil de chaine, 553 entree de
+menu, 554 la presente), 281 entrees au total, tuile et en-tete a
+554, version 34 de l artefact publiee. Veille du 11 septembre,
+seconde lecture du jour : eiti.org affiche toujours 64,5 points
+(12 octobre 2022) et la page detaille cette fois les trois
+composantes — transparence 72,5 (moderee), engagement des
+parties prenantes 60 (assez faible), resultats et impact 61
+(assez faible) ; la validation 2026 n a toujours aucun resultat
+publie. Le score global du site est inchange, le detail est
+consigne ici pour memoire. Parite git : diff zero vise apres
+publication. Etat du front : le site est recentre sur les trois
+poles — l accueil les met en scene, une page les raconte d un
+seul tenant, un fil les situe sur chaque page de detail, et la
+navigation y mene. Restent en attente de matiere du
+proprietaire : taxonomies des poles de capacites et
+Petrochimie, sequence video, noms de direction, rapport annuel.
