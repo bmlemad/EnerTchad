@@ -19086,3 +19086,36 @@ interactions et axe reverifies aux deux themes apres
 correction, panneau lu en clair avec ses accents. Reste consigne sans suite : le poids
 CSS du chrome (400 Ko sur 963) est un heritage structurel — la
 fusion a deja ete refutee au 539, aucune action sure a ce tour.
+
+## 546 — L accueil face aux majeurs, deuxieme passe (11 septembre 2026)
+
+Benchmark demande par le proprietaire apres la vague DA — Aramco,
+ADNOC et QatarEnergy consultes en direct (Sonangol inaccessible
+ce jour, robots et DNS). Verdict : quasi-parite. Les standards
+des majeurs sont tenus — stats en vitrine (bande KPI), carrousel
+et fil a la une, magazine maison (64 journaux et carnets),
+alerte usurpation (QatarEnergy en fait sa premiere section, la
+ligne des canaux officiels du 530 y repond), recherche,
+bilinguisme et mini-site arabe. La video immersive d ADNOC reste
+le seul ecart assume : le canvas generatif du 540 tient le role,
+une sequence fournie par le proprietaire pourrait le remplacer.
+
+Deux ecarts retenus a l arbitrage et fermes le jour meme, FR et
+EN : une bande Carrieres en verre dans la section Agir —
+Rejoindre EnerTchad, familles de metiers de la chaine, double
+appel vers /carrieres et l academie Tchaditude — au gabarit
+QatarEnergy et ADNOC qui font des carrieres un pilier d accueil
+(la carte Nous rejoindre du trio Agir existait deja, la bande
+lui donne la visibilite d un pilier) ; et une rangee
+Investisseurs dans les Reperes — Agenda investisseur, Paiements
+aux Etats, Devenir actionnaire — au gabarit Aramco, adaptee a
+une societe en constitution, en reutilisant les styles de la
+rangee du 530.
+
+Reprise attrapee en verification : en theme clair, une regle de
+lien du chrome repeignait le texte du bouton dore en bleu
+#155FA8 sur or (3,71:1) — encre #0B1422 imposee avec armure, et
+les huit combinaisons (2 pages x 2 themes x 2 largeurs)
+reverifiees : axe silencieux, best-practice comprises, aucun
+debord, 3 liens dans la rangee investisseurs, rayon 12 px
+conforme au canon des boutons.
