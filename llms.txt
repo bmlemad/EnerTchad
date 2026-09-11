@@ -11,7 +11,7 @@
 - [Publications & documents](https://enertchad-delta.vercel.app/publications) : brochures PDF (FR/EN), fiche arabe, fiches techniques
 - [Paiements aux États](https://enertchad-delta.vercel.app/paiements-etats) : format de déclaration engagé — sept catégories ITIE, maille par entité et par projet, date du premier rapport
 - [Carnets — journal pédagogique](https://enertchad-delta.vercel.app/carnets) : 25 articles bilingues sur le pétrole tchadien (flux RSS : /feed.xml, /feed-en.xml)
-- [Explorateur de la chaîne de valeur](https://enertchad-delta.vercel.app/explorateur-chaine)
+- [Nos activités — la chaîne d’un seul tenant](https://enertchad-delta.vercel.app/nos-activites) : les trois pôles racontés d’un seul tenant, explorateur interactif compris
 - [Plan du site](https://enertchad-delta.vercel.app/plan-du-site) · [Version arabe](https://enertchad-delta.vercel.app/ar) · [English](https://enertchad-delta.vercel.app/index-en)
 
 ## À savoir
