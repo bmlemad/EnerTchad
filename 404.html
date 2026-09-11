@@ -155,7 +155,7 @@ html.et-jlight .rootland::after{
       <input id="cmdk-input" type="text" placeholder="Rechercher une section, un service, un outil…" aria-label="Rechercher une section" autocomplete="off" style="flex:1;background:none;border:none;outline:none;color:var(--cream);font-family:var(--fb);font-size:1rem">
       <kbd style="font-family:var(--fm);font-size:0.6875rem;color:var(--muted-l,#9FB0C9);border:1px solid var(--hair);border-radius:6px;padding:3px 7px">ESC</kbd>
     </div>
-    <div id="cmdk-results" role="listbox" style="max-height:50vh;overflow-y:auto;padding:8px"></div>
+    <div id="cmdk-results" role="listbox" aria-label="Résultats de recherche" style="max-height:50vh;overflow-y:auto;padding:8px"></div>
     <div class="cmdk-foot" style="display:flex;gap:18px;align-items:center;padding:10px 18px;border-top:1px solid var(--hair);font-family:var(--fm);font-size:0.6875rem;color:var(--muted-l,#9FB0C9)">
       <span><kbd class="ck-k">&#8593;</kbd><kbd class="ck-k">&#8595;</kbd> naviguer</span>
       <span><kbd class="ck-k">&#8629;</kbd> ouvrir</span>
@@ -208,4 +208,24 @@ html.et-plight footer:not(#e1):not(#e2)::before,html.et-jlight footer:not(#e1):n
 @media print{html:not(.et-plight):not(.et-jlight) body:not(#e1)::after{background:none!important}footer:not(#e1):not(#e2)::before{display:none}}
 /* ———— ex-bloc: print386 ———— */
 @media print{html:not(#e1):not(#e2):not(#e3),html:not(#e1):not(#e2):not(#e3) body{background:#fff!important;color-scheme:light!important}.rootland:not(#e1):not(#e2):not(#e3){display:none!important;background:none!important}body:not(#e1):not(#e2)::before,body:not(#e1):not(#e2)::after{display:none!important}}
+</style><footer class="pied561" role="contentinfo"><div class="p561-in">
+<p class="p561-b"><strong>EnerTchad S.A.</strong> · Société pétrolière intégrée du Tchad — <em>de la roche-mère à la pompe.</em></p>
+<nav class="p561-n" aria-label="Liens de pied de page">
+<a href="/">Accueil</a><a href="/societe">La société</a><a href="/contact">Contact</a><a href="/plan-du-site">Plan du site</a><a href="/mentions-legales">Mentions légales</a><a href="/confidentialite">Confidentialité</a><a href="/accessibilite">Accessibilité</a><a href="/index-en">English</a>
+</nav>
+<p class="p561-c">Société en constitution de droit OHADA · N’Djamena, Tchad</p>
+</div></footer><style id="pied561">.pied561{position:relative;z-index:2;margin-top:38px;padding:26px 24px 34px;border-top:1px solid rgba(255,255,255,.14);text-align:center}
+.pied561 .p561-in{max-width:900px;margin:0 auto}
+.pied561 p{margin:0 0 12px;font-size:.86rem;line-height:1.6;color:#9FB0C9}
+.pied561 .p561-b strong{color:#F5F7FA}
+.pied561 .p561-n{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 4px;margin:0 0 12px}
+.pied561 .p561-n a{display:inline-block;padding:7px 11px;min-height:24px;border-radius:999px;font-size:.84rem;color:#E8C36A;text-decoration:none}
+.pied561 .p561-n a:hover{text-decoration:underline;text-underline-offset:3px}
+.pied561 .p561-n a:focus-visible{outline:2px solid #5AA7F0;outline-offset:2px}
+.pied561 .p561-c{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:#8FA0B8;margin:0}
+html.et-plight .pied561,html.et-jlight .pied561{border-top-color:rgba(26,35,48,.14)}
+html.et-plight .pied561 p,html.et-jlight .pied561 p{color:#3D4A5C}
+html.et-plight .pied561 .p561-b strong,html.et-jlight .pied561 .p561-b strong{color:#10161F}
+html.et-plight .pied561 .p561-n a,html.et-jlight .pied561 .p561-n a{color:#8A6A12}
+html.et-plight .pied561 .p561-c,html.et-jlight .pied561 .p561-c{color:#5A6472}
 </style></body></html>

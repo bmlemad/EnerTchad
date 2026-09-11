@@ -19380,3 +19380,151 @@ leurs outils non plus. Le fil d Ariane, lui, reste : c est le
 gain de reperage qui comptait. Verifie : dix-sept pages x deux
 themes x deux largeurs conformes, puis balayage complet du site
 aux deux themes, silencieux.
+
+## 559 — QA et ultra review : ce que les instruments ne voyaient pas (11 septembre 2026)
+
+Balayage complet : 191 pages x deux themes en desktop et en
+mobile. Zero regression. Le site tient. Ce qui suit est ce que
+le balayage habituel ne pouvait pas voir, et pourquoi.
+
+Premier constat, et c est le mien : ma liste de pages de QA
+datait du chapitre 263. Elle balayait encore les deux
+explorateurs que le Ch556 a fusionnes — donc deux fichiers
+devenus invisibles — et ignorait les deux passerelles qui les
+remplacent. Pendant trois chapitres j ai donc certifie un site
+dont deux pages neuves n etaient jamais mesurees. Liste
+reconstruite depuis le disque, 191 pages, les bonnes.
+
+Defauts reels corriges. Le rail de traversee de l accueil
+pointait vers quatre ancres disparues avec le triptyque du
+Ch550 : quatre entrees sur dix ne repondaient pas au clic et ne
+s allumaient jamais au defilement, sur les deux accueils. Ma
+regression, non vue pendant huit chapitres. Les trois segments
+reprennent leurs identifiants, la quatrieme entree suit
+desormais le bandeau des capacites.
+
+Le sitemap listait deux URL devenues des redirections 301 et
+ses dates de derniere modification etaient figees au 9
+septembre. Reconstruit depuis le disque : 190 URL, dates prises
+des fichiers, et 587 alternates hreflang declares — ce que fait
+tout site multilingue de reference et que le notre ne faisait
+pas.
+
+Une barre de navigation interne defilait horizontalement sur
+mobile sans etre atteignable au clavier, sur douze pages : le
+filet a11y du Ch544 ne visait que « main div, main pre » et ne
+la voyait pas. Filet elargi a tout le document, repasse au
+redimensionnement, et le test de debordement place avant
+getComputedStyle pour ne pas payer un recalcul de style sur
+chaque noeud.
+
+Mini-site arabe : ar-poles ne declarait que sa propre langue la
+ou les sept autres declarent les quatre ; seize liens de renvoi
+mesuraient 15 px de haut, sous le seuil de 24 px de la regle
+2.5.8 ; et quarante liens portaient des libelles identiques
+vers des destinations differentes. Alternates poses des deux
+cotes, surface tactile portee au seuil, chaque lien nomme par
+sa destination. Premiere passe ratee, d ailleurs : mon
+extracteur de titre ne lisait pas les titres de carte de
+ar-poles, qui sont des div, et les dix liens ont recu le titre
+de section — tous identiques, exactement le defaut que je
+voulais corriger. Recalcule sur le titre le plus proche quel
+qu il soit.
+
+Trente-cinq liens internes visaient une source de redirection,
+soit deux sauts la ou un suffit. Recables sur la destination
+finale, chaine resolue. Quatorze titres depassaient 65
+caracteres et sept descriptions sortaient de la fourchette
+110-165 : recomposes.
+
+Trois mensonges d instrument, et une lecon nouvelle a chaque
+fois. La brochure signalait quinze defauts de contraste en
+sombre mobile : axe composait sur du blanc faute de fond
+resoluble ; les pixels reels donnent un fond quasi noir et un
+rapport de 7 a 10:1. Faux positif. Le bouton « Suite » des
+journaux signalait 3,59:1 en theme clair : mesure a mi-fondu
+apres mon balayage de pre-armement, qui relance les transitions
+pilotees par le defilement ; au repos le pave est opaque et le
+rapport depasse 13:1. Et surtout, lecon 12 : geler les
+animations rend invisibles les blocs a revelation dont l etat
+de base est opacity 0, axe les saute et je recolte un faux
+negatif. Il faut terminer les animations, geler seulement les
+transitions, et laisser le defilement se reposer avant de
+mesurer.
+
+## 560 — La loupe qui ne cherchait rien (11 septembre 2026)
+
+Soixante-et-onze pages sur 191 affichaient dans leur barre une
+loupe « Rechercher (Ctrl+K) », visible, de 40 px sur desktop et
+44 px sur mobile — et qui ne faisait rien. Le balisage de la
+palette et son script n y etaient pas charges : window.openCmdk
+restait indefini, le clic ne produisait rien, et rien ne le
+signalait. Les soixante-quatre journaux, les deux outils, la
+boutique, cibles-2030 — et les deux passerelles, que le Ch556 a
+reconstruites sur un squelette qui ne portait pas la palette.
+Ma regression, celle-la. Gabarit exact des pages ou elle
+fonctionne porte partout : la palette s ouvre, prend le focus
+et rend ses resultats sur les huit pages temoins.
+
+Puis le journal au gabarit des salles de presse. Soixante-
+quatre articles finissaient sur le pied, sans porte de sortie :
+encart « A lire ensuite » de trois renvois, dont deux pris dans
+les liens que l article pose lui-meme vers ses voisins — donc
+contextuels, pas une liste arbitraire — et un vers l index.
+Bandeau de partage ensuite : LinkedIn, X, e-mail et copie du
+lien, sans widget tiers ni traceur, les URL construites a l
+ouverture de la page. Verifie : six articles x trois
+configurations, trois cartes distinctes, liens de partage
+formes, copie du lien confirmee par lecture du presse-papiers.
+
+## 561 — La page ou l on se perd (11 septembre 2026)
+
+Deux choses. La liste de resultats de la palette portait
+role=listbox sans nom accessible : violation 4.1.2 presente sur
+toutes les pages du site, et jamais vue par aucun balayage
+puisque la palette n est jamais ouverte pendant la mesure. On
+ne mesurait que l etat ferme. Nommee sur 183 pages, et le
+harnais ouvre desormais la palette avant de mesurer.
+
+La 404 etait la seule page du site sans pied : le visiteur
+perdu n y trouvait ni mentions legales, ni contact, ni plan du
+site. Pied compact pose, autonome comme le reste de cette page
+— elle ne charge aucune feuille externe, c est sa force : elle
+s affiche meme si tout le reste tombe. J avais commence par
+vouloir refaire sa direction artistique en theme clair, ou elle
+m avait paru delavee. Verification faite, ce lavis pastel est
+l identite claire du site entier, posee dans plight_extrait
+pour cent-soixante-quinze pages. Il n y avait rien a corriger,
+et j ai failli casser une intention.
+
+## 562 — La moitie de la brochure etait deja ailleurs (11 septembre 2026)
+
+Mesure d abord. La brochure pesait 998 Kio, 9 751 noeuds, un
+DOMContentLoaded a 3,8 s et un chargement complet a 5,1 s sur
+gabarit mobile — six a huit fois le cout de toute autre page.
+J ai essaye content-visibility sur les trente sections hors
+ecran : aucun gain mesurable, parce que le cout n est pas la
+mise en page mais le recalcul de style, 3,2 s sur 5,2. J ai
+essaye de remonter les quarante-et-une feuilles intercalees
+dans le corps : six pour cent. Ce qui a fonctionne est plus
+simple, et je ne l avais pas cherche assez tot : mesurer ce que
+la page repete.
+
+Resultat de la mesure : 490 Kio sur 984 reprennent mot pour mot
+des pages qui existent ailleurs. Le bloc atlas recopie
+/enerconseils/atlas a 90-100 %, la section reseau recopie
+/aval/reseau a 99 %, produits a 98 %, eor a 99 %. Ce n est pas
+seulement du poids : c est un doublon qui concurrence nos
+propres pages dans l index.
+
+Les deux plus gros blocs — 290 Kio, environ 7 100 noeuds —
+passent en synthese : le chapeau, le titre, l accroche, quatre
+reperes chiffres et un renvoi a la page de reference. Resultat
+mesure : 6 967 noeuds contre 9 751, chargement a 3,8 s contre
+5,6, 183 Kio compresses contre 229. Quatre ancres internes
+vivaient dans les blocs retires — mon effet de bord, vu par le
+harnais et recable sur les ancres des pages canoniques.
+
+Vingt descriptions portaient encore l apostrophe droite ; elles
+sont remontees dans les nouveaux encarts, ou le balayage les a
+enfin vues. Normalisees.
