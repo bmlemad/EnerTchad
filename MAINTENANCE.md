@@ -19599,3 +19599,47 @@ index de page obligatoire. Les cinq mesures de reference prises
 chez les majeurs sont citees sous la norme, datees — pour que
 la prochaine relecture sache sur quoi elle s appuie et puisse
 la contester avec de meilleurs chiffres.
+
+## 565 — Les seize hubs passent en aiguilleurs (11 septembre 2026)
+
+Le gabarit ecrit au chapitre precedent dit quatre a huit
+sections de premier niveau. Les seize hubs en portaient dix a
+quatorze. On les y ramene sans deplacer une ligne du contenu du
+proprietaire : les suites de sections voisines qui racontent une
+meme chose passent sous un seul titre de premier niveau.
+
+Neuf groupes definis, vingt-six poses. Sur les huit hubs de
+chaine et de petrochimie, « Notre methode » coiffe les enjeux,
+la methode et les cas d usage ; « Notre offre » coiffe l offre
+et les partenariats la ou les deux se suivent. Sur GreenTech,
+« Nos piliers » et « Nos terrains » ; sur TchadiTech, « Notre
+facon de faire » et « Le pole en detail » ; sur Tchaditude,
+« Le contexte tchadien » et « Le pole en detail » ; sur
+EnerConseils, « Nos prestations ».
+
+Resultat mesure au rendu : de 10-14 sections a 6-9, soit six a
+huit hors encart de contenu lie — dans le gabarit sur les seize
+pages. Aucun mot perdu, aucun identifiant perdu : les ancres que
+d autres pages visent — socle, hseq, transition, impact,
+academie, enjeux, capacites — resolvent toutes.
+
+Une tentative abandonnee en route. Je faisais descendre d un
+cran les titres des sections regroupees, pour un plan de page
+plus juste : un h2 de groupe, des h3 dessous. L armure de theme
+clair colore ces titres par des regles qui visent h2 ; en h3 ils
+retombaient sur une encre sombre posee sur un panneau sombre —
+1,05:1 mesure sur les deux hubs TchadiTech, defaut introduit par
+moi. Restauration depuis FETCH_HEAD et deuxieme passe sans
+toucher au niveau des titres. Le gain de plan ne valait pas ce
+risque d encre sur seize pages.
+
+Et une consequence assumee : l index de page pose au chapitre
+563 quitte les quinze hubs qui en portaient un. La charte le
+reserve aux pages qui depassent huit sections ; ces pages n en
+depassent plus, et l index aurait continue de lister des
+sections devenues filles d un groupe. Il reste sur les quinze
+pages longues qui en ont l usage.
+
+Verifie : seize hubs x trois configurations — comptes dans le
+gabarit, titres de groupe visibles, aucune ancre morte, aucun
+saut de niveau de titre, axe silencieux, zero erreur.
