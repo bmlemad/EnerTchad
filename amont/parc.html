@@ -463,7 +463,17 @@ html.et-jlight .rootland::after{
 
 
 <!-- HERO -->
-<main id="main-content" tabindex="-1"><nav class="pole-subnav" aria-label="Pages du pole Amont"><div class="psn-wrap"><span class="psn-home">Amont</span><a href="/amont/" class="psn-link">Vue d’ensemble</a><a href="/amont/activites" class="psn-link">Exploration &amp; Production</a><a href="/amont/eor" class="psn-link">Récupération assistée (EOR)</a><a href="/amont/services-ep" class="psn-link">Services parapétroliers (OFS)</a><a href="/amont/parc" class="psn-link is-active" aria-current="page">Parc &amp; mise à disposition</a></div></nav><link rel="stylesheet" href="/assets/chrome/s_fa541870c6.css"><style id="parc-css">
+<main id="main-content" tabindex="-1"><nav class="fil552" aria-label="Position dans la chaîne pétrolière" style="--fc:var(--gold-l,#FFB703);--fcl:#8A6210"><span class="fl">La chaîne :</span><a href="/amont/" class="on" aria-current="true">01 Amont</a><span aria-hidden="true">→</span><a href="/intermediaire/">02 Intermédiaire</a><span aria-hidden="true">→</span><a href="/aval/">03 Aval</a></nav><style id="fil552">.fil552{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;max-width:var(--mw,1200px);margin:0 auto;padding:12px var(--gut,24px) 0;font-family:var(--fm,ui-monospace,monospace);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase}
+.fil552 .fl{color:var(--muted,#93A1B8);margin-right:2px}
+.fil552 a{color:var(--muted,#93A1B8);text-decoration:none;border:1px solid transparent;border-radius:999px;padding:4px 11px}
+.fil552 a:hover{color:inherit}
+.fil552 a.on{color:var(--fc);border-color:color-mix(in srgb,var(--fc) 45%,transparent);background:color-mix(in srgb,var(--fc) 10%,transparent)}
+.fil552 span[aria-hidden]{color:var(--muted,#93A1B8);opacity:.6}
+.fil552 a:focus-visible{outline:2px solid var(--blue-l,#00B4D8);outline-offset:2px}
+html.et-plight .fil552 a{color:#5A6472}
+html.et-plight .fil552 .fl{color:#5A6472}
+html.et-plight .fil552 a.on{color:var(--fcl)}
+</style><nav class="pole-subnav" aria-label="Pages du pole Amont"><div class="psn-wrap"><span class="psn-home">Amont</span><a href="/amont/" class="psn-link">Vue d’ensemble</a><a href="/amont/activites" class="psn-link">Exploration &amp; Production</a><a href="/amont/eor" class="psn-link">Récupération assistée (EOR)</a><a href="/amont/services-ep" class="psn-link">Services parapétroliers (OFS)</a><a href="/amont/parc" class="psn-link is-active" aria-current="page">Parc &amp; mise à disposition</a></div></nav><link rel="stylesheet" href="/assets/chrome/s_fa541870c6.css"><style id="parc-css">
 .prc-sec{padding:clamp(46px,5vw,76px) 0;border-top:1px solid var(--hair);position:relative;isolation:isolate}
 .prc-sec::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(180deg,rgba(6,11,20,.72),rgba(6,11,20,.84))}
 #familles .prc-head{--pk:#5AA7F0}
