@@ -19528,3 +19528,74 @@ harnais et recable sur les ancres des pages canoniques.
 Vingt descriptions portaient encore l apostrophe droite ; elles
 sont remontees dans les nouveaux encarts, ou le balayage les a
 enfin vues. Normalisees.
+
+## 563 — L index de page, et le chiffre que j avais faux (11 septembre 2026)
+
+Le proprietaire demande un audit des nombres : combien de pages,
+combien de sections, versus les majeurs. J annonce d abord que
+nos pages portent deux a quatre fois la densite des leurs. C est
+faux, et c est ma faute de mesure : je comptais les balises
+section dans le fichier, ce qui compte les sections imbriquees
+et celles qui vivent dans une chaine de caracteres CSS ou JS.
+Compte refait au rendu, contenu principal seul, barre de
+navigation, pied, bandeau CTA et encarts exclus :
+
+- racine, 65 pages : 3 sections, 709 mots en mediane
+- carnets, 64 pages : 672 mots
+- detail, 36 pages : 3 sections, 1 277 mots
+- hubs de capacite, 10 pages : 11 sections, 1 355 mots
+- hubs de chaine, 6 pages : 11 sections, 1 237 mots
+- accueil : 6 sections, 849 mots
+
+Reference relevee le meme jour chez les majeurs : Aramco
+Operations 5 sections et 335 mots, Aramco About us 6 et 950,
+Aramco Sustainability 6 et 675, Equinor Energy 4 et 600,
+Equinor About us 8 et 1 150. Le site compte 191 pages, contre
+environ 250 par langue chez Aramco : pas de gonflement.
+
+Verite corrigee : l essentiel du site est dans le gabarit, voire
+en dessous. Trente-deux pages depassent huit sections, et l
+ecart se concentre sur les seize hubs a onze sections — quarante
+pour cent au-dessus du haut de la fourchette, pas deux a quatre
+fois. J ai dit la correction au proprietaire avant d agir, parce
+qu il avait arbitre sur mon chiffre faux.
+
+Fait, donc, ce que l ecart mesure justifie : l index de page.
+Toutes les pages longues des majeurs portent un bloc qui liste
+leurs propres sections ; aucune des notres ne l avait. Trente
+et une pages en recoivent un, construit a partir des titres de
+section reels releves au rendu — donc incapable de mentir sur
+le contenu — avec suivi de la position au defilement.
+
+Trois passes pour y arriver. La premiere posait les
+identifiants en cherchant la balise d ouverture serialisee par
+le navigateur : neuf sections sur seize manquaient a l appel sur
+societe, parce que plusieurs sections partagent une balise
+identique. La deuxieme visait la n-ieme occurrence : mieux, mais
+le script de revelation ajoute une classe au chargement, donc la
+balise rendue ne correspond plus a la source. La troisieme
+repere la section par son titre puis remonte a la balise qui le
+precede : seize sur seize. Dix pages x trois configurations
+conformes, index complet, aucune ancre morte, suivi de position
+verifie.
+
+Ce que je n ai pas fait, et pourquoi : ramener les hubs de onze
+a huit sections en deplacant du contenu vers les pages filles.
+L ecart mesure ne le justifiait pas, et j avais deja arbitre une
+fois sur un chiffre faux. Les hubs portent desormais l index,
+qui est le dispositif que les majeurs appliquent a leurs pages
+longues. Deplacer du contenu du proprietaire reste une decision
+du proprietaire.
+
+## 564 — Le gabarit entre dans la charte (11 septembre 2026)
+
+Rien n ecrivait combien de sections et de mots une page devait
+porter ; on le decouvrait page par page, et c est ainsi qu on
+derive. La charte porte desormais la norme, avec les mesures qui
+la fondent : quatre a huit sections et 900 a 1 400 mots pour une
+page corporate, huit a dix sections et 2 000 a 3 000 mots pour
+une page technique de detail, et au-dela de huit sections un
+index de page obligatoire. Les cinq mesures de reference prises
+chez les majeurs sont citees sous la norme, datees — pour que
+la prochaine relecture sache sur quoi elle s appuie et puisse
+la contester avec de meilleurs chiffres.
