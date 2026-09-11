@@ -19891,3 +19891,17 @@ Verification. Douze pages, deux themes, axe WCAG 2.0/2.1/2.2 AA
 toutes de hauteur pleine, titre visible dans les deux themes.
 Sections hors encart : 6 a 8 sur les seize hubs. Aucun asset
 modifie, donc pas de service worker a rebumper.
+
+Une anomalie de deploiement, notee parce qu elle a failli me
+faire mentir. Les six lots du 569 sont bien a l origine —
+verifie fichier par fichier, 158 972 octets et douze occurrences
+de lie558 pour EnerConseils. Mais en production, ce hub servait
+encore 155 171 octets et zero encart, avec x-vercel-cache: HIT.
+Les cinq autres hubs, eux, etaient a jour, et tous les trois
+avaient le meme age de cache : le dernier lot n a pas declenche
+son deploiement. J ai attendu huit minutes, l age du cache
+montait sans que le contenu change. Ce n est donc ni le CDN qui
+retient une version, ni ma publication qui a rate : c est un
+deploiement qui n a pas eu lieu. Consigne ici, et le controle en
+production est refait apres coup — un lot pousse n est publie
+que lorsque la page servie le prouve.
