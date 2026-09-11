@@ -19643,3 +19643,61 @@ pages longues qui en ont l usage.
 Verifie : seize hubs x trois configurations — comptes dans le
 gabarit, titres de groupe visibles, aucune ancre morte, aucun
 saut de niveau de titre, axe silencieux, zero erreur.
+
+## 566 — Le menage, et ce qu il a fait remonter (11 septembre 2026)
+
+Question du proprietaire : y a-t-il des pages a supprimer ?
+Audit d abord. Les 190 pages publiques ont toutes au moins
+trois liens entrants — seule la 404 n en a aucun, ce qui est
+correct. Aucune page n en double une autre : les seuls
+recouvrements au-dessus de soixante pour cent sont ceux de la
+brochure avec les pages qu elle resume, deja traites au 562. Le
+graphe de navigation est sain.
+
+Deux pages a supprimer, et deux seulement : les deux
+explorateurs, fusionnes dans la passerelle au chapitre 556.
+Leurs URL redirigent en 301 depuis ce jour-la, donc plus
+personne ne pouvait les atteindre ; les fichiers dormaient dans
+le depot. Avec eux, onze actifs que rien ne nomme nulle part :
+cinq photos de faune de Zakouma, cinq variantes mobiles -760
+orphelines et une feuille de style. Treize fichiers, 810 Kio.
+Les redirections, elles, restent : une adresse partagee ou
+indexee doit continuer de mener quelque part.
+
+Mais le menage a fait remonter deux defauts autrement plus
+serieux, tous deux a moi, tous deux nes de la fusion du 556.
+
+Le premier : les deux passerelles portaient encore le bloc de
+donnees structurees de l explorateur. Nom, description et URL
+de l ancienne page — donc une URL pointant sur une redirection
+— et un fil d Ariane a trois niveaux qui rangeait la page sous
+« Outils interactifs », en contradiction avec le fil visible qui
+dit Accueil puis Nos activites. J avais transplante le titre, la
+description, la canonique, les og et les hreflang ; j avais
+oublie le JSON-LD. Refait aux deux langues, fil ramene a deux
+niveaux, quatre blocs valides.
+
+Le second est pire. /nos-activites n existait dans aucun index
+de recherche du site : ni dans les donnees de la page recherche,
+ni dans l index plein texte, ni dans la palette francaise. La
+seule entree qui menait a la passerelle etait l ancienne, celle
+de l explorateur, qui passait par la redirection. Pendant dix
+chapitres, une porte principale du site etait introuvable par sa
+propre recherche. Entrees recablees dans les cinq index, entree
+creee dans la palette francaise qui n en avait aucune, et
+llms.txt mis a jour.
+
+Au passage, un defaut de cache que la correction a revele : les
+donnees de la page recherche sont servies avec un Cache-Control
+d un an et etaient demandees sans numero de version — ma
+correction ne serait jamais parvenue a un visiteur deja venu.
+La demande est numerotee, les index de palette avances sur 183
+pages, service worker bump.
+
+Verifie : quatre blocs de donnees structurees valides et
+coherents avec le fil visible, la passerelle trouvee une fois et
+une seule dans les deux index de recherche, trouvee par la
+palette dans les deux langues, plus aucune mention des
+explorateurs hors du journal et des redirections, et balayage
+complet du site aux deux themes — zero alerte, donc aucune image
+supprimee ne manquait a personne.
