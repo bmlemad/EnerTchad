@@ -19156,3 +19156,40 @@ restent en francais, la version EN le signale).
 Verifie : 4 portraits et 4 outils rendus sur les 4 pages x 2
 themes, axe silencieux best-practice comprises, aucun debord,
 liens en URL propre conformes au cleanUrls de Vercel.
+
+## 548 — La Fiche Amont v2 : le referentiel entre dans le PDF (11 septembre 2026)
+
+Action en attente depuis le 532 (le report du referentiel a la
+prochaine regeneration), soldee sur ordre du proprietaire d
+appliquer tout ce qui restait. La fiche n avait pas de source
+dans docs-sources — elle est creee (fiche_amont.html, gabarit de
+la fiche Intermediaire du 525, A4 pagine, noindex) : les trois
+pages existantes retranscrites — EOR et huit familles OFS,
+contracter et socle, offre E&P etendue — plus une quatrieme, le
+referentiel des neuf domaines de competence extrait du hub
+(etoile Artificial Lift en tete, huit domaines en grille, 66
+competences, renvoi vers /amont/#expertises). Geometrie mesuree
+au pixel : premiere passe en chevauchement de 153 px sur le pied
+de la page 1 et 56 px sur la 4 — compaction scopee par page
+jusqu au chevauchement zero sur les quatre, puis PDF regenere
+(4 pages, 166 Ko, fonds imprimes). Les etiquettes suivent, six
+fichiers : publications FR/EN et les deux hubs passent de 3
+pages · 20 Ko a 4 pages · 166 Ko, et les deux pages activites
+disaient encore PDF, 2 pages pour un document qui en avait
+trois — une incoherence dormante corrigee en passant (4 pages).
+
+## 549 — Consolidation apres les benchmarks et la fiche (11 septembre 2026)
+
+Registre synchronise : six entrees ajoutees (544 DA site entier,
+545 audit accueil, 546 accueil vs majeurs, 547 pages internes
+vs majeurs, 548 fiche Amont v2, 549 la presente), 276 entrees au
+total, tuile et en-tete a 549, version 33 de l artefact publiee.
+Veille du 11 septembre : eiti.org affiche toujours 64,5 points
+(12 octobre 2022, fairly low), validation 2026 sans resultat
+publie — texte du site inchange. Parite git : diff zero vise
+apres publication. Etat du front : 191 pages sous la DA commune,
+benchmarks majeurs fermes sur l accueil et les pages internes,
+fiche Amont a jour du referentiel. Restent en attente de
+matiere du proprietaire : taxonomies des poles de capacites et
+Petrochimie, sequence video, noms de direction et rapport
+annuel.
