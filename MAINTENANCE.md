@@ -19833,3 +19833,61 @@ au rendu : 5 a 8 partout. Ancres internes mortes : zero.
 Etiquettes de partie : toutes visibles, deux themes. SW porte a
 et-202609112154 pour que la feuille partagee atteigne les
 visiteurs de retour.
+
+## 569 — Les cinq poles sans porte de sortie, et un audit que j arrete (11 septembre 2026)
+
+Point de depart : mesurer si des pages longues restaient des murs
+de texte. Reponse mesuree : non. Les six pages que je visais —
+reseau, atlas, eor et leurs jumelles — font 3 200 a 4 100 mots
+mais portent 21 a 36 titres, soit 100 a 190 mots par titre, et
+l atlas porte deja son propre sommaire. Ce ne sont pas des murs,
+ce sont des pages a cartes. Leur imposer un index aurait indexe
+des titres de cartes : du bruit. Chantier abandonne sur la
+mesure, avant d ecrire une ligne.
+
+Deux choses vraies sont sorties du meme comptage.
+
+La premiere. Le <main> de la FAQ ne contenait aucun titre. Zero.
+Les cinq intertitres de categorie — « La societe », « Capital &
+souscription », « Activites & poles », « Tchaditude & impact »,
+« Pratique » — etaient des <div>, alors que chacun ouvre un
+groupe de 3 a 11 questions (4+5+5+3+11 = 28, le compte exact des
+depliants de la page). Un groupement visible qui n existe pas
+dans le code, c est le critere 1.3.1. Passes en <h2>, avec une
+regle qui verrouille la mise en forme : mesure avant et apres,
+11 px / graisse 400 dans les deux cas — pas un pixel de
+difference a l ecran, cinq titres de plus pour qui navigue par
+titres. Fait aussi sur la version anglaise.
+
+La seconde. Les trois hubs de la chaine portent depuis le 558 un
+encart « A lire ensuite » en fermeture. Les cinq autres —
+Petrochimie, GreenTech, TchadiTech, Tchaditude, EnerConseils —
+n en avaient pas : on arrivait sur un pole de capacites et la
+page se terminait sans rien proposer. Dix pages dotees, meme
+gabarit, memes classes, meme feuille : trois cartes chacune, qui
+renvoient toutes a une page existante et la decrivent dans ses
+propres termes — aucun fait nouveau ecrit. Les seize hubs sont
+desormais a 6 a 8 sections hors encart, la convention posee au
+565.
+
+Et un audit que j arrete, parce qu il ne vaut rien. J avais
+ecrit un detecteur d intertitres visuels qui ne sont pas des
+titres programmatiques : il a rendu 840 signalements sur 73
+pages. Verification manuelle de ses quatre familles les plus
+nombreuses : SPAN.kick, 17 pages — c est le surtitre pose juste
+au-dessus d un vrai h2, mesure suivant=H2 ; en faire un titre
+serait une faute. STRONG, 12 pages — c est de la mise en valeur
+en ligne dans une phrase, display=inline. P.pmani-q, 8 pages —
+c est une citation de manifeste. B, 29 pages — des libelles d
+onglets dans des liens. Quatre familles sur quatre, fausses.
+Je ne publie pas un chiffre que je viens de montrer faux : le
+detecteur va au rebut, et la seule chose que j ai livree de cet
+audit est le cas que j ai lu moi-meme dans le DOM, de bout en
+bout — la FAQ. C est la lecon du 563 appliquee avant la faute,
+pas apres.
+
+Verification. Douze pages, deux themes, axe WCAG 2.0/2.1/2.2 AA
+: zero violation. Encarts : dix poses, trois cartes chacun,
+toutes de hauteur pleine, titre visible dans les deux themes.
+Sections hors encart : 6 a 8 sur les seize hubs. Aucun asset
+modifie, donc pas de service worker a rebumper.
