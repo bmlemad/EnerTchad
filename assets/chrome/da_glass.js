@@ -34,10 +34,26 @@ x.globalCompositeOperation='source-over'}
 requestAnimationFrame(fr);
 })();
 
-/* Ch544 - filet a11y : un conteneur a defilement interne doit etre atteignable au clavier.
-   Le temoin oscillait au seuil du pixel selon le chargement des fontes ; pose ici une fois pour toutes. */
-addEventListener('load',function(){(window.requestIdleCallback||function(f){setTimeout(f,300)})(function(){
-try{document.querySelectorAll('main div,main pre').forEach(function(e){
-var cs=getComputedStyle(e);
-if((cs.overflowX==='auto'||cs.overflowX==='scroll'||cs.overflowY==='auto'||cs.overflowY==='scroll')&&(e.scrollWidth>e.clientWidth+1||e.scrollHeight>e.clientHeight+1)&&!e.hasAttribute('tabindex')){e.setAttribute('tabindex','0')}
-})}catch(_e){}})});
+/* Ch559 - filet a11y elargi. Le filet du Ch544 ne visait que "main div, main pre" :
+   une barre de navigation interne (nav.corp-nav) defilait horizontalement sur mobile
+   sans jamais devenir atteignable au clavier. On balaye desormais tout le document,
+   et on repasse au redimensionnement — un conteneur ne devient a defilement qu a
+   partir d une certaine largeur. Le test de debordement passe en premier : il lit des
+   proprietes deja calculees, la ou getComputedStyle force un recalcul de style ; sur
+   les pages a dix mille noeuds l ordre inverse coutait des centaines de millisecondes. */
+(function(){
+function pose(){try{
+var n=document.querySelectorAll('body *'),i,e,cs,sx,sy;
+for(i=0;i<n.length;i++){e=n[i];
+ if(e.scrollWidth<=e.clientWidth+1&&e.scrollHeight<=e.clientHeight+1)continue;
+ if(e.hasAttribute('tabindex'))continue;
+ if(e===document.body||e===document.documentElement)continue;
+ cs=getComputedStyle(e);
+ sx=cs.overflowX==='auto'||cs.overflowX==='scroll';
+ sy=cs.overflowY==='auto'||cs.overflowY==='scroll';
+ if(sx||sy){e.setAttribute('tabindex','0')}
+}}catch(_e){}}
+addEventListener('load',function(){pose();(window.requestIdleCallback||function(f){setTimeout(f,300)})(pose)});
+var t;addEventListener('resize',function(){clearTimeout(t);t=setTimeout(pose,220)},{passive:true});
+if(document.readyState==='complete')pose();
+})();
