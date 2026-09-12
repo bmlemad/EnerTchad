@@ -20193,3 +20193,49 @@ Contraste au pixel, etat final : titre de l accueil 20,30:1 en
 sombre et 17,53:1 en clair, chapeau 12,75 et 14,97, titre d un
 journal 17,75 et 16,98. Une seule feuille partagee modifiee,
 aucun HTML touche — methode du 498. SW porte a et-202609120800.
+
+## 574 — La chaine de l accueil, en sombre (12 septembre 2026)
+
+Signalement du proprietaire, apres le 573 : en theme sombre,
+l accueil garde des photos la ou le theme clair laisse
+travailler le fond. Verifie, et il a raison — comptage des
+images reellement rendues sur la page d accueil : theme clair,
+zero ; theme sombre, trois. Les trois segments de la chaine,
+1 270 x 484 chacun, pompe-petrole, pipeline, raffinerie-jour.
+
+Le site traitait donc deja ces trois segments differemment selon
+le theme, sans que ce soit ecrit nulle part : en clair,
+background-image:none et un voile creme ; en sombre, les photos
+a pleine opacite sous un voile de 78 a 65 pour cent. Le meme
+defaut qu au 573, au meme endroit du raisonnement : une image
+qu on masque aux trois quarts n est plus une image.
+
+Meme traitement, meme logique. Chaque maillon recoit un champ
+dans SA couleur — la variable --pa que le segment porte deja :
+or pour l Amont, bleu pour l Intermediaire, ambre pour l Aval.
+C etait le vrai role des photos, distinguer les trois ; le champ
+le fait avec la palette du site au lieu de trois photographies
+sans rapport entre elles. Le voile s allege de 78-65 a 42-34
+pour cent, puisqu il n a plus rien a mater.
+
+Un detail qui n en est pas un : la lueur avance d un maillon a
+l autre — 14 pour cent de largeur sur l Amont, 50 sur l
+Intermediaire, 86 sur l Aval. Le triptyque se lit alors comme
+une progression, de gauche a droite, au lieu de trois panneaux
+juxtaposes. C est la phrase du site, « de la roche-mere a la
+pompe », rendue par la lumiere.
+
+Verification. Quatre configurations — 1280 et 390 px, sombre et
+clair — sur l accueil francais et anglais : images rendues,
+zero partout. En sombre les trois maillons portent le champ avec
+leur decalage (14, 50, 86) ; en clair rien n a bouge. axe WCAG
+2.0/2.1/2.2 AA : zero violation sur les quatre configurations.
+Contraste au pixel dans les trois cartes de verre : 6,01:1 au
+pire, 7,31:1 au mieux — le seuil AA est a 4,5. Le titre de carte
+gagne meme un peu sur l etat photo : 16,13:1 contre 15,28.
+Une seule feuille partagee modifiee, aucun HTML touche.
+SW porte a et-202609120826.
+
+Ce qui reste de photographie sur l accueil : rien en fond. Les
+fichiers demeurent au depot — ils servent ailleurs, et le
+proprietaire pourra les rappeler s il le souhaite.
