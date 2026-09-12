@@ -2,7 +2,7 @@
 <html lang="en">
 <head><script id="et-light-def">try{var d=document.documentElement,p=location.pathname,j=/^\/journal-/.test(p),k=j?"et-jlight":"et-plight",v=localStorage.getItem(k);if(v!=="0")d.classList.add(k)}catch(e){document.documentElement.classList.add("et-plight")}</script>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><link rel="preload" as="image" href="/assets/img/pompe-petrole.webp" fetchpriority="high">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#111D33">
 <meta name="color-scheme" content="dark">
 <title>EnerTchad — Accès aux Énergies | Chad’s integrated oil company</title>
@@ -825,7 +825,7 @@ html:not(.et-plight):not(.et-jlight) :is(.acq-card,.atc-map,.atc-stat,.avk-card,
  border-color:rgba(255,255,255,.16)!important;
 }
 /* ———— ex-bloc: anonyme ———— */
-/* Immersion sans bandes (chapitre 142). Le decor photographique couvre la page ; les sections ne portent plus de panneau translucide, seules les tuiles font verre. Le voile global de .rootland::after est renforce a .68/.78 pour compenser la disparition des panneaux, valeur fixee par mesure du contraste au pixel peint. */.rootland{position:fixed;inset:0;z-index:-2;background:url("/assets/img/pompe-petrole.webp") center/cover no-repeat;pointer-events:none}.rootland::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,12,21,.68) 0%,rgba(7,12,21,.78) 100%)}html{background:#0d1524}body{background:transparent!important}main{background:transparent!important}/* plus aucun panneau de section : la photo court d'un bord a l'autre */html:not(.et-plight):not(.et-jlight) main>section,html:not(.et-plight):not(.et-jlight) body>section,html:not(.et-plight):not(.et-jlight) main>div>section{background:transparent!important;border-radius:0!important}html:not(.et-plight):not(.et-jlight) main,html:not(.et-plight):not(.et-jlight) footer{--muted:#C3D0E0}main h2,main h3,section h2,section h3{text-shadow:0 2px 18px rgba(0,0,0,.7)}html:not(.et-plight):not(.et-jlight) main>section>*>p,html:not(.et-plight):not(.et-jlight) main p.lead,html:not(.et-plight):not(.et-jlight) main .intro{text-shadow:0 1px 12px rgba(0,0,0,.55)}html:not(.et-plight):not(.et-jlight) footer{background:rgba(14,22,38,.72)!important;text-shadow:0 1px 10px rgba(0,0,0,.55)}footer a{text-shadow:none}/* pour qui demande plus de contraste, on rend les panneaux */@media(prefers-contrast:more){html:not(.et-plight):not(.et-jlight) main>section,html:not(.et-plight):not(.et-jlight) body>section,html:not(.et-plight):not(.et-jlight) main>div>section{background:rgba(14,22,38,.92)!important}}/* Theme clair : le voile doit etre clair, sinon la photo sombre transforme la page creme en champ gris. Contraste verifie : le texte sombre reste au-dessus de 6:1 sur les six pages temoins. */html.et-plight .rootland::after,html.et-jlight .rootland::after{background:linear-gradient(180deg,rgba(250,247,241,.82) 0%,rgba(250,247,241,.90) 100%)}
+/* Immersion sans bandes (chapitre 142). Le decor photographique couvre la page ; les sections ne portent plus de panneau translucide, seules les tuiles font verre. Le voile global de .rootland::after est renforce a .68/.78 pour compenser la disparition des panneaux, valeur fixee par mesure du contraste au pixel peint. */.rootland{position:fixed;inset:0;z-index:-2;background:none center/cover no-repeat;pointer-events:none}.rootland::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,12,21,.68) 0%,rgba(7,12,21,.78) 100%)}html{background:#0d1524}body{background:transparent!important}main{background:transparent!important}/* plus aucun panneau de section : la photo court d'un bord a l'autre */html:not(.et-plight):not(.et-jlight) main>section,html:not(.et-plight):not(.et-jlight) body>section,html:not(.et-plight):not(.et-jlight) main>div>section{background:transparent!important;border-radius:0!important}html:not(.et-plight):not(.et-jlight) main,html:not(.et-plight):not(.et-jlight) footer{--muted:#C3D0E0}main h2,main h3,section h2,section h3{text-shadow:0 2px 18px rgba(0,0,0,.7)}html:not(.et-plight):not(.et-jlight) main>section>*>p,html:not(.et-plight):not(.et-jlight) main p.lead,html:not(.et-plight):not(.et-jlight) main .intro{text-shadow:0 1px 12px rgba(0,0,0,.55)}html:not(.et-plight):not(.et-jlight) footer{background:rgba(14,22,38,.72)!important;text-shadow:0 1px 10px rgba(0,0,0,.55)}footer a{text-shadow:none}/* pour qui demande plus de contraste, on rend les panneaux */@media(prefers-contrast:more){html:not(.et-plight):not(.et-jlight) main>section,html:not(.et-plight):not(.et-jlight) body>section,html:not(.et-plight):not(.et-jlight) main>div>section{background:rgba(14,22,38,.92)!important}}/* Theme clair : le voile doit etre clair, sinon la photo sombre transforme la page creme en champ gris. Contraste verifie : le texte sombre reste au-dessus de 6:1 sur les six pages temoins. */html.et-plight .rootland::after,html.et-jlight .rootland::after{background:linear-gradient(180deg,rgba(250,247,241,.82) 0%,rgba(250,247,241,.90) 100%)}
 /* ———— ex-bloc: anonyme ———— */
 /* Chapeaux des heros (chapitre 143). Defaut anterieur a l'immersion, verifie
    sur 99136d2 : dore #F0CE82 pose directement sur la photo du heros, mesure de
@@ -1120,7 +1120,7 @@ html.et-plight .dt:not(#_){opacity:1!important;color:#6B5012!important}
 html.et-plight #carte540 .c540-lb{fill:#2C3B4D}
 </style>
 </head>
-<body><div class="diapo" aria-hidden="true"><i style="background-image:url(&quot;/assets/img/pompe-petrole.webp&quot;)"></i></div><div class="rdprog" aria-hidden="true"></div>
+<body><div class="diapo" aria-hidden="true"><i style="background-image:none"></i></div><div class="rdprog" aria-hidden="true"></div>
 <a href="#main-content" class="skip-link">Skip to main content</a>
 <div id="preloader" aria-hidden="true">
   <div class="pl-inner">
@@ -1306,7 +1306,7 @@ html.et-plight #coeurs .t550-x span{color:#5A6472}
 </style><div class="t550-head"><span class="sec-k">Our three core poles</span>
 <h2>Three links, one molecule.</h2>
 <p style="margin:0;max-width:70ch;font-size:.95rem;line-height:1.6;opacity:.85">The same crude molecule crosses three trades — extract it, move it, transform it — and each stage funds the next. Here is the chain, pole by pole. <a href="/nos-activites-en" style="color:var(--blue-l,#00B4D8);font-weight:600;text-decoration:none">The whole chain in one story →</a></p></div><div class="t550-seg" style="--pa:var(--gold-l,#FFB703);--pal:#8A6210" id="maillon-amont">
-  <div class="t550-bg" style="background-image:url('/assets/img/pompe-petrole.webp')" aria-hidden="true"></div>
+  <div class="t550-bg" style="background-image:none" aria-hidden="true"></div>
   <div class="t550-in ">
     <div class="t550-p">
       <i class="t550-k">01 · Upstream — Exploration & Production</i>

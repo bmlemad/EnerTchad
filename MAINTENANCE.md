@@ -20808,3 +20808,128 @@ sur dix pages : ecart d estimation de la hauteur de page ramene de
 1 a 132 pour cent a 0 a 8 pour cent. axe AA zero violation sur ces
 dix pages dans trois configurations. Aucun asset modifie, donc pas
 de bump du service worker.
+
+## 580 — Sept mega-octets d images que personne ne voyait (12 septembre 2026)
+
+Les chapitres 573, 574 et 575 ont remplace les photographies de
+fond par un champ de lumiere dessine en code. Ils ont change ce
+que le navigateur PEINT. Ils n ont pas touche a ce que le
+navigateur TELECHARGE.
+
+### La mesure
+
+Pour chaque page, dans quatre configurations (bureau et mobile,
+sombre et clair) : la liste des images reellement chargees, lue
+dans la chronologie des ressources du navigateur, contre la liste
+des images reellement peintes — attributs src, mais aussi
+background-image, mask, border-image et contenu des
+pseudo-elements de tout element affiche.
+
+Resultat : 88 couples page-image sur 74 pages, 28 fichiers
+distincts, 8,31 Mio charges et jamais montres. Soixante-dix de
+ces chargements venaient d un indice de prechargement, dix-huit
+d une regle de style.
+
+Le detail dit l histoire. Sur les 64 pages du journal, chaque
+article portait un <link rel="preload" as="image"
+fetchpriority="high"> vers sa photographie de fond : raffinerie de
+jour, pipeline, dunes, flamme de gaz, casques de chantier. Le
+prechargement en priorite haute est une instruction serieuse — il
+passe devant les feuilles de style et les polices. Depuis le 573,
+la photographie ainsi mise en tete de file n est plus affichee du
+tout : le champ de lumiere la recouvre avec un !important. Le
+navigateur se depechait de telecharger 52 a 175 Kio pour ne rien
+en faire, et retardait d autant ce qui compte.
+
+Sur l accueil, la meme chose dans l autre sens : le calque .diapo
+gardait pompe-petrole.webp dans son attribut style. La regle du
+573 gagne au rendu, mais l URL est toujours dans le document, donc
+l image part quand meme.
+
+### Le correctif
+
+Soixante-seize indices et URL retires sur 74 pages : les 70
+prechargements morts, plus les six URL de photographie restees
+dans les styles en ligne des calques de fond (accueil FR et EN,
+deux carnets FR et EN). Aucun asset touche, aucune regle de style
+partagee modifiee, aucune image supprimee du depot — seules les
+instructions de telechargement.
+
+Economie : 6,95 Mio si chaque page est visitee une fois. Pour un
+lecteur qui ouvre un article du journal, c est 52 a 175 Kio de
+moins a telecharger en priorite haute avant de voir le texte.
+
+Remesure apres : il reste 12 couples page-image, tous sur les deux
+pages de la brochure. Et ils posent une question qui ne m
+appartient pas.
+
+### Une question pour le proprietaire : le diaporama cache de la brochure
+
+En haut de la brochure, dans le hero, il y a un diaporama de neuf
+photographies du Tchad — dunes au couchant, acacia, lac vu de l
+espace, et six animaux : oryx algazelle, addax, gazelle, fennec,
+caracal, guepard saharien. Le conteneur porte role="img" et un
+libelle, « Le Tchad — paysages et infrastructures (diaporama) ».
+Un script melange l ordre a chaque visite.
+
+Il est invisible. Une regle de la feuille diapo-css, chargee par
+25 pages, met en display:none les calques photographiques du hero
+— et elle attrape aussi ce diaporama. Six de ses neuf images
+continuent d etre telechargees malgre tout (1,37 Mio sur les deux
+pages).
+
+C est exactement la situation du 575, ou le theme clair effacait
+trois photographies de contenu sur le hub Tchaditude. La reponse
+d alors, validee : un element qui se declare role="img" est du
+contenu, pas du fond. Appliquer la meme regle ici rendrait le
+diaporama visible.
+
+Mais la difference d echelle compte : au 575 il s agissait de
+trois vignettes dans une grille de cartes ; ici il s agit du hero
+plein ecran du document public le plus long du site, et le 573 a
+justement arbitre en faveur d un hero sans photographie. Je ne
+tranche pas seul. Deux options, chiffrees :
+
+- le rendre : une exemption role="img" dans diapo-css, comme au
+  575 — la brochure retrouve son diaporama de neuf photographies,
+  et les 1,37 Mio deviennent utiles ;
+- le retirer : supprimer le balisage mort et les neuf fichiers,
+  1,37 Mio de moins sur deux pages et un peu de poids en moins
+  dans le depot.
+
+Tant que la question n est pas tranchee, l etat actuel est le pire
+des trois : on telecharge sans montrer. Mais le corriger dans un
+sens ou dans l autre est une decision de contenu.
+
+### Mes erreurs
+
+Deux, sur l instrument, et la premiere aurait publie un chiffre
+faux par un facteur quatre.
+
+Premiere version : je comptais les requetes vues par
+l automate (l evenement « request » du pilote). Il annoncait
+29,55 Mio inutiles. En verifiant une page a la main, la
+chronologie des ressources du navigateur n en montrait qu une
+seule image chargee la ou l automate en annoncait sept. L
+evenement « request » se declenche aussi pour des requetes que le
+navigateur amorce puis annule — un fond d element non affiche, par
+exemple. La mesure qui tient est la chronologie des ressources :
+elle ne liste que ce qui a effectivement voyage. Le chiffre est
+tombe de 29,55 a 8,31 Mio.
+
+Deuxieme : mon detecteur d images peintes ecartait les elements a
+opacite nulle. Sur la brochure, cela condamnait les neuf
+photographies d un diaporama en fondu enchaine — a tout instant,
+huit sont a opacite nulle et parfaitement legitimes. Filtre
+retire ; ce qui a aussi permis de comprendre que le vrai probleme
+de ce diaporama n est pas l opacite mais un display:none herite.
+
+### Etat
+
+74 pages allegees, 76 instructions de telechargement mortes
+retirees, 6,95 Mio d images qui ne partent plus. Il reste 1,37
+Mio sur les deux pages de la brochure, en attente d une decision
+de contenu. axe AA zero violation sur douze pages temoin dans
+trois configurations ; fonds verifies au rendu dans les deux
+themes — le champ de lumiere est intact. Aucun asset modifie, donc
+pas de bump du service worker.
