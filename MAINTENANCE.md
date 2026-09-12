@@ -20381,3 +20381,163 @@ l accueil en dise un peu plus ou que le plancher descende.
 Verification. Quatre configurations, axe zero violation, cibles
 sous 24 px : zero apres correction, contre deux avant. Une seule
 feuille partagee modifiee, aucun HTML touche.
+
+## 577 — Ce que l en-tete cachait, et la campagne des cibles (12 septembre 2026)
+
+La revue du 576 portait sur l accueil. Je l ai etendue aux deux
+passerelles et aux huit carrefours de pole, puis — parce que les
+defauts trouves la n etaient pas locaux — aux 191 pages.
+
+Ce qui est sain, d abord. Sur les dix pages de tete : axe WCAG
+2.0/2.1/2.2 AA rend zero violation dans les trois configurations
+testees (bureau sombre, bureau clair, mobile sombre). Un seul h1
+partout, aucun saut de niveau de titre, aucune ancre morte sur
+1 700 liens, aucun lien vide. Referencement complet et coherent :
+titres de 43 a 59 signes, descriptions de 132 a 156, canonique
+partout, cinq blocs JSON-LD par carrefour. L absence de hreflang
+arabe sur Petrochimie, GreenTech, TchadiTech, Tchaditude et
+EnerConseils n est pas un oubli : le mini-site arabe ne compte
+que huit pages, et elles n ont pas d equivalent.
+
+### Le fil de la chaine, invisible depuis le 552
+
+Le defaut le plus lourd n est pas sorti d une regle d accessibilite
+mais d un test d occlusion : pour chaque noeud de texte peint, je
+prends le centre de son rectangle et je demande au navigateur quel
+element occupe ce point. Si la reponse est l en-tete fixe, le texte
+est cache.
+
+Resultat : 34 pages. Sur 28 d entre elles — tous les pages de pole
+et leurs sous-pages — la barre posee au chapitre 552, « La chaine :
+01 Amont -> 02 Intermediaire -> 03 Aval », est entierement enfouie
+sous la barre de navigation. Elle est dans le HTML, elle est
+peinte, elle a son role et son libelle, et personne ne l a jamais
+vue. Depuis le 552.
+
+La cause est bete et instructive. La reservation de hauteur pour
+l en-tete fixe existe bien sur ces pages : 118 px de marge haute en
+bureau, 79 px en dessous de 1240 px, pour un en-tete de 110 et 71
+px. Mais elle est portee par la sous-barre de pole, c est-a-dire
+l element qui SUIT le fil. Le fil, lui, a ete insere tout en haut
+de <main>, en amont de la reservation. Il occupe donc la bande que
+l en-tete recouvre.
+
+Le correctif deplace la reservation d un cran vers le haut : le fil
+prend la hauteur de l en-tete en padding, la sous-barre rend la
+sienne. Geometrie verifiee avant et apres, a trois largeurs : la
+sous-barre reste a 158 px en bureau, 119 px a 1100 px, 153 px en
+mobile. Rien ne bouge, sauf que la bande vide se remplit du fil
+qu elle cachait.
+
+Les six autres pages : Achats et Paiements aux Etats (FR et EN)
+ouvrent leur en-tete de page a l ordonnee zero, leur fil d Ariane
+tombait a 76 px sous un en-tete de 110 ; Cibles 2030 (FR et EN)
+commencait son <main> a zero, fil d Ariane a 22 px et surtitre a
+113 px, tous deux derriere la barre. Decalages poses page par page,
+verifies a l ecran. Apres correction, le test d occlusion rend zero
+page sur 191.
+
+### Cibles 2030 : un en-tete non style
+
+En regardant cette page de pres, autre chose. Son en-tete ne
+chargeait ni bundle_head_b2.css ni c_c79b7a1d9fec.css — les deux
+feuilles qui portent le chrome de navigation. Sans elles, la barre
+n avait plus aucune mise en forme : .nav-in en bloc au lieu de
+flex, largeur 1430 au lieu de 1360, hauteur 230 px au lieu de 110 ;
+la marque se cassait en deux lignes (« EnerTchadAcces aux
+Energies »), les trois menus s empilaient verticalement, et le
+bouton de menu mobile — 14 x 4 px, sans cadre — restait visible en
+plein bureau. La capture ne laisse pas de doute. Feuille ajoutee a
+la position exacte qu elle occupe sur les pages voisines ; en-tete
+remesure a 132 px, .nav-links en flex, bouton de menu masque en
+bureau et 44 x 44 px en mobile.
+
+Balayage de controle sur les 191 pages : cette page etait la seule
+dans ce cas.
+
+### La campagne des cibles
+
+Le 559, le 568 et le 576 avaient traite le critere 2.5.8 famille
+par famille, au fil des pages regardees. J ai fait le balayage
+complet : 191 pages, toute cible interactive de moins de 24 px
+relevee avec son selecteur. 68 familles.
+
+La moitie sont exemptes par le critere lui-meme — un lien pose dans
+une phrase n a pas a respecter la barre : renvois de glossaire,
+adresses de courriel citees au fil du texte, « nos facteurs de
+risque » au milieu d un paragraphe. Restent quatorze familles qui
+ne sont pas dans une phrase, et que le site repetait partout :
+
+- le selecteur de langue arabe, 7 x 24 px sur 180 pages. Sept
+  pixels de large. La seule page ou il etait correct est l accueil,
+  qui lui donne un padding que les autres n ont jamais recu ;
+- la signature de bas d article des carnets, 59 pages ;
+- les fils d Ariane de la famille .bcrumb, 42 pages — le 568 avait
+  traite .crumb et laisse celle-ci de cote ;
+- « Tous les carnets », 44 pages ; le retour au pole, 34 ; « Tout
+  le fil », 8 ; les rangees « Aller plus loin : … · … », 8 ; le
+  detail operationnel des poles, 6 ; les liens de service, 6 ; le
+  bandeau legal du pied de page, dont « FAQ » ne faisait que 20 px
+  de large ; et quatre familles plus rares.
+
+Toutes corrigees par une seule regle dans la feuille partagee, sans
+toucher a un octet de HTML sur les 182 pages concernees. Le
+mini-site arabe et la page 404, qui ne chargent pas cette feuille,
+ont recu leur propre correctif — borne par html[lang="ar"] pour ne
+pas deborder sur les 72 carnets qui partagent la meme feuille.
+
+Rebalayage apres : les quatorze familles ont disparu, aucune
+nouvelle n est apparue.
+
+### Un dernier defaut, trouve en verifiant
+
+axe passe sur seize pages dans trois configurations rend une
+violation : link-in-text-block sur Paiements aux Etats. Quatre
+liens en or #E8C36A dans un paragraphe creme #E9EEF5 — 1,44:1
+entre le lien et son texte, quand le minimum est 3:1, et aucun
+soulignement. Un lecteur qui ne distingue pas ces deux teintes ne
+voit pas qu il y a un lien. Balayage de la regle seule sur les 191
+pages : ces quatre liens, et eux seuls. Soulignement pose, rebalaye
+a zero.
+
+### Mon erreur, deux fois, sur les instruments
+
+Premiere version du test d occlusion : je comparais l ordonnee du
+premier element de contenu a celle du bas de l en-tete. Il a
+annonce 29 pages. Faux : un en-tete de page qui commence a zero et
+porte 300 px de padding interne est parfaitement correct — je
+mesurais la boite, pas le texte.
+
+Deuxieme version, sur le rectangle des noeuds de texte : 101 pages.
+Faux aussi, et plus subtil. Un libelle masque a la vue par la
+technique du clip — celle qu on utilise pour parler aux lecteurs
+d ecran sans encombrer l ecran — passe un filtre display +
+visibility + opacity sans broncher, et un Range pose dessus rend un
+rectangle parfaitement reel. Le comptage etait gonfle de tout ce
+que le site dit correctement aux lecteurs d ecran.
+
+C est la troisieme fois en deux mois qu un instrument annonce un
+defaut la ou il n y en a pas, et la logique est chaque fois la
+meme : je demande au DOM ce qu il contient au lieu de demander au
+navigateur ce qu il peint. La version qui tient interroge le
+navigateur — elementFromPoint sur le point mesure — et ecarte les
+techniques de masquage visuel. Elle a rendu 34 pages, dont j ai
+verifie les trois familles a l ecran, en masquant l en-tete pour
+voir ce qu il y avait dessous.
+
+Une troisieme, du meme genre : mon detecteur de cibles exemptait
+les liens dans une phrase seulement quand le parent etait un
+paragraphe ou un element de liste. Un lien pose en fin de phrase
+dans un <div> de texte — « Donner le cap : autonomie energetique
+et chaine de valeur retenue au Tchad. Voir -> » — etait donc
+signale alors que le critere l exempte. Corrige avant de conclure ;
+c est ce qui a ramene les 68 familles a quatorze plus une poignee
+de cas isoles.
+
+### Etat
+
+Zero violation axe sur les seize pages temoin dans trois
+configurations. Zero texte couvert par l en-tete sur 191 pages.
+Zero lien distingue par la seule couleur. Quatorze familles de
+cibles ramenees a 24 px sur l ensemble du site. Le fil de la chaine
+visible sur 28 pages pour la premiere fois depuis le 552.
