@@ -20067,3 +20067,57 @@ deux themes. Bandeaux de groupe : rembourrage 76 px en bureau et
 34 px en mobile, surtitre 11 px capitales, titre 36 px graisse
 800 — identiques sur les quatorze pages qui en portent. Aucun
 asset modifie, donc pas de service worker a rebumper.
+
+## 572 — Les deux arbitrages, et pourquoi l un ne s applique qu a une page (12 septembre 2026)
+
+Deux decisions du proprietaire apres l audit du 571 : retirer
+« Parcourir cette page » en gardant le rail et la barre ; etendre
+le sommaire de la brochure aux six Actes.
+
+Le sommaire, d abord, applique sans reserve. Il listait seize
+pastilles a plat pour trente sections. Il en liste trente,
+rangees sous sept parties — Ouverture puis les six Actes — et il
+reste replie par defaut : 52 px fermes avant, 52 px apres. Les
+seize libelles existants sont conserves mot pour mot avec leur
+couleur de pole ; les quatorze ajoutes reprennent le nom de leur
+propre section, sans rien inventer. Verifie en sombre, en clair
+et en 390 px.
+
+« Parcourir cette page », maintenant, et je dois revenir sur ma
+question. Je l avais posee en disant que ces blocs repetaient la
+meme information. C est vrai sur une page, faux sur quatre. J ai
+compare chaque description de carte au texte de la page hors du
+bloc :
+
+  societe        4 cartes — 4 reprises,  0 texte propre
+  investisseurs 13 cartes — 12 reprises, 1 texte propre
+  clients       14 cartes — 12 reprises, 2 textes propres
+  services-ep    6 cartes —  2 reprises, 4 textes propres
+  engagements    6 cartes —  0 reprise,  6 textes propres
+
+Sur engagements, les six descriptions sont des resumes ecrits
+pour ce bloc — « Sante, securite, environnement : demarche
+ALARP, droit d arret pour tous, fin du torchage de routine » n
+existe nulle part ailleurs sur le site. Supprimer le bloc
+effacerait six phrases du proprietaire. Sur services-ep, quatre ;
+sur clients, deux ; sur investisseurs, une.
+
+J applique donc la decision la ou elle ne coute rien : societe,
+francais et anglais, ou les quatre descriptions reprennent mot
+pour mot le chapeau de la section visee. Le bloc part, 221 px et
+quatre ancres en double avec le rail et la barre. Sur les quatre
+autres pages je ne touche a rien et je rends la main : le bloc n
+y est pas un doublon de navigation, c est un condense redactionnel
+qui porte de une a six phrases uniques. Le choix appartient au
+proprietaire, et il doit etre pris en sachant cela — pas sur ma
+formulation d hier.
+
+La regle que je tire de ma propre erreur : avant de proposer une
+suppression, mesurer ce qui disparait. J avais compte les ancres
+en double, pas les phrases uniques. Les deux comptes ne disent
+pas la meme chose.
+
+Verification. Quatre pages, deux themes, axe WCAG 2.0/2.1/2.2 AA
+: zero violation. Ancres internes mortes : zero. Sommaire :
+trente liens, sept parties, replie. Sections de premier niveau :
+brochure 8, societe 5. Aucun asset modifie.
