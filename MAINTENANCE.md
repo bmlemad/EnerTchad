@@ -20239,3 +20239,58 @@ SW porte a et-202609120826.
 Ce qui reste de photographie sur l accueil : rien en fond. Les
 fichiers demeurent au depot — ils servent ailleurs, et le
 proprietaire pourra les rappeler s il le souhaite.
+
+## 575 — Le meme defaut, generalise — et une galerie que le theme clair effacait (12 septembre 2026)
+
+Apres le 574, la question evidente : le defaut de l accueil
+est-il unique ? Inventaire des photographies reellement rendues
+sur les 191 pages, dans les deux themes. Reponse : 172 fonds en
+sombre, 116 en clair, cinquante pages en desaccord.
+
+La famille principale est .subland : une photo plein ecran fixe,
+z-index -2, sous un voile de 50 a 60 pour cent, sur soixante
+pages — et masquee en theme clair. La configuration exacte de
+.rootland avant le 573. Preuve qu elle etait bien visible et non
+recouverte par le contenu : en la masquant, 18 a 70 pour cent
+des pixels de la page changent selon la page, mesure sur cinq
+d entre elles. Meme traitement : le champ du 573 remplace la
+photo, en sombre seulement puisque le clair la masque deja, et
+le voile tombe de 50-60 a 6-20 pour cent. Pas de teinte par pole
+ici — l identite du pole est portee par la photo de heros, qui
+reste dans les deux themes, et par les accents de l interface.
+
+Et puis l inventaire a rendu autre chose, que je ne cherchais
+pas. Sur le hub Tchaditude, francais et anglais, une galerie de
+trois photographies — ouvriers en casque, ecran de code,
+ferraillage de chantier — s affichait en sombre et disparaissait
+en clair. Pas floutee : effacee. Les trois cadres restaient, a
+373 x 233 px, vides. Chacune porte role="img" et un aria-label
+descriptif : un lecteur d ecran annonce une photographie la ou
+l oeil ne voit rien.
+
+Cause tracee dans le CSSOM. La regle qui debarrasse le theme
+clair des fonds photographiques vise « html.et-plight main div »
+en !important — et !important bat meme le style en ligne de l
+element, ou l URL de l image etait ecrite. Une regle faite pour
+les fonds attrapait donc aussi les images de contenu, des lors
+qu elles sont posees en fond d un div. Exception ajoutee a la
+source, dans les trois feuilles qui portent la regle : un
+element qui se declare role="img" est du contenu, pas du
+mobilier. C est general — toute future image suivant ce meme
+patron correct est desormais protegee.
+
+Ce que je retiens. Le 573 et le 574 retiraient des photos ; le
+575 en remet trois. Ce n est pas contradictoire : dans les deux
+cas la question est la meme — cette image est-elle du fond ou du
+contenu ? Une image de fond masquee aux trois quarts ne sert a
+rien ; une image de contenu effacee par le theme est une perte
+seche. Il fallait compter les deux.
+
+Verification. Douze pages de toutes les familles, trois
+configurations — 1280 sombre, 1280 clair, 390 clair — axe WCAG
+2.0/2.1/2.2 AA : zero violation. Images de contenu vides : zero,
+contre six avant. Photographies de fond rendues : zero. Champ
+present sur .subland en sombre, absent en clair comme il se
+doit. Contraste au pixel sur les titres des pages concernees :
+16,13:1 et 16,86:1. Quatre feuilles partagees modifiees, aucun
+HTML touche. SW porte a et-202609120850.
