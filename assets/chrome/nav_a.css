@@ -433,3 +433,22 @@ nav.bcrumb:not(#_):not(#__) a,
    l ancre que le site lui demande : un point d arrivee sans hauteur, pose juste
    avant la section, avec la marge de defilement de la maison (96 px).         */
 .anc578:not(#_){display:block;height:0;overflow:hidden;scroll-margin-top:96px}
+
+/* --- Ch581 - imprimer la FAQ donnait les questions sans les reponses -------
+   Mesure en media print sur les 191 pages : onze pages perdent 86 024 signes
+   a l impression parce que leurs blocs <details> sont replies. La FAQ sort
+   avec ses 27 questions et aucune reponse ; l Atlas du secteur perd 27 354
+   signes de donnees ; la brochure 4 785. Le navigateur replie le contenu d un
+   <details> ferme par la boite ::details-content ; a l impression on la rend.
+   Sur un moteur qui ne connait pas ce pseudo-element, la regle est inerte —
+   le relais est pris par le gestionnaire beforeprint de nav_a.js.            */
+@media print{
+  details:not(#_):not(#__)::details-content{
+    content-visibility:visible !important;display:block !important;block-size:auto !important}
+  details:not(#_):not(#__)>*{content-visibility:visible !important}
+  details:not(#_):not(#__){break-inside:avoid}
+  /* le chevron de repli n a plus de sens sur du papier */
+  summary:not(#_) .chev,summary:not(#_)>svg{display:none !important}
+  summary:not(#_){list-style:none}
+  summary:not(#_)::-webkit-details-marker{display:none}
+}

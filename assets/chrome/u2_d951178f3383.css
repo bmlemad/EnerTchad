@@ -6,3 +6,6 @@
    par html[lang="ar"] pour ne pas toucher les 72 carnets qui partagent la
    feuille. */
 html[lang="ar"] #suite>p>a,html[lang="ar"] #lughat>p>a,html[lang="ar"] nav.bcrumb a{display:inline-flex;align-items:center;min-height:24px}
+/* Ch581 - a l impression, deplier les <details>. Les huit pages arabes ne
+   chargent pas nav_a.css ; la regle est portee ici, bornee par la langue. */
+@media print{html[lang="ar"] details::details-content{content-visibility:visible !important;display:block !important;block-size:auto !important}html[lang="ar"] details>*{content-visibility:visible !important}}

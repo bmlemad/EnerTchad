@@ -161,3 +161,12 @@ try{(function(){
     var b=document.querySelector('#nav,header');if(b)ro.observe(b);}
   setTimeout(pose,600);setTimeout(pose,1800);
 })();}catch(e){}
+/* Ch581 - a l impression, deplier les <details> replies puis les refermer.
+   Complement au correctif CSS de nav_a.css pour les moteurs sans
+   ::details-content. Idempotent, silencieux, sans effet a l ecran. */
+try{(function(){var o=[];
+ addEventListener('beforeprint',function(){try{o=[];
+   Array.prototype.forEach.call(document.querySelectorAll('details:not([open])'),function(d){o.push(d);d.open=true});
+ }catch(e){}});
+ addEventListener('afterprint',function(){try{o.forEach(function(d){d.open=false});o=[];}catch(e){}});
+})();}catch(e){}
