@@ -288,3 +288,24 @@ html.et-jlight .diapo:not(#_):not(#__):not(#___){
 @media(prefers-reduced-motion:reduce){
   .diapo:not(#_):not(#__):not(#___){animation:none !important}
 }
+
+/* --- Ch574 - la chaine de l accueil, en sombre -------------------------------
+   Le theme clair retirait deja l image des trois segments ; le sombre gardait les
+   trois photos sous un voile de 78-65 %. Meme logique que le fond du 573 : chaque
+   maillon recoit un champ dans SA couleur (--pa), ce qui etait le vrai role des
+   photos — distinguer les trois. La lueur avance de gauche a droite d un maillon
+   a l autre : la chaine se lit comme une progression.                          */
+html:not(.et-plight):not(.et-jlight) .t550-bg:not(#_):not(#__){
+  background-image:
+    radial-gradient(74% 128% at var(--fx,16%) 52%, color-mix(in srgb, var(--pa,#FFB703) 30%, transparent), transparent 72%),
+    radial-gradient(58% 104% at 90% 16%, rgba(90,167,240,.16), transparent 68%),
+    radial-gradient(52% 96% at 78% 96%, rgba(31,164,150,.14), transparent 70%) !important;
+  background-color:#0A1220 !important;
+  background-size:auto !important;
+}
+html:not(.et-plight):not(.et-jlight) #maillon-amont:not(#_) .t550-bg{--fx:14%}
+html:not(.et-plight):not(.et-jlight) #maillon-intermediaire:not(#_) .t550-bg{--fx:50%}
+html:not(.et-plight):not(.et-jlight) #maillon-aval:not(#_) .t550-bg{--fx:86%}
+html:not(.et-plight):not(.et-jlight) .t550-seg:not(#_):not(#__)::before{
+  background:linear-gradient(165deg,rgba(0,28,45,.42) 0%,rgba(0,24,38,.22) 55%,rgba(0,21,34,.34) 100%) !important;
+}
