@@ -20541,3 +20541,124 @@ configurations. Zero texte couvert par l en-tete sur 191 pages.
 Zero lien distingue par la seule couleur. Quatorze familles de
 cibles ramenees a 24 px sur l ensemble du site. Le fil de la chaine
 visible sur 28 pages pour la premiere fois depuis le 552.
+
+## 578 — Les liens qui ne menaient plus nulle part (12 septembre 2026)
+
+Apres le 577, meme methode appliquee au maillage : un balayage de
+structure et de referencement sur les 191 pages, puis le controle
+complet des liens internes — cibles et fragments.
+
+Ce qui est sain, et qui merite d etre ecrit. Sur les 191 pages :
+un seul h1 partout, aucun saut de niveau de titre, aucune ancre
+morte a l interieur des pages, aucun lien sans texte accessible,
+aucune image sans attribut alt, aucun bloc JSON-LD illisible,
+aucun doublon de titre ni de description, un attribut de langue
+partout, quatre balises Open Graph au minimum partout, et une
+canonique sur chaque page indexee. Toutes les descriptions
+tiennent entre 110 et 165 signes. Vingt-cinq titres font moins de
+30 signes — « Contact | EnerTchad », « Cookies | EnerTchad » —
+ce qui n est pas un defaut mais une occasion laissee de cote ;
+consigne, non corrige, c est de l editorial.
+
+### L ancre #poles, morte sur tout le site
+
+23 019 liens internes absolus inspectes. Zero cible introuvable.
+Mais un fragment ressort : 192 liens, repartis sur pres de 190
+pages, pointent vers /#poles ou /index-en#poles. Cette ancre
+n existe plus sur l accueil — verification faite dans le
+navigateur, pas seulement dans le HTML, parce qu un identifiant
+peut etre pose par un script : sur l accueil rendu,
+document.getElementById('poles') rend null. La section des trois
+maillons s appelle #coeurs.
+
+Autrement dit : chaque lien « Nos poles » du site deposait le
+visiteur en haut de l accueil, sans un mot, en lui laissant
+chercher. Sur pres de 190 pages.
+
+Deux facons de corriger. Reecrire 192 liens dans 190 fichiers, ou
+redonner a l accueil l ancre que le site entier lui demande. J ai
+choisi la seconde : un point d arrivee sans hauteur, pose juste
+avant la section, avec la marge de defilement de la maison. Deux
+fichiers touches au lieu de 190. Mesure : #poles depose la section
+a 225 px, #coeurs a 224 — le meme endroit, au pixel pres, en
+francais comme en anglais, en bureau comme en mobile.
+
+### Onze autres fragments morts, et leur bonne destination
+
+Le meme balayage rend 27 motifs de fragment absent. Onze sont des
+faux positifs que la mesure a ecartes : les identifiants du
+glossaire sont poses par un script (80 termes, verifies present au
+rendu), les #rub= des carnets et les #p= du configurateur ne sont
+pas des ancres mais des etats lus par du script.
+
+Restent des liens qui visaient des sections renommees depuis. Je
+ne les ai pas rediriges au juge : pour chacun, j ai lu le texte du
+lien et la liste des sections reellement presentes sur la page
+cible.
+
+- « Voir le detail » sur TchadiTech et Tchaditude visait
+  #technologie et #talents-tchad : renvoye vers le bandeau qui
+  introduit justement le detail (#g565-f, #g565-h) ;
+- « Technologie & Futur », depuis les outils, visait la meme
+  ancre : renvoye vers #socle, « Socle numerique & architecture » ;
+- « Robotique de terrain », « Cybersecurite OT/IT » et « Donnees &
+  IA » depuis la page Innovation visaient trois ancres disparues :
+  renvoyees vers #innovations, « Innovations phares », qui les
+  contient toutes les trois ;
+- « La R&D du procede modulaire » depuis le carnet mini-raffinerie
+  visait #mini-raffinerie-rd : renvoye vers #rd ;
+- « Gestion de l eau » depuis le carnet sur l eau de production
+  visait #eau : renvoye vers #transition, ou la valorisation de
+  l eau de production est effectivement traitee ;
+- les trois recits de TchadiTech, qui portaient chacun son ancre
+  dans une version anterieure, visent desormais #recits, la
+  section qui les rassemble.
+
+23 liens reecrits dans 15 fichiers. Rebalayage : zero fragment
+absent sur 23 019 liens. Chaque destination verifiee au rendu —
+elle existe, et elle arrive entre 313 et 394 px, bien sous
+l en-tete fixe.
+
+### Un hreflang qui pointait vers la mauvaise page
+
+Test de reciprocite sur les grappes de langue : chaque page
+declare-t-elle ses alternatives, et celles-ci renvoient-elles bien
+vers elle ? Une seule anomalie sur tout le site, et elle est nette.
+nos-activites-en declarait son equivalent francais comme
+/solutions — une autre page, qui de son cote declare /solutions-en
+comme equivalent anglais. La grappe etait donc croisee : un moteur
+de recherche recoit deux declarations contradictoires et, dans le
+doute, jette la paire. Le x-default pointait au meme mauvais
+endroit. Les deux lignes corrigees vers /nos-activites.
+
+Sequelle probable du jour ou la passerelle anglaise a ete derivee
+de /solutions-en. C est exactement le genre de reste que seul un
+test de reciprocite trouve : chaque page, prise seule, avait l air
+correcte.
+
+### Mon erreur, encore sur l instrument
+
+Premiere passe du controle de liens : 10 cibles introuvables et
+102 fragments absents. Presque tout etait faux.
+
+Mon analyseur lisait les href a l interieur des blocs de script et
+prenait des morceaux de gabarit JavaScript pour des URL. Il
+ignorait les chaines de redirection de vercel.json — 158
+redirections et 2 reecritures — et tombait sur une boucle apparente
+la ou la plateforme, elle, applique les redirections AVANT les
+reecritures et sert le fichier sans boucler. Et il jugeait la
+presence d un identifiant sur le HTML ecrit, alors que six pages du
+site posent les leurs par script.
+
+Corrige sur les trois points, l analyseur rend zero cible
+introuvable et 27 motifs de fragment, dont onze faux positifs
+ecartes a la main, verification au rendu. La lecon est la meme
+qu hier, sous une autre forme : le HTML ecrit n est pas la page, et
+la configuration de la plateforme fait partie du site.
+
+### Etat
+
+23 019 liens internes : zero cible introuvable, zero fragment
+absent. Grappes de langue reciproques sur les 191 pages. axe AA
+zero violation sur les treize pages touchees, dans trois
+configurations. L ancre que 192 liens demandaient existe.
