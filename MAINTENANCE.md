@@ -19982,3 +19982,88 @@ Sections de premier niveau : 5 a 8, sauf la page d accueil arabe
 a 9 — etat anterieur au 568, mini-site arabe, laisse tel quel et
 signale. Aucun asset modifie, donc pas de service worker a
 rebumper.
+
+## 571 — Audit des bandes et bandeaux (12 septembre 2026)
+
+Demande du proprietaire : auditer les bandes et les bandeaux.
+Inventaire au rendu sur les 191 pages, puis mesure famille par
+famille — hauteur, rembourrage, fond, filet, taille et graisse
+du titre — et recherche d empilements. Trois derives reelles,
+toutes a moi ; un recensement qui corrige une decision que
+j avais prise la veille ; et un constat qui revient au
+proprietaire.
+
+Premiere derive. Au 570 j ai deplace le bandeau « Ouverture » de
+la brochure dans une enveloppe .grp570, alors que ma feuille
+vise « .grp568 > .g568-h ». Le bandeau s est retrouve sans
+style : rembourrage haut 0 au lieu de 76, largeur non bornee au
+lieu de 1 200, surtitre a 16,5 px sans capitales ni
+interlettrage au lieu de 11 px, titre a 24,75 px au lieu de 36.
+Il etait le seul bandeau du site dans cet etat, et rien ne le
+signalait — axe ne mesure pas la coherence d une famille.
+Selecteurs etendus aux deux enveloppes, regle mobile comprise :
+en 390 px la brochure gardait 34 px de moins que les autres.
+
+Deuxieme derive. Le titre de l encart « A lire ensuite » mesure
+35,2 px sur les six hubs du 558 et 24 px sur les dix du 569.
+Cause tracee dans le CSSOM, pas devinee : l armure typographique
+du 537 (feuille typ537, « section h2 » en !important, specificite
+0,4,1) bat ma regle sur les six pages qui la chargent. L encart
+est du mobilier de fermeture, pas du contenu : a 35 px il pese
+autant qu un titre de section. Aligne a 24 px partout, sur les
+18 pages, en assumant le !important qu il faut pour passer
+l armure.
+
+Troisieme point, et c est une erreur de jugement du 570. J y
+avais garde mon index de page sur societe, services-ep et la
+brochure « parce qu il etait le plus complet » — en comparant
+deux dispositifs alors qu il y en avait trois ou quatre.
+Recensement refait, conteneurs de page ecartes (un navigateur
+est compact, moins de 1 400 px) : societe portait le rail
+.aside a 6 entrees, mon index a 16, la barre corp-nav a 7 et
+« Parcourir cette page » a 4 — quatre navigateurs.
+services-ep en portait trois. Le rail .aside, present en haut de
+toutes ces pages, ne figurait pas dans ma comparaison de la
+veille. Et sur la brochure, le proprietaire avait deja choisi un
+sommaire replie de 52 px ; le mien en depensait 745, ouvert, 900
+px plus haut. J ai retire le mien sur ces six pages.
+
+Ou finit le chantier du 563 : mon index de page subsiste sur une
+seule page, l accueil arabe, ou il est le seul navigateur
+interne. Il avait ete pose sur quinze. Quinze moins quatorze :
+voila ce que valait l idee, une fois verifie ce qui existait
+deja. La lecon n est pas « ne rien ajouter », c est « compter
+avant d ajouter ».
+
+Ce qui reste, et qui ne m appartient pas. Sur cinq pages, deux
+ou trois dispositifs du proprietaire listent les memes ancres :
+engagements — .aside 6, corp-nav 6, « Parcourir » 6, les trois
+strictement identiques, 10 px entre les deux derniers ;
+investisseurs — .aside 7, barre 11, « Parcourir » 13 dont 11
+communs, et « Parcourir » fait 1 056 px de haut ; societe —
+.aside 6, corp-nav 7, « Parcourir » 4 ; clients — .aside 7,
+« Parcourir » 14 ; services-ep — .aside 7, « Parcourir » 6.
+Sur la brochure, le sommaire replie et la barre d ancres se
+suivent a 52 px d ecart, 16 entrees chacun. Je ne touche pas :
+ce sont ses dispositifs, et le choix entre garder la barre
+collante ou la grille de cartes est un choix d auteur.
+
+Ce que l audit n a PAS trouve, et qu il faut dire. Mon tableau
+de coherence annoncait « note : 6 tailles de corps, 9
+combinaisons » et des ecarts comparables sur more et jsig. Faux :
+mon extracteur prenait le premier element parmi h2, h3, b,
+strong, ... a l interieur de la bande — donc une amorce en gras,
+pas la bande. Verification directe : les .note mesurent partout
+14 px, graisse 400, rembourrage 14-16, filet gauche 3 px, meme
+fond. Aucune derive. Je ne garde de ce tableau que les deux
+lignes dont j ai trace la regle gagnante dans le CSSOM.
+
+Verification. Douze pages, trois configurations — bureau sombre,
+bureau clair, mobile 390 — axe WCAG 2.0/2.1/2.2 AA : zero
+violation. Ancres internes mortes : zero. Etiquettes ou feuilles
+de style orphelines apres retrait de l index : zero. Encart
+« A lire ensuite » : 24 px et trois cartes sur les 18 pages,
+deux themes. Bandeaux de groupe : rembourrage 76 px en bureau et
+34 px en mobile, surtitre 11 px capitales, titre 36 px graisse
+800 — identiques sur les quatorze pages qui en portent. Aucun
+asset modifie, donc pas de service worker a rebumper.
