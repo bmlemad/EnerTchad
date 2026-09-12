@@ -20662,3 +20662,149 @@ la configuration de la plateforme fait partie du site.
 absent. Grappes de langue reciproques sur les 191 pages. axe AA
 zero violation sur les treize pages touchees, dans trois
 configurations. L ancre que 192 liens demandaient existe.
+
+## 579 — La barre de defilement mentait (12 septembre 2026)
+
+Suite du 578 : le plan du site d abord, puis une mesure de
+performance qui a rendu autre chose que ce que je cherchais.
+
+### Le plan du site, remis d accord avec les pages
+
+Le sitemap annonce 190 URL et 587 alternates. Croise avec les
+canoniques declarees par les 191 pages : aucune canonique absente
+du plan, aucun doublon. Mais quatre URL du plan correspondent a des
+pages qui portent elles-memes <meta name="robots"
+content="noindex"> : la brochure FR et EN, la charte FR et EN. Un
+plan de site qui liste une page en noindex envoie deux consignes
+contraires au meme robot ; c est la page qui gagne, et le plan
+gaspille la visite. Les quatre blocs retires — 186 URL, 575
+alternates, XML revalide.
+
+Cela laisse une question qui n est pas la mienne : la brochure est
+le document public le plus long du site, 27 269 mots, et elle est
+en noindex. La charte est un document interne de design, le
+noindex y est juste. Pour la brochure, rien dans le journal
+n explique la decision ; elle a peut-etre ete prise a l epoque ou
+la brochure recopiait 290 Kio de contenu des hubs — duplication
+retiree depuis. Consignee comme decision a prendre : si le
+proprietaire veut la brochure dans les moteurs, c est une ligne de
+meta a changer et une URL a remettre au plan.
+
+Meme passe : le hreflang corrige au 578 sur nos-activites-en
+figurait aussi, faux, dans le plan du site — les deux alternates
+corriges. Et la date de derniere modification portee au 12
+septembre pour les 45 pages effectivement modifiees aujourd hui.
+
+### Une mesure de performance, et ce qu elle a vraiment trouve
+
+Je voulais mesurer le decalage cumule de mise en page (CLS) sur les
+191 pages. Ce que j ai obtenu est instructif de deux facons.
+
+D abord, la mesure elle-meme ne tient pas. Sur un meme chargement a
+froid, repete trois fois, la meme page rend 0, puis 0,86, puis 0.
+Mon harnais defile de 600 px toutes les 55 ms, soit environ
+11 000 px par seconde — dix fois plus vite qu un lecteur. A cette
+vitesse, les sections a calcul differe entrent dans le champ avant
+d etre rendues et le navigateur bascule entre la hauteur estimee et
+la hauteur reelle. Je ne publie donc AUCUN chiffre de CLS : ni bon,
+ni mauvais. Je sais seulement que 189 pages sur 191 sont restees
+sous le seuil dans la premiere passe, et que ce chiffre ne prouve
+rien.
+
+Mais en cherchant la cause de ces bascules, une mesure
+deterministe, elle, a rendu un vrai defaut.
+
+### La brochure annoncait une page deux fois et demie trop longue
+
+Dix pages du site utilisent content-visibility:auto pour differer
+le calcul des sections hors ecran — 102 sections en tout. Chacune
+declare une hauteur estimee, qui sert au navigateur tant que la
+section n est pas rendue. C est cette hauteur qui fait la longueur
+de la barre de defilement au chargement.
+
+Les estimations etaient fausses, et pas de peu. Mesure sur les
+102 sections, en comparant la hauteur estimee a la hauteur reelle
+apres rendu : ecart median de 662 px en bureau, 65 pour cent des
+sections a plus de 400 px. Les extremes disent mieux : la section
+Reseau de la brochure declarait 32 304 px pour 820 px reels, un
+facteur 39 ; la meme section, sur la page Reseau, declarait 900 px
+pour 15 083 px reels en bureau et 29 631 px en mobile.
+
+Traduit en ce que voit un visiteur, page par page, hauteur
+annoncee au chargement contre hauteur reelle :
+
+- brochure : 257 978 px annonces pour 111 285 px reels — 132 pour
+  cent d ecart. La barre de defilement etait deux fois et demie
+  trop longue : tirer le curseur au milieu deposait le lecteur aux
+  trois quarts du document, et le curseur grandissait sous le
+  doigt a mesure que les sections se rendaient ;
+- brochure EN : 121 pour cent ;
+- Reseau EN : 52 pour cent en bureau, 71 en mobile ;
+- Reseau FR : 73 pour cent en mobile ;
+- Services parapetroliers : 49 pour cent en mobile ;
+- Atlas du secteur : 36 pour cent en bureau, 52 en mobile.
+
+La cause est simple : ces estimations ont ete ecrites au chapitre
+562, d apres une mesure de l epoque. Les chapitres 568 et 570 ont
+regroupe et allege ces pages — la brochure a perdu les 290 Kio
+qu elle recopiait — et personne n a remesure. Une hauteur estimee
+est une mesure datee : elle vieillit avec le contenu.
+
+Les 102 sections remesurees au rendu reel, a deux largeurs (1440 px
+et 390 px), avec une marge de 2 pour cent pour ne pas sous-estimer
+systematiquement, et reecrites dans un bloc par page. Apres :
+l ecart tombe a 2 a 8 pour cent en bureau, 0 a 1 pour cent en
+mobile. La brochure annonce 116 675 px pour 111 285 reels.
+
+Un detail qui aurait fait echouer la correction sans qu elle le
+dise : sur l Atlas, la hauteur estimee etait ecrite dans l attribut
+style de la section. Un style en ligne bat n importe quel selecteur
+d identifiant ; mon bloc n avait aucun effet, et la mesure le
+montrait — 36 pour cent d ecart avant, 36 apres. La valeur retiree
+du style en ligne, la section garde son content-visibility et prend
+son estimation du bloc : 1 pour cent en bureau, 0 en mobile.
+
+### Mes erreurs
+
+Trois, toutes sur l instrument, et la troisieme m a presque fait
+publier un faux defaut.
+
+Premiere : j ai cru mon serveur de test. Il est mono-thread — il
+sert une requete a la fois — et une page qui charge quarante
+ressources voit sa derniere feuille de style arriver des secondes
+trop tard, ce qui fabrique des decalages qu aucun visiteur ne
+connaitra. Serveur remplace par une version multi-thread en
+HTTP/1.1 persistant. Les decalages ont persiste : ce n etait pas la
+cause, mais je ne pouvais pas le savoir avant de corriger.
+
+Deuxieme : j ai annonce a l ecran des chiffres de poids transfere
+et de LCP. Les deux etaient nuls ou absurdes — poids median de
+0 Kio, parce que le navigateur servait tout depuis son cache apres
+la premiere page ; LCP introuvable, parce que le navigateur sans
+affichage ne publie pas cette mesure. Rien de tout cela n est
+rapporte ici.
+
+Troisieme : le CLS. J ai failli ecrire « deux pages au-dessus du
+seuil » sur la foi d une seule passe. Trois repetitions a froid ont
+montre 0 / 0,86 / 0 sur la meme page. Un chiffre qui varie du tout
+au rien d un chargement a l autre n est pas une mesure, c est un
+tirage au sort. Ce qui a sauve ce chapitre, c est d avoir cherche
+une grandeur deterministe a la place : la hauteur annoncee contre
+la hauteur reelle ne depend ni du reseau, ni de la vitesse de
+defilement, ni du hasard — elle se mesure deux fois et rend deux
+fois le meme nombre. Le defaut trouve la est reel, chiffre, et
+corrige.
+
+Quatrieme, mineure : une violation target-size apparue sur l Atlas
+EN en mobile dans la passe de controle, introuvable en la
+reprenant avec 200 ms d attente de plus. axe avait mesure des
+elements en cours d apparition. Pas un defaut.
+
+### Etat
+
+Plan du site d accord avec les pages : 186 URL, zero page noindex
+listee, hreflang corrige. 102 sections a calcul differe remesurees
+sur dix pages : ecart d estimation de la hauteur de page ramene de
+1 a 132 pour cent a 0 a 8 pour cent. axe AA zero violation sur ces
+dix pages dans trois configurations. Aucun asset modifie, donc pas
+de bump du service worker.
