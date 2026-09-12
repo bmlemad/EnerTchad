@@ -207,3 +207,84 @@ body:has(#navLinks.open) #ckn,body:has(#navLinks.open) .lum-ctl,body:has(#navLin
 .nx-util-in:not(#_):not(#__) a{display:inline-flex;align-items:center;min-height:24px}
 .crumb:not(#_):not(#__) a{display:inline-flex;align-items:center;min-height:24px}
 .foot-col:not(#_):not(#__) a{display:inline-flex;align-items:center;min-height:24px}
+
+/* --- Ch573 - le fond du site : un champ, plus une photo ----------------------
+   .rootland portait une photographie sous un voile de 68-78 %. Retiree. Le calque
+   demeure (toute la translucidite du site est conditionnee a :has(.rootland)) et
+   recoit un champ de lumiere : le sol du systeme plus quatre lueurs de la palette,
+   derive lente de 40 s, une declinaison par theme. Le voile tombe a 5-18 % : un
+   champ dessine n a pas besoin qu on l assombrisse pour que le texte tienne
+   (titre du heros mesure au pixel : 20,2:1 en sombre, 16,2:1 en clair).
+   Le heros porte un second calque, .diapo, traite au meme endroit.             */
+.rootland:not(#_):not(#__){
+  background:
+    radial-gradient(46% 50% at 12% 16%, rgba(219,174,74,.44), transparent 64%),
+    radial-gradient(42% 48% at 88% 10%, rgba(90,167,240,.38), transparent 62%),
+    radial-gradient(56% 58% at 82% 88%, rgba(31,164,150,.36), transparent 64%),
+    radial-gradient(50% 54% at 18% 92%, rgba(224,162,78,.30), transparent 62%),
+    radial-gradient(34% 38% at 52% 50%, rgba(120,90,220,.16), transparent 64%),
+    #0A1220 !important;
+  filter:none !important;
+  animation:et573Derive 40s ease-in-out infinite alternate !important;
+}
+html.et-plight .rootland:not(#_):not(#__),
+html.et-jlight .rootland:not(#_):not(#__){
+  background:
+    radial-gradient(46% 50% at 12% 16%, rgba(219,174,74,.20), transparent 64%),
+    radial-gradient(42% 48% at 88% 10%, rgba(90,167,240,.16), transparent 62%),
+    radial-gradient(56% 58% at 82% 88%, rgba(31,164,150,.15), transparent 64%),
+    radial-gradient(50% 54% at 18% 92%, rgba(224,162,78,.13), transparent 62%),
+    #FAF7F1 !important;
+}
+@keyframes et573Derive{
+  from{transform:scale(1.05) translate3d(-1.2%,-.9%,0)}
+  to{transform:scale(1.13) translate3d(1.5%,1.1%,0)}
+}
+@media(prefers-reduced-motion:reduce){
+  .rootland:not(#_):not(#__){animation:none !important}
+}
+.rootland:not(#_):not(#__)::after{
+  background:linear-gradient(180deg,rgba(7,12,21,.05) 0%,rgba(7,12,21,.18) 100%) !important}
+html.et-plight .rootland:not(#_):not(#__)::after,
+html.et-jlight .rootland:not(#_):not(#__)::after{
+  background:linear-gradient(180deg,rgba(250,247,241,.08) 0%,rgba(250,247,241,.22) 100%) !important}
+
+/* le heros : second calque photo (.diapo), meme traitement.
+   Son propre degrade est remis a plat — sous un voile creme il composait un gris. */
+.diapo:not(#_):not(#__):not(#___){background:transparent !important}
+.diapo:not(#_):not(#__):not(#___) i{
+  background-image:none !important;background:transparent !important;animation:none !important}
+.diapo:not(#_):not(#__):not(#___)::before{display:none !important}
+.diapo:not(#_):not(#__):not(#___)::after{
+  background:linear-gradient(180deg,rgba(7,12,21,.04) 0%,rgba(7,12,21,.20) 74%,rgba(7,12,21,.32) 100%) !important}
+html.et-plight .diapo:not(#_):not(#__):not(#___)::after,
+html.et-jlight .diapo:not(#_):not(#__):not(#___)::after{
+  background:linear-gradient(180deg,rgba(250,247,241,.06) 0%,rgba(250,247,241,.22) 74%,rgba(250,247,241,.38) 100%) !important}
+
+/* le heros (.diapo, 26 pages dont l accueil) porte le meme champ : c est lui, et non
+   .rootland, qui est visible sur ces pages. */
+.diapo:not(#_):not(#__):not(#___){
+  background:
+    radial-gradient(46% 54% at 14% 14%, rgba(219,174,74,.40), transparent 64%),
+    radial-gradient(44% 50% at 88% 8%, rgba(90,167,240,.34), transparent 62%),
+    radial-gradient(54% 56% at 80% 92%, rgba(31,164,150,.30), transparent 64%),
+    radial-gradient(48% 52% at 16% 94%, rgba(224,162,78,.26), transparent 62%),
+    #0A1220 !important;
+  animation:et573Champ 44s ease-in-out infinite alternate !important;
+}
+html.et-plight .diapo:not(#_):not(#__):not(#___),
+html.et-jlight .diapo:not(#_):not(#__):not(#___){
+  background:
+    radial-gradient(46% 54% at 14% 14%, rgba(219,174,74,.18), transparent 64%),
+    radial-gradient(44% 50% at 88% 8%, rgba(90,167,240,.14), transparent 62%),
+    radial-gradient(54% 56% at 80% 92%, rgba(31,164,150,.13), transparent 64%),
+    radial-gradient(48% 52% at 16% 94%, rgba(224,162,78,.12), transparent 62%),
+    #FAF7F1 !important;
+}
+@keyframes et573Champ{
+  from{background-position:0% 0%,100% 0%,100% 100%,0% 100%,0 0}
+  to{background-position:6% 4%,94% 3%,95% 96%,5% 97%,0 0}
+}
+@media(prefers-reduced-motion:reduce){
+  .diapo:not(#_):not(#__):not(#___){animation:none !important}
+}
