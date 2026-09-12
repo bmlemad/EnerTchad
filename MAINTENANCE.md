@@ -21028,3 +21028,110 @@ chaque octet le compte de la plage la plus interne qui le
 contient : on peint un tableau d octets en appliquant les plages
 dans l ordre donne, du plus externe au plus interne. Le chiffre
 est passe de 100 pour cent a 62-88.
+
+## 582 — Consolidation de la serie du 12 septembre (12 septembre 2026)
+
+Cinq chapitres publies dans la journee, dix-sept lots, parite git
+0 a chaque fois. Balayage de controle sur l ensemble.
+
+### Le balayage
+
+191 pages x trois configurations — bureau sombre, bureau clair,
+mobile sombre — soit 573 chargements. Pour chacun : axe WCAG
+2.0/2.1/2.2 AA, erreurs de console et erreurs de page,
+debordement horizontal du document avec identification de l
+element fautif, et le test d occlusion du 577 (du texte peint
+passe-t-il sous l en-tete fixe).
+
+Trois signalements sur 573. Zero erreur de console, zero erreur
+de page, zero debordement horizontal, zero texte couvert par l
+en-tete.
+
+Les trois signalements sont le meme : color-contrast sur .sc-lb,
+l etiquette « Suite » du bouton de descente, sur trois pages en
+anglais et dans une seule configuration a la fois. Verifie :
+l etiquette est en or #FFB703 sur le fond propre du bouton,
+#0B1422 a 78 pour cent — 10,64:1 en theme sombre, 5,43:1 apres
+composition sur le creme en theme clair. Les deux au-dessus du
+seuil de 4,5:1. Dans les captures fautives, le bouton etait a
+0,85 et 0,89 d opacite : il etait en train d apparaitre, et axe a
+mesure pendant la transition. Ce n est pas un defaut du site mais
+un instantane pris au mauvais moment — le quatrieme du genre
+aujourd hui.
+
+### La serie, en une ligne par chapitre
+
+- **577.** Un test d occlusion a trouve 34 pages ou du texte peint
+  passe sous l en-tete fixe. Sur 28, la barre de chaine du 552
+  etait invisible depuis ce chapitre-la. Plus l en-tete non style
+  de Cibles 2030, et quatorze familles de cibles ramenees a 24 px
+  sur tout le site — dont le selecteur de langue arabe, 7 px de
+  large sur 180 pages.
+- **578.** 23 019 liens internes verifies. 192 liens « Nos poles »
+  pointaient vers une ancre disparue. Onze autres fragments morts
+  rediriges, un hreflang croise sur la passerelle anglaise.
+- **579.** La brochure annoncait 257 978 px pour un document de
+  111 285 : la barre de defilement etait deux fois et demie trop
+  longue. 102 sections remesurees, ecart ramene de 1-132 a 0-8
+  pour cent. Plan du site remis d accord avec les pages.
+- **580.** 8,31 Mio d images chargees et jamais montrees, restes
+  des 573-575 : 76 instructions de telechargement retirees sur 74
+  pages, 6,95 Mio economises.
+- **581.** Imprimer la FAQ donnait les questions sans les
+  reponses. 86 024 signes rendus a l impression sur onze pages.
+
+### Ce qui attend une decision
+
+Trois questions rendues au proprietaire, rien applique seul :
+
+1. **La brochure est en noindex.** 27 269 mots, le plus long
+   document public du site, absent des moteurs. Rien dans le
+   journal n explique la decision ; elle date peut-etre de l
+   epoque ou la brochure recopiait 290 Kio des hubs, duplication
+   retiree depuis. Le plan du site ne la liste plus — il ne
+   pouvait pas annoncer une page qui se declare non indexable —
+   donc l etat est coherent, mais peut-etre pas voulu.
+2. **Le diaporama cache de la brochure.** Neuf photographies du
+   Tchad dans le hero, avec role="img" et un libelle, masquees par
+   la regle qui a retire les photographies de hero ; six de leurs
+   images se telechargent quand meme (1,37 Mio). Le rendre, comme
+   au 575, ou retirer le balisage et les fichiers.
+3. **Les trois decisions deja ouvertes** : « Parcourir cette page »
+   sur quatre hubs (elle porte de une a six phrases uniques), le
+   plancher de 900 mots de la charte face aux 881 mots de l
+   accueil, et le chargement conditionnel des 85 Kio de theme
+   clair.
+
+### Ce que la journee a appris sur les instruments
+
+Quatre fois aujourd hui, un instrument a annonce un defaut qui n
+existait pas, ou masque un defaut qui existait. Le motif est
+toujours le meme : **demander au DOM ce qu il contient au lieu de
+demander au navigateur ce qu il peint.**
+
+- comparer l ordonnee d une BOITE au bas de l en-tete, au lieu de
+  celle du TEXTE : 29 pages annoncees, zero reelle ;
+- lire le rectangle d un noeud de texte sans ecarter les
+  techniques de masquage visuel : 101 pages annoncees, 34 reelles ;
+- compter les requetes vues par le pilote au lieu de la
+  chronologie des ressources : 29,55 Mio annonces, 8,31 reels ;
+- additionner des plages de couverture IMBRIQUEES : 100 pour cent
+  de JavaScript execute annonce, 62 a 88 reels.
+
+Et une cinquieme, plus utile encore : le CLS mesure trois fois a
+froid sur la meme page rend 0, puis 0,86, puis 0. Un chiffre qui
+varie du tout au rien n est pas une mesure. Ce qui a sauve le 579,
+c est d avoir cherche une grandeur DETERMINISTE a la place — la
+hauteur annoncee contre la hauteur reelle, qui rend deux fois le
+meme nombre. La regle a retenir : quand une mesure oscille,
+changer de grandeur, pas augmenter le nombre d essais.
+
+### Etat du site
+
+191 pages, 186 au plan du site, deux langues completes et un
+mini-site arabe de huit pages. axe AA zero violation sur 573
+chargements. Zero ancre morte, zero fragment absent sur 23 019
+liens internes, zero cible interactive sous 24 px hors exemption,
+zero texte couvert par l en-tete, zero image chargee sans etre
+montree hors la question de la brochure, zero orphelin dans
+assets/. SW et-202609121540.
