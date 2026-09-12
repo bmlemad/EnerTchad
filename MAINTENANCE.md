@@ -21235,3 +21235,124 @@ d etre publie : ici, « zero animation » et « zero page chargee »
 produisent le meme rapport. J ai ajoute le compte des pages
 effectivement mesurees a la sortie, pour que les deux ne puissent
 plus se confondre.
+
+## 584 — Les quatre arbitrages (12 septembre 2026)
+
+Les quatre questions laissees ouvertes par la serie du jour sont
+tranchees. Deux demandent du travail, deux se closent par une
+ligne au journal.
+
+### 1. La brochure entre dans les moteurs
+
+Decision : l indexer. Le noindex des deux brochures est retire —
+index,follow,max-image-preview:large, comme les 124 autres pages
+indexables — et les deux URL reviennent au plan du site avec leurs
+alternates, qui reprennent exactement ce que les pages declarent.
+Plan a 188 URL, 581 alternates, XML revalide.
+
+27 269 mots de contenu canonique deviennent trouvables. La charte
+FR et EN reste en noindex et hors du plan : c est un document
+interne de design, le noindex y est juste.
+
+### 2. Le diaporama du heros redevient visible
+
+Decision : le rendre. C est le principe deja arbitre au 575 — un
+element qui se declare role="img" est du contenu, pas du fond.
+L exemption est posee dans la feuille qui masquait les calques
+photographiques de heros : elle continue de masquer tout le reste
+(les fonds en style en ligne, .hero-photo, .hero-bg, les
+diaporamas sans role), et laisse passer celui-la seul. Verifie :
+aucune autre page du site ne porte un .hx-shots, et les 24 autres
+pages qui chargent cette feuille ne changent pas d un pixel.
+
+Neuf photographies du Tchad reviennent : dunes au couchant,
+acacia, lac vu de l espace, gazelle, fennec, caracal, guepard
+saharien, oryx algazelle, addax. Un script en melange l ordre a
+chaque visite ; un bouton de pause est present et visible, ce que
+le critere 2.2.2 exige d un diaporama qui defile seul ; sous
+prefers-reduced-motion, l animation s arrete et une seule
+photographie reste — verifie, zero animation en cours.
+
+Poids : 0,93 Mio pour les neuf. Six d entre elles (0,68 Mio) se
+telechargeaient deja sans etre montrees avant ce chapitre. Le
+surcout reel est donc de 0,25 Mio, et il achete quelque chose.
+
+### Et ce que la mesure a impose en chemin
+
+Rendre le diaporama visible remet du texte sur des photographies.
+J ai mesure le fond au pixel sous la ligne doree du titre,
+diapositive par diapositive, en masquant le texte du heros pour
+capturer le fond seul.
+
+Le voile deja present dans chaque image (.46 en haut, .34 a 40 %,
+.82 en bas) est au plus clair exactement la ou le titre se pose.
+L or du titre tombait a 2,48:1 sur l addax, 2,67 sur les dunes,
+2,84 sur le guepard — sous le seuil de 3:1 du grand texte.
+
+Deux corrections, mesurees l une apres l autre.
+
+Un voile propre au diaporama, creuse dans la bande du titre (26 a
+52 % de la hauteur) et nul en haut et en bas pour que la
+photographie garde sa presence : la mediane du fond remonte a
+3,48:1 au pire (extremite bleue du degrade du titre sur les
+dunes), 12,94:1 au mieux.
+
+Mais la mediane ne dit pas tout, et la capture le montrait : sur
+l addax, « transformer au Tchad » traverse la robe claire de
+l animal, et sur les dunes le titre passe devant un ciel pale.
+Un halo sombre porte par le texte lui-meme rend la lisibilite
+independante de ce qu il y a derriere, sans eteindre l image.
+Regarde a l ecran sur les trois diapositives les plus claires :
+le titre et le chapeau se detachent nettement.
+
+axe AA zero violation sur les deux brochures dans trois
+configurations, et sur trois pages temoin qui partagent la feuille
+modifiee.
+
+### 3. « Parcourir cette page » reste
+
+Decision : garder partout. La mesure du 572 tenait : ces cartes
+portent des phrases qui n existent nulle part ailleurs — six sur
+six sur engagements, quatre sur services-ep, deux sur clients, une
+sur investisseurs. Retirer le bloc ferait perdre du texte, pas
+seulement un navigateur. Question close.
+
+### 4. Le theme clair reste charge pour tout le monde
+
+Decision : ne pas y toucher. Les chiffres restent consignes — 113
+Kio des 407 Kio de CSS externe sont des regles reservees au theme
+clair, dont 85 Kio dans plight_extrait.css, et un visiteur en
+theme sombre n en utilise aucune. Le gain serait de 55 a 113 Kio
+pour la moitie des visiteurs. Le risque est un eclair de page non
+stylee, ou un theme faux, sur 146 pages. La piste reste ecrite
+ici ; elle n est pas appliquee.
+
+### Mon erreur
+
+Trois fois de suite, ma mesure du fond sous le titre a rendu des
+pixels quasi blancs la ou le voile rend cela impossible. J ai
+d abord cru a un ciel tres clair, puis a un defaut du voile.
+C etait le titre lui-meme. Le heros de la brochure fait tourner
+SON TITRE autant que ses photographies : entre le moment ou je
+mesure la boite du titre et celui ou je capture, le texte a
+change, et « masquer le titre » ne masquait que celui qui etait
+affiche au moment ou la regle s appliquait. Mes captures de
+« fond pur » contenaient un autre titre.
+
+La version qui tient masque tout le contenu du heros sauf le
+calque du diaporama, et ne garde que ce calque visible. Elle rend
+des fonds propres — verifie a l oeil sur les captures avant de
+faire confiance aux nombres.
+
+C est la sixieme fois aujourd hui qu un instrument me raconte une
+histoire, et la lecon se precise : quand une mesure rend une
+valeur physiquement impossible, ce n est pas la page qui est
+etrange, c est la mesure qui capture autre chose que ce qu elle
+croit.
+
+### Etat
+
+Plan du site a 188 URL. Brochure indexable en FR et EN. Diaporama
+de neuf photographies visible, avec pause, arret sous mouvement
+reduit, et un titre lisible sur chacune des neuf. axe AA zero
+violation. SW et-202609121820.
