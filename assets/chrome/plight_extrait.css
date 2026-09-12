@@ -26,7 +26,7 @@ html.et-plight .subland { display: none !important; }
 html.et-plight:not(#_):not(#__) { background: radial-gradient(58% 46% at 10% 4%, rgba(226, 178, 64, 0.52), transparent 70%) fixed, radial-gradient(54% 44% at 92% 10%, rgba(59, 140, 231, 0.46), transparent 70%), radial-gradient(48% 40% at 14% 88%, rgba(28, 190, 130, 0.36), transparent 72%), radial-gradient(56% 46% at 86% 94%, rgba(206, 108, 170, 0.3), transparent 72%), linear-gradient(rgb(250, 248, 241) 0%, rgb(239, 237, 228) 100%) !important; }
 html.et-plight body { background: rgb(250, 247, 241) !important; }
 html.et-plight main .cp-ct a:not(#_) b { color: rgb(16, 22, 31) !important; }
-html.et-plight main section:not(#_), html.et-plight main article:not(#_), html.et-plight main div:not(#_) { background-image: none !important; }
+html.et-plight main section:not(#_), html.et-plight main article:not(#_), html.et-plight main div:not(#_):not([role="img"]) { background-image: none !important; }
 html.et-plight main article:not(#_) { background-color: rgb(255, 255, 255) !important; border: 1px solid rgba(26, 35, 48, 0.16) !important; box-shadow: rgba(26, 35, 48, 0.06) 0px 2px 10px !important; }
 html.et-plight #secrail a:not(#_) { background: rgba(11, 20, 34, 0.85) !important; color: rgba(245, 247, 250, 0.85) !important; border-color: rgba(255, 255, 255, 0.14) !important; }
 html.et-plight main button:not(#_):not(#plightBtn) { color: rgb(26, 35, 48) !important; }

@@ -309,3 +309,26 @@ html:not(.et-plight):not(.et-jlight) #maillon-aval:not(#_) .t550-bg{--fx:86%}
 html:not(.et-plight):not(.et-jlight) .t550-seg:not(#_):not(#__)::before{
   background:linear-gradient(165deg,rgba(0,28,45,.42) 0%,rgba(0,24,38,.22) 55%,rgba(0,21,34,.34) 100%) !important;
 }
+
+/* --- Ch575 - les fonds de sous-pages ----------------------------------------
+   .subland : photo plein ecran fixe sous un voile de 50-60 %, sur 60 pages, et
+   masquee en theme clair — la meme configuration que .rootland avant le 573.
+   Elle est bien visible : la masquer change 18 a 70 % des pixels selon la page.
+   Meme champ que le fond du site, declare en sombre seulement puisque le theme
+   clair la masque deja. Le voile tombe de 50-60 a 6-20 %.                     */
+html:not(.et-plight):not(.et-jlight) .subland:not(#_):not(#__){
+  background-image:
+    radial-gradient(46% 50% at 12% 16%, rgba(219,174,74,.40), transparent 64%),
+    radial-gradient(42% 48% at 88% 10%, rgba(90,167,240,.34), transparent 62%),
+    radial-gradient(56% 58% at 82% 88%, rgba(31,164,150,.32), transparent 64%),
+    radial-gradient(50% 54% at 18% 92%, rgba(224,162,78,.26), transparent 62%),
+    radial-gradient(34% 38% at 52% 50%, rgba(120,90,220,.14), transparent 64%) !important;
+  background-color:#0A1220 !important;
+  background-size:auto !important;
+  animation:et573Derive 40s ease-in-out infinite alternate !important;
+}
+@media(prefers-reduced-motion:reduce){
+  html:not(.et-plight):not(.et-jlight) .subland:not(#_):not(#__){animation:none !important}
+}
+html:not(.et-plight):not(.et-jlight) .subland:not(#_):not(#__)::after{
+  background:linear-gradient(180deg,rgba(7,12,21,.06) 0%,rgba(7,12,21,.20) 100%) !important}
