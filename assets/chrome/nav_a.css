@@ -340,3 +340,86 @@ html:not(.et-plight):not(.et-jlight) .subland:not(#_):not(#__)::after{
 .nh-une-all:not(#_):not(#__),
 .doc-all:not(#_):not(#__){
   display:inline-flex;align-items:center;min-height:24px}
+
+/* --- Ch577 - la campagne des cibles : quatorze familles, tout le site --------
+   Le balayage des 191 pages a rendu 68 familles sous la barre des 24 px du
+   critere 2.5.8. La moitie sont des liens dans une phrase, exemptes par le
+   critere lui-meme : glossaire (a.glref), adresses de courriel citees au fil du
+   texte, renvois du genre « nos facteurs de risque ». Les quatorze qui suivent
+   ne sont pas dans une phrase : ce sont des commandes autonomes ou des rangees
+   de liens d action. Elles sont corrigees ici, une seule fois, pour les 182
+   pages qui chargent cette feuille.                                            */
+
+/* 1. le selecteur de langue arabe. Il mesure 7 x 24 px sur 180 pages : la seule
+      page ou il est correct est l accueil, qui lui donne un padding que les
+      autres n ont jamais recu. On ne recopie pas ce padding — il elargirait la
+      barre — on pose la largeur minimale et on recentre le glyphe.             */
+.nx-langx:not(#_):not(#__){min-width:24px;justify-content:center}
+
+/* 2. le bandeau legal du pied de page : « FAQ » n a que 20 px de large. Ch568
+      lui avait donne la hauteur, pas la largeur.                               */
+.foot-legal-links:not(#_):not(#__) a{min-width:24px;justify-content:center}
+
+/* 3. les fils d Ariane. Ch568 avait traite la famille .crumb ; la famille
+      .bcrumb, plus repandue (42 pages), etait restee de cote.                  */
+nav.bcrumb:not(#_):not(#__) a,
+.thero-bc:not(#_):not(#__) a{
+  display:inline-flex;align-items:center;min-height:24px}
+
+/* 4. les retours et les raccourcis autonomes : signature de bas d article,
+      retour au pole, « Tous les carnets », « Tout le fil », les deux boutons du
+      bandeau d appel, le retour boutique.                                      */
+.jsig:not(#_):not(#__) a,
+.pmore-home:not(#_):not(#__),
+.c7all:not(#_):not(#__),
+.m457-all:not(#_):not(#__),
+.cb-btn:not(#_):not(#__),
+.bback:not(#_):not(#__){
+  display:inline-flex;align-items:center;min-height:24px}
+
+/* 5. les rangees de liens d action — « Aller plus loin : … · … », « Le detail
+      operationnel : … », les synergies des projets, les renvois de fin de
+      section. L amorce n est pas une phrase : c est une etiquette suivie d une
+      liste de cibles.                                                          */
+.rp-more:not(#_):not(#__) a,
+.exp-note:not(#_):not(#__) a,
+.vt-links:not(#_):not(#__) a,
+.pj-syn:not(#_):not(#__) a,
+.xlink:not(#_):not(#__) a,
+.rublink:not(#_):not(#__),
+.isv-s:not(#_):not(#__) a.go,
+.card-m:not(#_):not(#__)>a{
+  display:inline-flex;align-items:center;min-height:24px}
+
+/* --- Ch577 lot 2 - ce que l en-tete fixe cachait ----------------------------
+   Le test d occlusion (elementFromPoint sur le rectangle de chaque noeud de
+   texte) a trouve 34 pages ou du texte peint se retrouve SOUS l en-tete fixe.
+   Le gros du lot : le fil de chaine .fil552 pose en Ch552 tout en haut de
+   <main>, sans decalage pour l en-tete. Les 28 pages de pole affichaient donc
+   « La chaine : 01 Amont -> 02 Intermediaire -> 03 Aval » derriere la barre de
+   navigation — invisible pour tout le monde depuis Ch552.
+   La reservation de l en-tete existe deja, mais elle est posee APRES le fil,
+   en marge haute de .pole-subnav (118 px en bureau, 79 px en dessous de
+   1240 px, pour un en-tete de 110 / 71 px). On la deplace d un cran vers le
+   haut : le fil descend sous l en-tete, la sous-barre remonte d autant, et la
+   geometrie de la page ne bouge pas d un pixel (sous-barre a 158 px en bureau
+   avant comme apres).                                                         */
+.fil552:not(#_):not(#__){padding-top:122px}
+.fil552:not(#_):not(#__) ~ .pole-subnav:not(#_){margin-top:8px}
+@media(max-width:1240px){
+  .fil552:not(#_):not(#__){padding-top:83px}
+  .fil552:not(#_):not(#__) ~ .pole-subnav:not(#_){margin-top:8px}
+}
+
+/* le rail a points de la brochure : deux cibles de 13 x 15 px */
+#dotnav:not(#_) a{min-width:24px;min-height:24px;align-items:center;justify-content:center}
+
+/* « Ouvrir le tableau de bord » : seul contenu de son bloc, 141 x 13 px */
+.std:not(#_):not(#__)>b>a{display:inline-flex;align-items:center;min-height:24px}
+
+/* --- Ch577 lot 3 - WCAG 1.4.1 : la couleur seule ----------------------------
+   Un balayage axe des 191 pages sur la seule regle link-in-text-block rend
+   quatre liens, tous sur paiements-etats : de l or #E8C36A dans un paragraphe
+   creme #E9EEF5, soit 1,44:1 entre le lien et son texte (le minimum est 3:1)
+   et aucun soulignement. Un daltonien ne voit pas qu il y a un lien.          */
+.pe-note:not(#_):not(#__) a{text-decoration:underline;text-underline-offset:.18em}
