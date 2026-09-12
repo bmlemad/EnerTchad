@@ -332,3 +332,11 @@ html:not(.et-plight):not(.et-jlight) .subland:not(#_):not(#__){
 }
 html:not(.et-plight):not(.et-jlight) .subland:not(#_):not(#__)::after{
   background:linear-gradient(180deg,rgba(7,12,21,.06) 0%,rgba(7,12,21,.20) 100%) !important}
+
+/* --- Ch576 - revue de l accueil : SC 2.5.8, deux liens d action ---------------
+   « Tout le fil » (96 x 18) en pied du fil d actualite et « Tous les documents »
+   (153 x 15) en pied de l etagere. Ce ne sont pas des liens dans une phrase mais
+   des liens d action en fin de bloc : la barre des 24 px s applique.            */
+.nh-une-all:not(#_):not(#__),
+.doc-all:not(#_):not(#__){
+  display:inline-flex;align-items:center;min-height:24px}
