@@ -19905,3 +19905,80 @@ retient une version, ni ma publication qui a rate : c est un
 deploiement qui n a pas eu lieu. Consigne ici, et le controle en
 production est refait apres coup — un lot pousse n est publie
 que lorsque la page servie le prouve.
+
+## 570 — QA visuelle : trois defauts que seul l oeil voyait (12 septembre 2026)
+
+Demande du proprietaire : une QA visuelle. Jusqu ici je mesurais
+— axe, contrastes, geometrie, ancres. Cette fois j ai capture
+les zones modifiees et je les ai regardees. Trois defauts sont
+apparus, aucun detectable par mes harnais, et les trois sont a
+moi.
+
+Le premier, et le plus gros. La brochure portait deja SA
+structure de chapitres : six « Actes » signes par le
+proprietaire — I La these, II La chaine integree, III Le socle
+technologique, IV Le terrain, V Nos engagements, VI Investir.
+Au 568 j ai pose par-dessus une seconde structure, la mienne, et
+decalee. Mesure au rendu : quatre de mes sept bandeaux tombaient
+114 px sous un Acte qui disait deja la meme chose, et l Acte IV
+« Le terrain » se retrouvait enterre au milieu de mon groupe
+« Technologie et transition ». Le lecteur voyait deux titres de
+chapitre l un sur l autre, qui ne decoupaient pas la page
+pareil. Correction : les parties de la brochure SONT les actes.
+Mes sept enveloppes ont ete defaites et reposees sur les
+frontieres des actes, chacune reculee jusqu a englober son
+propre marqueur, et nommee par le titre d acte du proprietaire
+(aria-labelledby) et non par une etiquette de mon cru. Elles ont
+perdu leur bandeau : il n en reste qu un, l Ouverture, la ou
+aucun acte n existe. L index reprend les actes mot pour mot.
+Preuve : texte de <main> identique avant et apres — 184 408
+signes, seule difference un compteur anime qui affichait 40 %
+dans une capture et 33 % dans l autre ; 30 sections a
+identifiant ; 8 sections de premier niveau.
+
+Le deuxieme. Un bandeau de partie doit nommer la partie, pas
+repeter la premiere section. Mesure du recouvrement lexical
+entre chaque bandeau et le titre place juste en dessous : 18
+bandeaux au-dessus de 0,50, dont cinq a 1,00. Le pire, sur
+investisseurs : « Le capital ouvert a tous les Tchadiens. » en
+bandeau, puis « Le capital ouvert a tous les Tchadiens. » en
+titre de section, deux lignes de suite. Vingt et un bandeaux
+reecrits au niveau de la partie. Apres : plus aucun
+recouvrement reel — les deux cas restants a 0,50 ne partagent
+que des mots-outils (« selon », « votre », « what »),
+verification faite hors liste de mots vides.
+
+Le troisieme, et c est une faute du 563 que je traine depuis
+sept chapitres. J ai pose un index de page sur quinze pages sans
+regarder si elles en avaient deja un. Huit en avaient : le
+navigateur « Parcourir cette page » du proprietaire, parfois
+double d une barre d ancres collante. Sur investisseurs, quatre
+dispositifs de navigation se succedaient avant le premier
+paragraphe : mes pastilles, la barre collante a onze entrees,
+l espace investisseurs, puis « Parcourir cette page · 13
+thematiques ». Comptage des cibles : clients 12 chez moi contre
+14 chez lui · investisseurs 16 contre 13 plus 11 · engagements 8
+contre 6 plus 6 · solutions 9 contre 6. J ai retire le mien sur
+ces huit pages, et garde le mien la ou il est le plus complet —
+societe (16 contre 4), services-ep (12 contre 6), la brochure
+(25, seule) et la page arabe (9, seule).
+
+Ce que cette journee dit de ma methode. Mes harnais ont valide
+le 568 et le 569 sans rien signaler : zero violation axe, zero
+ancre morte, contrastes a 16:1, sections dans le gabarit. Tout
+cela restait vrai. Mais aucun de ces controles ne pouvait voir
+qu une page affichait deux titres de chapitre superposes, ni
+qu une phrase etait imprimee deux fois de suite, ni qu on
+empilait quatre menus avant le texte. Un site peut etre
+mesurable et illisible. La capture et le regard ne remplacent
+pas la mesure ; ils rattrapent ce que la mesure ne sait pas
+formuler.
+
+Verification. Quinze pages, trois configurations — bureau
+sombre, bureau clair, mobile 390 sombre — axe WCAG 2.0/2.1/2.2
+AA : zero violation partout. Ancres internes mortes : zero.
+Etiquettes de partie orphelines (un label sans index) : zero.
+Sections de premier niveau : 5 a 8, sauf la page d accueil arabe
+a 9 — etat anterieur au 568, mini-site arabe, laisse tel quel et
+signale. Aucun asset modifie, donc pas de service worker a
+rebumper.
