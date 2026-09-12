@@ -21135,3 +21135,103 @@ liens internes, zero cible interactive sous 24 px hors exemption,
 zero texte couvert par l en-tete, zero image chargee sans etre
 montree hors la question de la brochure, zero orphelin dans
 assets/. SW et-202609121540.
+
+## 583 — Le clavier, le mouvement reduit, et un lien d evitement qui n annoncait rien (12 septembre 2026)
+
+Deux domaines que je n avais jamais audites : ce qui bouge quand
+le visiteur demande moins de mouvement, et ce qui se passe quand
+on n a qu un clavier.
+
+### Le mouvement reduit : rien a corriger, et c est mesure
+
+Les 191 pages chargees avec prefers-reduced-motion: reduce, en
+faisant defiler la page entiere, puis inventaire de toutes les
+animations encore EN COURS avec une duree d au moins 400 ms ou un
+nombre d iterations infini — celles qui genent.
+
+Zero, sur 191 pages. Le media est bien actif partout (verifie), et
+aucune animation longue ne survit.
+
+Reste le cas que l inventaire des animations ne voit pas : le
+canvas decoratif, dessine en JavaScript, qui n apparait dans
+aucune liste d animations. Verifie separement sur huit pages : en
+mouvement reduit le canvas n est pas rendu du tout — zero element
+canvas visible la ou il y en a un sans la preference. Le site le
+retire au lieu de le figer, ce qui est mieux.
+
+### Le clavier : trois widgets, et ils tiennent
+
+Huit pages, 320 arrets de tabulation simules touche par touche.
+
+- **Lien d evitement** : premier arret sur chaque page, visible
+  quand il a le focus, avec un anneau. Il deplace le focus.
+- **Anneau de focus** : zero arret sans anneau sur 320. Pas un
+  seul.
+- **Palette de recherche** : Ctrl+K l ouvre, le focus entre dans
+  le champ, douze tabulations d affilee ne sortent pas de la
+  palette (le piege tient), Echap la ferme ET rend le focus au
+  bouton de recherche qui l avait ouverte. C est exactement ce
+  qu il faut faire.
+- **Mega-menu** : Entree passe aria-expanded a true, Echap le
+  repasse a false.
+- **Ordre de tabulation** : un seul retour en arriere par page, de
+  250 a 400 px, toujours vers le rail lateral de sections — il est
+  place apres le contenu qu il indexe dans le document alors qu il
+  est colle en haut a l ecran. Ce n est pas un echec du critere
+  2.4.3, l ordre garde son sens ; c est note.
+
+Un signalement a verifier deux fois : un a six arrets par page
+tombaient sur des elements a opacite nulle — les cartes qui
+apparaissent au defilement. Remesure en attendant 700 ms apres
+chaque tabulation : elles atteignent toutes l opacite pleine. Le
+navigateur amene l element focalise dans le champ, ce qui declenche
+son apparition. Un seul cas restait a 0,0001 apres 700 ms, et a
+0,89 apres 900 : c est une entree du rail lateral qui apparait en
+fondu decale. Le visiteur au clavier voit l anneau apparaitre avec
+elle. Aucun defaut.
+
+### Le defaut : « Aller au contenu principal » n annoncait rien
+
+Sur 121 des 191 pages, la cible du lien d evitement etait un
+<span id="main-content" tabindex="-1"></span> — un element vide.
+Le lien fonctionne : le focus s y deplace, la page defile au bon
+endroit. Mais un lecteur d ecran, arrive la, n a rien a annoncer.
+L utilisateur active « Aller au contenu principal », entend le
+silence, et doit deviner s il est arrive.
+
+La cible a ete deplacee sur l element qui a quelque chose a dire,
+selon ce qui suivait le span :
+
+- **54 pages** ou le span precedait <main> : l identifiant passe
+  sur <main>, qui s annonce comme repere principal ;
+- **67 pages** ou le span precedait le <h1> : l identifiant passe
+  sur le <h1>, et le lecteur d ecran annonce le titre de la page,
+  en tete de niveau 1. C est la meilleure confirmation possible —
+  « vous etes maintenant a : De quoi est fait le prix d un litre a
+  la pompe, titre 1 » ;
+- **4 pages** ou <main> portait deja un identifiant (#contenu,
+  reference nulle part) : renomme.
+
+Verification sur les 191 pages : la cible existe partout,
+l identifiant est unique partout, tabindex="-1" partout, et le lien
+d evitement mene bien a la cible partout — zero probleme. La
+repartition finale : 123 pages sur <main>, 67 sur le <h1>, une sur
+un element pose au rendu par l application du configurateur.
+Mesure de ce qui est annonce apres activation : sur un carnet, « De
+quoi est fait le prix d un litre a la pompe ? » ; ailleurs, le
+repere principal. Avant : rien.
+
+Aucune feuille de style, aucun script, aucun asset touche — 121
+fichiers HTML, une balise chacun. axe AA zero violation sur quinze
+pages temoin dans trois configurations.
+
+### Mon erreur
+
+Le premier balayage du mouvement reduit a rendu 191 erreurs de
+chargement et j ai failli conclure « rien ne bouge ». Le serveur de
+test etait tombe entre deux chapitres. Un balayage qui rend un
+resultat parfait sur toutes les pages doit etre suspect avant
+d etre publie : ici, « zero animation » et « zero page chargee »
+produisent le meme rapport. J ai ajoute le compte des pages
+effectivement mesurees a la sortie, pour que les deux ne puissent
+plus se confondre.
