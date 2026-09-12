@@ -20294,3 +20294,90 @@ present sur .subland en sombre, absent en clair comme il se
 doit. Contraste au pixel sur les titres des pages concernees :
 16,13:1 et 16,86:1. Quatre feuilles partagees modifiees, aucun
 HTML touche. SW porte a et-202609120850.
+
+## 576 — Ultra revue de l accueil (12 septembre 2026)
+
+Revue complete de la page d accueil : structure, contenu,
+reseau, feuilles de style, accessibilite, referencement, liens,
+et rendu regarde dans trois configurations.
+
+Ce qui est sain, mesure. Six sections de premier niveau, dans le
+gabarit du 564. Un seul h1, dix-neuf titres visibles, aucun saut
+de niveau. 175 liens, quinze internes, zero ancre morte. 938
+noeuds de DOM — la page est legere en structure. Reperes
+complets : un main, un header, un footer, quatre nav, lang=fr,
+lien d evitement present. axe WCAG 2.0/2.1/2.2 AA : zero
+violation dans les quatre configurations (bureau et mobile,
+sombre et clair). Vingt-cinq elements focalisables testes :
+aucun sans anneau de focus. Referencement complet — titre a 60
+signes, description a 155, canonique, quatre hreflang dont
+x-default, sept balises Open Graph, quatre blocs JSON-LD
+(Organization, WebSite, Dataset, WebPage).
+
+Deux liens sous la barre des 24 px du critere 2.5.8 : « Tout le
+fil » du fil d actualite (96 x 18) et « Tous les documents » de
+l etagere (153 x 15). Ni l un ni l autre n est un lien pose dans
+une phrase — ce sont des liens d action en fin de bloc, la barre
+s applique. Corriges par une regle dans la feuille partagee,
+sans toucher au HTML ; mesures a 24 px apres, en bureau et en
+mobile.
+
+Le vrai sujet est ailleurs : les feuilles de style. L accueil
+charge 543 Kio de CSS et en utilise 143 — 400 Kio inutilises,
+soit 74 pour cent. Dix-neuf fichiers externes (407 Kio) et
+vingt-trois blocs en ligne (136 Kio), pour un HTML de 221 Kio :
+le style pese deux fois et demie le document. Les plus gros
+gisements : bundle_head_b2.css, 104 Kio utilises a 16 pour
+cent ; plight_extrait.css, 85 Kio a 28 ; x_cd256286824c.css, 73
+Kio a 30 ; x_77d650c4a7a2.css, 50 Kio a 24.
+
+Mais — et c est la conclusion honnete de ce volet — rien n est
+retirable au niveau du fichier. Test applique avec la prudence
+du 507 : une feuille n est candidate que si aucun de ses
+selecteurs ne trouve d element dans le DOM rendu ET si aucun des
+jetons qu elle vise n apparait ailleurs dans la page ou ses
+scripts. Resultat : zero candidat sur dix-neuf. Cinq petites
+feuilles ne trouvent aucun element mais visent des jetons
+presents dans le corpus — un script peut les poser. Le
+gaspillage est donc INTERIEUR aux fichiers : des regles ecrites
+pour d autres pages, transportees par des bundles partages. Le
+reduire demande de scinder les bundles par famille de pages, ce
+qui est un chantier a part entiere, pas un nettoyage.
+
+Une piste chiffree pour ce chantier, la plus nette : 113 Kio des
+407 Kio externes (27 pour cent) sont des regles reservees au
+theme clair, plus 28 Kio dans les blocs en ligne. Un visiteur en
+theme sombre n en utilise aucune, et reciproquement.
+plight_extrait.css a lui seul fait 85 Kio dont 64 pour cent de
+theme clair — son nom le dit. Charger cette feuille selon le
+theme rendrait 55 a 113 Kio a la moitie des visiteurs. Je ne le
+fais pas de ma propre initiative : cela touche le rendu du
+theme sur 146 pages, et une erreur signifie un eclair de page
+non stylee, ou pire un theme faux, pour chaque visiteur. C est
+une proposition, avec ses chiffres.
+
+Trois erreurs d instrument dans cette revue, toutes rattrapees
+avant d agir. La couverture CSS mesuree par le suivi d usage des
+regles annoncait « 144 Kio utilises sur 144, zero inutilise » :
+ce suivi ne rend que les regles evaluees, pas les feuilles
+entieres — chiffre refait avec l API de couverture, qui donne
+543 et 143. Ensuite, mon analyseur de selecteurs rendait zero
+regle pour les dix-neuf feuilles, y compris celles que je venais
+d ecrire : Chromium attache desormais un cssRules VIDE a chaque
+regle de style, pour le nesting, et une liste vide est truthy —
+mon parcours recursait au lieu de collecter. Enfin, ce meme test
+de prudence aurait declare « tout est retirable » si je l avais
+cru : il annoncait dix-neuf candidats sur dix-neuf, nav_a.css
+comprise, que je venais de modifier. Trois fois, c est la
+mesure absurde qui m a arrete, pas la prudence.
+
+Une remarque de contenu, sans correction. L accueil compte 881
+mots ; le gabarit que j ai inscrit dans la charte au 564 demande
+900 a 1 400 mots pour une page corporate. Dix-neuf mots sous le
+plancher — l ecart n a aucune portee pratique, mais le gabarit
+est le gabarit, et c est au proprietaire de dire s il veut que
+l accueil en dise un peu plus ou que le plancher descende.
+
+Verification. Quatre configurations, axe zero violation, cibles
+sous 24 px : zero apres correction, contre deux avant. Une seule
+feuille partagee modifiee, aucun HTML touche.
