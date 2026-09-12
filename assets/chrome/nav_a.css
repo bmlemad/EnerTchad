@@ -423,3 +423,13 @@ nav.bcrumb:not(#_):not(#__) a,
    creme #E9EEF5, soit 1,44:1 entre le lien et son texte (le minimum est 3:1)
    et aucun soulignement. Un daltonien ne voit pas qu il y a un lien.          */
 .pe-note:not(#_):not(#__) a{text-decoration:underline;text-underline-offset:.18em}
+
+/* --- Ch578 - l ancre #poles, morte sur tout le site -------------------------
+   192 liens repartis sur pres de 190 pages pointent vers /#poles et
+   /index-en#poles. Cette ancre n existe plus sur l accueil : la section des
+   trois maillons s appelle #coeurs. Tous ces liens deposaient donc le visiteur
+   en haut de l accueil, sans rien lui dire.
+   Plutot que de reecrire 192 liens dans 190 fichiers, on redonne a l accueil
+   l ancre que le site lui demande : un point d arrivee sans hauteur, pose juste
+   avant la section, avec la marge de defilement de la maison (96 px).         */
+.anc578:not(#_){display:block;height:0;overflow:hidden;scroll-margin-top:96px}
