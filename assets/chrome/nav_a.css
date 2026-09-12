@@ -452,3 +452,33 @@ nav.bcrumb:not(#_):not(#__) a,
   summary:not(#_){list-style:none}
   summary:not(#_)::-webkit-details-marker{display:none}
 }
+
+/* --- Ch584 - le diaporama du heros redevient visible, et son voile ----------
+   Arbitrage du proprietaire : le diaporama de neuf photographies du Tchad,
+   qui porte role="img" et un libelle, est du contenu — il repasse au visible
+   (l exemption est posee dans la feuille diapo-css, x_685ad1e3eb1b).
+   Mesure au pixel du fond sous le titre, diapositive par diapositive : le
+   voile deja present dans chaque image (.46 en haut, .34 a 40 %, .82 en bas)
+   est au plus clair exactement la ou le titre se pose. L or du titre tombait
+   a 2,48:1 sur l addax, 2,67 sur les dunes et 2,84 sur le guepard — sous le
+   seuil de 3:1 du grand texte. On ajoute un voile propre au diaporama, creuse
+   dans la bande du titre (26-52 % de la hauteur) et nul en haut et en bas
+   pour que la photographie garde sa presence.                                */
+header.hero .hx-shots[role="img"]:not(#_):not(#__)::after{
+  content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(180deg,
+    rgba(6,11,20,0) 0%,
+    rgba(6,11,20,.10) 14%,
+    rgba(6,11,20,.30) 26%,
+    rgba(6,11,20,.32) 52%,
+    rgba(6,11,20,.14) 66%,
+    rgba(6,11,20,0) 82%)}
+/* Le voile de bande suffit pour la mediane, pas pour le local : sur l addax et
+   les dunes, le titre dore traverse une robe claire ou un ciel clair. Un halo
+   sombre porte par le texte lui-meme rend la lisibilite independante de ce
+   qu il y a derriere, sans eteindre la photographie.                         */
+header.hero:has(.hx-shots[role="img"]) h1:not(#_),
+header.hero:has(.hx-shots[role="img"]) h1 em:not(#_),
+header.hero:has(.hx-shots[role="img"]) .lead:not(#_),
+header.hero:has(.hx-shots[role="img"]) .lead strong:not(#_){
+  text-shadow:0 1px 2px rgba(6,11,20,.92),0 2px 20px rgba(6,11,20,.85),0 0 42px rgba(6,11,20,.7)}
