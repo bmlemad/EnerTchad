@@ -20121,3 +20121,75 @@ Verification. Quatre pages, deux themes, axe WCAG 2.0/2.1/2.2 AA
 : zero violation. Ancres internes mortes : zero. Sommaire :
 trente liens, sept parties, replie. Sections de premier niveau :
 brochure 8, societe 5. Aucun asset modifie.
+
+## 573 — La photo de fond s efface, un champ de lumiere prend sa place (12 septembre 2026)
+
+Demande du proprietaire : retirer la photo de fond de l accueil
+et proposer un traitement qui tienne avec la DA de verre.
+
+Ce que la photo faisait vraiment. pompe-petrole.webp etait posee
+en fond de page sous un voile de 68 a 78 pour cent : on en
+voyait moins du tiers, et ce tiers suffisait a obliger tout le
+mobilier de verre a se defendre contre elle — c est pour cela
+que .rootland::after avait ete pousse a .68/.78 au chapitre 544,
+« valeur fixee par mesure du contraste au pixel peint ». Une
+image que l on masque aux trois quarts pour pouvoir lire
+par-dessus n est plus une image : c est une teinte.
+
+Trois traitements construits et rendus sur la vraie page, pas
+sur une maquette : Aurore sobre, Aurore soutenue, Sol nu.
+Arbitrage : Aurore sobre, sur toutes les pages concernees.
+
+Deux choses que seule la mesure a dites. D abord, mes deux
+premieres variantes portaient une texture — strates sismiques,
+maillage de flux — et elles etaient rigoureusement invisibles.
+Cause trouvee dans le calcul, pas devinee : j avais laisse
+filter:blur() sur le calque, heritage du temps ou il fallait
+mater une photo ; le flou s applique a l element ENTIER,
+pseudo-element compris, et efface des traits d un pixel. Blur
+retire, les textures sont apparues — a .045 d opacite, sous le
+seuil perceptif ; au-dessus, du bruit. Je n ai pas propose un
+choix entre trois images dont deux etaient la meme : j ai
+remplace la question par celle qui se voit, l intensite du
+champ.
+
+Ensuite, et c est le plus utile : il n y avait pas un calque de
+fond, mais deux, et je m etais trompe sur lequel portait la
+photo de l accueil. Comptage au rendu sur les 191 pages :
+.rootland est present sur 190 pages mais VISIBLE sur 72
+seulement — les 64 du journal et les 8 arabes ; ailleurs un
+bundle le met en display:none. La photo de l accueil etait
+portee par l autre calque, .diapo, present sur 26 pages. Le
+champ est donc declare sur les deux. Sans ce comptage, j aurais
+annonce une refonte de l accueil qui n aurait rien change a
+l accueil.
+
+Ce que le champ est. Le sol du systeme, quatre lueurs de la
+palette de marque — or, bleu, turquoise, ambre — plus une
+violette tres basse, qui derivent sur 40 secondes, avec une
+declinaison par theme et un arret sous prefers-reduced-motion.
+Aucune image : du code. Le voile descend de 68-78 a 5-18 pour
+cent, parce qu un champ dessine n a pas besoin qu on
+l assombrisse pour qu on lise par-dessus. Le verre a enfin de la
+couleur a refracter au lieu d une photo grise.
+
+Un effet de bord que je n avais pas prevu : en retirant la
+photo, le reseau de lignes et de noeuds lumineux que le site
+possedait deja redevient visible en theme clair. Il etait sous
+la photo depuis le debut.
+
+Ce qui ne change pas. Les pages arabes gardent leur texture de
+sable — traitement distinct et delibere, elles ne chargent pas
+cette feuille. Les trois photos de la chaine sur l accueil
+(pompe, pipeline, raffinerie) et la photo de l encart en bref
+restent : ce sont des contenus dans leurs sections, pas des
+fonds. Le fichier pompe-petrole.webp reste donc utilise.
+
+Verification. Douze pages de toutes les familles, trois
+configurations — 1440 sombre, 1440 clair, 390 sombre — axe WCAG
+2.0/2.1/2.2 AA : zero violation. Plus aucune trace de la photo
+de fond, marqueur negatif verifie sur les deux calques.
+Contraste au pixel, etat final : titre de l accueil 20,30:1 en
+sombre et 17,53:1 en clair, chapeau 12,75 et 14,97, titre d un
+journal 17,75 et 16,98. Une seule feuille partagee modifiee,
+aucun HTML touche — methode du 498. SW porte a et-202609120800.
