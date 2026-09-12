@@ -20933,3 +20933,98 @@ de contenu. axe AA zero violation sur douze pages temoin dans
 trois configurations ; fonds verifies au rendu dans les deux
 themes — le champ de lumiere est intact. Aucun asset modifie, donc
 pas de bump du service worker.
+
+## 581 — Imprimer la FAQ donnait les questions, pas les reponses (12 septembre 2026)
+
+Le site a une feuille d impression. Je ne l avais jamais regardee
+autrement qu en la lisant. Cette fois j ai imprime.
+
+### Ce qui marche
+
+Rendu PDF de cinq pages, en A4, avec la feuille d impression
+active : la barre de navigation, le rail a points, la palette de
+recherche et le bouton de menu disparaissent ; le texte passe en
+noir sur blanc ; le pied de page reste. Sur les mentions legales,
+les URL des liens externes s impriment entre parentheses apres le
+texte du lien — un soin qui n existe que sur cette page.
+
+### Ce qui ne marche pas
+
+Mesure en media print sur les 191 pages, en comparant le texte
+d un bloc <details> a celui de son seul resume : onze pages
+perdent 86 024 signes a l impression.
+
+- la FAQ sort avec ses 27 questions et AUCUNE reponse. Quatre
+  pages de titres ;
+- l Atlas du secteur perd 27 354 signes — l essentiel de ses
+  donnees, quatorze blocs sur seize ;
+- la brochure, 4 785 signes sur trente blocs ; la page
+  Distribution, 2 387 sur dix-sept ; Devenir client, 1 171 ;
+  la page arabe, 657.
+
+La cause n est pas la feuille d impression : c est le navigateur.
+Un <details> replie cache son contenu dans une boite interne,
+::details-content, marquee content-visibility:hidden. Aucune
+regle d impression du site ne la touchait, et personne ne
+verifie un PDF qu il n a pas demande.
+
+### Le correctif, deux fois
+
+Dans @media print, on rend ::details-content : le contenu replie
+se met en page. Et pour les moteurs qui ne connaissent pas encore
+ce pseudo-element, un relais en JavaScript — a l evenement
+beforeprint on ouvre les blocs replies, a afterprint on les
+referme. Les deux sont idempotents et sans effet a l ecran.
+Ajoute au passage : les blocs ne se coupent plus entre deux pages
+(break-inside:avoid), et le chevron de repli disparait — il n a
+pas de sens sur du papier.
+
+Mesure apres, par la hauteur de page en media print et par le
+rectangle du texte reellement peint dans les blocs replies :
+
+- FAQ : 3 899 -> 6 307 px, 1 595 px de reponses qui apparaissent ;
+- Atlas : 10 018 px de donnees qui apparaissent ;
+- brochure 2 837 px, Distribution 1 901, Devenir client 304, page
+  arabe 125 — les huit pages arabes ne chargent pas la feuille
+  partagee, elles ont recu la meme regle dans la leur, bornee par
+  la langue.
+
+Controle a l ecran, avant et apres l emulation d impression : les
+blocs restent replies, le compte est identique, la hauteur de page
+revient a sa valeur. axe AA zero violation sur neuf pages dans
+trois configurations. Et le PDF de la FAQ regarde page par page :
+neuf pages, questions et reponses, liens soulignes, rien de coupe.
+
+### Deux mesures que je ne publie pas
+
+Le meme jour, deux audits n ont rien rendu, et c est une
+information.
+
+Les assets : sur un corpus de 294 fichiers et 27,8 Mio — toutes
+les pages, tous les scripts, toutes les feuilles, les JSON, le
+XML — aucun fichier de assets/ n a un nom qui n apparaisse
+nulle part. Zero orphelin. Le menage du 567 tient.
+
+Le JavaScript : couverture reelle mesuree sur quinze pages, entre
+62 et 88 pour cent d octets executes, 8 a 128 Kio inutilises par
+page. Rien a en conclure, pour deux raisons. D abord j ai mesure
+en bureau : le code du menu mobile, 25,7 Kio, compte pour
+inutilise alors qu il est simplement dans l autre configuration.
+Ensuite le seul gros poste reel est un paquet fournisseur —
+Chart.js, 205 Kio a 48 pour cent sur la page Cibles 2030 — qu on
+ne degraisse pas sans changer la chaine de construction. Le
+contraste avec le CSS du 576 est net : 26 pour cent de CSS
+utilise, 62 a 88 pour cent de JS. Le poids du site est dans ses
+feuilles de style, pas dans ses scripts.
+
+### Mon erreur
+
+Premiere mesure de couverture : 100 pour cent sur tous les
+fichiers de toutes les pages. Suspect, et faux. Les plages que
+V8 rend sont IMBRIQUEES — une fonction, puis ses blocs internes —
+et j en additionnais les longueurs, ce qui depasse la taille du
+fichier avant d etre plafonne a 100. La mesure juste attribue a
+chaque octet le compte de la plage la plus interne qui le
+contient : on peint un tableau d octets en appliquant les plages
+dans l ordre donne, du plus externe au plus interne. Le chiffre
+est passe de 100 pour cent a 62-88.
