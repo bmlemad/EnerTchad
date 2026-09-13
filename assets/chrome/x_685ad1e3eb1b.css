@@ -6,7 +6,7 @@ header.pghero>div[style*="background-image"],header.hero .hero-photo,header.hero
    le champ de lumiere du 573 (porte par .diapo) vu au travers d un panneau
    de verre. Seules brochure.html et brochure-en.html portent header.hero
    dans ce lot de 25 pages. */
-html header.hero:not(#_):not(#__){
+html header.hero:not(#_):not(#__):not(#___){
   --v5a:.42; --v5b:.34; --v5c:.66;
   background:
     linear-gradient(104deg,rgba(255,255,255,.10) 0%,rgba(255,255,255,.032) 26%,rgba(255,255,255,0) 48%),
@@ -20,5 +20,7 @@ html header.hero:not(#_):not(#__){
   border-bottom:1px solid rgba(255,255,255,.10) !important;
   box-shadow:inset 0 1px 0 rgba(255,255,255,.15),0 26px 64px -34px rgba(7,12,21,.7) !important;
 }
-html.et-plight header.hero:not(#_):not(#__),
-html.et-jlight header.hero:not(#_):not(#__){--v5a:.80; --v5b:.74; --v5c:.90}
+/* Ch587 - plight_extrait.css pese (2,2,2) sur ce selecteur et emportait
+   le verre du 585 en theme clair : un troisieme :not() le rend au heros. */
+html.et-plight header.hero:not(#_):not(#__):not(#___),
+html.et-jlight header.hero:not(#_):not(#__):not(#___){--v5a:.80; --v5b:.74; --v5c:.90}
