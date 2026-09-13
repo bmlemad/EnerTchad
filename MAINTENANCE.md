@@ -22210,3 +22210,133 @@ de captures avant/apres l aurait dit en une seconde, et je ne l avais
 faite qu en theme sombre.
 
 Trois feuilles de style et le service worker. SW et-202609141200.
+
+## 592 — Audit (14 septembre 2026)
+
+Consigne : audit. Balayage complet du depot et du rendu, puis
+correction de ce que la mesure a trouve. Ce chapitre commence par ce
+qui est sain, parce que c est la moitie de l information.
+
+### Ce qui tient
+
+- **57 feuilles de style, zero desequilibree** en accolades.
+- **191 pages** : zero page sans `title`, sans meta description, sans
+  `h1` ou avec plusieurs, zero saut de niveau de titre, zero image
+  sans `alt`, zero page sans `lang`, sans canonique, sans Open Graph,
+  sans donnees structurees — sauf la 404, ou c est normal.
+- **25 902 liens internes** verifies contre la table de routage :
+  **zero cible introuvable**.
+- **vercel.json** : 158 redirections, 2 reecritures, zero chaine, zero
+  boucle, zero source dupliquee.
+- **Sante des 191 pages, deux themes** : zero erreur console, zero
+  reponse 4xx ou 5xx.
+- **axe AA** : zero violation sur 52 rendus, bureau 1440 x 900 et
+  telephone 390 x 844 a pointeur grossier, dans les deux themes.
+- **Images** : les deux seules pages qui gardent des photographies
+  telechargent trois fichiers et en peignent trois. Les deux
+  prechargements restants servent une image reellement affichee.
+
+### Une regression du 591, trouvee et reparee
+
+Le 591 a rendu le champ clair transparent pour laisser voir le motif
+qui vit derriere le contenu. Sur la plupart des pages c est un motif
+de lignes et de pastilles, discret. **Sur paiements-etats, ce qui vit
+derriere est un canevas anime**, plus sombre, que l aplat creme du 590
+masquait. Mesure du fond peint sous le meme paragraphe : `rgb(244,
+244, 241)` avant le 591, `rgb(209, 212, 211)` apres. Le corps de texte
+de cette page est tombe de plus de 4,5 a **3,52**.
+
+La base du champ clair passe donc de `transparent` a
+`rgba(250,247,241,.72)` : un plancher de clarte qui laisse encore
+passer ce qu il y a dessous — verifie a l image sur gouvernance, ou le
+motif reste visible — mais qui garantit le fond sous le texte. Mesure
+sur paiements-etats FR et EN : **zero paragraphe sous le seuil, pire
+cas 4,76**.
+
+### Le jeton clair, toute la famille cette fois
+
+Le 591 a releve `.b111-c p` et `.b111-lead` de `#5A6678` a `#4A5568`.
+L audit montre que `#5A6678` vit sur **15 pages en six familles de
+selecteurs**, et que le 591 n en avait traite qu une. La mesure trouve
+`.cmp-cap` a **4,48** sur clients. Les cinq autres familles —
+`.cmp-hint`, le groupe `table.cmpt td / .secc span / .slac span /
+.docl li / .cmp-cap / .slac em`, `#diapo-cap .dc-zo`, le groupe
+`.pe-lead / .pe-c p / .pe-st p / table.pet td.pe-n / .pe-cap`, et
+`.bcrumb a` — passent au meme `#4A5568`.
+
+### Un identifiant en double sur 36 pages
+
+Deux balises `<style id="fusion-anonyme">` sur la meme page : un
+identifiant duplique est du HTML invalide. Reste d une passe de
+regroupement ancienne. Aucun script, aucune feuille ne vise cet
+identifiant — verifie avant de toucher. Les occurrences suivantes sont
+numerotees. Sur les deux accueils, le meme defaut portait sur
+`home-fusion-anonyme`, sept fois. **Zero identifiant duplique sur les
+191 pages apres correction.**
+
+### Ce que l audit signale sans y toucher
+
+- **Environ 28 Kio brotli par page de regles CSS strictement
+  dupliquees** entre les feuilles qu une meme page charge : 40 Kio sur
+  l accueil, qui en charge 19. C est une estimation par modele — je
+  recompose les feuilles sans les doublons et je recompresse — pas une
+  mesure de deploiement. Une deduplication est sure si elle garde la
+  **derniere** occurrence de chaque paire selecteur + corps ; c est une
+  campagne a instrumenter, pas un coup de sed.
+- **13 titres hors de la fourchette 25 a 65 caracteres**, tous sur des
+  pages utilitaires sauf `societe.html`, a 22 caracteres : « La
+  Societe | EnerTchad » pour la page qui presente l entreprise. C est
+  de la copie ; je ne la change pas sans vous.
+- **242 liens d icone relatifs**. Aucun ne casse aujourd hui : aucune
+  page servie depuis un sous-dossier n en porte. C est la classe de
+  bug du 588, endormie.
+
+### Mon erreur
+
+Le 591 a retire la declaration de voile blanc des sections en la
+declarant morte. Je l avais mesuree ainsi : 1 227 sections en theme
+clair, 181 avec un fond peint, donc la mienne ne gagne pas. Le
+raisonnement etait faux : 181 n est pas la reponse a la question
+posee. La bonne mesure est de chercher **ma** valeur dans les styles
+calcules, ce que j ai fait cette fois : le voile gagnait sur **2
+sections, sur une page**, le configurateur. Ce n etait pas mort, c
+etait rare. Il reste retire — la page a ete mesuree sans lui, pire cas
+5,87 — mais maintenant je sais ce que cela coute.
+
+**Compter les elements d une categorie ne dit pas si votre regle est
+dedans.** Pour savoir si une declaration s applique, il faut chercher
+sa valeur, pas denombrer ses concurrentes.
+
+Deux instruments m ont menti dans l autre sens, en inventant des
+defauts : mon controleur de formulaires a signale deux champs sans
+libelle sur les pages contact — les boutons radio sont **enveloppes**
+dans un `<label>`, ce que mon test, qui cherchait un attribut `for`,
+ne voyait pas. Et mon verificateur de liens a rendu deux liens casses
+qui sont des `webcal://`, un schema que je n avais pas prevu. **Zero
+vrai defaut sur ces deux fronts.**
+
+Enfin, un signal que je traine depuis le 587 : ma sonde de sante
+signale les deux accueils comme « heros sans verre, 2 couches ». C est
+un faux positif par construction — le champ de l accueil vit dans
+`.prem-mesh`, quatre couches, peinte et verifiee — et il a pollue
+chaque rapport depuis. La sonde regarde le heros et ignore la maille.
+
+### Verifie
+
+- Contraste au coeur des glyphes, filtre 12 par canal, **26 pages**,
+  tous les paragraphes jusqu a 14 par page : theme clair 251
+  paragraphes, **zero sous le seuil**, pire cas 4,76 ; theme sombre
+  194 paragraphes, **zero sous le seuil**, pire cas 5,17.
+- Avant/apres sur paiements-etats : 10 paragraphes sous le seuil et
+  pire cas 3,52 avant, zero et 4,76 apres.
+- Fond peint sous le meme paragraphe : 209, 212, 211 avant, creme
+  apres ; captures comparees sur gouvernance, le motif reste visible.
+- Identifiants dupliques : 36 pages avant, **zero apres** sur les 191.
+- Le voile de sections cherche par sa valeur dans les styles calcules :
+  2 sections sur 1 page.
+- axe AA, 52 rendus bureau et telephone, deux themes : zero violation.
+- Sante des 191 pages, deux themes : zero erreur console, zero 4xx.
+- Equilibre des accolades verifie sur les deux feuilles modifiees.
+
+Trente-six pages, deux feuilles de style et le service worker.
+SW et-202609142130.
