@@ -362,3 +362,25 @@ html body div.hero:not(#_):not(#__) > .hero-cap:not(#_){display:none !important}
     bottom:calc(62px + env(safe-area-inset-bottom)) !important;
     z-index:96 !important}
 }
+/* Ch590 — meme champ pour la 404 et le mini-site arabe (qui reste sombre). */
+.rootland:not(#_):not(#__):not(#___){
+  background:
+    linear-gradient(112deg, rgba(255,255,255,.05) 0%, rgba(255,255,255,.012) 22%, rgba(255,255,255,0) 44%),
+    radial-gradient(46% 50% at 12% 16%, rgba(219,174,74,.50), transparent 64%),
+    radial-gradient(42% 48% at 88% 10%, rgba(90,167,240,.44), transparent 62%),
+    radial-gradient(56% 58% at 82% 88%, rgba(31,164,150,.42), transparent 64%),
+    radial-gradient(50% 54% at 18% 92%, rgba(224,162,78,.36), transparent 62%),
+    radial-gradient(48% 50% at 64% 40%, rgba(120,90,220,.34), transparent 66%),
+    radial-gradient(44% 46% at 30% 62%, rgba(46,134,222,.28), transparent 66%),
+    #0A1220 !important;
+}
+html.et-plight:not([lang="ar"]) .rootland:not(#_):not(#__):not(#___),
+html.et-jlight:not([lang="ar"]) .rootland:not(#_):not(#__):not(#___){
+  display:block !important;
+  background:
+    radial-gradient(46% 50% at 12% 16%, rgba(219,174,74,.20), transparent 64%),
+    radial-gradient(42% 48% at 88% 10%, rgba(90,167,240,.17), transparent 62%),
+    radial-gradient(56% 58% at 82% 88%, rgba(31,164,150,.15), transparent 64%),
+    radial-gradient(50% 54% at 18% 92%, rgba(224,162,78,.14), transparent 62%),
+    #FAF7F1 !important;
+}

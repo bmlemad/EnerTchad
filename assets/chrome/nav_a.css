@@ -606,3 +606,63 @@ html header.hero:not(#_):not(#__) > .hero-cap:not(#_){display:none !important}
     gap:14px !important;
   }
 }
+
+/* ————————————————————————————————————————————————————————————
+   Ch590 — que le contenu laisse voir son fond.
+   Constat mesure. Theme sombre : le champ du 573 est bien peint
+   derriere le contenu, mais ses quatre foyers sont aux coins du
+   cadre fixe — le milieu de l ecran, la ou vit le texte, est la
+   zone morte du degrade, et le flou de 16 px des sections efface
+   le peu qui restait. Theme clair : .rootland et .subland sont en
+   display:none et les sections n ont aucun verre — il n y avait
+   tout simplement pas de fond a laisser passer.
+   Deux foyers medians rendent le champ vivant au centre ; en clair
+   le champ est rallume et les sections deviennent du verre.
+   Contraste du corps de texte mesure au pixel avant et apres :
+   sombre 7,63 -> 6,63 au pire, clair 5,82 -> 6,12. Seuil 4,5.
+   ———————————————————————————————————————————————————————————— */
+.rootland:not(#_):not(#__):not(#___),
+.subland:not(#_):not(#__):not(#___){
+  background:
+    linear-gradient(112deg, rgba(255,255,255,.05) 0%, rgba(255,255,255,.012) 22%, rgba(255,255,255,0) 44%),
+    radial-gradient(46% 50% at 12% 16%, rgba(219,174,74,.50), transparent 64%),
+    radial-gradient(42% 48% at 88% 10%, rgba(90,167,240,.44), transparent 62%),
+    radial-gradient(56% 58% at 82% 88%, rgba(31,164,150,.42), transparent 64%),
+    radial-gradient(50% 54% at 18% 92%, rgba(224,162,78,.36), transparent 62%),
+    radial-gradient(48% 50% at 64% 40%, rgba(120,90,220,.34), transparent 66%),
+    radial-gradient(44% 46% at 30% 62%, rgba(46,134,222,.28), transparent 66%),
+    #0A1220 !important;
+}
+/* Le mini-site arabe se declare dark-only : il garde le champ sombre. */
+.diapo:not(#_):not(#__):not(#___){
+  background:
+    radial-gradient(46% 54% at 14% 14%, rgba(219,174,74,.40), transparent 64%),
+    radial-gradient(44% 50% at 88% 8%, rgba(90,167,240,.34), transparent 62%),
+    radial-gradient(54% 56% at 80% 92%, rgba(31,164,150,.30), transparent 64%),
+    radial-gradient(48% 52% at 16% 94%, rgba(224,162,78,.26), transparent 62%),
+    radial-gradient(46% 48% at 64% 40%, rgba(120,90,220,.18), transparent 66%),
+    radial-gradient(42% 44% at 30% 62%, rgba(46,134,222,.15), transparent 66%),
+    #0A1220 !important;
+}
+html.et-plight:not([lang="ar"]) .rootland:not(#_):not(#__):not(#___),
+html.et-jlight:not([lang="ar"]) .rootland:not(#_):not(#__):not(#___),
+html.et-plight:not([lang="ar"]) .subland:not(#_):not(#__):not(#___),
+html.et-jlight:not([lang="ar"]) .subland:not(#_):not(#__):not(#___){
+  display:block !important;
+  background:
+    radial-gradient(46% 50% at 12% 16%, rgba(219,174,74,.20), transparent 64%),
+    radial-gradient(42% 48% at 88% 10%, rgba(90,167,240,.17), transparent 62%),
+    radial-gradient(56% 58% at 82% 88%, rgba(31,164,150,.15), transparent 64%),
+    radial-gradient(50% 54% at 18% 92%, rgba(224,162,78,.14), transparent 62%),
+    radial-gradient(46% 48% at 62% 42%, rgba(120,90,220,.10), transparent 66%),
+    radial-gradient(42% 44% at 32% 60%, rgba(46,134,222,.09), transparent 66%),
+    #FAF7F1 !important;
+}
+html.et-plight:not([lang="ar"]) main section:not(#_):not(#__),
+html.et-jlight:not([lang="ar"]) main section:not(#_):not(#__),
+html.et-plight:not([lang="ar"]) body>section:not(#_):not(#__),
+html.et-jlight:not([lang="ar"]) body>section:not(#_):not(#__){
+  background:linear-gradient(180deg,rgba(255,255,255,.58),rgba(255,255,255,.44)) !important;
+  -webkit-backdrop-filter:blur(14px) saturate(1.2) !important;
+  backdrop-filter:blur(14px) saturate(1.2) !important;
+}
