@@ -285,3 +285,74 @@ html:not(.et-plight):not(.et-jlight) .tag b:not(#_):not(#__):not(#___){color:#B4
    des carrieres, servi par une regle de page, et les mentions en petit du theme clair. */
 html:is(.et-plight,.et-jlight) .b111-note a:not(#_):not(#__):not(#___):not(#____):not(#_____){color:#4F3A08!important}
 html:is(.et-plight,.et-jlight) small:not(#_):not(#__):not(#___):not(#____){color:#454F62!important}
+
+/* ————————————————————————————————————————————————————————————
+   Ch585 — le mini-site arabe et la page 404 gardaient sable-texture.webp
+   comme fond de page et comme fond de bande de titre. Ces neuf pages ne
+   chargent pas nav_a.css : le champ de lumiere du 573 et le panneau de
+   verre du 585 leur sont donnes ici. Les regles en ligne de ces pages
+   portent !important ; la specificite ci-dessous les depasse.
+   ———————————————————————————————————————————————————————————— */
+html .rootland:not(#_):not(#__):not(#___){
+  background:
+    radial-gradient(46% 50% at 12% 16%, rgba(219,174,74,.44), transparent 64%),
+    radial-gradient(42% 48% at 88% 10%, rgba(90,167,240,.38), transparent 62%),
+    radial-gradient(56% 58% at 82% 88%, rgba(31,164,150,.36), transparent 64%),
+    radial-gradient(50% 54% at 18% 92%, rgba(224,162,78,.30), transparent 62%),
+    radial-gradient(34% 38% at 52% 50%, rgba(120,90,220,.16), transparent 64%),
+    #0A1220 !important;
+}
+/* le mini-site arabe se declare dark-only (supported-color-schemes: dark) :
+   son champ reste sombre dans les deux themes, sans quoi le blanc du titre
+   tomberait a 3.0 sur un fond creme — mesure au pixel, chapitre 585. */
+html.et-plight:not([lang="ar"]) .rootland:not(#_):not(#__):not(#___),
+html.et-jlight:not([lang="ar"]) .rootland:not(#_):not(#__):not(#___){
+  background:
+    radial-gradient(46% 50% at 12% 16%, rgba(219,174,74,.20), transparent 64%),
+    radial-gradient(42% 48% at 88% 10%, rgba(90,167,240,.16), transparent 62%),
+    radial-gradient(56% 58% at 82% 88%, rgba(31,164,150,.15), transparent 64%),
+    radial-gradient(50% 54% at 18% 92%, rgba(224,162,78,.13), transparent 62%),
+    #FAF7F1 !important;
+}
+html[lang="ar"] body div.hero:not(#_):not(#__),
+html[lang="ar"] header.pghero:not(#_):not(#__){
+  background:
+    linear-gradient(256deg,rgba(255,255,255,.115) 0%,rgba(255,255,255,.038) 24%,rgba(255,255,255,0) 47%),
+    radial-gradient(74% 130% at 95% -10%, rgba(219,174,74,.22), transparent 62%),
+    radial-gradient(68% 122% at 2% 2%, rgba(90,167,240,.19), transparent 60%),
+    radial-gradient(88% 142% at 21% 114%, rgba(31,164,150,.16), transparent 64%),
+    linear-gradient(180deg, rgba(7,12,21,.58) 0%, rgba(7,12,21,.50) 44%, rgba(7,12,21,.72) 100%)
+    !important;
+  -webkit-backdrop-filter:blur(26px) saturate(1.5) !important;
+  backdrop-filter:blur(26px) saturate(1.5) !important;
+  border-bottom:1px solid rgba(255,255,255,.11) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.17),
+    inset 0 -1px 0 rgba(7,12,21,.55),
+    0 26px 64px -34px rgba(7,12,21,.75) !important;
+}
+/* Le voile creme du theme clair (.82/.90) lavait le champ derriere le panneau
+   de verre : le backdrop-filter le captait et le blanc du titre tombait a 3.4
+   (7.2 avant le 585 — c etait bien une regression, mesuree, pas supposee).
+   Le mini-site arabe etant dark-only, son voile reste sombre partout. */
+html[lang="ar"].et-plight .rootland:not(#_):not(#__)::after,
+html[lang="ar"].et-jlight .rootland:not(#_):not(#__)::after{
+  background:linear-gradient(180deg,rgba(7,12,21,.54) 0%,rgba(7,12,21,.66) 100%) !important}
+/* Sur ces pages le panneau ne peut pas compter sur son arriere-plan : le champ
+   n entre pas dans la racine de backdrop du heros. En theme clair la fumee doit
+   donc se suffire a elle-meme. Valeurs mesurees au pixel. */
+html[lang="ar"].et-plight body div.hero:not(#_):not(#__),
+html[lang="ar"].et-jlight body div.hero:not(#_):not(#__),
+html[lang="ar"].et-plight header.pghero:not(#_):not(#__),
+html[lang="ar"].et-jlight header.pghero:not(#_):not(#__){
+  background:
+    linear-gradient(256deg,rgba(255,255,255,.10) 0%,rgba(255,255,255,.03) 24%,rgba(255,255,255,0) 47%),
+    radial-gradient(74% 130% at 95% -10%, rgba(219,174,74,.20), transparent 62%),
+    radial-gradient(68% 122% at 2% 2%, rgba(90,167,240,.17), transparent 60%),
+    radial-gradient(88% 142% at 21% 114%, rgba(31,164,150,.15), transparent 64%),
+    linear-gradient(180deg, rgba(7,12,21,.92) 0%, rgba(7,12,21,.88) 44%, rgba(7,12,21,.96) 100%)
+    !important;
+}
+/* Ch585 — meme retrait du badge sur les neuf pages hors nav_a.css. */
+html header.pghero:not(#_):not(#__) > .hero-cap:not(#_),
+html body div.hero:not(#_):not(#__) > .hero-cap:not(#_){display:none !important}

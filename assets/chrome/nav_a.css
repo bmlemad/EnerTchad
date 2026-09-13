@@ -482,3 +482,104 @@ header.hero:has(.hx-shots[role="img"]) h1 em:not(#_),
 header.hero:has(.hx-shots[role="img"]) .lead:not(#_),
 header.hero:has(.hx-shots[role="img"]) .lead strong:not(#_){
   text-shadow:0 1px 2px rgba(6,11,20,.92),0 2px 20px rgba(6,11,20,.85),0 0 42px rgba(6,11,20,.7)}
+
+/* ————————————————————————————————————————————————————————————
+   Ch585 — plus une photographie en fond : du verre a la place.
+   Les bandes de titre (header.pghero, div.hero) portaient une photographie
+   plein cadre sur 88 pages. Elles deviennent un panneau de verre fume pose
+   sur le champ de lumiere du 573 : le champ est capte par backdrop-filter,
+   floute et sature, puis voile par une fumee marine dont l opacite a ete
+   reglee au pixel — pas a l oeil — pour que le texte blanc garde partout
+   son contraste. Le voile lateral herite de la photographie disparait.
+   ———————————————————————————————————————————————————————————— */
+html header.pghero:not(#_):not(#__),
+html body div.hero:not(#_):not(#__){
+  --v5a:.58; --v5b:.50; --v5c:.72;
+  background:
+    linear-gradient(104deg,rgba(255,255,255,.115) 0%,rgba(255,255,255,.038) 24%,rgba(255,255,255,0) 47%),
+    radial-gradient(74% 130% at 5% -10%, rgba(219,174,74,.22), transparent 62%),
+    radial-gradient(68% 122% at 98% 2%, rgba(90,167,240,.19), transparent 60%),
+    radial-gradient(88% 142% at 79% 114%, rgba(31,164,150,.16), transparent 64%),
+    linear-gradient(180deg, rgba(7,12,21,var(--v5a)) 0%, rgba(7,12,21,var(--v5b)) 44%, rgba(7,12,21,var(--v5c)) 100%)
+    !important;
+  -webkit-backdrop-filter:blur(26px) saturate(1.5) !important;
+  backdrop-filter:blur(26px) saturate(1.5) !important;
+  border-bottom:1px solid rgba(255,255,255,.11) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.17),
+    inset 0 -1px 0 rgba(7,12,21,.55),
+    0 26px 64px -34px rgba(7,12,21,.75) !important;
+}
+/* en theme clair le champ derriere est creme : la fumee doit etre plus dense
+   pour que le blanc du titre reste lisible. Valeurs mesurees, pas estimees. */
+html.et-plight header.pghero:not(#_):not(#__),
+html.et-jlight header.pghero:not(#_):not(#__),
+html.et-plight body div.hero:not(#_):not(#__),
+html.et-jlight body div.hero:not(#_):not(#__){
+  --v5a:.86; --v5b:.80; --v5c:.93;
+}
+/* le degrade lateral n existait que pour rattraper la photographie */
+html header.pghero:not(#_):not(#__)::before{display:none !important}
+@media(prefers-contrast:more){
+  html header.pghero:not(#_):not(#__),
+  html body div.hero:not(#_):not(#__){
+    --v5a:.90; --v5b:.86; --v5c:.95;
+    -webkit-backdrop-filter:blur(30px) saturate(1.1) !important;
+    backdrop-filter:blur(30px) saturate(1.1) !important}
+}
+
+/* Ch585 lot 2 — les vingt tuiles decoratives des poles GreenTech et TchadiTech.
+   C etaient des <i aria-hidden="true"> a photographie de fond : de la decoration,
+   pas du contenu (le principe du 575). La photographie est retiree du balisage ;
+   la tuile devient une plaque de verre, meme geometrie, meme hauteur. */
+.gtt-c:not(#_) > i[aria-hidden="true"]:not(#_):not(#__):not(#___),
+.ttf-card:not(#_) > i[aria-hidden="true"]:not(#_):not(#__):not(#___),
+.tts:not(#_) > i[aria-hidden="true"]:not(#_):not(#__):not(#___){
+  position:relative;
+  background:
+    linear-gradient(112deg,rgba(255,255,255,.22) 0%,rgba(255,255,255,.06) 18%,rgba(255,255,255,0) 38%),
+    radial-gradient(88% 150% at 10% -20%, rgba(219,174,74,.46), transparent 62%),
+    radial-gradient(82% 140% at 94% 2%, rgba(90,167,240,.42), transparent 60%),
+    radial-gradient(96% 155% at 70% 124%, rgba(31,164,150,.44), transparent 64%),
+    radial-gradient(60% 90% at 46% 54%, rgba(120,90,220,.20), transparent 66%),
+    linear-gradient(180deg,#15243A 0%,#0B1424 100%) !important;
+  border-bottom:1px solid rgba(255,255,255,.14) !important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.20) !important;
+}
+/* la ligne de lumiere qui court sur la plaque : c est elle qui la fait lire
+   comme du verre et non comme un aplat. */
+.gtt-c:not(#_) > i[aria-hidden="true"]:not(#_):not(#__):not(#___)::after,
+.ttf-card:not(#_) > i[aria-hidden="true"]:not(#_):not(#__):not(#___)::after,
+.tts:not(#_) > i[aria-hidden="true"]:not(#_):not(#__):not(#___)::after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(118deg,
+    transparent 0%, transparent 34%,
+    rgba(255,255,255,.14) 41%, rgba(255,255,255,.02) 47%,
+    transparent 54%, transparent 100%)}
+/* quatre plaques cote a cote : on decale le champ pour qu elles ne soient
+   pas quatre fois la meme image. */
+.gtt-c:not(#_):nth-of-type(2) > i[aria-hidden="true"]:not(#_):not(#__):not(#___),
+.ttf-card:not(#_):nth-of-type(2) > i[aria-hidden="true"]:not(#_):not(#__):not(#___){background-position:22% 0,22% 0,22% 0,22% 0,22% 0,0 0 !important}
+.gtt-c:not(#_):nth-of-type(3) > i[aria-hidden="true"]:not(#_):not(#__):not(#___),
+.ttf-card:not(#_):nth-of-type(3) > i[aria-hidden="true"]:not(#_):not(#__):not(#___){transform:scaleX(-1)}
+.gtt-c:not(#_):nth-of-type(4) > i[aria-hidden="true"]:not(#_):not(#__):not(#___){background-position:-18% 0,-18% 0,-18% 0,-18% 0,-18% 0,0 0 !important}
+
+/* Ch585 lot 3 — le chapeau des pages utilitaires. Sur douze pages (mentions,
+   cookies, presse, recherche, plan du site…) le .lead heritait du gris sourd
+   du corps de page, rgb(147,161,184) : pose sur une bande sombre il donnait
+   4.31 avant le 585 et 4.18 apres — sous le seuil AA dans les deux cas.
+   C etait un defaut anterieur, pas une consequence du verre ; il est corrige
+   ici puisque la bande passe entre mes mains. Le chapeau prend la couleur
+   qu il a deja sur les 99 autres pages. */
+html header.pghero:not(#_):not(#__) .lead:not(#_):not(#__),
+html body div.hero:not(#_):not(#__) .lead:not(#_):not(#__){
+  color:rgba(245,247,250,.92) !important}
+
+/* Ch585 lot 4 — le badge « Image d illustration ». Un script en ligne l ajoute
+   a chaque heros ; il nommait la photographie de fond. Il n y a plus de
+   photographie : le badge mentirait. Il disparait des bandes de titre.
+   Les figures legendees qui restent (role=img + figcaption) gardent le leur,
+   il porte la, sur du contenu reel. */
+html header.pghero:not(#_):not(#__) > .hero-cap:not(#_),
+html body div.hero:not(#_):not(#__) > .hero-cap:not(#_),
+html header.hero:not(#_):not(#__) > .hero-cap:not(#_){display:none !important}
