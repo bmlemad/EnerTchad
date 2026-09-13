@@ -21837,3 +21837,133 @@ sont pas une mesure, c est un seul objet mesure quinze fois.**
   ci-dessus, rien d autre a signaler.
 
 Un fichier de configuration et deux pages.
+
+## 589 — La banniere que personne ne pouvait fermer au telephone (13 septembre 2026)
+
+Consigne : appliquer la coupe de CSS mort preparee au 588. Je l ai
+appliquee, mesuree, et retiree. Ce que la mesure a trouve a la place
+vaut beaucoup mieux.
+
+### La coupe, et pourquoi elle est repartie
+
+172 regles, 20,3 Kio, dans 17 feuilles : toutes celles dont chaque
+selecteur ne trouve aucun element sur aucune des 191 pages, dans les
+deux themes, et dont aucun jeton n apparait dans le JS ni dans le
+balisage.
+
+Puis la verification, element par element : pour vingt pages, les
+styles calcules de chaque element, vingt-sept proprietes chacun,
+avant et apres. Deux pages s ecartaient pour de bon. Et en listant ce
+que la coupe emportait, la raison saute aux yeux :
+`.btn:focus-visible`, `.mu-col>a:focus-visible`,
+`.app-tab:focus-visible`, `.sc-card:hover`.
+
+**Un etat que l instrument ne visite jamais n est pas un etat mort.**
+Ma sonde charge la page et regarde ; elle ne survole rien, ne tabule
+nulle part. Un selecteur `:focus-visible` ne peut pas, par
+construction, trouver un element pendant ce balayage — et le filtre
+par jeton ne rattrape que ce que le JS ou le balisage nomment. Sur un
+site qui a passe des chapitres a reparer la visibilite du focus, ces
+regles sont exactement celles qu il ne faut pas perdre.
+
+Coupe annulee, integralement. Restent deux acquis.
+
+### Une feuille de style malformee depuis six semaines
+
+En instrumentant la coupe, un controle d equilibre des accolades sur
+les 57 feuilles : une seule est desequilibree. `bundle_head_b2.css`,
+103,6 Kio, chargee par 56 pages, porte **deux accolades fermantes en
+trop** — deux blocs `@media` fermes deux fois, aux offsets 103 840 et
+104 235.
+
+Cout mesure, pas suppose : la feuille declare 960 regles, le
+navigateur en retient **955**. Cinq regles tombent, dont trois
+nommees — `.toc > a`, `.psn-link`, `a[href*="openstreetmap"]` — un
+rattrapage de cibles tactiles a 44 px date du 01/08/2026.
+
+Honnetement : **la perte etait sans consequence visible.** La
+campagne de cibles du 577 couvre le meme terrain depuis nav_a.css, et
+la mesure au doigt le confirme — 39 cibles sur neuf pages, toutes a
+44 px, avant comme apres. Ce qui est repare, c est la feuille : tant
+qu elle est malformee, toute regle ajoutee a la fin de ce bloc meurt
+en silence.
+
+### Et la vraie trouvaille
+
+axe passe depuis des mois sur un ecran de bureau. Cette fois je l ai
+lance sur un telephone — 390 x 844, pointeur grossier. Trois pages
+sur dix rendent `target-size`. La lecture du detail change tout :
+
+> Target has insufficient size because it is partially obscured
+> (smallest space is 107.5px by 9.6px)
+
+Le bouton fait 44 px de haut ; il en reste 9,6 de visibles.
+
+Ce qui le couvre : `#nezBar`, la barre de navigation du bas, fixee,
+haute de 60 px, `z-index:95`. La banniere cookies `#ckn` est fixee
+elle aussi, et une regle en ligne l aplatit sur mobile en bandeau
+plein largeur colle en bas — `left:0;right:0;bottom:0 !important` —
+a `z-index:60`. Les deux occupent le meme rectangle. La barre gagne.
+
+Le test qui tranche n est pas la geometrie mais le doigt :
+`elementFromPoint` au centre du bouton « J ai compris ».
+
+**Sur 62 des 191 pages, il rend un lien de la barre de navigation.**
+Sur 57 d entre elles le visiteur qui veut fermer la banniere part
+ailleurs dans le site ; sur 5 la banniere est carrement hors ecran.
+Une seule page etait deja protegee — /contact, par un `z-index` a
+sept chiffres pose un jour a la main.
+
+La banniere passe au-dessus de la barre et se pose juste au-dessus
+d elle, `bottom: calc(62px + env(safe-area-inset-bottom))`,
+`z-index:96`. Le garde `body:has(#nezBar)` laisse intactes les pages
+sans barre, et la regle vit dans `@media(max-width:768px)` : sur
+ecran de bureau, rien ne bouge — verifie, `z:60`, `bottom:0`, memes
+rectangles qu avant.
+
+**62 pages inatteignables, zero apres.** 188 pages affichent la
+banniere, 188 la laissent fermer.
+
+### Mon erreur
+
+Trois fois de suite ma comparaison element par element a annonce des
+centaines de differences la ou il n y en avait aucune. A chaque fois
+un composant injecte par script a un instant variable : le bandeau
+cookies, le preloader, la commande de luminosite. Un element de plus
+d un cote, et ma cle — le rang de l element dans le document —
+decalait tout ce qui suivait. Puis une quatrieme fois, avec une autre
+signature : toutes les largeurs changeaient d un facteur 1,14. Ce n
+etait pas le CSS, c etait la police, chargee d un cote et pas de l
+autre.
+
+**Une comparaison de rendu ne compare rien tant qu elle n a pas
+attendu `document.fonts.ready` et neutralise ce que les scripts
+ajoutent apres coup.** Et une cle d element fondee sur un rang se
+brise au premier element manquant : il faut un chemin, pas un
+compteur.
+
+Corolaire, qui est la lecon du jour : **avant de conclure a une
+regression, comparer la page a elle-meme.** Deux chargements du meme
+arbre suffisent a separer le bruit du signal ; c est ce qui a innocente
+la brochure, la boutique, faq et communiques, et ce qui a confirme les
+deux vraies.
+
+### Verifie
+
+- Coupe de CSS mort : appliquee, mesuree, **annulee**. Aucune trace
+  dans le depot.
+- `bundle_head_b2.css` : 57 feuilles controlees, une seule
+  desequilibree, reparee ; 955 regles retenues par le navigateur
+  deviennent 960.
+- Cibles tactiles sur neuf pages a `pointer:coarse`, avant et apres
+  la reparation : 39 cibles, **zero sous 44 px** dans les deux cas.
+- Banniere cookies au doigt, 191 pages, telephone 390 x 844 :
+  **62 pages inatteignables avant, 0 apres** ; 188 pages atteignables.
+- axe AA sur telephone tactile, six pages : `target-size` sur trois
+  d entre elles avant, **zero violation apres**.
+- Bureau 1440 x 900 : banniere inchangee, `z-index:60`, `bottom:0`,
+  memes rectangles.
+- Sante des 191 pages, deux themes : zero erreur console, zero
+  reponse 4xx.
+
+Trois feuilles de style et le service worker.
