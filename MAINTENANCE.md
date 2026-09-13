@@ -21356,3 +21356,154 @@ Plan du site a 188 URL. Brochure indexable en FR et EN. Diaporama
 de neuf photographies visible, avec pause, arret sous mouvement
 reduit, et un titre lisible sur chacune des neuf. axe AA zero
 violation. SW et-202609121820.
+
+## 585 — Plus une photographie en fond, du verre a la place (13 septembre 2026)
+
+Consigne du proprietaire : supprimer toutes les images de fond
+et mettre a leur place un verre translucide immersif. C est fait
+sur tout le site, et cela revient sur l arbitrage n°2 d hier —
+le diaporama de neuf photographies rendu visible au 584 est
+retire. Je le dis d entree parce que c est le point ou la
+consigne d aujourd hui contredit la decision d hier : c est la
+plus recente qui vaut.
+
+### 1. Ce qu il y avait vraiment
+
+Avant d ecrire une regle, l inventaire au rendu : sur les 191
+pages, dans les deux themes, tout element dont le fond calcule
+contient une image matricielle et qui n est pas masque.
+
+91 pages en theme sombre, 90 en clair. Six familles :
+
+- `header.pghero` — la bande de titre, 54 pages
+- `div.hero` — la bande d introduction, 34 pages dont les 8
+  pages arabes
+- `.rootland` — le fond de page, 9 pages (mini-site arabe et 404),
+  sable-texture.webp
+- `.hx-shot` — le diaporama du heros, 18 vues sur les 2 brochures
+- `<i aria-hidden="true">` — 20 tuiles decoratives en tete de
+  carte, 4 pages (GreenTech et TchadiTech)
+- `.dchg-img` — 6 figures legendees, 2 pages
+
+26 photographies distinctes, 2,90 Mio de fichiers.
+
+### 2. Ou j ai arrete la coupe, et pourquoi
+
+Les cinq premieres familles sont du fond : une photographie
+posee derriere du texte ou dans un bloc muet. Elles partent.
+
+La sixieme reste. `.dchg-img` porte `role="img"`, un
+`aria-label` decrivant la scene, une `figcaption` et un badge
+« Image d illustration ». Ce n est pas un fond, c est une figure
+legendee — du contenu. C est exactement la ligne posee au 575 et
+reprise au 584 : un element qui se declare `role=img` avec un
+libelle est du contenu ; un element `aria-hidden` est de la
+decoration. Les 20 tuiles `<i>` etaient `aria-hidden` : elles
+tombent du cote decoration, et partent avec le reste.
+
+Resultat mesure, meme instrument, apres : 2 pages, 6 elements —
+les six figures legendees, et rien d autre. 91 → 2.
+
+### 3. Le verre
+
+Le champ de lumiere du 573 existe deja derriere presque tout le
+site : `.rootland`, `.diapo`, des degrades radiaux or, bleu, teal
+sur un marine profond, qui derivent lentement. Il ne manquait
+qu une chose : quelque chose a poser dessus.
+
+Chaque bande de titre devient un panneau de verre fume.
+`backdrop-filter: blur(26px) saturate(1.5)` capte le champ, le
+floute et en sature les couleurs ; une fumee marine par-dessus
+tient le contraste ; un balayage speculaire en diagonale, un
+liseret clair en haut, une ombre portee vers le bas donnent
+l epaisseur. Le voile lateral qui rattrapait la photographie
+disparait — il n a plus rien a rattraper.
+
+Les 20 tuiles recoivent la meme matiere a leur echelle, avec une
+ligne de lumiere plus franche : a 268 px de large, sans elle une
+plaque de verre ressemble a un aplat mort. Je l ai vu a l ecran
+avant de le corriger.
+
+### 4. Ce que la mesure a impose
+
+Trois choses que je n aurais pas trouvees sans mesurer.
+
+**Le theme clair.** Derriere le panneau, le champ clair est
+creme. La meme fumee qui donne 12:1 en sombre donnait 4,0 en
+clair — le titre blanc devenait douteux. La fumee est donc
+densifiee en theme clair seulement (.86/.80/.93 contre
+.58/.50/.72), valeurs arretees par mesure, pas a l oeil.
+
+**Le mini-site arabe.** Le panneau y donnait 3,44 alors qu il
+donnait 7,21 avant le 585 : une vraie regression, de mon fait.
+Le voile creme du theme clair (.82/.90) lavait le champ, et le
+`backdrop-filter` le captait tel quel. Deux corrections : le
+mini-site etant `supported-color-schemes: dark`, son voile reste
+sombre dans les deux themes ; et son panneau ne compte plus sur
+son arriere-plan, sa fumee se suffit a elle-meme. 10,16 a 10,73
+apres, contre 7,21 avant.
+
+**Douze pages utilitaires.** Le chapeau de mentions, cookies,
+presse, recherche, plan du site heritait du gris sourd du corps
+de page, rgb(147,161,184). Sur bande sombre : 4,31 avant le 585,
+4,18 apres — sous le seuil AA dans les deux cas. Defaut
+anterieur, pas consequence du verre, mais la bande passait entre
+mes mains : corrige, 9,35 a 9,79.
+
+### 5. Le badge qui mentait
+
+Un script en ligne ajoute a chaque heros un `.hero-cap` disant
+« Image d illustration ». Il nommait la photographie de fond. Il
+n y a plus de photographie : le badge est retire des bandes de
+titre. Les six figures legendees gardent le leur, il y porte sur
+du contenu reel.
+
+### Mon erreur
+
+Deux, cette fois, et la premiere est un classique de
+l instrument.
+
+**La pastille cyan prise pour du texte.** Ma mesure de contraste
+prend une capture avec le texte, une sans, et retient les pixels
+qui different. Sur `clients.html` elle annoncait 3,12 pour le
+surtitre — sous le seuil. J ai densifie la fumee, deux fois,
+sans que le chiffre bouge. Le surtitre porte un `::before` : une
+pastille de 7 px, cyan sur certaines pages. Elle disparait avec
+l element, donc l instrument la comptait comme du texte, et
+c etait elle et elle seule qui tirait le cinquieme centile vers
+le bas. En ne retenant que le coeur des glyphes — la couleur
+peinte doit etre celle du texte a 40 pres — les memes pages
+passent de 3,12 a 5,02. **Une mesure de contraste faite sur la
+boite d un element mesure aussi ses pseudo-elements decoratifs ;
+une pastille de 7 px n est pas du texte et n est pas soumise au
+4,5:1.**
+
+**Un remplacement qui a emporte deux blocs.** En renforcant le
+verre des tuiles, j ai remplace en Python « depuis cette
+selectrice jusqu a la fin du fichier ». Deux blocs ecrits juste
+apres — la couleur du chapeau et le retrait du badge — sont
+partis avec. Vu tout de suite : la verification suivante a
+retrouve le badge affiche. Retablis. `.replace(depuis, jusqu a
+la fin)` sur un fichier ou l on vient d ajouter trois blocs
+efface les deux derniers.
+
+### Verifie
+
+- Inventaire au rendu, 191 pages, deux themes : 91 pages avec
+  fond photographique avant, 2 apres — les six figures legendees.
+- Contraste au pixel peint, 110 pages a heros mesurable, deux
+  themes, sur le coeur des glyphes : zero alerte. Titres 8,1 a
+  16,8 ; chapeaux 6,9 a 12,6 ; surtitres 4,8 a 9,1.
+- axe AA (wcag2a/aa, 21a/aa, 22aa) sur 14 pages dans les deux
+  themes : zero violation sur 28 rendus.
+- Poids : un visiteur qui parcourt les 111 pages a heros
+  telechargeait 144 images pour 13,70 Mio ; il en telecharge 108
+  pour 10,36 Mio. 3,34 Mio et 36 telechargements de moins.
+- Les 2 230 octets de balisage du diaporama retires de chaque
+  brochure ; plus une seule reference aux neuf photographies
+  dans le heros.
+- Rendu regarde a l ecran : bandes de titre FR, EN et arabe,
+  brochure, 404, tuiles GreenTech et TchadiTech, dans les deux
+  themes.
+
+Cinq fichiers de style et six pages touches. SW et-202609131240.
