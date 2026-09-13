@@ -975,7 +975,7 @@ html:not(#_):not(#__){-webkit-tap-highlight-color:transparent}
   #coeurs:not(#_):not(#__) .reveal > a{min-height:44px}
   a[style*="border-radius:999px"]:not(#_):not(#__){min-height:44px}
 }
-}
+
 
 /* Rattrapage : le sommaire de /engagements et /gouvernance accroche ses liens
    directement sous nav.toc (et non sous .toc-in comme /investisseurs), et le
@@ -984,7 +984,7 @@ html:not(#_):not(#__){-webkit-tap-highlight-color:transparent}
   .toc:not(#_):not(#__) > a{min-height:44px;display:flex;align-items:center}
   .psn-link:not(#_):not(#__){min-height:44px;display:flex;align-items:center}
 }
-}
+
 
 /* Le lien « Voir sur la carte » de /contact pointe vers OpenStreetMap et non
    vers Google Maps : la regle posee en deuxieme passe sur a[href*="maps"] ne

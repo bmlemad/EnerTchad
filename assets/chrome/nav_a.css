@@ -583,3 +583,26 @@ html body div.hero:not(#_):not(#__) .lead:not(#_):not(#__){
 html header.pghero:not(#_):not(#__) > .hero-cap:not(#_),
 html body div.hero:not(#_):not(#__) > .hero-cap:not(#_),
 html header.hero:not(#_):not(#__) > .hero-cap:not(#_){display:none !important}
+
+/* ————————————————————————————————————————————————————————————
+   Ch589 — la banniere cookies etait intouchable au telephone.
+   Sur mobile, une regle en ligne aplatit #ckn en bandeau plein
+   largeur colle en bas (left/right/bottom:0 !important). La barre
+   de navigation du bas, #nezBar, est elle aussi fixee en bas, haute
+   de 60 px et posee a z-index:95 — contre 60 pour la banniere. Les
+   deux se superposent sur 44 px : la totalite des commandes.
+   Mesure : sur 62 des 191 pages, elementFromPoint au centre du
+   bouton « J ai compris » rend un lien de la barre, pas le bouton.
+   Le visiteur ne peut pas fermer la banniere ; il navigue ailleurs.
+   La banniere passe au-dessus de la barre et se pose juste au-dessus
+   d elle. Le garde :has(#nezBar) laisse intactes les pages sans barre.
+   ———————————————————————————————————————————————————————————— */
+@media(max-width:768px){
+  html body:has(#nezBar) #ckn:not(#_):not(#__):not(#___){
+    bottom:calc(62px + env(safe-area-inset-bottom)) !important;
+    z-index:96 !important;
+  }
+  html body:has(#nezBar) #ckn:not(#_):not(#__):not(#___) .ck-row:not(#_){
+    gap:14px !important;
+  }
+}

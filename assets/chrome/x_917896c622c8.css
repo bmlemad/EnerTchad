@@ -356,3 +356,9 @@ html[lang="ar"].et-jlight header.pghero:not(#_):not(#__){
 /* Ch585 — meme retrait du badge sur les neuf pages hors nav_a.css. */
 html header.pghero:not(#_):not(#__) > .hero-cap:not(#_),
 html body div.hero:not(#_):not(#__) > .hero-cap:not(#_){display:none !important}
+/* Ch589 — meme correction pour les pages hors nav_a.css. */
+@media(max-width:768px){
+  html body:has(#nezBar) #ckn:not(#_):not(#__):not(#___){
+    bottom:calc(62px + env(safe-area-inset-bottom)) !important;
+    z-index:96 !important}
+}
