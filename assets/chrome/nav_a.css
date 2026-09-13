@@ -234,7 +234,7 @@ html.et-jlight .rootland:not(#_):not(#__){
     radial-gradient(42% 48% at 88% 10%, rgba(90,167,240,.16), transparent 62%),
     radial-gradient(56% 58% at 82% 88%, rgba(31,164,150,.15), transparent 64%),
     radial-gradient(50% 54% at 18% 92%, rgba(224,162,78,.13), transparent 62%),
-    transparent !important;
+    rgba(250,247,241,.72) !important;
 }
 @keyframes et573Derive{
   from{transform:scale(1.05) translate3d(-1.2%,-.9%,0)}
@@ -279,7 +279,7 @@ html.et-jlight .diapo:not(#_):not(#__):not(#___){
     radial-gradient(44% 50% at 88% 8%, rgba(90,167,240,.14), transparent 62%),
     radial-gradient(54% 56% at 80% 92%, rgba(31,164,150,.13), transparent 64%),
     radial-gradient(48% 52% at 16% 94%, rgba(224,162,78,.12), transparent 62%),
-    transparent !important;
+    rgba(250,247,241,.72) !important;
 }
 @keyframes et573Champ{
   from{background-position:0% 0%,100% 0%,100% 100%,0% 100%,0 0}
@@ -656,7 +656,7 @@ html.et-jlight:not([lang="ar"]) .subland:not(#_):not(#__):not(#___){
     radial-gradient(50% 54% at 18% 92%, rgba(224,162,78,.14), transparent 62%),
     radial-gradient(46% 48% at 62% 42%, rgba(120,90,220,.10), transparent 66%),
     radial-gradient(42% 44% at 32% 60%, rgba(46,134,222,.09), transparent 66%),
-    transparent !important;
+    rgba(250,247,241,.72) !important;
 }
 html.et-plight:not([lang="ar"]) main section:not(#_):not(#__),
 html.et-jlight:not([lang="ar"]) main section:not(#_):not(#__),
@@ -695,4 +695,41 @@ html:not(.et-plight):not(.et-jlight) .ppj-note:not(#_):not(#__),
 html:not(.et-plight):not(.et-jlight) .c7l:not(#_):not(#__){
   color:#93A1B8 !important;
   -webkit-text-fill-color:#93A1B8 !important;
+}
+
+/* 592 : audit — le jeton clair #5A6678 vit sur 15 pages en six familles de
+   selecteurs. Le 591 n en avait releve qu une (.b111) ; la mesure trouve
+   .cmp-cap a 4,48 sur clients. Toute la famille passe a #4A5568. */
+html.et-plight:not([lang="ar"]) .cmp-hint:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
+html.et-plight:not([lang="ar"]) table.cmpt td:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
+html.et-plight:not([lang="ar"]) .secc span:not(.secc-k):not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
+html.et-plight:not([lang="ar"]) .slac span:not(.sla-v):not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
+html.et-plight:not([lang="ar"]) .docl li:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
+html.et-plight:not([lang="ar"]) .cmp-cap:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
+html.et-plight:not([lang="ar"]) .slac em:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
+html.et-plight:not([lang="ar"]) table.cmpt tbody th small:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
+html.et-plight:not([lang="ar"]) #diapo-cap .dc-zo:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
+html.et-plight:not([lang="ar"]) .pe-lead:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
+html.et-plight:not([lang="ar"]) .pe-c p:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
+html.et-plight:not([lang="ar"]) .pe-st p:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
+html.et-plight:not([lang="ar"]) table.pet td.pe-n:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
+html.et-plight:not([lang="ar"]) .pe-cap:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
+html.et-plight:not([lang="ar"]) .bcrumb a:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
+html.et-jlight:not([lang="ar"]) .cmp-hint:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
+html.et-jlight:not([lang="ar"]) table.cmpt td:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
+html.et-jlight:not([lang="ar"]) .secc span:not(.secc-k):not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
+html.et-jlight:not([lang="ar"]) .slac span:not(.sla-v):not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
+html.et-jlight:not([lang="ar"]) .docl li:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
+html.et-jlight:not([lang="ar"]) .cmp-cap:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
+html.et-jlight:not([lang="ar"]) .slac em:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
+html.et-jlight:not([lang="ar"]) table.cmpt tbody th small:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
+html.et-jlight:not([lang="ar"]) #diapo-cap .dc-zo:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
+html.et-jlight:not([lang="ar"]) .pe-lead:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
+html.et-jlight:not([lang="ar"]) .pe-c p:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
+html.et-jlight:not([lang="ar"]) .pe-st p:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
+html.et-jlight:not([lang="ar"]) table.pet td.pe-n:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
+html.et-jlight:not([lang="ar"]) .pe-cap:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
+html.et-jlight:not([lang="ar"]) .bcrumb a:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______){
+  color:#4A5568 !important;
+  -webkit-text-fill-color:#4A5568 !important;
 }
