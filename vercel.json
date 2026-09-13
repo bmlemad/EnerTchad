@@ -84,47 +84,47 @@
     },
     {
       "source": "/hseq-en",
-      "destination": "/greentech/hseq-en",
+      "destination": "/pole-greentech-en#hseq",
       "permanent": true
     },
     {
       "source": "/hseq-en.html",
-      "destination": "/greentech/hseq-en",
+      "destination": "/pole-greentech-en#hseq",
       "permanent": true
     },
     {
       "source": "/impact-en",
-      "destination": "/greentech/impact-en",
+      "destination": "/pole-greentech-en#impact",
       "permanent": true
     },
     {
       "source": "/impact-en.html",
-      "destination": "/greentech/impact-en",
+      "destination": "/pole-greentech-en#impact",
       "permanent": true
     },
     {
       "source": "/patrimoine-en",
-      "destination": "/greentech/patrimoine-en",
+      "destination": "/pole-greentech-en#patrimoine",
       "permanent": true
     },
     {
       "source": "/patrimoine-en.html",
-      "destination": "/greentech/patrimoine-en",
+      "destination": "/pole-greentech-en#patrimoine",
       "permanent": true
     },
     {
       "source": "/transition-en",
-      "destination": "/greentech/transition-en",
+      "destination": "/pole-greentech-en#transition",
       "permanent": true
     },
     {
       "source": "/transition-en.html",
-      "destination": "/greentech/transition-en",
+      "destination": "/pole-greentech-en#transition",
       "permanent": true
     },
     {
       "source": "/Configurateur_Service_Integre",
-      "destination": "/Configurateur_Service_Integre_v2",
+      "destination": "/configurateur-service-integre",
       "permanent": true
     },
     {
@@ -299,42 +299,42 @@
     },
     {
       "source": "/pole-greentech-hseq",
-      "destination": "/greentech/hseq",
+      "destination": "/greentech/#hseq",
       "permanent": true
     },
     {
       "source": "/pole-greentech-hseq.html",
-      "destination": "/greentech/hseq",
+      "destination": "/greentech/#hseq",
       "permanent": true
     },
     {
       "source": "/pole-greentech-impact",
-      "destination": "/greentech/impact",
+      "destination": "/greentech/#impact",
       "permanent": true
     },
     {
       "source": "/pole-greentech-impact.html",
-      "destination": "/greentech/impact",
+      "destination": "/greentech/#impact",
       "permanent": true
     },
     {
       "source": "/pole-greentech-patrimoine",
-      "destination": "/greentech/patrimoine",
+      "destination": "/greentech/#patrimoine",
       "permanent": true
     },
     {
       "source": "/pole-greentech-patrimoine.html",
-      "destination": "/greentech/patrimoine",
+      "destination": "/greentech/#patrimoine",
       "permanent": true
     },
     {
       "source": "/pole-greentech-transition",
-      "destination": "/greentech/transition",
+      "destination": "/greentech/#transition",
       "permanent": true
     },
     {
       "source": "/pole-greentech-transition.html",
-      "destination": "/greentech/transition",
+      "destination": "/greentech/#transition",
       "permanent": true
     },
     {
@@ -349,12 +349,12 @@
     },
     {
       "source": "/pole-enertech-innovations",
-      "destination": "/tchaditech/innovations",
+      "destination": "/tchaditech/#innovations",
       "permanent": true
     },
     {
       "source": "/pole-enertech-innovations.html",
-      "destination": "/tchaditech/innovations",
+      "destination": "/tchaditech/#innovations",
       "permanent": true
     },
     {
@@ -369,32 +369,32 @@
     },
     {
       "source": "/pole-enertech-rd",
-      "destination": "/tchaditech/rd",
+      "destination": "/tchaditech/#rd",
       "permanent": true
     },
     {
       "source": "/pole-enertech-rd.html",
-      "destination": "/tchaditech/rd",
+      "destination": "/tchaditech/#rd",
       "permanent": true
     },
     {
       "source": "/pole-enertech-recits",
-      "destination": "/tchaditech/recits",
+      "destination": "/tchaditech/#recits",
       "permanent": true
     },
     {
       "source": "/pole-enertech-recits.html",
-      "destination": "/tchaditech/recits",
+      "destination": "/tchaditech/#recits",
       "permanent": true
     },
     {
       "source": "/pole-enertech-socle",
-      "destination": "/tchaditech/socle",
+      "destination": "/tchaditech/#socle",
       "permanent": true
     },
     {
       "source": "/pole-enertech-socle.html",
-      "destination": "/tchaditech/socle",
+      "destination": "/tchaditech/#socle",
       "permanent": true
     },
     {
@@ -409,32 +409,32 @@
     },
     {
       "source": "/pole-enertalents-academie",
-      "destination": "/tchaditude/academie",
+      "destination": "/tchaditude/#academie",
       "permanent": true
     },
     {
       "source": "/pole-enertalents-academie.html",
-      "destination": "/tchaditude/academie",
+      "destination": "/tchaditude/#academie",
       "permanent": true
     },
     {
       "source": "/pole-enertalents-partenariats",
-      "destination": "/tchaditude/partenariats",
+      "destination": "/tchaditude/#partenariats",
       "permanent": true
     },
     {
       "source": "/pole-enertalents-partenariats.html",
-      "destination": "/tchaditude/partenariats",
+      "destination": "/tchaditude/#partenariats",
       "permanent": true
     },
     {
       "source": "/pole-enertalents-rayonnement",
-      "destination": "/tchaditude/rayonnement",
+      "destination": "/tchaditude/#rayonnement",
       "permanent": true
     },
     {
       "source": "/pole-enertalents-rayonnement.html",
-      "destination": "/tchaditude/rayonnement",
+      "destination": "/tchaditude/#rayonnement",
       "permanent": true
     },
     {
@@ -459,12 +459,12 @@
     },
     {
       "source": "/pole-enerconseils-conseil",
-      "destination": "/enerconseils/conseil",
+      "destination": "/enerconseils/#conseil",
       "permanent": true
     },
     {
       "source": "/pole-enerconseils-conseil.html",
-      "destination": "/enerconseils/conseil",
+      "destination": "/enerconseils/#conseil",
       "permanent": true
     },
     {
@@ -534,12 +534,12 @@
     },
     {
       "source": "/impact",
-      "destination": "/greentech/impact",
+      "destination": "/greentech/#impact",
       "permanent": true
     },
     {
       "source": "/impact.html",
-      "destination": "/greentech/impact",
+      "destination": "/greentech/#impact",
       "permanent": true
     },
     {
@@ -614,7 +614,7 @@
     },
     {
       "source": "/Calculateur_Baril_Additionnel",
-      "destination": "/calculateur-baril-additionnel",
+      "destination": "/amont/calculateur-baril-additionnel",
       "permanent": true
     },
     {
