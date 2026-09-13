@@ -10,7 +10,7 @@ html:not(.et-plight):not(.et-jlight) .subland::after{background:linear-gradient(
 html.et-plight .nav.nx:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5):not(#e6),html.et-jlight .nav.nx:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5):not(#e6){background:rgba(255,255,255,.60)!important;background-color:rgba(255,255,255,.60)!important;background-image:none!important;border-bottom-color:rgba(0,48,73,.14);box-shadow:0 10px 30px rgba(0,48,73,.10)}
 @media (prefers-reduced-transparency:reduce){.nav.nx:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5):not(#e6){background:#003049!important;-webkit-backdrop-filter:none;backdrop-filter:none}html.et-plight .nav.nx:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5):not(#e6),html.et-jlight .nav.nx:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5):not(#e6){background:#F5F7FA!important}}
 html.et-plight .dt:not(#_),html.et-jlight .dt:not(#_){opacity:1!important;color:#6B5012!important}
-html:not(.et-plight):not(.et-jlight) .exp-c p:not(#_),html:not(.et-plight):not(.et-jlight) .exp-items span:not(#_),html:not(.et-plight):not(.et-jlight) .exp-note:not(#_){color:#93A1B8!important}
+html:not(.et-plight):not(.et-jlight) .exp-c p:not(#_),html:not(.et-plight):not(.et-jlight) .exp-items span:not(#_),html:not(.et-plight):not(.et-jlight) .exp-note:not(#_){color:#ACB8CC!important}
 html:not(.et-plight):not(.et-jlight) .c7d:not(#_){color:#93A1B8!important}
 /* Ch544 - le sourd #7C8AA2 du chrome commun tombait a 4,2:1 sur le composite petrole : eclairci en sombre au niveau du token. */
 html:not(.et-plight):not(.et-jlight){--muted:#93A1B8}

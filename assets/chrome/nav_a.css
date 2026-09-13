@@ -234,7 +234,7 @@ html.et-jlight .rootland:not(#_):not(#__){
     radial-gradient(42% 48% at 88% 10%, rgba(90,167,240,.16), transparent 62%),
     radial-gradient(56% 58% at 82% 88%, rgba(31,164,150,.15), transparent 64%),
     radial-gradient(50% 54% at 18% 92%, rgba(224,162,78,.13), transparent 62%),
-    #FAF7F1 !important;
+    transparent !important;
 }
 @keyframes et573Derive{
   from{transform:scale(1.05) translate3d(-1.2%,-.9%,0)}
@@ -279,7 +279,7 @@ html.et-jlight .diapo:not(#_):not(#__):not(#___){
     radial-gradient(44% 50% at 88% 8%, rgba(90,167,240,.14), transparent 62%),
     radial-gradient(54% 56% at 80% 92%, rgba(31,164,150,.13), transparent 64%),
     radial-gradient(48% 52% at 16% 94%, rgba(224,162,78,.12), transparent 62%),
-    #FAF7F1 !important;
+    transparent !important;
 }
 @keyframes et573Champ{
   from{background-position:0% 0%,100% 0%,100% 100%,0% 100%,0 0}
@@ -656,13 +656,43 @@ html.et-jlight:not([lang="ar"]) .subland:not(#_):not(#__):not(#___){
     radial-gradient(50% 54% at 18% 92%, rgba(224,162,78,.14), transparent 62%),
     radial-gradient(46% 48% at 62% 42%, rgba(120,90,220,.10), transparent 66%),
     radial-gradient(42% 44% at 32% 60%, rgba(46,134,222,.09), transparent 66%),
-    #FAF7F1 !important;
+    transparent !important;
 }
 html.et-plight:not([lang="ar"]) main section:not(#_):not(#__),
 html.et-jlight:not([lang="ar"]) main section:not(#_):not(#__),
 html.et-plight:not([lang="ar"]) body>section:not(#_):not(#__),
 html.et-jlight:not([lang="ar"]) body>section:not(#_):not(#__){
-  background:linear-gradient(180deg,rgba(255,255,255,.58),rgba(255,255,255,.44)) !important;
   -webkit-backdrop-filter:blur(14px) saturate(1.2) !important;
   backdrop-filter:blur(14px) saturate(1.2) !important;
+}
+
+/* 591 : le champ clair laisse passer le motif du fond ; les notes en petit
+   corps de .b111 y perdaient 0,15 et passaient sous 4,5. Le remede est leur
+   couleur, pas le champ — mesure au coeur des glyphes, chapitre 591. */
+html.et-plight:not([lang="ar"]) .b111-lead:not(#_):not(#__):not(#___),
+html.et-jlight:not([lang="ar"]) .b111-lead:not(#_):not(#__):not(#___),
+html.et-plight:not([lang="ar"]) .b111-c p:not(#_):not(#__):not(#___),
+html.et-jlight:not([lang="ar"]) .b111-c p:not(#_):not(#__):not(#___){
+  color:#4A5568 !important;
+  -webkit-text-fill-color:#4A5568 !important;
+}
+
+/* 591 : la note des cartes .exp-c tombait a 4,26 en theme sombre — mesure
+   au coeur des glyphes, anterieure au 590. Couleur relevee. */
+html:not(.et-plight):not(.et-jlight) .exp-c p:not(#_):not(#__),
+html:not(.et-plight):not(.et-jlight) .exp-items span:not(#_):not(#__),
+html:not(.et-plight):not(.et-jlight) .exp-note:not(#_):not(#__){
+  color:#ACB8CC !important;
+  -webkit-text-fill-color:#ACB8CC !important;
+}
+
+/* 591 : quatre notes en petit corps heritent de --muted #7C8AA2 en theme
+   sombre et mesurent 4,31 a 4,38 au coeur des glyphes — sous le seuil
+   depuis leur ecriture, sans rapport avec le champ. Relevees a #93A1B8. */
+html:not(.et-plight):not(.et-jlight) .exp-lede:not(#_):not(#__),
+html:not(.et-plight):not(.et-jlight) .avk-note:not(#_):not(#__),
+html:not(.et-plight):not(.et-jlight) .ppj-note:not(#_):not(#__),
+html:not(.et-plight):not(.et-jlight) .c7l:not(#_):not(#__){
+  color:#93A1B8 !important;
+  -webkit-text-fill-color:#93A1B8 !important;
 }
