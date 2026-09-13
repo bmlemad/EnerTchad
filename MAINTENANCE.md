@@ -21507,3 +21507,92 @@ efface les deux derniers.
   themes.
 
 Cinq fichiers de style et six pages touches. SW et-202609131240.
+
+## 586 — Les incoherences laissees par le verre (13 septembre 2026)
+
+Le 585 a retire les photographies de fond par la feuille de style.
+Cela laissait le balisage en place : des directives de prechargement
+qui telechargeaient encore des images que plus rien ne peignait, des
+declarations mortes, et un script qui rechargeait des vues invisibles.
+Ce chapitre remet le balisage en accord avec ce que le site affiche.
+
+### La mesure d abord
+
+Un instrument neuf, page par page, contexte de navigation neuf pour
+que rien ne vienne du cache : d un cote ce que le navigateur
+telecharge reellement (resource timing), de l autre ce qu un element
+visible peint reellement — fonds, pseudo-elements, et balises img.
+La difference est le gaspillage.
+
+**88 pages sur 191 telechargeaient 10,76 Mio d images que rien
+n affichait** (86 pages et 9,39 Mio en theme clair). Cause unique :
+138 directives `<link rel="preload" as="image">`. Un prechargement
+ne consulte pas la feuille de style — il telecharge, point. Les
+regles du 573 et du 585 avaient rendu ces images invisibles ; les
+prechargements, eux, continuaient.
+
+### Trois familles retirees
+
+**138 prechargements** d images jamais peintes, sur 88 pages, dont
+16 `sable-texture` en `fetchpriority="high"` et 26 `raffinerie-jour`.
+
+**170 vues `<i>` du calque `.diapo`** sur 24 pages, avec leur script
+d hydratation qui, six secondes apres l autre, leur reaffectait une
+photographie en fond. Le calque `.diapo` dessine le champ de lumiere
+du 573 par ses propres degrades ; ses vues photographiques etaient
+neutralisees depuis ce chapitre-la.
+
+**Toutes les declarations mortes** restantes : 61 `url()` accrochees
+a un empilement de degrades, 328 `background:url()` de `.rootland` et
+`.subland`, les six vues de faune de la brochure, les `.cms-photo`
+des seize pages de pole. Apres passage, **zero reference a une image
+que le site ne peint pas**, dans les 191 pages.
+
+### Mon erreur
+
+J allais annoncer 13,5 Mio de plus. Le script d hydratation reaffecte
+une photographie a 144 elements sur 24 pages ; j ai additionne le
+poids des fichiers et j ai eu ce chiffre. Il est faux. La regle du
+573 pose `background-image:none !important` sur ces elements : une
+affectation en style en ligne, sans `!important`, ne l emporte pas —
+la valeur calculee reste `none`, et **le navigateur ne telecharge
+rien**. Verifie en chargeant huit pages et en attendant trente-huit
+secondes, avant et apres : huit images avant, une par page, celles
+des prechargements ; zero apres ; rien n arrive plus tard.
+
+La lecon : **le poids d un fichier reference dans le balisage n est
+pas du trafic. Seul le rendu dit ce qui part sur le reseau** — une
+declaration battue par un `!important` ne coute rien, un
+prechargement coute tout, meme quand rien ne l affiche.
+
+Le balisage mort partait quand meme : il n encombrait pas le reseau,
+il encombrait la lecture du code.
+
+### Ce qui reste, et pourquoi
+
+Six figures sur deux pages gardent leur photographie : `role="img"`,
+un libelle, une legende et le badge « Image d illustration ». Ce
+sont des figures legendees, du contenu — la ligne du 575, tenue au
+584 et au 585. Ce sont les six dernieres photographies du site.
+
+### Verifie
+
+- Instrument telecharge-contre-peint, 191 pages, deux themes :
+  **88 pages et 10,76 Mio gaspillees avant, zero apres** ; zero
+  prechargement mort, zero declaration morte.
+- Attente longue (38 s) sur huit pages, avant et apres : 0,80 Mio
+  contre zero. Rien ne se declenche apres coup.
+- Comparaison au pixel entre l etat du 585 et celui-ci, 40 pages
+  tirees au sort, deux themes : identiques. Trois pages s ecartent —
+  brochure, boutique, ethique-en — mais elles s ecartent d
+  elles-memes d autant d un chargement a l autre (rotateurs de
+  titres et de cartes) ; verifie en les comparant a elles-memes.
+- Inventaire des fonds photographiques, 191 pages, deux themes :
+  toujours 2 pages et 6 elements, les six figures legendees. Le 586
+  n a rien retire de visible.
+- Contraste au pixel peint sur les 52 pages dont la regle de bande
+  a ete modifiee, deux themes : zero alerte.
+- axe AA sur 14 pages dans les deux themes : zero violation sur 28
+  rendus.
+
+178 pages et le service worker. SW et-202609131720.
