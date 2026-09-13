@@ -21967,3 +21967,116 @@ deux vraies.
   reponse 4xx.
 
 Trois feuilles de style et le service worker.
+
+## 590 — Que le contenu laisse voir son fond (14 septembre 2026)
+
+Consigne : rendre le site transparent, que le contenu donne un effet
+translucide avec son fond. Avant de toucher a la transparence des
+panneaux, j ai regarde ce qu il y avait derriere. La reponse a change
+le chantier.
+
+### Ce que l inventaire a montre
+
+2 442 surfaces relevees au rendu sur les 191 pages : sections, cartes,
+pied de page, barre de navigation. **Trois sont opaques.** 1 821
+portent deja un `backdrop-filter`, 618 sont translucides sans flou.
+Autrement dit, les panneaux etaient deja du verre : ce n est pas eux
+qui manquaient de transparence.
+
+Le probleme etait dessous.
+
+**Theme sombre.** Le champ de lumiere du 573 est bien peint derriere
+le contenu — cinq degrades radiaux sur un marine profond, en calque
+fixe. Mais ses quatre foyers sont poses aux **coins** du cadre : le
+milieu de l ecran, exactement la ou vit le texte, est la zone morte du
+degrade. Et le flou de 16 px des sections efface le peu de structure
+qui y restait. Un verre pose sur du vide ne fait pas de verre.
+
+**Theme clair.** `.rootland` et `.subland` sont en `display:none`, les
+sections n ont aucun `backdrop-filter`, `html` et `body` sont en creme
+plat. Il n y avait, litteralement, **pas de fond a laisser passer**.
+
+### Ce qui a ete fait
+
+Deux foyers medians rejoignent les quatre foyers d angle — un violet a
+64 % / 40 %, un bleu a 30 % / 62 % — plus un balayage speculaire tres
+large en diagonale. Le champ porte desormais de la couleur au centre,
+la ou le contenu se pose.
+
+En theme clair, le champ est rallume dans sa palette creme et les
+sections deviennent du verre : un voile blanc a 58 %, `blur(14px)
+saturate(1.2)`. Le contenu flotte au-dessus d un champ chaud a gauche,
+froid a droite, au lieu d un aplat blanc.
+
+Le mini-site arabe reste sombre dans les deux themes, comme depuis le
+587 : le garde `:not([lang="ar"])` l exclut.
+
+Le champ de l accueil, `.diapo`, recoit les memes foyers medians mais
+plus doux. L accueil avait deja recu sa maille de lumiere au 587, et
+son corps de texte est le plus serre du site.
+
+### Le contraste, qui decide de tout
+
+C est la contrainte qui bride ce chantier : plus le fond est vivant,
+moins le texte se detache. Mesure au pixel peint, sur le coeur des
+glyphes, avant et apres, corps de texte reel :
+
+| | avant | apres | seuil |
+|---|---|---|---|
+| sombre, pire cas | 7,63 | **6,63** | 4,5 |
+| clair, pire cas | 5,82 | **6,12** | 4,5 |
+
+Le theme clair y gagne : le voile blanc des sections tient mieux le
+texte que le creme nu.
+
+Une valeur merite d etre dite franchement. Sur l accueil, deux notes
+en petit corps descendent a **4,68** apres, contre **4,81** avant. Ce
+sont les deux paragraphes les plus serres du site, et ils l etaient
+deja. La marge sur le seuil est mince — 0,18 — et c est le prix du
+champ sur cette page. Si elle vous parait trop courte, le remede est
+la couleur de ces deux notes, pas le champ ; dites-le et je la releve.
+
+### Ce que j ai renonce a faire
+
+J avais prepare une version plus poussee : ouvrir aussi les cartes et
+le pied de page, qui sont translucides mais sans flou. La mesure a
+dit non pour le pied de page — il porte du texte a 0,72 d opacite sur
+187 pages, et l ouvrir davantage le ferait passer sous le seuil. Les
+618 surfaces sans flou restent telles quelles ; le verre se gagne la
+ou il y a quelque chose a voir au travers, pas partout.
+
+### Verifie
+
+- Inventaire des surfaces au rendu, 191 pages : 2 442 surfaces, 3
+  opaques, 1 821 deja en verre.
+- Contraste du corps de texte au pixel peint, douze pages, deux
+  themes, sur le coeur des glyphes : **zero paragraphe sous le seuil**
+  avant comme apres ; pires cas ci-dessus.
+- axe AA sur douze pages dans les deux themes, 24 rendus : zero
+  violation. Un `color-contrast(8)` apparu une fois sur amont/eor a
+  ete relance quatre fois, seul puis en lot avec 2,6 s d attente :
+  jamais reproduit. **Quatrieme fois qu axe lance en pleine transition
+  rend un faux contraste** — la lecon est acquise, l attente est
+  desormais de 2,6 s.
+- Sante des 191 pages, deux themes : zero erreur console, zero
+  reponse 4xx.
+- Cout du verre : elements en `backdrop-filter` par page, sombre 64
+  avant et apres, clair 61 -> 71. Dix panneaux de plus par page, dans
+  l ordre de grandeur de ce que le site faisait deja.
+
+### Mon erreur
+
+Ma sonde de surfaces n a rien rendu pendant trois essais : elle
+cherchait une section entierement contenue dans la fenetre
+(`top > 60 && bottom < 880`). Sur ce site, une section fait deux ou
+trois hauteurs d ecran ; aucune ne remplit jamais cette condition. Le
+script se terminait sans une ligne et sans une erreur — sortie 0,
+journal vide. J ai cherche un plantage la ou il n y avait qu un filtre
+trop strict.
+
+**Un balayage qui ne rend rien n a pas forcement echoue : il a
+peut-etre poliment trouve zero candidat.** Toute sonde devrait dire
+combien d elements elle a examines avant de dire ce qu elle a trouve —
+c est la meme lecon qu au 583, et je l ai reapprise.
+
+Deux feuilles de style et le service worker. SW et-202609140430.
