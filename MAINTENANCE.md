@@ -21714,3 +21714,126 @@ couleur vient de la maille, pas du fond du heros.
 
 Deux feuilles de style, quatre pages, le service worker.
 SW et-202609132030.
+
+## 588 — La table de routage (13 septembre 2026)
+
+Le site ne perd plus un octet en images. Restait a savoir ou il en
+perd encore. La reponse n etait pas dans le poids : elle etait dans
+les detours.
+
+### D abord, ce que pese vraiment une page
+
+Avant de chercher a alleger quoi que ce soit, mesurer. Sur le fil,
+compresse en brotli comme Vercel le sert :
+
+| | par page |
+|---|---|
+| HTML | 27,9 Kio |
+| CSS | 59,9 Kio en 11,7 feuilles |
+| JS | 43,0 Kio |
+| **total** | **130,8 Kio** |
+
+Le site est leger. J avais commence a instruire un chantier de CSS
+mort — 3 729 regles analysees, 2 213 selecteurs testes un par un
+contre les 191 pages dans les deux themes, 429 qui ne trouvent
+aucun element nulle part. Apres filtrage de ceux dont un jeton
+apparait dans le JS ou le balisage (une classe posee a l execution
+n est pas morte), il reste 19,8 Kio de regles surement mortes —
+soit, une fois compressees et reparties, deux a trois kilo-octets
+par page. Le chantier ne valait pas son risque. **Mesurer d abord a
+evite de refaire la mise en page de 191 pages pour trois
+kilo-octets.**
+
+### Ce qui valait le detour
+
+**36 redirections faisaient deux sauts.** `/hseq-en` menait a
+`/greentech/hseq-en`, qui menait a `/pole-greentech-en#hseq` ;
+`/pole-enertech-rd` a `/tchaditech/rd`, qui menait a
+`/tchaditech/#rd`. Les etapes intermediaires n existent nulle part
+comme page : ce sont des redirections vers des redirections. 37
+destinations pointaient ainsi vers une cible qui n est elle-meme
+qu une source de redirection.
+
+Chaque saut est un aller-retour reseau complet. Pour un visiteur a
+N Djamena, c est la latence qui compte, pas les octets. Les 36
+chaines sont aplaties : chacune mene desormais en un saut a sa
+destination finale, fragment compris. **Zero chaine, zero boucle**
+sur les 158 redirections.
+
+A noter honnetement : **aucun lien interne du site ne passe par une
+redirection** — verifie sur les 191 pages. Le gain est pour les URL
+heritees qui arrivent de l exterieur et pour les moteurs, pas pour
+la navigation interne.
+
+**Un lien vers une page qui n existe pas.** Le fil d Ariane du
+configurateur de service pointait deux fois sur
+`pole-tchaditech.html#apps` — une adresse relative, sans barre
+oblique, qui se resout en `/pole-tchaditech.html` et rend 404 en
+production, verifie. La page visee est `/tchaditech/outils`, qui
+porte bien l ancre `#apps`. Corrige.
+
+**Deux icones en 404 a chaque visite du calculateur.** Le
+calculateur est servi par une reecriture : son adresse est
+`/amont/calculateur-baril-additionnel` alors que le fichier est a
+la racine. Ses liens d icone etaient relatifs — `favicon-32.png`,
+`apple-touch-icon.png` — et se resolvaient donc contre `/amont/`.
+`/amont/favicon-32.png` : 404. `/amont/apple-touch-icon.png` : 404.
+Deux requetes perdues a chaque chargement depuis que la reecriture
+existe. Les deux liens passent en absolu. Balayage des 191 pages :
+aucune autre page servie depuis un chemin different de son fichier
+ne porte de reference relative.
+
+**Cinq liens vers `index.html`** dans les deux outils : l adresse se
+resout en `/index.html`, que `cleanUrls` renvoie en 308 vers `/`.
+Un saut pour rien sur le lien « Accueil » du fil d Ariane. Passes a
+`/`.
+
+### Ce que l audit a trouve sain
+
+Sur les 191 pages : zero page sans meta description, zero
+description hors de la fourchette utile, zero page sans `h1` ou
+avec plusieurs, zero saut de niveau de titre, zero lien sans texte
+accessible, zero image sans attribut `alt`, zero page sans donnees
+structurees ni Open Graph — sauf la 404, ou c est normal.
+
+### Mon erreur
+
+Mon detecteur de liens casses a annonce **610 liens internes vers
+une cible inexistante**. Il en restait un. Les 609 autres sont
+servis par les deux reecritures de `vercel.json` :
+`/amont/calculateur-baril-additionnel` et
+`/configurateur-service-integre` n existent pas comme fichiers, et
+c est precisement leur raison d etre. Mon detecteur construisait la
+liste des adresses valides en parcourant le disque.
+
+**Un verificateur de liens qui ne lit que le systeme de fichiers ne
+connait pas la table de routage.** Sur un site statique avec 158
+redirections et 2 reecritures, la moitie des adresses valides
+n existent pas sur le disque. Le seul vrai 404 se cachait au milieu
+de 609 faux.
+
+Second, plus court : pour mesurer le poids reel j ai d abord ecrit
+`fetch(url).arrayBuffer().byteLength`. Cela donne les octets
+decodes, pas ce qui passe sur le fil ; et comme j ajoutais `&nc=`
+a des adresses sans parametre, la moitie des requetes tombaient sur
+la page 404 — d ou les quinze feuilles de style annoncees a 42,1
+Kio chacune, exactement. **Quinze mesures identiques au dixieme ne
+sont pas une mesure, c est un seul objet mesure quinze fois.**
+
+### Verifie
+
+- Table de routage : 158 redirections, **36 chaines de deux sauts
+  ramenees a un**, zero chaine restante, zero boucle, zero
+  destination inexistante hors motifs generiques.
+- En production, avant correction : `/hseq-en`,
+  `/pole-greentech-hseq`, `/pole-enertech-rd`,
+  `/Calculateur_Baril_Additionnel`, `/Configurateur_Service_Integre`
+  arrivent bien a une page 200, mais par deux sauts ;
+  `/pole-tchaditech.html` rendait **404**.
+- Les deux outils recharges apres correction : zero erreur console,
+  zero erreur de page, application fonctionnelle, plus aucune
+  adresse relative hors `mailto:`.
+- Audit de structure et de referencement sur les 191 pages : voir
+  ci-dessus, rien d autre a signaler.
+
+Un fichier de configuration et deux pages.
