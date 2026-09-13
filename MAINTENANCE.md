@@ -21596,3 +21596,121 @@ sont des figures legendees, du contenu — la ligne du 575, tenue au
   rendus.
 
 178 pages et le service worker. SW et-202609131720.
+
+## 587 — L accueil rejoint le verre (13 septembre 2026)
+
+Une verification de sante apres les 178 pages du 586 a signale deux
+pages sur 191 : `index.html` et `index-en.html`. Leur heros n avait
+qu une couche de degrade la ou les 189 autres en ont cinq. Les deux
+accueils sont les seules pages que la campagne du 585 n avait pas
+atteintes.
+
+### Ce que la mesure disait
+
+Chroma moyen du fond de heros, contenu masque, sur 700 px de haut :
+
+- accueil sombre **16,5** — une bande de titre ordinaire : **30,2**
+- accueil clair **11,4** — la meme bande de titre : **17,5**
+
+La page d entree du site etait la plus terne de toutes.
+
+### Pourquoi
+
+Deux causes, trouvees en interrogeant le CSSOM plutot que les
+fichiers.
+
+`.prem-mesh`, la maille de lumiere propre a l accueil, est en
+`display:none` depuis longtemps — masquee par la meme regle qui
+retirait les photographies de section. Le seul calque colore de la
+page ne peignait rien.
+
+Et le heros porte un voile plat : en sombre un degrade lateral de
+`.74` a `.24` pose par la feuille propre aux deux accueils ; en clair
+une regle en ligne de specificite (3,1,2) qui le rend entierement
+transparent. Le champ du 573 passait donc soit sous un lavis sombre,
+soit tout nu.
+
+### Le verre
+
+La maille redevient le champ : quatre foyers or, bleu, teal, ambre,
+en `screen` sur le theme sombre, en `multiply` sur le clair, a
+`z-index:0` avec le contenu remonte a `z-index:2` — un calque de
+lumiere ne doit pas passer devant le texte.
+
+Le voile plat devient la matiere du 585 : balayage speculaire en
+diagonale, liseret clair en haut, arete et ombre portee en bas, et
+une fumee verticale legere qui tient le contraste. Chaque theme garde
+son caractere : l accueil sombre reste sombre, l accueil clair reste
+clair. Ce n est pas une vitre fumee comme sur les bandes de titre —
+un heros plein cadre n a rien derriere lui a laisser voir, et une
+vitre y couvrirait le premier ecran entier.
+
+Tout tient dans la feuille que ces deux pages sont seules a charger.
+Aucune autre page n est touchee, aucun balisage n est modifie.
+
+### Et la brochure, au passage
+
+En verifiant l accueil j ai interroge le CSSOM sur les autres heros
+plein cadre. Le verre pose sur la brochure au 585 ne s appliquait
+pas en theme clair : `plight_extrait.css` porte sur ce selecteur une
+regle de specificite (2,2,2) contre (2,1,2) pour la mienne, et lui
+substituait un radial marine. Le texte restait lisible — c est
+pourquoi la mesure de contraste du 585 n avait rien signale, elle
+mesure la lisibilite, pas la matiere — mais la brochure etait, en
+clair, la seule page a ne pas porter le verre. Un troisieme `:not()`
+le lui rend : cinq couches, `backdrop-filter` actif, titre a 5,55:1.
+
+**Une mesure de contraste ne verifie pas qu une regle s applique.**
+Elle verifie qu on peut lire. Les deux questions sont distinctes, et
+il faut les poser separement.
+
+### Mon erreur
+
+J avais prepare deux variantes et j ai failli publier la premiere : la
+vraie vitre fumee, identique aux 190 autres pages, avec le texte
+bascule en blanc pour le theme clair. En sombre elle passait. En
+clair la capture montre du blanc sur du creme — illisible. La regle
+en ligne de l accueil, plus specifique que la mienne, avait garde le
+fond clair tandis que mes regles de couleur, elles, avaient bien
+blanchi le texte : la moitie de la variante s appliquait, l autre
+non.
+
+**Une variante qui tient dans un theme n est pas une variante.** Et
+quand une regle en pose une autre en dependance — ce fond suppose ce
+texte — il faut verifier que les deux passent ensemble, pas l une
+apres l autre. La capture l a dit en une seconde ; le raisonnement ne
+l aurait pas dit.
+
+Second instrument menteur, plus benin. Ma verification de sante
+retenait le premier calque de fond trouve dans le document, sans
+regarder s il etait peint. En theme clair `.subland` et `.rootland`
+sont en `display:none` sur une soixantaine de pages : elle a signale
+soixante fonds plats qui n existent pas. **Un detecteur de calque
+doit d abord verifier que le calque est peint.** Corrige, la meme
+verification ne signale plus que les deux accueils — et pour une
+raison voulue : leur heros ne porte que deux couches parce que la
+couleur vient de la maille, pas du fond du heros.
+
+### Verifie
+
+- Chroma du fond de heros, contenu masque : sombre **16,5 → 22,2**,
+  clair **11,4 → 14,8**, contre 30,2 et 17,5 pour la bande de
+  reference. L ecart restant tient a la hauteur : 1 186 px pour
+  l accueil contre 613 px pour une bande, le champ s y etale.
+- Contraste au pixel peint sur les huit elements du heros, deux
+  themes, deux langues, sur le coeur des glyphes : **zero alerte**.
+  Titre 7,8 a 16,0 ; chapeau 9,4 a 10,5 ; surtitre 5,3 a 8,7 ; carte
+  « A la une » 5,5 a 12,4.
+- Mouvement reduit : la derive de la maille s arrete, 12 elements
+  animes deviennent 4.
+- Empilement verifie : maille a `z-index:0`, contenu a `z-index:2`.
+- axe AA sur les deux accueils et deux pages temoin, deux themes :
+  zero violation sur huit rendus.
+- Sante des 191 pages, deux themes : zero erreur console, zero
+  reponse 4xx, et plus aucune page signalee comme fond plat.
+
+- Brochure FR et EN en theme clair : cinq couches et le verre actif
+  la ou il y avait un radial marine, titre a 5,55:1.
+
+Deux feuilles de style, quatre pages, le service worker.
+SW et-202609132030.
