@@ -22080,3 +22080,133 @@ combien d elements elle a examines avant de dire ce qu elle a trouve —
 c est la meme lecon qu au 583, et je l ai reapprise.
 
 Deux feuilles de style et le service worker. SW et-202609140430.
+
+## 591 — Le champ clair cachait un motif (14 septembre 2026)
+
+Consigne : verifier en theme clair ce que le 590 a pose, et mettre le
+registre a jour. La verification a trouve trois choses, dont une qui
+annule une phrase du chapitre precedent.
+
+### Ce que j avais annonce et qui n existait pas
+
+Le 590 dit : « les sections deviennent du verre : un voile blanc a
+58 %, blur(14px) saturate(1.2) ». Le flou, oui. Le voile, jamais.
+Interrogation du CSSOM sur la page servie en production : la
+declaration de fond de ma regle est battue par une regle en ligne,
+`html:has(.rootland) main section:not(#_) six fois {background:none
+!important}`, de specificite (6,0,3) contre (2,2,3) pour la mienne.
+Les deux portent `!important` ; a poids egal, c est la specificite qui
+tranche.
+
+Compte sur les 191 pages en theme clair : **1 227 sections portent le
+flou, 181 portent un fond peint**. Ma declaration etait morte sur 182
+des 183 pages non arabes. Le chapitre 590 decrivait une matiere que le
+site n a jamais affichee.
+
+### Et la vraie faute : un aplat pose sur un motif
+
+Plus grave, et visible a l oeil des la premiere capture comparee.
+Avant le 590, `.rootland` et `.subland` etaient en `display:none` en
+theme clair — et derriere le contenu, un autre calque peignait deja
+quelque chose : un motif de lignes courbes et de pastilles, discret,
+sur le creme. Le 590 a mis ces calques en `display:block` avec
+`#FAF7F1` en bas de leur empilement. Un aplat opaque. **Il a couvert
+le motif.**
+
+Le chapitre qui devait rendre le fond visible a rendu le theme clair
+plus plat que la veille. C est l inverse exact de la consigne.
+
+### Ce qui a ete fait
+
+La base des champs clairs passe de `#FAF7F1` a `transparent` : les six
+foyers de couleur se posent desormais **sur** le motif au lieu de le
+remplacer. Les sections gardent leur `backdrop-filter`, qui a
+maintenant quelque chose a flouter, et la declaration de voile morte
+est retiree du code plutot que rendue gagnante — un voile blanc
+recouvrirait a nouveau ce que ce chapitre vient de degager.
+
+### Un chiffre a corriger, donne au proprietaire
+
+Le 590 vous a dit que deux notes de l accueil tombaient a **4,68**,
+« 0,18 au-dessus du seuil », et vous a pose la question de les
+relever. Ce chiffre etait faux, par ma faute d instrument.
+
+Ma sonde retient les pixels dont la couleur peinte est a moins de 40
+par canal de la couleur declaree, puis prend le 5e centile des
+contrastes retenus. Sur un texte de 13 px, la plupart des pixels
+retenus par un filtre aussi large ne sont pas le coeur du glyphe : ce
+sont des pixels d anticrenelage, a demi couverts, donc plus clairs. Le
+5e centile allait les chercher exactement. Verification directe sur le
+paragraphe le plus faible du site — couleur declaree contre fond peint
+mesure au meme endroit : **5,33**, la ou la sonde large annoncait
+3,29.
+
+**Le 5e centile sur du petit corps mesure l anticrenelage, pas le
+glyphe.** Le filtre est resserre a 12 par canal. L erreur allait dans
+le sens prudent, mais une alerte fausse coute une decision au
+proprietaire, et celle-la vous a ete posee comme une question.
+
+### Ce que l instrument corrige a trouve, lui
+
+Deux points faibles reels, tous deux sur du petit corps.
+
+Le premier est cause par ce chapitre : une fois le motif rendu
+visible, les notes `.b111-c p` et `.b111-lead` en theme clair passent
+de 4,57 a 4,42 — sous le seuil. Le remede est celui que je vous avais
+annonce au 590 : **la couleur de ces notes, pas le champ**. `#5A6678`
+devient `#4A5568`. Ces classes vivent sur 190 pages.
+
+Le second n a rien a voir ni avec le 590 ni avec le 591. Recensement
+exhaustif du corps de texte en theme sombre sur les six pages de pole
+— tous les paragraphes, pas un echantillon : **247 paragraphes, 38
+sous le seuil avant ce chapitre**, entre 4,24 et 4,42. Ils l etaient
+depuis leur ecriture. Deux familles de couleur en cause : `.exp-c p`,
+`.exp-items span` et `.exp-note` a `#93A1B8`, relevees a `#ACB8CC` ;
+`.exp-lede`, `.avk-note`, `.ppj-note` et `.c7l`, qui heritent de
+`--muted` a `#7C8AA2`, relevees a `#93A1B8`.
+
+Apres : **250 paragraphes, 16 sous le seuil**, entre 4,35 et 4,48.
+Aucune valeur d apres n est inferieure a la pire valeur d avant. Il
+reste donc une campagne a mener sur ces six pages — je la propose au
+prochain chapitre, avec le recensement des classes concernees plutot
+qu une couleur a la fois.
+
+### Verifie
+
+- CSSOM en production, theme clair : le voile annonce au 590 n
+  existait pas ; 1 227 sections avec flou, 181 avec fond peint sur les
+  183 pages non arabes.
+- Captures comparees, meme page, meme position de defilement : motif
+  present avant le 590, absent apres le 590, present a nouveau apres
+  le 591.
+- Contraste du corps de texte au coeur des glyphes, filtre resserre a
+  12 par canal, douze pages, deux themes : theme clair **zero
+  paragraphe sous le seuil**, pire cas 4,88 ; theme sombre, les deux
+  familles relevees.
+- Recensement exhaustif, six pages de pole, theme sombre : 38 sous le
+  seuil avant, 16 apres ; pire cas 4,24 avant, 4,35 apres.
+- axe AA sur six pages dans les deux themes, douze rendus : zero
+  violation.
+- Sante des 191 pages, deux themes : zero erreur console, zero
+  reponse 4xx.
+- Equilibre des accolades verifie sur les trois feuilles modifiees.
+
+### Mon erreur
+
+Deux, et la meme au fond.
+
+Le 590 a annonce une matiere sans verifier qu elle s appliquait —
+alors que le 587 avait deja appris exactement cela sur la brochure, ou
+un verre annonce ne gagnait pas en theme clair. Une declaration ecrite
+n est pas une declaration appliquee ; la seule preuve est le style
+calcule sur la page servie. **Je l avais ecrit noir sur blanc quatre
+chapitres plus tot et je ne l ai pas fait.**
+
+Et le 590 a rallume un champ sans regarder ce qu il y avait deja
+dessous. Le theme clair n etait pas vide : il portait un motif que
+personne n avait signale parce qu il est discret. **Avant d ajouter un
+calque, il faut savoir ce que ce calque va couvrir** — la comparaison
+de captures avant/apres l aurait dit en une seconde, et je ne l avais
+faite qu en theme sombre.
+
+Trois feuilles de style et le service worker. SW et-202609141200.
