@@ -22549,3 +22549,111 @@ soupconner la logique.**
 
 Six pages, une feuille de style et le service worker.
 SW et-202609151030.
+
+## 595 — La transparence reduite, qui gagne enfin (15 septembre 2026)
+
+Consigne : des propositions pour le design translucide. Le dossier
+rendu hier en portait sept ; celui-ci applique les deux qui sont
+independantes et sans risque — la 01 et la 04.
+
+### 01 — La preference du visiteur, enfin respectee
+
+Le site repondait a `prefers-reduced-transparency` dans 29 blocs, dont
+une regle globale `*{backdrop-filter:none!important}`. Mesure en
+emulant la preference : la requete media repondait `true`, et **rien
+ne changeait**. La barre de navigation gardait `blur(20px)` ; 45
+panneaux en theme sombre et 72 en clair restaient floutes.
+
+La cause est mecanique. Les regles de verre du site portent
+`!important` **et** une forte specificite — des chaines de `:not(#_)`
+posees chapitre apres chapitre pour gagner contre du style en ligne. A
+poids egal, c est la specificite qui tranche, et `*` vaut zero. La
+garantie etait ecrite, jamais appliquee.
+
+Le nouveau bloc porte **sept identifiants factices par selecteur**,
+davantage que tout ce que le site lui oppose. Et il rend les surfaces
+opaques **dans leur theme** : `#0D1626` en sombre, `#FAF7F1` en clair,
+la ou l ancien fond de secours etait marine y compris sur fond creme.
+
+Apres : **zero panneau floute** sous la preference, sur cinq pages
+dans les deux themes ; navigation et sections opaques dans la bonne
+couleur.
+
+### 04 — Deflouter la colonne de lecture en theme clair
+
+Le flou pose au niveau des **sections** aux chapitres 590 et 592
+recouvrait toute la colonne de texte, alors que les cartes qu elle
+contient floutent deja. Il est retire ; le champ et son voile restent.
+
+| theme clair | avant | apres |
+|---|---|---|
+| aire floutee / aire du document | 0,90 | **0,26** |
+| epaisseurs de verre superposees, au pire | 5 | **3** |
+| flous de 14 px peints sur douze pages | 165 | 27 |
+
+Le theme sombre ne bouge pas : aire 0,68, profondeur 2, avant comme
+apres. Et le contraste ne bouge pas non plus — 65 paragraphes, zero
+sous le seuil, pire cas 4,74 en clair et 5,57 en sombre.
+
+La proposition 02 — plafonner l empilement a deux — avance donc de
+elle-meme : 5 devient 3. Les deux derniers etages restent a traiter.
+
+### Mon erreur, deux fois de suite
+
+Rendre les panneaux opaques change le fond sous des textes qui
+comptaient sur l ancien. Deux familles sont tombees, et je ne les ai
+vues qu en mesurant.
+
+D abord `.cl-hint`, sur la page clients : un texte attenue non par une
+couleur mais par `opacity:.6`. Sur le panneau creme, il lave a
+**3,57**. Trois essais concordants — ce n etait pas un faux positif.
+Corrige : sous la preference, l attenuation redevient une couleur.
+
+Puis, et c est plus grave, **la banniere cookies**. Elle est sombre
+dans les deux themes par conception, et son texte est ambre. Ma regle
+la rendait creme en theme clair : ambre `#ffb703` sur creme, **1,63**.
+Sur quatre pages. Meme chose pour la barre du bas et les menus
+deployes, sombres eux aussi dans les deux themes. Ils sortent de la
+liste par theme et gardent `#0B1422`.
+
+**Un fond de secours n est pas une couleur, c est une paire.** Rendre
+une surface opaque suppose de savoir de quel theme elle releve — et
+sur ce site, quatre elements de chrome ne relevent d aucun des deux :
+ils sont sombres toujours.
+
+Et une lecon d instrument : le premier passage axe sous la preference
+n a trouve **qu une** violation ; le second, apres correction, en a
+trouve **quatre autres**, sur des pages que le premier avait traversees
+sans rien dire. La banniere cookies est injectee par script a un
+instant variable — quand axe passe trop tot, elle n est pas la. Une
+campagne de mesure sur des composants injectes ne vaut qu a partir du
+moment ou l on sait qu ils etaient presents.
+
+### Verifie
+
+- Preference de transparence reduite emulee, cinq pages, deux themes :
+  **0 element floute** (45 et 72 avant) ; navigation et sections
+  opaques dans la couleur de leur theme.
+- axe AA sous la preference, huit pages, deux themes : **0 violation
+  sur 16 rendus** — apres deux corrections successives, 1 puis 4
+  violations trouvees et levees.
+- axe AA en mode normal, memes pages : **0 violation sur 16 rendus**.
+- Contraste du corps de texte au coeur des glyphes, six pages, deux
+  themes : 65 paragraphes, **zero sous le seuil**, pire cas 4,74 en
+  clair et 5,57 en sombre.
+- Inventaire du verre au rendu, douze pages : clair, aire 0,90 vers
+  **0,26** et profondeur 5 vers **3** ; sombre inchange, 0,68 et 2.
+- Sante des 191 pages, deux themes : zero erreur console, zero
+  reponse 4xx.
+- Poids : la feuille passe de 12,7 a 13,6 Kio en brotli. Un kilo-octet
+  pour une garantie d accessibilite qui fonctionne.
+
+### Ce qui n a pas ete mesure
+
+Ce que le verre coute a la machine. Le navigateur de mesure n a pas de
+GPU : 240 ms par image avec le verre, 231 sans, 4 % d ecart dans le
+bruit d un rendu logiciel. Ce chapitre s appuie sur la structure —
+aire floutee et nombre de couches — et non sur un chiffre de
+performance que je n ai pas.
+
+Une feuille de style et le service worker. SW et-202609152100.
