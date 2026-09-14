@@ -975,3 +975,19 @@ html.et-plight:not([lang="ar"]) .plmap-li-raffinerie::before, html.et-jlight:not
     background-color:#FAF7F1 !important;
   }
 }
+
+/* ============================================================
+   596 (revue de design, point 01) — la fleche des cartes de pole.
+   La rotation a 90 degres etait accrochee a l attribut data-plc, qui marque
+   les cartes menant a une SOUS-PAGE : resultat, la fleche « vers le bas »
+   (qui dit « je reste sur cette page ») servait a quitter la page, et la
+   fleche « vers la droite » servait a defiler jusqu a #chantiers. Mesure :
+   30 cartes sur 34, sur les huit pages de pole. La condition redevient la
+   bonne — c est la cible du lien qui decide, pas un attribut. */
+.plc-card[data-plc]:not(#_) .plc-arr:not(#_){transform:none !important}
+.plc-card[data-plc]:not(#_):hover .plc-arr:not(#_){transform:translateX(5px) !important}
+.plc-card[href^="#"]:not(#_) .plc-arr:not(#_){transform:rotate(90deg) !important}
+.plc-card[href^="#"]:not(#_):hover .plc-arr:not(#_){transform:rotate(90deg) translateX(4px) !important}
+@media(prefers-reduced-motion:reduce){
+  .plc-card:not(#_):hover .plc-arr:not(#_){transition:none !important}
+}
