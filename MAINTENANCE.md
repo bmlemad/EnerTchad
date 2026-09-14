@@ -22340,3 +22340,120 @@ chaque rapport depuis. La sonde regarde le heros et ignore la maille.
 
 Trente-six pages, deux feuilles de style et le service worker.
 SW et-202609142130.
+
+## 593 — L en-tete de pole, a la maniere des majors (15 septembre 2026)
+
+Consigne : moderniser le site autour des trois poles, comme le font
+les sites des majors.
+
+### Ce que font les majors
+
+TotalEnergies range son expertise en trois verbes de la chaine —
+explorer et produire, transformer et developper, expedier et
+commercialiser — et donne a chaque segment la meme trame : un resume
+court, des liens vers les specialites, une grille de projets, un appel
+a l action. Eni ouvre chaque operation par des chiffres cles, une
+carte des actifs, des projets nommes, les technologies, puis la
+durabilite. Shell et Chevron tiennent un hub « ce que nous faisons »
+thematique au-dessus des segments.
+
+Le denominateur commun tient en trois regles. **La preuve avant l
+argumentaire** : les chiffres cles sont hauts dans la page, pas en
+douzieme position. **Le lecteur peut sauter** : chaque page de segment
+porte sa propre sous-navigation. **Le lecteur sait ou il est** : un
+fil de chaine relie les segments.
+
+### Ce que le site avait deja
+
+Beaucoup, et c est la premiere conclusion de ce chapitre. Le fil de
+chaine existe — `nav.chv`, pose en bas de `main`, avec l etape
+courante marquee par `aria-current`. Le hub existe — `/nos-activites`,
+1 414 mots, les trois poles avec leurs indicateurs et les fleches
+entre eux. Les trois pages de pole sont deja paralleles : 16 a 18
+sections chacune, 7 500 a 7 800 mots, le meme vocabulaire d ancres
+(`offre`, `capacites`, `expertises`, `chiffres`, `chantiers`,
+`documents`), et chacune porte sa bande `#chiffres`.
+
+### Ce qui manquait
+
+La troisieme regle etait tenue, la premiere et la deuxieme non. Sur
+une page de pole, **les chiffres arrivent en douzieme position** et il
+n existe aucune sous-navigation : pour aller aux expertises, il faut
+derouler sept mille mots.
+
+### Ce qui a ete fait
+
+Un en-tete de pole, `nav.plnav`, pose **juste sous le heros** sur les
+huit pages de pole — quatre en francais, quatre en anglais. Il porte
+trois choses : le numero d etape et le nom du pole, **trois chiffres
+cles extraits de la section `#chiffres` de la page elle-meme**, puis
+les ancres reellement presentes sur cette page.
+
+Aucun chiffre n a ete invente ni ressaisi : le script lit les trois
+premieres cartes de la bande `#chiffres` de chaque page et recopie
+valeur et libelle. Sur Petrochimie, qui n a pas de bande chiffres, la
+barre ne porte que les ancres. Les libelles longs sont coupes au
+premier separateur.
+
+### Mon erreur
+
+J avais ecrit **deux** composants et pose les deux sur les huit pages :
+l en-tete de pole, et un navigateur de chaine. C est en regardant la
+premiere capture que je l ai vu, en bas de l ecran : le fil de chaine
+etait deja la. Il n est pas dans le fichier source — un script le pose
+a l execution — donc ni ma lecture du HTML ni ma carte des sections ne
+l avaient montre. J allais publier deux navigateurs de chaine sur la
+meme page. Retire des huit pages et de la feuille de style avant toute
+publication.
+
+**Sur un site de 191 pages, lire le fichier ne suffit pas pour savoir
+ce que la page contient.** Ce qu un script ajoute a l execution ne
+figure nulle part dans la source ; avant d ajouter un composant, il
+faut regarder la page rendue.
+
+Second instrument menteur, plus court : ma sonde de cible tactile a
+rendu 21 anomalies « doigt = rien » sur des pastilles pourtant hautes
+de 44 px. `elementFromPoint` ne repond que dans la fenetre visible, et
+la barre est sous la ligne de flottaison sur telephone : je testais le
+doigt a des coordonnees hors ecran. Apres defilement de chaque
+pastille au centre : 21 pastilles, 44 px, zero anomalie.
+
+### Corrige au passage
+
+Sur les deux pages du hub, le bloc « Aller plus loin » contenait un
+lien vers la page elle-meme, intitule « L explorateur de la chaine ».
+L explorateur est une section de cette meme page : le lien devient une
+ancre, et la section recoit un identifiant.
+
+### Verifie
+
+- Contraste au coeur des glyphes, filtre 12 par canal, sur les 94
+  elements du nouveau composant, deux themes : **zero sous le seuil**,
+  pire cas 6,40 en sombre et 9,36 en clair.
+- axe AA sur huit pages dans les deux themes, bureau 1440 x 900 et
+  telephone 390 x 844 a pointeur grossier : **zero violation sur 32
+  rendus**.
+- Cibles tactiles sur telephone, chaque pastille amenee au centre
+  avant le test : 21 pastilles, hauteur minimale 44 px, zero
+  recouvrement.
+- Ancres : sur les dix pages touchees, aucune ancre de la barre ne
+  pointe vers un identifiant absent ; zero identifiant duplique.
+- Sante des 191 pages, deux themes : zero erreur console, zero
+  reponse 4xx.
+- Equilibre des accolades verifie sur la feuille modifiee.
+
+### Ce qui reste, dans l ordre
+
+1. **Une carte des actifs par pole** — les majors montrent toujours ou
+   se passent les choses. Le corridor, les bassins, le reseau : les
+   donnees existent sur les sous-pages, pas sur la page de pole.
+2. **La bande `#chiffres` remontee** plutot que recopiee. L en-tete
+   donne trois chiffres ; la bande complete reste en douzieme
+   position. Deplacer une section dans une page de 7 800 mots demande
+   une comparaison element par element avant et apres.
+3. **Les titres des pages de pole** : ils sont bons, mais la page
+   `societe.html` reste a 22 caracteres (releve au 592) et attend une
+   decision.
+
+Dix pages, une feuille de style et le service worker.
+SW et-202609142330.
