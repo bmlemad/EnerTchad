@@ -22657,3 +22657,103 @@ aire floutee et nombre de couches — et non sur un chiffre de
 performance que je n ai pas.
 
 Une feuille de style et le service worker. SW et-202609152100.
+
+## 596 — Trois defauts qu on voyait a l oeil (16 septembre 2026)
+
+Consigne : appliquer la revue de design, par ordre d importance. Point
+un de la liste — les trois defauts visibles. Aucun n est un choix
+discutable ; ce sont des bugs, et chacun se verifie a la geometrie.
+
+### L icone posee sur son propre intitule
+
+Sur la brochure, la carte de porte place son icone en absolu,
+`top:20px; left:24px`, tandis que son eyebrow suit le flux. Les deux
+occupent le meme rectangle : l icone de 34 px recouvre l intitule sur
+**28 px**. Six cartes par page, deux pages — &laquo; ENTREPRISE &raquo;,
+&laquo; NOS ACTIVITES &raquo;, &laquo; DURABILITE &raquo; illisibles sur leur
+premiere moitie.
+
+L icone rejoint le flux : elle se pose au-dessus de l eyebrow, avec
+une marge. Aucun changement de balisage, une declaration. Apres :
+**zero recouvrement** sur les six cartes, dans les deux themes.
+
+### Deux legendes qui ne legendaient plus rien
+
+L accueil affichait encore &laquo; Pompe a balancier &raquo; et &laquo; Champs
+matures — bassin de Doba &raquo; dans la moitie droite du heros : les
+legendes des photographies retirees au 585. Le bloc portait meme
+`role="complementary"` et l intitule &laquo; Images du secteur petrolier en
+fond &raquo;, annonce a la synthese vocale comme s il decrivait des images.
+
+Et derriere, un minuteur. Le script qui fait tourner ces legendes
+declare **une seule** entree et appelle `setInterval` toutes les
+secondes pour comparer un index a lui-meme — depuis le 585, sur chaque
+visite de l accueil, une fois par seconde, pour rien.
+
+Bloc et script retires des deux accueils : 331 + 1 330 octets en
+francais, 316 + 1 319 en anglais. Les regles CSS qui les visaient
+restent, inertes et locales a ces deux pages ; je les laisse plutot
+que de recouper un bloc de style en ligne pour six cents octets.
+
+### La fleche pointait a l envers, 30 fois sur 34
+
+Sur les pages de pole, la fleche des cartes tourne de 90 degres — vers
+le bas — quand la carte porte l attribut `data-plc`. Or `data-plc`
+marque les cartes qui menent a une **sous-page**. Le resultat est
+exactement inverse de ce que le lecteur attend :
+
+| la carte mene a | la fleche disait | ce qu elle devrait dire |
+|---|---|---|
+| une autre page (`/aval/produits`) | vers le bas | vers la droite |
+| une ancre de la page (`#chantiers`) | vers la droite | vers le bas |
+
+Recensement sur les huit pages de pole : **30 cartes sur 34** pointent
+a l envers. La condition redevient la bonne — c est la cible du lien
+qui decide, `[href^="#"]`, pas un attribut de classement. Verifie sur
+quatre pages dans les deux themes : 17 cartes sur 17 correctes.
+
+### Mon erreur
+
+Dans la revue publiee hier, j ai ecrit que ces cartes utilisaient
+&laquo; deux glyphes differents pour la meme action &raquo;. C est faux : le
+glyphe est unique, `→`, et c est une rotation CSS qui produit le
+second. J ai decrit le symptome et invente le mecanisme.
+
+En allant le verifier pour le corriger, j ai d abord formule l
+hypothese inverse — que la rotation distinguait utilement l ancre de
+la page externe, et que ma remarque etait donc a retirer. Les deux
+suppositions etaient fausses, et la lecture du selecteur a tranche en
+une ligne.
+
+**Decrire ce qu on voit est un constat ; dire pourquoi, sans avoir lu
+la regle, est une invention.** Une revue de design a le droit de
+s arreter au symptome — elle n a pas le droit de deviner la cause et
+de l ecrire du meme ton.
+
+La revue a ete corrigee sur ce point, et le defaut s est revele plus
+grave que je ne l avais dit : ce n est pas une incoherence, c est une
+inversion.
+
+### Verifie
+
+- Brochure FR et EN, deux themes : recouvrement icone/eyebrow **6 puis
+  0**, sur six cartes.
+- Accueil FR et EN : `#diapo-cap` absent, aucune des deux legendes dans
+  le texte rendu, minuteur supprime.
+- Fleches : recensement des 34 cartes des huit pages de pole avant, 30
+  a l envers ; apres, 17 sur 17 correctes sur les quatre pages
+  mesurees, dans les deux themes.
+- axe AA sur huit pages, deux themes : **zero violation sur 16
+  rendus**.
+- Sante des 191 pages, deux themes : zero erreur console, zero
+  reponse 4xx.
+
+### Ce que je n ai pas touche
+
+Sur la brochure, le meme titre — &laquo; Ou voulez-vous aller ? &raquo; —
+apparait deux fois a 180 px d intervalle, sous deux surtitres
+differents. C est de la copie, pas de la mise en page : je ne la
+change pas sans vous.
+
+Quatre pages, une feuille de style et le service worker.
+SW et-202609160900.
