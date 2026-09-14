@@ -22457,3 +22457,95 @@ ancre, et la section recoit un identifiant.
 
 Dix pages, une feuille de style et le service worker.
 SW et-202609142330.
+
+## 594 — Ou se passe chaque pole (15 septembre 2026)
+
+Consigne : la suite de la liste du 593. Premier point, la carte des
+actifs par pole — les majors montrent toujours **ou** les choses se
+passent.
+
+### Le choix de fond : pas de fond de carte
+
+J ai ecarte le trace du Tchad. Un contour national approximatif sur le
+site d une compagnie petroliere nationale est pire qu absent : il a l
+air d une source et n en est pas une. Ce qui est pose est une **carte
+de situation** : une graticule tous les deux degres, les lieux a leur
+coordonnee, aucune frontiere, et la mention « positions
+approximatives » sous le titre. Tout est dessine en SVG dans la page —
+aucune image, aucune ressource externe, aucune bibliotheque.
+
+A cote de la carte, **la meme information en liste**. Ce n est pas une
+legende : c est l equivalent accessible, et c est ce que l on lit au
+telephone, ou la carte passe sous la liste.
+
+### Ce qui est montre, et d ou cela vient
+
+Aucun lieu, aucun chiffre n a ete invente : tout est deja ecrit
+ailleurs sur le site, et la carte ne fait que le situer.
+
+- **Amont** — bassins de Doba et de Bongor, champ gazier de Sedigui.
+  Sous-titre : sept bassins sedimentaires, cadastre 2025 a 26 blocs
+  libres.
+- **Intermediaire** — corridor d export Doba vers Kribi, trace en
+  pointille et nomme, plus les trois hubs-depots (N Djamena, Moundou,
+  Abeche) et Sedigui.
+- **Aval** — Djermaya pour le raffinage, les trois hubs-depots, et les
+  localites du reseau : Sarh, Bongor, Mao, Faya-Largeau, Fada.
+
+### Le detail qui a demande un second passage
+
+La premiere version placait chaque etiquette a droite de son point.
+Sur l Intermediaire, Doba et Moundou sont a moins d un degre l un de l
+autre : les deux noms se sont ecrits l un sur l autre. Le placement
+est devenu un vrai placement : huit positions candidates par
+etiquette — droite, gauche, au-dessus, en dessous — et l on garde la
+premiere qui ne recouvre ni une etiquette deja posee, ni un point, ni
+le bord du cadre. Verifie a l image sur les trois poles.
+
+### Verifie
+
+- Contraste au coeur des glyphes, filtre 12 par canal, sur tous les
+  textes du composant — titre, note, intitules de liste, et les noms
+  de lieux **dans le SVG** : 128 mesures sur les trois poles dans les
+  deux themes, **zero sous le seuil**. Pire cas 4,75 en sombre et 4,74
+  en clair, sur les deux textes en petit corps ; le reste est au-dessus
+  de 5.
+- axe AA sur huit pages dans les deux themes, bureau et telephone :
+  **zero violation sur 32 rendus**.
+- Sante des 191 pages, deux themes : zero erreur console, zero
+  reponse 4xx.
+- Parite FR/EN : trois points en Amont, six en Intermediaire, neuf en
+  Aval, des deux cotes, et autant d entrees dans la liste que de
+  points sur la carte.
+- Identifiants dupliques : zero sur les six pages.
+- Poids : la page de pole passe de 44,0 a 44,1 Kio en brotli ; la
+  feuille de style de 12,3 a 12,7 Kio. Une carte dessinee coute moins
+  qu une image.
+
+### Un choix de structure a noter
+
+Le composant est un `aside`, pas une `section`. Sur la page Aval, une
+feuille heritee porte `main > section:nth-of-type(even)` : inserer une
+section de plus y aurait inverse le rythme des fonds sur toutes les
+sections suivantes. Un `aside` avec `role="region"` et un titre
+associe rend la meme structure au lecteur d ecran sans toucher au
+comptage.
+
+### Mon erreur
+
+J ai relance une commande d arret dont le motif correspondait a la
+ligne de commande de mon propre interpreteur, et je l ai tue — sortie
+144. C est la troisieme fois que cette regle est ecrite dans ce
+journal et la premiere fois que je la casse depuis. Un motif d arret
+doit exclure le processus qui le lance.
+
+Plus interessant : ma sonde de contraste est morte trois fois de suite
+avec « la page ou le navigateur a ete ferme ». Ce n etait pas le code
+mais la charge — trois navigateurs en parallele sur des pages de
+200 Kio, et le shell headless tombe. Passee en un lancement par page
+et par theme, elle a rendu ses 128 mesures sans broncher. **Quand un
+instrument meurt sans message utile, soupconner la ressource avant de
+soupconner la logique.**
+
+Six pages, une feuille de style et le service worker.
+SW et-202609151030.
