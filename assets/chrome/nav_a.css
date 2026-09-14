@@ -658,13 +658,11 @@ html.et-jlight:not([lang="ar"]) .subland:not(#_):not(#__):not(#___){
     radial-gradient(42% 44% at 32% 60%, rgba(46,134,222,.09), transparent 66%),
     rgba(250,247,241,.72) !important;
 }
-html.et-plight:not([lang="ar"]) main section:not(#_):not(#__),
-html.et-jlight:not([lang="ar"]) main section:not(#_):not(#__),
-html.et-plight:not([lang="ar"]) body>section:not(#_):not(#__),
-html.et-jlight:not([lang="ar"]) body>section:not(#_):not(#__){
-  -webkit-backdrop-filter:blur(14px) saturate(1.2) !important;
-  backdrop-filter:blur(14px) saturate(1.2) !important;
-}
+/* 595 (proposition 04) : le flou pose au niveau des sections recouvrait toute
+   la colonne de lecture en theme clair, alors que les cartes qu elle contient
+   floutent deja. Mesure : sans aucun flou, le pire contraste du corps de texte
+   passe de 4,91 a 4,88 — le verre est decoratif, pas porteur. Le flou de
+   section est retire ; le champ et son voile restent. */
 
 /* 591 : le champ clair laisse passer le motif du fond ; les notes en petit
    corps de .b111 y perdaient 0,15 et passaient sous 4,5. Le remede est leur
@@ -874,3 +872,106 @@ html.et-plight:not([lang="ar"]) .plmap-raffinerie circle, html.et-jlight:not([la
   fill:#8A5A10}
 html.et-plight:not([lang="ar"]) .plmap-li-raffinerie::before, html.et-jlight:not([lang="ar"]) .plmap-li-raffinerie::before{
   background:#8A5A10}
+
+/* ============================================================
+   595 (proposition 01) — la transparence reduite, qui gagne enfin.
+   Le site declarait prefers-reduced-transparency dans 29 blocs ; mesure faite
+   en emulant la preference : la requete media repondait true et rien ne
+   changeait. Les regles de verre portent !important ET une forte specificite,
+   et a poids egal c est la specificite qui tranche : la regle globale « * »
+   perdait. Ce bloc porte sept identifiants factices par selecteur — davantage
+   que tout ce que le site oppose — et il rend les surfaces opaques dans LEUR
+   theme, la ou l ancien fond de secours etait marine y compris en clair.
+   ============================================================ */
+@media (prefers-reduced-transparency: reduce){
+  html:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) *:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
+  html:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) *:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______)::before,
+  html:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) *:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______)::after{
+    -webkit-backdrop-filter:none !important;
+    backdrop-filter:none !important;
+  }
+  html:not(.et-plight):not(.et-jlight):not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) main section:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
+  html:not(.et-plight):not(.et-jlight):not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) body>section:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
+  html:not(.et-plight):not(.et-jlight):not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) header.pghero:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
+  html:not(.et-plight):not(.et-jlight):not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) div.hero:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
+  html:not(.et-plight):not(.et-jlight):not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) header.hero:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
+  html:not(.et-plight):not(.et-jlight):not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) nav.nav:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
+  html:not(.et-plight):not(.et-jlight):not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) .plnav:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
+  html:not(.et-plight):not(.et-jlight):not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) .chv:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
+  html:not(.et-plight):not(.et-jlight):not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) .ppj-card:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
+  html:not(.et-plight):not(.et-jlight):not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) .biz-card:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
+  html:not(.et-plight):not(.et-jlight):not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) .ppt-card:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
+  html:not(.et-plight):not(.et-jlight):not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) .pmore-card:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
+  html:not(.et-plight):not(.et-jlight):not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) .oeco-card:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
+  html:not(.et-plight):not(.et-jlight):not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) .hxi-card:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
+  html:not(.et-plight):not(.et-jlight):not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) .sb-card:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
+  html:not(.et-plight):not(.et-jlight):not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) .hpcard:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
+  html:not(.et-plight):not(.et-jlight):not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) .plc-card:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
+  html:not(.et-plight):not(.et-jlight):not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) .b111-c:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
+  html:not(.et-plight):not(.et-jlight):not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) .pe-c:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
+  html:not(.et-plight):not(.et-jlight):not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) .exp-c:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
+  html:not(.et-plight):not(.et-jlight):not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) .avk-card:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
+  html:not(.et-plight):not(.et-jlight):not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) .pole-subnav:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
+  html:not(.et-plight):not(.et-jlight):not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) .plmap-svg:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
+  html:not(.et-plight):not(.et-jlight):not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) footer:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______){
+    background-color:#0D1626 !important;
+  }
+  html:is(.et-plight,.et-jlight):not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) main section:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
+  html:is(.et-plight,.et-jlight):not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) body>section:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
+  html:is(.et-plight,.et-jlight):not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) header.pghero:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
+  html:is(.et-plight,.et-jlight):not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) div.hero:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
+  html:is(.et-plight,.et-jlight):not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) header.hero:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
+  html:is(.et-plight,.et-jlight):not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) nav.nav:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
+  html:is(.et-plight,.et-jlight):not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) .plnav:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
+  html:is(.et-plight,.et-jlight):not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) .chv:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
+  html:is(.et-plight,.et-jlight):not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) .ppj-card:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
+  html:is(.et-plight,.et-jlight):not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) .biz-card:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
+  html:is(.et-plight,.et-jlight):not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) .ppt-card:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
+  html:is(.et-plight,.et-jlight):not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) .pmore-card:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
+  html:is(.et-plight,.et-jlight):not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) .oeco-card:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
+  html:is(.et-plight,.et-jlight):not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) .hxi-card:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
+  html:is(.et-plight,.et-jlight):not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) .sb-card:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
+  html:is(.et-plight,.et-jlight):not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) .hpcard:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
+  html:is(.et-plight,.et-jlight):not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) .plc-card:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
+  html:is(.et-plight,.et-jlight):not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) .b111-c:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
+  html:is(.et-plight,.et-jlight):not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) .pe-c:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
+  html:is(.et-plight,.et-jlight):not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) .exp-c:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
+  html:is(.et-plight,.et-jlight):not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) .avk-card:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
+  html:is(.et-plight,.et-jlight):not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) .pole-subnav:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
+  html:is(.et-plight,.et-jlight):not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) .plmap-svg:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
+  html:is(.et-plight,.et-jlight):not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) footer:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______){
+    background-color:#FAF7F1 !important;
+  }
+  /* La banniere cookies, la barre du bas et les menus deployes sont sombres
+     dans les deux themes par conception : leur texte est ambre. Les rendre
+     creme sous la preference mettait ce texte a 1,63 — mesure axe. */
+  html:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) #ckn:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
+  html:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) #nezBar:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
+  html:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) .mega-ultra:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
+  html:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) .nav-links:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______){
+    background-color:#0B1422 !important;
+  }
+  html:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) .rootland:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
+  html:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) .subland:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
+  html:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) .diapo:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______){
+    background-image:none !important;
+    background-color:#0A1220 !important;
+  }
+  /* Un texte attenue par opacity depend du fond qu il recouvre : rendre le
+     panneau opaque et creme lave .cl-hint a 3,57. Mesure axe, trois essais
+     concordants. Ici l attenuation redevient une couleur. */
+  html:is(.et-plight,.et-jlight):not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) .cl-hint:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______){
+    opacity:1 !important; color:#4A5568 !important; -webkit-text-fill-color:#4A5568 !important;
+  }
+  html:not(.et-plight):not(.et-jlight):not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) .cl-hint:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______){
+    opacity:1 !important; color:#A8B6C9 !important; -webkit-text-fill-color:#A8B6C9 !important;
+  }
+  html.et-plight:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) .rootland:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
+  html.et-jlight:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) .rootland:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
+  html.et-plight:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) .subland:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
+  html.et-jlight:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) .subland:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
+  html.et-plight:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) .diapo:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
+  html.et-jlight:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) .diapo:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______){
+    background-color:#FAF7F1 !important;
+  }
+}
