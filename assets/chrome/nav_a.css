@@ -991,3 +991,22 @@ html.et-plight:not([lang="ar"]) .plmap-li-raffinerie::before, html.et-jlight:not
 @media(prefers-reduced-motion:reduce){
   .plc-card:not(#_):hover .plc-arr:not(#_){transition:none !important}
 }
+
+/* ============================================================
+   597 (revue de design, point 02 — premiere moitie) : la largeur de lecture.
+   Mesure exacte, caracteres divises par lignes reellement dessinees, sur 316
+   paragraphes de seize pages : mediane 68 caracteres, neuvieme decile 109,
+   maximum 158. La bande confortable est 45 a 75. Un plafond unique, exprime
+   en ch pour suivre la police et non les pixels, ramene la mediane a 60 et le
+   maximum a 80. Les colonnes deja etroites ne bougent pas : min(100%, 60ch).
+   Les li sont hors du plafond : sur ce site une liste est souvent une grille
+   de cartes, et la brider coupait une pastille de 6 px sur la page Aval —
+   mesure, pas supposition. Seuls 4 des 191 paragraphes trop larges etaient
+   des li : le plafond ne perd presque rien a les laisser tranquilles.
+   ============================================================ */
+main p:not(#_):not(#__),
+main dd:not(#_):not(#__),
+article p:not(#_):not(#__),
+body>section p:not(#_):not(#__){
+  max-width:min(100%, 60ch) !important;
+}
