@@ -22757,3 +22757,105 @@ change pas sans vous.
 
 Quatre pages, une feuille de style et le service worker.
 SW et-202609160900.
+
+## 597 — La largeur de lecture (16 septembre 2026)
+
+Consigne : continuer la revue par ordre d importance. Point deux, l
+echelle typographique et la largeur de lecture. Ce chapitre fait la
+seconde moitie — la largeur — parce qu elle se mesure exactement et se
+pose en une regle. L echelle des titres demande un arbitrage ; elle
+attend le chapitre suivant.
+
+### Un chiffre faux dans la revue d hier
+
+La revue annoncait &laquo; mediane 90 caracteres, neuvieme decile 141 &raquo;.
+Ces chiffres sont faux. Ma sonde divisait la largeur du paragraphe par
+la moitie de la taille de police — une estimation de la largeur d un
+caractere. Elle surestimait d environ trente pour cent.
+
+La mesure exacte ne s estime pas : on compte les **lignes reellement
+dessinees** (`Range.getClientRects`, une entree par ligne) et on divise
+le nombre de caracteres par le nombre de lignes. Sur les memes 316
+paragraphes de seize pages :
+
+| | estimation d hier | mesure exacte |
+|---|---|---|
+| mediane | 90 | **68** |
+| neuvieme decile | 141 | **109** |
+| maximum | — | **158** |
+| au-dessus de 75 caracteres | — | **41,8 %** |
+
+Le constat tient — 41,8 % des paragraphes depassent la bande
+confortable, et l un d eux fait 158 caracteres — mais il etait moins
+grave que je ne l avais ecrit. **Diviser une largeur par une largeur de
+caractere supposee est une estimation ; compter les lignes est une
+mesure.** La revue a ete corrigee.
+
+### Ce qui a ete fait
+
+Un plafond unique, exprime en `ch` pour suivre la police et non les
+pixels :
+
+```
+main p, main dd, article p, body>section p { max-width: min(100%, 60ch) }
+```
+
+`min(100%, 60ch)` pour que les colonnes deja etroites ne bougent pas.
+Aucune valeur en pixels : les plafonds qui existaient deja etaient
+poses a 780, 740 ou 820 px — c est-a-dire, selon la taille de police
+du bloc, entre 92 et 102 caracteres.
+
+| sur 316 paragraphes | avant | apres |
+|---|---|---|
+| mediane | 68 | **60** |
+| neuvieme decile | 109 | **74** |
+| maximum | 158 | **80** |
+| au-dessus de 75 caracteres | 41,8 % | **7,3 %** |
+| en dessous de 45 caracteres | 34,5 % | 34,8 % |
+
+La derniere ligne dit l honnete limite de ce chapitre : le plafond ne
+soigne que les lignes trop longues. **Un tiers des paragraphes reste
+trop etroit** — le texte dans les cartes, trois ou quatre mots par
+ligne. Cela se soigne par la grille, pas par la typographie ; c est le
+point 03 de la revue.
+
+### Mon erreur
+
+La premiere version du plafond incluait les `li`. Le controle
+structurel l a attrapee : sur la page Aval en theme clair, une pastille
+&laquo; 6 thematiques &raquo; se retrouvait coupee de six pixels — la carte
+qu elle habite vit dans une liste, et brider la liste bride la carte.
+
+**Sur ce site, une liste n est pas toujours du texte : c est souvent
+une grille de cartes.** Les `li` sortent du plafond. Le cout de ce
+retrait est nul ou presque : sur les 191 paragraphes trop larges du
+releve, quatre seulement etaient des `li`.
+
+### Verifie
+
+- Largeur de lecture, mesure exacte, 316 paragraphes de seize pages :
+  chiffres ci-dessus.
+- Controle structurel avant/apres sur dix-huit pages, deux themes :
+  aucun defilement horizontal nouveau, aucune coupe nouvelle, aucun
+  debordement nouveau au niveau du document.
+- Deux ecarts assumes : sur `investisseurs` et sur `ethique`, une ligne
+  de liens dans un paragraphe court passe d une ligne a deux. C est la
+  consequence directe d une colonne plus etroite, et cela reste lisible.
+- Sur la brochure, cinq elements internes d un schema SVG depassent la
+  fenetre contre deux avant : le schema est plus large que l ecran par
+  construction et vit dans son propre conteneur defilant. Le document,
+  lui, ne defile pas lateralement — verifie.
+- Capture avant/apres sur deux pages : le paragraphe plein cadre se
+  replie a soixante caracteres, les cartes ne bougent pas.
+
+### Ce qui vient ensuite
+
+L echelle des titres. La mesure est deja faite — `h2` rendu a
+**25 tailles** de 11 a 44,8 px, `h3` a **29 tailles** — mais la
+correction n est pas mecanique : certains `h2` de 11 px servent d
+etiquette, et les normaliser a la taille d un vrai titre changerait la
+mise en page la ou ils vivent. Il faut d abord les recenser et decider,
+un par un, lesquels sont des titres et lesquels sont des etiquettes
+mal balisees. C est le prochain chapitre.
+
+Une feuille de style et le service worker. SW et-202609161500.
