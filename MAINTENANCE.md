@@ -22968,3 +22968,100 @@ par tout le site, et non de ce chapitre.
 proposition 02 de la revue : `h2` rendu a **25 tailles** de 11 a 44,8 px, `h3` a
 **29 tailles**. Le tri n est pas mecanique : certains `h2` de 11 px servent
 d etiquette.
+
+## 599 — L echelle des titres
+
+**La demande** — Suite de la revue de design, point 02, seconde moitie :
+l echelle typographique. Annonce au chapitre 597.
+
+**La mesure** — 4 050 titres releves sur les 191 pages, a 1 440 px, page
+chargee et polices resolues : **86 tailles distinctes**. Par balise, h1 en
+porte 13, **h2 en porte 62**, h3 en porte 34, h4 en porte 7. Moins d un tiers
+des titres — **31,9 %** — tombait sur un pas coherent.
+
+A la source : **858 declarations font-size** visant h1 a h4, portant **102
+valeurs differentes**, dont 823 dans les blocs `<style>` des pages, plus **446
+attributs style** poses directement sur les titres. Cinq declarations pour un
+seul pas : `clamp(1.5rem,3vw,2.05rem)`, `clamp(1.5rem,3.2vw,2.25rem)`,
+`clamp(1.5rem,3vw,2.1rem)`, `clamp(1.5rem,3.2vw,2.2rem)`,
+`clamp(1.45rem,3vw,2.1rem)`.
+
+**Le script qui fabriquait des tailles** — Sur 179 pages, une routine reduisait
+chaque `h2` par pas de 4 %, jusqu a 72 % de sa taille declaree, tant que le
+titre tenait sur plus d une ligne, et ecrivait le resultat dans
+`style.fontSize`. C est de la que venaient des valeurs comme 27,6 / 32,3 /
+34,6 / 41,2 px. Aucune echelle ne peut survivre a un programme qui recalcule
+les tailles a l execution. La routine est retiree ; `text-wrap:balance` reste,
+et les titres qui demandent deux lignes en prennent deux.
+
+**L echelle** — Onze jetons dans `nav_a.css` : deux tailles d affiche pour les
+heros, **huit pas de texte**, une etiquette. Rendu a 1 440 px : 89,6 · 70,4 ·
+52,8 · 44,8 · 37,6 · 33,6 · 28,8 · 24 · 20 · 16,8 · 12. Ce n est pas une
+progression geometrique ideale : elle est **ancree sur les tailles deja
+dominantes du site** — 33,6 px et 28,8 px portaient 227 titres chacune, 37,6 px
+en portait 167 — pour que la majorite des declarations ne bouge pas. Chaque
+appel porte sa valeur en repli, `var(--ts-4,clamp(1.55rem,3.4vw,2.35rem))`,
+pour les quinze pages qui ne chargent pas cette feuille.
+
+| | avant | apres |
+|---|---|---|
+| tailles distinctes, toutes balises | 86 | **19** |
+| h1 · h2 · h3 · h4 | 13 · 62 · 34 · 7 | **5 · 11 · 11 · 4** |
+| titres sur un pas de l echelle | 31,9 % | **97,6 %** |
+| declarations font-size distinctes | 102 | **11 jetons** |
+
+**Ce que cela deplace** — Sur les 4 050 titres apparies un a un : 1 169 ne
+bougent pas, 412 bougent de 3 % ou moins, 1 811 de 6 % ou moins, 498 de 10 % ou
+moins, et **160 de plus de 10 %** — 138 agrandis, 22 reduits. Les agrandis sont
+pour l essentiel des titres que le script rabotait. **Aucun titre ne passe sous
+le seuil de gros texte** du contraste (24 px, ou 18,66 px en gras).
+
+**Mon erreur — le motif trop large.** Le releve avait montre que certains titres
+tiraient leur taille de classes utilitaires nommees `.bxNNN`. J ai voulu les
+traiter d un coup avec le motif `\.bx\d+`. Resultat : **737 declarations
+reecrites dans 5 fichiers, dont 225 deplacees de plus de 10 %**, et du texte
+courant de 6,7 px pousse a 12 px — la famille `.bxNNN` ne sert pas qu aux
+titres. Rien ne l a signale : c est le tableau des deplacements, lu avant de
+poursuivre, qui a montre l anomalie. J ai remis l arbre entier a l etat publie
+avec `git archive FETCH_HEAD`, puis rejoue les passes avec la **liste explicite
+des six classes** effectivement observees sur des titres. Lecon : un motif
+attrape ce qui lui ressemble, pas ce qu on vise.
+
+**Mon erreur — la page pas encore posee.** Mon premier instrument mesurait
+220 ms apres `DOMContentLoaded`. Sur `carnets.html` il donnait 24 px pour un
+titre qui se pose a 37,6 px. J ai donc tout remesure apres `load`, apres
+`document.fonts.ready`, et 700 ms de plus. Les comptes d ensemble n ont pas
+bouge d une unite — 86 vers 19, 31,9 % vers 97,6 % — mais la comparaison titre
+par titre construite sur les premiers chiffres ne valait rien, et j etais a
+deux doigts d ecrire un paragraphe entier sur « 62 titres dont le script avait
+efface la taille » que la mesure posee ne soutient pas.
+
+**Mon erreur — le mauvais modele.** J avais attribue 1 657 agrandissements au
+retrait du script en testant si le rapport avant/apres valait 0,96 puissance k.
+Le script ne decroit pas en puissances : il fait `f -= .04`, donc 0,96 · 0,92 ·
+0,88 · 0,84 · 0,80 · 0,76. Mon test attrapait des coincidences. Mesure
+correctement — en bloquant le script sur l arbre d avant et en comparant — son
+effet porte sur l ordre de **72 titres**, pas 1 657. Le chiffre faux etait dix
+fois trop gros et allait dans le sens de ce que je voulais montrer.
+
+**Verifications** — Controle structurel avant/apres sur 40 pages, deux themes :
+aucun nouveau defilement horizontal, aucun nouveau debordement, aucun nouveau
+rognage. Puis sur les **77 pages qui portent au moins un titre deplace de plus
+de 10 %**, deux themes : **0 ecart** aussi. Un « coupes 0 vers 1 » etait apparu
+au premier passage sur `aval/index.html` en clair ; releve trois fois de suite
+sur cette seule page, il ne se reproduit pas, et une sonde directe ne trouve
+aucun element rogne avant comme apres — lecture transitoire, pas defaut, et je
+le note plutot que de le taire. Sante des 191 pages : **0 erreur console, 0
+reponse de code 400 ou plus**.
+
+**Le reste** — 96 titres sur 4 050 (2,4 %) restent hors echelle, sur 7 tailles :
+17,3 · 17,9 · 19,3 · 22,5 · 24,8 · 27,2 · 32 px. Ils tirent leur taille de
+regles que le releve n a pas rattachees a un selecteur de titre — heritage,
+unites em, ou classes generiques. Ce sont les 2,4 % qui demanderaient dix fois
+le travail des 97,6 %, et je les laisse en l etat, nommes.
+
+**Ce qui vient ensuite** — La proposition 03 de la revue : les grilles. Une
+rangee orpheline, des pastilles a trois hauteurs, du texte de carte tronque, et
+la largeur de carte sans rapport avec la largeur du texte — c est aussi ce qui
+soignerait le tiers de paragraphes trop etroits que le plafond du 597 ne peut
+pas atteindre.
