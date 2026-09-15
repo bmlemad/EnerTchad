@@ -793,7 +793,7 @@ html.et-plight:not([lang="ar"]) .plnav-no:not(#_), html.et-jlight:not([lang="ar"
   display:block !important; position:relative; z-index:2;
   padding:34px 0 8px !important;
 }
-.plmap-h{font-family:var(--fd); font-weight:800; font-size:clamp(1.3rem,2.6vw,1.85rem);
+.plmap-h{font-family:var(--fd); font-weight:800; font-size:var(--ts-6,clamp(1.2rem,2.5vw,1.8rem));
   letter-spacing:-.01em; color:#F2F5F9; margin:0 0 6px}
 .plmap-n{font-size:.86rem; line-height:1.6; color:#A8B6C9; margin:0 0 18px; max-width:62ch}
 .plmap-box{display:grid; grid-template-columns:minmax(0,1.55fr) minmax(220px,.85fr); gap:22px; align-items:start}
@@ -813,7 +813,7 @@ html.et-plight:not([lang="ar"]) .plnav-no:not(#_), html.et-jlight:not([lang="ar"
 .plmap-hub circle{fill:var(--blue-l,#5AA7F0)}
 .plmap-raffinerie circle{fill:var(--amber-l,#F2B45A)}
 .plmap-station circle{fill:rgba(230,236,244,.82)}
-.plmap-h3{font-family:var(--fm); font-size:.7rem; letter-spacing:.2em; text-transform:uppercase;
+.plmap-h3{font-family:var(--fm); font-size:var(--ts-l,.75rem); letter-spacing:.2em; text-transform:uppercase;
   color:#A8B6C9; margin:0 0 10px}
 .plmap-l{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:9px}
 .plmap-li{display:flex; flex-direction:column; gap:1px; padding-left:16px; position:relative}
@@ -1149,4 +1149,33 @@ html:is(.et-plight,.et-jlight) body.hm:not(#_):not(#__):not(#___) #cta-band:not(
    chapitre avant d etre touchee ailleurs.                                   */
 html:is(.et-plight,.et-jlight) body.hm:not(#_):not(#__):not(#___) main:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6){
   background-image:none !important; background-color:transparent !important;
+}
+
+/* ============================================================
+   599 (revue de design, point 02 — seconde moitie) : l echelle des titres.
+   Releve sur les 191 pages : 4 050 titres rendus a **116 tailles distinctes**
+   — h1 a 13, h2 a 62, h3 a 34, h4 a 7. A la source, **858 declarations
+   font-size** visant h1 a h4, portant **102 valeurs differentes**, dont 823
+   dans les blocs <style> des pages. Cinq declarations pour un seul pas :
+   clamp(1.5rem,3vw,2.05rem), clamp(1.5rem,3.2vw,2.25rem), clamp(1.5rem,3vw,
+   2.1rem), clamp(1.5rem,3.2vw,2.2rem), clamp(1.45rem,3vw,2.1rem).
+   L echelle ci-dessous n est pas une progression geometrique ideale : elle est
+   **ancree sur les tailles deja dominantes du site** — 33,6 px et 28,8 px
+   portent 227 titres chacune, 37,6 px en porte 167 — pour que la majorite des
+   declarations ne bouge pas du tout. Huit pas de texte, deux tailles d affiche
+   au-dessus pour les heros, une etiquette en dessous. Chaque appel porte sa
+   valeur en repli, pour les quinze pages qui ne chargent pas cette feuille.
+   ============================================================ */
+:root{
+  --ts-0:clamp(3rem,7.4vw,5.6rem);
+  --ts-1:clamp(2.6rem,6vw,4.4rem);
+  --ts-2:clamp(2.1rem,4.8vw,3.3rem);
+  --ts-3:clamp(1.8rem,4vw,2.8rem);
+  --ts-4:clamp(1.55rem,3.4vw,2.35rem);
+  --ts-5:clamp(1.35rem,2.9vw,2.1rem);
+  --ts-6:clamp(1.2rem,2.5vw,1.8rem);
+  --ts-7:clamp(1.08rem,2.1vw,1.5rem);
+  --ts-8:clamp(1rem,1.8vw,1.25rem);
+  --ts-9:1.05rem;
+  --ts-l:.75rem;
 }

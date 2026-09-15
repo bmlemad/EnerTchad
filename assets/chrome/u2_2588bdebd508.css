@@ -3,8 +3,8 @@
 /* ===== Modernisation « standards IOC » — gravitas typo, air, sobriété (navy conservé) ===== */
 :root{--sy:clamp(46px,5vw,74px);--rl:22px}
 /* Hero éditorial : titre plus grand, plus serré, affirmé */
-.hero h1{font-size:clamp(3rem,7.4vw,5.6rem)!important;letter-spacing:-.04em!important;line-height:1.0!important;font-weight:700}
-.svc-head p{font-size:1.04rem;line-height:1.72}
+.hero h1{font-size:var(--ts-0,clamp(3rem,7.4vw,5.6rem))!important;letter-spacing:-.04em!important;line-height:1.0!important;font-weight:700}
+.svc-head p{font-size:var(--ts-9,1.05rem);line-height:1.72}
 .kick{letter-spacing:.2em;font-weight:600}.divc,.card-m,.site,.esg-card,.hstat,.app-card{border-color:var(--hair)!important}.divc:hover,.site:hover,.card-m:hover{transform:translateY(-4px)!important;transition:transform .4s cubic-bezier(.16,1,.3,1),box-shadow .4s,border-color .4s}
 /* Boutons : sobres, assurés */
 .btn{font-weight:600;letter-spacing:.005em}
