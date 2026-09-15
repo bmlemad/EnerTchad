@@ -1010,3 +1010,143 @@ article p:not(#_):not(#__),
 body>section p:not(#_):not(#__){
   max-width:min(100%, 60ch) !important;
 }
+
+
+/* ============================================================
+   598 : la home sans bandes — la place aux tuiles.
+   L accueil etait decoupe en bandes pleine page : trois champs opaques de 484
+   px sous les trois maillons (#0A1220 plus une lueur dans la couleur du pole),
+   un voile par-dessus chacun, un degrade de 90 px en tete de #coeurs, un fond
+   plein sous #cta-band, et six filets pleine largeur qui cousaient le tout.
+   Le fond du site — le meme motif fixe que partout — n etait donc visible que
+   par intermittence. Ici les bandes tombent, le motif devient continu, et ce
+   qui porte le contenu n est plus la bande mais la tuile translucide, qui
+   garde la couleur du pole en lueur interieure au lieu de l etaler sur toute
+   la largeur.
+   Deux precautions de methode. La portee : tout est accroche a body.hm, pose
+   sur les deux seules pages d accueil, donc inerte sur les 189 autres. La
+   specificite : j ai d abord ecrit ces regles avec deux :not(#_) et quatre
+   d entre elles n ont rien fait — les declarations en face montaient a sept
+   identifiants. Les chaines ci-dessous en portent dix. Le CDP a nomme les
+   regles concurrentes ; sans lui j aurais conclu que mon CSS etait faux.
+   ============================================================ */
+
+/* 598-1 — les filets et degrades pleine largeur */
+html body.hm:not(#_):not(#__):not(#___) header.hero:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6),
+html body.hm:not(#_):not(#__):not(#___) .nh:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6),
+html body.hm:not(#_):not(#__):not(#___) #coeurs:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6),
+html body.hm:not(#_):not(#__):not(#___) #chiffres:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6),
+html body.hm:not(#_):not(#__):not(#___) #carnets:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6),
+html body.hm:not(#_):not(#__):not(#___) #cta-band:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6){
+  border-top-width:0 !important; border-bottom-width:0 !important;
+}
+html body.hm:not(#_):not(#__):not(#___) .nh:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6)::before,
+html body.hm:not(#_):not(#__):not(#___) #coeurs:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6)::before,
+html body.hm:not(#_):not(#__):not(#___) #cta-band:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6)::before{ content:none !important }
+
+/* 598-2 — les trois champs pleine page des maillons */
+html body.hm:not(#_):not(#__):not(#___) #coeurs:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6) .t550-bg:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6){ display:none !important }
+html body.hm:not(#_):not(#__):not(#___) #coeurs:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6) .t550-seg:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6)::before{ content:none !important }
+html body.hm:not(#_):not(#__):not(#___) #coeurs:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6) .t550-seg:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6){
+  min-height:0 !important; display:block !important;
+  overflow:visible !important; background:none !important;
+}
+html body.hm:not(#_):not(#__):not(#___) #coeurs:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6) .t550-in:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6){
+  display:block !important; padding:9px var(--gut,24px) !important;
+}
+
+/* 598-3 — le maillon devient la tuile */
+html body.hm:not(#_):not(#__):not(#___) #coeurs:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6) .t550-p:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6){
+  flex:none !important; max-width:none !important; width:auto !important;
+  border-radius:22px !important;
+  padding:clamp(24px,3vw,34px) clamp(22px,3vw,36px) !important;
+  display:grid !important;
+  grid-template-columns:minmax(0,1fr) minmax(250px,36%) !important;
+  grid-template-areas:"k k" "h f" "m f" "c f" !important;
+  column-gap:clamp(22px,3vw,40px) !important;
+  align-content:start !important;
+  background-image:radial-gradient(118% 150% at 2% 0%,
+    color-mix(in srgb, var(--pa,#FFB703) 16%, transparent), transparent 58%) !important;
+}
+html:not(.et-plight):not(.et-jlight) body.hm:not(#_):not(#__):not(#___) #coeurs:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6) .t550-p:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6){
+  background-color:rgba(0,45,69,.56) !important;
+}
+html:is(.et-plight,.et-jlight) body.hm:not(#_):not(#__):not(#___) #coeurs:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6) .t550-p:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6){
+  background-color:rgba(255,255,255,.74) !important;
+  border:1px solid rgba(0,48,73,.16) !important;
+  box-shadow:0 12px 30px rgba(0,48,73,.10) !important;
+}
+html body.hm:not(#_):not(#__):not(#___) #coeurs:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6) .t550-k:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6){ grid-area:k !important }
+html body.hm:not(#_):not(#__):not(#___) #coeurs:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6) .t550-p:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6) h3:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6){ grid-area:h !important }
+html body.hm:not(#_):not(#__):not(#___) #coeurs:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6) .t550-m:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6){ grid-area:m !important }
+html body.hm:not(#_):not(#__):not(#___) #coeurs:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6) .t550-cta:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6){ grid-area:c !important; align-self:end !important }
+html body.hm:not(#_):not(#__):not(#___) #coeurs:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6) .t550-kpis:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6){
+  grid-area:f !important; grid-template-columns:minmax(0,1fr) !important;
+  align-content:start !important; margin:0 !important;
+}
+
+/* 598-4 — le bandeau final devient une tuile */
+html body.hm:not(#_):not(#__):not(#___) #cta-band:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6){
+  background:none !important;
+  -webkit-backdrop-filter:none !important; backdrop-filter:none !important;
+  padding:10px var(--gut,24px) 38px !important;
+}
+html body.hm:not(#_):not(#__):not(#___) #cta-band:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6) .cb-in:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6){
+  max-width:1200px !important; margin:0 auto !important;
+  padding:clamp(28px,3.6vw,44px) clamp(24px,3vw,38px) !important;
+  border-radius:22px !important;
+  border:1px solid rgba(255,255,255,.2) !important;
+}
+html:not(.et-plight):not(.et-jlight) body.hm:not(#_):not(#__):not(#___) #cta-band:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6) .cb-in:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6){
+  background-color:rgba(0,45,69,.56) !important;
+  -webkit-backdrop-filter:blur(18px) saturate(1.2) !important;
+  backdrop-filter:blur(18px) saturate(1.2) !important;
+  box-shadow:0 16px 40px rgba(0,18,30,.30) !important;
+}
+html:is(.et-plight,.et-jlight) body.hm:not(#_):not(#__):not(#___) #cta-band:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6) .cb-in:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6){
+  background-color:rgba(255,255,255,.74) !important;
+  border:1px solid rgba(0,48,73,.16) !important;
+  box-shadow:0 12px 30px rgba(0,48,73,.10) !important;
+}
+
+/* 598-5 — etroit : la tuile repasse en une colonne */
+@media(max-width:880px){
+  html body.hm:not(#_):not(#__):not(#___) #coeurs:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6) .t550-p:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6){
+    grid-template-columns:minmax(0,1fr) !important;
+    grid-template-areas:"k" "h" "m" "f" "c" !important;
+  }
+  html body.hm:not(#_):not(#__):not(#___) #coeurs:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6) .t550-kpis:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6){
+    grid-template-columns:repeat(3,minmax(0,1fr)) !important; margin:0 0 18px !important;
+  }
+}
+@media(max-width:560px){
+  html body.hm:not(#_):not(#__):not(#___) #coeurs:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6) .t550-kpis:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6){
+    grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+  }
+}
+
+/* 598-6 — transparence reduite : les tuiles redeviennent opaques */
+@media (prefers-reduced-transparency: reduce){
+  html body.hm:not(#_):not(#__):not(#___) #coeurs:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6) .t550-p:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6),
+  html body.hm:not(#_):not(#__):not(#___) #cta-band:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6) .cb-in:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6){
+    background-image:none !important;
+    -webkit-backdrop-filter:none !important; backdrop-filter:none !important;
+  }
+  html:not(.et-plight):not(.et-jlight) body.hm:not(#_):not(#__):not(#___) #coeurs:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6) .t550-p:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6),
+  html:not(.et-plight):not(.et-jlight) body.hm:not(#_):not(#__):not(#___) #cta-band:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6) .cb-in:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6){ background-color:#0D1626 !important;
+    -webkit-backdrop-filter:none !important; backdrop-filter:none !important }
+  html:is(.et-plight,.et-jlight) body.hm:not(#_):not(#__):not(#___) #coeurs:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6) .t550-p:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6),
+  html:is(.et-plight,.et-jlight) body.hm:not(#_):not(#__):not(#___) #cta-band:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6) .cb-in:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6){ background-color:#FAF7F1 !important;
+    -webkit-backdrop-filter:none !important; backdrop-filter:none !important }
+}
+
+/* 598-7 — la plus grande bande de toutes, en theme clair : main lui-meme.
+   En clair, main portait un degrade OPAQUE 162deg #F5F1EA -> #EDEDF1 -> #F3EEE6
+   sur toute sa hauteur. Le motif de fond du site, travaille aux chapitres 591
+   et 592, etait donc masque derriere lui sur toute la page : les sections sont
+   transparentes, mais main ne l etait pas. Ici il le devient, et seulement sur
+   l accueil — la meme declaration vit sur 176 pages et merite son propre
+   chapitre avant d etre touchee ailleurs.                                   */
+html:is(.et-plight,.et-jlight) body.hm:not(#_):not(#__):not(#___) main:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6){
+  background-image:none !important; background-color:transparent !important;
+}
