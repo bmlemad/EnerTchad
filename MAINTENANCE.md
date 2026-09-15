@@ -22859,3 +22859,112 @@ un par un, lesquels sont des titres et lesquels sont des etiquettes
 mal balisees. C est le prochain chapitre.
 
 Une feuille de style et le service worker. SW et-202609161500.
+
+## 598 — La home sans bandes, la place aux tuiles
+
+**La demande** — « elimine tous les bandes et bandeaux de la home pour laisser
+place aux tuiles translucides ».
+
+**Ce qu il y avait** — Un releve, pas une impression : j ai parcouru les 858
+elements de l accueil et retenu ceux qui font au moins 92 % de la largeur, au
+moins 32 px de haut, et qui peignent quelque chose. **Seize** en theme sombre,
+quatorze en clair. Dans le lot :
+
+· trois champs **opaques** de 484 px de haut sous les trois maillons — `#0A1220`
+  plus une lueur radiale dans la couleur du pole (`.t550-bg`) ;
+· trois voiles par-dessus (`.t550-seg::before`), 42 % en sombre, 86 % en clair ;
+· un degrade dore de **90 px** en tete de `#coeurs` ;
+· un fond plein sous `#cta-band` ;
+· six filets pleine largeur — bas du `header.hero`, haut de `.nh`, haut de
+  `#coeurs`, `#chiffres`, `#carnets`, `#cta-band` — dont trois sont des
+  pseudo-elements de 1 px et non des bordures.
+
+Le fond du site — le meme motif fixe que sur les 190 autres pages — n etait donc
+visible que par intermittence, entre deux bandes.
+
+**Ce qui a ete fait** — Les bandes tombent. Ce qui porte le contenu n est plus la
+bande mais la tuile. Concretement le maillon cesse d etre une bande de 484 px
+contenant un panneau de 560 px pose a gauche ou a droite : le panneau devient la
+tuile, large de **1 088 px**, et son interieur passe en deux colonnes — texte et
+boutons a gauche, les trois chiffres en pile a droite. L alternance gauche-droite
+disparait avec la bande qui la portait ; ce qui distingue les trois maillons
+reste la couleur du pole, desormais en lueur **interieure** a la tuile au lieu
+d etre etalee sur toute la largeur de l ecran. Le bandeau final `#cta-band` suit
+la meme regle : le fond plein s efface, `.cb-in` devient une tuile de 1 200 px.
+
+| | avant | apres |
+|---|---|---|
+| elements peints pleine largeur · sombre | 16 | **8** |
+| elements peints pleine largeur · clair | 14 | **8** |
+| tuile du maillon Amont | 560 x 396, sans fond | **1 088 x 320, verre** |
+| hauteur de la page · FR | 8 525 px | **8 088 px** |
+| hauteur de la page · EN | 8 391 px | **7 862 px** |
+| panneaux floutes en transparence reduite | — | **0** |
+
+**Les huit qui restent, et pourquoi** — `.diapo` et `.rootland` sont le fond
+lui-meme : c est precisement ce qu on voulait rendre continu. `#nav`,
+`.nx-util`, `#nezBar` et `#ckn` sont la navigation et le bandeau cookies, du
+chrome et non une bande de section. `footer` est le pied de page, partage par
+tout le site. Reste `#top`, le heros, et son `.prem-mesh` : son voile n est pas
+une couture entre deux sections, c est ce qui tient le titre lisible par-dessus
+le fond. Je ne l ai pas touche — le supprimer serait un autre chapitre, et il
+faudrait d abord mesurer ce que devient le titre sans lui.
+
+**La plus grande bande etait invisible** — En theme clair, `main` portait un
+degrade **opaque** `162deg #F5F1EA vers #EDEDF1 vers #F3EEE6` sur toute sa
+hauteur. Les sections sont transparentes depuis longtemps, mais `main` ne l etait
+pas : le motif de fond travaille aux chapitres 591 et 592 etait donc masque
+derriere lui sur toute la page. Je l ai rendu transparent — **sur l accueil
+seulement**. La meme declaration vit dans trois feuilles chargees par **176
+pages** ; la toucher partout merite son propre chapitre et sa propre campagne de
+contraste.
+
+**Mon erreur — la specificite.** J ai d abord ecrit ces regles avec deux
+`:not(#_)`. Quatre d entre elles n ont rien fait : le filet du heros, le filet et
+le fond de `#cta-band`, et le fond de `main`. J ai failli conclure que mon CSS
+etait faux. Le protocole CDP `CSS.getMatchedStylesForNode` a nomme les regles
+concurrentes : `html header.hero:not(#_):not(#__):not(#___):not(#____)` et
+`html:has(.rootland) #cta-band` suivi de **six** `:not(#_)` — sept identifiants
+la ou j en avais trois. Lecon : sur ce site, une declaration qui ne prend pas
+n est pas une erreur de syntaxe tant qu on n a pas demande au navigateur **qui
+gagne**. Les chaines publiees en portent dix.
+
+**Mon erreur — le chiffre que j ai failli publier.** Le releve de contraste en
+clair donnait 4,51 avant et 4,48 apres pour l etiquette « ERDIS » de la carte,
+donc un franchissement du seuil de 4,5. J ai assombri l etiquette de `#2C3B4D` a
+`#1B2634` et remesure : **10,06**. Un ecart de 5,6 la ou l arithmetique en
+prevoyait 1,5, et deux etiquettes voisines disparues du releve. L explication
+n est pas le fond : a 7,5 px, le filtre de couleur a plus ou moins 12 par canal
+ne retient presque aucun pixel de coeur, et ce qu il retient change de nature
+quand la couleur du texte change. **A cette taille l instrument ne donne pas une
+valeur absolue fiable, seulement un sens.** Le sens, lui, est certain : meme
+fond, texte plus sombre, contraste plus haut. J ai garde l assombrissement comme
+precaution et je ne revendique aucun des deux chiffres.
+
+**Verifications** — Releve de contraste sur l accueil, avant et apres, dans les
+deux themes, coeur de glyphe et filtre a plus ou moins 12 : sombre 54 puis 55
+elements mesures, **2 sous le seuil dans les deux cas** — les deux memes, deja
+la avant, sur les cartes de `#carnets` ; clair 66 elements, **0 sous le seuil
+avant comme apres**. Controle structurel sur **19 pages et 2 themes** : aucun
+nouveau defilement horizontal, aucun nouveau debordement, aucun nouveau rognage,
+aucune rangee de controles qui se replie. Marqueur negatif : `societe.html` ne
+bouge pas d un pixel — hauteur 13 820 avant et apres, huit elements pleine
+largeur avant et apres, son `#cta-band` intact. Transparence reduite emulee par
+CDP, assertion faite que la requete media repond bien vrai : **0 panneau
+floute**, tuiles opaques `#0D1626` en sombre et `#FAF7F1` en clair. Zero erreur
+console, zero reponse de code 400 ou plus, pas de defilement horizontal a 1 440
+ni a 390 px, ou la tuile repasse proprement en une colonne.
+
+**Portee** — Tout est accroche a `body.hm`, pose sur les deux seules pages
+d accueil. Les memes selecteurs sont inertes sur les 189 autres pages.
+
+**Note pour plus tard, pas corrigee ici** — Dans le pied de page, a 1 440 px,
+« La Societe » et « Cibles 2030 » ne sont separes que de 70 px pour une
+etiquette qui en mesure 62 : les deux colonnes se touchent presque. C est vrai
+avant comme apres, et sur `societe.html` aussi — donc du pied de page, partage
+par tout le site, et non de ce chapitre.
+
+**Ce qui vient ensuite** — L echelle des titres, seconde moitie de la
+proposition 02 de la revue : `h2` rendu a **25 tailles** de 11 a 44,8 px, `h3` a
+**29 tailles**. Le tri n est pas mecanique : certains `h2` de 11 px servent
+d etiquette.
