@@ -517,7 +517,7 @@ html.et-plight :is(.acth-k,.mfo-k,.inv-k,.hxi-eyebrow,.hnews-k,.ppte-k,
  background:currentColor!important;transform:rotate(45deg)!important}
 /* --- titres sous l'echelle commune (etaient a 28.8px) --- */
 #produits-acces h2:not(#_):not(#__){
- font-size:clamp(1.55rem,2.9vw,2.2rem)!important}
+ font-size:var(--ts-5,clamp(1.35rem,2.9vw,2.1rem))!important}
 /* --- #combat a gauche comme le reste de la page --- */
 #combat .wrap:not(#_){text-align:left!important}
 #combat .mfo-h:not(#_),#combat .mfo-l:not(#_),#combat .mfo-foot:not(#_){
@@ -615,7 +615,7 @@ html.et-plight header.hero:not(#_):not(#__):not(#___),html.et-plight body>header
 .hero-in .btn-g{display:none!important}
 .hero-in .hx-links{display:none!important}
 .hero-in .hx-slides{margin-top:10px}
-.hero-in .hx-h1{font-size:clamp(2.6rem,5.2vw,4.4rem)}
+.hero-in .hx-h1{font-size:var(--ts-1,clamp(2.6rem,6vw,4.4rem))}
 /* ———— ex-bloc: anonyme ———— */
 @media(max-width:760px){#diapo-cap:not(#_):not(#__):not(#___){display:none!important}.hx-dots button{width:12px!important;height:12px!important;min-width:12px!important;min-height:12px!important;padding:0!important;border:6px solid transparent!important;background-clip:padding-box!important;border-radius:50%!important}.hx-dots{gap:0!important;margin:14px 0 4px}}
 
@@ -697,7 +697,7 @@ html.et-plight #agenda-home .agh-cta a{color:#7A5C0B;-webkit-text-fill-color:#7A
 /* ———— ex-bloc: anonyme ———— */
 /* SS126 - « Qui nous sommes » : les quatre principes, avec leur definition officielle (page Societe) */
 .hwords .hw-in:not(#_){max-width:1180px}
-.hwords h2.hw-k:not(#_):not(#__){display:block;text-align:center;font-family:var(--fm,ui-monospace,monospace);font-size:.8rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#E9EFF7;margin:0 0 16px}
+.hwords h2.hw-k:not(#_):not(#__){display:block;text-align:center;font-family:var(--fm,ui-monospace,monospace);font-size:var(--ts-l,.75rem);font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#E9EFF7;margin:0 0 16px}
 .hwords .hw-lead:not(#_){max-width:68ch;margin:0 auto clamp(34px,5vh,60px);text-align:center;font-size:1.03rem;line-height:1.66;color:#E4EBF5}
 .hwords .hw-stack:not(#_):not(#__){list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:clamp(24px,3.6vh,42px);align-items:stretch}
 .hwords .hw-r{display:grid;grid-template-columns:minmax(0,clamp(200px,44%,520px)) minmax(0,42ch);align-items:baseline;column-gap:clamp(16px,2.4vw,38px);row-gap:8px}
@@ -1022,7 +1022,7 @@ html.et-plight .mln-caps a{color:#2A3648}
    le titre de la section Agir rejoint l echelle commune des H2 de section
    (24.75px mesures contre 35-37 chez ses voisins), et les trois paragraphes
    de tete qui couraient sur 94 caracteres par ligne sont ramenes sous 70. */
-#agir>.wrap>h2:not(#_){font-size:clamp(1.6rem,2.9vw,2.3rem)!important}
+#agir>.wrap>h2:not(#_){font-size:var(--ts-4,clamp(1.55rem,3.4vw,2.35rem))!important}
 #coeurs .acth-l:not(#_){max-width:68ch}
 #chiffres .hxi-lead:not(#_){max-width:68ch}
 /* ———— ex-bloc: anonyme ———— */
@@ -1223,7 +1223,7 @@ html.et-plight #carte540 .c540-lb{fill:#1B2634}
 .nh:not(#e1)::before{content:"";position:absolute;inset:auto 0 auto 0;top:0;height:1px;background:linear-gradient(90deg,transparent,#E8C36A,transparent);opacity:.6}
 .nh-in:not(#e1){max-width:var(--mw,1200px);margin:0 auto;padding:clamp(54px,8vw,104px) var(--gut,24px) clamp(38px,5vw,64px)}
 .nh-k:not(#e1){font-family:var(--fm,ui-monospace,monospace);font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:#E8C36A;margin:0 0 18px}
-.nh-h1:not(#e1){text-shadow:none!important;font-family:var(--fd);font-weight:800;font-size:clamp(2.1rem,5.2vw,3.6rem);line-height:1.08;letter-spacing:-.02em;color:#F5F7FA;margin:0;max-width:18ch;text-wrap:balance}
+.nh-h1:not(#e1){text-shadow:none!important;font-family:var(--fd);font-weight:800;font-size:var(--ts-2,clamp(2.1rem,4.8vw,3.3rem));line-height:1.08;letter-spacing:-.02em;color:#F5F7FA;margin:0;max-width:18ch;text-wrap:balance}
 .nh-l:not(#e1){text-shadow:none!important;font-size:clamp(1.02rem,1.5vw,1.18rem);line-height:1.65;color:rgba(245,247,250,.82);max-width:62ch;margin:20px 0 0}
 .nh-cta:not(#e1){display:flex;flex-wrap:wrap;gap:12px;margin:28px 0 0}
 a.nh-b1:not(#e1):not(#e2):not(#e3):not(#e4){display:inline-flex;align-items:center;min-height:48px;padding:0 26px;border-radius:12px;background:#E8C36A!important;color:#121D31!important;-webkit-text-fill-color:#121D31!important;font-weight:700;text-decoration:none}
@@ -1279,7 +1279,7 @@ html.et-plight #coeurs .t550-seg::before{background:linear-gradient(165deg,rgba(
 html.et-plight #coeurs .t550-p{background:rgba(255,255,255,.66);border-color:rgba(0,48,73,.16);box-shadow:0 12px 30px rgba(0,48,73,.10)}
 #coeurs .t550-k{display:block;font-style:normal;font-family:var(--fm,ui-monospace,monospace);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--pa);margin:0 0 10px}
 html.et-plight #coeurs .t550-k{color:var(--pal)}
-#coeurs .t550-p h3{font-family:var(--fd);font-weight:800;font-size:clamp(1.4rem,2.6vw,1.9rem);letter-spacing:-.02em;margin:0 0 10px}
+#coeurs .t550-p h3{font-family:var(--fd);font-weight:800;font-size:var(--ts-6,clamp(1.2rem,2.5vw,1.8rem));letter-spacing:-.02em;margin:0 0 10px}
 #coeurs .t550-m{margin:0 0 16px;font-size:.98rem;line-height:1.6;color:var(--muted-l,#B8C6DA)}
 html.et-plight #coeurs .t550-m{color:#3D4A5C}
 #coeurs .t550-kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:0 0 18px}
@@ -1295,7 +1295,7 @@ html.et-plight #coeurs .t550-kpi span{color:#5A6472}
 html.et-plight #coeurs .t550-b2{border-color:rgba(0,48,73,.3)}
 #coeurs .t550-b1:focus-visible,#coeurs .t550-b2:focus-visible,#coeurs .t550-x a:focus-visible{outline:2px solid var(--blue-l,#00B4D8);outline-offset:3px}
 #coeurs .t550-head{max-width:var(--mw,1200px);margin:0 auto;padding:clamp(34px,4.6vw,54px) var(--gut,24px) 22px}
-#coeurs .t550-head h2{font-family:var(--fd);font-weight:800;font-size:clamp(1.55rem,2.9vw,2.2rem);letter-spacing:-.02em;margin:12px 0 8px}
+#coeurs .t550-head h2{font-family:var(--fd);font-weight:800;font-size:var(--ts-5,clamp(1.35rem,2.9vw,2.1rem));letter-spacing:-.02em;margin:12px 0 8px}
 #coeurs .t550-x{max-width:var(--mw,1200px);margin:0 auto;padding:20px var(--gut,24px) 40px;display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px}
 #coeurs .t550-x span{font-family:var(--fm,ui-monospace,monospace);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted,#93A1B8)}
 #coeurs .t550-x a{font-size:.86rem;font-weight:600;color:inherit;text-decoration:none;border:1px solid var(--g-brd,rgba(255,255,255,.2));border-radius:999px;padding:8px 15px}
@@ -1344,7 +1344,7 @@ resolues paresseusement a chaque upd().*/(function(){var r=document.getElementBy
 #durabilite{padding:clamp(48px,6vw,84px) 0;background:linear-gradient(170deg,rgba(7,12,21,.88) 0%,rgba(8,14,26,.62) 100%)}
 #durabilite .wrap{max-width:var(--max,1240px);margin:0 auto;padding:0 var(--gut,24px)}
 #durabilite .dur-k{font-family:var(--fm,ui-monospace,monospace);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:#34D399;display:block;margin:0 0 10px}
-#durabilite h2{font-family:var(--fd);font-size:clamp(1.7rem,3vw,2.4rem);margin:0 0 26px}
+#durabilite h2{font-family:var(--fd);font-size:var(--ts-4,clamp(1.55rem,3.4vw,2.35rem));margin:0 0 26px}
 #durabilite .dur-g{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
 #durabilite .dur-c{display:block;position:relative;padding:20px 20px 18px;border:1px solid color-mix(in srgb,var(--c,#34D399) 34%,transparent);border-radius:16px;background:color-mix(in srgb,#0B1422 52%,transparent);color:inherit;text-decoration:none;transition:border-color .25s,transform .25s}
 #durabilite .dur-c:hover{border-color:color-mix(in srgb,var(--c,#34D399) 70%,transparent);transform:translateY(-2px)}
@@ -1368,7 +1368,7 @@ html.et-plight #durabilite .dur-c em:not(#_):not(#__){color:var(--cl,var(--c))!i
 </div></div>
 </section> <section id="carnets" class="hnews reveal" aria-label="Latest dated field notes"><div class="wrap"><span class="hnews-k">The dated thread · Field notes</span><h2>Follow EnerTchad, step by step.</h2><p class="hnews-sub">Founding releases, technical investigations and dated milestones: news from an oil company under construction.</p><div class="hnews-grid"><a class="hncard" style="--pac:#E8C36A" href="/journal-premiere-du-genre-en"><span class="hncard-meta"><span class="hncard-date">23 August 2026</span><span class="hncard-pole"><i aria-hidden="true"></i>The whole chain</span><span class="hncard-tag">Economics · Vision</span></span><h3>First of its kind: EnerTchad&rsquo;s national-champion bet</h3><p>No privately-held, Chadian-owned company had ever attempted the whole chain. National champion targeted, unicorn in sight — without cheating on the words.</p><span class="hncard-go">Read →</span></a><a class="hncard" style="--pac:#7E8AD9" href="/journal-interview-controle-en"><span class="hncard-meta"><span class="hncard-date">23 August 2026</span><span class="hncard-pole"><i aria-hidden="true"></i>TchadiTech</span><span class="hncard-tag">Technology · The trade interview</span></span><h3>Inside the control room: the operations controller&rsquo;s interview</h3><p>Screens, alarms and telemetry: the field&rsquo;s watchman, for whom a perfect shift looks like an ordinary night.</p><span class="hncard-go">Read →</span></a><a class="hncard" style="--pac:#5AA7F0" href="/journal-interview-comptage-en"><span class="hncard-meta"><span class="hncard-date">22 August 2026</span><span class="hncard-pole"><i aria-hidden="true"></i>Midstream</span><span class="hncard-tag">Midstream · The trade interview</span></span><h3>Inside the metering cabin: the gauger&rsquo;s interview</h3><p>Tape, thermometer, sample bottle and logbooks: the keeper of the figure whose measurement is binding when product changes hands.</p><span class="hncard-go">Read →</span></a></div><div class="hcp"><span class="hcp-k">Official press releases</span><a class="hcp-i" href="/communiques-en#cp-011"><span class="hcp-d">8 September 2026 · CP-2026-011</span><span class="hcp-t">The pole overhaul is live: the home in chapters, the hubs turned portals</span></a><a class="hcp-i" href="/communiques-en#cp-010"><span class="hcp-d">31 August 2026 · CP-2026-010</span><span class="hcp-t">The site reorganises: three core poles, four built-in capabilities</span></a><a class="hcp-i" href="/communiques-en#cp-009"><span class="hcp-d">30 August 2026 · CP-2026-009</span><span class="hcp-t">The site opens wide: full-page search, expanded Arabic, press room</span></a><a class="hcp-all" href="/communiques-en">All press releases →</a></div><a class="hnews-all" href="/carnets-en">All field notes &amp; releases →</a> <a class="hnews-all" href="/investisseurs-en#agenda" style="margin-left:18px">Investor agenda →</a></div></section><section id="carte540" class="reveal" aria-label="Interactive oil map of Chad"><div class="wrap" style="max-width:var(--mw,1200px);margin:0 auto;padding:clamp(34px,4.6vw,58px) var(--gut,24px)">
 <span class="sec-k">The map</span>
-<h2 style="font-family:var(--fd);font-weight:800;font-size:clamp(1.55rem,2.9vw,2.2rem);letter-spacing:-.02em;margin:12px 0 14px">Oil-country Chad, at a glance</h2>
+<h2 style="font-family:var(--fd);font-weight:800;font-size:var(--ts-5,clamp(1.35rem,2.9vw,2.1rem));letter-spacing:-.02em;margin:12px 0 14px">Oil-country Chad, at a glance</h2>
 <div class="c540-g"><div><svg viewBox="0 0 300 452" role="group" aria-labelledby="c540mt c540md">
 <title id="c540mt">Oil map of Chad — stylised</title><desc id="c540md">Seven sedimentary basins, the Doba–Kribi pipeline and N’Djamena. Stylised, indicative positions.</desc>
 <defs><linearGradient id="c540land" x1="0" y1="0" x2="0" y2="1">
@@ -1394,7 +1394,7 @@ b.addEventListener('mouseenter',on);b.addEventListener('focus',on);
 b.addEventListener('click',on);b.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();on()}})});
 })();</script><section id="agir" class="reveal" aria-label="Three ways in"><div class="wrap" style="max-width:var(--mw,1200px);margin:0 auto;padding:clamp(34px,4.6vw,58px) var(--gut,24px)">
 <span class="sec-k">Take action</span>
-<h2 style="font-family:var(--fd);font-weight:800;font-size:clamp(1.55rem,2.9vw,2.2rem);letter-spacing:-.02em;margin:12px 0 8px">Three ways in.</h2>
+<h2 style="font-family:var(--fd);font-weight:800;font-size:var(--ts-5,clamp(1.35rem,2.9vw,2.1rem));letter-spacing:-.02em;margin:12px 0 8px">Three ways in.</h2>
 <div class="agir-g">
 <a class="agir-c" href="/investisseurs-en"><b>Invest</b><em class="agir-ch">Fund the three links</em><span>Join the round: dated milestones, auditable governance, memorandum on request — FCFA 10M to 20bn in steps.</span><i>The thesis and the steps →</i></a>
 <a class="agir-c" href="/clients-en"><b>Become a client</b><em class="agir-ch">Buy downstream · contract services</em><span>Seven doors, three markets, one counterpart — fuels, oilfield services, integrated solutions and the shop.</span><i>The offer and the contact →</i></a>
@@ -1426,7 +1426,7 @@ html.et-plight .agir-c:not(#e1) i{color:#8A6A12}
 #reperes{padding:clamp(44px,5.5vw,76px) 0}
 #reperes .wrap{max-width:var(--max,1240px);margin:0 auto;padding:0 var(--gut,24px)}
 #reperes .doc-k{font-family:var(--fm,ui-monospace,monospace);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-l,#E8C36A);display:block;margin:0 0 10px}
-#reperes h2{font-family:var(--fd);font-size:clamp(1.7rem,3vw,2.4rem);margin:0 0 24px}
+#reperes h2{font-family:var(--fd);font-size:var(--ts-4,clamp(1.55rem,3.4vw,2.35rem));margin:0 0 24px}
 #reperes .doc-g{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin:0 0 18px}
 #reperes .doc-c{display:block;padding:17px 18px 15px;border:1px solid color-mix(in srgb,var(--gold-l,#E8C36A) 30%,transparent);border-radius:14px;background:color-mix(in srgb,#0B1422 52%,transparent);color:inherit;text-decoration:none;transition:border-color .25s,transform .25s}
 #reperes .doc-c:hover{border-color:color-mix(in srgb,var(--gold-l,#E8C36A) 62%,transparent);transform:translateY(-2px)}
@@ -1563,7 +1563,7 @@ html.et-plight .nav:not(#_):not(#__):not(#___){background:rgba(250,247,241,.74)!
 html.et-plight .nav.scrolled:not(#_):not(#__):not(#___){background:rgba(250,247,241,.88)!important}
 footer .foot-grid .foot-col{border-top:1px solid rgba(128,128,128,.22);margin:0!important;padding:0!important}
 footer .foot-grid .foot-col>h3{position:relative;margin:0!important;padding:15px 26px 15px 0!important;cursor:pointer;-webkit-tap-highlight-color:transparent}
-footer .foot-grid .foot-col>h3::before{content:"+";position:absolute;right:4px;top:50%;transform:translateY(-54%);font-size:1.25rem;font-weight:400;opacity:.55;font-family:var(--fm,ui-monospace,monospace)}
+footer .foot-grid .foot-col>h3::before{content:"+";position:absolute;right:4px;top:50%;transform:translateY(-54%);font-size:var(--ts-8,clamp(1rem,1.8vw,1.25rem));font-weight:400;opacity:.55;font-family:var(--fm,ui-monospace,monospace)}
 footer .foot-grid .foot-col.open>h3::before{content:"−"}
 footer .foot-grid .foot-col:not(.open)>*:not(h3){display:none!important}
 footer .foot-grid .foot-col.open{padding-bottom:12px!important}

@@ -20,8 +20,8 @@ header{border-bottom:1px solid var(--hair);position:sticky;top:0;background:rgba
 .back{font-size:.82rem;color:var(--muted);text-decoration:none}.back:hover{color:var(--gold)}
 main{padding:54px 0 64px}
 .kick{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:0.6875rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-l)}
-h1{font-size:clamp(2rem,4.6vw,2.8rem);font-weight:800;letter-spacing:-.02em;margin:10px 0 8px;text-wrap:balance}
-h2{font-size:clamp(1.55rem,3.3vw,2.35rem);line-height:1.1;letter-spacing:-.02em;color:#fff;margin:0 0 8px;text-wrap:balance}
+h1{font-size:var(--ts-3,clamp(1.8rem,4vw,2.8rem));font-weight:800;letter-spacing:-.02em;margin:10px 0 8px;text-wrap:balance}
+h2{font-size:var(--ts-4,clamp(1.55rem,3.4vw,2.35rem));line-height:1.1;letter-spacing:-.02em;color:#fff;margin:0 0 8px;text-wrap:balance}
 .lead{color:rgba(245,247,250,.8);font-size:1.02rem;max-width:76ch;margin:0 0 12px}
 .profiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin:24px 0 6px}
 .cp{display:flex;flex-direction:column;gap:6px;padding:20px 18px;border-radius:16px;background:rgba(255,255,255,.03);border:1px solid var(--hair);border-top:3px solid var(--ac,var(--gold-l));text-decoration:none;transition:transform .2s,border-color .2s,background .2s}
@@ -524,7 +524,7 @@ html.et-jlight .rootland::after{
 
 <nav class="pgr" aria-label="Naviguer entre les pages"><a href="/tchaditech/"><span class="dir">← En lien</span><span class="ttl">Pôle TchadiTech</span></a><a class="home" href="/"><span class="dir">⌂</span><span class="ttl">Accueil</span></a><a class="next" href="/investisseurs"><span class="dir">Suivant →</span><span class="ttl">Investisseurs</span></a></nav>
 <section class="epw reveal" id="inn-terrain" aria-labelledby="inn-terrainT">
-<style id="epw-css">.epw{padding:60px 0 26px;border-top:1px solid var(--hair)}.epw .wrap{max-width:var(--max,1240px);margin:0 auto;padding:0 var(--gut,24px)}.epw-k{font-family:var(--fm,ui-monospace,monospace);font-size:0.6875rem;letter-spacing:.2em;text-transform:uppercase;color:var(--p-tchaditech,#96A2EC);display:inline-flex;align-items:center;gap:9px;margin-bottom:10px}.epw-k::before{content:"";width:7px;height:7px;background:var(--p-tchaditech,#96A2EC);transform:rotate(45deg)}.epw h2{font-family:var(--fd,'Space Grotesk','Inter',sans-serif);font-weight:800;font-size:clamp(1.5rem,3vw,2.05rem);margin:0 0 10px}.epw-lead{color:var(--muted,#9FB0C3);max-width:780px;margin:0 0 28px}.epw-g{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px;}.epw-c{border:1px solid var(--hair);border-radius:14px;padding:20px 18px;background:rgba(255,255,255,.02)}.epw-no{font-family:var(--fm,ui-monospace,monospace);font-size:0.6875rem;letter-spacing:.14em;color:var(--p-tchaditech,#96A2EC)}.epw-c h3{font-family:var(--fd,'Space Grotesk','Inter',sans-serif);font-size:1rem;margin:6px 0 7px}.epw-c p{margin:0;color:var(--muted,#9FB0C3);font-size:.9rem;line-height:1.6}</style>
+<style id="epw-css">.epw{padding:60px 0 26px;border-top:1px solid var(--hair)}.epw .wrap{max-width:var(--max,1240px);margin:0 auto;padding:0 var(--gut,24px)}.epw-k{font-family:var(--fm,ui-monospace,monospace);font-size:0.6875rem;letter-spacing:.2em;text-transform:uppercase;color:var(--p-tchaditech,#96A2EC);display:inline-flex;align-items:center;gap:9px;margin-bottom:10px}.epw-k::before{content:"";width:7px;height:7px;background:var(--p-tchaditech,#96A2EC);transform:rotate(45deg)}.epw h2{font-family:var(--fd,'Space Grotesk','Inter',sans-serif);font-weight:800;font-size:var(--ts-5,clamp(1.35rem,2.9vw,2.1rem));margin:0 0 10px}.epw-lead{color:var(--muted,#9FB0C3);max-width:780px;margin:0 0 28px}.epw-g{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px;}.epw-c{border:1px solid var(--hair);border-radius:14px;padding:20px 18px;background:rgba(255,255,255,.02)}.epw-no{font-family:var(--fm,ui-monospace,monospace);font-size:0.6875rem;letter-spacing:.14em;color:var(--p-tchaditech,#96A2EC)}.epw-c h3{font-family:var(--fd,'Space Grotesk','Inter',sans-serif);font-size:var(--ts-9,1.05rem);margin:6px 0 7px}.epw-c p{margin:0;color:var(--muted,#9FB0C3);font-size:.9rem;line-height:1.6}</style>
 <div class="wrap"><span class="epw-k">Notre méthode</span>
 <h2 id="inn-terrainT">De l’idée au terrain&nbsp;: comment une innovation entre chez EnerTchad</h2>
 <p class="epw-lead">Nous n’innovons pas pour la vitrine&nbsp;: une idée n’a de valeur que si elle survit au terrain tchadien — chaleur, poussière, logistique longue. Chaque innovation suit donc le même chemin, court et exigeant.</p>
@@ -780,7 +780,7 @@ html.et-plight .nav:not(#_):not(#__):not(#___){background:rgba(250,247,241,.74)!
 html.et-plight .nav.scrolled:not(#_):not(#__):not(#___){background:rgba(250,247,241,.88)!important}
 footer .foot-grid .foot-col{border-top:1px solid rgba(128,128,128,.22);margin:0!important;padding:0!important}
 footer .foot-grid .foot-col>h3{position:relative;margin:0!important;padding:15px 26px 15px 0!important;cursor:pointer;-webkit-tap-highlight-color:transparent}
-footer .foot-grid .foot-col>h3::before{content:"+";position:absolute;right:4px;top:50%;transform:translateY(-54%);font-size:1.25rem;font-weight:400;opacity:.55;font-family:var(--fm,ui-monospace,monospace)}
+footer .foot-grid .foot-col>h3::before{content:"+";position:absolute;right:4px;top:50%;transform:translateY(-54%);font-size:var(--ts-8,clamp(1rem,1.8vw,1.25rem));font-weight:400;opacity:.55;font-family:var(--fm,ui-monospace,monospace)}
 footer .foot-grid .foot-col.open>h3::before{content:"−"}
 footer .foot-grid .foot-col:not(.open)>*:not(h3){display:none!important}
 footer .foot-grid .foot-col.open{padding-bottom:12px!important}
