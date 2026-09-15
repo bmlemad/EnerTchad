@@ -40,13 +40,13 @@ header.top{border-bottom:1px solid var(--hair);position:sticky;top:0;background:
 .dsh .wrap{padding:clamp(40px,6vw,72px) var(--gut) clamp(28px,4vw,40px)}
 .kick{font-family:var(--fm);font-size:0.6875rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-xl);display:inline-flex;align-items:center;gap:9px;margin-bottom:12px}
 .kick::before{content:"";width:7px;height:7px;background:var(--gold-xl);transform:rotate(45deg)}
-h1{font-family:var(--fd);font-weight:800;font-size:clamp(2rem,4.6vw,3.1rem);line-height:1.06;letter-spacing:-.02em;margin:0;max-width:22ch}
+h1{font-family:var(--fd);font-weight:800;font-size:var(--ts-2,clamp(2.1rem,4.8vw,3.3rem));line-height:1.06;letter-spacing:-.02em;margin:0;max-width:22ch}
 .lead{color:rgba(245,247,250,.8);font-size:clamp(1rem,1.4vw,1.12rem);max-width:64ch;margin:16px 0 0}
 main{padding:16px 0 70px}
 section{padding:44px 0 6px;border-top:1px solid var(--hair);margin-top:34px}
 section:first-of-type{border-top:none}
 .sk{font-family:var(--fm);font-size:0.6875rem;letter-spacing:.18em;text-transform:uppercase;color:var(--blue-l);margin-bottom:8px}
-h2{font-family:var(--fd);font-size:clamp(1.4rem,2.8vw,1.95rem);font-weight:800;letter-spacing:-.01em;color:#fff;margin:0 0 6px}
+h2{font-family:var(--fd);font-size:var(--ts-5,clamp(1.35rem,2.9vw,2.1rem));font-weight:800;letter-spacing:-.01em;color:#fff;margin:0 0 6px}
 .desc{color:rgba(245,247,250,.78);max-width:70ch;margin:0 0 20px}
 /* ===== PALETTE ===== */
 .sw-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
@@ -455,7 +455,7 @@ html.et-plight .bcrumb.bc555 a{color:#5A6472}
   <div class="sk">01 · Official palette</div>
   <h2>Colours</h2>
   <p class="desc">A dark “petroleum” base (navy), a signature gold, and one accent colour per pole to differentiate without breaking unity.</p>
-  <h3 style="color:#fff;font-size:1rem;margin:0 0 10px">Base</h3>
+  <h3 style="color:#fff;font-size:var(--ts-9,1.05rem);margin:0 0 10px">Base</h3>
   <div class="sw-grid">
     <div class="sw"><div class="chip" style="background:#121D31"></div><div class="meta"><div class="nm">Navy</div><div class="hex">#121D31</div></div></div>
     <div class="sw"><div class="chip" style="background:#F5F7FA"></div><div class="meta"><div class="nm">Cream</div><div class="hex">#F5F7FA</div></div></div>
@@ -463,7 +463,7 @@ html.et-plight .bcrumb.bc555 a{color:#5A6472}
     <div class="sw"><div class="chip" style="background:var(--gold-xl,#F0CE82)"></div><div class="meta"><div class="nm">Light gold</div><div class="hex">#F0CE82 · --gold-xl</div></div></div>
     <div class="sw"><div class="chip" style="background:#7C8AA2"></div><div class="meta"><div class="nm">Muted</div><div class="hex">#7C8AA2</div></div></div>
   </div>
-  <h3 style="color:#fff;font-size:1rem;margin:24px 0 10px">Accents by pole</h3>
+  <h3 style="color:#fff;font-size:var(--ts-9,1.05rem);margin:24px 0 10px">Accents by pole</h3>
   <div class="sw-grid">
     <div class="sw"><div class="chip" style="background:#E8C36A"></div><div class="meta"><div class="nm">Upstream</div><div class="hex">#E8C36A</div></div></div>
     <div class="sw"><div class="chip" style="background:#5AA7F0"></div><div class="meta"><div class="nm">Midstream</div><div class="hex">#5AA7F0</div></div></div>
@@ -540,7 +540,7 @@ html.et-plight .bcrumb.bc555 a{color:#5A6472}
   <div class="dsh" style="border:1px solid var(--hair);border-radius:var(--r-xl);--pac:var(--inter)">
     <div class="wrap" style="padding:34px 26px">
       <span class="kick" style="color:var(--inter)">Midstream pole</span>
-      <h2 style="font-size:clamp(1.6rem,3.4vw,2.4rem)">The logistics link, end to end</h2>
+      <h2 style="font-size:var(--ts-4,clamp(1.55rem,3.4vw,2.35rem))">The logistics link, end to end</h2>
       <p class="lead" style="margin-top:12px">Mobilise the corridor, secure the reserve, guarantee transport integrity.</p>
       <div class="row" style="margin-top:18px"><a class="btn btn-p" style="background:var(--inter)">Talk to us →</a><a class="btn btn-s">See the offer ↓</a></div>
     </div>
@@ -554,7 +554,7 @@ html.et-plight .bcrumb.bc555 a{color:#5A6472}
   <div class="mod">
     <div>
       <span class="kick">Text + visual block</span>
-      <h2 style="font-size:1.5rem;margin:8px 0 8px">One module = one idea</h2>
+      <h2 style="font-size:var(--ts-7,clamp(1.08rem,2.1vw,1.5rem));margin:8px 0 8px">One module = one idea</h2>
       <p style="color:rgba(245,247,250,.8);margin:0 0 14px">Clear title, concise text, one visual, one call to action. Reusable on every page, themed by pole colour.</p>
       <a class="btn btn-p">Call to action →</a>
     </div>
@@ -698,7 +698,7 @@ html.et-plight .nav:not(#_):not(#__):not(#___){background:rgba(250,247,241,.74)!
 html.et-plight .nav.scrolled:not(#_):not(#__):not(#___){background:rgba(250,247,241,.88)!important}
 footer .foot-grid .foot-col{border-top:1px solid rgba(128,128,128,.22);margin:0!important;padding:0!important}
 footer .foot-grid .foot-col>h3{position:relative;margin:0!important;padding:15px 26px 15px 0!important;cursor:pointer;-webkit-tap-highlight-color:transparent}
-footer .foot-grid .foot-col>h3::before{content:"+";position:absolute;right:4px;top:50%;transform:translateY(-54%);font-size:1.25rem;font-weight:400;opacity:.55;font-family:var(--fm,ui-monospace,monospace)}
+footer .foot-grid .foot-col>h3::before{content:"+";position:absolute;right:4px;top:50%;transform:translateY(-54%);font-size:var(--ts-8,clamp(1rem,1.8vw,1.25rem));font-weight:400;opacity:.55;font-family:var(--fm,ui-monospace,monospace)}
 footer .foot-grid .foot-col.open>h3::before{content:"−"}
 footer .foot-grid .foot-col:not(.open)>*:not(h3){display:none!important}
 footer .foot-grid .foot-col.open{padding-bottom:12px!important}

@@ -407,7 +407,7 @@ html.et-jlight .rootland::after{
 .cp:hover{transform:translateY(-3px);border-color:color-mix(in srgb,var(--gold-l) 45%,var(--hair));background:linear-gradient(180deg,rgba(15,23,38,.93),rgba(11,17,28,.9))}
 .cp-meta{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;font-family:var(--fm);font-size:0.6875rem;letter-spacing:.09em;text-transform:uppercase;color:var(--gold-l)}
 .cp-meta .ref{color:#8C9AB0;letter-spacing:.06em}
-.cp h2{font-family:var(--fd);font-size:1.14rem;font-weight:700;color:#fff;line-height:1.32;margin:9px 0 7px}
+.cp h2{font-family:var(--fd);font-size:var(--ts-9,1.05rem);font-weight:700;color:#fff;line-height:1.32;margin:9px 0 7px}
 .cp p{color:rgba(245,247,250,.8);font-size:.9rem;line-height:1.62;margin:0 0 12px}
 .cp-links{display:flex;flex-wrap:wrap;gap:8px}
 .cp-links a{display:inline-flex;align-items:center;min-height:44px;gap:6px;padding:7px 13px;border-radius:999px;border:1px solid var(--hair);font-family:var(--fm);font-size:.74rem;font-weight:600;color:var(--gold-l);text-decoration:none;transition:border-color .2s,transform .2s}
@@ -666,7 +666,7 @@ html.et-plight .nav:not(#_):not(#__):not(#___){background:rgba(250,247,241,.74)!
 html.et-plight .nav.scrolled:not(#_):not(#__):not(#___){background:rgba(250,247,241,.88)!important}
 footer .foot-grid .foot-col{border-top:1px solid rgba(128,128,128,.22);margin:0!important;padding:0!important}
 footer .foot-grid .foot-col>h3{position:relative;margin:0!important;padding:15px 26px 15px 0!important;cursor:pointer;-webkit-tap-highlight-color:transparent}
-footer .foot-grid .foot-col>h3::before{content:"+";position:absolute;right:4px;top:50%;transform:translateY(-54%);font-size:1.25rem;font-weight:400;opacity:.55;font-family:var(--fm,ui-monospace,monospace)}
+footer .foot-grid .foot-col>h3::before{content:"+";position:absolute;right:4px;top:50%;transform:translateY(-54%);font-size:var(--ts-8,clamp(1rem,1.8vw,1.25rem));font-weight:400;opacity:.55;font-family:var(--fm,ui-monospace,monospace)}
 footer .foot-grid .foot-col.open>h3::before{content:"−"}
 footer .foot-grid .foot-col:not(.open)>*:not(h3){display:none!important}
 footer .foot-grid .foot-col.open{padding-bottom:12px!important}
