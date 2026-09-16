@@ -1206,3 +1206,29 @@ html:is(.et-plight,.et-jlight) body.hm:not(#_):not(#__):not(#___) main:not(#a1):
   --tile-accent:#E8C36A; --cstep:#E8C36A;
   --wi:0; --d:0;
 }
+
+/* ---------- Ch606 : panneau « Nos activites » en cinq colonnes, ordre de la chaine ----------
+   L'ancien panneau (720 px, trois colonnes de 204 px) faisait 968 px de haut a 1 440 x 900 et
+   defilait deja : chaque entree se cassait sur deux lignes. Le panneau quitte la boite du
+   nav-item (position:static sur l'item) et se pose sur le nav fixe lui-meme, centre, 1 240 px.
+   Amont occupe deux colonnes (dix entrees en deux files), Intermediaire, Aval et Petrochimie
+   une chacune ; les quatre capacites integrees passent en rangee basse avec la carte
+   « par besoin ». Sous 1 241 px, la feuille mobile ci-dessus garde la main : liste empilee. */
+@media(min-width:1241px){
+ .nav-item.nxi606{position:static}
+ .nx .nx-mega.nxm606:not(#_x):not(#_y){left:50%;right:auto;top:calc(100% - 1px);translate:-50% 0;
+  width:min(1240px,calc(100vw - 32px));min-width:0;max-width:none;
+  grid-template-columns:repeat(5,minmax(0,1fr));gap:8px 20px;align-items:start}
+ .nxm606 .nxc-amont{grid-column:span 2}
+ .nxm606 .nxg2{display:grid;grid-template-columns:1fr 1fr;column-gap:12px;align-items:start}
+ .nxm606 .nxc-integ{grid-column:span 4;align-self:stretch}
+ .nxm606 .nxg4{display:grid;grid-template-columns:repeat(4,1fr);column-gap:12px}
+ .nx .nxm606 .nx-feat{grid-column:5;grid-row:auto;min-height:0;justify-content:center;padding:12px 14px;align-self:stretch}
+ .nx .nxm606 .nx-feat strong{margin:4px 0 2px;font-size:.95rem}
+ .nx .nxm606 .nx-feat em{font-size:.74rem;line-height:1.35}
+ .nx .nxm606 .nx-feat .arr{margin-top:8px;font-size:.8rem}
+ .nx .nxm606 .nx-col a strong{font-size:.88rem;line-height:1.25}
+ .nx .nxm606 .nx-col a em{font-size:.72rem;line-height:1.3}
+ .nx .nxm606 .nx-col a{padding:6px 22px 6px 10px}
+}
+@media(min-width:1241px){.nx .nxm606 .nx-feat em{display:none}}
