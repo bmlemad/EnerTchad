@@ -23391,3 +23391,72 @@ Intermediaire = Midstream, l organigramme. La chaine en douze etapes est
 couverte par une page a chaque etape ; sur l organigramme a 65 sous-sujets,
 le compte passe de 23 pages a 32. Reste hors champ : le menu principal, qui
 vit dans les 201 pages.
+
+## 606 — Le menu principal refait : cinq colonnes, l ordre de la chaine
+
+**La demande** — « Next » : le reste hors champ du 605, le panneau « Nos
+activites » du menu principal, qui vit dans les 200 pages FR et EN et ne
+listait aucune des 18 pages creees aux chapitres 602 et 605.
+
+**Le releve, avant de toucher** — le panneau faisait 720 px de large, trois
+colonnes de 204 px, 25 liens. Mesure a 1 440 x 900, page chargee, polices
+resolues, transition d ouverture terminee : 968 px de haut pour 739 px
+visibles. Il defilait deja, et presque chaque entree se cassait sur deux
+lignes (« Exploration & / Production », « Produits raffines & / derives »).
+Y ajouter neuf pages par langue dans la meme boite n avait pas de sens : le
+menu etait deja trop etroit pour ce qu il portait.
+
+**Ce qui a ete fait** — le panneau quitte la boite du bouton. L item de
+navigation passe en position statique, le panneau se pose sur le nav fixe
+lui-meme, centre par `translate` (propriete distincte de `transform`, que
+l animation d ouverture continue d utiliser), large de 1 240 px ou de la
+fenetre moins 32 px. Cinq colonnes : Amont sur deux (dix entrees en deux
+files), Intermediaire, Aval, Petrochimie ; rangee basse pour les quatre
+capacites integrees, en ligne, et la carte « par besoin » a leur droite. Les
+entrees suivent l ordre de la chaine du baril : exploration, reserves,
+developpement, forage, traitement primaire, eau de production, EOR, services,
+parc ; collecte puis logistique, integrite, sites ; raffinerie, produits, GPL,
+lubrifiants, distribution, commercialisation, reseau. 34 liens par langue au
+lieu de 25 ; chaque page nouvelle a son entree avec un sous-titre de deux a
+cinq mots. L en-tete « Petrochimie — prolongement de l Aval » se cassait sur
+trois lignes a 219 px et desalignait sa colonne : il devient « Petrochimie »,
+le « + » a la place d un numero dit deja qu elle n est pas un quatrieme
+maillon. Le sous-titre de la carte « par besoin » est masque a partir de
+1 241 px pour que la rangee basse tienne sur une hauteur. Sous 1 241 px, la
+feuille mobile garde la main : liste empilee dans le tiroir, comme avant.
+
+Le bloc est **genere** depuis une liste (FR et EN) et **reecrit** dans les
+200 pages ; les huit pages de capacite qui marquaient leur propre lien
+`aria-current` dans le HTML le conservent. Regles dans nav_a.css sous
+`.nxm606`, SW et-202609170030.
+
+**Resultat** — a 1 440 x 900 : 1 240 x 653 px, contenu 651, aucun defilement
+(avant : 968 dans 739). A 1 241 x 800 : 650 dans 650. A 1 280 x 720 : 635
+dans 570, il reste 65 px de defilement sur les ecrans bas, contre 400 avant.
+Colonnes de 223 px, Amont 466. 204 liens verifies sur six pages, 0 casse,
+0 erreur console, 0 reponse 400 ou plus. Le lien de la page courante recoit
+`aria-current` par nav_a.js comme les anciens : verifie sur `/aval/gpl`,
+`/pole-amont-en`, `/greentech/`. Mobile 390 : 34 liens empiles, un seul
+element masque, la carte « par besoin », comme avant.
+
+**Mon erreur, l instrument qui mesurait pendant l animation** — la premiere
+mesure disait 1 221 px de large et 149 px du haut au lieu de 1 240 et 130 :
+c etait la matrice de depart de la transition d ouverture, scale(.985) et
+translateY(14px), lue dans la meme trame que l ajout de la classe. L instrument
+attend desormais que la transformation calculee soit l identite avant de
+lire. Une valeur lue au premier rendu n est pas la valeur posee.
+
+**Mon erreur, le generateur non rejouable** — la seconde passe du generateur a
+remplace le mauvais panneau : je cherchais `<div class="nx-mega"` avec le
+guillemet fermant, et le nouveau panneau s appelle `nx-mega nxm606`. Le
+rfind est remonte jusqu au panneau « Societe » et l a ecrase. Attrape par le
+compte des declencheurs (2 au lieu de 3) sur la page temoin ; les 200 pages
+remises a l etat publie par git archive FETCH_HEAD, generateur corrige,
+rejoue deux fois pour prouver l idempotence (fichiers identiques a l octet).
+Un motif qui inclut le guillemet fermant cesse de reconnaitre l element des
+que l element a une classe de plus.
+
+**Reste** — le tiroir mobile garde le defilement interne du panneau (2 239 px
+dans 692), un heritage de la hauteur maximale posee en ligne ; a traiter avec
+le tiroir lui-meme. La demande recue en cours de chapitre — relire la
+redaction du site et eliminer les doublons — ouvre le 607.
