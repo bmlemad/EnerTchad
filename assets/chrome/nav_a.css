@@ -1179,3 +1179,30 @@ html:is(.et-plight,.et-jlight) body.hm:not(#_):not(#__):not(#___) main:not(#a1):
   --ts-9:1.05rem;
   --ts-l:.75rem;
 }
+
+/* ============================================================
+   600 : QA du theme sombre — les variables qui n existaient pas.
+   Sur 138 220 references var() du site, 92 741 n ont pas de valeur de repli ;
+   quand le nom n est defini nulle part, la declaration entiere tombe en
+   silence. Deux cas confirmes a l ecran : --gold-d absent sur les pages Atlas
+   (la moitie de la barre « blocs libres » perdait son fond, texte sombre sur
+   fond sombre, contraste 1,17) et --fm, la police mono, absente sur 28 pages
+   (accessibilite.html : 35 elements en monospace au lieu de 125). Ici les
+   jetons de base recoivent une valeur par defaut a la racine ; toute page ou
+   composant qui les redefinit garde la sienne, la cascade des proprietes
+   personnalisees fonctionne comme pour le reste. Les accents de composant
+   (--kac, --pac, --tc, --sac, --tile-accent, --cstep, --ac) prennent l or du
+   site quand l instance ne les pose pas. --bg et --ink ne sont PAS touches :
+   leur valeur depend du theme et une racine sombre aurait pu assombrir un
+   corps de page clair.
+   ============================================================ */
+:root{
+  --fm:ui-monospace,SFMono-Regular,Menlo,monospace;
+  --gold-d:#C9982E;
+  --ease:cubic-bezier(.22,.61,.36,1);
+  --amber-l:#F2B45A;
+  --green-l:#34D399;
+  --kac:#E8C36A; --pac:#E8C36A; --ac:#E8C36A; --tc:#E8C36A; --sac:#E8C36A;
+  --tile-accent:#E8C36A; --cstep:#E8C36A;
+  --wi:0; --d:0;
+}
