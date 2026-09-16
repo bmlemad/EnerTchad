@@ -24500,3 +24500,63 @@ Ctrl+K groupee sous « Exploration & Production », graphique de debit
 (« E&P · production », « Transport · pipeline », « Raffinage · Djermaya »,
 « Distribution · stations »), cinq pages AR et la 404 : captures
 regardees. Second passage du generateur : 0 changement. 214 fichiers.
+
+**EN PRODUCTION — publie a moitie** — 17 lots, 17 commits, parite 0. Mais Vercel a refuse les cinq derniers : « Deployment rate
+limited — retry in 24 hours » (limite du plan Hobby, 100 deploiements
+par jour ; les chapitres 616 a 627 en ont consomme pres de soixante en
+une journee, un par lot). Etat de la production au moment d ecrire :
+les douze premiers lots sont en ligne (feuille et scripts, les 66 pages
+des dossiers amont, intermediaire, aval, petrochimie, tchaditech,
+enerconseils, greentech, tchaditude, et 60 pages racine : 404, arabe,
+brochure, carnets, carrieres, charte a ethique, faq, home FR et EN,
+investisseurs, quatre premiers carnets) — menu, pied de page, fils
+d Ariane et titres au nouveau nom ; les 66 fichiers des cinq derniers
+lots restent a l ancien nom en ligne (34 carnets, mentions legales,
+nos-activites, paiements, plans du site, hubs EN pole-amont-en /
+pole-intermediaire-en / pole-aval-en et les cinq autres pole-*-en,
+presse, projets, publications, recherche, societe, solutions), le
+journal n est pas en ligne, et sw.js reste a et-202609170700 alors que
+nav_a.css a deja le bloc 627 : un visiteur qui revient peut garder
+l ancienne feuille en cache jusqu au prochain changement de version.
+Verifie page par page en production : / et /index-en au nouveau menu,
+/amont/activites en « Activites E&P », /pole-amont-en encore en
+« Upstream ». Le site reste coherent page par page (chaque page porte
+son propre menu et son pied de page) ; il est incoherent d une page a
+l autre pendant vingt-quatre heures. Vercel ne redeploie pas de
+lui-meme a la levee de la limite : il faut un commit apres — le prochain
+chapitre le fera. MON ERREUR — un commit par lot de vingt fichiers,
+donc un deploiement par lot : c est la contrainte de mon outil de
+televersement (10 Mo par appel), pas celle de GitHub ; il faut essayer
+d ajouter plusieurs appels sur la meme page avant de valider, pour
+publier un chapitre en un ou deux commits. A verifier au prochain
+chapitre.
+
+**TROUVE EN PASSANT** — le controle « Integrite du site » de GitHub
+Actions echoue a chaque commit depuis longtemps : 861 « liens casses »
+qui sont tous les deux redirections vercel.json (/amont/calculateur-
+baril-additionnel, /configurateur-service-integre) que le script ne
+connait pas, et deux liens webcal: vers les agendas. Corrige au 628.
+
+## 628 — Le controle d integrite connait les redirections
+
+**Le constat** — le workflow « Integrite du site » (scripts/check_integrity.py,
+lance a chaque commit) est en echec permanent : 861 problemes, tous de la
+meme famille. 859 sont les liens vers /amont/calculateur-baril-additionnel
+et /configurateur-service-integre, presents sur toutes les pages (menu,
+pied de page) : ce sont des reecritures de vercel.json (rewrites vers
+Calculateur_Baril_Additionnel.html et Configurateur_Service_Integre_v2.html),
+valides en production, inconnues d un script qui ne regarde que le disque.
+Les deux autres sont les liens webcal: vers les agendas investisseurs (le
+schema n etait pas dans la liste des schemas ignores, les fichiers .ics
+existent). Un controle rouge en permanence ne controle plus rien.
+
+**Fait** — le script lit vercel.json et tient pour valides les sources
+des redirections et des reecritures sans motif (pas de :, * ni de
+parenthese), avec et sans .html (cleanUrls) ; le schema webcal: rejoint
+http, mailto, tel. Rien d autre ne change dans le controle (liens,
+identifiants dupliques, JSON-LD).
+
+**Verifie** — en local : « OK : 216 pages, 0 probleme » (echec 861
+avant). Le controle de GitHub Actions sur ce commit doit passer au vert :
+c est la mesure en ligne, independante de Vercel (encore limite pour
+vingt-quatre heures, voir 627). Deux fichiers.
