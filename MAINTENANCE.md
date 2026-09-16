@@ -24585,3 +24585,32 @@ id="mx626", paragraphe .psol-intro. Huit pages. Plus aucune ancre
 visible, 0 erreur console, 0 debordement, 6 px entre la grille et la fin
 de section comme avant le 626 ; capture de la grille de l Aval regardee.
 Aucun asset, SW inchange (et-202609170800). Neuf fichiers.
+
+## 630 — Bilan de sante apres la nomenclature, et la limite Vercel levee
+
+**Consigne** — next, apres trois chapitres qui ont touche tout le site
+(627 la nomenclature sur 214 fichiers, 628 le controle d integrite, 629
+le tableau des majors retire).
+
+**BALAYAGE** — 209 pages, trois passes (sombre 1 440, sombre 390, clair
+1 440) : 627 rendus, 0 erreur console, 0 erreur de page, 0 reponse 400 ou
+plus, 0 debordement horizontal, 0 pastille de menu sur deux lignes au
+dessus de 1 240 (le point de tension du 627), 0 titre reste a l ancienne
+forme « Pole · Metier ». 234 destinations internes distinctes, toutes
+valides (fichier sur le disque, ou source de redirection ou de reecriture
+de vercel.json, la regle du 628). Mots de metier restants dans le texte
+visible : les deux pages produits et les deux glossaires, mentions
+legales et contact pour l ARSAT (Autorite de Regulation du Secteur
+Petrolier Aval — une institution), la gouvernance et le hub
+Intermediaire pour « Midstream » explique (« ce que l industrie appelle
+Midstream », « HSE Midstream »), et un communique qui raconte la
+presentation de la chaine. Tous voulus, aucun n est un nom de pole
+oublie.
+
+**LA LIMITE VERCEL EST LEVEE** — le 627 et le 628 sont en ligne : SW
+et-202609170800, journal a jour jusqu au 628, nomenclature sur les pages
+qui manquaient hier (pole-amont-en, plan du site, societe). Le 629 (le
+tableau des majors) n etait pas encore parti : Vercel ne redeploie pas de
+lui-meme a la levee de la limite, il faut un commit — celui-ci le fait.
+
+**Seul le journal change.** Aucun asset, SW inchange.
