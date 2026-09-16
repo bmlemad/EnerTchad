@@ -24795,3 +24795,62 @@ regardees. Aucun asset, SW inchange. Trois fichiers.
 **RESTE** — la home prend la silhouette du cadastre, qui n est pas celle
 des onze autres cartes du site : le recalage des 44 blocs sur la
 silhouette commune reste a faire, avec sa propre passe de mesure.
+
+## 635 — Une seule silhouette du Tchad, et une alerte que je retire
+
+**Consigne** — next. Le reste annonce aux 631, 632 et 634 : « trois
+silhouettes du Tchad minoritaires contre la silhouette commune, a
+unifier ».
+
+**CE RESTE ETAIT FAUX, et c est la mesure qui le dit.** J avais compte
+les silhouettes par l empreinte de leur chaine de coordonnees : quatre
+empreintes, donc quatre dessins, pensais-je. Un meme trace ecrit a une
+autre echelle donne une autre empreinte. Verification faite comme il
+fallait — 360 points echantillonnes le long de chaque contour, ramenes
+dans un carre unite, compares dans les deux sens de parcours : les
+silhouettes A (atlas, reseau, chimie EOR), B (cadastre, home) et D
+(outils TchadiTech) sont **le meme dessin**, a 0,0 % d ecart moyen et
+0,1 % au maximum. Onze des quatorze cartes du site portaient deja le meme
+Tchad. Alerte retiree ; j ai annonce trois fois un chantier qui n existait
+pas.
+
+**CE QUI RESTAIT VRAIMENT** — une seule carte, celle de cibles-2030
+(FR et EN), portait un autre dessin : un polygone de 29 points contre 58,
+ecart moyen de 4,2 % au contour commun et 8,9 % au maximum, et surtout un
+rapport largeur sur hauteur de 0,676 quand les autres sont a 0,624 — le
+pays y etait 8 % trop large. Repere : entre 13,47 et 24,00 degres de
+longitude et 7,44 et 23,45 de latitude, a la latitude moyenne du pays, le
+rapport vrai est 0,633. Le trace commun est juste a 1,4 % pres ; celui de
+cibles-2030 se trompait de 7 %.
+
+**FAIT** — cibles-2030 reprend le trace commun (celui de la carte du
+reseau), cale sur sa hauteur et centre ; le pays y passe de 504 a 466 px
+de large. Les onze reperes, le lac et le corridor sont resserres du meme
+rapport (0,9232) autour de l axe du pays, pour garder leur place
+relative : deplacements de 1 a 18 px, soit 3,4 % de la largeur au plus.
+Controle d appartenance avant et apres : les sept points cibles etaient
+dans l ancien polygone, ils sont dans le nouveau — sans le resserrement,
+N Djamena tombait dehors, la frontiere ouest du vrai trace passant plus
+a l est.
+
+**MON ERREUR DE METHODE, EN PLUS** — pour verifier la justesse
+geographique des reperes, j ai d abord cale les cartes sur les extremes
+de longitude et de latitude du pays, et conclu a des ecarts de 100 a
+500 km. Faux : un trace stylise arrondit la pointe nord et le sud, sa
+boite englobante ne coincide pas avec les extremes reels, et toute la
+mesure derive. Et un premier test d appartenance donnait zero repere sur
+onze a l interieur du pays — isPointInFill teste dans le repere local de
+l element, avant transformation ; il fallait pre-calculer le trace. Les
+deux fois, un controle de bon sens (les reperes doivent etre dans le
+polygone d origine, et ils y sont a 11 sur 11) a montre que c etait ma
+mesure qui etait fausse, pas le site. Je n ai donc rien conclu sur la
+justesse geographique des cartes : elles se declarent stylisees et a
+positions indicatives, et je n ai pas de methode assez solide pour dire
+mieux.
+
+**VERIFIE (local)** — cibles-2030 FR et EN, deux themes, 1 440 et 390 :
+contour au rapport 0,624 comme les onze autres cartes, 7 reperes sur 7
+dans le pays, 0 erreur console, 0 debordement ; capture regardee, la
+forme du pays est reconnaissable la ou le polygone precedent
+l approximait. Generateur idempotent. Aucun asset, SW inchange. Trois
+fichiers.
