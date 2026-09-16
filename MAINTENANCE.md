@@ -23337,3 +23337,57 @@ journal ; aucun actif.
 **Ce qui vient ensuite** — les cinq sujets qui n ont que des carnets : reserves
 et certification, developpement de champ, eau de production, GPL, lubrifiants
 et bitume.
+
+## 605 — Cinq pages de plus : reserves, developpement, eau, GPL, lubrifiants
+
+**La demande** — « Next » : la derniere proposition de l audit 601, les cinq
+sujets du metier qui n avaient qu un carnet.
+
+**Ce qui a ete ecrit** — dix pages, cinq en francais et leurs jumelles
+anglaises, sur le meme gabarit que le chapitre 602 : accroche, trois reperes,
+cinq sections, rangee « lire ensuite » vers les carnets d origine.
+
+· `amont/reserves` — Reserves & certification : brut en place, 1P, 2P, 3P,
+  ressources contingentes, le calcul en cinq etapes, le referentiel PRMS,
+  l evaluateur independant ; la societe n a pas encore de reserves propres a
+  certifier et la page le dit.
+· `amont/developpement` — Developpement de champ : modele de reservoir,
+  scenarios, plan de developpement, FEED, decision finale d investissement,
+  seuil de rentabilite, phasage et production anticipee.
+· `amont/eau` — Eau de production : eau de formation et coupe d eau, chaine de
+  traitement, reinjection, Water-to-Value, zero rejet non traite.
+· `aval/gpl` — GPL & gaz : butane et propane, chaine bouteille-emplissage-
+  distributeur, parc de bouteilles tracees, gaz industriel, gaz associe et
+  Sedigui comme sources locales.
+· `aval/lubrifiants` — Lubrifiants, bitumes & produits speciaux : huiles de
+  base et atelier de melange, bitume des bruts lourds de Doba, solvants,
+  laboratoire ; des produits a prix libre, hors bareme ARSAT.
+
+**La sous-navigation reecrite, cette fois canoniquement** — la lecon du 602 :
+inserer apres une etiquette existante depend de l ordre de la page cible. Ici
+les sous-navigations Amont et Aval (FR et EN) sont **reecrites entierement**
+depuis une liste canonique par pole, dans l ordre de la chaine — Amont : vue
+d ensemble, exploration & production, reserves, developpement, forage,
+traitement primaire, eau de production, EOR, services, parc ; Aval : vue
+d ensemble, raffinerie, produits, distribution, commercialisation, GPL,
+lubrifiants, reseau, extension chimie — l entree active calculee depuis le
+nom du fichier. Trente-six pages reecrites, 26 existantes et les 10 nouvelles.
+Plan du site FR et EN, sitemap 196 vers 206 URL.
+
+**Verifie** — dix pages, deux themes : 0 texte sous le seuil (69 a 89 elements
+par page), 0 defilement horizontal, sous-navigation de 9 ou 10 entrees avec
+l active, 15 a 18 liens internes, 0 casse, 0 erreur console, 0 reponse 400 ou
+plus. Marqueur negatif : les 26 pages existantes ne different que par le bloc
+de sous-navigation (11 lignes ajoutees, 2 retirees, sur chacune), plan du
+site et sitemap d une ligne. Trois pages temoins : `amont/eor` en clair montre
+21 candidats, les etiquettes SVG sur degrade or deja connues ; `pole-amont-en`
+deux liens « casses » en local, `/amont/calculateur-baril-additionnel` et
+`/configurateur-service-integre`, qui sont des redirections de `vercel.json` —
+le serveur local ne connait pas la table de routage, lecon du 592.
+
+**Bilan de l audit 601** — ses six propositions sont appliquees, chapitres
+602 a 605 : quatre puis cinq pages de metier, la chaine en tete des hubs,
+Intermediaire = Midstream, l organigramme. La chaine en douze etapes est
+couverte par une page a chaque etape ; sur l organigramme a 65 sous-sujets,
+le compte passe de 23 pages a 32. Reste hors champ : le menu principal, qui
+vit dans les 201 pages.
