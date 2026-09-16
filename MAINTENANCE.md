@@ -24854,3 +24854,58 @@ dans le pays, 0 erreur console, 0 debordement ; capture regardee, la
 forme du pays est reconnaissable la ou le polygone precedent
 l approximait. Generateur idempotent. Aucun asset, SW inchange. Trois
 fichiers.
+
+## 636 — Les comptes du cadastre remis d accord, partout
+
+**Consigne** — next. L audit des cartes (631) avait trouve deux comptes
+qui se contredisaient sur une meme page ; j ai voulu savoir si le site en
+cachait d autres, et j ai releve tous ses chiffres avec leur unite : kb/j,
+Gbep, km, Md FCFA, blocs, bassins, stations, pourcentages. 209 pages.
+
+**CE QUI EST JUSTE** — les reserves (1P 1,5 Gbep, 2P 2,8, 3P 4,2) ne se
+contredisent nulle part ; la capacite de l oleoduc (225 kb/j), sa longueur
+(1 070 km), le troncon tchadien (170 km), le terminal FSO (2,4 Mb), la
+raffinerie de Djermaya (20 kb/j), la production 2025 (144 kb/j) et la
+cible 2030 (250 kb/j) sont constants d une page a l autre. Les « 85
+stations » du corridor sont des stations piezometriques, pas des
+stations-service : aucune confusion a corriger.
+
+**MON OUBLI DU 631** — j avais corrige le total du cadastre (42 vers 44)
+mais laisse toute la ventilation qui le suit dans le chapitre Cadastre &
+blocs de l Atlas : une barre de repartition affichant 16 attribues,
+21 libres, 5 en changement — 42 blocs, l ancienne ventilation, avec des
+largeurs calculees dessus et des infobulles qui disaient autre chose que
+les nombres affiches ; trois cartes de statut a 16, 21 et un total a 42 ;
+et « 50 % du cadastre reste ouvert ». Corrige : barre a quatre segments
+(11 attribues 25,0 %, 26 libres 59,1 %, 5 en changement 11,4 %,
+2 en production 4,5 %, total 100 %), cartes a 11, 26, 5 et total 44.
+La part ouverte n est pas la moitie mais 59 % — 26 blocs sur 44 : les
+sept phrases qui disaient « la moitie du cadastre », « la moitie du
+domaine », « half the registry » sont reecrites avec le compte exact, en
+francais et en anglais, y compris celle que j avais ecrite moi-meme sur
+la home au 634.
+
+**POURQUOI CELA AVAIT SURVECU** — les chapitres de l Atlas sont des
+blocs depliables, fermes par defaut ; le contenu faux n apparaissait
+qu une fois le chapitre « Cadastre & blocs » ouvert. Mon controle du 631
+lisait le texte rendu, donc replie. Lecon : sur cette page, mesurer
+volets ouverts.
+
+**AUTRE TROUVAILLE** — le carnet « L atlas qui de-risque le baril
+tchadien » resumait le cadastre en « 26 blocs libres, 16 attribues, 5 en
+changement » : les 5 etaient comptes deux fois (16 = 11 + 5), le total
+faisait 47 pour 44. Reecrit en 26 libres, 11 attribues, 5 en changement,
+2 concessions en production. FR et EN.
+
+**COULEURS** — la barre et les cartes de statut peignaient les attribues
+en vert, les libres en or et les changements en bleu, quand la carte du
+cadastre, juste au-dessus, peint les attribues en or, les libres en
+bleu, les changements en ambre et la production en vert. Le lecteur
+passait d un code a l autre en deux ecrans. Barre et cartes reprennent
+les couleurs de la carte.
+
+**VERIFIE (local)** — atlas FR et EN et le carnet, deux themes, 1 440 et
+390, volets ouverts : 0 ancien chiffre (42, 21, 16) dans le texte rendu,
+0 phrase qui dit la moitie, barre a 100 %, 0 erreur console, 0
+debordement ; captures des deux themes regardees. Aucun asset, SW
+inchange. Cinq fichiers.
