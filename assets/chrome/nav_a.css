@@ -1272,3 +1272,12 @@ html:is(.et-plight,.et-jlight) body.hm:not(#_):not(#__):not(#___) main:not(#a1):
 /* Ch611 : la pastille des cartes de pole sur une ligne de base commune (la colonne interne s etire, la pastille descend en bas) */
 .plc-card:not(#_g) .plc-b{display:flex;flex-direction:column;align-self:stretch}
 .plc-card:not(#_g) .plc-badge{margin-top:auto;align-self:flex-start}
+
+/* ---------- Ch613 : les titres restes sans regle (taille du navigateur) ----------
+   52 titres sur 3 879 etaient hors echelle ; 44 n avaient aucune regle de taille et tombaient
+   sur la valeur par defaut du navigateur (h2 = 1,5 em = 24,75 px, h3 = 1,17 em = 19,3 px).
+   :where() donne a ces regles une specificite nulle : elles ne battent que la feuille du
+   navigateur, jamais une regle d auteur, meme un simple h2{}. */
+:where(h2){font-size:var(--ts-4,clamp(1.55rem,3.4vw,2.35rem))}
+:where(h3){font-size:var(--ts-6,clamp(1.2rem,2.5vw,1.8rem))}
+:where(h4){font-size:var(--ts-8,clamp(1rem,1.8vw,1.25rem))}
