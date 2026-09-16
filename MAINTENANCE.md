@@ -23735,3 +23735,55 @@ l ombre heritee (`text-shadow:none`) et quatre identifiants retirent le halo
 du clair sur le titre, le texte et l accroche. Verifie : ombre none sur le
 titre, l accroche, les noms de la figure, le bouton et les reperes, dans les
 deux themes ; heros 983 px.
+
+## 613 — Les derniers titres hors echelle, et la regle du clair examinee
+
+**La demande** — « Apply » : appliquer ce que j avais laisse hors champ.
+
+**Les titres** — nouveau releve, page chargee et polices resolues, 200 pages :
+3 879 titres, 52 hors echelle (2 avant le 606 disaient 96 ; le menu, la
+brochure et le heros en ont retire). 44 des 52 n avaient aucune regle de
+taille : ils tombaient sur la feuille du navigateur — h2 a 1,5 em (24,75 px),
+h3 a 1,17 em (19,3 px), sur des sections de logistique, les cartes `epw-card`,
+le reseau EN, les tetes `biz-head`. Les autres : le titre de carrieres
+(FR et EN) en ligne a clamp(1.45rem, 2.7vw, 2rem) = 32 px, et mon propre heros
+du 608 a 3,9 rem = 62,4 px, entre deux pas de l echelle.
+
+**Ce qui a ete fait** — trois regles dans nav_a.css a specificite nulle,
+`:where(h2)`, `:where(h3)`, `:where(h4)`, vers --ts-4, --ts-6, --ts-8 : elles
+ne battent que la feuille du navigateur, jamais une regle d auteur, meme un
+simple `h2{}` de page. Carrieres : la valeur en ligne passe au jeton --ts-5.
+Le heros : --ts-2 (52,8 px a 1 440, deux lignes). SW et-202609170300.
+
+**Resultat** — 3 879 titres, 0 hors echelle, 10 tailles distinctes (86 au
+depart du 599, 19 apres, 15 avant ce chapitre). 100 % sur l echelle.
+
+**La regle generale du theme clair, examinee et gardee** — la regle qui retire
+fond et ombre a tout div, section et article de main en clair a ete sondee
+sur 18 pages, deux themes : les 24 familles de boites qui perdent leur fond
+gardent toutes une bordure (183 boites sans classe, `box`, `step`, `pl`, `cta`…) ;
+le clair est un theme a boites filaires sur creme, coherent et lisible
+(capture de la gouvernance : direction, trois DGA, boites contourees). Ce n est
+pas un defaut a corriger mais un parti pris ; je retire ce point du reste.
+
+## 614 — La brochure PDF de six pages, mise a jour
+
+**Le constat** — le PDF lie depuis le heros de la brochure (FR et EN, juillet
+2026) disait « 7 poles · une societe integree » et « Huit poles, une signature
+chacun », quand le site dit depuis le 602 trois poles de coeur, la petrochimie
+qui prolonge l Aval, quatre capacites integrees ; et « reserves 2P du bassin
+environ 2,4 Gbep » quand l Atlas dit environ 1,5 Gbep de reserves 1P pour le secteur.
+
+**Ce qui a ete fait** — sources `docs-sources/brochure_print.html` et `_en`
+corrigees : repere « 3 + 4 · poles de coeur · capacites integrees », section 03
+renommee « Trois poles de coeur, quatre capacites integrees » avec une phrase
+d organisation, Petrochimie titree « prolongement de l Aval », reserves 1P
+1,5 Gbep avec la source, date « septembre 2026 » sur les deux pieds de page.
+PDF regeneres par Chromium (A4, six pages, fonds imprimes), memes noms de
+fichiers : les dix liens du site restent valides.
+
+**Mon erreur** — la phrase ajoutee en page 3 a pousse la carte Tchaditude sous
+le pied de page : 52 px de depassement en francais, 11 en anglais, visibles a
+la mesure (distance du dernier bloc au pied) avant de l etre a l oeil. Page 3
+resserree (gouttiere 3,5 mm, cartes 3,6 mm) : 80 px de marge en francais,
+142 en anglais. Une page fixe se mesure, elle ne se regarde pas seulement.
