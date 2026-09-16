@@ -24102,3 +24102,32 @@ tuile) ; largeur ecrite en `calc(100% - 2 * marge)`.
 et 390, 0 debordement horizontal, 0 erreur console ; captures des trois
 tuiles en sombre et en clair regardees. Aucun asset ne change : SW
 inchange (et-202609170500). Trois fichiers.
+
+## 620 — La scene du metier dans l en-tete des trois hubs de pole
+
+**La demande** — « next » apres le 619 : porter les symboles du metier
+sur les pages hub Amont, Intermediaire et Aval, FR et EN (six pages).
+
+**Ce qui est fait** — les trois scenes du 619 (chevalet, derrick, tete
+de puits, separateur et strates ; tube, vanne, pompe, racleur, compteur,
+reservoir ; colonne, spheres GPL, distributeur, route), recomposees en
+format compact (boite 640 x 400, groupes espaces de 36 unites, centres),
+posees dans l en-tete `header.pghero` de chaque hub, dans la moitie
+droite que le texte laisse libre (la colonne `.pgh-main` s arrete a 780
+px). Couleur de l en-tete (`--pac`), opacite .2, 345 px de large au plus
+(24 vw), calee sur le bord interieur droit de la grille, centree en
+hauteur ; entree en glissant de 28 px a l ouverture de la page, sauf
+reduced-motion ; cachee sous 1 181 px, la ou la colonne de texte
+occuperait la place. `a620/sym620.py` derive de `a619/sym619.py`
+(memes traits, mise en page compacte), idempotent.
+
+**Mesure** — six pages, deux themes, 1 440 / 1 240 / 1 200 : scene de
+934 a 1 279 px a 1 440 (bord interieur de la grille : 1 279), 216 px de
+haut ; 0 boite de contenu (cartes de chiffres, boutons, encadre, noeuds
+de la chaine, titre, chapeau) qui touche la scene, a aucune largeur ;
+0 erreur console. Premiere version a 440 px : la scene passait sous la
+troisieme carte de chiffres (bord droit 929 contre 903), reduite a 345.
+Le `right:0` visait le bord du rembourrage de la grille (56 px), pas son
+bord interieur : `right` en clamp sur le rembourrage.
+
+**Aucun asset** — SW inchange (et-202609170500). Sept fichiers.
