@@ -24405,3 +24405,98 @@ depassait de 56 px sur cette page : colonnes resserrees), 0 debordement
 de page, 0 erreur console ; captures regardees.
 
 **Aucun asset** — SW inchange (et-202609170700). Neuf fichiers.
+
+## 627 — La nomenclature des poles : Exploration & Production, Transport & stockage, Raffinage & distribution
+
+**La demande** — « utilise cette nomenclature pour le site : Exploration &
+Production, Transport & stockage, Raffinage & distribution ». Deux
+questions posees : la forme (reponse : le nom seul partout, Amont /
+Intermediaire / Aval ne restent qu en mot-cle discret sur les hubs) et le
+perimetre (reponse : FR, EN et AR, adresses inchangees — /amont/,
+/intermediaire/, /aval/ et les pages -en gardent leur URL, pas de
+redirection a poser).
+
+**Le releve** — 375 Amont, 354 Intermediaire, 375 Aval, 270 Upstream,
+231 Midstream, 267 Downstream en forme d etiquette sur les 200 pages
+FR/EN, dans 867 contextes distincts : les trois boutons du menu (600
+occurrences), l en-tete des panneaux (« Vue d ensemble du pole Amont —
+exploration & production »), les titres de colonnes du pied de page, les
+fils d Ariane, la chaine « 01 Amont → 02 Intermediaire → 03 Aval » des 28
+pages de pole, les sous-navigations, les blocs « Continuer dans Amont »,
+les BreadcrumbList JSON-LD, les titres et og:title des hubs (« Amont ·
+Exploration & Production »), les tuiles de la home (« 01 · Amont —
+Exploration & Production »), le plan du site, les filtres des carnets,
+la date-pole des cartes de carnets, le tableau du 626 — et la prose
+(« dans l Aval », « le pole Amont »). Hors des pages : les index de la
+palette Ctrl+K (categories Amont / Aval / Upstream), les etiquettes du
+graphique de debit de la page outils, les donnees du tilehub.
+
+**La regle** — nom627.py, idempotent, une passe par langue. D abord les
+formes composees, reduites au nom seul (« Amont · Exploration &
+Production » → « Exploration & Production », « Upstream pole overview —
+exploration & production » → « Exploration & Production — pole
+overview ») ; puis les tournures (« prolongement de l Aval » → « du
+Raffinage & distribution », « l Aval » → « le Raffinage & distribution »,
+« L Intermediaire » → « Le Transport & stockage », « l Amont » →
+« l Exploration & Production ») ; enfin le mot seul en majuscule, hors
+identifiants. Dans les scripts (JSON-LD, tilehub) les deux langues a la
+fois, esperluette brute ; dans le HTML, &amp;. Ilots proteges : le
+mot-cle des hubs et des sous-pages (.pgk), l etiquette cachee .pgh-flabel,
+les noms des fiches PDF (Fiche_Technique_Amont), les cellules des majors
+du tableau 626 (« dans Upstream »), l infobulle des maillons de chaine,
+l ARSAT (Autorite de Regulation du Secteur Petrolier Aval — une
+institution, pas notre pole). Sur les deux plans du site, la colonne de
+l autre langue est renommee avec les regles de l autre langue. Le mot
+« Midstream » reste dans les phrases qui l expliquent (« ce que
+l industrie appelle Midstream », « HSE Midstream ») : c est le terme du
+metier, pas le nom du pole.
+
+**Un doublon evite** — la sous-page /amont/activites s appelait
+« Exploration & Production » : avec le pole du meme nom, le fil aurait dit
+« Exploration & Production → Exploration & Production ». Elle devient
+« Activites E&P » (EN : « E&P activities ») — titre, h1, fil, og,
+JSON-LD, et ses 430 liens (menu, pied de page, plan, cartes).
+
+**Le mot-cle des hubs** — les six hubs prennent « Amont · Coeur de
+metier · Chaine petroliere » (Upstream · Core business · Oil chain) en
+kicker ; les sous-pages gardaient deja « Amont · Forage & completion ».
+En arabe, les cartes de ar-poles gardent le mot du metier (al-manba,
+al-wasat, al-masabb) en kicker et prennent le nom en titre ; les trois
+pages de pole AR portent le nom en h1 et en titre (ar-amont : « du
+gisement au brut » en second membre, la phrase d origine repetait le
+nom).
+
+**La barre** — trois libelles longs a la place de Amont / Intermediaire
+/ Aval : a 1 440 ils passaient sur deux lignes dans des pastilles de
+50 px. Bloc CSS 627 dans nav_a.css (huit identifiants, comme le 623) :
+une seule ligne a 13,5 px, rembourrage 6 x 10 ; de 1 241 a 1 420 px, 13 px,
+6 x 8, ecart 3 px et gouttieres de la barre a 18 px. Mesure : a 1 241 (le
+burger prend a 1 240) la loupe finit a 1 217 pour un bord a 1 223 ; a
+1 440, 1 339 ; a 1 920, 1 579. FR et EN. SW et-202609170800 (feuille et
+six scripts changent).
+
+**MON ERREUR, TROIS FOIS** — 1. « L Intermediaire » et « L Aval » en
+debut de phrase : ma regle d elision ne connaissait que la minuscule, la
+passe generale a produit « L Transport & stockage » (7 pages) — regle
+ajoutee, avec sa reparation. 2. « Aval petrolier regule par l ARSAT » est
+devenu « Raffinage & distribution petrolier regule » : le mot etait le
+secteur, pas le pole — remis en « Secteur aval regule ». 3. Le lien
+« Exploration & Production » du panneau de menu n a pas ete renomme a la
+premiere passe : un <strong> entre la balise et le texte que mon motif
+ne prevoyait pas ; vu sur la capture du panneau, motif elargi. Et en
+arabe, la premiere passe doublait le nom (kicker et titre, puis les deux
+membres du h1 de ar-amont) : vu au controle des pages AR.
+
+**VERIFIE (local)** — 200 pages a 1 440 sombre : 0 erreur console, 0
+reponse 400+, 0 debordement, 0 pastille de menu sur deux lignes, 0 bouton
+hors ecran ; 40 pages a 390 et 40 en clair : idem. Mots anciens restants
+dans le texte visible : les cellules des majors (88), les kickers (48 +
+6), les infobulles (9), l ARSAT (9), « Midstream » explique (5) — tous
+voulus. 668 blocs JSON-LD toujours lisibles. Menu a 1 241 / 1 366 /
+1 440 / 1 920, burger a 390 (cinq entrees), chaine des poles sur trois
+lignes a 390, pied de page (titres sur deux lignes, comme Societe &
+investisseurs), tuiles de la home, hub Transport & stockage, palette
+Ctrl+K groupee sous « Exploration & Production », graphique de debit
+(« E&P · production », « Transport · pipeline », « Raffinage · Djermaya »,
+« Distribution · stations »), cinq pages AR et la 404 : captures
+regardees. Second passage du generateur : 0 changement. 214 fichiers.
