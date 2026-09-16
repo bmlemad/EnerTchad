@@ -1311,3 +1311,30 @@ footer .foot-caps617 .foot-poles:not(#_):not(#__){display:flex;flex-wrap:wrap;ga
 .foot-caps617 .foot-svc617{display:flex;flex-wrap:wrap;gap:0 22px}
 .foot-caps617 .foot-svc617 a{margin-bottom:8px}
 html.et-plight .foot-col .foot-sub{color:rgba(18,29,49,.6)}
+
+/* Ch623 — la home nette : plus de flou d arriere-plan dans le contenu, plus de calques ambiants en mouvement.
+   Avant : ~50 surfaces a backdrop-filter (trois tuiles de 1088 x 450, le bandeau final, les cartes) posees sur
+   cinq calques plein ecran animes en continu (diapo, trois blobs aurora a blur 70 px, prem-mesh, rootland) et un
+   canevas de flux a 30 i/s : chaque image recalculait le flou de tout cela. Le proprietaire voyait la home floue
+   et des bandes qui se chevauchent. Ici : les calques ambiants sont figes (le champ reste, il ne derive plus), le
+   canevas est retire des deux pages d accueil, et aucune surface de main ne floute son fond ; les surfaces
+   reprennent en opacite ce qu elles perdent en flou. La barre de navigation et ses panneaux gardent leur verre. */
+html body.hm:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6):not(#a7):not(#a8):not(#a9):not(#a10):not(#a11) :is(main,header.hero) *:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6):not(#a7):not(#a8):not(#a9):not(#a10):not(#a11){-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+body.hm .diapo:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6):not(#a7):not(#a8):not(#a9):not(#a10):not(#a11),body.hm #aurora i:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6):not(#a7):not(#a8):not(#a9):not(#a10):not(#a11),body.hm .prem-mesh:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6):not(#a7):not(#a8):not(#a9):not(#a10):not(#a11),body.hm .rootland:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6):not(#a7):not(#a8):not(#a9):not(#a10):not(#a11){animation:none!important}
+body.hm #aurora i:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6):not(#a7):not(#a8):not(#a9):not(#a10):not(#a11){filter:blur(48px);will-change:auto}
+html:not(.et-plight):not(.et-jlight) body.hm:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6):not(#a7):not(#a8):not(#a9):not(#a10):not(#a11) :is(main,header.hero) :is(.t550-p,.cb-in,.car546,#c540p,.hxf-face,.dur-c,.hncard,.hcp-i,.agir-c,.doc-c,.nh-kpi>div):not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6):not(#a7):not(#a8):not(#a9):not(#a10):not(#a11){background-color:rgba(6,22,38,.74)!important}
+html:is(.et-plight,.et-jlight) body.hm:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6):not(#a7):not(#a8):not(#a9):not(#a10):not(#a11) :is(main,header.hero) :is(.t550-p,.cb-in,.car546,#c540p,.hxf-face,.dur-c,.hncard,.hcp-i,.agir-c,.doc-c,.nh-kpi>div):not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6):not(#a7):not(#a8):not(#a9):not(#a10):not(#a11){background-color:rgba(255,255,255,.82)!important}
+/* 623-2 — deux autres sources de flou : les sections en attente de « reveal » restent a filter:blur(3px) tant que
+   l observateur ne les a pas vues (sur une machine chargee, longtemps), et toutes les ombres portees de texte du
+   theme sombre (12 a 18 px de flou sous chaque titre et paragraphe). Sur la home : aucun reveal, aucune ombre. */
+.reveal:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6):not(#a7):not(#a8):not(#a9):not(#a10):not(#a11){filter:none!important}
+body.hm .reveal:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6):not(#a7):not(#a8):not(#a9):not(#a10):not(#a11){opacity:1!important;transform:none!important;transition:none!important}
+body.hm main *:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6):not(#a7):not(#a8):not(#a9):not(#a10):not(#a11),body.hm header.hero *:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6):not(#a7):not(#a8):not(#a9):not(#a10):not(#a11){text-shadow:none!important}
+/* 623-3 — la barre de navigation : le verre a .38 d opacite sur 20 px de flou laissait lire le contenu qui
+   defile derriere (une bande floue qui semble en chevaucher une autre). Une fois la page defilee, barre et barre
+   utilitaire presque opaques, flou reduit a 10 px, sur tout le site ; en haut de page la barre reste transparente
+   sur le heros. Huit identifiants : les regles en face en portent six. */
+html:not(.et-plight):not(.et-jlight) #nav.nx.scrolled:not(#z1):not(#z2):not(#z3):not(#z4):not(#z5):not(#z6):not(#z7):not(#z8){background:rgba(6,20,36,.93)!important;-webkit-backdrop-filter:blur(10px)!important;backdrop-filter:blur(10px)!important}
+html:not(.et-plight):not(.et-jlight) #nav.nx:not(#z1):not(#z2):not(#z3):not(#z4):not(#z5):not(#z6):not(#z7):not(#z8) .nx-util:not(#z1):not(#z2):not(#z3):not(#z4):not(#z5):not(#z6):not(#z7):not(#z8){background:rgba(4,10,20,.92)!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+html:is(.et-plight,.et-jlight) #nav.nx.scrolled:not(#z1):not(#z2):not(#z3):not(#z4):not(#z5):not(#z6):not(#z7):not(#z8){background:rgba(251,248,242,.95)!important;-webkit-backdrop-filter:blur(10px)!important;backdrop-filter:blur(10px)!important}
+html:is(.et-plight,.et-jlight) #nav.nx:not(#z1):not(#z2):not(#z3):not(#z4):not(#z5):not(#z6):not(#z7):not(#z8) .nx-util:not(#z1):not(#z2):not(#z3):not(#z4):not(#z5):not(#z6):not(#z7):not(#z8){background:rgba(243,238,229,.96)!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
