@@ -23065,3 +23065,96 @@ rangee orpheline, des pastilles a trois hauteurs, du texte de carte tronque, et
 la largeur de carte sans rapport avec la largeur du texte — c est aussi ce qui
 soignerait le tiers de paragraphes trop etroits que le plafond du 597 ne peut
 pas atteindre.
+
+## 600 — QA du theme sombre, et ses trois corrections
+
+**La demande** — « QA de la version sombre », puis « Tout corrige ».
+
+**Mon erreur, avant tout le reste — j ai mesure le mauvais theme.** Mon premier
+balayage complet des 191 pages a tourne **en theme clair sans que je le
+sache** : sans preference enregistree, le site applique `et-plight`. Il ignore
+aussi `prefers-color-scheme` — un systeme en mode sombre recoit quand meme le
+clair. J allais rapporter 187 pieds de page creme et 255 echecs de contraste
+comme des defauts du theme sombre. Ce qui l a attrape : demander au navigateur
+quelle classe portait la racine avant de lire le moindre chiffre. Tout a ete
+remesure avec le sombre force. Deux lecons : un instrument doit imprimer le
+theme qu il mesure ; et **le visiteur qui n a jamais touche le bouton ne voit
+jamais l identite sombre du site** — c est une decision pour le proprietaire,
+pas pour moi.
+
+**Ce que la QA a trouve, en sombre, page chargee et polices resolues.**
+
+Contraste : **51 890 elements de texte**, 6 candidats, **0 defaut confirme**.
+Quatre sont des etiquettes SVG de `aval/raffinage` que mon modele voyait sur le
+fond de page alors qu elles sont posees sur un `<rect>` voisin rempli d un
+degrade or — le calcul remonte les ancetres DOM, pas les freres SVG. Les deux
+autres, sur Atlas, etaient reelles ; leur cause est plus bas.
+
+Focus clavier : **815 arrets de tabulation sur 24 pages, 815 avec un
+indicateur visible**. Mon premier instrument annoncait 27,5 % sans indicateur :
+il posait le focus par `.focus()`, qui n est pas le chemin du clavier. La
+touche Tab a tranche. Deuxieme instrument menteur de la journee.
+
+Surfaces claires : 278 relevees, dont 160 boutons et pastilles legitimes, et
+**88 panneaux blanc pur, tous sur les deux pages de la brochure** — les cartes
+ESG et contenu local, blanc `#fff` avec texte quasi noir en plein theme sombre.
+
+Variables : sur **138 220 references `var()`**, **92 741 sans valeur de repli**.
+Quand le nom n existe nulle part, la declaration entiere tombe en silence.
+Deux cas confirmes a l ecran : `--gold-d`, absent partout, faisait perdre son
+fond a la moitie « blocs libres » de la barre Atlas — texte sombre sur fond
+sombre, contraste **1,17** ; `--fm`, la police mono, absente sur 28 pages —
+`accessibilite.html` rendait **35** elements en monospace au lieu de 125 sur une
+page ou elle existe. Hors bibliotheques (`--tw-*`, `--radix-*`) et variables
+posees par script au survol (`--mx`, `--my`), **3 793 declarations** tombaient.
+
+**Les trois corrections.**
+
+1. **Les cartes de la brochure.** Un bloc `<style id="b600">` dans les deux
+   pages, actif en sombre seulement : les cartes passent au verre du site,
+   `rgba(0,45,69,.56)`, et leurs textes gris de papier (`#51637A`, `#566378`,
+   `#7C8AA2`, `#5D6B7E`, `#9A6E1A`, `#0B815A`…) sont remappes vers la palette
+   sombre. Trois pieges rencontres et notes : les couleurs venaient a la fois
+   d attributs `style` et de classes `.bxNNN` a specificite deja gonflee par
+   d anciens chapitres (`.bx91:not(#_){…!important}`) — mes regles portent trois
+   identifiants ; et **le script de revelation reecrit l attribut `style`**, si
+   bien que `background:#fff` devient `background: rgb(255, 255, 255)` a
+   l execution : un selecteur d attribut qui ne connait que la forme ecrite
+   rate la carte. Les deux formes sont reconnues. Resultat : 44 cartes en verre
+   au lieu de 44 blanches, **0 candidat de contraste** sur les deux pages. En
+   clair, rien ne change : 0 carte blanche avant, 0 apres — la regle du theme
+   clair les rendait deja transparentes.
+
+2. **`--gold-d` defini** a la racine de `nav_a.css`, `#C9982E`, la valeur que la
+   brochure lui donnait deja localement. La barre Atlas retrouve son degrade
+   or en sombre. En clair elle reste sans fond : une regle generale du theme
+   clair pose `background-image:none !important` sur tout `div` de `main`, ce
+   qui supprime aussi les degrades qui portent un sens. C est un defaut du
+   theme clair, note ici, pas corrige ici.
+
+3. **Les jetons de base recoivent une valeur par defaut** a la racine : `--fm`,
+   `--ease`, `--amber-l`, `--green-l`, et les accents de composant `--kac`,
+   `--pac`, `--ac`, `--tc`, `--sac`, `--tile-accent`, `--cstep` sur l or du
+   site, `--wi` et `--d` a 0. Toute page ou composant qui les redefinit garde
+   la sienne. **`--bg` et `--ink` ne sont pas touches** : leur valeur depend du
+   theme, et une racine sombre aurait pu assombrir un corps de page clair.
+
+| | avant | apres |
+|---|---|---|
+| panneaux blanc pur en sombre | 88 | **0** |
+| candidats de contraste (191 pages) | 6 | **4**, les quatre fausses alertes SVG |
+| noms de variables non resolus | 88 | **77** |
+| declarations tombees, hors bibliotheques | 3 793 | **1 085** |
+| elements monospace, accessibilite.html | 35 | **74** |
+
+**Ce qui reste** — les 77 noms restants sont des variables de composant
+posees par instance (`--dc`, `--c`, `--i`, `--v5a/b/c`), les deux pages
+d accueil (`--mac`, `--mln-g*`), et les pages hors `nav_a.css` (404, arabe).
+Le fond du probleme — 92 741 `var()` sans repli — ne se corrige pas en un
+chapitre sans risquer de reveiller des declarations que personne n a vues
+depuis longtemps.
+
+**Verifications** — contraste et surfaces sur les 191 pages en sombre ;
+controle structurel avant/apres sur 41 pages, deux themes ; sante des 191
+pages ; marqueur negatif : la brochure en theme clair, identique avant et
+apres. Une feuille, deux pages, le service worker et le journal.
