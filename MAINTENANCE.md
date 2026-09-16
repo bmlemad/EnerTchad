@@ -24560,3 +24560,28 @@ identifiants dupliques, JSON-LD).
 avant). Le controle de GitHub Actions sur ce commit doit passer au vert :
 c est la mesure en ligne, independante de Vercel (encore limite pour
 vingt-quatre heures, voir 627). Deux fichiers.
+
+## 629 — Le tableau « face aux majors » retire
+
+**La demande** — « Elimine les references face aux majors ». Le tableau du
+626 (« Nos domaines face aux majors » / « Our domains versus the
+majors » : six familles de metier, cinq majors en colonnes, colonne
+EnerTchad, note de source) disparait des six hubs de pole et des deux
+pages Toute la chaine, avec sa ligne d intro sous le titre des grilles
+(« Decoupage aligne sur la nomenclature des majors integrees — voir la
+correspondance ») et sa feuille de style. Les grilles de domaines du 626
+restent (7 / 6 / 6 cartes, une par page du pole), la nomenclature du
+627 aussi. Les mentions plus anciennes des majors dans la prose (« les
+majors chassent l elephant, nous recuperons les barils qu elles
+laissent », benchmarks des chapitres 457 a 526 en commentaires CSS) ne
+sont pas des « references face aux majors » : gardees.
+
+**Fait** — rm629.py, idempotent : section id="face-aux-majors", style
+id="mx626", paragraphe .psol-intro. Huit pages. Plus aucune ancre
+#face-aux-majors dans le site (0 lien entrant, verifie avant).
+
+**Verifie (local)** — huit pages, 1 440 sombre, 390, 1 440 clair : 7 / 6
+/ 6 cartes, 0 tableau, 0 intro, 0 mot « majors » du 626 dans le texte
+visible, 0 erreur console, 0 debordement, 6 px entre la grille et la fin
+de section comme avant le 626 ; capture de la grille de l Aval regardee.
+Aucun asset, SW inchange (et-202609170800). Neuf fichiers.
