@@ -1301,3 +1301,13 @@ html:is(.et-plight,.et-jlight) body.hm:not(#_):not(#__):not(#___) main:not(#a1):
  .nx .nxm616 .nx-col a{padding:6px 22px 6px 10px}
  .nx .nxm616 .nxg6 a{padding:6px 10px}
 }
+/* Ch617 — pied de page reorganise autour des trois poles */
+.foot-col.fp617 h3::after{background:var(--c,var(--gold-l))!important}
+.foot-col .foot-sub{display:block;font-family:var(--fm);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(245,247,250,.55);margin:6px 0 8px}
+.foot-caps617{grid-column:1/-1;margin-top:6px}
+.foot-caps617 h3::after{background:linear-gradient(90deg,var(--green,#34D399),#96A2EC,#C4B5FD,#1FA496)!important;width:64px!important}
+.foot-col.fp617 a:not(.foot-pole):not(#_):not(#__){display:flex}
+footer .foot-caps617 .foot-poles:not(#_):not(#__){display:flex;flex-wrap:wrap;gap:8px 10px;margin-bottom:12px}
+.foot-caps617 .foot-svc617{display:flex;flex-wrap:wrap;gap:0 22px}
+.foot-caps617 .foot-svc617 a{margin-bottom:8px}
+html.et-plight .foot-col .foot-sub{color:rgba(18,29,49,.6)}
