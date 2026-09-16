@@ -24315,3 +24315,28 @@ le sommaire collant est une bande pleine, rien ne se lit a travers.
 les hubs : un second calque, `.subland`, porte la meme animation ; c est
 la liste des porteurs de l animation, pas la regle, qui l a montre.
 Trois fichiers.
+
+## 625 — Bilan de sante apres le site net
+
+**La demande** — « next » : deux chapitres (623, 624) viennent de
+changer le rendu de toutes les surfaces du site d un coup, par une
+feuille commune. Avant d aller plus loin, verifier que rien n a casse,
+et verifier en particulier ce que le retrait du flou pouvait abimer : un
+texte pose sur une photographie, que le flou rendait lisible.
+
+**Le balayage** — 209 pages (200 FR et EN, 8 arabes, la 404), trois
+passes : sombre a 1 440, sombre a 390, clair a 1 440. **627 rendus,
+0 erreur console, 0 erreur de page, 0 reponse 400 ou plus, 0
+debordement horizontal.** Recherche des textes sur image : dans `main`,
+tout element de plus de 20 000 px carres portant une image de fond
+(`url(...)`) ou une image, et plus de vingt caracteres de texte —
+**aucun** sur les 209 pages, dans les deux themes. Le site n a plus de
+texte sur photographie depuis le 573 ; le flou ne protegeait donc rien.
+
+**Aucun fichier du site ne change dans ce chapitre** : seul le journal.
+
+**Ce qui reste** — les decisions d identite deja notees (theme clair
+par defaut, police de titre, sept phrases longues) ; et une question que
+le site net pose au proprietaire : la barre de navigation garde son
+verre (10 px de flou, .93 d opacite) — si elle aussi lui parait floue,
+elle peut passer en aplat.
