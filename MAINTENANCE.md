@@ -23905,3 +23905,96 @@ a deux arguments refuse (un seul objet).
 organisation par sections ; le fil d Ariane des pages petrochimie dit
 encore « Petrochimie » et non « Aval → Petrochimie ». Perimetre choisi
 (navigation seulement) : a rouvrir si le proprietaire veut aller plus loin.
+
+## 617 — La reorganisation poussee au pied de page, au plan du site, aux carnets et au fil d Ariane
+
+**La demande** — « oui pousser » : le 616 avait limite la reorganisation au
+menu. Ce chapitre l etend a tout ce qui organise encore le site : le pied de
+page des 197 pages, le plan du site, le carnet des carnets, et le fil
+d Ariane des pages petrochimie. Toujours sans toucher aux adresses.
+
+**Le pied de page** — avant : quatre colonnes de meme poids (La chaine &
+capacites avec huit pastilles, Clients & innovation, Societe, Durabilite &
+investisseurs), identiques sur 197 pages, plus une vieille variante sur les
+deux brochures (ancres de l ancienne mise en page). Apres, sur les 199 :
+quatre colonnes **Amont · Intermediaire · Aval · Societe & investisseurs**,
+chaque pole avec son point de couleur et son filet colore (7, 5, 6 + 3
+liens) ; la petrochimie est un sous-groupe de la colonne Aval, avec sa propre
+etiquette rose ; puis une rangee pleine largeur « Capacites integrees &
+services » : les quatre pastilles (GreenTech, TchadiTech, Tchaditude,
+EnerConseils) et dix liens de service (clients, solutions, achats,
+innovation, atlas, outils, configurateur, carnets, communiques, presse).
+Aucun lien de l ancien pied de page n est perdu : les 24 destinations
+d avant sont toutes dans le nouveau, qui en compte 41. Genere par
+`a617/foot617.py` (remplace le bloc des colonnes de `.foot-grid`,
+idempotent, FR et EN detectes par `lang`). Les brochures perdent leur
+variante : elles portent le pied de page du site.
+
+**Le plan du site** — la colonne « Nos poles » passe en pleine largeur et
+etale les trois poles cote a cote ; sous Aval, la petrochimie est un
+sous-groupe « prolongement de l Aval » ; sous chaque pole, un groupe
+« Carnets · pole » liste les carnets qui lui appartiennent (12 Amont, 9
+Intermediaire, 8 Aval), lie a la page des carnets deja filtree
+(`/carnets#rub=amont`). La section « Recits & medias » ne garde que le
+lien vers tous les carnets, les trois carnets transversaux (premiere du
+genre, rente partagee, former avant d extraire), la brochure, les
+communiques et la presse. 178 destinations avant, 181 apres (les trois
+filtres), rien de perdu. Meme chose en anglais.
+
+**Les carnets** — la page des carnets filtrait par rubrique en cherchant le
+nom du pole dans le texte de la rubrique : « Amont » ne trouvait que trois
+carnets sur douze, « Intermediaire » quatre sur neuf. Chaque carte porte
+desormais son pole (`data-pole`, 13 Amont dont la une, 9 Intermediaire,
+8 Aval, 4 Societe) et un point de couleur devant sa rubrique ; les quatre
+premiers filtres sont les poles, colores, puis viennent les rubriques
+(sans les doublons Amont, Intermediaire, Aval qui existaient dans les
+rubriques). Le filtre « Petrochimie » disparait au profit d Aval. Les
+ancres `#rub=amont|inter|aval|soc` sont celles du plan du site. La table
+d affectation est dans `a617/poles617.py`, partagee par les deux
+generateurs.
+
+**Le fil d Ariane** — les neuf pages petrochimie (quatre FR, quatre EN, le
+hub FR) et le hub EN disaient « Accueil → Petrochimie → page ». Elles
+disent « Accueil → Aval → Petrochimie → page », dans le HTML et dans le
+BreadcrumbList JSON-LD (positions renumerotees). Le kicker du hub disait
+deja « Aval · Extension chimie ».
+
+**CSS** — bloc 617 dans `nav_a.css` : filet du titre a la couleur du pole,
+etiquette `.foot-sub`, rangee `.foot-caps617` sur toute la grille,
+pastilles en ligne. Deux regles a specificite montee : les liens des
+colonnes en `display:flex` (une regle du 5xx les mettait en
+`inline-flex` pour la cible tactile de 24 px, et deux liens courts se
+mettaient cote a cote : « La Societe Gouvernance ») ; les pastilles en
+`flex` (la regle du 531 les mettait en grille de deux colonnes, ce qui
+donnait deux pastilles par rangee sur 1 200 px). `sw.js` passe a
+et-202609170500.
+
+**Mon erreur** — trois fois la meme lecon, la grille d un autre chapitre.
+La regle du 611 (`.sm-grid:not(#_g)>*{grid-column:span 4}`) battait mon
+`grid-column:1/-1` sur la colonne des poles : la colonne restait a 213 px
+et les trois poles s empilaient sur 3 766 px de haut. Mesure avant de
+conclure ; regle reecrite a une specificite superieure. Le generateur du
+fil d Ariane a d abord suppose l etiquette « Accueil » sur les pages EN
+(« Home ») et a ecrit le JSON-LD sans le fil sur quatre pages ; dossier
+remis par `git archive`, generateur reecrit sur le premier maillon quel
+qu il soit. Le JSON-LD du hub EN est ecrit avec des espaces, le motif
+compact ne le voyait pas.
+
+**Verification (local)** — dix pages temoins a 1 440 et 390 : 6 enfants
+dans `.foot-grid` (brand + 4 colonnes + rangee), rangee sur toute la
+largeur (1 192 px sur 1 192 a 1 440, 344 sur 344 a 390), 0 lien hors
+ecran, 0 debordement horizontal ; colonnes 7/5/9/10 liens, un par ligne ;
+filtres des carnets : Amont 12, Intermediaire 9, Aval 8, Societe 4,
+`#rub=inter` a l ouverture selectionne Midstream en EN et montre 9 ; plan
+du site : colonne des poles 952 px, trois poles cote a cote (1 223 / 835 /
+1 105 px de haut), empiles a 390 ; fils d Ariane FR et EN ; 282
+destinations distinctes dans les pieds de page, plans et carnets, toutes
+sur le disque sauf les deux redirections vercel. 0 erreur console.
+Balayage des 200 pages FR et EN a 1 440 : 197 portent les quatre colonnes
+et la rangee (les trois sans `.foot-grid` sont le configurateur et les deux
+pages « toute la chaine », inchangees), 0 erreur console, 0 erreur de page,
+0 reponse 400 ou plus, 0 debordement.
+
+**Ce qui reste** — la page des carnets garde son ordre chronologique
+(le filtre fait le classement par pole) ; les hubs de pole n affichent pas
+encore leurs carnets ; le mini-site arabe garde sa barre propre.
