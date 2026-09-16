@@ -24274,3 +24274,44 @@ trop de flou a recalculer — qui explique a la fois mes captures et
 l experience du proprietaire. Les premieres regles sur la barre de
 navigation ne faisaient rien : les regles en face portent six
 identifiants, les miennes en portaient quatre ; passees a huit.
+
+## 624 — Le site net
+
+**La demande** — « next » apres la home nette (623) : les 199 autres
+pages ont les memes mecanismes de flou, et le proprietaire qui trouvait
+la home floue les retrouverait sur la page suivante.
+
+**Le releve, sur les 200 pages FR et EN en sombre** — 286 familles de
+surfaces qui floutent leur fond dans le contenu (cartes de toutes
+sortes, 138 sections entieres sans aucun fond, l en-tete des 72 pages
+hub et sous-pages, les sous-navigations) ; 3 138 ombres portees de
+texte (871 h2, 827 h3, 189 liens, 97 paragraphes) ; trois animations
+ambiantes infinies : aurora sur 61 pages, champ du heros sur 32, derive
+du fond sur les 200 (plus son double `.subland` sur les hubs). Exemples :
+societe 61 surfaces floutees et 41 ombres, investisseurs 62 et 60,
+carnets 72 et 50, le hub Amont 48 et 31.
+
+**Ce qui est fait** — bloc 624 dans `nav_a.css`, sur tout le site :
+plus aucune surface de `main`, de l en-tete de page ou du heros ne
+floute son fond (leurs fonds a .66 tiennent seuls sur le champ, qui ne
+bouge plus) ; plus aucune ombre portee de texte dans le contenu ; les
+calques ambiants figes (diapo, aurora a 48 px, prem-mesh, rootland,
+subland). Et 624-2 : les barres collantes du contenu (sommaires `nav.toc`
+et `#inv-toc`, `corp-nav`, `mkt-nav`, `pole-subnav`, `plnav`) et le
+bandeau cookies vivaient du flou — sans lui, a .4 ou .8, le texte qui
+defile se lisait a travers, exactement les « bandes qui se chevauchent »
+du proprietaire : passees a .95 en sombre et .96 en clair. La barre de
+navigation garde le verre du 623-3. `sw.js` passe a et-202609170700.
+
+**Mesure apres** — 40 pages sur 200 (une sur cinq), deux themes : 0
+surface floutee dans le contenu, 0 ombre de texte, 0 debordement, 0
+erreur console. Six pages temoins en detail (societe, investisseurs,
+carnets, hub Amont, forage, hub Aval EN) : 0 et 0, aucune animation
+infinie de plus de 200 px hors le slogan des hubs. Captures d
+investisseurs et societe regardees en sombre : les cartes sont nettes,
+le sommaire collant est une bande pleine, rien ne se lit a travers.
+
+**Mon erreur** — apres la premiere passe, la derive tournait encore sur
+les hubs : un second calque, `.subland`, porte la meme animation ; c est
+la liste des porteurs de l animation, pas la regle, qui l a montre.
+Trois fichiers.
