@@ -23198,3 +23198,62 @@ operationnelle ; completer les cinq sujets qui n ont que des carnets.
 
 Dossier publie en artefact (« Chaine du baril »). Aucun fichier du site
 modifie ; seul le journal est publie.
+
+## 602 — Quatre pages de metier : Traitement primaire, Forage, Collecte, Commercialisation
+
+**La demande** — « Continue avec tes recommandations ». Ce chapitre applique les
+deux premieres de l audit 601 : ecrire les deux etapes absentes de la chaine et
+donner une adresse aux deux qui n avaient que des sections.
+
+**Ce qui a ete ecrit** — huit pages, quatre en francais et leurs jumelles
+anglaises, construites sur la coquille d une page soeur du meme pole (en-tete,
+navigation, fil de chaine, sous-navigation de pole, pied de page) et un corps
+neuf : accroche, trois reperes chiffres, cinq sections — ce que c est, les
+etapes dans l ordre du flux, ce que cela veut dire au Tchad, ce que nous
+mettons en oeuvre, reperes — et une rangee « lire ensuite » vers les carnets
+qui portaient deja le sujet.
+
+· `amont/traitement` — Traitement primaire : separation triphasique,
+  chauffage et deshydratation, dessalage, stabilisation, comptage fiscal ;
+  bruts lourds et acides de Doba (21 a 24° API, acides naphteniques), eau de
+  production, gaz associe et zero torchage de routine ; cibles BS&W, sels, RVP.
+· `amont/forage` — Forage & completion : wellpad, forage directionnel a trois
+  cibles, tubage et cimentation, completion et choix du levage artificiel,
+  interventions sur puits (wireline, coiled tubing, workover).
+· `intermediaire/collecte` — Collecte : flowlines, manifolds, separateur de
+  test, comptage d entree et bilan de masse, racleurs, detection de fuite ;
+  reprise des reseaux vieillissants sur les blocs marginaux.
+· `aval/commercialisation` — Commercialisation : le marche administre (ARSAT),
+  quatre segments (pompe, industrie et flottes, aviation, GPL), negoce et
+  approvisionnement, marques EnerClub, EnerPro, NRJ+.
+
+Les chiffres sont des ordres de grandeur du secteur, presentes comme tels ; la
+societe est en constitution et le texte le dit la ou il le faut. Les faits
+tchadiens reprennent ceux deja publies sur le site (gravite des bruts de Doba,
+corridor de 1 070 km, zero torchage, ARSAT).
+
+**Ce qui a ete relie** — la sous-navigation des trois poles porte les nouvelles
+pages sur 28 pages existantes ; le plan du site (FR et EN) et `sitemap.xml`
+(188 vers 196 URL) les recensent ; les nouvelles pages se lient entre elles et
+vers les pages soeurs. Le menu principal n est pas touche : il vit dans les 191
+pages et merite un chapitre a lui.
+
+**Mon erreur — la sous-navigation des autres poles.** L insertion se faisait
+apres l entree « Vue d ensemble » ; cette entree existe dans les quatre poles,
+et Collecte s est retrouvee dans la sous-navigation de l Amont, de l Aval et de
+la Petrochimie — 48 insertions de trop. Attrape en comptant les insertions par
+page (28 pour un pole de quatre pages, impossible) avant de publier ; retirees
+en ne gardant que les pages dont l en-tete de sous-navigation dit
+Intermediaire ou Midstream. Le compteur est un test.
+
+**Verifie** — les huit pages, deux themes : 0 texte sous le seuil de contraste
+(74 a 87 elements par page), 0 defilement horizontal, sous-navigation avec
+entree active, 12 a 16 liens internes par page, 0 lien casse, 0 erreur
+console, 0 reponse 400 ou plus. Marqueur negatif : les 28 pages modifiees ne
+different de l etat publie que par la ligne de sous-navigation (diff de 2 ou 3
+lignes ajoutees, 1 retiree, sur chacune). Re-mesure de la chaine du 601 : les
+quatre etapes passent de « section » ou « mentions » a « page ».
+
+**Ce qui vient ensuite** — la proposition 3 : reordonner les trois hubs selon
+la chaine ; puis Intermediaire = Midstream, l organigramme, et les cinq sujets
+en carnets seuls. Aucun actif modifie, pas de bump du service worker.
