@@ -24131,3 +24131,42 @@ Le `right:0` visait le bord du rembourrage de la grille (56 px), pas son
 bord interieur : `right` en clamp sur le rembourrage.
 
 **Aucun asset** — SW inchange (et-202609170500). Sept fichiers.
+
+## 621 — Un symbole du metier par sous-page de pole
+
+**La demande** — « next all » : apres la home (619) et les hubs (620),
+les sous-pages des poles, et la petrochimie avec elles.
+
+**Ce qui est fait** — 50 pages (24 sous-pages FR et EN des trois poles,
+les quatre pages petrochimie FR et EN, le hub petrochimie FR et EN)
+recoivent dans l en-tete, a la place et a la taille du 620 (bord
+interieur droit, 300 px au plus, opacite .2, entree en glissant, cachee
+sous 1 181 px), un ou deux symboles choisis pour la page. Les traits du
+619 sont repris tels quels (`a621/sym621.py` recharge les groupes de
+`sym619.py`) et cinq symboles nouveaux s y ajoutent : l anticlinal
+(trois strates bombees, la lentille d huile piegee, le puits qui la
+perce) pour les reserves ; le camion-citerne pour le parc, la logistique
+et la distribution ; le fut pour les lubrifiants, l eau de production et
+les produits ; l auvent de station au-dessus du distributeur pour le
+reseau ; la molecule (hexagone, cercle, six liaisons) pour la
+petrochimie, avec le reacteur a double enveloppe et agitateur pour le
+complexe. La table page → symboles est dans le generateur : derrick
+(activites, forage), tete de puits (services parapetroliers ; avec le
+separateur pour le developpement ; avec le tube et sa vanne pour la
+collecte), separateur (traitement), chevalet (EOR ; avec la molecule
+pour la chimie EOR), racleur et compteur sur le tube (integrite),
+reservoir (sites), colonne (raffinage ; avec le fut pour les produits),
+distributeur (commercialisation), spheres (GPL). Les deux pages de la
+boutique gardent leur en-tete propre, qui n est pas celui des poles.
+
+**Mesure** — 50 pages, 1 440 et 1 240, animation laissee finir : 50 sur
+50 avec le symbole affiche a .2, 0 boite de contenu touchee (cartes,
+boutons, titre, chapeau, encadre, noeuds, paragraphes), 0 erreur
+console ; deux pages regardees en capture (reseau, produits
+petrochimiques EN). Le premier controle a 1,25 s comptait 40 pages
+« fautives » : c etait l animation d entree (1,1 s plus 0,15 s de
+delai) pas encore finie sur les pages lentes a charger ; attendre 2 s a
+tout remis a zero. La molecule, seul symbole sans sol, flottait sous la
+ligne de sol : relevee de 64 unites.
+
+**Aucun asset** — SW inchange (et-202609170500). 51 fichiers.
