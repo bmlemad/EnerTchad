@@ -24739,3 +24739,59 @@ erreur console, 0 debordement ; les sept bassins restent cliquables et
 le panneau change au survol (Doba, Doseo verifies en FR et en EN) ;
 captures regardees. Generateur idempotent. Aucun asset, SW inchange.
 Trois fichiers.
+
+## 634 — Le cadastre remplace les bassins sur la home
+
+**La consigne** — « Remplace la carte de la home avec la carte du
+cadastre ».
+
+**MESURE AVANT DE COPIER** — la carte du cadastre de l Atlas porte
+25 etiquettes de bloc a 7,5 px, dessinees pour une largeur de 452 px.
+A la largeur de la home (305 px apres le 633) elles tombaient a 5,7 px,
+6,5 px sur telephone : illisibles. Copier le dessin tel quel aurait
+donne une carte muette.
+
+**FAIT** — le dessin de l Atlas est repris, moins ce qui ne survit pas a
+la reduction : les 25 etiquettes de bloc et le pied de carte (8 px)
+partent, le viewBox se resserre d autant (470 a 442). Les 44 blocs
+restent, avec leur couleur de statut et surtout leur infobulle : chaque
+rectangle portait deja son nom et son statut (« DJADO I · libre · ouvert
+a l attribution »), et c est le panneau de droite qui les affiche
+maintenant, au survol ou au toucher. Le nom de la capitale et la rose des
+vents remontent a 14 et 12 px pour rester lisibles a cette echelle. La
+colonne de la carte passe de 330 a 430 px : le cadastre est presque
+carre la ou les bassins etaient etroits et hauts.
+
+**Le texte suit la carte** — mot-cle « Le cadastre », titre « Le
+cadastre petrolier 2025, en un regard », panneau par defaut « 44 blocs,
+la moitie ouverte » avec les chiffres 26 libres, 11 attribues, 2 en
+production ; legende a quatre statuts avec ses pastilles ; source
+ministerielle et renvoi vers l Atlas. FR et EN, chacun avec les
+infobulles de sa langue.
+
+**MON ERREUR, TROIS FOIS** — 1. la page anglaise affichait les
+infobulles francaises : je lisais le dessin dans atlas.html pour les deux
+langues, il fallait atlas-en.html pour l anglais. 2. en elargissant la
+colonne de la carte, j ai ecrase la regle du 633 qui empile les colonnes
+sous 820 px : la carte est tombee a 280 px sur telephone et la section a
+regagne 200 px ; regle d empilement replacee apres. 3. la legende a
+d abord perdu ses pastilles de couleur : mon filtre de reprise du style
+ne gardait que les selecteurs du dessin, pas ceux de la legende.
+Chaque fois, c est la mesure ou la capture qui l a montre.
+
+**UN CHOIX D ACCESSIBILITE** — les 44 blocs ne prennent pas le focus
+clavier : 44 arrets sur la page d accueil pour une carte de vitrine,
+c est trop. Ils restent survolables et cliquables, le panneau par defaut
+porte les chiffres, l aria-label du dessin decrit le cadastre, et
+l Atlas garde la version filtrable et navigable.
+
+**VERIFIE (local)** — home FR et EN, deux themes, 1 440 et 390 : 44
+blocs (26 libres, 11 attribues, 5 en changement, 2 en production), la
+plus petite ecriture du dessin a 12 px, le panneau qui change au survol
+dans la bonne langue, 0 erreur console, 0 debordement ; section a 42 %
+de la page, 740 px de haut ; captures des deux themes et du telephone
+regardees. Aucun asset, SW inchange. Trois fichiers.
+
+**RESTE** — la home prend la silhouette du cadastre, qui n est pas celle
+des onze autres cartes du site : le recalage des 44 blocs sur la
+silhouette commune reste a faire, avec sa propre passe de mesure.
