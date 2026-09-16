@@ -23294,3 +23294,46 @@ worker.
 
 **Ce qui vient ensuite** — l organigramme sur Gouvernance, puis les cinq
 sujets qui n ont que des carnets.
+
+## 604 — L organigramme de principe, sur Gouvernance
+
+**La demande** — « Next » : la proposition 5 de l audit 601, poser la direction
+operationnelle.
+
+**Ce qui a ete fait** — Une section `#organisation`, numerotee 08, inseree
+entre « Organes de gouvernance » et « Comites & documents » (qui passe de 08 a
+09), en francais et en anglais. Un arbre a trois niveaux : la direction
+generale, qui rend compte au Conseil ; **trois directions generales adjointes,
+une par pole de coeur** — Amont, Intermediaire · Midstream, Aval —, chacune
+avec ses departements dans le vocabulaire de l organigramme du proprietaire
+(exploration, developpement, forage et completion, production, artificial
+lift, maintenance et HSE ; transport, stockage, logistique, trading et supply ;
+raffinage, distribution, marketing et ventes, GPL et gaz, lubrifiants et
+produits speciaux, la Petrochimie comme prolongement de l Aval) ; et **trois
+directions transversales** — Ingenierie & Projets, Support Corporate, Strategie
+& Performance — ou les quatre capacites du site trouvent leur place :
+GreenTech sous innovation et transition, Tchaditude sous formation, TchadiTech
+sous systemes d information, EnerConseils sous economie et marches.
+
+Aucun nom : la page dit deja que les titulaires seront annonces a la
+formalisation des organes, et le bloc le redit. Une note precise que les DGA
+sont crees au fil de la montee en puissance, la premiere a l ouverture
+commerciale de l Aval — c est un organigramme-cible, pas un etat.
+
+**Mon erreur — l instrument, encore.** En theme clair, ma sonde de contraste a
+declare les 78 textes du bloc sous le seuil. Cause : la regle generale du theme
+clair retire le fond des `div` de `main`, la boite est transparente, et ma
+sonde prenait alors comme fond la valeur de repli — le marine du theme sombre.
+Le texte est `#10161F` et `#2A3648` sur la page creme : lisible, verifie a la
+capture. Une sonde qui a besoin d une valeur de repli doit dire quand elle
+l utilise ; celle-ci ne le disait pas.
+
+**Verifie** — deux pages, 1 440 px sombre et clair, 390 px sombre : sept
+boites, 78 textes, 0 sous le seuil en sombre (le clair, voir ci-dessus), 0
+rognage, 0 defilement horizontal, 10 liens internes, 0 casse, 0 erreur
+console ; la section 09 renumerotee sur les deux pages. Deux pages et le
+journal ; aucun actif.
+
+**Ce qui vient ensuite** — les cinq sujets qui n ont que des carnets : reserves
+et certification, developpement de champ, eau de production, GPL, lubrifiants
+et bitume.
