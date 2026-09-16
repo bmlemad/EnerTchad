@@ -1281,3 +1281,23 @@ html:is(.et-plight,.et-jlight) body.hm:not(#_):not(#__):not(#___) main:not(#a1):
 :where(h2){font-size:var(--ts-4,clamp(1.55rem,3.4vw,2.35rem))}
 :where(h3){font-size:var(--ts-6,clamp(1.2rem,2.5vw,1.8rem))}
 :where(h4){font-size:var(--ts-8,clamp(1rem,1.8vw,1.25rem))}
+
+/* ---------- Ch616 : le site reorganise autour des trois poles ----------
+   La barre porte trois entrees principales — Amont, Intermediaire, Aval, chacune avec sa pastille
+   de couleur et son panneau de trois colonnes (les pages du pole, ses reperes et ses carnets, la
+   petrochimie sous l Aval) et une rangee basse commune aux trois : les capacites integrees.
+   Societe et Investisseurs restent accessibles comme entrees secondaires, poussees a droite. */
+.nxdot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--c,#E8C36A);margin-right:7px;vertical-align:1px}
+@media(min-width:1241px){
+ .nav-item.nx-sec1{margin-left:auto}
+ .nav-item.nx-sec .nav-trigger:not(#_a){font-weight:500;opacity:.86;font-size:.92em}
+ .nav-item.nx-sec .nav-trigger:not(#_a):hover,.nav-item.nx-sec .nav-trigger.is-active:not(#_a){opacity:1}
+ .nx .nx-mega.nxm616:not(#_x):not(#_y){left:0;right:auto;width:min(920px,calc(100vw - 32px));min-width:0;max-width:none;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px 22px;align-items:start}
+ .nav-item.nx-item:nth-child(3) .nx-mega.nxm616:not(#_x):not(#_y){left:auto;right:auto;translate:-30% 0}
+ .nxm616 .nxc-caps{grid-column:1/-1;border-top:1px solid var(--hair,rgba(255,255,255,.12));margin-top:6px;padding-top:8px}
+ .nxm616 .nxg6{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));column-gap:10px}
+ .nx .nxm616 .nx-col a strong{font-size:.88rem;line-height:1.25}
+ .nx .nxm616 .nx-col a em{font-size:.72rem;line-height:1.3}
+ .nx .nxm616 .nx-col a{padding:6px 22px 6px 10px}
+ .nx .nxm616 .nxg6 a{padding:6px 10px}
+}
