@@ -23998,3 +23998,44 @@ pages « toute la chaine », inchangees), 0 erreur console, 0 erreur de page,
 **Ce qui reste** — la page des carnets garde son ordre chronologique
 (le filtre fait le classement par pole) ; les hubs de pole n affichent pas
 encore leurs carnets ; le mini-site arabe garde sa barre propre.
+
+## 618 — Le fil d Ariane des donnees structurees remis d equerre
+
+**La demande** — « next » : le 617 avait trouve en passant que des
+BreadcrumbList JSON-LD ne disaient pas la meme chose que le fil d Ariane
+visible.
+
+**Le releve** — 138 pages portent un fil d Ariane visible et un
+BreadcrumbList ; 62 n ont pas de fil (accueil, pages de societe, hubs de
+capacite, outils). Sur les 138, 47 concordaient, **91 non**. Trois
+familles. Les copies d une autre page, les plus graves parce qu elles
+mentent a Google sur la page elle-meme : forage, reserves, eau,
+developpement et traitement (FR et EN) se declaraient « Recuperation
+assistee (EOR) » ; commercialisation, GPL et lubrifiants (FR et EN) se
+declaraient « Modele de distribution » ; collecte (FR et EN) se declarait
+« Integrite & exploitation » ; services-ep-en disait « Amont » au lieu de
+« Upstream » et pointait /amont/ ; les hubs EN pointaient /aval/ au lieu
+de /pole-aval-en ; la boutique sautait le niveau Aval. Les titres longs :
+les 32 carnets FR et EN portaient le titre complet du carnet (avec le
+sous-titre apres les deux points, parfois un point final) la ou le fil
+montre le titre court ; les carnets EN disaient « Stories » la ou le fil
+dit « Notebooks ». Les etiquettes de hub : « Conseil » pour « Conseil
+(EnerConseils) », « Technologies » pour « Technologies (TchadiTech) »,
+« Petrochimie · chimie » pour « Petrochimie · Chimie ».
+
+**La regle** — le fil visible est la verite ; le JSON-LD se genere
+depuis lui, jamais a la main. `a618/ld618.py` lit `nav.crumb` (liens et
+dernier `span`), construit la liste (nom, item = domaine + href, position
+renumerotee), garde l URL de la page sur le dernier maillon seulement
+quand l ancienne la portait et qu elle est bien la sienne, et reecrit le
+bloc si les noms ou les URL different. 91 pages reecrites ; second passage
+0 ; les 668 blocs ld+json du site se lisent tous en JSON.
+
+**Verification (local)** — six pages temoins des trois familles : noms du
+JSON-LD identiques au fil visible, 0 erreur console. Aucun asset ne
+change : SW inchange (et-202609170500).
+
+**Ce qui reste** — les 62 pages sans fil d Ariane visible n ont pas de
+BreadcrumbList non plus, ce qui est coherent ; le mot anglais pour les
+carnets varie encore entre « Notebooks » (fil), « Journal » (menu) et
+« Stories » (ancien JSON-LD) : a trancher par le proprietaire.
