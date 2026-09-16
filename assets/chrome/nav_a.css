@@ -1353,3 +1353,18 @@ html:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6):not(#a7):not(#a8):not
    sans lui, a .4 ou .8 d opacite, le texte qui defile se lisait a travers. Presque opaques. */
 html:not(.et-plight):not(.et-jlight) :is(nav.toc,nav.corp-nav,nav#inv-toc,nav.mkt-nav,nav.pole-subnav,nav.plnav,div#ckn):not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6):not(#a7):not(#a8):not(#a9):not(#a10):not(#a11){background:rgba(6,20,36,.95)!important}
 html:is(.et-plight,.et-jlight) :is(nav.toc,nav.corp-nav,nav#inv-toc,nav.mkt-nav,nav.pole-subnav,nav.plnav,div#ckn):not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6):not(#a7):not(#a8):not(#a9):not(#a10):not(#a11){background:rgba(251,248,242,.96)!important}
+
+/* ---------- Ch627 : la nomenclature des poles dans la barre ----------
+   Trois libelles longs (Exploration & Production, Transport & stockage, Raffinage & distribution ;
+   Transport & Storage, Refining & Distribution) : une seule ligne a 13,5 px au lieu de deux lignes
+   dans des pastilles de 50 px ; de 1 241 a 1 420 px, 13 px et rembourrages serres pour tenir
+   jusqu au burger (1 240). Mesure : FR 1 241 px, loupe a 1 217 pour un bord a 1 223. */
+@media(min-width:1241px){
+#navLinks .nxi616 .nav-trigger:not(#z1):not(#z2):not(#z3):not(#z4):not(#z5):not(#z6):not(#z7):not(#z8),#navLinks .nx-sec .nav-trigger:not(#z1):not(#z2):not(#z3):not(#z4):not(#z5):not(#z6):not(#z7):not(#z8){white-space:nowrap;font-size:13.5px;padding:6px 10px}
+#navLinks:not(#z1):not(#z2):not(#z3):not(#z4):not(#z5):not(#z6):not(#z7):not(#z8){gap:5px}
+}
+@media(min-width:1241px) and (max-width:1420px){
+.nav-in.nx-bar:not(#z1):not(#z2):not(#z3):not(#z4):not(#z5):not(#z6):not(#z7):not(#z8){padding-left:18px!important;padding-right:18px!important}
+#navLinks .nxi616 .nav-trigger:not(#z1):not(#z2):not(#z3):not(#z4):not(#z5):not(#z6):not(#z7):not(#z8),#navLinks .nx-sec .nav-trigger:not(#z1):not(#z2):not(#z3):not(#z4):not(#z5):not(#z6):not(#z7):not(#z8){font-size:13px;padding:6px 8px}
+#navLinks:not(#z1):not(#z2):not(#z3):not(#z4):not(#z5):not(#z6):not(#z7):not(#z8){gap:3px}
+}

@@ -158,10 +158,10 @@ document.querySelectorAll('.app-tab').forEach(t=>t.addEventListener('click',()=>
 
 // APP 1 : CHAIN throughput
 const CHAIN=[
-  {n:'Amont · production',v:144,max:250,c:'#2E86DE',u:'kb/j'},
-  {n:'Intermédiaire · pipeline',v:144,max:250,c:'#0EA5E9',u:'kb/j'},
-  {n:'Aval · raffinage Djermaya',v:20,max:40,c:'#B45309',u:'kb/j'},
-  {n:'Aval · réseau stations',v:12,max:20,c:'#F59E0B',u:'stations'},
+  {n:'E&P · production',v:144,max:250,c:'#2E86DE',u:'kb/j'},
+  {n:'Transport · pipeline',v:144,max:250,c:'#0EA5E9',u:'kb/j'},
+  {n:'Raffinage · Djermaya',v:20,max:40,c:'#B45309',u:'kb/j'},
+  {n:'Distribution · stations',v:12,max:20,c:'#F59E0B',u:'stations'},
 ];
 function drawChain(){
   const bars=document.getElementById('thrBars');
