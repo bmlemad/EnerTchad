@@ -24208,3 +24208,69 @@ reste : c est une etiquette de rubrique, pas le nom de la page. 0 lien
 vers /carnets-en ne porte plus le mot « journal ».
 
 **Aucun asset** — SW inchange (et-202609170500). 100 fichiers.
+
+## 623 — La home nette
+
+**La demande** — le proprietaire : « pourquoi la home est trop floue,
+les bandes, bandeaux ont l air d etre overlap, aider a rendre la home
+bien ». Regardee dans son navigateur, en theme sombre : la home est bien
+floue, et elle l est pour quatre raisons mesurees, pas une.
+
+**Le releve** — sur la home en sombre, page chargee : cinquante surfaces
+a `backdrop-filter` (les trois tuiles de pole de 1 088 x 450 px, le
+bandeau final de 1 200 x 228, les cartes de chiffres, de durabilite, de
+carnets, de communiques, d action, les trois tuiles du heros, la barre et
+ses panneaux) ; cinq calques plein ecran animes en continu derriere
+elles (le champ du heros `.diapo`, trois blobs `#aurora` de 52 vw a
+`filter:blur(70px)` en translation sur 26 a 38 s, `.prem-mesh`, la derive
+de `.rootland`) ; un canevas fixe `#uni540` (chapitre 540) qui redessine a
+30 images par seconde cinq flux de 30 px de large en composition additive
+et 54 particules — ce sont, litteralement, des bandes floues qui se
+deplacent derriere des tuiles translucides ; les sections en attente de
+« reveal » a `filter:blur(3px)` tant que l observateur ne les a pas vues
+(sur une machine chargee, longtemps, et la transition dure 0,75 s) ; et
+33 ombres portees de texte de 12 a 18 px de flou sous les titres et
+paragraphes du theme sombre. Chaque image affichee obligeait le
+navigateur a recalculer le flou de tous les calques en mouvement sous
+chaque surface : sur un ordinateur ordinaire, les tuiles s affichent
+vides et floues pendant le defilement, puis le texte arrive — ce que le
+proprietaire decrit. La barre de navigation, a .38 d opacite sur 20 px de
+flou, laissait lire le contenu qui defile derriere : la « bande qui en
+chevauche une autre ».
+
+**Ce qui est fait** — dans `nav_a.css`, bloc 623, accroche a `body.hm`
+pour les trois premiers points (les deux pages d accueil seulement) :
+1. aucune surface de `main` ni du heros ne floute son fond ; les onze
+familles de surfaces reprennent en opacite ce qu elles perdent en flou
+(sombre rgba(6,22,38,.74), clair rgba(255,255,255,.82)) ; 2. les calques
+ambiants sont figes : le champ reste, il ne derive plus, les blobs ne
+bougent plus (flou ramene a 48 px) ; 3. plus de reveal du tout sur la
+home (les sections sont la, nettes, des le chargement) et plus aucune
+ombre portee de texte ; sur tout le site, la part flou du reveal est
+retiree (`filter:none`), le fondu et la translation restent ; 4. la barre
+de navigation, une fois la page defilee, est presque opaque (sombre .93,
+clair .95, barre utilitaire .92 et .96) avec 10 px de flou au lieu de 20 ;
+en haut de page elle reste transparente sur le heros. Le canevas des flux
+est retire des deux pages d accueil (2 160 octets chacune). `sw.js` passe
+a et-202609170600.
+
+**Mesure apres** — home, sombre et clair, 1 512 x 805 : 0 surface de
+`main` ou du heros a backdrop-filter (50 avant), 0 ombre portee de texte
+(33 avant), 0 filtre de flou sur les sections (5 avant), 3 animations en
+cours au lieu de 9 (les trois frises du 619, qui ne jouent qu une fois),
+plus de canevas ; 0 erreur console, 0 debordement. Tuile de pole a
+rgba(6,22,38,.74) en sombre. Barre defilee a rgba(6,20,36,.93) et
+rgba(251,248,242,.95) ; en haut de page inchangee. Captures regardees en
+sombre et en clair a quatre positions de defilement : nettes. 29 pages
+sur 200 (une sur sept), deux themes, defilees : 0 erreur, 0 debordement.
+
+**Mon erreur** — mes captures de controle depuis l onglet du proprietaire
+montraient d abord des tuiles vides et floues, puis un ecran entierement
+sombre ; j ai failli conclure a un defaut de rendu du site alors que
+l onglet etait en arriere-plan et que le compositeur ne dessinait plus.
+C est la mesure des calques (cinquante flous, cinq animations, un
+canevas) qui a etabli le defaut reel, et c est le meme mecanisme —
+trop de flou a recalculer — qui explique a la fois mes captures et
+l experience du proprietaire. Les premieres regles sur la barre de
+navigation ne faisaient rien : les regles en face portent six
+identifiants, les miennes en portaient quatre ; passees a huit.
