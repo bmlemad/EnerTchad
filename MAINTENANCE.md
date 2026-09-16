@@ -23565,3 +23565,76 @@ chaque position.
 hubs francais (un composant, pas un doublon) ; les sept phrases longues ; le
 mini-site arabe hors perimetre. La brochure PDF de six pages, liee depuis le
 heros, n a pas ete relue.
+
+## 608 — La home refaite : le heros en deux colonnes, la chaine a droite
+
+**La demande** — « je te laisse me refaire la home avec ton analyse ». L analyse
+est celle de la revue de design du 15 septembre : la moitie droite du heros
+etait vide (le texte occupait 58 % de la largeur, rien en face, un reste des
+photographies retirees au 585) ; « Investir » apparaissait deux fois sur le
+premier ecran, en haut a droite et au centre, deux boutons dores en
+concurrence ; sur telephone, la commande de luminosite se posait sur la carte
+« A la une » ; et la proposition 05 laissait le sort de la moitie droite a
+l auteur — resserrer, y poser une figure, ou assumer le vide. Le choix est
+fait : une figure, la chaine.
+
+**Le releve, avant** — heros de 1 185 px a 1 440 x 900 : accroche, titre en
+deux lignes de 89,6 px, texte, deux boutons, la carte « A la une » (deux
+entrees), la rangee de puces Amont → Intermediaire → Aval → Petrochimie, puis
+la bande des trois reperes — le tout empile a gauche, la bande des reperes
+sous la ligne de flottaison (943 px). Les deux entrees « A la une » figurent
+deja, mot pour mot, dans la section carnets de la meme page : un doublon de
+plus, dans la ligne du 607.
+
+**Ce qui a ete fait** (FR et EN)
+
+1. **Le heros passe en grille de deux colonnes** : a gauche l accroche, le
+   titre, le texte et les boutons ; a droite une figure SVG de la chaine —
+   quatre noeuds en escalier montant, de la roche-mere (strates dessinees en
+   bas a gauche) a la pompe (colonne stylisee en haut a droite) : 01 Amont,
+   02 Intermediaire, 03 Aval, + Petrochimie, chacun avec un sous-titre de
+   trois verbes et un lien vers son hub, une molecule qui parcourt le trace
+   en neuf secondes (arretee a 62 % du chemin en mouvement reduit), un halo
+   au survol et au focus clavier. Sous 980 px la figure passe sous le texte.
+   La bande des trois reperes reste sous la grille, pleine largeur.
+2. **Le titre** : 89,6 px sur quatre lignes dans la colonne, c etait trop ;
+   la regle `.hero h1` en !important imposait le jeton --ts-0. Il passe a
+   clamp(2.6rem, 4.6vw, 3.9rem) — 62,4 px a 1 440, trois lignes equilibrees,
+   41,6 px a 390.
+3. **Les boutons** : « Explorer la chaine » (dore, vers #coeurs) et
+   « Souscrire au capital → » (contour, vers /investisseurs#souscrire). Le mot
+   « Investir » ne reste que dans la barre utilitaire, qui le porte sur toutes
+   les pages. Une seule action doree par ecran.
+4. **Retires** : la carte « A la une » (doublon de la section carnets, et
+   l element que la commande de luminosite recouvrait a 390 px) ; la rangee
+   de puces de la chaine (la figure la remplace, avec les memes quatre liens).
+5. **La bande des reperes** : « 10 M → 1 Md → 20 Md » se cassait sur deux
+   lignes a 1 440 (97 px de haut pour 49 aux deux autres) — c etait deja le
+   cas avant ce chapitre. Taille clamp(1.3rem, 2.05vw, 1.65rem) et
+   white-space nowrap : trois valeurs a 42 px.
+6. **La grille des communiques** (section carnets) : auto-fit sur 230 px
+   donnait quatre colonnes pour trois cartes a 1 440, la quatrieme vide — le
+   « trou » de la proposition 03. Trois colonnes a partir de 640 px, une en
+   dessous.
+
+**Resultat** — heros 1 185 vers 998 px a 1 440 x 900, bande des reperes
+visible des le premier ecran (772 px) ; 1 134 vers 899 a 1 024 ; 1 318 vers
+1 302 a 390. Colonne de texte 542 px, figure 490 x 361. Quatre liens de pole
+dans la figure, atteignables au clavier dans l ordre, focus visible (contour
+du noeud). Page : 7 912 px, 173 liens, 0 debordement, 0 ancre cassee,
+0 erreur console, 0 reponse 400 ou plus hors les deux redirections que le
+serveur local ignore. Grilles : 0 rangee orpheline (les trois `t550-p`
+signalees par la sonde sont des grilles a zones nommees, pas des rangees).
+
+**Mon erreur, la regle qui ne prenait pas** — ma premiere regle de taille du
+titre etait ecrite en specificite (1,2,0) sans !important ; `.hero h1` la
+battait avec un !important a (0,1,1). Vu au rendu (quatre lignes), confirme
+par CSS.getMatchedStylesForNode avant de corriger. Puis la regle des reperes,
+a specificite egale a celle de nh-css, avait ete inseree AVANT ce bloc : sans
+effet. Le bloc du chapitre est maintenant place apres nh-css, en fin de
+heros. Deux fois la meme lecon : demander au navigateur qui gagne.
+
+**Reste** — le texte de l accroche se casse sur deux lignes dans la colonne a
+1 440 (« N Djamena, Tchad » seul) ; les trois maillons de #coeurs, la carte,
+« agir » et « reperes » n ont pas ete touches ; la halo d ombre blanche du
+titre en clair vient d une regle generale du heros, hors chapitre.
