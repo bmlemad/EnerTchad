@@ -23787,3 +23787,39 @@ le pied de page : 52 px de depassement en francais, 11 en anglais, visibles a
 la mesure (distance du dernier bloc au pied) avant de l etre a l oeil. Page 3
 resserree (gouttiere 3,5 mm, cartes 3,6 mm) : 80 px de marge en francais,
 142 en anglais. Une page fixe se mesure, elle ne se regarde pas seulement.
+
+## 615 — Bilan de sante apres neuf chapitres, et le mini-site arabe examine
+
+**La demande** — « Next » : le dernier point du reste etait le mini-site arabe ;
+et neuf chapitres ont touche le site en une journee (606 a 614 : menu de 200
+pages, brochure, plan du site, home, boutons, coin flottant, 31 grilles,
+titres, PDF). Avant d aller plus loin, verifier que rien n a casse.
+
+**Le mini-site arabe** — huit pages (accueil, poles, amont, intermediaire,
+aval, societe, investisseurs, contact), `lang="ar" dir="rtl"`, Noto Sans
+Arabic, six feuilles communes, aucun menu principal (par construction : un
+site d une page par sujet, avec sa propre barre de cinq entrees). Contenu
+aligne sur l organisation actuelle : « ثلاثة أقطاب قلب — أربع قدرات مدمجة »
+(trois poles de coeur, quatre capacites integrees), la petrochimie nommee, les
+quatre capacites liees vers leurs hubs francais, 250 kb/j et 20 Md FCFA
+presents. 56 destinations internes distinctes, toutes existantes. 1 440 et
+390 : 0 erreur console, 0 erreur de page, 0 reponse 400 ou plus,
+0 debordement horizontal. Rien a corriger ; le mini-site n a pas besoin du
+menu a cinq colonnes ni de la brochure-digest, qui vivent en FR et EN.
+
+**La sante du site entier** — 209 pages (200 FR et EN, 8 arabes, la 404),
+deux largeurs, page defilee sur toute sa hauteur : 418 rendus, **0 erreur
+console, 0 erreur de page, 0 reponse 400 ou plus, 0 debordement
+horizontal**. 250 destinations internes distinctes collectees sur les 418
+rendus : 248 en 200 sur le serveur local, les deux restantes sont les
+redirections de vercel.json que le serveur local ignore — verifiees en
+production, 200 toutes les deux. Les regles a specificite nulle du 613 et
+les grilles du 611 n ont donc rien casse ailleurs.
+
+**Aucun fichier du site ne change dans ce chapitre** : seul le journal.
+
+**Ce qui reste, honnetement** — rien de la liste ouverte au 605. Les sujets
+qui restent sont des decisions du proprietaire, pas des corrections : le
+theme clair par defaut sans egard pour prefers-color-scheme ; les sept
+phrases longues des carnets (des enumerations) ; la police de titre, dont
+la revue de design disait qu elle est le trio par defaut de la moitie du web.
