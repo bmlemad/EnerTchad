@@ -24039,3 +24039,66 @@ change : SW inchange (et-202609170500).
 BreadcrumbList non plus, ce qui est coherent ; le mot anglais pour les
 carnets varie encore entre « Notebooks » (fil), « Journal » (menu) et
 « Stories » (ancien JSON-LD) : a trancher par le proprietaire.
+
+## 619 — Les symboles du metier au pied des trois tuiles de la home
+
+**La demande** — le proprietaire proposait les symboles de l industrie
+petroliere et gaziere en image de fond de la home. Avis donne : oui a
+l idee, non a l image en fond (contraste a re-voiler comme avant le 573,
+200 a 600 Ko de plus sur la page la plus visitee, seconde version pour le
+clair, effet papier peint). Contre-proposition acceptee : les memes
+symboles dessines en SVG, en filigrane, chacun a sa place dans la chaine.
+
+**Ce qui est fait** — trois frises de traits (2,4 px, arrondis, couleur
+du pole via `--pa`, `--pal` en clair) au pied des trois tuiles de
+`#coeurs`, sur index.html et index-en.html. Amont : chevalet de pompage,
+derrick a treillis avec moufle, tete de puits a trois vannes, separateur
+sur pieds avec manometre, deux strates de roche-mere ondulees sur toute
+la largeur. Intermediaire : le tube traverse toute la tuile depuis le
+bord gauche, vanne papillon (symbole P&ID), pompe centrifuge (cercle et
+triangle), racleur dans le tube, compteur, reservoir a toit bombe avec
+son escalier. Aval : colonne de distillation a plateaux et trois
+soutirages, deux spheres GPL sur pieds, distributeur de carburant avec
+son flexible et son pistolet, la route en pointilles sur toute la largeur.
+Une ligne de sol court d un bord a l autre de chaque tuile : la tuile
+« tient » sur l horizon de son metier. Le fichier `a619/sym619.py` compose
+chaque scene par groupes (chevalet, derrick, tete de puits, separateur)
+espaces de 110 unites et alignes a droite dans une boite de 2 500 x 440
+(`preserveAspectRatio="xMaxYMax meet"`), donc les elements gardent leurs
+proportions a toute largeur. Moins de 7 Ko pour les trois scenes, en
+ligne, pas une requete.
+
+**Placement** — la frise est un enfant absolu de la tuile `.t550-p`,
+z-index 0, bas a 8 px, 140 px de haut ; la tuile recoit 130 px de
+rembourrage bas en plus (regle a onze identifiants pour battre le 598),
+si bien que le texte, les boutons et les cartes de chiffres restent
+toujours au-dessus : ecart mesure entre le bas du contenu et le haut de
+la frise de 6 a 16 px selon la largeur, jamais de chevauchement (compte
+de 1 440 a 780). Opacite .2 en sombre, .22 en clair (couleur foncee du
+pole). Sous 760 px la frise disparait et le rembourrage revient a 20 px.
+Apparition au defilement par `animation-timeline: view()` (glissement de
+24 px et fondu sur les 60 % d entree), seulement si le navigateur le
+supporte et si le visiteur n a pas demande moins de mouvement ; sinon la
+frise est simplement la. Cout : les trois tuiles font 450 px au lieu de
+320 a 1 440, soit 390 px de page en plus.
+
+**Mon erreur, deux fois la meme** — j avais d abord mis les scenes dans
+`.t550-bg`, le calque de fond de chaque maillon : mesure 0 x 0, parce que
+le 598 le cache (`display:none` a dix identifiants). Puis a la racine du
+maillon, dans la « moitie libre » a droite du panneau : il n y a pas de
+moitie libre, le 598 a fait de chaque panneau une tuile pleine largeur
+(171 a 1 259 px), et la scene se retrouvait sous le texte, a gauche.
+Deux fois j ai dessine pour une mise en page qui n existait plus ; c est
+la mesure des rectangles (largeur 0, puis chevauchement 405 px) qui a
+corrige l idee, pas l intuition. La frise au pied de la tuile est nee de
+la, et elle est meilleure : le texte n est jamais dessus. Un detail
+d instrument aussi : un SVG absolu avec `left` et `right` mais
+`width:auto` garde sa largeur intrinseque (795 px, pas la largeur de la
+tuile) ; largeur ecrite en `calc(100% - 2 * marge)`.
+
+**Verification (local)** — index et index-en, deux themes, cinq largeurs
+(1 440, 1 240, 1 000, 900, 850, 780, 760, 390) : trois frises par page,
+1 014 px de large a 1 440, 0 chevauchement avec le contenu, cachees a 760
+et 390, 0 debordement horizontal, 0 erreur console ; captures des trois
+tuiles en sombre et en clair regardees. Aucun asset ne change : SW
+inchange (et-202609170500). Trois fichiers.
