@@ -481,7 +481,15 @@ html.et-plight .fil552 a.on{color:var(--fcl)}
 <a href="/petrochimie/" class="psn-link">Extension chimie</a>
 </div></nav>
 <link rel="stylesheet" href="/assets/chrome/s_fa541870c6.css">
-<header class="pghero" style="--pac:var(--amber-l);--pacl:#8A5A10">
+<style id="t621">/* Ch621 — un ou deux symboles du metier dans l en-tete de chaque sous-page de pole */
+header.pghero .pgh-grid{position:relative}
+header.pghero .pgh-main{position:relative;z-index:1}
+header.pghero>.wrap>.t621{position:absolute;right:clamp(24px,3.9vw,56px);top:50%;translate:0 -50%;width:min(22vw,300px);height:auto;color:var(--pac,#E8C36A);opacity:.2;pointer-events:none;z-index:0;overflow:visible}
+.t621 .t619-hair{stroke-width:1.2;opacity:.7}
+@media(max-width:1180px){header.pghero>.wrap>.t621{display:none}}
+@media(prefers-reduced-motion:no-preference){header.pghero>.wrap>.t621{animation:t621in 1.1s cubic-bezier(.2,.7,.2,1) both .15s}}
+@keyframes t621in{from{opacity:0;translate:28px -50%}}
+</style><header class="pghero" style="--pac:var(--amber-l);--pacl:#8A5A10">
 <div class="wrap pgh-grid"><div class="pgh-main">
 <nav class="crumb" aria-label="Fil d’Ariane"><a href="/">Accueil</a><span class="crumb-sep">›</span><a href="/aval/">Aval</a><span class="crumb-sep">›</span><span>Lubrifiants, bitumes &amp; produits spéciaux</span></nav>
 <span class="pgk">Aval · Produits spéciaux</span>
@@ -489,7 +497,7 @@ html.et-plight .fil552 a.on{color:var(--fcl)}
 <p class="pgl">Le carburant est un produit de volume à prix administré. Les lubrifiants, les bitumes et les solvants sont l’inverse : des volumes plus faibles, une valeur plus haute, un prix libre, une technicité qui fidélise. Ce sont les produits qui font durer les moteurs et tenir les routes — et qui donnent à l’Aval sa marge.</p>
 <div class="pgrule"></div>
 <div class="pgh-cta"><a class="pgh-btn" href="/contact">Nous contacter →</a><a class="pgh-btn2" href="#detail">Voir le détail ↓</a></div>
-</div><div class="pgh-art"><div class="pgh-frame"><span class="pgh-flabel"> · EnerTchad</span></div></div></div>
+</div><svg class="t621" viewBox="0 40 300 300" preserveAspectRatio="xMaxYMid meet" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path class="t619-hair" d="M0 300 H300"/><g transform="translate(20,0)"><path d="M60 300 H200"/><path d="M78 300 V170 M182 300 V170"/><path d="M78 170 Q130 150 182 170 M78 300 Q130 320 182 300"/><path d="M78 210 Q130 228 182 210 M78 258 Q130 276 182 258"/><circle cx="130" cy="176" r="6"/></g></svg><div class="pgh-art"><div class="pgh-frame"><span class="pgh-flabel"> · EnerTchad</span></div></div></div>
 </header>
 <style id="p602">
 .p602{max-width:var(--mw,1200px);margin:0 auto;padding:10px var(--gut,24px) 40px}
