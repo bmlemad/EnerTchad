@@ -24340,3 +24340,68 @@ par defaut, police de titre, sept phrases longues) ; et une question que
 le site net pose au proprietaire : la barre de navigation garde son
 verre (10 px de flou, .93 d opacite) — si elle aussi lui parait floue,
 elle peut passer en aplat.
+
+## 626 — Les domaines des poles face aux majors
+
+**La demande** — « Faire une meilleure reorganisation des domaines des
+poles versus les majeurs ». Deux questions posees : le perimetre
+(reponse : les grilles de domaines des trois hubs plus un tableau de
+correspondance) et les references (reponse : TotalEnergies, Shell,
+ExxonMobil, Chevron, Eni).
+
+**Les references, verifiees a la source** — segments publies en
+2025-2026 : TotalEnergies = Exploration & Production, Integrated LNG,
+Integrated Power, Refining & Chemicals, Marketing & Services (page des
+indicateurs) ; Shell = Integrated Gas, Upstream, Marketing, Chemicals &
+Products, Renewables & Energy Solutions ; ExxonMobil = Upstream, Product
+Solutions (Energy, Chemical, Specialty Products), Low Carbon Solutions
+(page des divisions) ; Chevron = Upstream et Downstream, deux segments
+seulement, le transport loge dans chacun et la chimie dans Downstream
+(10-Q, mars 2025) ; Eni = Exploration & Production, Global Gas & LNG
+Portfolio and Power, Enilive, Plenitude, Refining, Versalis (resultats
+T2 2026). Aucune major ne fait de la logistique un segment ; aucune
+n a le meme decoupage du gaz ; toutes separent raffinage-chimie de
+marketing-services.
+
+**Les grilles « Ce que nous mettons en oeuvre »** — avant : Amont en
+cinq cartes dont deux vers la meme page (Services OFS, Lignes de
+services) et aucune vers developpement, forage, traitement, reserves ;
+Intermediaire en quatre cartes dont « L approche » ; Aval en cinq.
+Apres, dans la nomenclature des majors et une carte par page du pole :
+Amont, sept cartes — Exploration & evaluation, Developpement de champ,
+Forage & completion, Production & traitement, Recuperation assistee,
+Services parapetroliers, Projets ; Intermediaire, six — Collecte &
+comptage, Transport & corridor d export, Stockage & reserve strategique,
+Integrite & exploitation, Atlas des actifs, Projets ; Aval, six —
+Raffinage, Produits & specialites, Marketing & services, Distribution &
+dernier kilometre, Petrochimie, Projets. Chaque carte porte un badge
+court (la page voisine ou le mot-cle : « + Reserves », « Wellpads ·
+FID », « Transfert de garde », « + GPL · Lubrifiants »), et une ligne
+d intro renvoie au tableau. FR et EN. 42 destinations, toutes existantes,
+ancres comprises (l Atlas des actifs pointe `sites#sites`, l ancre
+`#atlas` que j avais ecrite n existait pas — attrapee par le controle).
+
+**Le tableau « Nos domaines face aux majors »** — six familles de
+metier en lignes, les cinq majors en colonnes avec leur segment (ou
+« dans Upstream » en italique quand le metier n est pas un segment chez
+elles), et la colonne « Chez EnerTchad » qui dit, ligne a ligne, ou le
+metier se loge et pourquoi : Amont et Aval suivent le decoupage des
+majors ; la logistique est un pole a part entiere parce que le pays est
+enclave ; pas de segment gaz (traite dans l Amont, vendu en GPL dans
+l Aval) ; pas de segment energies nouvelles (GreenTech, capacite
+transversale). La ligne du pole courant est surlignee sur chaque hub.
+Note de source sous le tableau, et la reserve honnete : une societe en
+constitution n a pas de segments comptables, la correspondance decrit
+une organisation cible. Le tableau est aussi sur la page Toute la
+chaine (FR, EN), avant « Aller plus loin ». Sur telephone, il defile
+horizontalement dans son cadre (860 px minimum).
+
+**Verification (local)** — huit pages, deux themes, 1 440 et 390 : 7 / 6
+/ 6 cartes, 0 badge tronque (la premiere version en avait quatre :
+raccourcis), tableau de 6 lignes, ligne surlignee sur chaque hub (deux
+pour Amont et Aval, une pour Intermediaire), 0 defilement horizontal du
+tableau a 1 440 sur les hubs et sur Toute la chaine (la premiere version
+depassait de 56 px sur cette page : colonnes resserrees), 0 debordement
+de page, 0 erreur console ; captures regardees.
+
+**Aucun asset** — SW inchange (et-202609170700). Neuf fichiers.
