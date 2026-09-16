@@ -23158,3 +23158,43 @@ depuis longtemps.
 controle structurel avant/apres sur 41 pages, deux themes ; sante des 191
 pages ; marqueur negatif : la brochure en theme clair, identique avant et
 apres. Une feuille, deux pages, le service worker et le journal.
+
+## 601 — Audit d architecture : le baril, maillon par maillon, contre les majors
+
+**La demande** — QA des pages, sous-pages, sections et sujets versus les majors,
+et audit des grandes categories des poles petroliers. Le proprietaire a donne la
+grille : Amont = Exploration, Forage, Production, Traitement primaire ; Median =
+Collecte, Pipelines, Stockage, Transport ; Aval = Raffinage, Distribution,
+Commercialisation, Consommateur final — un DGA par pole.
+
+**Methode** — Releve automatique des 93 pages francaises (titre, h1, h2, mots du
+main, occurrences de vocabulaire par etape). Une etape est « page » si une page
+hors carnets la nomme dans son titre ou son h1, « section » si un h2 la nomme,
+« carnet » si seul un article la porte, « mention » sinon. Un premier scoreur
+par mots-cles donnait « page dediee » a presque tout — production, prix, site
+sont partout — ; il a ete remplace par la propriete de page. Les structures
+des majors ont ete lues sur leurs pages « what we do » (ExxonMobil, bp,
+Equinor ; TotalEnergies par sa page E&P ; Shell n a pas pu etre lue).
+
+**Ce que la grille montre** — 8 etapes sur 12 ont une page. Deux n existent
+pas : le **traitement primaire** (107 mentions sur 21 pages, jamais un titre)
+et la **collecte** (24 mentions sur 6 pages) — la charniere entre le puits et
+le tube. Le **forage** et la **commercialisation** n ont que des sections et
+des carnets. Les trois hubs de pole sont batis sur un gabarit editorial
+identique — « Ou se passe », « Ce que nous mettons en oeuvre », « Le probleme,
+la methode, les cas », « Quatre capacites » — et non sur la sequence du
+metier ; les majors font l inverse. Aucun directeur general adjoint n est
+nomme, pas d organigramme (0 occurrence ; 14 mentions de comites). Sur les 34
+categories des majors, transversales comprises, 27 ont une page ; les trous
+sont tous dans le metier : reserves et certification (absent), developpement
+de champ, eau de production, GPL, lubrifiants-bitume (carnets seuls),
+comptage et negoce (sections). Le site dit tres bien pourquoi EnerTchad, et
+incompletement comment on produit un baril.
+
+**Six propositions, par ordre** — ecrire Traitement primaire et Collecte ;
+donner une page au Forage et a la Commercialisation ; reordonner les hubs
+selon la chaine ; dire que Intermediaire = Midstream ; poser la direction
+operationnelle ; completer les cinq sujets qui n ont que des carnets.
+
+Dossier publie en artefact (« Chaine du baril »). Aucun fichier du site
+modifie ; seul le journal est publie.
