@@ -24614,3 +24614,89 @@ tableau des majors) n etait pas encore parti : Vercel ne redeploie pas de
 lui-meme a la levee de la limite, il faut un commit — celui-ci le fait.
 
 **Seul le journal change.** Aucun asset, SW inchange.
+
+## 631 — Un seul cadastre petrolier sur l Atlas
+
+**La demande** — « audit les cartes du site et si possible fusionner pour
+eviter des doublons, le plus important est le cadastre petrolier ».
+
+**L AUDIT DES CARTES** — 18 cartes du Tchad sur 12 pages, quatre
+silhouettes differentes du pays : la silhouette commune (12 cartes :
+atlas, home FR et EN, reseau x2, petrochimie, chimie EOR), celle de la
+carte du cadastre (cadmap, a elle seule), celle de cibles-2030 et celle
+des outils TchadiTech. Trois pages portent deux cartes du Tchad ou plus :
+l Atlas en avait trois, la page Reseau en a deux, la home une.
+
+**LE DOUBLON DU CADASTRE** — la page Atlas montrait le cadastre deux
+fois : `cmap` (« Cadastre petrolier du Tchad, edition 2025 », bassins
+nommes et chiffres, section Donnees du secteur) et `cadmap` (les blocs
+un par un, avec filtres attribues / libres / changement / production,
+section Cadastre & blocs). Deux dessins, deux silhouettes, la meme
+matiere ; et la geographie de `cmap` (bassins, villes, oleoduc) etait
+deja portee par la carte interactive placee juste au-dessus.
+
+**FAIT** — `cmap` retire (figure, feuille de style, legende). A sa place,
+la lecture chiffree du cadastre — 44 blocs, 11 attribues, 26 libres, 5 en
+changement, 2 concessions — et un renvoi vers la carte canonique
+(« Voir la carte du cadastre, bloc par bloc »), avec la source
+(cadastre minier numerique, Ministere du Petrole, des Mines et de la
+Geologie, donnee secteur 2025). Une seule carte de cadastre sur la page,
+celle qui porte les blocs.
+
+**LES COMPTES REMIS D ACCORD** — le dessin de `cadmap` porte 44 blocs
+(26 libres + 11 attribues + 5 en changement + 2 concessions), et ses
+filtres disent 44 ; mais `cmap` annoncait « 42 blocs delimites » et la
+legende anglaise de `cadmap` « 42 named blocks ». Le chiffre vrai est
+celui qu on peut compter dans le dessin : 44 partout. Le bandeau de
+chiffres de la page disait « 5 bassins sedimentaires » quand le tableau
+du cadastre en liste sept : les deux comptes sont justes mais ne parlent
+pas de la meme chose — cinq demi-grabens ouverts par le rifting cretace,
+sept bassins au cadastre avec Madiago et Erdis (Koufra). Le bandeau dit
+desormais « 7 bassins au cadastre » et la phrase d ouverture du chapitre
+Bassins explique les deux comptes en une ligne.
+
+**CE QUE JE N AI PAS TOUCHE** — le graben de Termit, que je croyais mal
+place : la page precise « Ouest tchadien · graben de Termit (frontiere
+nigerienne) », et le systeme syn-rift traverse bien la frontiere.
+Alerte retiree.
+
+**VERIFIE (local)** — atlas FR et EN, deux themes, 1 440 et 390 : une
+seule carte de cadastre par page, 44 blocs dessines, filtres 44 / 11 /
+26 / 5 / 2, les cinq chiffres du renvoi, le lien pointe sur une ancre qui
+existe, bandeau a 7 bassins, 0 erreur console, 0 debordement ; capture
+regardee. Generateur idempotent, second passage sans effet.
+
+**RESTE** — la page Reseau porte deux cartes du Tchad (le maillage
+interactif et une carte des trois hubs) : meme matiere, a fusionner au
+prochain chapitre. Et les trois silhouettes minoritaires restent a
+ramener sur la silhouette commune. Aucun asset, SW inchange. Trois
+fichiers.
+
+## 632 — Une seule carte du Tchad sur la page Reseau
+
+**Suite du 631.** La page Reseau portait deux cartes du pays : le maillage
+interactif en tete de page (hubs-depots, stations Tchadium, Mobile
+Stations, avec panneau de detail) et, plus bas, une carte statique des
+trois hubs. La seconde ne montrait qu un sous-ensemble de la premiere.
+
+**Fait** — la carte statique retiree ; ses trois fiches de hub
+(N Djamena, Moundou, Abeche, avec leur pastille de couleur et leur
+texte) passent en pleine largeur, en trois colonnes qui s empilent sur
+telephone, suivies d un renvoi vers la carte interactive du haut de
+page. La note qui expliquait les pointilles de la carte disparue est
+retiree elle aussi : elle decrivait un dessin qui n existe plus.
+
+**Verifie (local)** — reseau FR et EN, deux themes, 1 440 et 390 : une
+seule carte du Tchad par page, trois fiches, quatre colonnes a 1 440 et
+une a 390, le renvoi pointe sur une ancre qui existe, 0 erreur console,
+0 debordement ; capture regardee. Generateur idempotent.
+
+**MON ERREUR** — la premiere passe laissait la note des pointilles :
+je l avais lue comme une legende de la section, c etait la legende de la
+carte. Vue sur la capture, retiree.
+
+**RESTE** — trois silhouettes du Tchad minoritaires (carte du cadastre,
+cibles-2030, outils TchadiTech) contre la silhouette commune des douze
+autres cartes : a unifier, mais le recalage des reperes sur un nouveau
+contour demande sa propre passe de mesure. Aucun asset, SW inchange.
+Trois fichiers.
