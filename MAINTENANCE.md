@@ -24170,3 +24170,41 @@ tout remis a zero. La molecule, seul symbole sans sol, flottait sous la
 ligne de sol : relevee de 64 unites.
 
 **Aucun asset** — SW inchange (et-202609170500). 51 fichiers.
+
+## 622 — Bilan de sante apres la serie des symboles, et un seul mot anglais pour les carnets
+
+**La demande** — « next » : sept chapitres (616 a 621) ont touche les
+200 pages FR et EN, dont deux fois toutes (menu, pied de page) et trois
+fois les en-tetes. Avant d aller plus loin, verifier que rien n a casse ;
+et regler le seul point du reste qui n etait pas une decision d identite
+mais une simple incoherence.
+
+**La sante du site** — 209 pages (200 FR et EN, 8 arabes, la 404), deux
+largeurs (1 440 et 390), page chargee : 418 rendus, **0 erreur console,
+0 erreur de page, 0 reponse 400 ou plus, 0 debordement horizontal**.
+250 destinations internes distinctes collectees sur les 418 rendus ;
+232 existent sur le disque ; les 18 autres sont les deux redirections de
+vercel.json (calculateur, configurateur) et les seize liens vers la page
+contact avec un profil en parametre (`/contact?profil=...`), qui sont la
+meme page. Rien a corriger.
+
+**Un seul mot pour les carnets en anglais** — le releve du 618 avait
+note que la section s appelait « Notebooks » dans le titre de sa page et
+son fil d Ariane, « Journal » dans les liens de retour et le pied de
+page, « Stories » dans deux retours et l ancien JSON-LD, « field notes »
+dans vingt-deux liens de bas d article. Le nom de la page fait foi : la
+section s appelle **Notebooks**, un article est une **story** (deja le
+mot dominant : « All Economics stories »). 98 pages EN corrigees :
+« Back to the Journal » et « Back to Stories » → « Back to the
+Notebooks » (31), « All field notes → » et « All journal entries → » →
+« All stories → » (27), « Media & journal » → « Media & notebooks » dans
+le pied de page (98), « Journal stories · Upstream » → « Notebooks ·
+Upstream » dans le plan du site (3), « Carnets journal » et « Field
+notes » → « Notebooks » (4) ; les deux plans du site accordes (l entree
+« Journal » de la version anglaise dans le plan FR devient « Notebooks »,
+et le libelle du groupe des carnets FR dans le plan EN, qui etait reste
+en anglais, passe en francais). L entree « Media » de la barre utilitaire
+reste : c est une etiquette de rubrique, pas le nom de la page. 0 lien
+vers /carnets-en ne porte plus le mot « journal ».
+
+**Aucun asset** — SW inchange (et-202609170500). 100 fichiers.
