@@ -23257,3 +23257,40 @@ quatre etapes passent de « section » ou « mentions » a « page ».
 **Ce qui vient ensuite** — la proposition 3 : reordonner les trois hubs selon
 la chaine ; puis Intermediaire = Midstream, l organigramme, et les cinq sujets
 en carnets seuls. Aucun actif modifie, pas de bump du service worker.
+
+## 603 — Les hubs suivent la chaine
+
+**La demande** — « Next » : la proposition 3 de l audit 601, reordonner les trois
+hubs de pole selon la chaine du metier.
+
+**Ce qui a ete fait** — Sur les six hubs (Amont, Intermediaire, Aval, en
+francais et en anglais), un bloc `nav.chn603` pose en tete de contenu, juste
+apres l en-tete de pole du chapitre 593 et avant la premiere section : quatre
+cartes-etapes numerotees, dans l ordre du flux, chacune menant a sa page.
+Amont : Exploration, Forage & completion, Production, Traitement primaire.
+Intermediaire : Collecte, Pipelines, Stockage, Transport. Aval : Raffinage,
+Distribution, Commercialisation, Consommateur final. La numerotation est
+justifiee : c est une sequence reelle, pas un ornement. Les cartes sont en
+verre du site, couleur du pole en accent, une colonne a 480 px, deux a 880.
+
+**La proposition 4 dans la foulee** — le hub Intermediaire dit maintenant, en
+etiquette et en chapeau, que ce pole est « ce que l industrie appelle
+Midstream » ; la version anglaise s appelle deja Midstream.
+
+**Ce qui n est pas fait** — le gabarit editorial des hubs (« Ou se passe »,
+« Le probleme, la methode, les cas », « Quatre capacites ») reste en place
+sous la chaine : la sequence vient d abord, l argument ensuite. Exploration et
+Production menent a la meme page, Exploration & Production, faute d ancre de
+section ; c est un manque de la page cible, pas du bloc.
+
+**Verifie** — six hubs, 1 440 px en sombre et en clair, 390 px en sombre :
+bloc present sur chacun, quatre cartes, ordre verifie, 0 texte de carte sous
+4,5 de contraste, 0 rognage, 0 defilement horizontal, 0 lien casse, 0 erreur
+console, 0 reponse 400 ou plus. Une capture a montre les textes de carte
+soulignes par la regle generale des liens : corrige par `text-decoration:none`
+a deux identifiants ; et « 1 070 km » qui se coupait en deux lignes : espace
+insecable. Six pages et le journal ; aucun actif, pas de bump du service
+worker.
+
+**Ce qui vient ensuite** — l organigramme sur Gouvernance, puis les cinq
+sujets qui n ont que des carnets.
