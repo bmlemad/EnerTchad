@@ -24700,3 +24700,42 @@ cibles-2030, outils TchadiTech) contre la silhouette commune des douze
 autres cartes : a unifier, mais le recalage des reperes sur un nouveau
 contour demande sa propre passe de mesure. Aucun asset, SW inchange.
 Trois fichiers.
+
+## 633 — La carte de la home remontee et resserree
+
+**La question du proprietaire** — « faut-il garder la carte sur la
+home ? ». Mesure avant de repondre : la section commencait a 55 % de la
+page (4 641 px sur 8 375 en grand ecran, 6 460 sur 11 969 sur
+telephone), apres les carnets ; elle prenait 938 px de haut pour une
+carte de 370 x 557, avec 420 px de vide sous le panneau de texte, dans
+la colonne de droite. Avis rendu : la garder — c est la seule image du
+pays sur la home, elle porte les trois chiffres qui interessent un
+investisseur (26 blocs libres, 7 bassins, 1 070 km) et c est la porte
+d entree vers l Atlas ; ce n est pas un doublon au sens des 631 et 632,
+ou deux cartes se repetaient dans la meme page. Mais la remonter et la
+resserrer. Consigne : « remonte et resserre ».
+
+**FAIT** — la section et son script passent de la cinquieme place a la
+troisieme, juste apres les chiffres cles, avant durabilite et carnets :
+de 55 % a 43 % de la page en grand ecran, 38 % sur telephone. La colonne
+de droite accueille desormais la legende et la source sous le panneau,
+la carte est plafonnee a 460 px de haut et les deux colonnes sont
+centrees l une sur l autre ; le rembourrage de section passe de 58 a
+42 px au plus. Resultat : la section descend de 938 a 725 px, le vide de
+420 a 93, et la page entiere de 8 375 a 8 161 px. Sur telephone, rien ne
+change a l empilement (carte, puis panneau, legende, source) et le
+plafond de hauteur est leve.
+
+**MON ERREUR** — premiere passe : j ai elargi la carte de 370 a 420 px
+en croyant lui donner de la presence. Elle a grandi en hauteur avec sa
+largeur (633 px), le vide est reste a 422 et la section n a rien gagne
+(927 px contre 938). C est la mesure qui l a montre, pas l oeil.
+Fichiers remis par git archive, reprise a l envers : plafonner la
+hauteur, remplir la colonne de droite, centrer.
+
+**VERIFIE (local)** — home FR et EN, deux themes, 1 440 et 390 : ordre
+des sections coeurs, chiffres, carte, durabilite, carnets, agir ; 0
+erreur console, 0 debordement ; les sept bassins restent cliquables et
+le panneau change au survol (Doba, Doseo verifies en FR et en EN) ;
+captures regardees. Generateur idempotent. Aucun asset, SW inchange.
+Trois fichiers.
