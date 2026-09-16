@@ -23460,3 +23460,108 @@ que l element a une classe de plus.
 dans 692), un heritage de la hauteur maximale posee en ligne ; a traiter avec
 le tiroir lui-meme. La demande recue en cours de chapitre — relire la
 redaction du site et eliminer les doublons — ouvre le 607.
+
+## 607 — Relecture redactionnelle : la brochure-digest et les doublons
+
+**La demande** — « revoir la redaction du site, eliminer les doublons ».
+
+**L inventaire, avant d ecrire** — 207 pages FR et EN parcourues hors chrome
+(navigation, pied de page, bandeaux, sous-navigations) : 10 025 blocs de texte
+de 25 caracteres ou plus. 897 textes presents sur au moins deux pages, 25
+doublons a l interieur d une meme page. Le tri par paires de pages a donne le
+verdict en une ligne : **la brochure**. Elle partageait 61 blocs longs avec
+`amont/eor`, 58 avec `aval/produits`, 34 avec `intermediaire/logistique`, 32
+avec `sites`, 29 avec `distribution`, 15 avec `tchaditech/outils`, 10 avec
+`petrochimie/produits`, 9 avec `chimie-eor` — 424 blocs en double en francais
+et en anglais. La brochure etait l ancien site d une page, dont les pages de
+pole avaient ete extraites ; les deux avaient continue de vivre. Hors
+brochure, les textes partages sont des composants : avertissements, intitules
+de sections, titres de carnets sur les pages qui les listent, la phrase
+d accroche des solutions sur les huit hubs.
+
+Les balayages mecaniques ont trouve la redaction propre : 0 double espace,
+0 apostrophe droite, 0 majuscule non accentuee (les six « Eau » releves sont
+corrects), une seule forme « EnerTchad S.A. », « Intermediaire » constant en
+francais, « Tchad » en anglais seulement dans les noms propres (Tchad Connexion
+2030, Societe des Hydrocarbures du Tchad). Sept phrases de plus de 400
+caracteres, toutes des enumerations a points-virgules : conservees.
+
+**Ce qui a ete fait**
+
+1. **La brochure devient un digest** (FR et EN). 570 713 caracteres de
+   contenu principal remplaces par 28 485 : une introduction, huit portes
+   (quatre poles, quatre capacites), puis six actes — la these, la chaine
+   integree, le socle technologique, le terrain, les engagements, investir —
+   et 31 cartes. Chaque carte : un chapeau, un titre, un paragraphe ecrit
+   pour l occasion a partir de l accroche de la page visee (aucune phrase
+   copiee), deux ou trois reperes chiffres pris sur le site, un lien « Lire la
+   page ». Le heros, la bande des cibles 2030 et le sommaire depliable
+   restent ; le sommaire est regenere sur les 31 ancres, les deux ancres
+   entrantes (#vision, #parcours) existent toujours. La bande des cibles
+   disait « 5 bassins sedimentaires » quand l Atlas, l Amont et l anglais
+   disent sept : corrigee a 7. Retires avec les sections qu ils pilotaient :
+   le script des applications interactives (onglets, debit de chaine,
+   calculateur, bassins, formulaire, tableau de bord — il levait deux erreurs
+   sur des elements disparus), les blocs de calcul differe par identifiant
+   (cv562, cv579 et leurs regles fusionnees, qui donnaient 45 px de hauteur a
+   une section de 1 774), le style b600 des anciennes cartes blanches, et le
+   rail a deux points qui doublonnait le sommaire lateral genere. Fichier :
+   843 351 vers 235 748 octets.
+2. **Le plan du site anglais** listait chaque page anglaise deux fois — 168
+   liens, 65 doublons — parce que ses trois sections de queue « English
+   version » avaient ete copiees telles quelles du plan francais. Elles
+   deviennent « Version francaise » et pointent vers les 65 pages francaises
+   correspondantes, avec leurs libelles francais ; « Version francaise »
+   pointait sur /index-en, corrige vers /. 178 liens, 0 href en double.
+3. **Composants harmonises** : l avertissement anglais existait en deux formes
+   (« a target or ambition » sur quatre pages, « a target or an ambition » sur
+   deux) — une seule ; la phrase « Five concrete situations… » des huit hubs
+   anglais existait en trois formes — une seule.
+4. **Doublons intra-page** : l avertissement repete deux fois sur
+   `services-ep` FR et EN — une fois ; la rangee « Aller plus loin » repetee
+   sous chacun des trois ou quatre replis des hubs de capacite (GreenTech,
+   TchadiTech, Tchaditude, EnerConseils, FR et EN) — une seule, la derniere ;
+   22 rangees retirees.
+5. **Details** : « ... » vers « … » sur le carnet du forage directionnel FR et
+   EN ; « 900-1100 °C » vers « 900 a 1 100 °C » avec le tiret de plage, en
+   francais et en anglais.
+
+**Resultat** — blocs de texte 10 025 vers 8 166 ; textes sur au moins deux
+pages 897 vers 125 (composants et titres listes) ; doublons intra-page 25 vers
+15 (etiquettes de reperes, appels de cartes) ; blocs partages par la brochure
+424 vers 0.
+
+**Verifie** — brochure FR et EN, deux themes, 1 440 et 390 : 31 cartes, 31
+liens en 200, 0 debordement, 0 erreur console, 0 erreur de page, 0 reponse
+400 ou plus ; sommaire lateral genere a 8 entrees ; hauteur 9 454 px en
+sombre. Plan du site EN : 163 destinations, toutes en 200 sauf les deux
+redirections que le serveur local ignore. Hubs de capacite : une rangee
+« Aller plus loin » par page.
+
+**Mon erreur, la capture qui mentait** — la capture pleine page montrait les
+actes II a VI vides dans les deux themes, et un fond gris en clair. Le vide
+etait reel dans son mecanisme mais pas dans son effet : les regles de calcul
+differe de l ancienne brochure donnaient aux sections des hauteurs
+intrinseques de l ancien contenu, et le rendu sans defilement ne les peignait
+pas. Le fond gris, lui, n existe pas : a la fenetre, le clair est creme. Les
+deux constats venaient de la capture pleine page, pas de la page. Verifie en
+faisant defiler la fenetre avant de conclure.
+
+**Mon erreur, le motif trop large, encore** — pour retirer le bloc de queue
+des hauteurs intrinseques j ai ecrit un motif « un style contenant
+#parcours{contain-intrinsic-size » : il a attrape le bloc fusionne du logo de
+pied de page, qui contenait aussi ces regles. Attrape a la taille du fichier
+(3 523 octets de trop retires) ; brochures remises a l etat publie, et le
+retrait refait declaration par declaration (31 regles par identifiant, 1 regle
+generale), tout le reste du bloc conserve.
+
+**Mon erreur, l indice negatif** — en rejouant le retrait du code des
+applications sur un fichier deja traite, `find` a rendu -1 et le script a
+ecrit du texte en fin de fichier. Les deux brochures ont ete reconstruites
+depuis les originaux avec un seul script de post-traitement, assertions sur
+chaque position.
+
+**Reste** — la phrase d accroche des solutions est identique sur les huit
+hubs francais (un composant, pas un doublon) ; les sept phrases longues ; le
+mini-site arabe hors perimetre. La brochure PDF de six pages, liee depuis le
+heros, n a pas ete relue.
