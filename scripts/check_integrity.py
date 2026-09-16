@@ -6,14 +6,21 @@ allf = set()
 for r, d, fs in os.walk('.'):
     if '.git' in r: continue
     for f in fs: allf.add(os.path.normpath(os.path.join(r, f)).replace('\\', '/'))
-def exists(t): return t in allf or (t.rstrip('/') + '/index.html') in allf or (t + '.html') in allf
+# Ch628 : les redirections et reecritures de vercel.json sont des destinations valides (cleanUrls : /x et /x.html)
+redir = set()
+if os.path.exists('vercel.json'):
+    vj = json.load(open('vercel.json', encoding='utf-8'))
+    for r in vj.get('redirects', []) + vj.get('rewrites', []):
+        src = r.get('source', '')
+        if src and not re.search(r'[:*(]', src): redir.add(src.lstrip('/'))
+def exists(t): return t in allf or (t.rstrip('/') + '/index.html') in allf or (t + '.html') in allf or t in redir or (t + '.html') in redir
 errs = []
 sm = open('sitemap.xml', encoding='utf-8').read() if os.path.exists('sitemap.xml') else ''
 for p in pages:
     h = open(p, encoding='utf-8').read()
     for m in re.finditer(r'(?:href|src)="([^"#?{$]+?)(?:[#?][^"]*)?"', h):
         u = m.group(1)
-        if u.startswith(('http', 'mailto', 'tel', '//', 'data:', 'javascript:', '/_vercel/')) or "'" in u: continue
+        if u.startswith(('http', 'mailto', 'tel', 'webcal:', '//', 'data:', 'javascript:', '/_vercel/')) or "'" in u: continue
         t = u.lstrip('/') if u.startswith('/') else os.path.normpath(os.path.join(os.path.dirname(p), u)).replace('\\', '/')
         if t in ('', '.') or t.startswith('photos/'): continue
         if not exists(t): errs.append(f'{p}: lien cassé {u}')
