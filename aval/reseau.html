@@ -633,24 +633,11 @@ header.pghero>.wrap>.t621{position:absolute;right:clamp(24px,3.9vw,56px);top:50%
         <h3 class="qx2_64">Trois hubs, des axes, tout le territoire.</h3>
         <p>Les hubs-dépôts sont positionnés sur les nœuds logistiques du Tchad : N’Djamena (capitale, corridor d’import Douala), Moundou (sud dense et bassin pétrolier), Abéché (est, hub humanitaire). Les axes d’approvisionnement irriguent ensuite les stations satellites et mobiles. Le réseau cible : <strong class="qx2_0">12 stations ultra-premium</strong> sur <strong class="qx2_0">8 localités stratégiques</strong>, adossées à <strong class="qx2_0">3 hubs-dépôts</strong> — et les <strong class="qx2_0">Mobile Stations™</strong> étendent la couverture au pays entier. Ce maillage — stations, dépôts, mobiles — constitue une <strong class="qx2_0">réserve stratégique nationale distribuée</strong>.</p>
       </div>
-      <div style="display:grid;grid-template-columns:1.4fr 1fr;gap:28px;align-items:center" class="map-grid">
-        <!-- SVG silhouette Tchad + hubs -->
-        <div style="position:relative">
-          <svg id="hubmap" viewBox="0 0 400 460" style="width:100%;height:auto;display:block" role="img" aria-label="Carte du réseau de distribution EnerTchad au Tchad">
-            <!-- silhouette stylisée du Tchad -->
-            <g transform="translate(42,4) scale(1.05)"><path d="M45.7 280.6 L48.2 268.5 L32.3 267.9 L32.4 251.4 L22.1 241.9 L32.8 208.1 L64.3 183.9 L65.6 150.6 L75.1 98.5 L80.5 87.5 L70.2 78.7 L69.8 70.6 L60.6 63.9 L54.5 24.0 L79.5 10.0 L178.1 59.1 L276.7 108.2 L277.9 210.0 L256.6 208.2 L245.3 227.1 L238.7 242.9 L243.9 248.9 L235.8 256.8 L238.6 267.4 L232.2 278.1 L229.7 287.5 L238.4 286.0 L243.5 295.9 L243.8 310.8 L252.9 318.4 L252.6 324.6 L237.0 329.0 L224.4 339.3 L206.5 367.3 L183.3 379.2 L159.4 377.6 L152.4 380.0 L154.9 389.0 L142.0 398.0 L131.5 408.0 L100.4 417.8 L94.2 412.0 L90.1 411.5 L85.5 418.1 L65.1 420.0 L69.0 413.1 L61.2 395.4 L57.7 384.8 L46.9 380.4 L32.3 365.4 L37.7 353.3 L49.0 355.9 L56.0 354.1 L69.8 354.3 L56.3 331.0 L57.2 314.0 L55.6 297.0 L45.7 280.6 Z" fill="rgba(46,134,222,.06)" stroke="rgba(90,167,240,.35)" stroke-width="1.45" stroke-linejoin="round"/></g>
-            <!-- axes d’approvisionnement -->
-            <g stroke-dasharray="5 5" stroke-width="1.6" fill="none" opacity="0.7"><path d="M104 319 L254 273" stroke="var(--gold-l)" class="map-axis"/><path d="M104 319 L131 415" stroke="var(--blue-l)" class="map-axis"/><path d="M131 415 L254 273" stroke="var(--amber-l)" class="map-axis"/></g>
-            <!-- HUB N’Djamena (centre-ouest) -->
-            
-            <!-- HUB Moundou (sud) -->
-            
-            <!-- HUB Abéché (est) -->
-            
-          <g class="map-hub"><circle cx="104" cy="319" r="11" fill="rgba(217,168,79,.2)" stroke="var(--gold-l)" stroke-width="2"/><circle cx="104" cy="319" r="4" fill="var(--gold-l)"/><text x="120" y="316" fill="#fff" font-family="var(--fm)" font-size="12" font-weight="600">N’Djamena</text><text x="120" y="330" fill="var(--muted)" font-family="var(--fm)" font-size="10">Hub capitale · corridor import</text></g><g class="map-hub"><circle cx="254" cy="273" r="11" fill="rgba(217,168,79,.2)" stroke="var(--amber-l)" stroke-width="2"/><circle cx="254" cy="273" r="4" fill="var(--amber-l)"/><text x="270" y="270" fill="#fff" font-family="var(--fm)" font-size="12" font-weight="600">Abéché</text><text x="270" y="284" fill="var(--muted)" font-family="var(--fm)" font-size="10">Hub est · humanitaire</text></g><g class="map-hub"><circle cx="131" cy="415" r="11" fill="rgba(217,168,79,.2)" stroke="var(--blue-l)" stroke-width="2"/><circle cx="131" cy="415" r="4" fill="var(--blue-l)"/><text x="147" y="412" fill="#fff" font-family="var(--fm)" font-size="12" font-weight="600">Moundou</text><text x="147" y="426" fill="var(--muted)" font-family="var(--fm)" font-size="10">Hub sud · bassin pétrolier</text></g></svg>
-        </div>
-        <!-- légende / chiffres -->
-        <div style="display:flex;flex-direction:column;gap:14px">
+      <style id="net632">
+.net632{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;align-items:start}
+.net632-go{margin:16px 0 0;font-size:.9rem;line-height:1.6}
+.net632-go a{color:var(--gold-l,#E8C36A);text-decoration:underline;text-underline-offset:3px}
+</style><div class="net632">
           <div class="qx2_65">
             <span style="width:12px;height:12px;border-radius:50%;background:var(--gold-l);margin-top:4px;flex-shrink:0"></span>
             <div><strong class="qx2_66">N’Djamena</strong><p class="qx2_67">Capitale · point d’entrée du corridor Douala–N’Djamena · dépôt principal Farcha.</p></div>
@@ -663,11 +650,8 @@ header.pghero>.wrap>.t621{position:absolute;right:clamp(24px,3.9vw,56px);top:50%
             <span style="width:12px;height:12px;border-radius:50%;background:var(--amber-l);margin-top:4px;flex-shrink:0"></span>
             <div><strong class="qx2_66">Abéché</strong><p class="qx2_67">Hub est · carrefour humanitaire et pétrolier · desserte vers le Soudan.</p></div>
           </div>
-          <div style="margin-top:6px;padding:14px 16px;border-radius:12px;background:rgba(255,255,255,.03);border:1px solid var(--hair)">
-            <p style="font-size:.78rem;color:var(--muted);line-height:1.55;margin:0">Les lignes pointillées figurent les axes d’approvisionnement reliant les hubs aux stations satellites et mobiles. <span style="color:var(--cream)">Carte schématique illustrative.</span></p>
-          </div>
-        </div>
-      </div>
+          
+        </div><p class="net632-go"><a href="#reseau-carte">Les trois hubs sur la carte du maillage, en haut de page →</a></p>
     </div>
 
     <!-- ===================================================== -->
