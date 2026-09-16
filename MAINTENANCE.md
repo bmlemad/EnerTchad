@@ -23638,3 +23638,100 @@ heros. Deux fois la meme lecon : demander au navigateur qui gagne.
 1 440 (« N Djamena, Tchad » seul) ; les trois maillons de #coeurs, la carte,
 « agir » et « reperes » n ont pas ete touches ; la halo d ombre blanche du
 titre en clair vient d une regle generale du heros, hors chapitre.
+
+## 609 — Le vert de WhatsApp ramene dans la palette
+
+**La demande** — « next all » : la suite des propositions de la revue de design.
+Proposition 04 : sur la page contact, six boutons d un vert sature (#25D366, le
+vert de Meta) dominaient l ecran, plus vifs que l or de la marque.
+
+**Ce qui a ete fait** — les seize boutons WhatsApp (sept sur contact FR, sept
+sur contact EN, le bouton du formulaire de la boutique FR et EN) passent au
+teal du site, #1FA496, texte #052B25, avec un glyphe de bulle de conversation
+en tete — pas le logo de WhatsApp, le mot suffit a reconnaitre le canal.
+Contraste mesure : 4,94 en sombre, 5,99 en clair (le texte du clair est
+remappe par une regle generale). Plus aucun element du site ne porte le vert
+rgb(37, 211, 102).
+
+**Trouve en passant, et corrige** — sur contact EN, les sept boutons WhatsApp
+etaient etiquetes « Back to top » (une erreur de remplacement d un chapitre
+anterieur), et leurs messages pre-remplis etaient en francais (« Bonjour, je
+souhaite un devis »). Etiquettes « WhatsApp », sept messages traduits.
+
+**Verifie** — 9 liens wa.me par page contact, tous avec le glyphe, hauteur
+41 px ; boutique : le bouton du formulaire, dont l adresse est posee par le
+script, garde son comportement. 0 erreur console.
+
+## 610 — Le coin flottant sur telephone, et le tiroir sans defilement imbrique
+
+**La demande** — proposition 06 : a 390 px, trois commandes dans le meme coin.
+
+**Le releve** — commande de luminosite a 328,702 (46 px), retour en haut a
+338,742 (38 px) : elles se recouvraient de 6 px et s empilaient sur 90 px de
+contenu, au-dessus de la barre d onglets a 783. Dans le tiroir de navigation,
+le panneau « Nos activites » gardait sa hauteur maximale posee en ligne
+(100vh - 150px) et defilait a l interieur du tiroir qui defile : 2 239 px de
+liste dans 692.
+
+**Ce qui a ete fait** — sous 1 241 px : les deux commandes sur une seule
+rangee, 11 px au-dessus de la barre d onglets, retour en haut a droite
+(44 x 44), luminosite a sa gauche ; dans le tiroir, le panneau perd sa
+hauteur maximale et son defilement propre, le tiroir seul defile (772 px
+visibles pour 2 659). Regles dans nav_a.css, SW et-202609170200.
+
+**Verifie** — amont/eor a 390 : retour en haut 340,736, luminosite 276,726,
+0 recouvrement, 11 px sous la barre ; societe : idem sans commande de
+luminosite (elle n est pas sur toutes les pages). Tiroir : max-height none,
+overflow visible, un seul conteneur qui defile.
+
+## 611 — Les grilles qui finissaient sur un trou
+
+**La demande** — proposition 03 : un nombre de colonnes que les elements
+remplissent, et les pastilles des cartes sur une ligne de base commune.
+
+**Le releve** — 200 pages a 1 440, page defilee jusqu en bas pour que tout
+soit revele : 146 grilles dont le nombre d elements ne remplit pas la
+derniere rangee (grilles a zones nommees exclues). Les motifs dominants :
+`epw-g` quatre colonnes pour cinq ou six cartes (34 pages), `biz-grid` trois
+pour cinq (14), `rp-pts` trois pour quatre (14), `vt-grid` deux pour cinq (12),
+`plc-grid`, `eth-g`, `fam6`, `tri-steps`, `prix-grid` quatre pour cinq…
+Textes tronques : 0 sur investisseurs (corrige a un chapitre anterieur), 5
+sur clients — les etiquettes du sommaire lateral, coupees a dessein.
+
+**Ce qui a ete fait** — dans nav_a.css, au-dessus de 1 100 px, pour 31
+classes de grille : base de douze colonnes et portee des cartes choisie
+d apres leur nombre, lu par `:has(> :nth-child(n):last-child)` — 4 = quatre
+par rangee ; 5 = trois puis deux (portee 4 puis 6) ; 6 = trois et trois ;
+7 = quatre puis trois ; 8 = quatre et quatre ; 10 = 4 + 3 + 3 ; 11 = 4 + 4 + 3.
+Chaque rangee est pleine, les cartes d une meme rangee ont la meme largeur,
+la derniere rangee est un peu plus large. En dessous de 1 100 px, les feuilles
+des pages gardent leurs colonnes. Ma propre grille du 607 (`d607-grid`, onze
+cartes en trois colonnes) etait dans la liste : elle y passe aussi. Pour les
+cartes de pole (`plc-card`), la colonne interne s etire et la pastille descend
+en bas : quatre pastilles a 23 px du bas de carte, contre trois hauteurs
+differentes avant.
+
+**Resultat** — grilles orphelines 146 vers 30 sur 200 pages ; les 30 restantes
+portent des classes generiques (`grid`, `reveal`, `layout`, une grille de 80
+termes) que je ne peux pas viser sans risque. Verifie a l ecran sur amont
+(cinq cartes : 361 / 361 / 361 puis 549 / 549), services-ep (etapes) et la
+brochure.
+
+**Mon erreur, la premiere passe incomplete** — dix-neuf classes traitees, le
+second balayage en a montre douze de plus, dont la mienne. Un balayage apres
+correction n est pas une formalite : c est lui qui a trouve d607-grid.
+
+## 612 — Le heros de l accueil, deux retouches
+
+**Reste du 608** — l accroche se cassait sur deux lignes dans la colonne de
+gauche (« N Djamena, Tchad » seul) ; et le titre portait en clair un halo
+blanc (0 0 6px, 0 1px 18px), en sombre une ombre noire heritee de
+`header.hero{text-shadow}` — deux effets concus pour un texte pose sur le
+champ, quand le heros a maintenant un fond de verre.
+
+**Ce qui a ete fait** — l accroche sort de la grille et court sur toute la
+largeur, au-dessus des deux colonnes : une ligne. Le bloc `.nh` neutralise
+l ombre heritee (`text-shadow:none`) et quatre identifiants retirent le halo
+du clair sur le titre, le texte et l accroche. Verifie : ombre none sur le
+titre, l accroche, les noms de la figure, le bouton et les reperes, dans les
+deux themes ; heros 983 px.
