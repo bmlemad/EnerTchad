@@ -23823,3 +23823,85 @@ qui restent sont des decisions du proprietaire, pas des corrections : le
 theme clair par defaut sans egard pour prefers-color-scheme ; les sept
 phrases longues des carnets (des enumerations) ; la police de titre, dont
 la revue de design disait qu elle est le trio par defaut de la moitie du web.
+
+## 616 — Le site reorganise autour des trois poles (navigation)
+
+**La demande** — « Reorganiser le site autour des 3 pages principaux et les
+autres pages en sous pages ». Deux questions posees avant de toucher quoi que
+ce soit : quelles sont les trois pages principales (reponse : Amont ·
+Intermediaire · Aval) et jusqu ou aller (reponse : navigation seulement, les
+adresses ne bougent pas). Aucune URL ne change donc ; aucune redirection a
+ajouter ; les 209 pages restent la ou elles sont.
+
+**Avant** — le menu du 606 avait cinq entrees de meme poids : Societe,
+Nos activites, Capacites, Solutions, Investisseurs. Les trois poles vivaient
+dans une colonne de « Nos activites », au meme rang que les quatre
+capacites et les solutions par besoin. La petrochimie etait un quatrieme
+pole a part.
+
+**Apres** — cinq entrees toujours, mais trois primaires et deux secondaires.
+A gauche, les trois poles avec leur point de couleur (or, bleu, orange) :
+**Amont**, **Intermediaire**, **Aval**. A droite, en plus petit et plus
+discret, pousses contre le bouton de recherche : Societe et Investisseurs
+(les panneaux du 606, inchanges). Chaque pole ouvre un panneau de trois
+colonnes plus une rangee : en tete, le lien vers la page hub (« Vue
+d ensemble du pole ») ; puis trois colonnes thematiques ; enfin une rangee de
+six liens « capacites » (GreenTech, TchadiTech, Tchaditude, EnerConseils,
+Par besoin, Toute la chaine) sous un filet. Amont : Du permis au baril (6),
+Recuperer & servir (4, dont la chimie EOR qui est une page petrochimie mais
+sert l amont), Reperes & carnets (5). Intermediaire : Du puits au depot (4),
+Reperes & carnets (5), Vu du terrain (3). Aval : Raffiner (4), Distribuer
+(4), **Petrochimie — prolongement de l Aval** (4). La petrochimie n est plus
+un pole a part dans le menu : elle est la troisieme colonne de l Aval, ce qui
+est sa place dans la chaine (la molecule transformee apres le raffinage).
+22 + 19 + 19 liens dans les trois panneaux, 10 + 7 dans les deux autres.
+Le pole ouvert est marque `aria-current` et `is-active` sur son entree
+(calcule a la generation : amont/*, pole-amont-en et petrochimie/chimie-eor
+→ Amont ; intermediaire/* → Intermediaire ; aval/*, petrochimie/*,
+pole-aval-en, pole-enerchimie-en → Aval ; societe, gouvernance, cibles,
+achats, engagements, communautes → Societe ; investisseurs, projets,
+publications → Investisseurs).
+
+**Comment** — `a616/nav616.py` reconstruit le contenu de `#navLinks` jusqu a
+`.nx-util-m` sur les 200 pages FR et EN (les 8 arabes gardent leur propre
+barre, la 404 n a pas de menu) ; idempotent, verifie par un second passage
+identique. Les panneaux Societe et Investisseurs sont extraits des pages
+telles quelles (helper de div equilibrees), avec une seule retouche : le
+`left:0;right:auto` en ligne du panneau Societe est retire, parce qu une
+fois deplace a droite il debordait de 200 px hors de l ecran — la regle
+`nth-last-child(-n+3)` du 553 le cale desormais a droite. Bloc CSS 616 dans
+`nav_a.css` : point de couleur `.nxdot`, `margin-left:auto` sur Societe qui
+pousse les deux secondaires a droite, entrees secondaires a 92 % et opacite
+.86, panneaux 616 a `min(920px, 100vw - 32px)` sur trois colonnes, le
+troisieme (Aval) translate de 30 % vers la gauche pour rester dans l ecran,
+rangee des capacites en six colonnes sous un filet. `sw.js` passe a
+et-202609170400.
+
+**Verification (serveur local, 1 440 puis 390)** — les cinq panneaux, une
+fois la transition terminee (matrice identite), tiennent tous dans
+1 440 px : Amont x317 a 1237 h551, Intermediaire x444 a 1364 h523, Aval
+x355 a 1275 h479, Societe x431 a 1151 h535, Investisseurs x593 a 1313 h364 ; EN
+identique a 1 px pres, entrees Upstream · Midstream · Downstream · Company ·
+Investors. Sept pages de poles differents affichent exactement une entree
+active, la bonne. A 390 le tiroir empile les cinq entrees dans l ordre
+Amont, Intermediaire, Aval, Societe, Investisseurs ; le panneau Amont
+ouvert fait 1 732 px de haut sur 344 de large, en blocs (la regle a trois
+colonnes est bien confinee au bureau), 0 lien hors ecran, pas de
+debordement horizontal ; l ouverture d un autre panneau referme le premier.
+125 destinations distinctes dans les menus, 124 existent sur le disque, la
+125e est la redirection vercel.json du calculateur (200 en production).
+0 erreur console, 0 erreur de page. Aucune page ne porte plus les classes
+du 606.
+
+**Mon erreur** — le premier passage avait laisse le `left:0;right:auto` en
+ligne du panneau Societe : deplace a droite de la barre, il sortait de
+l ecran de 200 px. Mesure, pas devine : le premier releve disait
+« deborde true » et c est lui qui a montre la retouche a faire. Deux petites
+pertes de temps d instrument : un `browser_batch` dont le JSON contenait des
+guillemets imbriques n a pas ete lu (appels separes), et un `page.evaluate`
+a deux arguments refuse (un seul objet).
+
+**Ce qui reste** — le pied de page et le plan du site gardent leur
+organisation par sections ; le fil d Ariane des pages petrochimie dit
+encore « Petrochimie » et non « Aval → Petrochimie ». Perimetre choisi
+(navigation seulement) : a rouvrir si le proprietaire veut aller plus loin.
