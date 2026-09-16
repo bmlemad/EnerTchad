@@ -491,7 +491,15 @@ html.et-plight .fil552 a.on{color:var(--fcl)}
 <a href="/amont/parc" class="psn-link">Parc &amp; mise à disposition</a>
 </div></nav>
 <link rel="stylesheet" href="/assets/chrome/s_fa541870c6.css">
-<header class="pghero" style="--pac:var(--gold-l);--pacl:#8A6210">
+<style id="t621">/* Ch621 — un ou deux symboles du metier dans l en-tete de chaque sous-page de pole */
+header.pghero .pgh-grid{position:relative}
+header.pghero .pgh-main{position:relative;z-index:1}
+header.pghero>.wrap>.t621{position:absolute;right:clamp(24px,3.9vw,56px);top:50%;translate:0 -50%;width:min(22vw,300px);height:auto;color:var(--pac,#E8C36A);opacity:.2;pointer-events:none;z-index:0;overflow:visible}
+.t621 .t619-hair{stroke-width:1.2;opacity:.7}
+@media(max-width:1180px){header.pghero>.wrap>.t621{display:none}}
+@media(prefers-reduced-motion:no-preference){header.pghero>.wrap>.t621{animation:t621in 1.1s cubic-bezier(.2,.7,.2,1) both .15s}}
+@keyframes t621in{from{opacity:0;translate:28px -50%}}
+</style><header class="pghero" style="--pac:var(--gold-l);--pacl:#8A6210">
 <div class="wrap pgh-grid"><div class="pgh-main">
 <nav class="crumb" aria-label="Fil d’Ariane"><a href="/">Accueil</a><span class="crumb-sep">›</span><a href="/amont/">Amont</a><span class="crumb-sep">›</span><span>Développement de champ</span></nav>
 <span class="pgk">Amont · Développement</span>
@@ -499,7 +507,7 @@ html.et-plight .fil552 a.on{color:var(--fcl)}
 <p class="pgl">Entre la découverte et le premier baril, il y a un plan : combien de puits, où, quelles installations, pour quel profil de production et quel coût. Le développement de champ est le métier qui écrit ce plan, le chiffre, et le fait approuver — c’est là que se décide si un gisement devient un actif.</p>
 <div class="pgrule"></div>
 <div class="pgh-cta"><a class="pgh-btn" href="/contact">Nous contacter →</a><a class="pgh-btn2" href="#detail">Voir le détail ↓</a></div>
-</div><div class="pgh-art"><div class="pgh-frame"><span class="pgh-flabel"> · EnerTchad</span></div></div></div>
+</div><svg class="t621" viewBox="0 40 398 300" preserveAspectRatio="xMaxYMid meet" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path class="t619-hair" d="M0 300 H398"/><g transform="translate(-304,0)"><rect x="366" y="284" width="44" height="16" rx="2"/><path d="M388 284 V196 M372 240 H404 M372 214 H404"/><rect x="378" y="196" width="20" height="10" rx="2"/><rect x="378" y="248" width="20" height="12" rx="2"/><path d="M404 214 H426 M404 240 H426"/><circle cx="436" cy="214" r="9"/><circle cx="436" cy="240" r="9"/><path d="M372 214 H354 M372 240 H354"/><circle cx="344" cy="214" r="9"/></g><g transform="translate(-268,0)"><rect x="472" y="196" width="150" height="58" rx="29"/><path d="M498 254 V300 M596 254 V300 M486 300 H510 M584 300 H608"/><path d="M450 240 H472 M622 225 H636"/><path d="M547 196 V180"/><circle cx="547" cy="168" r="12"/><path d="M547 168 L554 160"/><path d="M520 254 V276 M574 254 V276"/></g></svg><div class="pgh-art"><div class="pgh-frame"><span class="pgh-flabel"> · EnerTchad</span></div></div></div>
 </header>
 <style id="p602">
 .p602{max-width:var(--mw,1200px);margin:0 auto;padding:10px var(--gut,24px) 40px}
