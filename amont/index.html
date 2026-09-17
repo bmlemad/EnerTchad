@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="fr">
-<head><script id="et-light-def">try{var d=document.documentElement,p=location.pathname,j=/^\/journal-/.test(p),k=j?"et-jlight":"et-plight",v=localStorage.getItem(k);if(v!=="0")d.classList.add(k)}catch(e){document.documentElement.classList.add("et-plight")}</script>
+<head><script id="et-light-def">try{var d=document.documentElement,p=location.pathname,j=/^\/journal-/.test(p),k=j?"et-jlight":"et-plight",v=localStorage.getItem(k);if(v!=="0")d.classList.add(k);var f="coupe";if(j||/^\/carnets/.test(p))f="papier";else if(/^\/(intermediaire\/|pole-intermediaire|ar-intermediaire|greentech\/|pole-greentech|tchaditech\/|pole-tchaditech)/.test(p))f="corridor";else if(/^\/(aval\/|pole-aval|ar-aval|petrochimie\/|pole-enerchimie)/.test(p))f="colonne";d.setAttribute("data-fond",f)}catch(e){document.documentElement.classList.add("et-plight")}</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#111D33">
@@ -499,7 +499,7 @@ html:not(.et-plight):not(.et-jlight) .c7d:not(#_){color:#93A1B8!important}
 html.et-plight .grp565>.g565-h .g565-k,html.et-jlight .grp565>.g565-h .g565-k{color:#8A6210}
 html.et-plight .grp565>.g565-h::after,html.et-jlight .grp565>.g565-h::after{background:linear-gradient(90deg,#8A6210,transparent)}
 </style><link rel="stylesheet" id="journal-css" href="/assets/chrome/journal.css?b=202609171000">
-</head>
+<link rel="stylesheet" id="fond647" href="/assets/chrome/fond647.css?b=202609171400"></head>
 <body id="top"><div class="rdprog" aria-hidden="true"></div>
 <a href="#main-content" class="skip-link">Aller au contenu principal</a>
 <div id="preloader" aria-hidden="true">
@@ -1308,32 +1308,5 @@ g.addColorStop(0,'rgba('+col.join(',')+','+(L?.30:.7)+')');g.addColorStop(1,'rgb
 x.fillStyle=g;x.beginPath();x.arc(px,py,p.r*6,0,6.284);x.fill()}
 x.globalCompositeOperation='source-over'}
 requestAnimationFrame(fr);
-})();</script><style id="fond643">
-/* Ch643 - le fond des pages de pole. Audit prealable, masque par masque, avec relecture de la
-   valeur calculee apres injection et bruit de fond sur trois passes :
-     .subland  — sept degrades et un fond opaque, INVISIBLE en theme sombre (repeinte en magenta
-                 pur : 0,00 % de pixel ; masquee : 1,23 / 0,38 / 0,52 pour un bruit de
-                 2,51 / 1,71 / 1,33). En theme clair au contraire elle porte tout : masquee,
-                 23,47 / 23,37 / 23,26 pour un bruit de 0,49 / 0,41 / 0,15, parce que .rootland
-                 n y est qu un voile creme a 72 %. Le couple s inverse selon le theme, comme
-                 .diapo et .rootland sur la home. Le test magenta ne le voyait pas : il mesure
-                 la visibilite pure, pas la contribution a travers une couche translucide.
-     #aurora   — 6,67 / 6,01 / 5,44 en sombre et 2,96 / 2,90 / 2,78 en clair : la couche qui
-                 pese, ici comme sur la home, et elle combat le dessin.
-     body::before et html::before — 1,65 / 1,75 / 1,30 en sombre, 0,34 / 0,34 / 0,27 en clair,
-                 pour deux blur() plein ecran a 26 px et 34 px. Au bruit.
-     body::after — 3,48 au sommet en sombre, au bruit ailleurs et partout en clair.
-   On pose donc l image sur .rootland, la couche du dessus, avec un fond opaque dans les deux
-   themes, et on eteint tout le reste. Avant : 45 couches floutees dont 6 de grande surface. */
-html body .rootland:not(#h1):not(#h2):not(#h3):not(#h4):not(#h5):not(#h6):not(#h7):not(#h8){background-image:url(/assets/img/fond-coupe-sombre.webp)!important;
- background-size:cover!important;background-position:center center!important;background-repeat:no-repeat!important;
- background-color:#0A1220!important;background-attachment:fixed!important;filter:none!important;animation:none!important}
-html:is(.et-plight,.et-jlight) body .rootland:not(#h1):not(#h2):not(#h3):not(#h4):not(#h5):not(#h6):not(#h7):not(#h8){background-image:url(/assets/img/fond-coupe-clair.webp)!important;
- background-color:#FAF7F1!important}
-html body .subland:not(#h1):not(#h2):not(#h3):not(#h4):not(#h5):not(#h6):not(#h7):not(#h8){display:none!important}
-html body #aurora:not(#h1):not(#h2):not(#h3):not(#h4):not(#h5):not(#h6):not(#h7):not(#h8){display:none!important}
-html:not(#h1):not(#h2):not(#h3):not(#h4):not(#h5):not(#h6):not(#h7):not(#h8)::before,body::before{display:none!important}
-body::after{display:none!important}
-</style>
-</body>
+})();</script></body>
 </html>
