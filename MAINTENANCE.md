@@ -25608,3 +25608,46 @@ C est cette identite parfaite — pas une relecture du code — qui a trahi la
 panne. Corrige en `'0'` pour le sombre, les deux themes divergent enfin.
 Au passage, cela redit l anomalie ouverte depuis plusieurs chapitres : le
 site impose le theme clair par defaut et n ecoute pas `prefers-color-scheme`.
+
+## 646 — Le registre ne s affichait plus
+
+**Origine** — rien de demande : le chapitre nait de la synchronisation du
+tableau de bord aux 644 et 645. En ouvrant le code j y ai trouve un defaut
+qui n avait rien a voir avec les deux chapitres a inscrire.
+
+**LE DEFAUT** — cinq entrees du registre portent la categorie `design`,
+introduite avec le 640. Le type `Cat` du tableau de bord ne la connait pas
+et la table `CAT_META`, qui associe a chaque categorie son libelle et sa
+pastille, n a que quatre cles : `chantier`, `qa`, `correctif`, `journal`.
+Le rendu ecrit `CAT_META[c.cat].cls` pour chaque chapitre. Sur le premier
+chapitre en `design` — le 643, donc le premier de la liste — l expression
+vaut `undefined.cls` : **TypeError**, React abandonne le rendu, et comme
+l erreur survient a la racine, ce n est pas une pastille qui manque, c est
+la page entiere qui reste blanche.
+
+**LA MESURE** — je ne me suis pas contente de lire le code. J ai rebati la
+version precedente telle quelle et je l ai ouverte : `pageerror`
+« Cannot read properties of undefined (reading 'cls') », `#root` a **0
+octet**, 0 chapitre rendu, 0 caractere de texte dans la page. La version
+104 du registre, publiee hier, ne montrait rien du tout.
+
+**LA REPARATION** — `design` ajoutee au type, au filtre et a `CAT_META`,
+avec sa propre pastille or (`chip-gold`), couleur que la feuille n avait
+pas encore. Apres correction : 371 chapitres rendus, 0 erreur de page, 0
+erreur console, 0 debordement, six onglets de filtre (Chantier 178, Design
+6, QA 115, Correctif 62, Journal 10), et en tete de liste 645, 644, 643.
+
+**MON ERREUR** — elle est ancienne et elle est double. D abord j ai
+introduit une categorie dans les donnees sans l ajouter a la table qui les
+affiche, au chapitre 640 ; le defaut dormait depuis cinq chapitres.
+Ensuite, et c est le vrai manquement : j ai publie le registre a chaque
+chapitre depuis, en me fiant a la reussite de la compilation. `vite build`
+ne verifie pas les types — l erreur n existe qu a l execution. Je verifiais
+que le fichier se construisait, pas qu il s affichait. Desormais le
+tableau de bord passe par la meme regle que le site : une ouverture
+effective, comptage des elements rendus, releve des erreurs de page et de
+console, avant toute publication.
+
+**A JOUR** — en-tete « ch.275-645, 17 septembre 2026 », tuile a 645,
+pastille de service `et-202609171200`. Les chapitres 644 et 645 sont
+inscrits. Version 105 du registre.
