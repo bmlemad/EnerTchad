@@ -25108,3 +25108,88 @@ en transition renvoie une valeur calculee perimee ; avant de mesurer
 une couleur, une taille ou une opacite en production, poser
 `*{transition:none!important}` et appeler `finish()` sur les animations
 de l element.
+
+## 640 — Ce que les majors mettent sur leur home, et ce qu il fallait en prendre
+
+**Consigne** — inspire toi des homes des majors pour ameliorer la home
+EnerTchad. Puis, sur mes deux questions : rester au dessin sans
+photographie, et prendre trois blocs sur quatre.
+
+**LE RELEVE** — homes lues et regardees : TotalEnergies, Aramco,
+ExxonMobil, Eni, Equinor, bp, et Savannah Energy — l independant
+britannique qui opere au Tchad et au Niger, le seul comparable vraiment
+proche. Onze conventions se repetent chez toutes. **Huit etaient deja en
+place sur la home EnerTchad** : surtitre, titre large, sous-titre et deux
+boutons dans le hero ; trois poles en cartes ; trois chiffres geants
+accompagnes d une phrase qui definit l entreprise ; communiques dates
+avec surtitre de rubrique ; documents avec format, pagination et poids ;
+contact reel ; une carte des actifs — que seul Savannah possede aussi.
+
+**LES QUATRE ECARTS** — la photographie, absente : **0 image de plus de
+40 px sur la home, 33 SVG** ; toutes les majors ouvrent sur une
+photographie. Le calendrier date de ce qui vient, que Total, bp et Aramco
+affichent tous. Le nombre vivant en tete, ou Total, bp et Exxon mettent
+leur cours de bourse. Le siege social au pied, qu Eni imprime avec son
+identifiant fiscal et Savannah avec ses cinq bureaux.
+
+**CE QUE JE N AI PAS COPIE** — Total et Aramco font tourner quatre recits
+dans le hero avec des onglets nommes. Le reprendre aurait affaibli la
+page : le schema de la chaine « roche-mere → pompe » dit en une image ce
+que la societe est, aucun carrousel ne fait mieux. Laisse tel quel.
+
+**LA TRADUCTION, PAS LA COPIE** — une societe en constitution n a pas de
+cours de bourse, et n a pas d installations a photographier. Inventer les
+unes ou les autres serait fabriquer des preuves. Mais elle a une valeur
+vivante que les majors n ont pas : **ou en est sa constitution**. C est
+l idee du chapitre. Le calendrier investisseur existait deja, complet et
+date, sur la page investisseurs et dans un fichier .ics a quatre
+evenements — il ne se voyait nulle part sur la home.
+
+**TROIS BLOCS** — *Le fil des jalons*, apres les carnets, a la place ou
+Total pose son calendrier apres ses communiques : quatre jalons dates sur
+un rail dessine, une encoche en losange par jalon. *Le bandeau du hero*,
+a droite du surtitre, la ou Total affiche son cours : le prochain jalon,
+sa date, et le nombre de jours qui en separent. *L identite de la
+societe* au pied : denomination, forme juridique, siege social, RCCM/NIF
+en cours, regulateur, contact — reprise mot pour mot des mentions
+legales, rien d invente.
+
+**L ETAT SE CALCULE A LA LECTURE** — sur un site statique, un calendrier
+ecrit en dur perime. Les trois etats — date visee passee, prochain, a
+venir — sont deduits de la date du jour a l ouverture de la page, et le
+meme calcul alimente le bandeau. Au 17 septembre 2026 le premier jalon
+affiche donc « date visee passee », ce qui est la verite : la
+confirmation n a pas ete publiee. Un calendrier qui le dit vaut mieux
+qu un calendrier qui se tait.
+
+**Aucune photographie ajoutee** — decision du proprietaire : assumer le
+dessin. Le fil des jalons est donc un trait, quatre losanges et des
+pastilles d etat, dans le meme registre que les frises et le cadastre.
+
+**DEUX DEFAUTS TROUVES EN MESURANT, AVANT PUBLICATION** — en theme clair,
+le bandeau du hero etait **quasi invisible : 1,0:1**. Le hero garde une
+couleur de texte claire meme en theme clair ; le surtitre `.nh-k` porte
+sa propre couleur, mon bandeau heritait de celle du hero et ecrivait du
+blanc casse sur du creme. Corrige par une couleur propre : 5,0 a 6,4:1.
+Et la date de chaque jalon utilisait `var(--muted)`, qui vaut `#7C8AA2`
+en theme clair : **2,9:1 sur creme**. Les paragraphes du site ne s en
+servent pas, ils recoivent une couleur plus sombre ailleurs. Corrige :
+6,1:1.
+
+**Mon erreur, encore une de mesure** — pour lire le fond sous un texte,
+je rends le texte transparent puis je photographie la zone. Sur le titre
+de chaque jalon la mesure donnait 1,0:1 en theme clair, ce qui aurait
+signale un defaut inexistant : une regle du theme clair fixe
+`-webkit-text-fill-color`, qui l emporte sur `color`, et les glyphes
+restaient peints malgre `color:transparent`. **Lecon** — pour effacer un
+texte avant de mesurer son fond, poser les deux proprietes. Corrige, le
+titre vaut 14,5:1.
+
+**VERIFIE (local)** — deux pages, quatre passes (sombre et clair, 1 440
+et 390) : 0 erreur console, 0 erreur de page, 0 reponse 400 ou plus, 0
+debordement. Contenu coupe : 21 elements a 1 440 et 3 a 390, **chiffres
+identiques a ceux du 639** — les panneaux de navigation fermes, pas une
+regression. 28 contrastes mesures sur pixels reellement peints, le plus
+mauvais a 5,0:1, au-dessus de AA. Les quatre etats des jalons concordent
+avec le fichier .ics. Hauteur de page : 8 177 → 8 950 px. Aucun asset,
+SW inchange. Trois fichiers.
