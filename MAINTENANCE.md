@@ -25814,3 +25814,26 @@ clair 1 440, sombre 390), 198 rendus : 0 erreur de page, 0 erreur console,
 boucle, 0 ancre morte, 0 saut inutile. Six assets ajoutes, SW porte a
 **et-202609171700**, cle de cache de la feuille du journal a 202609171700
 sur 69 pages. 76 fichiers.
+
+**VERIFIE (production, 17 septembre)** — publication terminee, 76 fichiers,
+arbre propre. Sur la une : la colonne **Reperes** presente avec ses trois
+chiffres — 144 → 250, 80 %, 10 M → 20 Md —, les **deux secondes histoires**
+sous la tete, une grille de **507 / 235 / 206 px** a 1 400, les surtitres en
+Space Grotesk a 1,69 px d interlettrage, l en-tete de colonne a 10,88 px.
+Marqueurs negatifs : **zero** etiquette encore en chasse fixe, `text-decoration`
+du fil a `none`, **zero** article en double sur la page. Sur un article :
+`data-pl="corridor"` et `data-fond="papier"` sur `<html>`, le bandeau
+`bande-corridor-sombre.webp` cadre a 61 % dans une boite de 704 x 194, la
+legende « PLANCHE 02 · TRAVERSE — PROFIL EN LONG, DATUM ZERO — DETAIL —
+DESSIN ENERTCHAD ». Les six bandes repondent **200 image/webp** pour 19 a
+120 Ko. `sw.js` sert **et-202609171700**.
+
+**LA PUBLICATION, ET CE QU ELLE A COUTE** — deux enseignements a garder.
+GitHub refuse les televersements apres deux ou trois commits rapproches
+(« You can't perform that action at this time ») : il faut des lots de huit
+a dix fichiers et des pauses de deux a quatre minutes. Surtout : **rappeler
+la porte de validation une seconde fois sur la meme page provoque un 400**.
+Quand elle repond `ok:false`, on ne la rappelle pas — on recharge la page et
+on recommence le lot. Enfin, un `ok:true` ne prouve rien : seule la ligne
+`git log -1 FETCH_HEAD` fait foi, et elle a dementi le harnais trois fois
+au cours de ce chapitre et du precedent.
