@@ -25522,3 +25522,45 @@ deux poles), quatre passes (sombre et clair, 1 440 et 390) : **32 rendus,
 plus, 0 debordement, serif chargee partout. Controle d integrite : 216
 pages, 0 probleme. Un asset et deux polices ajoutes, **SW porte a
 et-202609171200**. Soixante-dix-sept fichiers.
+
+## 645 — Le hero s efface devant le dessin
+
+**Consigne** — eliminer le bandeau pour permettre une bonne visibilite du
+fond, captures du hero a l appui. Le mot « bandeau » pouvait designer trois
+elements ; question posee, reponse : **les trois**.
+
+**CE QUI RECOUVRAIT LA COUPE** — trois surfaces, toutes dans le hero.
+Le **voile du hero** d abord : une pile de degrades peinte par
+`header#top` sur 1 430 x 968, doublee d un `filter: saturate(1.1)
+contrast(1.045) brightness(1.015)` — elle assombrissait le dessin de la
+barre de navigation jusqu au bas du hero. La **bande de chiffres**
+ensuite : 1 088 x 118, fond teinte or a 16 %, bordure et ombre interne sur
+chacune des trois cases, un bloc opaque pose en travers de la coupe. La
+**ligne du prochain jalon** enfin, ajoutee au 640.
+
+**CE QUI RESTE** — les trois chiffres sont intacts, poses directement sur
+le dessin et separes par de simples filets verticaux. L information du
+jalon reste entiere dans la section « Le fil des jalons », plus bas dans la
+page : c est la seule chose que la ligne du hero disait, et elle le disait
+deux fois.
+
+**LA CASCADE, ENCORE** — trois reprises ont ete necessaires. Mon premier
+jet retirait le fond de `.nh-kpi` mais laissait celui de ses trois cases,
+qui portent leur propre surface : le bloc restait visible. Mon deuxieme
+jet visait les cases avec douze identifiants ; la regle du 623 qui leur
+pose `rgba(6,22,38,.74)` en compte vingt-deux. Il en a fallu **vingt-six**.
+A chaque fois la valeur calculee a ete relue apres injection, comme depuis
+le 641 : c est ce qui a montre, noir sur blanc, que le fond tenait encore.
+
+**LE CONTRASTE MONTE, IL NE BAISSE PAS** — on pouvait craindre l inverse
+en retirant un voile sous du texte blanc. Mesure sur pixels reellement
+peints : titre du hero **12,7:1**, chapo **16,3:1**, second bouton
+**16,2:1**, surtitre **6,1:1**. Ce surtitre valait 3,9:1 avant le 641,
+4,5 apres le fond, 5,4 apres le degagement du 642 : il est maintenant a
+**6,1:1**. La coupe est plus sombre que le voile qui la recouvrait — le
+dessin protege le texte mieux que le rideau qu on avait mis devant.
+
+**VERIFIE (local)** — deux pages, quatre passes : 0 erreur console, 0
+erreur de page, 0 reponse 400 ou plus, 0 debordement, contenu coupe
+inchange. Controle d integrite : 216 pages, 0 probleme. Hauteur de la home
+8 806 → 8 770 px. Aucun asset, SW inchange. Trois fichiers.
