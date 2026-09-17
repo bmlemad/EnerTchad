@@ -25001,3 +25001,91 @@ balayage, 419 les deux outils, 583 mouvement reduit et lien d evitement).
 Rien a reprendre de ce cote sans redite.
 
 **Seul le journal change.** Aucun asset, SW inchange.
+
+## 639 — Le fond de la home, et la tuile que la home avait oubliee
+
+**Consigne** — audit le background et les tuiles de l accueil, puis
+lance.
+
+**LE FOND — SEPT COUCHES** — la page d accueil empile, sous son contenu,
+sept nappes plein ecran : `html::before` et `body::before` (degrades
+radiaux a 3,5 % d opacite), `.rootland` et son voile, `.diapo` et ses
+deux voiles, `body::after`, `#aurora` et ses trois disques flous a
+blur(48px), et `.prem-mesh` dans le hero. Trois d entre elles declarent
+**les memes quatre taches d angle** — or au nord-ouest, bleu au nord-est,
+sarcelle au sud-est, ambre au sud-ouest — a deux ou quatre pour cent pres
+de position et d opacite.
+
+**LA MESURE QUI TRANCHE** — pour savoir ce qu une couche peint vraiment,
+je la repeins en magenta pur et je compte les pixels magenta a l ecran.
+`.rootland` : **0,00 % a quatre hauteurs de defilement, en theme sombre**.
+La raison est mecanique : `.diapo`, juste au-dessus en z-index, porte un
+fond **opaque** `#0A1220`. Contre-epreuve par masquage : l ecart avec la
+page de reference vaut 0,71 / 1,03 / 0,98 pour un bruit de fond mesure a
+0,79 / 0,87 / 0,88. La couche est donc invisible, pas discrete. En theme
+clair en revanche `.diapo` passe en `absolute` sur 112vh : `.rootland`
+redevient le sol de la page sous le hero (22 % puis 42 % des pixels).
+Elle n est retiree que du rendu sombre.
+
+**LA COULEUR** — rendu du fond seul, contenu masque : une bande mauve
+traversait le milieu de la page. Elle vient de deux taches froides,
+violet `.18` et bleu `.15`, posees au centre de `.diapo`. Ce sont les
+deux seules couleurs hors charte de la page. Retirees ; les quatre taches
+d angle restent.
+
+**LA TUILE OUBLIEE — ET LA VRAIE CAUSE** — les quatre familles de tuiles
+de la home divergeaient sur cinq points, et une seule divergeait sur les
+cinq : `.doc-c`, dans « Les documents de reference ». Fond
+`rgba(0,38,58,.46)` contre `rgba(6,22,38,.74)` ailleurs, rayon 14 contre
+20, retrait 17/18/15 contre 20/20/18, et surtout **un `backdrop-filter:
+saturate(1.6) blur(20px)` toujours actif** — alors que le chapitre 623
+avait pour consigne de retirer le verre depoli de toute la home.
+
+Le 623 n avait pourtant rien oublie : sa regle nomme bien `.doc-c`. Elle
+est portee par `:is(main,header.hero)`. Or **`#reperes` et `#cta-band`
+sont places hors de `<main>`**, en enfants directs de `<body>`. Toutes
+les regles de la home qui passent par `main` les ignorent donc depuis
+toujours : le depolissage du 623, son alignement des fonds, sa
+suppression des ombres de texte. Ce n est pas un oubli de selecteur,
+c est une zone de la home hors de portee de sa propre politique de
+style — et personne ne pouvait le voir en relisant le 623.
+
+**Mon erreur** — trois fausses pistes de mesure avant celle-la. J ai
+d abord compare deux captures **octet par octet** : Chromium tramant ses
+grands degrades, un controle a vide donnait deja 48 % de pixels
+differents, le test ne valait rien. J ai ensuite mesure la gouttiere sur
+une capture **pleine page** et conclu a un aplat parfait, ecart-type
+0,00 : les couches `fixed` ne se repetent pas dans une capture pleine
+page, la mesure etait un artefact. J ai enfin releve `opacity:0` sur les
+trois frises `t619` et failli annoncer une regression du 623 : elles sont
+animees par `animation-timeline:view()` et je les mesurais hors champ ;
+recentrees, elles valent bien 0,2. Je n ai garde que ce qui resiste a
+deux methodes independantes.
+
+**Une proposition retiree par la mesure** — j avais annonce la
+suppression de `html::before` et `body::before`, donnes pour invisibles a
+3,5 % d opacite. Verification avant d agir : masquees, l ecart au hero
+vaut 2,57 en sombre et 1,17 en clair pour un bruit de fond de 0,79 et
+0,55. Trois fois le plancher — faible, mais reel. Elles restent.
+
+**CE QUI NE BOUGE PAS** — le contraste, deja excellent partout :
+minimum mesure sur pixels reellement peints, 9,2:1 en sombre et 9,4:1 en
+clair, tres au-dessus de AAA. Apres le chapitre, les tuiles de
+`#reperes` passent de 10,3 a 12,1 dans leur pire zone. Les frises `t619`
+sont correctes, y compris leur mise en retrait sur mobile.
+
+**RESTE OUVERT** — le rayon de `.dur-g` (16 contre 20 ailleurs), la
+gouttiere de `.hnews-grid` (16 contre 14), la respiration de `#reperes`
+(76/76 contre 46/46 partout), la bande basse des tuiles de pole
+(165 px sur 450, soit 37 %, trois fois), et le deplacement de `#reperes`
+et `#cta-band` dans `<main>` — qui reglerait la cause plutot que le
+symptome, mais touche des selecteurs `body > section` existants.
+
+**VERIFIE (local)** — deux pages, quatre passes (sombre et clair, 1 440
+et 390) : 0 erreur console, 0 erreur de page, 0 reponse 400 ou plus, 0
+debordement. Contenu coupe : 21 elements a 1 440 et 3 a 390 — **chiffres
+identiques avant et apres**, mesures contre une copie du depot servie
+avec les memes assets ; ce sont les panneaux de navigation fermes, pas
+une regression. `.doc-c` aligne au pixel sur `.agir-c` dans les deux
+themes. `.rootland` masquee en sombre, intacte en clair. Aucun asset,
+SW inchange. Deux fichiers.

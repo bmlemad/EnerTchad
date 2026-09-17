@@ -2057,5 +2057,38 @@ html.et-plight #coeurs:not(#e1):not(#e2):not(#e3),html.et-plight .hxi:not(#e1):n
 html.et-plight footer:not(#e1):not(#e2):not(#e3){border-top-color:rgba(122,92,20,.16)!important}
 html.et-plight .acth:not(#e1):not(#e2):not(#e3){background:rgba(252,250,246,.42)!important}
 @media (prefers-reduced-transparency:reduce){}
-</style><!-- Ch623 : le canevas anime des flux (da540) est retire : la home est nette --></body>
+</style><!-- Ch623 : le canevas anime des flux (da540) est retire : la home est nette --><style id="bg639">
+/* Ch639 - le fond et les tuiles de la page d accueil.
+   1. .rootland est integralement masquee par .diapo en theme sombre : .diapo porte un fond
+      opaque #0A1220 au-dessus d elle. Mesure : repeinte en magenta pur, 0,00 % de pixel visible
+      a quatre hauteurs de defilement ; masquee, l ecart avec la page de reference reste sous le
+      bruit de tramage des degrades (0,71 / 1,03 / 0,98 pour un plancher de 0,79 / 0,87 / 0,88).
+      On la retire du rendu sombre. En theme clair .diapo passe en absolute sur 112vh et .rootland
+      redevient le sol de la page (22 % puis 42 % des pixels) : elle n est pas touchee la.
+   2. La nappe .diapo perd ses deux taches froides - violet .18 et bleu .15, toutes deux au centre -
+      qui tiraient le milieu de la page vers le mauve. Les quatre taches d angle de la charte restent.
+   3. #reperes et #cta-band sont places hors de <main>. Toutes les regles de la home portees par
+      :is(main,header.hero) les ont donc toujours ignorees, dont le depolissage du chapitre 623 :
+      d ou la seule tuile de la home restee en verre depoli, et le seul fond de tuile divergent
+      (rgba(0,38,58,.46) contre rgba(6,22,38,.74) ailleurs). On etend la portee a ces sections
+      et on aligne la geometrie de .doc-c sur les trois autres familles. */
+html:not(.et-plight):not(.et-jlight) .rootland:not(#b1):not(#b2):not(#b3):not(#b4):not(#b5){display:none!important}
+html:not(.et-plight):not(.et-jlight) body.hm .diapo:not(#b1):not(#b2):not(#b3):not(#b4):not(#b5){
+  background:
+    radial-gradient(46% 54% at 14% 14%, rgba(219,174,74,.42), transparent 64%),
+    radial-gradient(44% 50% at 88% 8%, rgba(90,167,240,.32), transparent 62%),
+    radial-gradient(54% 56% at 80% 92%, rgba(31,164,150,.28), transparent 64%),
+    radial-gradient(48% 52% at 16% 94%, rgba(224,162,78,.28), transparent 62%),
+    #0A1220!important}
+html body.hm>section:not(#b1):not(#b2):not(#b3):not(#b4):not(#b5) *:not(#b1):not(#b2):not(#b3):not(#b4):not(#b5){-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+html:not(.et-plight):not(.et-jlight) body.hm>section .doc-c:not(#b1):not(#b2):not(#b3):not(#b4):not(#b5){
+  background-color:rgba(6,22,38,.74)!important;background-image:none!important;
+  border:1px solid rgba(232,195,106,.20)!important}
+html:is(.et-plight,.et-jlight) body.hm>section .doc-c:not(#b1):not(#b2):not(#b3):not(#b4):not(#b5){
+  background-color:rgba(255,255,255,.82)!important;background-image:none!important;
+  border:1px solid rgba(138,106,18,.30)!important}
+body.hm>section .doc-c:not(#b1):not(#b2):not(#b3):not(#b4):not(#b5){border-radius:20px!important;padding:20px 20px 18px!important}
+body.hm>section .doc-g:not(#b1):not(#b2):not(#b3):not(#b4):not(#b5){gap:14px!important}
+</style>
+</body>
 </html>
