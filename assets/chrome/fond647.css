@@ -1,0 +1,51 @@
+/* ————— Ch647 — le dessin sur tout le site, regle unique —————
+   Le script d amorce pose data-fond sur <html> des le premier octet du head :
+   coupe pour l Exploration & Production et le corporate, corridor pour le
+   Transport & stockage, colonne pour le Raffinage & distribution et la
+   petrochimie, papier pour le journal. Une seule regle ici remplace les
+   blocs de page : la planche va sur le porteur visible, tout le reste
+   des nappes plein ecran s eteint. Mesure au 647 : sur les quatre pages
+   temoins, .rootland portait le fond et les autres couches rendaient
+   entre le plancher de bruit et deux points. */
+
+html[data-fond]:not(.et-plight):not(.et-jlight) body .rootland:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4):not(#f5):not(#f6):not(#f7):not(#f8):not(#f9):not(#f10):not(#f11):not(#f12):not(#f13):not(#f14):not(#f15):not(#f16):not(#f17):not(#f18):not(#f19):not(#f20):not(#f21):not(#f22):not(#f23):not(#f24):not(#f25),
+html[data-fond]:not(.et-plight):not(.et-jlight) body .diapo:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4):not(#f5):not(#f6):not(#f7):not(#f8):not(#f9):not(#f10):not(#f11):not(#f12):not(#f13):not(#f14):not(#f15):not(#f16):not(#f17):not(#f18):not(#f19):not(#f20):not(#f21):not(#f22):not(#f23):not(#f24):not(#f25):not(#d1):not(#d2):not(#d3):not(#d4):not(#d5):not(#d6){
+ background-size:cover!important;background-position:center center!important;
+ background-repeat:no-repeat!important;background-attachment:scroll!important;
+ background-color:#0A1220!important}
+html[data-fond]:is(.et-plight,.et-jlight) body .rootland:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4):not(#f5):not(#f6):not(#f7):not(#f8):not(#f9):not(#f10):not(#f11):not(#f12):not(#f13):not(#f14):not(#f15):not(#f16):not(#f17):not(#f18):not(#f19):not(#f20):not(#f21):not(#f22):not(#f23):not(#f24):not(#f25),
+html[data-fond]:is(.et-plight,.et-jlight) body .diapo:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4):not(#f5):not(#f6):not(#f7):not(#f8):not(#f9):not(#f10):not(#f11):not(#f12):not(#f13):not(#f14):not(#f15):not(#f16):not(#f17):not(#f18):not(#f19):not(#f20):not(#f21):not(#f22):not(#f23):not(#f24):not(#f25):not(#d1):not(#d2):not(#d3):not(#d4):not(#d5):not(#d6){
+ background-size:cover!important;background-position:center center!important;
+ background-repeat:no-repeat!important;background-attachment:scroll!important;
+ background-color:#FAF7F1!important}
+
+/* la planche, par metier */
+html[data-fond="coupe"]:not(.et-plight):not(.et-jlight) body .rootland:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4):not(#f5):not(#f6):not(#f7):not(#f8):not(#f9):not(#f10):not(#f11):not(#f12):not(#f13):not(#f14):not(#f15):not(#f16):not(#f17):not(#f18):not(#f19):not(#f20):not(#f21):not(#f22):not(#f23):not(#f24):not(#f25),
+html[data-fond="coupe"]:not(.et-plight):not(.et-jlight) body .diapo:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4):not(#f5):not(#f6):not(#f7):not(#f8):not(#f9):not(#f10):not(#f11):not(#f12):not(#f13):not(#f14):not(#f15):not(#f16):not(#f17):not(#f18):not(#f19):not(#f20):not(#f21):not(#f22):not(#f23):not(#f24):not(#f25):not(#d1):not(#d2):not(#d3){background-image:url(/assets/img/fond-coupe-sombre.webp)!important}
+html[data-fond="coupe"]:is(.et-plight,.et-jlight) body .rootland:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4):not(#f5):not(#f6):not(#f7):not(#f8):not(#f9):not(#f10):not(#f11):not(#f12):not(#f13):not(#f14):not(#f15):not(#f16):not(#f17):not(#f18):not(#f19):not(#f20):not(#f21):not(#f22):not(#f23):not(#f24):not(#f25),
+html[data-fond="coupe"]:is(.et-plight,.et-jlight) body .diapo:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4):not(#f5):not(#f6):not(#f7):not(#f8):not(#f9):not(#f10):not(#f11):not(#f12):not(#f13):not(#f14):not(#f15):not(#f16):not(#f17):not(#f18):not(#f19):not(#f20):not(#f21):not(#f22):not(#f23):not(#f24):not(#f25):not(#d1):not(#d2):not(#d3){background-image:url(/assets/img/fond-coupe-clair.webp)!important}
+
+html[data-fond="corridor"]:not(.et-plight):not(.et-jlight) body .rootland:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4):not(#f5):not(#f6):not(#f7):not(#f8):not(#f9):not(#f10):not(#f11):not(#f12):not(#f13):not(#f14):not(#f15):not(#f16):not(#f17):not(#f18):not(#f19):not(#f20):not(#f21):not(#f22):not(#f23):not(#f24):not(#f25),
+html[data-fond="corridor"]:not(.et-plight):not(.et-jlight) body .diapo:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4):not(#f5):not(#f6):not(#f7):not(#f8):not(#f9):not(#f10):not(#f11):not(#f12):not(#f13):not(#f14):not(#f15):not(#f16):not(#f17):not(#f18):not(#f19):not(#f20):not(#f21):not(#f22):not(#f23):not(#f24):not(#f25):not(#d1):not(#d2):not(#d3){background-image:url(/assets/img/fond-corridor-sombre.webp)!important}
+html[data-fond="corridor"]:is(.et-plight,.et-jlight) body .rootland:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4):not(#f5):not(#f6):not(#f7):not(#f8):not(#f9):not(#f10):not(#f11):not(#f12):not(#f13):not(#f14):not(#f15):not(#f16):not(#f17):not(#f18):not(#f19):not(#f20):not(#f21):not(#f22):not(#f23):not(#f24):not(#f25),
+html[data-fond="corridor"]:is(.et-plight,.et-jlight) body .diapo:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4):not(#f5):not(#f6):not(#f7):not(#f8):not(#f9):not(#f10):not(#f11):not(#f12):not(#f13):not(#f14):not(#f15):not(#f16):not(#f17):not(#f18):not(#f19):not(#f20):not(#f21):not(#f22):not(#f23):not(#f24):not(#f25):not(#d1):not(#d2):not(#d3){background-image:url(/assets/img/fond-corridor-clair.webp)!important}
+
+html[data-fond="colonne"]:not(.et-plight):not(.et-jlight) body .rootland:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4):not(#f5):not(#f6):not(#f7):not(#f8):not(#f9):not(#f10):not(#f11):not(#f12):not(#f13):not(#f14):not(#f15):not(#f16):not(#f17):not(#f18):not(#f19):not(#f20):not(#f21):not(#f22):not(#f23):not(#f24):not(#f25),
+html[data-fond="colonne"]:not(.et-plight):not(.et-jlight) body .diapo:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4):not(#f5):not(#f6):not(#f7):not(#f8):not(#f9):not(#f10):not(#f11):not(#f12):not(#f13):not(#f14):not(#f15):not(#f16):not(#f17):not(#f18):not(#f19):not(#f20):not(#f21):not(#f22):not(#f23):not(#f24):not(#f25):not(#d1):not(#d2):not(#d3){background-image:url(/assets/img/fond-colonne-sombre.webp)!important}
+html[data-fond="colonne"]:is(.et-plight,.et-jlight) body .rootland:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4):not(#f5):not(#f6):not(#f7):not(#f8):not(#f9):not(#f10):not(#f11):not(#f12):not(#f13):not(#f14):not(#f15):not(#f16):not(#f17):not(#f18):not(#f19):not(#f20):not(#f21):not(#f22):not(#f23):not(#f24):not(#f25),
+html[data-fond="colonne"]:is(.et-plight,.et-jlight) body .diapo:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4):not(#f5):not(#f6):not(#f7):not(#f8):not(#f9):not(#f10):not(#f11):not(#f12):not(#f13):not(#f14):not(#f15):not(#f16):not(#f17):not(#f18):not(#f19):not(#f20):not(#f21):not(#f22):not(#f23):not(#f24):not(#f25):not(#d1):not(#d2):not(#d3){background-image:url(/assets/img/fond-colonne-clair.webp)!important}
+
+/* le journal : un aplat de papier, pas de dessin */
+html[data-fond="papier"] body .rootland:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4):not(#f5):not(#f6):not(#f7):not(#f8):not(#f9):not(#f10):not(#f11):not(#f12):not(#f13):not(#f14):not(#f15):not(#f16):not(#f17):not(#f18):not(#f19):not(#f20):not(#f21):not(#f22):not(#f23):not(#f24):not(#f25),
+html[data-fond="papier"] body .diapo:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4):not(#f5):not(#f6):not(#f7):not(#f8):not(#f9):not(#f10):not(#f11):not(#f12):not(#f13):not(#f14):not(#f15):not(#f16):not(#f17):not(#f18):not(#f19):not(#f20):not(#f21):not(#f22):not(#f23):not(#f24):not(#f25){background-image:none!important}
+html[data-fond="papier"]:not(.et-plight):not(.et-jlight) body .rootland:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4):not(#f5):not(#f6):not(#f7):not(#f8):not(#f9):not(#f10):not(#f11):not(#f12):not(#f13):not(#f14):not(#f15):not(#f16):not(#f17):not(#f18):not(#f19):not(#f20):not(#f21):not(#f22):not(#f23):not(#f24):not(#f25){background-color:#111A27!important}
+html[data-fond="papier"]:is(.et-plight,.et-jlight) body .rootland:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4):not(#f5):not(#f6):not(#f7):not(#f8):not(#f9):not(#f10):not(#f11):not(#f12):not(#f13):not(#f14):not(#f15):not(#f16):not(#f17):not(#f18):not(#f19):not(#f20):not(#f21):not(#f22):not(#f23):not(#f24):not(#f25){background-color:#FBF8F2!important}
+
+/* tout ce qui s empilait par-dessus s eteint */
+html[data-fond] body .subland:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4):not(#f5):not(#f6):not(#f7):not(#f8):not(#f9):not(#f10):not(#f11):not(#f12):not(#f13):not(#f14):not(#f15):not(#f16):not(#f17):not(#f18):not(#f19):not(#f20):not(#f21):not(#f22):not(#f23):not(#f24):not(#f25),
+html[data-fond] body #aurora:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4):not(#f5):not(#f6):not(#f7):not(#f8):not(#f9):not(#f10):not(#f11):not(#f12):not(#f13):not(#f14):not(#f15):not(#f16):not(#f17):not(#f18):not(#f19):not(#f20):not(#f21):not(#f22):not(#f23):not(#f24):not(#f25),
+html[data-fond] body .prem-mesh:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4):not(#f5):not(#f6):not(#f7):not(#f8):not(#f9):not(#f10):not(#f11):not(#f12):not(#f13):not(#f14):not(#f15):not(#f16):not(#f17):not(#f18):not(#f19):not(#f20):not(#f21):not(#f22):not(#f23):not(#f24):not(#f25){display:none!important}
+html[data-fond] body:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4):not(#f5):not(#f6):not(#f7):not(#f8):not(#f9):not(#f10):not(#f11):not(#f12):not(#f13):not(#f14):not(#f15):not(#f16):not(#f17):not(#f18):not(#f19):not(#f20):not(#f21):not(#f22):not(#f23):not(#f24):not(#f25)::before,
+html[data-fond] body:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4):not(#f5):not(#f6):not(#f7):not(#f8):not(#f9):not(#f10):not(#f11):not(#f12):not(#f13):not(#f14):not(#f15):not(#f16):not(#f17):not(#f18):not(#f19):not(#f20):not(#f21):not(#f22):not(#f23):not(#f24):not(#f25)::after,
+html[data-fond]:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4):not(#f5):not(#f6):not(#f7):not(#f8):not(#f9):not(#f10):not(#f11):not(#f12):not(#f13):not(#f14):not(#f15):not(#f16):not(#f17):not(#f18):not(#f19):not(#f20):not(#f21):not(#f22):not(#f23):not(#f24):not(#f25)::before,
+html[data-fond]:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4):not(#f5):not(#f6):not(#f7):not(#f8):not(#f9):not(#f10):not(#f11):not(#f12):not(#f13):not(#f14):not(#f15):not(#f16):not(#f17):not(#f18):not(#f19):not(#f20):not(#f21):not(#f22):not(#f23):not(#f24):not(#f25)::after{display:none!important;content:none!important;background-image:none!important}
