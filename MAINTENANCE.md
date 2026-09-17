@@ -25745,3 +25745,72 @@ ici plutot que passe sous silence. Integrite des liens : 158 redirections,
 0 boucle, 0 ancre morte, 0 saut inutile ; les deux cibles signalees sont
 des liens `webcal:` que le controleur ne sait pas lire, anterieurs a ce
 chapitre. SW porte a **et-202609171400**. 210 fichiers.
+
+## 648 — Les Carnets au reglage des grands quotidiens
+
+**Consigne** — s inspirer du Washington Post et du New York Times pour
+moderniser les Carnets. Trois questions posees, trois reponses : des
+details recadres des planches en tete d article ; les etiquettes en sans
+tres espacee a la place de la chasse fixe ; une une a trois colonnes avec
+une colonne Reperes.
+
+**CE QUE FONT LES DEUX MAISONS** — meme grammaire chez les deux : une serif
+de titre et une sans de labeur, aucune carte ni ombre portee, des filets
+d un pixel pour separer les cellules, une grille editoriale a trois
+colonnes — tete en haut a gauche, sujets a droite, une colonne d appoint a
+l extreme droite — et des etiquettes en petit corps tres interlettre dans
+la sans maison. Le 644 avait deja pris la serif et les filets ; il restait
+les trois points ci-dessus.
+
+**1. LES ETIQUETTES** — generique, surtitres, en-tetes de colonne, dates,
+mentions de riviere et signature quittent la chasse fixe pour la
+geometrique deja chargee sur le site, en 9,9 a 10,9 px, graisse 600-700,
+interlettrage de 0,08 a 0,20 em. Aucune fonte de plus. Au passage, un
+defaut du 644 : les liens du fil se soulignaient au repos — la regle du
+644 n avait qu une classe contre une regle de site plus specifique, et la
+valeur calculee donnait bien `underline`. Corrige a douze identifiants.
+
+**2. LA UNE A TROIS COLONNES** — tete a gauche, fil date au centre,
+colonne **Reperes** a droite : les trois chiffres de la bande de la home
+— 144 → 250 kb/j, 80 % de valeur tchadienne, 10 M → 20 Md FCFA — puis les
+quatre jalons dates, dont l etat se calcule a la lecture. Rien n est
+invente : tout vient de pages existantes. Sous la tete, **deux secondes
+histoires** prises au premier departement — et retirees de ce departement,
+son compteur passant de 12 a 10, pour ne pas publier deux fois le meme
+article sur la meme page ; controle de doublons : aucun. La grille reflue
+a deux colonnes entre 861 et 1 079 px, a une seule en dessous.
+
+**3. LE BANDEAU D ARTICLE** — les planches du 641 sont rendues une seconde
+fois a plein contraste (le fond, lui, est comprime a 0,34), puis taillees
+en bandes de 2 400 x 560 : 19 a 120 Ko chacune, six fichiers pour deux
+themes. Chaque article porte `data-pl` sur `<html>` selon son metier —
+31 coupe, 17 colonne, 16 corridor, classes d apres le surtitre puis le
+slug — et cadre sa bande par `--jx`, un pourcentage tire d une empreinte
+du slug : 64 articles, 64 fragments differents, zero fichier de plus. La
+legende est celle d une figure de presse : planche, sujet, mention
+« Dessin EnerTchad ». Six pages n avaient pas de filet sous le chapo ; le
+bandeau s y pose avant le corps.
+
+**Mon erreur, et le harnais de contraste refait une troisieme fois** — ma
+mesure annoncait deux cibles claires a **1,29** et **1,51:1**. Faux, et le
+signe etait dans les donnees : le masque de glyphes comptait 1 368 pixels
+d encre pour « Tout le fil » — soit exactement toute la boite. Autrement
+dit la boite entiere avait change entre les deux captures. La cause :
+j efface le texte de la page entiere entre la capture « avec » et la
+capture « sans », et cet effacement **deplace la mise en page**. Le fond
+lu n etait donc plus celui qui est derriere le texte.
+Le harnais ne blanchit plus rien globalement. Il epingle chaque cible par
+selecteur **et** par rang, verifie avec `elementFromPoint` qu elle est bien
+l element du dessus en son centre — sinon une barre fixe la recouvre —
+puis capture **deux fois sa seule boite**, la seconde avec
+`visibility:hidden` sur cette cible uniquement : la mise en page ne bouge
+pas d un pixel, et la difference ne peut etre que l encre. Resultat sur
+**92 cibles**, deux themes, trois pages : la plus faible a **5,03:1**,
+zero sous le seuil AA. Les deux valeurs alarmantes n existaient pas.
+
+**VERIFIE (local)** — 66 pages du journal, trois passes (sombre 1 440,
+clair 1 440, sombre 390), 198 rendus : 0 erreur de page, 0 erreur console,
+0 reponse 400 ou plus, 0 debordement. Integrite : 158 redirections, 0
+boucle, 0 ancre morte, 0 saut inutile. Six assets ajoutes, SW porte a
+**et-202609171700**, cle de cache de la feuille du journal a 202609171700
+sur 69 pages. 76 fichiers.
