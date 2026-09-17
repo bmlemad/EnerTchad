@@ -24965,3 +24965,39 @@ reponse 400 ou plus, 0 debordement de page, 0 chiffre perime, 0 ancien
 nom de pole ; les six tableaux de l Atlas defilent dans leur cadre a
 390 et tiennent a 1 440 ; captures avant et apres glissement regardees.
 Aucun asset, SW inchange. Trois fichiers.
+
+## 638 — Le meme piege cherche partout, et le bilan d apres serie
+
+**Consigne** — next. Le defaut du 637 avait une propriete genante : il
+coupait du contenu sans produire le moindre debordement de page, donc
+aucun de mes balayages ne pouvait le voir. La question etait : combien
+d autres pages en souffrent ?
+
+**UNE MESURE NOUVELLE** — au lieu de mesurer le debordement de la page
+(scrollWidth de la racine contre la fenetre), je mesure ce que le lecteur
+ne peut pas atteindre : tout element visible dont le bord droit sort de
+la fenetre et dont aucun ancetre ne peut etre fait defiler. Un contenu
+coupe par un ancetre a overflow cache ne produit aucun debordement de
+page ; c est exactement ce qui se passait sur l Atlas.
+
+**RESULTAT** — 209 pages, quatre largeurs (360, 390, 768, 1 024), volets
+ouverts : **0 element coupe**. Le defaut de l Atlas etait isole, et il est
+corrige. Le motif — une piste de grille 1fr dont le contenu minimal
+depasse la place disponible — n existe nulle part ailleurs sur le site.
+
+**BILAN DE SANTE** — aucun depuis le 630, et sept chapitres ont touche le
+site depuis (cadastre unifie, cartes fusionnees, nomenclature, home
+refaite deux fois, silhouette, comptes remis d accord, volets). 209 pages
+plus les huit pages arabes et la 404, trois passes (sombre 1 440, sombre
+390, clair 1 440), volets ouverts a chaque fois : **627 rendus, 0 erreur
+console, 0 erreur de page, 0 reponse 400 ou plus, 0 debordement, 0
+contenu coupe**. 234 destinations internes distinctes, toutes valides.
+Controle d integrite : 216 pages, 0 probleme.
+
+**CE QUE J AI CHERCHE ET N AI PAS TROUVE** — j ai voulu verifier si
+l accessibilite meritait une passe : le journal en compte deja six
+(187 clavier, 234 contraste au pixel peint, 257 audit clavier, 319
+balayage, 419 les deux outils, 583 mouvement reduit et lien d evitement).
+Rien a reprendre de ce cote sans redite.
+
+**Seul le journal change.** Aucun asset, SW inchange.
