@@ -2268,5 +2268,25 @@ html body.hm:not(#g1):not(#g2):not(#g3):not(#g4):not(#g5)::before{display:none!i
 html:not(#g1):not(#g2):not(#g3):not(#g4):not(#g5)::before{display:none!important}
 html body.hm #cta-band .cb-in:not(#g1):not(#g2):not(#g3):not(#g4):not(#g5):not(#g6):not(#g7):not(#g8):not(#g9):not(#g10):not(#g11):not(#g12):not(#g13):not(#g14):not(#g15):not(#g16):not(#g17):not(#g18):not(#g19):not(#g20){-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
 </style>
+<style id="tuiles644">
+/* Ch644 - les quatre points de geometrie releves au 639 et laisses en attente.
+   Mesures d alors : .dur-g rayon 16 contre 20 pour les trois autres familles et bordure
+   blanche .14 contre or ; .hnews-grid gouttiere 16 contre 14 ; #reperes respiration 76/76
+   contre 46/46 partout ailleurs ; tuiles de pole, bande basse de 165 px sur 450, soit 37 %
+   de la tuile, trois fois — 495 px de hauteur de page pour une frise a 0,2 d opacite.
+   On aligne, et on resserre la bande sans toucher au dessin : la frise passe de 140 a 112 px
+   et le retrait bas de 164 a 132, ce qui laisse 12 px de degagement au lieu de 16. */
+body.hm #durabilite .dur-c:not(#k1):not(#k2):not(#k3):not(#k4):not(#k5):not(#k6):not(#k7):not(#k8){border-radius:20px!important}
+html:not(.et-plight):not(.et-jlight) body.hm #durabilite .dur-c:not(#k1):not(#k2):not(#k3):not(#k4):not(#k5):not(#k6):not(#k7):not(#k8){border:1px solid rgba(232,195,106,.20)!important}
+html:is(.et-plight,.et-jlight) body.hm #durabilite .dur-c:not(#k1):not(#k2):not(#k3):not(#k4):not(#k5):not(#k6):not(#k7):not(#k8){border:1px solid rgba(138,106,18,.30)!important}
+body.hm #carnets .hnews-grid:not(#k1):not(#k2):not(#k3):not(#k4):not(#k5):not(#k6):not(#k7):not(#k8){gap:14px!important}
+body.hm #reperes:not(#k1):not(#k2):not(#k3):not(#k4):not(#k5):not(#k6):not(#k7):not(#k8){padding-top:46px!important;padding-bottom:46px!important}
+@media(min-width:761px){
+ /* la regle du 619 compte dix-sept identifiants : il en faut davantage. La frise passe de
+    130 a 102 px d allocation, degagement inchange a 16 px. */
+ html body.hm #coeurs .t550-p:not(#k1):not(#k2):not(#k3):not(#k4):not(#k5):not(#k6):not(#k7):not(#k8):not(#k9):not(#k10):not(#k11):not(#k12):not(#k13):not(#k14):not(#k15):not(#k16):not(#k17):not(#k18):not(#k19):not(#k20){padding-bottom:calc(102px + clamp(24px,3vw,34px))!important}
+ html body.hm #coeurs .t550-p>.t619:not(#k1):not(#k2):not(#k3):not(#k4):not(#k5):not(#k6):not(#k7):not(#k8):not(#k9):not(#k10):not(#k11):not(#k12):not(#k13):not(#k14):not(#k15):not(#k16):not(#k17):not(#k18):not(#k19):not(#k20){height:112px!important}
+}
+</style>
 </body>
 </html>

@@ -25365,3 +25365,79 @@ debordement. Contenu coupe : 20 a 1 440 et 2 a 390 contre 21 et 3 au 641 —
 en baisse, un des elements comptes etait un disque d `#aurora`. Controle
 d integrite : 216 pages, 0 probleme. Aucun asset, SW inchange. Trois
 fichiers.
+
+## 643 — Les trois planches gagnent les poles, et la geometrie des tuiles se referme
+
+**Consigne** — next all : les deux points restes ouverts, les fonds a
+porter sur les pages de pole et la geometrie des tuiles du 639.
+
+**AUDIT PREALABLE DES PAGES DE POLE** — elles ne portent pas `.diapo`
+mais `.rootland`, `.subland`, `#aurora`, plus les deux pseudo-elements de
+page et `body::after`. **Quarante-cinq couches floutees, dont six de
+grande surface** : pire que la home avant le 641.
+
+**LE COUPLE QUI S INVERSE** — `.rootland` et `.subland` sont deux nappes
+plein ecran, sept degrades chacune, **au meme z-index**. En theme sombre
+`.rootland` est opaque : masquer `.subland` donne 1,23 / 0,38 / 0,52 pour
+un bruit de 2,51 / 1,71 / 1,33, et repeinte en magenta pur elle n occupe
+**0,00 %** de l ecran. Elle est morte. En theme clair, au contraire, la
+masquer donne **23,47 / 23,37 / 23,26** pour un bruit de 0,49 / 0,41 /
+0,15 : c est elle qui porte le fond, `.rootland` n y etant qu un voile
+creme a 72 %. Le couple s inverse selon le theme, exactement comme
+`.diapo` et `.rootland` sur la home.
+
+**Ce que le test magenta ne voit pas** — en clair il donnait pourtant
+0,00 % pour `.subland`. Il mesure la **visibilite pure** : une couche
+recouverte d un voile translucide ne renvoie jamais de magenta franc, et
+le seuil la declare invisible alors qu elle contribue pour vingt-trois
+points. Les deux methodes ne repondent pas a la meme question, et il faut
+les deux. C est le meme piege qu au 641 sur `.prem-mesh`, decouvert
+cette fois avant d agir et non apres.
+
+**LE RESTE DE LA PILE** — `#aurora` : 6,67 / 6,01 / 5,44 en sombre,
+2,96 / 2,90 / 2,78 en clair ; la couche qui pese, ici comme sur la home.
+`body::before` et `html::before` : 1,65 / 1,75 / 1,30 en sombre,
+0,34 / 0,34 / 0,27 en clair — au bruit, pour deux `blur()` plein ecran a
+26 px et 34 px. `body::after` : 3,48 au sommet en sombre, au bruit
+partout ailleurs.
+
+**CE QUI EST POSE** — l image sur `.rootland`, la couche du dessus, fond
+opaque dans les deux themes ; `.subland`, `#aurora`, les deux
+pseudo-elements et `body::after` eteints. La coupe pour l Exploration &
+Production, le corridor pour le Transport & stockage, la colonne pour le
+Raffinage & distribution — chaque pole recoit la planche de son metier.
+**Six couches de grande surface ramenees a une** (la barre de navigation).
+
+**CONTRASTE, CIBLES EPINGLEES** — en sombre, **les sept valeurs montent** :
+titre 12,7 → 14,9:1, chapo 11,2 → 13,3:1, titres de section 11,1 → 16,2 et
+11,2 → 15,9, corps 12,7 → 18,2 et 6,3 → 8,8, pied 9,6 → 10,4. En clair,
+six montent ou tiennent et une descend de 0,5 point, le titre du hero,
+qui reste a **8,8:1**.
+
+**Mon erreur de mesure** — ma premiere passe annoncait ce meme titre en
+chute de 9,3 a 2,8:1. Le harnais choisissait « le premier element qui
+correspond au selecteur » : d une passe a l autre il ne comparait pas le
+meme element ni la meme position. Les captures du hero, avant et apres,
+sont identiques a l oeil. **Lecon** — epingler la cible par selecteur *et*
+par rang, jamais « le premier qui correspond ».
+
+**LA GEOMETRIE DES TUILES** — les quatre points laisses ouverts au 639
+sont fermes. `.dur-c` passe du rayon 16 au rayon 20 et de la bordure
+blanche a l or, comme les trois autres familles ; la gouttiere des carnets
+passe de 16 a 14 ; `#reperes` retrouve la respiration commune, 46/46 au
+lieu de 76/76. Les quatre familles partagent desormais rayon 20,
+gouttiere 14 et retrait 20/20/18.
+
+**LA BANDE BASSE DES TUILES DE POLE** — 165 px sur 450, soit 37 % de la
+tuile, trois fois. L allocation de la frise passe de 130 a 102 px et la
+frise elle-meme de 140 a 112 : bande basse **137 px sur 422, soit 32 %**,
+degagement inchange a 16 px, frise intacte a 0,2 d opacite. La page perd
+**144 px** de hauteur. La regle du 619 comptant dix-sept identifiants, il
+en a fallu vingt.
+
+**VERIFIE (local)** — huit pages, quatre passes (sombre et clair, 1 440 et
+390) : **32 rendus, 0 page en defaut** — 0 erreur console, 0 erreur de
+page, 0 reponse 400 ou plus, 0 debordement. Controle d integrite : 216
+pages, 0 probleme. Hauteur de la home 8 950 → 8 806 px. Aucun asset
+nouveau, SW inchange — les six images etaient deja deposees au 641. Neuf
+fichiers.
