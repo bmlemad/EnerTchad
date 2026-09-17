@@ -25564,3 +25564,47 @@ dessin protege le texte mieux que le rideau qu on avait mis devant.
 erreur de page, 0 reponse 400 ou plus, 0 debordement, contenu coupe
 inchange. Controle d integrite : 216 pages, 0 probleme. Hauteur de la home
 8 806 → 8 770 px. Aucun asset, SW inchange. Trois fichiers.
+
+**VERIFIE (production, 17 septembre)** — publication terminee. Marqueurs
+positifs sur la home : `hero645` present, `header#top` `background-image:
+none` et `filter: none`, `.nh-kpi` et ses trois cases sans fond ni bordure
+ni ombre, filets verticaux de 1 px entre les cases, `.et640-tick` en
+`display: none`, la coupe visible sous le tout. Marqueurs negatifs : aucune
+des trois surfaces ne subsiste. `sw.js` sert bien `et-202609171200`.
+Journal : `.jn-mast` en Instrument Serif 86,4 px, une une, un fil, cinq
+departements — les quatre metiers plus le bureau de reference Atlas —
+seize articles, la riviere et les sujets ; zero ancienne carte `a.art.rv`,
+zero hero sur la page. Les 36 liens de la une resolus un par un contre
+l arborescence : aucun casse. Article Doba-Kribi : titre en serif de presse
+52,8 px, lettrine flottante de 59,6 px. Pole Raffinage & distribution : le
+renvoi `.jn-renvoi` de 125 px remplace la grille, zero carte residuelle,
+fond `fond-colonne-sombre.webp` en place, `#aurora` eteint.
+
+**LE CONTRASTE APRES COUP, SUR LES DEUX THEMES** — la mesure du 645 portait
+sur le texte du hero. Restait celui de la bande de chiffres elle-meme, qui
+a perdu son fond : il est desormais pose sur le dessin nu. Pixels reellement
+peints, texte efface pour lire le fond, pire pixel de chaque case retenu —
+theme sombre : chiffres **7,6 a 7,7:1**, legendes **5,3 a 6,2:1** ; theme
+clair : chiffres **4,9 a 5,4:1**, legendes **5,4 a 5,7:1**. Le plancher est
+a 4,93:1 et il concerne du texte de 26,4 px en graisse 800, dont le seuil
+AA est de 3:1. Les legendes, seul texte fin de la bande, ne descendent pas
+sous 5,3:1. Retirer le fond n a rien coute a la lisibilite.
+
+**Mon erreur** — deux fois dans la meme verification.
+La premiere : j ai calcule le contraste dans la page de production en
+remontant les ancetres a la recherche d un fond opaque. Aucun n en a :
+`.nh-kpi` est transparent depuis le 645, `body` aussi. Ma fonction est
+retombee sur sa valeur par defaut et a rendu **19,57:1** pour les trois
+cases — le ratio du texte creme sur du noir pur, c est-a-dire sur rien.
+Un chiffre identique pour trois cases posees sur trois zones differentes du
+dessin aurait du m alerter plus tot. La regle du 641 vaut encore : quand
+le fond est une image, aucune valeur calculee ne le decrit, il faut lire
+les pixels.
+La seconde : mon harnais bascule le theme par `localStorage`, et j y ai
+ecrit `et-plight = '1'` pour le clair. Le script d amorce du site ajoute la
+classe **sauf si** la valeur vaut `'0'` : mes deux passes ont donc rendu la
+meme page claire, et elles ont rendu des nombres rigoureusement identiques.
+C est cette identite parfaite — pas une relecture du code — qui a trahi la
+panne. Corrige en `'0'` pour le sombre, les deux themes divergent enfin.
+Au passage, cela redit l anomalie ouverte depuis plusieurs chapitres : le
+site impose le theme clair par defaut et n ecoute pas `prefers-color-scheme`.
