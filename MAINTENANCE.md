@@ -25089,3 +25089,22 @@ avec les memes assets ; ce sont les panneaux de navigation fermes, pas
 une regression. `.doc-c` aligne au pixel sur `.agir-c` dans les deux
 themes. `.rootland` masquee en sombre, intacte en clair. Aucun asset,
 SW inchange. Deux fichiers.
+
+**UNE QUATRIEME ERREUR, A LA VERIFICATION EN PRODUCTION** — la page
+publiee donnait un bord blanc `rgba(255,255,255,.14)` la ou la copie
+locale donnait l or attendu, avec pourtant la bonne regle chargee, en
+`!important` et plus specifique que celle qu elle devait battre. J ai
+soupconne la specificite, puis les couches `@layer`, puis une feuille
+illisible : rien. La cause etait ailleurs — `.doc-c` porte
+`transition:border-color .25s`, l onglet du navigateur pilote etait en
+arriere-plan (`document.visibilityState` vaut « hidden »), et Chrome y
+gele la ligne de temps des animations. Les quatre transitions de bord
+restaient donc « running » indefiniment, figeant la valeur de depart.
+Or une transition en cours prime sur `!important` : la mesure lisait
+l ancienne couleur. Transitions neutralisees et animations terminees a
+la main, la valeur tombe juste : `rgba(232,195,106,.2)`, identique a
+`.agir-c`. **Lecon** — dans un onglet en arriere-plan, toute propriete
+en transition renvoie une valeur calculee perimee ; avant de mesurer
+une couleur, une taille ou une opacite en production, poser
+`*{transition:none!important}` et appeler `finish()` sur les animations
+de l element.
