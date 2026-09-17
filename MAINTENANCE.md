@@ -25288,3 +25288,80 @@ pour lui-meme.
 debordement, contenu coupe identique au 640. Controle d integrite : 216
 pages, 0 probleme. Six assets ajoutes, **SW porte a et-202609171000**.
 Dix fichiers.
+
+## 642 — Ce qui etait pose sur le dessin
+
+**Consigne** — analyse et audit les couches au-dessus du fond de la home,
+puis : oui.
+
+**LA PILE, EN ORDRE DE PEINTURE** — au-dessus de la coupe : `.diapo::after`
+(voile lineaire .04 → .32, 100 % de la fenetre), `#aurora` et ses trois
+disques a `blur(48px)` opacite 0,72 (43, 31 et 23 % de la fenetre),
+`body::before` (maillage `blur(26px)`, opacite 0,035, fusion *overlay*),
+`html::before` (maillage `blur(34px)`, opacite 0,035, fusion *screen*), le
+filtre `saturate(1.1) contrast(1.045) brightness(1.015)` pose sur tout le
+hero, les trois tuiles de pole a `rgba(6,22,38,.74)`, le bandeau final, et
+le pied a `rgba(14,22,38,.72)` sur 153 % de la fenetre. **Dix-huit couches
+floutees** au total sur la page.
+
+**LA MESURE** — masque par masque, avec **relecture de la valeur calculee
+apres chaque injection**, bruit de fond etabli sur trois passes
+identiques, quatre hauteurs, deux themes. Resultat : **tout ce qui est
+au-dessus de la coupe est au niveau du bruit sauf `#aurora`**.
+`.diapo::after` : 1,97 / 1,39 / 0,94 pour un bruit de 2,44 / 1,67 / 0,56.
+Les deux pseudo-elements de page : 1,67 / 1,48 / 1,12 en sombre,
+0,38 / 0,45 / 0,25 en clair pour un bruit de 0,56 / 0,50 / 0,14.
+`#aurora` : **7,33 / 6,64 / 5,74** en sombre, **3,67 / 3,58 / 3,18** en
+clair — soit six a vingt-trois fois le bruit. Retirer *tout* le dessus
+donne 7,15 / 6,73 / 5,78 : exactement ce que donne `#aurora` seule. Le
+reste ne peint rien.
+
+**COMBIEN DU DESSIN ARRIVE A L OEIL** — separation frequentielle, le
+dessin vivant en haute frequence et les nappes floues en basse. Image nue :
+8,43 en basse, 8,40 en haute. Page peinte : **13,05 en basse, 7,75 en
+haute**. Donc **92 % du dessin survit** aux couches superieures — elles ne
+l effacent pas. Mais `#aurora` ajoute **+55 % de basse frequence** par
+dessus une planche concue pour etre lue en haute frequence. Les deux
+captures du fond seul le montrent sans appel : un halo bleu a gauche, une
+brume ocre a droite, et l escalier de la faille a demi noye.
+
+**LE TROISIEME ANGLE MORT DE #cta-band** — `.cb-in` portait encore
+`backdrop-filter: blur(18px) saturate(1.2)` sur 21 % de la fenetre, alors
+que le 623 devait depolir toute la home. Deux causes empilees. D abord
+`#cta-band` est **hors de `<main>`**, donc la regle du 623 ne l atteint
+pas — meme cause que `.doc-c` au 639. Ensuite la regle de `nav_a.css` qui
+devait annuler ce flou existe bien, mais elle est enfermee dans
+**`@media (prefers-reduced-transparency: reduce)`** : elle ne s applique
+qu aux visiteurs qui demandent a leur systeme de reduire la transparence.
+Pour tous les autres, le verre restait. Et mon correctif du 639 comptait
+dix identifiants quand la regle 598-4 qui pose le flou en compte seize :
+il perdait la cascade.
+
+**Mon erreur dans ce meme audit** — ma mesure de `.prem-mesh` ne valait
+rien : pour isoler les nappes je masque le contenu avec
+`visibility:hidden`, or `.prem-mesh` se trouve **dans** `header#top`, donc
+deja invisible. Le test ne testait rien. Je l ai ecarte plutot que de le
+presenter. C est la meme famille d erreur que celle du 641, sous une autre
+forme : la premiere fois le masque ne s appliquait pas, cette fois la
+cible etait deja eteinte.
+
+**CE QUI EST RETIRE** — `#aurora`, `body::before`, `html::before`, et le
+flou de `.cb-in`, sur la home seulement. Les deux pseudo-elements de page
+etaient conserves au 639 sur une mesure faite au-dessus de l ancien fond
+de degrades : l arbitrage change avec le fond.
+
+**CE QUE LA MESURE DIT APRES** — contraste du texte, avant et apres, sur
+pixels reellement peints : **aucune valeur ne baisse, dix montent**. Titre
+du hero 11,4 → **13,3:1**, titre de section 13,1 → **15,8:1**, surtitre du
+hero 4,5 → **5,4:1**. Ce surtitre etait le defaut preexistant releve au
+641 : il valait 3,9:1 avant tout, sous le seuil AA ; il est maintenant
+largement au-dessus, et ce sont les disques d `#aurora` qui le tiraient
+vers le bas. Couches floutees : **18 → 15, dont plus aucune de grande
+surface**.
+
+**VERIFIE (local)** — deux pages, quatre passes (sombre et clair, 1 440 et
+390) : 0 erreur console, 0 erreur de page, 0 reponse 400 ou plus, 0
+debordement. Contenu coupe : 20 a 1 440 et 2 a 390 contre 21 et 3 au 641 —
+en baisse, un des elements comptes etait un disque d `#aurora`. Controle
+d integrite : 216 pages, 0 probleme. Aucun asset, SW inchange. Trois
+fichiers.

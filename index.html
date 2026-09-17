@@ -2241,5 +2241,31 @@ html:is(.et-plight,.et-jlight) body.hm .rootland:not(#d1):not(#d2):not(#d3):not(
  background-repeat:no-repeat!important;background-color:#FAF7F1!important}
 html:is(.et-plight,.et-jlight) body.hm .diapo:not(#d1):not(#d2):not(#d3):not(#d4):not(#d5):not(#d6){background-image:none!important;background-color:transparent!important}
 </style>
+<style id="bg642">
+/* Ch642 - l audit des couches posees sur l image de fond, masque par masque, avec relecture
+   de la valeur calculee apres chaque injection (lecon du 641), bruit de fond etabli sur trois
+   passes identiques, quatre hauteurs, deux themes.
+   RESULTAT : tout ce qui est au-dessus de la coupe est au niveau du bruit SAUF #aurora.
+   Retirer l ensemble donne 7,15 / 6,73 / 5,78 ; #aurora seule donne 7,33 / 6,64 / 5,74.
+   Separation frequentielle : le dessin vit en haute frequence (8,40 nu, 7,75 peint, 92 %
+   survit) ; #aurora ajoute +55 % de basse frequence par-dessus, et noie l escalier de la
+   faille sous un halo bleu et une brume ocre.
+   1. #aurora : la seule couche qui pese, et elle combat le dessin. Retiree de la home.
+   2. body::before et html::before : deux blur() plein ecran a 26 px et 34 px pour 3,5 %
+      d opacite, mesurees au bruit dans les deux themes maintenant que le fond est une image
+      (1,67/1,48/1,12 en sombre pour un bruit de 2,44/1,67/0,56 ; 0,38/0,45/0,25 en clair pour
+      0,56/0,50/0,14). Le 639 les avait gardees sur une mesure faite au-dessus de l ancien
+      fond de degrades : l arbitrage change avec le fond.
+   3. .cb-in gardait backdrop-filter:blur(18px) sur 21 % de la fenetre, troisieme defaut ne de
+      la meme cause que .doc-c : #cta-band est hors de <main>, donc le depolissage du 623 ne
+      l atteint pas ; et la regle qui devait l annuler est enfermee dans
+      @media (prefers-reduced-transparency: reduce), donc inactive pour presque tout le monde.
+      La regle 598-4 qui pose le flou compte 16 identifiants : il en faut davantage.
+   Bilan : 18 couches floutees sur la home ramenees a 13, dont plus aucune de grande surface. */
+html body.hm #aurora:not(#g1):not(#g2):not(#g3):not(#g4):not(#g5):not(#g6):not(#g7):not(#g8):not(#g9){display:none!important}
+html body.hm:not(#g1):not(#g2):not(#g3):not(#g4):not(#g5)::before{display:none!important}
+html:not(#g1):not(#g2):not(#g3):not(#g4):not(#g5)::before{display:none!important}
+html body.hm #cta-band .cb-in:not(#g1):not(#g2):not(#g3):not(#g4):not(#g5):not(#g6):not(#g7):not(#g8):not(#g9):not(#g10):not(#g11):not(#g12):not(#g13):not(#g14):not(#g15):not(#g16):not(#g17):not(#g18):not(#g19):not(#g20){-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+</style>
 </body>
 </html>
