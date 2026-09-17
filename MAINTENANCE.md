@@ -25441,3 +25441,84 @@ page, 0 reponse 400 ou plus, 0 debordement. Controle d integrite : 216
 pages, 0 probleme. Hauteur de la home 8 950 → 8 806 px. Aucun asset
 nouveau, SW inchange — les six images etaient deja deposees au 641. Neuf
 fichiers.
+
+## 644 — Le blog devient un journal
+
+**Consigne** — moderniser le blog pour qu il ressemble a un journal en
+ligne, afin que les poles puissent se concentrer sur leurs metiers.
+Arbitrages du proprietaire : refonte complete — une, articles, poles
+alleges — et une serif de presse pour les titres.
+
+**L ETAT AVANT** — soixante-quatre pages d articles, un index qui empilait
+**quarante cartes identiques sur trois colonnes**, et sur chaque page de
+pole une section de carnets portant trois liens. Un mur de cartes n est pas
+une une : tout y a le meme poids, donc rien n en a.
+
+**LE CARACTERE** — une salle de redaction a le sien. Les titres passent a
+**Instrument Serif**, servie en propre : deux sous-ensembles woff2, latin
+et latin etendu, **20 et 11 Ko**, decoupes a la demande et verifies glyphe
+a glyphe sur les accents, les ligatures et la ponctuation francaise. Le
+reste du site garde sa geometrique : le journal se distingue au premier
+coup d oeil sans rien casser ailleurs.
+
+**LA UNE** — on ne reecrit pas le contenu, on le rehierarchise. Les
+trente-quatre cartes existantes sont relues — rubrique, titre, chapo, date,
+pole — et reparties : un **bandeau de titre** date et numerote, une **une**
+qui occupe les deux tiers, un **fil date** en colonne de droite, quatre
+**rubriques** a filet portant chacune trois sujets, puis une **riviere** en
+deux colonnes pour tout le reste. Plus une carte, plus un seul poids :
+une hierarchie.
+
+**L ATLAS** — le proprietaire demandait s il fallait le transferer au
+journal. Il y est deja par son adresse — `journal-atlas-secteur` — mais ce
+n est pas la question : l Atlas est une **reference permanente**, le
+journal est organise par la date. Le classer dans un fil date ferait naitre
+la question « est-ce encore a jour ? » sur des donnees qui font autorite,
+et l eloignerait du lecteur qui le cherche, celui qui evalue une
+souscription. Le releve des sept comparables va dans ce sens : aucun ne
+loge ses donnees de reference dans sa salle de redaction. La une recoit
+donc un **fonds documentaire** — bloc permanent, visuellement distinct de
+la riviere datee, qui renvoie a l Atlas, au cadastre, au data book et au
+calculateur. La reference est citee par le journal, pas absorbee par lui.
+
+**LES ARTICLES** — la structure y etait deja : surtitre, titre, chapo,
+date et signature. Il manquait le caractere. Les soixante-quatre pages
+recoivent la feuille du journal : titre et intertitres en serif, chapo au
+corps d un chapo, et une **lettrine** doree au premier paragraphe. Aucune
+autre modification de balisage : une ligne de lien par page.
+
+**LES POLES** — la section de carnets des six pages de pole devient un
+**renvoi** : le surtitre, le titre, une phrase, et un lien vers la
+rubrique. De 939 a 992 octets, elle tombe a 522 a 554. La page reste au
+metier, la redaction prend la charge editoriale.
+
+**Mes erreurs** — deux, toutes deux attrapees avant publication. La
+premiere de balisage : mon premier decoupage cherchait « le deuxieme
+`div.sk` », en supposant qu il ouvrait le mur de cartes ; les trois `.sk`
+etaient en realite **avant** la section visee, et la coupe a emporte une
+section entiere. Restaure depuis le depot, puis refait en **comptant les
+balises** pour trouver la vraie fin de la grille. La seconde d echappement :
+les rubriques ressortaient en « EXPLORATION &AMP; PRODUCTION » parce que je
+reechappais un texte deja echappe. **Lecon** — desechapper avant de
+reechapper, et ne jamais borner une coupe sur un compte d occurrences quand
+on peut equilibrer les balises.
+
+**Et une troisieme, de contenu** — le fonds documentaire pointait vers
+`/atlas-du-secteur`, une adresse que j avais deduite du nom de la rubrique
+et qui n existe pas : l Atlas est a `journal-atlas-secteur`. Le controle
+d integrite l a signale — cinq liens casses — avant toute mise en ligne.
+C est exactement ce pour quoi le controle du 628 a ete ecrit.
+
+**CONTRASTE** — treize cibles epinglees sur la une, deux themes. Deux
+valeurs sortaient a **3,1:1 en theme clair** : les dates du fil et de la
+riviere, qui heritaient de `--muted`, soit `#7C8AA2` sur creme, avec une
+opacite de 0,8 par-dessus. Couleur propre, opacite retiree : **6,6 et
+6,8:1**. Plus mauvaise valeur de l ensemble apres correction : 6,6:1 en
+clair, 7,9:1 en sombre.
+
+**VERIFIE (local)** — huit pages temoins (les deux unes, quatre articles,
+deux poles), quatre passes (sombre et clair, 1 440 et 390) : **32 rendus,
+0 page en defaut** — 0 erreur console, 0 erreur de page, 0 reponse 400 ou
+plus, 0 debordement, serif chargee partout. Controle d integrite : 216
+pages, 0 probleme. Un asset et deux polices ajoutes, **SW porte a
+et-202609171200**. Soixante-dix-sept fichiers.
