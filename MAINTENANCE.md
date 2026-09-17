@@ -25651,3 +25651,97 @@ console, avant toute publication.
 **A JOUR** — en-tete « ch.275-645, 17 septembre 2026 », tuile a 645,
 pastille de service `et-202609171200`. Les chapitres 644 et 645 sont
 inscrits. Version 105 du registre.
+
+## 647 — Le dessin gagne les 208 autres pages
+
+**Consigne** — faire le meme exercice sur tout le site, pour une coherence.
+Le meme exercice, c est celui des 641 a 645 : remplacer la nappe de
+degrades par une planche dessinee, puis retirer ce qui se posait par
+dessus. Deux questions posees, deux reponses : reutiliser les trois
+planches existantes selon l affinite de metier plutot que d en dessiner
+une quatrieme ; laisser au journal un aplat de papier, sans dessin.
+
+**L ETAT DES LIEUX** — huit pages sur 216 portaient le dessin : la home et
+les six hubs de pole. Les 208 autres tournaient encore sur l ancienne
+pile : `.rootland` 6 a 7 degrades, `.subland` 6 a 7 de plus sur les
+sous-pages de pole et les marques, `body::before` 5, `body::after` 4 a 6,
+`html::before` 2 — jusqu a cinq nappes plein ecran empilees avant le
+moindre contenu, soit 26 a 28 degrades rien que pour le fond.
+
+**CE QUE CHAQUE COUCHE APPORTAIT** — mesure sur quatre pages temoins, une
+par famille, dans les deux themes. Partout `.rootland` porte le fond :
+93,74 en clair sur une sous-page de pole, 11,12 sur une page societe,
+19,13 sur un article. `.subland` compte en clair (24,92) et frole le bruit
+en sombre (1,18 pour un plancher de 1,08) — la meme inversion qu au 643.
+`body::before` et `html::before` restent au plancher a peu pres partout.
+Sur la page arabe et sur l article, trois des quatre pseudo-elements ne
+peignent rien du tout : ni degrade, ni image, ni fond.
+
+**Mon erreur, et le temoin qui manquait depuis toujours** — ma premiere
+serie de mesures donnait sur la page arabe quatre couches a **4,35
+exactement**, et un `#aurora` a 6,32 sur une sous-page ou cet element ne
+peint rien. Quatre nombres identiques a la deuxieme decimale : la meme
+signature que celle relevee la veille au 645. J ai donc ajoute au harnais
+ce qui lui manquait depuis le premier chapitre de mesure — un **temoin
+nul**, un masque qui ne vise aucun element. Il a rendu 4,35 lui aussi.
+Aucune de ces quatre valeurs ne mesurait quoi que ce soit : l ecart venait
+de la sequence de captures elle-meme, la premiere passe d un navigateur
+frais differant des suivantes. Le harnais compare desormais chaque masque
+a une reference **captee avec le masque nul, au meme rang dans la
+sequence**, et le plancher de bruit sort de trois passes de cette
+reference. Trois passes donnent regulierement le motif [x, x, 0] : c est
+la premiere capture qui devie, pas les suivantes.
+
+**UNE REGLE, UN FICHIER** — plutot que 208 blocs de page, le fond tient
+maintenant dans `assets/chrome/fond647.css`, 10 Ko, liee depuis chaque
+page. Le crochet est le script d amorce, deja present en tete de head sur
+208 pages et **identique a l octet pres** sur les 208 : il pose
+`data-fond` sur `<html>` avant le premier octet de rendu, donc sans
+clignotement. Coupe pour l Exploration & Production, le corporate et les
+marques a vocation humaine ; corridor pour le Transport & stockage,
+GreenTech et TchadiTech ; colonne pour le Raffinage & distribution et la
+petrochimie — la planche du fractionnement pour les pages de chimie, ce
+qui tombe juste ; papier pour le journal. Le mini-site arabe suit la page
+francaise correspondante. Les huit blocs `fond641` et `fond643` des pages
+deja traitees sont retires : la feuille unique les remplace.
+
+**Mon erreur, deuxieme fois** — j avais d abord copie la regle dans
+`nav_a.css`, puis dans la feuille du mini-site arabe, puis il a fallu la
+page 404 qui ne charge ni l une ni l autre. Une regle logee dans trois
+feuilles, c est exactement l incoherence que la consigne demandait de
+supprimer. Tout a ete ramene dans un fichier unique et les deux feuilles
+remises a l identique de leur version publiee.
+
+**Mon erreur, troisieme fois** — regardant une capture de page de pole,
+j ai ecrit que la planche n etait pas visible et je suis parti chercher le
+voile qui la cachait. Le voile existait bien — `main` peint un degrade
+creme a 40-48 % sur les pages claires — mais le retirer ne deplacait la
+page que de 232,4 a 230,6. La planche etait la depuis le debut : eteindre
+`.rootland` change la page de 10,87 a 21,21 selon la page et touche 80 a
+92 % des pixels. Un agrandissement de la marge gauche montre les lamines
+horizontales, nettes. J avais juge a l oeil une image volontairement
+discrete — la compression des hautes lumieres du 641 est faite pour ca.
+La lecon tient en une phrase : une capture ne prouve rien, c est la mesure
+qui tranche.
+
+**CONTRASTE, ET UN SECOND OUTIL REPARE** — premiere serie : des rapports
+de **1,00** et **1,52** sur des titres. Faux. Je cherchais le pire pixel
+dans la boite englobante du texte, qui contient aussi des filets dores et
+des cartes blanches ou aucun glyphe ne se pose. Le harnais construit
+desormais un **masque de glyphes** : deux captures, l une avec le texte,
+l autre sans, et seuls les pixels qui changent fortement sont retenus.
+Le titre donne a 1,52 par l ancienne methode ressort a **8,99:1**. Sur 34
+cibles epinglees par selecteur et par rang, reparties sur neuf pages et
+deux themes, **zero sous le seuil AA** ; le plancher est a 6,70:1 sur du
+texte courant de 18,24 px, et les titres vont de 8,02 a 17,14:1.
+
+**VERIFIE (local)** — trois passes sur les 209 pages : sombre 1 440,
+clair 1 440, sombre 390, soit 627 rendus. 0 erreur de page, 0 erreur
+console, 0 reponse 400 ou plus, 0 debordement horizontal, 0 nappe
+residuelle, 0 pseudo-element peignant encore un degrade, `data-fond` pose
+sur chacune. Une seule page hors du compte : le configurateur autonome,
+qui n a ni script d amorce ni porteur de fond — laisse tel quel, et dit
+ici plutot que passe sous silence. Integrite des liens : 158 redirections,
+0 boucle, 0 ancre morte, 0 saut inutile ; les deux cibles signalees sont
+des liens `webcal:` que le controleur ne sait pas lire, anterieurs a ce
+chapitre. SW porte a **et-202609171400**. 210 fichiers.
