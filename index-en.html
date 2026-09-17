@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en">
-<head><script id="et-light-def">try{var d=document.documentElement,p=location.pathname,j=/^\/journal-/.test(p),k=j?"et-jlight":"et-plight",v=localStorage.getItem(k);if(v!=="0")d.classList.add(k)}catch(e){document.documentElement.classList.add("et-plight")}</script>
+<head><script id="et-light-def">try{var d=document.documentElement,p=location.pathname,j=/^\/journal-/.test(p),k=j?"et-jlight":"et-plight",v=localStorage.getItem(k);if(v!=="0")d.classList.add(k);var f="coupe";if(j||/^\/carnets/.test(p))f="papier";else if(/^\/(intermediaire\/|pole-intermediaire|ar-intermediaire|greentech\/|pole-greentech|tchaditech\/|pole-tchaditech)/.test(p))f="corridor";else if(/^\/(aval\/|pole-aval|ar-aval|petrochimie\/|pole-enerchimie)/.test(p))f="colonne";d.setAttribute("data-fond",f)}catch(e){document.documentElement.classList.add("et-plight")}</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#111D33">
@@ -1119,7 +1119,7 @@ html.et-plight .dt:not(#_){opacity:1!important;color:#6B5012!important}
 .c540-lb{font-family:var(--fm);font-size:7.5px;letter-spacing:.08em;fill:#D5E3F0;pointer-events:none}
 html.et-plight #carte540 .c540-lb{fill:#1B2634}
 </style>
-</head>
+<link rel="stylesheet" id="fond647" href="/assets/chrome/fond647.css?b=202609171400"></head>
 <body class="hm"><div class="diapo" aria-hidden="true"></div><div class="rdprog" aria-hidden="true"></div>
 <a href="#main-content" class="skip-link">Skip to main content</a>
 <div id="preloader" aria-hidden="true">
@@ -2226,21 +2226,6 @@ html.et-plight .j640-go a,html.et-jlight .j640-go a{color:var(--pal,#8A6210)}
                     au 639 : elles restent.
    Bilan : six couches et vingt degrades d ambiance ramenes a quatre couches et dix degrades. */
 body.hm::after{display:none!important}
-</style>
-<style id="fond641">
-/* Ch641 - la nappe de degrades cede la place a une coupe dessinee.
-   Le fond n est plus un flou : c est une section stratigraphique, faille listrique et
-   discordance comprises, rendue trait par trait puis comprimee dans les hautes lumieres
-   pour que le texte garde son contraste. */
-html:not(.et-plight):not(.et-jlight) body.hm .diapo:not(#d1):not(#d2):not(#d3):not(#d4):not(#d5):not(#d6){
- background-image:url(/assets/img/fond-coupe-sombre.webp)!important;
- background-size:cover!important;background-position:center center!important;
- background-repeat:no-repeat!important;background-color:#0A1220!important;background-attachment:scroll!important}
-html:is(.et-plight,.et-jlight) body.hm .rootland:not(#d1):not(#d2):not(#d3):not(#d4):not(#d5):not(#d6){
- background-image:url(/assets/img/fond-coupe-clair.webp)!important;
- background-size:cover!important;background-position:center center!important;
- background-repeat:no-repeat!important;background-color:#FAF7F1!important}
-html:is(.et-plight,.et-jlight) body.hm .diapo:not(#d1):not(#d2):not(#d3):not(#d4):not(#d5):not(#d6){background-image:none!important;background-color:transparent!important}
 </style>
 <style id="bg642">
 /* Ch642 - l audit des couches posees sur l image de fond, masque par masque, avec relecture
