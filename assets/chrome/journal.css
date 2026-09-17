@@ -1,0 +1,155 @@
+/* ——————————————————————————————————————————————————————————————
+   Les Carnets d EnerTchad — feuille du journal (Ch644).
+   Une salle de redaction a son propre caractere : les titres passent a une
+   serif de presse, le reste du site garde sa geometrique. Filets plutot que
+   cartes, hierarchie plutot que grille reguliere.
+   —————————————————————————————————————————————————————————————— */
+@font-face{font-family:'Instrument Serif';src:url('/assets/fonts/InstrumentSerif-latin.woff2') format('woff2');
+ font-weight:400;font-style:normal;font-display:swap;
+ unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Instrument Serif';src:url('/assets/fonts/InstrumentSerif-latin-ext.woff2') format('woff2');
+ font-weight:400;font-style:normal;font-display:swap;
+ unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+
+:root{--fj:'Instrument Serif',Georgia,'Times New Roman',serif}
+
+/* ——— bandeau de titre ——— */
+.jn-mast{border-bottom:2px solid var(--hair,rgba(255,255,255,.18));padding:0 0 14px;margin:0 0 6px}
+.jn-mast-top{display:flex;align-items:baseline;justify-content:space-between;gap:16px 26px;flex-wrap:wrap;
+ font-family:var(--fm,ui-monospace,monospace);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;
+ color:var(--muted);padding:0 0 12px}
+.jn-mast h1{font-family:var(--fj);font-weight:400;letter-spacing:-.005em;line-height:.94;margin:0;
+ font-size:clamp(2.6rem,7.2vw,5.4rem);text-wrap:balance}
+.jn-mast .jn-devise{font-family:var(--fj);font-size:clamp(1rem,1.9vw,1.4rem);color:var(--muted);margin:12px 0 0;max-width:46ch}
+.jn-rule{height:1px;background:var(--hair,rgba(255,255,255,.16));margin:0 0 26px}
+.jn-rule.d{height:4px;background:none;border-top:1px solid var(--hair,rgba(255,255,255,.3));
+ border-bottom:1px solid var(--hair,rgba(255,255,255,.3));margin:8px 0 26px}
+
+/* ——— la une ——— */
+.jn-une{display:grid;grid-template-columns:minmax(0,2.15fr) minmax(250px,1fr);gap:0 38px;align-items:start}
+.jn-une>.jn-fil{border-left:1px solid var(--hair,rgba(255,255,255,.16));padding-left:26px}
+.jn-lead{display:block;text-decoration:none;color:inherit;padding:0 0 26px;border-bottom:1px solid var(--hair,rgba(255,255,255,.16))}
+.jn-lead .jn-kick,.jn-art .jn-kick{display:block;font-family:var(--fm,ui-monospace,monospace);font-size:.66rem;
+ letter-spacing:.13em;text-transform:uppercase;color:var(--gold-l,#E8C36A);margin:0 0 9px}
+.jn-lead h2{font-family:var(--fj);font-weight:400;line-height:1.0;letter-spacing:-.008em;
+ font-size:clamp(1.9rem,4.4vw,3.15rem);margin:0 0 14px;text-wrap:balance}
+.jn-lead p{margin:0 0 12px;font-size:1.02rem;line-height:1.58;color:var(--muted);max-width:56ch}
+.jn-date{font-family:var(--fm,ui-monospace,monospace);font-size:.7rem;letter-spacing:.06em;color:var(--muted);
+ font-variant-numeric:tabular-nums;opacity:.85}
+.jn-lead:hover h2,.jn-art:hover h3{text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
+
+/* ——— le fil ——— */
+.jn-fil h2{font-family:var(--fm,ui-monospace,monospace);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;
+ color:var(--muted);margin:0 0 14px;font-weight:700}
+.jn-fil ol{list-style:none;margin:0;padding:0}
+.jn-fil li{padding:0 0 13px;margin:0 0 13px;border-bottom:1px solid var(--hair,rgba(255,255,255,.10))}
+.jn-fil li:last-child{border-bottom:0}
+.jn-fil a{text-decoration:none;color:inherit;display:block}
+.jn-fil a:hover b{text-decoration:underline;text-underline-offset:3px}
+.jn-fil time{display:block;font-family:var(--fm,ui-monospace,monospace);font-size:.64rem;letter-spacing:.08em;
+ color:var(--muted);opacity:.8;margin:0 0 4px;font-variant-numeric:tabular-nums}
+.jn-fil b{font-family:var(--fj);font-weight:400;font-size:1.06rem;line-height:1.18;display:block}
+.jn-fil .jn-all{display:inline-block;margin:4px 0 0;font-family:var(--fm,ui-monospace,monospace);font-size:.72rem;
+ color:var(--gold-l,#E8C36A);text-decoration:none}
+.jn-fil .jn-all:hover{text-decoration:underline}
+
+/* ——— les rubriques ——— */
+.jn-dep{margin:40px 0 0}
+.jn-dep-h{display:flex;align-items:baseline;gap:14px;border-bottom:1px solid var(--hair,rgba(255,255,255,.26));padding:0 0 8px;margin:0 0 20px}
+.jn-dep-h h2{font-family:var(--fm,ui-monospace,monospace);font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;
+ margin:0;font-weight:700;color:var(--gold-l,#E8C36A)}
+.jn-dep-h span{font-family:var(--fm,ui-monospace,monospace);font-size:.66rem;color:var(--muted);opacity:.75;margin-left:auto}
+.jn-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(248px,1fr));gap:0 30px}
+.jn-cols>*{border-top:1px solid var(--hair,rgba(255,255,255,.10));padding:16px 0 18px}
+.jn-cols>*:first-child{border-top:0;padding-top:0}
+@media(min-width:760px){.jn-cols>:nth-child(-n+3){border-top:0;padding-top:0}}
+.jn-art{display:block;text-decoration:none;color:inherit}
+.jn-art h3{font-family:var(--fj);font-weight:400;line-height:1.1;font-size:1.3rem;margin:0 0 8px;text-wrap:balance}
+.jn-art p{margin:0 0 9px;font-size:.88rem;line-height:1.55;color:var(--muted)}
+.jn-art .jn-date{display:block}
+.jn-dep.jn-dep-lead .jn-cols>:first-child h3{font-size:1.85rem}
+.jn-dep.jn-dep-lead .jn-cols>:first-child p{font-size:.95rem}
+
+/* ——— la riviere : tout le reste, en dense ——— */
+.jn-river{margin:34px 0 0;border-top:1px solid var(--hair,rgba(255,255,255,.26));padding:18px 0 0}
+.jn-river ol{list-style:none;margin:0;padding:0;
+ column-count:2;column-gap:38px;column-rule:1px solid var(--hair,rgba(255,255,255,.10))}
+@media(max-width:820px){.jn-river ol{column-count:1}}
+.jn-river li{break-inside:avoid;padding:0 0 12px;margin:0 0 12px;border-bottom:1px solid var(--hair,rgba(255,255,255,.08))}
+.jn-river a{display:grid;grid-template-columns:78px minmax(0,1fr);gap:12px;text-decoration:none;color:inherit;align-items:baseline}
+.jn-river time{font-family:var(--fm,ui-monospace,monospace);font-size:.63rem;letter-spacing:.05em;color:var(--muted);
+ opacity:.8;font-variant-numeric:tabular-nums;white-space:nowrap}
+.jn-river b{font-family:var(--fj);font-weight:400;font-size:1.02rem;line-height:1.2}
+.jn-river a:hover b{text-decoration:underline;text-underline-offset:3px}
+.jn-river i{font-style:normal;font-family:var(--fm,ui-monospace,monospace);font-size:.6rem;letter-spacing:.1em;
+ text-transform:uppercase;color:var(--gold-l,#E8C36A);opacity:.75;display:block;margin:3px 0 0}
+
+/* ——— page d article ——— */
+.jr-head h1,article h1.jr-t{font-family:var(--fj)!important;font-weight:400!important;letter-spacing:-.006em!important;line-height:1.02!important}
+.jn-a h1{font-family:var(--fj);font-weight:400;line-height:1.02;letter-spacing:-.006em}
+.jn-sign{display:flex;align-items:baseline;gap:10px 18px;flex-wrap:wrap;margin:14px 0 0;padding:10px 0 0;
+ border-top:1px solid var(--hair,rgba(255,255,255,.16));
+ font-family:var(--fm,ui-monospace,monospace);font-size:.68rem;letter-spacing:.09em;color:var(--muted);text-transform:uppercase}
+.jn-sign b{color:var(--gold-l,#E8C36A);font-weight:700}
+
+/* ——— le renvoi depuis les poles ——— */
+.jn-renvoi{border-top:1px solid var(--hair,rgba(255,255,255,.22));padding:20px 0 0;margin:8px 0 0;
+ display:grid;grid-template-columns:minmax(0,1fr) auto;gap:14px 26px;align-items:end}
+.jn-renvoi h3{font-family:var(--fj);font-weight:400;font-size:1.5rem;line-height:1.12;margin:0 0 6px}
+.jn-renvoi p{margin:0;font-size:.9rem;line-height:1.55;color:var(--muted);max-width:58ch}
+.jn-renvoi a.jn-go{font-family:var(--fm,ui-monospace,monospace);font-size:.76rem;letter-spacing:.06em;
+ color:var(--gold-l,#E8C36A);text-decoration:none;white-space:nowrap}
+.jn-renvoi a.jn-go:hover{text-decoration:underline}
+@media(max-width:700px){.jn-renvoi{grid-template-columns:1fr}}
+
+/* ——— theme clair ——— */
+html.et-plight .jn-mast,html.et-jlight .jn-mast{border-bottom-color:rgba(26,35,48,.28)}
+html.et-plight .jn-lead .jn-kick,html.et-jlight .jn-lead .jn-kick,
+html.et-plight .jn-art .jn-kick,html.et-jlight .jn-art .jn-kick,
+html.et-plight .jn-dep-h h2,html.et-jlight .jn-dep-h h2,
+html.et-plight .jn-river i,html.et-jlight .jn-river i,
+html.et-plight .jn-fil .jn-all,html.et-jlight .jn-fil .jn-all,
+html.et-plight .jn-renvoi a.jn-go,html.et-jlight .jn-renvoi a.jn-go,
+html.et-plight .jn-sign b,html.et-jlight .jn-sign b{color:var(--pal,#8A6210)}
+html.et-plight .jn-une>.jn-fil,html.et-jlight .jn-une>.jn-fil,
+html.et-plight .jn-river ol,html.et-jlight .jn-river ol{border-color:rgba(26,35,48,.14)}
+
+@media(max-width:860px){
+ .jn-une{grid-template-columns:1fr;gap:30px}
+ .jn-une>.jn-fil{border-left:0;padding-left:0;border-top:1px solid var(--hair,rgba(255,255,255,.16));padding-top:22px}
+}
+
+/* ——— sur la une, le titre de page cede la place au bandeau ——— */
+body.jn-page :is(header,div).hero:not(#j1):not(#j2):not(#j3):not(#j4) :is(h1,.lead,.kick),
+body.jn-page :is(header,div).pghero:not(#j1):not(#j2):not(#j3):not(#j4) :is(h1,.lead,.kick){display:none!important}
+body.jn-page :is(header,div):is(.hero,.pghero):not(#j1):not(#j2):not(#j3):not(#j4){
+ min-height:0!important;padding-top:14px!important;padding-bottom:6px!important}
+body.jn-page :is(header,div):is(.hero,.pghero) .bcrumb{margin-bottom:0!important}
+.jn-sujets{display:flex;flex-wrap:wrap;gap:8px 10px;margin:0 0 26px}
+
+/* ——————————————— la page d article ———————————————
+   La structure existait deja — surtitre, titre, chapo, date et signature.
+   Il lui manquait le caractere : les titres passent a la serif de presse,
+   le chapo prend le corps d un chapo, et le premier paragraphe sa lettrine. */
+.jhero h1{font-family:var(--fj)!important;font-weight:400!important;letter-spacing:-.008em!important;
+ line-height:1.02!important;text-wrap:balance}
+.jhero .jdek{font-family:var(--fj);font-size:clamp(1.12rem,2vw,1.42rem);line-height:1.42;max-width:60ch}
+.jhero .jkick{letter-spacing:.14em}
+article[role="main"] h2{font-family:var(--fj);font-weight:400;letter-spacing:-.004em;line-height:1.1}
+article[role="main"] h3{font-family:var(--fj);font-weight:400;letter-spacing:-.002em}
+article[role="main"] blockquote,article[role="main"] .jpull{font-family:var(--fj);font-weight:400}
+.jbody>p:first-of-type::first-letter{font-family:var(--fj);float:left;font-size:3.45em;line-height:.78;
+ padding:.06em .09em 0 0;color:var(--gold-l,#E8C36A)}
+html.et-plight .jbody>p:first-of-type::first-letter,
+html.et-jlight .jbody>p:first-of-type::first-letter{color:var(--pal,#8A6210)}
+
+/* ——— les dates en theme clair : --muted vaut #7C8AA2, soit 3,1:1 sur creme ——— */
+html.et-plight .jn-fil time,html.et-jlight .jn-fil time,
+html.et-plight .jn-river time,html.et-jlight .jn-river time,
+html.et-plight .jn-date,html.et-jlight .jn-date{color:#4A5568;opacity:1}
+html.et-plight .jn-fil li,html.et-jlight .jn-fil li,
+html.et-plight .jn-river li,html.et-jlight .jn-river li{border-bottom-color:rgba(26,35,48,.12)}
+html.et-plight .jn-dep-h,html.et-jlight .jn-dep-h,
+html.et-plight .jn-river,html.et-jlight .jn-river,
+html.et-plight .jn-cols>*,html.et-jlight .jn-cols>*,
+html.et-plight .jn-lead,html.et-jlight .jn-lead{border-color:rgba(26,35,48,.18)}
