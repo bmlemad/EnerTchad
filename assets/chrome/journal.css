@@ -153,3 +153,111 @@ html.et-plight .jn-dep-h,html.et-jlight .jn-dep-h,
 html.et-plight .jn-river,html.et-jlight .jn-river,
 html.et-plight .jn-cols>*,html.et-jlight .jn-cols>*,
 html.et-plight .jn-lead,html.et-jlight .jn-lead{border-color:rgba(26,35,48,.18)}
+
+/* ——————————————————————————————————————————————————————————————
+   Ch648 — les Carnets au reglage des grands quotidiens.
+   Trois partis pris, decides avec le proprietaire :
+   1. les etiquettes quittent la chasse fixe pour la sans du site, tres
+      interlettree — c est le reglage du Post et du Times, et le journal
+      cesse de sonner comme un terminal ;
+   2. la une passe a trois colonnes : la tete a gauche, le fil au centre,
+      une colonne Reperes a droite ;
+   3. chaque article recoit un bandeau taille dans la planche de son
+      metier, cadre par --jx, legende comme une figure.
+   —————————————————————————————————————————————————————————————— */
+
+:root{--fe:var(--fd,'Space Grotesk','Inter',system-ui,sans-serif)}
+
+/* ——— 1. les etiquettes ——— */
+.jn-mast-top,
+.jn-lead .jn-kick,.jn-art .jn-kick,
+.jn-fil h2,.jn-fil time,.jn-fil .jn-all,
+.jn-dep-h h2,.jn-dep-h span,
+.jn-river time,.jn-river i,
+.jn-date,.jn-sign,.jn-renvoi a.jn-go,
+.jn-rep h2,.jn-rep .jn-rl,.jn-fig figcaption{
+ font-family:var(--fe)!important;font-feature-settings:"tnum" 1}
+.jn-mast-top{letter-spacing:.2em;font-size:.63rem;font-weight:600}
+.jn-lead .jn-kick,.jn-art .jn-kick{letter-spacing:.17em;font-size:.62rem;font-weight:700}
+.jn-fil h2,.jn-dep-h h2,.jn-rep h2{letter-spacing:.2em!important;font-size:.68rem!important;font-weight:700!important;line-height:1.3!important}
+.jn-fil time,.jn-river time,.jn-date{letter-spacing:.08em;font-weight:500}
+.jn-river i{letter-spacing:.14em;font-weight:600}
+.jn-sign{letter-spacing:.12em;font-weight:600}
+.jn-fil .jn-all,.jn-renvoi a.jn-go{letter-spacing:.09em;font-weight:600}
+
+/* le lien du fil ne doit pas se souligner au repos : la regle du 644 avait
+   une classe contre une regle de site plus specifique — mesure a l appui,
+   text-decoration-line valait underline. */
+html body .jn-fil a:not(#g0):not(#g1):not(#g2):not(#g3):not(#g4):not(#g5):not(#g6):not(#g7):not(#g8):not(#g9):not(#g10):not(#g11),html body .jn-river a:not(#g0):not(#g1):not(#g2):not(#g3):not(#g4):not(#g5):not(#g6):not(#g7):not(#g8):not(#g9):not(#g10):not(#g11),
+html body .jn-rep a:not(#g0):not(#g1):not(#g2):not(#g3):not(#g4):not(#g5):not(#g6):not(#g7):not(#g8):not(#g9):not(#g10):not(#g11),html body .jn-sujets a:not(#g0):not(#g1):not(#g2):not(#g3):not(#g4):not(#g5):not(#g6):not(#g7):not(#g8):not(#g9):not(#g10):not(#g11){text-decoration:none!important}
+html body .jn-fil a:not(#g0):not(#g1):not(#g2):not(#g3):not(#g4):not(#g5):not(#g6):not(#g7):not(#g8):not(#g9):not(#g10):not(#g11):hover b,html body .jn-river a:not(#g0):not(#g1):not(#g2):not(#g3):not(#g4):not(#g5):not(#g6):not(#g7):not(#g8):not(#g9):not(#g10):not(#g11):hover b{text-decoration:underline;text-underline-offset:3px}
+
+/* la une commence au generique : le bandeau de titre de page se retire */
+html body.jn-page :is(header,div):is(.hero,.pghero):not(#g0):not(#g1):not(#g2):not(#g3):not(#g4):not(#g5):not(#g6):not(#g7):not(#g8):not(#g9):not(#g10):not(#g11){padding-top:8px!important;padding-bottom:0!important;min-height:0!important}
+html body.jn-page main:not(#g0):not(#g1):not(#g2):not(#g3):not(#g4):not(#g5):not(#g6):not(#g7):not(#g8):not(#g9):not(#g10):not(#g11){padding-top:10px!important}
+
+/* ——— 2. la une a trois colonnes ——— */
+@media(min-width:1080px){
+ .jn-une{grid-template-columns:minmax(0,2.05fr) minmax(228px,.95fr) minmax(206px,.8fr);gap:0 32px}
+ .jn-une>.jn-rep{border-left:1px solid var(--hair,rgba(255,255,255,.16));padding-left:24px}
+}
+@media(min-width:861px) and (max-width:1079px){
+ .jn-une{grid-template-columns:minmax(0,2.15fr) minmax(250px,1fr)}
+ .jn-une>.jn-rep{grid-column:1 / -1;border-left:0;border-top:1px solid var(--hair,rgba(255,255,255,.16));
+  padding-left:0;padding-top:20px;margin-top:24px}
+ .jn-une>.jn-rep .jn-rl{display:inline-flex;margin-right:28px}
+}
+@media(max-width:860px){
+ .jn-une>.jn-rep{border-left:0;border-top:1px solid var(--hair,rgba(255,255,255,.16));
+  padding-left:0;padding-top:22px;margin-top:26px}
+}
+.jn-rep h2{color:var(--muted);margin:0 0 14px;text-transform:uppercase}
+.jn-rep .jn-rl{display:block;padding:0 0 11px;margin:0 0 11px;
+ border-bottom:1px solid var(--hair,rgba(255,255,255,.10))}
+.jn-rep .jn-rl:last-of-type{border-bottom:0}
+.jn-rep .jn-rv{display:block;font-family:var(--fj);font-weight:400;font-size:1.46rem;line-height:1.04;
+ letter-spacing:-.005em;font-variant-numeric:tabular-nums}
+.jn-rep .jn-rd{display:block;font-size:.76rem;line-height:1.4;color:var(--muted);margin:4px 0 0}
+.jn-rep .jn-jal{font-size:.8rem;line-height:1.45}
+.jn-rep .jn-jal em{font-style:normal;color:var(--gold-l,#E8C36A)}
+
+/* ——— 3. le bandeau d article ——— */
+.jn-fig{max-width:760px;margin:20px auto 24px;padding:0 clamp(20px,5vw,28px)}
+.jn-fig .jn-band{display:block;width:100%;aspect-ratio:1200/330;
+ background-repeat:no-repeat;background-size:142% auto;
+ background-position:var(--jx,50%) center;
+ border-top:1px solid var(--hair,rgba(255,255,255,.22));
+ border-bottom:1px solid var(--hair,rgba(255,255,255,.22))}
+@media(max-width:700px){.jn-fig .jn-band{aspect-ratio:1200/420}}
+.jn-fig figcaption{margin:8px 0 0;font-size:.63rem;letter-spacing:.11em;text-transform:uppercase;
+ color:var(--muted);opacity:.85;display:flex;gap:6px 14px;flex-wrap:wrap}
+.jn-fig figcaption b{font-weight:700;color:var(--gold-l,#E8C36A)}
+html[data-pl="coupe"] .jn-fig .jn-band{background-image:url(/assets/img/bande-coupe-sombre.webp)}
+html[data-pl="corridor"] .jn-fig .jn-band{background-image:url(/assets/img/bande-corridor-sombre.webp)}
+html[data-pl="colonne"] .jn-fig .jn-band{background-image:url(/assets/img/bande-colonne-sombre.webp)}
+html:is(.et-plight,.et-jlight)[data-pl="coupe"] .jn-fig .jn-band{background-image:url(/assets/img/bande-coupe-clair.webp)}
+html:is(.et-plight,.et-jlight)[data-pl="corridor"] .jn-fig .jn-band{background-image:url(/assets/img/bande-corridor-clair.webp)}
+html:is(.et-plight,.et-jlight)[data-pl="colonne"] .jn-fig .jn-band{background-image:url(/assets/img/bande-colonne-clair.webp)}
+
+/* ——— densite : les deux quotidiens sont plus serres que nous ——— */
+.jn-lead p{font-size:.98rem;line-height:1.5}
+.jn-art p{font-size:.86rem;line-height:1.48}
+.jn-dep{margin-top:34px}
+.jn-fil li{padding-bottom:11px;margin-bottom:11px}
+
+/* ——— theme clair : les etiquettes et la legende ——— */
+html:is(.et-plight,.et-jlight) .jn-rep .jn-jal em,
+html:is(.et-plight,.et-jlight) .jn-fig figcaption b{color:var(--pal,#8A6210)}
+html:is(.et-plight,.et-jlight) .jn-rep .jn-rl,
+html:is(.et-plight,.et-jlight) .jn-fig .jn-band{border-color:rgba(26,35,48,.18)}
+
+/* ——— sous la tete : les deux secondes histoires ——— */
+.jn-sous{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 26px;margin:22px 0 0;
+ border-top:1px solid var(--hair,rgba(255,255,255,.16));padding:18px 0 0}
+.jn-sous .jn-art h3{font-size:1.16rem}
+.jn-sous .jn-art p{font-size:.84rem;line-height:1.46}
+.jn-sous>*+*{border-left:1px solid var(--hair,rgba(255,255,255,.10));padding-left:26px}
+@media(max-width:640px){.jn-sous{grid-template-columns:1fr;gap:16px}
+ .jn-sous>*+*{border-left:0;padding-left:0;border-top:1px solid var(--hair,rgba(255,255,255,.10));padding-top:16px}}
+html:is(.et-plight,.et-jlight) .jn-sous,
+html:is(.et-plight,.et-jlight) .jn-sous>*+*{border-color:rgba(26,35,48,.16)}
