@@ -24909,3 +24909,59 @@ les couleurs de la carte.
 0 phrase qui dit la moitie, barre a 100 %, 0 erreur console, 0
 debordement ; captures des deux themes regardees. Aucun asset, SW
 inchange. Cinq fichiers.
+
+## 637 — Ce que cachaient les volets
+
+**Consigne** — next. La lecon du 636 : mes balayages lisaient le texte
+rendu, donc volets replies, et une incoherence y avait survecu des mois.
+J ai donc refait un bilan de sante volets ouverts.
+
+**LE RELEVE** — 146 volets sur 16 pages, dont 128 fermes par defaut :
+faq 28, distribution 17, atlas 16, clients 5, les six hubs 2 chacun, les
+deux brochures 1. Ce qu ils cachent, mesure en hauteur de page a 1 440 :
+la foire aux questions passe de 5 069 a 9 209 px — 4 140 px de contenu
+que mes balayages n avaient jamais lu ; distribution +742, clients +546,
+brochure +722.
+
+**CE QUE J Y AI TROUVE, cote contenu** — rien de faux. Les 123 chiffres
+qui vivent dans les volets fermes (reserves, longueurs, capacites, grades
+de brut) concordent avec le reste du site ; les 42, 21 et 16 qu on y
+trouve sont des degres API, des kilometres carres et des probabilites,
+pas des blocs. Le seul contenu faux etait celui corrige au 636.
+
+**CE QUE J Y AI TROUVE, cote mise en page — un vrai defaut.** Sur
+telephone (390 px), ouvrir un chapitre de l Atlas cassait la page : la
+grille atl-wrap passait d une colonne de 380 px a une colonne de 503, et
+la fiche secteur comme le corps du chapitre sortaient de l ecran,
+coupes, sans defilement possible. Cause : en CSS, une piste 1fr a
+min-width:auto — elle ne peut pas descendre sous la largeur minimale de
+son contenu ; chapitre ferme le tableau ne comptait pas, chapitre ouvert
+un tableau de 503 px imposait sa loi a toute la colonne. Corrige par
+minmax(0,1fr) sur les pistes et min-width:0 sur les deux enfants de la
+grille ; et chaque tableau recoit son propre cadre defilant
+(.atl-tw637), si bien qu on atteint la derniere colonne en faisant
+glisser le tableau. Verifie : cadre 380, tableau 520, defilement 140 —
+la colonne Note est atteignable.
+
+**MES DEUX ERREURS EN CORRIGEANT** — 1. ma garde d idempotence cherchait
+la chaine « min-width:520px », qui existait deja sur un autre tableau de
+la page : le script a cru avoir travaille et n a rien fait ; garde
+renommee. 2. j ai d abord pose le defilement sur .atl-dc, le cadre du
+chapitre entier : faire glisser le tableau faisait glisser le texte avec
+lui. C est la capture qui l a montre — le paragraphe au-dessus etait
+coupe a gauche ; chaque tableau a maintenant son cadre.
+
+**DEUX FAUX POSITIFS ECARTES** — les « debordements » internes de 9 a
+36 px signales sur les cartes de domaine sont des mots trop longs pour
+leur boite (Developpement), sans consequence visible : la capture montre
+le titre sur deux lignes, a 49 px du bord de la carte. Et un « 42 blocs »
+apparu une fois en theme clair puis introuvable : les compteurs animes
+de la page passent par 16, 21 et 42 en montant vers leur valeur, et ma
+mesure tombait pendant l animation. Lecon : mesurer apres stabilisation.
+
+**VERIFIE (local)** — 16 pages a volets, trois passes (sombre 1 440,
+sombre 390, clair 1 440), tous volets ouverts : 0 erreur console, 0
+reponse 400 ou plus, 0 debordement de page, 0 chiffre perime, 0 ancien
+nom de pole ; les six tableaux de l Atlas defilent dans leur cadre a
+390 et tiennent a 1 440 ; captures avant et apres glissement regardees.
+Aucun asset, SW inchange. Trois fichiers.
