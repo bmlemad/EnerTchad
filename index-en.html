@@ -2199,5 +2199,48 @@ html.et-plight .j640-go a,html.et-jlight .j640-go a{color:var(--pal,#8A6210)}
   } else if(t){ t.style.display='none'; }
 })();
 </script>
+<style id="bg641">
+/* Ch641 - la nappe d ambiance de la home, mesuree couche par couche contre un bruit de fond
+   etabli sur trois passes identiques, a quatre hauteurs de defilement et dans les deux themes.
+   Point de comparaison : sur les sept homes relevees (bp, ExxonMobil, Eni, Equinor,
+   TotalEnergies, Aramco, Savannah Energy), le fond est UN aplat et zero couche plein ecran ;
+   bp et ExxonMobil n ont pas un seul degrade dans toute la page. EnerTchad n ayant aucune
+   photographie, sa nappe fait le travail que l image fait chez eux : on la garde, mais on
+   ne garde que ce qui peint vraiment.
+   RETIRE, mesure au niveau du bruit dans les deux themes :
+     body::after  - 6 degrades, opacite 1. Visible a l ecran (repeinte en magenta elle occupe
+                    jusqu a 40 % des pixels) mais inaudible : elle repeint les couleurs deja
+                    posees par .diapo dessous. Ecart au masquage 1,13/2,68/1,30/0,95 pour un
+                    bruit de 1,44/2,36/1,29/0,91.
+     .prem-mesh   - 4 degrades dans le hero, couverts par la pile de fond du hero lui-meme.
+                    0,70/2,37/0,68/0,54 en sombre, 0,29/0,37/0,45/0,14 en clair.
+     .rootland    - deja retiree du rendu sombre au 639 ; en theme clair son maillage sur creme
+                    est lui aussi au bruit (0,20/0,59/0,44/0,06), le fond de body etant la meme
+                    creme. On complete donc le 639. L element reste dans le DOM : les selecteurs
+                    html:has(.rootland) testent la presence, pas l affichage.
+   GARDE, mesure au-dessus du bruit :
+     .diapo       - la couche forte du theme sombre (6,2 a 8,9).
+     #aurora      - la couche forte du theme clair (1,3 a 3,0) et visible en sombre (3,1 a 4,6).
+     body::before et html::before - 3,5 % d opacite, mais reellement perceptibles dans le hero
+                    (2,23 en sombre, 1,46 en clair pour un bruit de 1,44 et 0,33). Deja arbitre
+                    au 639 : elles restent.
+   Bilan : six couches et vingt degrades d ambiance ramenes a quatre couches et dix degrades. */
+body.hm::after{display:none!important}
+</style>
+<style id="fond641">
+/* Ch641 - la nappe de degrades cede la place a une coupe dessinee.
+   Le fond n est plus un flou : c est une section stratigraphique, faille listrique et
+   discordance comprises, rendue trait par trait puis comprimee dans les hautes lumieres
+   pour que le texte garde son contraste. */
+html:not(.et-plight):not(.et-jlight) body.hm .diapo:not(#d1):not(#d2):not(#d3):not(#d4):not(#d5):not(#d6){
+ background-image:url(/assets/img/fond-coupe-sombre.webp)!important;
+ background-size:cover!important;background-position:center center!important;
+ background-repeat:no-repeat!important;background-color:#0A1220!important;background-attachment:scroll!important}
+html:is(.et-plight,.et-jlight) body.hm .rootland:not(#d1):not(#d2):not(#d3):not(#d4):not(#d5):not(#d6){
+ background-image:url(/assets/img/fond-coupe-clair.webp)!important;
+ background-size:cover!important;background-position:center center!important;
+ background-repeat:no-repeat!important;background-color:#FAF7F1!important}
+html:is(.et-plight,.et-jlight) body.hm .diapo:not(#d1):not(#d2):not(#d3):not(#d4):not(#d5):not(#d6){background-image:none!important;background-color:transparent!important}
+</style>
 </body>
 </html>

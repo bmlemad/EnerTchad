@@ -25193,3 +25193,98 @@ regression. 28 contrastes mesures sur pixels reellement peints, le plus
 mauvais a 5,0:1, au-dessus de AA. Les quatre etats des jalons concordent
 avec le fichier .ics. Hauteur de page : 8 177 → 8 950 px. Aucun asset,
 SW inchange. Trois fichiers.
+
+## 641 — Le fond cesse d etre un flou : SEDIMENT
+
+**Consigne** — le fond du site face aux majors, puis : lance. Puis : cree
+des images liees au secteur pour servir de fond. Puis : next.
+
+**LE RELEVE, MEME INSTRUMENT SUR HUIT HOMES** — bp, ExxonMobil, Eni,
+Equinor, TotalEnergies, Aramco, Savannah Energy, EnerTchad. Chez les sept
+comparables, la pile de peinture derriere le contenu fait **un element de
+profondeur** : le corps de page en aplat blanc, parfois une bande gris
+tres pale pour alterner les sections. **Zero couche fixe plein ecran
+partout.** bp et ExxonMobil n ont **pas un seul degrade** dans toute leur
+page ; Eni en a 3, Equinor 6, TotalEnergies 9, Aramco 16, Savannah 18.
+EnerTchad en avait **63**, dont vingt dans des nappes d ambiance. Cote
+images : 10 a 88 chez eux, **0** sur la home.
+
+**CE QUE CELA VOULAIT DIRE** — les majors tirent leur profondeur de la
+photographie ; leur fond est un aplat parce que le contenu porte l image.
+La home EnerTchad n ayant aucune photographie, sa nappe faisait ce travail
+a leur place. Le choix etait coherent. Le rendement ne l etait pas : tout
+le decor remplace par un aplat ne deplace que 7 a 10 points de moyenne sur
+255, soit environ trois pour cent, pour vingt degrades composites a chaque
+image.
+
+**MON ERREUR, ET ELLE EST GROSSE** — j avais annonce le retrait de trois
+couches mesurees « au niveau du bruit ». **Deux de ces trois mesures n ont
+jamais eu lieu.** Pour eteindre une couche j injecte
+`display:none!important` avec une regle d une seule classe ; or le site
+affiche `.prem-mesh` et `.rootland` avec des regles a six identifiants.
+Mon masque ne s appliquait pas, la page ne changeait pas, et je lisais
+« aucun effet » la ou il fallait lire « aucun test ». Le controle de bout
+en bout l a montre : les trois couches retirees ensemble, l ecart au hero
+montait a **12,13 pour un bruit de 1,09**, et le halo dore du hero avait
+disparu. J ai tout remis sauf ce qui resiste a la verification.
+**Lecon** — apres avoir injecte un masque, relire la valeur calculee. Je
+le faisais depuis le 639 pour le test magenta ; je ne le faisais pas pour
+les tests d extinction.
+
+**CE QUI EST RETIRE, ET SEULEMENT CELA** — `body::after`, six degrades a
+opacite 1. Elle n est pas masquee : repeinte en magenta pur elle occupe
+jusqu a 40 % des pixels. Elle est **redondante** : elle repeint les
+couleurs que `.diapo` a deja posees. Ecart au retrait 0,79 / 1,21 / 0,86 /
+0,71 pour un bruit de 1,09 / 0,84 / 0,91 / 0,71. Le 639 avait trouve une
+couche *cachee* ; celle-ci est d une autre espece.
+
+**SEDIMENT** — plutot que de degraisser une nappe qui ne dit rien, on la
+remplace par quelque chose qui dit. Une philosophie visuelle ecrite pour
+l occasion — la beaute qui ne se compose pas, qui se depose — et trois
+planches executees au trait, sans aucune photographie, conformement a l
+arbitrage du proprietaire.
+
+*Planche 01, la coupe.* Un millier de lamines tracees une a une, jamais
+deux identiques : bancs lamines, massifs, calmes, lentilles chenalisees,
+bancs-marqueurs a l or de la charte. Les couches s amincissent et se
+densifient vers le bas — la compaction. Une **faille listrique** les
+traverse, raide en surface, aplatie en profondeur ; le compartiment de
+droite s affaisse de 43 m et bascule vers la faille. Au-dessus, une
+**discordance** tranche net et les couches superieures drapent sans
+rupture. C est la geometrie d un demi-graben coiffe d une discordance
+post-rift : celle des bassins de Doba et du Bongor. Qui la connait la lit
+en une seconde ; les autres voient une belle stratification.
+
+*Planche 02, la traverse.* Un profil en long repris **56 fois**, un
+chainage vertical de leve, le corps du relief hachure ligne a ligne et
+arrete par le terrain, un substratum en bancs sous le datum, dix stations.
+Le datum est le seul horizontal absolu de la planche.
+
+*Planche 03, le fractionnement.* Le contrepoint exact de la 01 : **aucune
+rupture**. Soixante-seize plateaux, des milliers de marques verticales
+dont l espacement se resserre et la longueur croit vers le bas, cinq
+coupes qui ordonnent tout, trois a l or, avec leurs soutirages.
+
+**LES FONDS** — six fichiers WebP de 2 560 x 1 440, un par planche et par
+theme, de **29 a 159 Ko**. Les hautes lumieres sont comprimees par un
+genou a 26 niveaux pour que le texte ne rencontre jamais une lamine trop
+claire. La home passe sur la coupe ; les deux autres sont disponibles pour
+les poles Transport et Raffinage.
+
+**CE QUE LA MESURE DIT DU FOND** — contraste du texte, avant et apres, sur
+pixels reellement peints : titre du hero 10,3 → **11,4:1**, surtitre 3,9 →
+**4,5:1**, corps des carnets 15,6 → 15,4:1, titre de section 14,4 → 13,4:1.
+**Le fond ne degrade rien** : il ameliore la plupart des contrastes, la
+coupe etant en moyenne plus sombre que la nappe. Pire cas theorique sur le
+fichier lui-meme : 13,1:1 en sombre, 9,0:1 en clair.
+
+**UN DEFAUT PREEXISTANT MIS AU JOUR** — le surtitre du hero etait a
+**3,9:1 avant toute intervention**, donc sous le seuil AA. Le nouveau fond
+le remonte a 4,5:1, ce qui est juste au seuil et non un reglage. A traiter
+pour lui-meme.
+
+**VERIFIE (local)** — deux pages, quatre passes (sombre et clair, 1 440 et
+390) : 0 erreur console, 0 erreur de page, 0 reponse 400 ou plus, 0
+debordement, contenu coupe identique au 640. Controle d integrite : 216
+pages, 0 probleme. Six assets ajoutes, **SW porte a et-202609171000**.
+Dix fichiers.
