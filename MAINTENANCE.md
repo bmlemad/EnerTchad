@@ -25837,3 +25837,55 @@ Quand elle repond `ok:false`, on ne la rappelle pas — on recharge la page et
 on recommence le lot. Enfin, un `ok:true` ne prouve rien : seule la ligne
 `git log -1 FETCH_HEAD` fait foi, et elle a dementi le harnais trois fois
 au cours de ce chapitre et du precedent.
+
+## 649 — Le theme suit enfin le systeme
+
+**La question posee avant d agir** — mon propre journal classait ce point
+deux fois comme « une decision du proprietaire, pas une correction » (615,
+613). Je ne l ai donc pas tranche seul : question posee, reponse **suivre le
+systeme**. Ce chapitre applique cette reponse.
+
+**CE QUI SE PASSAIT** — le script d amorce lisait la cle de theme et posait
+la classe claire **sauf si** elle valait `"0"` :
+`if(v!=="0")d.classList.add(k)`. Autrement dit le clair par defaut, et
+`prefers-color-scheme` totalement ignore. Un visiteur dont le systeme est en
+mode sombre recevait quand meme le site clair, et ne voyait jamais
+l identite marine et or — sauf a trouver le bouton ☀.
+
+**CE QUE DISAIT L INTENTION** — la fiche d architecture en tete de ce journal
+decrit pourtant le contraire : « auto si l OS est en clair ». Et le script
+differe `u_cd226c00eb4b.js` porte bien, depuis longtemps, la bonne condition
+(`_v===null && prefers-color-scheme: light`). Elle etait simplement **morte** :
+l amorce avait deja pose le clair avant qu il ne s execute. Ce n etait donc
+pas un choix assume mais un ecart entre l intention et le code.
+
+**CE QUI EST POSE** — trois etats au lieu de deux :
+`"1"` clair choisi, `"0"` sombre choisi, **cle absente** on suit
+`prefers-color-scheme`. L amorce lit aussi l autre cle en repli, car le
+bouton ecrit toujours les deux ; et le repli du `catch` suit la meme regle
+au lieu d imposer le clair. Le crochet reste dans le script d amorce, en
+tete de `head` : le theme est decide **avant le premier octet de rendu**,
+donc sans clignotement.
+
+**LA MESURE** — six etats croises (cle a `"1"`, `"0"`, absente ; systeme
+clair et sombre) sur cinq pages representatives, soit 30 cas. Chaque cas est
+lu **deux fois** : au premier rendu, avant tout script differe, puis apres
+stabilisation. Les 30 concordent, `theme-color` suit (`#FBF9F3` en clair,
+`#111D33` en sombre), la planche de fond suit (`fond-coupe-clair` ou
+`-sombre`), et le compte de bascules apres coup — c est-a-dire de
+clignotements — est de **0 sur 30**. Le bouton a ete teste dans les deux
+sens : depuis le sombre systeme il passe au clair et ecrit `1/1` ; depuis le
+clair systeme il passe au sombre et ecrit `0/0` ; dans les deux cas le choix
+tient au rechargement.
+
+**CE QUE CELA CHANGE POUR LE VISITEUR** — celui qui n a jamais touche au
+bouton et dont le systeme est en sombre decouvre desormais le site dans son
+theme d origine. Le contraste de ce theme n est pas une inconnue : il a ete
+mesure sur pixels peints au 647 (34 cibles, plancher 6,70:1) et au 648 (92
+cibles, plancher 5,03:1), toujours dans les deux themes, toujours zero cible
+sous le seuil AA.
+
+**VERIFIE (local)** — 209 pages, trois passes (systeme sombre 1 440, systeme
+clair 1 440, systeme sombre 390), 627 rendus : 0 erreur de page, 0 erreur
+console, 0 reponse 400 ou plus, 0 debordement, et **le theme rendu egale le
+theme du systeme sur les 627**. SW porte a **et-202609172000**. 209 fichiers.
