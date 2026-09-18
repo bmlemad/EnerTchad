@@ -26056,3 +26056,129 @@ Note de cache : journal.css passe a b=202609180300 sur les deux unes seulement.
 Les 70 autres pages qui chargent cette feuille ne sont pas touchees par les
 regles ajoutees, toutes portees par body.jn-page ; les laisser sur l ancien
 jeton evite 70 fichiers dans un tuyau deja etrangle.
+
+## 652 — Le point de repere principal : une mesure qui a change trois fois de conclusion
+
+Consigne : next. Le journal du 651 laissait un correctif structurel a faire —
+remettre #reperes et #cta-band dans <main>. Ce chapitre le traite, et il aboutit
+a l inverse de ce que cette note annoncait.
+
+### Mon regex a menti, une fois de plus
+
+Premier comptage : 186 pages au desequilibre <main>/</main>, 67 sans <main> du
+tout. Faux. En regardant le contexte des correspondances, la seconde ouverture
+de carrieres.html se lit ainsi : « Ce HEADER.hero n est PAS dans <main> » — de
+la prose, dans un commentaire CSS. Troisieme fois dans la journee que je fais
+confiance a un analyseur ecrit a la main plutot qu au DOM. La suite du chapitre
+ne mesure plus qu au DOM.
+
+Compte reel, mesure dans le navigateur sur 208 pages : 141 pages ou
+#main-content est un <main>, 67 ou c est le <h1>, ces dernieres portant un
+role="main" sur l <article> — ce qui vaut point de repere. 208 pages sur 208
+exposent donc exactement un point de repere principal.
+
+### La note du 651 avait tort sur #cta-band
+
+#cta-band est la banniere partagee « Unite · Innovation · Durabilite — De la
+roche-mere a la pompe, bati au Tchad », enfant direct de <body>, identique sur
+toutes les pages. La specification HTML est explicite : <main> ne contient pas
+le contenu repete d un document a l autre. Les 106 pages qui la placent dehors
+ont raison ; ce sont les 14 qui la gardent dedans qui detonnent. J avais ecrit
+l inverse au journal.
+
+### Le vrai constat, et pourquoi je n y touche pas
+
+Mesure au DOM, mobilier exclu (banniere partagee, panneau de luminosite, avis
+cookies, preloader, noscript) : 120 pages sur 208 portent du contenu de page
+hors du point de repere principal — 289 blocs, 267 994 caracteres. Sur les plus
+atteintes, 62 a 66 % du texte de la page.
+
+Avant de deplacer quoi que ce soit, j ai simule le deplacement dans le DOM et
+compare les rendus, temoin nul a 0 % : jusqu a 63,6 % des pixels changent en
+theme clair, ecart moyen 46,5. L explication est dans la feuille : le theme
+clair du site est bati sur 243 regles descendantes en « html.et-plight main … »
+qui imposent fonds, couleurs de texte, cartes blanches, bordures de tableau.
+Faire entrer un bloc dans <main>, c est lui appliquer ce theme d un coup.
+
+Le deplacement en masse n est donc pas une correction de balisage, c est une
+decision de design sur 120 pages. Je ne la prends pas seul, et surtout pas a
+l aveugle. Le constat est consigne ; la correction attend un arbitrage.
+
+### Ce que ce contenu vaut a la lecture — deux harnais casses avant le bon
+
+Restait la vraie question : hors de <main>, ce contenu echappe aux corrections
+de couleur du theme clair. Est-il lisible ?
+
+Premiere passe : 11 cibles sous le seuil AA, dont un titre a 1,47:1. J ai
+regarde la capture : le titre est parfaitement lisible, noir sur gris clair. Les
+11 echecs etaient des artefacts d animation — ces sections portent des
+apparitions au defilement, et je capturais avant et apres sans figer le
+mouvement. Harnais corrige, animations gelees : 0 echec sur 275.
+
+Un zero sans temoin ne vaut rien. Temoin pose : forcer les titres a #8a8f96,
+puis a #d2d5d9. Les ratios rendus sont restes identiques au pixel — 13,99,
+15,07, 15,22 — dans les trois cas. Un harnais insensible a la couleur de sa
+cible ne mesure pas sa cible. Les 275 mesures et les 11 echecs allaient tous a
+la poubelle.
+
+Harnais refait sur un autre principe : au lieu de masquer la cible par
+visibility:hidden, on lui met color:transparent, qui retire l encre et rien
+d autre — ni la mise en page, ni le decor, ni les bordures. Et surtout, on ne
+jette plus une cible parce qu elle a trop peu de pixels encres : c etait le
+point aveugle revele par le temoin #d2d5d9, ou un titre quasi invisible
+disparaissait du rapport au lieu d y figurer en echec. Les pixels sont desormais
+classes par ecart et l on retient le decile le plus encre, quel que soit cet
+ecart.
+
+Triple temoin sur le harnais refait : couleurs reelles 11,02 de mediane,
+#d2d5d9 1,33 avec les 17 cibles signalees en echec, #000000 18,95. Monotone et
+discriminant.
+
+Mesure enfin valide sur les 120 pages : 114 cibles hors <main> en theme clair,
+0 sous AA, marge la plus basse 9,63. Le contenu hors point de repere est
+parfaitement lisible. Le defaut est de navigation par points de repere, pas de
+lisibilite.
+
+### La correction, petite et fondee
+
+Les 14 pages qui gardaient la banniere dans <main> sont toutes de la famille
+amont — une meme passe de generation. Mesure avant correction : en theme clair,
+le texte d accent de cette banniere partagee est rgb(42,54,72) sur ces 14 pages
+et rgb(76,56,11) sur les 106 autres. Une seule banniere, deux couleurs selon la
+page. En sombre, les deux familles sont a rgb(255,183,3).
+
+</main> remonte avant <section id="cta-band"> sur les 14 pages, a taille de
+fichier inchangee a l octet pres, un seul </main> par page, la banniere apres.
+Apres correction : une seule couleur par theme sur tout le site — rgb(76,56,11)
+en clair, rgb(255,183,3) en sombre — et la banniere retrouve la place que la
+specification lui donne.
+
+### L environnement a disparu en cours de publication
+
+Le premier lot de sept pages est passe (5030b69), puis le conteneur de travail a
+ete recycle : l arbre local, les harnais et les lots prepares ont disparu d un
+coup. Rien de casse en production — sept pages corrigees, sept encore a
+l ancienne, aucune incoherence visible autre que celle qu on corrige. Arbre
+reconstruit par clonage sur 5030b69, transformation rejouee a l identique sur
+les sept pages restantes, avec les memes controles : taille inchangee a
+l octet, un seul </main>, banniere apres. Le chapitre est reecrit de memoire ;
+les mesures qu il cite ont toutes ete faites avant la perte.
+
+Lecon retenue : sur une serie de lots, ne pas garder l unique copie du travail
+dans un conteneur ephemere. Les fichiers modifies partent vers GitHub lot par
+lot, mais le journal et les fichiers communs devraient partir au premier lot,
+pas au dernier.
+
+### Verifie
+
+Balayage complet avant la perte : 208 pages, trois conditions, 624 mesures —
+0 erreur de page, 0 erreur console, 0 reponse >= 400, 0 debordement. Contraste
+de la banniere re-mesure sur les deux familles, theme clair : 10,07 a 10,54
+partout, seuil 4,5. Verification rejouee apres reconstruction, et en production
+une fois les lots passes. SW porte a et-202609180700. 16 fichiers, 3 lots.
+
+### Reste ouvert
+
+Les 120 pages et leurs 267 994 caracteres hors point de repere principal, qui
+demandent un arbitrage de design et non un deplacement mecanique. Et les sept
+phrases longues des Carnets, toujours pas traitees.
