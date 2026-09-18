@@ -49,3 +49,34 @@ html[data-fond] body:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4):not(#f5):not(#
 html[data-fond] body:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4):not(#f5):not(#f6):not(#f7):not(#f8):not(#f9):not(#f10):not(#f11):not(#f12):not(#f13):not(#f14):not(#f15):not(#f16):not(#f17):not(#f18):not(#f19):not(#f20):not(#f21):not(#f22):not(#f23):not(#f24):not(#f25)::after,
 html[data-fond]:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4):not(#f5):not(#f6):not(#f7):not(#f8):not(#f9):not(#f10):not(#f11):not(#f12):not(#f13):not(#f14):not(#f15):not(#f16):not(#f17):not(#f18):not(#f19):not(#f20):not(#f21):not(#f22):not(#f23):not(#f24):not(#f25)::before,
 html[data-fond]:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4):not(#f5):not(#f6):not(#f7):not(#f8):not(#f9):not(#f10):not(#f11):not(#f12):not(#f13):not(#f14):not(#f15):not(#f16):not(#f17):not(#f18):not(#f19):not(#f20):not(#f21):not(#f22):not(#f23):not(#f24):not(#f25)::after{display:none!important;content:none!important;background-image:none!important}
+
+/* ————— Ch650 — la police de titre —————
+   La revue de design reprochait au site son trio par defaut : Space Grotesk
+   pour les titres, Inter pour le corps. Le journal a pris sa serif de presse
+   au 648 ; le site prend ici un lettrage grave — National Park, dessine
+   d apres les panneaux routes au burin des parcs americains. C est la meme
+   main que les planches SEDIMENT, qui sont des dessins au trait : le titre
+   et le fond racontent enfin la meme histoire.
+   La regle vit ici parce que cette feuille est la seule chargee par les 208
+   pages, et qu aucune page ne redefinit --fd apres elle (verifie page par
+   page). Le corps reste a Inter, le journal garde Instrument Serif, et
+   l arabe tombe sur Noto Sans Arabic par la plage Unicode.
+   font-display:swap et non optional : mesure a l appui, avec optional le
+   titre gardait la police de repli a la premiere visite et ne basculait
+   jamais — 661 px de large contre 630 une fois la fonte en cache. Une
+   identite qui ne se montre pas au premier regard n est pas une identite. */
+@font-face{font-family:'National Park';src:url('/assets/fonts/NationalPark-Regular-latin.woff2') format('woff2');
+ font-weight:400;font-display:swap;
+ unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2190-2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'National Park';src:url('/assets/fonts/NationalPark-Regular-latin-ext.woff2') format('woff2');
+ font-weight:400;font-display:swap;
+ unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:'National Park';src:url('/assets/fonts/NationalPark-Bold-latin.woff2') format('woff2');
+ font-weight:500 900;font-display:swap;
+ unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2190-2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'National Park';src:url('/assets/fonts/NationalPark-Bold-latin-ext.woff2') format('woff2');
+ font-weight:500 900;font-display:swap;
+ unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+
+:root{--fd:'National Park','Space Grotesk','Inter',system-ui,sans-serif}
+/* le journal garde sa serif : --fj ne passe pas par --fd, rien a faire ici */
