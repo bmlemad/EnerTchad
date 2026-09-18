@@ -80,3 +80,15 @@ html[data-fond]:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4):not(#f5):not(#f6):n
 
 :root{--fd:'National Park','Space Grotesk','Inter',system-ui,sans-serif}
 /* le journal garde sa serif : --fj ne passe pas par --fd, rien a faire ici */
+
+/* ——— Ch654 · les degrades decoupes au texte qui ne peuvent pas paraitre ———
+   Un degrade pose en background-clip:text ne se voit que si l encre est
+   transparente. Sur huit elements — les six titres de #offre et les deux
+   chapeaux .apps-creed — une regle posterieure redonne une encre opaque :
+   le degrade est declare, calcule, et invisible. Le theme clair a deja
+   tranche, a la reparation de contraste : il eteint ces degrades et rend
+   l encre pleine. Le sombre fait desormais pareil, ce qui ne change rien a
+   l ecran et retire une declaration qui ment. */
+html:not(.et-plight):not(.et-jlight) #offre h2:not(#k0):not(#k1):not(#k2):not(#k3):not(#k4):not(#k5),
+html:not(.et-plight):not(.et-jlight) .apps-creed:not(#k0):not(#k1):not(#k2):not(#k3):not(#k4):not(#k5){
+  background-image:none!important;-webkit-background-clip:border-box!important;background-clip:border-box!important}
