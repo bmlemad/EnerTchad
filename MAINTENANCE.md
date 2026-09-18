@@ -25889,3 +25889,55 @@ sous le seuil AA.
 clair 1 440, systeme sombre 390), 627 rendus : 0 erreur de page, 0 erreur
 console, 0 reponse 400 ou plus, 0 debordement, et **le theme rendu egale le
 theme du systeme sur les 627**. SW porte a **et-202609172000**. 209 fichiers.
+
+## 650 — Le site prend une voix typographique
+
+**Consigne** — question posee au 649, reponse : la police de titre. La revue
+de design reprochait au site son trio par defaut, « celui de la moitie du
+web » : Space Grotesk pour les titres, Inter pour le corps.
+
+**LE CHOIX** — quatre candidates rendues sur un vrai titre du site, puis
+soumises : **National Park** l emporte. C est le lettrage des panneaux
+routes au burin des parcs americains — la meme main que les planches
+SEDIMENT, qui sont des dessins au trait. Le titre et le fond racontent
+desormais la meme histoire. Young Serif avait ete ecartee avant meme le
+choix : controle de couverture, il lui manque la fleche `→`, que le site
+emploie dans tous ses appels a l action.
+
+**CE QUI CHANGE, ET CE QUI NE CHANGE PAS** — seul `--fd`, la police
+d affichage. Le corps reste Inter. Le journal garde Instrument Serif : sa
+variable `--fj` ne passe pas par `--fd`, donc rien a faire. L arabe tombe
+sur Noto Sans Arabic par la plage Unicode, National Park n ayant aucun
+glyphe arabe.
+
+**UN SEUL FICHIER** — la regle vit dans `fond647.css`, seule feuille chargee
+par les 208 pages. Avant de l y mettre, verification page par page qu aucune
+page ne redefinit `--fd` **apres** ce lien : zero sur 208. Quatre
+sous-ensembles de 10 a 15 Ko (Regular et Bold, latin et latin-ext), la Bold
+declaree sur la plage `500 900` pour qu aucune graisse ne soit synthetisee.
+
+**Mon erreur — une identite qui ne se montrait pas.** J avais copie la
+convention du site, `font-display:optional`, sans la mettre a l epreuve.
+Mesure a cache froid contre cache chaud : le titre faisait **661 px** de
+large a la premiere visite et **630** ensuite. Autrement dit, avec
+`optional`, le premier visiteur ne voyait jamais la nouvelle police — le
+navigateur gardait le repli et ne basculait plus. Une identite qui ne se
+montre pas au premier regard n est pas une identite : passe en `swap`, les
+deux passes donnent 630.
+
+**TROIS PAGES QUI FIXAIENT LEUR PILE EN DUR** — le balayage a trouve trois
+pages ou le titre n avait pas change. Diagnostic : elles ecrivent leur pile
+de police litteralement au lieu de passer par `--fd`. La page 404 est
+corrigee (elle pointe maintenant sur la variable), et le Calculateur voit
+sa barre de navigation alignee. Restent deux pages d outil autonomes dont
+le titre est volontairement en Inter ou en police systeme — dit ici plutot
+que passe sous silence.
+
+**VERIFIE (local)** — 209 pages, trois passes (sombre 1 440, clair 1 440,
+sombre 390) : 0 erreur de page, 0 erreur console, 0 reponse 400 ou plus,
+0 debordement, la fonte disponible partout et le titre en National Park sur
+toutes les pages sauf le journal (serif de presse, voulu) et les deux outils
+autonomes. Contraste au masque de glyphes, deux themes, trois pages, 22
+cibles epinglees : la plus faible a **5,19:1**, zero sous le seuil AA — le
+changement de dessin de lettre n a rien coute a la lisibilite. Quatre assets
+ajoutes, SW porte a **et-202609180100**. 8 fichiers.
