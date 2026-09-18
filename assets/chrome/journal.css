@@ -261,3 +261,27 @@ html:is(.et-plight,.et-jlight) .jn-fig .jn-band{border-color:rgba(26,35,48,.18)}
  .jn-sous>*+*{border-left:0;padding-left:0;border-top:1px solid var(--hair,rgba(255,255,255,.10));padding-top:16px}}
 html:is(.et-plight,.et-jlight) .jn-sous,
 html:is(.et-plight,.et-jlight) .jn-sous>*+*{border-color:rgba(26,35,48,.16)}
+
+/* ——— Ch651 · QA — la bande morte au-dessus du bandeau ———
+   Le 648 avait bien ecrase le calage du .hero lui-meme (8px / 0), mais le
+   calage reel vit sur le .wrap interieur, pose en ligne dans la page :
+   clamp(44px,6vw,76px) en haut, clamp(30px,4vw,44px) en bas. Resultat mesure
+   a 1440 : un .hero de 257px pour un fil d Ariane de 38px, soit une dalle
+   sombre tronquee qui s arrete net au-dessus du bandeau — visible surtout en
+   theme clair, ou elle s interpose entre une barre de navigation claire et
+   une page creme. On resserre le .wrap au fil d Ariane seul. */
+html body.jn-page :is(header,div):is(.hero,.pghero):not(#q0):not(#q1):not(#q2):not(#q3):not(#q4):not(#q5):not(#q6):not(#q7):not(#q8):not(#q9):not(#q10):not(#q11) > .wrap{
+  padding-top:14px!important;padding-bottom:0!important}
+
+/* ——— Ch651 · QA — la une et ses articles n etaient pas dans le meme theme clair ———
+   Mesure : en clair, html porte « et-plight » sur la une et « et-jlight » sur
+   les articles. Or bundle_core_a1.css pose le « verre clair » — quatre radiaux
+   colores (or, bleu, vert, rose) plus un degrade papier, en !important — sur
+   html.et-plight seulement. Consequence : la une s affichait sur un lavis
+   pastel quand ses propres articles s affichaient sur le papier plat choisi au
+   647 (data-fond="papier"). Contribution mesuree du calque : 87,48 % des
+   pixels, ecart moyen 7,39 — temoin nul a 0 %. On eteint le verre sur la une
+   seule ; le .rootland papier, pose en dessous, redevient le fond. */
+html.et-plight:not(#q0):not(#q1):not(#q2):not(#q3):not(#q4):not(#q5):not(#q6):not(#q7):not(#q8):not(#q9):not(#q10):not(#q11):has(body.jn-page),
+html.et-plight:not(#q0):not(#q1):not(#q2):not(#q3):not(#q4):not(#q5):not(#q6):not(#q7):not(#q8):not(#q9):not(#q10):not(#q11) body.jn-page{
+  background-image:none!important;background-color:transparent!important}
