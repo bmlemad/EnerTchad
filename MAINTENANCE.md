@@ -26279,3 +26279,74 @@ SW porte a et-202609181100. 80 fichiers.
 
 Le bloc « Ressources & outils » place apres la banniere sur les deux unes.
 Le paragraphe a degrade decoupe de tchaditech/outils, a juger a l oeil.
+
+## 654 — Deux points ouverts refermes, et un degrade qui ne paraissait nulle part
+
+Consigne : next. Le 653 laissait deux points ouverts. Les deux sont traites, et
+le second s est revele etre une famille, pas un cas isole.
+
+### Le bloc « Ressources & outils », et la limite de la transformation du 653
+
+La transformation du 653 s arretait au premier marqueur de mobilier suivant le
+contenu, c est-a-dire a la banniere partagee. Elle ne pouvait donc rien voir de
+ce qui se trouve APRES cette banniere. Balayage de cette zone sur les 208
+pages : 2 pages concernees, les deux unes, un bloc « Ressources & outils » de
+188 et 162 caracteres echoue entre la banniere et le pied.
+
+Rentre dans <main> avec les memes controles qu au 653 — multiensemble des mots
+inchange, un seul </main>, banniere et navigation apres lui. L ordre devient :
+contenu, Ressources, navigation page-a-page, banniere, pied. La famille est
+close : plus aucun contenu de page hors du point de repere principal, sur
+aucune des 208 pages.
+
+### Le degrade qui ne pouvait pas paraitre
+
+Le 653 signalait un paragraphe de tchaditech/outils que le harnais de contraste
+rendait a 1,54:1 sans que la mesure soit fiable. Verification a l ecran : le
+texte est en gris clair pleinement lisible. Mais la feuille lui pose un degrade
+cyan-or en background-clip:text — un degrade decoupe a la forme des lettres.
+
+Or un tel degrade ne se voit que si l encre est transparente. Ici une regle
+posterieure redonne une encre opaque : le degrade est declare, calcule par le
+navigateur, et invisible. Voila pourquoi le harnais ne trouvait rien a mesurer.
+
+Ce n etait pas un cas isole. Balayage de tous les elements des 208 pages, dans
+les deux themes, a la recherche de ce motif : 8 elements en theme sombre — les
+six titres de #offre sur les pages de pole, et les deux chapeaux .apps-creed.
+En theme clair : zero, parce que la reparation de contraste avait deja tranche
+la question, en eteignant ces degrades et en rendant l encre pleine.
+
+Le sombre fait desormais pareil. Une regle dans fond647.css eteint le degrade
+sur ces deux selecteurs. Diff avant/apres sur pleine page : 0,023 % et 0,03 %
+des pixels en sombre, ecart moyen 0,007 — du crenage, rien d autre. C etait
+l intention : la declaration ne peignait rien, la retirer ne change rien a
+l ecran et retire une declaration qui ment. Apres : 0 element dans ce cas, dans
+les deux themes.
+
+### Mon serveur de mesure a menti aussi
+
+Le premier balayage apres correction a rendu 6 puis 20 erreurs de page. Toutes
+etaient des delais de navigation depasses, en cascade a partir d une page lente.
+Plutot que de les attribuer au site ou de les ecarter, j ai rejoue les 15 pages
+concernees seules : 45 mesures, 0 erreur. Le serveur local, un
+SimpleHTTPServer, saturait sous quatre shards paralleles. Balayage refait a deux
+shards : 624 mesures, 0 erreur de page, 0 erreur console, 0 reponse >= 400,
+0 debordement. Une erreur d outil n est pas un resultat, mais elle ne se decrete
+pas non plus : elle se prouve.
+
+### Verifie
+
+624 mesures, 0 erreur, 0 debordement. Contraste au masque de glyphes sur les dix
+pages touchees, harnais valide au triple temoin : clair 84 cibles 0 sous AA,
+sombre 178 cibles 0 sous AA ; plus basse marge 5,54 pour un seuil de 4,5.
+
+Note de cache : fond647.css garde son jeton b=202609171400 sur les 208 pages.
+La regle ajoutee est visuellement neutre par construction — une feuille en cache
+ne montre donc aucune difference — et bumper le jeton aurait demande de
+republier 208 pages pour zero pixel. Le service worker passe a et-202609181500,
+qui est le mecanisme prevu pour un changement d asset.
+
+### Reste ouvert
+
+Rien des points notes aux chapitres precedents. Le paragraphe .apps-creed garde
+sa couleur pleine, ce qui est desormais un choix ecrit et non un accident.
