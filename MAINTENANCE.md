@@ -25941,3 +25941,118 @@ autonomes. Contraste au masque de glyphes, deux themes, trois pages, 22
 cibles epinglees : la plus faible a **5,19:1**, zero sous le seuil AA — le
 changement de dessin de lettre n a rien coute a la lisibilite. Quatre assets
 ajoutes, SW porte a **et-202609180100**. 8 fichiers.
+
+## 651 — QA et inspection visuelle : ce que la mesure a trouve que l oeil avait laisse passer
+
+Le proprietaire demande « QA et inspection visual ». Quatre passes : balayage
+d erreurs sur les 208 pages, integrite des liens, contraste mesure, inspection
+visuelle par captures. Trois defauts reels trouves, tous corriges.
+
+### Le balayage
+
+208 pages x trois conditions — sombre 1440, clair 1440, sombre 390 — soit 624
+mesures. Resultat : 0 erreur de page, 0 erreur console, 0 reponse >= 400,
+0 debordement horizontal, 0 titre vide.
+
+Un tel resultat ne prouve rien tant que le harnais n a pas ete mis en echec.
+J ai donc pose une page temoin portant quatre fautes volontaires — une feuille
+de style absente, une image absente, un appel a une fonction indefinie, un bloc
+de 2400px de large. Le harnais a releve les quatre classes dans les trois
+conditions : pageErr 2, conErr 3, deux 404, debordement +968 puis +2018. Les
+624 zeros sont donc une mesure, pas un silence.
+
+### Les liens — mon erreur, deux fois
+
+Premiere passe : 859 liens internes morts. Faux. Mon resolveur ignorait le
+routage de vercel.json ; les deux cibles incriminees — /amont/calculateur-baril-additionnel
+et /configurateur-service-integre — y sont declarees en rewrites. Sonde en
+production : les deux repondent 200.
+
+Deuxieme passe, routage applique : 867 morts. Faux encore. J appliquais les
+redirects avant les rewrites, ce qui bouclait entre la redirection
+/Calculateur_Baril_Additionnel et la reecriture inverse, jusqu a la profondeur
+maximale. Mon erreur : j ai construit deux fois un resolveur de routage a la
+main au lieu d interroger la production, qui est la seule autorite. Le compte
+reel est 0.
+
+Restent quatre ancres qui, elles, sont fausses — et elles sont de moi, du 648 :
+
+- /investisseurs#jalons640 et /investisseurs-en#jalons640 : l identifiant
+  n existe pas, la section s appelle « agenda ».
+- /journal-atlas-secteur#atl-cadastre et son equivalent anglais : les
+  identifiants atl-* ne sont pas sur l article, ils sont sur /enerconseils/atlas.
+
+Verifie en production avant correction : jalons640 absent, atl-cadastre absent
+de l article et present sur l atlas. Corrige vers #agenda et vers
+/enerconseils/atlas#atl-cadastre. Les 68 autres fragments signales sont des
+filtres de rubrique (#rub=amont), lus par script, pas des ancres.
+
+### Le contraste — un fantome mesure
+
+21 cibles epinglees, deux themes, masque de glyphes : capture de la boite,
+seconde capture avec visibility:hidden sur la seule cible, les pixels qui
+different sont l encre. Ratio retenu : la mediane des pixels pleinement encres.
+
+La premiere passe a rendu une ligne impossible : la page arabe donnait 21,00 et
+16,93 identiques a deux decimales dans les deux themes. C est la signature du
+645. Verification : /ar/index.html n existe pas — les pages arabes s appellent
+ar.html, ar-amont.html. Le harnais avait mesure la page d erreur 404 de mon
+propre serveur local, du Times noir sur blanc, insensible au theme. goto() ne
+leve pas sur un 404. Mon erreur : mesurer sans verifier le code de reponse.
+Le harnais assere desormais le statut.
+
+Deux autres cibles etaient mal visees de ma part : .lead sur l accueil (c est
+.hxi-lead) et .jn-rep h3 sur la une (la colonne Reperes emploie h2).
+
+Temoin ajoute : une page a contraste volontairement insuffisant, #2e3d52 sur
+#1a2330. Le harnais rend 1,42 de moyenne et la classe en echec. Apres
+correction des cibles : 40 mesures, 0 echec. Les plus basses marges sont le
+jalon investisseur en clair (5,19 pour un seuil de 4,5) et la ligne de date de
+la une (8,07 a 10,08px).
+
+### L inspection visuelle — deux defauts de composition
+
+Premier : sur la une des Carnets, une dalle sombre tronquee entre la barre de
+navigation et le bandeau, tres visible en theme clair ou elle s interpose entre
+une navigation claire et une page creme. Diagnostic mesure : le 648 avait bien
+ecrase le calage du .hero (8px / 0), mais le calage reel vit sur le .wrap
+interieur, pose en ligne dans la page — 76px en haut, 44px en bas pour un fil
+d Ariane de 38px. Un .hero de 257px pour 38px de contenu. Resserre a 151px,
+soit la navigation plus la ligne du fil.
+
+Le bloc kick + h1 + lead que le 648 avait mis en display:none y dormait encore.
+Deux h1 dans le document, dont un invisible. Retire des deux unes : 352 et 323
+octets de balisage mort.
+
+Second, et c est l incoherence meme que le 647 devait supprimer : en theme
+clair, la une s affichait sur un lavis pastel — quatre radiaux or, bleu, vert,
+rose — quand ses propres articles s affichaient sur le papier plat. Le calque
+mesure a 87,48 % des pixels, ecart moyen 7,39, contre un temoin nul a 0 %.
+
+La cause n est pas une feuille oubliee mais deux classes de theme clair qui
+coexistent : html porte « et-jlight » sur les articles et « et-plight » sur la
+une. La regle « verre clair ultra moderne » de bundle_core_a1.css ne vise que
+et-plight, en !important. Le 648 a fait de la une un journal sans la faire
+passer dans le theme clair de ses articles. Le verre est eteint sur la seule
+une ; le .rootland papier, pose en dessous a z-index -2, redevient le fond.
+
+Contraste re-mesure apres ce changement de fond — un fond qui bouge peut casser
+la lisibilite : 14 cibles de la une, 0 echec, la plus basse a 5,02.
+
+### Verification finale
+
+Balayage complet rejoue apres les trois corrections : 624 mesures, 0 erreur de
+page, 0 erreur console, 0 reponse >= 400, 0 debordement.
+
+### Reserve
+
+Le 650 n est toujours pas deploye. Sonde a nouveau au debut de ce chapitre :
+fond647.css revient a 10 272 octets sans la section 650, sw.js a
+et-202609172000. Le plafond quotidien de deploiement de Vercel Hobby reste
+l explication la plus probable. Le present chapitre part avec le 650 dans la
+meme file.
+
+Note de cache : journal.css passe a b=202609180300 sur les deux unes seulement.
+Les 70 autres pages qui chargent cette feuille ne sont pas touchees par les
+regles ajoutees, toutes portees par body.jn-page ; les laisser sur l ancien
+jeton evite 70 fichiers dans un tuyau deja etrangle.
