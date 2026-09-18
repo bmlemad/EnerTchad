@@ -26182,3 +26182,100 @@ une fois les lots passes. SW porte a et-202609180700. 16 fichiers, 3 lots.
 Les 120 pages et leurs 267 994 caracteres hors point de repere principal, qui
 demandent un arbitrage de design et non un deplacement mecanique. Et les sept
 phrases longues des Carnets, toujours pas traitees.
+
+## 653 — Le contenu rentre dans le point de repere, et le 652 avait tort sur le risque
+
+Consigne : continue et applique tes recommandations. Le 652 avait releve
+120 pages dont le contenu sort du point de repere principal, puis refuse d y
+toucher au motif que la correction changerait le rendu de fond en comble. Ce
+refus reposait sur une mesure fausse.
+
+### L erreur du 652, et comment elle s est produite
+
+Pour estimer le risque, le 652 simulait le deplacement dans le DOM avec
+m.appendChild(e) sur chaque bloc. appendChild deplace le bloc a la fin de
+<main> : la simulation ne mesurait pas l effet du theme, elle mesurait le
+reordonnancement qu elle venait d introduire. D ou les 63,6 % de pixels et
+l ecart moyen de 46,5 qui m ont fait reculer.
+
+La transformation reelle ne reordonne rien : elle deplace la balise </main>
+vers le bas, l ordre du document est conserve. Mesure sur la page la plus
+atteinte, aval/raffinage : titre et texte de la section deplacee rendus a
+rgb(16,22,31) et rgb(42,54,72) avant comme apres, fond transparent avant comme
+apres — identiques. Le theme clair ne change rien a ces sections parce
+qu elles recevaient deja ces couleurs par d autres regles.
+
+Cinquieme harnais pris en defaut en deux jours, et le plus couteux : celui-la
+ne s est pas contente de donner un mauvais chiffre, il a fait renoncer a un
+travail justifie.
+
+### Ce qui a ete fait
+
+Recompte au DOM avec un inventaire du mobilier plus complet (nezProg, secrail,
+subland, rootland s ajoutent a la banniere partagee, au panneau de luminosite,
+a l avis cookies, au preloader) : 77 pages, 222 blocs, 233 762 caracteres — et
+non 120 pages, le premier compte gonflait du mobilier.
+
+La transformation deplace </main> jusqu au premier marqueur de mobilier qui
+suit le contenu, et repousse au passage la navigation page-a-page. Controle par
+fichier avant ecriture : un seul </main>, banniere et pied apres lui, navigation
+apres lui, et surtout le multiensemble des mots de la page inchange — aucune
+perte, aucun doublon. 77 sur 77 acceptees.
+
+UN DEFAUT DE NAVIGATION TROUVE EN CHEMIN — nav.pgr, les liens page precedente
+et page suivante, s affichait au milieu de la page : sur aval/raffinage, a
+2 181 px avec 5 400 px de contenu en dessous. Il rejoint la fin du contenu,
+juste avant la banniere. Ce n etait pas cherche ; c est la meme balise mal
+placee qui produisait les deux defauts.
+
+Resultat : de 77 pages et 233 762 caracteres hors point de repere, on passe a
+2 pages et 350 caracteres. Les deux restants sont un bloc « Ressources &
+outils » des unes, place apres la banniere partagee — le deplacer serait un
+choix de composition, pas une correction ; il est laisse.
+
+### Les chapeaux tronques en plein mot
+
+L examen des phrases longues des Carnets, note ouvert depuis le 648, a trouve
+autre chose : cinq chapeaux d article coupes au milieu d un mot. « la discipline
+qui ne se voit que quand elle manque — et qui rend rachet ». Tous faisaient
+exactement 170 caracteres : mon generateur du 648 coupait a une longueur fixe,
+sans egard pour les mots.
+
+Reecrits depuis la description de chaque article visee, qui est redigee et
+complete. Les deux chapeaux de une trop longs passent de 39 et 38 mots a
+20 mots en deux phrases, et le chapeau de societe est scinde sur les deux unes.
+Apres : 0 phrase visible de 30 mots ou plus, 0 chapeau tronque, sur les deux
+langues. Les libelles courts de la colonne Reperes — « 44 blocs, statut par
+bloc » — ne sont pas tronques, ils sont voulus ainsi.
+
+### Le harnais, encore, et un faux positif de plus
+
+Le contraste re-mesure apres transformation a d abord signale six titres a
+2,1:1 en theme sombre, du blanc casse sur fond clair. Verification a l ecran :
+parfaitement lisibles. Ces titres sont peints par background-clip:text, un
+degrade decoupe a la forme des lettres ; color:transparent ne leur retire
+aucune encre et je ne mesurais que du crenage. Le harnais retire desormais
+aussi l image de fond quand le rognage est sur le texte : les memes titres
+rendent 16,8 a 17,0.
+
+Restent deux cibles signalees sur tchaditech/outils, un paragraphe au degre
+decoupe lui aussi. Comparaison avant/apres a l identique au pixel pres et
+section deja dans <main> avant mon passage : le signalement est anterieur a ce
+chapitre et la mesure n est pas fiable sur ce traitement. Consigne comme telle,
+pas corrige a l aveugle.
+
+### Verifie
+
+Balayage complet apres transformation : 208 pages, trois conditions, 624
+mesures — 0 erreur de page, 0 erreur console, 0 reponse >= 400, 0 debordement.
+Contraste au masque de glyphes, harnais valide par triple temoin avant usage
+(couleurs reelles 11,15 · #d2d5d9 1,35 avec les 26 cibles signalees · #000000
+19,21) : theme clair 461 cibles 0 sous AA, theme sombre 1 029 cibles 0 sous AA
+imputable a ce chapitre. Zero regression de contraste introduite.
+
+SW porte a et-202609181100. 80 fichiers.
+
+### Reste ouvert
+
+Le bloc « Ressources & outils » place apres la banniere sur les deux unes.
+Le paragraphe a degrade decoupe de tchaditech/outils, a juger a l oeil.
