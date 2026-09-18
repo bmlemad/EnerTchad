@@ -26350,3 +26350,86 @@ qui est le mecanisme prevu pour un changement d asset.
 
 Rien des points notes aux chapitres precedents. Le paragraphe .apps-creed garde
 sa couleur pleine, ce qui est desormais un choix ecrit et non un accident.
+
+## 655 — Ce que le moteur de recherche coupe, et une feuille que j ai failli supprimer
+
+Consigne : next. Le journal n avait plus de point ouvert. Plutot que de choisir
+un chantier au juge, j ai mesure trois dimensions jamais controlees dans la
+serie : le poids et les requetes, l accessibilite clavier, le balisage.
+
+### Ce qui va bien, et qu il faut savoir
+
+Accessibilite : sur 208 pages, 0 element focalisable sans contour de focus
+visible, 0 image sans dimensions declarees, chargement differe en place,
+donnees structurees sur 207 pages. Le seul manque est la 404 — sans canonical,
+sans JSON-LD, sans alternate — ce qui est correct pour une page en noindex.
+Rien a corriger de ce cote.
+
+### La feuille que j ai failli supprimer
+
+Le diagnostic a montre une page mediane qui charge 12 feuilles de style et 18
+blocs de style en ligne : le sediment de 380 chapitres. J ai cherche les
+feuilles mortes — celles dont aucune regle ne touche quoi que ce soit.
+
+Premier resultat : 2 775 liens sur 2 775 morts, et fond647.css parmi eux. Une
+feuille dont je venais de verifier l effet. C etait le harnais : dans le
+contexte de la page, une CSSRuleList ne se parcourt pas avec for...of — la
+boucle ne voit rien et ne leve rien. Boucle indexee, et le controle passe :
+fond647.css, 15 regles, touche quelque chose sur les 208 pages. Sixieme harnais
+pris en defaut en deux jours, et toujours par un resultat impossible.
+
+Le compte corrige donnait 394 liens sur 2 775 — 14,2 % — qui ne touchent rien
+dans les trois conditions testees. J allais proposer de les retirer. En ouvrant
+les trois plus atteints, aucun n etait supprimable :
+
+- c_eda8729082dd.css, liee sur 69 pages, comptee a zero regle : elle ne contient
+  que des @font-face, qui n ont pas de selecteur. C est la feuille qui charge
+  les polices du site. La supprimer aurait casse la typographie de 69 pages.
+- s_0c793eb7ae.css vise #th-x, #th-x.on, #th-in : un panneau que le script
+  ouvre. Il ne matche rien parce qu il est ferme, pas parce qu il est inutile.
+- s_e0d87b6609.css declare une animation et une pastille probablement injectee.
+
+La mesure confondait trois choses : « ne contient pas de regle a selecteur »,
+« ne matche rien dans trois etats statiques » et « ne sert a rien ». Elle ne
+justifie aucune suppression. Ligne abandonnee, et consignee ici pour qu on ne la
+reprenne pas naivement. Le cout reel — 12 feuilles bloquantes par page —
+demeure, mais il demande une consolidation prudente, pas un elagage.
+
+### Ce qui etait vraiment casse : le resultat de recherche
+
+Le balisage est complet, mais il est trop long. Plutot que de compter les
+caracteres, ce qui est une approximation, j ai mesure la largeur rendue dans les
+polices ou s affichent les resultats — 20px Arial pour le titre, 14px pour le
+chapeau — contre les limites usuelles de 600 et 960 px.
+
+Resultat : 9 titres de 603 a 710 px et 73 chapeaux de 963 a 1 383 px. Sur
+82 pages, la fin du message n arrivait jamais au lecteur : elle etait coupee
+avant d etre lue. « La bouteille contre la hache » perdait sa chute ; les listes
+de procedes perdaient leur dernier terme.
+
+Les 82 sont reecrits a la main, pas tronques : on garde la tete, qui porte les
+mots-cles, et on resserre la queue, qui portait l ornement. Les titres perdent
+la redite — « Services parapetroliers (OFS) » devient « Services
+parapetroliers », le pole restant en second membre. Trois titres et six chapeaux
+ont demande une seconde passe parce que la premiere depassait encore ; chacun a
+ete re-mesure jusqu a passer.
+
+Le texte visible a l ecran n a pas bouge : le h1 de la mini-raffinerie dit
+toujours « Mini-raffinerie modulaire & amovible », seul le titre d onglet et de
+resultat a ete resserre. Les balises og: et twitter: qui reprenaient le meme
+texte ont suivi ; celles qui disaient autre chose ont ete laissees.
+
+### Verifie
+
+Apres reecriture, mesure rejouee sur les 208 pages : 0 titre au-dela de 600 px,
+0 chapeau au-dela de 960 px, 0 page sans titre ni description, 0 chapeau sous
+70 caracteres, 0 page a h1 multiple. Balayage complet : 624 mesures, 0 erreur de
+page, 0 erreur console, 0 reponse >= 400, 0 debordement. SW porte a
+et-202609181900. 81 fichiers.
+
+### Reste ouvert
+
+La consolidation des feuilles de style — 12 requetes bloquantes par page
+mediane — qui est un vrai cout mais demande une etude de cascade, pas un
+elagage. Et la feuille du 654 que Vercel n avait toujours pas deployee au
+moment d ecrire.
