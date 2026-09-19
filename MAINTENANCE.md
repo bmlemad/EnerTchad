@@ -27064,3 +27064,47 @@ reel sur 321 cibles.
 321 liens internes, 0 casse apres re-verification sequentielle ; quatre
 captures en sombre et en clair (accueil, amont, carnets), aucune anomalie
 visuelle. Aucun fichier du site ne change ; seul le journal.
+
+## 668 -- Tuiles en theme clair, encore plus transparentes (2026-09-19)
+
+Demande : « rendre toutes les tuiles claire transparente ». Uniquement le
+theme clair cette fois ; le sombre du 665 n est pas concerne.
+
+### Mesure
+
+Inventaire des tuiles en theme clair sur le site : toutes les vraies
+tuiles de contenu (cartes de pole, actualites, carnets, KPI...) portaient
+deja le degrade transparent pose au 664 et affine au 665 (40 % puis 22 %
+d opacite au point le plus fort). Deux classes non couvertes ont ete
+examinees et ecartees a dessein : lum-panel (le reglage de luminosite,
+petit widget flottant) et cmdk-panel (la palette de commandes, style
+Cmd+K) restent volontairement sombres et opaques quel que soit le theme du
+site, comme n importe quel overlay utilitaire de ce genre -- ce ne sont
+pas des tuiles de contenu. Sur les tuiles elles-memes, zoom sur trois
+gabarits en theme clair : meme apres le 665, le degrade (40/22 % d opacite)
+restait proche en teinte du fond creme qui l entoure, si bien que la carte
+se distinguait surtout par sa bordure et son ombre plutot que par une
+transparence visible -- une plaque claire sur un fond clair, pas du verre.
+
+### Ce qui change
+
+Un troisieme bloc de regles dans fond647.css, meme selecteur, mais cette
+fois uniquement html.et-plight/et-jlight : opacite du degrade quasiment
+divisee par deux par rapport au 665 (40 % -> 22 %, 22 % -> 10 %), flou
+remonte de 18 a 24px pour eviter le grain a cette faible opacite, bordure
+et ombre encore adoucies. Le theme sombre garde exactement les valeurs du
+665. Le repli prefers-reduced-transparency reste celui du 664, inchange.
+
+### Verifie
+
+Style calcule confirme en theme clair (degrade, flou 24px, bordure 5 %)
+et en theme sombre (valeurs du 665 intactes, aucune fuite entre themes).
+Controle negatif sur l accueil : .dur-c toujours hors du filet. Contraste
+texte remesure sur les 30 echantillons clairs : 28/28 echantillons reels
+passent le seuil WCAG AA de 4,5:1 (les deux "echecs" restants sont le
+meme artefact deja identifie au 665, un point de mesure tombant sur le
+bandeau de cookies) ; pire cas reel a 6,22:1, marge confortable meme apres
+cette nouvelle baisse d opacite. Balayage sombre et clair (1440px) sur 52
+pages chacun : 0 erreur ; mobile (390px) : la cascade « navigateur ferme »
+deja identifiee comme artefact de mon outil de test s est reproduite a l
+identique, aucune autre erreur.
