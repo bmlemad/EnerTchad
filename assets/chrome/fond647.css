@@ -92,3 +92,16 @@ html[data-fond]:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4):not(#f5):not(#f6):n
 html:not(.et-plight):not(.et-jlight) #offre h2:not(#k0):not(#k1):not(#k2):not(#k3):not(#k4):not(#k5),
 html:not(.et-plight):not(.et-jlight) .apps-creed:not(#k0):not(#k1):not(#k2):not(#k3):not(#k4):not(#k5){
   background-image:none!important;-webkit-background-clip:border-box!important;background-clip:border-box!important}
+
+/* Ch658 — les menus de pole ancres sur la barre, pas sur leur bouton.
+   Le panneau des trois poles mesure 920px et partait du bord gauche de son
+   bouton : Transport & stockage debordait de 56px a 1440px et de 145px a
+   1280px, Raffinage & distribution de 10px et 86px (la regle nth-child(3)
+   en translate -30% ne suffisait plus). Les trois panneaux partent
+   desormais du bord gauche de la liste des menus, comme celui de
+   l Exploration & Production qui tenait deja dans l ecran. */
+@media(min-width:1241px){
+.nx .nav-links:has(> .nxi616){position:relative}
+.nx .nav-links > .nav-item.nxi616{position:static}
+.nx .nav-links > .nav-item.nx-item .nx-mega.nxm616:not(#_x):not(#_y){left:0;right:auto;translate:none}
+}

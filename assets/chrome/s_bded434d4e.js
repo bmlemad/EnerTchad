@@ -4,7 +4,7 @@ try{
   var ids=['area','thick','poro','sat','rf'];
   var els={}; ids.forEach(function(k){els[k]=document.getElementById('st-'+k);});
   if(!els.area)return;
-  function fmt(n,d){return n.toLocaleString('fr-FR',{minimumFractionDigits:d,maximumFractionDigits:d});}
+  function fmt(n,d){return n.toLocaleString(/^en/i.test(document.documentElement.lang||'')?'en-US':'fr-FR',{minimumFractionDigits:d,maximumFractionDigits:d});}
   function calc(){
     var area=+els.area.value, thick=+els.thick.value, poro=+els.poro.value/100, sat=+els.sat.value/100, rf=+els.rf.value/100;
     // labels
