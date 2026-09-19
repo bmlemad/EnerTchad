@@ -26790,3 +26790,67 @@ Mesures apres correction : huit titres de section a x=171 et 37,6px a 1440px,
 21,6px a 390px ; face JetBrains « loaded » et utilisee par les surtitres ;
 aucun texte mono rogne sur six pages a 1440 et 390px (controle negatif : le
 meme detecteur trouve bien un surtitre force a 20px de large).
+
+## 662 — Revue visuelle de tout le site : la grille des pages-pole et des Carnets (2026-09-19)
+
+Demande : « ultra review visual de tout le site », suite au 661. Balayage DOM des
+208 pages : sur chaque page, largeur de la colonne .wrap et taille du h2 releves
+section par section. 74 pages remontaient plus d une valeur pour l une des deux.
+
+### Ce que la revue a trouve
+
+Sur les seize pages du gabarit pole (amont, aval, intermediaire, petrochimie et
+les quatre poles de diversification, FR et EN), les neuf sections courantes
+(Offre, Devenir client, Enjeux, Notre approche, Capacites, Expertises, Chiffres,
+Chantiers, Documents) alternaient entre 1180, 1200 et 1240px de large : le bord
+gauche du texte se decale de 20 a 30px a chaque changement de section, visible a
+l oeil sur une capture pleine page. Sur Carnets, le bandeau « Par pole » (1240,
+titre 33,6px) et le fil date juste en dessous (1060, titre 37,6px) ne partageaient
+ni la largeur ni la taille de titre — decrochement net de 58px au bord gauche.
+
+### Ce qui change
+
+Une regle ajoutee a fond647.css ramene les douze sections concernees (les neuf du
+gabarit pole, plus par-pole/actualites/presse de Carnets) a 1200px et harmonise le
+titre de « Par pole » sur la meme echelle que le reste de la page. Specificite
+forcee par une chaine :not() pour gagner quel que soit l ordre des feuilles.
+
+### Verifie
+
+Amont, Aval et Intermediaire (FR/EN) : neuf sections a x=115 / 1200px avant et
+apres capture comparee. Carnets : les trois sections a x=115 / 1200px / 37,6px.
+Balayage complet apres correction : 624 mesures, 0 erreur.
+
+## 663 — En-tete et pied de page transparents (2026-09-19)
+
+Demande : « rendre le footer et header transparent pour permettre une bonne
+visibilite du background ».
+
+### Mesure
+
+Le pied de page etait entierement opaque en theme clair (une seule couleur
+pleine repetee dans trois feuilles) et sans le moindre flou en theme sombre —
+72% d opacite mais aucun backdrop-filter, contrairement au bandeau de
+navigation qui en a un partout ailleurs. Le bandeau, lui, montait a 93-97%
+d opacite une fois la page defilee, verrouille par une regle a huit :not()
+sur #nav.nx.scrolled trouvee dans nav_a.css.
+
+### Ce qui change
+
+Pied de page et bandeau defile ramenes a un verre commun : fond a 50% d
+opacite environ et le meme flou (backdrop-filter) que le reste du site, dans
+les deux themes. Repli entierement opaque conserve pour qui demande moins de
+transparence (prefers-reduced-transparency). Specificite : chaine :not()
+poussee a vingt-quatre niveaux pour battre la regle a huit trouvee.
+
+### Verifie
+
+Fond647.css confirme en production (SW et-202609192000). Mon erreur de mesure :
+un premier controle en direct semblait montrer l ancienne couleur sur le
+bandeau ; en cause, mon scrollTo() programmatique ne declenchait pas l
+ecouteur de defilement du site (passif), donc la classe « scrolled » n
+apparaissait jamais et je mesurais l etat du haut de page, jamais touche par
+ce chapitre. Un evenement scroll envoye a la main a confirme le bon resultat :
+fond a rgba(8,14,26,.5) avec flou 20px en sombre, rgba(247,243,236,.58) avec
+flou 18px en clair, sur toutes les pages testees. Balayage complet : 624
+mesures, 0 erreur.
