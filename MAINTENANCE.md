@@ -27016,3 +27016,51 @@ conclusion (le titre partage du pole amont, les 26 champs soi-disant sans
 etiquette). Aucun defaut reel trouve cette fois-ci : le site reste dans
 l etat verifie aux chapitres precedents. Aucun fichier du site ne change ;
 seul le journal.
+
+## 667 -- QA en production : balayage, liens, visuel (2026-09-19)
+
+Consigne : QA. Le 666 avait audite le code source ; celui-ci verifie la
+production elle-meme, en direct sur enertchad-delta.vercel.app, apres les
+deux derniers chapitres publies.
+
+### Mesure
+
+Balayage complet : 208 pages x deux themes, 416 chargements directement
+contre la production (methode differente des chapitres precedents, qui
+passaient par un serveur local) : erreurs de page, erreurs console,
+reponses HTTP en echec, debordement horizontal. Integrite des liens :
+extraction de tous les href internes des 208 pages, 321 cibles uniques
+dedupliquees, chacune verifiee par une requete directe contre la
+production -- pas de reimplementation locale des regles de routage
+Vercel, lecon retenue du 651/652. Verification visuelle : quatre captures
+en production (accueil et amont en sombre, accueil et carnets en clair)
+pour confirmer que rien ne s est deplace depuis le 665.
+
+### Ce qui a ete trouve, et ecarte
+
+Le balayage a releve deux anomalies isolees : une erreur 502 sur une police
+(amont/reserves, sombre) et un fichier CSS servi une fois avec un mauvais
+type MIME (amont/eor-en, clair). Rejouees, les deux memes pages chargent
+sans aucune erreur ; sondees a la main, les trois fichiers concernes
+(police et deux feuilles de style) repondent correctement text/css ou 200
+sur 45 requetes directes consecutives, et l erreur MIME s est reproduite
+une seule fois de plus sur un quatrieme essai avant de disparaitre --
+episodique, non reproductible a la demande. Ce n est pas un defaut du
+code publie : aucun en-tete personnalise n existe pour ces fichiers dans
+vercel.json ; tout pointe vers un incident bref et isole du reseau de
+diffusion, pas vers une regression a corriger ici.
+
+La verification des liens a d abord signale 17 cibles en echec : trois
+etaient des schemas que ma propre extraction n aurait pas du traiter comme
+des liens HTTP (une image data: et deux liens webcal: d abonnement a
+l agenda), et les quatorze autres etaient un artefact de mes douze
+requetes paralleles saturant la sortie reseau du bac a sable -- rejouees
+une par une, sequentiellement, les quatorze repondent 200. 0 lien casse
+reel sur 321 cibles.
+
+### Verifie
+
+416 chargements de page en production, 0 erreur reelle apres reproduction ;
+321 liens internes, 0 casse apres re-verification sequentielle ; quatre
+captures en sombre et en clair (accueil, amont, carnets), aucune anomalie
+visuelle. Aucun fichier du site ne change ; seul le journal.
