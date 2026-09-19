@@ -26596,3 +26596,141 @@ pas. A verifier avec une source avant d y toucher.
 
 Sources consultees : Agence Ecofin, « Chad Targets 250,000 Barrels a Day Under
 New 2025-2030 Oil Strategy ».
+
+## 658 — Ranger les sujets sous les bons menus (2026-09-19)
+
+Demande : « reorganise les sujets selon les menus adequats ». J ai d abord
+mesure les menus dans le DOM (menu principal, 199 pages qui le portent), puis
+compare chaque page et chaque carnet a son menu naturel.
+
+### Ce que la mesure a montre
+
+- Le menu Exploration & Production rangeait l Atlas du secteur dans ses
+  « Reperes & carnets ». L Atlas appartient a EnerConseils, deja accessible par
+  la tuile EnerConseils du meme menu.
+- Le menu Raffinage & distribution etait le seul pole sans aucun carnet, alors
+  que 9 carnets traitent de ce pole.
+- Le menu Societe avait une colonne « Structure » fourre-tout : gouvernance,
+  poles, cibles 2030, achats, engagements, communautes. Sa carte « A la une »
+  repetait le lien « La Voie EnerTchad » deja present deux lignes plus haut.
+- Quatre pages n etaient dans aucun menu : Ethique & conformite, Innovation &
+  R&D, Paiements aux Etats (seulement en pied de page), et Cibles 2030 etait
+  rangee sous Societe alors que c est le tableau de bord de preuve.
+- Mesure de geometrie, en survolant chaque bouton : le panneau Transport &
+  stockage sortait de l ecran de 56px a 1440px et de 145px a 1280px ; celui du
+  Raffinage & distribution de 10px et 86px. Le texte de droite etait coupe.
+  La regle nth-child(3) en translate -30% ne suffisait plus.
+
+### Ce qui change
+
+- E&P : l Atlas cede sa place a « La production anticipee » (carnet E&P).
+- Raffinage & distribution : chaque colonne recoit ses carnets — Raffiner
+  (Raffiner au plus pres, La route en noir), Distribuer (Le prix d un litre,
+  Mobile Stations), Petrochimie (Le prix d un sac d uree, Le gaz torche).
+  Six lignes par colonne, comme la premiere colonne E&P.
+- Societe, trois colonnes : Identite (la Societe, mission, la Voie, nos poles,
+  Innovation & R&D), Gouvernance (gouvernance, Paiements aux Etats, achats),
+  Responsabilite (engagements, communautes, Ethique & conformite). La carte
+  « A la une » redondante disparait.
+- Investisseurs : Cibles 2030 rejoint « Preuves & outils ».
+- Marque de section active : Ethique, Innovation et Paiements aux Etats
+  allument desormais Societe ; Cibles 2030 allume Investisseurs.
+- Les trois panneaux de pole partent du bord gauche de la liste des menus
+  (fond647.css, au-dessus de 1241px) : 318..1238 a 1440px, 260..1180 a 1280px,
+  dans l ecran pour les cinq menus, FR et EN.
+- Plan du site FR et EN reordonne comme les menus : Societe, Investisseurs,
+  Clients & contact. Seul lien retire : le doublon « Carnets » de la colonne
+  Societe (toujours present sous Recits & medias).
+
+### Verifie
+
+Transformation limitee au bloc de navigation : le reste des 199 pages est
+identique octet pour octet. Chaque remplacement exige exactement une
+occurrence par page, sinon rien n est ecrit. Balayage complet : 624 mesures,
+0 erreur, 0 reponse >= 400, 0 debordement. Survol teste a 1280, 1366 et
+1440px, et tiroir mobile a 390px.
+
+### Mon erreur
+
+Premier essai : le script detectait l anglais avec « -en » dans le nom de
+fichier, et « journal-enigme » contient « -en ». La page francaise a recu les
+remplacements anglais, l assertion a echoue, mais le script ecrivait page par
+page : 111 fichiers etaient deja modifies. Restaures depuis FETCH_HEAD, puis le
+script a ete refait pour tout calculer d abord et n ecrire qu a la fin, avec un
+test sur la fin du nom (« -en.html »).
+
+## 659 — Les rubriques des carnets suivent les menus (2026-09-19)
+
+Chaque article portait un lien « Tous les carnets Economie → » (ou Geologie,
+Industrie, Technique…) vers /carnets#rub=economie. 36 variantes, et aucune ne
+menait nulle part : la page des Carnets n a ni ces rubriques ni de filtre,
+le lecteur atterrissait en haut de page. Les vraies rubriques de la page sont
+les poles des menus.
+
+- Les cinq sections de /carnets recoivent un ancrage : #rub-amont,
+  #rub-inter, #rub-aval, #rub-societe, #rub-fonds (FR et EN).
+- Chaque article pointe vers la rubrique de son pole : 10 E&P, 9 Transport &
+  stockage, 9 Raffinage & distribution, 3 Societe & vision, l Atlas vers le
+  fonds documentaire. 62 liens reecrits ; « Forage directionnel » n en avait
+  pas.
+- Le gaz torche n etait compte dans aucune rubrique (10+9+8+4 = 31 pour 32
+  articles). Range en Raffinage & distribution, comme son surtitre
+  « Petrochimie », le portail Petrochimie et le nouveau menu : compteur 8 → 9.
+- Les renvois des portails E&P, Transport et Raffinage menaient a /carnets
+  en haut de page ; ils menent a leur rubrique.
+- Boucle cassee : le bloc « Par pole » des Carnets promettait « trois carnets
+  dates sur chaque portail » et renvoyait vers les portails, qui renvoyaient
+  aux Carnets. Trois portails sur quatre n ont pas de carnets (choix Ch. 407 :
+  le portail reste au metier). Le texte dit maintenant ce qui est vrai et les
+  cartes menent au portail du pole ; la Petrochimie garde son fil date.
+- Plan du site : #rub=… devient #rub-…, le gaz torche passe sous Raffinage &
+  distribution, l Atlas sous EnerConseils.
+
+Verifie dans le DOM : les cinq ancrages existent, compteurs 10/9/9/4, plus
+aucun lien #rub= sur le site.
+
+## 660 — Virgules francaises sur les pages anglaises, chiffre de l oleoduc (2026-09-19)
+
+Les deux points laisses ouverts au Ch. 657.
+
+### Virgules decimales
+
+Mesure par le texte visible, apres execution des scripts, sur toutes les pages
+anglaises : 25 nombres a virgule francaise sur 5 pages (Atlas anglais,
+collecte, services, sites, investisseurs), plus le « 12,1fr » de la charte qui
+est du code CSS cite et reste tel quel.
+
+- Texte statique : ~1,5 → ~1.5, 21-24,5° → 21-24.5°, 0,14 % → 0.14%,
+  3 000,0 → 3,000.0, 2,5 t → 2.5 t, etc. ; « Gbep » (sigle francais)
+  devient Gboe, comme la page investisseurs.
+- Scripts : la fonction fmt partagee (s_bded434d4e.js, chargee par FR et EN)
+  formatait toujours en fr-FR ; elle suit maintenant la langue de la page.
+  Le simulateur de sites anglais et le compteur des investisseurs anglais
+  forcaient la virgule par replace('.',',') : retire, formats en-US, et
+  « $2,500 » au lieu de « 2 500 $ », kb/d au lieu de kb/j.
+- Recompte apres correction : 0 sur les 104 pages anglaises (hors charte).
+
+### Utilisation de l oleoduc
+
+Le calculateur du baril additionnel posait « 90 kb/j · 40 % » d utilisation
+de l oleoduc Doba-Kribi sur 225, sans source. Seule donnee publique retrouvee :
+47 millions de barils transportes en 2019 selon la SNH camerounaise (cite par
+Global Energy Monitor), soit ~129 kb/j, ~57 %. Le calculateur part donc de
+129 kb/j, date et source dans la note. Consequence honnete : la baisse de
+tarif affichee pour les operateurs du corridor devient plus modeste (~4 % au
+lieu de ~6 % avec les reglages par defaut).
+
+SW porte a et-202609191200.
+
+### Verifie en production (Ch. 658-660)
+
+18 commits, 62d0137 a aeb9c7c. En production : les cinq ancrages de rubrique
+sur /carnets, compteur Raffinage & distribution a 9, « Le portail du pole » ;
+menu : « La production anticipee » present, lien Atlas absent de la colonne
+E&P, colonne Responsabilite presente, carte « Decouvrir → » absente ; Cibles
+2030 allume Investisseurs ; le gaz torche renvoie a #rub-aval ; calculateur a
+129 kb/j · 57 % ; Atlas anglais en ~1.5 Gboe et 3,000.0, plus aucun Gbep ;
+fond647.css porte la regle Ch658 ; SW et-202609191200 ; plan du site avec sa
+colonne Investisseurs et sans aucun #rub=. Geometrie mesuree dans le
+navigateur a 1512px : les trois panneaux de pole en 365..1271, tous dans
+l ecran. Balayage complet apres les trois chapitres : 624 mesures, 0 erreur.
