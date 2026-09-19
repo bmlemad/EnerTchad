@@ -1197,7 +1197,7 @@ html:is(.et-plight,.et-jlight) body.hm:not(#_):not(#__):not(#___) main:not(#a1):
    corps de page clair.
    ============================================================ */
 :root{
-  --fm:ui-monospace,SFMono-Regular,Menlo,monospace;
+  --fm:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
   --gold-d:#C9982E;
   --ease:cubic-bezier(.22,.61,.36,1);
   --amber-l:#F2B45A;
