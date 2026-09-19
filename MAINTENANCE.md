@@ -26907,3 +26907,63 @@ chacun, 0 erreur. Verification mobile (390px) sur dix pages representatives :
 0 erreur, aucun debordement horizontal. Verification visuelle sur trois
 gabarits (pole, carnets, accueil) dans les deux themes plus mobile : tuiles
 lisibles, decor visible en filigrane a travers le flou.
+
+## 665 -- Adhesion parfaite au decor (2026-09-19)
+
+Demande : « faire une parfaite adhesion avec le background pour donner une
+impression immersive », suite directe du 664 (tuiles en verre).
+
+### Mesure
+
+Zoom sur trois gabarits (pole, carnets, accueil) dans les deux themes : la
+tuile posee par le 664 se voyait encore comme une plaque au-dessus du fond --
+un bord a 12-15% d opacite et une ombre portee nette la decoupaient du reste,
+et le degrade (jusqu a 58-62% d opacite) laissait a peine deviner le motif du
+decor derriere elle. Le contour de chaque carte restait visible meme flou.
+Le contraste du texte, deja verifie au 664 avec une marge large (5,7:1
+minimum contre 4,5 requis par le WCAG AA), laissait de la place pour aller
+plus loin.
+
+### Ce qui change
+
+Un second bloc de regles dans fond647.css, meme selecteur que le 664 (24
+:not() de specificite), reprend les valeurs a la baisse : opacite du degrade
+abaissee d un tiers environ (58% -> 38% en sombre, 62% -> 40% en clair),
+flou remonte a 20px en sombre et 18px en clair pour que le motif qui
+traverse reste lisse plutot que granuleux, bordure et ombre portee adoucies
+(alpha divise par presque deux) pour que la carte se fonde dans le decor au
+lieu de s en detacher visuellement. Le repli pour qui demande moins de
+transparence (prefers-reduced-transparency) reste celui du 664, inchange :
+lui doit rester net et opaque, pas fondu avec le fond.
+
+### Verifie
+
+Mon erreur : en inserant le nouveau bloc entre les regles du 664 et le repli
+prefers-reduced-transparency, une modification imprecise du fichier a fait
+deux degats a la fois -- elle a remplace les regles de verre du 664 par les
+valeurs plates du repli (sorties par erreur du bloc @media), et a laisse
+deux morceaux de texte de reperage invalides directement dans le CSS. Repere
+par une relecture du fichier avant publication (le motif « PLACEHOLDER »
+n a rien a faire dans une feuille de style), corrige en deux temps : d abord
+la restauration des regles du 664 a leur place et le retrait du premier
+reperage, puis le retrait du second qui restait cache juste apres l ouverture
+du bloc @media. Verifie ensuite avec les memes controles qu au 664 : nombre
+d accolades ouvrantes et fermantes egal, aucune occurrence du mot reperage
+restante, un seul bloc de commentaire pour le 664 et pour le 665, une seule
+regle @media prefers-reduced-transparency dans le fichier. Style calcule
+verifie sur une page de pole (degrade, flou, couleur de bordure et ombre
+portee tous conformes aux nouvelles valeurs dans les deux themes) et controle
+negatif sur l accueil (.dur-c reste hors du filet, comme au 664). Contraste
+texte remesure sur 60 echantillons (cartes de pole, carnets, presse, unites
+petrochimie) aux nouvelles valeurs plus transparentes : 58 sur 60 passent le
+seuil WCAG AA de 4,5:1, le pire cas reel a 6,24:1 ; les deux seuls
+« echecs » venaient d un point de mesure tombant par hasard sur le bandeau
+de consentement des cookies plutot que sur la tuile elle-meme -- confirme en
+relisant la capture d ecran correspondante, pas une regression reelle.
+Balayage en sombre et en clair (1440px) sur un echantillon de 52 pages
+chacun : 0 erreur, aucun debordement. Verification mobile (390px) sur le
+meme echantillon : la cascade d erreurs « navigateur ferme » deja identifiee
+au 664 comme un artefact de mon outil de test (et non une consequence du
+code) s est reproduite a l identique en toute fin de balayage -- aucune autre
+erreur. Comparaison visuelle avant/apres sur les captures zoomees : le
+contour des cartes est moins marque, le motif du fond traverse davantage.
