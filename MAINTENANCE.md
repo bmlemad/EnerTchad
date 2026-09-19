@@ -26854,3 +26854,56 @@ ce chapitre. Un evenement scroll envoye a la main a confirme le bon resultat :
 fond a rgba(8,14,26,.5) avec flou 20px en sombre, rgba(247,243,236,.58) avec
 flou 18px en clair, sur toutes les pages testees. Balayage complet : 624
 mesures, 0 erreur.
+
+## 664 — Les tuiles en verre transparent (2026-09-19)
+
+Demande : « rendre toutes les tuiles clair verre transparent pour permettre
+une meilleure visibilite du background pendant la navigation pour donner un
+caractere immersif du site », suite directe du 663 (en-tete et pied de page).
+
+### Mesure
+
+Plus de trente noms de classe de tuiles a travers le site (cartes de pole,
+cartes actualites/carnets, cartes de diversification, encarts KPI...). Un
+systeme de verre pour ces tuiles existe deja, pose par d anciens chapitres
+(544 notamment) — degrades semi-transparents et flou deja ecrits dans le
+code — mais il est neutralise depuis le 624 : une regle universelle a 22
+:not() de specificite dans nav_a.css coupe le backdrop-filter sur tout ce qui
+vit sous main ou sous un heros de page, sur les 200 pages, en compensant par
+plus d opacite. Cette coupure etait deliberee et documentee : sur l accueil,
+des calques de fond animes combines a du flou lourd faisaient se chevaucher
+les images a l ecran, en plus d un cout de performance reel. Le bandeau de
+navigation avait deja ete exempte de cette coupure a l epoque.
+
+### Ce qui change
+
+Une regle ajoutee a fond647.css, a 24 :not() de specificite (au-dela des 22
+trouves), rend le flou aux tuiles de contenu sur tout le site : degrade a 42-
+58% d opacite avec flou de 14px dans les deux themes, repli opaque conserve
+pour prefers-reduced-transparency. La liste de classes protegees par le 624
+sur la page d accueil (.t550-p, .cb-in, .car546, .hxf-face, .dur-c et les
+autres encarts propres a cette page) ne correspond a aucune des classes visees
+ici : l accueil garde exactement le traitement que le 624 lui avait donne,
+rien n y est touche. Les elements internes aux tuiles actualites (date,
+etiquette de pole, lien « lire ») sont exclus un par un pour eviter un verre
+imbrique dans un verre.
+
+### Verifie
+
+Mon erreur : avant de publier, j ai voulu isoler la cause d une lenteur
+apparente du balayage complet (208 pages) en comparant avec et sans ce
+chapitre — mais mon script de retrait, fonde sur la position d un texte dans
+le fichier, a cherche un repere qui existait deux fois dans fond647.css et a
+duplique le bloc du 663 au lieu de retirer le bloc du 664. Le controle etait
+donc fausse au premier essai ; repere par un grep de verification apres coup,
+corrige, puis rejoue proprement. Une fois la comparaison honnete faite entre
+le fichier d avant et le fichier d apres, la lenteur du balayage (au-dela de
+la limite de mon propre outil, mais le script se terminait bien et ecrivait
+un resultat complet a chaque fois) s est reproduite a l identique dans les
+deux cas, y compris la meme cascade d erreurs « navigateur ferme » en toute
+fin de balayage mobile : un artefact de mon outil de test, pas une consequence
+de ce chapitre. Balayage complet en sombre et en clair (1440px) : 208 pages
+chacun, 0 erreur. Verification mobile (390px) sur dix pages representatives :
+0 erreur, aucun debordement horizontal. Verification visuelle sur trois
+gabarits (pole, carnets, accueil) dans les deux themes plus mobile : tuiles
+lisibles, decor visible en filigrane a travers le flou.
