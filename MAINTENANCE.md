@@ -26967,3 +26967,52 @@ au 664 comme un artefact de mon outil de test (et non une consequence du
 code) s est reproduite a l identique en toute fin de balayage -- aucune autre
 erreur. Comparaison visuelle avant/apres sur les captures zoomees : le
 contour des cartes est moins marque, le motif du fond traverse davantage.
+
+## 666 -- Audit SEO, images et formulaires : rien a corriger (2026-09-19)
+
+Consigne : next, sans point ouvert au journal. Plutot que d inventer un
+changement, j ai mesure six dimensions jamais controlees ensemble jusqu ici.
+
+### Mesure
+
+Sitemap et hreflang : 206 entrees dans sitemap.xml comparees aux 208 pages
+reelles, aucune date future, 0 doublon d URL, et une verification de
+reciprocite complete (chaque lien hreflang d une page doit trouver, sur la
+page qu il cible, un lien hreflang de retour) -- 0 anomalie sur l ensemble.
+Texte alternatif des images : le site n emploie quasiment aucune balise img
+(fonds en CSS) -- seules 13 images reelles existent, sur 4 pages (logo,
+kit media, sacs d intrants petrochimie), toutes avec un attribut alt
+descriptif et traduit dans les deux langues. Annee de copyright : « 2026 »
+sur les 209 pages, aucune trace d une annee perimee. Attributs lang/dir :
+fr sur les pages francaises, en sur les anglaises, ar avec dir="rtl" sur
+les huit pages du mini-site arabe -- corrects partout. Titres et
+descriptions en double : 0 description dupliquee sur 208 pages ; un seul
+groupe de titres identiques entre deux pages (le pole amont, francais et
+anglais, partagent litteralement « Exploration &amp; Production »).
+Etiquetage des formulaires : 501 champs verifies sur le site (contact
+FR/EN principalement).
+
+### Ce qui ne bouge pas
+
+Le titre partage du pole amont n est pas une coquille : le h1, le sous-titre
+et les intitules de navigation de la page francaise emploient eux-memes
+« Exploration &amp; Production » a l identique, comme designation figee du
+metier (comparable a un sigle professionnel invariant), et sa description
+meta est bien traduite et distincte de la version anglaise -- rien a
+corriger. Les 501 champs de formulaire n avaient en realite aucun probleme :
+mon premier passage, fonde sur l attribut for d une balise label, en
+signalait 26 sans etiquette sur les deux pages de contact -- tous en verite
+enveloppes directement par leur label (« <label>Nom complet<input...></label> »
+et les cartes de choix radio), un rattachement implicite parfaitement valide
+que mon script ne reconnaissait pas encore. Corrige dans l outil de mesure,
+pas dans le site ; recompte a zero.
+
+### Verifie
+
+Six dimensions auditees (sitemap/hreflang, alt text, copyright, lang/dir,
+titres/descriptions, etiquetage de formulaire), deux fausses alertes
+detectees et ecartees par verification directe du code source avant toute
+conclusion (le titre partage du pole amont, les 26 champs soi-disant sans
+etiquette). Aucun defaut reel trouve cette fois-ci : le site reste dans
+l etat verifie aux chapitres precedents. Aucun fichier du site ne change ;
+seul le journal.
