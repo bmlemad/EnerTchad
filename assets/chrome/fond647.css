@@ -114,3 +114,38 @@ html:not(.et-plight):not(.et-jlight) .apps-creed:not(#k0):not(#k1):not(#k2):not(
 @font-face{font-family:'JetBrains Mono';src:url('/assets/fonts/JetBrainsMono-latin.woff2') format('woff2');font-weight:500 600;font-display:optional;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 @font-face{font-family:'JetBrains Mono';src:url('/assets/fonts/JetBrainsMono-latin-ext.woff2') format('woff2');font-weight:500 600;font-display:optional;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
 
+
+/* Ch662 — ultra review visual de tout le site : la grille des pages-pole et des Carnets.
+   Balayage des 208 pages, .wrap mesure dans chaque section : la meme derive qu au 661,
+   ailleurs. Sur les seize pages du gabarit pole (amont, aval, intermediaire, petrochimie
+   et les quatre poles de diversification, FR et EN), neuf sections du meme gabarit
+   alternaient entre 1180, 1200 et 1240px sans raison visible — Devenir client a 1200,
+   Enjeux a 1180, Notre approche a 1240 : le bord gauche du texte se decale de 30px
+   d une section a l autre. Sur la page Carnets, la meme chose entre le bandeau « Par
+   pole » (1240, titre 33,6px) et le fil date juste en dessous (1060, titre 37,6px) —
+   un decrochement net de 58px au bord gauche, visible a l oeil sans avoir besoin de
+   mesurer. */
+html body :is(#offre,#clients,#enjeux,#approche,#capacites,#expertises,#chiffres,#chantiers,#documents,#par-pole,#actualites,#presse):not(#k1):not(#k2):not(#k3) > .wrap{max-width:1200px!important}
+html body #par-pole:not(#k1):not(#k2) h2{font-size:clamp(1.35rem,3.4vw,2.35rem)!important;line-height:1.08!important}
+
+
+/* Ch663 — en-tete et pied de page transparents, pour laisser voir le decor en permanence.
+   Mesure : le pied de page etait entierement opaque en theme clair (une couleur pleine
+   avec degrade cremeux, sur une regle a cinq :not() de specificite dans plight_extrait.css
+   et x_cd256286824c.css) et sans le moindre flou en theme sombre (72% d opacite mais aucun
+   backdrop-filter). Le bandeau de navigation, lui, montait a 93-95% d opacite une fois
+   defile, verrouille par une regle a huit :not() sur #nav.nx.scrolled. Les deux sont
+   ramenes a un verre commun, plus transparent, avec le meme flou que le reste du site —
+   repli opaque conserve pour qui demande moins de transparence (prefers-reduced-transparency).
+   Specificite : la chaine :not() est poussee au-dela de celle des regles trouvees pour
+   etre sur de gagner, quel que soit l ordre de chargement des feuilles. */
+html body footer:not(#k1):not(#k2):not(#k3):not(#k4):not(#k5):not(#k6):not(#k7):not(#k8):not(#k9):not(#k10):not(#k11):not(#k12){background:rgba(14,22,38,.5)!important;-webkit-backdrop-filter:blur(18px) saturate(140%)!important;backdrop-filter:blur(18px) saturate(140%)!important}
+html.et-plight body footer:not(#k1):not(#k2):not(#k3):not(#k4):not(#k5):not(#k6):not(#k7):not(#k8):not(#k9):not(#k10):not(#k11):not(#k12),html.et-jlight body footer:not(#k1):not(#k2):not(#k3):not(#k4):not(#k5):not(#k6):not(#k7):not(#k8):not(#k9):not(#k10):not(#k11):not(#k12){background:rgba(247,243,236,.58)!important;-webkit-backdrop-filter:blur(18px) saturate(120%)!important;backdrop-filter:blur(18px) saturate(120%)!important}
+html body .nav.scrolled:not(#z1):not(#z2):not(#z3):not(#z4):not(#z5):not(#z6):not(#z7):not(#z8):not(#z9):not(#z10):not(#z11):not(#z12):not(#z13):not(#z14):not(#z15):not(#z16):not(#z17):not(#z18):not(#z19):not(#z20):not(#z21):not(#z22):not(#z23):not(#z24){background:rgba(8,14,26,.5)!important;-webkit-backdrop-filter:blur(20px) saturate(150%)!important;backdrop-filter:blur(20px) saturate(150%)!important}
+html.et-plight body .nav.scrolled:not(#z1):not(#z2):not(#z3):not(#z4):not(#z5):not(#z6):not(#z7):not(#z8):not(#z9):not(#z10):not(#z11):not(#z12):not(#z13):not(#z14):not(#z15):not(#z16):not(#z17):not(#z18):not(#z19):not(#z20):not(#z21):not(#z22):not(#z23):not(#z24),html.et-jlight body .nav.scrolled:not(#z1):not(#z2):not(#z3):not(#z4):not(#z5):not(#z6):not(#z7):not(#z8):not(#z9):not(#z10):not(#z11):not(#z12):not(#z13):not(#z14):not(#z15):not(#z16):not(#z17):not(#z18):not(#z19):not(#z20):not(#z21):not(#z22):not(#z23):not(#z24){background:rgba(255,255,255,.5)!important;-webkit-backdrop-filter:blur(20px) saturate(150%)!important;backdrop-filter:blur(20px) saturate(150%)!important}
+@media (prefers-reduced-transparency:reduce){
+html body footer:not(#k1):not(#k2):not(#k3):not(#k4):not(#k5):not(#k6):not(#k7):not(#k8):not(#k9):not(#k10):not(#k11):not(#k12){background:#0B1422!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+html.et-plight body footer:not(#k1):not(#k2):not(#k3):not(#k4):not(#k5):not(#k6):not(#k7):not(#k8):not(#k9):not(#k10):not(#k11):not(#k12),html.et-jlight body footer:not(#k1):not(#k2):not(#k3):not(#k4):not(#k5):not(#k6):not(#k7):not(#k8):not(#k9):not(#k10):not(#k11):not(#k12){background:#F1ECE2!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+html body .nav.scrolled:not(#z1):not(#z2):not(#z3):not(#z4):not(#z5):not(#z6):not(#z7):not(#z8):not(#z9):not(#z10):not(#z11):not(#z12):not(#z13):not(#z14):not(#z15):not(#z16):not(#z17):not(#z18):not(#z19):not(#z20):not(#z21):not(#z22):not(#z23):not(#z24){background:rgba(8,13,24,.97)!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+html.et-plight body .nav.scrolled:not(#z1):not(#z2):not(#z3):not(#z4):not(#z5):not(#z6):not(#z7):not(#z8):not(#z9):not(#z10):not(#z11):not(#z12):not(#z13):not(#z14):not(#z15):not(#z16):not(#z17):not(#z18):not(#z19):not(#z20):not(#z21):not(#z22):not(#z23):not(#z24),html.et-jlight body .nav.scrolled:not(#z1):not(#z2):not(#z3):not(#z4):not(#z5):not(#z6):not(#z7):not(#z8):not(#z9):not(#z10):not(#z11):not(#z12):not(#z13):not(#z14):not(#z15):not(#z16):not(#z17):not(#z18):not(#z19):not(#z20):not(#z21):not(#z22):not(#z23):not(#z24){background:rgba(251,248,242,.95)!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+}
