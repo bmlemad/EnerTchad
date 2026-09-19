@@ -26433,3 +26433,87 @@ La consolidation des feuilles de style — 12 requetes bloquantes par page
 mediane — qui est un vrai cout mais demande une etude de cascade, pas un
 elagage. Et la feuille du 654 que Vercel n avait toujours pas deployee au
 moment d ecrire.
+
+## 656 — L etude de cascade : le probleme n etait pas celui qu on croyait
+
+Consigne : next. Le seul point ouvert au journal etait la consolidation des
+feuilles de style, que j avais notee comme demandant « une etude de cascade,
+pas un elagage ». Voici l etude. Elle ne touche pas une ligne du site, et elle
+renverse l hypothese de depart.
+
+### D abord : le 654 est en ligne
+
+Le plafond quotidien de Vercel s est leve pendant la nuit. fond647.css sert
+desormais 13 622 caracteres avec la section 654. Les chapitres 651 a 655 sont
+tous en production.
+
+### L hypothese de depart etait fausse
+
+Je pensais que le cout venait du nombre de feuilles : 12 requetes bloquantes par
+page mediane, 18 sur la mini-raffinerie. La mesure en production dit autre
+chose. Vercel sert en HTTP/2 : les 18 requetes partent ensemble, a 127 ms, et
+sont multiplexees sur une seule connexion. Fusionner les fichiers n aurait
+presque rien gagne. Et les 18 venaient du cache, donc la fenetre de 642 ms
+entre la premiere et la derniere n est pas du reseau : c est du temps
+d analyse.
+
+Le vrai cout est le poids. 470 Ko de CSS pour la seule page de la
+mini-raffinerie, dont trois fichiers portent a eux seuls pres de 400 Ko :
+bundle_core_a1 165 Ko, nav_a 131 Ko, bundle_head_b2 104 Ko. C est la taille
+de la feuille d une application, pour un site de presentation statique.
+
+### Combien de ce CSS sert vraiment
+
+Cette fois avec l instrument du navigateur lui-meme — la couverture CSS de
+Chrome, qui marque chaque octet effectivement applique — et non plus avec un
+comptage de selecteurs ecrit a la main. Les 208 pages, trois conditions
+(sombre 1440, clair 1440, sombre 390), chaque page defilee jusqu en bas pour
+declencher les apparitions : 624 mesures, 0 echec.
+
+Resultat : 59 feuilles distinctes, 923 Ko au total. 405 Ko sont utilises sur au
+moins une page du site — 43,9 %. 518 Ko ne le sont nulle part.
+
+### Pourquoi ce chiffre ne permet toujours pas de supprimer
+
+Dans la liste des feuilles utilisees a 0 % sur tout le site figure
+c_eda8729082dd.css. C est la feuille des polices, celle que j ai failli
+supprimer au 655. La couverture de Chrome a le meme angle mort que mon comptage
+de l epoque : un @font-face est une at-regle, il n est jamais « applique » a un
+element, il est donc compte comme inutile alors qu il est indispensable.
+
+Meme l instrument de reference ne se lit donc pas tel quel. Les 518 Ko « jamais
+utilises » melent trois choses :
+
+- des at-regles : @font-face, @keyframes, @media print ;
+- des regles d etat, qui ne s appliquent que si l on survole, focalise, ouvre un
+  menu ou un panneau — :hover, :focus-visible, [aria-expanded], .on, .open. Sur
+  les six plus gros fichiers, elles pesent de 8 a 24 Ko chacun ;
+- et enfin du CSS reellement mort.
+
+J avais d abord essaye d exercer les etats en cliquant sur chaque bouton de
+chaque page. Les quatre processus se sont figes a 0,1 % de processeur pendant
+dix-huit minutes : un clic declenchait une navigation ou une boite de dialogue
+bloquante. Clics retires, rejoue au seul defilement. Et au passage, mon
+pkill -f couv_all.js a tue le shell qui l executait, parce que la commande
+contenait elle-meme ce motif : le fichier n avait jamais ete reecrit.
+
+### Conclusion, et recommandation
+
+Fusionner les feuilles ne sert a rien en HTTP/2. Supprimer le CSS inutilise
+servirait, mais aucune mesure disponible ne distingue proprement le mort du
+dormant. Un elagage correct devrait se limiter aux regles de style ordinaires —
+ni at-regle, ni etat, ni crochet de script — inutilisees sur les 208 pages dans
+toutes les conditions, puis etre verifie par comparaison de pixels sur tout le
+site. Le gain realiste est bien inferieur aux 518 Ko, et ce CSS est en cache
+des la deuxieme visite.
+
+Je ne le recommande pas en l etat : le benefice est moyen, le risque de
+regression visuelle sur 208 pages est reel. Si un jour la premiere visite
+devient une priorite, le levier le plus sur est de s attaquer a un seul
+fichier, bundle_core_a1.css, charge sur 194 pages, avec verification complete.
+
+### Ce que ce chapitre laisse
+
+Aucun fichier du site ne change. Le harnais de couverture (qa/couv_all.js) est
+reutilisable. Et l hypothese du 655 — « 12 requetes bloquantes » — est
+corrigee : le cout est le poids, pas le nombre.
