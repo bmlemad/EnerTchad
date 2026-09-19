@@ -27108,3 +27108,51 @@ cette nouvelle baisse d opacite. Balayage sombre et clair (1440px) sur 52
 pages chacun : 0 erreur ; mobile (390px) : la cascade « navigateur ferme »
 deja identifiee comme artefact de mon outil de test s est reproduite a l
 identique, aucune autre erreur.
+
+## 669 -- Menu mega : deja transparent, rien a ajouter (2026-09-19)
+
+Demande : « next », dans la continuite du fil verre/transparence (663
+nav+pied, 664/665 tuiles, 668 tuiles claires). Question posee : le panneau
+du mega-menu de navigation merite-t-il le meme traitement ?
+
+### Mesure
+
+Premiere piste fausse : une classe .mega-ultra apparait dans douze
+feuilles de style avec une dizaine de declarations contradictoires
+(certaines opaques a plat, d autres deja floutees). Verification dans le
+HTML reel : .mega-ultra n apparait dans aucune page du site, elle n est
+citee qu une fois en JS dans un test d exclusion qui ne cree rien. C est
+du code mort, sans effet visuel, herite d une iteration de nommage
+anterieure -- pas le vrai panneau de menu.
+
+Le vrai panneau, celui que l utilisateur voit en survolant un lien de nav
+comme « Exploration & Production », porte la classe .nx-mega. Style
+calcule verifie directement en production sur ce panneau reel : en theme
+sombre, degrade quasi opaque (0,976/0,99) avec backdrop-filter blur(28px)
+saturate(150%) ; en theme clair, degrade blanc quasi opaque (0,98/0,99)
+avec blur(28px) saturate(170%). Le verre est deja pose dans les deux
+themes, avec une opacite volontairement tres haute -- coherent avec le
+commentaire deja present dans le code source qui explique que ce fond
+n existe qu au-dessus de 1240px (sous ce seuil le menu se deplie a plat
+dans le tiroir mobile et reste transparent par nature), et qui traite ce
+panneau comme du texte de navigation dense a proteger plutot que comme
+une tuile de contenu decorative -- meme logique que l exception deja
+retenue au 668 pour lum-panel et cmdk-panel.
+
+### Ce qui change
+
+Rien. Le mega-menu reel a deja son traitement verre dans les deux themes,
+avec un repli prefers-reduced-transparency deja en place. Aucun fichier
+CSS modifie ; seul le journal.
+
+### Verifie
+
+Style calcule mesure directement sur https://enertchad-delta.vercel.app/
+apres survol du declencheur de nav, theme sombre et theme clair, avec
+capture d ecran des deux etats. .mega-ultra confirme absent de toutes les
+pages HTML du site (recherche exhaustive). Aucune regression a chercher
+puisqu aucun changement n est fait ; note laissee pour une eventuelle
+future session de nettoyage : les douze fichiers portant des regles
+.mega-ultra mortes pourraient etre elagues un jour, mais ce n est pas
+l objet de ce fil de travail sur la transparence et n a pas ete touche
+ici.
