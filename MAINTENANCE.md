@@ -26734,3 +26734,59 @@ fond647.css porte la regle Ch658 ; SW et-202609191200 ; plan du site avec sa
 colonne Investisseurs et sans aucun #rub=. Geometrie mesuree dans le
 navigateur a 1512px : les trois panneaux de pole en 365..1271, tous dans
 l ecran. Balayage complet apres les trois chapitres : 624 mesures, 0 erreur.
+
+## 661 — Revue visuelle de l accueil (2026-09-19)
+
+Demande : « ultra review visual of home ». Accueil capture en entier en sombre
+1440, clair 1440 et mobile 390, puis hero a 1280, 1024 et 768, section par
+section ; chaque impression a ensuite ete mesuree dans le DOM avant d etre
+corrigee.
+
+### Ce que la revue a trouve et mesure
+
+- La police mono de la marque n etait plus utilisee nulle part. JetBrains Mono
+  est livree avec le site (bundle_head_b2 la nomme dans --fm), mais nav_a.css,
+  charge apres, redefinissait --fm a la racine sans elle (Ch. 600). Resultat :
+  172 textes de l accueil (surtitres, dates, « Lire → », puces) rendus dans la
+  mono du systeme — SF Mono sur Mac, Consolas ou Courier ailleurs. Mesure :
+  la face JetBrains restait « unloaded », jamais demandee.
+- Deux grilles sur la meme page : accueil, poles, chiffres, cadastre et Agir a
+  x=171 (1200px) ; durabilite, carnets, jalons et documents a x=151 (1240px).
+  Un decrochement de 20px a chaque changement de section.
+- Deux tailles de titre de section en alternance : 33,6px (poles, cadastre,
+  carnets) et 37,6px (les cinq autres).
+- Cartes Carnets : date, pole et rubrique serres sur une ligne, « 23 AOUT
+  2026 » et « TRANSPORT & STOCKAGE » coupes sur trois lignes. En clair, la
+  rangee entiere prenait un fond de verre blanc a coins carres.
+- Sous les carnets, « Tous les communiques → » en blanc sans soulignement a
+  cote de liens dores souligne ; et un lien « Agenda investisseur → » qui
+  double la section Jalons placee juste en dessous.
+- Rail de navigation de droite en theme clair : pastilles gris fonce
+  (verre sombre a 56 %) sur fond creme ; seules l active et le survol avaient
+  leur version claire.
+- Mobile : les trois chiffres-cles empiles gardaient le filet et le retrait
+  gauche de la version en colonnes — « 144 → 250 » a x=18, les deux suivants
+  a x=43.
+- Source du cadastre : le « ; » renvoye seul en debut de ligne.
+
+### Ce qui change
+
+- nav_a.css : --fm = 'JetBrains Mono', puis la pile systeme ; la face est
+  aussi declaree dans fond647.css pour les 65 pages qui ne chargent pas les
+  feuilles qui la portent ; prechargement Inter + JetBrains sur l accueil FR
+  et EN (font-display optional ne les retient sinon pas a la premiere
+  visite).
+- Accueil FR et EN, bloc h661 : les quatre sections a 1240 ramenees a 1200 ;
+  titres de section sur une seule echelle, clamp(1.35rem, 3.4vw, 2.35rem) ;
+  meta des cartes Carnets en deux lignes (date + pole, puis rubrique sans
+  pastille), fond de verre retire en clair ; « Tous les communiques → » au
+  style des autres liens ; lien Agenda redondant retire ; pastilles du rail
+  claires en theme clair ; chiffres-cles mobiles en pile avec filet haut ;
+  espace insecable avant le « ; ».
+
+### Verifie
+
+Mesures apres correction : huit titres de section a x=171 et 37,6px a 1440px,
+21,6px a 390px ; face JetBrains « loaded » et utilisee par les surtitres ;
+aucun texte mono rogne sur six pages a 1440 et 390px (controle negatif : le
+meme detecteur trouve bien un surtitre force a 20px de large).
