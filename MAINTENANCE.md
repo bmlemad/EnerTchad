@@ -26517,3 +26517,82 @@ fichier, bundle_core_a1.css, charge sur 194 pages, avec verification complete.
 Aucun fichier du site ne change. Le harnais de couverture (qa/couv_all.js) est
 reutilisable. Et l hypothese du 655 — « 12 requetes bloquantes » — est
 corrigee : le cout est le poids, pas le nombre.
+
+## 657 — Les chiffres disent-ils la meme chose partout
+
+Consigne : next, apres une etude qui deconseillait l elagage du CSS. Je n ai pas
+lu ce « next » comme un feu vert a ce que je venais de deconseiller : le
+bundle_core_a1.css n est pas touche. J ai ouvert une dimension jamais controlee
+dans la serie : le contenu lui-meme. Pour un site qui s adresse a des
+investisseurs, un meme chiffre qui change d une page a l autre coute plus cher
+qu un pixel.
+
+### La methode, et la prudence
+
+Extraction des chiffres-cles sur les 208 pages : production nationale, reserves,
+blocs du cadastre, contenu local, trajectoire de capital, gaz de Sedigui, annees
+de reference. La plupart des « valeurs distinctes » ne sont pas des
+contradictions mais des grandeurs differentes : la production d un champ, la
+capacite de la raffinerie de Djermaya, celle de l oleoduc. Je les ai lues une a
+une plutot que de signaler tout ecart numerique.
+
+Ce qui tient : reserves 1P ~1,5 < 2P ~2,8 < 3P ~4,2 Gbep ; cadastre 26 blocs
+libres + 11 attribues + 5 en changement de main + 2 concessions = 44 ; capital
+par paliers 10 M → ~1 Md → 20 Md FCFA ; Sedigui ~7 Md m3 sur 18 pages ; contenu
+local 80 % sur 19 pages. Le site est coherent sur l essentiel.
+
+### Ce qui ne tenait pas
+
+LE CHIFFRE PHARE DATE DE DEUX FACONS. 144 kb/j est donne « moy. 2024 » sur
+l accueil, les Carnets et la page EOR — mais « production · 2025 » dans la
+tuile de l Atlas et « Production 2025 » dans sa fiche secteur. L Atlas se
+contredit sur la meme page : sa phrase d ouverture dit « 144 kb/j en moyenne
+2024 ». Avant de trancher, verification a une source exterieure (Agence Ecofin,
+2025) : 144 000 b/j est bien la moyenne 2024 ; de janvier a mai 2025, la
+production est descendue a 137 000. Les deux etiquettes « 2025 » etaient donc
+fausses, pas seulement incoherentes. Corrigees en « moy. 2024 », en francais et
+en anglais.
+
+LE +74 % MAL ATTRIBUE. La brochure affichait « +74 % vs capacite actuelle ».
+Or 250 / 144 = 1,736 : le +74 % est calcule contre la production 2024, pas
+contre une capacite — l oleoduc fait 225 kb/j, ce qui donnerait +11 %. Le reste
+du site dit d ailleurs « par rapport a 2024 ». Corrige en « vs production
+2024 », dans les deux langues.
+
+### Le francais qui fuyait sur les pages anglaises
+
+Le « kb/j » de la tuile anglaise de l Atlas a mene a un balayage des 99 pages
+anglaises a la recherche d unites francaises visibles. « M FCFA » et « million »
+sont corrects en anglais ; restaient :
+
+- « Md » — milliard — sur trois pages : « 10 M → 1 Md → 20 Md » ; devient
+  « 1 bn → 20 bn », et « ~1,5 Md barrels » devient « ~1.5 bn », virgule
+  decimale comprise ;
+- « kb/j » sept fois sur l Atlas anglais, et « b/j » sur le schema de la
+  raffinerie anglaise : devient kb/d et b/d.
+
+Et surtout : le calculateur de ressources de l Atlas anglais ecrivait une phrase
+entierement francaise a tout lecteur anglophone qui s en servait — « ~ 2,3 ans
+au rythme de production national 2024 (144 kb/j) — repere d echelle pour un
+prospect hypothetique », avec la virgule decimale francaise. Traduit dans le
+script. Verifie en le faisant tourner : « ~ 9.5 years at the 2024 national
+production rate (144 kb/d) — a scale marker for a hypothetical prospect », sans
+erreur JavaScript.
+
+### Verifie
+
+Balayage complet : 624 mesures, 0 erreur de page, 0 erreur console, 0 reponse
+>= 400, 0 debordement. Plus aucune etiquette « 2025 » sur le 144, plus aucun
+« capacite actuelle », plus aucun Md, kb/j ou b/j visible sur les pages
+anglaises controlees. SW porte a et-202609190600. 9 fichiers.
+
+### Reste ouvert
+
+Un point que je n ai pas pu trancher seul : le calculateur du baril additionnel
+affiche une utilisation de l oleoduc de « 90 kb/j · 40 % » sur 225, alors que la
+production nationale est de 144 kb/j. L ecart peut s expliquer par la part du
+brut qui ne passe pas par l oleoduc (Bongor, Djermaya), mais le site ne le dit
+pas. A verifier avec une source avant d y toucher.
+
+Sources consultees : Agence Ecofin, « Chad Targets 250,000 Barrels a Day Under
+New 2025-2030 Oil Strategy ».
