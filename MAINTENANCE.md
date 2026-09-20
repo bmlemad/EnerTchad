@@ -27635,3 +27635,97 @@ mesures, zero erreur. Publication verifiee contre le depot (un commit,
 deux fichiers, contenu identique bit a bit), confirmee en production.
 Le volet technique de l'audit de coherence reste a traiter dans une
 suite separee.
+
+
+## 677 — Audit de coherence, phase 3 : le volet technique (2026-09-20)
+
+### Constat
+
+Dernier volet de l'audit de coherence, apres le redactionnel (chantier 675)
+et le visuel (chantier 676) : le fonctionnement du code lui-meme. Sept
+lecteurs ont passe en revue les 208 pages du site a la recherche de liens
+casses, de ressources manquantes, de HTML invalide, de donnees structurees
+incoherentes et de scripts casses.
+
+Contrairement au volet visuel, ou la quasi-totalite des constats s'est
+revelee etre des variantes voulues, ce volet-ci s'est comporte comme le
+volet redactionnel : la plupart des constats etaient reels, et une
+verification elargie a la totalite du site (et non plus au seul lot de
+chaque lecteur) en a revele une bien plus grande ampleur que prevu -- le
+meme phenomene d'echelle deja rencontre aux chantiers 674 et 675.
+
+Le defaut le plus repandu : les blocs de donnees structurees (JSON-LD) de
+nombreuses pages ne se decrivaient pas elles-memes. Une page anglaise
+indiquait la langue francaise, ou son propre lien pointait vers la page
+francaise jumelle au lieu d'elle-meme -- un residu du gabarit source jamais
+adapte a la traduction. Verifie sur l'ensemble des 216 pages du site, ce
+seul defaut touchait quarante-quatre liens et cinquante et une mentions de
+langue errones. Un sous-ensemble plus serieux : sur dix-huit pages (les
+familles amont/developpement, eau, forage, reserves, traitement, aval/
+commercialisation, gpl, lubrifiants, intermediaire/collecte, plus les
+pages gouvernance et solutions anglaise), le bloc entier decrivait une
+autre page du site que la sienne -- copie depuis un gabarit voisin et
+jamais corrigee, meme nom et meme resume qu'une page differente. Trois
+pages du mini-site arabe portaient la meme erreur sur leur fil d'Ariane,
+toutes pointant vers la page « poles » au lieu d'elles-memes.
+
+Quatre pages avaient perdu, cote anglais, des blocs de donnees (organisation,
+site, jeu de donnees) presents sur leur jumelle francaise et sur les pages
+comparables du site -- verifie au cas par cas contre la famille de pages a
+laquelle chacune appartient, exactement la discipline apprise au chantier
+676, avant de conclure a un oubli plutot qu'a un choix. Quatre-vingt-une
+pages renvoyaient par ailleurs vers une entite « site web » jamais definie
+nulle part -- une reference dans le vide, invisible pour un lecteur humain
+mais suivie par les moteurs de recherche.
+
+Le reste des constats touchait le balisage lui-meme : un attribut class
+duplique rendait une couleur de fil d'Ariane inoperante sur la boutique en
+ligne ; un artefact de generation laissait le mot « None » colle a l'
+identifiant de chaque question de la foire aux questions ; une section
+entiere de la page clients se retrouvait imbriquee dans la mauvaise
+section-mere par une balise fermante manquante ; une feuille de style
+placee hors de l'en-tete sur la page projets ; un script mort copie depuis
+la page clients ne faisait plus rien sur la page solutions ; les favicons
+de la page 404 utilisaient un chemin relatif qui ne fonctionne pas selon
+la profondeur de l'URL demandee ; quatre liens mailto contenaient une
+esperluette non echappee. Un dernier constat, mineur et isole : sur un
+article du journal, la date de derniere modification differait entre les
+deux versions linguistiques, alors que les soixante et une autres paires
+d'articles la gardent identique.
+
+### Ce qui change
+
+Chaque bloc de donnees structurees incoherent est resynchronise avec le
+contenu reel de sa propre page (titre, resume, adresse, langue), verifie
+face aux autres pages de sa famille avant toute correction pour ne pas
+reproduire l'erreur inverse du chantier 676. L'entite « site web »
+manquante est ajoutee a la page d'accueil, ce qui resout d'un coup les
+quatre-vingt-une references dans le vide. Les quatre pages aux blocs
+manquants recoivent les blocs de leur famille. Les trois pages du mini-site
+arabe ont desormais leur propre fil d'Ariane. La foire aux questions
+anglaise recoit son schema de questions-reponses, absent jusqu'ici. Tous
+les defauts de balisage releves sont corriges a la source : attribut
+duplique fusionne, artefact « None » retire, imbrication de section
+reparee, feuille de style replacee dans l'en-tete, script mort supprime,
+chemins de favicon rendus absolus, esperluettes echappees, date de
+modification resynchronisee. Soixante-dix-sept fichiers sont touches au
+total.
+
+### Verifie
+
+Chaque correction verifiee par comptage exact avant application. Apres
+correction, un nouveau balayage programmatique de l'integralite des deux
+cent seize pages confirme zero bloc de donnees structurees invalide, zero
+lien ou langue mal auto-reference, et zero reference « site web » dans le
+vide -- contre quarante-quatre et cinquante et une occurrences avant
+correction. Rendu verifie par navigateur reel sur les pages aux
+corrections de balisage les plus delicates : la section de la page clients
+n'est plus imbriquee au mauvais endroit, la couleur du fil d'Ariane de la
+boutique en ligne fonctionne de nouveau, aucune erreur de console sur les
+huit pages testees. Balayage complet 208 pages x trois conditions : six
+cent vingt-quatre mesures, zero erreur. Publication verifiee contre le
+depot (sept commits scindes par repertoire, soixante-dix-sept fichiers,
+contenu identique bit a bit avec la copie locale), puis en production sur
+plusieurs echantillons -- toutes les corrections confirmees en ligne.
+L'audit de coherence en trois volets (redactionnel, visuel, technique) est
+desormais complet.
