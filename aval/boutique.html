@@ -34,7 +34,7 @@ img,svg{max-width:100%}
 .btop-r{display:flex;align-items:center;gap:10px}
 .bback{font-size:.84rem;color:var(--mut);text-decoration:none;white-space:nowrap}
 .bback:hover{color:#fff}
-.cart-btn{position:relative;display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:#121D31;font-weight:700;font-size:.84rem;border:0;border-radius:999px;padding:9px 16px;cursor:pointer;font-family:var(--fm)}
+.cart-btn{position:relative;display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:#121D31;font-weight:700;font-size:.84rem;border:0;border-radius:999px;padding:9px 16px;cursor:pointer;font-family:var(--fm)}.cart-btn svg{width:16px;height:16px;flex:none}
 .cart-btn .cc{background:#121D31;color:var(--gold-l);border-radius:999px;font-size:.72rem;min-width:19px;height:19px;display:inline-flex;align-items:center;justify-content:center;padding:0 5px}
 /* hero */
 .bhero{padding:clamp(40px,7vw,86px) 0 clamp(26px,4vw,42px);border-bottom:1px solid var(--hair);background:radial-gradient(1100px 460px at 78% -8%,rgba(63,127,214,.16),transparent),radial-gradient(820px 420px at 8% 0%,rgba(212,168,67,.12),transparent)}
@@ -90,7 +90,7 @@ img,svg{max-width:100%}
 .octa{display:block;width:100%;text-align:center;margin:16px 0 0;background:var(--gold);color:#121D31;font-weight:700;border:0;border-radius:12px;padding:14px;font-family:var(--fm);font-size:.94rem;cursor:pointer;transition:transform .18s}
 .octa:hover{transform:translateY(-2px)}
 .octa:disabled{opacity:.45;cursor:not-allowed;transform:none}
-.osec{font-size:.74rem;color:var(--mut);text-align:center;margin:11px 0 0;display:flex;align-items:center;justify-content:center;gap:7px}
+.osec{font-size:.74rem;color:var(--mut);text-align:center;margin:11px 0 0;display:flex;align-items:center;justify-content:center;gap:7px}.osec svg{width:15px;height:15px;flex:none;color:var(--gold-l)}
 /* steps band */
 .steps{border-top:1px solid var(--hair);background:var(--bg2);padding:clamp(36px,5vw,64px) 0}
 .steps h2{font-family:var(--fd);font-weight:800;font-size:var(--ts-5,clamp(1.35rem,2.9vw,2.1rem));margin:0 0 6px;color:#fff}
@@ -473,7 +473,7 @@ html.et-jlight .rootland::after{
 <link rel="stylesheet" id="fond647" href="/assets/chrome/fond647.css?b=202609171400"></head>
 <body id="top">
 <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
-<symbol id="i-pump" viewBox="0 0 24 24"><path d="M4 21V5a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v16M4 21h10M6 7h6v4H6zM14 9h2a2 2 0 0 1 2 2v6a1.5 1.5 0 0 0 3 0V9.5L18.5 7" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="i-lock" viewBox="0 0 24 24"><path d="M6 11V8a6 6 0 0 1 12 0v3" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><rect x="4.5" y="11" width="15" height="9.5" rx="2.2" fill="none" stroke="currentColor" stroke-width="1.7"/></symbol><symbol id="i-cart" viewBox="0 0 24 24"><path d="M3 4h2l2.2 12a2 2 0 0 0 2 1.6h7.8a2 2 0 0 0 2-1.6L21 8H6.2" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9.5" cy="20" r="1.3" fill="currentColor"/><circle cx="17" cy="20" r="1.3" fill="currentColor"/></symbol><symbol id="i-pump" viewBox="0 0 24 24"><path d="M4 21V5a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v16M4 21h10M6 7h6v4H6zM14 9h2a2 2 0 0 1 2 2v6a1.5 1.5 0 0 0 3 0V9.5L18.5 7" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
 <symbol id="i-lamp" viewBox="0 0 24 24"><path d="M12 3c2.8 3.2 4.5 5.8 4.5 8.2A4.6 4.6 0 0 1 12 16a4.6 4.6 0 0 1-4.5-4.8C7.5 8.8 9.2 6.2 12 3zM9 21h6M12 16v5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
 <symbol id="i-plane" viewBox="0 0 24 24"><path d="M10.5 13.5 3 11l1.5-2 6.5 1 5-6 2 1-3 6.5 5 3-1 2-6-1.5-2.5 4.5H8l2.5-5z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
 <symbol id="i-bottle" viewBox="0 0 24 24"><path d="M10 3h4M10.5 3v2.5M13.5 3v2.5M8.5 8.5A5.5 5.5 0 0 1 12 7a5.5 5.5 0 0 1 3.5 1.5M7 12a5 5 0 0 1 10 0v6a3 3 0 0 1-3 3h-4a3 3 0 0 1-3-3z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
@@ -538,7 +538,7 @@ html.et-plight .fil552 a{color:#5A6472}
 html.et-plight .fil552 .fl{color:#5A6472}
 html.et-plight .fil552 a.on{color:var(--fcl)}
 </style>
-<div class="bbar519"><nav class="crumb" aria-label="Fil d’Ariane"><a href="/">Accueil</a><span class="crumb-sep">›</span><a href="/aval/">Raffinage &amp; distribution</a><span class="crumb-sep">›</span><span>Boutique en ligne</span></nav><div class="btop-r"><a class="bback" href="/clients">Devenir client</a><button class="cart-btn" onclick="document.getElementById('order').scrollIntoView({behavior:'smooth'})">🛒 Ma commande <span class="cc" id="cartCount">0</span></button></div></div>
+<div class="bbar519"><nav class="crumb" aria-label="Fil d’Ariane"><a href="/">Accueil</a><span class="crumb-sep">›</span><a href="/aval/">Raffinage &amp; distribution</a><span class="crumb-sep">›</span><span>Boutique en ligne</span></nav><div class="btop-r"><a class="bback" href="/clients">Devenir client</a><button class="cart-btn" onclick="document.getElementById('order').scrollIntoView({behavior:'smooth'})"><svg aria-hidden="true"><use href="#i-cart"/></svg> Ma commande <span class="cc" id="cartCount">0</span></button></div></div>
 
 <section class="bhero" aria-label="Boutique en ligne — aperçu">
   <div class="wrap">
@@ -572,7 +572,7 @@ html.et-plight .fil552 a.on{color:var(--fcl)}
       <ul class="olist" id="olist"><li class="oempty">Votre commande est vide.<br>Ajoutez des produits depuis le catalogue.</li></ul>
       <div class="osum"><span>Total articles</span><b id="oTotal">0</b></div>
       <button class="octa" id="oCta" disabled onclick="checkout()">Demander mon devis →</button>
-      <div class="osec"><span aria-hidden="true">🔒</span> Sans paiement en ligne · un conseiller vous recontacte</div>
+      <div class="osec"><span aria-hidden="true"><svg><use href="#i-lock"/></svg></span> Sans paiement en ligne · un conseiller vous recontacte</div>
     </aside>
   </div>
 </div>
