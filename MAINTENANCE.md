@@ -27156,3 +27156,60 @@ future session de nettoyage : les douze fichiers portant des regles
 .mega-ultra mortes pourraient etre elagues un jour, mais ce n est pas
 l objet de ce fil de travail sur la transparence et n a pas ete touche
 ici.
+
+## 670 -- Le CSS mort du mega-menu retire (2026-09-20)
+
+Demande : « next », suite directe de la note laissee au 669 -- les douze
+fichiers portant des regles .mega-ultra mortes pouvaient etre elagues un
+jour ; ce jour est celui-ci.
+
+### Mesure
+
+Le 669 avait confirme que .mega-ultra n existe dans aucune page du site.
+Un examen plus complet montre que ce n est pas juste une poignee de
+declarations : c est tout un second systeme de mega-menu, jamais branche,
+avec ses propres classes (.mega-ultra, .nav-item-ultra, .mu-col, .mu-head,
+.mu-feat) et ses propres animations (@keyframes muIn, muGlow, muPulse),
+reparti sur douze fichiers. Deux fichiers JS (u2_75a2c4383ddf.js,
+u2_881fcf8bc439.js) portent la meme logique de clavier que le systeme
+actuel mais visent .nav-item-ultra au lieu de .nav-item.nx-item -- un
+querySelectorAll qui ne trouve jamais rien, laisse tel quel : toucher du
+JS pour un gain nul aurait ete plus de risque que de benefice, donc hors
+perimetre de ce chapitre.
+
+Verification avant toute suppression, exhaustive sur les 216 pages HTML :
+0 occurrence de mega-ultra, nav-item-ultra, mu-col, mu-head ou mu-feat
+dans un attribut class. Les deux seules mentions restantes (un script
+partage sur les brochures qui interroge .mu-col>a,.mu-feat pour un effet
+de survol) ne trouvent rien puisque ces classes n existent nulle part --
+confirme dans le code, pas suppose.
+
+### Ce qui change
+
+Douze fichiers CSS elagues avec un analyseur (le module css de Node, pas
+une simple recherche-remplace) qui isole chaque regle par sa position
+exacte dans le fichier : une regle n est retiree que si la totalite de sa
+liste de selecteurs ne vise que ce systeme mort, ce qui laisse intactes
+les regles voisines meme quand elles sont accolees dans le meme fichier
+minifie -- le cas le plus net, bundle_head_b2.css, melange ce systeme mort
+avec .btn, .nav-tog, #toTop et .sec-next qui sont bien vivants, retires
+sans y toucher. Deux selecteurs melangeaient une classe morte a des
+classes vivantes dans la meme liste : un repli theme sombre du 590 qui
+visait aussi .mega-ultra a cote de #ckn et .nav-links (bien vivants), et
+une regle de mise en forme de texte qui visait aussi .mu-head span a cote
+de h1/h2/h3/h4 (bien vivants) -- seul le segment mort est retire de ces
+deux listes, verifie par remplacement exact avant coup. 173 regles et
+trois blocs d animation retires en tout, environ 19 Ko. sw.js porte le
+service worker a la nouvelle version.
+
+### Verifie
+
+Chaque fichier revalide par le meme analyseur apres coup : 0 regle morte
+restante, syntaxe CSS valide, accolades equilibrees. Diff fichier par
+fichier : chaque changement se limite exactement aux zones mortes
+identifiees, rien d autre ne bouge. Style calcule mesure en local puis en
+production sur le vrai mega-menu (.nx-mega) et une tuile de pole, sombre
+et clair : valeurs identiques a celles du 668/669, aucune fuite. Balayage
+complet en local, sombre et clair (1440px), 208 pages x trois conditions :
+624 mesures, 0 erreur, 0 debordement. Publication verifiee fichier par
+fichier contre le depot (13 fichiers, deux commits), puis en production.
