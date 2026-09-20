@@ -1,12 +1,12 @@
 @media(min-width:1400px){#navSearch{width:40px!important;padding:0!important;border-radius:999px!important}}
 @media(max-width:1500px){.nav-cta .btn-p{padding:10px 16px;font-size:.84rem}.nav-links{gap:0}}
 
-.nav-item-mini .nav-trigger{padding:8px 7px;gap:3px;font-size:.84rem}.nav-item-ultra .nav-trigger{padding:8px 10px}@media(max-width:1460px){.brand-tx{max-width:175px}.brand-tx small{font-size:0.6875rem}}
+.nav-item-mini .nav-trigger{padding:8px 7px;gap:3px;font-size:.84rem}@media(max-width:1460px){.brand-tx{max-width:175px}.brand-tx small{font-size:0.6875rem}}
 
 /* ultra méga-menus harmonisés */
 .nav-item-mini{position:relative}@media(max-width:1240px) and (min-width:1001px){/* fusionné dans le mode burger ≤1240 */}
 
-.nav-item-ultra.kbopen .mega-ultra{opacity:1;visibility:visible;transform:translateY(0)}
+
 
 @media(max-width:480px){.brand-mk{width:46px!important;height:46px!important;padding:5px!important;border-radius:12px!important}.brand{gap:9px}.brand-tx{font-size:.92rem;max-width:150px}#navSearch{width:36px!important;height:36px!important}.nav-in{padding-left:14px;padding-right:14px}}
 .brand,.brand-mk{flex:none}.brand-tx{max-width:210px}

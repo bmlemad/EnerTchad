@@ -122,23 +122,23 @@ body::before{content:"";position:fixed;inset:0;z-index:1;pointer-events:none;opa
 .nav-trigger svg{transition:transform .25s var(--ease);opacity:.7}
 .nav-item:hover .nav-trigger,.nav-trigger[aria-expanded="true"]{color:var(--cream);background:rgba(255,255,255,.06)}
 .nav-item:hover .nav-trigger svg{transform:rotate(180deg)}
-.mega-ultra{position:fixed;top:var(--nav-h,72px);left:0;right:0;background:linear-gradient(180deg,rgba(11,17,31,.74),rgba(7,12,21,.85));-webkit-backdrop-filter:blur(34px) saturate(175%);backdrop-filter:blur(34px) saturate(175%);border-top:1px solid color-mix(in srgb,var(--gold-l,#F0CE82) 24%,var(--hair));border-bottom:1px solid var(--hair);box-shadow:0 44px 96px -22px rgba(0,0,0,.72),inset 0 1px 0 rgba(255,255,255,.06);opacity:0;visibility:hidden;transform:translateY(-12px);transition:opacity .3s var(--ease),transform .3s var(--ease),visibility .3s;z-index:55;padding:34px max(var(--gut),40px) 26px;max-height:calc(100vh - var(--nav-h,72px));overflow-y:auto;overscroll-behavior:contain}
-@supports not ((-webkit-backdrop-filter:blur(1px)) or (backdrop-filter:blur(1px))){.mega-ultra{background:rgb(8,14,26)}}
-.mega-ultra::before{content:"";position:absolute;top:-12px;left:0;right:0;height:12px}
-.nav-item-ultra:hover .mega-ultra,.mega-ultra:hover{opacity:1;visibility:visible;transform:translateY(0)}@media(min-width:1241px){.mega-ultra .mu-col,.mega-ultra .mu-feat{opacity:0;transform:translateY(10px);transition:opacity .32s var(--ease),transform .32s var(--ease)}.nav-item-ultra:hover .mega-ultra .mu-col,.nav-item-ultra.kbopen .mega-ultra .mu-col,.mega-ultra:hover .mu-col,.nav-item-ultra:hover .mega-ultra .mu-feat,.nav-item-ultra.kbopen .mega-ultra .mu-feat,.mega-ultra:hover .mu-feat{opacity:1;transform:none}.mega-ultra .mu-col:nth-child(1){transition-delay:.05s}.mega-ultra .mu-col:nth-child(2){transition-delay:.11s}.mega-ultra .mu-col:nth-child(3){transition-delay:.17s}.mega-ultra .mu-col:nth-child(4){transition-delay:.23s}}@media(min-width:1241px) and (prefers-reduced-motion:reduce){.mega-ultra .mu-col,.mega-ultra .mu-feat{opacity:1;transform:none;transition:none}}
-.mu-col{display:flex;flex-direction:column;gap:4px}
-.mu-head{display:flex;align-items:center;gap:9px;font-family:var(--fd);font-weight:700;font-size:.84rem;letter-spacing:.04em;text-transform:uppercase;color:var(--ac);padding:0 12px 10px;margin-bottom:4px;border-bottom:1px solid var(--hair)}
-.mu-head svg{width:18px;height:18px;flex-shrink:0}.mu-col a svg{color:var(--ac,var(--gold-l))}.mu-feat .mu-head svg{color:var(--ac,var(--gold-l))}
-.mu-col>a{display:flex;align-items:flex-start;gap:11px;padding:10px 12px;border-radius:12px;transition:background .2s var(--ease),transform .2s var(--ease)}
-.mu-col>a:hover{background:rgba(255,255,255,.05);transform:translateX(3px)}
-.mu-col>a>svg{width:19px;height:19px;flex-shrink:0;margin-top:2px;color:var(--ac);opacity:.85}
-.mu-col>a span{display:flex;flex-direction:column}
-.mu-col>a strong{font-family:var(--fd);font-size:.9rem;color:#fff;font-weight:600;line-height:1.2}
-.mu-col>a em{font-style:normal;font-size:.74rem;color:var(--muted);margin-top:2px;line-height:1.3}
-.mu-feat{background:linear-gradient(135deg,rgba(217,168,79,.09),rgba(46,134,222,.05));border:1px solid rgba(217,168,79,.25);border-radius:14px;padding:16px 16px 14px;align-self:start}.mu-feat p{font-size:.8rem;color:var(--muted);line-height:1.55;margin:8px 0 12px}
+
+@supports not ((-webkit-backdrop-filter:blur(1px)) or (backdrop-filter:blur(1px))){}
+
+@media(min-width:1241px){}@media(min-width:1241px) and (prefers-reduced-motion:reduce){}
+
+
+
+
+
+
+
+
+
+
 .nav-cta{display:flex;align-items:center;gap:14px}
 .nav-tog{display:none;position:relative;width:40px;height:40px;padding:0;background:none;border:1px solid var(--hair);border-radius:9px;color:var(--cream);cursor:pointer}.nav-tog .bz{position:absolute;left:11px;width:18px;height:2px;border-radius:2px;background:currentColor;transition:transform .3s var(--ease),opacity .2s var(--ease)}.nav-tog .bz:nth-child(1){top:14px}.nav-tog .bz:nth-child(2){top:19px}.nav-tog .bz:nth-child(3){top:24px}.nav-tog[aria-expanded="true"] .bz:nth-child(1){transform:translateY(5px) rotate(45deg)}.nav-tog[aria-expanded="true"] .bz:nth-child(2){opacity:0}.nav-tog[aria-expanded="true"] .bz:nth-child(3){transform:translateY(-5px) rotate(-45deg)}
-@media(max-width:1240px){.nav-links{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:stretch;background:rgba(6,11,20,.74);-webkit-backdrop-filter:blur(24px) saturate(150%);backdrop-filter:blur(24px) saturate(150%);padding:18px var(--gut);gap:2px;border-bottom:1px solid var(--hair);box-shadow:0 24px 50px rgba(0,0,0,.5);max-height:82vh;overflow-y:auto}.nav-links.open{display:flex;animation:navDrop .28s var(--ease)}.nav-item{width:100%}.nav-trigger{width:100%;justify-content:space-between;font-size:1rem;padding:13px 10px;border-radius:10px}.nav-trigger svg{transition:transform .25s}.nav-trigger[aria-expanded="true"] svg{transform:rotate(180deg)}.mega-ultra{position:static;opacity:1;visibility:visible;transform:none;display:none;background:none;-webkit-backdrop-filter:none;backdrop-filter:none;border:none;box-shadow:none;padding:4px 0 8px 6px}.nav-item.open .mega-ultra{display:block}.nav-item-ultra:hover .mega-ultra{opacity:1;visibility:visible;transform:none}.mu-col{padding-left:10px;border-left:2px solid var(--hair)}.mu-head{padding:0 0 8px;font-size:.74rem}.mu-col>a{padding:9px 8px}.mu-col>a:hover{transform:none}.nav-tog{display:block}}
+@media(max-width:1240px){.nav-links{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:stretch;background:rgba(6,11,20,.74);-webkit-backdrop-filter:blur(24px) saturate(150%);backdrop-filter:blur(24px) saturate(150%);padding:18px var(--gut);gap:2px;border-bottom:1px solid var(--hair);box-shadow:0 24px 50px rgba(0,0,0,.5);max-height:82vh;overflow-y:auto}.nav-links.open{display:flex;animation:navDrop .28s var(--ease)}.nav-item{width:100%}.nav-trigger{width:100%;justify-content:space-between;font-size:1rem;padding:13px 10px;border-radius:10px}.nav-trigger svg{transition:transform .25s}.nav-trigger[aria-expanded="true"] svg{transform:rotate(180deg)}.nav-tog{display:block}}
 @media(max-width:1399px) and (min-width:1241px){.nav-trigger{padding:8px 9px;font-size:.84rem}.nav-cta .btn-p{padding:10px 16px}}
 @media(min-width:1400px){.nav-in{max-width:1360px}}
 
@@ -147,7 +147,7 @@ body::before{content:"";position:fixed;inset:0;z-index:1;pointer-events:none;opa
 .btn:active{transform:translateY(0) scale(.985)!important;transition-duration:.08s}
 .btn-g:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(90,167,240,.18);background:rgba(90,167,240,.15);border-color:var(--blue-l)}
 .btn-p::after{content:"";position:absolute;top:0;left:-80%;width:50%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.28),transparent);transform:skewX(-18deg);transition:left .55s var(--ease);pointer-events:none}
-.btn-p:hover::after{left:130%}.btn:focus-visible,.nav-trigger:focus-visible{outline:2px solid var(--gold-l);outline-offset:3px;border-radius:999px}.mu-col>a:focus-visible{outline:2px solid var(--gold-l);outline-offset:3px;border-radius:8px}
+.btn-p:hover::after{left:130%}.btn:focus-visible,.nav-trigger:focus-visible{outline:2px solid var(--gold-l);outline-offset:3px;border-radius:999px}
 
 
 
@@ -165,14 +165,14 @@ body::before{content:"";position:fixed;inset:0;z-index:1;pointer-events:none;opa
 
 
 /* ===== NAV TOOLS v2 — souris & mouvement (2026-06-07) ===== */
-.mu-col>a,.mu-feat{position:relative;overflow:hidden}
-.mu-col>a::after,.mu-feat::after{content:"";position:absolute;inset:0;border-radius:inherit;background:radial-gradient(220px circle at var(--mx,50%) var(--my,50%),rgba(217,168,79,.13),transparent 60%);opacity:0;transition:opacity .35s var(--ease);pointer-events:none}
-.mu-col>a:hover::after,.mu-feat:hover::after{opacity:1}
+
+
+
 .nav-cta .btn-p{transition:transform .18s var(--ease),box-shadow .25s var(--ease)}
 .dot-pt{box-shadow:0 0 0 0 rgba(217,168,79,0);transition:all .3s var(--ease),box-shadow .35s var(--ease)}
 #toTop svg.ring{position:absolute;inset:-1px;width:calc(100% + 2px);height:calc(100% + 2px);transform:rotate(-90deg);pointer-events:none}
 #toTop svg.ring circle{fill:none;stroke:var(--gold-l);stroke-width:2;stroke-linecap:round;stroke-dasharray:151;stroke-dashoffset:151;transition:stroke-dashoffset .15s linear;opacity:.85}
-@media(prefers-reduced-motion:reduce){.mu-col>a::after,.mu-feat::after{display:none}.nav-cta .btn-p{transition:none}}
+@media(prefers-reduced-motion:reduce){.nav-cta .btn-p{transition:none}}
 
 
 /* ===== CARTES INTERACTIVES (2026-06-07) ===== */
