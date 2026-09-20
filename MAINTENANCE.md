@@ -27412,3 +27412,61 @@ chaque fois, 0 erreur JS. Balayage complet 208 pages x trois conditions :
 puis en production sur index.html, carnets.html et pole-amont-en.html —
 textes et formulaires confirmes, plus de fuite de francais sur les pages
 anglaises.
+
+## 674 — Audit de coherence redactionnelle, phase 1 : quatre bugs systemiques (2026-09-20)
+
+### Constat
+
+Un audit de coherence redactionnelle a passe en revue les 216 pages HTML
+du site (sept lots, lecture integrale), a la demande du proprietaire, qui
+a priorise cet ordre : redactionnel d'abord, visuel ensuite, technique en
+dernier. L'audit a mis au jour quatre anomalies de gabarit repetees sur
+plusieurs pages, distinctes des constats de contenu (chiffres a arbitrer,
+traductions a revoir) laisses en attente pour une suite separee.
+
+Le bloc de pied de page anglais affichait le texte "Our values" a la
+place de la baseline officielle de l'entreprise, sur vingt-deux pages
+anglaises (accueil, societe, huit pages pole, plusieurs pages
+institutionnelles et legales).
+
+Le lien "Lire en francais" des articles du journal pointait
+systematiquement vers une page anglaise — soit l'article lui-meme
+(suffixe -en conserve), soit, pour trois articles, un article totalement
+different — sur vingt-quatre articles anglais, empechant tout lecteur de
+rejoindre la vraie version francaise.
+
+Le bouton de partage WhatsApp portait l'infobulle "Back to top" au lieu
+de "WhatsApp", sur les huit pages pole anglaises et une page de detail du
+pole Amont.
+
+La boite de dialogue de recherche (raccourci Ctrl+K) portait l'attribut
+d'accessibilite aria-label "Research" au lieu de "Search", sur
+cinquante-six pages anglaises — l'anomalie la plus etendue des quatre, un
+simple mot mal choisi dans un composant partage.
+
+### Ce qui change
+
+Les quatre anomalies sont corrigees a l'identique partout ou elles
+apparaissent : baseline de pied de page restauree (vingt-deux pages),
+lien "Lire en francais" repointe vers le veritable jumeau francais de
+chaque article (vingt-quatre pages), infobulle WhatsApp corrigee (neuf
+pages), aria-label de la boite de recherche corrige en "Search"
+(cinquante-six pages). Cinquante-six fichiers au total sont touches, le
+recoupement entre les quatre listes reduisant le total sous la somme des
+quatre comptes.
+
+### Verifie
+
+Chaque correction appliquee avec verification de comptage exact avant et
+apres (une seule occurrence corrigee par fichier et par bug), aucun
+residu detecte par recherche systematique sur l'ensemble du site apres
+correction. Rendu verifie par navigateur reel : baseline de pied de page,
+infobulle WhatsApp et aria-label de recherche lus directement dans le
+DOM ; lien "Lire en francais" verifie par clic reel, la page cible
+repondant correctement en production pour le jumeau francais de chaque
+article corrige. Balayage complet 208 pages x trois conditions : six
+cent vingt-quatre mesures, zero erreur, aucun debordement horizontal.
+Publication verifiee contre le depot (trois commits, cinquante-six
+fichiers), puis en production sur plusieurs echantillons (accueil
+anglais, une page pole, un article du journal, une page de detail aval)
+— les quatre corrections confirmees en ligne.
