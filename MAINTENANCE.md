@@ -27568,3 +27568,70 @@ aval, page contact) — toutes les corrections confirmees en ligne. Le
 theme visuel et le theme technique de l'audit de coherence restent a
 traiter dans une suite separee, selon l'ordre de priorite choisi par le
 proprietaire.
+
+
+## 676 — Audit de coherence, phase 2 : le volet visuel, presque tout ecarte (2026-09-20)
+
+### Constat
+
+Suite de l'audit de coherence, volet visuel cette fois : mise en page,
+espacement, couleurs, typographie, composants, parite des deux themes.
+Sept lecteurs ont passe en revue les 208 pages du site (sept lots) a la
+recherche d'ecarts visuels — couleurs codees en dur au lieu des jetons
+de la charte, rayons de coin incoherents, grilles sans repli mobile,
+police de titre differente, composants dupliques avec une variante.
+
+Une trentaine de constats est remontee. Chacun a ensuite ete verifie
+contre l'ensemble du site avant toute correction — la meme discipline
+qu'au chantier 674, ou un constat local s'etait revele plus large que
+prevu une fois verifie. Cette fois, c'est l'inverse qui s'est produit
+presque partout : verifie a l'echelle du site, l'ecart signale a
+l'interieur d'un seul lot de vingt-neuf ou trente pages se revelait, une
+fois recoupe avec le reste du site, une variante deliberee et repandue,
+pas une erreur isolee.
+
+Trois causes reviennent. Premierement, le systeme de couleurs du site
+n'est pas un jeton unique par nom : la page charte, qui documente la
+palette officielle, definit elle-meme deux tons d'or distincts (or
+profond et or) et plusieurs familles de bleu et de vert coexistent
+sciemment selon la famille de page (pages hub, pages de pole, pages
+outil) — un ecart de valeur entre deux fichiers n'est donc pas
+forcement une faute. Deuxieme cause : un immense bloc de style partage,
+injecte a l'identique dans les 208 pages, contient des couleurs codees
+en dur qui n'ont rien a voir avec la page ou elles ont ete reperees ;
+un lecteur limite a son lot de pages ne peut pas le savoir. Troisieme
+cause, la plus parlante : plusieurs constats vises comme des « erreurs
+de copier-coller » se sont reveles identiques a l'octet pres entre la
+page francaise et sa jumelle anglaise — une vraie coquille ne survit
+pas telle quelle a une traduction manuelle faite a deux reprises.
+
+Chaque constat a ete verifie individuellement par recherche exhaustive
+sur les 208 pages (comptage des fichiers utilisant chaque valeur,
+lecture de la page charte comme reference documentee, comparaison des
+deux versions linguistiques). Sur la trentaine de constats, un seul a
+survecu a cette verification : sur les cinq encarts statistiques de la
+page atlas du pole EnerConseils (francais et anglais), un attribut
+class etait duplique deux fois sur la meme balise — HTML invalide, dont
+le navigateur ignore silencieusement la seconde occurrence. La classe
+ainsi perdue ne correspondait a aucune regle de style nulle part sur le
+site : un residu d'une iteration anterieure du composant, sans effet
+visuel, mais une malformation reelle du balisage.
+
+### Ce qui change
+
+L'attribut class duplique est corrige sur les cinq encarts des deux
+pages (atlas.html, atlas-en.html), fusionne en un seul attribut valide.
+Aucun autre fichier ne change : les autres constats, verifies un par
+un, correspondent a des variantes deliberees du systeme de conception
+ou a du code partage sans rapport avec la page ou il avait ete repere.
+
+### Verifie
+
+Verification exhaustive de chacun des constats par recherche sur
+l'ensemble du site avant toute decision, comptage exact avant et apres
+sur les deux fichiers corriges, aucun residu de l'attribut duplique.
+Balayage complet 208 pages x trois conditions : six cent vingt-quatre
+mesures, zero erreur. Publication verifiee contre le depot (un commit,
+deux fichiers, contenu identique bit a bit), confirmee en production.
+Le volet technique de l'audit de coherence reste a traiter dans une
+suite separee.
