@@ -666,7 +666,7 @@ html.et-plight .cops-lb.s{fill:#54657F}
 <tr><th scope="row">Renewables in site energy</th><td>Start-up — gas-solar hybrid by design</td><td><b>≥ 30&nbsp;%</b> of the site energy mix</td><td>Per-site energy metering</td></tr>
 <tr><th scope="row">Chadian workforce</th><td>National industry: approx. 1,240 direct jobs</td><td><b>80&nbsp;%</b> of the EnerTchad workforce</td><td>HR register · annual audit</td></tr>
 <tr><th scope="row">Procurement sourced in Chad</th><td>Baseline set at the first financial year</td><td><b>38&nbsp;%</b> of procurement</td><td>Supplier accounting · annual review</td></tr>
-<tr><th scope="row">Chadian ownership</th><td>XAF 10 m at incorporation</td><td><b>100&nbsp;%</b> Chadian · XAF 20 bn trajectory</td><td>Share register · GCIC · shareholder meetings</td></tr>
+<tr><th scope="row">Chadian ownership</th><td>FCFA 10 m at incorporation</td><td><b>100&nbsp;%</b> Chadian · FCFA 20 bn trajectory</td><td>Share register · GCIC · shareholder meetings</td></tr>
 </tbody></table></div>
 <p class="esg-note">Indicators aligned with the five governance mechanisms above: annual trajectory, dated milestones, verifiable physical units, explained gaps. Details of the social and environmental commitments: <a href="/pole-greentech-en#impact" style="color:var(--blue-l)">Impact &amp; local revenue</a> · <a href="/engagements-en" style="color:var(--blue-l)">Our commitments</a>.</p>
 </div></section>
@@ -822,7 +822,7 @@ h.addEventListener("click",tg);
     data:{labels:['Founder','Short term','Long term \u00b7 2030'],datasets:[{label:'Capital (FCFA)',
       data:[10,1000,20000],backgroundColor:[BLUE,GOLD,'#E8C36A'],borderRadius:8,maxBarThickness:84}]},
     options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},
-      tooltip:{callbacks:{label:function(c){var v=c.parsed.y;return v>=1000?(v/1000)+' Bn FCFA':v+' M FCFA';}}}},
+      tooltip:{callbacks:{label:function(c){var v=c.parsed.y;return v>=1000?(v/1000)+' bn FCFA':v+' M FCFA';}}}},
       scales:{y:{type:'logarithmic',grid:{color:HAIR},ticks:{callback:function(v){var l=Math.log10(v);if(Math.abs(l-Math.round(l))>0.001)return null;return v>=1000?(v/1000)+' Bn':v+' M';}}},x:{grid:{display:false}}}}});
   new Chart(document.getElementById('poleChart'),{type:'doughnut',
     data:{labels:['Exploration & Production','Transport & Storage','Refining & Distribution','Petrochemicals','Sustainability','Technology','Human capital','Advisory'],
