@@ -27299,3 +27299,75 @@ aucun chevauchement. Balayage complet 208 pages x trois conditions : 624
 mesures, 0 erreur, 0 debordement. Publication verifiee fichier par fichier
 contre le depot (dix-sept fichiers, quatre commits par repertoire), puis
 en production sur les quatre familles d icones et le compteur de pin.
+
+## 672 -- La bande CTA orpheline de son habillage sur trois pages (2026-09-20)
+
+Demande : revue des vides, espaces blancs et distances -- rythme vertical
+entre sections, espacement des cartes et grilles, marges de titres -- sur
+l ensemble du site.
+
+### Methode
+
+Mesure DOM (Playwright, getComputedStyle et getBoundingClientRect, jamais
+d appreciation visuelle) sur quinze gabarits representatifs (accueil,
+pages de pole, fiches produits, boutique, journal, investisseurs,
+contact, page arabe, 404, calculateur), en desktop et mobile, theme
+sombre et clair. Puis balayage complet des 208 pages pour chercher deux
+signaux precis : chevauchements reels entre blocs de contenu, et
+paddings verticaux tres eloignes de la mediane de leur page.
+
+Une premiere passe naive comptait comme chevauchements des elements
+decoratifs hors flux (canevas de fond, bandeau flottant) positionnes en
+fixed ou absolute : filtres ajoutes pour ne garder que les elements en
+flux normal.
+
+### Ce qui est en ordre
+
+Le systeme d espacement vertical des sections (jeton --sy, valeurs 46 a
+74 pixels) est applique uniformement partout ou il existe. Les grilles
+de cartes (14px), les rangees (12px) et le menu (8 et 22px) gardent le
+meme ecart partout ou ils apparaissent. Les chevauchements et paddings
+hors norme releves par le balayage se sont reveles, verification faite,
+des motifs deliberes et identiques d une page a l autre (un decalage de
+rail de 22 pixels, des barres d outils plus etroites que les sections
+pleines) -- pas des anomalies.
+
+Une valeur --sy plus etroite (42 a 66 pixels) existe dans un fichier CSS
+mais est toujours ecrasee par un fichier charge plus tard : verifie sur
+les 216 pages, aucune ne l utilise reellement. Sans effet visuel, donc
+hors du perimetre de cette revue -- a garder pour un futur menage de CSS
+mort.
+
+### Ce qui ne l etait pas
+
+Le bandeau d appel a l action en bas de page (bande doree citant la
+devise de l entreprise, avec un mot mis en degrade or-bleu) partage la
+meme structure HTML partout, mais trois pages -- aval/boutique,
+aval/boutique-en et le Calculateur du Baril Additionnel -- ne chargeaient
+pas la feuille de style dediee a ce bandeau. Consequence mesuree : sur
+les deux pages boutique, le titre recevait la marge par defaut du
+navigateur (31 pixels au lieu de zero), perdait le degrade sur le mot mis
+en valeur, changeait de couleur et de taille de police, et n etait plus
+limite en largeur. Sur le Calculateur, la marge etait bonne par
+coincidence (une autre regle generique s appliquait), mais le degrade et
+la taille restaient faux.
+
+Sur cent quatre-vingt-sept pages porteuses de ce bandeau, seules ces
+trois n avaient pas le lien vers la feuille dediee.
+
+### Ce qui change
+
+Ajout du lien vers la feuille de style manquante sur les trois pages, a
+l endroit ou les gabarits comparables la chargent deja. sw.js porte le
+service worker a la nouvelle version.
+
+### Verifie
+
+Avant et apres compares par mesure : marge, taille de police, couleur,
+largeur maximale et degrade du titre desormais identiques a la reference
+(page d accueil) sur les trois pages, dans les deux themes. Captures d
+ecran des trois bandeaux, sombre et clair : rendu correct, aucun
+chevauchement. Balayage complet 208 pages x trois conditions repete apres
+correction : 624 mesures, 0 erreur. Publication verifiee contre le
+depot (deux commits), puis en production sur les trois pages -- marge,
+taille et degrade confirmes.
