@@ -27371,3 +27371,44 @@ chevauchement. Balayage complet 208 pages x trois conditions repete apres
 correction : 624 mesures, 0 erreur. Publication verifiee contre le
 depot (deux commits), puis en production sur les trois pages -- marge,
 taille et degrade confirmes.
+
+## 673 — Newsletter mensuelle unifiee : footer et carnets (2026-09-20)
+
+### Constat
+
+Deux mecanismes de collecte d'adresses e-mail coexistaient sans lien
+entre eux : un widget "ouverture commerciale" (notification a J1)
+duplique sur 10 pages footer (5 FR, 5 EN), et une carte "S'abonner aux
+communiques" a simple lien mailto dans carnets.html et carnets-en.html.
+Ni l'un ni l'autre ne portait de promesse de frequence ni de marque
+"newsletter".
+
+Sur les 5 pages EN, l'objet du mail genere par le widget footer restait
+code en francais malgre un corps de message en anglais, et le texte
+WhatsApp pre-rempli etait en francais sur toutes les pages, y compris
+les pages anglaises.
+
+### Ce qui change
+
+Les 10 widgets footer (FR : accueil, amont, petrochimie, aval,
+intermediaire ; EN : les cinq memes) sont rhabilles en "Newsletter
+mensuelle" / "Monthly newsletter" — promesse de frequence (un e-mail par
+mois), sujet et corps de mail mis a jour, texte WhatsApp corrige pour
+refleter la newsletter et traduit en anglais sur les pages anglaises.
+
+La carte "S'abonner" de carnets.html et carnets-en.html est remplacee
+par un vrai formulaire (champ e-mail plus bouton), avec le meme
+habillage pilule et degrade or que le footer, au lieu du simple lien
+mailto. Nouveau composant CSS .jn-nform, a l'echelle reduite de la
+carte.
+
+### Verifie
+
+Grep de confirmation du nouveau texte sur les 12 pages. Test de
+soumission de formulaire par navigateur reel sur les 12 pages (footer et
+carnets) : navigation mailto generee avec le bon sujet et le bon corps a
+chaque fois, 0 erreur JS. Balayage complet 208 pages x trois conditions :
+624 mesures, 0 erreur. Publication verifiee contre le depot (5 commits),
+puis en production sur index.html, carnets.html et pole-amont-en.html —
+textes et formulaires confirmes, plus de fuite de francais sur les pages
+anglaises.
