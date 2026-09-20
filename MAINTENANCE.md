@@ -27213,3 +27213,89 @@ et clair : valeurs identiques a celles du 668/669, aucune fuite. Balayage
 complet en local, sombre et clair (1440px), 208 pages x trois conditions :
 624 mesures, 0 erreur, 0 debordement. Publication verifiee fichier par
 fichier contre le depot (13 fichiers, deux commits), puis en production.
+
+## 671 -- Les emojis cedent la place a des icones SVG (2026-09-20)
+
+Demande : « Ultra review of icons, emojis, symbols and modernized ». Precise
+avec l utilisateur : reperer les emojis a remplacer par des icones SVG, sur
+tout le site (216 pages), en gardant le style etabli (trait fin, currentColor,
+viewBox 24x24, comme les icones deja en place).
+
+### Mesure
+
+Recherche exhaustive des caracteres emoji sur les 216 pages HTML (pas
+seulement les pages a la racine -- une premiere passe incomplete n avait
+regarde que ces dernieres, corrigee avant de conclure). Trouve deux familles
+tres differentes.
+
+Les fleches directionnelles (simples et doubles, toutes orientations) :
+plus de quatre mille six cents occurrences sur 201 pages. Ce ne sont pas des
+emojis mais de la typographie deja etablie par le site (les appels a l
+action en fleche, les reperes avant/apres), monochromes et coherentes sur
+toutes les plateformes. Non touchees -- les confondre avec des emojis
+aurait ete une erreur, et un chantier inutile de cette ampleur pour aucun
+gain reel.
+
+Les vrais emojis, ceux qui changent d apparence et de couleur selon la
+plateforme (Apple, Windows, Android rendent chacun ces caracteres a leur
+maniere, hors de toute charte) : quatre foyers reels trouves.
+1. Les cartes ppt-card (« Co-developpement », « Intrants EOR », « Controle
+qualite », « Certifications visees ») utilisent quatre pictogrammes emoji
+(alambic, pompe a essence, coche, etoile) comme icone decorative en
+couleur or -- sur dix pages identiques (aval/index, aval/produits x2
+langues, petrochimie/chimie-eor x2, petrochimie/index, petrochimie/produits
+x2, pole-aval-en, pole-enerchimie-en).
+2. La page boutique (aval/boutique, x2 langues) affiche un cadenas et un
+panier en emoji sur le bouton de commande et la note anti-paiement.
+3. La page EOR amont (amont/eor, x2 langues) prefixe six intitules de lieu
+d un pictogramme punaise de localisation.
+4. La page investisseurs (x2 langues) affiche un triangle d alerte en emoji
+dans l avis anti-fraude.
+
+Decouverte utile en chemin : le catalogue boutique porte deja, depuis un
+chapitre anterieur, un systeme d icones SVG complet et fonctionnel (dix-sept
+symboles, dont un flacon, une pompe, un bouclier et une etiquette --
+exactement ceux qu il fallait pour les cartes ppt-card) ; les cartes-
+produits et la fiche detail l utilisent deja correctement. Le tableau de
+donnees JavaScript du catalogue contient neanmoins un champ emoji
+totalement mort -- jamais lu par aucune fonction de rendu (verifie : 0
+reference a l index de ce champ dans le script). Le retirer aurait force a
+redecaler tous les index suivants dans un script de commande interactif
+complexe : risque disproportionne pour un champ sans aucun effet visuel.
+Laisse tel quel, note ici pour memoire.
+
+Deux cas ecartes deliberement : le sigle de coche dans le texte transitoire
+« Copie » d un bouton (Calculateur, et dans le Configurateur, un bundle
+React minifie deja mis a l ecart par les chapitres precedents) est du
+texte, monochrome, sans probleme reel ; les coches dans un tableau
+comparatif de amont/eor.html sont de simples caracteres de texte heritant
+deja la bonne couleur. Ni l un ni l autre n est un emoji au sens ou l
+entend cette revue.
+
+### Ce qui change
+
+Quatre familles d icones ajoutees, toutes au format du site (trait 1.7,
+currentColor, viewBox 24x24) :
+- ppt-card (10 pages) : alambic, pompe, coche et etoile remplaces par un
+flacon, une pompe, un bouclier a coche et une etiquette -- en reprenant
+exactement les memes traces que le catalogue boutique pour ne pas inventer
+une cinquieme famille d icones.
+- boutique (2 pages) : cadenas et panier ajoutes au sprite SVG existant de
+la page (deux nouveaux symboles a cote des dix-sept deja la), boutons et
+note mis a jour.
+- amont/eor (2 pages) : une punaise de localisation, sur les six intitules.
+- investisseurs (2 pages) : un triangle d alerte.
+sw.js porte le service worker a la nouvelle version.
+
+### Verifie
+
+Chaque remplacement fait par correspondance exacte de chaine, avec compte
+verifie avant et apres (jamais de recherche-remplace a l aveugle) : plus
+aucune occurrence des huit caracteres vises, accolades et balises
+inchangees ailleurs. Style calcule en local sur les seize pages touchees :
+chaque icone a une taille non nulle, aucune erreur JavaScript ni reponse
+en echec. Captures d ecran des quatre familles : alignement correct,
+aucun chevauchement. Balayage complet 208 pages x trois conditions : 624
+mesures, 0 erreur, 0 debordement. Publication verifiee fichier par fichier
+contre le depot (dix-sept fichiers, quatre commits par repertoire), puis
+en production sur les quatre familles d icones et le compteur de pin.
