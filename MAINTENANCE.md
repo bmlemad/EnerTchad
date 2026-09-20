@@ -27470,3 +27470,101 @@ Publication verifiee contre le depot (trois commits, cinquante-six
 fichiers), puis en production sur plusieurs echantillons (accueil
 anglais, une page pole, un article du journal, une page de detail aval)
 — les quatre corrections confirmees en ligne.
+
+
+## 675 — Audit de coherence redactionnelle, phase 2 : les constats de contenu (2026-09-20)
+
+### Constat
+
+Cette suite traite les constats de contenu laisses en attente par l'audit
+de coherence redactionnelle du chantier 674 — des ecarts qui demandaient
+un arbitrage au cas par cas plutot qu'une correction mecanique unique.
+
+Plusieurs incoherences internes ont ete relevees : la page d'accueil
+(francais et anglais) et la page societe (anglais) mentionnaient encore
+la Petrochimie comme un cinquieme maillon de la liste des « capacites »,
+alors que les pages de chaque pole confirment que ce maillon en compte
+quatre (GreenTech, TchadiTech, Tchaditude, EnerConseils), la Petrochimie
+etant un prolongement distinct de la chaine centrale. Deux pages
+utilisaient encore les anciens noms de departement « Exploration &
+Production » et « Raffinage & Distribution » a la place des noms actuels
+Amont et Aval. La fiche technique gomme arabique du pole Amont annoncait
+le Tchad premier producteur africain ; verification faite aupres de
+sources externes, le Tchad est second producteur africain, derriere le
+Soudan — la fiche a ete corrigee dans les deux langues.
+
+D'autres ecarts relevaient du formatage ou de chiffres perimes : un
+separateur decimal au mauvais format sur une page aval, un compteur de
+depots de stockage incoherent avec la carte du reseau, un separateur de
+milliers au mauvais format sur une page intermediaire anglaise, une
+phrase fusionnee de maniere corrompue sur une page de produits, un badge
+de langue errone sur la page des publications, le nombre de carnets
+pedagogiques et de recits reference comme vingt puis trente-quatre a
+divers endroits alors que le site en compte trente-deux, et la devise
+tantot abregee « XAF » tantot « Bn FCFA » a la place de la convention
+sitewide « FCFA » et « bn FCFA » minuscule.
+
+La foire aux questions anglaise portait quatre incoherences propres :
+une affirmation inversee sur la disponibilite linguistique des carnets,
+un article indefini mal accorde en tete de reponse, la denomination
+juridique OHADA incomplete, et le compte d'articles pedagogiques perime.
+Plusieurs articles du journal anglais renvoyaient vers l'ancienne page
+« Exploration & Production » au lieu de la page de detail EOR, ou
+omettaient un lien vers une page pertinente. Une erreur d'accord
+(« d'TchadiTech » au lieu de « de TchadiTech ») est apparue a trois
+reprises. Un article annoncait un delai de vingt ans depuis le premier
+baril exporte (2003) alors que l'article est date de 2026, soit vingt-
+trois ans.
+
+En verifiant chacun de ces constats a la source, une verification
+elargie a mis au jour une meme classe d'anomalies sur davantage de
+pages que ne le laissait supposer l'audit initial — le meme phenomene
+d'echelle deja rencontre au chantier 674. La date de publication
+affichee de neuf articles du journal ne correspondait pas a la date
+technique (balise meta et donnees structurees), un ecart deja repere sur
+un article au chantier 674 mais present plus largement ; le suffixe de
+titre de page (« — Carnets | EnerTchad » / « — Journal | EnerTchad »)
+manquait ou differait sur neuf autres articles ; deux pages
+supplementaires portaient l'abreviation de devise au mauvais format,
+deux autres l'ancien code XAF, trois pages du pole Petrochimie
+affichaient la date d'un article en format americain au lieu du format
+sitewide, et l'erreur d'accord « d'TchadiTech » touchait deux pages hors
+journal en plus de l'article deja identifie.
+
+### Ce qui change
+
+Chaque constat retenu a ete corrige a la source, avec verification de
+comptage exact avant et apres. Cinquante-quatre fichiers sont touches au
+total : liste des capacites corrigee (accueil et societe, deux langues),
+noms de departement mis a jour, classement du Tchad producteur de gomme
+arabique corrige avec sa source, formats numeriques et devise harmonises
+avec la convention sitewide, phrase corrompue reparee, badge de langue
+corrige, compte de carnets mis a jour partout ou il apparaissait perime,
+quatre incoherences de la foire aux questions anglaise corrigees, cinq
+liens internes d'articles repointes vers la bonne page, trois occurrences
+de l'erreur d'accord « TchadiTech » corrigees, un calcul de duree
+recalcule. La verification elargie a aussi resynchronise la date
+technique de neuf articles avec leur date affichee, complete le suffixe
+de titre de neuf autres articles selon la convention sitewide, et etendu
+les corrections de devise et d'accord aux pages nouvellement reperees.
+
+### Verifie
+
+Chaque remplacement verifie par comptage exact avant application, aucun
+residu detecte par recherche systematique sur l'ensemble du site apres
+correction — y compris une verification croisee dediee de la coherence
+des dates d'articles (balise meta, donnees structurees, date affichee)
+et du suffixe de titre sur les soixante et un articles du journal, dans
+les deux langues. Rendu verifie par navigateur reel sur un echantillon
+cible : liste des capacites, foire aux questions, date d'article,
+classement gomme arabique, separateur decimal, paragraphe clients,
+devise. Balayage complet 208 pages x trois conditions : six cent vingt-
+quatre mesures, zero erreur, aucun debordement horizontal. Publication
+verifiee contre le depot (six commits scinces par repertoire,
+cinquante-quatre fichiers, contenu identique bit a bit avec la copie
+locale), puis en production sur plusieurs echantillons (accueil, foire
+aux questions anglaise, article du journal, fiche gomme arabique, page
+aval, page contact) — toutes les corrections confirmees en ligne. Le
+theme visuel et le theme technique de l'audit de coherence restent a
+traiter dans une suite separee, selon l'ordre de priorite choisi par le
+proprietaire.
