@@ -27891,3 +27891,72 @@ service worker lors d'un premier chargement, ne s'est pas reproduit).
 Publication verifiee contre le depot (deux commits distincts, un par
 repertoire touche, contenu identique bit a bit), puis en production --
 les deux fichiers confirmes identiques a la copie locale en ligne.
+
+
+## 681 — La Durabilite recoit un menu dedie dans la barre de navigation (2026-09-21)
+
+### Constat
+
+Question posee : la Durabilite merite-t-elle un menu dedie dans la barre
+de navigation, comme chez les majors ? Verification de la structure
+actuelle : le sujet n'avait aucune entree de premier niveau. Il etait
+disperse a deux endroits, tous deux enfouis a trois clics -- GreenTech
+(« Durabilite . HSE-Q ») en sous-lien d'une colonne « Capacites
+integrees » a l'interieur du menu Exploration & Production, et
+Engagements / Communautes / Ethique sous une colonne « Responsabilite »
+du menu Societe. Comparaison rapide avec trois majors : TotalEnergies
+porte « Sustainability » en entree de premier niveau de son menu
+principal ; Shell rend sa page durabilite accessible directement en
+premier niveau d'URL ; Chevron avait deja ete releve au chantier 108
+avec le meme motif. Le site avait pourtant deja construit, aux
+chantiers 108 et 109, un hub Durabilite complet et compare aux majors
+(quatre piliers nommes, tableau d'indicateurs, referentiels, entree
+territoriale) -- mais ce travail restait pratiquement invisible depuis
+la navigation.
+
+### Ce qui change
+
+Une sixieme entree de menu, « Durabilite » (« Sustainability » en
+anglais), rejoint la barre de navigation sur les 200 pages qui portent
+le menu complet (FR et EN, hors mini-site arabe et gabarits d'impression
+qui n'ont jamais eu ce menu). Placee juste apres les trois poles
+operationnels et avant Societe, avec un point de couleur vert reprenant
+celui deja associe a GreenTech ailleurs sur le site (pied de page,
+premier pilier). Son panneau reprend, sans inventer de nouveau contenu,
+ce qui existe deja et a ete verifie chantier par chantier : un lien de
+vue d'ensemble vers le hub GreenTech ; les quatre piliers deja publies
+(Climat & energie, Environnement & patrimoine, Securite & personnes,
+Impact & territoires) ; le tableau des indicateurs et les referentiels
+deja construits sur la page Engagements ; les Cibles 2030 deja
+presentes ailleurs dans le menu Investisseurs ; et, en reprise exacte
+des intitules et descriptions deja utilises dans le menu Societe,
+Engagements, Communautes et Ethique & conformite. Rien n'est retire des
+menus existants : GreenTech reste cite dans la colonne « Capacites
+integrees » de chaque pole (c'est une entite legitimement listee la),
+et la colonne Responsabilite du menu Societe n'est pas touchee -- la
+nouvelle entree est additive, pas une refonte.
+
+### Verifie
+
+Les 200 fichiers portant le menu complet ont ete identifies par
+detection programmatique (marqueur unique et stable verifie present une
+seule fois sur chacun avant modification), puis modifies par script :
+insertion au meme point d'ancrage dans chaque fichier, bloc francais ou
+anglais selon la page. Verification post-insertion : six boutons de
+menu (au lieu de cinq) sur les 200 fichiers sans exception, un seul
+panneau « nxm-d » par fichier. Rendu reel verifie en local (panneau
+s'ouvre, se lit, se ferme au clavier), tiroir mobile verifie (le
+declencheur et son panneau s'affichent et s'ouvrent en largeur 390 px).
+Les 22 liens du nouveau panneau (11 par langue) verifies un par un
+contre des pages reellement chargees : statut 200 et ancre presente
+dans le DOM pour chacun, aucune ancre inventee ou supposee. Contraste
+mesure par rendu reel sur le panneau ouvert : 17,75:1 en theme sombre,
+17,71:1 en theme clair. Balayage complet des 200 pages dans les deux
+themes (400 chargements) : aucune erreur de console, statut 200
+partout, panneau present partout. Publication verifiee par dix commits
+distincts (un par repertoire touche, plus la racine scindee en deux
+lots pour rester sous la limite de taille par envoi), 200 fichiers au
+total, contenu identique bit a bit contre le depot puis en production
+apres redeploiement -- un seul controle isole a d'abord echoue par
+coupure reseau transitoire, non reproduit a la nouvelle tentative ni au
+controle par difference d'octets.
