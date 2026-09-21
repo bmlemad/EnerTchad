@@ -1133,6 +1133,40 @@ html:is(.et-plight,.et-jlight) #aurail:not(#k1) a:not(.on):not(:hover){backgroun
 html body.hm .nh-kpi:not(#m1):not(#m2):not(#m3):not(#m4):not(#m5):not(#m6):not(#m7):not(#m8):not(#m9):not(#m10):not(#m11):not(#m12):not(#m13):not(#m14):not(#m15):not(#m16):not(#m17):not(#m18):not(#m19):not(#m20):not(#m21):not(#m22):not(#m23):not(#m24):not(#m25):not(#m26):not(#m27)>*{border-left:0!important;padding-left:0!important;padding-right:0!important;border-top:1px solid var(--hair,rgba(255,255,255,.18))!important;padding-top:14px!important}
 html body.hm .nh-kpi:not(#m1):not(#m2):not(#m3):not(#m4):not(#m5):not(#m6):not(#m7):not(#m8):not(#m9):not(#m10):not(#m11):not(#m12):not(#m13):not(#m14):not(#m15):not(#m16):not(#m17):not(#m18):not(#m19):not(#m20):not(#m21):not(#m22):not(#m23):not(#m24):not(#m25):not(#m26):not(#m27)>*:first-child{border-top:0!important;padding-top:0!important}}
 </style>
+<style id="glass678">/* Liquid glass, home (accueil) : les trois panneaux du triptyque (#coeurs) passent d'un fond quasi
+   opaque a un verre veritablement transparent — la photo du fond se devine a travers, avec un reflet
+   en haut du panneau, comme une vitre. Premiere zone traitee ; le reste du site suivra. */
+html body.hm #coeurs .t550-p:not(#k1):not(#k2){
+  background:linear-gradient(160deg,rgba(0,54,82,.24) 0%,rgba(0,44,67,.30) 55%,rgba(0,31,50,.36) 100%)!important;
+  -webkit-backdrop-filter:saturate(180%) blur(26px)!important;backdrop-filter:saturate(180%) blur(26px)!important;
+  border:1px solid rgba(255,255,255,.24)!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.30),inset 0 0 0 1px rgba(255,255,255,.04),0 18px 44px rgba(0,10,18,.38)!important;
+  position:relative;overflow:hidden;
+}
+html.et-plight body.hm #coeurs .t550-p:not(#k1):not(#k2),html.et-jlight body.hm #coeurs .t550-p:not(#k1):not(#k2){
+  background:linear-gradient(160deg,rgba(255,255,255,.42) 0%,rgba(255,252,244,.36) 55%,rgba(255,255,255,.44) 100%)!important;
+  border-color:rgba(0,48,73,.20)!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.55),0 14px 36px rgba(0,48,73,.14)!important;
+}
+html body.hm #coeurs .t550-p::before{
+  content:"";position:absolute;inset:0;pointer-events:none;z-index:0;
+  background:linear-gradient(115deg,rgba(255,255,255,.16) 0%,transparent 30%,transparent 72%,rgba(255,255,255,.06) 100%);
+  mix-blend-mode:screen;
+}
+html body.hm #coeurs .t550-kpi:not(#k1):not(#k2){
+  background:rgba(255,255,255,.07)!important;
+  -webkit-backdrop-filter:blur(8px)!important;backdrop-filter:blur(8px)!important;
+  border-color:rgba(255,255,255,.20)!important;
+}
+html.et-plight body.hm #coeurs .t550-kpi:not(#k1):not(#k2),html.et-jlight body.hm #coeurs .t550-kpi:not(#k1):not(#k2){
+  background:rgba(255,255,255,.30)!important;border-color:rgba(0,48,73,.16)!important;
+}
+@media (prefers-reduced-transparency:reduce){
+  html body.hm #coeurs .t550-p:not(#k1):not(#k2){background:#00243A!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+  html.et-plight body.hm #coeurs .t550-p:not(#k1):not(#k2),html.et-jlight body.hm #coeurs .t550-p:not(#k1):not(#k2){background:#F5F7FA!important}
+  html body.hm #coeurs .t550-p::before{display:none}
+}
+</style>
 </head>
 <body class="hm"><div class="diapo" aria-hidden="true"></div><div class="rdprog" aria-hidden="true"></div>
 <a href="#main-content" class="skip-link">Aller au contenu principal</a>
