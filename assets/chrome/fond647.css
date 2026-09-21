@@ -305,3 +305,21 @@ html.et-jlight body footer:not(#k1):not(#k2):not(#k3):not(#k4):not(#k5):not(#k6)
   background:rgba(247,243,236,.22)!important;
   -webkit-backdrop-filter:blur(24px) saturate(125%)!important;backdrop-filter:blur(24px) saturate(125%)!important;
 }
+
+/* Ch685 -- le pied de page du theme sombre devient transparent a son tour, meme logique que le 684.
+   Demande explicite du proprietaire (a partir d une capture du pied de page en theme sombre) :
+   le rendre translucide, en verre clair -- comprendre : un verre nettement plus transparent, pas
+   une teinte differente. Verifie d abord en direct que le fond de page derriere le pied de page en
+   theme sombre est une teinte marine tres proche de celle du verre lui-meme (rgb(0,36,58) contre
+   rgba(14,22,38,x)) et que le texte du pied de page y est deja clair (blanc casse, or, bleu clair
+   selon les liens) -- aucun risque de perdre le texte en assombrissant encore le fond derriere lui.
+   Mesure : le verre du pied de page restait a 50% d opacite en sombre depuis le 663, une valeur
+   pensee pour un fond alors juge suffisamment distinct du decor. Ici : theme sombre uniquement, le
+   clair du 684 n est pas touche. Memes valeurs deja retenues pour les tuiles du theme sombre au 665
+   (22% d opacite -- l extremite basse de son degrade --, flou 20px, 160% de saturation) plutot qu un
+   reglage invente pour l occasion, teinte propre du pied de page conservee. Repli
+   prefers-reduced-transparency du 663 inchange, toujours net et opaque. */
+html body footer:not(#k1):not(#k2):not(#k3):not(#k4):not(#k5):not(#k6):not(#k7):not(#k8):not(#k9):not(#k10):not(#k11):not(#k12){
+  background:rgba(14,22,38,.22)!important;
+  -webkit-backdrop-filter:blur(20px) saturate(160%)!important;backdrop-filter:blur(20px) saturate(160%)!important;
+}
