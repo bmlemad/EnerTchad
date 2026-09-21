@@ -1136,14 +1136,14 @@ html body.hm .nh-kpi:not(#m1):not(#m2):not(#m3):not(#m4):not(#m5):not(#m6):not(#
 <style id="glass678">/* Liquid glass, home (accueil) : les trois panneaux du triptyque (#coeurs) passent d'un fond quasi
    opaque a un verre veritablement transparent — la photo du fond se devine a travers, avec un reflet
    en haut du panneau, comme une vitre. Premiere zone traitee ; le reste du site suivra. */
-html body.hm #coeurs .t550-p:not(#k1):not(#k2){
+html body.hm #coeurs .t550-p:not(#g1):not(#g2):not(#g3):not(#g4):not(#g5):not(#g6):not(#g7):not(#g8):not(#g9):not(#g10):not(#g11):not(#g12):not(#g13):not(#g14):not(#g15):not(#g16):not(#g17):not(#g18):not(#g19):not(#g20):not(#g21):not(#g22):not(#g23):not(#g24):not(#g25):not(#g26){
   background:linear-gradient(160deg,rgba(0,54,82,.24) 0%,rgba(0,44,67,.30) 55%,rgba(0,31,50,.36) 100%)!important;
   -webkit-backdrop-filter:saturate(180%) blur(26px)!important;backdrop-filter:saturate(180%) blur(26px)!important;
   border:1px solid rgba(255,255,255,.24)!important;
   box-shadow:inset 0 1px 0 rgba(255,255,255,.30),inset 0 0 0 1px rgba(255,255,255,.04),0 18px 44px rgba(0,10,18,.38)!important;
   position:relative;overflow:hidden;
 }
-html.et-plight body.hm #coeurs .t550-p:not(#k1):not(#k2),html.et-jlight body.hm #coeurs .t550-p:not(#k1):not(#k2){
+html.et-plight body.hm #coeurs .t550-p:not(#g1):not(#g2):not(#g3):not(#g4):not(#g5):not(#g6):not(#g7):not(#g8):not(#g9):not(#g10):not(#g11):not(#g12):not(#g13):not(#g14):not(#g15):not(#g16):not(#g17):not(#g18):not(#g19):not(#g20):not(#g21):not(#g22):not(#g23):not(#g24):not(#g25):not(#g26),html.et-jlight body.hm #coeurs .t550-p:not(#g1):not(#g2):not(#g3):not(#g4):not(#g5):not(#g6):not(#g7):not(#g8):not(#g9):not(#g10):not(#g11):not(#g12):not(#g13):not(#g14):not(#g15):not(#g16):not(#g17):not(#g18):not(#g19):not(#g20):not(#g21):not(#g22):not(#g23):not(#g24):not(#g25):not(#g26){
   background:linear-gradient(160deg,rgba(255,255,255,.42) 0%,rgba(255,252,244,.36) 55%,rgba(255,255,255,.44) 100%)!important;
   border-color:rgba(0,48,73,.20)!important;
   box-shadow:inset 0 1px 0 rgba(255,255,255,.55),0 14px 36px rgba(0,48,73,.14)!important;
@@ -1162,9 +1162,41 @@ html.et-plight body.hm #coeurs .t550-kpi:not(#k1):not(#k2),html.et-jlight body.h
   background:rgba(255,255,255,.30)!important;border-color:rgba(0,48,73,.16)!important;
 }
 @media (prefers-reduced-transparency:reduce){
-  html body.hm #coeurs .t550-p:not(#k1):not(#k2){background:#00243A!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
-  html.et-plight body.hm #coeurs .t550-p:not(#k1):not(#k2),html.et-jlight body.hm #coeurs .t550-p:not(#k1):not(#k2){background:#F5F7FA!important}
+  html body.hm #coeurs .t550-p:not(#g1):not(#g2):not(#g3):not(#g4):not(#g5):not(#g6):not(#g7):not(#g8):not(#g9):not(#g10):not(#g11):not(#g12):not(#g13):not(#g14):not(#g15):not(#g16):not(#g17):not(#g18):not(#g19):not(#g20):not(#g21):not(#g22):not(#g23):not(#g24):not(#g25):not(#g26){background:#00243A!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+  html.et-plight body.hm #coeurs .t550-p:not(#g1):not(#g2):not(#g3):not(#g4):not(#g5):not(#g6):not(#g7):not(#g8):not(#g9):not(#g10):not(#g11):not(#g12):not(#g13):not(#g14):not(#g15):not(#g16):not(#g17):not(#g18):not(#g19):not(#g20):not(#g21):not(#g22):not(#g23):not(#g24):not(#g25):not(#g26),html.et-jlight body.hm #coeurs .t550-p:not(#g1):not(#g2):not(#g3):not(#g4):not(#g5):not(#g6):not(#g7):not(#g8):not(#g9):not(#g10):not(#g11):not(#g12):not(#g13):not(#g14):not(#g15):not(#g16):not(#g17):not(#g18):not(#g19):not(#g20):not(#g21):not(#g22):not(#g23):not(#g24):not(#g25):not(#g26){background:#F5F7FA!important}
   html body.hm #coeurs .t550-p::before{display:none}
+}
+</style>
+<style id="glass679">/* Liquid glass, home (suite) : la barre de navigation et les trois cartes « durabilite » plus les
+   quatre cartes « documents de reference » recoivent le meme verre veritablement transparent que
+   le triptyque du 678. Un correctif de specificite (voir plus haut) leur etait necessaire : une
+   regle plus ancienne et plus specifique (nav_a.css / da540) les ramenait a un fond quasi opaque.
+   Les chiffres cles sous le heros (.nh-kpi) ne sont pas touches : le chantier 645 les a
+   deliberement laisses sans fond, pour que le dessin de fond du heros reste visible sans surface
+   par-dessus -- une decision a respecter, non un oubli a corriger. */
+html body.hm .nav.nx:not(#g1):not(#g2):not(#g3):not(#g4):not(#g5):not(#g6):not(#g7):not(#g8):not(#g9):not(#g10):not(#g11):not(#g12):not(#g13):not(#g14):not(#g15):not(#g16):not(#g17):not(#g18):not(#g19):not(#g20):not(#g21):not(#g22):not(#g23):not(#g24):not(#g25):not(#g26){
+  background:rgba(0,40,61,.22)!important;background-color:rgba(0,40,61,.22)!important;
+  -webkit-backdrop-filter:saturate(190%) blur(24px)!important;backdrop-filter:saturate(190%) blur(24px)!important;
+  border-bottom:1px solid rgba(255,255,255,.16)!important;
+}
+html.et-plight body.hm .nav.nx:not(#g1):not(#g2):not(#g3):not(#g4):not(#g5):not(#g6):not(#g7):not(#g8):not(#g9):not(#g10):not(#g11):not(#g12):not(#g13):not(#g14):not(#g15):not(#g16):not(#g17):not(#g18):not(#g19):not(#g20):not(#g21):not(#g22):not(#g23):not(#g24):not(#g25):not(#g26),html.et-jlight body.hm .nav.nx:not(#g1):not(#g2):not(#g3):not(#g4):not(#g5):not(#g6):not(#g7):not(#g8):not(#g9):not(#g10):not(#g11):not(#g12):not(#g13):not(#g14):not(#g15):not(#g16):not(#g17):not(#g18):not(#g19):not(#g20):not(#g21):not(#g22):not(#g23):not(#g24):not(#g25):not(#g26){
+  background:rgba(255,255,255,.44)!important;background-color:rgba(255,255,255,.44)!important;
+}
+html:not(.et-plight):not(.et-jlight) body.hm #durabilite .dur-c:not(#g1):not(#g2):not(#g3):not(#g4):not(#g5):not(#g6):not(#g7):not(#g8):not(#g9):not(#g10):not(#g11):not(#g12):not(#g13):not(#g14):not(#g15):not(#g16):not(#g17):not(#g18):not(#g19):not(#g20):not(#g21):not(#g22):not(#g23):not(#g24):not(#g25):not(#g26),
+html:not(.et-plight):not(.et-jlight) body.hm #reperes .doc-c:not(#g1):not(#g2):not(#g3):not(#g4):not(#g5):not(#g6):not(#g7):not(#g8):not(#g9):not(#g10):not(#g11):not(#g12):not(#g13):not(#g14):not(#g15):not(#g16):not(#g17):not(#g18):not(#g19):not(#g20):not(#g21):not(#g22):not(#g23):not(#g24):not(#g25):not(#g26){
+  background:rgba(0,50,76,.26)!important;
+  -webkit-backdrop-filter:saturate(180%) blur(22px)!important;backdrop-filter:saturate(180%) blur(22px)!important;
+  border-color:rgba(255,255,255,.18)!important;
+}
+html.et-plight body.hm #durabilite .dur-c:not(#g1):not(#g2):not(#g3):not(#g4):not(#g5):not(#g6):not(#g7):not(#g8):not(#g9):not(#g10):not(#g11):not(#g12):not(#g13):not(#g14):not(#g15):not(#g16):not(#g17):not(#g18):not(#g19):not(#g20):not(#g21):not(#g22):not(#g23):not(#g24):not(#g25):not(#g26),html.et-jlight body.hm #durabilite .dur-c:not(#g1):not(#g2):not(#g3):not(#g4):not(#g5):not(#g6):not(#g7):not(#g8):not(#g9):not(#g10):not(#g11):not(#g12):not(#g13):not(#g14):not(#g15):not(#g16):not(#g17):not(#g18):not(#g19):not(#g20):not(#g21):not(#g22):not(#g23):not(#g24):not(#g25):not(#g26),
+html.et-plight body.hm #reperes .doc-c:not(#g1):not(#g2):not(#g3):not(#g4):not(#g5):not(#g6):not(#g7):not(#g8):not(#g9):not(#g10):not(#g11):not(#g12):not(#g13):not(#g14):not(#g15):not(#g16):not(#g17):not(#g18):not(#g19):not(#g20):not(#g21):not(#g22):not(#g23):not(#g24):not(#g25):not(#g26),html.et-jlight body.hm #reperes .doc-c:not(#g1):not(#g2):not(#g3):not(#g4):not(#g5):not(#g6):not(#g7):not(#g8):not(#g9):not(#g10):not(#g11):not(#g12):not(#g13):not(#g14):not(#g15):not(#g16):not(#g17):not(#g18):not(#g19):not(#g20):not(#g21):not(#g22):not(#g23):not(#g24):not(#g25):not(#g26){
+  background:rgba(255,255,255,.40)!important;
+  -webkit-backdrop-filter:saturate(160%) blur(18px)!important;backdrop-filter:saturate(160%) blur(18px)!important;
+}
+@media (prefers-reduced-transparency:reduce){
+  html body.hm .nav.nx:not(#g1):not(#g2):not(#g3):not(#g4):not(#g5):not(#g6):not(#g7):not(#g8):not(#g9):not(#g10):not(#g11):not(#g12):not(#g13):not(#g14):not(#g15):not(#g16):not(#g17):not(#g18):not(#g19):not(#g20):not(#g21):not(#g22):not(#g23):not(#g24):not(#g25):not(#g26){background:#003049!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+  html.et-plight body.hm .nav.nx:not(#g1):not(#g2):not(#g3):not(#g4):not(#g5):not(#g6):not(#g7):not(#g8):not(#g9):not(#g10):not(#g11):not(#g12):not(#g13):not(#g14):not(#g15):not(#g16):not(#g17):not(#g18):not(#g19):not(#g20):not(#g21):not(#g22):not(#g23):not(#g24):not(#g25):not(#g26),html.et-jlight body.hm .nav.nx:not(#g1):not(#g2):not(#g3):not(#g4):not(#g5):not(#g6):not(#g7):not(#g8):not(#g9):not(#g10):not(#g11):not(#g12):not(#g13):not(#g14):not(#g15):not(#g16):not(#g17):not(#g18):not(#g19):not(#g20):not(#g21):not(#g22):not(#g23):not(#g24):not(#g25):not(#g26){background:#F5F7FA!important}
+  html:not(.et-plight):not(.et-jlight) body.hm #durabilite .dur-c:not(#g1):not(#g2):not(#g3):not(#g4):not(#g5):not(#g6):not(#g7):not(#g8):not(#g9):not(#g10):not(#g11):not(#g12):not(#g13):not(#g14):not(#g15):not(#g16):not(#g17):not(#g18):not(#g19):not(#g20):not(#g21):not(#g22):not(#g23):not(#g24):not(#g25):not(#g26),html:not(.et-plight):not(.et-jlight) body.hm #reperes .doc-c:not(#g1):not(#g2):not(#g3):not(#g4):not(#g5):not(#g6):not(#g7):not(#g8):not(#g9):not(#g10):not(#g11):not(#g12):not(#g13):not(#g14):not(#g15):not(#g16):not(#g17):not(#g18):not(#g19):not(#g20):not(#g21):not(#g22):not(#g23):not(#g24):not(#g25):not(#g26){background:#101B2E!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
 }
 </style>
 </head>
