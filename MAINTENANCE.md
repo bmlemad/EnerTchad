@@ -27960,3 +27960,62 @@ total, contenu identique bit a bit contre le depot puis en production
 apres redeploiement -- un seul controle isole a d'abord echoue par
 coupure reseau transitoire, non reproduit a la nouvelle tentative ni au
 controle par difference d'octets.
+
+
+## 682 — Le verre deja code de .otr-c et .capint-c cesse d etre annule (2026-09-21)
+
+### Constat
+
+Reprise du chantier interrompu par la question sur le menu Durabilite.
+Verification en rendu reel (getComputedStyle) sur les pages-pole : les
+cartes .otr-c (« Devenir client ») et .capint-c (« Capacites integrees »)
+declarent chacune leur propre effet de verre dans le CSS embarque de
+chaque page -- flou de 12px pour .otr-c (present depuis l origine de la
+page), flou de 8px pour .capint-c (ajoute au chantier 411, « fil d or
+et verre ») -- mais aucune des deux declarations n est en !important.
+Le verrou sitewide du chantier 624 (backdrop-filter:none!important,
+onze faux identifiants de specificite, portee a tout element sous
+main/header.pghero/header.hero) l emporte donc silencieusement sur les
+seize fichiers de pages-pole, dans les deux themes : meme famille de
+bug que le .doc-c corrige au chantier 680, un effet deja code et jamais
+rendu. Verification etendue : sur les seize fichiers, huit portent
+reellement un element .capint-c (amont, aval, intermediaire, petro-
+chimie/enerchimie, deux langues) -- les huit autres (enerconseils,
+greentech, tchaditech, tchaditude) chargent la regle CSS mais ne
+placent jamais l element, sans lien avec ce chantier.
+
+### Ce qui change
+
+Une regle ajoutee a fond647.css (feuille partagee, deja vehicule du
+correctif 680) restitue exactement les valeurs deja ecrites par les
+pages elles-memes -- aucun flou ni couleur invente -- a une specificite
+de vingt-quatre faux identifiants, suffisante pour l emporter sur le
+verrou du 624. Portee limitee a l ecran : la regle d impression deja
+codee par les pages (fond blanc, sans flou) n est pas concernee, le
+bloc correctif etant lui-meme cantonne a @media screen. Le repli deja
+code pour « transparence reduite » reste respecte : une regle jumelle,
+a la meme specificite, le reaffirme explicitement plutot que de s en
+remettre a l ordre de la cascade -- .otr-c revient a backdrop-filter:
+none, .capint-c retrouve son fond plein deja prevu (#0E1626 en sombre,
+#F6F1E8 en clair pour le theme clair deja code par la page).
+
+### Verifie
+
+Rendu reel (Playwright, getComputedStyle) sur les seize fichiers de
+pages-pole, deux themes : .otr-c retrouve blur(12px) saturate(1.3)
+partout ; .capint-c retrouve blur(8px) saturate(120%) sur les huit
+fichiers qui portent reellement l element, confirme absent (sans
+rapport avec le correctif) sur les huit autres. Cas limites verifies
+par emulation : media print, .otr-c et .capint-c retombent bien a
+backdrop-filter:none, comme avant le correctif -- la regle d impression
+des pages n est pas contournee. Prefers-reduced-transparency:reduce
+emulee (CDP), themes sombre et clair : backdrop-filter revient a none
+pour les deux classes, .capint-c retrouve son fond plein attendu dans
+chaque theme -- le repli d accessibilite deja code par les pages n est
+pas court-circuite par la specificite plus elevee du correctif. Balayage
+des deux cent huit pages qui chargent fond647.css (portee reelle du
+fichier modifie) : statut 200 et zero erreur de console partout.
+Publication verifiee : commit unique sur assets/chrome, contenu
+identique bit a bit contre le depot puis en production apres redeploie-
+ment ; rendu reel reconfirme en production sur les huit pages ou
+.capint-c existe, deux themes, seize controles, tous corrects.
