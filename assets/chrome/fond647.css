@@ -216,3 +216,34 @@ html.et-plight body #documents .doc-c:not(#g1):not(#g2):not(#g3):not(#g4):not(#g
   html body #documents .doc-c:not(#g1):not(#g2):not(#g3):not(#g4):not(#g5):not(#g6):not(#g7):not(#g8):not(#g9):not(#g10):not(#g11):not(#g12):not(#g13):not(#g14):not(#g15):not(#g16):not(#g17):not(#g18):not(#g19):not(#g20):not(#g21):not(#g22):not(#g23):not(#g24){background:#101928!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
   html.et-plight body #documents .doc-c:not(#g1):not(#g2):not(#g3):not(#g4):not(#g5):not(#g6):not(#g7):not(#g8):not(#g9):not(#g10):not(#g11):not(#g12):not(#g13):not(#g14):not(#g15):not(#g16):not(#g17):not(#g18):not(#g19):not(#g20):not(#g21):not(#g22):not(#g23):not(#g24){background:#F5F1E8!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
 }
+
+/* Ch682 -- .otr-c et .capint-c (pages-pole, seize fichiers) recuperent le verre qu'elles
+   declarent deja. Constat : chacune porte sa propre regle backdrop-filter (blur(12px)
+   saturate(1.3) pour .otr-c depuis l'origine, blur(8px) saturate(120%) pour .capint-c
+   depuis le 411) mais aucune des deux n'est en !important -- le verrou sitewide du 624
+   (backdrop-filter:none!important, onze faux identifiants) l'emporte silencieusement sur
+   les seize pages-pole, dans les deux themes. Meme famille de bug que le doc-c du 680 : un
+   effet deja code, jamais rendu. Restitue ici exactement les valeurs deja ecrites par
+   chaque page (aucune valeur nouvelle), sur ecran seulement -- la regle d'impression et le
+   repli deja code pour "transparence reduite" restent maitres de leur cas : une regle
+   jumelle de meme specificite les reaffirme ci-dessous plutot que de s'en remettre a
+   l'ordre de la cascade. */
+@media screen{
+html body .otr-c:not(#j1):not(#j2):not(#j3):not(#j4):not(#j5):not(#j6):not(#j7):not(#j8):not(#j9):not(#j10):not(#j11):not(#j12):not(#j13):not(#j14):not(#j15):not(#j16):not(#j17):not(#j18):not(#j19):not(#j20):not(#j21):not(#j22):not(#j23):not(#j24){
+  -webkit-backdrop-filter:blur(12px) saturate(1.3)!important;backdrop-filter:blur(12px) saturate(1.3)!important;
+}
+html body .capint-c:not(#j1):not(#j2):not(#j3):not(#j4):not(#j5):not(#j6):not(#j7):not(#j8):not(#j9):not(#j10):not(#j11):not(#j12):not(#j13):not(#j14):not(#j15):not(#j16):not(#j17):not(#j18):not(#j19):not(#j20):not(#j21):not(#j22):not(#j23):not(#j24){
+  -webkit-backdrop-filter:blur(8px) saturate(120%)!important;backdrop-filter:blur(8px) saturate(120%)!important;
+}
+}
+@media screen and (prefers-reduced-transparency:reduce){
+html body .otr-c:not(#j1):not(#j2):not(#j3):not(#j4):not(#j5):not(#j6):not(#j7):not(#j8):not(#j9):not(#j10):not(#j11):not(#j12):not(#j13):not(#j14):not(#j15):not(#j16):not(#j17):not(#j18):not(#j19):not(#j20):not(#j21):not(#j22):not(#j23):not(#j24){
+  -webkit-backdrop-filter:none!important;backdrop-filter:none!important;
+}
+html body .capint-c:not(#j1):not(#j2):not(#j3):not(#j4):not(#j5):not(#j6):not(#j7):not(#j8):not(#j9):not(#j10):not(#j11):not(#j12):not(#j13):not(#j14):not(#j15):not(#j16):not(#j17):not(#j18):not(#j19):not(#j20):not(#j21):not(#j22):not(#j23):not(#j24){
+  -webkit-backdrop-filter:none!important;backdrop-filter:none!important;background:#0E1626!important;
+}
+html.et-plight body .capint-c:not(#j1):not(#j2):not(#j3):not(#j4):not(#j5):not(#j6):not(#j7):not(#j8):not(#j9):not(#j10):not(#j11):not(#j12):not(#j13):not(#j14):not(#j15):not(#j16):not(#j17):not(#j18):not(#j19):not(#j20):not(#j21):not(#j22):not(#j23):not(#j24){
+  background:#F6F1E8!important;
+}
+}
