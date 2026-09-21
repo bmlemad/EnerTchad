@@ -189,3 +189,30 @@ html.et-plight body footer:not(#k1):not(#k2):not(#k3):not(#k4):not(#k5):not(#k6)
 html body .nav.scrolled:not(#z1):not(#z2):not(#z3):not(#z4):not(#z5):not(#z6):not(#z7):not(#z8):not(#z9):not(#z10):not(#z11):not(#z12):not(#z13):not(#z14):not(#z15):not(#z16):not(#z17):not(#z18):not(#z19):not(#z20):not(#z21):not(#z22):not(#z23):not(#z24){background:rgba(8,13,24,.97)!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
 html.et-plight body .nav.scrolled:not(#z1):not(#z2):not(#z3):not(#z4):not(#z5):not(#z6):not(#z7):not(#z8):not(#z9):not(#z10):not(#z11):not(#z12):not(#z13):not(#z14):not(#z15):not(#z16):not(#z17):not(#z18):not(#z19):not(#z20):not(#z21):not(#z22):not(#z23):not(#z24),html.et-jlight body .nav.scrolled:not(#z1):not(#z2):not(#z3):not(#z4):not(#z5):not(#z6):not(#z7):not(#z8):not(#z9):not(#z10):not(#z11):not(#z12):not(#z13):not(#z14):not(#z15):not(#z16):not(#z17):not(#z18):not(#z19):not(#z20):not(#z21):not(#z22):not(#z23):not(#z24){background:rgba(251,248,242,.95)!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
 }
+
+/* Ch680 -- les cartes "documents" des pages-pole rejoignent le systeme de verre du site.
+   Constat : #documents .doc-c (pages-pole amont/aval/intermediaire, deux langues -- six
+   fichiers) porte un fond plat sans flou (color-mix a 52% en sombre, blanc a 78% en clair),
+   pose avant le systeme de tuiles en verre du 664/665/668 et jamais rattrape par lui -- son
+   nom de classe ("doc-c") ne correspond a aucun motif de la liste [class*="card"] etc. Sur la
+   home, la meme classe (#reperes .doc-c) recoit deja le verre depuis le 679, par une regle
+   dediee de specificite superieure : non affectee ici, la portee ci-dessous est en outre
+   limitee a #documents, absent de la home. Plutot qu'une nouvelle valeur, #documents .doc-c
+   reprend exactement le rendu deja en vigueur pour les autres cartes du site (memes valeurs
+   que le 665 en sombre, le 668 en clair) -- une seule apparence de carte en verre partout. */
+html body #documents .doc-c:not(#g1):not(#g2):not(#g3):not(#g4):not(#g5):not(#g6):not(#g7):not(#g8):not(#g9):not(#g10):not(#g11):not(#g12):not(#g13):not(#g14):not(#g15):not(#g16):not(#g17):not(#g18):not(#g19):not(#g20):not(#g21):not(#g22):not(#g23):not(#g24){
+  background:linear-gradient(160deg,rgba(16,24,40,.38),rgba(9,15,26,.22))!important;
+  -webkit-backdrop-filter:blur(20px) saturate(160%)!important;backdrop-filter:blur(20px) saturate(160%)!important;
+  border-color:rgba(255,255,255,.09)!important;
+  box-shadow:rgba(255,255,255,.06) 0 1px 0 0 inset,rgba(0,0,0,.42) 0 22px 46px -30px!important;
+}
+html.et-plight body #documents .doc-c:not(#g1):not(#g2):not(#g3):not(#g4):not(#g5):not(#g6):not(#g7):not(#g8):not(#g9):not(#g10):not(#g11):not(#g12):not(#g13):not(#g14):not(#g15):not(#g16):not(#g17):not(#g18):not(#g19):not(#g20):not(#g21):not(#g22):not(#g23):not(#g24){
+  background:linear-gradient(160deg,rgba(255,255,255,.22),rgba(247,243,236,.10))!important;
+  -webkit-backdrop-filter:blur(24px) saturate(125%)!important;backdrop-filter:blur(24px) saturate(125%)!important;
+  border-color:rgba(26,35,48,.05)!important;
+  box-shadow:rgba(255,255,255,.30) 0 1px 0 0 inset,rgba(30,24,10,.18) 0 16px 32px -28px!important;
+}
+@media (prefers-reduced-transparency:reduce){
+  html body #documents .doc-c:not(#g1):not(#g2):not(#g3):not(#g4):not(#g5):not(#g6):not(#g7):not(#g8):not(#g9):not(#g10):not(#g11):not(#g12):not(#g13):not(#g14):not(#g15):not(#g16):not(#g17):not(#g18):not(#g19):not(#g20):not(#g21):not(#g22):not(#g23):not(#g24){background:#101928!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+  html.et-plight body #documents .doc-c:not(#g1):not(#g2):not(#g3):not(#g4):not(#g5):not(#g6):not(#g7):not(#g8):not(#g9):not(#g10):not(#g11):not(#g12):not(#g13):not(#g14):not(#g15):not(#g16):not(#g17):not(#g18):not(#g19):not(#g20):not(#g21):not(#g22):not(#g23):not(#g24){background:#F5F1E8!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+}
