@@ -27825,3 +27825,69 @@ la version publiee sur le depot avant ce chantier. Publication verifiee
 contre le depot (un commit, deux fichiers, contenu identique bit a bit),
 puis en production -- les deux pages confirmees identiques a la copie
 locale en ligne.
+
+
+## 680 — Verre liquide : les cartes « documents » des pages-pole rejoignent le systeme du site (2026-09-21)
+
+### Constat
+
+Suite demandee : etendre le verre transparent au-dela de la page
+d'accueil. Un sous-agent charge de reperer les ecarts restants a signale
+plusieurs pistes ; chacune verifiee en direct plutot que prise pour
+acquise -- l'une d'elles s'est revelee fausse (`#cta-band .cb-in`
+possede deja un flou, via une regle plus recente que celle lue par le
+sous-agent) et n'a pas ete traitee. Le reste du site s'est revele deja
+couvert par un systeme de verre mature et deja specifique (chantiers
+664/665/668, `fond647.css`), qui traite generiquement toute carte du
+site. Un ecart reel et isole a ete confirme : sur les six fichiers des
+trois pages-pole (amont, aval, intermediaire, chacune en francais et en
+anglais), les quatre cartes « documents de reference » (`#documents
+.doc-c`) portent un fond plat sans flou, jamais rattrape par le systeme
+generique du 664/665/668 car son nom de classe ne correspond a aucun des
+motifs qu'il cible.
+
+Premiere tentative -- un correctif directement dans les six fichiers,
+sur le meme principe que le 679 -- s'est heurtee a une decision
+anterieure distincte : le chantier 624 desactive delibrement, pour des
+raisons de performance et sur l'ensemble du site, le flou d'arriere-plan
+a l'interieur de `main` (regle sitewide, 22 `:not()` factices). Plutot
+que la contourner par une specificite encore superieure -- ce qui
+aurait ignore une decision deliberee sans la reexaminer --, le correctif
+a ete repense : `fond647.css` avait deja, lui, republi le flou pour ses
+cartes generiques a une specificite superieure a celle du 624 (24
+`:not()`). Rejoindre ce systeme deja eprouve valait mieux qu'en creer un
+concurrent.
+
+### Ce qui change
+
+Les six correctifs directs sont retires (fichiers des pages-pole
+inchanges). Un nouveau bloc est ajoute en fin de `fond647.css`, portant
+uniquement sur `#documents .doc-c` (absent de la page d'accueil, donc
+sans effet sur le traitement deja en place depuis le 679) : memes
+valeurs exactement que celles deja en vigueur pour les autres cartes du
+site -- degrade et flou du 665 en theme sombre, du 668 en theme clair,
+repli uni pour `prefers-reduced-transparency` -- de sorte qu'une seule
+apparence de carte en verre s'applique partout, sans nouvelle valeur a
+maintenir. `sw.js` est mis a jour en consequence (nouvelle version de
+cache), puisque ce chantier modifie une feuille de style partagee.
+
+### Verifie
+
+Cascade CSS rejouee pour confirmer que le nouveau bloc l'emporte sur la
+regle du 624 et sur toute autre regle concurrente, dans les deux themes,
+sur les six pages. Porte verifiee par recherche sur l'ensemble du site :
+la classe `.doc-c` n'existe que sur ces six fichiers plus les deux pages
+d'accueil (deja traitees au 679, non affectees par ce chantier car sa
+portee est limitee a `#documents`). Rendu reel verifie en production
+(et non en copie locale) sur les six pages, deux themes : flou et
+degrade attendus bien presents, aucune regression sur les valeurs deja
+en vigueur ailleurs. Contraste mesure par rendu reel (capture d'ecran,
+pixel de texte contre pixel de fond, formule WCAG) sur une carte
+representative : 15,4:1 en theme sombre, 15,9:1 en theme clair, tres
+au-dessus du minimum de 4,5:1. Aucune erreur de console relevee sur les
+six pages, deux themes, apres verification en contexte isole (un
+avertissement transitoire de type MIME, lie a l'installation du nouveau
+service worker lors d'un premier chargement, ne s'est pas reproduit).
+Publication verifiee contre le depot (deux commits distincts, un par
+repertoire touche, contenu identique bit a bit), puis en production --
+les deux fichiers confirmes identiques a la copie locale en ligne.
