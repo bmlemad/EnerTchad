@@ -287,3 +287,21 @@ html.et-jlight body :is(.lie558-c,.lie560-c):not(#m1):not(#m2):not(#m3):not(#m4)
   background:#F5F1E8!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important;
 }
 }
+/* Ch684 -- le pied de page du theme clair devient transparent, pour l immersion avec le decor.
+   Demande explicite du proprietaire : rendre le pied de page du theme clair transparent, pour
+   permettre une immersion avec le fond de page. Verifie d abord en direct (rendu reel, trois
+   gabarits, deux variantes claires) que le texte du pied de page (titres, liens, libelles,
+   paragraphe) tire deja ses couleurs de tons sombres propres au theme clair -- aucun blanc quasi
+   pur, malgre ce que la seule lecture de la feuille de style laissait craindre -- donc une marge
+   de contraste large avant meme de toucher a l opacite. Mesure : le verre du pied de page (663)
+   restait a 58% d opacite en clair, une valeur pensee pour un fond quasi opaque, pas pour la
+   transparence recherchee ici. Ici : theme clair uniquement, le sombre du 663 n est pas touche.
+   Memes valeurs deja retenues pour les tuiles du theme clair au 668 (22% d opacite dans la meme
+   teinte creme, flou 24px, 125% de saturation) plutot qu un reglage invente pour l occasion --
+   une seule notion de "verre clair transparent" sur tout le site. Repli
+   prefers-reduced-transparency du 663 inchange, toujours net et opaque. */
+html.et-plight body footer:not(#k1):not(#k2):not(#k3):not(#k4):not(#k5):not(#k6):not(#k7):not(#k8):not(#k9):not(#k10):not(#k11):not(#k12),
+html.et-jlight body footer:not(#k1):not(#k2):not(#k3):not(#k4):not(#k5):not(#k6):not(#k7):not(#k8):not(#k9):not(#k10):not(#k11):not(#k12){
+  background:rgba(247,243,236,.22)!important;
+  -webkit-backdrop-filter:blur(24px) saturate(125%)!important;backdrop-filter:blur(24px) saturate(125%)!important;
+}
