@@ -27778,3 +27778,50 @@ modifies, confirme par le controle de version local. Publication verifiee
 contre le depot (un commit, deux fichiers, contenu identique bit a bit),
 puis en production -- les deux pages confirmees identiques a la copie
 locale en ligne.
+
+
+## 679 — Liquid glass, home : suite et correctif du 678 (2026-09-21)
+
+### Constat
+
+Suite demandee : etendre le verre transparent du 678 au reste de la page
+d'accueil. Avant d'ecrire quoi que ce soit, verification du rendu reel du
+678 deja publie -- et la, ecart avec la verification precedente : les
+trois panneaux du triptyque affichaient de nouveau un fond presque
+opaque, degrade et flou du 678 invisibles. Cause identifiee par lecture
+de la cascade CSS reellement appliquee (regle par regle, feuille par
+feuille) : une regle plus ancienne, `nav_a.css`, cible large (panneaux,
+cartes durabilite, cartes documents, chiffres cles...) avec une
+specificite tres elevee (22 selecteurs `:not()` factices), l'emportait
+sur le bloc du 678 qui n'en comptait que deux. Meme constat pour la barre
+de navigation, ou une regle du chantier 540 (6 `:not()`) l'emportait.
+
+### Ce qui change
+
+Le bloc du 678 est renforce : ses selecteurs comptent desormais 26
+`:not()` factices, au-dessus de toutes les regles concurrentes reperees,
+pour que le verre transparent s'applique reellement -- sans toucher au
+degrade, au flou ni aux couleurs deja verifies. Un second bloc, meme
+principe, etend le meme traitement a la barre de navigation, aux trois
+cartes « durabilite » et aux quatre cartes « documents de reference » :
+fond a 22-44 % d'opacite selon le theme, flou et saturation renforces,
+repli uni prevu pour prefers-reduced-transparency. Les trois chiffres cles
+sous le heros (.nh-kpi) ne sont pas touches : le chantier 645 avait
+deliberement retire tout fond a cet endroit pour laisser voir le dessin
+du heros -- decision respectee plutot que contournee.
+
+### Verifie
+
+Cascade CSS rejouee regle par regle (feuilles externes et blocs en ligne,
+avec prise en compte des media queries) pour confirmer, apres correctif,
+que le bloc du 678 et le nouveau bloc du 679 l'emportent bien sur toute
+regle concurrente, dans les deux themes. Contraste mesure par rendu reel
+sur le titre et le texte des panneaux, le lien de navigation et les
+cartes durabilite/documents, dans les deux themes des deux pages : le
+plus faible ratio releve est de 5,68:1, au-dessus du minimum de 4,5:1.
+Rendu verifie sur ordinateur et sur mobile, aucune erreur de console.
+Seuls les deux fichiers d'accueil modifies, confirme par comparaison avec
+la version publiee sur le depot avant ce chantier. Publication verifiee
+contre le depot (un commit, deux fichiers, contenu identique bit a bit),
+puis en production -- les deux pages confirmees identiques a la copie
+locale en ligne.
