@@ -247,3 +247,43 @@ html.et-plight body .capint-c:not(#j1):not(#j2):not(#j3):not(#j4):not(#j5):not(#
   background:#F6F1E8!important;
 }
 }
+
+/* Ch683 -- .lie558-c (« Read next », pages-pole et pages d activite) et .lie560-c (« A lire
+   ensuite », les carnets du journal) rejoignent le systeme de verre generique du site.
+   Constat : le systeme des chantiers 664/665/668 couvre deja plus de trente noms de classe --
+   tout ce qui contient "card" plus une liste explicite d exceptions (.divc, .exp-c, .mfo-lever,
+   .ppl-tile, .scard) ajoutee au fil du temps pour les noms qui n y correspondent pas. Ni
+   "lie558-c" ni "lie560-c" ne contiennent "card" et aucune des deux ne figurait dans cette
+   liste : quatre-vingt-deux fichiers (pages-pole, pages d activite, et la totalite des
+   soixante-quatre carnets du journal) portent donc ces cartes de pied de contenu avec un fond
+   plat sans flou, alors que le reste du site en est couvert depuis longtemps. Meme cause que
+   l ecart du doc-c corrige au 680 : un nom de classe hors du filet, pas une intention. Ici :
+   les deux noms rejoignent le systeme, aux memes valeurs exactes deja en vigueur pour toutes
+   les autres cartes du site (665 sombre, 668 clair, repli transparence-reduite du 664/668) --
+   une seule apparence de carte en verre partout, aucune valeur nouvelle a maintenir. Portee
+   limitee a l ecran comme au 682, ces deux classes n ayant elles-memes ni regle d impression
+   ni repli transparence-reduite propres a court-circuiter. */
+@media screen{
+html body :is(.lie558-c,.lie560-c):not(#m1):not(#m2):not(#m3):not(#m4):not(#m5):not(#m6):not(#m7):not(#m8):not(#m9):not(#m10):not(#m11):not(#m12):not(#m13):not(#m14):not(#m15):not(#m16):not(#m17):not(#m18):not(#m19):not(#m20):not(#m21):not(#m22):not(#m23):not(#m24){
+  background:linear-gradient(160deg,rgba(16,24,40,.38),rgba(9,15,26,.22))!important;
+  -webkit-backdrop-filter:blur(20px) saturate(160%)!important;backdrop-filter:blur(20px) saturate(160%)!important;
+  border-color:rgba(255,255,255,.09)!important;
+  box-shadow:rgba(255,255,255,.06) 0 1px 0 0 inset,rgba(0,0,0,.42) 0 22px 46px -30px!important;
+}
+html.et-plight body :is(.lie558-c,.lie560-c):not(#m1):not(#m2):not(#m3):not(#m4):not(#m5):not(#m6):not(#m7):not(#m8):not(#m9):not(#m10):not(#m11):not(#m12):not(#m13):not(#m14):not(#m15):not(#m16):not(#m17):not(#m18):not(#m19):not(#m20):not(#m21):not(#m22):not(#m23):not(#m24),
+html.et-jlight body :is(.lie558-c,.lie560-c):not(#m1):not(#m2):not(#m3):not(#m4):not(#m5):not(#m6):not(#m7):not(#m8):not(#m9):not(#m10):not(#m11):not(#m12):not(#m13):not(#m14):not(#m15):not(#m16):not(#m17):not(#m18):not(#m19):not(#m20):not(#m21):not(#m22):not(#m23):not(#m24){
+  background:linear-gradient(160deg,rgba(255,255,255,.22),rgba(247,243,236,.10))!important;
+  -webkit-backdrop-filter:blur(24px) saturate(125%)!important;backdrop-filter:blur(24px) saturate(125%)!important;
+  border-color:rgba(26,35,48,.05)!important;
+  box-shadow:rgba(255,255,255,.30) 0 1px 0 0 inset,rgba(30,24,10,.18) 0 16px 32px -28px!important;
+}
+}
+@media screen and (prefers-reduced-transparency:reduce){
+html body :is(.lie558-c,.lie560-c):not(#m1):not(#m2):not(#m3):not(#m4):not(#m5):not(#m6):not(#m7):not(#m8):not(#m9):not(#m10):not(#m11):not(#m12):not(#m13):not(#m14):not(#m15):not(#m16):not(#m17):not(#m18):not(#m19):not(#m20):not(#m21):not(#m22):not(#m23):not(#m24){
+  background:#101928!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important;
+}
+html.et-plight body :is(.lie558-c,.lie560-c):not(#m1):not(#m2):not(#m3):not(#m4):not(#m5):not(#m6):not(#m7):not(#m8):not(#m9):not(#m10):not(#m11):not(#m12):not(#m13):not(#m14):not(#m15):not(#m16):not(#m17):not(#m18):not(#m19):not(#m20):not(#m21):not(#m22):not(#m23):not(#m24),
+html.et-jlight body :is(.lie558-c,.lie560-c):not(#m1):not(#m2):not(#m3):not(#m4):not(#m5):not(#m6):not(#m7):not(#m8):not(#m9):not(#m10):not(#m11):not(#m12):not(#m13):not(#m14):not(#m15):not(#m16):not(#m17):not(#m18):not(#m19):not(#m20):not(#m21):not(#m22):not(#m23):not(#m24){
+  background:#F5F1E8!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important;
+}
+}
