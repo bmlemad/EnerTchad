@@ -349,3 +349,31 @@ html.et-jlight body footer:not(#k1):not(#k2):not(#k3):not(#k4):not(#k5):not(#k6)
   -webkit-backdrop-filter:blur(24px) saturate(125%)!important;backdrop-filter:blur(24px) saturate(125%)!important;
   box-shadow:rgba(255,255,255,.30) 0 1px 0 0 inset,rgba(30,24,10,.18) 0 16px 32px -28px!important;
 }
+
+/* Ch687 -- la forme translucide du pied de page doit laisser voir l image du fond, pas seulement
+   suggerer une transparence. Demande explicite du proprietaire : le verre du pied de page (663 a
+   686) devrait permettre de voir l image du fond. Constat verifie en rendu reel (capture plein
+   viewport, jamais une capture cadree sur le seul pied de page -- une capture cadree ne compose
+   pas correctement un calque position:fixed a z-index negatif comme .rootland, et affichait a
+   tort un aplat uni) : avec le reglage du 686 (flou 20/24px, degrade a 38-22% en sombre et
+   22-10% en clair), le dessin du fond (systeme data-fond du 647) derriere le pied de page est
+   entierement efface -- aucune trace du trait de coupe geologique n est perceptible, ce qui
+   confirme le constat du proprietaire. Mesure : flou et opacite ramenes nettement plus bas --
+   juste assez de flou pour rester du verre plutot qu une vitre nue (1px en sombre ; aucun en
+   clair, ou le dessin est naturellement plus attenue et a besoin de toute la transparence
+   disponible pour rester lisible), degrade ramene a 6-2% en sombre et 8-3% en clair. Verifie en
+   rendu reel que le trait diagonal du dessin redevient nettement visible a travers le pied de
+   page dans les deux themes, et que le contraste du texte du pied de page reste tres au-dessus
+   du minimum (verifie par echantillonnage de pixels sur la capture reelle : 10,0:1 en sombre,
+   5,8:1 en clair, minimum requis 4,5:1). Degrade et ombre du 686 conserves -- seuls le flou et
+   l opacite du fond changent ici. Repli prefers-reduced-transparency inchange, toujours net et
+   opaque. */
+html body footer:not(#k1):not(#k2):not(#k3):not(#k4):not(#k5):not(#k6):not(#k7):not(#k8):not(#k9):not(#k10):not(#k11):not(#k12){
+  background:linear-gradient(160deg,rgba(14,22,38,.06),rgba(14,22,38,.02))!important;
+  -webkit-backdrop-filter:blur(1px) saturate(160%)!important;backdrop-filter:blur(1px) saturate(160%)!important;
+}
+html.et-plight body footer:not(#k1):not(#k2):not(#k3):not(#k4):not(#k5):not(#k6):not(#k7):not(#k8):not(#k9):not(#k10):not(#k11):not(#k12),
+html.et-jlight body footer:not(#k1):not(#k2):not(#k3):not(#k4):not(#k5):not(#k6):not(#k7):not(#k8):not(#k9):not(#k10):not(#k11):not(#k12){
+  background:linear-gradient(160deg,rgba(247,243,236,.08),rgba(247,243,236,.03))!important;
+  -webkit-backdrop-filter:blur(0px) saturate(125%)!important;backdrop-filter:blur(0px) saturate(125%)!important;
+}
