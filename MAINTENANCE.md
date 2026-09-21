@@ -27729,3 +27729,52 @@ contenu identique bit a bit avec la copie locale), puis en production sur
 plusieurs echantillons -- toutes les corrections confirmees en ligne.
 L'audit de coherence en trois volets (redactionnel, visuel, technique) est
 desormais complet.
+
+
+## 678 — Liquid glass, home : premiere zone (2026-09-21)
+
+### Constat
+
+Demande directe : donner au site une allure « liquid glass » transparente,
+en commencant par la page d'accueil. Inspection du fichier avant toute
+ecriture : la page portait deja plusieurs couches de verre depose au fil
+des chantiers precedents (640, 544, 550, 619, 527 et une couche anonyme
+plus ancienne, jamais journalisee), empilees les unes sur les autres au
+fil du temps. Ces couches se recouvraient partiellement : la derniere
+definition de chaque variable de couleur l'emportait sur les precedentes,
+si bien que le triptyque des trois panneaux au coeur de la page -- « 01
+Exploration & Production », « 02 Transport & stockage », « 03 Raffinage &
+distribution » -- affichait un fond bleu marine presque opaque, sans
+laisser deviner la photo en arriere-plan : le verre etait pose, mais pas
+vraiment transparent.
+
+### Ce qui change
+
+Un nouveau bloc, ajoute en dernier dans l'ordre des feuilles de style pour
+etre certain qu'il l'emporte sur les couches precedentes, plutot que de
+demeler l'echeveau existant au risque de casser autre chose. Les trois
+panneaux du triptyque passent d'un fond a 50-74 % d'opacite a un verre
+veritablement transparent (24 a 36 % selon la profondeur du degrade), avec
+un flou et une saturation renforces pour que la photo du fond reste
+lisible en filigrane, une bordure plus nette et un reflet en haut du
+panneau qui simule une surface vitree. Les trois puces de chiffres a
+l'interieur de chaque panneau recoivent le meme traitement, plus discret.
+Theme clair et theme sombre traites separement ; un repli vers un fond
+uni est prevu pour les systemes qui demandent moins de transparence
+(prefers-reduced-transparency). Seules les deux pages d'accueil (francais,
+anglais) sont concernees a ce stade -- premiere zone traitee, le reste du
+site suivra sur demande.
+
+### Verifie
+
+Contraste mesure par rendu reel (capture d'ecran, pixel du texte contre
+pixel du fond, formule de contraste WCAG officielle) sur les cinq elements
+de texte du panneau (titre, paragraphe, chiffres cles, libelles), dans les
+deux themes : le plus faible ratio mesure est de 7,2:1, tous largement
+au-dessus du minimum de 4,5:1 -- la transparence accrue n'a pas fragilise
+la lisibilite. Rendu verifie sur ordinateur et sur mobile, aucune erreur
+de console dans les deux themes. Seuls les deux fichiers d'accueil
+modifies, confirme par le controle de version local. Publication verifiee
+contre le depot (un commit, deux fichiers, contenu identique bit a bit),
+puis en production -- les deux pages confirmees identiques a la copie
+locale en ligne.
