@@ -28019,3 +28019,61 @@ Publication verifiee : commit unique sur assets/chrome, contenu
 identique bit a bit contre le depot puis en production apres redeploie-
 ment ; rendu reel reconfirme en production sur les huit pages ou
 .capint-c existe, deux themes, seize controles, tous corrects.
+
+
+## 683 — Le systeme de verre du site s etend aux cartes « a lire ensuite » (2026-09-21)
+
+### Constat
+
+Suite du chantier 682, sur autorisation explicite. Deux classes deja
+identifiees comme candidates lors de l enquete precedente : .lie558-c
+(bloc « Read next » des pages-pole et des pages d activite) et
+.lie560-c (bloc « A lire ensuite » des carnets du journal) -- toutes
+deux un fond plat sans le moindre flou declare, dans leur propre CSS,
+dans aucun theme. Contrairement au .otr-c/.capint-c du 682, ce n etait
+pas un effet deja code et annule : rien n etait code du tout. Mais
+verification du systeme generique de cartes en verre (chantiers 664,
+665, 668) : il couvre deja plus de trente noms de classe a travers le
+site, par un motif « contient card » complete d une liste explicite de
+noms qui n y correspondent pas (.divc, .exp-c, .mfo-lever, .ppl-tile,
+.scard) -- ajoutee au fil des chantiers precisement pour ce genre de
+cas. Ni « lie558-c » ni « lie560-c » ne contiennent « card » et aucune
+des deux ne figurait dans cette liste : le meme ecart de couverture que
+le .doc-c corrige au 680, sur un perimetre bien plus large -- quatre-
+vingt-deux fichiers (pages-pole, pages d activite, et la totalite des
+soixante-quatre carnets du journal).
+
+### Ce qui change
+
+Les deux noms de classe rejoignent le systeme generique dans
+fond647.css, aux valeurs exactes deja en vigueur pour toutes les
+autres cartes du site : degrade et flou du 665 en theme sombre, du 668
+en theme clair, repli uni pour prefers-reduced-transparency -- aucune
+valeur nouvelle inventee ni a maintenir. Portee limitee a l ecran,
+comme au 682 : ces deux classes n avaient elles-memes ni regle
+d impression ni repli transparence-reduite a proteger, mais rien
+n empeche que ce soit le cas ailleurs sur les memes pages, donc le
+meme principe de precaution s applique. sw.js mis a jour en
+consequence (nouvelle version de cache), feuille de style partagee
+modifiee.
+
+### Verifie
+
+Rendu reel (Playwright, getComputedStyle) sur les quatre-vingt-deux
+fichiers concernes, deux themes : verre present partout, aucun
+manque. Cas limites verifies par emulation sur un representant de
+chaque gabarit (page-pole, carnet du journal) : media print, les
+deux classes retombent a backdrop-filter:none, sans regle
+d impression propre a court-circuiter puisqu aucune n existait ;
+prefers-reduced-transparency:reduce emule (CDP), fond plein #101928
+attendu et backdrop-filter a none. Point notable releve en verifiant
+la structure des pages : les carnets du journal n ont pas de balise
+main -- le verrou sitewide du 624 ne les concerne donc pas directement
+pour ces cartes, sans consequence sur le correctif puisque le systeme
+generique du 664/665/668, dont ce chantier ne fait qu etendre la
+couverture, ne s appuie lui non plus sur aucun ancrage a main. Balayage
+des deux cent huit pages qui chargent fond647.css (portee reelle du
+fichier modifie) : statut 200 et zero erreur de console partout.
+Publication verifiee : commit unique sur assets/chrome, contenu
+identique bit a bit contre le depot puis en production apres
+redeploiement.
