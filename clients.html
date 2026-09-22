@@ -1133,7 +1133,10 @@ html.et-plight .pcb-t{color:#10161F}
   if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{rootMargin:'0px 0px -8% 0px',threshold:.05});rv.forEach(function(el){io.observe(el);});}else{rv.forEach(function(el){el.classList.add('in');});}
   var links=[].slice.call(document.querySelectorAll('.toc-in a')),secs=links.map(function(a){var h=a.getAttribute('href');return (h&&h.charAt(0)==='#')?document.querySelector(h):null;});
   function spy(){var y=scrollY+140,idx=0;for(var i=0;i<secs.length;i++){if(secs[i]&&secs[i].offsetTop<=y)idx=i;}links.forEach(function(a,i){a.classList.toggle('active',i===idx);});}
-  addEventListener('scroll',spy,{passive:true});spy();
+  /* Ch692 -- offsetTop force une mise en page a chaque iteration ; spy() tournait sans
+     throttling sur chaque evenement scroll. Meme motif requestAnimationFrame que le
+     reste du site, aucun changement de comportement hors de la cadence. */
+  var spyTk=false;addEventListener('scroll',function(){if(!spyTk){spyTk=true;requestAnimationFrame(function(){spy();spyTk=false;});}},{passive:true});spy();
 })();
 </script>
 <style id="cw-tabs-css">

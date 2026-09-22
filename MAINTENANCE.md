@@ -28441,3 +28441,69 @@ et s echappe correctement, aucune erreur console. Balayage complet apres correct
 0 erreur console, 0 debordement, 0 statut d echec -- aucune regression du fait des pages qui
 chargent ce script partage. Publication verifiee : un commit (assets/chrome), contenu identique
 bit a bit entre le depot et la production apres redeploiement.
+
+## 692 -- Performance / Core Web Vitals : un bug en cascade decouvert en chemin (2026-09-22)
+
+### Constat
+
+Audit LCP/CLS/TBT sur 18 gabarits (mobile, throttling CPU x4 -- reglage par defaut de Lighthouse,
+median de 3 mesures pour ecarter le bruit reseau ; un premier releve avait montre un LCP de 11 s
+sur contact-en, disparu au deuxieme passage). Deux gabarits ressortaient nettement au-dessus du
+seuil « ameliorer » : /amont/ et son miroir EN (TBT median environ 4 s), et /investisseurs dans
+une moindre mesure. Attribution par Long Animation Frame puis profilage CPU (CDP Profiler) pour
+localiser la fonction en cause plutot que deviner : deux anti-motifs confirmes. Le premier,
+`flush()` dans assets/chrome/c_ac04328f0f47.js -- filet de securite du systeme de reveal au
+defilement -- lit `getBoundingClientRect()` de chaque `.reveal` non revele en boucle (mise en page
+forcee), et s executait de facon synchrone et immediate au chargement : cout mesure jusqu a 1,3 s
+de temps de blocage principal sur les gabarits a plusieurs dizaines de sections. Le second, la
+fonction `spy()` (survol de sommaire actif au defilement, dupliquee sur 7 pages) lit `.offsetTop`
+en boucle sans throttling sur chaque evenement de scroll, contrairement au reste du site qui
+utilise deja `requestAnimationFrame` pour ce meme motif : jusqu a 858 ms de temps propre mesure
+sur investisseurs.
+
+En lisant l integralite de assets/chrome/c_ac04328f0f47.js pour situer `flush()`, un second defaut,
+distinct et plus serieux, est apparu : le fichier entier est enveloppe dans un seul `try/catch` de
+tete. Sur les pages sans l element `#crude` (tout le site sauf tchaditech/outils), l appel non
+protege `crude.addEventListener(...)` levait une exception -- et faute d un `try/catch` par
+section, toute la suite du fichier s arretait net, y compris deux widgets independants et
+correctement gardes plus bas (tableau de bord temps reel et panneau de flux de distribution de
+aval/reseau). Verifie en rendu reel contre la production, avant correction : `#dash-stations` vide
+et clics sur `.dist-btn` sans effet, sans la moindre erreur console -- signature classique d une
+exception avalee. Ces deux widgets n avaient donc jamais fonctionne en production.
+
+### Ce qui change
+
+Quatre gardes ajoutees dans assets/chrome/c_ac04328f0f47.js, de la meme famille que les gardes deja
+correctement utilisees ailleurs dans ce fichier (`if(!veh)return;`, `if(!btns.length||!panel)return;`) :
+l ecoute sur `#crude` (APP2, calculateur de raffinage), la fonction `showBasin` (APP3, carte des
+bassins), et l ecoute sur `#cSubmit` (APP4, formulaire B2B) sont chacune conditionnees a l existence
+de leur element cible. `flush()` est reporte au temps d inactivite du thread principal
+(`requestIdleCallback`, repli `setTimeout` si absent) plutot qu execute de facon synchrone et
+immediate au chargement -- son role de filet de securite ne demande pas de s executer avant la
+premiere peinture ; les ecouteurs `load`/`resize`/`scroll` restent inchanges. Meme motif
+`requestAnimationFrame` que le reste du site applique a `spy()` dans les 7 fichiers ou elle est
+dupliquee : clients.html, clients-en.html, investisseurs.html, investisseurs-en.html, projets.html,
+solutions.html, solutions-en.html.
+
+### Verifie
+
+En rendu local : aval/reseau (fr) -- tableau de bord et flux de distribution desormais
+fonctionnels (`#dash-stations` peuple, clic sur `.dist-btn` change bien le panneau) ; tchaditech/
+outils -- carte des bassins et calculateur de raffinage toujours fonctionnels (aucune regression
+des gardes ajoutees) ; amont/ -- les elements `.reveal` sont toujours reveles apres le report a
+l inactivite (memes elements qu avant, juste plus tard) ; investisseurs -- le suivi de sommaire au
+defilement fonctionne toujours, desormais cadence. Balayage complet apres correction : 210 pages,
+3 configurations (sombre/claire/mobile), 0 erreur console, 0 debordement, 0 reponse en echec.
+Remesure en local, comparaison controlee avant/apres sur le meme serveur pour isoler l effet du
+changement de code (la mesure directe contre la production etant brouillee par le reseau) : sur
+/amont/, le temps de blocage avant le plus grand rendu passe de 2,74 s a 2,30 s en mediane (-16%).
+Publication verifiee : deux commits (racine, assets/chrome), contenu identique bit a bit entre le
+depot et la production apres redeploiement.
+
+### Note pour la suite
+
+Le mini-site EN de aval/reseau n a jamais eu ces deux widgets : il charge un fichier script
+distinct et plus reduit qui ne les contient pas, et leur contenu (noms de stations, textes du
+panneau de flux) est ecrit en dur en francais dans c_ac04328f0f47.js. Corriger ce point demande de
+la redaction de contenu anglais, pas seulement une correction de bug -- hors perimetre de ce
+chapitre, consigne pour un chantier de parite FR/EN a part.
