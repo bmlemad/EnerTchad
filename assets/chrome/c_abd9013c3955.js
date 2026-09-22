@@ -39,3 +39,86 @@
   modal.addEventListener('click',e=>{if(e.target===modal)close();});
   window.openCmdk=open;
 })();
+
+/* Ch695 -- parite EN du dashboard reseau + flux de distribution (aval/reseau-en) */
+/* Dashboard temps reel (EN) : KPI animes + statut stations (donnees illustratives) */
+(function(){
+  const stations=[
+    ['N’Djamena Farcha','Diesel · Petrol · LPG','ok'],
+    ['N’Djamena Diguel','Diesel · Petrol · EV charging','ok'],
+    ['N’Djamena Dembé','Diesel · Petrol','busy'],
+    ['N’Djamena Chagoua','Diesel · Petrol · LPG','ok'],
+    ['Moundou','Diesel · Petrol · LPG','ok'],
+    ['Moundou Ind. Zone','Diesel · Petrol','ok'],
+    ['Sarh','Diesel · Petrol','ok'],
+    ['Abéché','Diesel · Petrol · LPG','low'],
+    ['Mongo','Diesel · Petrol','ok'],
+    ['La Loumia','Diesel · Petrol','ok'],
+    ['Dourbali','Diesel · Petrol','busy'],
+    ['Massaguet','Diesel · Petrol','maint']
+  ];
+  const lbl={ok:['Operational','var(--green-l)'],busy:['High traffic','var(--gold-l)'],low:['Low stock','var(--amber-l)'],maint:['Maintenance','var(--muted)']};
+  const wrap=document.getElementById('dash-stations');
+  if(wrap){
+    wrap.innerHTML=stations.map(([n,p,s])=>{
+      const[t,c]=lbl[s];
+      return `<div style="padding:14px 14px;border-radius:12px;background:rgba(255,255,255,.03);border:1px solid var(--hair)">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:4px">
+          <strong style="font-size:.84rem;color:#fff">${n}</strong>
+          <span style="width:7px;height:7px;border-radius:50%;background:${c};flex-shrink:0"></span>
+        </div>
+        <div style="font-size:.72rem;color:${c}">${t}</div>
+        <div style="font-size:.66rem;color:var(--muted);margin-top:2px">${p}</div>
+      </div>`;
+    }).join('');
+  }
+  const tx=document.getElementById('kpi-tx'),vol=document.getElementById('kpi-vol'),wait=document.getElementById('kpi-wait'),pulse=document.getElementById('dash-pulse');
+  let active=false;
+  function jitter(){
+    if(!active)return;
+    if(tx)tx.textContent=330+Math.floor(Math.random()*40);
+    if(vol)vol.textContent=(126+Math.random()*6).toFixed(1);
+    if(wait)wait.textContent=(2.1+Math.random()*0.6).toFixed(1);
+    if(pulse)pulse.textContent='Updated just now';
+  }
+  const dash=document.getElementById('dashboard');
+  if(dash&&'IntersectionObserver'in window){
+    let timer=null;
+    new IntersectionObserver(es=>es.forEach(e=>{
+      active=e.isIntersecting;
+      if(active&&!timer){timer=setInterval(jitter,8000);jitter();}
+      else if(!active&&timer){clearInterval(timer);timer=null;}
+    }),{threshold:.2}).observe(dash);
+  }
+})();
+
+/* Flux de distribution interactif (EN) : clic etage -> panneau detail */
+(function(){
+  const data=[
+    {c:'var(--gold)',cl:'var(--gold-l)',t:'Local supply & depot',
+     d:"Supply prioritises local refining — our modular mini-refineries — with regulated imports serving only as a transition complement. Fuel is stored in one-hectare hub-depots (N’Djamena, Moundou, Abéché): buy at the right time, smooth out shortages and hold a stable price.",
+     tags:['Local refining priority','Djermaya (national)','Hub-depots','30-day autonomy']},
+    {c:'var(--blue)',cl:'var(--blue-l)',t:'Hub stations & satellites',
+     d:"Each hub-depot supplies a network of satellite stations in its area in bulk. Retail sales (petrol, diesel, LPG, kerosene), services and lubricants, at the same ARSAT-approved price nationwide. A DODO model for capital-light growth.",
+     tags:['ARSAT-approved price','DODO model','LPG & services','Single brand']},
+    {c:'var(--amber)',cl:'var(--amber-l)',t:'Mobile Station™',
+     d:"Where a fixed station doesn’t exist, or runs dry, the containerised Mobile Station™ deploys in 24-48 h. Autonomous site power, IoT remote monitoring, ATEX-certified — it extends the network to mines, worksites, humanitarian camps and rural communities.",
+     tags:['24-48h deployment','Autonomous site power','ATEX Zone 1','Anti-shortage']},
+    {c:'var(--green)',cl:'var(--green-l)',t:'End customer & B2B',
+     d:"The last link: households and professional customers (fleets, mines, construction, NGOs, agribusiness). The relationship is digitalised — the NRJ+™ loyalty card, the Mon Espace app, fleet cards, bulk delivery and eBoutique — to build loyalty and simplify purchasing.",
+     tags:['NRJ+™ card','Mon Espace app','B2B fleet cards','eBoutique']}
+  ];
+  const btns=[...document.querySelectorAll('.dist-btn')];
+  const panel=document.getElementById('dist-detail');
+  if(!btns.length||!panel)return;
+  const ttl=document.getElementById('dd-title'),txt=document.getElementById('dd-text'),tagWrap=document.getElementById('dd-tags');
+  function select(i){
+    const d=data[i];
+    panel.style.borderLeftColor=d.c;
+    ttl.textContent=d.t; txt.textContent=d.d;
+    tagWrap.innerHTML=d.tags.map(t=>`<span style="font-family:var(--fm);font-size:.7rem;color:${d.cl};border:1px solid ${d.cl};opacity:.9;padding:4px 10px;border-radius:999px">${t}</span>`).join('');
+    btns.forEach((b,j)=>{b.style.transform=j===i?'translateY(-4px)':'none';b.style.boxShadow=j===i?'0 8px 24px rgba(0,0,0,.3)':'none';});
+  }
+  btns.forEach((b,i)=>{b.addEventListener('click',()=>select(i));});
+  select(0);
+})();
