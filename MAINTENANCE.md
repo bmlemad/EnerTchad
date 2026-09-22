@@ -28549,3 +28549,45 @@ correction : 210 pages, trois conditions, 0 erreur console, 0 debordement (six a
 au premier passage, toutes non reproduites au second, meme signature que les episodes deja
 documentes au chantier 667). Publication verifiee bit a bit entre le depot et la production apres
 redeploiement.
+
+## 694 -- CSS mort, nouvelle tentative : le blocage du 656 leve, un autre trouve derriere (2026-09-22)
+
+### Constat
+
+Troisieme volet choisi par le proprietaire. Le chantier 656 avait renonce a elaguer le CSS
+inutilise pour deux raisons : (1) exercer les etats interactifs (survol, focus, menu ouvert) en
+cliquant chaque bouton de chaque page figeait le navigateur -- un clic declenchait une navigation
+ou une boite de dialogue bloquante -- et (2) meme sans ce blocage, l instrument utilise (la
+couverture CSS du navigateur) ne distingue pas le CSS mort du CSS simplement dormant (regles
+d etat jamais visitees faute d avoir cliqu). Nouvelle tentative avec une methode qui evite le clic :
+forcer les etats CSS directement via le protocole DevTools (CSS.forcePseudoState sur :hover,
+:focus, :focus-visible, :active pour chaque element concerne, et aria-expanded=true pose
+directement en JavaScript pour l etat menu ouvert) plutot que de simuler un clic. Ce point precis
+du 656 est resolu : balayage complet et sans incident des 208 pages en deux gabarits (bureau et
+mobile), 416 chargements de page, zero blocage, zero page figee.
+
+Mais la mesure elle-meme s est revelee peu fiable des la verification. Teste sur une seule page
+(amont/index.html) charge deux fois de suite, sans aucun changement de code entre les deux essais :
+la meme sequence d actions donne le meme resultat (reproductible), mais une sequence qui ne differe
+que par la position de defilement au moment de la capture -- rester en bas de page contre revenir
+en haut avant d arreter le suivi -- fait varier le nombre de regles CSS comptees comme utilisees
+d environ 35% (283 contre 184 sur un total de 345 mesures utiles), y compris pour des regles de
+base qui s appliquent forcement a toute la page (html,body ; *; les titres ; les paragraphes). Une
+regle qui s applique a coup sur peut donc apparaitre comme « non utilisee » selon le seul instant
+ou la mesure est arretee -- l instrument du navigateur ne tient pas un journal cumulatif de tout ce
+qui a servi depuis le debut du suivi, contrairement a ce que son nom suggere, mais plutot un
+instantane sensible a l etat courant de la page. Repartir de ce chiffre pour supprimer des regles
+d un fichier charge par 194 pages aurait un risque reel de retirer du CSS reellement utilise.
+
+### Ce qui change
+
+Rien sur le site. Le blocage technique du 656 (le clic qui fige le navigateur) est resolu et
+documente pour une eventuelle reprise future, mais un second blocage, plus fondamental, empeche
+toujours de distinguer de facon fiable le CSS mort du CSS utilise : aucune suppression n est faite.
+
+### Verifie
+
+Non-fiabilite de la mesure confirmee par repetition controlee (meme page, meme sequence de code,
+deux passages) : resultat stable a effet egal, mais ecart de pres de 100 regles selon un seul
+parametre (position de defilement final) sans rapport avec le contenu du fichier CSS lui-meme.
+Aucun fichier du site ne change ; seul le journal.
