@@ -270,7 +270,12 @@ Envoyé depuis enertchad.td / EnerTchad`;
   const href=`mailto:${dest}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   window.location.href=href;
   msg.className='form-msg show';msg.style.background='';msg.style.borderColor='';msg.style.color='';
-  msg.innerHTML=`Merci ${name} — votre logiciel de messagerie s’ouvre avec la demande pré-remplie. Validez l’envoi à <strong>${dest}</strong>. Réponse sous 48 h ouvrées. Si rien ne s’ouvre, écrivez directement à ${dest}.`;
+  /* Ch691 -- name vient du champ libre "Raison sociale" : ne jamais l'inserer tel quel
+     dans innerHTML (auto-XSS via <img onerror> etc.). On l'echappe via textContent
+     avant de composer le message ; dest reste un litteral fixe du script, jamais
+     saisi par l'utilisateur, donc sans risque a garder en HTML brut. */
+  const nameHtml=(function(s){const d=document.createElement('div');d.textContent=s;return d.innerHTML;})(name);
+  msg.innerHTML=`Merci ${nameHtml} — votre logiciel de messagerie s’ouvre avec la demande pré-remplie. Validez l’envoi à <strong>${dest}</strong>. Réponse sous 48 h ouvrées. Si rien ne s’ouvre, écrivez directement à ${dest}.`;
   msg.scrollIntoView({behavior:'smooth',block:'center'});
 });
 
