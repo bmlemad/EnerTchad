@@ -1307,3 +1307,6 @@ html.et-jlight .ct-err:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5):not(#e6){col
    rail de traversee, retour accueil, bascule de theme) se repetait sur chaque
    page imprimee. */
 @media print{#ckn:not(#e1):not(#e2):not(#e3),#aurail:not(#e1):not(#e2):not(#e3),#homeFab:not(#e1):not(#e2):not(#e3),#plightBtn:not(#e1):not(#e2):not(#e3),#jlightBtn:not(#e1):not(#e2):not(#e3),#toTop:not(#e1):not(#e2):not(#e3),#toTop-fix:not(#e1):not(#e2):not(#e3){display:none!important}}
+
+html.et-plight #cta-band h2 em:not(#_):not(#__){background-image:linear-gradient(110deg,#6B500F 30%,#10406F)!important}
+html.et-jlight a.skip-link:not(#_):not(#__){color:#fff!important}

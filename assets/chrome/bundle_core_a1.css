@@ -257,8 +257,8 @@ html.et-jlight footer a:not(#_):not(#__),html.et-jlight .jfoot a:not(#_):not(#__
 html.et-plight main section.hero h1:not(#_):not(#__),html.et-plight main section.hero h2:not(#_):not(#__){color:#10161F!important;-webkit-text-fill-color:#10161F!important}
 html.et-plight main section.hero p:not(#_):not(#__),html.et-plight main section.hero span:not(#_):not(#__){color:#2A3648!important}
 html.et-jlight section:has(.cb-in):not(#_){background:#0B1422!important}
-html.et-jlight section:has(.cb-in) h2:not(#_):not(#__),html.et-jlight section:has(.cb-in) h3:not(#_):not(#__){color:#FFFFFF!important}
-html.et-jlight section:has(.cb-in) p:not(#_):not(#__):not(.cb-k){color:rgba(245,247,250,.85)!important}
+html.et-jlight section:has(.cb-in) h2:not(#_):not(#__),html.et-jlight section:has(.cb-in) h3:not(#_):not(#__){color:#10161F!important;text-shadow:none!important}
+html.et-jlight section:has(.cb-in) p:not(#_):not(#__):not(.cb-k){color:#2A3648!important}
 html.et-plight #modele div:not([class]):not(#_){color:#2A3648!important}
 html.et-plight .cta div:not([class]):not(#_){color:#2A3648!important}
 html.et-plight .btn:not(#_):not(#plightBtn){background:#0B1422!important;color:#F5F7FA!important;border-color:#0B1422!important}
@@ -409,7 +409,7 @@ html.et-jlight .jtop:not(#_),html.et-plight .jtop:not(#_){background:linear-grad
 
 /* jlight: le scrollcue et le bandeau cookies gardent leur fond sombre — leur or doit rester celui du theme sombre (contraste 5.6:1 et 10.9:1), pas l'or-sur-clair #4C380B que le bloc G4 en ligne des pages journal leur applique par erreur (il vise la titraille sur fond clair) et qui tombe a 1.6:1 (axe, 50 pages journal). Specificite: body ajoute pour passer devant ce bloc en ligne; .sc-lb vise directement car la regle G4 le cible directement et bat l'heritage via .scrollcue. */
 html.et-jlight body .scrollcue:not(#_),html.et-jlight body .sc-lb:not(#_){color:#E8C36A!important}
-html.et-jlight body .cb-k:not(#_){color:#E8C36A!important}
+html.et-jlight body .cb-k:not(#_){color:#6B500F!important}html.et-jlight a.skip-link:not(#_):not(#__){color:#fff!important}html.et-plight #cta-band h2 em:not(#_):not(#__),html.et-jlight #cta-band h2 em:not(#_):not(#__){background-image:linear-gradient(110deg,#6B500F 30%,#10406F)!important}
 
 /* == Modernisation mobile (31/07/2026) — benchmark majors (TotalEnergies/Shell/bp) ==
    Mobile uniquement (<=760px). M1 echelle typo du heros (h1 34-40px, leads >=16px au
