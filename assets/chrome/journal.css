@@ -285,3 +285,19 @@ html body.jn-page :is(header,div):is(.hero,.pghero):not(#q0):not(#q1):not(#q2):n
 html.et-plight:not(#q0):not(#q1):not(#q2):not(#q3):not(#q4):not(#q5):not(#q6):not(#q7):not(#q8):not(#q9):not(#q10):not(#q11):has(body.jn-page),
 html.et-plight:not(#q0):not(#q1):not(#q2):not(#q3):not(#q4):not(#q5):not(#q6):not(#q7):not(#q8):not(#q9):not(#q10):not(#q11) body.jn-page{
   background-image:none!important;background-color:transparent!important}
+
+/* Ch690 -- QA ergonomie web : deux familles de liens de ce fichier restees hors du
+   perimetre du 568 (SC 2.5.8, taille de cible minimum). Le 568 avait porte a 24px
+   les rangees de liens de la navigation, du pied de page et des fils d Ariane, mais
+   pas les liens de renvoi propres au journal : mesure en rendu reel a 390px, .jn-go
+   (renvoi vers les Carnets depuis les six pages pole/accueil) et .jn-all (Carnets,
+   liens "Tout le fil" / "L'agenda complet") ne mesurent que 19px de haut, sans
+   aucun rembourrage vertical, uniquement la hauteur de ligne de leur police mono a
+   .72-.76rem. Meme famille de lien-bouton isole que celle deja traitee au 568,
+   simplement dans un fichier different. .jn-all sert aussi hors de .jn-fil (le
+   lien "L'agenda complet" de la section .jn-rep/.jn-rl des Carnets, 21px, jamais
+   couvert par la regle scopee du dessus) : la regle ci-dessous vise directement
+   la classe, sans scope, puisque jn-all designe partout le meme role de lien.
+   Meme correctif exact que le 568 : rembourrage vertical centre par inline-flex,
+   hauteur minimale 24px, aucune valeur inventee. */
+.jn-renvoi a.jn-go,.jn-all{display:inline-flex!important;align-items:center;min-height:24px}
