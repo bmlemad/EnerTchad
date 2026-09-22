@@ -28077,3 +28077,367 @@ fichier modifie) : statut 200 et zero erreur de console partout.
 Publication verifiee : commit unique sur assets/chrome, contenu
 identique bit a bit contre le depot puis en production apres
 redeploiement.
+
+
+## 684 — Le pied de page du theme clair devient transparent (2026-09-21)
+
+### Constat
+
+Demande explicite du proprietaire : rendre le pied de page du theme
+clair transparent, pour permettre une immersion avec le fond de page.
+Le pied de page porte sa propre regle de verre depuis le 663 (fond
+degrade cremeux, distincte du systeme generique de cartes des chantiers
+664/665/668) -- fixee alors a 58% d opacite en theme clair, une valeur
+pensee a l epoque pour un fond quasi opaque et non pour la transparence
+demandee aujourd hui. Avant de toucher a l opacite, verification en
+direct (rendu reel, trois gabarits -- accueil, page-pole, carnet du
+journal -- et les deux variantes du theme clair) des couleurs de texte
+reellement appliquees dans le pied de page : titres, liens, libelles et
+paragraphe utilisent tous des tons sombres (bleu fonce, or fonce, gris
+ardoise, quasi-noir), aucun blanc ni quasi-blanc malgre des regles de
+couleur lues dans la feuille de style qui, isolement, auraient pu le
+laisser craindre. Marge de contraste donc deja large avant meme de
+reduire l opacite du fond.
+
+### Ce qui change
+
+En theme clair uniquement (le sombre du 663 n est pas touche), le fond
+du pied de page passe de 58% a 22% d opacite, flou remonte de 18 a
+24px et saturation de 120% a 125% -- les valeurs exactes deja
+retenues pour les tuiles du theme clair au 668, plutot qu un reglage
+invente pour l occasion : une seule notion de « verre clair
+transparent » sur tout le site. Repli prefers-reduced-transparency du
+663 inchange, toujours net et opaque. sw.js mis a jour en consequence
+(nouvelle version de cache), feuille de style partagee modifiee.
+
+### Verifie
+
+Rendu reel (Playwright, getComputedStyle) sur les trois gabarits et
+les deux variantes claires : fond du pied de page confirme a
+rgba(247,243,236,.22), flou 24px, saturation 125% ; theme sombre
+reconfirme inchange (rgba(14,22,38,.5), flou 18px, saturation 140%)
+sur les memes pages. Contraste texte mesure par capture d ecran et
+echantillonnage de pixels (methode WCAG deja utilisee aux chantiers
+precedents) sur le pied de page complet en theme clair : 16,2:1,
+tres au-dessus du minimum de 4,5:1 requis. Controle visuel par
+capture d ecran des deux variantes claires et du theme sombre :
+aucune degradation de lisibilite, pied de page desormais nettement
+plus transparent en clair, sombre visuellement identique. Publication
+verifiee : deux commits (assets/chrome pour la feuille de style,
+racine pour sw.js), contenu identique bit a bit contre le depot puis
+en production apres redeploiement.
+
+
+## 685 — Le pied de page du theme sombre devient transparent a son tour (2026-09-21)
+
+### Constat
+
+Suite directe du 684, sur demande explicite du proprietaire cette fois
+formulee a partir d une capture du pied de page en theme sombre : le
+rendre translucide, en verre clair -- un verre nettement plus
+transparent, dans la meme logique que le theme clair au chantier
+precedent. Avant de toucher a l opacite, verification en direct : la
+teinte du fond de page derriere le pied de page en theme sombre
+(rgb(0,36,58)) est tres proche de celle du verre du pied de page lui-
+meme (rgba(14,22,38,x)), et le texte du pied de page y est deja clair
+(blanc casse, or, bleu clair selon les liens) -- aucun risque de perdre
+le texte en rendant le fond plus transparent, puisque fond de page et
+verre partagent deja la meme famille de teinte sombre. Mesure : le
+verre du pied de page restait a 50% d opacite en sombre depuis le 663,
+une valeur pensee a l epoque pour un fond juge suffisamment distinct
+du decor.
+
+### Ce qui change
+
+En theme sombre uniquement (le clair du 684 n est pas touche), le fond
+du pied de page passe de 50% a 22% d opacite, flou remonte de 18 a
+20px et saturation de 140% a 160% -- les valeurs exactes deja
+retenues pour les tuiles du theme sombre au 665 (22% correspond a
+l extremite basse de son degrade), plutot qu un reglage invente pour
+l occasion. Teinte propre du pied de page conservee (rgba(14,22,38,.)).
+Repli prefers-reduced-transparency du 663 inchange, toujours net et
+opaque. sw.js mis a jour en consequence (nouvelle version de cache),
+feuille de style partagee modifiee.
+
+### Verifie
+
+Rendu reel (Playwright, getComputedStyle) sur trois gabarits (accueil,
+page-pole, carnet du journal) et les deux variantes sombres : fond du
+pied de page confirme a rgba(14,22,38,.22), flou 20px, saturation
+160% ; theme clair reconfirme inchange (rgba(247,243,236,.22), flou
+24px, saturation 125%) sur les memes pages. Contraste texte mesure par
+capture d ecran et echantillonnage de pixels (methode WCAG deja
+utilisee aux chantiers precedents) sur le pied de page complet en
+theme sombre : 16,9:1, tres au-dessus du minimum de 4,5:1 requis.
+Controle visuel par capture d ecran des deux variantes sombres :
+aucune degradation de lisibilite, pied de page nettement plus
+transparent, texte toujours parfaitement net. Publication verifiee :
+deux commits (assets/chrome pour la feuille de style, racine pour
+sw.js), contenu identique bit a bit contre le depot puis en
+production apres redeploiement.
+
+
+## 686 — Le pied de page rejoint la finition complete du verre du site (2026-09-21)
+
+### Constat
+
+Demande explicite du proprietaire : ameliorer le pied de page pour qu
+il soit clair, dans le style d un verre translucide. Les chantiers
+684 et 685 avaient repris l opacite, le flou et la saturation du
+systeme generique de cartes en verre (665 sombre, 668 clair), mais pas
+les deux autres ingredients qui font qu une carte du site se lit comme
+du verre plutot que comme un simple rectangle assombri ou eclairci :
+un degrade (au lieu d une teinte plate) qui suggere une epaisseur et
+une source de lumiere, et une ombre en deux temps -- un filet clair en
+haut, en insert, plus une ombre portee douce qui detache la plaque du
+fond. Le pied de page n avait ni l un ni l autre depuis le 663 : fond
+plat et backdrop-filter seuls, sans le supplement qui donne aux cartes
+leur aspect de verre convaincant.
+
+### Ce qui change
+
+Le degrade et l ombre du 665 (theme sombre) et du 668 (theme clair)
+sont repris a l identique -- memes valeurs numeriques exactes, aucune
+inventee -- mais appliques a la teinte propre du pied de page
+(14,22,38 en sombre, 247,243,236 en clair, deja en usage depuis le
+663/684/685) plutot qu a celle des cartes, pour ne pas changer sa
+couleur. Le filet dore en haut du pied de page (border-top, un accent
+de marque distinct du systeme de cartes, herite d avant le 663) n est
+pas touche -- seuls le fond et l ombre changent. Repli
+prefers-reduced-transparency du 663 inchange, toujours net, opaque et
+sans ombre. sw.js mis a jour en consequence (nouvelle version de
+cache), feuille de style partagee modifiee.
+
+### Verifie
+
+Rendu reel (Playwright, getComputedStyle) sur deux gabarits et les
+quatre variantes de theme : degrade, flou, saturation et ombre
+confirmes conformes aux valeurs attendues dans chaque theme ; filet
+dore du haut reconfirme inchange (meme couleur qu avant, dans les deux
+themes). Controle visuel par capture d ecran des deux themes : la
+plaque se lit desormais nettement comme du verre -- profondeur visible
+via le degrade, reflet net en haut, ombre douce qui la detache du
+decor -- sans rien changer a la teinte ni au filet dore. Contraste
+texte remesure par capture d ecran et echantillonnage de pixels sur le
+pied de page complet : 16,9:1 en sombre, 16,2:1 en clair, tous deux
+tres au-dessus du minimum de 4,5:1 requis, aucune degradation par
+rapport aux chantiers 684/685. Publication verifiee : deux commits
+(assets/chrome pour la feuille de style, racine pour sw.js), contenu
+identique bit a bit contre le depot puis en production apres
+redeploiement.
+
+
+## 687 — La forme translucide du pied de page laisse enfin voir l image du fond (2026-09-21)
+
+### Constat
+
+Demande explicite du proprietaire : la forme translucide du pied de page
+devrait permettre de voir l image du fond. Verifie d abord en rendu reel,
+en capture plein viewport (jamais une capture cadree sur le seul pied de
+page -- une capture cadree ne compose pas correctement un calque
+position:fixed a z-index negatif comme .rootland, et affichait a tort un
+aplat uni, ce qui avait initialement fausse l investigation) : avec le
+reglage du chantier 686 (flou 20px en sombre, 24px en clair, degrade a
+38-22% d opacite en sombre et 22-10% en clair), le dessin illustre du
+fond (systeme data-fond du 647 -- coupe geologique, corridor ou colonne
+selon la page) derriere le pied de page est entierement efface. Aucune
+trace du trait de coupe n est perceptible dans aucun theme, ce qui
+confirme le constat du proprietaire : le verre du pied de page, depuis
+le 663, n avait jamais ete assez transparent pour laisser voir quoi que
+ce soit derriere lui -- seule son opacite variait.
+
+### Ce qui change
+
+Flou et opacite du fond du pied de page ramenes nettement plus bas, dans
+les deux themes, pour laisser transparaitre le dessin du fond tout en
+gardant un effet de verre plutot qu une vitre nue : en theme sombre, flou
+ramene de 20px a 1px et degrade ramene de 38-22% a 6-2% d opacite ; en
+theme clair, flou ramene de 24px a 0px et degrade ramene de 22-10% a
+8-3% d opacite (le theme clair a besoin de toute la transparence
+disponible, l illustration y etant naturellement plus attenuee que sa
+version sombre). Degrade (direction, doubles valeurs) et ombre du 686
+conserves a l identique dans les deux themes -- seuls le flou et l
+opacite du fond changent ici. Filet dore du haut du pied de page non
+touche. Repli prefers-reduced-transparency du 663 inchange, toujours
+net et opaque. sw.js mis a jour en consequence (nouvelle version de
+cache), feuille de style partagee modifiee.
+
+### Verifie
+
+Rendu reel (Playwright, capture plein viewport) sur une page a fond
+illustre (« coupe ») dans les deux themes : le trait diagonal du dessin
+redevient nettement visible a travers le pied de page, texte et liens
+restant parfaitement nets et lisibles par-dessus. Rendu reel sur une
+page sans fond illustre (« papier », carnets) : aucun changement visible,
+comme attendu puisque ces pages n ont pas d image derriere le pied de
+page. Contraste texte remesure par capture d ecran reelle et
+echantillonnage de pixels sur le pied de page ainsi allege : 10,0:1 en
+sombre, 5,8:1 en clair, tous deux au-dessus du minimum de 4,5:1 requis
+(marge reduite par rapport aux 686 du fait de la transparence
+recherchee, mais toujours large). Publication verifiee : deux commits
+(assets/chrome pour la feuille de style, racine pour sw.js), contenu
+identique bit a bit entre le depot et la production apres
+redeploiement.
+
+
+## 688 — Le meme constat, applique au bandeau de navigation (2026-09-22)
+
+### Constat
+
+Demande explicite du proprietaire, suite directe du 687 : faire pareil pour le header. Le
+bandeau de navigation, une fois defile (.nav.scrolled), etait reste au reglage pose par le 663
+(flou 20px, 50% d opacite dans les deux themes) -- jamais retouche depuis, contrairement au pied
+de page qui vient de recevoir la meme correction. Verifie en rendu reel, en capture plein
+viewport (jamais cadree sur le seul bandeau, meme correction de methode qu au 687) : a ce
+reglage, aucun mouvement du decor n est perceptible derriere le bandeau. Mais l investigation a
+mis au jour une difference reelle avec le pied de page : ce qui se trouve derriere le bandeau
+n est pas seulement le decor ambiant (systeme data-fond du 647), c est le contenu de page qui
+defile sous un bandeau fixe -- titres de hero, puces de fil d Ariane, paragraphes. Verifie en
+testant plusieurs paliers de transparence avant de choisir : une opacite proche de zero, meme
+avec du flou reduit, laissait les puces du fil d Ariane et un paragraphe de la page se lire
+nettement a travers le bandeau, superposes aux liens de son propre menu -- une collision visuelle
+que le pied de page, place apres tout le contenu, ne pouvait pas produire.
+
+### Ce qui change
+
+Opacite du bandeau defile ramenee de 50% a 16% dans les deux themes, flou ramene de 20px a 4px --
+une reduction plus prudente que celle du pied de page au 687, precisement pour eviter la
+collision constatee ci-dessus. Le flou de 4px transforme le contenu qui defile en un halo diffus
+plutot que de l effacer completement, tout en restant assez fort pour qu aucun texte de page ne
+redevienne lisible sous les liens du menu. Repli prefers-reduced-transparency inchange, toujours
+net et opaque. sw.js mis a jour en consequence (nouvelle version de cache), feuille de style
+partagee modifiee.
+
+### Verifie
+
+Rendu reel (Playwright, capture plein viewport) a deux hauteurs de defilement -- juste apres le
+seuil de bascule en bandeau reduit, puis loin dans la page -- dans les deux themes : le bandeau
+laisse deviner un mouvement diffus derriere lui sans jamais faire reapparaitre de texte lisible
+en collision avec ses propres liens de menu. Contraste du texte du bandeau remesure par capture
+d ecran reelle et echantillonnage de pixels : 5,1:1 en sombre, 5,8:1 en clair, tous deux
+au-dessus du minimum de 4,5:1 requis. Publication verifiee : deux commits (assets/chrome pour la
+feuille de style, racine pour sw.js), contenu identique bit a bit entre le depot et la
+production apres redeploiement.
+
+
+## 689 -- Ultra revue de coherence : harmonisation de l apostrophe de N'Djamena (2026-09-22)
+
+### Constat
+
+Demande explicite du proprietaire : ultra revue et audit pour harmonisation et coherence de
+tout le site. Trois volets menes : balayage technique complet (216 pages, deux themes -- zero
+erreur console, zero debordement, zero attribut alt manquant, zero lien casse sur 526 liens
+internes verifies en production), verification du systeme de verre/transparence (663 a 688,
+jamais couvert par les audits precedents 674/676/677) et relecture de la coherence
+redactionnelle. Le systeme de verre est confirme sain : contraste du bandeau (688) remesure sur
+les quatre categories de fond (coupe, corridor, colonne, papier) et les deux themes, entre
+5,68:1 et 7,62:1 en sombre, 6,07:1 a 6,48:1 en clair ; contraste du pied de page (687) remesure
+de la meme maniere, entre 6,07:1 et 12,26:1 en sombre, 6,31:1 a 7,02:1 en clair -- tous
+largement au-dessus du minimum de 4,5:1. Les sept cents blocs de donnees structurees (JSON-LD)
+du site analysent tous sans erreur. Un veritable ecart de coherence redactionnelle a ete trouve
+en comparant les variantes du nom de la capitale : l apostrophe typographique (deja utilisee
+492 fois dans 198 fichiers, y compris dans le pied de page commun a toutes les pages) cotoyait
+une apostrophe droite ou une entite HTML dans dix-huit fichiers -- les huit pages en arabe, et
+dix pages francaises ou anglaises ou les deux formes se melangeaient parfois dans le meme
+fichier (mentions legales, contact, FAQ, carrieres, brochure, deux carnets du journal, une page
+reseau aval).
+
+### Ce qui change
+
+Dix-huit fichiers (dix-sept a la racine, un dans aval/) : les vingt-et-une occurrences de
+l apostrophe droite ou de son entite HTML autour de « Djamena » sont remplacees par l apostrophe
+typographique deja en usage partout ailleurs sur le site, y compris dans les donnees
+structurees (addressLocality) et le pied de page commun. Seule cette chaine precise est touchee
+-- l usage general de l apostrophe ailleurs dans le texte du site (mixte de longue date sur
+l ensemble des pages, hors du perimetre de cette revue) n est pas modifie, conformement au
+principe de ne pas inventer de changement non demande. sw.js mis a jour en consequence (nouvelle
+version de cache).
+
+### Verifie
+
+Balayage du site entier apres correction : plus aucune occurrence de l apostrophe droite ou de
+l entite HTML autour de « Djamena », les sept cents blocs JSON-LD analysent toujours sans
+erreur. Rendu local confirme sur ar.html, contact.html, mentions-legales.html et
+aval/reseau-en.html : rendu visuel identique, seule l apostrophe change. Publication verifiee :
+deux commits (racine, aval/), contenu identique bit a bit entre le depot et la production apres
+redeploiement.
+
+
+## 690 -- QA ergonomie web : deux familles de liens sous le seuil de cible tactile (2026-09-22)
+
+### Constat
+
+Demande explicite du proprietaire : QA de l ergonomie web du site. Plusieurs dimensions
+verifiees en rendu reel (390px et 1440px, deux themes) : cibles tactiles de tous les elements
+interactifs des 210 pages, mega-menu et tiroir de navigation mobile (ouverture/fermeture, piege
+de focus, touche Echap -- tout conforme, retour du focus confirme apres fermeture), palette de
+recherche Ctrl+K (focus automatique, navigation clavier, fermeture par clic hors-cadre ou Echap
+-- rien a corriger), panneau de reglages luminosite/theme, bandeau de cookies (dismissible,
+n empeche pas l acces au reste de l interface une fois ferme), formulaires (types de champ et
+attributs autocomplete corrects, cases a cocher/radio enveloppees dans leur etiquette cliquable),
+liens externes (1801 liens en nouvel onglet, tous avec rel=noopener). Balayage sitewide des
+cibles sous 40px ecarte la plupart des signalements : rangees de liens legaux du pied de page,
+icones sociales et liens en ligne dans une phrase (glossaire, mentions de filiales) sont deja
+au niveau que le chantier 568 avait fixe deliberement (24px, SC 2.5.8) ou en sont dispenses par
+nature. Repassage au seuil de 24px du 568 lui-meme : deux familles de liens-boutons indepen-
+dants, jamais couvertes par ce chantier, mesurent 19 a 21px sans aucun rembourrage vertical --
+.jn-go (renvoi vers les Carnets, six pages pole/accueil) et .jn-all (Carnets, liens Tout le fil
+et L'agenda complet, y compris hors du conteneur .jn-fil ou la regle existante ne portait pas)
+dans assets/chrome/journal.css, et .cops-list a (six liens de corridors, cibles-2030 et sa
+version anglaise) dans une feuille de style propre a ces deux pages.
+
+### Ce qui change
+
+Meme correctif exact que le 568 : rembourrage vertical centre par inline-flex, hauteur minimale
+24px, aucune valeur inventee. Regle ajoutee dans assets/chrome/journal.css pour .jn-renvoi a.jn-go
+et .jn-all (non scope, la classe designant partout le meme role de lien) ; meme traitement ajoute
+dans le style interne de cibles-2030.html et cibles-2030-en.html pour .cops-list a. sw.js mis a
+jour en consequence.
+
+### Verifie
+
+Mesure en rendu reel des dix pages concernees, deux themes : les trois familles atteignent
+desormais 24px sur toutes les instances (avant : 19-21px). Balayage complet apres correction :
+210 pages x deux themes, 0 erreur console, 0 debordement, 0 statut d echec -- aucune regression
+du fait des soixante-douze pages qui chargent journal.css. Controle visuel par capture d ecran
+sur les trois gabarits touches : alignement de base et espacement inchanges, aucun chevauchement.
+Publication verifiee en deux commits (racine, assets/chrome), contenu identique bit a bit entre
+le depot et la production apres redeploiement, remesure en rendu reel contre la production
+elle-meme : 24px confirmes sur les trois gabarits.
+
+## 691 -- Audit securite : une auto-XSS DOM corrigee dans le formulaire B2B (2026-09-22)
+
+### Constat
+
+Dernier volet du chantier 680 jamais mene sous ce numero a l epoque (repris par le design en
+verre) : le volet « liens externes » avait deja ete couvert au 690 (1801 liens verifies) ; il
+restait le volet securite proprement dit. Revue technique en rendu reel : en-tetes de securite
+(deja complets dans vercel.json -- Strict-Transport-Security, Content-Security-Policy, X-Frame-
+Options, X-Content-Type-Options, Referrer-Policy, Permissions-Policy), contenu mixte (aucun --
+les seules URI en http:// du site sont des espaces de noms SVG/XML/MathML, jamais des requetes
+reseau), ressources externes (aucun script ni feuille de style tiers charge, coherent avec le
+CSP script-src 'self'), formulaires (tous cote client, aucun backend ni mot de passe, envoi par
+mailto uniquement), fichiers exposes (robots.txt, sitemap.xml et .well-known/security.txt deja
+corrects), code (aucun eval, aucun document.write, aucune ecoute postMessage, aucun secret dans
+le code source). Un defaut confirme : le formulaire B2B de tchaditech/outils (fr/en) inserait
+le champ libre « Raison sociale » directement dans innerHTML sans echappement -- une auto-XSS
+DOM demontree en rendu reel (une charge utile <img onerror> saisie dans le champ s executait des
+son affichage dans le message de confirmation).
+
+### Ce qui change
+
+Le nom saisi est desormais echappe (passage par un noeud texte via textContent) avant d etre
+insere dans le message HTML de confirmation ; le destinataire affiche (dest) reste un litteral
+fixe du script, jamais saisi par l utilisateur, donc conserve tel quel en HTML. Seul point
+touche : assets/chrome/c_ac04328f0f47.js, partage par tchaditech/outils.html et outils-en.html.
+sw.js mis a jour en consequence.
+
+### Verifie
+
+Preuve de concept en rendu reel avant correction : la charge utile s execute (attribut marqueur
+pose sur l element injecte). Apres correction : la meme charge utile s affiche sous forme de
+texte litteral, aucune execution ; une raison sociale normale contenant une esperluette s affiche
+et s echappe correctement, aucune erreur console. Balayage complet apres correction : 210 pages,
+0 erreur console, 0 debordement, 0 statut d echec -- aucune regression du fait des pages qui
+chargent ce script partage. Publication verifiee : un commit (assets/chrome), contenu identique
+bit a bit entre le depot et la production apres redeploiement.
