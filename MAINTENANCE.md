@@ -28507,3 +28507,45 @@ distinct et plus reduit qui ne les contient pas, et leur contenu (noms de statio
 panneau de flux) est ecrit en dur en francais dans c_ac04328f0f47.js. Corriger ce point demande de
 la redaction de contenu anglais, pas seulement une correction de bug -- hors perimetre de ce
 chapitre, consigne pour un chantier de parite FR/EN a part.
+
+## 693 -- Parite du mini-site arabe : une incoherence trouvee, le reste tient (2026-09-22)
+
+### Constat
+
+Audit demande par le proprietaire (deuxieme volet choisi). Les 8 pages du mini-site arabe
+(ar.html, ar-amont/-aval/-intermediaire/-poles/-societe/-investisseurs/-contact.html) sont un
+condense volontaire -- une page arabe par pole plutot que les cinq a dix pages FR/EN par pole --
+donc la comparaison n a pas cherche une parite ligne a ligne, mais des defauts reels : chiffres
+perimes, liens casses, mauvais reglage RTL/hreflang, typographie. Une premiere passe automatisee a
+signale deux constats ; verification systematique de chacun contre le francais avant conclusion,
+comme d habitude. Le premier a resiste a la verification : une meme information (adresse de
+N Djamena, transcrite en alphabet arabe) rendue de deux facons differentes dans un seul fichier,
+ar-contact.html -- une variante isolee dans les deux balises meta (description, og:description),
+contre une autre variante utilisee partout ailleurs sur le mini-site arabe (7 occurrences sur les
+7 autres pages, plus le corps de la page elle-meme). Le second ne l a pas resiste : le paragraphe
+gouvernance de ar-societe.html annoncait six fonctions nommees (direction generale, finance, technique et operations, securite et
+environnement, conformite, relations investisseurs) -- compare a tort a gouvernance.html, cela
+correspond exactement aux six fonctions de tete que cette page decrit (ligne 606) ; la premiere
+comparaison avait vise par erreur societe.html et ses « sept fonctions support », un concept
+distinct (RH, SI, achats...). Le reste de l audit n a rien trouve a corriger : reciprocite hreflang
+verifiee sur les 8 pages, tous les liens internes cibles existent, chiffres cles (144 000 b/j 2024,
+EOR +8-17%, corridor 1 070 km, capital 20 milliards FCFA) coherents avec les pages francaises de
+reference, police arabe (Noto Sans Arabic) correctement declaree en premier, numeros occidentaux
+coherents partout, adresses et telephones correctement isoles en dir=ltr. Balayage en rendu reel
+(210 pages, trois conditions) : 0 debordement, 0 erreur console sur les 8 pages arabes comme sur le
+reste du site.
+
+### Ce qui change
+
+Les deux occurrences de la variante isolee dans ar-contact.html (balises meta description et
+og:description) remplacees par la variante etablie, seule utilisee partout ailleurs. Aucun autre
+fichier touche.
+
+### Verifie
+
+Comptage avant/apres : 0 occurrence de la variante isolee restante, 4 occurrences de la variante
+etablie (contre 2 avant), fichier reouvert sans erreur d encodage. Balayage complet apres
+correction : 210 pages, trois conditions, 0 erreur console, 0 debordement (six alertes episodiques
+au premier passage, toutes non reproduites au second, meme signature que les episodes deja
+documentes au chantier 667). Publication verifiee bit a bit entre le depot et la production apres
+redeploiement.
