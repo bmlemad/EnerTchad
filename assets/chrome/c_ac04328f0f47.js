@@ -101,7 +101,16 @@ document.querySelectorAll('.reveal,.reveal-up,.reveal-blur').forEach(el=>{const 
 (function(){var sel='.reveal:not(.in),.reveal-up:not(.in),.reveal-blur:not(.in)';var tk;
  function flush(){var vh=innerHeight||800;var any=document.querySelectorAll(sel);for(var i=0;i<any.length;i++){var r=any[i].getBoundingClientRect();if(r.top<vh*0.96){any[i].classList.add('in');any[i].querySelectorAll('.ct').forEach&&any[i].querySelectorAll('.ct').forEach(function(c){try{countUp(c);}catch(e){}});}}}
  addEventListener('scroll',function(){if(!tk){tk=requestAnimationFrame(function(){flush();tk=null;});}},{passive:true});
- addEventListener('load',flush);addEventListener('resize',flush,{passive:true});setTimeout(flush,400);flush();})();
+ /* Ch692 -- flush() lit getBoundingClientRect() de chaque .reveal non revele en boucle
+    (mise en page forcee), cout mesure jusqu'a ~1,3s de temps de blocage principal sur
+    les gabarits a plusieurs dizaines de sections (ex. pages-pole). L'appel synchrone et
+    immediat ci-dessous forcait ce cout pendant le rendu critique, alors que le filet de
+    securite (couvrir ce que l'IntersectionObserver principal, plus haut, pourrait rater)
+    n'a pas besoin de s'executer avant la premiere peinture. Reporte au temps d'inactivite
+    du thread principal ; load/resize inchanges, ils interviennent deja apres l'essentiel
+    du rendu. */
+ addEventListener('load',flush);addEventListener('resize',flush,{passive:true});
+ if('requestIdleCallback' in window){requestIdleCallback(flush,{timeout:1000});}else{setTimeout(flush,400);}})();
 
 // ── Motion premium (respecte prefers-reduced-motion) ──
 const reduceMotion=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
@@ -196,15 +205,23 @@ function calcRef(){
     return `<div class="ref-prod"><span class="rp-n">${k}</span><span class="rp-bar"><i style="background:${PCOL[k]};width:${pct*2.2}%"></i></span><span class="rp-v">${v.toLocaleString('fr-FR')} b/j</span></div>`;
   }).join('');
 }
-crude.addEventListener('input',calcRef);
-document.querySelectorAll('#refProfile button').forEach(b=>b.addEventListener('click',()=>{
-  document.querySelectorAll('#refProfile button').forEach(x=>{x.classList.toggle('on',x===b);x.style.background=x===b?'var(--blue)':'none';x.style.color=x===b?'#fff':'var(--muted)';x.style.fontWeight=x===b?'600':'400';});
-  refProfile=b.dataset.p; calcRef();
-}));
-// init seg styling
-document.querySelector('#refProfile button.on').style.background='var(--blue)';
-document.querySelector('#refProfile button.on').style.color='#fff';
-calcRef();
+/* Ch692 -- crude n'existe que sur tchaditech/outils : sans ce garde, l'appel
+   ci-dessous levait une exception sur toutes les autres pages chargeant ce
+   fichier partage (~70), interrompant tout le reste du script via le
+   try/catch englobant -- dont, sur aval/reseau, le tableau de bord temps
+   reel et le panneau de flux de distribution, plus bas dans ce meme fichier,
+   qui n'avaient donc jamais pu s'initialiser malgre leur propre garde correct. */
+if(crude){
+  crude.addEventListener('input',calcRef);
+  document.querySelectorAll('#refProfile button').forEach(b=>b.addEventListener('click',()=>{
+    document.querySelectorAll('#refProfile button').forEach(x=>{x.classList.toggle('on',x===b);x.style.background=x===b?'var(--blue)':'none';x.style.color=x===b?'#fff':'var(--muted)';x.style.fontWeight=x===b?'600':'400';});
+    refProfile=b.dataset.p; calcRef();
+  }));
+  // init seg styling
+  document.querySelector('#refProfile button.on').style.background='var(--blue)';
+  document.querySelector('#refProfile button.on').style.color='#fff';
+  calcRef();
+}
 
 // APP 3 : BASINS
 const BASINS={
@@ -216,8 +233,11 @@ const BASINS={
   sedigui:{k:'Champ gazier',t:'Champ gazier de Sédigui',d:"Ressource gazière stratégique de la région du Lac, destinée à alimenter notre activité électricité (gas-to-power) (gas-to-power).",s:[['gaz','ressource'],['→ power','débouché'],['Lac','région']]},
 };
 function showBasin(b){
-  const d=BASINS[b];if(!d)return;
-  document.getElementById('bK').textContent=d.k;
+  const d=BASINS[b];const bKEl=document.getElementById('bK');
+  /* Ch692 -- meme famille de garde que crude plus haut : bK n'existe que sur
+     tchaditech/outils, ce garde evite de propager le meme type de blocage. */
+  if(!d||!bKEl)return;
+  bKEl.textContent=d.k;
   document.getElementById('bT').textContent=d.t;
   document.getElementById('bD').textContent=d.d;
   document.getElementById('bS').innerHTML=d.s.map(x=>`<div class="ms"><div class="v">${x[0]}</div><div class="k">${x[1]}</div></div>`).join('');
@@ -233,7 +253,9 @@ document.querySelectorAll('.bzone').forEach(c=>{
 showBasin('doba');
 
 // APP 4 : B2B FORM
-document.getElementById('cSubmit').addEventListener('click',()=>{
+/* Ch692 -- meme famille de garde : cSubmit n'existe que sur tchaditech/outils. */
+const cSubmitBtn=document.getElementById('cSubmit');
+if(cSubmitBtn)cSubmitBtn.addEventListener('click',()=>{
   const type=document.getElementById('cType').value;
   const name=document.getElementById('cName').value.trim();
   const sector=document.getElementById('cSector').value;
