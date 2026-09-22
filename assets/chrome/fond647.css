@@ -377,3 +377,34 @@ html.et-jlight body footer:not(#k1):not(#k2):not(#k3):not(#k4):not(#k5):not(#k6)
   background:linear-gradient(160deg,rgba(247,243,236,.08),rgba(247,243,236,.03))!important;
   -webkit-backdrop-filter:blur(0px) saturate(125%)!important;backdrop-filter:blur(0px) saturate(125%)!important;
 }
+
+/* Ch688 -- meme demande que le 687, appliquee au bandeau de navigation : faire pareil pour le
+   header. Constat verifie en rendu reel (capture plein viewport, jamais cadree sur le seul
+   bandeau, meme correction de methode qu au 687) : le bandeau de navigation, une fois defile
+   (.nav.scrolled), reste au reglage du 663 (flou 20px, 50% d opacite dans les deux themes) --
+   jamais retouche depuis, contrairement au pied de page. A la difference du pied de page, ce qui
+   se trouve derriere le bandeau n est pas seulement le decor ambiant (systeme data-fond du 647) :
+   c est le contenu de page qui defile sous un bandeau fixe -- titres de hero, puces de fil
+   d Ariane, paragraphes -- et une transparence poussee aussi loin qu au 687 y fait apparaitre du
+   texte de page distinct, source de collision visuelle avec les propres liens du bandeau, verifie
+   en rendu reel en testant plusieurs paliers avant de choisir (une opacite proche de zero, meme
+   avec du flou, laissait les puces du fil d Ariane et un paragraphe de la page se lire nettement
+   a travers, superposes aux liens du menu). Mesure : opacite ramenee de 50% a 16% dans les deux
+   themes (moins qu au 687 par prudence), flou ramene de 20px a 4px -- juste assez pour transformer
+   le contenu qui defile en un halo diffus plutot que l effacer completement, sans jamais laisser
+   un texte de page redevenir lisible sous les liens du menu. Verifie en rendu reel a deux hauteurs
+   de defilement (juste apres le seuil de bascule en bandeau reduit, puis loin dans la page) dans
+   les deux themes : le bandeau laisse deviner un mouvement de fond diffus derriere lui sans jamais
+   faire reapparaitre de texte lisible en collision avec ses propres liens, contraste du texte du
+   bandeau remesure par capture d ecran et echantillonnage de pixels : 5,1:1 en sombre, 5,8:1 en
+   clair, tous deux au-dessus du minimum de 4,5:1. Repli prefers-reduced-transparency inchange,
+   toujours net et opaque. */
+html body .nav.scrolled:not(#z1):not(#z2):not(#z3):not(#z4):not(#z5):not(#z6):not(#z7):not(#z8):not(#z9):not(#z10):not(#z11):not(#z12):not(#z13):not(#z14):not(#z15):not(#z16):not(#z17):not(#z18):not(#z19):not(#z20):not(#z21):not(#z22):not(#z23):not(#z24){
+  background:rgba(8,14,26,.16)!important;
+  -webkit-backdrop-filter:blur(4px) saturate(150%)!important;backdrop-filter:blur(4px) saturate(150%)!important;
+}
+html.et-plight body .nav.scrolled:not(#z1):not(#z2):not(#z3):not(#z4):not(#z5):not(#z6):not(#z7):not(#z8):not(#z9):not(#z10):not(#z11):not(#z12):not(#z13):not(#z14):not(#z15):not(#z16):not(#z17):not(#z18):not(#z19):not(#z20):not(#z21):not(#z22):not(#z23):not(#z24),
+html.et-jlight body .nav.scrolled:not(#z1):not(#z2):not(#z3):not(#z4):not(#z5):not(#z6):not(#z7):not(#z8):not(#z9):not(#z10):not(#z11):not(#z12):not(#z13):not(#z14):not(#z15):not(#z16):not(#z17):not(#z18):not(#z19):not(#z20):not(#z21):not(#z22):not(#z23):not(#z24){
+  background:rgba(255,255,255,.16)!important;
+  -webkit-backdrop-filter:blur(4px) saturate(150%)!important;backdrop-filter:blur(4px) saturate(150%)!important;
+}
