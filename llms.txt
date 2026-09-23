@@ -6,7 +6,7 @@
 
 - [Accueil](https://enertchad-delta.vercel.app/) : mission, chaîne intégrée, chiffres cibles
 - [La Société](https://enertchad-delta.vercel.app/societe) : identité, gouvernance OHADA
-- [Espace investisseurs](https://enertchad-delta.vercel.app/investisseurs) : thèse, trajectoire de capital 10 M → 1 Md → 20 Md FCFA, jalons datés
+- [Espace investisseurs](https://enertchad-delta.vercel.app/investisseurs) : thèse, trajectoire de capital 100 M → 1 Md → 10 Md FCFA, jalons datés
 - [Nos solutions par besoin](https://enertchad-delta.vercel.app/solutions) : entrée par usage (produire, acheminer, transformer, distribuer, décider, financer)
 - [Publications & documents](https://enertchad-delta.vercel.app/publications) : brochures PDF (FR/EN), fiche arabe, fiches techniques
 - [Paiements aux États](https://enertchad-delta.vercel.app/paiements-etats) : format de déclaration engagé — sept catégories ITIE, maille par entité et par projet, date du premier rapport
