@@ -29257,3 +29257,44 @@ capture des Carnets. Balayage des quatre pages en trois configurations : zero er
 debordement. Un commit (libelle Ch706 ; journalise 707, le registre portant deja un 706 d une
 autre session, non publie, au meme sujet), six fichiers identiques bit a bit entre le depot et
 la production.
+
+## 708 -- Audit des bandes sombres de la home : une seule n etait pas le dessin, le voile sous la barre de navigation en theme clair (2026-09-23)
+
+### Constat
+
+Demande : auditer les bandes sombres de la home. Inventaire instrumente (bandes708.js) : pour
+chaque section de premier niveau, geometrie et luminance reelle du fond au pixel (mediane par
+ligne, minimum, maximum, marge gauche), deux themes, 1440 et 390, captures pleine page relues.
+Trois familles de « bandes » distinguees.
+
+1. Les strates horizontales du fond « coupe » (fond-coupe-sombre / fond-coupe-clair, 2560 x
+   1440, en cover) : ce sont le dessin geologique lui-meme. Verifie pixel a pixel contre l
+   image source, colonne par colonne, dans les deux themes : le rendu est identique a la
+   source, aucune strate ajoutee ni deformee ; en theme clair l image absolue de 1008 px se
+   termine sur des strates claires qui se fondent dans le creme, sans couture ; en theme
+   sombre le calque est fixe et couvre toujours la fenetre. Sur mobile, le recadrage cover
+   grossit les strates sous la barre, toujours le dessin. Aucune correction.
+2. Les sections : en theme sombre, toutes transparentes sur le calque fixe (luminance
+   mediane .016 partout, heros .006) ; en theme clair, toutes en creme (.932), bandeau final
+   plus clair (.983, verre du 697) ; aucune bande de section plus sombre que ses voisines.
+3. Une vraie bande, en theme clair seulement : sous la barre de navigation non defilee, un
+   voile de 40 px en degrade rgba(6,11,20,.42) → 0, pose par un ancien bloc (nav::after,
+   destine a detacher la barre des heros sombres) et jamais neutralise par le mode clair, qui
+   n avait repris que le fond de la barre. Mesure : sous la barre, le rendu descend a
+   rgb(140,142,144) la ou l image source vaut rgb(238,236,232) -- une bande grise nette sur
+   creme, presente sur les 129 pages qui portent ce bloc (pas les Carnets ni l arabe).
+
+### Ce qui change
+
+Deux lignes dans fond647.css : html.et-plight et html.et-jlight #nav.nav:not(.scrolled)::after
+{content:none}. L ombre douce de la barre (rgba(0,48,73,.1) 0 10px 30px) suffit a la
+detacher. Theme sombre intact. sw.js et-202609230825.
+
+### Verifie
+
+Rendu reel apres correction sous la barre : home 1440 et 390, page carrieres (heros sombre
+volontaire, inchange), un Carnet ; ::after a content:none, colonne de pixels sous la barre
+passee de 140 → 233 a 223 → 249 (seule l ombre douce reste). Capture du haut de la home relue.
+Balayage complet 208 pages x 3 configurations : 624 mesures, zero erreur. Deux commits, deux
+fichiers identiques bit a bit entre le depot et la production ; remesure en production :
+content none, memes pixels.
