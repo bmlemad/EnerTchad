@@ -29197,3 +29197,63 @@ complet 208 pages x 3 configurations : 624 mesures, zero erreur, zero debordemen
 commits (libelles Ch704 ; journalise 705, le registre portant deja un 704 d une autre
 session), quatre fichiers identiques bit a bit entre le depot et la production ; remesure en
 production sur dix textes des neuf familles corrigees : tous conformes, entre 4,91 et 6,19:1.
+
+## 706 -- Suite du 704/705 : le jalon memorandum se corrige deja seul sur la home, mais les deux calendriers .ics restent perimes (2026-09-23)
+
+Entree reconstituee depuis le registre : chantier mene dans une autre session, en parallele
+du 707, et non publie depuis cette session-la (ni navigateur ni git push) -- fichiers livres
+au proprietaire. Le 707, publie, couvre le meme correctif (et les deux Carnets en plus) : les
+fichiers de ce 706 n ont plus a etre publies.
+
+### Constat
+
+Verification en rendu reel (JS execute) : sur les deux pages d accueil, le script du bloc
+#jalons640 recalcule l etat a chaque chargement en comparant la date au jour reel -- le jalon
+s affichait deja comme « date visee passee » et le bandeau Prochain jalon promouvait deja le
+webinaire du 29 septembre. Confirme en revanche : les deux calendriers .ics abonnables, sans
+script, restaient perimes en dur (DTSTART 15 septembre, toujours TENTATIVE), un vrai defaut
+qui ne s autocorrige jamais pour un abonne.
+
+### Ce qui change
+
+Nouvelle date choisie a defaut de confirmation du proprietaire : dernier jour du trimestre
+annonce (T3 2026), soit le 30 septembre, repercutee dans les deux pages d accueil et les deux
+.ics. sw.js prepare a et-202609230623 (non publie ; le 707 n a pas eu a toucher sw.js).
+
+### Verifie
+
+Rendu reel avant/apres deux themes, .ics valides, zero occurrence residuelle de l ancienne
+date, balayage de six pages representatives sans erreur JS. Non publie depuis cette session.
+
+## 707 -- Le jalon memorandum reporte au 30 septembre, calendriers et pages accordes (2026-09-23)
+
+### Constat
+
+Application de la recommandation laissee au 705 : le chantier 704 (autre session, non
+publie) avait reporte au 30 septembre 2026 le jalon « Publication du memorandum » des deux
+calendriers iCalendar, mais la meme date du 15 septembre vivait aussi en dur dans le fil des
+jalons de index.html et index-en.html (data-d, time, etat calcule a la lecture : « date visee
+passee ») et dans les Carnets FR/EN (etat ecrit en dur : « passe » / « done »). Publier les
+seuls .ics aurait laisse un ecart entre le calendrier abonnable et les pages.
+
+### Ce qui change
+
+Six fichiers. Les deux .ics : DTSTART 20260930, DTEND 20261001, DTSTAMP a la date du jour et
+SEQUENCE:1 sur l evenement reporte (RFC 5545 : un DTSTART qui change incremente SEQUENCE,
+pour que les agenda abonnes prennent le changement) ; les trois autres evenements intacts.
+Les deux pages d accueil : data-d et time passes au 2026-09-30, libelle « 30 sept. 2026 » /
+« 30 September 2026 ». Les deux Carnets : date et etat « a venir » / « upcoming ». Verifie
+en rendu reel avant de conclure : la liste n etait plus chronologique (30 septembre avant le
+webinaire du 29) et l etat « prochain » tombait sur le mauvais jalon ; les deux entrees sont
+donc permutees sur les quatre pages, et le bandeau du heros affiche desormais « Prochain
+jalon · Webinaire investisseurs · 29 sept. 2026 · dans 6 j ».
+
+### Verifie
+
+Les deux calendriers relus par un parseur iCalendar (quatre evenements, dates, sequence).
+Zero occurrence restante du 15 septembre sur les six fichiers et sur le site. Rendu reel des
+deux accueils : etats prochain / a venir corrects dans l ordre, bandeau du heros conforme ;
+capture des Carnets. Balayage des quatre pages en trois configurations : zero erreur, zero
+debordement. Un commit (libelle Ch706 ; journalise 707, le registre portant deja un 706 d une
+autre session, non publie, au meme sujet), six fichiers identiques bit a bit entre le depot et
+la production.
