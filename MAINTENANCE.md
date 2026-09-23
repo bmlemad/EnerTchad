@@ -29113,3 +29113,87 @@ mesures, zero erreur, zero debordement. Publication en quatorze commits (racine 
 lots, sept repertoires, assets/data, assets/chrome), 223 fichiers identiques bit a bit entre
 le depot et la production, echantillon de pages et les deux index verifies en production sans
 ancienne forme, PDF investisseur en production relu.
+
+## 704 -- Fraicheur du contenu : la date du jalon memorandum du calendrier investisseur avait deja expire (2026-09-23)
+
+Entree reconstituee depuis le registre : chantier mene dans une autre session, en parallele
+du 705, et non publie depuis cette session-la (ni navigateur ni git push) -- fichiers livres
+au proprietaire. Le texte ci-dessous reprend la description du registre.
+
+### Constat
+
+Audit de fraicheur des dates : les calendriers iCalendar abonnables (agenda-investisseur.ics
+FR, investor-calendar-en.ics EN, chantier 276) portaient un jalon Publication du memorandum
+date au 15 septembre 2026, deja passe de huit jours a la date de ce chantier (23 septembre),
+toujours affiche comme un evenement a venir et tentatif -- alors que la page investisseurs
+n engage que le trimestre (T3 2026).
+
+### Ce qui change
+
+Date reportee au 30 septembre 2026 (dernier jour du trimestre annonce), DTSTAMP mis a jour,
+dans les deux fichiers FR/EN, aucune autre ligne touchee. Trois autres pistes verifiees puis
+ecartees sans correctif invente : focus clavier des tuiles .hxf de l accueil (anneau de focus
+confirme present par mesure DOM reelle, deux themes), pages-outils calculateur/configurateur
+presumees orphelines (en realite liees sur 198 a 200 pages), titre FR de amont/index.html
+identique a l anglais (convention deliberee du site, verifiee sur 101 pages et plus).
+
+### Verifie
+
+247 liens internes uniques verifies un a un en production, aucun casse. Non publie depuis
+cette session : la production sert toujours a ce jour la date du 15 septembre. Note du 705 :
+la meme date vit aussi, en dur, dans le fil des jalons de index.html, index-en.html,
+carnets.html et carnets-en.html (data-d 2026-09-15, etat « date visee passee » calcule a la
+lecture) ; publier les seuls fichiers .ics creerait un ecart avec ces quatre pages -- a
+trancher par le proprietaire avant publication.
+
+## 705 -- Contraste au rendu reel : le theme clair attenuait ses textes secondaires sous le seuil, vingt-deux familles remesurees, dix corrigees (2026-09-23)
+
+### Constat
+
+Suite du 702 : le nouvel instrument est passe sur tout le site. Recensement DOM des textes dont
+l encre peinte differe de la couleur calculee (opacite effective < 1 sur l element ou un
+ancetre, filtre, mode de fusion ; l alpha seul, deja traite correctement par la methode 697,
+est exclu) : 3 486 candidats sur 175 pages, deux themes, mesures au pixel en quatre lots.
+Premier verdict par encre rendue : 556 echecs. Verification des familles une par une avant
+de conclure, et l instrument s est revele fautif sur une famille entiere : les 128 legendes
+de figures des Carnets en theme sombre (.jn-fig figcaption, opacite .85, corps de 11 px)
+annoncees a 3,99:1 alors qu un calcul direct donne plus de 10:1 -- sur un si petit corps, le
+« coeur » des glyphes reste anti-aliase et l encre rendue est sous-estimee. Correction de
+methode : quand l element n a ni filtre ni mode de fusion, le verdict devient analytique
+(couleur calculee melangee au fond pixel par pixel selon l opacite effective, relue en direct
+dans la page), exact pour l opacite et insensible au corps ; l encre rendue ne sert plus
+qu aux filtres et fusions. Remesure des 563 echecs sous ce verdict : 425 restent, dont trois
+familles ecartees a l examen -- les 308 numeros d ordre .ttg-n des sommaires de page (opacite
+.14, decoration en filigrane, l ordre est porte par la mise en page), les quatre boutons
+« Demander mon devis » desactives (.octa:disabled, opacite .45), et les 22 em du heros de la
+brochure (hero sombre volontaire sous filtre, gris de verre anime : fausse alerte des deux
+methodes, verifie a l ecran). Restaient des vrais defauts, tous en theme clair sauf un, tous
+de la meme famille : un texte secondaire attenue par opacite (.6 a .85) sur une encre deja
+moyenne, entre 2,8 et 4,3:1 -- accroches de section .sec-k des seize pages de pole (inline,
+.65), notes de pied .fn-d/.fn-alt de dix pages et leurs liens WhatsApp, etiquettes .pr-k et
+metadonnees em de l espace presse, liens des encadres de gouvernance (.org604 em .8),
+paragraphe d histoire de societe (.85), indice .cl-hint de clients, etiquette et aide de la
+recherche (inline .7/.6), cartes de reporting non renseignees des cibles 2030 (.frm-off .62
+sur des spans a .82 : 2,8:1 en clair, 4,4:1 en sombre).
+
+### Ce qui change
+
+Un bloc dans fond647.css, seule feuille chargee par les 208 pages, sous html.et-plight avec
+!important pour l emporter sur les styles inline : .sec-k .8, .fn-d et .fn-alt .95 (leur
+encre est plus claire), .pr-k et .pr-card em .8, .org604 .box li em 1, #histoire .he p .95,
+#cadre-reporting .frm-off .88, #comparer .cl-hint .8, .jn-dep-h span .85, label[for=schQ]
+.82, #schQ + p .8, #schE 1. Valeurs minimales : la hierarchie visuelle reste lisible
+(captures presse et pieds de pole relues). En theme sombre, une seule retouche, dans les deux
+pages cibles : .frm-off passe de .62 a .7. sw.js et-202609230424. Le theme sombre n avait
+aucun autre defaut. contrast704.js remplace contrast702.js dans l atelier (verdict
+analytique, opacite lue en direct).
+
+### Verifie
+
+Remesure des 247 defauts retenus apres correction : 246 conformes (pire cas 4,91:1), le
+dernier etant le lien « plan du site » du message sans resultat de la recherche, masque tant
+qu il n y a pas de recherche vide, non mesurable (opacite portee a 1 par le bloc). Balayage
+complet 208 pages x 3 configurations : 624 mesures, zero erreur, zero debordement. Deux
+commits (libelles Ch704 ; journalise 705, le registre portant deja un 704 d une autre
+session), quatre fichiers identiques bit a bit entre le depot et la production ; remesure en
+production sur dix textes des neuf familles corrigees : tous conformes, entre 4,91 et 6,19:1.
