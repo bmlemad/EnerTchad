@@ -411,7 +411,7 @@ html.et-jlight body .nav.scrolled:not(#z1):not(#z2):not(#z3):not(#z4):not(#z5):n
 
 /* Ch704 - contraste au rendu reel, theme clair : les textes attenues par opacite remontent au seuil 4,5:1
    (encre calculee melangee au fond selon l opacite effective). Valeurs minimales, la hierarchie reste visible. */
-html.et-plight .sec-k:not(#z1):not(#z2){opacity:.8!important}
+html.et-plight .sec-k[style*="opacity:.65"]:not(#z1):not(#z2){opacity:.8!important} /* Ch713 : limite aux accroches attenuees en ligne ; la regle nue baissait a .8 les .sec-k pleines (16 elements, 8 pages) */
 html.et-plight .fn-d:not(#z1):not(#z2){opacity:.95!important}
 html.et-plight .fn-alt:not(#z1):not(#z2){opacity:.95!important}
 html.et-plight .pr-k:not(#z1):not(#z2),html.et-plight .pr-card em:not(#z1):not(#z2){opacity:.8!important}
