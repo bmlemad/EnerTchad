@@ -29298,3 +29298,69 @@ passee de 140 → 233 a 223 → 249 (seule l ombre douce reste). Capture du haut
 Balayage complet 208 pages x 3 configurations : 624 mesures, zero erreur. Deux commits, deux
 fichiers identiques bit a bit entre le depot et la production ; remesure en production :
 content none, memes pixels.
+
+## 709 -- Fraicheur technique du sitemap : les dates lastmod ne refletaient plus les changements reels (2026-09-23)
+
+Entree reconstituee depuis le registre : chantier mene dans une autre session, en parallele
+du 710, et non publie depuis cette session-la (ni navigateur ni git push) -- fichier livre
+au proprietaire. Le 710 n a pas pu le reprendre : le calcul demande l historique git, absent
+de l atelier de cette session.
+
+### Constat
+
+sitemap.xml annonce 206 URL, chacune avec un lastmod cense refleter la derniere modification
+reelle. Comparaison systematique entre chaque lastmod et la date du dernier commit git
+touchant le fichier correspondant : 204 des 206 URL avaient un lastmod perime (dates du 10 au
+16 septembre, alors que 201 pages ont ete modifiees le 23 septembre et trois le 22), ecart
+identique en production. Couverture du sitemap verifiee correcte : les dix fichiers HTML
+absents sont des exclusions deliberees (404, verification Google, sources d impression,
+charte en noindex).
+
+### Ce qui change
+
+Chaque lastmod recalculee a la date du dernier commit git du fichier qu elle designe, un seul
+fichier touche, aucune autre valeur alteree (locs, hreflang, ordre identiques). Pas de CSS/JS,
+sw.js non touche.
+
+### Verifie
+
+Diff ligne a ligne isolant les seules dates modifiees, XML reparse (206 url avant/apres),
+controle negatif git diff --stat (un seul fichier). Non publie depuis cette session.
+
+## 710 -- Survivants du theme sombre en theme clair : deux familles de verre sombre sous encre sombre, FAQ clients et documents investisseurs (2026-09-23)
+
+### Constat
+
+Suite du 708 : le voile sous la barre etait une regle du theme sombre jamais neutralisee par
+le mode clair. Recherche systematique de la meme famille sur les 208 pages en theme clair
+(scrim709.js) : tout element ou pseudo-element visible dont le fond est un degrade ou une
+couleur sombre translucide (luminance < .12, alpha de .15 ou plus) -- 1 722 occurrences, groupees par
+famille et relues en captures. L essentiel est le systeme voulu du site : les heros et
+panneaux sombres conserves en theme clair (header.pghero sur 72 pages, div.hero sur 54, barre
+des chantiers de projets, encarts routeur et commande, figures illustrees, marque et pastilles),
+avec une encre claire dessus. Pour trancher sans presumer, contraste mesure au pixel sur les
+textes de chaque famille de panneau translucide non abrite par un hote sombre (185 groupes,
+100 pages, 376 textes) : 345 conformes, 14 echecs, tous dans deux familles ou le mode clair
+force une encre sombre sur un verre reste sombre :
+- clients FR/EN, accordeon #faq-clients details : degrade rgba(11,18,32,.46 → .3) du theme
+  sombre, encre forcee rgb(42,54,72) par bundle_core_a1 -- paragraphes a 4,16:1 ;
+- investisseurs FR/EN, cartes documents #main-content .doc du bloc inv-modern : degrade
+  rgba(15,24,40,.66), encre forcee -- titres 2,9:1, descriptions et metadonnees 1,9:1, cartes
+  grises a texte gris (capture relue). Les .card du meme bloc avaient deja leur verre clair.
+Ecarte : le bouton desactive de la boutique (deja au 705).
+
+### Ce qui change
+
+Dans les quatre pages, une regle html.et-plight a trois identifiants factices, verre clair du
+meme systeme que les .card et le .note du 698 : linear-gradient(255,255,255 .62 → .42),
+bordure rgba(26,35,48,.18). Rien de partage, pas de sw.js. L instrument contrast704.js
+revele aussi les conteneurs .rv (une carte FAQ non revelee mesurait a 1:1 par opacite 0).
+
+### Verifie
+
+Remesure : 28 textes des cartes documents entre 10,2 et 18:1, FAQ paragraphes 11,3:1 et
+sommaires 17:1, deux themes (sombre inchange). Captures des deux composants relues. Balayage
+des quatre pages en trois configurations : zero erreur, zero debordement. Un commit, quatre
+fichiers identiques bit a bit entre le depot et la production ; remesure en production sur
+neuf textes, tous entre 11,1 et 17,1:1. Un commit (libelle Ch709 ; journalise 710, le
+registre portant deja un 709 d une autre session).
