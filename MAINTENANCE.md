@@ -29505,3 +29505,39 @@ chaque flux avant et apres. Un commit (eaff2a2), deux fichiers identiques bit a 
 depot et la production, servis en application/xml. Sitemap : flux hors sitemap, aucune date a
 changer. Reste ouvert, meme famille : 138 dateModified JSON-LD, les plus recentes au 23 aout,
 alors que la plupart des pages ont change depuis -- a traiter dans un chantier dedie.
+
+## 716 -- Carnets : la date de modification des articles calee sur leur dernier vrai changement de texte (2026-09-23)
+
+### Constat
+
+Suite du 715. Les 138 dateModified JSON-LD du site forment deux familles. 74 portent sur le
+jeu de donnees « Atlas petrolier du Tchad » (Dataset, dateModified 2026-06) decrit a
+l identique sur 74 pages : description du secteur sans lien a une page precise, rien ne
+prouve qu il ait change -- laisse. Les 64 autres sont les articles des Carnets : dateModified
+egale a datePublished sur 58 d entre eux, alors que le texte a souvent change depuis.
+Historique reconstitue avec un clone git contenant les petits fichiers (filtre blob:limit=400k,
+le clone sans contenu refetchait chaque version une a une) : pour chaque article, texte
+editorial seul (du titre au pied d article, sans la ligne de date ni la navigation), compare
+version par version depuis la publication. Ne comptent pas : la planche illustree ajoutee par
+le 648 (trois dessins decoratifs repris d un article a l autre), les apostrophes et guillemets
+typographiques, les espaces laisses par les liens du glossaire (206). Comptent : chiffres
+corriges (gaz de Sedigui 150 → 110, atlas 16 → 11 concessions, « vingt » → « vingt-trois »),
+renommages de marques et de poles visibles dans le texte (TchadiTech, Tchaditude, Tchadium,
+nomenclature du 627/675), reformulations (« du groupe » → « de la societe »), slogan anglais
+du 700 dans le chapeau.
+
+### Ce qui change
+
+31 articles sur 64 : dateModified reportee a la date du dernier changement de texte qui compte
+(9 au 16 septembre, 7 au 20, 3 au 23, les autres entre le 11 juillet et le 2 septembre). Une
+ligne par fichier, jamais de date abaissee, 33 articles laisses (aucun changement de texte
+depuis la date deja annoncee). La date affichee sous le titre reste celle de publication.
+Pas de CSS ni JS partage, pas de sw.js.
+
+### Verifie
+
+Diff contre le depot : deux lignes par fichier (ancienne et nouvelle), 31 fichiers. JSON-LD
+reparse sans erreur sur les 64 articles, dateModified jamais anterieure a datePublished partout. Rendu local
+des 31 pages : titre present, aucune erreur JavaScript, dateModified lue dans la page egale
+a la valeur attendue. Un commit (95bd92c), 31 fichiers identiques bit a bit entre le depot et
+la production ; relu en production sur trois articles. Sitemap : aucune date a changer.
