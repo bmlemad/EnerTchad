@@ -29003,3 +29003,58 @@ lignes. Publication en huit commits (un par repertoire), 36 fichiers avec sw.js,
 identiques bit a bit entre le depot et la production ; verification finale en production sur
 un echantillon de pages et sur les deux index : plus aucune occurrence de la version courte,
 version du service worker en ligne.
+
+## 702 -- Application des recommandations en suspens : CSS mort du 672, instrument de contraste du 697, numerotation 700/701 (2026-09-23)
+
+### Constat
+
+Consigne : appliquer toutes les recommandations laissees ouvertes. Relecture des chapitres
+640 a 701 pour en dresser la liste, en separant ce qui a deja ete traite (669 → 670, 692 → 695,
+674/675 → 676/677, 699 → 701) et ce qui est explicitement deconseille (656 : elagage global du
+CSS ; 671 : champ emoji mort du catalogue boutique, a laisser pour ne pas redecaler les index).
+Trois points restaient ouverts.
+
+1. Le 672 avait repere une valeur --sy plus etroite (clamp 42 px / 4,6 vw / 66 px), toujours
+   ecrasee par la valeur large (46 / 5 vw / 74) chargee plus tard, et l avait laissee « pour un
+   futur menage de CSS mort ». Elle vit dans deux feuilles partagees : s_a6075b7e39.css (deux
+   brochures) et bundle_head_b2.css (74 pages), soit 76 pages. Verification statique sur les 208
+   pages : chaque page qui charge l une de ces feuilles charge ensuite u2_2588bdebd508.css ou
+   x_77d650c4a7a2.css, qui redefinit --sy ; aucune page ne s arrete a la valeur etroite.
+2. Le 697 avait note que la mesure de contraste au pixel (texte rendu transparent, fond
+   echantillonne, encre prise dans la couleur calculee) est aveugle aux filtres, opacites et
+   modes de fusion : elle avait annonce six echecs sur les accroches Clients qui n en etaient
+   pas, et pourrait a l inverse laisser passer une encre reellement affaiblie par une opacite.
+3. Le 701 avait signale que le registre porte un chapitre 700 (liquid glass home, autre
+   session) dont les fichiers n ont pas ete publies. Le dossier connecte EnerTchad-site a ete
+   inspecte : il date du 3 juillet (sw et-202607030932, aucun bloc glass700) et ne contient pas
+   ces fichiers ; ils ne sont donc joignables ni depuis le depot ni depuis cette session.
+
+### Ce qui change
+
+Point 1 : la declaration --sy:clamp(42px,4.6vw,66px) est retiree des deux feuilles (28 octets
+chacune, accolades verifiees equilibrees) ; sw.js passe a et-202609230108. Point 2 : nouvel
+instrument contrast702.js (dans l atelier QA, pas sur le site) : apres la passe texte
+transparent, une seconde capture texte visible ; les pixels qui different entre les deux sont
+le texte ; le quart le plus eloigne du fond (le coeur des glyphes, hors lisere anti-aliase)
+donne l encre reellement rendue et un second ratio ; le verdict s appuie sur celui-ci quand au
+moins trente pixels de texte sont detectes, sinon sur la methode 697. Point 3 : rien a
+publier ; l entree 700 du journal reste une reconstitution depuis le registre, et si le
+proprietaire publie un jour les fichiers de cette autre session, l entree 701 (et celle-ci)
+devront etre reportees dans son MAINTENANCE.md.
+
+### Verifie
+
+Point 1 : mesure en rendu reel avant/apres sur les 208 pages, 1440 et 390 px (416 mesures :
+--sy calcule et rembourrages des six premieres sections de chaque page) : zero difference, la
+valeur calculee restant clamp(46px,5vw,74px) sur les 152 mesures ou elle est definie et vide
+sur les autres (pages qui n utilisent pas ces feuilles). Balayage des 76 pages concernees en
+trois configurations (228 mesures) : zero erreur, zero debordement. Deux commits (assets/chrome,
+racine), trois fichiers identiques bit a bit entre le depot et la production ; --sy et
+rembourrages remesures en production sur cinq pages, identiques a la mesure d avant.
+Point 2 : etalonnage du nouvel instrument sur quatorze textes de la home et de Clients : sur
+un texte sans filtre ni opacite, l encre rendue retrouve la couleur calculee a l unite pres
+(rgb 42,54,72 = rgb 42,54,72) ; sur le chapeau du schema de la home, pose en opacite .85,
+la methode 697 annoncait 10,46:1 et la methode rendue mesure 6,26:1 (clair) et 11,28:1 contre
+16,77:1 (sombre) -- toujours conformes, mais c est bien cet ecart que le 697 ne voyait pas.
+Reglages testes avant de fixer le quart : la moitie des pixels sous-estime le texte a 13,6 px
+(lisere anti-aliase majoritaire), le dixieme manque de pixels sur les textes courts.
