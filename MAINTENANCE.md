@@ -29364,3 +29364,60 @@ des quatre pages en trois configurations : zero erreur, zero debordement. Un com
 fichiers identiques bit a bit entre le depot et la production ; remesure en production sur
 neuf textes, tous entre 11,1 et 17,1:1. Un commit (libelle Ch709 ; journalise 710, le
 registre portant deja un 709 d une autre session).
+
+## 711 -- SEO technique : sitemap.xml toujours perime en production, le correctif du 709 jamais publie (2026-09-23)
+
+Entree reconstituee depuis le registre : chantier mene dans une autre session, en parallele
+du 712, et non publie depuis cette session-la (ni navigateur ni git push). Le 712 a publie le
+meme correctif, calcule independamment et arrive au meme resultat (203 URL au 23 septembre,
+3 au 22) : les fichiers de ce 711 n ont plus a etre publies.
+
+### Constat
+
+sitemap.xml servi en production restait identique a celui lu par le 709, dont le correctif
+n avait jamais ete publie. Nouvelle comparaison des 206 lastmod avec la date du dernier
+commit git de chaque fichier (les deux URL reecrites par vercel.json resolues vers leurs
+sources) : 206 perimees sur 206, et non plus 204, le 703 etant passe apres le calcul du 709.
+
+### Ce qui change
+
+203 URL au 23 septembre, trois pages arabes (ar-amont, ar-aval, ar-intermediaire) au 22,
+aucune autre valeur touchee.
+
+### Verifie
+
+Diff isolant les seules dates, XML reparse avant et apres, controle negatif (aucune page ne
+charge sitemap.xml). Non publie depuis cette session.
+
+## 712 -- Le sitemap annonce enfin les vraies dates : 206 lastmod recalculees depuis git (2026-09-23)
+
+### Constat
+
+Reprise du 709 (autre session, non publie) : les dates lastmod de sitemap.xml ne suivaient
+plus les modifications reelles -- 133 URL au 11 septembre, 47 au 12, 18 au 16, 8 au 10,
+alors que presque toutes les pages ont ete modifiees depuis (le 703 a lui seul en a touche
+217 aujourd hui). Un moteur qui se fie a lastmod n a aucune raison de recrawler des pages
+annoncees comme inchangees depuis douze jours. L atelier de cette session n avait pas
+l historique git, raison pour laquelle le 710 avait laisse ce point ; verifie ici qu un clone
+partiel sans contenu de fichiers (git clone --filter=blob:none) est possible depuis
+l atelier : il donne la date du dernier commit de chaque fichier sans rien telecharger de
+lourd. Correspondance URL → fichier : / → index.html, /x/ → x/index.html, /x → x.html, plus
+les deux reecritures de vercel.json (configurateur, calculateur). Couverture : les 206 URL
+ont chacune leur fichier ; les dix HTML hors sitemap sont des exclusions voulues (404, charte
+FR/EN et 404 en noindex verifie, sources d impression, fichier de verification Google).
+
+### Ce qui change
+
+sitemap.xml seulement : les 206 lastmod passent a la date du dernier commit de leur fichier
+(203 au 23 septembre, 3 au 22). Rien d autre ne bouge : diff apres suppression des lastmod
+strictement vide, 206 url avant et apres, aucune URL sans lastmod ni en double. Pas de sw.js.
+Pour la suite, /root/work/qa/lastmod711.py rejoue le calcul depuis le clone partiel (a
+rafraichir par git fetch apres chaque publication) et n ecrit qu avec --write : a passer en
+fin de chapitre quand des pages ont change.
+
+### Verifie
+
+XML reparse (206 url). Un commit, fichier identique bit a bit entre le depot (lu dans le clone
+apres fetch) et la production, servi en application/xml ; en production : 203 dates au 23,
+3 au 22. Script rejoue apres publication : zero date a changer. Un commit (libelle Ch711 ;
+journalise 712, le registre portant deja un 711 d une autre session au meme sujet).
