@@ -10,9 +10,10 @@ REFRESH-INTERVAL;VALUE=DURATION:P1W
 X-PUBLISHED-TTL:P1W
 BEGIN:VEVENT
 UID:jalon-memorandum-2026@enertchad.td
-DTSTAMP:20260828T120000Z
-DTSTART;VALUE=DATE:20260915
-DTEND;VALUE=DATE:20260916
+DTSTAMP:20260923T072412Z
+SEQUENCE:1
+DTSTART;VALUE=DATE:20260930
+DTEND;VALUE=DATE:20261001
 SUMMARY:Publication du mémorandum (cible T3 2026)
 DESCRIPTION:Mise à disposition du mémorandum d’investissement et de l
  ’étagère documentaire actualisée. Date indicative — société en c

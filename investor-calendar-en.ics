@@ -10,9 +10,10 @@ REFRESH-INTERVAL;VALUE=DURATION:P1W
 X-PUBLISHED-TTL:P1W
 BEGIN:VEVENT
 UID:jalon-memorandum-2026@enertchad.td
-DTSTAMP:20260828T120000Z
-DTSTART;VALUE=DATE:20260915
-DTEND;VALUE=DATE:20260916
+DTSTAMP:20260923T072412Z
+SEQUENCE:1
+DTSTART;VALUE=DATE:20260930
+DTEND;VALUE=DATE:20261001
 SUMMARY:Memorandum publication (Q3 2026 target)
 DESCRIPTION:Release of the investment memorandum and the updated document 
  shelf. Indicative date — company in formation; target announced on the 
