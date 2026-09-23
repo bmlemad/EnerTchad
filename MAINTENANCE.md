@@ -29541,3 +29541,60 @@ reparse sans erreur sur les 64 articles, dateModified jamais anterieure a datePu
 des 31 pages : titre present, aucune erreur JavaScript, dateModified lue dans la page egale
 a la valeur attendue. Un commit (95bd92c), 31 fichiers identiques bit a bit entre le depot et
 la production ; relu en production sur trois articles. Sitemap : aucune date a changer.
+
+## 717 -- QA de la page vitrine : accueil FR/EN mesure sous toutes les coutures, six defauts corriges (2026-09-23)
+
+### Constat
+
+Demande du proprietaire : QA de la page vitrine, lue comme l accueil (index, index-en). Instrument ecrit pour ce
+chapitre (home717.js), sept conditions (sombre et clair a 1440, 1024 et 390, clair a 320), deux langues : erreurs
+JavaScript et console, requetes en echec, debordement horizontal, images (cassees, sans alt, surdimensionnees),
+hierarchie des titres, identifiants dupliques, liens sans nom, cibles tactiles, textes tronques, petites polices,
+meta et hreflang, JSON-LD, reperes, soixante premiers arrets clavier (anneau, visibilite, recouvrement), CLS et LCP,
+captures pleine page relues. Contraste au rendu reel ajoute a 1024 (le 705 et le 714 avaient couvert 1440 et 390) :
+1 144 textes, aucun defaut (seuls hors seuil : le lien d evitement masque tant qu il n est pas focalise et un em en
+degrade detoure, verifie a l oeil). Sains : zero erreur, zero requete en echec, zero debordement, un seul h1, CLS
+0,009 a 0,026, LCP sous 450 ms en local. Les noeuds du schema du heros n ont pas d outline mais un halo et un
+anneau dessines au focus -- indicateur voulu, verifie a l oeil.
+
+Six vrais defauts. 1) Le bandeau cookies une fois accepte (ou jamais affiche) glissait hors ecran mais restait dans
+l ordre de tabulation : deux arrets invisibles (Politique cookies, J ai compris) sur les 67 pages qui portent le
+bandeau en dur. 2) Meme famille : le bouton Retour a l accueil, a opacite 0 tant qu on n a pas defile de 360 px,
+restait focalisable (67 pages) ; et le rail de sections (#secrail, injecte en script), a opacite 0 avant son
+apparition, gardait ses liens focalisables et cliquables. 3) Mobile (jusqu a 768 px) : l element focalise au clavier
+pouvait finir sous la barre d onglets du bas ou sous les boutons flottants (Souscrire au capital a 320 px, un
+communique a 390). 4) Les deux liens de l agenda (L agenda complet, Telecharger l agenda .ics) mesuraient 20 px de
+haut, sous le minimum de 24 px que le site s est fixe (568, 690). 5) Meta de l accueil FR : la description et le
+JSON-LD WebPage finissaient par l ancien slogan « Du puits a la pompe » (le h1 dit « De la roche-mere a la pompe »,
+l anglais est deja aligne depuis le 701), et og:description / twitter:description annoncaient « Huit poles » --
+perime depuis la reorganisation en trois poles de coeur et quatre capacites (CP-2026-010) ; c est le texte des
+apercus de partage. 6) Tailles de documents perimees : les PDF et le classeur regeneres au 703 n avaient pas vu
+leur libelle suivre -- brochure FR 208 → 211 Ko, EN 209 → 212, data book 16 (ou 13) → 14, point d etape 145 → 124,
+fiche arabe 362 (ou 345) → 341, dossier PPTX 60 → 58, fiche investisseur 7 → 8, fiche intermediaire 113 → 114 ;
+audit de chaque lien vers un document portant une taille, sur toutes les pages (nombre de pages verifie aussi :
+tous justes). Ecarte : les liens « le contact direct » et « mentions legales » sous 24 px sont dans une phrase
+(exemptes) ; « Du puits a la pompe » du bandeau carrieres reste, son pendant anglais dit « From wellhead to pump »
+(formule metier, pas le slogan) ; les « huit poles » des communiques de juin et du point d etape d aout sont
+historiques.
+
+### Ce qui change
+
+fond647.css : #ckn, #homeFab et les liens de #secrail passent en visibility:hidden tant qu ils n ont pas la classe
+show ; la bascule n intervient qu a la fin de l animation de sortie (listes de transition reprises a l identique
+plus visibility, seulement hors mouvement reduit). Jusqu a 768 px, scroll-padding-bottom de 126 px (barre 61 px
+et boutons flottants jusqu a 118 px du bas) quand la barre existe. u2_75a2c4383ddf.js : le bouton accueil ne
+s affiche plus sur l accueil anglais, il pointait vers lui-meme (la garde ne reconnaissait que / et index.html).
+Accueils : .j640-go a en inline-flex, 24 px minimum. index.html : slogan canonique dans la description et le
+JSON-LD, « Trois poles de coeur, quatre capacites integrees » dans og et twitter. Tailles de documents sur 14
+pages. sw.js et-202609232202.
+
+### Verifie
+
+Comportement exerce local puis production, deux reglages de mouvement : bandeau affiche atteignable, accepte non
+atteignable apres son animation ; bouton accueil invisible et non focalisable en haut, visible, cliquable et
+focalisable apres defilement, de nouveau masque au retour ; rail idem ; accueils FR et EN : bouton jamais affiche.
+Mobile 390 et 320 : 66 et 68 elements focalises, aucun recouvert par la barre ni les boutons flottants. QA de
+l accueil rejouee : restent les seuls liens en phrase et les noeuds du heros. JSON-LD reparse sur les 14 pages (56
+blocs). Balayage complet 208 pages x 3 configurations : 624 mesures, zero erreur. Cinq commits (assets/chrome,
+amont, aval, intermediaire, racine), 17 fichiers identiques bit a bit entre le depot et la production, contenu relu
+en production. Sitemap : aucune date a changer.
