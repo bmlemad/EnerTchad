@@ -423,3 +423,8 @@ html.et-plight .jn-dep-h span:not(#z1):not(#z2){opacity:.85!important}
 html.et-plight label[for="schQ"]:not(#z1):not(#z2){opacity:.82!important}
 html.et-plight #schQ + p:not(#z1):not(#z2){opacity:.8!important}
 html.et-plight #schE:not(#z1):not(#z2){opacity:1!important}
+
+/* Ch708 - theme clair : le voile sombre de 40 px sous la barre de navigation non defilee (degrade rgba(6,11,20,.42) pose pour les heros sombres,
+   129 pages) dessinait une bande grise sous la barre sur fond creme ; supprime dans les deux themes clairs, l ombre douce de la barre suffit. */
+html.et-plight #nav.nav:not(.scrolled):not(#z1):not(#z2):not(#z3)::after,
+html.et-jlight #nav.nav:not(.scrolled):not(#z1):not(#z2):not(#z3)::after{content:none!important}
