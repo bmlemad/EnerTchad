@@ -29478,3 +29478,30 @@ erreur. Publication differee de quelques heures (navigateur du proprietaire injo
 depot relu avant publication, inchange depuis le 712. Deux commits (libelles Ch713 ; journalise 714, le
 registre portant deja un 713 d une autre session), deux fichiers identiques bit a bit entre le depot et la production ; remesure en production : 5,8 a 10,5:1. Sitemap :
 aucune page modifiee, aucune date a changer.
+
+## 715 -- Flux RSS : la date de construction publiee, calee sur le dernier vrai changement (2026-09-23)
+
+### Constat
+
+Reprise du 713 (autre session, non publie). Verifie avant correctif : feed.xml et feed-en.xml
+identiques bit a bit entre l atelier, le depot et la production, lastBuildDate au 2 septembre
+08:10:21 UTC dans les deux. L historique git confirme deux changements de contenu depuis :
+le 8 septembre (ch465, ajout du CP-2026-011, qui n avait pas touche lastBuildDate) et le 23
+septembre a 02:27:38 UTC (Ch703, description du CP-2026-004 reecrite pour la trajectoire de
+capital). Aucun changement depuis. Le 713 proposait l heure de son propre chantier ; la date
+retenue ici est celle du dernier commit qui a reellement modifie le flux, la seule vraie.
+Autres metadonnees de fraicheur verifiees en passant : security.txt expire en juillet 2027,
+correct.
+
+### Ce qui change
+
+Une ligne par fichier : lastBuildDate Wed, 23 Sep 2026 02:27:38 +0000. Items, pubDate, guid
+et descriptions inchanges. Pas de sw.js (fichiers non caches par l atelier).
+
+### Verifie
+
+diff contre le depot limite a la ligne 9 dans chaque fichier ; XML reparse, 43 items dans
+chaque flux avant et apres. Un commit (eaff2a2), deux fichiers identiques bit a bit entre le
+depot et la production, servis en application/xml. Sitemap : flux hors sitemap, aucune date a
+changer. Reste ouvert, meme famille : 138 dateModified JSON-LD, les plus recentes au 23 aout,
+alors que la plupart des pages ont change depuis -- a traiter dans un chantier dedie.
