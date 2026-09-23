@@ -428,3 +428,19 @@ html.et-plight #schE:not(#z1):not(#z2){opacity:1!important}
    129 pages) dessinait une bande grise sous la barre sur fond creme ; supprime dans les deux themes clairs, l ombre douce de la barre suffit. */
 html.et-plight #nav.nav:not(.scrolled):not(#z1):not(#z2):not(#z3)::after,
 html.et-jlight #nav.nav:not(.scrolled):not(#z1):not(#z2):not(#z3)::after{content:none!important}
+
+/* Ch717 - QA de la page vitrine : trois commandes fixes restaient dans l ordre de tabulation une fois masquees (opacite 0 ou hors ecran) --
+   le bandeau cookies une fois accepte (#ckn, 67 pages), le bouton Retour a l accueil avant 360 px de defilement (#homeFab, 67 pages)
+   et le rail de sections avant son apparition (#secrail) : le clavier y tombait sur des liens invisibles. Masques pour le clavier et la souris
+   tant qu ils sont caches ; la visibilite ne bascule qu a la fin de l animation de sortie, animations inchangees. */
+#ckn:not(.show):not(#z1):not(#z2){visibility:hidden}
+#homeFab:not(.show):not(#z1):not(#z2){visibility:hidden}
+#secrail:not(.show):not(#z1):not(#z2) a{visibility:hidden}
+@media (prefers-reduced-motion:no-preference){
+#ckn:not(.show):not(#z1):not(#z2){transition:transform .45s var(--ease,ease),visibility 0s linear .45s}
+#homeFab:not(.show):not(#z1):not(#z2){transition:opacity .3s var(--ease,ease),transform .3s var(--ease,ease),border-color .2s,background .2s,visibility 0s linear .3s}
+#secrail:not(.show):not(#z1):not(#z2) a{transition:opacity .5s var(--ease,ease) calc(var(--d,0)*.07s),transform .5s var(--ease,ease) calc(var(--d,0)*.07s),border-color .25s,background .25s,box-shadow .25s,color .25s,visibility 0s linear calc(.5s + var(--d,0)*.07s)}
+}
+/* Ch717 - mobile : la barre d onglets fixe du bas (#nezBar, 61 px, jusqu a 768 px) et les boutons flottants poses au-dessus (theme, haut de page :
+   118 px depuis le bas) recouvraient l element focalise au clavier quand le navigateur l amenait en bas d ecran ; marge de defilement basse reservee. */
+@media (max-width:768px){html:has(#nezBar):not(#z1){scroll-padding-bottom:calc(126px + env(safe-area-inset-bottom,0px))}}

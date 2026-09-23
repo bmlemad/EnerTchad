@@ -1,7 +1,7 @@
 /* dedoublonnage v2 */
 (function(){if(matchMedia("(hover:none)").matches)return;var sel=".pcard,.card-m,.cp-card,.voie-card,.fam-card,.esg-card,.app-card,.site,.divc",raf=0;addEventListener("pointermove",function(e){if(raf)return;raf=requestAnimationFrame(function(){raf=0;var el=e.target.closest&&e.target.closest(sel);if(!el)return;var r=el.getBoundingClientRect();el.style.setProperty("--mx",((e.clientX-r.left)/r.width*100)+"%");el.style.setProperty("--my",((e.clientY-r.top)/r.height*100)+"%");});},{passive:true});})();
 ;
-(function(){if(/(^\/$|index\.html$)/.test(location.pathname))return;var b=document.getElementById("homeFab");if(!b)return;addEventListener("scroll",(function(){var q=0;return function(){if(!q){q=1;requestAnimationFrame(function(){q=0;b.classList.toggle("show",scrollY>360);});}};})(),{passive:true});})();
+(function(){if(/(^\/$|\/index(-en)?(\.html)?$)/.test(location.pathname))return;var b=document.getElementById("homeFab");if(!b)return;addEventListener("scroll",(function(){var q=0;return function(){if(!q){q=1;requestAnimationFrame(function(){q=0;b.classList.toggle("show",scrollY>360);});}};})(),{passive:true});})();
 ;
 (function(){var t=[].slice.call(document.querySelectorAll('.nav-trigger')).filter(function(x){return x.textContent.trim().indexOf('Activités')===0})[0];if(!t)return;t.style.cursor='pointer';t.addEventListener('click',function(e){if(!matchMedia('(min-width:1241px)').matches)return;var l=document.querySelector('.nav-links a[href*="poles"]');if(!l)return;e.preventDefault();var loc=document.getElementById('poles');if(loc){loc.scrollIntoView({behavior:'smooth'});history.replaceState(null,'','#poles');}else{location.href=l.getAttribute('href');}});})();
 ;
