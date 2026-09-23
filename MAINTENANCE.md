@@ -29058,3 +29058,58 @@ la methode 697 annoncait 10,46:1 et la methode rendue mesure 6,26:1 (clair) et 1
 16,77:1 (sombre) -- toujours conformes, mais c est bien cet ecart que le 697 ne voyait pas.
 Reglages testes avant de fixer le quart : la moitie des pixels sous-estime le texte a 13,6 px
 (lisere anti-aliase majoritaire), le dixieme manque de pixels sur les textes courts.
+
+## 703 -- Trajectoire de capital : 100 M → 1 Md → 10 Md FCFA a cinq ans, sur tout le site et ses documents (2026-09-23)
+
+### Constat
+
+Demande du proprietaire, recue pendant le chantier suivant (contraste au rendu reel, reporte) :
+commencer le capital a 100 000 000 FCFA, puis 1 milliard et 10 milliards dans les cinq ans.
+Le site portait partout l ancienne trajectoire 10 M → 1 Md → 20 Md (cap « long terme »,
+« 4 ans + » sur le rail des jalons, 2030 sur le graphique des cibles). Recensement complet
+avant d agir, sur les 254 fichiers texte du site (HTML, JS, JSON, CSV, XML, MD, TXT) et sur les
+documents binaires : 217 fichiers texte touches, dont le bandeau « Souscrire au capital » de
+200 pages (101 FR, 99 EN), les pages investisseurs et cibles (rail SVG des jalons, cascade
+capitalistique, tuiles de trajectoire, graphique Chart.js et compteur anime), les meta et les
+JSON-LD, les trois pages arabes concernees, les flux RSS, llms.txt, la fiche presse, les
+index de recherche (recherche-fr.json, cmdk_en.js), les deux CSV ESG, et les quatre sources
+d impression de docs-sources. Cote documents : quatre PDF imprimes depuis docs-sources
+(brochures FR et EN, point d etape, fiche arabe), la fiche investisseur (PDF ReportLab dont
+le script de generation n existe plus dans le depot) et le data book xlsx. Le dossier
+investisseur pptx et les trois fiches techniques ne portaient pas ces chiffres.
+
+### Ce qui change
+
+Chiffres : 273 « 10 M » → « 100 M » (toutes formes : 10 M, 10&nbsp;M, 10M, 10 m, 10 millions,
+10 000 000, et la forme arabe de « 10 millions » → « 100 million »), 298 « 20 Md/bn/Bn/milliards/billion et « milliard » arabe » → 10, le
+graphique data:[10,1000,20000] → [100,1000,10000], le compteur data-count 20 → 10. Horizon,
+puisque la demande fixe cinq ans : les libelles « long terme » accoles au cap deviennent
+« a 5 ans » / « a cinq ans » (EN « within 5 years », « 5-year target » ; AR « l objectif dans cinq
+ans »), le rail des jalons « 4 ans + — Cap 20 Md » devient « 5 ans — Cap 10 Md », la
+tuile « 4 ans+ / Montee en puissance » devient « 5 ans », l etiquette du graphique « Long
+terme · 2030 » devient « A 5 ans · 2031 » (2026 + 5 ; le proprietaire peut trancher pour
+2030 si c est l annee voulue). Les deux libelles « H3 · 4 ans+ » de la molecule transformee,
+qui datent une phase industrielle et non le capital, ne bougent pas. Les regex protegent les
+autres nombres (« 110 millions de barils », constantes hexadecimales des scripts). PDF : les
+quatre PDF Skia sont reimprimes depuis leurs sources mises a jour avec les memes reglages (A4,
+fonds, taille de page CSS) ; la fiche investisseur est corrigee dans ses flux de contenu
+(polices Helvetica standard, chaines litterales), l etiquette « capital fondateur » decalee
+de 6,5 pt pour absorber le caractere supplementaire, la ligne « Long terme » du tableau
+renommee « A 5 ans ». Data book : quatre cellules (capital fondateur 100, capital vise a cinq
+ans 10 000 M FCFA, cible 10 Md 2031, horizon long) ; la seule formule du classeur intacte.
+sw.js et-202609230223 (cmdk_en.js partage).
+
+### Verifie
+
+Zero occurrence restante des anciennes formes sur les 254 fichiers texte ; les 72 contextes
+distincts de « 100 M » relus un par un, tous relatifs au capital. 691 blocs JSON-LD reparses
+valides, JSON et JS relus par un parseur, flux XML valides, comptes de balises inchanges sur
+chaque fichier. Rendu reel : rail des jalons, tuiles de trajectoire, cascade, graphique et
+mini-site arabe captures et relus (le retour a la ligne « fondateur · auj. » est anterieur,
+verifie sur le fichier d avant). PDF : meme nombre de pages qu avant (6, 6, 4, 2, 2),
+comparaison pixel a pixel page par page avec les anciens (seules les zones des chiffres
+different), texte extrait compare. Balayage complet 208 pages x 3 configurations : 624
+mesures, zero erreur, zero debordement. Publication en quatorze commits (racine en trois
+lots, sept repertoires, assets/data, assets/chrome), 223 fichiers identiques bit a bit entre
+le depot et la production, echantillon de pages et les deux index verifies en production sans
+ancienne forme, PDF investisseur en production relu.
