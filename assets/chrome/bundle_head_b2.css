@@ -9,7 +9,7 @@
   --hair:rgba(90,167,240,.12);--hair-d:rgba(11,20,34,.1);
   --fd:'Space Grotesk','Inter',system-ui,sans-serif;--fb:'Inter',system-ui,sans-serif;--fm:'JetBrains Mono',ui-monospace,monospace;
   --ease:cubic-bezier(.22,.61,.36,1);--r:18px;--rl:24px;
-  --shadow:0 24px 70px rgba(6,11,20,.55),0 4px 16px rgba(6,11,20,.35);--sy:clamp(42px,4.6vw,66px);--gut:clamp(20px,5vw,56px);--max:1240px;
+  --shadow:0 24px 70px rgba(6,11,20,.55),0 4px 16px rgba(6,11,20,.35);--gut:clamp(20px,5vw,56px);--max:1240px;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:116px;-webkit-text-size-adjust:100%;overflow-x:clip;scrollbar-gutter:stable}
