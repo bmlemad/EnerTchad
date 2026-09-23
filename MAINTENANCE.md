@@ -28591,3 +28591,415 @@ Non-fiabilite de la mesure confirmee par repetition controlee (meme page, meme s
 deux passages) : resultat stable a effet egal, mais ecart de pres de 100 regles selon un seul
 parametre (position de defilement final) sans rapport avec le contenu du fichier CSS lui-meme.
 Aucun fichier du site ne change ; seul le journal.
+
+## 695 -- Parite FR/EN du reseau aval : dashboard et flux de distribution traduits (2026-09-22)
+
+### Constat
+
+Chantier annonce en note du chapitre 692 : le mini-site EN de aval/reseau n avait jamais eu le
+tableau de bord temps reel ni le panneau de flux de distribution, faute de traduction plutot que de
+bug -- ces deux widgets chargent un fichier script distinct (assets/chrome/c_abd9013c3955.js, 41
+lignes) qui ne contenait ni la liste des stations ni le contenu du panneau de flux, ecrits en dur en
+francais dans le fichier FR (c_ac04328f0f47.js). Lecture complete de aval/reseau-en.html avant d
+ecrire une ligne de code : le gabarit HTML anglais contenait deja l essentiel de la traduction -- les
+quatre titres et descriptions des etapes du flux de distribution (boutons .dist-btn), le panneau de
+detail prerempli pour la premiere etape, et les trois chiffres cles de preuve de valeur (.dist-proof)
+-- redige par un chantier anterieur mais jamais rendu interactif faute de JavaScript. Restait a
+traduire : les etiquettes de statut des stations (operationnel, forte affluence, stock faible,
+maintenance), les produits par station, et les etiquettes courtes (dd-tags) du panneau de flux,
+absentes du HTML existant.
+
+Verification du vocabulaire etabli avant redaction plutot qu invention de termes nouveaux : recherche
+sur les pages EN existantes du site. "Operational" deja utilise a plusieurs reprises pour un statut d
+infrastructure ; "LPG" (plutot que "GPL") et "EV charging" (plutot que "IRVE") deja les traductions
+constantes des pages aval/*-en ; "Djermaya" toujours laisse tel quel (nom propre, y compris dans les
+meta-mots-cles EN) ; aucune page EN n employait encore de terme pour un stock faible ou une forte
+affluence, donc redaction sur le meme registre que le reste du site plutot que sur un choix isole.
+
+### Ce qui change
+
+assets/chrome/c_abd9013c3955.js : deux blocs ajoutes en fin de fichier, miroirs directs des deux
+blocs deja corriges au chantier 692 dans le fichier FR (memes gardes defensifs -- wrap/tx/vol/
+wait/pulse verifies avant usage, if(!btns.length||!panel)return -- pour ne jamais reproduire la
+panne en cascade du 692). Douze stations (noms propres inchanges, statuts et produits traduits :
+Diesel / Petrol / LPG, EV charging), quatre etiquettes de statut (Operational, High traffic, Low
+stock, Maintenance), et les quatre etapes du flux de distribution avec titre, texte long et quatre
+etiquettes courtes chacune, reprenant mot pour mot le vocabulaire deja present dans le HTML statique
+de la page (Local supply and depot, Hub stations and satellites, Mobile Station, End customer and
+B2B) pour que le contenu interactif corresponde exactement au contenu statique deja affiche avant
+clic. sw.js mis a jour (fichier chrome partage modifie).
+
+### Verifie
+
+En rendu local : douze stations peuplees dans #dash-stations, clic sur chaque etape du flux
+(.dist-btn) change bien le panneau (titre, texte, etiquettes), retour a la premiere etape identique
+au contenu statique d origine, zero erreur console. Six autres pages EN sans ces widgets testees en
+parallele : zero erreur, les gardes defensifs absorbent bien l absence des elements cibles. Balayage
+complet du site : 208 pages, 3 configurations (sombre/claire/mobile), 624 mesures, zero erreur
+console, zero reponse en echec, zero debordement. Publication verifiee : deux commits (assets/chrome,
+racine), contenu identique bit a bit entre le depot et la production apres redeploiement. Rendu final
+en production sur aval/reseau-en : douze stations peuplees, clic sur une etape du flux met a jour le
+panneau et ses etiquettes, zero erreur console.
+
+## 696 -- Contenu local formule pour l operateur E&P : la conformite au Code petrolier, pas seulement l argument de cout (2026-09-22)
+
+### Constat
+
+Demande explicite : mettre l accent sur le contenu local pour que les operateurs E&P se retrouvent
+sur le site. Inventaire du traitement existant avant toute redaction. Le contenu local est bien
+present, mais toujours sous deux angles qui ne parlent pas a un operateur : celui d EnerTchad
+elle-meme (l encadre "Notre signature" de amont/services-ep.html -- "Les specialistes de la
+reduction des couts -- parce que nous developpons le contenu local" -- argumente sur le fret, les
+devises et les semaines d attente evitees), et celui des communautes (communautes, impact,
+tchaditude). La page achats porte le traitement le plus concret (carte 03 : bonification des offres
+de droit tchadien, allotissement accessible aux PME, mise a niveau HSE-qualite avec Tchaditude,
+bassins d emploi proches des sites), mais s adresse aux fournisseurs. Nulle part le site ne disait a
+l operateur E&P que sous-traiter a EnerTchad renseigne sa propre obligation de contenu local au titre
+du Code petrolier tchadien -- alors que amont/activites, section prt-cadres, evoquait deja le Code et
+un "contenu local documente contrat par contrat" pour les consortiums.
+
+Cote recherche : l index de la palette Ctrl+K est double. Un tableau fige, identique dans deux
+fichiers chrome partages (c_df4f446df566.js, c_abd9013c3955.js), n est actif que sur les pages FR
+(EN?[]:[...]) ; et un index par rubrique, genere, dans cmdk_extra.js (FR, 189 entrees) et cmdk_en.js
+(EN, 162 entrees), charge selon la langue. Aucun des deux index ne pointait vers la section
+ofs-pourquoi (l argument economique et l encadre signature) : la requete "contenu local" ne
+renvoyait que des entrees communautes, impact et innovations. Un premier reperage par sous-agent
+avait conclu a l absence totale de mot-cle "local content" cote EN ; verification directe sur les
+fichiers : l entree en-104 (page services-ep-en) le contenait deja dans son texte extrait, mais sans
+"Chadian Petroleum Code" ni "compliance". Diagnostic corrige avant d agir.
+
+### Ce qui change
+
+amont/services-ep.html et amont/services-ep-en.html : un troisieme paragraphe dans l encadre "Notre
+signature" / "Our signature", meme style en ligne que le paragraphe precedent (police .95rem,
+interligne 1.65, marge haute 12px). Il s adresse a l operateur E&P : contenu local documente contrat
+par contrat (lien vers amont/activites#prt-cadres, ou le Code petrolier tchadien est deja cite), au
+titre du Code petrolier tchadien ; puis les trois mecanismes concrets repris mot pour mot de la carte
+03 de la page achats (lien vers achats#fournisseurs) -- bonification des offres de droit tchadien,
+lots dimensionnes pour les PME locales, montee en competence HSE et qualite via Tchaditude (lien) --
+et la tracabilite attendue des equipes conformite. Version EN sur le meme vocabulaire deja etabli :
+"Chadian Petroleum Code", "local content documented contract by contract", "bonus scoring for bids
+from Chadian-registered companies", "lot sizing ... within reach of local SMEs". Aucun terme
+invente, aucun chiffre nouveau. Les mentions existantes (tuile "80 % de contenu local vise", carte
+"HSE & contenu local") restent telles quelles.
+
+assets/chrome/cmdk_extra.js et cmdk_en.js : une entree ajoutee dans chacun, categorie Exploration &
+Production, meme schema que les entrees generees (c, id, t, k, url), id th-98 et en-ep-local-content,
+pointant vers services-ep#ofs-pourquoi (FR) et services-ep-en#ofs-pourquoi (EN), avec les mots-cles
+contenu local / code petrolier tchadien / conformite / obligation / operateur E&P / bonification /
+PME / Tchaditude (et leurs equivalents EN). Fichiers reecrits avec la meme mise en forme que l
+original (virgule-espace, deux-points-espace), verifies par analyse syntaxique. Le tableau fige des
+deux fichiers c_*.js n est pas touche. sw.js passe a et-202609221556 (deux fichiers chrome partages
+modifies).
+
+Une erreur de manipulation attrapee avant publication : le premier remplacement avait avale la
+balise fermante du paragraphe precedent (compte d ouvertures et de fermetures de paragraphes
+desequilibre) ; corrige, recompte a 188/188 sur chaque page.
+
+### Verifie
+
+En rendu local : encadre a trois paragraphes, cinq liens resolus (academie, natron, prt-cadres,
+achats#fournisseurs, tchaditude), toutes les cibles en 200. QA mobile a la demande : encadre a 390,
+360 et 320 px, themes sombre et clair, FR et EN -- texte 15,2 px / 25 px, aucun element hors ecran,
+couleur du texte bien basculee en theme clair (le style en ligne copie du paragraphe voisin herite
+des memes regles et-plight), liens lisibles ; palette de recherche ouverte au doigt sur mobile,
+largeur 361 px dans un ecran de 390, la nouvelle entree en premiere position pour "contenu local" et
+"code petrolier" (FR) comme pour "local content" et "petroleum code" (EN), y compris depuis des
+pages sans rapport (carrieres, accueil EN, eor-en) ; ancre ofs-pourquoi atterrissant sous la barre
+fixe, titre de section visible. Une capture d element grise a 320 px en theme clair s est revelee un
+artefact de capture (element plus haut que la fenetre) et non un defaut de page : capture de fenetre
+et styles calcules corrects. Balayage complet du site : 208 pages, 3 configurations, 624 mesures,
+zero erreur console, zero reponse en echec, zero debordement. Publication : trois commits (amont,
+assets/chrome, racine), les cinq fichiers identiques bit a bit entre le depot et la production apres
+redeploiement. Rendu final en production, bureau et mobile, FR et EN : trois paragraphes presents,
+palette renvoyant la nouvelle entree en premier, zero erreur console, zero debordement.
+
+## 697 -- Ultra QA visuelle du site : le theme clair concentre les defauts, vingt-six fichiers corriges (2026-09-22)
+
+### Constat
+
+Demande : une QA visuelle poussee de tout le site. Les balayages habituels mesurent les erreurs
+console, les reponses en echec et les debordements ; ils ne voient ni un texte blanc sur fond
+creme, ni un mot coupe dans une carte, ni une ancre qui atterrit sous la barre fixe. Instrument
+ecrit pour ce chantier, en deux etages. Premier etage, dans le DOM, sur les 208 pages et trois
+configurations (sombre 1440, claire 1440, sombre 390) : texte tronque par un debordement cache,
+chevauchements de blocs de texte, contraste calcule de chaque element textuel visible (fond
+recompose en remontant les calques, cas a degrade ou image signales comme incertains), images
+cassees, polices en echec, textes fantomes (None, undefined, NaN, accolades de gabarit), polices
+sous 11 px, cibles a taille nulle, cibles d ancre dont la marge de defilement est inferieure a la
+barre fixe. Second etage, au pixel, pour tout candidat contraste : l element est rendu avec une
+encre transparente, le fond reel sous sa boite est echantillonne, et le rapport est recalcule aux
+centiles 10, 50 et 90 -- ce qui tranche les fonds a degrade, a verre ou a photo que le calcul DOM ne
+sait pas lire. 150 candidats de la premiere passe, puis une passe large sur les titres, les heros,
+les accroches, les liens et les boutons de toutes les pages : 4 567 elements en theme clair, 4 571
+en theme sombre.
+
+Le theme sombre ressort sain : deux seuls echecs, un lien masque de la page recherche (boite d un
+pixel) et les accroches vertes de aval/produits-en. Le theme clair concentre les vrais defauts,
+tous de la meme famille : une regle generique de theme clair (encre sombre sur tout p, span, li,
+liens ou titres de main) ecrase une couleur posee localement pour un fond qui, lui, est reste
+sombre -- ou l inverse, une regle ecrite pour un fond sombre survit apres que le fond est passe au
+clair. Onze familles confirmees a l ecran, capture a l appui :
+
+- Bandeau d appel a l action des 64 pages Carnets (et-jlight) : titre blanc sur creme (1,06:1) et
+  accroche doree (1,59:1). Les regles jlight du bandeau (bundle_core_a1.css) datent d un bandeau
+  force en bleu nuit ; le bloc fusion-ft-logo l a depuis rendu clair en jlight comme en plight,
+  sans reprendre les encres. Une regle de correction existait (encre or fonce pour .cb-k) mais
+  perdait la cascade a un :not() pres -- meme mecanique qu au 679. Le lien « Aller au contenu »,
+  visible au focus clavier, y etait bleu fonce sur bleu nuit (1,62:1). Et sur les 187 bandeaux du
+  site, l em degrade « bati au Tchad » restait or pale et bleu pale sur creme en theme clair.
+- nos-activites FR/EN : titre et chapeau du hero blancs sur creme (1,14:1 et 1,04:1) -- la regle
+  plight [class*="hero"] force le blanc pour les heros photo et attrape .na-hero, sans photo ; la
+  correction locale de la page (.na-lead en encre sombre) perdait a la specificite. Meme page :
+  aucune marge de defilement, les ancres internes (chaine des poles, titres de section) atterrissent
+  sous la barre fixe -- la page ne charge pas les feuilles communes qui la posent.
+- Accueil FR/EN : les trois boutons « Explorer … » forces en bleu par la regle plight des liens,
+  sur jaune, cyan et ambre (2,7 a 3,8:1) au lieu de l encre bleu nuit prevue ; meme bug sur le
+  bouton « Composer votre service integre » d intermediaire (4,22:1).
+- Brochure FR/EN : la section « moteurs de marge » vit dans le footer ; en theme clair, le footer
+  passe ses encres en sombre mais les cartes gardent leur fond bleu nuit translucide (2,78:1 sur
+  les titres, 1,85:1 sur les textes, 3,9:1 sur le chapeau, ce dernier tenu par une regle a cinq
+  identifiants factices).
+- Tchaditude FR/EN : legendes de la galerie photo en encre sombre sur photo (1,1 a 1,7:1) et voile
+  degrade des vignettes supprime par la regle plight qui retire les images de fond des div.
+- TchadiTech FR/EN : numeros de recit lavande (2,65:1) et liens or (4,2 et 4,4:1) sur des cartes
+  devenues gris moyen par le verre clair. Clients FR/EN : accroches sectorielles en couleur d accent
+  attenuee par un filtre de luminosite insuffisant (3,0 a 4,3:1 mesures au pixel, filtre compris).
+  Cibles 2030 FR/EN : legende du tableau (3,06:1). Recherche FR/EN : lien vers le plan du site dans
+  un paragraphe a 70 % d opacite (3,7:1). Accueil : legende du schema (4,13:1).
+- Produits, raffinage et reseau EN, outils TchadiTech FR : le bloc de reparation contraste du theme
+  sombre (tache 92, 4 249 caracteres, identique sur 42 pages) manquait alors que le jumeau l avait
+  -- accroches vertes a 3,1-3,3:1 sur bleu nuit sur produits-en.
+- Intermediaire FR : « d approvisionnement » coupe dans une carte trop etroite (gras en flex, mot
+  insecable). Calculateur, mobile : etiquette « Operateur & partenaires » tronquee sans points de
+  suspension dans la barre de partage, dont la largeur suit la part de l Etat saisie ; son ancre de
+  contenu principal atterrissait aussi 50 px sous la barre.
+
+Ecarte apres verification, et non corrige : « None » dans deux cellules d engagements-en (valeur
+anglaise legitime), les 1 264 chevauchements remontes (cartes a retournement recto-verso, accordeons
+replies, liens etendus sur toute une carte, boites de lignes en ligne), les liens SVG a taille nulle
+de la frise investisseurs-en en mobile, les 323 textes sous 11 px (dates des carnets, unites, choix
+editoriaux constants), les titres a degrade dont la boite depasse de quelques pixels sans rien
+couper, le bouton « Demander mon devis » de la boutique mesure a 2,3:1 mais desactive tant que le
+panier est vide, et le em degrade du bandeau au 25e centile (pixels d antialiasing, non du texte).
+
+### Ce qui change
+
+assets/chrome/bundle_core_a1.css : titres du bandeau en jlight passes en encre sombre sans ombre
+portee, paragraphes du bandeau en encre sombre, accroche .cb-k en or fonce (la valeur deja retenue
+en plight), lien « Aller au contenu » en blanc sous jlight, et degrade fonce (or fonce vers bleu
+fonce) pour l em du bandeau en plight comme en jlight. assets/chrome/plight_extrait.css (les sept
+pages qui ne chargent pas bundle_core) : les deux memes regles em et skip-link. sw.js mis a jour
+(deux feuilles partagees modifiees).
+
+nos-activites FR/EN : encre sombre du titre et du chapeau du hero a specificite suffisante, et les
+trois paliers de marge de defilement du site (95, 111, 150 px) recopies dans la feuille de la page.
+index FR/EN : encre bleu nuit des boutons de pole en theme clair, legende du schema a 72 %.
+intermediaire FR/EN : meme encre bleu nuit pour le bouton Composer ; overflow-wrap:anywhere sur les
+titres de cartes. clients FR/EN : filtre de luminosite des accroches abaisse de 0,62 a 0,45 (les
+couleurs d accent restent, assombries). tchaditech FR/EN : lavande et or des cartes eclaircis
+(C4B5FD, E8C36A). cibles-2030 FR/EN : legende en gris fonce sous plight. brochure FR/EN : cartes en
+blanc a 66 % et chapeau en encre sombre sous plight (regle a six identifiants factices, un de plus
+que celle du footer). tchaditude FR/EN : legendes en blanc et voile degrade retabli sous plight.
+recherche FR/EN : opacite du paragraphe de 0,7 a 0,85. Calculateur : les segments de la barre de
+partage passent en bloc centre avec points de suspension ; les trois paliers de marge de
+defilement remplacent les 80 px. aval/produits-en, raffinage-en, reseau-en, tchaditech/outils :
+bloc etDarkFix insere a la meme place que sur le jumeau (apres etLightFix, avant et-mhf) ; les 46
+copies sont identiques a l octet.
+
+Aucun texte, aucun chiffre, aucune image ne change. Vingt-six fichiers, six commits (racine,
+assets/chrome, aval, tchaditech, tchaditude, intermediaire).
+
+### Verifie
+
+Chaque famille corrigee remesuree au pixel en local : bandeau des Carnets 9:1 et plus (titre,
+accroche, em), nos-activites hero 12:1, boutons de l accueil et d intermediaire 7:1 et plus,
+brochure 8 a 15:1, Tchaditude 5,3 a 19:1, TchadiTech 4,6 a 5,6:1, Cibles 4,9:1, produits-en
+4,9 a 5,3:1, accroches Clients 4,2 a 12:1 mesurees sur le texte rendu filtre (la methode a encre
+transparente ignore le filtre et les affiche a tort en echec). Captures apres correction : bandeau
+Carnets en clair, hero nos-activites en clair, cartes brochure, focus du lien d acces rapide,
+carte « Continuite d approvisionnement » entiere, barre de partage mobile avec points de
+suspension, ancres du Calculateur a 150 et 111 px sous le bord. L instrument DOM rejoue sur les 26
+pages : plus aucun contraste en echec sur fond uni, plus aucune ancre sous la barre hors elements
+masques. Balayage complet du site : 208 pages, 3 configurations, 624 mesures, zero erreur console,
+zero reponse en echec, zero debordement ; balayage supplementaire des 9 pages touchees par les deux
+feuilles partagees, zero erreur. Publication : six commits, 26 fichiers identiques bit a bit entre
+le depot et la production (les cinq index et le Calculateur verifies via leur URL canonique, les
+URL /index renvoyant une redirection). Verification finale en production au pixel sur 40 elements
+des pages corrigees : 34 conformes, les 6 « echecs » restants etant les accroches Clients mesurees
+par la methode aveugle au filtre, remesurees sur texte rendu en production entre 4,2 et 12:1.
+
+## 698 -- QA visuelle, volet 2 : theme clair sur mobile, tablette, textes courants au pixel (2026-09-23)
+
+### Constat
+
+Suite du 697, qui avait couvert le sombre et le clair en 1440 et le sombre en 390, et verifie au
+pixel les titres, heros, accroches, liens et boutons. Restaient trois conditions jamais mesurees
+(clair 390, sombre et clair 1024 -- la largeur ou la navigation passe en tiroir) et toute la masse
+des textes courants (paragraphes, listes, cellules, legendes, libelles) que la passe pixel du 697
+n avait pas echantillonnee. Meme instrument, elargi : le balayage DOM accepte desormais une liste
+de conditions, et la passe pixel accepte des selecteurs par page ; pour les 64 pages Carnets, qui
+n ont pas d element main (un article role=main), les selecteurs sont pris sans prefixe -- le
+premier passage les avait silencieusement sautees, corrige avant conclusion.
+
+Resultat : 624 nouvelles mesures DOM (3 conditions x 208 pages), zero contraste en echec sur fond
+uni, zero ancre sous la barre, memes faux positifs qu au 697 (None legitime, liens SVG, textes
+sous 11 px). Au pixel, 2 591 textes courants en clair 1440 et 2 327 en clair 390, tous conformes
+sauf un : l encadre .note de ar-investisseurs, encre sombre sur un fond bleu nuit translucide
+(3,4:1). Cause : la regle verre v2 qui blanchit les .note en theme clair vit dans bundle_core_a1
+et plight_extrait, que les huit pages arabes ne chargent pas (elles chargent l extrait
+x_cd256286824c.css). Verifie sur les 45 pages portant un .note : toutes conformes, 6,7 a 17:1,
+sauf les deux pages arabes concernees. Le tiroir de navigation ouvert a 390 verifie a l oeil en
+clair et en sombre, sur trois gabarits : conforme. Un seul debordement de texte trouve en tablette :
+« l approvisionnement » sortant de sa carte sur aval/distribution a 1024 (mot insecable dans une
+colonne de 121 px). Chromium sans dictionnaire ne coupe pas les mots (hyphens:auto sans effet en
+rendu local) : cesure douce posee dans le mot, coupure propre avec trait d union partout.
+
+### Ce qui change
+
+assets/chrome/x_cd256286824c.css : la regle verre v2 des .note en theme clair, reprise a l
+identique de bundle_core_a1 (fond blanc a 52 %, encre 3A4657, flou, bordure). sw.js mis a jour.
+aval/distribution.html : cesure douce dans « l approvisionnement » et overflow-wrap:anywhere en
+filet. intermediaire/index.html : la meme cesure douce dans « Continuite d approvisionnement »,
+que le 697 ne faisait que casser sans trait d union. Quatre fichiers, quatre commits.
+
+### Verifie
+
+Encadre .note des pages arabes remesure en clair : 8,8:1, capture a l appui ; les 43 autres
+pages a .note inchangees. Cartes distribution (1024) et intermediaire (1440) capturees apres
+correction : coupure « l approvi-sionnement » avec trait d union. Balayage complet : 208 pages, 3
+configurations, 624 mesures, zero erreur, zero debordement. Publication : quatre commits,
+quatre fichiers identiques bit a bit entre le depot et la production.
+
+## 699 -- Ultra review de coherence de la home : tuiles et bandeaux (2026-09-23)
+
+### Constat
+
+Demande : une revue de coherence de l accueil, tuiles et bandeaux. Instrument ecrit pour ce
+chantier (home699.js) : inventaire section par section, FR et EN, deux themes, 1440 et 390 --
+geometrie de chaque section (hauteur, marges, largeur et position de la colonne), titre et
+accroche (police, taille, graisse, interlettrage, couleur), familles de tuiles (nombre, rayon,
+bordure, fond, verre, hauteurs des soeurs, titre, texte, accroche interne) et boutons (hauteur,
+rayon, police, taille, fond). Neuf sections apres le hero, 10 en tout, memes sections et memes
+comptes de tuiles en FR et en EN, hauteurs egales dans chaque rangee, une seule grille de 1200 px
+a x=115 (heritage du 661), un seul corps de titre a 37,6 px. Puis captures de chaque section dans
+les deux themes et lecture a l oeil.
+
+Ce qui tient : la hierarchie des rayons (20 px pour les grandes cartes -- triptyque, durabilite,
+carnets, agir --, 14 px pour les petites -- documents, communiques, cartes chiffres --, 12 px pour
+les compteurs du triptyque), le verre la ou le 678/679 l a pose (triptyque, durabilite,
+documents, carnets) et l opacite des cartes Agir et communiques, que le 624 protege deliberement
+pour la performance de l accueil ; la bande « Rejoindre EnerTchad » sous le trio Agir, doublon
+apparent de la carte « Nous rejoindre », est un choix explicite du 546 (pilier carrieres au
+gabarit des majors) ; les chiffres se repondent d une section a l autre (26 blocs libres du
+triptyque et du cadastre, 11 attribues et 2 en production repris dans les puces de la carte,
+10 M -> 1 Md -> 20 Md du hero et de la carte Investir) ; le fil des jalons date correctement le
+15 septembre comme « date visee passee » et le 29 comme « prochain ».
+
+Ce qui ne tenait pas, six points :
+- Trois titres de section sur neuf en graisse 700 (durabilite, jalons, reperes) contre 800
+  partout ailleurs -- le 661 avait unifie la taille et l interligne, pas la graisse.
+- Deux accroches (durabilite, reperes) a 10,9 px et interlettrage 0,16 em contre 11,2 px et
+  0,2 em pour les six autres.
+- Le bouton « Decouvrir notre vision » de la section chiffres en pilule mono (rayon 999, 13,4
+  px), seul survivant du systeme de boutons du 39, alors que le canon actuel de la page -- hero,
+  triptyque, bande carrieres, confirme au 546 -- est rayon 12 px, Inter 14,4 px, graisse 700.
+- Le slogan anglais en deux versions sur la meme page : h1 « From source rock to pump » contre
+  le bandeau final « From source rock to the pump » (canon fixe par un chantier anterieur qui
+  avait aligne 78 bandeaux sur « to the pump » mais laisse le h1, les meta, la description
+  structuree et la legende du schema de la home). Note pour la suite : 33 autres pages portent
+  encore « to pump » (62 occurrences, six repertoires), a aligner dans un chantier dedie.
+- Le seul titre de section sans point final (« Le cadastre petrolier 2025, en un regard » /
+  « at a glance ») quand les huit autres en ont un.
+- La note « Fournisseurs : ... Une question : le contact direct » sous Agir, coupee par la
+  mesure de lecture de 60 ch juste apres « le », orpheline « contact direct » sur la ligne
+  suivante, en 1440 comme en 390.
+
+### Ce qui change
+
+index.html et index-en.html seulement. Bloc h661 : graisse 800 ajoutee a la regle qui unifie
+deja les titres de section ; une regle pour .dur-k et .doc-k a .7 rem / .2 em (les valeurs de
+.sec-k). Bloc du 39 : main a.hxi-cta passe de pilule mono a rayon 12 px, Inter, .9 rem, 11/18 px
+-- exactement .t550-b1 et .car546-b1. index-en : huit occurrences de « from source rock to pump »
+passees a « to the pump » (h1, meta description, Open Graph, Twitter, JSON-LD, legende et titre
+SVG du schema). Point final sur le titre du cadastre, FR et EN. La note fournisseurs : « Une
+question : le contact direct » enveloppee dans un span insecable, FR et EN. Aucune couleur
+touchee (les regles de theme clair l emporteraient sur les titres), aucun fichier partage, pas
+de version de service worker a bouger.
+
+### Verifie
+
+Inventaire rejoue apres correction : neuf titres a 800, huit accroches a 11,2 px / 2,24 px,
+bouton vision a 12 px Inter 14,4 px comme ses pairs, memes comptes FR/EN. Captures : section
+chiffres (bouton au canon), hero EN a 1440 et 390 (h1 sur deux lignes, comme avant), Agir en
+390 (note sur deux lignes propres). Balayage des deux pages, trois configurations : zero erreur,
+zero debordement. Publication : un commit, deux fichiers identiques bit a bit entre le depot et
+la production ; verification finale en production : graisses, accroches, bouton, slogan, point
+final et span confirmes sur les deux pages.
+
+## 700 -- Liquid glass, home : la totalite de l accueil rejoint le verre transparent du heros (2026-09-23)
+
+Entree reconstituee depuis le registre : chantier mene dans une autre session, en parallele
+du 699 et du 701, et non publie depuis cette session-la (ni navigateur ni git push
+disponibles) -- fichiers livres au proprietaire, sw.js prevu a et-202609230032. Le texte
+ci-dessous reprend la description du registre.
+
+### Constat
+
+Demande explicite : le meme verre transparent que le heros sur toute la home. Inventaire en
+rendu reel des surfaces de l accueil, deux themes, FR et EN : sous le heros (sans plaque, il
+laisse voir le decor), le triptyque, les cartes durabilite, les carnets et les documents
+portaient deja le verre des 678/679, mais six familles restaient des plaques opaques heritees
+du 623 (tuiles retournables des chiffres cles, panneau du cadastre, communiques, cartes agir,
+bandeau carrieres, bandeau final). Specificite gagnante mesuree par le CSSOM : la regle du 623
+a 23 identifiants factices.
+
+### Ce qui change
+
+Bloc glass700 ajoute apres le glass679 dans les deux pages d accueil (27 identifiants), aucune
+valeur inventee : verre du triptyque 678 pour les trois grands panneaux (reflet ::before a
+border-radius:inherit), verre des cartes 679 pour les trois familles de cartes, bordure doree
+de la face arriere des tuiles conservee, repli transparence-reduite dans les deux themes,
+calques ambiants toujours figes. sw.js et-202609230032.
+
+### Verifie
+
+Remesure DOM deux themes, controle negatif sur les quatre familles deja en verre (identiques),
+tuiles retournables exercees au survol, contraste par pixels sur 17 textes (pire 6,58:1
+sombre, 6,94:1 clair), balayage FR/EN et page temoin en trois conditions sans erreur ni
+debordement. Non publie depuis cette session : fichiers livres au proprietaire.
+
+## 701 -- Slogan anglais aligne sur « from source rock to the pump » sur tout le site (2026-09-23)
+
+### Constat
+
+Le 699 avait note, apres avoir aligne la home EN, que 33 autres pages portaient encore la
+version courte « from source rock to pump » alors que le canon du site -- fixe quand 78 bandeaux
+de fin de page avaient ete passes a « to the pump » -- est la version longue. Recensement
+complet, sans se limiter aux pages : 124 occurrences dans 35 fichiers. Cote HTML, 32 pages
+(h1, meta description, Open Graph, Twitter, JSON-LD, legendes de schema, brochure imprimable
+des docs-sources, plan du site EN) reparties sur six repertoires : racine, amont, aval,
+docs-sources, enerconseils, tchaditech. Cote donnees partagees, trois index de recherche EN
+ou la version courte survivait et remontait donc dans la palette de commandes et la page de
+recherche : cmdk_en.js (22), ftx_en.json (1), recherche-en.json (47).
+Numerotation : les huit commits portent le libelle Ch700 ; le registre s est revele porter
+deja un 700 (liquid glass home, autre session), ce chantier est donc journalise 701.
+
+### Ce qui change
+
+Remplacement litteral « rom source rock to pump » → « rom source rock to the pump » (majuscule
+initiale preservee, pas de regex) dans les 35 fichiers ; aucune autre chaine touchee. Deux
+actifs partages (cmdk_en.js, ftx_en.json) changent, donc sw.js passe a et-202609230028.
+Rien en FR ni en AR : le slogan francais « de la roche mere a la pompe » n a qu une version.
+
+### Verifie
+
+Avant/apres : zero « to pump » restant sur l ensemble du site (grep sur les 208 pages et les
+actifs), 124 occurrences alignees. Les 331 blocs JSON-LD du site reparses apres modification
+(tous valides) ; les trois index JSON/JS relus par un parseur. Balayage des 99 pages EN
+touchees ou dependantes en trois configurations (297 mesures) : zero erreur, zero debordement,
+pas de changement de geometrie puisque seul un article change dans un texte deja sur plusieurs
+lignes. Publication en huit commits (un par repertoire), 36 fichiers avec sw.js, tous
+identiques bit a bit entre le depot et la production ; verification finale en production sur
+un echantillon de pages et sur les deux index : plus aucune occurrence de la version courte,
+version du service worker en ligne.
