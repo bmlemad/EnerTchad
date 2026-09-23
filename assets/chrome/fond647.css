@@ -408,3 +408,18 @@ html.et-jlight body .nav.scrolled:not(#z1):not(#z2):not(#z3):not(#z4):not(#z5):n
   background:rgba(255,255,255,.16)!important;
   -webkit-backdrop-filter:blur(4px) saturate(150%)!important;backdrop-filter:blur(4px) saturate(150%)!important;
 }
+
+/* Ch704 - contraste au rendu reel, theme clair : les textes attenues par opacite remontent au seuil 4,5:1
+   (encre calculee melangee au fond selon l opacite effective). Valeurs minimales, la hierarchie reste visible. */
+html.et-plight .sec-k:not(#z1):not(#z2){opacity:.8!important}
+html.et-plight .fn-d:not(#z1):not(#z2){opacity:.95!important}
+html.et-plight .fn-alt:not(#z1):not(#z2){opacity:.95!important}
+html.et-plight .pr-k:not(#z1):not(#z2),html.et-plight .pr-card em:not(#z1):not(#z2){opacity:.8!important}
+html.et-plight .org604 .box li em:not(#z1):not(#z2){opacity:1!important}
+html.et-plight #histoire .he p:not(#z1):not(#z2){opacity:.95!important}
+html.et-plight #cadre-reporting .frm-off:not(#z1):not(#z2){opacity:.88!important}
+html.et-plight #comparer .cl-hint:not(#z1):not(#z2){opacity:.8!important}
+html.et-plight .jn-dep-h span:not(#z1):not(#z2){opacity:.85!important}
+html.et-plight label[for="schQ"]:not(#z1):not(#z2){opacity:.82!important}
+html.et-plight #schQ + p:not(#z1):not(#z2){opacity:.8!important}
+html.et-plight #schE:not(#z1):not(#z2){opacity:1!important}
