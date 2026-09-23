@@ -17,9 +17,9 @@
 - **Contact presse** : contact@enertchad.td · +235 99 29 86 96
 
 ## Capital (trajectoire visée)
-- Capital fondateur : 10 000 000 FCFA
+- Capital fondateur : 100 000 000 FCFA
 - Levée court terme visée : ~1 Md FCFA
-- Horizon long terme visé : ~20 Md FCFA
+- Horizon à cinq ans visé : ~10 Md FCFA
 - Partenaire investissement : GCIC
 
 ## Organisation
