@@ -29421,3 +29421,60 @@ XML reparse (206 url). Un commit, fichier identique bit a bit entre le depot (lu
 apres fetch) et la production, servi en application/xml ; en production : 203 dates au 23,
 3 au 22. Script rejoue apres publication : zero date a changer. Un commit (libelle Ch711 ;
 journalise 712, le registre portant deja un 711 d une autre session au meme sujet).
+
+## 713 -- Fraicheur du flux RSS : lastBuildDate bloque au 2 septembre malgre deux changements de contenu (2026-09-23)
+
+Entree reconstituee depuis le registre (autre session, non publie depuis celle-ci : ni
+navigateur ni git push disponibles).
+
+### Constat
+
+feed.xml et feed-en.xml annoncaient lastBuildDate au 2 septembre 08:10:21 UTC alors que le
+contenu du flux avait change le 8 septembre (communique CP-2026-011) et le 23 septembre
+(chantier 703, description du CP-2026-004). Production identique au depot, meme date perimee.
+
+### Ce qui change
+
+Une ligne par fichier : lastBuildDate reporte a l heure du chantier. Aucun item, pubDate,
+guid ni description touche. Pas de sw.js.
+
+### Verifie
+
+Diff isole a une ligne par fichier, XML reparse valide, items identiques avant/apres.
+Fichiers livres au proprietaire, a publier par une session disposant du navigateur.
+
+## 714 -- Volet mobile du contraste au rendu reel : une regression du 705 trouvee et corrigee (2026-09-23)
+
+### Constat
+
+Les 705 et 710 n avaient mesure le contraste au rendu reel qu en 1440. Meme instrument a 390
+px, deux themes (cands713.js puis contrast704.js) : 3 107 textes attenues par opacite, filtre
+ou fusion sur les 208 pages. 2 978 conformes. Parmi les echecs, un seul vrai defaut, et il
+venait du 705 lui-meme : sa regle html.et-plight .sec-k {opacity:.8} devait remonter les
+accroches attenuees en ligne a .65 (seize pages de pole), mais elle s appliquait aussi aux
+.sec-k qui n avaient aucune opacite -- et les baissait donc de 1 a .8. Verifie sur tout le
+site en comparant chaque element avec et sans chaque regle du bloc 705 (lower713.js) :
+16 accroches sur 8 pages (accueil FR/EN, nos-activites FR/EN, carrieres FR/EN, contact FR/EN)
+baissees, les accroches d or de l accueil tombees a 3,86:1 en mobile. Aucune autre regle du
+bloc ne baissait quoi que ce soit. Le reste des echecs : deja connus (em du heros de la
+brochure sous filtre, bouton de devis desactive) ou faux : deux elements masques mesures a
+la place de leur double visible -- les numeros 01-03 d un lien du mega-menu de solutions
+(ferme en mobile) et le lien « plan du site » du message sans resultat de la recherche
+(masque tant qu aucune recherche n echoue). L instrument prend desormais l occurrence
+visible quand plusieurs elements portent la meme signature et le meme texte.
+
+### Ce qui change
+
+fond647.css : la regle devient html.et-plight .sec-k[style*="opacity:.65"] -- elle ne
+touche plus que les 24 accroches attenuees en ligne, qu elle ne peut que remonter. sw.js
+et-202609231900.
+
+### Verifie
+
+Comparaison avec et sans le bloc rejouee sur les 208 pages : plus aucune opacite baissee.
+Accroches de l accueil a 5,9-6:1 en 390 et 1440, accroches attenuees des poles toujours a
+6,1:1, carrieres a 10,4:1. Balayage complet 208 pages x 3 configurations : 624 mesures, zero
+erreur. Publication differee de quelques heures (navigateur du proprietaire injoignable) ;
+depot relu avant publication, inchange depuis le 712. Deux commits (libelles Ch713 ; journalise 714, le
+registre portant deja un 713 d une autre session), deux fichiers identiques bit a bit entre le depot et la production ; remesure en production : 5,8 a 10,5:1. Sitemap :
+aucune page modifiee, aucune date a changer.
