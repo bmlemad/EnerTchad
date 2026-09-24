@@ -12,7 +12,7 @@
 
 ## Coordonnées
 - **Siège** : Block D, 2e étage, bureau 23, Quartier Sabangali, Cité du 1er décembre, N'Djamena, Tchad
-- **RCCM** : N'DJ/RC/2026-A-0001
+- **RCCM** : immatriculation en cours
 - **Domaine** : enertchad.td
 - **Contact presse** : contact@enertchad.td · +235 99 29 86 96
 
