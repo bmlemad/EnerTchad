@@ -29665,3 +29665,94 @@ sitemap identiques bit a bit entre le depot et la production ; relu en productio
 mentions, JSON-LD, brochure a 10 Md, kit presse. Note : la diapositive 13 porte « RCCM
 N DJ/RC/2026-A-0001 » alors que le site dit l immatriculation en cours -- laisse, a trancher par
 le proprietaire.
+
+## 720 -- Images des intrants Petrochimie : le correctif du 718 remesure et redimensionne, republication toujours bloquee (2026-09-24)
+
+Entree reconstituee depuis le registre (chapitre inscrit par une autre session, sans navigateur,
+non publie).
+
+### Constat
+
+Le depot et la production servaient encore les huit sacs d intrants de
+petrochimie/chimie-eor(-en).html a 580x1180 px, 177 768 octets au total -- identique au chiffre
+du 718, donc rien n avait ete publie. Remesure independante (16 largeurs 320-1920, deux themes,
+deux pages) : 368 px physiques au plus, proche des 354 px du 718.
+
+### Ce qui change (hors depot)
+
+Huit webp a 380x773 px qualite 85 (177 768 -> 118 716 octets, -33 %), seize width/height mis a
+jour, sw.js prepare a et-202609240625. Fichiers livres au proprietaire, non publies.
+
+### Verifie (par l autre session)
+
+32 mesures ciblees (dimensions naturelles exactes, zero erreur), balayage 216 pages x 2
+configurations, diff limite aux onze fichiers attendus. Premier instrument lisait la taille de
+rendu CSS au lieu de naturalWidth -- corrige avant conclusion. Etat au 24 septembre apres le 722 :
+le depot sert toujours les images a 580x1180 ; sw.js en production est et-202609240442 (721), le
+sw prepare par cette session devra etre remonte au-dessus s il est publie.
+
+## 721 -- Audit des tuiles : pastilles de pole coupees et tuile orpheline des documents de l accueil (2026-09-24)
+
+### Constat
+
+Demande du proprietaire : auditer les tuiles. Instrument tiles718.js : chaque famille de
+tuiles freres (grilles et rangees flex d au moins deux elements) mesuree sur 191 pages en trois
+conditions (sombre 1440, clair 1024, sombre 390) -- 3 410 groupes, 13 552 tuiles, 133 familles :
+geometrie, alignement, rayons, bordures, fonds, titres, texte coupe ou deborde, recouvrements.
+84 chargements en echec (delai ou cadre detache, petrochimie surtout), rejoues seuls sans erreur.
+299 groupes signales, relus un a un : l essentiel sont des faux positifs de l instrument
+(accordeons .tri-c replies, details fermes, faces arriere des tuiles retournables, colonnes de
+journal) ou des choix de dessin (nombre impair de tuiles). Deux vrais defauts :
+1) les pastilles .plc-badge des cartes de pole (384 sur les pages pole et index de pole) etaient
+en nowrap avec points de suspension : a 1024 et en mobile, « Criblage · chimie EOR »,
+« + Commercialisation » et d autres s affichaient tronquees ;
+2) accueil FR/EN, section Reperes : quatre tuiles documents en auto-fit minmax(220px) -- entre
+521 et 1180 px, trois colonnes et une tuile seule sur la seconde ligne.
+
+### Ce qui change
+
+fond647.css : .plc-badge passe a la ligne (white-space normal, overflow visible, rayon 12 px,
+interligne 1,35) au lieu d etre coupe. index.html et index-en.html : grille des documents a deux
+colonnes entre 521 et 1180 px (2 x 2). Remesure en production apres publication : une pastille
+restait plus large que sa colonne a 320 px (« + Commercialisation », mot unique de 144 px dans
+133 px) -- cesure douce Commercia&shy;lisation dans aval/index.html. sw.js et-202609240442.
+
+### Verifie
+
+Pastilles : 384 mesurees a six largeurs (1440 a 320), zero coupee, zero debordement, en
+production. aval/index.html a huit largeurs (320 a 1920) : zero coupee, zero debordement, zero
+erreur ; capture relue a 320. Grille documents : deux colonnes a 768 et 1024, une colonne a 520
+et 390, quatre a 1440 ; captures relues. Balayage 208 pages x 3 (624 mesures) sans erreur avec
+le 722. Commits : fond647.css (2c58f91, libelle Ch720), accueils et sw.js dans les lots racine
+du 722 (5bef018, 86ddbe6, 696d897), aval (7790e2a) ; identiques bit a bit en production, sw.js
+servi a et-202609240442. Numerotation : libelles Ch720 ; journalise 721, le registre portant deja
+un 720 d une autre session.
+
+## 722 -- Adresse complete du siege dans le pied de page de tout le site (2026-09-24)
+
+### Constat
+
+Suite du 719 : l adresse complete etait dans le JSON-LD, contact et mentions legales, mais la
+ligne legale du pied de page (197 pages) ne portait que « EnerTchad S.A. (societe en
+constitution) · OHADA/AUSCGIE », et les blocs d identite de l accueil et de societe ne donnaient
+que la ville. Le proprietaire a confirme vouloir l adresse aussi en pied de page.
+
+### Ce qui change
+
+Pied de page FR : « (societe en constitution) · Block D, 2e etage, bureau 23, Quartier
+Sabangali, Cite du 1er decembre, N Djamena, Tchad · OHADA/AUSCGIE » ; EN : « (company in
+formation) · Block D, 2nd floor, Office 23, Sabangali district, Cite du 1er Decembre, N Djamena,
+Chad · OHADA/AUSCGIE ». Accueil : Siege social / Registered office en adresse complete ; societe
+FR/EN : pastille Siege / Head office idem. Aucune feuille partagee touchee par ce chapitre.
+
+### Verifie
+
+197 pages portent la ligne, zero ancienne forme restante ; rendus relus a 1440 et 390 dans les
+deux themes (pied de page amont, accueil, societe), zero debordement, zero erreur. Balayage 208
+pages x 3 : 624 mesures, zero erreur. Commits (libelles Ch721) : amont, aval, intermediaire,
+petrochimie, enerconseils, tchaditech, greentech, tchaditude, racine en trois lots (86ddbe6,
+5bef018, 696d897), sitemap (460b563, 111 lastmod au 24 septembre). 199 fichiers identiques bit a
+bit entre le depot et la production ; relu en production : adresse presente dans le pied de page
+de six pages temoins FR/EN, bureau et mobile. Numerotation : libelles Ch721 ; journalise 722.
+Reste ouvert : RCCM chiffre sur la diapositive 13 du dossier investisseur alors que le site dit
+l immatriculation en cours.
