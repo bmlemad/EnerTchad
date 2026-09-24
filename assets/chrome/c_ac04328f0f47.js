@@ -228,12 +228,21 @@ const BASINS={
   doba:{k:'En production',t:'Bassin de Doba',d:"Le bassin historique en production\u00A0: cœur de l’activité E&P, brut tchadien (~21° API) exporté via le corridor d’export national. EOR chimique ASP (Natron Na₂CO₃, biopolymère, tensioactif local).",s:[['144 kb/j','capacité'],['735','puits'],['+8-17\u00A0%','OOIP / EOR']]},
   bongor:{k:'En production',t:'Bassin de Bongor',d:"Second bassin productif, brut plutôt léger (jusqu’à 31° API). Champs Ronier, Mimosa et Baobab\u00A0; pipeline Ronier-Djermaya alimentant la raffinerie nationale.",s:[['~31°','API léger'],['Ronier·Mimosa','champs'],['300 km','pipeline Djermaya']]},
   lactchad:{k:'Exploration',t:'Zone du Lac Tchad · gaz',d:"Zone gazière (champ de Sédigui) dans la région du Lac Tchad, à fort potentiel gas-to-power, hors des cinq bassins pétroliers.",s:[['exploration','phase'],['frontière','type'],['Nord-Ouest','zone']]},
-  doseo:{k:'Exploration',t:'Bassin de Doséo',d:"Bassin d’exploration de l’Est tchadien, parmi les cinq bassins sédimentaires inventoriés au cadastre pétrolier national.",s:[['exploration','phase'],['Est','localisation'],['cadastre','42 blocs']]},
-  madiago:{k:'Exploration',t:'Bassin de Salamat',d:"Bassin frontière du Sud-Est tchadien, en phase d’évaluation, ouvert au cadastre pétrolier national.",s:[['évaluation','phase'],['frontière','type'],['cadastre','42 blocs']]},
-  sedigui:{k:'Champ gazier',t:'Champ gazier de Sédigui',d:"Ressource gazière stratégique de la région du Lac, destinée à alimenter notre activité électricité (gas-to-power) (gas-to-power).",s:[['gaz','ressource'],['→ power','débouché'],['Lac','région']]},
+  doseo:{k:'Exploration',t:'Bassin de Doséo',d:"Bassin d’exploration de l’Est tchadien, parmi les cinq bassins sédimentaires inventoriés au cadastre pétrolier national.",s:[['exploration','phase'],['Est','localisation'],['cadastre','57 blocs']]},
+  madiago:{k:'Exploration',t:'Bassin de Salamat',d:"Bassin frontière du Sud-Est tchadien, en phase d’évaluation, ouvert au cadastre pétrolier national.",s:[['évaluation','phase'],['frontière','type'],['cadastre','57 blocs']]},
+  sedigui:{k:'Champ gazier',t:'Champ gazier de Sédigui',d:"Ressource gazière stratégique de la région du Lac, destinée à alimenter notre activité électricité (gas-to-power).",s:[['gaz','ressource'],['→ power','débouché'],['Lac','région']]},
 };
+const BASINS_EN={
+  doba:{k:'In production',t:'Doba basin',d:"The historic producing basin: the heart of E&P activity, Chadian crude (~21° API) exported through the national export corridor. Chemical ASP EOR (natron Na₂CO₃, biopolymer, local surfactant).",s:[['144 kb/d','capacity'],['735','wells'],['+8-17\u00A0%','OOIP / EOR']]},
+  bongor:{k:'In production',t:'Bongor basin',d:"Second producing basin, rather light crude (up to 31° API). Ronier, Mimosa and Baobab fields; the Ronier–Djermaya pipeline feeds the national refinery.",s:[['~31°','light API'],['Ronier·Mimosa','fields'],['300 km','Djermaya pipeline']]},
+  lactchad:{k:'Exploration',t:'Lake Chad area · gas',d:"Gas area (Sédigui field) in the Lake Chad region, with strong gas-to-power potential, outside the five oil basins.",s:[['exploration','phase'],['frontier','type'],['North-west','area']]},
+  doseo:{k:'Exploration',t:'Doséo basin',d:"Exploration basin of eastern Chad, among the five sedimentary basins listed in the national petroleum registry.",s:[['exploration','phase'],['East','location'],['registry','57 blocks']]},
+  madiago:{k:'Exploration',t:'Salamat basin',d:"Frontier basin of south-eastern Chad, under evaluation, open in the national petroleum registry.",s:[['evaluation','phase'],['frontier','type'],['registry','57 blocks']]},
+  sedigui:{k:'Gas field',t:'Sédigui gas field',d:"Strategic gas resource of the Lake region, intended to feed our power business (gas-to-power).",s:[['gas','resource'],['→ power','outlet'],['Lake','region']]},
+};
+const BASINS_L=(document.documentElement.lang||'').toLowerCase().indexOf('en')===0?BASINS_EN:BASINS;
 function showBasin(b){
-  const d=BASINS[b];const bKEl=document.getElementById('bK');
+  const d=BASINS_L[b];const bKEl=document.getElementById('bK');
   /* Ch692 -- meme famille de garde que crude plus haut : bK n'existe que sur
      tchaditech/outils, ce garde evite de propager le meme type de blocage. */
   if(!d||!bKEl)return;
@@ -244,7 +253,7 @@ function showBasin(b){
   document.querySelectorAll('.bzone').forEach(c=>{const on=c.dataset.b===b;c.setAttribute('stroke',on?'#fff':'none');c.setAttribute('stroke-width',on?'2':'0');});
 }
 document.querySelectorAll('.bzone').forEach(c=>{
-  c.setAttribute('tabindex','0');c.setAttribute('role','button');c.setAttribute('aria-label','Bassin '+c.dataset.b);
+  c.setAttribute('tabindex','0');c.setAttribute('role','button');c.setAttribute('aria-label',(BASINS_L[c.dataset.b]||{}).t||c.dataset.b);
   c.addEventListener('click',()=>showBasin(c.dataset.b));
   c.addEventListener('mouseenter',()=>showBasin(c.dataset.b));
   c.addEventListener('focus',()=>showBasin(c.dataset.b));

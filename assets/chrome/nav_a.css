@@ -1367,3 +1367,11 @@ html:is(.et-plight,.et-jlight) :is(nav.toc,nav.corp-nav,nav#inv-toc,nav.mkt-nav,
 #navLinks .nxi616 .nav-trigger:not(#z1):not(#z2):not(#z3):not(#z4):not(#z5):not(#z6):not(#z7):not(#z8),#navLinks .nx-sec .nav-trigger:not(#z1):not(#z2):not(#z3):not(#z4):not(#z5):not(#z6):not(#z7):not(#z8){font-size:13px;padding:6px 8px}
 #navLinks:not(#z1):not(#z2):not(#z3):not(#z4):not(#z5):not(#z6):not(#z7):not(#z8){gap:3px}
 }
+.plmap-nb{fill:none;stroke:rgba(230,236,244,.16);stroke-width:1;stroke-linejoin:round}
+.plmap-land{fill:rgba(90,167,240,.07);stroke:rgba(90,167,240,.55);stroke-width:1.5;stroke-linejoin:round}
+.plmap-lake{fill:rgba(90,167,240,.26)}
+.plmap-cty{fill:rgba(230,236,244,.30);font-family:var(--fm);font-size:12px;letter-spacing:.3em}
+html.et-plight:not([lang="ar"]) .plmap-nb, html.et-jlight:not([lang="ar"]) .plmap-nb{stroke:rgba(11,20,34,.20)}
+html.et-plight:not([lang="ar"]) .plmap-land, html.et-jlight:not([lang="ar"]) .plmap-land{fill:rgba(16,64,111,.05);stroke:rgba(16,64,111,.50)}
+html.et-plight:not([lang="ar"]) .plmap-lake, html.et-jlight:not([lang="ar"]) .plmap-lake{fill:rgba(16,64,111,.20)}
+html.et-plight:not([lang="ar"]) .plmap-cty, html.et-jlight:not([lang="ar"]) .plmap-cty{fill:rgba(11,20,34,.42)}
