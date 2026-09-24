@@ -444,3 +444,8 @@ html.et-jlight #nav.nav:not(.scrolled):not(#z1):not(#z2):not(#z3)::after{content
 /* Ch717 - mobile : la barre d onglets fixe du bas (#nezBar, 61 px, jusqu a 768 px) et les boutons flottants poses au-dessus (theme, haut de page :
    118 px depuis le bas) recouvraient l element focalise au clavier quand le navigateur l amenait en bas d ecran ; marge de defilement basse reservee. */
 @media (max-width:768px){html:has(#nezBar):not(#z1){scroll-padding-bottom:calc(126px + env(safe-area-inset-bottom,0px))}}
+
+/* Ch720 - audit des tuiles : les pastilles des tuiles de pole (.plc-badge, 16 pages) etaient coupees par des points de suspension quand
+   la carte retrecit (1024 px : « Criblage · chimie EO… ») ; la pastille passe a la ligne au lieu de perdre son texte, rayon 12 px
+   (identique a la pilule sur une ligne, rectangle arrondi sur deux). */
+.plc-badge:not(#z1):not(#z2){white-space:normal;overflow:visible;text-overflow:clip;border-radius:12px;line-height:1.35}
