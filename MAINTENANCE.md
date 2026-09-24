@@ -29907,3 +29907,108 @@ seule la ligne « axe N Djamena-Djermaya » change au pixel, taille affichee inc
 Balayage des quatre pages en trois configurations : zero erreur. Deux commits (2c920e4,
 0e5b036), sept fichiers identiques bit a bit entre le depot et la production ; sitemap deja a
 jour.
+
+## 727 -- Coherence JSON-LD du mini-site arabe : le slogan structure aligne sur celui du reste du site, publication bloquee (2026-09-24)
+
+Entree reconstituee depuis le registre (autre session, chapitre inscrit au registre mais jamais
+publie ni journalise dans ce fichier). Texte du registre repris tel quel.
+
+### Constat
+
+Boucle d'amelioration continue, sans demande explicite. Plusieurs pistes ecartees sans defaut
+reel : titres et meta description (variations mineures deja connues comme convention du site),
+hreflang (208/208 pages reciproques, les deux seules cibles absentes sont les reecritures
+vercel.json deja identifiees au chapitre 726), labels de formulaire (associes par
+encapsulation, faux positif du premier instrument), texte alternatif des images et des boutons
+(zero manquant). Un vrai defaut trouve en comparant le bloc JSON-LD Organization des 216 pages
+du depot : 118 pages FR/EN portent le slogan canonique Acces aux Energies (convention du site,
+meme en anglais), les 8 pages du mini-site arabe (ar.html et les 7 ar-*.html) portent toutes
+Unity . Innovation . Sustainability -- la baseline decorative du pied de page, recopiee par
+erreur dans les donnees structurees a la place du slogan canonique, et la ni en francais ni en
+arabe. Corrige : une seule ligne par fichier sur les 8 pages arabes, format compact identique
+au reste du fichier, rien d'autre touche. Verifie : JSON-LD reparse valide sur les 3 blocs de
+chacune des 8 pages avant et apres, rendu reel Playwright (8 pages arabes plus 3 pages temoins
+non touchees, deux themes) -- slogan lu dans le DOM correct partout, zero erreur console ;
+balayage de controle sur 210 pages x 2 themes, 418/420 chargements propres, les deux
+signalements restants preexistants et sans rapport (fichier de verification Google sans favicon
+declare, un depassement de delai isole non reproduit au chargement direct). Mon erreur : la
+premiere version de l'instrument de balayage bloquait les requetes hors serveur local pour
+aller plus vite, ce qui a fait echouer le chargement de la plupart des pages en sous-dossier --
+281 faux echecs sur 420, corrige avant conclusion en retirant le blocage. Non publie depuis
+cette session : ni navigateur (claude-in-chrome, absent du jeu d'outils de cette session
+programmee) ni identifiants git push (regle absolue du depot) disponibles ici. Fichiers
+corriges (les 8 pages arabes) et ce chapitre livres au proprietaire, a publier par une session
+disposant du navigateur.
+
+### Ce qui change
+
+Rien dans le depot : les huit pages arabes corrigees ont ete livrees au proprietaire par cette
+session, sans publication. A la date de cette note, le depot et la production portent toujours
+le slogan decoratif dans le JSON-LD des pages arabes.
+
+### Verifie
+
+Voir le texte du registre ci-dessus. Numerotation : le chapitre des cartes, publie sous le
+libelle Ch727, est journalise 728.
+
+
+## 728 -- QA de toutes les cartes du site : positions geographiques, contours reels, traductions (2026-09-24)
+
+### Constat
+
+Demande du proprietaire : QA de toutes les cartes du site. Inventaire : cadastre de l accueil et
+de l atlas (#homecad, #cadmap, redessines au 725), carte interactive des bassins de l atlas
+(atc), schema de l oleoduc Doba-Kribi de l atlas (ppmap), cartes de situation des trois poles
+Amont, Aval, Intermediaire FR/EN (plmap), carte des cibles 2030, carte des bassins de
+TchadiTech (outils), zones-sources des intrants de chimie-eor, carte du reseau de stations
+(aval/reseau) ; les schemas de logistique, la frise de nos-activites et le diagramme du
+raffinage ne sont pas des cartes. Positions controlees en ramenant chaque point en
+longitude/latitude (contour du Tchad Natural Earth 10 m, gazetteer des villes et champs) :
+- reseau : N Djamena dessinee a ~460 km de sa place, Mao a 470, Abeche a 350 ; contour grossier ;
+- atlas (atc) : bassin de Doba ~290 km trop a l est, Sedigui a 266 km ; « Sedigi » ecrit sans u
+  (six fois par page, cle du panneau comprise) ; panneau de la page anglaise entierement en
+  francais ; « Production · light crude » coupe au bord en mobile ; N Djamena rognee a gauche
+  en mobile ;
+- oleoduc (ppmap) : Kribi dessine a l est de Doba alors qu il est au sud-ouest ; etiquette
+  « ~900 km · Cameroun » sur « Belabo PS3 » ; TCHAD / CAMEROUN en francais sur la page anglaise ;
+  legende de la figure illisible en theme clair (encre sombre sur fond reste sombre) ;
+- cibles 2030 : Sedigui ~100 km et Abeche ~90 km de travers ;
+- TchadiTech : bassins deplaces ; la page anglaise ouvrait des panneaux en francais, « 42 blocs »
+  (57 depuis le 725), « (gas-to-power) » double, aria-label en slug ; l etiquette « Lac Tchad »
+  recouvrait le disque de Sedigui et empechait son survol ;
+- chimie-eor : Lac et Kanem dessines vers 19,5 N, gomme arabique a 22,5 E, argiles a 11 N ;
+- cartes de pole : aucun contour de pays, echelle anisotrope (82 px par degre en x, 61 en y) ;
+- reseau anglais : la feuille qx2_utils manquait (70 classes sans style) -- points des stations
+  noirs, mise en page du reste de la page degradee ; etiquette N Djamena en theme clair illisible
+  (contour sombre sous une encre sombre).
+
+### Ce qui change
+
+Projection plate carree a degres egaux, contour Natural Earth, lac releve sur la carte
+officielle du 725. reseau FR/EN : contour, dix stations et liaisons replacees, feuille
+qx2_utils reprise du jumeau FR, contour clair de l etiquette en theme clair. atlas FR/EN :
+contour, champs, ellipses de bassins, capitale, corridor et repere Sahara/Sahel replaces,
+Sedigui, panneau anglais traduit (neuf entrees), « bassin du Lac Tchad » en FR, oleoduc mis en
+miroir (Kribi au sud-ouest, fiche technique a gauche, pastille a droite, gradient inverse),
+etiquette 900 km deplacee, CHAD / CAMEROON en anglais, legende de figure a encre claire fixe.
+cibles-2030 FR/EN : contour, lac, onze points et corridor. TchadiTech FR/EN : contour et six
+bassins, etiquettes decalees ; JS partage c_ac04328f0f47.js : panneaux anglais BASINS_EN,
+57 blocs, doublon retire, aria-label par le titre. chimie-eor FR/EN : contour et quatre zones.
+Six cartes de pole : contour du Tchad et des voisins (decoupe au cadre), lac, noms de pays
+FR/EN, graticule 2 degres, points replaces, trace Doba-Belabo-Kribi ; styles plmap-land,
+plmap-nb, plmap-lake, plmap-cty (deux themes) dans nav_a.css. sw.js et-202609241326.
+
+### Verifie
+
+Captures relues de chaque carte en sombre 1440 et clair 390, FR et EN : zero texte hors cadre,
+chevauchements restants limites aux couples titre/sous-titre accoles. Interactions exercees
+en local et en production : neuf reperes de l atlas (panneau anglais), dix stations du reseau,
+survol des six bassins de TchadiTech FR/EN (Sedigui atteint). Couleur calculee des points du
+reseau anglais : ambre au lieu de noir. Balayage des 16 pages en trois configurations : 48
+chargements sans erreur ni debordement. Huit commits (13661a6, e63c1df, 812632c, aab2de5,
+4481e4d, 61f8096, ac5ce33, 333e6a1 ; libelles Ch727 ; journalise 728), 19 fichiers identiques
+bit a bit entre le depot et la production ; sitemap deja a jour. Publication : le televersement
+refuse desormais les fichiers du dossier de travail, les copies passent par le dossier temporaire
+de la session. Restant, signale : textes des schemas (oleoduc, logistique, cadastre) sous 5 px
+en mobile 390, la figure est reduite a la largeur de l ecran ; les pages arabes du 727 restent
+a publier.
