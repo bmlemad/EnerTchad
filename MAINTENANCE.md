@@ -29756,3 +29756,73 @@ bit entre le depot et la production ; relu en production : adresse presente dans
 de six pages temoins FR/EN, bureau et mobile. Numerotation : libelles Ch721 ; journalise 722.
 Reste ouvert : RCCM chiffre sur la diapositive 13 du dossier investisseur alors que le site dit
 l immatriculation en cours.
+
+## 723 -- Images des intrants Petrochimie : troisieme mesure et redimensionnement, republication toujours bloquee (2026-09-24)
+
+Entree reconstituee depuis le registre (chapitre inscrit par une autre session, sans navigateur,
+non publie).
+
+### Constat
+
+Le depot servait encore les huit sacs d intrants de petrochimie/chimie-eor(-en).html a 580x1180
+px (177 768 octets). Remesure (quinze largeurs 320-1920, deux themes, chargement paresseux
+force) : 368 px physiques au plus, troisieme mesure convergente avec 354 (718) et 368 (720).
+
+### Ce qui change (hors depot)
+
+Huit webp a 400x814 px qualite 85 (-26 %), seize width/height, sw.js prepare a
+et-202609240925. Fichiers livres au proprietaire, non publies.
+
+### Verifie (par l autre session)
+
+naturalWidth exact sur deux pages x deux themes x quinze largeurs, 88 chargements de controle
+sans erreur, captures relues. Premier instrument lisait naturalWidth avant le chargement
+paresseux -- corrige avant conclusion. Suite : publie au 724 (dimensions 380x773 du 720).
+
+## 724 -- Images lourdes eliminees et RCCM aligne sur « immatriculation en cours » (2026-09-24)
+
+### Constat
+
+Demandes du proprietaire : eliminer les images lourdes ; « immatriculation en cours » est la
+bonne version du RCCM.
+Images : audit de poids sur tout le site (img723.js) -- 208 pages a quatre largeurs (1920, 1024,
+768, 390), balises img et fonds CSS retrouves par le CSSOM, largeur CSS maximale rendue de chaque
+image comparee a sa largeur reelle (marge retine 2x). 70 images matricielles (5,1 Mo) dans le
+depot, 20 mesurees en rendu ; les autres sont icones, images de partage, telechargements de
+l espace presse, fonds sombres (meme format que les clairs mesures) ou non referencees. Une seule famille surdimensionnee : les huit sacs
+d intrants de chimie-eor FR/EN, 580x1180 px pour 182 px CSS au plus (414 px de large, instrument
+dedie a 24 largeurs) soit 364 px physiques necessaires -- quatrieme mesure convergente avec les
+718, 720 et 723, dont aucun correctif n avait ete publie. Ecartes a l examen : bandes des Carnets
+(2400 px pour 1000 px CSS rendus a background-size 142 %, soit 2000 px necessaires, 1,2x), fonds
+de page 2560x1440 en cover plein ecran (pas surdimensionnes), trois photos de 1400-1600 px plutot
+sous-dimensionnees ; les images signalees a 1910 px sur les bandes claires etaient un artefact de
+l instrument (selecteur :is() coupe a la virgule). 26 images du depot ne sont referencees par
+aucune page, feuille ni script (caracal, lion-savane, unite-petrochimie, solaire-desert...) :
+jamais telechargees par un visiteur, laissees.
+RCCM : le site dit partout « en cours d immatriculation », mais le numero N DJ/RC/2026-A-0001
+restait dans le dossier investisseur (diapositives 11 et 13), le data book (feuille 2, B7), la
+fiche presse et sa copie dans le kit presse.
+
+### Ce qui change
+
+Huit webp redimensionnes a 380x773 px (dimensions du 720, marge ~4 % sur le besoin mesure),
+Lanczos, qualite 85 : 177 768 -> 118 716 octets (-33 %), seize width/height mis a jour dans les
+deux pages, sw.js et-202609241039 (images servies en cache d abord par l atelier, meme URL).
+RCCM : diapositive 11 « RCCM en cours d immatriculation · conseil d administration · 10
+actionnaires fondateurs », diapositive 13 « RCCM : immatriculation en cours », data book
+« Immatriculation en cours », fiche presse « RCCM : immatriculation en cours », kit presse
+reconstruit avec la fiche a jour. Tailles affichees inchangees (58, 14 et 799 Ko).
+
+### Verifie
+
+Images : ecart moyen de 0,6/255 contre l original reduit au meme format (99e centile 8),
+comparaison visuelle cote a cote ; en rendu reel a densite 2x, local puis production, deux pages
+x cinq conditions (1440 sombre et clair, 414, 390 clair, 320) : huit images a 380x773 naturels,
+aspect conserve, zero erreur, zero 4xx ; capture relue a 414. Note : le texte imprime sur les sacs
+se chevauche (GOMME ARABIQUE, NEEM KARITE, FABRIQUE AU TCHAD / MADE IN CHAD) -- defaut du dessin
+d origine, identique avant et apres, signale au proprietaire. RCCM : zero 2026-A-0001 dans le
+depot hors ce journal, diapositives 11 et 13 rendues par LibreOffice et relues, trois ZIP testes.
+Balayage 208 pages x 3 : 624 mesures, zero erreur. Trois commits (libelles Ch723 : 8d0405d images,
+202ccec pages, 7649e13 documents et sw.js) ; 15 fichiers identiques bit a bit entre le depot et
+la production, sw.js servi a et-202609241039 ; sitemap deja a jour. Numerotation : libelles
+Ch723 ; journalise 724, le registre portant deja un 723 d une autre session.
