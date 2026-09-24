@@ -29598,3 +29598,70 @@ l accueil rejouee : restent les seuls liens en phrase et les noeuds du heros. JS
 blocs). Balayage complet 208 pages x 3 configurations : 624 mesures, zero erreur. Cinq commits (assets/chrome,
 amont, aval, intermediaire, racine), 17 fichiers identiques bit a bit entre le depot et la production, contenu relu
 en production. Sitemap : aucune date a changer.
+
+## 718 -- Images des intrants Petrochimie : quatre fois trop lourdes pour leur taille affichee (2026-09-24)
+
+Entree reconstituee depuis le registre (autre session, non publie depuis celle-ci : ni
+navigateur ni git push disponibles).
+
+### Constat
+
+Audit de poids sur 216 pages : les huit sacs d intrants de petrochimie/chimie-eor(-en).html
+mesurent 580x1180 px alors que la grille ne les affiche jamais au-dela de 177 px CSS (354 px
+en retine 2x).
+
+### Ce qui change
+
+Redimensionnes a 360x732 px, qualite 85 : -39 % (177 768 → 107 818 octets), attributs
+width/height des seize occurrences mis a jour. sw.js prepare a et-202609240321.
+
+### Verifie
+
+Deux pages x deux themes, huit images completes ; controle sur 28 pages sans erreur. Fichiers
+livres au proprietaire, a publier par une session disposant du navigateur.
+
+## 719 -- Adresse complete du siege sur le site et dans tous les documents (2026-09-24)
+
+### Constat
+
+Demande du proprietaire : « Block D 2e etage bureau 23 -- Quartier Sabangali, Cite du 1er
+decembre, N Djamena, Tchad ». Recensement dans les pages, les donnees structurees et les
+documents binaires. Ancienne forme « Radisson, Block D, Bureau 23, Sabangali » : JSON-LD
+PostalAddress de 76 pages, page contact FR/EN (deux endroits chacune), pied de la fiche
+technique Amont (source d impression) et de la fiche Aval (PDF ReportLab sans source), fiche
+presse (« Radisson Blu »), diapositive 13 du dossier investisseur PPTX (« Radisson Blu,
+Sabangali »), cellule B6 de la feuille Identite du data book. Les mentions legales FR/EN ne
+donnaient que la ville pour le siege social. Les mentions « Sabangali » seules (cibles 2030,
+point d etape) restent justes.
+
+Decouvert en chemin, deux documents perimes depuis le 703 : 1) la brochure PDF francaise
+regeneree au 703 n avait jamais ete publiee -- la production servait encore celle du 16
+septembre, « 20 Md FCFA · cible long terme » (le 703 annoncait 223 fichiers identiques en
+production ; ce fichier-la avait echappe au lot) ; 2) le kit presse ZIP contenait les brochures
+du 10 septembre, une fiche presse et deux textes de presentation encore a « 10 M -> 1 Md -> 20
+Md », et le slogan anglais court « to pump ».
+
+### Ce qui change
+
+Adresse posee telle que donnee, sans « Radisson » : JSON-LD streetAddress « Block D, 2e etage,
+bureau 23, Quartier Sabangali, Cite du 1er decembre » sur 76 pages ; contact FR (en gras
+Block D, 2e etage, bureau 23 -- puis quartier, cite, ville) et EN (« 2nd floor, Office 23,
+Sabangali district ») ; mentions legales FR/EN, siege social complet. Fiche Amont reimprimee
+depuis sa source (pied de page 1 sans le doublon « societe en constitution », deja en tete,
+pour tenir sur une ligne) ; fiche Aval corrigee dans ses flux de contenu (deux pieds) ; PPTX
+et XLSX corriges dans leur XML ; fiche presse. Kit presse reconstruit : brochures courantes,
+fiche presse a jour, trajectoire 100 M -> 1 Md -> 10 Md a cinq ans et « to the pump » dans les
+deux textes, double virgule retiree. Tailles de documents rajustees (fiche Aval 6 Ko, kit 799
+Ko). Brochure FR du 703 enfin publiee. Sitemap : 84 lastmod au 24 septembre. Pas de sw.js.
+
+### Verifie
+
+Zero « Radisson » dans les pages, PDF, PPTX, XLSX et ZIP ; 700 JSON-LD valides ; rendus relus
+(contact 1440 et 390, mentions, pied des deux fiches, diapositive 13 rendue par LibreOffice sur
+une ligne) ; fiche Amont comparee au pixel avec l ancienne (seul le pied change), fiche Aval
+idem ; ZIP teste. Balayage 208 pages x 3 : 624 mesures, zero erreur. Onze commits (libelles
+Ch718 ; journalise 719, le registre portant deja un 718 d une autre session), 92 fichiers puis
+sitemap identiques bit a bit entre le depot et la production ; relu en production : contact,
+mentions, JSON-LD, brochure a 10 Md, kit presse. Note : la diapositive 13 porte « RCCM
+N DJ/RC/2026-A-0001 » alors que le site dit l immatriculation en cours -- laisse, a trancher par
+le proprietaire.
