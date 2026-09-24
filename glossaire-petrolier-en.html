@@ -523,7 +523,7 @@ a.glm-c:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):focus-vis
   ['tchad','Doba Basin','The country’s oil cradle','Southern fields on stream since 2003, now mature: natural decline and rising produced water — the textbook ground for a takeover built on enhanced oil recovery (EOR).'],
   ['tchad','Sédigui','Gas from the lake basin','Gas field in the Lake Chad basin, identified decades ago and never developed at scale. Its development (power, LPG, feedstocks) is one of the EnerTchad project’s stated axes.'],
   ['tchad','Doba–Kribi corridor','1,070 km to the Atlantic','The pipeline linking the Doba basin to the Kribi terminal (Cameroon) — the only export outlet for Chadian crude, and the midstream’s logistical backbone.'],
-  ['tchad','Djarmaya','The refinery at N’Djamena’s gates','Refining site north of the capital, the downstream pole’s stated target: cover domestic fuel demand before addressing neighbouring markets.'],
+  ['tchad','Djermaya','The refinery at N’Djamena’s gates','Refining site north of the capital, the downstream pole’s stated target: cover domestic fuel demand before addressing neighbouring markets.'],
   ['tchad','Local content','80% Chadian value targeted','Share of jobs, purchases and services entrusted to Chadians and Chadian companies. The 80% target shapes the company’s training programmes and supply chain.'],
   ['tchad','RCCM','The OHADA registration','Trade and personal property credit register — a company’s legal birth certificate across the OHADA area. EnerTchad S.A.’s registration is the current milestone of the incorporation calendar.'],
   ['tchad','FCFA','The CEMAC currency','Franc of the Central African financial cooperation, pegged to the euro. EnerTchad’s capital trajectory is set in FCFA: 100 million → 1 billion → 10 billion.'],
@@ -537,12 +537,12 @@ a.glm-c:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):focus-vis
  function norm(s){return s.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();}
  function render(){
   var term=norm(q.value.trim());var n=0;
-  grid.innerHTML=T.map(function(t){
+  var U={};grid.innerHTML=T.map(function(t){
     var cat=t[0],ab=t[1],name=t[2],def=t[3];
     var okc=(fc==='all'||fc===cat);
     var oks=(!term||norm(ab+' '+name+' '+def).indexOf(term)>=0);
     if(!(okc&&oks))return '';n++;
-    var tid='t-'+norm(ab).replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'');
+    var tid='t-'+norm(ab).replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'');if(U[tid])tid+='-'+cat;U[tid]=1;
     return '<div class="term" id="'+tid+'" style="--ac:'+C[cat]+'"><dt>'+name+'</dt><dd><div class="ab">'+ab+' · '+CN[cat]+'</div>'+def+'</dd></div>';
   }).join('');
   empty.hidden=n>0;

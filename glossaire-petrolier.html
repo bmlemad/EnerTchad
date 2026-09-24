@@ -512,7 +512,7 @@ a.glm-c:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):focus-vis
   ['tchad','Bassin de Doba','Le berceau pétrolier du pays','Ensemble de champs du sud entrés en production en 2003, aujourd’hui matures : déclin naturel, eau de production croissante — le terrain type d’une reprise bâtie sur la récupération assistée (EOR).'],
   ['tchad','Sédigui','Le gaz du bassin du lac','Gisement gazier du bassin du lac Tchad, identifié de longue date et jamais développé à grande échelle. Sa valorisation (électricité, GPL, intrants) est l’un des axes affichés du projet EnerTchad.'],
   ['tchad','Corridor Doba–Kribi','1 070 km vers l’Atlantique','L’oléoduc qui relie le bassin de Doba au terminal de Kribi (Cameroun) — l’unique débouché d’export du brut tchadien, et la colonne vertébrale logistique de l’intermédiaire.'],
-  ['tchad','Djarmaya','La raffinerie aux portes de N’Djamena','Site de raffinage au nord de la capitale, cible affichée du pôle aval : couvrir la demande intérieure en carburants avant de viser les marchés voisins.'],
+  ['tchad','Djermaya','La raffinerie aux portes de N’Djamena','Site de raffinage au nord de la capitale, cible affichée du pôle aval : couvrir la demande intérieure en carburants avant de viser les marchés voisins.'],
   ['tchad','Contenu local','80 % de valeur tchadienne visée','Part des emplois, achats et services confiés à des Tchadiens et à des entreprises tchadiennes. La cible de 80 % structure les programmes de formation et la chaîne d’achats de la société.'],
   ['tchad','RCCM','L’immatriculation OHADA','Registre du commerce et du crédit mobilier — l’acte de naissance juridique d’une société dans l’espace OHADA. L’immatriculation d’EnerTchad S.A. est le jalon en cours du calendrier de constitution.'],
   ['tchad','FCFA','La monnaie de la zone CEMAC','Franc de la Coopération financière en Afrique centrale, à parité fixe avec l’euro. La trajectoire de capital d’EnerTchad s’exprime en FCFA : 100 millions → 1 milliard → 10 milliards.'],
@@ -526,12 +526,12 @@ a.glm-c:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):focus-vis
  function norm(s){return s.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();}
  function render(){
   var term=norm(q.value.trim());var n=0;
-  grid.innerHTML=T.map(function(t){
+  var U={};grid.innerHTML=T.map(function(t){
     var cat=t[0],ab=t[1],name=t[2],def=t[3];
     var okc=(fc==='all'||fc===cat);
     var oks=(!term||norm(ab+' '+name+' '+def).indexOf(term)>=0);
     if(!(okc&&oks))return '';n++;
-    var tid='t-'+norm(ab).replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'');
+    var tid='t-'+norm(ab).replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'');if(U[tid])tid+='-'+cat;U[tid]=1;
     return '<div class="term" id="'+tid+'" style="--ac:'+C[cat]+'"><dt>'+name+'</dt><dd><div class="ab">'+ab+' · '+CN[cat]+'</div>'+def+'</dd></div>';
   }).join('');
   empty.hidden=n>0;
