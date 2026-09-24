@@ -29874,3 +29874,36 @@ tailles affichees inchangees. Balayage 208 pages x 3 : 624 mesures, zero erreur.
 (amont 9e0ff7e, index de recherche 98dc70f, sources aa98019, atlas 78e040e, intermediaire
 5371ac0, racine 7e2c547, sitemap cde941d) ; 36 fichiers identiques bit a bit entre le depot et
 la production, sw.js servi a et-202609241148.
+
+## 726 -- Audit des ancres internes : Djermaya harmonise et identifiants du glossaire rendus uniques (2026-09-24)
+
+### Constat
+
+Audit des liens internes a fragment (#ancre) sur les 208 pages : 40 835 liens internes, 42
+ancres introuvables dans le HTML statique -- toutes vers le glossaire, dont les termes sont
+generes par script ; verifie en rendu reel : les 40 fragments cites existent bien apres
+execution, aucun lien casse. Les 21 cibles « manquantes » sont des reecritures vercel.json
+(calculateur, configurateur), des gabarits JavaScript ou des liens webcal : faux positifs.
+L audit en rendu reel a revele deux vrais defauts : 1) le glossaire FR et EN produisait deux
+fois l identifiant t-contenu-local / t-local-content (le terme figure dans deux rubriques,
+Cadre et Reperes Tchad) ; 2) le terme « Djarmaya » du glossaire, repris dans cibles-2030 FR/EN
+(description de la carte, etiquette, ligne de la raffinerie modulaire) et dans le point d etape
+PDF, alors que le site ecrit « Djermaya » partout ailleurs (154 fois) comme la carte du
+cadastre officiel.
+
+### Ce qui change
+
+Glossaire FR/EN : un identifiant deja pris recoit le suffixe de sa rubrique (le second contenu
+local devient t-contenu-local-tchad / t-local-content-tchad), le premier garde le sien ; terme
+Djarmaya -> Djermaya (ancre t-djermaya, aucune page ne visait l ancienne). cibles-2030 FR/EN,
+source et PDF du point d etape : Djermaya. Aucune ancienne forme restante. sw.js
+et-202609241207 (PDF servi en cache).
+
+### Verifie
+
+Ids statiques dupliques sur les 208 pages : zero. Glossaires en rendu reel, local et
+production : 80 termes, zero identifiant duplique, #t-djermaya atteint. Point d etape : 4 pages,
+seule la ligne « axe N Djamena-Djermaya » change au pixel, taille affichee inchangee (124 Ko).
+Balayage des quatre pages en trois configurations : zero erreur. Deux commits (2c920e4,
+0e5b036), sept fichiers identiques bit a bit entre le depot et la production ; sitemap deja a
+jour.
