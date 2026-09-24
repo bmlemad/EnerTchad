@@ -29826,3 +29826,51 @@ Balayage 208 pages x 3 : 624 mesures, zero erreur. Trois commits (libelles Ch723
 202ccec pages, 7649e13 documents et sw.js) ; 15 fichiers identiques bit a bit entre le depot et
 la production, sw.js servi a et-202609241039 ; sitemap deja a jour. Numerotation : libelles
 Ch723 ; journalise 724, le registre portant deja un 723 d une autre session.
+
+## 725 -- Cadastre 2025 mis a jour sur la carte officielle du Ministere : 57 blocs, carte redessinee (2026-09-24)
+
+### Constat
+
+Demande du proprietaire : mettre a jour le cadastre avec le fichier fourni (carte « Cadastre
+petrolier 2025 » du Ministere du Petrole, des Mines et de la Geologie, PDF ArcMap, carte en
+raster 1200 dpi, etiquettes en texte vectoriel). Le site montrait 44 blocs en rectangles
+stylises (11 attribues, 26 libres, 5 en changement, 2 concessions) et la lecture de la carte
+officielle contredit une bonne partie des statuts : BONGOR, BCO III, DOBA OUEST I et II, DS I a
+III, MADIAGO OUEST et EST et BOROGOP y sont libres (hachures) ; ce sont les perimetres internes
+qui sont attribues (MADIAGO CNPC, ANNONA, CASSIA, VITEX, CASAVA N, XIMENIA, KAPOK, KAPOK S CNPC,
+DOA JIEHE, DOC UHCL, DOD UHCL) et huit blocs sont en cours de changement (DJADO III GP, UHCL,
+UHCL BLOC H, LARGEAU MEIGE, DOE GP, DOF GP, DOG GP, DOH). Total : 57 blocs nommes, 11 attribues,
+38 libres, 8 en changement ; 32 champs en concession active (Bongor, Doba, Sedigui). Choix du
+proprietaire : carte redessinee avec les contours reels.
+
+### Ce qui change
+
+Releve des contours : rendu 600 dpi (traits fins releves a 1200 dpi), classes de couleur par
+pixel (jaune attribue, orange changement, hachures libres par densite, creme hors bloc, vert
+concession, bleu lac), frontieres par les traits gris, partage des zones fusionnees par ligne
+de partage des eaux sur la distance aux traits, graines aux etiquettes du PDF ; DOB verifie a la
+loupe (libre) ; deux parcelles libres sans nom sur la carte gardees comme telles ; contours
+simplifies a 0,3 unite. Accueil FR/EN et atlas FR/EN : contour du Tchad, 72 formes (40 libres
+dont 2 sans nom, 11 attribuees, 8 en changement, 13 concessions), lac, quatre pipelines releves
+(export Tchad-Cameroun, Bongor-Djermaya en exploitation, Sedigui-Djermaya non exploite, projets
+en pointilles), raffinerie, capitale ; etiquettes aux poles d inaccessibilite ; styles du lac, du
+pipeline non exploite, des etiquettes (encre du theme, elles etaient blanches sur blanc en clair
+dans l atlas) et des pipelines en theme clair. Textes : 44 -> 57, 26 -> 38, 5 -> 8, 2 concessions
+-> 32 champs, 59 -> 67 %, « la moitie ouverte » -> « deux sur trois », « six blocs sur dix » ->
+« deux blocs sur trois », barre de repartition a trois segments, cartes et puces du filtre, sur
+31 fichiers texte (accueils, atlas, investisseurs, pole et pages amont, cibles, projets, nos
+activites, solutions, brochure, Carnets, journal atlas, index de recherche, sources d impression).
+Brochures FR/EN reimprimees, diapositive 2 du dossier investisseur (« 42 blocs » -> 57), kit
+presse reconstruit. sw.js et-202609241148 (index de recherche et documents servis en cache).
+
+### Verifie
+
+Carte relue contre le PDF a plusieurs zooms (nord, Largeau, Bongor, Doba, DS/Kapok) ; survol et
+filtres exerces (40 formes libres visibles sur 72 au filtre Libres, infobulle et panneau
+nomment le bloc) en local puis en production, FR/EN, deux themes, 1440 et 390 ; recensement des
+anciens chiffres a zero hors faux positifs (etapes de formulaire, compteurs sans rapport) ;
+brochures a 6 pages, seule la ligne 26 -> 38 change au pixel ; diapositive 2 rendue ; ZIP testes ;
+tailles affichees inchangees. Balayage 208 pages x 3 : 624 mesures, zero erreur. Sept commits
+(amont 9e0ff7e, index de recherche 98dc70f, sources aa98019, atlas 78e040e, intermediaire
+5371ac0, racine 7e2c547, sitemap cde941d) ; 36 fichiers identiques bit a bit entre le depot et
+la production, sw.js servi a et-202609241148.
