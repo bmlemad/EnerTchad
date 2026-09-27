@@ -245,3 +245,33 @@ test('hubs — liens internes accessibles et sans 4xx/5xx', async ({ request }) 
     }
   }
 });
+
+
+test('trust center — FR / EN / AR', async ({ browser }) => {
+  const cases = [
+    ['/', 'fr'],
+    ['/index-en', 'en'],
+    ['/ar', 'ar'],
+  ];
+  for (const [path, lang] of cases) {
+    const page = await browser.newPage({ viewport: { width: 390, height: 844 }, deviceScaleFactor: 1 });
+    const errors = [];
+    page.on('console', msg => { if (msg.type() === 'error') errors.push('console: ' + msg.text()); });
+    page.on('pageerror', err => errors.push('pageerror: ' + err.message));
+    const response = await page.goto(new URL(path, url).href, { waitUntil: 'domcontentloaded', timeout: 45000 });
+    expect(response, path).not.toBeNull();
+    expect(response.status(), path).toBe(200);
+    await expect(page.locator('html').first(), path).toHaveAttribute('lang', lang);
+    await expect(page.locator('.et-proof-center').first(), path).toBeVisible();
+    await expect(page.locator('.et-proof-card'), path).toHaveCount(5);
+    await expect(page.locator('.et-proof-card').first(), path).toHaveAttribute('href', /.+/);
+    const state = await page.evaluate(() => ({
+      overflow: document.documentElement.scrollWidth > document.documentElement.clientWidth + 1,
+      links: [...document.querySelectorAll('.et-proof-card')].map(a => a.getAttribute('href')),
+    }));
+    expect(state.overflow, path).toBeFalsy();
+    expect(state.links.every(Boolean), path).toBeTruthy();
+    expect(errors, path).toEqual([]);
+    await page.close();
+  }
+});
