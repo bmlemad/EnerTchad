@@ -47,10 +47,12 @@ jobs:
       - name: Mesurer les parcours critiques
         run: |
           mkdir -p reports/lighthouse
-          for path in "/" "/index-en" "/ar" "/amont/" "/intermediaire/" "/aval/" "/petrochimie/" "/investisseurs/" "/contact/" "/faq/"; do
-            name=$(printf '%s' "$path" | tr '/-' '__' | sed 's/^_*$//')
-            [ -n "$name" ] || name="home"
-            npx lighthouse "https://enertchad-delta.vercel.app$path" --quiet --chrome-flags="--headless --no-sandbox" --only-categories=performance,accessibility,best-practices,seo --output=json --output-path="reports/lighthouse/$name.json"
+          for preset in mobile desktop; do
+            for path in "/" "/index-en" "/ar" "/amont/" "/intermediaire/" "/aval/" "/investisseurs/" "/contact/" "/faq/"; do
+              name=$(printf '%s' "$path" | tr '/-' '__' | sed 's/^_*$//')
+              [ -n "$name" ] || name="home"
+              npx lighthouse "https://enertchad-delta.vercel.app$path" --quiet --chrome-flags="--headless --no-sandbox" --preset="$preset" --only-categories=performance,accessibility,best-practices,seo --output=json --output-path="reports/lighthouse/"$preset"_"$name".json"
+            done
           done
       - name: Publier les rapports
         uses: actions/upload-artifact@v4
