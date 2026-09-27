@@ -50,6 +50,14 @@ for p in pages:
         if not re.search(r'<h1\b', h, re.I):
             errs.append(f'{p}: H1 absent')
 
+# Cohérence du domaine public : signaler un éventuel conflit CNAME/SEO sans imposer
+# automatiquement une migration de domaine.
+if os.path.exists('CNAME') and sm:
+    cname = open('CNAME', encoding='utf-8').read().strip().lower()
+    hosts = {re.sub(r'^https?://', '', u).split('/')[0].lower() for u in re.findall(r'<loc>(.*?)</loc>', sm, re.S | re.I)}
+    if cname and hosts and cname not in hosts:
+        print(f'AVERTISSEMENT: CNAME={cname} mais sitemap utilise {sorted(hosts)[0]}')
+
 # QA structurelle du sitemap et des ressources responsive.
 if sm:
     urls = re.findall(r'<loc>(.*?)</loc>', sm, re.S | re.I)
