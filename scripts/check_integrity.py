@@ -164,6 +164,16 @@ for route in EXPECTED_HUBS:
     if not exists(route):
         errs.append(f'hub institutionnel attendu absent: {route}')
 
+# Alias anglais publiés par Vercel : ils doivent rester couverts par une redirection.
+EXPECTED_EN_ALIASES = [
+    '/pole-amont-en', '/pole-intermediaire-en', '/pole-aval-en',
+    '/pole-enerchimie-en', '/pole-greentech-en', '/pole-tchaditech-en',
+    '/pole-tchaditude-en', '/pole-enerconseils-en',
+]
+for route in EXPECTED_EN_ALIASES:
+    if route not in redir:
+        errs.append(f'alias anglais attendu sans redirection: {route}')
+
 # Vérification finale après toutes les règles QA.
 if errs:
     print('\n'.join(errs[:80])); print(f'\nECHEC : {len(errs)} probleme(s)'); sys.exit(1)
