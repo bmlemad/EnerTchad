@@ -12,6 +12,13 @@ jobs:
       - run: python scripts/check_integrity.py
       - name: Générer la cartographie d’architecture
         run: python scripts/audit_architecture.py
+      - name: Auditer UI, accessibilité et SEO technique
+        run: python scripts/audit_ui.py
+      - name: Publier l’audit UI
+        uses: actions/upload-artifact@v4
+        with:
+          name: ui-accessibility-seo-audit
+          path: reports/ui-audit-2026.md
       - name: Publier la cartographie
         uses: actions/upload-artifact@v4
         with:
