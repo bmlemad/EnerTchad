@@ -155,6 +155,15 @@ for route in EXPECTED_ROUTES:
     if not exists(route):
         errs.append(f'route attendue absente: {route}')
 
+# Hubs institutionnels : points d’entrée majeurs couverts par la QA navigateur.
+EXPECTED_HUBS = [
+    'societe.html', 'investisseurs.html', 'clients.html', 'achats.html',
+    'carrieres.html', 'projets.html', 'publications.html',
+]
+for route in EXPECTED_HUBS:
+    if not exists(route):
+        errs.append(f'hub institutionnel attendu absent: {route}')
+
 # Vérification finale après toutes les règles QA.
 if errs:
     print('\n'.join(errs[:80])); print(f'\nECHEC : {len(errs)} probleme(s)'); sys.exit(1)
