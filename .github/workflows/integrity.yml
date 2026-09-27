@@ -11,7 +11,7 @@ jobs:
   check:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - uses: actions/setup-python@v5
         with: {python-version: '3.12'}
       - run: python scripts/check_integrity.py
@@ -38,64 +38,64 @@ jobs:
       - name: Auditer le niveau corporate et reporting
         run: python scripts/audit_industry_readiness.py
       - name: Publier le niveau corporate et reporting
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: industry-readiness-2026
           path: reports/industry-readiness-2026.md
           if-no-files-found: error
       - name: Publier l’audit assets
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: assets-audit-2026
           path: reports/assets-audit-2026.md
           if-no-files-found: error
       - name: Publier l’audit redirections
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: redirects-audit-2026
           path: reports/redirects-audit-2026.md
           if-no-files-found: error
       - name: Publier l’audit performance
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: performance-audit-2026
           path: reports/performance-audit-2026.md
       - name: Publier l’audit coûts CSS / JS
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: resource-cost-audit-2026
           path: reports/resource-cost-audit-2026.md
           if-no-files-found: error
       - name: Publier l’audit markup / espaces / void
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: markup-efficiency-audit-2026
           path: reports/markup-efficiency-audit-2026.md
           if-no-files-found: error
       - name: Publier l’audit UI
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: ui-accessibility-seo-audit
           path: reports/ui-audit-2026.md
       - name: Publier la cartographie
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: site-architecture-audit
           path: reports/site-architecture-2026.md
       - name: Publier le benchmark technique
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: benchmark-technique-2026
           path: reports/benchmark-site-2026.md
           if-no-files-found: error
       - name: Publier l’audit conversion
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: conversion-audit-2026
           path: reports/conversion-audit-2026.md
           if-no-files-found: error
       - name: Publier l’audit preuves
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: evidence-audit-2026
           path: reports/evidence-audit-2026.md
