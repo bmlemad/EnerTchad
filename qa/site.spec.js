@@ -82,3 +82,22 @@ test('configurateur — desktop et mobile', async ({ browser }) => {
     await page.close();
   }
 });
+
+test('legacy redirects — canonical routes', async ({ request }) => {
+  const cases = [
+    ['/pole-amont-en', '/amont/'],
+    ['/pole-aval-en.html', '/aval/'],
+    ['/pole-greentech', '/greentech/'],
+    ['/pole-tchaditech-en', '/tchaditech/'],
+    ['/pole-tchaditude-en.html', '/tchaditude/'],
+    ['/pole-enerconseils-en', '/enerconseils/'],
+    ['/pole-enerchimie', '/petrochimie/']
+  ];
+  for (const [from, to] of cases) {
+    const response = await request.get(new URL(from, url).href, { maxRedirects: 0 });
+    expect(response.status(), from).toBeGreaterThanOrEqual(300);
+    expect(response.status(), from).toBeLessThan(400);
+    const location = response.headers()['location'] || '';
+    expect(location, from).toContain(to);
+  }
+});
