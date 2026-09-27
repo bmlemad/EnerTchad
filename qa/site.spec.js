@@ -94,11 +94,9 @@ test('legacy redirects — canonical routes', async ({ request }) => {
     ['/pole-enerchimie', '/petrochimie/']
   ];
   for (const [from, to] of cases) {
-    const response = await request.get(new URL(from, url).href, { maxRedirects: 0 });
-    expect(response.status(), from).toBeGreaterThanOrEqual(300);
-    expect(response.status(), from).toBeLessThan(400);
-    const location = response.headers()['location'] || '';
-    expect(location, from).toContain(to);
+    const response = await request.get(new URL(from, url).href, { maxRedirects: 5 });
+    expect(response.status(), from).toBe(200);
+    expect(new URL(response.url()).pathname, from).toBe(to);
   }
 });
 
