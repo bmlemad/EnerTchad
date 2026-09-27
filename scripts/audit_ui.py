@@ -22,7 +22,10 @@ for p in pages:
     def flag(kind,detail): issues.append((rel,kind,detail)); stats[kind]+=1
     if not technical and not re.search(r'<html\b[^>]*\blang\s*=',s,re.I): flag('LANG','missing html lang')
     head_match = re.search(r'<head\b.*?</head>', s, re.I | re.S)
-    head = head_match.group(0) if head_match else ''
+    # Certaines pages historiques sont valides en HTML5 sans balise <head>
+    # explicite : le navigateur reconstruit le document. Pour éviter les faux
+    # positifs, auditer alors le document entier en retirant scripts/styles.
+    head = head_match.group(0) if head_match else s
     head_clean = re.sub(r'<script\b.*?</script>|<style\b.*?</style>', '', head, flags=re.I | re.S)
     title_count = len(re.findall(r'<title\b', head_clean, re.I))
     if not technical and title_count != 1: flag('TITLE', f"title count={title_count}")
@@ -32,7 +35,7 @@ for p in pages:
     if not (technical or print_page) and not re.search(r'<link\b[^>]*rel\s*=\s*["\']canonical["\']',s,re.I): flag('CANONICAL','missing canonical')
     h1=len(re.findall(r'<h1\b',s,re.I))
     if not technical and h1!=1: flag('H1',f'h1 count={h1}')
-    if not (technical or print_page) and not re.search(r'href\s*=\s*["\']#(?:main-content|root)["\']',s,re.I): flag('SKIP','missing skip link')
+    if not (technical or print_page) and not re.search(r'href\s*=\s*(?:["\']#(?:main-content|root)["\']|#(?:main-content|root)(?=\s|>))',s,re.I): flag('SKIP','missing skip link')
     if not (technical or print_page) and not re.search(r'id\s*=\s*["\'](?:main-content|root)["\']',s,re.I): flag('MAIN','missing main target id')
     if not (technical or print_page) and 'modern-inner-2026.css' not in s and 'nav_a.css' not in s and rel not in ('index.html','index-en.html'): flag('INNER_UI','missing shared inner UI layer')
     if not technical and re.search(r'\bstyle\s*=\s*["\'][^"\']{240,}["\']',s,re.I): flag('INLINE_STYLE','very large inline style')
