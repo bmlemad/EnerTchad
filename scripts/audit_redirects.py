@@ -13,6 +13,8 @@ def exists(path):
     if path.endswith('/'): c.add(path+'index.html')
     return any(x in files for x in c)
 sources={}; duplicates=[]; self_redirects=[]; chains=[]; cycles=[]; missing=[]
+# Les destinations peuvent être des routes virtuelles servies par un rewrite Vercel.
+# Elles ne doivent donc pas être classées comme "statiques introuvables".
 for item in v.get('redirects',[]):
     src=item.get('source','').strip(); dst=item.get('destination','').strip()
     if not src or not dst: continue
@@ -22,6 +24,8 @@ for item in v.get('redirects',[]):
 
 def local_target(dst):
     return dst.split('#',1)[0].split('?',1)[0].rstrip('/') or '/'
+
+rewrite_targets={local_target(item.get('source','').strip()) for item in v.get('rewrites',[]) if item.get('source')}
 
 for src,dst in sources.items():
     if re.search(r'[:*+()]',dst) or dst.startswith(('http://','https://')): continue
@@ -42,7 +46,7 @@ for start in sources:
 
 for src,dst in sources.items():
     if re.search(r'[:*+()]',dst) or dst.startswith(('http://','https://')): continue
-    if local_target(dst) not in {local_target(s) for s in sources} and not exists(dst):
+    if local_target(dst) not in {local_target(s) for s in sources} and local_target(dst) not in rewrite_targets and not exists(dst):
         missing.append((src,dst))
 lines=['# Audit des redirections — 2026','',f'- Redirections déclarées : **{len(sources)}**',f'- Sources dupliquées : **{len(duplicates)}**',f'- Auto-redirections : **{len(self_redirects)}**',f'- Chaînes détectées : **{len(chains)}**',f'- Cycles détectés : **{len(set(cycles))}**',f'- Destinations statiques introuvables : **{len(missing)}**','', 'Les chaînes sont signalées pour optimisation mais restent compatibles avec des alias historiques.']
 for title,items in [('Sources dupliquées',sorted(set(duplicates))),('Auto-redirections',self_redirects),('Chaînes de redirection',[f'{a} → {b}' for a,b in chains]),('Cycles de redirection',[' → '.join(x) for x in sorted(set(cycles))]),('Destinations statiques introuvables',[f'{a} → {b}' for a,b in missing])]:
