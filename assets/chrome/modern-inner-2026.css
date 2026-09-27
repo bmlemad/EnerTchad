@@ -1,23 +1,23 @@
 /* EnerTchad — couche UI interne 2026 */
 :root{--et-i-navy:#0b1422;--et-i-panel:rgba(255,255,255,.045);--et-i-line:rgba(120,170,220,.18);--et-i-gold:#e8c36a;--et-i-blue:#5aa7f0;--et-i-muted:#8b9bb2}
 .et-inner-modern{--et-radius:18px}
-.et-inner-modern main{isolation:isolate}
-.et-inner-modern main h1{font-size:clamp(2.1rem,5vw,4rem);line-height:1.02;letter-spacing:-.035em;text-wrap:balance}
-.et-inner-modern main h2{font-size:clamp(1.45rem,3vw,2.35rem);line-height:1.08;letter-spacing:-.025em;text-wrap:balance}
-.et-inner-modern main h3{line-height:1.15;text-wrap:balance}
-.et-inner-modern main section{border-radius:var(--et-radius);border:1px solid var(--et-i-line);background:linear-gradient(145deg,rgba(255,255,255,.055),rgba(255,255,255,.018));box-shadow:0 18px 50px -35px rgba(0,0,0,.65);transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease}
-.et-inner-modern main section:hover{border-color:rgba(232,195,106,.28);box-shadow:0 24px 65px -38px rgba(0,0,0,.75)}
-.et-inner-modern .hero,.et-inner-modern header.hero,.et-inner-modern header.pghero{border-bottom:1px solid var(--et-i-line);box-shadow:0 20px 70px -55px rgba(0,0,0,.9)}
-.et-inner-modern .hero .wrap,.et-inner-modern header.hero .wrap,.et-inner-modern header.pghero .wrap{max-width:1240px}
-.et-inner-modern .kick,.et-inner-modern .hero-kick,.et-inner-modern .eyebrow{color:var(--et-i-gold);letter-spacing:.16em}
-.et-inner-modern .card,.et-inner-modern .val,.et-inner-modern .kpi,.et-inner-modern .p8,.et-inner-modern .orgc,.et-inner-modern .pgr a{border-color:var(--et-i-line);background:var(--et-i-panel);border-radius:14px;box-shadow:inset 0 1px 0 rgba(255,255,255,.035)}
-.et-inner-modern .card:hover,.et-inner-modern .val:hover,.et-inner-modern .p8:hover,.et-inner-modern .pgr a:hover{transform:translateY(-3px);border-color:rgba(232,195,106,.42);box-shadow:0 18px 35px -28px rgba(0,0,0,.85)}
-.et-inner-modern a:focus-visible,.et-inner-modern button:focus-visible,.et-inner-modern input:focus-visible,.et-inner-modern select:focus-visible,.et-inner-modern textarea:focus-visible{outline:3px solid rgba(90,167,240,.7);outline-offset:3px}
-.et-inner-modern .cta{border-radius:var(--et-radius);box-shadow:0 20px 55px -40px rgba(0,0,0,.8)}
-.et-inner-modern table{border-collapse:separate;border-spacing:0;width:100%;overflow:hidden;border:1px solid var(--et-i-line);border-radius:14px}
-.et-inner-modern th{background:rgba(232,195,106,.08);color:#fff;font-weight:700;text-align:left}
-.et-inner-modern th,.et-inner-modern td{padding:.8rem .9rem;border-bottom:1px solid var(--et-i-line)}
-.et-inner-modern tr:last-child td{border-bottom:0}
-.et-inner-modern img{border-radius:12px}
-@media(max-width:700px){.et-inner-modern main section{border-radius:14px}.et-inner-modern main{padding-bottom:42px}.et-inner-modern th,.et-inner-modern td{padding:.65rem .7rem;font-size:.9rem}}
-@media(prefers-reduced-motion:reduce){.et-inner-modern main section,.et-inner-modern .card,.et-inner-modern .val,.et-inner-modern .p8,.et-inner-modern .pgr a{transition:none}.et-inner-modern .card:hover,.et-inner-modern .val:hover,.et-inner-modern .p8:hover,.et-inner-modern .pgr a:hover{transform:none}}
+body:not(.hm):not(.et-modern-exclude) main{isolation:isolate}
+body:not(.hm):not(.et-modern-exclude) main h1{font-size:clamp(2.1rem,5vw,4rem);line-height:1.02;letter-spacing:-.035em;text-wrap:balance}
+body:not(.hm):not(.et-modern-exclude) main h2{font-size:clamp(1.45rem,3vw,2.35rem);line-height:1.08;letter-spacing:-.025em;text-wrap:balance}
+body:not(.hm):not(.et-modern-exclude) main h3{line-height:1.15;text-wrap:balance}
+body:not(.hm):not(.et-modern-exclude) main section{border-radius:var(--et-radius);border:1px solid var(--et-i-line);background:linear-gradient(145deg,rgba(255,255,255,.055),rgba(255,255,255,.018));box-shadow:0 18px 50px -35px rgba(0,0,0,.65);transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease}
+body:not(.hm):not(.et-modern-exclude) main section:hover{border-color:rgba(232,195,106,.28);box-shadow:0 24px 65px -38px rgba(0,0,0,.75)}
+body:not(.hm):not(.et-modern-exclude) .hero,body:not(.hm):not(.et-modern-exclude) header.hero,body:not(.hm):not(.et-modern-exclude) header.pghero{border-bottom:1px solid var(--et-i-line);box-shadow:0 20px 70px -55px rgba(0,0,0,.9)}
+body:not(.hm):not(.et-modern-exclude) .hero .wrap,body:not(.hm):not(.et-modern-exclude) header.hero .wrap,body:not(.hm):not(.et-modern-exclude) header.pghero .wrap{max-width:1240px}
+body:not(.hm):not(.et-modern-exclude) .kick,body:not(.hm):not(.et-modern-exclude) .hero-kick,body:not(.hm):not(.et-modern-exclude) .eyebrow{color:var(--et-i-gold);letter-spacing:.16em}
+body:not(.hm):not(.et-modern-exclude) .card,body:not(.hm):not(.et-modern-exclude) .val,body:not(.hm):not(.et-modern-exclude) .kpi,body:not(.hm):not(.et-modern-exclude) .p8,body:not(.hm):not(.et-modern-exclude) .orgc,body:not(.hm):not(.et-modern-exclude) .pgr a{border-color:var(--et-i-line);background:var(--et-i-panel);border-radius:14px;box-shadow:inset 0 1px 0 rgba(255,255,255,.035)}
+body:not(.hm):not(.et-modern-exclude) .card:hover,body:not(.hm):not(.et-modern-exclude) .val:hover,body:not(.hm):not(.et-modern-exclude) .p8:hover,body:not(.hm):not(.et-modern-exclude) .pgr a:hover{transform:translateY(-3px);border-color:rgba(232,195,106,.42);box-shadow:0 18px 35px -28px rgba(0,0,0,.85)}
+body:not(.hm):not(.et-modern-exclude) a:focus-visible,body:not(.hm):not(.et-modern-exclude) button:focus-visible,body:not(.hm):not(.et-modern-exclude) input:focus-visible,body:not(.hm):not(.et-modern-exclude) select:focus-visible,body:not(.hm):not(.et-modern-exclude) textarea:focus-visible{outline:3px solid rgba(90,167,240,.7);outline-offset:3px}
+body:not(.hm):not(.et-modern-exclude) .cta{border-radius:var(--et-radius);box-shadow:0 20px 55px -40px rgba(0,0,0,.8)}
+body:not(.hm):not(.et-modern-exclude) table{border-collapse:separate;border-spacing:0;width:100%;overflow:hidden;border:1px solid var(--et-i-line);border-radius:14px}
+body:not(.hm):not(.et-modern-exclude) th{background:rgba(232,195,106,.08);color:#fff;font-weight:700;text-align:left}
+body:not(.hm):not(.et-modern-exclude) th,body:not(.hm):not(.et-modern-exclude) td{padding:.8rem .9rem;border-bottom:1px solid var(--et-i-line)}
+body:not(.hm):not(.et-modern-exclude) tr:last-child td{border-bottom:0}
+body:not(.hm):not(.et-modern-exclude) img{border-radius:12px}
+@media(max-width:700px){body:not(.hm):not(.et-modern-exclude) main section{border-radius:14px}body:not(.hm):not(.et-modern-exclude) main{padding-bottom:42px}body:not(.hm):not(.et-modern-exclude) th,body:not(.hm):not(.et-modern-exclude) td{padding:.65rem .7rem;font-size:.9rem}}
+@media(prefers-reduced-motion:reduce){body:not(.hm):not(.et-modern-exclude) main section,body:not(.hm):not(.et-modern-exclude) .card,body:not(.hm):not(.et-modern-exclude) .val,body:not(.hm):not(.et-modern-exclude) .p8,body:not(.hm):not(.et-modern-exclude) .pgr a{transition:none}body:not(.hm):not(.et-modern-exclude) .card:hover,body:not(.hm):not(.et-modern-exclude) .val:hover,body:not(.hm):not(.et-modern-exclude) .p8:hover,body:not(.hm):not(.et-modern-exclude) .pgr a:hover{transform:none}}
