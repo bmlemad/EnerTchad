@@ -25,6 +25,8 @@ jobs:
         run: python scripts/audit_assets.py
       - name: Auditer les garde-fous de performance
         run: python scripts/audit_performance.py
+      - name: Auditer le coût des ressources CSS / JS
+        run: python scripts/audit_resource_costs.py
       - name: Générer le benchmark technique
         run: python scripts/benchmark_site.py
       - name: Auditer les parcours de conversion
