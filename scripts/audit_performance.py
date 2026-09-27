@@ -18,7 +18,7 @@ for p in pages:
         tag = m.group(0)
         if re.search(r"\b(?:defer|async)\b", tag, re.I):
             continue
-        src = re.search(r"\\bsrc\\s*=\\s*[\\\"']([^\\\"']+)", tag, re.I)
+        src = re.search(r"\bsrc\s*=\s*[\"']([^\"']+)", tag, re.I)
         if not src:
             continue
         src_url = src.group(1)
