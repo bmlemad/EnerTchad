@@ -32,12 +32,14 @@ jobs:
         run: |
           set -euo pipefail
           page=$(curl -L -sS "$SITE_URL/petrochimie/")
-          if ! printf '%s' "$page" | grep -q 'class="et-skip"'; then
-            echo "::warning::Production Vercel ne contient pas le skip-link source attendu sur /petrochimie/. Vérifier la synchronisation du projet Vercel avant d'interpréter la QA comme un défaut du dépôt."
-          fi
-          if ! printf '%s' "$page" | grep -q 'main-content'; then
-            echo "::warning::Production Vercel ne contient pas #main-content sur /petrochimie/. Le dépôt Git doit être comparé au déploiement réellement servi."
-          fi
+          case "$page" in
+            *'class="et-skip"'*) ;;
+            *) echo "::warning::Production Vercel ne contient pas le skip-link source attendu sur /petrochimie/. Vérifier la synchronisation du projet Vercel avant d'interpréter la QA comme un défaut du dépôt." ;;
+          esac
+          case "$page" in
+            *'main-content'*) ;;
+            *) echo "::warning::Production Vercel ne contient pas #main-content sur /petrochimie/. Le dépôt Git doit être comparé au déploiement réellement servi." ;;
+          esac
 
       - name: Exécuter la QA fonctionnelle
         run: |
