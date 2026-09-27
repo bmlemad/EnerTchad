@@ -54,6 +54,8 @@ jobs:
               npx lighthouse "https://enertchad-delta.vercel.app$path" --quiet --chrome-flags="--headless --no-sandbox" --preset="$preset" --only-categories=performance,accessibility,best-practices,seo --output=json --output-path="reports/lighthouse/"$preset"_"$name".json"
             done
           done
+      - name: Résumer les mesures Lighthouse
+        run: python scripts/summarize_lighthouse.py
       - name: Publier les rapports
         uses: actions/upload-artifact@v4
         with:
@@ -61,4 +63,5 @@ jobs:
           path: |
             reports/benchmark-site-2026.md
             reports/lighthouse/*.json
+            reports/lighthouse-summary-2026.md
           if-no-files-found: error
