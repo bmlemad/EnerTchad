@@ -40,10 +40,27 @@ for p in pages:
     ids=re.findall(r'\bid\s*=\s*["\']([^"\']+)["\']',s,re.I)
     dup=[k for k,v in Counter(ids).items() if v>1]
     if dup: flag('DUP_ID',', '.join(dup[:8]))
-    # Les images interactives/SEO doivent disposer d'un nom accessible.
+    # Images: toutes doivent avoir un attribut alt explicite.
     for m in re.finditer(r'<img\b([^>]*)>',s,re.I|re.S):
         tag=m.group(0)
         if not re.search(r'\balt\s*=',tag,re.I): flag('IMG_ALT','img without alt')
+
+    # Contrôles interactifs: détecter les noms accessibles manifestement absents.
+    for m in re.finditer(r'<(?:a|button)\b([^>]*)>(.*?)</(?:a|button)>',s,re.I|re.S):
+        tag, body = m.group(1), m.group(2)
+        if re.search(r'\baria-hidden\s*=\s*["']true["']',tag,re.I): continue
+        named = re.search(r'\baria-label\s*=\s*["'][^"']+[^"']["']',tag,re.I) or re.search(r'\baria-labelledby\s*=\s*["'][^"']+["']',tag,re.I)
+        visible = re.sub(r'<[^>]+>', ' ', body)
+        visible = re.sub(r'&(?:nbsp|#160);', ' ', visible, flags=re.I)
+        if not named and not visible.strip() and not re.search(r'<img\b[^>]*\balt\s*=\s*["'][^"']+["']',body,re.I):
+            flag('EMPTY_CONTROL','link/button without accessible name')
+
+    # Form fields should expose a label or an ARIA name.
+    for m in re.finditer(r'<(?:input|select|textarea)\b([^>]*)>',s,re.I|re.S):
+        tag=m.group(0)
+        if re.search(r'\btype\s*=\s*["'](?:hidden|submit|button|reset|image)["']',tag,re.I): continue
+        if not (re.search(r'\baria-label(?:ledby)?\s*=',tag,re.I) or re.search(r'\bid\s*=',tag,re.I) and re.search(r'<label\b[^>]*\bfor\s*=\s*["'][^"']+["']',s,re.I)):
+            flag('FORM_NAME','form field without detectable label/ARIA name')
 
     main_end = s.lower().rfind('</main>')
     for m in re.finditer(r'<script\b([^>]*)>',s,re.I|re.S):
@@ -54,7 +71,7 @@ for p in pages:
             flag('SCRIPT_BLOCK','external script before end of main without defer/async')
 
 lines=['# Audit UI, accessibilité & SEO technique — 2026','',f'Pages analysées : **{len(pages)}**','','## Synthèse','', '| Contrôle | Occurrences |','|---|---:|']
-for k in ['LANG','TITLE','DESCRIPTION','VIEWPORT','CANONICAL','H1','SKIP','MAIN','INNER_UI','IMG_ALT','DUP_ID','SCRIPT_BLOCK','INLINE_STYLE','INLINE_JS']: lines.append(f'| {k} | {stats[k]} |')
+for k in ['LANG','TITLE','DESCRIPTION','VIEWPORT','CANONICAL','H1','SKIP','MAIN','INNER_UI','IMG_ALT','EMPTY_CONTROL','FORM_NAME','DUP_ID','SCRIPT_BLOCK','INLINE_STYLE','INLINE_JS']: lines.append(f'| {k} | {stats[k]} |')
 lines += ['', '## Anomalies', '']
 if not issues: lines.append('Aucune anomalie détectée.')
 else:
