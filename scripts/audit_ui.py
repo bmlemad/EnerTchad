@@ -19,7 +19,7 @@ for p in pages:
     s=p.read_text(encoding='utf-8',errors='ignore')
     rel=p.relative_to(ROOT).as_posix()
     def flag(kind,detail): issues.append((rel,kind,detail)); stats[kind]+=1
-    if not re.search(r'<html\b[^>]*\blang\s*=',s,re.I): flag('LANG','missing html lang')
+    if not technical and not re.search(r'<html\b[^>]*\blang\s*=',s,re.I): flag('LANG','missing html lang')
     head_match = re.search(r'<head\b.*?</head>', s, re.I | re.S)
     head = head_match.group(0) if head_match else ''
     head_clean = re.sub(r'<script\b.*?</script>|<style\b.*?</style>', '', head, flags=re.I | re.S)
@@ -31,7 +31,7 @@ for p in pages:
     if not (technical or print_page) and not re.search(r'<meta\b[^>]*name\s*=\s*["\']viewport["\']',s,re.I): flag('VIEWPORT','missing viewport')
     if not (technical or print_page) and not re.search(r'<link\b[^>]*rel\s*=\s*["\']canonical["\']',s,re.I): flag('CANONICAL','missing canonical')
     h1=len(re.findall(r'<h1\b',s,re.I))
-    if h1!=1: flag('H1',f'h1 count={h1}')
+    if not technical and h1!=1: flag('H1',f'h1 count={h1}')
     if not (technical or print_page) and not re.search(r'href\s*=\s*["\']#main-content["\']',s,re.I): flag('SKIP','missing #main-content skip link')
     if not (technical or print_page) and not re.search(r'id\s*=\s*["\']main-content["\']',s,re.I): flag('MAIN','missing id=main-content')
     if not (technical or print_page) and 'modern-inner-2026.css' not in s and 'nav_a.css' not in s and rel not in ('index.html','index-en.html'): flag('INNER_UI','missing shared inner UI layer')
