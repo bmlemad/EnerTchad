@@ -12,7 +12,12 @@ for p in pages:
     s = p.read_text(encoding="utf-8", errors="ignore")
     rel = p.relative_to(ROOT).as_posix()
     blocking = [m.group(0) for m in re.finditer(r"<script\b[^>]*\bsrc\s*=\s*[^>]+>", s, re.I) if not re.search(r"\b(?:defer|async)\b", m.group(0), re.I)]
-    if blocking: findings.append((rel, "scripts externes bloquants", len(blocking)))
+    if blocking:
+        findings.append((rel, "scripts externes bloquants", len(blocking)))
+        for tag in blocking:
+            src = re.search(r"\bsrc\s*=\s*[\"']([^\"']+)", tag, re.I)
+            if src:
+                findings.append((rel, f"script synchrone: {src.group(1)}", 1))
     # Seules les feuilles réellement bloquantes comptent ici : les préloads
     # et les fallbacks <noscript> ne bloquent pas le rendu quand JS est actif.
     # Ne compter que les feuilles qui bloquent réellement le rendu. Les
