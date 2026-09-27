@@ -18,12 +18,12 @@ issues=[]; stats=Counter()
 for p in pages:
     s=p.read_text(encoding='utf-8',errors='ignore')
     rel=p.relative_to(ROOT).as_posix()
+    technical = is_technical(rel)
     def flag(kind,detail): issues.append((rel,kind,detail)); stats[kind]+=1
     if not technical and not re.search(r'<html\b[^>]*\blang\s*=',s,re.I): flag('LANG','missing html lang')
     head_match = re.search(r'<head\b.*?</head>', s, re.I | re.S)
     head = head_match.group(0) if head_match else ''
     head_clean = re.sub(r'<script\b.*?</script>|<style\b.*?</style>', '', head, flags=re.I | re.S)
-    technical = is_technical(rel)
     title_count = len(re.findall(r'<title\b', head_clean, re.I))
     if not technical and title_count != 1: flag('TITLE', f"title count={title_count}")
     print_page = rel.startswith(PRINT_PREFIXES)
