@@ -5,11 +5,11 @@ import re
 ROOT=Path(__file__).resolve().parents[1]
 P=ROOT/"index.html"; OUT=ROOT/"reports"/"conversion-audit-2026.md"
 s=P.read_text(encoding="utf-8",errors="ignore") if P.exists() else ""
-anchors=re.findall(r"<a\\b([^>]*)>(.*?)</a>",s,re.I|re.S)
+anchors=re.findall(r"<a\b([^>]*)>(.*?)</a>",s,re.I|re.S)
 labels=[]
 for attrs,body in anchors:
-    txt=re.sub(r"<[^>]+>"," ",body); txt=re.sub(r"\\s+"," ",txt).strip()
-    href=re.search(r"""\\bhref=["\']([^"\']+)""",attrs,re.I)
+    txt=re.sub(r"<[^>]+>"," ",body); txt=re.sub(r"\s+"," ",txt).strip()
+    href=re.search(r"""\bhref=["\']([^"\']+)""",attrs,re.I)
     if txt or re.search(r"""aria-label=["\']""",attrs,re.I): labels.append((txt or "[aria-label]",href.group(1) if href else ""))
 terms={"Investir":r"invest|capital|actionna|finance","Clients":r"client|service|produit|carbur","Fournisseurs":r"fournisseur|achat|appel|marché|procurement","Carrières":r"carri|emploi|recrut|talent","Contact":r"contact|écrire|joindre","Documentation":r"document|rapport|publication|donnée|atlas"}
 lines=["# Audit des parcours de conversion — 2026","","Audit descriptif : présence de libellés/liens correspondant à des intentions utilisateur.","","| Intention | Détection | Exemples de liens |","|---|---|---|"]
