@@ -31,6 +31,7 @@ test('representative inner pages — desktop and mobile', async ({ browser }) =>
     expect(response, path).not.toBeNull();
     expect(response.status(), path).toBeLessThan(400);
     await expect(page.locator('h1').first(), path).toBeVisible();
+    await expect(page.locator('a.et-skip').first(), path).toHaveAttribute('href', '#main-content');
     await expect(page.locator('nav').first(), path).toBeVisible();
     const overflow = await page.evaluate(() => document.documentElement.scrollWidth > document.documentElement.clientWidth + 1);
     expect(overflow, path).toBeFalsy();
