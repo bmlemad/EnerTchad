@@ -113,18 +113,21 @@ test('language entry points — FR EN AR', async ({ browser }) => {
   }
 });
 
-test('EN pole landing pages', async ({ browser }) => {
-  const paths = ['/pole-amont-en', '/pole-aval-en', '/pole-enerchimie-en', '/pole-enerconseils-en', '/pole-greentech-en', '/pole-intermediaire-en', '/pole-tchaditech-en', '/pole-tchaditude-en'];
-  for (const path of paths) {
-    const page = await browser.newPage({ viewport: { width: 1280, height: 900 } });
-    const response = await page.goto(new URL(path, url).href, { waitUntil: 'networkidle', timeout: 45000 });
-    expect(response, path).not.toBeNull();
-    expect(response.status(), path).toBeLessThan(400);
-    await expect(page.locator('html').first(), path).toHaveAttribute('lang', 'en');
-    await expect(page.locator('h1').first(), path).toBeVisible();
-    const overflow = await page.evaluate(() => document.documentElement.scrollWidth > document.documentElement.clientWidth + 1);
-    expect(overflow, path).toBeFalsy();
-    await page.close();
+test('legacy EN pole aliases — canonical routes', async ({ request }) => {
+  const cases = [
+    ['/pole-amont-en', '/amont/'],
+    ['/pole-aval-en', '/aval/'],
+    ['/pole-enerchimie-en', '/petrochimie/'],
+    ['/pole-enerconseils-en', '/enerconseils/'],
+    ['/pole-greentech-en', '/greentech/'],
+    ['/pole-intermediaire-en', '/intermediaire/'],
+    ['/pole-tchaditech-en', '/tchaditech/'],
+    ['/pole-tchaditude-en', '/tchaditude/']
+  ];
+  for (const [from, to] of cases) {
+    const response = await request.get(new URL(from, url).href, { maxRedirects: 5 });
+    expect(response.status(), from).toBe(200);
+    expect(new URL(response.url()).pathname, from).toBe(to);
   }
 });
 
