@@ -239,9 +239,15 @@ test('hubs — liens internes accessibles et sans 4xx/5xx', async ({ request }) 
       .filter(href => href.startsWith('/') && !href.startsWith('//'));
 
     const unique = [...new Set(hrefs)];
-    for (const href of unique.slice(0, 60)) {
-      const target = await request.get(new URL(href, url).href, { maxRedirects: 5 });
-      expect(target.status(), path + ' -> ' + href).toBeLessThan(400);
+    const targets = unique.slice(0, 60);
+    for (let i = 0; i < targets.length; i += 8) {
+      const batch = targets.slice(i, i + 8);
+      const responses = await Promise.all(
+        batch.map(href => request.get(new URL(href, url).href, { maxRedirects: 5 }))
+      );
+      responses.forEach((target, index) => {
+        expect(target.status(), path + ' -> ' + batch[index]).toBeLessThan(400);
+      });
     }
   }
 });
