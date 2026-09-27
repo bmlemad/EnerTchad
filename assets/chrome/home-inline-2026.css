@@ -80,6 +80,11 @@ body::after{
   100%{transform:translate3d(4%,-4%,0) scale(1.02)}
 }
 @media (prefers-reduced-motion:reduce){body::before,html::before{animation:none}}
+/* mobile-battery glass aurora: retain depth without continuous large-surface animation */
+@media(max-width:760px){
+  body::before,html::before{animation:none;filter:blur(18px);inset:-12%}
+}
+
 
 /* ---- glass cards (all component families) ---- */
 .hpcard,.hxi-card,.mfo-lever,.hncard,.sc-card,.hx-stat,.hubdrawer,.flip-face,.hpcard-kpis{
