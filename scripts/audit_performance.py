@@ -44,7 +44,7 @@ for p in pages:
     stylesheets = [tag for tag in stylesheet_tags if not re.search(r"\bonload\s*=", tag, re.I)]
     stylesheet_hrefs = []
     for tag in stylesheets:
-        href = re.search(r'\\bhref\\s*=\\s*"([^"]+)"', tag, re.I) or re.search(r"\\bhref\\s*=\\s*'([^']+)'", tag, re.I)
+        href = re.search(r'\bhref\s*=\s*"([^"]+)"', tag, re.I) or re.search(r"\bhref\s*=\s*'([^']+)'", tag, re.I)
         if href:
             stylesheet_hrefs.append(href.group(1))
     unique_stylesheets = list(dict.fromkeys(stylesheet_hrefs))
