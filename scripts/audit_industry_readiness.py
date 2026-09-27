@@ -56,14 +56,6 @@ for asset in [
     if not (ROOT / asset).exists():
         errors.append(f"ressource documentaire attendue absente: {asset}")
 
-if errors:
-    print("\n".join(errors))
-    print(f"\nECHEC : {len(errors)} problème(s)")
-    sys.exit(1)
-
-print("OK : centre corporate/reporting présent, relié et documenté")
-
-
 multilingual = [
     ("index-en.html", home_en, r'class="et-proof-center"[^>]*aria-labelledby="et-proof-title-en"', r'/publications-en#pub-inv'),
     ("ar.html", home_ar, r'class="et-proof-center"[^>]*aria-labelledby="et-proof-title-ar"', r'/ar-investisseurs'),
@@ -74,3 +66,25 @@ for filename, content, pattern_one, pattern_two in multilingual:
         errors.append(f"{filename}: multilingual corporate layer absent")
     if not re.search(pattern_two, content, re.I | re.S):
         errors.append(f"{filename}: reporting gateway absent")
+
+# Redirect aliases for the reporting center must remain canonical shortcuts.
+vercel = ROOT / "vercel.json"
+if vercel.exists():
+    data = vercel.read_text(encoding="utf-8", errors="ignore")
+    if not re.search(r'"source"\s*:\s*"/reporting"[^}]*"destination"\s*:\s*"/publications"[^}]*"permanent"\s*:\s*true', data, re.S):
+        errors.append("vercel.json: alias /reporting absent ou non permanent")
+    if not re.search(r'"source"\s*:\s*"/reporting-en"[^}]*"destination"\s*:\s*"/publications-en"[^}]*"permanent"\s*:\s*true', data, re.S):
+        errors.append("vercel.json: alias /reporting-en absent ou non permanent")
+else:
+    errors.append("vercel.json: fichier absent")
+
+for filename, content in [("index.html", home), ("index-en.html", home_en), ("ar.html", home_ar)]:
+    if "home-corporate-2026.css" not in content:
+        errors.append(f"{filename}: feuille home-corporate absente")
+
+if errors:
+    print("\n".join(errors))
+    print(f"\nECHEC : {len(errors)} problème(s)")
+    sys.exit(1)
+
+print("OK : centre corporate/reporting présent, multilingue, relié et documenté")
