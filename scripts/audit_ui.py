@@ -40,8 +40,11 @@ for p in pages:
     ids=re.findall(r'\bid\s*=\s*["\']([^"\']+)["\']',s,re.I)
     dup=[k for k,v in Counter(ids).items() if v>1]
     if dup: flag('DUP_ID',', '.join(dup[:8]))
-    for m in re.finditer(r'<img\b([^>]*)>',s,re.I|re.S):
-        if not re.search(r'\balt\s*=',m.group(0),re.I): flag('IMG_ALT','img without alt')
+    # Les images interactives/SEO doivent disposer d'un nom accessible.
+    for m in re.finditer(r'<img\\b([^>]*)>',s,re.I|re.S):
+        tag=m.group(0)
+        if not re.search(r'\\balt\\s*=',tag,re.I): flag('IMG_ALT','img without alt')
+
     main_end = s.lower().rfind('</main>')
     for m in re.finditer(r'<script\b([^>]*)>',s,re.I|re.S):
         tag=m.group(0)
