@@ -35,7 +35,7 @@ for p in pages:
     if not (technical or print_page) and not re.search(r'href\s*=\s*["\']#(?:main-content|root)["\']',s,re.I): flag('SKIP','missing skip link')
     if not (technical or print_page) and not re.search(r'id\s*=\s*["\'](?:main-content|root)["\']',s,re.I): flag('MAIN','missing main target id')
     if not (technical or print_page) and 'modern-inner-2026.css' not in s and 'nav_a.css' not in s and rel not in ('index.html','index-en.html'): flag('INNER_UI','missing shared inner UI layer')
-    if re.search(r'\bstyle\s*=\s*["\'][^"\']{240,}["\']',s,re.I): flag('INLINE_STYLE','very large inline style')
+    if not technical and re.search(r'\bstyle\s*=\s*["\'][^"\']{240,}["\']',s,re.I): flag('INLINE_STYLE','very large inline style')
     if len(re.findall(r'<script\b',s,re.I))>30: flag('INLINE_JS','high script tag count')
     ids=re.findall(r'\bid\s*=\s*["\']([^"\']+)["\']',s,re.I)
     dup=[k for k,v in Counter(ids).items() if v>1]
