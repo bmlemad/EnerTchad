@@ -9,6 +9,10 @@ REPORT=ROOT/"reports/ui-audit-2026.md"
 pages=sorted(ROOT.rglob('*.html'))
 skip_dirs={'.git','node_modules','reports'}
 pages=[p for p in pages if not any(x in skip_dirs for x in p.parts)]
+TECHNICAL_EXEMPT = {'404.html','google9146d41010c5e702.html'}
+PRINT_PREFIXES = ('docs-sources/',)
+def is_technical(rel):
+    return rel in TECHNICAL_EXEMPT or rel.startswith(PRINT_PREFIXES)
 
 issues=[]; stats=Counter()
 for p in pages:
