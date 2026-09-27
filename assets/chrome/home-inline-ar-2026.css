@@ -1,0 +1,525 @@
+@font-face{font-family:'Noto Sans Arabic';src:url('/assets/fonts/NotoSansArabic-arabic.woff2') format('woff2');font-weight:100 900;font-display:swap;unicode-range:U+0600-06FF,U+0750-077F,U+0870-088E,U+08A0-08FF,U+200C-200E,U+2010-2011,U+FB50-FDFF,U+FE70-FEFC}
+/* ———— ex-bloc: anonyme ———— */
+:root{--navy:#111D33;--cream:#F5F7FA;--gold:#E8C36A;--gold-l:#E8C36A;--blue-l:#5AA7F0;--green:var(--green-l,#34D399);--muted:#7C8AA2;--hair:rgba(90,167,240,.14);--fd:'Noto Sans Arabic','Segoe UI',Tahoma,system-ui,sans-serif;--fm:'Noto Sans Arabic','Segoe UI',Tahoma,system-ui,sans-serif}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--navy);color:var(--cream);font-family:var(--fd);line-height:1.85;text-wrap:pretty}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+header.top{border-bottom:1px solid var(--hair);position:sticky;top:0;background:rgba(11,20,34,.9);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);z-index:5}
+.hd{display:flex;align-items:center;justify-content:space-between;padding:15px 24px;max-width:1080px;margin:0 auto}
+.brand{display:inline-flex;align-items:center;gap:9px;font-weight:700;font-size:1.05rem;color:var(--cream);text-decoration:none}.brand b{color:var(--gold)}.brand .bmk{width:27px;height:27px;flex:none}
+.lang{display:inline-flex;gap:2px;border:1px solid var(--hair);border-radius:999px;padding:3px;font-size:.74rem}
+.lang a{padding:5px 11px;border-radius:999px;text-decoration:underline;text-underline-offset:3px;color:var(--muted)}.lang a.on{background:var(--gold-l);color:#121D31;font-weight:700}
+.hero{position:relative;overflow:hidden;border-bottom:1px solid var(--hair);background:radial-gradient(820px 360px at 16% -12%,rgba(232,195,106,.16),transparent 60%),radial-gradient(620px 320px at 94% 120%,rgba(90,167,240,.16),transparent 60%),linear-gradient(180deg,#0d1524,#121d31)}
+.hero::after{content:"";position:absolute;left:0;top:0;width:100%;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:.55}
+.hero .wrap{padding:clamp(46px,7vw,86px) 24px clamp(30px,4vw,46px)}
+.kick{font-size:.8rem;letter-spacing:0;color:var(--gold-l);display:inline-flex;align-items:center;gap:9px}
+.kick::before{content:"";width:24px;height:1px;background:var(--gold-l)}
+h1{font-family:var(--fd);font-weight:800;font-size:var(--ts-2,clamp(2.1rem,4.8vw,3.3rem));line-height:1.25;letter-spacing:0;margin:16px 0 0;max-width:24ch}
+h1 em{font-style:normal;color:var(--gold-l)}
+.lead{color:rgba(245,247,250,.78);font-size:clamp(1.04rem,1.5vw,1.2rem);line-height:1.85;max-width:72ch;margin:18px 0 0}
+.kpis{display:flex;flex-wrap:wrap;gap:12px;margin:30px 0 0}
+.kpi{flex:1;min-width:130px;border:1px solid var(--hair);border-top:2px solid var(--gold-l);border-radius:14px;padding:16px 18px;background:rgba(255,255,255,.03)}
+.kpi b{display:block;font-weight:800;font-size:1.5rem;color:#fff}.kpi span{font-size:.74rem;color:var(--muted)}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin:30px 0 0}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 22px;border-radius:12px;background:var(--gold-l);color:#121D31;font-weight:700;font-size:.95rem;text-decoration:none}.btn:hover{background:#fff}
+.btn2{display:inline-flex;align-items:center;gap:8px;padding:13px 20px;border-radius:12px;border:1px solid var(--hair);color:var(--cream);font-weight:600;font-size:.92rem;text-decoration:none}.btn2:hover{border-color:var(--gold-l);color:var(--gold-l)}
+main{padding:8px 0 64px}
+section{padding:46px 0 6px;border-top:1px solid var(--hair);margin-top:30px}
+section:first-of-type{border-top:none}
+.sk{font-size:.74rem;letter-spacing:0;color:var(--ac,var(--gold-l));margin-bottom:8px;font-weight:700}
+h2{font-size:var(--ts-5,clamp(1.35rem,2.9vw,2.1rem));line-height:1.3;font-weight:800;letter-spacing:0;color:#fff;margin:0 0 8px}
+p{color:rgba(245,247,250,.82);font-size:1.02rem;margin:.3em 0 .8em}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(225px,1fr));gap:14px;margin:18px 0 4px}
+.card{background:rgba(255,255,255,.03);border:1px solid var(--hair);border-right:3px solid var(--ac,var(--gold-l));border-radius:14px 0 0 14px;padding:18px 20px}
+.card .t{font-weight:700;color:#fff;font-size:1.05rem;margin-bottom:5px}.card .d{font-size:.92rem;color:var(--muted);line-height:1.75}
+.note{background:rgba(9,14,24,.46);backdrop-filter:blur(9px);-webkit-backdrop-filter:blur(9px);border:1px solid var(--hair);border-right:3px solid var(--green);border-radius:12px 0 0 12px;padding:14px 18px;font-size:.95rem;color:rgba(245,247,250,.76);margin-top:26px}
+.note b{color:#fff}
+.note a{color:var(--gold-l);text-decoration:underline;text-underline-offset:2px}
+section p a{text-decoration:underline;text-underline-offset:2px}
+footer{background:linear-gradient(180deg,rgba(5,10,18,.82),rgba(5,10,18,.94));border-top:1px solid color-mix(in srgb,var(--gold-l) 20%,var(--hair));padding:28px 0;color:var(--muted);font-size:.85rem;margin-top:46px}
+footer a{color:var(--muted);text-decoration:underline;text-underline-offset:3px;margin-left:16px}footer a:hover{color:var(--gold)}
+.foot-sep{color:rgba(245,247,250,.3);margin:0 2px}
+h1,h2,h3,.kick,.sk{font-family:var(--fd)}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto}}
+/* ———— ex-bloc: ultra-polish ———— */
+:root{--ease-ultra:cubic-bezier(.22,.61,.36,1)}html{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;scroll-padding-top:92px}body{font-feature-settings:"kern" 1,"liga" 1,"calt" 1}::selection{background:rgba(232,195,106,.30);color:#fff}*::-webkit-scrollbar{width:11px;height:11px}*::-webkit-scrollbar-track{background:transparent}*::-webkit-scrollbar-thumb{background:linear-gradient(180deg,rgba(232,195,106,.55),rgba(90,167,240,.42));border-radius:99px;border:3px solid #0B1322}*::-webkit-scrollbar-thumb:hover{background:linear-gradient(180deg,rgba(232,195,106,.85),rgba(90,167,240,.62))}html{scrollbar-width:thin;scrollbar-color:rgba(232,195,106,.5) transparent}:focus-visible{outline:2px solid var(--gold-l,#F0CE82);outline-offset:3px}.kpi b{font-variant-numeric:tabular-nums}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{scroll-behavior:auto}}
+/* ———— ex-bloc: rt-a11y-min ———— */
+@media (prefers-reduced-transparency:reduce){*{-webkit-backdrop-filter:none!important;backdrop-filter:none!important}}
+
+html .hero{background:linear-gradient(90deg,rgba(6,11,20,.58) 0%,rgba(6,11,20,.46) 40%,rgba(6,11,20,.34) 70%,rgba(6,11,20,.30) 100%),linear-gradient(180deg,rgba(14,22,38,.28) 0%,rgba(14,22,38,.36) 52%,rgba(14,22,38,.54) 100%)!important;border-bottom:1px solid rgba(255,255,255,.08)!important;text-shadow:0 2px 18px rgba(0,0,0,.45)}html .hero h1,html .hero h2{color:#fff!important;text-shadow:0 2px 18px rgba(0,0,0,.5)!important}html .hero h1 em{color:#F9E5B2!important;background:linear-gradient(110deg,#F0CE82 30%,#7FB8F5);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;text-shadow:none!important}html .hero .lead{color:rgba(245,247,250,.92)!important}html .hero .kick{color:#F9E5B2!important}html .hero .kick::before{background:#F9E5B2!important}
+
+html.et-navd #preloader{display:none!important}
+
+.rootland{position:fixed;inset:0;z-index:-2;background:none;pointer-events:none}.rootland::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,12,21,.54) 0%,rgba(7,12,21,.66) 100%)}html{background:#0d1524}body{background:transparent!important}main{background:transparent!important}html:not(.et-plight):not(.et-jlight) main>section,html:not(.et-plight):not(.et-jlight) body>section,html:not(.et-plight):not(.et-jlight) main>div>section{background:rgba(14,22,38,.38)!important;border-radius:22px;}html:not(.et-plight):not(.et-jlight) main,html:not(.et-plight):not(.et-jlight) footer{--muted:#A8B6C9}main h2,main h3,section h2,section h3{text-shadow:0 2px 16px rgba(0,0,0,.6)}html:not(.et-plight):not(.et-jlight) footer{background:rgba(14,22,38,.68)!important;text-shadow:0 1px 10px rgba(0,0,0,.55)}footer a{text-shadow:none}@media(prefers-contrast:more){html:not(.et-plight):not(.et-jlight) main>section,html:not(.et-plight):not(.et-jlight) body>section,html:not(.et-plight):not(.et-jlight) main>div>section{background:rgba(14,22,38,.92)!important;box-shadow:0 0 0 100vmax rgba(14,22,38,.92)}}
+
+#toTop{position:fixed;right:22px;bottom:22px;width:50px;height:50px;border-radius:50%;border:1px solid var(--hair,rgba(120,180,250,.18));background:rgba(14,26,44,.85);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);color:var(--cream,#F5F7FA);cursor:pointer;display:grid;place-items:center;opacity:0;transform:translateY(16px) scale(.9);transition:opacity .35s,transform .35s,box-shadow .35s;z-index:48;padding:0;pointer-events:none}#toTop.show{opacity:1;transform:none;pointer-events:auto}#toTop:hover{box-shadow:0 12px 30px -8px rgba(46,134,222,.5)}#toTop:focus-visible{outline:2px solid var(--gold-l,#E8C36A);outline-offset:3px}#toTop .ttr{position:absolute;inset:0;width:50px;height:50px;transform:rotate(-90deg)}#toTop .ttr circle{fill:none;stroke-width:2}#toTop .ttt{stroke:rgba(255,255,255,.12)}#toTop .ttp{stroke:var(--gold-l,#E8C36A);stroke-dasharray:151;stroke-dashoffset:151;transition:stroke-dashoffset .1s linear}@media(max-width:760px){#toTop{width:46px;height:46px;right:16px;bottom:16px}}
+
+/* ———— ex-bloc: ar-rtl-fix ———— */
+html[dir="rtl"] #secrail:not(#_){right:auto!important;left:14px!important;align-items:flex-start!important}
+html[dir="rtl"] #secrail a:not(#_){transform:translateX(-26px)}
+html[dir="rtl"] #secrail.show a:not(#_){transform:none}
+html[dir="rtl"] #secrail a:hover:not(#_),html[dir="rtl"] #secrail a.on:not(#_){transform:translateX(4px)}
+html[dir="rtl"] #secrail a:hover .axl,html[dir="rtl"] #secrail a:focus-visible .axl,html[dir="rtl"] #secrail a.on .axl{margin-left:0;margin-inline-start:9px}
+@media(max-width:900px){html[dir="rtl"] #secrail:not(#_){display:none!important}}
+/* ———— ex-bloc: aa-proselinks ———— */
+main p a:not([class]):not(#_):not(#__),main details p a:not([class]):not(#_):not(#__),main li a:not([class]):not(#_):not(#__){color:#E8C36A!important;-webkit-text-fill-color:#E8C36A!important;text-decoration:underline;text-underline-offset:2px;text-decoration-thickness:1px;text-decoration-color:rgba(232,195,106,.45)}
+html.et-plight main p a:not([class]):not(#_):not(#__),html.et-plight main details p a:not([class]):not(#_):not(#__),html.et-plight main li a:not([class]):not(#_):not(#__){color:#74570B!important;-webkit-text-fill-color:#74570B!important;text-decoration-color:rgba(138,106,18,.45)}
+/* ———— ex-bloc: glass-v3 ———— */
+/* Verre v3 : le decor photographique fixe (rootland/subland) passe derriere les bandes translucides. On ajoute le flou d arriere-plan qui manquait, pour que la matiere se lise a travers sans parasiter le texte. Aucun fond n est modifie ici. Mode sombre uniquement : en mode clair le decor est deja masque. */
+html:not(.et-plight):not(.et-jlight) main section:not(#_){-webkit-backdrop-filter:blur(16px) saturate(140%);backdrop-filter:blur(16px) saturate(140%)}
+html:not(.et-plight):not(.et-jlight) main section section:not(#_){-webkit-backdrop-filter:none;backdrop-filter:none}
+@media (prefers-reduced-transparency:reduce){html:not(.et-plight):not(.et-jlight) main section:not(#_){-webkit-backdrop-filter:none!important;backdrop-filter:none!important}}
+@media (max-width:700px){html:not(.et-plight):not(.et-jlight) main section:not(#_){-webkit-backdrop-filter:blur(10px) saturate(130%);backdrop-filter:blur(10px) saturate(130%)}}
+/* ———— ex-bloc: tuiles-fond ———— */
+/* Integration des tuiles au fond. Constat mesure avant correctif : ecart-type de
+   luminance 0,00 a 0,48 derriere les tuiles, donc le backdrop-filter floutait une
+   surface parfaitement plate et ne revelait rien. Deux leviers : on donne du relief
+   au fond sous les tuiles, et on fait emerger la tuile au lieu de la poser dessus. */
+:is(section,.wrap>div):has(.card,.card-m,.pmore-card,.ttg-t,.epw-c,.tri-c,.divc,.kpi,.biz-card,.plc-card,.f2f,.glow-card,.jkey,.eth-c,.gov-c,.refc,.prof,.cp,.tri-kpi,.b111-c,.sc-card,.hxi-card,.hncard,.prc-card,.px-card,.ppt-card,.fam-card,.esg-card,.rh-card,.it-card,.pcard,.scard,.pub-c,.pubc):not(#_):not(#__):not(#___):not(#____){
+ background-image:
+  radial-gradient(78% 54% at 8% -4%,rgba(222,172,58,.155),rgba(0,0,0,0) 66%),
+  radial-gradient(64% 46% at 96% 34%,rgba(21,86,150,.105),rgba(0,0,0,0) 64%),
+  radial-gradient(88% 58% at 46% 108%,rgba(196,150,52,.085),rgba(0,0,0,0) 62%)!important;
+}
+html:not(.et-plight):not(.et-jlight) :is(section,.wrap>div):has(.card,.card-m,.pmore-card,.ttg-t,.epw-c,.tri-c,.divc,.kpi,.biz-card,.plc-card,.f2f,.glow-card,.jkey,.eth-c,.gov-c,.refc,.prof,.cp,.tri-kpi,.b111-c,.sc-card,.hxi-card,.hncard,.prc-card,.px-card,.ppt-card,.fam-card,.esg-card,.rh-card,.it-card,.pcard,.scard,.pub-c,.pubc):not(#_):not(#__):not(#___):not(#____){
+ background-image:
+  radial-gradient(78% 54% at 8% -4%,rgba(232,195,106,.105),rgba(0,0,0,0) 66%),
+  radial-gradient(64% 46% at 96% 34%,rgba(90,167,240,.095),rgba(0,0,0,0) 64%),
+  radial-gradient(88% 58% at 46% 108%,rgba(232,195,106,.055),rgba(0,0,0,0) 62%)!important;
+}
+/* Le degrade de la tuile se termine sur la couleur du fond : le bas se fond dans la
+   page, le haut capte la lumiere. L'ombre est un ancrage court, pas une ombre portee. */
+:is(.acq-card,.atc-map,.atc-stat,.avk-card,.avnet-panel,.b111-c,.biz-card,.card,.card-m,.cdm-frame,.ce-card,.ckpi,.cmap-frame,.cp,.cp-note,.ct-cards,.dch-card,.divc,.duo-card,.epw-c,.esg-card,.esg-head,.eth-c,.f2f,.fam-card,.fid-card,.flip-b,.flip-f,.frm-c,.glm-c,.glow-card,.gov-c,.gtt-c,.hncard,.hxi-card,.innov-c,.isv-e,.isv-s,.it-card,.jkey,.kpi,.mad-card,.mfo-lever,.mrc-c,.ngs-t,.oeco-card,.orgc,.pcard,.pe-c,.plc-card,.pmore-card,.pof-col,.ppj-card,.ppl-tile,.ppt-card,.ppte-tile,.prc-card,.presse-card,.prof,.pub-c,.pubc,.px-card,.refc,.rh-card,.rhe-c,.rhl-c,.rhp-c,.sb-card,.sc-card,.scard,.secc,.sfam,.slac,.svc-head,.tri-c,.tri-kpi,.ttc-card,.ttg-t,.vb-card,.voie-card):not(#_):not(#__):not(#___):not(#____){
+ background-image:linear-gradient(180deg,rgba(255,255,255,.88) 0%,rgba(255,253,248,.56) 46%,rgba(252,249,243,.30) 100%)!important;
+ border-color:rgba(26,35,48,.085)!important;
+ box-shadow:0 1px 0 rgba(255,255,255,.85) inset,0 14px 28px -20px rgba(58,46,18,.30),0 2px 5px -3px rgba(58,46,18,.10)!important;
+ -webkit-backdrop-filter:blur(7px) saturate(1.28)!important;backdrop-filter:blur(7px) saturate(1.28)!important;
+}
+html:not(.et-plight):not(.et-jlight) :is(.acq-card,.atc-map,.atc-stat,.avk-card,.avnet-panel,.b111-c,.biz-card,.card,.card-m,.cdm-frame,.ce-card,.ckpi,.cmap-frame,.cp,.cp-note,.ct-cards,.dch-card,.divc,.duo-card,.epw-c,.esg-card,.esg-head,.eth-c,.f2f,.fam-card,.fid-card,.flip-b,.flip-f,.frm-c,.glm-c,.glow-card,.gov-c,.gtt-c,.hncard,.hxi-card,.innov-c,.isv-e,.isv-s,.it-card,.jkey,.kpi,.mad-card,.mfo-lever,.mrc-c,.ngs-t,.oeco-card,.orgc,.pcard,.pe-c,.plc-card,.pmore-card,.pof-col,.ppj-card,.ppl-tile,.ppt-card,.ppte-tile,.prc-card,.presse-card,.prof,.pub-c,.pubc,.px-card,.refc,.rh-card,.rhe-c,.rhl-c,.rhp-c,.sb-card,.sc-card,.scard,.secc,.sfam,.slac,.svc-head,.tri-c,.tri-kpi,.ttc-card,.ttg-t,.vb-card,.voie-card):not(#_):not(#__):not(#___):not(#____){
+ background-image:linear-gradient(180deg,rgba(255,255,255,.075) 0%,rgba(255,255,255,.028) 48%,rgba(255,255,255,.010) 100%)!important;
+ border-color:rgba(232,195,106,.16)!important;
+ box-shadow:0 1px 0 rgba(255,255,255,.08) inset,0 18px 36px -24px rgba(0,0,0,.75)!important;
+}
+/* Exception mesuree : ces bandeaux sont sombres meme en theme clair et leurs tuiles
+   portent du texte blanc. Un degrade blanc les rendrait illisibles. Verifie sur
+   ar.html, brochure(.fr/en), patrimoine, greentech, tchaditech, clients. */
+.kpis :is(.acq-card,.atc-map,.atc-stat,.avk-card,.avnet-panel,.b111-c,.biz-card,.card,.card-m,.cdm-frame,.ce-card,.ckpi,.cmap-frame,.cp,.cp-note,.ct-cards,.dch-card,.divc,.duo-card,.epw-c,.esg-card,.esg-head,.eth-c,.f2f,.fam-card,.fid-card,.flip-b,.flip-f,.frm-c,.glm-c,.glow-card,.gov-c,.gtt-c,.hncard,.hxi-card,.innov-c,.isv-e,.isv-s,.it-card,.jkey,.kpi,.mad-card,.mfo-lever,.mrc-c,.ngs-t,.oeco-card,.orgc,.pcard,.pe-c,.plc-card,.pmore-card,.pof-col,.ppj-card,.ppl-tile,.ppt-card,.ppte-tile,.prc-card,.presse-card,.prof,.pub-c,.pubc,.px-card,.refc,.rh-card,.rhe-c,.rhl-c,.rhp-c,.sb-card,.sc-card,.scard,.secc,.sfam,.slac,.svc-head,.tri-c,.tri-kpi,.ttc-card,.ttg-t,.vb-card,.voie-card):not(#_):not(#__):not(#___):not(#____),.fp-sec :is(.acq-card,.atc-map,.atc-stat,.avk-card,.avnet-panel,.b111-c,.biz-card,.card,.card-m,.cdm-frame,.ce-card,.ckpi,.cmap-frame,.cp,.cp-note,.ct-cards,.dch-card,.divc,.duo-card,.epw-c,.esg-card,.esg-head,.eth-c,.f2f,.fam-card,.fid-card,.flip-b,.flip-f,.frm-c,.glm-c,.glow-card,.gov-c,.gtt-c,.hncard,.hxi-card,.innov-c,.isv-e,.isv-s,.it-card,.jkey,.kpi,.mad-card,.mfo-lever,.mrc-c,.ngs-t,.oeco-card,.orgc,.pcard,.pe-c,.plc-card,.pmore-card,.pof-col,.ppj-card,.ppl-tile,.ppt-card,.ppte-tile,.prc-card,.presse-card,.prof,.pub-c,.pubc,.px-card,.refc,.rh-card,.rhe-c,.rhl-c,.rhp-c,.sb-card,.sc-card,.scard,.secc,.sfam,.slac,.svc-head,.tri-c,.tri-kpi,.ttc-card,.ttg-t,.vb-card,.voie-card):not(#_):not(#__):not(#___):not(#____),.fp-grid :is(.acq-card,.atc-map,.atc-stat,.avk-card,.avnet-panel,.b111-c,.biz-card,.card,.card-m,.cdm-frame,.ce-card,.ckpi,.cmap-frame,.cp,.cp-note,.ct-cards,.dch-card,.divc,.duo-card,.epw-c,.esg-card,.esg-head,.eth-c,.f2f,.fam-card,.fid-card,.flip-b,.flip-f,.frm-c,.glm-c,.glow-card,.gov-c,.gtt-c,.hncard,.hxi-card,.innov-c,.isv-e,.isv-s,.it-card,.jkey,.kpi,.mad-card,.mfo-lever,.mrc-c,.ngs-t,.oeco-card,.orgc,.pcard,.pe-c,.plc-card,.pmore-card,.pof-col,.ppj-card,.ppl-tile,.ppt-card,.ppte-tile,.prc-card,.presse-card,.prof,.pub-c,.pubc,.px-card,.refc,.rh-card,.rhe-c,.rhl-c,.rhp-c,.sb-card,.sc-card,.scard,.secc,.sfam,.slac,.svc-head,.tri-c,.tri-kpi,.ttc-card,.ttg-t,.vb-card,.voie-card):not(#_):not(#__):not(#___):not(#____),.gtp :is(.acq-card,.atc-map,.atc-stat,.avk-card,.avnet-panel,.b111-c,.biz-card,.card,.card-m,.cdm-frame,.ce-card,.ckpi,.cmap-frame,.cp,.cp-note,.ct-cards,.dch-card,.divc,.duo-card,.epw-c,.esg-card,.esg-head,.eth-c,.f2f,.fam-card,.fid-card,.flip-b,.flip-f,.frm-c,.glm-c,.glow-card,.gov-c,.gtt-c,.hncard,.hxi-card,.innov-c,.isv-e,.isv-s,.it-card,.jkey,.kpi,.mad-card,.mfo-lever,.mrc-c,.ngs-t,.oeco-card,.orgc,.pcard,.pe-c,.plc-card,.pmore-card,.pof-col,.ppj-card,.ppl-tile,.ppt-card,.ppte-tile,.prc-card,.presse-card,.prof,.pub-c,.pubc,.px-card,.refc,.rh-card,.rhe-c,.rhl-c,.rhp-c,.sb-card,.sc-card,.scard,.secc,.sfam,.slac,.svc-head,.tri-c,.tri-kpi,.ttc-card,.ttg-t,.vb-card,.voie-card):not(#_):not(#__):not(#___):not(#____),.gtp-g :is(.acq-card,.atc-map,.atc-stat,.avk-card,.avnet-panel,.b111-c,.biz-card,.card,.card-m,.cdm-frame,.ce-card,.ckpi,.cmap-frame,.cp,.cp-note,.ct-cards,.dch-card,.divc,.duo-card,.epw-c,.esg-card,.esg-head,.eth-c,.f2f,.fam-card,.fid-card,.flip-b,.flip-f,.frm-c,.glm-c,.glow-card,.gov-c,.gtt-c,.hncard,.hxi-card,.innov-c,.isv-e,.isv-s,.it-card,.jkey,.kpi,.mad-card,.mfo-lever,.mrc-c,.ngs-t,.oeco-card,.orgc,.pcard,.pe-c,.plc-card,.pmore-card,.pof-col,.ppj-card,.ppl-tile,.ppt-card,.ppte-tile,.prc-card,.presse-card,.prof,.pub-c,.pubc,.px-card,.refc,.rh-card,.rhe-c,.rhl-c,.rhp-c,.sb-card,.sc-card,.scard,.secc,.sfam,.slac,.svc-head,.tri-c,.tri-kpi,.ttc-card,.ttg-t,.vb-card,.voie-card):not(#_):not(#__):not(#___):not(#____),.tt-flag :is(.acq-card,.atc-map,.atc-stat,.avk-card,.avnet-panel,.b111-c,.biz-card,.card,.card-m,.cdm-frame,.ce-card,.ckpi,.cmap-frame,.cp,.cp-note,.ct-cards,.dch-card,.divc,.duo-card,.epw-c,.esg-card,.esg-head,.eth-c,.f2f,.fam-card,.fid-card,.flip-b,.flip-f,.frm-c,.glm-c,.glow-card,.gov-c,.gtt-c,.hncard,.hxi-card,.innov-c,.isv-e,.isv-s,.it-card,.jkey,.kpi,.mad-card,.mfo-lever,.mrc-c,.ngs-t,.oeco-card,.orgc,.pcard,.pe-c,.plc-card,.pmore-card,.pof-col,.ppj-card,.ppl-tile,.ppt-card,.ppte-tile,.prc-card,.presse-card,.prof,.pub-c,.pubc,.px-card,.refc,.rh-card,.rhe-c,.rhl-c,.rhp-c,.sb-card,.sc-card,.scard,.secc,.sfam,.slac,.svc-head,.tri-c,.tri-kpi,.ttc-card,.ttg-t,.vb-card,.voie-card):not(#_):not(#__):not(#___):not(#____),.ttf-grid :is(.acq-card,.atc-map,.atc-stat,.avk-card,.avnet-panel,.b111-c,.biz-card,.card,.card-m,.cdm-frame,.ce-card,.ckpi,.cmap-frame,.cp,.cp-note,.ct-cards,.dch-card,.divc,.duo-card,.epw-c,.esg-card,.esg-head,.eth-c,.f2f,.fam-card,.fid-card,.flip-b,.flip-f,.frm-c,.glm-c,.glow-card,.gov-c,.gtt-c,.hncard,.hxi-card,.innov-c,.isv-e,.isv-s,.it-card,.jkey,.kpi,.mad-card,.mfo-lever,.mrc-c,.ngs-t,.oeco-card,.orgc,.pcard,.pe-c,.plc-card,.pmore-card,.pof-col,.ppj-card,.ppl-tile,.ppt-card,.ppte-tile,.prc-card,.presse-card,.prof,.pub-c,.pubc,.px-card,.refc,.rh-card,.rhe-c,.rhl-c,.rhp-c,.sb-card,.sc-card,.scard,.secc,.sfam,.slac,.svc-head,.tri-c,.tri-kpi,.ttc-card,.ttg-t,.vb-card,.voie-card):not(#_):not(#__):not(#___):not(#____),.grid3 :is(.acq-card,.atc-map,.atc-stat,.avk-card,.avnet-panel,.b111-c,.biz-card,.card,.card-m,.cdm-frame,.ce-card,.ckpi,.cmap-frame,.cp,.cp-note,.ct-cards,.dch-card,.divc,.duo-card,.epw-c,.esg-card,.esg-head,.eth-c,.f2f,.fam-card,.fid-card,.flip-b,.flip-f,.frm-c,.glm-c,.glow-card,.gov-c,.gtt-c,.hncard,.hxi-card,.innov-c,.isv-e,.isv-s,.it-card,.jkey,.kpi,.mad-card,.mfo-lever,.mrc-c,.ngs-t,.oeco-card,.orgc,.pcard,.pe-c,.plc-card,.pmore-card,.pof-col,.ppj-card,.ppl-tile,.ppt-card,.ppte-tile,.prc-card,.presse-card,.prof,.pub-c,.pubc,.px-card,.refc,.rh-card,.rhe-c,.rhl-c,.rhp-c,.sb-card,.sc-card,.scard,.secc,.sfam,.slac,.svc-head,.tri-c,.tri-kpi,.ttc-card,.ttg-t,.vb-card,.voie-card):not(#_):not(#__):not(#___):not(#____),.grid2 :is(.acq-card,.atc-map,.atc-stat,.avk-card,.avnet-panel,.b111-c,.biz-card,.card,.card-m,.cdm-frame,.ce-card,.ckpi,.cmap-frame,.cp,.cp-note,.ct-cards,.dch-card,.divc,.duo-card,.epw-c,.esg-card,.esg-head,.eth-c,.f2f,.fam-card,.fid-card,.flip-b,.flip-f,.frm-c,.glm-c,.glow-card,.gov-c,.gtt-c,.hncard,.hxi-card,.innov-c,.isv-e,.isv-s,.it-card,.jkey,.kpi,.mad-card,.mfo-lever,.mrc-c,.ngs-t,.oeco-card,.orgc,.pcard,.pe-c,.plc-card,.pmore-card,.pof-col,.ppj-card,.ppl-tile,.ppt-card,.ppte-tile,.prc-card,.presse-card,.prof,.pub-c,.pubc,.px-card,.refc,.rh-card,.rhe-c,.rhl-c,.rhp-c,.sb-card,.sc-card,.scard,.secc,.sfam,.slac,.svc-head,.tri-c,.tri-kpi,.ttc-card,.ttg-t,.vb-card,.voie-card):not(#_):not(#__):not(#___):not(#____){
+ background-image:none!important;
+ border-color:rgba(255,255,255,.16)!important;
+}
+/* ———— ex-bloc: tuiles-immersion ———— */
+/* Immersion (chapitre 141). Sur les 175 pages portant le fond photographique
+   .rootland, les halos de section du chapitre 136 peignaient des bandes
+   par-dessus la photo et le remplissage des tuiles en faisait des panneaux
+   poses dessus. Ici les bandes disparaissent et la tuile redevient du verre :
+   la photo la traverse. Le garde de theme et le :has(.rootland) portent sur le
+   meme element html — les separer donne un selecteur qui ne correspond jamais. */
+
+/* 1. Plus aucune bande de fond sur les pages a fond photographique */
+html:has(.rootland) :is(section,.wrap>div):has(.card,.card-m,.pmore-card,.ttg-t,.epw-c,.tri-c,.divc,.kpi,.biz-card,.plc-card,.f2f,.glow-card,.jkey,.eth-c,.gov-c,.refc,.prof,.cp,.tri-kpi,.b111-c,.sc-card,.hxi-card,.hncard,.prc-card,.px-card,.ppt-card,.fam-card,.esg-card,.rh-card,.it-card,.pcard,.scard,.pub-c,.pubc):not(#_):not(#__):not(#___):not(#____){background-image:none!important}
+
+/* 2. La tuile adhere a l'image : teinte legere, vrai flou, filet fin */
+html:has(.rootland) :is(.acq-card,.atc-map,.atc-stat,.avk-card,.avnet-panel,.b111-c,.biz-card,.card,.card-m,.cdm-frame,.ce-card,.ckpi,.cmap-frame,.cp,.cp-note,.ct-cards,.dch-card,.divc,.duo-card,.epw-c,.esg-card,.esg-head,.eth-c,.f2f,.fam-card,.fid-card,.flip-b,.flip-f,.frm-c,.glm-c,.glow-card,.gov-c,.gtt-c,.hncard,.hxi-card,.innov-c,.isv-e,.isv-s,.it-card,.jkey,.kpi,.mad-card,.mfo-lever,.mrc-c,.ngs-t,.oeco-card,.orgc,.pcard,.pe-c,.plc-card,.pmore-card,.pof-col,.ppj-card,.ppl-tile,.ppt-card,.ppte-tile,.prc-card,.presse-card,.prof,.pub-c,.pubc,.px-card,.refc,.rh-card,.rhe-c,.rhl-c,.rhp-c,.sb-card,.sc-card,.scard,.secc,.sfam,.slac,.svc-head,.tri-c,.tri-kpi,.ttc-card,.ttg-t,.vb-card,.voie-card):not(#_):not(#__):not(#___):not(#____){
+ background-color:transparent!important;
+ background-image:linear-gradient(180deg,rgba(252,250,246,.56) 0%,rgba(252,250,246,.40) 100%)!important;
+ border-color:rgba(26,35,48,.12)!important;
+ box-shadow:0 1px 0 rgba(255,255,255,.55) inset,0 20px 40px -30px rgba(30,24,10,.42)!important;
+ -webkit-backdrop-filter:blur(18px) saturate(1.35)!important;backdrop-filter:blur(18px) saturate(1.35)!important;
+}
+html:not(.et-plight):not(.et-jlight):has(.rootland) :is(.acq-card,.atc-map,.atc-stat,.avk-card,.avnet-panel,.b111-c,.biz-card,.card,.card-m,.cdm-frame,.ce-card,.ckpi,.cmap-frame,.cp,.cp-note,.ct-cards,.dch-card,.divc,.duo-card,.epw-c,.esg-card,.esg-head,.eth-c,.f2f,.fam-card,.fid-card,.flip-b,.flip-f,.frm-c,.glm-c,.glow-card,.gov-c,.gtt-c,.hncard,.hxi-card,.innov-c,.isv-e,.isv-s,.it-card,.jkey,.kpi,.mad-card,.mfo-lever,.mrc-c,.ngs-t,.oeco-card,.orgc,.pcard,.pe-c,.plc-card,.pmore-card,.pof-col,.ppj-card,.ppl-tile,.ppt-card,.ppte-tile,.prc-card,.presse-card,.prof,.pub-c,.pubc,.px-card,.refc,.rh-card,.rhe-c,.rhl-c,.rhp-c,.sb-card,.sc-card,.scard,.secc,.sfam,.slac,.svc-head,.tri-c,.tri-kpi,.ttc-card,.ttg-t,.vb-card,.voie-card):not(#_):not(#__):not(#___):not(#____){
+ background-image:linear-gradient(180deg,rgba(9,15,27,.66) 0%,rgba(9,15,27,.54) 100%)!important;
+ border-color:rgba(255,255,255,.15)!important;
+ box-shadow:0 1px 0 rgba(255,255,255,.08) inset,0 22px 46px -30px rgba(0,0,0,.6)!important;
+}
+
+/* 3. Le texte secondaire des tuiles etait deja sous le seuil AA en theme sombre
+   avant cette refonte : gris 124,138,162 mesure a 3,84:1. Sur fond
+   photographique il faut l'eclaircir, sinon l'immersion se paie en lisibilite. */
+html:not(.et-plight):not(.et-jlight):has(.rootland) :is(.acq-card,.atc-map,.atc-stat,.avk-card,.avnet-panel,.b111-c,.biz-card,.card,.card-m,.cdm-frame,.ce-card,.ckpi,.cmap-frame,.cp,.cp-note,.ct-cards,.dch-card,.divc,.duo-card,.epw-c,.esg-card,.esg-head,.eth-c,.f2f,.fam-card,.fid-card,.flip-b,.flip-f,.frm-c,.glm-c,.glow-card,.gov-c,.gtt-c,.hncard,.hxi-card,.innov-c,.isv-e,.isv-s,.it-card,.jkey,.kpi,.mad-card,.mfo-lever,.mrc-c,.ngs-t,.oeco-card,.orgc,.pcard,.pe-c,.plc-card,.pmore-card,.pof-col,.ppj-card,.ppl-tile,.ppt-card,.ppte-tile,.prc-card,.presse-card,.prof,.pub-c,.pubc,.px-card,.refc,.rh-card,.rhe-c,.rhl-c,.rhp-c,.sb-card,.sc-card,.scard,.secc,.sfam,.slac,.svc-head,.tri-c,.tri-kpi,.ttc-card,.ttg-t,.vb-card,.voie-card) :is(p,li,dd,span:not(.epw-no)):not(#_):not(#__):not(#___):not(#____){
+ color:#D9E2EE!important;-webkit-text-fill-color:#D9E2EE!important}
+
+/* 4. Repli sans flou : sans backdrop-filter la tuile doit rester lisible */
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+ html:has(.rootland) :is(.acq-card,.atc-map,.atc-stat,.avk-card,.avnet-panel,.b111-c,.biz-card,.card,.card-m,.cdm-frame,.ce-card,.ckpi,.cmap-frame,.cp,.cp-note,.ct-cards,.dch-card,.divc,.duo-card,.epw-c,.esg-card,.esg-head,.eth-c,.f2f,.fam-card,.fid-card,.flip-b,.flip-f,.frm-c,.glm-c,.glow-card,.gov-c,.gtt-c,.hncard,.hxi-card,.innov-c,.isv-e,.isv-s,.it-card,.jkey,.kpi,.mad-card,.mfo-lever,.mrc-c,.ngs-t,.oeco-card,.orgc,.pcard,.pe-c,.plc-card,.pmore-card,.pof-col,.ppj-card,.ppl-tile,.ppt-card,.ppte-tile,.prc-card,.presse-card,.prof,.pub-c,.pubc,.px-card,.refc,.rh-card,.rhe-c,.rhl-c,.rhp-c,.sb-card,.sc-card,.scard,.secc,.sfam,.slac,.svc-head,.tri-c,.tri-kpi,.ttc-card,.ttg-t,.vb-card,.voie-card):not(#_):not(#__):not(#___):not(#____){background-image:linear-gradient(180deg,rgba(252,250,246,.90) 0%,rgba(252,250,246,.84) 100%)!important}
+ html:not(.et-plight):not(.et-jlight):has(.rootland) :is(.acq-card,.atc-map,.atc-stat,.avk-card,.avnet-panel,.b111-c,.biz-card,.card,.card-m,.cdm-frame,.ce-card,.ckpi,.cmap-frame,.cp,.cp-note,.ct-cards,.dch-card,.divc,.duo-card,.epw-c,.esg-card,.esg-head,.eth-c,.f2f,.fam-card,.fid-card,.flip-b,.flip-f,.frm-c,.glm-c,.glow-card,.gov-c,.gtt-c,.hncard,.hxi-card,.innov-c,.isv-e,.isv-s,.it-card,.jkey,.kpi,.mad-card,.mfo-lever,.mrc-c,.ngs-t,.oeco-card,.orgc,.pcard,.pe-c,.plc-card,.pmore-card,.pof-col,.ppj-card,.ppl-tile,.ppt-card,.ppte-tile,.prc-card,.presse-card,.prof,.pub-c,.pubc,.px-card,.refc,.rh-card,.rhe-c,.rhl-c,.rhp-c,.sb-card,.sc-card,.scard,.secc,.sfam,.slac,.svc-head,.tri-c,.tri-kpi,.ttc-card,.ttg-t,.vb-card,.voie-card):not(#_):not(#__):not(#___):not(#____){background-image:linear-gradient(180deg,rgba(9,15,27,.92) 0%,rgba(9,15,27,.86) 100%)!important}
+}
+/* ———— ex-bloc: immersion-v2 ———— */
+/* Immersion sans bandes (chapitre 142). Le decor photographique couvre la page ; les sections ne portent plus de panneau translucide, seules les tuiles font verre. Le voile global de .rootland::after est renforce a .68/.78 pour compenser la disparition des panneaux, valeur fixee par mesure du contraste au pixel peint. */.rootland{position:fixed;inset:0;z-index:-2;background:none;pointer-events:none}.rootland::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,12,21,.68) 0%,rgba(7,12,21,.78) 100%)}html{background:#0d1524}body{background:transparent!important}main{background:transparent!important}/* plus aucun panneau de section : la photo court d'un bord a l'autre */html:not(.et-plight):not(.et-jlight) main>section,html:not(.et-plight):not(.et-jlight) body>section,html:not(.et-plight):not(.et-jlight) main>div>section{background:transparent!important;border-radius:0!important}html:not(.et-plight):not(.et-jlight) main,html:not(.et-plight):not(.et-jlight) footer{--muted:#C3D0E0}main h2,main h3,section h2,section h3{text-shadow:0 2px 18px rgba(0,0,0,.7)}html:not(.et-plight):not(.et-jlight) main>section>*>p,html:not(.et-plight):not(.et-jlight) main p.lead,html:not(.et-plight):not(.et-jlight) main .intro{text-shadow:0 1px 12px rgba(0,0,0,.55)}html:not(.et-plight):not(.et-jlight) footer{background:rgba(14,22,38,.72)!important;text-shadow:0 1px 10px rgba(0,0,0,.55)}footer a{text-shadow:none}/* pour qui demande plus de contraste, on rend les panneaux */@media(prefers-contrast:more){html:not(.et-plight):not(.et-jlight) main>section,html:not(.et-plight):not(.et-jlight) body>section,html:not(.et-plight):not(.et-jlight) main>div>section{background:rgba(14,22,38,.92)!important}}/* Theme clair : le voile doit etre clair, sinon la photo sombre transforme la page creme en champ gris. Contraste verifie : le texte sombre reste au-dessus de 6:1 sur les six pages temoins. */html.et-plight .rootland::after,html.et-jlight .rootland::after{background:linear-gradient(180deg,rgba(250,247,241,.82) 0%,rgba(250,247,241,.90) 100%)}
+/* ———— ex-bloc: hero-kick ———— */
+/* Chapeaux des heros (chapitre 143). Defaut anterieur a l'immersion, verifie
+   sur 99136d2 : dore #F0CE82 pose directement sur la photo du heros, mesure de
+   1,96 a 3,28:1 sur 9 pages dans les deux themes. Le chapeau recoit une pastille
+   au vocabulaire deja employe sur le site : fond sombre maitrise, filet dore,
+   flou leger. Le texte est force au dore clair car sur certaines pages il etait
+   sombre en theme clair, ce qui donnerait du sombre sur du sombre. */
+.hero .kick:not(#_):not(#__):not(#___):not(#____):not(#_____),
+.dsh .kick:not(#_):not(#__):not(#___):not(#____):not(#_____),
+.pghero .kick:not(#_):not(#__):not(#___):not(#____):not(#_____),
+.hx-hero .kick:not(#_):not(#__):not(#___):not(#____):not(#_____){
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  background:linear-gradient(90deg,rgba(14,22,38,.76) 0%,rgba(14,22,38,.64) 100%)!important;
+  padding:5px 13px!important;
+  border-radius:999px!important;
+  border:1px solid rgba(240,206,130,.26)!important;
+  -webkit-backdrop-filter:blur(6px);
+  backdrop-filter:blur(6px);
+  color:#F2D28C!important;
+  -webkit-text-fill-color:#F2D28C!important;
+}
+/* charte.html : le heros .dsh commence a y=0, le chapeau se trouvait a 72 px,
+   entierement masque par la barre fixe. On lui rend la hauteur de la barre. */
+.dsh:not(#_):not(#__):not(#___){
+  padding-top:calc(var(--nav-h,110px) + 26px)!important;
+}
+@media (max-width:640px){
+  .hero .kick:not(#_):not(#__),
+  .dsh .kick:not(#_):not(#__),
+  .pghero .kick:not(#_):not(#__),
+  .hx-hero .kick:not(#_):not(#__){
+    padding:4px 10px!important;
+  }
+}
+/* ———— ex-bloc: verre-final ———— */
+/* Verre immersif final (chapitre 144). Le diagnostic du chapitre est dans
+   MAINTENANCE : la regle d'immersion du chapitre 141 correspondait bien aux
+   sections mais perdait la cascade contre les halos du chapitre 136. Ce bloc,
+   place en dernier dans le head et arme a six identifiants, tranche : plus
+   aucune bande large entre la photo et les tuiles. La barre de navigation et
+   le pied de page gardent leur fond — ils portent la lisibilite de la
+   navigation, pas le decor. */
+
+/* 1. Toute section et tout panneau large deviennent transparents. */
+html:has(.rootland) main section:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
+html:has(.rootland) body > section:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
+html:has(.rootland) main > div > section:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
+html:has(.rootland) .cmpw:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
+html:has(.rootland) .pj-banner:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
+html:has(.rootland) .docn:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
+html:has(.rootland) .it-grid:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
+html:has(.rootland) .epw-g:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
+html:has(.rootland) .biz-grid:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______){
+  background-color:transparent!important;
+  background-image:none!important;
+  box-shadow:none!important;
+}
+
+/* 2. Le bandeau d'appel a l'action garde une presence, mais en verre. */
+html:has(.rootland) #cta-band:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______){
+  background-color:transparent!important;
+  background-image:linear-gradient(180deg,rgba(14,22,38,.30) 0%,rgba(14,22,38,.44) 100%)!important;
+  -webkit-backdrop-filter:blur(10px);
+  backdrop-filter:blur(10px);
+}
+html.et-plight:has(.rootland) #cta-band:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
+html.et-jlight:has(.rootland) #cta-band:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______){
+  background-image:linear-gradient(180deg,rgba(252,250,246,.42) 0%,rgba(252,250,246,.58) 100%)!important;
+}
+
+/* 3. Theme clair : le voile creme s'allege pour que la photo traverse.
+   Valeur fixee par mesure du contraste au pixel peint apres application. */
+html.et-plight .rootland::after,
+html.et-jlight .rootland::after{
+  background:linear-gradient(180deg,rgba(250,247,241,.66) 0%,rgba(250,247,241,.78) 100%)!important;
+}
+
+/* 4. En preference de contraste renforce, les panneaux reviennent opaques. */
+@media (prefers-contrast:more){
+  html:has(.rootland) main section:not(#_):not(#__):not(#___):not(#____),
+  html:has(.rootland) body > section:not(#_):not(#__):not(#___):not(#____){
+    background-color:rgba(14,22,38,.92)!important;
+  }
+  html.et-plight:has(.rootland) main section:not(#_):not(#__):not(#___):not(#____),
+  html.et-plight:has(.rootland) body > section:not(#_):not(#__):not(#___):not(#____){
+    background-color:rgba(250,247,241,.96)!important;
+  }
+}
+/* ———— ex-bloc: arLight234 ———— */
+/* Ch234 : la page arabe n'avait pas de traitement clair pour ses organes propres.
+   En clair, le moteur eclaircissait les tuiles du heros et le bouton secondaire, alors
+   que le heros reste photographique dans les deux themes : chiffre blanc sur tuile pale
+   (2,2:1), legende (1,1:1) et bouton « explorer le site complet » (1,0:1) disparaissaient.
+   Les tuiles du heros redeviennent sombres, comme sous le titre blanc qui les surplombe. */
+html.et-plight .hero .kpi:not(#_):not(#__):not(#___):not(#____){background-color:rgba(9,14,24,.58)!important;background-image:none!important;border-color:rgba(255,255,255,.20)!important;border-top-color:var(--gold-l,#E8C36A)!important}
+html.et-plight .hero .kpi b:not(#_):not(#__){color:#FFFFFF!important}
+html.et-plight .hero .kpi span:not(#_):not(#__){color:rgba(245,247,250,.88)!important}
+html.et-plight .hero .btn2:not(#_):not(#__){background:rgba(9,14,24,.50)!important;color:#FFFFFF!important;border-color:rgba(255,255,255,.44)!important}
+html.et-plight .hero .lead:not(#_):not(#__){color:rgba(245,247,250,.94)!important}
+/* le lien d'evitement est une puce sombre : son encre doit rester claire en theme clair */
+html.et-plight .skip-link:not(#_):not(#__){color:#F0CE82!important;background:#121D31!important}
+/* Ch234 : en RTL le rail de sommaire est ancre du cote debut (gauche) mais ses items
+   restaient alignes sur le bord oppose de sa boite : les pastilles se posaient en plein
+   dans la colonne de texte. Reperes ramenes dans la marge, libelles retires de l'affichage
+   mais conserves pour les lecteurs d'ecran. */
+html[dir="rtl"] #secrail:not(#_):not(#__){align-items:flex-start}
+html[dir="rtl"] #secrail a:not(#_):not(#__){flex-direction:row-reverse}
+html[dir="rtl"] #secrail .axl:not(#_):not(#__){position:absolute!important;width:1px!important;height:1px!important;max-width:1px!important;margin:0!important;overflow:hidden!important;clip:rect(0 0 0 0)!important;opacity:1!important;white-space:nowrap}
+
+/* Ch471 - hero arabe moderne : l'Abraz datee (motif 470/m466) + matiere KPI. */
+.h471{display:flex;align-items:center;flex-wrap:wrap;gap:10px 14px;margin:26px 0 0;padding:11px 16px;border-radius:14px;max-width:700px;border:1px solid color-mix(in srgb,var(--mja) 30%,transparent);background:color-mix(in srgb,var(--mja) 6%,rgba(10,16,28,.35));position:relative;overflow:hidden}
+.h471::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--mja),transparent)}
+.h471>i{font-style:normal;font-size:.68rem;font-weight:700;letter-spacing:.04em;color:var(--mja);white-space:nowrap}
+.h471 a{display:inline-flex;align-items:baseline;gap:10px;min-width:0;flex:1 1 280px;text-decoration:none;color:inherit}
+.h471 time{font-size:.72rem;font-weight:700;color:var(--mja);white-space:nowrap}
+.h471 span{font-size:.9rem;line-height:1.7}
+.h471 b{color:var(--mja)}
+.h471 a:hover span{text-decoration:underline;text-underline-offset:3px}
+.h471 a:focus-visible{outline:2px solid var(--mja);outline-offset:3px;border-radius:6px}
+html.et-plight .h471>i,html.et-plight .h471 time,html.et-plight .h471 b{color:var(--mjal,var(--mja))}
+html.et-plight .h471{background:color-mix(in srgb,var(--mja) 8%,rgba(255,255,255,.7));border-color:color-mix(in srgb,var(--mjal) 34%,transparent)}
+
+.idx563{max-width:var(--mw,1200px);margin:0 auto;padding:18px var(--gut,24px) 4px}
+.idx563 .ix-k{display:block;font-family:var(--fm,ui-monospace,monospace);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted,#93A1B8);margin:0 0 10px}
+.idx563 ol{list-style:none;display:flex;flex-wrap:wrap;gap:7px;margin:0;padding:0;counter-reset:ix}
+.idx563 li{margin:0}
+.idx563 a{display:inline-flex;align-items:center;gap:7px;min-height:34px;padding:7px 13px;border:1px solid var(--g-brd,rgba(255,255,255,.18));border-radius:999px;background:rgba(255,255,255,.035);color:inherit;text-decoration:none;font-size:.83rem;line-height:1.3}
+.idx563 a::before{counter-increment:ix;content:counter(ix,decimal-leading-zero);font-family:var(--fm,ui-monospace,monospace);font-size:.66rem;letter-spacing:.08em;color:var(--muted,#93A1B8)}
+.idx563 a:hover{border-color:var(--blue-l,#00B4D8)}
+.idx563 a:focus-visible{outline:2px solid var(--blue-l,#00B4D8);outline-offset:3px}
+.idx563 a[aria-current="true"]{border-color:var(--gold-l,#FFB703);background:color-mix(in srgb,var(--gold-l,#FFB703) 12%,transparent)}
+.idx563 a[aria-current="true"]::before{color:var(--gold-l,#FFB703)}
+html.et-plight .idx563 a,html.et-jlight .idx563 a{background:rgba(255,255,255,.6);border-color:rgba(0,48,73,.14)}
+html.et-plight .idx563 .ix-k,html.et-jlight .idx563 .ix-k,html.et-plight .idx563 a::before{color:#5A6472}
+html.et-plight .idx563 a[aria-current="true"],html.et-jlight .idx563 a[aria-current="true"]{border-color:#8A6210;background:rgba(138,98,16,.1)}
+html.et-plight .idx563 a[aria-current="true"]::before{color:#8A6210}
+@media(max-width:640px){.idx563 ol{flex-wrap:nowrap;overflow-x:auto;padding-bottom:6px;scrollbar-width:thin}.idx563 a{white-space:nowrap}}
+
+.faq{border:1px solid var(--hair);border-radius:12px;margin:10px 0;background:rgba(255,255,255,.03)}.faq summary{cursor:pointer;padding:14px 18px;font-weight:700;color:#fff;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:12px}.faq summary::-webkit-details-marker{display:none}.faq summary::after{content:"+";color:var(--ac,var(--gold-l));font-weight:800;font-size:1.1rem}.faq[open] summary::after{content:"−"}.faq[open] summary{color:var(--gold-l)}.faq p{padding:0 18px 14px;margin:0}html.et-plight .faq summary:not(#_){color:#1A2330!important}html.et-plight .faq[open] summary:not(#_){color:#7A570E!important}
+
+/* ———— ex-bloc: etLightFix ———— */
+/* Reparation contraste theme clair - tache #91.
+   Portee : inerte en mode sombre (chaque selecteur est prefixe html.et-plight
+   ou html.et-jlight).
+
+   PRINCIPE DE CASCADE : pour les encres GLOBALES (liens, kick, accents inline)
+   on reprend le selecteur d'origine A L'IDENTIQUE et on se contente d'arriver
+   plus tard dans la cascade. Elever la specificite cassait tout l'ecosysteme
+   d'exceptions deja en place (pghero, footer, .btn, .mkt-nav, .ppt-cta...) :
+   la premiere version de ce bloc a fait passer les echecs de 314 a 1016.
+   Pour les ILOTS SOMBRES, au contraire, on vise juste au-dessus de la regle
+   de base html.et-plight main span:not(#_) = (1,1,3). */
+
+/* ---- G1 : neutraliser les degrades clippes sur le texte (52 echecs) ----
+   Lecon 42 : poser `color` ne fait rien sur un texte peint par
+   background-clip:text. Il faut couper l'image de fond ET remettre
+   -webkit-text-fill-color. currentColor laisse gagner la regle d'encre. */
+html.et-plight main em:not(#_):not(#__),
+html.et-plight main i:not(#_):not(#__),
+html.et-plight body>section em:not(#_):not(#__),
+html.et-plight body>section i:not(#_):not(#__),
+html.et-plight .apps-creed:not(#_):not(#__),
+html.et-jlight main em:not(#_):not(#__),
+html.et-jlight main i:not(#_):not(#__),
+html.et-jlight .apps-creed:not(#_):not(#__){
+  background-image:none!important;
+  -webkit-background-clip:border-box!important;
+  background-clip:border-box!important;
+  -webkit-text-fill-color:currentColor!important;
+}
+
+/* ---- G2 : encres d'accent inline assombries (selecteurs d'origine) ---- */
+html.et-plight [style*="34D399"]:not(#_){color:#094E37!important}
+html.et-plight [style*="E8C36A"]:not(#_),
+html.et-plight [style*="F0CE82"]:not(#_){color:#7A570E!important}
+html.et-plight [style*="075E42"]:not(#_){color:#06533B!important}
+html.et-plight [style*="B4700A"]:not(#_){color:#9E6209!important}
+
+/* ---- G3 : bleu de lien assombri #155FA8 -> #0E4172 (4.60:1) ----
+   Selecteurs d'origine, mot pour mot. */
+html.et-plight main a:not(#_){color:#0E4172!important}
+html.et-plight body>section a:not(#_){color:#0E4172!important}
+html.et-plight .wrap>a:not([class]):not(#_):not(#__){
+  text-decoration:underline!important;color:#0E4172!important}
+html.et-jlight a:not(#_):not(.jback):not(.jlang){color:#0E4172}
+
+/* ---- G4 : or de titraille #6B500F -> #4C380B (4.63:1) ----
+   Selecteurs d'origine, mot pour mot. */
+html.et-plight main .kick:not(#_),
+html.et-plight main [class*="kick"]:not(#_),
+html.et-plight main h1 em:not(#_),
+html.et-plight main h2 em:not(#_){color:#4C380B!important}
+html.et-jlight h1 em:not(#_),
+html.et-jlight h2 em:not(#_),
+html.et-jlight .jkick:not(#_),
+html.et-jlight .sc-lb:not(#_),
+html.et-jlight .cb-k:not(#_){color:#4C380B!important}
+html.et-plight body>section [class*="kick"]:not(#_),
+html.et-plight body>section h2 em:not(#_),
+html.et-plight body>section [class*="-no"]:not(#_),
+html.et-plight body>section [class*="-k"]:not(#_){color:#4C380B!important}
+html.et-jlight .more-k:not(#_){color:#4C380B!important}
+html.et-plight .pgr-dir:not(#_){color:#4C380B!important}
+html.et-plight main section.hero h1 em:not(#_):not(#__){
+  background:none!important;-webkit-text-fill-color:#4C380B!important;color:#4C380B!important}
+html.et-plight main code:not(#_):not(#__),
+html.et-plight body>section code:not(#_):not(#__){
+  color:#4C380B!important;background:rgba(76,56,11,.09)!important}
+
+/* ==== ILOTS SOMBRES : rendre l'encre claire, garder la surface sombre ==== */
+
+/* ---- I1 : heros photo, balises manquantes du bloc d'exception (lecon 43) ----
+   h1/p/li/span/a/.pgk sont deja traites en amont : on ne les reprend pas,
+   pour ne pas ecraser la hierarchie voulue du hero.
+   On NE cible PAS [class*="hero"] : section.hero est une surface CLAIRE sur
+   plusieurs pages (cibles-2030, projets) — seuls .pghero, header[class*=hero]
+   et .diapo sont des surfaces photo. */
+html.et-plight main .pghero :is(i,em,strong,b,small,dt,dd,td,th,label,figcaption,blockquote,summary):not(#_),
+html.et-plight main header[class*="hero"] :is(i,em,strong,b,small,dt,dd,td,th,label,figcaption,blockquote,summary):not(#_),
+html.et-plight main .diapo :is(i,em,strong,b,small,dt,dd,td,th,label,figcaption,blockquote,summary):not(#_){
+  color:#EAF0F8!important;-webkit-text-fill-color:#EAF0F8!important;
+  background-image:none!important;
+  -webkit-background-clip:border-box!important;background-clip:border-box!important;
+}
+/* I2 : pastille or active du hero -> encre sombre restauree */
+html.et-plight main .pgc-node.is-on:not(#_),
+html.et-plight main .pgc-node.is-on :not(#_){
+  color:#121D31!important;-webkit-text-fill-color:#121D31!important;
+}
+
+/* ---- I3 : sous-navigation de pole (37 echecs) ---- */
+html.et-plight .pole-subnav :not(#_){
+  color:#CBD5E3!important;-webkit-text-fill-color:#CBD5E3!important;
+}
+html.et-plight .pole-subnav .psn-home:not(#_),
+html.et-plight .pole-subnav a:not(#_){
+  color:#EAD9A8!important;-webkit-text-fill-color:#EAD9A8!important;
+}
+
+/* ---- I4 : cartes .fp-card a voile (32 echecs) ---- */
+html.et-plight .fp-card :not(#_){
+  color:#F5F7FA!important;-webkit-text-fill-color:#F5F7FA!important;
+}
+html.et-plight .fp-card .fp-badge:not(#_){
+  color:#FFFFFF!important;-webkit-text-fill-color:#FFFFFF!important;
+}
+
+/* ---- I5 : cartes .adx code couleur par pole (17 echecs) ---- */
+html.et-plight .adx:not(#_),
+html.et-plight .adx :not(#_){
+  color:#F5F7FA!important;-webkit-text-fill-color:#F5F7FA!important;
+}
+html.et-plight .adx .eyebrow:not(#_){
+  color:var(--ac,#EAD9A8)!important;-webkit-text-fill-color:var(--ac,#EAD9A8)!important;
+}
+
+/* ---- I6 : cartes contact presse .cp-ct (20 echecs) ----
+   Doit battre html.et-plight main .cp-ct a:not(#_) b = (1,3,4). */
+html.et-plight main .cp-ct a:not(#_):not(#__),
+html.et-plight main .cp-ct a:not(#_):not(#__) span{
+  color:#EAF0F8!important;-webkit-text-fill-color:#EAF0F8!important;
+}
+html.et-plight main .cp-ct a:not(#_):not(#__) b{
+  color:#FFFFFF!important;-webkit-text-fill-color:#FFFFFF!important;
+}
+
+/* ---- I7 : bouton .fl-cta sur degrade bleu ---- */
+html.et-plight .fl-cta:not(#_),
+html.et-plight .fl-cta :not(#_){
+  color:#FFFFFF!important;-webkit-text-fill-color:#FFFFFF!important;
+}
+
+/* ---- I8 : boutons fantomes .fcta-s, encre = fond (ratio 1.00) ----
+   Doit battre html.et-plight [class^="fcta"]:not(#_):not(#__):not(#___). */
+html.et-plight .fcta-s:not(#_):not(#__):not(#___):not(#____),
+html.et-plight .fcta-s :not(#_):not(#__):not(#___):not(#____){
+  color:#F5F7FA!important;-webkit-text-fill-color:#F5F7FA!important;
+}
+
+/* ---- I9 : badge .dchg-badge (tchaditude) ---- */
+html.et-plight .dchg-badge:not(#_){
+  color:#EAF0F8!important;-webkit-text-fill-color:#EAF0F8!important;
+}
+
+/* ---- I10 : pastilles .dkpi (aval/distribution) ---- */
+html.et-plight .dkpi span:not(#_){
+  color:#EAF0F8!important;-webkit-text-fill-color:#EAF0F8!important;
+}
+
+/* ---- I11 : legend de formulaire, blanc sur creme ---- */
+html.et-plight main legend:not(#_):not(#__){
+  color:#2A3648!important;-webkit-text-fill-color:#2A3648!important;
+}
+
+/* ---- I12 : marque du pied de page des carnets (36 echecs, lecon 48) ----
+   html.et-jlight redefinit --blue-l / --gold-l pour une surface claire, mais
+   le pied de page reste #121D31. On restaure les valeurs sombres, limitees
+   au footer, sans toucher --ink / --mut / --hair. */
+html.et-jlight footer,
+html.et-jlight .jfoot,
+html.et-plight footer{
+  --blue-l:#5AA7F0!important;
+  --gold-l:#E8C36A!important;
+}
+
+/* ---- I13 : bouton .pof-cta de la colonne or ----
+   ATTENTION, correctif REECRIT : la version precedente eclaircissait
+   `.pof-col a`, sur la foi de cause.js qui avait vu un `::before` sombre.
+   Ce ::before est en realite un FILET de 2 px en haut de carte, pas un voile :
+   en theme clair .pof-col est une carte CLAIRE (#F7F9FC) sur les trois pages.
+   La regle a donc casse deux liens (intermediaire/index 1.01, aval/index 1.22)
+   sans corriger sa cible. Le vrai defaut est l'or #9A6D12 du bouton, a 3.36
+   sur le fond de carte teinte a 8 %. On assombrit la seule encre du bouton,
+   sans toucher a --c qui dessine aussi la bordure et le halo. */
+html.et-plight .pof-col .pof-cta a:not(#_):not(#__){
+  color:#6E4D0C!important;-webkit-text-fill-color:#6E4D0C!important;
+}
+
+/* ---- I14 : legendes du schema SVG de brochure.html ----
+   Deux div en style inline poses sur un voile marine ; l'encre globale les
+   fait basculer sombre. On les rend claires. */
+html.et-plight [style*="position:absolute"][style*="bottom:0"]:not(#_) > div:not(#_){
+  color:#EAF0F8!important;-webkit-text-fill-color:#EAF0F8!important;
+}
+html.et-plight [style*="position:absolute"][style*="bottom:0"]:not(#_) > div[style*="var(--blue-l)"]:not(#_){
+  color:#8EC5FF!important;-webkit-text-fill-color:#8EC5FF!important;
+}
+
+/* ---- I15 : pastilles .dlnk (aval/distribution) ---- */
+html.et-plight .dlnk a:not(#_){
+  color:#F5F7FA!important;-webkit-text-fill-color:#F5F7FA!important;
+}
+
+/* ---- I16 : chips de synthese .ppj-syn (pages de pole) ---- */
+html.et-plight .ppj-syn:not(#_),
+html.et-plight .ppj-syn :not(#_){
+  color:#EAF0F8!important;-webkit-text-fill-color:#EAF0F8!important;
+}
+
+/* ---- I17 : chaine de poles du hero de brochure.html ----
+   Ce HEADER.hero n'est PAS dans <main> : les regles en `main ...` ne
+   l'atteignent pas. Doit battre G2 [style*="E8C36A"]:not(#_) = (1,2,1). */
+html.et-plight .hchain a:not(#_):not(#__),
+html.et-plight .hchain a :not(#_):not(#__){
+  color:#FFFFFF!important;-webkit-text-fill-color:#FFFFFF!important;
+}
+
+/* ---- I18 : mots-marques peints par un degrade clippe en style inline ----
+   ex. « Tchaditude™ » : background-clip:text + text-fill-color:transparent,
+   degrade or prevu pour un fond sombre, illisible sur le creme. */
+html.et-plight main [style*="text-fill-color:transparent"]:not(#_){
+  background-image:none!important;
+  -webkit-background-clip:border-box!important;background-clip:border-box!important;
+  color:#4C380B!important;-webkit-text-fill-color:#4C380B!important;
+}
+/* ———— ex-bloc: cue-tact ———— */
+#scrollcue{transition:opacity .3s,visibility .3s}html.cue-off #scrollcue{opacity:0!important;visibility:hidden!important;pointer-events:none!important}
+
+/* ———— ex-bloc: tex760 ———— */
+@media(max-width:820px){html .hero{background:linear-gradient(90deg,rgba(6,11,20,.58) 0%,rgba(6,11,20,.46) 40%,rgba(6,11,20,.34) 70%,rgba(6,11,20,.30) 100%),linear-gradient(180deg,rgba(14,22,38,.28) 0%,rgba(14,22,38,.36) 52%,rgba(14,22,38,.54) 100%) center/cover no-repeat!important}.rootland{background:none center/cover no-repeat}}@media(min-width:820.02px){html .hero{background:linear-gradient(90deg,rgba(6,11,20,.58) 0%,rgba(6,11,20,.46) 40%,rgba(6,11,20,.34) 70%,rgba(6,11,20,.30) 100%),linear-gradient(180deg,rgba(14,22,38,.28) 0%,rgba(14,22,38,.36) 52%,rgba(14,22,38,.54) 100%) center/cover no-repeat!important}.rootland{background:none center/cover no-repeat}}
+/* ———— ex-bloc: ar-btn-fix ———— */
+/* Ch338 : les couches de repeinture theme clair du chrome commun ecrasaient les boutons dores des pages arabes */
+main .btn:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),.cta .btn:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){background:var(--gold-l,#E8C36A)!important;color:#121D31!important;-webkit-text-fill-color:#121D31!important;border-color:transparent!important}
+main .btn2:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),.cta .btn2:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){background:transparent!important;color:var(--cream,#F5F7FA)!important;-webkit-text-fill-color:var(--cream,#F5F7FA)!important;border:1px solid rgba(255,255,255,.28)!important}
+/* ———— ex-bloc: lux365 ———— */
+/* Ch365 - harmonisation premium hors bundle : halo dore statique et filet d'or du pied de page */
+html:not(.et-plight):not(.et-jlight) body:not(#e1)::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(44% 36% at 21% 6%, rgba(232,195,106,.16), transparent 62%),radial-gradient(34% 30% at 91% 34%, rgba(232,195,106,.09), transparent 60%),radial-gradient(52% 44% at 50% 100%, rgba(90,167,240,.11), transparent 66%),radial-gradient(1px 1px at 20% 30%, rgba(255,255,255,.10), transparent),radial-gradient(1px 1px at 70% 60%, rgba(255,255,255,.08), transparent)}
+footer:not(#e1):not(#e2){position:relative}
+footer:not(#e1):not(#e2)::before{content:"";position:absolute;left:0;right:0;top:0;height:1px;z-index:1;background:linear-gradient(90deg,transparent,rgba(232,195,106,.5),transparent)}
+html.et-plight footer:not(#e1):not(#e2)::before,html.et-jlight footer:not(#e1):not(#e2)::before{background:linear-gradient(90deg,transparent,rgba(138,106,18,.42),transparent)}
+@media (prefers-reduced-transparency:reduce){html:not(.et-plight):not(.et-jlight) body:not(#e1)::after{background:none!important}}
+@media print{html:not(.et-plight):not(.et-jlight) body:not(#e1)::after{background:none!important}footer:not(#e1):not(#e2)::before{display:none}}
+/* ———— ex-bloc: print386 ———— */
+@media print{html:not(#e1):not(#e2):not(#e3),html:not(#e1):not(#e2):not(#e3) body{background:#fff!important;color-scheme:light!important}.rootland:not(#e1):not(#e2):not(#e3){display:none!important;background:none!important}body:not(#e1):not(#e2)::before,body:not(#e1):not(#e2)::after{display:none!important}}
+
+.ar-go{display:inline-block;padding:5px 3px;min-height:24px;line-height:1.5;border-radius:6px}.ar-go:focus-visible{outline:2px solid var(--blue-l,#00B4D8);outline-offset:2px}
