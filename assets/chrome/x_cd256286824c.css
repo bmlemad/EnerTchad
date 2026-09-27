@@ -1208,3 +1208,51 @@ html.et-jlight .ct-err:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5):not(#e6){col
 @media print{#ckn:not(#e1):not(#e2):not(#e3),#aurail:not(#e1):not(#e2):not(#e3),#homeFab:not(#e1):not(#e2):not(#e3),#plightBtn:not(#e1):not(#e2):not(#e3),#jlightBtn:not(#e1):not(#e2):not(#e3),#toTop:not(#e1):not(#e2):not(#e3),#toTop-fix:not(#e1):not(#e2):not(#e3){display:none!important}}
 
 html.et-plight main .note:not(#_):not(#__),html.et-plight body>section .note:not(#_):not(#__){color:#3A4657!important;background:rgba(255,255,255,.52)!important;-webkit-backdrop-filter:blur(14px) saturate(160%);backdrop-filter:blur(14px) saturate(160%);border-color:rgba(26,35,48,.22)!important}
+
+
+/* ======================================================================
+   QA+ — chrome liquide v4 / accessibilité & coût GPU (2026-09-27)
+   - réduit le coût du verre sur petits écrans sans supprimer la profondeur
+   - renforce les modes contraste élevé / Windows High Contrast
+   - conserve le fallback opaque et le comportement reduced-transparency
+   ====================================================================== */
+@media (max-width:768px){
+  #nezBar:not(#_){
+    -webkit-backdrop-filter:blur(12px) saturate(125%);
+    backdrop-filter:blur(12px) saturate(125%);
+  }
+  #plightBtn:not(#_){
+    -webkit-backdrop-filter:blur(8px) saturate(120%);
+    backdrop-filter:blur(8px) saturate(120%);
+  }
+}
+@media (prefers-contrast:more){
+  #nezBar:not(#_),#plightBtn:not(#_){
+    -webkit-backdrop-filter:none!important;
+    backdrop-filter:none!important;
+    background:#07101D!important;
+    border-color:currentColor!important;
+  }
+  .nav:not(#_),.nav.scrolled:not(#_),#ckn:not(#_){
+    -webkit-backdrop-filter:none!important;
+    backdrop-filter:none!important;
+    background:#07101D!important;
+  }
+}
+@media (forced-colors:active){
+  #nezBar:not(#_),#plightBtn:not(#_),.nav:not(#_),.nav.scrolled:not(#_),#ckn:not(#_){
+    -webkit-backdrop-filter:none!important;
+    backdrop-filter:none!important;
+    background:Canvas!important;
+    color:CanvasText!important;
+    border:1px solid ButtonText!important;
+  }
+  #nezBar a,#plightBtn,.nav a,.nav button,#ckn a,#ckn button{
+    color:LinkText!important;
+    forced-color-adjust:auto;
+  }
+  #nezBar a:focus-visible,#plightBtn:focus-visible,.nav a:focus-visible,.nav button:focus-visible{
+    outline:2px solid Highlight!important;
+    outline-offset:2px;
+  }
+}
