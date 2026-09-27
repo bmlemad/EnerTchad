@@ -187,3 +187,12 @@ html.et-plight .et-command-card small{color:#4B586A}
     contain-intrinsic-size: auto 720px;
   }
 }
+
+/* Parcours prioritaires — orientation utilisateur */
+.et-intents{max-width:1200px;margin:0 auto;padding:18px 24px 8px;position:relative;z-index:5}
+.et-intents-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+.et-intent{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:15px 16px;border:1px solid var(--et-line);border-radius:14px;background:rgba(10,23,39,.76);color:var(--et-text);text-decoration:none;font-weight:700;min-height:50px;transition:transform .2s ease,border-color .2s ease,background .2s ease}
+.et-intent small{display:block;color:var(--et-muted);font-weight:500;font-size:.72rem}
+.et-intent:hover{transform:translateY(-2px);border-color:var(--et-line-gold);background:rgba(20,38,59,.9)}
+@media(max-width:900px){.et-intents-grid{grid-template-columns:repeat(2,1fr)}.et-intent:last-child{grid-column:1/-1}}
+@media(max-width:560px){.et-intents{padding:12px 16px 4px}.et-intents-grid{grid-template-columns:1fr}.et-intent:last-child{grid-column:auto}}
