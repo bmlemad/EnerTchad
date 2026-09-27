@@ -32,3 +32,15 @@ for p in pages:
 if errs:
     print('\n'.join(errs[:50])); print(f'\nECHEC : {len(errs)} probleme(s)'); sys.exit(1)
 print(f'OK : {len(pages)} pages, 0 probleme')
+
+# QA complémentaire : métadonnées minimales, hreflang et IDs dupliqués déjà contrôlés ci-dessus.
+for p in pages:
+    h = open(p, encoding='utf-8').read()
+    if not re.search(r'<html\b[^>]*\blang=["\'][^"\']+["\']', h, re.I):
+        errs.append(f'{p}: attribut lang absent')
+    if not re.search(r'<title\b[^>]*>\s*[^<]+\s*</title>', h, re.I | re.S):
+        errs.append(f'{p}: title absent ou vide')
+    if not re.search(r'<meta\b[^>]*name=["\']description["\'][^>]*content=["\'][^"\']+["\']', h, re.I):
+        errs.append(f'{p}: meta description absente ou vide')
+    if not re.search(r'<link\b[^>]*rel=["\'][^"\']*canonical[^"\']*["\'][^>]*href=["\'][^"\']+["\']', h, re.I):
+        errs.append(f'{p}: canonical absent')
