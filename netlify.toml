@@ -1,0 +1,1076 @@
+# Netlify fallback configuration for EnerTchad
+# Static site: publish the repository root as-is.
+[build]
+  publish = "."
+
+# Mirror the two Vercel rewrites used by the application.
+[[redirects]]
+  from = "/configurateur-service-integre"
+  to = "/Configurateur_Service_Integre_v2"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/amont/calculateur-baril-additionnel"
+  to = "/Calculateur_Baril_Additionnel"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/reporting"
+  to = "/publications"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/reporting-en"
+  to = "/publications-en"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/activites-en"
+  to = "/amont/activites-en"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/activites-en.html"
+  to = "/amont/activites-en"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/eor-en"
+  to = "/amont/eor-en"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/eor-en.html"
+  to = "/amont/eor-en"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/parc-en"
+  to = "/amont/parc-en"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/parc-en.html"
+  to = "/amont/parc-en"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/services-ep-en"
+  to = "/amont/services-ep-en"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/services-ep-en.html"
+  to = "/amont/services-ep-en"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/distribution-en"
+  to = "/aval/distribution-en"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/distribution-en.html"
+  to = "/aval/distribution-en"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/produits-en"
+  to = "/aval/produits-en"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/produits-en.html"
+  to = "/aval/produits-en"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/raffinage-en"
+  to = "/aval/raffinage-en"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/raffinage-en.html"
+  to = "/aval/raffinage-en"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/reseau-en"
+  to = "/aval/reseau-en"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/reseau-en.html"
+  to = "/aval/reseau-en"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/hseq-en"
+  to = "/pole-greentech-en#hseq"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/hseq-en.html"
+  to = "/pole-greentech-en#hseq"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/impact-en"
+  to = "/pole-greentech-en#impact"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/impact-en.html"
+  to = "/pole-greentech-en#impact"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/patrimoine-en"
+  to = "/pole-greentech-en#patrimoine"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/patrimoine-en.html"
+  to = "/pole-greentech-en#patrimoine"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/transition-en"
+  to = "/pole-greentech-en#transition"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/transition-en.html"
+  to = "/pole-greentech-en#transition"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/Configurateur_Service_Integre"
+  to = "/configurateur-service-integre"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pole-amont"
+  to = "/amont/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pole-amont.html"
+  to = "/amont/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pole-amont-activites"
+  to = "/amont/activites"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pole-amont-activites.html"
+  to = "/amont/activites"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pole-amont-eor"
+  to = "/amont/eor"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pole-amont-eor.html"
+  to = "/amont/eor"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pole-amont-services-ep"
+  to = "/amont/services-ep"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pole-amont-services-ep.html"
+  to = "/amont/services-ep"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pole-intermediaire"
+  to = "/intermediaire/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pole-intermediaire.html"
+  to = "/intermediaire/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pole-intermediaire-logistique"
+  to = "/intermediaire/logistique"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pole-intermediaire-logistique.html"
+  to = "/intermediaire/logistique"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pole-intermediaire-services"
+  to = "/intermediaire/services"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pole-intermediaire-services.html"
+  to = "/intermediaire/services"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pole-intermediaire-sites"
+  to = "/intermediaire/sites"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pole-intermediaire-sites.html"
+  to = "/intermediaire/sites"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pole-aval"
+  to = "/aval/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pole-aval.html"
+  to = "/aval/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pole-aval-distribution"
+  to = "/aval/distribution"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pole-aval-distribution.html"
+  to = "/aval/distribution"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pole-aval-produits"
+  to = "/aval/produits"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pole-aval-produits.html"
+  to = "/aval/produits"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pole-aval-raffinage"
+  to = "/aval/raffinage"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pole-aval-raffinage.html"
+  to = "/aval/raffinage"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pole-aval-reseau"
+  to = "/aval/reseau"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pole-aval-reseau.html"
+  to = "/aval/reseau"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pole-petrochimie"
+  to = "/petrochimie/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pole-petrochimie.html"
+  to = "/petrochimie/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pole-petrochimie-chimie-eor"
+  to = "/petrochimie/chimie-eor"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pole-petrochimie-chimie-eor.html"
+  to = "/petrochimie/chimie-eor"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pole-petrochimie-produits"
+  to = "/petrochimie/produits"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pole-petrochimie-produits.html"
+  to = "/petrochimie/produits"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pole-greentech"
+  to = "/greentech/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pole-greentech.html"
+  to = "/greentech/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pole-greentech-hseq"
+  to = "/greentech/#hseq"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pole-greentech-hseq.html"
+  to = "/greentech/#hseq"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pole-greentech-impact"
+  to = "/greentech/#impact"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pole-greentech-impact.html"
+  to = "/greentech/#impact"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pole-greentech-patrimoine"
+  to = "/greentech/#patrimoine"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pole-greentech-patrimoine.html"
+  to = "/greentech/#patrimoine"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pole-greentech-transition"
+  to = "/greentech/#transition"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pole-greentech-transition.html"
+  to = "/greentech/#transition"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pole-enertech"
+  to = "/tchaditech/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pole-enertech.html"
+  to = "/tchaditech/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pole-enertech-innovations"
+  to = "/tchaditech/#innovations"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pole-enertech-innovations.html"
+  to = "/tchaditech/#innovations"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pole-enertech-outils"
+  to = "/tchaditech/outils"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pole-enertech-outils.html"
+  to = "/tchaditech/outils"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pole-enertech-rd"
+  to = "/tchaditech/#rd"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pole-enertech-rd.html"
+  to = "/tchaditech/#rd"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pole-enertech-recits"
+  to = "/tchaditech/#recits"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pole-enertech-recits.html"
+  to = "/tchaditech/#recits"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pole-enertech-socle"
+  to = "/tchaditech/#socle"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pole-enertech-socle.html"
+  to = "/tchaditech/#socle"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pole-enertalents"
+  to = "/tchaditude/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pole-enertalents.html"
+  to = "/tchaditude/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pole-enertalents-academie"
+  to = "/tchaditude/#academie"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pole-enertalents-academie.html"
+  to = "/tchaditude/#academie"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pole-enertalents-partenariats"
+  to = "/tchaditude/#partenariats"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pole-enertalents-partenariats.html"
+  to = "/tchaditude/#partenariats"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pole-enertalents-rayonnement"
+  to = "/tchaditude/#rayonnement"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pole-enertalents-rayonnement.html"
+  to = "/tchaditude/#rayonnement"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pole-enerconseils"
+  to = "/enerconseils/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pole-enerconseils.html"
+  to = "/enerconseils/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pole-enerconseils-atlas"
+  to = "/enerconseils/atlas"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pole-enerconseils-atlas.html"
+  to = "/enerconseils/atlas"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pole-enerconseils-conseil"
+  to = "/enerconseils/#conseil"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pole-enerconseils-conseil.html"
+  to = "/enerconseils/#conseil"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/enerchimie"
+  to = "/petrochimie"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/enerchimie/"
+  to = "/petrochimie/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/enerchimie/petrochimie"
+  to = "/petrochimie/produits"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/enerchimie/petrochimie.html"
+  to = "/petrochimie/produits"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/enerchimie/chimie-eor"
+  to = "/petrochimie/chimie-eor"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/enerchimie/chimie-eor.html"
+  to = "/petrochimie/chimie-eor"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pole-enerchimie"
+  to = "/petrochimie/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pole-enerchimie.html"
+  to = "/petrochimie/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pole-enerchimie-petrochimie"
+  to = "/petrochimie/produits"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pole-enerchimie-petrochimie.html"
+  to = "/petrochimie/produits"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pole-enerchimie-chimie-eor"
+  to = "/petrochimie/chimie-eor"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pole-enerchimie-chimie-eor.html"
+  to = "/petrochimie/chimie-eor"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/og-enerchimie.png"
+  to = "/og-petrochimie.jpg"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/impact"
+  to = "/greentech/#impact"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/impact.html"
+  to = "/greentech/#impact"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/en"
+  to = "/index-en"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/en.html"
+  to = "/index-en"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/enertalents"
+  to = "/tchaditude/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/enertalents/:path*"
+  to = "/tchaditude/:path*"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pole-enertalents-en"
+  to = "/pole-tchaditude-en"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pole-enertalents-en.html"
+  to = "/pole-tchaditude-en"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/og-enertalents.jpg"
+  to = "/og-tchaditude.jpg"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/enertech"
+  to = "/tchaditech/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/enertech/:path*"
+  to = "/tchaditech/:path*"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pole-enertech-en"
+  to = "/pole-tchaditech-en"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pole-enertech-en.html"
+  to = "/pole-tchaditech-en"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/enertech/"
+  to = "/tchaditech/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/enertalents/"
+  to = "/tchaditude/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/Configurateur_Service_Integre_v2"
+  to = "/configurateur-service-integre"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/Calculateur_Baril_Additionnel"
+  to = "/amont/calculateur-baril-additionnel"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/enerconseils/conseil"
+  to = "/enerconseils/#conseil"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/enerconseils/audits"
+  to = "/enerconseils/#audits"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/enerconseils/esg"
+  to = "/enerconseils/#esg"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/enerconseils/conseil-en"
+  to = "/pole-enerconseils-en#conseil"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/enerconseils/audits-en"
+  to = "/pole-enerconseils-en#audits"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/enerconseils/esg-en"
+  to = "/pole-enerconseils-en#esg"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/greentech/hseq-en"
+  to = "/pole-greentech-en#hseq"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/greentech/impact-en"
+  to = "/pole-greentech-en#impact"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/greentech/transition-en"
+  to = "/pole-greentech-en#transition"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/greentech/patrimoine-en"
+  to = "/pole-greentech-en#patrimoine"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/greentech/hseq"
+  to = "/greentech/#hseq"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/greentech/impact"
+  to = "/greentech/#impact"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/greentech/transition"
+  to = "/greentech/#transition"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/greentech/patrimoine"
+  to = "/greentech/#patrimoine"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/tchaditude/academie-en"
+  to = "/pole-tchaditude-en#academie"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/tchaditude/services-en"
+  to = "/pole-tchaditude-en#services"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/tchaditude/rayonnement-en"
+  to = "/pole-tchaditude-en#rayonnement"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/tchaditude/partenariats-en"
+  to = "/pole-tchaditude-en#partenariats"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/tchaditude/academie"
+  to = "/tchaditude/#academie"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/tchaditude/services"
+  to = "/tchaditude/#services"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/tchaditude/rayonnement"
+  to = "/tchaditude/#rayonnement"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/tchaditude/partenariats"
+  to = "/tchaditude/#partenariats"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/tchaditech/socle-en"
+  to = "/pole-tchaditech-en#socle"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/tchaditech/rd-en"
+  to = "/pole-tchaditech-en#rd"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/tchaditech/innovations-en"
+  to = "/pole-tchaditech-en#innovations"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/tchaditech/recits-en"
+  to = "/pole-tchaditech-en#recits"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/tchaditech/socle"
+  to = "/tchaditech/#socle"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/tchaditech/rd"
+  to = "/tchaditech/#rd"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/tchaditech/innovations"
+  to = "/tchaditech/#innovations"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/tchaditech/recits"
+  to = "/tchaditech/#recits"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/boutique"
+  to = "/aval/boutique"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/boutique-en"
+  to = "/aval/boutique-en"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/calculateur-baril-additionnel"
+  to = "/amont/calculateur-baril-additionnel"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/explorateur-chaine"
+  to = "/nos-activites"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/explorateur-chaine-en"
+  to = "/nos-activites-en"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pole-amont-en"
+  to = "/amont/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pole-amont-en.html"
+  to = "/amont/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pole-intermediaire-en"
+  to = "/intermediaire/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pole-intermediaire-en.html"
+  to = "/intermediaire/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pole-aval-en"
+  to = "/aval/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pole-aval-en.html"
+  to = "/aval/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pole-enerchimie-en"
+  to = "/petrochimie/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pole-enerchimie-en.html"
+  to = "/petrochimie/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pole-greentech-en"
+  to = "/greentech/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pole-greentech-en.html"
+  to = "/greentech/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pole-tchaditech-en"
+  to = "/tchaditech/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pole-tchaditech-en.html"
+  to = "/tchaditech/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pole-tchaditude-en"
+  to = "/tchaditude/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pole-tchaditude-en.html"
+  to = "/tchaditude/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pole-enerconseils-en"
+  to = "/enerconseils/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pole-enerconseils-en.html"
+  to = "/enerconseils/"
+  status = 301
+  force = true
+
+# Security headers are maintained in _headers so Netlify and the fallback
+# deployment share the same policy.
