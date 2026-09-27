@@ -116,3 +116,20 @@ a.pubc:focus-visible{outline:2px solid var(--gold-l,#E8C36A);outline-offset:3px}
 @media(max-width:700px){.pubg{grid-template-columns:1fr}a.pubc{padding:18px 16px}}
 @media(prefers-reduced-motion:reduce){a.pubc{transition:border-color .2s ease,background .2s ease}a.pubc:hover{transform:none}}
 @media(prefers-reduced-transparency:reduce){a.pubc{background:#0F1C2D!important}html.et-plight a.pubc{background:#FAF7F1!important}.pub-note{background:#0F1C2D}html.et-plight .pub-note{background:#FAF7F1}}
+
+/* ===== Investor section rail — shared instead of inline CSS ===== */
+#aurail{position:fixed;right:14px;top:50%;transform:translateY(-50%);z-index:46;display:flex;flex-direction:column;gap:8px;pointer-events:none;align-items:flex-end}
+#aurail a{--d:0;display:flex;align-items:center;gap:0;padding:9px 13px;border-radius:999px;background:rgba(11,20,34,.56);-webkit-backdrop-filter:blur(12px) saturate(135%);backdrop-filter:blur(12px) saturate(135%);border:1px solid rgba(255,255,255,.10);text-decoration:none;color:rgba(245,247,250,.82);font-family:var(--fm);font-size:.74rem;letter-spacing:.02em;white-space:nowrap;opacity:0;transform:translateX(26px);pointer-events:auto;transition:opacity .5s var(--ease) calc(var(--d)*.07s),transform .5s var(--ease) calc(var(--d)*.07s),border-color .25s,background .25s,box-shadow .25s,color .25s}
+#aurail.show a{opacity:1;transform:none}
+#aurail a:hover,#aurail a.on{color:#fff;border-color:color-mix(in srgb,var(--c) 60%,var(--hair));background:color-mix(in srgb,var(--c) 16%,#0B1422);box-shadow:0 8px 26px -10px color-mix(in srgb,var(--c) 60%,transparent);transform:translateX(-4px)}
+#aurail .axl{font-weight:600;max-width:0;overflow:hidden;opacity:0;white-space:nowrap;transition:max-width .4s var(--ease),opacity .3s,margin-left .4s var(--ease)}
+#aurail a:hover .axl,#aurail a:focus-visible .axl{max-width:220px;opacity:1;margin-left:9px}
+#aurail .ad{width:8px;height:8px;border-radius:50%;background:var(--c);flex:none;box-shadow:0 0 8px var(--c);transition:transform .25s var(--ease)}
+#aurail a:hover .ad,#aurail a.on .ad{transform:scale(1.4)}
+#aurail .axd{max-width:0;overflow:hidden;opacity:0;color:rgba(245,247,250,.62);font-size:.6875rem;transition:max-width .38s var(--ease),opacity .3s,margin-left .38s var(--ease)}
+#aurail a:hover .axd{max-width:180px;opacity:1;margin-left:2px}
+@media(max-width:1100px){#aurail{display:none}}
+@media(prefers-reduced-motion:reduce){#aurail a{transition:opacity .3s,background .2s,border-color .2s,color .2s}}
+html.et-plight #aurail a:hover,html.et-plight #aurail a.on{background:color-mix(in srgb,var(--c) 16%,#FBF8F2);color:#10161F;border-color:color-mix(in srgb,var(--c) 55%,#B9AE97)}
+@media(prefers-reduced-transparency:reduce){#aurail a{background:#0F1C2D;-webkit-backdrop-filter:none;backdrop-filter:none}html.et-plight #aurail a{background:#FAF7F1}}
+@media(forced-colors:active){#aurail a{background:Canvas;color:CanvasText;border:1px solid CanvasText;-webkit-backdrop-filter:none;backdrop-filter:none;box-shadow:none}}
