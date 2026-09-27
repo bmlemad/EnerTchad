@@ -486,7 +486,7 @@ for(var i=0;i<D.length;i++){var e=D[i],sc=0,ok=true;
 out.sort(function(a,b){return b[0]-a[0]});out=out.slice(0,30);
 R.innerHTML=out.map(function(x){var e=x[1];return '<li><a href="'+e.u+'"><b>'+esc(e.t)+'</b><span class="sc-s">'+esc(e.s)+'</span><span class="sc-d">'+esc(e.d)+'</span></a></li>'}).join('');
 E.hidden=out.length>0;N.textContent=out.length?out.length+(out.length>1?' pages found':' page found'):'';
-try{history.replaceState(null,'',location.pathname+(Q.value.trim()?'#q='+encodeURIComponent(Q.value.trim()):''))}catch(_){}}
+try{history.replaceState(null,'',location.pathname+(Q.value.trim()?'?q='+encodeURIComponent(Q.value.trim()):''))}catch(_){}}
 fetch('/assets/data/recherche-en.json?v=202609111900').then(function(r){return r.json()}).then(function(d){D=d.map(function(e){e._t=fold(e.t);e._d=fold(e.d);e._k=fold(e.k+' '+e.u);return e});run()});
 Q.addEventListener('input',run);
 try{var m=location.hash.match(/^#q=(.+)$/);if(m)Q.value=decodeURIComponent(m[1])}catch(_){}
