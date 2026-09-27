@@ -101,3 +101,16 @@ test('legacy redirects — canonical routes', async ({ request }) => {
     expect(location, from).toContain(to);
   }
 });
+
+test('language entry points — FR EN AR', async ({ browser }) => {
+  const cases = [['/', 'fr'], ['/index-en', 'en'], ['/ar', 'ar']];
+  for (const [path, lang] of cases) {
+    const page = await browser.newPage({ viewport: { width: 1280, height: 900 } });
+    const response = await page.goto(new URL(path, url).href, { waitUntil: 'networkidle', timeout: 45000 });
+    expect(response, path).not.toBeNull();
+    expect(response.status(), path).toBeLessThan(400);
+    await expect(page.locator('html').first(), path).toHaveAttribute('lang', lang);
+    await expect(page.locator('h1').first(), path).toBeVisible();
+    await page.close();
+  }
+});
