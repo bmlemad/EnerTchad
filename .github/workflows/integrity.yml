@@ -10,3 +10,10 @@ jobs:
       - uses: actions/setup-python@v5
         with: {python-version: '3.12'}
       - run: python scripts/check_integrity.py
+      - name: Générer la cartographie d’architecture
+        run: python scripts/audit_architecture.py
+      - name: Publier la cartographie
+        uses: actions/upload-artifact@v4
+        with:
+          name: site-architecture-audit
+          path: reports/site-architecture-2026.md
