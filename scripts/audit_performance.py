@@ -16,7 +16,11 @@ for p in pages:
     # Seules les feuilles réellement bloquantes comptent ici : les préloads
     # et les fallbacks <noscript> ne bloquent pas le rendu quand JS est actif.
     body_without_noscript = re.sub(r"<noscript\b.*?</noscript>", "", s, flags=re.I | re.S)
-    stylesheets = re.findall(r"<link\b[^>]*\brel\s*=\s*[\"']stylesheet[\"'][^>]*>", body_without_noscript, re.I)
+    # Ne compter que les feuilles qui bloquent réellement le rendu. Les
+    # préloads de CSS avec onload et leurs fallbacks noscript sont non bloquants.
+    body_without_noscript = re.sub(r"<noscript\b.*?</noscript>", "", s, flags=re.I | re.S)
+    stylesheet_tags = re.findall(r"<link\b[^>]*\brel\s*=\s*[\"']stylesheet[\"'][^>]*>", body_without_noscript, re.I)
+    stylesheets = [tag for tag in stylesheet_tags if not re.search(r"\bonload\s*=", tag, re.I)]
     if len(stylesheets) > 14: findings.append((rel, "nombre élevé de feuilles CSS bloquantes", len(stylesheets)))
     images = re.findall(r"<img\b[^>]*>", s, re.I)
     for tag in images:
