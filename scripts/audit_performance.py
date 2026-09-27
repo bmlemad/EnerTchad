@@ -15,7 +15,6 @@ for p in pages:
     if blocking: findings.append((rel, "scripts externes bloquants", len(blocking)))
     # Seules les feuilles réellement bloquantes comptent ici : les préloads
     # et les fallbacks <noscript> ne bloquent pas le rendu quand JS est actif.
-    body_without_noscript = re.sub(r"<noscript\b.*?</noscript>", "", s, flags=re.I | re.S)
     # Ne compter que les feuilles qui bloquent réellement le rendu. Les
     # préloads de CSS avec onload et leurs fallbacks noscript sont non bloquants.
     body_without_noscript = re.sub(r"<noscript\b.*?</noscript>", "", s, flags=re.I | re.S)
