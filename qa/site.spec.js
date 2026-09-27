@@ -122,3 +122,29 @@ test('production security headers', async ({ request }) => {
   expect(headers['x-frame-options']).toBe('SAMEORIGIN');
   expect(headers['strict-transport-security']).toMatch(/max-age=(?:31536000|63072000)/);
 });
+
+
+test('SEO infrastructure — robots, sitemap et hreflang', async ({ request }) => {
+  const robots = await request.get(new URL('/robots.txt', url).href);
+  expect(robots.status()).toBe(200);
+  expect(await robots.text()).toMatch(/Sitemap:\s*https:\/\/enertchad-delta\.vercel\.app\/sitemap\.xml/i);
+
+  const sitemap = await request.get(new URL('/sitemap.xml', url).href);
+  expect(sitemap.status()).toBe(200);
+  const xml = await sitemap.text();
+  const urls = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m => m[1]);
+  expect(urls.length).toBeGreaterThan(100);
+  expect(new Set(urls).size).toBe(urls.length);
+
+  for (const path of ['/', '/index-en', '/ar']) {
+    const response = await request.get(new URL(path, url).href);
+    expect(response.status(), path).toBe(200);
+    const html = await response.text();
+    const canonical = html.match(/<link[^>]+rel=["'][^"']*canonical[^"']*["'][^>]+href=["']([^"']+)["']/i);
+    expect(canonical, path).not.toBeNull();
+    const expected = new URL(path, url).href.replace(/\/$/, '') || new URL(url).origin;
+    expect(canonical[1].replace(/\/$/, ''), path).toBe(expected);
+    const hreflangs = [...html.matchAll(/<link[^>]+rel=["'][^"']*alternate[^"']*["'][^>]+hreflang=["']([^"']+)["'][^>]+href=["']([^"']+)["']/gi)];
+    expect(hreflangs.map(m => m[1]), path).toEqual(expect.arrayContaining(['fr', 'en', 'ar', 'x-default']));
+  }
+});
