@@ -140,5 +140,8 @@ html.et-plight #aurail a:hover,html.et-plight #aurail a.on{background:color-mix(
 .nx-search:hover{color:var(--gold-l,#E8C36A)}
 html.et-plight .nx-search,html.et-jlight .nx-search{color:#39424F}
 html.et-plight .nx-search:hover,html.et-jlight .nx-search:hover{color:#74570B}
-@media(max-width:760px){.nx-search{display:none}}
+@media(max-width:760px){
+  .nx-search{display:inline-flex;width:30px;height:30px;padding:0;justify-content:center;align-items:center;font-size:0;border:1px solid var(--et-i-line,rgba(120,170,220,.18));border-radius:999px}
+  .nx-search::before{margin:0;width:9px;height:9px}
+}
 @media(forced-colors:active){.nx-search{color:CanvasText}}
