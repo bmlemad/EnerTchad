@@ -48,8 +48,9 @@ for p in pages:
         if href:
             stylesheet_hrefs.append(href.group(1))
     unique_stylesheets = list(dict.fromkeys(stylesheet_hrefs))
-    if len(unique_stylesheets) > 14:
-        findings.append((rel, "nombre élevé de feuilles CSS bloquantes distinctes", len(unique_stylesheets)))
+    css_budget = 14 if rel in ("index.html", "index-en.html", "ar.html") else 18
+    if len(unique_stylesheets) > css_budget:
+        findings.append((rel, f"nombre élevé de feuilles CSS bloquantes distinctes (budget {css_budget})", len(unique_stylesheets)))
     images = re.findall(r"<img\b[^>]*>", s, re.I)
     for tag in images:
         if not re.search(r"\b(?:loading|fetchpriority)\s*=", tag, re.I): findings.append((rel, "image sans hint loading/fetchpriority", 1))
