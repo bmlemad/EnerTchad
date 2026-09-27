@@ -62,3 +62,23 @@ test('representative inner pages — desktop and mobile', async ({ browser }) =>
     await mobile.close();
   }
 });
+
+test('configurateur — desktop et mobile', async ({ browser }) => {
+  const path = '/Configurateur_Service_Integre_v2.html';
+  for (const viewport of [{ width: 1280, height: 900 }, { width: 390, height: 844 }]) {
+    const page = await browser.newPage({ viewport });
+    const errors = [];
+    page.on('console', msg => { if (msg.type() === 'error') errors.push('console: ' + msg.text()); });
+    page.on('pageerror', err => errors.push('pageerror: ' + err.message));
+    const response = await page.goto(new URL(path, url).href, { waitUntil: 'networkidle', timeout: 45000 });
+    expect(response, path).not.toBeNull();
+    expect(response.status(), path).toBeLessThan(400);
+    await expect(page.locator('h1').first(), path).toBeVisible();
+    await expect(page.locator('a.et-skip').first(), path).toHaveAttribute('href', '#root');
+    await expect(page.locator('#root').first(), path).toBeVisible();
+    const overflow = await page.evaluate(() => document.documentElement.scrollWidth > document.documentElement.clientWidth + 1);
+    expect(overflow, path).toBeFalsy();
+    expect(errors, path).toEqual([]);
+    await page.close();
+  }
+});
