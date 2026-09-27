@@ -73,6 +73,22 @@ jobs:
           done
       - name: Résumer les mesures Lighthouse
         run: python scripts/summarize_lighthouse.py
+      - name: Signaler les hotspots mobile
+        run: |
+          python - <<'PY'
+          import glob, json
+          for path in sorted(glob.glob("reports/lighthouse/mobile_*.json")):
+              with open(path, encoding="utf-8") as f:
+                  d=json.load(f)
+              p=(d.get("categories",{}).get("performance",{}).get("score") or 0)*100
+              a=d.get("audits",{})
+              tbt=(a.get("total-blocking-time",{}).get("numericValue") or 0)
+              lcp=(a.get("largest-contentful-paint",{}).get("numericValue") or 0)
+              if p < 75 or tbt > 800 or lcp > 2500:
+                  print(f"::warning file={path}::Mobile hotspot: performance={p:.0f}, TBT={tbt:.0f}ms, LCP={lcp:.0f}ms")
+              else:
+                  print(f"OK {path}: performance={p:.0f}, TBT={tbt:.0f}ms, LCP={lcp:.0f}ms")
+          PY
       - name: Publier les rapports
         uses: actions/upload-artifact@v7
         with:
