@@ -51,7 +51,11 @@ jobs:
             for path in "/" "/index-en" "/ar" "/amont/" "/intermediaire/" "/aval/" "/petrochimie/" "/investisseurs/" "/contact/" "/faq/"; do
               name=$(printf '%s' "$path" | tr '/-' '__' | sed 's/^_*$//')
               [ -n "$name" ] || name="home"
-              npx lighthouse "https://enertchad-delta.vercel.app$path" --quiet --chrome-flags="--headless --no-sandbox" --preset="$preset" --only-categories=performance,accessibility,best-practices,seo --output=json --output-path="reports/lighthouse/"$preset"_"$name".json"
+              if [ "$preset" = "desktop" ]; then
+              npx lighthouse "https://enertchad-delta.vercel.app$path" --quiet --chrome-flags="--headless --no-sandbox" --preset=desktop --only-categories=performance,accessibility,best-practices,seo --output=json --output-path="reports/lighthouse/"$preset"_"$name".json"
+            else
+              npx lighthouse "https://enertchad-delta.vercel.app$path" --quiet --chrome-flags="--headless --no-sandbox" --preset=perf --form-factor=mobile --screenEmulation.mobile=true --screenEmulation.width=412 --screenEmulation.height=915 --screenEmulation.deviceScaleFactor=2 --only-categories=performance,accessibility,best-practices,seo --output=json --output-path="reports/lighthouse/"$preset"_"$name".json"
+            fi
             done
           done
       - name: Résumer les mesures Lighthouse
