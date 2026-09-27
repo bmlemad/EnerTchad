@@ -271,3 +271,9 @@ html.et-plight .et-command-card small{color:#4B586A}
   .et-proof-card,.et-intent{background:Canvas!important;color:CanvasText!important;border:1px solid CanvasText!important;-webkit-backdrop-filter:none;backdrop-filter:none;box-shadow:none!important}
   .et-proof-card:hover,.et-intent:hover{transform:none}
 }
+
+/* KPI provenance link — make evidence access visible without overpowering the hero */
+.nh-proof{margin:12px 0 0;font-size:.72rem;line-height:1.5;color:var(--et-muted);letter-spacing:.01em}
+.nh-proof a{color:var(--et-text);text-underline-offset:3px;text-decoration-color:rgba(232,195,106,.55)}
+.nh-proof a:hover{color:var(--et-gold);text-decoration-color:currentColor}
+@media(max-width:560px){.nh-proof{font-size:.68rem}}
