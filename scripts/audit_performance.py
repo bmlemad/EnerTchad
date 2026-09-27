@@ -13,8 +13,11 @@ for p in pages:
     rel = p.relative_to(ROOT).as_posix()
     blocking = [m.group(0) for m in re.finditer(r"<script\b[^>]*\bsrc\s*=\s*[^>]+>", s, re.I) if not re.search(r"\b(?:defer|async)\b", m.group(0), re.I)]
     if blocking: findings.append((rel, "scripts externes bloquants", len(blocking)))
-    stylesheets = re.findall(r"<link\b[^>]*\brel\s*=\s*[\"']stylesheet[\"'][^>]*>", s, re.I)
-    if len(stylesheets) > 14: findings.append((rel, "nombre élevé de feuilles CSS", len(stylesheets)))
+    # Seules les feuilles réellement bloquantes comptent ici : les préloads
+    # et les fallbacks <noscript> ne bloquent pas le rendu quand JS est actif.
+    body_without_noscript = re.sub(r"<noscript\b.*?</noscript>", "", s, flags=re.I | re.S)
+    stylesheets = re.findall(r"<link\b[^>]*\brel\s*=\s*[\"']stylesheet[\"'][^>]*>", body_without_noscript, re.I)
+    if len(stylesheets) > 14: findings.append((rel, "nombre élevé de feuilles CSS bloquantes", len(stylesheets)))
     images = re.findall(r"<img\b[^>]*>", s, re.I)
     for tag in images:
         if not re.search(r"\b(?:loading|fetchpriority)\s*=", tag, re.I): findings.append((rel, "image sans hint loading/fetchpriority", 1))
