@@ -50,7 +50,7 @@ for p in PAGES:
     c=one(r'<link[^>]+rel=["\'][^"\']*canonical[^"\']*["\'][^>]+href=["\']([^"\']+)',h)
     lang=one(r'<html[^>]+lang=["\']([^"\']+)',h)
     title=one(r'<title[^>]*>(.*?)</title>',h)
-    h1=len(re.findall(r'<h1\\b',h,re.I))
+    h1=len(re.findall(r'<h1\b',h,re.I))
     rows.append((p,classify(p),lang,c,title,h1))
     if c: canon[c].append(p)
 
