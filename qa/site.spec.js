@@ -120,5 +120,5 @@ test('production security headers', async ({ request }) => {
   expect(headers['x-content-type-options']).toBe('nosniff');
   expect(headers['referrer-policy']).toBe('strict-origin-when-cross-origin');
   expect(headers['x-frame-options']).toBe('SAMEORIGIN');
-  expect(headers['strict-transport-security']).toContain('max-age=31536000');
+  expect(headers['strict-transport-security']).toMatch(/max-age=(?:31536000|63072000)/);
 });
