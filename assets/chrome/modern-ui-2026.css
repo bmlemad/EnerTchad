@@ -175,3 +175,7 @@ html.et-plight .et-command-head p{color:#4B586A}
 html.et-plight .et-command-card{background:linear-gradient(155deg,rgba(255,255,255,.84),rgba(247,244,236,.68));box-shadow:0 20px 50px -34px rgba(24,45,67,.24)}
 html.et-plight .et-command-card small{color:#4B586A}
 @media(prefers-reduced-transparency:reduce){.et-command-card{background:#101B2E;-webkit-backdrop-filter:none;backdrop-filter:none}html.et-plight .et-command-card{background:#FAF7F1}}
+
+/* keyboard navigation */
+.et-skip{position:fixed;z-index:10000;top:10px;left:10px;transform:translateY(-150%);padding:10px 14px;border-radius:10px;background:#E8C36A;color:#101B2E;font-weight:800;text-decoration:none;box-shadow:0 8px 24px rgba(0,0,0,.28)}.et-skip:focus{transform:none;outline:2px solid #fff;outline-offset:2px}
+#main-content:focus{outline:none}
