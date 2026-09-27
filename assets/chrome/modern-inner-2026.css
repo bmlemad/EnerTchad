@@ -23,3 +23,8 @@ body:not(.hm):not(.et-modern-exclude) img{border-radius:12px}
 @media(prefers-reduced-motion:reduce){body:not(.hm):not(.et-modern-exclude) main section,body:not(.hm):not(.et-modern-exclude) .card,body:not(.hm):not(.et-modern-exclude) .val,body:not(.hm):not(.et-modern-exclude) .p8,body:not(.hm):not(.et-modern-exclude) .pgr a{transition:none}body:not(.hm):not(.et-modern-exclude) .card:hover,body:not(.hm):not(.et-modern-exclude) .val:hover,body:not(.hm):not(.et-modern-exclude) .p8:hover,body:not(.hm):not(.et-modern-exclude) .pgr a:hover{transform:none}}
 
 .et-skip{position:fixed;z-index:10000;top:10px;left:10px;transform:translateY(-150%);padding:10px 14px;border-radius:10px;background:#fff;color:#0b1422;font-weight:700;box-shadow:0 8px 24px rgba(0,0,0,.25);text-decoration:none}.et-skip:focus{transform:none;outline:3px solid #5aa7f0;outline-offset:3px}body:not(.hm):not(.et-modern-exclude) #main-content:focus{outline:none}
+
+/* EnerTchad 2026 — règles communes extraites des hubs métiers */
+a.prj-pole{text-decoration:none;cursor:pointer;transition:opacity .2s,filter .2s}a.prj-pole:hover{opacity:.82;filter:brightness(1.12)}
+p,li,figcaption,blockquote,.hx-sub,.sub,.lede,.svc-head p,dd{text-wrap:pretty}h1,h2,h3,h4,.kick,.eyebrow,.mu-head span{text-wrap:balance}
+html.et-navd #preloader{display:none!important}
