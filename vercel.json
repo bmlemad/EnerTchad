@@ -3,6 +3,16 @@
   "cleanUrls": true,
   "redirects": [
     {
+      "source": "/reporting",
+      "destination": "/publications",
+      "permanent": true
+    },
+    {
+      "source": "/reporting-en",
+      "destination": "/publications-en",
+      "permanent": true
+    },
+    {
       "source": "/activites-en",
       "destination": "/amont/activites-en",
       "permanent": true
