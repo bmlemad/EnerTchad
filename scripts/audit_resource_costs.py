@@ -14,7 +14,7 @@ def local(url):
     p=ROOT/u.lstrip("/")
     return p if p.is_file() else None
 
-usage=defaultdict(set); sizes={}; page_totals=[]
+usage=defaultdict(set); sizes={}; kinds={}; page_totals=[]
 for p in pages:
     s=p.read_text(encoding="utf-8",errors="ignore")
     rel=p.relative_to(ROOT).as_posix(); total=0
@@ -22,12 +22,12 @@ for p in pages:
         for m in re.finditer(pat,s,re.I):
             q=local(m.group(1))
             if q:
-                key=q.relative_to(ROOT).as_posix(); sizes[key]=q.stat().st_size; usage[key].add(rel); total+=q.stat().st_size
+                key=q.relative_to(ROOT).as_posix(); sizes[key]=q.stat().st_size; kinds[key]="JS" if q.suffix.lower()==".js" else "CSS"; usage[key].add(rel); total+=q.stat().st_size
     page_totals.append((total,rel))
 page_totals.sort(reverse=True)
 rows=sorted(((sizes[k],k,len(v)) for k,v in usage.items()),reverse=True)
-lines=["# Audit des coûts CSS/JS — 2026","","Analyse statique des ressources locales réellement référencées.","","## Ressources les plus lourdes","","| Ressource | Taille | Pages |","|---|---:|---:|"]
-for n,k,c in rows[:50]: lines.append("| `{}` | {:.1f} KiB | {} |".format(k,n/1024,c))
+lines=["# Audit des coûts CSS/JS — 2026","","Analyse statique des ressources locales réellement référencées.","","## Ressources les plus lourdes","","| Ressource | Type | Taille | Pages |","|---|---|---:|---:|"]
+for n,k,c in rows[:50]: lines.append("| `{}` | {} | {:.1f} KiB | {} |".format(k,kinds[k],n/1024,c))
 lines += ["","## Parcours les plus lourds","","| Page | CSS/JS local référencé |","|---|---:|"]
 for n,k in page_totals[:40]: lines.append("| `{}` | {:.1f} KiB |".format(k,n/1024))
 lines += ["","## Méthode","","- Aucun asset n’est supprimé automatiquement.","- Les ressources partagées sont conservées jusqu’à analyse des dépendances.","- La validation finale utilise Lighthouse navigateur."]
