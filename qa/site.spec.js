@@ -234,10 +234,9 @@ test('hubs — liens internes accessibles et sans 4xx/5xx', async ({ request }) 
     const response = await request.get(new URL(path, url).href, { maxRedirects: 5 });
     expect(response.status(), path).toBe(200);
     const html = await response.text();
-    const hrefs = [...html.matchAll(/<a\\s[^>]*href=["']([^"'#]+)["']/gi)]
+    const hrefs = [...html.matchAll(/<a\s[^>]*href=["']([^"'#]+)["']/gi)]
       .map(m => m[1])
-      .filter(href => href.startsWith('/') && !/^\\/(?:mailto|tel):/i.test(href))
-      .filter(href => !/^\\/\\//.test(href));
+      .filter(href => href.startsWith('/') && !href.startsWith('//'));
 
     const unique = [...new Set(hrefs)];
     for (const href of unique.slice(0, 60)) {
