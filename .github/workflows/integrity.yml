@@ -31,6 +31,8 @@ jobs:
         run: python scripts/benchmark_site.py
       - name: Auditer les parcours de conversion
         run: python scripts/audit_conversion.py
+      - name: Auditer les preuves quantitatives
+        run: python scripts/audit_evidence.py
       - name: Publier l’audit assets
         uses: actions/upload-artifact@v4
         with:
@@ -75,4 +77,10 @@ jobs:
         with:
           name: conversion-audit-2026
           path: reports/conversion-audit-2026.md
+          if-no-files-found: error
+      - name: Publier l’audit preuves
+        uses: actions/upload-artifact@v4
+        with:
+          name: evidence-audit-2026
+          path: reports/evidence-audit-2026.md
           if-no-files-found: error
