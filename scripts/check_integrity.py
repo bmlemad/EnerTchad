@@ -171,7 +171,7 @@ EXPECTED_EN_ALIASES = [
     '/pole-tchaditude-en', '/pole-enerconseils-en',
 ]
 for route in EXPECTED_EN_ALIASES:
-    if route not in redir:
+    if route.lstrip('/') not in redir:
         errs.append(f'alias anglais attendu sans redirection: {route}')
 
 # Vérification finale après toutes les règles QA.
