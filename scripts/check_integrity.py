@@ -146,9 +146,10 @@ for p in pages:
 # Contrôle des routes institutionnelles et des principaux pôles.
 EXPECTED_ROUTES = [
     'index.html', 'index-en.html', 'ar.html',
-    'pole-amont.html', 'pole-aval.html', 'pole-intermediaire.html',
-    'pole-enerchimie.html', 'pole-enerconseils.html', 'pole-greentech.html',
-    'pole-tchaditech.html', 'pole-tchaditude.html',
+    'ar-poles.html',
+    'amont/index.html', 'intermediaire/index.html', 'aval/index.html',
+    'petrochimie/index.html', 'greentech/index.html',
+    'tchaditech/index.html', 'tchaditude/index.html', 'enerconseils/index.html',
 ]
 for route in EXPECTED_ROUTES:
     if not exists(route):
