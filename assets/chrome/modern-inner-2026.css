@@ -133,3 +133,12 @@ a.pubc:focus-visible{outline:2px solid var(--gold-l,#E8C36A);outline-offset:3px}
 html.et-plight #aurail a:hover,html.et-plight #aurail a.on{background:color-mix(in srgb,var(--c) 16%,#FBF8F2);color:#10161F;border-color:color-mix(in srgb,var(--c) 55%,#B9AE97)}
 @media(prefers-reduced-transparency:reduce){#aurail a{background:#0F1C2D;-webkit-backdrop-filter:none;backdrop-filter:none}html.et-plight #aurail a{background:#FAF7F1}}
 @media(forced-colors:active){#aurail a{background:Canvas;color:CanvasText;border:1px solid CanvasText;-webkit-backdrop-filter:none;backdrop-filter:none;box-shadow:none}}
+
+/* ===== Global corporate search entry ===== */
+.nx-search{display:inline-flex;align-items:center;gap:7px;color:var(--muted-l,#A8B6C9);text-decoration:none;padding-inline:2px}
+.nx-search::before{content:"";width:10px;height:10px;border:1.5px solid currentColor;border-radius:50%;display:inline-block;box-shadow:3px 3px 0 -2px currentColor;transform:translateY(-1px) rotate(-45deg)}
+.nx-search:hover{color:var(--gold-l,#E8C36A)}
+html.et-plight .nx-search,html.et-jlight .nx-search{color:#39424F}
+html.et-plight .nx-search:hover,html.et-jlight .nx-search:hover{color:#74570B}
+@media(max-width:760px){.nx-search{display:none}}
+@media(forced-colors:active){.nx-search{color:CanvasText}}
