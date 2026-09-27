@@ -67,6 +67,22 @@ for p in pages:
             if t and not exists(t):
                 errs.append(f'{p}: srcset cassé {u}')
 
+# Le sitemap ne doit jamais publier une URL qui fait elle-même l’objet d’une redirection permanente.
+if sm and os.path.exists('vercel.json'):
+    try:
+        vj = json.load(open('vercel.json', encoding='utf-8'))
+        redirected = {x.get('source','').rstrip('/') for x in vj.get('redirects', []) if x.get('permanent')}
+        for u in re.findall(r'<loc>(.*?)</loc>', sm, re.S | re.I):
+            path = re.sub(r'^https?://[^/]+', '', u).rstrip('/')
+            if path in redirected:
+                errs.append(f'sitemap.xml: URL canonique redirigée {path}')
+        for u in re.findall(r'<xhtml:link[^>]+href="([^"]+)"', sm, re.I):
+            path = re.sub(r'^https?://[^/]+', '', u).rstrip('/')
+            if path in redirected:
+                errs.append(f'sitemap.xml: hreflang redirigé {path}')
+    except Exception as e:
+        errs.append(f'vercel.json: impossible de vérifier les redirections ({e})')
+
 # Contrôles structurels supplémentaires : erreurs HTML introduites par des injections/transformations.
 for p in pages:
     h = open(p, encoding='utf-8').read()
