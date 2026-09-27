@@ -37,6 +37,12 @@ jobs:
         run: python scripts/audit_evidence.py
       - name: Auditer le niveau corporate et reporting
         run: python scripts/audit_industry_readiness.py
+      - name: Publier le niveau corporate et reporting
+        uses: actions/upload-artifact@v4
+        with:
+          name: industry-readiness-2026
+          path: reports/industry-readiness-2026.md
+          if-no-files-found: error
       - name: Publier l’audit assets
         uses: actions/upload-artifact@v4
         with:
