@@ -791,6 +791,86 @@
       "source": "/explorateur-chaine-en",
       "destination": "/nos-activites-en",
       "permanent": true
+    },
+    {
+      "source": "/pole-amont-en",
+      "destination": "/amont/",
+      "permanent": true
+    },
+    {
+      "source": "/pole-amont-en.html",
+      "destination": "/amont/",
+      "permanent": true
+    },
+    {
+      "source": "/pole-intermediaire-en",
+      "destination": "/intermediaire/",
+      "permanent": true
+    },
+    {
+      "source": "/pole-intermediaire-en.html",
+      "destination": "/intermediaire/",
+      "permanent": true
+    },
+    {
+      "source": "/pole-aval-en",
+      "destination": "/aval/",
+      "permanent": true
+    },
+    {
+      "source": "/pole-aval-en.html",
+      "destination": "/aval/",
+      "permanent": true
+    },
+    {
+      "source": "/pole-enerchimie-en",
+      "destination": "/petrochimie/",
+      "permanent": true
+    },
+    {
+      "source": "/pole-enerchimie-en.html",
+      "destination": "/petrochimie/",
+      "permanent": true
+    },
+    {
+      "source": "/pole-greentech-en",
+      "destination": "/greentech/",
+      "permanent": true
+    },
+    {
+      "source": "/pole-greentech-en.html",
+      "destination": "/greentech/",
+      "permanent": true
+    },
+    {
+      "source": "/pole-tchaditech-en",
+      "destination": "/tchaditech/",
+      "permanent": true
+    },
+    {
+      "source": "/pole-tchaditech-en.html",
+      "destination": "/tchaditech/",
+      "permanent": true
+    },
+    {
+      "source": "/pole-tchaditude-en",
+      "destination": "/tchaditude/",
+      "permanent": true
+    },
+    {
+      "source": "/pole-tchaditude-en.html",
+      "destination": "/tchaditude/",
+      "permanent": true
+    },
+    {
+      "source": "/pole-enerconseils-en",
+      "destination": "/enerconseils/",
+      "permanent": true
+    },
+    {
+      "source": "/pole-enerconseils-en.html",
+      "destination": "/enerconseils/",
+      "permanent": true
     }
   ],
   "headers": [
