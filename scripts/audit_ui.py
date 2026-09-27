@@ -20,10 +20,10 @@ for p in pages:
     rel=p.relative_to(ROOT).as_posix()
     def flag(kind,detail): issues.append((rel,kind,detail)); stats[kind]+=1
     if not re.search(r'<html\b[^>]*\blang\s*=',s,re.I): flag('LANG','missing html lang')
-    head_match = re.search(r'<head\\b.*?</head>', s, re.I | re.S)
+    head_match = re.search(r'<head\b.*?</head>', s, re.I | re.S)
     head = head_match.group(0) if head_match else ''
-    head_clean = re.sub(r'<script\\b.*?</script>|<style\\b.*?</style>', '', head, flags=re.I | re.S)
-    title_count = len(re.findall(r'<title\\b', head_clean, re.I))
+    head_clean = re.sub(r'<script\b.*?</script>|<style\b.*?</style>', '', head, flags=re.I | re.S)
+    title_count = len(re.findall(r'<title\b', head_clean, re.I))
     if title_count != 1: flag('TITLE', f"title count={title_count}")
     if not re.search(r'<meta\b[^>]*name\s*=\s*["\']description["\']',s,re.I): flag('DESCRIPTION','missing meta description')
     if not re.search(r'<meta\b[^>]*name\s*=\s*["\']viewport["\']',s,re.I): flag('VIEWPORT','missing viewport')
