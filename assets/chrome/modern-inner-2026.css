@@ -217,3 +217,12 @@ body:not(.hm):not(.et-modern-exclude) nav[aria-label*="breadcrumb" i]{
   body:not(.hm):not(.et-modern-exclude) main table{background:Canvas!important;border-color:CanvasText!important}
   body:not(.hm):not(.et-modern-exclude) main th,body:not(.hm):not(.et-modern-exclude) main td{border-color:CanvasText!important}
 }
+
+/* Mobile render-budget: hub pages contain long editorial sections.
+   Let the browser skip below-the-fold layout/paint until needed. */
+@media (max-width:760px){
+  body:not(.hm):not(.et-modern-exclude) main>section:nth-of-type(n+3){
+    content-visibility:auto;
+    contain-intrinsic-size:0 760px;
+  }
+}
