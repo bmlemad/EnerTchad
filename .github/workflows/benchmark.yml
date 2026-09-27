@@ -1,0 +1,62 @@
+name: Benchmark performance réel
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: {}
+  schedule:
+    - cron: '41 3 * * 1'
+
+permissions:
+  contents: read
+
+jobs:
+  benchmark:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Générer le benchmark statique
+        run: |
+          python scripts/benchmark_site.py
+          cat reports/benchmark-site-2026.md
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Installer Lighthouse
+        run: npm install --no-save --no-package-lock lighthouse@13
+      - name: Attendre la production
+        run: |
+          python - <<'PY'
+          import time, urllib.request
+          url = "https://enertchad-delta.vercel.app/"
+          for _ in range(30):
+              try:
+                  with urllib.request.urlopen(url, timeout=10) as r:
+                      if r.status < 500:
+                          print("Production disponible:", r.status)
+                          break
+              except Exception as e:
+                  print("Attente:", e)
+              time.sleep(10)
+          else:
+              raise SystemExit("Production indisponible")
+          PY
+      - name: Mesurer les parcours critiques
+        run: |
+          mkdir -p reports/lighthouse
+          for path in "/" "/index-en" "/ar" "/amont/" "/intermediaire/" "/aval/" "/petrochimie/" "/investisseurs/" "/contact/" "/faq/"; do
+            name=$(printf '%s' "$path" | tr '/-' '__' | sed 's/^_*$//')
+            [ -n "$name" ] || name="home"
+            npx lighthouse "https://enertchad-delta.vercel.app$path" --quiet --chrome-flags="--headless --no-sandbox" --only-categories=performance,accessibility,best-practices,seo --output=json --output-path="reports/lighthouse/$name.json"
+          done
+      - name: Publier les rapports
+        uses: actions/upload-artifact@v4
+        with:
+          name: benchmark-performance-2026
+          path: |
+            reports/benchmark-site-2026.md
+            reports/lighthouse/*.json
+          if-no-files-found: error
