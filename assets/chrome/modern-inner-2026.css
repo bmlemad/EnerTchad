@@ -221,7 +221,9 @@ body:not(.hm):not(.et-modern-exclude) nav[aria-label*="breadcrumb" i]{
 /* Mobile render-budget: hub pages contain long editorial sections.
    Let the browser skip below-the-fold layout/paint until needed. */
 @media (max-width:760px){
-  body:not(.hm):not(.et-modern-exclude) main>section:nth-of-type(n+3){
+  /* Mobile render budget : garder le hero + la première section immédiats, différer le reste. */
+  body:not(.hm):not(.et-modern-exclude) main>section:nth-of-type(n+2),
+  body:not(.hm):not(.et-modern-exclude) main>aside{
     content-visibility:auto;
     contain-intrinsic-size:0 760px;
   }
