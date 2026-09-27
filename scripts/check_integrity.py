@@ -39,6 +39,13 @@ for p in pages:
         errs.append(f'{p}: meta description absente ou vide')
     if not re.search(r'<link\b[^>]*rel=["\'][^"\']*canonical[^"\']*["\'][^>]*href=["\'][^"\']+["\']', h, re.I):
         errs.append(f'{p}: canonical absent')
+    if p in ('index.html', 'index-en.html', 'ar.html'):
+        if re.search(r'<style\b', h, re.I):
+            errs.append(f'{p}: style inline restant sur une page d\'entrée')
+        if not re.search(r'<link\b[^>]*href=["\'][^"\']*home-inline-', h, re.I):
+            errs.append(f'{p}: feuille CSS homepage externalisée absente')
+        if not re.search(r'<h1\b', h, re.I):
+            errs.append(f'{p}: H1 absent')
 
 # Vérification finale après toutes les règles QA.
 if errs:
