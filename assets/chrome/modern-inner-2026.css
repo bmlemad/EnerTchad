@@ -28,3 +28,52 @@ body:not(.hm):not(.et-modern-exclude) img{border-radius:12px}
 a.prj-pole{text-decoration:none;cursor:pointer;transition:opacity .2s,filter .2s}a.prj-pole:hover{opacity:.82;filter:brightness(1.12)}
 p,li,figcaption,blockquote,.hx-sub,.sub,.lede,.svc-head p,dd{text-wrap:pretty}h1,h2,h3,h4,.kick,.eyebrow,.mu-head span{text-wrap:balance}
 html.et-navd #preloader{display:none!important}
+
+/* Liquid Glass system v3 — pages internes */
+:root{
+  --et-inner-glass-1:rgba(255,255,255,.045);
+  --et-inner-glass-2:rgba(17,30,48,.58);
+  --et-inner-glass-line:rgba(120,170,220,.18);
+}
+body:not(.hm):not(.et-modern-exclude) .card,
+body:not(.hm):not(.et-modern-exclude) .val,
+body:not(.hm):not(.et-modern-exclude) .kpi,
+body:not(.hm):not(.et-modern-exclude) .p8,
+body:not(.hm):not(.et-modern-exclude) .orgc,
+body:not(.hm):not(.et-modern-exclude) .pgr a{
+  background:var(--et-inner-glass-2);
+  border:1px solid var(--et-inner-glass-line);
+  -webkit-backdrop-filter:saturate(135%) blur(14px);
+  backdrop-filter:saturate(135%) blur(14px);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 16px 38px -30px rgba(0,0,0,.72);
+}
+@media(max-width:700px){
+  body:not(.hm):not(.et-modern-exclude) .card,
+  body:not(.hm):not(.et-modern-exclude) .val,
+  body:not(.hm):not(.et-modern-exclude) .kpi,
+  body:not(.hm):not(.et-modern-exclude) .p8,
+  body:not(.hm):not(.et-modern-exclude) .orgc,
+  body:not(.hm):not(.et-modern-exclude) .pgr a{
+    -webkit-backdrop-filter:saturate(125%) blur(10px);
+    backdrop-filter:saturate(125%) blur(10px);
+  }
+}
+@media(prefers-reduced-transparency:reduce){
+  body:not(.hm):not(.et-modern-exclude) .card,
+  body:not(.hm):not(.et-modern-exclude) .val,
+  body:not(.hm):not(.et-modern-exclude) .kpi,
+  body:not(.hm):not(.et-modern-exclude) .p8,
+  body:not(.hm):not(.et-modern-exclude) .orgc,
+  body:not(.hm):not(.et-modern-exclude) .pgr a{
+    background:#0F1C2D!important;
+    -webkit-backdrop-filter:none!important;
+    backdrop-filter:none!important;
+    box-shadow:0 10px 28px rgba(0,0,0,.22);
+  }
+  html.et-plight body:not(.hm):not(.et-modern-exclude) .card,
+  html.et-plight body:not(.hm):not(.et-modern-exclude) .val,
+  html.et-plight body:not(.hm):not(.et-modern-exclude) .kpi,
+  html.et-plight body:not(.hm):not(.et-modern-exclude) .p8,
+  html.et-plight body:not(.hm):not(.et-modern-exclude) .orgc,
+  html.et-plight body:not(.hm):not(.et-modern-exclude) .pgr a{background:#FAF7F1!important}
+}
