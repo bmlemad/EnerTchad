@@ -532,12 +532,10 @@ html.et-plight .syn562 .syn-go{border-color:#8A6210;color:#8A6210}
 <div id="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
 
 
-
 <!-- BARRE DE PROGRESSION DE LECTURE -->
 <div id="readbar" aria-hidden="true"></div>
 
 <!-- SOMMAIRE LATÉRAL À POINTS -->
-
 
 
 <script>
@@ -630,7 +628,7 @@ html.et-plight .syn562 .syn-go{border-color:#8A6210;color:#8A6210}
         <div class="hchain" aria-label="La chaîne pétrolière intégrée"><span class="hc-k">La chaîne intégrée</span><a href="/amont/" style="--pc:#E8C36A"><i></i>Exploration &amp; Production</a><b>→</b><a href="/intermediaire/" style="--pc:#5AA7F0"><i></i>Transport &amp; stockage</a><b>→</b><a href="/aval/" style="--pc:#F09A4A"><i></i>Raffinage &amp; distribution</a><b>→</b><em>la pompe</em></div><style id="hchain-css">.hchain{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin:2px 0 16px}.hchain .hc-k{font-family:var(--fm);font-size:0.6875rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-l,#F0CE82);margin-right:4px}.hchain a{display:inline-flex;align-items:center;gap:7px;padding:7px 14px;border-radius:999px;text-decoration:none;color:#fff;font-weight:600;font-size:.86rem;background:linear-gradient(180deg,rgba(255,255,255,.085),rgba(255,255,255,.028));-webkit-backdrop-filter:blur(8px) saturate(115%);backdrop-filter:blur(8px) saturate(115%);border:1px solid rgba(255,255,255,.13);box-shadow:inset 0 1px 0 rgba(255,255,255,.08);transition:transform .25s var(--ease,ease),border-color .25s,background .25s}.hchain a i{width:8px;height:8px;border-radius:50%;background:var(--pc);box-shadow:0 0 10px var(--pc);flex:none}.hchain a:hover{transform:translateY(-2px);border-color:color-mix(in srgb,var(--pc) 55%,rgba(255,255,255,.13));background:linear-gradient(180deg,rgba(255,255,255,.13),rgba(255,255,255,.05))}.hchain b{color:rgba(245,247,250,.55);font-weight:400}.hchain em{font-style:italic;color:rgba(245,247,250,.78);font-size:.84rem}@media(max-width:640px){.hchain{gap:6px}.hchain a{padding:6px 11px;font-size:.78rem}.hchain .hc-k{width:100%;margin:0 0 2px}}@media(prefers-reduced-transparency:reduce){.hchain a{-webkit-backdrop-filter:none;backdrop-filter:none;background:rgba(11,18,32,.85)}}</style><div style="display:flex;gap:12px;flex-wrap:wrap"><a href="#poles" class="btn btn-p">Découvrir EnerTchad ↓</a><a href="/investisseurs" class="btn btn-g">Investir →</a><a href="/aval/boutique" class="btn btn-shop" aria-label="Boutique & stations — prix homologués ARSAT"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8h12l-1.2 12.2a1.8 1.8 0 0 1-1.8 1.6H9a1.8 1.8 0 0 1-1.8-1.6L6 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>Boutique &amp; stations</a></div>
         <div class="hx-strip"><span class="hx-stat"><b>3 pôles de cœur</b><i>Une société intégrée</i></span><span class="hx-stat"><b>100&nbsp;%</b><i>Capital &amp; talents tchadiens</i></span><span class="hx-stat"><b>10 Md</b><i>FCFA · capital cible</i></span><span class="hx-stat hx-stat-amb"><b>12 stations</b><i>Cible · ultra-premium &amp; mobiles</i></span></div>
       </div>
-      
+
     </div>
   </div>
 </header>
@@ -1018,7 +1016,6 @@ if(secMap.length){
 <script>(function(){var bar=document.getElementById('nezBar');if(!bar)return;var links=[].slice.call(bar.querySelectorAll('a[href^="#"]'));var map={};links.forEach(function(a){var id=a.getAttribute('href').slice(1);var el=document.getElementById(id);if(el)map[id]=a;});var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){links.forEach(function(a){a.classList.remove('nz-on');a.removeAttribute('aria-current');});var a=map[e.target.id];if(a){a.classList.add('nz-on');a.setAttribute('aria-current','true');}}});},{rootMargin:'-30% 0px -55% 0px'});Object.keys(map).forEach(function(id){io.observe(document.getElementById(id));});})();</script>
 <script>(function(){var red=matchMedia('(prefers-reduced-motion: reduce)').matches;function settle(id){var el=document.getElementById(id);if(!el)return;var H=document.documentElement,pv=H.style.scrollBehavior;H.style.scrollBehavior='auto';var tries=0;var last=null;function step(){var t=el.getBoundingClientRect().top;if(last!==null&&Math.abs(t-last)<2){H.style.scrollBehavior=pv;return;}last=t;if(tries<14){tries++;el.scrollIntoView({block:'start'});setTimeout(step,tries<6?90:200);}else{H.style.scrollBehavior=pv;}}setTimeout(step,60);}addEventListener('hashchange',function(){var id=location.hash.slice(1);if(id)settle(id);});document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href^="#"]');if(!a)return;var id=a.getAttribute('href').slice(1);if(id)settle(id);},true);if(location.hash.length>1){setTimeout(function(){settle(location.hash.slice(1));},300);}})();</script>
 <script>(function(){function openIt(id){var el=document.getElementById(id);if(!el)return;var d=el.querySelector('details.atl-d');if(d)d.open=true;}document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href^="#atl-"]');if(a)openIt(a.getAttribute('href').slice(1));},true);if(/^#atl-/.test(location.hash))openIt(location.hash.slice(1));addEventListener('hashchange',function(){if(/^#atl-/.test(location.hash))openIt(location.hash.slice(1));});})();</script>
-
 
 
 <script>
