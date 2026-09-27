@@ -16,11 +16,19 @@ jobs:
         run: python scripts/audit_ui.py
       - name: Auditer CSS / JS
         run: python scripts/audit_assets.py
+      - name: Auditer les garde-fous de performance
+        run: python scripts/audit_performance.py
       - name: Publier l’audit assets
         uses: actions/upload-artifact@v4
         with:
           name: assets-audit-2026
           path: reports/assets-audit-2026.md
+          if-no-files-found: error
+      - name: Publier l’audit performance
+        uses: actions/upload-artifact@v4
+        with:
+          name: performance-audit-2026
+          path: reports/performance-audit-2026.md
           if-no-files-found: error
       - name: Publier l’audit UI
         uses: actions/upload-artifact@v4
