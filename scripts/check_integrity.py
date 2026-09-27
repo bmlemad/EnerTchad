@@ -56,20 +56,20 @@ for p in pages:
             errs.append(f'{p}: H1 absent')
 
 # Cohérence des cibles hreflang : les URLs déclarées doivent correspondre à
-# une route/fichier réellement présent, sans exiger qu'une variante linguistique
-# existe pour chaque page.
+# une route/fichier réellement présent. Les variantes manquantes restent
+# autorisées, mais une cible explicitement déclarée ne peut pas être morte.
 for p in pages:
     h = open(p, encoding='utf-8').read()
-    for m in re.finditer(r"""<link\\b[^>]*rel=['"]alternate['"][^>]*hreflang=['"]([^'"]+)['"][^>]*href=['"]([^'"]+)['"]""", h, re.I):
+    for m in re.finditer(r"""<link\b[^>]*rel=['"]alternate['"][^>]*hreflang=['"]([^'"]+)['"][^>]*href=['"]([^'"]+)['"]""", h, re.I):
         href = m.group(2)
         if not href.startswith(('http://', 'https://')): continue
         path = re.sub(r'^https?://[^/]+', '', href) or '/'
-        if '#' in path: path = path.split('#', 1)[0]
-        if '?' in path: path = path.split('?', 1)[0]
-        route = path.lstrip('/') or 'index'
+        path = path.split('#', 1)[0].split('?', 1)[0]
+        route = path.lstrip('/') or 'index.html'
         if route == 'index': route = 'index.html'
         if not exists(route):
             errs.append(f'{p}: cible hreflang introuvable {href}')
+
 
 # Cohérence du domaine public : signaler un éventuel conflit CNAME/SEO sans imposer
 # automatiquement une migration de domaine.
