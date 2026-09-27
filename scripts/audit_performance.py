@@ -12,15 +12,29 @@ blocking_script_usage = {}
 for p in pages:
     s = p.read_text(encoding="utf-8", errors="ignore")
     rel = p.relative_to(ROOT).as_posix()
-    blocking = [m.group(0) for m in re.finditer(r"<script\b[^>]*\bsrc\s*=\s*[^>]+>", s, re.I) if not re.search(r"\b(?:defer|async)\b", m.group(0), re.I)]
+    blocking = []
+    late_sync = []
+    for m in re.finditer(r"<script\b[^>]*\bsrc\s*=\s*[^>]+>", s, re.I):
+        tag = m.group(0)
+        if re.search(r"\b(?:defer|async)\b", tag, re.I):
+            continue
+        src = re.search(r"\bsrc\s*=\s*["']([^"']+)", tag, re.I)
+        if not src:
+            continue
+        src_url = src.group(1)
+        if m.start() > s.lower().rfind("</main>"):
+            late_sync.append(src_url)
+        else:
+            blocking.append(src_url)
     if blocking:
         findings.append((rel, "scripts externes bloquants", len(blocking)))
-        for tag in blocking:
-            src = re.search(r"\bsrc\s*=\s*[\"']([^\"']+)", tag, re.I)
-            if src:
-                src_url = src.group(1)
-                findings.append((rel, f"script synchrone: {src_url}", 1))
-                blocking_script_usage[src_url] = blocking_script_usage.get(src_url, 0) + 1
+        for src_url in blocking:
+            findings.append((rel, f"script synchrone: {src_url}", 1))
+            blocking_script_usage[src_url] = blocking_script_usage.get(src_url, 0) + 1
+    if late_sync:
+        for src_url in late_sync:
+            key = f"[fin de body] {src_url}"
+            blocking_script_usage[key] = blocking_script_usage.get(key, 0) + 1
     # Seules les feuilles réellement bloquantes comptent ici : les préloads
     # et les fallbacks <noscript> ne bloquent pas le rendu quand JS est actif.
     # Ne compter que les feuilles qui bloquent réellement le rendu. Les
@@ -36,7 +50,7 @@ for p in pages:
 common_blocking = sorted(blocking_script_usage.items(), key=lambda item: (-item[1], item[0]))
 lines = ["# Audit performance statique — 2026", "", f"- Pages HTML analysées : **{len(pages)}**", f"- Anomalies détectées : **{len(findings)}**", "", "Cet audit signale des candidats à optimisation ; il ne remplace pas une mesure Lighthouse/WebPageTest.", ""]
 if common_blocking:
-    lines += ["## Scripts synchrones récurrents", "", "Candidats à une stratégie différée centralisée ; aucune modification automatique n'est appliquée.", ""]
+    lines += ["## Scripts synchrones récurrents", "", "Les scripts réellement bloquants sont prioritaires ; les scripts placés en fin de body sont suivis séparément.", ""]
     for src, count in common_blocking[:30]:
         lines.append(f"- `{src}` — {count} page(s)")
 if findings:
