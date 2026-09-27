@@ -166,3 +166,83 @@ test('SEO infrastructure — robots, sitemap et hreflang', async ({ request }) =
     expect(hreflangs.map(m => m[1]), path).toEqual(expect.arrayContaining(['fr', 'en', 'ar', 'x-default']));
   }
 });
+
+
+test('hubs — parcours métiers et institutionnels', async ({ browser }) => {
+  const hubs = [
+    ['/amont/', 'fr'], ['/intermediaire/', 'fr'], ['/aval/', 'fr'],
+    ['/petrochimie/', 'fr'], ['/greentech/', 'fr'], ['/tchaditech/', 'fr'],
+    ['/tchaditude/', 'fr'], ['/enerconseils/', 'fr'],
+    ['/societe', 'fr'], ['/investisseurs', 'fr'], ['/clients', 'fr'],
+    ['/achats', 'fr'], ['/carrieres', 'fr'], ['/projets', 'fr'], ['/publications', 'fr'],
+    ['/amont/activites-en', 'en'], ['/intermediaire/services-en', 'en'],
+    ['/aval/distribution-en', 'en'], ['/petrochimie/produits-en', 'en'],
+    ['/tchaditech/outils-en', 'en'], ['/enerconseils/atlas-en', 'en']
+  ];
+
+  for (const [path, lang] of hubs) {
+    const page = await browser.newPage({ viewport: { width: 390, height: 844 }, deviceScaleFactor: 1 });
+    const errors = [];
+    page.on('console', msg => { if (msg.type() === 'error') errors.push('console: ' + msg.text()); });
+    page.on('pageerror', err => errors.push('pageerror: ' + err.message));
+
+    const response = await page.goto(new URL(path, url).href, {
+      waitUntil: 'networkidle',
+      timeout: 45000
+    });
+    expect(response, path).not.toBeNull();
+    expect(response.status(), path).toBeLessThan(400);
+    await expect(page.locator('html').first(), path).toHaveAttribute('lang', lang);
+    await expect(page.locator('h1').first(), path).toBeVisible();
+    await expect(page.locator('nav').first(), path).toBeVisible();
+    await expect(page.locator('a.et-skip').first(), path).toHaveAttribute('href', '#main-content');
+
+    const state = await page.evaluate(() => {
+      const vw = document.documentElement.clientWidth;
+      const links = [...document.querySelectorAll('main a[href]')]
+        .map(a => ({ href: a.href, text: (a.innerText || a.getAttribute('aria-label') || '').trim() }))
+        .filter(x => x.href.startsWith(location.origin + '/'))
+        .filter(x => !x.href.includes('#'));
+      const overflow = document.documentElement.scrollWidth > vw + 1;
+      const visibleNav = !!document.querySelector('nav') &&
+        getComputedStyle(document.querySelector('nav')).display !== 'none';
+      return {
+        overflow,
+        visibleNav,
+        internalLinks: [...new Set(links.map(x => x.href))].slice(0, 80),
+        linkCount: links.length
+      };
+    });
+
+    expect(state.overflow, path).toBeFalsy();
+    expect(state.visibleNav, path).toBeTruthy();
+    expect(state.linkCount, path).toBeGreaterThan(0);
+    expect(errors, path).toEqual([]);
+    await page.close();
+  }
+});
+
+test('hubs — liens internes accessibles et sans 4xx/5xx', async ({ request }) => {
+  const hubs = [
+    '/amont/', '/intermediaire/', '/aval/', '/petrochimie/',
+    '/greentech/', '/tchaditech/', '/tchaditude/', '/enerconseils/',
+    '/societe', '/investisseurs', '/clients', '/achats', '/carrieres',
+    '/projets', '/publications'
+  ];
+
+  for (const path of hubs) {
+    const response = await request.get(new URL(path, url).href, { maxRedirects: 5 });
+    expect(response.status(), path).toBe(200);
+    const html = await response.text();
+    const hrefs = [...html.matchAll(/<a\\s[^>]*href=["']([^"'#]+)["']/gi)]
+      .map(m => m[1])
+      .filter(href => href.startsWith('/') && !/^\\/(?:mailto|tel):/i.test(href))
+      .filter(href => !/^\\/\\//.test(href));
+
+    const unique = [...new Set(hrefs)];
+    for (const href of unique.slice(0, 60)) {
+      const target = await request.get(new URL(href, url).href, { maxRedirects: 5 });
+      expect(target.status(), path + ' -> ' + href).toBeLessThan(400);
+    }
+  }
+});
