@@ -60,7 +60,7 @@ for p in pages:
 # existe pour chaque page.
 for p in pages:
     h = open(p, encoding='utf-8').read()
-    for m in re.finditer(r"<link\\b[^>]*rel=['\\"]alternate['\\"][^>]*hreflang=['\\"]([^'\\"]+)['\\"][^>]*href=['\\"]([^'\\"]+)['\\"]", h, re.I):
+    for m in re.finditer(r"""<link\\b[^>]*rel=['"]alternate['"][^>]*hreflang=['"]([^'"]+)['"][^>]*href=['"]([^'"]+)['"]""", h, re.I):
         href = m.group(2)
         if not href.startswith(('http://', 'https://')): continue
         path = re.sub(r'^https?://[^/]+', '', href) or '/'
