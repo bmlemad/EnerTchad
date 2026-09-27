@@ -32,6 +32,8 @@ async function auditViewport(page, url, label) {
     const selectors = 'img,video,iframe,button,a,input,select,textarea,[role="button"]';
     const clipped = [];
     document.querySelectorAll(selectors).forEach((el) => {
+      const s0 = getComputedStyle(el);
+      if (s0.display === 'none' || s0.visibility === 'hidden' || el.getAttribute('aria-hidden') === 'true') return;
       const r = el.getBoundingClientRect();
       if (!r.width || !r.height) return;
       const isSkip = el.matches('a[href^="#main"], a[href^="#main-content"], a[href^="#contenu"], a[href^="#content"]')
