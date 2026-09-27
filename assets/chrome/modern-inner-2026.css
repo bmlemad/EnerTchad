@@ -91,3 +91,19 @@ body:not(.hm):not(.et-modern-exclude) .pgr a{
 @media(max-width:460px){.pub-radar{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){.pub-radar a{transition:none}.pub-radar a:hover{transform:none}}
 @media(prefers-reduced-transparency:reduce){.pub-radar a{background:#0F1C2D!important;-webkit-backdrop-filter:none;backdrop-filter:none}html.et-plight .pub-radar a{background:#FAF7F1!important}}
+
+/* ===== Publications / reporting cards ===== */
+.pubg{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px;margin:18px 0 34px}
+a.pubc{display:block;border:1px solid var(--hair);border-radius:14px;padding:20px 18px;background:rgba(255,255,255,.02);text-decoration:none;color:inherit;transition:border-color .2s ease,transform .2s ease,background .2s ease}
+a.pubc:hover{border-color:var(--gold-l,#E8C36A);transform:translateY(-2px);background:rgba(255,255,255,.035)}
+a.pubc:focus-visible{outline:2px solid var(--gold-l,#E8C36A);outline-offset:3px}
+.pubt{font-family:var(--fm,ui-monospace,monospace);font-size:.6875rem;letter-spacing:.14em;color:var(--gold-l,#E8C36A);text-transform:uppercase}
+.pubc h3{font-family:var(--fd,'Space Grotesk','Inter',sans-serif);font-size:var(--ts-9,1.05rem);margin:6px 0 7px}
+.pubc p{margin:0;color:var(--muted,#9FB0C3);font-size:.9rem;line-height:1.6}
+.pub-h2{font-family:var(--fd,'Space Grotesk','Inter',sans-serif);font-weight:800;font-size:var(--ts-7,clamp(1.08rem,2.1vw,1.5rem));margin:34px 0 4px}
+.pub-sub{color:var(--muted,#9FB0C3);margin:0 0 6px;max-width:760px}
+.pub-note{border:1px solid var(--hair);border-left:3px solid var(--gold-l,#E8C36A);border-radius:10px;padding:14px 16px;color:var(--muted,#9FB0C3);font-size:.9rem;line-height:1.6;margin:30px 0 0}
+.pub-note strong{color:#fff}
+@media(max-width:700px){.pubg{grid-template-columns:1fr}a.pubc{padding:18px 16px}}
+@media(prefers-reduced-motion:reduce){a.pubc{transition:border-color .2s ease,background .2s ease}a.pubc:hover{transform:none}}
+@media(prefers-reduced-transparency:reduce){a.pubc{background:#0F1C2D!important}html.et-plight a.pubc{background:#FAF7F1!important}.pub-note{background:#0F1C2D}html.et-plight .pub-note{background:#FAF7F1}}
