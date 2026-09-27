@@ -16,7 +16,12 @@ if os.path.exists('vercel.json'):
     for r in vj.get('redirects', []) + vj.get('rewrites', []):
         src = r.get('source', '')
         if src and not re.search(r'[:*(]', src): redir.add(src.lstrip('/'))
-def exists(t): return t in allf or (t.rstrip('/') + '/index.html') in allf or (t + '.html') in allf or t in redir or (t + '.html') in redir
+def exists(t):
+    # Supports clean URLs, explicit .html files, directory indexes and Vercel rewrites.
+    candidates = {t, t.rstrip('/') + '/index.html', t + '.html'}
+    if t.endswith('/index'): candidates.add(t[:-6] + '/index.html')
+    if t.endswith('/'): candidates.add(t + 'index.html')
+    return any(x in allf for x in candidates) or t in redir or (t + '.html') in redir
 errs = []
 sm = open('sitemap.xml', encoding='utf-8').read() if os.path.exists('sitemap.xml') else ''
 for p in pages:
