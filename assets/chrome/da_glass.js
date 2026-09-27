@@ -2,7 +2,8 @@
    Canvas fixe derriere la page : rubans or et cyan, particules en fusion additive.
    Absent en mouvement reduit ; pause quand l onglet est cache ; allege sous 640 px. */
 (function(){
-if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+/* Mobile : la couche atmosphérique est volontairement désactivée pour préserver le budget CPU/GPU. */
+if(matchMedia('(prefers-reduced-motion: reduce)').matches || matchMedia('(max-width: 760px)').matches)return;
 if(document.getElementById('uni540')||document.getElementById('uni542')||document.getElementById('uni544'))return;
 var c=document.createElement('canvas');c.id='uni544';c.setAttribute('aria-hidden','true');
 c.style.cssText='position:fixed;inset:0;width:100vw;height:100vh;z-index:-2;pointer-events:none';
