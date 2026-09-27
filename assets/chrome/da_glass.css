@@ -77,3 +77,32 @@ html.et-plight .nav .brand-tx small,html.et-jlight .nav .brand-tx small{color:#3
     box-shadow:0 12px 30px rgba(24,45,67,.10)!important;
   }
 }
+
+/* Liquid Glass v3 — compatibilité et accessibilité système */
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+  .nav.nx:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5):not(#e6),
+  .nav:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5):not(#e6),
+  .hpcard,.hxi-card,.mfo-lever,.hncard,.sc-card,.hx-stat,.hubdrawer,.flip-face,.hpcard-kpis,
+  .hx-slide .rt,.hx-aside,[class*="router"],.nx-mega,.mega,.nx-panel{
+    background:#0D1A2A!important;
+    -webkit-backdrop-filter:none!important;
+    backdrop-filter:none!important;
+  }
+  html.et-plight .nav,html.et-jlight .nav,
+  html.et-plight .hpcard,html.et-jlight .hpcard,
+  html.et-plight .hxi-card,html.et-jlight .hxi-card{
+    background:#FAF7F1!important;
+  }
+}
+@media(forced-colors:active){
+  .nav,.nav.nx,.hpcard,.hxi-card,.mfo-lever,.hncard,.sc-card,.hx-stat,.hubdrawer,
+  .flip-face,.hpcard-kpis,.nx-mega,.mega,.nx-panel,.btn{
+    background:Canvas!important;
+    color:CanvasText!important;
+    -webkit-backdrop-filter:none!important;
+    backdrop-filter:none!important;
+    border:1px solid CanvasText!important;
+    box-shadow:none!important;
+  }
+  .hpcard:hover,.hxi-card:hover,.sc-card:hover,.hncard:hover{transform:none!important}
+}
