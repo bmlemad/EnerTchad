@@ -82,6 +82,23 @@ for filename, content in [("index.html", home), ("index-en.html", home_en), ("ar
     if "home-corporate-2026.css" not in content:
         errors.append(f"{filename}: feuille home-corporate absente")
 
+report = ROOT / "reports" / "industry-readiness-2026.md"
+report.parent.mkdir(exist_ok=True)
+report.write_text(
+    "# Niveau corporate & reporting — 2026\n\n"
+    "Contrôle statique des surfaces de confiance, de reporting, des accès multilingues et des ressources documentaires.\n\n"
+    "## Couverture contrôlée\n\n"
+    "- Accueil FR : centre de confiance + provenance des KPI\n"
+    "- Accueil EN : centre de confiance + provenance des KPI\n"
+    "- Accueil AR : centre de confiance + accès investisseurs\n"
+    "- Publications FR/EN : navigation reporting par domaine\n"
+    "- Investisseurs FR/EN/AR : accès direct aux documents clés\n"
+    "- Aliases reporting : /reporting et /reporting-en\n"
+    "- Compatibilité : transparence réduite, forced colors, fallback sans backdrop-filter\n\n"
+    "Le présent rapport est structurel ; il ne remplace pas une mesure de performance réelle ou une revue par utilisateurs.\n",
+    encoding="utf-8"
+)
+
 if errors:
     print("\n".join(errors))
     print(f"\nECHEC : {len(errors)} problème(s)")
