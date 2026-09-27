@@ -27,6 +27,8 @@ jobs:
         run: python scripts/audit_performance.py
       - name: Auditer le coût des ressources CSS / JS
         run: python scripts/audit_resource_costs.py
+      - name: Auditer markup, espaces et éléments void
+        run: python scripts/audit_markup_efficiency.py
       - name: Générer le benchmark technique
         run: python scripts/benchmark_site.py
       - name: Auditer les parcours de conversion
@@ -55,6 +57,12 @@ jobs:
         with:
           name: resource-cost-audit-2026
           path: reports/resource-cost-audit-2026.md
+          if-no-files-found: error
+      - name: Publier l’audit markup / espaces / void
+        uses: actions/upload-artifact@v4
+        with:
+          name: markup-efficiency-audit-2026
+          path: reports/markup-efficiency-audit-2026.md
           if-no-files-found: error
       - name: Publier l’audit UI
         uses: actions/upload-artifact@v4
