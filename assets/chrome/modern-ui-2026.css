@@ -211,3 +211,297 @@ html.et-plight .et-command-card small{color:#4B586A}
 }
 
 
+
+
+/* ============================================================
+   EnerTchad Premium Architecture v1 — 2026
+   Purpose: establish a restrained industrial/editorial system
+   across homepage + shared corporate surfaces.
+   ============================================================ */
+:root{
+  --et-premium-max:1240px;
+  --et-premium-gutter:clamp(20px,4vw,56px);
+  --et-premium-space-1:8px;
+  --et-premium-space-2:16px;
+  --et-premium-space-3:24px;
+  --et-premium-space-4:40px;
+  --et-premium-space-5:64px;
+  --et-premium-space-6:96px;
+  --et-premium-ink:#F7F3E8;
+  --et-premium-muted:#9EACBF;
+  --et-premium-line:rgba(255,255,255,.11);
+  --et-premium-gold:#E8C36A;
+  --et-premium-radius:20px;
+  --et-premium-radius-sm:14px;
+}
+html.et-plight{
+  --et-premium-ink:#172337;
+  --et-premium-muted:#586579;
+  --et-premium-line:rgba(23,35,55,.12);
+}
+.wrap,.et-command-in,.et-proof-in,.et-intents,.nh-in{
+  width:min(var(--et-premium-max),calc(100% - (var(--et-premium-gutter) * 2)));
+}
+.sec-k,.nh-k,.hnews-k,.dur-k{
+  font-family:var(--fm,ui-monospace,monospace);
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  font-size:.68rem;
+  font-weight:700;
+}
+.hero{
+  min-height:min(860px,100svh);
+}
+.nh-in{
+  padding-top:clamp(96px,11vh,148px);
+  padding-bottom:clamp(64px,9vh,112px);
+}
+.nh-grid{
+  grid-template-columns:minmax(0,1.08fr) minmax(380px,.92fr);
+  gap:clamp(40px,7vw,104px);
+  align-items:center;
+}
+.nh-h1{
+  max-width:10ch;
+  font-size:clamp(3.5rem,7.4vw,7.6rem)!important;
+  line-height:.91!important;
+  letter-spacing:-.065em!important;
+}
+.nh-l{
+  max-width:58ch!important;
+  font-size:clamp(1rem,1.4vw,1.18rem)!important;
+  line-height:1.7!important;
+  margin-top:28px!important;
+}
+.nh-cta{
+  margin-top:34px!important;
+}
+.nh-kpi{
+  margin-top:48px!important;
+  border-top:1px solid var(--et-premium-line);
+  padding-top:18px!important;
+}
+.nh-kpi>div{
+  padding:14px 0!important;
+}
+.nh-kpi dt{
+  font-size:clamp(1.2rem,2vw,1.75rem)!important;
+  letter-spacing:-.035em;
+}
+.nh-fig{
+  transform:scale(1.04);
+  transform-origin:center;
+}
+.et-modern-strip{
+  border-top:1px solid var(--et-premium-line);
+  border-bottom:1px solid var(--et-premium-line);
+  background:rgba(8,17,29,.46);
+}
+.et-modern-strip-in{
+  width:min(var(--et-premium-max),calc(100% - (var(--et-premium-gutter) * 2)));
+  margin:auto;
+  min-height:92px;
+  display:grid!important;
+  grid-template-columns:repeat(3,1fr) auto;
+  gap:0;
+}
+.et-modern-strip-in>div,.et-modern-strip-in>a{
+  padding:22px 26px;
+  border-left:1px solid var(--et-premium-line);
+}
+.et-modern-strip-in>a{
+  border-right:1px solid var(--et-premium-line);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:800;
+  text-decoration:none;
+}
+.et-modern-strip-in span{
+  display:block;
+  font:700 .62rem var(--fm,monospace);
+  color:var(--et-premium-gold);
+  letter-spacing:.12em;
+  margin-bottom:7px;
+}
+.et-modern-strip-in b{display:block;font-size:.9rem}
+.et-modern-strip-in small{display:block;margin-top:5px;color:var(--et-premium-muted);line-height:1.4}
+.et-command{
+  padding:clamp(76px,9vw,124px) 0!important;
+}
+.et-command-head{
+  max-width:820px!important;
+  margin-bottom:42px!important;
+}
+.et-command-head h2{
+  font-size:clamp(2rem,4vw,3.5rem)!important;
+  letter-spacing:-.045em!important;
+}
+.et-command-grid{
+  grid-template-columns:repeat(4,minmax(0,1fr))!important;
+  gap:1px!important;
+  background:var(--et-premium-line);
+  border:1px solid var(--et-premium-line);
+  border-radius:var(--et-premium-radius);
+  overflow:hidden;
+}
+.et-command-card{
+  min-height:230px!important;
+  border:0!important;
+  border-radius:0!important;
+  box-shadow:none!important;
+  backdrop-filter:none!important;
+  -webkit-backdrop-filter:none!important;
+  background:rgba(11,22,37,.78)!important;
+  padding:28px!important;
+}
+.et-command-card:hover{
+  transform:none!important;
+  background:rgba(20,35,53,.9)!important;
+}
+.et-intents{
+  padding:12px 0 0!important;
+}
+.et-intents-grid{
+  grid-template-columns:repeat(4,1fr)!important;
+  gap:8px!important;
+}
+.et-intent{
+  border-radius:var(--et-premium-radius-sm)!important;
+  min-height:64px!important;
+  padding:14px 16px!important;
+}
+.et-proof-center{
+  padding:clamp(78px,9vw,120px) 0!important;
+}
+.et-proof-head{
+  max-width:840px!important;
+  margin-bottom:38px!important;
+}
+.et-proof-head h2{
+  font-size:clamp(2rem,4vw,3.5rem)!important;
+  letter-spacing:-.045em!important;
+}
+.et-proof-grid{
+  grid-template-columns:repeat(5,1fr)!important;
+  gap:1px!important;
+  background:var(--et-premium-line);
+  border:1px solid var(--et-premium-line);
+  border-radius:var(--et-premium-radius);
+  overflow:hidden;
+}
+.et-proof-card{
+  min-height:235px!important;
+  border:0!important;
+  border-radius:0!important;
+  box-shadow:none!important;
+  backdrop-filter:none!important;
+  -webkit-backdrop-filter:none!important;
+  background:rgba(11,22,37,.78)!important;
+  padding:24px!important;
+}
+.et-proof-card:hover{
+  transform:none!important;
+  background:rgba(20,35,53,.9)!important;
+}
+#coeurs>.t550-head{
+  width:min(var(--et-premium-max),calc(100% - (var(--et-premium-gutter) * 2)));
+  margin-inline:auto;
+  padding-top:clamp(80px,9vw,120px)!important;
+  padding-bottom:44px!important;
+}
+#coeurs>.t550-head h2{
+  font-size:clamp(2.2rem,4.4vw,4.2rem)!important;
+  letter-spacing:-.05em!important;
+  max-width:11ch;
+}
+.t550-seg{
+  min-height:650px!important;
+}
+.t550-in{
+  width:min(var(--et-premium-max),calc(100% - (var(--et-premium-gutter) * 2)))!important;
+}
+.t550-p{
+  max-width:650px!important;
+}
+.t550-p h3{
+  font-size:clamp(2rem,4vw,3.5rem)!important;
+  letter-spacing:-.045em!important;
+  line-height:1!important;
+}
+.t550-kpis{
+  gap:1px!important;
+  background:rgba(255,255,255,.11);
+  border:1px solid rgba(255,255,255,.11);
+  border-radius:16px;
+  overflow:hidden;
+}
+.t550-kpi{
+  background:rgba(8,18,31,.62);
+  padding:18px!important;
+}
+#durabilite .dur-g{
+  gap:1px!important;
+  background:var(--et-premium-line);
+  border:1px solid var(--et-premium-line);
+  border-radius:var(--et-premium-radius);
+  overflow:hidden;
+}
+#durabilite .dur-c{
+  border:0!important;
+  border-radius:0!important;
+  min-height:230px;
+}
+.hnews-grid{
+  gap:1px!important;
+  background:var(--et-premium-line);
+  border:1px solid var(--et-premium-line);
+  border-radius:var(--et-premium-radius);
+  overflow:hidden;
+}
+.hncard{
+  border:0!important;
+  border-radius:0!important;
+  box-shadow:none!important;
+  backdrop-filter:none!important;
+  -webkit-backdrop-filter:none!important;
+}
+#cta-band{
+  margin-top:clamp(64px,9vw,120px);
+}
+@media(max-width:980px){
+  .nh-grid{grid-template-columns:1fr;gap:48px}
+  .nh-h1{max-width:12ch}
+  .nh-fig{max-width:680px;margin-inline:auto}
+  .et-modern-strip-in{grid-template-columns:repeat(2,1fr)}
+  .et-modern-strip-in>a{grid-column:1/-1}
+  .et-command-grid,.et-proof-grid{grid-template-columns:repeat(2,1fr)!important}
+  .et-intents-grid{grid-template-columns:repeat(2,1fr)!important}
+  .t550-seg{min-height:560px!important}
+}
+@media(max-width:680px){
+  .nh-in{padding-top:92px}
+  .nh-h1{font-size:clamp(3rem,15vw,5rem)!important}
+  .nh-kpi{margin-top:34px!important}
+  .et-modern-strip-in{grid-template-columns:1fr}
+  .et-modern-strip-in>div,.et-modern-strip-in>a{border-right:1px solid var(--et-premium-line)}
+  .et-modern-strip-in>a{grid-column:auto}
+  .et-command-grid,.et-proof-grid,.et-intents-grid{grid-template-columns:1fr!important}
+  .et-command-card,.et-proof-card{min-height:190px!important}
+  #coeurs>.t550-head{padding-top:64px!important}
+  .t550-seg{min-height:auto!important}
+  .t550-p{padding-block:72px!important}
+}
+@media(prefers-reduced-motion:reduce){
+  .nh-fig{transform:none}
+}
+@media(prefers-reduced-transparency:reduce){
+  .et-modern-strip,.et-command-card,.et-proof-card,.t550-kpi{background:#101B2E!important}
+  html.et-plight .et-modern-strip,html.et-plight .et-command-card,html.et-plight .et-proof-card,html.et-plight .t550-kpi{background:#FAF7F1!important}
+}
+@media(forced-colors:active){
+  .et-modern-strip-in>div,.et-modern-strip-in>a,.et-command-grid,.et-proof-grid,.et-intent,.t550-kpis,#durabilite .dur-g,.hnews-grid{
+    border-color:CanvasText!important;
+  }
+  .et-command-card,.et-proof-card,.t550-kpi,.hncard{background:Canvas!important;color:CanvasText!important}
+}
