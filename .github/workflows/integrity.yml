@@ -2,6 +2,11 @@ name: Intégrité du site
 on:
   push: {branches: [main]}
   workflow_dispatch: {}
+permissions:
+  contents: read
+concurrency:
+  group: integrity-${{ github.ref }}
+  cancel-in-progress: true
 jobs:
   check:
     runs-on: ubuntu-latest
