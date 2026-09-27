@@ -6,7 +6,7 @@ on:
 jobs:
   browser:
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -20,7 +20,7 @@ jobs:
         env:
           SITE_URL: https://enertchad-delta.vercel.app/
         run: |
-          for i in {1..30}; do
+          for i in {1..60}; do
             code=$(curl -L -s -o /tmp/site.html -w '%{http_code}' "$SITE_URL/")
             if [ "$code" = "200" ] && grep -q 'EnerTchad' /tmp/site.html; then exit 0; fi
             sleep 5
