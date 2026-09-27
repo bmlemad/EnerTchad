@@ -60,7 +60,7 @@ if sm:
 for p in pages:
     h = open(p, encoding='utf-8').read()
     for m in re.finditer(r'\bsrcset=["\\\']([^"\\\']+)["\\\']', h, re.I):
-        for candidate in re.findall(r'(?:^|,)\\s*([^,\\s]+)', m.group(1)):
+        for candidate in re.findall(r'(?:^|,)\s*([^,\s]+)', m.group(1)):
             u = candidate.strip()
             if u.startswith(('http', '//', 'data:', 'blob:')): continue
             t = u.lstrip('/') if u.startswith('/') else os.path.normpath(os.path.join(os.path.dirname(p), u)).replace('\\', '/')
