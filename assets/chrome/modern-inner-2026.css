@@ -92,6 +92,15 @@ body:not(.hm):not(.et-modern-exclude) .pgr a{
 @media(prefers-reduced-motion:reduce){.pub-radar a{transition:none}.pub-radar a:hover{transform:none}}
 @media(prefers-reduced-transparency:reduce){.pub-radar a{background:#0F1C2D!important;-webkit-backdrop-filter:none;backdrop-filter:none}html.et-plight .pub-radar a{background:#FAF7F1!important}}
 
+
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+  .pub-radar a{background:#0F1C2D!important;-webkit-backdrop-filter:none;backdrop-filter:none}
+  html.et-plight .pub-radar a{background:#FAF7F1!important}
+}
+@media(forced-colors:active){
+  .pub-radar a{background:Canvas!important;color:CanvasText!important;border:1px solid CanvasText!important;-webkit-backdrop-filter:none;backdrop-filter:none;box-shadow:none!important}
+  .pub-radar a:hover{transform:none}
+}
 /* ===== Publications / reporting cards ===== */
 .pubg{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px;margin:18px 0 34px}
 a.pubc{display:block;border:1px solid var(--hair);border-radius:14px;padding:20px 18px;background:rgba(255,255,255,.02);text-decoration:none;color:inherit;transition:border-color .2s ease,transform .2s ease,background .2s ease}
