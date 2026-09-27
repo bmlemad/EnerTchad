@@ -44,6 +44,12 @@ jobs:
         with:
           name: performance-audit-2026
           path: reports/performance-audit-2026.md
+      - name: Publier l’audit coûts CSS / JS
+        uses: actions/upload-artifact@v4
+        with:
+          name: resource-cost-audit-2026
+          path: reports/resource-cost-audit-2026.md
+          if-no-files-found: error
           if-no-files-found: error
       - name: Publier l’audit UI
         uses: actions/upload-artifact@v4
