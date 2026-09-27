@@ -48,18 +48,18 @@ for p in pages:
     # Contrôles interactifs: détecter les noms accessibles manifestement absents.
     for m in re.finditer(r'<(?:a|button)\b([^>]*)>(.*?)</(?:a|button)>',s,re.I|re.S):
         tag, body = m.group(1), m.group(2)
-        if re.search(r'\baria-hidden\s*=\s*["']true["']',tag,re.I): continue
-        named = re.search(r'\baria-label\s*=\s*["'][^"']+[^"']["']',tag,re.I) or re.search(r'\baria-labelledby\s*=\s*["'][^"']+["']',tag,re.I)
+        if re.search(r"""\baria-hidden\s*=\s*["']true["']""",tag,re.I): continue
+        named = re.search(r"""\baria-label\s*=\s*["'][^"']+[^"']["']""",tag,re.I) or re.search(r"""\baria-labelledby\s*=\s*["'][^"']+["']""",tag,re.I)
         visible = re.sub(r'<[^>]+>', ' ', body)
         visible = re.sub(r'&(?:nbsp|#160);', ' ', visible, flags=re.I)
-        if not named and not visible.strip() and not re.search(r'<img\b[^>]*\balt\s*=\s*["'][^"']+["']',body,re.I):
+        if not named and not visible.strip() and not re.search(r"""<img\b[^>]*\balt\s*=\s*["'][^"']+["']""",body,re.I):
             flag('EMPTY_CONTROL','link/button without accessible name')
 
     # Form fields should expose a label or an ARIA name.
     for m in re.finditer(r'<(?:input|select|textarea)\b([^>]*)>',s,re.I|re.S):
         tag=m.group(0)
-        if re.search(r'\btype\s*=\s*["'](?:hidden|submit|button|reset|image)["']',tag,re.I): continue
-        if not (re.search(r'\baria-label(?:ledby)?\s*=',tag,re.I) or re.search(r'\bid\s*=',tag,re.I) and re.search(r'<label\b[^>]*\bfor\s*=\s*["'][^"']+["']',s,re.I)):
+        if re.search(r"""\btype\s*=\s*["'](?:hidden|submit|button|reset|image)["']""",tag,re.I): continue
+        if not (re.search(r"""\baria-label(?:ledby)?\s*=""",tag,re.I) or re.search(r'\bid\s*=',tag,re.I) and re.search(r"""<label\b[^>]*\bfor\s*=\s*["'][^"']+["']""",s,re.I)):
             flag('FORM_NAME','form field without detectable label/ARIA name')
 
     main_end = s.lower().rfind('</main>')
