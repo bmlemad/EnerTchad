@@ -15,10 +15,10 @@ for p in pages:
     title=re.search(r"<title\b[^>]*>(.*?)</title>",s,re.I|re.S)
     canonical=re.search(r"<link\b[^>]*rel=[\"']canonical[\"'][^>]*href=[\"']([^\"']+)",s,re.I)
     h1=re.findall(r"<h1\b[^>]*>(.*?)</h1>",s,re.I|re.S); css=js=0
-    for m in re.finditer(r"<link\b[^>]*href=[\"']([^\"']+\\.css(?:\\?[^\"']*)?)[\"'][^>]*>",s,re.I):
+    for m in re.finditer(r"<link\b[^>]*href=[\"']([^\"']+\.css(?:\?[^\"']*)?)[\"'][^>]*>",s,re.I):
         n=local_size(m.group(1))
         if n is not None: css+=n; css_files.add(m.group(1).split("?",1)[0])
-    for m in re.finditer(r"<script\b[^>]*src=[\"']([^\"']+\\.js(?:\\?[^\"']*)?)[\"'][^>]*>",s,re.I):
+    for m in re.finditer(r"<script\b[^>]*src=[\"']([^\"']+\.js(?:\?[^\"']*)?)[\"'][^>]*>",s,re.I):
         n=local_size(m.group(1))
         if n is not None: js+=n; js_files.add(m.group(1).split("?",1)[0])
     hs=p.stat().st_size; tot_html+=hs; tot_css+=css; tot_js+=js
