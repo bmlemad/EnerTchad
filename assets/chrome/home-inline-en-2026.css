@@ -1,0 +1,1985 @@
+/* ———— ex-bloc: anonyme ———— */
+#toTop{pointer-events:none}#toTop.show{pointer-events:auto}
+/* ———— ex-bloc: anonyme ———— */
+.diapo i,header.pghero,header.hero,img[src$=".webp"],img[src$=".jpg"],img[src$=".jpeg"]{filter:saturate(1.1) contrast(1.045) brightness(1.015)}
+/* ———— ex-bloc: anonyme ———— */
+.btn-shop{background:linear-gradient(135deg,#EFCB79,#D9A84F)!important;border-color:#E8C36A!important;color:#14100a!important;font-weight:700;box-shadow:0 10px 26px rgba(232,195,106,.30)}.btn-shop:hover{filter:brightness(1.06);transform:translateY(-1px)}.btn-shop2{background:rgba(232,195,106,.10)!important;border-color:rgba(232,195,106,.5)!important;color:var(--gold-l)!important;font-weight:600!important;box-shadow:none!important}.btn-shop2:hover{background:rgba(232,195,106,.17)!important;transform:translateY(-1px)}
+/* ———— ex-bloc: anonyme ———— */
+.iv-mid{align-self:center;display:flex;flex-direction:column;align-items:center;gap:8px;margin:-12px 0;z-index:2;position:relative}.iv-mid .iv-pivot{margin:0}.iv-mid .iv-out{color:#101b2e;background:var(--gold-l,#E8C36A);border-color:transparent;font-size:.78rem;padding:8px 16px;box-shadow:0 8px 22px -8px rgba(232,195,106,.7)}
+
+.nx-util-in .nx-langx{font-family:var(--fm,ui-monospace,monospace);letter-spacing:0;border:1px solid var(--hair);border-radius:6px;padding:3px 9px;color:#B7C3D4;text-decoration:none;transition:color .2s,border-color .2s;margin-inline-start:8px}.nx-util-in .nx-langx:hover{border-color:var(--gold-l);color:var(--gold-l)}
+
+/* ———— ex-bloc: anonyme ———— */
+footer .brand-mk{background:none!important;border:0!important;padding:0!important}footer .logo-img{background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20200%20200%22%3E%3Crect%20width%3D%22200%22%20height%3D%22200%22%20rx%3D%2242%22%20fill%3D%22%23F3EAD1%22%2F%3E%3Cg%20transform%3D%22translate%28100%20100%29%20scale%280.86%29%20translate%28-100%20-100%29%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22ftlg%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%220%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23DBAE4A%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23C2922E%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Cpath%20d%3D%22M100.00%2096.00%20L126.98%2067.90%20A37.4%2037.4%200%201%200%2073.02%2067.90%20Z%22%20fill%3D%22url%28%23ftlg%29%22%2F%3E%3Cpath%20d%3D%22M96.00%20100.00%20L67.90%2073.02%20A37.4%2037.4%200%201%200%2067.90%20126.98%20Z%22%20fill%3D%22%231E6EC2%22%2F%3E%3Cpath%20d%3D%22M104.00%20100.00%20L132.10%20126.98%20A37.4%2037.4%200%201%200%20132.10%2073.02%20Z%22%20fill%3D%22%23218A2C%22%2F%3E%3Cpath%20d%3D%22M100.00%20104.00%20L73.02%20132.10%20A37.4%2037.4%200%201%200%20126.98%20132.10%20Z%22%20fill%3D%22%23E8CD7F%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E")!important}
+/* ———— ex-bloc: anonyme ———— */
+/* v2 01/08/2026 — les departements vivent AU SEIN de la tuile de pole :
+   l'ancien tiroir flottant (dropdown au survol en desktop, bloc detache en mobile)
+   devient la section basse de la carte, toujours visible, soudee visuellement
+   (coins fusionnes, meme verre liquidglass — la famille de composants fournit fond,
+   bordure et flou ; ici on ne pilote que la geometrie, en specificite .hubwrap >
+   descendant pour battre les regles de famille). La levee au survol passe sur le
+   conteneur pour que la tuile bouge d'un seul bloc. */
+.hubwrap{position:relative;display:flex;flex-direction:column;transition:transform .3s var(--ease,ease)}
+.hpcard-body>.hpcard-tag{margin-left:0;margin-top:-5px;align-self:flex-start;white-space:normal}
+.hpcard-top{flex-wrap:wrap}
+.hubwrap:hover{transform:translateY(-6px)}
+.hubwrap .hpcard{border-bottom-left-radius:0!important;border-bottom-right-radius:0!important;border-bottom:none!important;flex:1 1 auto}
+.hubwrap .hpcard:hover{transform:none!important}
+.hubwrap .hubdrawer{position:static;opacity:1;visibility:visible;transform:none;pointer-events:auto;display:flex;flex-direction:column;gap:1px;margin-top:0;padding:6px 8px 12px;box-shadow:none!important;border-top:1px solid rgba(245,247,250,.09)!important;border-top-left-radius:0!important;border-top-right-radius:0!important}
+.hubdrawer a{display:flex;align-items:center;min-height:44px;padding:8px 11px;border-radius:9px;color:var(--cream,#F5F7FA);text-decoration:none;font-size:.83rem;font-family:var(--fb);line-height:1.25;border-left:2px solid transparent;transition:background .12s,border-color .12s}
+.hubdrawer a:hover,.hubdrawer a:focus-visible{background:rgba(255,255,255,.055);border-left-color:var(--pac,var(--gold-l))}
+.hubdrawer .hd-h{font-family:var(--fm,monospace);font-size:0.6875rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted-l,#9FB0C9);padding:6px 11px 2px}
+/* ———— ex-bloc: anonyme ———— */
+/* ============ EnerTchad · Liquid Glass design layer (v2 — dramatic) ============ */
+:root{
+  --g-bg:linear-gradient(158deg, rgba(14,22,38,.58), rgba(11,18,31,.68) 55%, rgba(9,15,26,.74));
+  --g-brd:rgba(255,255,255,.22);
+  --g-brd-str:rgba(255,255,255,.34);
+  --g-blur:saturate(185%) blur(30px);
+  --g-spec:inset 0 1px 0 rgba(255,255,255,.38), inset 0 0 0 1px rgba(255,255,255,.05), inset 0 -14px 30px rgba(0,0,0,.20);
+  --g-shadow:0 16px 46px rgba(0,0,0,.52);
+  --g-radius:22px;
+}
+/* ---- ambient aurora backdrop — brighter, dual-layer (body::before + html::before), more mobile ---- */
+html{background:#121D33!important}
+body{position:relative;background:transparent!important;isolation:isolate}
+body::before{
+  content:"";position:fixed;inset:-20%;z-index:-2;pointer-events:none;
+  background:
+    radial-gradient(38% 42% at 16% 20%, rgba(219,174,74,.46), transparent 60%),
+    radial-gradient(34% 40% at 84% 14%, rgba(90,167,240,.38), transparent 58%),
+    radial-gradient(48% 50% at 76% 84%, rgba(31,164,150,.36), transparent 60%),
+    radial-gradient(42% 46% at 24% 88%, rgba(224,162,78,.32), transparent 58%),
+    radial-gradient(30% 34% at 52% 46%, rgba(120,90,220,.20), transparent 60%);
+  filter:blur(26px);
+  animation:auroraDrift 30s ease-in-out infinite alternate;
+}
+html::before{
+  content:"";position:fixed;inset:-20%;z-index:-3;pointer-events:none;mix-blend-mode:screen;
+  background:
+    radial-gradient(30% 34% at 70% 30%, rgba(219,174,74,.28), transparent 60%),
+    radial-gradient(28% 32% at 30% 66%, rgba(90,167,240,.26), transparent 60%);
+  filter:blur(34px);animation:auroraDrift2 38s ease-in-out infinite alternate;
+}
+body::after{
+  content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.6;
+  background:
+    radial-gradient(1px 1px at 20% 30%, rgba(255,255,255,.12), transparent),
+    radial-gradient(1px 1px at 70% 60%, rgba(255,255,255,.10), transparent),
+    radial-gradient(1px 1px at 40% 80%, rgba(255,255,255,.07), transparent),
+    radial-gradient(1px 1px at 88% 42%, rgba(255,255,255,.08), transparent);
+}
+@keyframes auroraDrift{
+  0%{transform:translate3d(0,0,0) scale(1) rotate(0deg)}
+  50%{transform:translate3d(4%,-3%,0) scale(1.10) rotate(2deg)}
+  100%{transform:translate3d(-3%,4%,0) scale(1.06) rotate(-1.5deg)}
+}
+@keyframes auroraDrift2{
+  0%{transform:translate3d(0,0,0) scale(1.05)}
+  50%{transform:translate3d(-5%,3%,0) scale(1.12)}
+  100%{transform:translate3d(4%,-4%,0) scale(1.02)}
+}
+@media (prefers-reduced-motion:reduce){body::before,html::before{animation:none}}
+
+/* ---- glass cards (all component families) ---- */
+.hpcard,.hxi-card,.mfo-lever,.hncard,.sc-card,.hx-stat,.hubdrawer,.flip-face,.hpcard-kpis{
+  background:var(--g-bg)!important;
+  -webkit-backdrop-filter:var(--g-blur);backdrop-filter:var(--g-blur);
+  border:1px solid var(--g-brd)!important;
+  border-radius:var(--g-radius)!important;
+  box-shadow:var(--g-spec),var(--g-shadow)!important;
+  transition:transform .55s cubic-bezier(.2,.7,.2,1), box-shadow .55s, border-color .55s, background .55s;
+}
+.flip-face{backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.hpcard:hover,.hxi-card:hover,.sc-card:hover,.hncard:hover{
+  transform:translateY(-6px) scale(1.012);
+  border-color:var(--g-brd-str)!important;
+  box-shadow:var(--g-spec), 0 26px 66px rgba(0,0,0,.6), 0 0 0 1px rgba(219,174,74,.30), 0 0 40px rgba(219,174,74,.12)!important;
+}
+.hpcard-body,.sc-body{background:transparent!important}
+
+/* ---- hover drawer: deep frost ---- */
+.hubdrawer{
+  background:rgba(12,19,33,.58)!important;
+  -webkit-backdrop-filter:saturate(200%) blur(34px);backdrop-filter:saturate(200%) blur(34px);
+  box-shadow:var(--g-spec), 0 30px 70px rgba(0,0,0,.66)!important;
+}
+
+/* ---- frosted sticky nav / header ---- */
+.nav.nx,.nav,header.hero .nav,#nav{
+  background:rgba(9,14,23,.5)!important;
+  -webkit-backdrop-filter:saturate(190%) blur(26px);backdrop-filter:saturate(190%) blur(26px);
+  border-bottom:1px solid var(--g-brd)!important;
+}
+.nx-mega,.mega,.nx-panel{
+  background:rgba(11,17,28,.68)!important;
+  -webkit-backdrop-filter:saturate(200%) blur(32px);backdrop-filter:saturate(200%) blur(32px);
+  border:1px solid var(--g-brd)!important;box-shadow:var(--g-shadow)!important;
+}
+
+/* ---- buttons: glass by default, gold accent stays solid ---- */
+.btn{
+  border:1px solid var(--g-brd-str)!important;
+  -webkit-backdrop-filter:saturate(170%) blur(16px);backdrop-filter:saturate(170%) blur(16px);
+  box-shadow:var(--g-spec), 0 8px 24px rgba(0,0,0,.34)!important;
+  transition:transform .35s cubic-bezier(.2,.7,.2,1), box-shadow .35s, border-color .35s;
+}
+.btn:hover{transform:translateY(-2px)}
+
+/* ---- hero bottom-right router aside → glass ---- */
+.hx-slide .rt, .hx-aside, [class*="router"]{
+  background:rgba(12,19,33,.46)!important;
+  -webkit-backdrop-filter:saturate(190%) blur(28px);backdrop-filter:saturate(190%) blur(28px);
+  border:1px solid var(--g-brd)!important;border-radius:var(--g-radius)!important;
+  box-shadow:var(--g-spec),var(--g-shadow)!important;
+}
+
+/* ---- section wrappers: let the aurora breathe ---- */
+main > section, .sec, .hx-strip{background:transparent!important}
+
+/* ---- specular sheen + diagonal streak on the biggest cards ---- */
+.hpcard,.hxi-card{position:relative;overflow:hidden}
+.hpcard::after,.hxi-card::after{
+  content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.16), rgba(255,255,255,0) 16%),
+    linear-gradient(115deg, transparent 30%, rgba(255,255,255,.07) 45%, transparent 58%);
+  mix-blend-mode:screen;opacity:.7;
+}
+/* ———— ex-bloc: anonyme ———— */
+/* WCAG 2.5.8 : la zone cliquable epouse le pas de la liste (21+6=27px). Le remplissage est annule par la marge : geometrie visuelle inchangee. */.sc-link{padding-top:3px;padding-bottom:3px;margin-top:-3px;margin-bottom:-3px}
+/* ———— ex-bloc: anonyme ———— */
+html:not(.et-plight):not(.et-jlight) .diapo::after{background:radial-gradient(120% 92% at 50% 40%,rgba(4,8,16,.16) 46%,rgba(4,8,16,.44)),linear-gradient(180deg,rgba(7,12,21,.58),rgba(7,12,21,.70))}html:not(.et-plight):not(.et-jlight) main,html:not(.et-plight):not(.et-jlight) header,html:not(.et-plight):not(.et-jlight) footer{--muted:#A8B6C9}html:not(.et-plight):not(.et-jlight) footer{background:rgba(14,22,38,.68)!important;text-shadow:0 1px 10px rgba(0,0,0,.55)}
+
+/* ———— ex-bloc: anonyme ———— */
+/* ================= MAILLONS PLEINE PAGE (2026-08) =================
+   Trois panneaux plein ecran dans :is(#coeurs,#appuis) : Amont / Intermediaire / Aval.
+   Portee : uniquement :is(#coeurs,#appuis) de la page d'accueil. Deux themes. */
+
+:is(#coeurs,#appuis) .mln-set{display:block;margin:0;padding:0}
+
+:is(#coeurs,#appuis) .mln{
+ position:relative;
+ display:flex;align-items:center;
+ min-height:min(100svh,940px);
+ padding:clamp(56px,8vw,96px) 0;
+ isolation:isolate;overflow-x:clip;
+ border-top:1px solid color-mix(in srgb,var(--mac) 20%,transparent);
+ --mln-g1:rgba(6,11,20,.93);--mln-g2:rgba(7,13,24,.82);--mln-g3:rgba(7,13,24,.40)}
+
+/* photo de fond : conteneur separe pour pouvoir la recadrer sans rogner le contenu */
+:is(#coeurs,#appuis) .mln-bg{position:absolute;inset:0;z-index:-2;overflow:hidden}
+:is(#coeurs,#appuis) .mln-bg::before{content:"";position:absolute;inset:0;
+ background-image:var(--mimg);background-size:cover;background-position:center;
+ transform:scale(1.06);will-change:transform}
+/* !important + :not(#_) obligatoires : la couche eclaircissement pose
+   html.et-plight main div:not(#_){background-image:none!important} qui tuait le voile */
+:is(#coeurs,#appuis) .mln-veil:not(#_):not(#__){
+ position:absolute;inset:0;z-index:-1;
+ background-image:
+  radial-gradient(120% 90% at 6% 50%,color-mix(in srgb,var(--mac) 7%,transparent) 0%,transparent 62%),
+  linear-gradient(100deg,var(--mln-g1) 0%,var(--mln-g2) 46%,var(--mln-g3) 100%)!important}
+:is(#coeurs,#appuis) .mln-rev .mln-bg::before{transform:scale(1.06) scaleX(-1)}
+:is(#coeurs,#appuis) .mln-rev .mln-veil:not(#_):not(#__){
+ background-image:
+  radial-gradient(120% 90% at 94% 50%,color-mix(in srgb,var(--mac) 7%,transparent) 0%,transparent 62%),
+  linear-gradient(260deg,var(--mln-g1) 0%,var(--mln-g2) 46%,var(--mln-g3) 100%)!important}
+
+/* chiffre fantome */
+:is(#coeurs,#appuis) .mln-ghost{
+ position:absolute;z-index:-1;right:4.5vw;bottom:-.16em;
+ font-family:var(--fm,ui-monospace,monospace);font-weight:700;
+ font-size:clamp(9rem,26vw,24rem);line-height:.78;letter-spacing:-.04em;
+ color:color-mix(in srgb,var(--mac) 13%,transparent);
+ pointer-events:none;user-select:none}
+:is(#coeurs,#appuis) .mln-rev .mln-ghost{right:auto;left:4.5vw}
+
+:is(#coeurs,#appuis) .mln-in{
+ display:flex;align-items:center;gap:clamp(28px,5vw,72px);
+ width:100%}
+:is(#coeurs,#appuis) .mln-rev .mln-in{flex-direction:row-reverse}
+
+:is(#coeurs,#appuis) .mln-txt{flex:1 1 58%;min-width:0;
+ border-left:2px solid color-mix(in srgb,var(--mac) 42%,transparent);
+ padding-left:clamp(16px,2vw,26px)}
+:is(#coeurs,#appuis) .mln-rev .mln-txt{border-left:0;
+ border-right:2px solid color-mix(in srgb,var(--mac) 42%,transparent);
+ padding-left:0;padding-right:clamp(16px,2vw,26px);text-align:right}
+:is(#coeurs,#appuis) .mln-rev .mln-in>*{align-self:center}
+
+:is(#coeurs,#appuis) .mln-step{display:flex;align-items:baseline;gap:10px;
+ font-family:var(--fm,ui-monospace,monospace)}
+:is(#coeurs,#appuis) .mln-rev .mln-step{justify-content:flex-end}
+:is(#coeurs,#appuis) .mln-step b{font-size:1.05rem;font-weight:700;letter-spacing:.06em;
+ color:var(--mac)}
+:is(#coeurs,#appuis) .mln-step i{font-style:normal;font-size:.7rem;letter-spacing:.16em;
+ text-transform:uppercase;opacity:.72}
+
+:is(#coeurs,#appuis) .mln-k{display:block;margin-top:14px;
+ font-family:var(--fm,ui-monospace,monospace);font-size:.74rem;font-weight:700;
+ letter-spacing:.15em;text-transform:uppercase;color:var(--mac)}
+:is(#coeurs,#appuis) .mln-k em{font-style:normal;opacity:.62}
+
+:is(#coeurs,#appuis) .mln-t{margin:8px 0 0;font-family:var(--fd,inherit);
+ font-size:clamp(1.75rem,4.4vw,3.15rem);line-height:1.06;letter-spacing:-.015em;
+ text-wrap:balance}
+
+:is(#coeurs,#appuis) .mln-d{margin:16px 0 0;max-width:52ch;
+ font-size:clamp(1rem,1.25vw,1.14rem);line-height:1.62}
+:is(#coeurs,#appuis) .mln-rev .mln-d{margin-left:auto}
+
+:is(#coeurs,#appuis) .mln-kpis{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
+:is(#coeurs,#appuis) .mln-rev .mln-kpis{justify-content:flex-end}
+:is(#coeurs,#appuis) .mln-kpis span{display:flex;flex-direction:column;gap:3px;
+ padding:11px 16px;border-radius:14px;
+ border:1px solid color-mix(in srgb,var(--mac) 22%,transparent);
+ background:color-mix(in srgb,var(--mac) 7%,transparent)}
+:is(#coeurs,#appuis) .mln-kpis b{font-family:var(--fm,ui-monospace,monospace);
+ font-size:1.05rem;font-weight:700;letter-spacing:-.01em;color:var(--mac)}
+:is(#coeurs,#appuis) .mln-kpis i{font-style:normal;font-size:.76rem;line-height:1.35;opacity:.82}
+
+/* --- appel a l'action : porte aussi .hpcard (crochet JS de l'explorateur de
+       thematiques) ; on neutralise donc integralement le look "tuile". --- */
+:is(#coeurs,#appuis) a.mln-go:not(#a):not(#b):not(#c):not(#d):not(#e):not(#f){
+ position:relative;display:inline-flex;align-items:center;gap:10px;
+ flex-direction:row;margin-top:26px;padding:13px 24px;
+ min-height:44px;overflow:visible;
+ font-family:var(--fm,ui-monospace,monospace);font-size:.84rem;font-weight:700;
+ letter-spacing:.03em;text-decoration:none;
+ border:0!important;border-radius:999px!important;
+ background:var(--mac)!important;color:#121D31!important;
+ -webkit-backdrop-filter:none!important;backdrop-filter:none!important;
+ box-shadow:0 12px 30px -14px color-mix(in srgb,var(--mac) 70%,transparent)!important;
+ transform:none;
+ transition:transform .22s cubic-bezier(.22,.61,.36,1),box-shadow .22s ease,filter .22s ease}
+:is(#coeurs,#appuis) a.mln-go:not(#a):not(#b):not(#c):not(#d):not(#e):not(#f)::before,
+:is(#coeurs,#appuis) a.mln-go:not(#a):not(#b):not(#c):not(#d):not(#e):not(#f)::after{
+ content:none!important;display:none!important}
+:is(#coeurs,#appuis) a.mln-go span{transition:transform .22s cubic-bezier(.22,.61,.36,1)}
+
+/* --- volet services --- */
+:is(#coeurs,#appuis) .mln-nav{flex:0 1 300px;display:flex;flex-direction:column;
+ padding:20px 20px 8px;border-radius:20px;
+ border:1px solid color-mix(in srgb,var(--mac) 20%,transparent);
+ background:rgba(9,15,26,.42);
+ -webkit-backdrop-filter:blur(10px) saturate(118%);
+ backdrop-filter:blur(10px) saturate(118%)}
+:is(#coeurs,#appuis) .mln-nh{display:block;margin-bottom:6px;
+ font-family:var(--fm,ui-monospace,monospace);font-size:0.6875rem;font-weight:700;
+ letter-spacing:.16em;text-transform:uppercase;
+ color:color-mix(in srgb,var(--mac) 78%,#FFFFFF)}
+:is(#coeurs,#appuis) .mln-nav a{display:flex;align-items:center;justify-content:space-between;
+ gap:10px;min-height:44px;padding:11px 2px;font-size:.94rem;line-height:1.35;
+ text-decoration:none;
+ border-bottom:1px solid color-mix(in srgb,var(--mac) 14%,transparent);
+ transition:color .2s ease,padding-left .2s ease}
+:is(#coeurs,#appuis) .mln-nav a:last-child{border-bottom:0}
+:is(#coeurs,#appuis) .mln-nav a::after{content:"→";font-family:var(--fm,ui-monospace,monospace);
+ opacity:0;transform:translateX(-4px);transition:opacity .2s ease,transform .2s ease;
+ color:var(--mac)}
+
+/* ---------- theme sombre (defaut) ---------- */
+html:not(.et-plight) :is(#coeurs,#appuis) .mln-t{color:#F2F6FB}
+html:not(.et-plight) :is(#coeurs,#appuis) .mln-d{color:#C7D2E4}
+html:not(.et-plight) :is(#coeurs,#appuis) .mln-step i{color:#AEBCCF}
+html:not(.et-plight) :is(#coeurs,#appuis) .mln-kpis i{color:#C1CDDE}
+html:not(.et-plight) :is(#coeurs,#appuis) .mln-nav a{color:#DDE5EF}
+html:not(.et-plight) :is(#coeurs,#appuis) .mln-nav a:hover,
+html:not(.et-plight) :is(#coeurs,#appuis) .mln-nav a:focus-visible{color:var(--mac)}
+
+/* ---------- theme clair ---------- */
+html.et-plight :is(#coeurs,#appuis) .mln{
+ --mac:var(--macl)!important;
+ --mln-g1:rgba(250,247,241,.94);--mln-g2:rgba(250,247,241,.80);--mln-g3:rgba(250,247,241,.42)}
+html.et-plight :is(#coeurs,#appuis) .mln-t{color:#10161F}
+html.et-plight :is(#coeurs,#appuis) .mln-d{color:#2A3648}
+html.et-plight :is(#coeurs,#appuis) .mln-step i{color:#4A5668}
+html.et-plight :is(#coeurs,#appuis) .mln-kpis i{color:#3A4657}
+html.et-plight :is(#coeurs,#appuis) .mln-kpis span{background:color-mix(in srgb,var(--mac) 9%,#FFFFFF)}
+html.et-plight :is(#coeurs,#appuis) .mln-nav{background:rgba(255,255,255,.72)}
+html.et-plight :is(#coeurs,#appuis) .mln-nh{color:color-mix(in srgb,var(--mac) 82%,#000000)}
+html.et-plight :is(#coeurs,#appuis) .mln-nav a{color:#2A3648}
+html.et-plight :is(#coeurs,#appuis) .mln-nav a:hover,
+html.et-plight :is(#coeurs,#appuis) .mln-nav a:focus-visible{color:var(--mac)}
+html.et-plight :is(#coeurs,#appuis) a.mln-go:not(#a):not(#b):not(#c):not(#d):not(#e):not(#f){
+ color:#FFFFFF!important}
+
+/* ---------- interactions ---------- */
+@media (prefers-reduced-motion:no-preference){
+ :is(#coeurs,#appuis) a.mln-go:hover{transform:translateY(-2px);filter:saturate(112%)}
+ :is(#coeurs,#appuis) a.mln-go:hover span{transform:translateX(4px)}
+ :is(#coeurs,#appuis) .mln-nav a:hover{padding-left:8px}
+ :is(#coeurs,#appuis) .mln-nav a:hover::after{opacity:1;transform:translateX(0)}
+ :is(#coeurs,#appuis) .mln:hover .mln-bg::before{transform:scale(1.10);transition:transform 1.4s cubic-bezier(.2,.7,.3,1)}
+ :is(#coeurs,#appuis) .mln-rev:hover .mln-bg::before{transform:scale(1.10) scaleX(-1)}
+}
+@media (prefers-reduced-motion:reduce){
+ :is(#coeurs,#appuis) .mln-bg::before,:is(#coeurs,#appuis) a.mln-go,:is(#coeurs,#appuis) .mln-nav a{transition:none!important}
+}
+:is(#coeurs,#appuis) a.mln-go:focus-visible,:is(#coeurs,#appuis) .mln-nav a:focus-visible{
+ outline:2px solid var(--mac);outline-offset:3px;border-radius:8px}
+
+/* ---------- tablette ---------- */
+@media (max-width:1080px){
+ :is(#coeurs,#appuis) .mln-in,:is(#coeurs,#appuis) .mln-rev .mln-in{flex-direction:column;align-items:stretch;gap:26px}
+ :is(#coeurs,#appuis) .mln-rev .mln-txt{text-align:left;border-right:0;padding-right:0;
+  border-left:2px solid color-mix(in srgb,var(--mac) 42%,transparent);
+  padding-left:clamp(16px,2vw,26px)}
+ :is(#coeurs,#appuis) .mln-rev .mln-step,:is(#coeurs,#appuis) .mln-rev .mln-kpis{justify-content:flex-start}
+ :is(#coeurs,#appuis) .mln-rev .mln-d{margin-left:0}
+ :is(#coeurs,#appuis) .mln-veil:not(#_):not(#__),:is(#coeurs,#appuis) .mln-rev .mln-veil:not(#_):not(#__){
+  background-image:
+   radial-gradient(120% 70% at 50% 8%,color-mix(in srgb,var(--mac) 7%,transparent) 0%,transparent 62%),
+   linear-gradient(168deg,var(--mln-g1) 0%,var(--mln-g2) 58%,var(--mln-g3) 100%)!important}
+ :is(#coeurs,#appuis) .mln-nav{flex:1 1 auto}
+ /* sinon le volet du panneau miroir reste centre et etroit */
+ :is(#coeurs,#appuis) .mln-rev .mln-in>*{align-self:stretch}
+}
+
+/* ---------- mobile ---------- */
+@media (max-width:640px){
+ :is(#coeurs,#appuis) .mln{min-height:100svh;padding:clamp(44px,11vw,64px) 0 calc(clamp(44px,11vw,64px) + 76px)}
+ :is(#coeurs,#appuis) .mln-ghost{font-size:clamp(7rem,40vw,13rem);right:0;bottom:-.08em;opacity:.85}
+ :is(#coeurs,#appuis) .mln-rev .mln-ghost{left:0;right:auto}
+ :is(#coeurs,#appuis) .mln-t{font-size:clamp(1.6rem,7.6vw,2.1rem)}
+ :is(#coeurs,#appuis) .mln-d{font-size:1rem}
+ :is(#coeurs,#appuis) .mln-kpis span{flex:1 1 46%;padding:10px 13px}
+ :is(#coeurs,#appuis) .mln-kpis b{font-size:.98rem}
+ :is(#coeurs,#appuis) a.mln-go:not(#a):not(#b):not(#c):not(#d):not(#e):not(#f){
+  width:100%;justify-content:center;margin-top:22px}
+ :is(#coeurs,#appuis) .mln-nav{padding:16px 16px 6px;border-radius:18px}
+}
+/* ———— ex-bloc: anonyme ———— */
+/* Ch497 — compaction mobile : le panneau services/capacites de chaque chapitre se replie en accordeon natif sur petit ecran ; desktop inchange (summary masque, details toujours ouvert). */
+@media(min-width:641px){.mfold>summary{display:none}}
+@media(max-width:640px){
+ .mfold>summary{display:flex;align-items:center;justify-content:space-between;gap:10px;cursor:pointer;list-style:none;padding:13px 15px;margin:0 0 4px;border:1px solid color-mix(in srgb,var(--mac,#E8C36A) 34%,transparent);border-radius:12px;font-weight:700;font-size:.95rem;color:inherit;background:color-mix(in srgb,var(--mac,#E8C36A) 7%,transparent)}
+ .mfold>summary::-webkit-details-marker{display:none}
+ .mfold>summary::after{content:"+";font-weight:800;font-size:1.15rem;line-height:1;color:var(--mac,#E8C36A)}
+ .mfold[open]>summary::after{content:"\2212"}
+ .mfold:not([open]){padding-bottom:6px}
+}
+
+/* ———— ex-bloc: anonyme ———— */
+/* Ch298 — maillons et poles de soutien apparies deux par deux (Amont+Intermediaire / Aval+Petrochimie / GreenTech+TchadiTech / Tchaditude+EnerConseils) */
+@media(min-width:1000px){
+ /* Ch447 — refonte coeur du metier : chaque maillon redevient un chapitre
+    pleine largeur (la grille demi-largeur du ch312 est retiree), l alternance
+    gauche-droite de la base reprend la main. */
+ :is(#coeurs,#appuis) .mln-set{display:block}
+ :is(#coeurs,#appuis) .mln{min-height:min(84svh,780px);padding:clamp(48px,6vw,84px) 0}
+ :is(#coeurs,#appuis) .mln .wrap{max-width:var(--max,1240px);padding-left:var(--gut,24px);padding-right:var(--gut,24px)}
+ :is(#coeurs,#appuis) .mln-txt{flex:1 1 58%}
+ :is(#coeurs,#appuis) .mln-nav{flex:0 1 320px}
+ :is(#coeurs,#appuis) .mln-ghost{font-size:clamp(8rem,20vw,18rem)}
+ :is(#coeurs,#appuis) .mln-t{font-size:clamp(1.9rem,3.4vw,3rem)}
+ :is(#coeurs,#appuis) .mln-d{max-width:52ch}
+ :is(#coeurs,#appuis) .mln-kpis span{flex:0 1 auto;padding:11px 16px}
+}
+/* ———— ex-bloc: anonyme ———— */
+/* Ch314 — les panneaux de poles n'ont plus de photo propre : ils laissent
+   voir l'image de fond unique de la page. Le voile passe donc d'un aplat quasi
+   opaque a une teinte translucide, juste assez pour porter le texte. */
+/* le panneau ne fabrique plus son propre plan : il laisse passer le fond fixe */
+:is(#coeurs,#appuis) .mln{isolation:auto;--mln-g1:rgba(6,11,20,.62);--mln-g2:rgba(7,13,24,.34);--mln-g3:rgba(7,13,24,.06)}
+:is(#coeurs,#appuis) .mln-veil{-webkit-backdrop-filter:brightness(1.85) saturate(1.2);backdrop-filter:brightness(1.85) saturate(1.2)}
+html.et-plight :is(#coeurs,#appuis) .mln{--mln-g1:rgba(250,247,241,.66);--mln-g2:rgba(250,247,241,.56);--mln-g3:rgba(250,247,241,.42)}
+html.et-plight :is(#coeurs,#appuis) .mln-veil{-webkit-backdrop-filter:brightness(1.06) saturate(1.06);backdrop-filter:brightness(1.06) saturate(1.06)}
+
+/* En 2x2, les panneaux « inverses » ont vu leur texte realigne a gauche (ch.298)
+   mais gardaient un voile assombri a droite : le degrade suit maintenant le texte. */
+@media(min-width:1000px){
+ :is(#coeurs,#appuis) .mln-rev .mln-veil:not(#_):not(#__):not(#___){
+  background-image:
+   radial-gradient(120% 90% at 6% 50%,color-mix(in srgb,var(--mac) 7%,transparent) 0%,transparent 62%),
+   linear-gradient(100deg,var(--mln-g1) 0%,var(--mln-g2) 46%,var(--mln-g3) 100%)!important}
+}
+html.et-plight :is(#coeurs,#appuis) .mln-ghost{color:color-mix(in srgb,var(--mac) 8%,transparent)}
+/* ———— ex-bloc: anonyme ———— */
+/* ============ A1 - systeme de boutons unifie (MAINTENANCE 39) ============
+   3 roles : primaire (pilule doree pleine), fantome (pilule contour),
+   lien-fleche (liens mono, deja coherents). On restyle les classes
+   existantes plutot que de renommer le HTML. */
+/* --- primaire : hxi-cta (radius 12 -> 999, fonte display -> mono) --- */
+main a.hxi-cta:not(#_):not(#__){
+ border-radius:12px!important;
+ font-family:var(--fb,Inter,system-ui,sans-serif)!important;
+ font-size:.9rem!important;font-weight:700!important;letter-spacing:0!important;
+ padding:11px 18px!important}
+/* --- primaire : ppte-cta (ambre -> or, graisse 600 -> 700) --- */
+main a.ppte-cta:not(#_):not(#__){
+ background:var(--gold-l,#E8C36A)!important;
+ font-size:.84rem!important;font-weight:700!important;letter-spacing:.03em!important;
+ padding:12px 24px!important}
+/* --- fantome : iv-cta (radius 10 -> 999 ; texte fonce en theme clair) --- */
+main a.iv-cta:not(#_):not(#__){border-radius:999px!important;padding:10px 20px!important}
+html.et-plight main a.iv-cta:not(#_):not(#__){
+ color:#121D31!important;
+ border-color:color-mix(in srgb,#7A5C14 45%,transparent)!important}
+html.et-plight main a.iv-cta:not(#_):hover{
+ background:color-mix(in srgb,#E8C36A 22%,transparent)!important}
+/* --- cartes actu : "Lire ->" redevient un lien fleche, plus une boite --- */
+.hncard .hncard-go:not(#_):not(#__){
+ background:none!important;border:0!important;box-shadow:none!important;
+ display:inline-flex!important;width:auto!important;align-items:center;
+ align-self:flex-start;padding:0!important;margin-top:10px;
+ font-weight:700!important;font-size:.78rem!important;letter-spacing:.04em}
+.hncard:hover .hncard-go{text-decoration:underline;text-underline-offset:3px}
+/* --- focus clavier commun --- */
+main a.hxi-cta:focus-visible,main a.ppte-cta:focus-visible,main a.iv-cta:focus-visible{
+ outline:2px solid var(--gold-l,#E8C36A);outline-offset:3px}
+/* ———— ex-bloc: anonyme ———— */
+/* ============ B1 - pont hero -> contenu (MAINTENANCE 41) ============
+   Ombre portee du hero sur le haut de #coeurs + filet d'or de couture :
+   le bord franc marine/creme devient une transition intentionnelle.
+   NB : x_efffae1a94e5.css neutralise #coeurs::before (background:none
+   !important, heritage anti-bandeaux) -> tout est redefini ici avec une
+   specificite superieure. Hauteur 90px = le vide au-dessus du kicker,
+   jamais sous le texte. */
+#coeurs:not(#_):not(#__)::before{
+ content:""!important;position:absolute!important;
+ top:0!important;left:0!important;right:0!important;bottom:auto!important;
+ height:90px!important;pointer-events:none!important;z-index:2!important;
+ opacity:1!important;transform:none!important;
+ background:
+  linear-gradient(90deg,rgba(217,168,79,0),rgba(217,168,79,.5) 18%,
+   rgba(240,206,130,.7) 50%,rgba(217,168,79,.5) 82%,rgba(217,168,79,0))
+   top/100% 1px no-repeat,
+  linear-gradient(to bottom,rgba(9,14,23,.26),rgba(9,14,23,0))!important}
+/* ———— ex-bloc: anonyme ———— */
+/* ========== A3+A4 - en-tetes & cartes harmonises (MAINTENANCE 42) ==========
+   Un seul motif de kicker (puce losange doree + mono .7rem/.2em), titres
+   retardataires remontes sur l'echelle commune, #combat aligne a gauche,
+   chips date/tag des cartes actu au meme langage pilule que les chips KPI. */
+.acth-k,.mfo-k,.inv-k,.hxi-eyebrow,.hnews-k,.ppte-k,.shortcuts-k,.sec-k{
+ font-family:var(--fm,ui-monospace,monospace)!important;font-size:.7rem!important;
+ letter-spacing:.2em!important;text-transform:uppercase!important;
+ color:var(--gold-l,#E8C36A)!important}
+html.et-plight :is(.acth-k,.mfo-k,.inv-k,.hxi-eyebrow,.hnews-k,.ppte-k,
+.shortcuts-k,.sec-k):not(#_):not(#__):not(#___){color:#77530C!important}
+.sec-k:not(#_){display:inline-flex!important;align-items:center!important}
+.sec-k::before{content:"";display:inline-block;flex:none;width:7px;height:7px;
+ margin-right:9px;background:currentColor;transform:rotate(45deg)}
+.hxi-eyebrow::before,.inv-k::before{content:"";display:inline-block;width:7px;
+ height:7px;margin-right:9px;background:currentColor;transform:rotate(45deg);
+ position:relative;top:-1px}
+/* mfo-k : puce standard a gauche, la ligne fondue de droite est conservee */
+#combat .mfo-k::before{width:7px!important;height:7px!important;
+ background:currentColor!important;transform:rotate(45deg)!important}
+/* --- titres sous l'echelle commune (etaient a 28.8px) --- */
+#produits-acces h2:not(#_):not(#__){
+ font-size:var(--ts-5,clamp(1.35rem,2.9vw,2.1rem))!important}
+/* --- #combat a gauche comme le reste de la page --- */
+#combat .wrap:not(#_){text-align:left!important}
+#combat .mfo-h:not(#_),#combat .mfo-l:not(#_),#combat .mfo-foot:not(#_){
+ margin-left:0!important;margin-right:0!important}
+/* --- Publications (reco 6 de l'audit, MAINTENANCE 54) --- */
+.pub-g{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.pub-c{display:flex;flex-direction:column;gap:7px;padding:18px 18px 16px;
+ border:1px solid color-mix(in srgb,currentColor 16%,transparent);border-radius:16px;
+ text-decoration:none;color:inherit;background:color-mix(in srgb,currentColor 3%,transparent);
+ transition:transform .22s,border-color .22s,box-shadow .22s}
+.pub-c:hover{transform:translateY(-4px);border-color:var(--gold-l,#E8C36A);
+ box-shadow:0 14px 34px -18px rgba(0,0,0,.45)}
+.pub-i{width:34px;height:34px;border-radius:10px;display:inline-flex;align-items:center;
+ justify-content:center;border:1px solid color-mix(in srgb,currentColor 18%,transparent);
+ color:#B08420}
+.pub-c b{font-family:var(--fd,system-ui);font-weight:700;font-size:1.02rem;letter-spacing:-.01em}
+.pub-d{font-size:.86rem;line-height:1.5;opacity:.75}
+.pub-m{margin-top:auto;font-family:var(--fm,ui-monospace,monospace);font-size:0.6875rem;
+ letter-spacing:.1em;text-transform:uppercase;opacity:.65}
+.pub-all{display:inline-flex;align-items:center;gap:7px;margin-top:18px;min-height:44px;
+ font-family:var(--fm,ui-monospace,monospace);font-size:.78rem;font-weight:600;
+ letter-spacing:.03em;color:inherit;text-decoration:underline;text-underline-offset:3px}
+/* --- C2 : inscription "etre prevenu(e)" en tete de footer --- */
+.foot-news{display:flex;align-items:center;justify-content:space-between;gap:26px;
+ flex-wrap:wrap;padding:26px 0 24px;margin-bottom:26px;
+ border-bottom:1px solid color-mix(in srgb,currentColor 14%,transparent)}
+.fn-k{font-family:var(--fm,ui-monospace,monospace);font-size:0.6875rem;letter-spacing:.2em;
+ text-transform:uppercase;color:#77530C;margin:0 0 6px;display:inline-flex;align-items:center;gap:9px}
+.fn-k::before{content:"";width:7px;height:7px;background:currentColor;transform:rotate(45deg)}
+html:not(.et-plight) .fn-k{color:var(--gold-l,#E8C36A)}
+.fn-t{display:block;font-family:var(--fd,system-ui);font-weight:800;font-size:1.15rem;letter-spacing:-.01em}
+.fn-d{font-size:.86rem;opacity:.75;margin:5px 0 0;max-width:44ch}
+.fn-form{display:flex;gap:10px;flex-wrap:wrap}
+.fn-form input{min-width:240px;min-height:46px;padding:10px 16px;border-radius:999px;
+ border:1px solid color-mix(in srgb,currentColor 26%,transparent);background:transparent;
+ color:inherit;font-family:var(--fm,ui-monospace,monospace);font-size:.84rem}
+.fn-form input:focus-visible{outline:2px solid var(--gold-l,#E8C36A);outline-offset:2px}
+.fn-form button{display:inline-flex;align-items:center;gap:9px;min-height:46px;padding:11px 22px;
+ border:0;border-radius:999px;cursor:pointer;
+ background:linear-gradient(120deg,#E8C36A,#D4A843);color:#121D31;
+ font-family:var(--fm,ui-monospace,monospace);font-weight:700;font-size:.84rem;letter-spacing:.03em;
+ transition:transform .2s,filter .2s}
+.fn-form button:hover{transform:translateY(-2px);filter:brightness(1.06)}
+.fn-alt{flex-basis:100%;font-family:var(--fm,ui-monospace,monospace);font-size:.7rem;
+ letter-spacing:.03em;opacity:.7;margin:0}
+.fn-alt a{color:inherit;text-decoration:underline;text-underline-offset:3px}
+/* --- A5 : l'icone "recharger" des cartes retournables devient un
+       libelle — l'affordance etait illisible --- */
+.flip-hint:not(#_):not(#__){width:auto!important;height:auto!important;
+ border-radius:999px!important;padding:3px 10px!important;
+ font-family:var(--fm,ui-monospace,monospace)!important;font-size:0.6875rem!important;
+ letter-spacing:.08em;text-transform:uppercase;line-height:1.5;white-space:nowrap}
+/* --- B5 : leger relief dore sur les plages claires (theme clair),
+       cote alterne --- */
+html.et-plight :is(#conviction,section.inv,#carnets,section.shortcuts){
+ background-image:radial-gradient(56% 46% at 10% 14%,rgba(217,168,79,.055),transparent 72%)}
+html.et-plight :is(#vision,section.hxi,#produits-acces){
+ background-image:radial-gradient(56% 46% at 90% 16%,rgba(217,168,79,.055),transparent 72%)}
+/* --- B3 : hero — 2 pilules + 2 liens mono (les 4 boites cassaient la
+       ligne, "Investir" orphelin) --- */
+header.hero .btn:not(#_){border-radius:999px!important;width:auto}
+header.hero .btn-p:not(#_):not(#__):not(#___),
+html.et-plight header.hero .hx-grid a.btn-p:not(#_):not(#__):not(#___){
+ background:linear-gradient(120deg,#E8C36A,#D4A843)!important;
+ color:#121D31!important;-webkit-text-fill-color:#121D31!important;border:0!important}
+header.hero .btn-g:not(#_):not(#__){background:transparent!important;border:1px solid rgba(233,238,245,.32)!important;color:#F2F6FB!important}
+header.hero .btn-g:not(#_):hover{border-color:var(--gold-l,#E8C36A)!important;background:color-mix(in srgb,var(--gold-l,#E8C36A) 12%,transparent)!important}
+.hx-links{display:flex;gap:22px;flex-wrap:wrap;margin-top:14px}
+.hx-links a{display:inline-flex;align-items:center;gap:7px;min-height:44px;
+ font-family:var(--fm,ui-monospace,monospace);font-size:.78rem;font-weight:600;
+ letter-spacing:.03em;color:rgba(233,238,245,.85);text-decoration:none;
+ border-bottom:1px solid rgba(233,238,245,.28)}
+.hx-links a:hover{color:#fff;border-color:var(--gold-l,#E8C36A)}
+/* --- B2 : rail de traversee — sans align-items:flex-end, le lien survole
+       elargit l'aside et TOUS les liens s'etirent (align stretch) --- */
+#aurail:not(#_){align-items:flex-end}
+html.et-plight #aurail a:not(#_):hover,html.et-plight #aurail a:not(#_).on{
+ background:color-mix(in srgb,var(--c) 16%,#FBF8F2)!important;
+ color:#10161F!important;
+ border-color:color-mix(in srgb,var(--c) 55%,#B9AE97)!important}
+/* --- A4 : chips des cartes actu en pilule --- */
+.hncard-meta span:not(#_){border-radius:999px!important;padding:3px 9px!important}
+/* ———— ex-bloc: anonyme ———— */
+html.et-plight .diapo:not(#_):not(#__){display:block!important;position:absolute!important;inset:auto!important;top:0!important;left:0!important;right:0!important;height:112vh!important;z-index:-1!important}
+html.et-plight .diapo::after{content:"";position:absolute;inset:0;background:radial-gradient(120% 92% at 50% 40%,rgba(4,8,16,.16) 46%,rgba(4,8,16,.44)),linear-gradient(180deg,rgba(7,12,21,.58),rgba(7,12,21,.72) 80%,#FBF8F2 100%)!important}
+html.et-plight .diapo i{opacity:1}
+html.et-plight header.hero:not(#_):not(#__):not(#___),html.et-plight body>header.hero:not(#_):not(#__):not(#___){background:transparent!important;background-image:none!important}
+/* ———— ex-bloc: anonyme ———— */
+.diapo i{animation:none!important;opacity:1!important}#oilticker{display:none!important}#readbar{display:none!important}.rdprog{display:none!important}
+/* ———— ex-bloc: anonyme ———— */
+/* §92 hero allégé façon majors : h1 + 1 CTA */
+.hero-in .hx-kick{display:none!important}
+.hero-in .hx-sub{display:none!important}
+.hero-in .hchain{display:none!important}
+.hero-in .btn-g{display:none!important}
+.hero-in .hx-links{display:none!important}
+.hero-in .hx-slides{margin-top:10px}
+.hero-in .hx-h1{font-size:var(--ts-1,clamp(2.6rem,6vw,4.4rem))}
+/* ———— ex-bloc: anonyme ———— */
+@media(max-width:760px){#diapo-cap:not(#_):not(#__):not(#___){display:none!important}.hx-dots button{width:12px!important;height:12px!important;min-width:12px!important;min-height:12px!important;padding:0!important;border:6px solid transparent!important;background-clip:padding-box!important;border-radius:50%!important}.hx-dots{gap:0!important;margin:14px 0 4px}}
+
+/* §93 — sections majors */
+.hwords{background:linear-gradient(180deg,#0B1830,#0A1526 70%,#0B1422);padding:16vh 24px 17vh;overflow:hidden}
+.hw-in{max-width:1280px;margin:0 auto}
+.hw-k{display:block;text-align:center;font-family:var(--fm,ui-monospace,monospace);font-size:.8rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(233,238,245,.72);margin-bottom:5vh}
+.hw-stack{display:flex;flex-direction:column;gap:1.2vh}
+.hw-w{font-weight:800;font-size:clamp(3.4rem,9vw,8rem);line-height:1.04;letter-spacing:-.015em}
+.hw-1{color:#E8C36A;margin-left:4%}
+.hw-2{color:#5AA7F0;align-self:flex-end;margin-right:6%}
+.hw-3{color:#7BC9A3;margin-left:22%}
+html.et-plight .hwords{background:linear-gradient(180deg,#14243E,#0F1C33)}
+.hbelieve{background:radial-gradient(120% 100% at 50% 0%,#16294A 0%,#0F1D36 60%,#0C1729 100%);padding:17vh 24px;text-align:center}
+.hb-in{max-width:1080px;margin:0 auto}
+.hb-t{font-weight:700;font-size:clamp(1.35rem,2.5vw,2.2rem);line-height:1.34;color:#EAF0F8;max-width:26em;margin-left:auto;margin-right:auto;text-wrap:balance}
+.hb-t em{font-style:normal;color:#F0CE82}
+.hb-cta{display:inline-flex;margin-top:5vh;padding:14px 28px;border-radius:999px;border:1px solid rgba(240,206,130,.55);color:#F0CE82;font-family:var(--fm,ui-monospace,monospace);font-weight:600;font-size:.88rem;text-decoration:none}
+.hb-cta:hover{background:rgba(240,206,130,.12)}
+.hc-head{max-width:900px;margin:0 auto;text-align:center}
+.hc-t{font-weight:800;font-size:clamp(2.4rem,5.4vw,4.4rem);line-height:1.06;letter-spacing:-.01em;margin:0 0 18px}
+.hc-s{font-size:1.06rem;line-height:1.65;opacity:.85;margin:0 auto 26px;max-width:620px}
+.hc-cta{display:inline-flex;padding:13px 26px;border-radius:999px;font-family:var(--fm,ui-monospace,monospace);font-weight:700;font-size:.88rem;text-decoration:none;background:linear-gradient(135deg,#E8C36A,#D9A84F);color:#10161F}
+.hc-grid{max-width:1280px;margin:7vh auto 0;display:grid;grid-template-columns:repeat(6,1fr);gap:22px}
+.hc-grid img{width:100%;border-radius:14px;object-fit:cover;box-shadow:0 18px 50px rgba(4,8,16,.35)}
+.hc-grid img:nth-child(1){grid-column:1/3;height:300px;transform:translateY(26px)}
+.hc-grid img:nth-child(2){grid-column:3/5;height:340px}
+.hc-grid img:nth-child(3){grid-column:5/7;height:280px;transform:translateY(44px)}
+.hc-grid img:nth-child(4){grid-column:2/4;height:280px;transform:translateY(10px)}
+.hc-grid img:nth-child(5){grid-column:4/6;height:300px;transform:translateY(58px)}
+@media(max-width:860px){.hc-grid{grid-template-columns:1fr 1fr}.hc-grid img{grid-column:auto!important;transform:none!important;height:200px!important}.hw-3{margin-left:8%}}
+/* 6 — stats 3 tuiles */
+.hx-strip .hx-stat-amb{display:none!important}
+/* 4 — un CTA par section : bande finale */
+#cta-band .cb-a .cb-g{display:none!important}
+/* 7 — bandeau cookies discret */
+#ckn:not(#_):not(#__){left:0!important;right:0!important;bottom:0!important;top:auto!important;width:100%!important;max-width:none!important;border-radius:0!important;padding:9px 22px!important;display:flex;align-items:center;gap:16px;flex-wrap:wrap;font-size:.8rem!important;box-shadow:0 -8px 30px rgba(4,8,16,.25)}
+#ckn .ck-row{margin-left:auto;display:flex;align-items:center;gap:10px}
+#ckn .ck-row a{padding:6px 8px!important}
+/* 8 — légende photo en crédit une ligne */
+#diapo-cap:not(#_):not(#__){background:none!important;border:none!important;box-shadow:none!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;padding:0 14px!important;display:flex!important;align-items:baseline;gap:9px;right:18px!important;left:auto!important}
+#diapo-cap .dc-seg,#diapo-cap .dc-cr{display:none!important}
+#diapo-cap .dc-an{font-family:var(--fm,ui-monospace,monospace);font-size:0.6875rem!important;letter-spacing:.06em;color:rgba(233,238,245,.85)!important;font-weight:700}
+#diapo-cap .dc-zo{font-family:var(--fm,ui-monospace,monospace);font-size:0.6875rem!important;color:rgba(233,238,245,.6)!important}
+html.et-plight #diapo-cap .dc-an{color:rgba(233,238,245,.9)!important}
+/* 9 — scroll cue */
+.hx-cue{width:2px;height:52px;margin:26px 0 0 4px;background:linear-gradient(180deg,rgba(240,206,130,.0),rgba(240,206,130,.85));position:relative;overflow:hidden}
+.hx-cue i{position:absolute;left:0;top:-40%;width:100%;height:40%;background:#fff;opacity:.9;animation:hxcue 2.2s ease-in-out infinite}
+@keyframes hxcue{0%{top:-40%}70%{top:100%}100%{top:100%}}
+@media(prefers-reduced-motion:reduce){.hx-cue i{animation:none}}
+/* ———— ex-bloc: anonyme ———— */
+html.et-plight #diapo-cap .dc-an:not(#_):not(#__):not(#___){color:#2A3648!important;-webkit-text-fill-color:#2A3648!important;text-shadow:none!important}
+html.et-plight #diapo-cap .dc-zo:not(#_):not(#__):not(#___){color:#5A6678!important;-webkit-text-fill-color:#5A6678!important;text-shadow:none!important}
+/* ———— ex-bloc: anonyme ———— */
+.hcp{margin-top:34px;padding-top:24px;border-top:1px solid var(--hair);display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;align-items:start}.hcp-k{grid-column:1/-1;font-family:var(--fm);font-size:0.6875rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-l);margin-bottom:2px}.hcp-i{display:block;padding:13px 15px;border:1px solid var(--hair);border-radius:12px;background:rgba(255,255,255,.02);text-decoration:none;transition:border-color .2s,background .2s}.hcp-i:hover{border-color:var(--gold-l);background:rgba(232,195,106,.05)}.hcp-d{display:block;font-family:var(--fm);font-size:0.6875rem;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin-bottom:5px}.hcp-t{display:block;font-size:.87rem;line-height:1.45}.hcp-all{grid-column:1/-1;font-family:var(--fm);font-size:.74rem;text-decoration:none;border-bottom:1px solid transparent;justify-self:start}.hcp-all:hover{border-color:var(--gold-l)}.hcp-i .hcp-t:not(#_):not(#__):not(#___),.hcp-all:not(#_):not(#__):not(#___){color:#F0E6D2!important;-webkit-text-fill-color:#F0E6D2!important}html.et-plight .hcp-k:not(#_):not(#__),html.et-plight .hcp-d:not(#_):not(#__){color:#4C380B!important;-webkit-text-fill-color:#4C380B!important}html.et-plight .hcp-i .hcp-t:not(#_):not(#__):not(#___),html.et-plight .hcp-all:not(#_):not(#__):not(#___){color:#10161F!important;-webkit-text-fill-color:#10161F!important}
+
+.rv,.reveal,[class*="reveal"],.mln,.plc-card,.acth,.mleg,.intro{opacity:1!important;transform:none!important;visibility:visible!important;filter:none!important;clip-path:none!important;transition:none!important;animation:none!important}
+
+/* ———— ex-bloc: anonyme ———— */
+/* §119 — revue de la home face aux majors.
+   1. Le second CTA du hero revient : chez les six majors releves, le bouton du premier ecran sort de la page.
+   2. Les huit panneaux de maillon passent du plein ecran a une hauteur contenue.
+   3. Commande de pause du carrousel (WCAG 2.2.2 « Pause, Stop, Hide », niveau A).
+   4. Bloc agenda investisseur, repris tel quel de /investisseurs#agenda. */
+.hero-in .btn-g:not(#_){display:inline-flex!important}
+:is(#coeurs,#appuis) .mln:not(#_){min-height:min(74svh,680px);padding:clamp(40px,5.4vw,66px) 0}
+@media (max-width:640px){:is(#coeurs,#appuis) .mln:not(#_){min-height:auto;padding:clamp(34px,8vw,50px) 0 calc(clamp(34px,8vw,50px) + 62px)}}
+.hero-in .hx-dots:not(#_){display:inline-flex;vertical-align:middle}
+#agenda-home .agh{list-style:none;margin:22px 0 0;padding:0;display:grid;gap:10px}
+#agenda-home .agh li{display:grid;grid-template-columns:minmax(120px,150px) 1fr;gap:6px 22px;align-items:baseline;padding:15px 18px;border:1px solid var(--hair,rgba(255,255,255,.1));border-left:3px solid #E8C36A;border-radius:14px;background:rgba(9,15,26,.5);-webkit-backdrop-filter:blur(10px) saturate(125%);backdrop-filter:blur(10px) saturate(125%)}
+#agenda-home .agh b{font-family:var(--fm,ui-monospace,monospace);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:#E8C36A;white-space:nowrap}
+#agenda-home .agh strong{font-family:var(--fd,inherit);font-weight:800;font-size:1.04rem;grid-column:2}
+#agenda-home .agh span{grid-column:2;font-size:.94rem;line-height:1.55;opacity:.8}
+#agenda-home .agh-cta{display:flex;flex-wrap:wrap;gap:10px 26px;margin:22px 0 0;font-size:.95rem}
+#agenda-home .agh-cta a{display:inline-flex;align-items:center;min-height:44px;color:#E8C36A;-webkit-text-fill-color:#E8C36A;text-decoration:none;border-bottom:1px solid rgba(232,195,106,.4)}
+html.et-plight #agenda-home .agh li{background:rgba(255,255,255,.52);border-left-color:#74570B}
+html.et-plight #agenda-home .agh b{color:#7A5C0B}
+html.et-plight #agenda-home .agh-cta a{color:#7A5C0B;-webkit-text-fill-color:#7A5C0B;border-bottom-color:rgba(138,106,18,.45)}
+@media (max-width:560px){#agenda-home .agh li{grid-template-columns:1fr}#agenda-home .agh strong,#agenda-home .agh span{grid-column:1}}
+/* ———— ex-bloc: anonyme ———— */
+/* SS126 - « Qui nous sommes » : les quatre principes, avec leur definition officielle (page Societe) */
+.hwords .hw-in:not(#_){max-width:1180px}
+.hwords h2.hw-k:not(#_):not(#__){display:block;text-align:center;font-family:var(--fm,ui-monospace,monospace);font-size:var(--ts-l,.75rem);font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#E9EFF7;margin:0 0 16px}
+.hwords .hw-lead:not(#_){max-width:68ch;margin:0 auto clamp(34px,5vh,60px);text-align:center;font-size:1.03rem;line-height:1.66;color:#E4EBF5}
+.hwords .hw-stack:not(#_):not(#__){list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:clamp(24px,3.6vh,42px);align-items:stretch}
+.hwords .hw-r{display:grid;grid-template-columns:minmax(0,clamp(200px,44%,520px)) minmax(0,42ch);align-items:baseline;column-gap:clamp(16px,2.4vw,38px);row-gap:8px}
+.hwords .hw-w:not(#_):not(#__){font-size:clamp(2rem,4.4vw,3.8rem);line-height:1.06;letter-spacing:-.015em;margin:0!important;align-self:auto!important;display:block;min-width:0;overflow-wrap:break-word}
+.hwords .hw-4:not(#_):not(#__){color:var(--amber-l,#F0A868);font-size:clamp(1.7rem,3.4vw,2.9rem)}
+.hwords .hw-d{font-size:1rem;line-height:1.64;color:#D3DDEB}
+.hwords .hw-r:nth-child(2){margin-left:4%}
+.hwords .hw-r:nth-child(3){margin-left:8%}
+.hwords .hw-r:nth-child(4){margin-left:12%}
+.hwords .hw-cta:not(#_){display:inline-flex;align-items:center;gap:9px;min-height:24px;margin-top:clamp(34px,5vh,58px);padding:13px 26px;border-radius:999px;border:1px solid rgba(240,206,130,.5);color:#F0CE82;font-family:var(--fm,ui-monospace,monospace);font-weight:600;font-size:.86rem;text-decoration:none}
+.hwords .hw-cta:hover{background:rgba(240,206,130,.12);border-color:#F0CE82}
+.hwords .hw-foot{text-align:center}
+html.et-plight .hwords .hw-1:not(#_):not(#__):not(#___),html.et-jlight .hwords .hw-1:not(#_):not(#__):not(#___){color:#8A6712!important}
+html.et-plight .hwords .hw-2:not(#_):not(#__):not(#___),html.et-jlight .hwords .hw-2:not(#_):not(#__):not(#___){color:#12558F!important}
+html.et-plight .hwords .hw-3:not(#_):not(#__):not(#___),html.et-jlight .hwords .hw-3:not(#_):not(#__):not(#___){color:#166046!important}
+html.et-plight .hwords .hw-4:not(#_):not(#__):not(#___),html.et-jlight .hwords .hw-4:not(#_):not(#__):not(#___){color:#93490F!important}
+html.et-plight .hwords .hw-k:not(#_):not(#__),html.et-plight .hwords .hw-lead:not(#_):not(#__),html.et-plight .hwords .hw-d:not(#_):not(#__){color:#2A3648!important}
+@media (max-width:860px){html:not(.et-plight):not(.et-jlight) .hwords:not(#_):not(#__){background:linear-gradient(180deg,rgba(6,11,20,.66) 0%,rgba(6,11,20,.46) 32%,rgba(6,11,20,.34) 100%)!important}.hwords .hw-r{grid-template-columns:1fr;margin-left:0!important}.hwords .hw-w:not(#_):not(#__){font-size:clamp(2.1rem,8.6vw,3rem)}.hwords .hw-4:not(#_):not(#__){font-size:clamp(1.6rem,6.4vw,2.2rem)}.hwords:not(#_){padding:11vh 22px 12vh}}
+@media print{.hwords:not(#_):not(#__){display:block!important;padding:14px 0!important;background:none!important}.hwords .hw-w:not(#_):not(#__){font-size:1.15rem!important;font-weight:800}.hwords .hw-r{break-inside:avoid}}
+/* ———— ex-bloc: anonyme ———— */
+/* §123 — mise au propre de l'impression et de l'export PDF de l'accueil.
+   Le bundle partage force break-inside:auto sur toutes les sections, articles et div : rien ne protege
+   les blocs, d'ou des panneaux coupes en deux. Il revele bien .reveal et .rv, mais pas les mots .w du
+   titre, qui restent a opacity:0 — les trois premieres lignes du H1 ne s'imprimaient pas. Et le hero
+   est un <header> frere de <main>, donc hors de portee des regles prefixees par main. */
+@media print{
+  /* 0. le hero est un frere de main : on le prend explicitement dans le peigne */
+  :is(main,header.hero,body>section) :not(#_):not(#__){
+    color:#111!important; -webkit-text-fill-color:#111!important; text-shadow:none!important;
+    -webkit-backdrop-filter:none!important; backdrop-filter:none!important}
+  /* 1. les atomes d'animation qui restaient invisibles a l'impression */
+  .hx-h1 .w:not(#_):not(#__), .hx-slide:not(#_):not(#__), .hx-slide em:not(#_):not(#__),
+  .w:not(#_):not(#__), [class*="reveal"]:not(#_):not(#__), .rv:not(#_):not(#__){
+    opacity:1!important; transform:none!important; filter:none!important;
+    animation:none!important; transition:none!important; visibility:visible!important; clip-path:none!important}
+  /* 2. plus de rectangles blancs derriere le texte */
+  :is(main,header.hero,body>section) :is(p,span,b,strong,em,i,li,h1,h2,h3,h4,figcaption,small,time,td,th):not(#_):not(#__){
+    background:transparent!important; background-image:none!important; box-shadow:none!important}
+  /* 3. boutons imprimes en contour, libelle lisible */
+  :is(main,header.hero) :is(a,button)[class*="btn"]:not(#_):not(#__),
+  :is(main,header.hero) .mln-go:not(#_):not(#__), :is(main,header.hero) .cb-btn:not(#_):not(#__),
+  :is(main,header.hero) .flip-cta:not(#_):not(#__), :is(main,header.hero) .iv-cta:not(#_):not(#__){
+    background:none!important; background-image:none!important; border:1px solid #111!important;
+    color:#111!important; -webkit-text-fill-color:#111!important; box-shadow:none!important;
+    padding:4px 10px!important}
+  /* 4. blocs insecables — le correctif du saut de page proprement dit */
+  main .mln:not(#_):not(#__), main .mln-nav:not(#_):not(#__), main .mln-in:not(#_):not(#__),
+  .hx-strip:not(#_):not(#__), .hx-stat:not(#_):not(#__), main .agh li:not(#_):not(#__),
+  main .pub-c:not(#_):not(#__), main .flip2:not(#_):not(#__), main .hnews article:not(#_):not(#__),
+  main [class*="card"]:not(#_):not(#__), main .frm-c:not(#_):not(#__),
+  main figure:not(#_):not(#__), main table:not(#_):not(#__), main tr:not(#_):not(#__){
+    break-inside:avoid!important; page-break-inside:avoid!important}
+  /* 5. un titre ne reste jamais seul en bas de page */
+  :is(main,header.hero) :is(h1,h2,h3):not(#_):not(#__){break-after:avoid!important; page-break-after:avoid!important}
+  :is(main,header.hero) p:not(#_):not(#__){orphans:3; widows:3}
+  /* 6. chaque maillon commence une page : le document se lit en chapitres */
+  main .mln-set > .mln:not(#_):not(#__){break-before:page!important; page-break-before:always!important}
+  main .mln-set > .mln:first-child:not(#_):not(#__){break-before:auto!important; page-break-before:auto!important}
+  /* 8. les pleines pages cessent de l'etre */
+  header.hero:not(#_):not(#__){background:none!important; background-image:none!important;
+    min-height:0!important; height:auto!important; padding:0 0 12px!important}
+  main .mln:not(#_):not(#__){min-height:0!important; padding:14px 0 18px!important}
+  /* 9. impression deterministe : c'est toujours le message d'ouverture qui part sur le papier,
+        pas la diapo qui se trouvait affichee au moment de l'impression. */
+  .hx-slides .hx-slide:not(#_):not(#__){display:none!important}
+  .hx-slides .hx-slide:first-child:not(#_):not(#__){display:block!important; opacity:1!important}
+  /* 10. l'ancre de defilement n'a pas de sens sur papier ; le CTA sortant, si. */
+  header.hero a[href^="#"].btn:not(#_):not(#__){display:none!important}
+  /* 11. cartes retournables : sur papier, la face arriere se superposait en miroir
+        (le reset d'impression annule les transformations 3D). On n'imprime que la face avant. */
+  .flip-b:not(#_):not(#__), .f2b:not(#_):not(#__){display:none!important}
+  .flip-in:not(#_):not(#__), .flip:not(#_):not(#__), .fx2:not(#_):not(#__){
+    display:block!important; transform:none!important; transform-style:flat!important;
+    min-height:0!important; height:auto!important}
+  .flip-f:not(#_):not(#__), .f2f:not(#_):not(#__){
+    position:static!important; transform:none!important; backface-visibility:visible!important;
+    grid-area:auto!important}
+}
+/* ———— ex-bloc: anonyme ———— */
+/* SS125 - WCAG 2.2 / 2.5.8 : cible pointeur >= 24 px pour les appels a action de tuile */
+.flip-hint:not(#_):not(#__),.flip-cta:not(#_):not(#__){min-height:24px!important}
+.hcp-all:not(#_):not(#__),.hnews-all:not(#_):not(#__){min-height:24px!important;display:inline-flex!important;align-items:center}
+/* ———— ex-bloc: anonyme ———— */
+/* SS134 - harmonisation des bandeaux. 1) Bandeau cookies : le traitement en bande fine ne vivait que dans le bloc home-plus de l accueil (64 px) ; ailleurs il retombait a 112-130 px. 2) Bande d appel final : la regle generique section{padding:var(--sy) 0} s appliquait a #cta-band sur les pages a gabarit complet, doublant le rembourrage deja porte par .cb-in (clamp 38-66 px) -> 380 px contre 237 px ailleurs. */
+#ckn:not(#_):not(#__){left:0!important;right:0!important;bottom:0!important;top:auto!important;width:100%!important;max-width:none!important;border-radius:0!important;padding:9px 22px!important;align-items:center;gap:16px;flex-wrap:wrap;font-size:.8rem!important;box-shadow:0 -8px 30px rgba(4,8,16,.25)}
+#ckn.show:not(#_):not(#__){display:flex!important}
+#ckn .ck-row:not(#_){margin-left:auto;display:flex;align-items:center;gap:10px}
+#ckn .ck-row a:not(#_){padding:6px 8px!important}
+#cta-band:not(#_):not(#__){padding-top:0!important;padding-bottom:0!important}
+/* ———— ex-bloc: anonyme ———— */
+/* Integration des tuiles au fond. Constat mesure avant correctif : ecart-type de
+   luminance 0,00 a 0,48 derriere les tuiles, donc le backdrop-filter floutait une
+   surface parfaitement plate et ne revelait rien. Deux leviers : on donne du relief
+   au fond sous les tuiles, et on fait emerger la tuile au lieu de la poser dessus. */
+:is(section,.wrap>div):has(.card,.card-m,.pmore-card,.ttg-t,.epw-c,.tri-c,.divc,.kpi,.biz-card,.plc-card,.f2f,.glow-card,.jkey,.eth-c,.gov-c,.refc,.prof,.cp,.tri-kpi,.b111-c,.sc-card,.hxi-card,.hncard,.prc-card,.px-card,.ppt-card,.fam-card,.esg-card,.rh-card,.it-card,.pcard,.scard,.pub-c,.pubc):not(#_):not(#__):not(#___):not(#____){
+ background-image:
+  radial-gradient(78% 54% at 8% -4%,rgba(222,172,58,.155),rgba(0,0,0,0) 66%),
+  radial-gradient(64% 46% at 96% 34%,rgba(21,86,150,.105),rgba(0,0,0,0) 64%),
+  radial-gradient(88% 58% at 46% 108%,rgba(196,150,52,.085),rgba(0,0,0,0) 62%)!important;
+}
+html:not(.et-plight):not(.et-jlight) :is(section,.wrap>div):has(.card,.card-m,.pmore-card,.ttg-t,.epw-c,.tri-c,.divc,.kpi,.biz-card,.plc-card,.f2f,.glow-card,.jkey,.eth-c,.gov-c,.refc,.prof,.cp,.tri-kpi,.b111-c,.sc-card,.hxi-card,.hncard,.prc-card,.px-card,.ppt-card,.fam-card,.esg-card,.rh-card,.it-card,.pcard,.scard,.pub-c,.pubc):not(#_):not(#__):not(#___):not(#____){
+ background-image:
+  radial-gradient(78% 54% at 8% -4%,rgba(232,195,106,.105),rgba(0,0,0,0) 66%),
+  radial-gradient(64% 46% at 96% 34%,rgba(90,167,240,.095),rgba(0,0,0,0) 64%),
+  radial-gradient(88% 58% at 46% 108%,rgba(232,195,106,.055),rgba(0,0,0,0) 62%)!important;
+}
+/* Le degrade de la tuile se termine sur la couleur du fond : le bas se fond dans la
+   page, le haut capte la lumiere. L'ombre est un ancrage court, pas une ombre portee. */
+:is(.acq-card,.atc-map,.atc-stat,.avk-card,.avnet-panel,.b111-c,.biz-card,.card,.card-m,.cdm-frame,.ce-card,.ckpi,.cmap-frame,.cp,.cp-note,.ct-cards,.dch-card,.divc,.duo-card,.epw-c,.esg-card,.esg-head,.eth-c,.f2f,.fam-card,.fid-card,.flip-b,.flip-f,.frm-c,.glm-c,.glow-card,.gov-c,.gtt-c,.hncard,.hxi-card,.innov-c,.isv-e,.isv-s,.it-card,.jkey,.kpi,.mad-card,.mfo-lever,.mrc-c,.ngs-t,.oeco-card,.orgc,.pcard,.pe-c,.plc-card,.pmore-card,.pof-col,.ppj-card,.ppl-tile,.ppt-card,.ppte-tile,.prc-card,.presse-card,.prof,.pub-c,.pubc,.px-card,.refc,.rh-card,.rhe-c,.rhl-c,.rhp-c,.sb-card,.sc-card,.scard,.secc,.sfam,.slac,.svc-head,.tri-c,.tri-kpi,.ttc-card,.ttg-t,.vb-card,.voie-card):not(#_):not(#__):not(#___):not(#____){
+ background-image:linear-gradient(180deg,rgba(255,255,255,.88) 0%,rgba(255,253,248,.56) 46%,rgba(252,249,243,.30) 100%)!important;
+ border-color:rgba(26,35,48,.085)!important;
+ box-shadow:0 1px 0 rgba(255,255,255,.85) inset,0 14px 28px -20px rgba(58,46,18,.30),0 2px 5px -3px rgba(58,46,18,.10)!important;
+ -webkit-backdrop-filter:blur(7px) saturate(1.28)!important;backdrop-filter:blur(7px) saturate(1.28)!important;
+}
+html:not(.et-plight):not(.et-jlight) :is(.acq-card,.atc-map,.atc-stat,.avk-card,.avnet-panel,.b111-c,.biz-card,.card,.card-m,.cdm-frame,.ce-card,.ckpi,.cmap-frame,.cp,.cp-note,.ct-cards,.dch-card,.divc,.duo-card,.epw-c,.esg-card,.esg-head,.eth-c,.f2f,.fam-card,.fid-card,.flip-b,.flip-f,.frm-c,.glm-c,.glow-card,.gov-c,.gtt-c,.hncard,.hxi-card,.innov-c,.isv-e,.isv-s,.it-card,.jkey,.kpi,.mad-card,.mfo-lever,.mrc-c,.ngs-t,.oeco-card,.orgc,.pcard,.pe-c,.plc-card,.pmore-card,.pof-col,.ppj-card,.ppl-tile,.ppt-card,.ppte-tile,.prc-card,.presse-card,.prof,.pub-c,.pubc,.px-card,.refc,.rh-card,.rhe-c,.rhl-c,.rhp-c,.sb-card,.sc-card,.scard,.secc,.sfam,.slac,.svc-head,.tri-c,.tri-kpi,.ttc-card,.ttg-t,.vb-card,.voie-card):not(#_):not(#__):not(#___):not(#____){
+ background-image:linear-gradient(180deg,rgba(255,255,255,.075) 0%,rgba(255,255,255,.028) 48%,rgba(255,255,255,.010) 100%)!important;
+ border-color:rgba(232,195,106,.16)!important;
+ box-shadow:0 1px 0 rgba(255,255,255,.08) inset,0 18px 36px -24px rgba(0,0,0,.75)!important;
+}
+/* Exception mesuree : ces bandeaux sont sombres meme en theme clair et leurs tuiles
+   portent du texte blanc. Un degrade blanc les rendrait illisibles. Verifie sur
+   ar.html, brochure(.fr/en), patrimoine, greentech, tchaditech, clients. */
+.kpis :is(.acq-card,.atc-map,.atc-stat,.avk-card,.avnet-panel,.b111-c,.biz-card,.card,.card-m,.cdm-frame,.ce-card,.ckpi,.cmap-frame,.cp,.cp-note,.ct-cards,.dch-card,.divc,.duo-card,.epw-c,.esg-card,.esg-head,.eth-c,.f2f,.fam-card,.fid-card,.flip-b,.flip-f,.frm-c,.glm-c,.glow-card,.gov-c,.gtt-c,.hncard,.hxi-card,.innov-c,.isv-e,.isv-s,.it-card,.jkey,.kpi,.mad-card,.mfo-lever,.mrc-c,.ngs-t,.oeco-card,.orgc,.pcard,.pe-c,.plc-card,.pmore-card,.pof-col,.ppj-card,.ppl-tile,.ppt-card,.ppte-tile,.prc-card,.presse-card,.prof,.pub-c,.pubc,.px-card,.refc,.rh-card,.rhe-c,.rhl-c,.rhp-c,.sb-card,.sc-card,.scard,.secc,.sfam,.slac,.svc-head,.tri-c,.tri-kpi,.ttc-card,.ttg-t,.vb-card,.voie-card):not(#_):not(#__):not(#___):not(#____),.fp-sec :is(.acq-card,.atc-map,.atc-stat,.avk-card,.avnet-panel,.b111-c,.biz-card,.card,.card-m,.cdm-frame,.ce-card,.ckpi,.cmap-frame,.cp,.cp-note,.ct-cards,.dch-card,.divc,.duo-card,.epw-c,.esg-card,.esg-head,.eth-c,.f2f,.fam-card,.fid-card,.flip-b,.flip-f,.frm-c,.glm-c,.glow-card,.gov-c,.gtt-c,.hncard,.hxi-card,.innov-c,.isv-e,.isv-s,.it-card,.jkey,.kpi,.mad-card,.mfo-lever,.mrc-c,.ngs-t,.oeco-card,.orgc,.pcard,.pe-c,.plc-card,.pmore-card,.pof-col,.ppj-card,.ppl-tile,.ppt-card,.ppte-tile,.prc-card,.presse-card,.prof,.pub-c,.pubc,.px-card,.refc,.rh-card,.rhe-c,.rhl-c,.rhp-c,.sb-card,.sc-card,.scard,.secc,.sfam,.slac,.svc-head,.tri-c,.tri-kpi,.ttc-card,.ttg-t,.vb-card,.voie-card):not(#_):not(#__):not(#___):not(#____),.fp-grid :is(.acq-card,.atc-map,.atc-stat,.avk-card,.avnet-panel,.b111-c,.biz-card,.card,.card-m,.cdm-frame,.ce-card,.ckpi,.cmap-frame,.cp,.cp-note,.ct-cards,.dch-card,.divc,.duo-card,.epw-c,.esg-card,.esg-head,.eth-c,.f2f,.fam-card,.fid-card,.flip-b,.flip-f,.frm-c,.glm-c,.glow-card,.gov-c,.gtt-c,.hncard,.hxi-card,.innov-c,.isv-e,.isv-s,.it-card,.jkey,.kpi,.mad-card,.mfo-lever,.mrc-c,.ngs-t,.oeco-card,.orgc,.pcard,.pe-c,.plc-card,.pmore-card,.pof-col,.ppj-card,.ppl-tile,.ppt-card,.ppte-tile,.prc-card,.presse-card,.prof,.pub-c,.pubc,.px-card,.refc,.rh-card,.rhe-c,.rhl-c,.rhp-c,.sb-card,.sc-card,.scard,.secc,.sfam,.slac,.svc-head,.tri-c,.tri-kpi,.ttc-card,.ttg-t,.vb-card,.voie-card):not(#_):not(#__):not(#___):not(#____),.gtp :is(.acq-card,.atc-map,.atc-stat,.avk-card,.avnet-panel,.b111-c,.biz-card,.card,.card-m,.cdm-frame,.ce-card,.ckpi,.cmap-frame,.cp,.cp-note,.ct-cards,.dch-card,.divc,.duo-card,.epw-c,.esg-card,.esg-head,.eth-c,.f2f,.fam-card,.fid-card,.flip-b,.flip-f,.frm-c,.glm-c,.glow-card,.gov-c,.gtt-c,.hncard,.hxi-card,.innov-c,.isv-e,.isv-s,.it-card,.jkey,.kpi,.mad-card,.mfo-lever,.mrc-c,.ngs-t,.oeco-card,.orgc,.pcard,.pe-c,.plc-card,.pmore-card,.pof-col,.ppj-card,.ppl-tile,.ppt-card,.ppte-tile,.prc-card,.presse-card,.prof,.pub-c,.pubc,.px-card,.refc,.rh-card,.rhe-c,.rhl-c,.rhp-c,.sb-card,.sc-card,.scard,.secc,.sfam,.slac,.svc-head,.tri-c,.tri-kpi,.ttc-card,.ttg-t,.vb-card,.voie-card):not(#_):not(#__):not(#___):not(#____),.gtp-g :is(.acq-card,.atc-map,.atc-stat,.avk-card,.avnet-panel,.b111-c,.biz-card,.card,.card-m,.cdm-frame,.ce-card,.ckpi,.cmap-frame,.cp,.cp-note,.ct-cards,.dch-card,.divc,.duo-card,.epw-c,.esg-card,.esg-head,.eth-c,.f2f,.fam-card,.fid-card,.flip-b,.flip-f,.frm-c,.glm-c,.glow-card,.gov-c,.gtt-c,.hncard,.hxi-card,.innov-c,.isv-e,.isv-s,.it-card,.jkey,.kpi,.mad-card,.mfo-lever,.mrc-c,.ngs-t,.oeco-card,.orgc,.pcard,.pe-c,.plc-card,.pmore-card,.pof-col,.ppj-card,.ppl-tile,.ppt-card,.ppte-tile,.prc-card,.presse-card,.prof,.pub-c,.pubc,.px-card,.refc,.rh-card,.rhe-c,.rhl-c,.rhp-c,.sb-card,.sc-card,.scard,.secc,.sfam,.slac,.svc-head,.tri-c,.tri-kpi,.ttc-card,.ttg-t,.vb-card,.voie-card):not(#_):not(#__):not(#___):not(#____),.tt-flag :is(.acq-card,.atc-map,.atc-stat,.avk-card,.avnet-panel,.b111-c,.biz-card,.card,.card-m,.cdm-frame,.ce-card,.ckpi,.cmap-frame,.cp,.cp-note,.ct-cards,.dch-card,.divc,.duo-card,.epw-c,.esg-card,.esg-head,.eth-c,.f2f,.fam-card,.fid-card,.flip-b,.flip-f,.frm-c,.glm-c,.glow-card,.gov-c,.gtt-c,.hncard,.hxi-card,.innov-c,.isv-e,.isv-s,.it-card,.jkey,.kpi,.mad-card,.mfo-lever,.mrc-c,.ngs-t,.oeco-card,.orgc,.pcard,.pe-c,.plc-card,.pmore-card,.pof-col,.ppj-card,.ppl-tile,.ppt-card,.ppte-tile,.prc-card,.presse-card,.prof,.pub-c,.pubc,.px-card,.refc,.rh-card,.rhe-c,.rhl-c,.rhp-c,.sb-card,.sc-card,.scard,.secc,.sfam,.slac,.svc-head,.tri-c,.tri-kpi,.ttc-card,.ttg-t,.vb-card,.voie-card):not(#_):not(#__):not(#___):not(#____),.ttf-grid :is(.acq-card,.atc-map,.atc-stat,.avk-card,.avnet-panel,.b111-c,.biz-card,.card,.card-m,.cdm-frame,.ce-card,.ckpi,.cmap-frame,.cp,.cp-note,.ct-cards,.dch-card,.divc,.duo-card,.epw-c,.esg-card,.esg-head,.eth-c,.f2f,.fam-card,.fid-card,.flip-b,.flip-f,.frm-c,.glm-c,.glow-card,.gov-c,.gtt-c,.hncard,.hxi-card,.innov-c,.isv-e,.isv-s,.it-card,.jkey,.kpi,.mad-card,.mfo-lever,.mrc-c,.ngs-t,.oeco-card,.orgc,.pcard,.pe-c,.plc-card,.pmore-card,.pof-col,.ppj-card,.ppl-tile,.ppt-card,.ppte-tile,.prc-card,.presse-card,.prof,.pub-c,.pubc,.px-card,.refc,.rh-card,.rhe-c,.rhl-c,.rhp-c,.sb-card,.sc-card,.scard,.secc,.sfam,.slac,.svc-head,.tri-c,.tri-kpi,.ttc-card,.ttg-t,.vb-card,.voie-card):not(#_):not(#__):not(#___):not(#____),.grid3 :is(.acq-card,.atc-map,.atc-stat,.avk-card,.avnet-panel,.b111-c,.biz-card,.card,.card-m,.cdm-frame,.ce-card,.ckpi,.cmap-frame,.cp,.cp-note,.ct-cards,.dch-card,.divc,.duo-card,.epw-c,.esg-card,.esg-head,.eth-c,.f2f,.fam-card,.fid-card,.flip-b,.flip-f,.frm-c,.glm-c,.glow-card,.gov-c,.gtt-c,.hncard,.hxi-card,.innov-c,.isv-e,.isv-s,.it-card,.jkey,.kpi,.mad-card,.mfo-lever,.mrc-c,.ngs-t,.oeco-card,.orgc,.pcard,.pe-c,.plc-card,.pmore-card,.pof-col,.ppj-card,.ppl-tile,.ppt-card,.ppte-tile,.prc-card,.presse-card,.prof,.pub-c,.pubc,.px-card,.refc,.rh-card,.rhe-c,.rhl-c,.rhp-c,.sb-card,.sc-card,.scard,.secc,.sfam,.slac,.svc-head,.tri-c,.tri-kpi,.ttc-card,.ttg-t,.vb-card,.voie-card):not(#_):not(#__):not(#___):not(#____),.grid2 :is(.acq-card,.atc-map,.atc-stat,.avk-card,.avnet-panel,.b111-c,.biz-card,.card,.card-m,.cdm-frame,.ce-card,.ckpi,.cmap-frame,.cp,.cp-note,.ct-cards,.dch-card,.divc,.duo-card,.epw-c,.esg-card,.esg-head,.eth-c,.f2f,.fam-card,.fid-card,.flip-b,.flip-f,.frm-c,.glm-c,.glow-card,.gov-c,.gtt-c,.hncard,.hxi-card,.innov-c,.isv-e,.isv-s,.it-card,.jkey,.kpi,.mad-card,.mfo-lever,.mrc-c,.ngs-t,.oeco-card,.orgc,.pcard,.pe-c,.plc-card,.pmore-card,.pof-col,.ppj-card,.ppl-tile,.ppt-card,.ppte-tile,.prc-card,.presse-card,.prof,.pub-c,.pubc,.px-card,.refc,.rh-card,.rhe-c,.rhl-c,.rhp-c,.sb-card,.sc-card,.scard,.secc,.sfam,.slac,.svc-head,.tri-c,.tri-kpi,.ttc-card,.ttg-t,.vb-card,.voie-card):not(#_):not(#__):not(#___):not(#____){
+ background-image:none!important;
+ border-color:rgba(255,255,255,.16)!important;
+}
+/* ———— ex-bloc: anonyme ———— */
+/* Immersion sans bandes (chapitre 142). Le decor photographique couvre la page ; les sections ne portent plus de panneau translucide, seules les tuiles font verre. Le voile global de .rootland::after est renforce a .68/.78 pour compenser la disparition des panneaux, valeur fixee par mesure du contraste au pixel peint. */.rootland{position:fixed;inset:0;z-index:-2;background:none center/cover no-repeat;pointer-events:none}.rootland::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,12,21,.68) 0%,rgba(7,12,21,.78) 100%)}html{background:#0d1524}body{background:transparent!important}main{background:transparent!important}/* plus aucun panneau de section : la photo court d'un bord a l'autre */html:not(.et-plight):not(.et-jlight) main>section,html:not(.et-plight):not(.et-jlight) body>section,html:not(.et-plight):not(.et-jlight) main>div>section{background:transparent!important;border-radius:0!important}html:not(.et-plight):not(.et-jlight) main,html:not(.et-plight):not(.et-jlight) footer{--muted:#C3D0E0}main h2,main h3,section h2,section h3{text-shadow:0 2px 18px rgba(0,0,0,.7)}html:not(.et-plight):not(.et-jlight) main>section>*>p,html:not(.et-plight):not(.et-jlight) main p.lead,html:not(.et-plight):not(.et-jlight) main .intro{text-shadow:0 1px 12px rgba(0,0,0,.55)}html:not(.et-plight):not(.et-jlight) footer{background:rgba(14,22,38,.72)!important;text-shadow:0 1px 10px rgba(0,0,0,.55)}footer a{text-shadow:none}/* pour qui demande plus de contraste, on rend les panneaux */@media(prefers-contrast:more){html:not(.et-plight):not(.et-jlight) main>section,html:not(.et-plight):not(.et-jlight) body>section,html:not(.et-plight):not(.et-jlight) main>div>section{background:rgba(14,22,38,.92)!important}}/* Theme clair : le voile doit etre clair, sinon la photo sombre transforme la page creme en champ gris. Contraste verifie : le texte sombre reste au-dessus de 6:1 sur les six pages temoins. */html.et-plight .rootland::after,html.et-jlight .rootland::after{background:linear-gradient(180deg,rgba(250,247,241,.82) 0%,rgba(250,247,241,.90) 100%)}
+/* ———— ex-bloc: anonyme ———— */
+/* Chapeaux des heros (chapitre 143). Defaut anterieur a l'immersion, verifie
+   sur 99136d2 : dore #F0CE82 pose directement sur la photo du heros, mesure de
+   1,96 a 3,28:1 sur 9 pages dans les deux themes. Le chapeau recoit une pastille
+   au vocabulaire deja employe sur le site : fond sombre maitrise, filet dore,
+   flou leger. Le texte est force au dore clair car sur certaines pages il etait
+   sombre en theme clair, ce qui donnerait du sombre sur du sombre. */
+.hero .kick:not(#_):not(#__):not(#___):not(#____):not(#_____),
+.dsh .kick:not(#_):not(#__):not(#___):not(#____):not(#_____),
+.pghero .kick:not(#_):not(#__):not(#___):not(#____):not(#_____),
+.hx-hero .kick:not(#_):not(#__):not(#___):not(#____):not(#_____){
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  background:linear-gradient(90deg,rgba(14,22,38,.76) 0%,rgba(14,22,38,.64) 100%)!important;
+  padding:5px 13px!important;
+  border-radius:999px!important;
+  border:1px solid rgba(240,206,130,.26)!important;
+  -webkit-backdrop-filter:blur(6px);
+  backdrop-filter:blur(6px);
+  color:#F2D28C!important;
+  -webkit-text-fill-color:#F2D28C!important;
+}
+/* charte.html : le heros .dsh commence a y=0, le chapeau se trouvait a 72 px,
+   entierement masque par la barre fixe. On lui rend la hauteur de la barre. */
+.dsh:not(#_):not(#__):not(#___){
+  padding-top:calc(var(--nav-h,110px) + 26px)!important;
+}
+@media (max-width:640px){
+  .hero .kick:not(#_):not(#__),
+  .dsh .kick:not(#_):not(#__),
+  .pghero .kick:not(#_):not(#__),
+  .hx-hero .kick:not(#_):not(#__){
+    padding:4px 10px!important;
+  }
+}
+/* ———— ex-bloc: anonyme ———— */
+/* Verre immersif final (chapitre 144). Le diagnostic du chapitre est dans
+   MAINTENANCE : la regle d'immersion du chapitre 141 correspondait bien aux
+   sections mais perdait la cascade contre les halos du chapitre 136. Ce bloc,
+   place en dernier dans le head et arme a six identifiants, tranche : plus
+   aucune bande large entre la photo et les tuiles. La barre de navigation et
+   le pied de page gardent leur fond — ils portent la lisibilite de la
+   navigation, pas le decor. */
+
+/* 1. Toute section et tout panneau large deviennent transparents. */
+html:has(.rootland) main section:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
+html:has(.rootland) body > section:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
+html:has(.rootland) main > div > section:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
+html:has(.rootland) .cmpw:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
+html:has(.rootland) .pj-banner:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
+html:has(.rootland) .docn:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
+html:has(.rootland) .it-grid:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
+html:has(.rootland) .epw-g:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
+html:has(.rootland) .biz-grid:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______){
+  background-color:transparent!important;
+  background-image:none!important;
+  box-shadow:none!important;
+}
+
+/* 2. Le bandeau d'appel a l'action garde une presence, mais en verre. */
+html:has(.rootland) #cta-band:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______){
+  background-color:transparent!important;
+  background-image:linear-gradient(180deg,rgba(14,22,38,.22) 0%,rgba(14,22,38,.34) 100%)!important;
+  -webkit-backdrop-filter:blur(10px);
+  backdrop-filter:blur(10px);
+}
+html.et-plight:has(.rootland) #cta-band:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
+html.et-jlight:has(.rootland) #cta-band:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______){
+  background-image:linear-gradient(180deg,rgba(252,250,246,.42) 0%,rgba(252,250,246,.58) 100%)!important;
+}
+
+/* 3. Theme clair : le voile creme s'allege pour que la photo traverse.
+   Valeur fixee par mesure du contraste au pixel peint apres application. */
+html.et-plight .rootland::after,
+html.et-jlight .rootland::after{
+  background:linear-gradient(180deg,rgba(250,247,241,.66) 0%,rgba(250,247,241,.78) 100%)!important;
+}
+
+/* 4. En preference de contraste renforce, les panneaux reviennent opaques. */
+@media (prefers-contrast:more){
+  html:has(.rootland) main section:not(#_):not(#__):not(#___):not(#____),
+  html:has(.rootland) body > section:not(#_):not(#__):not(#___):not(#____){
+    background-color:rgba(14,22,38,.92)!important;
+  }
+  html.et-plight:has(.rootland) main section:not(#_):not(#__):not(#___):not(#____),
+  html.et-plight:has(.rootland) body > section:not(#_):not(#__):not(#___):not(#____){
+    background-color:rgba(250,247,241,.96)!important;
+  }
+}
+/* ———— ex-bloc: anonyme ———— */
+/* QA des tuiles versus majors (chapitre 147).
+   Releve interaction sur 30 familles de tuiles : survol, focus clavier,
+   curseur, semantique lien, rayon, transition. Trois ecarts mesures :
+   1. a.glm-c (glossaire) : la regle de survol existe (bordure doree) mais
+      perd la cascade — aucun retour visuel au survol d'une carte-lien.
+   2. .flip-hint / .flip-cta (accueil) : 73x24 px — conforme au minimum WCAG
+      2.5.8 (24) mais sous la barre de confort tactile 44 des majors.
+   3. button.f2hint (cartes defi/reponse des 16 pages poles) : 29 px de haut,
+      style pose en ligne par le script — meme ecart de confort tactile.
+   Le confort 44 px ne s'applique qu'aux pointeurs grossiers : l'esthetique
+   souris reste inchangee. */
+a.glm-c:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______){
+  transition:border-color .2s,transform .25s var(--ease,ease),box-shadow .25s!important;
+}
+a.glm-c:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):hover{
+  border-color:var(--gold-l,#E8C36A)!important;
+  transform:translateY(-3px);
+  box-shadow:0 14px 30px -16px rgba(0,0,0,.5);
+}
+a.glm-c:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):focus-visible{
+  border-color:var(--gold-l,#E8C36A)!important;
+}
+@media (pointer:coarse){
+  .flip-hint:not(#_):not(#__):not(#___):not(#____),
+  .flip-cta:not(#_):not(#__):not(#___):not(#____){
+    min-height:44px!important;
+    min-width:44px!important;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+  }
+  button.f2hint:not(#_):not(#__):not(#___):not(#____){
+    min-height:44px!important;
+    padding:10px 16px!important;
+  }
+}
+@media (prefers-reduced-motion:reduce){
+  a.glm-c:not(#_):not(#__):not(#___):hover{
+    transform:none;
+  }
+}
+/* ———— ex-bloc: anonyme ———— */
+/* ===== Couche vitrine ultra premium (ch.196) — additive, sans refonte ===== */
+/* 1. Reflet anime sur l'accent du hero */
+.hx-h1 em{background:linear-gradient(110deg,var(--gold-l) 0%,var(--gold) 34%,#FFF3D6 50%,var(--gold-l) 66%,var(--gold) 100%);background-size:260% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:prem-sheen 7s ease-in-out infinite}
+@keyframes prem-sheen{0%,100%{background-position:0% 0}50%{background-position:100% 0}}
+/* 2. Respiration lente du visuel de fond (Ken Burns discret, sur le conteneur - les slides i gardent leur animation:none historique) */
+.diapo{animation:prem-kb 28s ease-in-out infinite alternate;will-change:transform}
+@keyframes prem-kb{from{transform:scale(1)}to{transform:scale(1.045)}}
+/* 3. Selection de texte aux couleurs maison */
+::selection{background:var(--gold,#E8C36A);color:#0B1526}
+/* 4. Statistiques du hero : elevation et filet or au survol */
+.hx-strip .hx-stat:hover{transform:translateY(-3px);border-color:color-mix(in srgb,var(--gold-l,#F0CE82) 55%,transparent);box-shadow:0 14px 34px -18px rgba(232,195,106,.45)}
+/* 5. CTA or : lumiere interne + balayage au survol */
+.btn.btn-p{position:relative;overflow:hidden;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 10px 26px -14px rgba(232,195,106,.55)}
+.btn.btn-p::after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.35) 50%,transparent 70%);transform:translateX(-120%);transition:transform .7s var(--ease,ease);pointer-events:none}
+.btn.btn-p:hover::after{transform:translateX(120%)}
+/* 6. Cartes actualites : lueur dorée douce au survol */
+.hncard:hover{box-shadow:0 22px 44px -24px color-mix(in srgb,var(--pac,#F2B45A) 55%,transparent)}
+/* Respect strict de prefers-reduced-motion */
+@media (prefers-reduced-motion:reduce){
+  .hx-h1 em{animation:none}
+  .diapo{animation:none}
+  .btn.btn-p::after{display:none}
+  .hx-strip .hx-stat:hover{transform:none}
+}
+/* ———— ex-bloc: anonyme ———— */
+/* Ch447 - le carnet du maillon : un recit date par chapitre de la chaine. */
+.mln-carnet{display:flex;align-items:center;gap:12px;margin-top:18px;padding:11px 14px;border-radius:14px;
+ border:1px dashed color-mix(in srgb,var(--mac) 32%,transparent);text-decoration:none;
+ background:color-mix(in srgb,var(--mac) 6%,transparent);max-width:52ch}
+.mln-carnet time{font-family:var(--fm,ui-monospace,monospace);font-size:.7rem;font-weight:700;
+ letter-spacing:.09em;text-transform:uppercase;color:var(--mac);white-space:nowrap}
+.mln-carnet span{font-size:.9rem;line-height:1.42;color:#C7D2E4;flex:1;min-width:0}
+html.et-plight .mln-carnet span{color:#2A3648}
+.mln-carnet b{color:var(--mac);font-weight:700;transition:transform .2s ease}
+.mln-carnet:hover b{transform:translateX(4px)}
+.mln-carnet:focus-visible{outline:2px solid var(--mac);outline-offset:3px}
+@media(min-width:1000px){
+ .mln-rev .mln-carnet{flex-direction:row-reverse;text-align:right;margin-left:auto}
+ .mln-rev .mln-carnet:hover b{transform:translateX(-4px)}
+}
+@media(max-width:640px){.mln-carnet{flex-wrap:wrap}.mln-carnet span{flex-basis:100%}}
+/* ———— ex-bloc: anonyme ———— */
+/* Ch449 - les quatre capacites vivent dans chaque chapitre de maillon :
+   la rangee de capacites integre la carte de services, la section appuis disparait. */
+.mln-caps{margin-top:14px;padding-top:10px;border-top:1px solid color-mix(in srgb,var(--mac) 18%,transparent)}
+.mln-caps .mln-nh{margin-bottom:2px}
+.mln-caps a{display:flex;align-items:center;gap:9px;min-height:38px;padding:7px 2px;
+ font-size:.86rem;line-height:1.3;text-decoration:none;color:#DDE5EF;
+ border-bottom:1px solid color-mix(in srgb,var(--mac) 10%,transparent)}
+.mln-caps a:last-child{border-bottom:0}
+html.et-plight .mln-caps a{color:#2A3648}
+.mln-caps i{flex:0 0 8px;width:8px;height:8px;border-radius:50%;background:var(--cd);box-shadow:0 0 6px var(--cd)}
+.mln-caps em{font-style:normal;opacity:.62;font-size:.78rem}
+.mln-caps a::after{content:"→";margin-left:auto;font-family:var(--fm,ui-monospace,monospace);
+ opacity:0;transform:translateX(-4px);transition:opacity .2s ease,transform .2s ease;color:var(--cd)}
+.mln-caps a:hover{color:var(--cd)}
+.mln-caps a:hover::after{opacity:1;transform:translateX(0)}
+.mln-caps a:focus-visible{outline:2px solid var(--cd);outline-offset:2px;border-radius:6px}
+/* ———— ex-bloc: anonyme ———— */
+/* Ch452 - ultra revue espaces et typo de la home :
+   le titre de la section Agir rejoint l echelle commune des H2 de section
+   (24.75px mesures contre 35-37 chez ses voisins), et les trois paragraphes
+   de tete qui couraient sur 94 caracteres par ligne sont ramenes sous 70. */
+#agir>.wrap>h2:not(#_){font-size:var(--ts-4,clamp(1.55rem,3.4vw,2.35rem))!important}
+#coeurs .acth-l:not(#_){max-width:68ch}
+#chiffres .hxi-lead:not(#_){max-width:68ch}
+/* ———— ex-bloc: anonyme ———— */
+/* Ch459 - la home ultra premium sur les trois poles : le vocabulaire
+   du chapitre 443 (matiere, ordinaux, bandes) applique aux chapitres de maillon.
+   CSS seule, aucun markup nouveau. */
+#coeurs .mln{border-top:1px solid color-mix(in srgb,var(--mac) 26%,transparent)}
+#coeurs .mln-kpis span{border-radius:16px;
+ border:1px solid color-mix(in srgb,var(--mac) 34%,transparent);
+ background:linear-gradient(160deg,color-mix(in srgb,var(--mac) 12%,transparent),color-mix(in srgb,var(--mac) 4%,transparent));
+ box-shadow:0 14px 30px -18px color-mix(in srgb,var(--mac) 55%,transparent)}
+#coeurs .mln-kpis b{font-variant-numeric:tabular-nums}
+#coeurs .mln-nav{border-radius:22px;
+ border-color:color-mix(in srgb,var(--mac) 34%,transparent);
+ box-shadow:0 24px 48px -26px color-mix(in srgb,var(--mac) 60%,transparent);
+ position:relative;overflow:hidden}
+#coeurs .mln-nav::before{content:"";position:absolute;inset:0 0 auto 0;height:2px;
+ background:linear-gradient(90deg,transparent,var(--mac),transparent)}
+#coeurs .mln-nh{color:var(--mac);letter-spacing:.18em}
+#coeurs .mln-nh::before{content:"◆";margin-right:8px;font-size:.62em;vertical-align:2px}
+#coeurs .mln-carnet{border-style:solid;
+ border-color:color-mix(in srgb,var(--mac) 36%,transparent);
+ background:color-mix(in srgb,var(--mac) 9%,rgba(10,16,28,.35));
+ box-shadow:0 12px 26px -18px color-mix(in srgb,var(--mac) 50%,transparent)}
+html.et-plight #coeurs .mln-carnet{background:color-mix(in srgb,var(--mac) 8%,rgba(255,255,255,.55))}
+#coeurs .mln-step b{font-size:1.15rem;
+ text-shadow:0 0 18px color-mix(in srgb,var(--mac) 55%,transparent)}
+@media(prefers-reduced-motion:no-preference){
+ #coeurs .mln-nav{transition:box-shadow .3s ease}
+ #coeurs .mln:hover .mln-nav{box-shadow:0 30px 60px -26px color-mix(in srgb,var(--mac) 75%,transparent)}
+}
+
+/* Ch527 — immersion photo de la home : bandes et panneaux en verre leger, la photo respire. */
+.nh-une:not(#_):not(#__){background:rgba(8,14,26,.36)!important;-webkit-backdrop-filter:blur(12px) saturate(1.25);backdrop-filter:blur(12px) saturate(1.25)}
+html.et-plight .nh-une:not(#_):not(#__){background:rgba(255,255,255,.55)!important}
+.nh-kpi:not(#_):not(#__):not(#___)>div{background:linear-gradient(168deg,rgba(13,23,40,.42) 0%,rgba(10,18,32,.34) 52%,rgba(8,15,27,.44) 100%)!important}
+html.et-plight .nh-kpi:not(#_):not(#__):not(#___)>div,html.et-jlight .nh-kpi:not(#_):not(#__):not(#___)>div{background:linear-gradient(168deg,rgba(255,255,255,.58) 0%,rgba(255,252,244,.48) 55%,rgba(255,255,255,.58) 100%)!important}
+:is(#coeurs,#appuis) .mln-nav:not(#_):not(#__){flex-basis:280px;background:rgba(9,16,29,.42)!important;-webkit-backdrop-filter:blur(14px) saturate(1.3);backdrop-filter:blur(14px) saturate(1.3)}
+html.et-plight :is(#coeurs,#appuis) .mln-nav:not(#_):not(#__){background:rgba(255,255,255,.58)!important}
+html:not(.et-plight):not(.et-jlight) .dur-c:not(#_):not(#__){background:rgba(10,17,30,.44)!important;-webkit-backdrop-filter:blur(12px) saturate(1.25);backdrop-filter:blur(12px) saturate(1.25)}
+html:not(.et-plight):not(.et-jlight) #reperes .doc-c:not(#_):not(#__){background:rgba(10,17,30,.44)!important;-webkit-backdrop-filter:blur(12px) saturate(1.25);backdrop-filter:blur(12px) saturate(1.25)}
+@media (prefers-reduced-transparency:reduce){.nh-une:not(#_):not(#__),.nh-kpi:not(#_):not(#__):not(#___)>div,:is(#coeurs,#appuis) .mln-nav:not(#_):not(#__),html:not(.et-plight):not(.et-jlight) .dur-c:not(#_):not(#__),html:not(.et-plight):not(.et-jlight) #reperes .doc-c:not(#_):not(#__){background:#101B2E!important;-webkit-backdrop-filter:none;backdrop-filter:none}}
+
+/* Ch540 - Direction artistique Glassmorphism Premium : petrole #003049, or #FFB703, cyan #00B4D8, verre 20px. */
+:root{--pet:#003049;--pet-d:#00243A;--gold-l:#FFB703;--blue-l:#00B4D8;
+--g-bg:linear-gradient(158deg,rgba(0,55,84,.50),rgba(0,45,69,.60) 55%,rgba(0,34,52,.68));
+--g-brd:rgba(255,255,255,.20);--g-brd-str:rgba(255,255,255,.32);
+--g-blur:saturate(170%) blur(20px);--g-radius:20px}
+html:not(.et-plight){background:#00243A!important}
+html:not(.et-plight) body::before{background:
+ radial-gradient(38% 42% at 16% 20%,rgba(255,183,3,.30),transparent 60%),
+ radial-gradient(34% 40% at 84% 14%,rgba(0,180,216,.30),transparent 58%),
+ radial-gradient(48% 50% at 76% 84%,rgba(0,126,160,.34),transparent 60%),
+ radial-gradient(42% 46% at 24% 88%,rgba(255,183,3,.18),transparent 58%)}
+html:not(.et-plight)::before{background:
+ radial-gradient(30% 34% at 70% 30%,rgba(255,183,3,.22),transparent 60%),
+ radial-gradient(28% 32% at 30% 66%,rgba(0,180,216,.22),transparent 60%)}
+.nav.nx:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5):not(#e6){background:rgba(0,48,73,.38)!important;background-color:rgba(0,48,73,.38)!important;background-image:none!important;-webkit-backdrop-filter:saturate(170%) blur(20px)!important;backdrop-filter:saturate(170%) blur(20px)!important;border-bottom:1px solid rgba(255,255,255,.13);box-shadow:0 12px 34px rgba(0,18,30,.35)}
+html.et-plight .nav.nx:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5):not(#e6){background:rgba(255,255,255,.60)!important;background-color:rgba(255,255,255,.60)!important;background-image:none!important;border-bottom-color:rgba(0,48,73,.14);box-shadow:0 10px 30px rgba(0,48,73,.10)}
+.nh-une:not(#_):not(#__){background:rgba(0,38,58,.40)!important;-webkit-backdrop-filter:saturate(160%) blur(20px)!important;backdrop-filter:saturate(160%) blur(20px)!important;border:1px solid rgba(255,255,255,.16)!important}
+.nh-kpi:not(#_):not(#__):not(#___)>div{background:linear-gradient(168deg,rgba(0,44,67,.46) 0%,rgba(0,36,56,.38) 52%,rgba(0,30,47,.48) 100%)!important;-webkit-backdrop-filter:saturate(160%) blur(20px)!important;backdrop-filter:saturate(160%) blur(20px)!important;border:1px solid rgba(255,255,255,.15)!important}
+:is(#coeurs,#appuis) .mln-nav:not(#_):not(#__){background:rgba(0,40,61,.44)!important;-webkit-backdrop-filter:saturate(160%) blur(20px)!important;backdrop-filter:saturate(160%) blur(20px)!important}
+html:not(.et-plight):not(.et-jlight) .dur-c:not(#_):not(#__),html:not(.et-plight):not(.et-jlight) #reperes .doc-c:not(#_):not(#__){background:rgba(0,38,58,.46)!important;-webkit-backdrop-filter:saturate(160%) blur(20px)!important;backdrop-filter:saturate(160%) blur(20px)!important;border:1px solid rgba(255,255,255,.14)!important}
+html.et-plight .nh-une:not(#_):not(#__),html.et-plight .nh-kpi:not(#_):not(#__):not(#___)>div,html.et-plight :is(#coeurs,#appuis) .mln-nav:not(#_):not(#__){border:1px solid rgba(0,48,73,.16)!important}
+@media (prefers-reduced-transparency:reduce){.nav.nx:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5):not(#e6){background:#003049!important;-webkit-backdrop-filter:none;backdrop-filter:none}html.et-plight .nav.nx:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5):not(#e6){background:#F5F7FA!important}}
+/* ---- carte interactive du Tchad ---- */
+#carte540 .c540-g{display:grid;grid-template-columns:minmax(250px,370px) 1fr;gap:24px;align-items:start}
+@media(max-width:820px){#carte540 .c540-g{grid-template-columns:1fr}}
+#carte540 svg{width:100%;height:auto;display:block}
+.c540-b{cursor:pointer}
+.c540-b ellipse{transition:fill-opacity .25s,stroke-width .25s}
+.c540-b:hover ellipse,.c540-b:focus-visible ellipse,.c540-b.on ellipse{fill-opacity:.38;stroke-width:2.2}
+.c540-b:focus-visible{outline:2px solid var(--blue-l);outline-offset:3px}
+.c540-p{border-radius:var(--g-radius,20px);border:1px solid var(--g-brd);background:var(--g-bg);-webkit-backdrop-filter:var(--g-blur);backdrop-filter:var(--g-blur);padding:20px 22px;min-height:172px;box-shadow:0 16px 40px rgba(0,18,30,.35)}
+html.et-plight #carte540 .c540-p{background:rgba(255,255,255,.62);border-color:rgba(0,48,73,.16);box-shadow:0 12px 30px rgba(0,48,73,.10)}
+.c540-p b{display:block;font-family:var(--fd);font-size:1.06rem;letter-spacing:-.01em;margin:0 0 8px;color:var(--gold-l)}
+.c540-p p{margin:0 0 10px;font-size:.94rem;line-height:1.55;color:var(--muted-l,#B8C6DA)}
+html.et-plight #carte540 .c540-p p{color:#3D4A5C}
+.c540-kpis{display:flex;flex-wrap:wrap;gap:8px}
+.c540-kpis span{font-family:var(--fm);font-size:.6875rem;letter-spacing:.05em;padding:5px 11px;border-radius:12px;border:1px solid var(--g-brd);background:rgba(0,180,216,.10);color:var(--blue-l)}
+html.et-plight #carte540 .c540-kpis span{background:rgba(0,120,155,.08);border-color:rgba(0,48,73,.18)}
+.c540-src{font-size:.78rem;color:var(--muted-l,#8FA1B8);margin:14px 0 0}
+html.et-plight #carte540 .c540-src{color:#5A6472}
+.c540-src a{color:var(--blue-l)}
+.c540-leg{display:flex;flex-wrap:wrap;gap:14px;margin:10px 0 0;font-size:.78rem;color:var(--muted-l,#8FA1B8)}
+html.et-plight #carte540 .c540-leg{color:#5A6472}
+.c540-leg i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;vertical-align:-1px}
+html.et-plight #carte540 .c540-p b{color:#8A6210}
+html.et-plight #carte540 .c540-kpis span{color:#00567A}
+html.et-plight #carte540 .c540-src a{color:#00567A}
+html.et-plight #carte540 .c540-pl{fill:#00567A}
+html.et-plight #carte540 .c540-out{stroke:rgba(0,48,73,.45)}
+html.et-plight #carte540 .c540-b ellipse[stroke="#FFB703"]{stroke:#B07C00}
+html.et-plight #carte540 .c540-b ellipse[stroke="#00B4D8"]{stroke:#00789B}
+html.et-plight .dt:not(#_){opacity:1!important;color:#6B5012!important}
+.c540-lb{font-family:var(--fm);font-size:7.5px;letter-spacing:.08em;fill:#D5E3F0;pointer-events:none}
+html.et-plight #carte540 .c540-lb{fill:#1B2634}
+
+/* Ch661 — revue visuelle de l accueil : une seule grille, une seule echelle de titres */
+@media(min-width:761px){html body.hm :is(#durabilite,#carnets,#jalons640,#reperes):not(#k1):not(#k2):not(#k3) > .wrap{max-width:var(--mw,1200px)!important}}
+html body.hm :is(#coeurs .t550-head,#chiffres .wrap,#carte540 .wrap,#durabilite .wrap,#carnets .wrap,#jalons640 .wrap,#agir .wrap,#reperes .wrap):not(#k1):not(#k2):not(#k3) > h2{font-size:clamp(1.35rem,3.4vw,2.35rem)!important;line-height:1.08!important;font-weight:800!important}
+html body.hm :is(.dur-k,.doc-k):not(#k1):not(#k2):not(#k3){font-size:.7rem!important;letter-spacing:.2em!important}
+html body.hm .hncard-meta:not(#k1):not(#k2){flex-wrap:wrap;row-gap:6px}
+html body.hm .hncard-meta:not(#k1):not(#k2) > span{white-space:nowrap}
+html body.hm .hncard-meta:not(#k1):not(#k2) > .hncard-tag{flex-basis:100%;white-space:normal}
+html body.hm #carnets .hcp-all:not(#k1):not(#k2){display:inline-flex;margin:22px 18px 0 0;font-size:.8rem;color:var(--gold-l,#E8C36A);border-bottom:1px solid color-mix(in srgb,var(--gold-l,#E8C36A) 40%,transparent);padding-bottom:2px;text-decoration:none}
+html.et-plight body.hm #carnets .hcp-all:not(#k1):not(#k2),html.et-jlight body.hm #carnets .hcp-all:not(#k1):not(#k2){color:#7A5C14;border-bottom-color:rgba(122,92,20,.4)}
+html:is(.et-plight,.et-jlight) body.hm .hncard-meta:not(#k1):not(#k2):not(#k3){background:none!important;border:0!important;box-shadow:none!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+html body.hm .hncard-meta:not(#k1):not(#k2):not(#k3) > .hncard-tag:not(#k4){background:none!important;border-color:transparent!important;box-shadow:none!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+html:is(.et-plight,.et-jlight) #aurail:not(#k1) a:not(.on):not(:hover){background:rgba(255,255,255,.78);border-color:rgba(16,22,31,.14)}
+@media(max-width:700px){html body.hm .nh-kpi:not(#m1):not(#m2):not(#m3):not(#m4):not(#m5):not(#m6):not(#m7):not(#m8):not(#m9):not(#m10):not(#m11):not(#m12):not(#m13):not(#m14):not(#m15):not(#m16):not(#m17):not(#m18):not(#m19):not(#m20):not(#m21):not(#m22):not(#m23):not(#m24):not(#m25):not(#m26):not(#m27){grid-template-columns:1fr!important}
+html body.hm .nh-kpi:not(#m1):not(#m2):not(#m3):not(#m4):not(#m5):not(#m6):not(#m7):not(#m8):not(#m9):not(#m10):not(#m11):not(#m12):not(#m13):not(#m14):not(#m15):not(#m16):not(#m17):not(#m18):not(#m19):not(#m20):not(#m21):not(#m22):not(#m23):not(#m24):not(#m25):not(#m26):not(#m27)>*{border-left:0!important;padding-left:0!important;padding-right:0!important;border-top:1px solid var(--hair,rgba(255,255,255,.18))!important;padding-top:14px!important}
+html body.hm .nh-kpi:not(#m1):not(#m2):not(#m3):not(#m4):not(#m5):not(#m6):not(#m7):not(#m8):not(#m9):not(#m10):not(#m11):not(#m12):not(#m13):not(#m14):not(#m15):not(#m16):not(#m17):not(#m18):not(#m19):not(#m20):not(#m21):not(#m22):not(#m23):not(#m24):not(#m25):not(#m26):not(#m27)>*:first-child{border-top:0!important;padding-top:0!important}}
+
+/* Liquid glass, home (accueil) : les trois panneaux du triptyque (#coeurs) passent d'un fond quasi
+   opaque a un verre veritablement transparent — la photo du fond se devine a travers, avec un reflet
+   en haut du panneau, comme une vitre. Premiere zone traitee ; le reste du site suivra. */
+html body.hm #coeurs .t550-p:not(#g1):not(#g2):not(#g3):not(#g4):not(#g5):not(#g6):not(#g7):not(#g8):not(#g9):not(#g10):not(#g11):not(#g12):not(#g13):not(#g14):not(#g15):not(#g16):not(#g17):not(#g18):not(#g19):not(#g20):not(#g21):not(#g22):not(#g23):not(#g24):not(#g25):not(#g26){
+  background:linear-gradient(160deg,rgba(0,54,82,.24) 0%,rgba(0,44,67,.30) 55%,rgba(0,31,50,.36) 100%)!important;
+  -webkit-backdrop-filter:saturate(180%) blur(26px)!important;backdrop-filter:saturate(180%) blur(26px)!important;
+  border:1px solid rgba(255,255,255,.24)!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.30),inset 0 0 0 1px rgba(255,255,255,.04),0 18px 44px rgba(0,10,18,.38)!important;
+  position:relative;overflow:hidden;
+}
+html.et-plight body.hm #coeurs .t550-p:not(#g1):not(#g2):not(#g3):not(#g4):not(#g5):not(#g6):not(#g7):not(#g8):not(#g9):not(#g10):not(#g11):not(#g12):not(#g13):not(#g14):not(#g15):not(#g16):not(#g17):not(#g18):not(#g19):not(#g20):not(#g21):not(#g22):not(#g23):not(#g24):not(#g25):not(#g26),html.et-jlight body.hm #coeurs .t550-p:not(#g1):not(#g2):not(#g3):not(#g4):not(#g5):not(#g6):not(#g7):not(#g8):not(#g9):not(#g10):not(#g11):not(#g12):not(#g13):not(#g14):not(#g15):not(#g16):not(#g17):not(#g18):not(#g19):not(#g20):not(#g21):not(#g22):not(#g23):not(#g24):not(#g25):not(#g26){
+  background:linear-gradient(160deg,rgba(255,255,255,.42) 0%,rgba(255,252,244,.36) 55%,rgba(255,255,255,.44) 100%)!important;
+  border-color:rgba(0,48,73,.20)!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.55),0 14px 36px rgba(0,48,73,.14)!important;
+}
+html body.hm #coeurs .t550-p::before{
+  content:"";position:absolute;inset:0;pointer-events:none;z-index:0;
+  background:linear-gradient(115deg,rgba(255,255,255,.16) 0%,transparent 30%,transparent 72%,rgba(255,255,255,.06) 100%);
+  mix-blend-mode:screen;
+}
+html body.hm #coeurs .t550-kpi:not(#k1):not(#k2){
+  background:rgba(255,255,255,.07)!important;
+  -webkit-backdrop-filter:blur(8px)!important;backdrop-filter:blur(8px)!important;
+  border-color:rgba(255,255,255,.20)!important;
+}
+html.et-plight body.hm #coeurs .t550-kpi:not(#k1):not(#k2),html.et-jlight body.hm #coeurs .t550-kpi:not(#k1):not(#k2){
+  background:rgba(255,255,255,.30)!important;border-color:rgba(0,48,73,.16)!important;
+}
+@media (prefers-reduced-transparency:reduce){
+  html body.hm #coeurs .t550-p:not(#g1):not(#g2):not(#g3):not(#g4):not(#g5):not(#g6):not(#g7):not(#g8):not(#g9):not(#g10):not(#g11):not(#g12):not(#g13):not(#g14):not(#g15):not(#g16):not(#g17):not(#g18):not(#g19):not(#g20):not(#g21):not(#g22):not(#g23):not(#g24):not(#g25):not(#g26){background:#00243A!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+  html.et-plight body.hm #coeurs .t550-p:not(#g1):not(#g2):not(#g3):not(#g4):not(#g5):not(#g6):not(#g7):not(#g8):not(#g9):not(#g10):not(#g11):not(#g12):not(#g13):not(#g14):not(#g15):not(#g16):not(#g17):not(#g18):not(#g19):not(#g20):not(#g21):not(#g22):not(#g23):not(#g24):not(#g25):not(#g26),html.et-jlight body.hm #coeurs .t550-p:not(#g1):not(#g2):not(#g3):not(#g4):not(#g5):not(#g6):not(#g7):not(#g8):not(#g9):not(#g10):not(#g11):not(#g12):not(#g13):not(#g14):not(#g15):not(#g16):not(#g17):not(#g18):not(#g19):not(#g20):not(#g21):not(#g22):not(#g23):not(#g24):not(#g25):not(#g26){background:#F5F7FA!important}
+  html body.hm #coeurs .t550-p::before{display:none}
+}
+
+/* Liquid glass, home (suite) : la barre de navigation et les trois cartes « durabilite » plus les
+   quatre cartes « documents de reference » recoivent le meme verre veritablement transparent que
+   le triptyque du 678. Un correctif de specificite (voir plus haut) leur etait necessaire : une
+   regle plus ancienne et plus specifique (nav_a.css / da540) les ramenait a un fond quasi opaque.
+   Les chiffres cles sous le heros (.nh-kpi) ne sont pas touches : le chantier 645 les a
+   deliberement laisses sans fond, pour que le dessin de fond du heros reste visible sans surface
+   par-dessus -- une decision a respecter, non un oubli a corriger. */
+html body.hm .nav.nx:not(#g1):not(#g2):not(#g3):not(#g4):not(#g5):not(#g6):not(#g7):not(#g8):not(#g9):not(#g10):not(#g11):not(#g12):not(#g13):not(#g14):not(#g15):not(#g16):not(#g17):not(#g18):not(#g19):not(#g20):not(#g21):not(#g22):not(#g23):not(#g24):not(#g25):not(#g26){
+  background:rgba(0,40,61,.22)!important;background-color:rgba(0,40,61,.22)!important;
+  -webkit-backdrop-filter:saturate(190%) blur(24px)!important;backdrop-filter:saturate(190%) blur(24px)!important;
+  border-bottom:1px solid rgba(255,255,255,.16)!important;
+}
+html.et-plight body.hm .nav.nx:not(#g1):not(#g2):not(#g3):not(#g4):not(#g5):not(#g6):not(#g7):not(#g8):not(#g9):not(#g10):not(#g11):not(#g12):not(#g13):not(#g14):not(#g15):not(#g16):not(#g17):not(#g18):not(#g19):not(#g20):not(#g21):not(#g22):not(#g23):not(#g24):not(#g25):not(#g26),html.et-jlight body.hm .nav.nx:not(#g1):not(#g2):not(#g3):not(#g4):not(#g5):not(#g6):not(#g7):not(#g8):not(#g9):not(#g10):not(#g11):not(#g12):not(#g13):not(#g14):not(#g15):not(#g16):not(#g17):not(#g18):not(#g19):not(#g20):not(#g21):not(#g22):not(#g23):not(#g24):not(#g25):not(#g26){
+  background:rgba(255,255,255,.44)!important;background-color:rgba(255,255,255,.44)!important;
+}
+html:not(.et-plight):not(.et-jlight) body.hm #durabilite .dur-c:not(#g1):not(#g2):not(#g3):not(#g4):not(#g5):not(#g6):not(#g7):not(#g8):not(#g9):not(#g10):not(#g11):not(#g12):not(#g13):not(#g14):not(#g15):not(#g16):not(#g17):not(#g18):not(#g19):not(#g20):not(#g21):not(#g22):not(#g23):not(#g24):not(#g25):not(#g26),
+html:not(.et-plight):not(.et-jlight) body.hm #reperes .doc-c:not(#g1):not(#g2):not(#g3):not(#g4):not(#g5):not(#g6):not(#g7):not(#g8):not(#g9):not(#g10):not(#g11):not(#g12):not(#g13):not(#g14):not(#g15):not(#g16):not(#g17):not(#g18):not(#g19):not(#g20):not(#g21):not(#g22):not(#g23):not(#g24):not(#g25):not(#g26){
+  background:rgba(0,50,76,.26)!important;
+  -webkit-backdrop-filter:saturate(180%) blur(22px)!important;backdrop-filter:saturate(180%) blur(22px)!important;
+  border-color:rgba(255,255,255,.18)!important;
+}
+html.et-plight body.hm #durabilite .dur-c:not(#g1):not(#g2):not(#g3):not(#g4):not(#g5):not(#g6):not(#g7):not(#g8):not(#g9):not(#g10):not(#g11):not(#g12):not(#g13):not(#g14):not(#g15):not(#g16):not(#g17):not(#g18):not(#g19):not(#g20):not(#g21):not(#g22):not(#g23):not(#g24):not(#g25):not(#g26),html.et-jlight body.hm #durabilite .dur-c:not(#g1):not(#g2):not(#g3):not(#g4):not(#g5):not(#g6):not(#g7):not(#g8):not(#g9):not(#g10):not(#g11):not(#g12):not(#g13):not(#g14):not(#g15):not(#g16):not(#g17):not(#g18):not(#g19):not(#g20):not(#g21):not(#g22):not(#g23):not(#g24):not(#g25):not(#g26),
+html.et-plight body.hm #reperes .doc-c:not(#g1):not(#g2):not(#g3):not(#g4):not(#g5):not(#g6):not(#g7):not(#g8):not(#g9):not(#g10):not(#g11):not(#g12):not(#g13):not(#g14):not(#g15):not(#g16):not(#g17):not(#g18):not(#g19):not(#g20):not(#g21):not(#g22):not(#g23):not(#g24):not(#g25):not(#g26),html.et-jlight body.hm #reperes .doc-c:not(#g1):not(#g2):not(#g3):not(#g4):not(#g5):not(#g6):not(#g7):not(#g8):not(#g9):not(#g10):not(#g11):not(#g12):not(#g13):not(#g14):not(#g15):not(#g16):not(#g17):not(#g18):not(#g19):not(#g20):not(#g21):not(#g22):not(#g23):not(#g24):not(#g25):not(#g26){
+  background:rgba(255,255,255,.40)!important;
+  -webkit-backdrop-filter:saturate(160%) blur(18px)!important;backdrop-filter:saturate(160%) blur(18px)!important;
+}
+@media (prefers-reduced-transparency:reduce){
+  html body.hm .nav.nx:not(#g1):not(#g2):not(#g3):not(#g4):not(#g5):not(#g6):not(#g7):not(#g8):not(#g9):not(#g10):not(#g11):not(#g12):not(#g13):not(#g14):not(#g15):not(#g16):not(#g17):not(#g18):not(#g19):not(#g20):not(#g21):not(#g22):not(#g23):not(#g24):not(#g25):not(#g26){background:#003049!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+  html.et-plight body.hm .nav.nx:not(#g1):not(#g2):not(#g3):not(#g4):not(#g5):not(#g6):not(#g7):not(#g8):not(#g9):not(#g10):not(#g11):not(#g12):not(#g13):not(#g14):not(#g15):not(#g16):not(#g17):not(#g18):not(#g19):not(#g20):not(#g21):not(#g22):not(#g23):not(#g24):not(#g25):not(#g26),html.et-jlight body.hm .nav.nx:not(#g1):not(#g2):not(#g3):not(#g4):not(#g5):not(#g6):not(#g7):not(#g8):not(#g9):not(#g10):not(#g11):not(#g12):not(#g13):not(#g14):not(#g15):not(#g16):not(#g17):not(#g18):not(#g19):not(#g20):not(#g21):not(#g22):not(#g23):not(#g24):not(#g25):not(#g26){background:#F5F7FA!important}
+  html:not(.et-plight):not(.et-jlight) body.hm #durabilite .dur-c:not(#g1):not(#g2):not(#g3):not(#g4):not(#g5):not(#g6):not(#g7):not(#g8):not(#g9):not(#g10):not(#g11):not(#g12):not(#g13):not(#g14):not(#g15):not(#g16):not(#g17):not(#g18):not(#g19):not(#g20):not(#g21):not(#g22):not(#g23):not(#g24):not(#g25):not(#g26),html:not(.et-plight):not(.et-jlight) body.hm #reperes .doc-c:not(#g1):not(#g2):not(#g3):not(#g4):not(#g5):not(#g6):not(#g7):not(#g8):not(#g9):not(#g10):not(#g11):not(#g12):not(#g13):not(#g14):not(#g15):not(#g16):not(#g17):not(#g18):not(#g19):not(#g20):not(#g21):not(#g22):not(#g23):not(#g24):not(#g25):not(#g26){background:#101B2E!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+}
+
+/* CLS 01/08/2026 : le top initial (93px) ne correspondait a aucune hauteur reelle du nav (110px avec rangee utilitaire >=1241px, 71px sinon) — le recalage JS deplacait un element fixe apres le premier rendu. Valeurs initiales exactes ; le JS ne fait plus que confirmer. */
+@media(min-width:1241px){#oilticker{top:110px!important}}
+
+.nh:not(#e1){position:relative;background:linear-gradient(175deg,rgba(7,13,24,.78) 0%,rgba(11,22,38,.68) 55%,rgba(16,30,51,.6) 100%);-webkit-backdrop-filter:blur(14px) saturate(1.05);backdrop-filter:blur(14px) saturate(1.05);border-bottom:1px solid rgba(232,195,106,.28)}
+@supports not ((-webkit-backdrop-filter:blur(1px)) or (backdrop-filter:blur(1px))){.nh:not(#e1){background:linear-gradient(175deg,#070D18 0%,#0B1626 55%,#101E33 100%)}html.et-plight .nh:not(#e1){background:linear-gradient(175deg,#F6F1E4 0%,#FBF7EE 60%,#FFFFFF 100%)}}
+@media (prefers-reduced-transparency:reduce){.nh:not(#e1){-webkit-backdrop-filter:none;backdrop-filter:none;background:linear-gradient(175deg,#070D18 0%,#0B1626 55%,#101E33 100%)}html.et-plight .nh:not(#e1){background:linear-gradient(175deg,#F6F1E4 0%,#FBF7EE 60%,#FFFFFF 100%)}}
+.nh:not(#e1)::before{content:"";position:absolute;inset:auto 0 auto 0;top:0;height:1px;background:linear-gradient(90deg,transparent,#E8C36A,transparent);opacity:.6}
+.nh-in:not(#e1){max-width:var(--mw,1200px);margin:0 auto;padding:clamp(54px,8vw,104px) var(--gut,24px) clamp(38px,5vw,64px)}
+.nh-k:not(#e1){font-family:var(--fm,ui-monospace,monospace);font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:#E8C36A;margin:0 0 18px}
+.nh-h1:not(#e1){text-shadow:none!important;font-family:var(--fd);font-weight:800;font-size:var(--ts-2,clamp(2.1rem,4.8vw,3.3rem));line-height:1.08;letter-spacing:-.02em;color:#F5F7FA;margin:0;max-width:18ch;text-wrap:balance}
+.nh-l:not(#e1){text-shadow:none!important;font-size:clamp(1.02rem,1.5vw,1.18rem);line-height:1.65;color:rgba(245,247,250,.82);max-width:62ch;margin:20px 0 0}
+.nh-cta:not(#e1){display:flex;flex-wrap:wrap;gap:12px;margin:28px 0 0}
+a.nh-b1:not(#e1):not(#e2):not(#e3):not(#e4){display:inline-flex;align-items:center;min-height:48px;padding:0 26px;border-radius:12px;background:#E8C36A!important;color:#121D31!important;-webkit-text-fill-color:#121D31!important;font-weight:700;text-decoration:none}
+a.nh-b1:not(#e1):not(#e2):not(#e3):not(#e4):hover{background:#F0CE82!important}
+a.nh-b2:not(#e1):not(#e2):not(#e3):not(#e4){display:inline-flex;align-items:center;min-height:48px;padding:0 24px;border-radius:12px;border:1px solid rgba(245,247,250,.35);color:#F5F7FA!important;-webkit-text-fill-color:#F5F7FA!important;font-weight:600;text-decoration:none;background:transparent!important}
+a.nh-b2:not(#e1):not(#e2):not(#e3):not(#e4):hover{border-color:#E8C36A;color:#E8C36A!important;-webkit-text-fill-color:#E8C36A!important}
+.nh-kpi:not(#e1){display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1px;background:rgba(232,195,106,.2);border:1px solid rgba(232,195,106,.26);border-radius:18px;overflow:hidden;margin:clamp(30px,4.5vw,52px) 0 0;box-shadow:0 24px 48px -26px color-mix(in srgb,#E8C36A 45%,transparent)}
+.nh-kpi:not(#e1) > div{background:rgba(11,22,38,.55);padding:16px 18px 14px}
+.nh-kpi:not(#e1) dt{font-family:var(--fd);font-weight:800;font-size:clamp(1.35rem,2.4vw,1.9rem);letter-spacing:-.012em;color:#F0CE82;margin:0;font-variant-numeric:tabular-nums}
+.nh-kpi:not(#e1) dd{font-size:.8rem;line-height:1.45;color:rgba(245,247,250,.7);margin:5px 0 0}
+html.et-plight .nh:not(#e1){background:linear-gradient(175deg,rgba(246,241,228,.86) 0%,rgba(251,247,238,.8) 60%,rgba(255,255,255,.74) 100%);border-bottom-color:rgba(138,106,18,.3)}
+html.et-plight .nh-h1:not(#e1){color:#121D31}
+html.et-plight .nh-l:not(#e1){color:rgba(18,29,49,.8)}
+html.et-plight .nh-k:not(#e1){color:#5C470B}
+html.et-plight a.nh-b2:not(#e1):not(#e2):not(#e3):not(#e4){border-color:rgba(18,29,49,.35);color:#121D31!important;-webkit-text-fill-color:#121D31!important}
+html.et-plight a.nh-b2:not(#e1):not(#e2):not(#e3):not(#e4):hover{border-color:#8A6A12;color:#8A6A12!important;-webkit-text-fill-color:#8A6A12!important}
+html.et-plight .nh-kpi:not(#e1){background:rgba(138,106,18,.22);border-color:rgba(138,106,18,.28);box-shadow:0 24px 48px -26px color-mix(in srgb,#8A6A12 35%,transparent)}
+html.et-plight .nh-kpi:not(#e1) > div{background:rgba(255,255,255,.8)}
+html.et-plight .nh-kpi:not(#e1) dt{color:#6B520D}
+html.et-plight .nh-kpi:not(#e1) dd{color:rgba(18,29,49,.72)}
+/* ch470 - hero modernise */
+.nh-k:not(#e1)::before{content:"\25C6";margin-right:9px;font-size:.72em;vertical-align:1px}
+.nh-une:not(#e1){display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;margin:26px 0 0;max-width:700px;padding:12px 17px;border:1px solid rgba(232,195,106,.28);border-radius:14px;background:rgba(11,22,38,.52);position:relative;overflow:hidden}
+.nh-une:not(#e1)::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#E8C36A,transparent)}
+.nh-une:not(#e1)>i{font-style:normal;font-family:var(--fm,ui-monospace,monospace);font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:#E8C36A;flex:none}
+.nh-une:not(#e1)>a:not(.nh-une-all){display:inline-flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px;text-decoration:none;color:#F5F7FA;flex:1 1 300px;min-width:0}
+.nh-une:not(#e1) time{font-family:var(--fm,ui-monospace,monospace);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:rgba(245,247,250,.68);flex:none}
+.nh-une:not(#e1)>a:not(.nh-une-all) span{font-size:.89rem;font-weight:600;line-height:1.4}
+.nh-une:not(#e1)>a:not(.nh-une-all) b{color:#E8C36A}
+.nh-une:not(#e1)>a:not(.nh-une-all):hover span{text-decoration:underline;text-underline-offset:3px}
+a.nh-une-all:not(#e1){font-family:var(--fm,ui-monospace,monospace);font-size:.7rem;letter-spacing:.06em;color:#E8C36A;text-decoration:none;white-space:nowrap;margin-left:auto}
+a.nh-une-all:not(#e1):hover{text-decoration:underline;text-underline-offset:3px}
+.nh-chain:not(#e1) a{box-shadow:0 14px 30px -18px rgba(0,0,0,.55)}
+html.et-plight .nh-une:not(#e1){border-color:rgba(138,106,18,.34);background:rgba(255,255,255,.74)}
+html.et-plight .nh-une:not(#e1)>i{color:#5C470B}
+html.et-plight .nh-une:not(#e1)>a:not(.nh-une-all){color:#121D31}
+html.et-plight .nh-une:not(#e1) time{color:rgba(18,29,49,.66)}
+html.et-plight .nh-une:not(#e1)>a:not(.nh-une-all) b{color:#6B520D}
+html.et-plight a.nh-une-all:not(#e1){color:#6B520D}
+.nh-une:not(#e1)>a:not(.nh-une-all){flex:1 1 100%}.nh-une:not(#e1)>i{order:-2}a.nh-une-all:not(#e1){order:-1}
+
+/* Ch608 — heros en deux colonnes : le texte a gauche, la chaine a droite */
+.nh-grid:not(#e1){display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(24px,4vw,56px);align-items:center}
+.nh-fig:not(#e1){margin:0;min-width:0;justify-self:end;width:100%;max-width:580px}
+.nh-fig:not(#e1) svg{display:block;width:100%;height:auto;overflow:visible;font-family:var(--fd)}
+.nh-grid:not(#e1) .nh-h1{font-size:var(--ts-2,clamp(2.1rem,4.8vw,3.3rem))!important;max-width:none}
+.nh-kpi:not(#e1) dt{font-size:clamp(1.3rem,2.05vw,1.65rem);white-space:nowrap}
+.nh-k:not(#e1){margin-bottom:22px}
+.nh:not(#e1):not(#e2){text-shadow:none}
+.nh-txt .nh-h1:not(#e1):not(#e2):not(#e3):not(#e4),.nh-txt .nh-l:not(#e1):not(#e2):not(#e3):not(#e4),html.et-plight .nh-txt .nh-h1:not(#e1):not(#e2):not(#e3):not(#e4),html.et-plight .nh-txt .nh-l:not(#e1):not(#e2):not(#e3):not(#e4),html.et-plight .nh .nh-k:not(#e1):not(#e2):not(#e3):not(#e4){text-shadow:none!important}
+.nh-fig:not(#e1) figcaption{font-family:var(--fm,ui-monospace,monospace);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(245,247,250,.55);text-align:right;margin:6px 4px 0}
+.nhf-strata{fill:none;stroke:rgba(232,195,106,.28);stroke-width:1.2}
+.nhf-pump{fill:rgba(245,247,250,.1);stroke:rgba(245,247,250,.45);stroke-width:1.4}
+.nhf-path{fill:none;stroke:rgba(245,247,250,.34);stroke-width:2;stroke-linejoin:round;stroke-linecap:round;stroke-dasharray:6 8}
+.nhf-path-glow{fill:none;stroke:rgba(232,195,106,.18);stroke-width:14;stroke-linejoin:round;stroke-linecap:round;filter:blur(6px)}
+.nhf-halo{fill:var(--c);opacity:.14;transition:opacity .2s,r .2s}
+.nhf-dot{fill:var(--c);stroke:rgba(7,13,24,.9);stroke-width:3}
+.nhf-core{fill:#0B1626}
+.nhf-num{font-family:var(--fm,ui-monospace,monospace);font-size:11px;letter-spacing:.14em;fill:var(--c)}
+.nhf-name{font-weight:800;font-size:18px;letter-spacing:-.01em;fill:#F5F7FA}
+.nhf-sub{font-size:12.5px;fill:rgba(245,247,250,.68)}
+.nhf-end{font-family:var(--fm,ui-monospace,monospace);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;fill:rgba(245,247,250,.5)}
+.nhf-mol{fill:#F0CE82;filter:drop-shadow(0 0 6px rgba(240,206,130,.9));offset-rotate:0deg;animation:nhf-flow 9s linear infinite}
+@keyframes nhf-flow{from{offset-distance:0%}to{offset-distance:100%}}
+a.nhf-node{cursor:pointer;text-decoration:none}
+a.nhf-node:hover .nhf-halo,a.nhf-node:focus-visible .nhf-halo{opacity:.34;r:32}
+a.nhf-node:hover .nhf-name,a.nhf-node:focus-visible .nhf-name{fill:var(--c)}
+a.nhf-node:focus-visible{outline:none}
+a.nhf-node:focus-visible .nhf-dot{stroke:#F5F7FA;stroke-width:3}
+html.et-plight .nh-fig:not(#e1) figcaption{color:rgba(18,29,49,.72)}
+html.et-plight .nhf-strata{stroke:rgba(138,106,18,.4)}
+html.et-plight .nhf-pump{fill:rgba(18,29,49,.06);stroke:rgba(18,29,49,.5)}
+html.et-plight .nhf-path{stroke:rgba(18,29,49,.4)}
+html.et-plight .nhf-path-glow{stroke:rgba(138,106,18,.16)}
+html.et-plight .nhf-dot{stroke:#FBF7EE}
+html.et-plight .nhf-core{fill:#FBF7EE}
+html.et-plight .nhf-name{fill:#121D31}
+html.et-plight .nhf-sub{fill:rgba(18,29,49,.7)}
+html.et-plight .nhf-end{fill:rgba(18,29,49,.55)}
+html.et-plight .nhf-num{fill:color-mix(in srgb,var(--c) 60%,#121D31)}
+html.et-plight .nhf-mol{fill:#8A6A12;filter:none}
+html.et-plight a.nhf-node:focus-visible .nhf-dot{stroke:#121D31}
+@media (max-width:979px){.nh-grid:not(#e1){grid-template-columns:1fr}.nh-fig:not(#e1){justify-self:center;max-width:520px;margin-top:6px}}
+@media (prefers-reduced-motion:reduce){.nhf-mol{animation:none;offset-distance:62%}.nhf-halo{transition:none}}
+@media print{.nhf-path-glow,.nhf-mol{display:none}}
+/* grille des communiques : trois cartes, trois colonnes (auto-fit en laissait une quatrieme vide a 1 440) */
+.hcp:not(#e1){grid-template-columns:1fr}
+@media (min-width:640px){.hcp:not(#e1){grid-template-columns:repeat(3,minmax(0,1fr))}}
+
+/* Ch550 - triptyque immersif des trois poles, gabarit segments des majeurs. */
+#coeurs .t550-seg{position:relative;min-height:430px;display:flex;align-items:center;overflow:hidden}
+#coeurs .t550-bg{position:absolute;inset:0;background-size:cover;background-position:center;z-index:0}
+#coeurs .t550-seg::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(165deg,rgba(0,28,45,.78) 0%,rgba(0,24,38,.55) 55%,rgba(0,21,34,.65) 100%)}
+html.et-plight #coeurs .t550-seg::before{background:linear-gradient(165deg,rgba(250,247,241,.86) 0%,rgba(250,247,241,.68) 55%,rgba(250,247,241,.80) 100%)}
+#coeurs .t550-in{position:relative;z-index:2;width:100%;max-width:var(--mw,1200px);margin:0 auto;padding:44px var(--gut,24px);display:flex}
+#coeurs .t550-r{justify-content:flex-end}
+#coeurs .t550-p{flex:0 1 560px;border-radius:20px;border:1px solid var(--g-brd,rgba(255,255,255,.2));background:var(--g-bg,rgba(0,45,69,.5));-webkit-backdrop-filter:var(--g-blur,blur(20px));backdrop-filter:var(--g-blur,blur(20px));padding:26px 28px;box-shadow:0 16px 40px rgba(0,18,30,.35)}
+html.et-plight #coeurs .t550-p{background:rgba(255,255,255,.66);border-color:rgba(0,48,73,.16);box-shadow:0 12px 30px rgba(0,48,73,.10)}
+#coeurs .t550-k{display:block;font-style:normal;font-family:var(--fm,ui-monospace,monospace);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--pa);margin:0 0 10px}
+html.et-plight #coeurs .t550-k{color:var(--pal)}
+#coeurs .t550-p h3{font-family:var(--fd);font-weight:800;font-size:var(--ts-6,clamp(1.2rem,2.5vw,1.8rem));letter-spacing:-.02em;margin:0 0 10px}
+#coeurs .t550-m{margin:0 0 16px;font-size:.98rem;line-height:1.6;color:var(--muted-l,#B8C6DA)}
+html.et-plight #coeurs .t550-m{color:#3D4A5C}
+#coeurs .t550-kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:0 0 18px}
+#coeurs .t550-kpi{border:1px solid var(--g-brd,rgba(255,255,255,.16));border-radius:12px;padding:10px 12px;background:rgba(255,255,255,.04)}
+html.et-plight #coeurs .t550-kpi{background:rgba(0,48,73,.05);border-color:rgba(0,48,73,.14)}
+#coeurs .t550-kpi b{display:block;font-size:1.12rem;letter-spacing:-.01em;color:var(--pa)}
+html.et-plight #coeurs .t550-kpi b{color:var(--pal)}
+#coeurs .t550-kpi span{font-size:.68rem;line-height:1.35;display:block;margin-top:2px;color:var(--muted-l,#93A1B8)}
+html.et-plight #coeurs .t550-kpi span{color:#5A6472}
+#coeurs .t550-cta{display:flex;flex-wrap:wrap;gap:10px}
+#coeurs .t550-b1{font-weight:700;font-size:.9rem;color:#0B1422!important;background:var(--pa);border-radius:12px;padding:11px 18px;text-decoration:none}html.et-plight #coeurs .t550-b1:not(#_):not(#__){color:#0B1422!important;-webkit-text-fill-color:#0B1422!important}
+#coeurs .t550-b2{font-weight:600;font-size:.9rem;color:inherit;border:1px solid var(--g-brd,rgba(255,255,255,.25));border-radius:12px;padding:11px 18px;text-decoration:none}
+html.et-plight #coeurs .t550-b2{border-color:rgba(0,48,73,.3)}
+#coeurs .t550-b1:focus-visible,#coeurs .t550-b2:focus-visible,#coeurs .t550-x a:focus-visible{outline:2px solid var(--blue-l,#00B4D8);outline-offset:3px}
+#coeurs .t550-head{max-width:var(--mw,1200px);margin:0 auto;padding:clamp(34px,4.6vw,54px) var(--gut,24px) 22px}
+#coeurs .t550-head h2{font-family:var(--fd);font-weight:800;font-size:var(--ts-5,clamp(1.35rem,2.9vw,2.1rem));letter-spacing:-.02em;margin:12px 0 8px}
+#coeurs .t550-x{max-width:var(--mw,1200px);margin:0 auto;padding:20px var(--gut,24px) 40px;display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px}
+#coeurs .t550-x span{font-family:var(--fm,ui-monospace,monospace);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted,#93A1B8)}
+#coeurs .t550-x a{font-size:.86rem;font-weight:600;color:inherit;text-decoration:none;border:1px solid var(--g-brd,rgba(255,255,255,.2));border-radius:999px;padding:8px 15px}
+html.et-plight #coeurs .t550-x a{border-color:rgba(0,48,73,.25)}
+html.et-plight #coeurs .t550-x span{color:#5A6472}
+@media(max-width:760px){#coeurs .t550-seg{min-height:0}#coeurs .t550-kpis{grid-template-columns:1fr 1fr}#coeurs .t550-p{padding:20px}}
+@media (prefers-reduced-transparency:reduce){#coeurs .t550-p{background:#04293F;-webkit-backdrop-filter:none;backdrop-filter:none}html.et-plight #coeurs .t550-p{background:#FAF7F1}}
+
+/* Ch619 — la frise du metier au pied de chaque tuile de pole : traits SVG, jamais sous le texte */
+html body.hm:not(#_):not(#__):not(#___) #coeurs:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6) .t550-p:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6):not(#a7){position:relative;padding-bottom:calc(clamp(24px,3vw,34px) + 130px) !important}
+.t550-p>.t619{position:absolute;left:clamp(22px,3vw,36px);bottom:8px;width:calc(100% - 2*clamp(22px,3vw,36px));height:140px;color:var(--pa,#E8C36A);opacity:.2;pointer-events:none;z-index:0}
+.t619 .t619-hair{stroke-width:1.2;opacity:.7}
+.t619 .t619-dash{stroke-width:1.6;stroke-dasharray:14 12;opacity:.7}
+html.et-plight .t550-p>.t619,html.et-jlight .t550-p>.t619{color:var(--pal,#8A6210);opacity:.22}
+@media(max-width:760px){html body.hm:not(#_):not(#__):not(#___) #coeurs:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6) .t550-p:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6):not(#a7){padding-bottom:20px !important}.t550-p>.t619{display:none}}
+@supports(animation-timeline:view()){@media(prefers-reduced-motion:no-preference){.t550-p>.t619{animation:t619in linear both;animation-timeline:view();animation-range:entry 0% entry 60%}}}
+@keyframes t619in{from{opacity:0;translate:24px 0}}
+
+/* Ch515 — bande durabilite : trois piliers cliquables (benchmark homepages majors). */
+#durabilite{padding:clamp(48px,6vw,84px) 0;background:linear-gradient(170deg,rgba(7,12,21,.88) 0%,rgba(8,14,26,.62) 100%)}
+#durabilite .wrap{max-width:var(--max,1240px);margin:0 auto;padding:0 var(--gut,24px)}
+#durabilite .dur-k{font-family:var(--fm,ui-monospace,monospace);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:#34D399;display:block;margin:0 0 10px}
+#durabilite h2{font-family:var(--fd);font-size:var(--ts-4,clamp(1.55rem,3.4vw,2.35rem));margin:0 0 26px}
+#durabilite .dur-g{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+#durabilite .dur-c{display:block;position:relative;padding:20px 20px 18px;border:1px solid color-mix(in srgb,var(--c,#34D399) 34%,transparent);border-radius:16px;background:color-mix(in srgb,#0B1422 52%,transparent);color:inherit;text-decoration:none;transition:border-color .25s,transform .25s}
+#durabilite .dur-c:hover{border-color:color-mix(in srgb,var(--c,#34D399) 70%,transparent);transform:translateY(-2px)}
+#durabilite .dur-c i{display:block;width:10px;height:10px;border-radius:99px;background:var(--c,#34D399);margin:0 0 12px}
+#durabilite .dur-c b{display:block;font-size:1.05rem;margin:0 0 5px}
+#durabilite .dur-c span{display:block;font-size:.88rem;line-height:1.5;opacity:.82}
+#durabilite .dur-c em{font-style:normal;display:inline-block;margin-top:11px;font-weight:700;font-size:.85rem;color:var(--c,#34D399)}
+html.et-plight #durabilite{background:linear-gradient(170deg,rgba(246,241,228,.92) 0%,rgba(251,247,238,.75) 100%)}
+html.et-plight #durabilite .dur-c{background:rgba(255,255,255,.78);border-color:color-mix(in srgb,var(--cl,var(--c,#0C7A52)) 40%,transparent)}
+html.et-plight #durabilite .dur-k:not(#_):not(#__){color:#0C7A52!important}
+html.et-plight #durabilite .dur-c i{background:var(--cl,var(--c))}
+html.et-plight #durabilite .dur-c em:not(#_):not(#__){color:var(--cl,var(--c))!important}
+@media(max-width:640px){#durabilite{padding:44px 0}}
+
+#carte540 .wrap{padding-top:clamp(26px,3.4vw,42px)!important;padding-bottom:clamp(26px,3.4vw,42px)!important}
+#carte540 .c540-g{grid-template-columns:minmax(240px,330px) 1fr;gap:28px;align-items:center}
+#carte540 .c540-g>div:first-child svg{max-height:460px;height:auto;width:auto;max-width:100%;display:block;margin:0 auto}
+#carte540 .c540-side{display:flex;flex-direction:column;gap:14px}
+#carte540 .c540-p{min-height:0}
+#carte540 .c540-src,#carte540 .c540-leg{margin:0}
+@media(max-width:820px){#carte540 .c540-g{grid-template-columns:1fr;align-items:start}#carte540 .c540-g>div:first-child svg{max-height:none}}
+
+#homecad{--cdm-gold:#E8C36A;--cdm-blue:#5AA7F0;--cdm-amber:#F59E0B;--cdm-grid:rgba(90,167,240,.15);--cdm-ink:rgba(245,247,250,.96);--cdm-ink2:rgba(245,247,250,.56);--cdm-halo:rgba(7,12,21,.78);width:100%;max-width:452px;display:block;margin:0 auto;overflow:visible}
+#carte540 .cdm-shadow{fill:rgba(0,0,0,.5)}
+#carte540 .cdm-shape{fill:url(#cdmFill);stroke:rgba(217,168,79,.5);stroke-width:1.5;stroke-linejoin:round}
+#carte540 .cdm-bs{font-family:var(--fm);font-size:7.5px;fill:var(--cdm-ink2);paint-order:stroke;stroke:var(--cdm-halo);stroke-width:2.4px}
+#carte540 .cdm-n{fill:var(--cdm-ink2);font-weight:600}
+#carte540 .cdm-star{fill:var(--cdm-gold)}
+#carte540 .cdm-narr{fill:rgba(245,247,250,.42)}
+#carte540 .cdm-nlab{font-family:var(--fm);font-size:7.6px;letter-spacing:.2em;fill:rgba(245,247,250,.46)}
+#carte540 .cdm-blk{transform-box:fill-box;transform-origin:center;transition:transform .16s ease,filter .16s ease;stroke-width:1.2}
+#carte540 .cdm-blk.b-att{fill:color-mix(in srgb,var(--cdm-gold) 52%,transparent);stroke:var(--cdm-gold)}
+#carte540 .cdm-blk.b-lib{fill:color-mix(in srgb,var(--cdm-blue) 10%,transparent);stroke:color-mix(in srgb,var(--cdm-blue) 62%,transparent);stroke-dasharray:3 2.4}
+#carte540 .cdm-blk.b-chg{fill:color-mix(in srgb,var(--cdm-amber) 34%,transparent);stroke:var(--cdm-amber)}
+#carte540 .cdm-blk.b-con{fill:rgba(52,211,153,.55);stroke:#34D399}
+#carte540 .cdm-bl{font-family:var(--fm);fill:var(--cdm-ink);fill-opacity:.82;paint-order:stroke;stroke-linejoin:round;stroke:var(--cdm-halo);stroke-width:2px;pointer-events:none}html.et-plight #carte540 .cdm-pipe,html.et-jlight #carte540 .cdm-pipe{stroke:rgba(16,24,36,.55)}html.et-plight #carte540 .cdm-pipe-proj,html.et-jlight #carte540 .cdm-pipe-proj{stroke:rgba(16,24,36,.5)}html.et-plight #carte540 .cdm-pipe-idle,html.et-jlight #carte540 .cdm-pipe-idle{stroke:rgba(16,24,36,.32)}#carte540 .cdm-lake{fill:rgba(90,167,240,.5);stroke:rgba(90,167,240,.8);stroke-width:.6}#carte540 .cdm-pipe-idle{fill:none;stroke:rgba(245,247,250,.3);stroke-width:1;stroke-linecap:round}#carte540 .cdm-pipe-exp{fill:none;stroke:#2E86DE;stroke-width:2.2;stroke-linecap:round}
+#carte540 .cdm-pipe{fill:none;stroke:rgba(245,247,250,.55);stroke-width:1.1;stroke-linecap:round}
+#carte540 .cdm-pipe-proj{fill:none;stroke:rgba(245,247,250,.5);stroke-width:1.2;stroke-dasharray:4 3;stroke-linecap:round}
+#homecad .cdm-blk:hover{filter:brightness(1.45) drop-shadow(0 0 6px rgba(217,168,79,.45));transform:scale(1.2)}
+#carte540 .cdm-lg{display:inline-flex;align-items:center;gap:8px;white-space:nowrap}
+#carte540 .cdm-lg b{color:rgba(245,247,250,.94);font-weight:700}
+#carte540 .cdm-sw{width:13px;height:11px;border-radius:3px;flex:none}
+#carte540 .cdm-sw.s-att{background:rgba(232,195,106,.42);border:1px solid #E8C36A}
+#carte540 .cdm-sw.s-lib{background:rgba(90,167,240,.10);border:1px dashed rgba(90,167,240,.62)}
+#carte540 .cdm-sw.s-chg{background:rgba(245,158,11,.34);border:1px solid #F59E0B}
+#carte540 .cdm-sw.s-con{background:rgba(52,211,153,.5);border:1px solid #34D399}
+html.et-plight #carte540 #homecad,html.et-jlight #carte540 #homecad{--cdm-gold:#8A6412;--cdm-blue:#1C63B4;--cdm-amber:#A25B06;--cdm-grid:rgba(20,66,126,.14);--cdm-ink:rgba(16,24,36,.94);--cdm-ink2:rgba(16,24,36,.62);--cdm-halo:rgba(255,255,255,.9)}
+html.et-plight #carte540 .cdm-shadow,html.et-jlight #carte540 .cdm-shadow{fill:rgba(26,35,48,.085)}
+html.et-plight #carte540 .cdm-shape,html.et-jlight #carte540 .cdm-shape{stroke:rgba(138,100,18,.58)}
+html.et-plight #carte540 .cdm-narr,html.et-jlight #carte540 .cdm-narr{fill:rgba(16,24,36,.45)}
+html.et-plight #carte540 .cdm-nlab,html.et-jlight #carte540 .cdm-nlab{fill:rgba(16,24,36,.5)}
+html.et-plight #carte540 .cdm-lg b,html.et-jlight #carte540 .cdm-lg b{color:rgba(16,24,36,.94)}
+html.et-plight #carte540 .cdm-sw.s-att,html.et-jlight #carte540 .cdm-sw.s-att{background:rgba(138,100,18,.38);border-color:#8A6412}
+html.et-plight #carte540 .cdm-sw.s-lib,html.et-jlight #carte540 .cdm-sw.s-lib{background:rgba(28,99,180,.12);border-color:rgba(28,99,180,.7)}
+html.et-plight #carte540 .cdm-sw.s-chg,html.et-jlight #carte540 .cdm-sw.s-chg{background:rgba(162,91,6,.3);border-color:#A25B06}
+#carte540 #homecad{max-width:100%}
+#carte540 .c540-g{grid-template-columns:minmax(280px,430px) 1fr}
+#carte540 .c540-g>div:first-child svg{max-height:none}
+#carte540 .cdm-bs{font-size:14px}
+#carte540 .cdm-nlab{font-size:12px}
+#carte540 #homecad .cdm-blk{cursor:pointer}
+#carte540 #homecad .cdm-blk.on{filter:brightness(1.45) drop-shadow(0 0 6px rgba(217,168,79,.45));transform:scale(1.2)}
+@media(max-width:820px){#carte540 .c540-g{grid-template-columns:1fr}}
+#carte540 .c540-leg{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center}
+#carte540 .c540-leg span{display:inline-flex;align-items:center;gap:8px;white-space:nowrap}
+
+.car546{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px 24px;margin:24px 0 0;padding:22px 24px;border-radius:18px;border:1px solid var(--g-brd,rgba(255,255,255,.2));background:var(--g-bg,rgba(0,45,69,.5));-webkit-backdrop-filter:var(--g-blur,blur(20px));backdrop-filter:var(--g-blur,blur(20px))}
+.car546-tx{flex:1 1 380px;min-width:0}
+.car546 b{display:block;font-family:var(--fd);font-size:1.12rem;letter-spacing:-.01em;margin:0 0 6px;color:var(--gold-l,#FFB703)}
+.car546 p{margin:0;font-size:.92rem;line-height:1.55;color:var(--muted-l,#B8C6DA)}
+.car546-cta{display:flex;flex-wrap:wrap;gap:10px}
+.car546-b1{font-weight:700;font-size:.9rem;color:#0B1422;background:var(--gold-l,#FFB703);border-radius:12px;padding:11px 18px;text-decoration:none}
+.car546-b2{font-weight:600;font-size:.9rem;color:inherit;border:1px solid var(--g-brd,rgba(255,255,255,.25));border-radius:12px;padding:11px 18px;text-decoration:none}
+.car546-b1:focus-visible,.car546-b2:focus-visible{outline:2px solid var(--blue-l,#00B4D8);outline-offset:3px}
+html.et-plight .car546{background:rgba(255,255,255,.6);border-color:rgba(0,48,73,.16)}
+html.et-plight .car546 b{color:#8A6210}
+html.et-plight .car546 p{color:#3D4A5C}
+html.et-plight .car546-b2{border-color:rgba(0,48,73,.3)}
+.car546-b1:not(#_):not(#__){color:#0B1422!important}
+
+.agir-g:not(#e1){display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px;margin:20px 0 0}
+.agir-c:not(#e1){display:block;border:1px solid rgba(127,150,180,.3);border-radius:14px;padding:20px 20px 18px;text-decoration:none;color:inherit}
+.agir-c:not(#e1) b{display:block;font-family:var(--fd);font-size:1.12rem;font-weight:800;margin:0 0 8px}
+.agir-c:not(#e1) span{display:block;font-size:.9rem;line-height:1.55;opacity:.78}
+.agir-c:not(#e1) i{display:block;font-style:normal;font-size:.85rem;margin:12px 0 0;color:#E8C36A}
+html.et-plight .agir-c:not(#e1) i{color:#8A6A12}
+.agir-c:not(#e1):hover b,.agir-c:not(#e1):focus b{text-decoration:underline;text-underline-offset:3px}
+
+/* Ch516 — reperes documentaires en fin de home (benchmark homepages majors, volet 2). */
+#reperes{padding:clamp(44px,5.5vw,76px) 0}
+#reperes .wrap{max-width:var(--max,1240px);margin:0 auto;padding:0 var(--gut,24px)}
+#reperes .doc-k{font-family:var(--fm,ui-monospace,monospace);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-l,#E8C36A);display:block;margin:0 0 10px}
+#reperes h2{font-family:var(--fd);font-size:var(--ts-4,clamp(1.55rem,3.4vw,2.35rem));margin:0 0 24px}
+#reperes .doc-g{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin:0 0 18px}@media (min-width:521px) and (max-width:1180px){#reperes .doc-g{grid-template-columns:repeat(2,1fr)}}
+#reperes .doc-c{display:block;padding:17px 18px 15px;border:1px solid color-mix(in srgb,var(--gold-l,#E8C36A) 30%,transparent);border-radius:14px;background:color-mix(in srgb,#0B1422 52%,transparent);color:inherit;text-decoration:none;transition:border-color .25s,transform .25s}
+#reperes .doc-c:hover{border-color:color-mix(in srgb,var(--gold-l,#E8C36A) 62%,transparent);transform:translateY(-2px)}
+#reperes .doc-c .dt{display:block;font-family:var(--fm,ui-monospace,monospace);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-l,#E8C36A);margin:0 0 7px}
+#reperes .doc-c b{display:block;font-size:1rem;margin:0 0 4px}
+#reperes .doc-c span{display:block;font-size:.86rem;line-height:1.5;opacity:.8}
+#reperes .doc-all{font-family:var(--fm,ui-monospace,monospace);font-size:.8rem;color:var(--gold-l,#E8C36A);text-decoration:none;font-weight:700}
+#reperes .doc-all:hover{text-decoration:underline;text-underline-offset:3px}
+html.et-plight #reperes .doc-c{background:rgba(255,255,255,.78);border-color:color-mix(in srgb,#8A6A12 36%,transparent)}
+html.et-plight #reperes .doc-k:not(#_):not(#__),html.et-plight #reperes .doc-c .dt:not(#_):not(#__),html.et-plight #reperes .doc-all:not(#_):not(#__){color:#7A5C14!important}
+
+#reperes .doc-quick{display:flex;flex-wrap:wrap;align-items:center;gap:8px 10px;margin:18px 0 14px}#reperes .doc-quick span{font-family:var(--fm,ui-monospace,monospace);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted,#7C8AA2)}#reperes .doc-quick a{font-family:var(--fm,ui-monospace,monospace);font-size:.72rem;letter-spacing:.05em;color:var(--gold-l,#E8C36A);text-decoration:none;border:1px solid color-mix(in srgb,var(--gold-l,#E8C36A) 30%,transparent);border-radius:999px;padding:6px 13px;transition:border-color .2s,background .2s}#reperes .doc-quick a:hover{border-color:var(--gold-l,#E8C36A);background:color-mix(in srgb,var(--gold-l,#E8C36A) 9%,transparent)}#reperes .doc-quick a:focus-visible{outline:2px solid var(--gold-l,#E8C36A);outline-offset:3px}html.et-plight #reperes .doc-quick a{color:#8A6210;border-color:rgba(138,98,16,.4)}html.et-plight #reperes .doc-quick span{color:#5A6472}
+
+/* ———— ex-bloc: anonyme ———— */
+#nav.nav:not(.scrolled):not(#_):not(#__){background-color:transparent!important;background-image:linear-gradient(180deg,rgba(6,11,20,.94),rgba(6,11,20,.88))!important}#nav.nav:not(.scrolled):not(#_):not(#__)::after{content:"";position:absolute;left:0;right:0;top:100%;height:40px;pointer-events:none;background:linear-gradient(180deg,rgba(6,11,20,.42),rgba(6,11,20,0))}
+/* ———— ex-bloc: anonyme ———— */
+/* Mode clair v2 - menus et heros restent sombres (encres claires) ; le corps devient clair (jetons assombris). */html.et-plight .nx-mega a:not(#_):not(#__),html.et-plight .nx-mega a strong{color:#CBD5E3!important}html.et-plight .nx-mega a em{color:#8FA8C4!important}html.et-plight .nx-mega a.nxh{color:#E9EEF5!important}html.et-plight .nx-mega .nx-feat span{color:#F0CE82!important}html.et-plight header.hero p a:not(#_):not(#__){color:#F0CE82!important}html.et-plight main em:not(#_):not(#__){color:#7A570E!important;-webkit-text-fill-color:#7A570E!important;background:none!important}html.et-plight main .hxi-lead{color:#C7D2E4!important}/* v3 */html.et-plight header.hero .hx-grid a:not(#_):not(#__){color:#F0CE82!important}html.et-plight .hxi-cta:not(#_):not(#__){background:#E8C36A!important;color:#121D31!important;border-color:#E8C36A!important}html.et-plight #coeurs div.reveal>a:not(#_){color:#EAF0F8!important}/* v4 */html.et-plight main .ppte-cta:not(#_):not(#__):not(#___):not(#____){color:#121D31!important}html.et-plight main .hpcard-go:not(#_):not(#__){color:#7A570E!important}html.et-plight .nx-mega .hpcard-go{color:#F0CE82!important}/* v5 */
+/* ———— ex-bloc: anonyme ———— */
+@media(max-width:480px){.hx-kick{letter-spacing:.12em!important;font-size:0.6875rem!important}}
+
+@media(max-width:760px){
+#mLang:not(#_):not(#__){display:inline-flex;align-items:center;font-family:var(--fm,ui-monospace,monospace);font-size:.7rem;letter-spacing:.04em;color:var(--cream,#E9EEF5);border:1px solid var(--hair,rgba(255,255,255,.22));border-radius:20px;padding:6px 11px;text-decoration:none;margin-right:9px;white-space:nowrap}
+#mLang b{font-weight:800}
+html.et-plight #mLang:not(#_):not(#__),html.et-jlight #mLang:not(#_):not(#__){color:#1A2330;border-color:rgba(26,35,48,.28)}
+html.et-plight .nav:not(#_):not(#__):not(#___){background:rgba(250,247,241,.74)!important;-webkit-backdrop-filter:blur(18px) saturate(150%);backdrop-filter:blur(18px) saturate(150%)}
+html.et-plight .nav.scrolled:not(#_):not(#__):not(#___){background:rgba(250,247,241,.88)!important}
+footer .foot-grid .foot-col{border-top:1px solid rgba(128,128,128,.22);margin:0!important;padding:0!important}
+footer .foot-grid .foot-col>h3{position:relative;margin:0!important;padding:15px 26px 15px 0!important;cursor:pointer;-webkit-tap-highlight-color:transparent}
+footer .foot-grid .foot-col>h3::before{content:"+";position:absolute;right:4px;top:50%;transform:translateY(-54%);font-size:var(--ts-8,clamp(1rem,1.8vw,1.25rem));font-weight:400;opacity:.55;font-family:var(--fm,ui-monospace,monospace)}
+footer .foot-grid .foot-col.open>h3::before{content:"−"}
+footer .foot-grid .foot-col:not(.open)>*:not(h3){display:none!important}
+footer .foot-grid .foot-col.open{padding-bottom:12px!important}
+footer .foot-grid .foot-col>a{display:block;padding:9px 0!important;margin:0!important}
+#toTop:not(#_):not(#__):not(#___){transform:scale(.82);transform-origin:bottom right;opacity:.68;transition:opacity .3s}
+#toTop:not(#_):not(#__):not(#___):active{opacity:1}
+footer .foot-legal{padding-bottom:10px!important}
+}
+@media(max-width:560px){.nav .brand-tx small:not(#_){display:block!important}}
+
+#scrollcue{transition:opacity .3s,visibility .3s}html.cue-off #scrollcue{opacity:0!important;visibility:hidden!important;pointer-events:none!important}
+
+.hero::after{content:"";position:absolute;inset:0;pointer-events:none;mix-blend-mode:soft-light;opacity:0;transition:opacity 1.2s ease;z-index:1}
+html.et-h-aube .hero::after{background:linear-gradient(160deg,rgba(255,196,150,.55),rgba(120,80,140,.3));opacity:.34}
+html.et-h-crep .hero::after{background:linear-gradient(160deg,rgba(255,150,60,.55),rgba(140,50,90,.35));opacity:.38}
+html.et-h-nuit .hero::after{background:linear-gradient(160deg,rgba(30,60,130,.5),rgba(10,20,60,.45));opacity:.3}
+.tchad-heure{font-family:var(--fm,ui-monospace,monospace);font-size:.7rem;letter-spacing:.08em;color:rgba(233,238,245,.5);margin:14px 0 0}
+html.et-plight .tchad-heure{color:rgba(20,32,50,.55)}
+
+@media (min-width:900px) and (prefers-reduced-motion: no-preference){
+#coeurs{position:relative}
+#filBaril:not(#_):not(#__){position:absolute;left:34px;top:0;bottom:0;width:2px;z-index:6;pointer-events:none;background:rgba(232,195,106,.14)!important}
+#filBaril:not(#_):not(#__) .fil-fill{position:absolute;left:0;top:0;width:100%;height:100%;background:linear-gradient(180deg,rgba(232,195,106,.9),rgba(232,195,106,.45))!important;transform-origin:top;transform:scaleY(var(--filp,0));will-change:transform}
+#filBaril:not(#_):not(#__) .fil-goutte{position:absolute;left:50%;top:0;width:11px;height:11px;margin-left:-5.5px;border-radius:50%;background:radial-gradient(circle at 38% 32%,#FFE9B8,#E8C36A 58%,#8A6A12)!important;box-shadow:0 0 14px 3px rgba(232,195,106,.55)!important;transform:translateY(calc(var(--filp,0)*var(--filh,0px)));will-change:transform}
+#filBaril:not(#_):not(#__) .fil-dot{position:absolute;left:50%;width:9px;height:9px;margin-left:-4.5px;border-radius:50%;background:#2A2416!important;border:1.5px solid rgba(232,195,106,.5)!important;transition:background .5s,box-shadow .5s,border-color .5s}
+#filBaril:not(#_):not(#__) .fil-dot.on{background:#E8C36A!important;border-color:#FFE9B8!important;box-shadow:0 0 10px 2px rgba(232,195,106,.5)!important}
+}
+@media (max-width:899.98px),(prefers-reduced-motion: reduce){#filBaril{display:none}}
+
+/* ———— ex-bloc: anonyme ———— */
+/* Ch326 — la home devient une vitrine de la chaine (arbitrage du proprietaire) :
+   les trois maillons Amont-Intermediaire-Aval forment la bande maitresse, la
+   petrochimie devient une bande de prolongement pleine largeur, les quatre
+   appuis passent en rangee compacte. Sur telephone, les panneaux d'appui
+   n'occupent plus un ecran entier chacun. */
+@media(min-width:1000px){
+ /* Ch447 — refonte coeur du metier (arbitrage du proprietaire) : les quatre
+    maillons redeviennent des chapitres pleine largeur, l alternance
+    gauche-droite de la base reprend la main ; la petrochimie garde sa marque
+    de prolongement (bordure haute pointillee) au meme format de chapitre. */
+ #coeurs .mln-set{display:block}
+ #coeurs .mln-set>.mln:not(#_){border-right:0}
+ #coeurs .mln:not(#_){min-height:min(84svh,760px);padding:clamp(46px,5.6vw,78px) 0}
+ #coeurs .mln-in:not(#_){flex-direction:row}
+ #coeurs .mln-rev .mln-in:not(#_){flex-direction:row-reverse}
+ #coeurs .mln-txt:not(#_){flex:1 1 58%}
+ #coeurs .mln-nav:not(#_){flex:0 1 320px}
+ #coeurs .mln-t:not(#_){font-size:clamp(1.9rem,3.3vw,2.9rem)}
+ #coeurs .mln-d:not(#_){font-size:clamp(1rem,1.2vw,1.12rem);max-width:52ch}
+ #coeurs .mln-ghost:not(#_){font-size:clamp(8rem,17vw,16rem)}
+ #coeurs .mln-kpis span:not(#_){flex:0 1 auto;padding:11px 16px}
+ #coeurs #maillon-petrochimie:not(#_){border-top:1px dashed rgba(235,160,210,.38)}
+ html.et-plight #coeurs #maillon-petrochimie:not(#_){border-top-color:rgba(142,58,114,.38)}
+ /* appuis : rangee compacte de quatre */
+ #appuis .mln-set{grid-template-columns:repeat(4,1fr)}
+ #appuis .mln-set>.mln:not(#_){border-right:1px solid rgba(233,239,247,.10)}
+ #appuis .mln-set>.mln:nth-child(4):not(#_){border-right:0}
+ html.et-plight #appuis .mln-set>.mln:not(#_){border-right-color:rgba(22,35,58,.12)}
+ #appuis .mln:not(#_){min-height:0;padding:clamp(26px,3vw,42px) 0}
+ #appuis .mln-in:not(#_),#appuis .mln-rev .mln-in:not(#_){flex-direction:column;gap:16px}
+ #appuis .mln-t:not(#_){font-size:clamp(1.05rem,1.35vw,1.35rem);max-width:16ch}
+ #appuis .mln-d:not(#_){font-size:.88rem;max-width:32ch}
+ #appuis .mln-ghost:not(#_){font-size:clamp(2.8rem,4.6vw,4.4rem)}
+ #appuis .mln-rev .mln-ghost:not(#_){left:auto;right:2vw}
+ #appuis .mln-kpis span:not(#_){flex:1 1 100%;padding:7px 10px}
+ #appuis .mln-nav:not(#_){padding:12px 12px 4px;font-size:.9em}
+}
+/* Ch326 — degraissage de la seconde moitie : agenda et etagere documentaire
+   cote a cote au bureau, sections de queue resserrees. */
+@media(min-width:1100px){
+ .agpub{display:grid;grid-template-columns:1fr 1fr;gap:0 12px;align-items:start}
+ .agpub .wrap:not(#_){padding-top:clamp(26px,3vw,40px);padding-bottom:clamp(26px,3vw,40px)}
+}
+.shortcuts .wrap:not(#_),.hbelieve .wrap:not(#_){padding-top:clamp(24px,3vw,40px);padding-bottom:clamp(24px,3vw,40px)}
+/* Ch327 — pendant le chargement des polices, la police de repli elargit la
+   grappe de boutons de l'entete d'environ 6 px : le hamburger depassait
+   transitoirement de 3 px du bord droit (observe une mesure sur trois,
+   accueils seulement). On borne la rangee : rien ne depasse, meme pendant
+   le repli, et le tiroir mobile — positionne sur #nav, pas sur la rangee —
+   n'est pas rogne. */
+@media(max-width:1240px){
+ #nav .nav-in:not(#_){overflow-x:clip}
+ #nav .nav-cta:not(#_){min-width:0}
+}
+/* ... et sur les fenetres etroites, la grappe est resserree pour que le
+   bouton tienne meme quand le raccourci de langue s'y ajoute. */
+@media(max-width:470px){
+ #nav .nav-cta:not(#_){gap:7px}
+ #mLang:not(#_):not(#__):not(#___){padding:5px 6px!important;margin-right:2px!important;letter-spacing:0!important}
+}
+@media(max-width:999px){
+ /* telephone : les appuis et le prolongement n'occupent plus un ecran entier chacun */
+ #appuis .mln:not(#_){min-height:0;padding:44px 0 60px}
+ #coeurs .mln:not(#_){min-height:min(86svh,700px)}
+}
+.pub-links:not(#_){display:flex;flex-wrap:wrap;gap:0 26px;align-items:center}
+@media(prefers-reduced-motion:reduce){}
+/* ———— ex-bloc: anonyme ———— */
+/* ============ Ch360 - home ultra premium translucide ============ */
+/* Halo dore statique derriere le verre : remplace les etoiles de liquidglass (body::after, z=-1, au-dessus de la photo, sous le contenu). Aucune animation. */
+html:not(.et-plight):not(.et-jlight) body::after{
+ content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:1;
+ background:
+  radial-gradient(44% 36% at 79% 6%, rgba(232,195,106,.17), transparent 62%),
+  radial-gradient(34% 30% at 9% 34%, rgba(232,195,106,.10), transparent 60%),
+  radial-gradient(52% 44% at 50% 100%, rgba(90,167,240,.12), transparent 66%),
+  radial-gradient(1px 1px at 20% 30%, rgba(255,255,255,.10), transparent),
+  radial-gradient(1px 1px at 70% 60%, rgba(255,255,255,.08), transparent),
+  radial-gradient(1px 1px at 88% 42%, rgba(255,255,255,.07), transparent)}
+html.et-plight body::after,html.et-jlight body::after{
+ content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:1;
+ background:
+  radial-gradient(44% 36% at 79% 6%, rgba(198,161,66,.16), transparent 62%),
+  radial-gradient(34% 30% at 9% 34%, rgba(198,161,66,.09), transparent 60%),
+  radial-gradient(52% 44% at 50% 100%, rgba(21,95,168,.08), transparent 66%)}
+/* Recette panneau - verre feuillete : degrade froid, flou sature, filet or, arete speculaire */
+.nh-kpi:not(#e1):not(#e2):not(#e3) > div,
+.agir-c:not(#e1):not(#e2):not(#e3),
+.hxf-face:not(#e1):not(#e2):not(#e3),
+.hncard:not(#e1):not(#e2):not(#e3),
+.hcp-i:not(#e1):not(#e2):not(#e3){
+ background:linear-gradient(168deg, rgba(13,23,40,.58) 0%, rgba(10,18,32,.48) 52%, rgba(8,15,27,.60) 100%)!important;
+ -webkit-backdrop-filter:blur(18px) saturate(1.45);backdrop-filter:blur(18px) saturate(1.45);
+ border:1px solid rgba(232,195,106,.20)!important;
+ box-shadow:inset 0 1px 0 rgba(255,255,255,.09), inset 0 0 0 1px rgba(255,255,255,.03), 0 24px 54px -24px rgba(0,0,0,.62)!important}
+.agir-c:not(#e1):not(#e2):not(#e3),
+.hncard:not(#e1):not(#e2):not(#e3){border-radius:20px!important}
+.hxf-face:not(#e1):not(#e2):not(#e3){border-radius:18px!important}
+.hcp-i:not(#e1):not(#e2):not(#e3){border-radius:14px!important}
+.nh-kpi:not(#e1):not(#e2):not(#e3){background:rgba(232,195,106,.16);border:1px solid rgba(232,195,106,.22);border-radius:16px}
+/* Survol calme : levee legere, filet qui s'eclaire - pas d'echelle, pas de lueur criarde */
+.agir-c:not(#e1):not(#e2):not(#e3),
+.hncard:not(#e1):not(#e2):not(#e3),
+.hcp-i:not(#e1):not(#e2):not(#e3){transition:transform .45s cubic-bezier(.2,.7,.2,1),border-color .45s,box-shadow .45s!important}
+.agir-c:not(#e1):not(#e2):not(#e3):hover,
+.hncard:not(#e1):not(#e2):not(#e3):hover,
+.hcp-i:not(#e1):not(#e2):not(#e3):hover{
+ transform:translateY(-4px)!important;border-color:rgba(232,195,106,.42)!important;
+ box-shadow:inset 0 1px 0 rgba(255,255,255,.12), 0 30px 64px -26px rgba(0,0,0,.7), 0 0 0 1px rgba(232,195,106,.14)!important}
+/* Boutons verre : secondaire du hero, conviction, vision */
+a.nh-b2:not(#e1):not(#e2):not(#e3):not(#e4),
+.hb-cta:not(#e1):not(#e2):not(#e3){
+ background:rgba(13,23,40,.34)!important;
+ -webkit-backdrop-filter:blur(12px) saturate(1.35);backdrop-filter:blur(12px) saturate(1.35)}
+/* Bouton or du hero : lueur douce */
+a.nh-b1:not(#e1):not(#e2):not(#e3):not(#e4){box-shadow:0 10px 30px -8px rgba(232,195,106,.45)}
+/* Filets d'or en tete des bandes conviction et CTA, comme sur le hero */
+.hbelieve:not(#e1):not(#e2):not(#e3),#cta-band:not(#e1):not(#e2):not(#e3){position:relative}
+.hbelieve:not(#e1):not(#e2):not(#e3)::before,#cta-band:not(#e1):not(#e2):not(#e3)::before{
+ content:"";position:absolute;left:0;right:0;top:0;height:1px;z-index:1;
+ background:linear-gradient(90deg,transparent,rgba(232,195,106,.55),transparent)}
+/* Pastilles KPI des maillons : verre leger sans flou (cout maitrise) */
+html:not(.et-plight):not(.et-jlight) .mln-kpis:not(#e1) span{
+ background:color-mix(in srgb,var(--mac) 9%,rgba(10,18,32,.38));
+ box-shadow:inset 0 1px 0 rgba(255,255,255,.06)}
+/* ---- Theme clair : verre blanc chaud, filets or profonds ---- */
+html.et-plight .nh-kpi:not(#e1):not(#e2):not(#e3) > div,
+html.et-jlight .nh-kpi:not(#e1):not(#e2):not(#e3) > div,
+html.et-plight .agir-c:not(#e1):not(#e2):not(#e3),html.et-jlight .agir-c:not(#e1):not(#e2):not(#e3),
+html.et-plight .hxf-face:not(#e1):not(#e2):not(#e3),html.et-jlight .hxf-face:not(#e1):not(#e2):not(#e3),
+html.et-plight .hncard:not(#e1):not(#e2):not(#e3),html.et-jlight .hncard:not(#e1):not(#e2):not(#e3),
+html.et-plight .hcp-i:not(#e1):not(#e2):not(#e3),html.et-jlight .hcp-i:not(#e1):not(#e2):not(#e3){
+ background:linear-gradient(168deg, rgba(255,255,255,.72) 0%, rgba(255,252,244,.60) 55%, rgba(255,255,255,.70) 100%)!important;
+ -webkit-backdrop-filter:blur(16px) saturate(1.15);backdrop-filter:blur(16px) saturate(1.15);
+ border:1px solid rgba(138,106,18,.30)!important;
+ box-shadow:inset 0 1px 0 rgba(255,255,255,.85), 0 20px 44px -24px rgba(18,29,49,.28)!important}
+html.et-plight .nh-kpi:not(#e1):not(#e2):not(#e3),html.et-jlight .nh-kpi:not(#e1):not(#e2):not(#e3){background:rgba(255,251,240,.58);border-color:rgba(138,106,18,.30)}
+html.et-plight .agir-c:not(#e1):not(#e2):not(#e3):hover,html.et-jlight .agir-c:not(#e1):not(#e2):not(#e3):hover,
+html.et-plight .hncard:not(#e1):not(#e2):not(#e3):hover,html.et-jlight .hncard:not(#e1):not(#e2):not(#e3):hover,
+html.et-plight .hcp-i:not(#e1):not(#e2):not(#e3):hover,html.et-jlight .hcp-i:not(#e1):not(#e2):not(#e3):hover{
+ border-color:rgba(138,106,18,.5)!important;
+ box-shadow:inset 0 1px 0 rgba(255,255,255,.9), 0 26px 54px -26px rgba(18,29,49,.36)!important}
+html.et-plight a.nh-b2:not(#e1):not(#e2):not(#e3):not(#e4),html.et-jlight a.nh-b2:not(#e1):not(#e2):not(#e3):not(#e4),
+html.et-plight .hb-cta:not(#e1):not(#e2):not(#e3),html.et-jlight .hb-cta:not(#e1):not(#e2):not(#e3){background:rgba(255,255,255,.55)!important}
+html.et-plight .mln-kpis:not(#e1) span,html.et-jlight .mln-kpis:not(#e1) span{box-shadow:inset 0 1px 0 rgba(255,255,255,.7)}
+/* ---- Mobile : flou reduit ---- */
+@media (max-width:700px){
+ .nh-kpi:not(#e1):not(#e2):not(#e3) > div,.agir-c:not(#e1):not(#e2):not(#e3),.hxf-face:not(#e1):not(#e2):not(#e3),
+ .hncard:not(#e1):not(#e2):not(#e3),.hcp-i:not(#e1):not(#e2):not(#e3){
+  -webkit-backdrop-filter:blur(12px) saturate(1.3);backdrop-filter:blur(12px) saturate(1.3)}}
+/* ---- Sans backdrop-filter : panneaux opaques ---- */
+@supports not ((-webkit-backdrop-filter:blur(1px)) or (backdrop-filter:blur(1px))){
+ .nh-kpi:not(#e1):not(#e2):not(#e3) > div,.agir-c:not(#e1):not(#e2):not(#e3),.hxf-face:not(#e1):not(#e2):not(#e3),
+ .hncard:not(#e1):not(#e2):not(#e3),.hcp-i:not(#e1):not(#e2):not(#e3){
+  background:linear-gradient(168deg,#101B2E 0%,#0C1526 55%,#0E1930 100%)!important}
+ html.et-plight .nh-kpi:not(#e1):not(#e2):not(#e3) > div,html.et-jlight .nh-kpi:not(#e1):not(#e2):not(#e3) > div,
+ html.et-plight .agir-c:not(#e1):not(#e2):not(#e3),html.et-jlight .agir-c:not(#e1):not(#e2):not(#e3),
+ html.et-plight .hxf-face:not(#e1):not(#e2):not(#e3),html.et-jlight .hxf-face:not(#e1):not(#e2):not(#e3),
+ html.et-plight .hncard:not(#e1):not(#e2):not(#e3),html.et-jlight .hncard:not(#e1):not(#e2):not(#e3),
+ html.et-plight .hcp-i:not(#e1):not(#e2):not(#e3),html.et-jlight .hcp-i:not(#e1):not(#e2):not(#e3){background:#FFFDF8!important}
+ a.nh-b2:not(#e1):not(#e2):not(#e3):not(#e4),.hb-cta:not(#e1):not(#e2):not(#e3){background:#101B2E!important}
+ html.et-plight a.nh-b2:not(#e1):not(#e2):not(#e3):not(#e4),html.et-jlight a.nh-b2:not(#e1):not(#e2):not(#e3):not(#e4),
+ html.et-plight .hb-cta:not(#e1):not(#e2):not(#e3),html.et-jlight .hb-cta:not(#e1):not(#e2):not(#e3){background:#FFFFFF!important}}
+/* ---- Transparence reduite demandee : panneaux opaques, halo eteint ---- */
+@media (prefers-reduced-transparency:reduce){
+ body::after{background:none!important}
+ .nh-kpi:not(#e1):not(#e2):not(#e3) > div,.agir-c:not(#e1):not(#e2):not(#e3),.hxf-face:not(#e1):not(#e2):not(#e3),
+ .hncard:not(#e1):not(#e2):not(#e3),.hcp-i:not(#e1):not(#e2):not(#e3){
+  -webkit-backdrop-filter:none;backdrop-filter:none;
+  background:linear-gradient(168deg,#101B2E 0%,#0C1526 55%,#0E1930 100%)!important}
+ html.et-plight .nh-kpi:not(#e1):not(#e2):not(#e3) > div,html.et-jlight .nh-kpi:not(#e1):not(#e2):not(#e3) > div,
+ html.et-plight .agir-c:not(#e1):not(#e2):not(#e3),html.et-jlight .agir-c:not(#e1):not(#e2):not(#e3),
+ html.et-plight .hxf-face:not(#e1):not(#e2):not(#e3),html.et-jlight .hxf-face:not(#e1):not(#e2):not(#e3),
+ html.et-plight .hncard:not(#e1):not(#e2):not(#e3),html.et-jlight .hncard:not(#e1):not(#e2):not(#e3),
+ html.et-plight .hcp-i:not(#e1):not(#e2):not(#e3),html.et-jlight .hcp-i:not(#e1):not(#e2):not(#e3){background:#FFFDF8!important}
+ a.nh-b2:not(#e1):not(#e2):not(#e3):not(#e4),.hb-cta:not(#e1):not(#e2):not(#e3){-webkit-backdrop-filter:none;backdrop-filter:none;background:#101B2E!important}
+ html.et-plight a.nh-b2:not(#e1):not(#e2):not(#e3):not(#e4),html.et-jlight a.nh-b2:not(#e1):not(#e2):not(#e3):not(#e4){background:#FFFFFF!important}}
+/* ---- Mouvement reduit : pas de levee ---- */
+@media (prefers-reduced-motion:reduce){
+ .agir-c:not(#e1):not(#e2):not(#e3):hover,.hncard:not(#e1):not(#e2):not(#e3):hover,.hcp-i:not(#e1):not(#e2):not(#e3):hover{transform:none!important}}
+/* ---- Impression : blanc pur, sans flou ni halo ---- */
+@media print{
+ body::after{background:none!important}
+ .nh-kpi:not(#e1):not(#e2):not(#e3) > div,.agir-c:not(#e1):not(#e2):not(#e3),.hxf-face:not(#e1):not(#e2):not(#e3),
+ .hncard:not(#e1):not(#e2):not(#e3),.hcp-i:not(#e1):not(#e2):not(#e3),a.nh-b2:not(#e1):not(#e2):not(#e3):not(#e4),.hb-cta:not(#e1):not(#e2):not(#e3){
+  -webkit-backdrop-filter:none;backdrop-filter:none;background:#fff!important;border-color:#bbb!important;box-shadow:none!important}}
+/* Pont nav->hero : la bande de photo brute entre la barre et le panneau verre devient un degrade assorti au theme */
+.diapo:not(#e1):not(#e2)::before{content:"";position:absolute;inset:0 0 auto 0;height:230px;z-index:1;pointer-events:none;
+ background:linear-gradient(180deg, rgba(7,13,24,.90) 0%, rgba(7,13,24,.38) 58%, transparent 100%)}
+html.et-plight .diapo:not(#e1):not(#e2)::before,html.et-jlight .diapo:not(#e1):not(#e2)::before{
+ background:linear-gradient(180deg, rgba(250,247,241,.96) 0%, rgba(250,247,241,.52) 58%, transparent 100%)}
+@media print{.diapo:not(#e1):not(#e2)::before{display:none}}
+
+/* Pilule de navigation active : texte lisible en theme sombre (defaut releve au banc de contraste) */
+html:not(.et-plight):not(.et-jlight) .nav-trigger.is-active:not(#e1):not(#e2):not(#e3){color:#F0CE82!important;-webkit-text-fill-color:#F0CE82!important}
+/* Ch371 - hero en verre clair, transparent et translucide (demande du proprietaire) : givre blanc leger, flou fort, halo local sous le texte pour tenir le contraste */
+.nh:not(#e1):not(#e2):not(#e3){background:transparent!important;-webkit-backdrop-filter:none;backdrop-filter:none}
+.nh-in:not(#e1):not(#e2):not(#e3){position:relative}
+.nh-in:not(#e1):not(#e2):not(#e3)::before{content:"";position:absolute;inset:-30px -10% auto -10%;height:120%;z-index:0;pointer-events:none;background:radial-gradient(62% 58% at 30% 42%,rgba(7,13,24,.44),transparent 74%)}
+.nh-in:not(#e1):not(#e2):not(#e3) > *{position:relative;z-index:1}
+.nh-h1:not(#e1):not(#e2):not(#e3),.nh-l:not(#e1):not(#e2):not(#e3){text-shadow:0 2px 22px rgba(0,0,0,.5)!important}
+html.et-plight .nh:not(#e1):not(#e2):not(#e3){background:transparent!important}
+html.et-plight .nh-in:not(#e1):not(#e2):not(#e3)::before{background:radial-gradient(70% 66% at 32% 44%,rgba(250,247,241,.88),rgba(250,247,241,.42) 62%,transparent 80%)}
+html.et-plight .nh-h1:not(#e1):not(#e2):not(#e3),html.et-plight .nh-l:not(#e1):not(#e2):not(#e3),html.et-plight .nh-k:not(#e1):not(#e2):not(#e3){text-shadow:0 0 6px rgba(255,255,255,.9),0 1px 18px rgba(255,255,255,.8)!important}
+html.et-plight .nh-k:not(#e1):not(#e2):not(#e3){color:#332606}
+@supports not ((-webkit-backdrop-filter:blur(1px)) or (backdrop-filter:blur(1px))){
+ .nh:not(#e1):not(#e2):not(#e3){background:transparent!important}
+ html.et-plight .nh:not(#e1):not(#e2):not(#e3){background:transparent!important}
+ }
+@media (prefers-reduced-transparency:reduce){
+ .nh:not(#e1):not(#e2):not(#e3){-webkit-backdrop-filter:none;backdrop-filter:none;background:linear-gradient(175deg,#070D18 0%,#0B1626 55%,#101E33 100%)!important}
+ html.et-plight .nh:not(#e1):not(#e2):not(#e3){background:linear-gradient(175deg,#F6F1E4 0%,#FBF7EE 60%,#FFFFFF 100%)!important}
+ .nh-in:not(#e1):not(#e2):not(#e3)::before{display:none}}
+@media print{.nh:not(#e1):not(#e2):not(#e3){-webkit-backdrop-filter:none;backdrop-filter:none;background:#fff!important}.nh-in:not(#e1):not(#e2):not(#e3)::before{display:none}.nh-h1:not(#e1):not(#e2):not(#e3),.nh-l:not(#e1):not(#e2):not(#e3){text-shadow:none!important}}
+
+/* Ch372 - flip des cartes chiffres accessible au clavier */
+.hxf:focus-visible .hxf-in:not(#e1),.hxf:focus-within .hxf-in:not(#e1){transform:rotateY(180deg)}
+/* Ch374 - mobile : le verre clair du hero retrouve son decor. En portrait, le recadrage cover tombait sur la zone sombre de la photo et les voiles mangeaient le reste : recadrage vise, photo eclaircie, voile allege, robe du verre montee d'un cran. Valeurs posees a l'ecran, contraste benche. */
+@media (max-width:700px){
+ .diapo i:not(#e1):not(#e2){background-position:62% 38%!important;filter:brightness(1.45) saturate(1.2)!important}
+ html:not(.et-plight):not(.et-jlight) .diapo:not(#e1):not(#e2)::after{background:linear-gradient(180deg,rgba(7,12,21,.28),rgba(7,12,21,.44))!important}
+ html:not(.et-plight):not(.et-jlight) .nh:not(#e1):not(#e2):not(#e3){background:transparent!important}
+ html:not(.et-plight):not(.et-jlight) .nh-in:not(#e1):not(#e2):not(#e3)::before{background:radial-gradient(62% 58% at 30% 42%,rgba(7,13,24,.42),transparent 74%)}
+}
+@media (max-width:700px) and (prefers-reduced-transparency:reduce){
+ .diapo i:not(#e1):not(#e2){filter:none!important}
+ html:not(.et-plight):not(.et-jlight) .diapo:not(#e1):not(#e2)::after{background:linear-gradient(180deg,rgba(7,12,21,.68),rgba(7,12,21,.78))!important}
+ html:not(.et-plight):not(.et-jlight) .nh:not(#e1):not(#e2):not(#e3){background:linear-gradient(175deg,#070D18 0%,#0B1626 55%,#101E33 100%)!important}
+}
+@media print{.diapo i:not(#e1):not(#e2){filter:none!important}}
+/* Ch376 - immersion panoramique : le decor derive lentement et les bandes s'ouvrent encore */
+@keyframes et-pano{from{transform:scale(1.14) translateX(-2.4%)}to{transform:scale(1.14) translateX(2.4%)}}
+.diapo i:not(#e1):not(#e2):not(#e3){animation:et-pano 70s ease-in-out infinite alternate!important;will-change:transform}
+@media (prefers-reduced-motion:reduce){.diapo i:not(#e1):not(#e2):not(#e3){animation:none!important}}
+:is(#coeurs,#appuis) .mln:not(#e1):not(#e2){--mln-g1:rgba(6,11,20,.50);--mln-g2:rgba(7,13,24,.26);--mln-g3:rgba(7,13,24,.05)}
+html.et-plight :is(#coeurs,#appuis) .mln:not(#e1):not(#e2){--mln-g1:rgba(250,247,241,.60);--mln-g2:rgba(250,247,241,.48);--mln-g3:rgba(250,247,241,.34)}
+html:not(.et-plight):not(.et-jlight) .hbelieve:not(#e1):not(#e2):not(#e3){background:linear-gradient(180deg,rgba(8,14,26,.42) 0%,rgba(9,16,29,.28) 46%,rgba(8,14,26,.48) 100%)!important}
+@media (prefers-reduced-transparency:reduce){
+ :is(#coeurs,#appuis) .mln:not(#e1):not(#e2){--mln-g1:rgba(6,11,20,.93);--mln-g2:rgba(7,13,24,.82);--mln-g3:rgba(7,13,24,.40)}
+ html.et-plight :is(#coeurs,#appuis) .mln:not(#e1):not(#e2){--mln-g1:rgba(250,247,241,.94);--mln-g2:rgba(250,247,241,.80);--mln-g3:rgba(250,247,241,.42)}
+ .diapo i:not(#e1):not(#e2):not(#e3){animation:none!important}}
+@media print{.diapo i:not(#e1):not(#e2):not(#e3){animation:none!important}}
+
+/* Ch382 - hero transparent : le voile du fond s ouvre sur desktop pour montrer la photo */
+@media (min-width:701px){
+ html:not(.et-plight):not(.et-jlight) .diapo:not(#e1):not(#e2)::after{background:linear-gradient(180deg,rgba(7,12,21,.30),rgba(7,12,21,.46))!important}
+ html.et-plight .diapo:not(#e1):not(#e2)::after{background:linear-gradient(180deg,rgba(7,12,21,.34),rgba(7,12,21,.48) 80%,#FBF8F2 100%)!important}
+}
+@media (min-width:701px) and (prefers-reduced-transparency:reduce){
+ html:not(.et-plight):not(.et-jlight) .diapo:not(#e1):not(#e2)::after{background:linear-gradient(180deg,rgba(7,12,21,.68),rgba(7,12,21,.78))!important}
+ html.et-plight .diapo:not(#e1):not(#e2)::after{background:linear-gradient(180deg,rgba(7,12,21,.58),rgba(7,12,21,.72) 80%,#FBF8F2 100%)!important}
+}
+
+/* Ch388 - bande-chaine du hero : la colonne vertebrale visible des le premier ecran */
+.nh-chain{display:flex;flex-wrap:wrap;align-items:center;gap:10px 8px;margin:20px 0 4px;position:relative;z-index:1}
+.nh-chain a{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:8px 16px;border-radius:999px;text-decoration:none;font-weight:700;font-size:.95rem;color:#fff;background:rgba(13,23,40,.40);border:1px solid rgba(232,195,106,.30);-webkit-backdrop-filter:blur(10px) saturate(1.3);backdrop-filter:blur(10px) saturate(1.3);text-shadow:0 1px 12px rgba(0,0,0,.55);transition:transform .18s ease,border-color .18s ease}
+.nh-chain a i{width:9px;height:9px;border-radius:50%;background:var(--pc);box-shadow:0 0 10px var(--pc);flex:none}
+.nh-chain a:hover,.nh-chain a:focus-visible{border-color:var(--pc);transform:translateY(-1px)}
+.nh-chain>span{color:rgba(255,255,255,.7);font-weight:700}
+.nh-chain em{font-style:italic;color:rgba(255,255,255,.78);font-size:.85rem;margin:0 2px;text-shadow:0 1px 10px rgba(0,0,0,.5)}
+html.et-plight .nh-chain a{color:#141B27;background:rgba(255,251,240,.74);border-color:rgba(138,106,18,.34);text-shadow:none}
+html.et-plight .nh-chain>span{color:rgba(29,36,49,.55)}
+html.et-plight .nh-chain em{color:rgba(29,36,49,.68);text-shadow:none}
+@supports not ((-webkit-backdrop-filter:blur(1px)) or (backdrop-filter:blur(1px))){
+ .nh-chain a{background:#101B2E}
+ html.et-plight .nh-chain a{background:#FFFDF8}
+}
+@media (prefers-reduced-transparency:reduce){
+ .nh-chain a{-webkit-backdrop-filter:none;backdrop-filter:none;background:#101B2E}
+ html.et-plight .nh-chain a{background:#FFFDF8}
+}
+@media print{
+ .nh-chain a{background:#fff!important;border-color:#bbb!important;text-shadow:none!important}
+ .nh-chain a i{box-shadow:none!important}
+}
+/* Ch388 - pastille maillon des carnets */
+.hncard-pole{display:inline-flex;align-items:center;gap:6px;font-family:var(--fm,ui-monospace,monospace);font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;color:var(--pac,#E8C36A)}
+.hncard-pole i{width:7px;height:7px;border-radius:50%;background:var(--pac,#E8C36A);flex:none}
+/* Ch388 - kicker chaine des portes Agir */
+.agir-ch{display:block;font-style:normal;font-family:var(--fm,ui-monospace,monospace);font-size:.66rem;letter-spacing:.09em;text-transform:uppercase;color:var(--gold-l,#E8C36A);margin:2px 0 8px}
+html.et-plight .agir-ch{color:#7A5C14}
+
+/* Ch391 - les appuis en rangee compacte : integres, pas a cote */
+.capr{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;position:relative;z-index:1}
+.capr-c{display:flex;flex-direction:column;gap:7px;padding:18px 18px 14px;border-radius:16px;text-decoration:none;color:#EAF0F8;background:linear-gradient(168deg,rgba(13,23,40,.55) 0%,rgba(8,15,27,.58) 100%);-webkit-backdrop-filter:blur(14px) saturate(1.35);backdrop-filter:blur(14px) saturate(1.35);border:1px solid rgba(232,195,106,.20);box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 18px 40px -22px rgba(0,0,0,.55);transition:transform .18s ease,border-color .18s ease}
+.capr-c:hover,.capr-c:focus-visible{transform:translateY(-2px);border-color:var(--pc)}
+.capr-k{display:inline-flex;align-items:center;gap:7px;font-family:var(--fm,ui-monospace,monospace);font-size:.66rem;letter-spacing:.09em;text-transform:uppercase;color:var(--pc)}
+.capr-k i{width:8px;height:8px;border-radius:50%;background:var(--pc);box-shadow:0 0 9px var(--pc);flex:none}
+.capr-c b{font-size:1.02rem;letter-spacing:-.01em;line-height:1.3}
+.capr-d{font-size:.84rem;line-height:1.5;color:rgba(234,240,248,.78);flex:1}
+.capr-go{font-style:normal;color:var(--pc);font-weight:700}
+html.et-plight .capr-c{color:#1D2431;background:rgba(255,253,248,.72);border-color:rgba(138,106,18,.24)}
+html.et-plight .capr-d{color:rgba(29,36,49,.72)}
+html.et-plight .capr-k{color:#41506A}
+html.et-plight .capr-go{color:#7A5C14}
+@supports not ((-webkit-backdrop-filter:blur(1px)) or (backdrop-filter:blur(1px))){
+ .capr-c{background:#101B2E}
+ html.et-plight .capr-c{background:#FFFDF8}
+}
+@media (prefers-reduced-transparency:reduce){
+ .capr-c{-webkit-backdrop-filter:none;backdrop-filter:none;background:#101B2E}
+ html.et-plight .capr-c{background:#FFFDF8}
+}
+@media print{
+ .capr-c{background:#fff!important;border-color:#bbb!important;color:#111!important}
+ .capr-d{color:#333!important}
+ .capr-k i{box-shadow:none!important}
+}
+/* ———— ex-bloc: anonyme ———— */
+@media print{html:not(#e1):not(#e2):not(#e3),html:not(#e1):not(#e2):not(#e3) body{background:#fff!important;color-scheme:light!important}.rootland:not(#e1):not(#e2):not(#e3){display:none!important;background:none!important}body:not(#e1):not(#e2)::before,body:not(#e1):not(#e2)::after{display:none!important}.hxf-back:not(#e1):not(#e2):not(#e3){display:none!important}.hxf-face:not(#e1):not(#e2):not(#e3){transform:none!important}}
+/* ———— ex-bloc: anonyme ———— */
+#chiffres .hxi-figs:not(#e1):not(#e2){grid-template-columns:repeat(3,1fr)}
+@media(max-width:899px){#chiffres .hxi-figs:not(#e1):not(#e2){grid-template-columns:1fr 1fr}}
+#cta-band .cb-l{margin:10px 0 0;color:rgba(245,247,250,.78);font-size:.95rem;line-height:1.55;max-width:56ch}
+html.et-plight #cta-band .cb-l{color:#3D4A61}
+/* ch399 - bandeaux : fil d or unifie + verre symetrise */
+#coeurs:not(#e1):not(#e2):not(#e3),.hxi:not(#e1):not(#e2):not(#e3),.hnews:not(#e1):not(#e2):not(#e3),.acth:not(#e1):not(#e2):not(#e3){border-top-color:rgba(232,195,106,.20)!important}
+.acth-first:not(#e1):not(#e2):not(#e3){border-top:none!important}
+#cta-band:not(#e1):not(#e2):not(#e3){border-top:1px solid rgba(232,195,106,.20)!important}
+html:not(.et-plight):not(.et-jlight) #cta-band:not(#e1):not(#e2):not(#e3){background:linear-gradient(180deg,rgba(14,22,38,.22),rgba(14,22,38,.34))!important}
+html.et-plight #coeurs:not(#e1):not(#e2):not(#e3),html.et-plight .hxi:not(#e1):not(#e2):not(#e3),html.et-plight .hnews:not(#e1):not(#e2):not(#e3),html.et-plight .acth:not(#e1):not(#e2):not(#e3),html.et-plight #cta-band:not(#e1):not(#e2):not(#e3){border-top-color:rgba(122,92,20,.16)!important}
+html.et-plight footer:not(#e1):not(#e2):not(#e3){border-top-color:rgba(122,92,20,.16)!important}
+html.et-plight .acth:not(#e1):not(#e2):not(#e3){background:rgba(252,250,246,.42)!important}
+@media (prefers-reduced-transparency:reduce){}
+
+/* Ch639 - le fond et les tuiles de la page d accueil.
+   1. .rootland est integralement masquee par .diapo en theme sombre : .diapo porte un fond
+      opaque #0A1220 au-dessus d elle. Mesure : repeinte en magenta pur, 0,00 % de pixel visible
+      a quatre hauteurs de defilement ; masquee, l ecart avec la page de reference reste sous le
+      bruit de tramage des degrades (0,71 / 1,03 / 0,98 pour un plancher de 0,79 / 0,87 / 0,88).
+      On la retire du rendu sombre. En theme clair .diapo passe en absolute sur 112vh et .rootland
+      redevient le sol de la page (22 % puis 42 % des pixels) : elle n est pas touchee la.
+   2. La nappe .diapo perd ses deux taches froides - violet .18 et bleu .15, toutes deux au centre -
+      qui tiraient le milieu de la page vers le mauve. Les quatre taches d angle de la charte restent.
+   3. #reperes et #cta-band sont places hors de <main>. Toutes les regles de la home portees par
+      :is(main,header.hero) les ont donc toujours ignorees, dont le depolissage du chapitre 623 :
+      d ou la seule tuile de la home restee en verre depoli, et le seul fond de tuile divergent
+      (rgba(0,38,58,.46) contre rgba(6,22,38,.74) ailleurs). On etend la portee a ces sections
+      et on aligne la geometrie de .doc-c sur les trois autres familles. */
+html:not(.et-plight):not(.et-jlight) .rootland:not(#b1):not(#b2):not(#b3):not(#b4):not(#b5){display:none!important}
+html:not(.et-plight):not(.et-jlight) body.hm .diapo:not(#b1):not(#b2):not(#b3):not(#b4):not(#b5){
+  background:
+    radial-gradient(46% 54% at 14% 14%, rgba(219,174,74,.42), transparent 64%),
+    radial-gradient(44% 50% at 88% 8%, rgba(90,167,240,.32), transparent 62%),
+    radial-gradient(54% 56% at 80% 92%, rgba(31,164,150,.28), transparent 64%),
+    radial-gradient(48% 52% at 16% 94%, rgba(224,162,78,.28), transparent 62%),
+    #0A1220!important}
+html body.hm>section:not(#b1):not(#b2):not(#b3):not(#b4):not(#b5) *:not(#b1):not(#b2):not(#b3):not(#b4):not(#b5){-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+html:not(.et-plight):not(.et-jlight) body.hm>section .doc-c:not(#b1):not(#b2):not(#b3):not(#b4):not(#b5){
+  background-color:rgba(6,22,38,.74)!important;background-image:none!important;
+  border:1px solid rgba(232,195,106,.20)!important}
+html:is(.et-plight,.et-jlight) body.hm>section .doc-c:not(#b1):not(#b2):not(#b3):not(#b4):not(#b5){
+  background-color:rgba(255,255,255,.82)!important;background-image:none!important;
+  border:1px solid rgba(138,106,18,.30)!important}
+body.hm>section .doc-c:not(#b1):not(#b2):not(#b3):not(#b4):not(#b5){border-radius:20px!important;padding:20px 20px 18px!important}
+body.hm>section .doc-g:not(#b1):not(#b2):not(#b3):not(#b4):not(#b5){gap:14px!important}
+
+/* Ch640 - trois conventions reprises des homes de majors (TotalEnergies, Aramco, Eni, bp,
+   Savannah Energy), traduites pour une societe en constitution et tenues dans le registre
+   dessine de la home : aucune photographie n est ajoutee.
+   1. Le calendrier corporate -> le fil des jalons, date, avec l etat calcule a la lecture.
+   2. Le cours de bourse en tete -> le prochain jalon date, la seule valeur vivante qu une
+      societe non cotee puisse afficher honnetement.
+   3. Le siege social et l identifiant fiscal au pied, comme Eni les imprime. */
+.et640-top{display:flex;align-items:baseline;justify-content:space-between;gap:14px 22px;flex-wrap:wrap}
+.et640-top>.nh-k{margin:0}
+.et640-tick{display:inline-flex;align-items:baseline;gap:9px;text-decoration:none;color:inherit;margin-left:auto;
+  font-family:var(--fm,ui-monospace,monospace);font-size:.6875rem;letter-spacing:.05em;white-space:nowrap}
+.et640-tick i{width:7px;height:7px;border-radius:50%;background:var(--gold-l,#E8C36A);flex:none;align-self:center}
+.et640-tick .k{text-transform:uppercase;letter-spacing:.12em;opacity:.62}
+.et640-tick b{font-weight:700;color:var(--gold-l,#E8C36A)}
+.et640-tick .d{opacity:.72}
+.et640-tick:hover b{text-decoration:underline}
+html.et-plight .et640-tick b,html.et-jlight .et640-tick b{color:var(--pal,#8A6210)}
+/* Ch640 - en theme clair le hero est creme mais sa couleur de texte reste claire (#F5F7FA) :
+   le surtitre .nh-k porte sa propre couleur, le bandeau doit faire de meme, sinon il s efface.
+   Mesure : 1,0:1 avant, texte quasi invisible. */
+html.et-plight .et640-tick,html.et-jlight .et640-tick{color:#2A3648}
+html.et-plight .et640-tick .k,html.et-jlight .et640-tick .k{opacity:1;color:#5A6678}
+html.et-plight .et640-tick .d,html.et-jlight .et640-tick .d{opacity:1;color:#4A5568}
+/* --muted vaut #7C8AA2 en theme clair : 2,9:1 sur creme, trop pale pour une date. */
+html.et-plight #jalons640 .j640-i time,html.et-jlight #jalons640 .j640-i time{color:#4A5568}
+html.et-plight .et640-tick i,html.et-jlight .et640-tick i{background:var(--pal,#8A6210)}
+@media(max-width:820px){.et640-tick{white-space:normal;margin-left:0}}
+
+#jalons640 .j640-sub{max-width:62ch;color:var(--muted);margin:10px 0 0}
+.j640-l{list-style:none;margin:30px 0 0;padding:0;display:grid;gap:14px;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.j640-i{position:relative;padding:22px 4px 0;min-width:0;display:flex;flex-direction:column;align-items:flex-start}
+/* le rail : un trait continu, une encoche par jalon - dessin, pas photo */
+.j640-i::before{content:"";position:absolute;left:0;right:-14px;top:5px;height:1px;background:var(--hair,rgba(255,255,255,.14))}
+.j640-i:last-child::before{right:0}
+.j640-i::after{content:"";position:absolute;left:0;top:0;width:11px;height:11px;transform:rotate(45deg);
+  background:transparent;border:1.5px solid var(--hair,rgba(255,255,255,.14))}
+.j640-i[data-e="prochain"]::after{background:var(--gold-l,#E8C36A);border-color:var(--gold-l,#E8C36A)}
+.j640-i[data-e="passe"]::after{border-color:#F59E0B;background:#F59E0B}
+.j640-i[data-e="avenir"]::after{border-color:#5AA7F0}
+.j640-q{display:block;font-family:var(--fm,ui-monospace,monospace);font-size:.66rem;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--gold-l,#E8C36A);margin:0 0 5px}
+.j640-i time{display:block;font-family:var(--fm,ui-monospace,monospace);font-size:.78rem;
+  font-variant-numeric:tabular-nums;color:var(--muted);margin:0 0 7px}
+.j640-i b{display:block;font-size:1rem;line-height:1.3;margin:0 0 6px}
+.j640-i p{margin:0 0 auto;font-size:.85rem;line-height:1.5;color:var(--muted)}
+.j640-e{display:inline-block;margin:14px 0 0;padding:3px 9px;border-radius:999px;align-self:flex-start;
+  font-family:var(--fm,ui-monospace,monospace);font-size:.63rem;letter-spacing:.08em;text-transform:uppercase;
+  border:1px solid var(--hair,rgba(255,255,255,.14));color:var(--muted)}
+.j640-i[data-e="prochain"] .j640-e{border-color:rgba(232,195,106,.5);color:var(--gold-l,#E8C36A)}
+.j640-i[data-e="passe"] .j640-e{border-color:rgba(245,158,11,.5);color:#F59E0B}
+.j640-i[data-e="avenir"] .j640-e{border-color:rgba(90,167,240,.42);color:#5AA7F0}
+html.et-plight .j640-q,html.et-jlight .j640-q{color:var(--pal,#8A6210)}
+html.et-plight .j640-i[data-e="prochain"] .j640-e,html.et-jlight .j640-i[data-e="prochain"] .j640-e{color:var(--pal,#8A6210);border-color:rgba(138,98,16,.45)}
+html.et-plight .j640-i[data-e="prochain"]::after,html.et-jlight .j640-i[data-e="prochain"]::after{background:var(--pal,#8A6210);border-color:var(--pal,#8A6210)}
+.j640-go{margin:26px 0 0;display:flex;gap:20px;flex-wrap:wrap;font-family:var(--fm,ui-monospace,monospace);font-size:.78rem}
+.j640-go a{color:var(--gold-l,#E8C36A);text-decoration:none;display:inline-flex;align-items:center;min-height:24px}
+.j640-go a:hover{text-decoration:underline}
+html.et-plight .j640-go a,html.et-jlight .j640-go a{color:var(--pal,#8A6210)}
+@media(max-width:700px){
+  .j640-l{grid-template-columns:1fr;gap:0}
+  .j640-i{padding:0 0 22px 24px}
+  .j640-i p{margin-bottom:0}
+  .j640-i::before{left:5px;right:auto;top:6px;bottom:-6px;height:auto;width:1px}
+  .j640-i:last-child::before{bottom:auto;height:0}
+  .j640-i::after{left:0;top:1px}
+}
+
+.id640{border-top:1px solid var(--hair,rgba(255,255,255,.14));margin:26px 0 0;padding:22px 0 0}
+.id640-k{font-family:var(--fm,ui-monospace,monospace);font-size:.66rem;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--muted);margin:0 0 14px}
+.id640 dl{margin:0;display:grid;gap:10px 28px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.id640 dl>div{min-width:0}
+.id640 dt{font-family:var(--fm,ui-monospace,monospace);font-size:.63rem;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--muted);opacity:.78;margin:0 0 2px}
+.id640 dd{margin:0;font-size:.85rem;line-height:1.45}
+.id640-n{margin:16px 0 0;font-size:.78rem;color:var(--muted)}
+.id640-n a{color:inherit}
+
+/* Ch641 - la nappe d ambiance de la home, mesuree couche par couche contre un bruit de fond
+   etabli sur trois passes identiques, a quatre hauteurs de defilement et dans les deux themes.
+   Point de comparaison : sur les sept homes relevees (bp, ExxonMobil, Eni, Equinor,
+   TotalEnergies, Aramco, Savannah Energy), le fond est UN aplat et zero couche plein ecran ;
+   bp et ExxonMobil n ont pas un seul degrade dans toute la page. EnerTchad n ayant aucune
+   photographie, sa nappe fait le travail que l image fait chez eux : on la garde, mais on
+   ne garde que ce qui peint vraiment.
+   RETIRE, mesure au niveau du bruit dans les deux themes :
+     body::after  - 6 degrades, opacite 1. Visible a l ecran (repeinte en magenta elle occupe
+                    jusqu a 40 % des pixels) mais inaudible : elle repeint les couleurs deja
+                    posees par .diapo dessous. Ecart au masquage 1,13/2,68/1,30/0,95 pour un
+                    bruit de 1,44/2,36/1,29/0,91.
+     .prem-mesh   - 4 degrades dans le hero, couverts par la pile de fond du hero lui-meme.
+                    0,70/2,37/0,68/0,54 en sombre, 0,29/0,37/0,45/0,14 en clair.
+     .rootland    - deja retiree du rendu sombre au 639 ; en theme clair son maillage sur creme
+                    est lui aussi au bruit (0,20/0,59/0,44/0,06), le fond de body etant la meme
+                    creme. On complete donc le 639. L element reste dans le DOM : les selecteurs
+                    html:has(.rootland) testent la presence, pas l affichage.
+   GARDE, mesure au-dessus du bruit :
+     .diapo       - la couche forte du theme sombre (6,2 a 8,9).
+     #aurora      - la couche forte du theme clair (1,3 a 3,0) et visible en sombre (3,1 a 4,6).
+     body::before et html::before - 3,5 % d opacite, mais reellement perceptibles dans le hero
+                    (2,23 en sombre, 1,46 en clair pour un bruit de 1,44 et 0,33). Deja arbitre
+                    au 639 : elles restent.
+   Bilan : six couches et vingt degrades d ambiance ramenes a quatre couches et dix degrades. */
+body.hm::after{display:none!important}
+
+/* Ch642 - l audit des couches posees sur l image de fond, masque par masque, avec relecture
+   de la valeur calculee apres chaque injection (lecon du 641), bruit de fond etabli sur trois
+   passes identiques, quatre hauteurs, deux themes.
+   RESULTAT : tout ce qui est au-dessus de la coupe est au niveau du bruit SAUF #aurora.
+   Retirer l ensemble donne 7,15 / 6,73 / 5,78 ; #aurora seule donne 7,33 / 6,64 / 5,74.
+   Separation frequentielle : le dessin vit en haute frequence (8,40 nu, 7,75 peint, 92 %
+   survit) ; #aurora ajoute +55 % de basse frequence par-dessus, et noie l escalier de la
+   faille sous un halo bleu et une brume ocre.
+   1. #aurora : la seule couche qui pese, et elle combat le dessin. Retiree de la home.
+   2. body::before et html::before : deux blur() plein ecran a 26 px et 34 px pour 3,5 %
+      d opacite, mesurees au bruit dans les deux themes maintenant que le fond est une image
+      (1,67/1,48/1,12 en sombre pour un bruit de 2,44/1,67/0,56 ; 0,38/0,45/0,25 en clair pour
+      0,56/0,50/0,14). Le 639 les avait gardees sur une mesure faite au-dessus de l ancien
+      fond de degrades : l arbitrage change avec le fond.
+   3. .cb-in gardait backdrop-filter:blur(18px) sur 21 % de la fenetre, troisieme defaut ne de
+      la meme cause que .doc-c : #cta-band est hors de <main>, donc le depolissage du 623 ne
+      l atteint pas ; et la regle qui devait l annuler est enfermee dans
+      @media (prefers-reduced-transparency: reduce), donc inactive pour presque tout le monde.
+      La regle 598-4 qui pose le flou compte 16 identifiants : il en faut davantage.
+   Bilan : 18 couches floutees sur la home ramenees a 13, dont plus aucune de grande surface. */
+html body.hm #aurora:not(#g1):not(#g2):not(#g3):not(#g4):not(#g5):not(#g6):not(#g7):not(#g8):not(#g9){display:none!important}
+html body.hm:not(#g1):not(#g2):not(#g3):not(#g4):not(#g5)::before{display:none!important}
+html:not(#g1):not(#g2):not(#g3):not(#g4):not(#g5)::before{display:none!important}
+html body.hm #cta-band .cb-in:not(#g1):not(#g2):not(#g3):not(#g4):not(#g5):not(#g6):not(#g7):not(#g8):not(#g9):not(#g10):not(#g11):not(#g12):not(#g13):not(#g14):not(#g15):not(#g16):not(#g17):not(#g18):not(#g19):not(#g20){-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+
+/* Ch644 - les quatre points de geometrie releves au 639 et laisses en attente.
+   Mesures d alors : .dur-g rayon 16 contre 20 pour les trois autres familles et bordure
+   blanche .14 contre or ; .hnews-grid gouttiere 16 contre 14 ; #reperes respiration 76/76
+   contre 46/46 partout ailleurs ; tuiles de pole, bande basse de 165 px sur 450, soit 37 %
+   de la tuile, trois fois — 495 px de hauteur de page pour une frise a 0,2 d opacite.
+   On aligne, et on resserre la bande sans toucher au dessin : la frise passe de 140 a 112 px
+   et le retrait bas de 164 a 132, ce qui laisse 12 px de degagement au lieu de 16. */
+body.hm #durabilite .dur-c:not(#k1):not(#k2):not(#k3):not(#k4):not(#k5):not(#k6):not(#k7):not(#k8){border-radius:20px!important}
+html:not(.et-plight):not(.et-jlight) body.hm #durabilite .dur-c:not(#k1):not(#k2):not(#k3):not(#k4):not(#k5):not(#k6):not(#k7):not(#k8){border:1px solid rgba(232,195,106,.20)!important}
+html:is(.et-plight,.et-jlight) body.hm #durabilite .dur-c:not(#k1):not(#k2):not(#k3):not(#k4):not(#k5):not(#k6):not(#k7):not(#k8){border:1px solid rgba(138,106,18,.30)!important}
+body.hm #carnets .hnews-grid:not(#k1):not(#k2):not(#k3):not(#k4):not(#k5):not(#k6):not(#k7):not(#k8){gap:14px!important}
+body.hm #reperes:not(#k1):not(#k2):not(#k3):not(#k4):not(#k5):not(#k6):not(#k7):not(#k8){padding-top:46px!important;padding-bottom:46px!important}
+@media(min-width:761px){
+ /* la regle du 619 compte dix-sept identifiants : il en faut davantage. La frise passe de
+    130 a 102 px d allocation, degagement inchange a 16 px. */
+ html body.hm #coeurs .t550-p:not(#k1):not(#k2):not(#k3):not(#k4):not(#k5):not(#k6):not(#k7):not(#k8):not(#k9):not(#k10):not(#k11):not(#k12):not(#k13):not(#k14):not(#k15):not(#k16):not(#k17):not(#k18):not(#k19):not(#k20){padding-bottom:calc(102px + clamp(24px,3vw,34px))!important}
+ html body.hm #coeurs .t550-p>.t619:not(#k1):not(#k2):not(#k3):not(#k4):not(#k5):not(#k6):not(#k7):not(#k8):not(#k9):not(#k10):not(#k11):not(#k12):not(#k13):not(#k14):not(#k15):not(#k16):not(#k17):not(#k18):not(#k19):not(#k20){height:112px!important}
+}
+
+/* Ch645 - le fond de la home est un dessin ; trois surfaces le recouvraient encore dans le hero.
+   1. Le voile du hero : une pile de degrades posee sur toute sa hauteur (1 430 x 968) qui
+      assombrissait la coupe jusqu en haut de page. Retiree ; le fond opaque reste sous elle,
+      la coupe monte donc jusqu au bandeau de navigation.
+   2. La bande de chiffres : 1 088 x 118, fond teinte or a 16 % et bordure, qui masquait le
+      dessin derriere elle. La surface et la bordure partent, les trois chiffres restent,
+      poses directement sur la coupe, separes par de simples filets.
+   3. La ligne du prochain jalon, ajoutee au 640, est retiree du hero ; l information reste
+      entiere dans la section « Le fil des jalons » plus bas dans la page. */
+html body.hm header#top.hero:not(#m1):not(#m2):not(#m3):not(#m4):not(#m5):not(#m6):not(#m7):not(#m8):not(#m9):not(#m10):not(#m11):not(#m12):not(#m13):not(#m14):not(#m15):not(#m16):not(#m17):not(#m18):not(#m19):not(#m20):not(#m21):not(#m22):not(#m23):not(#m24):not(#m25):not(#m26){background-image:none!important;filter:none!important}
+html body.hm .nh-kpi:not(#m1):not(#m2):not(#m3):not(#m4):not(#m5):not(#m6):not(#m7):not(#m8):not(#m9):not(#m10):not(#m11):not(#m12):not(#m13):not(#m14):not(#m15):not(#m16):not(#m17):not(#m18):not(#m19):not(#m20):not(#m21):not(#m22):not(#m23):not(#m24):not(#m25):not(#m26){background:none!important;border:0!important;box-shadow:none!important;
+ backdrop-filter:none!important;-webkit-backdrop-filter:none!important;border-radius:0!important;
+ padding-left:0!important;padding-right:0!important}
+html body.hm .nh-kpi:not(#m1):not(#m2):not(#m3):not(#m4):not(#m5):not(#m6):not(#m7):not(#m8):not(#m9):not(#m10):not(#m11):not(#m12):not(#m13):not(#m14):not(#m15):not(#m16):not(#m17):not(#m18):not(#m19):not(#m20):not(#m21):not(#m22):not(#m23):not(#m24):not(#m25):not(#m26)>*{background:none!important;background-color:transparent!important;
+ border:0!important;border-left:1px solid var(--hair,rgba(255,255,255,.18))!important;
+ box-shadow:none!important;border-radius:0!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;
+ padding-left:24px!important;padding-right:24px!important}
+html body.hm .nh-kpi:not(#m1):not(#m2):not(#m3):not(#m4):not(#m5):not(#m6):not(#m7):not(#m8):not(#m9):not(#m10):not(#m11):not(#m12):not(#m13):not(#m14):not(#m15):not(#m16):not(#m17):not(#m18):not(#m19):not(#m20):not(#m21):not(#m22):not(#m23):not(#m24):not(#m25):not(#m26)>*:first-child{border-left:0!important;padding-left:0!important}
+html body.hm .et640-tick:not(#m1):not(#m2):not(#m3):not(#m4):not(#m5):not(#m6):not(#m7):not(#m8):not(#m9):not(#m10):not(#m11):not(#m12):not(#m13):not(#m14):not(#m15):not(#m16):not(#m17):not(#m18):not(#m19):not(#m20):not(#m21):not(#m22):not(#m23):not(#m24):not(#m25):not(#m26){display:none!important}
