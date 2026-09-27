@@ -6,6 +6,9 @@ import re, sys
 ROOT = Path(__file__).resolve().parents[1]
 HOME = ROOT / "index.html"
 PUB = ROOT / "publications.html"
+HOME_EN = ROOT / "index-en.html"
+HOME_AR = ROOT / "ar.html"
+PUB_EN = ROOT / "publications-en.html"
 errors = []
 
 def read(path):
@@ -16,6 +19,9 @@ def read(path):
 
 home = read(HOME)
 pub = read(PUB)
+home_en = read(HOME_EN)
+home_ar = read(HOME_AR)
+pub_en = read(PUB_EN)
 
 home_requirements = {
     "centre de confiance": r'class="et-proof-center"[^>]*aria-labelledby="et-proof-title"',
@@ -56,3 +62,15 @@ if errors:
     sys.exit(1)
 
 print("OK : centre corporate/reporting présent, relié et documenté")
+
+
+multilingual = [
+    ("index-en.html", home_en, r'class="et-proof-center"[^>]*aria-labelledby="et-proof-title-en"', r'/publications-en#pub-inv'),
+    ("ar.html", home_ar, r'class="et-proof-center"[^>]*aria-labelledby="et-proof-title-ar"', r'/ar-investisseurs'),
+    ("publications-en.html", pub_en, r'class="pub-radar"[^>]*aria-label="Reporting center navigation"', r'href="#pub-inv"'),
+]
+for filename, content, pattern_one, pattern_two in multilingual:
+    if not re.search(pattern_one, content, re.I | re.S):
+        errors.append(f"{filename}: multilingual corporate layer absent")
+    if not re.search(pattern_two, content, re.I | re.S):
+        errors.append(f"{filename}: reporting gateway absent")
