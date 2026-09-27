@@ -97,6 +97,30 @@ for p in pages:
     if re.search(r'</a>\\s+class="[^"]+">', h, re.I):
         errs.append(f'{p}: attribut class orphelin après une balise </a>')
 
+# Vérification légère des formulaires : éviter les formulaires sans nom d'action
+# ou sans mécanisme de soumission explicite.
+for p in pages:
+    h = open(p, encoding='utf-8').read()
+    for fm in re.finditer(r'<form\\b([^>]*)>', h, re.I):
+        attrs = fm.group(1)
+        if 'mailto:' in attrs.lower() or 'action=' in attrs.lower() or 'onsubmit=' in attrs.lower():
+            continue
+        # Les formulaires sans action explicite soumettent vers la page courante :
+        # on les signale seulement si aucune logique JS n'est attachée à la page.
+        if 'addEventListener' not in h and 'onsubmit' not in h.lower():
+            errs.append(f'{p}: formulaire sans action ni gestionnaire de soumission détectable')
+
+# Hreflang : chaque déclaration doit avoir un href absolu et un code reconnu.
+for p in pages:
+    h = open(p, encoding='utf-8').read()
+    for m in re.finditer(r'<link\\b[^>]*rel=["\\\']alternate["\\\'][^>]*hreflang=["\\\']([^"\\\']+)["\\\'][^>]*>', h, re.I):
+        tag = m.group(0)
+        hm = re.search(r'href=["\\\']([^"\\\']+)', tag, re.I)
+        if not hm or not re.match(r'^https?://', hm.group(1)):
+            errs.append(f'{p}: hreflang sans URL absolue')
+        if m.group(1).lower() not in ('fr','en','ar','x-default'):
+            errs.append(f'{p}: hreflang non standard {m.group(1)}')
+
 # Vérification finale après toutes les règles QA.
 if errs:
     print('\n'.join(errs[:80])); print(f'\nECHEC : {len(errs)} probleme(s)'); sys.exit(1)
