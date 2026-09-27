@@ -19,3 +19,61 @@ html:not(.et-plight):not(.et-jlight){--muted:#93A1B8}
 html.et-plight .nav .brand,html.et-jlight .nav .brand{color:#13202F}
 .nav .brand-tx small{color:#A8B4C7}
 html.et-plight .nav .brand-tx small,html.et-jlight .nav .brand-tx small{color:#39424F}
+
+/* EnerTchad 2026 — Liquid Glass v3 : hiérarchie matière + budget responsive */
+:root{
+  --et-glass-1:rgba(8,18,31,.46);
+  --et-glass-2:rgba(12,22,38,.66);
+  --et-glass-3:linear-gradient(145deg,rgba(22,38,60,.72),rgba(7,15,27,.78));
+  --et-glass-line:rgba(255,255,255,.16);
+  --et-glass-line-strong:rgba(255,255,255,.30);
+  --et-glass-blur-1:12px;
+  --et-glass-blur-2:18px;
+  --et-glass-blur-3:24px;
+}
+/* Niveau 1 : chrome, doit rester lisible sur le contenu */
+.nav.nx:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5):not(#e6),
+.nav:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5):not(#e6){
+  background:var(--et-glass-1)!important;
+  -webkit-backdrop-filter:saturate(165%) blur(var(--et-glass-blur-1))!important;
+  backdrop-filter:saturate(165%) blur(var(--et-glass-blur-1))!important;
+}
+/* Niveau 2 : contenu, verre plus dense mais moins coûteux que les surfaces de focus */
+.hpcard,.hxi-card,.mfo-lever,.hncard,.sc-card,.hx-stat,.hubdrawer,.flip-face,.hpcard-kpis{
+  --glass-blur:var(--et-glass-blur-2);
+  -webkit-backdrop-filter:saturate(175%) blur(var(--glass-blur))!important;
+  backdrop-filter:saturate(175%) blur(var(--glass-blur))!important;
+}
+/* Niveau 3 : focus, réservé aux panneaux qui portent une décision ou un parcours */
+.hx-slide .rt,.hx-aside,[class*="router"],.nx-mega,.mega,.nx-panel{
+  -webkit-backdrop-filter:saturate(180%) blur(var(--et-glass-blur-3))!important;
+  backdrop-filter:saturate(180%) blur(var(--et-glass-blur-3))!important;
+}
+/* Réduction de charge sur petits écrans : conserver la profondeur, pas le coût maximal. */
+@media(max-width:760px){
+  .hpcard,.hxi-card,.mfo-lever,.hncard,.sc-card,.hx-stat,.hubdrawer,.flip-face,.hpcard-kpis{
+    --glass-blur:14px;
+    -webkit-backdrop-filter:saturate(155%) blur(var(--glass-blur))!important;
+    backdrop-filter:saturate(155%) blur(var(--glass-blur))!important;
+  }
+  .hx-slide .rt,.hx-aside,[class*="router"],.nx-mega,.mega,.nx-panel{
+    -webkit-backdrop-filter:saturate(165%) blur(18px)!important;
+    backdrop-filter:saturate(165%) blur(18px)!important;
+  }
+}
+@media(prefers-reduced-transparency:reduce){
+  .hpcard,.hxi-card,.mfo-lever,.hncard,.sc-card,.hx-stat,.hubdrawer,.flip-face,.hpcard-kpis,
+  .hx-slide .rt,.hx-aside,[class*="router"],.nx-mega,.mega,.nx-panel{
+    background:#0D1A2A!important;
+    -webkit-backdrop-filter:none!important;
+    backdrop-filter:none!important;
+    box-shadow:0 12px 30px rgba(0,0,0,.24)!important;
+  }
+  html.et-plight .hpcard,html.et-plight .hxi-card,html.et-plight .mfo-lever,html.et-plight .hncard,
+  html.et-plight .sc-card,html.et-plight .hx-stat,html.et-plight .hubdrawer,html.et-plight .flip-face,
+  html.et-plight .hpcard-kpis,html.et-plight .hx-slide .rt,html.et-plight .hx-aside,
+  html.et-plight [class*="router"],html.et-plight .nx-mega,html.et-plight .mega,html.et-plight .nx-panel{
+    background:#FAF7F1!important;
+    box-shadow:0 12px 30px rgba(24,45,67,.10)!important;
+  }
+}
