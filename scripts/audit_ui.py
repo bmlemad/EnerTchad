@@ -24,7 +24,7 @@ for p in pages:
     if h1!=1: flag('H1',f'h1 count={h1}')
     if not re.search(r'href\s*=\s*["\']#main-content["\']',s,re.I): flag('SKIP','missing #main-content skip link')
     if not re.search(r'id\s*=\s*["\']main-content["\']',s,re.I): flag('MAIN','missing id=main-content')
-    if 'modern-inner-2026.css' not in s and rel not in ('index.html','index-en.html'): flag('INNER_UI','missing modern-inner layer')
+    if 'modern-inner-2026.css' not in s and 'nav_a.css' not in s and rel not in ('index.html','index-en.html'): flag('INNER_UI','missing shared inner UI layer')
     if re.search(r'\bstyle\s*=\s*["\'][^"\']{240,}["\']',s,re.I): flag('INLINE_STYLE','very large inline style')
     if len(re.findall(r'<script\b',s,re.I))>30: flag('INLINE_JS','high script tag count')
     ids=re.findall(r'\bid\s*=\s*["\']([^"\']+)["\']',s,re.I)
