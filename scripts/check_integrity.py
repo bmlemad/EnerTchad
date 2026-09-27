@@ -142,6 +142,18 @@ for p in pages:
         if m.group(1).lower() not in ('fr','en','ar','x-default'):
             errs.append(f'{p}: hreflang non standard {m.group(1)}')
 
+
+# Contrôle des routes institutionnelles et des principaux pôles.
+EXPECTED_ROUTES = [
+    'index.html', 'index-en.html', 'ar.html',
+    'pole-amont.html', 'pole-aval.html', 'pole-intermediaire.html',
+    'pole-enerchimie.html', 'pole-enerconseils.html', 'pole-greentech.html',
+    'pole-tchaditech.html', 'pole-tchaditude.html',
+]
+for route in EXPECTED_ROUTES:
+    if not exists(route):
+        errs.append(f'route attendue absente: {route}')
+
 # Vérification finale après toutes les règles QA.
 if errs:
     print('\n'.join(errs[:80])); print(f'\nECHEC : {len(errs)} probleme(s)'); sys.exit(1)
