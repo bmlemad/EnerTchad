@@ -114,7 +114,7 @@ document.querySelectorAll('.reveal,.reveal-up,.reveal-blur').forEach(el=>{const 
 
 // ── Motion premium (respecte prefers-reduced-motion) ──
 const reduceMotion=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
-if(!reduceMotion){
+if(!reduceMotion && matchMedia('(hover: hover)').matches){
   // 1) Lueur qui suit la souris sur les cartes (divc + spotlight global)
   // Applique le spotlight aux grandes cartes du site pour un effet premium cohérent
   document.querySelectorAll('.htech-grid>div,.cp-card,.buy-grid>div,.univ-grid>div,.maint-grid>div,.taskforce-grid>div,.fin-grid>div,.appfeat-grid>div,.hstat').forEach(c=>c.classList.add('glow-card'));
