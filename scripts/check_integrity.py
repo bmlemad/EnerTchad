@@ -29,11 +29,6 @@ for p in pages:
     for m in re.finditer(r'<script type="application/ld\+json">(.*?)</script>', h, re.S):
         try: json.loads(m.group(1))
         except Exception as e: errs.append(f'{p}: JSON-LD invalide ({e})')
-if errs:
-    print('\n'.join(errs[:50])); print(f'\nECHEC : {len(errs)} probleme(s)'); sys.exit(1)
-print(f'OK : {len(pages)} pages, 0 probleme')
-
-# QA complémentaire : métadonnées minimales, hreflang et IDs dupliqués déjà contrôlés ci-dessus.
 for p in pages:
     h = open(p, encoding='utf-8').read()
     if not re.search(r'<html\b[^>]*\blang=["\'][^"\']+["\']', h, re.I):
@@ -44,3 +39,8 @@ for p in pages:
         errs.append(f'{p}: meta description absente ou vide')
     if not re.search(r'<link\b[^>]*rel=["\'][^"\']*canonical[^"\']*["\'][^>]*href=["\'][^"\']+["\']', h, re.I):
         errs.append(f'{p}: canonical absent')
+
+# Vérification finale après toutes les règles QA.
+if errs:
+    print('\n'.join(errs[:80])); print(f'\nECHEC : {len(errs)} probleme(s)'); sys.exit(1)
+print(f'OK : {len(pages)} pages, 0 probleme')
