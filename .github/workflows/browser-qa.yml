@@ -16,6 +16,16 @@ jobs:
         run: |
           npm install --no-save --no-package-lock @playwright/test@1.55.0
           npx playwright@1.55.0 install --with-deps chromium
+      - name: Attendre le déploiement Vercel
+        env:
+          SITE_URL: https://enertchad-delta.vercel.app/
+        run: |
+          for i in {1..30}; do
+            code=$(curl -L -s -o /tmp/site.html -w '%{http_code}' "$SITE_URL/")
+            if [ "$code" = "200" ] && grep -q 'EnerTchad' /tmp/site.html; then exit 0; fi
+            sleep 5
+          done
+          echo "Le déploiement de production n'est pas encore disponible"; exit 1
       - name: Exécuter les tests
         run: |
           mkdir -p artifacts
