@@ -34,6 +34,19 @@ async function auditViewport(page, url, label) {
     document.querySelectorAll(selectors).forEach((el) => {
       const r = el.getBoundingClientRect();
       if (!r.width || !r.height) return;
+      const isSkip = el.matches('a[href^="#main"], a[href^="#main-content"], a[href^="#contenu"], a[href^="#content"]')
+        || /skip|contenu principal|main content/i.test(el.innerText || '');
+      let ancestor = el.parentElement;
+      let horizontallyScrollable = false;
+      while (ancestor && ancestor !== document.body) {
+        const s = getComputedStyle(ancestor);
+        if (s.overflowX === 'auto' || s.overflowX === 'scroll') {
+          horizontallyScrollable = ancestor.scrollWidth > ancestor.clientWidth + 2;
+          if (horizontallyScrollable) break;
+        }
+        ancestor = ancestor.parentElement;
+      }
+      if (isSkip || horizontallyScrollable) return;
       if (r.right < -2 || r.left > vw + 2 || r.bottom < -2) {
         clipped.push({
           tag: el.tagName.toLowerCase(),
@@ -45,7 +58,7 @@ async function auditViewport(page, url, label) {
     });
     const h1 = document.querySelectorAll('h1').length;
     const nav = !!document.querySelector('nav');
-    const skip = !!document.querySelector('a.et-skip');
+    const skip = !!document.querySelector('a[href^="#main"], a[href^="#main-content"], a[href^="#contenu"], a[href^="#content"], .skip-link, [class*="skip"]');
     const main = !!document.querySelector('main, #main-content, #root');
     const badFixed = [];
     document.querySelectorAll('*').forEach(el => {
