@@ -26,6 +26,19 @@ jobs:
             sleep 5
           done
           echo "Le déploiement de production n'est pas encore disponible"; exit 1
+      - name: Vérifier les garde-fous de synchronisation production
+        env:
+          SITE_URL: https://enertchad-delta.vercel.app/
+        run: |
+          set -euo pipefail
+          page=$(curl -L -sS "$SITE_URL/petrochimie/")
+          if ! printf '%s' "$page" | grep -q 'class="et-skip"'; then
+            echo "::warning::Production Vercel ne contient pas le skip-link source attendu sur /petrochimie/. Vérifier la synchronisation du projet Vercel avant d'interpréter la QA comme un défaut du dépôt."
+          fi
+          if ! printf '%s' "$page" | grep -q 'main-content'; then
+            echo "::warning::Production Vercel ne contient pas #main-content sur /petrochimie/. Le dépôt Git doit être comparé au déploiement réellement servi."
+          fi
+
       - name: Exécuter la QA fonctionnelle
         run: |
           mkdir -p artifacts
