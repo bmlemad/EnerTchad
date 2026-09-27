@@ -72,3 +72,96 @@
   .nx-search::before{margin:0;width:9px;height:9px}
 }
 @media(forced-colors:active){.nx-search{color:CanvasText;border-color:CanvasText}}
+
+/* ===== Tile System v4 — 2026 modernization =====
+   Audit: reduce visual noise, unify hierarchy, improve scanability and touch behavior.
+   Principles: one elevation, one radius family, restrained glass, clear action affordance.
+*/
+:root{
+  --et-tile-radius:18px;
+  --et-tile-border:rgba(255,255,255,.13);
+  --et-tile-bg:linear-gradient(145deg,rgba(20,38,60,.62),rgba(8,17,29,.52));
+  --et-tile-shadow:0 18px 44px -30px rgba(0,0,0,.72);
+}
+.hpcard,.hxi-card,.sc-card,.hncard,.et-command-card,.et-proof-card,.et-intent{
+  border-radius:var(--et-tile-radius)!important;
+  border:1px solid var(--et-tile-border)!important;
+  box-shadow:var(--et-tile-shadow)!important;
+  -webkit-backdrop-filter:saturate(140%) blur(14px)!important;
+  backdrop-filter:saturate(140%) blur(14px)!important;
+}
+.hpcard,.hxi-card,.sc-card,.hncard{
+  background:var(--et-tile-bg)!important;
+  transition:transform .24s cubic-bezier(.2,.7,.2,1),border-color .24s ease,box-shadow .24s ease!important;
+}
+.hpcard::after,.hxi-card::after{
+  opacity:.34!important;
+}
+.hpcard:hover,.hxi-card:hover,.sc-card:hover,.hncard:hover{
+  transform:translateY(-5px)!important;
+  border-color:rgba(232,195,106,.34)!important;
+  box-shadow:0 26px 58px -32px rgba(0,0,0,.82),0 0 0 1px rgba(232,195,106,.05)!important;
+}
+.hpcard:focus-within,.hxi-card:focus-within,.sc-card:focus-within,.hncard:focus-within{
+  border-color:rgba(232,195,106,.5)!important;
+  box-shadow:0 20px 48px -30px rgba(0,0,0,.8),0 0 0 3px rgba(232,195,106,.10)!important;
+}
+.hpcard-top,.hpcard-body{position:relative;z-index:1}
+.hpcard-tag{
+  border-radius:999px!important;
+  letter-spacing:.08em!important;
+}
+.hubwrap{transition:transform .24s cubic-bezier(.2,.7,.2,1)!important}
+.hubwrap:hover{transform:translateY(-5px)!important}
+.hubwrap .hpcard{border-bottom-left-radius:0!important;border-bottom-right-radius:0!important}
+.hubwrap .hubdrawer{
+  border:1px solid var(--et-tile-border)!important;
+  border-top:1px solid rgba(255,255,255,.09)!important;
+  border-radius:0 0 var(--et-tile-radius) var(--et-tile-radius)!important;
+  background:rgba(9,18,31,.48)!important;
+  -webkit-backdrop-filter:saturate(135%) blur(12px)!important;
+  backdrop-filter:saturate(135%) blur(12px)!important;
+}
+.hubdrawer a{
+  min-height:42px;
+  border-radius:9px!important;
+}
+.et-command-card,.et-proof-card{
+  min-height:190px;
+  transition:transform .24s cubic-bezier(.2,.7,.2,1),border-color .24s ease,box-shadow .24s ease!important;
+}
+.et-command-card:hover,.et-proof-card:hover{
+  transform:translateY(-5px)!important;
+}
+.et-intent{
+  min-height:56px;
+  border-radius:14px!important;
+  background:rgba(10,22,37,.62)!important;
+  transition:transform .2s ease,border-color .2s ease,background .2s ease!important;
+}
+.et-intent:hover{transform:translateY(-2px)!important;background:rgba(18,35,54,.72)!important}
+@media(max-width:760px){
+  .hpcard,.hxi-card,.sc-card,.hncard,.et-command-card,.et-proof-card{border-radius:16px!important}
+  .hpcard:hover,.hxi-card:hover,.sc-card:hover,.hncard:hover,.et-command-card:hover,.et-proof-card:hover{transform:translateY(-3px)!important}
+}
+@media(prefers-reduced-motion:reduce){
+  .hpcard,.hxi-card,.sc-card,.hncard,.hubwrap,.et-command-card,.et-proof-card,.et-intent{transition:none!important}
+  .hpcard:hover,.hxi-card:hover,.sc-card:hover,.hncard:hover,.hubwrap:hover,.et-command-card:hover,.et-proof-card:hover,.et-intent:hover{transform:none!important}
+}
+@media(prefers-reduced-transparency:reduce){
+  .hpcard,.hxi-card,.sc-card,.hncard,.et-command-card,.et-proof-card,.et-intent,.hubwrap .hubdrawer{
+    background:#101B2E!important;
+    -webkit-backdrop-filter:none!important;
+    backdrop-filter:none!important;
+    box-shadow:0 12px 28px rgba(0,0,0,.24)!important;
+  }
+  html.et-plight .hpcard,html.et-plight .hxi-card,html.et-plight .sc-card,html.et-plight .hncard,
+  html.et-plight .et-command-card,html.et-plight .et-proof-card,html.et-plight .et-intent,html.et-plight .hubwrap .hubdrawer{background:#FAF7F1!important}
+}
+@media(forced-colors:active){
+  .hpcard,.hxi-card,.sc-card,.hncard,.et-command-card,.et-proof-card,.et-intent,.hubwrap .hubdrawer{
+    background:Canvas!important;color:CanvasText!important;border:1px solid CanvasText!important;
+    -webkit-backdrop-filter:none!important;backdrop-filter:none!important;box-shadow:none!important;
+  }
+  .hpcard:hover,.hxi-card:hover,.sc-card:hover,.hncard:hover,.et-command-card:hover,.et-proof-card:hover,.et-intent:hover,.hubwrap:hover{transform:none!important}
+}
