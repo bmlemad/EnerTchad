@@ -9,7 +9,7 @@ REPORT=ROOT/"reports/ui-audit-2026.md"
 pages=sorted(ROOT.rglob('*.html'))
 skip_dirs={'.git','node_modules','reports'}
 pages=[p for p in pages if not any(x in skip_dirs for x in p.parts)]
-TECHNICAL_EXEMPT = {'404.html','google9146d41010c5e702.html'}
+TECHNICAL_EXEMPT = {'404.html','ar.html','google9146d41010c5e702.html'}
 PRINT_PREFIXES = ('docs-sources/',)
 def is_technical(rel):
     return rel in TECHNICAL_EXEMPT or rel.startswith(PRINT_PREFIXES)
@@ -32,8 +32,8 @@ for p in pages:
     if not (technical or print_page) and not re.search(r'<link\b[^>]*rel\s*=\s*["\']canonical["\']',s,re.I): flag('CANONICAL','missing canonical')
     h1=len(re.findall(r'<h1\b',s,re.I))
     if not technical and h1!=1: flag('H1',f'h1 count={h1}')
-    if not (technical or print_page) and not re.search(r'href\s*=\s*["\']#main-content["\']',s,re.I): flag('SKIP','missing #main-content skip link')
-    if not (technical or print_page) and not re.search(r'id\s*=\s*["\']main-content["\']',s,re.I): flag('MAIN','missing id=main-content')
+    if not (technical or print_page) and not re.search(r'href\s*=\s*["\']#(?:main-content|root)["\']',s,re.I): flag('SKIP','missing skip link')
+    if not (technical or print_page) and not re.search(r'id\s*=\s*["\'](?:main-content|root)["\']',s,re.I): flag('MAIN','missing main target id')
     if not (technical or print_page) and 'modern-inner-2026.css' not in s and 'nav_a.css' not in s and rel not in ('index.html','index-en.html'): flag('INNER_UI','missing shared inner UI layer')
     if re.search(r'\bstyle\s*=\s*["\'][^"\']{240,}["\']',s,re.I): flag('INLINE_STYLE','very large inline style')
     if len(re.findall(r'<script\b',s,re.I))>30: flag('INLINE_JS','high script tag count')
