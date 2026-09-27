@@ -10,10 +10,47 @@ concurrency:
   cancel-in-progress: false
 jobs:
   cleanup:
-    if: ${{ !startsWith(github.event.head_commit.message, 'chore: normalize HTML whitespace') }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Éviter la boucle de commit
+        run: |
+          if git log -1 --pretty=%B | grep -q '^chore: normalize HTML whitespace          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          root = Path('.')
+          changed = 0
+          saved = 0
+          for p in root.rglob('*.html'):
+              if any(part in {'.git','node_modules','reports'} for part in p.parts):
+                  continue
+              old = p.read_text(encoding='utf-8', errors='ignore')
+              new = old.replace('\r\n','\n').replace('\r','\n')
+              new = re.sub(r'[ \t]+\n', '\n', new)
+              new = re.sub(r'\n{4,}', '\n\n\n', new)
+              if new != old:
+                  p.write_text(new, encoding='utf-8')
+                  changed += 1
+                  saved += len(old) - len(new)
+          print(f'Changed files: {changed}; bytes saved: {saved}')
+          PY
+      - name: Vérifier le diff
+        run: git diff --check && git diff --stat
+      - name: Committer le nettoyage
+        run: |
+          if git diff --quiet; then
+            echo "Aucun nettoyage nécessaire."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- '*.html'
+          git commit -m "chore: normalize HTML whitespace"
+          git push
+; then
+            echo "Nettoyage déjà appliqué."
+            exit 0
+          fi
       - name: Normaliser le whitespace HTML
         run: |
           python3 - <<'PY'
