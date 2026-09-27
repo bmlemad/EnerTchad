@@ -42,7 +42,14 @@ for p in pages:
     body_without_noscript = re.sub(r"<noscript\b.*?</noscript>", "", s, flags=re.I | re.S)
     stylesheet_tags = re.findall(r"<link\b[^>]*\brel\s*=\s*[\"']stylesheet[\"'][^>]*>", body_without_noscript, re.I)
     stylesheets = [tag for tag in stylesheet_tags if not re.search(r"\bonload\s*=", tag, re.I)]
-    if len(stylesheets) > 14: findings.append((rel, "nombre élevé de feuilles CSS bloquantes", len(stylesheets)))
+    stylesheet_hrefs = []
+    for tag in stylesheets:
+        href = re.search(r"\bhref\s*=\s*["']([^"']+)", tag, re.I)
+        if href:
+            stylesheet_hrefs.append(href.group(1))
+    unique_stylesheets = list(dict.fromkeys(stylesheet_hrefs))
+    if len(unique_stylesheets) > 14:
+        findings.append((rel, "nombre élevé de feuilles CSS bloquantes distinctes", len(unique_stylesheets)))
     images = re.findall(r"<img\b[^>]*>", s, re.I)
     for tag in images:
         if not re.search(r"\b(?:loading|fetchpriority)\s*=", tag, re.I): findings.append((rel, "image sans hint loading/fetchpriority", 1))
