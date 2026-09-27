@@ -145,3 +145,75 @@ html.et-plight .nx-search:hover,html.et-jlight .nx-search:hover{color:#74570B}
   .nx-search::before{margin:0;width:9px;height:9px}
 }
 @media(forced-colors:active){.nx-search{color:CanvasText}}
+
+
+/* ===== Premium inner architecture v2 =====
+   Inner pages: editorial bands first, cards second.
+   Avoid turning every section into a floating container.
+*/
+body:not(.hm):not(.et-modern-exclude) main>section{
+  border:0!important;
+  border-radius:0!important;
+  background:transparent!important;
+  box-shadow:none!important;
+  padding-block:clamp(56px,8vw,104px);
+}
+body:not(.hm):not(.et-modern-exclude) main>section+section{
+  border-top:1px solid var(--et-i-line)!important;
+}
+body:not(.hm):not(.et-modern-exclude) main>section:hover{
+  border-color:transparent!important;
+  box-shadow:none!important;
+  transform:none!important;
+}
+body:not(.hm):not(.et-modern-exclude) main>section>.wrap,
+body:not(.hm):not(.et-modern-exclude) main>section>.container{
+  width:min(1240px,calc(100% - 48px));
+  margin-inline:auto;
+}
+body:not(.hm):not(.et-modern-exclude) main p{
+  max-width:72ch;
+  line-height:1.72;
+}
+body:not(.hm):not(.et-modern-exclude) main table{
+  border-collapse:separate;
+  border-spacing:0;
+  width:100%;
+  overflow:hidden;
+  border:1px solid var(--et-i-line);
+  border-radius:16px;
+  background:rgba(255,255,255,.025);
+}
+body:not(.hm):not(.et-modern-exclude) main th{
+  text-align:left;
+  font:700 .68rem var(--fm,ui-monospace,monospace);
+  letter-spacing:.11em;
+  text-transform:uppercase;
+  color:var(--et-i-gold);
+  padding:14px 16px;
+  border-bottom:1px solid var(--et-i-line);
+}
+body:not(.hm):not(.et-modern-exclude) main td{
+  padding:14px 16px;
+  border-bottom:1px solid rgba(120,170,220,.10);
+}
+body:not(.hm):not(.et-modern-exclude) main tr:last-child td{border-bottom:0}
+body:not(.hm):not(.et-modern-exclude) .breadcrumbs,
+body:not(.hm):not(.et-modern-exclude) nav[aria-label*="breadcrumb" i]{
+  font:600 .7rem var(--fm,ui-monospace,monospace);
+  letter-spacing:.08em;
+}
+@media(max-width:760px){
+  body:not(.hm):not(.et-modern-exclude) main>section{padding-block:48px}
+  body:not(.hm):not(.et-modern-exclude) main>section>.wrap,
+  body:not(.hm):not(.et-modern-exclude) main>section>.container{width:min(100% - 32px,1240px)}
+  body:not(.hm):not(.et-modern-exclude) main table{font-size:.88rem;display:block;overflow-x:auto}
+}
+@media(prefers-reduced-transparency:reduce){
+  body:not(.hm):not(.et-modern-exclude) main table{background:#101B2E!important}
+  html.et-plight body:not(.hm):not(.et-modern-exclude) main table{background:#FAF7F1!important}
+}
+@media(forced-colors:active){
+  body:not(.hm):not(.et-modern-exclude) main table{background:Canvas!important;border-color:CanvasText!important}
+  body:not(.hm):not(.et-modern-exclude) main th,body:not(.hm):not(.et-modern-exclude) main td{border-color:CanvasText!important}
+}
