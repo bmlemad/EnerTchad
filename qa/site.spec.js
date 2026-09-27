@@ -112,3 +112,13 @@ test('language entry points — FR EN AR', async ({ browser }) => {
     await page.close();
   }
 });
+
+test('production security headers', async ({ request }) => {
+  const response = await request.get(url, { maxRedirects: 5 });
+  expect(response.status()).toBe(200);
+  const headers = response.headers();
+  expect(headers['x-content-type-options']).toBe('nosniff');
+  expect(headers['referrer-policy']).toBe('strict-origin-when-cross-origin');
+  expect(headers['x-frame-options']).toBe('SAMEORIGIN');
+  expect(headers['strict-transport-security']).toContain('max-age=31536000');
+});
