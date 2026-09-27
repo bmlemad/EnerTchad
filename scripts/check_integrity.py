@@ -67,6 +67,18 @@ for p in pages:
             if t and not exists(t):
                 errs.append(f'{p}: srcset cassé {u}')
 
+# Contrôles structurels supplémentaires : erreurs HTML introduites par des injections/transformations.
+for p in pages:
+    h = open(p, encoding='utf-8').read()
+    if re.search(r'</a>\\s+class="[^"]+">', h, re.I):
+        errs.append(f'{p}: attribut class orphelin après une balise </a>')
+    if len(re.findall(r'<body\\b', h, re.I)) != 1:
+        errs.append(f'{p}: nombre de balises <body> inattendu')
+    if len(re.findall(r'</body>', h, re.I)) != 1:
+        errs.append(f'{p}: nombre de balises </body> inattendu')
+    if len(re.findall(r'<head\\b', h, re.I)) != 1 or len(re.findall(r'</head>', h, re.I)) != 1:
+        errs.append(f'{p}: structure <head> inattendue')
+
 # Vérification finale après toutes les règles QA.
 if errs:
     print('\n'.join(errs[:80])); print(f'\nECHEC : {len(errs)} probleme(s)'); sys.exit(1)
