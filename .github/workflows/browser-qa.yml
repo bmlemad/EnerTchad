@@ -6,7 +6,7 @@ on:
 jobs:
   browser:
     runs-on: ubuntu-latest
-    timeout-minutes: 12
+    timeout-minutes: 25
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -26,11 +26,16 @@ jobs:
             sleep 5
           done
           echo "Le déploiement de production n'est pas encore disponible"; exit 1
-      - name: Exécuter les tests
+      - name: Exécuter la QA fonctionnelle
         run: |
           mkdir -p artifacts
           npx --yes playwright@1.55.0 test qa/site.spec.js --reporter=line
-      - name: Publier les captures
+      - name: Exécuter l'audit visuel complet
+        env:
+          SITE_URL: https://enertchad-delta.vercel.app/
+        run: |
+          npx --yes playwright@1.55.0 test qa/full-site-visual.spec.js --reporter=line
+      - name: Publier les captures et rapports
         if: always()
         uses: actions/upload-artifact@v4
         with:
