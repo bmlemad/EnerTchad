@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """Contrôle d'intégrité du site publié (exécuté par GitHub Actions)."""
 import re, glob, os, json, sys
-pages = sorted(glob.glob('*.html')) + sorted(glob.glob('*/*.html'))
+pages = sorted(glob.glob('**/*.html', recursive=True))
 # Fichiers techniques/non-SEO exclus du contrôle éditorial.
 EXCLUDED = {'404.html', 'google9146d41010c5e702.html'}
 pages = [p for p in pages if p not in EXCLUDED and not p.startswith('docs-sources/')]
