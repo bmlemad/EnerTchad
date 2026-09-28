@@ -301,3 +301,6 @@ html.et-plight:not(#q0):not(#q1):not(#q2):not(#q3):not(#q4):not(#q5):not(#q6):no
    Meme correctif exact que le 568 : rembourrage vertical centre par inline-flex,
    hauteur minimale 24px, aucune valeur inventee. */
 .jn-renvoi a.jn-go,.jn-all{display:inline-flex!important;align-items:center;min-height:24px}
+.jn-sujets .topic-chip{display:inline-flex;align-items:center;gap:8px;padding:8px 13px;border-radius:999px;border:1px solid var(--hair,rgba(120,170,220,.22));font-size:.82rem;font-weight:550;line-height:1.25}
+.jn-sujets .topic-chip b:not(#_){width:8px;height:8px;border-radius:50%;background:var(--tc,#E8C36A)!important;flex:none}
+.jn-sujets .topic-chip i{font-style:normal;color:var(--tc,#E8C36A)}

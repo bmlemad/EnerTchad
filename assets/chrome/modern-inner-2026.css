@@ -228,3 +228,15 @@ body:not(.hm):not(.et-modern-exclude) nav[aria-label*="breadcrumb" i]{
     contain-intrinsic-size:0 760px;
   }
 }
+
+/* QA 2026-09-28 — pages arabes internes : le contenu de main collait aux bords (aucune gouttiere),
+   aligne sur le conteneur du hero (.wrap : 1240px, 24px de marge). */
+html[lang="ar"] body.et-inner-modern>main#main-content{max-width:1240px;margin-inline:auto;padding-inline:24px;box-sizing:border-box}
+/* QA 2026-09-28 — theme clair : cartes precedent/suivant des Carnets et en-tetes de ligne des tableaux
+   restes en encre/verre du theme sombre. */
+html:is(.et-plight,.et-jlight) body:not(.hm):not(.et-modern-exclude) .pgr a{background:linear-gradient(155deg,rgba(255,255,255,.86),rgba(247,244,236,.72));border-color:rgba(11,20,34,.12);box-shadow:0 14px 34px -28px rgba(24,45,67,.3)}
+html:is(.et-plight,.et-jlight) body:not(.hm):not(.et-modern-exclude) th{color:#1B2636}
+html:is(.et-plight,.et-jlight) .pub-radar a{background:linear-gradient(155deg,rgba(255,255,255,.86),rgba(247,244,236,.72));border-color:rgba(11,20,34,.12);box-shadow:0 14px 34px -28px rgba(24,45,67,.3)}
+html:is(.et-plight,.et-jlight) .pub-radar a:hover{background:#FFFFFF;border-color:rgba(138,101,16,.34)}
+html:is(.et-plight,.et-jlight) .pub-radar span{color:#6B520D}
+html:is(.et-plight,.et-jlight) .pub-radar small{color:#4B586A}

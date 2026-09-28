@@ -140,6 +140,10 @@
   transition:transform .2s ease,border-color .2s ease,background .2s ease!important;
 }
 .et-intent:hover{transform:translateY(-2px)!important;background:rgba(18,35,54,.72)!important}
+html.et-plight .et-intent{background:linear-gradient(155deg,rgba(255,255,255,.84),rgba(247,244,236,.68))!important;border-color:rgba(11,20,34,.12)!important;box-shadow:0 14px 34px -28px rgba(24,45,67,.3)}
+html.et-plight .et-intent:hover{background:#FFFFFF!important;border-color:rgba(138,101,16,.34)!important}
+html.et-plight .nh-proof{color:#4B586A}
+html.et-plight header.hero .nh-proof a:not(#_):not(#__):not(#___){color:#6B520D!important;text-decoration-color:rgba(107,82,13,.45)}
 @media(max-width:760px){
   .hpcard,.hxi-card,.sc-card,.hncard,.et-command-card,.et-proof-card{border-radius:16px!important}
   .hpcard:hover,.hxi-card:hover,.sc-card:hover,.hncard:hover,.et-command-card:hover,.et-proof-card:hover{transform:translateY(-3px)!important}

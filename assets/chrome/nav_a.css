@@ -1376,3 +1376,7 @@ html.et-plight:not([lang="ar"]) .plmap-nb, html.et-jlight:not([lang="ar"]) .plma
 html.et-plight:not([lang="ar"]) .plmap-land, html.et-jlight:not([lang="ar"]) .plmap-land{fill:rgba(16,64,111,.05);stroke:rgba(16,64,111,.50)}
 html.et-plight:not([lang="ar"]) .plmap-lake, html.et-jlight:not([lang="ar"]) .plmap-lake{fill:rgba(16,64,111,.20)}
 html.et-plight:not([lang="ar"]) .plmap-cty, html.et-jlight:not([lang="ar"]) .plmap-cty{fill:rgba(11,20,34,.42)}
+@media (min-width:1241px) and (max-width:1379px){.nav-links>.nav-item>.nav-trigger>.nxdot{display:none}}
+html:is(.et-plight,.et-jlight) nav.corp-nav a:not(#_):not(#__):not(#___){color:#2A3648!important}
+html:is(.et-plight,.et-jlight) nav.corp-nav a:is(.on,:hover):not(#_):not(#__):not(#___){color:#10161F!important}
+@media (max-width:1240px){.nav-links>.nav-item>.nav-trigger{justify-content:flex-start;text-align:start}.nav-links>.nav-item>.nav-trigger>svg{margin-inline-start:auto}}
