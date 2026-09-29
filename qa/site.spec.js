@@ -949,6 +949,28 @@ test('performance — internal CSS/JS resources resolve directly', async ({ requ
 });
 
 
+test('performance — referenced font assets resolve directly', async ({ request }) => {
+  const cssPaths = ['/assets/chrome/bundle_head_b2.css', '/assets/chrome/modern-ui-2026.css', '/assets/chrome/nav_a.css', '/assets/chrome/home-corporate-2026.css', '/assets/chrome/hubs-portal-2026.css'];
+  const seen = new Set();
+  for (const cssPath of cssPaths) {
+    const response = await request.get(new URL(cssPath, url).href, { timeout: 30000 });
+    expect(response.status(), cssPath).toBe(200);
+    const css = await response.text();
+    const fonts = [...css.matchAll(/url\\(\\s*["']?([^"')]+\\.(?:woff2?|otf|ttf)(?:[?#][^"')]+)?)["']?\\s*\\)/gi)]
+      .map(m => m[1])
+      .filter(h => h.startsWith('/') && !h.startsWith('//'));
+    for (const href of fonts) {
+      const absolute = new URL(href, response.url()).href;
+      if (seen.has(absolute)) continue;
+      seen.add(absolute);
+      const target = await request.get(absolute, { maxRedirects: 0, timeout: 30000 });
+      expect(target.status(), cssPath + ' -> ' + href).toBe(200);
+      expect((target.headers()['content-type'] || '').toLowerCase(), cssPath + ' -> ' + href).toMatch(/font|octet-stream/);
+    }
+  }
+});
+
+
 test('performance — referenced image assets resolve directly', async ({ request }) => {
   const paths = ['/', '/index-en', '/ar', '/contact', '/clients', '/investisseurs', '/faq', '/greentech/', '/tchaditech/', '/tchaditude/', '/enerconseils/'];
   const seen = new Set();
