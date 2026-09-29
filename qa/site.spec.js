@@ -1894,3 +1894,59 @@ test('media — local image sources are HTTPS and expose stable URLs', async ({ 
     await page.close();
   }
 });
+
+test('document structure — heading hierarchy has no skipped levels on strategic pages', async ({ browser }) => {
+  const paths = ['/', '/index-en', '/ar', '/amont/', '/intermediaire/', '/aval/', '/greentech/', '/tchaditech/', '/tchaditude/', '/enerconseils/', '/contact', '/investisseurs'];
+  for (const path of paths) {
+    const page = await browser.newPage();
+    await page.goto(new URL(path, url).href, { waitUntil: 'domcontentloaded', timeout: 45000 });
+    const levels = await page.locator('h1,h2,h3,h4,h5,h6').evaluateAll(nodes =>
+      nodes.map(n => Number(n.tagName.slice(1))).filter(Boolean)
+    );
+    expect(levels.filter(level => level === 1).length, path).toBe(1);
+    let previous = 1;
+    for (const level of levels) {
+      if (level > previous + 1) throw new Error(path + ': skipped heading level H' + previous + ' → H' + level);
+      previous = level;
+    }
+    await page.close();
+  }
+});
+
+test('resources — stylesheets and scripts are not duplicated unnecessarily', async ({ browser }) => {
+  const paths = ['/', '/index-en', '/ar', '/contact', '/investisseurs', '/greentech/'];
+  for (const path of paths) {
+    const page = await browser.newPage();
+    await page.goto(new URL(path, url).href, { waitUntil: 'domcontentloaded', timeout: 45000 });
+    const report = await page.evaluate(() => {
+      const normalize = value => {
+        try { const u = new URL(value, location.href); u.hash = ''; return u.href; } catch { return value; }
+      };
+      const styles = [...document.querySelectorAll('link[rel="stylesheet"][href]')].map(n => normalize(n.href));
+      const scripts = [...document.querySelectorAll('script[src]')].map(n => normalize(n.src));
+      const duplicateCount = values => values.length - new Set(values).size;
+      return { styleDuplicates: duplicateCount(styles), scriptDuplicates: duplicateCount(scripts) };
+    });
+    expect(report.styleDuplicates, path).toBe(0);
+    expect(report.scriptDuplicates, path).toBe(0);
+    await page.close();
+  }
+});
+
+test('document integrity — only one visible primary navigation landmark and one main content landmark', async ({ browser }) => {
+  const paths = ['/', '/index-en', '/ar', '/contact', '/investisseurs', '/greentech/'];
+  for (const path of paths) {
+    const page = await browser.newPage();
+    await page.goto(new URL(path, url).href, { waitUntil: 'domcontentloaded', timeout: 45000 });
+    const report = await page.evaluate(() => ({
+      mains: document.querySelectorAll('main').length,
+      navs: [...document.querySelectorAll('nav')].filter(n => {
+        const style = getComputedStyle(n);
+        const r = n.getBoundingClientRect();
+        return style.display !== 'none' && style.visibility !== 'hidden' && r.width > 0 && r.height > 0;
+      }).length
+    }));
+    expect(report.mains, path).toBe(1);
+    expect(report.navs, path).toBeGreaterThan(0);
+  }
+});
