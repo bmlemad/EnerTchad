@@ -157,6 +157,10 @@ test('production security headers', async ({ request }) => {
   expect(headers['referrer-policy']).toBe('strict-origin-when-cross-origin');
   expect(headers['x-frame-options']).toBe('SAMEORIGIN');
   expect(headers['strict-transport-security']).toMatch(/max-age=(?:31536000|63072000)/);
+  expect(headers['permissions-policy']).toBe('camera=(), microphone=(), geolocation=()');
+  expect(headers['cross-origin-opener-policy']).toBe('same-origin');
+  expect(headers['cross-origin-resource-policy']).toBe('same-origin');
+  expect(headers['x-permitted-cross-domain-policies']).toBe('none');
 });
 
 
