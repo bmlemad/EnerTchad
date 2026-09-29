@@ -1950,3 +1950,41 @@ test('document integrity — only one visible primary navigation landmark and on
     expect(report.navs, path).toBeGreaterThan(0);
   }
 });
+
+test('performance — images declare decoding and below-fold loading intent', async ({ browser }) => {
+  const page = await browser.newPage({ viewport: { width: 390, height: 844 } });
+  await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 45000 });
+  const report = await page.locator('img').evaluateAll(images => images.map(img => {
+    const r = img.getBoundingClientRect();
+    return {
+      src: img.currentSrc || img.src,
+      loading: img.getAttribute('loading'),
+      decoding: img.getAttribute('decoding'),
+      aboveFold: r.top < innerHeight && r.bottom > 0
+    };
+  }));
+  for (const image of report) {
+    if (!image.src) continue;
+    expect(image.decoding, image.src).toBeTruthy();
+    if (!image.aboveFold) expect(image.loading, image.src).toBe('lazy');
+  }
+  await page.close();
+});
+
+test('performance — no oversized inline data payloads in HTML attributes', async ({ browser }) => {
+  const paths = ['/', '/index-en', '/ar', '/contact', '/investisseurs', '/greentech/', '/tchaditech/'];
+  for (const path of paths) {
+    const page = await browser.newPage();
+    await page.goto(new URL(path, url).href, { waitUntil: 'domcontentloaded', timeout: 45000 });
+    const report = await page.evaluate(() => {
+      const html = document.documentElement.outerHTML;
+      const dataUrls = html.match(/data:[^"'\\s>]+/gi) || [];
+      return {
+        count: dataUrls.length,
+        largest: Math.max(0, ...dataUrls.map(value => value.length))
+      };
+    });
+    expect(report.largest, path).toBeLessThan(250000);
+    await page.close();
+  }
+});
