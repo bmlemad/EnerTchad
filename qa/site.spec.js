@@ -455,3 +455,18 @@ test('SEO sitemap — every indexed URL resolves', async ({ request }) => {
     });
   }
 });
+
+
+test('SEO representative pages — canonical matches requested route', async ({ request }) => {
+  const paths = ['/', '/index-en', '/ar', '/contact', '/contact-en', '/clients', '/clients-en', '/investisseurs', '/investisseurs-en', '/faq', '/faq-en', '/amont/', '/aval/', '/intermediaire/', '/greentech/', '/tchaditech/', '/tchaditude/', '/enerconseils/'];
+  for (const path of paths) {
+    const response = await request.get(new URL(path, url).href);
+    expect(response.status(), path).toBe(200);
+    const html = await response.text();
+    const canonical = html.match(/<link[^>]+rel=["'][^"']*canonical[^"']*["'][^>]+href=["']([^"']+)["']/i);
+    expect(canonical, path).not.toBeNull();
+    const actual = canonical[1].replace(/\/$/, '');
+    const expected = new URL(path, url).href.replace(/\/$/, '');
+    expect(actual, path).toBe(expected);
+  }
+});
