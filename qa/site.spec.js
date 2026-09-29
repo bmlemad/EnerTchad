@@ -1124,3 +1124,26 @@ test('navigation accessibility — disclosure controls declare valid relationshi
     for (const value of expanded) expect(['true', 'false'], path).toContain(value);
   }
 });
+
+test('redirects — legacy routes are unique, permanent and point to non-legacy destinations', async ({ request }) => {
+  const legacy = [
+    '/reporting', '/reporting-en', '/en', '/en.html', '/pole-amont', '/pole-intermediaire',
+    '/pole-aval', '/pole-greentech', '/pole-enertech', '/pole-enertalents', '/pole-enerconseils',
+    '/enertech', '/enertalents', '/enerchimie', '/impact', '/boutique', '/calculateur-baril-additionnel'
+  ];
+  const seen = new Set();
+  for (const path of legacy) {
+    expect(seen.has(path), 'duplicate legacy route: ' + path).toBeFalsy();
+    seen.add(path);
+    const response = await request.get(new URL(path, url).href, { maxRedirects: 0, timeout: 30000 });
+    expect(response.status(), path).toBe(308);
+    const location = response.headers()['location'];
+    expect(location, path).toBeTruthy();
+    expect(location).not.toBe(path);
+    const target = await request.get(new URL(location, response.url()).href, { maxRedirects: 0, timeout: 30000 });
+    expect(target.status(), path + ' -> ' + location).not.toBe(301);
+    expect(target.status(), path + ' -> ' + location).not.toBe(302);
+    expect(target.status(), path + ' -> ' + location).not.toBe(307);
+    expect(target.status(), path + ' -> ' + location).not.toBe(308);
+  }
+});
