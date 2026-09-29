@@ -743,3 +743,15 @@ test('performance — external scripts remain non-blocking', async ({ request })
     }
   }
 });
+
+
+test('security — no mixed-content resource URLs', async ({ request }) => {
+  const paths = ['/', '/index-en', '/ar', '/contact', '/investisseurs', '/clients', '/faq', '/greentech/', '/tchaditech/', '/tchaditude/', '/enerconseils/'];
+  for (const path of paths) {
+    const response = await request.get(new URL(path, url).href, { timeout: 30000 });
+    expect(response.status(), path).toBe(200);
+    const html = await response.text();
+    expect(html, path).not.toMatch(/(?:src|href|action)\\s*=\\s*["']http:\\/\\//i);
+    expect(html, path).not.toMatch(/url\\(\\s*["']?http:\\/\\//i);
+  }
+});
