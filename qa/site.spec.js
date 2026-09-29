@@ -440,3 +440,18 @@ test('redirects — no redirect chains', async () => {
     expect(sources.has(path), rule.source + ' -> ' + rule.destination).toBeFalsy();
   }
 });
+
+
+test('SEO sitemap — every indexed URL resolves', async ({ request }) => {
+  const sitemap = await request.get(new URL('/sitemap.xml', url).href);
+  expect(sitemap.status()).toBe(200);
+  const xml = await sitemap.text();
+  const urls = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m => m[1]);
+  for (let i = 0; i < urls.length; i += 10) {
+    const batch = urls.slice(i, i + 10);
+    const responses = await Promise.all(batch.map(u => request.get(u, { maxRedirects: 5, timeout: 30000 })));
+    responses.forEach((response, j) => {
+      expect(response.status(), batch[j]).toBeLessThan(400);
+    });
+  }
+});
