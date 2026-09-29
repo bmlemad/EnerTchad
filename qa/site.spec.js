@@ -1862,3 +1862,35 @@ test('metadata — descriptions are substantive and not duplicated', async ({ br
   }
   expect(new Set(descriptions).size, 'duplicate meta descriptions').toBe(descriptions.length);
 });
+
+test('links — external destinations use safe target semantics when opening new tabs', async ({ browser }) => {
+  const page = await browser.newPage();
+  await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 45000 });
+  const report = await page.locator('a[href]').evaluateAll(nodes => nodes.map(a => ({
+    href: a.href,
+    target: a.getAttribute('target'),
+    rel: a.getAttribute('rel') || ''
+  })));
+  for (const link of report) {
+    if (link.target === '_blank') {
+      expect(link.rel.toLowerCase(), link.href).toMatch(/(^|\s)noopener(\s|$)/);
+    }
+  }
+  await page.close();
+});
+
+test('media — local image sources are HTTPS and expose stable URLs', async ({ browser }) => {
+  const paths = ['/', '/amont/', '/intermediaire/', '/aval/', '/greentech/', '/tchaditech/', '/contact', '/investisseurs', '/ar'];
+  for (const path of paths) {
+    const page = await browser.newPage();
+    await page.goto(new URL(path, url).href, { waitUntil: 'domcontentloaded', timeout: 45000 });
+    const images = await page.locator('img[src],source[srcset]').evaluateAll(nodes => nodes.map(el => el.src || el.srcset || ''));
+    for (const src of images) {
+      if (!src) continue;
+      for (const candidate of src.split(',').map(x => x.trim().split(/\s+/)[0])) {
+        if (/^https?:\/\//i.test(candidate)) expect(candidate).toMatch(/^https:\/\//i);
+      }
+    }
+    await page.close();
+  }
+});
