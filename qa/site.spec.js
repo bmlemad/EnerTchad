@@ -1804,3 +1804,61 @@ test('interaction — disabled and hidden controls do not become keyboard traps'
   expect(report.offscreen).toBe(0);
   await page.close();
 });
+
+test('structured data — organization identity remains coherent across strategic pages', async ({ browser }) => {
+  const paths = ['/', '/index-en', '/ar', '/contact', '/investisseurs', '/greentech/'];
+  for (const path of paths) {
+    const page = await browser.newPage();
+    await page.goto(new URL(path, url).href, { waitUntil: 'domcontentloaded', timeout: 45000 });
+    const blocks = await page.locator('script[type="application/ld+json"]').allTextContents();
+    const nodes = [];
+    for (const raw of blocks) {
+      try {
+        const parsed = JSON.parse(raw);
+        const list = Array.isArray(parsed) ? parsed : (parsed?.['@graph'] || [parsed]);
+        nodes.push(...list);
+      } catch {}
+    }
+    const orgs = nodes.filter(node => {
+      const types = Array.isArray(node?.['@type']) ? node['@type'] : [node?.['@type']];
+      return types.includes('Organization') || types.includes('Corporation');
+    });
+    if (orgs.length) {
+      for (const org of orgs) {
+        expect(String(org.name || ''), path).toMatch(/EnerTchad/i);
+        if (org.url) expect(new URL(org.url).hostname, path).toBe(new URL(url).hostname);
+      }
+    }
+    await page.close();
+  }
+});
+
+test('metadata — strategic pages have unique descriptive titles', async ({ browser }) => {
+  const paths = ['/', '/index-en', '/ar', '/amont/', '/intermediaire/', '/aval/', '/greentech/', '/tchaditech/', '/tchaditude/', '/enerconseils/', '/contact', '/investisseurs', '/societe.html'];
+  const titles = [];
+  for (const path of paths) {
+    const page = await browser.newPage();
+    await page.goto(new URL(path, url).href, { waitUntil: 'domcontentloaded', timeout: 45000 });
+    const title = await page.title();
+    expect(title.length, path).toBeGreaterThan(10);
+    titles.push([path, title.trim().toLowerCase()]);
+    await page.close();
+  }
+  const normalized = titles.map(([, title]) => title);
+  expect(new Set(normalized).size, 'duplicate page titles').toBe(normalized.length);
+});
+
+test('metadata — descriptions are substantive and not duplicated', async ({ browser }) => {
+  const paths = ['/', '/index-en', '/ar', '/amont/', '/intermediaire/', '/aval/', '/greentech/', '/tchaditech/', '/tchaditude/', '/enerconseils/', '/contact', '/investisseurs'];
+  const descriptions = [];
+  for (const path of paths) {
+    const page = await browser.newPage();
+    await page.goto(new URL(path, url).href, { waitUntil: 'domcontentloaded', timeout: 45000 });
+    const values = await page.locator('meta[name="description"]').evaluateAll(nodes => nodes.map(n => n.getAttribute('content') || '').filter(Boolean));
+    expect(values.length, path).toBe(1);
+    expect(values[0].length, path).toBeGreaterThan(40);
+    descriptions.push(values[0].trim().toLowerCase());
+    await page.close();
+  }
+  expect(new Set(descriptions).size, 'duplicate meta descriptions').toBe(descriptions.length);
+});
