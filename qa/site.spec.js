@@ -896,3 +896,25 @@ test('navigation — internal HTML links resolve directly without redirects', as
     }
   }
 });
+
+
+test('forms — explicit submission contract and safe autocomplete', async ({ request }) => {
+  const paths = ['/contact', '/clients', '/investisseurs'];
+  for (const path of paths) {
+    const response = await request.get(new URL(path, url).href);
+    expect(response.status(), path).toBe(200);
+    const html = await response.text();
+    const forms = [...html.matchAll(/<form\\b([^>]*)>/gi)];
+    for (const match of forms) {
+      const attrs = match[1];
+      expect(attrs, path).toMatch(/\\bmethod=["'](?:get|post)["']/i);
+      const inputs = [...html.slice(match.index).matchAll(/<(?:input|textarea|select)\\b([^>]*)>/gi)];
+      for (const input of inputs) {
+        const attrs = input[1];
+        if (/\\btype=["']hidden["']/i.test(attrs)) continue;
+        if (/\\bautocomplete=["'][^"']+["']/i.test(attrs)) continue;
+        expect(attrs, path).toMatch(/\\b(?:aria-label|name|id)=["'][^"']+["']/i);
+      }
+    }
+  }
+});
