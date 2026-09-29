@@ -470,3 +470,31 @@ test('SEO representative pages — canonical matches requested route', async ({ 
     expect(actual, path).toBe(expected);
   }
 });
+
+test('SEO hreflang — alternates resolve and are reciprocal', async ({ request }) => {
+  const paths = ['/', '/index-en', '/ar', '/contact', '/contact-en', '/ar-contact', '/investisseurs', '/investisseurs-en', '/ar-investisseurs'];
+  for (const path of paths) {
+    const response = await request.get(new URL(path, url).href);
+    expect(response.status(), path).toBe(200);
+    const html = await response.text();
+    const lang = ((html.match(/<html[^>]+\blang=["']([^"']+)["']/i) || [])[1] || '').slice(0, 2);
+    expect(lang, path).toMatch(/^(fr|en|ar)$/);
+
+    const alternates = [...html.matchAll(/<link[^>]+rel=["'][^"']*alternate[^"']*["'][^>]+hreflang=["']([^"']+)["'][^>]+href=["']([^"']+)["']/gi)]
+      .map(m => ({ hreflang: m[1].toLowerCase(), href: new URL(m[2], response.url()).href }));
+
+    const localized = alternates.filter(x => ['fr', 'en', 'ar'].includes(x.hreflang));
+    expect(localized.length, path).toBeGreaterThanOrEqual(2);
+
+    for (const alt of localized) {
+      const target = await request.get(alt.href, { maxRedirects: 5, timeout: 30000 });
+      expect(target.status(), path + ' -> ' + alt.hreflang).toBe(200);
+      const targetHtml = await target.text();
+      const back = [...targetHtml.matchAll(/<link[^>]+rel=["'][^"']*alternate[^"']*["'][^>]+hreflang=["']([^"']+)["'][^>]+href=["']([^"']+)["']/gi)]
+        .find(m => m[1].toLowerCase() === lang);
+      expect(back, path + ' -> ' + alt.hreflang).toBeTruthy();
+      expect(new URL(back[2], target.url()).href.replace(/\/$/, ''), path + ' -> ' + alt.hreflang)
+        .toBe(response.url().replace(/\/$/, ''));
+    }
+  }
+});
