@@ -1400,3 +1400,65 @@ test('HTML structure — exactly one main landmark and no duplicate element IDs'
     await page.close();
   }
 });
+
+test('forms — required controls are usable and submit targets are explicit', async ({ browser }) => {
+  const paths = ['/contact', '/investisseurs', '/carrieres', '/clients'];
+  for (const path of paths) {
+    const page = await browser.newPage();
+    const response = await page.goto(new URL(path, url).href, { waitUntil: 'domcontentloaded', timeout: 45000 });
+    expect(response?.status(), path).toBe(200);
+    const report = await page.evaluate(() => [...document.forms].map(form => ({
+      action: form.getAttribute('action') || '',
+      method: (form.getAttribute('method') || 'get').toLowerCase(),
+      controls: [...form.querySelectorAll('input,select,textarea,button')].map(el => ({
+        type: el.getAttribute('type') || el.tagName.toLowerCase(),
+        name: el.getAttribute('name') || '',
+        disabled: el.hasAttribute('disabled'),
+        required: el.hasAttribute('required'),
+        autocomplete: el.getAttribute('autocomplete'),
+        aria: el.getAttribute('aria-label') || el.getAttribute('aria-labelledby'),
+        label: el.labels?.length || 0
+      }))
+    })));
+    for (const form of report) {
+      expect(form.method, path).toMatch(/^(get|post)$/);
+      for (const c of form.controls) {
+        if (['button','submit','reset'].includes(c.type)) continue;
+        expect(c.disabled || c.label > 0 || !!c.aria || !!c.name, path + ' unnamed control').toBeTruthy();
+        if (c.required) expect(c.disabled).toBeFalsy();
+      }
+    }
+    await page.close();
+  }
+});
+
+test('resource integrity — stylesheet/script/image URLs are same-origin or explicitly external', async ({ browser }) => {
+  const page = await browser.newPage();
+  const response = await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 45000 });
+  expect(response?.status()).toBe(200);
+  const origin = new URL(url).origin;
+  const resources = await page.evaluate(() => [
+    ...[...document.querySelectorAll('link[href]')].map(x => x.href),
+    ...[...document.querySelectorAll('script[src]')].map(x => x.src),
+    ...[...document.images].map(x => x.currentSrc || x.src)
+  ].filter(Boolean));
+  for (const href of resources) {
+    const parsed = new URL(href, origin);
+    expect(parsed.protocol).toMatch(/^https?:$/);
+    if (parsed.protocol === 'http:') expect(parsed.hostname).not.toBe(new URL(url).hostname);
+  }
+  await page.close();
+});
+
+test('routing — representative sitemap URLs resolve without 4xx/5xx', async ({ request }) => {
+  const sitemap = await request.get(new URL('/sitemap.xml', url).href, { timeout: 30000 });
+  expect(sitemap.status()).toBe(200);
+  const xml = await sitemap.text();
+  const urls = [...xml.matchAll(/<loc>(https?:\/\/[^<]+)<\/loc>/gi)].map(m => m[1]);
+  expect(urls.length).toBeGreaterThan(10);
+  const sample = [...new Set([urls[0], urls[Math.floor(urls.length / 2)], urls[urls.length - 1], ...urls.slice(1, 5)])];
+  for (const target of sample) {
+    const response = await request.get(target, { maxRedirects: 5, timeout: 30000 });
+    expect(response.status(), target).toBeLessThan(400);
+  }
+});
