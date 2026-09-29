@@ -1,7 +1,7 @@
 /* EnerTchad Hub Portal Polish — 2026
    Shared, low-specificity layer for the four strategic hubs.
    Goal: clearer hierarchy, tighter above-the-fold rhythm, premium restraint. */
-:root{--et-hub-max:1240px;--et-hub-radius:22px;--et-hub-gap:clamp(18px,2vw,28px)}
+:root{--et-hub-max:1240px}
 .pgh{isolation:isolate}
 .pgh .wrap,.pmani .wrap{width:min(100% - 40px,var(--et-hub-max));margin-inline:auto}
 .pgh h1{max-width:11ch;text-wrap:balance;letter-spacing:-.035em}
@@ -12,7 +12,6 @@
 .pgh-cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
 .pgh-btn,.pgh-btn2{min-height:46px;display:inline-flex;align-items:center;justify-content:center;border-radius:999px;padding:11px 18px}
 .pgh-btn{font-weight:700}.pgh-btn2{border:1px solid color-mix(in srgb,currentColor 18%,transparent)}
-.pmani{content-visibility:auto;contain-intrinsic-size:420px}
 .pmani-q{max-width:24ch;text-wrap:balance}
 .pmani-sub{max-width:68ch;line-height:1.65}
 .pgh-flabel{letter-spacing:.045em}
