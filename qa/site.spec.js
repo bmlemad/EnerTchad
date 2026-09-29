@@ -1111,3 +1111,16 @@ test('SEO — sitemap and robots expose the same canonical host', async ({ reque
   expect(urls.length).toBeGreaterThan(5);
   for (const loc of urls) expect(new URL(loc).hostname).toBe(new URL(url).hostname);
 });
+
+test('navigation accessibility — disclosure controls declare valid relationships', async ({ request }) => {
+  const paths = ['/', '/index-en', '/ar', '/contact', '/investisseurs', '/greentech/', '/tchaditech/', '/tchaditude/', '/enerconseils/'];
+  for (const path of paths) {
+    const response = await request.get(new URL(path, url).href, { timeout: 30000 });
+    expect(response.status(), path).toBe(200);
+    const html = await response.text();
+    const controls = [...html.matchAll(/\baria-controls=["']([^"']+)["']/gi)].map(m => m[1]);
+    for (const id of controls) expect(html, path + ' aria-controls=' + id).toContain('id="' + id + '"');
+    const expanded = [...html.matchAll(/\baria-expanded=["']([^"']+)["']/gi)].map(m => m[1]);
+    for (const value of expanded) expect(['true', 'false'], path).toContain(value);
+  }
+});
