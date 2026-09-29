@@ -94,42 +94,42 @@
     },
     {
       "source": "/hseq-en",
-      "destination": "/pole-greentech-en#hseq",
+      "destination": "/greentech/#hseq",
       "permanent": true
     },
     {
       "source": "/hseq-en.html",
-      "destination": "/pole-greentech-en#hseq",
+      "destination": "/greentech/#hseq",
       "permanent": true
     },
     {
       "source": "/impact-en",
-      "destination": "/pole-greentech-en#impact",
+      "destination": "/greentech/#impact",
       "permanent": true
     },
     {
       "source": "/impact-en.html",
-      "destination": "/pole-greentech-en#impact",
+      "destination": "/greentech/#impact",
       "permanent": true
     },
     {
       "source": "/patrimoine-en",
-      "destination": "/pole-greentech-en#patrimoine",
+      "destination": "/greentech/#patrimoine",
       "permanent": true
     },
     {
       "source": "/patrimoine-en.html",
-      "destination": "/pole-greentech-en#patrimoine",
+      "destination": "/greentech/#patrimoine",
       "permanent": true
     },
     {
       "source": "/transition-en",
-      "destination": "/pole-greentech-en#transition",
+      "destination": "/greentech/#transition",
       "permanent": true
     },
     {
       "source": "/transition-en.html",
-      "destination": "/pole-greentech-en#transition",
+      "destination": "/greentech/#transition",
       "permanent": true
     },
     {
@@ -574,12 +574,12 @@
     },
     {
       "source": "/pole-enertalents-en",
-      "destination": "/pole-tchaditude-en",
+      "destination": "/tchaditude/",
       "permanent": true
     },
     {
       "source": "/pole-enertalents-en.html",
-      "destination": "/pole-tchaditude-en",
+      "destination": "/tchaditude/",
       "permanent": true
     },
     {
@@ -599,12 +599,12 @@
     },
     {
       "source": "/pole-enertech-en",
-      "destination": "/pole-tchaditech-en",
+      "destination": "/tchaditech/",
       "permanent": true
     },
     {
       "source": "/pole-enertech-en.html",
-      "destination": "/pole-tchaditech-en",
+      "destination": "/tchaditech/",
       "permanent": true
     },
     {
@@ -644,37 +644,37 @@
     },
     {
       "source": "/enerconseils/conseil-en",
-      "destination": "/pole-enerconseils-en#conseil",
+      "destination": "/enerconseils/#conseil",
       "permanent": true
     },
     {
       "source": "/enerconseils/audits-en",
-      "destination": "/pole-enerconseils-en#audits",
+      "destination": "/enerconseils/#audits",
       "permanent": true
     },
     {
       "source": "/enerconseils/esg-en",
-      "destination": "/pole-enerconseils-en#esg",
+      "destination": "/enerconseils/#esg",
       "permanent": true
     },
     {
       "source": "/greentech/hseq-en",
-      "destination": "/pole-greentech-en#hseq",
+      "destination": "/greentech/#hseq",
       "permanent": true
     },
     {
       "source": "/greentech/impact-en",
-      "destination": "/pole-greentech-en#impact",
+      "destination": "/greentech/#impact",
       "permanent": true
     },
     {
       "source": "/greentech/transition-en",
-      "destination": "/pole-greentech-en#transition",
+      "destination": "/greentech/#transition",
       "permanent": true
     },
     {
       "source": "/greentech/patrimoine-en",
-      "destination": "/pole-greentech-en#patrimoine",
+      "destination": "/greentech/#patrimoine",
       "permanent": true
     },
     {
@@ -699,22 +699,22 @@
     },
     {
       "source": "/tchaditude/academie-en",
-      "destination": "/pole-tchaditude-en#academie",
+      "destination": "/tchaditude/#academie",
       "permanent": true
     },
     {
       "source": "/tchaditude/services-en",
-      "destination": "/pole-tchaditude-en#services",
+      "destination": "/tchaditude/#services",
       "permanent": true
     },
     {
       "source": "/tchaditude/rayonnement-en",
-      "destination": "/pole-tchaditude-en#rayonnement",
+      "destination": "/tchaditude/#rayonnement",
       "permanent": true
     },
     {
       "source": "/tchaditude/partenariats-en",
-      "destination": "/pole-tchaditude-en#partenariats",
+      "destination": "/tchaditude/#partenariats",
       "permanent": true
     },
     {
@@ -739,22 +739,22 @@
     },
     {
       "source": "/tchaditech/socle-en",
-      "destination": "/pole-tchaditech-en#socle",
+      "destination": "/tchaditech/#socle",
       "permanent": true
     },
     {
       "source": "/tchaditech/rd-en",
-      "destination": "/pole-tchaditech-en#rd",
+      "destination": "/tchaditech/#rd",
       "permanent": true
     },
     {
       "source": "/tchaditech/innovations-en",
-      "destination": "/pole-tchaditech-en#innovations",
+      "destination": "/tchaditech/#innovations",
       "permanent": true
     },
     {
       "source": "/tchaditech/recits-en",
-      "destination": "/pole-tchaditech-en#recits",
+      "destination": "/tchaditech/#recits",
       "permanent": true
     },
     {
