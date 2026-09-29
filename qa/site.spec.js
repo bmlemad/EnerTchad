@@ -1988,3 +1988,38 @@ test('performance — no oversized inline data payloads in HTML attributes', asy
     await page.close();
   }
 });
+
+test('localization — language alternates remain mutually consistent', async ({ browser }) => {
+  const expected = {
+    '/': { lang: 'fr', fr: '/', en: '/index-en', ar: '/ar', x: '/' },
+    '/index-en': { lang: 'en', fr: '/', en: '/index-en', ar: '/ar', x: '/' },
+    '/ar': { lang: 'ar', fr: '/', en: '/index-en', ar: '/ar', x: '/' }
+  };
+  for (const [path, target] of Object.entries(expected)) {
+    const page = await browser.newPage();
+    await page.goto(new URL(path, url).href, { waitUntil: 'domcontentloaded', timeout: 45000 });
+    expect(await page.locator('html').getAttribute('lang'), path).toBe(target.lang);
+    if (target.lang === 'ar') expect(await page.locator('html').getAttribute('dir'), path).toBe('rtl');
+    for (const [hreflang, href] of Object.entries({ fr: target.fr, en: target.en, ar: target.ar, 'x-default': target.x })) {
+      const actual = await page.locator('link[rel="alternate"][hreflang="' + hreflang + '"]').getAttribute('href');
+      expect(new URL(actual, url).pathname, path + ' ' + hreflang).toBe(new URL(href, url).pathname);
+    }
+    await page.close();
+  }
+});
+
+test('navigation — internal links do not expose malformed or javascript URLs', async ({ browser }) => {
+  const paths = ['/', '/index-en', '/ar', '/contact', '/investisseurs', '/greentech/', '/tchaditech/', '/tchaditude/', '/enerconseils/'];
+  for (const path of paths) {
+    const page = await browser.newPage();
+    await page.goto(new URL(path, url).href, { waitUntil: 'domcontentloaded', timeout: 45000 });
+    const hrefs = await page.locator('a[href]').evaluateAll(nodes => nodes.map(a => a.getAttribute('href') || ''));
+    for (const href of hrefs) {
+      expect(href.trim(), path).not.toMatch(/^javascript:/i);
+      if (href.trim()) {
+        expect(href, path).not.toMatch(/[\u0000-\u001F]/);
+      }
+    }
+    await page.close();
+  }
+});
