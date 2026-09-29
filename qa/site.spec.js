@@ -550,6 +550,34 @@ test('SEO English homepage — social titles match English metadata', async ({ r
   expect(twitterTitle).not.toContain('Accès aux Énergies');
 });
 
+test('SEO sitemap — indexed URLs are indexable', async ({ request }) => {
+  const sitemap = await request.get(new URL('/sitemap.xml', url).href);
+  expect(sitemap.status()).toBe(200);
+  const xml = await sitemap.text();
+  const urls = [...xml.matchAll(/<loc>([^<]+)<\\/loc>/g)].map(m => m[1]);
+
+  for (let i = 0; i < urls.length; i += 10) {
+    const batch = urls.slice(i, i + 10);
+    const responses = await Promise.all(
+      batch.map(u => request.get(u, { maxRedirects: 5, timeout: 30000 }))
+    );
+    for (let j = 0; j < responses.length; j++) {
+      const response = responses[j];
+      const source = batch[j];
+      expect(response.status(), source).toBe(200);
+
+      const xRobots = response.headers()['x-robots-tag'] || '';
+      expect(xRobots.toLowerCase(), source).not.toContain('noindex');
+
+      const html = await response.text();
+      const robots = html.match(/<meta[^>]+name=["']robots["'][^>]+content=["']([^"']+)["']/i);
+      if (robots) {
+        expect(robots[1].toLowerCase(), source).not.toMatch(/(^|[,\\s])noindex([,\\s]|$)/);
+      }
+    }
+  }
+});
+
 test('SEO sitemap — chaque URL indexée est auto-canonique', async ({ request }) => {
   const sitemap = await request.get(new URL('/sitemap.xml', url).href);
   expect(sitemap.status()).toBe(200);
