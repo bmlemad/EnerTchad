@@ -169,13 +169,13 @@ footer{border-top:1px solid var(--et-line);background:rgba(4,10,18,.62)!importan
 }
 
 /* ===== EnerTchad 2026 — command center ===== */
-.et-command{position:relative;isolation:isolate;padding:clamp(58px,7vw,96px) 0;border-bottom:1px solid rgba(232,195,106,.12);overflow:hidden}
+.et-command{position:relative;isolation:isolate;border-bottom:1px solid rgba(232,195,106,.12);overflow:hidden}
 .et-command::before{content:"";position:absolute;inset:12% -10% auto;height:55%;z-index:-1;background:radial-gradient(circle at 20% 40%,rgba(232,195,106,.12),transparent 32%),radial-gradient(circle at 80% 45%,rgba(90,167,240,.10),transparent 30%);filter:blur(20px)}
-.et-command-in{width:min(1200px,calc(100% - 48px));margin:auto}
+.et-command-in{margin:auto}
 .et-command-head{max-width:760px;margin-bottom:28px}
 .et-command-head h2{font-family:var(--fd,Inter,sans-serif);font-size:clamp(1.65rem,3.2vw,2.65rem);line-height:1.08;letter-spacing:-.03em;margin:10px 0 12px}
 .et-command-head p{max-width:64ch;margin:0;line-height:1.65;color:var(--muted-l,#A9B8CC)}
-.et-command-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.et-command-grid{display:grid}
 .et-command-card{--ec:#E8C36A;position:relative;display:flex;flex-direction:column;text-decoration:none;color:inherit}
 .et-command-card--blue{--ec:#5AA7F0}.et-command-card--green{--ec:#34D399}.et-command-card--rose{--ec:#D177B4}
 .et-command-card::before{content:"";position:absolute;top:0;left:18px;right:18px;height:2px;background:linear-gradient(90deg,transparent,var(--ec),transparent);opacity:.8}
@@ -188,8 +188,8 @@ footer{border-top:1px solid var(--et-line);background:rgba(4,10,18,.62)!importan
 .et-command-card:hover b i{transform:translateX(4px)}
 [data-et-reveal]{opacity:0;transform:translateY(18px);transition:opacity .65s ease,transform .65s cubic-bezier(.2,.7,.2,1)}
 [data-et-reveal].is-visible{opacity:1;transform:none}
-@media(max-width:980px){.et-command-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:600px){.et-command{padding:48px 0}.et-command-in{width:min(100% - 32px,1200px)}.et-command-grid{grid-template-columns:1fr}.et-command-card{min-height:180px}}
+
+
 @media(prefers-reduced-motion:reduce){[data-et-reveal]{opacity:1;transform:none;transition:none}.et-command-card,.et-command-card b i{transition:none}.et-command-card:hover{transform:none}}
 html.et-plight .et-command-head p{color:#4B586A}
 html.et-plight .et-command-card{background:linear-gradient(155deg,rgba(255,255,255,.84),rgba(247,244,236,.68));box-shadow:0 20px 50px -34px rgba(24,45,67,.24)}
