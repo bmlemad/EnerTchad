@@ -216,3 +216,41 @@ html.et-plight .et-intent{background:rgba(255,255,255,.82)!important}
  .hpcard,.hxi-card,.sc-card,.hncard,.et-command-card,.et-proof-card,.et-intent,.hubwrap{transition:none!important}
  .hpcard:hover,.hxi-card:hover,.sc-card:hover,.hncard:hover,.et-command-card:hover,.et-proof-card:hover,.et-intent:hover,.hubwrap:hover{transform:none!important}
 }
+
+
+/* EnerTchad Premium QA v3 — navigation, focus and touch refinement */
+.et-skip{
+  position:fixed!important;left:14px!important;top:10px!important;z-index:99999!important;
+  transform:translateY(-180%)!important;transition:transform .18s ease!important;
+  padding:10px 14px!important;border-radius:10px!important;
+  background:#111D33!important;color:#F7F3E8!important;border:1px solid rgba(232,195,106,.45)!important;
+  box-shadow:0 12px 28px rgba(0,0,0,.35)!important;
+}
+.et-skip:focus{transform:translateY(0)!important;outline:2px solid #E8C36A!important;outline-offset:3px!important}
+.nav-trigger:focus-visible,.nav-links a:focus-visible,.nx-util a:focus-visible{
+  outline:2px solid #E8C36A!important;outline-offset:3px!important;border-radius:8px!important;
+}
+.nav-trigger{
+  min-height:44px;
+}
+.nx-mega a{min-height:44px}
+.nx-mega a:focus-visible{
+  background:rgba(232,195,106,.09)!important;
+  color:#F7F3E8!important;
+}
+.nx-util a,.nav-links a{ text-underline-offset:4px }
+@media(max-width:900px){
+  .nav-trigger{min-height:46px}
+  .nx-mega a{min-height:46px}
+}
+@media(max-width:640px){
+  .nx-util{display:none}
+}
+@media(prefers-reduced-motion:reduce){
+  .et-skip{transition:none!important}
+}
+@media(forced-colors:active){
+  .et-skip,.nav-trigger:focus-visible,.nav-links a:focus-visible,.nx-util a:focus-visible{
+    outline:2px solid Highlight!important;border-color:CanvasText!important;
+  }
+}
