@@ -1076,3 +1076,38 @@ test('accessibility — images have alt text and interactive controls have names
     }
   }
 });
+
+test('SEO/security — canonical URLs and baseline security headers', async ({ request }) => {
+  const paths = ['/', '/index-en', '/ar', '/contact', '/investisseurs'];
+  for (const path of paths) {
+    const response = await request.get(new URL(path, url).href, { timeout: 30000 });
+    expect(response.status(), path).toBe(200);
+    const html = await response.text();
+    const canonical = (html.match(/<link[^>]+rel=["'][^"']*canonical[^"']*["'][^>]+href=["']([^"']+)["']/i) || [])[1];
+    expect(canonical, path).toBeTruthy();
+    expect(new URL(canonical, response.url()).protocol, path).toBe('https:');
+    const headers = response.headers();
+    expect(headers['x-content-type-options'], path).toBe('nosniff');
+    expect(headers['referrer-policy'], path).toBe('strict-origin-when-cross-origin');
+    expect(headers['x-frame-options'], path).toBe('SAMEORIGIN');
+    expect(headers['strict-transport-security'], path).toMatch(/max-age=\d+/i);
+  }
+});
+
+test('SEO — sitemap and robots expose the same canonical host', async ({ request }) => {
+  const robots = await request.get(new URL('/robots.txt', url).href, { timeout: 30000 });
+  expect(robots.status()).toBe(200);
+  const robotsText = await robots.text();
+  const sitemapMatch = robotsText.match(/Sitemap:\s*(https?:\/\/[^\s]+)/i);
+  expect(sitemapMatch).toBeTruthy();
+  const sitemapUrl = sitemapMatch[1];
+  expect(new URL(sitemapUrl).hostname).toBe(new URL(url).hostname);
+
+  const sitemap = await request.get(sitemapUrl, { timeout: 30000 });
+  expect(sitemap.status()).toBe(200);
+  const xml = await sitemap.text();
+  expect(xml).toMatch(/<urlset\b/i);
+  const urls = [...xml.matchAll(/<loc>([^<]+)<\/loc>/gi)].map(m => m[1]);
+  expect(urls.length).toBeGreaterThan(5);
+  for (const loc of urls) expect(new URL(loc).hostname).toBe(new URL(url).hostname);
+});
