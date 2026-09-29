@@ -33,14 +33,11 @@
 
 /* Editorial density pass — keep evidence-rich hubs scannable without deleting content. */
 .pmani,.ilede,.psol,.grp565,.gtt,.bizcases,.tt-flow,.tt-story,.tt-carnets,.dch-wrap,#mise-a-disposition,#offre-tiers,.rp480,.lie558,.pole-proj,#cta-band{scroll-margin-top:var(--et-anc,120px)}
-.pmani,.ilede,.psol,.bizcases,.pole-proj{content-visibility:auto;contain-intrinsic-size:720px}
-.lie558{content-visibility:auto;contain-intrinsic-size:420px}
 .pmani .wrap,.ilede .wrap,.psol .wrap,.bizcases .wrap,.pole-proj .wrap{max-width:1180px}
 .rp480{max-width:1180px;margin-inline:auto}
 .lie558{max-width:1180px;margin-inline:auto}
 .pole-proj{max-width:1180px;margin-inline:auto}
 @media(max-width:760px){
-  .pmani,.ilede,.psol,.bizcases,.pole-proj{contain-intrinsic-size:620px}
   .rp480,.lie558,.pole-proj{width:min(100% - 28px,1180px)}
 }
 @media(prefers-reduced-transparency:reduce){
