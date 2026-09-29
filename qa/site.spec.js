@@ -908,6 +908,11 @@ test('forms — explicit submission contract and safe autocomplete', async ({ re
     for (const match of forms) {
       const attrs = match[1];
       expect(attrs, path).toMatch(/\bmethod=["'](?:get|post)["']/i);
+      const action = (attrs.match(/\baction=["']([^"']+)["']/i) || [])[1];
+      if (action) {
+        expect(action, path).not.toMatch(/^(?:https?:)?\/\//i);
+        expect(action, path).toMatch(/^\//);
+      }
       const inputs = [...html.slice(match.index).matchAll(/<(?:input|textarea|select)\b([^>]*)>/gi)];
       for (const input of inputs) {
         const attrs = input[1];
