@@ -1222,3 +1222,49 @@ test('forms — controls are explicitly labelled and autocomplete is safe', asyn
     await page.close();
   }
 });
+
+test('SEO — canonical and hreflang are mutually consistent on localized entry pages', async ({ browser }) => {
+  const paths = ['/', '/index-en', '/ar'];
+  const expected = new Set(['fr', 'en', 'ar', 'x-default']);
+  for (const path of paths) {
+    const page = await browser.newPage();
+    const response = await page.goto(new URL(path, url).href, { waitUntil: 'domcontentloaded', timeout: 45000 });
+    expect(response?.status(), path).toBe(200);
+    const data = await page.evaluate(() => ({
+      canonical: document.querySelector('link[rel="canonical"]')?.href,
+      alternates: [...document.querySelectorAll('link[rel="alternate"][hreflang]')].map(x => ({ lang: x.hreflang, href: x.href }))
+    }));
+    expect(data.canonical, path).toBeTruthy();
+    expect(new URL(data.canonical).hostname, path).toBe(new URL(url).hostname);
+    expect(new URL(data.canonical).protocol, path).toBe('https:');
+    expect(new Set(data.alternates.map(x => x.lang)), path).toEqual(expected);
+    for (const alternate of data.alternates) {
+      expect(new URL(alternate.href).hostname, path + ' ' + alternate.lang).toBe(new URL(url).hostname);
+      expect(new URL(alternate.href).protocol, path + ' ' + alternate.lang).toBe('https:');
+    }
+    await page.close();
+  }
+});
+
+test('SEO — JSON-LD blocks are valid JSON and use supported schema types', async ({ browser }) => {
+  const paths = ['/', '/index-en', '/ar', '/contact', '/investisseurs'];
+  for (const path of paths) {
+    const page = await browser.newPage();
+    const response = await page.goto(new URL(path, url).href, { waitUntil: 'domcontentloaded', timeout: 45000 });
+    expect(response?.status(), path).toBe(200);
+    const blocks = await page.locator('script[type="application/ld+json"]').allTextContents();
+    expect(blocks.length, path).toBeGreaterThan(0);
+    for (const raw of blocks) {
+      let parsed;
+      expect(() => { parsed = JSON.parse(raw); }, path).not.toThrow();
+      const nodes = Array.isArray(parsed) ? parsed : (parsed?.['@graph'] || [parsed]);
+      for (const node of nodes) {
+        if (node?.['@type']) {
+          const types = Array.isArray(node['@type']) ? node['@type'] : [node['@type']];
+          expect(types.some(t => typeof t === 'string' && t.length > 0), path).toBeTruthy();
+        }
+      }
+    }
+    await page.close();
+  }
+});
