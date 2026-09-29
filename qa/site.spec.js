@@ -1268,3 +1268,31 @@ test('SEO — JSON-LD blocks are valid JSON and use supported schema types', asy
     await page.close();
   }
 });
+
+test('security — extended response policy headers are present', async ({ request }) => {
+  const response = await request.get(new URL('/', url).href, { timeout: 30000 });
+  expect(response.status()).toBe(200);
+  const headers = response.headers();
+  expect(headers['permissions-policy']).toContain('camera=()');
+  expect(headers['permissions-policy']).toContain('microphone=()');
+  expect(headers['permissions-policy']).toContain('geolocation=()');
+  expect(headers['cross-origin-opener-policy']).toBe('same-origin');
+  expect(headers['cross-origin-resource-policy']).toBe('same-origin');
+  expect(headers['x-permitted-cross-domain-policies']).toBe('none');
+});
+
+test('SEO — sitemap lastmod values are ISO dates and localized alternates stay on canonical host', async ({ request }) => {
+  const response = await request.get(new URL('/sitemap.xml', url).href, { timeout: 30000 });
+  expect(response.status()).toBe(200);
+  const xml = await response.text();
+  const dates = [...xml.matchAll(/<lastmod>([^<]+)<\/lastmod>/gi)].map(m => m[1]);
+  expect(dates.length).toBeGreaterThan(5);
+  for (const value of dates) expect(value).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+  const alternates = [...xml.matchAll(/<xhtml:link[^>]+hreflang=["'][^"']+["'][^>]+href=["']([^"']+)["']/gi)].map(m => m[1]);
+  expect(alternates.length).toBeGreaterThan(5);
+  for (const href of alternates) {
+    const parsed = new URL(href);
+    expect(parsed.protocol).toBe('https:');
+    expect(parsed.hostname).toBe(new URL(url).hostname);
+  }
+});
