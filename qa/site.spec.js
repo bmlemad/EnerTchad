@@ -1014,3 +1014,22 @@ test('performance — referenced image assets resolve directly', async ({ reques
     }
   }
 });
+
+
+test('Netlify fallback — permanent redirects are chain-free', async () => {
+  const fs = await import('node:fs/promises');
+  const config = await fs.readFile(new URL('../netlify.toml', import.meta.url), 'utf8');
+  const blocks = config.split('[[redirects]]').slice(1).map(block => ({
+    from: (block.match(/from\\s*=\\s*"([^"]+)"/) || [])[1],
+    to: (block.match(/to\\s*=\\s*"([^"]+)"/) || [])[1],
+    status: (block.match(/status\\s*=\\s*(\\d+)/) || [])[1] || '301'
+  })).filter(rule => rule.from && rule.to);
+  const redirects = blocks.filter(rule => rule.status !== '200');
+  const sources = new Set(redirects.map(rule => rule.from));
+  expect(redirects.length, 'Netlify permanent/redirect rules').toBeGreaterThan(0);
+  for (const rule of redirects) {
+    expect(rule.status, rule.from).toBe('301');
+    const destinationPath = rule.to.split('#')[0];
+    expect(sources.has(destinationPath), rule.from + ' -> ' + rule.to).toBeFalsy();
+  }
+});
