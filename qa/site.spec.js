@@ -798,3 +798,16 @@ test('security — redirect destinations stay internal', async () => {
     expect(rule.destination, rule.source).not.toMatch(/^(?:https?:)?\\/\\//i);
   }
 });
+
+
+test('SEO redirects — permanent and chain-free', async () => {
+  const fs = await import('node:fs/promises');
+  const config = JSON.parse(await fs.readFile(new URL('../vercel.json', import.meta.url), 'utf8'));
+  const redirects = Array.isArray(config.redirects) ? config.redirects : [];
+  const sources = new Set(redirects.map(r => String(r.source)));
+  for (const rule of redirects) {
+    expect(rule.permanent, rule.source).toBe(true);
+    const destinationPath = String(rule.destination).split('#')[0];
+    expect(sources.has(destinationPath), rule.source + ' -> ' + rule.destination).toBeFalsy();
+  }
+});
