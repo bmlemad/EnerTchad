@@ -119,7 +119,7 @@ test('language switch — equivalent FR/EN route', async ({ browser }) => {
 });
 
 test('language entry points — FR EN AR', async ({ browser }) => {
-  const cases = [['/', 'fr'], ['/index-en', 'en'], ['/ar', 'ar'], ['/ar-poles', 'ar']];
+  const cases = [['/', 'fr'], ['/index-en', 'en'], ['/ar', 'ar'], ['/ar-poles', 'ar'], ['/ar-amont', 'ar'], ['/ar-aval', 'ar'], ['/ar-intermediaire', 'ar'], ['/ar-contact', 'ar'], ['/ar-investisseurs', 'ar'], ['/ar-societe', 'ar']];
   for (const [path, lang] of cases) {
     const page = await browser.newPage({ viewport: { width: 1280, height: 900 } });
     const response = await page.goto(new URL(path, url).href, { waitUntil: 'networkidle', timeout: 45000 });
