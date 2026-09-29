@@ -534,6 +534,22 @@ test('SEO social metadata — Open Graph et Twitter card', async ({ request }) =
   }
 });
 
+test('SEO English homepage — social titles match English metadata', async ({ request }) => {
+  const response = await request.get(new URL('/index-en', url).href);
+  expect(response.status()).toBe(200);
+  const html = await response.text();
+  const title = (html.match(/<title>([^<]+)<\\/title>/i) || [])[1] || '';
+  const ogTitle = (html.match(/<meta[^>]+property=["']og:title["'][^>]+content=["']([^"']+)["']/i) || [])[1] || '';
+  const twitterTitle = (html.match(/<meta[^>]+name=["']twitter:title["'][^>]+content=["']([^"']+)["']/i) || [])[1] || '';
+  const siteName = (html.match(/<meta[^>]+property=["']og:site_name["'][^>]+content=["']([^"']+)["']/i) || [])[1] || '';
+  expect(title).toContain('Energy Access');
+  expect(ogTitle).toContain('Energy Access');
+  expect(twitterTitle).toContain('Energy Access');
+  expect(siteName).toContain('Energy Access');
+  expect(ogTitle).not.toContain('Accès aux Énergies');
+  expect(twitterTitle).not.toContain('Accès aux Énergies');
+});
+
 test('SEO sitemap — chaque URL indexée est auto-canonique', async ({ request }) => {
   const sitemap = await request.get(new URL('/sitemap.xml', url).href);
   expect(sitemap.status()).toBe(200);
