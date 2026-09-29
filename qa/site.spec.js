@@ -942,3 +942,26 @@ test('performance — internal CSS/JS resources resolve directly', async ({ requ
     }
   }
 });
+
+
+test('performance — referenced image assets resolve directly', async ({ request }) => {
+  const paths = ['/', '/index-en', '/ar', '/contact', '/clients', '/investisseurs', '/faq', '/greentech/', '/tchaditech/', '/tchaditude/', '/enerconseils/'];
+  const seen = new Set();
+  for (const path of paths) {
+    const response = await request.get(new URL(path, url).href, { timeout: 30000 });
+    expect(response.status(), path).toBe(200);
+    const html = await response.text();
+    const resources = [
+      ...[...html.matchAll(/<img\b[^>]*\bsrc=["']([^"']+)["']/gi)].map(m => m[1]),
+      ...[...html.matchAll(/(?:srcset|data-src|data-lazy-src)=["']([^"']+)["']/gi)].map(m => m[1].split(',')[0].trim().split(/\s+/)[0]),
+      ...[...html.matchAll(/url\(\s*["']?([^"')]+)["']?\s*\)/gi)].map(m => m[1])
+    ].filter(h => h.startsWith('/') && !h.startsWith('//') && /\.(?:avif|webp|png|jpe?g|gif|svg)(?:[?#].*)?$/i.test(h));
+    for (const href of resources) {
+      const absolute = new URL(href, response.url()).href;
+      if (seen.has(absolute)) continue;
+      seen.add(absolute);
+      const target = await request.get(absolute, { maxRedirects: 0, timeout: 30000 });
+      expect(target.status(), path + ' -> ' + href).toBe(200);
+    }
+  }
+});
