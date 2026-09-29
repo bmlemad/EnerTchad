@@ -702,13 +702,13 @@
 
 [[redirects]]
   from = "/pole-enertalents-en"
-  to = "/pole-tchaditude-en"
+  to = "/tchaditude/"
   status = 301
   force = true
 
 [[redirects]]
   from = "/pole-enertalents-en.html"
-  to = "/pole-tchaditude-en"
+  to = "/tchaditude/"
   status = 301
   force = true
 
@@ -732,13 +732,13 @@
 
 [[redirects]]
   from = "/pole-enertech-en"
-  to = "/pole-tchaditech-en"
+  to = "/tchaditech/"
   status = 301
   force = true
 
 [[redirects]]
   from = "/pole-enertech-en.html"
-  to = "/pole-tchaditech-en"
+  to = "/tchaditech/"
   status = 301
   force = true
 
