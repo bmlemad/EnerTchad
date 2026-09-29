@@ -855,3 +855,20 @@ test('SEO social metadata — Open Graph locales match document language', async
     for (const expected of alternates) expect(alt, path).toContain(expected);
   }
 });
+
+
+test('SEO hreflang — localized URLs use normalized paths', async ({ request }) => {
+  const paths = ['/', '/index-en', '/ar', '/contact', '/contact-en', '/ar-contact', '/investisseurs', '/investisseurs-en', '/ar-investisseurs', '/greentech/', '/tchaditech/', '/tchaditude/', '/enerconseils/'];
+  for (const path of paths) {
+    const response = await request.get(new URL(path, url).href, { maxRedirects: 5, timeout: 30000 });
+    expect(response.status(), path).toBe(200);
+    const html = await response.text();
+    const alternates = [...html.matchAll(/<link[^>]+rel=["'][^"']*alternate[^"']*["'][^>]+hreflang=["'](?:fr|en|ar|x-default)["'][^>]+href=["']([^"']+)["']/gi)]
+      .map(m => new URL(m[1], response.url()));
+    for (const alternate of alternates) {
+      const target = await request.get(alternate.href, { maxRedirects: 5, timeout: 30000 });
+      expect(target.status(), path + ' -> ' + alternate.href).toBe(200);
+      expect(target.url(), path + ' -> ' + alternate.href).toBe(alternate.href);
+    }
+  }
+});
