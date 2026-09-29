@@ -706,3 +706,23 @@ test('mobile interactions — nav search and primary form controls', async ({ br
     await page.close();
   }
 });
+
+
+test('accessibility — reduced motion visual contract', async ({ browser }) => {
+  const page = await browser.newPage({ viewport: { width: 390, height: 844 } });
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  const response = await page.goto(new URL('/', url).href, { waitUntil: 'networkidle', timeout: 45000 });
+  expect(response.status()).toBe(200);
+  const result = await page.evaluate(() => {
+    const probe = document.querySelector('.hpcard,.hxi-card,.sc-card,.hncard,.et-command-card,.et-proof-card,.et-intent');
+    const style = probe ? getComputedStyle(probe) : null;
+    return {
+      scrollBehavior: getComputedStyle(document.documentElement).scrollBehavior,
+      transitionDuration: style ? style.transitionDuration : '',
+      transform: style ? style.transform : ''
+    };
+  });
+  expect(result.scrollBehavior).toBe('auto');
+  if (result.transitionDuration) expect(result.transitionDuration).toMatch(/^(0s|0ms)(,\s*(0s|0ms))*$/);
+  await page.close();
+});
