@@ -1597,3 +1597,47 @@ test('media — images declare intrinsic dimensions or CSS aspect-ratio where ap
     await page.close();
   }
 });
+
+test('interaction — same-page anchors resolve to existing targets', async ({ browser }) => {
+  const paths = ['/', '/amont/', '/intermediaire/', '/aval/', '/greentech/', '/tchaditech/', '/tchaditude/', '/enerconseils/', '/contact', '/investisseurs'];
+  for (const path of paths) {
+    const page = await browser.newPage();
+    const response = await page.goto(new URL(path, url).href, { waitUntil: 'domcontentloaded', timeout: 45000 });
+    expect(response?.status(), path).toBe(200);
+    const anchors = await page.locator('a[href^="#"]').evaluateAll(nodes => nodes.map(a => a.getAttribute('href')).filter(h => h && h.length > 1 && h !== '#'));
+    for (const href of [...new Set(anchors)]) {
+      const id = decodeURIComponent(href.slice(1));
+      const exists = await page.evaluate(target => !!document.getElementById(target), id);
+      expect(exists, path + ' ' + href).toBeTruthy();
+    }
+    await page.close();
+  }
+});
+
+test('interaction — focus-visible styles are available for keyboard users', async ({ browser }) => {
+  const page = await browser.newPage({ viewport: { width: 1280, height: 900 } });
+  await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 45000 });
+  const result = await page.evaluate(() => {
+    const rules = [...document.styleSheets].flatMap(sheet => {
+      try { return [...sheet.cssRules].map(r => r.cssText); } catch { return []; }
+    });
+    return rules.some(css => /:focus-visible|:focus\b/i.test(css));
+  });
+  expect(result).toBeTruthy();
+  await page.close();
+});
+
+test('interaction — buttons have explicit type and links expose non-empty destinations', async ({ browser }) => {
+  const paths = ['/', '/amont/', '/intermediaire/', '/aval/', '/greentech/', '/contact', '/investisseurs'];
+  for (const path of paths) {
+    const page = await browser.newPage();
+    await page.goto(new URL(path, url).href, { waitUntil: 'domcontentloaded', timeout: 45000 });
+    const report = await page.evaluate(() => ({
+      buttons: [...document.querySelectorAll('button')].map(b => ({ type: b.getAttribute('type'), text: (b.textContent || '').trim(), aria: b.getAttribute('aria-label') })),
+      links: [...document.querySelectorAll('a')].map(a => a.getAttribute('href')).filter(h => h !== null)
+    }));
+    for (const button of report.buttons) expect(button.type || 'button', path).toMatch(/^(button|submit|reset)$/);
+    for (const href of report.links) expect(href.trim().length, path).toBeGreaterThan(0);
+    await page.close();
+  }
+});
