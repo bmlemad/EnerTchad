@@ -281,3 +281,65 @@ test('trust center — FR / EN / AR', async ({ browser }) => {
     await page.close();
   }
 });
+
+test('semantic accessibility and document metadata — representative locales', async ({ browser }) => {
+  const cases = [['/', 'fr'], ['/index-en', 'en'], ['/ar', 'ar']];
+  for (const [path, lang] of cases) {
+    const page = await browser.newPage({ viewport: { width: 1280, height: 900 } });
+    const response = await page.goto(new URL(path, url).href, { waitUntil: 'domcontentloaded', timeout: 45000 });
+    expect(response, path).not.toBeNull();
+    expect(response.status(), path).toBe(200);
+
+    const audit = await page.evaluate(() => {
+      const main = document.querySelector('main');
+      const nav = document.querySelector('nav');
+      const title = document.title.trim();
+      const description = document.querySelector('meta[name="description"]')?.content?.trim() || '';
+      const canonical = document.querySelector('link[rel="canonical"]')?.href || '';
+      const unnamedButtons = [...document.querySelectorAll('button,[role="button"]')]
+        .filter(el => {
+          const s = getComputedStyle(el);
+          if (s.display === 'none' || s.visibility === 'hidden' || el.getAttribute('aria-hidden') === 'true') return false;
+          return !(el.getAttribute('aria-label') || el.getAttribute('title') || el.innerText || '').trim();
+        })
+        .map(el => el.outerHTML.slice(0, 220));
+      const unnamedInputs = [...document.querySelectorAll('input,select,textarea')]
+        .filter(el => {
+          const s = getComputedStyle(el);
+          if (s.display === 'none' || s.visibility === 'hidden') return false;
+          return !(el.getAttribute('aria-label') || el.getAttribute('title') || el.labels?.length);
+        })
+        .map(el => ({ tag: el.tagName.toLowerCase(), type: el.getAttribute('type') || '' }));
+      const mains = document.querySelectorAll('main').length;
+      const navs = document.querySelectorAll('nav').length;
+      return {
+        title,
+        description,
+        canonical,
+        main: !!main,
+        mainTabbable: main ? main.getAttribute('tabindex') : null,
+        nav: !!nav,
+        mains,
+        navs,
+        unnamedButtons,
+        unnamedInputs
+      };
+    });
+
+    expect(audit.title.length, path).toBeGreaterThan(10);
+    expect(audit.description.length, path).toBeGreaterThan(50);
+    expect(audit.canonical, path).toMatch(/^https:\/\/enertchad-delta\.vercel\.app\//);
+    expect(audit.main, path).toBeTruthy();
+    expect(audit.mainTabbable, path).toMatch(/^-?1$/);
+    expect(audit.nav, path).toBeTruthy();
+    expect(audit.mains, path).toBe(1);
+    expect(audit.navs, path).toBeGreaterThanOrEqual(1);
+    expect(audit.unnamedButtons, path).toEqual([]);
+    expect(audit.unnamedInputs, path).toEqual([]);
+
+    if (lang === 'ar') {
+      await expect(page.locator('html').first(), path).toHaveAttribute('dir', 'rtl');
+    }
+    await page.close();
+  }
+});
