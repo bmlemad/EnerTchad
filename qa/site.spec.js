@@ -767,3 +767,22 @@ test('performance — static assets expose cache directives', async ({ request }
     expect(cache, path).toMatch(/max-age|s-maxage/i);
   }
 });
+
+
+test('SEO — hreflang self-reference matches canonical route', async ({ request }) => {
+  const paths = ['/', '/index-en', '/ar', '/contact', '/contact-en', '/ar-contact', '/clients', '/clients-en', '/investisseurs', '/investisseurs-en', '/ar-investisseurs'];
+  for (const path of paths) {
+    const response = await request.get(new URL(path, url).href);
+    expect(response.status(), path).toBe(200);
+    const html = await response.text();
+    const canonicalMatch = html.match(/<link[^>]+rel=["'][^"']*canonical[^"']*["'][^>]+href=["']([^"']+)["']/i) ||
+      html.match(/<link[^>]+href=["']([^"']+)["'][^>]+rel=["'][^"']*canonical[^"']*["']/i);
+    expect(canonicalMatch, path).not.toBeNull();
+    const canonical = new URL(canonicalMatch[1], response.url()).href.replace(/\/$/, '');
+    const localized = [...html.matchAll(/<link[^>]+rel=["'][^"']*alternate[^"']*["'][^>]+hreflang=["']([^"']+)["'][^>]+href=["']([^"']+)["']/gi)];
+    const lang = ((html.match(/<html[^>]+lang=["']([^"']+)/i) || [])[1] || '').slice(0,2).toLowerCase();
+    const self = localized.find(m => m[1].toLowerCase() === lang);
+    expect(self, path + ' missing self hreflang').toBeTruthy();
+    expect(new URL(self[2], response.url()).href.replace(/\/$/, ''), path).toBe(canonical);
+  }
+});
