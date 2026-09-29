@@ -10,7 +10,6 @@ body:not(.hm):not(.et-modern-exclude) main section:hover{border-color:rgba(232,1
 body:not(.hm):not(.et-modern-exclude) .hero,body:not(.hm):not(.et-modern-exclude) header.hero,body:not(.hm):not(.et-modern-exclude) header.pghero{border-bottom:1px solid var(--et-i-line);box-shadow:0 20px 70px -55px rgba(0,0,0,.9)}
 body:not(.hm):not(.et-modern-exclude) .hero .wrap,body:not(.hm):not(.et-modern-exclude) header.hero .wrap,body:not(.hm):not(.et-modern-exclude) header.pghero .wrap{max-width:1240px}
 body:not(.hm):not(.et-modern-exclude) .kick,body:not(.hm):not(.et-modern-exclude) .hero-kick,body:not(.hm):not(.et-modern-exclude) .eyebrow{color:var(--et-i-gold);letter-spacing:.16em}
-body:not(.hm):not(.et-modern-exclude) .card,body:not(.hm):not(.et-modern-exclude) .val,body:not(.hm):not(.et-modern-exclude) .kpi,body:not(.hm):not(.et-modern-exclude) .p8,body:not(.hm):not(.et-modern-exclude) .orgc,body:not(.hm):not(.et-modern-exclude) .pgr a{border-color:var(--et-i-line);background:var(--et-i-panel);border-radius:14px;box-shadow:inset 0 1px 0 rgba(255,255,255,.035)}
 body:not(.hm):not(.et-modern-exclude) .card:hover,body:not(.hm):not(.et-modern-exclude) .val:hover,body:not(.hm):not(.et-modern-exclude) .p8:hover,body:not(.hm):not(.et-modern-exclude) .pgr a:hover{transform:translateY(-3px);border-color:rgba(232,195,106,.42);box-shadow:0 18px 35px -28px rgba(0,0,0,.85)}
 body:not(.hm):not(.et-modern-exclude) a:focus-visible,body:not(.hm):not(.et-modern-exclude) button:focus-visible,body:not(.hm):not(.et-modern-exclude) input:focus-visible,body:not(.hm):not(.et-modern-exclude) select:focus-visible,body:not(.hm):not(.et-modern-exclude) textarea:focus-visible{outline:3px solid rgba(90,167,240,.7);outline-offset:3px}
 body:not(.hm):not(.et-modern-exclude) .cta{border-radius:var(--et-radius);box-shadow:0 20px 55px -40px rgba(0,0,0,.8)}
@@ -42,6 +41,7 @@ body:not(.hm):not(.et-modern-exclude) .orgc,
 body:not(.hm):not(.et-modern-exclude) .pgr a{
   background:var(--et-inner-glass-2);
   border:1px solid var(--et-inner-glass-line);
+  border-radius:14px;
   -webkit-backdrop-filter:saturate(135%) blur(14px);
   backdrop-filter:saturate(135%) blur(14px);
   box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 16px 38px -30px rgba(0,0,0,.72);
