@@ -1,221 +1,13 @@
 @import url("/assets/chrome/modern-inner-2026.css");
-/* ============================================================
-   EnerTchad — Navigation « Direction A » (chaîne de valeur)
-   Barre utilitaire + 5 rubriques · méga-menus à colonnes + tuile
-   S'appuie sur le chrome existant : #nav (fixed, .scrolled),
-   #navLinks (.nav-links, .open mobile), .nav-item/.nav-trigger
-   (accordéon mobile via c_ac04328f0f47.js), .nav-tog/.bz (burger).
-   ============================================================ */
 
-/* ---------- Barre utilitaire (desktop) ---------- */
-
-.nx-util{background:rgba(4,8,15,.40);-webkit-backdrop-filter:blur(14px) saturate(130%);backdrop-filter:blur(14px) saturate(130%);border-bottom:1px solid var(--hair);
-  transition:margin-top .32s var(--ease),opacity .25s var(--ease)}
-.nx-util-in{display:flex;justify-content:flex-end;align-items:center;gap:20px;
-  height:38px;padding:0 var(--gut);max-width:var(--max);margin:0 auto;font-size:.78rem}
-.nx-util-in>a{color:var(--muted);text-decoration:none;transition:color .2s}
-.nx-util-in>a:hover{color:var(--gold-l)}
-.nx-util-in .nx-lang{font-family:var(--fm,ui-monospace,Menlo,monospace);letter-spacing:.06em;
-  border:1px solid var(--hair);border-radius:6px;padding:3px 9px;color:#B7C3D4}
-.nx-util-in .nx-lang b{color:var(--gold-l);font-weight:700}
-.nx-util-in .nx-lang:hover{border-color:var(--gold-l);color:var(--gold-l)}
-.nx-util-in .nx-invest{color:var(--gold-l);border:1px solid rgba(232,195,106,.42);
-  border-radius:8px;padding:5px 13px;font-weight:600;transition:background .2s,color .2s}
-.nx-util-in .nx-invest:hover{background:rgba(232,195,106,.14);color:var(--gold-l)}
-
-/* ---------- Rubriques (desktop) ---------- */
-.nx .nav-links{flex:1;margin-left:14px}
-.nx .nav-trigger{font-size:.92rem;font-weight:600;padding:10px 14px}
-.nx .nav-trigger svg{width:11px;height:11px}
-
-/* ---------- Méga-menu (desktop) ---------- */
-.nx-mega{position:absolute;top:calc(100% + 10px);left:0;min-width:680px;max-width:min(90vw,780px);
-  background:linear-gradient(180deg,#0c1728,#0a1422);border:1px solid var(--hair);border-radius:18px;
-  box-shadow:0 44px 90px -34px rgba(0,0,0,.9);padding:20px;z-index:60;
-  opacity:0;visibility:hidden;transform:translateY(8px);
-  transition:opacity .22s var(--ease),transform .22s var(--ease),visibility .22s;
-  display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px 24px}
-@media(min-width:1241px){
-  .nav-item:hover .nx-mega,.nav-item.open .nx-mega,.nav-item:focus-within .nx-mega{
-    opacity:1;visibility:visible;transform:translateY(0)}
-  .nav-item.kbesc .nx-mega{opacity:0!important;visibility:hidden!important}
-  .nav-item:nth-last-child(-n+3) .nx-mega{left:auto;right:0}
-}.nx-col .nxh{font-family:var(--fm,ui-monospace,Menlo,monospace);font-size:0.6875rem;letter-spacing:.16em;
-  text-transform:uppercase;color:var(--gold-l);margin:4px 10px 8px;padding-bottom:7px;
-  border-bottom:1px solid var(--hair);font-weight:600}
-.nx-col a{display:block;text-decoration:none;color:var(--cream);padding:8px 10px;border-radius:10px;
-  transition:background .15s}
-.nx-col a:hover{background:rgba(90,167,240,.1)}
-.nx-col a strong{display:block;font-size:.9rem;font-weight:600}
-.nx-col a em{display:block;font-style:normal;font-size:.74rem;color:var(--muted);margin-top:1px}
-.nx-feat{grid-column:3;grid-row:1/span 2;text-decoration:none;color:var(--cream);
-  border:1px solid var(--hair);border-radius:14px;padding:16px;display:flex;flex-direction:column;
-  justify-content:flex-end;min-height:158px;
-  background-image:linear-gradient(160deg,rgba(46,134,222,.18),rgba(6,11,20,.72));transition:border-color .2s}
-.nx-feat:hover{border-color:rgba(232,195,106,.45)}
-.nx-feat .tag{font-family:var(--fm,ui-monospace,Menlo,monospace);font-size:0.6875rem;letter-spacing:.16em;
-  text-transform:uppercase;color:var(--gold-l)}
-.nx-feat strong{display:block;margin:7px 0 3px;font-size:1rem;font-family:var(--fd)}
-.nx-feat em{font-style:normal;font-size:.78rem;color:#C3CFDE;line-height:1.45;display:block}
-.nx-feat .arr{margin-top:12px;color:var(--gold-l);font-size:.84rem;font-weight:700}
-
-/* ---------- Gabarit compact (héros sous la nav collée) : dégager la nav ---------- */
-body.nx-clear .hero{padding-top:72px}
-@media(max-width:1240px){body.nx-clear .hero{padding-top:48px}}
-
-/* ---------- Fil d'Ariane : dégager la barre utilitaire (desktop) ---------- */
-@media(min-width:1241px){
-  .hero .bcrumb{padding-top:calc(clamp(24px,3vw,32px) + 42px)}
-}
-
-/* ---------- Recherche (pastille existante, restylée) ---------- */
-.nx .nav-search{background:none;border:1px solid var(--hair);color:var(--cream);width:40px;height:40px;
-  border-radius:10px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;
-  transition:border-color .2s,color .2s}
-.nx .nav-search:hover{border-color:var(--gold-l);color:var(--gold-l)}
-
-/* ---------- Liens utilitaires dans le tiroir (mobile) ---------- */
-.nx-util-m{display:none}
-
-/* ---------- Mobile ≤1240px ---------- */
-@media(max-width:1240px){
-  .nx-util{display:none}
-  .nx .nav-links{margin-left:0;min-height:calc(100dvh - var(--nav-h,72px));
-    max-height:calc(100dvh - var(--nav-h,72px));overflow-y:auto;overscroll-behavior:contain;
-    padding-bottom:120px;background:rgba(6,11,20,.74);-webkit-backdrop-filter:blur(24px) saturate(150%);backdrop-filter:blur(24px) saturate(150%)}
-  .nx .nav-item{border-bottom:1px solid var(--hair)}
-  .nx .nav-trigger{font-family:var(--fd);font-weight:700;font-size:1.06rem;padding:16px 10px}
-  .nx-mega{position:static;min-width:0;max-width:none;display:none;opacity:1;visibility:visible;
-    transform:none;background:none;border:0;border-radius:0;box-shadow:none;padding:2px 10px 16px}
-  .nav-item.open .nx-mega{display:block;animation:nxIn .28s var(--ease)}.nx-col .nxh{margin:12px 0 4px;padding-bottom:0;border-bottom:0;min-height:44px;display:flex;align-items:center}
-  .nx-col a{padding:9px 0}
-  .nx-col a strong{font-size:.98rem}
-  .nx-feat{display:none}
-  .nx-util-m{display:flex;flex-wrap:wrap;gap:10px 22px;padding:20px 10px 8px}
-  .nx-util-m a{color:var(--muted);text-decoration:none;font-size:.92rem;padding:4px 0}
-  .nx-util-m a.cta{width:100%;text-align:center;color:#04070d;background:var(--gold-l);
-    border-radius:11px;padding:13px;font-weight:700;font-size:1rem}
-}
-@keyframes nxIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
-@media(prefers-reduced-motion:reduce){
-  .nx-util,.nx-mega,.nav-item.open .nx-mega{transition:none;animation:none}
-}
-
-/* QA mobile : cibles tactiles & anti-chevauchement */
-@media(max-width:1240px){
-  .nav-tog:not(#_):not(#__){width:44px;height:44px}  
-  .nx-util-in>a,.nx-util-m>a{padding:12px 8px!important;display:inline-block}
-}
-body:has(#navLinks.open) #ckn,body:has(#navLinks.open) .lum-ctl,body:has(#navLinks.open) .scrollcue,body:has(#ckn.show) .lum-ctl,body:has(#ckn.show) #plightBtn{display:none!important}/* #plightBtn ajoute : sur mobile le bouton de theme (14,732 38x38) se posait DANS l'avis cookies (12,719 366x51) et masquait le debut du texte - meme traitement que .lum-ctl, il revient des que l'avis est ferme */
-
-/* ── méga-menu translucide (verre) ── */
-@media(min-width:1241px){@supports((-webkit-backdrop-filter:blur(1px)) or (backdrop-filter:blur(1px))){.nx-mega{background:linear-gradient(180deg,rgba(12,23,40,.72),rgba(9,18,32,.80));-webkit-backdrop-filter:blur(26px) saturate(160%);backdrop-filter:blur(26px) saturate(160%);border-color:rgba(255,255,255,.14)}}}
-@media(prefers-reduced-transparency:reduce){.nx-mega{background:linear-gradient(180deg,#0c1728,#0a1422)!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}}
-
-/* Orientation : page courante dans les megamenus + barre utilitaire */
-.nx-col a[aria-current="page"]{background:linear-gradient(90deg,rgba(217,168,79,.14),transparent 80%);box-shadow:inset 2px 0 0 var(--gold-l,#E8C36A);padding-left:10px;border-radius:6px}
-.nx-col a[aria-current="page"] strong{color:var(--gold-l,#E8C36A)}
-.nx-util-in>a[aria-current]{color:var(--gold-l,#E8C36A);font-weight:600}
-
-/* Etat replié universel (accompagne le repli JS de nav_a.js) */
-.nav.nx.scrolled{background:rgba(8,14,26,.82);-webkit-backdrop-filter:blur(20px) saturate(150%);backdrop-filter:blur(20px) saturate(150%);border-bottom:1px solid var(--hair);box-shadow:0 8px 32px rgba(0,0,0,.3)}
-
-/* ===== ULTRA MEGA — couche 2026-07 ===== */
-@media(min-width:769px){
-.nx .nx-mega:not(#_x){min-width:720px;max-width:min(92vw,820px);
- background:linear-gradient(180deg,rgba(11,19,33,.975),rgba(7,13,23,.99))!important;
- -webkit-backdrop-filter:blur(28px) saturate(1.5);backdrop-filter:blur(28px) saturate(1.5);
- border:1px solid rgba(255,255,255,.14);border-radius:20px;padding:22px 22px 18px;gap:8px 26px;
- box-shadow:0 24px 70px -18px rgba(0,0,0,.85),0 0 0 1px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.06);
- transform:translateY(14px) scale(.985)}
-@media(min-width:1241px){
- .nav-item:hover .nx-mega:not(#_x),.nav-item.open .nx-mega:not(#_x),.nav-item:focus-within .nx-mega:not(#_x){transform:translateY(0) scale(1)}}
-.nav-item.open .nx-mega:not(#_x),.nav-item:focus-within .nx-mega:not(#_x){transform:translateY(0) scale(1)}
-.nx .nx-mega::before{content:"";position:absolute;top:0;left:22px;right:22px;height:2px;border-radius:2px;
- background:linear-gradient(90deg,transparent,rgba(219,174,74,.75),rgba(194,146,46,.3),transparent)}
-.nx .nx-col .nxh{color:#DBAE4A;border-bottom-color:rgba(219,174,74,.22)}
-.nx .nx-col a{position:relative;padding:9px 26px 9px 12px;transition:background .16s,transform .16s}
-.nx .nx-col a::after{content:"\2192";position:absolute;right:12px;top:50%;translate:0 -50%;opacity:0;
- color:#DBAE4A;font-size:.82rem;transition:opacity .16s,right .16s}
-.nx .nx-col a:hover{background:rgba(255,255,255,.055);transform:translateX(2px)}
-.nx .nx-col a:hover::after{opacity:1;right:8px}
-.nx .nx-col a strong{transition:color .16s}
-.nx .nx-col a:hover strong{color:#F3D9A0}
-.nx .nx-feat{border:1px solid rgba(219,174,74,.28);transition:border-color .2s,transform .2s;
- background-image:linear-gradient(165deg,rgba(46,134,222,.16),rgba(8,14,25,.9)),
-  radial-gradient(120% 90% at 100% 0%,rgba(219,174,74,.13),transparent 55%);
- box-shadow:inset 0 1px 0 rgba(255,255,255,.06)}
-.nx .nx-feat:hover{border-color:rgba(219,174,74,.55);transform:translateY(-2px)}
-.nx .nx-feat .tag{color:#DBAE4A}
-.nx .nx-feat .arr{color:#DBAE4A;transition:letter-spacing .2s}
-.nx .nx-feat:hover .arr{letter-spacing:.04em}
-}
-@media(prefers-reduced-motion:reduce){
-.nx .nx-mega:not(#_x),.nx .nx-col a,.nx .nx-col a::after,.nx .nx-feat,.nx .nx-feat .arr{transition:none!important}
-.nx .nx-mega:not(#_x){transform:none}}
-@media(prefers-reduced-transparency:reduce){
-.nx .nx-mega:not(#_x){background:#0A1120!important;-webkit-backdrop-filter:none;backdrop-filter:none}}
-
-/* Le panneau .nx-mega deborde la fenetre de 2-12 px sur les 29 pages heritees EN (boite non
-   transformee left 572 + 720 de large ; l'ancre de nav tombe plus a droite qu'en francais),
-   d'ou une barre de defilement horizontale fantome. Le panneau vit DANS le nav fixe : sa
-   chaine de blocs conteneurs contourne body, donc aucune regle sur html ou body ne peut le
-   rogner (mesure : scrollX restait a 12). Le clip va sur le nav fixe lui-meme ; overflow-x
-   seul, pour que le panneau ouvert, qui s'etend vers le BAS du nav, reste entierement
-   visible (verifie : 709x396 rendus apres clip). clip et non hidden : pas de contexte de
-   defilement cree. */
-#nav{overflow-x:clip}
-
-
-@media (hover:hover) and (prefers-reduced-motion: no-preference){
-.nx-util-in .nx-invest,.cb-btn.cb-p{position:relative;overflow:hidden}
-.nx-util-in .nx-invest::after,.cb-btn.cb-p::after{content:"";position:absolute;top:0;bottom:0;left:-70%;width:45%;transform:skewX(-22deg);background:linear-gradient(90deg,transparent,rgba(255,236,190,.4),transparent);opacity:0;pointer-events:none}
-.nx-util-in .nx-invest:hover::after,.cb-btn.cb-p:hover::after,.nx-util-in .nx-invest:focus-visible::after,.cb-btn.cb-p:focus-visible::after{opacity:1;animation:etShine .8s ease}
-@keyframes etShine{from{left:-70%}to{left:110%}}
-}
-
-
-@media(max-width:470px){
-  .nav-in.nx-bar,.nx-bar{padding-left:10px!important;padding-right:10px!important}
-  .nav-cta{gap:6px!important}
-  #mLang:not(#_):not(#__):not(#___){font-size:.64rem;padding:5px 7px;margin-right:2px;letter-spacing:.02em}
-  .nav-cta .nav-search{width:38px!important;height:38px!important}
-  .nav-tog{flex:0 0 auto}
-  .brand-tx:not(#_){font-size:.98rem!important}
-  .brand-tx small:not(#_){font-size:.6rem!important;letter-spacing:.055em!important}
-}
-@media(max-width:374px){
-  #mLang:not(#_):not(#__):not(#___){display:none!important}
-}
-
-/* --- Ch568 - SC 2.5.8 Taille de cible (minimum) ------------------------
-   Les liens de la rangee legale du pied mesurent 19 px de haut. La regle a
-   44 px qui existe est enfermee dans @media(pointer:coarse) : elle ne couvre
-   donc pas la souris, alors que le critere, lui, ne distingue pas le pointeur.
-   On porte la cible a 24 px sur tous les pointeurs. Le rembourrage est
-   vertical et centre : la rangee garde sa ligne de base.                  */
 .foot-legal-links:not(#_):not(#__) a{display:inline-flex;align-items:center;min-height:24px}
 
-/* --- Ch568 volet 2 - SC 2.5.8, les trois autres familles ----------------
-   Une fois l exception "lien dans une phrase" resserree dans mon harnais,
-   trois rangees de liens apparaissent sous la barre des 24 px, a la souris
-   seulement (en 390 px elles passent deja) : la rangee utilitaire de la
-   navigation (20 px), le fil d Ariane (13 px) et les colonnes du pied
-   (22 px). Aucune n est une phrase : ce sont des listes de liens. On porte
-   la cible a 24 px ; le rembourrage est vertical et centre, les lignes de
-   base ne bougent pas.                                                    */
+
 .nx-util-in:not(#_):not(#__) a{display:inline-flex;align-items:center;min-height:24px}
 .crumb:not(#_):not(#__) a{display:inline-flex;align-items:center;min-height:24px}
 .foot-col:not(#_):not(#__) a{display:inline-flex;align-items:center;min-height:24px}
 
-/* --- Ch573 - le fond du site : un champ, plus une photo ----------------------
-   .rootland portait une photographie sous un voile de 68-78 %. Retiree. Le calque
-   demeure (toute la translucidite du site est conditionnee a :has(.rootland)) et
-   recoit un champ de lumiere : le sol du systeme plus quatre lueurs de la palette,
-   derive lente de 40 s, une declinaison par theme. Le voile tombe a 5-18 % : un
-   champ dessine n a pas besoin qu on l assombrisse pour que le texte tienne
-   (titre du heros mesure au pixel : 20,2:1 en sombre, 16,2:1 en clair).
-   Le heros porte un second calque, .diapo, traite au meme endroit.             */
+
 .rootland:not(#_):not(#__){
   background:
     radial-gradient(46% 50% at 12% 16%, rgba(219,174,74,.44), transparent 64%),
@@ -249,52 +41,7 @@ html.et-plight .rootland:not(#_):not(#__)::after,
 html.et-jlight .rootland:not(#_):not(#__)::after{
   background:linear-gradient(180deg,rgba(250,247,241,.08) 0%,rgba(250,247,241,.22) 100%) !important}
 
-/* le heros : second calque photo (.diapo), meme traitement.
-   Son propre degrade est remis a plat — sous un voile creme il composait un gris. */
-.diapo:not(#_):not(#__):not(#___){background:transparent !important}
-.diapo:not(#_):not(#__):not(#___) i{
-  background-image:none !important;background:transparent !important;animation:none !important}
-.diapo:not(#_):not(#__):not(#___)::before{display:none !important}
-.diapo:not(#_):not(#__):not(#___)::after{
-  background:linear-gradient(180deg,rgba(7,12,21,.04) 0%,rgba(7,12,21,.20) 74%,rgba(7,12,21,.32) 100%) !important}
-html.et-plight .diapo:not(#_):not(#__):not(#___)::after,
-html.et-jlight .diapo:not(#_):not(#__):not(#___)::after{
-  background:linear-gradient(180deg,rgba(250,247,241,.06) 0%,rgba(250,247,241,.22) 74%,rgba(250,247,241,.38) 100%) !important}
 
-/* le heros (.diapo, 26 pages dont l accueil) porte le meme champ : c est lui, et non
-   .rootland, qui est visible sur ces pages. */
-.diapo:not(#_):not(#__):not(#___){
-  background:
-    radial-gradient(46% 54% at 14% 14%, rgba(219,174,74,.40), transparent 64%),
-    radial-gradient(44% 50% at 88% 8%, rgba(90,167,240,.34), transparent 62%),
-    radial-gradient(54% 56% at 80% 92%, rgba(31,164,150,.30), transparent 64%),
-    radial-gradient(48% 52% at 16% 94%, rgba(224,162,78,.26), transparent 62%),
-    #0A1220 !important;
-  animation:et573Champ 44s ease-in-out infinite alternate !important;
-}
-html.et-plight .diapo:not(#_):not(#__):not(#___),
-html.et-jlight .diapo:not(#_):not(#__):not(#___){
-  background:
-    radial-gradient(46% 54% at 14% 14%, rgba(219,174,74,.18), transparent 64%),
-    radial-gradient(44% 50% at 88% 8%, rgba(90,167,240,.14), transparent 62%),
-    radial-gradient(54% 56% at 80% 92%, rgba(31,164,150,.13), transparent 64%),
-    radial-gradient(48% 52% at 16% 94%, rgba(224,162,78,.12), transparent 62%),
-    rgba(250,247,241,.72) !important;
-}
-@keyframes et573Champ{
-  from{background-position:0% 0%,100% 0%,100% 100%,0% 100%,0 0}
-  to{background-position:6% 4%,94% 3%,95% 96%,5% 97%,0 0}
-}
-@media(prefers-reduced-motion:reduce){
-  .diapo:not(#_):not(#__):not(#___){animation:none !important}
-}
-
-/* --- Ch574 - la chaine de l accueil, en sombre -------------------------------
-   Le theme clair retirait deja l image des trois segments ; le sombre gardait les
-   trois photos sous un voile de 78-65 %. Meme logique que le fond du 573 : chaque
-   maillon recoit un champ dans SA couleur (--pa), ce qui etait le vrai role des
-   photos — distinguer les trois. La lueur avance de gauche a droite d un maillon
-   a l autre : la chaine se lit comme une progression.                          */
 html:not(.et-plight):not(.et-jlight) .t550-bg:not(#_):not(#__){
   background-image:
     radial-gradient(74% 128% at var(--fx,16%) 52%, color-mix(in srgb, var(--pa,#FFB703) 30%, transparent), transparent 72%),
@@ -310,12 +57,7 @@ html:not(.et-plight):not(.et-jlight) .t550-seg:not(#_):not(#__)::before{
   background:linear-gradient(165deg,rgba(0,28,45,.42) 0%,rgba(0,24,38,.22) 55%,rgba(0,21,34,.34) 100%) !important;
 }
 
-/* --- Ch575 - les fonds de sous-pages ----------------------------------------
-   .subland : photo plein ecran fixe sous un voile de 50-60 %, sur 60 pages, et
-   masquee en theme clair — la meme configuration que .rootland avant le 573.
-   Elle est bien visible : la masquer change 18 a 70 % des pixels selon la page.
-   Meme champ que le fond du site, declare en sombre seulement puisque le theme
-   clair la masque deja. Le voile tombe de 50-60 a 6-20 %.                     */
+
 html:not(.et-plight):not(.et-jlight) .subland:not(#_):not(#__){
   background-image:
     radial-gradient(46% 50% at 12% 16%, rgba(219,174,74,.40), transparent 64%),
@@ -333,77 +75,19 @@ html:not(.et-plight):not(.et-jlight) .subland:not(#_):not(#__){
 html:not(.et-plight):not(.et-jlight) .subland:not(#_):not(#__)::after{
   background:linear-gradient(180deg,rgba(7,12,21,.06) 0%,rgba(7,12,21,.20) 100%) !important}
 
-/* --- Ch576 - revue de l accueil : SC 2.5.8, deux liens d action ---------------
-   « Tout le fil » (96 x 18) en pied du fil d actualite et « Tous les documents »
-   (153 x 15) en pied de l etagere. Ce ne sont pas des liens dans une phrase mais
-   des liens d action en fin de bloc : la barre des 24 px s applique.            */
+
 .nh-une-all:not(#_):not(#__),
 .doc-all:not(#_):not(#__){
   display:inline-flex;align-items:center;min-height:24px}
 
-/* --- Ch577 - la campagne des cibles : quatorze familles, tout le site --------
-   Le balayage des 191 pages a rendu 68 familles sous la barre des 24 px du
-   critere 2.5.8. La moitie sont des liens dans une phrase, exemptes par le
-   critere lui-meme : glossaire (a.glref), adresses de courriel citees au fil du
-   texte, renvois du genre « nos facteurs de risque ». Les quatorze qui suivent
-   ne sont pas dans une phrase : ce sont des commandes autonomes ou des rangees
-   de liens d action. Elles sont corrigees ici, une seule fois, pour les 182
-   pages qui chargent cette feuille.                                            */
-
-/* 1. le selecteur de langue arabe. Il mesure 7 x 24 px sur 180 pages : la seule
-      page ou il est correct est l accueil, qui lui donne un padding que les
-      autres n ont jamais recu. On ne recopie pas ce padding — il elargirait la
-      barre — on pose la largeur minimale et on recentre le glyphe.             */
-.nx-langx:not(#_):not(#__){min-width:24px;justify-content:center}
-
-/* 2. le bandeau legal du pied de page : « FAQ » n a que 20 px de large. Ch568
-      lui avait donne la hauteur, pas la largeur.                               */
 .foot-legal-links:not(#_):not(#__) a{min-width:24px;justify-content:center}
 
-/* 3. les fils d Ariane. Ch568 avait traite la famille .crumb ; la famille
-      .bcrumb, plus repandue (42 pages), etait restee de cote.                  */
+
 nav.bcrumb:not(#_):not(#__) a,
 .thero-bc:not(#_):not(#__) a{
   display:inline-flex;align-items:center;min-height:24px}
 
-/* 4. les retours et les raccourcis autonomes : signature de bas d article,
-      retour au pole, « Tous les carnets », « Tout le fil », les deux boutons du
-      bandeau d appel, le retour boutique.                                      */
-.jsig:not(#_):not(#__) a,
-.pmore-home:not(#_):not(#__),
-.c7all:not(#_):not(#__),
-.m457-all:not(#_):not(#__),
-.cb-btn:not(#_):not(#__),
-.bback:not(#_):not(#__){
-  display:inline-flex;align-items:center;min-height:24px}
 
-/* 5. les rangees de liens d action — « Aller plus loin : … · … », « Le detail
-      operationnel : … », les synergies des projets, les renvois de fin de
-      section. L amorce n est pas une phrase : c est une etiquette suivie d une
-      liste de cibles.                                                          */
-.rp-more:not(#_):not(#__) a,
-.exp-note:not(#_):not(#__) a,
-.vt-links:not(#_):not(#__) a,
-.pj-syn:not(#_):not(#__) a,
-.xlink:not(#_):not(#__) a,
-.rublink:not(#_):not(#__),
-.isv-s:not(#_):not(#__) a.go,
-.card-m:not(#_):not(#__)>a{
-  display:inline-flex;align-items:center;min-height:24px}
-
-/* --- Ch577 lot 2 - ce que l en-tete fixe cachait ----------------------------
-   Le test d occlusion (elementFromPoint sur le rectangle de chaque noeud de
-   texte) a trouve 34 pages ou du texte peint se retrouve SOUS l en-tete fixe.
-   Le gros du lot : le fil de chaine .fil552 pose en Ch552 tout en haut de
-   <main>, sans decalage pour l en-tete. Les 28 pages de pole affichaient donc
-   « La chaine : 01 Amont -> 02 Intermediaire -> 03 Aval » derriere la barre de
-   navigation — invisible pour tout le monde depuis Ch552.
-   La reservation de l en-tete existe deja, mais elle est posee APRES le fil,
-   en marge haute de .pole-subnav (118 px en bureau, 79 px en dessous de
-   1240 px, pour un en-tete de 110 / 71 px). On la deplace d un cran vers le
-   haut : le fil descend sous l en-tete, la sous-barre remonte d autant, et la
-   geometrie de la page ne bouge pas d un pixel (sous-barre a 158 px en bureau
-   avant comme apres).                                                         */
 .fil552:not(#_):not(#__){padding-top:122px}
 .fil552:not(#_):not(#__) ~ .pole-subnav:not(#_){margin-top:8px}
 @media(max-width:1240px){
@@ -411,59 +95,19 @@ nav.bcrumb:not(#_):not(#__) a,
   .fil552:not(#_):not(#__) ~ .pole-subnav:not(#_){margin-top:8px}
 }
 
-/* le rail a points de la brochure : deux cibles de 13 x 15 px */
-#dotnav:not(#_) a{min-width:24px;min-height:24px;align-items:center;justify-content:center}
 
-/* « Ouvrir le tableau de bord » : seul contenu de son bloc, 141 x 13 px */
-.std:not(#_):not(#__)>b>a{display:inline-flex;align-items:center;min-height:24px}
-
-/* --- Ch577 lot 3 - WCAG 1.4.1 : la couleur seule ----------------------------
-   Un balayage axe des 191 pages sur la seule regle link-in-text-block rend
-   quatre liens, tous sur paiements-etats : de l or #E8C36A dans un paragraphe
-   creme #E9EEF5, soit 1,44:1 entre le lien et son texte (le minimum est 3:1)
-   et aucun soulignement. Un daltonien ne voit pas qu il y a un lien.          */
 .pe-note:not(#_):not(#__) a{text-decoration:underline;text-underline-offset:.18em}
 
-/* --- Ch578 - l ancre #poles, morte sur tout le site -------------------------
-   192 liens repartis sur pres de 190 pages pointent vers /#poles et
-   /index-en#poles. Cette ancre n existe plus sur l accueil : la section des
-   trois maillons s appelle #coeurs. Tous ces liens deposaient donc le visiteur
-   en haut de l accueil, sans rien lui dire.
-   Plutot que de reecrire 192 liens dans 190 fichiers, on redonne a l accueil
-   l ancre que le site lui demande : un point d arrivee sans hauteur, pose juste
-   avant la section, avec la marge de defilement de la maison (96 px).         */
+
 .anc578:not(#_){display:block;height:0;overflow:hidden;scroll-margin-top:96px}
 
-/* --- Ch581 - imprimer la FAQ donnait les questions sans les reponses -------
-   Mesure en media print sur les 191 pages : onze pages perdent 86 024 signes
-   a l impression parce que leurs blocs <details> sont replies. La FAQ sort
-   avec ses 27 questions et aucune reponse ; l Atlas du secteur perd 27 354
-   signes de donnees ; la brochure 4 785. Le navigateur replie le contenu d un
-   <details> ferme par la boite ::details-content ; a l impression on la rend.
-   Sur un moteur qui ne connait pas ce pseudo-element, la regle est inerte —
-   le relais est pris par le gestionnaire beforeprint de nav_a.js.            */
+
 @media print{
   details:not(#_):not(#__)::details-content{
     content-visibility:visible !important;display:block !important;block-size:auto !important}
   details:not(#_):not(#__)>*{content-visibility:visible !important}
   details:not(#_):not(#__){break-inside:avoid}
-  /* le chevron de repli n a plus de sens sur du papier */
-  summary:not(#_) .chev,summary:not(#_)>svg{display:none !important}
-  summary:not(#_){list-style:none}
-  summary:not(#_)::-webkit-details-marker{display:none}
-}
-
-/* --- Ch584 - le diaporama du heros redevient visible, et son voile ----------
-   Arbitrage du proprietaire : le diaporama de neuf photographies du Tchad,
-   qui porte role="img" et un libelle, est du contenu — il repasse au visible
-   (l exemption est posee dans la feuille diapo-css, x_685ad1e3eb1b).
-   Mesure au pixel du fond sous le titre, diapositive par diapositive : le
-   voile deja present dans chaque image (.46 en haut, .34 a 40 %, .82 en bas)
-   est au plus clair exactement la ou le titre se pose. L or du titre tombait
-   a 2,48:1 sur l addax, 2,67 sur les dunes et 2,84 sur le guepard — sous le
-   seuil de 3:1 du grand texte. On ajoute un voile propre au diaporama, creuse
-   dans la bande du titre (26-52 % de la hauteur) et nul en haut et en bas
-   pour que la photographie garde sa presence.                                */
+  
 header.hero .hx-shots[role="img"]:not(#_):not(#__)::after{
   content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
   background:linear-gradient(180deg,
@@ -473,25 +117,7 @@ header.hero .hx-shots[role="img"]:not(#_):not(#__)::after{
     rgba(6,11,20,.32) 52%,
     rgba(6,11,20,.14) 66%,
     rgba(6,11,20,0) 82%)}
-/* Le voile de bande suffit pour la mediane, pas pour le local : sur l addax et
-   les dunes, le titre dore traverse une robe claire ou un ciel clair. Un halo
-   sombre porte par le texte lui-meme rend la lisibilite independante de ce
-   qu il y a derriere, sans eteindre la photographie.                         */
-header.hero:has(.hx-shots[role="img"]) h1:not(#_),
-header.hero:has(.hx-shots[role="img"]) h1 em:not(#_),
-header.hero:has(.hx-shots[role="img"]) .lead:not(#_),
-header.hero:has(.hx-shots[role="img"]) .lead strong:not(#_){
-  text-shadow:0 1px 2px rgba(6,11,20,.92),0 2px 20px rgba(6,11,20,.85),0 0 42px rgba(6,11,20,.7)}
 
-/* ————————————————————————————————————————————————————————————
-   Ch585 — plus une photographie en fond : du verre a la place.
-   Les bandes de titre (header.pghero, div.hero) portaient une photographie
-   plein cadre sur 88 pages. Elles deviennent un panneau de verre fume pose
-   sur le champ de lumiere du 573 : le champ est capte par backdrop-filter,
-   floute et sature, puis voile par une fumee marine dont l opacite a ete
-   reglee au pixel — pas a l oeil — pour que le texte blanc garde partout
-   son contraste. Le voile lateral herite de la photographie disparait.
-   ———————————————————————————————————————————————————————————— */
 html header.pghero:not(#_):not(#__),
 html body div.hero:not(#_):not(#__){
   --v5a:.58; --v5b:.50; --v5c:.72;
@@ -510,28 +136,7 @@ html body div.hero:not(#_):not(#__){
     inset 0 -1px 0 rgba(7,12,21,.55),
     0 26px 64px -34px rgba(7,12,21,.75) !important;
 }
-/* en theme clair le champ derriere est creme : la fumee doit etre plus dense
-   pour que le blanc du titre reste lisible. Valeurs mesurees, pas estimees. */
-html.et-plight header.pghero:not(#_):not(#__),
-html.et-jlight header.pghero:not(#_):not(#__),
-html.et-plight body div.hero:not(#_):not(#__),
-html.et-jlight body div.hero:not(#_):not(#__){
-  --v5a:.86; --v5b:.80; --v5c:.93;
-}
-/* le degrade lateral n existait que pour rattraper la photographie */
-html header.pghero:not(#_):not(#__)::before{display:none !important}
-@media(prefers-contrast:more){
-  html header.pghero:not(#_):not(#__),
-  html body div.hero:not(#_):not(#__){
-    --v5a:.90; --v5b:.86; --v5c:.95;
-    -webkit-backdrop-filter:blur(30px) saturate(1.1) !important;
-    backdrop-filter:blur(30px) saturate(1.1) !important}
-}
 
-/* Ch585 lot 2 — les vingt tuiles decoratives des poles GreenTech et TchadiTech.
-   C etaient des <i aria-hidden="true"> a photographie de fond : de la decoration,
-   pas du contenu (le principe du 575). La photographie est retiree du balisage ;
-   la tuile devient une plaque de verre, meme geometrie, meme hauteur. */
 .gtt-c:not(#_) > i[aria-hidden="true"]:not(#_):not(#__):not(#___),
 .ttf-card:not(#_) > i[aria-hidden="true"]:not(#_):not(#__):not(#___),
 .tts:not(#_) > i[aria-hidden="true"]:not(#_):not(#__):not(#___){
@@ -546,57 +151,17 @@ html header.pghero:not(#_):not(#__)::before{display:none !important}
   border-bottom:1px solid rgba(255,255,255,.14) !important;
   box-shadow:inset 0 1px 0 rgba(255,255,255,.20) !important;
 }
-/* la ligne de lumiere qui court sur la plaque : c est elle qui la fait lire
-   comme du verre et non comme un aplat. */
-.gtt-c:not(#_) > i[aria-hidden="true"]:not(#_):not(#__):not(#___)::after,
-.ttf-card:not(#_) > i[aria-hidden="true"]:not(#_):not(#__):not(#___)::after,
-.tts:not(#_) > i[aria-hidden="true"]:not(#_):not(#__):not(#___)::after{
-  content:"";position:absolute;inset:0;pointer-events:none;
-  background:linear-gradient(118deg,
-    transparent 0%, transparent 34%,
-    rgba(255,255,255,.14) 41%, rgba(255,255,255,.02) 47%,
-    transparent 54%, transparent 100%)}
-/* quatre plaques cote a cote : on decale le champ pour qu elles ne soient
-   pas quatre fois la meme image. */
-.gtt-c:not(#_):nth-of-type(2) > i[aria-hidden="true"]:not(#_):not(#__):not(#___),
-.ttf-card:not(#_):nth-of-type(2) > i[aria-hidden="true"]:not(#_):not(#__):not(#___){background-position:22% 0,22% 0,22% 0,22% 0,22% 0,0 0 !important}
-.gtt-c:not(#_):nth-of-type(3) > i[aria-hidden="true"]:not(#_):not(#__):not(#___),
-.ttf-card:not(#_):nth-of-type(3) > i[aria-hidden="true"]:not(#_):not(#__):not(#___){transform:scaleX(-1)}
-.gtt-c:not(#_):nth-of-type(4) > i[aria-hidden="true"]:not(#_):not(#__):not(#___){background-position:-18% 0,-18% 0,-18% 0,-18% 0,-18% 0,0 0 !important}
 
-/* Ch585 lot 3 — le chapeau des pages utilitaires. Sur douze pages (mentions,
-   cookies, presse, recherche, plan du site…) le .lead heritait du gris sourd
-   du corps de page, rgb(147,161,184) : pose sur une bande sombre il donnait
-   4.31 avant le 585 et 4.18 apres — sous le seuil AA dans les deux cas.
-   C etait un defaut anterieur, pas une consequence du verre ; il est corrige
-   ici puisque la bande passe entre mes mains. Le chapeau prend la couleur
-   qu il a deja sur les 99 autres pages. */
 html header.pghero:not(#_):not(#__) .lead:not(#_):not(#__),
 html body div.hero:not(#_):not(#__) .lead:not(#_):not(#__){
   color:rgba(245,247,250,.92) !important}
 
-/* Ch585 lot 4 — le badge « Image d illustration ». Un script en ligne l ajoute
-   a chaque heros ; il nommait la photographie de fond. Il n y a plus de
-   photographie : le badge mentirait. Il disparait des bandes de titre.
-   Les figures legendees qui restent (role=img + figcaption) gardent le leur,
-   il porte la, sur du contenu reel. */
+
 html header.pghero:not(#_):not(#__) > .hero-cap:not(#_),
 html body div.hero:not(#_):not(#__) > .hero-cap:not(#_),
 html header.hero:not(#_):not(#__) > .hero-cap:not(#_){display:none !important}
 
-/* ————————————————————————————————————————————————————————————
-   Ch589 — la banniere cookies etait intouchable au telephone.
-   Sur mobile, une regle en ligne aplatit #ckn en bandeau plein
-   largeur colle en bas (left/right/bottom:0 !important). La barre
-   de navigation du bas, #nezBar, est elle aussi fixee en bas, haute
-   de 60 px et posee a z-index:95 — contre 60 pour la banniere. Les
-   deux se superposent sur 44 px : la totalite des commandes.
-   Mesure : sur 62 des 191 pages, elementFromPoint au centre du
-   bouton « J ai compris » rend un lien de la barre, pas le bouton.
-   Le visiteur ne peut pas fermer la banniere ; il navigue ailleurs.
-   La banniere passe au-dessus de la barre et se pose juste au-dessus
-   d elle. Le garde :has(#nezBar) laisse intactes les pages sans barre.
-   ———————————————————————————————————————————————————————————— */
+
 @media(max-width:768px){
   html body:has(#nezBar) #ckn:not(#_):not(#__):not(#___){
     bottom:calc(62px + env(safe-area-inset-bottom)) !important;
@@ -607,20 +172,7 @@ html header.hero:not(#_):not(#__) > .hero-cap:not(#_){display:none !important}
   }
 }
 
-/* ————————————————————————————————————————————————————————————
-   Ch590 — que le contenu laisse voir son fond.
-   Constat mesure. Theme sombre : le champ du 573 est bien peint
-   derriere le contenu, mais ses quatre foyers sont aux coins du
-   cadre fixe — le milieu de l ecran, la ou vit le texte, est la
-   zone morte du degrade, et le flou de 16 px des sections efface
-   le peu qui restait. Theme clair : .rootland et .subland sont en
-   display:none et les sections n ont aucun verre — il n y avait
-   tout simplement pas de fond a laisser passer.
-   Deux foyers medians rendent le champ vivant au centre ; en clair
-   le champ est rallume et les sections deviennent du verre.
-   Contraste du corps de texte mesure au pixel avant et apres :
-   sombre 7,63 -> 6,63 au pire, clair 5,82 -> 6,12. Seuil 4,5.
-   ———————————————————————————————————————————————————————————— */
+
 .rootland:not(#_):not(#__):not(#___),
 .subland:not(#_):not(#__):not(#___){
   background:
@@ -633,586 +185,7 @@ html header.hero:not(#_):not(#__) > .hero-cap:not(#_){display:none !important}
     radial-gradient(44% 46% at 30% 62%, rgba(46,134,222,.28), transparent 66%),
     #0A1220 !important;
 }
-/* Le mini-site arabe se declare dark-only : il garde le champ sombre. */
-.diapo:not(#_):not(#__):not(#___){
-  background:
-    radial-gradient(46% 54% at 14% 14%, rgba(219,174,74,.40), transparent 64%),
-    radial-gradient(44% 50% at 88% 8%, rgba(90,167,240,.34), transparent 62%),
-    radial-gradient(54% 56% at 80% 92%, rgba(31,164,150,.30), transparent 64%),
-    radial-gradient(48% 52% at 16% 94%, rgba(224,162,78,.26), transparent 62%),
-    radial-gradient(46% 48% at 64% 40%, rgba(120,90,220,.18), transparent 66%),
-    radial-gradient(42% 44% at 30% 62%, rgba(46,134,222,.15), transparent 66%),
-    #0A1220 !important;
-}
-html.et-plight:not([lang="ar"]) .rootland:not(#_):not(#__):not(#___),
-html.et-jlight:not([lang="ar"]) .rootland:not(#_):not(#__):not(#___),
-html.et-plight:not([lang="ar"]) .subland:not(#_):not(#__):not(#___),
-html.et-jlight:not([lang="ar"]) .subland:not(#_):not(#__):not(#___){
-  display:block !important;
-  background:
-    radial-gradient(46% 50% at 12% 16%, rgba(219,174,74,.20), transparent 64%),
-    radial-gradient(42% 48% at 88% 10%, rgba(90,167,240,.17), transparent 62%),
-    radial-gradient(56% 58% at 82% 88%, rgba(31,164,150,.15), transparent 64%),
-    radial-gradient(50% 54% at 18% 92%, rgba(224,162,78,.14), transparent 62%),
-    radial-gradient(46% 48% at 62% 42%, rgba(120,90,220,.10), transparent 66%),
-    radial-gradient(42% 44% at 32% 60%, rgba(46,134,222,.09), transparent 66%),
-    rgba(250,247,241,.72) !important;
-}
-/* 595 (proposition 04) : le flou pose au niveau des sections recouvrait toute
-   la colonne de lecture en theme clair, alors que les cartes qu elle contient
-   floutent deja. Mesure : sans aucun flou, le pire contraste du corps de texte
-   passe de 4,91 a 4,88 — le verre est decoratif, pas porteur. Le flou de
-   section est retire ; le champ et son voile restent. */
 
-/* 591 : le champ clair laisse passer le motif du fond ; les notes en petit
-   corps de .b111 y perdaient 0,15 et passaient sous 4,5. Le remede est leur
-   couleur, pas le champ — mesure au coeur des glyphes, chapitre 591. */
-html.et-plight:not([lang="ar"]) .b111-lead:not(#_):not(#__):not(#___),
-html.et-jlight:not([lang="ar"]) .b111-lead:not(#_):not(#__):not(#___),
-html.et-plight:not([lang="ar"]) .b111-c p:not(#_):not(#__):not(#___),
-html.et-jlight:not([lang="ar"]) .b111-c p:not(#_):not(#__):not(#___){
-  color:#4A5568 !important;
-  -webkit-text-fill-color:#4A5568 !important;
-}
-
-/* 591 : la note des cartes .exp-c tombait a 4,26 en theme sombre — mesure
-   au coeur des glyphes, anterieure au 590. Couleur relevee. */
-html:not(.et-plight):not(.et-jlight) .exp-c p:not(#_):not(#__),
-html:not(.et-plight):not(.et-jlight) .exp-items span:not(#_):not(#__),
-html:not(.et-plight):not(.et-jlight) .exp-note:not(#_):not(#__){
-  color:#ACB8CC !important;
-  -webkit-text-fill-color:#ACB8CC !important;
-}
-
-/* 591 : quatre notes en petit corps heritent de --muted #7C8AA2 en theme
-   sombre et mesurent 4,31 a 4,38 au coeur des glyphes — sous le seuil
-   depuis leur ecriture, sans rapport avec le champ. Relevees a #93A1B8. */
-html:not(.et-plight):not(.et-jlight) .exp-lede:not(#_):not(#__),
-html:not(.et-plight):not(.et-jlight) .avk-note:not(#_):not(#__),
-html:not(.et-plight):not(.et-jlight) .ppj-note:not(#_):not(#__),
-html:not(.et-plight):not(.et-jlight) .c7l:not(#_):not(#__){
-  color:#93A1B8 !important;
-  -webkit-text-fill-color:#93A1B8 !important;
-}
-
-/* 592 : audit — le jeton clair #5A6678 vit sur 15 pages en six familles de
-   selecteurs. Le 591 n en avait releve qu une (.b111) ; la mesure trouve
-   .cmp-cap a 4,48 sur clients. Toute la famille passe a #4A5568. */
-html.et-plight:not([lang="ar"]) .cmp-hint:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
-html.et-plight:not([lang="ar"]) table.cmpt td:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
-html.et-plight:not([lang="ar"]) .secc span:not(.secc-k):not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
-html.et-plight:not([lang="ar"]) .slac span:not(.sla-v):not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
-html.et-plight:not([lang="ar"]) .docl li:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
-html.et-plight:not([lang="ar"]) .cmp-cap:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
-html.et-plight:not([lang="ar"]) .slac em:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
-html.et-plight:not([lang="ar"]) table.cmpt tbody th small:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
-html.et-plight:not([lang="ar"]) #diapo-cap .dc-zo:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
-html.et-plight:not([lang="ar"]) .pe-lead:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
-html.et-plight:not([lang="ar"]) .pe-c p:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
-html.et-plight:not([lang="ar"]) .pe-st p:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
-html.et-plight:not([lang="ar"]) table.pet td.pe-n:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
-html.et-plight:not([lang="ar"]) .pe-cap:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
-html.et-plight:not([lang="ar"]) .bcrumb a:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
-html.et-jlight:not([lang="ar"]) .cmp-hint:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
-html.et-jlight:not([lang="ar"]) table.cmpt td:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
-html.et-jlight:not([lang="ar"]) .secc span:not(.secc-k):not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
-html.et-jlight:not([lang="ar"]) .slac span:not(.sla-v):not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
-html.et-jlight:not([lang="ar"]) .docl li:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
-html.et-jlight:not([lang="ar"]) .cmp-cap:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
-html.et-jlight:not([lang="ar"]) .slac em:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
-html.et-jlight:not([lang="ar"]) table.cmpt tbody th small:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
-html.et-jlight:not([lang="ar"]) #diapo-cap .dc-zo:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
-html.et-jlight:not([lang="ar"]) .pe-lead:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
-html.et-jlight:not([lang="ar"]) .pe-c p:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
-html.et-jlight:not([lang="ar"]) .pe-st p:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
-html.et-jlight:not([lang="ar"]) table.pet td.pe-n:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
-html.et-jlight:not([lang="ar"]) .pe-cap:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
-html.et-jlight:not([lang="ar"]) .bcrumb a:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______){
-  color:#4A5568 !important;
-  -webkit-text-fill-color:#4A5568 !important;
-}
-
-/* ============================================================
-   593 — l en-tete de pole, convention des majors
-   .plnav : sous-navigation de pole posee sous le heros — numero d etape dans
-   la chaine, trois chiffres cles de la page, puis ses ancres. La preuve avant
-   l argumentaire. Le fil de chaine .chv existait deja en bas de main ; il n a
-   pas ete double.
-   ============================================================ */
-.plnav:not(#_):not(#__){
-  display:block !important;
-  position:relative; z-index:2;
-  margin:0 !important; padding:18px 0 !important;
-  border-top:1px solid rgba(255,255,255,.09);
-  border-bottom:1px solid rgba(255,255,255,.09);
-  background:linear-gradient(180deg,rgba(12,20,34,.52),rgba(9,15,26,.60)) !important;
-  -webkit-backdrop-filter:blur(18px) saturate(1.3);
-  backdrop-filter:blur(18px) saturate(1.3);
-}
-.plnav-in{display:flex; flex-wrap:wrap; align-items:center; gap:16px 26px}
-.plnav-id{display:flex; align-items:baseline; gap:9px; margin:0; flex:0 0 auto}
-.plnav-no{font-family:var(--fm); font-size:.72rem; letter-spacing:.16em; color:var(--gold-l,#E8C36A)}
-.plnav-nom{font-family:var(--fd); font-weight:800; font-size:1.02rem; letter-spacing:-.01em; color:#F2F5F9}
-.plnav-kpi{display:flex; flex-wrap:wrap; gap:10px 22px; margin:0; padding:0; list-style:none; flex:1 1 300px}
-.plnav-kpi li{display:flex; flex-direction:column; gap:1px; min-width:118px}
-.plnav-kpi b{font-family:var(--fd); font-weight:800; font-size:1.02rem; line-height:1.15;
-  color:#FFF; font-variant-numeric:tabular-nums lining-nums}
-.plnav-kpi span{font-size:.72rem; line-height:1.35; color:#A8B6C9}
-.plnav-anc{display:flex; flex-wrap:wrap; gap:7px; margin:0; padding:0; list-style:none; flex:0 1 auto}
-.plnav-anc a{display:inline-flex; align-items:center; min-height:44px; padding:0 13px;
-  border:1px solid rgba(255,255,255,.14); border-radius:999px;
-  font-size:.79rem; line-height:1; color:#D8E1EC; text-decoration:none;
-  transition:border-color .2s, color .2s, background .2s}
-.plnav-anc a:hover{border-color:var(--gold-l,#E8C36A); color:#FFF;
-  background:color-mix(in srgb, var(--gold-l,#E8C36A) 12%, transparent)}
-.plnav-anc a:focus-visible{outline:2px solid var(--blue-l,#5AA7F0); outline-offset:3px}
-
-/* theme clair */
-html.et-plight:not([lang="ar"]) .plnav:not(#_):not(#__),
-html.et-jlight:not([lang="ar"]) .plnav:not(#_):not(#__){
-  border-top-color:rgba(11,20,34,.10); border-bottom-color:rgba(11,20,34,.10);
-  background:linear-gradient(180deg,rgba(255,255,255,.74),rgba(252,250,246,.66)) !important;
-}
-html.et-plight:not([lang="ar"]) .plnav-nom:not(#_), html.et-jlight:not([lang="ar"]) .plnav-nom:not(#_),
-html.et-plight:not([lang="ar"]) .plnav-kpi b:not(#_), html.et-jlight:not([lang="ar"]) .plnav-kpi b:not(#_),
-html.et-plight:not([lang="ar"]) .plnav-kpi span:not(#_), html.et-jlight:not([lang="ar"]) .plnav-kpi span:not(#_),
-html.et-plight:not([lang="ar"]) .plnav-anc a:not(#_), html.et-jlight:not([lang="ar"]) .plnav-anc a:not(#_){
-  color:#26324A !important; -webkit-text-fill-color:#26324A !important;
-  border-color:rgba(11,20,34,.16) !important;
-}
-html.et-plight:not([lang="ar"]) .plnav-no:not(#_), html.et-jlight:not([lang="ar"]) .plnav-no:not(#_),
-
-/* ============================================================
-   594 — « Ou se passe ce pole » : carte de situation par pole.
-   Dessin en SVG, aucune ressource externe, aucun fond de carte :
-   des points a leur coordonnee, une graticule tous les 2 degres,
-   et la meme information en liste a cote — la liste est l equivalent
-   accessible, et c est elle qu on lit au telephone.
-   ============================================================ */
-.plmap:not(#_):not(#__){
-  display:block !important; position:relative; z-index:2;
-  padding:34px 0 8px !important;
-}
-.plmap-h{font-family:var(--fd); font-weight:800; font-size:var(--ts-6,clamp(1.2rem,2.5vw,1.8rem));
-  letter-spacing:-.01em; color:#F2F5F9; margin:0 0 6px}
-.plmap-n{font-size:.86rem; line-height:1.6; color:#A8B6C9; margin:0 0 18px; max-width:62ch}
-.plmap-box{display:grid; grid-template-columns:minmax(0,1.55fr) minmax(220px,.85fr); gap:22px; align-items:start}
-.plmap-svg{display:block; width:100%; max-width:100%; height:auto;
-  border:1px solid rgba(255,255,255,.12); border-radius:16px;
-  background:linear-gradient(165deg,rgba(12,20,34,.46),rgba(9,15,26,.58));
-  -webkit-backdrop-filter:blur(14px) saturate(1.2); backdrop-filter:blur(14px) saturate(1.2)}
-.plmap-gr line{stroke:rgba(255,255,255,.10); stroke-width:1}
-.plmap-corr{stroke:var(--gold-l,#E8C36A); stroke-width:2.5; stroke-linecap:round; stroke-dasharray:9 7}
-.plmap-corr-t{fill:var(--gold-l,#E8C36A); font-family:var(--fm); font-size:13px; letter-spacing:.04em}
-.plmap-p text{fill:#E6ECF4; font-family:var(--fd); font-size:15px; font-weight:600}
-.plmap-p circle{stroke:rgba(8,13,23,.72); stroke-width:2}
-.plmap-bassin circle{fill:var(--gold-l,#E8C36A)}
-.plmap-gaz circle{fill:var(--green,#34D399)}
-.plmap-origine circle{fill:var(--gold-l,#E8C36A)}
-.plmap-terminal circle{fill:var(--blue-l,#5AA7F0)}
-.plmap-hub circle{fill:var(--blue-l,#5AA7F0)}
-.plmap-raffinerie circle{fill:var(--amber-l,#F2B45A)}
-.plmap-station circle{fill:rgba(230,236,244,.82)}
-.plmap-h3{font-family:var(--fm); font-size:var(--ts-l,.75rem); letter-spacing:.2em; text-transform:uppercase;
-  color:#A8B6C9; margin:0 0 10px}
-.plmap-l{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:9px}
-.plmap-li{display:flex; flex-direction:column; gap:1px; padding-left:16px; position:relative}
-.plmap-li::before{content:""; position:absolute; left:0; top:7px; width:8px; height:8px; border-radius:50%;
-  background:rgba(230,236,244,.82)}
-.plmap-li-bassin::before,.plmap-li-origine::before{background:var(--gold-l,#E8C36A)}
-.plmap-li-gaz::before{background:var(--green,#34D399)}
-.plmap-li-terminal::before,.plmap-li-hub::before{background:var(--blue-l,#5AA7F0)}
-.plmap-li-raffinerie::before{background:var(--amber-l,#F2B45A)}
-.plmap-li b{font-family:var(--fd); font-weight:700; font-size:.94rem; color:#EDF2F8}
-.plmap-li span{font-size:.79rem; line-height:1.45; color:#A8B6C9}
-
-@media(max-width:820px){
-  .plmap-box{grid-template-columns:1fr; gap:16px}
-  .plmap-p text{font-size:19px}
-  .plmap-corr-t{font-size:17px}
-}
-
-/* theme clair */
-html.et-plight:not([lang="ar"]) .plmap-h:not(#_), html.et-jlight:not([lang="ar"]) .plmap-h:not(#_),
-html.et-plight:not([lang="ar"]) .plmap-li b:not(#_), html.et-jlight:not([lang="ar"]) .plmap-li b:not(#_){
-  color:#16202E !important; -webkit-text-fill-color:#16202E !important}
-html.et-plight:not([lang="ar"]) .plmap-n:not(#_), html.et-jlight:not([lang="ar"]) .plmap-n:not(#_),
-html.et-plight:not([lang="ar"]) .plmap-h3:not(#_), html.et-jlight:not([lang="ar"]) .plmap-h3:not(#_),
-html.et-plight:not([lang="ar"]) .plmap-li span:not(#_), html.et-jlight:not([lang="ar"]) .plmap-li span:not(#_){
-  color:#4A5568 !important; -webkit-text-fill-color:#4A5568 !important}
-html.et-plight:not([lang="ar"]) .plmap-svg:not(#_), html.et-jlight:not([lang="ar"]) .plmap-svg:not(#_){
-  border-color:rgba(11,20,34,.13) !important;
-  background:linear-gradient(165deg,rgba(255,255,255,.78),rgba(252,250,246,.70)) !important}
-html.et-plight:not([lang="ar"]) .plmap-gr line, html.et-jlight:not([lang="ar"]) .plmap-gr line{
-  stroke:rgba(11,20,34,.10)}
-html.et-plight:not([lang="ar"]) .plmap-p text, html.et-jlight:not([lang="ar"]) .plmap-p text{fill:#1B2636}
-html.et-plight:not([lang="ar"]) .plmap-p circle, html.et-jlight:not([lang="ar"]) .plmap-p circle{
-  stroke:rgba(255,255,255,.9)}
-html.et-plight:not([lang="ar"]) .plmap-station circle, html.et-jlight:not([lang="ar"]) .plmap-station circle{
-  fill:#5A6678}
-html.et-plight:not([lang="ar"]) .plmap-li::before, html.et-jlight:not([lang="ar"]) .plmap-li::before{
-  background:#5A6678}
-html.et-plight:not([lang="ar"]) .plmap-corr, html.et-jlight:not([lang="ar"]) .plmap-corr{stroke:#8A6210}
-html.et-plight:not([lang="ar"]) .plmap-corr-t, html.et-jlight:not([lang="ar"]) .plmap-corr-t{fill:#7A5A0B}
-html.et-plight:not([lang="ar"]) .plmap-bassin circle, html.et-jlight:not([lang="ar"]) .plmap-bassin circle,
-html.et-plight:not([lang="ar"]) .plmap-origine circle, html.et-jlight:not([lang="ar"]) .plmap-origine circle{
-  fill:#8A6210}
-html.et-plight:not([lang="ar"]) .plmap-li-bassin::before, html.et-jlight:not([lang="ar"]) .plmap-li-bassin::before,
-html.et-plight:not([lang="ar"]) .plmap-li-origine::before, html.et-jlight:not([lang="ar"]) .plmap-li-origine::before{
-  background:#8A6210}
-html.et-plight:not([lang="ar"]) .plmap-terminal circle, html.et-jlight:not([lang="ar"]) .plmap-terminal circle,
-html.et-plight:not([lang="ar"]) .plmap-hub circle, html.et-jlight:not([lang="ar"]) .plmap-hub circle{fill:#10406F}
-html.et-plight:not([lang="ar"]) .plmap-li-terminal::before, html.et-jlight:not([lang="ar"]) .plmap-li-terminal::before,
-html.et-plight:not([lang="ar"]) .plmap-li-hub::before, html.et-jlight:not([lang="ar"]) .plmap-li-hub::before{
-  background:#10406F}
-html.et-plight:not([lang="ar"]) .plmap-gaz circle, html.et-jlight:not([lang="ar"]) .plmap-gaz circle{fill:#0B6B4F}
-html.et-plight:not([lang="ar"]) .plmap-li-gaz::before, html.et-jlight:not([lang="ar"]) .plmap-li-gaz::before{
-  background:#0B6B4F}
-html.et-plight:not([lang="ar"]) .plmap-raffinerie circle, html.et-jlight:not([lang="ar"]) .plmap-raffinerie circle{
-  fill:#8A5A10}
-html.et-plight:not([lang="ar"]) .plmap-li-raffinerie::before, html.et-jlight:not([lang="ar"]) .plmap-li-raffinerie::before{
-  background:#8A5A10}
-
-/* ============================================================
-   595 (proposition 01) — la transparence reduite, qui gagne enfin.
-   Le site declarait prefers-reduced-transparency dans 29 blocs ; mesure faite
-   en emulant la preference : la requete media repondait true et rien ne
-   changeait. Les regles de verre portent !important ET une forte specificite,
-   et a poids egal c est la specificite qui tranche : la regle globale « * »
-   perdait. Ce bloc porte sept identifiants factices par selecteur — davantage
-   que tout ce que le site oppose — et il rend les surfaces opaques dans LEUR
-   theme, la ou l ancien fond de secours etait marine y compris en clair.
-   ============================================================ */
-@media (prefers-reduced-transparency: reduce){
-  html:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) *:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
-  html:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) *:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______)::before,
-  html:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) *:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______)::after{
-    -webkit-backdrop-filter:none !important;
-    backdrop-filter:none !important;
-  }
-  html:not(.et-plight):not(.et-jlight):not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) main section:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
-  html:not(.et-plight):not(.et-jlight):not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) body>section:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
-  html:not(.et-plight):not(.et-jlight):not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) header.pghero:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
-  html:not(.et-plight):not(.et-jlight):not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) div.hero:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
-  html:not(.et-plight):not(.et-jlight):not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) header.hero:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
-  html:not(.et-plight):not(.et-jlight):not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) nav.nav:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
-  html:not(.et-plight):not(.et-jlight):not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) .plnav:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
-  html:not(.et-plight):not(.et-jlight):not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) .chv:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
-  html:not(.et-plight):not(.et-jlight):not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) .ppj-card:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
-  html:not(.et-plight):not(.et-jlight):not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) .biz-card:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
-  html:not(.et-plight):not(.et-jlight):not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) .ppt-card:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
-  html:not(.et-plight):not(.et-jlight):not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) .pmore-card:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
-  html:not(.et-plight):not(.et-jlight):not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) .oeco-card:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
-  html:not(.et-plight):not(.et-jlight):not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) .hxi-card:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
-  html:not(.et-plight):not(.et-jlight):not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) .sb-card:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
-  html:not(.et-plight):not(.et-jlight):not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) .hpcard:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
-  html:not(.et-plight):not(.et-jlight):not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) .plc-card:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
-  html:not(.et-plight):not(.et-jlight):not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) .b111-c:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
-  html:not(.et-plight):not(.et-jlight):not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) .pe-c:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
-  html:not(.et-plight):not(.et-jlight):not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) .exp-c:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
-  html:not(.et-plight):not(.et-jlight):not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) .avk-card:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
-  html:not(.et-plight):not(.et-jlight):not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) .pole-subnav:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
-  html:not(.et-plight):not(.et-jlight):not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) .plmap-svg:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
-  html:not(.et-plight):not(.et-jlight):not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) footer:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______){
-    background-color:#0D1626 !important;
-  }
-  html:is(.et-plight,.et-jlight):not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) main section:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
-  html:is(.et-plight,.et-jlight):not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) body>section:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
-  html:is(.et-plight,.et-jlight):not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) header.pghero:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
-  html:is(.et-plight,.et-jlight):not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) div.hero:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
-  html:is(.et-plight,.et-jlight):not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) header.hero:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
-  html:is(.et-plight,.et-jlight):not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) nav.nav:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
-  html:is(.et-plight,.et-jlight):not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) .plnav:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
-  html:is(.et-plight,.et-jlight):not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) .chv:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
-  html:is(.et-plight,.et-jlight):not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) .ppj-card:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
-  html:is(.et-plight,.et-jlight):not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) .biz-card:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
-  html:is(.et-plight,.et-jlight):not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) .ppt-card:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
-  html:is(.et-plight,.et-jlight):not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) .pmore-card:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
-  html:is(.et-plight,.et-jlight):not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) .oeco-card:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
-  html:is(.et-plight,.et-jlight):not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) .hxi-card:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
-  html:is(.et-plight,.et-jlight):not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) .sb-card:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
-  html:is(.et-plight,.et-jlight):not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) .hpcard:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
-  html:is(.et-plight,.et-jlight):not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) .plc-card:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
-  html:is(.et-plight,.et-jlight):not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) .b111-c:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
-  html:is(.et-plight,.et-jlight):not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) .pe-c:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
-  html:is(.et-plight,.et-jlight):not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) .exp-c:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
-  html:is(.et-plight,.et-jlight):not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) .avk-card:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
-  html:is(.et-plight,.et-jlight):not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) .pole-subnav:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
-  html:is(.et-plight,.et-jlight):not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) .plmap-svg:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
-  html:is(.et-plight,.et-jlight):not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) footer:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______){
-    background-color:#FAF7F1 !important;
-  }
-  /* La banniere cookies, la barre du bas et les menus deployes sont sombres
-     dans les deux themes par conception : leur texte est ambre. Les rendre
-     creme sous la preference mettait ce texte a 1,63 — mesure axe. */
-  html:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) #ckn:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
-  html:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) #nezBar:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
-  html:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) .nav-links:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______){
-    background-color:#0B1422 !important;
-  }
-  html:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) .rootland:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
-  html:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) .subland:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
-  html:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) .diapo:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______){
-    background-image:none !important;
-    background-color:#0A1220 !important;
-  }
-  /* Un texte attenue par opacity depend du fond qu il recouvre : rendre le
-     panneau opaque et creme lave .cl-hint a 3,57. Mesure axe, trois essais
-     concordants. Ici l attenuation redevient une couleur. */
-  html:is(.et-plight,.et-jlight):not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) .cl-hint:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______){
-    opacity:1 !important; color:#4A5568 !important; -webkit-text-fill-color:#4A5568 !important;
-  }
-  html:not(.et-plight):not(.et-jlight):not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) .cl-hint:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______){
-    opacity:1 !important; color:#A8B6C9 !important; -webkit-text-fill-color:#A8B6C9 !important;
-  }
-  html.et-plight:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) .rootland:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
-  html.et-jlight:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) .rootland:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
-  html.et-plight:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) .subland:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
-  html.et-jlight:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) .subland:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
-  html.et-plight:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) .diapo:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
-  html.et-jlight:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) .diapo:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______){
-    background-color:#FAF7F1 !important;
-  }
-}
-
-/* ============================================================
-   596 (revue de design, point 01) — la fleche des cartes de pole.
-   La rotation a 90 degres etait accrochee a l attribut data-plc, qui marque
-   les cartes menant a une SOUS-PAGE : resultat, la fleche « vers le bas »
-   (qui dit « je reste sur cette page ») servait a quitter la page, et la
-   fleche « vers la droite » servait a defiler jusqu a #chantiers. Mesure :
-   30 cartes sur 34, sur les huit pages de pole. La condition redevient la
-   bonne — c est la cible du lien qui decide, pas un attribut. */
-.plc-card[data-plc]:not(#_) .plc-arr:not(#_){transform:none !important}
-.plc-card[data-plc]:not(#_):hover .plc-arr:not(#_){transform:translateX(5px) !important}
-.plc-card[href^="#"]:not(#_) .plc-arr:not(#_){transform:rotate(90deg) !important}
-.plc-card[href^="#"]:not(#_):hover .plc-arr:not(#_){transform:rotate(90deg) translateX(4px) !important}
-@media(prefers-reduced-motion:reduce){
-  .plc-card:not(#_):hover .plc-arr:not(#_){transition:none !important}
-}
-
-/* ============================================================
-   597 (revue de design, point 02 — premiere moitie) : la largeur de lecture.
-   Mesure exacte, caracteres divises par lignes reellement dessinees, sur 316
-   paragraphes de seize pages : mediane 68 caracteres, neuvieme decile 109,
-   maximum 158. La bande confortable est 45 a 75. Un plafond unique, exprime
-   en ch pour suivre la police et non les pixels, ramene la mediane a 60 et le
-   maximum a 80. Les colonnes deja etroites ne bougent pas : min(100%, 60ch).
-   Les li sont hors du plafond : sur ce site une liste est souvent une grille
-   de cartes, et la brider coupait une pastille de 6 px sur la page Aval —
-   mesure, pas supposition. Seuls 4 des 191 paragraphes trop larges etaient
-   des li : le plafond ne perd presque rien a les laisser tranquilles.
-   ============================================================ */
-main p:not(#_):not(#__),
-main dd:not(#_):not(#__),
-article p:not(#_):not(#__),
-body>section p:not(#_):not(#__){
-  max-width:min(100%, 60ch) !important;
-}
-
-
-/* ============================================================
-   598 : la home sans bandes — la place aux tuiles.
-   L accueil etait decoupe en bandes pleine page : trois champs opaques de 484
-   px sous les trois maillons (#0A1220 plus une lueur dans la couleur du pole),
-   un voile par-dessus chacun, un degrade de 90 px en tete de #coeurs, un fond
-   plein sous #cta-band, et six filets pleine largeur qui cousaient le tout.
-   Le fond du site — le meme motif fixe que partout — n etait donc visible que
-   par intermittence. Ici les bandes tombent, le motif devient continu, et ce
-   qui porte le contenu n est plus la bande mais la tuile translucide, qui
-   garde la couleur du pole en lueur interieure au lieu de l etaler sur toute
-   la largeur.
-   Deux precautions de methode. La portee : tout est accroche a body.hm, pose
-   sur les deux seules pages d accueil, donc inerte sur les 189 autres. La
-   specificite : j ai d abord ecrit ces regles avec deux :not(#_) et quatre
-   d entre elles n ont rien fait — les declarations en face montaient a sept
-   identifiants. Les chaines ci-dessous en portent dix. Le CDP a nomme les
-   regles concurrentes ; sans lui j aurais conclu que mon CSS etait faux.
-   ============================================================ */
-
-/* 598-1 — les filets et degrades pleine largeur */
-html body.hm:not(#_):not(#__):not(#___) header.hero:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6),
-html body.hm:not(#_):not(#__):not(#___) .nh:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6),
-html body.hm:not(#_):not(#__):not(#___) #coeurs:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6),
-html body.hm:not(#_):not(#__):not(#___) #chiffres:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6),
-html body.hm:not(#_):not(#__):not(#___) #carnets:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6),
-html body.hm:not(#_):not(#__):not(#___) #cta-band:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6){
-  border-top-width:0 !important; border-bottom-width:0 !important;
-}
-html body.hm:not(#_):not(#__):not(#___) .nh:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6)::before,
-html body.hm:not(#_):not(#__):not(#___) #coeurs:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6)::before,
-html body.hm:not(#_):not(#__):not(#___) #cta-band:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6)::before{ content:none !important }
-
-/* 598-2 — les trois champs pleine page des maillons */
-html body.hm:not(#_):not(#__):not(#___) #coeurs:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6) .t550-bg:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6){ display:none !important }
-html body.hm:not(#_):not(#__):not(#___) #coeurs:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6) .t550-seg:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6)::before{ content:none !important }
-html body.hm:not(#_):not(#__):not(#___) #coeurs:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6) .t550-seg:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6){
-  min-height:0 !important; display:block !important;
-  overflow:visible !important; background:none !important;
-}
-html body.hm:not(#_):not(#__):not(#___) #coeurs:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6) .t550-in:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6){
-  display:block !important; padding:9px var(--gut,24px) !important;
-}
-
-/* 598-3 — le maillon devient la tuile */
-html body.hm:not(#_):not(#__):not(#___) #coeurs:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6) .t550-p:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6){
-  flex:none !important; max-width:none !important; width:auto !important;
-  border-radius:22px !important;
-  padding:clamp(24px,3vw,34px) clamp(22px,3vw,36px) !important;
-  display:grid !important;
-  grid-template-columns:minmax(0,1fr) minmax(250px,36%) !important;
-  grid-template-areas:"k k" "h f" "m f" "c f" !important;
-  column-gap:clamp(22px,3vw,40px) !important;
-  align-content:start !important;
-  background-image:radial-gradient(118% 150% at 2% 0%,
-    color-mix(in srgb, var(--pa,#FFB703) 16%, transparent), transparent 58%) !important;
-}
-html:not(.et-plight):not(.et-jlight) body.hm:not(#_):not(#__):not(#___) #coeurs:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6) .t550-p:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6){
-  background-color:rgba(0,45,69,.56) !important;
-}
-html:is(.et-plight,.et-jlight) body.hm:not(#_):not(#__):not(#___) #coeurs:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6) .t550-p:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6){
-  background-color:rgba(255,255,255,.74) !important;
-  border:1px solid rgba(0,48,73,.16) !important;
-  box-shadow:0 12px 30px rgba(0,48,73,.10) !important;
-}
-html body.hm:not(#_):not(#__):not(#___) #coeurs:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6) .t550-k:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6){ grid-area:k !important }
-html body.hm:not(#_):not(#__):not(#___) #coeurs:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6) .t550-p:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6) h3:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6){ grid-area:h !important }
-html body.hm:not(#_):not(#__):not(#___) #coeurs:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6) .t550-m:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6){ grid-area:m !important }
-html body.hm:not(#_):not(#__):not(#___) #coeurs:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6) .t550-cta:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6){ grid-area:c !important; align-self:end !important }
-html body.hm:not(#_):not(#__):not(#___) #coeurs:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6) .t550-kpis:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6){
-  grid-area:f !important; grid-template-columns:minmax(0,1fr) !important;
-  align-content:start !important; margin:0 !important;
-}
-
-/* 598-4 — le bandeau final devient une tuile */
-html body.hm:not(#_):not(#__):not(#___) #cta-band:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6){
-  background:none !important;
-  -webkit-backdrop-filter:none !important; backdrop-filter:none !important;
-  padding:10px var(--gut,24px) 38px !important;
-}
-html body.hm:not(#_):not(#__):not(#___) #cta-band:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6) .cb-in:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6){
-  max-width:1200px !important; margin:0 auto !important;
-  padding:clamp(28px,3.6vw,44px) clamp(24px,3vw,38px) !important;
-  border-radius:22px !important;
-  border:1px solid rgba(255,255,255,.2) !important;
-}
-html:not(.et-plight):not(.et-jlight) body.hm:not(#_):not(#__):not(#___) #cta-band:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6) .cb-in:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6){
-  background-color:rgba(0,45,69,.56) !important;
-  -webkit-backdrop-filter:blur(18px) saturate(1.2) !important;
-  backdrop-filter:blur(18px) saturate(1.2) !important;
-  box-shadow:0 16px 40px rgba(0,18,30,.30) !important;
-}
-html:is(.et-plight,.et-jlight) body.hm:not(#_):not(#__):not(#___) #cta-band:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6) .cb-in:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6){
-  background-color:rgba(255,255,255,.74) !important;
-  border:1px solid rgba(0,48,73,.16) !important;
-  box-shadow:0 12px 30px rgba(0,48,73,.10) !important;
-}
-
-/* 598-5 — etroit : la tuile repasse en une colonne */
-@media(max-width:880px){
-  html body.hm:not(#_):not(#__):not(#___) #coeurs:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6) .t550-p:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6){
-    grid-template-columns:minmax(0,1fr) !important;
-    grid-template-areas:"k" "h" "m" "f" "c" !important;
-  }
-  html body.hm:not(#_):not(#__):not(#___) #coeurs:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6) .t550-kpis:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6){
-    grid-template-columns:repeat(3,minmax(0,1fr)) !important; margin:0 0 18px !important;
-  }
-}
-@media(max-width:560px){
-  html body.hm:not(#_):not(#__):not(#___) #coeurs:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6) .t550-kpis:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6){
-    grid-template-columns:repeat(2,minmax(0,1fr)) !important;
-  }
-}
-
-/* 598-6 — transparence reduite : les tuiles redeviennent opaques */
-@media (prefers-reduced-transparency: reduce){
-  html body.hm:not(#_):not(#__):not(#___) #coeurs:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6) .t550-p:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6),
-  html body.hm:not(#_):not(#__):not(#___) #cta-band:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6) .cb-in:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6){
-    background-image:none !important;
-    -webkit-backdrop-filter:none !important; backdrop-filter:none !important;
-  }
-  html:not(.et-plight):not(.et-jlight) body.hm:not(#_):not(#__):not(#___) #coeurs:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6) .t550-p:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6),
-  html:not(.et-plight):not(.et-jlight) body.hm:not(#_):not(#__):not(#___) #cta-band:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6) .cb-in:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6){ background-color:#0D1626 !important;
-    -webkit-backdrop-filter:none !important; backdrop-filter:none !important }
-  html:is(.et-plight,.et-jlight) body.hm:not(#_):not(#__):not(#___) #coeurs:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6) .t550-p:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6),
-  html:is(.et-plight,.et-jlight) body.hm:not(#_):not(#__):not(#___) #cta-band:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6) .cb-in:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6){ background-color:#FAF7F1 !important;
-    -webkit-backdrop-filter:none !important; backdrop-filter:none !important }
-}
-
-/* 598-7 — la plus grande bande de toutes, en theme clair : main lui-meme.
-   En clair, main portait un degrade OPAQUE 162deg #F5F1EA -> #EDEDF1 -> #F3EEE6
-   sur toute sa hauteur. Le motif de fond du site, travaille aux chapitres 591
-   et 592, etait donc masque derriere lui sur toute la page : les sections sont
-   transparentes, mais main ne l etait pas. Ici il le devient, et seulement sur
-   l accueil — la meme declaration vit sur 176 pages et merite son propre
-   chapitre avant d etre touchee ailleurs.                                   */
-html:is(.et-plight,.et-jlight) body.hm:not(#_):not(#__):not(#___) main:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6){
-  background-image:none !important; background-color:transparent !important;
-}
-
-/* ============================================================
-   599 (revue de design, point 02 — seconde moitie) : l echelle des titres.
-   Releve sur les 191 pages : 4 050 titres rendus a **116 tailles distinctes**
-   — h1 a 13, h2 a 62, h3 a 34, h4 a 7. A la source, **858 declarations
-   font-size** visant h1 a h4, portant **102 valeurs differentes**, dont 823
-   dans les blocs <style> des pages. Cinq declarations pour un seul pas :
-   clamp(1.5rem,3vw,2.05rem), clamp(1.5rem,3.2vw,2.25rem), clamp(1.5rem,3vw,
-   2.1rem), clamp(1.5rem,3.2vw,2.2rem), clamp(1.45rem,3vw,2.1rem).
-   L echelle ci-dessous n est pas une progression geometrique ideale : elle est
-   **ancree sur les tailles deja dominantes du site** — 33,6 px et 28,8 px
-   portent 227 titres chacune, 37,6 px en porte 167 — pour que la majorite des
-   declarations ne bouge pas du tout. Huit pas de texte, deux tailles d affiche
-   au-dessus pour les heros, une etiquette en dessous. Chaque appel porte sa
-   valeur en repli, pour les quinze pages qui ne chargent pas cette feuille.
-   ============================================================ */
-:root{
-  --ts-0:clamp(3rem,7.4vw,5.6rem);
-  --ts-1:clamp(2.6rem,6vw,4.4rem);
-  --ts-2:clamp(2.1rem,4.8vw,3.3rem);
-  --ts-3:clamp(1.8rem,4vw,2.8rem);
-  --ts-4:clamp(1.55rem,3.4vw,2.35rem);
-  --ts-5:clamp(1.35rem,2.9vw,2.1rem);
-  --ts-6:clamp(1.2rem,2.5vw,1.8rem);
-  --ts-7:clamp(1.08rem,2.1vw,1.5rem);
-  --ts-8:clamp(1rem,1.8vw,1.25rem);
-  --ts-9:1.05rem;
-  --ts-l:.75rem;
-}
-
-/* ============================================================
-   600 : QA du theme sombre — les variables qui n existaient pas.
-   Sur 138 220 references var() du site, 92 741 n ont pas de valeur de repli ;
-   quand le nom n est defini nulle part, la declaration entiere tombe en
-   silence. Deux cas confirmes a l ecran : --gold-d absent sur les pages Atlas
-   (la moitie de la barre « blocs libres » perdait son fond, texte sombre sur
-   fond sombre, contraste 1,17) et --fm, la police mono, absente sur 28 pages
-   (accessibilite.html : 35 elements en monospace au lieu de 125). Ici les
-   jetons de base recoivent une valeur par defaut a la racine ; toute page ou
-   composant qui les redefinit garde la sienne, la cascade des proprietes
-   personnalisees fonctionne comme pour le reste. Les accents de composant
-   (--kac, --pac, --tc, --sac, --tile-accent, --cstep, --ac) prennent l or du
-   site quand l instance ne les pose pas. --bg et --ink ne sont PAS touches :
-   leur valeur depend du theme et une racine sombre aurait pu assombrir un
-   corps de page clair.
-   ============================================================ */
-:root{
-  --fm:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
-  --gold-d:#C9982E;
-  --ease:cubic-bezier(.22,.61,.36,1);
-  --amber-l:#F2B45A;
-  --green-l:#34D399;
-  --kac:#E8C36A; --pac:#E8C36A; --ac:#E8C36A; --tc:#E8C36A; --sac:#E8C36A;
-  --tile-accent:#E8C36A; --cstep:#E8C36A;
-  --wi:0; --d:0;
-}
-
-/* ---------- Ch606 : panneau « Nos activites » en cinq colonnes, ordre de la chaine ----------
-   L'ancien panneau (720 px, trois colonnes de 204 px) faisait 968 px de haut a 1 440 x 900 et
-   defilait deja : chaque entree se cassait sur deux lignes. Le panneau quitte la boite du
-   nav-item (position:static sur l'item) et se pose sur le nav fixe lui-meme, centre, 1 240 px.
-   Amont occupe deux colonnes (dix entrees en deux files), Intermediaire, Aval et Petrochimie
-   une chacune ; les quatre capacites integrees passent en rangee basse avec la carte
-   « par besoin ». Sous 1 241 px, la feuille mobile ci-dessus garde la main : liste empilee. */
 @media(min-width:1241px){
  .nav-item.nxi606{position:static}
  .nx .nx-mega.nxm606:not(#_x):not(#_y){left:50%;right:auto;top:calc(100% - 1px);translate:-50% 0;
@@ -1232,23 +205,14 @@ html:is(.et-plight,.et-jlight) body.hm:not(#_):not(#__):not(#___) main:not(#a1):
 }
 @media(min-width:1241px){.nx .nxm606 .nx-feat em{display:none}}
 
-/* ---------- Ch610 : le coin flottant sur telephone, et le tiroir sans defilement imbrique ----------
-   A 390 px la commande de luminosite (46 px, bottom 96) et le retour en haut (bottom 64) se
-   recouvraient de 6 px et s empilaient sur 90 px de contenu. Ils passent cote a cote, sur une
-   seule rangee, 11 px au-dessus de la barre d onglets. Le panneau du menu gardait dans le tiroir
-   sa hauteur maximale posee en ligne (100vh - 150px) : un defilement dans le defilement. */
+
 @media(max-width:1240px){
  #toTop:not(#_a):not(#_b){bottom:calc(72px + env(safe-area-inset-bottom))!important;right:14px!important;width:44px!important;height:44px!important}
  .lum-ctl:not(#_a):not(#_b){bottom:calc(72px + env(safe-area-inset-bottom))!important;right:68px!important}
  .nav-links .nx-mega:not(#_a):not(#_b){max-height:none!important;overflow:visible!important}
 }
 
-/* ---------- Ch611 : les grilles qui finissaient sur un trou ----------
-   Releve sur 200 pages a 1 440 : 31 classes de grille ou le nombre d elements ne remplit pas
-   les colonnes (cinq cartes en quatre colonnes, quatre en trois, sept en quatre...). Base de
-   douze colonnes et portee des cartes choisie d apres leur nombre, pour que chaque rangee soit
-   pleine : 5 = 3 + 2, 7 = 4 + 3, 10 = 4 + 3 + 3, 11 = 4 + 4 + 3. Au-dessus de 1 100 px seulement ;
-   en dessous, les feuilles des pages gardent leurs colonnes. */
+
 @media(min-width:1100px){
  .epw-g:not(#_g),.biz-grid:not(#_g),.rp-pts:not(#_g),.vt-grid:not(#_g),.plc-grid:not(#_g),.exp-g-in:not(#_g),.eth-g:not(#_g),.fam6:not(#_g),.profiles:not(#_g),.pubg:not(#_g),.tri-steps:not(#_g),.prix-grid:not(#_g),.htech-grid:not(#_g),.presse-grid:not(#_g),.secg:not(#_g),.docl:not(#_g),.cp-ct:not(#_g),.sw-grid:not(#_g),.tri-g:not(#_g),.d607-grid:not(#_g),.rtg:not(#_g),.atlas-grid:not(#_g),.glm-g:not(#_g),.fonctions-tete:not(#_g),.b111-dl:not(#_g),.docs:not(#_g),.ppl-grid:not(#_g),.sm-grid:not(#_g),.sw-row:not(#_g),.pj-grid:not(#_g),.fx2g:not(#_g){grid-template-columns:repeat(12,minmax(0,1fr))}
  .epw-g:not(#_g)>*,.biz-grid:not(#_g)>*,.rp-pts:not(#_g)>*,.vt-grid:not(#_g)>*,.plc-grid:not(#_g)>*,.exp-g-in:not(#_g)>*,.eth-g:not(#_g)>*,.fam6:not(#_g)>*,.profiles:not(#_g)>*,.pubg:not(#_g)>*,.tri-steps:not(#_g)>*,.prix-grid:not(#_g)>*,.htech-grid:not(#_g)>*,.presse-grid:not(#_g)>*,.secg:not(#_g)>*,.docl:not(#_g)>*,.cp-ct:not(#_g)>*,.sw-grid:not(#_g)>*,.tri-g:not(#_g)>*,.d607-grid:not(#_g)>*,.rtg:not(#_g)>*,.atlas-grid:not(#_g)>*,.glm-g:not(#_g)>*,.fonctions-tete:not(#_g)>*,.b111-dl:not(#_g)>*,.docs:not(#_g)>*,.ppl-grid:not(#_g)>*,.sm-grid:not(#_g)>*,.sw-row:not(#_g)>*,.pj-grid:not(#_g)>*,.fx2g:not(#_g)>*{grid-column:span 4}
@@ -1272,20 +236,12 @@ html:is(.et-plight,.et-jlight) body.hm:not(#_):not(#__):not(#___) main:not(#a1):
 .plc-card:not(#_g) .plc-b{display:flex;flex-direction:column;align-self:stretch}
 .plc-card:not(#_g) .plc-badge{margin-top:auto;align-self:flex-start}
 
-/* ---------- Ch613 : les titres restes sans regle (taille du navigateur) ----------
-   52 titres sur 3 879 etaient hors echelle ; 44 n avaient aucune regle de taille et tombaient
-   sur la valeur par defaut du navigateur (h2 = 1,5 em = 24,75 px, h3 = 1,17 em = 19,3 px).
-   :where() donne a ces regles une specificite nulle : elles ne battent que la feuille du
-   navigateur, jamais une regle d auteur, meme un simple h2{}. */
+
 :where(h2){font-size:var(--ts-4,clamp(1.55rem,3.4vw,2.35rem))}
 :where(h3){font-size:var(--ts-6,clamp(1.2rem,2.5vw,1.8rem))}
 :where(h4){font-size:var(--ts-8,clamp(1rem,1.8vw,1.25rem))}
 
-/* ---------- Ch616 : le site reorganise autour des trois poles ----------
-   La barre porte trois entrees principales — Amont, Intermediaire, Aval, chacune avec sa pastille
-   de couleur et son panneau de trois colonnes (les pages du pole, ses reperes et ses carnets, la
-   petrochimie sous l Aval) et une rangee basse commune aux trois : les capacites integrees.
-   Societe et Investisseurs restent accessibles comme entrees secondaires, poussees a droite. */
+
 .nxdot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--c,#E8C36A);margin-right:7px;vertical-align:1px}
 @media(min-width:1241px){
  .nav-item.nx-sec1{margin-left:auto}
@@ -1317,36 +273,7 @@ body.hm .diapo:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6):not(#a7):no
 body.hm #aurora i:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6):not(#a7):not(#a8):not(#a9):not(#a10):not(#a11){filter:blur(48px);will-change:auto}
 html:not(.et-plight):not(.et-jlight) body.hm:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6):not(#a7):not(#a8):not(#a9):not(#a10):not(#a11) :is(main,header.hero) :is(.t550-p,.cb-in,.car546,#c540p,.hxf-face,.dur-c,.hncard,.hcp-i,.agir-c,.doc-c,.nh-kpi>div):not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6):not(#a7):not(#a8):not(#a9):not(#a10):not(#a11){background-color:rgba(6,22,38,.74)!important}
 html:is(.et-plight,.et-jlight) body.hm:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6):not(#a7):not(#a8):not(#a9):not(#a10):not(#a11) :is(main,header.hero) :is(.t550-p,.cb-in,.car546,#c540p,.hxf-face,.dur-c,.hncard,.hcp-i,.agir-c,.doc-c,.nh-kpi>div):not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6):not(#a7):not(#a8):not(#a9):not(#a10):not(#a11){background-color:rgba(255,255,255,.82)!important}
-/* 623-2 — deux autres sources de flou : les sections en attente de « reveal » restent a filter:blur(3px) tant que
-   l observateur ne les a pas vues (sur une machine chargee, longtemps), et toutes les ombres portees de texte du
-   theme sombre (12 a 18 px de flou sous chaque titre et paragraphe). Sur la home : aucun reveal, aucune ombre. */
-.reveal:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6):not(#a7):not(#a8):not(#a9):not(#a10):not(#a11){filter:none!important}
-body.hm .reveal:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6):not(#a7):not(#a8):not(#a9):not(#a10):not(#a11){opacity:1!important;transform:none!important;transition:none!important}
-body.hm main *:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6):not(#a7):not(#a8):not(#a9):not(#a10):not(#a11),body.hm header.hero *:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6):not(#a7):not(#a8):not(#a9):not(#a10):not(#a11){text-shadow:none!important}
-/* 623-3 — la barre de navigation : le verre a .38 d opacite sur 20 px de flou laissait lire le contenu qui
-   defile derriere (une bande floue qui semble en chevaucher une autre). Une fois la page defilee, barre et barre
-   utilitaire presque opaques, flou reduit a 10 px, sur tout le site ; en haut de page la barre reste transparente
-   sur le heros. Huit identifiants : les regles en face en portent six. */
-html:not(.et-plight):not(.et-jlight) #nav.nx.scrolled:not(#z1):not(#z2):not(#z3):not(#z4):not(#z5):not(#z6):not(#z7):not(#z8){background:rgba(6,20,36,.93)!important;-webkit-backdrop-filter:blur(10px)!important;backdrop-filter:blur(10px)!important}
-html:not(.et-plight):not(.et-jlight) #nav.nx:not(#z1):not(#z2):not(#z3):not(#z4):not(#z5):not(#z6):not(#z7):not(#z8) .nx-util:not(#z1):not(#z2):not(#z3):not(#z4):not(#z5):not(#z6):not(#z7):not(#z8){background:rgba(4,10,20,.92)!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
-html:is(.et-plight,.et-jlight) #nav.nx.scrolled:not(#z1):not(#z2):not(#z3):not(#z4):not(#z5):not(#z6):not(#z7):not(#z8){background:rgba(251,248,242,.95)!important;-webkit-backdrop-filter:blur(10px)!important;backdrop-filter:blur(10px)!important}
-html:is(.et-plight,.et-jlight) #nav.nx:not(#z1):not(#z2):not(#z3):not(#z4):not(#z5):not(#z6):not(#z7):not(#z8) .nx-util:not(#z1):not(#z2):not(#z3):not(#z4):not(#z5):not(#z6):not(#z7):not(#z8){background:rgba(243,238,229,.96)!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
 
-
-html:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6):not(#a7):not(#a8):not(#a9):not(#a10):not(#a11) :is(main,header.pghero,header.hero) *:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6):not(#a7):not(#a8):not(#a9):not(#a10):not(#a11){-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
-html:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6):not(#a7):not(#a8):not(#a9):not(#a10):not(#a11) :is(main,header.pghero,header.hero) *:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6):not(#a7):not(#a8):not(#a9):not(#a10):not(#a11){text-shadow:none!important}
-.diapo:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6):not(#a7):not(#a8):not(#a9):not(#a10):not(#a11),#aurora i:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6):not(#a7):not(#a8):not(#a9):not(#a10):not(#a11),.prem-mesh:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6):not(#a7):not(#a8):not(#a9):not(#a10):not(#a11),.rootland:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6):not(#a7):not(#a8):not(#a9):not(#a10):not(#a11),.subland:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6):not(#a7):not(#a8):not(#a9):not(#a10):not(#a11){animation:none!important}
-#aurora i:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6):not(#a7):not(#a8):not(#a9):not(#a10):not(#a11){filter:blur(48px);will-change:auto}
-/* 624-2 — les barres collantes du contenu (sommaires, sous-navigations) et le bandeau cookies vivaient du flou :
-   sans lui, a .4 ou .8 d opacite, le texte qui defile se lisait a travers. Presque opaques. */
-html:not(.et-plight):not(.et-jlight) :is(nav.toc,nav.corp-nav,nav#inv-toc,nav.mkt-nav,nav.pole-subnav,nav.plnav,div#ckn):not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6):not(#a7):not(#a8):not(#a9):not(#a10):not(#a11){background:rgba(6,20,36,.95)!important}
-html:is(.et-plight,.et-jlight) :is(nav.toc,nav.corp-nav,nav#inv-toc,nav.mkt-nav,nav.pole-subnav,nav.plnav,div#ckn):not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6):not(#a7):not(#a8):not(#a9):not(#a10):not(#a11){background:rgba(251,248,242,.96)!important}
-
-/* ---------- Ch627 : la nomenclature des poles dans la barre ----------
-   Trois libelles longs (Exploration & Production, Transport & stockage, Raffinage & distribution ;
-   Transport & Storage, Refining & Distribution) : une seule ligne a 13,5 px au lieu de deux lignes
-   dans des pastilles de 50 px ; de 1 241 a 1 420 px, 13 px et rembourrages serres pour tenir
-   jusqu au burger (1 240). Mesure : FR 1 241 px, loupe a 1 217 pour un bord a 1 223. */
 @media(min-width:1241px){
 #navLinks .nxi616 .nav-trigger:not(#z1):not(#z2):not(#z3):not(#z4):not(#z5):not(#z6):not(#z7):not(#z8),#navLinks .nx-sec .nav-trigger:not(#z1):not(#z2):not(#z3):not(#z4):not(#z5):not(#z6):not(#z7):not(#z8){white-space:nowrap;font-size:13.5px;padding:6px 10px}
 #navLinks:not(#z1):not(#z2):not(#z3):not(#z4):not(#z5):not(#z6):not(#z7):not(#z8){gap:5px}
