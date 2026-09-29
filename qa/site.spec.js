@@ -1529,3 +1529,71 @@ test('accessibility — images expose useful alternative text and controls have 
     await page.close();
   }
 });
+
+test('visual guardrails — typography and layout tokens remain sane', async ({ browser }) => {
+  const paths = ['/', '/amont/', '/intermediaire/', '/aval/', '/greentech/', '/tchaditech/', '/tchaditude/', '/enerconseils/', '/contact', '/investisseurs'];
+  for (const path of paths) {
+    const page = await browser.newPage({ viewport: { width: 1280, height: 900 } });
+    const response = await page.goto(new URL(path, url).href, { waitUntil: 'domcontentloaded', timeout: 45000 });
+    expect(response?.status(), path).toBe(200);
+    const report = await page.evaluate(() => {
+      const h1 = document.querySelector('h1');
+      const body = document.body;
+      const cs = h1 ? getComputedStyle(h1) : null;
+      return {
+        h1: h1?.textContent?.trim() || '',
+        fontSize: cs?.fontSize || '',
+        lineHeight: cs?.lineHeight || '',
+        bodyFont: getComputedStyle(body).fontFamily,
+        bodyColor: getComputedStyle(body).color,
+        bg: getComputedStyle(body).backgroundColor
+      };
+    });
+    expect(report.h1.length, path).toBeGreaterThan(3);
+    expect(parseFloat(report.fontSize), path).toBeGreaterThanOrEqual(20);
+    expect(parseFloat(report.fontSize), path).toBeLessThanOrEqual(100);
+    expect(report.lineHeight, path).not.toBe('0px');
+    expect(report.bodyFont, path).toBeTruthy();
+    await page.close();
+  }
+});
+
+test('content integrity — primary navigation and footer expose meaningful labels', async ({ browser }) => {
+  const paths = ['/', '/amont/', '/intermediaire/', '/aval/', '/greentech/', '/tchaditech/', '/tchaditude/', '/enerconseils/', '/contact', '/investisseurs'];
+  for (const path of paths) {
+    const page = await browser.newPage();
+    const response = await page.goto(new URL(path, url).href, { waitUntil: 'domcontentloaded', timeout: 45000 });
+    expect(response?.status(), path).toBe(200);
+    const report = await page.evaluate(() => {
+      const nav = document.querySelector('nav');
+      const footer = document.querySelector('footer');
+      const navLinks = nav ? [...nav.querySelectorAll('a')].map(a => (a.textContent || a.getAttribute('aria-label') || '').trim()).filter(Boolean) : [];
+      const footerLinks = footer ? [...footer.querySelectorAll('a')].map(a => (a.textContent || a.getAttribute('aria-label') || '').trim()).filter(Boolean) : [];
+      return { nav: navLinks.length, footer: footerLinks.length };
+    });
+    expect(report.nav, path).toBeGreaterThan(2);
+    expect(report.footer, path).toBeGreaterThan(2);
+    await page.close();
+  }
+});
+
+test('media — images declare intrinsic dimensions or CSS aspect-ratio where appropriate', async ({ browser }) => {
+  const paths = ['/', '/amont/', '/intermediaire/', '/aval/', '/greentech/', '/contact', '/investisseurs'];
+  for (const path of paths) {
+    const page = await browser.newPage();
+    const response = await page.goto(new URL(path, url).href, { waitUntil: 'domcontentloaded', timeout: 45000 });
+    expect(response?.status(), path).toBe(200);
+    const images = await page.locator('img').evaluateAll(imgs => imgs.map(img => ({
+      src: img.currentSrc || img.src,
+      width: img.getAttribute('width'),
+      height: img.getAttribute('height'),
+      ratio: getComputedStyle(img).aspectRatio,
+      rendered: (() => { const r = img.getBoundingClientRect(); return r.width > 0 && r.height > 0; })()
+    })));
+    for (const image of images) {
+      if (!image.rendered) continue;
+      expect(!!image.width && !!image.height || image.ratio !== 'auto', path + ' media ' + image.src).toBeTruthy();
+    }
+    await page.close();
+  }
+});
