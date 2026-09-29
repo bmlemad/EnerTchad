@@ -2175,3 +2175,22 @@ test('html integrity — images do not use empty or placeholder alt text', async
     await page.close();
   }
 });
+
+test('visual system — premium tokens and restrained glass layer are present', async ({ browser }) => {
+  const page = await browser.newPage();
+  await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 45000 });
+  const report = await page.evaluate(() => {
+    const css = [...document.styleSheets].flatMap(sheet => {
+      try { return [...sheet.cssRules].map(rule => rule.cssText).join('\n'); } catch { return ''; }
+    });
+    return {
+      tokens: ['--et-color-ink','--et-color-accent','--et-radius-md','--et-shadow-soft','--et-space-4'].every(token => css.includes(token)),
+      glass: css.includes('.et-glass') && css.includes('backdrop-filter'),
+      reducedTransparency: css.includes('prefers-reduced-transparency')
+    };
+  });
+  expect(report.tokens).toBeTruthy();
+  expect(report.glass).toBeTruthy();
+  expect(report.reducedTransparency).toBeTruthy();
+  await page.close();
+});
