@@ -560,6 +560,32 @@ test('SEO social metadata — Open Graph et Twitter card', async ({ request }) =
   }
 });
 
+test('SEO social metadata — referenced images resolve with image MIME', async ({ request }) => {
+  const paths = ['/', '/index-en', '/ar', '/contact', '/contact-en', '/ar-contact', '/clients', '/clients-en', '/investisseurs', '/investisseurs-en', '/ar-investisseurs', '/faq', '/faq-en'];
+  const seen = new Set();
+  for (const path of paths) {
+    const response = await request.get(new URL(path, url).href, { timeout: 30000 });
+    expect(response.status(), path).toBe(200);
+    const html = await response.text();
+    const images = [
+      ...(html.match(/<meta[^>]+property=["']og:image["'][^>]+content=["']([^"']+)["']/i) || []).slice(1),
+      ...(html.match(/<meta[^>]+name=["']twitter:image["'][^>]+content=["']([^"']+)["']/i) || []).slice(1)
+    ].filter(Boolean);
+    expect(images.length, path).toBeGreaterThan(0);
+    for (const href of images) {
+      const targetUrl = new URL(href, response.url());
+      expect(targetUrl.protocol, path).toBe('https:');
+      expect(targetUrl.origin, path).toBe(new URL(url).origin);
+      if (seen.has(targetUrl.href)) continue;
+      seen.add(targetUrl.href);
+      const target = await request.get(targetUrl.href, { maxRedirects: 0, timeout: 30000 });
+      expect(target.status(), path + ' -> ' + targetUrl.pathname).toBe(200);
+      expect((target.headers()['content-type'] || '').toLowerCase(), path + ' -> ' + targetUrl.pathname).toMatch(/^image\//);
+    }
+  }
+});
+
+
 test('SEO English homepage — social titles match English metadata', async ({ request }) => {
   const response = await request.get(new URL('/index-en', url).href);
   expect(response.status()).toBe(200);
