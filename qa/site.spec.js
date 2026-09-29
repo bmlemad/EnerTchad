@@ -164,6 +164,28 @@ test('production security headers', async ({ request }) => {
 });
 
 
+test('SEO structured data — JSON-LD parses and page URLs stay coherent', async ({ request }) => {
+  const paths = ['/', '/index-en', '/ar', '/contact', '/contact-en', '/ar-contact', '/investisseurs', '/investisseurs-en', '/ar-investisseurs', '/greentech/', '/tchaditech/', '/tchaditude/', '/enerconseils/'];
+  for (const path of paths) {
+    const response = await request.get(new URL(path, url).href, { timeout: 30000 });
+    expect(response.status(), path).toBe(200);
+    const html = await response.text();
+    const blocks = [...html.matchAll(/<script\\b[^>]*type=["']application\\/ld\\+json["'][^>]*>([\\s\\S]*?)<\\/script>/gi)].map(m => m[1].trim()).filter(Boolean);
+    expect(blocks.length, path).toBeGreaterThan(0);
+    for (const raw of blocks) {
+      let data;
+      expect(() => { data = JSON.parse(raw); }, path).not.toThrow();
+      const items = Array.isArray(data) ? data : (Array.isArray(data['@graph']) ? data['@graph'] : [data]);
+      for (const item of items) {
+        expect(item['@context'], path).toBeTruthy();
+        expect(item['@type'], path).toBeTruthy();
+        if (item.url) expect(new URL(item.url).origin, path).toBe(new URL(url).origin);
+      }
+    }
+  }
+});
+
+
 test('SEO infrastructure — robots, sitemap et hreflang', async ({ request }) => {
   const robots = await request.get(new URL('/robots.txt', url).href);
   expect(robots.status()).toBe(200);
