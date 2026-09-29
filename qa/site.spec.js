@@ -1361,3 +1361,42 @@ test('keyboard navigation — disclosure controls keep truthful expanded state',
   }
   await page.close();
 });
+
+test('metadata — Open Graph and Twitter cards have complete absolute HTTPS URLs', async ({ browser }) => {
+  const paths = ['/', '/index-en', '/ar', '/contact', '/investisseurs', '/greentech/'];
+  for (const path of paths) {
+    const page = await browser.newPage();
+    const response = await page.goto(new URL(path, url).href, { waitUntil: 'domcontentloaded', timeout: 45000 });
+    expect(response?.status(), path).toBe(200);
+    const data = await page.evaluate(() => {
+      const get = name => document.querySelector('meta[property="' + name + '"]')?.content || document.querySelector('meta[name="' + name + '"]')?.content || '';
+      return { ogTitle: get('og:title'), ogDescription: get('og:description'), ogUrl: get('og:url'), ogImage: get('og:image'), twitterCard: get('twitter:card') };
+    });
+    expect(data.ogTitle.length, path).toBeGreaterThan(5);
+    expect(data.ogDescription.length, path).toBeGreaterThan(20);
+    expect(data.twitterCard, path).toBeTruthy();
+    for (const value of [data.ogUrl, data.ogImage]) {
+      expect(value, path).toMatch(/^https:\/\//);
+      expect(new URL(value).hostname, path).toBe(new URL(url).hostname);
+    }
+    await page.close();
+  }
+});
+
+test('HTML structure — exactly one main landmark and no duplicate element IDs', async ({ browser }) => {
+  const paths = ['/', '/index-en', '/ar', '/amont/', '/intermediaire/', '/aval/', '/greentech/', '/contact', '/investisseurs'];
+  for (const path of paths) {
+    const page = await browser.newPage();
+    const response = await page.goto(new URL(path, url).href, { waitUntil: 'domcontentloaded', timeout: 45000 });
+    expect(response?.status(), path).toBe(200);
+    const report = await page.evaluate(() => {
+      const ids = [...document.querySelectorAll('[id]')].map(x => x.id).filter(Boolean);
+      const counts = {};
+      for (const id of ids) counts[id] = (counts[id] || 0) + 1;
+      return { main: document.querySelectorAll('main').length, duplicates: Object.entries(counts).filter(([, count]) => count > 1) };
+    });
+    expect(report.main, path).toBe(1);
+    expect(report.duplicates, path).toEqual([]);
+    await page.close();
+  }
+});
