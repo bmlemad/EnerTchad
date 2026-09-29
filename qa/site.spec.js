@@ -605,3 +605,49 @@ test('SEO sitemap — chaque URL indexée est auto-canonique', async ({ request 
     }
   }
 });
+
+
+test('hubs — mobile UX contract', async ({ browser }) => {
+  const paths = ['/greentech/', '/tchaditech/', '/tchaditude/', '/enerconseils/'];
+  for (const path of paths) {
+    const page = await browser.newPage({ viewport: { width: 390, height: 844 }, deviceScaleFactor: 1 });
+    const response = await page.goto(new URL(path, url).href, { waitUntil: 'domcontentloaded', timeout: 45000 });
+    expect(response, path).not.toBeNull();
+    expect(response.status(), path).toBe(200);
+
+    const audit = await page.evaluate(() => {
+      const visible = el => {
+        const s = getComputedStyle(el);
+        return s.display !== 'none' && s.visibility !== 'hidden' && el.getAttribute('aria-hidden') !== 'true';
+      };
+      const rect = el => {
+        const r = el.getBoundingClientRect();
+        return { width: r.width, height: r.height, right: r.right, left: r.left };
+      };
+      const ctas = [...document.querySelectorAll('.pgh-cta a, .pgh-cta button, .pgh-btn, .pgh-btn2')].filter(visible);
+      const badCtaTargets = ctas.filter(el => {
+        const r = rect(el);
+        return r.height < 44 || r.width < 44 || r.left < -1 || r.right > document.documentElement.clientWidth + 1;
+      }).map(el => ({ text: (el.innerText || el.getAttribute('aria-label') || '').trim().slice(0,80), ...rect(el) }));
+      const footerButtons = [...document.querySelectorAll('footer .foot-col h3 button')].filter(visible);
+      const badFooterButtons = footerButtons.filter(b => !b.getAttribute('aria-expanded')).map(b => b.outerHTML.slice(0,180));
+      const nestedInteractive = [...document.querySelectorAll('footer .foot-col h3')].filter(h => h.querySelector('a,button') && h.querySelectorAll('a,button').length > 1).map(h => h.outerHTML.slice(0,220));
+      return {
+        overflow: document.documentElement.scrollWidth > document.documentElement.clientWidth + 1,
+        ctaCount: ctas.length,
+        badCtaTargets,
+        footerButtons: footerButtons.length,
+        badFooterButtons,
+        nestedInteractive
+      };
+    });
+
+    expect(audit.overflow, path).toBeFalsy();
+    expect(audit.ctaCount, path).toBeGreaterThan(0);
+    expect(audit.badCtaTargets, path).toEqual([]);
+    expect(audit.footerButtons, path).toBeGreaterThan(0);
+    expect(audit.badFooterButtons, path).toEqual([]);
+    expect(audit.nestedInteractive, path).toEqual([]);
+    await page.close();
+  }
+});
