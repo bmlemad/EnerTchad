@@ -14,6 +14,27 @@
   --et-green:#2fc28a;
   --et-radius:24px;
   --et-shadow:0 24px 70px rgba(0,0,0,.34);
+  /* Canonical visual-system tokens. Legacy aliases above remain for compatibility. */
+  --et-color-ink:#071426;
+  --et-color-ink-soft:#10243d;
+  --et-color-surface:rgba(255,255,255,.78);
+  --et-color-surface-strong:rgba(255,255,255,.92);
+  --et-color-line:rgba(7,20,38,.12);
+  --et-color-accent:#c9a24a;
+  --et-color-energy:#1769aa;
+  --et-color-green:#27865b;
+  --et-radius-sm:12px;
+  --et-radius-md:18px;
+  --et-radius-lg:28px;
+  --et-shadow-soft:0 12px 34px rgba(7,20,38,.08);
+  --et-shadow-float:0 24px 70px rgba(7,20,38,.14);
+  --et-glass-blur:18px;
+  --et-space-1:8px;
+  --et-space-2:16px;
+  --et-space-3:24px;
+  --et-space-4:40px;
+  --et-space-5:64px;
+  --et-space-6:96px;
 }
 html{scroll-behavior:smooth}
 body{background:var(--et-bg)!important;color:var(--et-text);overflow-x:hidden}
@@ -155,10 +176,9 @@ footer{border-top:1px solid var(--et-line);background:rgba(4,10,18,.62)!importan
 .et-command-head h2{font-family:var(--fd,Inter,sans-serif);font-size:clamp(1.65rem,3.2vw,2.65rem);line-height:1.08;letter-spacing:-.03em;margin:10px 0 12px}
 .et-command-head p{max-width:64ch;margin:0;line-height:1.65;color:var(--muted-l,#A9B8CC)}
 .et-command-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
-.et-command-card{--ec:#E8C36A;position:relative;min-height:205px;padding:20px;display:flex;flex-direction:column;text-decoration:none;color:inherit;border:1px solid color-mix(in srgb,var(--ec) 25%,transparent);border-radius:20px;background:linear-gradient(155deg,color-mix(in srgb,var(--ec) 9%,rgba(8,15,27,.66)),rgba(8,15,27,.32));box-shadow:0 20px 50px -34px color-mix(in srgb,var(--ec) 65%,transparent);-webkit-backdrop-filter:blur(14px) saturate(125%);backdrop-filter:blur(14px);transition:transform .28s ease,border-color .28s ease,box-shadow .28s ease}
+.et-command-card{--ec:#E8C36A;position:relative;display:flex;flex-direction:column;text-decoration:none;color:inherit}
 .et-command-card--blue{--ec:#5AA7F0}.et-command-card--green{--ec:#34D399}.et-command-card--rose{--ec:#D177B4}
 .et-command-card::before{content:"";position:absolute;top:0;left:18px;right:18px;height:2px;background:linear-gradient(90deg,transparent,var(--ec),transparent);opacity:.8}
-.et-command-card:hover{transform:translateY(-6px);border-color:color-mix(in srgb,var(--ec) 55%,transparent);box-shadow:0 28px 60px -34px color-mix(in srgb,var(--ec) 80%,transparent)}
 .et-command-card:focus-visible{outline:2px solid var(--ec);outline-offset:3px}
 .et-command-index{font-family:var(--fm,monospace);font-size:.68rem;letter-spacing:.16em;color:var(--ec);margin-bottom:28px}
 .et-command-card strong{font-family:var(--fd,Inter,sans-serif);font-size:1.12rem;letter-spacing:-.015em}
@@ -174,7 +194,6 @@ footer{border-top:1px solid var(--et-line);background:rgba(4,10,18,.62)!importan
 html.et-plight .et-command-head p{color:#4B586A}
 html.et-plight .et-command-card{background:linear-gradient(155deg,rgba(255,255,255,.84),rgba(247,244,236,.68));box-shadow:0 20px 50px -34px rgba(24,45,67,.24)}
 html.et-plight .et-command-card small{color:#4B586A}
-@media(prefers-reduced-transparency:reduce){.et-command-card{background:#101B2E;-webkit-backdrop-filter:none;backdrop-filter:none}html.et-plight .et-command-card{background:#FAF7F1}}
 
 /* keyboard navigation */
 .et-skip{position:fixed;z-index:10000;top:10px;left:10px;transform:translateY(-150%);padding:10px 14px;border-radius:10px;background:#E8C36A;color:#101B2E;font-weight:800;text-decoration:none;box-shadow:0 8px 24px rgba(0,0,0,.28)}.et-skip:focus{transform:none;outline:2px solid #fff;outline-offset:2px}
@@ -187,31 +206,6 @@ html.et-plight .et-command-card small{color:#4B586A}
     contain-intrinsic-size: auto 720px;
   }
 }
-
-/* Liquid Glass system v3 — homepage hierarchy */
-:root{
-  --et-glass-1:rgba(8,18,31,.46);
-  --et-glass-2:rgba(13,26,43,.64);
-  --et-glass-3:linear-gradient(145deg,rgba(22,40,63,.78),rgba(7,15,27,.82));
-  --et-glass-edge:rgba(255,255,255,.16);
-}
-.et-command-card{
-  background:var(--et-glass-2);
-  border-color:var(--et-glass-edge);
-}
-@media(max-width:760px){
-  .et-command-card{
-    -webkit-backdrop-filter:saturate(145%) blur(14px);
-    backdrop-filter:saturate(145%) blur(14px);
-  }
-}
-@media(prefers-reduced-transparency:reduce){
-  .et-command-card{background:#101B2E!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important;box-shadow:0 12px 28px rgba(0,0,0,.24)!important}
-  html.et-plight .et-command-card{background:#FAF7F1!important}
-}
-
-
-
 
 /* ============================================================
    EnerTchad Premium Architecture v1 — 2026
@@ -504,62 +498,4 @@ html.et-plight{
     border-color:CanvasText!important;
   }
   .et-command-card,.et-proof-card,.t550-kpi,.hncard{background:Canvas!important;color:CanvasText!important}
-}
-
-
-/* ─────────────────────────────────────────────────────────────
-   VISUAL SYSTEM v1 — consolidated premium tokens
-   Keep component-specific overrides below this layer only when
-   they represent an intentional exception.
-   ───────────────────────────────────────────────────────────── */
-:root {
-  --et-color-ink: #071426;
-  --et-color-ink-soft: #10243d;
-  --et-color-surface: rgba(255,255,255,.78);
-  --et-color-surface-strong: rgba(255,255,255,.92);
-  --et-color-line: rgba(7,20,38,.12);
-  --et-color-accent: #c9a24a;
-  --et-color-energy: #1769aa;
-  --et-color-green: #27865b;
-  --et-radius-sm: 12px;
-  --et-radius-md: 18px;
-  --et-radius-lg: 28px;
-  --et-shadow-soft: 0 12px 34px rgba(7,20,38,.08);
-  --et-shadow-float: 0 24px 70px rgba(7,20,38,.14);
-  --et-glass-blur: 18px;
-  --et-space-1: 8px;
-  --et-space-2: 16px;
-  --et-space-3: 24px;
-  --et-space-4: 40px;
-  --et-space-5: 64px;
-  --et-space-6: 96px;
-}
-
-/* Premium surfaces: restrained glass, consistent depth, no text glow. */
-.et-glass,
-.glass-card,
-.glass-panel {
-  background: var(--et-color-surface);
-  border: 1px solid var(--et-color-line);
-  border-radius: var(--et-radius-md);
-  box-shadow: var(--et-shadow-soft);
-  -webkit-backdrop-filter: blur(var(--et-glass-blur)) saturate(125%);
-  backdrop-filter: blur(var(--et-glass-blur)) saturate(125%);
-}
-
-.et-glass--strong {
-  background: var(--et-color-surface-strong);
-  border-radius: var(--et-radius-lg);
-  box-shadow: var(--et-shadow-float);
-}
-
-@media (prefers-reduced-transparency: reduce) {
-  .et-glass,
-  .glass-card,
-  .glass-panel,
-  .et-glass--strong {
-    background: #fff;
-    -webkit-backdrop-filter: none;
-    backdrop-filter: none;
-  }
 }
