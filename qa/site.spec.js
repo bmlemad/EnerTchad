@@ -1014,3 +1014,26 @@ test('performance — referenced image assets resolve directly', async ({ reques
     }
   }
 });
+
+
+test('trust — homepage claims expose status/context and evidence entry points', async ({ request }) => {
+  const response = await request.get(url, { timeout: 30000 });
+  expect(response.status()).toBe(200);
+  const html = await response.text();
+
+  // The company status must remain explicit wherever the homepage presents targets.
+  expect(html).toMatch(/soci[ée]t[ée]\s+(?:en\s+constitution|anonyme[^<]{0,80}en\s+constitution)/i);
+  expect(html).toMatch(/statut[^<]{0,120}dates[^<]{0,120}limites/i);
+
+  // Core quantitative sections must provide at least one evidence/document path.
+  const evidenceLinks = [...html.matchAll(/<a\b[^>]*href=["']([^"']+)["'][^>]*>([\\s\\S]*?)<\\/a>/gi)]
+    .map(m => ({ href: m[1], text: m[2].replace(/<[^>]+>/g, ' ').replace(/\\s+/g, ' ').trim() }))
+    .filter(x => /documents|donn[ée]es|preuves|avertissements|limites|pdf|data book/i.test(x.text));
+  expect(evidenceLinks.length).toBeGreaterThanOrEqual(3);
+
+  // Avoid presenting a future target as an unqualified current operating fact.
+  const targetTerms = ['visé', 'objectif', 'cible', 'anticipée', 'à venir'];
+  const body = html.replace(/<script[\\s\\S]*?<\\/script>/gi, ' ').replace(/<style[\\s\\S]*?<\\/style>/gi, ' ');
+  const targetHits = targetTerms.reduce((n, term) => n + (body.match(new RegExp(term, 'gi')) || []).length, 0);
+  expect(targetHits).toBeGreaterThan(0);
+});
