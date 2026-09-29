@@ -755,3 +755,15 @@ test('security — no mixed-content resource URLs', async ({ request }) => {
     expect(html, path).not.toMatch(/url\\(\\s*["']?http:\\/\\//i);
   }
 });
+
+
+test('performance — static assets expose cache directives', async ({ request }) => {
+  const assets = ['/assets/chrome/bundle_head_b2.css','/assets/chrome/nav_a.js','/assets/chrome/modern-ui-2026.css'];
+  for (const path of assets) {
+    const response = await request.get(new URL(path, url).href, { timeout: 30000 });
+    expect(response.status(), path).toBe(200);
+    const cache = response.headers()['cache-control'] || '';
+    expect(cache, path).toMatch(/public/i);
+    expect(cache, path).toMatch(/max-age|s-maxage/i);
+  }
+});
