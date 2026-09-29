@@ -343,3 +343,41 @@ test('semantic accessibility and document metadata — representative locales', 
     await page.close();
   }
 });
+
+test('forms, anchors and interactive controls — representative pages', async ({ browser }) => {
+  const paths = ['/', '/contact', '/clients', '/investisseurs', '/faq', '/tchaditech/'];
+  for (const path of paths) {
+    const page = await browser.newPage({ viewport: { width: 390, height: 844 } });
+    const response = await page.goto(new URL(path, url).href, { waitUntil: 'domcontentloaded', timeout: 45000 });
+    expect(response, path).not.toBeNull();
+    expect(response.status(), path).toBeLessThan(400);
+
+    const audit = await page.evaluate(() => {
+      const visible = el => {
+        const s = getComputedStyle(el);
+        return s.display !== 'none' && s.visibility !== 'hidden' && el.getAttribute('aria-hidden') !== 'true';
+      };
+      const controls = [...document.querySelectorAll('button,a[href],input,select,textarea,[role="button"]')].filter(visible);
+      const badAnchors = [...document.querySelectorAll('a[href^="#"]')].filter(a => {
+        const id = a.getAttribute('href').slice(1);
+        return id && !document.getElementById(id);
+      }).map(a => a.getAttribute('href'));
+      const unnamed = controls.filter(el => {
+        if (el.matches('a[href]') && (el.innerText || '').trim()) return false;
+        return !((el.getAttribute('aria-label') || el.getAttribute('title') || el.innerText || '').trim());
+      }).map(el => el.outerHTML.slice(0,180));
+      const invalidInputs = [...document.querySelectorAll('input,select,textarea')].filter(visible).filter(el => {
+        const hasLabel = el.labels?.length || el.getAttribute('aria-label') || el.getAttribute('aria-labelledby') || el.getAttribute('title');
+        return !hasLabel;
+      }).map(el => ({tag:el.tagName.toLowerCase(),type:el.getAttribute('type')||''}));
+      const buttonsWithoutType = [...document.querySelectorAll('button')].filter(visible).filter(b => !b.getAttribute('type')).length;
+      return { badAnchors, unnamed, invalidInputs, buttonsWithoutType };
+    });
+
+    expect(audit.badAnchors, path).toEqual([]);
+    expect(audit.unnamed, path).toEqual([]);
+    expect(audit.invalidInputs, path).toEqual([]);
+    expect(audit.buttonsWithoutType, path).toBe(0);
+    await page.close();
+  }
+});
