@@ -2112,3 +2112,33 @@ test('html — critical metadata appears before body content', async ({ browser 
     await page.close();
   }
 });
+
+test('routes — representative public routes resolve successfully', async ({ request }) => {
+  const paths = ['/', '/index-en', '/ar', '/amont/', '/intermediaire/', '/aval/', '/greentech/', '/tchaditech/', '/tchaditude/', '/enerconseils/', '/contact', '/investisseurs', '/carrieres', '/societe.html'];
+  for (const path of paths) {
+    const response = await request.get(new URL(path, url).href, { timeout: 30000, maxRedirects: 5 });
+    expect(response.status(), path).toBeGreaterThanOrEqual(200);
+    expect(response.status(), path).toBeLessThan(400);
+    expect(response.headers()['content-type'] || '', path).toMatch(/text\/html/i);
+  }
+});
+
+test('routes — public HTML pages avoid accidental noindex directives', async ({ request }) => {
+  const paths = ['/', '/index-en', '/ar', '/amont/', '/intermediaire/', '/aval/', '/greentech/', '/tchaditech/', '/tchaditude/', '/enerconseils/', '/contact', '/investisseurs'];
+  for (const path of paths) {
+    const response = await request.get(new URL(path, url).href, { timeout: 30000, maxRedirects: 5 });
+    expect(response.status(), path).toBeLessThan(400);
+    const html = await response.text();
+    const robots = [...html.matchAll(/<meta[^>]+name=["']robots["'][^>]+content=["']([^"']*)["']/gi)].map(m => m[1].toLowerCase());
+    for (const value of robots) expect(value, path).not.toMatch(/\bnoindex\b/);
+  }
+});
+
+test('headers — public pages retain baseline browser security headers', async ({ request }) => {
+  const response = await request.get(new URL('/', url).href, { timeout: 30000 });
+  const headers = response.headers();
+  expect(headers['x-content-type-options']).toBe('nosniff');
+  expect(headers['referrer-policy']).toBeTruthy();
+  expect(headers['x-frame-options']).toBeTruthy();
+  expect(headers['strict-transport-security']).toMatch(/max-age=\d+/i);
+});
