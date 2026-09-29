@@ -2211,3 +2211,21 @@ test('visual css hygiene — historical override markers are absent and core chr
   const nav = await request.get(new URL('/assets/chrome/nav_a.css', url).href, { timeout: 30000 });
   expect((await nav.text()).length).toBeLessThan(60000);
 });
+
+test('visual css hygiene — shared chrome stays bounded and legacy glass markers remain absent', async ({ request }) => {
+  const cssPaths = [
+    '/assets/chrome/modern-ui-2026.css',
+    '/assets/chrome/nav_a.css',
+    '/assets/chrome/modern-inner-2026.css'
+  ];
+  let importantCount = 0;
+  for (const path of cssPaths) {
+    const response = await request.get(new URL(path, url).href, { timeout: 30000 });
+    expect(response.status(), path).toBe(200);
+    const css = await response.text();
+    expect(css, path).not.toMatch(/\bCh\d+\b/);
+    expect(css, path).not.toContain('Liquid Glass system v3');
+    importantCount += (css.match(/!important/g) || []).length;
+  }
+  expect(importantCount).toBeLessThanOrEqual(220);
+});
