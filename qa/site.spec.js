@@ -1296,3 +1296,68 @@ test('SEO — sitemap lastmod values are ISO dates and localized alternates stay
     expect(parsed.hostname).toBe(new URL(url).hostname);
   }
 });
+
+test('performance — local assets avoid obvious cache-busting and oversized eager loading', async ({ browser }) => {
+  const paths = ['/', '/amont/', '/intermediaire/', '/aval/', '/greentech/', '/contact', '/investisseurs'];
+  for (const path of paths) {
+    const page = await browser.newPage({ viewport: { width: 1280, height: 900 } });
+    const response = await page.goto(new URL(path, url).href, { waitUntil: 'domcontentloaded', timeout: 45000 });
+    expect(response?.status(), path).toBe(200);
+    const report = await page.evaluate(() => ({
+      images: [...document.images].map(img => ({
+        src: img.currentSrc || img.src,
+        loading: img.getAttribute('loading'),
+        fetchpriority: img.getAttribute('fetchpriority'),
+        decoding: img.getAttribute('decoding'),
+        rect: (() => { const r = img.getBoundingClientRect(); return { top: r.top, width: r.width, height: r.height }; })()
+      })),
+      styles: [...document.querySelectorAll('link[rel="stylesheet"]')].map(x => x.href),
+      scripts: [...document.scripts].filter(x => x.src).map(x => x.src)
+    }));
+    for (const img of report.images) {
+      if (img.rect.top > 900) expect(img.loading, path + ' below-fold ' + img.src).toBe('lazy');
+    }
+    for (const href of [...report.styles, ...report.scripts]) {
+      if (href.startsWith(new URL(url).origin + '/')) expect(href).not.toMatch(/[?&](v|version|cb|cache)=\d{4,}/i);
+    }
+    await page.close();
+  }
+});
+
+test('navigation — internal links stay on the canonical host and expose real destinations', async ({ browser }) => {
+  const page = await browser.newPage({ viewport: { width: 1280, height: 900 } });
+  const response = await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 45000 });
+  expect(response?.status()).toBe(200);
+  const links = await page.locator('a[href]').evaluateAll(nodes => nodes.map(a => a.getAttribute('href')).filter(Boolean));
+  const origin = new URL(url).origin;
+  for (const href of links) {
+    if (href.startsWith('/') && !href.startsWith('//')) {
+      const parsed = new URL(href, origin);
+      expect(parsed.origin).toBe(origin);
+      expect(parsed.pathname).not.toMatch(/^\/https?:/i);
+    }
+  }
+  await page.close();
+});
+
+test('keyboard navigation — disclosure controls keep truthful expanded state', async ({ browser }) => {
+  const page = await browser.newPage({ viewport: { width: 1280, height: 900 } });
+  await page.goto(url, { waitUntil: 'networkidle', timeout: 45000 });
+  const controls = page.locator('[aria-controls][aria-expanded]');
+  const count = await controls.count();
+  expect(count).toBeGreaterThan(0);
+  for (let i = 0; i < Math.min(count, 12); i++) {
+    const control = controls.nth(i);
+    const targetId = await control.getAttribute('aria-controls');
+    const target = page.locator('#' + targetId);
+    await expect(target, 'target ' + targetId).toHaveCount(1);
+    const before = await control.getAttribute('aria-expanded');
+    await control.focus();
+    await page.keyboard.press('Enter');
+    const after = await control.getAttribute('aria-expanded');
+    expect(after).not.toBe(before);
+    await page.keyboard.press('Escape');
+    await expect(control).toHaveAttribute('aria-expanded', 'false');
+  }
+  await page.close();
+});
