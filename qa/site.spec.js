@@ -1765,3 +1765,42 @@ test('fonts — declared webfonts use valid font-display and local source URLs',
   }
   await page.close();
 });
+
+test('forms — controls use safe autocomplete semantics', async ({ browser }) => {
+  const paths = ['/contact', '/investisseurs', '/carrieres'];
+  for (const path of paths) {
+    const page = await browser.newPage();
+    await page.goto(new URL(path, url).href, { waitUntil: 'domcontentloaded', timeout: 45000 });
+    const controls = await page.locator('input,select,textarea').evaluateAll(nodes => nodes.map(el => ({
+      type: (el.getAttribute('type') || '').toLowerCase(),
+      autocomplete: el.getAttribute('autocomplete'),
+      name: el.getAttribute('name'),
+      id: el.getAttribute('id'),
+      label: el.labels?.[0]?.textContent?.trim() || ''
+    })));
+    for (const control of controls) {
+      if (control.type === 'password') expect(control.autocomplete, path).not.toBe('off');
+      if (control.type === 'email') expect(control.autocomplete || control.name, path).toBeTruthy();
+      expect(control.id || control.name || control.label, path + ' unnamed field').toBeTruthy();
+    }
+    await page.close();
+  }
+});
+
+test('interaction — disabled and hidden controls do not become keyboard traps', async ({ browser }) => {
+  const page = await browser.newPage({ viewport: { width: 390, height: 844 } });
+  await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 45000 });
+  const report = await page.evaluate(() => {
+    const tabbables = [...document.querySelectorAll('a[href],button,input,select,textarea,[tabindex]')].filter(el => {
+      const style = getComputedStyle(el);
+      return !el.hasAttribute('disabled') && el.getAttribute('tabindex') !== '-1' && style.display !== 'none' && style.visibility !== 'hidden';
+    });
+    return {
+      count: tabbables.length,
+      offscreen: tabbables.filter(el => { const r = el.getBoundingClientRect(); return r.width > 0 && r.height > 0 && (r.right < -20 || r.left > innerWidth + 20); }).length
+    };
+  });
+  expect(report.count).toBeGreaterThan(5);
+  expect(report.offscreen).toBe(0);
+  await page.close();
+});
