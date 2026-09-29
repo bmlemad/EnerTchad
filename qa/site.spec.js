@@ -412,3 +412,21 @@ test('SEO sitemap — no false FR/EN equivalence', async ({ request }) => {
     if (fr && en) expect(en).not.toBe(fr);
   }
 });
+
+
+test('command search dialog — open, focus, Escape', async ({ page }) => {
+  await page.goto(url, { waitUntil: 'networkidle', timeout: 45000 });
+  const trigger = page.locator('#navSearch').first();
+  await expect(trigger).toHaveAttribute('aria-label', /Rechercher/i);
+  await trigger.click();
+  const dialog = page.locator('#cmdk').first();
+  await expect(dialog).toBeVisible();
+  await expect(dialog).toHaveAttribute('role', 'dialog');
+  await expect(dialog).toHaveAttribute('aria-modal', 'true');
+  const input = page.locator('#cmdk-input').first();
+  await expect(input).toBeVisible();
+  await expect(input).toBeFocused();
+  await page.keyboard.press('Escape');
+  await expect(dialog).toBeHidden();
+  await expect(trigger).toBeFocused();
+});
