@@ -8,8 +8,7 @@
    ============================================================ */
 
 /* ---------- Barre utilitaire (desktop) ---------- */
-/* Ch318 — le bandeau utilitaire etait le seul opaque de l en-tete : il coupait
-   l image de fond en haut de 138 pages. Il devient du verre comme le reste. */
+
 .nx-util{background:rgba(4,8,15,.40);-webkit-backdrop-filter:blur(14px) saturate(130%);backdrop-filter:blur(14px) saturate(130%);border-bottom:1px solid var(--hair);
   transition:margin-top .32s var(--ease),opacity .25s var(--ease)}
 .nx-util-in{display:flex;justify-content:flex-end;align-items:center;gap:20px;
@@ -104,7 +103,7 @@ body.nx-clear .hero{padding-top:72px}
 
 /* QA mobile : cibles tactiles & anti-chevauchement */
 @media(max-width:1240px){
-  .nav-tog:not(#_):not(#__){width:44px;height:44px}  /* Ch322 : sur 5 pages une feuille chargee apres celle-ci reimposait 40px a specificite egale */
+  .nav-tog:not(#_):not(#__){width:44px;height:44px}  
   .nx-util-in>a,.nx-util-m>a{padding:12px 8px!important;display:inline-block}
 }
 body:has(#navLinks.open) #ckn,body:has(#navLinks.open) .lum-ctl,body:has(#navLinks.open) .scrollcue,body:has(#ckn.show) .lum-ctl,body:has(#ckn.show) #plightBtn{display:none!important}/* #plightBtn ajoute : sur mobile le bouton de theme (14,732 38x38) se posait DANS l'avis cookies (12,719 366x51) et masquait le debut du texte - meme traitement que .lum-ctl, il revient des que l'avis est ferme */
@@ -167,7 +166,7 @@ body:has(#navLinks.open) #ckn,body:has(#navLinks.open) .lum-ctl,body:has(#navLin
    defilement cree. */
 #nav{overflow-x:clip}
 
-/* Ch169 : balayage dore des CTA premium */
+
 @media (hover:hover) and (prefers-reduced-motion: no-preference){
 .nx-util-in .nx-invest,.cb-btn.cb-p{position:relative;overflow:hidden}
 .nx-util-in .nx-invest::after,.cb-btn.cb-p::after{content:"";position:absolute;top:0;bottom:0;left:-70%;width:45%;transform:skewX(-22deg);background:linear-gradient(90deg,transparent,rgba(255,236,190,.4),transparent);opacity:0;pointer-events:none}
@@ -175,7 +174,7 @@ body:has(#navLinks.open) #ckn,body:has(#navLinks.open) .lum-ctl,body:has(#navLin
 @keyframes etShine{from{left:-70%}to{left:110%}}
 }
 
-/* Ch290 — petits ecrans iOS : la rangee d'actions ne pousse plus le burger hors ecran */
+
 @media(max-width:470px){
   .nav-in.nx-bar,.nx-bar{padding-left:10px!important;padding-right:10px!important}
   .nav-cta{gap:6px!important}
@@ -1269,7 +1268,7 @@ html:is(.et-plight,.et-jlight) body.hm:not(#_):not(#__):not(#___) main:not(#a1):
  .epw-g:not(#_g):has(>:nth-child(11):last-child)>*:nth-child(n+9):nth-child(-n+11),.biz-grid:not(#_g):has(>:nth-child(11):last-child)>*:nth-child(n+9):nth-child(-n+11),.rp-pts:not(#_g):has(>:nth-child(11):last-child)>*:nth-child(n+9):nth-child(-n+11),.vt-grid:not(#_g):has(>:nth-child(11):last-child)>*:nth-child(n+9):nth-child(-n+11),.plc-grid:not(#_g):has(>:nth-child(11):last-child)>*:nth-child(n+9):nth-child(-n+11),.exp-g-in:not(#_g):has(>:nth-child(11):last-child)>*:nth-child(n+9):nth-child(-n+11),.eth-g:not(#_g):has(>:nth-child(11):last-child)>*:nth-child(n+9):nth-child(-n+11),.fam6:not(#_g):has(>:nth-child(11):last-child)>*:nth-child(n+9):nth-child(-n+11),.profiles:not(#_g):has(>:nth-child(11):last-child)>*:nth-child(n+9):nth-child(-n+11),.pubg:not(#_g):has(>:nth-child(11):last-child)>*:nth-child(n+9):nth-child(-n+11),.tri-steps:not(#_g):has(>:nth-child(11):last-child)>*:nth-child(n+9):nth-child(-n+11),.prix-grid:not(#_g):has(>:nth-child(11):last-child)>*:nth-child(n+9):nth-child(-n+11),.htech-grid:not(#_g):has(>:nth-child(11):last-child)>*:nth-child(n+9):nth-child(-n+11),.presse-grid:not(#_g):has(>:nth-child(11):last-child)>*:nth-child(n+9):nth-child(-n+11),.secg:not(#_g):has(>:nth-child(11):last-child)>*:nth-child(n+9):nth-child(-n+11),.docl:not(#_g):has(>:nth-child(11):last-child)>*:nth-child(n+9):nth-child(-n+11),.cp-ct:not(#_g):has(>:nth-child(11):last-child)>*:nth-child(n+9):nth-child(-n+11),.sw-grid:not(#_g):has(>:nth-child(11):last-child)>*:nth-child(n+9):nth-child(-n+11),.tri-g:not(#_g):has(>:nth-child(11):last-child)>*:nth-child(n+9):nth-child(-n+11),.d607-grid:not(#_g):has(>:nth-child(11):last-child)>*:nth-child(n+9):nth-child(-n+11),.rtg:not(#_g):has(>:nth-child(11):last-child)>*:nth-child(n+9):nth-child(-n+11),.atlas-grid:not(#_g):has(>:nth-child(11):last-child)>*:nth-child(n+9):nth-child(-n+11),.glm-g:not(#_g):has(>:nth-child(11):last-child)>*:nth-child(n+9):nth-child(-n+11),.fonctions-tete:not(#_g):has(>:nth-child(11):last-child)>*:nth-child(n+9):nth-child(-n+11),.b111-dl:not(#_g):has(>:nth-child(11):last-child)>*:nth-child(n+9):nth-child(-n+11),.docs:not(#_g):has(>:nth-child(11):last-child)>*:nth-child(n+9):nth-child(-n+11),.ppl-grid:not(#_g):has(>:nth-child(11):last-child)>*:nth-child(n+9):nth-child(-n+11),.sm-grid:not(#_g):has(>:nth-child(11):last-child)>*:nth-child(n+9):nth-child(-n+11),.sw-row:not(#_g):has(>:nth-child(11):last-child)>*:nth-child(n+9):nth-child(-n+11),.pj-grid:not(#_g):has(>:nth-child(11):last-child)>*:nth-child(n+9):nth-child(-n+11),.fx2g:not(#_g):has(>:nth-child(11):last-child)>*:nth-child(n+9):nth-child(-n+11){grid-column:span 4}
  .epw-g:not(#_g):has(>:nth-child(12):last-child)>*,.biz-grid:not(#_g):has(>:nth-child(12):last-child)>*,.rp-pts:not(#_g):has(>:nth-child(12):last-child)>*,.vt-grid:not(#_g):has(>:nth-child(12):last-child)>*,.plc-grid:not(#_g):has(>:nth-child(12):last-child)>*,.exp-g-in:not(#_g):has(>:nth-child(12):last-child)>*,.eth-g:not(#_g):has(>:nth-child(12):last-child)>*,.fam6:not(#_g):has(>:nth-child(12):last-child)>*,.profiles:not(#_g):has(>:nth-child(12):last-child)>*,.pubg:not(#_g):has(>:nth-child(12):last-child)>*,.tri-steps:not(#_g):has(>:nth-child(12):last-child)>*,.prix-grid:not(#_g):has(>:nth-child(12):last-child)>*,.htech-grid:not(#_g):has(>:nth-child(12):last-child)>*,.presse-grid:not(#_g):has(>:nth-child(12):last-child)>*,.secg:not(#_g):has(>:nth-child(12):last-child)>*,.docl:not(#_g):has(>:nth-child(12):last-child)>*,.cp-ct:not(#_g):has(>:nth-child(12):last-child)>*,.sw-grid:not(#_g):has(>:nth-child(12):last-child)>*,.tri-g:not(#_g):has(>:nth-child(12):last-child)>*,.d607-grid:not(#_g):has(>:nth-child(12):last-child)>*,.rtg:not(#_g):has(>:nth-child(12):last-child)>*,.atlas-grid:not(#_g):has(>:nth-child(12):last-child)>*,.glm-g:not(#_g):has(>:nth-child(12):last-child)>*,.fonctions-tete:not(#_g):has(>:nth-child(12):last-child)>*,.b111-dl:not(#_g):has(>:nth-child(12):last-child)>*,.docs:not(#_g):has(>:nth-child(12):last-child)>*,.ppl-grid:not(#_g):has(>:nth-child(12):last-child)>*,.sm-grid:not(#_g):has(>:nth-child(12):last-child)>*,.sw-row:not(#_g):has(>:nth-child(12):last-child)>*,.pj-grid:not(#_g):has(>:nth-child(12):last-child)>*,.fx2g:not(#_g):has(>:nth-child(12):last-child)>*{grid-column:span 3}
 }
-/* Ch611 : la pastille des cartes de pole sur une ligne de base commune (la colonne interne s etire, la pastille descend en bas) */
+
 .plc-card:not(#_g) .plc-b{display:flex;flex-direction:column;align-self:stretch}
 .plc-card:not(#_g) .plc-badge{margin-top:auto;align-self:flex-start}
 
@@ -1301,7 +1300,7 @@ html:is(.et-plight,.et-jlight) body.hm:not(#_):not(#__):not(#___) main:not(#a1):
  .nx .nxm616 .nx-col a{padding:6px 22px 6px 10px}
  .nx .nxm616 .nxg6 a{padding:6px 10px}
 }
-/* Ch617 — pied de page reorganise autour des trois poles */
+
 .foot-col.fp617 h3::after{background:var(--c,var(--gold-l))!important}
 .foot-col .foot-sub{display:block;font-family:var(--fm);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(245,247,250,.55);margin:6px 0 8px}
 .foot-caps617{grid-column:1/-1;margin-top:6px}
@@ -1312,13 +1311,7 @@ footer .foot-caps617 .foot-poles:not(#_):not(#__){display:flex;flex-wrap:wrap;ga
 .foot-caps617 .foot-svc617 a{margin-bottom:8px}
 html.et-plight .foot-col .foot-sub{color:rgba(18,29,49,.6)}
 
-/* Ch623 — la home nette : plus de flou d arriere-plan dans le contenu, plus de calques ambiants en mouvement.
-   Avant : ~50 surfaces a backdrop-filter (trois tuiles de 1088 x 450, le bandeau final, les cartes) posees sur
-   cinq calques plein ecran animes en continu (diapo, trois blobs aurora a blur 70 px, prem-mesh, rootland) et un
-   canevas de flux a 30 i/s : chaque image recalculait le flou de tout cela. Le proprietaire voyait la home floue
-   et des bandes qui se chevauchent. Ici : les calques ambiants sont figes (le champ reste, il ne derive plus), le
-   canevas est retire des deux pages d accueil, et aucune surface de main ne floute son fond ; les surfaces
-   reprennent en opacite ce qu elles perdent en flou. La barre de navigation et ses panneaux gardent leur verre. */
+
 html body.hm:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6):not(#a7):not(#a8):not(#a9):not(#a10):not(#a11) :is(main,header.hero) *:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6):not(#a7):not(#a8):not(#a9):not(#a10):not(#a11){-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
 body.hm .diapo:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6):not(#a7):not(#a8):not(#a9):not(#a10):not(#a11),body.hm #aurora i:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6):not(#a7):not(#a8):not(#a9):not(#a10):not(#a11),body.hm .prem-mesh:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6):not(#a7):not(#a8):not(#a9):not(#a10):not(#a11),body.hm .rootland:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6):not(#a7):not(#a8):not(#a9):not(#a10):not(#a11){animation:none!important}
 body.hm #aurora i:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6):not(#a7):not(#a8):not(#a9):not(#a10):not(#a11){filter:blur(48px);will-change:auto}
@@ -1339,12 +1332,7 @@ html:not(.et-plight):not(.et-jlight) #nav.nx:not(#z1):not(#z2):not(#z3):not(#z4)
 html:is(.et-plight,.et-jlight) #nav.nx.scrolled:not(#z1):not(#z2):not(#z3):not(#z4):not(#z5):not(#z6):not(#z7):not(#z8){background:rgba(251,248,242,.95)!important;-webkit-backdrop-filter:blur(10px)!important;backdrop-filter:blur(10px)!important}
 html:is(.et-plight,.et-jlight) #nav.nx:not(#z1):not(#z2):not(#z3):not(#z4):not(#z5):not(#z6):not(#z7):not(#z8) .nx-util:not(#z1):not(#z2):not(#z3):not(#z4):not(#z5):not(#z6):not(#z7):not(#z8){background:rgba(243,238,229,.96)!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
 
-/* Ch624 — le site net : le traitement de la home (623) etendu aux 199 autres pages. Releve sur les 200 pages FR et
-   EN en sombre : 286 familles de surfaces a backdrop-filter dans le contenu (cartes, sections entieres sans fond,
-   en-tetes, sous-navigations), 3 138 ombres portees de texte (871 h2, 827 h3), trois animations ambiantes infinies
-   (aurora sur 61 pages, champ du heros sur 32, derive du fond sur 200). Ici : plus aucune surface du contenu ne
-   floute son fond — leurs fonds a .66 tiennent seuls sur le champ, qui est fige — et plus aucune ombre de texte.
-   La barre de navigation et ses panneaux gardent leur verre (623-3). */
+
 html:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6):not(#a7):not(#a8):not(#a9):not(#a10):not(#a11) :is(main,header.pghero,header.hero) *:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6):not(#a7):not(#a8):not(#a9):not(#a10):not(#a11){-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
 html:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6):not(#a7):not(#a8):not(#a9):not(#a10):not(#a11) :is(main,header.pghero,header.hero) *:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6):not(#a7):not(#a8):not(#a9):not(#a10):not(#a11){text-shadow:none!important}
 .diapo:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6):not(#a7):not(#a8):not(#a9):not(#a10):not(#a11),#aurora i:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6):not(#a7):not(#a8):not(#a9):not(#a10):not(#a11),.prem-mesh:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6):not(#a7):not(#a8):not(#a9):not(#a10):not(#a11),.rootland:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6):not(#a7):not(#a8):not(#a9):not(#a10):not(#a11),.subland:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6):not(#a7):not(#a8):not(#a9):not(#a10):not(#a11){animation:none!important}
