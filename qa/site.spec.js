@@ -651,3 +651,58 @@ test('hubs — mobile UX contract', async ({ browser }) => {
     await page.close();
   }
 });
+
+
+test('mobile interactions — nav search and primary form controls', async ({ browser }) => {
+  const cases = [
+    { path: '/', search: true },
+    { path: '/contact', form: true },
+    { path: '/clients', form: false },
+    { path: '/investisseurs', form: false }
+  ];
+  for (const item of cases) {
+    const page = await browser.newPage({ viewport: { width: 390, height: 844 }, deviceScaleFactor: 1 });
+    const response = await page.goto(new URL(item.path, url).href, { waitUntil: 'networkidle', timeout: 45000 });
+    expect(response.status(), item.path).toBe(200);
+
+    if (item.search) {
+      const trigger = page.locator('#navSearch').first();
+      await expect(trigger, item.path).toHaveAttribute('aria-label', /Rechercher/i);
+      await trigger.click();
+      const dialog = page.locator('#cmdk').first();
+      await expect(dialog, item.path).toBeVisible();
+      const input = page.locator('#cmdk-input').first();
+      await expect(input, item.path).toBeFocused();
+      await page.keyboard.press('Escape');
+      await expect(dialog, item.path).toBeHidden();
+      await expect(trigger, item.path).toBeFocused();
+    }
+
+    if (item.form) {
+      const controls = page.locator('form input, form textarea, form select, form button');
+      const count = await controls.count();
+      expect(count, item.path).toBeGreaterThan(0);
+      for (let i = 0; i < count; i++) {
+        const control = controls.nth(i);
+        if (await control.isVisible()) {
+          const name = await control.getAttribute('aria-label');
+          const id = await control.getAttribute('id');
+          const type = await control.getAttribute('type');
+          if (type !== 'hidden') {
+            const labelled = name || (id && await page.locator('label[for="' + id + '"]').count());
+            expect(labelled, item.path + ' control ' + i).toBeTruthy();
+          }
+        }
+      }
+    }
+
+    const bad = await page.evaluate(() => [...document.querySelectorAll('a,button,input,textarea,select')].filter(el => {
+      const s = getComputedStyle(el);
+      const r = el.getBoundingClientRect();
+      return s.display !== 'none' && s.visibility !== 'hidden' &&
+        (r.left < -1 || r.right > document.documentElement.clientWidth + 1);
+    }).map(el => ({ tag: el.tagName, text: (el.innerText || el.getAttribute('aria-label') || '').trim().slice(0,60) })));
+    expect(bad, item.path).toEqual([]);
+    await page.close();
+  }
+});
