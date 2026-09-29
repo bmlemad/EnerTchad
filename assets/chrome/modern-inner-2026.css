@@ -29,7 +29,6 @@ a.prj-pole{text-decoration:none;cursor:pointer;transition:opacity .2s,filter .2s
 p,li,figcaption,blockquote,.hx-sub,.sub,.lede,.svc-head p,dd{text-wrap:pretty}h1,h2,h3,h4,.kick,.eyebrow,.mu-head span{text-wrap:balance}
 html.et-navd #preloader{display:none!important}
 
-/* Liquid Glass system v3 — pages internes */
 :root{
   --et-inner-glass-1:rgba(255,255,255,.045);
   --et-inner-glass-2:rgba(17,30,48,.58);
