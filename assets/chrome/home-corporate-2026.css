@@ -169,3 +169,50 @@ html.et-plight header.hero .nh-proof a:not(#_):not(#__):not(#___){color:#6B520D!
   }
   .hpcard:hover,.hxi-card:hover,.sc-card:hover,.hncard:hover,.et-command-card:hover,.et-proof-card:hover,.et-intent:hover,.hubwrap:hover{transform:none!important}
 }
+
+
+/* EnerTchad Premium QA v2 — consolidated visual hierarchy */
+:root{--et-qa-radius:18px;--et-qa-border:rgba(255,255,255,.105);--et-qa-shadow:0 16px 42px -30px rgba(0,0,0,.68)}
+.hpcard,.hxi-card,.sc-card,.hncard,.et-command-card,.et-proof-card,.et-intent{
+ border-radius:var(--et-qa-radius)!important;border-color:var(--et-qa-border)!important;
+ box-shadow:var(--et-qa-shadow)!important;-webkit-backdrop-filter:saturate(125%) blur(12px)!important;backdrop-filter:saturate(125%) blur(12px)!important}
+.hpcard,.hxi-card,.sc-card,.hncard{background:linear-gradient(145deg,rgba(18,35,55,.72),rgba(7,17,29,.68))!important}
+.hpcard::after,.hxi-card::after{opacity:.22!important}
+.hpcard:hover,.hxi-card:hover,.sc-card:hover,.hncard:hover{transform:translateY(-3px)!important;border-color:rgba(232,195,106,.30)!important;box-shadow:0 22px 48px -30px rgba(0,0,0,.78)!important}
+main>section:not(.hero){padding-block:clamp(48px,6vw,88px)!important}
+.et-command,.et-proof-center{padding-block:clamp(48px,6vw,78px)!important}
+.et-command-head,.et-proof-head{margin-bottom:22px!important}
+.et-command-grid,.et-proof-grid{gap:12px!important}
+.et-command-card,.et-proof-card{min-height:178px!important;padding:18px!important}
+.et-command-index,.et-proof-k{margin-bottom:20px!important}
+.et-command-card small,.et-proof-card>span:nth-of-type(2){line-height:1.45!important}
+.et-intents{padding-top:14px!important}.et-intents-grid{gap:8px!important}
+.et-intent{min-height:52px!important;padding:13px 14px!important;background:rgba(8,20,34,.72)!important}
+.hubwrap .hubdrawer{background:rgba(7,17,29,.42)!important}.hubdrawer a{min-height:40px!important;font-size:.80rem!important}
+html.et-plight .hpcard,html.et-plight .hxi-card,html.et-plight .sc-card,html.et-plight .hncard,html.et-plight .et-command-card,html.et-plight .et-proof-card{background:linear-gradient(145deg,rgba(255,255,255,.90),rgba(247,244,236,.78))!important;border-color:rgba(11,20,34,.10)!important;box-shadow:0 16px 40px -30px rgba(24,45,67,.28)!important}
+html.et-plight .et-intent{background:rgba(255,255,255,.82)!important}
+@media(max-width:760px){
+ main>section:not(.hero){padding-block:48px!important}.et-command,.et-proof-center{padding-block:46px!important}
+ .et-command-in,.et-proof-in{width:min(100% - 32px,1200px)!important}
+ .et-command-grid,.et-proof-grid{grid-template-columns:1fr!important;gap:10px!important}
+ .et-command-card,.et-proof-card{min-height:154px!important;padding:17px!important}
+ .et-command-index,.et-proof-k{margin-bottom:14px!important}
+ .hpcard,.hxi-card,.sc-card,.hncard{border-radius:16px!important}
+ .hpcard:hover,.hxi-card:hover,.sc-card:hover,.hncard:hover,.et-command-card:hover,.et-proof-card:hover{transform:translateY(-2px)!important}
+ .et-intents{padding-inline:16px!important}
+}
+@media(max-width:480px){
+ main>section:not(.hero){padding-block:40px!important}
+ .et-command-head h2,.et-proof-head h2{font-size:clamp(1.7rem,8vw,2.25rem)!important}
+ .et-command-card strong,.et-proof-card strong{font-size:1rem!important}
+ .et-command-card small,.et-proof-card>span:nth-of-type(2){font-size:.80rem!important}
+ .et-proof-foot{font-size:.70rem!important}
+}
+@media(prefers-reduced-transparency:reduce){
+ .hpcard,.hxi-card,.sc-card,.hncard,.et-command-card,.et-proof-card,.et-intent,.hubwrap .hubdrawer{background:#101B2E!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important;box-shadow:0 10px 24px rgba(0,0,0,.22)!important}
+ html.et-plight .hpcard,html.et-plight .hxi-card,html.et-plight .sc-card,html.et-plight .hncard,html.et-plight .et-command-card,html.et-plight .et-proof-card,html.et-plight .et-intent,html.et-plight .hubwrap .hubdrawer{background:#FAF7F1!important}
+}
+@media(prefers-reduced-motion:reduce){
+ .hpcard,.hxi-card,.sc-card,.hncard,.et-command-card,.et-proof-card,.et-intent,.hubwrap{transition:none!important}
+ .hpcard:hover,.hxi-card:hover,.sc-card:hover,.hncard:hover,.et-command-card:hover,.et-proof-card:hover,.et-intent:hover,.hubwrap:hover{transform:none!important}
+}
