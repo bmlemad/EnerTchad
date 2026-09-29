@@ -1048,3 +1048,31 @@ test('404 page — branded recovery and noindex', async ({ request }) => {
   expect(html).toMatch(/href=["'][^"']*(?:^|\\/)index|href=["']\\//i);
 });
 
+
+test('accessibility — pages expose language, main landmark and skip navigation', async ({ request }) => {
+  const paths = ['/', '/index-en', '/ar', '/contact', '/clients', '/investisseurs', '/faq', '/greentech/', '/tchaditech/', '/tchaditude/', '/enerconseils/'];
+  for (const path of paths) {
+    const response = await request.get(new URL(path, url).href, { timeout: 30000 });
+    expect(response.status(), path).toBe(200);
+    const html = await response.text();
+    expect(html, path).toMatch(/<html\b[^>]*\blang=["'][^"']+["']/i);
+    expect(html, path).toMatch(/<main\b/i);
+    expect(html, path).toMatch(/(?:skip|aller au contenu|passer au contenu)/i);
+  }
+});
+
+test('accessibility — images have alt text and interactive controls have names', async ({ request }) => {
+  const paths = ['/', '/contact', '/clients', '/investisseurs', '/faq'];
+  for (const path of paths) {
+    const response = await request.get(new URL(path, url).href, { timeout: 30000 });
+    const html = await response.text();
+    const images = [...html.matchAll(/<img\b([^>]*)>/gi)].map(m => m[1]).filter(a => !/\baria-hidden=["']true["']/i.test(a));
+    for (const attrs of images) expect(attrs, path).toMatch(/\balt=["'][^"']*["']/i);
+    const controls = [...html.matchAll(/<(?:button|a)\b([^>]*)>/gi)].map(m => m[1])
+      .filter(a => !/\baria-hidden=["']true["']/i.test(a));
+    for (const attrs of controls) {
+      const hasName = /\baria-label=["'][^"']+["']/i.test(attrs) || /\btitle=["'][^"']+["']/i.test(attrs);
+      expect(hasName || !/^\s*(?:type=["'](?:button|submit)["']\s*)?$/i.test(attrs), path).toBeTruthy();
+    }
+  }
+});
