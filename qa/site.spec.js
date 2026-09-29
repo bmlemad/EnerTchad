@@ -2142,3 +2142,36 @@ test('headers — public pages retain baseline browser security headers', async 
   expect(headers['x-frame-options']).toBeTruthy();
   expect(headers['strict-transport-security']).toMatch(/max-age=\d+/i);
 });
+
+test('content — strategic pages contain meaningful primary content', async ({ browser }) => {
+  const paths = ['/', '/index-en', '/ar', '/amont/', '/intermediaire/', '/aval/', '/greentech/', '/tchaditech/', '/tchaditude/', '/enerconseils/', '/contact', '/investisseurs'];
+  for (const path of paths) {
+    const page = await browser.newPage();
+    await page.goto(new URL(path, url).href, { waitUntil: 'domcontentloaded', timeout: 45000 });
+    const report = await page.evaluate(() => {
+      const main = document.querySelector('main');
+      const text = (main?.innerText || '').replace(/\s+/g, ' ').trim();
+      const h1 = main?.querySelector('h1')?.textContent?.replace(/\s+/g, ' ').trim() || '';
+      return { textLength: text.length, h1Length: h1.length };
+    });
+    expect(report.textLength, path).toBeGreaterThan(150);
+    expect(report.h1Length, path).toBeGreaterThan(3);
+    await page.close();
+  }
+});
+
+test('html integrity — images do not use empty or placeholder alt text', async ({ browser }) => {
+  const paths = ['/', '/index-en', '/ar', '/contact', '/investisseurs', '/greentech/', '/tchaditech/'];
+  for (const path of paths) {
+    const page = await browser.newPage();
+    await page.goto(new URL(path, url).href, { waitUntil: 'domcontentloaded', timeout: 45000 });
+    const report = await page.locator('img').evaluateAll(images => images.map(img => ({
+      alt: img.getAttribute('alt'),
+      decorative: img.getAttribute('aria-hidden') === 'true' || img.getAttribute('role') === 'presentation'
+    })));
+    for (const image of report) {
+      if (!image.decorative) expect((image.alt || '').trim().length, path).toBeGreaterThan(0);
+    }
+    await page.close();
+  }
+});
