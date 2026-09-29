@@ -2176,7 +2176,7 @@ test('html integrity — images do not use empty or placeholder alt text', async
   }
 });
 
-test('visual system — premium tokens and restrained glass layer are present', async ({ browser }) => {
+test('visual system — consolidated tokens and cleanup invariants are present', async ({ browser }) => {
   const page = await browser.newPage();
   await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 45000 });
   const report = await page.evaluate(() => {
@@ -2185,12 +2185,16 @@ test('visual system — premium tokens and restrained glass layer are present', 
     });
     return {
       tokens: ['--et-color-ink','--et-color-accent','--et-radius-md','--et-shadow-soft','--et-space-4'].every(token => css.includes(token)),
-      glass: css.includes('.et-glass') && css.includes('backdrop-filter'),
-      reducedTransparency: css.includes('prefers-reduced-transparency')
+      glassEffects: css.includes('backdrop-filter'),
+      reducedTransparency: css.includes('prefers-reduced-transparency'),
+      legacyV3Removed: !css.includes('Liquid Glass system v3'),
+      duplicateTokenLayerRemoved: !css.includes('VISUAL SYSTEM v1 — consolidated premium tokens')
     };
   });
   expect(report.tokens).toBeTruthy();
-  expect(report.glass).toBeTruthy();
+  expect(report.glassEffects).toBeTruthy();
   expect(report.reducedTransparency).toBeTruthy();
+  expect(report.legacyV3Removed).toBeTruthy();
+  expect(report.duplicateTokenLayerRemoved).toBeTruthy();
   await page.close();
 });
