@@ -1147,3 +1147,78 @@ test('redirects — legacy routes are unique, permanent and point to non-legacy 
     expect(target.status(), path + ' -> ' + location).not.toBe(308);
   }
 });
+
+test('SEO/editorial structure — titles, descriptions, headings and locale metadata', async ({ browser }) => {
+  const paths = ['/', '/index-en', '/ar', '/amont/', '/intermediaire/', '/aval/', '/greentech/', '/tchaditech/', '/tchaditude/', '/enerconseils/', '/contact', '/investisseurs'];
+  for (const path of paths) {
+    const page = await browser.newPage({ viewport: { width: 1280, height: 900 } });
+    const response = await page.goto(new URL(path, url).href, { waitUntil: 'domcontentloaded', timeout: 45000 });
+    expect(response?.status(), path).toBe(200);
+    const meta = await page.evaluate(() => {
+      const title = document.title.trim();
+      const descriptions = [...document.querySelectorAll('meta[name="description"]')].map(x => x.getAttribute('content')?.trim()).filter(Boolean);
+      const h1 = [...document.querySelectorAll('h1')].map(x => x.textContent?.trim()).filter(Boolean);
+      const html = document.documentElement;
+      return { title, descriptions, h1, lang: html.lang, dir: html.dir };
+    });
+    expect(meta.title.length, path).toBeGreaterThan(10);
+    expect(meta.descriptions.length, path).toBe(1);
+    expect(meta.descriptions[0].length, path).toBeGreaterThan(40);
+    expect(meta.h1.length, path).toBe(1);
+    if (path === '/ar') {
+      expect(meta.lang, path).toMatch(/^ar/i);
+      expect(meta.dir, path).toBe('rtl');
+    } else if (path === '/index-en') {
+      expect(meta.lang, path).toMatch(/^en/i);
+    } else {
+      expect(meta.lang, path).toMatch(/^fr/i);
+    }
+    await page.close();
+  }
+});
+
+test('accessibility/performance — images expose stable dimensions and meaningful alternatives', async ({ browser }) => {
+  const paths = ['/', '/amont/', '/intermediaire/', '/aval/', '/greentech/', '/contact', '/investisseurs'];
+  for (const path of paths) {
+    const page = await browser.newPage({ viewport: { width: 1280, height: 900 } });
+    const response = await page.goto(new URL(path, url).href, { waitUntil: 'networkidle', timeout: 45000 });
+    expect(response?.status(), path).toBe(200);
+    const report = await page.evaluate(() => [...document.images].map(img => ({
+      src: img.currentSrc || img.src,
+      alt: img.getAttribute('alt'),
+      width: img.getAttribute('width'),
+      height: img.getAttribute('height'),
+      complete: img.complete,
+      naturalWidth: img.naturalWidth,
+      naturalHeight: img.naturalHeight
+    })));
+    for (const img of report) {
+      expect(img.alt, path + ' ' + img.src).not.toBeNull();
+      if (img.naturalWidth > 0) {
+        expect(Number(img.width), path + ' ' + img.src).toBeGreaterThan(0);
+        expect(Number(img.height), path + ' ' + img.src).toBeGreaterThan(0);
+      }
+    }
+    await page.close();
+  }
+});
+
+test('forms — controls are explicitly labelled and autocomplete is safe', async ({ browser }) => {
+  const paths = ['/contact', '/investisseurs', '/carrieres', '/clients'];
+  for (const path of paths) {
+    const page = await browser.newPage({ viewport: { width: 1280, height: 900 } });
+    const response = await page.goto(new URL(path, url).href, { waitUntil: 'domcontentloaded', timeout: 45000 });
+    expect(response?.status(), path).toBe(200);
+    const fields = await page.locator('input, select, textarea').evaluateAll(nodes => nodes.map((el, i) => {
+      const id = el.getAttribute('id');
+      const aria = el.getAttribute('aria-label') || el.getAttribute('aria-labelledby');
+      const labelled = id && document.querySelector('label[for="' + CSS.escape(id) + '"]');
+      return { i, type: el.getAttribute('type') || el.tagName.toLowerCase(), hasLabel: !!labelled || !!aria, autocomplete: el.getAttribute('autocomplete') };
+    }));
+    for (const field of fields) {
+      expect(field.hasLabel, path + ' field ' + field.i).toBeTruthy();
+      if (field.type === 'password') expect(field.autocomplete, path).not.toBe('off');
+    }
+    await page.close();
+  }
+});
