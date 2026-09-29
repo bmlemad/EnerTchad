@@ -786,3 +786,15 @@ test('SEO — hreflang self-reference matches canonical route', async ({ request
     expect(new URL(self[2], response.url()).href.replace(/\/$/, ''), path).toBe(canonical);
   }
 });
+
+
+test('security — redirect destinations stay internal', async () => {
+  const fs = await import('node:fs/promises');
+  const config = JSON.parse(await fs.readFile(new URL('../vercel.json', import.meta.url), 'utf8'));
+  expect(Array.isArray(config.redirects)).toBeTruthy();
+  for (const rule of config.redirects) {
+    expect(typeof rule.source).toBe('string');
+    expect(typeof rule.destination).toBe('string');
+    expect(rule.destination, rule.source).not.toMatch(/^(?:https?:)?\\/\\//i);
+  }
+});
