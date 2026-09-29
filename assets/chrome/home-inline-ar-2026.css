@@ -522,4 +522,5 @@ html.et-plight footer:not(#e1):not(#e2)::before,html.et-jlight footer:not(#e1):n
 /* ———— ex-bloc: print386 ———— */
 @media print{html:not(#e1):not(#e2):not(#e3),html:not(#e1):not(#e2):not(#e3) body{background:#fff!important;color-scheme:light!important}.rootland:not(#e1):not(#e2):not(#e3){display:none!important;background:none!important}body:not(#e1):not(#e2)::before,body:not(#e1):not(#e2)::after{display:none!important}}
 
-.ar-go{display:inline-block;padding:5px 3px;min-height:24px;line-height:1.5;border-radius:6px}.ar-go:focus-visible{outline:2px solid var(--blue-l,#00B4D8);outline-offset:2px}
+.ar-go{display:inline-block;padding:5px 3px;min-height:24px;line-height:1.5;border-radius:6px}.ar-go:focus-visible{outline:2px solid var(--blue-l,#00B4D8);outline-offset:2px}/* QA 2026-09-30 : pastille de la page courante (fond or) -- encre sombre de son style en ligne restauree en theme clair (le bleu de lien donnait 3,8:1) */
+html.et-plight .wrap > a[aria-current="page"]:not([class]):not(#_):not(#__):not(#___){color:#121D31!important}
