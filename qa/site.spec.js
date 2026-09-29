@@ -2075,3 +2075,40 @@ test('runtime — page errors are not emitted during initial load', async ({ bro
     await page.close();
   }
 });
+
+test('assets — critical local resources use stable canonical paths', async ({ browser }) => {
+  const page = await browser.newPage();
+  await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 45000 });
+  const resources = await page.evaluate(() => [
+    ...document.querySelectorAll('link[href],script[src],img[src]')
+  ].map(el => el.href || el.src).filter(Boolean));
+  for (const resource of resources) {
+    const parsed = new URL(resource);
+    if (parsed.origin === location.origin) {
+      expect(parsed.pathname, resource).not.toMatch(/(?:\?|&)(?:v|ver|version|cacheBust|cb)=\d+/i);
+    }
+  }
+  await page.close();
+});
+
+test('html — critical metadata appears before body content', async ({ browser }) => {
+  const paths = ['/', '/index-en', '/ar', '/contact', '/investisseurs'];
+  for (const path of paths) {
+    const page = await browser.newPage();
+    await page.goto(new URL(path, url).href, { waitUntil: 'domcontentloaded', timeout: 45000 });
+    const report = await page.evaluate(() => {
+      const head = document.head;
+      return {
+        title: !!head.querySelector('title'),
+        description: !!head.querySelector('meta[name="description"]'),
+        canonical: !!head.querySelector('link[rel="canonical"]'),
+        viewport: !!head.querySelector('meta[name="viewport"]')
+      };
+    });
+    expect(report.title, path).toBeTruthy();
+    expect(report.description, path).toBeTruthy();
+    expect(report.canonical, path).toBeTruthy();
+    expect(report.viewport, path).toBeTruthy();
+    await page.close();
+  }
+});
