@@ -872,3 +872,27 @@ test('SEO hreflang — localized URLs use normalized paths', async ({ request })
     }
   }
 });
+
+
+test('navigation — internal HTML links resolve directly without redirects', async ({ request }) => {
+  const paths = ['/', '/amont/', '/intermediaire/', '/aval/', '/greentech/', '/tchaditech/', '/tchaditude/', '/enerconseils/', '/clients', '/investisseurs', '/contact', '/faq'];
+  const seen = new Set();
+  for (const path of paths) {
+    const response = await request.get(new URL(path, url).href, { maxRedirects: 5, timeout: 30000 });
+    expect(response.status(), path).toBe(200);
+    const html = await response.text();
+    const links = [...html.matchAll(/<a\b[^>]*\bhref=["']([^"'#]+)(?:#[^"']*)?["'][^>]*>/gi)]
+      .map(m => m[1])
+      .filter(h => h.startsWith('/') && !h.startsWith('//'))
+      .map(h => new URL(h, response.url()).href);
+    for (const href of links) {
+      if (seen.has(href)) continue;
+      seen.add(href);
+      const target = await request.get(href, { maxRedirects: 0, timeout: 30000 });
+      expect(target.status(), path + ' -> ' + href).not.toBe(301);
+      expect(target.status(), path + ' -> ' + href).not.toBe(302);
+      expect(target.status(), path + ' -> ' + href).not.toBe(307);
+      expect(target.status(), path + ' -> ' + href).not.toBe(308);
+    }
+  }
+});
