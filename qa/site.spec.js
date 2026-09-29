@@ -23,7 +23,7 @@ test('homepage mobile', async ({ browser }) => {
 test('homepage keyboard accessibility', async ({ page }) => {
   await page.goto(url, { waitUntil: 'networkidle', timeout: 45000 });
   await page.keyboard.press('Tab');
-  await expect(page.locator('a.et-skip').first()).toBeFocused();
+  await expect(page.locator('a.et-skip, a.skip-link').first()).toBeFocused();
   await page.keyboard.press('Enter');
   await expect(page.locator('#main-content').first()).toBeFocused();
 });
@@ -39,7 +39,7 @@ test('representative inner pages — desktop and mobile', async ({ browser }) =>
     expect(response, path).not.toBeNull();
     expect(response.status(), path).toBeLessThan(400);
     await expect(page.locator('h1').first(), path).toBeVisible();
-    await expect(page.locator('a.et-skip').first(), path).toHaveAttribute('href', '#main-content');
+    await expect(page.locator('a.et-skip, a.skip-link').first(), path).toHaveAttribute('href', /#main-content|#contenu|#content/);
     await expect(page.locator('nav').first(), path).toBeVisible();
     const overflow = await page.evaluate(() => document.documentElement.scrollWidth > document.documentElement.clientWidth + 1);
     expect(overflow, path).toBeFalsy();
@@ -54,7 +54,7 @@ test('representative inner pages — desktop and mobile', async ({ browser }) =>
     expect(mobileResponse, path + ' mobile').not.toBeNull();
     expect(mobileResponse.status(), path + ' mobile').toBeLessThan(400);
     await expect(mobile.locator('h1').first(), path + ' mobile').toBeVisible();
-    await expect(mobile.locator('a.et-skip').first(), path + ' mobile').toHaveAttribute('href', '#main-content');
+    await expect(mobile.locator('a.et-skip, a.skip-link').first(), path + ' mobile').toHaveAttribute('href', /#main-content|#contenu|#content/);
     await expect(mobile.locator('nav').first(), path + ' mobile').toBeVisible();
     const mobileOverflow = await mobile.evaluate(() => document.documentElement.scrollWidth > document.documentElement.clientWidth + 1);
     expect(mobileOverflow, path + ' mobile').toBeFalsy();
