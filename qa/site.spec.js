@@ -726,3 +726,20 @@ test('accessibility — reduced motion visual contract', async ({ browser }) => 
   if (result.transitionDuration) expect(result.transitionDuration).toMatch(/^(0s|0ms)(,\s*(0s|0ms))*$/);
   await page.close();
 });
+
+
+test('performance — external scripts remain non-blocking', async ({ request }) => {
+  const paths = ['/', '/contact', '/clients', '/investisseurs', '/faq', '/greentech/', '/tchaditech/', '/tchaditude/', '/enerconseils/'];
+  for (const path of paths) {
+    const response = await request.get(new URL(path, url).href, { timeout: 30000 });
+    expect(response.status(), path).toBe(200);
+    const html = await response.text();
+    const scripts = [...html.matchAll(/<script\\b([^>]*)\\bsrc=["']([^"']+)["'][^>]*>/gi)];
+    for (const match of scripts) {
+      const attrs = match[1] + ' ' + match[0];
+      const isExternal = /^https?:/i.test(match[2]) || match[2].startsWith('/');
+      if (!isExternal) continue;
+      expect(/\\bdefer\\b|\\basync\\b/i.test(attrs), path + ' -> ' + match[2]).toBeTruthy();
+    }
+  }
+});
