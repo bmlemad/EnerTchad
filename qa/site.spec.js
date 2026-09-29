@@ -498,3 +498,38 @@ test('SEO hreflang — alternates resolve and are reciprocal', async ({ request 
     }
   }
 });
+
+test('SEO social metadata — Open Graph et Twitter card', async ({ request }) => {
+  const paths = ['/', '/index-en', '/ar', '/contact', '/contact-en', '/clients', '/clients-en', '/investisseurs', '/investisseurs-en', '/faq', '/faq-en'];
+  for (const path of paths) {
+    const response = await request.get(new URL(path, url).href);
+    expect(response.status(), path).toBe(200);
+    const html = await response.text();
+    const getMeta = (attr, value) => {
+      const re = new RegExp('<meta[^>]+(?:' + attr + '=["\\\']' + value.replace(/[.*+?^{}()|[\\]\\]/g, '\\\\$&') + '["\\\']|'+attr+'=["\\\'][^"\\\']+["\\\'][^>]*' + value.replace(/[.*+?^{}()|[\\]\\]/g, '\\\\$&') + ')', 'i');
+      return re.test(html);
+    };
+    const meta = (property, contentAttr='property') => {
+      const re = new RegExp('<meta[^>]+(?:' + contentAttr + '=["\\\']' + property.replace(/[.*+?^{}()|[\\]\\]/g, '\\\\$&') + '["\\\'])[^>]+content=["\\\']([^"\\\']+)["\\\']', 'i');
+      return (html.match(re) || [])[1] || '';
+    };
+    const ogTitle = meta('og:title');
+    const ogDesc = meta('og:description');
+    const ogUrl = meta('og:url');
+    const ogType = meta('og:type');
+    const twitterCard = meta('twitter:card', 'name');
+    const twitterTitle = meta('twitter:title', 'name');
+    const twitterDesc = meta('twitter:description', 'name');
+    const twitterImage = meta('twitter:image', 'name');
+    expect(ogTitle, path).not.toBe('');
+    expect(ogDesc, path).not.toBe('');
+    expect(ogUrl, path).toBeTruthy();
+    expect(new URL(ogUrl, response.url()).origin, path).toBe(new URL(url).origin);
+    expect(ogType, path).toBeTruthy();
+    expect(twitterCard, path).toBeTruthy();
+    expect(twitterTitle || ogTitle, path).not.toBe('');
+    expect(twitterDesc || ogDesc, path).not.toBe('');
+    expect(twitterImage, path).toMatch(/^https:\/\//);
+    expect(getMeta('property', 'og:title'), path).toBeTruthy();
+  }
+});
