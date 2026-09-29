@@ -918,3 +918,27 @@ test('forms — explicit submission contract and safe autocomplete', async ({ re
     }
   }
 });
+
+
+test('performance — internal CSS/JS resources resolve directly', async ({ request }) => {
+  const paths = ['/', '/index-en', '/ar', '/contact', '/clients', '/investisseurs', '/faq', '/greentech/', '/tchaditech/', '/tchaditude/', '/enerconseils/'];
+  const seen = new Set();
+  for (const path of paths) {
+    const response = await request.get(new URL(path, url).href, { timeout: 30000 });
+    expect(response.status(), path).toBe(200);
+    const html = await response.text();
+    const resources = [
+      ...[...html.matchAll(/<script\b[^>]*\bsrc=["']([^"']+)["']/gi)].map(m => m[1]),
+      ...[...html.matchAll(/<link\b[^>]*\bhref=["']([^"']+)["']/gi)]
+        .map(m => m[1])
+        .filter(h => /\.css(?:[?#].*)?$/i.test(h))
+    ].filter(h => h.startsWith('/') && !h.startsWith('//'));
+    for (const href of resources) {
+      const absolute = new URL(href, response.url()).href;
+      if (seen.has(absolute)) continue;
+      seen.add(absolute);
+      const target = await request.get(absolute, { maxRedirects: 0, timeout: 30000 });
+      expect(target.status(), path + ' -> ' + href).toBe(200);
+    }
+  }
+});
