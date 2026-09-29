@@ -1719,3 +1719,49 @@ test('routing — legacy redirects are permanent and terminate on canonical cont
     expect(resolved.pathname, from).toBe(to);
   }
 });
+
+test('runtime health — no failed document resources on representative pages', async ({ browser }) => {
+  const paths = ['/', '/amont/', '/intermediaire/', '/aval/', '/greentech/', '/tchaditech/', '/tchaditude/', '/enerconseils/', '/contact', '/investisseurs', '/ar'];
+  for (const path of paths) {
+    const page = await browser.newPage();
+    const failures = [];
+    page.on('requestfailed', req => failures.push(req.url() + ' :: ' + (req.failure()?.errorText || 'failed')));
+    const response = await page.goto(new URL(path, url).href, { waitUntil: 'networkidle', timeout: 45000 });
+    expect(response?.status(), path).toBe(200);
+    expect(failures, path).toEqual([]);
+    await page.close();
+  }
+});
+
+test('runtime health — local styles, scripts, fonts and images are served successfully', async ({ browser }) => {
+  const page = await browser.newPage();
+  const failed = [];
+  page.on('response', response => {
+    const type = response.request().resourceType();
+    if (['stylesheet', 'script', 'font', 'image'].includes(type) && response.status() >= 400) {
+      failed.push(type + ' ' + response.status() + ' ' + response.url());
+    }
+  });
+  const response = await page.goto(url, { waitUntil: 'networkidle', timeout: 45000 });
+  expect(response?.status()).toBe(200);
+  expect(failed).toEqual([]);
+  await page.close();
+});
+
+test('fonts — declared webfonts use valid font-display and local source URLs', async ({ browser }) => {
+  const page = await browser.newPage();
+  await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 45000 });
+  const report = await page.evaluate(() => {
+    const rules = [];
+    for (const sheet of [...document.styleSheets]) {
+      try {
+        for (const rule of [...sheet.cssRules]) if (rule.cssText.includes('@font-face')) rules.push(rule.cssText);
+      } catch {}
+    }
+    return rules;
+  });
+  for (const rule of report) {
+    expect(rule).toMatch(/font-display\s*:\s*(swap|optional|fallback|block)/i);
+  }
+  await page.close();
+});
