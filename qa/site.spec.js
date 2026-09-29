@@ -1037,3 +1037,14 @@ test('trust — homepage claims expose status/context and evidence entry points'
   const targetHits = targetTerms.reduce((n, term) => n + (body.match(new RegExp(term, 'gi')) || []).length, 0);
   expect(targetHits).toBeGreaterThan(0);
 });
+
+test('404 page — branded recovery and noindex', async ({ request }) => {
+  const response = await request.get(new URL('/__qa_missing_route__', url).href, { maxRedirects: 5, timeout: 30000 });
+  expect(response.status()).toBe(404);
+  const html = await response.text();
+  expect(html).toMatch(/Page introuvable|404/i);
+  expect(html).toMatch(/noindex/i);
+  expect(html).toMatch(/EnerTchad/i);
+  expect(html).toMatch(/href=["'][^"']*(?:^|\\/)index|href=["']\\//i);
+});
+
