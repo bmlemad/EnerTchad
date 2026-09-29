@@ -1641,3 +1641,58 @@ test('interaction — buttons have explicit type and links expose non-empty dest
     await page.close();
   }
 });
+
+test('SEO infrastructure — robots and sitemap remain mutually consistent', async ({ request }) => {
+  const robots = await request.get(new URL('/robots.txt', url).href, { timeout: 30000 });
+  expect(robots.status()).toBe(200);
+  const robotsText = await robots.text();
+  const sitemapMatch = robotsText.match(/^\s*Sitemap:\s*(\S+)\s*$/im);
+  expect(sitemapMatch).not.toBeNull();
+  const sitemapUrl = new URL(sitemapMatch[1]);
+  expect(sitemapUrl.protocol).toBe('https:');
+  expect(sitemapUrl.hostname).toBe(new URL(url).hostname);
+  expect(sitemapUrl.pathname).toBe('/sitemap.xml');
+
+  const sitemap = await request.get(sitemapUrl.href, { timeout: 30000 });
+  expect(sitemap.status()).toBe(200);
+  const xml = await sitemap.text();
+  expect(xml).toContain('<urlset');
+  expect(xml).toContain('xmlns:xhtml=');
+});
+
+test('SEO infrastructure — canonical URLs are absolute HTTPS and match requested host', async ({ browser }) => {
+  const paths = ['/', '/index-en', '/ar', '/amont/', '/intermediaire/', '/aval/', '/greentech/', '/tchaditech/', '/tchaditude/', '/enerconseils/', '/contact', '/investisseurs'];
+  for (const path of paths) {
+    const page = await browser.newPage();
+    const response = await page.goto(new URL(path, url).href, { waitUntil: 'domcontentloaded', timeout: 45000 });
+    expect(response?.status(), path).toBe(200);
+    const canonicals = await page.locator('link[rel="canonical"]').evaluateAll(nodes => nodes.map(n => n.getAttribute('href')).filter(Boolean));
+    expect(canonicals.length, path).toBe(1);
+    const canonical = new URL(canonicals[0], url);
+    expect(canonical.protocol, path).toBe('https:');
+    expect(canonical.hostname, path).toBe(new URL(url).hostname);
+    expect(canonical.search, path).toBe('');
+    expect(canonical.hash, path).toBe('');
+    await page.close();
+  }
+});
+
+test('SEO infrastructure — hreflang declarations use valid language codes and canonical-host URLs', async ({ browser }) => {
+  const paths = ['/', '/index-en', '/ar'];
+  for (const path of paths) {
+    const page = await browser.newPage();
+    await page.goto(new URL(path, url).href, { waitUntil: 'domcontentloaded', timeout: 45000 });
+    const links = await page.locator('link[rel="alternate"][hreflang]').evaluateAll(nodes => nodes.map(n => ({
+      lang: n.getAttribute('hreflang'),
+      href: n.getAttribute('href')
+    })));
+    const langs = links.map(x => x.lang);
+    expect(langs.sort(), path).toEqual(['ar', 'en', 'fr', 'x-default'].sort());
+    for (const item of links) {
+      const target = new URL(item.href, url);
+      expect(target.protocol, path).toBe('https:');
+      expect(target.hostname, path).toBe(new URL(url).hostname);
+    }
+    await page.close();
+  }
+});
