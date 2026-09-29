@@ -254,3 +254,19 @@ html.et-plight .et-intent{background:rgba(255,255,255,.82)!important}
     outline:2px solid Highlight!important;border-color:CanvasText!important;
   }
 }
+
+
+/* EnerTchad Premium QA v4 — anchor rhythm, text wrapping and touch polish */
+html{scroll-padding-top:var(--et-anc,120px)}
+body{overflow-x:clip;-webkit-tap-highlight-color:rgba(232,195,106,.16)}
+main section[id],main [id].anc578{scroll-margin-top:var(--et-anc,120px)}
+h1,h2,h3{ text-wrap:balance }
+p,li{ overflow-wrap:anywhere }
+a,button{ -webkit-tap-highlight-color:rgba(232,195,106,.12) }
+@media(max-width:640px){
+  main section[id],main [id].anc578{scroll-margin-top:var(--et-anc,92px)}
+  h1,h2,h3{ text-wrap:pretty }
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto!important}
+}
