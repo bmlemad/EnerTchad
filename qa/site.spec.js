@@ -399,3 +399,16 @@ test('forms, anchors and interactive controls — representative pages', async (
     await page.close();
   }
 });
+
+
+test('SEO sitemap — no false FR/EN equivalence', async ({ request }) => {
+  const response = await request.get(new URL('/sitemap.xml', url).href);
+  expect(response.status()).toBe(200);
+  const xml = await response.text();
+  const blocks = [...xml.matchAll(/<url>([\\s\\S]*?)<\\/url>/g)].map(m => m[1]);
+  for (const block of blocks) {
+    const fr = (block.match(/hreflang="fr" href="([^"]+)"/) || [])[1] || '';
+    const en = (block.match(/hreflang="en" href="([^"]+)"/) || [])[1] || '';
+    if (fr && en) expect(en).not.toBe(fr);
+  }
+});
