@@ -533,3 +533,31 @@ test('SEO social metadata — Open Graph et Twitter card', async ({ request }) =
     expect(getMeta('property', 'og:title'), path).toBeTruthy();
   }
 });
+
+test('SEO sitemap — chaque URL indexée est auto-canonique', async ({ request }) => {
+  const sitemap = await request.get(new URL('/sitemap.xml', url).href);
+  expect(sitemap.status()).toBe(200);
+  const xml = await sitemap.text();
+  const urls = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m => m[1]);
+  expect(urls.length).toBeGreaterThan(100);
+
+  for (let i = 0; i < urls.length; i += 10) {
+    const batch = urls.slice(i, i + 10);
+    const responses = await Promise.all(
+      batch.map(u => request.get(u, { maxRedirects: 5, timeout: 30000 }))
+    );
+    for (let j = 0; j < responses.length; j++) {
+      const response = responses[j];
+      const source = batch[j];
+      expect(response.status(), source).toBe(200);
+      const html = await response.text();
+      const canonicalMatch =
+        html.match(/<link[^>]+rel=["'][^"']*canonical[^"']*["'][^>]+href=["']([^"']+)["']/i) ||
+        html.match(/<link[^>]+href=["']([^"']+)["'][^>]+rel=["'][^"']*canonical[^"']*["']/i);
+      expect(canonicalMatch, source).not.toBeNull();
+      const canonical = new URL(canonicalMatch[1], response.url()).href.replace(/\/$/, '');
+      const finalUrl = response.url().replace(/\/$/, '');
+      expect(canonical, source).toBe(finalUrl);
+    }
+  }
+});
