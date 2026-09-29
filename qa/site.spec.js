@@ -1462,3 +1462,70 @@ test('routing — representative sitemap URLs resolve without 4xx/5xx', async ({
     expect(response.status(), target).toBeLessThan(400);
   }
 });
+
+test('responsive — key content remains readable across tablet and mobile widths', async ({ browser }) => {
+  const paths = ['/', '/amont/', '/intermediaire/', '/aval/', '/greentech/', '/tchaditech/', '/contact'];
+  const viewports = [{ width: 1024, height: 768 }, { width: 768, height: 1024 }, { width: 390, height: 844 }];
+  for (const path of paths) {
+    for (const viewport of viewports) {
+      const page = await browser.newPage({ viewport });
+      const response = await page.goto(new URL(path, url).href, { waitUntil: 'domcontentloaded', timeout: 45000 });
+      expect(response?.status(), path + ' ' + viewport.width).toBe(200);
+      const metrics = await page.evaluate(() => {
+        const body = document.body;
+        const doc = document.documentElement;
+        const main = document.querySelector('main');
+        const h1 = document.querySelector('h1');
+        return {
+          overflow: doc.scrollWidth > doc.clientWidth + 1,
+          bodyWidth: body.scrollWidth,
+          viewport: doc.clientWidth,
+          mainText: main?.innerText?.trim().length || 0,
+          h1Visible: !!h1 && !!(h1.getBoundingClientRect().width && h1.getBoundingClientRect().height)
+        };
+      });
+      expect(metrics.overflow, path + ' horizontal overflow at ' + viewport.width).toBeFalsy();
+      expect(metrics.mainText, path + ' main content').toBeGreaterThan(100);
+      expect(metrics.h1Visible, path + ' h1').toBeTruthy();
+      await page.close();
+    }
+  }
+});
+
+test('localization — localized pages declare consistent language metadata and direction', async ({ browser }) => {
+  const cases = [['/', 'fr', 'ltr'], ['/index-en', 'en', 'ltr'], ['/ar', 'ar', 'rtl'], ['/ar-poles', 'ar', 'rtl'], ['/ar-amont', 'ar', 'rtl'], ['/ar-aval', 'ar', 'rtl'], ['/ar-contact', 'ar', 'rtl'], ['/ar-investisseurs', 'ar', 'rtl']];
+  for (const [path, lang, dir] of cases) {
+    const page = await browser.newPage();
+    const response = await page.goto(new URL(path, url).href, { waitUntil: 'domcontentloaded', timeout: 45000 });
+    expect(response?.status(), path).toBe(200);
+    await expect(page.locator('html')).toHaveAttribute('lang', lang);
+    await expect(page.locator('html')).toHaveAttribute('dir', dir);
+    await page.close();
+  }
+});
+
+test('accessibility — images expose useful alternative text and controls have accessible names', async ({ browser }) => {
+  const paths = ['/', '/amont/', '/intermediaire/', '/aval/', '/greentech/', '/contact', '/investisseurs'];
+  for (const path of paths) {
+    const page = await browser.newPage();
+    const response = await page.goto(new URL(path, url).href, { waitUntil: 'domcontentloaded', timeout: 45000 });
+    expect(response?.status(), path).toBe(200);
+    const report = await page.evaluate(() => {
+      const images = [...document.images].map(img => ({ alt: img.getAttribute('alt'), decorative: img.getAttribute('role') === 'presentation' || img.getAttribute('aria-hidden') === 'true' }));
+      const controls = [...document.querySelectorAll('a,button,input,select,textarea')].filter(el => !el.hasAttribute('disabled')).map(el => ({
+        tag: el.tagName.toLowerCase(),
+        text: (el.textContent || '').trim(),
+        aria: el.getAttribute('aria-label') || el.getAttribute('aria-labelledby'),
+        title: el.getAttribute('title'),
+        placeholder: el.getAttribute('placeholder')
+      }));
+      return { images, controls };
+    });
+    for (const image of report.images) expect(image.decorative || image.alt !== null, path).toBeTruthy();
+    for (const control of report.controls) {
+      const named = control.text || control.aria || control.title || control.placeholder;
+      expect(named, path + ' unnamed ' + control.tag).toBeTruthy();
+    }
+    await page.close();
+  }
+});
