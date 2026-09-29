@@ -1696,3 +1696,26 @@ test('SEO infrastructure — hreflang declarations use valid language codes and 
     await page.close();
   }
 });
+
+test('routing — legacy redirects are permanent and terminate on canonical content', async ({ request }) => {
+  const cases = [
+    ['/pole-amont-en', '/amont/'],
+    ['/pole-aval-en.html', '/aval/'],
+    ['/pole-greentech', '/greentech/'],
+    ['/pole-tchaditech-en', '/tchaditech/'],
+    ['/pole-tchaditude-en.html', '/tchaditude/'],
+    ['/pole-enerconseils-en', '/enerconseils/'],
+    ['/pole-enerchimie', '/petrochimie/'],
+    ['/pole-intermediaire-en', '/intermediaire/']
+  ];
+  for (const [from, to] of cases) {
+    const first = await request.get(new URL(from, url).href, { maxRedirects: 0, timeout: 30000 });
+    expect([301, 308], from).toContain(first.status());
+    const location = first.headers()['location'];
+    expect(location, from).toBeTruthy();
+    const resolved = new URL(location, url);
+    const final = await request.get(resolved.href, { maxRedirects: 0, timeout: 30000 });
+    expect(final.status(), from).toBeLessThan(400);
+    expect(resolved.pathname, from).toBe(to);
+  }
+});
