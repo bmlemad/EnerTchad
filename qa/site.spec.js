@@ -2023,3 +2023,55 @@ test('navigation — internal links do not expose malformed or javascript URLs',
     await page.close();
   }
 });
+
+test('forms — submit controls are explicit and actionable', async ({ browser }) => {
+  const paths = ['/contact', '/investisseurs', '/carrieres'];
+  for (const path of paths) {
+    const page = await browser.newPage();
+    await page.goto(new URL(path, url).href, { waitUntil: 'domcontentloaded', timeout: 45000 });
+    const controls = await page.locator('form button, form input[type="submit"], form input[type="button"]').evaluateAll(nodes => nodes.map(el => ({
+      disabled: el.hasAttribute('disabled'),
+      text: (el.textContent || el.getAttribute('value') || '').trim(),
+      aria: el.getAttribute('aria-label'),
+      type: el.getAttribute('type')
+    })));
+    for (const control of controls) {
+      expect(control.disabled, path).toBeFalsy();
+      expect(control.text || control.aria, path).toBeTruthy();
+      expect(['submit','button'].includes(control.type || 'submit'), path).toBeTruthy();
+    }
+    await page.close();
+  }
+});
+
+test('interaction — keyboard focus reaches primary controls', async ({ browser }) => {
+  const page = await browser.newPage({ viewport: { width: 390, height: 844 } });
+  await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 45000 });
+  const result = await page.evaluate(() => {
+    const candidates = [...document.querySelectorAll('a[href],button,input,select,textarea,[tabindex]')]
+      .filter(el => {
+        const style = getComputedStyle(el);
+        return !el.hasAttribute('disabled') &&
+          el.getAttribute('tabindex') !== '-1' &&
+          style.display !== 'none' &&
+          style.visibility !== 'hidden';
+      });
+    const sample = candidates.slice(0, 12);
+    sample.forEach(el => el.focus());
+    return sample.filter(el => document.activeElement === el).length;
+  });
+  expect(result).toBeGreaterThan(0);
+  await page.close();
+});
+
+test('runtime — page errors are not emitted during initial load', async ({ browser }) => {
+  const paths = ['/', '/index-en', '/ar', '/contact', '/investisseurs', '/greentech/', '/tchaditech/'];
+  for (const path of paths) {
+    const page = await browser.newPage();
+    const errors = [];
+    page.on('pageerror', error => errors.push(String(error)));
+    await page.goto(new URL(path, url).href, { waitUntil: 'networkidle', timeout: 45000 });
+    expect(errors, path).toEqual([]);
+    await page.close();
+  }
+});
