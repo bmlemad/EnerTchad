@@ -505,3 +505,61 @@ html.et-plight{
   }
   .et-command-card,.et-proof-card,.t550-kpi,.hncard{background:Canvas!important;color:CanvasText!important}
 }
+
+
+/* ─────────────────────────────────────────────────────────────
+   VISUAL SYSTEM v1 — consolidated premium tokens
+   Keep component-specific overrides below this layer only when
+   they represent an intentional exception.
+   ───────────────────────────────────────────────────────────── */
+:root {
+  --et-color-ink: #071426;
+  --et-color-ink-soft: #10243d;
+  --et-color-surface: rgba(255,255,255,.78);
+  --et-color-surface-strong: rgba(255,255,255,.92);
+  --et-color-line: rgba(7,20,38,.12);
+  --et-color-accent: #c9a24a;
+  --et-color-energy: #1769aa;
+  --et-color-green: #27865b;
+  --et-radius-sm: 12px;
+  --et-radius-md: 18px;
+  --et-radius-lg: 28px;
+  --et-shadow-soft: 0 12px 34px rgba(7,20,38,.08);
+  --et-shadow-float: 0 24px 70px rgba(7,20,38,.14);
+  --et-glass-blur: 18px;
+  --et-space-1: 8px;
+  --et-space-2: 16px;
+  --et-space-3: 24px;
+  --et-space-4: 40px;
+  --et-space-5: 64px;
+  --et-space-6: 96px;
+}
+
+/* Premium surfaces: restrained glass, consistent depth, no text glow. */
+.et-glass,
+.glass-card,
+.glass-panel {
+  background: var(--et-color-surface);
+  border: 1px solid var(--et-color-line);
+  border-radius: var(--et-radius-md);
+  box-shadow: var(--et-shadow-soft);
+  -webkit-backdrop-filter: blur(var(--et-glass-blur)) saturate(125%);
+  backdrop-filter: blur(var(--et-glass-blur)) saturate(125%);
+}
+
+.et-glass--strong {
+  background: var(--et-color-surface-strong);
+  border-radius: var(--et-radius-lg);
+  box-shadow: var(--et-shadow-float);
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .et-glass,
+  .glass-card,
+  .glass-panel,
+  .et-glass--strong {
+    background: #fff;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+}
