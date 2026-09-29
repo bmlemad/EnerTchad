@@ -811,3 +811,19 @@ test('SEO redirects — permanent and chain-free', async () => {
     expect(sources.has(destinationPath), rule.source + ' -> ' + rule.destination).toBeFalsy();
   }
 });
+
+
+test('performance/security — critical resources expose correct MIME types', async ({ request }) => {
+  const cases = [
+    ['/', 'text/html'],
+    ['/index-en', 'text/html'],
+    ['/assets/chrome/home-corporate-2026.css', 'text/css'],
+    ['/assets/chrome/nav_a.js', 'javascript'],
+  ];
+  for (const [path, expected] of cases) {
+    const response = await request.get(new URL(path, url).href, { timeout: 30000 });
+    expect(response.status(), path).toBe(200);
+    const type = (response.headers()['content-type'] || '').toLowerCase();
+    expect(type, path).toContain(expected);
+  }
+});
