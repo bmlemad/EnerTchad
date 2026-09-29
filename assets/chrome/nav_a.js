@@ -80,14 +80,16 @@ try{(function(){
   });
 })();}catch(_e){}
 
-/* Bascule linguistique directe : si la page declare un equivalent EN
-   (hreflang), le bouton FR-EN y mene directement plutot qu'au portail /en. */
+/* Bascule linguistique directe : utilise l'equivalent hreflang de la page
+   courante. Ainsi FR -> EN et EN -> FR restent sur le meme contenu au lieu
+   de retomber sur un portail generique. */
 try{(function(){
-  if((document.documentElement.getAttribute('lang')||'').slice(0,2)!=='fr')return;
-  var alt=document.querySelector('link[rel="alternate"][hreflang="en"]');if(!alt)return;
+  var lang=(document.documentElement.getAttribute('lang')||'').slice(0,2);
+  var target=lang==='fr'?'en':(lang==='en'?'fr':'');
+  if(!target)return;
+  var alt=document.querySelector('link[rel="alternate"][hreflang="'+target+'"]');if(!alt)return;
   var href=alt.getAttribute('href');if(!href)return;
   href=href.replace(/^https?:\/\/[^\/]+/,'')||'/';
-  if(href===location.pathname)return;
   document.querySelectorAll('a.nx-lang').forEach(function(a){a.href=href;});
 })()}catch(e){}
 
