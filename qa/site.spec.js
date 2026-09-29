@@ -827,3 +827,27 @@ test('performance/security — critical resources expose correct MIME types', as
     expect(type, path).toContain(expected);
   }
 });
+
+
+test('SEO social metadata — Open Graph locales match document language', async ({ request }) => {
+  const cases = [
+    ['/', 'fr_TD', ['en_US', 'ar_TD']],
+    ['/index-en', 'en_US', ['fr_TD', 'ar_TD']],
+    ['/ar', 'ar_TD', ['fr_TD', 'en_US']],
+    ['/contact', 'fr_TD', ['en_US', 'ar_TD']],
+    ['/contact-en', 'en_US', ['fr_TD', 'ar_TD']],
+    ['/ar-contact', 'ar_TD', ['fr_TD', 'en_US']],
+    ['/investisseurs', 'fr_TD', ['en_US', 'ar_TD']],
+    ['/investisseurs-en', 'en_US', ['fr_TD', 'ar_TD']],
+    ['/ar-investisseurs', 'ar_TD', ['fr_TD', 'en_US']]
+  ];
+  for (const [path, locale, alternates] of cases) {
+    const response = await request.get(new URL(path, url).href);
+    expect(response.status(), path).toBe(200);
+    const html = await response.text();
+    const main = (html.match(/property=["']og:locale["'][^>]+content=["']([^"']+)["']/i) || [])[1] || '';
+    const alt = [...html.matchAll(/property=["']og:locale:alternate["'][^>]+content=["']([^"']+)["']/gi)].map(m => m[1]);
+    expect(main, path).toBe(locale);
+    for (const expected of alternates) expect(alt, path).toContain(expected);
+  }
+});
