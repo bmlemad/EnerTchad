@@ -100,6 +100,24 @@ test('legacy redirects — canonical routes', async ({ request }) => {
   }
 });
 
+test('language switch — equivalent FR/EN route', async ({ browser }) => {
+  const cases = [
+    ['/index-en', '/'],
+    ['/contact-en', '/contact'],
+    ['/clients-en', '/clients'],
+    ['/investisseurs-en', '/investisseurs']
+  ];
+  for (const [enPath, frPath] of cases) {
+    const page = await browser.newPage({ viewport: { width: 1280, height: 900 } });
+    const response = await page.goto(new URL(enPath, url).href, { waitUntil: 'networkidle', timeout: 45000 });
+    expect(response, enPath).not.toBeNull();
+    expect(response.status(), enPath).toBeLessThan(400);
+    const langLink = page.locator('a.nx-lang').first();
+    await expect(langLink, enPath).toHaveAttribute('href', frPath);
+    await page.close();
+  }
+});
+
 test('language entry points — FR EN AR', async ({ browser }) => {
   const cases = [['/', 'fr'], ['/index-en', 'en'], ['/ar', 'ar'], ['/ar-poles', 'ar']];
   for (const [path, lang] of cases) {
