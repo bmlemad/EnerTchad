@@ -851,3 +851,31 @@ test('SEO social metadata — Open Graph locales match document language', async
     for (const expected of alternates) expect(alt, path).toContain(expected);
   }
 });
+
+
+test('SEO structured data — WebPage JSON-LD matches canonical route', async ({ request }) => {
+  const paths = ['/', '/index-en', '/ar', '/contact', '/contact-en', '/ar-contact', '/investisseurs', '/investisseurs-en', '/ar-investisseurs'];
+  for (const path of paths) {
+    const response = await request.get(new URL(path, url).href);
+    expect(response.status(), path).toBe(200);
+    const html = await response.text();
+    const canonicalMatch =
+      html.match(/<link[^>]+rel=["'][^"']*canonical[^"']*["'][^>]+href=["']([^"']+)["']/i) ||
+      html.match(/<link[^>]+href=["']([^"']+)["'][^>]+rel=["'][^"']*canonical[^"']*["']/i);
+    expect(canonicalMatch, path).not.toBeNull();
+    const canonical = new URL(canonicalMatch[1], response.url()).href.replace(/\/$/, '');
+
+    const blocks = [...html.matchAll(/<script[^>]+type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi)]
+      .map(m => m[1].trim());
+    const pages = [];
+    for (const block of blocks) {
+      try {
+        const data = JSON.parse(block);
+        for (const item of (Array.isArray(data) ? data : [data])) {
+          if (item && item['@type'] === 'WebPage' && item.url) pages.push(new URL(item.url, response.url()).href.replace(/\/$/, ''));
+        }
+      } catch {}
+    }
+    expect(pages, path).toContain(canonical);
+  }
+});
