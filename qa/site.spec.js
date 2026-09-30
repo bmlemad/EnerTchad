@@ -29,7 +29,7 @@ test('homepage keyboard accessibility', async ({ page }) => {
 });
 
 test('representative inner pages — desktop and mobile', async ({ browser }) => {
-  const paths = ['/amont/', '/intermediaire/', '/aval/', '/greentech/', '/societe.html', '/investisseurs.html', '/clients.html', '/carrieres.html', '/contact.html', '/faq.html'];
+  const paths = ['/amont/', '/intermediaire/', '/aval/', '/greentech/', '/societe', '/investisseurs', '/clients', '/carrieres', '/contact', '/faq'];
   for (const path of paths) {
     const page = await browser.newPage({ viewport: { width: 1280, height: 900 } });
     const errors = [];
