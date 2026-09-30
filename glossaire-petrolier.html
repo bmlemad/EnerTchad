@@ -566,7 +566,7 @@ a.glm-c:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):focus-vis
  addEventListener('hashchange',goHash);
  goHash();
  // JSON-LD DefinedTermSet
- var ld={"@context":"https://schema.org","@type":"DefinedTermSet","name":"Glossaire pétrolier EnerTchad","inLanguage":"fr",
+ var ld={"@context":"https://schema.org","@type":"DefinedTermSet","@id":"https://enertchad-delta.vercel.app/glossaire-petrolier#glossary","url":"https://enertchad-delta.vercel.app/glossaire-petrolier","isPartOf":{"@id":"https://enertchad-delta.vercel.app/glossaire-petrolier#webpage"},"publisher":{"@id":"https://enertchad-delta.vercel.app/#organization"},"name":"Glossaire pétrolier EnerTchad","inLanguage":"fr",
    "hasDefinedTerm":T.map(function(t){return {"@type":"DefinedTerm","name":t[2],"alternateName":t[1],"description":t[3]};})};
  var sc=document.createElement('script');sc.type='application/ld+json';sc.textContent=JSON.stringify(ld);document.head.appendChild(sc);
 })();
