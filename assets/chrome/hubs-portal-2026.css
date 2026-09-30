@@ -21,7 +21,20 @@
  .pgh-kpis{grid-template-columns:1fr;gap:10px}
  .pgh-kpi{min-height:0;padding:14px 16px}
  .pgh-cta{display:grid;grid-template-columns:1fr}
- .pgh-btn,.pgh-btn2{width:100%}
+ .pgh-btn,.pgh-btn2{width:100%;min-height:48px}
+ .pmani-q{max-width:18ch}
+ .pmani-sub{line-height:1.55}
+ .pgh-flabel{font-size:.72rem}
+}
+@media(max-width:390px){
+ .pgh .wrap,.pmani .wrap{width:calc(100% - 24px)}
+ .pgh h1{max-width:15ch;font-size:clamp(2rem,10vw,2.65rem);line-height:1.02}
+ .pgh .pgl{font-size:.94rem;line-height:1.55}
+ .pgh-kpi{padding:13px 14px;border-radius:14px}
+ .pgh-kpi b{font-size:1rem}
+ .pgh-kpi i{font-size:.75rem}
+ .pgh-cta{gap:8px}
+ .pgh-btn,.pgh-btn2{padding:10px 14px}
 }
 @media(prefers-reduced-transparency:reduce){
  .pgh-kpi{backdrop-filter:none;-webkit-backdrop-filter:none}
@@ -39,6 +52,9 @@
 .pole-proj{max-width:1180px;margin-inline:auto}
 @media(max-width:760px){
   .rp480,.lie558,.pole-proj{width:min(100% - 28px,1180px)}
+}
+@media(max-width:390px){
+  .rp480,.lie558,.pole-proj{width:calc(100% - 24px)}
 }
 @media(prefers-reduced-transparency:reduce){
   .pgh-kpi{background:rgba(14,22,38,.92)}
