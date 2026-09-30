@@ -297,3 +297,21 @@ html:is(.et-plight,.et-jlight) nav.corp-nav a:is(.on,:hover):not(#_):not(#__):no
 /* QA 2026-09-30 : Inter declaree ici aussi -- carnets, clients, communiques FR, investisseurs, projets et solutions demandaient Inter sans jamais la declarer (texte en police systeme) ; memes sources et reglages que bundle_head_b2.css */
 @font-face{font-family:'Inter';src:url('/assets/fonts/Inter-latin.woff2') format('woff2');font-weight:400 700;font-display:optional;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 @font-face{font-family:'Inter';src:url('/assets/fonts/Inter-latin-ext.woff2') format('woff2');font-weight:400 700;font-display:optional;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+
+/* EnerTchad Mobile Chrome 2026 — shared touch geometry */
+@media(max-width:680px){
+  .nav-in{padding-inline:max(14px,env(safe-area-inset-left)) max(14px,env(safe-area-inset-right))!important}
+  .brand-tx{max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .nav-trigger,.nav-links a,.nx-util a{min-height:46px}
+  .nx-mega{width:calc(100vw - 24px)!important;max-width:calc(100vw - 24px)!important;margin-inline:12px!important;box-sizing:border-box!important}
+  .nx-mega a{min-height:46px!important;padding-block:10px!important}
+  .nav-links .nx-mega{border-radius:16px!important}
+  .nxm606,.nxm616{grid-template-columns:1fr!important;gap:8px!important}
+  .nxm606 .nxc-amont,.nxm606 .nxc-integ,.nxm616 .nxc-caps{grid-column:auto!important}
+  .nxm606 .nxg2,.nxm606 .nxg4,.nxm616 .nxg6{grid-template-columns:1fr!important;gap:6px!important}
+  footer{padding-bottom:calc(24px + env(safe-area-inset-bottom))!important}
+}
+@media(max-width:390px){
+  .brand-tx{max-width:145px;font-size:.92rem!important}
+  .nav-in{min-height:60px!important}
+}
