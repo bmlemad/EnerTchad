@@ -41,3 +41,20 @@ html:is(.et-plight,.et-jlight) body:not(.hm):not(.et-modern-exclude) .ttg-t:hove
 @media(max-width:600px){body:not(.hm):not(.et-modern-exclude) .ttg-g{grid-template-columns:1fr}body:not(.hm):not(.et-modern-exclude) .ttg-t{min-height:0;padding:16px}}
 @media(prefers-reduced-transparency:reduce){html:is(.et-plight,.et-jlight) body:not(.hm):not(.et-modern-exclude) .ttg-t{background:#f7f9fc;-webkit-backdrop-filter:none;backdrop-filter:none;box-shadow:none}}
 @media(prefers-reduced-motion:reduce){body:not(.hm):not(.et-modern-exclude) .ttg-t{transition:none}body:not(.hm):not(.et-modern-exclude) .ttg-t:hover{transform:none}}
+
+/* Deep-page component harmonization — CTAs, data tables and traversal rails */
+body:not(.hm):not(.et-modern-exclude) :is(.ivt-cta,.btn,.cta,.cta-btn,.action-btn){border-radius:12px;min-height:42px;transition:transform .2s ease,box-shadow .2s ease,background .2s ease,border-color .2s ease}
+body:not(.hm):not(.et-modern-exclude) :is(.ivt-cta,.btn,.cta,.cta-btn,.action-btn):hover{transform:translateY(-1px)}
+html:is(.et-plight,.et-jlight) body:not(.hm):not(.et-modern-exclude) :is(.ivt-cta,.btn,.cta,.cta-btn,.action-btn){box-shadow:0 10px 24px rgba(24,45,67,.07),inset 0 1px 0 rgba(255,255,255,.7)}
+body:not(.hm):not(.et-modern-exclude) :is(table,.data-table,.data-table-wrap,.table-wrap){border-radius:16px;overflow:auto}
+body:not(.hm):not(.et-modern-exclude) :is(table,.data-table){border-collapse:separate;border-spacing:0;border:1px solid var(--et-i-line);background:rgba(255,255,255,.025)}
+body:not(.hm):not(.et-modern-exclude) :is(table,.data-table) :is(th,td){padding:12px 14px;border-bottom:1px solid var(--et-i-line);vertical-align:top}
+body:not(.hm):not(.et-modern-exclude) :is(table,.data-table) th{font:700 .7rem var(--fm,ui-monospace,monospace);letter-spacing:.08em;text-transform:uppercase;color:var(--et-i-muted);background:rgba(255,255,255,.045)}
+body:not(.hm):not(.et-modern-exclude) :is(table,.data-table) tr:last-child td{border-bottom:0}
+html:is(.et-plight,.et-jlight) body:not(.hm):not(.et-modern-exclude) :is(table,.data-table){background:rgba(255,255,255,.52);border-color:rgba(255,255,255,.74);box-shadow:0 12px 32px rgba(24,45,67,.055),inset 0 1px 0 rgba(255,255,255,.76);-webkit-backdrop-filter:blur(12px) saturate(120%);backdrop-filter:blur(12px) saturate(120%)}
+html:is(.et-plight,.et-jlight) body:not(.hm):not(.et-modern-exclude) :is(table,.data-table) th{background:rgba(247,249,252,.62);color:#4b586a}
+body:not(.hm):not(.et-modern-exclude) :is(#aurail,.inv-docrail){border-radius:18px}
+html:is(.et-plight,.et-jlight) body:not(.hm):not(.et-modern-exclude) :is(#aurail,.inv-docrail){filter:none}
+@media(max-width:760px){body:not(.hm):not(.et-modern-exclude) :is(table,.data-table){font-size:.86rem}body:not(.hm):not(.et-modern-exclude) :is(table,.data-table) :is(th,td){padding:10px 11px;min-width:120px}}
+@media(prefers-reduced-transparency:reduce){html:is(.et-plight,.et-jlight) body:not(.hm):not(.et-modern-exclude) :is(table,.data-table){background:#f7f9fc;-webkit-backdrop-filter:none;backdrop-filter:none;box-shadow:none}}
+@media(prefers-reduced-motion:reduce){body:not(.hm):not(.et-modern-exclude) :is(.ivt-cta,.btn,.cta,.cta-btn,.action-btn){transition:none}body:not(.hm):not(.et-modern-exclude) :is(.ivt-cta,.btn,.cta,.cta-btn,.action-btn):hover{transform:none}}
