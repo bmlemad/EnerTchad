@@ -2045,6 +2045,24 @@ test('resources — stylesheets and scripts are not duplicated unnecessarily', a
 });
 
 
+
+test('interactive integrity — links expose real destinations and buttons are actionable', async ({ browser }) => {
+  const paths = ['/', '/amont/', '/aval/', '/contact'];
+  for (const path of paths) {
+    const page = await browser.newPage({ viewport: { width: 390, height: 844 } });
+    await page.goto(new URL(path, url).href, { waitUntil: 'domcontentloaded', timeout: 45000 });
+    const report = await page.evaluate(() => ({
+      emptyLinks: [...document.querySelectorAll('a')].filter(a => !a.getAttribute('href') || a.getAttribute('href') === '#' || a.getAttribute('href').startsWith('javascript:')).map(a => a.outerHTML.slice(0, 180)),
+      disabledButtons: [...document.querySelectorAll('button')].filter(b => b.disabled && !b.getAttribute('aria-disabled')).length,
+      unnamedButtons: [...document.querySelectorAll('button')].filter(b => !b.textContent.trim() && !b.getAttribute('aria-label') && !b.getAttribute('title')).length
+    }));
+    expect(report.emptyLinks, path + ' empty/dead links').toEqual([]);
+    expect(report.disabledButtons, path + ' disabled buttons without accessible state').toBe(0);
+    expect(report.unnamedButtons, path + ' unnamed buttons').toBe(0);
+    await page.close();
+  }
+});
+
 test('document integrity — heading hierarchy starts with a single h1', async ({ browser }) => {
   const paths = ['/', '/amont/', '/intermediaire/', '/aval/', '/greentech/', '/contact'];
   for (const path of paths) {
