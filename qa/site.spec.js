@@ -2047,6 +2047,28 @@ test('resources — stylesheets and scripts are not duplicated unnecessarily', a
 
 
 
+
+test('accessibility — keyboard focus remains visually perceivable', async ({ browser }) => {
+  const paths = ['/', '/amont/', '/aval/', '/contact/'];
+  for (const path of paths) {
+    const page = await browser.newPage({ viewport: { width: 390, height: 844 } });
+    await page.goto(new URL(path, url).href, { waitUntil: 'domcontentloaded', timeout: 45000 });
+    const report = await page.evaluate(() => {
+      const candidates = [...document.querySelectorAll('a[href],button,input,select,textarea,[tabindex]:not([tabindex="-1"])')]
+        .filter(el => { const r = el.getBoundingClientRect(); const s = getComputedStyle(el); return r.width > 0 && r.height > 0 && s.display !== 'none' && s.visibility !== 'hidden'; });
+      const el = candidates.find(node => !node.matches('[disabled]'));
+      if (!el) return { checked: false, visible: false };
+      el.focus();
+      const s = getComputedStyle(el);
+      const visible = s.outlineStyle !== 'none' || s.boxShadow !== 'none' || /underline/i.test(s.textDecorationLine || '');
+      return { checked: true, visible };
+    });
+    expect(report.checked, path + ' has a focusable control').toBeTruthy();
+    expect(report.visible, path + ' keyboard focus indicator').toBeTruthy();
+    await page.close();
+  }
+});
+
 test('navigation — current page exposes aria-current page state', async ({ browser }) => {
   const paths = ['/amont/', '/aval/', '/contact/'];
   for (const path of paths) {
