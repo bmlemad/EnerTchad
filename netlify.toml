@@ -75,3 +75,8 @@
   from = "/amont/calculateur-baril-additionnel"
   to = "/Calculateur_Baril_Additionnel.html"
   status = 301
+
+[[redirects]]
+  from = "/configurateur-service-integre"
+  to = "/Configurateur_Service_Integre_v2.html"
+  status = 301
