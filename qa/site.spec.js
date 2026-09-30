@@ -1508,6 +1508,28 @@ test('infrastructure — sitemap and robots stay coherent', async ({ request }) 
   expect(urls.every(item => item.startsWith(url))).toBeTruthy();
 });
 
+
+test('navigation — keyboard menu contracts remain explicit', async ({ browser }) => {
+  const page = await browser.newPage({ viewport: { width: 1280, height: 900 } });
+  const response = await page.goto(new URL('/', url).href, { waitUntil: 'domcontentloaded', timeout: 45000 });
+  expect(response?.status()).toBe(200);
+  const nav = page.locator('nav').first();
+  await expect(nav).toBeVisible();
+  const menus = await nav.locator('[aria-haspopup="true"]').count();
+  expect(menus).toBeGreaterThan(0);
+  const expandable = await nav.locator('[aria-haspopup="true"]').evaluateAll(items => items.map(item => ({
+    expanded: item.getAttribute('aria-expanded'),
+    controls: item.getAttribute('aria-controls')
+  })));
+  for (const item of expandable) {
+    expect(['true', 'false', null]).toContain(item.expanded);
+    if (item.expanded !== null) expect(item.controls).toBeTruthy();
+  }
+  await page.keyboard.press('Tab');
+  await page.keyboard.press('Escape');
+  await page.close();
+});
+
 test('responsive — key content remains readable across tablet and mobile widths', async ({ browser }) => {
   const paths = ['/', '/amont/', '/intermediaire/', '/aval/', '/greentech/', '/tchaditech/', '/contact'];
   const viewports = [{ width: 1024, height: 768 }, { width: 768, height: 1024 }, { width: 390, height: 844 }];
