@@ -334,3 +334,67 @@ html:is(.et-plight,.et-jlight) nav.corp-nav a:is(.on,:hover):not(#_):not(#__):no
   }
 }
 @media(max-width:680px){footer{scroll-margin-bottom:env(safe-area-inset-bottom);overflow-wrap:anywhere}footer a,footer button{min-height:44px}footer .wrap,footer .container{width:calc(100% - 28px);max-width:100%;box-sizing:border-box}}@media(max-width:390px){footer .wrap,footer .container{width:calc(100% - 24px)}footer{padding-top:28px!important;padding-bottom:calc(28px + env(safe-area-inset-bottom))!important}}
+
+/* EnerTchad Clear Glass — light theme
+   Translucent editorial surfaces with restrained blur and high text contrast. */
+html:is(.et-plight,.et-jlight) body{
+  background:
+    radial-gradient(70% 55% at 8% 0%,rgba(232,195,106,.18),transparent 62%),
+    radial-gradient(58% 52% at 96% 8%,rgba(90,167,240,.14),transparent 64%),
+    radial-gradient(62% 58% at 78% 100%,rgba(31,164,150,.10),transparent 66%),
+    #f5f8fb !important;
+  color:#172337 !important;
+}
+html:is(.et-plight,.et-jlight) body:before{opacity:.18 !important}
+html:is(.et-plight,.et-jlight) ::selection{background:rgba(201,162,74,.24);color:#172337}
+
+html:is(.et-plight,.et-jlight) header nav,
+html:is(.et-plight,.et-jlight) .nav,
+html:is(.et-plight,.et-jlight) .topnav,
+html:is(.et-plight,.et-jlight) .site-nav,
+html:is(.et-plight,.et-jlight) .nav-in.nx-bar{
+  background:rgba(255,255,255,.58) !important;
+  border-color:rgba(23,35,55,.10) !important;
+  box-shadow:0 18px 50px rgba(30,55,80,.10) !important;
+  -webkit-backdrop-filter:blur(24px) saturate(145%) !important;
+  backdrop-filter:blur(24px) saturate(145%) !important;
+}
+
+html:is(.et-plight,.et-jlight) :is(.hpcard,.hxi-card,.sc-card,.hncard,.hx-stat,.mfo-lever,.flip-face,.et-command-card,.et-proof-card,.t550-kpi,.dur-g,.doc-c,.hcp-i,.agir-c,.cb-in,.car546,#c540p){
+  background:linear-gradient(145deg,rgba(255,255,255,.72),rgba(255,255,255,.46)) !important;
+  border:1px solid rgba(255,255,255,.78) !important;
+  box-shadow:0 18px 55px rgba(24,45,67,.10),inset 0 1px 0 rgba(255,255,255,.72) !important;
+  -webkit-backdrop-filter:blur(22px) saturate(135%) !important;
+  backdrop-filter:blur(22px) saturate(135%) !important;
+}
+html:is(.et-plight,.et-jlight) :is(.hpcard,.hxi-card,.sc-card,.hncard,.et-command-card,.et-proof-card,.t550-kpi):hover{
+  border-color:rgba(201,162,74,.38) !important;
+  box-shadow:0 24px 65px rgba(24,45,67,.14),inset 0 1px 0 rgba(255,255,255,.84) !important;
+}
+html:is(.et-plight,.et-jlight) .et-modern-strip{
+  background:rgba(255,255,255,.52) !important;
+  border-color:rgba(23,35,55,.10) !important;
+  -webkit-backdrop-filter:blur(22px) saturate(140%) !important;
+  backdrop-filter:blur(22px) saturate(140%) !important;
+}
+html:is(.et-plight,.et-jlight) footer{
+  background:rgba(255,255,255,.48) !important;
+  border-color:rgba(23,35,55,.10) !important;
+  -webkit-backdrop-filter:blur(20px) saturate(135%) !important;
+  backdrop-filter:blur(20px) saturate(135%) !important;
+}
+@media(prefers-reduced-transparency:reduce){
+  html:is(.et-plight,.et-jlight) header nav,
+  html:is(.et-plight,.et-jlight) .nav,
+  html:is(.et-plight,.et-jlight) .topnav,
+  html:is(.et-plight,.et-jlight) .site-nav,
+  html:is(.et-plight,.et-jlight) .nav-in.nx-bar,
+  html:is(.et-plight,.et-jlight) :is(.hpcard,.hxi-card,.sc-card,.hncard,.hx-stat,.mfo-lever,.flip-face,.et-command-card,.et-proof-card,.t550-kpi,.dur-g,.doc-c,.hcp-i,.agir-c,.cb-in,.car546,#c540p),
+  html:is(.et-plight,.et-jlight) .et-modern-strip,
+  html:is(.et-plight,.et-jlight) footer{
+    -webkit-backdrop-filter:none !important;
+    backdrop-filter:none !important;
+    background:#f7f9fc !important;
+  }
+}
+
