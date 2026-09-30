@@ -2262,6 +2262,15 @@ test('visual architecture — inner pages keep editorial sections flat', async (
   await page.close();
 });
 
+test('visual accessibility — reduced transparency disables expensive glass filters', async ({ request }) => {
+  const modern = await request.get(new URL('/assets/chrome/modern-ui-2026.css', url).href, { timeout: 30000 });
+  expect(modern.status()).toBe(200);
+  const css = await modern.text();
+  expect(css).toContain('@media(prefers-reduced-transparency:reduce)');
+  expect(css).toMatch(/prefers-reduced-transparency:reduce\\)\\{[\\s\\S]*?backdrop-filter:none!important/);
+  expect(css).toMatch(/prefers-reduced-transparency:reduce\\)\\{[\\s\\S]*?-webkit-backdrop-filter:none!important/);
+});
+
 test('visual css hygiene — shared chrome stays bounded and legacy glass markers remain absent', async ({ request }) => {
   const cssPaths = [
     '/assets/chrome/modern-ui-2026.css',
