@@ -2044,6 +2044,24 @@ test('resources — stylesheets and scripts are not duplicated unnecessarily', a
   }
 });
 
+
+test('document integrity — heading hierarchy starts with a single h1', async ({ browser }) => {
+  const paths = ['/', '/amont/', '/intermediaire/', '/aval/', '/greentech/', '/contact'];
+  for (const path of paths) {
+    const page = await browser.newPage({ viewport: { width: 1280, height: 900 } });
+    await page.goto(new URL(path, url).href, { waitUntil: 'domcontentloaded', timeout: 45000 });
+    const report = await page.evaluate(() => {
+      const headings = [...document.querySelectorAll('main h1, main h2, main h3, main h4, main h5, main h6')].map(node => Number(node.tagName.slice(1)));
+      return { h1: headings.filter(level => level === 1).length, headings };
+    });
+    expect(report.h1, path + ' h1 count').toBe(1);
+    for (let i = 1; i < report.headings.length; i++) {
+      expect(report.headings[i] - report.headings[i - 1], path + ' heading jump').toBeLessThanOrEqual(1);
+    }
+    await page.close();
+  }
+});
+
 test('document integrity — only one visible primary navigation landmark and one main content landmark', async ({ browser }) => {
   const paths = ['/', '/index-en', '/ar', '/contact', '/investisseurs', '/greentech/'];
   for (const path of paths) {
