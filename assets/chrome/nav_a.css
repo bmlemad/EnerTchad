@@ -92,7 +92,6 @@ nav.bcrumb:not(#_):not(#__) a,
 .fil552:not(#_):not(#__) ~ .pole-subnav:not(#_){margin-top:8px}
 @media(max-width:1240px){
   .fil552:not(#_):not(#__){padding-top:83px}
-  .fil552:not(#_):not(#__) ~ .pole-subnav:not(#_){margin-top:8px}
 }
 
 
