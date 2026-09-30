@@ -35,8 +35,6 @@
   --et-space-4:40px;
   --et-space-5:64px;
   --et-space-6:96px;
-}
-
   --et-premium-max:1240px;
   --et-premium-gutter:clamp(20px,4vw,56px);
   --et-premium-space-1:8px;
@@ -94,6 +92,9 @@ p{line-height:1.68}
   border-color:var(--et-line-gold)!important;
   box-shadow:0 30px 90px rgba(0,0,0,.45),0 0 0 1px rgba(232,195,106,.08)!important;
 }
+
+}
+
 
 /* section rhythm */
 main>section{scroll-margin-top:100px}
