@@ -36,6 +36,23 @@
   --et-space-5:64px;
   --et-space-6:96px;
 }
+
+  --et-premium-max:1240px;
+  --et-premium-gutter:clamp(20px,4vw,56px);
+  --et-premium-space-1:8px;
+  --et-premium-space-2:16px;
+  --et-premium-space-3:24px;
+  --et-premium-space-4:40px;
+  --et-premium-space-5:64px;
+  --et-premium-space-6:96px;
+  --et-premium-ink:#F7F3E8;
+  --et-premium-muted:#9EACBF;
+  --et-premium-line:rgba(255,255,255,.11);
+  --et-premium-gold:#E8C36A;
+  --et-premium-radius:20px;
+  --et-premium-radius-sm:14px;
+
+
 html{scroll-behavior:smooth}
 body{background:var(--et-bg)!important;color:var(--et-text);overflow-x:hidden}
 body:before{opacity:.45!important}
@@ -212,22 +229,7 @@ html.et-plight .et-command-card small{color:#4B586A}
    Purpose: establish a restrained industrial/editorial system
    across homepage + shared corporate surfaces.
    ============================================================ */
-:root{
-  --et-premium-max:1240px;
-  --et-premium-gutter:clamp(20px,4vw,56px);
-  --et-premium-space-1:8px;
-  --et-premium-space-2:16px;
-  --et-premium-space-3:24px;
-  --et-premium-space-4:40px;
-  --et-premium-space-5:64px;
-  --et-premium-space-6:96px;
-  --et-premium-ink:#F7F3E8;
-  --et-premium-muted:#9EACBF;
-  --et-premium-line:rgba(255,255,255,.11);
-  --et-premium-gold:#E8C36A;
-  --et-premium-radius:20px;
-  --et-premium-radius-sm:14px;
-}
+
 html.et-plight{
   --et-premium-ink:#172337;
   --et-premium-muted:#586579;
