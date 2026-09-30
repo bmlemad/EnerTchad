@@ -315,3 +315,21 @@ html:is(.et-plight,.et-jlight) nav.corp-nav a:is(.on,:hover):not(#_):not(#__):no
   .brand-tx{max-width:145px;font-size:.92rem!important}
   .nav-in{min-height:60px!important}
 }
+
+/* EnerTchad Mobile A11y 2026 — visible keyboard focus + overflow guard */
+:where(.nav-trigger,.nav-links a,.nx-util a,.nx-mega a):focus-visible{
+  outline:2px solid var(--gold-l,#E8C36A)!important;
+  outline-offset:2px!important;
+  box-shadow:0 0 0 4px rgba(232,195,106,.18)!important;
+}
+@media(max-width:680px){
+  .nav-links{max-width:100%;overflow-x:hidden}
+  .nx-mega{max-width:calc(100vw - 24px)!important;overflow-x:hidden}
+  .nx-mega a{touch-action:manipulation}
+}
+@media(forced-colors:active){
+  :where(.nav-trigger,.nav-links a,.nx-util a,.nx-mega a):focus-visible{
+    outline:2px solid CanvasText!important;
+    box-shadow:none!important;
+  }
+}
