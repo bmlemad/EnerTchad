@@ -9,8 +9,8 @@ test('site-wide consistency — canonical representative routes stay equivalent'
     const response = await request.get(new URL(route, url).href, { maxRedirects: 5, timeout: 30000 });
     expect(response.status(), route).toBe(200);
     const html = await response.text();
-    expect(html, route + ' html').toMatch(/<html\\b/i);
-    expect(html, route + ' title').toMatch(/<title>[^<]{10,}<\\/title>/i);
+    expect(html, route + ' html').toMatch(/<html\b/i);
+    expect(html, route + ' title').toMatch(/<title>[^<]{10,}<\/title>/i);
     expect(html, route + ' main landmark').toMatch(/<(main|div[^>]+id=["'](?:main-content|contenu|content|root)["'])\\b/i);
     expect(html, route + ' canonical').toMatch(/rel=["'][^"']*canonical[^"']*["']/i);
   }
