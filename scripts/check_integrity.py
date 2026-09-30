@@ -164,15 +164,22 @@ for route in EXPECTED_HUBS:
     if not exists(route):
         errs.append(f'hub institutionnel attendu absent: {route}')
 
-# Alias anglais publiés par Vercel : ils doivent rester couverts par une redirection.
-EXPECTED_EN_ALIASES = [
+# Pages polaires anglaises : de vraies pages servies en anglais depuis le Ch742
+# (cibles hreflang « en » des pages françaises) — elles ne doivent plus être redirigées.
+EXPECTED_EN_POLES = [
     '/pole-amont-en', '/pole-intermediaire-en', '/pole-aval-en',
     '/pole-enerchimie-en', '/pole-greentech-en', '/pole-tchaditech-en',
     '/pole-tchaditude-en', '/pole-enerconseils-en',
 ]
-for route in EXPECTED_EN_ALIASES:
-    if route.lstrip('/') not in redir:
-        errs.append(f'alias anglais attendu sans redirection: {route}')
+redirect_sources = set()
+if os.path.exists('vercel.json'):
+    redirect_sources = {r.get('source', '').lstrip('/') for r in json.load(open('vercel.json', encoding='utf-8')).get('redirects', [])}
+for route in EXPECTED_EN_POLES:
+    name = route.lstrip('/')
+    if name + '.html' not in allf:
+        errs.append(f'page polaire anglaise absente: {route}')
+    if name in redirect_sources or name + '.html' in redirect_sources:
+        errs.append(f'page polaire anglaise redirigee vers une autre page: {route}')
 
 # Vérification finale après toutes les règles QA.
 if errs:
