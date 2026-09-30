@@ -2293,6 +2293,7 @@ test('visual css hygiene — shared chrome stays bounded and legacy glass marker
   expect(modernCss).not.toContain('@media(max-width:980px){.et-command-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}');
   expect(modernCss).not.toContain('@media(max-width:600px){.et-command{padding:48px 0}');
   expect((modernCss.match(/:root\{/g) || []).length).toBe(1);
+  expect(modernCss.length).toBeLessThan(20000);
   const inner = await request.get(new URL('/assets/chrome/modern-inner-2026.css', url).href, { timeout: 30000 });
   const innerCss = await inner.text();
   expect(innerCss).not.toContain('border-color:var(--et-i-line);background:var(--et-i-panel);border-radius:14px;box-shadow:inset 0 1px 0 rgba(255,255,255,.035)');
