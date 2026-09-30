@@ -2048,6 +2048,20 @@ test('resources — stylesheets and scripts are not duplicated unnecessarily', a
 
 
 
+
+test('accessibility — shared navigation styles preserve a visible focus contract', async ({ browser }) => {
+  const page = await browser.newPage({ viewport: { width: 1280, height: 900 } });
+  await page.goto(new URL('/', url).href, { waitUntil: 'domcontentloaded', timeout: 45000 });
+  const report = await page.evaluate(async () => {
+    const sheets = ['/assets/chrome/nav_a.css', '/assets/chrome/modern-ui-2026.css', '/assets/chrome/modern-inner-2026.css'];
+    const css = await Promise.all(sheets.map(href => fetch(href).then(r => r.text())));
+    return { focusRules: css.map(text => (text.match(/:focus-visible/g) || []).length), hasFocusStyles: css.some(text => /:focus-visible\\s*\\{[^}]*\\b(outline|box-shadow)\\s*:/s.test(text)) };
+  });
+  expect(report.hasFocusStyles, 'shared chrome should define a visible focus treatment').toBeTruthy();
+  expect(report.focusRules.reduce((a,b) => a + b, 0), 'shared chrome focus-visible rule count').toBeGreaterThan(0);
+  await page.close();
+});
+
 test('accessibility — keyboard focus remains visually perceivable', async ({ browser }) => {
   const paths = ['/', '/amont/', '/aval/', '/contact/'];
   for (const path of paths) {
