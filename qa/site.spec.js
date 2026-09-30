@@ -1509,6 +1509,14 @@ test('infrastructure — sitemap and robots stay coherent', async ({ request }) 
 });
 
 
+
+test('navigation source hygiene — no legacy Ch markers', async ({ request }) => {
+  const response = await request.get(new URL('/assets/chrome/nav_a.js', url).href);
+  expect(response.status()).toBe(200);
+  const source = await response.text();
+  expect(source).not.toMatch(/Ch\\d{3,}/);
+});
+
 test('navigation — keyboard menu contracts remain explicit', async ({ browser }) => {
   const page = await browser.newPage({ viewport: { width: 1280, height: 900 } });
   const response = await page.goto(new URL('/', url).href, { waitUntil: 'domcontentloaded', timeout: 45000 });
