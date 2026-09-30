@@ -58,3 +58,22 @@ html:is(.et-plight,.et-jlight) body:not(.hm):not(.et-modern-exclude) :is(#aurail
 @media(max-width:760px){body:not(.hm):not(.et-modern-exclude) :is(table,.data-table){font-size:.86rem}body:not(.hm):not(.et-modern-exclude) :is(table,.data-table) :is(th,td){padding:10px 11px;min-width:120px}}
 @media(prefers-reduced-transparency:reduce){html:is(.et-plight,.et-jlight) body:not(.hm):not(.et-modern-exclude) :is(table,.data-table){background:#f7f9fc;-webkit-backdrop-filter:none;backdrop-filter:none;box-shadow:none}}
 @media(prefers-reduced-motion:reduce){body:not(.hm):not(.et-modern-exclude) :is(.ivt-cta,.btn,.cta,.cta-btn,.action-btn){transition:none}body:not(.hm):not(.et-modern-exclude) :is(.ivt-cta,.btn,.cta,.cta-btn,.action-btn):hover{transform:none}}
+
+
+/* ===== QA ULTRA — rythme vertical des hubs (2026-09-30) ===== */
+@media(min-width:761px){
+  body:not(.hm):not(.et-modern-exclude) main>section:not(.hero):not(.pghero){
+    padding-block:clamp(48px,6.2vw,84px);
+  }
+  body:not(.hm):not(.et-modern-exclude) main>section+section{
+    margin-top:0;
+  }
+  body:not(.hm):not(.et-modern-exclude) .svc-head{
+    margin-bottom:clamp(32px,4vw,46px);
+  }
+}
+@media(max-width:760px){
+  body:not(.hm):not(.et-modern-exclude) main>section:not(.hero):not(.pghero){
+    padding-block:40px;
+  }
+}
