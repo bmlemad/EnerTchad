@@ -2062,6 +2062,24 @@ test('document integrity — only one visible primary navigation landmark and on
   }
 });
 
+
+test('performance — image markup avoids layout-shift risk', async ({ browser }) => {
+  const page = await browser.newPage({ viewport: { width: 390, height: 844 } });
+  await page.goto(new URL('/', url).href, { waitUntil: 'domcontentloaded', timeout: 45000 });
+  const images = await page.locator('img[src]').evaluateAll(nodes => nodes.map(img => ({
+    src: img.currentSrc || img.src,
+    width: img.getAttribute('width'),
+    height: img.getAttribute('height'),
+    loading: img.getAttribute('loading')
+  })));
+  for (const image of images) {
+    if (image.loading !== 'lazy' && !image.width && !image.height) {
+      expect(image.width || image.height, image.src + ' dimensions').toBeTruthy();
+    }
+  }
+  await page.close();
+});
+
 test('performance — images declare decoding and below-fold loading intent', async ({ browser }) => {
   const page = await browser.newPage({ viewport: { width: 390, height: 844 } });
   await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 45000 });
