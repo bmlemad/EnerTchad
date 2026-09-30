@@ -11,7 +11,8 @@ test('assets — document stylesheet and script references resolve successfully'
       if (response.status() >= 400 && /\.(css|js)(\?|$)/i.test(response.url())) failures.push(response.url() + ' [' + response.status() + ']');
     });
 
-    await page.goto(new URL(path, base).href, { waitUntil: 'networkidle', timeout: 45000 });
+    await page.goto(new URL(path, base).href, { waitUntil: 'domcontentloaded', timeout: 45000 });
+    await page.waitForTimeout(750);
     expect(failures, path + ' broken CSS/JS assets').toEqual([]);
     await page.close();
   }
