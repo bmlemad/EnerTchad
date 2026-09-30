@@ -135,9 +135,15 @@ try{(function(){
   var re=document.documentElement,dernier=-1,tid=0;
   function pile(){
     var vh=window.innerHeight||800,vw=window.innerWidth||360,bas=0;
-    var n=document.querySelectorAll('header,nav,div,section,aside'),i,e,c,h,t,r;
+    var n=document.querySelectorAll('header,nav,div,section,aside'),i,e,c,h,t,r,cv=null;
     for(i=0;i<n.length;i++){
-      e=n[i];c=getComputedStyle(e);
+      e=n[i];
+      /* Sous un conteneur content-visibility:auto, seuls nav et header sont
+         examines : lire le style d un bloc quelconque de ce sous-arbre force
+         le rendu du contenu hors ecran que content-visibility economise. */
+      if(cv&&cv.contains(e)){if(e.tagName!=='NAV'&&e.tagName!=='HEADER')continue;}else cv=null;
+      c=getComputedStyle(e);
+      if(!cv&&c.contentVisibility==='auto')cv=e;
       if(c.position!=='fixed'&&c.position!=='sticky')continue;
       if(c.display==='none'||c.visibility==='hidden'||+c.opacity===0)continue;
       if(c.pointerEvents==='none')continue;
@@ -171,4 +177,26 @@ try{(function(){var o=[];
    Array.prototype.forEach.call(document.querySelectorAll('details:not([open])'),function(d){o.push(d);d.open=true});
  }catch(e){}});
  addEventListener('afterprint',function(){try{o.forEach(function(d){d.open=false});o=[];}catch(e){}});
+})();}catch(e){}
+/* Etat de l interface recopie sur <body data-etui> : menu mobile ouvert
+   (#navLinks.open) et avis cookies affiche (#ckn.show, statique ou insere
+   plus tard par script). Remplace des selecteurs body:has(...) qui faisaient
+   recalculer le style de toute la page a chaque insertion ou changement de
+   classe dans le document. */
+try{(function(){
+ var b=document.body;if(!b||!window.MutationObserver)return;
+ var n=document.getElementById('navLinks'),k=null;
+ var mo=new MutationObserver(sync);
+ if(n)mo.observe(n,{attributes:true,attributeFilter:['class']});
+ function sync(){
+  var c=document.getElementById('ckn');
+  if(c&&c!==k){k=c;mo.observe(k,{attributes:true,attributeFilter:['class']});}
+  var t=[];
+  if(n&&n.classList.contains('open'))t.push('navopen');
+  if(c&&c.classList.contains('show'))t.push('cknshow');
+  var v=t.join(' ');
+  if((b.getAttribute('data-etui')||'')!==v){if(v)b.setAttribute('data-etui',v);else b.removeAttribute('data-etui');}
+ }
+ new MutationObserver(sync).observe(b,{childList:true});
+ sync();
 })();}catch(e){}

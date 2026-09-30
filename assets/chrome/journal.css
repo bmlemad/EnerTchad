@@ -282,7 +282,7 @@ html body.jn-page :is(header,div):is(.hero,.pghero):not(#q0):not(#q1):not(#q2):n
    647 (data-fond="papier"). Contribution mesuree du calque : 87,48 % des
    pixels, ecart moyen 7,39 — temoin nul a 0 %. On eteint le verre sur la une
    seule ; le .rootland papier, pose en dessous, redevient le fond. */
-html.et-plight:not(#q0):not(#q1):not(#q2):not(#q3):not(#q4):not(#q5):not(#q6):not(#q7):not(#q8):not(#q9):not(#q10):not(#q11):has(body.jn-page),
+html.et-plight:not(#q0):not(#q1):not(#q2):not(#q3):not(#q4):not(#q5):not(#q6):not(#q7):not(#q8):not(#q9):not(#q10):not(#q11):where([data-eh~=eh27]):not(.ehz):not(ehz),
 html.et-plight:not(#q0):not(#q1):not(#q2):not(#q3):not(#q4):not(#q5):not(#q6):not(#q7):not(#q8):not(#q9):not(#q10):not(#q11) body.jn-page{
   background-image:none!important;background-color:transparent!important}
 
