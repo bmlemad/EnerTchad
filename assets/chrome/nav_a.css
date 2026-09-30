@@ -333,3 +333,4 @@ html:is(.et-plight,.et-jlight) nav.corp-nav a:is(.on,:hover):not(#_):not(#__):no
     box-shadow:none!important;
   }
 }
+@media(max-width:680px){footer{scroll-margin-bottom:env(safe-area-inset-bottom);overflow-wrap:anywhere}footer a,footer button{min-height:44px}footer .wrap,footer .container{width:calc(100% - 28px);max-width:100%;box-sizing:border-box}}@media(max-width:390px){footer .wrap,footer .container{width:calc(100% - 24px)}footer{padding-top:28px!important;padding-bottom:calc(28px + env(safe-area-inset-bottom))!important}}
