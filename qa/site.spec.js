@@ -2046,6 +2046,21 @@ test('resources — stylesheets and scripts are not duplicated unnecessarily', a
 
 
 
+
+test('navigation — current page exposes aria-current page state', async ({ browser }) => {
+  const paths = ['/amont/', '/aval/', '/contact/'];
+  for (const path of paths) {
+    const page = await browser.newPage({ viewport: { width: 1280, height: 900 } });
+    await page.goto(new URL(path, url).href, { waitUntil: 'domcontentloaded', timeout: 45000 });
+    const state = await page.evaluate(() => ({
+      links: [...document.querySelectorAll('.nx-mega a[aria-current="page"]')].length,
+      triggers: [...document.querySelectorAll('.nav-trigger[aria-current="page"]')].length
+    }));
+    expect(state.links + state.triggers, path + ' current navigation state').toBeGreaterThan(0);
+    await page.close();
+  }
+});
+
 test('interactive integrity — links expose real destinations and buttons are actionable', async ({ browser }) => {
   const paths = ['/', '/amont/', '/aval/', '/contact'];
   for (const path of paths) {
