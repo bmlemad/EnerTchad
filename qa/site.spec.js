@@ -2214,6 +2214,35 @@ test('visual css hygiene — historical override markers are absent and core chr
   expect((navCss.match(/\.fil552:not\(#_\):not\(#__\) ~ \.pole-subnav:not\(#_\)\{margin-top:8px\}/g) || []).length).toBe(1);
 });
 
+test('visual css hygiene — responsive overrides are scoped by breakpoint context', async ({ browser }) => {
+  const page = await browser.newPage();
+  await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 45000 });
+  const report = await page.evaluate(() => {
+    const seen = new Map();
+    const duplicateContexts = [];
+    const walk = (rules, context = 'root') => {
+      for (const rule of rules) {
+        if (rule.cssRules) {
+          const next = rule.conditionText ? context + '|' + rule.conditionText : context;
+          walk(rule.cssRules, next);
+          continue;
+        }
+        if (rule.type !== CSSRule.STYLE_RULE) continue;
+        const key = context + '|' + rule.selectorText + '|' + rule.style.cssText;
+        const count = (seen.get(key) || 0) + 1;
+        seen.set(key, count);
+        if (count > 1) duplicateContexts.push(key);
+      }
+    };
+    for (const sheet of document.styleSheets) {
+      try { walk(sheet.cssRules); } catch {}
+    }
+    return { duplicateContexts };
+  });
+  expect(report.duplicateContexts).toEqual([]);
+  await page.close();
+});
+
 test('visual css hygiene — shared chrome stays bounded and legacy glass markers remain absent', async ({ request }) => {
   const cssPaths = [
     '/assets/chrome/modern-ui-2026.css',
