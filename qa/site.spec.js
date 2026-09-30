@@ -1478,6 +1478,19 @@ test('visual architecture — inner pages stay flat on mobile', async ({ browser
   await page.close();
 });
 
+
+test('accessibility — reduced motion and forced colors are covered', async ({ request }) => {
+  for (const stylesheet of ['/assets/chrome/modern-ui-2026.css', '/assets/chrome/modern-inner-2026.css']) {
+    const response = await request.get(new URL(stylesheet, url).href);
+    expect(response.status(), stylesheet).toBe(200);
+    const css = await response.text();
+    expect(css, stylesheet + ' reduced motion').toContain('@media(prefers-reduced-motion:reduce)');
+    expect(css, stylesheet + ' forced colors').toContain('@media(forced-colors:active)');
+  }
+  const modern = await (await request.get(new URL('/assets/chrome/modern-ui-2026.css', url).href)).text();
+  expect(modern).toMatch(/@media\(prefers-reduced-motion:reduce\)\{[\\s\\S]*?transition:none/);
+});
+
 test('responsive — key content remains readable across tablet and mobile widths', async ({ browser }) => {
   const paths = ['/', '/amont/', '/intermediaire/', '/aval/', '/greentech/', '/tchaditech/', '/contact'];
   const viewports = [{ width: 1024, height: 768 }, { width: 768, height: 1024 }, { width: 390, height: 844 }];
