@@ -1479,6 +1479,23 @@ test('visual architecture — inner pages stay flat on mobile', async ({ browser
 });
 
 
+
+test('visual system budgets — shared chrome stays within limits', async ({ request }) => {
+  const checks = [
+    ['/assets/chrome/modern-ui-2026.css', 20000, 150],
+    ['/assets/chrome/nav_a.css', 60000, 70],
+    ['/assets/chrome/modern-inner-2026.css', 20000, 35]
+  ];
+  for (const [path, maxBytes, maxImportant] of checks) {
+    const response = await request.get(new URL(path, url).href);
+    expect(response.status(), path).toBe(200);
+    const css = await response.text();
+    expect(css.length, path + ' byte budget').toBeLessThan(maxBytes);
+    expect((css.match(/!important/g) || []).length, path + ' important budget').toBeLessThanOrEqual(maxImportant);
+    expect(css).not.toMatch(/Ch\\d{3,}|Liquid Glass system v3/);
+  }
+});
+
 test('accessibility — reduced motion and forced colors are covered', async ({ request }) => {
   for (const stylesheet of ['/assets/chrome/modern-ui-2026.css', '/assets/chrome/modern-inner-2026.css']) {
     const response = await request.get(new URL(stylesheet, url).href);
