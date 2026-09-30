@@ -85,18 +85,18 @@ header.pghero .crumb span:not(#_),header.pghero .crumb a:not(#_){text-shadow:0 1
    cartes d'application. (Les .hpcard de l'accueil ont ete ecartees a la contre-epreuve :
    ce sont des boutons d'appel a l'action colores, pas des tuiles — voir MAINTENANCE ch.238.) On leur applique LES MEMES valeurs que
    la famille, pas un second systeme : harmoniser, c'est rejoindre l'existant. */
-html:has(.rootland) :is(.cmp-c,.ppj-kpi,.pgh-kpi,.fp-card,.ct-card,.dx-card,.epw-card,.app-card,.app-panel):not(#_):not(#__):not(#___):not(#____){
+html:where([data-eh~=eh10]):not(.ehz) :is(.cmp-c,.ppj-kpi,.pgh-kpi,.fp-card,.ct-card,.dx-card,.epw-card,.app-card,.app-panel):not(#_):not(#__):not(#___):not(#____){
   background-color:transparent!important;
   background-image:linear-gradient(180deg,rgba(252,250,246,.56) 0%,rgba(252,250,246,.40) 100%)!important;
   border-color:rgba(26,35,48,.12)!important;
   box-shadow:0 1px 0 rgba(255,255,255,.55) inset,0 20px 40px -30px rgba(30,24,10,.42)!important;
   -webkit-backdrop-filter:blur(18px) saturate(1.35)!important;backdrop-filter:blur(18px) saturate(1.35)!important}
-html:not(.et-plight):not(.et-jlight):has(.rootland) :is(.cmp-c,.ppj-kpi,.pgh-kpi,.fp-card,.ct-card,.dx-card,.epw-card,.app-card,.app-panel):not(#_):not(#__):not(#___):not(#____){
+html:not(.et-plight):not(.et-jlight):where([data-eh~=eh10]):not(.ehz) :is(.cmp-c,.ppj-kpi,.pgh-kpi,.fp-card,.ct-card,.dx-card,.epw-card,.app-card,.app-panel):not(#_):not(#__):not(#___):not(#____){
   background-image:linear-gradient(180deg,rgba(9,15,27,.66) 0%,rgba(9,15,27,.54) 100%)!important;
   border-color:rgba(255,255,255,.15)!important;
   box-shadow:0 1px 0 rgba(255,255,255,.08) inset,0 22px 46px -30px rgba(0,0,0,.6)!important}
 /* le texte secondaire de ces tuiles suit la meme regle d'eclaircissement que la famille */
-html:not(.et-plight):not(.et-jlight):has(.rootland) :is(.cmp-c,.ppj-kpi,.pgh-kpi,.fp-card,.ct-card,.dx-card,.epw-card,.app-card,.app-panel) :is(p,li,dd,span):not(#_):not(#__):not(#___):not(#____){
+html:not(.et-plight):not(.et-jlight):where([data-eh~=eh10]):not(.ehz) :is(.cmp-c,.ppj-kpi,.pgh-kpi,.fp-card,.ct-card,.dx-card,.epw-card,.app-card,.app-panel) :is(p,li,dd,span):not(#_):not(#__):not(#___):not(#____){
   color:#D9E2EE!important;-webkit-text-fill-color:#D9E2EE!important}
 @media print{ :is(.cmp-c,.ppj-kpi,.pgh-kpi,.fp-card,.ct-card,.dx-card,.epw-card,.app-card,.app-panel):not(#_):not(#__):not(#___):not(#____){background:#fff!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important;box-shadow:none!important;border-color:#bbb!important} }
 
@@ -165,10 +165,10 @@ header.jtop:not(#_)::before{content:'';position:absolute;inset:0;z-index:-1;poin
    sombre, encre foncee sur zone foncee en clair. On ne change ni la teinte ni la
    transparence : on tonalise ce que le verre laisse passer, vers la nuit en theme
    sombre, vers le jour en theme clair. La photo reste lisible derriere. */
-html:not(.et-plight):not(.et-jlight):has(.rootland) :is(.cmp-c,.ppj-kpi,.pgh-kpi,.fp-card,.ct-card,.dx-card,.epw-card,.app-card,.app-panel):not(#_):not(#__):not(#___):not(#____){
+html:not(.et-plight):not(.et-jlight):where([data-eh~=eh10]):not(.ehz) :is(.cmp-c,.ppj-kpi,.pgh-kpi,.fp-card,.ct-card,.dx-card,.epw-card,.app-card,.app-panel):not(#_):not(#__):not(#___):not(#____){
   -webkit-backdrop-filter:blur(18px) saturate(1.35) brightness(.5)!important;
   backdrop-filter:blur(18px) saturate(1.35) brightness(.5)!important}
-html:is(.et-plight,.et-jlight):has(.rootland) :is(.cmp-c,.ppj-kpi,.fp-card,.ct-card,.dx-card,.epw-card,.app-card,.app-panel):not(#_):not(#__):not(#___):not(#____){
+html:is(.et-plight,.et-jlight):where([data-eh~=eh10]):not(.ehz) :is(.cmp-c,.ppj-kpi,.fp-card,.ct-card,.dx-card,.epw-card,.app-card,.app-panel):not(#_):not(#__):not(#___):not(#____){
   -webkit-backdrop-filter:blur(18px) saturate(1.15) brightness(1.5)!important;
   backdrop-filter:blur(18px) saturate(1.15) brightness(1.5)!important}
 
@@ -358,7 +358,7 @@ html header.pghero:not(#_):not(#__) > .hero-cap:not(#_),
 html body div.hero:not(#_):not(#__) > .hero-cap:not(#_){display:none !important}
 /* Ch589 — meme correction pour les pages hors nav_a.css. */
 @media(max-width:768px){
-  html body:has(#nezBar) #ckn:not(#_):not(#__):not(#___){
+  html body:where([data-eh~=eh1]):not(#ehz) #ckn:not(#_):not(#__):not(#___){
     bottom:calc(62px + env(safe-area-inset-bottom)) !important;
     z-index:96 !important}
 }

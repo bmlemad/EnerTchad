@@ -64,7 +64,7 @@ input[type=range]:not(#_):not(#__):focus-visible{
   .brand-tx small:not(#_):not(#__){font-size:11px!important;letter-spacing:.06em!important}
 }
 @media(max-width:720px){
-  body:has(.lum-ctl) #plightBtn:not(#_):not(#__){bottom:150px}
+  body:where([data-eh~=eh8]):not(.ehz) #plightBtn:not(#_):not(#__){bottom:150px}
 }
 
 /* Ch323 — 7. Le courriel et le telephone du pied de page sont les deux liens

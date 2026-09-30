@@ -256,9 +256,9 @@ html.et-plight footer a:not(#_):not(#__){color:#EAD9A8!important}
 html.et-jlight footer a:not(#_):not(#__),html.et-jlight .jfoot a:not(#_):not(#__){color:#EAD9A8!important}
 html.et-plight main section.hero h1:not(#_):not(#__),html.et-plight main section.hero h2:not(#_):not(#__){color:#10161F!important;-webkit-text-fill-color:#10161F!important}
 html.et-plight main section.hero p:not(#_):not(#__),html.et-plight main section.hero span:not(#_):not(#__){color:#2A3648!important}
-html.et-jlight section:has(.cb-in):not(#_){background:#0B1422!important}
-html.et-jlight section:has(.cb-in) h2:not(#_):not(#__),html.et-jlight section:has(.cb-in) h3:not(#_):not(#__){color:#10161F!important;text-shadow:none!important}
-html.et-jlight section:has(.cb-in) p:not(#_):not(#__):not(.cb-k){color:#2A3648!important}
+html.et-jlight section:where([data-eh~=eh3]):not(.ehz):not(#_){background:#0B1422!important}
+html.et-jlight section:where([data-eh~=eh3]):not(.ehz) h2:not(#_):not(#__),html.et-jlight section:where([data-eh~=eh3]):not(.ehz) h3:not(#_):not(#__){color:#10161F!important;text-shadow:none!important}
+html.et-jlight section:where([data-eh~=eh3]):not(.ehz) p:not(#_):not(#__):not(.cb-k){color:#2A3648!important}
 html.et-plight #modele div:not([class]):not(#_){color:#2A3648!important}
 html.et-plight .cta div:not([class]):not(#_){color:#2A3648!important}
 html.et-plight .btn:not(#_):not(#plightBtn){background:#0B1422!important;color:#F5F7FA!important;border-color:#0B1422!important}
@@ -331,7 +331,7 @@ html[dir="rtl"] #toTop{right:auto!important;left:16px!important}
 a.ttl:not(#_x),nav.bcrumb a{padding:8px 4px;margin:-8px -4px}
 a[style*="underline"]{padding-top:8px;padding-bottom:8px}
 .pj-syn a{padding-top:8px;padding-bottom:8px}
-.foot-sep+a,a:has(+.foot-sep){padding:8px 3px}
+.foot-sep+a,a:where([data-eh~=eh2]):not(.ehz){padding:8px 3px}
 .go:not(#_x),.pmore-home:not(#_x),.foot-col a:not(.foot-pole):not(#_x),a[download]:not(#_x){padding-top:7px!important;padding-bottom:7px!important;margin-top:-7px!important;margin-bottom:-7px!important;position:relative;z-index:1}
 html[lang="ar"] a{padding-top:6px;padding-bottom:6px}
 }
@@ -1678,18 +1678,18 @@ header.pghero .crumb span:not(#_),header.pghero .crumb a:not(#_){text-shadow:0 1
    cartes d'application. (Les .hpcard de l'accueil ont ete ecartees a la contre-epreuve :
    ce sont des boutons d'appel a l'action colores, pas des tuiles — voir MAINTENANCE ch.238.) On leur applique LES MEMES valeurs que
    la famille, pas un second systeme : harmoniser, c'est rejoindre l'existant. */
-html:has(.rootland) :is(.cmp-c,.ppj-kpi,.pgh-kpi,.fp-card,.ct-card,.dx-card,.epw-card,.app-card,.app-panel):not(#_):not(#__):not(#___):not(#____){
+html:where([data-eh~=eh10]):not(.ehz) :is(.cmp-c,.ppj-kpi,.pgh-kpi,.fp-card,.ct-card,.dx-card,.epw-card,.app-card,.app-panel):not(#_):not(#__):not(#___):not(#____){
   background-color:transparent!important;
   background-image:linear-gradient(180deg,rgba(252,250,246,.56) 0%,rgba(252,250,246,.40) 100%)!important;
   border-color:rgba(26,35,48,.12)!important;
   box-shadow:0 1px 0 rgba(255,255,255,.55) inset,0 20px 40px -30px rgba(30,24,10,.42)!important;
   -webkit-backdrop-filter:blur(18px) saturate(1.35)!important;backdrop-filter:blur(18px) saturate(1.35)!important}
-html:not(.et-plight):not(.et-jlight):has(.rootland) :is(.cmp-c,.ppj-kpi,.pgh-kpi,.fp-card,.ct-card,.dx-card,.epw-card,.app-card,.app-panel):not(#_):not(#__):not(#___):not(#____){
+html:not(.et-plight):not(.et-jlight):where([data-eh~=eh10]):not(.ehz) :is(.cmp-c,.ppj-kpi,.pgh-kpi,.fp-card,.ct-card,.dx-card,.epw-card,.app-card,.app-panel):not(#_):not(#__):not(#___):not(#____){
   background-image:linear-gradient(180deg,rgba(9,15,27,.66) 0%,rgba(9,15,27,.54) 100%)!important;
   border-color:rgba(255,255,255,.15)!important;
   box-shadow:0 1px 0 rgba(255,255,255,.08) inset,0 22px 46px -30px rgba(0,0,0,.6)!important}
 /* le texte secondaire de ces tuiles suit la meme regle d'eclaircissement que la famille */
-html:not(.et-plight):not(.et-jlight):has(.rootland) :is(.cmp-c,.ppj-kpi,.pgh-kpi,.fp-card,.ct-card,.dx-card,.epw-card,.app-card,.app-panel) :is(p,li,dd,span):not(#_):not(#__):not(#___):not(#____){
+html:not(.et-plight):not(.et-jlight):where([data-eh~=eh10]):not(.ehz) :is(.cmp-c,.ppj-kpi,.pgh-kpi,.fp-card,.ct-card,.dx-card,.epw-card,.app-card,.app-panel) :is(p,li,dd,span):not(#_):not(#__):not(#___):not(#____){
   color:#D9E2EE!important;-webkit-text-fill-color:#D9E2EE!important}
 @media print{ :is(.cmp-c,.ppj-kpi,.pgh-kpi,.fp-card,.ct-card,.dx-card,.epw-card,.app-card,.app-panel):not(#_):not(#__):not(#___):not(#____){background:#fff!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important;box-shadow:none!important;border-color:#bbb!important} }
 
@@ -1758,10 +1758,10 @@ header.jtop:not(#_)::before{content:'';position:absolute;inset:0;z-index:-1;poin
    sombre, encre foncee sur zone foncee en clair. On ne change ni la teinte ni la
    transparence : on tonalise ce que le verre laisse passer, vers la nuit en theme
    sombre, vers le jour en theme clair. La photo reste lisible derriere. */
-html:not(.et-plight):not(.et-jlight):has(.rootland) :is(.cmp-c,.ppj-kpi,.pgh-kpi,.fp-card,.ct-card,.dx-card,.epw-card,.app-card,.app-panel):not(#_):not(#__):not(#___):not(#____){
+html:not(.et-plight):not(.et-jlight):where([data-eh~=eh10]):not(.ehz) :is(.cmp-c,.ppj-kpi,.pgh-kpi,.fp-card,.ct-card,.dx-card,.epw-card,.app-card,.app-panel):not(#_):not(#__):not(#___):not(#____){
   -webkit-backdrop-filter:blur(18px) saturate(1.35) brightness(.5)!important;
   backdrop-filter:blur(18px) saturate(1.35) brightness(.5)!important}
-html:is(.et-plight,.et-jlight):has(.rootland) :is(.cmp-c,.ppj-kpi,.fp-card,.ct-card,.dx-card,.epw-card,.app-card,.app-panel):not(#_):not(#__):not(#___):not(#____){
+html:is(.et-plight,.et-jlight):where([data-eh~=eh10]):not(.ehz) :is(.cmp-c,.ppj-kpi,.fp-card,.ct-card,.dx-card,.epw-card,.app-card,.app-panel):not(#_):not(#__):not(#___):not(#____){
   -webkit-backdrop-filter:blur(18px) saturate(1.15) brightness(1.5)!important;
   backdrop-filter:blur(18px) saturate(1.15) brightness(1.5)!important}
 
@@ -2015,7 +2015,7 @@ html.et-jlight .toc-in a.active:not(#_):not(#__){color:#08111F}
   .brand-tx small:not(#_):not(#__){font-size:11px!important;letter-spacing:.06em!important}
 }
 @media(max-width:720px){
-  body:has(.lum-ctl) #plightBtn:not(#_):not(#__){bottom:150px}
+  body:where([data-eh~=eh8]):not(.ehz) #plightBtn:not(#_):not(#__){bottom:150px}
 }
 
 /* Ch323 — 7. Le courriel et le telephone du pied de page sont les deux liens
@@ -2066,7 +2066,7 @@ html.et-jlight .ct-err:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5):not(#e6){col
 @media print{#ckn:not(#e1):not(#e2):not(#e3),#aurail:not(#e1):not(#e2):not(#e3),#homeFab:not(#e1):not(#e2):not(#e3),#plightBtn:not(#e1):not(#e2):not(#e3),#jlightBtn:not(#e1):not(#e2):not(#e3),#toTop:not(#e1):not(#e2):not(#e3),#toTop-fix:not(#e1):not(#e2):not(#e3){display:none!important}}
 
 /* ==== Ch364 - couche premium site-wide : halo dore statique (pages a decor rootland), ombres feuilletees des cartes, filet d'or du pied de page, pilule nav active doree. Les accueils portent leur propre couche (lux360) et ne chargent pas ce bundle. ==== */
-html:not(.et-plight):not(.et-jlight):has(.rootland) body:not(#e1)::after{
+html:not(.et-plight):not(.et-jlight):where([data-eh~=eh10]):not(.ehz) body:not(#e1)::after{
  content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:1;
  background:
   radial-gradient(44% 36% at 79% 6%, rgba(232,195,106,.16), transparent 62%),
@@ -2081,8 +2081,8 @@ footer:not(#e1):not(#e2){position:relative}
 footer:not(#e1):not(#e2)::before{content:"";position:absolute;left:0;right:0;top:0;height:1px;z-index:1;background:linear-gradient(90deg,transparent,rgba(232,195,106,.5),transparent)}
 html.et-plight footer:not(#e1):not(#e2)::before,html.et-jlight footer:not(#e1):not(#e2)::before{background:linear-gradient(90deg,transparent,rgba(138,106,18,.42),transparent)}
 html:not(.et-plight):not(.et-jlight) .nav-trigger.is-active:not(#e1):not(#e2){color:#F0CE82!important;-webkit-text-fill-color:#F0CE82!important}
-@media (prefers-reduced-transparency:reduce){html:not(.et-plight):not(.et-jlight):has(.rootland) body:not(#e1)::after{background:none!important}}
-@media print{html:not(.et-plight):not(.et-jlight):has(.rootland) body:not(#e1)::after{background:none!important}footer:not(#e1):not(#e2)::before{display:none}}
+@media (prefers-reduced-transparency:reduce){html:not(.et-plight):not(.et-jlight):where([data-eh~=eh10]):not(.ehz) body:not(#e1)::after{background:none!important}}
+@media print{html:not(.et-plight):not(.et-jlight):where([data-eh~=eh10]):not(.ehz) body:not(#e1)::after{background:none!important}footer:not(#e1):not(#e2)::before{display:none}}
 
 /* Ch386 - impression : fond de page blanc, la toile photo fixe ne s imprime pas */
 @media print{

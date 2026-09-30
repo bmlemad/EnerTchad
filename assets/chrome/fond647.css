@@ -101,7 +101,7 @@ html:not(.et-plight):not(.et-jlight) .apps-creed:not(#k0):not(#k1):not(#k2):not(
    desormais du bord gauche de la liste des menus, comme celui de
    l Exploration & Production qui tenait deja dans l ecran. */
 @media(min-width:1241px){
-.nx .nav-links:has(> .nxi616){position:relative}
+.nx .nav-links:where([data-eh~=eh13]):not(.ehz){position:relative}
 .nx .nav-links > .nav-item.nxi616{position:static}
 .nx .nav-links > .nav-item.nx-item .nx-mega.nxm616:not(#_x):not(#_y){left:0;right:auto;translate:none}
 }
@@ -443,7 +443,7 @@ html.et-jlight #nav.nav:not(.scrolled):not(#z1):not(#z2):not(#z3)::after{content
 }
 /* Ch717 - mobile : la barre d onglets fixe du bas (#nezBar, 61 px, jusqu a 768 px) et les boutons flottants poses au-dessus (theme, haut de page :
    118 px depuis le bas) recouvraient l element focalise au clavier quand le navigateur l amenait en bas d ecran ; marge de defilement basse reservee. */
-@media (max-width:768px){html:has(#nezBar):not(#z1){scroll-padding-bottom:calc(126px + env(safe-area-inset-bottom,0px))}}
+@media (max-width:768px){html:where([data-eh~=eh1]):not(#ehz):not(#z1){scroll-padding-bottom:calc(126px + env(safe-area-inset-bottom,0px))}}
 
 /* Ch720 - audit des tuiles : les pastilles des tuiles de pole (.plc-badge, 16 pages) etaient coupees par des points de suspension quand
    la carte retrecit (1024 px : « Criblage · chimie EO… ») ; la pastille passe a la ligne au lieu de perdre son texte, rayon 12 px

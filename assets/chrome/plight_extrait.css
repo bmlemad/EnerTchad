@@ -77,9 +77,9 @@ html.et-plight footer a:not(#_):not(#__) { color: rgb(234, 217, 168) !important;
 html.et-jlight footer a:not(#_):not(#__), html.et-jlight .jfoot a:not(#_):not(#__) { color: rgb(234, 217, 168) !important; }
 html.et-plight main section.hero h1:not(#_):not(#__), html.et-plight main section.hero h2:not(#_):not(#__) { color: rgb(16, 22, 31) !important; -webkit-text-fill-color: rgb(16, 22, 31) !important; }
 html.et-plight main section.hero p:not(#_):not(#__), html.et-plight main section.hero span:not(#_):not(#__) { color: rgb(42, 54, 72) !important; }
-html.et-jlight section:has(.cb-in):not(#_) { background: rgb(11, 20, 34) !important; }
-html.et-jlight section:has(.cb-in) h2:not(#_):not(#__), html.et-jlight section:has(.cb-in) h3:not(#_):not(#__) { color: rgb(255, 255, 255) !important; }
-html.et-jlight section:has(.cb-in) p:not(#_):not(#__):not(.cb-k) { color: rgba(245, 247, 250, 0.85) !important; }
+html.et-jlight section:where([data-eh~=eh3]):not(.ehz):not(#_) { background: rgb(11, 20, 34) !important; }
+html.et-jlight section:where([data-eh~=eh3]):not(.ehz) h2:not(#_):not(#__), html.et-jlight section:where([data-eh~=eh3]):not(.ehz) h3:not(#_):not(#__) { color: rgb(255, 255, 255) !important; }
+html.et-jlight section:where([data-eh~=eh3]):not(.ehz) p:not(#_):not(#__):not(.cb-k) { color: rgba(245, 247, 250, 0.85) !important; }
 html.et-plight #modele div:not([class]):not(#_) { color: rgb(42, 54, 72) !important; }
 html.et-plight .cta div:not([class]):not(#_) { color: rgb(42, 54, 72) !important; }
 html.et-plight .btn:not(#_):not(#plightBtn) { background: rgb(11, 20, 34) !important; color: rgb(245, 247, 250) !important; border-color: rgb(11, 20, 34) !important; }
@@ -983,18 +983,18 @@ box-shadow:0 18px 40px -24px rgba(26,35,48,.25)!important}
    cartes d'application. (Les .hpcard de l'accueil ont ete ecartees a la contre-epreuve :
    ce sont des boutons d'appel a l'action colores, pas des tuiles — voir MAINTENANCE ch.238.) On leur applique LES MEMES valeurs que
    la famille, pas un second systeme : harmoniser, c'est rejoindre l'existant. */
-html:has(.rootland) :is(.cmp-c,.ppj-kpi,.pgh-kpi,.fp-card,.ct-card,.dx-card,.epw-card,.app-card,.app-panel):not(#_):not(#__):not(#___):not(#____){
+html:where([data-eh~=eh10]):not(.ehz) :is(.cmp-c,.ppj-kpi,.pgh-kpi,.fp-card,.ct-card,.dx-card,.epw-card,.app-card,.app-panel):not(#_):not(#__):not(#___):not(#____){
   background-color:transparent!important;
   background-image:linear-gradient(180deg,rgba(252,250,246,.56) 0%,rgba(252,250,246,.40) 100%)!important;
   border-color:rgba(26,35,48,.12)!important;
   box-shadow:0 1px 0 rgba(255,255,255,.55) inset,0 20px 40px -30px rgba(30,24,10,.42)!important;
   -webkit-backdrop-filter:blur(18px) saturate(1.35)!important;backdrop-filter:blur(18px) saturate(1.35)!important}
-html:not(.et-plight):not(.et-jlight):has(.rootland) :is(.cmp-c,.ppj-kpi,.pgh-kpi,.fp-card,.ct-card,.dx-card,.epw-card,.app-card,.app-panel):not(#_):not(#__):not(#___):not(#____){
+html:not(.et-plight):not(.et-jlight):where([data-eh~=eh10]):not(.ehz) :is(.cmp-c,.ppj-kpi,.pgh-kpi,.fp-card,.ct-card,.dx-card,.epw-card,.app-card,.app-panel):not(#_):not(#__):not(#___):not(#____){
   background-image:linear-gradient(180deg,rgba(9,15,27,.66) 0%,rgba(9,15,27,.54) 100%)!important;
   border-color:rgba(255,255,255,.15)!important;
   box-shadow:0 1px 0 rgba(255,255,255,.08) inset,0 22px 46px -30px rgba(0,0,0,.6)!important}
 /* le texte secondaire de ces tuiles suit la meme regle d'eclaircissement que la famille */
-html:not(.et-plight):not(.et-jlight):has(.rootland) :is(.cmp-c,.ppj-kpi,.pgh-kpi,.fp-card,.ct-card,.dx-card,.epw-card,.app-card,.app-panel) :is(p,li,dd,span):not(#_):not(#__):not(#___):not(#____){
+html:not(.et-plight):not(.et-jlight):where([data-eh~=eh10]):not(.ehz) :is(.cmp-c,.ppj-kpi,.pgh-kpi,.fp-card,.ct-card,.dx-card,.epw-card,.app-card,.app-panel) :is(p,li,dd,span):not(#_):not(#__):not(#___):not(#____){
   color:#D9E2EE!important;-webkit-text-fill-color:#D9E2EE!important}
 @media print{ :is(.cmp-c,.ppj-kpi,.pgh-kpi,.fp-card,.ct-card,.dx-card,.epw-card,.app-card,.app-panel):not(#_):not(#__):not(#___):not(#____){background:#fff!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important;box-shadow:none!important;border-color:#bbb!important} }
 
@@ -1063,10 +1063,10 @@ header.jtop:not(#_)::before{content:'';position:absolute;inset:0;z-index:-1;poin
    sombre, encre foncee sur zone foncee en clair. On ne change ni la teinte ni la
    transparence : on tonalise ce que le verre laisse passer, vers la nuit en theme
    sombre, vers le jour en theme clair. La photo reste lisible derriere. */
-html:not(.et-plight):not(.et-jlight):has(.rootland) :is(.cmp-c,.ppj-kpi,.pgh-kpi,.fp-card,.ct-card,.dx-card,.epw-card,.app-card,.app-panel):not(#_):not(#__):not(#___):not(#____){
+html:not(.et-plight):not(.et-jlight):where([data-eh~=eh10]):not(.ehz) :is(.cmp-c,.ppj-kpi,.pgh-kpi,.fp-card,.ct-card,.dx-card,.epw-card,.app-card,.app-panel):not(#_):not(#__):not(#___):not(#____){
   -webkit-backdrop-filter:blur(18px) saturate(1.35) brightness(.5)!important;
   backdrop-filter:blur(18px) saturate(1.35) brightness(.5)!important}
-html:is(.et-plight,.et-jlight):has(.rootland) :is(.cmp-c,.ppj-kpi,.fp-card,.ct-card,.dx-card,.epw-card,.app-card,.app-panel):not(#_):not(#__):not(#___):not(#____){
+html:is(.et-plight,.et-jlight):where([data-eh~=eh10]):not(.ehz) :is(.cmp-c,.ppj-kpi,.fp-card,.ct-card,.dx-card,.epw-card,.app-card,.app-panel):not(#_):not(#__):not(#___):not(#____){
   -webkit-backdrop-filter:blur(18px) saturate(1.15) brightness(1.5)!important;
   backdrop-filter:blur(18px) saturate(1.15) brightness(1.5)!important}
 
@@ -1258,7 +1258,7 @@ input[type=range]:not(#_):not(#__):focus-visible{
   .brand-tx small:not(#_):not(#__){font-size:11px!important;letter-spacing:.06em!important}
 }
 @media(max-width:720px){
-  body:has(.lum-ctl) #plightBtn:not(#_):not(#__){bottom:150px}
+  body:where([data-eh~=eh8]):not(.ehz) #plightBtn:not(#_):not(#__){bottom:150px}
 }
 
 /* Ch323 — 7. Le courriel et le telephone du pied de page sont les deux liens
