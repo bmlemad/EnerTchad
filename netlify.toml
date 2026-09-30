@@ -70,3 +70,8 @@
   from = "/reporting-en"
   to = "/publications-en"
   status = 301
+
+[[redirects]]
+  from = "/amont/calculateur-baril-additionnel"
+  to = "/Calculateur_Baril_Additionnel.html"
+  status = 301
