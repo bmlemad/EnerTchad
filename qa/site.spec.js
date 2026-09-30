@@ -2,6 +2,20 @@ const { test, expect } = require('@playwright/test');
 
 const url = process.env.SITE_URL || 'https://enertchad-delta.vercel.app/';
 
+
+test('site-wide consistency — canonical representative routes stay equivalent', async ({ request }) => {
+  const routes = ['/', '/index-en', '/ar', '/amont/', '/intermediaire/', '/aval/', '/greentech/', '/tchaditech/', '/tchaditude/', '/enerconseils/', '/societe', '/investisseurs', '/clients', '/carrieres', '/contact', '/faq'];
+  for (const route of routes) {
+    const response = await request.get(new URL(route, url).href, { maxRedirects: 5, timeout: 30000 });
+    expect(response.status(), route).toBe(200);
+    const html = await response.text();
+    expect(html, route + ' html').toMatch(/<html\\b/i);
+    expect(html, route + ' title').toMatch(/<title>[^<]{10,}<\\/title>/i);
+    expect(html, route + ' main landmark').toMatch(/<(main|div[^>]+id=["'](?:main-content|contenu|content|root)["'])\\b/i);
+    expect(html, route + ' canonical').toMatch(/rel=["'][^"']*canonical[^"']*["']/i);
+  }
+});
+
 test('homepage desktop', async ({ page }) => {
   await page.goto(url, { waitUntil: 'networkidle', timeout: 45000 });
   await expect(page).toHaveTitle(/EnerTchad/i);
