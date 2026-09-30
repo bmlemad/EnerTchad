@@ -4,7 +4,7 @@
 try{(function(){
   var mq=window.matchMedia('(min-width:1241px)');
   var links=document.getElementById('navLinks');if(!links)return;
-  /* Ch322 : le gestionnaire de focus (plus bas) pose sur le panneau des styles
+  /*  : le gestionnaire de focus (plus bas) pose sur le panneau des styles
      en ligne !important ; les retirer fait partie de la fermeture, sinon le
      panneau reste peint alors que la classe .open a disparu. */
   var PROPS=['visibility','opacity','pointer-events','transform'];
@@ -27,7 +27,7 @@ try{(function(){
       closeAll(item);
       item.classList.toggle('open',!was);
       btn.setAttribute('aria-expanded',String(!was));
-      /* Ch322 : un declencheur de divulgation doit refermer au second appui.
+      /*  : un declencheur de divulgation doit refermer au second appui.
          Le clic donne le focus au bouton : le gestionnaire focusin vient de
          poser visibility/opacity en ligne !important, et :focus-within garde
          le panneau ouvert. On retire donc les styles en ligne et on pose
@@ -38,7 +38,7 @@ try{(function(){
         nu(item);
         item.classList.add('kbesc');
         var clear=function(e){
-          /* Ch322 : un focusout qui reste dans l'element (le panneau rend la main
+          /*  : un focusout qui reste dans l'element (le panneau rend la main
              au declencheur) n'est pas une sortie : il ne doit pas lever .kbesc. */
           if(e&&e.type==='focusout'&&item.contains(e.relatedTarget))return;
           item.classList.remove('kbesc');
@@ -71,7 +71,7 @@ try{(function(){
         it.classList.add('kbesc');
         if(b){b.setAttribute('aria-expanded','false');b.focus({preventScroll:true});}
         var clear=function(e){
-          if(e&&e.type==='focusout'&&it.contains(e.relatedTarget))return;   /* Ch322 */
+          if(e&&e.type==='focusout'&&it.contains(e.relatedTarget))return;   /*  */
           it.classList.remove('kbesc');it.removeEventListener('focusout',clear);it.removeEventListener('mouseenter',clear);};
         it.addEventListener('focusout',clear);
         it.addEventListener('mouseenter',clear);
@@ -121,7 +121,7 @@ try{(function(){var nav=document.getElementById('nav')||document.querySelector('
 var f=function(){nav.classList.toggle('scrolled',(window.scrollY||window.pageYOffset||0)>20)};
 addEventListener('scroll',f,{passive:true});f();})()}catch(e){}
 
-;(function(){/* a11y: keyboard-operable mega-menu (desktop) + truthful aria-expanded */var mq=window.matchMedia("(max-width:1240px)");var items=[].slice.call(document.querySelectorAll(".nav-item.nx-item"));function setAria(it,v){var b=it.querySelector(".nav-trigger");if(b)b.setAttribute("aria-expanded",v?"true":"false");}function reveal(it,on){var m=it.querySelector(".nx-mega");if(!m)return;if(on){m.style.setProperty("visibility","visible","important");m.style.setProperty("opacity","1","important");m.style.setProperty("pointer-events","auto","important");m.style.setProperty("transform","translateY(0) scale(1)","important");}else{m.style.removeProperty("visibility");m.style.removeProperty("opacity");m.style.removeProperty("pointer-events");m.style.removeProperty("transform");}}function ariaFromVis(it){if(mq.matches)return;var m=it.querySelector(".nx-mega");if(!m)return;var cs=getComputedStyle(m);setAria(it,cs.visibility!=="hidden"&&parseFloat(cs.opacity)>0.5&&cs.display!=="none");}function closeOthers(except){items.forEach(function(it){if(it!==except){reveal(it,false);if(!it.matches(":hover"))setAria(it,false);}});}items.forEach(function(item){var btn=item.querySelector(".nav-trigger");if(!btn)return;var mega=item.querySelector(".nx-mega");item.addEventListener("focusin",function(){if(mq.matches)return;closeOthers(item);item.classList.remove("kbesc");reveal(item,true);setAria(item,true);});item.addEventListener("focusout",function(){if(mq.matches)return;setTimeout(function(){if(!item.contains(document.activeElement)){reveal(item,false);ariaFromVis(item);}},10);});["mouseenter","mouseleave"].forEach(function(ev){item.addEventListener(ev,function(){setTimeout(function(){ariaFromVis(item);},20);setTimeout(function(){ariaFromVis(item);},340);});});if(mega)mega.addEventListener("transitionend",function(){ariaFromVis(item);});});document.addEventListener("keydown",function(e){if(e.key!=="Escape"||mq.matches)return;items.forEach(function(item){if(item.contains(document.activeElement)){reveal(item,false);setAria(item,false);item.classList.add("kbesc");/* Ch322 : le focusin declenche par le retour du focus au declencheur venait de retirer .kbesc ; sans elle, :focus-within rouvrait le panneau alors que aria-expanded disait false */var b=item.querySelector(".nav-trigger");if(b)b.focus();}});});})();
+;(function(){/* a11y: keyboard-operable mega-menu (desktop) + truthful aria-expanded */var mq=window.matchMedia("(max-width:1240px)");var items=[].slice.call(document.querySelectorAll(".nav-item.nx-item"));function setAria(it,v){var b=it.querySelector(".nav-trigger");if(b)b.setAttribute("aria-expanded",v?"true":"false");}function reveal(it,on){var m=it.querySelector(".nx-mega");if(!m)return;if(on){m.style.setProperty("visibility","visible","important");m.style.setProperty("opacity","1","important");m.style.setProperty("pointer-events","auto","important");m.style.setProperty("transform","translateY(0) scale(1)","important");}else{m.style.removeProperty("visibility");m.style.removeProperty("opacity");m.style.removeProperty("pointer-events");m.style.removeProperty("transform");}}function ariaFromVis(it){if(mq.matches)return;var m=it.querySelector(".nx-mega");if(!m)return;var cs=getComputedStyle(m);setAria(it,cs.visibility!=="hidden"&&parseFloat(cs.opacity)>0.5&&cs.display!=="none");}function closeOthers(except){items.forEach(function(it){if(it!==except){reveal(it,false);if(!it.matches(":hover"))setAria(it,false);}});}items.forEach(function(item){var btn=item.querySelector(".nav-trigger");if(!btn)return;var mega=item.querySelector(".nx-mega");item.addEventListener("focusin",function(){if(mq.matches)return;closeOthers(item);item.classList.remove("kbesc");reveal(item,true);setAria(item,true);});item.addEventListener("focusout",function(){if(mq.matches)return;setTimeout(function(){if(!item.contains(document.activeElement)){reveal(item,false);ariaFromVis(item);}},10);});["mouseenter","mouseleave"].forEach(function(ev){item.addEventListener(ev,function(){setTimeout(function(){ariaFromVis(item);},20);setTimeout(function(){ariaFromVis(item);},340);});});if(mega)mega.addEventListener("transitionend",function(){ariaFromVis(item);});});document.addEventListener("keydown",function(e){if(e.key!=="Escape"||mq.matches)return;items.forEach(function(item){if(item.contains(document.activeElement)){reveal(item,false);setAria(item,false);item.classList.add("kbesc");/*  : le focusin declenche par le retour du focus au declencheur venait de retirer .kbesc ; sans elle, :focus-within rouvrait le panneau alors que aria-expanded disait false */var b=item.querySelector(".nav-trigger");if(b)b.focus();}});});})();
 /* EnerTchad — Cale d'ancre. La feuille posait scroll-padding-top:116px, une
    constante qui ne correspond a aucun gabarit reel : la barre principale
    mesure 77, 93 ou 132 px selon la largeur, et les sous-nav collantes
@@ -163,7 +163,7 @@ try{(function(){
     var b=document.querySelector('#nav,header');if(b)ro.observe(b);}
   setTimeout(pose,600);setTimeout(pose,1800);
 })();}catch(e){}
-/* Ch581 - a l impression, deplier les <details> replies puis les refermer.
+/*  - a l impression, deplier les <details> replies puis les refermer.
    Complement au correctif CSS de nav_a.css pour les moteurs sans
    ::details-content. Idempotent, silencieux, sans effet a l ecran. */
 try{(function(){var o=[];
