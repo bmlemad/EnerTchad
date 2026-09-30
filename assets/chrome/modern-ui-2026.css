@@ -502,3 +502,43 @@ html.et-plight{
   }
   .et-command-card,.et-proof-card,.t550-kpi,.hncard{background:Canvas!important;color:CanvasText!important}
 }
+
+/* EnerTchad Mobile 2026 — compact, touch-first corporate layout */
+@media(max-width:680px){
+  :root{--et-premium-gutter:16px;--et-anc:92px}
+  body{min-width:0;overflow-x:clip}
+  .wrap,.et-command-in,.et-proof-in,.et-intents,.nh-in{width:calc(100% - 32px)!important}
+  header.hero,#top.hero{min-height:640px!important}
+  header.hero .hero-in,#top.hero .hero-in{padding-top:76px!important}
+  .nh-in{padding-top:82px!important;padding-bottom:44px!important}
+  .nh-grid{gap:30px!important}
+  .nh-h1{max-width:10ch!important;font-size:clamp(2.7rem,14vw,4.3rem)!important;line-height:.94!important}
+  .nh-l{margin-top:20px!important;font-size:.96rem!important;line-height:1.6!important}
+  .nh-cta{margin-top:24px!important}
+  .nh-cta a{min-height:48px!important}
+  .nh-kpi{margin-top:28px!important;padding-top:12px!important}
+  .nh-kpi>div{padding:11px 0!important}
+  .nh-kpi dt{font-size:1.15rem!important}
+  .nh-fig{transform:none!important;max-width:100%!important}
+  .et-modern-strip-in{width:calc(100% - 32px)!important;padding:8px 0!important}
+  .et-modern-strip-in>div,.et-modern-strip-in>a{padding:11px 4px!important}
+  main>section:not(.hero){padding-block:40px!important}
+  .et-command,.et-proof-center{padding-block:40px!important}
+  .et-command-head,.et-proof-head{margin-bottom:18px!important}
+  .et-command-card,.et-proof-card{min-height:0!important;padding:16px!important}
+  .et-command-index,.et-proof-k{margin-bottom:11px!important}
+  .et-command-card small,.et-proof-card>span:nth-of-type(2){font-size:.82rem!important;line-height:1.45!important}
+  .et-command-card b{padding-top:14px!important}
+  #coeurs>.t550-head{width:calc(100% - 32px)!important;padding-top:48px!important;padding-bottom:28px!important}
+  .t550-in{width:calc(100% - 32px)!important}
+  .t550-p{padding-block:48px!important}
+  .t550-kpis{grid-template-columns:1fr!important}
+  #durabilite .dur-g,.hnews-grid{border-radius:16px!important}
+  #durabilite .dur-c{min-height:0!important;padding:18px!important}
+  #cta-band{margin-top:40px!important}
+}
+@media(max-width:390px){
+  .nh-h1{font-size:clamp(2.55rem,13.8vw,3.7rem)!important}
+  .nh-cta a{padding-inline:8px!important}
+  .et-modern-strip-in b{font-size:.84rem!important}
+}
