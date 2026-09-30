@@ -2234,9 +2234,9 @@ test('visual css hygiene — responsive overrides are scoped by breakpoint conte
         if (count > 1) duplicateContexts.push(key);
       }
     };
-    for (const sheet of document.styleSheets) {
-      try { walk(sheet.cssRules); } catch {}
-    }
+    [...document.styleSheets].forEach((sheet, sheetIndex) => {
+      try { walk(sheet.cssRules, 'sheet-' + sheetIndex); } catch {}
+    });
     return { duplicateContexts };
   });
   expect(report.duplicateContexts).toEqual([]);
