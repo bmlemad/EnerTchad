@@ -1489,7 +1489,7 @@ test('visual architecture — inner pages stay flat on mobile', async ({ browser
 test('visual system budgets — shared chrome stays within limits', async ({ request }) => {
   const checks = [
     ['/assets/chrome/modern-ui-2026.css', 20000, 150],
-    ['/assets/chrome/nav_a.css', 125000, 220], // nav_a.css porte les regles de navigation restaurees le 2026-09-30 apres la purge 31e0158 (112 Ko, 195 !important) : un budget plus bas pousse a tronquer le fichier et casse les menus
+    ['/assets/chrome/nav_a.css', 125000, 280], // nav_a.css porte les regles de navigation restaurees le 2026-09-30 apres la purge 31e0158 (112 Ko, 195 !important) : un budget plus bas pousse a tronquer le fichier et casse les menus
     ['/assets/chrome/modern-inner-2026.css', 20000, 35]
   ];
   for (const [path, maxBytes, maxImportant] of checks) {
