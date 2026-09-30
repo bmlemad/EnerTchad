@@ -2243,6 +2243,25 @@ test('visual css hygiene — responsive overrides are scoped by breakpoint conte
   await page.close();
 });
 
+test('visual architecture — inner pages keep editorial sections flat', async ({ browser }) => {
+  const page = await browser.newPage({ viewport: { width: 1280, height: 900 } });
+  await page.goto(new URL('/amont/', url).href, { waitUntil: 'domcontentloaded', timeout: 45000 });
+  const report = await page.locator('main > section').evaluateAll(sections => sections.slice(0, 6).map(section => {
+    const style = getComputedStyle(section);
+    return {
+      borderRadius: style.borderRadius,
+      borderTopWidth: style.borderTopWidth,
+      boxShadow: style.boxShadow,
+      backgroundImage: style.backgroundImage
+    };
+  }));
+  for (const section of report) {
+    expect(section.borderRadius).toBe('0px');
+    expect(section.boxShadow).toBe('none');
+  }
+  await page.close();
+});
+
 test('visual css hygiene — shared chrome stays bounded and legacy glass markers remain absent', async ({ request }) => {
   const cssPaths = [
     '/assets/chrome/modern-ui-2026.css',
