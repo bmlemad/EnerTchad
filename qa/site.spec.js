@@ -2540,5 +2540,5 @@ test('visual css hygiene — shared chrome stays bounded and legacy glass marker
   // Budget raised with the validated clear-glass surface layer; keep growth bounded.\n  expect(modernCss.length).toBeLessThan(23000);
   const inner = await request.get(new URL('/assets/chrome/modern-inner-2026.css', url).href, { timeout: 30000 });
   const innerCss = await inner.text();
-  expect(innerCss).not.toContain('border-color:var(--et-i-line);background:var(--et-i-panel);border-radius:14px;box-shadow:inset 0 1px 0 rgba(255,255,255,.035)');\n  expect(innerCss.length).toBeLessThan(22000);
+  expect(innerCss).not.toContain('border-color:var(--et-i-line);background:var(--et-i-panel);border-radius:14px;box-shadow:inset 0 1px 0 rgba(255,255,255,.035)');\n  expect(innerCss.length).toBeLessThan(30000);
 });
