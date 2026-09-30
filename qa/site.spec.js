@@ -208,7 +208,7 @@ test('SEO infrastructure — robots, sitemap et hreflang', async ({ request }) =
   const sitemap = await request.get(new URL('/sitemap.xml', url).href);
   expect(sitemap.status()).toBe(200);
   const xml = await sitemap.text();
-  const urls = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m => m[1]);
+  const blocks = [...xml.matchAll(/<url>([\s\S]*?)<\/url>/g)].map(m => m[1]);
   expect(urls.length).toBeGreaterThan(100);
   expect(new Set(urls).size).toBe(urls.length);
 
