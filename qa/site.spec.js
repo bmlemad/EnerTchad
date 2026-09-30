@@ -184,7 +184,7 @@ test('SEO structured data — JSON-LD parses and page URLs stay coherent', async
     const response = await request.get(new URL(path, url).href, { timeout: 30000 });
     expect(response.status(), path).toBe(200);
     const html = await response.text();
-    const blocks = [...html.matchAll(/<script\\b[^>]*type=["']application\\/ld\\+json["'][^>]*>([\\s\\S]*?)<\\/script>/gi)].map(m => m[1].trim()).filter(Boolean);
+    const blocks = [...html.matchAll(/<script\b[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi)].map(m => m[1].trim()).filter(Boolean);
     expect(blocks.length, path).toBeGreaterThan(0);
     for (const raw of blocks) {
       let data;
