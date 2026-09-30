@@ -1463,6 +1463,21 @@ test('routing — representative sitemap URLs resolve without 4xx/5xx', async ({
   }
 });
 
+
+test('visual architecture — inner pages stay flat on mobile', async ({ browser }) => {
+  const page = await browser.newPage({ viewport: { width: 390, height: 844 }, deviceScaleFactor: 1 });
+  await page.goto(new URL('/amont/', url).href, { waitUntil: 'domcontentloaded', timeout: 45000 });
+  const report = await page.locator('main > section').evaluateAll(sections => sections.slice(0, 6).map(section => {
+    const style = getComputedStyle(section);
+    return { borderRadius: style.borderRadius, boxShadow: style.boxShadow };
+  }));
+  for (const section of report) {
+    expect(section.borderRadius).toBe('0px');
+    expect(section.boxShadow).toBe('none');
+  }
+  await page.close();
+});
+
 test('responsive — key content remains readable across tablet and mobile widths', async ({ browser }) => {
   const paths = ['/', '/amont/', '/intermediaire/', '/aval/', '/greentech/', '/tchaditech/', '/contact'];
   const viewports = [{ width: 1024, height: 768 }, { width: 768, height: 1024 }, { width: 390, height: 844 }];
