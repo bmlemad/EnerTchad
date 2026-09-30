@@ -2099,6 +2099,20 @@ test('document integrity — only one visible primary navigation landmark and on
 });
 
 
+
+test('performance — responsive images declare sizes when using srcset', async ({ browser }) => {
+  const paths = ['/', '/amont/', '/aval/', '/contact'];
+  for (const path of paths) {
+    const page = await browser.newPage({ viewport: { width: 390, height: 844 } });
+    await page.goto(new URL(path, url).href, { waitUntil: 'domcontentloaded', timeout: 45000 });
+    const report = await page.evaluate(() => Array.from(document.images)
+      .filter(img => img.hasAttribute('srcset') && !img.hasAttribute('sizes'))
+      .map(img => img.currentSrc || img.getAttribute('src') || img.outerHTML.slice(0, 180)));
+    expect(report, path + ' responsive images missing sizes').toEqual([]);
+    await page.close();
+  }
+});
+
 test('performance — image markup avoids layout-shift risk', async ({ browser }) => {
   const page = await browser.newPage({ viewport: { width: 390, height: 844 } });
   await page.goto(new URL('/', url).href, { waitUntil: 'domcontentloaded', timeout: 45000 });
