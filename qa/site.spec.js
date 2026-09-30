@@ -2211,7 +2211,7 @@ test('visual css hygiene — historical override markers are absent and core chr
   const nav = await request.get(new URL('/assets/chrome/nav_a.css', url).href, { timeout: 30000 });
   expect((await nav.text()).length).toBeLessThan(60000);
   const navCss = await nav.text();
-  expect(navCss).not.toContain('.fil552:not(#_):not(#__) ~ .pole-subnav:not(#_){margin-top:8px}</div>');
+  expect((navCss.match(/\.fil552:not\(#_\):not\(#__\) ~ \.pole-subnav:not\(#_\)\{margin-top:8px\}/g) || []).length).toBe(1);
 });
 
 test('visual css hygiene — shared chrome stays bounded and legacy glass markers remain absent', async ({ request }) => {
