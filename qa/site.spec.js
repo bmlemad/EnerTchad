@@ -1988,6 +1988,25 @@ test('document structure — heading hierarchy has no skipped levels on strategi
   }
 });
 
+
+test('runtime health — critical resource failures stay at zero on mobile', async ({ browser }) => {
+  const paths = ['/', '/amont/', '/aval/', '/contact'];
+  for (const path of paths) {
+    const page = await browser.newPage({ viewport: { width: 390, height: 844 } });
+    const failed = [];
+    page.on('response', response => {
+      const type = response.request().resourceType();
+      if (['stylesheet', 'script', 'font', 'image'].includes(type) && response.status() >= 400) {
+        failed.push(type + ' ' + response.status() + ' ' + response.url());
+      }
+    });
+    const response = await page.goto(new URL(path, url).href, { waitUntil: 'networkidle', timeout: 45000 });
+    expect(response?.status(), path).toBe(200);
+    expect(failed, path + ' mobile resource failures').toEqual([]);
+    await page.close();
+  }
+});
+
 test('resources — stylesheets and scripts are not duplicated unnecessarily', async ({ browser }) => {
   const paths = ['/', '/index-en', '/ar', '/contact', '/investisseurs', '/greentech/'];
   for (const path of paths) {
