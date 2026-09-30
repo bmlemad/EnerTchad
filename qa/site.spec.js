@@ -1491,6 +1491,23 @@ test('accessibility — reduced motion and forced colors are covered', async ({ 
   expect(modern).toMatch(/@media\(prefers-reduced-motion:reduce\)\{[\\s\\S]*?transition:none/);
 });
 
+
+test('infrastructure — sitemap and robots stay coherent', async ({ request }) => {
+  const robots = await request.get(new URL('/robots.txt', url).href);
+  expect(robots.status()).toBe(200);
+  const robotsText = await robots.text();
+  expect(robotsText).toContain('Sitemap: ' + new URL('/sitemap.xml', url).href);
+  expect(robotsText).toContain('Disallow: /docs-sources/');
+
+  const sitemap = await request.get(new URL('/sitemap.xml', url).href);
+  expect(sitemap.status()).toBe(200);
+  const xml = await sitemap.text();
+  const urls = [...xml.matchAll(/<loc>([^<]+)<\\/loc>/g)].map(match => match[1]);
+  expect(urls.length).toBeGreaterThan(150);
+  expect(new Set(urls).size).toBe(urls.length);
+  expect(urls.every(item => item.startsWith(url))).toBeTruthy();
+});
+
 test('responsive — key content remains readable across tablet and mobile widths', async ({ browser }) => {
   const paths = ['/', '/amont/', '/intermediaire/', '/aval/', '/greentech/', '/tchaditech/', '/contact'];
   const viewports = [{ width: 1024, height: 768 }, { width: 768, height: 1024 }, { width: 390, height: 844 }];
