@@ -1032,3 +1032,66 @@ html:is(.et-plight,.et-jlight) footer{
     background:#f7f9fc;
   }
 }
+
+
+/* ===== QA ULTRA — hiérarchie mega-menu + densité hubs (2026-09-30) ===== */
+@media(min-width:1241px){
+  /* Le mega-menu reste complet, mais respire comme une navigation premium :
+     moins de hauteur, davantage de hiérarchie, aucun lien supprimé. */
+  .nx .nx-mega:not(#_x){
+    min-width:700px;
+    max-width:min(92vw,800px);
+    padding:18px 20px 16px;
+    gap:5px 22px;
+  }
+  .nx .nx-col .nxh{
+    margin:3px 8px 6px;
+    padding-bottom:6px;
+    font-size:.64rem;
+    letter-spacing:.18em;
+  }
+  .nx .nx-col a{
+    padding:7px 24px 7px 10px;
+    border-radius:8px;
+  }
+  .nx .nx-col a strong{font-size:.86rem}
+  .nx .nx-col a em{font-size:.70rem;line-height:1.35}
+  .nx .nx-feat{
+    min-height:142px;
+    padding:14px;
+    border-radius:12px;
+  }
+  .nx .nx-feat strong{font-size:.94rem;margin:5px 0 2px}
+  .nx .nx-feat em{font-size:.73rem;line-height:1.38}
+  .nx .nx-feat .arr{margin-top:9px;font-size:.80rem}
+
+  /* Le pôle courant devient immédiatement identifiable sans ajouter de bruit. */
+  .nx .nav-item:has(.nx-col a[aria-current="page"]) > .nav-trigger{
+    color:#fff;
+    background:linear-gradient(90deg,rgba(219,174,74,.16),rgba(90,167,240,.06));
+    box-shadow:inset 0 -2px 0 var(--gold-l,#E8C36A);
+  }
+  .nx .nav-item:has(.nx-col a[aria-current="page"]) > .nav-trigger svg{opacity:1}
+}
+
+@media(min-width:1241px){
+  /* Les hubs gardent leur richesse éditoriale mais réduisent les vides structurels. */
+  main > section:not(.hero):not(.pghero):not(#_){
+    scroll-margin-top:128px;
+  }
+  main > section:not(.hero):not(.pghero):not(#_)+section:not(#_){
+    border-top:1px solid rgba(255,255,255,.035);
+  }
+}
+
+@media(max-width:1240px){
+  /* La densité mobile reste volontairement confortable et tactile. */
+  .nx .nx-col .nxh{font-size:.64rem;letter-spacing:.16em}
+  .nx .nx-col a{padding:8px 0}
+  .nx .nx-col a strong{font-size:.95rem}
+  .nx .nx-col a em{font-size:.72rem}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .nx .nx-col a:hover{transform:none}
+}
