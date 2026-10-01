@@ -1,6 +1,6 @@
 const { test, expect } = require('@playwright/test');
 
-const base = process.env.SITE_URL || 'https://enertchad-delta.vercel.app/';
+const base = process.env.SITE_URL || 'https://enertchad.netlify.app/';
 const pages = ['/', '/index-en'];
 const widths = [1280, 1440];
 

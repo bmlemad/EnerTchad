@@ -1,6 +1,6 @@
 const { test, expect } = require('@playwright/test');
 
-const base = process.env.SITE_URL || 'https://enertchad-delta.vercel.app/';
+const base = process.env.SITE_URL || 'https://enertchad.netlify.app/';
 const cases = [
   { path: '/', lang: 'fr', dir: 'ltr', locale: 'fr_TD' },
   { path: '/index-en', lang: 'en', dir: 'ltr', locale: 'en_US' },

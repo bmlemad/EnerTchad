@@ -2,7 +2,7 @@ const { test, expect } = require('@playwright/test');
 const fs = require('fs');
 const path = require('path');
 
-const base = process.env.SITE_URL || 'https://enertchad-delta.vercel.app/';
+const base = process.env.SITE_URL || 'https://enertchad.netlify.app/';
 const origin = new URL(base).origin;
 
 function sitemapUrls(xml) {

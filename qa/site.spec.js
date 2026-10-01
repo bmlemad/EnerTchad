@@ -1,6 +1,6 @@
 const { test, expect } = require('@playwright/test');
 
-const url = process.env.SITE_URL || 'https://enertchad-delta.vercel.app/';
+const url = process.env.SITE_URL || 'https://enertchad.netlify.app/';
 
 
 test('site-wide consistency — canonical representative routes stay equivalent', async ({ request }) => {
@@ -194,7 +194,7 @@ test('SEO structured data — JSON-LD parses and page URLs stay coherent', async
 test('SEO infrastructure — robots, sitemap et hreflang', async ({ request }) => {
   const robots = await request.get(new URL('/robots.txt', url).href);
   expect(robots.status()).toBe(200);
-  expect(await robots.text()).toMatch(/Sitemap:\s*https:\/\/enertchad-delta\.vercel\.app\/sitemap\.xml/i);
+  expect(await robots.text()).toMatch(/Sitemap:\s*https:\/\/enertchad\.netlify\.app\/sitemap\.xml/i);
 
   const sitemap = await request.get(new URL('/sitemap.xml', url).href);
   expect(sitemap.status()).toBe(200);
@@ -378,7 +378,7 @@ test('semantic accessibility and document metadata — representative locales', 
 
     expect(audit.title.length, path).toBeGreaterThan(10);
     expect(audit.description.length, path).toBeGreaterThan(50);
-    expect(audit.canonical, path).toMatch(/^https:\/\/enertchad-delta\.vercel\.app\//);
+    expect(audit.canonical, path).toMatch(/^https:\/\/enertchad\.netlify\.app\//);
     expect(audit.main, path).toBeTruthy();
     expect(audit.mainTabbable, path).toMatch(/^-?1$/);
     expect(audit.nav, path).toBeTruthy();

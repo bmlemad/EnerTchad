@@ -1,6 +1,6 @@
 const { test, expect } = require('@playwright/test');
 
-const base = process.env.SITE_URL || 'https://enertchad-delta.vercel.app/';
+const base = process.env.SITE_URL || 'https://enertchad.netlify.app/';
 const paths = ['/', '/index-en', '/ar', '/amont/', '/aval/', '/greentech/', '/contact'];
 
 test('SEO — robots metadata does not accidentally block indexable pages', async ({ browser }) => {

@@ -1,6 +1,6 @@
 const { test, expect } = require('@playwright/test');
 
-const url = process.env.SITE_URL || 'https://enertchad-delta.vercel.app/';
+const url = process.env.SITE_URL || 'https://enertchad.netlify.app/';
 
 test('shared chrome — focus-visible declarations expose a real visible treatment', async ({ page }) => {
   await page.goto(new URL('/', url).href, { waitUntil: 'domcontentloaded', timeout: 45000 });

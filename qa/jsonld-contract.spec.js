@@ -1,6 +1,6 @@
 const { test, expect } = require('@playwright/test');
 
-const base = process.env.SITE_URL || 'https://enertchad-delta.vercel.app/';
+const base = process.env.SITE_URL || 'https://enertchad.netlify.app/';
 const paths = ['/', '/amont/', '/aval/', '/greentech/', '/contact'];
 
 test('SEO — JSON-LD blocks are valid JSON and use canonical absolute URLs', async ({ browser }) => {

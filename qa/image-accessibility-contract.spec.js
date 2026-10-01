@@ -1,6 +1,6 @@
 const { test, expect } = require('@playwright/test');
 
-const base = process.env.SITE_URL || 'https://enertchad-delta.vercel.app/';
+const base = process.env.SITE_URL || 'https://enertchad.netlify.app/';
 const paths = ['/', '/amont/', '/intermediaire/', '/aval/', '/greentech/', '/contact'];
 
 test('images — visible content images have meaningful alt text and decorative images are explicit', async ({ browser }) => {

@@ -1,6 +1,6 @@
 const { test, expect } = require('@playwright/test');
 
-const base = process.env.SITE_URL || 'https://enertchad-delta.vercel.app/';
+const base = process.env.SITE_URL || 'https://enertchad.netlify.app/';
 const paths = ['/', '/amont/', '/aval/', '/greentech/', '/contact'];
 
 test('performance — critical resource hints are valid and do not duplicate stylesheet preloads', async ({ browser }) => {

@@ -1,6 +1,6 @@
 const { test, expect } = require('@playwright/test');
 
-const base = process.env.SITE_URL || 'https://enertchad-delta.vercel.app/';
+const base = process.env.SITE_URL || 'https://enertchad.netlify.app/';
 const assets = [
   '/assets/chrome/modern-ui-2026.css',
   '/assets/chrome/nav_a.css?b=202608300720',

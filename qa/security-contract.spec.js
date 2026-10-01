@@ -1,6 +1,6 @@
 const { test, expect } = require('@playwright/test');
 
-const base = process.env.SITE_URL || 'https://enertchad-delta.vercel.app/';
+const base = process.env.SITE_URL || 'https://enertchad.netlify.app/';
 const paths = ['/', '/amont/', '/aval/', '/greentech/', '/contact', '/investisseurs'];
 
 test('security — external links opened in new contexts have safe opener semantics', async ({ browser }) => {
