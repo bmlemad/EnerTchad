@@ -354,9 +354,19 @@ def build_main(m, lang, hero, fig):
             + f'\n{SUBNAV_JS}\n</main>')
 
 
+def fix_skip(h):
+    """Le lien d evitement porte la classe et-skip (contrat QA des hubs), meme si la page source utilisait skip-link."""
+    return re.sub(r'<a href="#main-content" class="skip-link">', '<a class="et-skip skip-link" href="#main-content">', h, count=1) \
+        if not re.search(r'<a [^>]*class="et-skip[^"]*"[^>]*href="#main-content"', h) else h
+
+
 def rebuild(path, lang, hero, fig):
     h = open(path, encoding='utf-8').read()
     if 'class="ppl"' in h:
+        h2 = fix_skip(h)
+        if h2 != h:
+            open(path, 'w', encoding='utf-8').write(h2)
+            return 'deja migre, lien d evitement normalise'
         return 'deja migre'
     head, rest = h[:h.find('<body')], h[h.find('<body'):]
     # feuilles : seules celles de l en-tete commun restent ; ajout de la feuille premium des poles
@@ -384,7 +394,7 @@ def rebuild(path, lang, hero, fig):
     main = build_main(soup.find('main'), lang, hero, fig)
     out = (head + body_tag + '\n' + skip + '\n<div id="readbar" aria-hidden="true"></div>\n' + nav + '\n' + navjs + '\n'
            + main + '\n' + footer + tail + '\n</body>\n</html>\n')
-    out = re.sub(r'\n{4,}', '\n\n\n', out)
+    out = fix_skip(re.sub(r'\n{4,}', '\n\n\n', out))
     open(path, 'w', encoding='utf-8').write(out)
     return len(out)
 
