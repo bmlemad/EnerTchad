@@ -348,3 +348,30 @@
 @media (prefers-reduced-motion:reduce){
   @M .pp-link::after,@M .pp-domains b::after{transition:none}
 }
+
+/* Salle de presse : couleurs officielles (pastilles) */
+@M .pp-swatches{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));min-width:0;gap:18px 24px;margin:6px 0 0;padding:0;list-style:none}
+@M .pp-swatches li{display:grid;gap:4px;padding:0;margin:0;color:var(--pp-ink2);font-size:.86rem}
+@M .pp-swatches li::before{content:none;display:none}
+@M .pp-swatches i{display:block;height:56px;border:1px solid var(--pp-line);margin-bottom:6px}
+@M .pp-swatches b{color:var(--pp-ink);font-weight:600;font-size:.95rem}
+@M .pp-swatches span{font-variant-numeric:tabular-nums}
+
+/* Salle de presse : registre des communiques */
+@M .pp-rel-note{margin-top:14px}
+@M .pp-rel-abo{display:flex;flex-wrap:wrap;gap:6px 22px;align-items:center;margin-top:18px;font-size:.92rem;color:var(--pp-ink2)}
+@M .pp-rel-abo b{font-weight:600;color:var(--pp-gold-ink)}
+@M .pp-rel-abo a{color:var(--pp-ink);text-decoration:underline;text-decoration-color:var(--pp-gold);text-underline-offset:4px;min-height:32px;display:inline-flex;align-items:center}
+@M .pp-releases{display:grid;border-top:1px solid var(--pp-ink);margin-top:clamp(28px,4vw,44px)}
+@M .pp-releases>li{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,3fr);gap:clamp(20px,4vw,64px);padding:clamp(28px,4vw,44px) 0;border-bottom:1px solid var(--pp-line);scroll-margin-top:150px}
+@M .pp-rel-meta{display:grid;gap:4px;align-content:start;font-size:.88rem;color:var(--pp-ink2);font-variant-numeric:tabular-nums}
+@M .pp-rel-meta time{font-weight:600;color:var(--pp-ink)}
+@M .pp-rel-body{display:grid;gap:12px;min-width:0}
+@M .pp-releases h2{font-size:clamp(1.6rem,2.6vw,2.2rem);line-height:1.15;max-width:30ch}
+@M .pp-rel-body p{color:var(--pp-ink2);max-width:70ch}
+@M .pp-rel-links{display:flex;flex-wrap:wrap;gap:4px 28px;margin-top:4px}
+@media (max-width:760px){
+  @M .pp-releases>li{grid-template-columns:minmax(0,1fr);gap:10px}
+  @M .pp-rel-meta{grid-auto-flow:column;justify-content:start;gap:14px}
+  @M .pp-swatches{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
