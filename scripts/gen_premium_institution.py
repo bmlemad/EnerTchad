@@ -44,6 +44,7 @@ ALT.update({'chantier-ferraillage': ('Équipe sur un chantier', 'Crew on a const
 # pages metier (sous-pages des poles) : photographie du pole
 METIER = {'amont': 'chantier-ferraillage', 'intermediaire': 'pipeline', 'aval': 'raffinerie-jour',
           'petrochimie': 'unite-petrochimie', 'tchaditech': 'code-numerique', 'enerconseils': 'lac-tchad-espace'}
+PRELOAD_HERO = {'amont/eor.html'}  # LCP mobile mesure au-dela de 2,5 s sans prechargement de la photo
 METIER_SKIP = {'aval/boutique.html', 'aval/boutique-en.html'}  # boutique : gabarit commerce a part
 ISLANDS = {'explorateur', 'explorer'}  # widgets interactifs gardes tels quels (classes, styles et scripts d origine)
 KEEP = {'id', 'href', 'role', 'datetime', 'download', 'target', 'rel', 'title', 'lang', 'dir', 'colspan', 'rowspan',
@@ -514,6 +515,12 @@ def rebuild(path, lang, img):
     out = (head_ + body_tag + '\n' + skip + '\n<div id="readbar" aria-hidden="true"></div>\n' + nav + '\n' + navjs + '\n'
            + main + '\n' + footer + tail + '\n</body>\n</html>\n')
     out = P.fix_skip(re.sub(r'\n{4,}', '\n\n\n', out))
+    out = re.sub(r'[ \t]+\n', '\n', out)  # sans espaces de fin de ligne (comme la normalisation du depot)
+    if path in PRELOAD_HERO and img:
+        out = out.replace('<link rel="stylesheet" href="/assets/chrome/bundle_head_b2.css">',
+                          f'<link rel="preload" as="image" href="/assets/img/p/{img}-1400.webp" imagesrcset="/assets/img/p/{img}-800.webp 800w, '
+                          f'/assets/img/p/{img}-1400.webp 1400w" imagesizes="100vw" fetchpriority="high">\n'
+                          '<link rel="stylesheet" href="/assets/chrome/bundle_head_b2.css">', 1)
     if ratio < 0.97:
         raise SystemExit(f'{path} : texte conserve a {ratio:.1%} seulement, page non ecrite')
     open(path, 'w', encoding='utf-8').write(out)
