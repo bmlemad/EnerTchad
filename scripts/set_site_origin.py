@@ -2,7 +2,8 @@
 """Bascule l'origine du site (canonical, og:url, sitemap, robots, JSON-LD).
 
 Provisoire tant que enertchad.td n'est pas actif ; réversible :
-  python3 scripts/set_site_origin.py https://enertchad-delta.vercel.app   # aujourd'hui
+  python3 scripts/set_site_origin.py https://enertchad.netlify.app       # aujourd'hui (Vercel suspendu le 1er octobre 2026)
+  python3 scripts/set_site_origin.py https://enertchad-delta.vercel.app   # avant le 1er octobre 2026
   python3 scripts/set_site_origin.py https://enertchad.td                 # au lancement du domaine
 
 Ne touche que les URL préfixées « https:// » — les adresses e-mail
@@ -10,7 +11,7 @@ Ne touche que les URL préfixées « https:// » — les adresses e-mail
 """
 import glob, re, sys
 
-KNOWN = ('https://enertchad.td', 'https://enertchad-delta.vercel.app')
+KNOWN = ('https://enertchad.td', 'https://enertchad-delta.vercel.app', 'https://enertchad.netlify.app')
 
 def main():
     if len(sys.argv) != 2 or not sys.argv[1].startswith('https://'):

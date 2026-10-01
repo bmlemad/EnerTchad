@@ -10,7 +10,7 @@ for p in ROOT.rglob('*.html'):
     urls.update(re.findall(r'''(?:href|src)=["'](https?://[^"']+)["']''',p.read_text(encoding='utf-8',errors='ignore'),re.I))
 for p in [ROOT/'robots.txt',ROOT/'sitemap.xml']:
     if p.exists(): urls.update(re.findall(r'''https?://[^\\s<>"']+''',p.read_text(encoding='utf-8',errors='ignore')))
-site='enertchad-delta.vercel.app'
+site='enertchad.netlify.app'
 targets=sorted(u.split('#',1)[0] for u in urls if urlparse(u).scheme in {'http','https'} and urlparse(u).netloc!=site)
 ctx=ssl._create_unverified_context(); failed=[]; warnings=[]
 for u in targets:
