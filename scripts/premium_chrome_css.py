@@ -57,6 +57,7 @@ SRC = r'''
     display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,1.7fr) minmax(0,1fr)!important;gap:56px!important;
     padding:44px max(32px,calc((100vw - 1200px)/2)) 52px!important}
   @P .pn-mega::before,@P .pn-mega::after{display:none!important}
+  @P .pn-mega,@P .pn-mega *{transition:none!important;animation:none!important}
   @P .pn-mega .nx-col{grid-column:auto!important;grid-row:auto!important;padding:0!important;margin:0!important;border:0!important;background:none!important;min-width:0!important}
   @P .pn-intro .nxh{font:400 2.4rem/1.02 var(--pn-serif)!important;color:var(--pn-ink)!important;text-transform:none!important;letter-spacing:-.01em!important;margin:0 0 16px!important;min-height:0!important;display:block!important;border:0!important;padding:0!important}
   @P .pn-intro .pn-d{color:var(--pn-ink2)!important;font-size:.98rem!important;line-height:1.6!important;margin:0 0 22px!important}
