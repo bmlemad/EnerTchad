@@ -346,6 +346,7 @@ def rebuild(path, lang, img):
     if 'bundle_head_b2' not in head_:
         head_ = re.sub(r'(<link\b[^>]*bundle_core_a1[^>]*>)', r'<link rel="stylesheet" href="/assets/chrome/bundle_head_b2.css">\n\1', head_, count=1)
     head_ = head_.replace('<link rel="stylesheet" id="premium-chrome"',
+                          '<link rel="preload" href="/assets/fonts/InstrumentSerif-latin.woff2" as="font" type="font/woff2" crossorigin>\n'
                           f'<link rel="stylesheet" id="pole-premium" href="/assets/chrome/pole-premium.css?b={BUILD}">\n'
                           '<link rel="stylesheet" id="premium-chrome"', 1)
     body_tag = re.match(r'<body[^>]*>', rest).group(0)
