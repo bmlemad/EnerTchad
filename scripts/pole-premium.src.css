@@ -28,7 +28,7 @@
 @M .pp-note a{color:var(--pp-ink)}
 @M .pp-mist{background:var(--pp-mist)}
 @M .pp-head{display:grid;gap:16px;max-width:780px;margin-bottom:clamp(36px,5vw,64px)}
-@M .pp-btn{display:inline-flex;align-items:center;gap:.5em;font:600 1rem/1.2 var(--pp-sans);padding:16px 26px;text-decoration:none;border:1px solid transparent;border-radius:0;min-height:48px}
+@M .pp-btn{box-shadow:none;text-shadow:none;transform:none;background-image:none;display:inline-flex;align-items:center;gap:.5em;font:600 1rem/1.2 var(--pp-sans);padding:16px 26px;text-decoration:none;border:1px solid transparent;border-radius:0;min-height:48px}
 @M .pp-btn-light{background:#fff;color:#0A1A2F}
 @M .pp-btn-ink{background:var(--pp-ink);color:var(--pp-paper)}
 @M .pp-btn-gold{background:var(--pp-gold-night);color:#07111F}
@@ -210,6 +210,24 @@
 @M .pp-chain .pp-k{width:100%}
 @M .pp-chain a{color:var(--pp-ink);text-decoration:none;border-bottom:1px solid var(--pp-line);min-height:36px;display:inline-flex;align-items:center}
 @M .pp-chain a[aria-current]{color:var(--pp-gold-ink);border-color:var(--pp-gold)}
+
+/* Capacites integrees : cartes generiques, notes, ancres, devise */
+@M .pp-anchor{display:block;height:0;width:0;overflow:hidden;scroll-margin-top:150px}
+@M .pp-tagline{font:400 1.25rem/1.35 var(--pp-serif);color:rgba(255,255,255,.86);max-width:46ch}
+@M .pp-cards{background:none;box-shadow:none;border-radius:0;border:0;padding:0;backdrop-filter:none;-webkit-backdrop-filter:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:clamp(24px,3vw,44px)}
+@M .pp-card{background:none;box-shadow:none;border-radius:0;border:0;margin:0;backdrop-filter:none;-webkit-backdrop-filter:none;transform:none;display:grid;gap:10px;align-content:start;padding-top:22px;border-top:1px solid var(--pp-gold);text-decoration:none;color:var(--pp-ink);height:100%}
+@M .pp-card::before,@M .pp-card::after,@M .pp-cards::before,@M .pp-cards::after{content:none;display:none}
+@M .pp-card b{font:400 1.55rem/1.12 var(--pp-serif)}
+@M .pp-card em{font-style:normal;font-weight:600;font-size:.88rem;color:var(--pp-gold-ink)}
+@M .pp-card>span:not(.pp-k){color:var(--pp-ink2);font-size:.96rem}
+@M .pp-card strong{font:400 clamp(2.2rem,3.6vw,3rem)/1 var(--pp-serif);font-variant-numeric:tabular-nums;color:var(--pp-ink);margin-top:6px}
+@M .pp-card small{font-size:.86rem;color:var(--pp-ink2)}
+@M a.pp-card:hover b{color:var(--pp-gold-ink)}
+@M .pp-card .pp-link{margin-top:4px;justify-self:start}
+@M .pp-notes{display:grid;gap:10px;margin-top:clamp(28px,4vw,44px)}
+@M .pp-notes a{color:var(--pp-ink);text-decoration:underline;text-decoration-color:var(--pp-gold);text-underline-offset:4px}
+@M .pp-doors-n{margin:6px 0 4px}
+@M .pp-doors-n span{display:block;color:var(--pp-night-2);font-size:.94rem;margin-top:4px}
 
 @media (max-width:1000px){
   @M .pp-steps,@M .pp-caps{grid-template-columns:repeat(2,minmax(0,1fr))}

@@ -16,7 +16,7 @@ import re
 from html import escape
 from bs4 import BeautifulSoup
 
-BUILD = '202610011800'
+BUILD = '202610011900'
 POLES = [
     # page, langue, image du heros, image de la conviction (fichier, largeur, hauteur, alt fr, alt en)
     ('amont/index.html', 'fr', 'chantier-ferraillage', ('drone-terrain', 1200, 659, 'Drone d’inspection au-dessus d’un champ', 'Inspection drone above a field')),
@@ -360,13 +360,13 @@ def fix_skip(h):
         if not re.search(r'<a [^>]*class="et-skip[^"]*"[^>]*href="#main-content"', h) else h
 
 
-def rebuild(path, lang, hero, fig):
+def rebuild(path, lang, hero, fig, builder=None):
     h = open(path, encoding='utf-8').read()
     if 'class="ppl"' in h:
-        h2 = fix_skip(h)
+        h2 = re.sub(r'pole-premium\.css\?b=\d+', f'pole-premium.css?b={BUILD}', fix_skip(h))
         if h2 != h:
             open(path, 'w', encoding='utf-8').write(h2)
-            return 'deja migre, lien d evitement normalise'
+            return 'deja migre, mis a jour (lien d evitement, version de la feuille)'
         return 'deja migre'
     head, rest = h[:h.find('<body')], h[h.find('<body'):]
     # feuilles : seules celles de l en-tete commun restent ; ajout de la feuille premium des poles
@@ -391,7 +391,7 @@ def rebuild(path, lang, hero, fig):
     tail = re.sub(r'<button type="button" id="scrollcue"[\s\S]*?</button>', '', tail)
     tail = re.sub(r'\n{3,}', '\n\n', tail)
     soup = BeautifulSoup(rest[rest.find('<main'):rest.find('</main>') + 7], 'html.parser')
-    main = build_main(soup.find('main'), lang, hero, fig)
+    main = (builder or build_main)(soup.find('main'), lang, hero, fig)
     out = (head + body_tag + '\n' + skip + '\n<div id="readbar" aria-hidden="true"></div>\n' + nav + '\n' + navjs + '\n'
            + main + '\n' + footer + tail + '\n</body>\n</html>\n')
     out = fix_skip(re.sub(r'\n{4,}', '\n\n\n', out))
