@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /docs-sources/
 
-Sitemap: https://enertchad-delta.vercel.app/sitemap.xml
+Sitemap: https://enertchad.netlify.app/sitemap.xml
