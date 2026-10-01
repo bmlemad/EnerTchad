@@ -27,15 +27,19 @@ from gen_premium_pole import sp, inner, text, SUBNAV_JS, BeautifulSoup  # noqa: 
 
 PAGES = [
     ('societe.html', 'fr', 'dunes-sahara'), ('investisseurs.html', 'fr', 'flamme-gaz'), ('carrieres.html', 'fr', 'camion-route'),
+    ('nos-activites.html', 'fr', 'complexe-industriel'), ('nos-activites-en.html', 'en', 'complexe-industriel'),
+    ('carnets.html', 'fr', None), ('carnets-en.html', 'en', None),
     ('societe-en.html', 'en', 'dunes-sahara'), ('investisseurs-en.html', 'en', 'flamme-gaz'), ('carrieres-en.html', 'en', 'camion-route'),
 ]
 ALT = {'dunes-sahara': ('Dunes du Sahara', 'Sahara dunes'), 'flamme-gaz': ('Flamme de gaz', 'Gas flame'),
-       'camion-route': ('Camion sur une route du Sahel', 'Truck on a Sahel road')}
+       'camion-route': ('Camion sur une route du Sahel', 'Truck on a Sahel road'),
+       'complexe-industriel': ('Complexe industriel de transformation', 'Industrial processing complex')}
+ISLANDS = {'explorateur', 'explorer'}  # widgets interactifs gardes tels quels (classes, styles et scripts d origine)
 KEEP = {'id', 'href', 'role', 'datetime', 'download', 'target', 'rel', 'title', 'lang', 'dir', 'colspan', 'rowspan',
         'scope', 'alt', 'src', 'srcset', 'sizes', 'width', 'height', 'loading', 'decoding', 'open', 'type', 'name', 'value',
         'for', 'placeholder', 'required', 'autocomplete', 'method', 'action', 'hidden', 'tabindex', 'cite'}
 K_RX = re.compile(r'(^|-)(k|sk|kick|kicker|eyebrow)$')
-BUILD = '202610012000'  # version propre : les pages de pole gardent la leur
+BUILD = '202610012100'  # version propre ; les pages deja migrees gardent la leur
 DROP = ('aurail', 'secrail')
 DROP_TAIL = P.DROP_TAIL + ['// progress bar', 'id="minv-js"', '/*inv-toc*/', 'id="investor-light-runtime-loader"', 'id="idx563-js"']
 
@@ -69,12 +73,17 @@ def prose(nodes):
             role = 'pp-link'
         elif is_k(t) and len(sp(t.get_text())) < 90:
             role = 'pp-k'
-        t.attrs = {k: v for k, v in t.attrs.items() if k in KEEP or k.startswith('aria-')}
+        t.attrs = {k: v for k, v in t.attrs.items() if k in KEEP or k.startswith('aria-') or k == 'onclick'
+                   or (k.startswith('data-') and k not in ('data-eh', 'data-d'))}
         if role:
             t['class'] = [role]
     # titres internes : h2 -> h3 (le titre de section est porte par l en-tete)
     for h in root.find_all('h2'):
         h.name = 'h3'
+    # pictos decoratifs (fleches, puces) caches aux lecteurs d ecran
+    for t in list(root.find_all(attrs={'aria-hidden': 'true'})):
+        if t.name != 'svg' and t.find_parent('svg') is None and t.find(True) is None and len(sp(t.get_text())) <= 3:
+            t.decompose()
     # elements decoratifs vides
     for t in list(root.find_all(True)):
         if t.parent is not None and t.find_parent('svg') is None and t.name != 'svg' and is_empty(t):
@@ -99,6 +108,12 @@ def prose(nodes):
                 if first is not None and first.name in ('b', 'strong', 'span', 'div', 'time', 'i', 'em') and len(sp(first.get_text())) <= 40 \
                         and re.search(r'\d', first.get_text()) and first.name in ('b', 'strong'):
                     c['class'] = c['class'] + ['pp-fig']
+    # rangees de liens simples : pastilles
+    for t in root.find_all(['div', 'p', 'nav']):
+        kids = [c for c in t.children if getattr(c, 'name', None) or sp(str(c))]
+        if len(kids) >= 2 and all(getattr(c, 'name', None) == 'a' and c.find(True) is None for c in kids) \
+                and 'pp-grid' not in (t.get('class') or []):
+            t['class'] = (t.get('class') or []) + ['pp-chips']
     return root.decode_contents()
 
 
@@ -178,10 +193,10 @@ def units(container):
     return out
 
 
-def hero_html(hero, lang, img):
+def hero_html(hero, lang, img, crumb=None):
     li = 0 if lang == 'fr' else 1
     h1 = hero.find('h1')
-    crumb = hero.select_one('nav')
+    crumb = hero.select_one('nav') or crumb
     crumb_h = ''
     if crumb is not None:
         parts = []
@@ -192,8 +207,8 @@ def hero_html(hero, lang, img):
                 parts.append(f'<span aria-current="page">{inner(x)}</span>')
         crumb_h = (f'<nav class="pp-crumb" aria-label="{"Fil d’Ariane" if lang == "fr" else "Breadcrumb"}">'
                    + '<span aria-hidden="true">›</span>'.join(parts) + '</nav>')
-    kick = hero.select_one('.kick, [class*="kick"]')
-    lead = hero.select_one('p.lead') or hero.find('p')
+    kick = hero.select_one('.kick, [class*="kick"]') or next((x for x in hero.find_all(True) if is_k(x)), None)
+    lead = hero.select_one('p.lead, p[class*="lead"]') or hero.find('p')
     btns = ''
     a = hero.select('.cta-row a, a.btn, a.btn2')
     seen = set()
@@ -232,9 +247,25 @@ def build_inst(region, lang, img, keep_cmdk=True):
     soup = BeautifulSoup(region, 'html.parser')
     hero = soup.select_one('div.hero')
     main = soup.find('main')
-    if hero is None:
+    journal = ''
+    mast = main.select_one('.jn-mast')
+    if mast is not None:
+        # gabarit journal (Carnets) : la une, les rubriques et le fil restent tels quels, en tete de page
+        jw = mast.find_parent('div', class_='wrap') or mast.parent
+        journal = (f'<section id="journal" class="pp-journal" aria-label="{escape(sp(mast.get_text(" "))[:80])}">'
+                   f'{str(jw)}</section>')
+        jw.decompose()
+        if hero is not None:
+            hero.decompose()
+        hero = None
+    elif hero is None:
         hero = main.find(['header', 'div'], class_=re.compile('hero|mast')) or main
-    hero_h = hero_html(hero, lang, img)
+    for f in soup.find_all('footer'):
+        f.decompose()
+    crumb = soup.select_one('nav.bcrumb')
+    hero_h = hero_html(hero, lang, img, crumb) if hero is not None else journal
+    if crumb is not None:
+        crumb.decompose()
     if hero is not None and hero.find_parent('main') is not None:
         hero.decompose()
     t = P.L[lang]
@@ -267,6 +298,13 @@ def build_inst(region, lang, img, keep_cmdk=True):
             secs.append((g.get('id'), sp(gt.get_text()) if gt is not None else '',
                          f'<div class="pp-wrap">{head(text(gk) if gk is not None and gk is not gt else "", hid, inner(gt) if gt is not None else "")}'
                          f'<div class="pp-blocks">{blocks}</div></div>'))
+        elif u['kind'] == 'sec' and u['el'].get('id') in ISLANDS:
+            s = u['el']
+            k, h2, lead, rest = split_head(s)
+            raw = ''.join(str(x) for x in rest)
+            secs.append((s.get('id'), sp(h2.get_text()) if h2 is not None else '',
+                         f'<div class="pp-wrap">{head(text(k) if k is not None else "", hid, inner(h2) if h2 is not None else "", inner(lead) if lead is not None else "")}'
+                         f'<div class="pp-island">{raw}</div></div>'))
         elif u['kind'] == 'sec':
             s = u['el']
             k, h2, lead, rest = split_head(s)
@@ -321,7 +359,7 @@ def build_inst(region, lang, img, keep_cmdk=True):
 
 def visible_text(html):
     s = BeautifulSoup(html, 'html.parser')
-    for t in s.find_all(['script', 'style', 'svg', 'nav']):
+    for t in s.find_all(['script', 'style', 'svg', 'nav', 'footer']):
         t.decompose()
     for t in s.select('#aurail, #secrail, #cmdk, #ckn'):
         t.decompose()
@@ -331,20 +369,33 @@ def visible_text(html):
 def rebuild(path, lang, img):
     h = open(path, encoding='utf-8').read()
     if 'class="ppl"' in h:
-        h2 = re.sub(r'pole-premium\.css\?b=\d+', f'pole-premium.css?b={BUILD}', P.fix_skip(h))
+        h2 = P.fix_skip(h)
         if h2 != h:
             open(path, 'w', encoding='utf-8').write(h2)
             return 'deja migre, mis a jour'
         return 'deja migre'
     head_, rest = h[:h.find('<body')], h[h.find('<body'):]
 
+    # widget conserve tel quel : sa feuille de theme clair d origine reste liee
+    hints = [h_ for h_, mark in (('.vcx', 'id="explor'), ('.jn-mast', 'class="jn-mast"')) if mark in rest]
+
     def css(mm):
         tag = mm.group(0)
-        return tag if any(k in tag for k in P.KEEP_CSS) else ''
+        if any(k in tag for k in P.KEEP_CSS):
+            return tag
+        if hints:
+            hm = re.search(r'href="/([^"?]+)', tag)
+            if hm and os.path.exists(hm.group(1)):
+                body = open(hm.group(1), encoding='utf-8', errors='ignore').read()
+                if any(h_ in body for h_ in hints):
+                    return tag
+        return ''
     head_ = re.sub(r'<link\b[^>]*rel="stylesheet"[^>]*>\s*', css, head_)
     head_ = re.sub(r'<link\b[^>]*rel="preload"[^>]*as="image"[^>]*>\s*', '', head_)
-    if 'bundle_head_b2' not in head_:
-        head_ = re.sub(r'(<link\b[^>]*bundle_core_a1[^>]*>)', r'<link rel="stylesheet" href="/assets/chrome/bundle_head_b2.css">\n\1', head_, count=1)
+    base = ''.join(f'<link rel="stylesheet" href="/assets/chrome/{b}.css">\n' for b in ('bundle_head_b2', 'bundle_core_a1') if b not in head_)
+    if base:
+        anchor = r'(<link\b[^>]*bundle_core_a1[^>]*>)' if 'bundle_core_a1' in head_ else r'(<link\b[^>]*nav_a\.css[^>]*>)'
+        head_ = re.sub(anchor, lambda mm: base + mm.group(1), head_, count=1)
     head_ = head_.replace('<link rel="stylesheet" id="premium-chrome"',
                           '<link rel="preload" href="/assets/fonts/InstrumentSerif-latin.woff2" as="font" type="font/woff2" crossorigin>\n'
                           f'<link rel="stylesheet" id="pole-premium" href="/assets/chrome/pole-premium.css?b={BUILD}">\n'
@@ -356,14 +407,14 @@ def rebuild(path, lang, img):
     navjs = re.search(r'<script src="/assets/chrome/nav_a\.js[^>]*></script>', rest).group(0)
     footer = re.search(r'<footer class="pft">[\s\S]*?</footer>', rest).group(0)
     nav_end = rest.find(navjs) + len(navjs)
-    region = rest[nav_end:rest.find('<footer class="pft">')]
+    main_end = rest.find('</main>') + len('</main>')
+    region = rest[nav_end:main_end]
     # partie avant le menu (heros ou cmdk places avant la navigation)
     pre = rest[len(body_tag):navm.start()]
     pre_soup = BeautifulSoup(pre, 'html.parser')
     pre_keep = ''.join(str(x) for x in pre_soup.select('#cmdk, div.hero'))
     region = pre_keep + region
-    region = region[:region.find('</main>') + 7]
-    tail = rest[rest.find('</footer>') + len('</footer>'):rest.rfind('</body>')]
+    tail = rest[max(rest.find('</footer>') + len('</footer>'), main_end):rest.rfind('</body>')]
     tail = re.sub(r'<script[^>]*>[\s\S]*?</script>',
                   lambda mm: '' if any(k in mm.group(0)[:400] for k in DROP_TAIL) else mm.group(0), tail)
     tail = re.sub(r'<link\b[^>]*rel="stylesheet"[^>]*>\s*', css, tail)

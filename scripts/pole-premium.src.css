@@ -12,16 +12,16 @@
   padding:0;margin:0;max-width:none;position:relative;z-index:1}
 @MD{--pp-paper:#0A1422;--pp-mist:#0F1B2C;--pp-ink:#F1F3F6;--pp-ink2:#A9B4C4;--pp-line:#22314A;--pp-gold:#D9B567;--pp-gold-ink:#D9B567}
 @M *{box-sizing:border-box;-webkit-text-fill-color:currentColor}
-@M section{padding:clamp(72px,9vw,128px) 0;margin:0;border:0;border-radius:0;box-shadow:none;background:none;position:relative;scroll-margin-top:150px;overflow:visible}
+@M section:not(.pp-journal *):not(.pp-island *){padding:clamp(72px,9vw,128px) 0;margin:0;border:0;border-radius:0;box-shadow:none;background:none;position:relative;scroll-margin-top:150px;overflow:visible}
 @M .pp-wrap{max-width:var(--pp-wrap);margin-inline:auto;padding-inline:clamp(16px,4vw,40px)}
-@M h1,@M h2,@M h3{font-family:var(--pp-serif);font-weight:400;letter-spacing:-.012em;text-wrap:balance;margin:0;color:inherit;text-transform:none;background:none}
-@M h1{font-size:clamp(2.9rem,6vw,5.6rem);line-height:.98}
-@M h2{font-size:clamp(2.2rem,4.4vw,3.8rem);line-height:1.04}
-@M h3{font-size:1.55rem;line-height:1.15}
-@M p{margin:0}
-@M a,@M b,@M strong,@M em,@M time{color:inherit}
-@M ul,@M ol{list-style:none;margin:0;padding:0}
-@M img{max-width:100%;height:auto;display:block}
+@M h1:not(.pp-journal *):not(.pp-island *),@M h2:not(.pp-journal *):not(.pp-island *),@M h3:not(.pp-journal *):not(.pp-island *){font-family:var(--pp-serif);font-weight:400;letter-spacing:-.012em;text-wrap:balance;margin:0;color:inherit;text-transform:none;background:none}
+@M h1:not(.pp-journal *):not(.pp-island *){font-size:clamp(2.9rem,6vw,5.6rem);line-height:.98}
+@M h2:not(.pp-journal *):not(.pp-island *){font-size:clamp(2.2rem,4.4vw,3.8rem);line-height:1.04}
+@M h3:not(.pp-journal *):not(.pp-island *){font-size:1.55rem;line-height:1.15}
+@M p:not(.pp-journal *):not(.pp-island *){margin:0}
+@M a:not(.pp-journal *):not(.pp-island *),@M b:not(.pp-journal *):not(.pp-island *),@M strong:not(.pp-journal *):not(.pp-island *),@M em:not(.pp-journal *):not(.pp-island *),@M time:not(.pp-journal *):not(.pp-island *){color:inherit}
+@M ul:not(.pp-journal *):not(.pp-island *),@M ol:not(.pp-journal *):not(.pp-island *){list-style:none;margin:0;padding:0}
+@M img:not(.pp-journal *):not(.pp-island *){max-width:100%;height:auto;display:block}
 @M .pp-k{font:600 .72rem/1.35 var(--pp-sans);letter-spacing:.22em;text-transform:uppercase;color:var(--pp-gold-ink);margin:0}
 @M .pp-lead{font-size:1.15rem;line-height:1.62;color:var(--pp-ink2);max-width:62ch}
 @M .pp-note{font-size:.88rem;color:var(--pp-ink2);max-width:70ch}
@@ -287,6 +287,17 @@
 @M .pp-prose th{font-weight:600;color:var(--pp-ink)}
 @M .pp-prose details{border-top:1px solid var(--pp-line);padding:12px 0}
 @M .pp-prose summary{cursor:pointer;font-weight:600;min-height:44px;display:flex;align-items:center}
+
+@M .pp-prose .pp-chips{display:flex;flex-wrap:wrap;gap:10px;max-width:none}
+@M .pp-prose .pp-chips>a{display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border:1px solid var(--pp-line);text-decoration:none!important;color:var(--pp-ink);font-weight:500;font-size:.95rem;background:var(--pp-paper)}
+@M .pp-prose .pp-chips>a:hover{border-color:var(--pp-gold);color:var(--pp-gold-ink)}
+@M .pp-prose form{display:flex;flex-wrap:wrap;gap:10px;align-items:stretch}
+@M .pp-prose button,@M .pp-journal form button{background:var(--pp-ink);color:var(--pp-paper);border:0;border-radius:0;padding:12px 18px;min-height:44px;font:600 .9rem/1.2 var(--pp-sans);cursor:pointer;box-shadow:none;margin:0 8px 8px 0}
+@M .pp-prose button:hover,@M .pp-journal form button:hover{background:var(--pp-gold-ink);color:#fff}
+@M .pp-prose input[type=email],@M .pp-prose input[type=text],@M .pp-prose input[type=search],@M .pp-journal form input[type=email]{background:var(--pp-paper);color:var(--pp-ink);border:1px solid var(--pp-ink2);border-radius:0;min-height:44px;padding:10px 12px;font:400 1rem/1.3 var(--pp-sans);flex:1 1 220px;box-shadow:none}
+@M .pp-prose input::placeholder,@M .pp-journal form input::placeholder{color:var(--pp-ink2);opacity:1}
+@M .pp-island{margin-top:8px}
+@M section.pp-journal:not(#pj):not(#pk){padding:clamp(104px,12vw,168px) 0 clamp(40px,5vw,72px);background:var(--pp-paper)}
 
 @media (max-width:1000px){
   @M .pp-steps,@M .pp-caps{grid-template-columns:repeat(2,minmax(0,1fr))}
