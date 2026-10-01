@@ -49,7 +49,7 @@ html:is(.et-plight,.et-jlight) body:not(.hm):not(.et-modern-exclude) :is(.ivt-ct
 body:not(.hm):not(.et-modern-exclude) :is(table,.data-table,.data-table-wrap,.table-wrap){border-radius:16px;overflow:auto}
 body:not(.hm):not(.et-modern-exclude) :is(table,.data-table){border-collapse:separate;border-spacing:0;border:1px solid var(--et-i-line);background:rgba(255,255,255,.025)}
 body:not(.hm):not(.et-modern-exclude) :is(table,.data-table) :is(th,td){padding:12px 14px;border-bottom:1px solid var(--et-i-line);vertical-align:top}
-body:not(.hm):not(.et-modern-exclude) :is(table,.data-table) th{font:700 .7rem var(--fm,ui-monospace,monospace);letter-spacing:.08em;text-transform:uppercase;color:var(--et-i-muted);background:rgba(255,255,255,.045)}
+body:not(.hm):not(.et-modern-exclude) :is(table,.data-table) th{font:700 .7rem var(--fm,ui-monospace,monospace);letter-spacing:.08em;text-transform:uppercase;color:#a3b0c3;background:rgba(255,255,255,.045)}
 body:not(.hm):not(.et-modern-exclude) :is(table,.data-table) tr:last-child td{border-bottom:0}
 html:is(.et-plight,.et-jlight) body:not(.hm):not(.et-modern-exclude) :is(table,.data-table){background:rgba(255,255,255,.52);border-color:rgba(255,255,255,.74);box-shadow:0 12px 32px rgba(24,45,67,.055),inset 0 1px 0 rgba(255,255,255,.76);-webkit-backdrop-filter:blur(12px) saturate(120%);backdrop-filter:blur(12px) saturate(120%)}
 html:is(.et-plight,.et-jlight) body:not(.hm):not(.et-modern-exclude) :is(table,.data-table) th{background:rgba(247,249,252,.62);color:#4b586a}
