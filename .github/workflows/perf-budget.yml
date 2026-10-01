@@ -2,6 +2,8 @@ name: Budget de performance (statique)
 # Etage 1 du benchmark : a chaque envoi, compare le poids et les ressources bloquantes
 # de chaque page a la version precedente, a partir des seuls fichiers du depot.
 # Aucune requete vers la production. Detail des mesures : scripts/bench/static_budget.py
+# Une hausse voulue (refonte, nouvelle page lourde) s accepte en ecrivant [budget] dans le
+# message du commit : le rapport est produit et publie, mais l envoi n est pas marque en echec.
 on:
   push:
     branches: [main]
@@ -46,11 +48,17 @@ jobs:
           python scripts/bench/static_budget.py --root /tmp/base --out reports/bench/static-base.json
           python scripts/bench/static_budget.py --root . --out reports/bench/static-head.json
       - name: Comparer
+        env:
+          HEAD_MSG: ${{ github.event.head_commit.message }}
+          PR_TITLE: ${{ github.event.pull_request.title }}
         run: |
           set +e
           python scripts/bench/static_budget.py --compare reports/bench/static-base.json reports/bench/static-head.json --md reports/bench/static.md
           rc=$?
           cat reports/bench/static.md >> "$GITHUB_STEP_SUMMARY"
+          case "$HEAD_MSG $PR_TITLE" in
+            *"[budget]"*) if [ $rc -ne 0 ]; then echo "::notice::Hausse acceptee : le commit porte [budget]."; echo "Hausse acceptee : le commit porte [budget]." >> "$GITHUB_STEP_SUMMARY"; fi; exit 0 ;;
+          esac
           exit $rc
       - uses: actions/upload-artifact@v7
         if: always()
