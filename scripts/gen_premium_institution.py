@@ -24,6 +24,7 @@ from html import escape
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import gen_premium_pole as P  # noqa: E402
 from gen_premium_pole import sp, inner, text, SUBNAV_JS, BeautifulSoup  # noqa: E402
+from bs4 import Comment  # noqa: E402
 
 PAGES = [
     ('societe.html', 'fr', 'dunes-sahara'), ('investisseurs.html', 'fr', 'flamme-gaz'), ('carrieres.html', 'fr', 'camion-route'),
@@ -34,12 +35,22 @@ PAGES = [
 ALT = {'dunes-sahara': ('Dunes du Sahara', 'Sahara dunes'), 'flamme-gaz': ('Flamme de gaz', 'Gas flame'),
        'camion-route': ('Camion sur une route du Sahel', 'Truck on a Sahel road'),
        'complexe-industriel': ('Complexe industriel de transformation', 'Industrial processing complex')}
+ALT.update({'chantier-ferraillage': ('Équipe sur un chantier', 'Crew on a construction site'),
+            'pipeline': ('Pipeline traversant une vallée', 'Pipeline crossing a valley'),
+            'raffinerie-jour': ('Colonnes de raffinerie', 'Refinery columns'),
+            'unite-petrochimie': ('Unité pétrochimique', 'Petrochemical unit'),
+            'code-numerique': ('Code informatique sur un écran', 'Computer code on a screen'),
+            'lac-tchad-espace': ('Le lac Tchad photographié depuis l’orbite', 'Lake Chad photographed from orbit')})
+# pages metier (sous-pages des poles) : photographie du pole
+METIER = {'amont': 'chantier-ferraillage', 'intermediaire': 'pipeline', 'aval': 'raffinerie-jour',
+          'petrochimie': 'unite-petrochimie', 'tchaditech': 'code-numerique', 'enerconseils': 'lac-tchad-espace'}
+METIER_SKIP = {'aval/boutique.html', 'aval/boutique-en.html'}  # boutique : gabarit commerce a part
 ISLANDS = {'explorateur', 'explorer'}  # widgets interactifs gardes tels quels (classes, styles et scripts d origine)
 KEEP = {'id', 'href', 'role', 'datetime', 'download', 'target', 'rel', 'title', 'lang', 'dir', 'colspan', 'rowspan',
         'scope', 'alt', 'src', 'srcset', 'sizes', 'width', 'height', 'loading', 'decoding', 'open', 'type', 'name', 'value',
         'for', 'placeholder', 'required', 'autocomplete', 'method', 'action', 'hidden', 'tabindex', 'cite'}
 K_RX = re.compile(r'(^|-)(k|sk|kick|kicker|eyebrow)$')
-BUILD = '202610012100'  # version propre ; les pages deja migrees gardent la leur
+BUILD = '202610012200'  # version propre ; les pages deja migrees gardent la leur
 DROP = ('aurail', 'secrail')
 DROP_TAIL = P.DROP_TAIL + ['// progress bar', 'id="minv-js"', '/*inv-toc*/', 'id="investor-light-runtime-loader"', 'id="idx563-js"']
 
@@ -53,19 +64,56 @@ def is_empty(t):
         and not t.get('id') and t.name not in ('br', 'hr', 'td', 'th', 'img', 'input')
 
 
-def prose(nodes):
+def is_accordion(b):
+    nxt = b.find_next_sibling()
+    return b.name == 'button' and b.get('aria-expanded') is not None and nxt is not None and nxt.name in ('div', 'ul', 'section', 'p', 'dl')
+
+
+def interactive(el):
+    """Vrai si l element porte un outil (filtres, onglets, curseurs, calculateur) a garder tel quel."""
+    if el.find(['input', 'select', 'textarea']) is not None:
+        return True
+    # cartes et graphiques dessines (svg styles par classes) : gardes avec leurs feuilles
+    for sv in el.find_all('svg'):
+        if len(sv.find_all(class_=True)) >= 5:
+            return True
+    for b in el.find_all('button'):
+        if is_accordion(b):
+            continue
+        cls = ' '.join(b.get('class') or [])
+        if b.get('aria-pressed') is not None or b.get('role') == 'tab' or any(k.startswith('data-') for k in b.attrs) \
+                or re.search(r'chip|tab|btn|step|filter|toggle', cls):
+            return True
+    return False
+
+
+def prose(nodes, demote=True):
     """HTML conserve, nettoye et structure pour la feuille premium."""
     html = ''.join(str(n) for n in nodes)
     soup = BeautifulSoup(f'<div id="pp-root">{html}</div>', 'html.parser')
     root = soup.find(id='pp-root')
     for t in root.find_all(['style', 'script', 'link']):
         t.decompose()
+    # accordeons « en savoir plus » : bouton + panneau -> <details>
+    for b in list(root.find_all('button')):
+        if is_accordion(b):
+            panel = b.find_next_sibling()
+            d = soup.new_tag('details')
+            d['class'] = ['pp-more']
+            sm = soup.new_tag('summary')
+            sm.string = sp(b.get_text()).replace('▾', '').strip() or '+'
+            d.append(sm)
+            panel.extract()
+            d.append(panel)
+            b.replace_with(d)
     for t in root.find_all(True):
         if t.find_parent('svg') is not None or t.name == 'svg':
             continue
         cls = ' '.join(t.get('class') or [])
         role = ''
-        if 'note' in cls.split() or re.search(r'(^|[ -])(note|callout|warn)\b', cls) or t.get('role') == 'note':
+        if t.name == 'details' and 'pp-more' in cls:
+            role = 'pp-more'
+        elif 'note' in cls.split() or re.search(r'(^|[ -])(note|callout|warn)\b', cls) or t.get('role') == 'note':
             role = 'pp-box'
         elif t.name == 'p' and re.search(r'\b(lead|intro)\b', cls):
             role = 'pp-lp'
@@ -78,8 +126,9 @@ def prose(nodes):
         if role:
             t['class'] = [role]
     # titres internes : h2 -> h3 (le titre de section est porte par l en-tete)
-    for h in root.find_all('h2'):
-        h.name = 'h3'
+    if demote:
+        for h in root.find_all('h2'):
+            h.name = 'h3'
     # pictos decoratifs (fleches, puces) caches aux lecteurs d ecran
     for t in list(root.find_all(attrs={'aria-hidden': 'true'})):
         if t.name != 'svg' and t.find_parent('svg') is None and t.find(True) is None and len(sp(t.get_text())) <= 3:
@@ -99,8 +148,9 @@ def prose(nodes):
         kids = [c for c in t.find_all(recursive=False) if c.name]
         if len(kids) < 2 or t.find_parent('svg') is not None or 'pp-box' in (t.get('class') or []):
             continue
-        if all(c.name in ('div', 'li', 'span', 'article', 'a', 'figure') and len([x for x in c.find_all(recursive=False) if x.name]) >= 2
-               for c in kids):
+        ok = [c for c in kids if c.name in ('div', 'li', 'span', 'article', 'a', 'figure')
+              and len([x for x in c.find_all(recursive=False) if x.name]) >= 2]
+        if len(ok) >= 2 and (len(ok) == len(kids) or (len(ok) * 3 >= len(kids) * 2 and t.name == 'div')):
             t['class'] = (t.get('class') or []) + ['pp-grid']
             for c in kids:
                 c['class'] = (c.get('class') or []) + ['pp-cell']
@@ -174,6 +224,8 @@ def units(container):
     out, cur = [], None
     for c in container.children:
         name = getattr(c, 'name', None)
+        if isinstance(c, Comment):
+            continue
         if name is None:
             if sp(str(c)) and cur is not None:
                 cur['nodes'].append(c)
@@ -207,10 +259,11 @@ def hero_html(hero, lang, img, crumb=None):
                 parts.append(f'<span aria-current="page">{inner(x)}</span>')
         crumb_h = (f'<nav class="pp-crumb" aria-label="{"Fil d’Ariane" if lang == "fr" else "Breadcrumb"}">'
                    + '<span aria-hidden="true">›</span>'.join(parts) + '</nav>')
-    kick = hero.select_one('.kick, [class*="kick"]') or next((x for x in hero.find_all(True) if is_k(x)), None)
-    lead = hero.select_one('p.lead, p[class*="lead"]') or hero.find('p')
+    kick = hero.select_one('.kick, [class*="kick"], .pgk') or next((x for x in hero.find_all(True) if is_k(x)), None)
+    lead = hero.select_one('p.lead, p[class*="lead"], p.pgl') or hero.find('p')
+    defn = hero.select_one('p.pgc-def')
     btns = ''
-    a = hero.select('.cta-row a, a.btn, a.btn2')
+    a = hero.select('.cta-row a, a.btn, a.btn2, .pgh-cta a')
     seen = set()
     for i, x in enumerate(a):
         if id(x) in seen:
@@ -234,6 +287,15 @@ def hero_html(hero, lang, img, crumb=None):
             nt = aside.find(class_=re.compile(r'note'))
             figs = ((f'<p class="pp-k pp-figk">{text(hd)}</p>' if hd is not None else '') + figs
                     + (f'<p class="pp-fignote">{inner(nt)}</p>' if nt is not None else ''))
+    kp = hero.select('.pgh-kpi')
+    if kp and not figs:
+        figs = '<div class="pp-figs">' + ''.join(f'<div><b>{inner(x.b)}</b><span>{inner(x.i)}</span></div>' for x in kp[:3]) + '</div>'
+    feed = hero.select_one('.m457 a.m457-a')
+    if feed is not None:
+        figs += (f'<p class="pp-fignote">{text(feed.find_previous("i")) if feed.find_previous("i") else ""} · '
+                 f'<a href="{escape(feed["href"])}">{text(feed.time)} — {text(feed.span)}</a></p>')
+    if defn is not None:
+        trust_h = f'<p class="pp-fignote pp-def">{inner(defn)}</p>' + trust_h
     himg = (f'<img class="pp-hero-img" src="/assets/img/p/{img}-1400.webp" srcset="/assets/img/p/{img}-800.webp 800w, '
             f'/assets/img/p/{img}-1400.webp 1400w" sizes="100vw" alt="{ALT[img][li]}" width="1400" height="934" fetchpriority="high" decoding="async">')
     return (f'<header class="pp-hero pp-hero-s" id="top-pole">{himg}<div class="pp-wrap">{crumb_h}'
@@ -242,7 +304,7 @@ def hero_html(hero, lang, img, crumb=None):
             + (f'<div class="pp-actions">{btns}</div>' if btns else '') + trust_h + figs + '</div></header>')
 
 
-def build_inst(region, lang, img, keep_cmdk=True):
+def build_inst(region, lang, img, keep_cmdk=True, tokens=()):
     """region : le HTML entre la navigation et le pied de page (heros + main)."""
     soup = BeautifulSoup(region, 'html.parser')
     hero = soup.select_one('div.hero')
@@ -277,8 +339,18 @@ def build_inst(region, lang, img, keep_cmdk=True):
             if x.get('href', '').startswith('#') and (x['href'], ) not in [(h,) for h, _ in toc]:
                 toc.append((x['href'], sp(x.get_text()).rstrip(' →')))
         n.decompose()
-    for x in soup.select('#aurail, #secrail, #ckn, div.share'):
+    psn = soup.select_one('nav.pole-subnav')
+    if psn is not None:
+        if not toc:
+            for x in psn.select('a'):
+                toc.append((x['href'], sp(x.get_text()), bool(x.get('aria-current'))))
+        psn.decompose()
+    for x in soup.select('#aurail, #secrail, #ckn, div.share, nav.pgr, nav.fil552, nav.chv, nav.chn603, nav[aria-label="Raccourci vers l’accueil"], nav[aria-label="Shortcut to home"]'):
         x.decompose()
+    isl_styles = ''.join(str(st) for st in main.find_all('style', recursive=False) if any(tk in (st.string or '') for tk in tokens))
+    # scripts places dans le contenu (accordeons, outils) : gardes, en fin de contenu
+    main_js = ''.join(str(x) for x in main.find_all('script', recursive=False)
+                      if 'ckn' not in (x.string or '') and x.get('type') != 'application/ld+json')
     for x in soup.find_all('script'):
         if 'ckn' in (x.string or ''):
             x.decompose()
@@ -298,18 +370,20 @@ def build_inst(region, lang, img, keep_cmdk=True):
             secs.append((g.get('id'), sp(gt.get_text()) if gt is not None else '',
                          f'<div class="pp-wrap">{head(text(gk) if gk is not None and gk is not gt else "", hid, inner(gt) if gt is not None else "")}'
                          f'<div class="pp-blocks">{blocks}</div></div>'))
-        elif u['kind'] == 'sec' and u['el'].get('id') in ISLANDS:
+        elif u['kind'] == 'sec' and (u['el'].get('id') in ISLANDS or interactive(u['el'])):
             s = u['el']
             k, h2, lead, rest = split_head(s)
             raw = ''.join(str(x) for x in rest)
+            if h2 is None:
+                raw = ''.join(str(x) for x in s.children)
+            hd = head(text(k) if k is not None else "", hid, inner(h2), inner(lead) if lead is not None else "") if h2 is not None else ''
             secs.append((s.get('id'), sp(h2.get_text()) if h2 is not None else '',
-                         f'<div class="pp-wrap">{head(text(k) if k is not None else "", hid, inner(h2) if h2 is not None else "", inner(lead) if lead is not None else "")}'
-                         f'<div class="pp-island">{raw}</div></div>'))
+                         f'<div class="pp-wrap">{hd}<div class="pp-island">{raw}</div></div>'))
         elif u['kind'] == 'sec':
             s = u['el']
             k, h2, lead, rest = split_head(s)
             if h2 is None:
-                secs.append((s.get('id'), '', f'<div class="pp-wrap"><div class="pp-prose pp-prose-w">{prose(list(s.children))}</div></div>'))
+                secs.append((s.get('id'), '', f'<div class="pp-wrap"><div class="pp-prose pp-prose-w">{prose(list(s.children), demote=False)}</div></div>'))
                 continue
             secs.append((s.get('id'), sp(h2.get_text()),
                          f'<div class="pp-wrap">{head(text(k) if k is not None else "", hid, inner(h2), inner(lead) if lead is not None else "")}'
@@ -317,7 +391,7 @@ def build_inst(region, lang, img, keep_cmdk=True):
         else:
             h2 = u['h2']
             if h2 is None:
-                secs.append((None, '', f'<div class="pp-wrap"><div class="pp-prose pp-prose-w">{prose(u["nodes"])}</div></div>'))
+                secs.append((None, '', f'<div class="pp-wrap"><div class="pp-prose pp-prose-w">{prose(u["nodes"], demote=False)}</div></div>'))
                 continue
             nodes = u['nodes']
             lead = nodes[0] if nodes and getattr(nodes[0], 'name', None) == 'p' and 'lead' in (nodes[0].get('class') or []) else None
@@ -329,7 +403,8 @@ def build_inst(region, lang, img, keep_cmdk=True):
 
     out = []
     for i, (sid, label, html) in enumerate(secs):
-        mist = ' class="pp-mist"' if i % 2 else ''
+        cls_ = (['pp-mist'] if i % 2 else []) + ([] if '<h2 id=' in html else ['pp-compact'])
+        mist = f' class="{" ".join(cls_)}"' if cls_ else ''
         sid_a = f' id="{escape(sid)}"' if sid else ''
         m = re.search(r'<h2 id="([^"]+)"', html)
         lab = f' aria-labelledby="{m.group(1)}"' if m else (' aria-label="' + escape(label) + '"' if label else '')
@@ -338,8 +413,11 @@ def build_inst(region, lang, img, keep_cmdk=True):
         toc = [(f'#{sid}', lab) for sid, lab, _ in secs if sid and lab and len(lab) <= 40]
     subnav = ''
     if toc:
-        subnav = f'<nav class="pp-sub" aria-label="{t["sub"]}"><div class="pp-wrap">' + ''.join(
-            f'<a href="{escape(h)}">{escape(lb)}</a>' for h, lb in toc[:12]) + '</div></nav>'
+        pole = len(toc[0]) == 3
+        lab_nav = ('Pages du pôle' if lang == 'fr' else 'Division pages') if pole else t['sub']
+        subnav = f'<nav class="pp-sub" aria-label="{lab_nav}"><div class="pp-wrap">' + ''.join(
+            f'<a href="{escape(x[0])}"' + (' aria-current="page"' if len(x) == 3 and x[2] else '') + f'>{escape(x[1])}</a>'
+            for x in toc[:14]) + '</div></nav>'
     # identifiants : la section garde l identifiant, ses descendants le perdent
     html_out = '\n\n'.join(out)
     seen = set()
@@ -353,8 +431,8 @@ def build_inst(region, lang, img, keep_cmdk=True):
     out = [html_out]
     cmdk = soup.find(id='cmdk')
     keep = str(cmdk) if keep_cmdk and cmdk is not None and cmdk.find_parent('main') is None else ''
-    return (keep + f'\n<main id="main-content" tabindex="-1" class="ppl">\n{hero_h}\n{subnav}\n' + '\n\n'.join(out)
-            + f'\n{SUBNAV_JS}\n</main>')
+    return (keep + f'\n<main id="main-content" tabindex="-1" class="ppl">\n{isl_styles}{hero_h}\n{subnav}\n' + '\n\n'.join(out)
+            + f'\n{main_js}{SUBNAV_JS}\n</main>')
 
 
 def visible_text(html):
@@ -378,16 +456,24 @@ def rebuild(path, lang, img):
 
     # widget conserve tel quel : sa feuille de theme clair d origine reste liee
     hints = [h_ for h_, mark in (('.vcx', 'id="explor'), ('.jn-mast', 'class="jn-mast"')) if mark in rest]
+    # outils interactifs detectes (filtres, onglets, calculateurs) : leurs classes propres
+    tokens = set()
+    msoup = BeautifulSoup(rest[rest.find('<main'):rest.find('</main>') + 7], 'html.parser')
+    for sec in msoup.find_all('section'):
+        if sec.find_parent('section') is None and interactive(sec):
+            for t in sec.find_all(class_=True):
+                tokens.update(c for c in t['class'] if '-' in c and len(c) > 4 and not c.startswith(('reveal', 'pp-')))
+    tok_rx = re.compile(r'\.(' + '|'.join(re.escape(x) for x in sorted(tokens)) + r')\b') if tokens else None
 
     def css(mm):
         tag = mm.group(0)
         if any(k in tag for k in P.KEEP_CSS):
             return tag
-        if hints:
+        if hints or tok_rx is not None:
             hm = re.search(r'href="/([^"?]+)', tag)
             if hm and os.path.exists(hm.group(1)):
                 body = open(hm.group(1), encoding='utf-8', errors='ignore').read()
-                if any(h_ in body for h_ in hints):
+                if any(h_ in body for h_ in hints) or (tok_rx is not None and tok_rx.search(body)):
                     return tag
         return ''
     head_ = re.sub(r'<link\b[^>]*rel="stylesheet"[^>]*>\s*', css, head_)
@@ -415,13 +501,14 @@ def rebuild(path, lang, img):
     pre_keep = ''.join(str(x) for x in pre_soup.select('#cmdk, div.hero'))
     region = pre_keep + region
     tail = rest[max(rest.find('</footer>') + len('</footer>'), main_end):rest.rfind('</body>')]
+    drop = [k for k in DROP_TAIL if not (tokens and k in ('s_bded434d4e', 's_321e9a1a41', 's_1d29ed9395'))]
     tail = re.sub(r'<script[^>]*>[\s\S]*?</script>',
-                  lambda mm: '' if any(k in mm.group(0)[:400] for k in DROP_TAIL) else mm.group(0), tail)
+                  lambda mm: '' if any(k in mm.group(0)[:400] for k in drop) else mm.group(0), tail)
     tail = re.sub(r'<link\b[^>]*rel="stylesheet"[^>]*>\s*', css, tail)
     tail = re.sub(r'<div class="(rootland|subland)"[^>]*></div>', '', tail)
     tail = re.sub(r'<button type="button" id="scrollcue"[\s\S]*?</button>', '', tail)
     tail = re.sub(r'\n{3,}', '\n\n', tail)
-    main = build_inst(region, lang, img, keep_cmdk='id="cmdk"' not in tail)
+    main = build_inst(region, lang, img, keep_cmdk='id="cmdk"' not in tail, tokens=tokens)
     before, after = visible_text(region), visible_text(main)
     ratio = len(after) / max(1, len(before))
     out = (head_ + body_tag + '\n' + skip + '\n<div id="readbar" aria-hidden="true"></div>\n' + nav + '\n' + navjs + '\n'
@@ -434,5 +521,12 @@ def rebuild(path, lang, img):
 
 
 if __name__ == '__main__':
-    for p, lang, img in PAGES:
+    import glob
+    pages = list(PAGES)
+    for d, im in METIER.items():
+        for f in sorted(glob.glob(f'{d}/*.html')):
+            if f.endswith('index.html') or f in METIER_SKIP:
+                continue
+            pages.append((f, 'en' if f.endswith('-en.html') else 'fr', im))
+    for p, lang, img in pages:
         print(p, rebuild(p, lang, img))

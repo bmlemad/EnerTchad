@@ -304,6 +304,7 @@
 @M .pp-prose .pp-more>*:not(summary){display:block;margin-top:10px;font-size:.92rem;color:var(--pp-ink2)}
 @M .pp-sub a[aria-current]{color:var(--pp-ink);border-color:var(--pp-gold)}
 @M .pp-def{margin-top:-6px;max-width:64ch}
+@M section.pp-compact{padding:clamp(32px,4vw,52px) 0}
 @M .pp-island{margin-top:8px}
 @M section.pp-journal:not(#pj):not(#pk){padding:clamp(104px,12vw,168px) 0 clamp(40px,5vw,72px);background:var(--pp-paper)}
 
