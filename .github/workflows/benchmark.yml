@@ -1,8 +1,7 @@
 name: Benchmark performance réel
 
 on:
-  push:
-    branches: [main]
+  # Hebdomadaire et a la demande (voir browser-qa.yml).
   workflow_dispatch: {}
   schedule:
     - cron: '41 3 * * 1'
@@ -31,7 +30,7 @@ jobs:
         run: |
           python - <<'PY'
           import time, urllib.request
-          url = "https://enertchad-delta.vercel.app/"
+          url = "https://enertchad.netlify.app/"
           for _ in range(30):
               try:
                   with urllib.request.urlopen(url, timeout=10) as r:
@@ -68,7 +67,7 @@ jobs:
             for path in "/" "/index-en" "/ar" "/amont/" "/intermediaire/" "/aval/" "/petrochimie/" "/investisseurs/" "/contact/" "/faq/"; do
               name=$(printf '%s' "$path" | tr '/-' '__' | sed 's/^_*$//')
               [ -n "$name" ] || name="home"
-              run_lighthouse "https://enertchad-delta.vercel.app$path" "$preset" "reports/lighthouse/"$preset"_"$name".json"
+              run_lighthouse "https://enertchad.netlify.app$path" "$preset" "reports/lighthouse/"$preset"_"$name".json"
             done
           done
       - name: Résumer les mesures Lighthouse

@@ -1,7 +1,9 @@
 name: QA navigateur — production
 on:
-  push:
-    branches: [main]
+  # Hebdomadaire et a la demande : lancee a chaque envoi, cette QA (toutes les pages,
+  # plusieurs passages) a depasse a elle seule les requetes incluses de l hebergeur.
+  schedule:
+    - cron: '23 4 * * 1'
   workflow_dispatch: {}
 jobs:
   browser:
@@ -16,9 +18,9 @@ jobs:
         run: |
           npm install --no-save --no-package-lock @playwright/test@1.55.0
           npx playwright@1.55.0 install --with-deps chromium
-      - name: Attendre le déploiement Vercel
+      - name: Attendre le déploiement de production
         env:
-          SITE_URL: https://enertchad-delta.vercel.app/
+          SITE_URL: https://enertchad.netlify.app/
         run: |
           for i in {1..60}; do
             code=$(curl -L -s -o /tmp/site.html -w '%{http_code}' "$SITE_URL/")
@@ -28,17 +30,17 @@ jobs:
           echo "Le déploiement de production n'est pas encore disponible"; exit 1
       - name: Vérifier les garde-fous de synchronisation production
         env:
-          SITE_URL: https://enertchad-delta.vercel.app/
+          SITE_URL: https://enertchad.netlify.app/
         run: |
           set -euo pipefail
           page=$(curl -L -sS "$SITE_URL/petrochimie/")
           case "$page" in
-            *'class="et-skip"'*) ;;
-            *) echo "::warning::Production Vercel ne contient pas le skip-link source attendu sur /petrochimie/. Vérifier la synchronisation du projet Vercel avant d'interpréter la QA comme un défaut du dépôt." ;;
+            *'class="et-skip"'*|*'class="skip-link"'*) ;;
+            *) echo "::warning::Production ne contient pas le skip-link source attendu sur /petrochimie/. Vérifier la synchronisation du deploiement de production avant d'interpréter la QA comme un défaut du dépôt." ;;
           esac
           case "$page" in
             *'main-content'*) ;;
-            *) echo "::warning::Production Vercel ne contient pas #main-content sur /petrochimie/. Le dépôt Git doit être comparé au déploiement réellement servi." ;;
+            *) echo "::warning::Production ne contient pas #main-content sur /petrochimie/. Le dépôt Git doit être comparé au déploiement réellement servi." ;;
           esac
 
       - name: Exécuter la QA fonctionnelle
@@ -47,7 +49,7 @@ jobs:
           npx --yes playwright@1.55.0 test qa --reporter=line
       - name: Exécuter l'audit visuel complet
         env:
-          SITE_URL: https://enertchad-delta.vercel.app/
+          SITE_URL: https://enertchad.netlify.app/
         run: |
           npx --yes playwright@1.55.0 test qa/full-site-visual.spec.js --reporter=line
       - name: Publier les captures et rapports
