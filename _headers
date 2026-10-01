@@ -1,10 +1,7 @@
-# Fichier au format Netlify — INACTIF sur l'hébergement actuel.
-# Le site est déployé sur Vercel, qui ignore ce fichier : les en-têtes
-# réellement servis sont ceux du bloc "headers" de vercel.json.
-# Ce fichier est conservé, et tenu strictement aligné sur vercel.json,
-# uniquement pour qu'un déploiement Netlify de secours parte des mêmes règles.
-# Toute modification doit être faite dans vercel.json d'abord.
-# Dernier alignement : 2026-09-29.
+# En-tetes Netlify -- ACTIFS : Netlify (enertchad.netlify.app) est l hebergement
+# principal depuis le 1er octobre 2026 (Vercel suspendu). Les regles de securite
+# restent alignees sur le bloc "headers" de vercel.json ; toute modification se fait
+# dans les deux fichiers.
 
 /*
   X-Frame-Options: SAMEORIGIN
