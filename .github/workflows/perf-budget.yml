@@ -1,0 +1,59 @@
+name: Budget de performance (statique)
+# Etage 1 du benchmark : a chaque envoi, compare le poids et les ressources bloquantes
+# de chaque page a la version precedente, a partir des seuls fichiers du depot.
+# Aucune requete vers la production. Detail des mesures : scripts/bench/static_budget.py
+on:
+  push:
+    branches: [main]
+    paths: ['**.html', '**.css', '**.js', 'scripts/bench/**']
+  pull_request:
+    paths: ['**.html', '**.css', '**.js', 'scripts/bench/**']
+  workflow_dispatch:
+    inputs:
+      base:
+        description: 'Version de reference (commit, branche ou tag ; vide = commit precedent)'
+        required: false
+        default: ''
+permissions:
+  contents: read
+concurrency:
+  group: perf-budget-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  budget:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - name: Choisir la reference
+        id: ref
+        env:
+          INPUT_BASE: ${{ github.event.inputs.base }}
+          PR_BASE: ${{ github.event.pull_request.base.sha }}
+          BEFORE: ${{ github.event.before }}
+        run: |
+          base="${INPUT_BASE:-${PR_BASE:-$BEFORE}}"
+          if [ -z "$base" ] || ! git cat-file -e "$base^{commit}" 2>/dev/null; then base=$(git rev-parse HEAD^); fi
+          echo "base=$base" >> "$GITHUB_OUTPUT"
+          echo "Reference : $(git log -1 --format='%h %s' "$base")"
+      - name: Mesurer la reference et la version
+        run: |
+          git worktree add --detach /tmp/base "${{ steps.ref.outputs.base }}"
+          python scripts/bench/static_budget.py --root /tmp/base --out reports/bench/static-base.json
+          python scripts/bench/static_budget.py --root . --out reports/bench/static-head.json
+      - name: Comparer
+        run: |
+          set +e
+          python scripts/bench/static_budget.py --compare reports/bench/static-base.json reports/bench/static-head.json --md reports/bench/static.md
+          rc=$?
+          cat reports/bench/static.md >> "$GITHUB_STEP_SUMMARY"
+          exit $rc
+      - uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          name: budget-statique
+          path: reports/bench/

@@ -1,8 +1,20 @@
 name: Benchmark performance réel
-
+# Etages 2 et 3 du benchmark (l etage 1, statique, tourne a chaque envoi : perf-budget.yml).
+#  - labo : le site est servi localement dans le runner (scripts/bench/serve.mjs, meme
+#    comportement que Netlify) en deux versions -- la reference et la version actuelle --
+#    chargees en alternance, cache vide, mediane de 5 chargements par page, profils mobile
+#    « N Djamena » (latence 300 ms, 1,6 Mb/s, CPU x4) et desktop. Aucune requete vers la
+#    production. Echoue si une mediane se degrade de plus de 10 % et de plus de 100 ms.
+#  - production : une trentaine de requetes (compression, cache, en-tetes, contenu identique
+#    au depot) et un passage Lighthouse mobile sur 5 pages.
 on:
   # Hebdomadaire et a la demande (voir browser-qa.yml).
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      base:
+        description: 'Version de reference du labo (commit, branche ou tag ; vide = etat de main il y a 7 jours)'
+        required: false
+        default: ''
   schedule:
     - cron: '41 3 * * 1'
 
@@ -10,69 +22,103 @@ permissions:
   contents: read
 
 jobs:
-  benchmark:
+  labo:
     runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '22'
+      - name: Choisir la reference
+        id: ref
+        env:
+          INPUT_BASE: ${{ github.event.inputs.base }}
+        run: |
+          base="$INPUT_BASE"
+          [ -n "$base" ] || base=$(git rev-list -1 --before="7 days ago" HEAD)
+          [ -n "$base" ] || base=$(git rev-list --max-parents=0 HEAD | tail -1)
+          base=$(git rev-parse "$base^{commit}")
+          echo "base=$base" >> "$GITHUB_OUTPUT"
+          echo "Reference : $(git log -1 --format='%h %ad %s' --date=short "$base")"
+          echo "Version   : $(git log -1 --format='%h %ad %s' --date=short HEAD)"
+          git worktree add --detach /tmp/base "$base"
+      - name: Rapport technique du depot
+        run: |
+          python scripts/benchmark_site.py
+          python scripts/bench/static_budget.py --root /tmp/base --out reports/bench/static-base.json
+          python scripts/bench/static_budget.py --root . --out reports/bench/static-head.json
+          python scripts/bench/static_budget.py --compare reports/bench/static-base.json reports/bench/static-head.json --md reports/bench/static.md || true
+      - name: Installer Playwright
+        run: |
+          npm install --no-save --no-package-lock playwright@1.55.0
+          npx playwright@1.55.0 install --with-deps chromium
+      - name: Servir les deux versions localement
+        run: |
+          nohup node scripts/bench/serve.mjs /tmp/base 8701 > /tmp/serve-base.log 2>&1 &
+          nohup node scripts/bench/serve.mjs . 8702 > /tmp/serve-head.log 2>&1 &
+          for port in 8701 8702; do
+            for i in $(seq 1 30); do curl -sf -o /dev/null "http://127.0.0.1:$port/" && break; sleep 1; done
+          done
+      - name: Mesurer (A/B alterne, mediane de 5)
+        run: |
+          set +e
+          node scripts/bench/lab.mjs --base http://127.0.0.1:8701 --head http://127.0.0.1:8702 --runs 5 --out reports/bench
+          rc=$?
+          { cat reports/bench/lab.md; echo; cat reports/bench/static.md; } >> "$GITHUB_STEP_SUMMARY"
+          exit $rc
+      - name: Publier les rapports
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: benchmark-labo
+          path: |
+            reports/bench/
+            reports/benchmark-site-2026.md
+
+  production:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v7
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Générer le benchmark statique
-        run: |
-          python scripts/benchmark_site.py
-          cat reports/benchmark-site-2026.md
       - uses: actions/setup-node@v7
         with:
           node-version: '22'
-      - name: Installer Lighthouse
-        run: npm install --no-save --no-package-lock lighthouse@13
-      - name: Attendre la production
+      - name: Controler la production (compression, cache, en-tetes, contenu)
         run: |
-          python - <<'PY'
-          import time, urllib.request
-          url = "https://enertchad.netlify.app/"
-          for _ in range(30):
-              try:
-                  with urllib.request.urlopen(url, timeout=10) as r:
-                      if r.status < 500:
-                          print("Production disponible:", r.status)
-                          break
-              except Exception as e:
-                  print("Attente:", e)
-              time.sleep(10)
-          else:
-              raise SystemExit("Production indisponible")
-          PY
-      - name: Mesurer les parcours critiques
+          set +e
+          python scripts/bench/prod_check.py --site https://enertchad.netlify.app --root . --md reports/bench/prod.md
+          rc=$?
+          cat reports/bench/prod.md >> "$GITHUB_STEP_SUMMARY"
+          exit $rc
+      - name: Installer Lighthouse
+        if: always()
+        run: npm install --no-save --no-package-lock lighthouse@13
+      - name: Lighthouse mobile, un passage sur 5 pages
+        if: always()
         run: |
           mkdir -p reports/lighthouse
-          run_lighthouse() {
-            local url="$1"
-            local mode="$2"
-            local output="$3"
-            local attempt
-            for attempt in 1 2 3; do
-              echo "Lighthouse $mode $url — tentative $attempt/3"
-              if [ "$mode" = "desktop" ]; then
-                npx lighthouse "$url" --quiet --chrome-flags="--headless --no-sandbox --disable-dev-shm-usage" --preset=desktop --only-categories=performance,accessibility,best-practices,seo --output=json --output-path="$output" && return 0
-              else
-                npx lighthouse "$url" --quiet --chrome-flags="--headless --no-sandbox --disable-dev-shm-usage" --preset=perf --form-factor=mobile --screenEmulation.mobile=true --screenEmulation.width=412 --screenEmulation.height=915 --screenEmulation.deviceScaleFactor=2 --only-categories=performance,accessibility,best-practices,seo --output=json --output-path="$output" && return 0
-              fi
-              rm -f "$output"
-              sleep 4
-            done
-            return 1
-          }
-          for preset in mobile desktop; do
-            for path in "/" "/index-en" "/ar" "/amont/" "/intermediaire/" "/aval/" "/petrochimie/" "/investisseurs/" "/contact/" "/faq/"; do
-              name=$(printf '%s' "$path" | tr '/-' '__' | sed 's/^_*$//')
-              [ -n "$name" ] || name="home"
-              run_lighthouse "https://enertchad.netlify.app$path" "$preset" "reports/lighthouse/"$preset"_"$name".json"
-            done
+          for path in "/" "/amont/" "/ar" "/carnets" "/investisseurs"; do
+            name=$(printf '%s' "$path" | tr '/-' '__' | sed 's/^_*$//'); [ -n "$name" ] || name="home"
+            npx lighthouse "https://enertchad.netlify.app$path" --quiet \
+              --chrome-flags="--headless --no-sandbox --disable-dev-shm-usage" \
+              --preset=perf --form-factor=mobile --screenEmulation.mobile=true \
+              --screenEmulation.width=412 --screenEmulation.height=915 --screenEmulation.deviceScaleFactor=2 \
+              --only-categories=performance,accessibility,best-practices,seo \
+              --output=json --output-path="reports/lighthouse/mobile_${name}.json" || echo "::warning::Lighthouse $path en echec"
           done
-      - name: Résumer les mesures Lighthouse
-        run: python scripts/summarize_lighthouse.py
+          python scripts/summarize_lighthouse.py
+          cat reports/lighthouse-summary-2026.md >> "$GITHUB_STEP_SUMMARY"
       - name: Signaler les hotspots mobile
+        if: always()
         run: |
           python - <<'PY'
           import glob, json
@@ -89,11 +135,11 @@ jobs:
                   print(f"OK {path}: performance={p:.0f}, TBT={tbt:.0f}ms, LCP={lcp:.0f}ms")
           PY
       - name: Publier les rapports
+        if: always()
         uses: actions/upload-artifact@v7
         with:
-          name: benchmark-performance-2026
+          name: benchmark-production
           path: |
-            reports/benchmark-site-2026.md
+            reports/bench/prod.md
             reports/lighthouse/*.json
             reports/lighthouse-summary-2026.md
-          if-no-files-found: error
