@@ -7,7 +7,7 @@
 - [Accueil](https://enertchad.netlify.app/) : mission, chaîne intégrée, chiffres cibles
 - [La Société](https://enertchad.netlify.app/societe) : identité, gouvernance OHADA
 - [Espace investisseurs](https://enertchad.netlify.app/investisseurs) : thèse, trajectoire de capital 100 M → 1 Md → 10 Md FCFA, jalons datés
-- [Nos solutions par besoin](https://enertchad.netlify.app/solutions) : entrée par usage (produire, acheminer, transformer, distribuer, décider, financer)
+- [Nos solutions par besoin](https://enertchad.netlify.app/nos-activites#besoins) : entrée par usage (produire, acheminer, transformer, distribuer, décider, financer)
 - [Publications & documents](https://enertchad.netlify.app/publications) : brochures PDF (FR/EN), fiche arabe, fiches techniques
 - [Paiements aux États](https://enertchad.netlify.app/paiements-etats) : format de déclaration engagé — sept catégories ITIE, maille par entité et par projet, date du premier rapport
 - [Carnets — journal pédagogique](https://enertchad.netlify.app/carnets) : 32 articles bilingues sur le pétrole tchadien (flux RSS : /feed.xml, /feed-en.xml)

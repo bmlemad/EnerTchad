@@ -165,5 +165,9 @@
 /calculateur-baril-additionnel /amont/calculateur-baril-additionnel 308!
 /explorateur-chaine /nos-activites 308!
 /explorateur-chaine-en /nos-activites-en 308!
+/solutions /nos-activites#besoins 308!
+/solutions-en /nos-activites-en#besoins 308!
+/presse /communiques#presse 308!
+/presse-en /communiques-en#presse 308!
 /configurateur-service-integre /Configurateur_Service_Integre_v2.html 200
 /amont/calculateur-baril-additionnel /Calculateur_Baril_Additionnel.html 200
