@@ -27,6 +27,12 @@
 @M .pp-note{font-size:.88rem;color:var(--pp-ink2);max-width:70ch}
 @M .pp-note a{color:var(--pp-ink)}
 @M .pp-mist{background:var(--pp-mist)}
+/* en-tetes de section : encre du theme (les feuilles historiques grisent les div en theme clair) */
+@M .pp-head{color:var(--pp-ink)}
+@M .pp-night .pp-head{color:var(--pp-night-ink)}
+/* les feuilles historiques grisent sections et div en theme clair : encre du theme partout */
+@M section:not(:where(.pp-journal *,.pp-island *)){color:var(--pp-ink)}
+@M div:not(:where(.pp-journal *,.pp-island *)),@M li:not(:where(.pp-journal *,.pp-island *)),@M article:not(:where(.pp-journal *,.pp-island *)){color:inherit}
 @M .pp-head{display:grid;gap:16px;max-width:780px;margin-bottom:clamp(36px,5vw,64px)}
 @M .pp-btn{box-shadow:none;text-shadow:none;transform:none;background-image:none;display:inline-flex;align-items:center;gap:.5em;font:600 1rem/1.2 var(--pp-sans);padding:16px 26px;text-decoration:none;border:1px solid transparent;border-radius:0;min-height:48px}
 @M .pp-btn-light{background:#fff;color:#0A1A2F}
