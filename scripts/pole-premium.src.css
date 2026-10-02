@@ -388,3 +388,8 @@
 @M .pp-smg li{break-inside:avoid}
 @M .pp-smg li a{display:inline-flex;align-items:center;min-height:32px;color:var(--pp-ink2);text-decoration:none;font-size:.93rem;line-height:1.35}
 @M .pp-smg li a:hover{color:var(--pp-ink);text-decoration:underline;text-decoration-color:var(--pp-gold);text-underline-offset:4px}
+
+/* Boutique : le panneau de commande (ilot) est une carte sombre, texte clair */
+@M #boutique .order{color:#F5F7FA}
+@M #boutique .pc-pack{color:var(--pp-ink);background:var(--pp-paper);border:1px solid var(--pp-line)}
+@M #boutique .pc-pack option{color:var(--pp-ink);background:var(--pp-paper)}
