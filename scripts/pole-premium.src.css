@@ -375,3 +375,16 @@
   @M .pp-rel-meta{grid-auto-flow:column;justify-content:start;gap:14px}
   @M .pp-swatches{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
+
+/* Plan du site : rubriques du menu, pages rattachees */
+@M .pp-smgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:clamp(28px,4vw,48px) clamp(24px,4vw,56px)}
+@M .pp-smgrid-wide .pp-smg ul{columns:3 220px;column-gap:clamp(24px,4vw,56px);display:block}
+@M .pp-smgrid-wide{grid-template-columns:minmax(0,1fr)}
+@M .pp-smg{display:grid;gap:8px;align-content:start;padding-top:18px;border-top:1px solid var(--pp-gold);min-width:0}
+@M .pp-smg>a{font:400 1.4rem/1.2 var(--pp-serif);color:var(--pp-ink);text-decoration:none;min-height:32px}
+@M .pp-smg>a:hover{color:var(--pp-gold-ink)}
+@M .pp-smg>p{font-size:.88rem;color:var(--pp-ink2)}
+@M .pp-smg ul{display:grid;gap:0;margin-top:4px}
+@M .pp-smg li{break-inside:avoid}
+@M .pp-smg li a{display:inline-flex;align-items:center;min-height:32px;color:var(--pp-ink2);text-decoration:none;font-size:.93rem;line-height:1.35}
+@M .pp-smg li a:hover{color:var(--pp-ink);text-decoration:underline;text-decoration-color:var(--pp-gold);text-underline-offset:4px}
