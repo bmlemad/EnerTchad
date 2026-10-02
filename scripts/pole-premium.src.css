@@ -87,7 +87,7 @@
 @M .pp-manifesto figure img{width:100%;aspect-ratio:4/5;object-fit:cover}
 
 /* Le metier */
-@M .pp-steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(20px,3vw,40px);counter-reset:pp}
+@M .pp-prose div.pp-steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(20px,3vw,40px);counter-reset:pp}
 @M .pp-steps a{display:grid;gap:12px;padding-top:22px;border-top:1px solid var(--pp-gold);text-decoration:none;color:var(--pp-ink);counter-increment:pp}
 @M .pp-steps a::before{content:counter(pp,upper-roman);font:400 1rem/1 var(--pp-serif);color:var(--pp-gold-ink);letter-spacing:.06em}
 @M .pp-steps b{font:400 1.7rem/1.08 var(--pp-serif)}
@@ -295,8 +295,8 @@
 @M .pp-prose summary{cursor:pointer;font-weight:600;min-height:44px;display:flex;align-items:center}
 
 @M .pp-prose .pp-chips{display:flex;flex-wrap:wrap;gap:10px;max-width:none}
-@M .pp-prose .pp-chips>a{display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border:1px solid var(--pp-line);text-decoration:none!important;color:var(--pp-ink);font-weight:500;font-size:.95rem;background:var(--pp-paper)}
-@M .pp-prose .pp-chips>a:hover{border-color:var(--pp-gold);color:var(--pp-gold-ink)}
+@M .pp-prose .pp-chips>a:not(.pp-cell):not(.pp-link){display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border:1px solid var(--pp-line);text-decoration:none!important;color:var(--pp-ink);font-weight:500;font-size:.95rem;background:var(--pp-paper)}
+@M .pp-prose .pp-chips>a:not(.pp-cell):not(.pp-link):hover{border-color:var(--pp-gold);color:var(--pp-gold-ink)}
 @M .pp-prose form{display:flex;flex-wrap:wrap;gap:10px;align-items:stretch}
 @M .pp-prose button,@M .pp-journal form button{background:var(--pp-ink);color:var(--pp-paper);border:0;border-radius:0;padding:12px 18px;min-height:44px;font:600 .9rem/1.2 var(--pp-sans);cursor:pointer;box-shadow:none;margin:0 8px 8px 0}
 @M .pp-prose button:hover,@M .pp-journal form button:hover{background:var(--pp-gold-ink);color:#fff}
@@ -337,7 +337,7 @@
   @M .pp-manifesto,@M .pp-night .pp-wrap{grid-template-columns:minmax(0,1fr)}
   @M .pp-manifesto figure img{aspect-ratio:3/2}
   @M .pp-steps,@M .pp-caps,@M .pp-domains,@M .pp-promise,@M .pp-bigfigs,@M .pp-group ul{grid-template-columns:minmax(0,1fr)}
-  @M .pp-steps{gap:0}
+  @M .pp-prose div.pp-steps{gap:0}
   @M .pp-steps a{padding:20px 0 22px}
   @M .pp-cases>li{grid-template-columns:minmax(0,1fr);gap:14px}
   @M .pp-cases>li>div:last-child{grid-column:auto}
@@ -418,11 +418,11 @@
 @M .pp-prose svg[viewBox="0 0 24 24"]:not([width]){width:1.15em;height:1.15em;flex:none;vertical-align:-.15em;display:inline-block}
 
 /* Menus de cartes dans le texte (titre + sous-titre par lien) */
-@M .pp-navcards{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:4px 24px;margin:8px 0}
-@M .pp-navcards>a{display:grid;gap:2px;padding:12px 0 10px;border-top:1px solid var(--pp-gold);text-decoration:none;color:var(--pp-ink);min-height:44px}
-@M .pp-navcards>a b{font-weight:600}
-@M .pp-navcards>a span{font-size:.86rem;color:var(--pp-ink2)}
-@M .pp-navcards>a:hover b{color:var(--pp-gold-ink)}
+@M .pp-navcards,@M .pp-prose .pp-navcards{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:4px 24px;margin:8px 0}
+@M .pp-navcards>a,@M .pp-prose .pp-navcards>a:not(.pp-cell):not(.pp-link){display:grid;gap:2px;padding:12px 0 10px;border:0;border-top:1px solid var(--pp-gold);background:none;text-decoration:none;color:var(--pp-ink);min-height:44px}
+@M .pp-navcards>a b,@M .pp-prose .pp-navcards>a:not(.pp-cell):not(.pp-link) b{font-weight:600}
+@M .pp-navcards>a span,@M .pp-prose .pp-navcards>a:not(.pp-cell):not(.pp-link) span{font-size:.86rem;color:var(--pp-ink2)}
+@M .pp-navcards>a:hover b,@M .pp-prose .pp-navcards>a:not(.pp-cell):not(.pp-link):hover b{color:var(--pp-gold-ink)}
 
 /* Listes libelle + valeur (le libelle en gras etait colle a la valeur) : libelle au-dessus */
 @M .pp-dl>li>b{display:block;color:var(--pp-ink);font-weight:600;margin-bottom:1px}
@@ -451,3 +451,46 @@
 
 /* Petits textes d aide des anciens composants (opacite reduite) : contraste du texte secondaire */
 @M #comparer .cl-hint,@M #schForm>p{color:var(--pp-ink2);opacity:1}
+
+/* Lien de retour en tete de section (« ↩ Levier 03 ») */
+@M .pp-back{margin:0 0 20px;font-size:.86rem}
+@M .pp-back a{color:var(--pp-ink2);text-decoration:none;border-bottom:1px solid var(--pp-line)}
+@M .pp-back a:hover{color:var(--pp-gold-ink)}
+
+/* Encart « Continuer dans <pole> » des pages metier */
+@M .pp-more-pole{display:grid;gap:14px}
+@M .pp-more-pole .pp-back{margin:6px 0 0}
+
+/* Suites d etapes (marges, boucle du capital) : cartes en rangee, fleches entre elles */
+@M .pp-prose div.pp-steps{display:flex;flex-wrap:wrap;align-items:stretch;gap:10px 12px;margin:6px 0 10px}
+@M .pp-prose div.pp-step{flex:1 1 160px;display:grid;align-content:start;gap:4px;padding:14px 16px;border-top:1px solid var(--pp-gold);background:var(--pp-mist)}
+@M .pp-mist .pp-step{background:var(--pp-paper)}
+@M .pp-step>div,@M .pp-step>span:first-child{font-size:.7rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--pp-gold-ink)}
+@M .pp-step>b{font-family:var(--pp-serif);font-weight:400;font-size:1.2rem;line-height:1.15;color:var(--pp-ink)}
+@M .pp-step>span:last-child{font-size:.88rem;line-height:1.5;color:var(--pp-ink2)}
+@M .pp-steps>[aria-hidden="true"]{align-self:center;color:var(--pp-gold-ink);flex:none}
+
+/* Intertitres, date + texte, sommaire, lien de retour */
+@M .pp-prose div.pp-minih{font-family:var(--pp-serif);font-size:1.45rem;line-height:1.15;color:var(--pp-ink);margin-top:14px}
+@M .pp-prose div.pp-dated{display:grid;gap:2px;margin:6px 0}
+@M .pp-prose div.pp-dated>span:first-child{font-size:.7rem;font-weight:600;letter-spacing:.12em;color:var(--pp-gold-ink)}
+@M .pp-prose nav.pp-toc{columns:3 220px;column-gap:36px;margin-top:10px}
+@M .pp-toc>span{display:block;break-after:avoid;margin:14px 0 4px;font-size:.7rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--pp-gold-ink)}
+@M .pp-toc>span:first-child{margin-top:0}
+@M .pp-toc>a{display:block;padding:3px 0;break-inside:avoid;text-decoration:none;border:0}
+@M .pp-toc>a:hover{color:var(--pp-gold-ink)}
+@M .pp-backcard{display:inline-grid;gap:2px;text-decoration:none}
+@M .pp-backcard>span:first-child{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--pp-gold-ink)}
+
+/* Pastilles precedees d un intitule ; liste de documents en cartes */
+@M .pp-prose .pp-chips>.pp-chips-k{flex-basis:100%;font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--pp-gold-ink)}
+@M .pp-prose div.pp-docs{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+@M .pp-prose .pp-docs>a:not(.pp-cell):not(.pp-link){text-decoration:none;display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 12px;align-content:start;padding:16px 18px;border:1px solid var(--pp-line);background:var(--pp-paper);text-decoration:none;color:var(--pp-ink)}
+@M .pp-prose .pp-docs>a:not(.pp-cell):not(.pp-link):hover{border-color:var(--pp-gold)}
+@M .pp-prose .pp-docs>a:not(.pp-cell):not(.pp-link)>span:first-child{color:var(--pp-gold-ink)}
+@M .pp-prose .pp-docs>a:not(.pp-cell):not(.pp-link) svg{width:22px;height:22px}
+@M .pp-prose .pp-docs>a:not(.pp-cell):not(.pp-link):not(.pp-docs-all)>span:last-child{display:grid;gap:4px}
+@M .pp-prose .pp-docs>a:not(.pp-cell):not(.pp-link)>span:last-child>b{font-family:var(--pp-serif);font-weight:400;font-size:1.2rem;line-height:1.15}
+@M .pp-prose .pp-docs>a:not(.pp-cell):not(.pp-link)>span:last-child>span{font-size:.88rem;line-height:1.5;color:var(--pp-ink2)}
+@M .pp-prose .pp-docs>a:not(.pp-cell):not(.pp-link)>span:last-child>span:last-child{font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--pp-gold-ink)}
+@M .pp-prose .pp-docs>a:not(.pp-cell):not(.pp-link).pp-docs-all{grid-template-columns:1fr;align-content:center;font-weight:500;color:var(--pp-ink)}
