@@ -4,7 +4,16 @@ const base = process.env.SITE_URL || 'https://enertchad.netlify.app/';
 const matrix = [
   ['/', 'fr', '/'],
   ['/index-en', 'en', '/index-en'],
-  ['/ar', 'ar', '/ar']
+  ['/ar', 'ar', '/ar'],
+  ['/societe', 'fr', '/societe'],
+  ['/societe-en', 'en', '/societe-en'],
+  ['/ar-societe', 'ar', '/ar-societe'],
+  ['/investisseurs', 'fr', '/investisseurs'],
+  ['/investisseurs-en', 'en', '/investisseurs-en'],
+  ['/ar-investisseurs', 'ar', '/ar-investisseurs'],
+  ['/contact', 'fr', '/contact'],
+  ['/contact-en', 'en', '/contact-en'],
+  ['/ar-contact', 'ar', '/ar-contact']
 ];
 
 test('internationalization — language, canonical and hreflang stay aligned', async ({ browser }) => {
