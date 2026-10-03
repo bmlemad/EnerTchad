@@ -13,7 +13,7 @@ const matrix = [
   ['/ar-investisseurs', 'ar', '/ar-investisseurs'],
   ['/contact', 'fr', '/contact'],
   ['/contact-en', 'en', '/contact-en'],
-  ['/ar-contact', 'ar', '/ar-contact']
+  ['/ar-contact', 'ar', '/ar-contact'],
   ['/publications', 'fr', '/publications'],
   ['/publications-en', 'en', '/publications-en'],
   ['/nos-activites', 'fr', '/nos-activites'],
