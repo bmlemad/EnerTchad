@@ -7,7 +7,7 @@ const paths = [
   '/contact', '/contact-en', '/ar-contact',
   '/investisseurs', '/investisseurs-en', '/ar-investisseurs',
   '/amont/', '/intermediaire/', '/aval/', '/greentech/',
-  '/recherche', '/recherche-en'
+  '/recherche', '/recherche-en',
   '/publications', '/publications-en',
   '/nos-activites', '/nos-activites-en',
   '/engagements', '/engagements-en',
