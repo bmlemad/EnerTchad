@@ -8,6 +8,15 @@ const paths = [
   '/investisseurs', '/investisseurs-en', '/ar-investisseurs',
   '/amont/', '/intermediaire/', '/aval/', '/greentech/',
   '/recherche', '/recherche-en'
+  '/publications', '/publications-en',
+  '/nos-activites', '/nos-activites-en',
+  '/engagements', '/engagements-en',
+  '/projets', '/projets-en',
+  '/gouvernance', '/gouvernance-en',
+  '/ethique', '/ethique-en',
+  '/brochure', '/brochure-en',
+  '/carrieres', '/carrieres-en',
+  '/communiques', '/communiques-en',
 ];
 
 test('navigation — representative pages contain no empty or javascript internal links', async ({ browser }) => {
