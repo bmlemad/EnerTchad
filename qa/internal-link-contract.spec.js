@@ -1,7 +1,14 @@
 const { test, expect } = require('@playwright/test');
 
 const base = process.env.SITE_URL || 'https://enertchad.netlify.app/';
-const paths = ['/', '/amont/', '/intermediaire/', '/aval/', '/greentech/', '/contact', '/investisseurs'];
+const paths = [
+  '/', '/index-en', '/ar',
+  '/societe', '/societe-en', '/ar-societe',
+  '/contact', '/contact-en', '/ar-contact',
+  '/investisseurs', '/investisseurs-en', '/ar-investisseurs',
+  '/amont/', '/intermediaire/', '/aval/', '/greentech/',
+  '/recherche', '/recherche-en'
+];
 
 test('navigation — representative pages contain no empty or javascript internal links', async ({ browser }) => {
   for (const path of paths) {
