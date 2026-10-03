@@ -24,7 +24,7 @@ home_ar = read(HOME_AR)
 pub_en = read(PUB_EN)
 
 home_requirements = {
-    "centre de confiance": r'class="et-proof-center"[^>]*aria-labelledby="[^"]+"',
+    "centre de confiance": r'class="[^"]*\\bet-proof-center\\b[^"]*"[^>]*aria-labelledby="[^"]+"',
     "reporting investisseurs": r'href="/publications#pub-inv"',
     "data book": r'href="/Data_Book_EnerTchad.xlsx"',
     "gouvernance": r'href="/ethique"',
