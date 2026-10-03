@@ -57,8 +57,8 @@ for asset in [
         errors.append(f"ressource documentaire attendue absente: {asset}")
 
 multilingual = [
-    ("index-en.html", home_en, r'class="et-proof-center"[^>]*aria-labelledby="[^"]+"', r'/publications-en#pub-inv'),
-    ("ar.html", home_ar, r'class="et-proof-center"[^>]*aria-labelledby="et-proof-title-ar"', r'/ar-investisseurs'),
+    ("index-en.html", home_en, r'class="[^"]*\\bet-proof-center\\b[^"]*"[^>]*aria-labelledby="[^"]+"', r'/publications-en#pub-inv'),
+    ("ar.html", home_ar, r'class="[^"]*\\bet-proof-center\\b[^"]*"[^>]*aria-labelledby="et-proof-title-ar"', r'/ar-investisseurs'),
     ("publications-en.html", pub_en, r'aria-label="Reporting center navigation"', r'href="#pub-inv"'),
 ]
 for filename, content, pattern_one, pattern_two in multilingual:
