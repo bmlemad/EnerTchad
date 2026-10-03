@@ -14,6 +14,22 @@ const matrix = [
   ['/contact', 'fr', '/contact'],
   ['/contact-en', 'en', '/contact-en'],
   ['/ar-contact', 'ar', '/ar-contact']
+  ['/publications', 'fr', '/publications'],
+  ['/publications-en', 'en', '/publications-en'],
+  ['/nos-activites', 'fr', '/nos-activites'],
+  ['/nos-activites-en', 'en', '/nos-activites-en'],
+  ['/engagements', 'fr', '/engagements'],
+  ['/engagements-en', 'en', '/engagements-en'],
+  ['/projets', 'fr', '/projets'],
+  ['/projets-en', 'en', '/projets-en'],
+  ['/gouvernance', 'fr', '/gouvernance'],
+  ['/gouvernance-en', 'en', '/gouvernance-en'],
+  ['/ethique', 'fr', '/ethique'],
+  ['/ethique-en', 'en', '/ethique-en'],
+  ['/brochure', 'fr', '/brochure'],
+  ['/brochure-en', 'en', '/brochure-en'],
+  ['/carrieres', 'fr', '/carrieres'],
+  ['/carrieres-en', 'en', '/carrieres-en'],
 ];
 
 test('internationalization — language, canonical and hreflang stay aligned', async ({ browser }) => {
