@@ -384,3 +384,13 @@ footer.pft .foot-social a svg{width:15px!important;height:15px!important}
   .prof>.ic svg,.divc>.ic svg,.svc-head>.ic svg,.hxi-card>.ic svg,.mfo-lever>.ic svg{width:20px!important;height:20px!important}
   :is(.ngs-stage,.map-wrap,.cmap-frame,.atc-map,.cdm-frame,.avnet-panel)::after{background-size:auto,36px 36px,36px 36px}
 }
+
+
+/* ===== EnerTchad Strategic integration links & statuses — 2026-10-04 ===== */
+.et-quick-entry{display:flex;align-items:center;gap:10px;margin:18px 0 0;padding:12px 14px;border:1px solid color-mix(in srgb,var(--pn-gold,#B8913A) 22%,rgba(128,128,128,.2));border-radius:14px;background:color-mix(in srgb,var(--pn-gold,#B8913A) 5%,transparent);font-size:.84rem;line-height:1.5}
+.et-quick-entry strong{font-weight:750}.et-quick-entry a{margin-left:auto;white-space:nowrap;font-weight:750;text-decoration:none}.et-quick-entry a:hover{text-decoration:underline;text-underline-offset:3px}
+.et-proj-legend{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 28px}.et-proj-legend span,.et-proj-state{display:inline-flex;align-items:center;gap:6px;width:max-content;border-radius:999px;border:1px solid rgba(184,145,58,.28);background:rgba(184,145,58,.06);color:#7A5A12;padding:6px 9px;font:700 .64rem/1.2 var(--fm,ui-monospace,monospace);letter-spacing:.04em;text-transform:uppercase}
+html:not(.et-plight):not(.et-jlight) .et-proj-legend span,html:not(.et-plight):not(.et-jlight) .et-proj-state{color:#E8C36A;border-color:rgba(232,195,106,.24);background:rgba(232,195,106,.06)}
+.et-proj-state{margin:10px 0 4px}
+.et-doc-standard{margin-top:18px}.et-doc-standard .pp-cell{position:relative}.et-doc-standard .pp-cell::before{content:"";position:absolute;left:0;right:0;top:0;height:2px;background:linear-gradient(90deg,rgba(184,145,58,.9),transparent)}
+@media(max-width:640px){.et-quick-entry{align-items:flex-start;flex-direction:column}.et-quick-entry a{margin-left:0}}
