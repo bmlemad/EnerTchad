@@ -26,8 +26,11 @@ SKIP={"404.html","google9146d41010c5e702.html"}
 def normalize(href, source):
     href=href.strip()
     if not href or href.startswith(("#","mailto:","tel:","javascript:","data:")): return None
+    # Ignore protocol-relative/external URLs as non-internal links.
     u=urlsplit(href)
     if u.scheme or u.netloc: return None
+    # Fragment/query-only links are local to the current document and never routes.
+    if not u.path: return None
     path=u.path or "/"
     if not path.startswith("/"):
         path = posixpath.normpath(posixpath.join("/" + posixpath.dirname(source), path))
@@ -47,8 +50,12 @@ for page in PAGES:
     rel=page.relative_to(ROOT).as_posix()
     text=page.read_text(encoding="utf-8",errors="ignore")
     for m in re.finditer(r'<a\b[^>]*\bhref\s*=\s*["\']([^"\']+)["\']',text,re.I):
-        target=normalize(m.group(1),rel)
+        raw=m.group(1).strip()
+        target=normalize(raw,rel)
         if target is None: continue
+        # Static assets/documents are not HTML routes and should not be treated as broken pages.
+        if target.rsplit("/",1)[-1].lower().endswith((".pdf",".doc",".docx",".xls",".xlsx",".ppt",".pptx",".zip",".csv",".json",".xml",".txt",".jpg",".jpeg",".png",".webp",".svg",".ico",".mp4",".webm")):
+            continue
         if not resolve(target): broken.append((rel,target))
         else: incoming[target].append(rel)
 
