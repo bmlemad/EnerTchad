@@ -44,9 +44,9 @@ for page in PAGES:
     if route not in incoming: orphans.append(rel)
 
 out=["# EnerTchad — audit routes internes 2026","",f"Pages HTML analysées : **{len(PAGES)}**","",f"Liens internes cassés : **{len(broken)}**","", "## Liens cassés",""]
-out += [f"- \`/{src}\` → \`{dst}\`" for src,dst in broken[:200]] or ["Aucun."]
+out += [f"- `/{src}` → `{dst}`" for src,dst in broken[:200]] or ["Aucun."]
 out += ["","## Candidats sans lien entrant détectable","", "Un candidat orphelin n'est pas nécessairement une erreur : certaines pages sont des destinations profondes, des outils ou des pages accessibles par script/navigation dynamique.",""]
-out += [f"- \`/{p}\`" for p in orphans[:200]] or ["Aucun."]
+out += [f"- `/{p}`" for p in orphans[:200]] or ["Aucun."]
 (ROOT/"reports").mkdir(exist_ok=True)
 (ROOT/"reports"/"routes-audit-2026.md").write_text("\n".join(out)+"\n",encoding="utf-8")
 print(f"Routes audit: {len(broken)} broken internal links; {len(orphans)} orphan candidates.")
