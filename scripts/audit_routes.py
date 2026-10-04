@@ -54,7 +54,7 @@ for page in PAGES:
         target=normalize(raw,rel)
         if target is None: continue
         # Static assets/documents are not HTML routes and should not be treated as broken pages.
-        if target.rsplit("/",1)[-1].lower().endswith((".pdf",".doc",".docx",".xls",".xlsx",".ppt",".pptx",".zip",".csv",".json",".xml",".txt",".jpg",".jpeg",".png",".webp",".svg",".ico",".mp4",".webm")):
+        if target.rsplit("/",1)[-1].lower().endswith((".pdf",".doc",".docx",".xls",".xlsx",".ppt",".pptx",".zip",".csv",".json",".xml",".txt",".md",".ics",".ical",".jpg",".jpeg",".png",".webp",".svg",".ico",".mp4",".webm")):
             continue
         if not resolve(target): broken.append((rel,target))
         else: incoming[target].append(rel)
