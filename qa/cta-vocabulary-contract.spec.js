@@ -92,3 +92,29 @@ test('CTA vocabulary — primary labels remain concise', async ({ page }) => {
     }
   }
 });
+
+
+test('CTA density — investor topic index stays collapsed by default and keeps all 13 destinations', async ({ page }) => {
+  for (const path of ['/investisseurs', '/investisseurs-en']) {
+    await page.goto(new URL(path, base).href, { waitUntil: 'domcontentloaded', timeout: 45000 });
+    const details = page.locator('details.et-topic-index');
+    await expect(details, path + ' topic index').toHaveCount(1);
+    await expect(details).not.toHaveAttribute('open', '');
+    await expect(details.locator('a.pp-cell')).toHaveCount(13);
+  }
+});
+
+test('CTA vocabulary — editorial, data-room and RSS labels stay canonical', async ({ page }) => {
+  const cases = [
+    ['/societe', ['Ouvrir la data room']],
+    ['/societe-en', ['Open the data room']],
+    ['/investisseurs', ['Lire l’éditorial stratégique', 'Ouvrir le flux RSS des Carnets']],
+    ['/investisseurs-en', ['Read the strategic editorial', 'Open Stories RSS feed']],
+  ];
+  for (const [path, labels] of cases) {
+    await page.goto(new URL(path, base).href, { waitUntil: 'domcontentloaded', timeout: 45000 });
+    const visible = await page.locator('a.pp-btn, a.pp-link, a.btn, a.cta').allInnerTexts();
+    const normalized = visible.map(x => x.replace(/\s+/g, ' ').trim());
+    for (const label of labels) expect(normalized, path + ' canonical CTA ' + label).toContain(label);
+  }
+});
