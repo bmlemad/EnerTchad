@@ -54,3 +54,13 @@ test('CTA vocabulary — deprecated contact labels do not return', async ({ page
     }
   }
 });
+
+
+test('CTA density — investor evidence entry stays compact and exposes two distinct actions', async ({ page }) => {
+  for (const path of ['/investisseurs', '/investisseurs-en']) {
+    await page.goto(new URL(path, base).href, { waitUntil: 'domcontentloaded', timeout: 45000 });
+    const entry = page.locator('.et-quick-entry.et-quick-dual');
+    await expect(entry, path + ' compact investor evidence entry').toHaveCount(1);
+    await expect(entry.locator('.et-quick-actions a')).toHaveCount(2);
+  }
+});
