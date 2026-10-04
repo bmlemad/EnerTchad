@@ -205,7 +205,7 @@ try{(function(){
 /* Strategic shortcut: 90-second institutional overview. */
 try{(function(){
   var u=document.querySelector('.nx-util-in');if(!u)return;
-  if(u.querySelector('[data-et-short="essentiel"]'))return;
+  if(u.querySelector('[data-et-short="essentiel"],a[href="/essentiel"],a[href="/essentiel-en"]'))return;
   var lang=(document.documentElement.getAttribute('lang')||'fr').slice(0,2);
   var a=document.createElement('a');
   a.setAttribute('data-et-short','essentiel');
