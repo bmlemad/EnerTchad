@@ -3,6 +3,7 @@
 from pathlib import Path
 from collections import defaultdict
 from urllib.parse import urlsplit
+import posixpath
 import re
 
 ROOT=Path(__file__).resolve().parents[1]
@@ -17,8 +18,9 @@ def normalize(href, source):
     if u.scheme or u.netloc: return None
     path=u.path or "/"
     if not path.startswith("/"):
-        path="/" + str((Path("/") / Path(source).parent / path)).lstrip("/")
-        path=Path(path).as_posix()
+        path = posixpath.normpath(posixpath.join("/" + posixpath.dirname(source), path))
+        if not path.startswith("/"):
+            path = "/" + path
     return path.rstrip("/") or "/"
 
 def resolve(path):
@@ -40,7 +42,7 @@ orphans=[]
 for page in PAGES:
     rel=page.relative_to(ROOT).as_posix()
     if rel in SKIP: continue
-    route="/" if rel=="index.html" else "/"+rel[:-5].rstrip("/index")
+    route="/" if rel=="index.html" else "/" + rel[:-5].rstrip("/")
     if route not in incoming: orphans.append(rel)
 
 out=["# EnerTchad — audit routes internes 2026","",f"Pages HTML analysées : **{len(PAGES)}**","",f"Liens internes cassés : **{len(broken)}**","", "## Liens cassés",""]
