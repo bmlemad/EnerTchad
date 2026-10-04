@@ -588,3 +588,14 @@ html:not(.et-plight):not(.et-jlight) .et-proofline::before{color:#E6C978}
   .et-quick-entry.et-quick-dual{grid-template-columns:1fr}
   .et-quick-dual .et-quick-actions{justify-content:flex-start}
 }
+
+
+/* ===== EnerTchad CTA Density Control — 2026-10-04 ===== */
+.et-quick-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:12px;
+}
+.et-quick-grid .et-quick-entry{margin:0;min-height:100%}
+.et-quick-grid .et-quick-entry span{max-width:58ch}
+@media(max-width:760px){.et-quick-grid{grid-template-columns:1fr}}
