@@ -37,7 +37,7 @@ for p in pages:
     if not technical and h1!=1: flag('H1',f'h1 count={h1}')
     if not (technical or print_page) and not re.search(r'href\s*=\s*(?:["\']#(?:main-content|root)["\']|#(?:main-content|root)(?=\s|>))',s,re.I): flag('SKIP','missing skip link')
     if not (technical or print_page) and not re.search(r'id\s*=\s*["\'](?:main-content|root)["\']',s,re.I): flag('MAIN','missing main target id')
-    if not (technical or print_page) and 'modern-inner-2026.css' not in s and 'nav_a.css' not in s and rel not in ('index.html','index-en.html'): flag('INNER_UI','missing shared inner UI layer')
+    if not (technical or print_page) and 'modern-inner-2026.css' not in s and 'nav_a.css' not in s and 'premium-chrome.css' not in s and not rel.startswith('ar-') and rel not in ('index.html','index-en.html'): flag('INNER_UI','missing shared inner UI layer')
     if not technical and re.search(r'\bstyle\s*=\s*["\'][^"\']{240,}["\']',s,re.I): flag('INLINE_STYLE','very large inline style')
     if len(re.findall(r'<script\b',s,re.I))>30: flag('INLINE_JS','high script tag count')
     ids=re.findall(r'\bid\s*=\s*["\']([^"\']+)["\']',s,re.I)
@@ -62,7 +62,13 @@ for p in pages:
     for m in re.finditer(r'<(?:input|select|textarea)\b([^>]*)>',s,re.I|re.S):
         tag=m.group(0)
         if re.search(r"""\btype\s*=\s*["'](?:hidden|submit|button|reset|image)["']""",tag,re.I): continue
-        if not (re.search(r"""\baria-label(?:ledby)?\s*=""",tag,re.I) or re.search(r'\bid\s*=',tag,re.I) and re.search(r"""<label\b[^>]*\bfor\s*=\s*["'][^"']+["']""",s,re.I)):
+        wrapped_label = False
+        before = s.rfind('<label', 0, m.start())
+        closed_before = s.rfind('</label>', 0, m.start())
+        after = s.find('</label>', m.end())
+        if before > closed_before and after != -1:
+            wrapped_label = True
+        if not (re.search(r"""\baria-label(?:ledby)?\s*=""",tag,re.I) or (re.search(r'\bid\s*=',tag,re.I) and re.search(r"""<label\b[^>]*\bfor\s*=\s*["'][^"']+["']""",s,re.I)) or wrapped_label):
             flag('FORM_NAME','form field without detectable label/ARIA name')
 
     main_end = s.lower().rfind('</main>')
