@@ -394,3 +394,35 @@ html:not(.et-plight):not(.et-jlight) .et-proj-legend span,html:not(.et-plight):n
 .et-proj-state{margin:10px 0 4px}
 .et-doc-standard{margin-top:18px}.et-doc-standard .pp-cell{position:relative}.et-doc-standard .pp-cell::before{content:"";position:absolute;left:0;right:0;top:0;height:2px;background:linear-gradient(90deg,rgba(184,145,58,.9),transparent)}
 @media(max-width:640px){.et-quick-entry{align-items:flex-start;flex-direction:column}.et-quick-entry a{margin-left:0}}
+
+
+/* ===== EnerTchad Editorial photo, print & render budget — 2026-10-04 ===== */
+/* One restrained photographic tone across institutional hero imagery. */
+.pp-hero-img{
+  filter:saturate(.90) contrast(1.035) brightness(.96);
+  object-position:center 46%;
+}
+
+/* Defer expensive below-the-fold rendering on long institutional pages. */
+@supports(content-visibility:auto){
+  main.ppl>section:nth-of-type(n+3){
+    content-visibility:auto;
+    contain-intrinsic-size:auto 680px;
+  }
+}
+
+/* Clean meeting / board-pack print mode for strategic corporate pages. */
+@media print{
+  #nav,.pp-sub,.nx-util,.pgr,.pft,footer.pft,.et-skip,#readbar{display:none!important}
+  html,body{background:#fff!important;color:#111!important}
+  main.ppl{display:block!important}
+  .pp-hero,.pp-mist,main.ppl>section{background:#fff!important;color:#111!important;box-shadow:none!important}
+  .pp-hero{min-height:0!important;padding:22px 0!important}
+  .pp-hero-img{display:none!important}
+  .pp-wrap{width:100%!important;max-width:none!important;padding-left:0!important;padding-right:0!important}
+  .pp-cell,.pp-box,.pp-block,.pp-grid>*{box-shadow:none!important;break-inside:avoid}
+  a{color:#111!important;text-decoration:none!important}
+  a[href]::after{content:""!important}
+  h1,h2,h3,p,li,span,b,strong{color:#111!important;-webkit-text-fill-color:#111!important}
+  main.ppl>section{content-visibility:visible!important;contain:none!important}
+}
