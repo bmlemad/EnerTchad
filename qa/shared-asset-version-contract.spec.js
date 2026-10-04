@@ -14,7 +14,10 @@ const paths = [
   '/cibles-2030', '/cibles-2030-en',
   '/solutions', '/solutions-en',
   '/aval/reseau', '/aval/reseau-en',
-  '/amont/', '/intermediaire/', '/aval/', '/greentech/'
+  '/amont/', '/intermediaire/', '/aval/', '/greentech/',
+  '/tchaditude/', '/enerconseils/',
+  '/pole-amont-en', '/pole-intermediaire-en', '/pole-aval-en', '/pole-greentech-en',
+  '/pole-tchaditech-en', '/pole-enerchimie-en', '/pole-tchaditude-en', '/pole-enerconseils-en'
 ];
 
 test('shared premium assets — critical pages use one current cache-buster', async ({ page }) => {
