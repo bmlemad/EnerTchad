@@ -21,6 +21,16 @@ test('sitemap — canonical URL inventory is unique, same-origin and indexable',
   expect(urls.length).toBeGreaterThan(150);
   expect(new Set(urls).size, 'sitemap URLs must be unique').toBe(urls.length);
 
+  const requiredStrategic = [
+    new URL('/essentiel', base).href,
+    new URL('/essentiel-en', base).href,
+    new URL('/investor-center', base).href,
+    new URL('/investor-center-en', base).href,
+  ];
+  for (const href of requiredStrategic) {
+    expect(urls, 'strategic sitemap URL ' + href).toContain(href);
+  }
+
   for (const href of urls) {
     const parsed = new URL(href);
     expect(parsed.origin, href).toBe(origin);
