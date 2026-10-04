@@ -38,6 +38,8 @@ def normalize(href, source):
 def resolve(path):
     if path in ROUTED or path in CONFIG_ROUTES: return True
     if path=="/": return (ROOT/"index.html").exists()
+    # Explicit .html hrefs are valid static-site routes; resolve them directly.
+    if path.endswith(".html"): return (ROOT/path.lstrip("/")).exists()
     return (ROOT/(path.lstrip("/")+".html")).exists() or (ROOT/(path.lstrip("/")+"/index.html")).exists()
 
 incoming=defaultdict(list); broken=[]
