@@ -11,10 +11,24 @@ const cases = [
     ['a[data-et-action="invest"][href="/investisseurs-en#souscrire"]', 'Invest'],
     ['a[data-et-action="explore"][href="#chaine"]', 'Explore the chain'],
   ]],
+  ['/societe', [
+    ['a[data-et-action="evidence"][href="/engagements"]', 'Voir nos engagements'],
+  ]],
+  ['/societe-en', [
+    ['a[data-et-action="evidence"][href="/engagements-en"]', 'View our commitments'],
+  ]],
   ['/projets', [['a[data-et-action="contact"][href="/contact"]', 'Nous contacter']]],
   ['/projets-en', [['a[data-et-action="contact"][href="/contact-en"]', 'Contact us']]],
   ['/gouvernance', [['a[data-et-action="contact"][href="/contact"]', 'Nous contacter']]],
   ['/gouvernance-en', [['a[data-et-action="contact"][href="/contact-en"]', 'Contact us']]],
+  ['/engagements', [
+    ['a[data-et-action="contact"][href="/contact"]', 'Nous contacter'],
+    ['a[data-et-action="explore"][href="/societe"]', 'Voir la société'],
+  ]],
+  ['/engagements-en', [
+    ['a[data-et-action="contact"][href="/contact-en"]', 'Contact us'],
+    ['a[data-et-action="explore"][href="/societe-en"]', 'View the company'],
+  ]],
   ['/solutions', [
     ['a[data-et-action="contact"][href="/contact"]', 'Nous contacter'],
     ['a[data-et-action="explore"][href="/clients"]', 'Explorer par profil'],
