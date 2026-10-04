@@ -34,3 +34,17 @@ test('capital proof — investor pages connect target figures to assumptions and
     expect(hrefs.some(h => h && h.includes('investor-center')), path + ' investor center link').toBeTruthy();
   }
 });
+
+
+test('claim proof layer — target pages keep explicit target-status wording', async ({ page }) => {
+  for (const path of ['/cibles-2030', '/cibles-2030-en', '/projets', '/projets-en']) {
+    await page.goto(new URL(path, base).href, { waitUntil: 'domcontentloaded', timeout: 45000 });
+    const proof = page.locator('.et-proofline').first();
+    const text = (await proof.innerText()).toLowerCase();
+    expect(
+      /cible|target|roadmap|feuille de route|non réalisé|not achieved/.test(text),
+      path + ' target-status wording'
+    ).toBeTruthy();
+    await expect(proof.locator('.et-proof-status')).toHaveCount(1);
+  }
+});
