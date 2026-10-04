@@ -46,12 +46,14 @@ pages = {}
 for path in ROOT.rglob("*.html"):
     if any(part in {".git", "node_modules"} for part in path.parts):
         continue
-    if path.name in EXCLUDE:
+    rel_path = path.relative_to(ROOT).as_posix()
+    if path.name in EXCLUDE or any(rel_path.startswith(prefix) for prefix in EXCLUDE_PREFIXES):
         continue
     pages[route_for(path)] = read_page(path)
 
 def alias(route):
-    return route.rstrip("/") or "/"
+    route = route.rstrip("/") or "/"
+    return ROUTE_ALIASES.get(route, route)
 
 errors = []
 relations = 0
