@@ -540,7 +540,6 @@ html.et-plight .cops-lb.s{fill:#54657F}
   </div>
 </footer>
 
-<script defer src="/assets/chrome/chart.umd.min.js"></script>
 <script>
 (function(){
  // compteurs animés
@@ -551,6 +550,14 @@ html.et-plight .cops-lb.s{fill:#54657F}
  document.querySelectorAll('.v[data-count]').forEach(function(e){io.observe(e);});
 
  var GOLD='#F0CE82',BLUE='#5AA7F0',GREEN='#34D399',AMBER='#F2B45A',MUT='#7C8AA2',HAIR='rgba(90,167,240,.16)';
+ function loadChartThen(done){
+  if(window.Chart){done();return;}
+  var s=document.createElement('script');
+  s.src='/assets/chrome/chart.umd.min.js';
+  s.defer=true;
+  s.onload=done;
+  document.head.appendChild(s);
+ }
  function drawCharts(){if(!window.Chart)return;
   Chart.defaults.color=MUT;Chart.defaults.font.family="ui-monospace,Menlo,monospace";Chart.defaults.font.size=11;
   new Chart(document.getElementById('capChart'),{type:'bar',
@@ -565,7 +572,7 @@ html.et-plight .cops-lb.s{fill:#54657F}
     options:{responsive:true,maintainAspectRatio:false,cutout:'58%',plugins:{legend:{position:'right',labels:{boxWidth:10,padding:8}},
       tooltip:{callbacks:{label:function(c){return c.label;}}}}}});
  }
- if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',drawCharts);}else{drawCharts();}
+ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',function(){loadChartThen(drawCharts);});}else{loadChartThen(drawCharts);}
 
  var HZ=[
   {hz:'court',c:GREEN,k:'Horizon court · filières mûres',t:'Mise en route',items:['GPL domestique — substitution au bois-énergie','Engrais azotés (gaz→urée·NPK)','Intrants EOR (ASP) sur ressources locales','Hybridation gaz-solaire de nos sites']},
