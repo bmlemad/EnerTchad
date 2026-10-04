@@ -28,6 +28,18 @@ def classify(path):
     if p.startswith("tchaditude/") or p.startswith("pole-tchaditude") or p.startswith("enertalents"): return "02 · Tchaditude"
     if p.startswith("enerconseils/") or p.startswith("pole-enerconseils"): return "02 · EnerConseils"
     if p.startswith("petrochimie/") or p.startswith("pole-petrochimie") or p.startswith("enerchimie"): return "02 · Pétrochimie / support métier"
+    if p.startswith("docs-sources/"): return "10 · Sources documentaires"
+    if p.startswith("journal-"): return "06 · Médias & connaissances"
+    if p.startswith("ar-"): return "09 · Informations / arabe"
+    if p.startswith("brochure"): return "03 · Entreprise"
+    if p.startswith("charte"): return "03 · Entreprise"
+    if p.startswith("ethique"): return "03 · Entreprise"
+    if p.startswith("glossaire-petrolier"): return "06 · Médias & connaissances"
+    if p.startswith("innovation"): return "02 · GreenTech & innovation"
+    if p.startswith("mentions-legales"): return "09 · Informations"
+    if p.startswith("plan-du-site"): return "09 · Informations"
+    if p.startswith("recherche"): return "09 · Informations"
+    if p.startswith("projets"): return "03 · Entreprise / projets"
     names={
       "societe":"03 · Entreprise","gouvernance":"03 · Entreprise","vision":"03 · Entreprise",
       "cibles-2030":"03 · Entreprise","engagements":"03 · Entreprise","communautes":"03 · Entreprise",
