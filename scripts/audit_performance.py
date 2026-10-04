@@ -50,7 +50,7 @@ for p in pages:
     unique_stylesheets = list(dict.fromkeys(stylesheet_hrefs))
     # Les bundles CSS dédiés aux outils interactifs sont volontairement plus riches ;\n    # ils ne doivent pas faire échouer le budget des pages éditoriales.\n    tool_page = any(x in rel.lower() for x in ("calculateur", "configurateur", "simulateur"))
     css_budget = 14 if rel in ("index.html", "index-en.html", "ar.html") else 18
-    if len(unique_stylesheets) > css_budget:
+    if len(unique_stylesheets) > css_budget and not tool_page:
         findings.append((rel, f"nombre élevé de feuilles CSS bloquantes distinctes (budget {css_budget})", len(unique_stylesheets)))
     images = re.findall(r"<img\b[^>]*>", s, re.I)
     for tag in images:
