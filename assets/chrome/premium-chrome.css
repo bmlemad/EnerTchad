@@ -508,3 +508,37 @@ html:not(.et-plight):not(.et-jlight) .et-target-note{color:#DCCB9A;border-color:
   .et-evidence-strip>div{border-right:0;border-bottom:1px solid var(--et-ico-line,rgba(20,32,46,.12))}
   .et-evidence-strip>div:last-child{border-bottom:0}
 }
+
+
+/* ===== EnerTchad Public Data Room — 2026-10-04 ===== */
+.et-data-room{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:12px;
+  margin-top:22px;
+}
+.et-dr-card{
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  min-height:190px;
+  padding:20px;
+  border:1px solid var(--et-ico-line,rgba(20,32,46,.12));
+  border-radius:18px;
+  background:rgba(255,255,255,.66);
+  text-decoration:none;
+  box-shadow:0 16px 40px -32px rgba(20,32,46,.34);
+}
+.et-dr-card:hover{transform:translateY(-2px);border-color:rgba(184,145,58,.38)}
+.et-dr-meta{display:flex;flex-wrap:wrap;gap:6px}
+.et-dr-meta span{display:inline-flex;border:1px solid rgba(128,128,128,.16);border-radius:999px;padding:5px 7px;font:700 .58rem/1 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.05em;text-transform:uppercase;color:#697485}
+.et-dr-card h3{margin:16px 0 7px;font-size:1rem;line-height:1.25}
+.et-dr-card p{margin:0;color:#657082;font-size:.79rem;line-height:1.55}
+.et-dr-card .et-dr-foot{margin-top:auto;padding-top:18px;display:flex;justify-content:space-between;gap:10px;color:#80631e;font:700 .62rem/1.2 ui-monospace,SFMono-Regular,Menlo,monospace;text-transform:uppercase}
+.et-dr-note{margin:16px 0 0;color:#667184;font-size:.76rem;line-height:1.55}
+html:not(.et-plight):not(.et-jlight) .et-dr-card{background:rgba(255,255,255,.025)}
+html:not(.et-plight):not(.et-jlight) .et-dr-card p,
+html:not(.et-plight):not(.et-jlight) .et-dr-note,
+html:not(.et-plight):not(.et-jlight) .et-dr-meta span{color:#AAB5C6}
+@media(max-width:980px){.et-data-room{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){.et-data-room{grid-template-columns:1fr}}
