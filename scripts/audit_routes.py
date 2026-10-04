@@ -72,4 +72,6 @@ out += ["","## Candidats sans lien entrant détectable","", "Un candidat orpheli
 out += [f"- `/{p}`" for p in orphans[:200]] or ["Aucun."]
 (ROOT/"reports").mkdir(exist_ok=True)
 (ROOT/"reports"/"routes-audit-2026.md").write_text("\n".join(out)+"\n",encoding="utf-8")
-print(f"Routes audit: {len(broken)} broken internal links; {len(orphans)} orphan candidates.")\nfor src, dst in broken[:200]:\n    print(f"BROKEN: /{src} -> {dst}")
+print(f"Routes audit: {len(broken)} broken internal links; {len(orphans)} orphan candidates.")
+for src, dst in broken[:200]:
+    print(f"BROKEN: /{src} -> {dst}")
