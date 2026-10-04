@@ -1,0 +1,13 @@
+/* fusion-toTop-fix */
+
+/* ———— ex-bloc: toTop-fix ———— */
+#toTop{pointer-events:none}#toTop.show{pointer-events:auto}
+/* ———— ex-bloc: hd-polish ———— */
+.diapo i,header.pghero,header.hero,img[src$=".webp"],img[src$=".jpg"],img[src$=".jpeg"]{filter:saturate(1.1) contrast(1.045) brightness(1.015)}
+/* ———— ex-bloc: psn-slot ———— */
+#oilticker{display:none!important}#main-content .pole-subnav{margin-top:79px}@media(min-width:1241px){#main-content .pole-subnav{margin-top:118px}}
+
+/* aa-noscript */
+.rv,.reveal,[class*="reveal"],.mln,.plc-card,.acth,.mleg,.intro{opacity:1!important;transform:none!important;visibility:visible!important;filter:none!important;clip-path:none!important;transition:none!important;animation:none!important}
+/* cue-tact */
+#scrollcue{transition:opacity .3s,visibility .3s}html.cue-off #scrollcue{opacity:0!important;visibility:hidden!important;pointer-events:none!important}
