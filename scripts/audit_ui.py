@@ -93,3 +93,5 @@ else:
 REPORT.parent.mkdir(exist_ok=True); REPORT.write_text('\n'.join(lines)+'\n',encoding='utf-8')
 print(f'Analysed {len(pages)} HTML pages; {len(issues)} findings.')
 for k,v in stats.most_common(): print(f'{k}: {v}')
+for rel,k,d in issues:
+    print(f'FINDING: {rel} | {k} | {d}')
