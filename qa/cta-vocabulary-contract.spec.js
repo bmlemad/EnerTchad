@@ -16,11 +16,11 @@ const cases = [
   ['/gouvernance', [['a[data-et-action="contact"][href="/contact"]', 'Nous contacter']]],
   ['/gouvernance-en', [['a[data-et-action="contact"][href="/contact-en"]', 'Contact us']]],
   ['/solutions', [
-    ['a[data-et-action="contact"][href="/contact"]', 'Nous contacter →'],
+    ['a[data-et-action="contact"][href="/contact"]', 'Nous contacter'],
     ['a[data-et-action="explore"][href="/clients"]', 'Explorer par profil'],
   ]],
   ['/solutions-en', [
-    ['a[data-et-action="contact"][href="/contact-en"]', 'Contact us →'],
+    ['a[data-et-action="contact"][href="/contact-en"]', 'Contact us'],
     ['a[data-et-action="explore"][href="/clients-en"]', 'Explore by profile'],
   ]],
 ];
@@ -62,5 +62,19 @@ test('CTA density — investor evidence entry stays compact and exposes two dist
     const entry = page.locator('.et-quick-entry.et-quick-dual');
     await expect(entry, path + ' compact investor evidence entry').toHaveCount(1);
     await expect(entry.locator('.et-quick-actions a')).toHaveCount(2);
+  }
+});
+
+
+test('CTA vocabulary — primary labels remain concise', async ({ page }) => {
+  for (const path of ['/societe', '/societe-en', '/gouvernance', '/gouvernance-en', '/solutions', '/solutions-en']) {
+    await page.goto(new URL(path, base).href, { waitUntil: 'domcontentloaded', timeout: 45000 });
+    const labels = await page.locator('a.pp-btn, a.pp-link, a.btn, a.cta').evaluateAll(nodes =>
+      nodes.map(a => (a.innerText || '').replace(/\s+/g, ' ').trim()).filter(Boolean)
+    );
+    for (const label of labels) {
+      expect(label.length, path + ' CTA length: ' + label).toBeLessThanOrEqual(48);
+      expect(label, path + ' decorative arrow suffix: ' + label).not.toMatch(/[→›]\s*$/);
+    }
   }
 });
