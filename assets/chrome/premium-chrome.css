@@ -561,3 +561,18 @@ html:not(.et-plight):not(.et-jlight) .et-dr-filters button{background:rgba(255,2
 html:not(.et-plight):not(.et-jlight) .et-dr-filters button[aria-pressed="true"]{background:#E8C36A;color:#111D33;border-color:#E8C36A}
 @media(max-width:900px){.et-data-room-full{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:560px){.et-data-room-full{grid-template-columns:1fr}}
+
+
+/* ===== EnerTchad Claim Proof Layer — 2026-10-04 ===== */
+.et-proofline{
+  display:flex;flex-wrap:wrap;align-items:center;gap:8px 10px;
+  margin-top:12px;padding-top:11px;border-top:1px dashed rgba(128,128,128,.18);
+  font-size:.71rem;line-height:1.45;color:#687487;
+}
+.et-proofline::before{content:"Preuve";font:800 .58rem/1 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:#8A681F}
+html[lang="en"] .et-proofline::before{content:"Evidence"}
+.et-proofline a{color:inherit;text-decoration:none;border-bottom:1px solid rgba(138,104,31,.28)}
+.et-proofline a:hover{color:#8A681F;border-bottom-color:currentColor}
+.et-proofline .et-proof-status{display:inline-flex;align-items:center;border:1px solid rgba(128,128,128,.16);border-radius:999px;padding:4px 7px;font:750 .58rem/1 ui-monospace,SFMono-Regular,Menlo,monospace;text-transform:uppercase;letter-spacing:.04em}
+html:not(.et-plight):not(.et-jlight) .et-proofline{color:#AAB5C6}
+html:not(.et-plight):not(.et-jlight) .et-proofline::before{color:#E6C978}
