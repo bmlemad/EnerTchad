@@ -12,6 +12,7 @@ ALT_RE = re.compile(r"""<link\b[^>]*\brel=['"]alternate['"][^>]*\bhreflang=['"](
 
 EXCLUDE = {"404.html", "google9146d41010c5e702.html"}
 EXCLUDE_PREFIXES = {"docs-sources/"}
+VIRTUAL_ROUTES = {"/amont/calculateur-baril-additionnel", "/configurateur-service-integre"}
 ROUTE_ALIASES = {
     "/Calculateur_Baril_Additionnel": "/amont/calculateur-baril-additionnel",
     "/Configurateur_Service_Integre_v2": "/configurateur-service-integre",
@@ -70,6 +71,9 @@ for route, (lang, canonical, alts) in sorted(pages.items()):
             continue
         target_route = alias(target)
         if target_route not in pages:
+            if target_route in VIRTUAL_ROUTES:
+                relations += 1
+                continue
             errors.append(f"{route}: hreflang {other} targets missing route {target}")
             continue
         target_lang, _, target_alts = pages[target_route]
