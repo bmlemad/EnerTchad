@@ -542,3 +542,22 @@ html:not(.et-plight):not(.et-jlight) .et-dr-note,
 html:not(.et-plight):not(.et-jlight) .et-dr-meta span{color:#AAB5C6}
 @media(max-width:980px){.et-data-room{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:560px){.et-data-room{grid-template-columns:1fr}}
+
+
+/* ===== EnerTchad Document Explorer — 2026-10-04 ===== */
+.et-dr-explorer{margin-top:32px;padding-top:28px;border-top:1px solid var(--et-ico-line,rgba(20,32,46,.12))}
+.et-dr-explorer-h{display:flex;align-items:end;justify-content:space-between;gap:18px;flex-wrap:wrap}
+.et-dr-explorer-h h3{margin:0;font-size:1.2rem}
+.et-dr-explorer-h p{margin:4px 0 0;color:#667184;font-size:.8rem;line-height:1.5}
+.et-dr-filters{display:flex;flex-wrap:wrap;gap:7px;margin:18px 0 14px}
+.et-dr-filters button{appearance:none;border:1px solid var(--et-ico-line,rgba(20,32,46,.14));background:rgba(255,255,255,.65);color:inherit;border-radius:999px;padding:8px 11px;font:700 .68rem/1 ui-monospace,SFMono-Regular,Menlo,monospace;cursor:pointer}
+.et-dr-filters button[aria-pressed="true"]{background:#14202E;color:#fff;border-color:#14202E}
+.et-dr-filters button:focus-visible{outline:2px solid var(--pn-gold,#B8913A);outline-offset:2px}
+.et-data-room-full{grid-template-columns:repeat(3,minmax(0,1fr))}
+.et-data-room-full .et-dr-card{min-height:165px}
+.et-dr-empty{grid-column:1/-1;color:#667184}
+html:not(.et-plight):not(.et-jlight) .et-dr-explorer-h p{color:#AAB5C6}
+html:not(.et-plight):not(.et-jlight) .et-dr-filters button{background:rgba(255,255,255,.025)}
+html:not(.et-plight):not(.et-jlight) .et-dr-filters button[aria-pressed="true"]{background:#E8C36A;color:#111D33;border-color:#E8C36A}
+@media(max-width:900px){.et-data-room-full{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){.et-data-room-full{grid-template-columns:1fr}}
