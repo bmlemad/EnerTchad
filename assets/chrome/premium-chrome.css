@@ -426,3 +426,85 @@ html:not(.et-plight):not(.et-jlight) .et-proj-legend span,html:not(.et-plight):n
   h1,h2,h3,p,li,span,b,strong{color:#111!important;-webkit-text-fill-color:#111!important}
   main.ppl>section{content-visibility:visible!important;contain:none!important}
 }
+
+
+/* ===== EnerTchad Evidence, CTA & Product Demo — 2026-10-04 ===== */
+/* Evidence ribbons for institutional pages */
+.et-evidence-strip{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  border:1px solid var(--et-ico-line,rgba(20,32,46,.12));
+  border-radius:18px;
+  overflow:hidden;
+  margin:18px 0 0;
+  background:rgba(255,255,255,.52);
+}
+.et-evidence-strip>div{
+  min-height:94px;
+  padding:18px;
+  border-right:1px solid var(--et-ico-line,rgba(20,32,46,.12));
+}
+.et-evidence-strip>div:last-child{border-right:0}
+.et-evidence-strip b{display:block;font-size:.92rem;letter-spacing:-.01em}
+.et-evidence-strip span{display:block;margin-top:6px;color:#667184;font-size:.76rem;line-height:1.45}
+html:not(.et-plight):not(.et-jlight) .et-evidence-strip{background:rgba(255,255,255,.025)}
+html:not(.et-plight):not(.et-jlight) .et-evidence-strip span{color:#AEB9C9}
+
+/* Canonical action language: primary, evidence, contact */
+.pp-actions .pp-btn,.pp-actions .pp-link,.pp-prose .pp-link,.et-quick-entry a{
+  transition:transform .2s ease,border-color .2s ease,background .2s ease,color .2s ease,box-shadow .2s ease;
+}
+.pp-actions .pp-btn:hover,.pp-actions .pp-link:hover,.pp-prose .pp-link:hover,.et-quick-entry a:hover{
+  transform:translateY(-1px);
+}
+.pp-actions .pp-btn:focus-visible,.pp-actions .pp-link:focus-visible,.pp-prose .pp-link:focus-visible{
+  outline:2px solid var(--pn-gold,#B8913A)!important;
+  outline-offset:3px!important;
+}
+
+/* Product proof panel — designed for modular infrastructure / station pages */
+.et-product-proof{
+  margin-top:24px;
+  display:grid;
+  grid-template-columns:1.15fr .85fr;
+  border:1px solid color-mix(in srgb,var(--et-ico-gold,#C9A24A) 24%,rgba(128,128,128,.16));
+  border-radius:22px;
+  overflow:hidden;
+  background:linear-gradient(145deg,rgba(255,255,255,.78),rgba(247,243,234,.58));
+  box-shadow:0 24px 60px -44px rgba(20,32,46,.4);
+}
+.et-product-proof>div{padding:26px}
+.et-product-proof>div+div{border-left:1px solid rgba(128,128,128,.15)}
+.et-product-proof .et-proof-k{font:700 .64rem/1 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.12em;text-transform:uppercase;color:#946d1f}
+.et-product-proof h3{margin:10px 0 8px;font-size:1.35rem;letter-spacing:-.025em}
+.et-product-proof p{margin:0;color:#5d6878;line-height:1.65}
+.et-product-specs{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:rgba(128,128,128,.12);border:1px solid rgba(128,128,128,.12);border-radius:14px;overflow:hidden}
+.et-product-specs div{background:rgba(255,255,255,.76);padding:14px}
+.et-product-specs b{display:block;font-size:.9rem}
+.et-product-specs span{display:block;margin-top:4px;color:#667184;font-size:.72rem}
+html:not(.et-plight):not(.et-jlight) .et-product-proof{background:linear-gradient(145deg,rgba(255,255,255,.055),rgba(255,255,255,.018))}
+html:not(.et-plight):not(.et-jlight) .et-product-proof p,html:not(.et-plight):not(.et-jlight) .et-product-specs span{color:#AEB9C9}
+html:not(.et-plight):not(.et-jlight) .et-product-specs div{background:rgba(8,17,29,.72)}
+html:not(.et-plight):not(.et-jlight) .et-product-proof>div+div{border-left-color:rgba(255,255,255,.11)}
+
+/* Explicit visual disclaimer for aspirational diagrams and products */
+.et-target-note{
+  display:flex;align-items:flex-start;gap:10px;margin:14px 0 0;padding:10px 12px;
+  border-radius:12px;border:1px solid rgba(184,145,58,.24);background:rgba(184,145,58,.055);
+  color:#6f5824;font-size:.76rem;line-height:1.5;
+}
+.et-target-note::before{content:"◇";font-size:1rem;line-height:1;color:#B8913A;margin-top:2px}
+html:not(.et-plight):not(.et-jlight) .et-target-note{color:#DCCB9A;border-color:rgba(232,195,106,.2);background:rgba(232,195,106,.055)}
+
+@media(max-width:820px){
+  .et-evidence-strip{grid-template-columns:1fr 1fr}
+  .et-evidence-strip>div:nth-child(2){border-right:0}
+  .et-evidence-strip>div:nth-child(-n+2){border-bottom:1px solid var(--et-ico-line,rgba(20,32,46,.12))}
+  .et-product-proof{grid-template-columns:1fr}
+  .et-product-proof>div+div{border-left:0;border-top:1px solid rgba(128,128,128,.15)}
+}
+@media(max-width:520px){
+  .et-evidence-strip{grid-template-columns:1fr}
+  .et-evidence-strip>div{border-right:0;border-bottom:1px solid var(--et-ico-line,rgba(20,32,46,.12))}
+  .et-evidence-strip>div:last-child{border-bottom:0}
+}
