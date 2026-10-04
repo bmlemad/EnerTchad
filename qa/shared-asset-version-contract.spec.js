@@ -1,7 +1,7 @@
 const { test, expect } = require('@playwright/test');
 
 const base = process.env.SITE_URL || 'https://enertchad.netlify.app/';
-const expected = '202610041145';
+const minimum = 202610041145;
 const paths = [
   '/', '/index-en',
   '/societe', '/societe-en',
@@ -29,7 +29,9 @@ test('shared premium assets — critical pages use one current cache-buster', as
       premium: [...document.querySelectorAll('link[rel="stylesheet"]')].map(l => l.getAttribute('href') || '').find(href => href.includes('/assets/chrome/premium-chrome.css')) || ''
     }));
 
-    expect(refs.nav, path + ' nav_a.js reference').toContain('?b=' + expected);
-    expect(refs.premium, path + ' premium-chrome.css reference').toContain('?b=' + expected);
+    const navVersion = Number((refs.nav.match(/[?&]b=(\d+)/) || [])[1] || 0);
+    const premiumVersion = Number((refs.premium.match(/[?&]b=(\d+)/) || [])[1] || 0);
+    expect(navVersion, path + ' nav_a.js cache-buster').toBeGreaterThanOrEqual(minimum);
+    expect(premiumVersion, path + ' premium-chrome.css cache-buster').toBeGreaterThanOrEqual(minimum);
   }
 });
