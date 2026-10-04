@@ -200,3 +200,17 @@ try{(function(){
  new MutationObserver(sync).observe(b,{childList:true});
  sync();
 })();}catch(e){}
+
+
+/* Strategic shortcut: 90-second institutional overview. */
+try{(function(){
+  var u=document.querySelector('.nx-util-in');if(!u)return;
+  if(u.querySelector('[data-et-short="essentiel"]'))return;
+  var lang=(document.documentElement.getAttribute('lang')||'fr').slice(0,2);
+  var a=document.createElement('a');
+  a.setAttribute('data-et-short','essentiel');
+  if(lang==='en'){a.href='/essentiel-en';a.textContent='90 seconds';a.setAttribute('aria-label','EnerTchad in 90 seconds');}
+  else if(lang==='ar'){a.href='/ar';a.textContent='لمحة';a.setAttribute('aria-label','لمحة عن EnerTchad');}
+  else{a.href='/essentiel';a.textContent='90 secondes';a.setAttribute('aria-label','EnerTchad en 90 secondes');}
+  var first=u.querySelector('a');u.insertBefore(a,first||null);
+})()}catch(e){}
