@@ -6,9 +6,9 @@ ROOT = Path(__file__).resolve().parents[1]
 REPORT = ROOT / "reports" / "i18n-pairs-audit-2026.md"
 BASE = "https://enertchad.netlify.app"
 
-LANG_RE = re.compile(r"<html\b[^>]*\blang=['"]([^'"]+)['"]", re.I)
-CAN_RE = re.compile(r"<link\b[^>]*\brel=['"]canonical['"][^>]*\bhref=['"]([^'"]+)['"]", re.I)
-ALT_RE = re.compile(r"<link\b[^>]*\brel=['"]alternate['"][^>]*\bhreflang=['"]([^'"]+)['"][^>]*\bhref=['"]([^'"]+)['"]", re.I)
+LANG_RE = re.compile(r"""<html\b[^>]*\blang=['"]([^'"]+)['"]""", re.I)
+CAN_RE = re.compile(r"""<link\b[^>]*\brel=['"]canonical['"][^>]*\bhref=['"]([^'"]+)['"]""", re.I)
+ALT_RE = re.compile(r"""<link\b[^>]*\brel=['"]alternate['"][^>]*\bhreflang=['"]([^'"]+)['"][^>]*\bhref=['"]([^'"]+)['"]""", re.I)
 
 def norm(url):
     url = html.unescape(url.strip())
@@ -59,10 +59,6 @@ for route, (lang, canonical, alts) in sorted(pages.items()):
         if target_alts.get(lang) != canonical:
             errors.append(f"{route}: reciprocal {other}->{lang} missing/wrong on {target}: {target_alts.get(lang)!r} != {canonical!r}")
         pairs += 1
-
-for route, (lang, canonical, alts) in sorted(pages.items()):
-    if lang == "fr" and "en" in alts and "en" in pages:
-        pairs += 0
 
 REPORT.parent.mkdir(exist_ok=True)
 REPORT.write_text(
