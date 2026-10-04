@@ -576,3 +576,15 @@ html[lang="en"] .et-proofline::before{content:"Evidence"}
 .et-proofline .et-proof-status{display:inline-flex;align-items:center;border:1px solid rgba(128,128,128,.16);border-radius:999px;padding:4px 7px;font:750 .58rem/1 ui-monospace,SFMono-Regular,Menlo,monospace;text-transform:uppercase;letter-spacing:.04em}
 html:not(.et-plight):not(.et-jlight) .et-proofline{color:#AAB5C6}
 html:not(.et-plight):not(.et-jlight) .et-proofline::before{color:#E6C978}
+
+
+/* ===== EnerTchad Compact dual quick entry — 2026-10-04 ===== */
+.et-quick-entry.et-quick-dual{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:12px 18px}
+.et-quick-dual .et-quick-copy{min-width:0}
+.et-quick-dual .et-quick-copy span{display:block;margin-top:3px}
+.et-quick-dual .et-quick-actions{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:8px}
+.et-quick-dual .et-quick-actions a{margin:0}
+@media(max-width:760px){
+  .et-quick-entry.et-quick-dual{grid-template-columns:1fr}
+  .et-quick-dual .et-quick-actions{justify-content:flex-start}
+}
