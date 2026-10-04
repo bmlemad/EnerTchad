@@ -11,6 +11,11 @@ CAN_RE = re.compile(r"""<link\b[^>]*\brel=['"]canonical['"][^>]*\bhref=['"]([^'"
 ALT_RE = re.compile(r"""<link\b[^>]*\brel=['"]alternate['"][^>]*\bhreflang=['"]([^'"]+)['"][^>]*\bhref=['"]([^'"]+)['"]""", re.I)
 
 EXCLUDE = {"404.html", "google9146d41010c5e702.html"}
+EXCLUDE_PREFIXES = {"docs-sources/"}
+ROUTE_ALIASES = {
+    "/Calculateur_Baril_Additionnel": "/amont/calculateur-baril-additionnel",
+    "/Configurateur_Service_Integre_v2": "/configurateur-service-integre",
+}
 
 def norm(url):
     url = html.unescape(url.strip())
