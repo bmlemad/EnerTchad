@@ -137,3 +137,250 @@ html:not(#p0):not(#p1):not(#p2):not(#p3):not(#p4):not(#p5):not(#p6):not(#p7):not
 .tool-feature-card:hover,.tool-card:hover{border-color:var(--gold-l)}
 .tool-card-green:hover{border-color:#34D399}.tool-card-blue:hover{border-color:var(--blue-l,#5AA7F0)}
 @media(max-width:640px){.atlas-cover-card,.atlas-gold-panel,.atlas-blue-panel{padding:18px;gap:12px}.tool-feature-card{padding:24px 20px}.tool-card{padding:22px 20px}}
+
+
+/* ===== EnerTchad Ultra Premium Iconography & Schematics — 2026-10-04 ===== */
+:root{
+  --et-ico-size:44px;
+  --et-ico-radius:14px;
+  --et-ico-stroke:1.65;
+  --et-ico-gold:#C9A24A;
+  --et-ico-blue:#1769AA;
+  --et-ico-line:rgba(20,32,46,.12);
+  --et-ico-ink:#172337;
+  --et-ico-well:linear-gradient(145deg,rgba(255,255,255,.96),rgba(246,242,232,.78));
+  --et-ico-shadow:0 1px 0 rgba(255,255,255,.92) inset,0 12px 30px -22px rgba(19,29,43,.44);
+}
+html:not(.et-plight):not(.et-jlight){
+  --et-ico-line:rgba(232,195,106,.18);
+  --et-ico-ink:#F4E7C4;
+  --et-ico-well:linear-gradient(145deg,rgba(255,255,255,.075),rgba(255,255,255,.018));
+  --et-ico-shadow:0 1px 0 rgba(255,255,255,.08) inset,0 18px 34px -24px rgba(0,0,0,.72);
+}
+
+/* optical normalization: compact UI glyphs */
+:is(#nav,.pn,.pft,.prof,.divc,.ngs-p,.pp-docs,.pp-box,.svc-head,.hxi-card,.mfo-lever) svg{
+  shape-rendering:geometricPrecision;
+}
+:is(#nav,.pn,.prof,.divc,.pp-docs,.pp-box,.svc-head,.hxi-card,.mfo-lever) svg[stroke="currentColor"]{
+  stroke-width:var(--et-ico-stroke)!important;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+:is(.prof,.divc,.ngs-p,.pp-docs,.pp-box,.svc-head,.hxi-card,.mfo-lever) svg *{
+  vector-effect:non-scaling-stroke;
+}
+
+/* signature icon wells */
+.prof>.ic,
+.divc>.ic,
+.ngs-p>.ic,
+.svc-head>.ic,
+.hxi-card>.ic,
+.mfo-lever>.ic{
+  position:relative!important;
+  isolation:isolate;
+  width:var(--et-ico-size)!important;
+  height:var(--et-ico-size)!important;
+  min-width:var(--et-ico-size);
+  display:grid!important;
+  place-items:center!important;
+  border-radius:var(--et-ico-radius)!important;
+  color:var(--ac,var(--dc,var(--c,var(--et-ico-gold))))!important;
+  background:var(--et-ico-well)!important;
+  border:1px solid color-mix(in srgb,currentColor 24%,var(--et-ico-line))!important;
+  box-shadow:var(--et-ico-shadow),0 0 0 1px rgba(255,255,255,.02)!important;
+  overflow:hidden;
+  transform:translateZ(0);
+  transition:transform .3s cubic-bezier(.2,.7,.2,1),border-color .3s,box-shadow .3s,background .3s;
+}
+.prof>.ic::before,
+.divc>.ic::before,
+.ngs-p>.ic::before,
+.svc-head>.ic::before,
+.hxi-card>.ic::before,
+.mfo-lever>.ic::before{
+  content:"";
+  position:absolute;
+  inset:1px 1px auto;
+  height:42%;
+  border-radius:calc(var(--et-ico-radius) - 2px) calc(var(--et-ico-radius) - 2px) 50% 50%;
+  background:linear-gradient(180deg,rgba(255,255,255,.24),transparent);
+  opacity:.72;
+  pointer-events:none;
+  z-index:-1;
+}
+.prof>.ic svg,
+.divc>.ic svg,
+.svc-head>.ic svg,
+.hxi-card>.ic svg,
+.mfo-lever>.ic svg{
+  width:22px!important;
+  height:22px!important;
+  filter:drop-shadow(0 4px 8px color-mix(in srgb,currentColor 18%,transparent));
+}
+:is(.prof,.divc,.ngs-p,.svc-head,.hxi-card,.mfo-lever):hover>.ic{
+  transform:translateY(-2px) scale(1.035);
+  border-color:color-mix(in srgb,currentColor 44%,var(--et-ico-line))!important;
+  box-shadow:var(--et-ico-shadow),0 10px 28px -18px color-mix(in srgb,currentColor 48%,transparent)!important;
+}
+
+/* premium technical symbols */
+.ngs-p>.ic span{
+  width:9px!important;
+  height:9px!important;
+  border-radius:2px!important;
+  background:var(--c,currentColor)!important;
+  box-shadow:0 0 0 5px color-mix(in srgb,var(--c,currentColor) 10%,transparent),0 0 18px color-mix(in srgb,var(--c,currentColor) 28%,transparent);
+}
+.offer li::before{
+  width:7px!important;
+  height:7px!important;
+  margin-top:.58em!important;
+  border-radius:1.5px!important;
+  background:transparent!important;
+  border:1.5px solid var(--ac,var(--et-ico-gold))!important;
+  box-shadow:0 0 0 3px color-mix(in srgb,var(--ac,var(--et-ico-gold)) 7%,transparent);
+}
+.sk::before{
+  width:30px!important;
+  height:1px!important;
+  background:linear-gradient(90deg,transparent,currentColor)!important;
+  opacity:.8!important;
+}
+.stp .n{
+  display:inline-grid!important;
+  place-items:center;
+  min-width:34px;
+  height:28px;
+  padding:0 8px;
+  margin-bottom:14px!important;
+  border:1px solid color-mix(in srgb,currentColor 30%,transparent);
+  border-radius:999px;
+  font-family:var(--fm,ui-monospace,monospace)!important;
+  font-size:.7rem!important;
+  letter-spacing:.08em;
+  box-shadow:0 8px 20px -16px currentColor;
+}
+
+/* document / utility glyphs */
+.pp-docs>a>span:first-child{
+  width:42px!important;
+  height:42px!important;
+  min-width:42px;
+  display:grid!important;
+  place-items:center!important;
+  border-radius:13px!important;
+  color:var(--et-ico-gold)!important;
+  background:var(--et-ico-well)!important;
+  border:1px solid var(--et-ico-line)!important;
+  box-shadow:var(--et-ico-shadow)!important;
+}
+.pp-docs>a>span:first-child svg{width:21px!important;height:21px!important}
+.pp-docs>a:hover>span:first-child{
+  border-color:color-mix(in srgb,var(--et-ico-gold) 42%,var(--et-ico-line))!important;
+  transform:translateY(-1px);
+}
+.pp-box>span:has(svg){
+  display:inline-grid;
+  place-items:center;
+  width:34px;
+  height:34px;
+  border-radius:11px;
+  background:color-mix(in srgb,var(--et-ico-gold) 8%,transparent);
+  border:1px solid color-mix(in srgb,var(--et-ico-gold) 22%,transparent);
+  color:var(--et-ico-gold);
+}
+
+/* navigation symbols: quieter, sharper, more deliberate */
+#nav.pn .pn-item>.nav-trigger svg{
+  width:10px!important;
+  height:10px!important;
+  opacity:.68!important;
+  transition:transform .22s ease,opacity .22s ease;
+}
+#nav.pn .pn-item>.nav-trigger[aria-expanded="true"] svg{
+  transform:rotate(180deg);
+  opacity:1!important;
+}
+#nav.pn .pn-feat .arr{
+  display:inline-grid!important;
+  place-items:center;
+  width:28px;
+  height:28px;
+  border-radius:999px;
+  border:1px solid color-mix(in srgb,var(--pn-gold) 28%,transparent);
+  font-size:.92rem!important;
+  line-height:1!important;
+  transition:transform .22s ease,border-color .22s ease,background .22s ease;
+}
+#nav.pn .pn-feat:hover .arr{
+  transform:translateX(3px);
+  border-color:color-mix(in srgb,var(--pn-gold) 54%,transparent);
+  background:color-mix(in srgb,var(--pn-gold) 8%,transparent);
+}
+
+/* schematics / maps: one editorial technical frame */
+:is(.ngs-stage,.map-wrap,.cmap-frame,.atc-map,.cdm-frame,.avnet-panel){
+  position:relative;
+  isolation:isolate;
+  border-radius:22px!important;
+  border:1px solid color-mix(in srgb,var(--et-ico-gold) 20%,var(--et-ico-line))!important;
+  box-shadow:0 1px 0 rgba(255,255,255,.08) inset,0 28px 70px -46px rgba(3,12,22,.68)!important;
+  overflow:hidden!important;
+}
+:is(.ngs-stage,.map-wrap,.cmap-frame,.atc-map,.cdm-frame,.avnet-panel)::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  border-radius:inherit;
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.045),transparent 16%),
+    linear-gradient(90deg,color-mix(in srgb,var(--et-ico-gold) 10%,transparent) 1px,transparent 1px),
+    linear-gradient(color-mix(in srgb,var(--et-ico-blue) 7%,transparent) 1px,transparent 1px);
+  background-size:auto,44px 44px,44px 44px;
+  -webkit-mask-image:linear-gradient(180deg,rgba(0,0,0,.68),transparent 78%);
+  mask-image:linear-gradient(180deg,rgba(0,0,0,.68),transparent 78%);
+  opacity:.4;
+  z-index:5;
+}
+:is(.ngs-stage,.map-wrap,.cmap-frame,.atc-map,.cdm-frame,.avnet-panel) svg{
+  shape-rendering:geometricPrecision;
+}
+:is(.ngs-stage,.map-wrap,.cmap-frame,.atc-map,.cdm-frame,.avnet-panel) svg :is(path,line,polyline,circle,rect){
+  vector-effect:non-scaling-stroke;
+}
+:is(.ngs-stage,.map-wrap,.cmap-frame,.atc-map,.cdm-frame,.avnet-panel) figcaption{
+  letter-spacing:.08em!important;
+  text-transform:uppercase;
+  font-size:.64rem!important;
+}
+
+/* social marks */
+footer.pft .foot-social a{
+  width:36px!important;
+  height:36px!important;
+  display:grid!important;
+  place-items:center!important;
+  border-radius:999px!important;
+  border:1px solid var(--pf-line)!important;
+  transition:transform .22s ease,border-color .22s ease,background .22s ease!important;
+}
+footer.pft .foot-social a:hover{
+  transform:translateY(-2px);
+  border-color:color-mix(in srgb,var(--pf-gold) 42%,var(--pf-line))!important;
+  background:color-mix(in srgb,var(--pf-gold) 7%,transparent)!important;
+}
+footer.pft .foot-social a svg{width:15px!important;height:15px!important}
+
+/* restrained motion and low-power safety */
+@media(prefers-reduced-motion:reduce){
+  .prof>.ic,.divc>.ic,.ngs-p>.ic,.svc-head>.ic,.hxi-card>.ic,.mfo-lever>.ic,
+  #nav.pn .pn-item>.nav-trigger svg,#nav.pn .pn-feat .arr,footer.pft .foot-social a{transition:none!important;transform:none!important}
+}
+@media(max-width:640px){
+  :root{--et-ico-size:40px;--et-ico-radius:13px}
+  .prof>.ic svg,.divc>.ic svg,.svc-head>.ic svg,.hxi-card>.ic svg,.mfo-lever>.ic svg{width:20px!important;height:20px!important}
+  :is(.ngs-stage,.map-wrap,.cmap-frame,.atc-map,.cdm-frame,.avnet-panel)::after{background-size:auto,36px 36px,36px 36px}
+}
