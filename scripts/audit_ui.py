@@ -38,8 +38,12 @@ for p in pages:
     if not (technical or print_page) and not re.search(r'href\s*=\s*(?:["\']#(?:main-content|root)["\']|#(?:main-content|root)(?=\s|>))',s,re.I): flag('SKIP','missing skip link')
     if not (technical or print_page) and not re.search(r'id\s*=\s*["\'](?:main-content|root)["\']',s,re.I): flag('MAIN','missing main target id')
     if not (technical or print_page) and 'modern-inner-2026.css' not in s and 'nav_a.css' not in s and 'premium-chrome.css' not in s and not rel.startswith('ar-') and rel not in ('index.html','index-en.html'): flag('INNER_UI','missing shared inner UI layer')
-    if not technical and re.search(r'\bstyle\s*=\s*["\'][^"\']{240,}["\']',s,re.I): flag('INLINE_STYLE','very large inline style')
-    if len(re.findall(r'<script\b',s,re.I))>30: flag('INLINE_JS','high script tag count')
+    long_inline_styles = re.findall(r'\\bstyle\\s*=\\s*["\\']([^"\\']{240,})["\\']', s, re.I)
+    if not technical and long_inline_styles:
+        flag('INLINE_STYLE', f'very large inline style ({len(long_inline_styles)} found)')
+    inline_scripts = [m.group(0) for m in re.finditer(r'<script\\b([^>]*)>', s, re.I|re.S) if not re.search(r'\\bsrc\\s*=', m.group(1), re.I)]
+    if len(inline_scripts) > 15:
+        flag('INLINE_JS', f'{len(inline_scripts)} inline script tags')
     ids=re.findall(r'\bid\s*=\s*["\']([^"\']+)["\']',s,re.I)
     dup=[k for k,v in Counter(ids).items() if v>1]
     if dup: flag('DUP_ID',', '.join(dup[:8]))
