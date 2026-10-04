@@ -19,6 +19,8 @@ jobs:
         run: python scripts/audit_redirects.py
       - name: Auditer les routes internes et pages orphelines
         run: python scripts/audit_routes.py
+      - name: Auditer les paires linguistiques et hreflang réciproques
+        run: python scripts/audit_i18n_pairs.py
       - name: Générer la cartographie d’architecture
         run: python scripts/audit_architecture.py
       - name: Auditer UI, accessibilité et SEO technique
