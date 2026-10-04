@@ -6,9 +6,9 @@ ROOT = Path(__file__).resolve().parents[1]
 REPORT = ROOT / "reports" / "i18n-pairs-audit-2026.md"
 BASE = "https://enertchad.netlify.app"
 
-LANG_RE = re.compile(r"<html\\b[^>]*\\blang=['"]([^'"]+)['"]", re.I)
-CAN_RE = re.compile(r"<link\\b[^>]*\\brel=['"]canonical['"][^>]*\\bhref=['"]([^'"]+)['"]", re.I)
-ALT_RE = re.compile(r"<link\\b[^>]*\\brel=['"]alternate['"][^>]*\\bhreflang=['"]([^'"]+)['"][^>]*\\bhref=['"]([^'"]+)['"]", re.I)
+LANG_RE = re.compile(r"<html\b[^>]*\blang=['"]([^'"]+)['"]", re.I)
+CAN_RE = re.compile(r"<link\b[^>]*\brel=['"]canonical['"][^>]*\bhref=['"]([^'"]+)['"]", re.I)
+ALT_RE = re.compile(r"<link\b[^>]*\brel=['"]alternate['"][^>]*\bhreflang=['"]([^'"]+)['"][^>]*\bhref=['"]([^'"]+)['"]", re.I)
 
 def norm(url):
     url = html.unescape(url.strip())
@@ -66,16 +66,16 @@ for route, (lang, canonical, alts) in sorted(pages.items()):
 
 REPORT.parent.mkdir(exist_ok=True)
 REPORT.write_text(
-    "# Audit des paires linguistiques — 2026\\n\\n"
-    f"- Pages HTML inspectées : **{len(pages)}**\\n"
-    f"- Relations hreflang vérifiées : **{pairs}**\\n"
-    f"- Anomalies : **{len(errors)}**\\n\\n"
-    + ("## Résultat\\n\\n✅ Toutes les relations déclarées sont cohérentes et réciproques.\\n"
+    "# Audit des paires linguistiques — 2026\n\n"
+    f"- Pages HTML inspectées : **{len(pages)}**\n"
+    f"- Relations hreflang vérifiées : **{pairs}**\n"
+    f"- Anomalies : **{len(errors)}**\n\n"
+    + ("## Résultat\n\n✅ Toutes les relations déclarées sont cohérentes et réciproques.\n"
        if not errors else
-       "## Anomalies\\n\\n" + "\\n".join(f"- {e}" for e in errors) + "\\n"),
+       "## Anomalies\n\n" + "\n".join(f"- {e}" for e in errors) + "\n"),
     encoding="utf-8",
 )
 
 if errors:
-    raise SystemExit("\\n".join(errors))
+    raise SystemExit("\n".join(errors))
 print(f"i18n pair audit OK: {len(pages)} pages, {pairs} relations")
