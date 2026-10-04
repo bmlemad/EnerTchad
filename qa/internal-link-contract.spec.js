@@ -17,6 +17,8 @@ const paths = [
   '/brochure', '/brochure-en',
   '/carrieres', '/carrieres-en',
   '/communiques', '/communiques-en',
+  '/essentiel', '/essentiel-en',
+  '/investor-center', '/investor-center-en',
 ];
 
 test('navigation — representative pages contain no empty or javascript internal links', async ({ browser }) => {
