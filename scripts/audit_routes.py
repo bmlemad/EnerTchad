@@ -2,11 +2,23 @@
 """Audit des routes internes : liens cassés et pages HTML sans entrée détectable."""
 from pathlib import Path
 from collections import defaultdict
+import json
 from urllib.parse import urlsplit
 import posixpath
 import re
 
 ROOT=Path(__file__).resolve().parents[1]
+CONFIG=ROOT/"vercel.json"
+CONFIG_ROUTES=set()
+if CONFIG.exists():
+    try:
+        cfg=json.loads(CONFIG.read_text(encoding="utf-8"))
+        for rule in cfg.get("redirects", []) + cfg.get("rewrites", []):
+            src=rule.get("source")
+            if src and ":path*" not in src and "(" not in src and "*" not in src:
+                CONFIG_ROUTES.add(src.rstrip("/") or "/")
+    except (OSError, ValueError):
+        pass
 PAGES=sorted(p for p in ROOT.rglob("*.html") if ".git" not in p.parts and "reports" not in p.parts)
 ROUTED={"/plan-du-site","/accessibilite","/amont/calculateur-baril-additionnel","/configurateur-service-integre"}
 SKIP={"404.html","google9146d41010c5e702.html"}
@@ -24,7 +36,7 @@ def normalize(href, source):
     return path.rstrip("/") or "/"
 
 def resolve(path):
-    if path in ROUTED: return True
+    if path in ROUTED or path in CONFIG_ROUTES: return True
     if path=="/": return (ROOT/"index.html").exists()
     return (ROOT/(path.lstrip("/")+".html")).exists() or (ROOT/(path.lstrip("/")+"/index.html")).exists()
 
