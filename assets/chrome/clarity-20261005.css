@@ -1,0 +1,12 @@
+/* Clear navigation and consistent project facts, 2026-10-05. */
+.et-route,.et-chain{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;padding:0;list-style:none}
+.et-chain{grid-template-columns:repeat(4,minmax(0,1fr));margin:24px 0}
+.et-route a,.et-chain a{display:flex;flex-direction:column;gap:8px;min-height:72px;padding:20px;border:1px solid rgba(19,32,51,.18);border-radius:16px;text-decoration:none;background:rgba(255,255,255,.88);color:#132033;line-height:1.5;overflow-wrap:anywhere}
+.et-route a:hover,.et-chain a:hover{border-color:#1769aa}.et-route span,.et-chain span{font-size:.875rem;color:#43536a}.et-route b,.et-chain b{font-size:1rem}
+.et-facts{display:grid;gap:10px;margin:18px 0;font-size:.875rem;line-height:1.6}.et-facts div{border-top:1px solid currentColor;padding-top:8px}.et-facts dt{font-weight:700}.et-facts dd{margin:2px 0 0;overflow-wrap:anywhere}
+.et-reading{display:flex;flex-wrap:wrap;gap:10px;margin:24px 0}.et-reading a{display:inline-flex;align-items:center;min-height:44px;padding:10px 16px;border:1px solid #aab4c1;border-radius:24px;text-decoration:none;color:#132033;background:#fff}
+.et-review{font-size:.875rem;line-height:1.6;color:#43536a}.et-milestones{display:grid;gap:14px;padding-left:24px;line-height:1.6}.et-milestones time{font-weight:700}
+body .et-route a:focus-visible,body .et-chain a:focus-visible,body .et-reading a:focus-visible{outline:3px solid #1769aa;outline-offset:4px}
+@media(max-width:760px){.et-route,.et-chain{grid-template-columns:minmax(0,1fr)}.et-route a,.et-chain a{padding:16px;min-width:0}.et-reading{gap:8px}.sp-nav{flex-wrap:wrap;justify-content:flex-end}.sp-topin{align-items:flex-start;padding:12px 0}.sp-nav a{display:inline-flex;align-items:center;min-height:44px}.sp-btn,.ph-actions a,.pp-chips a{min-height:44px;display:inline-flex;align-items:center}.sp-actions,.ph-actions{flex-wrap:wrap}.sp-card,.pp-cell{min-width:0;overflow-wrap:anywhere}.sp h1{font-size:clamp(2.4rem,11vw,4rem)}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}.et-route a,.et-chain a{transition:none}}
+@media(prefers-reduced-transparency:reduce){.et-route a,.et-chain a{background:#fff}}
