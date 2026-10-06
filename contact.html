@@ -605,6 +605,9 @@ html.et-jlight .rootland::after{
 <label class="ct-card"><input name="ctType" type="radio" value="Investissement"/><span><strong>Investissement</strong><small>Capital, trajectoire 100 M → 1 Md → 10 Md FCFA</small></span></label>
 <label class="ct-card"><input name="ctType" type="radio" value="Candidature / Talents"/><span><strong>Candidature &amp; talents</strong><small>Rejoindre EnerTchad, académie Tchaditude</small></span></label>
 <label class="ct-card"><input name="ctType" type="radio" value="Presse"/><span><strong>Presse</strong><small>Interviews, informations, kit média</small></span></label>
+<label class="ct-card"><input name="ctType" type="radio" data-contact-profile="fournisseur" value="Référencement fournisseur"/><span><strong>Référencement fournisseur</strong><small>Présenter votre entreprise, vos capacités et vos références.</small></span></label>
+<label class="ct-card"><input name="ctType" type="radio" data-contact-profile="centrale-achat" value="Adhésion à la centrale d’achat"/><span><strong>Adhésion à la centrale d’achat</strong><small>Étudier la mutualisation des achats et l’approvisionnement de vos sites.</small></span></label>
+<label class="ct-card"><input name="ctType" type="radio" data-contact-profile="achats" value="Demande au service achats"/><span><strong>Demande au service achats</strong><small>Une consultation, un bon de commande ou une question d’approvisionnement.</small></span></label>
 <label class="ct-card"><input name="ctType" type="radio" value="Autre"/><span><strong>Autre demande</strong><small>Toute autre question — on vous oriente</small></span></label>
 </div>
 <p class="ct-err" id="ctErr1" role="alert">Sélectionnez l’objet de votre demande pour continuer.</p>
@@ -710,7 +713,7 @@ var full='\u00c0\u00A0: contact@enertchad.td\r\nObjet\u00A0: ['+t+'] '+n+'\r\n\r
 <script defer src="/assets/chrome/u2_881fcf8bc439.js"></script>
 <script defer src="/assets/chrome/u2_e8be195d19be.js"></script>
 
-<script>(function(){try{var q=new URLSearchParams(location.search).get('profil');if(!q)return;var map={ep:'E&P',b2b:'Approvisionnement',partenariat:'Partenariat',b2g:'Marchés publics',invest:'Investissement',talents:'Candidature',presse:'Presse'};var needle=map[q.toLowerCase()];if(!needle)return;var r=[...document.querySelectorAll('input[name="ctType"]')].find(function(x){return x.value.indexOf(needle)>-1;});if(r){r.checked=true;r.dispatchEvent(new Event('change',{bubbles:true}));}}catch(e){}})();</script>
+
 <style id="fusion-nav-lisible">
 /* ———— ex-bloc: nav-lisible ———— */
 #nav.nav:not(.scrolled):not(#_):not(#__){background-color:transparent!important;background-image:linear-gradient(180deg,rgba(6,11,20,.94),rgba(6,11,20,.88))!important}#nav.nav:not(.scrolled):not(#_):not(#__)::after{content:"";position:absolute;left:0;right:0;top:100%;height:40px;pointer-events:none;background:linear-gradient(180deg,rgba(6,11,20,.42),rgba(6,11,20,0))}
@@ -968,6 +971,7 @@ h.addEventListener("click",tg);
 /* ———— ex-bloc: ch351-champ ———— */
 #ctForm [aria-invalid="true"]:not(#e1):not(#e2):not(#e3){border-color:#D64545!important;box-shadow:0 0 0 1px rgba(214,69,69,.35)!important}
 </style>
+<script defer src="/assets/chrome/contact_profiles.js?b=202610061230"></script>
 </body>
 </html>
 

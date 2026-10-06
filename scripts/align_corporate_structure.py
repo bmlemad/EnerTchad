@@ -155,6 +155,28 @@ def current_structure(text):
     return text
 
 
+def contact_profiles(text, en):
+    options = [
+        ('fournisseur', 'Supplier registration' if en else 'Référencement fournisseur',
+         'Present your company, capabilities and references.' if en else 'Présenter votre entreprise, vos capacités et vos références.'),
+        ('centrale-achat', 'Central purchasing membership' if en else 'Adhésion à la centrale d’achat',
+         'Discuss pooled procurement and supply for your sites.' if en else 'Étudier la mutualisation des achats et l’approvisionnement de vos sites.'),
+        ('achats', 'Purchasing enquiry' if en else 'Demande au service achats',
+         'A consultation, purchase order or procurement question.' if en else 'Une consultation, un bon de commande ou une question d’approvisionnement.'),
+    ]
+    for profile, label, description in options:
+        if f'data-contact-profile="{profile}"' not in text:
+            card = (f'<label class="ct-card"><input name="ctType" type="radio" '
+                    f'data-contact-profile="{profile}" value="{label}"/><span><strong>{label}</strong>'
+                    f'<small>{description}</small></span></label>\n')
+            text = text.replace('<label class="ct-card"><input name="ctType" type="radio" value="' + ('Other' if en else 'Autre') + '"',
+                                card + '<label class="ct-card"><input name="ctType" type="radio" value="' + ('Other' if en else 'Autre') + '"', 1)
+    text = re.sub(r'<script>\(function\(\)\{try\{var q=new URLSearchParams\(location.search\).get\(\'profil\'\);.*?</script>', '', text, flags=re.S)
+    if '/assets/chrome/contact_profiles.js' not in text:
+        text = text.replace('</body>', '<script defer src="/assets/chrome/contact_profiles.js?b=202610061230"></script>\n</body>')
+    return text
+
+
 def main():
     changed = 0
     for page in Path('.').rglob('*.html'):
@@ -215,6 +237,8 @@ def main():
                                 'This page details the thesis, model and capital. The Investor Centre brings together the overview, assumptions and risks; publications provide access to documents.')
             text = text.replace('<a href="/assets/data/document-registry.json">Registre documentaire →</a>', '<a href="/publications">Documents publiés →</a>')
             text = text.replace('<a href="/assets/data/document-registry.json">Document registry →</a>', '<a href="/publications-en">Published documents →</a>')
+        if page.name in ('contact.html', 'contact-en.html'):
+            text = contact_profiles(text, en)
         if text != old:
             page.write_text(text, encoding='utf-8')
             changed += 1
