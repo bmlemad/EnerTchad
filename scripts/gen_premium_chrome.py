@@ -40,7 +40,7 @@ FR = [
         ('Questions fréquentes', 'Centre d’aide', '/faq'),
         ('Contact', 'Écrire, appeler, venir', '/contact'),
     ], ('La Voie EnerTchad', 'Bâtir et retenir la valeur au pays', 'Mission, vision et cercle vertueux', '/societe#voie')),
-    ('Nos activités', 'Trois pôles de cœur et la pétrochimie, prolongés par quatre capacités intégrées.', '/nos-activites', [
+    ('Nos activités', 'Quatre segments industriels, soutenus par quatre capacités intégrées.', '/nos-activites', [
         ('Exploration & Production', 'Extraire davantage de chaque gisement', '/amont/'),
         ('Transport & stockage', 'Corridor d’export, réserve distribuée', '/intermediaire/'),
         ('Raffinage & distribution', 'Mini-raffinerie, stations, dernier km', '/aval/'),
@@ -58,7 +58,7 @@ FR = [
         ('Paiements aux États', 'Les sept catégories ITIE', '/paiements-etats'),
         ('Éthique & conformité', 'Anti-corruption, alerte', '/ethique'),
     ], ('Transition', '30 % et plus de renouvelables visés', 'Climat et énergie', '/greentech/#transition')),
-    ('Investisseurs', 'Un capital levé par paliers, de 100 M à 10 Md FCFA, avec des jalons datés.', '/investisseurs', [
+    ('Investisseurs', 'Un capital levé par paliers, de 100 M à 10 Md FCFA, avec des jalons datés.', '/investor-center', [
         ('Thèse d’investissement', 'Pourquoi le Tchad, maintenant', '/investisseurs#these'),
         ('Modèle d’affaires', 'Chaque étage finance le suivant', '/investisseurs#modele'),
         ('Feuille de route', '8 chantiers phares datés', '/projets'),
@@ -93,7 +93,7 @@ EN = [
         ('FAQ', 'Help centre', '/faq'),
         ('Contact', 'Write, call, visit', '/contact'),
     ], ('The EnerTchad Way', 'Building and keeping value in Chad', 'Mission, vision and virtuous circle', '/societe#voie')),
-    ('What we do', 'Three core divisions and petrochemicals, extended by four integrated capabilities.', '/nos-activites', [
+    ('What we do', 'Four industrial segments, supported by four integrated capabilities.', '/nos-activites', [
         ('Exploration & Production', 'More from every field', '/amont/'),
         ('Transport & storage', 'Export corridor, distributed reserve', '/intermediaire/'),
         ('Refining & distribution', 'Mini-refinery, stations, last mile', '/aval/'),
@@ -111,7 +111,7 @@ EN = [
         ('Payments to governments', 'The seven EITI categories', '/paiements-etats'),
         ('Ethics & compliance', 'Anti-corruption, alert line', '/ethique'),
     ], ('Transition', '30%+ renewables targeted', 'Climate and energy', '/greentech/#transition')),
-    ('Investors', 'Capital raised in tiers, from FCFA 100 M to 10 bn, with dated milestones.', '/investisseurs', [
+    ('Investors', 'Capital raised in tiers, from FCFA 100 M to 10 bn, with dated milestones.', '/investor-center', [
         ('Investment case', 'Why Chad, why now', '/investisseurs#these'),
         ('Business model', 'Each stage funds the next', '/investisseurs#modele'),
         ('Roadmap', '8 dated flagship projects', '/projets'),
@@ -136,7 +136,7 @@ EN = [
     ], ('Join us', 'Chadian talent first', 'Open job families', '/carrieres')),
 ]
 UI = {
-    'fr': dict(all='Vue d’ensemble', util=[('Contact', '/contact'), ('Carrières', '/carrieres')], search='Rechercher',
+    'fr': dict(all='Vue d’ensemble', util=[('Clients', '/clients'), ('Fournisseurs', '/achats'), ('Contact', '/contact'), ('Carrières', '/carrieres')], search='Rechercher',
                invest='Investir', aria='Navigation principale', foot_desc='Société pétrolière intégrée à capitaux tchadiens, de la roche-mère à la pompe.',
                h_sections='Rubriques', h_access='Accès directs', h_info='Informations', top='Haut de page',
                access=[('Devenir client', '/clients'), ('Fournisseurs', '/achats'), ('Espace presse', '/presse'),
@@ -145,7 +145,7 @@ UI = {
                      ('Accessibilité', '/accessibilite'), ('Avertissements', '/avertissements'), ('Signalement éthique', '/ethique#alerte')],
                legal=[('Mentions légales', '/mentions-legales'), ('Confidentialité', '/confidentialite'), ('Cookies', '/cookies'), ('Signalement éthique', '/ethique#alerte')],
                motto='De la roche-mère à la pompe.'),
-    'en': dict(all='Overview', util=[('Contact', '/contact'), ('Careers', '/carrieres')], search='Search',
+    'en': dict(all='Overview', util=[('Customers', '/clients'), ('Suppliers', '/achats'), ('Contact', '/contact'), ('Careers', '/carrieres')], search='Search',
                invest='Invest', aria='Main navigation', foot_desc='An integrated oil company with Chadian capital, from source rock to pump.',
                h_sections='Sections', h_access='Quick access', h_info='Information', top='Back to top',
                access=[('Become a client', '/clients'), ('Suppliers', '/achats'), ('Press room', '/presse'),

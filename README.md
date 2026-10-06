@@ -21,3 +21,7 @@ Le site est généré depuis un canon unique par `build.py` (non inclus dans ce 
 
 ---
 *Unité · Innovation · Durabilité*
+
+## Harmoniser la structure corporate
+
+Après toute régénération des pages FR/EN, exécuter `python3 scripts/align_corporate_structure.py`, puis `python3 scripts/check_integrity.py`. Cette migration conserve les routes et harmonise les quatre segments industriels, les capacités de soutien, les accès clients/fournisseurs et le Centre investisseurs.
