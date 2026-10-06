@@ -339,6 +339,14 @@ fetch('/assets/data/recherche-fr.json?v=202610061100').then(function(r){return r
 Q.addEventListener('input',run);
 try{var params=new URLSearchParams(location.search),m=location.hash.match(/^#q=(.+)$/);if(params.has('q'))Q.value=params.get('q');else if(m)Q.value=decodeURIComponent(m[1])}catch(_){}
 /* search-hash-change */addEventListener('hashchange',function(){try{var m=location.hash.match(/^#q=(.+)$/);if(m){Q.value=decodeURIComponent(m[1]);run()}}catch(_){}});
+/* search-link-click */document.addEventListener('click',function(event){
+ var link=event.target.closest&&event.target.closest('a[href]');if(!link)return;
+ var url=new URL(link.getAttribute('href'),location.origin);
+ if(url.origin!==location.origin||(url.pathname!=='/recherche'&&url.pathname!=='/recherche-en'))return;
+ var value=Q.value.trim();if(value)url.searchParams.set('q',value);else url.searchParams.delete('q');
+ link.setAttribute('href',url.pathname+url.search);
+},true);
+addEventListener('load',syncSearchContext);
 Q.focus();})();</script><script id="pp-sub-js">(function(){var s=document.querySelector(".pp-sub"),n=document.getElementById("nav");if(!s||!n)return;var r=0;function f(){r=0;var b=n.getBoundingClientRect().bottom;s.style.setProperty("--pp-st",Math.max(0,Math.round(b))+"px")}addEventListener("scroll",function(){if(!r)r=requestAnimationFrame(f)},{passive:true});addEventListener("resize",f);f()})();</script>
 </main>
 <footer class="pft">
