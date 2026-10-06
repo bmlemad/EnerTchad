@@ -174,6 +174,8 @@ document.querySelectorAll('a[href^="/recherche"]').forEach(function(link){
                                 "try{var params=new URLSearchParams(location.search),m=location.hash.match(/^#q=(.+)$/);if(params.has('q'))Q.value=params.get('q');else if(m)Q.value=decodeURIComponent(m[1])}catch(_){}")
         if '/* search-hash-change */' not in script:
             script = script.replace('Q.focus();', "/* search-hash-change */addEventListener('hashchange',function(){try{var m=location.hash.match(/^#q=(.+)$/);if(m){Q.value=decodeURIComponent(m[1]);run()}}catch(_){}});\nQ.focus();", 1)
+        if '/* search-link-click */' not in script:
+            script = script.replace('Q.focus();', "/* search-link-click */document.addEventListener('click',function(event){\n var link=event.target.closest&&event.target.closest('a[href]');if(!link)return;\n var url=new URL(link.getAttribute('href'),location.origin);\n if(url.origin!==location.origin||(url.pathname!=='/recherche'&&url.pathname!=='/recherche-en'))return;\n var value=Q.value.trim();if(value)url.searchParams.set('q',value);else url.searchParams.delete('q');\n link.setAttribute('href',url.pathname+url.search);\n},true);\naddEventListener('load',syncSearchContext);\n" + 'Q.focus();', 1)
         no_results = 'No pages found' if en else 'Aucune page trouvée'
         script = script.replace("(out.length>1?' pages found':' page found'):'';", "(out.length>1?' pages found':' page found'):'" + no_results + "';")
         script = script.replace("(out.length>1?' pages trouvées':' page trouvée'):'';", "(out.length>1?' pages trouvées':' page trouvée'):'" + no_results + "';")
