@@ -113,7 +113,7 @@
 @M .ph-edlist a:hover strong{color:var(--ph-gold-ink)}
 
 /* Centre de confiance */
-@M .ph-trust{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:clamp(20px,2.4vw,36px)}
+@M .ph-trust{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(20px,2.4vw,36px)}
 @M .et-proof-card{display:grid;gap:10px;align-content:start;padding:22px 0 0;background:none;border:0;border-top:1px solid var(--ph-gold);border-radius:0;box-shadow:none;transform:none;text-decoration:none;color:var(--ph-ink);min-height:44px}
 @M .et-proof-card b{font:400 1.6rem/1.1 var(--ph-serif)}
 @M .et-proof-card span:not(.ph-eyebrow){color:var(--ph-ink2);font-size:.92rem}
@@ -145,7 +145,7 @@
 
 @media (max-width:1080px){
   @M .ph-caps,@M .ph-quick{grid-template-columns:repeat(2,minmax(0,1fr))}
-  @M .ph-trust{grid-template-columns:repeat(3,minmax(0,1fr))}
+  @M .ph-trust{grid-template-columns:repeat(2,minmax(0,1fr))}
   @M .ph-quick a:nth-child(2){border-right:0}
   @M .ph-quick a:nth-child(3){padding-left:0}
   @M .ph-quick a:nth-child(-n+2){border-bottom:1px solid var(--ph-line)}
