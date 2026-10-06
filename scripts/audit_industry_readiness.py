@@ -22,10 +22,12 @@ pub = read(PUB)
 home_en = read(HOME_EN)
 home_ar = read(HOME_AR)
 pub_en = read(PUB_EN)
+centre = read(ROOT / "investor-center.html")
+centre_en = read(ROOT / "investor-center-en.html")
 
 home_requirements = {
     "centre de confiance": r'class="[^"]*\bet-proof-center\b[^"]*"[^>]*aria-labelledby="[^"]+"',
-    "reporting investisseurs": r'href="/publications#pub-inv"',
+    "reporting investisseurs": r'href="/(?:publications#pub-inv|investor-center)"',
     "data book": r'href="/Data_Book_EnerTchad.xlsx"',
     "gouvernance": r'href="/ethique"',
     "newsroom": r'href="/communiques"',
@@ -57,7 +59,7 @@ for asset in [
         errors.append(f"ressource documentaire attendue absente: {asset}")
 
 multilingual = [
-    ("index-en.html", home_en, r'class="[^"]*\bet-proof-center\b[^"]*"[^>]*aria-labelledby="[^"]+"', r'/publications-en#pub-inv'),
+    ("index-en.html", home_en, r'class="[^"]*\bet-proof-center\b[^"]*"[^>]*aria-labelledby="[^"]+"', r'href="/(?:publications-en#pub-inv|investor-center-en)"'),
     ("ar.html", home_ar, r'class="[^"]*\bet-proof-center\b[^"]*"[^>]*aria-labelledby="et-proof-title-ar"', r'/ar-investisseurs'),
     ("publications-en.html", pub_en, r'aria-label="Reporting center navigation"', r'href="#pub-inv"'),
 ]
@@ -66,6 +68,17 @@ for filename, content, pattern_one, pattern_two in multilingual:
         errors.append(f"{filename}: multilingual corporate layer absent")
     if not re.search(pattern_two, content, re.I | re.S):
         errors.append(f"{filename}: reporting gateway absent")
+
+# The consolidated homepage route must still lead to the published reporting
+# centre and the investor factsheet in each language.
+for filename, content, suffix in [
+    ("investor-center.html", centre, ""),
+    ("investor-center-en.html", centre_en, "-en"),
+]:
+    if not re.search(r'href="/publications' + suffix + r'(?:#[^"\s]+)?"', content):
+        errors.append(f"{filename}: accès au reporting documentaire absent")
+    if not re.search(r'href="/Fiche_Investisseur_EnerTchad.pdf"', content):
+        errors.append(f"{filename}: fiche investisseur absente")
 
 # Redirect aliases for the reporting center must remain canonical shortcuts.
 vercel = ROOT / "vercel.json"
