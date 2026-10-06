@@ -315,7 +315,15 @@ html.et-jlight .rootland::after{
 <script>(function(){var Q=document.getElementById('schQ'),R=document.getElementById('schR'),N=document.getElementById('schN'),E=document.getElementById('schE'),D=null;
 function fold(s){return s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase()}
 function esc(s){return s.replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
-function run(){var q=fold(Q.value.trim());if(!D||!q||q.length<2){R.innerHTML='';N.textContent='';E.hidden=true;return}
+function syncSearchContext(){var value=Q.value.trim();
+try{history.replaceState(null,'',location.pathname+(value?'?q='+encodeURIComponent(value):''))}catch(_){}
+document.querySelectorAll('a[href^="/recherche"]').forEach(function(link){
+ var url=new URL(link.getAttribute('href'),location.origin);
+ if(url.pathname!=='/recherche'&&url.pathname!=='/recherche-en')return;
+ if(value)url.searchParams.set('q',value);else url.searchParams.delete('q');
+ link.setAttribute('href',url.pathname+url.search);
+});}
+function run(){syncSearchContext();var q=fold(Q.value.trim());if(!D||!q||q.length<2){R.innerHTML='';N.textContent='';E.hidden=true;return}
 var terms=q.split(/\s+/).filter(Boolean);
 var out=[];
 for(var i=0;i<D.length;i++){var e=D[i],sc=0,ok=true;
@@ -325,11 +333,12 @@ for(var i=0;i<D.length;i++){var e=D[i],sc=0,ok=true;
  if(ok)out.push([sc,e])}
 out.sort(function(a,b){return b[0]-a[0]});out=out.slice(0,30);
 R.innerHTML=out.map(function(x){var e=x[1];return '<li><a href="'+e.u+'"><b>'+esc(e.t)+'</b><span class="sc-s">'+esc(e.s)+'</span><span class="sc-d">'+esc(e.d)+'</span></a></li>'}).join('');
-E.hidden=out.length>0;N.textContent=out.length?out.length+(out.length>1?' pages trouvées':' page trouvée'):'';
-try{history.replaceState(null,'',location.pathname+(Q.value.trim()?'?q='+encodeURIComponent(Q.value.trim()):''))}catch(_){}}
+E.hidden=out.length>0;N.textContent=out.length?out.length+(out.length>1?' pages trouvées':' page trouvée'):'Aucune page trouvée';
+}
 fetch('/assets/data/recherche-fr.json?v=202610061100').then(function(r){return r.json()}).then(function(d){D=d.map(function(e){e._t=fold(e.t);e._d=fold(e.d);e._k=fold(e.k+' '+e.u);return e});run()});
 Q.addEventListener('input',run);
-try{var m=location.hash.match(/^#q=(.+)$/);if(m)Q.value=decodeURIComponent(m[1])}catch(_){}
+try{var params=new URLSearchParams(location.search),m=location.hash.match(/^#q=(.+)$/);if(params.has('q'))Q.value=params.get('q');else if(m)Q.value=decodeURIComponent(m[1])}catch(_){}
+/* search-hash-change */addEventListener('hashchange',function(){try{var m=location.hash.match(/^#q=(.+)$/);if(m){Q.value=decodeURIComponent(m[1]);run()}}catch(_){}});
 Q.focus();})();</script><script id="pp-sub-js">(function(){var s=document.querySelector(".pp-sub"),n=document.getElementById("nav");if(!s||!n)return;var r=0;function f(){r=0;var b=n.getBoundingClientRect().bottom;s.style.setProperty("--pp-st",Math.max(0,Math.round(b))+"px")}addEventListener("scroll",function(){if(!r)r=requestAnimationFrame(f)},{passive:true});addEventListener("resize",f);f()})();</script>
 </main>
 <footer class="pft">

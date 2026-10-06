@@ -155,6 +155,32 @@ def current_structure(text):
     return text
 
 
+def search_context(text, en):
+    def update(script):
+        if 'function syncSearchContext()' not in script:
+            old = "try{history.replaceState(null,'',location.pathname+(Q.value.trim()?'?q='+encodeURIComponent(Q.value.trim()):''))}catch(_){}"
+            script = script.replace(old, '')
+            sync = """function syncSearchContext(){var value=Q.value.trim();
+try{history.replaceState(null,'',location.pathname+(value?'?q='+encodeURIComponent(value):''))}catch(_){}
+document.querySelectorAll('a[href^="/recherche"]').forEach(function(link){
+ var url=new URL(link.getAttribute('href'),location.origin);
+ if(url.pathname!=='/recherche'&&url.pathname!=='/recherche-en')return;
+ if(value)url.searchParams.set('q',value);else url.searchParams.delete('q');
+ link.setAttribute('href',url.pathname+url.search);
+});}
+"""
+            script = script.replace('function run(){', sync + 'function run(){syncSearchContext();', 1)
+        script = script.replace("try{var m=location.hash.match(/^#q=(.+)$/);if(m)Q.value=decodeURIComponent(m[1])}catch(_){}",
+                                "try{var params=new URLSearchParams(location.search),m=location.hash.match(/^#q=(.+)$/);if(params.has('q'))Q.value=params.get('q');else if(m)Q.value=decodeURIComponent(m[1])}catch(_){}")
+        if '/* search-hash-change */' not in script:
+            script = script.replace('Q.focus();', "/* search-hash-change */addEventListener('hashchange',function(){try{var m=location.hash.match(/^#q=(.+)$/);if(m){Q.value=decodeURIComponent(m[1]);run()}}catch(_){}});\nQ.focus();", 1)
+        no_results = 'No pages found' if en else 'Aucune page trouvée'
+        script = script.replace("(out.length>1?' pages found':' page found'):'';", "(out.length>1?' pages found':' page found'):'" + no_results + "';")
+        script = script.replace("(out.length>1?' pages trouvées':' page trouvée'):'';", "(out.length>1?' pages trouvées':' page trouvée'):'" + no_results + "';")
+        return script
+    return replace_block(text, r'<script>\(function\(\)\{var Q=document.getElementById\(\'schQ\'\).*?</script>', update)
+
+
 def contact_profiles(text, en):
     options = [
         ('fournisseur', 'Supplier registration' if en else 'Référencement fournisseur',
@@ -220,6 +246,7 @@ def main():
         if page.name in ('nos-activites.html', 'nos-activites-en.html'):
             text = activities(text, en)
         if page.name in ('recherche.html', 'recherche-en.html'):
+            text = search_context(text, en)
             text = text.replace('Plus de cent pages, trois pôles de cœur, trente-deux carnets, quatre-vingts termes de glossaire : tapez un mot, la liste se filtre.',
                                 'Quatre segments industriels, quatre capacités intégrées, actualités et ressources : tapez un mot, la liste se filtre.')
             text = text.replace('More than one hundred pages, three core poles, thirty-two notebooks, eighty glossary terms: type a word and the list narrows.',
