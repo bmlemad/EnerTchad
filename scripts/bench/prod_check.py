@@ -5,7 +5,7 @@ Pour quelques pages : statut, temps jusqu au premier octet (mediane de 3), compr
 servie, en-tetes de securite, et contenu identique au fichier du depot. Pour les
 ressources partagees : compression et duree de cache (polices en cache long).
 
-Usage : python3 scripts/bench/prod_check.py --site https://enertchad.netlify.app --root . \
+Usage : python3 scripts/bench/prod_check.py --site https://enertchad.com --root . \
           [--md reports/bench/prod.md]
 Sort en erreur (code 1) si un controle echoue ; le temps de reponse est seulement rapporte.
 """
@@ -43,7 +43,7 @@ def repo_file(root, path):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument('--site', default='https://enertchad.netlify.app')
+    ap.add_argument('--site', default='https://enertchad.com')
     ap.add_argument('--root', default='.')
     ap.add_argument('--md')
     a = ap.parse_args()
