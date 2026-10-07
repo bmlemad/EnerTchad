@@ -11,7 +11,7 @@ suit (<p><span>, <th><span>, <span><b>, <div><b>) : classes .pp-lab et .pp-lb (l
 ligne). Compteurs (suite de <span><b>n</b>libelle</span>) : classe .pp-stats. Puces ecrites
 en texte (<li><span>▸</span>) retirees : la feuille dessine deja la puce. Encart « Continuer
 dans <pole> » des pages metier (titres et descriptions colles) : cartes .pp-navcards et lien de
-retour .pp-back. Suites d etapes (libelle, titre, texte, fleches) : .pp-steps ; intertitres
+retour .pp-back. Suites d etapes (libelle, titre, texte, fleches) : .pp-flow ; intertitres
 en <div> : .pp-minih ; date + texte : .pp-dated ; sommaire (intitules et liens) : .pp-toc ;
 lien « ← Retour / destination » : .pp-backcard ; note precedee d un losange : .pp-box. Idempotent.
 Usage : python3 scripts/harmonize_premium.py
@@ -124,8 +124,11 @@ def tags(body):
         nonlocal n
         n += 1
         inner = ARROW_RX.sub('<div aria-hidden="true">→</div>', STEP_RX.sub(r'<div class="pp-step">\1', m.group(1)))
-        return '<div class="pp-steps">' + inner + '</div>'
+        return '<div class="pp-flow">' + inner + '</div>'
     body = STEPS_RX.sub(rep9, body)
+    # premiere version (phase 13) : classe .pp-steps, deja prise par la sequence du metier des poles
+    body, k0 = re.subn(r'<div class="pp-steps">(?=<div class="pp-step">|\s*<div class="pp-step">)', '<div class="pp-flow">', body)
+    n += k0
     body, k1 = MINIH_RX.subn(r'\1<div class="pp-minih">\2</div>', body)
     body, k2 = NOTE_RX.subn(r'<div class="pp-box">\1</div>', body)
     body, k3 = DATED_RX.subn(r'<div class="pp-dated"><span>\1</span><span>\2</span></div>', body)

@@ -87,7 +87,7 @@
 @M .pp-manifesto figure img{width:100%;aspect-ratio:4/5;object-fit:cover}
 
 /* Le metier */
-@M .pp-prose div.pp-steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(20px,3vw,40px);counter-reset:pp}
+@M .pp-steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(20px,3vw,40px);counter-reset:pp}
 @M .pp-steps a{display:grid;gap:12px;padding-top:22px;border-top:1px solid var(--pp-gold);text-decoration:none;color:var(--pp-ink);counter-increment:pp}
 @M .pp-steps a::before{content:counter(pp,upper-roman);font:400 1rem/1 var(--pp-serif);color:var(--pp-gold-ink);letter-spacing:.06em}
 @M .pp-steps b{font:400 1.7rem/1.08 var(--pp-serif)}
@@ -337,7 +337,7 @@
   @M .pp-manifesto,@M .pp-night .pp-wrap{grid-template-columns:minmax(0,1fr)}
   @M .pp-manifesto figure img{aspect-ratio:3/2}
   @M .pp-steps,@M .pp-caps,@M .pp-domains,@M .pp-promise,@M .pp-bigfigs,@M .pp-group ul{grid-template-columns:minmax(0,1fr)}
-  @M .pp-prose div.pp-steps{gap:0}
+  @M .pp-steps{gap:0}
   @M .pp-steps a{padding:20px 0 22px}
   @M .pp-cases>li{grid-template-columns:minmax(0,1fr);gap:14px}
   @M .pp-cases>li>div:last-child{grid-column:auto}
@@ -461,14 +461,15 @@
 @M .pp-more-pole{display:grid;gap:14px}
 @M .pp-more-pole .pp-back{margin:6px 0 0}
 
-/* Suites d etapes (marges, boucle du capital) : cartes en rangee, fleches entre elles */
-@M .pp-prose div.pp-steps{display:flex;flex-wrap:wrap;align-items:stretch;gap:10px 12px;margin:6px 0 10px}
+/* Suites d etapes dans le texte (marges, boucle du capital) : cartes en rangee, fleches entre elles
+   (classe .pp-flow ; .pp-steps reste la sequence du metier des pages de pole) */
+@M .pp-prose div.pp-flow{display:flex;flex-wrap:wrap;align-items:stretch;gap:10px 12px;margin:6px 0 10px}
 @M .pp-prose div.pp-step{flex:1 1 160px;display:grid;align-content:start;gap:4px;padding:14px 16px;border-top:1px solid var(--pp-gold);background:var(--pp-mist)}
 @M .pp-mist .pp-step{background:var(--pp-paper)}
 @M .pp-step>div,@M .pp-step>span:first-child{font-size:.7rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--pp-gold-ink)}
 @M .pp-step>b{font-family:var(--pp-serif);font-weight:400;font-size:1.2rem;line-height:1.15;color:var(--pp-ink)}
 @M .pp-step>span:last-child{font-size:.88rem;line-height:1.5;color:var(--pp-ink2)}
-@M .pp-steps>[aria-hidden="true"]{align-self:center;color:var(--pp-gold-ink);flex:none}
+@M .pp-flow>[aria-hidden="true"]{align-self:center;color:var(--pp-gold-ink);flex:none}
 
 /* Intertitres, date + texte, sommaire, lien de retour */
 @M .pp-prose div.pp-minih{font-family:var(--pp-serif);font-size:1.45rem;line-height:1.15;color:var(--pp-ink);margin-top:14px}
@@ -494,3 +495,20 @@
 @M .pp-prose .pp-docs>a:not(.pp-cell):not(.pp-link)>span:last-child>span{font-size:.88rem;line-height:1.5;color:var(--pp-ink2)}
 @M .pp-prose .pp-docs>a:not(.pp-cell):not(.pp-link)>span:last-child>span:last-child{font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--pp-gold-ink)}
 @M .pp-prose .pp-docs>a:not(.pp-cell):not(.pp-link).pp-docs-all{grid-template-columns:1fr;align-content:center;font-weight:500;color:var(--pp-ink)}
+
+/* Charte graphique : corps de bloc avec exemple, specimens typographiques */
+@M .pp-spec{display:grid;gap:20px;align-content:start;min-width:0}
+@M .pp-type{display:grid;gap:0}
+@M .pp-type>div{display:grid;gap:6px;padding:18px 0 20px;border-top:1px solid var(--pp-line)}
+@M .pp-type>div>span:last-child{font-size:.8rem;letter-spacing:.02em;color:var(--pp-ink2)}
+@M .pp-ts{color:var(--pp-ink)}
+@M .pp-ts-1{font:400 clamp(2.9rem,6vw,5.6rem)/.98 var(--pp-serif);letter-spacing:-.012em}
+@M .pp-ts-2{font:400 clamp(2.2rem,4.4vw,3.8rem)/1.04 var(--pp-serif);letter-spacing:-.012em}
+@M .pp-ts-3{font:400 1.55rem/1.15 var(--pp-serif)}
+@M .pp-ts-k{font:600 .72rem/1.35 var(--pp-sans);letter-spacing:.22em;text-transform:uppercase;color:var(--pp-gold-ink)}
+@M .pp-ts-l{font-size:1.15rem;line-height:1.62;color:var(--pp-ink2)}
+@M .pp-ts-b{font-size:17px;line-height:1.6}
+@M .pp-ts-f{font:400 clamp(1.8rem,3vw,2.6rem)/1.05 var(--pp-serif);font-variant-numeric:tabular-nums}
+@M .pp-spec .pp-swatches{grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}
+@M .pp-prose .pp-swatches>li{padding:0;align-content:start}
+@M .pp-prose .pp-swatches>li::before{content:none;display:none}
