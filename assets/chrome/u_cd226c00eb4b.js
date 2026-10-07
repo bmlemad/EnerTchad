@@ -319,6 +319,9 @@ function boot(){
    'border-top':'1px solid rgba(232,195,106,.34)','box-shadow':'0 -8px 30px rgba(0,0,0,.42)',
    'border-radius':'0','font-family':'var(--fs,system-ui,sans-serif)'};
  for(var k in S)n.style.setProperty(k,S[k],'important');n.style.setProperty('line-height','1.45');
+ /* Au-dessus de la barre de navigation basse (#nezBar) quand elle est affichee (mobile). */
+ function fitBar(){try{var nb=document.getElementById('nezBar');var h=nb&&getComputedStyle(nb).display!=='none'?Math.round(nb.getBoundingClientRect().height):0;n.style.setProperty('bottom',h?h+'px':'0','important')}catch(e){}}
+ fitBar();addEventListener('resize',fitBar);
  var b=document.createElement('b'); b.textContent=t.t; b.style.setProperty('color','#F0CE82','important');
  var sp=document.createElement('span'); sp.textContent=' '+t.d;
  var row=document.createElement('div'); row.className='ck-row';

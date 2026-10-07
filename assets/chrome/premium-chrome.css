@@ -705,3 +705,6 @@ html:not(#s1):not(#s2) .pp-cell:has(> a[href*="linkedin.com/company"]) > a:is(:h
 
 /* Contact, icones sociales : la regle gagnante mesuree est a 24 identifiants + important (pole-premium.css) ; on la depasse avec 27. */
 html:not(#s0):not(#s1):not(#s2):not(#s3):not(#s4):not(#s5):not(#s6):not(#s7):not(#s8):not(#s9):not(#s10):not(#s11):not(#s12):not(#s13):not(#s14):not(#s15):not(#s16):not(#s17):not(#s18):not(#s19):not(#s20):not(#s21):not(#s22):not(#s23):not(#s24):not(#s25):not(#s26) body main .pp-cell:has(> a[href*="linkedin.com/company"]){flex-direction:row!important;flex-wrap:wrap!important;align-items:center!important;justify-content:flex-start!important;gap:10px!important}
+
+/* ===== Statut de page lisible en clair — 2026-10-07 ===== */
+html:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4) #et-status small,html.et-plight:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4) #et-status small,html.et-jlight:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4) #et-status small{color:#D9E5EE!important;-webkit-text-fill-color:#D9E5EE!important}
