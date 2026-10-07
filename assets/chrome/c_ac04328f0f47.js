@@ -280,7 +280,7 @@ if(cSubmitBtn)cSubmitBtn.addEventListener('click',()=>{
   }
   // Routage : demandes techniques E&P -> amont@, achats/produits -> distribution@
   const toEP=/parapétrolier|EOR|Force d’intervention|exploitation/i.test(type);
-  const dest=toEP?'amont@enertchad.td':'distribution@enertchad.td';
+  const dest=toEP?'amont@enertchad.com':'distribution@enertchad.com';
   // Composition d'un email structuré pré-rempli
   const subject=`Demande ${name} — ${type}`;
   const body=
@@ -297,7 +297,7 @@ Email\u00A0: ${mail||'—'}
 Précisions\u00A0:
 ${precis||'—'}
 ─────────────────────────────────────────
-Envoyé depuis enertchad.td / EnerTchad`;
+Envoyé depuis enertchad.com / EnerTchad`;
   const href=`mailto:${dest}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   window.location.href=href;
   msg.className='form-msg show';msg.style.background='';msg.style.borderColor='';msg.style.color='';
@@ -327,10 +327,10 @@ Envoyé depuis enertchad.td / EnerTchad`;
       msg.textContent='Merci de renseigner votre nom, un email valide et un message.';return;
     }
     var subject='['+type+'] '+name+(org?' / '+org:'');
-    var body='Type\u00A0: '+type+'\nNom\u00A0: '+name+'\nOrganisation\u00A0: '+(org||'-')+'\nEmail\u00A0: '+mail+'\n\n'+bodyt+'\n\nEnvoye depuis enertchad.td';
+    var body='Type\u00A0: '+type+'\nNom\u00A0: '+name+'\nOrganisation\u00A0: '+(org||'-')+'\nEmail\u00A0: '+mail+'\n\n'+bodyt+'\n\nEnvoye depuis enertchad.com';
     msg.removeAttribute('style');msg.className='form-msg show';
-    msg.textContent='Merci '+name+', votre messagerie va s’ouvrir vers contact@enertchad.td pour finaliser l’envoi.';
-    window.location.href='mailto:contact@enertchad.td?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body);
+    msg.textContent='Merci '+name+', votre messagerie va s’ouvrir vers contact@enertchad.com pour finaliser l’envoi.';
+    window.location.href='mailto:contact@enertchad.com?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body);
   });
 })();
 /* Inscription « Restez informé » */
@@ -345,10 +345,10 @@ Envoyé depuis enertchad.td / EnerTchad`;
       msg.textContent='Merci d’indiquer une adresse email valide.';return;
     }
     var subject='Inscription actualités — EnerTchad';
-    var body='Merci de m’inscrire à vos actualités et jalons.\n\nEmail\u00A0: '+mail+'\n\nEnvoyé depuis enertchad.td / EnerTchad';
-    window.location.href='mailto:contact@enertchad.td?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body);
+    var body='Merci de m’inscrire à vos actualités et jalons.\n\nEmail\u00A0: '+mail+'\n\nEnvoyé depuis enertchad.com / EnerTchad';
+    window.location.href='mailto:contact@enertchad.com?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body);
     msg.className='form-msg show';msg.style.background='';msg.style.borderColor='';msg.style.color='';
-    msg.innerHTML='Merci — votre logiciel de messagerie s’ouvre pour confirmer votre inscription à <strong>contact@enertchad.td</strong>. Si rien ne s’ouvre, écrivez-nous directement.';
+    msg.innerHTML='Merci — votre logiciel de messagerie s’ouvre pour confirmer votre inscription à <strong>contact@enertchad.com</strong>. Si rien ne s’ouvre, écrivez-nous directement.';
     inp.value='';
   });
 })();
