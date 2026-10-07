@@ -1,4 +1,4 @@
-Contact: mailto:contact@enertchad.td
+Contact: mailto:contact@enertchad.com
 Expires: 2027-07-29T00:00:00.000Z
 Preferred-Languages: fr, en, ar
 Canonical: https://enertchad.com/.well-known/security.txt
