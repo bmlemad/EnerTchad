@@ -1,4 +1,4 @@
-# En-tetes Netlify -- ACTIFS : Netlify (enertchad.netlify.app) est l hebergement
+# En-tetes Netlify -- ACTIFS : Netlify (enertchad.com, sous-domaine enertchad.netlify.app) est l hebergement
 # principal depuis le 1er octobre 2026 (Vercel suspendu). Les regles de securite
 # restent alignees sur le bloc "headers" de vercel.json ; toute modification se fait
 # dans les deux fichiers.
