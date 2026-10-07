@@ -180,6 +180,17 @@ document.querySelectorAll('a[href^="/recherche"]').forEach(function(link){
         no_results = 'No pages found' if en else 'Aucune page trouvée'
         script = script.replace("(out.length>1?' pages found':' page found'):'';", "(out.length>1?' pages found':' page found'):'" + no_results + "';")
         script = script.replace("(out.length>1?' pages trouvées':' page trouvée'):'';", "(out.length>1?' pages trouvées':' page trouvée'):'" + no_results + "';")
+        unavailable = 'Search is temporarily unavailable. Reload the page to try again.' if en else 'La recherche est momentanément indisponible. Rechargez la page pour réessayer.'
+        loading = 'Loading search…' if en else 'Chargement de la recherche…'
+        if '/* search-index-state */' not in script:
+            script = script.replace('D=null;', 'D=null,loadFailed=false;\n/* search-index-state */', 1)
+            previous = "function run(){syncSearchContext();var q=fold(Q.value.trim());if(!D||!q||q.length<2){R.innerHTML='';N.textContent='';E.hidden=true;return}"
+            replacement = "function run(){syncSearchContext();var q=fold(Q.value.trim());if(!D){R.innerHTML='';E.hidden=true;N.textContent=loadFailed?" + json.dumps(unavailable, ensure_ascii=False) + ":" + json.dumps(loading, ensure_ascii=False) + ";return}if(!q||q.length<2){R.innerHTML='';N.textContent='';E.hidden=true;return}"
+            script = script.replace(previous, replacement, 1)
+            script = script.replace('then(function(r){return r.json()})', "then(function(r){if(!r.ok)throw new Error('search-index-http');return r.json()})", 1)
+            script = script.replace('then(function(d){D=d.map', "then(function(d){if(!Array.isArray(d))throw new Error('search-index-format');loadFailed=false;D=d.map", 1)
+            script = script.replace('return e});run()});', 'return e});run()}).catch(function(){loadFailed=true;D=null;run()});', 1)
+            script = script.replace('Q.focus();', 'run();Q.focus();', 1)
         return script
     return replace_block(text, r'<script>\(function\(\)\{var Q=document.getElementById\(\'schQ\'\).*?</script>', update)
 
