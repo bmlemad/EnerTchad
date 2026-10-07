@@ -1094,3 +1094,9 @@ html:is(.et-plight,.et-jlight) footer{
 @media(prefers-reduced-motion:reduce){
   .nx .nx-col a:hover{transform:none}
 }
+
+/* En-tete mobile 361-413 px : la signature de marque poussait le bouton menu hors ecran
+   (marque 203 px + actions 162 px + marges = 393 px). On la masque sous 414 px, comme sur l accueil. */
+@media (max-width:413px){
+  html:not(#h1):not(#h2):not(#h3) .nav .brand-tx small:not(#_){display:none!important}
+}
