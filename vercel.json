@@ -801,6 +801,26 @@
       "source": "/explorateur-chaine-en",
       "destination": "/nos-activites-en",
       "permanent": true
+    },
+    {
+      "source": "/solutions",
+      "destination": "/nos-activites#besoins",
+      "permanent": true
+    },
+    {
+      "source": "/solutions-en",
+      "destination": "/nos-activites-en#besoins",
+      "permanent": true
+    },
+    {
+      "source": "/presse",
+      "destination": "/communiques#presse",
+      "permanent": true
+    },
+    {
+      "source": "/presse-en",
+      "destination": "/communiques-en#presse",
+      "permanent": true
     }
   ],
   "headers": [
