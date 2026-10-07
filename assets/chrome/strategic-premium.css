@@ -13,3 +13,6 @@
 .sp-skip{position:fixed;top:max(12px,env(safe-area-inset-top));left:max(12px,env(safe-area-inset-left));z-index:10000;transform:translateY(-200%);min-height:44px;padding:12px 18px;background:#132033;color:#fff!important;border:2px solid #b78b32;border-radius:8px;text-decoration:none;font-weight:600}
 .sp-skip:focus{transform:translateY(0);outline:3px solid #1769aa;outline-offset:3px}
 #main-content:focus{outline:2px solid #1769aa;outline-offset:-2px}
+
+/* Contraste AA des libelles dores sur fond clair (2,8 a 3,0 avant ; 6,3 vise). Le mot Tchad du logo garde l or de marque. */
+html:not(#g1):not(#g2) :is(.sp-k,.sp-doc .meta,.sp-card .meta,.et-quick-entry a){color:#7a5510}
