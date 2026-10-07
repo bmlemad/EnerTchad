@@ -95,7 +95,7 @@ jobs:
       - name: Controler la production (compression, cache, en-tetes, contenu)
         run: |
           set +e
-          python scripts/bench/prod_check.py --site https://enertchad.netlify.app --root . --md reports/bench/prod.md
+          python scripts/bench/prod_check.py --site https://enertchad.com --root . --md reports/bench/prod.md
           rc=$?
           cat reports/bench/prod.md >> "$GITHUB_STEP_SUMMARY"
           exit $rc
@@ -108,7 +108,7 @@ jobs:
           mkdir -p reports/lighthouse
           for path in "/" "/amont/" "/ar" "/carnets" "/investisseurs"; do
             name=$(printf '%s' "$path" | tr '/-' '__' | sed 's/^_*$//'); [ -n "$name" ] || name="home"
-            npx lighthouse "https://enertchad.netlify.app$path" --quiet \
+            npx lighthouse "https://enertchad.com$path" --quiet \
               --chrome-flags="--headless --no-sandbox --disable-dev-shm-usage" \
               --preset=perf --form-factor=mobile --screenEmulation.mobile=true \
               --screenEmulation.width=412 --screenEmulation.height=915 --screenEmulation.deviceScaleFactor=2 \

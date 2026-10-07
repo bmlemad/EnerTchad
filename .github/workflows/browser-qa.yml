@@ -20,7 +20,7 @@ jobs:
           npx playwright@1.55.0 install --with-deps chromium
       - name: Attendre le déploiement de production
         env:
-          SITE_URL: https://enertchad.netlify.app/
+          SITE_URL: https://enertchad.com/
         run: |
           for i in {1..60}; do
             code=$(curl -L -s -o /tmp/site.html -w '%{http_code}' "$SITE_URL/")
@@ -30,7 +30,7 @@ jobs:
           echo "Le déploiement de production n'est pas encore disponible"; exit 1
       - name: Vérifier les garde-fous de synchronisation production
         env:
-          SITE_URL: https://enertchad.netlify.app/
+          SITE_URL: https://enertchad.com/
         run: |
           set -euo pipefail
           page=$(curl -L -sS "$SITE_URL/petrochimie/")
@@ -49,7 +49,7 @@ jobs:
           npx --yes playwright@1.55.0 test qa --reporter=line
       - name: Exécuter l'audit visuel complet
         env:
-          SITE_URL: https://enertchad.netlify.app/
+          SITE_URL: https://enertchad.com/
         run: |
           npx --yes playwright@1.55.0 test qa/full-site-visual.spec.js --reporter=line
       - name: Publier les captures et rapports
