@@ -1,0 +1,16 @@
+/* Search results: clear hierarchy and keyboard access. */
+#schR{list-style:none;padding:0;margin:1.5rem 0;display:grid;gap:1rem}
+#schR li{margin:0;min-width:0}
+#schR a{display:grid;gap:.65rem;padding:1.25rem;border:1px solid #526679;border-radius:.6rem;background:#10283c;color:#fff;text-decoration:none;overflow-wrap:anywhere}
+#schR a:hover{border-color:#e6bb72;background:#18364f}
+#schR a:focus-visible{outline:3px solid #f5cd83;outline-offset:4px}
+#schR b{display:block;font-size:1.2rem;line-height:1.4}
+#schR .sc-s{display:block;width:fit-content;padding:.2rem .65rem;border-radius:1rem;background:#29495e;color:#fff;font-size:.8rem;line-height:1.5}
+#schR .sc-d{display:block;color:#d9e5ee;font-size:1rem;line-height:1.65}
+#schQ{max-width:100%;box-sizing:border-box;font-size:1rem}
+#schN,#schE{line-height:1.6}
+@media(max-width:600px){#schR a{padding:1rem}#schR b{font-size:1.1rem}}
+
+/* Keep dark-card contrast when the global light-reading theme is active. */
+html body main #schR#schR a,html body main #schR#schR b,html body main #schR#schR .sc-s{color:#fff!important;text-decoration:none!important}
+html body main #schR#schR .sc-d{color:#d9e5ee!important;text-decoration:none!important}
