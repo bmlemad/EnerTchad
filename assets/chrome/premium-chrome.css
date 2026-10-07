@@ -609,3 +609,30 @@ html:not(.et-plight):not(.et-jlight) .et-topic-index>summary span{color:#AAB5C6}
 html:not(.et-plight):not(.et-jlight):not(#c1):not(#c2) .et-chain a b{color:#132033!important}
 html:is(.et-plight,.et-jlight):not(#c1):not(#c2):not(#c3):not(#c4):not(#c5) main .et-dr-filters button[aria-pressed="true"]{color:#fff!important}
 html:is(.et-plight,.et-jlight):not(#c1):not(#c2) main [class*="hero"] .et-proofline .et-proof-status{color:rgba(245,247,250,.92)!important;border-color:rgba(245,247,250,.34)!important}
+/* ===== EnerTchad Floating actions : affichage et haut de page — 2026-10-07 ===== */
+/* Deux boutons ronds de meme taille, surface de la page, filet fin, ombre courte. Or en accent. */
+html:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4) body{--fab-bg:#FFFFFF;--fab-ink:#0A1A2F;--fab-line:#E3E6EB;--fab-gold:#B8913A;--fab-ring:#E3E6EB;--fab-shadow:0 1px 2px rgba(10,26,47,.06),0 10px 24px -8px rgba(10,26,47,.22)}
+html:not(.et-plight):not(.et-jlight):not(#f0):not(#f1):not(#f2):not(#f3):not(#f4) body{--fab-bg:#0F1E33;--fab-ink:#F3F1EC;--fab-line:rgba(243,241,236,.16);--fab-gold:#D9B567;--fab-ring:rgba(243,241,236,.14);--fab-shadow:0 1px 2px rgba(0,0,0,.3),0 12px 28px -8px rgba(0,0,0,.65)}
+html:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4) .lum-ctl{background:none!important;border:0!important;border-radius:0!important;box-shadow:none!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important;padding:0!important;right:20px!important;bottom:76px!important}
+html:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4) .lum-btn,html:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4) #toTop{width:44px!important;height:44px!important;padding:0!important;border-radius:50%!important;background:var(--fab-bg)!important;color:var(--fab-ink)!important;border:1px solid var(--fab-line)!important;box-shadow:var(--fab-shadow)!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important;display:grid!important;place-items:center!important;cursor:pointer!important;transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease,color .2s ease,opacity .3s ease,visibility .3s ease!important}
+html:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4) .lum-btn{color:var(--fab-gold)!important}
+html:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4) .lum-btn svg{width:20px!important;height:20px!important}
+html:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4) #toTop{right:20px!important;bottom:20px!important;opacity:0!important;visibility:hidden!important;transform:translateY(8px)!important;transform-origin:center!important;pointer-events:none!important}
+html:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4) #toTop.show{opacity:1!important;visibility:visible!important;transform:none!important;pointer-events:auto!important}
+html:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4) #toTop .ttr{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;transform:rotate(-90deg)!important;pointer-events:none!important}
+html:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4) #toTop .ttr circle{fill:none!important;stroke-width:2.5!important}
+html:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4) #toTop .ttt{stroke:var(--fab-ring)!important}
+html:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4) #toTop .ttp{stroke:var(--fab-gold)!important;stroke-linecap:round!important}
+html:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4) #toTop svg.ring{display:none!important}
+html:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4) #toTop>svg:not(.ttr):not(.ring){position:relative!important;width:18px!important;height:18px!important}
+html:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4) .lum-btn:hover,html:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4) #toTop.show:hover{transform:translateY(-2px)!important;border-color:var(--fab-gold)!important;box-shadow:0 2px 4px rgba(10,26,47,.08),0 14px 30px -10px rgba(10,26,47,.3)!important}
+html:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4) #toTop.show:hover{color:var(--fab-gold)!important}
+html:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4) .lum-btn:focus-visible,html:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4) #toTop:focus-visible{outline:2px solid var(--fab-gold)!important;outline-offset:3px!important}
+@media (max-width:1240px){
+html:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4) #toTop{right:14px!important;bottom:calc(72px + env(safe-area-inset-bottom))!important}
+html:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4) .lum-ctl{right:68px!important;bottom:calc(72px + env(safe-area-inset-bottom))!important}
+}
+@media (prefers-reduced-motion:reduce){
+html:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4) .lum-btn,html:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4) #toTop{transition:none!important}
+html:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4) .lum-btn:hover,html:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4) #toTop,html:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4) #toTop.show:hover{transform:none!important}
+}
