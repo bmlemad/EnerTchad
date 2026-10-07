@@ -421,7 +421,8 @@ html body main #schR#schR .sc-d{color:#d9e5ee!important;text-decoration:none!imp
 <input autocomplete="off" id="schQ" placeholder="E.g.: refining, EOR, local content, LPG…" spellcheck="false" style="width:100%;box-sizing:border-box;font:inherit;font-size:1.05rem;padding:13px 16px;border-radius:12px;border:1px solid rgba(127,150,180,.4);background:rgba(127,150,180,.08);color:inherit" type="search"/>
 <p style="font-size:.82rem;opacity:.6;margin:9px 0 0">Search covers the titles, descriptions and sections of the English pages.</p>
 </form><p aria-live="polite" id="schN" role="status" style="font-size:.88rem;opacity:.75;min-height:1.3em;margin:18px 0 10px"></p><ol id="schR" style="list-style:none;margin:0;padding:0"></ol><p hidden="" id="schE" style="font-size:.95rem;opacity:.8">No page matches. Try a shorter word, or browse the <a href="/plan-du-site-en">site map</a>.</p><p style="font-size:.88rem;opacity:.85;margin:30px 0 0">All pages: the <a href="/plan-du-site-en">site map</a>.</p></div></div></section>
-<script>(function(){var Q=document.getElementById('schQ'),R=document.getElementById('schR'),N=document.getElementById('schN'),E=document.getElementById('schE'),D=null;
+<script>(function(){var Q=document.getElementById('schQ'),R=document.getElementById('schR'),N=document.getElementById('schN'),E=document.getElementById('schE'),D=null,loadFailed=false;
+/* search-index-state */
 function fold(s){return s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase()}
 function esc(s){return s.replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
 function syncSearchContext(){var value=Q.value.trim();
@@ -432,7 +433,7 @@ document.querySelectorAll('a[href^="/recherche"]').forEach(function(link){
  if(value)url.searchParams.set('q',value);else url.searchParams.delete('q');
  link.setAttribute('href',url.pathname+url.search);
 });}
-function run(){syncSearchContext();var q=fold(Q.value.trim());if(!D||!q||q.length<2){R.innerHTML='';N.textContent='';E.hidden=true;return}
+function run(){syncSearchContext();var q=fold(Q.value.trim());if(!D){R.innerHTML='';E.hidden=true;N.textContent=loadFailed?"Search is temporarily unavailable. Reload the page to try again.":"Loading search…";return}if(!q||q.length<2){R.innerHTML='';N.textContent='';E.hidden=true;return}
 var terms=q.split(/\s+/).filter(Boolean);
 var out=[];
 for(var i=0;i<D.length;i++){var e=D[i],sc=0,ok=true;
@@ -444,7 +445,7 @@ out.sort(function(a,b){return b[0]-a[0]});out=out.slice(0,30);
 R.innerHTML=out.map(function(x){var e=x[1];return '<li><a href="'+e.u+'"><b>'+esc(e.t)+'</b><span class="sc-s">'+esc(e.s)+'</span><span class="sc-d">'+esc(e.d)+'</span></a></li>'}).join('');
 E.hidden=out.length>0;N.textContent=out.length?out.length+(out.length>1?' pages found':' page found'):'No pages found';
 }
-fetch('/assets/data/recherche-en.json?v=202610061100').then(function(r){return r.json()}).then(function(d){D=d.map(function(e){e._t=fold(e.t);e._d=fold(e.d);e._k=fold(e.k+' '+e.u);return e});run()});
+fetch('/assets/data/recherche-en.json?v=202610061100').then(function(r){if(!r.ok)throw new Error('search-index-http');return r.json()}).then(function(d){if(!Array.isArray(d))throw new Error('search-index-format');loadFailed=false;D=d.map(function(e){e._t=fold(e.t);e._d=fold(e.d);e._k=fold(e.k+' '+e.u);return e});run()}).catch(function(){loadFailed=true;D=null;run()});
 Q.addEventListener('input',run);
 try{var params=new URLSearchParams(location.search),m=location.hash.match(/^#q=(.+)$/);if(params.has('q'))Q.value=params.get('q');else if(m)Q.value=decodeURIComponent(m[1])}catch(_){}
 /* search-hash-change */addEventListener('hashchange',function(){try{var m=location.hash.match(/^#q=(.+)$/);if(m){Q.value=decodeURIComponent(m[1]);run()}}catch(_){}});
@@ -456,7 +457,7 @@ try{var params=new URLSearchParams(location.search),m=location.hash.match(/^#q=(
  link.setAttribute('href',url.pathname+url.search);
 },true);
 addEventListener('load',syncSearchContext);
-Q.focus();})();</script><script id="pp-sub-js">(function(){var s=document.querySelector(".pp-sub"),n=document.getElementById("nav");if(!s||!n)return;var r=0;function f(){r=0;var b=n.getBoundingClientRect().bottom;s.style.setProperty("--pp-st",Math.max(0,Math.round(b))+"px")}addEventListener("scroll",function(){if(!r)r=requestAnimationFrame(f)},{passive:true});addEventListener("resize",f);f()})();</script>
+run();Q.focus();})();</script><script id="pp-sub-js">(function(){var s=document.querySelector(".pp-sub"),n=document.getElementById("nav");if(!s||!n)return;var r=0;function f(){r=0;var b=n.getBoundingClientRect().bottom;s.style.setProperty("--pp-st",Math.max(0,Math.round(b))+"px")}addEventListener("scroll",function(){if(!r)r=requestAnimationFrame(f)},{passive:true});addEventListener("resize",f);f()})();</script>
 </main>
 <footer class="pft">
   <div class="wrap">
