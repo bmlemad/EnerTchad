@@ -1,0 +1,18 @@
+{
+  "name": "enertchad",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "prepare:site": "node scripts/next/prepare.mjs",
+    "dev": "npm run prepare:site && next dev",
+    "build": "npm run prepare:site && next build --webpack && node scripts/next/finalize.mjs",
+    "check:migration": "node scripts/next/verify.mjs"
+  },
+  "engines": { "node": ">=22" },
+  "dependencies": {
+    "next": "16.3.8",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "html-react-parser": "5.2.7"
+  }
+}

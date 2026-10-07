@@ -3,7 +3,7 @@ from pathlib import Path
 import re, json
 ROOT=Path(__file__).resolve().parents[1]
 REPORT=ROOT/"reports"/"benchmark-site-2026.md"
-pages=[p for p in ROOT.rglob("*.html") if not any(x in p.parts for x in {".git","node_modules","reports"})]
+pages=[p for p in ROOT.rglob("*.html") if not any(x in p.parts for x in {".git","node_modules","reports","public","out",".next",".generated"})]
 def local_size(url):
     clean=url.split("?",1)[0].split("#",1)[0]
     if not clean.startswith("/"): return None

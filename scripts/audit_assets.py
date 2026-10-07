@@ -5,7 +5,7 @@ import hashlib
 
 ROOT = Path(__file__).resolve().parents[1]
 REPORT = ROOT / "reports" / "assets-audit-2026.md"
-HTML = [p for p in ROOT.rglob("*.html") if ".git" not in p.parts and "node_modules" not in p.parts]
+HTML = [p for p in ROOT.rglob("*.html") if not any(x in p.parts for x in {".git", "node_modules", "public", "out", ".next", ".generated"})]
 TEXT_FILES = HTML + list((ROOT / "assets").rglob("*.css")) + list((ROOT / "assets").rglob("*.js"))
 TEXT = {}
 for p in TEXT_FILES:

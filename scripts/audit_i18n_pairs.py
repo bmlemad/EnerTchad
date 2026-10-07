@@ -45,7 +45,7 @@ def read_page(path):
 
 pages = {}
 for path in ROOT.rglob("*.html"):
-    if any(part in {".git", "node_modules"} for part in path.parts):
+    if any(part in {".git", "node_modules", "public", "out", ".next", ".generated"} for part in path.parts):
         continue
     rel_path = path.relative_to(ROOT).as_posix()
     if path.name in EXCLUDE or any(rel_path.startswith(prefix) for prefix in EXCLUDE_PREFIXES):

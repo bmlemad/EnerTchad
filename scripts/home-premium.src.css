@@ -162,8 +162,21 @@
   @M .ph-agenda li{grid-template-columns:minmax(0,1fr);gap:6px}
   @M .ph-split img{max-height:300px}
   @M .ph-quick a{border-right:0!important;padding-left:0!important;border-bottom:1px solid var(--ph-line)}
-  @M .ph-hero{background-image:url(/assets/img/p/pompe-petrole-1000.webp);background-position:40% 70%;min-height:640px}
-  @M .ph-hero .ph-wrap{padding-top:130px}
+  @M .ph-hero{background-image:url(/assets/img/p/pompe-petrole-1000.webp);background-position:40% 70%;min-height:0}
+  @M .ph-hero .ph-wrap{padding-top:76px;padding-bottom:28px;gap:18px}
+  @M section{padding:52px 0}
+  @M .ph-head{margin-bottom:28px}
+  @M .ph-hero h1{font-size:clamp(2.6rem,10.8vw,4rem);line-height:1.02;overflow-wrap:break-word}
+  @M .ph-hero .ph-sub,@M .ph-lead{font-size:1rem;line-height:1.65}
+  @M .ph-note{font-size:.875rem;line-height:1.6;padding-bottom:0;color:rgba(255,255,255,.85)}
+  @M .ph-actions{gap:10px 18px}
+  @M .ph-actions a{min-height:48px;max-width:100%;white-space:normal}
+  @M .ph-hero .ph-actions{display:grid;grid-template-columns:minmax(0,1fr);gap:8px;margin-top:0}
+  @M .ph-hero .ph-actions .ph-btn{justify-content:center}
+  @M .ph-hero .ph-actions .ph-link{justify-content:space-between;padding:8px 0}
+  @M .ph-figs{margin-top:14px}
+  @M .ph-figs>div{padding:12px 0}
+  @M .ph-figs b{font-size:clamp(1.8rem,7vw,2.6rem)}
   @M .ph-hero::before{background:linear-gradient(180deg,rgba(7,17,31,.5),rgba(7,17,31,.9))}
   @M .ph-night{background-image:url(/assets/img/p/dunes-couchant-1000.webp)}
 }

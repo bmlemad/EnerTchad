@@ -1,3 +1,8 @@
 .DS_Store
 *.command
 Thumbs.db
+node_modules
+.next/
+out/
+public/
+.generated/

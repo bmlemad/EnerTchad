@@ -16,3 +16,54 @@
 
 /* Contraste AA des libelles dores sur fond clair (2,8 a 3,0 avant ; 6,3 vise). Le mot Tchad du logo garde l or de marque. */
 html:not(#g1):not(#g2) :is(.sp-k,.sp-doc .meta,.sp-card .meta,.et-quick-entry a){color:#7a5510}
+
+/* Publication: accessible footer links on strategic pages. */
+.sp-footer a{display:inline-flex;align-items:center;min-height:44px;color:inherit;text-underline-offset:3px}.sp-footer a:focus-visible{outline:2px solid var(--sp-gold);outline-offset:3px;border-radius:3px}
+
+/* Native mobile navigation keeps all strategic routes available without JavaScript. */
+.sp-mobile-menu{display:none}
+.sp-mobile-menu summary{min-height:44px;min-width:70px;display:flex;align-items:center;justify-content:center;gap:8px;cursor:pointer;border:1px solid var(--sp-line);border-radius:12px;font-size:.88rem;font-weight:700;list-style:none}
+.sp-mobile-menu summary::-webkit-details-marker{display:none}
+.sp-mobile-menu summary::after{content:"+";font-size:1.2rem}
+.sp-mobile-menu[open] summary::after{content:"−"}
+.sp-mobile-menu nav{position:absolute;top:100%;left:0;right:0;display:grid;gap:4px;padding:14px;background:var(--sp-paper);border-bottom:1px solid var(--sp-line);box-shadow:0 12px 24px rgba(0,0,0,.12);max-height:calc(100svh - 90px);overflow:auto}
+.sp-mobile-menu nav a{display:flex;align-items:center;min-height:44px;padding:10px 14px;text-decoration:none;border-radius:10px;overflow-wrap:anywhere}
+.sp-mobile-menu nav a:hover{background:rgba(183,139,50,.1)}
+.sp-mobile-menu summary:focus-visible,.sp-mobile-menu nav a:focus-visible,.sp-nav a:focus-visible{outline:2px solid var(--sp-gold);outline-offset:3px}
+@media(max-width:900px){.sp-topin>.sp-nav{display:none}.sp-mobile-menu{display:block}}
+@media print{.sp-mobile-menu{display:none}}
+
+.sp-maphelp{display:none}
+.sp-map:focus-visible{outline:2px solid var(--sp-blue);outline-offset:3px}
+
+/* Phone layouts: shorter reading rhythm, reachable controls and legible diagrams. */
+@media screen and (max-width:640px){
+  .sp-wrap{width:calc(100% - 36px);max-width:var(--sp-max)}
+  .sp-topin{min-height:64px;align-items:center;padding:8px 0;gap:12px}
+  .sp-brand{display:inline-flex;align-items:center;min-height:44px}
+  .sp-hero{padding:40px 0 32px}.sp-section{padding:44px 0}
+  .sp h1{font-size:clamp(2.5rem,11vw,4rem);line-height:1.03;overflow-wrap:break-word}
+  .sp h2{font-size:clamp(2rem,8vw,2.8rem);line-height:1.1}
+  .sp-lead,.sp-head p{font-size:1rem;line-height:1.65}
+  .sp-head{margin-bottom:24px}.sp-card,.sp-kpi,.sp-callout{padding:20px;min-width:0;overflow-wrap:break-word}
+  .sp-card p{font-size:1rem}.sp-doc{min-height:0}.sp-doc .date{padding-top:16px}
+  .sp-actions{display:grid;grid-template-columns:minmax(0,1fr);gap:10px;margin-top:22px}
+  .sp-btn{min-height:48px;justify-content:center;text-align:center;white-space:normal;overflow-wrap:anywhere;font-size:.94rem;line-height:1.4}
+  .sp-trust{margin-top:22px}.sp-badge{line-height:1.5;white-space:normal}
+  .sp-chain{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .sp-node{min-height:0;padding:18px 14px;border-right:1px solid var(--sp-line)}
+  .sp-node b{margin-top:12px;overflow-wrap:break-word}.sp-node small{font-size:.875rem}
+  .sp-node:nth-last-child(-n+2){border-bottom:0}
+  .sp-map{min-height:0;overflow-x:auto;overscroll-behavior-x:contain}
+  .sp-map svg{width:680px;min-height:0;height:286px;max-width:none}
+  .sp-maphelp{display:block;margin-top:5px}
+  .sp-mapnote{position:static;width:max-content;max-width:calc(100% - 24px);white-space:normal;margin:0 12px 12px;line-height:1.5}
+  .sp-footer{padding:24px 0 max(28px,env(safe-area-inset-bottom))}
+  .sp-mobile-menu nav{padding-bottom:max(14px,env(safe-area-inset-bottom));overscroll-behavior:contain}
+  .sp-mobile-menu nav a{min-height:48px}
+}
+@media screen and (max-width:359px){
+  .sp-chain{grid-template-columns:minmax(0,1fr)}
+  .sp-node{border-right:0}.sp-node:nth-last-child(2){border-bottom:1px solid var(--sp-line)}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}

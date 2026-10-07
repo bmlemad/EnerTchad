@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 """Contrôle d'intégrité du site publié (exécuté par GitHub Actions)."""
 import re, glob, os, json, sys
-pages = sorted(glob.glob('**/*.html', recursive=True))
+pages = sorted(p for p in glob.glob('**/*.html', recursive=True) if not any(x in p.split('/') for x in {'node_modules','public','out','.next','.generated'}))
 # Fichiers techniques/non-SEO exclus du contrôle éditorial.
 EXCLUDED = {'404.html', 'google9146d41010c5e702.html'}
 pages = [p for p in pages if p not in EXCLUDED and not p.startswith('docs-sources/')]
 allf = set()
 for r, d, fs in os.walk('.'):
-    if '.git' in r: continue
+    d[:] = [x for x in d if x not in {'.git','node_modules','public','out','.next','.generated'}]
     for f in fs: allf.add(os.path.normpath(os.path.join(r, f)).replace('\\', '/'))
 # Ch628 : les redirections et reecritures de vercel.json sont des destinations valides (cleanUrls : /x et /x.html)
 redir = set()

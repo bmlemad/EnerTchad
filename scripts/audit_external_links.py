@@ -6,7 +6,7 @@ import re, ssl
 ROOT=Path(__file__).resolve().parents[1]
 urls=set()
 for p in ROOT.rglob('*.html'):
-    if any(x in p.parts for x in {'.git','node_modules','reports'}): continue
+    if any(x in p.parts for x in {'.git','node_modules','reports','public','out','.next','.generated'}): continue
     urls.update(re.findall(r'''(?:href|src)=["'](https?://[^"']+)["']''',p.read_text(encoding='utf-8',errors='ignore'),re.I))
 for p in [ROOT/'robots.txt',ROOT/'sitemap.xml']:
     if p.exists(): urls.update(re.findall(r'''https?://[^\\s<>"']+''',p.read_text(encoding='utf-8',errors='ignore')))

@@ -1,5 +1,10 @@
 [build]
-  publish = "."
+  command = "npm run build && npm run check:migration"
+  publish = "out"
+
+[build.environment]
+  NODE_VERSION = "22"
+  NETLIFY_NEXT_PLUGIN_SKIP = "true"
 
 [build.processing.html]
   pretty_urls = true

@@ -7,7 +7,7 @@ import re
 ROOT=Path(__file__).resolve().parents[1]
 REPORT=ROOT/"reports/ui-audit-2026.md"
 pages=sorted(ROOT.rglob('*.html'))
-skip_dirs={'.git','node_modules','reports'}
+skip_dirs={'.git','node_modules','reports','public','out','.next','.generated'}
 pages=[p for p in pages if not any(x in skip_dirs for x in p.parts)]
 TECHNICAL_EXEMPT = {'404.html','ar.html','google9146d41010c5e702.html'}
 PRINT_PREFIXES = ('docs-sources/',)

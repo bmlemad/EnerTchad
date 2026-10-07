@@ -6,7 +6,7 @@ from collections import defaultdict
 
 ROOT=Path(__file__).resolve().parents[1]
 REPORT=ROOT/"reports"/"resource-cost-audit-2026.md"
-pages=[p for p in ROOT.rglob("*.html") if not any(x in p.parts for x in {".git","node_modules","reports"})]
+pages=[p for p in ROOT.rglob("*.html") if not any(x in p.parts for x in {".git","node_modules","reports","public","out",".next",".generated"})]
 
 def local(url):
     u=url.split("?",1)[0].split("#",1)[0]

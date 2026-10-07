@@ -3,7 +3,7 @@
 from pathlib import Path
 import re
 ROOT=Path(__file__).resolve().parents[1]; OUT=ROOT/"reports"/"evidence-audit-2026.md"
-pages=[p for p in ROOT.rglob("*.html") if not any(x in p.parts for x in {".git","node_modules","reports"})]
+pages=[p for p in ROOT.rglob("*.html") if not any(x in p.parts for x in {".git","node_modules","reports","public","out",".next",".generated"})]
 number=re.compile(r"\b\d+(?:[.,]\d+)?\s*(?:%|kb/j|kbpd|M\s*FCFA|Md\s*FCFA|milliards?|millions?)\b",re.I)
 source=re.compile(r"source|référence|document|rapport|mis(?:e)? à jour|actualis",re.I)
 rows=[]

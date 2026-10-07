@@ -7,7 +7,7 @@ Produit reports/site-architecture-2026.md sans modifier les pages.
 import glob, html, os, re
 from collections import Counter, defaultdict
 
-PAGES = sorted(glob.glob("**/*.html", recursive=True))
+PAGES = sorted(p for p in glob.glob("**/*.html", recursive=True) if not any(x in p.split("/") for x in {"node_modules","public","out",".next",".generated"}))
 EXCLUDED = {"404.html", "google9146d41010c5e702.html"}
 
 def read(path):

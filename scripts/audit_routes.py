@@ -19,7 +19,7 @@ if CONFIG.exists():
                 CONFIG_ROUTES.add(src.rstrip("/") or "/")
     except (OSError, ValueError):
         pass
-PAGES=sorted(p for p in ROOT.rglob("*.html") if ".git" not in p.parts and "reports" not in p.parts)
+PAGES=sorted(p for p in ROOT.rglob("*.html") if not any(x in p.parts for x in {".git", "reports", "node_modules", "public", "out", ".next", ".generated"}))
 ROUTED={"/plan-du-site","/accessibilite","/amont/calculateur-baril-additionnel","/configurateur-service-integre"}
 SKIP={"404.html","google9146d41010c5e702.html"}
 

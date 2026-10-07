@@ -5,7 +5,7 @@ import re
 
 ROOT = Path(__file__).resolve().parents[1]
 REPORT = ROOT / "reports" / "markup-efficiency-audit-2026.md"
-pages = [p for p in ROOT.rglob("*.html") if not any(x in p.parts for x in {".git","node_modules","reports"})]
+pages = [p for p in ROOT.rglob("*.html") if not any(x in p.parts for x in {".git","node_modules","reports","public","out",".next",".generated"})]
 
 EMPTY = re.compile(r"<([a-z][\w:-]*)(?:\s[^>]*)?>\s*</\1\s*>", re.I)
 VOID_XHTML = re.compile(r"<(?:area|base|br|col|embed|hr|img|input|link|meta|param|source|track|wbr)(?:\s[^>]*)?\s*/>", re.I)

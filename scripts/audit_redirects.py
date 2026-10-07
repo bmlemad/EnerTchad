@@ -5,7 +5,7 @@ ROOT=Path(__file__).resolve().parents[1]
 cfg=ROOT/'vercel.json'
 if not cfg.exists(): sys.exit('vercel.json absent')
 v=json.loads(cfg.read_text(encoding='utf-8'))
-files={p.relative_to(ROOT).as_posix() for p in ROOT.rglob('*') if p.is_file() and '.git' not in p.parts}
+files={p.relative_to(ROOT).as_posix() for p in ROOT.rglob('*') if p.is_file() and not any(x in p.parts for x in {'.git','node_modules','public','out','.next','.generated'})}
 def exists(path):
     path=(path.split('#',1)[0].split('?',1)[0] or '/').lstrip('/')
     c={path,path.rstrip('/')+'/index.html',path+'.html'}
