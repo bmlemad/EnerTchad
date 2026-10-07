@@ -214,3 +214,27 @@ try{(function(){
   else{a.href='/essentiel';a.textContent='90 secondes';a.setAttribute('aria-label','EnerTchad en 90 secondes');}
   var first=u.querySelector('a');u.insertBefore(a,first||null);
 })()}catch(e){}
+
+/* Pied de page : rubriques repliables sur mobile (boutons), toujours ouvertes sur ordinateur. */
+try{(function(){
+ function go(){
+  var f=document.querySelector('footer.pft');if(!f||f.classList.contains('pft-acc'))return;
+  var cols=f.querySelectorAll('.foot-col');if(!cols.length)return;
+  var mq=window.matchMedia?matchMedia('(max-width:900px)'):null,items=[];
+  [].forEach.call(cols,function(c,i){
+   var h=c.querySelector('h3');if(!h)return;
+   var p=document.createElement('div');p.className='pft-acc-panel';p.id='pft-acc-'+i;
+   [].slice.call(c.children).forEach(function(x){if(x!==h)p.appendChild(x)});
+   c.appendChild(p);
+   var b=document.createElement('button');b.type='button';b.className='pft-acc-btn';b.setAttribute('aria-controls',p.id);
+   b.innerHTML='<span></span><i aria-hidden="true"></i>';b.firstChild.textContent=h.textContent;
+   h.textContent='';h.appendChild(b);
+   b.addEventListener('click',function(){if(!mq||!mq.matches)return;var o=b.getAttribute('aria-expanded')!=='true';b.setAttribute('aria-expanded',o?'true':'false');p.hidden=!o});
+   items.push([b,p]);
+  });
+  function sync(){var m=mq&&mq.matches;items.forEach(function(x){x[0].setAttribute('aria-expanded',m?'false':'true');x[1].hidden=!!m;if(m)x[0].removeAttribute('tabindex');else x[0].setAttribute('tabindex','-1')})}
+  sync();if(mq){if(mq.addEventListener)mq.addEventListener('change',sync);else if(mq.addListener)mq.addListener(sync)}
+  f.classList.add('pft-acc');
+ }
+ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',go);else go();
+})()}catch(e){}
