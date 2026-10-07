@@ -10,6 +10,10 @@ HEAD = [
     "# ce fichier se regenere : python3 scripts/gen_netlify_redirects.py",
     "# Redirections : 308 forcees (!), comme Vercel qui les applique avant les fichiers.",
     "# Reecritures : 200 non forcees, comme Vercel qui sert d abord un fichier existant.",
+    "# Domaine : l ancienne adresse enertchad.netlify.app redirige (301) vers enertchad.com,",
+    "# pour qu une seule adresse soit indexee. Les apercus de deploiement ne sont pas touches.",
+    "",
+    "https://enertchad.netlify.app/* https://enertchad.com/:splat 301!",
     "",
 ]
 
@@ -31,7 +35,7 @@ def main():
             dst += '.html'
         lines.append('%s %s 200' % (r['source'], dst))
     open('_redirects', 'w', encoding='utf-8').write('\n'.join(lines) + '\n')
-    print(len(lines) - len(HEAD), 'regles ecrites dans _redirects')
+    print(len(lines) - len(HEAD), 'regles ecrites dans _redirects (plus la redirection de domaine)')
 
 if __name__ == '__main__':
     main()
