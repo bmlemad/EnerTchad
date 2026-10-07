@@ -1,6 +1,6 @@
 const { test, expect } = require('@playwright/test');
 
-const base = process.env.SITE_URL || 'https://enertchad.netlify.app/';
+const base = process.env.SITE_URL || 'https://enertchad.com/';
 
 test('document register — catalog is valid and every published file resolves', async ({ request }) => {
   const response = await request.get(new URL('/assets/data/document-register.json', base).href, { timeout: 30000 });

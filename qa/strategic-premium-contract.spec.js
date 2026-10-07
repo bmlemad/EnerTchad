@@ -1,12 +1,12 @@
 const { test, expect } = require('@playwright/test');
 
-const base = process.env.SITE_URL || 'https://enertchad.netlify.app/';
+const base = process.env.SITE_URL || 'https://enertchad.com/';
 
 const strategicPages = [
-  ['/essentiel', 'https://enertchad.netlify.app/essentiel'],
-  ['/essentiel-en', 'https://enertchad.netlify.app/essentiel-en'],
-  ['/investor-center', 'https://enertchad.netlify.app/investor-center'],
-  ['/investor-center-en', 'https://enertchad.netlify.app/investor-center-en']
+  ['/essentiel', 'https://enertchad.com/essentiel'],
+  ['/essentiel-en', 'https://enertchad.com/essentiel-en'],
+  ['/investor-center', 'https://enertchad.com/investor-center'],
+  ['/investor-center-en', 'https://enertchad.com/investor-center-en']
 ];
 
 test('strategic pages — canonical, title and primary content are present', async ({ page }) => {

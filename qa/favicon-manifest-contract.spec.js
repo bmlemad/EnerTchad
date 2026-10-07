@@ -1,6 +1,6 @@
 const { test, expect } = require('@playwright/test');
 
-const base = process.env.SITE_URL || 'https://enertchad.netlify.app/';
+const base = process.env.SITE_URL || 'https://enertchad.com/';
 
 test('platform metadata — favicon, touch icon and manifest references are present', async ({ browser }) => {
   const page = await browser.newPage();

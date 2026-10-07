@@ -1,6 +1,6 @@
 const { test, expect } = require('@playwright/test');
 
-const base = process.env.SITE_URL || 'https://enertchad.netlify.app/';
+const base = process.env.SITE_URL || 'https://enertchad.com/';
 
 const matrix = [
   ['/amont/', 'fr', '/amont/', { fr: '/amont/', en: '/pole-amont-en', ar: '/ar-amont', 'x-default': '/amont/' }],

@@ -1,6 +1,6 @@
 const { test, expect } = require('@playwright/test');
 
-const base = process.env.SITE_URL || 'https://enertchad.netlify.app/';
+const base = process.env.SITE_URL || 'https://enertchad.com/';
 const paths = ['/contact', '/investisseurs', '/carrieres', '/clients'];
 
 test('forms — required fields expose native validation semantics and usable submit controls', async ({ browser }) => {

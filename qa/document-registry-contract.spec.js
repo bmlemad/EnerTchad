@@ -1,6 +1,6 @@
 const { test, expect } = require('@playwright/test');
 
-const base = process.env.SITE_URL || 'https://enertchad.netlify.app/';
+const base = process.env.SITE_URL || 'https://enertchad.com/';
 
 test('public document registry — inventory is unique, typed and resolvable', async ({ request }) => {
   const response = await request.get(new URL('/assets/data/document-registry.json', base).href, { timeout: 30000 });

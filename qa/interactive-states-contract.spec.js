@@ -1,6 +1,6 @@
 const { test, expect } = require('@playwright/test');
 
-const base = process.env.SITE_URL || 'https://enertchad.netlify.app/';
+const base = process.env.SITE_URL || 'https://enertchad.com/';
 const hubs = ['/', '/amont/', '/intermediaire/', '/aval/', '/greentech/'];
 
 test.describe('interactive states — hub controls and CTA integrity', () => {

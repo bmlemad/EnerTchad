@@ -1,6 +1,6 @@
 const { test, expect } = require('@playwright/test');
 
-const base = process.env.SITE_URL || 'https://enertchad.netlify.app/';
+const base = process.env.SITE_URL || 'https://enertchad.com/';
 const paths = ['/', '/index-en', '/ar', '/amont/', '/aval/', '/contact'];
 
 test('fonts — webfont resources use efficient WOFF2 delivery and preload consistently', async ({ browser }) => {
