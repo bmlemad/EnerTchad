@@ -15,6 +15,7 @@ jobs:
         with:
           node-version: 22
           cache: npm
+      - run: node --test scripts/next/prepare.test.mjs
       - run: npm ci
       - run: npm run build
         env:
