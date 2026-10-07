@@ -7,7 +7,7 @@ import { dirname, extname, resolve } from 'node:path';
 const ignored = new Set(['.git','.github','node_modules','public','out','.next','.generated','reports','docs-sources','app','lib','scripts']);
 function inventory(directory = '.') {
   return readdirSync(directory, { withFileTypes: true }).flatMap(entry => {
-    if (ignored.has(entry.name) || entry.name.startsWith('.')) return [];
+    if (ignored.has(entry.name) || (entry.name.startsWith('.') && entry.name !== '.well-known')) return [];
     const path = directory === '.' ? entry.name : directory + '/' + entry.name;
     return entry.isDirectory() ? inventory(path) : entry.isFile() ? [path] : [];
   });
@@ -26,7 +26,8 @@ const html = tracked.filter(p => p.endsWith('.html') && !excluded.test(p));
 const native = ['essentiel', 'essentiel-en', 'investor-center', 'investor-center-en'];
 const pages = html.map(source => ({ source, route: source === 'index.html' ? '/' : '/' + source.slice(0, -5), native: native.includes(source.slice(0, -5)) }));
 const extensions = new Set(['.css','.js','.webp','.woff2','.jpg','.pdf','.png','.svg','.xlsx','.pptx','.zip','.webmanifest','.ics','.csv','.xml','.txt']);
-const assets = tracked.filter(p => !excluded.test(p) && !p.startsWith('.') && (p.startsWith('assets/') || extensions.has(extname(p)) || ['_headers','_redirects','CNAME'].includes(p)) && !['package-lock.json','package.json'].includes(p));
+const publicWellKnown = new Set(['.well-known/security.txt']);
+const assets = tracked.filter(p => publicWellKnown.has(p) || ( !excluded.test(p) && !p.startsWith('.') && (p.startsWith('assets/') || extensions.has(extname(p)) || ['_headers','_redirects','CNAME'].includes(p)) && !['package-lock.json','package.json'].includes(p)));
 await rm('public', { recursive: true, force: true });
 // A clean export avoids retaining old chunks when rebuilding in the same workspace.
 await rm('out', { recursive: true, force: true, maxRetries: 3, retryDelay: 100 });
