@@ -601,3 +601,11 @@ html:not(.et-plight):not(.et-jlight) .et-proofline::before{color:#E6C978}
 .et-topic-index>.pp-grid{padding:0 18px 18px}
 html:not(.et-plight):not(.et-jlight) .et-topic-index{background:rgba(255,255,255,.025)}
 html:not(.et-plight):not(.et-jlight) .et-topic-index>summary span{color:#AAB5C6}
+
+/* Contrastes QA du 7 octobre 2026 (mesures : 1,15 / 1,04 / 1,55 avant ; 12,8 / 16,5 / 14,9 apres).
+   1. Accueil, theme sombre : titres des cartes de la chaine sur carte claire.
+   2. Registre documentaire, theme clair : filtre actif, texte fonce sur pastille foncee.
+   3. Bandeau de preuve dans un hero, theme clair : pastille foncee sur fond fonce. */
+html:not(.et-plight):not(.et-jlight):not(#c1):not(#c2) .et-chain a b{color:#132033!important}
+html:is(.et-plight,.et-jlight):not(#c1):not(#c2):not(#c3):not(#c4):not(#c5) main .et-dr-filters button[aria-pressed="true"]{color:#fff!important}
+html:is(.et-plight,.et-jlight):not(#c1):not(#c2) main [class*="hero"] .et-proofline .et-proof-status{color:rgba(245,247,250,.92)!important;border-color:rgba(245,247,250,.34)!important}
