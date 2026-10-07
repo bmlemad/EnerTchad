@@ -22,6 +22,11 @@ for (const page of manifest.pages) {
   }
   assert.equal(text(exported.find(el => el.name === 'title')),text(original.find(el => el.name === 'title')));
   assert.equal(exported.find(el => el.name === 'meta' && el.attribs.name === 'description')?.attribs.content,original.find(el => el.name === 'meta' && el.attribs.name === 'description')?.attribs.content);
+  const robots = original.find(el => el.name === 'meta' && el.attribs.name === 'robots');
+  assert.equal(exported.find(el => el.name === 'meta' && el.attribs.name === 'robots')?.attribs.content, robots?.attribs.content, page.source+' robots directive changed');
+  for (const stylesheet of original.filter(el => el.name === 'link' && el.attribs.rel === 'stylesheet' && !el.attribs.href?.split('?')[0].endsWith('/strategic-premium.css'))) {
+    assert(exported.some(el => el.name === 'link' && el.attribs.rel === 'stylesheet' && el.attribs.href === stylesheet.attribs.href), page.source+' lost stylesheet '+stylesheet.attribs.href);
+  }
   const headings = exported.filter(el => el.name === 'h1');
   assert.equal(headings.length,1,page.source+' heading count');
   assert.equal(text(headings[0]),text(original.find(el => el.name === 'h1')));
