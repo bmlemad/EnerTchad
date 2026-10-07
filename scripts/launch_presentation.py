@@ -5,11 +5,12 @@ def launch_presentation(text, name, en):
     search = name in ('recherche.html', 'recherche-en.html')
     strategic = name in ('nos-activites.html','nos-activites-en.html','projets.html','projets-en.html','gouvernance.html','gouvernance-en.html','investor-center.html','investor-center-en.html')
     if search or strategic:
+        from pathlib import Path
         sheet = 'search' if search else 'publication-status'
-        link = f'<link rel="stylesheet" href="/assets/chrome/{sheet}.css?b=2026100702"/>'
-        text = re.sub(r'/assets/chrome/' + sheet + r'\.css\?b=\d+', '/assets/chrome/' + sheet + '.css?b=2026100702', text)
-        if link not in text:
-            text = text.replace('</head>', link + '\n</head>', 1)
+        css = (Path(__file__).resolve().parents[1] / 'assets/chrome' / (sheet + '.css')).read_text()
+        text = re.sub(r'<link[^>]*href="/assets/chrome/(?:search|publication-status)\.css[^"\n]*"[^>]*>', '', text)
+        text = re.sub(r'<style id="et-launch-style">.*?</style>\n?', '', text, flags=re.S)
+        text = text.replace('</head>', '<style id="et-launch-style">' + css + '</style>\n</head>', 1)
     if strategic:
         title = 'Status and published documents' if en else 'Statut et documents publiés'
         status = ('EnerTchad is in formation. The industrial segments and projects describe a target programme. Implementation depends on financing, permits and formalised partnerships.' if en else 'EnerTchad est en constitution. Les segments industriels et les projets décrivent un programme cible. Leur réalisation dépend des financements, des autorisations et des partenariats formalisés.')
