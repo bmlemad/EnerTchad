@@ -13,7 +13,7 @@ Dépôt = site (fichiers statiques à la racine). Aucune étape de build côté 
 - **Vercel** : Framework *Other*, build command vide, output = racine. `vercel.json` applique en-têtes de sécurité + cleanUrls + trailingSlash.
 - **Cloudflare Pages** : build command vide, output `/`. `_redirects` + `_headers` natifs.
 
-Domaine : `enertchad.td`.
+Domaine : `enertchad.com`.
 
 ## Régénérer le site
 

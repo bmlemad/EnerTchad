@@ -13,8 +13,8 @@
 ## Coordonnées
 - **Siège** : Block D, 2e étage, bureau 23, Quartier Sabangali, Cité du 1er décembre, N'Djamena, Tchad
 - **RCCM** : immatriculation en cours
-- **Domaine** : enertchad.td
-- **Contact presse** : contact@enertchad.td · +235 99 29 86 96
+- **Domaine** : enertchad.com
+- **Contact presse** : contact@enertchad.com · +235 99 29 86 96
 
 ## Capital (trajectoire visée)
 - Capital fondateur : 100 000 000 FCFA
