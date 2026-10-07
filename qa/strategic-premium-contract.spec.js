@@ -44,7 +44,7 @@ test('investor command center — evidence and risk exits remain visible', async
     expect(hrefs).toContain('/Fiche_Investisseur_EnerTchad.pdf');
     expect(hrefs).toContain('/Data_Book_EnerTchad.xlsx');
     expect(hrefs.some(h => h && h.includes('avertissements')), path + ' risk disclosure link').toBeTruthy();
-    expect(hrefs.some(h => h === 'mailto:invest@enertchad.td'), path + ' investor contact').toBeTruthy();
+    expect(hrefs.some(h => h === 'mailto:invest@enertchad.com'), path + ' investor contact').toBeTruthy();
   }
 });
 
