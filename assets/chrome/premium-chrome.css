@@ -684,3 +684,15 @@ html:not(#k0):not(#k1):not(#k2):not(#k3):not(#k4):not(#k5):not(#k6):not(#k7):not
 html:not(#k0):not(#k1):not(#k2):not(#k3):not(#k4):not(#k5):not(#k6):not(#k7):not(#k8):not(#k9):not(#k10):not(#k11):not(#k12):not(#k13):not(#k14):not(#k15):not(#k16):not(#k17):not(#k18):not(#k19):not(#k20):not(#k21):not(#k22):not(#k23):not(#k24):not(#k25) footer.pft .foot-legal{font-size:.75rem!important}
 }
 @media (prefers-reduced-motion:reduce){html:not(#k0):not(#k1):not(#k2):not(#k3):not(#k4):not(#k5):not(#k6):not(#k7):not(#k8):not(#k9):not(#k10):not(#k11):not(#k12):not(#k13):not(#k14):not(#k15):not(#k16):not(#k17):not(#k18):not(#k19):not(#k20):not(#k21):not(#k22):not(#k23):not(#k24):not(#k25) footer.pft.pft-acc .pft-acc-btn i{transition:none!important}}
+
+/* ===== EnerTchad Panneau d affichage aligne sur le theme — 2026-10-07 ===== */
+/* Meme surface que les boutons ronds : opaque, clair en lecture claire, marine en sombre. */
+html:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4) body{--lum-h:#7A5A12}
+html:not(.et-plight):not(.et-jlight):not(#f0):not(#f1):not(#f2):not(#f3):not(#f4) body{--lum-h:#D9B567}
+html:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4) .lum-panel{background:var(--fab-bg)!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important;border:1px solid var(--fab-line)!important;border-radius:16px!important;box-shadow:var(--fab-shadow)!important;color:var(--fab-ink)!important;padding:16px 18px!important}
+html:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4) .lum-panel .lum-h{color:var(--lum-h)!important}
+html:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4) .lum-panel .lum-range{accent-color:var(--fab-gold)!important}
+html:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4) .lum-panel .lum-presets button,html:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4) .lum-panel #etThemeBtn.in-panel{color:var(--fab-ink)!important;background:transparent!important;border:1px solid var(--fab-line)!important;min-height:36px!important;border-radius:10px!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important;box-shadow:none!important;text-shadow:none!important}
+html:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4) .lum-panel .lum-presets button:hover,html:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4) .lum-panel #etThemeBtn.in-panel:hover{border-color:var(--fab-gold)!important;background:rgba(184,145,58,.10)!important}
+html:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4) .lum-panel .lum-presets button[aria-pressed="true"],html:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4) .lum-panel #etThemeBtn.in-panel[aria-pressed="true"]{border-color:var(--fab-gold)!important;background:rgba(184,145,58,.14)!important;color:var(--lum-h)!important;font-weight:600!important}
+html:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4) .lum-panel button:focus-visible,html:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4) .lum-panel .lum-range:focus-visible{outline:2px solid var(--fab-gold)!important;outline-offset:2px!important}
