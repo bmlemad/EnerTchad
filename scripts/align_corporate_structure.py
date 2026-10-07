@@ -3,6 +3,7 @@
 Run from the repository root after regenerating pages. Idempotent; keeps URLs,
 page-specific language links, disclosure text and navigation DOM contracts.
 """
+from launch_presentation import launch_presentation
 from pathlib import Path
 import json
 import re
@@ -213,6 +214,7 @@ def main():
         old = page.read_text(encoding='utf-8')
         text = old
         en = bool(re.search(r'<html[^>]*lang="en', text))
+        text = launch_presentation(text, page.name, en)
         # Arabic and standalone tools have their own navigation contract.
         if not re.search(r'<html[^>]*lang="(?:fr|en)', text):
             continue
