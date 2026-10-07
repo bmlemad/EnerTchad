@@ -696,3 +696,9 @@ html:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4) .lum-panel .lum-presets button
 html:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4) .lum-panel .lum-presets button:hover,html:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4) .lum-panel #etThemeBtn.in-panel:hover{border-color:var(--fab-gold)!important;background:rgba(184,145,58,.10)!important}
 html:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4) .lum-panel .lum-presets button[aria-pressed="true"],html:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4) .lum-panel #etThemeBtn.in-panel[aria-pressed="true"]{border-color:var(--fab-gold)!important;background:rgba(184,145,58,.14)!important;color:var(--lum-h)!important;font-weight:600!important}
 html:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4) .lum-panel button:focus-visible,html:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4) .lum-panel .lum-range:focus-visible{outline:2px solid var(--fab-gold)!important;outline-offset:2px!important}
+
+/* Page contact : les trois icones sociales s empilaient en colonne (liens de 544 x 27 px, icone de 19 px).
+   On les aligne en rangee, avec une cible de 44 px comme dans le pied de page. */
+html:not(#s1):not(#s2) .pp-cell:has(> a[href*="linkedin.com/company"]){flex-direction:row;flex-wrap:wrap;align-items:center;gap:10px}
+html:not(#s1):not(#s2) .pp-cell:has(> a[href*="linkedin.com/company"]) > a{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;flex:0 0 44px;border:1px solid currentColor;border-radius:50%;opacity:.86}
+html:not(#s1):not(#s2) .pp-cell:has(> a[href*="linkedin.com/company"]) > a:is(:hover,:focus-visible){opacity:1}
