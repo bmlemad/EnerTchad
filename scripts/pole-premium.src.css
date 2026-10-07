@@ -512,3 +512,50 @@
 @M .pp-spec .pp-swatches{grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}
 @M .pp-prose .pp-swatches>li{padding:0;align-content:start}
 @M .pp-prose .pp-swatches>li::before{content:none;display:none}
+/* ===== Ilots interactifs : habillage premium (2026-10-07) =====
+   Les outils gardes en ilots (calculateurs, cartes, catalogue, corridor) reprennent la
+   typographie des pages premium (Inter pour le texte, Instrument Serif pour les titres) et
+   suivent le theme clair : surfaces, libelles SVG et pastilles lisibles. Logique intacte. */
+@M .pp-island{--fd:var(--pp-sans)}
+@M .pp-island h2{font-family:var(--pp-serif);font-weight:400;letter-spacing:-.008em;line-height:1.06;text-wrap:balance;font-size-adjust:.5}
+@M .pp-island h2 em{font-family:var(--pp-serif);font-style:italic;font-weight:400;color:var(--pp-gold-ink);-webkit-text-fill-color:currentColor;background:none}
+/* Boutique : panneau de commande aux couleurs du theme */
+@M #boutique .order{background:var(--pp-paper);border:1px solid var(--pp-line);color:var(--pp-ink);box-shadow:0 1px 2px rgba(10,26,47,.05),0 18px 40px -24px rgba(10,26,47,.28)}
+@M #boutique .order h2,@M #boutique .order .osum b{color:var(--pp-ink)}
+@M #boutique .order h2 span{font-family:var(--pp-sans);font-size-adjust:none}
+@M #boutique .order h2 span,@M #boutique .order .ohint,@M #boutique .order .osum span,@M #boutique .order .osec,@M #boutique .order .oempty{color:#4B5870}
+@M #boutique .order .oempty{border-color:var(--pp-line);background:var(--pp-mist)}
+@MD #boutique .order{box-shadow:0 18px 40px -24px rgba(0,0,0,.6)}
+@MD #boutique .order h2 span,@MD #boutique .order .ohint,@MD #boutique .order .osum span,@MD #boutique .order .osec,@MD #boutique .order .oempty{color:#A9B4C4}
+@M #boutique .cart-btn .cc{background:var(--pp-ink);color:var(--pp-paper)}
+/* Corridor logistique : libelles et pastilles lisibles en clair */
+@M .icorr-lab{fill:#4B5870}
+@M .icorr-dot{fill:var(--pp-paper)}
+@M .icorr-num{fill:#1C63B4}
+@M .icorr-node.is-on .icorr-num{fill:#0c1220}
+@M .icorr-node.is-on ~ .icorr-lab{fill:var(--pp-ink)}
+@MD .icorr-lab{fill:rgba(233,238,245,.72)}
+@MD .icorr-dot{fill:#0c1220}
+@MD .icorr-num{fill:var(--inter-l,#7E8AD9)}
+@MD .icorr-node.is-on ~ .icorr-lab{fill:#fff}
+/* Petrochimie : pastilles des etapes inactives */
+@M .ppl-fn{background:var(--pp-paper);color:#9A3F7C}
+@M .ppl-f.is-on .ppl-fn{background:var(--p-petrochimie,#D177B4);color:#0c1220}
+@MD .ppl-fn{background:#0c1220;color:var(--p-petrochimie,#D177B4)}
+@MD .ppl-f.is-on .ppl-fn{background:var(--p-petrochimie,#D177B4);color:#0c1220}
+/* Atlas : petits textes de la carte du cadastre et notes de calcul */
+@M .cdm-nlab,@M .cdm-foot{fill:rgba(16,24,36,.74)}
+@MD .cdm-nlab,@MD .cdm-foot{fill:rgba(245,247,250,.7)}
+@MD .pp-island [style*="245,247,250,.4)"],@MD .pp-island [style*="245,247,250,.45)"]{color:rgba(245,247,250,.7)}
+@M .atl-dbar>div:nth-child(1){background:linear-gradient(135deg,#E8C36A,#A8832F)}
+@M .atl-dbar>div:nth-child(2){background:linear-gradient(135deg,#2F7FD0,#174C8C)}
+@M .atl-dbar>div:nth-child(3){background:linear-gradient(135deg,#7C4FE0,#5B33A8)}
+@M .atl-dbar>div:nth-child(2)>span,@M .atl-dbar>div:nth-child(3)>span{color:#fff}
+@M .atl-dbar>div:nth-child(1)>span{color:#0A1A2F}
+/* Chaine de valeur : fleches entre les maillons */
+@MD .pp-island span.arrow{color:rgba(245,247,250,.55)}
+@M .pp-island .vcx-hint{color:rgba(232,195,106,.92)}
+
+/* Grille .pp-blocks : une colonne bornee (services-ep debordait de 348 a 10 799 px sur mobile) */
+@M .pp-blocks{grid-template-columns:minmax(0,1fr)}
+@M .pp-blocks>*{min-width:0}
