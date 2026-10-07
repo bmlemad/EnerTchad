@@ -5,7 +5,7 @@ import json, os, re
 
 HEAD = [
     "# Regles Netlify generees depuis vercel.json (meme ordre, memes cibles).",
-    "# Hebergement principal : Netlify (enertchad.netlify.app) depuis le 1er octobre 2026,",
+    "# Hebergement principal : Netlify (enertchad.com, sous-domaine enertchad.netlify.app) depuis le 1er octobre 2026,",
     "# Vercel etant suspendu. Toute redirection s ajoute d abord dans vercel.json, puis",
     "# ce fichier se regenere : python3 scripts/gen_netlify_redirects.py",
     "# Redirections : 308 forcees (!), comme Vercel qui les applique avant les fichiers.",

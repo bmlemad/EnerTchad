@@ -4,7 +4,7 @@ import re, html
 
 ROOT = Path(__file__).resolve().parents[1]
 REPORT = ROOT / "reports" / "i18n-pairs-audit-2026.md"
-BASE = "https://enertchad.netlify.app"
+BASE = "https://enertchad.com"
 
 LANG_RE = re.compile(r"""<html\b[^>]*\blang=['"]([^'"]+)['"]""", re.I)
 CAN_RE = re.compile(r"""<link\b[^>]*\brel=['"]canonical['"][^>]*\bhref=['"]([^'"]+)['"]""", re.I)
