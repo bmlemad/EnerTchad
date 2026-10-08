@@ -319,10 +319,10 @@ html.et-plight .bcrumb.bc555 a{color:#5A6472}
 
       <div class="bars">
         <h3>Effet corridor · pipeline d’export (225 kb/j de capacité)</h3>
-        <div class="bar"><div class="lab"><span>Utilisation mesurée (secteur, 2019)</span><b>129 kb/j · 57&nbsp;%</b></div>
-          <div class="tr"><div class="fl" style="width:57%;background:rgba(90,167,240,.5)"></div></div></div>
+        <div class="bar"><div class="lab"><span>Utilisation actuelle (secteur)</span><b>90 kb/j · 40&nbsp;%</b></div>
+          <div class="tr"><div class="fl" style="width:40%;background:rgba(90,167,240,.5)"></div></div></div>
         <div class="bar"><div class="lab"><span>Avec vos barils additionnels</span><b id="b_lab">—</b></div>
-          <div class="tr"><div class="fl" id="b_fill" style="width:57%;background:linear-gradient(90deg,#5AA7F0,#E8C36A)"></div></div></div>
+          <div class="tr"><div class="fl" id="b_fill" style="width:40%;background:linear-gradient(90deg,#5AA7F0,#E8C36A)"></div></div></div>
         <div class="bar" style="margin-bottom:0"><div class="lab"><span>Partage du revenu additionnel</span><b id="s_lab">—</b></div>
           <div class="split"><div id="s_state" style="background:#E8C36A;width:50%">État</div><div id="s_op" style="background:#5AA7F0;width:50%">Opérateur & partenaires</div></div></div>
       </div>
@@ -336,7 +336,7 @@ html.et-plight .bcrumb.bc555 a{color:#5A6472}
     </div>
   </div>
 
-  <p class="note"><strong>Simulation illustrative</strong> — résultats indicatifs dépendant des hypothèses que vous réglez ; ne constitue ni une promesse de récupération ni un engagement contractuel. Fourchette EOR +8-17&nbsp;% OOIP : objectif des programmes EnerTchad sur bruts lourds de Doba (21-24° API, water cut &gt;&nbsp;85&nbsp;%). Données corridor (225/129 kb/j, 57&nbsp;%) : 47&nbsp;millions de barils transportés en 2019 selon la SNH camerounaise, soit ~129 kb/j — dernière donnée publique d’utilisation retrouvée. En mode rémunération au succès, EnerTchad est rémunéré sur les barils additionnels constatés — votre risque est plafonné. EnerTchad S.A., société en phase de structuration · +235 99 29 86 96.</p>
+  <p class="note"><strong>Simulation illustrative</strong> — résultats indicatifs dépendant des hypothèses que vous réglez ; ne constitue ni une promesse de récupération ni un engagement contractuel. Fourchette EOR +8-17&nbsp;% OOIP : objectif des programmes EnerTchad sur bruts lourds de Doba (21-24° API, water cut &gt;&nbsp;85&nbsp;%). Données corridor (225/90 kb/j, 40&nbsp;%) : taux d’utilisation sectoriel retenu sur l’ensemble du site, soit ~90 kb/j pour 225 kb/j de capacité. En mode rémunération au succès, EnerTchad est rémunéré sur les barils additionnels constatés — votre risque est plafonné. EnerTchad S.A., société en phase de structuration · +235 99 29 86 96.</p>
 </div>
 
 <script>
@@ -357,8 +357,8 @@ function calc(){
  $('k_kbd').innerHTML=fmt(kbd)+' <small>kb/j · '+yrs+' ans</small>';
  $('k_rev').innerHTML=fmt(rev,2)+' <small>Md$</small>';
  $('k_state').innerHTML=fmt(st,2)+' <small>Md$</small>';
- // pipeline : 129 (2019, SNH) → 129+kbd sur 225
- const BASE=129, flow=Math.min(BASE+kbd,225), util=flow/225*100;
+ // pipeline : 90 (40 %, valeur sectorielle) → 90+kbd sur 225
+ const BASE=90, flow=Math.min(BASE+kbd,225), util=flow/225*100;
  const tarif=(1-(BASE/flow))*100*0.8;           // ~80 % de coûts fixes répartis
  $('b_lab').textContent=fmt(flow,0)+" kb/j · "+fmt(util,0)+"\u00A0%";
  $('b_fill').style.width=Math.min(util,100)+"%";
