@@ -334,7 +334,7 @@ html.et-plight .cdm-legend .cdm-ln.l-idle,html.et-jlight .cdm-legend .cdm-ln.l-i
 JS = r'''(function(){
 var sv=document.querySelector('#atc-map .atc-svg');
 if(sv&&window.matchMedia){var mq=matchMedia('(max-width:700px)');var vb=function(){sv.setAttribute('viewBox',mq.matches?'0 14 288 440':'0 0 400 460')};vb();if(mq.addEventListener)mq.addEventListener('change',vb);else if(mq.addListener)mq.addListener(vb)}
-var ps=document.querySelector('.ppmap-scroll');if(ps&&ps.scrollWidth>ps.clientWidth)ps.scrollLeft=ps.scrollWidth;
+requestAnimationFrame(function(){var ps=document.querySelector('.ppmap-scroll');if(ps&&ps.scrollWidth>ps.clientWidth)ps.scrollLeft=ps.scrollWidth});
 var f=document.querySelector('.cdm-frame'),cm=document.getElementById('cadmap');if(!f||!cm)return;
 var tip=f.querySelector('.cdm-tip');
 function show(t,x,y){var ti=t.querySelector('title');if(!tip||!ti)return;var p=ti.textContent.split(' · ');tip.querySelector('b').textContent=p.shift();tip.querySelector('span').textContent=p.join(' · ');
