@@ -862,7 +862,7 @@ sv.addEventListener('mousemove',mv);sv.addEventListener('mouseleave',function(){
 <section class="pp-mist pp-compact"><div class="pp-wrap"><div class="pp-prose pp-prose-w"><div aria-label="Carnets liés" role="navigation"><p class="pp-k">Carnets liés</p><div class="pp-chips"><a href="/journal-atlas-secteur">L’Atlas du secteur</a><a href="/journal-enigme-densite-brut">L’énigme du « 28-32° » enfin résolue</a><a href="/journal-gaz-sedigui">Sédigui</a></div></div></div></div></section>
 
 <section class="pp-compact"><div class="pp-wrap"><div class="pp-prose pp-prose-w"><div class="pp-more-pole"><p class="pp-k">Continuer dans Conseil (EnerConseils)</p><nav class="pp-navcards" aria-label="Continuer dans Conseil (EnerConseils)"><a href="/enerconseils/#conseil"><b>Conseil aux opérateurs &amp; État</b><span>Dé-risquage de projets, dossiers d’investissement, accompagnement des…</span></a></nav><p class="pp-back"><a href="/enerconseils/">← Vue d’ensemble du pôle</a></p></div></div></div></section>
-<script id="pp-sub-js">(function(){var s=document.querySelector(".pp-sub"),n=document.getElementById("nav");if(!s||!n)return;var r=0;function f(){r=0;var b=n.getBoundingClientRect().bottom;s.style.setProperty("--pp-st",Math.max(0,Math.round(b))+"px")}addEventListener("scroll",function(){if(!r)r=requestAnimationFrame(f)},{passive:true});addEventListener("resize",f);f()})();</script>
+<script id="pp-sub-js">(function(){var s=document.querySelector(".pp-sub"),n=document.getElementById("nav");if(!s||!n)return;var r=0;function f(){r=0;var b=n.getBoundingClientRect().bottom;s.style.setProperty("--pp-st",Math.max(0,Math.round(b))+"px")}addEventListener("scroll",function(){if(!r)r=requestAnimationFrame(f)},{passive:true});addEventListener("resize",f);requestAnimationFrame(f)})();</script>
 <style id="atl-maps-fix">/* atl-dbar : barre de repartition, mobile */@media(max-width:640px){.atl-dbar>div{position:relative!important;gap:0!important;padding:0 2px!important}.atl-dbar>div>span+span{position:absolute!important;width:1px!important;height:1px!important;overflow:hidden!important;clip:rect(0 0 0 0)!important;white-space:nowrap!important}}
 /* Carte A : bassins au clavier, badge « en developpement », mobile lisible */
 .atc-zone:focus{outline:none}
@@ -948,7 +948,7 @@ html.et-plight .cdm-legend .cdm-ln.l-idle,html.et-jlight .cdm-legend .cdm-ln.l-i
 </style><script>(function(){
 var sv=document.querySelector('#atc-map .atc-svg');
 if(sv&&window.matchMedia){var mq=matchMedia('(max-width:700px)');var vb=function(){sv.setAttribute('viewBox',mq.matches?'0 14 288 440':'0 0 400 460')};vb();if(mq.addEventListener)mq.addEventListener('change',vb);else if(mq.addListener)mq.addListener(vb)}
-var ps=document.querySelector('.ppmap-scroll');if(ps&&ps.scrollWidth>ps.clientWidth)ps.scrollLeft=ps.scrollWidth;
+requestAnimationFrame(function(){var ps=document.querySelector('.ppmap-scroll');if(ps&&ps.scrollWidth>ps.clientWidth)ps.scrollLeft=ps.scrollWidth});
 var f=document.querySelector('.cdm-frame'),cm=document.getElementById('cadmap');if(!f||!cm)return;
 var tip=f.querySelector('.cdm-tip');
 function show(t,x,y){var ti=t.querySelector('title');if(!tip||!ti)return;var p=ti.textContent.split(' · ');tip.querySelector('b').textContent=p.shift();tip.querySelector('span').textContent=p.join(' · ');
