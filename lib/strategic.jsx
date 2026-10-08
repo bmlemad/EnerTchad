@@ -1,5 +1,6 @@
 import { readFileSync } from 'node:fs';
 import parse, { htmlToDOM } from 'html-react-parser';
+import { withYouTubeBadge } from './youtube.js';
 
 function source(name) {
   if (!['essentiel','essentiel-en','investor-center','investor-center-en'].includes(name)) throw new Error('Unknown strategic page');
@@ -38,7 +39,7 @@ export function StrategicHeader({ name }) {
   return <header className="sp-top"><div className="sp-wrap sp-topin"><a className="sp-brand" href={en ? '/index-en' : '/'}>Ener<span>Tchad</span></a><nav className="sp-nav" aria-label={en ? 'Main navigation' : 'Navigation principale'}>{items()}</nav><details className="sp-mobile-menu"><summary>Menu</summary><nav aria-label={en ? 'Mobile navigation' : 'Navigation mobile'}>{items()}</nav></details></div></header>;
 }
 export function StrategicPage({ name }) {
-  const html = source(name);
+  const html = withYouTubeBadge(source(name));
   const body = html.match(/<body[^>]*>([\s\S]*?)<\/body>/i)[1];
   const structured = html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/i)?.[1];
   const styles = html.match(/<head>([\s\S]*?)<\/head>/i)[1].match(/<style\b[^>]*>[\s\S]*?<\/style>/gi)?.join('') || '';
