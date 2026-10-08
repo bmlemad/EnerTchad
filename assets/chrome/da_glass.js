@@ -35,29 +35,48 @@ x.globalCompositeOperation='source-over'}
 requestAnimationFrame(fr);
 })();
 
-/* Ch559 - filet a11y elargi. Le filet du Ch544 ne visait que "main div, main pre" :
-   une barre de navigation interne (nav.corp-nav) defilait horizontalement sur mobile
-   sans jamais devenir atteignable au clavier. On balaye desormais tout le document,
-   et on repasse au redimensionnement — un conteneur ne devient a defilement qu a
-   partir d une certaine largeur. Le test de debordement passe en premier : il lit des
-   proprietes deja calculees, la ou getComputedStyle force un recalcul de style ; sur
-   les pages a dix mille noeuds l ordre inverse coutait des centaines de millisecondes. */
-/* Ch-mobile (oct. 2026) : ordre revu apres mesure. Les lectures de geometrie
-   (scrollWidth, clientWidth) coutent dix fois plus que getComputedStyle sur ces pages :
-   on filtre d abord par style calcule (overflow auto ou scroll), on ne mesure que ces
-   quelques candidats, puis on ecrit tous les tabindex en une fois, sans alterner
-   lectures et ecritures. Resultat identique, temps divise par plus de dix. */
+/* Zones defilantes atteignables au clavier — balayage unique (08/10/2026).
+   COPIE IDENTIQUE dans u_cd226c00eb4b.js et da_glass.js : le premier fichier
+   charge l installe (window.__etScan), l autre s abstient. Il remplace deux
+   balayages qui se chevauchaient (da_glass : tabindex seul, toutes largeurs ;
+   u_cd226c00eb4b : tabindex + role + libelle, mobile seulement) et se
+   disputaient les memes tableaux : selon l ordre d arrivee, un tableau recevait
+   ou non un nom accessible. Regle unique, toutes largeurs :
+   - tout element en overflow auto/scroll qui deborde (> 1 px) recoit tabindex=0
+     (WCAG 2.1.1, axe scrollable-region-focusable), jamais sous aria-hidden ;
+   - s il ne contient rien de focalisable et n est pas dans la barre, le menu ou
+     la palette, il devient une region nommee selon le sens du defilement.
+   Lectures de style d abord, geometrie des seuls candidats ensuite, ecritures
+   en dernier : aucune mise en page forcee en serie. */
 (function(){
+if(window.__etScan)return;window.__etScan=1;
+var L=document.documentElement.lang||'',ar=L.indexOf('ar')===0,en=L.indexOf('en')===0;
+var FOC='a[href],button,input,select,textarea,[tabindex]';
+function lab(h){return ar?(h?'محتوى قابل للتمرير — مرّر أفقيًا':'محتوى قابل للتمرير — مرّر عموديًا')
+  :en?(h?'Scrollable content — scroll horizontally':'Scrollable content — scroll vertically')
+  :(h?'Contenu défilant — faire défiler horizontalement':'Contenu défilant — faire défiler verticalement')}
 function pose(){try{
-var n=document.querySelectorAll('body *'),c=[],i,e,cs;
-for(i=0;i<n.length;i++){e=n[i];
- if(e.hasAttribute('tabindex'))continue;
- cs=getComputedStyle(e);
- if(cs.overflowX==='auto'||cs.overflowX==='scroll'||cs.overflowY==='auto'||cs.overflowY==='scroll')c.push(e)}
-n=[];for(i=0;i<c.length;i++){e=c[i];if(e.scrollWidth>e.clientWidth+1||e.scrollHeight>e.clientHeight+1)n.push(e)}
-for(i=0;i<n.length;i++)n[i].setAttribute('tabindex','0');
+  var n=document.querySelectorAll('body *'),c=[],w=[],i,e,cs,ox,oy,sx,sy;
+  for(i=0;i<n.length;i++){e=n[i];
+    if(e.hasAttribute('tabindex'))continue;
+    cs=getComputedStyle(e);ox=cs.overflowX;oy=cs.overflowY;
+    if(ox==='auto'||ox==='scroll'||oy==='auto'||oy==='scroll')c.push(e);
+  }
+  for(i=0;i<c.length;i++){e=c[i];
+    sx=e.scrollWidth>e.clientWidth+1;sy=e.scrollHeight>e.clientHeight+1;
+    if(!sx&&!sy)continue;
+    if(e.closest('[aria-hidden="true"]'))continue;
+    w.push([e,sx,!e.querySelector(FOC)&&!e.closest('#nav,#nezBar,#cmdk,#ckn')]);
+  }
+  w.forEach(function(x){var e=x[0];e.setAttribute('tabindex','0');if(!x[2])return;
+    if(!e.getAttribute('role'))e.setAttribute('role','region');
+    if(!e.hasAttribute('aria-label')&&!e.hasAttribute('aria-labelledby')){var b=lab(x[1]);
+      window.__etRegL=window.__etRegL||{};var k=(window.__etRegL[b]=(window.__etRegL[b]||0)+1);
+      e.setAttribute('aria-label',k>1?b+' ('+k+')':b)}
+  });
 }catch(_e){}}
-addEventListener('load',function(){pose();(window.requestIdleCallback||function(f){setTimeout(f,300)})(pose)});
+function idle(){(window.requestIdleCallback||function(f){setTimeout(f,300)})(pose)}
+if(document.readyState==='complete'){pose();idle()}
+else addEventListener('load',function(){pose();idle()});
 var t;addEventListener('resize',function(){clearTimeout(t);t=setTimeout(pose,220)},{passive:true});
-if(document.readyState==='complete')pose();
 })();
