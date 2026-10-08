@@ -552,7 +552,7 @@ html.et-jlight .rootland::after{
 <div class="pp-cell"><span>03</span><b>Confirmez</b><span>Validez la commande et le créneau de livraison souhaité.</span></div>
 <div class="pp-cell"><span>04</span><b>Livraison</b><span>Du dépôt à votre site ou station — jusqu’au dernier kilomètre.</span></div>
 </div></div></div></section>
-<script id="pp-sub-js">(function(){var s=document.querySelector(".pp-sub"),n=document.getElementById("nav");if(!s||!n)return;var r=0;function f(){r=0;var b=n.getBoundingClientRect().bottom;s.style.setProperty("--pp-st",Math.max(0,Math.round(b))+"px")}addEventListener("scroll",function(){if(!r)r=requestAnimationFrame(f)},{passive:true});addEventListener("resize",f);f()})();</script>
+<script id="pp-sub-js">(function(){var s=document.querySelector(".pp-sub"),n=document.getElementById("nav");if(!s||!n)return;var r=0;function f(){r=0;var b=n.getBoundingClientRect().bottom;s.style.setProperty("--pp-st",Math.max(0,Math.round(b))+"px")}addEventListener("scroll",function(){if(!r)r=requestAnimationFrame(f)},{passive:true});addEventListener("resize",f);requestAnimationFrame(f)})();</script>
 </main>
 <footer class="pft">
   <div class="wrap">

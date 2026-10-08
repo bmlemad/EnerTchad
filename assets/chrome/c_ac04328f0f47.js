@@ -86,15 +86,20 @@ const io=new IntersectionObserver((es)=>{es.forEach(en=>{if(en.isIntersecting){
 (function(){
   // auto-stagger : les .reveal* frères dans une même grille reçoivent un délai progressif
   var GRID=/grid-template-columns|svc-grid|mu-grid|res|hse-grid/;
+  /* Revu 08/10/2026 : l ecriture de data-d entre deux getComputedStyle forcait un
+     recalcul de style a chaque element (jusqu a 350 ms, mobile ralenti 4x). Lectures
+     d abord (style du parent mis en cache), ecritures ensuite ; resultat identique. */
+  var W=[],seen=new Map();
   document.querySelectorAll('.reveal,.reveal-up,.reveal-blur').forEach(function(el){
     if(el.dataset.d!=null)return;
     var p=el.parentElement;if(!p)return;
-    var disp=getComputedStyle(p).display;
+    var disp=seen.get(p);if(disp===undefined){disp=getComputedStyle(p).display;seen.set(p,disp);}
     if(disp.indexOf('grid')<0 && disp.indexOf('flex')<0)return;
     var sibs=Array.prototype.filter.call(p.children,function(c){return c.classList&&(c.classList.contains('reveal')||c.classList.contains('reveal-up')||c.classList.contains('reveal-blur'));});
     if(sibs.length<2||sibs.length>8)return;
-    el.dataset.d=Math.min(sibs.indexOf(el),5);
+    W.push([el,Math.min(sibs.indexOf(el),5)]);
   });
+  W.forEach(function(x){x[0].dataset.d=x[1];});
 })();
 document.querySelectorAll('.reveal,.reveal-up,.reveal-blur').forEach(el=>{const d=+(el.dataset.d||0);el.style.transitionDelay=(d*85)+'ms';io.observe(el);});
 /* filet de sécurité : révèle tout .reveal amené dans le viewport (couvre IO manqué, content-visibility, file://) */

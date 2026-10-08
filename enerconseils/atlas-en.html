@@ -863,11 +863,11 @@ sv.addEventListener('mousemove',mv);sv.addEventListener('mouseleave',function(){
 <section class="pp-mist pp-compact"><div class="pp-wrap"><div class="pp-prose pp-prose-w"><div aria-label="Related notebooks" role="navigation"><p class="pp-k">Related journal</p><div class="pp-chips"><a href="/journal-atlas-secteur-en">The sector Atlas</a><a href="/journal-enigme-densite-brut-en">The “28-32°” riddle finally solved</a><a href="/journal-gaz-sedigui-en">Sédigui</a></div></div><nav aria-label="Quick link to home"><a aria-label="Back to the home page" href="/index-en" id="homeFab" title="Home"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24"><path d="M3 11l9-8 9 8M5 10v10h5v-6h4v6h5V10"></path></svg></a></nav></div></div></section>
 
 <section class="pp-compact"><div class="pp-wrap"><div class="pp-prose pp-prose-w"><div class="pp-more-pole"><p class="pp-k">Continue in Advisory (EnerConseils)</p><nav class="pp-navcards" aria-label="Continue in Advisory (EnerConseils)"><a href="/pole-enerconseils-en#conseil"><b>Advisory to operators &amp; State</b><span>Project de-risking, investment files, support for…</span></a></nav><p class="pp-back"><a href="/pole-enerconseils-en">← Pole overview</a></p></div></div></div></section>
-<script id="pp-sub-js">(function(){var s=document.querySelector(".pp-sub"),n=document.getElementById("nav");if(!s||!n)return;var r=0;function f(){r=0;var b=n.getBoundingClientRect().bottom;s.style.setProperty("--pp-st",Math.max(0,Math.round(b))+"px")}addEventListener("scroll",function(){if(!r)r=requestAnimationFrame(f)},{passive:true});addEventListener("resize",f);f()})();</script>
+<script id="pp-sub-js">(function(){var s=document.querySelector(".pp-sub"),n=document.getElementById("nav");if(!s||!n)return;var r=0;function f(){r=0;var b=n.getBoundingClientRect().bottom;s.style.setProperty("--pp-st",Math.max(0,Math.round(b))+"px")}addEventListener("scroll",function(){if(!r)r=requestAnimationFrame(f)},{passive:true});addEventListener("resize",f);requestAnimationFrame(f)})();</script>
 <style id="atl-maps-fix">/* atl-dbar : barre de repartition, mobile */@media(max-width:640px){.atl-dbar>div{position:relative!important;gap:0!important;padding:0 2px!important}.atl-dbar>div>span+span{position:absolute!important;width:1px!important;height:1px!important;overflow:hidden!important;clip:rect(0 0 0 0)!important;white-space:nowrap!important}}
 /* Carte A : bassins au clavier, badge « en developpement », mobile lisible */
 .atc-zone:focus{outline:none}
-.atc-zone:focus-visible{opacity:1;stroke-width:2.6;filter:drop-shadow(0 0 7px var(--zc))}
+.atc-zone:focus-visible{opacity:1;stroke-width:2.6;filter:drop-shadow(0 0 7px var(--zc))}html.et-plight .atc-zone:focus-visible,html.et-jlight .atc-zone:focus-visible{opacity:1;stroke-width:3;stroke:#1a2330}html.et-plight .atc-field:focus-visible .atc-fp,html.et-jlight .atc-field:focus-visible .atc-fp{stroke:#1a2330}
 .atc-badge.Dev{color:var(--blue-l,#5AA7F0);border-color:rgba(90,167,240,.45);background:rgba(90,167,240,.08)}
 html.et-plight .atc-badge.Production,html.et-jlight .atc-badge.Production{color:#0B6B49;border-color:rgba(11,107,73,.4);background:rgba(11,107,73,.06)}
 html.et-plight .atc-badge.Dev,html.et-jlight .atc-badge.Dev{color:#1C63B4;border-color:rgba(28,99,180,.4);background:rgba(28,99,180,.06)}
@@ -949,7 +949,7 @@ html.et-plight .cdm-legend .cdm-ln.l-idle,html.et-jlight .cdm-legend .cdm-ln.l-i
 </style><script>(function(){
 var sv=document.querySelector('#atc-map .atc-svg');
 if(sv&&window.matchMedia){var mq=matchMedia('(max-width:700px)');var vb=function(){sv.setAttribute('viewBox',mq.matches?'0 14 288 440':'0 0 400 460')};vb();if(mq.addEventListener)mq.addEventListener('change',vb);else if(mq.addListener)mq.addListener(vb)}
-var ps=document.querySelector('.ppmap-scroll');if(ps&&ps.scrollWidth>ps.clientWidth)ps.scrollLeft=ps.scrollWidth;
+requestAnimationFrame(function(){var ps=document.querySelector('.ppmap-scroll');if(ps&&ps.scrollWidth>ps.clientWidth)ps.scrollLeft=ps.scrollWidth});
 var f=document.querySelector('.cdm-frame'),cm=document.getElementById('cadmap');if(!f||!cm)return;
 var tip=f.querySelector('.cdm-tip');
 function show(t,x,y){var ti=t.querySelector('title');if(!tip||!ti)return;var p=ti.textContent.split(' · ');tip.querySelector('b').textContent=p.shift();tip.querySelector('span').textContent=p.join(' · ');

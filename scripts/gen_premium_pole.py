@@ -61,7 +61,7 @@ SUBNAV_JS = ('<script id="pp-sub-js">(function(){var s=document.querySelector(".
              'if(!s||!n)return;var r=0;function f(){r=0;var b=n.getBoundingClientRect().bottom;'
              's.style.setProperty("--pp-st",Math.max(0,Math.round(b))+"px")}'
              'addEventListener("scroll",function(){if(!r)r=requestAnimationFrame(f)},{passive:true});'
-             'addEventListener("resize",f);f()})();</script>')
+             'addEventListener("resize",f);requestAnimationFrame(f)})();</script>')
 
 
 def sp(s):
