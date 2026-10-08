@@ -25,10 +25,23 @@ pub_en = read(PUB_EN)
 centre = read(ROOT / "investor-center.html")
 centre_en = read(ROOT / "investor-center-en.html")
 
+def has_reporting_section(content, document_route):
+    """Require a labelled section linking to public documents, independent of CSS."""
+    for section in re.finditer(r'<section\b([^>]*)>(.*?)</section>', content, re.I | re.S):
+        label = re.search(r'\baria-labelledby="([^"]+)"', section.group(1), re.I)
+        if not label:
+            continue
+        body = section.group(2)
+        has_heading = any(
+            re.search(r'<h[1-6]\b[^>]*\bid="' + re.escape(identifier) + r'"[^>]*>\s*[^<]+', body, re.I)
+            for identifier in label.group(1).split()
+        )
+        if has_heading and re.search(r'\bhref="' + re.escape(document_route) + r'"', body):
+            return True
+    return False
+
 home_requirements = {
-    "centre de confiance": r'class="[^"]*\bet-proof-center\b[^"]*"[^>]*aria-labelledby="[^"]+"',
     "reporting investisseurs": r'href="/(?:publications#pub-inv|investor-center)"',
-    "data book": r'href="/Data_Book_EnerTchad.xlsx"',
     "gouvernance": r'href="/ethique"',
     "newsroom": r'href="/communiques"',
     "portefeuille": r'href="/projets"',
@@ -38,12 +51,25 @@ for label, pattern in home_requirements.items():
     if not re.search(pattern, home, re.I | re.S):
         errors.append(f"index.html: élément corporate attendu absent ({label})")
 
+# The simplified homepages route visitors to the document centre rather than
+# duplicating its downloads. Keep the labelled gateway and the actual download.
+for filename, content, route, investor_route in [
+    ("index.html", home, "/publications", "/investor-center"),
+    ("index-en.html", home_en, "/publications-en", "/investor-center-en"),
+    ("ar.html", home_ar, "/publications", "/ar-investisseurs"),
+]:
+    if not has_reporting_section(content, route):
+        errors.append(f"{filename}: section documentaire nommée ou accès aux publications absent")
+    if not re.search(r'href="' + re.escape(investor_route) + r'"', content):
+        errors.append(f"{filename}: reporting gateway absent")
+
 pub_requirements = {
     "reporting navigation": r'aria-label="Navigation du centre de reporting"',
     "investissement": r'href="#pub-inv"',
     "opérations": r'href="#pub-ops"',
     "gouvernance": r'href="#pub-societe"',
     "actualités": r'href="#pub-presse"',
+    "data book": r'href="/Data_Book_EnerTchad.xlsx"',
 }
 for label, pattern in pub_requirements.items():
     if not re.search(pattern, pub, re.I | re.S):
@@ -59,8 +85,6 @@ for asset in [
         errors.append(f"ressource documentaire attendue absente: {asset}")
 
 multilingual = [
-    ("index-en.html", home_en, r'class="[^"]*\bet-proof-center\b[^"]*"[^>]*aria-labelledby="[^"]+"', r'href="/(?:publications-en#pub-inv|investor-center-en)"'),
-    ("ar.html", home_ar, r'class="[^"]*\bet-proof-center\b[^"]*"[^>]*aria-labelledby="et-proof-title-ar"', r'/ar-investisseurs'),
     ("publications-en.html", pub_en, r'aria-label="Reporting center navigation"', r'href="#pub-inv"'),
 ]
 for filename, content, pattern_one, pattern_two in multilingual:
@@ -68,6 +92,10 @@ for filename, content, pattern_one, pattern_two in multilingual:
         errors.append(f"{filename}: multilingual corporate layer absent")
     if not re.search(pattern_two, content, re.I | re.S):
         errors.append(f"{filename}: reporting gateway absent")
+
+for filename in ("publications-en.html", "ar-investisseurs.html"):
+    if not re.search(r'href="/Data_Book_EnerTchad.xlsx"', read(ROOT / filename)):
+        errors.append(f"{filename}: téléchargement du data book absent")
 
 # The consolidated homepage route must still lead to the published reporting
 # centre and the investor factsheet in each language.
@@ -97,9 +125,9 @@ report.write_text(
     "# Niveau corporate & reporting — 2026\n\n"
     "Contrôle statique des surfaces de confiance, de reporting, des accès multilingues et des ressources documentaires.\n\n"
     "## Couverture contrôlée\n\n"
-    "- Accueil FR : centre de confiance + provenance des KPI\n"
-    "- Accueil EN : centre de confiance + provenance des KPI\n"
-    "- Accueil AR : centre de confiance + accès investisseurs\n"
+    "- Accueils FR/EN/AR : section documentaire nommée + accès aux publications\n"
+    "- Accueils FR/EN/AR : accès investisseurs\n"
+    "- Publications FR/EN et investisseurs AR : téléchargement du data book\n"
     "- Publications FR/EN : navigation reporting par domaine\n"
     "- Investisseurs FR/EN/AR : accès direct aux documents clés\n"
     "- Aliases reporting : /reporting et /reporting-en\n"
