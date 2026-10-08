@@ -80,7 +80,7 @@ addEventListener('resize',()=>{if(!window.matchMedia('(max-width:1240px)').match
 // reveal + count
 function countUp(el){const to=+el.dataset.to,t0=performance.now(),d=1200;
   (function tick(n){const p=Math.min((n-t0)/d,1),e=1-Math.pow(1-p,3);
-    el.textContent=Math.round(to*e).toLocaleString('fr-FR');if(p<1)requestAnimationFrame(tick);})(t0);}
+    el.textContent=Math.round(to*e).toLocaleString((document.documentElement.lang==='en'?'en-US':'fr-FR'));if(p<1)requestAnimationFrame(tick);})(t0);}
 const io=new IntersectionObserver((es)=>{es.forEach(en=>{if(en.isIntersecting){
   en.target.classList.add('in');en.target.querySelectorAll?.('.ct').forEach(countUp);io.unobserve(en.target);}});},{threshold:0.01,rootMargin:'0px 0px 38% 0px'});
 (function(){
@@ -175,7 +175,7 @@ const CHAIN=[
 function drawChain(){
   const bars=document.getElementById('thrBars');
   if(!document.getElementById('thrBars'))return;
-  bars.innerHTML=CHAIN.map(c=>`<div class="thr-row"><div class="thr-top"><span class="tn">${c.n}</span><span class="tv">${c.v.toLocaleString('fr-FR')} ${c.u} <span style="color:var(--muted)">/ ${c.max}</span></span></div><div class="bar"><i style="background:${c.c}"></i></div></div>`).join('');
+  bars.innerHTML=CHAIN.map(c=>`<div class="thr-row"><div class="thr-top"><span class="tn">${c.n}</span><span class="tv">${c.v.toLocaleString((document.documentElement.lang==='en'?'en-US':'fr-FR'))} ${document.documentElement.lang==='en'?String(c.u).replace(/b\/j\b/,'b/d'):c.u} <span style="color:var(--muted)">/ ${c.max}</span></span></div><div class="bar"><i style="background:${c.c}"></i></div></div>`).join('');
   setTimeout(()=>bars.querySelectorAll('.bar i').forEach((b,i)=>b.style.width=(CHAIN[i].v/CHAIN[i].max*100)+'%'),100);
   // gauge = current avg utilization vs 2030 targets
   const util=Math.round(CHAIN.reduce((s,c)=>s+c.v/c.max,0)/CHAIN.length*100);
@@ -198,11 +198,11 @@ const PCOL={'Essence':'#2E86DE','Gasoil/Diesel':'#0EA5E9','Kérosène/Jet':'#38B
 let refProfile='essence';
 const crude=document.getElementById('crude');
 function calcRef(){
-  document.getElementById('crudeVal').textContent=(+crude.value).toLocaleString('fr-FR');
+  document.getElementById('crudeVal').textContent=(+crude.value).toLocaleString((document.documentElement.lang==='en'?'en-US':'fr-FR'));
   const prof=PROFILES[refProfile], total=+crude.value;
   document.getElementById('refOut').innerHTML=Object.entries(prof).map(([k,pct])=>{
     const v=Math.round(total*pct/100);
-    return `<div class="ref-prod"><span class="rp-n">${k}</span><span class="rp-bar"><i style="background:${PCOL[k]};width:${pct*2.2}%"></i></span><span class="rp-v">${v.toLocaleString('fr-FR')} b/j</span></div>`;
+    return `<div class="ref-prod"><span class="rp-n">${k}</span><span class="rp-bar"><i style="background:${PCOL[k]};width:${pct*2.2}%"></i></span><span class="rp-v">${v.toLocaleString((document.documentElement.lang==='en'?'en-US':'fr-FR'))} ${document.documentElement.lang==='en'?'b/d':'b/j'}</span></div>`;
   }).join('');
 }
 /* Ch692 -- crude n'existe que sur tchaditech/outils : sans ce garde, l'appel
@@ -233,7 +233,7 @@ const BASINS={
   sedigui:{k:'Champ gazier',t:'Champ gazier de Sédigui',d:"Ressource gazière stratégique de la région du Lac, destinée à alimenter notre activité électricité (gas-to-power).",s:[['gaz','ressource'],['→ power','débouché'],['Lac','région']]},
 };
 const BASINS_EN={
-  doba:{k:'In production',t:'Doba basin',d:"The historic producing basin: the heart of E&P activity, Chadian crude (~21° API) exported through the national export corridor. Chemical ASP EOR (natron Na₂CO₃, biopolymer, local surfactant).",s:[['144 kb/d','capacity'],['735','wells'],['+8-17\u00A0%','OOIP / EOR']]},
+  doba:{k:'In production',t:'Doba basin',d:"The historic producing basin: the heart of E&P activity, Chadian crude (~21° API) exported through the national export corridor. Chemical ASP EOR (natron Na₂CO₃, biopolymer, local surfactant).",s:[['144 kb/d','capacity'],['735','wells'],['+8-17%','OOIP / EOR']]},
   bongor:{k:'In production',t:'Bongor basin',d:"Second producing basin, rather light crude (up to 31° API). Ronier, Mimosa and Baobab fields; the Ronier–Djermaya pipeline feeds the national refinery.",s:[['~31°','light API'],['Ronier·Mimosa','fields'],['300 km','Djermaya pipeline']]},
   lactchad:{k:'Exploration',t:'Lake Chad area · gas',d:"Gas area (Sédigui field) in the Lake Chad region, with strong gas-to-power potential, outside the five oil basins.",s:[['exploration','phase'],['frontier','type'],['North-west','area']]},
   doseo:{k:'Exploration',t:'Doséo basin',d:"Exploration basin of eastern Chad, among the five sedimentary basins listed in the national petroleum registry.",s:[['exploration','phase'],['East','location'],['registry','57 blocks']]},
@@ -410,7 +410,7 @@ Envoyé depuis enertchad.com / EnerTchad`;
 (function(){
   const veh=document.getElementById('ff-veh'),km=document.getElementById('ff-km'),cons=document.getElementById('ff-cons'),fuel=document.getElementById('ff-fuel'),tier=document.getElementById('ff-tier');
   if(!veh)return;
-  const fmt=n=>Math.round(n).toLocaleString('fr-FR').replace(/\u202f/g,' ');
+  const fmt=n=>Math.round(n).toLocaleString((document.documentElement.lang==='en'?'en-US':'fr-FR')).replace(/\u202f/g,' ');
   function calc(){
     const nv=+veh.value, nkm=+km.value, nc=+cons.value, price=+fuel.value, rate=+tier.value;
     document.getElementById('ff-veh-val').textContent=nv;
