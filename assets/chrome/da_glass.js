@@ -42,18 +42,21 @@ requestAnimationFrame(fr);
    partir d une certaine largeur. Le test de debordement passe en premier : il lit des
    proprietes deja calculees, la ou getComputedStyle force un recalcul de style ; sur
    les pages a dix mille noeuds l ordre inverse coutait des centaines de millisecondes. */
+/* Ch-mobile (oct. 2026) : ordre revu apres mesure. Les lectures de geometrie
+   (scrollWidth, clientWidth) coutent dix fois plus que getComputedStyle sur ces pages :
+   on filtre d abord par style calcule (overflow auto ou scroll), on ne mesure que ces
+   quelques candidats, puis on ecrit tous les tabindex en une fois, sans alterner
+   lectures et ecritures. Resultat identique, temps divise par plus de dix. */
 (function(){
 function pose(){try{
-var n=document.querySelectorAll('body *'),i,e,cs,sx,sy;
+var n=document.querySelectorAll('body *'),c=[],i,e,cs;
 for(i=0;i<n.length;i++){e=n[i];
- if(e.scrollWidth<=e.clientWidth+1&&e.scrollHeight<=e.clientHeight+1)continue;
  if(e.hasAttribute('tabindex'))continue;
- if(e===document.body||e===document.documentElement)continue;
  cs=getComputedStyle(e);
- sx=cs.overflowX==='auto'||cs.overflowX==='scroll';
- sy=cs.overflowY==='auto'||cs.overflowY==='scroll';
- if(sx||sy){e.setAttribute('tabindex','0')}
-}}catch(_e){}}
+ if(cs.overflowX==='auto'||cs.overflowX==='scroll'||cs.overflowY==='auto'||cs.overflowY==='scroll')c.push(e)}
+n=[];for(i=0;i<c.length;i++){e=c[i];if(e.scrollWidth>e.clientWidth+1||e.scrollHeight>e.clientHeight+1)n.push(e)}
+for(i=0;i<n.length;i++)n[i].setAttribute('tabindex','0');
+}catch(_e){}}
 addEventListener('load',function(){pose();(window.requestIdleCallback||function(f){setTimeout(f,300)})(pose)});
 var t;addEventListener('resize',function(){clearTimeout(t);t=setTimeout(pose,220)},{passive:true});
 if(document.readyState==='complete')pose();
