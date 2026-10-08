@@ -1,3 +1,7 @@
+/enerconseils/atlas /atlas 308!
+/enerconseils/atlas.html /atlas 308!
+/enerconseils/atlas-en /atlas-en 308!
+/enerconseils/atlas-en.html /atlas-en 308!
 # Regles Netlify generees depuis vercel.json (meme ordre, memes cibles).
 # Hebergement principal : Netlify (enertchad.com, sous-domaine enertchad.netlify.app) depuis le 1er octobre 2026,
 # Vercel etant suspendu. Toute redirection s ajoute d abord dans vercel.json, puis
@@ -100,8 +104,8 @@ https://enertchad.netlify.app/* https://enertchad.com/:splat 301!
 /pole-enertalents-rayonnement.html /tchaditude/#rayonnement 308!
 /pole-enerconseils /enerconseils/ 308!
 /pole-enerconseils.html /enerconseils/ 308!
-/pole-enerconseils-atlas /enerconseils/atlas 308!
-/pole-enerconseils-atlas.html /enerconseils/atlas 308!
+/pole-enerconseils-atlas /atlas 308!
+/pole-enerconseils-atlas.html /atlas 308!
 /pole-enerconseils-conseil /enerconseils/#conseil 308!
 /pole-enerconseils-conseil.html /enerconseils/#conseil 308!
 /enerchimie /petrochimie/ 308!
