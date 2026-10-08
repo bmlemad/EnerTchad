@@ -96,7 +96,7 @@
 @A footer.pft{font-family:"Noto Sans Arabic","Inter",system-ui,sans-serif;line-height:1.8}
 @A footer.pft .wrap{max-width:1200px;margin-inline:auto;padding-inline:clamp(16px,4vw,40px)}
 @A footer.pft .pft-motto{font:500 clamp(2.2rem,5vw,4.2rem)/1.35 "Noto Naskh Arabic",Georgia,"Times New Roman",serif;letter-spacing:0;max-width:none}
-@A footer.pft .foot-grid{grid-template-columns:minmax(0,1.4fr) repeat(2,minmax(0,1fr))}
+@A footer.pft .foot-grid{grid-template-columns:minmax(0,1.4fr) repeat(3,minmax(0,1fr))}
 @A footer.pft .foot-col h3{font:600 .86rem/1.4 "Noto Sans Arabic","Inter",system-ui,sans-serif;letter-spacing:0;text-transform:none}
 @A footer.pft .foot-brand .brand{display:inline-flex;align-items:center;min-height:44px;text-decoration:none}
 @A footer.pft .foot-brand .brand-tx{font:700 1.6rem/1 "National Park","Inter",system-ui,sans-serif}
