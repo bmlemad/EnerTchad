@@ -507,7 +507,7 @@ html.et-jlight .rootland::after{
 <link rel="preload" href="/assets/fonts/InstrumentSerif-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" id="pole-premium" href="/assets/chrome/pole-premium.css?b=202610012200">
 <link rel="stylesheet" id="premium-chrome" href="/assets/chrome/premium-chrome.css?b=202610071010">
-</head>
+<style id="et-web-clarity">.et-web{max-width:1140px;margin:32px auto;padding:28px 24px;color:inherit}.et-web h2{line-height:1.3}.et-project-scroll{overflow-x:auto;border:1px solid #c9cdd1;border-radius:12px}.et-project-table{border-collapse:collapse;width:100%;min-width:740px;font-size:.9rem}.et-project-table th,.et-project-table td{text-align:start;vertical-align:top;padding:16px;border-bottom:1px solid #c9cdd1;line-height:1.5}.et-project-table th{background:#172638;color:#f5f7fa}.et-project-table tr:last-child td{border-bottom:0}.et-project-table a{color:inherit;text-decoration:underline}.et-form-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}.et-contact-form label{display:block;font-weight:600;line-height:1.6}.et-contact-form input,.et-contact-form select,.et-contact-form textarea{box-sizing:border-box;width:100%;padding:12px;min-height:48px;border:1px solid #9da7b4;border-radius:8px;font:inherit;color:#142033;background:#fff;margin:6px 0 16px}.et-contact-form textarea{min-height:150px}.et-contact-form .et-full{grid-column:1/-1}.et-contact-form button{min-height:48px;min-width:160px;padding:12px 20px;background:#172638;color:white;border:0;border-radius:8px;font:600 1rem system-ui;cursor:pointer}.et-contact-form button:disabled{opacity:.6;cursor:default}.et-contact-form [role=status]{padding:16px;border:1px solid #8b9eae;border-radius:8px;line-height:1.6}.et-contact-form .et-privacy{font-size:.9rem;font-weight:400}.et-web small{line-height:1.6;display:block}.et-web a:focus-visible{outline:3px solid #2575c5;outline-offset:4px}@media(max-width:760px){.et-form-grid{grid-template-columns:1fr}.et-project-scroll{max-width:100%}}</style></head>
 <body data-eh="eh1 eh8" id="top" class="et-inner-modern">
 <a class="et-skip" href="#main-content">Aller au contenu principal</a>
 <div id="readbar" aria-hidden="true"></div>
@@ -590,59 +590,17 @@ html.et-jlight .rootland::after{
 .ct-recap dd{margin:0;color:var(--cream);word-break:break-word}
 @media(max-width:560px){.ct-recap div{grid-template-columns:1fr;gap:3px}}
 </style>
-<form id="ctForm" novalidate="">
-<ol aria-label="Étapes du formulaire de contact" class="ct-steps">
-<li aria-current="step" class="on" id="ctStep1"><b>1</b><span>Votre demande</span></li>
-<li id="ctStep2"><b>2</b><span>Vos détails</span></li>
-<li id="ctStep3"><b>3</b><span>Envoi</span></li>
-</ol>
-<fieldset class="ct-step" data-step="1">
-<legend>Quel est l’objet de votre demande ?</legend>
-<div class="ct-cards">
-<label class="ct-card"><input name="ctType" required="" type="radio" value="Approvisionnement / Contrat B2B"/><span><strong>Approvisionnement &amp; B2B</strong><small>Carburants, GPL, lubrifiants — flottes, industrie, marchés</small></span></label>
-<label class="ct-card"><input name="ctType" type="radio" value="Opérateur E&amp;P — étude / pilote / OFS"/><span><strong>Opérateur E&amp;P</strong><small>EOR, services parapétroliers, étude ou pilote sur vos champs</small></span></label>
-<label class="ct-card"><input name="ctType" type="radio" value="Partenariat industriel ou technique"/><span><strong>Partenariat</strong><small>Industriel, technique ou technologique</small></span></label><label class="ct-card"><input name="ctType" type="radio" value="Marchés publics / Institutions (B2G)"/><span><strong>Institutions &amp; marchés publics</strong><small>Administrations, agences, marchés-cadres — au prix ARSAT</small></span></label>
-<label class="ct-card"><input name="ctType" type="radio" value="Investissement"/><span><strong>Investissement</strong><small>Capital, trajectoire 100 M → 1 Md → 10 Md FCFA</small></span></label>
-<label class="ct-card"><input name="ctType" type="radio" value="Candidature / Talents"/><span><strong>Candidature &amp; talents</strong><small>Rejoindre EnerTchad, académie Tchaditude</small></span></label>
-<label class="ct-card"><input name="ctType" type="radio" value="Presse"/><span><strong>Presse</strong><small>Interviews, informations, kit média</small></span></label>
-<label class="ct-card"><input name="ctType" type="radio" data-contact-profile="fournisseur" value="Référencement fournisseur"/><span><strong>Référencement fournisseur</strong><small>Présenter votre entreprise, vos capacités et vos références.</small></span></label>
-<label class="ct-card"><input name="ctType" type="radio" data-contact-profile="centrale-achat" value="Adhésion à la centrale d’achat"/><span><strong>Adhésion à la centrale d’achat</strong><small>Étudier la mutualisation des achats et l’approvisionnement de vos sites.</small></span></label>
-<label class="ct-card"><input name="ctType" type="radio" data-contact-profile="achats" value="Demande au service achats"/><span><strong>Demande au service achats</strong><small>Une consultation, un bon de commande ou une question d’approvisionnement.</small></span></label>
-<label class="ct-card"><input name="ctType" type="radio" value="Autre"/><span><strong>Autre demande</strong><small>Toute autre question — on vous oriente</small></span></label>
-</div>
-<p class="ct-err" id="ctErr1" role="alert">Sélectionnez l’objet de votre demande pour continuer.</p>
-</fieldset>
-<fieldset class="ct-step" data-step="2" hidden="">
-<legend>Vos coordonnées et votre besoin</legend>
-<div class="ct-grid">
-<label>Nom complet<input autocomplete="name" id="ctName" required="" type="text"/></label>
-<label>Organisation<input autocomplete="organization" id="ctOrg" type="text"/></label>
-<label>Email<input autocomplete="email" id="ctMail" placeholder="vous@email.com" required="" type="email"/></label>
-<label hidden="" id="ctProdWrap">Produit concerné
-        <select id="ctProd"><option value="">— Sélectionner (optionnel) —</option><option>Essence SP95</option><option>Diesel</option><option>Jet A-1</option><option>GPL — gaz domestique &amp; industriel</option><option>Lubrifiants EnerLub™</option><option>Bitume</option><option>Multi-produits / autre</option></select>
-</label>
-</div>
-<label class="full">Votre message<textarea id="ctMsg" required="" rows="4"></textarea></label>
-<p class="ct-err" id="ctErr2" role="alert">Complétez votre nom, un email valide et votre message.</p>
-</fieldset>
-<fieldset class="ct-step" data-step="3" hidden="">
-<legend>Vérifiez votre demande avant envoi</legend>
-<dl class="ct-recap" id="ctRecap"></dl>
-<p class="hint" style="margin:0 0 4px">L’envoi ouvre votre messagerie, pré-remplie vers contact@enertchad.com.</p>
-</fieldset>
-<div class="ct-navr">
-<button class="ct-back" hidden="" id="ctPrev" type="button">← Retour</button>
-<button class="btn" id="ctNext" type="button">Continuer →</button>
-<button class="btn" hidden="" id="ctSend" type="submit">Envoyer ma demande →</button>
-</div>
-</form>
-<div hidden="" id="ctFallback" role="status" style="margin-top:18px;padding:16px 20px;border:1px solid var(--hair);border-radius:14px">
-<p style="margin:0 0 6px;font-weight:650">Votre logiciel de courriel devrait s’ouvrir avec le message prérempli.</p>
-<p style="margin:0 0 12px;font-size:.92rem">Si rien ne s’ouvre, copiez le message ci-dessous et envoyez-le à <a href="mailto:contact@enertchad.com" style="color:var(--gold-l)">contact@enertchad.com</a>.</p>
-<textarea aria-label="Votre message composé" id="ctRecapMail" readonly="" rows="6" style="width:100%;font-family:var(--fm);font-size:.85rem;border:1px solid var(--hair);border-radius:10px;padding:10px 12px;background:transparent;color:inherit"></textarea>
-<button id="ctCopy" style="margin-top:10px;padding:9px 16px;border-radius:999px;border:1px solid var(--hair);background:transparent;color:inherit;cursor:pointer;font-family:var(--fm);font-size:.82rem" type="button">Copier le message</button>
-<span hidden="" id="ctCopied" style="margin-left:10px;color:#34D399;font-size:.85rem">✓ Copié</span>
-</div>
+<form id="ctForm" class="et-contact-form" name="enertchad-contact" method="POST" action="/contact-received" data-netlify="true" netlify-honeypot="website">
+<input type="hidden" name="form-name" value="enertchad-contact"><input type="hidden" name="language" value="fr">
+<p hidden><label>Website<input name="website" tabindex="-1" autocomplete="off"></label></p>
+<div class="et-form-grid"><label class="et-full">Objet de la demande<select id="ctType" name="request_type" required><option value="">Choisissez un objet</option><option value="Approvisionnement / Contrat B2B">Approvisionnement / Contrat B2B</option><option value="Opérateur E&amp;P — étude / pilote / OFS">Opérateur E&amp;P — étude / pilote / OFS</option><option value="Partenariat industriel ou technique">Partenariat industriel ou technique</option><option value="Marchés publics / Institutions (B2G)">Marchés publics / Institutions (B2G)</option><option value="Investissement">Investissement</option><option value="Candidature / Talents">Candidature / Talents</option><option value="Presse">Presse</option><option value="Référencement fournisseur" data-contact-profile="fournisseur">Référencement fournisseur</option><option value="Adhésion à la centrale d’achat" data-contact-profile="centrale-achat">Adhésion à la centrale d’achat</option><option value="Demande au service achats" data-contact-profile="achats">Demande au service achats</option><option value="Autre">Autre</option></select></label>
+<label>Nom complet<input id="ctName" name="name" autocomplete="name" maxlength="100" required></label>
+<label>Organisation (facultatif)<input id="ctOrg" name="organization" autocomplete="organization" maxlength="200"></label>
+<label class="et-full">E-mail<input id="ctMail" name="email" type="email" autocomplete="email" maxlength="254" required></label>
+<label class="et-full">Votre message<textarea id="ctMsg" name="message" rows="6" maxlength="5000" required></textarea></label></div>
+<p class="et-privacy">Vos coordonnées et votre message sont transmis à EnerTchad via son hébergeur Netlify pour traiter votre demande. Ils ne sont pas envoyés à Analytics. Ne joignez pas de documents confidentiels ni de données personnelles sensibles. <a href="/confidentialite">Informations de confidentialité</a>.</p>
+<button id="ctSend" type="submit">Envoyer ma demande</button><p id="ctDeliveryStatus" role="status" aria-live="polite" tabindex="-1" hidden></p></form>
+
 </div></div></div></section>
 
 <section class="pp-compact"><div class="pp-wrap"><div class="pp-prose pp-prose-w"><div class="pp-grid"><div class="pp-cell"><span>Suivez-nous</span><strong>@enertchad</strong><span>Communiqués, jalons et coulisses d’un pétrolier tchadien en construction.</span></div><div aria-label="Réseaux sociaux EnerTchad" class="pp-cell"><a aria-label="EnerTchad sur LinkedIn" href="https://www.linkedin.com/company/enertchad" rel="noopener" target="_blank" title="LinkedIn"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM10 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.4c0-1.29-.02-2.95-1.8-2.95-1.8 0-2.07 1.4-2.07 2.85V21h-4z" fill="currentColor"></path></svg></a><a aria-label="EnerTchad sur Facebook" href="https://www.facebook.com/enertchad" rel="noopener" target="_blank" title="Facebook"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.78-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.45 2.89h-2.33v6.99A10 10 0 0 0 22 12z" fill="currentColor"></path></svg></a><a aria-label="EnerTchad sur WhatsApp" href="https://wa.me/23599298696" rel="noopener" target="_blank" title="WhatsApp"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.5 15.2L2 22l4.9-1.3A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-2.9.8.8-2.8-.2-.3A8 8 0 1 1 12 20zm4.4-6c-.2-.1-1.4-.7-1.6-.8s-.4-.1-.5.1-.6.8-.7 1-.3.1-.5 0a6.5 6.5 0 0 1-1.9-1.2 7.2 7.2 0 0 1-1.3-1.7c-.1-.2 0-.3.1-.4l.4-.5.2-.3v-.4c0-.1-.5-1.3-.7-1.7s-.4-.4-.5-.4h-.5a1 1 0 0 0-.7.3A2.8 2.8 0 0 0 6.5 9a4.9 4.9 0 0 0 1 2.6 11.3 11.3 0 0 0 4.4 3.9c2 .8 2 .5 2.4.5a2.5 2.5 0 0 0 1.6-1.1 2 2 0 0 0 .1-1.1c0-.1-.2-.2-.4-.3z" fill="currentColor"></path></svg></a></div></div><div class="pp-box">EnerTchad S.A. — société pétrolière intégrée à capitaux tchadiens, en constitution (OHADA). Unité · Innovation · Durabilité · Accès aux Énergies. Réseaux : @enertchad.</div></div></div></section>
@@ -677,38 +635,7 @@ html.et-jlight .rootland::after{
     <div class="foot-legal"><span class="pft-legal">© 2026 EnerTchad S.A. (société en constitution) · Block D, 2e étage, bureau 23, Quartier Sabangali, Cité du 1er décembre, N’Djamena, Tchad · OHADA/AUSCGIE</span><span class="foot-legal-links"><a href="/mentions-legales">Mentions légales</a><a href="/confidentialite">Confidentialité</a><a href="/cookies">Cookies</a><a href="/ethique#alerte">Signalement éthique</a></span><a class="pft-top" href="#top">Haut de page ↑</a></div>
   </div>
 </footer>
-<script>
-(function(){var f=document.getElementById('ctForm');if(!f)return;
-var step=1,steps=f.querySelectorAll('.ct-step'),tabs=[ctStep1,ctStep2,ctStep3];
-function type(){var r=f.querySelector('input[name="ctType"]:checked');return r?r.value:'';}
-function show(n){step=n;
- steps.forEach(function(s){s.hidden=(+s.dataset.step!==n);});
- tabs.forEach(function(t,i){t.classList.toggle('on',i+1===n);t.classList.toggle('done',i+1<n);
-  if(i+1===n)t.setAttribute('aria-current','step');else t.removeAttribute('aria-current');});
- ctPrev.hidden=(n===1);ctNext.hidden=(n===3);ctSend.hidden=(n!==3);
- var lg=f.querySelector('.ct-step[data-step="'+n+'"] legend');
- if(lg){lg.setAttribute('tabindex','-1');lg.focus({preventScroll:true});var _y=lg.getBoundingClientRect().top+window.scrollY-215;window.scrollTo({top:_y,behavior:'smooth'});}
- if(n===2){ctProdWrap.hidden=(type().indexOf('Approvisionnement')!==0);}
- if(n===3){var rows=[['Demande',type()],['Nom',ctName.value],['Organisation',ctOrg.value||'—'],['Email',ctMail.value]];
-  if(!ctProdWrap.hidden&&ctProd.value)rows.push(['Produit',ctProd.value]);
-  rows.push(['Message',ctMsg.value]);
-  ctRecap.innerHTML=rows.map(function(r){return '<div><dt></dt><dd></dd></div>';}).join('');
-  var divs=ctRecap.children;
-  rows.forEach(function(r,i){divs[i].firstChild.textContent=r[0];divs[i].lastChild.textContent=r[1];});}}
-f.addEventListener('change',function(e){
- if(e.target.name==='ctType'){f.querySelectorAll('.ct-card').forEach(function(c){c.classList.toggle('sel',c.querySelector('input').checked);});ctErr1.classList.remove('show');}});
-ctNext.addEventListener('click',function(){
- if(step===1){if(!type()){ctErr1.classList.add('show');return;}ctErr1.classList.remove('show');show(2);return;}
- if(step===2){var bad=[];if(!ctName.value.trim())bad.push(ctName);if(!ctMail.checkValidity())bad.push(ctMail);if(!ctMsg.value.trim())bad.push(ctMsg);[ctName,ctMail,ctMsg].forEach(function(x){x.setAttribute('aria-invalid',bad.indexOf(x)>=0?'true':'false');});if(bad.length){ctErr2.classList.add('show');bad[0].focus();return;}ctErr2.classList.remove('show');show(3);}
-});
-f.addEventListener('input',function(e){var tg=e.target;if(tg&&tg.getAttribute&&tg.getAttribute('aria-invalid')==='true'){var ok=(tg===ctMail)?tg.checkValidity():!!(tg.value&&tg.value.trim());if(ok)tg.setAttribute('aria-invalid','false');}});
-ctPrev.addEventListener('click',function(){if(step>1)show(step-1);});
-f.addEventListener('submit',function(e){e.preventDefault();
-var n=ctName.value||'',o=ctOrg.value||'',m=ctMail.value||'',t=type(),msg=ctMsg.value||'';
-var prodLine=(!ctProdWrap.hidden&&ctProd.value)?('Produit: '+ctProd.value+'\r\n'):'';
-var body='Nom: '+n+'\r\nOrganisation: '+o+'\r\nEmail: '+m+'\r\nType: '+t+'\r\n'+prodLine+'\r\n'+msg;
-var full='\u00c0\u00A0: contact@enertchad.com\r\nObjet\u00A0: ['+t+'] '+n+'\r\n\r\n'+body;var fb=document.getElementById('ctFallback');if(fb){fb.hidden=false;var rc=document.getElementById('ctRecapMail');rc.value=full;var cp=document.getElementById('ctCopy'),ok=document.getElementById('ctCopied');cp.onclick=function(){function done(){ok.hidden=false;setTimeout(function(){ok.hidden=true;},2500);}if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(full).then(done,function(){rc.focus();rc.select();done();});}else{rc.focus();rc.select();try{document.execCommand('copy');done();}catch(e){}}};fb.scrollIntoView({block:'nearest'});}window.location.href='mailto:contact@enertchad.com?subject='+encodeURIComponent('['+t+'] '+n)+'&body='+encodeURIComponent(body);});})();
-</script>
+
 <script defer src="/assets/chrome/c_abd9013c3955.js?b=202607141200"></script><button type="button" id="toTop" aria-label="Revenir en haut de page" title="Haut de page"><svg class="ttr" viewBox="0 0 52 52" aria-hidden="true"><circle class="ttt" cx="26" cy="26" r="24"/><circle class="ttp" cx="26" cy="26" r="24"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button><script type="speculationrules">{"prerender":[{"where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":"/*.pptx"}},{"not":{"href_matches":"/*.pdf"}},{"not":{"href_matches":"/*.md"}},{"not":{"selector_matches":"[target=_blank]"}}]},"eagerness":"moderate"}]}</script><div id="lum-veil" aria-hidden="true"></div><div id="lum-ctl" class="lum-ctl"><button id="lum-btn" class="lum-btn" type="button" aria-label="Régler la luminosité de l’affichage" aria-expanded="false" aria-controls="lum-panel"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.2M12 19.8V22M2 12h2.2M19.8 12H22M4.9 4.9l1.6 1.6M17.5 17.5l1.6 1.6M19.1 4.9l-1.6 1.6M6.5 17.5l-1.6 1.6"/></svg></button><div id="lum-panel" class="lum-panel" role="group" aria-label="Luminosité de l’affichage" hidden><p class="lum-h">Luminosité</p><input id="lum-range" class="lum-range" type="range" min="80" max="130" step="2" value="100" aria-label="Niveau de luminosité (pour cent)"><div class="lum-presets"><button type="button" data-l="88">Sombre</button><button type="button" data-l="100">Standard</button><button type="button" data-l="116">Clair</button></div></div></div><script id="sw-reg">if("serviceWorker" in navigator&&(location.protocol==="https:"||location.hostname==="localhost"))addEventListener("load",function(){navigator.serviceWorker.register("/sw.js").catch(function(){})});</script><div id="nezProg" aria-hidden="true"></div><nav id="nezBar" aria-label="Navigation rapide mobile"><a href="/"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 11l9-8 9 8M5 10v10h14V10"/></svg>Accueil</a><a href="/clients"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 7h18M3 12h18M3 17h18"/></svg>Clients</a><a href="/investor-center"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 17l6-6 4 4 8-8M14 7h7v7"/></svg>Investisseurs</a><a href="/achats"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 21V7l7 4V7l7 4V3h4v18H3z"/></svg>Fournisseurs</a><a href="/contact"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16v16H4zM4 8l8 5 8-5"/></svg>Contact</a></nav><script defer src="/assets/chrome/u_cd226c00eb4b.js"></script>
 <script defer src="/assets/chrome/u2_881fcf8bc439.js"></script>
 <script defer src="/assets/chrome/u2_e8be195d19be.js"></script>
@@ -972,6 +899,6 @@ h.addEventListener("click",tg);
 #ctForm [aria-invalid="true"]:not(#e1):not(#e2):not(#e3){border-color:#D64545!important;box-shadow:0 0 0 1px rgba(214,69,69,.35)!important}
 </style>
 <script defer src="/assets/chrome/contact_profiles.js?b=202610061230"></script>
-</body>
+<script defer src="/assets/chrome/contact-delivery.js"></script></body>
 </html>
 

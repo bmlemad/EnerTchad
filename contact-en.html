@@ -493,7 +493,7 @@ html.et-jlight .rootland::after{
 <link rel="stylesheet" id="fond647" href="/assets/chrome/fond647.css?b=202609171400"><link rel="preload" href="/assets/fonts/InstrumentSerif-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" id="pole-premium" href="/assets/chrome/pole-premium.css?b=202610012200">
 <link rel="stylesheet" id="premium-chrome" href="/assets/chrome/premium-chrome.css?b=202610071010">
-</head>
+<style id="et-web-clarity">.et-web{max-width:1140px;margin:32px auto;padding:28px 24px;color:inherit}.et-web h2{line-height:1.3}.et-project-scroll{overflow-x:auto;border:1px solid #c9cdd1;border-radius:12px}.et-project-table{border-collapse:collapse;width:100%;min-width:740px;font-size:.9rem}.et-project-table th,.et-project-table td{text-align:start;vertical-align:top;padding:16px;border-bottom:1px solid #c9cdd1;line-height:1.5}.et-project-table th{background:#172638;color:#f5f7fa}.et-project-table tr:last-child td{border-bottom:0}.et-project-table a{color:inherit;text-decoration:underline}.et-form-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}.et-contact-form label{display:block;font-weight:600;line-height:1.6}.et-contact-form input,.et-contact-form select,.et-contact-form textarea{box-sizing:border-box;width:100%;padding:12px;min-height:48px;border:1px solid #9da7b4;border-radius:8px;font:inherit;color:#142033;background:#fff;margin:6px 0 16px}.et-contact-form textarea{min-height:150px}.et-contact-form .et-full{grid-column:1/-1}.et-contact-form button{min-height:48px;min-width:160px;padding:12px 20px;background:#172638;color:white;border:0;border-radius:8px;font:600 1rem system-ui;cursor:pointer}.et-contact-form button:disabled{opacity:.6;cursor:default}.et-contact-form [role=status]{padding:16px;border:1px solid #8b9eae;border-radius:8px;line-height:1.6}.et-contact-form .et-privacy{font-size:.9rem;font-weight:400}.et-web small{line-height:1.6;display:block}.et-web a:focus-visible{outline:3px solid #2575c5;outline-offset:4px}@media(max-width:760px){.et-form-grid{grid-template-columns:1fr}.et-project-scroll{max-width:100%}}</style></head>
 <body data-eh="eh1 eh8" class="nx-clear" id="top" class="et-inner-modern">
 <a class="et-skip skip-link" href="#main-content">Skip to main content</a>
 <div id="readbar" aria-hidden="true"></div>
@@ -576,59 +576,17 @@ html.et-jlight .rootland::after{
 .ct-recap dd{margin:0;color:var(--cream);word-break:break-word}
 @media(max-width:560px){.ct-recap div{grid-template-columns:1fr;gap:3px}}
 </style>
-<form id="ctForm" novalidate="">
-<ol aria-label="Contact form steps" class="ct-steps">
-<li aria-current="step" class="on" id="ctStep1"><b>1</b><span>Your request</span></li>
-<li id="ctStep2"><b>2</b><span>Your details</span></li>
-<li id="ctStep3"><b>3</b><span>Send</span></li>
-</ol>
-<fieldset class="ct-step" data-step="1">
-<legend>What is your request about?</legend>
-<div class="ct-cards">
-<label class="ct-card"><input name="ctType" required="" type="radio" value="Supply / B2B contract"/><span><strong>Supply &amp; B2B</strong><small>Fuels, LPG, lubricants — fleets, industry, contracts</small></span></label>
-<label class="ct-card"><input name="ctType" type="radio" value="E&amp;P operator — study / pilot / OFS"/><span><strong>E&amp;P operator</strong><small>EOR, oilfield services, a study or pilot on your fields</small></span></label>
-<label class="ct-card"><input name="ctType" type="radio" value="Industrial or technical partnership"/><span><strong>Partnership</strong><small>Industrial, technical or technological</small></span></label><label class="ct-card"><input name="ctType" type="radio" value="Public contracts / Institutions (B2G)"/><span><strong>Institutions &amp; public contracts</strong><small>Government bodies, agencies, framework contracts — at the ARSAT price</small></span></label>
-<label class="ct-card"><input name="ctType" type="radio" value="Investment"/><span><strong>Investment</strong><small>Capital, 100 M → 1 bn → 10 bn FCFA trajectory</small></span></label>
-<label class="ct-card"><input name="ctType" type="radio" value="Application / Talent"/><span><strong>Applications &amp; talent</strong><small>Joining EnerTchad, the Tchaditude academy</small></span></label>
-<label class="ct-card"><input name="ctType" type="radio" value="Press"/><span><strong>Press</strong><small>Interviews, information, media kit</small></span></label>
-<label class="ct-card"><input name="ctType" type="radio" data-contact-profile="fournisseur" value="Supplier registration"/><span><strong>Supplier registration</strong><small>Present your company, capabilities and references.</small></span></label>
-<label class="ct-card"><input name="ctType" type="radio" data-contact-profile="centrale-achat" value="Central purchasing membership"/><span><strong>Central purchasing membership</strong><small>Discuss pooled procurement and supply for your sites.</small></span></label>
-<label class="ct-card"><input name="ctType" type="radio" data-contact-profile="achats" value="Purchasing enquiry"/><span><strong>Purchasing enquiry</strong><small>A consultation, purchase order or procurement question.</small></span></label>
-<label class="ct-card"><input name="ctType" type="radio" value="Other"/><span><strong>Other request</strong><small>Any other question — we will point you the right way</small></span></label>
-</div>
-<p class="ct-err" id="ctErr1" role="alert">Select the subject of your request to continue.</p>
-</fieldset>
-<fieldset class="ct-step" data-step="2" hidden="">
-<legend>Your details and your need</legend>
-<div class="ct-grid">
-<label>Full name<input autocomplete="name" id="ctName" required="" type="text"/></label>
-<label>Organisation<input autocomplete="organization" id="ctOrg" type="text"/></label>
-<label>Email<input autocomplete="email" id="ctMail" placeholder="you@email.com" required="" type="email"/></label>
-<label hidden="" id="ctProdWrap">Product concerned
-        <select id="ctProd"><option value="">— Select (optional) —</option><option>SP95 petrol</option><option>Diesel</option><option>Jet A-1</option><option>LPG — household &amp; industrial gas</option><option>EnerLub™ lubricants</option><option>Bitumen</option><option>Multi-product / other</option></select>
-</label>
-</div>
-<label class="full">Your message<textarea id="ctMsg" required="" rows="4"></textarea></label>
-<p class="ct-err" id="ctErr2" role="alert">Fill in your name, a valid email and your message.</p>
-</fieldset>
-<fieldset class="ct-step" data-step="3" hidden="">
-<legend>Check your request before sending</legend>
-<dl class="ct-recap" id="ctRecap"></dl>
-<p class="hint" style="margin:0 0 4px">Sending opens your email client, pre-filled to contact@enertchad.com.</p>
-</fieldset>
-<div class="ct-navr">
-<button class="ct-back" hidden="" id="ctPrev" type="button">← Back</button>
-<button class="btn" id="ctNext" type="button">Continue →</button>
-<button class="btn" hidden="" id="ctSend" type="submit">Send my enquiry →</button>
-</div>
-</form>
-<div hidden="" id="ctFallback" role="status" style="margin-top:18px;padding:16px 20px;border:1px solid var(--hair);border-radius:14px">
-<p style="margin:0 0 6px;font-weight:650">Your email software should open with the message pre-filled.</p>
-<p style="margin:0 0 12px;font-size:.92rem">If nothing opens, copy the message below and send it to <a href="mailto:contact@enertchad.com" style="color:var(--gold-l)">contact@enertchad.com</a>.</p>
-<textarea aria-label="Your composed message" id="ctRecapMail" readonly="" rows="6" style="width:100%;font-family:var(--fm);font-size:.85rem;border:1px solid var(--hair);border-radius:10px;padding:10px 12px;background:transparent;color:inherit"></textarea>
-<button id="ctCopy" style="margin-top:10px;padding:9px 16px;border-radius:999px;border:1px solid var(--hair);background:transparent;color:inherit;cursor:pointer;font-family:var(--fm);font-size:.82rem" type="button">Copy the message</button>
-<span hidden="" id="ctCopied" style="margin-left:10px;color:#34D399;font-size:.85rem">✓ Copied</span>
-</div>
+<form id="ctForm" class="et-contact-form" name="enertchad-contact" method="POST" action="/contact-received-en" data-netlify="true" netlify-honeypot="website">
+<input type="hidden" name="form-name" value="enertchad-contact"><input type="hidden" name="language" value="en">
+<p hidden><label>Website<input name="website" tabindex="-1" autocomplete="off"></label></p>
+<div class="et-form-grid"><label class="et-full">Request type<select id="ctType" name="request_type" required><option value="">Choose a request type</option><option value="Supply / B2B contract">Supply / B2B contract</option><option value="E&amp;P operator — study / pilot / OFS">E&amp;P operator — study / pilot / OFS</option><option value="Industrial or technical partnership">Industrial or technical partnership</option><option value="Public contracts / Institutions (B2G)">Public contracts / Institutions (B2G)</option><option value="Investment">Investment</option><option value="Application / Talent">Application / Talent</option><option value="Press">Press</option><option value="Supplier registration" data-contact-profile="fournisseur">Supplier registration</option><option value="Central purchasing membership" data-contact-profile="centrale-achat">Central purchasing membership</option><option value="Purchasing enquiry" data-contact-profile="achats">Purchasing enquiry</option><option value="Other">Other</option></select></label>
+<label>Full name<input id="ctName" name="name" autocomplete="name" maxlength="100" required></label>
+<label>Organisation (optional)<input id="ctOrg" name="organization" autocomplete="organization" maxlength="200"></label>
+<label class="et-full">Email<input id="ctMail" name="email" type="email" autocomplete="email" maxlength="254" required></label>
+<label class="et-full">Your message<textarea id="ctMsg" name="message" rows="6" maxlength="5000" required></textarea></label></div>
+<p class="et-privacy">Your details and message are sent to EnerTchad through its hosting provider Netlify to process your request. They are not sent to Analytics. Please do not include confidential documents or sensitive personal information. <a href="/confidentialite-en">Privacy information</a>.</p>
+<button id="ctSend" type="submit">Send my request</button><p id="ctDeliveryStatus" role="status" aria-live="polite" tabindex="-1" hidden></p></form>
+
 </div></div></div></section>
 
 <section class="pp-compact"><div class="pp-wrap"><div class="pp-prose pp-prose-w"><div class="pp-grid"><div class="pp-cell"><span>Follow us</span><strong>@enertchad</strong><span>Releases, milestones and behind-the-scenes of a Chadian oil company under construction.</span></div><div aria-label="EnerTchad social networks" class="pp-cell"><a aria-label="EnerTchad on LinkedIn" href="https://www.linkedin.com/company/enertchad" rel="noopener" target="_blank" title="LinkedIn"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM10 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.4c0-1.29-.02-2.95-1.8-2.95-1.8 0-2.07 1.4-2.07 2.85V21h-4z" fill="currentColor"></path></svg></a><a aria-label="EnerTchad on Facebook" href="https://www.facebook.com/enertchad" rel="noopener" target="_blank" title="Facebook"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.78-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.45 2.89h-2.33v6.99A10 10 0 0 0 22 12z" fill="currentColor"></path></svg></a><a aria-label="EnerTchad on WhatsApp" href="https://wa.me/23599298696" rel="noopener" target="_blank" title="Back to top"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.5 15.2L2 22l4.9-1.3A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-2.9.8.8-2.8-.2-.3A8 8 0 1 1 12 20zm4.4-6c-.2-.1-1.4-.7-1.6-.8s-.4-.1-.5.1-.6.8-.7 1-.3.1-.5 0a6.5 6.5 0 0 1-1.9-1.2 7.2 7.2 0 0 1-1.3-1.7c-.1-.2 0-.3.1-.4l.4-.5.2-.3v-.4c0-.1-.5-1.3-.7-1.7s-.4-.4-.5-.4h-.5a1 1 0 0 0-.7.3A2.8 2.8 0 0 0 6.5 9a4.9 4.9 0 0 0 1 2.6 11.3 11.3 0 0 0 4.4 3.9c2 .8 2 .5 2.4.5a2.5 2.5 0 0 0 1.6-1.1 2 2 0 0 0 .1-1.1c0-.1-.2-.2-.4-.3z" fill="currentColor"></path></svg></a></div></div><div class="pp-box">EnerTchad S.A. — an integrated oil company with Chadian capital, in formation (OHADA). Unity · Innovation · Sustainability · Access to Energy. Networks: @enertchad.</div></div></div></section>
@@ -663,38 +621,7 @@ html.et-jlight .rootland::after{
     <div class="foot-legal"><span class="pft-legal">© 2026 EnerTchad S.A. (company in formation) · Block D, 2nd floor, Office 23, Sabangali district, Cité du 1er Décembre, N’Djamena, Chad · OHADA/AUSCGIE</span><span class="foot-legal-links"><a href="/mentions-legales-en">Legal notice</a><a href="/confidentialite-en">Privacy</a><a href="/cookies-en">Cookies</a><a href="/ethique-en#alerte">Ethics alert line</a></span><a class="pft-top" href="#top">Back to top ↑</a></div>
   </div>
 </footer>
-<script>/* Ch232 : assistant de contact EN - le script pilote manquait (markup seul), porte depuis contact.html avec chaines traduites */
-(function(){var f=document.getElementById('ctForm');if(!f)return;
-var step=1,steps=f.querySelectorAll('.ct-step'),tabs=[ctStep1,ctStep2,ctStep3];
-function type(){var r=f.querySelector('input[name="ctType"]:checked');return r?r.value:'';}
-function typeLabel(){var r=f.querySelector('input[name="ctType"]:checked');if(!r)return '';var s=r.closest('.ct-card').querySelector('strong');return s?s.textContent:r.value;}
-function show(n){step=n;
- steps.forEach(function(s){s.hidden=(+s.dataset.step!==n);});
- tabs.forEach(function(t,i){t.classList.toggle('on',i+1===n);t.classList.toggle('done',i+1<n);
-  if(i+1===n)t.setAttribute('aria-current','step');else t.removeAttribute('aria-current');});
- ctPrev.hidden=(n===1);ctNext.hidden=(n===3);ctSend.hidden=(n!==3);
- var lg=f.querySelector('.ct-step[data-step="'+n+'"] legend');
- if(lg){lg.setAttribute('tabindex','-1');lg.focus({preventScroll:true});var _y=lg.getBoundingClientRect().top+window.scrollY-215;window.scrollTo({top:_y,behavior:'smooth'});}
- if(n===2){ctProdWrap.hidden=(type().indexOf('Supply')!==0);}
- if(n===3){var rows=[['Request',typeLabel()],['Name',ctName.value],['Organisation',ctOrg.value||'\u2014'],['Email',ctMail.value]];
-  if(!ctProdWrap.hidden&&ctProd.value)rows.push(['Product',ctProd.value]);
-  rows.push(['Message',ctMsg.value]);
-  ctRecap.innerHTML=rows.map(function(r){return '<div><dt></dt><dd></dd></div>';}).join('');
-  var divs=ctRecap.children;
-  rows.forEach(function(r,i){divs[i].firstChild.textContent=r[0];divs[i].lastChild.textContent=r[1];});}}
-f.addEventListener('change',function(e){
- if(e.target.name==='ctType'){f.querySelectorAll('.ct-card').forEach(function(c){c.classList.toggle('sel',c.querySelector('input').checked);});ctErr1.classList.remove('show');}});
-ctNext.addEventListener('click',function(){
- if(step===1){if(!type()){ctErr1.classList.add('show');return;}ctErr1.classList.remove('show');show(2);return;}
- if(step===2){var bad=[];if(!ctName.value.trim())bad.push(ctName);if(!ctMail.checkValidity())bad.push(ctMail);if(!ctMsg.value.trim())bad.push(ctMsg);[ctName,ctMail,ctMsg].forEach(function(x){x.setAttribute('aria-invalid',bad.indexOf(x)>=0?'true':'false');});if(bad.length){ctErr2.classList.add('show');bad[0].focus();return;}ctErr2.classList.remove('show');show(3);}
-});
-f.addEventListener('input',function(e){var tg=e.target;if(tg&&tg.getAttribute&&tg.getAttribute('aria-invalid')==='true'){var ok=(tg===ctMail)?tg.checkValidity():!!(tg.value&&tg.value.trim());if(ok)tg.setAttribute('aria-invalid','false');}});
-ctPrev.addEventListener('click',function(){if(step>1)show(step-1);});
-f.addEventListener('submit',function(e){e.preventDefault();
-var n=ctName.value||'',o=ctOrg.value||'',m=ctMail.value||'',t=type(),tl=typeLabel(),msg=ctMsg.value||'';
-var prodLine=(!ctProdWrap.hidden&&ctProd.value)?('Product: '+ctProd.value+'\r\n'):'';
-var body='Name: '+n+'\r\nOrganisation: '+o+'\r\nEmail: '+m+'\r\nType: '+t+'\r\n'+prodLine+'\r\n'+msg;
-var full='To: contact@enertchad.com\r\nSubject: ['+tl+'] '+n+'\r\n\r\n'+body;var fb=document.getElementById('ctFallback');if(fb){fb.hidden=false;var rc=document.getElementById('ctRecapMail');rc.value=full;var cp=document.getElementById('ctCopy'),ok=document.getElementById('ctCopied');cp.onclick=function(){function done(){ok.hidden=false;setTimeout(function(){ok.hidden=true;},2500);}if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(full).then(done,function(){rc.focus();rc.select();done();});}else{rc.focus();rc.select();try{document.execCommand('copy');done();}catch(e){}}};fb.scrollIntoView({block:'nearest'});}window.location.href='mailto:contact@enertchad.com?subject='+encodeURIComponent('['+tl+'] '+n)+'&body='+encodeURIComponent(body);});})();</script><script defer src="/assets/chrome/c_abd9013c3955.js?b=202607141200"></script><button type="button" id="toTop" aria-label="Back to top" title="Top of page"><svg class="ttr" viewBox="0 0 52 52" aria-hidden="true"><circle class="ttt" cx="26" cy="26" r="24"/><circle class="ttp" cx="26" cy="26" r="24"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button><script type="speculationrules">{"prerender":[{"where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":"/*.pptx"}},{"not":{"href_matches":"/*.pdf"}},{"not":{"href_matches":"/*.md"}},{"not":{"selector_matches":"[target=_blank]"}}]},"eagerness":"moderate"}]}</script><div id="lum-veil" aria-hidden="true"></div><div id="lum-ctl" class="lum-ctl"><button id="lum-btn" class="lum-btn" type="button" aria-label="Adjust display brightness" aria-expanded="false" aria-controls="lum-panel"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.2M12 19.8V22M2 12h2.2M19.8 12H22M4.9 4.9l1.6 1.6M17.5 17.5l1.6 1.6M19.1 4.9l-1.6 1.6M6.5 17.5l-1.6 1.6"/></svg></button><div id="lum-panel" class="lum-panel" role="group" aria-label="Display brightness" hidden><p class="lum-h">Brightness</p><input id="lum-range" class="lum-range" type="range" min="80" max="130" step="2" value="100" aria-label="Brightness level (percent)"><div class="lum-presets"><button type="button" data-l="88">Dark</button><button type="button" data-l="100">Standard</button><button type="button" data-l="116">Light</button></div></div></div><script id="sw-reg">if("serviceWorker" in navigator&&(location.protocol==="https:"||location.hostname==="localhost"))addEventListener("load",function(){navigator.serviceWorker.register("/sw.js").catch(function(){})});</script><div id="nezProg" aria-hidden="true"></div><nav id="nezBar" aria-label="Quick mobile navigation"><a href="/index-en"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 11l9-8 9 8M5 10v10h14V10"/></svg>Home</a><a href="/clients-en"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 7h18M3 12h18M3 17h18"/></svg>Customers</a><a href="/investor-center-en"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 17l6-6 4 4 8-8M14 7h7v7"/></svg>Investors</a><a href="/achats-en"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 21V7l7 4V7l7 4V3h4v18H3z"/></svg>Suppliers</a><a href="/contact-en"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16v16H4zM4 8l8 5 8-5"/></svg>Contact</a></nav><script defer src="/assets/chrome/u_cd226c00eb4b.js"></script>
+<script defer src="/assets/chrome/c_abd9013c3955.js?b=202607141200"></script><button type="button" id="toTop" aria-label="Back to top" title="Top of page"><svg class="ttr" viewBox="0 0 52 52" aria-hidden="true"><circle class="ttt" cx="26" cy="26" r="24"/><circle class="ttp" cx="26" cy="26" r="24"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button><script type="speculationrules">{"prerender":[{"where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":"/*.pptx"}},{"not":{"href_matches":"/*.pdf"}},{"not":{"href_matches":"/*.md"}},{"not":{"selector_matches":"[target=_blank]"}}]},"eagerness":"moderate"}]}</script><div id="lum-veil" aria-hidden="true"></div><div id="lum-ctl" class="lum-ctl"><button id="lum-btn" class="lum-btn" type="button" aria-label="Adjust display brightness" aria-expanded="false" aria-controls="lum-panel"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.2M12 19.8V22M2 12h2.2M19.8 12H22M4.9 4.9l1.6 1.6M17.5 17.5l1.6 1.6M19.1 4.9l-1.6 1.6M6.5 17.5l-1.6 1.6"/></svg></button><div id="lum-panel" class="lum-panel" role="group" aria-label="Display brightness" hidden><p class="lum-h">Brightness</p><input id="lum-range" class="lum-range" type="range" min="80" max="130" step="2" value="100" aria-label="Brightness level (percent)"><div class="lum-presets"><button type="button" data-l="88">Dark</button><button type="button" data-l="100">Standard</button><button type="button" data-l="116">Light</button></div></div></div><script id="sw-reg">if("serviceWorker" in navigator&&(location.protocol==="https:"||location.hostname==="localhost"))addEventListener("load",function(){navigator.serviceWorker.register("/sw.js").catch(function(){})});</script><div id="nezProg" aria-hidden="true"></div><nav id="nezBar" aria-label="Quick mobile navigation"><a href="/index-en"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 11l9-8 9 8M5 10v10h14V10"/></svg>Home</a><a href="/clients-en"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 7h18M3 12h18M3 17h18"/></svg>Customers</a><a href="/investor-center-en"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 17l6-6 4 4 8-8M14 7h7v7"/></svg>Investors</a><a href="/achats-en"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 21V7l7 4V7l7 4V3h4v18H3z"/></svg>Suppliers</a><a href="/contact-en"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16v16H4zM4 8l8 5 8-5"/></svg>Contact</a></nav><script defer src="/assets/chrome/u_cd226c00eb4b.js"></script>
 <script defer src="/assets/chrome/u2_881fcf8bc439.js"></script>
 <script defer src="/assets/chrome/u2_e8be195d19be.js"></script>
 
@@ -956,6 +883,6 @@ h.addEventListener("click",tg);
 #ctForm [aria-invalid="true"]:not(#e1):not(#e2):not(#e3){border-color:#D64545!important;box-shadow:0 0 0 1px rgba(214,69,69,.35)!important}
 </style>
 <script defer src="/assets/chrome/contact_profiles.js?b=202610061230"></script>
-</body>
+<script defer src="/assets/chrome/contact-delivery.js"></script></body>
 </html>
 
