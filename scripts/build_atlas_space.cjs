@@ -53,11 +53,19 @@ for (const lang of ['fr','en']) {
   // Scripts already inside a selected section must execute only once.
   const initializers=nodes.filter(n=>n.name==='script' && n.startIndex>main.startIndex && n.endIndex<main.endIndex)
     .map(n=>source.slice(n.startIndex,n.endIndex+1)).filter(script=>!body.includes(script)).join('\n');
-  body=body.replace('</main>',initializers+'</main>');
+  // Styles du module carte et des sections (atc-css, cad631, atl-maps-fix…) places entre les sections
+  // de l ancienne page : sans eux, la carte interactive s affichait sans mise en forme.
+  const styles=nodes.filter(n=>n.name==='style' && n.startIndex>main.startIndex && n.endIndex<main.endIndex)
+    .map(n=>source.slice(n.startIndex,n.endIndex+1)).filter(st=>!body.includes(st)).join('\n');
+  body=body.replace('</main>',styles+initializers+'</main>');
   let tail=source.slice(main.endIndex+1);
   // Links from the shared navigation enter the new space; specialized old anchors remain usable.
   let output=head+body+tail;
   output=output.replace(/href="\/enerconseils\/atlas(-en)?(?:#([^"]*))?"/g,(_,en,id)=>`href="${oldLink(!!en,id)}"`);
+  // Selecteur de langue global (en-tete et menu mobile) : la page soeur, pas l accueil de l Atlas.
+  if(p.slug){const other=route(p,lang==='fr'?'en':'fr'), home=lang==='fr'?'/atlas-en':'/atlas/';
+   output=output.replace(new RegExp(`<a href="${home}" class="nx-lang"`,'g'),`<a href="${other}" class="nx-lang"`)
+    .replace(new RegExp(`<a href="${home}">(English|Français)</a>`,'g'),(m,l)=>`<a href="${other}">${l}</a>`);}
   if(!p.slug)output=output.replace('</body>',`<script src="/assets/chrome/atlas-route.js?v=20261008"></script></body>`);
   const file=!p.slug&&lang==='fr'?'atlas/index.html':url.slice(1)+'.html';fs.mkdirSync(require('node:path').dirname(file),{recursive:true});fs.writeFileSync(file,output);
  }
