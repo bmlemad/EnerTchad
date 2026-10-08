@@ -304,3 +304,6 @@ html.et-plight:not(#q0):not(#q1):not(#q2):not(#q3):not(#q4):not(#q5):not(#q6):no
 .jn-sujets .topic-chip{display:inline-flex;align-items:center;gap:8px;padding:8px 13px;border-radius:999px;border:1px solid var(--hair,rgba(120,170,220,.22));font-size:.82rem;font-weight:550;line-height:1.25}
 .jn-sujets .topic-chip b:not(#_){width:8px;height:8px;border-radius:50%;background:var(--tc,#E8C36A)!important;flex:none}
 .jn-sujets .topic-chip i{font-style:normal;color:var(--tc,#E8C36A)}
+/* Hauteur de la barre de navigation connue des le premier affichage : le script ne fait plus que confirmer la valeur,
+   la page ne descend plus de 72 px apres chargement (CLS). 77 px mobile, 93 px tablette, 144 px grand ecran. */
+:root{--nav-h:77px}@media(min-width:481px){:root{--nav-h:93px}}@media(min-width:1241px){:root{--nav-h:144px}}
