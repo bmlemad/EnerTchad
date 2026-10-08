@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import { readFile, stat } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
 import { htmlToDOM } from 'html-react-parser';
+import { withYouTubeBadge } from '../../lib/youtube.js';
 const manifest = JSON.parse(await readFile('.generated/site.json', 'utf8'));
 const hash = value => createHash('sha256').update(value).digest('hex');
 function elements(html) {
@@ -14,7 +15,7 @@ let preserved=0, native=0;
 for (const page of manifest.pages) {
   const before = await readFile(page.source);
   const after = await readFile(`out/${page.source}`);
-  if (!page.native) { assert.equal(hash(after),hash(before),page.source); preserved++; continue; }
+  if (!page.native) { assert.equal(hash(after),hash(withYouTubeBadge(before.toString())),page.source); preserved++; continue; }
   native++;
   assert(after.toString().includes('/assets/chrome/audience-consent.js') && after.toString().includes('et-audience-consent'), page.source+' missing consent loader');
   assert(!elements(after.toString()).some(el => el.name === 'script' && /googletagmanager\.com/.test(el.attribs.src || '')), page.source+' loads Google before visitor consent');
@@ -48,4 +49,4 @@ for (const page of manifest.pages) {
   }
 }
 for(const asset of manifest.assets)assert.equal(hash(await readFile('out/'+asset)),hash(await readFile(asset)),asset);
-console.log(`PASS: ${preserved} HTML pages preserved byte-for-byte; ${native} React pages verified; ${manifest.assets.length} assets preserved.`);
+console.log(`PASS: ${preserved} HTML pages preserved with the YouTube footer badge; ${native} React pages verified; ${manifest.assets.length} assets preserved.`);
