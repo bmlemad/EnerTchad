@@ -1,4 +1,5 @@
-/* EnerTchad audience measurement: no Google requests before opt-in. */
+/* EnerTchad audience measurement: no Google requests before opt-in.
+   No noscript Google iframe: measurement always requires an active choice. */
 (function(){'use strict';
 if(window.etAudienceConsent)return;
 var KEY='et-audience-consent-v1',MID='G-VT3S6711WW',GTM='GTM-PC376CFG',MAX=180*86400000;
