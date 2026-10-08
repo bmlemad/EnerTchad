@@ -4,12 +4,12 @@
   "redirects": [
     {
       "source": "/enerconseils/atlas",
-      "destination": "/atlas",
+      "destination": "/atlas/",
       "permanent": true
     },
     {
       "source": "/enerconseils/atlas.html",
-      "destination": "/atlas",
+      "destination": "/atlas/",
       "permanent": true
     },
     {
@@ -479,12 +479,12 @@
     },
     {
       "source": "/pole-enerconseils-atlas",
-      "destination": "/atlas",
+      "destination": "/atlas/",
       "permanent": true
     },
     {
       "source": "/pole-enerconseils-atlas.html",
-      "destination": "/atlas",
+      "destination": "/atlas/",
       "permanent": true
     },
     {
