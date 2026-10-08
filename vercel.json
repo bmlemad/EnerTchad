@@ -3,6 +3,26 @@
   "cleanUrls": true,
   "redirects": [
     {
+      "source": "/enerconseils/atlas",
+      "destination": "/atlas",
+      "permanent": true
+    },
+    {
+      "source": "/enerconseils/atlas.html",
+      "destination": "/atlas",
+      "permanent": true
+    },
+    {
+      "source": "/enerconseils/atlas-en",
+      "destination": "/atlas-en",
+      "permanent": true
+    },
+    {
+      "source": "/enerconseils/atlas-en.html",
+      "destination": "/atlas-en",
+      "permanent": true
+    },
+    {
       "source": "/reporting",
       "destination": "/publications",
       "permanent": true
@@ -459,12 +479,12 @@
     },
     {
       "source": "/pole-enerconseils-atlas",
-      "destination": "/enerconseils/atlas",
+      "destination": "/atlas",
       "permanent": true
     },
     {
       "source": "/pole-enerconseils-atlas.html",
-      "destination": "/enerconseils/atlas",
+      "destination": "/atlas",
       "permanent": true
     },
     {
