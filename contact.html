@@ -590,8 +590,8 @@ html.et-jlight .rootland::after{
 .ct-recap dd{margin:0;color:var(--cream);word-break:break-word}
 @media(max-width:560px){.ct-recap div{grid-template-columns:1fr;gap:3px}}
 </style>
-<form id="ctForm" class="et-contact-form" name="enertchad-contact" method="POST" action="/contact-received" data-netlify="true" netlify-honeypot="website">
-<input type="hidden" name="form-name" value="enertchad-contact"><input type="hidden" name="language" value="fr">
+<form id="ctForm" class="et-contact-form" name="enertchad-contact-fr" method="POST" action="/contact-received" data-netlify="true" netlify-honeypot="website">
+<input type="hidden" name="form-name" value="enertchad-contact-fr"><input type="hidden" name="language" value="fr">
 <p hidden><label>Website<input name="website" tabindex="-1" autocomplete="off"></label></p>
 <div class="et-form-grid"><label class="et-full">Objet de la demande<select id="ctType" name="request_type" required><option value="">Choisissez un objet</option><option value="Approvisionnement / Contrat B2B">Approvisionnement / Contrat B2B</option><option value="Opérateur E&amp;P — étude / pilote / OFS">Opérateur E&amp;P — étude / pilote / OFS</option><option value="Partenariat industriel ou technique">Partenariat industriel ou technique</option><option value="Marchés publics / Institutions (B2G)">Marchés publics / Institutions (B2G)</option><option value="Investissement">Investissement</option><option value="Candidature / Talents">Candidature / Talents</option><option value="Presse">Presse</option><option value="Référencement fournisseur" data-contact-profile="fournisseur">Référencement fournisseur</option><option value="Adhésion à la centrale d’achat" data-contact-profile="centrale-achat">Adhésion à la centrale d’achat</option><option value="Demande au service achats" data-contact-profile="achats">Demande au service achats</option><option value="Autre">Autre</option></select></label>
 <label>Nom complet<input id="ctName" name="name" autocomplete="name" maxlength="100" required></label>
@@ -899,6 +899,6 @@ h.addEventListener("click",tg);
 #ctForm [aria-invalid="true"]:not(#e1):not(#e2):not(#e3){border-color:#D64545!important;box-shadow:0 0 0 1px rgba(214,69,69,.35)!important}
 </style>
 <script defer src="/assets/chrome/contact_profiles.js?b=202610061230"></script>
-<script defer src="/assets/chrome/contact-delivery.js"></script></body>
+<script defer src="/assets/chrome/contact-delivery.js?v=20261008-2"></script></body>
 </html>
 
