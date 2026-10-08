@@ -16,6 +16,8 @@ for (const page of manifest.pages) {
   const after = await readFile(`out/${page.source}`);
   if (!page.native) { assert.equal(hash(after),hash(before),page.source); preserved++; continue; }
   native++;
+  assert(after.toString().includes('/assets/chrome/audience-consent.js') && after.toString().includes('et-audience-consent'), page.source+' missing consent loader');
+  assert(!elements(after.toString()).some(el => el.name === 'script' && /googletagmanager\.com/.test(el.attribs.src || '')), page.source+' loads Google before visitor consent');
   const original = elements(before.toString()), exported = elements(after.toString());
   for(const style of original.filter(el => el.name === 'style')) {
     assert(exported.some(el => el.name === 'style' && text(el) === text(style)),page.source+' lost editorial style');
