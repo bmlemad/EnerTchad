@@ -536,7 +536,7 @@ reset.addEventListener('click',function(){
 </div></div></div></section>
 
 <section id="carnets-lies" aria-labelledby="pp-h7"><div class="pp-wrap"><div class="pp-head"><h2 id="pp-h7">Le terrain en parle.</h2></div><div class="pp-prose pp-prose-w"><span>◆ Le fil daté · Sur le terrain</span><div class="pp-grid"><a class="pp-cell" href="/journal-interview-controle"><span>23 août 2026 · L’interview métier</span><span>Dans la salle de contrôle : l’interview de l’opérateur de conduite</span></a><a class="pp-cell" href="/journal-robotique-terrain"><span>6 juillet 2026 · TchadiTech</span><span>Drones, racleurs, crawlers : inspecter sans arrêter, sans risquer personne</span></a></div><a href="/carnets">Tous les carnets →</a></div></div></section>
-<script id="pp-sub-js">(function(){var s=document.querySelector(".pp-sub"),n=document.getElementById("nav");if(!s||!n)return;var r=0;function f(){r=0;var b=n.getBoundingClientRect().bottom;s.style.setProperty("--pp-st",Math.max(0,Math.round(b))+"px")}addEventListener("scroll",function(){if(!r)r=requestAnimationFrame(f)},{passive:true});addEventListener("resize",f);f()})();</script>
+<script id="pp-sub-js">(function(){var s=document.querySelector(".pp-sub"),n=document.getElementById("nav");if(!s||!n)return;var r=0;function f(){r=0;var b=n.getBoundingClientRect().bottom;s.style.setProperty("--pp-st",Math.max(0,Math.round(b))+"px")}addEventListener("scroll",function(){if(!r)r=requestAnimationFrame(f)},{passive:true});addEventListener("resize",f);requestAnimationFrame(f)})();</script>
 </main>
 <footer class="pft">
   <div class="wrap">
