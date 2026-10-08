@@ -32,7 +32,9 @@ export function StrategicHeader({ name }) {
     ? [[`/essentiel${suffix}`, en ? '90 seconds' : '90 secondes'], [`/investisseurs${suffix}`, en ? 'Investor page' : 'Page investisseurs'], [`/publications${suffix}`, 'Documents'], ['mailto:invest@enertchad.com', en ? 'Investor contact' : 'Contact investisseur', true]]
     : [[`/nos-activites${suffix}`, en ? 'Activities' : 'Activités'], [`/projets${suffix}`, en ? 'Projects' : 'Projets'], [`/publications${suffix}`, 'Documents'], [`/investor-center${suffix}`, en ? 'Investors' : 'Investisseurs', true]];
   const languageLink = <a href={'/' + (en ? name.slice(0, -3) : name + '-en')} hrefLang={en ? 'fr' : 'en'} lang={en ? 'fr' : 'en'} aria-label={en ? 'Version française' : 'English version'}>{en ? 'FR' : 'EN'}</a>;
-  const items = () => <>{links.map(([href,label,cta]) => <a key={href} href={href} className={cta ? 'sp-cta' : undefined}>{label}</a>)}{languageLink}</>;
+  // Arabic: no equivalent page, link to the closest Arabic page (as the ع link does across the site).
+  const arabicLink = <a href={investor ? '/ar-investisseurs' : '/ar'} lang="ar" title="العربية" aria-label="النسخة العربية">ع</a>;
+  const items = () => <>{links.map(([href,label,cta]) => <a key={href} href={href} className={cta ? 'sp-cta' : undefined}>{label}</a>)}{languageLink}{arabicLink}</>;
   return <header className="sp-top"><div className="sp-wrap sp-topin"><a className="sp-brand" href={en ? '/index-en' : '/'}>Ener<span>Tchad</span></a><nav className="sp-nav" aria-label={en ? 'Main navigation' : 'Navigation principale'}>{items()}</nav><details className="sp-mobile-menu"><summary>Menu</summary><nav aria-label={en ? 'Mobile navigation' : 'Navigation mobile'}>{items()}</nav></details></div></header>;
 }
 export function StrategicPage({ name }) {
