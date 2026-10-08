@@ -238,3 +238,6 @@ try{(function(){
  }
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',go);else go();
 })()}catch(e){}
+
+/* Optional audience measurement loads locally; Google waits for consent. */
+(function(){var s=document.createElement("script");s.src="/assets/chrome/audience-consent.js?v=20261008";s.defer=true;document.head.appendChild(s)})();
