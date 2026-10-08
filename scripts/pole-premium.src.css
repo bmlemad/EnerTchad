@@ -559,3 +559,9 @@
 /* Grille .pp-blocks : une colonne bornee (services-ep debordait de 348 a 10 799 px sur mobile) */
 @M .pp-blocks{grid-template-columns:minmax(0,1fr)}
 @M .pp-blocks>*{min-width:0}
+
+/* ===== Titre du système produit (réseau) : h2 au gabarit de l'ancien h3 (2026-10-08) ===== */
+@M .et-product-proof h2.et-proof-h{font-size:1.55rem;line-height:1.15;letter-spacing:-.012em;margin:0}
+/* Fil d'Ariane : zone de pointage d'au moins 24 px, soulignement conservé (2026-10-08) */
+@M .pp-crumb a{display:inline-block;padding:6px 0;margin:-6px 0;border-bottom:0;text-decoration:underline;text-decoration-color:rgba(255,255,255,.3);text-decoration-thickness:1px;text-underline-offset:4px}
+@M .pp-crumb a:hover{text-decoration-color:#fff}
