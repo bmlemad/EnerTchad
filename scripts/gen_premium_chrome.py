@@ -72,7 +72,7 @@ FR = [
         ('Carnets', 'Articles et interviews', '/carnets'),
         ('Communiqués officiels', 'Annonces datées', '/communiques'),
         ('Espace presse', 'Contacts et ressources', '/presse'),
-        ('Atlas du secteur', 'Le secteur pétrolier du Tchad', '/enerconseils/atlas'),
+        ('Atlas du secteur', 'Le secteur pétrolier du Tchad', '/atlas/'),
         ('Glossaire pétrolier', 'Les termes du métier', '/glossaire-petrolier'),
     ], ('Carnet', 'Première du genre', 'Une chaîne intégrée pensée au Tchad', '/journal-premiere-du-genre')),
     ('Carrières', 'Du puits à la pompe, une chaîne entière à faire tourner, avec la relève tchadienne d’abord.', '/carrieres', [
@@ -125,7 +125,7 @@ EN = [
         ('Journal', 'Articles and interviews', '/carnets'),
         ('Press releases', 'Dated announcements', '/communiques'),
         ('Press room', 'Contacts and resources', '/presse'),
-        ('Sector atlas', 'Chad’s oil sector', '/enerconseils/atlas'),
+        ('Sector atlas', 'Chad’s oil sector', '/atlas-en'),
         ('Oil glossary', 'The terms of the trade', '/glossaire-petrolier'),
     ], ('Journal', 'A first of its kind', 'An integrated chain designed in Chad', '/journal-premiere-du-genre')),
     ('Careers', 'From wellhead to pump, a whole chain to run, with Chad’s next generation first.', '/carrieres', [
