@@ -27,7 +27,9 @@ const native = ['essentiel', 'essentiel-en', 'investor-center', 'investor-center
 const pages = html.map(source => ({ source, route: source === 'index.html' ? '/' : '/' + source.slice(0, -5), native: native.includes(source.slice(0, -5)) }));
 const extensions = new Set(['.css','.js','.webp','.woff2','.jpg','.pdf','.png','.svg','.xlsx','.pptx','.zip','.webmanifest','.ics','.csv','.xml','.txt']);
 const publicWellKnown = new Set(['.well-known/security.txt']);
-const assets = tracked.filter(p => publicWellKnown.has(p) || ( !excluded.test(p) && !p.startsWith('.') && (p.startsWith('assets/') || extensions.has(extname(p)) || ['_headers','_redirects','CNAME'].includes(p)) && !['package-lock.json','package.json'].includes(p)));
+// Public documents linked from the site (press kit); other Markdown files stay internal.
+const publicDocuments = new Set(['EnerTchad-fiche-presse.md']);
+const assets = tracked.filter(p => publicWellKnown.has(p) || publicDocuments.has(p) || ( !excluded.test(p) && !p.startsWith('.') && (p.startsWith('assets/') || extensions.has(extname(p)) || ['_headers','_redirects','CNAME'].includes(p)) && !['package-lock.json','package.json'].includes(p)));
 await rm('public', { recursive: true, force: true });
 // A clean export avoids retaining old chunks when rebuilding in the same workspace.
 await rm('out', { recursive: true, force: true, maxRetries: 3, retryDelay: 100 });
