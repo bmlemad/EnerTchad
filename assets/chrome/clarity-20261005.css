@@ -25,3 +25,16 @@ html:not(#et-web-1):not(#et-web-2):not(#et-web-3):not(#et-web-4):not(#et-web-5):
    Le nouvel accueil laissait 138 px de fond creme au-dessus du heros : menu illisible. Le heros sombre remonte sous l en-tete : --nav-h a 0 sur ce main (la regle qui le decale lit var(--nav-h,138px)). */
 main.et-home[dir="rtl"]{--nav-h:0px}
 main.et-home[dir="rtl"]>.et-hero:not(#ar0):not(#ar1):not(#ar2):not(#ar3):not(#ar4):not(#ar5):not(#ar6):not(#ar7):not(#ar8):not(#ar9):not(#ar10):not(#ar11):not(#ar12):not(#ar13):not(#ar14):not(#ar15):not(#ar16):not(#ar17):not(#ar18):not(#ar19):not(#ar20):not(#ar21):not(#ar22):not(#ar23):not(#ar24):not(#ar25):not(#ar26):not(#ar27):not(#ar28):not(#ar29){padding-top:176px!important}
+
+/* Accueil (revue du 8 octobre) :
+   - liens de texte de meme couleur que le texte et sans soulignement (WCAG 1.4.1) : les feuilles du theme
+     retirent le soulignement avec jusqu a 45 identifiants factices ; on le retablit avec 40 + :is ;
+   - fonds teintes des sections annules par ces memes feuilles (section transparente) ;
+   - hauteur de barre connue avant le script : 77 px sous 1241 px, 138 px au-dessus (mesures FR et EN),
+     sinon le heros partait a 138 px puis remontait de 61 px sur mobile (CLS 0,066) ;
+   - titre : « roche-mere » ne se coupe plus apres le trait d union. */
+html:not(#eh0):not(#eh1):not(#eh2):not(#eh3):not(#eh4):not(#eh5):not(#eh6):not(#eh7):not(#eh8):not(#eh9):not(#eh10):not(#eh11):not(#eh12):not(#eh13):not(#eh14):not(#eh15):not(#eh16):not(#eh17):not(#eh18):not(#eh19):not(#eh20):not(#eh21):not(#eh22):not(#eh23):not(#eh24):not(#eh25):not(#eh26):not(#eh27):not(#eh28):not(#eh29):not(#eh30):not(#eh31):not(#eh32):not(#eh33):not(#eh34):not(#eh35):not(#eh36):not(#eh37):not(#eh38):not(#eh39) .et-home :is(.et-secondary,.et-metrics a,.et-segments a,.et-actions a:not(.et-primary),.et-inline-links a,p a){text-decoration:underline!important;text-decoration-thickness:1px!important;text-underline-offset:.22em!important}
+html:not(#eh0):not(#eh1):not(#eh2):not(#eh3):not(#eh4):not(#eh5):not(#eh6):not(#eh7):not(#eh8):not(#eh9):not(#eh10):not(#eh11):not(#eh12):not(#eh13):not(#eh14):not(#eh15):not(#eh16):not(#eh17):not(#eh18):not(#eh19):not(#eh20):not(#eh21):not(#eh22):not(#eh23):not(#eh24):not(#eh25):not(#eh26):not(#eh27):not(#eh28):not(#eh29):not(#eh30):not(#eh31):not(#eh32):not(#eh33):not(#eh34):not(#eh35):not(#eh36):not(#eh37):not(#eh38):not(#eh39) .et-home .et-tinted{background:#eceeea!important}
+:root:has(main.et-home){--nav-h:77px}
+@media(min-width:1241px){:root:has(main.et-home){--nav-h:138px}}
+html:not(#eh0):not(#eh1):not(#eh2):not(#eh3):not(#eh4):not(#eh5):not(#eh6):not(#eh7):not(#eh8):not(#eh9):not(#eh10):not(#eh11):not(#eh12):not(#eh13):not(#eh14):not(#eh15):not(#eh16):not(#eh17):not(#eh18):not(#eh19):not(#eh20):not(#eh21):not(#eh22):not(#eh23):not(#eh24):not(#eh25):not(#eh26):not(#eh27):not(#eh28):not(#eh29):not(#eh30):not(#eh31):not(#eh32):not(#eh33):not(#eh34):not(#eh35):not(#eh36):not(#eh37):not(#eh38):not(#eh39) .et-home .et-nw{white-space:nowrap;color:inherit!important;-webkit-text-fill-color:currentColor!important;font:inherit!important}
