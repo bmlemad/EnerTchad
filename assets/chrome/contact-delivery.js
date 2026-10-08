@@ -2,7 +2,8 @@
 (function () {
   'use strict';
   var form = document.getElementById('ctForm');
-  if (!form || form.name !== 'enertchad-contact') return;
+  if (!form || !/^enertchad-contact-(fr|en|ar)$/.test(form.getAttribute('name') || '')) return;
+  form.setAttribute('data-delivery-ready', 'true');
   var english = document.documentElement.lang === 'en';
   var arabic = document.documentElement.lang === 'ar';
   var status = document.getElementById('ctDeliveryStatus');
