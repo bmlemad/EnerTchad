@@ -708,3 +708,13 @@ html:not(#s0):not(#s1):not(#s2):not(#s3):not(#s4):not(#s5):not(#s6):not(#s7):not
 
 /* ===== Statut de page lisible en clair — 2026-10-07 ===== */
 html:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4) #et-status small,html.et-plight:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4) #et-status small,html.et-jlight:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4) #et-status small{color:#D9E5EE!important;-webkit-text-fill-color:#D9E5EE!important}
+
+/* ===== Focus clavier des champs de texte (audit clavier, 8 octobre 2026) =====
+   bundle_core_a1.css remplace l anneau des champs par une bordure doree et une
+   lueur. Sur le champ du pied de page (simple filet du bas) et sur le champ de
+   recherche (fond clair), le changement au focus etait a peine perceptible
+   (lueur a 20 % d opacite, bordure qui varie de 2 %) : WCAG 2.4.7. Anneau net,
+   dans la couleur du texte pour le pied (sombre ou clair selon le theme) et
+   dans la couleur de focus du site pour la recherche. */
+html:not(#q0):not(#q1):not(#q2):not(#q3):not(#q4):not(#q5):not(#q6):not(#q7):not(#q8):not(#q9):not(#q10):not(#q11):not(#q12):not(#q13):not(#q14):not(#q15):not(#q16):not(#q17):not(#q18):not(#q19):not(#q20):not(#q21):not(#q22):not(#q23):not(#q24):not(#q25) footer.pft .foot-news input:focus-visible{outline:2px solid currentColor!important;outline-offset:4px!important}
+html:not(#q0):not(#q1):not(#q2):not(#q3):not(#q4):not(#q5):not(#q6):not(#q7):not(#q8):not(#q9):not(#q10):not(#q11):not(#q12):not(#q13):not(#q14):not(#q15):not(#q16):not(#q17):not(#q18):not(#q19):not(#q20):not(#q21):not(#q22):not(#q23):not(#q24):not(#q25) #schQ:focus-visible{outline:2px solid var(--etfv,#E8C36A)!important;outline-offset:2px!important}
