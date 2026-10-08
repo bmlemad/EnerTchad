@@ -229,7 +229,7 @@ html body.jn-page main:not(#g0):not(#g1):not(#g2):not(#g3):not(#g4):not(#g5):not
  border-top:1px solid var(--hair,rgba(255,255,255,.22));
  border-bottom:1px solid var(--hair,rgba(255,255,255,.22))}
 @media(max-width:700px){.jn-fig .jn-band{aspect-ratio:1200/420}}
-.jn-fig figcaption{margin:8px 0 0;font-size:.63rem;letter-spacing:.11em;text-transform:uppercase;
+.jn-fig figcaption{margin:8px 0 0;font-size:.7rem;letter-spacing:.11em;text-transform:uppercase;
  color:var(--muted);opacity:.85;display:flex;gap:6px 14px;flex-wrap:wrap}
 .jn-fig figcaption b{font-weight:700;color:var(--gold-l,#E8C36A)}
 html[data-pl="coupe"] .jn-fig .jn-band{background-image:url(/assets/img/bande-coupe-sombre.webp)}
