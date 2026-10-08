@@ -418,7 +418,7 @@ Envoyé depuis enertchad.com / EnerTchad`;
     document.getElementById('ff-cons-val').textContent=nc;
     const volume=nv*nkm*nc/100;            // litres/mois
     const cost=volume*price;                // FCFA/mois
-    const saveYear=cost*rate*12;            // économies NRJ+™ annuelles
+    const saveYear=(rate>=1?volume*rate:cost*rate)*12; // économies NRJ+™ annuelles (rate : crédit en FCFA/L, points)
     document.getElementById('ff-vol').textContent=fmt(volume);
     document.getElementById('ff-cost').textContent=fmt(cost);
     document.getElementById('ff-save').textContent=fmt(saveYear);

@@ -16,7 +16,7 @@ try{
   var cad=document.getElementById('cadmap');
   if(cad){
     var M={'rgba(217,168,79,.45)':['BLOC ATTRIBUÉ','Sous licence (secteur 2025)','Détenu par un opérateur en place — terrain de nos services parapétroliers et de l’EOR.'],
-           'rgba(90,167,240,.10)':['BLOC LIBRE','Ouvert aux candidatures','L’un des 21 blocs du cadastre 2025\u00A0: notre terrain de chasse pour montage de consortiums.'],
+           'rgba(90,167,240,.10)':['BLOC LIBRE','Ouvert aux candidatures','L’un des 38 blocs libres du cadastre 2025\u00A0: notre terrain de chasse pour montage de consortiums.'],
            'rgba(245,158,11,.35)':['EN MUTATION','Reprise ou transition en cours','Périmètre en cours de réattribution — fenêtre d’opportunité à suivre.']};
     cad.querySelectorAll('rect').forEach(function(r){
       var m=M[r.getAttribute('fill')];if(!m)return;
