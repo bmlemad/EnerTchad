@@ -718,3 +718,8 @@ html:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4) #et-status small,html.et-pligh
    dans la couleur de focus du site pour la recherche. */
 html:not(#q0):not(#q1):not(#q2):not(#q3):not(#q4):not(#q5):not(#q6):not(#q7):not(#q8):not(#q9):not(#q10):not(#q11):not(#q12):not(#q13):not(#q14):not(#q15):not(#q16):not(#q17):not(#q18):not(#q19):not(#q20):not(#q21):not(#q22):not(#q23):not(#q24):not(#q25) footer.pft .foot-news input:focus-visible{outline:2px solid currentColor!important;outline-offset:4px!important}
 html:not(#q0):not(#q1):not(#q2):not(#q3):not(#q4):not(#q5):not(#q6):not(#q7):not(#q8):not(#q9):not(#q10):not(#q11):not(#q12):not(#q13):not(#q14):not(#q15):not(#q16):not(#q17):not(#q18):not(#q19):not(#q20):not(#q21):not(#q22):not(#q23):not(#q24):not(#q25) #schQ:focus-visible{outline:2px solid var(--etfv,#E8C36A)!important;outline-offset:2px!important}
+/* Petits textes (8 octobre 2026, maquette validee) : etiquettes, dates et rubriques de 9,3 a 10,9 px portees a 11,5 px (0,72 rem) minimum, toutes largeurs. */
+html .et-dr-meta span,html .et-dr-card .et-dr-foot,html .et-proj-legend span,html .et-proj-state{font-size:.72rem}
+html .et-dr-filters button{font-size:.75rem}
+html .dash-stations>div>div[style*="font-size:.66rem"]{font-size:.72rem!important}
+html main :is(th,.pp-cell) small{font-size:inherit}

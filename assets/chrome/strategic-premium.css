@@ -67,3 +67,5 @@ html:not(#g1):not(#g2) :is(.sp-k,.sp-doc .meta,.sp-card .meta,.et-quick-entry a)
   .sp-node{border-right:0}.sp-node:nth-last-child(2){border-bottom:1px solid var(--sp-line)}
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+/* Petits textes (8 octobre 2026, maquette validee) : etiquettes, dates et rubriques de 9,3 a 10,9 px portees a 11,5 px (0,72 rem) minimum, toutes largeurs. */
+html .sp-kpi em,html .sp-state,html .sp-doc .meta,html .sp-statusline span,html .sp-k{font-size:.72rem}

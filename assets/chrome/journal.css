@@ -307,3 +307,6 @@ html.et-plight:not(#q0):not(#q1):not(#q2):not(#q3):not(#q4):not(#q5):not(#q6):no
 /* Hauteur de la barre de navigation connue des le premier affichage : le script ne fait plus que confirmer la valeur,
    la page ne descend plus de 72 px apres chargement (CLS). 77 px mobile, 93 px tablette, 144 px grand ecran. */
 :root{--nav-h:77px}@media(min-width:481px){:root{--nav-h:93px}}@media(min-width:1241px){:root{--nav-h:144px}}
+/* Petits textes (8 octobre 2026, maquette validee) : etiquettes, dates et rubriques de 9,3 a 10,9 px portees a 11,5 px (0,72 rem) minimum, toutes largeurs. */
+html .lie560-c i,html .prt560 .pk,html .jn-river time,html .jn-fil time,html .jn-river i,html .jn-lead .jn-kick,html .jn-art .jn-kick,html .jn-dep-h span,html .jn-mast-top{font-size:.72rem}
+html .jn-dep-h h2,html .jn-fil h2,html .jn-rep h2{font-size:.76rem!important}
