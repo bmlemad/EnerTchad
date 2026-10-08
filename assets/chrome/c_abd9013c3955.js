@@ -95,9 +95,9 @@
 /* Flux de distribution interactif (EN) : clic etage -> panneau detail */
 (function(){
   const data=[
-    {c:'var(--gold)',cl:'var(--gold-l)',t:'Local supply & depot',
-     d:"Supply prioritises local refining — our modular mini-refineries — with regulated imports serving only as a transition complement. Fuel is stored in one-hectare hub-depots (N’Djamena, Moundou, Abéché): buy at the right time, smooth out shortages and hold a stable price.",
-     tags:['Local refining priority','Djermaya (national)','Hub-depots','30-day autonomy']},
+    {c:'var(--gold)',cl:'var(--gold-l)',t:'Supply & depot',
+     d:"At launch, supply relies on regional imports of finished products; our modular mini-refineries will take over in time. Fuel is stored in one-hectare hub-depots (N’Djamena, Moundou, Abéché): buy at the right time, smooth out shortages and hold a stable price.",
+     tags:['Regional imports at launch','Mini-refineries in time','Hub-depots','30-day autonomy']},
     {c:'var(--blue)',cl:'var(--blue-l)',t:'Hub stations & satellites',
      d:"Each hub-depot supplies a network of satellite stations in its area in bulk. Retail sales (petrol, diesel, LPG, kerosene), services and lubricants, at the same ARSAT-approved price nationwide. A DODO model for capital-light growth.",
      tags:['ARSAT-approved price','DODO model','LPG & services','Single brand']},
