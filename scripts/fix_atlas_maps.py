@@ -250,7 +250,7 @@ def block_list(L, body):
 CSS = r'''
 /* Carte A : bassins au clavier, badge « en developpement », mobile lisible */
 .atc-zone:focus{outline:none}
-.atc-zone:focus-visible{opacity:1;stroke-width:2.6;filter:drop-shadow(0 0 7px var(--zc))}
+.atc-zone:focus-visible{opacity:1;stroke-width:2.6;filter:drop-shadow(0 0 7px var(--zc))}html.et-plight .atc-zone:focus-visible,html.et-jlight .atc-zone:focus-visible{opacity:1;stroke-width:3;stroke:#1a2330}html.et-plight .atc-field:focus-visible .atc-fp,html.et-jlight .atc-field:focus-visible .atc-fp{stroke:#1a2330}
 .atc-badge.Dev{color:var(--blue-l,#5AA7F0);border-color:rgba(90,167,240,.45);background:rgba(90,167,240,.08)}
 html.et-plight .atc-badge.Production,html.et-jlight .atc-badge.Production{color:#0B6B49;border-color:rgba(11,107,73,.4);background:rgba(11,107,73,.06)}
 html.et-plight .atc-badge.Dev,html.et-jlight .atc-badge.Dev{color:#1C63B4;border-color:rgba(28,99,180,.4);background:rgba(28,99,180,.06)}
