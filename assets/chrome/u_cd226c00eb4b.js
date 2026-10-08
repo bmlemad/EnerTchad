@@ -64,13 +64,26 @@ function go(){
      vrai -> le style n'est presque jamais calcule), et on tourne en idle. */
   var en=(document.documentElement.lang||'').indexOf('en')===0;
   var sel='main div,main table,main ul,main ol,main pre,main figure,main section,body>section div,body>section table,body>section ul,body>div section div,body>div section table';
-  document.querySelectorAll(sel).forEach(function(el){
-    if(el.scrollWidth<=el.clientWidth+10)return;
-    if(el.hasAttribute('tabindex'))return;
-    if(el.closest('#nav,#nezBar,#cmdk,#ckn,[aria-hidden="true"]'))return;
-    var cs=getComputedStyle(el);
-    if(cs.overflowX!=='auto'&&cs.overflowX!=='scroll')return;
-    if(el.querySelector('a,button,input,select,textarea,[tabindex]'))return;
+  /* Revu 08/10/2026 apres mesure : lire scrollWidth d abord forcait jusqu a 25
+     recalculs de mise en page par page (240 ms en moyenne, processeur mobile
+     ralenti 4x) — la geometrie coute dix fois plus que le style calcule, et les
+     ecritures alternaient avec les lectures. Trois passes : style (overflow-x),
+     puis geometrie des seuls candidats, puis toutes les ecritures, dans l ordre
+     du document (numerotation des libelles inchangee). */
+  var n=document.querySelectorAll(sel),c=[],w=[],i,el,cs;
+  for(i=0;i<n.length;i++){el=n[i];
+    if(el.hasAttribute('tabindex'))continue;
+    cs=getComputedStyle(el);
+    if(cs.overflowX!=='auto'&&cs.overflowX!=='scroll')continue;
+    c.push(el);
+  }
+  for(i=0;i<c.length;i++){el=c[i];
+    if(el.scrollWidth<=el.clientWidth+10)continue;
+    if(el.closest('#nav,#nezBar,#cmdk,#ckn,[aria-hidden="true"]'))continue;
+    if(el.querySelector('a,button,input,select,textarea,[tabindex]'))continue;
+    w.push(el);
+  }
+  w.forEach(function(el){
     el.setAttribute('tabindex','0');
     if(!el.getAttribute('role'))el.setAttribute('role','region');
     if(!el.hasAttribute('aria-label')){var _b2=en?'Scrollable content — scroll horizontally':'Contenu defilant — faire defiler horizontalement';window.__etRegL=window.__etRegL||{};var _n2=(window.__etRegL[_b2]=(window.__etRegL[_b2]||0)+1);el.setAttribute('aria-label',_n2>1?_b2+' ('+_n2+')':_b2);}
