@@ -83,6 +83,7 @@ export function renderSubsite(html, page, space, hosted = false) {
   for (const [start, end, text] of replacements.sort((a, b) => b[0] - a[0])) output = output.slice(0, start) + text + output.slice(end);
   output = output.replace('<html', `<html data-et-space="${space}"`)
     .replace('</head>', '<link rel="stylesheet" href="/assets/chrome/subsites.css"></head>')
+    .replace(/src="\/assets\/chrome\/(nav_a|c_abd9013c3955|c_df4f446df566)\.js[^\"]*"/g, (_, name) => `src="/assets/chrome/${name}.js?v=20261009-space-links"`)
     .replace(/src="\/assets\/chrome\/c_ac04328f0f47\.js[^\"]*"/g, 'src="/assets/chrome/subsites-core.js"');
   // The source Atlas stylesheet intentionally has very high specificity.
   // Inline spacing overrides its fixed-header offset without another CSS arms race.

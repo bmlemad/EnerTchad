@@ -240,4 +240,4 @@ try{(function(){
 })()}catch(e){}
 
 /* Optional audience measurement loads locally; Google waits for consent. */
-(function(){var s=document.createElement("script");s.src="/assets/chrome/audience-consent.js?v=20261008";s.defer=true;document.head.appendChild(s)})();
+(function(){var s=document.createElement("script");s.src="/assets/chrome/audience-consent.js?v=20261009-space-links";s.defer=true;document.head.appendChild(s)})();
