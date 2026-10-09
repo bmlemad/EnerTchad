@@ -21,7 +21,7 @@ def main():
     vj = json.load(open('vercel.json', encoding='utf-8'))
     # These files are built from the existing editorial sources by finalize.mjs.
     # Exact host rules precede generic legacy redirects, including /clients.
-    lines = ["# Sous-sites : activer clients.enertchad.com et atlas.enertchad.com comme alias Netlify."]
+    lines = ["# Sous-sites : alias Netlify actifs avec HTTPS."]
     commercial = [('/', 'index.html'), ('/en/', 'en/index.html'),
                   ('/boutique', 'boutique.html'), ('/en/boutique', 'en/boutique.html')]
     atlas = [('/', 'index.html'), ('/en/', 'en/index.html')]
@@ -54,6 +54,23 @@ def main():
     lines.extend(['https://boutique.enertchad.com/en/* https://clients.enertchad.com/en/boutique 301!',
                   'https://boutique.enertchad.com/* https://clients.enertchad.com/boutique 301!',
                   'http://boutique.enertchad.com/* https://clients.enertchad.com/boutique 301!', ''])
+    # Only production group hosts migrate; PR previews keep their test routes.
+    migrations = [('/boutique/', '/aval/boutique', 'clients', '/boutique'),
+                  ('/boutique/en/', '/aval/boutique-en', 'clients', '/en/boutique'),
+                  ('/boutique/clients', '/clients', 'clients', '/'),
+                  ('/boutique/en/clients', '/clients-en', 'clients', '/en/'),
+                  ('/atlas/', '/atlas/index', 'atlas', '/'),
+                  ('/atlas-en', '/atlas-en', 'atlas', '/en/')]
+    for slug in ['carte', 'bassins-champs', 'infrastructures', 'cadre-sectoriel', 'sources']:
+        migrations.extend([('/atlas/' + slug, '/atlas/' + slug, 'atlas', '/' + slug),
+                           ('/atlas/' + slug + '-en', '/atlas/' + slug + '-en', 'atlas', '/en/' + slug)])
+    for route, source, host, local in migrations:
+        for old in sorted({route, route.rstrip('/'), source, source + '.html'}):
+            for group_host in ['enertchad.com', 'www.enertchad.com']:
+                lines.append('https://' + group_host + old + ' https://' + host + '.enertchad.com' + local + ' 301!')
+    for group_host in ['enertchad.com', 'www.enertchad.com']:
+        lines.append('https://' + group_host + '/boutique-en https://clients.enertchad.com/en/boutique 301!')
+    lines.append('')
     lines.extend(HEAD)
     lines.append('/boutique/ /boutique/index.html 200!')
     for r in vj.get('redirects', []):

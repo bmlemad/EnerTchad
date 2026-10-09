@@ -108,7 +108,15 @@ const fileFor = route => route.endsWith('/') ? route.slice(1) + 'index.html' : r
 async function save(path, content) { await mkdir(dirname(path), {recursive: true}); await writeFile(path, content); }
 
 export function commercialSitemap(sitemap) {
-  for (const page of commercialPages) sitemap = sitemap.replaceAll('<loc>' + corporate + '/' + page.source.replace(/\.html$/, '') + '</loc>', '<loc>' + corporate + page.route + '</loc>');
+  for (const [host, pages] of [['clients', commercialPages], ['atlas', atlasPages]]) {
+    for (const page of pages) {
+      const target = `https://${host}.enertchad.com${page.local}`;
+      for (const old of new Set([corporate + page.route, corporate + '/' + page.source.replace(/\.html$/, '')])) {
+        sitemap = sitemap.replaceAll('<loc>' + old + '</loc>', '<loc>' + target + '</loc>')
+          .replaceAll('href="' + old + '"', 'href="' + target + '"');
+      }
+    }
+  }
   return sitemap;
 }
 
