@@ -12,7 +12,16 @@
   Cross-Origin-Resource-Policy: same-origin
   X-Permitted-Cross-Domain-Policies: none
   Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+  Content-Security-Policy: object-src 'none'; base-uri 'self'; frame-ancestors 'self'; form-action 'self'; upgrade-insecure-requests
 /assets/*
   Cache-Control: public, max-age=31536000, immutable
 /assets/chrome/*
   Cache-Control: public, max-age=3600, stale-while-revalidate=86400
+# Index de recherche et jeux de donnees : republies sous le meme nom, jamais figes un an.
+/assets/data/*
+  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
+# Images : parfois remplacees sous le meme nom ; une semaine, puis revalidation par ETag.
+/assets/images/*
+  Cache-Control: public, max-age=604800, stale-while-revalidate=86400
+/assets/img/*
+  Cache-Control: public, max-age=604800, stale-while-revalidate=86400
