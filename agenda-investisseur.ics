@@ -4,21 +4,21 @@ PRODID:-//EnerTchad S.A.//Agenda investisseur//FR
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
 X-WR-CALNAME:EnerTchad — Agenda investisseur
-X-WR-CALDESC:Rendez-vous et jalons investisseurs d’EnerTchad S.A. (soci
- été en constitution) — dates indicatives.
+X-WR-CALDESC:Rendez-vous et jalons investisseurs d’EnerTchad S.A. (socié
+ té en constitution) — dates indicatives.
 REFRESH-INTERVAL;VALUE=DURATION:P1W
 X-PUBLISHED-TTL:P1W
 BEGIN:VEVENT
 UID:jalon-memorandum-2026@enertchad.com
-DTSTAMP:20260923T072412Z
-SEQUENCE:1
-DTSTART;VALUE=DATE:20260930
-DTEND;VALUE=DATE:20261001
-SUMMARY:Publication du mémorandum (cible T3 2026)
+DTSTAMP:20261009T080000Z
+SEQUENCE:2
+DTSTART;VALUE=DATE:20261001
+DTEND;VALUE=DATE:20270101
+SUMMARY:Publication du mémorandum (visé T4 2026 — date à confirmer)
 DESCRIPTION:Mise à disposition du mémorandum d’investissement et de l
- ’étagère documentaire actualisée. Date indicative — société en c
- onstitution ; cible annoncée sur la page investisseurs. La confirmation 
- sera publiée sur le site.
+ ’étagère documentaire actualisée. Échéance indicative par trimestre
+  — société en constitution \; la date exacte sera publiée sur le site
+ .
 URL:https://enertchad.com/investisseurs#agenda
 STATUS:TENTATIVE
 TRANSP:TRANSPARENT
@@ -26,14 +26,14 @@ CATEGORIES:EnerTchad
 END:VEVENT
 BEGIN:VEVENT
 UID:jalon-webinaire-2026@enertchad.com
-DTSTAMP:20260828T120000Z
-DTSTART;VALUE=DATE:20260929
-DTEND;VALUE=DATE:20260930
-SUMMARY:Webinaire investisseurs (cible T3 2026)
-DESCRIPTION:Présentation de la thèse et du modèle de capital\, question
- s-réponses avec la direction. Date indicative — société en constitut
- ion ; cible annoncée sur la page investisseurs. La confirmation sera pub
- liée sur le site.
+DTSTAMP:20261009T080000Z
+SEQUENCE:1
+DTSTART;VALUE=DATE:20261001
+DTEND;VALUE=DATE:20270101
+SUMMARY:Webinaire investisseurs (visé T4 2026 — date à confirmer)
+DESCRIPTION:Présentation de la thèse et du modèle de capital\, questions
+ -réponses avec la direction. Échéance indicative par trimestre — soci
+ été en constitution \; la date exacte sera publiée sur le site.
 URL:https://enertchad.com/investisseurs#agenda
 STATUS:TENTATIVE
 TRANSP:TRANSPARENT
@@ -41,14 +41,15 @@ CATEGORIES:EnerTchad
 END:VEVENT
 BEGIN:VEVENT
 UID:jalon-dataroom-2026@enertchad.com
-DTSTAMP:20260828T120000Z
-DTSTART;VALUE=DATE:20261117
-DTEND;VALUE=DATE:20261118
-SUMMARY:Data room & rencontres investisseurs (cible T4 2026)
-DESCRIPTION:Ouverture d’une data room aux investisseurs qualifiés et re
- ncontres bilatérales\, avec GCIC. Date indicative — société en const
- itution ; cible annoncée sur la page investisseurs. La confirmation sera
-  publiée sur le site.
+DTSTAMP:20261009T080000Z
+SEQUENCE:1
+DTSTART;VALUE=DATE:20270101
+DTEND;VALUE=DATE:20270401
+SUMMARY:Data room & rencontres investisseurs (visé T1 2027 — date à con
+ firmer)
+DESCRIPTION:Ouverture d’une data room aux investisseurs qualifiés et ren
+ contres bilatérales\, avec GCIC. Échéance indicative par trimestre — 
+ société en constitution \; la date exacte sera publiée sur le site.
 URL:https://enertchad.com/investisseurs#agenda
 STATUS:TENTATIVE
 TRANSP:TRANSPARENT
@@ -56,14 +57,14 @@ CATEGORIES:EnerTchad
 END:VEVENT
 BEGIN:VEVENT
 UID:jalon-point-etape-2027@enertchad.com
-DTSTAMP:20260828T120000Z
-DTSTART;VALUE=DATE:20270330
-DTEND;VALUE=DATE:20270331
-SUMMARY:Point d’étape annuel EnerTchad (indicatif)
-DESCRIPTION:Revue des jalons franchis et actualisation des cibles — au r
- ythme de la constitution. Date indicative — société en constitution ;
-  cible annoncée sur la page investisseurs. La confirmation sera publiée
-  sur le site.
+DTSTAMP:20261009T080000Z
+SEQUENCE:1
+DTSTART;VALUE=DATE:20270101
+DTEND;VALUE=DATE:20270401
+SUMMARY:Point d’étape annuel EnerTchad (T1 2027 — date à confirmer)
+DESCRIPTION:Revue des jalons franchis et actualisation des cibles — au ry
+ thme de la constitution. Échéance indicative par trimestre — société
+  en constitution \; la date exacte sera publiée sur le site.
 URL:https://enertchad.com/investisseurs#agenda
 STATUS:TENTATIVE
 TRANSP:TRANSPARENT
