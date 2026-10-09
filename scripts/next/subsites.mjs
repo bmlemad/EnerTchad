@@ -66,6 +66,17 @@ export function renderSubsite(html, page, space, hosted = false) {
   const mobileNav = all.find(n => n.attribs?.id === 'nezBar');
   const replacements = [[oldNav.startIndex, oldNav.endIndex + 1, header]];
   if (mobileNav) replacements.push([mobileNav.startIndex, mobileNav.endIndex + 1, '']);
+  if (space === 'boutique') {
+    const hero = all.find(n => n.attribs?.id === 'top-pole' && /(?:^|\s)pp-hero(?:\s|$)/.test(n.attribs?.class || ''));
+    const wrap = hero?.children?.find(n => /(?:^|\s)pp-wrap(?:\s|$)/.test(n.attribs?.class || ''));
+    // The premium stylesheet has 24-ID specificity. Inline custom-property
+    // fallbacks preserve desktop sizing while removing its fixed-nav gap on mobile.
+    for (const [node, style] of [[hero, 'min-height:var(--et-space-hero-min-height,clamp(560px,78svh,780px))!important'], [wrap, 'padding-top:var(--et-space-hero-top,190px)!important']]) {
+      if (!node || node.attribs.style) throw Error('Review commercial hero spacing in ' + page.source);
+      const end = output.indexOf('>', node.startIndex) + 1;
+      replacements.push([node.startIndex, end, output.slice(node.startIndex, end).replace(/>$/, ` style="${style}">`)]);
+    }
+  }
   if (space === 'atlas') {
     for (const n of all.filter(n => /(?:^|\s)atlas-(?:languages|nav)(?:\s|$)/.test(n.attribs?.class || ''))) replacements.push([n.startIndex, n.endIndex + 1, '']);
   }

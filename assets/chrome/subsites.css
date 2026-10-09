@@ -21,4 +21,5 @@ html[data-et-space] #main-content.atlas-space{padding-top:28px!important}
 html[data-et-space] #main-content{scroll-margin-top:200px}
 @media(max-width:700px){html[data-et-space] #nav .et-space-top,html[data-et-space] #nav .et-space-brand,html[data-et-space] #nav .et-space-links{padding-inline:16px;gap:8px}html[data-et-space] #nav .et-space-top>div{gap:12px}html[data-et-space] #nav .et-space-brand span{font-size:16px}html[data-et-space] #nav .et-space-contact{font-size:12px;padding-inline:10px}html[data-et-space] #nav .et-space-links{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:thin}html[data-et-space] #nav .et-space-links>a{flex-shrink:0;font-size:13px}html[data-et-space] #nav.et-space-header{position:relative!important}html[data-et-space] #main-content{scroll-margin-top:20px}}
 @media(prefers-reduced-transparency:reduce){html[data-et-space] #nav.et-space-header{background:#f8f7f3!important;backdrop-filter:none}}
+@media(max-width:700px){html[data-et-space="boutique"]{--et-space-hero-min-height:0px;--et-space-hero-top:32px}}
 @media print{html[data-et-space] #nav.et-space-header{position:static!important}}

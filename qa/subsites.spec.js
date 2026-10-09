@@ -16,6 +16,9 @@ for (const width of [1440, 390]) {
         expect(await page.evaluate(() => document.querySelector('main').getBoundingClientRect().top - document.querySelector('#nav').getBoundingClientRect().bottom)).toBeLessThan(40);
         await expect(page.locator('.atlas-languages,.atlas-nav')).toHaveCount(0);
       }
+      if (width === 390 && route.startsWith('/boutique')) {
+        expect(await page.locator('#top-pole > .pp-wrap').evaluate(el => parseFloat(getComputedStyle(el).paddingTop))).toBeLessThanOrEqual(40);
+      }
       expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 2)).toBe(true);
       expect(errors).toEqual([]);
       const other = await page.locator('#nav a[lang]').getAttribute('href');
