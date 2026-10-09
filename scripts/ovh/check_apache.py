@@ -95,6 +95,7 @@ DocumentRoot "{OUT}"
                 ("enertchad.com", "/", "index.html"),
                 ("enertchad.com", "/index-en", "index-en.html"),
                 ("enertchad.com", "/essentiel", "essentiel.html"),
+                ("enertchad.com", "/essentiel/", "essentiel.html"),
                 ("enertchad.com", "/investor-center-en", "investor-center-en.html"),
                 ("enertchad.com", "/amont/", "amont/index.html"),
                 ("enertchad.com", "/amont/calculateur-baril-additionnel", "Calculateur_Baril_Additionnel.html"),
@@ -123,6 +124,8 @@ DocumentRoot "{OUT}"
             redirect("enertchad.com", "/contact.html", "https://enertchad.com/contact")
             redirect("enertchad.com", "/index.html", "https://enertchad.com/")
             redirect("enertchad.com", "/pole-amont", "https://enertchad.com/amont/", 308)
+            redirect("enertchad.com", "/amont", "https://enertchad.com/amont/")
+            redirect("enertchad.com", "/enertech/outils?foo=bar", "https://enertchad.com/tchaditech/outils?foo=bar", 308)
             redirect("enertchad.com", "/pole-enertech-outils", "https://enertchad.com/tchaditech/outils", 308)
             redirect("enertchad.com", "/clients", "https://clients.enertchad.com/")
             redirect("enertchad.com", "/atlas/", "https://atlas.enertchad.com/")
