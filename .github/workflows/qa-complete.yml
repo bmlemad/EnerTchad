@@ -1,0 +1,39 @@
+name: QA complète — production
+on:
+  # La suite complète reste coûteuse : seulement sur demande ou modification de ce lanceur.
+  workflow_dispatch: {}
+  pull_request:
+    paths:
+      - '.github/workflows/qa-complete.yml'
+permissions:
+  contents: read
+concurrency:
+  group: qa-complete-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+jobs:
+  browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      SITE_URL: https://enertchad.com/
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+      - name: Installer Playwright
+        timeout-minutes: 8
+        run: |
+          npm install --no-save --no-package-lock @playwright/test@1.55.0
+          npx playwright@1.55.0 install --with-deps chromium
+      - name: Vérifier la suite complète (audit visuel inclus)
+        run: |
+          mkdir -p artifacts
+          npx playwright@1.55.0 test qa --reporter=line
+      - name: Publier les captures et rapports
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: qa-complete-production
+          path: artifacts/
+          if-no-files-found: ignore
