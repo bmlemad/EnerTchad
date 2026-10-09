@@ -310,3 +310,14 @@ html.et-plight:not(#q0):not(#q1):not(#q2):not(#q3):not(#q4):not(#q5):not(#q6):no
 /* Petits textes (8 octobre 2026, maquette validee) : etiquettes, dates et rubriques de 9,3 a 10,9 px portees a 11,5 px (0,72 rem) minimum, toutes largeurs. */
 html .lie560-c i,html .prt560 .pk,html .jn-river time,html .jn-fil time,html .jn-river i,html .jn-lead .jn-kick,html .jn-art .jn-kick,html .jn-dep-h span,html .jn-mast-top{font-size:.72rem}
 html .jn-dep-h h2,html .jn-fil h2,html .jn-rep h2{font-size:.76rem!important}
+
+/* Lot 824 — planches du journal sur mobile : variante 1600 px (la bande rend
+   a 142 % de ~334 px, soit ~1420 px en DPR 3) ; le 2400 px reste pour l ecran large. */
+@media(max-width:760px){
+html[data-pl="coupe"] .jn-fig .jn-band{background-image:url(/assets/img/bande-coupe-sombre-1600.webp)}
+html[data-pl="corridor"] .jn-fig .jn-band{background-image:url(/assets/img/bande-corridor-sombre-1600.webp)}
+html[data-pl="colonne"] .jn-fig .jn-band{background-image:url(/assets/img/bande-colonne-sombre-1600.webp)}
+html:is(.et-plight,.et-jlight)[data-pl="coupe"] .jn-fig .jn-band{background-image:url(/assets/img/bande-coupe-clair-1600.webp)}
+html:is(.et-plight,.et-jlight)[data-pl="corridor"] .jn-fig .jn-band{background-image:url(/assets/img/bande-corridor-clair-1600.webp)}
+html:is(.et-plight,.et-jlight)[data-pl="colonne"] .jn-fig .jn-band{background-image:url(/assets/img/bande-colonne-clair-1600.webp)}
+}
