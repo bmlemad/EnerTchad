@@ -17,6 +17,7 @@ jobs:
           cache: npm
       - run: node --test scripts/next/prepare.test.mjs
       - run: npm ci
+      - run: node --test scripts/next/subsites.test.mjs
       - run: npm run build
         env:
           NEXT_TELEMETRY_DISABLED: '1'

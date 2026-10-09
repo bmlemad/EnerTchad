@@ -3,6 +3,46 @@
   "cleanUrls": true,
   "redirects": [
     {
+      "source": "/aval/boutique",
+      "destination": "/boutique/",
+      "permanent": true
+    },
+    {
+      "source": "/aval/boutique.html",
+      "destination": "/boutique/",
+      "permanent": true
+    },
+    {
+      "source": "/aval/boutique-en",
+      "destination": "/boutique/en/",
+      "permanent": true
+    },
+    {
+      "source": "/aval/boutique-en.html",
+      "destination": "/boutique/en/",
+      "permanent": true
+    },
+    {
+      "source": "/clients",
+      "destination": "/boutique/clients",
+      "permanent": true
+    },
+    {
+      "source": "/clients.html",
+      "destination": "/boutique/clients",
+      "permanent": true
+    },
+    {
+      "source": "/clients-en",
+      "destination": "/boutique/en/clients",
+      "permanent": true
+    },
+    {
+      "source": "/clients-en.html",
+      "destination": "/boutique/en/clients",
+      "permanent": true
+    },
+    {
       "source": "/enerconseils/atlas",
       "destination": "/atlas/",
       "permanent": true
@@ -798,13 +838,8 @@
       "permanent": true
     },
     {
-      "source": "/boutique",
-      "destination": "/aval/boutique",
-      "permanent": true
-    },
-    {
       "source": "/boutique-en",
-      "destination": "/aval/boutique-en",
+      "destination": "/boutique/en/",
       "permanent": true
     },
     {
@@ -896,6 +931,26 @@
     }
   ],
   "rewrites": [
+    {
+      "source": "/boutique",
+      "destination": "/aval/boutique.html"
+    },
+    {
+      "source": "/boutique/en/clients",
+      "destination": "/clients-en.html"
+    },
+    {
+      "source": "/boutique/clients",
+      "destination": "/clients.html"
+    },
+    {
+      "source": "/boutique/en/",
+      "destination": "/aval/boutique-en.html"
+    },
+    {
+      "source": "/boutique/",
+      "destination": "/aval/boutique.html"
+    },
     {
       "source": "/configurateur-service-integre",
       "destination": "/Configurateur_Service_Integre_v2"
