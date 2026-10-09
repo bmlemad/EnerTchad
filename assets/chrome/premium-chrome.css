@@ -731,3 +731,8 @@ html:not(#rv0):not(#rv1):not(#rv2):not(#rv3):not(#rv4):not(#rv5):not(#rv6):not(#
 
 /* Pastille d’état des projets : ne déborde plus de la carte en colonne étroite (09/10/2026) */
 html body .et-proj-state{max-width:100%!important;box-sizing:border-box!important;white-space:normal!important}
+
+/* Finitions 09/10/2026 : recherche resserree ; ombre du lien d’évitement masquée hors focus */
+html:not(#ps0):not(#ps1):not(#ps2):not(#ps3):not(#ps4):not(#ps5):not(#ps6):not(#ps7):not(#ps8):not(#ps9):not(#ps10):not(#ps11):not(#ps12):not(#ps13):not(#ps14):not(#ps15):not(#ps16):not(#ps17):not(#ps18):not(#ps19):not(#ps20):not(#ps21):not(#ps22):not(#ps23):not(#ps24):not(#ps25):not(#ps26):not(#ps27):not(#ps28):not(#ps29):not(#ps30):not(#ps31):not(#ps32):not(#ps33):not(#ps34):not(#ps35):not(#ps36):not(#ps37):not(#ps38):not(#ps39) body main .pp-search{padding-top:44px!important}
+html body .et-skip:not(:focus):not(:focus-visible){box-shadow:none!important}
+html:not(#ps0):not(#ps1):not(#ps2):not(#ps3):not(#ps4):not(#ps5):not(#ps6):not(#ps7):not(#ps8):not(#ps9):not(#ps10):not(#ps11):not(#ps12):not(#ps13):not(#ps14):not(#ps15):not(#ps16):not(#ps17):not(#ps18):not(#ps19):not(#ps20):not(#ps21):not(#ps22):not(#ps23):not(#ps24):not(#ps25):not(#ps26):not(#ps27):not(#ps28):not(#ps29):not(#ps30):not(#ps31):not(#ps32):not(#ps33):not(#ps34):not(#ps35):not(#ps36):not(#ps37):not(#ps38):not(#ps39) body main .pp-search-h{position:absolute!important;width:1px!important;height:1px!important;margin:-1px!important;padding:0!important;overflow:hidden!important;clip:rect(0 0 0 0)!important;white-space:nowrap!important;border:0!important}
