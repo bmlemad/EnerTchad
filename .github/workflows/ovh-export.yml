@@ -1,0 +1,33 @@
+name: OVH — Apache export
+on:
+  pull_request:
+    paths:
+      - 'scripts/ovh/**'
+      - 'docs/migration-ovh.md'
+      - '.github/workflows/ovh-export.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+        env:
+          NEXT_TELEMETRY_DISABLED: '1'
+      - run: npm run check:migration
+      - run: python3 scripts/ovh/package.py --output /tmp/EnerTchad-OVH.zip
+      - run: sudo apt-get update -qq
+      - run: sudo apt-get install -y --no-install-recommends apache2-bin
+      - run: python3 scripts/ovh/check_apache.py
+      - uses: actions/upload-artifact@v7
+        with:
+          name: enertchad-ovh-export
+          path: /tmp/EnerTchad-OVH.zip
+          if-no-files-found: error
