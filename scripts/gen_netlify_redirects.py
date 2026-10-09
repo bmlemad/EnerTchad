@@ -19,7 +19,43 @@ HEAD = [
 
 def main():
     vj = json.load(open('vercel.json', encoding='utf-8'))
-    lines = list(HEAD)
+    # These files are built from the existing editorial sources by finalize.mjs.
+    # Exact host rules precede generic legacy redirects, including /clients.
+    lines = ["# Sous-sites : activer clients.enertchad.com et atlas.enertchad.com comme alias Netlify."]
+    commercial = [('/', 'index.html'), ('/en/', 'en/index.html'),
+                  ('/boutique', 'boutique.html'), ('/en/boutique', 'en/boutique.html')]
+    atlas = [('/', 'index.html'), ('/en/', 'en/index.html')]
+    for slug in ['carte', 'bassins-champs', 'infrastructures', 'cadre-sectoriel', 'sources']:
+        atlas.extend([('/' + slug, slug + '.html'), ('/en/' + slug, 'en/' + slug + '.html')])
+    for host, space, pages in [('clients', 'boutique', commercial), ('atlas', 'atlas', atlas)]:
+        origin = 'https://' + host + '.enertchad.com'
+        # TLS is required; aliases must be included in the site's certificate.
+        lines.append('http://' + host + '.enertchad.com/* ' + origin + '/:splat 301!')
+        for route, file in pages:
+            lines.append(origin + route + ' /_subsites/' + space + '/' + file + ' 200!')
+            if route.endswith('/') and route != '/':
+                lines.append(origin + route.rstrip('/') + ' /_subsites/' + space + '/' + file + ' 200!')
+            elif not route.endswith('/'):
+                lines.append(origin + route + '/ /_subsites/' + space + '/' + file + ' 200!')
+                lines.append(origin + route + '.html ' + origin + route + ' 301!')
+        for name in ['sitemap.xml', 'robots.txt']:
+            lines.append(origin + '/' + name + ' /_subsites/' + space + '/' + name + ' 200!')
+    # Retain old paths on the new hosts, then land on the matching local page.
+    for old, target in [('/clients', '/'), ('/clients-en', '/en/'),
+                        ('/aval/boutique', '/boutique'), ('/aval/boutique-en', '/en/boutique'),
+                        ('/boutique-en', '/en/boutique')]:
+        lines.append('https://clients.enertchad.com' + old + ' https://clients.enertchad.com' + target + ' 301!')
+    for old, target in [('/atlas', '/'), ('/atlas/', '/'), ('/atlas-en', '/en/')]:
+        lines.append('https://atlas.enertchad.com' + old + ' https://atlas.enertchad.com' + target + ' 301!')
+    for slug in ['carte', 'bassins-champs', 'infrastructures', 'cadre-sectoriel', 'sources']:
+        for suffix, prefix in [('', ''), ('-en', '/en')]:
+            lines.append('https://atlas.enertchad.com/atlas/' + slug + suffix + ' https://atlas.enertchad.com' + prefix + '/' + slug + ' 301!')
+    # Optional boutique alias always lands on the catalogue, never the group home.
+    lines.extend(['https://boutique.enertchad.com/en/* https://clients.enertchad.com/en/boutique 301!',
+                  'https://boutique.enertchad.com/* https://clients.enertchad.com/boutique 301!',
+                  'http://boutique.enertchad.com/* https://clients.enertchad.com/boutique 301!', ''])
+    lines.extend(HEAD)
+    lines.append('/boutique/ /boutique/index.html 200!')
     for r in vj.get('redirects', []):
         src = re.sub(r'/:(\w+)\*$', '/*', r['source'])
         dst = re.sub(r':(\w+)\*', ':splat', r['destination'])
