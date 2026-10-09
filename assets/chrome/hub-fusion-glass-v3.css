@@ -1,0 +1,270 @@
+
+/* ———— ex-bloc: glass-v3 ———— */
+/* Verre v3 : le decor photographique fixe (rootland/subland) passe derriere les bandes translucides. On ajoute le flou d arriere-plan qui manquait, pour que la matiere se lise a travers sans parasiter le texte. Aucun fond n est modifie ici. Mode sombre uniquement : en mode clair le decor est deja masque. */
+html:not(.et-plight):not(.et-jlight) main section:not(#_){-webkit-backdrop-filter:blur(16px) saturate(140%);backdrop-filter:blur(16px) saturate(140%)}
+html:not(.et-plight):not(.et-jlight) main section section:not(#_){-webkit-backdrop-filter:none;backdrop-filter:none}
+@media (prefers-reduced-transparency:reduce){html:not(.et-plight):not(.et-jlight) main section:not(#_){-webkit-backdrop-filter:none!important;backdrop-filter:none!important}}
+@media (max-width:700px){html:not(.et-plight):not(.et-jlight) main section:not(#_){-webkit-backdrop-filter:blur(10px) saturate(130%);backdrop-filter:blur(10px) saturate(130%)}}
+/* ———— ex-bloc: bandes-uni ———— */
+/* SS134 - harmonisation des bandeaux. 1) Bandeau cookies : le traitement en bande fine ne vivait que dans le bloc home-plus de l accueil (64 px) ; ailleurs il retombait a 112-130 px. 2) Bande d appel final : la regle generique section{padding:var(--sy) 0} s appliquait a #cta-band sur les pages a gabarit complet, doublant le rembourrage deja porte par .cb-in (clamp 38-66 px) -> 380 px contre 237 px ailleurs. */
+#ckn:not(#_):not(#__){left:0!important;right:0!important;bottom:0!important;top:auto!important;width:100%!important;max-width:none!important;border-radius:0!important;padding:9px 22px!important;align-items:center;gap:16px;flex-wrap:wrap;font-size:.8rem!important;box-shadow:0 -8px 30px rgba(4,8,16,.25)}
+#ckn.show:not(#_):not(#__){display:flex!important}
+#ckn .ck-row:not(#_){margin-left:auto;display:flex;align-items:center;gap:10px}
+#ckn .ck-row a:not(#_){padding:6px 8px!important}
+#cta-band:not(#_):not(#__){padding-top:0!important;padding-bottom:0!important}
+/* ———— ex-bloc: tuiles-fond ———— */
+/* Integration des tuiles au fond. Constat mesure avant correctif : ecart-type de
+   luminance 0,00 a 0,48 derriere les tuiles, donc le backdrop-filter floutait une
+   surface parfaitement plate et ne revelait rien. Deux leviers : on donne du relief
+   au fond sous les tuiles, et on fait emerger la tuile au lieu de la poser dessus. */
+:is(section,.wrap>div):has(.card,.card-m,.pmore-card,.ttg-t,.epw-c,.tri-c,.divc,.kpi,.biz-card,.plc-card,.f2f,.glow-card,.jkey,.eth-c,.gov-c,.refc,.prof,.cp,.tri-kpi,.b111-c,.sc-card,.hxi-card,.hncard,.prc-card,.px-card,.ppt-card,.fam-card,.esg-card,.rh-card,.it-card,.pcard,.scard,.pub-c,.pubc):not(#_):not(#__):not(#___):not(#____){
+ background-image:
+  radial-gradient(78% 54% at 8% -4%,rgba(222,172,58,.155),rgba(0,0,0,0) 66%),
+  radial-gradient(64% 46% at 96% 34%,rgba(21,86,150,.105),rgba(0,0,0,0) 64%),
+  radial-gradient(88% 58% at 46% 108%,rgba(196,150,52,.085),rgba(0,0,0,0) 62%)!important;
+}
+html:not(.et-plight):not(.et-jlight) :is(section,.wrap>div):has(.card,.card-m,.pmore-card,.ttg-t,.epw-c,.tri-c,.divc,.kpi,.biz-card,.plc-card,.f2f,.glow-card,.jkey,.eth-c,.gov-c,.refc,.prof,.cp,.tri-kpi,.b111-c,.sc-card,.hxi-card,.hncard,.prc-card,.px-card,.ppt-card,.fam-card,.esg-card,.rh-card,.it-card,.pcard,.scard,.pub-c,.pubc):not(#_):not(#__):not(#___):not(#____){
+ background-image:
+  radial-gradient(78% 54% at 8% -4%,rgba(232,195,106,.105),rgba(0,0,0,0) 66%),
+  radial-gradient(64% 46% at 96% 34%,rgba(90,167,240,.095),rgba(0,0,0,0) 64%),
+  radial-gradient(88% 58% at 46% 108%,rgba(232,195,106,.055),rgba(0,0,0,0) 62%)!important;
+}
+/* Le degrade de la tuile se termine sur la couleur du fond : le bas se fond dans la
+   page, le haut capte la lumiere. L'ombre est un ancrage court, pas une ombre portee. */
+:is(.acq-card,.atc-map,.atc-stat,.avk-card,.avnet-panel,.b111-c,.biz-card,.card,.card-m,.cdm-frame,.ce-card,.ckpi,.cmap-frame,.cp,.cp-note,.ct-cards,.dch-card,.divc,.duo-card,.epw-c,.esg-card,.esg-head,.eth-c,.f2f,.fam-card,.fid-card,.flip-b,.flip-f,.frm-c,.glm-c,.glow-card,.gov-c,.gtt-c,.hncard,.hxi-card,.innov-c,.isv-e,.isv-s,.it-card,.jkey,.kpi,.mad-card,.mfo-lever,.mrc-c,.ngs-t,.oeco-card,.orgc,.pcard,.pe-c,.plc-card,.pmore-card,.pof-col,.ppj-card,.ppl-tile,.ppt-card,.ppte-tile,.prc-card,.presse-card,.prof,.pub-c,.pubc,.px-card,.refc,.rh-card,.rhe-c,.rhl-c,.rhp-c,.sb-card,.sc-card,.scard,.secc,.sfam,.slac,.svc-head,.tri-c,.tri-kpi,.ttc-card,.ttg-t,.vb-card,.voie-card):not(#_):not(#__):not(#___):not(#____){
+ background-image:linear-gradient(180deg,rgba(255,255,255,.88) 0%,rgba(255,253,248,.56) 46%,rgba(252,249,243,.30) 100%)!important;
+ border-color:rgba(26,35,48,.085)!important;
+ box-shadow:0 1px 0 rgba(255,255,255,.85) inset,0 14px 28px -20px rgba(58,46,18,.30),0 2px 5px -3px rgba(58,46,18,.10)!important;
+ -webkit-backdrop-filter:blur(7px) saturate(1.28)!important;backdrop-filter:blur(7px) saturate(1.28)!important;
+}
+html:not(.et-plight):not(.et-jlight) :is(.acq-card,.atc-map,.atc-stat,.avk-card,.avnet-panel,.b111-c,.biz-card,.card,.card-m,.cdm-frame,.ce-card,.ckpi,.cmap-frame,.cp,.cp-note,.ct-cards,.dch-card,.divc,.duo-card,.epw-c,.esg-card,.esg-head,.eth-c,.f2f,.fam-card,.fid-card,.flip-b,.flip-f,.frm-c,.glm-c,.glow-card,.gov-c,.gtt-c,.hncard,.hxi-card,.innov-c,.isv-e,.isv-s,.it-card,.jkey,.kpi,.mad-card,.mfo-lever,.mrc-c,.ngs-t,.oeco-card,.orgc,.pcard,.pe-c,.plc-card,.pmore-card,.pof-col,.ppj-card,.ppl-tile,.ppt-card,.ppte-tile,.prc-card,.presse-card,.prof,.pub-c,.pubc,.px-card,.refc,.rh-card,.rhe-c,.rhl-c,.rhp-c,.sb-card,.sc-card,.scard,.secc,.sfam,.slac,.svc-head,.tri-c,.tri-kpi,.ttc-card,.ttg-t,.vb-card,.voie-card):not(#_):not(#__):not(#___):not(#____){
+ background-image:linear-gradient(180deg,rgba(255,255,255,.075) 0%,rgba(255,255,255,.028) 48%,rgba(255,255,255,.010) 100%)!important;
+ border-color:rgba(232,195,106,.16)!important;
+ box-shadow:0 1px 0 rgba(255,255,255,.08) inset,0 18px 36px -24px rgba(0,0,0,.75)!important;
+}
+/* Exception mesuree : ces bandeaux sont sombres meme en theme clair et leurs tuiles
+   portent du texte blanc. Un degrade blanc les rendrait illisibles. Verifie sur
+   ar.html, brochure(.fr/en), patrimoine, greentech, tchaditech, clients. */
+.kpis :is(.acq-card,.atc-map,.atc-stat,.avk-card,.avnet-panel,.b111-c,.biz-card,.card,.card-m,.cdm-frame,.ce-card,.ckpi,.cmap-frame,.cp,.cp-note,.ct-cards,.dch-card,.divc,.duo-card,.epw-c,.esg-card,.esg-head,.eth-c,.f2f,.fam-card,.fid-card,.flip-b,.flip-f,.frm-c,.glm-c,.glow-card,.gov-c,.gtt-c,.hncard,.hxi-card,.innov-c,.isv-e,.isv-s,.it-card,.jkey,.kpi,.mad-card,.mfo-lever,.mrc-c,.ngs-t,.oeco-card,.orgc,.pcard,.pe-c,.plc-card,.pmore-card,.pof-col,.ppj-card,.ppl-tile,.ppt-card,.ppte-tile,.prc-card,.presse-card,.prof,.pub-c,.pubc,.px-card,.refc,.rh-card,.rhe-c,.rhl-c,.rhp-c,.sb-card,.sc-card,.scard,.secc,.sfam,.slac,.svc-head,.tri-c,.tri-kpi,.ttc-card,.ttg-t,.vb-card,.voie-card):not(#_):not(#__):not(#___):not(#____),.fp-sec :is(.acq-card,.atc-map,.atc-stat,.avk-card,.avnet-panel,.b111-c,.biz-card,.card,.card-m,.cdm-frame,.ce-card,.ckpi,.cmap-frame,.cp,.cp-note,.ct-cards,.dch-card,.divc,.duo-card,.epw-c,.esg-card,.esg-head,.eth-c,.f2f,.fam-card,.fid-card,.flip-b,.flip-f,.frm-c,.glm-c,.glow-card,.gov-c,.gtt-c,.hncard,.hxi-card,.innov-c,.isv-e,.isv-s,.it-card,.jkey,.kpi,.mad-card,.mfo-lever,.mrc-c,.ngs-t,.oeco-card,.orgc,.pcard,.pe-c,.plc-card,.pmore-card,.pof-col,.ppj-card,.ppl-tile,.ppt-card,.ppte-tile,.prc-card,.presse-card,.prof,.pub-c,.pubc,.px-card,.refc,.rh-card,.rhe-c,.rhl-c,.rhp-c,.sb-card,.sc-card,.scard,.secc,.sfam,.slac,.svc-head,.tri-c,.tri-kpi,.ttc-card,.ttg-t,.vb-card,.voie-card):not(#_):not(#__):not(#___):not(#____),.fp-grid :is(.acq-card,.atc-map,.atc-stat,.avk-card,.avnet-panel,.b111-c,.biz-card,.card,.card-m,.cdm-frame,.ce-card,.ckpi,.cmap-frame,.cp,.cp-note,.ct-cards,.dch-card,.divc,.duo-card,.epw-c,.esg-card,.esg-head,.eth-c,.f2f,.fam-card,.fid-card,.flip-b,.flip-f,.frm-c,.glm-c,.glow-card,.gov-c,.gtt-c,.hncard,.hxi-card,.innov-c,.isv-e,.isv-s,.it-card,.jkey,.kpi,.mad-card,.mfo-lever,.mrc-c,.ngs-t,.oeco-card,.orgc,.pcard,.pe-c,.plc-card,.pmore-card,.pof-col,.ppj-card,.ppl-tile,.ppt-card,.ppte-tile,.prc-card,.presse-card,.prof,.pub-c,.pubc,.px-card,.refc,.rh-card,.rhe-c,.rhl-c,.rhp-c,.sb-card,.sc-card,.scard,.secc,.sfam,.slac,.svc-head,.tri-c,.tri-kpi,.ttc-card,.ttg-t,.vb-card,.voie-card):not(#_):not(#__):not(#___):not(#____),.gtp :is(.acq-card,.atc-map,.atc-stat,.avk-card,.avnet-panel,.b111-c,.biz-card,.card,.card-m,.cdm-frame,.ce-card,.ckpi,.cmap-frame,.cp,.cp-note,.ct-cards,.dch-card,.divc,.duo-card,.epw-c,.esg-card,.esg-head,.eth-c,.f2f,.fam-card,.fid-card,.flip-b,.flip-f,.frm-c,.glm-c,.glow-card,.gov-c,.gtt-c,.hncard,.hxi-card,.innov-c,.isv-e,.isv-s,.it-card,.jkey,.kpi,.mad-card,.mfo-lever,.mrc-c,.ngs-t,.oeco-card,.orgc,.pcard,.pe-c,.plc-card,.pmore-card,.pof-col,.ppj-card,.ppl-tile,.ppt-card,.ppte-tile,.prc-card,.presse-card,.prof,.pub-c,.pubc,.px-card,.refc,.rh-card,.rhe-c,.rhl-c,.rhp-c,.sb-card,.sc-card,.scard,.secc,.sfam,.slac,.svc-head,.tri-c,.tri-kpi,.ttc-card,.ttg-t,.vb-card,.voie-card):not(#_):not(#__):not(#___):not(#____),.gtp-g :is(.acq-card,.atc-map,.atc-stat,.avk-card,.avnet-panel,.b111-c,.biz-card,.card,.card-m,.cdm-frame,.ce-card,.ckpi,.cmap-frame,.cp,.cp-note,.ct-cards,.dch-card,.divc,.duo-card,.epw-c,.esg-card,.esg-head,.eth-c,.f2f,.fam-card,.fid-card,.flip-b,.flip-f,.frm-c,.glm-c,.glow-card,.gov-c,.gtt-c,.hncard,.hxi-card,.innov-c,.isv-e,.isv-s,.it-card,.jkey,.kpi,.mad-card,.mfo-lever,.mrc-c,.ngs-t,.oeco-card,.orgc,.pcard,.pe-c,.plc-card,.pmore-card,.pof-col,.ppj-card,.ppl-tile,.ppt-card,.ppte-tile,.prc-card,.presse-card,.prof,.pub-c,.pubc,.px-card,.refc,.rh-card,.rhe-c,.rhl-c,.rhp-c,.sb-card,.sc-card,.scard,.secc,.sfam,.slac,.svc-head,.tri-c,.tri-kpi,.ttc-card,.ttg-t,.vb-card,.voie-card):not(#_):not(#__):not(#___):not(#____),.tt-flag :is(.acq-card,.atc-map,.atc-stat,.avk-card,.avnet-panel,.b111-c,.biz-card,.card,.card-m,.cdm-frame,.ce-card,.ckpi,.cmap-frame,.cp,.cp-note,.ct-cards,.dch-card,.divc,.duo-card,.epw-c,.esg-card,.esg-head,.eth-c,.f2f,.fam-card,.fid-card,.flip-b,.flip-f,.frm-c,.glm-c,.glow-card,.gov-c,.gtt-c,.hncard,.hxi-card,.innov-c,.isv-e,.isv-s,.it-card,.jkey,.kpi,.mad-card,.mfo-lever,.mrc-c,.ngs-t,.oeco-card,.orgc,.pcard,.pe-c,.plc-card,.pmore-card,.pof-col,.ppj-card,.ppl-tile,.ppt-card,.ppte-tile,.prc-card,.presse-card,.prof,.pub-c,.pubc,.px-card,.refc,.rh-card,.rhe-c,.rhl-c,.rhp-c,.sb-card,.sc-card,.scard,.secc,.sfam,.slac,.svc-head,.tri-c,.tri-kpi,.ttc-card,.ttg-t,.vb-card,.voie-card):not(#_):not(#__):not(#___):not(#____),.ttf-grid :is(.acq-card,.atc-map,.atc-stat,.avk-card,.avnet-panel,.b111-c,.biz-card,.card,.card-m,.cdm-frame,.ce-card,.ckpi,.cmap-frame,.cp,.cp-note,.ct-cards,.dch-card,.divc,.duo-card,.epw-c,.esg-card,.esg-head,.eth-c,.f2f,.fam-card,.fid-card,.flip-b,.flip-f,.frm-c,.glm-c,.glow-card,.gov-c,.gtt-c,.hncard,.hxi-card,.innov-c,.isv-e,.isv-s,.it-card,.jkey,.kpi,.mad-card,.mfo-lever,.mrc-c,.ngs-t,.oeco-card,.orgc,.pcard,.pe-c,.plc-card,.pmore-card,.pof-col,.ppj-card,.ppl-tile,.ppt-card,.ppte-tile,.prc-card,.presse-card,.prof,.pub-c,.pubc,.px-card,.refc,.rh-card,.rhe-c,.rhl-c,.rhp-c,.sb-card,.sc-card,.scard,.secc,.sfam,.slac,.svc-head,.tri-c,.tri-kpi,.ttc-card,.ttg-t,.vb-card,.voie-card):not(#_):not(#__):not(#___):not(#____),.grid3 :is(.acq-card,.atc-map,.atc-stat,.avk-card,.avnet-panel,.b111-c,.biz-card,.card,.card-m,.cdm-frame,.ce-card,.ckpi,.cmap-frame,.cp,.cp-note,.ct-cards,.dch-card,.divc,.duo-card,.epw-c,.esg-card,.esg-head,.eth-c,.f2f,.fam-card,.fid-card,.flip-b,.flip-f,.frm-c,.glm-c,.glow-card,.gov-c,.gtt-c,.hncard,.hxi-card,.innov-c,.isv-e,.isv-s,.it-card,.jkey,.kpi,.mad-card,.mfo-lever,.mrc-c,.ngs-t,.oeco-card,.orgc,.pcard,.pe-c,.plc-card,.pmore-card,.pof-col,.ppj-card,.ppl-tile,.ppt-card,.ppte-tile,.prc-card,.presse-card,.prof,.pub-c,.pubc,.px-card,.refc,.rh-card,.rhe-c,.rhl-c,.rhp-c,.sb-card,.sc-card,.scard,.secc,.sfam,.slac,.svc-head,.tri-c,.tri-kpi,.ttc-card,.ttg-t,.vb-card,.voie-card):not(#_):not(#__):not(#___):not(#____),.grid2 :is(.acq-card,.atc-map,.atc-stat,.avk-card,.avnet-panel,.b111-c,.biz-card,.card,.card-m,.cdm-frame,.ce-card,.ckpi,.cmap-frame,.cp,.cp-note,.ct-cards,.dch-card,.divc,.duo-card,.epw-c,.esg-card,.esg-head,.eth-c,.f2f,.fam-card,.fid-card,.flip-b,.flip-f,.frm-c,.glm-c,.glow-card,.gov-c,.gtt-c,.hncard,.hxi-card,.innov-c,.isv-e,.isv-s,.it-card,.jkey,.kpi,.mad-card,.mfo-lever,.mrc-c,.ngs-t,.oeco-card,.orgc,.pcard,.pe-c,.plc-card,.pmore-card,.pof-col,.ppj-card,.ppl-tile,.ppt-card,.ppte-tile,.prc-card,.presse-card,.prof,.pub-c,.pubc,.px-card,.refc,.rh-card,.rhe-c,.rhl-c,.rhp-c,.sb-card,.sc-card,.scard,.secc,.sfam,.slac,.svc-head,.tri-c,.tri-kpi,.ttc-card,.ttg-t,.vb-card,.voie-card):not(#_):not(#__):not(#___):not(#____){
+ background-image:none!important;
+ border-color:rgba(255,255,255,.16)!important;
+}
+/* ———— ex-bloc: tuiles-immersion ———— */
+/* Immersion (chapitre 141). Sur les 175 pages portant le fond photographique
+   .rootland, les halos de section du chapitre 136 peignaient des bandes
+   par-dessus la photo et le remplissage des tuiles en faisait des panneaux
+   poses dessus. Ici les bandes disparaissent et la tuile redevient du verre :
+   la photo la traverse. Le garde de theme et le :where([data-eh~=eh10]):not(.ehz) portent sur le
+   meme element html — les separer donne un selecteur qui ne correspond jamais. */
+
+/* 1. Plus aucune bande de fond sur les pages a fond photographique */
+html:where([data-eh~=eh10]):not(.ehz) :is(section,.wrap>div):has(.card,.card-m,.pmore-card,.ttg-t,.epw-c,.tri-c,.divc,.kpi,.biz-card,.plc-card,.f2f,.glow-card,.jkey,.eth-c,.gov-c,.refc,.prof,.cp,.tri-kpi,.b111-c,.sc-card,.hxi-card,.hncard,.prc-card,.px-card,.ppt-card,.fam-card,.esg-card,.rh-card,.it-card,.pcard,.scard,.pub-c,.pubc):not(#_):not(#__):not(#___):not(#____){background-image:none!important}
+
+/* 2. La tuile adhere a l'image : teinte legere, vrai flou, filet fin */
+html:where([data-eh~=eh10]):not(.ehz) :is(.acq-card,.atc-map,.atc-stat,.avk-card,.avnet-panel,.b111-c,.biz-card,.card,.card-m,.cdm-frame,.ce-card,.ckpi,.cmap-frame,.cp,.cp-note,.ct-cards,.dch-card,.divc,.duo-card,.epw-c,.esg-card,.esg-head,.eth-c,.f2f,.fam-card,.fid-card,.flip-b,.flip-f,.frm-c,.glm-c,.glow-card,.gov-c,.gtt-c,.hncard,.hxi-card,.innov-c,.isv-e,.isv-s,.it-card,.jkey,.kpi,.mad-card,.mfo-lever,.mrc-c,.ngs-t,.oeco-card,.orgc,.pcard,.pe-c,.plc-card,.pmore-card,.pof-col,.ppj-card,.ppl-tile,.ppt-card,.ppte-tile,.prc-card,.presse-card,.prof,.pub-c,.pubc,.px-card,.refc,.rh-card,.rhe-c,.rhl-c,.rhp-c,.sb-card,.sc-card,.scard,.secc,.sfam,.slac,.svc-head,.tri-c,.tri-kpi,.ttc-card,.ttg-t,.vb-card,.voie-card):not(#_):not(#__):not(#___):not(#____){
+ background-color:transparent!important;
+ background-image:linear-gradient(180deg,rgba(252,250,246,.56) 0%,rgba(252,250,246,.40) 100%)!important;
+ border-color:rgba(26,35,48,.12)!important;
+ box-shadow:0 1px 0 rgba(255,255,255,.55) inset,0 20px 40px -30px rgba(30,24,10,.42)!important;
+ -webkit-backdrop-filter:blur(18px) saturate(1.35)!important;backdrop-filter:blur(18px) saturate(1.35)!important;
+}
+html:not(.et-plight):not(.et-jlight):where([data-eh~=eh10]):not(.ehz) :is(.acq-card,.atc-map,.atc-stat,.avk-card,.avnet-panel,.b111-c,.biz-card,.card,.card-m,.cdm-frame,.ce-card,.ckpi,.cmap-frame,.cp,.cp-note,.ct-cards,.dch-card,.divc,.duo-card,.epw-c,.esg-card,.esg-head,.eth-c,.f2f,.fam-card,.fid-card,.flip-b,.flip-f,.frm-c,.glm-c,.glow-card,.gov-c,.gtt-c,.hncard,.hxi-card,.innov-c,.isv-e,.isv-s,.it-card,.jkey,.kpi,.mad-card,.mfo-lever,.mrc-c,.ngs-t,.oeco-card,.orgc,.pcard,.pe-c,.plc-card,.pmore-card,.pof-col,.ppj-card,.ppl-tile,.ppt-card,.ppte-tile,.prc-card,.presse-card,.prof,.pub-c,.pubc,.px-card,.refc,.rh-card,.rhe-c,.rhl-c,.rhp-c,.sb-card,.sc-card,.scard,.secc,.sfam,.slac,.svc-head,.tri-c,.tri-kpi,.ttc-card,.ttg-t,.vb-card,.voie-card):not(#_):not(#__):not(#___):not(#____){
+ background-image:linear-gradient(180deg,rgba(9,15,27,.66) 0%,rgba(9,15,27,.54) 100%)!important;
+ border-color:rgba(255,255,255,.15)!important;
+ box-shadow:0 1px 0 rgba(255,255,255,.08) inset,0 22px 46px -30px rgba(0,0,0,.6)!important;
+}
+
+/* 3. Le texte secondaire des tuiles etait deja sous le seuil AA en theme sombre
+   avant cette refonte : gris 124,138,162 mesure a 3,84:1. Sur fond
+   photographique il faut l'eclaircir, sinon l'immersion se paie en lisibilite. */
+html:not(.et-plight):not(.et-jlight):where([data-eh~=eh10]):not(.ehz) :is(.acq-card,.atc-map,.atc-stat,.avk-card,.avnet-panel,.b111-c,.biz-card,.card,.card-m,.cdm-frame,.ce-card,.ckpi,.cmap-frame,.cp,.cp-note,.ct-cards,.dch-card,.divc,.duo-card,.epw-c,.esg-card,.esg-head,.eth-c,.f2f,.fam-card,.fid-card,.flip-b,.flip-f,.frm-c,.glm-c,.glow-card,.gov-c,.gtt-c,.hncard,.hxi-card,.innov-c,.isv-e,.isv-s,.it-card,.jkey,.kpi,.mad-card,.mfo-lever,.mrc-c,.ngs-t,.oeco-card,.orgc,.pcard,.pe-c,.plc-card,.pmore-card,.pof-col,.ppj-card,.ppl-tile,.ppt-card,.ppte-tile,.prc-card,.presse-card,.prof,.pub-c,.pubc,.px-card,.refc,.rh-card,.rhe-c,.rhl-c,.rhp-c,.sb-card,.sc-card,.scard,.secc,.sfam,.slac,.svc-head,.tri-c,.tri-kpi,.ttc-card,.ttg-t,.vb-card,.voie-card) :is(p,li,dd,span:not(.epw-no)):not(#_):not(#__):not(#___):not(#____){
+ color:#D9E2EE!important;-webkit-text-fill-color:#D9E2EE!important}
+
+/* 4. Repli sans flou : sans backdrop-filter la tuile doit rester lisible */
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+ html:where([data-eh~=eh10]):not(.ehz) :is(.acq-card,.atc-map,.atc-stat,.avk-card,.avnet-panel,.b111-c,.biz-card,.card,.card-m,.cdm-frame,.ce-card,.ckpi,.cmap-frame,.cp,.cp-note,.ct-cards,.dch-card,.divc,.duo-card,.epw-c,.esg-card,.esg-head,.eth-c,.f2f,.fam-card,.fid-card,.flip-b,.flip-f,.frm-c,.glm-c,.glow-card,.gov-c,.gtt-c,.hncard,.hxi-card,.innov-c,.isv-e,.isv-s,.it-card,.jkey,.kpi,.mad-card,.mfo-lever,.mrc-c,.ngs-t,.oeco-card,.orgc,.pcard,.pe-c,.plc-card,.pmore-card,.pof-col,.ppj-card,.ppl-tile,.ppt-card,.ppte-tile,.prc-card,.presse-card,.prof,.pub-c,.pubc,.px-card,.refc,.rh-card,.rhe-c,.rhl-c,.rhp-c,.sb-card,.sc-card,.scard,.secc,.sfam,.slac,.svc-head,.tri-c,.tri-kpi,.ttc-card,.ttg-t,.vb-card,.voie-card):not(#_):not(#__):not(#___):not(#____){background-image:linear-gradient(180deg,rgba(252,250,246,.90) 0%,rgba(252,250,246,.84) 100%)!important}
+ html:not(.et-plight):not(.et-jlight):where([data-eh~=eh10]):not(.ehz) :is(.acq-card,.atc-map,.atc-stat,.avk-card,.avnet-panel,.b111-c,.biz-card,.card,.card-m,.cdm-frame,.ce-card,.ckpi,.cmap-frame,.cp,.cp-note,.ct-cards,.dch-card,.divc,.duo-card,.epw-c,.esg-card,.esg-head,.eth-c,.f2f,.fam-card,.fid-card,.flip-b,.flip-f,.frm-c,.glm-c,.glow-card,.gov-c,.gtt-c,.hncard,.hxi-card,.innov-c,.isv-e,.isv-s,.it-card,.jkey,.kpi,.mad-card,.mfo-lever,.mrc-c,.ngs-t,.oeco-card,.orgc,.pcard,.pe-c,.plc-card,.pmore-card,.pof-col,.ppj-card,.ppl-tile,.ppt-card,.ppte-tile,.prc-card,.presse-card,.prof,.pub-c,.pubc,.px-card,.refc,.rh-card,.rhe-c,.rhl-c,.rhp-c,.sb-card,.sc-card,.scard,.secc,.sfam,.slac,.svc-head,.tri-c,.tri-kpi,.ttc-card,.ttg-t,.vb-card,.voie-card):not(#_):not(#__):not(#___):not(#____){background-image:linear-gradient(180deg,rgba(9,15,27,.92) 0%,rgba(9,15,27,.86) 100%)!important}
+}
+/* ———— ex-bloc: immersion-v2 ———— */
+/* Immersion sans bandes (chapitre 142). Le decor photographique couvre la page ; les sections ne portent plus de panneau translucide, seules les tuiles font verre. Le voile global de .rootland::after est renforce a .68/.78 pour compenser la disparition des panneaux, valeur fixee par mesure du contraste au pixel peint. */.rootland{position:fixed;inset:0;z-index:-2;background:none center/cover no-repeat;pointer-events:none}.rootland::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,12,21,.68) 0%,rgba(7,12,21,.78) 100%)}html{background:#0d1524}body{background:transparent!important}main{background:transparent!important}/* plus aucun panneau de section : la photo court d'un bord a l'autre */html:not(.et-plight):not(.et-jlight) main>section,html:not(.et-plight):not(.et-jlight) body>section,html:not(.et-plight):not(.et-jlight) main>div>section{background:transparent!important;border-radius:0!important}html:not(.et-plight):not(.et-jlight) main,html:not(.et-plight):not(.et-jlight) footer{--muted:#C3D0E0}main h2,main h3,section h2,section h3{text-shadow:0 2px 18px rgba(0,0,0,.7)}html:not(.et-plight):not(.et-jlight) main>section>*>p,html:not(.et-plight):not(.et-jlight) main p.lead,html:not(.et-plight):not(.et-jlight) main .intro{text-shadow:0 1px 12px rgba(0,0,0,.55)}html:not(.et-plight):not(.et-jlight) footer{background:rgba(14,22,38,.72)!important;text-shadow:0 1px 10px rgba(0,0,0,.55)}footer a{text-shadow:none}/* pour qui demande plus de contraste, on rend les panneaux */@media(prefers-contrast:more){html:not(.et-plight):not(.et-jlight) main>section,html:not(.et-plight):not(.et-jlight) body>section,html:not(.et-plight):not(.et-jlight) main>div>section{background:rgba(14,22,38,.92)!important}}/* Theme clair : le voile doit etre clair, sinon la photo sombre transforme la page creme en champ gris. Contraste verifie : le texte sombre reste au-dessus de 6:1 sur les six pages temoins. */html.et-plight .rootland::after,html.et-jlight .rootland::after{background:linear-gradient(180deg,rgba(250,247,241,.82) 0%,rgba(250,247,241,.90) 100%)}
+/* ———— ex-bloc: hero-kick ———— */
+/* Chapeaux des heros (chapitre 143). Defaut anterieur a l'immersion, verifie
+   sur 99136d2 : dore #F0CE82 pose directement sur la photo du heros, mesure de
+   1,96 a 3,28:1 sur 9 pages dans les deux themes. Le chapeau recoit une pastille
+   au vocabulaire deja employe sur le site : fond sombre maitrise, filet dore,
+   flou leger. Le texte est force au dore clair car sur certaines pages il etait
+   sombre en theme clair, ce qui donnerait du sombre sur du sombre. */
+.hero .kick:not(#_):not(#__):not(#___):not(#____):not(#_____),
+.dsh .kick:not(#_):not(#__):not(#___):not(#____):not(#_____),
+.pghero .kick:not(#_):not(#__):not(#___):not(#____):not(#_____),
+.hx-hero .kick:not(#_):not(#__):not(#___):not(#____):not(#_____){
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  background:linear-gradient(90deg,rgba(14,22,38,.76) 0%,rgba(14,22,38,.64) 100%)!important;
+  padding:5px 13px!important;
+  border-radius:999px!important;
+  border:1px solid rgba(240,206,130,.26)!important;
+  -webkit-backdrop-filter:blur(6px);
+  backdrop-filter:blur(6px);
+  color:#F2D28C!important;
+  -webkit-text-fill-color:#F2D28C!important;
+}
+/* charte.html : le heros .dsh commence a y=0, le chapeau se trouvait a 72 px,
+   entierement masque par la barre fixe. On lui rend la hauteur de la barre. */
+.dsh:not(#_):not(#__):not(#___){
+  padding-top:calc(var(--nav-h,110px) + 26px)!important;
+}
+@media (max-width:640px){
+  .hero .kick:not(#_):not(#__),
+  .dsh .kick:not(#_):not(#__),
+  .pghero .kick:not(#_):not(#__),
+  .hx-hero .kick:not(#_):not(#__){
+    padding:4px 10px!important;
+  }
+}
+/* ———— ex-bloc: verre-final ———— */
+/* Verre immersif final (chapitre 144). Le diagnostic du chapitre est dans
+   MAINTENANCE : la regle d'immersion du chapitre 141 correspondait bien aux
+   sections mais perdait la cascade contre les halos du chapitre 136. Ce bloc,
+   place en dernier dans le head et arme a six identifiants, tranche : plus
+   aucune bande large entre la photo et les tuiles. La barre de navigation et
+   le pied de page gardent leur fond — ils portent la lisibilite de la
+   navigation, pas le decor. */
+
+/* 1. Toute section et tout panneau large deviennent transparents. */
+html:where([data-eh~=eh10]):not(.ehz) main section:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
+html:where([data-eh~=eh10]):not(.ehz) body > section:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
+html:where([data-eh~=eh10]):not(.ehz) main > div > section:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
+html:where([data-eh~=eh10]):not(.ehz) .cmpw:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
+html:where([data-eh~=eh10]):not(.ehz) .pj-banner:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
+html:where([data-eh~=eh10]):not(.ehz) .docn:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
+html:where([data-eh~=eh10]):not(.ehz) .it-grid:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
+html:where([data-eh~=eh10]):not(.ehz) .epw-g:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
+html:where([data-eh~=eh10]):not(.ehz) .biz-grid:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______){
+  background-color:transparent!important;
+  background-image:none!important;
+  box-shadow:none!important;
+}
+
+/* 2. Le bandeau d'appel a l'action garde une presence, mais en verre. */
+html:where([data-eh~=eh10]):not(.ehz) #cta-band:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______){
+  background-color:transparent!important;
+  background-image:linear-gradient(180deg,rgba(14,22,38,.30) 0%,rgba(14,22,38,.44) 100%)!important;
+  -webkit-backdrop-filter:blur(10px);
+  backdrop-filter:blur(10px);
+}
+html.et-plight:where([data-eh~=eh10]):not(.ehz) #cta-band:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
+html.et-jlight:where([data-eh~=eh10]):not(.ehz) #cta-band:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______){
+  background-image:linear-gradient(180deg,rgba(252,250,246,.42) 0%,rgba(252,250,246,.58) 100%)!important;
+}
+
+/* 3. Theme clair : le voile creme s'allege pour que la photo traverse.
+   Valeur fixee par mesure du contraste au pixel peint apres application. */
+html.et-plight .rootland::after,
+html.et-jlight .rootland::after{
+  background:linear-gradient(180deg,rgba(250,247,241,.66) 0%,rgba(250,247,241,.78) 100%)!important;
+}
+
+/* 4. En preference de contraste renforce, les panneaux reviennent opaques. */
+@media (prefers-contrast:more){
+  html:where([data-eh~=eh10]):not(.ehz) main section:not(#_):not(#__):not(#___):not(#____),
+  html:where([data-eh~=eh10]):not(.ehz) body > section:not(#_):not(#__):not(#___):not(#____){
+    background-color:rgba(14,22,38,.92)!important;
+  }
+  html.et-plight:where([data-eh~=eh10]):not(.ehz) main section:not(#_):not(#__):not(#___):not(#____),
+  html.et-plight:where([data-eh~=eh10]):not(.ehz) body > section:not(#_):not(#__):not(#___):not(#____){
+    background-color:rgba(250,247,241,.96)!important;
+  }
+}
+/* ———— ex-bloc: qa147-tuiles ———— */
+/* QA des tuiles versus majors (chapitre 147).
+   Releve interaction sur 30 familles de tuiles : survol, focus clavier,
+   curseur, semantique lien, rayon, transition. Trois ecarts mesures :
+   1. a.glm-c (glossaire) : la regle de survol existe (bordure doree) mais
+      perd la cascade — aucun retour visuel au survol d'une carte-lien.
+   2. .flip-hint / .flip-cta (accueil) : 73x24 px — conforme au minimum WCAG
+      2.5.8 (24) mais sous la barre de confort tactile 44 des majors.
+   3. button.f2hint (cartes defi/reponse des 16 pages poles) : 29 px de haut,
+      style pose en ligne par le script — meme ecart de confort tactile.
+   Le confort 44 px ne s'applique qu'aux pointeurs grossiers : l'esthetique
+   souris reste inchangee. */
+a.glm-c:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______){
+  transition:border-color .2s,transform .25s var(--ease,ease),box-shadow .25s!important;
+}
+a.glm-c:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):hover{
+  border-color:var(--gold-l,#E8C36A)!important;
+  transform:translateY(-3px);
+  box-shadow:0 14px 30px -16px rgba(0,0,0,.5);
+}
+a.glm-c:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):focus-visible{
+  border-color:var(--gold-l,#E8C36A)!important;
+}
+@media (pointer:coarse){
+  .flip-hint:not(#_):not(#__):not(#___):not(#____),
+  .flip-cta:not(#_):not(#__):not(#___):not(#____){
+    min-height:44px!important;
+    min-width:44px!important;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+  }
+  button.f2hint:not(#_):not(#__):not(#___):not(#____){
+    min-height:44px!important;
+    padding:10px 16px!important;
+  }
+}
+@media (prefers-reduced-motion:reduce){
+  a.glm-c:not(#_):not(#__):not(#___):hover{
+    transform:none;
+  }
+}
+/* ———— ex-bloc: fnews440 ———— */
+/* ch.440 : bande inscription posee sur les hubs de poles (motif de l accueil) */
+/* --- C2 : inscription "etre prevenu(e)" en tete de footer --- */
+.foot-news{display:flex;align-items:center;justify-content:space-between;gap:26px;
+ flex-wrap:wrap;padding:26px 0 24px;margin-bottom:26px;
+ border-bottom:1px solid color-mix(in srgb,currentColor 14%,transparent)}
+.fn-k{font-family:var(--fm,ui-monospace,monospace);font-size:0.6875rem;letter-spacing:.2em;
+ text-transform:uppercase;color:#77530C;margin:0 0 6px;display:inline-flex;align-items:center;gap:9px}
+.fn-k::before{content:"";width:7px;height:7px;background:currentColor;transform:rotate(45deg)}
+html:not(.et-plight) .fn-k{color:var(--gold-l,#E8C36A)}
+.fn-t{display:block;font-family:var(--fd,system-ui);font-weight:800;font-size:1.15rem;letter-spacing:-.01em}
+.fn-d{font-size:.86rem;opacity:.75;margin:5px 0 0;max-width:44ch}
+.fn-form{display:flex;gap:10px;flex-wrap:wrap}
+.fn-form input{min-width:240px;min-height:46px;padding:10px 16px;border-radius:999px;
+ border:1px solid color-mix(in srgb,currentColor 26%,transparent);background:transparent;
+ color:inherit;font-family:var(--fm,ui-monospace,monospace);font-size:.84rem}
+.fn-form input:focus-visible{outline:2px solid var(--gold-l,#E8C36A);outline-offset:2px}
+.fn-form button{display:inline-flex;align-items:center;gap:9px;min-height:46px;padding:11px 22px;
+ border:0;border-radius:999px;cursor:pointer;
+ background:linear-gradient(120deg,#E8C36A,#D4A843);color:#121D31;
+ font-family:var(--fm,ui-monospace,monospace);font-weight:700;font-size:.84rem;letter-spacing:.03em;
+ transition:transform .2s,filter .2s}
+.fn-form button:hover{transform:translateY(-2px);filter:brightness(1.06)}
+.fn-alt{flex-basis:100%;font-family:var(--fm,ui-monospace,monospace);font-size:.7rem;
+ letter-spacing:.03em;opacity:.7;margin:0}
+.fn-alt a{color:inherit;text-decoration:underline;text-underline-offset:3px}
+/* ———— ex-bloc: m457css ———— */
+/* Ch457 - modernisation des portails, inspiree des majors :
+   le dernier carnet date remonte en tete de hero (le motif actualites-d-abord
+   d ExxonMobil), ruban sobre aux couleurs du pole. */
+.m457{display:flex;align-items:center;flex-wrap:wrap;gap:10px 14px;margin-top:22px;
+ padding:10px 16px;border-radius:14px;max-width:760px;
+ border:1px solid color-mix(in srgb,var(--mja) 30%,transparent);
+ background:color-mix(in srgb,var(--mja) 6%,rgba(10,16,28,.35));
+ -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+html.et-plight .m457{background:color-mix(in srgb,var(--mja) 8%,rgba(255,255,255,.6))}
+.m457>i{font-style:normal;font-family:var(--fm,ui-monospace,monospace);font-size:.64rem;
+ font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--mja);white-space:nowrap}
+.m457-a{display:inline-flex;align-items:baseline;gap:10px;min-width:0;flex:1 1 320px;
+ text-decoration:none;color:#E9EFF7}
+html.et-plight .m457-a{color:#1E293B}
+.m457-a time{font-family:var(--fm,ui-monospace,monospace);font-size:.68rem;font-weight:700;
+ letter-spacing:.06em;color:var(--mja);white-space:nowrap}
+.m457-a span{font-size:.9rem;line-height:1.4}
+.m457-a b{color:var(--mja);transition:transform .2s ease}
+.m457-a:hover b{transform:translateX(4px)}
+.m457-all{font-family:var(--fm,ui-monospace,monospace);font-size:.68rem;letter-spacing:.08em;
+ color:var(--mja);text-decoration:none;white-space:nowrap;margin-left:auto}
+.m457-a:focus-visible,.m457-all:focus-visible{outline:2px solid var(--mja);outline-offset:3px;border-radius:6px}

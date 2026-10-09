@@ -1,0 +1,42 @@
+# EnerTchad S.A. — Fiche de presse
+
+*Document de référence presse. Société en constitution : toutes les capacités et tous les chiffres d'activité sont des objectifs datés, non des actifs en exploitation.*
+
+## Identité
+- **Raison sociale** : EnerTchad S.A.
+- **Forme** : société anonyme de droit OHADA (AUSCGIE)
+- **Statut** : société en constitution
+- **Objet** : société pétrolière intégrée — de l'exploration-production à la distribution
+- **Slogan** : Unité · Innovation · Durabilité
+- **Signature** : « De la roche-mère à la pompe. »
+
+## Coordonnées
+- **Siège** : Radisson Blu, bureau 23, Quartier Sabangali, Cité du 1er Décembre, BP 6060, N'Djamena, Tchad
+- **RCCM** : immatriculation en cours
+- **Domaine** : enertchad.com
+- **Contact presse** : contact@enertchad.com · +235 99 29 86 96
+
+## Capital (trajectoire visée)
+- Capital fondateur : 100 000 000 FCFA
+- Levée court terme visée : ~1 Md FCFA
+- Horizon à cinq ans visé : ~10 Md FCFA
+- Partenaire investissement : GCIC
+
+## Organisation
+EnerTchad est une **société unique** (pas un groupe, pas de filiales), organisée sur **quatre segments industriels** — Exploration & Production, Transport & stockage, Raffinage & distribution et Pétrochimie. Quatre capacités sont intégrées à chacun de ces pôles : GreenTech (durabilité), TchadiTech (technologies), Tchaditude (capital humain), EnerConseils (conseil).
+
+## Palette officielle
+Le logo officiel est un trèfle à quatre pétales dans un anneau d'or, sur fond crème.
+- **Or du logo (pétale haut, dégradé)** : #DBAE4A → #C2922E
+- **Bleu (pétale gauche)** : #1E6EC2
+- **Vert (pétale droit)** : #218A2C
+- **Crème doré (pétale bas)** : #E8CD7F
+- **Crème (fond du logo)** : #F3EAD1
+- **Marine (fonds sombres du site)** : #070D18 · #0B1422
+- **Ors d'interface (site)** : #D9A84F · #E8C36A · #F0CE82
+
+## Engagements
+Contenu local visé (priorité aux compétences et emplois tchadiens), démarche HSE-Q, arc E-S-G et conformité OHADA/IFRS, normes ISO et standards ITIE visés.
+
+---
+*EnerTchad S.A. · N'Djamena · Mise à jour : juillet 2026.*

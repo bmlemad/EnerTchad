@@ -1,0 +1,25 @@
+/* Shared identity; a compact, always visible navigation for each dedicated space. */
+html[data-et-space] #nav.et-space-header{position:sticky!important;top:0;z-index:1100;display:block!important;width:100%;height:auto!important;max-width:none!important;padding:0!important;margin:0!important;background:rgba(248,247,243,.96)!important;color:#172638!important;border-bottom:1px solid #c7ccd2;backdrop-filter:blur(16px);font:500 14px/1.4 Inter,system-ui,sans-serif}
+html[data-et-space] #nav.et-space-header a{color:#172638!important;-webkit-text-fill-color:currentColor!important;text-shadow:none!important;text-decoration:none;display:inline-flex;align-items:center;min-height:44px}
+html[data-et-space] #nav.et-space-header a:focus-visible{outline:3px solid #2575c5;outline-offset:3px}
+html[data-et-space] #nav .et-space-top,html[data-et-space] #nav .et-space-brand,html[data-et-space] #nav .et-space-links{max-width:1240px;margin:auto;padding:0 24px;display:flex;align-items:center;gap:24px;flex-wrap:wrap}
+html[data-et-space] #nav .et-space-top{justify-content:space-between;border-bottom:1px solid #d8dce1;font-size:12px}
+html[data-et-space] #nav .et-space-top>div{display:flex;gap:20px;flex-wrap:wrap}
+html[data-et-space] #nav .et-space-brand{justify-content:space-between;padding-block:10px}
+html[data-et-space] #nav .et-space-brand>a:first-child{gap:12px}
+html[data-et-space] #nav .et-space-brand img{border-radius:8px;flex-shrink:0}
+html[data-et-space] #nav .et-space-brand span{font-size:18px;line-height:1.3}
+html[data-et-space] #nav .et-space-brand strong{display:block;font-size:12px;font-weight:500;letter-spacing:.04em}
+html[data-et-space] #nav .et-space-contact{padding:0 16px;border:1px solid #a58336;border-radius:8px;background:#f0e6cb}
+html[data-et-space] #nav .et-space-links{gap:6px;padding-bottom:8px}
+html[data-et-space] #nav .et-space-links>a{padding:8px 12px;border-radius:8px}
+html[data-et-space] #nav .et-space-links>a[aria-current=page]{background:#172638;color:#fff!important}
+html[data-et-space] #nav .et-space-links>a:hover{box-shadow:inset 0 0 0 1px #a58336}
+/* The header occupies normal document flow: remove the legacy fixed-nav gap. */
+html[data-et-space] body{padding-top:0!important}
+html[data-et-space] #main-content.atlas-space{padding-top:28px!important}
+html[data-et-space] #main-content{scroll-margin-top:200px}
+@media(max-width:700px){html[data-et-space] #nav .et-space-top,html[data-et-space] #nav .et-space-brand,html[data-et-space] #nav .et-space-links{padding-inline:16px;gap:8px}html[data-et-space] #nav .et-space-top>div{gap:12px}html[data-et-space] #nav .et-space-brand span{font-size:16px}html[data-et-space] #nav .et-space-contact{font-size:12px;padding-inline:10px}html[data-et-space] #nav .et-space-links{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:thin}html[data-et-space] #nav .et-space-links>a{flex-shrink:0;font-size:13px}html[data-et-space] #nav.et-space-header{position:relative!important}html[data-et-space] #main-content{scroll-margin-top:20px}}
+@media(prefers-reduced-transparency:reduce){html[data-et-space] #nav.et-space-header{background:#f8f7f3!important;backdrop-filter:none}}
+@media(max-width:700px){html[data-et-space="boutique"]{--et-space-hero-min-height:0px;--et-space-hero-top:32px}}
+@media print{html[data-et-space] #nav.et-space-header{position:static!important}}

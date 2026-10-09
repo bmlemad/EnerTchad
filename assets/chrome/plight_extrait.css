@@ -1,0 +1,1312 @@
+/* Regles et-plight/et-jlight extraites de bundle_core_a1.css - pages sans le bundle complet. */
+html.et-jlight { --bg: #FAF7F1; --bg2: #FFFFFF; --ink: #1A2330; --mut: rgba(26,35,48,.64); --hair: rgba(26,35,48,.16); --gold: #8A6A1E; --gold-l: #7A5C14; --blue-l: #155FA8; }
+html.et-jlight body { background: var(--bg) !important; color: var(--ink) !important; }
+html.et-jlight body::before, html.et-jlight body::after { display: none !important; }
+html.et-jlight #jlightBtn { border-color: rgba(26, 35, 48, 0.3); }
+html.et-jlight b:not(#_), html.et-jlight strong:not(#_), html.et-jlight h1:not(#_), html.et-jlight h2:not(#_), html.et-jlight h3:not(#_) { color: rgb(16, 22, 31) !important; }
+html.et-jlight .jtop a:not(#_) { color: rgb(245, 247, 250) !important; }
+html.et-jlight .jtop #jlightBtn { color: rgb(245, 247, 250); border-color: rgba(245, 247, 250, 0.4); }
+html.et-jlight .jkey:not(#_), html.et-jlight blockquote:not(#_) { background: rgb(255, 255, 255) !important; border-color: rgba(26, 35, 48, 0.2) !important; color: rgb(26, 35, 48) !important; }
+html.et-jlight .jsig:not(#_), html.et-jlight .jdek:not(#_), html.et-jlight .jmeta:not(#_) { color: rgba(26, 35, 48, 0.72) !important; }
+html.et-jlight .jfoot:not(#_), html.et-jlight footer:not(#_) { background: rgb(241, 236, 226) !important; color: rgb(26, 35, 48) !important; }
+html.et-jlight a:not(#_):not(.jback):not(.jlang) { color: rgb(21, 95, 168); }
+html.et-jlight { background: rgb(250, 247, 241) !important; }
+html.et-jlight .jtop a b:not(#_) { color: rgb(232, 195, 106) !important; }
+html.et-jlight #secrail a:not(#_) { background: rgba(11, 20, 34, 0.85) !important; color: rgba(245, 247, 250, 0.85) !important; border-color: rgba(255, 255, 255, 0.14) !important; }
+html.et-plight main:not(#_) { background: rgb(250, 247, 241) !important; color: rgb(26, 35, 48) !important; }
+html.et-plight main section:not(#_), html.et-plight main article:not(#_), html.et-plight main div:not(#_) { color: rgb(26, 35, 48); background-color: transparent !important; box-shadow: none !important; }
+html.et-plight main .subland { display: none !important; }
+html.et-plight main h1:not(#_), html.et-plight main h2:not(#_), html.et-plight main h3:not(#_), html.et-plight main h4:not(#_), html.et-plight main b:not(#_), html.et-plight main strong:not(#_), html.et-plight main dt:not(#_) { color: rgb(16, 22, 31) !important; text-shadow: none !important; -webkit-text-fill-color: rgb(16, 22, 31) !important; background: none !important; }
+html.et-plight main p:not(#_), html.et-plight main li:not(#_), html.et-plight main span:not(#_), html.et-plight main td:not(#_), html.et-plight main th:not(#_), html.et-plight main i:not(#_), html.et-plight main em:not(#_), html.et-plight main small:not(#_), html.et-plight main dd:not(#_), html.et-plight main figcaption:not(#_), html.et-plight main blockquote:not(#_), html.et-plight main label:not(#_) { color: rgb(42, 54, 72) !important; text-shadow: none !important; }
+html.et-plight main h1 em:not(#_), html.et-plight main h2 em:not(#_), html.et-plight main .kick:not(#_), html.et-plight main [class*="kick"]:not(#_) { color: rgb(122, 92, 20) !important; }
+html.et-plight main a:not(#_) { color: rgb(21, 95, 168) !important; }
+html.et-plight main .card:not(#_), html.et-plight main [class*="card"]:not(#_), html.et-plight main [class*="panel"]:not(#_) { background: rgb(255, 255, 255) !important; border: 1px solid rgba(26, 35, 48, 0.16) !important; box-shadow: rgba(26, 35, 48, 0.06) 0px 2px 10px !important; }
+html.et-plight main td:not(#_), html.et-plight main th:not(#_) { border-color: rgba(26, 35, 48, 0.2) !important; background: rgb(255, 255, 255) !important; }
+html.et-plight .subland { display: none !important; }
+html.et-plight:not(#_):not(#__) { background: radial-gradient(58% 46% at 10% 4%, rgba(226, 178, 64, 0.52), transparent 70%) fixed, radial-gradient(54% 44% at 92% 10%, rgba(59, 140, 231, 0.46), transparent 70%), radial-gradient(48% 40% at 14% 88%, rgba(28, 190, 130, 0.36), transparent 72%), radial-gradient(56% 46% at 86% 94%, rgba(206, 108, 170, 0.3), transparent 72%), linear-gradient(rgb(250, 248, 241) 0%, rgb(239, 237, 228) 100%) !important; }
+html.et-plight body { background: rgb(250, 247, 241) !important; }
+html.et-plight main .cp-ct a:not(#_) b { color: rgb(16, 22, 31) !important; }
+html.et-plight main section:not(#_), html.et-plight main article:not(#_), html.et-plight main div:not(#_):not([role="img"]) { background-image: none !important; }
+html.et-plight main article:not(#_) { background-color: rgb(255, 255, 255) !important; border: 1px solid rgba(26, 35, 48, 0.16) !important; box-shadow: rgba(26, 35, 48, 0.06) 0px 2px 10px !important; }
+html.et-plight #secrail a:not(#_) { background: rgba(11, 20, 34, 0.85) !important; color: rgba(245, 247, 250, 0.85) !important; border-color: rgba(255, 255, 255, 0.14) !important; }
+html.et-plight main button:not(#_):not(#plightBtn) { color: rgb(26, 35, 48) !important; }
+html.et-plight main [role="tab"]:not(#_), html.et-plight main [role="button"]:not(#_) { color: rgb(26, 35, 48) !important; }
+html.et-plight main .pghero h1:not(#_), html.et-plight main .pghero h2:not(#_), html.et-plight main [class*="hero"] h1:not(#_), html.et-plight main .diapo h1:not(#_), html.et-plight main .diapo h2:not(#_), html.et-plight main .pghero b:not(#_), html.et-plight main [class*="hero"] h1 b:not(#_) { color: rgb(255, 255, 255) !important; -webkit-text-fill-color: rgb(255, 255, 255) !important; }
+html.et-plight main .pghero h1 em:not(#_), html.et-plight main [class*="hero"] h1 em:not(#_) { color: rgb(240, 206, 130) !important; -webkit-text-fill-color: rgb(240, 206, 130) !important; }
+html.et-plight main .pghero p:not(#_), html.et-plight main .pghero li:not(#_), html.et-plight main .pghero span:not(#_), html.et-plight main [class*="hero"] p:not(#_), html.et-plight main .diapo p:not(#_), html.et-plight main .diapo span:not(#_) { color: rgba(245, 247, 250, 0.92) !important; }
+html.et-plight main .pghero .pgk:not(#_), html.et-plight main .pghero .kick:not(#_) { color: #F9E5B2 !important; }
+html.et-plight main .pghero a:not(#_) { color: rgb(245, 247, 250) !important; }
+html.et-plight main .pghero .crumb a:not(#_), html.et-plight main .pghero .crumb span:not(#_), html.et-plight main .pghero .bcrumb a:not(#_) { color: rgba(245, 247, 250, 0.78) !important; }
+html.et-plight footer:not(#_), html.et-jlight footer:not(#_) { background: rgb(11, 20, 34) !important; }
+html.et-plight footer :not(#_):not(a), html.et-jlight footer :not(#_):not(a) { color: rgba(245, 247, 250, 0.85) !important; }
+html.et-plight footer a:not(#_), html.et-jlight footer a:not(#_) { color: rgb(234, 217, 168) !important; }
+html.et-plight footer h3:not(#_), html.et-jlight footer h3:not(#_), html.et-plight footer b:not(#_), html.et-jlight footer b:not(#_) { color: rgb(255, 255, 255) !important; }
+html.et-jlight .jfoot:not(#_) { background: rgb(11, 20, 34) !important; color: rgba(245, 247, 250, 0.85) !important; }
+html.et-jlight .jfoot a:not(#_) { color: rgb(234, 217, 168) !important; }
+html.et-plight main .kick:not(#_), html.et-plight main [class*="kick"]:not(#_), html.et-plight main h1 em:not(#_), html.et-plight main h2 em:not(#_) { color: rgb(107, 80, 15) !important; }
+html.et-jlight h1 em:not(#_), html.et-jlight h2 em:not(#_), html.et-jlight .jkick:not(#_), html.et-jlight .sc-lb:not(#_), html.et-jlight .cb-k:not(#_) { color: rgb(107, 80, 15) !important; }
+html.et-plight main .esg-t td:not(#_), html.et-plight main .esg-t th:not(#_), html.et-plight main .esg-t b:not(#_), html.et-plight main .epw-no:not(#_), html.et-plight main .epw-k:not(#_) { color: rgb(26, 35, 48) !important; background: rgb(255, 255, 255) !important; }
+html.et-plight body > section:not(#_) { background: none rgb(250, 247, 241) !important; box-shadow: none !important; }
+html.et-plight body > section div:not(#_) { background-color: transparent !important; background-image: none !important; box-shadow: none !important; }
+html.et-plight body > section h1:not(#_), html.et-plight body > section h2:not(#_), html.et-plight body > section h3:not(#_), html.et-plight body > section h4:not(#_), html.et-plight body > section b:not(#_), html.et-plight body > section strong:not(#_), html.et-plight body > section dt:not(#_) { color: rgb(16, 22, 31) !important; text-shadow: none !important; -webkit-text-fill-color: rgb(16, 22, 31) !important; background: none !important; }
+html.et-plight body > section p:not(#_), html.et-plight body > section li:not(#_), html.et-plight body > section span:not(#_), html.et-plight body > section td:not(#_), html.et-plight body > section th:not(#_), html.et-plight body > section i:not(#_), html.et-plight body > section em:not(#_), html.et-plight body > section small:not(#_), html.et-plight body > section dd:not(#_), html.et-plight body > section caption:not(#_), html.et-plight body > section label:not(#_), html.et-plight body > section button:not(#_) { color: rgb(42, 54, 72) !important; text-shadow: none !important; }
+html.et-plight body > section a:not(#_) { color: rgb(21, 95, 168) !important; }
+html.et-plight body > section td:not(#_), html.et-plight body > section th:not(#_) { background: rgb(255, 255, 255) !important; border-color: rgba(26, 35, 48, 0.2) !important; }
+html.et-plight body > section .card:not(#_), html.et-plight body > section [class*="card"]:not(#_) { background: rgb(255, 255, 255) !important; border: 1px solid rgba(26, 35, 48, 0.16) !important; }
+html.et-plight body > section [class*="kick"]:not(#_), html.et-plight body > section h2 em:not(#_), html.et-plight body > section [class*="-no"]:not(#_), html.et-plight body > section [class*="-k"]:not(#_) { color: rgb(107, 80, 15) !important; }
+html.et-plight body > header.pghero h1:not(#_), html.et-plight body > header.pghero h2:not(#_) { color: rgb(255, 255, 255) !important; }
+html.et-plight body > header.pghero p:not(#_), html.et-plight body > header.pghero span:not(#_) { color: rgba(245, 247, 250, 0.92) !important; }
+html.et-plight main .ivt-cta:not(#_), html.et-plight body > section .ivt-cta:not(#_) { background: rgb(11, 20, 34) !important; color: rgb(245, 247, 250) !important; border-color: rgb(11, 20, 34) !important; }
+html.et-plight [style*="E8C36A"]:not(#_), html.et-plight [style*="F0CE82"]:not(#_), html.et-plight [style*="var(--gold-l"]:not(#_) { color: rgb(119, 83, 12) !important; }
+html.et-plight header.hero [style*="var(--gold-l"]:not(#_):not(#__), html.et-plight header.pghero [style*="var(--gold-l"]:not(#_):not(#__), html.et-plight .vcx [style*="var(--gold-l"]:not(#_):not(#__) { color: rgb(240, 206, 130) !important; }
+html.et-plight [style*="5AA7F0"]:not(#_), html.et-plight [style*="7FB8F5"]:not(#_) { color: rgb(27, 78, 140) !important; }
+html.et-plight [style*="34D399"]:not(#_) { color: rgb(14, 122, 85) !important; }
+html.et-jlight .hero-cap:not(#_) { color: rgba(245, 247, 250, 0.9) !important; background: rgba(8, 13, 22, 0.78) !important; }
+html.et-jlight .sc-lb:not(#_) { color: rgb(240, 206, 130) !important; }
+html.et-jlight .more-k:not(#_) { color: rgb(107, 80, 15) !important; }
+html.et-jlight .cb-k:not(#_) { color: rgb(240, 206, 130) !important; }
+html.et-jlight .cb:not(#_), html.et-jlight [class*="cta-band"]:not(#_) { background: rgb(11, 20, 34) !important; }
+html.et-jlight .cb-btn:not(#_) { background: rgb(232, 195, 106) !important; color: rgb(11, 20, 34) !important; }
+html.et-jlight .jfoot :not(#_):not(a) { color: rgba(245, 247, 250, 0.85) !important; }
+html.et-plight .share-k:not(#_), html.et-plight main [class*="share-k"]:not(#_) { color: rgb(85, 100, 124) !important; }
+html.et-plight [class^="pgr"] .pgr-t:not(#_), html.et-plight .pgr-t:not(#_) { color: rgb(16, 22, 31) !important; }
+html.et-plight .pgr-dir:not(#_) { color: rgb(107, 80, 15) !important; }
+html.et-plight .back:not(#_) { color: rgba(245, 247, 250, 0.88) !important; }
+html.et-plight main summary:not(#_), html.et-plight body > section summary:not(#_) { color: rgb(16, 22, 31) !important; }
+html.et-plight footer a:not(#_):not(#__) { color: rgb(234, 217, 168) !important; }
+html.et-jlight footer a:not(#_):not(#__), html.et-jlight .jfoot a:not(#_):not(#__) { color: rgb(234, 217, 168) !important; }
+html.et-plight main section.hero h1:not(#_):not(#__), html.et-plight main section.hero h2:not(#_):not(#__) { color: rgb(16, 22, 31) !important; -webkit-text-fill-color: rgb(16, 22, 31) !important; }
+html.et-plight main section.hero p:not(#_):not(#__), html.et-plight main section.hero span:not(#_):not(#__) { color: rgb(42, 54, 72) !important; }
+html.et-jlight section:where([data-eh~=eh3]):not(.ehz):not(#_) { background: rgb(11, 20, 34) !important; }
+html.et-jlight section:where([data-eh~=eh3]):not(.ehz) h2:not(#_):not(#__), html.et-jlight section:where([data-eh~=eh3]):not(.ehz) h3:not(#_):not(#__) { color: rgb(255, 255, 255) !important; }
+html.et-jlight section:where([data-eh~=eh3]):not(.ehz) p:not(#_):not(#__):not(.cb-k) { color: rgba(245, 247, 250, 0.85) !important; }
+html.et-plight #modele div:not([class]):not(#_) { color: rgb(42, 54, 72) !important; }
+html.et-plight .cta div:not([class]):not(#_) { color: rgb(42, 54, 72) !important; }
+html.et-plight .btn:not(#_):not(#plightBtn) { background: rgb(11, 20, 34) !important; color: rgb(245, 247, 250) !important; border-color: rgb(11, 20, 34) !important; }
+html.et-plight #contact-rapide a:not(#_):not(#__) { color: rgb(11, 20, 34) !important; }
+html.et-plight main section.hero h1 em:not(#_):not(#__) { background: none !important; -webkit-text-fill-color: rgb(107, 80, 15) !important; color: rgb(107, 80, 15) !important; }
+html.et-plight .corp-nav a:not(#_):not(#__) { color: rgb(234, 217, 168) !important; }
+html.et-plight #kit-media div:not(#_):not(#__) { color: rgb(42, 54, 72) !important; }
+html.et-plight body > header.hero:not(#_) { background: none rgb(11, 20, 34) !important; }
+html.et-plight a[style*="F59E0B"]:not(#_):not(#__), html.et-plight a[style*="f59e0b"]:not(#_):not(#__), html.et-plight body > section a[href$="#partenariats"]:not(#_):not(#__) { color: rgb(11, 20, 34) !important; }
+html.et-plight main code:not(#_):not(#__), html.et-plight body > section code:not(#_):not(#__) { color: rgb(107, 80, 15) !important; background: rgba(138, 98, 16, 0.08) !important; }
+html.et-plight .pof-ct:not(#_):not(#__) { color: rgb(16, 22, 31) !important; }
+html.et-plight .ets-lv:not(#_):not(#__) { color: rgb(11, 20, 34) !important; }
+html.et-plight .ets-lv:not(#_):not(#__) { border-radius: 6px; padding: 0px 6px; color: rgb(11, 20, 34) !important; background: rgba(255, 255, 255, 0.88) !important; }
+html.et-plight body > section div:not(#_):not(#__) { color: rgb(42, 54, 72) !important; }
+html.et-plight #secrail a:not(#_):not(#__), html.et-jlight #secrail a:not(#_):not(#__) { background: rgba(11, 20, 34, 0.96) !important; }
+html.et-plight main div:not(#_):not(#__) { color: rgb(42, 54, 72) !important; }
+html.et-plight main .pghero div:not(#_):not(#__):not(#___), html.et-plight main [class*="hero"] div:not(#_):not(#__):not(#___), html.et-plight main .diapo div:not(#_):not(#__):not(#___) { color: rgba(245, 247, 250, 0.92) !important; }
+html.et-plight main section.hero div:not(#_):not(#__):not(#___):not(#____) { color: rgb(42, 54, 72) !important; }
+html.et-plight main button:not(#plightBtn):not(#_):not(#__):not(#___) { color: rgb(26, 35, 48) !important; }
+html.et-plight [class^="fcta"]:not(#_):not(#__):not(#___), html.et-plight [class^="fcta"] :not(#_):not(#__):not(#___) { color: rgb(11, 20, 34) !important; }
+html.et-plight main a[href$="investisseurs#cadre-eco"]:not(#_) { text-decoration: underline !important; }
+html.et-plight a[href$="investisseurs#cadre-eco"]:not(#_) { text-decoration: underline !important; }
+html.et-plight main .wrap > a[href]:not([class]):not(#_):not(#__) { text-decoration: underline !important; }
+html.et-plight .lang a:not(#_):not(#__) { color: rgb(11, 20, 34) !important; }
+html.et-plight header .lang a:not(#_):not(#__):not(#___) { color: rgb(245, 247, 250) !important; }
+html.et-plight .wrap > a:not([class]):not(#_):not(#__) { text-decoration: underline !important; color: rgb(21, 95, 168) !important; }
+html.et-plight footer .wrap > a:not(#_):not(#__):not(#___) { color: rgb(234, 217, 168) !important; text-decoration: underline !important; }
+html.et-plight header .lang a[aria-current="page"]:not(#_):not(#__):not(#___):not(#____), html.et-plight header .lang a.on:not(#_):not(#__):not(#___):not(#____) { color: rgb(11, 20, 34) !important; background: rgb(232, 195, 106) !important; }
+html.et-plight main .pghero a.pgh-btn:not(#_) { color: rgb(11, 20, 34) !important; }
+html.et-plight main a.ppt-cta:not(#_) { color: rgb(11, 20, 34) !important; }
+html.et-plight main a.mad-cta:not(#_) { color: rgb(11, 20, 34) !important; }
+html.et-plight main .mkt-cta a:not(#_):not(#__) { color: rgb(11, 20, 34) !important; }
+html.et-plight main a.btn:not(.btn-p):not(.btn-g):not(.btn-ghost):not(.btn-shop):not(#_) { color: rgb(11, 20, 34) !important; }
+html.et-plight main a.cb-p:not(#_) { color: rgb(11, 20, 34) !important; }
+html.et-plight main a.hxi-cta:not(#_) { color: rgb(11, 20, 34) !important; }
+html.et-plight main a.iv-pivot:not(#_) { color: rgb(10, 19, 34) !important; }
+html.et-plight main .mkt-nav a:not(#_) { color: rgba(245, 247, 250, 0.74) !important; }
+html.et-plight main:not(#_), html.et-plight body > section:not(#_) { background: linear-gradient(162deg, rgb(245, 241, 234) 0%, rgb(237, 237, 241) 52%, rgb(243, 238, 230) 100%) !important; }
+html.et-plight main .card:not(#_), html.et-plight main [class*="card"]:not(#_), html.et-plight main [class*="panel"]:not(#_), html.et-plight main article:not(#_), html.et-plight body > section .card:not(#_), html.et-plight body > section [class*="card"]:not(#_) { background: rgba(255, 255, 255, 0.46) !important; -webkit-backdrop-filter: blur(20px) saturate(1.6) !important;backdrop-filter: blur(20px) saturate(1.6) !important; border: 1px solid rgba(26, 35, 48, 0.1) !important; box-shadow: rgba(26, 35, 48, 0.12) 0px 8px 30px, rgba(255, 255, 255, 0.65) 0px 1px 0px inset !important; }
+html.et-plight a.cb-p:not(#_):not(#__) { color: rgb(11, 20, 34) !important; -webkit-text-fill-color: rgb(11, 20, 34) !important; }
+html.et-plight body { background: radial-gradient(58% 46% at 10% 4%, rgba(226, 178, 64, 0.52), transparent 70%) fixed, radial-gradient(54% 44% at 92% 10%, rgba(59, 140, 231, 0.46), transparent 70%), radial-gradient(48% 40% at 14% 88%, rgba(28, 190, 130, 0.36), transparent 72%), radial-gradient(56% 46% at 86% 94%, rgba(206, 108, 170, 0.3), transparent 72%), linear-gradient(rgb(250, 248, 241) 0%, rgb(239, 237, 228) 100%) !important; }
+html.et-plight .rootland:not(#_) { display: none !important; }
+html.et-plight .diapo:not(#_), html.et-plight #diapo-cap:not(#_) { display: none !important; }
+html.et-plight header.hero:not(#_):not(#__) { background: radial-gradient(120% 90% at 72% 8%, rgb(23, 37, 61) 0%, rgb(11, 20, 34) 58%, rgb(7, 13, 24) 100%) !important; }
+html.et-plight #aurora:not(#_) { z-index: -1 !important; opacity: 0.5; }
+html.et-plight main:not(#_), html.et-plight body > section:not(#_) { background: linear-gradient(rgba(251, 249, 243, 0.4) 0%, rgba(243, 241, 234, 0.48) 100%) !important; }
+html.et-plight main .card:not(#_), html.et-plight main [class*="card"]:not(#_), html.et-plight main [class*="panel"]:not(#_), html.et-plight main article:not(#_), html.et-plight body > section .card:not(#_), html.et-plight body > section [class*="card"]:not(#_) { -webkit-backdrop-filter: blur(26px) saturate(185%);backdrop-filter: blur(26px) saturate(185%); background: linear-gradient(160deg, rgba(255, 255, 255, 0.58), rgba(255, 255, 255, 0.32)) !important; border: 1px solid rgba(255, 255, 255, 0.85) !important; box-shadow: rgba(26, 35, 48, 0.32) 0px 24px 48px -28px, rgba(255, 255, 255, 0.95) 0px 1px 0px inset !important; }
+html.et-plight main .note:not(#_):not(#__), html.et-plight body > section .note:not(#_):not(#__) { -webkit-backdrop-filter: blur(14px) saturate(160%);backdrop-filter: blur(14px) saturate(160%); color: rgb(58, 70, 87) !important; background: rgba(255, 255, 255, 0.52) !important; border-color: rgba(26, 35, 48, 0.22) !important; }
+html.et-plight main .note b:not(#_), html.et-plight body > section .note b:not(#_) { color: rgb(11, 20, 34) !important; }
+html.et-plight main .note a:not(#_), html.et-plight body > section .note a:not(#_) { color: rgb(14, 65, 114) !important; }
+html.et-jlight .jtop:not(#_), html.et-plight .jtop:not(#_) { background: linear-gradient(rgba(8, 13, 22, 0.84), rgba(8, 13, 22, 0.7)) !important; }
+
+/* ======================================================================
+   ECLAIRCISSEMENT (2026-08) : pied de page et barre de navigation en clair.
+   Remplace le pied sombre #0B1422 et la barre rgba(9,14,23,.5) du mode clair.
+   Portee stricte : html.et-plight / html.et-jlight — le theme sombre est intact.
+   Specificite : 5 negations d'ID pour passer devant les reparations AA
+   anterieures (qui montent a 3). Ne pas reduire.
+   ====================================================================== */
+/* ============================================================
+   ECL1 — Eclaircissement : pied de page et barre de navigation
+   Portee stricte : html.et-plight / html.et-jlight uniquement.
+   Le theme sombre n'est pas touche.
+   Specificite : 5 negations d'ID pour battre
+   html.et-plight footer .wrap>a:not(#_):not(#__):not(#___)
+   ============================================================ */
+
+/* ---------- 1. PIED DE PAGE : fond clair ---------- */
+html.et-plight footer:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-jlight footer:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-jlight .jfoot:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
+  background:linear-gradient(180deg,#F7F3EC 0%,#EFE9DE 100%)!important;
+  background-color:#F3EEE5!important;
+  color:#2A3648!important;
+  border-top:1px solid rgba(26,35,48,.10)!important;
+  text-shadow:none!important}
+
+/* le filet decoratif du haut, reaccorde sur fond clair */
+html.et-plight footer:not(#e1):not(#e2):not(#e3):not(#e4)::before,
+html.et-jlight footer:not(#e1):not(#e2):not(#e3):not(#e4)::before{
+  background:linear-gradient(90deg,transparent,rgba(184,138,42,.95) 16%,rgba(21,95,168,.75) 50%,rgba(33,138,44,.7) 84%,transparent)!important;
+  opacity:1!important}
+
+/* ---------- 2. PIED DE PAGE : encre ---------- */
+html.et-plight footer *:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-jlight footer *:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-jlight .jfoot *:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
+  color:#2A3648!important;text-shadow:none!important}
+
+html.et-plight footer p:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-plight footer small:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-plight footer .foot-desc:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-jlight footer p:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-jlight footer .foot-desc:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
+  color:#4A5668!important}
+
+html.et-plight footer h3:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-jlight footer h3:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-plight footer .foot-col h3:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-jlight footer .foot-col h3:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-plight footer .foot-vals-k:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-plight footer .foot-social-k:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-jlight footer .foot-vals-k:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-jlight footer .foot-social-k:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
+  color:#6B500F!important}
+
+html.et-plight footer b:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-plight footer strong:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-jlight footer b:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-jlight footer strong:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
+  color:#10161F!important}
+
+/* ---------- 3. PIED DE PAGE : liens ---------- */
+html.et-plight footer a:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-jlight footer a:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-jlight .jfoot a:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-plight footer .wrap>a:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-plight footer .foot-col a:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-plight footer .foot-legal a:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-jlight footer .foot-legal a:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
+  color:#0E4172!important;text-decoration:none!important}
+
+html.et-plight footer a:hover:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-plight footer .foot-col a:not(.foot-pole):hover:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-plight footer .foot-legal a:hover:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-jlight footer a:hover:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
+  color:#6B500F!important;text-decoration:underline!important;text-underline-offset:3px}
+
+/* pastilles des poles */
+html.et-plight footer a.foot-pole:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-jlight footer a.foot-pole:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
+  color:#2A3648!important;
+  background:rgba(255,255,255,.62)!important;
+  border:1px solid rgba(26,35,48,.16)!important;
+  box-shadow:0 1px 2px rgba(26,35,48,.05)!important}
+html.et-plight footer a.foot-pole:hover:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
+  color:#6B500F!important;
+  background:rgba(255,255,255,.9)!important;
+  border-color:rgba(138,98,16,.42)!important}
+
+/* jetons de valeurs */
+html.et-plight footer .foot-vals span:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-jlight footer .foot-vals span:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
+  color:#3A4657!important;
+  background:rgba(255,255,255,.58)!important;
+  border-color:rgba(26,35,48,.16)!important}
+
+/* reseaux sociaux */
+html.et-plight footer .foot-social a:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-jlight footer .foot-social a:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
+  color:#3A4657!important;
+  background:rgba(255,255,255,.62)!important;
+  border:1px solid rgba(26,35,48,.16)!important}
+html.et-plight footer .foot-social a:hover:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
+  color:#6B500F!important;
+  background:rgba(184,138,42,.14)!important;
+  border-color:rgba(138,98,16,.4)!important;
+  box-shadow:0 6px 18px -8px rgba(138,98,16,.5)!important}
+
+/* barre legale */
+html.et-plight footer .foot-legal:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-jlight footer .foot-legal:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
+  border-top:1px solid rgba(26,35,48,.14)!important}
+html.et-plight footer .foot-legal:not(#e1):not(#e2):not(#e3):not(#e4) span:not(#e5),
+html.et-jlight footer .foot-legal:not(#e1):not(#e2):not(#e3):not(#e4) span:not(#e5){
+  color:#4A5668!important}
+
+/* marque du pied : la pastille garde sa tuile sombre, le logo reste lisible */
+html.et-plight footer .brand-mk:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-jlight footer .brand-mk:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
+  background:linear-gradient(145deg,#16294A,#0B1422)!important;
+  border:1px solid rgba(138,98,16,.38)!important;
+  box-shadow:0 4px 16px rgba(26,35,48,.22),inset 0 1px 0 rgba(255,255,255,.08)!important}
+html.et-plight footer .brand-tx .s:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-jlight footer .brand-tx .s:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
+  background:linear-gradient(110deg,#12558F,#7A5C14)!important;
+  -webkit-background-clip:text!important;background-clip:text!important;
+  -webkit-text-fill-color:transparent!important}
+html.et-plight footer .brand-tx small:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-jlight footer .brand-tx small:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
+  color:#5C6879!important}
+html.et-plight footer .logo-img:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-jlight footer .logo-img:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
+  filter:none!important}
+
+/* ---------- 4. BARRE DE NAVIGATION : verre clair ---------- */
+html.et-plight .nav:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-jlight .nav:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
+  background:linear-gradient(180deg,rgba(250,247,241,.955),rgba(246,242,234,.925))!important;
+  background-color:rgba(250,247,241,.94)!important;
+  -webkit-backdrop-filter:blur(16px) saturate(150%)!important;
+  backdrop-filter:blur(16px) saturate(150%)!important;
+  border-bottom:1px solid rgba(26,35,48,.10)!important;
+  color:#2A3648!important}
+
+html.et-plight .nav.scrolled:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-plight .nav.nx.scrolled:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-jlight .nav.scrolled:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
+  background:rgba(250,247,241,.94)!important;
+  background-color:rgba(250,247,241,.94)!important;
+  -webkit-backdrop-filter:blur(22px) saturate(165%)!important;
+  backdrop-filter:blur(22px) saturate(165%)!important;
+  box-shadow:0 10px 34px rgba(26,35,48,.13)!important}
+
+html.et-plight .nav.scrolled:not(#e1):not(#e2):not(#e3):not(#e4)::after,
+html.et-jlight .nav.scrolled:not(#e1):not(#e2):not(#e3):not(#e4)::after{
+  background:linear-gradient(90deg,transparent,rgba(138,98,16,.55),rgba(21,95,168,.5),transparent)!important}
+
+/* bandeau utilitaire du haut */
+html.et-plight .nx-util:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-jlight .nx-util:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
+  background:rgba(243,238,229,.58)!important;-webkit-backdrop-filter:blur(14px) saturate(120%)!important;backdrop-filter:blur(14px) saturate(120%)!important;
+  border-bottom:1px solid rgba(26,35,48,.10)!important}
+html.et-plight .nx-util-in>a:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-jlight .nx-util-in>a:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
+  color:#4A5668!important}
+html.et-plight .nx-util-in>a:hover:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
+  color:#6B500F!important}
+html.et-plight .nx-util-in>a[aria-current]:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
+  color:#6B500F!important;font-weight:600}
+html.et-plight .nx-util-in .nx-lang:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-plight .nx-util-in .nx-langx:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-jlight .nx-util-in .nx-lang:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
+  color:#2A3648!important;border-color:rgba(26,35,48,.22)!important}
+html.et-plight .nx-util-in .nx-lang b:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
+  color:#77530C!important}
+html.et-plight .nx-util-in .nx-lang:hover:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
+  border-color:rgba(138,98,16,.5)!important;color:#6B500F!important}
+html.et-plight .nx-util-in .nx-invest:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-jlight .nx-util-in .nx-invest:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
+  color:#77530C!important;border-color:rgba(138,98,16,.45)!important}
+html.et-plight .nx-util-in .nx-invest:hover:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
+  background:rgba(184,138,42,.13)!important;color:#6B500F!important}
+
+/* marque */
+html.et-plight .nav .brand-mk:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-jlight .nav .brand-mk:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
+  background:linear-gradient(145deg,#16294A,#0B1422)!important;
+  border:1px solid rgba(138,98,16,.38)!important;
+  box-shadow:0 4px 16px rgba(26,35,48,.20),inset 0 1px 0 rgba(255,255,255,.08)!important}
+/* « Ener » est un noeud de texte nu dans .brand-tx : il heritait de --cream
+   (quasi blanc) et devenait invisible sur la barre claire. */
+html.et-plight .nav .brand-tx:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-jlight .nav .brand-tx:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
+  color:#10161F!important;text-shadow:none!important}
+html.et-plight .nav .brand-tx .s:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-jlight .nav .brand-tx .s:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
+  background:linear-gradient(110deg,#12558F,#7A5C14)!important;
+  -webkit-background-clip:text!important;background-clip:text!important;
+  -webkit-text-fill-color:transparent!important}
+html.et-plight .nav .brand-tx small:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-jlight .nav .brand-tx small:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
+  color:#4A5668!important}
+html.et-plight .nav .logo-img:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
+  filter:none!important}
+
+/* declencheurs de menu */
+html.et-plight .nav-trigger:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-plight #nav .nav-links>.nav-item>.nav-trigger:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-jlight .nav-trigger:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
+  color:#2A3648!important;
+  background:linear-gradient(180deg,rgba(255,255,255,.72),rgba(255,255,255,.34))!important;
+  border:1px solid rgba(26,35,48,.13)!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.7)!important}
+html.et-plight .nav-trigger:hover:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-plight #nav .nav-links>.nav-item>.nav-trigger:hover:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-plight #nav .nav-links>.nav-item>.nav-trigger[aria-expanded="true"]:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-plight .nav-trigger[aria-expanded="true"]:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
+  color:#10161F!important;
+  background:linear-gradient(180deg,rgba(255,255,255,.95),rgba(255,255,255,.62))!important;
+  border-color:rgba(138,98,16,.45)!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.9),0 0 22px -8px rgba(138,98,16,.4)!important}
+html.et-plight .nav-trigger.is-active:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
+  color:#10161F!important;
+  background:linear-gradient(180deg,rgba(184,138,42,.20),rgba(184,138,42,.08))!important;
+  box-shadow:inset 0 0 0 1px rgba(138,98,16,.38)!important}
+
+/* bouton recherche et bouton menu */
+html.et-plight .nav-search:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-plight .nav-cta .nav-search:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-plight .nx .nav-search:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-plight .nav-tog:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-jlight .nav-search:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-jlight .nav-tog:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
+  color:#2A3648!important;
+  background:linear-gradient(160deg,rgba(255,255,255,.78),rgba(255,255,255,.4))!important;
+  border:1px solid rgba(26,35,48,.16)!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.75)!important}
+html.et-plight .nav-search:hover:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-plight .nav-cta .nav-search:hover:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-plight .nav-tog:hover:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
+  color:#6B500F!important;
+  background:linear-gradient(160deg,rgba(184,138,42,.16),rgba(255,255,255,.5))!important;
+  border-color:rgba(138,98,16,.5)!important}
+
+/* ---------- 5. MEGA-MENUS ---------- */
+/* le fond du panneau n'existe qu'au-dessus de 1240px : sous ce seuil le
+   mega-menu est deplie a plat dans le tiroir et doit rester transparent */
+@media(min-width:1241px){
+html.et-plight .nx-mega:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-plight .nx .nx-mega:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-jlight .nx-mega:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
+  background:linear-gradient(180deg,rgba(255,255,255,.98),rgba(250,247,241,.99))!important;
+  -webkit-backdrop-filter:blur(28px) saturate(170%)!important;
+  backdrop-filter:blur(28px) saturate(170%)!important;
+  border:1px solid rgba(26,35,48,.12)!important;
+  box-shadow:0 44px 90px -34px rgba(26,35,48,.38)!important;
+  color:#2A3648!important}
+}
+html.et-plight .nx .nx-mega:not(#e1):not(#e2):not(#e3):not(#e4)::before{
+  background:linear-gradient(90deg,transparent,rgba(138,98,16,.7),rgba(138,98,16,.28),transparent)!important}
+html.et-plight .nx-col .nxh:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-plight .nx .nx-col .nxh:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
+  color:#6B500F!important;border-bottom-color:rgba(138,98,16,.25)!important}
+html.et-plight .nx-col a:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-plight .nx .nx-col a:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
+  color:#2A3648!important}
+html.et-plight .nx-col a strong:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){color:#10161F!important}
+html.et-plight .nx-col a em:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){color:#5C6879!important}
+html.et-plight .nx-col a:hover:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-plight .nx .nx-col a:hover:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
+  background:rgba(21,95,168,.09)!important}
+html.et-plight .nx .nx-col a:hover strong:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){color:#6B500F!important}
+html.et-plight .nx .nx-col a:not(#e1):not(#e2):not(#e3):not(#e4)::after{color:#8A6A1E!important}
+html.et-plight .nx-col a[aria-current="page"]:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
+  background:linear-gradient(90deg,rgba(184,138,42,.20),transparent 80%)!important;
+  box-shadow:inset 2px 0 0 #8A6A1E!important}
+html.et-plight .nx-col a[aria-current="page"] strong:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
+  color:#6B500F!important}
+
+/* carte mise en avant du mega-menu */
+html.et-plight .nx-feat:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-plight .nx .nx-feat:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
+  color:#2A3648!important;
+  border:1px solid rgba(138,98,16,.28)!important;
+  background-image:linear-gradient(165deg,rgba(21,95,168,.12),rgba(255,255,255,.94)),radial-gradient(120% 90% at 100% 0%,rgba(184,138,42,.16),transparent 55%)!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.9)!important}
+html.et-plight .nx-feat .tag:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-plight .nx .nx-feat .tag:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-plight .nx-feat .arr:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-plight .nx .nx-feat .arr:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
+  color:#6B500F!important}
+html.et-plight .nx-feat em:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){color:#4A5668!important}
+html.et-plight .nx-feat strong:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){color:#10161F!important}
+
+/* ---------- 6. TIROIR MOBILE (sous 1241px seulement) ---------- */
+@media(max-width:1240px){
+html.et-plight .nav-links:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-plight #navLinks.open:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-plight .nav-links.open:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-plight .nx .nav-links:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-plight #nav .nav-links:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-jlight .nav-links:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
+  /* Panneau modal : fond plein. A .985 le titre blanc du hero transparaissait
+     en filigrane derriere les libelles du tiroir. */
+  background:linear-gradient(180deg,#FAF7F1,#F3EFE7)!important;
+  -webkit-backdrop-filter:blur(24px) saturate(155%)!important;
+  backdrop-filter:blur(24px) saturate(155%)!important;
+  box-shadow:0 34px 70px -22px rgba(26,35,48,.28)!important;
+  border-bottom-color:rgba(26,35,48,.12)!important}
+html.et-plight .nx .nav-item:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
+  border-bottom:1px solid rgba(26,35,48,.10)!important}
+html.et-plight .nav-links a.active:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){color:#10161F!important}
+html.et-plight .nx-util-m a:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){color:#4A5668!important}
+html.et-plight .nx-util-m a.cta:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
+  background:linear-gradient(180deg,#D8A63F,#C08E28)!important;color:#22170A!important;
+  border:1px solid rgba(94,68,10,.42)!important}
+}
+
+/* ---------- 7. BARRE DE NAVIGATION BASSE (mobile, #nezBar) ---------- */
+/* Derniere bande sombre de la navigation : 60px fixes en bas de chaque page
+   mobile, rgba(8,14,26,.94). Meme traitement verre clair que la barre haute. */
+html.et-plight #nezBar:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-jlight #nezBar:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
+  background:linear-gradient(180deg,rgba(250,247,241,.955),rgba(245,241,234,.975))!important;
+  background-color:rgba(250,247,241,.96)!important;
+  -webkit-backdrop-filter:blur(16px) saturate(150%)!important;
+  backdrop-filter:blur(16px) saturate(150%)!important;
+  border-top:1px solid rgba(26,35,48,.12)!important;
+  box-shadow:0 -8px 26px rgba(26,35,48,.10)!important;
+  color:#2A3648!important}
+html.et-plight #nezBar a:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-plight #nezBar button:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-jlight #nezBar a:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
+  color:#3A4657!important;text-shadow:none!important}
+html.et-plight #nezBar a[aria-current]:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-plight #nezBar a.on:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-plight #nezBar a.active:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
+  color:#77530C!important}
+html.et-plight #nezBar a:active:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
+  background:rgba(184,138,42,.12)!important}
+
+
+/* --- Tiroirs des cartes maillons (accueil) : bande sombre -> verre clair --- */
+html.et-plight main .hubdrawer:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
+ background:rgba(255,255,255,.66)!important;
+ border-top:1px solid rgba(26,35,48,.14)!important;
+ box-shadow:0 10px 30px -18px rgba(26,35,48,.35)!important}
+html.et-plight main .hubdrawer a:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){color:#155FA8!important}
+html.et-plight main .hubdrawer a:hover:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){background:rgba(26,35,48,.055)!important;color:#0E4172!important}
+html.et-plight main .hubdrawer .hd-h:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){color:#5C6879!important}
+/* ======================================================================
+   MOBILE TACTILE (2026-08) : cibles tactiles portees a 44x44 CSS px sur
+   pointeur grossier (WCAG 2.5.5 AAA, 2.5.8 AA).
+
+   Complete — et ne remplace pas — la couche iOS decrite au MAINTENANCE 19,
+   qui pose des pastilles ::after de 44x44 centrees sur les petits controles.
+   Le releve au toucher (elementFromPoint, pas de 1 px, sonde tap2.js) a
+   montre que ces pastilles se CHEVAUCHENT quand les cibles sont trop
+   rapprochees : dans la zone commune c'est le frere suivant qui gagne le
+   test de toucher, si bien que la zone reellement utile retombe a 38-42 px.
+   On agrandit donc ici la boite reelle et on ecarte les voisines, plutot
+   que d'empiler une pastille de plus.
+
+   Portee stricte : @media(pointer:coarse) — aucun effet sur le bureau.
+   Specificite : :not(#_):not(#__) comme la couche iOS, afin de rester au
+   meme niveau qu'elle et au-dessus des styles <style> en ligne des pages.
+   ====================================================================== */
+
+@media(pointer:coarse){
+
+/* --- pied de page : reseaux sociaux -------------------------------------
+   38x38 dessines + pastille 44 centree => 3 px de debordement de chaque
+   cote dans un ecart de 4 px : les pastilles voisines se recouvraient.
+   On passe la boite elle-meme a 44x44 et l'ecart a 12 px.               */
+.foot-social:not(#_):not(#__),
+footer .foot-social:not(#_):not(#__){gap:12px!important}
+
+.foot-social a:not(#_):not(#__),
+footer .foot-social a:not(#_):not(#__){
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  width:44px!important;height:44px!important;
+  min-width:44px!important;min-height:44px!important;
+  padding:0!important;margin:0!important}
+
+/* --- pied de page : liens legaux (FAQ, Contact, Cookies...) -------------
+   texte de .8rem sur une ligne : 22 px de haut utiles. Marges negatives
+   supprimees pour que deux rangees enroulees ne se recouvrent plus.     */
+.foot-legal-links:not(#_):not(#__){
+  gap:6px 18px!important;align-items:center!important}
+
+.foot-legal-links a:not(#_):not(#__){
+  display:inline-block!important;
+  padding:11px 6px!important;margin:0!important;
+  line-height:1.2!important}
+
+/* --- plan du site : la page dont tout l'objet est de taper des liens ---
+   26 px de haut, 6 a 9 px d'ecart. On monte a 44 et on resserre la
+   marge de <li> pour que la hauteur totale de colonne bouge peu.        */
+.sm-col li:not(#_):not(#__){margin:0 0 2px!important}
+
+.sm-col a:not(#_):not(#__){
+  padding:9px 0!important;min-height:44px!important}
+
+/* --- en-tetes autonomes : « <- Retour au site » ------------------------ */
+.hd .back:not(#_):not(#__),
+a.back:not(#_):not(#__){
+  display:inline-block!important;
+  padding:11px 6px!important;margin:-11px -6px!important}
+
+/* --- glossaire : filtres par theme -------------------------------------
+   29 px de haut, .7rem, ecart 7 px. Egalement un gain de lisibilite :
+   .78rem au lieu de .7rem, cohérent avec les pastilles .chip de /boutique. */
+.cats:not(#_):not(#__){gap:9px!important}
+
+.cats button:not(#_):not(#__){
+  min-height:44px!important;
+  padding:10px 15px!important;
+  font-size:.78rem!important}
+
+/* --- carte du reseau aval : cercles de captage des hubs -----------------
+   propriete geometrique SVG (r) pilotee en CSS ; ignoree sans dommage par
+   les moteurs qui ne la connaissent pas. 19 -> 22 unites = 44 px de
+   diametre pour les hubs isoles (Faya, Fada, Bardai, Abeche, Mao).      */
+.avnet-hit:not(#_):not(#__){r:22px}
+
+/* --- accueil : l'affordance des cartes retournables doit etre visible ---
+   .flip .flip-hint est a opacity:.55 et ne passait a 1 que sur :hover.   */
+.flip .flip-hint:not(#_):not(#__){opacity:1!important}
+
+}
+
+/* --- accueil : cartes retournables au TOUCHER --------------------------
+   Le script en ligne d'index.html bascule la classe « flipped » au clic,
+   mais AUCUNE regle CSS du site ne reagissait a cette classe : seul
+   « .flip:hover .flip-in » retournait la carte. Sur un ecran tactile, ou
+   :hover n'existe pas (ou reste colle apres un appui), la face arriere —
+   son intitule, son texte et son lien .flip-cta — etait donc totalement
+   inatteignable. On rend la classe operante, et sur pointeur sans survol
+   on neutralise :hover pour que l'etat soit pilote par le seul appui.
+   ====================================================================== */
+.flip.flipped:not(#_):not(#__) .flip-in{transform:rotateY(180deg)!important}
+
+@media(hover:none){
+  .flip:not(.flipped):not(#_):not(#__) .flip-in{transform:none!important}
+}
+
+/* ============================================================
+   TYPO MOBILE (2026-08)
+   Objectif : rapprocher le corps de texte mobile des standards
+   des majors (16px / 1.6) sans toucher aux micro-typographies
+   (kickers, badges, pastilles) ni aux blocs deja >= 15px.
+
+   Methode : la couche ne vise QUE des conteneurs dont l'audit
+   (/root/work/ty.js -> ty.json) a montre qu'ils ne contiennent
+   AUCUN texte de contenu >= 15px. Un plancher pose la ne peut
+   donc rien retrecir. Les tailles declarees < 12px (kick, fs,
+   mentions legales) sont volontairement laissees intactes.
+
+   Paliers : 12.0-12.9px -> 14.2 | 13.0-13.9px -> 14.8 | >= 14.0px -> 15.2
+   Interligne porte a 1.6 minimum dans les memes blocs.
+   Portee : @media (max-width:640px) uniquement.
+   Voir MAINTENANCE.md section 24.
+   ============================================================ */
+@media (max-width:640px){
+a.cp:not(#_):not(#__) span,
+a.isv-l:not(#_):not(#__) span,
+a.prof:not(#_):not(#__) p,
+details.cm-more:not(#_):not(#__) li,
+div.atlas-grid:not(#_):not(#__) p,
+div.atlas-timeline:not(#_):not(#__) p,
+div.bit-grid:not(#_):not(#__) p,
+div.bx263:not(#_):not(#__) p,
+div.bx291:not(#_):not(#__) span,
+div.bx325:not(#_):not(#__) p,
+div.bx339:not(#_):not(#__) p,
+div.bx344:not(#_):not(#__) p,
+div.bx359:not(#_):not(#__) p,
+div.bx365:not(#_):not(#__) p,
+div.bx374:not(#_):not(#__) p,
+div.bx410:not(#_):not(#__) p,
+div.bx416:not(#_):not(#__) div,
+div.bx482:not(#_):not(#__) p,
+div.bx95:not(#_):not(#__) p,
+div.carbon-grid:not(#_):not(#__) div,
+div.card-m:not(#_):not(#__) p,
+div.card:not(#_):not(#__) div,
+div.ce-card:not(#_):not(#__) span,
+div.comm-grid:not(#_):not(#__) p,
+div.ct-grid:not(#_):not(#__) p,
+div.eor-grid:not(#_):not(#__) p,
+div.esg-card:not(#_):not(#__) div,
+div.esg3-grid:not(#_):not(#__) li,
+div.expand-grid:not(#_):not(#__) li,
+div.fam6:not(#_):not(#__) span,
+div.fil-grid:not(#_):not(#__) p,
+div.glow-card:not(#_):not(#__) li,
+div.gt-grid:not(#_):not(#__) p,
+div.hub-grid:not(#_):not(#__) p,
+div.hxf-face:not(#_):not(#__) p,
+div.imx-fields:not(#_):not(#__) span,
+div.kpi:not(#_):not(#__) div,
+div.lc-grid:not(#_):not(#__) p,
+div.nextgen-grid:not(#_):not(#__) p,
+div.ofs4-grid:not(#_):not(#__) p,
+div.pc:not(#_):not(#__) p,
+div.ppt-card:not(#_):not(#__) span,
+div.prod-b2b:not(#_):not(#__) p,
+div.qx3_54:not(#_):not(#__) p,
+div.reg-grid:not(#_):not(#__) p,
+div.rh-card:not(#_):not(#__) div,
+div.scard:not(#_):not(#__) span,
+div.sect-row:not(#_):not(#__) div,
+div.stp:not(#_):not(#__) p,
+div.tier1-grid:not(#_):not(#__) p,
+div.tri-det:not(#_):not(#__) li,
+div.tri-step:not(#_):not(#__) span,
+div.tt-grid:not(#_):not(#__) div,
+div.val-levers:not(#_):not(#__) p,
+div.vc-grid:not(#_):not(#__) p,
+div.viz-grid:not(#_):not(#__) p,
+div.voie-card:not(#_):not(#__) div,
+div.welltype-grid:not(#_):not(#__) p,
+li.bx90:not(#_):not(#__) span,
+ol.acq-steps:not(#_):not(#__) span,
+ol.atl-refs:not(#_):not(#__) li,
+table.atl-tbl:not(#_):not(#__) td,
+ul.acq-dlist:not(#_):not(#__) li,
+ul.acq-list:not(#_):not(#__) li,
+ul.bx181:not(#_):not(#__) li,
+ul.bx280:not(#_):not(#__) li,
+ul.bx292:not(#_):not(#__) li,
+ul.bx36:not(#_):not(#__) li,
+ul.bx49:not(#_):not(#__) li,
+ul.bx531:not(#_):not(#__) li,
+ul.ce-li:not(#_):not(#__) li{font-size:14.8px!important;line-height:1.6!important}
+a.fid-card:not(#_):not(#__) span,
+a.ttg-t:not(#_):not(#__) span,
+button.dist-step:not(#_):not(#__) p,
+div.bx110:not(#_):not(#__) span,
+div.bx121:not(#_):not(#__) span,
+div.bx139:not(#_):not(#__) p,
+div.bx152:not(#_):not(#__) span,
+div.bx153:not(#_):not(#__) span,
+div.bx156:not(#_):not(#__) p,
+div.bx15:not(#_):not(#__) span,
+div.bx203:not(#_):not(#__) p,
+div.bx226:not(#_):not(#__) span,
+div.bx276:not(#_):not(#__) p,
+div.bx365:not(#_):not(#__) div,
+div.bx376:not(#_):not(#__) div,
+div.bx388:not(#_):not(#__) p,
+div.bx588:not(#_):not(#__) span,
+div.bx72:not(#_):not(#__) p,
+div.card-m:not(#_):not(#__) div,
+div.fam-card:not(#_):not(#__) p,
+div.ia-grid:not(#_):not(#__) p,
+div.nextgen-grid:not(#_):not(#__) li,
+div.pr:not(#_):not(#__) span,
+div.qx1_18:not(#_):not(#__) p,
+div.qx2_19:not(#_):not(#__) p,
+div.qx2_31:not(#_):not(#__) p,
+div.qx2_53:not(#_):not(#__) div,
+div.qx2_56:not(#_):not(#__) p,
+div.rd-axes:not(#_):not(#__) p,
+div.road-grid:not(#_):not(#__) p,
+div.sfam-i:not(#_):not(#__) span,
+div.tech-future-grid:not(#_):not(#__) p,
+span.fx2-b:not(#_):not(#__) p,
+span.fx2-f:not(#_):not(#__) p,
+span.pmore-body:not(#_):not(#__) span{font-size:14.2px!important;line-height:1.6!important}
+a.adx:not(#_):not(#__) p,
+a.pubc:not(#_):not(#__) p,
+div.bx389:not(#_):not(#__) p,
+div.epw-c:not(#_):not(#__) p,
+div.eth-c:not(#_):not(#__) p,
+div.flip-f:not(#_):not(#__) p,
+div.foot-brand:not(#_):not(#__) p,
+div.glow-card:not(#_):not(#__) p,
+div.glow-card:not(#_):not(#__) span,
+div.gov-c:not(#_):not(#__) p,
+div.hp:not(#_):not(#__) li,
+div.mkt-brand:not(#_):not(#__) p,
+div.pj:not(#_):not(#__) p,
+div.term:not(#_):not(#__) dd,
+div.tri-biz:not(#_):not(#__) p,
+div.tri-c:not(#_):not(#__) p,
+li.bx194:not(#_):not(#__) span,
+table.esg-t:not(#_):not(#__) td{font-size:15.2px!important;line-height:1.6!important}
+div.hp:not(#_):not(#__) p{font-size:14.8px!important;line-height:1.7!important}
+div.acq-card:not(#_):not(#__) p{font-size:15.2px!important;line-height:1.64!important}
+div.expand-grid:not(#_):not(#__) p{font-size:15.2px!important;line-height:1.65!important}
+}
+/* ============================================================
+   TUILES UNIFIEES (2026-08)
+   Langage de carte unique pour tout le site.
+   1. Echelle de rayon a 3 crans : 14 / 18 / 22 (9 valeurs mesurees avant).
+   2. Elevation douce et coherente pour les familles restees plates.
+   3. Survol : levee de 2px + ombre renforcee, sous prefers-reduced-motion.
+   4. Filets d'accent superieurs ramenes de 3px a 2px.
+   5. .mseg : la pastille de categorie redevient une puce, plus une barre grise.
+   Les selecteurs sont NOMMES : jamais de ciblage par geometrie mesuree
+   (les parties internes .hpcard-body, .hpcard-l, .sfam-i ressortent
+   comme des fausses tuiles dans les sondes).
+   ============================================================ */
+
+/* ---- 1. RAYONS : cran 22 (cartes editoriales / vitrines) ---- */
+main .card:not(#_):not(#__),
+main .card-m:not(#_):not(#__),
+main .prof:not(#_):not(#__),
+main .hpcard:not(#_):not(#__),
+main .hpcard-kpis:not(#_):not(#__),
+main .hxi-card:not(#_):not(#__),
+main .mfo-lever:not(#_):not(#__),
+main .hncard:not(#_):not(#__),
+main .sc-card:not(#_):not(#__),
+main .glow-card:not(#_):not(#__),
+main .pubc:not(#_):not(#__),
+main .divc:not(#_):not(#__),
+main .esg-card:not(#_):not(#__),
+main .pj:not(#_):not(#__),
+main article.cp:not(#_):not(#__){border-radius:22px!important}
+
+/* ---- 1. RAYONS : cran 18 (tuiles standard) ---- */
+main .ttg-t:not(#_):not(#__),
+main .tri-c:not(#_):not(#__),
+main .tri-step:not(#_):not(#__),
+main .tri-kpi:not(#_):not(#__),
+main .kpi:not(#_):not(#__),
+main a.cp:not(#_):not(#__),
+main .rh-card:not(#_):not(#__),
+main .fam-card:not(#_):not(#__),
+main .acq-card:not(#_):not(#__),
+main .ce-card:not(#_):not(#__),
+main .ppt-card:not(#_):not(#__),
+main .it-card:not(#_):not(#__),
+main .vb-card:not(#_):not(#__),
+main .val:not(#_):not(#__),
+main .sfam:not(#_):not(#__),
+main .dist-btn:not(#_):not(#__),
+main .ngs-p:not(#_):not(#__),
+main .doc:not(#_):not(#__),
+main .gov-c:not(#_):not(#__),
+main .ct-card:not(#_):not(#__),
+main .ets-bar:not(#_):not(#__){border-radius:18px!important}
+
+/* ---- 1. RAYONS : cran 14 (puces compactes / chiffres) ---- */
+main .orgc:not(#_):not(#__),
+main .ckpi:not(#_):not(#__),
+main .mkt-brand:not(#_):not(#__),
+main .stp:not(#_):not(#__),
+main .ppl-tile:not(#_):not(#__),
+main .ngs-t:not(#_):not(#__){border-radius:14px!important}
+
+/* ---- 4. FILETS D'ACCENT : 3px -> 2px ----
+   Uniquement les classes dont la mesure donne 3px partout ;
+   .prof est exclue (1px sur /solutions, 3px sur /clients). */
+main .kpi:not(#_):not(#__),
+main a.cp:not(#_):not(#__),
+main .orgc:not(#_):not(#__),
+main .ngs-p:not(#_):not(#__){border-top-width:2px!important}
+
+/* ---- 2. ELEVATION : familles restees plates, theme clair ---- */
+html.et-plight main .tri-c:not(#_):not(#__),
+html.et-plight main .tri-step:not(#_):not(#__),
+html.et-plight main .tri-kpi:not(#_):not(#__),
+html.et-plight main .kpi:not(#_):not(#__),
+html.et-plight main a.cp:not(#_):not(#__),
+html.et-plight main .pubc:not(#_):not(#__),
+html.et-plight main .gov-c:not(#_):not(#__),
+html.et-plight main .pj:not(#_):not(#__),
+html.et-plight main .orgc:not(#_):not(#__),
+html.et-plight main .doc:not(#_):not(#__),
+html.et-plight main .val:not(#_):not(#__),
+html.et-plight main .ckpi:not(#_):not(#__),
+html.et-plight main .mkt-brand:not(#_):not(#__),
+html.et-plight main .stp:not(#_):not(#__),
+html.et-plight main .sfam:not(#_):not(#__),
+html.et-plight main .dist-btn:not(#_):not(#__),
+html.et-plight main .ppl-tile:not(#_):not(#__),
+html.et-plight main .ngs-p:not(#_):not(#__),
+html.et-plight main .ngs-t:not(#_):not(#__){
+ box-shadow:0 1px 2px rgba(26,35,48,.045),0 12px 30px -22px rgba(26,35,48,.42)!important}
+
+/* ---- 2. ELEVATION : memes familles, theme sombre ---- */
+html:not(.et-plight) main .tri-c:not(#_):not(#__),
+html:not(.et-plight) main .tri-step:not(#_):not(#__),
+html:not(.et-plight) main .tri-kpi:not(#_):not(#__),
+html:not(.et-plight) main .kpi:not(#_):not(#__),
+html:not(.et-plight) main a.cp:not(#_):not(#__),
+html:not(.et-plight) main .pubc:not(#_):not(#__),
+html:not(.et-plight) main .gov-c:not(#_):not(#__),
+html:not(.et-plight) main .pj:not(#_):not(#__),
+html:not(.et-plight) main .orgc:not(#_):not(#__),
+html:not(.et-plight) main .doc:not(#_):not(#__),
+html:not(.et-plight) main .val:not(#_):not(#__),
+html:not(.et-plight) main .ckpi:not(#_):not(#__),
+html:not(.et-plight) main .mkt-brand:not(#_):not(#__),
+html:not(.et-plight) main .stp:not(#_):not(#__),
+html:not(.et-plight) main .sfam:not(#_):not(#__),
+html:not(.et-plight) main .dist-btn:not(#_):not(#__),
+html:not(.et-plight) main .ppl-tile:not(#_):not(#__),
+html:not(.et-plight) main .ngs-p:not(#_):not(#__),
+html:not(.et-plight) main .ngs-t:not(#_):not(#__){
+ box-shadow:0 1px 2px rgba(0,0,0,.22),0 16px 36px -26px rgba(0,0,0,.72)!important}
+
+/* ---- 3. SURVOL : levee coherente sur les tuiles interactives ---- */
+@media (prefers-reduced-motion:no-preference){
+ main a.ttg-t:not(#_):not(#__),
+ main a.prof:not(#_):not(#__),
+ main a.pubc:not(#_):not(#__),
+ main a.cp:not(#_):not(#__),
+ main a.doc:not(#_):not(#__),
+ main a.hncard:not(#_):not(#__),
+ main button.dist-btn:not(#_):not(#__),
+ main button.ets-bar:not(#_):not(#__),
+ main label.ct-card:not(#_):not(#__){
+  transition:transform .22s cubic-bezier(.22,.61,.36,1),box-shadow .22s ease,border-color .22s ease!important}
+ html.et-plight main a.ttg-t:hover:not(#_):not(#__),
+ html.et-plight main a.prof:hover:not(#_):not(#__),
+ html.et-plight main a.pubc:hover:not(#_):not(#__),
+ html.et-plight main a.cp:hover:not(#_):not(#__),
+ html.et-plight main a.doc:hover:not(#_):not(#__),
+ html.et-plight main a.hncard:hover:not(#_):not(#__),
+ html.et-plight main button.dist-btn:hover:not(#_):not(#__),
+ html.et-plight main button.ets-bar:hover:not(#_):not(#__),
+ html.et-plight main label.ct-card:hover:not(#_):not(#__){
+  transform:translateY(-2px)!important;
+  box-shadow:0 2px 4px rgba(26,35,48,.06),0 20px 40px -24px rgba(26,35,48,.5)!important;
+  border-color:rgba(26,35,48,.24)!important}
+ html:not(.et-plight) main a.ttg-t:hover:not(#_):not(#__),
+ html:not(.et-plight) main a.prof:hover:not(#_):not(#__),
+ html:not(.et-plight) main a.pubc:hover:not(#_):not(#__),
+ html:not(.et-plight) main a.cp:hover:not(#_):not(#__),
+ html:not(.et-plight) main a.doc:hover:not(#_):not(#__),
+ html:not(.et-plight) main a.hncard:hover:not(#_):not(#__),
+ html:not(.et-plight) main button.dist-btn:hover:not(#_):not(#__),
+ html:not(.et-plight) main button.ets-bar:hover:not(#_):not(#__),
+ html:not(.et-plight) main label.ct-card:hover:not(#_):not(#__){
+  transform:translateY(-2px)!important;
+  box-shadow:0 2px 6px rgba(0,0,0,.3),0 26px 48px -28px rgba(0,0,0,.85)!important}
+}
+/* Respect strict de la preference systeme */
+@media (prefers-reduced-motion:reduce){
+ main a.ttg-t:not(#_):not(#__),
+ main a.prof:not(#_):not(#__),
+ main a.pubc:not(#_):not(#__),
+ main a.cp:not(#_):not(#__),
+ main a.doc:not(#_):not(#__),
+ main a.hncard:not(#_):not(#__),
+ main button.dist-btn:not(#_):not(#__),
+ main button.ets-bar:not(#_):not(#__),
+ main label.ct-card:not(#_):not(#__){transition:none!important;transform:none!important}
+}
+
+/* ---- 5. .mseg : puce de categorie, non plus bandeau gris ----
+   .mseg n'a AUCUNE regle de base dans le site ; seule une surcharge
+   claire lui donnait un fond, et comme .prof est un flex colonne
+   le span s'etirait sur toute la largeur. */
+main .mseg:not(#_):not(#__){
+ display:inline-flex!important;
+ align-self:flex-start!important;
+ width:auto!important;
+ padding:3px 10px!important;
+ border-radius:999px!important;
+ font-size:12px!important;
+ line-height:1.5!important;
+ font-weight:700!important;
+ letter-spacing:.07em!important;
+ text-transform:uppercase!important;
+ background:color-mix(in srgb, var(--mc,#155FA8) 13%, transparent)!important;
+ border:1px solid color-mix(in srgb, var(--mc,#155FA8) 26%, transparent)!important}
+html.et-plight main .mseg:not(#_):not(#__):not(#___){
+ color:color-mix(in srgb, var(--mc,#155FA8) 42%, #0B1422)!important}
+html:not(.et-plight) main .mseg:not(#_):not(#__):not(#___){
+ color:color-mix(in srgb, var(--mc,#9FB4CE) 72%, #FFFFFF)!important}
+
+/* ============================================================
+   SECONDE PASSE : les familles a classe generique (.d .t .h .hp .pr .step)
+   ne peuvent PAS etre ciblees seules — un selecteur `.t` frapperait tout
+   le site. Elles sont donc ancrees sur leur conteneur de grille, releve
+   par sonde DOM (probe2.js) :
+     .hse-prac>.pr  .hse-tri>.hp  .cli-deep>.d  .offer>.aside
+     .steps>.step   .traj>.t      .hz>.h        .ec-tiers>.ec-tier
+     .ppl-sel>.ppl-f
+   ============================================================ */
+main .hse-tri .hp:not(#_):not(#__),
+main .offer .aside:not(#_):not(#__),
+main .steps .step:not(#_):not(#__),
+main .traj .t:not(#_):not(#__),
+main .hz .h:not(#_):not(#__),
+main .ppl-sel .ppl-f:not(#_):not(#__),
+main .avnet-panel:not(#_):not(#__),
+main .avnet-mapwrap:not(#_):not(#__),
+main .acq-door:not(#_):not(#__),
+main .ppte-tile:not(#_):not(#__){border-radius:18px!important}
+
+main .hse-prac .pr:not(#_):not(#__),
+main .ec-tiers .ec-tier:not(#_):not(#__){border-radius:14px!important}
+
+main .steps .step:not(#_):not(#__),
+main .traj .t:not(#_):not(#__),
+main .ec-tiers .ec-tier:not(#_):not(#__){border-top-width:2px!important}
+
+html.et-plight main .divc:not(#_):not(#__),
+html.et-plight main .prof:not(#_):not(#__),
+html.et-plight main .hse-prac .pr:not(#_):not(#__),
+html.et-plight main .hse-tri .hp:not(#_):not(#__),
+html.et-plight main .cli-deep .d:not(#_):not(#__),
+html.et-plight main .offer .aside:not(#_):not(#__),
+html.et-plight main .steps .step:not(#_):not(#__),
+html.et-plight main .traj .t:not(#_):not(#__),
+html.et-plight main .hz .h:not(#_):not(#__),
+html.et-plight main .ec-tiers .ec-tier:not(#_):not(#__),
+html.et-plight main .ppl-sel .ppl-f:not(#_):not(#__){
+ box-shadow:0 1px 2px rgba(26,35,48,.045),0 12px 30px -22px rgba(26,35,48,.42)!important}
+
+html:not(.et-plight) main .divc:not(#_):not(#__),
+html:not(.et-plight) main .prof:not(#_):not(#__),
+html:not(.et-plight) main .hse-prac .pr:not(#_):not(#__),
+html:not(.et-plight) main .hse-tri .hp:not(#_):not(#__),
+html:not(.et-plight) main .cli-deep .d:not(#_):not(#__),
+html:not(.et-plight) main .offer .aside:not(#_):not(#__),
+html:not(.et-plight) main .steps .step:not(#_):not(#__),
+html:not(.et-plight) main .traj .t:not(#_):not(#__),
+html:not(.et-plight) main .hz .h:not(#_):not(#__),
+html:not(.et-plight) main .ec-tiers .ec-tier:not(#_):not(#__),
+html:not(.et-plight) main .ppl-sel .ppl-f:not(#_):not(#__){
+ box-shadow:0 1px 2px rgba(0,0,0,.22),0 16px 36px -26px rgba(0,0,0,.72)!important}
+
+/* Ch218 : sous le seuil 1241px le panneau nx-mega restait peint en sombre par la regle non gardee -> en theme clair le tiroir montrait du texte sombre sur fond nuit. Derogation mobile claire. */
+@media(max-width:1240px){
+html.et-plight .nx-mega:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-plight .nx .nx-mega:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
+html.et-jlight .nx-mega:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
+background:rgba(250,247,241,.97)!important;
+border:1px solid rgba(26,35,48,.10)!important;
+box-shadow:0 18px 40px -24px rgba(26,35,48,.25)!important}
+}
+
+/* Ch219 : cibles tactiles des curseurs (WCAG 2.5.8 : 24px min) */
+@media(pointer:coarse){input[type=range]:not(#_),.lum-range{min-height:28px}}
+
+/* ===== Ch238 : les tuiles restees hors du verre rejoignent la famille =================
+   Constat mesure avant travaux : la famille de 80 classes du bloc tuiles-immersion (ch.141)
+   est bien vitree partout — fond transparent, lavis, flou d'arriere-plan, filet fin. Mais
+   dix classes qui sont visuellement des tuiles n'y avaient jamais ete inscrites et gardaient
+   un fond plein : cartes de comparaison, indicateurs de heros et de projets, cartes contact,
+   cartes d'application. (Les .hpcard de l'accueil ont ete ecartees a la contre-epreuve :
+   ce sont des boutons d'appel a l'action colores, pas des tuiles — voir MAINTENANCE ch.238.) On leur applique LES MEMES valeurs que
+   la famille, pas un second systeme : harmoniser, c'est rejoindre l'existant. */
+html:where([data-eh~=eh10]):not(.ehz) :is(.cmp-c,.ppj-kpi,.pgh-kpi,.fp-card,.ct-card,.dx-card,.epw-card,.app-card,.app-panel):not(#_):not(#__):not(#___):not(#____){
+  background-color:transparent!important;
+  background-image:linear-gradient(180deg,rgba(252,250,246,.56) 0%,rgba(252,250,246,.40) 100%)!important;
+  border-color:rgba(26,35,48,.12)!important;
+  box-shadow:0 1px 0 rgba(255,255,255,.55) inset,0 20px 40px -30px rgba(30,24,10,.42)!important;
+  -webkit-backdrop-filter:blur(18px) saturate(1.35)!important;backdrop-filter:blur(18px) saturate(1.35)!important}
+html:not(.et-plight):not(.et-jlight):where([data-eh~=eh10]):not(.ehz) :is(.cmp-c,.ppj-kpi,.pgh-kpi,.fp-card,.ct-card,.dx-card,.epw-card,.app-card,.app-panel):not(#_):not(#__):not(#___):not(#____){
+  background-image:linear-gradient(180deg,rgba(9,15,27,.66) 0%,rgba(9,15,27,.54) 100%)!important;
+  border-color:rgba(255,255,255,.15)!important;
+  box-shadow:0 1px 0 rgba(255,255,255,.08) inset,0 22px 46px -30px rgba(0,0,0,.6)!important}
+/* le texte secondaire de ces tuiles suit la meme regle d'eclaircissement que la famille */
+html:not(.et-plight):not(.et-jlight):where([data-eh~=eh10]):not(.ehz) :is(.cmp-c,.ppj-kpi,.pgh-kpi,.fp-card,.ct-card,.dx-card,.epw-card,.app-card,.app-panel) :is(p,li,dd,span):not(#_):not(#__):not(#___):not(#____){
+  color:#D9E2EE!important;-webkit-text-fill-color:#D9E2EE!important}
+@media print{ :is(.cmp-c,.ppj-kpi,.pgh-kpi,.fp-card,.ct-card,.dx-card,.epw-card,.app-card,.app-panel):not(#_):not(#__):not(#___):not(#____){background:#fff!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important;box-shadow:none!important;border-color:#bbb!important} }
+
+/* Ch238 : etiquettes de la carte reseau (texte SVG). En theme clair, leur encre restait
+   celle du theme sombre — blanc a 78 % sur une carte pale, 2,74:1 : les points s'affichaient,
+   pas les noms de villes. Defaut jamais vu jusqu'ici parce que le banc de mesure lisait
+   color et non fill sur le texte SVG ; l'angle mort est comble au meme chapitre. */
+html.et-plight .avnet-lab:not(#_):not(#__),html.et-jlight .avnet-lab:not(#_):not(#__){fill:#25314A!important;color:#25314A!important}
+
+
+/* Ch238 : les indicateurs du heros (.pgh-kpi) sont poses sur la photo, pas sur une section.
+   Le verre clair de la famille n'y suffit pas : blanc gras mesure a 2,7:1 sur les zones
+   claires de l'image — defaut anterieur (deja signale au ch.234) que le passage au verre
+   rendait systematique. Ils gardent le verre, mais teinte nuit dans les deux themes,
+   comme le heros lui-meme qui reste photographique en clair comme en sombre. */
+header.pghero :is(.pgh-kpi):not(#_):not(#__):not(#___):not(#____):not(#_____),
+html.et-plight header.pghero :is(.pgh-kpi):not(#_):not(#__):not(#___):not(#____):not(#_____),
+html.et-jlight header.pghero :is(.pgh-kpi):not(#_):not(#__):not(#___):not(#____):not(#_____){
+  background-color:transparent!important;
+  background-image:linear-gradient(180deg,rgba(9,15,27,.64) 0%,rgba(9,15,27,.52) 100%)!important;
+  border-color:rgba(255,255,255,.20)!important}
+
+/* ============================ Chapitre 239 ============================
+   Revue de contraste au banc exact : encre lue dans la feuille de style, sol lu au
+   pixel sur la capture, opacite de chaque pixel de glyphe mesuree par difference
+   blanc/noir. 21 810 elements passes en revue sur 160 pages et deux themes.
+   Les correctifs ci-dessous traitent les familles ou le texte tombait sous 3:1. */
+
+/* 239.1 — Bandeau de tete des carnets. Le voile valait 24 % en haut : sur une photo
+   claire (feuillage, casque orange, ciel), le retour, le selecteur de langue et la
+   marque tombaient entre 1,75 et 2,55 pour 1. Le voile est pose en ::before pour ne
+   pas se battre avec le raccourci background des pages, qui est en !important. */
+header.jtop:not(#_){isolation:isolate}
+header.jtop:not(#_)::before{content:'';position:absolute;inset:0;z-index:-1;pointer-events:none;
+  opacity:1!important;filter:none!important;
+  background:linear-gradient(180deg,rgba(6,11,20,.60) 0%,rgba(6,11,20,.54) 100%)}
+
+/* 239.2 — Rail de sections. Le libelle de la section active restait ouvert en
+   permanence, large de 340 px : mesure a 1180, 1280, 1366, 1440 et 1600 px, la
+   pastille recouvrait le texte de l'article a chaque fois. L'etat actif se lit
+   toujours a la pastille et a sa couleur ; le libelle ne s'ouvre plus qu'au survol
+   ou au clavier. */
+#secrail a.on:not(:hover):not(:focus-visible) .axl:not(#_):not(#__){max-width:0!important;opacity:0!important;margin-left:0!important}
+
+/* 239.3 — Panneaux de verre poses sur la photo du heros. Le verre laissait passer un
+   ciel clair : « Vous etes... », « Trajectoire de capital », les sous-titres de
+   l'echelle et les intitules du fil de chantiers se mesuraient entre 1,01 et 1,51.
+   Le verre est conserve ; c'est ce qui le traverse qui est assombri, plus une encre
+   claire et un halo pour affranchir ces libelles du hasard de l'image. */
+.hero .router:not(#_):not(#__),.hero aside.snap:not(#_):not(#__),.hero /* Les deux jumeaux divergeaient : le fil anglais avait un fond nuit, le francais un
+   verre blanc a 55 %. L'encre claire posee au 239.9 devenait illisible sur le francais
+   (2,59). Les deux reprennent le fond nuit de la version anglaise — parite retablie. */
+#chantiers-nav:not(#_):not(#__){
+  background-color:transparent!important;
+  background-image:linear-gradient(180deg,rgba(10,16,28,.93) 0%,rgba(10,16,28,.86) 100%)!important;
+  border-color:rgba(255,255,255,.16)!important;
+  -webkit-backdrop-filter:blur(10px) saturate(1.2) brightness(.42)!important;
+  backdrop-filter:blur(10px) saturate(1.2) brightness(.42)!important}
+.hero .router-h:not(#_):not(#__),.hero .snap-h:not(#_):not(#__),
+.hero .ladder .step i:not(#_):not(#__),.hero #chantiers-nav .cn-lbl:not(#_):not(#__){
+  color:#DCE6F4!important;-webkit-text-fill-color:#DCE6F4!important;
+  text-shadow:0 1px 2px rgba(4,8,16,.95),0 0 10px rgba(4,8,16,.8)!important}
+
+/* 239.4 — Plancher de lisibilite pour la famille de verre du ch.238. Une tuile posee
+   sur une photo heritait du contraste de l'image : encre claire sur zone claire en
+   sombre, encre foncee sur zone foncee en clair. On ne change ni la teinte ni la
+   transparence : on tonalise ce que le verre laisse passer, vers la nuit en theme
+   sombre, vers le jour en theme clair. La photo reste lisible derriere. */
+html:not(.et-plight):not(.et-jlight):where([data-eh~=eh10]):not(.ehz) :is(.cmp-c,.ppj-kpi,.pgh-kpi,.fp-card,.ct-card,.dx-card,.epw-card,.app-card,.app-panel):not(#_):not(#__):not(#___):not(#____){
+  -webkit-backdrop-filter:blur(18px) saturate(1.35) brightness(.5)!important;
+  backdrop-filter:blur(18px) saturate(1.35) brightness(.5)!important}
+html:is(.et-plight,.et-jlight):where([data-eh~=eh10]):not(.ehz) :is(.cmp-c,.ppj-kpi,.fp-card,.ct-card,.dx-card,.epw-card,.app-card,.app-panel):not(#_):not(#__):not(#___):not(#____){
+  -webkit-backdrop-filter:blur(18px) saturate(1.15) brightness(1.5)!important;
+  backdrop-filter:blur(18px) saturate(1.15) brightness(1.5)!important}
+
+/* 239.5 — Chiffres a degrade de la brochure. Le motif clip sur le texte etait pale ;
+   pose sur le fond creme du theme clair, « 250 kb/d » se mesurait a 1,00 pour 1 —
+   litteralement invisible. En theme clair les chiffres reprennent une encre pleine. */
+html:is(.et-plight,.et-jlight) .bx233:not(#_):not(#__){
+  background-image:none!important;-webkit-background-clip:border-box!important;background-clip:border-box!important;
+  color:#7A570E!important;-webkit-text-fill-color:#7A570E!important}
+
+/* 239.6 — Renforcements poses dans une bande sombre. La regle generale du theme clair
+   (b,strong,h1,h2,h3 en #10161F) frappait aussi le texte des bandeaux restes nuit :
+   « le format » se mesurait a 1,21 sur paiements-etats. */
+html:is(.et-plight,.et-jlight) .pgh-main .pgl strong:not(#_):not(#__),
+html:is(.et-plight,.et-jlight) .pgh-main .pgl b:not(#_):not(#__){
+  color:#F2C879!important;-webkit-text-fill-color:#F2C879!important}
+
+/* 239.7 — Deux encres bleues trop sombres pour le fond nuit qui les porte :
+   le numero des cartes ESG (#1B4E8C sur #0D1423) et le sur-titre de section de
+   societe.html (#5AA7F0 sur une photo de sable). */
+html:not(.et-plight):not(.et-jlight) .esg-card .v:not(#_):not(#__){color:#5AA7F0!important}
+html:not(.et-plight):not(.et-jlight) .sk:not(#_):not(#__){color:#9CC7F6!important;text-shadow:0 1px 2px rgba(4,8,16,.9),0 0 10px rgba(4,8,16,.7)!important}
+
+/* 239.8 — correction de ma propre erreur, posee quelques minutes plus tot dans ce meme
+   chapitre : la regle .sk ci-dessus etait ecrite sans condition de theme. Un bleu clair
+   pose sur le creme du theme clair : 1,27 pour 1 sur ar.html, la ou il n'y avait aucun
+   defaut avant mon passage. Elle est desormais reservee au theme sombre. Rappel utile :
+   une encre claire ne se pose jamais sans dire sur quel fond. */
+
+/* 239.9 — Fil de chantiers de projets.html. Le selecteur du 239.3 le cherchait dans le
+   heros ; il vit en realite dans .pjwrap. Intitules et liens restaient a 1,22 et 1,40. */
+/* Les deux jumeaux divergeaient : le fil anglais avait un fond nuit, le francais un
+   verre blanc a 55 %. L'encre claire posee au 239.9 devenait illisible sur le francais
+   (2,59). Les deux reprennent le fond nuit de la version anglaise — parite retablie. */
+#chantiers-nav:not(#_):not(#__){
+  background-color:transparent!important;
+  background-image:linear-gradient(180deg,rgba(10,16,28,.93) 0%,rgba(10,16,28,.86) 100%)!important;
+  border-color:rgba(255,255,255,.16)!important;
+  -webkit-backdrop-filter:blur(10px) saturate(1.2) brightness(.42)!important;
+  backdrop-filter:blur(10px) saturate(1.2) brightness(.42)!important}
+#chantiers-nav .cn-lbl:not(#_):not(#__){color:#DCE6F4!important;-webkit-text-fill-color:#DCE6F4!important;
+  text-shadow:0 1px 2px rgba(4,8,16,.95),0 0 10px rgba(4,8,16,.8)!important}
+#chantiers-nav a:not(#_):not(#__){color:#F2F6FC!important;-webkit-text-fill-color:#F2F6FC!important;
+  text-shadow:0 1px 2px rgba(4,8,16,.9)!important}
+
+/* 239.10 — Le lien du chapeau de la FAQ, or fonce sur une texture de sable : 1,10 avant
+   le renfort du voile, 1,68 apres. L'or clair du theme sombre, avec halo, le porte au-dela
+   du seuil sans changer la couleur de la marque. */
+.hero .lead a:not(#_):not(#__){color:#F0CE82!important;-webkit-text-fill-color:#F0CE82!important;
+  text-shadow:0 1px 2px rgba(4,8,16,.92),0 0 10px rgba(4,8,16,.75)!important;
+  text-decoration-color:rgba(240,206,130,.6)!important}
+
+/* 239.11 — Tuiles .gtt-c du pole GreenTech : meme verre que la famille du ch.238 mais
+   jamais inscrites dedans. En theme clair, le vert d'accent tombait a 2,31 sur la photo. */
+.gtt-c:not(#_):not(#__){
+  -webkit-backdrop-filter:blur(18px) saturate(1.2) brightness(.5)!important;
+  backdrop-filter:blur(18px) saturate(1.2) brightness(.5)!important}
+.gtt-c em:not(#_):not(#__),.gtt-c span:not(#_):not(#__),.gtt-c p:not(#_):not(#__){
+  color:#8FE9C4!important;-webkit-text-fill-color:#8FE9C4!important}
+
+/* ============================ Chapitre 241 ============================
+   Etalonnage des encres restees dans la bande 3,0-4,5 apres le ch.239. Aucune n'etait
+   invisible ; toutes passaient sous le seuil AA pour du petit texte. Les valeurs
+   ci-dessous visent 6:1 sur leur fond habituel, marge prise pour les fonds tramés. */
+
+/* 241.1 — signature de la marque dans la barre, theme clair (4,25) */
+html:is(.et-plight,.et-jlight) .nav .brand-tx small:not(#_):not(#__):not(#___),
+html:is(.et-plight,.et-jlight) .nav-in .brand-tx small:not(#_):not(#__):not(#___){color:#39424F!important}
+
+/* 241.2 — etiquette de partage (3,81) */
+html:is(.et-plight,.et-jlight) .share-k:not(#_):not(#__):not(#___){color:#454F62!important}
+
+/* 241.3 — sens de pagination des communiques et de la FAQ (3,88) */
+html:is(.et-plight,.et-jlight) .pgr .dir:not(#_):not(#__):not(#___){color:#55400C!important}
+
+/* 241.4 — note ESG et liens bleus des sections en theme sombre (3,53) */
+html:not(.et-plight):not(.et-jlight) .esg-note a:not(#_):not(#__):not(#___),
+html:not(.et-plight):not(.et-jlight) .epw a:not(#_):not(#__):not(#___){color:#9CC7F6!important}
+
+/* 241.5 — intitules des cartes ESG en theme sombre (3,82) */
+html:not(.et-plight):not(.et-jlight) .esg-card .k:not(#_):not(#__):not(#___){color:#A7B4C8!important}
+
+/* 241.6 — vert des etiquettes de norme en theme sombre (3,70) */
+html:not(.et-plight):not(.et-jlight) .tag b:not(#_):not(#__):not(#___){color:#8FE9C4!important}
+
+/* 241.7 — bleu des liens de section en theme clair (3,27 sur la boutique) */
+html:is(.et-plight,.et-jlight) body > section a:not(#_):not(#__):not(#___){color:#10406F!important}
+
+/* 241.8 — sur-titre rose des cartes de la brochure (4,35 clair / 4,41 sombre).
+   Premiere tentative fautive, corrigee ici : j'avais fonce le rose pour le theme clair
+   sans verifier le fond. Ces cartes restent nuit dans les deux themes — le rose fonce y
+   est tombe a 1,78, bien pire que le defaut d'origine. Meme erreur qu'au 239.7 : une
+   encre ne se choisit pas sans regarder ce qu'il y a derriere. Rose clair partout. */
+html .adx .eyebrow:not(#_):not(#__):not(#___){color:#E9A8D4!important}
+
+/* 241.9 — liens or du corps de page en theme clair (3,89 sur carrieres) */
+html:is(.et-plight,.et-jlight) main a:not(#_):not(#__):not(#___)[style*="gold"],
+html:is(.et-plight,.et-jlight) .pgl a:not(#_):not(#__):not(#___),
+html:is(.et-plight,.et-jlight) main p a:not(#_):not(#__):not(#___){color:#5E4409!important}
+
+/* 241.10 — etiquettes sourdes sur fond nuit : sur-titres de suite, partage et legendes
+   de tableau restaient entre 3,35 et 4,03 avec l'encre --muted. */
+html:not(.et-plight):not(.et-jlight) :is(.pmore-k,.share-k,caption,.esg-sub):not(#_):not(#__):not(#___){color:#AEBBCF!important}
+
+/* 241.11 — derniers ecarts de la bande, releves un a un : lien d'alerte des carrieres,
+   sous-titre HSE, liens bleus de paragraphe et vert des etiquettes, tous entre 3,89 et
+   4,29 — sous le seuil pour du petit texte, jamais illisibles. */
+html:is(.et-plight,.et-jlight) .b111-note a:not(#_):not(#__):not(#___){color:#4F3A08!important}
+html:not(.et-plight):not(.et-jlight) .esg-hse .esg-sub:not(#_):not(#__):not(#___){color:#C6D2E4!important}
+html:not(.et-plight):not(.et-jlight) main p a:not(#_):not(#__):not(#___){color:#9CC7F6!important}
+html:not(.et-plight):not(.et-jlight) .tag b:not(#_):not(#__):not(#___){color:#B4F2D8!important}
+
+/* 241.12 — deux reliquats qui resistaient a une specificite de trois : le lien d'alerte
+   des carrieres, servi par une regle de page, et les mentions en petit du theme clair. */
+html:is(.et-plight,.et-jlight) .b111-note a:not(#_):not(#__):not(#___):not(#____):not(#_____){color:#4F3A08!important}
+html:is(.et-plight,.et-jlight) small:not(#_):not(#__):not(#___):not(#____){color:#454F62!important}
+
+/* 247 — signature de la barre en sombre : #A8B4C7 (voir feuille commune). */
+html:not(.et-plight):not(.et-jlight) .brand-tx small:not(#_):not(#__):not(#___) { color: #A8B4C7 !important; }
+
+/* Ch257 - anneau de focus par defaut, specificite nulle */
+:where(a,button,[role="button"],[tabindex],select,summary):focus-visible{outline:2px solid var(--etfv,#E8C36A);outline-offset:2px}html.et-plight{--etfv:#74570B}html.et-jlight{--etfv:#74570B}
+
+/* Ch321 (theme clair) - le pied de page aplatit TOUS ses liens en !important
+   (regle "html.et-plight footer a" heritee), ce qui defait aussi le souligne
+   des liens en ligne dans un paragraphe. On le retablit pour ces seuls liens
+   nus, avec une specificite superieure (WCAG 1.4.1). */
+html.et-plight footer :is(p,li,dd) a:not([class]):not(#e1):not(#e2):not(#e3):not(#e4):not(#e5):not(#e6){
+  text-decoration:underline!important;text-underline-offset:.18em!important;
+  text-decoration-thickness:.055em!important;
+  text-decoration-color:color-mix(in srgb,currentColor 55%,transparent)!important}
+
+/* Ch322 : les curseurs (input[type=range]) etaient pris dans deux regles ecrites
+   pour les champs de texte.
+   (1) Cible : la garantie de 28 px du chapitre 219 etait enfermee dans
+       @media(pointer:coarse) ; a la souris la piste ne mesurait que 7 px de haut.
+       Sur la pile de curseurs de l'estimateur volumetrique, l'exception
+       d'espacement de WCAG 2.5.8 ne joue pas (voisins a moins de 24 px).
+   (2) Focus : "input:focus-visible{outline:none!important}" remplace l'anneau
+       par une bordure doree et une lueur — invisible sur un curseur, qui n'a pas
+       de bordure. Au clavier, le curseur focalise ne se distinguait plus du tout
+       (WCAG 2.4.7). Mesure : 15/255 d'ecart au maximum entre focalise et non
+       focalise, sur un halo creme. */
+input[type=range]:not(#_):not(#__){min-height:28px;padding-block:10.5px;background-clip:content-box}
+input[type=range]:not(#_):not(#__):focus-visible{
+  outline:2px solid var(--etfv,#E8C36A)!important;
+  outline-offset:3px!important;
+  box-shadow:none!important}
+/* Ch323 — 1. Le minimum automatique d'un element de grille vaut son min-content :
+   un enfant indivisible (bouton insecable, champ, mot long) fait grossir la piste
+   au-dela de la fenetre, et le contenu sort de l'ecran sans que la page defile. */
+.ep-models>*,.ms-usecases>*,.prod-synth>*,.modref-grid>*,.client-grid>*,.tech-grid>*,.prod-b2b>*,
+.truck-grid>*,.carbon-grid>*,.regime-grid>*,.rd-axes>*,.chain-grid>*,.fin-grid>*,.appfeat-grid>*,
+.maint-grid>*,.taskforce-grid>*,.htech-grid>*,.buy-grid>*,.univ-grid>*,.hub-grid>*,.recomp-grid>*,
+.welltype-grid>*,.bit-grid>*,.viz-grid>*,.vc-grid>*,.gt-grid>*,.flotte-grid>*,.compare-grid>*,
+.pole-grid>*,.plc-grid>*,.biz-grid>*,.ppt-grid>*,.pof-grid>*,.sb-grid>*,.ttg-g>*,.hxi-grid>*,
+.ce-grid>*,.zk-grid>*,.hnews-grid>*,.pipe-ops>*,.profiles>*,.ckpis>*,.steps>*,.fx2g>*,
+.cli-deep>*,.vb-grid>*,.mkt-brands>*{min-width:0}
+/* la grille ESG des brochures imbrique grille dans flex : le plancher doit tomber a chaque etage */
+.esg3-grid,.esg3-grid *{min-width:0}
+.esg3-grid :where(li,p,strong,span){overflow-wrap:break-word}
+/* 2. un bouton insecable ne doit jamais depasser son conteneur */
+.btn:not(#_):not(#__){max-width:100%}
+@media(max-width:1040px){.btn,.fcta{white-space:normal!important}}
+@media(max-width:760px){
+  /* 3. les mots trop longs se coupent au lieu de sortir de la boite */
+  body :where(p,li,dd,dt,h1,h2,h3,h4,h5,h6,span,strong,b,em,td,th,label,figcaption,a,div){overflow-wrap:break-word}
+  /* 4. un tableau large defile dans sa propre boite au lieu de pousser la page */
+  :where(article,.jbody,main) table{display:block;max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
+}
+
+/* Ch323 — 5. Accordeon du pied de page sur telephone : un script enveloppe le
+   titre dans un <button> a padding nul, pose au milieu d'un h3 qui, lui, porte
+   30 px de marge interne. Seule la bande centrale de 12 a 20 px etait donc
+   tactile, et le « + » a droite, dessine par le h3, ne repondait pas du tout.
+   On deplace la marge interne sur le bouton : la ligne entiere devient la cible. */
+@media(max-width:760px){
+  footer .foot-grid .foot-col>h3:not(#_):not(#__){padding:0!important}
+  footer .foot-grid .foot-col>h3>button:not(#_):not(#__){
+    display:block;width:100%;text-align:start;
+    padding:15px 26px 15px 0!important;margin:0!important;min-height:50px}
+}
+
+/* Ch323 — 6. Deux gardes de lisibilite et de gene sur telephone.
+   La signature sous le logo tombait a 9,6 px, le plus petit texte du site.
+   Et sur ar.html le bouton de theme se posait sous le variateur de luminosite
+   (chevauchement de 42 x 22 px), donc a moitie inatteignable. */
+@media(max-width:470px){
+  .brand-tx small:not(#_):not(#__){font-size:11px!important;letter-spacing:.06em!important}
+}
+@media(max-width:720px){
+  body:where([data-eh~=eh8]):not(.ehz) #plightBtn:not(#_):not(#__){bottom:150px}
+}
+
+/* Ch323 — 7. Le courriel et le telephone du pied de page sont les deux liens
+   qu'on touche le plus depuis un telephone : ils mesuraient 18 px de haut,
+   marge interne comprise. On les porte a 44 px. */
+@media(max-width:760px){
+  footer .foot-col a[href^="mailto:"]:not(#_),footer .foot-col a[href^="tel:"]:not(#_){
+    display:flex!important;align-items:center;min-height:44px;padding:8px 0!important}
+}
+
+/* Ch324 : sur neuf pages anglaises, la feuille qui sort le preloader du flux
+   n'etait pas chargee : le voile occupait 178 px en haut de page, puis
+   disparaissait vers 4,3 s en tirant tout le contenu vers le haut. Saut de
+   mise en page mesure a 0,22-0,23 sur telephone bride. Le voile est un
+   element de couverture : sa place est hors flux, partout. */
+#preloader:not(#_):not(#__){position:fixed;inset:0;z-index:9999;pointer-events:none}
+/* et le voile doit s'effacer des que le script le marque « done » : sans cette
+   regle il restait opaque une seconde et demie par-dessus la page. */
+#preloader.done:not(#_):not(#__){opacity:0;visibility:hidden;transition:opacity .5s ease,visibility .5s}
+
+/* Ch332 : les pastilles de pole du pied de page tiraient leur teinte des
+   variables de theme de chaque page — quatre familles de feuilles, quatre
+   resolutions : l'Aval n'avait aucune pastille sur 87 pages (variable
+   absente, repli sur la couleur du texte), le vert de GreenTech existait en
+   trois nuances, l'or d'Amont en deux. Une seule teinte par pole, partout,
+   adressee par le lien (l'!important est necessaire : l'accent est pose en
+   style en ligne dans le gabarit). Pastille decorative : memes valeurs dans
+   les deux themes. */
+footer .foot-pole[href^="/amont"],footer .foot-pole[href^="/pole-amont"]{--pc:#E8C36A!important}
+footer .foot-pole[href^="/intermediaire"],footer .foot-pole[href^="/pole-intermediaire"]{--pc:#5AA7F0!important}
+footer .foot-pole[href^="/aval"],footer .foot-pole[href^="/pole-aval"]{--pc:#F09A4A!important}
+footer .foot-pole[href^="/petrochimie"],footer .foot-pole[href^="/pole-enerchimie"]{--pc:#D177B4!important}
+footer .foot-pole[href^="/greentech"],footer .foot-pole[href^="/pole-greentech"]{--pc:#34D399!important}
+footer .foot-pole[href^="/tchaditech"],footer .foot-pole[href^="/pole-tchaditech"]{--pc:#96A2EC!important}
+footer .foot-pole[href^="/tchaditude"],footer .foot-pole[href^="/pole-tchaditude"]{--pc:#C4B5FD!important}
+footer .foot-pole[href^="/enerconseils"],footer .foot-pole[href^="/pole-enerconseils"]{--pc:#1FA496!important}
+
+/* Ch333 : les messages d'erreur du formulaire de contact (.ct-err, role=alert)
+   restaient rouges en theme sombre mais viraient au bleu nuit en theme clair —
+   la repeinture de theme passait dessus. Un message d'erreur doit rester un
+   message d'erreur : rouge sombre lisible sur fond creme (6,3:1). */
+html.et-plight .ct-err:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5):not(#e6),
+html.et-jlight .ct-err:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5):not(#e6){color:#B42318!important}
+
+/* Ch349 : a l'impression, le chrome d'ecran a position fixe (bandeau cookies,
+   rail de traversee, retour accueil, bascule de theme) se repetait sur chaque
+   page imprimee. */
+@media print{#ckn:not(#e1):not(#e2):not(#e3),#aurail:not(#e1):not(#e2):not(#e3),#homeFab:not(#e1):not(#e2):not(#e3),#plightBtn:not(#e1):not(#e2):not(#e3),#jlightBtn:not(#e1):not(#e2):not(#e3),#toTop:not(#e1):not(#e2):not(#e3),#toTop-fix:not(#e1):not(#e2):not(#e3){display:none!important}}
+
+html.et-plight #cta-band h2 em:not(#_):not(#__){background-image:linear-gradient(110deg,#6B500F 30%,#10406F)!important}
+html.et-jlight a.skip-link:not(#_):not(#__){color:#fff!important}

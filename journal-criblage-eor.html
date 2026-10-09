@@ -1,0 +1,643 @@
+<!doctype html>
+<html data-eh="eh1 eh10" lang="fr" data-pl="coupe">
+<head><script id="et-light-def">function etSysClair(){return true}try{var d=document.documentElement,p=location.pathname,j=/^\/journal-/.test(p),k=j?"et-jlight":"et-plight",v=localStorage.getItem(k);if(v===null)v=localStorage.getItem(j?"et-plight":"et-jlight");if(v==="1"||(v!=="0"&&etSysClair()))d.classList.add(k);var f="coupe";if(j||/^\/carnets/.test(p))f="papier";else if(/^\/(intermediaire\/|pole-intermediaire|ar-intermediaire|greentech\/|pole-greentech|tchaditech\/|pole-tchaditech)/.test(p))f="corridor";else if(/^\/(aval\/|pole-aval|ar-aval|petrochimie\/|pole-enerchimie)/.test(p))f="colonne";d.setAttribute("data-fond",f)}catch(e){if(etSysClair())document.documentElement.classList.add("et-plight")}</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Criblage EOR : la méthode et le réservoir — Carnets | EnerTchad</title>
+<meta name="description" content="Comment choisit-on entre chimie, vapeur et gaz pour récupérer plus de pétrole ? La grille de criblage EOR expliquée — et ce qu’elle dit des grès de Doba.">
+<meta name="author" content="EnerTchad S.A.">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#111D33">
+<link rel="canonical" href="https://enertchad.com/journal-criblage-eor">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Criblage EOR : la méthode et le réservoir · Carnets">
+<meta property="og:description" content="Chimie, vapeur ou gaz ? Cinq mesures du réservoir suffisent pour un premier tri : la grille de criblage EOR, expliquée simplement.">
+<meta property="og:url" content="https://enertchad.com/journal-criblage-eor">
+<meta property="og:image" content="https://enertchad.com/og-amont.jpg">
+<meta property="og:locale" content="fr_TD">
+<meta property="article:published_time" content="2026-07-14">
+<link rel="preload" href="/assets/fonts/Inter-latin.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/assets/fonts/InstrumentSerif-latin.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="/assets/chrome/s_9c80e27170.css">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20200%20200%22%3E%3Crect%20width%3D%22200%22%20height%3D%22200%22%20rx%3D%2242%22%20fill%3D%22%23F3EAD1%22%2F%3E%3Cg%20transform%3D%22translate%28100%20100%29%20scale%280.86%29%20translate%28-100%20-100%29%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22fpv%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%220%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23DBAE4A%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23C2922E%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Cpath%20d%3D%22M100.00%2096.00%20L126.98%2067.90%20A37.4%2037.4%200%201%200%2073.02%2067.90%20Z%22%20fill%3D%22url%28%23fpv%29%22%2F%3E%3Cpath%20d%3D%22M96.00%20100.00%20L67.90%2073.02%20A37.4%2037.4%200%201%200%2067.90%20126.98%20Z%22%20fill%3D%22%231E6EC2%22%2F%3E%3Cpath%20d%3D%22M104.00%20100.00%20L132.10%20126.98%20A37.4%2037.4%200%201%200%20132.10%2073.02%20Z%22%20fill%3D%22%23218A2C%22%2F%3E%3Cpath%20d%3D%22M100.00%20104.00%20L73.02%20132.10%20A37.4%2037.4%200%201%200%20126.98%20132.10%20Z%22%20fill%3D%22%23E8CD7F%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E"><link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png"><style id="fusion-anonyme">
+/* ———— ex-bloc: anonyme ———— */
+.skip-link{position:absolute;left:12px;top:-60px;z-index:300;background:#121D31;color:#fff;border:1px solid var(--blue-l,#5AA7F0);border-radius:8px;padding:10px 16px;text-decoration:none;font:600 .85rem/1 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.skip-link:focus{top:12px}
+/* ———— ex-bloc: tw-pretty ———— */
+p,li,figcaption,blockquote,.hx-sub,.sub,.lede,dd{text-wrap:pretty}h1,h2,h3,h4,.kick,.eyebrow,.mu-head span{text-wrap:balance}
+</style><link rel="stylesheet" id="ultra-polish" href="/assets/chrome/x_110e0ca4d730.css"><style id="hero-img">html header.jtop{background:linear-gradient(180deg,rgba(14,22,38,.24) 0%,rgba(14,22,38,.36) 52%,rgba(14,22,38,.56) 100%) center/cover no-repeat!important;border-bottom:1px solid rgba(255,255,255,.08)!important;text-shadow:0 2px 18px rgba(0,0,0,.45)}html header.jtop h1,html header.jtop h2{color:#fff!important;text-shadow:0 2px 18px rgba(0,0,0,.5)!important}html header.jtop h1 em{color:#F9E5B2!important;background:linear-gradient(110deg,#F0CE82 30%,#7FB8F5);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;text-shadow:none!important}html header.jtop .pgl,html header.jtop .lead{color:rgba(245,247,250,.92)!important}html header.jtop .pgk,html header.jtop .kick{color:#F9E5B2!important}html header.jtop .pgk::before{background:#F9E5B2!important}html header.jtop .crumb,html header.jtop .crumb a,html header.jtop .bcrumb,html header.jtop .bcrumb a,html header.jtop .bcrumb span{color:rgba(245,247,250,.78)!important;text-shadow:none!important}html header.jtop .pgh-art{display:none!important}html header.jtop .pgh-grid{grid-template-columns:1fr!important}html header.jtop .pgh-main{max-width:780px}html header.jtop .pgh-kpi{background:rgba(255,255,255,.1)!important;border-color:rgba(255,255,255,.18)!important}html header.jtop .pgh-kpi b{color:#fff!important}html header.jtop .pgh-kpi i{color:rgba(245,247,250,.78)!important}html header.jtop .pgh-btn2{border-color:rgba(255,255,255,.28)!important;color:#fff!important;background:transparent!important}html header.jtop .pgc-node{border-color:rgba(255,255,255,.25)!important;color:rgba(245,247,250,.85)!important}html header.jtop .pgc-node.is-on{color:#121D31!important}html header.jtop .rule{background:linear-gradient(90deg,#F0CE82,transparent)!important}</style><link rel="alternate" type="application/rss+xml" title="EnerTchad — Carnets &amp; communiqués" href="/feed.xml"><link rel="manifest" href="/site.webmanifest"><link rel="stylesheet" id="btn-premium" href="/assets/chrome/x_a68928222982.css"><link rel="stylesheet" href="/assets/chrome/bundle_core_a1.css"><meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://enertchad.com/og-amont.jpg">
+<meta name="twitter:site" content="@enertchad"><meta name="twitter:creator" content="@enertchad"><style id="et-nav-once">html.et-navd #preloader{display:none!important}</style><script>/*et-nav-once*/try{if(sessionStorage.getItem("et-nav"))document.documentElement.className+=" et-navd";sessionStorage.setItem("et-nav","1");}catch(e){}</script><style id="rootland-css">.rootland{position:fixed;inset:0;z-index:-2;background:none center/cover no-repeat;pointer-events:none}.rootland::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,12,21,.54) 0%,rgba(7,12,21,.66) 100%)}html{background:#0d1524}body{background:transparent!important}main{background:transparent!important}html:not(.et-plight):not(.et-jlight) main>section,html:not(.et-plight):not(.et-jlight) body>section,html:not(.et-plight):not(.et-jlight) main>div>section{background:rgba(14,22,38,.38)!important;border-radius:22px;}html:not(.et-plight):not(.et-jlight) main,html:not(.et-plight):not(.et-jlight) footer{--muted:#A8B6C9}main h2,main h3,section h2,section h3{text-shadow:0 2px 16px rgba(0,0,0,.6)}html:not(.et-plight):not(.et-jlight) footer{background:rgba(14,22,38,.68)!important;text-shadow:0 1px 10px rgba(0,0,0,.55)}footer a{text-shadow:none}@media(prefers-contrast:more){html:not(.et-plight):not(.et-jlight) main>section,html:not(.et-plight):not(.et-jlight) body>section,html:not(.et-plight):not(.et-jlight) main>div>section{background:rgba(14,22,38,.92)!important;box-shadow:0 0 0 100vmax rgba(14,22,38,.92)}}</style><script type="application/ld+json">[{"@context":"https://schema.org","@type":"Organization","@id":"https://enertchad.com/#organization","name":"EnerTchad S.A.","legalName":"EnerTchad S.A.","slogan":"Accès aux Énergies","url":"https://enertchad.com/","sameAs":["https://www.linkedin.com/company/enertchad","https://www.facebook.com/enertchad"],"logo":{"@type":"ImageObject","@id":"https://enertchad.com/#logo","url":"https://enertchad.com/icon-512.png","contentUrl":"https://enertchad.com/icon-512.png","width":512,"height":512,"caption":"EnerTchad S.A."},"image":{"@id":"https://enertchad.com/#logo"},"description":"Société pétrolière intégrée du Tchad — de la roche-mère à la pompe : exploration-production, récupération assistée, transport, raffinage et distribution.","foundingDate":"2026","address":{"@type":"PostalAddress","streetAddress":"Radisson Blu, bureau 23, Quartier Sabangali, Cité du 1er Décembre","postOfficeBoxNumber":"6060","addressLocality":"N’Djamena","addressCountry":"TD"},"areaServed":{"@type":"Country","name":"Tchad"},"email":"contact@enertchad.com","telephone":"+23599298696","contactPoint":[{"@type":"ContactPoint","telephone":"+23599298696","email":"contact@enertchad.com","contactType":"customer service","areaServed":"TD","availableLanguage":["fr"]},{"@type":"ContactPoint","contactType":"investor relations","email":"invest@enertchad.com","availableLanguage":["fr","en"]}],"identifier":{"@type":"PropertyValue","propertyID":"RCCM","value":"En cours d’immatriculation"}},{"@context":"https://schema.org","@type":"WebSite","@id":"https://enertchad.com/#website","name":"EnerTchad","alternateName":"EnerTchad S.A.","url":"https://enertchad.com/","inLanguage":["fr","en","ar"],"publisher":{"@id":"https://enertchad.com/#organization"},"potentialAction":{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://enertchad.com/recherche?q={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org","@type":"WebPage","@id":"https://enertchad.com/journal-criblage-eor#webpage","url":"https://enertchad.com/journal-criblage-eor","name":"Criblage EOR : la méthode et le réservoir — Carnets | EnerTchad","description":"Comment choisit-on entre chimie, vapeur et gaz pour récupérer plus de pétrole ? La grille de criblage EOR expliquée — et ce qu’elle dit des grès de Doba.","inLanguage":"fr","isPartOf":{"@id":"https://enertchad.com/#website"},"publisher":{"@id":"https://enertchad.com/#organization"},"image":"https://enertchad.com/og-amont.jpg","breadcrumb":{"@id":"https://enertchad.com/journal-criblage-eor#breadcrumb"},"mainEntity":{"@id":"https://enertchad.com/journal-criblage-eor#article"}},{"@context":"https://schema.org","@type":"BreadcrumbList","@id":"https://enertchad.com/journal-criblage-eor#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://enertchad.com/"},{"@type":"ListItem","position":2,"name":"Carnets","item":"https://enertchad.com/carnets"},{"@type":"ListItem","position":3,"name":"Le criblage EOR","item":"https://enertchad.com/journal-criblage-eor"}]},{"@context":"https://schema.org","@type":"Article","@id":"https://enertchad.com/journal-criblage-eor#article","headline":"Le criblage EOR : la bonne méthode pour le bon réservoir","description":"Chimie, vapeur ou gaz ? Comment la grille de criblage EOR confronte chaque méthode aux propriétés mesurées du réservoir — et ce qu’elle dit des grès de Doba.","image":"https://enertchad.com/og-amont.jpg","datePublished":"2026-07-14","dateModified":"2026-07-14","author":{"@type":"Organization","@id":"https://enertchad.com/#organization","name":"EnerTchad S.A.","url":"https://enertchad.com/","logo":{"@type":"ImageObject","url":"https://enertchad.com/icon-512.png","width":512,"height":512}},"publisher":{"@type":"Organization","@id":"https://enertchad.com/#organization","name":"EnerTchad S.A.","url":"https://enertchad.com/","logo":{"@type":"ImageObject","url":"https://enertchad.com/icon-512.png","width":512,"height":512}},"inLanguage":"fr","url":"https://enertchad.com/journal-criblage-eor","isPartOf":{"@type":"Blog","@id":"https://enertchad.com/carnets#blog","name":"Carnets EnerTchad","url":"https://enertchad.com/carnets"},"mainEntityOfPage":{"@id":"https://enertchad.com/journal-criblage-eor#webpage"}}]</script><link rel="stylesheet" id="cta-band-css" href="/assets/chrome/x_1576951582b2.css"><link rel="alternate" hreflang="fr" href="https://enertchad.com/journal-criblage-eor"><link rel="alternate" hreflang="en" href="https://enertchad.com/journal-criblage-eor-en"><link rel="alternate" hreflang="x-default" href="https://enertchad.com/journal-criblage-eor"><style id="toTop-fix">#toTop{pointer-events:none}#toTop.show{pointer-events:auto}</style>
+<link rel="stylesheet" href="/assets/chrome/u2_1d8cb71437ac.css"><link rel="stylesheet" id="base-chrome521" href="/assets/chrome/c_c79b7a1d9fec.css?b=202607112340"><link rel="stylesheet" href="/assets/chrome/modern-inner-2026.css"><link rel="stylesheet" href="/assets/chrome/nav_a.css?b=202608300720"><style id="navvars521">.nav.nx{--cream:#F5F7FA;--gold-l:#E8C36A;--hair:rgba(90,167,240,.14);--muted:#7C8AA2;--fd:'Space Grotesk','Inter',system-ui,sans-serif;--fm:ui-monospace,SFMono-Regular,Menlo,monospace;--ease:cubic-bezier(.22,.61,.36,1)}</style><style id="s521">:root{--ink:var(--cream,#F5F7FA)}.jhero:not(#_){padding-top:calc(var(--nav-h,72px) + 96px)}.jhero .crumb:not(#_){font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.7rem;letter-spacing:.06em;color:#7C8AA2;margin:0 0 18px;display:flex;flex-wrap:wrap;gap:0;align-items:center}.jhero .crumb:not(#_) a{color:#7C8AA2;text-decoration:none}.jhero .crumb:not(#_) a:hover{color:#E8C36A}.jhero .crumb:not(#_) .crumb-sep{margin:0 8px;color:rgba(245,247,250,.3)}html.et-jlight .jhero .crumb:not(#_),html.et-plight .jhero .crumb:not(#_),html.et-jlight .jhero .crumb:not(#_) a,html.et-plight .jhero .crumb:not(#_) a{color:#5A6472}html.et-jlight .jhero .crumb:not(#_) a:hover,html.et-plight .jhero .crumb:not(#_) a:hover{color:#8A6210}html.et-jlight .jhero .crumb:not(#_) .crumb-sep,html.et-plight .jhero .crumb:not(#_) .crumb-sep{color:rgba(26,35,48,.35)}</style>
+<link rel="stylesheet" href="/assets/chrome/u2_d951178f3383.css">
+
+<script id="va-init">window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments);};</script>
+<style id="fusion-ft-logo">
+/* ———— ex-bloc: ft-logo ———— */
+footer .brand-mk{background:none!important;border:0!important;padding:0!important}footer .logo-img{background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20200%20200%22%3E%3Crect%20width%3D%22200%22%20height%3D%22200%22%20rx%3D%2242%22%20fill%3D%22%23F3EAD1%22%2F%3E%3Cg%20transform%3D%22translate%28100%20100%29%20scale%280.86%29%20translate%28-100%20-100%29%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22ftlg%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%220%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23DBAE4A%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23C2922E%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Cpath%20d%3D%22M100.00%2096.00%20L126.98%2067.90%20A37.4%2037.4%200%201%200%2073.02%2067.90%20Z%22%20fill%3D%22url%28%23ftlg%29%22%2F%3E%3Cpath%20d%3D%22M96.00%20100.00%20L67.90%2073.02%20A37.4%2037.4%200%201%200%2067.90%20126.98%20Z%22%20fill%3D%22%231E6EC2%22%2F%3E%3Cpath%20d%3D%22M104.00%20100.00%20L132.10%20126.98%20A37.4%2037.4%200%201%200%20132.10%2073.02%20Z%22%20fill%3D%22%23218A2C%22%2F%3E%3Cpath%20d%3D%22M100.00%20104.00%20L73.02%20132.10%20A37.4%2037.4%200%201%200%20126.98%20132.10%20Z%22%20fill%3D%22%23E8CD7F%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E")!important}
+/* ———— ex-bloc: lg-journal ———— */
+/* ===== EnerTchad · Liquid Glass — journal (component-only, palette par theme, no body/stacking changes) ===== */
+:root{
+  --jg-card:rgba(255,255,255,.06);
+  --jg-brd:rgba(255,255,255,.14);
+  --jg-shadow:0 10px 28px rgba(0,0,0,.34);
+  --jg-spec:inset 0 1px 0 rgba(255,255,255,.07);
+}
+/* La palette papier ne vaut qu'en lecture claire. */
+html.et-jlight{
+  --jg-card:rgba(255,255,255,.60);
+  --jg-brd:rgba(255,255,255,.72);
+  --jg-shadow:0 10px 28px rgba(45,35,22,.12);
+  --jg-spec:inset 0 1px 0 rgba(255,255,255,.9);
+}
+/* Le pied d'article reste une bande sombre meme en lecture claire :
+   le verre y redevient sombre pour garder les liens lisibles. */
+html.et-jlight .jfoot{
+  --jg-card:rgba(255,255,255,.06);
+  --jg-brd:rgba(255,255,255,.14);
+  --jg-shadow:0 10px 28px rgba(0,0,0,.34);
+  --jg-spec:inset 0 1px 0 rgba(255,255,255,.07);
+}
+/* frosted journal header (dark bar over the hero photo) */
+.jtop{
+  -webkit-backdrop-filter:saturate(160%) blur(18px);backdrop-filter:saturate(160%) blur(18px);
+  background:rgba(18,24,36,.46)!important;border-bottom:1px solid rgba(255,255,255,.14)!important;
+}
+/* related-article "Go further" links → soft frosted paper cards */
+.more a{
+  -webkit-backdrop-filter:saturate(140%) blur(12px);backdrop-filter:saturate(140%) blur(12px);
+  background:var(--jg-card)!important;border:1px solid var(--jg-brd)!important;border-radius:14px!important;
+  box-shadow:var(--jg-spec),var(--jg-shadow)!important;transition:transform .4s cubic-bezier(.2,.7,.2,1),box-shadow .4s!important;
+}
+.more a:hover{transform:translateY(-3px)!important;box-shadow:var(--jg-spec),0 16px 40px rgba(45,35,22,.18)!important}
+/* key callouts → subtle frosted paper */
+.jkey{
+  -webkit-backdrop-filter:saturate(140%) blur(12px);backdrop-filter:saturate(140%) blur(12px);
+  background:var(--jg-card)!important;border:1px solid var(--jg-brd)!important;border-radius:16px!important;
+  box-shadow:var(--jg-spec),var(--jg-shadow)!important;
+}
+.scrollcue{-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
+/* ———— ex-bloc: aa-reflow ———— */
+@media(max-width:360px){
+  header.jtop:not(#_){flex-wrap:wrap;row-gap:8px;padding-left:12px;padding-right:12px}
+  header.jtop:not(#_) #jlightBtn{margin-left:auto}
+}
+/* ———— ex-bloc: glass-v3 ———— */
+/* Verre v3 : le decor photographique fixe (rootland/subland) passe derriere les bandes translucides. On ajoute le flou d arriere-plan qui manquait, pour que la matiere se lise a travers sans parasiter le texte. Aucun fond n est modifie ici. Mode sombre uniquement : en mode clair le decor est deja masque. */
+html:not(.et-plight):not(.et-jlight) main section:not(#_){-webkit-backdrop-filter:blur(16px) saturate(140%);backdrop-filter:blur(16px) saturate(140%)}
+html:not(.et-plight):not(.et-jlight) main section section:not(#_){-webkit-backdrop-filter:none;backdrop-filter:none}
+@media (prefers-reduced-transparency:reduce){html:not(.et-plight):not(.et-jlight) main section:not(#_){-webkit-backdrop-filter:none!important;backdrop-filter:none!important}}
+@media (max-width:700px){html:not(.et-plight):not(.et-jlight) main section:not(#_){-webkit-backdrop-filter:blur(10px) saturate(130%);backdrop-filter:blur(10px) saturate(130%)}}
+/* ———— ex-bloc: bandes-uni ———— */
+/* SS134 - harmonisation des bandeaux. 1) Bandeau cookies : le traitement en bande fine ne vivait que dans le bloc home-plus de l accueil (64 px) ; ailleurs il retombait a 112-130 px. 2) Bande d appel final : la regle generique section{padding:var(--sy) 0} s appliquait a #cta-band sur les pages a gabarit complet, doublant le rembourrage deja porte par .cb-in (clamp 38-66 px) -> 380 px contre 237 px ailleurs. */
+#ckn:not(#_):not(#__){left:0!important;right:0!important;bottom:0!important;top:auto!important;width:100%!important;max-width:none!important;border-radius:0!important;padding:9px 22px!important;align-items:center;gap:16px;flex-wrap:wrap;font-size:.8rem!important;box-shadow:0 -8px 30px rgba(4,8,16,.25)}
+#ckn.show:not(#_):not(#__){display:flex!important}
+#ckn .ck-row:not(#_){margin-left:auto;display:flex;align-items:center;gap:10px}
+#ckn .ck-row a:not(#_){padding:6px 8px!important}
+#cta-band:not(#_):not(#__){padding-top:0!important;padding-bottom:0!important}
+/* ———— ex-bloc: tuiles-fond ———— */
+/* Integration des tuiles au fond. Constat mesure avant correctif : ecart-type de
+   luminance 0,00 a 0,48 derriere les tuiles, donc le backdrop-filter floutait une
+   surface parfaitement plate et ne revelait rien. Deux leviers : on donne du relief
+   au fond sous les tuiles, et on fait emerger la tuile au lieu de la poser dessus. */
+:is(section,.wrap>div):has(.card,.card-m,.pmore-card,.ttg-t,.epw-c,.tri-c,.divc,.kpi,.biz-card,.plc-card,.f2f,.glow-card,.jkey,.eth-c,.gov-c,.refc,.prof,.cp,.tri-kpi,.b111-c,.sc-card,.hxi-card,.hncard,.prc-card,.px-card,.ppt-card,.fam-card,.esg-card,.rh-card,.it-card,.pcard,.scard,.pub-c,.pubc):not(#_):not(#__):not(#___):not(#____){
+ background-image:
+  radial-gradient(78% 54% at 8% -4%,rgba(222,172,58,.155),rgba(0,0,0,0) 66%),
+  radial-gradient(64% 46% at 96% 34%,rgba(21,86,150,.105),rgba(0,0,0,0) 64%),
+  radial-gradient(88% 58% at 46% 108%,rgba(196,150,52,.085),rgba(0,0,0,0) 62%)!important;
+}
+html:not(.et-plight):not(.et-jlight) :is(section,.wrap>div):has(.card,.card-m,.pmore-card,.ttg-t,.epw-c,.tri-c,.divc,.kpi,.biz-card,.plc-card,.f2f,.glow-card,.jkey,.eth-c,.gov-c,.refc,.prof,.cp,.tri-kpi,.b111-c,.sc-card,.hxi-card,.hncard,.prc-card,.px-card,.ppt-card,.fam-card,.esg-card,.rh-card,.it-card,.pcard,.scard,.pub-c,.pubc):not(#_):not(#__):not(#___):not(#____){
+ background-image:
+  radial-gradient(78% 54% at 8% -4%,rgba(232,195,106,.105),rgba(0,0,0,0) 66%),
+  radial-gradient(64% 46% at 96% 34%,rgba(90,167,240,.095),rgba(0,0,0,0) 64%),
+  radial-gradient(88% 58% at 46% 108%,rgba(232,195,106,.055),rgba(0,0,0,0) 62%)!important;
+}
+/* Le degrade de la tuile se termine sur la couleur du fond : le bas se fond dans la
+   page, le haut capte la lumiere. L'ombre est un ancrage court, pas une ombre portee. */
+:is(.acq-card,.atc-map,.atc-stat,.avk-card,.avnet-panel,.b111-c,.biz-card,.card,.card-m,.cdm-frame,.ce-card,.ckpi,.cmap-frame,.cp,.cp-note,.ct-cards,.dch-card,.divc,.duo-card,.epw-c,.esg-card,.esg-head,.eth-c,.f2f,.fam-card,.fid-card,.flip-b,.flip-f,.frm-c,.glm-c,.glow-card,.gov-c,.gtt-c,.hncard,.hxi-card,.innov-c,.isv-e,.isv-s,.it-card,.jkey,.kpi,.mad-card,.mfo-lever,.mrc-c,.ngs-t,.oeco-card,.orgc,.pcard,.pe-c,.plc-card,.pmore-card,.pof-col,.ppj-card,.ppl-tile,.ppt-card,.ppte-tile,.prc-card,.presse-card,.prof,.pub-c,.pubc,.px-card,.refc,.rh-card,.rhe-c,.rhl-c,.rhp-c,.sb-card,.sc-card,.scard,.secc,.sfam,.slac,.svc-head,.tri-c,.tri-kpi,.ttc-card,.ttg-t,.vb-card,.voie-card):not(#_):not(#__):not(#___):not(#____){
+ background-image:linear-gradient(180deg,rgba(255,255,255,.88) 0%,rgba(255,253,248,.56) 46%,rgba(252,249,243,.30) 100%)!important;
+ border-color:rgba(26,35,48,.085)!important;
+ box-shadow:0 1px 0 rgba(255,255,255,.85) inset,0 14px 28px -20px rgba(58,46,18,.30),0 2px 5px -3px rgba(58,46,18,.10)!important;
+ -webkit-backdrop-filter:blur(7px) saturate(1.28)!important;backdrop-filter:blur(7px) saturate(1.28)!important;
+}
+html:not(.et-plight):not(.et-jlight) :is(.acq-card,.atc-map,.atc-stat,.avk-card,.avnet-panel,.b111-c,.biz-card,.card,.card-m,.cdm-frame,.ce-card,.ckpi,.cmap-frame,.cp,.cp-note,.ct-cards,.dch-card,.divc,.duo-card,.epw-c,.esg-card,.esg-head,.eth-c,.f2f,.fam-card,.fid-card,.flip-b,.flip-f,.frm-c,.glm-c,.glow-card,.gov-c,.gtt-c,.hncard,.hxi-card,.innov-c,.isv-e,.isv-s,.it-card,.jkey,.kpi,.mad-card,.mfo-lever,.mrc-c,.ngs-t,.oeco-card,.orgc,.pcard,.pe-c,.plc-card,.pmore-card,.pof-col,.ppj-card,.ppl-tile,.ppt-card,.ppte-tile,.prc-card,.presse-card,.prof,.pub-c,.pubc,.px-card,.refc,.rh-card,.rhe-c,.rhl-c,.rhp-c,.sb-card,.sc-card,.scard,.secc,.sfam,.slac,.svc-head,.tri-c,.tri-kpi,.ttc-card,.ttg-t,.vb-card,.voie-card):not(#_):not(#__):not(#___):not(#____){
+ background-image:linear-gradient(180deg,rgba(255,255,255,.075) 0%,rgba(255,255,255,.028) 48%,rgba(255,255,255,.010) 100%)!important;
+ border-color:rgba(232,195,106,.16)!important;
+ box-shadow:0 1px 0 rgba(255,255,255,.08) inset,0 18px 36px -24px rgba(0,0,0,.75)!important;
+}
+/* Exception mesuree : ces bandeaux sont sombres meme en theme clair et leurs tuiles
+   portent du texte blanc. Un degrade blanc les rendrait illisibles. Verifie sur
+   ar.html, brochure(.fr/en), patrimoine, greentech, tchaditech, clients. */
+.kpis :is(.acq-card,.atc-map,.atc-stat,.avk-card,.avnet-panel,.b111-c,.biz-card,.card,.card-m,.cdm-frame,.ce-card,.ckpi,.cmap-frame,.cp,.cp-note,.ct-cards,.dch-card,.divc,.duo-card,.epw-c,.esg-card,.esg-head,.eth-c,.f2f,.fam-card,.fid-card,.flip-b,.flip-f,.frm-c,.glm-c,.glow-card,.gov-c,.gtt-c,.hncard,.hxi-card,.innov-c,.isv-e,.isv-s,.it-card,.jkey,.kpi,.mad-card,.mfo-lever,.mrc-c,.ngs-t,.oeco-card,.orgc,.pcard,.pe-c,.plc-card,.pmore-card,.pof-col,.ppj-card,.ppl-tile,.ppt-card,.ppte-tile,.prc-card,.presse-card,.prof,.pub-c,.pubc,.px-card,.refc,.rh-card,.rhe-c,.rhl-c,.rhp-c,.sb-card,.sc-card,.scard,.secc,.sfam,.slac,.svc-head,.tri-c,.tri-kpi,.ttc-card,.ttg-t,.vb-card,.voie-card):not(#_):not(#__):not(#___):not(#____),.fp-sec :is(.acq-card,.atc-map,.atc-stat,.avk-card,.avnet-panel,.b111-c,.biz-card,.card,.card-m,.cdm-frame,.ce-card,.ckpi,.cmap-frame,.cp,.cp-note,.ct-cards,.dch-card,.divc,.duo-card,.epw-c,.esg-card,.esg-head,.eth-c,.f2f,.fam-card,.fid-card,.flip-b,.flip-f,.frm-c,.glm-c,.glow-card,.gov-c,.gtt-c,.hncard,.hxi-card,.innov-c,.isv-e,.isv-s,.it-card,.jkey,.kpi,.mad-card,.mfo-lever,.mrc-c,.ngs-t,.oeco-card,.orgc,.pcard,.pe-c,.plc-card,.pmore-card,.pof-col,.ppj-card,.ppl-tile,.ppt-card,.ppte-tile,.prc-card,.presse-card,.prof,.pub-c,.pubc,.px-card,.refc,.rh-card,.rhe-c,.rhl-c,.rhp-c,.sb-card,.sc-card,.scard,.secc,.sfam,.slac,.svc-head,.tri-c,.tri-kpi,.ttc-card,.ttg-t,.vb-card,.voie-card):not(#_):not(#__):not(#___):not(#____),.fp-grid :is(.acq-card,.atc-map,.atc-stat,.avk-card,.avnet-panel,.b111-c,.biz-card,.card,.card-m,.cdm-frame,.ce-card,.ckpi,.cmap-frame,.cp,.cp-note,.ct-cards,.dch-card,.divc,.duo-card,.epw-c,.esg-card,.esg-head,.eth-c,.f2f,.fam-card,.fid-card,.flip-b,.flip-f,.frm-c,.glm-c,.glow-card,.gov-c,.gtt-c,.hncard,.hxi-card,.innov-c,.isv-e,.isv-s,.it-card,.jkey,.kpi,.mad-card,.mfo-lever,.mrc-c,.ngs-t,.oeco-card,.orgc,.pcard,.pe-c,.plc-card,.pmore-card,.pof-col,.ppj-card,.ppl-tile,.ppt-card,.ppte-tile,.prc-card,.presse-card,.prof,.pub-c,.pubc,.px-card,.refc,.rh-card,.rhe-c,.rhl-c,.rhp-c,.sb-card,.sc-card,.scard,.secc,.sfam,.slac,.svc-head,.tri-c,.tri-kpi,.ttc-card,.ttg-t,.vb-card,.voie-card):not(#_):not(#__):not(#___):not(#____),.gtp :is(.acq-card,.atc-map,.atc-stat,.avk-card,.avnet-panel,.b111-c,.biz-card,.card,.card-m,.cdm-frame,.ce-card,.ckpi,.cmap-frame,.cp,.cp-note,.ct-cards,.dch-card,.divc,.duo-card,.epw-c,.esg-card,.esg-head,.eth-c,.f2f,.fam-card,.fid-card,.flip-b,.flip-f,.frm-c,.glm-c,.glow-card,.gov-c,.gtt-c,.hncard,.hxi-card,.innov-c,.isv-e,.isv-s,.it-card,.jkey,.kpi,.mad-card,.mfo-lever,.mrc-c,.ngs-t,.oeco-card,.orgc,.pcard,.pe-c,.plc-card,.pmore-card,.pof-col,.ppj-card,.ppl-tile,.ppt-card,.ppte-tile,.prc-card,.presse-card,.prof,.pub-c,.pubc,.px-card,.refc,.rh-card,.rhe-c,.rhl-c,.rhp-c,.sb-card,.sc-card,.scard,.secc,.sfam,.slac,.svc-head,.tri-c,.tri-kpi,.ttc-card,.ttg-t,.vb-card,.voie-card):not(#_):not(#__):not(#___):not(#____),.gtp-g :is(.acq-card,.atc-map,.atc-stat,.avk-card,.avnet-panel,.b111-c,.biz-card,.card,.card-m,.cdm-frame,.ce-card,.ckpi,.cmap-frame,.cp,.cp-note,.ct-cards,.dch-card,.divc,.duo-card,.epw-c,.esg-card,.esg-head,.eth-c,.f2f,.fam-card,.fid-card,.flip-b,.flip-f,.frm-c,.glm-c,.glow-card,.gov-c,.gtt-c,.hncard,.hxi-card,.innov-c,.isv-e,.isv-s,.it-card,.jkey,.kpi,.mad-card,.mfo-lever,.mrc-c,.ngs-t,.oeco-card,.orgc,.pcard,.pe-c,.plc-card,.pmore-card,.pof-col,.ppj-card,.ppl-tile,.ppt-card,.ppte-tile,.prc-card,.presse-card,.prof,.pub-c,.pubc,.px-card,.refc,.rh-card,.rhe-c,.rhl-c,.rhp-c,.sb-card,.sc-card,.scard,.secc,.sfam,.slac,.svc-head,.tri-c,.tri-kpi,.ttc-card,.ttg-t,.vb-card,.voie-card):not(#_):not(#__):not(#___):not(#____),.tt-flag :is(.acq-card,.atc-map,.atc-stat,.avk-card,.avnet-panel,.b111-c,.biz-card,.card,.card-m,.cdm-frame,.ce-card,.ckpi,.cmap-frame,.cp,.cp-note,.ct-cards,.dch-card,.divc,.duo-card,.epw-c,.esg-card,.esg-head,.eth-c,.f2f,.fam-card,.fid-card,.flip-b,.flip-f,.frm-c,.glm-c,.glow-card,.gov-c,.gtt-c,.hncard,.hxi-card,.innov-c,.isv-e,.isv-s,.it-card,.jkey,.kpi,.mad-card,.mfo-lever,.mrc-c,.ngs-t,.oeco-card,.orgc,.pcard,.pe-c,.plc-card,.pmore-card,.pof-col,.ppj-card,.ppl-tile,.ppt-card,.ppte-tile,.prc-card,.presse-card,.prof,.pub-c,.pubc,.px-card,.refc,.rh-card,.rhe-c,.rhl-c,.rhp-c,.sb-card,.sc-card,.scard,.secc,.sfam,.slac,.svc-head,.tri-c,.tri-kpi,.ttc-card,.ttg-t,.vb-card,.voie-card):not(#_):not(#__):not(#___):not(#____),.ttf-grid :is(.acq-card,.atc-map,.atc-stat,.avk-card,.avnet-panel,.b111-c,.biz-card,.card,.card-m,.cdm-frame,.ce-card,.ckpi,.cmap-frame,.cp,.cp-note,.ct-cards,.dch-card,.divc,.duo-card,.epw-c,.esg-card,.esg-head,.eth-c,.f2f,.fam-card,.fid-card,.flip-b,.flip-f,.frm-c,.glm-c,.glow-card,.gov-c,.gtt-c,.hncard,.hxi-card,.innov-c,.isv-e,.isv-s,.it-card,.jkey,.kpi,.mad-card,.mfo-lever,.mrc-c,.ngs-t,.oeco-card,.orgc,.pcard,.pe-c,.plc-card,.pmore-card,.pof-col,.ppj-card,.ppl-tile,.ppt-card,.ppte-tile,.prc-card,.presse-card,.prof,.pub-c,.pubc,.px-card,.refc,.rh-card,.rhe-c,.rhl-c,.rhp-c,.sb-card,.sc-card,.scard,.secc,.sfam,.slac,.svc-head,.tri-c,.tri-kpi,.ttc-card,.ttg-t,.vb-card,.voie-card):not(#_):not(#__):not(#___):not(#____),.grid3 :is(.acq-card,.atc-map,.atc-stat,.avk-card,.avnet-panel,.b111-c,.biz-card,.card,.card-m,.cdm-frame,.ce-card,.ckpi,.cmap-frame,.cp,.cp-note,.ct-cards,.dch-card,.divc,.duo-card,.epw-c,.esg-card,.esg-head,.eth-c,.f2f,.fam-card,.fid-card,.flip-b,.flip-f,.frm-c,.glm-c,.glow-card,.gov-c,.gtt-c,.hncard,.hxi-card,.innov-c,.isv-e,.isv-s,.it-card,.jkey,.kpi,.mad-card,.mfo-lever,.mrc-c,.ngs-t,.oeco-card,.orgc,.pcard,.pe-c,.plc-card,.pmore-card,.pof-col,.ppj-card,.ppl-tile,.ppt-card,.ppte-tile,.prc-card,.presse-card,.prof,.pub-c,.pubc,.px-card,.refc,.rh-card,.rhe-c,.rhl-c,.rhp-c,.sb-card,.sc-card,.scard,.secc,.sfam,.slac,.svc-head,.tri-c,.tri-kpi,.ttc-card,.ttg-t,.vb-card,.voie-card):not(#_):not(#__):not(#___):not(#____),.grid2 :is(.acq-card,.atc-map,.atc-stat,.avk-card,.avnet-panel,.b111-c,.biz-card,.card,.card-m,.cdm-frame,.ce-card,.ckpi,.cmap-frame,.cp,.cp-note,.ct-cards,.dch-card,.divc,.duo-card,.epw-c,.esg-card,.esg-head,.eth-c,.f2f,.fam-card,.fid-card,.flip-b,.flip-f,.frm-c,.glm-c,.glow-card,.gov-c,.gtt-c,.hncard,.hxi-card,.innov-c,.isv-e,.isv-s,.it-card,.jkey,.kpi,.mad-card,.mfo-lever,.mrc-c,.ngs-t,.oeco-card,.orgc,.pcard,.pe-c,.plc-card,.pmore-card,.pof-col,.ppj-card,.ppl-tile,.ppt-card,.ppte-tile,.prc-card,.presse-card,.prof,.pub-c,.pubc,.px-card,.refc,.rh-card,.rhe-c,.rhl-c,.rhp-c,.sb-card,.sc-card,.scard,.secc,.sfam,.slac,.svc-head,.tri-c,.tri-kpi,.ttc-card,.ttg-t,.vb-card,.voie-card):not(#_):not(#__):not(#___):not(#____){
+ background-image:none!important;
+ border-color:rgba(255,255,255,.16)!important;
+}
+/* ———— ex-bloc: tuiles-immersion ———— */
+/* Immersion (chapitre 141). Sur les 175 pages portant le fond photographique
+   .rootland, les halos de section du chapitre 136 peignaient des bandes
+   par-dessus la photo et le remplissage des tuiles en faisait des panneaux
+   poses dessus. Ici les bandes disparaissent et la tuile redevient du verre :
+   la photo la traverse. Le garde de theme et le :where([data-eh~=eh10]):not(.ehz) portent sur le
+   meme element html — les separer donne un selecteur qui ne correspond jamais. */
+
+/* 1. Plus aucune bande de fond sur les pages a fond photographique */
+html:where([data-eh~=eh10]):not(.ehz) :is(section,.wrap>div):has(.card,.card-m,.pmore-card,.ttg-t,.epw-c,.tri-c,.divc,.kpi,.biz-card,.plc-card,.f2f,.glow-card,.jkey,.eth-c,.gov-c,.refc,.prof,.cp,.tri-kpi,.b111-c,.sc-card,.hxi-card,.hncard,.prc-card,.px-card,.ppt-card,.fam-card,.esg-card,.rh-card,.it-card,.pcard,.scard,.pub-c,.pubc):not(#_):not(#__):not(#___):not(#____){background-image:none!important}
+
+/* 2. La tuile adhere a l'image : teinte legere, vrai flou, filet fin */
+html:where([data-eh~=eh10]):not(.ehz) :is(.acq-card,.atc-map,.atc-stat,.avk-card,.avnet-panel,.b111-c,.biz-card,.card,.card-m,.cdm-frame,.ce-card,.ckpi,.cmap-frame,.cp,.cp-note,.ct-cards,.dch-card,.divc,.duo-card,.epw-c,.esg-card,.esg-head,.eth-c,.f2f,.fam-card,.fid-card,.flip-b,.flip-f,.frm-c,.glm-c,.glow-card,.gov-c,.gtt-c,.hncard,.hxi-card,.innov-c,.isv-e,.isv-s,.it-card,.jkey,.kpi,.mad-card,.mfo-lever,.mrc-c,.ngs-t,.oeco-card,.orgc,.pcard,.pe-c,.plc-card,.pmore-card,.pof-col,.ppj-card,.ppl-tile,.ppt-card,.ppte-tile,.prc-card,.presse-card,.prof,.pub-c,.pubc,.px-card,.refc,.rh-card,.rhe-c,.rhl-c,.rhp-c,.sb-card,.sc-card,.scard,.secc,.sfam,.slac,.svc-head,.tri-c,.tri-kpi,.ttc-card,.ttg-t,.vb-card,.voie-card):not(#_):not(#__):not(#___):not(#____){
+ background-color:transparent!important;
+ background-image:linear-gradient(180deg,rgba(252,250,246,.56) 0%,rgba(252,250,246,.40) 100%)!important;
+ border-color:rgba(26,35,48,.12)!important;
+ box-shadow:0 1px 0 rgba(255,255,255,.55) inset,0 20px 40px -30px rgba(30,24,10,.42)!important;
+ -webkit-backdrop-filter:blur(18px) saturate(1.35)!important;backdrop-filter:blur(18px) saturate(1.35)!important;
+}
+html:not(.et-plight):not(.et-jlight):where([data-eh~=eh10]):not(.ehz) :is(.acq-card,.atc-map,.atc-stat,.avk-card,.avnet-panel,.b111-c,.biz-card,.card,.card-m,.cdm-frame,.ce-card,.ckpi,.cmap-frame,.cp,.cp-note,.ct-cards,.dch-card,.divc,.duo-card,.epw-c,.esg-card,.esg-head,.eth-c,.f2f,.fam-card,.fid-card,.flip-b,.flip-f,.frm-c,.glm-c,.glow-card,.gov-c,.gtt-c,.hncard,.hxi-card,.innov-c,.isv-e,.isv-s,.it-card,.jkey,.kpi,.mad-card,.mfo-lever,.mrc-c,.ngs-t,.oeco-card,.orgc,.pcard,.pe-c,.plc-card,.pmore-card,.pof-col,.ppj-card,.ppl-tile,.ppt-card,.ppte-tile,.prc-card,.presse-card,.prof,.pub-c,.pubc,.px-card,.refc,.rh-card,.rhe-c,.rhl-c,.rhp-c,.sb-card,.sc-card,.scard,.secc,.sfam,.slac,.svc-head,.tri-c,.tri-kpi,.ttc-card,.ttg-t,.vb-card,.voie-card):not(#_):not(#__):not(#___):not(#____){
+ background-image:linear-gradient(180deg,rgba(9,15,27,.66) 0%,rgba(9,15,27,.54) 100%)!important;
+ border-color:rgba(255,255,255,.15)!important;
+ box-shadow:0 1px 0 rgba(255,255,255,.08) inset,0 22px 46px -30px rgba(0,0,0,.6)!important;
+}
+
+/* 3. Le texte secondaire des tuiles etait deja sous le seuil AA en theme sombre
+   avant cette refonte : gris 124,138,162 mesure a 3,84:1. Sur fond
+   photographique il faut l'eclaircir, sinon l'immersion se paie en lisibilite. */
+html:not(.et-plight):not(.et-jlight):where([data-eh~=eh10]):not(.ehz) :is(.acq-card,.atc-map,.atc-stat,.avk-card,.avnet-panel,.b111-c,.biz-card,.card,.card-m,.cdm-frame,.ce-card,.ckpi,.cmap-frame,.cp,.cp-note,.ct-cards,.dch-card,.divc,.duo-card,.epw-c,.esg-card,.esg-head,.eth-c,.f2f,.fam-card,.fid-card,.flip-b,.flip-f,.frm-c,.glm-c,.glow-card,.gov-c,.gtt-c,.hncard,.hxi-card,.innov-c,.isv-e,.isv-s,.it-card,.jkey,.kpi,.mad-card,.mfo-lever,.mrc-c,.ngs-t,.oeco-card,.orgc,.pcard,.pe-c,.plc-card,.pmore-card,.pof-col,.ppj-card,.ppl-tile,.ppt-card,.ppte-tile,.prc-card,.presse-card,.prof,.pub-c,.pubc,.px-card,.refc,.rh-card,.rhe-c,.rhl-c,.rhp-c,.sb-card,.sc-card,.scard,.secc,.sfam,.slac,.svc-head,.tri-c,.tri-kpi,.ttc-card,.ttg-t,.vb-card,.voie-card) :is(p,li,dd,span:not(.epw-no)):not(#_):not(#__):not(#___):not(#____){
+ color:#D9E2EE!important;-webkit-text-fill-color:#D9E2EE!important}
+
+/* 4. Repli sans flou : sans backdrop-filter la tuile doit rester lisible */
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+ html:where([data-eh~=eh10]):not(.ehz) :is(.acq-card,.atc-map,.atc-stat,.avk-card,.avnet-panel,.b111-c,.biz-card,.card,.card-m,.cdm-frame,.ce-card,.ckpi,.cmap-frame,.cp,.cp-note,.ct-cards,.dch-card,.divc,.duo-card,.epw-c,.esg-card,.esg-head,.eth-c,.f2f,.fam-card,.fid-card,.flip-b,.flip-f,.frm-c,.glm-c,.glow-card,.gov-c,.gtt-c,.hncard,.hxi-card,.innov-c,.isv-e,.isv-s,.it-card,.jkey,.kpi,.mad-card,.mfo-lever,.mrc-c,.ngs-t,.oeco-card,.orgc,.pcard,.pe-c,.plc-card,.pmore-card,.pof-col,.ppj-card,.ppl-tile,.ppt-card,.ppte-tile,.prc-card,.presse-card,.prof,.pub-c,.pubc,.px-card,.refc,.rh-card,.rhe-c,.rhl-c,.rhp-c,.sb-card,.sc-card,.scard,.secc,.sfam,.slac,.svc-head,.tri-c,.tri-kpi,.ttc-card,.ttg-t,.vb-card,.voie-card):not(#_):not(#__):not(#___):not(#____){background-image:linear-gradient(180deg,rgba(252,250,246,.90) 0%,rgba(252,250,246,.84) 100%)!important}
+ html:not(.et-plight):not(.et-jlight):where([data-eh~=eh10]):not(.ehz) :is(.acq-card,.atc-map,.atc-stat,.avk-card,.avnet-panel,.b111-c,.biz-card,.card,.card-m,.cdm-frame,.ce-card,.ckpi,.cmap-frame,.cp,.cp-note,.ct-cards,.dch-card,.divc,.duo-card,.epw-c,.esg-card,.esg-head,.eth-c,.f2f,.fam-card,.fid-card,.flip-b,.flip-f,.frm-c,.glm-c,.glow-card,.gov-c,.gtt-c,.hncard,.hxi-card,.innov-c,.isv-e,.isv-s,.it-card,.jkey,.kpi,.mad-card,.mfo-lever,.mrc-c,.ngs-t,.oeco-card,.orgc,.pcard,.pe-c,.plc-card,.pmore-card,.pof-col,.ppj-card,.ppl-tile,.ppt-card,.ppte-tile,.prc-card,.presse-card,.prof,.pub-c,.pubc,.px-card,.refc,.rh-card,.rhe-c,.rhl-c,.rhp-c,.sb-card,.sc-card,.scard,.secc,.sfam,.slac,.svc-head,.tri-c,.tri-kpi,.ttc-card,.ttg-t,.vb-card,.voie-card):not(#_):not(#__):not(#___):not(#____){background-image:linear-gradient(180deg,rgba(9,15,27,.92) 0%,rgba(9,15,27,.86) 100%)!important}
+}
+/* ———— ex-bloc: immersion-v2 ———— */
+/* Immersion sans bandes (chapitre 142). Le decor photographique couvre la page ; les sections ne portent plus de panneau translucide, seules les tuiles font verre. Le voile global de .rootland::after est renforce a .68/.78 pour compenser la disparition des panneaux, valeur fixee par mesure du contraste au pixel peint. */.rootland{position:fixed;inset:0;z-index:-2;background:none center/cover no-repeat;pointer-events:none}.rootland::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,12,21,.68) 0%,rgba(7,12,21,.78) 100%)}html{background:#0d1524}body{background:transparent!important}main{background:transparent!important}/* plus aucun panneau de section : la photo court d'un bord a l'autre */html:not(.et-plight):not(.et-jlight) main>section,html:not(.et-plight):not(.et-jlight) body>section,html:not(.et-plight):not(.et-jlight) main>div>section{background:transparent!important;border-radius:0!important}html:not(.et-plight):not(.et-jlight) main,html:not(.et-plight):not(.et-jlight) footer{--muted:#C3D0E0}main h2,main h3,section h2,section h3{text-shadow:0 2px 18px rgba(0,0,0,.7)}html:not(.et-plight):not(.et-jlight) main>section>*>p,html:not(.et-plight):not(.et-jlight) main p.lead,html:not(.et-plight):not(.et-jlight) main .intro{text-shadow:0 1px 12px rgba(0,0,0,.55)}html:not(.et-plight):not(.et-jlight) footer{background:rgba(14,22,38,.72)!important;text-shadow:0 1px 10px rgba(0,0,0,.55)}footer a{text-shadow:none}/* pour qui demande plus de contraste, on rend les panneaux */@media(prefers-contrast:more){html:not(.et-plight):not(.et-jlight) main>section,html:not(.et-plight):not(.et-jlight) body>section,html:not(.et-plight):not(.et-jlight) main>div>section{background:rgba(14,22,38,.92)!important}}/* Theme clair : le voile doit etre clair, sinon la photo sombre transforme la page creme en champ gris. Contraste verifie : le texte sombre reste au-dessus de 6:1 sur les six pages temoins. */html.et-plight .rootland::after,html.et-jlight .rootland::after{background:linear-gradient(180deg,rgba(250,247,241,.82) 0%,rgba(250,247,241,.90) 100%)}
+/* ———— ex-bloc: hero-kick ———— */
+/* Chapeaux des heros (chapitre 143). Defaut anterieur a l'immersion, verifie
+   sur 99136d2 : dore #F0CE82 pose directement sur la photo du heros, mesure de
+   1,96 a 3,28:1 sur 9 pages dans les deux themes. Le chapeau recoit une pastille
+   au vocabulaire deja employe sur le site : fond sombre maitrise, filet dore,
+   flou leger. Le texte est force au dore clair car sur certaines pages il etait
+   sombre en theme clair, ce qui donnerait du sombre sur du sombre. */
+.hero .kick:not(#_):not(#__):not(#___):not(#____):not(#_____),
+.dsh .kick:not(#_):not(#__):not(#___):not(#____):not(#_____),
+.pghero .kick:not(#_):not(#__):not(#___):not(#____):not(#_____),
+.hx-hero .kick:not(#_):not(#__):not(#___):not(#____):not(#_____){
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  background:linear-gradient(90deg,rgba(14,22,38,.76) 0%,rgba(14,22,38,.64) 100%)!important;
+  padding:5px 13px!important;
+  border-radius:999px!important;
+  border:1px solid rgba(240,206,130,.26)!important;
+  -webkit-backdrop-filter:blur(6px);
+  backdrop-filter:blur(6px);
+  color:#F2D28C!important;
+  -webkit-text-fill-color:#F2D28C!important;
+}
+/* charte.html : le heros .dsh commence a y=0, le chapeau se trouvait a 72 px,
+   entierement masque par la barre fixe. On lui rend la hauteur de la barre. */
+.dsh:not(#_):not(#__):not(#___){
+  padding-top:calc(var(--nav-h,110px) + 26px)!important;
+}
+@media (max-width:640px){
+  .hero .kick:not(#_):not(#__),
+  .dsh .kick:not(#_):not(#__),
+  .pghero .kick:not(#_):not(#__),
+  .hx-hero .kick:not(#_):not(#__){
+    padding:4px 10px!important;
+  }
+}
+/* ———— ex-bloc: verre-final ———— */
+/* Verre immersif final (chapitre 144). Le diagnostic du chapitre est dans
+   MAINTENANCE : la regle d'immersion du chapitre 141 correspondait bien aux
+   sections mais perdait la cascade contre les halos du chapitre 136. Ce bloc,
+   place en dernier dans le head et arme a six identifiants, tranche : plus
+   aucune bande large entre la photo et les tuiles. La barre de navigation et
+   le pied de page gardent leur fond — ils portent la lisibilite de la
+   navigation, pas le decor. */
+
+/* 1. Toute section et tout panneau large deviennent transparents. */
+html:where([data-eh~=eh10]):not(.ehz) main section:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
+html:where([data-eh~=eh10]):not(.ehz) body > section:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
+html:where([data-eh~=eh10]):not(.ehz) main > div > section:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
+html:where([data-eh~=eh10]):not(.ehz) .cmpw:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
+html:where([data-eh~=eh10]):not(.ehz) .pj-banner:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
+html:where([data-eh~=eh10]):not(.ehz) .docn:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
+html:where([data-eh~=eh10]):not(.ehz) .it-grid:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
+html:where([data-eh~=eh10]):not(.ehz) .epw-g:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
+html:where([data-eh~=eh10]):not(.ehz) .biz-grid:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______){
+  background-color:transparent!important;
+  background-image:none!important;
+  box-shadow:none!important;
+}
+
+/* 2. Le bandeau d'appel a l'action garde une presence, mais en verre. */
+html:where([data-eh~=eh10]):not(.ehz) #cta-band:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______){
+  background-color:transparent!important;
+  background-image:linear-gradient(180deg,rgba(14,22,38,.30) 0%,rgba(14,22,38,.44) 100%)!important;
+  -webkit-backdrop-filter:blur(10px);
+  backdrop-filter:blur(10px);
+}
+html.et-plight:where([data-eh~=eh10]):not(.ehz) #cta-band:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
+html.et-jlight:where([data-eh~=eh10]):not(.ehz) #cta-band:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______){
+  background-image:linear-gradient(180deg,rgba(252,250,246,.42) 0%,rgba(252,250,246,.58) 100%)!important;
+}
+
+/* 3. Theme clair : le voile creme s'allege pour que la photo traverse.
+   Valeur fixee par mesure du contraste au pixel peint apres application. */
+html.et-plight .rootland::after,
+html.et-jlight .rootland::after{
+  background:linear-gradient(180deg,rgba(250,247,241,.66) 0%,rgba(250,247,241,.78) 100%)!important;
+}
+
+/* 4. En preference de contraste renforce, les panneaux reviennent opaques. */
+@media (prefers-contrast:more){
+  html:where([data-eh~=eh10]):not(.ehz) main section:not(#_):not(#__):not(#___):not(#____),
+  html:where([data-eh~=eh10]):not(.ehz) body > section:not(#_):not(#__):not(#___):not(#____){
+    background-color:rgba(14,22,38,.92)!important;
+  }
+  html.et-plight:where([data-eh~=eh10]):not(.ehz) main section:not(#_):not(#__):not(#___):not(#____),
+  html.et-plight:where([data-eh~=eh10]):not(.ehz) body > section:not(#_):not(#__):not(#___):not(#____){
+    background-color:rgba(250,247,241,.96)!important;
+  }
+}
+</style><link rel="stylesheet" href="/assets/chrome/da_glass.css?v=202609111349">
+<link rel="stylesheet" id="journal-css" href="/assets/chrome/journal.css?b=202609171700">
+<link rel="stylesheet" id="fond647" href="/assets/chrome/fond647.css?b=202609171400"><link rel="stylesheet" id="premium-chrome" href="/assets/chrome/premium-chrome.css?b=202610011500">
+<style id="cue-none">/* Pas de pastille « Suite » sur les outils et les articles : le contenu commence au premier ecran. */#scrollcue{display:none!important}</style></head>
+<body data-eh="eh1 eh8" id="top"><a href="#main-content" class="skip-link">Aller au contenu principal</a>
+<header>
+<nav class="nav nx pn" id="nav" aria-label="Navigation principale">
+  <div class="nx-util"><div class="nx-util-in"><a href="/clients">Clients</a><a href="/achats">Fournisseurs</a><a href="/contact">Contact</a><a href="/carrieres">Carrières</a><a href="/journal-criblage-eor-en" class="nx-lang" aria-label="English version" title="English">FR&nbsp;·&nbsp;<b>EN</b></a><a href="/ar" class="nx-langx" aria-label="النسخة العربية" title="العربية" lang="ar">ع</a><a href="/recherche" class="nx-search" aria-label="Rechercher">Rechercher</a><a href="/investisseurs#souscrire" class="nx-invest">Investir</a></div></div>
+  <div class="nav-in nx-bar">
+    <a href="/" class="brand" aria-label="EnerTchad — Accueil" title="Accueil">
+      <span class="brand-mk"><span class="logo-img" role="img" aria-label="EnerTchad"></span></span>
+      <span class="brand-tx">Ener<span class="s">Tchad</span><small>Accès aux Énergies</small></span>
+    </a>
+    <div data-eh="eh13" class="nav-links" id="navLinks"><div class="nav-item pn-item"><button type="button" class="nav-trigger" aria-expanded="false" aria-haspopup="true" aria-controls="nxm-a">Qui sommes-nous <svg aria-hidden="true" focusable="false" width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 4.5L6 8l3.5-3.5"/></svg></button><div class="nx-mega pn-mega" id="nxm-a" role="region" aria-label="Qui sommes-nous"><div class="nx-col pn-intro"><p class="nxh">Qui sommes-nous</p><p class="pn-d">Une société pétrolière intégrée, à capitaux tchadiens, en constitution à N’Djamena.</p><a class="pn-all" href="/societe"><strong>Vue d’ensemble</strong><em>Qui sommes-nous</em></a></div><div class="nx-col pn-links"><a href="/societe"><strong>La Société</strong><em>Mission, vision, repères</em></a><a href="/gouvernance"><strong>Gouvernance</strong><em>Société anonyme OHADA</em></a><a href="/ethique"><strong>Éthique &amp; conformité</strong><em>Code de conduite, canal d’alerte</em></a><a href="/innovation"><strong>Innovation &amp; R&amp;D</strong><em>Ingénierie frugale, IA</em></a><a href="/achats"><strong>Achats &amp; fournisseurs</strong><em>Centrale d’achat, référencement</em></a><a href="/brochure"><strong>Brochure institutionnelle</strong><em>L’essentiel en six pages</em></a><a href="/faq"><strong>Questions fréquentes</strong><em>Centre d’aide</em></a><a href="/contact"><strong>Contact</strong><em>Écrire, appeler, venir</em></a></div><a class="nx-feat pn-feat" href="/societe#voie"><span class="tag">La Voie EnerTchad</span><strong>Bâtir et retenir la valeur au pays</strong><em>Mission, vision et cercle vertueux</em><span class="arr">→</span></a></div></div><div class="nav-item pn-item"><button type="button" class="nav-trigger" aria-expanded="false" aria-haspopup="true" aria-controls="nxm-b">Nos activités <svg aria-hidden="true" focusable="false" width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 4.5L6 8l3.5-3.5"/></svg></button><div class="nx-mega pn-mega" id="nxm-b" role="region" aria-label="Nos activités"><div class="nx-col pn-intro"><p class="nxh">Nos activités</p><p class="pn-d">Quatre segments industriels, soutenus par quatre capacités intégrées.</p><a class="pn-all" href="/nos-activites"><strong>Vue d’ensemble</strong><em>Nos activités</em></a></div><div class="nx-col pn-links"><a href="/amont/"><strong>Exploration &amp; Production</strong><em>Extraire davantage de chaque gisement</em></a><a href="/intermediaire/"><strong>Transport &amp; stockage</strong><em>Corridor d’export, réserve distribuée</em></a><a href="/aval/"><strong>Raffinage &amp; distribution</strong><em>Mini-raffinerie, stations, dernier km</em></a><a href="/petrochimie/"><strong>Pétrochimie</strong><em>Méthanol, urée, bitume</em></a><a href="/tchaditech/"><strong>Technologies</strong><em>TchadiTech : numérique, données</em></a><a href="/enerconseils/"><strong>Conseil &amp; Atlas</strong><em>EnerConseils : études, audits</em></a><a href="/nos-activites#besoins"><strong>Solutions par besoin</strong><em>Produire, acheminer, transformer</em></a><a href="/clients"><strong>Devenir client</strong><em>Carburants, services, boutique</em></a></div><a class="nx-feat pn-feat" href="/amont/calculateur-baril-additionnel"><span class="tag">Outil</span><strong>Calculateur du baril additionnel</strong><em>Estimer le gain d’une récupération assistée</em><span class="arr">→</span></a></div></div><div class="nav-item pn-item"><button type="button" class="nav-trigger" aria-expanded="false" aria-haspopup="true" aria-controls="nxm-c">Durabilité <svg aria-hidden="true" focusable="false" width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 4.5L6 8l3.5-3.5"/></svg></button><div class="nx-mega pn-mega" id="nxm-c" role="region" aria-label="Durabilité"><div class="nx-col pn-intro"><p class="nxh">Durabilité</p><p class="pn-d">Des règles posées avant le premier baril : climat, territoires, sécurité, transparence.</p><a class="pn-all" href="/greentech/"><strong>Vue d’ensemble</strong><em>Durabilité</em></a></div><div class="nx-col pn-links"><a href="/engagements"><strong>Engagements &amp; indicateurs</strong><em>Base, réalisé, cible, échéance</em></a><a href="/cibles-2030"><strong>Cibles 2030</strong><em>Tableau de bord</em></a><a href="/communautes"><strong>Communautés &amp; territoires</strong><em>Contenu local, désenclavement</em></a><a href="/tchaditude/"><strong>Capital humain</strong><em>Tchaditude : académie, relève</em></a><a href="/paiements-etats"><strong>Paiements aux États</strong><em>Les sept catégories ITIE</em></a><a href="/ethique"><strong>Éthique &amp; conformité</strong><em>Anti-corruption, alerte</em></a></div><a class="nx-feat pn-feat" href="/greentech/#transition"><span class="tag">Transition</span><strong>30 % et plus de renouvelables visés</strong><em>Climat et énergie</em><span class="arr">→</span></a></div></div><div class="nav-item pn-item"><button type="button" class="nav-trigger" aria-expanded="false" aria-haspopup="true" aria-controls="nxm-d">Investisseurs <svg aria-hidden="true" focusable="false" width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 4.5L6 8l3.5-3.5"/></svg></button><div class="nx-mega pn-mega" id="nxm-d" role="region" aria-label="Investisseurs"><div class="nx-col pn-intro"><p class="nxh">Investisseurs</p><p class="pn-d">Un capital levé par paliers, de 100 M à 10 Md FCFA, avec des jalons datés.</p><a class="pn-all" href="/investor-center"><strong>Vue d’ensemble</strong><em>Investisseurs</em></a></div><div class="nx-col pn-links"><a href="/investisseurs#these"><strong>Thèse d’investissement</strong><em>Pourquoi le Tchad, maintenant</em></a><a href="/investisseurs#modele"><strong>Modèle d’affaires</strong><em>Chaque étage finance le suivant</em></a><a href="/projets"><strong>Feuille de route</strong><em>8 chantiers phares datés</em></a><a href="/cibles-2030"><strong>Cibles 2030</strong><em>Tableau de bord</em></a><a href="/publications"><strong>Publications &amp; documents</strong><em>Fiche, data book, mémorandum</em></a><a href="/investisseurs#agenda"><strong>Agenda investisseur</strong><em>Prochains rendez-vous</em></a><a href="/gouvernance"><strong>Gouvernance</strong><em>Société anonyme OHADA</em></a><a href="/tchaditude/#partenariats"><strong>Partenariats</strong><em>GCIC · OT, État, académique visés</em></a></div><a class="nx-feat pn-feat" href="/investisseurs#souscrire"><span class="tag">Passer à l’acte</span><strong>Souscrire au capital</strong><em>De 100 M à 10 Md FCFA, par paliers</em><span class="arr">→</span></a></div></div><div class="nav-item pn-item"><button type="button" class="nav-trigger is-active" aria-current="true" aria-expanded="false" aria-haspopup="true" aria-controls="nxm-e">Actualités <svg aria-hidden="true" focusable="false" width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 4.5L6 8l3.5-3.5"/></svg></button><div class="nx-mega pn-mega" id="nxm-e" role="region" aria-label="Actualités"><div class="nx-col pn-intro"><p class="nxh">Actualités</p><p class="pn-d">Communiqués, enquêtes techniques et interviews métier, datés.</p><a class="pn-all" href="/carnets"><strong>Vue d’ensemble</strong><em>Actualités</em></a></div><div class="nx-col pn-links"><a href="/carnets"><strong>Carnets</strong><em>Articles et interviews</em></a><a href="/communiques"><strong>Communiqués officiels</strong><em>Annonces datées</em></a><a href="/communiques#presse"><strong>Espace presse</strong><em>Contacts et ressources</em></a><a href="/atlas/"><strong>Atlas du secteur</strong><em>Le secteur pétrolier du Tchad</em></a><a href="/glossaire-petrolier"><strong>Glossaire pétrolier</strong><em>Les termes du métier</em></a></div><a class="nx-feat pn-feat" href="/journal-premiere-du-genre"><span class="tag">Carnet</span><strong>Première du genre</strong><em>Une chaîne intégrée pensée au Tchad</em><span class="arr">→</span></a></div></div><div class="nav-item pn-item"><button type="button" class="nav-trigger" aria-expanded="false" aria-haspopup="true" aria-controls="nxm-f">Carrières <svg aria-hidden="true" focusable="false" width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 4.5L6 8l3.5-3.5"/></svg></button><div class="nx-mega pn-mega" id="nxm-f" role="region" aria-label="Carrières"><div class="nx-col pn-intro"><p class="nxh">Carrières</p><p class="pn-d">Du puits à la pompe, une chaîne entière à faire tourner, avec la relève tchadienne d’abord.</p><a class="pn-all" href="/carrieres"><strong>Vue d’ensemble</strong><em>Carrières</em></a></div><div class="nx-col pn-links"><a href="/carrieres"><strong>Métiers &amp; candidatures</strong><em>Géosciences, forage, HSE, digital</em></a><a href="/tchaditude/"><strong>Académie Tchaditude</strong><em>Former avant d’extraire</em></a><a href="/journal-former-avant-extraire"><strong>Former avant d’extraire</strong><em>Carnet · l’académie</em></a><a href="/journal-interview-wellpads"><strong>Chef de chantier wellpads</strong><em>Interview métier</em></a></div><a class="nx-feat pn-feat" href="/carrieres"><span class="tag">Nous rejoindre</span><strong>Les talents tchadiens d’abord</strong><em>Familles de métiers ouvertes</em><span class="arr">→</span></a></div></div><div class="nx-util-m"><a href="/clients">Clients</a><a href="/achats">Fournisseurs</a><a href="/contact">Contact</a><a href="/carrieres">Carrières</a><a href="/journal-criblage-eor-en">English</a><a href="/ar" lang="ar">العربية</a><a href="/investisseurs#souscrire" class="cta">Investir</a></div></div>
+    <div class="nav-cta nx-cta">
+      <button type="button" class="nav-search" id="navSearch" aria-label="Rechercher (Ctrl+K)" title="Rechercher (Ctrl+K)" onclick="window.openCmdk&amp;&amp;window.openCmdk()"><svg aria-hidden="true" focusable="false" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="10.5" cy="10.5" r="6.6" stroke-width="1.7"/><path d="M19.8 19.8l-4.6-4.6" stroke-width="1.7" stroke-linecap="round"/></svg></button>
+      <button type="button" class="nav-tog" id="navTog" aria-label="Menu"><span class="bz" aria-hidden="true"></span><span class="bz" aria-hidden="true"></span><span class="bz" aria-hidden="true"></span></button>
+    </div>
+  </div>
+</nav>
+<script src="/assets/chrome/nav_a.js?b=202608300720" defer></script>
+<script src="/assets/chrome/u2_e8be195d19be.js" defer></script>
+</header>
+<article role="main">
+<div class="jhero" role="region" aria-label="Introduction">
+  <nav class="crumb" aria-label="Fil d’Ariane"><a href="/">Accueil</a><span class="crumb-sep">›</span><a href="/carnets">Carnets</a><span class="crumb-sep">›</span><span>Le criblage EOR</span></nav>
+  <span class="jkick">Exploration &amp; Production · Science du réservoir</span>
+  <h1 id="main-content" tabindex="-1">Le criblage EOR : la bonne méthode pour le bon réservoir.</h1>
+  <p class="jdek">Chimie, vapeur ou gaz ? Avant d’injecter quoi que ce soit, on interroge le réservoir. Densité, viscosité, profondeur, température, perméabilité : cinq mesures qui décident de la méthode — et évitent de coûteuses erreurs.</p>
+  <div class="jmeta"><span>14 juillet 2026</span><span class="dot"></span><span>Par la rédaction EnerTchad</span><span class="dot"></span><span>≈ 6 min de lecture</span></div>
+</div>
+<figure class="jn-fig" style="--jx:6%"><span class="jn-band" role="img" aria-label="Planche 01 · Coupe — Demi-graben, discordance post-rift — détail"></span><figcaption><b>Planche 01 · Coupe</b><span>Demi-graben, discordance post-rift — détail</span><span>Dessin EnerTchad</span></figcaption></figure>
+<div class="jbody">
+  <p>La récupération assistée fait rêver par ses chiffres — <strong>jusqu’à 17 points d’OOIP</strong> de plus par réservoir — mais elle ne se commande pas sur catalogue. Injecter de la vapeur dans un gisement qui appelle de la chimie, ou des polymères là où il faudrait du gaz, c’est dépenser beaucoup pour récupérer peu. Tout commence donc par un exercice discret et décisif : le <strong>criblage</strong> — anglais <em>screening</em> — qui confronte chaque méthode aux propriétés mesurées du réservoir.</p>
+  <p>Cet article explique la logique de cette grille — celle-là même que nous détaillons sur la page <a href="/amont/eor#eor-screening">Récupération assistée</a>.</p>
+
+  <h2>Trois familles, trois logiques</h2>
+  <p>Les méthodes <a href="/glossaire-petrolier#t-eor" class="glref">EOR</a> se rangent en trois familles. La voie <strong>chimique</strong> — polymères, puis alcalin-surfactant-polymère (<a href="/glossaire-petrolier#t-asp" class="glref">ASP</a>) — épaissit l’eau d’injection pour mieux balayer, et abaisse la tension interfaciale pour décoller le brut piégé. La voie <strong>thermique</strong> — vapeur en injection cyclique (CSS) — réchauffe le réservoir pour fluidifier un brut visqueux. La voie <strong>gaz</strong> — injection alternée eau-gaz (WAG) — remet du gaz au contact du brut pour le gonfler et le remobiliser.</p>
+  <p>Chacune attaque un verrou différent : la chimie s’en prend au <strong>piège capillaire</strong>, la vapeur à la <strong>viscosité</strong>, le gaz au <strong>manque d’énergie</strong> du réservoir. D’où la règle d’or : on ne choisit pas une méthode, on diagnostique un gisement.</p>
+
+  <div class="jkey">
+    <b>À retenir.</b> Cinq mesures suffisent pour un premier tri : densité API du brut, viscosité, profondeur, température et perméabilité de la roche. Chaque méthode a sa fenêtre sur chacun de ces axes — le criblage consiste à superposer les fenêtres.
+  </div>
+
+  <h2>La grille, ligne à ligne</h2>
+  <p>La <strong>densité API</strong> et la <strong>viscosité</strong> disent la nature du brut : léger et mobile, il se prête au gaz&nbsp;; moyennement lourd, à la chimie&nbsp;; très visqueux, à la vapeur. La <strong>profondeur</strong> arbitre entre vapeur et gaz : trop profond, la vapeur perd sa chaleur en route&nbsp;; trop peu profond, le gaz ne peut pas être comprimé au point de se mélanger au brut. La <strong>température</strong> de gisement borne la chimie — au-delà d’un seuil, polymères et tensioactifs se dégradent. La <strong>perméabilité</strong>, enfin, conditionne l’injection des polymères : il faut que la molécule passe entre les grains.</p>
+  <p>Aucun de ces critères n’est un verdict isolé. C’est leur <strong>recoupement</strong> qui élimine les impasses et fait émerger, pour chaque gisement, une ou deux voies candidates — pas plus.</p>
+
+  <h2>Le cas des grès de Doba</h2>
+  <p>Appliquée aux champs matures du bassin de Doba, la grille parle clairement. Un brut de <strong>21 à 24° API</strong>, des <strong>grès peu profonds</strong>, des températures modérées : c’est le cœur de cible de la voie <strong>chimique</strong>. Mieux : l’acidité naturelle élevée du brut — son <a href="/glossaire-petrolier#t-tan" class="glref">TAN</a>, qui complique le <a href="/journal-enigme-densite-brut">raffinage</a> — devient un atout, car l’alcalin injecté saponifie ces acides et fabrique du tensioactif <em>in situ</em>. Le défaut de la molécule travaille pour la récupération.</p>
+  <p>La vapeur reste une carte à jouer sur les poches les moins profondes et les plus visqueuses&nbsp;; le WAG, lui, attendra une source de gaz — c’est l’un des enjeux du champ dormant de <a href="/journal-gaz-sedigui">Sédigui</a>.</p>
+
+  <blockquote>
+    Le criblage ne dit pas « quelle est la meilleure méthode » — il dit « laquelle a le droit d’être testée ici ». C’est un filtre, pas un oracle.
+  </blockquote>
+
+  <h2>Ce que la grille ne dit pas</h2>
+  <p>Un criblage réussi n’est qu’un billet d’entrée. Restent les <strong>carottes</strong> en laboratoire, la compatibilité avec l’eau de gisement, la disponibilité des intrants — où le Tchad a ses cartes propres, du natron du Kanem à la <a href="/journal-chimie-eor-locale">gomme arabique</a> —, puis le <strong>pilote</strong> sur quelques puits avant tout déploiement. Et bien sûr l’économie : un baril additionnel ne vaut que s’il est récupéré à un coût inférieur à son prix — c’est tout l’objet du <a href="/amont/calculateur-baril-additionnel">Calculateur du baril</a>.</p>
+  <p>EnerTchad est une société en constitution : ces méthodes sont des programmes d’étude et de pilotes, datés dans nos <a href="/cibles-2030">cibles 2030</a>, pas des procédés en exploitation. Mais la démarche, elle, est déjà arrêtée : mesurer d’abord, choisir ensuite, piloter avant de promettre.</p>
+</div>
+<div class="jfoot">
+  <div class="more">
+    <span class="more-k">Pour aller plus loin</span>
+    <a href="/amont/eor#eor-screening">La grille de criblage, méthode par méthode →</a>
+    <a href="/journal-chimie-eor-locale">Natron, neem, coton : la chimie EOR locale →</a>
+    <a href="/journal-eor-baril-additionnel">Le baril additionnel →</a>
+   <a class="rublink" href="/carnets#rub-amont">Tous les carnets Exploration &amp; Production →</a> </div>
+
+<nav class="more jseq" aria-label="Lecture continue" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px"><a href="/journal-mecanique-fluides"><span style="display:block;font-family:var(--fm);font-size:0.6875rem;letter-spacing:.14em;text-transform:uppercase;opacity:.75;margin-bottom:5px">← Article précédent</span>Faire couler un brut qui ne veut pas couler.</a><a href="/journal-interview-wellpads"><span style="display:block;font-family:var(--fm);font-size:0.6875rem;letter-spacing:.14em;text-transform:uppercase;opacity:.75;margin-bottom:5px">Article suivant →</span>Avant l’appareil de forage : dans les bottes d’un chef de chantier wellpads.</a></nav><style>.jseq a{display:block!important}@media(max-width:640px){.jseq{grid-template-columns:1fr!important}}</style>
+<div class="jsig">EnerTchad S.A. — société de droit OHADA en constitution. Cet article a une vocation pédagogique ; les ressources citées relèvent de repères publics et les approches décrites sont des objectifs de pilotes, non des procédés en exploitation. <a href="/carnets">← Retour aux Carnets</a></div>
+</div>
+</article>
+<button type="button" id="scrollcue" class="scrollcue" aria-label="Voir la suite plus bas" title="Plus bas"><span class="sc-lb">Suite</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 6l5 5 5-5M7 13l5 5 5-5"/></svg></button><div role="region" aria-label="Autour de l’article" style="padding:0 24px 28px"><div class="et-soc-foot" aria-label="EnerTchad sur les réseaux sociaux" style="display:flex;gap:9px;flex-wrap:wrap;justify-content:center;margin:18px auto 0;padding-top:16px;border-top:1px solid rgba(255,255,255,.08);max-width:1240px"><a href="https://www.linkedin.com/company/enertchad" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn" data-social="linkedin"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM10 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.4c0-1.29-.02-2.95-1.8-2.95-1.8 0-2.07 1.4-2.07 2.85V21h-4z"/></svg></a><a href="https://www.facebook.com/enertchad" target="_blank" rel="noopener" aria-label="Facebook" title="Facebook" data-social="facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.78-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.45 2.89h-2.33v6.99A10 10 0 0 0 22 12z"/></svg></a><a href="https://wa.me/23599298696" target="_blank" rel="noopener" aria-label="WhatsApp" title="WhatsApp" data-social="whatsapp"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.5 15.2L2 22l4.9-1.3A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-2.9.8.8-2.8-.2-.3A8 8 0 1 1 12 20zm4.4-6c-.2-.1-1.4-.7-1.6-.8s-.4-.1-.5.1-.6.8-.7 1-.3.1-.5 0a6.5 6.5 0 0 1-1.9-1.2 7.2 7.2 0 0 1-1.3-1.7c-.1-.2 0-.3.1-.4l.4-.5.2-.3v-.4c0-.1-.5-1.3-.7-1.7s-.4-.4-.5-.4h-.5a1 1 0 0 0-.7.3A2.8 2.8 0 0 0 6.5 9a4.9 4.9 0 0 0 1 2.6 11.3 11.3 0 0 0 4.4 3.9c2 .8 2 .5 2.4.5a2.5 2.5 0 0 0 1.6-1.1 2 2 0 0 0 .1-1.1c0-.1-.2-.2-.4-.3z"/></svg></a></div></div><script defer id="prem-home-js" src="/assets/chrome/x_97621c63f946.js"></script><button type="button" id="toTop" aria-label="Revenir en haut de page" title="Haut de page"><svg class="ttr" viewBox="0 0 52 52" aria-hidden="true"><circle class="ttt" cx="26" cy="26" r="24"/><circle class="ttp" cx="26" cy="26" r="24"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button><script type="speculationrules">{"prerender":[{"where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":"/*.pptx"}},{"not":{"href_matches":"/*.pdf"}},{"not":{"href_matches":"/*.md"}},{"not":{"selector_matches":"[target=_blank]"}}]},"eagerness":"moderate"}]}</script><div class="prt560" role="complementary" aria-label="Partager cet article"><span class="pk">Partager</span><a data-p="li" href="#" rel="noopener" target="_blank" aria-label="Partager sur LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5A2.5 2.5 0 1 0 5 8.5a2.5 2.5 0 0 0-.02-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-.95 1.83-1.95 3.76-1.95 4.02 0 4.76 2.5 4.76 5.76V21h-4v-5.6c0-1.34-.02-3.07-1.9-3.07-1.9 0-2.19 1.46-2.19 2.97V21H9z"/></svg><span>LinkedIn</span></a><a data-p="x" href="#" rel="noopener" target="_blank" aria-label="Partager sur X"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 3h3.2l-7 8 8.2 10h-6.4l-5-6.1L4.7 21H1.5l7.5-8.6L1.2 3h6.6l4.5 5.6zm-1.1 16h1.8L7.7 4.8H5.8z"/></svg><span>X</span></a><a data-p="m" href="#" aria-label="Envoyer par e-mail"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="m3 6 9 6.5L21 6"/></svg><span>E-mail</span></a><button type="button" data-p="c" data-ok="Lien copié" aria-label="Copier le lien"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="8.5" y="8.5" width="12" height="12" rx="2.5"/><path d="M15.5 5.5A2 2 0 0 0 13.5 3.5h-8a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2"/></svg><span class="pl">Copier le lien</span></button></div><style id="prt560">.prt560{max-width:var(--mw,1200px);margin:0 auto;padding:26px var(--gut,24px) 0;display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+.prt560 .pk{font-family:var(--fm,ui-monospace,monospace);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted,#93A1B8);margin-right:4px}
+.prt560 a,.prt560 button{display:inline-flex;align-items:center;gap:7px;min-height:36px;padding:7px 13px;border:1px solid var(--g-brd,rgba(255,255,255,.18));border-radius:999px;background:rgba(255,255,255,.035);color:inherit;font:inherit;font-size:.82rem;text-decoration:none;cursor:pointer}
+.prt560 a:hover,.prt560 button:hover{border-color:var(--blue-l,#00B4D8)}
+.prt560 a:focus-visible,.prt560 button:focus-visible{outline:2px solid var(--blue-l,#00B4D8);outline-offset:3px}
+.prt560 svg{width:15px;height:15px;flex:none}
+html.et-plight .prt560 a,html.et-plight .prt560 button,html.et-jlight .prt560 a,html.et-jlight .prt560 button{background:rgba(255,255,255,.6);border-color:rgba(0,48,73,.14)}
+html.et-plight .prt560 .pk,html.et-jlight .prt560 .pk{color:#5A6472}
+</style><section class="lie560" aria-label="Contenu lié"><h2>À lire ensuite</h2><div class="lie560-g"><a class="lie560-c" href="/journal-enigme-densite-brut"><i>Article</i><b>L’énigme du « 28-32° » enfin résolue.</b><span>Deux densités circulent pour le brut tchadien : la réponse tient en un mot — Ronier. L’acidité du Doba (TAN…</span></a><a class="lie560-c" href="/journal-gaz-sedigui"><i>Article</i><b>Sédigui : le gisement qui dort peut nourrir et éclairer le pays.</b><span>Jamais exploité, le gaz de Sédigui (~7 Md m³) peut devenir électricité (125 MW) et engrais (ammoniac, urée)…</span></a><a class="lie560-c" href="/carnets"><i>Index</i><b>Tous les carnets</b><span>Reportages, interviews de métier et explications techniques — la collection entière.</span></a></div></section><style id="lie560">.lie560{max-width:var(--mw,1200px);margin:0 auto;padding:34px var(--gut,24px) 8px}
+.lie560 h2{font-family:var(--fd);font-weight:800;font-size:var(--ts-7,clamp(1.08rem,2.1vw,1.5rem));letter-spacing:-.01em;margin:0 0 14px}
+.lie560-g{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+.lie560-c{display:block;border:1px solid var(--g-brd,rgba(255,255,255,.18));border-radius:14px;padding:16px 18px;text-decoration:none;color:inherit;background:rgba(255,255,255,.035)}
+.lie560-c:hover{border-color:var(--blue-l,#00B4D8)}
+.lie560-c:focus-visible{outline:2px solid var(--blue-l,#00B4D8);outline-offset:3px}
+.lie560-c i{display:block;font-style:normal;font-family:var(--fm,ui-monospace,monospace);font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted,#93A1B8);margin:0 0 6px}
+.lie560-c b{display:block;font-family:var(--fd);font-size:1rem;line-height:1.35;margin:0 0 5px}
+.lie560-c span{display:block;font-size:.86rem;line-height:1.5;color:var(--muted-l,#B8C6DA)}
+html.et-plight .lie560-c,html.et-jlight .lie560-c{background:rgba(255,255,255,.6);border-color:rgba(0,48,73,.14)}
+html.et-plight .lie560-c span,html.et-jlight .lie560-c span{color:#3D4A5C}
+html.et-plight .lie560-c i,html.et-jlight .lie560-c i{color:#5A6472}
+</style><section data-eh="eh3" id="cta-band" aria-label="Travailler avec EnerTchad"><div class="cb-in"><div><p class="cb-k">◆ Unité · Innovation · Durabilité</p><h2>De la roche-mère à la pompe, <em>bâti au Tchad</em>.</h2></div><div class="cb-a"><a class="cb-btn cb-p" href="/investisseurs">Investir →</a><a class="cb-btn cb-g" href="/contact">Nous contacter</a></div></div></section><nav class="pgr" aria-label="Naviguer entre les articles"><a href="/journal-mecanique-fluides"><span class="dir">&larr; Pr&eacute;c&eacute;dent</span><span class="ttl">Les fluides, du gisement à la pompe</span></a><a class="home" href="/carnets"><span class="dir">&#8962;</span><span class="ttl">Carnets</span></a><a class="next" href="/journal-interview-wellpads"><span class="dir">Suivant &rarr;</span><span class="ttl">Chef de chantier wellpads, avant le forage</span></a></nav><footer class="pft">
+  <div class="wrap">
+    <p class="pft-motto">De la roche-mère à la pompe.</p>
+    <div class="foot-news"><div class="fn-txt"><p class="fn-k">Newsletter mensuelle</p><b class="fn-t">L’essentiel d’EnerTchad, chaque mois.</b><p class="fn-d">Jalons, avancées et communiqués — un e-mail par mois, rien de plus.</p></div><p class="fn-alt"><a href="/newsletter">Inscription à la newsletter en préparation →</a></p></div>
+    <div class="foot-grid pft-grid">
+      <div class="foot-brand"><a href="/" class="brand">
+          <span class="brand-mk"><span class="logo-img" role="img" aria-label="EnerTchad"></span></span>
+          <span class="brand-tx">Ener<span class="s">Tchad</span><small>Accès aux Énergies</small></span>
+        </a><p class="foot-desc">Société pétrolière intégrée à capitaux tchadiens, de la roche-mère à la pompe.</p><div class="pft-contact"><a href="mailto:contact@enertchad.com">contact@enertchad.com</a><a href="tel:+23599298696">+235 99 29 86 96</a></div><div class="foot-social" aria-label="EnerTchad sur les réseaux sociaux"><a href="https://www.linkedin.com/company/enertchad" target="_blank" rel="noopener" aria-label="EnerTchad sur LinkedIn" title="LinkedIn" data-social="linkedin"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM10 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.4c0-1.29-.02-2.95-1.8-2.95-1.8 0-2.07 1.4-2.07 2.85V21h-4z"/></svg></a><a href="https://www.facebook.com/enertchad" target="_blank" rel="noopener" aria-label="EnerTchad sur Facebook" title="Facebook" data-social="facebook"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.78-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.45 2.89h-2.33v6.99A10 10 0 0 0 22 12z"/></svg></a><a href="https://wa.me/23599298696" target="_blank" rel="noopener" aria-label="EnerTchad sur WhatsApp" title="WhatsApp" data-social="whatsapp"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.5 15.2L2 22l4.9-1.3A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-2.9.8.8-2.8-.2-.3A8 8 0 1 1 12 20zm4.4-6c-.2-.1-1.4-.7-1.6-.8s-.4-.1-.5.1-.6.8-.7 1-.3.1-.5 0a6.5 6.5 0 0 1-1.9-1.2 7.2 7.2 0 0 1-1.3-1.7c-.1-.2 0-.3.1-.4l.4-.5.2-.3v-.4c0-.1-.5-1.3-.7-1.7s-.4-.4-.5-.4h-.5a1 1 0 0 0-.7.3A2.8 2.8 0 0 0 6.5 9a4.9 4.9 0 0 0 1 2.6 11.3 11.3 0 0 0 4.4 3.9c2 .8 2 .5 2.4.5a2.5 2.5 0 0 0 1.6-1.1 2 2 0 0 0 .1-1.1c0-.1-.2-.2-.4-.3z"/></svg></a></div></div>
+      <div class="foot-col"><h3>Rubriques</h3><a href="/societe">Qui sommes-nous</a><a href="/nos-activites">Nos activités</a><a href="/greentech/">Durabilité</a><a href="/investor-center">Investisseurs</a><a href="/carnets">Actualités</a><a href="/carrieres">Carrières</a></div>
+      <div class="foot-col"><h3>Accès directs</h3><a href="/clients">Devenir client</a><a href="/achats">Fournisseurs</a><a href="/communiques#presse">Espace presse</a><a href="/faq">Questions fréquentes</a><a href="/contact">Contact</a><a href="/plan-du-site">Plan du site</a></div>
+      <div class="foot-col"><h3>Informations</h3><a href="/mentions-legales">Mentions légales</a><a href="/confidentialite">Confidentialité</a><a href="/cookies">Cookies</a><a href="/accessibilite">Accessibilité</a><a href="/avertissements">Avertissements</a><a href="/ethique#alerte">Signalement éthique</a></div>
+    </div>
+    <div class="foot-legal"><span class="pft-legal">© 2026 EnerTchad S.A. (société en constitution) · Radisson Blu, bureau 23, Quartier Sabangali, Cité du 1er Décembre, BP 6060, N’Djamena, Tchad · OHADA/AUSCGIE</span><span class="foot-legal-links"><a href="/mentions-legales">Mentions légales</a><a href="/confidentialite">Confidentialité</a><a href="/cookies">Cookies</a><a href="/ethique#alerte">Signalement éthique</a></span><a class="pft-top" href="#top">Haut de page ↑</a></div>
+  </div>
+<div data-social="youtube" style="display:flex;justify-content:center;align-items:center;gap:8px;flex-wrap:wrap;width:fit-content;max-width:calc(100% - 40px);margin:16px auto;padding:10px 16px;border-radius:12px;background:#172638;font:500 13px/1.5 system-ui,sans-serif;color:#f5f7fa"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="20" viewBox="0 0 28 20" aria-hidden="true" focusable="false"><rect width="28" height="20" rx="5" fill="#ff0000"/><path d="M11 5.5v9l8-4.5z" fill="#fff"/></svg><span style="color:#f5f7fa!important;-webkit-text-fill-color:#f5f7fa!important">YouTube</span><span style="color:#c9d3df!important;-webkit-text-fill-color:#c9d3df!important">— Bientôt disponible</span></div></footer><div id="lum-veil" aria-hidden="true"></div><div id="lum-ctl" class="lum-ctl"><button id="lum-btn" class="lum-btn" type="button" aria-label="Régler la luminosité de l’affichage" aria-expanded="false" aria-controls="lum-panel"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.2M12 19.8V22M2 12h2.2M19.8 12H22M4.9 4.9l1.6 1.6M17.5 17.5l1.6 1.6M19.1 4.9l-1.6 1.6M6.5 17.5l-1.6 1.6"/></svg></button><div id="lum-panel" class="lum-panel" role="group" aria-label="Luminosité de l’affichage" hidden><p class="lum-h">Luminosité</p><input id="lum-range" class="lum-range" type="range" min="80" max="130" step="2" value="100" aria-label="Niveau de luminosité (pour cent)"><div class="lum-presets"><button type="button" data-l="88">Sombre</button><button type="button" data-l="100">Standard</button><button type="button" data-l="116">Clair</button></div></div></div><script id="subbar-fix">(function(){function run(){var ot=document.getElementById("oilticker");if(!ot||getComputedStyle(ot).position!=="fixed")return;var nav=document.getElementById("nav");function flush(){if(nav)ot.style.top=Math.round(nav.getBoundingClientRect().bottom)+"px";}flush();window.addEventListener("resize",flush,{passive:true});window.addEventListener("load",flush);setTimeout(flush,300);var bars=document.querySelectorAll(".subsite,.pole-subnav");if(!bars.length)return;function fix(){var ob=ot.getBoundingClientRect();var nb=nav?nav.getBoundingClientRect().bottom:0;var top=Math.round(Math.max(ob.bottom,nb));for(var i=0;i<bars.length;i++){var p=getComputedStyle(bars[i]).position;if(p==="sticky"||p==="fixed"){bars[i].style.top=top+"px";}}var b0=bars[0];if(b0){b0.style.marginTop="0px";var cur=b0.getBoundingClientRect().top+(window.pageYOffset||0);var need=top+8;if(cur<need){b0.style.marginTop=Math.round(need-cur)+"px";}}}fix();window.addEventListener("resize",fix,{passive:true});window.addEventListener("load",fix);setTimeout(fix,400);setTimeout(fix,1200);}if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",run);}else{run();}})();</script><div class="rootland" aria-hidden="true"></div><script id="hero-x-js">(function(){var h=document.querySelector("header.pghero")||document.querySelector("header.hero,div.hero,header.jtop");if(!h)return;if(!h.querySelector(".hero-cap")){var c=document.createElement("span");c.className="hero-cap";c.textContent="Image d\u2019illustration";h.appendChild(c);}if(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches)return;var g=document.createElement("i");g.className="hero-halo";h.appendChild(g);h.addEventListener("pointermove",function(e){var r=h.getBoundingClientRect();g.style.setProperty("--hx",((e.clientX-r.left)/r.width*100)+"%");g.style.setProperty("--hy",((e.clientY-r.top)/r.height*100)+"%")},{passive:true});})();</script><script id="flip2-js">/* La bascule est portee par un vrai bouton : une carte role="button" ne doit pas contenir de lien (nested-interactive), et la face masquee doit sortir du parcours clavier. */(function(){var cards=document.querySelectorAll(".biz-card");if(!cards.length)return;var RESET="background:none;cursor:pointer;text-align:inherit;line-height:inherit;-webkit-appearance:none;appearance:none";cards.forEach(function(c){var rows=[].slice.call(c.children);if(rows.length<3)return;var inner=document.createElement("div");inner.className="f2i";var fr=document.createElement("div");fr.className="f2f";var bk=document.createElement("div");bk.className="f2f f2b";rows.forEach(function(r,i){(i<2?fr:bk).appendChild(r)});function hint(t,l){var b=document.createElement("button");b.type="button";b.className="f2hint";b.style.cssText=RESET;b.textContent=t;b.setAttribute("aria-label",l);b.setAttribute("aria-pressed","false");return b}var h1=hint("Notre r\u00e9ponse \u21bb","Afficher notre r\u00e9ponse");fr.appendChild(h1);var h2=hint("Le d\u00e9fi \u21bb","Afficher le d\u00e9fi");bk.appendChild(h2);inner.appendChild(fr);inner.appendChild(bk);c.appendChild(inner);c.classList.add("flip2");function face(on){try{fr.inert=on;bk.inert=!on}catch(e){}h1.setAttribute("aria-pressed",on?"true":"false");h2.setAttribute("aria-pressed",on?"true":"false")}face(false);function tg(){var had=c.contains(document.activeElement);var on=!c.classList.contains("on");c.classList.toggle("on",on);face(on);if(had){try{(on?h2:h1).focus({preventScroll:true})}catch(e){}}}c.addEventListener("click",function(e){var t=e.target;var a=t&&t.closest?t.closest("a[href]"):null;if(a&&c.contains(a))return;tg()});});})();</script><script id="sw-reg">if("serviceWorker" in navigator&&(location.protocol==="https:"||location.hostname==="localhost"))addEventListener("load",function(){navigator.serviceWorker.register("/sw.js").catch(function(){})});</script><div id="nezProg" aria-hidden="true"></div><nav id="nezBar" aria-label="Navigation rapide mobile"><a href="/"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 11l9-8 9 8M5 10v10h14V10"/></svg>Accueil</a><a href="/clients"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 7h18M3 12h18M3 17h18"/></svg>Clients</a><a href="/investor-center"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 17l6-6 4 4 8-8M14 7h7v7"/></svg>Investisseurs</a><a href="/achats"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 21V7l7 4V7l7 4V3h4v18H3z"/></svg>Fournisseurs</a><a href="/contact"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16v16H4zM4 8l8 5 8-5"/></svg>Contact</a></nav><script id="scrollguard">(function(){var mv=false,sx=0,sy=0;addEventListener("touchstart",function(e){var t=e.touches[0];if(!t)return;sx=t.clientX;sy=t.clientY;mv=false;},{passive:true,capture:true});addEventListener("touchmove",function(e){var t=e.touches[0];if(!t)return;if(Math.abs(t.clientX-sx)+Math.abs(t.clientY-sy)>10)mv=true;},{passive:true,capture:true});addEventListener("click",function(e){if(!mv)return;var el=e.target.closest&&e.target.closest("#toTop,#homeFab,#scrollcue,#nezBar,#nezBar a");if(el){e.stopImmediatePropagation();e.preventDefault();}},true);})();</script><script src="/assets/chrome/u_cd226c00eb4b.js"></script>
+<script defer id="secrail-js" src="/assets/chrome/s_2ffe40dff9.js"></script>
+<style id="fusion-etLightFix">
+/* ———— ex-bloc: etLightFix ———— */
+/* Reparation contraste theme clair - tache #91.
+   Portee : inerte en mode sombre (chaque selecteur est prefixe html.et-plight
+   ou html.et-jlight).
+
+   PRINCIPE DE CASCADE : pour les encres GLOBALES (liens, kick, accents inline)
+   on reprend le selecteur d'origine A L'IDENTIQUE et on se contente d'arriver
+   plus tard dans la cascade. Elever la specificite cassait tout l'ecosysteme
+   d'exceptions deja en place (pghero, footer, .btn, .mkt-nav, .ppt-cta...) :
+   la premiere version de ce bloc a fait passer les echecs de 314 a 1016.
+   Pour les ILOTS SOMBRES, au contraire, on vise juste au-dessus de la regle
+   de base html.et-plight main span:not(#_) = (1,1,3). */
+
+/* ---- G1 : neutraliser les degrades clippes sur le texte (52 echecs) ----
+   Lecon 42 : poser `color` ne fait rien sur un texte peint par
+   background-clip:text. Il faut couper l'image de fond ET remettre
+   -webkit-text-fill-color. currentColor laisse gagner la regle d'encre. */
+html.et-plight main em:not(#_):not(#__),
+html.et-plight main i:not(#_):not(#__),
+html.et-plight body>section em:not(#_):not(#__),
+html.et-plight body>section i:not(#_):not(#__),
+html.et-plight .apps-creed:not(#_):not(#__),
+html.et-jlight main em:not(#_):not(#__),
+html.et-jlight main i:not(#_):not(#__),
+html.et-jlight .apps-creed:not(#_):not(#__){
+  background-image:none!important;
+  -webkit-background-clip:border-box!important;
+  background-clip:border-box!important;
+  -webkit-text-fill-color:currentColor!important;
+}
+
+/* ---- G2 : encres d'accent inline assombries (selecteurs d'origine) ---- */
+html.et-plight [style*="34D399"]:not(#_){color:#094E37!important}
+html.et-plight [style*="E8C36A"]:not(#_),
+html.et-plight [style*="F0CE82"]:not(#_){color:#7A570E!important}
+html.et-plight [style*="075E42"]:not(#_){color:#06533B!important}
+html.et-plight [style*="B4700A"]:not(#_){color:#9E6209!important}
+
+/* ---- G3 : bleu de lien assombri #155FA8 -> #0E4172 (4.60:1) ----
+   Selecteurs d'origine, mot pour mot. */
+html.et-plight main a:not(#_){color:#0E4172!important}
+html.et-plight body>section a:not(#_){color:#0E4172!important}
+html.et-plight .wrap>a:not([class]):not(#_):not(#__){
+  text-decoration:underline!important;color:#0E4172!important}
+html.et-jlight a:not(#_):not(.jback):not(.jlang){color:#0E4172}
+
+/* ---- G4 : or de titraille #6B500F -> #4C380B (4.63:1) ----
+   Selecteurs d'origine, mot pour mot. */
+html.et-plight main .kick:not(#_),
+html.et-plight main [class*="kick"]:not(#_),
+html.et-plight main h1 em:not(#_),
+html.et-plight main h2 em:not(#_){color:#4C380B!important}
+html.et-jlight h1 em:not(#_),
+html.et-jlight h2 em:not(#_),
+html.et-jlight .jkick:not(#_),
+html.et-jlight .sc-lb:not(#_),
+html.et-jlight .cb-k:not(#_){color:#4C380B!important}
+html.et-plight body>section [class*="kick"]:not(#_),
+html.et-plight body>section h2 em:not(#_),
+html.et-plight body>section [class*="-no"]:not(#_),
+html.et-plight body>section [class*="-k"]:not(#_){color:#4C380B!important}
+html.et-jlight .more-k:not(#_){color:#4C380B!important}
+html.et-plight .pgr-dir:not(#_){color:#4C380B!important}
+html.et-plight main section.hero h1 em:not(#_):not(#__){
+  background:none!important;-webkit-text-fill-color:#4C380B!important;color:#4C380B!important}
+html.et-plight main code:not(#_):not(#__),
+html.et-plight body>section code:not(#_):not(#__){
+  color:#4C380B!important;background:rgba(76,56,11,.09)!important}
+
+/* ==== ILOTS SOMBRES : rendre l'encre claire, garder la surface sombre ==== */
+
+/* ---- I1 : heros photo, balises manquantes du bloc d'exception (lecon 43) ----
+   h1/p/li/span/a/.pgk sont deja traites en amont : on ne les reprend pas,
+   pour ne pas ecraser la hierarchie voulue du hero.
+   On NE cible PAS [class*="hero"] : section.hero est une surface CLAIRE sur
+   plusieurs pages (cibles-2030, projets) — seuls .pghero, header[class*=hero]
+   et .diapo sont des surfaces photo. */
+html.et-plight main .pghero :is(i,em,strong,b,small,dt,dd,td,th,label,figcaption,blockquote,summary):not(#_),
+html.et-plight main header[class*="hero"] :is(i,em,strong,b,small,dt,dd,td,th,label,figcaption,blockquote,summary):not(#_),
+html.et-plight main .diapo :is(i,em,strong,b,small,dt,dd,td,th,label,figcaption,blockquote,summary):not(#_){
+  color:#EAF0F8!important;-webkit-text-fill-color:#EAF0F8!important;
+  background-image:none!important;
+  -webkit-background-clip:border-box!important;background-clip:border-box!important;
+}
+/* I2 : pastille or active du hero -> encre sombre restauree */
+html.et-plight main .pgc-node.is-on:not(#_),
+html.et-plight main .pgc-node.is-on :not(#_){
+  color:#121D31!important;-webkit-text-fill-color:#121D31!important;
+}
+
+/* ---- I3 : sous-navigation de pole (37 echecs) ---- */
+html.et-plight .pole-subnav :not(#_){
+  color:#CBD5E3!important;-webkit-text-fill-color:#CBD5E3!important;
+}
+html.et-plight .pole-subnav .psn-home:not(#_),
+html.et-plight .pole-subnav a:not(#_){
+  color:#EAD9A8!important;-webkit-text-fill-color:#EAD9A8!important;
+}
+
+/* ---- I4 : cartes .fp-card a voile (32 echecs) ---- */
+html.et-plight .fp-card :not(#_){
+  color:#F5F7FA!important;-webkit-text-fill-color:#F5F7FA!important;
+}
+html.et-plight .fp-card .fp-badge:not(#_){
+  color:#FFFFFF!important;-webkit-text-fill-color:#FFFFFF!important;
+}
+
+/* ---- I5 : cartes .adx code couleur par pole (17 echecs) ---- */
+html.et-plight .adx:not(#_),
+html.et-plight .adx :not(#_){
+  color:#F5F7FA!important;-webkit-text-fill-color:#F5F7FA!important;
+}
+html.et-plight .adx .eyebrow:not(#_){
+  color:var(--ac,#EAD9A8)!important;-webkit-text-fill-color:var(--ac,#EAD9A8)!important;
+}
+
+/* ---- I6 : cartes contact presse .cp-ct (20 echecs) ----
+   Doit battre html.et-plight main .cp-ct a:not(#_) b = (1,3,4). */
+html.et-plight main .cp-ct a:not(#_):not(#__),
+html.et-plight main .cp-ct a:not(#_):not(#__) span{
+  color:#EAF0F8!important;-webkit-text-fill-color:#EAF0F8!important;
+}
+html.et-plight main .cp-ct a:not(#_):not(#__) b{
+  color:#FFFFFF!important;-webkit-text-fill-color:#FFFFFF!important;
+}
+
+/* ---- I7 : bouton .fl-cta sur degrade bleu ---- */
+html.et-plight .fl-cta:not(#_),
+html.et-plight .fl-cta :not(#_){
+  color:#FFFFFF!important;-webkit-text-fill-color:#FFFFFF!important;
+}
+
+/* ---- I8 : boutons fantomes .fcta-s, encre = fond (ratio 1.00) ----
+   Doit battre html.et-plight [class^="fcta"]:not(#_):not(#__):not(#___). */
+html.et-plight .fcta-s:not(#_):not(#__):not(#___):not(#____),
+html.et-plight .fcta-s :not(#_):not(#__):not(#___):not(#____){
+  color:#F5F7FA!important;-webkit-text-fill-color:#F5F7FA!important;
+}
+
+/* ---- I9 : badge .dchg-badge (tchaditude) ---- */
+html.et-plight .dchg-badge:not(#_){
+  color:#EAF0F8!important;-webkit-text-fill-color:#EAF0F8!important;
+}
+
+/* ---- I10 : pastilles .dkpi (aval/distribution) ---- */
+html.et-plight .dkpi span:not(#_){
+  color:#EAF0F8!important;-webkit-text-fill-color:#EAF0F8!important;
+}
+
+/* ---- I11 : legend de formulaire, blanc sur creme ---- */
+html.et-plight main legend:not(#_):not(#__){
+  color:#2A3648!important;-webkit-text-fill-color:#2A3648!important;
+}
+
+/* ---- I12 : marque du pied de page des carnets (36 echecs, lecon 48) ----
+   html.et-jlight redefinit --blue-l / --gold-l pour une surface claire, mais
+   le pied de page reste #121D31. On restaure les valeurs sombres, limitees
+   au footer, sans toucher --ink / --mut / --hair. */
+html.et-jlight footer,
+html.et-jlight .jfoot,
+html.et-plight footer{
+  --blue-l:#5AA7F0!important;
+  --gold-l:#E8C36A!important;
+}
+
+/* ---- I13 : bouton .pof-cta de la colonne or ----
+   ATTENTION, correctif REECRIT : la version precedente eclaircissait
+   `.pof-col a`, sur la foi de cause.js qui avait vu un `::before` sombre.
+   Ce ::before est en realite un FILET de 2 px en haut de carte, pas un voile :
+   en theme clair .pof-col est une carte CLAIRE (#F7F9FC) sur les trois pages.
+   La regle a donc casse deux liens (intermediaire/index 1.01, aval/index 1.22)
+   sans corriger sa cible. Le vrai defaut est l'or #9A6D12 du bouton, a 3.36
+   sur le fond de carte teinte a 8 %. On assombrit la seule encre du bouton,
+   sans toucher a --c qui dessine aussi la bordure et le halo. */
+html.et-plight .pof-col .pof-cta a:not(#_):not(#__){
+  color:#6E4D0C!important;-webkit-text-fill-color:#6E4D0C!important;
+}
+
+/* ---- I14 : legendes du schema SVG de brochure.html ----
+   Deux div en style inline poses sur un voile marine ; l'encre globale les
+   fait basculer sombre. On les rend claires. */
+html.et-plight [style*="position:absolute"][style*="bottom:0"]:not(#_) > div:not(#_){
+  color:#EAF0F8!important;-webkit-text-fill-color:#EAF0F8!important;
+}
+html.et-plight [style*="position:absolute"][style*="bottom:0"]:not(#_) > div[style*="var(--blue-l)"]:not(#_){
+  color:#8EC5FF!important;-webkit-text-fill-color:#8EC5FF!important;
+}
+
+/* ---- I15 : pastilles .dlnk (aval/distribution) ---- */
+html.et-plight .dlnk a:not(#_){
+  color:#F5F7FA!important;-webkit-text-fill-color:#F5F7FA!important;
+}
+
+/* ---- I16 : chips de synthese .ppj-syn (pages de pole) ---- */
+html.et-plight .ppj-syn:not(#_),
+html.et-plight .ppj-syn :not(#_){
+  color:#EAF0F8!important;-webkit-text-fill-color:#EAF0F8!important;
+}
+
+/* ---- I17 : chaine de poles du hero de brochure.html ----
+   Ce HEADER.hero n'est PAS dans <main> : les regles en `main ...` ne
+   l'atteignent pas. Doit battre G2 [style*="E8C36A"]:not(#_) = (1,2,1). */
+html.et-plight .hchain a:not(#_):not(#__),
+html.et-plight .hchain a :not(#_):not(#__){
+  color:#FFFFFF!important;-webkit-text-fill-color:#FFFFFF!important;
+}
+
+/* ---- I18 : mots-marques peints par un degrade clippe en style inline ----
+   ex. « Tchaditude™ » : background-clip:text + text-fill-color:transparent,
+   degrade or prevu pour un fond sombre, illisible sur le creme. */
+html.et-plight main [style*="text-fill-color:transparent"]:not(#_){
+  background-image:none!important;
+  -webkit-background-clip:border-box!important;background-clip:border-box!important;
+  color:#4C380B!important;-webkit-text-fill-color:#4C380B!important;
+}
+/* ———— ex-bloc: et-mhf ———— */
+@media(max-width:760px){
+#mLang:not(#_):not(#__){display:inline-flex;align-items:center;font-family:var(--fm,ui-monospace,monospace);font-size:.7rem;letter-spacing:.04em;color:var(--cream,#E9EEF5);border:1px solid var(--hair,rgba(255,255,255,.22));border-radius:20px;padding:6px 11px;text-decoration:none;margin-right:9px;white-space:nowrap}
+#mLang b{font-weight:800}
+html.et-plight #mLang:not(#_):not(#__),html.et-jlight #mLang:not(#_):not(#__){color:#1A2330;border-color:rgba(26,35,48,.28)}
+html.et-plight .nav:not(#_):not(#__):not(#___){background:rgba(250,247,241,.74)!important;-webkit-backdrop-filter:blur(18px) saturate(150%);backdrop-filter:blur(18px) saturate(150%)}
+html.et-plight .nav.scrolled:not(#_):not(#__):not(#___){background:rgba(250,247,241,.88)!important}
+footer .foot-grid .foot-col{border-top:1px solid rgba(128,128,128,.22);margin:0!important;padding:0!important}
+footer .foot-grid .foot-col>h3{position:relative;margin:0!important;padding:15px 26px 15px 0!important;cursor:pointer;-webkit-tap-highlight-color:transparent}
+footer .foot-grid .foot-col>h3::before{content:"+";position:absolute;right:4px;top:50%;transform:translateY(-54%);font-size:var(--ts-8,clamp(1rem,1.8vw,1.25rem));font-weight:400;opacity:.55;font-family:var(--fm,ui-monospace,monospace)}
+footer .foot-grid .foot-col.open>h3::before{content:"−"}
+footer .foot-grid .foot-col:not(.open)>*:not(h3){display:none!important}
+footer .foot-grid .foot-col.open{padding-bottom:12px!important}
+footer .foot-grid .foot-col>a{display:block;padding:9px 0!important;margin:0!important}
+#toTop:not(#_):not(#__):not(#___){transform:scale(.82);transform-origin:bottom right;opacity:.68;transition:opacity .3s}
+#toTop:not(#_):not(#__):not(#___):active{opacity:1}
+footer .foot-legal{padding-bottom:10px!important}
+}
+@media(max-width:560px){.nav .brand-tx small:not(#_){display:block!important}}
+</style><script id="et-mhf-js">(function(){try{
+if(!window.matchMedia||!matchMedia("(max-width:760px)").matches)return;
+var l=document.querySelector(".nx-util .nx-lang");
+var bar=document.querySelector(".nav-in.nx-bar")||document.querySelector(".nx-bar");
+if(l&&bar&&!document.getElementById("mLang")){var c=l.cloneNode(true);c.id="mLang";c.className="";var sr=bar.querySelector(".nav-search")||bar.querySelector(".nav-tog");if(sr&&sr.parentElement){sr.parentElement.insertBefore(c,sr);}else{bar.appendChild(c);}}
+var cols=document.querySelectorAll("footer .foot-grid .foot-col");
+for(var i=0;i<cols.length;i++)(function(col){var h=col.querySelector("h3");if(!h)return;
+var b=document.createElement("button");b.type="button";b.setAttribute("aria-expanded","false");
+b.style.cssText="background:none;border:0;padding:0;margin:0;font:inherit;letter-spacing:inherit;text-transform:inherit;color:inherit;text-align:left;width:100%;cursor:pointer;display:block";
+while(h.firstChild)b.appendChild(h.firstChild);
+h.appendChild(b);
+function tg(){var o=col.classList.toggle("open");b.setAttribute("aria-expanded",o?"true":"false");}
+h.addEventListener("click",tg);
+})(cols[i]);
+}catch(e){}})();</script><style id="cue-tact">#scrollcue{transition:opacity .3s,visibility .3s}html.cue-off #scrollcue{opacity:0!important;visibility:hidden!important;pointer-events:none!important}</style><script id="cue-tact-js">(function(){var h=document.documentElement,t;function m(){var off=scrollY>140;h.classList.toggle("cue-off",off)}addEventListener("scroll",function(){clearTimeout(t);t=setTimeout(m,80)},{passive:true});m();})();</script><script id="tcol-js">(function(){function m(){var el=document.querySelector('meta[name="theme-color"]');if(!el){el=document.createElement("meta");el.name="theme-color";document.head.appendChild(el)}var l=document.documentElement.classList;el.content=(l.contains("et-plight")||l.contains("et-jlight"))?"#FBF9F3":"#111D33"}m();new MutationObserver(m).observe(document.documentElement,{attributes:true,attributeFilter:["class"]});})();</script><div id="cmdk" role="dialog" aria-modal="true" aria-label="Recherche" style="position:fixed;inset:0;z-index:300;display:none;align-items:flex-start;justify-content:center;padding-top:11vh;background:rgba(6,11,20,.82);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);">
+  <div class="cmdk-panel" style="width:min(600px,93vw);background:linear-gradient(180deg,#142036,#101A2C);border:1px solid var(--hair);border-radius:18px;box-shadow:0 40px 110px rgba(0,0,0,.7);overflow:hidden">
+    <div style="display:flex;align-items:center;gap:12px;padding:17px 19px;border-bottom:1px solid var(--hair)">
+      <svg aria-hidden="true" focusable="false" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--blue-l)" stroke-width="2"><circle cx="10.5" cy="10.5" r="6.6" stroke-width="1.7"/><path d="M19.8 19.8l-4.6-4.6" stroke-width="1.7" stroke-linecap="round"/></svg>
+      <input id="cmdk-input" type="text" placeholder="Rechercher une section, un service, un outil…" aria-label="Rechercher une section" autocomplete="off" style="flex:1;background:none;border:none;outline:none;color:var(--cream);font-family:var(--fb);font-size:1rem">
+      <kbd style="font-family:var(--fm);font-size:0.6875rem;color:var(--muted-l,#9FB0C9);border:1px solid var(--hair);border-radius:6px;padding:3px 7px">ESC</kbd>
+    </div>
+    <div id="cmdk-results" role="listbox" aria-label="Résultats de recherche" style="max-height:50vh;overflow-y:auto;padding:8px"></div>
+    <div class="cmdk-foot" style="display:flex;gap:18px;align-items:center;padding:10px 18px;border-top:1px solid var(--hair);font-family:var(--fm);font-size:0.6875rem;color:var(--muted-l,#9FB0C9)">
+      <span><kbd class="ck-k">&#8593;</kbd><kbd class="ck-k">&#8595;</kbd> naviguer</span>
+      <span><kbd class="ck-k">&#8629;</kbd> ouvrir</span>
+      <span style="margin-left:auto"><kbd class="ck-k">esc</kbd> fermer</span>
+    </div>
+  </div>
+</div><script defer src="/assets/chrome/cmdk_extra.js?b=202609111900"></script><script defer src="/assets/chrome/c_abd9013c3955.js?b=202607141200"></script><script id="prt560-js">(function(){var b=document.querySelector('.prt560');if(!b)return;
+var u=location.origin+location.pathname,t=document.title.split(' | ')[0].split(' · ')[0];
+var li=b.querySelector('[data-p="li"]'),x=b.querySelector('[data-p="x"]'),m=b.querySelector('[data-p="m"]'),c=b.querySelector('[data-p="c"]');
+if(li)li.href='https://www.linkedin.com/sharing/share-offsite/?url='+encodeURIComponent(u);
+if(x)x.href='https://twitter.com/intent/tweet?url='+encodeURIComponent(u)+'&text='+encodeURIComponent(t);
+if(m)m.href='mailto:?subject='+encodeURIComponent(t)+'&body='+encodeURIComponent(u);
+if(c)c.addEventListener('click',function(){var o=c.querySelector('.pl');
+ function fait(){if(o){var v=o.textContent;o.textContent=c.getAttribute('data-ok');setTimeout(function(){o.textContent=v},2200)}}
+ if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(u).then(fait,function(){})}
+ else{var ta=document.createElement('textarea');ta.value=u;document.body.appendChild(ta);ta.select();try{document.execCommand('copy');fait()}catch(e){}ta.remove()}});
+})();</script></body>
+</html>

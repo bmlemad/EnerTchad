@@ -1,0 +1,103 @@
+{
+  "schema_version": "1.0",
+  "catalog_updated": "2026-10-04",
+  "publisher": "EnerTchad S.A.",
+  "company_status": "in_formation",
+  "documents": [
+    {
+      "id": "investor-factsheet",
+      "title_fr": "Fiche investisseur",
+      "title_en": "Investor factsheet",
+      "href": "/Fiche_Investisseur_EnerTchad.pdf",
+      "format": "PDF",
+      "language": [
+        "fr",
+        "en"
+      ],
+      "status": "published"
+    },
+    {
+      "id": "investor-deck",
+      "title_fr": "Dossier de présentation investisseur",
+      "title_en": "Investor presentation deck",
+      "href": "/Dossier_Investisseur_EnerTchad.pptx",
+      "format": "PPTX",
+      "language": [
+        "fr",
+        "en"
+      ],
+      "status": "published"
+    },
+    {
+      "id": "data-book",
+      "title_fr": "Data Book",
+      "title_en": "Data Book",
+      "href": "/Data_Book_EnerTchad.xlsx",
+      "format": "XLSX",
+      "language": [
+        "fr",
+        "en"
+      ],
+      "status": "published"
+    },
+    {
+      "id": "progress-2026",
+      "title_fr": "Point d’étape 2026",
+      "title_en": "2026 progress report",
+      "href": "/Point_Etape_EnerTchad_2026.pdf",
+      "format": "PDF",
+      "language": [
+        "fr",
+        "en"
+      ],
+      "status": "published",
+      "vintage": "2026"
+    },
+    {
+      "id": "investor-calendar-fr",
+      "title_fr": "Agenda investisseur",
+      "title_en": "Investor calendar",
+      "href": "/agenda-investisseur.ics",
+      "format": "ICS",
+      "language": [
+        "fr"
+      ],
+      "status": "published"
+    },
+    {
+      "id": "investor-calendar-en",
+      "title_fr": "Agenda investisseur — EN",
+      "title_en": "Investor calendar",
+      "href": "/investor-calendar-en.ics",
+      "format": "ICS",
+      "language": [
+        "en"
+      ],
+      "status": "published"
+    },
+    {
+      "id": "esg-data-fr",
+      "title_fr": "Indicateurs ESG 2030",
+      "title_en": "2030 ESG indicators",
+      "href": "/assets/data/indicateurs-esg-2030.csv",
+      "format": "CSV",
+      "language": [
+        "fr"
+      ],
+      "status": "published",
+      "vintage": "2030-targets"
+    },
+    {
+      "id": "esg-data-en",
+      "title_fr": "Indicateurs ESG 2030 — EN",
+      "title_en": "2030 ESG indicators",
+      "href": "/assets/data/esg-indicators-2030.csv",
+      "format": "CSV",
+      "language": [
+        "en"
+      ],
+      "status": "published",
+      "vintage": "2030-targets"
+    }
+  ]
+}

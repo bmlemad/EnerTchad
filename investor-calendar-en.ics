@@ -1,0 +1,72 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//EnerTchad S.A.//Agenda investisseur//FR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:EnerTchad — Investor calendar
+X-WR-CALDESC:EnerTchad S.A. investor appointments and milestones (company i
+ n formation) — indicative dates.
+REFRESH-INTERVAL;VALUE=DURATION:P1W
+X-PUBLISHED-TTL:P1W
+BEGIN:VEVENT
+UID:jalon-memorandum-2026@enertchad.com
+DTSTAMP:20261009T080000Z
+SEQUENCE:2
+DTSTART;VALUE=DATE:20261001
+DTEND;VALUE=DATE:20270101
+SUMMARY:Memorandum publication (targeted Q4 2026 — date to be confirmed)
+DESCRIPTION:Release of the investment memorandum and the updated document s
+ helf. Indicative quarter — company in formation\; the exact date will be
+  published on the site.
+URL:https://enertchad.com/investisseurs-en#agenda
+STATUS:TENTATIVE
+TRANSP:TRANSPARENT
+CATEGORIES:EnerTchad
+END:VEVENT
+BEGIN:VEVENT
+UID:jalon-webinaire-2026@enertchad.com
+DTSTAMP:20261009T080000Z
+SEQUENCE:1
+DTSTART;VALUE=DATE:20261001
+DTEND;VALUE=DATE:20270101
+SUMMARY:Investor webinar (targeted Q4 2026 — date to be confirmed)
+DESCRIPTION:Presentation of the thesis and the capital model\, Q&A with man
+ agement. Indicative quarter — company in formation\; the exact date will
+  be published on the site.
+URL:https://enertchad.com/investisseurs-en#agenda
+STATUS:TENTATIVE
+TRANSP:TRANSPARENT
+CATEGORIES:EnerTchad
+END:VEVENT
+BEGIN:VEVENT
+UID:jalon-dataroom-2026@enertchad.com
+DTSTAMP:20261009T080000Z
+SEQUENCE:1
+DTSTART;VALUE=DATE:20270101
+DTEND;VALUE=DATE:20270401
+SUMMARY:Data room & investor meetings (targeted Q1 2027 — date to be conf
+ irmed)
+DESCRIPTION:A data room opened to qualified investors and bilateral meeting
+ s\, with GCIC. Indicative quarter — company in formation\; the exact dat
+ e will be published on the site.
+URL:https://enertchad.com/investisseurs-en#agenda
+STATUS:TENTATIVE
+TRANSP:TRANSPARENT
+CATEGORIES:EnerTchad
+END:VEVENT
+BEGIN:VEVENT
+UID:jalon-point-etape-2027@enertchad.com
+DTSTAMP:20261009T080000Z
+SEQUENCE:1
+DTSTART;VALUE=DATE:20270101
+DTEND;VALUE=DATE:20270401
+SUMMARY:EnerTchad annual progress review (Q1 2027 — date to be confirmed)
+DESCRIPTION:A review of milestones passed and updated targets — at the pa
+ ce of the formation. Indicative quarter — company in formation\; the exa
+ ct date will be published on the site.
+URL:https://enertchad.com/investisseurs-en#agenda
+STATUS:TENTATIVE
+TRANSP:TRANSPARENT
+CATEGORIES:EnerTchad
+END:VEVENT
+END:VCALENDAR

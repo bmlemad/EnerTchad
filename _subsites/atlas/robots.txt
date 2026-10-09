@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Disallow: /_subsites/
+Sitemap: https://atlas.enertchad.com/sitemap.xml

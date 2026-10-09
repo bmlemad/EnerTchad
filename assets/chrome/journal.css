@@ -1,0 +1,323 @@
+/* ——————————————————————————————————————————————————————————————
+   Les Carnets d EnerTchad — feuille du journal (Ch644).
+   Une salle de redaction a son propre caractere : les titres passent a une
+   serif de presse, le reste du site garde sa geometrique. Filets plutot que
+   cartes, hierarchie plutot que grille reguliere.
+   —————————————————————————————————————————————————————————————— */
+@font-face{font-family:'Instrument Serif';src:url('/assets/fonts/InstrumentSerif-latin.woff2') format('woff2');
+ font-weight:400;font-style:normal;font-display:swap;
+ unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Instrument Serif';src:url('/assets/fonts/InstrumentSerif-latin-ext.woff2') format('woff2');
+ font-weight:400;font-style:normal;font-display:swap;
+ unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+
+:root{--fj:'Instrument Serif',Georgia,'Times New Roman',serif}
+
+/* ——— bandeau de titre ——— */
+.jn-mast{border-bottom:2px solid var(--hair,rgba(255,255,255,.18));padding:0 0 14px;margin:0 0 6px}
+.jn-mast-top{display:flex;align-items:baseline;justify-content:space-between;gap:16px 26px;flex-wrap:wrap;
+ font-family:var(--fm,ui-monospace,monospace);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;
+ color:var(--muted);padding:0 0 12px}
+.jn-mast h1{font-family:var(--fj);font-weight:400;letter-spacing:-.005em;line-height:.94;margin:0;
+ font-size:clamp(2.6rem,7.2vw,5.4rem);text-wrap:balance}
+.jn-mast .jn-devise{font-family:var(--fj);font-size:clamp(1rem,1.9vw,1.4rem);color:var(--muted);margin:12px 0 0;max-width:46ch}
+.jn-rule{height:1px;background:var(--hair,rgba(255,255,255,.16));margin:0 0 26px}
+.jn-rule.d{height:4px;background:none;border-top:1px solid var(--hair,rgba(255,255,255,.3));
+ border-bottom:1px solid var(--hair,rgba(255,255,255,.3));margin:8px 0 26px}
+
+/* ——— la une ——— */
+.jn-une{display:grid;grid-template-columns:minmax(0,2.15fr) minmax(250px,1fr);gap:0 38px;align-items:start}
+.jn-une>.jn-fil{border-left:1px solid var(--hair,rgba(255,255,255,.16));padding-left:26px}
+.jn-lead{display:block;text-decoration:none;color:inherit;padding:0 0 26px;border-bottom:1px solid var(--hair,rgba(255,255,255,.16))}
+.jn-lead .jn-kick,.jn-art .jn-kick{display:block;font-family:var(--fm,ui-monospace,monospace);font-size:.66rem;
+ letter-spacing:.13em;text-transform:uppercase;color:var(--gold-l,#E8C36A);margin:0 0 9px}
+.jn-lead h2{font-family:var(--fj);font-weight:400;line-height:1.0;letter-spacing:-.008em;
+ font-size:clamp(1.9rem,4.4vw,3.15rem);margin:0 0 14px;text-wrap:balance}
+.jn-lead p{margin:0 0 12px;font-size:1.02rem;line-height:1.58;color:var(--muted);max-width:56ch}
+.jn-date{font-family:var(--fm,ui-monospace,monospace);font-size:.7rem;letter-spacing:.06em;color:var(--muted);
+ font-variant-numeric:tabular-nums;opacity:.85}
+.jn-lead:hover h2,.jn-art:hover h3{text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
+
+/* ——— le fil ——— */
+.jn-fil h2{font-family:var(--fm,ui-monospace,monospace);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;
+ color:var(--muted);margin:0 0 14px;font-weight:700}
+.jn-fil ol{list-style:none;margin:0;padding:0}
+.jn-fil li{padding:0 0 13px;margin:0 0 13px;border-bottom:1px solid var(--hair,rgba(255,255,255,.10))}
+.jn-fil li:last-child{border-bottom:0}
+.jn-fil a{text-decoration:none;color:inherit;display:block}
+.jn-fil a:hover b{text-decoration:underline;text-underline-offset:3px}
+.jn-fil time{display:block;font-family:var(--fm,ui-monospace,monospace);font-size:.64rem;letter-spacing:.08em;
+ color:var(--muted);opacity:.8;margin:0 0 4px;font-variant-numeric:tabular-nums}
+.jn-fil b{font-family:var(--fj);font-weight:400;font-size:1.06rem;line-height:1.18;display:block}
+.jn-fil .jn-all{display:inline-block;margin:4px 0 0;font-family:var(--fm,ui-monospace,monospace);font-size:.72rem;
+ color:var(--gold-l,#E8C36A);text-decoration:none}
+.jn-fil .jn-all:hover{text-decoration:underline}
+
+/* ——— les rubriques ——— */
+.jn-dep{margin:40px 0 0}
+.jn-dep-h{display:flex;align-items:baseline;gap:14px;border-bottom:1px solid var(--hair,rgba(255,255,255,.26));padding:0 0 8px;margin:0 0 20px}
+.jn-dep-h h2{font-family:var(--fm,ui-monospace,monospace);font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;
+ margin:0;font-weight:700;color:var(--gold-l,#E8C36A)}
+.jn-dep-h span{font-family:var(--fm,ui-monospace,monospace);font-size:.66rem;color:var(--muted);opacity:.75;margin-left:auto}
+.jn-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(248px,1fr));gap:0 30px}
+.jn-cols>*{border-top:1px solid var(--hair,rgba(255,255,255,.10));padding:16px 0 18px}
+.jn-cols>*:first-child{border-top:0;padding-top:0}
+@media(min-width:760px){.jn-cols>:nth-child(-n+3){border-top:0;padding-top:0}}
+.jn-art{display:block;text-decoration:none;color:inherit}
+.jn-art h3{font-family:var(--fj);font-weight:400;line-height:1.1;font-size:1.3rem;margin:0 0 8px;text-wrap:balance}
+.jn-art p{margin:0 0 9px;font-size:.88rem;line-height:1.55;color:var(--muted)}
+.jn-art .jn-date{display:block}
+.jn-dep.jn-dep-lead .jn-cols>:first-child h3{font-size:1.85rem}
+.jn-dep.jn-dep-lead .jn-cols>:first-child p{font-size:.95rem}
+
+/* ——— la riviere : tout le reste, en dense ——— */
+.jn-river{margin:34px 0 0;border-top:1px solid var(--hair,rgba(255,255,255,.26));padding:18px 0 0}
+.jn-river ol{list-style:none;margin:0;padding:0;
+ column-count:2;column-gap:38px;column-rule:1px solid var(--hair,rgba(255,255,255,.10))}
+@media(max-width:820px){.jn-river ol{column-count:1}}
+.jn-river li{break-inside:avoid;padding:0 0 12px;margin:0 0 12px;border-bottom:1px solid var(--hair,rgba(255,255,255,.08))}
+.jn-river a{display:grid;grid-template-columns:78px minmax(0,1fr);gap:12px;text-decoration:none;color:inherit;align-items:baseline}
+.jn-river time{font-family:var(--fm,ui-monospace,monospace);font-size:.63rem;letter-spacing:.05em;color:var(--muted);
+ opacity:.8;font-variant-numeric:tabular-nums;white-space:nowrap}
+.jn-river b{font-family:var(--fj);font-weight:400;font-size:1.02rem;line-height:1.2}
+.jn-river a:hover b{text-decoration:underline;text-underline-offset:3px}
+.jn-river i{font-style:normal;font-family:var(--fm,ui-monospace,monospace);font-size:.6rem;letter-spacing:.1em;
+ text-transform:uppercase;color:var(--gold-l,#E8C36A);opacity:.75;display:block;margin:3px 0 0}
+
+/* ——— page d article ——— */
+.jr-head h1,article h1.jr-t{font-family:var(--fj)!important;font-weight:400!important;letter-spacing:-.006em!important;line-height:1.02!important}
+.jn-a h1{font-family:var(--fj);font-weight:400;line-height:1.02;letter-spacing:-.006em}
+.jn-sign{display:flex;align-items:baseline;gap:10px 18px;flex-wrap:wrap;margin:14px 0 0;padding:10px 0 0;
+ border-top:1px solid var(--hair,rgba(255,255,255,.16));
+ font-family:var(--fm,ui-monospace,monospace);font-size:.68rem;letter-spacing:.09em;color:var(--muted);text-transform:uppercase}
+.jn-sign b{color:var(--gold-l,#E8C36A);font-weight:700}
+
+/* ——— le renvoi depuis les poles ——— */
+.jn-renvoi{border-top:1px solid var(--hair,rgba(255,255,255,.22));padding:20px 0 0;margin:8px 0 0;
+ display:grid;grid-template-columns:minmax(0,1fr) auto;gap:14px 26px;align-items:end}
+.jn-renvoi h3{font-family:var(--fj);font-weight:400;font-size:1.5rem;line-height:1.12;margin:0 0 6px}
+.jn-renvoi p{margin:0;font-size:.9rem;line-height:1.55;color:var(--muted);max-width:58ch}
+.jn-renvoi a.jn-go{font-family:var(--fm,ui-monospace,monospace);font-size:.76rem;letter-spacing:.06em;
+ color:var(--gold-l,#E8C36A);text-decoration:none;white-space:nowrap}
+.jn-renvoi a.jn-go:hover{text-decoration:underline}
+@media(max-width:700px){.jn-renvoi{grid-template-columns:1fr}}
+
+/* ——— theme clair ——— */
+html.et-plight .jn-mast,html.et-jlight .jn-mast{border-bottom-color:rgba(26,35,48,.28)}
+html.et-plight .jn-lead .jn-kick,html.et-jlight .jn-lead .jn-kick,
+html.et-plight .jn-art .jn-kick,html.et-jlight .jn-art .jn-kick,
+html.et-plight .jn-dep-h h2,html.et-jlight .jn-dep-h h2,
+html.et-plight .jn-river i,html.et-jlight .jn-river i,
+html.et-plight .jn-fil .jn-all,html.et-jlight .jn-fil .jn-all,
+html.et-plight .jn-renvoi a.jn-go,html.et-jlight .jn-renvoi a.jn-go,
+html.et-plight .jn-sign b,html.et-jlight .jn-sign b{color:var(--pal,#8A6210)}
+html.et-plight .jn-une>.jn-fil,html.et-jlight .jn-une>.jn-fil,
+html.et-plight .jn-river ol,html.et-jlight .jn-river ol{border-color:rgba(26,35,48,.14)}
+
+@media(max-width:860px){
+ .jn-une{grid-template-columns:1fr;gap:30px}
+ .jn-une>.jn-fil{border-left:0;padding-left:0;border-top:1px solid var(--hair,rgba(255,255,255,.16));padding-top:22px}
+}
+
+/* ——— sur la une, le titre de page cede la place au bandeau ——— */
+body.jn-page :is(header,div).hero:not(#j1):not(#j2):not(#j3):not(#j4) :is(h1,.lead,.kick),
+body.jn-page :is(header,div).pghero:not(#j1):not(#j2):not(#j3):not(#j4) :is(h1,.lead,.kick){display:none!important}
+body.jn-page :is(header,div):is(.hero,.pghero):not(#j1):not(#j2):not(#j3):not(#j4){
+ min-height:0!important;padding-top:14px!important;padding-bottom:6px!important}
+body.jn-page :is(header,div):is(.hero,.pghero) .bcrumb{margin-bottom:0!important}
+.jn-sujets{display:flex;flex-wrap:wrap;gap:8px 10px;margin:0 0 26px}
+
+/* ——————————————— la page d article ———————————————
+   La structure existait deja — surtitre, titre, chapo, date et signature.
+   Il lui manquait le caractere : les titres passent a la serif de presse,
+   le chapo prend le corps d un chapo, et le premier paragraphe sa lettrine. */
+.jhero h1{font-family:var(--fj)!important;font-weight:400!important;letter-spacing:-.008em!important;
+ line-height:1.02!important;text-wrap:balance}
+.jhero .jdek{font-family:var(--fj);font-size:clamp(1.12rem,2vw,1.42rem);line-height:1.42;max-width:60ch}
+.jhero .jkick{letter-spacing:.14em}
+article[role="main"] h2{font-family:var(--fj);font-weight:400;letter-spacing:-.004em;line-height:1.1}
+article[role="main"] h3{font-family:var(--fj);font-weight:400;letter-spacing:-.002em}
+article[role="main"] blockquote,article[role="main"] .jpull{font-family:var(--fj);font-weight:400}
+.jbody>p:first-of-type::first-letter{font-family:var(--fj);float:left;font-size:3.45em;line-height:.78;
+ padding:.06em .09em 0 0;color:var(--gold-l,#E8C36A)}
+html.et-plight .jbody>p:first-of-type::first-letter,
+html.et-jlight .jbody>p:first-of-type::first-letter{color:var(--pal,#8A6210)}
+
+/* ——— les dates en theme clair : --muted vaut #7C8AA2, soit 3,1:1 sur creme ——— */
+html.et-plight .jn-fil time,html.et-jlight .jn-fil time,
+html.et-plight .jn-river time,html.et-jlight .jn-river time,
+html.et-plight .jn-date,html.et-jlight .jn-date{color:#4A5568;opacity:1}
+html.et-plight .jn-fil li,html.et-jlight .jn-fil li,
+html.et-plight .jn-river li,html.et-jlight .jn-river li{border-bottom-color:rgba(26,35,48,.12)}
+html.et-plight .jn-dep-h,html.et-jlight .jn-dep-h,
+html.et-plight .jn-river,html.et-jlight .jn-river,
+html.et-plight .jn-cols>*,html.et-jlight .jn-cols>*,
+html.et-plight .jn-lead,html.et-jlight .jn-lead{border-color:rgba(26,35,48,.18)}
+
+/* ——————————————————————————————————————————————————————————————
+   Ch648 — les Carnets au reglage des grands quotidiens.
+   Trois partis pris, decides avec le proprietaire :
+   1. les etiquettes quittent la chasse fixe pour la sans du site, tres
+      interlettree — c est le reglage du Post et du Times, et le journal
+      cesse de sonner comme un terminal ;
+   2. la une passe a trois colonnes : la tete a gauche, le fil au centre,
+      une colonne Reperes a droite ;
+   3. chaque article recoit un bandeau taille dans la planche de son
+      metier, cadre par --jx, legende comme une figure.
+   —————————————————————————————————————————————————————————————— */
+
+:root{--fe:var(--fd,'Space Grotesk','Inter',system-ui,sans-serif)}
+
+/* ——— 1. les etiquettes ——— */
+.jn-mast-top,
+.jn-lead .jn-kick,.jn-art .jn-kick,
+.jn-fil h2,.jn-fil time,.jn-fil .jn-all,
+.jn-dep-h h2,.jn-dep-h span,
+.jn-river time,.jn-river i,
+.jn-date,.jn-sign,.jn-renvoi a.jn-go,
+.jn-rep h2,.jn-rep .jn-rl,.jn-fig figcaption{
+ font-family:var(--fe)!important;font-feature-settings:"tnum" 1}
+.jn-mast-top{letter-spacing:.2em;font-size:.63rem;font-weight:600}
+.jn-lead .jn-kick,.jn-art .jn-kick{letter-spacing:.17em;font-size:.62rem;font-weight:700}
+.jn-fil h2,.jn-dep-h h2,.jn-rep h2{letter-spacing:.2em!important;font-size:.68rem!important;font-weight:700!important;line-height:1.3!important}
+.jn-fil time,.jn-river time,.jn-date{letter-spacing:.08em;font-weight:500}
+.jn-river i{letter-spacing:.14em;font-weight:600}
+.jn-sign{letter-spacing:.12em;font-weight:600}
+.jn-fil .jn-all,.jn-renvoi a.jn-go{letter-spacing:.09em;font-weight:600}
+
+/* le lien du fil ne doit pas se souligner au repos : la regle du 644 avait
+   une classe contre une regle de site plus specifique — mesure a l appui,
+   text-decoration-line valait underline. */
+html body .jn-fil a:not(#g0):not(#g1):not(#g2):not(#g3):not(#g4):not(#g5):not(#g6):not(#g7):not(#g8):not(#g9):not(#g10):not(#g11),html body .jn-river a:not(#g0):not(#g1):not(#g2):not(#g3):not(#g4):not(#g5):not(#g6):not(#g7):not(#g8):not(#g9):not(#g10):not(#g11),
+html body .jn-rep a:not(#g0):not(#g1):not(#g2):not(#g3):not(#g4):not(#g5):not(#g6):not(#g7):not(#g8):not(#g9):not(#g10):not(#g11),html body .jn-sujets a:not(#g0):not(#g1):not(#g2):not(#g3):not(#g4):not(#g5):not(#g6):not(#g7):not(#g8):not(#g9):not(#g10):not(#g11){text-decoration:none!important}
+html body .jn-fil a:not(#g0):not(#g1):not(#g2):not(#g3):not(#g4):not(#g5):not(#g6):not(#g7):not(#g8):not(#g9):not(#g10):not(#g11):hover b,html body .jn-river a:not(#g0):not(#g1):not(#g2):not(#g3):not(#g4):not(#g5):not(#g6):not(#g7):not(#g8):not(#g9):not(#g10):not(#g11):hover b{text-decoration:underline;text-underline-offset:3px}
+
+/* la une commence au generique : le bandeau de titre de page se retire */
+html body.jn-page :is(header,div):is(.hero,.pghero):not(#g0):not(#g1):not(#g2):not(#g3):not(#g4):not(#g5):not(#g6):not(#g7):not(#g8):not(#g9):not(#g10):not(#g11){padding-top:8px!important;padding-bottom:0!important;min-height:0!important}
+html body.jn-page main:not(#g0):not(#g1):not(#g2):not(#g3):not(#g4):not(#g5):not(#g6):not(#g7):not(#g8):not(#g9):not(#g10):not(#g11){padding-top:10px!important}
+
+/* ——— 2. la une a trois colonnes ——— */
+@media(min-width:1080px){
+ .jn-une{grid-template-columns:minmax(0,2.05fr) minmax(228px,.95fr) minmax(206px,.8fr);gap:0 32px}
+ .jn-une>.jn-rep{border-left:1px solid var(--hair,rgba(255,255,255,.16));padding-left:24px}
+}
+@media(min-width:861px) and (max-width:1079px){
+ .jn-une{grid-template-columns:minmax(0,2.15fr) minmax(250px,1fr)}
+ .jn-une>.jn-rep{grid-column:1 / -1;border-left:0;border-top:1px solid var(--hair,rgba(255,255,255,.16));
+  padding-left:0;padding-top:20px;margin-top:24px}
+ .jn-une>.jn-rep .jn-rl{display:inline-flex;margin-right:28px}
+}
+@media(max-width:860px){
+ .jn-une>.jn-rep{border-left:0;border-top:1px solid var(--hair,rgba(255,255,255,.16));
+  padding-left:0;padding-top:22px;margin-top:26px}
+}
+.jn-rep h2{color:var(--muted);margin:0 0 14px;text-transform:uppercase}
+.jn-rep .jn-rl{display:block;padding:0 0 11px;margin:0 0 11px;
+ border-bottom:1px solid var(--hair,rgba(255,255,255,.10))}
+.jn-rep .jn-rl:last-of-type{border-bottom:0}
+.jn-rep .jn-rv{display:block;font-family:var(--fj);font-weight:400;font-size:1.46rem;line-height:1.04;
+ letter-spacing:-.005em;font-variant-numeric:tabular-nums}
+.jn-rep .jn-rd{display:block;font-size:.76rem;line-height:1.4;color:var(--muted);margin:4px 0 0}
+.jn-rep .jn-jal{font-size:.8rem;line-height:1.45}
+.jn-rep .jn-jal em{font-style:normal;color:var(--gold-l,#E8C36A)}
+
+/* ——— 3. le bandeau d article ——— */
+.jn-fig{max-width:760px;margin:20px auto 24px;padding:0 clamp(20px,5vw,28px)}
+.jn-fig .jn-band{display:block;width:100%;aspect-ratio:1200/330;
+ background-repeat:no-repeat;background-size:142% auto;
+ background-position:var(--jx,50%) center;
+ border-top:1px solid var(--hair,rgba(255,255,255,.22));
+ border-bottom:1px solid var(--hair,rgba(255,255,255,.22))}
+@media(max-width:700px){.jn-fig .jn-band{aspect-ratio:1200/420}}
+.jn-fig figcaption{margin:8px 0 0;font-size:.7rem;letter-spacing:.11em;text-transform:uppercase;
+ color:var(--muted);opacity:.85;display:flex;gap:6px 14px;flex-wrap:wrap}
+.jn-fig figcaption b{font-weight:700;color:var(--gold-l,#E8C36A)}
+html[data-pl="coupe"] .jn-fig .jn-band{background-image:url(/assets/img/bande-coupe-sombre.webp)}
+html[data-pl="corridor"] .jn-fig .jn-band{background-image:url(/assets/img/bande-corridor-sombre.webp)}
+html[data-pl="colonne"] .jn-fig .jn-band{background-image:url(/assets/img/bande-colonne-sombre.webp)}
+html:is(.et-plight,.et-jlight)[data-pl="coupe"] .jn-fig .jn-band{background-image:url(/assets/img/bande-coupe-clair.webp)}
+html:is(.et-plight,.et-jlight)[data-pl="corridor"] .jn-fig .jn-band{background-image:url(/assets/img/bande-corridor-clair.webp)}
+html:is(.et-plight,.et-jlight)[data-pl="colonne"] .jn-fig .jn-band{background-image:url(/assets/img/bande-colonne-clair.webp)}
+
+/* ——— densite : les deux quotidiens sont plus serres que nous ——— */
+.jn-lead p{font-size:.98rem;line-height:1.5}
+.jn-art p{font-size:.86rem;line-height:1.48}
+.jn-dep{margin-top:34px}
+.jn-fil li{padding-bottom:11px;margin-bottom:11px}
+
+/* ——— theme clair : les etiquettes et la legende ——— */
+html:is(.et-plight,.et-jlight) .jn-rep .jn-jal em,
+html:is(.et-plight,.et-jlight) .jn-fig figcaption b{color:var(--pal,#8A6210)}
+html:is(.et-plight,.et-jlight) .jn-rep .jn-rl,
+html:is(.et-plight,.et-jlight) .jn-fig .jn-band{border-color:rgba(26,35,48,.18)}
+
+/* ——— sous la tete : les deux secondes histoires ——— */
+.jn-sous{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 26px;margin:22px 0 0;
+ border-top:1px solid var(--hair,rgba(255,255,255,.16));padding:18px 0 0}
+.jn-sous .jn-art h3{font-size:1.16rem}
+.jn-sous .jn-art p{font-size:.84rem;line-height:1.46}
+.jn-sous>*+*{border-left:1px solid var(--hair,rgba(255,255,255,.10));padding-left:26px}
+@media(max-width:640px){.jn-sous{grid-template-columns:1fr;gap:16px}
+ .jn-sous>*+*{border-left:0;padding-left:0;border-top:1px solid var(--hair,rgba(255,255,255,.10));padding-top:16px}}
+html:is(.et-plight,.et-jlight) .jn-sous,
+html:is(.et-plight,.et-jlight) .jn-sous>*+*{border-color:rgba(26,35,48,.16)}
+
+/* ——— Ch651 · QA — la bande morte au-dessus du bandeau ———
+   Le 648 avait bien ecrase le calage du .hero lui-meme (8px / 0), mais le
+   calage reel vit sur le .wrap interieur, pose en ligne dans la page :
+   clamp(44px,6vw,76px) en haut, clamp(30px,4vw,44px) en bas. Resultat mesure
+   a 1440 : un .hero de 257px pour un fil d Ariane de 38px, soit une dalle
+   sombre tronquee qui s arrete net au-dessus du bandeau — visible surtout en
+   theme clair, ou elle s interpose entre une barre de navigation claire et
+   une page creme. On resserre le .wrap au fil d Ariane seul. */
+html body.jn-page :is(header,div):is(.hero,.pghero):not(#q0):not(#q1):not(#q2):not(#q3):not(#q4):not(#q5):not(#q6):not(#q7):not(#q8):not(#q9):not(#q10):not(#q11) > .wrap{
+  padding-top:14px!important;padding-bottom:0!important}
+
+/* ——— Ch651 · QA — la une et ses articles n etaient pas dans le meme theme clair ———
+   Mesure : en clair, html porte « et-plight » sur la une et « et-jlight » sur
+   les articles. Or bundle_core_a1.css pose le « verre clair » — quatre radiaux
+   colores (or, bleu, vert, rose) plus un degrade papier, en !important — sur
+   html.et-plight seulement. Consequence : la une s affichait sur un lavis
+   pastel quand ses propres articles s affichaient sur le papier plat choisi au
+   647 (data-fond="papier"). Contribution mesuree du calque : 87,48 % des
+   pixels, ecart moyen 7,39 — temoin nul a 0 %. On eteint le verre sur la une
+   seule ; le .rootland papier, pose en dessous, redevient le fond. */
+html.et-plight:not(#q0):not(#q1):not(#q2):not(#q3):not(#q4):not(#q5):not(#q6):not(#q7):not(#q8):not(#q9):not(#q10):not(#q11):where([data-eh~=eh27]):not(.ehz):not(ehz),
+html.et-plight:not(#q0):not(#q1):not(#q2):not(#q3):not(#q4):not(#q5):not(#q6):not(#q7):not(#q8):not(#q9):not(#q10):not(#q11) body.jn-page{
+  background-image:none!important;background-color:transparent!important}
+
+/* Ch690 -- QA ergonomie web : deux familles de liens de ce fichier restees hors du
+   perimetre du 568 (SC 2.5.8, taille de cible minimum). Le 568 avait porte a 24px
+   les rangees de liens de la navigation, du pied de page et des fils d Ariane, mais
+   pas les liens de renvoi propres au journal : mesure en rendu reel a 390px, .jn-go
+   (renvoi vers les Carnets depuis les six pages pole/accueil) et .jn-all (Carnets,
+   liens "Tout le fil" / "L'agenda complet") ne mesurent que 19px de haut, sans
+   aucun rembourrage vertical, uniquement la hauteur de ligne de leur police mono a
+   .72-.76rem. Meme famille de lien-bouton isole que celle deja traitee au 568,
+   simplement dans un fichier different. .jn-all sert aussi hors de .jn-fil (le
+   lien "L'agenda complet" de la section .jn-rep/.jn-rl des Carnets, 21px, jamais
+   couvert par la regle scopee du dessus) : la regle ci-dessous vise directement
+   la classe, sans scope, puisque jn-all designe partout le meme role de lien.
+   Meme correctif exact que le 568 : rembourrage vertical centre par inline-flex,
+   hauteur minimale 24px, aucune valeur inventee. */
+.jn-renvoi a.jn-go,.jn-all{display:inline-flex!important;align-items:center;min-height:24px}
+.jn-sujets .topic-chip{display:inline-flex;align-items:center;gap:8px;padding:8px 13px;border-radius:999px;border:1px solid var(--hair,rgba(120,170,220,.22));font-size:.82rem;font-weight:550;line-height:1.25}
+.jn-sujets .topic-chip b:not(#_){width:8px;height:8px;border-radius:50%;background:var(--tc,#E8C36A)!important;flex:none}
+.jn-sujets .topic-chip i{font-style:normal;color:var(--tc,#E8C36A)}
+/* Hauteur de la barre de navigation connue des le premier affichage : le script ne fait plus que confirmer la valeur,
+   la page ne descend plus de 72 px apres chargement (CLS). 77 px mobile, 93 px tablette, 144 px grand ecran. */
+:root{--nav-h:77px}@media(min-width:481px){:root{--nav-h:93px}}@media(min-width:1241px){:root{--nav-h:144px}}
+/* Petits textes (8 octobre 2026, maquette validee) : etiquettes, dates et rubriques de 9,3 a 10,9 px portees a 11,5 px (0,72 rem) minimum, toutes largeurs. */
+html .lie560-c i,html .prt560 .pk,html .jn-river time,html .jn-fil time,html .jn-river i,html .jn-lead .jn-kick,html .jn-art .jn-kick,html .jn-dep-h span,html .jn-mast-top{font-size:.72rem}
+html .jn-dep-h h2,html .jn-fil h2,html .jn-rep h2{font-size:.76rem!important}
+
+/* Lot 824 — planches du journal sur mobile : variante 1600 px (la bande rend
+   a 142 % de ~334 px, soit ~1420 px en DPR 3) ; le 2400 px reste pour l ecran large. */
+@media(max-width:760px){
+html[data-pl="coupe"] .jn-fig .jn-band{background-image:url(/assets/img/bande-coupe-sombre-1600.webp)}
+html[data-pl="corridor"] .jn-fig .jn-band{background-image:url(/assets/img/bande-corridor-sombre-1600.webp)}
+html[data-pl="colonne"] .jn-fig .jn-band{background-image:url(/assets/img/bande-colonne-sombre-1600.webp)}
+html:is(.et-plight,.et-jlight)[data-pl="coupe"] .jn-fig .jn-band{background-image:url(/assets/img/bande-coupe-clair-1600.webp)}
+html:is(.et-plight,.et-jlight)[data-pl="corridor"] .jn-fig .jn-band{background-image:url(/assets/img/bande-corridor-clair-1600.webp)}
+html:is(.et-plight,.et-jlight)[data-pl="colonne"] .jn-fig .jn-band{background-image:url(/assets/img/bande-colonne-clair-1600.webp)}
+}

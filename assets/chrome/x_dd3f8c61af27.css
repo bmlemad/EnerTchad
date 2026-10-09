@@ -1,0 +1,115 @@
+:root{accent-color:#E8C36A}main :where(input[type=text],input[type=email],input[type=tel],input[type=number],input[type=search],select,textarea),form :where(input[type=text],input[type=email],input[type=tel],input[type=number],input[type=search],select,textarea){background:rgba(8,14,26,.55);border:1px solid rgba(255,255,255,.14);border-radius:12px;color:#F5F7FA;padding:12px 14px;font:inherit;line-height:1.4;min-height:44px;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);transition:border-color .2s,box-shadow .2s,background .2s}main :where(textarea),form :where(textarea){min-height:120px;resize:vertical}main :where(select),form :where(select){appearance:none;-webkit-appearance:none;padding-right:40px;background-image:url(data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%2712%27%20height%3D%278%27%20viewBox%3D%270%200%2012%208%27%3E%3Cpath%20d%3D%27M1%201l5%205%205-5%27%20fill%3D%27none%27%20stroke%3D%27%23E8C36A%27%20stroke-width%3D%271.8%27%20stroke-linecap%3D%27round%27%2F%3E%3C%2Fsvg%3E);background-repeat:no-repeat;background-position:right 15px center}main :where(select) option{background:#0B1422;color:#F5F7FA}main ::placeholder,form ::placeholder{color:rgba(245,247,250,.38)}input:focus-visible,select:focus-visible,textarea:focus-visible{outline:none!important;border-color:color-mix(in srgb,var(--gold-l,#E8C36A) 65%,transparent)!important;box-shadow:0 0 0 3px color-mix(in srgb,var(--gold-l,#E8C36A) 22%,transparent)!important}main :where(input,textarea):user-invalid,form :where(input,textarea):user-invalid{border-color:rgba(255,122,122,.6)}@media(prefers-reduced-motion:reduce){main :where(input,select,textarea),form :where(input,select,textarea){transition:none}}
+/* Ch217 : placeholder lisible en theme clair (etait blanc a 38% sur fond clair) */
+html.et-plight main ::placeholder,html.et-plight form ::placeholder,html.et-jlight main ::placeholder,html.et-jlight form ::placeholder{color:rgba(42,54,72,.55)!important}
+
+/* Ch219 : cibles tactiles des curseurs (WCAG 2.5.8 : 24px min) */
+@media(pointer:coarse){input[type=range]:not(#_),.lum-range{min-height:28px}}
+
+/* Ch322 : les curseurs (input[type=range]) etaient pris dans deux regles ecrites
+   pour les champs de texte.
+   (1) Cible : la garantie de 28 px du chapitre 219 etait enfermee dans
+       @media(pointer:coarse) ; a la souris la piste ne mesurait que 7 px de haut.
+       Sur la pile de curseurs de l'estimateur volumetrique, l'exception
+       d'espacement de WCAG 2.5.8 ne joue pas (voisins a moins de 24 px).
+   (2) Focus : "input:focus-visible{outline:none!important}" remplace l'anneau
+       par une bordure doree et une lueur — invisible sur un curseur, qui n'a pas
+       de bordure. Au clavier, le curseur focalise ne se distinguait plus du tout
+       (WCAG 2.4.7). Mesure : 15/255 d'ecart au maximum entre focalise et non
+       focalise, sur un halo creme. */
+input[type=range]:not(#_):not(#__){min-height:28px;padding-block:10.5px;background-clip:content-box}
+input[type=range]:not(#_):not(#__):focus-visible{
+  outline:2px solid var(--etfv,#E8C36A)!important;
+  outline-offset:3px!important;
+  box-shadow:none!important}
+/* Ch323 — 1. Le minimum automatique d'un element de grille vaut son min-content :
+   un enfant indivisible (bouton insecable, champ, mot long) fait grossir la piste
+   au-dela de la fenetre, et le contenu sort de l'ecran sans que la page defile. */
+.ep-models>*,.ms-usecases>*,.prod-synth>*,.modref-grid>*,.client-grid>*,.tech-grid>*,.prod-b2b>*,
+.truck-grid>*,.carbon-grid>*,.regime-grid>*,.rd-axes>*,.chain-grid>*,.fin-grid>*,.appfeat-grid>*,
+.maint-grid>*,.taskforce-grid>*,.htech-grid>*,.buy-grid>*,.univ-grid>*,.hub-grid>*,.recomp-grid>*,
+.welltype-grid>*,.bit-grid>*,.viz-grid>*,.vc-grid>*,.gt-grid>*,.flotte-grid>*,.compare-grid>*,
+.pole-grid>*,.plc-grid>*,.biz-grid>*,.ppt-grid>*,.pof-grid>*,.sb-grid>*,.ttg-g>*,.hxi-grid>*,
+.ce-grid>*,.zk-grid>*,.hnews-grid>*,.pipe-ops>*,.profiles>*,.ckpis>*,.steps>*,.fx2g>*,
+.cli-deep>*,.vb-grid>*,.mkt-brands>*{min-width:0}
+/* la grille ESG des brochures imbrique grille dans flex : le plancher doit tomber a chaque etage */
+.esg3-grid,.esg3-grid *{min-width:0}
+.esg3-grid :where(li,p,strong,span){overflow-wrap:break-word}
+/* 2. un bouton insecable ne doit jamais depasser son conteneur */
+.btn:not(#_):not(#__){max-width:100%}
+@media(max-width:1040px){.btn,.fcta{white-space:normal!important}}
+@media(max-width:760px){
+  /* 3. les mots trop longs se coupent au lieu de sortir de la boite */
+  body :where(p,li,dd,dt,h1,h2,h3,h4,h5,h6,span,strong,b,em,td,th,label,figcaption,a,div){overflow-wrap:break-word}
+  /* 4. un tableau large defile dans sa propre boite au lieu de pousser la page */
+  :where(article,.jbody,main) table{display:block;max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
+}
+
+/* Ch323 — 5. Accordeon du pied de page sur telephone : un script enveloppe le
+   titre dans un <button> a padding nul, pose au milieu d'un h3 qui, lui, porte
+   30 px de marge interne. Seule la bande centrale de 12 a 20 px etait donc
+   tactile, et le « + » a droite, dessine par le h3, ne repondait pas du tout.
+   On deplace la marge interne sur le bouton : la ligne entiere devient la cible. */
+@media(max-width:760px){
+  footer .foot-grid .foot-col>h3:not(#_):not(#__){padding:0!important}
+  footer .foot-grid .foot-col>h3>button:not(#_):not(#__){
+    display:block;width:100%;text-align:start;
+    padding:15px 26px 15px 0!important;margin:0!important;min-height:50px}
+}
+
+/* Ch323 — 6. Deux gardes de lisibilite et de gene sur telephone.
+   La signature sous le logo tombait a 9,6 px, le plus petit texte du site.
+   Et sur ar.html le bouton de theme se posait sous le variateur de luminosite
+   (chevauchement de 42 x 22 px), donc a moitie inatteignable. */
+@media(max-width:470px){
+  .brand-tx small:not(#_):not(#__){font-size:11px!important;letter-spacing:.06em!important}
+}
+@media(max-width:720px){
+  body:where([data-eh~=eh8]):not(.ehz) #plightBtn:not(#_):not(#__){bottom:150px}
+}
+
+/* Ch323 — 7. Le courriel et le telephone du pied de page sont les deux liens
+   qu'on touche le plus depuis un telephone : ils mesuraient 18 px de haut,
+   marge interne comprise. On les porte a 44 px. */
+@media(max-width:760px){
+  footer .foot-col a[href^="mailto:"]:not(#_),footer .foot-col a[href^="tel:"]:not(#_){
+    display:flex!important;align-items:center;min-height:44px;padding:8px 0!important}
+}
+
+/* Ch324 : sur neuf pages anglaises, la feuille qui sort le preloader du flux
+   n'etait pas chargee : le voile occupait 178 px en haut de page, puis
+   disparaissait vers 4,3 s en tirant tout le contenu vers le haut. Saut de
+   mise en page mesure a 0,22-0,23 sur telephone bride. Le voile est un
+   element de couverture : sa place est hors flux, partout. */
+#preloader:not(#_):not(#__){position:fixed;inset:0;z-index:9999;pointer-events:none}
+/* et le voile doit s'effacer des que le script le marque « done » : sans cette
+   regle il restait opaque une seconde et demie par-dessus la page. */
+#preloader.done:not(#_):not(#__){opacity:0;visibility:hidden;transition:opacity .5s ease,visibility .5s}
+
+/* Ch332 : les pastilles de pole du pied de page tiraient leur teinte des
+   variables de theme de chaque page — quatre familles de feuilles, quatre
+   resolutions : l'Aval n'avait aucune pastille sur 87 pages (variable
+   absente, repli sur la couleur du texte), le vert de GreenTech existait en
+   trois nuances, l'or d'Amont en deux. Une seule teinte par pole, partout,
+   adressee par le lien (l'!important est necessaire : l'accent est pose en
+   style en ligne dans le gabarit). Pastille decorative : memes valeurs dans
+   les deux themes. */
+footer .foot-pole[href^="/amont"],footer .foot-pole[href^="/pole-amont"]{--pc:#E8C36A!important}
+footer .foot-pole[href^="/intermediaire"],footer .foot-pole[href^="/pole-intermediaire"]{--pc:#5AA7F0!important}
+footer .foot-pole[href^="/aval"],footer .foot-pole[href^="/pole-aval"]{--pc:#F09A4A!important}
+footer .foot-pole[href^="/petrochimie"],footer .foot-pole[href^="/pole-enerchimie"]{--pc:#D177B4!important}
+footer .foot-pole[href^="/greentech"],footer .foot-pole[href^="/pole-greentech"]{--pc:#34D399!important}
+footer .foot-pole[href^="/tchaditech"],footer .foot-pole[href^="/pole-tchaditech"]{--pc:#96A2EC!important}
+footer .foot-pole[href^="/tchaditude"],footer .foot-pole[href^="/pole-tchaditude"]{--pc:#C4B5FD!important}
+footer .foot-pole[href^="/enerconseils"],footer .foot-pole[href^="/pole-enerconseils"]{--pc:#1FA496!important}
+
+/* Ch333 : les messages d'erreur du formulaire de contact (.ct-err, role=alert)
+   restaient rouges en theme sombre mais viraient au bleu nuit en theme clair —
+   la repeinture de theme passait dessus. Un message d'erreur doit rester un
+   message d'erreur : rouge sombre lisible sur fond creme (6,3:1). */
+html.et-plight .ct-err:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5):not(#e6),
+html.et-jlight .ct-err:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5):not(#e6){color:#B42318!important}
+
+/* Ch349 : a l'impression, le chrome d'ecran a position fixe (bandeau cookies,
+   rail de traversee, retour accueil, bascule de theme) se repetait sur chaque
+   page imprimee. */
+@media print{#ckn:not(#e1):not(#e2):not(#e3),#aurail:not(#e1):not(#e2):not(#e3),#homeFab:not(#e1):not(#e2):not(#e3),#plightBtn:not(#e1):not(#e2):not(#e3),#jlightBtn:not(#e1):not(#e2):not(#e3),#toTop:not(#e1):not(#e2):not(#e3),#toTop-fix:not(#e1):not(#e2):not(#e3){display:none!important}}

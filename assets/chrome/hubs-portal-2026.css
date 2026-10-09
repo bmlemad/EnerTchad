@@ -1,0 +1,61 @@
+/* EnerTchad Hub Portal Polish — 2026
+   Shared, low-specificity layer for the four strategic hubs.
+   Goal: clearer hierarchy, tighter above-the-fold rhythm, premium restraint. */
+:root{--et-hub-max:1240px}
+.pgh{isolation:isolate}
+.pgh .wrap,.pmani .wrap{width:min(100% - 40px,var(--et-hub-max));margin-inline:auto}
+.pgh h1{max-width:11ch;text-wrap:balance;letter-spacing:-.035em}
+.pgh .pgl{max-width:62ch;line-height:1.65}
+.pgh-kpis{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:clamp(24px,3vw,40px)}
+.pgh-kpi{min-height:86px;padding:16px 18px;border-radius:16px;border:1px solid color-mix(in srgb,currentColor 14%,transparent);background:color-mix(in srgb,#fff 7%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.pgh-kpi b,.pgh-kpi i{display:block}.pgh-kpi b{font-size:clamp(1.05rem,1.8vw,1.35rem);letter-spacing:-.02em}.pgh-kpi i{margin-top:6px;font-size:.78rem;line-height:1.4;opacity:.72;font-style:normal}
+.pgh-cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.pgh-btn,.pgh-btn2{min-height:46px;display:inline-flex;align-items:center;justify-content:center;border-radius:999px;padding:11px 18px}
+.pgh-btn{font-weight:700}.pgh-btn2{border:1px solid color-mix(in srgb,currentColor 18%,transparent)}
+.pmani-q{max-width:24ch;text-wrap:balance}
+.pmani-sub{max-width:68ch;line-height:1.65}
+.pgh-flabel{letter-spacing:.045em}
+@media(max-width:760px){
+ .pgh .wrap,.pmani .wrap{width:min(100% - 28px,var(--et-hub-max))}
+ .pgh h1{max-width:13ch}
+ .pgh-kpis{grid-template-columns:1fr;gap:10px}
+ .pgh-kpi{min-height:0;padding:14px 16px}
+ .pgh-cta{display:grid;grid-template-columns:1fr}
+ .pgh-btn,.pgh-btn2{width:100%;min-height:48px}
+ .pmani-q{max-width:18ch}
+ .pmani-sub{line-height:1.55}
+ .pgh-flabel{font-size:.72rem}
+}
+@media(max-width:390px){
+ .pgh .wrap,.pmani .wrap{width:calc(100% - 24px)}
+ .pgh h1{max-width:15ch;font-size:clamp(2rem,10vw,2.65rem);line-height:1.02}
+ .pgh .pgl{font-size:.94rem;line-height:1.55}
+ .pgh-kpi{padding:13px 14px;border-radius:14px}
+ .pgh-kpi b{font-size:1rem}
+ .pgh-kpi i{font-size:.75rem}
+ .pgh-cta{gap:8px}
+ .pgh-btn,.pgh-btn2{padding:10px 14px}
+}
+@media(prefers-reduced-transparency:reduce){
+ .pgh-kpi{backdrop-filter:none;-webkit-backdrop-filter:none}
+}
+@media(prefers-reduced-motion:reduce){
+ .pgh *, .pmani *{scroll-behavior:auto!important;transition-duration:.01ms!important;animation-duration:.01ms!important}
+}
+
+
+/* Editorial density pass — keep evidence-rich hubs scannable without deleting content. */
+.pmani,.ilede,.psol,.grp565,.gtt,.bizcases,.tt-flow,.tt-story,.tt-carnets,.dch-wrap,#mise-a-disposition,#offre-tiers,.rp480,.lie558,.pole-proj,#cta-band{scroll-margin-top:var(--et-anc,120px)}
+.pmani .wrap,.ilede .wrap,.psol .wrap,.bizcases .wrap,.pole-proj .wrap{max-width:1180px}
+.rp480{max-width:1180px;margin-inline:auto}
+.lie558{max-width:1180px;margin-inline:auto}
+.pole-proj{max-width:1180px;margin-inline:auto}
+@media(max-width:760px){
+  .rp480,.lie558,.pole-proj{width:min(100% - 28px,1180px)}
+}
+@media(max-width:390px){
+  .rp480,.lie558,.pole-proj{width:calc(100% - 24px)}
+}
+@media(prefers-reduced-transparency:reduce){
+  .pgh-kpi{background:rgba(14,22,38,.92)}
+}

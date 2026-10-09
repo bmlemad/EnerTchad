@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /docs-sources/
+
+Sitemap: https://enertchad.com/sitemap.xml

@@ -1,0 +1,108 @@
+/* Ch544 - DA Glassmorphism Premium, couche commune du site.
+   Petrole #003049 · or energetique #FFB703 · cyan #00B4D8 · verre 20 px.
+   Pilote au 540 (accueil), etendue aux hubs au 542, au site entier ici.
+   Le theme clair garde son sol creme : le petrole est une matiere du sombre. */
+:root{--gold-l:#FFB703;--blue-l:#00B4D8;--g-blur:saturate(170%) blur(20px);--g-brd:rgba(255,255,255,.20)}
+html:not(.et-plight):not(.et-jlight){background:#00243A!important}
+html:not(.et-plight):not(.et-jlight) .rootland::after{background:linear-gradient(180deg,rgba(0,28,45,.68) 0%,rgba(0,21,34,.78) 100%)}
+html:not(.et-plight):not(.et-jlight) .subland::after{background:linear-gradient(180deg,rgba(0,28,45,.50) 0%,rgba(0,21,34,.60) 100%)}
+.nav.nx:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5):not(#e6){background:rgba(0,48,73,.38)!important;background-color:rgba(0,48,73,.38)!important;background-image:none!important;-webkit-backdrop-filter:saturate(170%) blur(20px)!important;backdrop-filter:saturate(170%) blur(20px)!important;border-bottom:1px solid rgba(255,255,255,.13);box-shadow:0 12px 34px rgba(0,18,30,.35)}
+html.et-plight .nav.nx:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5):not(#e6),html.et-jlight .nav.nx:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5):not(#e6){background:rgba(255,255,255,.60)!important;background-color:rgba(255,255,255,.60)!important;background-image:none!important;border-bottom-color:rgba(0,48,73,.14);box-shadow:0 10px 30px rgba(0,48,73,.10)}
+@media (prefers-reduced-transparency:reduce){.nav.nx:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5):not(#e6){background:#003049!important;-webkit-backdrop-filter:none;backdrop-filter:none}html.et-plight .nav.nx:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5):not(#e6),html.et-jlight .nav.nx:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5):not(#e6){background:#F5F7FA!important}}
+html.et-plight .dt:not(#_),html.et-jlight .dt:not(#_){opacity:1!important;color:#6B5012!important}
+html:not(.et-plight):not(.et-jlight) .exp-c p:not(#_),html:not(.et-plight):not(.et-jlight) .exp-items span:not(#_),html:not(.et-plight):not(.et-jlight) .exp-note:not(#_){color:#ACB8CC!important}
+html:not(.et-plight):not(.et-jlight) .c7d:not(#_){color:#93A1B8!important}
+/* Ch544 - le sourd #7C8AA2 du chrome commun tombait a 4,2:1 sur le composite petrole : eclairci en sombre au niveau du token. */
+html:not(.et-plight):not(.et-jlight){--muted:#93A1B8}
+/* Ch544 - pages a chrome reduit : le logo de la barre n avait pas de couleur propre (bleu UA revele par le fond solide du verre). Filet de securite a faible specificite. */
+.nav .brand{color:#F5F7FA;text-decoration:none}
+html.et-plight .nav .brand,html.et-jlight .nav .brand{color:#13202F}
+.nav .brand-tx small{color:#A8B4C7}
+html.et-plight .nav .brand-tx small,html.et-jlight .nav .brand-tx small{color:#39424F}
+
+/* EnerTchad 2026 — Liquid Glass v3 : hiérarchie matière + budget responsive */
+:root{
+  --et-glass-1:rgba(8,18,31,.46);
+  --et-glass-2:rgba(12,22,38,.66);
+  --et-glass-3:linear-gradient(145deg,rgba(22,38,60,.72),rgba(7,15,27,.78));
+  --et-glass-line:rgba(255,255,255,.16);
+  --et-glass-line-strong:rgba(255,255,255,.30);
+  --et-glass-blur-1:12px;
+  --et-glass-blur-2:18px;
+  --et-glass-blur-3:24px;
+}
+/* Niveau 1 : chrome, doit rester lisible sur le contenu */
+.nav.nx:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5):not(#e6),
+.nav:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5):not(#e6){
+  background:var(--et-glass-1)!important;
+  -webkit-backdrop-filter:saturate(165%) blur(var(--et-glass-blur-1))!important;
+  backdrop-filter:saturate(165%) blur(var(--et-glass-blur-1))!important;
+}
+/* Niveau 2 : contenu, verre plus dense mais moins coûteux que les surfaces de focus */
+.hpcard,.hxi-card,.mfo-lever,.hncard,.sc-card,.hx-stat,.hubdrawer,.flip-face,.hpcard-kpis{
+  --glass-blur:var(--et-glass-blur-2);
+  -webkit-backdrop-filter:saturate(175%) blur(var(--glass-blur))!important;
+  backdrop-filter:saturate(175%) blur(var(--glass-blur))!important;
+}
+/* Niveau 3 : focus, réservé aux panneaux qui portent une décision ou un parcours */
+.hx-slide .rt,.hx-aside,[class*="router"],.nx-mega,.mega,.nx-panel{
+  -webkit-backdrop-filter:saturate(180%) blur(var(--et-glass-blur-3))!important;
+  backdrop-filter:saturate(180%) blur(var(--et-glass-blur-3))!important;
+}
+/* Réduction de charge sur petits écrans : conserver la profondeur, pas le coût maximal. */
+@media(max-width:760px){
+  .hpcard,.hxi-card,.mfo-lever,.hncard,.sc-card,.hx-stat,.hubdrawer,.flip-face,.hpcard-kpis{
+    --glass-blur:14px;
+    -webkit-backdrop-filter:saturate(155%) blur(var(--glass-blur))!important;
+    backdrop-filter:saturate(155%) blur(var(--glass-blur))!important;
+  }
+  .hx-slide .rt,.hx-aside,[class*="router"],.nx-mega,.mega,.nx-panel{
+    -webkit-backdrop-filter:saturate(165%) blur(18px)!important;
+    backdrop-filter:saturate(165%) blur(18px)!important;
+  }
+}
+@media(prefers-reduced-transparency:reduce){
+  .hpcard,.hxi-card,.mfo-lever,.hncard,.sc-card,.hx-stat,.hubdrawer,.flip-face,.hpcard-kpis,
+  .hx-slide .rt,.hx-aside,[class*="router"],.nx-mega,.mega,.nx-panel{
+    background:#0D1A2A!important;
+    -webkit-backdrop-filter:none!important;
+    backdrop-filter:none!important;
+    box-shadow:0 12px 30px rgba(0,0,0,.24)!important;
+  }
+  html.et-plight .hpcard,html.et-plight .hxi-card,html.et-plight .mfo-lever,html.et-plight .hncard,
+  html.et-plight .sc-card,html.et-plight .hx-stat,html.et-plight .hubdrawer,html.et-plight .flip-face,
+  html.et-plight .hpcard-kpis,html.et-plight .hx-slide .rt,html.et-plight .hx-aside,
+  html.et-plight [class*="router"],html.et-plight .nx-mega,html.et-plight .mega,html.et-plight .nx-panel{
+    background:#FAF7F1!important;
+    box-shadow:0 12px 30px rgba(24,45,67,.10)!important;
+  }
+}
+
+/* Liquid Glass v3 — compatibilité et accessibilité système */
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+  .nav.nx:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5):not(#e6),
+  .nav:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5):not(#e6),
+  .hpcard,.hxi-card,.mfo-lever,.hncard,.sc-card,.hx-stat,.hubdrawer,.flip-face,.hpcard-kpis,
+  .hx-slide .rt,.hx-aside,[class*="router"],.nx-mega,.mega,.nx-panel{
+    background:#0D1A2A!important;
+    -webkit-backdrop-filter:none!important;
+    backdrop-filter:none!important;
+  }
+  html.et-plight .nav,html.et-jlight .nav,
+  html.et-plight .hpcard,html.et-jlight .hpcard,
+  html.et-plight .hxi-card,html.et-jlight .hxi-card{
+    background:#FAF7F1!important;
+  }
+}
+@media(forced-colors:active){
+  .nav,.nav.nx,.hpcard,.hxi-card,.mfo-lever,.hncard,.sc-card,.hx-stat,.hubdrawer,
+  .flip-face,.hpcard-kpis,.nx-mega,.mega,.nx-panel,.btn{
+    background:Canvas!important;
+    color:CanvasText!important;
+    -webkit-backdrop-filter:none!important;
+    backdrop-filter:none!important;
+    border:1px solid CanvasText!important;
+    box-shadow:none!important;
+  }
+  .hpcard:hover,.hxi-card:hover,.sc-card:hover,.hncard:hover{transform:none!important}
+}

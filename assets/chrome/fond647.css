@@ -1,0 +1,451 @@
+/* ————— Ch647 — le dessin sur tout le site, regle unique —————
+   Le script d amorce pose data-fond sur <html> des le premier octet du head :
+   coupe pour l Exploration & Production et le corporate, corridor pour le
+   Transport & stockage, colonne pour le Raffinage & distribution et la
+   petrochimie, papier pour le journal. Une seule regle ici remplace les
+   blocs de page : la planche va sur le porteur visible, tout le reste
+   des nappes plein ecran s eteint. Mesure au 647 : sur les quatre pages
+   temoins, .rootland portait le fond et les autres couches rendaient
+   entre le plancher de bruit et deux points. */
+
+html[data-fond]:not(.et-plight):not(.et-jlight) body .rootland:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4):not(#f5):not(#f6):not(#f7):not(#f8):not(#f9):not(#f10):not(#f11):not(#f12):not(#f13):not(#f14):not(#f15):not(#f16):not(#f17):not(#f18):not(#f19):not(#f20):not(#f21):not(#f22):not(#f23):not(#f24):not(#f25),
+html[data-fond]:not(.et-plight):not(.et-jlight) body .diapo:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4):not(#f5):not(#f6):not(#f7):not(#f8):not(#f9):not(#f10):not(#f11):not(#f12):not(#f13):not(#f14):not(#f15):not(#f16):not(#f17):not(#f18):not(#f19):not(#f20):not(#f21):not(#f22):not(#f23):not(#f24):not(#f25):not(#d1):not(#d2):not(#d3):not(#d4):not(#d5):not(#d6){
+ background-size:cover!important;background-position:center center!important;
+ background-repeat:no-repeat!important;background-attachment:scroll!important;
+ background-color:#0A1220!important}
+html[data-fond]:is(.et-plight,.et-jlight) body .rootland:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4):not(#f5):not(#f6):not(#f7):not(#f8):not(#f9):not(#f10):not(#f11):not(#f12):not(#f13):not(#f14):not(#f15):not(#f16):not(#f17):not(#f18):not(#f19):not(#f20):not(#f21):not(#f22):not(#f23):not(#f24):not(#f25),
+html[data-fond]:is(.et-plight,.et-jlight) body .diapo:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4):not(#f5):not(#f6):not(#f7):not(#f8):not(#f9):not(#f10):not(#f11):not(#f12):not(#f13):not(#f14):not(#f15):not(#f16):not(#f17):not(#f18):not(#f19):not(#f20):not(#f21):not(#f22):not(#f23):not(#f24):not(#f25):not(#d1):not(#d2):not(#d3):not(#d4):not(#d5):not(#d6){
+ background-size:cover!important;background-position:center center!important;
+ background-repeat:no-repeat!important;background-attachment:scroll!important;
+ background-color:#FAF7F1!important}
+
+/* la planche, par metier */
+html[data-fond="coupe"]:not(.et-plight):not(.et-jlight) body .rootland:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4):not(#f5):not(#f6):not(#f7):not(#f8):not(#f9):not(#f10):not(#f11):not(#f12):not(#f13):not(#f14):not(#f15):not(#f16):not(#f17):not(#f18):not(#f19):not(#f20):not(#f21):not(#f22):not(#f23):not(#f24):not(#f25),
+html[data-fond="coupe"]:not(.et-plight):not(.et-jlight) body .diapo:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4):not(#f5):not(#f6):not(#f7):not(#f8):not(#f9):not(#f10):not(#f11):not(#f12):not(#f13):not(#f14):not(#f15):not(#f16):not(#f17):not(#f18):not(#f19):not(#f20):not(#f21):not(#f22):not(#f23):not(#f24):not(#f25):not(#d1):not(#d2):not(#d3){background-image:url(/assets/img/fond-coupe-sombre.webp)!important}
+html[data-fond="coupe"]:is(.et-plight,.et-jlight) body .rootland:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4):not(#f5):not(#f6):not(#f7):not(#f8):not(#f9):not(#f10):not(#f11):not(#f12):not(#f13):not(#f14):not(#f15):not(#f16):not(#f17):not(#f18):not(#f19):not(#f20):not(#f21):not(#f22):not(#f23):not(#f24):not(#f25),
+html[data-fond="coupe"]:is(.et-plight,.et-jlight) body .diapo:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4):not(#f5):not(#f6):not(#f7):not(#f8):not(#f9):not(#f10):not(#f11):not(#f12):not(#f13):not(#f14):not(#f15):not(#f16):not(#f17):not(#f18):not(#f19):not(#f20):not(#f21):not(#f22):not(#f23):not(#f24):not(#f25):not(#d1):not(#d2):not(#d3){background-image:url(/assets/img/fond-coupe-clair.webp)!important}
+
+html[data-fond="corridor"]:not(.et-plight):not(.et-jlight) body .rootland:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4):not(#f5):not(#f6):not(#f7):not(#f8):not(#f9):not(#f10):not(#f11):not(#f12):not(#f13):not(#f14):not(#f15):not(#f16):not(#f17):not(#f18):not(#f19):not(#f20):not(#f21):not(#f22):not(#f23):not(#f24):not(#f25),
+html[data-fond="corridor"]:not(.et-plight):not(.et-jlight) body .diapo:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4):not(#f5):not(#f6):not(#f7):not(#f8):not(#f9):not(#f10):not(#f11):not(#f12):not(#f13):not(#f14):not(#f15):not(#f16):not(#f17):not(#f18):not(#f19):not(#f20):not(#f21):not(#f22):not(#f23):not(#f24):not(#f25):not(#d1):not(#d2):not(#d3){background-image:url(/assets/img/fond-corridor-sombre.webp)!important}
+html[data-fond="corridor"]:is(.et-plight,.et-jlight) body .rootland:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4):not(#f5):not(#f6):not(#f7):not(#f8):not(#f9):not(#f10):not(#f11):not(#f12):not(#f13):not(#f14):not(#f15):not(#f16):not(#f17):not(#f18):not(#f19):not(#f20):not(#f21):not(#f22):not(#f23):not(#f24):not(#f25),
+html[data-fond="corridor"]:is(.et-plight,.et-jlight) body .diapo:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4):not(#f5):not(#f6):not(#f7):not(#f8):not(#f9):not(#f10):not(#f11):not(#f12):not(#f13):not(#f14):not(#f15):not(#f16):not(#f17):not(#f18):not(#f19):not(#f20):not(#f21):not(#f22):not(#f23):not(#f24):not(#f25):not(#d1):not(#d2):not(#d3){background-image:url(/assets/img/fond-corridor-clair.webp)!important}
+
+html[data-fond="colonne"]:not(.et-plight):not(.et-jlight) body .rootland:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4):not(#f5):not(#f6):not(#f7):not(#f8):not(#f9):not(#f10):not(#f11):not(#f12):not(#f13):not(#f14):not(#f15):not(#f16):not(#f17):not(#f18):not(#f19):not(#f20):not(#f21):not(#f22):not(#f23):not(#f24):not(#f25),
+html[data-fond="colonne"]:not(.et-plight):not(.et-jlight) body .diapo:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4):not(#f5):not(#f6):not(#f7):not(#f8):not(#f9):not(#f10):not(#f11):not(#f12):not(#f13):not(#f14):not(#f15):not(#f16):not(#f17):not(#f18):not(#f19):not(#f20):not(#f21):not(#f22):not(#f23):not(#f24):not(#f25):not(#d1):not(#d2):not(#d3){background-image:url(/assets/img/fond-colonne-sombre.webp)!important}
+html[data-fond="colonne"]:is(.et-plight,.et-jlight) body .rootland:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4):not(#f5):not(#f6):not(#f7):not(#f8):not(#f9):not(#f10):not(#f11):not(#f12):not(#f13):not(#f14):not(#f15):not(#f16):not(#f17):not(#f18):not(#f19):not(#f20):not(#f21):not(#f22):not(#f23):not(#f24):not(#f25),
+html[data-fond="colonne"]:is(.et-plight,.et-jlight) body .diapo:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4):not(#f5):not(#f6):not(#f7):not(#f8):not(#f9):not(#f10):not(#f11):not(#f12):not(#f13):not(#f14):not(#f15):not(#f16):not(#f17):not(#f18):not(#f19):not(#f20):not(#f21):not(#f22):not(#f23):not(#f24):not(#f25):not(#d1):not(#d2):not(#d3){background-image:url(/assets/img/fond-colonne-clair.webp)!important}
+
+/* le journal : un aplat de papier, pas de dessin */
+html[data-fond="papier"] body .rootland:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4):not(#f5):not(#f6):not(#f7):not(#f8):not(#f9):not(#f10):not(#f11):not(#f12):not(#f13):not(#f14):not(#f15):not(#f16):not(#f17):not(#f18):not(#f19):not(#f20):not(#f21):not(#f22):not(#f23):not(#f24):not(#f25),
+html[data-fond="papier"] body .diapo:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4):not(#f5):not(#f6):not(#f7):not(#f8):not(#f9):not(#f10):not(#f11):not(#f12):not(#f13):not(#f14):not(#f15):not(#f16):not(#f17):not(#f18):not(#f19):not(#f20):not(#f21):not(#f22):not(#f23):not(#f24):not(#f25){background-image:none!important}
+html[data-fond="papier"]:not(.et-plight):not(.et-jlight) body .rootland:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4):not(#f5):not(#f6):not(#f7):not(#f8):not(#f9):not(#f10):not(#f11):not(#f12):not(#f13):not(#f14):not(#f15):not(#f16):not(#f17):not(#f18):not(#f19):not(#f20):not(#f21):not(#f22):not(#f23):not(#f24):not(#f25){background-color:#111A27!important}
+html[data-fond="papier"]:is(.et-plight,.et-jlight) body .rootland:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4):not(#f5):not(#f6):not(#f7):not(#f8):not(#f9):not(#f10):not(#f11):not(#f12):not(#f13):not(#f14):not(#f15):not(#f16):not(#f17):not(#f18):not(#f19):not(#f20):not(#f21):not(#f22):not(#f23):not(#f24):not(#f25){background-color:#FBF8F2!important}
+
+/* tout ce qui s empilait par-dessus s eteint */
+html[data-fond] body .subland:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4):not(#f5):not(#f6):not(#f7):not(#f8):not(#f9):not(#f10):not(#f11):not(#f12):not(#f13):not(#f14):not(#f15):not(#f16):not(#f17):not(#f18):not(#f19):not(#f20):not(#f21):not(#f22):not(#f23):not(#f24):not(#f25),
+html[data-fond] body #aurora:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4):not(#f5):not(#f6):not(#f7):not(#f8):not(#f9):not(#f10):not(#f11):not(#f12):not(#f13):not(#f14):not(#f15):not(#f16):not(#f17):not(#f18):not(#f19):not(#f20):not(#f21):not(#f22):not(#f23):not(#f24):not(#f25),
+html[data-fond] body .prem-mesh:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4):not(#f5):not(#f6):not(#f7):not(#f8):not(#f9):not(#f10):not(#f11):not(#f12):not(#f13):not(#f14):not(#f15):not(#f16):not(#f17):not(#f18):not(#f19):not(#f20):not(#f21):not(#f22):not(#f23):not(#f24):not(#f25){display:none!important}
+html[data-fond] body:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4):not(#f5):not(#f6):not(#f7):not(#f8):not(#f9):not(#f10):not(#f11):not(#f12):not(#f13):not(#f14):not(#f15):not(#f16):not(#f17):not(#f18):not(#f19):not(#f20):not(#f21):not(#f22):not(#f23):not(#f24):not(#f25)::before,
+html[data-fond] body:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4):not(#f5):not(#f6):not(#f7):not(#f8):not(#f9):not(#f10):not(#f11):not(#f12):not(#f13):not(#f14):not(#f15):not(#f16):not(#f17):not(#f18):not(#f19):not(#f20):not(#f21):not(#f22):not(#f23):not(#f24):not(#f25)::after,
+html[data-fond]:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4):not(#f5):not(#f6):not(#f7):not(#f8):not(#f9):not(#f10):not(#f11):not(#f12):not(#f13):not(#f14):not(#f15):not(#f16):not(#f17):not(#f18):not(#f19):not(#f20):not(#f21):not(#f22):not(#f23):not(#f24):not(#f25)::before,
+html[data-fond]:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4):not(#f5):not(#f6):not(#f7):not(#f8):not(#f9):not(#f10):not(#f11):not(#f12):not(#f13):not(#f14):not(#f15):not(#f16):not(#f17):not(#f18):not(#f19):not(#f20):not(#f21):not(#f22):not(#f23):not(#f24):not(#f25)::after{display:none!important;content:none!important;background-image:none!important}
+
+/* ————— Ch650 — la police de titre —————
+   La revue de design reprochait au site son trio par defaut : Space Grotesk
+   pour les titres, Inter pour le corps. Le journal a pris sa serif de presse
+   au 648 ; le site prend ici un lettrage grave — National Park, dessine
+   d apres les panneaux routes au burin des parcs americains. C est la meme
+   main que les planches SEDIMENT, qui sont des dessins au trait : le titre
+   et le fond racontent enfin la meme histoire.
+   La regle vit ici parce que cette feuille est la seule chargee par les 208
+   pages, et qu aucune page ne redefinit --fd apres elle (verifie page par
+   page). Le corps reste a Inter, le journal garde Instrument Serif, et
+   l arabe tombe sur Noto Sans Arabic par la plage Unicode.
+   font-display:swap et non optional : mesure a l appui, avec optional le
+   titre gardait la police de repli a la premiere visite et ne basculait
+   jamais — 661 px de large contre 630 une fois la fonte en cache. Une
+   identite qui ne se montre pas au premier regard n est pas une identite. */
+@font-face{font-family:'National Park';src:url('/assets/fonts/NationalPark-Regular-latin.woff2') format('woff2');
+ font-weight:400;font-display:swap;
+ unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2190-2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'National Park';src:url('/assets/fonts/NationalPark-Regular-latin-ext.woff2') format('woff2');
+ font-weight:400;font-display:swap;
+ unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:'National Park';src:url('/assets/fonts/NationalPark-Bold-latin.woff2') format('woff2');
+ font-weight:500 900;font-display:swap;
+ unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2190-2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'National Park';src:url('/assets/fonts/NationalPark-Bold-latin-ext.woff2') format('woff2');
+ font-weight:500 900;font-display:swap;
+ unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+
+:root{--fd:'National Park','Space Grotesk','Inter',system-ui,sans-serif}
+/* le journal garde sa serif : --fj ne passe pas par --fd, rien a faire ici */
+
+/* ——— Ch654 · les degrades decoupes au texte qui ne peuvent pas paraitre ———
+   Un degrade pose en background-clip:text ne se voit que si l encre est
+   transparente. Sur huit elements — les six titres de #offre et les deux
+   chapeaux .apps-creed — une regle posterieure redonne une encre opaque :
+   le degrade est declare, calcule, et invisible. Le theme clair a deja
+   tranche, a la reparation de contraste : il eteint ces degrades et rend
+   l encre pleine. Le sombre fait desormais pareil, ce qui ne change rien a
+   l ecran et retire une declaration qui ment. */
+html:not(.et-plight):not(.et-jlight) #offre h2:not(#k0):not(#k1):not(#k2):not(#k3):not(#k4):not(#k5),
+html:not(.et-plight):not(.et-jlight) .apps-creed:not(#k0):not(#k1):not(#k2):not(#k3):not(#k4):not(#k5){
+  background-image:none!important;-webkit-background-clip:border-box!important;background-clip:border-box!important}
+
+/* Ch658 — les menus de pole ancres sur la barre, pas sur leur bouton.
+   Le panneau des trois poles mesure 920px et partait du bord gauche de son
+   bouton : Transport & stockage debordait de 56px a 1440px et de 145px a
+   1280px, Raffinage & distribution de 10px et 86px (la regle nth-child(3)
+   en translate -30% ne suffisait plus). Les trois panneaux partent
+   desormais du bord gauche de la liste des menus, comme celui de
+   l Exploration & Production qui tenait deja dans l ecran. */
+@media(min-width:1241px){
+.nx .nav-links:where([data-eh~=eh13]):not(.ehz){position:relative}
+.nx .nav-links > .nav-item.nxi616{position:static}
+.nx .nav-links > .nav-item.nx-item .nx-mega.nxm616:not(#_x):not(#_y){left:0;right:auto;translate:none}
+}
+
+/* Ch661 — la police mono de la marque, declaree partout.
+   JetBrains Mono est livree avec le site mais n etait plus jamais utilisee : nav_a.css
+   (Ch600) posait --fm a la racine sans elle, apres bundle_head_b2 qui la nommait. Sur
+   Windows, les 172 textes mono de l accueil tombaient en police systeme. La face est
+   declaree ici pour les 65 pages qui ne chargent pas les feuilles qui la portent. */
+
+
+
+
+/* Ch662 — ultra review visual de tout le site : la grille des pages-pole et des Carnets.
+   Balayage des 208 pages, .wrap mesure dans chaque section : la meme derive qu au 661,
+   ailleurs. Sur les seize pages du gabarit pole (amont, aval, intermediaire, petrochimie
+   et les quatre poles de diversification, FR et EN), neuf sections du meme gabarit
+   alternaient entre 1180, 1200 et 1240px sans raison visible — Devenir client a 1200,
+   Enjeux a 1180, Notre approche a 1240 : le bord gauche du texte se decale de 30px
+   d une section a l autre. Sur la page Carnets, la meme chose entre le bandeau « Par
+   pole » (1240, titre 33,6px) et le fil date juste en dessous (1060, titre 37,6px) —
+   un decrochement net de 58px au bord gauche, visible a l oeil sans avoir besoin de
+   mesurer. */
+html body :is(#offre,#clients,#enjeux,#approche,#capacites,#expertises,#chiffres,#chantiers,#documents,#par-pole,#actualites,#presse):not(#k1):not(#k2):not(#k3) > .wrap{max-width:1200px!important}
+html body #par-pole:not(#k1):not(#k2) h2{font-size:clamp(1.35rem,3.4vw,2.35rem)!important;line-height:1.08!important}
+
+
+/* Ch663 — en-tete et pied de page transparents, pour laisser voir le decor en permanence.
+   Mesure : le pied de page etait entierement opaque en theme clair (une couleur pleine
+   avec degrade cremeux, sur une regle a cinq :not() de specificite dans plight_extrait.css
+   et x_cd256286824c.css) et sans le moindre flou en theme sombre (72% d opacite mais aucun
+   backdrop-filter). Le bandeau de navigation, lui, montait a 93-95% d opacite une fois
+   defile, verrouille par une regle a huit :not() sur #nav.nx.scrolled. Les deux sont
+   ramenes a un verre commun, plus transparent, avec le meme flou que le reste du site —
+   repli opaque conserve pour qui demande moins de transparence (prefers-reduced-transparency).
+   Specificite : la chaine :not() est poussee au-dela de celle des regles trouvees pour
+   etre sur de gagner, quel que soit l ordre de chargement des feuilles. */
+html body footer:not(#k1):not(#k2):not(#k3):not(#k4):not(#k5):not(#k6):not(#k7):not(#k8):not(#k9):not(#k10):not(#k11):not(#k12){background:rgba(14,22,38,.5)!important;-webkit-backdrop-filter:blur(18px) saturate(140%)!important;backdrop-filter:blur(18px) saturate(140%)!important}
+html.et-plight body footer:not(#k1):not(#k2):not(#k3):not(#k4):not(#k5):not(#k6):not(#k7):not(#k8):not(#k9):not(#k10):not(#k11):not(#k12),html.et-jlight body footer:not(#k1):not(#k2):not(#k3):not(#k4):not(#k5):not(#k6):not(#k7):not(#k8):not(#k9):not(#k10):not(#k11):not(#k12){background:rgba(247,243,236,.58)!important;-webkit-backdrop-filter:blur(18px) saturate(120%)!important;backdrop-filter:blur(18px) saturate(120%)!important}
+html body .nav.scrolled:not(#z1):not(#z2):not(#z3):not(#z4):not(#z5):not(#z6):not(#z7):not(#z8):not(#z9):not(#z10):not(#z11):not(#z12):not(#z13):not(#z14):not(#z15):not(#z16):not(#z17):not(#z18):not(#z19):not(#z20):not(#z21):not(#z22):not(#z23):not(#z24){background:rgba(8,14,26,.5)!important;-webkit-backdrop-filter:blur(20px) saturate(150%)!important;backdrop-filter:blur(20px) saturate(150%)!important}
+html.et-plight body .nav.scrolled:not(#z1):not(#z2):not(#z3):not(#z4):not(#z5):not(#z6):not(#z7):not(#z8):not(#z9):not(#z10):not(#z11):not(#z12):not(#z13):not(#z14):not(#z15):not(#z16):not(#z17):not(#z18):not(#z19):not(#z20):not(#z21):not(#z22):not(#z23):not(#z24),html.et-jlight body .nav.scrolled:not(#z1):not(#z2):not(#z3):not(#z4):not(#z5):not(#z6):not(#z7):not(#z8):not(#z9):not(#z10):not(#z11):not(#z12):not(#z13):not(#z14):not(#z15):not(#z16):not(#z17):not(#z18):not(#z19):not(#z20):not(#z21):not(#z22):not(#z23):not(#z24){background:rgba(255,255,255,.5)!important;-webkit-backdrop-filter:blur(20px) saturate(150%)!important;backdrop-filter:blur(20px) saturate(150%)!important}
+/* Ch664 -- les tuiles en verre transparent, pour laisser le decor vivre sous le contenu pendant la
+   navigation. Mesure : le systeme de tuiles (cartes de pole, cartes actualites/carnets, cartes de
+   diversification, KPI...) porte plus de trente noms de classe differents a travers le site, mais
+   converge presque partout sur le meme constat -- un fond degrade a 30-88% d opacite deja pose par
+   des chapitres anterieurs (544, 598...), mais avec le retour du flou coupe net au 624 : une regle
+   universelle a 22 :not() de specificite (nav_a.css) neutralise le backdrop-filter sur tout ce qui
+   vit sous <main> ou sous un heros de page, sur les 200 pages, en compensant par plus d opacite --
+   un choix delibere a l epoque pour un probleme de performance reel sur l accueil (calques animes +
+   flou lourd = images qui se chevauchaient). Ici : la home et son accueil restent intacts (aucune
+   des classes qu elle protege specifiquement, .t550-p/.cb-in/.car546/.hxf-face etc., n entre dans le
+   filet ci-dessous) ; partout ailleurs, les fonds figes du reste du site rendent le flou nouveau sans
+   risque -- le meme qui tient deja sans accroc sur la barre de navigation depuis le 663. Specificite
+   poussee a 24 :not() pour depasser la regle du 624 avec une marge de securite. */
+html body :is([class*="card"],.divc,.exp-c,.mfo-lever,.ppl-tile,.scard):not(.hncard-date):not(.hncard-go):not(.hncard-meta):not(.hncard-pole):not(.hncard-tag):not(.cards):not(.ct-cards):not(#g1):not(#g2):not(#g3):not(#g4):not(#g5):not(#g6):not(#g7):not(#g8):not(#g9):not(#g10):not(#g11):not(#g12):not(#g13):not(#g14):not(#g15):not(#g16):not(#g17):not(#g18):not(#g19):not(#g20):not(#g21):not(#g22):not(#g23):not(#g24){background:linear-gradient(160deg,rgba(16,24,40,.58),rgba(9,15,26,.42))!important;-webkit-backdrop-filter:blur(14px) saturate(150%)!important;backdrop-filter:blur(14px) saturate(150%)!important}
+html.et-plight body :is([class*="card"],.divc,.exp-c,.mfo-lever,.ppl-tile,.scard):not(.hncard-date):not(.hncard-go):not(.hncard-meta):not(.hncard-pole):not(.hncard-tag):not(.cards):not(.ct-cards):not(#g1):not(#g2):not(#g3):not(#g4):not(#g5):not(#g6):not(#g7):not(#g8):not(#g9):not(#g10):not(#g11):not(#g12):not(#g13):not(#g14):not(#g15):not(#g16):not(#g17):not(#g18):not(#g19):not(#g20):not(#g21):not(#g22):not(#g23):not(#g24),html.et-jlight body :is([class*="card"],.divc,.exp-c,.mfo-lever,.ppl-tile,.scard):not(.hncard-date):not(.hncard-go):not(.hncard-meta):not(.hncard-pole):not(.hncard-tag):not(.cards):not(.ct-cards):not(#g1):not(#g2):not(#g3):not(#g4):not(#g5):not(#g6):not(#g7):not(#g8):not(#g9):not(#g10):not(#g11):not(#g12):not(#g13):not(#g14):not(#g15):not(#g16):not(#g17):not(#g18):not(#g19):not(#g20):not(#g21):not(#g22):not(#g23):not(#g24){background:linear-gradient(160deg,rgba(255,255,255,.62),rgba(247,243,236,.42))!important;-webkit-backdrop-filter:blur(14px) saturate(135%)!important;backdrop-filter:blur(14px) saturate(135%)!important}
+
+/* Ch665 -- adhesion parfaite au decor. Mesure : la tuile du 664 se voyait encore comme une plaque
+   posee sur le fond -- un bord a 12-15% d opacite et une ombre portee nette la decoupaient du reste,
+   et le degrade (jusqu a 58-62% d opacite) laissait a peine deviner le motif derriere. Zoom sur trois
+   gabarits (pole, carnets, accueil) dans les deux themes : le contour de chaque carte restait visible
+   meme flou. Contraste texte deja verifie au 664 avec une marge large (5,7:1 minimum contre 4,5 requis)
+   -- de la place pour aller plus loin. Ici : opacite du degrade abaissee d un tiers environ, flou
+   remonte a 20px (18 en clair) pour que le motif qui traverse reste lisse plutot que granuleux, bordure
+   et ombre adoucies pour que la carte se fonde dans le decor au lieu de s en detacher. Repli
+   prefers-reduced-transparency du 664 inchange -- lui doit rester net, pas fondu. */
+html body :is([class*="card"],.divc,.exp-c,.mfo-lever,.ppl-tile,.scard):not(.hncard-date):not(.hncard-go):not(.hncard-meta):not(.hncard-pole):not(.hncard-tag):not(.cards):not(.ct-cards):not(#g1):not(#g2):not(#g3):not(#g4):not(#g5):not(#g6):not(#g7):not(#g8):not(#g9):not(#g10):not(#g11):not(#g12):not(#g13):not(#g14):not(#g15):not(#g16):not(#g17):not(#g18):not(#g19):not(#g20):not(#g21):not(#g22):not(#g23):not(#g24){background:linear-gradient(160deg,rgba(16,24,40,.38),rgba(9,15,26,.22))!important;-webkit-backdrop-filter:blur(20px) saturate(160%)!important;backdrop-filter:blur(20px) saturate(160%)!important;border-color:rgba(255,255,255,.09)!important;box-shadow:rgba(255,255,255,.06) 0 1px 0 0 inset,rgba(0,0,0,.42) 0 22px 46px -30px!important}
+html.et-plight body :is([class*="card"],.divc,.exp-c,.mfo-lever,.ppl-tile,.scard):not(.hncard-date):not(.hncard-go):not(.hncard-meta):not(.hncard-pole):not(.hncard-tag):not(.cards):not(.ct-cards):not(#g1):not(#g2):not(#g3):not(#g4):not(#g5):not(#g6):not(#g7):not(#g8):not(#g9):not(#g10):not(#g11):not(#g12):not(#g13):not(#g14):not(#g15):not(#g16):not(#g17):not(#g18):not(#g19):not(#g20):not(#g21):not(#g22):not(#g23):not(#g24),html.et-jlight body :is([class*="card"],.divc,.exp-c,.mfo-lever,.ppl-tile,.scard):not(.hncard-date):not(.hncard-go):not(.hncard-meta):not(.hncard-pole):not(.hncard-tag):not(.cards):not(.ct-cards):not(#g1):not(#g2):not(#g3):not(#g4):not(#g5):not(#g6):not(#g7):not(#g8):not(#g9):not(#g10):not(#g11):not(#g12):not(#g13):not(#g14):not(#g15):not(#g16):not(#g17):not(#g18):not(#g19):not(#g20):not(#g21):not(#g22):not(#g23):not(#g24){background:linear-gradient(160deg,rgba(255,255,255,.40),rgba(247,243,236,.22))!important;-webkit-backdrop-filter:blur(18px) saturate(130%)!important;backdrop-filter:blur(18px) saturate(130%)!important;border-color:rgba(26,35,48,.07)!important;box-shadow:rgba(255,255,255,.42) 0 1px 0 0 inset,rgba(30,24,10,.28) 0 20px 40px -30px!important}
+
+/* Ch668 -- tuiles en theme clair, encore plus transparentes. Demande explicite : rendre toutes
+   les tuiles du theme clair transparentes. Mesure : meme apres le 665, le degrade clair (40/22%
+   d opacite) restait proche en ton de la page qui l entoure (fond creme tres pale) donc la carte se
+   distinguait surtout par sa bordure et son ombre, pas par une transparence visible -- la carte
+   restait perceptible comme une plaque claire plutot que comme du verre. Uniquement le theme clair
+   ici, le sombre du 665 n est pas touche. Opacite du degrade quasiment divisee par deux (40->22%,
+   22->10%), flou remonte de 18 a 24px pour eviter le grain a cette faible opacite, bordure et ombre
+   encore adoucies. Repli prefers-reduced-transparency inchange, toujours net et opaque. */
+html.et-plight body :is([class*="card"],.divc,.exp-c,.mfo-lever,.ppl-tile,.scard):not(.hncard-date):not(.hncard-go):not(.hncard-meta):not(.hncard-pole):not(.hncard-tag):not(.cards):not(.ct-cards):not(#g1):not(#g2):not(#g3):not(#g4):not(#g5):not(#g6):not(#g7):not(#g8):not(#g9):not(#g10):not(#g11):not(#g12):not(#g13):not(#g14):not(#g15):not(#g16):not(#g17):not(#g18):not(#g19):not(#g20):not(#g21):not(#g22):not(#g23):not(#g24),html.et-jlight body :is([class*="card"],.divc,.exp-c,.mfo-lever,.ppl-tile,.scard):not(.hncard-date):not(.hncard-go):not(.hncard-meta):not(.hncard-pole):not(.hncard-tag):not(.cards):not(.ct-cards):not(#g1):not(#g2):not(#g3):not(#g4):not(#g5):not(#g6):not(#g7):not(#g8):not(#g9):not(#g10):not(#g11):not(#g12):not(#g13):not(#g14):not(#g15):not(#g16):not(#g17):not(#g18):not(#g19):not(#g20):not(#g21):not(#g22):not(#g23):not(#g24){background:linear-gradient(160deg,rgba(255,255,255,.22),rgba(247,243,236,.10))!important;-webkit-backdrop-filter:blur(24px) saturate(125%)!important;backdrop-filter:blur(24px) saturate(125%)!important;border-color:rgba(26,35,48,.05)!important;box-shadow:rgba(255,255,255,.30) 0 1px 0 0 inset,rgba(30,24,10,.18) 0 16px 32px -28px!important}
+
+@media (prefers-reduced-transparency:reduce){
+html body :is([class*="card"],.divc,.exp-c,.mfo-lever,.ppl-tile,.scard):not(.hncard-date):not(.hncard-go):not(.hncard-meta):not(.hncard-pole):not(.hncard-tag):not(.cards):not(.ct-cards):not(#g1):not(#g2):not(#g3):not(#g4):not(#g5):not(#g6):not(#g7):not(#g8):not(#g9):not(#g10):not(#g11):not(#g12):not(#g13):not(#g14):not(#g15):not(#g16):not(#g17):not(#g18):not(#g19):not(#g20):not(#g21):not(#g22):not(#g23):not(#g24){background:#101928!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+html.et-plight body :is([class*="card"],.divc,.exp-c,.mfo-lever,.ppl-tile,.scard):not(.hncard-date):not(.hncard-go):not(.hncard-meta):not(.hncard-pole):not(.hncard-tag):not(.cards):not(.ct-cards):not(#g1):not(#g2):not(#g3):not(#g4):not(#g5):not(#g6):not(#g7):not(#g8):not(#g9):not(#g10):not(#g11):not(#g12):not(#g13):not(#g14):not(#g15):not(#g16):not(#g17):not(#g18):not(#g19):not(#g20):not(#g21):not(#g22):not(#g23):not(#g24),html.et-jlight body :is([class*="card"],.divc,.exp-c,.mfo-lever,.ppl-tile,.scard):not(.hncard-date):not(.hncard-go):not(.hncard-meta):not(.hncard-pole):not(.hncard-tag):not(.cards):not(.ct-cards):not(#g1):not(#g2):not(#g3):not(#g4):not(#g5):not(#g6):not(#g7):not(#g8):not(#g9):not(#g10):not(#g11):not(#g12):not(#g13):not(#g14):not(#g15):not(#g16):not(#g17):not(#g18):not(#g19):not(#g20):not(#g21):not(#g22):not(#g23):not(#g24){background:#F5F1E8!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+html body footer:not(#k1):not(#k2):not(#k3):not(#k4):not(#k5):not(#k6):not(#k7):not(#k8):not(#k9):not(#k10):not(#k11):not(#k12){background:#0B1422!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+html.et-plight body footer:not(#k1):not(#k2):not(#k3):not(#k4):not(#k5):not(#k6):not(#k7):not(#k8):not(#k9):not(#k10):not(#k11):not(#k12),html.et-jlight body footer:not(#k1):not(#k2):not(#k3):not(#k4):not(#k5):not(#k6):not(#k7):not(#k8):not(#k9):not(#k10):not(#k11):not(#k12){background:#F1ECE2!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+html body .nav.scrolled:not(#z1):not(#z2):not(#z3):not(#z4):not(#z5):not(#z6):not(#z7):not(#z8):not(#z9):not(#z10):not(#z11):not(#z12):not(#z13):not(#z14):not(#z15):not(#z16):not(#z17):not(#z18):not(#z19):not(#z20):not(#z21):not(#z22):not(#z23):not(#z24){background:rgba(8,13,24,.97)!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+html.et-plight body .nav.scrolled:not(#z1):not(#z2):not(#z3):not(#z4):not(#z5):not(#z6):not(#z7):not(#z8):not(#z9):not(#z10):not(#z11):not(#z12):not(#z13):not(#z14):not(#z15):not(#z16):not(#z17):not(#z18):not(#z19):not(#z20):not(#z21):not(#z22):not(#z23):not(#z24),html.et-jlight body .nav.scrolled:not(#z1):not(#z2):not(#z3):not(#z4):not(#z5):not(#z6):not(#z7):not(#z8):not(#z9):not(#z10):not(#z11):not(#z12):not(#z13):not(#z14):not(#z15):not(#z16):not(#z17):not(#z18):not(#z19):not(#z20):not(#z21):not(#z22):not(#z23):not(#z24){background:rgba(251,248,242,.95)!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+}
+
+/* Ch680 -- les cartes "documents" des pages-pole rejoignent le systeme de verre du site.
+   Constat : #documents .doc-c (pages-pole amont/aval/intermediaire, deux langues -- six
+   fichiers) porte un fond plat sans flou (color-mix a 52% en sombre, blanc a 78% en clair),
+   pose avant le systeme de tuiles en verre du 664/665/668 et jamais rattrape par lui -- son
+   nom de classe ("doc-c") ne correspond a aucun motif de la liste [class*="card"] etc. Sur la
+   home, la meme classe (#reperes .doc-c) recoit deja le verre depuis le 679, par une regle
+   dediee de specificite superieure : non affectee ici, la portee ci-dessous est en outre
+   limitee a #documents, absent de la home. Plutot qu'une nouvelle valeur, #documents .doc-c
+   reprend exactement le rendu deja en vigueur pour les autres cartes du site (memes valeurs
+   que le 665 en sombre, le 668 en clair) -- une seule apparence de carte en verre partout. */
+html body #documents .doc-c:not(#g1):not(#g2):not(#g3):not(#g4):not(#g5):not(#g6):not(#g7):not(#g8):not(#g9):not(#g10):not(#g11):not(#g12):not(#g13):not(#g14):not(#g15):not(#g16):not(#g17):not(#g18):not(#g19):not(#g20):not(#g21):not(#g22):not(#g23):not(#g24){
+  background:linear-gradient(160deg,rgba(16,24,40,.38),rgba(9,15,26,.22))!important;
+  -webkit-backdrop-filter:blur(20px) saturate(160%)!important;backdrop-filter:blur(20px) saturate(160%)!important;
+  border-color:rgba(255,255,255,.09)!important;
+  box-shadow:rgba(255,255,255,.06) 0 1px 0 0 inset,rgba(0,0,0,.42) 0 22px 46px -30px!important;
+}
+html.et-plight body #documents .doc-c:not(#g1):not(#g2):not(#g3):not(#g4):not(#g5):not(#g6):not(#g7):not(#g8):not(#g9):not(#g10):not(#g11):not(#g12):not(#g13):not(#g14):not(#g15):not(#g16):not(#g17):not(#g18):not(#g19):not(#g20):not(#g21):not(#g22):not(#g23):not(#g24){
+  background:linear-gradient(160deg,rgba(255,255,255,.22),rgba(247,243,236,.10))!important;
+  -webkit-backdrop-filter:blur(24px) saturate(125%)!important;backdrop-filter:blur(24px) saturate(125%)!important;
+  border-color:rgba(26,35,48,.05)!important;
+  box-shadow:rgba(255,255,255,.30) 0 1px 0 0 inset,rgba(30,24,10,.18) 0 16px 32px -28px!important;
+}
+@media (prefers-reduced-transparency:reduce){
+  html body #documents .doc-c:not(#g1):not(#g2):not(#g3):not(#g4):not(#g5):not(#g6):not(#g7):not(#g8):not(#g9):not(#g10):not(#g11):not(#g12):not(#g13):not(#g14):not(#g15):not(#g16):not(#g17):not(#g18):not(#g19):not(#g20):not(#g21):not(#g22):not(#g23):not(#g24){background:#101928!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+  html.et-plight body #documents .doc-c:not(#g1):not(#g2):not(#g3):not(#g4):not(#g5):not(#g6):not(#g7):not(#g8):not(#g9):not(#g10):not(#g11):not(#g12):not(#g13):not(#g14):not(#g15):not(#g16):not(#g17):not(#g18):not(#g19):not(#g20):not(#g21):not(#g22):not(#g23):not(#g24){background:#F5F1E8!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+}
+
+/* Ch682 -- .otr-c et .capint-c (pages-pole, seize fichiers) recuperent le verre qu'elles
+   declarent deja. Constat : chacune porte sa propre regle backdrop-filter (blur(12px)
+   saturate(1.3) pour .otr-c depuis l'origine, blur(8px) saturate(120%) pour .capint-c
+   depuis le 411) mais aucune des deux n'est en !important -- le verrou sitewide du 624
+   (backdrop-filter:none!important, onze faux identifiants) l'emporte silencieusement sur
+   les seize pages-pole, dans les deux themes. Meme famille de bug que le doc-c du 680 : un
+   effet deja code, jamais rendu. Restitue ici exactement les valeurs deja ecrites par
+   chaque page (aucune valeur nouvelle), sur ecran seulement -- la regle d'impression et le
+   repli deja code pour "transparence reduite" restent maitres de leur cas : une regle
+   jumelle de meme specificite les reaffirme ci-dessous plutot que de s'en remettre a
+   l'ordre de la cascade. */
+@media screen{
+html body .otr-c:not(#j1):not(#j2):not(#j3):not(#j4):not(#j5):not(#j6):not(#j7):not(#j8):not(#j9):not(#j10):not(#j11):not(#j12):not(#j13):not(#j14):not(#j15):not(#j16):not(#j17):not(#j18):not(#j19):not(#j20):not(#j21):not(#j22):not(#j23):not(#j24){
+  -webkit-backdrop-filter:blur(12px) saturate(1.3)!important;backdrop-filter:blur(12px) saturate(1.3)!important;
+}
+html body .capint-c:not(#j1):not(#j2):not(#j3):not(#j4):not(#j5):not(#j6):not(#j7):not(#j8):not(#j9):not(#j10):not(#j11):not(#j12):not(#j13):not(#j14):not(#j15):not(#j16):not(#j17):not(#j18):not(#j19):not(#j20):not(#j21):not(#j22):not(#j23):not(#j24){
+  -webkit-backdrop-filter:blur(8px) saturate(120%)!important;backdrop-filter:blur(8px) saturate(120%)!important;
+}
+}
+@media screen and (prefers-reduced-transparency:reduce){
+html body .otr-c:not(#j1):not(#j2):not(#j3):not(#j4):not(#j5):not(#j6):not(#j7):not(#j8):not(#j9):not(#j10):not(#j11):not(#j12):not(#j13):not(#j14):not(#j15):not(#j16):not(#j17):not(#j18):not(#j19):not(#j20):not(#j21):not(#j22):not(#j23):not(#j24){
+  -webkit-backdrop-filter:none!important;backdrop-filter:none!important;
+}
+html body .capint-c:not(#j1):not(#j2):not(#j3):not(#j4):not(#j5):not(#j6):not(#j7):not(#j8):not(#j9):not(#j10):not(#j11):not(#j12):not(#j13):not(#j14):not(#j15):not(#j16):not(#j17):not(#j18):not(#j19):not(#j20):not(#j21):not(#j22):not(#j23):not(#j24){
+  -webkit-backdrop-filter:none!important;backdrop-filter:none!important;background:#0E1626!important;
+}
+html.et-plight body .capint-c:not(#j1):not(#j2):not(#j3):not(#j4):not(#j5):not(#j6):not(#j7):not(#j8):not(#j9):not(#j10):not(#j11):not(#j12):not(#j13):not(#j14):not(#j15):not(#j16):not(#j17):not(#j18):not(#j19):not(#j20):not(#j21):not(#j22):not(#j23):not(#j24){
+  background:#F6F1E8!important;
+}
+}
+
+/* Ch683 -- .lie558-c (« Read next », pages-pole et pages d activite) et .lie560-c (« A lire
+   ensuite », les carnets du journal) rejoignent le systeme de verre generique du site.
+   Constat : le systeme des chantiers 664/665/668 couvre deja plus de trente noms de classe --
+   tout ce qui contient "card" plus une liste explicite d exceptions (.divc, .exp-c, .mfo-lever,
+   .ppl-tile, .scard) ajoutee au fil du temps pour les noms qui n y correspondent pas. Ni
+   "lie558-c" ni "lie560-c" ne contiennent "card" et aucune des deux ne figurait dans cette
+   liste : quatre-vingt-deux fichiers (pages-pole, pages d activite, et la totalite des
+   soixante-quatre carnets du journal) portent donc ces cartes de pied de contenu avec un fond
+   plat sans flou, alors que le reste du site en est couvert depuis longtemps. Meme cause que
+   l ecart du doc-c corrige au 680 : un nom de classe hors du filet, pas une intention. Ici :
+   les deux noms rejoignent le systeme, aux memes valeurs exactes deja en vigueur pour toutes
+   les autres cartes du site (665 sombre, 668 clair, repli transparence-reduite du 664/668) --
+   une seule apparence de carte en verre partout, aucune valeur nouvelle a maintenir. Portee
+   limitee a l ecran comme au 682, ces deux classes n ayant elles-memes ni regle d impression
+   ni repli transparence-reduite propres a court-circuiter. */
+@media screen{
+html body :is(.lie558-c,.lie560-c):not(#m1):not(#m2):not(#m3):not(#m4):not(#m5):not(#m6):not(#m7):not(#m8):not(#m9):not(#m10):not(#m11):not(#m12):not(#m13):not(#m14):not(#m15):not(#m16):not(#m17):not(#m18):not(#m19):not(#m20):not(#m21):not(#m22):not(#m23):not(#m24){
+  background:linear-gradient(160deg,rgba(16,24,40,.38),rgba(9,15,26,.22))!important;
+  -webkit-backdrop-filter:blur(20px) saturate(160%)!important;backdrop-filter:blur(20px) saturate(160%)!important;
+  border-color:rgba(255,255,255,.09)!important;
+  box-shadow:rgba(255,255,255,.06) 0 1px 0 0 inset,rgba(0,0,0,.42) 0 22px 46px -30px!important;
+}
+html.et-plight body :is(.lie558-c,.lie560-c):not(#m1):not(#m2):not(#m3):not(#m4):not(#m5):not(#m6):not(#m7):not(#m8):not(#m9):not(#m10):not(#m11):not(#m12):not(#m13):not(#m14):not(#m15):not(#m16):not(#m17):not(#m18):not(#m19):not(#m20):not(#m21):not(#m22):not(#m23):not(#m24),
+html.et-jlight body :is(.lie558-c,.lie560-c):not(#m1):not(#m2):not(#m3):not(#m4):not(#m5):not(#m6):not(#m7):not(#m8):not(#m9):not(#m10):not(#m11):not(#m12):not(#m13):not(#m14):not(#m15):not(#m16):not(#m17):not(#m18):not(#m19):not(#m20):not(#m21):not(#m22):not(#m23):not(#m24){
+  background:linear-gradient(160deg,rgba(255,255,255,.22),rgba(247,243,236,.10))!important;
+  -webkit-backdrop-filter:blur(24px) saturate(125%)!important;backdrop-filter:blur(24px) saturate(125%)!important;
+  border-color:rgba(26,35,48,.05)!important;
+  box-shadow:rgba(255,255,255,.30) 0 1px 0 0 inset,rgba(30,24,10,.18) 0 16px 32px -28px!important;
+}
+}
+@media screen and (prefers-reduced-transparency:reduce){
+html body :is(.lie558-c,.lie560-c):not(#m1):not(#m2):not(#m3):not(#m4):not(#m5):not(#m6):not(#m7):not(#m8):not(#m9):not(#m10):not(#m11):not(#m12):not(#m13):not(#m14):not(#m15):not(#m16):not(#m17):not(#m18):not(#m19):not(#m20):not(#m21):not(#m22):not(#m23):not(#m24){
+  background:#101928!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important;
+}
+html.et-plight body :is(.lie558-c,.lie560-c):not(#m1):not(#m2):not(#m3):not(#m4):not(#m5):not(#m6):not(#m7):not(#m8):not(#m9):not(#m10):not(#m11):not(#m12):not(#m13):not(#m14):not(#m15):not(#m16):not(#m17):not(#m18):not(#m19):not(#m20):not(#m21):not(#m22):not(#m23):not(#m24),
+html.et-jlight body :is(.lie558-c,.lie560-c):not(#m1):not(#m2):not(#m3):not(#m4):not(#m5):not(#m6):not(#m7):not(#m8):not(#m9):not(#m10):not(#m11):not(#m12):not(#m13):not(#m14):not(#m15):not(#m16):not(#m17):not(#m18):not(#m19):not(#m20):not(#m21):not(#m22):not(#m23):not(#m24){
+  background:#F5F1E8!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important;
+}
+}
+/* Ch684 -- le pied de page du theme clair devient transparent, pour l immersion avec le decor.
+   Demande explicite du proprietaire : rendre le pied de page du theme clair transparent, pour
+   permettre une immersion avec le fond de page. Verifie d abord en direct (rendu reel, trois
+   gabarits, deux variantes claires) que le texte du pied de page (titres, liens, libelles,
+   paragraphe) tire deja ses couleurs de tons sombres propres au theme clair -- aucun blanc quasi
+   pur, malgre ce que la seule lecture de la feuille de style laissait craindre -- donc une marge
+   de contraste large avant meme de toucher a l opacite. Mesure : le verre du pied de page (663)
+   restait a 58% d opacite en clair, une valeur pensee pour un fond quasi opaque, pas pour la
+   transparence recherchee ici. Ici : theme clair uniquement, le sombre du 663 n est pas touche.
+   Memes valeurs deja retenues pour les tuiles du theme clair au 668 (22% d opacite dans la meme
+   teinte creme, flou 24px, 125% de saturation) plutot qu un reglage invente pour l occasion --
+   une seule notion de "verre clair transparent" sur tout le site. Repli
+   prefers-reduced-transparency du 663 inchange, toujours net et opaque. */
+html.et-plight body footer:not(#k1):not(#k2):not(#k3):not(#k4):not(#k5):not(#k6):not(#k7):not(#k8):not(#k9):not(#k10):not(#k11):not(#k12),
+html.et-jlight body footer:not(#k1):not(#k2):not(#k3):not(#k4):not(#k5):not(#k6):not(#k7):not(#k8):not(#k9):not(#k10):not(#k11):not(#k12){
+  background:rgba(247,243,236,.22)!important;
+  -webkit-backdrop-filter:blur(24px) saturate(125%)!important;backdrop-filter:blur(24px) saturate(125%)!important;
+}
+
+/* Ch685 -- le pied de page du theme sombre devient transparent a son tour, meme logique que le 684.
+   Demande explicite du proprietaire (a partir d une capture du pied de page en theme sombre) :
+   le rendre translucide, en verre clair -- comprendre : un verre nettement plus transparent, pas
+   une teinte differente. Verifie d abord en direct que le fond de page derriere le pied de page en
+   theme sombre est une teinte marine tres proche de celle du verre lui-meme (rgb(0,36,58) contre
+   rgba(14,22,38,x)) et que le texte du pied de page y est deja clair (blanc casse, or, bleu clair
+   selon les liens) -- aucun risque de perdre le texte en assombrissant encore le fond derriere lui.
+   Mesure : le verre du pied de page restait a 50% d opacite en sombre depuis le 663, une valeur
+   pensee pour un fond alors juge suffisamment distinct du decor. Ici : theme sombre uniquement, le
+   clair du 684 n est pas touche. Memes valeurs deja retenues pour les tuiles du theme sombre au 665
+   (22% d opacite -- l extremite basse de son degrade --, flou 20px, 160% de saturation) plutot qu un
+   reglage invente pour l occasion, teinte propre du pied de page conservee. Repli
+   prefers-reduced-transparency du 663 inchange, toujours net et opaque. */
+html body footer:not(#k1):not(#k2):not(#k3):not(#k4):not(#k5):not(#k6):not(#k7):not(#k8):not(#k9):not(#k10):not(#k11):not(#k12){
+  background:rgba(14,22,38,.22)!important;
+  -webkit-backdrop-filter:blur(20px) saturate(160%)!important;backdrop-filter:blur(20px) saturate(160%)!important;
+}
+
+/* Ch686 -- le pied de page rejoint la finition complete du verre du site, pas seulement son opacite.
+   Demande explicite du proprietaire : l ameliorer pour qu il soit clair, dans le style d un verre
+   translucide -- comprendre : les chantiers 684/685 avaient deja repris l opacite, le flou et la
+   saturation du systeme generique de cartes (665 sombre, 668 clair), mais pas les deux autres
+   ingredients qui font qu une carte du site se lit comme du verre plutot que comme un rectangle
+   assombri : un degrade (au lieu d une teinte plate) qui suggere une epaisseur et une source de
+   lumiere, et une ombre en deux temps (un filet clair en haut, en insert, plus une ombre portee
+   douce) qui detache la plaque du fond. Le pied de page n avait ni l un ni l autre depuis le 663.
+   Ici : le degrade et l ombre du 665 (sombre) et du 668 (clair) sont repris a l identique -- memes
+   valeurs numeriques exactes, aucune inventee -- mais appliques a la teinte propre du pied de page
+   (14,22,38 en sombre, 247,243,236 en clair, deja en usage depuis le 663/684/685) plutot qu a celle
+   des cartes, pour ne pas changer sa couleur. Le filet dore du haut du pied de page (border-top,
+   un accent de marque distinct du systeme de cartes) n est pas touche -- seuls le fond et l ombre
+   changent. Repli prefers-reduced-transparency du 663 inchange, toujours net, opaque et sans ombre. */
+html body footer:not(#k1):not(#k2):not(#k3):not(#k4):not(#k5):not(#k6):not(#k7):not(#k8):not(#k9):not(#k10):not(#k11):not(#k12){
+  background:linear-gradient(160deg,rgba(14,22,38,.38),rgba(14,22,38,.22))!important;
+  -webkit-backdrop-filter:blur(20px) saturate(160%)!important;backdrop-filter:blur(20px) saturate(160%)!important;
+  box-shadow:rgba(255,255,255,.06) 0 1px 0 0 inset,rgba(0,0,0,.42) 0 22px 46px -30px!important;
+}
+html.et-plight body footer:not(#k1):not(#k2):not(#k3):not(#k4):not(#k5):not(#k6):not(#k7):not(#k8):not(#k9):not(#k10):not(#k11):not(#k12),
+html.et-jlight body footer:not(#k1):not(#k2):not(#k3):not(#k4):not(#k5):not(#k6):not(#k7):not(#k8):not(#k9):not(#k10):not(#k11):not(#k12){
+  background:linear-gradient(160deg,rgba(247,243,236,.22),rgba(247,243,236,.10))!important;
+  -webkit-backdrop-filter:blur(24px) saturate(125%)!important;backdrop-filter:blur(24px) saturate(125%)!important;
+  box-shadow:rgba(255,255,255,.30) 0 1px 0 0 inset,rgba(30,24,10,.18) 0 16px 32px -28px!important;
+}
+
+/* Ch687 -- la forme translucide du pied de page doit laisser voir l image du fond, pas seulement
+   suggerer une transparence. Demande explicite du proprietaire : le verre du pied de page (663 a
+   686) devrait permettre de voir l image du fond. Constat verifie en rendu reel (capture plein
+   viewport, jamais une capture cadree sur le seul pied de page -- une capture cadree ne compose
+   pas correctement un calque position:fixed a z-index negatif comme .rootland, et affichait a
+   tort un aplat uni) : avec le reglage du 686 (flou 20/24px, degrade a 38-22% en sombre et
+   22-10% en clair), le dessin du fond (systeme data-fond du 647) derriere le pied de page est
+   entierement efface -- aucune trace du trait de coupe geologique n est perceptible, ce qui
+   confirme le constat du proprietaire. Mesure : flou et opacite ramenes nettement plus bas --
+   juste assez de flou pour rester du verre plutot qu une vitre nue (1px en sombre ; aucun en
+   clair, ou le dessin est naturellement plus attenue et a besoin de toute la transparence
+   disponible pour rester lisible), degrade ramene a 6-2% en sombre et 8-3% en clair. Verifie en
+   rendu reel que le trait diagonal du dessin redevient nettement visible a travers le pied de
+   page dans les deux themes, et que le contraste du texte du pied de page reste tres au-dessus
+   du minimum (verifie par echantillonnage de pixels sur la capture reelle : 10,0:1 en sombre,
+   5,8:1 en clair, minimum requis 4,5:1). Degrade et ombre du 686 conserves -- seuls le flou et
+   l opacite du fond changent ici. Repli prefers-reduced-transparency inchange, toujours net et
+   opaque. */
+html body footer:not(#k1):not(#k2):not(#k3):not(#k4):not(#k5):not(#k6):not(#k7):not(#k8):not(#k9):not(#k10):not(#k11):not(#k12){
+  background:linear-gradient(160deg,rgba(14,22,38,.06),rgba(14,22,38,.02))!important;
+  -webkit-backdrop-filter:blur(1px) saturate(160%)!important;backdrop-filter:blur(1px) saturate(160%)!important;
+}
+html.et-plight body footer:not(#k1):not(#k2):not(#k3):not(#k4):not(#k5):not(#k6):not(#k7):not(#k8):not(#k9):not(#k10):not(#k11):not(#k12),
+html.et-jlight body footer:not(#k1):not(#k2):not(#k3):not(#k4):not(#k5):not(#k6):not(#k7):not(#k8):not(#k9):not(#k10):not(#k11):not(#k12){
+  background:linear-gradient(160deg,rgba(247,243,236,.08),rgba(247,243,236,.03))!important;
+  -webkit-backdrop-filter:blur(0px) saturate(125%)!important;backdrop-filter:blur(0px) saturate(125%)!important;
+}
+
+/* Ch688 -- meme demande que le 687, appliquee au bandeau de navigation : faire pareil pour le
+   header. Constat verifie en rendu reel (capture plein viewport, jamais cadree sur le seul
+   bandeau, meme correction de methode qu au 687) : le bandeau de navigation, une fois defile
+   (.nav.scrolled), reste au reglage du 663 (flou 20px, 50% d opacite dans les deux themes) --
+   jamais retouche depuis, contrairement au pied de page. A la difference du pied de page, ce qui
+   se trouve derriere le bandeau n est pas seulement le decor ambiant (systeme data-fond du 647) :
+   c est le contenu de page qui defile sous un bandeau fixe -- titres de hero, puces de fil
+   d Ariane, paragraphes -- et une transparence poussee aussi loin qu au 687 y fait apparaitre du
+   texte de page distinct, source de collision visuelle avec les propres liens du bandeau, verifie
+   en rendu reel en testant plusieurs paliers avant de choisir (une opacite proche de zero, meme
+   avec du flou, laissait les puces du fil d Ariane et un paragraphe de la page se lire nettement
+   a travers, superposes aux liens du menu). Mesure : opacite ramenee de 50% a 16% dans les deux
+   themes (moins qu au 687 par prudence), flou ramene de 20px a 4px -- juste assez pour transformer
+   le contenu qui defile en un halo diffus plutot que l effacer completement, sans jamais laisser
+   un texte de page redevenir lisible sous les liens du menu. Verifie en rendu reel a deux hauteurs
+   de defilement (juste apres le seuil de bascule en bandeau reduit, puis loin dans la page) dans
+   les deux themes : le bandeau laisse deviner un mouvement de fond diffus derriere lui sans jamais
+   faire reapparaitre de texte lisible en collision avec ses propres liens, contraste du texte du
+   bandeau remesure par capture d ecran et echantillonnage de pixels : 5,1:1 en sombre, 5,8:1 en
+   clair, tous deux au-dessus du minimum de 4,5:1. Repli prefers-reduced-transparency inchange,
+   toujours net et opaque. */
+html body .nav.scrolled:not(#z1):not(#z2):not(#z3):not(#z4):not(#z5):not(#z6):not(#z7):not(#z8):not(#z9):not(#z10):not(#z11):not(#z12):not(#z13):not(#z14):not(#z15):not(#z16):not(#z17):not(#z18):not(#z19):not(#z20):not(#z21):not(#z22):not(#z23):not(#z24){
+  background:rgba(8,14,26,.16)!important;
+  -webkit-backdrop-filter:blur(4px) saturate(150%)!important;backdrop-filter:blur(4px) saturate(150%)!important;
+}
+html.et-plight body .nav.scrolled:not(#z1):not(#z2):not(#z3):not(#z4):not(#z5):not(#z6):not(#z7):not(#z8):not(#z9):not(#z10):not(#z11):not(#z12):not(#z13):not(#z14):not(#z15):not(#z16):not(#z17):not(#z18):not(#z19):not(#z20):not(#z21):not(#z22):not(#z23):not(#z24),
+html.et-jlight body .nav.scrolled:not(#z1):not(#z2):not(#z3):not(#z4):not(#z5):not(#z6):not(#z7):not(#z8):not(#z9):not(#z10):not(#z11):not(#z12):not(#z13):not(#z14):not(#z15):not(#z16):not(#z17):not(#z18):not(#z19):not(#z20):not(#z21):not(#z22):not(#z23):not(#z24){
+  background:rgba(255,255,255,.16)!important;
+  -webkit-backdrop-filter:blur(4px) saturate(150%)!important;backdrop-filter:blur(4px) saturate(150%)!important;
+}
+
+/* Ch704 - contraste au rendu reel, theme clair : les textes attenues par opacite remontent au seuil 4,5:1
+   (encre calculee melangee au fond selon l opacite effective). Valeurs minimales, la hierarchie reste visible. */
+html.et-plight .sec-k[style*="opacity:.65"]:not(#z1):not(#z2){opacity:.8!important} /* Ch713 : limite aux accroches attenuees en ligne ; la regle nue baissait a .8 les .sec-k pleines (16 elements, 8 pages) */
+html.et-plight .fn-d:not(#z1):not(#z2){opacity:.95!important}
+html.et-plight .fn-alt:not(#z1):not(#z2){opacity:.95!important}
+html.et-plight .pr-k:not(#z1):not(#z2),html.et-plight .pr-card em:not(#z1):not(#z2){opacity:.8!important}
+html.et-plight .org604 .box li em:not(#z1):not(#z2){opacity:1!important}
+html.et-plight #histoire .he p:not(#z1):not(#z2){opacity:.95!important}
+html.et-plight #cadre-reporting .frm-off:not(#z1):not(#z2){opacity:.88!important}
+html.et-plight #comparer .cl-hint:not(#z1):not(#z2){opacity:.8!important}
+html.et-plight .jn-dep-h span:not(#z1):not(#z2){opacity:.85!important}
+html.et-plight label[for="schQ"]:not(#z1):not(#z2){opacity:.82!important}
+html.et-plight #schQ + p:not(#z1):not(#z2){opacity:.8!important}
+html.et-plight #schE:not(#z1):not(#z2){opacity:1!important}
+
+/* Ch708 - theme clair : le voile sombre de 40 px sous la barre de navigation non defilee (degrade rgba(6,11,20,.42) pose pour les heros sombres,
+   129 pages) dessinait une bande grise sous la barre sur fond creme ; supprime dans les deux themes clairs, l ombre douce de la barre suffit. */
+html.et-plight #nav.nav:not(.scrolled):not(#z1):not(#z2):not(#z3)::after,
+html.et-jlight #nav.nav:not(.scrolled):not(#z1):not(#z2):not(#z3)::after{content:none!important}
+
+/* Ch717 - QA de la page vitrine : trois commandes fixes restaient dans l ordre de tabulation une fois masquees (opacite 0 ou hors ecran) --
+   le bandeau cookies une fois accepte (#ckn, 67 pages), le bouton Retour a l accueil avant 360 px de defilement (#homeFab, 67 pages)
+   et le rail de sections avant son apparition (#secrail) : le clavier y tombait sur des liens invisibles. Masques pour le clavier et la souris
+   tant qu ils sont caches ; la visibilite ne bascule qu a la fin de l animation de sortie, animations inchangees. */
+#ckn:not(.show):not(#z1):not(#z2){visibility:hidden}
+#homeFab:not(.show):not(#z1):not(#z2){visibility:hidden}
+#secrail:not(.show):not(#z1):not(#z2) a{visibility:hidden}
+@media (prefers-reduced-motion:no-preference){
+#ckn:not(.show):not(#z1):not(#z2){transition:transform .45s var(--ease,ease),visibility 0s linear .45s}
+#homeFab:not(.show):not(#z1):not(#z2){transition:opacity .3s var(--ease,ease),transform .3s var(--ease,ease),border-color .2s,background .2s,visibility 0s linear .3s}
+#secrail:not(.show):not(#z1):not(#z2) a{transition:opacity .5s var(--ease,ease) calc(var(--d,0)*.07s),transform .5s var(--ease,ease) calc(var(--d,0)*.07s),border-color .25s,background .25s,box-shadow .25s,color .25s,visibility 0s linear calc(.5s + var(--d,0)*.07s)}
+}
+/* Ch717 - mobile : la barre d onglets fixe du bas (#nezBar, 61 px, jusqu a 768 px) et les boutons flottants poses au-dessus (theme, haut de page :
+   118 px depuis le bas) recouvraient l element focalise au clavier quand le navigateur l amenait en bas d ecran ; marge de defilement basse reservee. */
+@media (max-width:768px){html:where([data-eh~=eh1]):not(#ehz):not(#z1){scroll-padding-bottom:calc(126px + env(safe-area-inset-bottom,0px))}}
+
+/* Ch720 - audit des tuiles : les pastilles des tuiles de pole (.plc-badge, 16 pages) etaient coupees par des points de suspension quand
+   la carte retrecit (1024 px : « Criblage · chimie EO… ») ; la pastille passe a la ligne au lieu de perdre son texte, rayon 12 px
+   (identique a la pilule sur une ligne, rectangle arrondi sur deux). */
+.plc-badge:not(#z1):not(#z2){white-space:normal;overflow:visible;text-overflow:clip;border-radius:12px;line-height:1.35}
