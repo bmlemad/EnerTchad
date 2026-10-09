@@ -51,7 +51,21 @@ jobs:
             if [ "$code" = "200" ] && grep -q 'EnerTchad' /tmp/site.html; then
               if [ -z "$EXPECTED_PREVIEW_SHA" ]; then exit 0; fi
               deployed=$(curl -L -s "$SITE_URL/deploy-version.txt")
-              if [ "$deployed" = "$EXPECTED_PREVIEW_SHA" ]; then exit 0; fi
+              if [ "$deployed" = "$EXPECTED_PREVIEW_SHA" ]; then
+                # Test the immutable deploy without the preview feedback iframe.
+                # Keep the head-SHA guard so QA never runs against an older build.
+                deploy_id=$(python -c 'import re; s=open("/tmp/site.html").read(); m=re.search(r"data-netlify-deploy-id=\"([a-f0-9]{24})\"",s); print(m.group(1) if m else "")')
+                if [ -n "$deploy_id" ]; then
+                  atomic_url="https://${deploy_id}--enertchad.netlify.app/"
+                  atomic_sha=$(curl -L -s "$atomic_url/deploy-version.txt")
+                  if [ "$atomic_sha" = "$EXPECTED_PREVIEW_SHA" ]; then
+                    echo "SITE_URL=$atomic_url" >> "$GITHUB_ENV"
+                    exit 0
+                  fi
+                else
+                  exit 0
+                fi
+              fi
             fi
             sleep 5
           done
