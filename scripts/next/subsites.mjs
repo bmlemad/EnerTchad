@@ -66,10 +66,16 @@ export function renderSubsite(html, page, space, hosted = false) {
   const mobileNav = all.find(n => n.attribs?.id === 'nezBar');
   const replacements = [[oldNav.startIndex, oldNav.endIndex + 1, header]];
   if (mobileNav) replacements.push([mobileNav.startIndex, mobileNav.endIndex + 1, '']);
+  if (space === 'atlas') {
+    for (const n of all.filter(n => /(?:^|\s)atlas-(?:languages|nav)(?:\s|$)/.test(n.attribs?.class || ''))) replacements.push([n.startIndex, n.endIndex + 1, '']);
+  }
   for (const [start, end, text] of replacements.sort((a, b) => b[0] - a[0])) output = output.slice(0, start) + text + output.slice(end);
   output = output.replace('<html', `<html data-et-space="${space}"`)
     .replace('</head>', '<link rel="stylesheet" href="/assets/chrome/subsites.css"></head>')
     .replace(/src="\/assets\/chrome\/c_ac04328f0f47\.js[^\"]*"/g, 'src="/assets/chrome/subsites-core.js"');
+  // The source Atlas stylesheet intentionally has very high specificity.
+  // Inline spacing overrides its fixed-header offset without another CSS arms race.
+  if (space === 'atlas') output = output.replace(/(<main\b[^>]*class="atlas-space")/, '$1 style="padding-top:28px!important"');
   const canonical = url(page);
   const fr = pages.find(p => p.kind === page.kind && p.language === 'fr');
   const english = pages.find(p => p.kind === page.kind && p.language === 'en');
@@ -102,7 +108,15 @@ const fileFor = route => route.endsWith('/') ? route.slice(1) + 'index.html' : r
 async function save(path, content) { await mkdir(dirname(path), {recursive: true}); await writeFile(path, content); }
 
 export function commercialSitemap(sitemap) {
-  for (const page of commercialPages) sitemap = sitemap.replaceAll('<loc>' + corporate + '/' + page.source.replace(/\.html$/, '') + '</loc>', '<loc>' + corporate + page.route + '</loc>');
+  for (const [host, pages] of [['clients', commercialPages], ['atlas', atlasPages]]) {
+    for (const page of pages) {
+      const target = `https://${host}.enertchad.com${page.local}`;
+      for (const old of new Set([corporate + page.route, corporate + '/' + page.source.replace(/\.html$/, '')])) {
+        sitemap = sitemap.replaceAll('<loc>' + old + '</loc>', '<loc>' + target + '</loc>')
+          .replaceAll('href="' + old + '"', 'href="' + target + '"');
+      }
+    }
+  }
   return sitemap;
 }
 

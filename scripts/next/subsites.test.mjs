@@ -32,9 +32,9 @@ for (const [space, pages] of [['boutique', commercialPages], ['atlas', atlasPage
 }
 test('sitemap migrates exact commercial URLs without corrupting English paths', () => {
   const result = commercialSitemap('<urlset><loc>https://enertchad.com/clients</loc><loc>https://enertchad.com/clients-en</loc><loc>https://enertchad.com/aval/boutique</loc></urlset>');
-  assert(result.includes('<loc>https://enertchad.com/boutique/clients</loc>'));
-  assert(result.includes('<loc>https://enertchad.com/boutique/en/clients</loc>'));
-  assert(result.includes('<loc>https://enertchad.com/boutique/</loc>'));
+  assert(result.includes('<loc>https://clients.enertchad.com/</loc>'));
+  assert(result.includes('<loc>https://clients.enertchad.com/en/</loc>'));
+  assert(result.includes('<loc>https://clients.enertchad.com/boutique</loc>'));
 });
 test('host routing mounts exact pages before generic legacy redirects', async () => {
   const rules = await readFile('_redirects', 'utf8');
@@ -46,4 +46,6 @@ test('host routing mounts exact pages before generic legacy redirects', async ()
   }
   assert(rules.indexOf('https://clients.enertchad.com/') < rules.indexOf('/clients /boutique/clients'));
   assert(rules.includes('https://boutique.enertchad.com/* https://clients.enertchad.com/boutique 301!'));
+  assert(rules.includes('https://enertchad.com/clients https://clients.enertchad.com/ 301!'));
+  assert(rules.includes('https://enertchad.com/atlas/ https://atlas.enertchad.com/ 301!'));
 });

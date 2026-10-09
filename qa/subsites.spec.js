@@ -12,10 +12,16 @@ for (const width of [1440, 390]) {
       await expect(page.locator('h1')).toHaveCount(1);
       await expect(page.locator('#nav [aria-current="page"]')).toHaveCount(1);
       await expect(page.locator('#nav a[lang]')).toBeVisible();
+      if (route.startsWith('/atlas')) {
+        expect(await page.evaluate(() => document.querySelector('main').getBoundingClientRect().top - document.querySelector('#nav').getBoundingClientRect().bottom)).toBeLessThan(40);
+        await expect(page.locator('.atlas-languages,.atlas-nav')).toHaveCount(0);
+      }
       expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 2)).toBe(true);
       expect(errors).toEqual([]);
       const other = await page.locator('#nav a[lang]').getAttribute('href');
       expect(other).toMatch(route.includes('-en') || route.includes('/en/') ? /^(\/atlas\/|\/boutique\/)(?!.*(?:-en|\/en\/))/ : /(?:-en|\/en\/)/);
+      const refuse = page.locator('#et-consent button').filter({hasText:/Refuser|Refuse/});
+      if (await refuse.isVisible()) await refuse.click();
       await page.screenshot({path:`artifacts/subsites-${route.replace(/\W/g,'-')}-${width}.png`});
       await page.close();
     });
