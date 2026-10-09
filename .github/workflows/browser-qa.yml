@@ -1,5 +1,14 @@
 name: QA navigateur — production
 on:
+  # Une PR ne lance que les contrôles ciblés sur sa prévisualisation, sans l'audit complet.
+  pull_request:
+    paths:
+      - 'qa/**'
+      - '.github/workflows/browser-qa.yml'
+      - 'assets/chrome/u2_75a2c4383ddf.js'
+      - 'assets/chrome/hub-aval-base.css'
+      - 'aval/index.html'
+      - 'tchaditech/index.html'
   # Hebdomadaire et a la demande : lancee a chaque envoi, cette QA (toutes les pages,
   # plusieurs passages) a depasse a elle seule les requetes incluses de l hebergeur.
   schedule:
@@ -14,12 +23,14 @@ on:
         description: 'Adresse à vérifier (production par défaut, ou prévisualisation Netlify)'
         required: false
         default: 'https://enertchad.com/'
+permissions:
+  contents: read
 jobs:
   browser:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     env:
-      SITE_URL: ${{ inputs.site_url || 'https://enertchad.com/' }}
+      SITE_URL: ${{ github.event_name == 'pull_request' && format('https://deploy-preview-{0}--enertchad.netlify.app/', github.event.pull_request.number) || inputs.site_url || 'https://enertchad.com/' }}
     steps:
       - uses: actions/checkout@v7
       - uses: actions/setup-node@v7
@@ -52,7 +63,7 @@ jobs:
 
       - name: Exécuter la QA fonctionnelle
         env:
-          TEST_GREP: ${{ inputs.test_grep }}
+          TEST_GREP: ${{ github.event_name == 'pull_request' && 'CTA vocabulary — core actions|CTA vocabulary — editorial|internationalization — language|navigation — representative pages contain|performance — critical pages|trust center|forms, anchors and interactive|mobile interactions|external scripts remain|images have alt text|controls are explicitly labelled|obvious cache-busting|disclosure controls keep|resource integrity|visual system budgets|localized pages declare|useful alternative text|canonical, title and primary|strategic SVGs|critical local resources use|consolidated tokens|legacy glass markers remain' || inputs.test_grep }}
         run: |
           mkdir -p artifacts
           if [ -n "$TEST_GREP" ]; then
