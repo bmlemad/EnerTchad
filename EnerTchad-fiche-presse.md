@@ -11,7 +11,7 @@
 - **Signature** : « De la roche-mère à la pompe. »
 
 ## Coordonnées
-- **Siège** : Block D, 2e étage, bureau 23, Quartier Sabangali, Cité du 1er décembre, N'Djamena, Tchad
+- **Siège** : Radisson Blu, bureau 23, Quartier Sabangali, Cité du 1er Décembre, BP 6060, N'Djamena, Tchad
 - **RCCM** : immatriculation en cours
 - **Domaine** : enertchad.com
 - **Contact presse** : contact@enertchad.com · +235 99 29 86 96
