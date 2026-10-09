@@ -66,7 +66,7 @@ FR = [
         ('Publications & documents', 'Fiche, data book, mémorandum', '/publications'),
         ('Agenda investisseur', 'Prochains rendez-vous', '/investisseurs#agenda'),
         ('Gouvernance', 'Société anonyme OHADA', '/gouvernance'),
-        ('Partenariats', 'GCIC, OT, État, académique', '/tchaditude/#partenariats'),
+        ('Partenariats', 'GCIC · OT, État, académique visés', '/tchaditude/#partenariats'),
     ], ('Passer à l’acte', 'Souscrire au capital', 'De 100 M à 10 Md FCFA, par paliers', '/investisseurs#souscrire')),
     ('Actualités', 'Communiqués, enquêtes techniques et interviews métier, datés.', '/carnets', [
         ('Carnets', 'Articles et interviews', '/carnets'),
@@ -119,7 +119,7 @@ EN = [
         ('Publications & documents', 'Fact sheet, data book, memorandum', '/publications'),
         ('Investor calendar', 'Upcoming events', '/investisseurs#agenda'),
         ('Governance', 'OHADA public limited company', '/gouvernance'),
-        ('Partnerships', 'GCIC, OT, State, academia', '/tchaditude/#partenariats'),
+        ('Partnerships', 'GCIC · OT, State, academia targeted', '/tchaditude/#partenariats'),
     ], ('Take action', 'Subscribe to the capital', 'From FCFA 100 M to 10 bn, in tiers', '/investisseurs#souscrire')),
     ('News', 'Press releases, technical features and job interviews, all dated.', '/carnets', [
         ('Journal', 'Articles and interviews', '/carnets'),
