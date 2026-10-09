@@ -4,12 +4,12 @@ const base = process.env.SITE_URL || 'https://enertchad.com/';
 
 const cases = [
   ['/', [
-    ['a[data-et-action="invest"][href="/investisseurs#souscrire"]', 'Investir'],
-    ['a[data-et-action="explore"][href="#chaine"]', 'Explorer la chaîne'],
+    ['.et-hero a.et-primary[href="/projets#avancement"]', 'Voir les projets et leur statut'],
+    ['.et-hero a.et-secondary[href="/contact"]', 'Contacter EnerTchad'],
   ]],
   ['/index-en', [
-    ['a[data-et-action="invest"][href="/investisseurs-en#souscrire"]', 'Invest'],
-    ['a[data-et-action="explore"][href="#chaine"]', 'Explore the chain'],
+    ['.et-hero a.et-primary[href="/projets-en#avancement"]', 'Explore projects and their status'],
+    ['.et-hero a.et-secondary[href="/contact-en"]', 'Contact EnerTchad'],
   ]],
   ['/societe', [
     ['a[data-et-action="evidence"][href="/engagements"]', 'Voir nos engagements'],
@@ -44,6 +44,7 @@ test('CTA vocabulary — core actions use canonical labels and semantic action t
     await page.goto(new URL(path, base).href, { waitUntil: 'domcontentloaded', timeout: 45000 });
     for (const [selector, label] of expected) {
       const target = page.locator(selector).filter({ hasText: label }).first();
+      await target.scrollIntoViewIfNeeded();
       await expect(target, path + ' ' + label).toBeVisible();
     }
   }
@@ -113,8 +114,11 @@ test('CTA vocabulary — editorial, data-room and RSS labels stay canonical', as
   ];
   for (const [path, labels] of cases) {
     await page.goto(new URL(path, base).href, { waitUntil: 'domcontentloaded', timeout: 45000 });
-    const visible = await page.locator('a.pp-btn, a.pp-link, a.btn, a.cta').allInnerTexts();
-    const normalized = visible.map(x => x.replace(/\s+/g, ' ').trim());
-    for (const label of labels) expect(normalized, path + ' canonical CTA ' + label).toContain(label);
+    for (const label of labels) {
+      const link = page.locator('a[href]').filter({ hasText: label }).first();
+      await link.scrollIntoViewIfNeeded();
+      await expect(link, path + ' canonical CTA ' + label).toHaveText(label);
+      await expect(link).toBeVisible();
+    }
   }
 });

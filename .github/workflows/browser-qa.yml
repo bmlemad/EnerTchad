@@ -4,7 +4,12 @@ on:
   # plusieurs passages) a depasse a elle seule les requetes incluses de l hebergeur.
   schedule:
     - cron: '23 4 * * 1'
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      test_grep:
+        description: 'Filtrer les tests par leur titre (vide = suite complète)'
+        required: false
+        default: ''
 jobs:
   browser:
     runs-on: ubuntu-latest
@@ -44,14 +49,16 @@ jobs:
           esac
 
       - name: Exécuter la QA fonctionnelle
+        env:
+          TEST_GREP: ${{ inputs.test_grep }}
         run: |
           mkdir -p artifacts
-          npx --yes playwright@1.55.0 test qa --reporter=line
-      - name: Exécuter l'audit visuel complet
-        env:
-          SITE_URL: https://enertchad.com/
-        run: |
-          npx --yes playwright@1.55.0 test qa/full-site-visual.spec.js --reporter=line
+          if [ -n "$TEST_GREP" ]; then
+            npx --yes playwright@1.55.0 test qa --grep "$TEST_GREP" --reporter=line
+          else
+            npx --yes playwright@1.55.0 test qa --reporter=line
+          fi
+      # La suite qa inclut déjà full-site-visual.spec.js ; ne pas le lancer deux fois.
       - name: Publier les captures et rapports
         if: always()
         uses: actions/upload-artifact@v7
