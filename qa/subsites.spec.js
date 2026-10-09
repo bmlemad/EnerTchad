@@ -1,6 +1,26 @@
 const { test, expect } = require('@playwright/test');
 const base = process.env.SITE_URL || 'https://enertchad.com/';
 const routes = ['/boutique/', '/boutique/en/', '/boutique/clients', '/boutique/en/clients', '/atlas/', '/atlas/carte', '/atlas-en', '/atlas/carte-en'];
+for (const route of ['/boutique/clients','/boutique/en/clients','/atlas/','/atlas-en']) {
+  test(`dedicated spaces — dynamic search reaches group pages: ${route}`,async ({browser}) => {
+    const page = await browser.newPage({viewport:{width:390,height:900}});
+    await page.goto(new URL(route,base).href,{waitUntil:'networkidle'});
+    const refuse=page.locator('#et-consent button').filter({hasText:/Refuser|Refuse/});
+    if(await refuse.isVisible())await refuse.click();
+    await page.keyboard.press('Control+k');
+    await expect(page.locator('#cmdk-input')).toBeVisible();
+    await page.locator('#cmdk-input').fill('zzqvunknownzzqv');
+    const fallbacks=page.locator('#cmdk-results a');
+    await expect(fallbacks).toHaveCount(2);
+    for(const href of await fallbacks.evaluateAll(links=>links.map(a=>a.getAttribute('href'))))expect(href).toMatch(/^https:\/\/enertchad\.com\//);
+    await page.locator('#cmdk-input').fill('contact');
+    const target='https://enertchad.com/contact'+(route.includes('/en/')||route.includes('-en')?'-en':'');
+    await page.locator(`#cmdk-results a[href="${target}"]`).first().click();
+    await expect(page).toHaveURL(target);
+    await expect(page.locator('h1')).toHaveCount(1);
+    await page.close();
+  });
+}
 for (const width of [1440, 390]) {
   for (const route of routes) {
     test(`dedicated spaces — navigation, viewport and runtime: ${route} ${width}`, async ({ browser }) => {
@@ -12,6 +32,7 @@ for (const width of [1440, 390]) {
       await expect(page.locator('h1')).toHaveCount(1);
       await expect(page.locator('#nav [aria-current="page"]')).toHaveCount(1);
       await expect(page.locator('#nav a[lang]')).toBeVisible();
+      await expect(page.locator('#et-consent a')).toHaveAttribute('href','https://enertchad.com/cookies'+(route.includes('-en') || route.includes('/en/') ? '-en' : ''));
       if (route.startsWith('/atlas')) {
         expect(await page.evaluate(() => document.querySelector('main').getBoundingClientRect().top - document.querySelector('#nav').getBoundingClientRect().bottom)).toBeLessThan(40);
         await expect(page.locator('.atlas-languages,.atlas-nav')).toHaveCount(0);
