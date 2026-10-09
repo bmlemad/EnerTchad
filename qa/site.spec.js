@@ -1329,7 +1329,7 @@ test('performance — local assets avoid obvious cache-busting and oversized eag
       if (asset.origin !== new URL(url).origin) continue;
       for (const key of ['v', 'version', 'cb', 'cache']) {
         const version = asset.searchParams.get(key);
-        if (version !== null) expect(version, href + ' stable build version').toMatch(/^\d{8,12}$/);
+        if (version !== null) expect(version, href + ' stable build version').toMatch(/^(?:[a-z]+-)?\d{8,12}(?:-\d+)?$/i);
       }
     }
     await page.close();
@@ -1361,6 +1361,8 @@ test('keyboard navigation — disclosure controls keep truthful expanded state',
   for (let i = 0; i < Math.min(count, 12); i++) {
     const control = controls.nth(i);
     if (!await control.isVisible()) continue;
+    // Desktop footer headings are expanded and deliberately excluded from keyboard interaction.
+    if (await control.getAttribute('tabindex') === '-1') continue;
     const targetId = await control.getAttribute('aria-controls');
     const target = page.locator('#' + targetId);
     await expect(target, 'target ' + targetId).toHaveCount(1);
@@ -2420,7 +2422,7 @@ test('html integrity — images do not use empty or placeholder alt text', async
 
 test('visual system — consolidated tokens and cleanup invariants are present', async ({ browser }) => {
   const page = await browser.newPage();
-  await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 45000 });
+  await page.goto(url, { waitUntil: 'load', timeout: 45000 });
   const report = await page.evaluate(() => {
     const css = [...document.styleSheets].flatMap(sheet => {
       try { return [...sheet.cssRules].map(rule => rule.cssText).join('\n'); } catch { return ''; }

@@ -21,8 +21,8 @@ const paths = [
   '/investor-center', '/investor-center-en',
 ];
 
-test('navigation — representative pages contain no empty or javascript internal links', async ({ browser }) => {
-  for (const path of paths) {
+for (const path of paths) {
+  test('navigation — representative pages contain no empty or javascript internal links: ' + path, async ({ browser }) => {
     const page = await browser.newPage({ viewport: { width: 1280, height: 900 } });
     await page.goto(new URL(path, base).href, { waitUntil: 'domcontentloaded', timeout: 45000 });
 
@@ -40,5 +40,5 @@ test('navigation — representative pages contain no empty or javascript interna
     }
 
     await page.close();
-  }
-});
+  });
+}

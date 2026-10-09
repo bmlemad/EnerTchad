@@ -39,16 +39,16 @@ const cases = [
   ]],
 ];
 
-test('CTA vocabulary — core actions use canonical labels and semantic action tags', async ({ page }) => {
-  for (const [path, expected] of cases) {
+for (const [path, expected] of cases) {
+  test('CTA vocabulary — core actions use canonical labels and semantic action tags: ' + path, async ({ page }) => {
     await page.goto(new URL(path, base).href, { waitUntil: 'domcontentloaded', timeout: 45000 });
     for (const [selector, label] of expected) {
       const target = page.locator(selector).filter({ hasText: label }).first();
       await target.scrollIntoViewIfNeeded();
       await expect(target, path + ' ' + label).toBeVisible();
     }
-  }
-});
+  });
+}
 
 test('CTA vocabulary — deprecated contact labels do not return', async ({ page }) => {
   const deprecated = [
@@ -105,14 +105,14 @@ test('CTA density — investor topic index stays collapsed by default and keeps 
   }
 });
 
-test('CTA vocabulary — editorial, data-room and RSS labels stay canonical', async ({ page }) => {
-  const cases = [
+const editorialCases = [
     ['/societe', ['Ouvrir la data room']],
     ['/societe-en', ['Open the data room']],
     ['/investisseurs', ['Lire l’éditorial stratégique', 'Ouvrir le flux RSS des Carnets']],
     ['/investisseurs-en', ['Read the strategic editorial', 'Open Stories RSS feed']],
   ];
-  for (const [path, labels] of cases) {
+for (const [path, labels] of editorialCases) {
+  test('CTA vocabulary — editorial, data-room and RSS labels stay canonical: ' + path, async ({ page }) => {
     await page.goto(new URL(path, base).href, { waitUntil: 'domcontentloaded', timeout: 45000 });
     for (const label of labels) {
       const link = page.locator('a[href]').filter({ hasText: label }).first();
@@ -120,5 +120,5 @@ test('CTA vocabulary — editorial, data-room and RSS labels stay canonical', as
       await expect(link, path + ' canonical CTA ' + label).toHaveText(label);
       await expect(link).toBeVisible();
     }
-  }
-});
+  });
+}

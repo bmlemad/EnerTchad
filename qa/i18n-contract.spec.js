@@ -32,8 +32,8 @@ const matrix = [
   ['/carrieres-en', 'en', '/carrieres-en'],
 ];
 
-test('internationalization — language, canonical and hreflang stay aligned', async ({ browser }) => {
-  for (const [path, lang, canonicalPath] of matrix) {
+for (const [path, lang, canonicalPath] of matrix) {
+  test('internationalization — language, canonical and hreflang stay aligned: ' + path, async ({ browser }) => {
     const page = await browser.newPage();
     await page.goto(new URL(path, base).href, { waitUntil: 'domcontentloaded', timeout: 45000 });
 
@@ -57,5 +57,5 @@ test('internationalization — language, canonical and hreflang stay aligned', a
 
     expect(byLang[lang], path + ' self hreflang').toBe(canonical);
     await page.close();
-  }
-});
+  });
+}
