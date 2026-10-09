@@ -1620,9 +1620,8 @@ test('localization — localized pages declare consistent language metadata and 
   }
 });
 
-test('accessibility — images expose useful alternative text and controls have accessible names', async ({ browser }) => {
-  const paths = ['/', '/amont/', '/intermediaire/', '/aval/', '/greentech/', '/contact', '/investisseurs'];
-  for (const path of paths) {
+for (const path of ['/', '/amont/', '/intermediaire/', '/aval/', '/greentech/', '/contact', '/investisseurs']) {
+  test('accessibility — images expose useful alternative text and controls have accessible names: ' + path, async ({ browser }) => {
     const page = await browser.newPage();
     const response = await page.goto(new URL(path, url).href, { waitUntil: 'domcontentloaded', timeout: 45000 });
     expect(response?.status(), path).toBe(200);
@@ -1638,8 +1637,8 @@ test('accessibility — images expose useful alternative text and controls have 
       await expect(control, path + ' control ' + i).toHaveAccessibleName(/\S/);
     }
     await page.close();
-  }
-});
+  });
+}
 
 test('visual guardrails — typography and layout tokens remain sane', async ({ browser }) => {
   const paths = ['/', '/amont/', '/intermediaire/', '/aval/', '/greentech/', '/tchaditech/', '/tchaditude/', '/enerconseils/', '/contact', '/investisseurs'];
