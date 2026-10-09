@@ -113,12 +113,12 @@ def apache_config():
              'RewriteCond %{THE_REQUEST} "\\s/+[^?\\s]+\\.html(?:[?\\s])" [NC]',
              "RewriteCond %{REQUEST_FILENAME} -f",
              "RewriteRule ^(.+)\\.html$ https://%{HTTP_HOST}/$1 [R=301,END,NE]", "",
-             "RewriteCond %{REQUEST_FILENAME} -f [OR]",
-             "RewriteCond %{REQUEST_FILENAME} -d", "RewriteRule ^ - [END]", "",
-             "RewriteCond %{REQUEST_FILENAME}.html -f",
-             "RewriteRule ^(.+)$ $1.html [END]",
+             "RewriteCond %{REQUEST_FILENAME} -f", "RewriteRule ^ - [END]", "",
+             "# React exports also create RSC directories; prefer their public HTML.",
              "RewriteCond %{DOCUMENT_ROOT}/$1.html -f",
-             "RewriteRule ^(.+)/$ $1.html [END]", "</IfModule>", "", *headers(), ""]
+             "RewriteRule ^(.+?)/?$ $1.html [END]", "",
+             "RewriteCond %{REQUEST_FILENAME} -d", "RewriteRule ^ - [END]",
+             "</IfModule>", "", *headers(), ""]
     return "\n".join(lines), count
 
 
