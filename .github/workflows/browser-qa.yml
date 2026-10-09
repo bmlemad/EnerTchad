@@ -1,14 +1,36 @@
 name: QA navigateur — production
 on:
+  # Une PR ne lance que les contrôles ciblés sur sa prévisualisation, sans l'audit complet.
+  pull_request:
+    paths:
+      - 'qa/**'
+      - '.github/workflows/browser-qa.yml'
+      - 'assets/chrome/u2_75a2c4383ddf.js'
+      - 'assets/chrome/hub-aval-base.css'
+      - 'aval/index.html'
+      - 'tchaditech/index.html'
   # Hebdomadaire et a la demande : lancee a chaque envoi, cette QA (toutes les pages,
   # plusieurs passages) a depasse a elle seule les requetes incluses de l hebergeur.
   schedule:
     - cron: '23 4 * * 1'
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      test_grep:
+        description: 'Filtrer les tests par leur titre (vide = suite complète)'
+        required: false
+        default: ''
+      site_url:
+        description: 'Adresse à vérifier (production par défaut, ou prévisualisation Netlify)'
+        required: false
+        default: 'https://enertchad.com/'
+permissions:
+  contents: read
 jobs:
   browser:
     runs-on: ubuntu-latest
     timeout-minutes: 30
+    env:
+      SITE_URL: ${{ github.event_name == 'pull_request' && format('https://deploy-preview-{0}--enertchad.netlify.app/', github.event.pull_request.number) || inputs.site_url || 'https://enertchad.com/' }}
     steps:
       - uses: actions/checkout@v7
       - uses: actions/setup-node@v7
@@ -19,8 +41,6 @@ jobs:
           npm install --no-save --no-package-lock @playwright/test@1.55.0
           npx playwright@1.55.0 install --with-deps chromium
       - name: Attendre le déploiement de production
-        env:
-          SITE_URL: https://enertchad.com/
         run: |
           for i in {1..60}; do
             code=$(curl -L -s -o /tmp/site.html -w '%{http_code}' "$SITE_URL/")
@@ -29,8 +49,6 @@ jobs:
           done
           echo "Le déploiement de production n'est pas encore disponible"; exit 1
       - name: Vérifier les garde-fous de synchronisation production
-        env:
-          SITE_URL: https://enertchad.com/
         run: |
           set -euo pipefail
           page=$(curl -L -sS "$SITE_URL/petrochimie/")
@@ -44,14 +62,16 @@ jobs:
           esac
 
       - name: Exécuter la QA fonctionnelle
+        env:
+          TEST_GREP: ${{ github.event_name == 'pull_request' && 'CTA vocabulary — core actions|CTA vocabulary — editorial|internationalization — language|navigation — representative pages contain|performance — critical pages|trust center|forms, anchors and interactive|mobile interactions|external scripts remain|images have alt text|controls are explicitly labelled|obvious cache-busting|disclosure controls keep|resource integrity|visual system budgets|localized pages declare|useful alternative text|canonical, title and primary|strategic SVGs|critical local resources use|consolidated tokens|legacy glass markers remain' || inputs.test_grep }}
         run: |
           mkdir -p artifacts
-          npx --yes playwright@1.55.0 test qa --reporter=line
-      - name: Exécuter l'audit visuel complet
-        env:
-          SITE_URL: https://enertchad.com/
-        run: |
-          npx --yes playwright@1.55.0 test qa/full-site-visual.spec.js --reporter=line
+          if [ -n "$TEST_GREP" ]; then
+            npx --yes playwright@1.55.0 test qa --grep "$TEST_GREP" --reporter=line
+          else
+            npx --yes playwright@1.55.0 test qa --reporter=line
+          fi
+      # La suite qa inclut déjà full-site-visual.spec.js ; ne pas le lancer deux fois.
       - name: Publier les captures et rapports
         if: always()
         uses: actions/upload-artifact@v7

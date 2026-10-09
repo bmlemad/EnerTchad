@@ -9,7 +9,7 @@ test('performance — critical pages avoid excessive synchronous resources', asy
     await page.goto(new URL(path, base).href, { waitUntil: 'domcontentloaded', timeout: 45000 });
 
     const report = await page.evaluate(() => ({
-      scripts: [...document.scripts].filter(s => !s.async && !s.defer && !s.type.includes('application/ld+json')).length,
+      scripts: [...document.scripts].filter(s => s.src && !s.async && !s.defer && s.type !== 'module' && !s.type.includes('application/ld+json')).length,
       stylesheets: document.querySelectorAll('link[rel="stylesheet"]').length,
       images: document.images.length,
       lazyImages: [...document.images].filter(img => img.loading === 'lazy').length

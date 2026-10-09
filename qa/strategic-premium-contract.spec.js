@@ -15,7 +15,8 @@ test('strategic pages — canonical, title and primary content are present', asy
     await expect(page.locator('h1')).toHaveCount(1);
     await expect(page.locator('h1')).not.toHaveText('');
     await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', canonical);
-    await expect(page.locator('meta[name="description"]')).toHaveAttribute('content', /\S{40,}/);
+    const description = await page.locator('meta[name="description"]').getAttribute('content');
+    expect((description || '').trim().length, path + ' substantive description').toBeGreaterThanOrEqual(40);
   }
 });
 

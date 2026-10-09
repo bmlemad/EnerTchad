@@ -32,27 +32,31 @@ const matrix = [
   ['/carrieres-en', 'en', '/carrieres-en'],
 ];
 
-test('internationalization — language, canonical and hreflang stay aligned', async ({ browser }) => {
-  for (const [path, lang, canonicalPath] of matrix) {
+for (const [path, lang, canonicalPath] of matrix) {
+  test('internationalization — language, canonical and hreflang stay aligned: ' + path, async ({ browser }) => {
     const page = await browser.newPage();
     await page.goto(new URL(path, base).href, { waitUntil: 'domcontentloaded', timeout: 45000 });
 
     expect(await page.locator('html').getAttribute('lang'), path).toBe(lang);
 
     const canonical = await page.locator('link[rel="canonical"]').getAttribute('href');
-    expect(canonical, path).toBe(new URL(canonicalPath, base).href);
+    // A preview must still declare the production canonical URL.
+    expect(canonical, path).toBe(new URL(canonicalPath, 'https://enertchad.com/').href);
 
     const alternates = await page.locator('link[rel="alternate"][hreflang]').evaluateAll(nodes =>
       nodes.map(link => ({ lang: link.getAttribute('hreflang'), href: link.href }))
     );
     const byLang = Object.fromEntries(alternates.map(item => [item.lang, item.href]));
 
-    for (const expected of ['fr', 'en', 'ar', 'x-default']) {
+    // Arabic alternates exist only for the translated entry pages, not every FR/EN page.
+    const arabicRoutes = new Set(['/', '/index-en', '/ar', '/societe', '/societe-en', '/ar-societe', '/investisseurs', '/investisseurs-en', '/ar-investisseurs', '/contact', '/contact-en', '/ar-contact']);
+    const expectedLanguages = arabicRoutes.has(path) ? ['fr', 'en', 'ar', 'x-default'] : ['fr', 'en', 'x-default'];
+    for (const expected of expectedLanguages) {
       expect(byLang[expected], path + ' missing ' + expected).toBeTruthy();
       expect(byLang[expected], path + ' ' + expected).toMatch(/^https:\/\//);
     }
 
     expect(byLang[lang], path + ' self hreflang').toBe(canonical);
     await page.close();
-  }
-});
+  });
+}

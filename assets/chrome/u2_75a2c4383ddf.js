@@ -105,6 +105,7 @@ try{
   if(tt&&!tt.querySelector('.ring')){
     var s=document.createElementNS('http://www.w3.org/2000/svg','svg');
     s.setAttribute('class','ring');s.setAttribute('viewBox','0 0 52 52');
+    s.setAttribute('aria-hidden','true');s.setAttribute('focusable','false');
     s.innerHTML='<circle cx="26" cy="26" r="24"/>';
     tt.appendChild(s);
     var c=s.querySelector('circle'),L=151,tk;
