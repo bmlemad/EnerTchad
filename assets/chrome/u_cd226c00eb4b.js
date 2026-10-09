@@ -413,3 +413,18 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 
 /* Ch531 : /contact figurait deux fois au pied de page (colonne Societe + rangee legale). La rangee legale perd le doublon. */
 try{(function(){function fix(){var col=document.querySelector('.foot-col a[href="/contact"],.foot-col a[href="/contact-en"]');if(!col)return;document.querySelectorAll('.foot-legal-links a[href="/contact"],.foot-legal-links a[href="/contact-en"]').forEach(function(a){a.remove()});}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',fix);else fix()})()}catch(e){}
+
+/* Mobile (09/10/2026) : la commande d’affichage (luminosité et thème) rejoint le menu ; plus de pastille flottante sur le contenu. Ordinateur inchangé. */
+;(function(){try{
+var mq=window.matchMedia&&matchMedia('(max-width:760px)');if(!mq)return;
+if(!document.getElementById('etLumMenuCss')){var st=document.createElement('style');st.id='etLumMenuCss';var P='html'+Array.apply(null,{length:40}).map(function(_,i){return':not(#lm'+i+')'}).join('');
+st.textContent=P+' body #navLinks .lum-ctl.lum-in-menu{display:block!important;position:static!important;right:auto!important;bottom:auto!important;margin:14px 0 6px!important;padding:12px 0 0!important;border-top:1px solid var(--hair,rgba(127,150,180,.25))!important;width:100%!important;z-index:auto!important}'
++P+' body #navLinks .lum-in-menu .lum-btn{display:none!important}'
++P+' body #navLinks .lum-in-menu .lum-panel{display:block!important;position:static!important;width:auto!important;margin:0!important;box-shadow:none!important}';
+(document.head||document.documentElement).appendChild(st)}
+function place(){var c=document.getElementById('lum-ctl'),nl=document.getElementById('navLinks');if(!c||!nl)return;var p=document.getElementById('lum-panel');
+if(mq.matches){if(c.parentNode!==nl){nl.appendChild(c);c.classList.add('lum-in-menu');if(p)p.hidden=false}}
+else if(c.classList.contains('lum-in-menu')){c.classList.remove('lum-in-menu');document.body.appendChild(c);if(p)p.hidden=true}}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',place);else place();
+if(mq.addEventListener)mq.addEventListener('change',place);else if(mq.addListener)mq.addListener(place);
+}catch(e){}})();
