@@ -4,12 +4,17 @@ const path = require('path');
 
 const base = process.env.SITE_URL || 'https://enertchad.com/';
 const origin = new URL(base).origin;
+const auditedOrigins = new Set([origin]);
+if (origin === 'https://enertchad.com') {
+  auditedOrigins.add('https://clients.enertchad.com');
+  auditedOrigins.add('https://atlas.enertchad.com');
+}
 
 function sitemapUrls(xml) {
   return [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)]
     .map(m => m[1].trim())
     .filter(Boolean)
-    .filter(u => new URL(u).origin === origin)
+    .filter(u => auditedOrigins.has(new URL(u).origin))
     .filter(u => !/\.(pdf|docx?|xlsx?|pptx?|zip|png|jpe?g|webp|svg)$/i.test(u))
     .map(u => new URL(u).href);
 }
@@ -97,6 +102,7 @@ test('full-site visual navigation audit — sitemap desktop + mobile', async ({ 
   const report = {
     generatedAt: new Date().toISOString(),
     site: origin,
+    domains: [...auditedOrigins],
     pages: urls.length,
     viewports: [{ name: 'desktop', width: 1440, height: 900 }, { name: 'mobile', width: 390, height: 844 }],
     results: []
