@@ -10,10 +10,16 @@ on:
         description: 'Filtrer les tests par leur titre (vide = suite complète)'
         required: false
         default: ''
+      site_url:
+        description: 'Adresse à vérifier (production par défaut, ou prévisualisation Netlify)'
+        required: false
+        default: 'https://enertchad.com/'
 jobs:
   browser:
     runs-on: ubuntu-latest
     timeout-minutes: 30
+    env:
+      SITE_URL: ${{ inputs.site_url || 'https://enertchad.com/' }}
     steps:
       - uses: actions/checkout@v7
       - uses: actions/setup-node@v7
@@ -24,8 +30,6 @@ jobs:
           npm install --no-save --no-package-lock @playwright/test@1.55.0
           npx playwright@1.55.0 install --with-deps chromium
       - name: Attendre le déploiement de production
-        env:
-          SITE_URL: https://enertchad.com/
         run: |
           for i in {1..60}; do
             code=$(curl -L -s -o /tmp/site.html -w '%{http_code}' "$SITE_URL/")
@@ -34,8 +38,6 @@ jobs:
           done
           echo "Le déploiement de production n'est pas encore disponible"; exit 1
       - name: Vérifier les garde-fous de synchronisation production
-        env:
-          SITE_URL: https://enertchad.com/
         run: |
           set -euo pipefail
           page=$(curl -L -sS "$SITE_URL/petrochimie/")

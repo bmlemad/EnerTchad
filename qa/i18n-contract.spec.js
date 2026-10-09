@@ -40,7 +40,8 @@ for (const [path, lang, canonicalPath] of matrix) {
     expect(await page.locator('html').getAttribute('lang'), path).toBe(lang);
 
     const canonical = await page.locator('link[rel="canonical"]').getAttribute('href');
-    expect(canonical, path).toBe(new URL(canonicalPath, base).href);
+    // A preview must still declare the production canonical URL.
+    expect(canonical, path).toBe(new URL(canonicalPath, 'https://enertchad.com/').href);
 
     const alternates = await page.locator('link[rel="alternate"][hreflang]').evaluateAll(nodes =>
       nodes.map(link => ({ lang: link.getAttribute('hreflang'), href: link.href }))
