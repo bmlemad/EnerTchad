@@ -97,6 +97,7 @@ def text_delivery():
     return ["# UTF-8 for text files (fiche presse .md, agenda .ics, security.txt).",
             "AddDefaultCharset UTF-8",
             "<IfModule mod_mime.c>",
+            "  AddType text/markdown .md",
             "  AddCharset UTF-8 .css .js .mjs .json .md .ics .txt .xml .svg .webmanifest",
             "</IfModule>",
             "<IfModule mod_deflate.c>",
