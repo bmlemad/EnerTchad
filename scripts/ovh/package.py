@@ -103,7 +103,12 @@ def text_delivery():
             "<IfModule mod_deflate.c>",
             "  AddOutputFilterByType DEFLATE text/html text/css text/plain text/markdown "
             "text/calendar text/xml application/xml application/javascript text/javascript "
-            "application/json application/manifest+json image/svg+xml",
+            "application/json application/manifest+json image/svg+xml text/csv",
+            "</IfModule>",
+            "# OVH adds its own mod_expires headers (a second Cache-Control: max-age=900",
+            "# and an Expires) to CSS, JS and images. Turn them off so the rules above apply alone.",
+            "<IfModule mod_expires.c>",
+            "  ExpiresActive Off",
             "</IfModule>"]
 
 

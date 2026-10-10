@@ -30,7 +30,7 @@ def main():
         config = temp / "httpd.conf"
         error_log = temp / "error.log"
         load = "\n".join(f"LoadModule {name}_module {modules / ('mod_' + name + '.so')}"
-                         for name in ("mpm_event", "authz_core", "dir", "mime", "rewrite", "headers", "setenvif"))
+                         for name in ("mpm_event", "authz_core", "dir", "mime", "rewrite", "headers", "setenvif", "expires"))
         config.write_text(f'''ServerRoot "{temp}"
 ServerName localhost
 Listen 127.0.0.1:{port}
@@ -43,6 +43,12 @@ Group {grp.getgrgid(os.getgid()).gr_name}
 TypesConfig /etc/mime.types
 AddType text/html .html
 SetEnvIf X-OVH-Test-HTTPS ^on$ HTTPS=on
+# Same defaults as the OVH shared hosting: mod_expires active for static files.
+ExpiresActive On
+ExpiresByType text/css "access plus 15 minutes"
+ExpiresByType text/javascript "access plus 15 minutes"
+ExpiresByType application/javascript "access plus 15 minutes"
+ExpiresByType image/webp "access plus 15 minutes"
 DocumentRoot "{OUT}"
 <Directory "{OUT}">
   Options FollowSymLinks
@@ -139,8 +145,14 @@ DocumentRoot "{OUT}"
             core = "assets/chrome/c_ac04328f0f47.js"
             assert (OUT / "contact-handler.php").is_file(), "contact receiver missing"
             checks += 1
-            cache = request("enertchad.com", "/" + core)[1].get("Cache-Control")
-            assert cache == "public, max-age=3600, stale-while-revalidate=86400", cache
+            connection = http.client.HTTPConnection("127.0.0.1", port, timeout=10)
+            connection.request("GET", "/" + core, headers={"Host": "enertchad.com", "X-OVH-Test-HTTPS": "on"})
+            response = connection.getresponse()
+            response.read()
+            cache = response.msg.get_all("Cache-Control")
+            connection.close()
+            assert cache == ["public, max-age=3600, stale-while-revalidate=86400"], cache
+            assert response.getheader("Expires") is None, response.getheader("Expires")
             checks += 1
             print(json.dumps({"status": "passed", "http_checks": checks, "server": "Apache 2.4"}))
         except Exception:
