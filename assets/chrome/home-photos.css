@@ -1,0 +1,13 @@
+/* Maquette : photographies de l'accueil (en-tête et quatre maillons). Images d'illustration, budget < 250 Ko. */
+#main-content.et-home .et-hero{position:relative;isolation:isolate;overflow:hidden}
+#main-content.et-home .et-hero-media{position:absolute;inset:0;z-index:-1;margin:0}
+#main-content.et-home .et-hero-media img{width:100%;height:100%;object-fit:cover;object-position:70% 50%;display:block}
+#main-content.et-home .et-hero-media::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(16,26,44,.94) 0%,rgba(16,26,44,.88) 50%,rgba(16,26,44,.62) 80%,rgba(16,26,44,.50) 100%),linear-gradient(0deg,rgba(16,26,44,.85) 0%,rgba(16,26,44,0) 38%)}
+#main-content.et-home .et-hero-media figcaption{position:absolute;right:16px;bottom:10px;z-index:1;font-size:.72rem;letter-spacing:.04em;color:rgba(248,245,234,.78)}
+@media (max-width:760px){#main-content.et-home .et-hero-media img{object-position:62% 30%}
+#main-content.et-home .et-hero-media::after{background:linear-gradient(180deg,rgba(16,26,44,.72) 0%,rgba(16,26,44,.82) 34%,rgba(16,26,44,.90) 60%,rgba(16,26,44,.95) 100%)}}
+#main-content.et-home .et-segments article{overflow:hidden;display:flex;flex-direction:column}
+#main-content.et-home .et-segments .et-seg-img{display:block;width:calc(100% + 52px);max-width:none;margin:-26px -26px 18px;aspect-ratio:16/10;height:auto;object-fit:cover}
+#main-content.et-home .et-segments article>a{margin-top:auto}
+#main-content.et-home .et-seg-note{font-size:.8rem;margin-top:14px;opacity:.8}
+@media (max-width:760px){#main-content.et-home .et-segments .et-seg-img{aspect-ratio:16/8}}
