@@ -321,3 +321,9 @@ html:is(.et-plight,.et-jlight)[data-pl="coupe"] .jn-fig .jn-band{background-imag
 html:is(.et-plight,.et-jlight)[data-pl="corridor"] .jn-fig .jn-band{background-image:url(/assets/img/bande-corridor-clair-1600.webp)}
 html:is(.et-plight,.et-jlight)[data-pl="colonne"] .jn-fig .jn-band{background-image:url(/assets/img/bande-colonne-clair-1600.webp)}
 }
+
+/* Bandeau des Carnets sur mobile : une seule ligne, quelle que soit la police.
+   Sans cela, la police de secours le passait sur deux lignes, puis l arrivee de
+   Space Grotesk le ramenait a une : decalage de 35 px de toute la page (CLS 0,28). */
+@media (max-width:480px){.jn-mast-top{flex-wrap:nowrap;column-gap:10px;letter-spacing:.1em}.jn-mast-top>span{white-space:nowrap}}
+@media (max-width:359px){.jn-mast-top{letter-spacing:.04em}}
