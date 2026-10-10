@@ -115,10 +115,10 @@ def apache_config():
              "ErrorDocument 404 /404.html", "", "<IfModule mod_rewrite.c>",
              "RewriteEngine On", "RewriteOptions AllowNoSlash", "RewriteBase /", "",
              'RewriteRule "(^|/)\\.(?!well-known(?:/|$))" - [F,END]', "",
-             "# Netlify Forms do not exist on Apache: refuse contact POSTs so the page",
-             "# shows its email/WhatsApp fallback instead of a false receipt.",
+             "# Netlify Forms do not exist on Apache: contact POSTs go to the PHP receiver,",
+             "# which mails the request or fails visibly (the page then offers email/WhatsApp).",
              "RewriteCond %{REQUEST_METHOD} =POST",
-             "RewriteRule ^contact-received(?:-en|-ar)?(?:\\.html)?/?$ - [F,END]", "",
+             "RewriteRule ^contact-received(?:-en|-ar)?(?:\\.html)?/?$ contact-handler.php [END]", "",
              "# Host-specific routing and legacy redirects, in their existing order.",
              *converted,
              "# Use OVH's HTTPS environment signal as well as Apache's native one.",
@@ -162,6 +162,13 @@ def main():
             raise RuntimeError("Incomplete export: " + page["source"])
     config, count = apache_config()
     (export / ".htaccess").write_text(config)
+    # Contact receiver: the recipient is the address published on the contact page.
+    addresses = re.findall(r'mailto:([^"?]+)', (ROOT / "contact.html").read_text(encoding="utf-8"))
+    if not addresses:
+        raise RuntimeError("No contact address in contact.html")
+    recipient = max(set(addresses), key=addresses.count)
+    handler = (ROOT / "scripts/ovh/contact.php").read_text(encoding="utf-8")
+    (export / "contact-handler.php").write_text(handler.replace("{{RECIPIENT}}", recipient), encoding="utf-8")
     files = sorted(p for p in export.rglob("*") if p.is_file() and p.relative_to(export).as_posix() not in OMIT)
     args.output.parent.mkdir(parents=True, exist_ok=True)
     with zipfile.ZipFile(args.output, "w", zipfile.ZIP_DEFLATED) as archive:

@@ -100,44 +100,45 @@ DocumentRoot "{OUT}"
                 ("enertchad.com", "/amont/", "amont/index.html"),
                 ("enertchad.com", "/amont/calculateur-baril-additionnel", "Calculateur_Baril_Additionnel.html"),
                 ("enertchad.com", "/.well-known/security.txt", ".well-known/security.txt"),
-                ("clients.enertchad.com", "/", "_subsites/boutique/index.html"),
-                ("clients.enertchad.com", "/en/", "_subsites/boutique/en/index.html"),
-                ("clients.enertchad.com", "/boutique", "_subsites/boutique/boutique.html"),
-                ("clients.enertchad.com", "/en/boutique/", "_subsites/boutique/en/boutique.html"),
-                ("clients.enertchad.com", "/sitemap.xml", "_subsites/boutique/sitemap.xml"),
-                ("atlas.enertchad.com", "/", "_subsites/atlas/index.html"),
-                ("atlas.enertchad.com", "/en/", "_subsites/atlas/en/index.html"),
-                ("atlas.enertchad.com", "/carte", "_subsites/atlas/carte.html"),
-                ("atlas.enertchad.com", "/en/sources", "_subsites/atlas/en/sources.html"),
-                ("atlas.enertchad.com", "/robots.txt", "_subsites/atlas/robots.txt"),
+                ("enertchad.com", "/boutique/", "boutique/index.html"),
+                ("enertchad.com", "/boutique/en/", "boutique/en/index.html"),
+                ("enertchad.com", "/boutique/clients", "boutique/clients.html"),
+                ("enertchad.com", "/boutique/en/clients", "boutique/en/clients.html"),
+                ("enertchad.com", "/atlas/", "atlas/index.html"),
+                ("enertchad.com", "/atlas-en", "atlas-en.html"),
+                ("enertchad.com", "/atlas/carte", "atlas/carte.html"),
+                ("enertchad.com", "/atlas/sources-en", "atlas/sources-en.html"),
             ]
             for case in cases:
                 content(*case)
-            for host in ("enertchad.com", "clients.enertchad.com", "atlas.enertchad.com"):
+            for host in ("enertchad.com",):
                 content(host, "/does-not-exist.html", "404.html", 404)
                 content(host, "/_subsites/atlas/index.html", "404.html", 404)
                 assert request(host, "/.htaccess")[0] == 403
                 checks += 1
             redirect("www.enertchad.com", "/contact?topic=ovh", "https://enertchad.com/contact?topic=ovh")
             redirect("enertchad.com", "/", "https://enertchad.com/", secure=False)
-            redirect("clients.enertchad.com", "/en/", "https://clients.enertchad.com/en/", secure=False)
+            redirect("clients.enertchad.com", "/en/", "https://enertchad.com/boutique/en/clients", secure=False)
             redirect("enertchad.com", "/contact.html", "https://enertchad.com/contact")
             redirect("enertchad.com", "/index.html", "https://enertchad.com/")
             redirect("enertchad.com", "/pole-amont", "https://enertchad.com/amont/", 308)
             redirect("enertchad.com", "/amont", "https://enertchad.com/amont/")
             redirect("enertchad.com", "/enertech/outils?foo=bar", "https://enertchad.com/tchaditech/outils?foo=bar", 308)
             redirect("enertchad.com", "/pole-enertech-outils", "https://enertchad.com/tchaditech/outils", 308)
-            redirect("enertchad.com", "/clients", "https://clients.enertchad.com/")
-            redirect("enertchad.com", "/atlas/", "https://atlas.enertchad.com/")
-            redirect("atlas.enertchad.com", "/carte.html", "https://atlas.enertchad.com/carte")
-            redirect("boutique.enertchad.com", "/en/any-path", "https://clients.enertchad.com/en/boutique")
+            redirect("enertchad.com", "/clients", "https://enertchad.com/boutique/clients", 308)
+            redirect("enertchad.com", "/aval/boutique", "https://enertchad.com/boutique/", 308)
+            redirect("clients.enertchad.com", "/", "https://enertchad.com/boutique/clients")
+            redirect("clients.enertchad.com", "/en/boutique", "https://enertchad.com/boutique/en/")
+            redirect("atlas.enertchad.com", "/carte.html", "https://enertchad.com/atlas/carte")
+            redirect("atlas.enertchad.com", "/en/sources", "https://enertchad.com/atlas/sources-en")
+            redirect("boutique.enertchad.com", "/en/any-path", "https://enertchad.com/boutique/en/")
             for asset in sorted((OUT / "assets").rglob("*")):
                 if asset.is_file():
                     relative = asset.relative_to(OUT).as_posix()
                     content("enertchad.com", "/" + relative, relative)
             core = "assets/chrome/c_ac04328f0f47.js"
-            for host in ("clients.enertchad.com", "atlas.enertchad.com"):
-                content(host, "/" + core, core)
+            assert (OUT / "contact-handler.php").is_file(), "contact receiver missing"
+            checks += 1
             cache = request("enertchad.com", "/" + core)[1].get("Cache-Control")
             assert cache == "public, max-age=3600, stale-while-revalidate=86400", cache
             checks += 1
