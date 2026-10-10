@@ -6,6 +6,7 @@ import http.client
 import json
 import os
 import pwd
+import re
 import shutil
 import socket
 import subprocess
@@ -29,6 +30,10 @@ def main():
         temp = Path(directory)
         config = temp / "httpd.conf"
         error_log = temp / "error.log"
+        # The OVH cluster's MIME table has no woff2, webmanifest or markdown entry: test without them.
+        (temp / "mime.types").write_text("".join(
+            line for line in Path("/etc/mime.types").read_text().splitlines(keepends=True)
+            if not re.search(r"\b(woff2|webmanifest|markdown)\b", line)))
         load = "\n".join(f"LoadModule {name}_module {modules / ('mod_' + name + '.so')}"
                          for name in ("mpm_event", "authz_core", "dir", "mime", "rewrite", "headers", "setenvif", "expires"))
         config.write_text(f'''ServerRoot "{temp}"
@@ -40,7 +45,7 @@ LogLevel warn
 {load}
 User {pwd.getpwuid(os.getuid()).pw_name}
 Group {grp.getgrgid(os.getgid()).gr_name}
-TypesConfig /etc/mime.types
+TypesConfig "{temp / 'mime.types'}"
 AddType text/html .html
 SetEnvIf X-OVH-Test-HTTPS ^on$ HTTPS=on
 # Same defaults as the OVH shared hosting: mod_expires active for static files.
@@ -89,6 +94,7 @@ DocumentRoot "{OUT}"
                 assert actual == status, (host, path, actual, headers)
                 assert hashlib.sha256(body).digest() == hashlib.sha256((OUT / file).read_bytes()).digest(), (host, path, "content differs")
                 assert headers.get("X-Content-Type-Options") == "nosniff", (host, path, headers)
+                assert headers.get("Content-Type"), (host, path, "no Content-Type with nosniff")
                 checks += 1
 
             def redirect(host, path, target, status=301, secure=True):
