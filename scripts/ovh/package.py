@@ -44,7 +44,9 @@ def rules():
         else:
             path = source
         if not force:
-            conditions += ["RewriteCond %{REQUEST_FILENAME} !-f", "RewriteCond %{REQUEST_FILENAME} !-d"]
+            # Netlify also lets a pretty-URL file (path.html) shadow a non-forced rule.
+            conditions += ["RewriteCond %{REQUEST_FILENAME} !-f", "RewriteCond %{REQUEST_FILENAME} !-d",
+                           "RewriteCond %{REQUEST_FILENAME}.html !-f"]
         if ":" in path.lstrip("/"):
             raise ValueError("Unsupported named placeholder: " + line)
         substitution = target.replace(":splat", "$1")
@@ -64,7 +66,10 @@ def rules():
 
 
 def headers():
-    result = ["<IfModule mod_headers.c>"]
+    # Netlify revalidates every response by default; keep that for documents
+    # replaced in place (PDF, XLSX, sitemap, sw.js). /assets rules below override it.
+    result = ["<IfModule mod_headers.c>",
+              '  Header always set Cache-Control "public, max-age=0, must-revalidate"']
     scope = None
     for raw in (ROOT / "_headers").read_text().splitlines():
         if not raw.strip() or raw.lstrip().startswith("#"):
@@ -87,6 +92,20 @@ def headers():
     return result
 
 
+def text_delivery():
+    """UTF-8 and compression for text, as Netlify served them."""
+    return ["# UTF-8 for text files (fiche presse .md, agenda .ics, security.txt).",
+            "AddDefaultCharset UTF-8",
+            "<IfModule mod_mime.c>",
+            "  AddCharset UTF-8 .css .js .mjs .json .md .ics .txt .xml .svg .webmanifest",
+            "</IfModule>",
+            "<IfModule mod_deflate.c>",
+            "  AddOutputFilterByType DEFLATE text/html text/css text/plain text/markdown "
+            "text/calendar text/xml application/xml application/javascript text/javascript "
+            "application/json application/manifest+json image/svg+xml",
+            "</IfModule>"]
+
+
 def apache_config():
     converted, count = rules()
     host_pattern = "(?:" + "|".join(re.escape(host) for host in HOSTS) + ")"
@@ -96,6 +115,10 @@ def apache_config():
              "ErrorDocument 404 /404.html", "", "<IfModule mod_rewrite.c>",
              "RewriteEngine On", "RewriteOptions AllowNoSlash", "RewriteBase /", "",
              'RewriteRule "(^|/)\\.(?!well-known(?:/|$))" - [F,END]', "",
+             "# Netlify Forms do not exist on Apache: refuse contact POSTs so the page",
+             "# shows its email/WhatsApp fallback instead of a false receipt.",
+             "RewriteCond %{REQUEST_METHOD} =POST",
+             "RewriteRule ^contact-received(?:-en|-ar)?(?:\\.html)?/?$ - [F,END]", "",
              "# Host-specific routing and legacy redirects, in their existing order.",
              *converted,
              "# Use OVH's HTTPS environment signal as well as Apache's native one.",
@@ -122,7 +145,7 @@ def apache_config():
              "RewriteCond %{REQUEST_FILENAME} -d",
              "RewriteRule ^(.+[^/])$ https://%{HTTP_HOST}/$1/ [R=301,END,NE]", "",
              "RewriteCond %{REQUEST_FILENAME} -d", "RewriteRule ^ - [END]",
-             "</IfModule>", "", *headers(), ""]
+             "</IfModule>", "", *headers(), "", *text_delivery(), ""]
     return "\n".join(lines), count
 
 
