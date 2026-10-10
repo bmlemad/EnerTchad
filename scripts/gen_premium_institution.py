@@ -33,14 +33,14 @@ PAGES = [
     ('societe-en.html', 'en', 'dunes-sahara'), ('investisseurs-en.html', 'en', 'flamme-gaz'), ('carrieres-en.html', 'en', 'camion-route'),
 ]
 ALT = {'dunes-sahara': ('Dunes du Sahara', 'Sahara dunes'), 'flamme-gaz': ('Flamme de gaz', 'Gas flame'),
-       'camion-route': ('Camion sur une route du Sahel', 'Truck on a Sahel road'),
+       'camion-route': ('Camion sur une route de montagne', 'Truck on a mountain road'),
        'complexe-industriel': ('Complexe industriel de transformation', 'Industrial processing complex')}
 ALT.update({'chantier-ferraillage': ('Équipe sur un chantier', 'Crew on a construction site'),
             'pipeline': ('Pipeline traversant une vallée', 'Pipeline crossing a valley'),
             'raffinerie-jour': ('Colonnes de raffinerie', 'Refinery columns'),
             'unite-petrochimie': ('Unité pétrochimique', 'Petrochemical unit'),
             'code-numerique': ('Code informatique sur un écran', 'Computer code on a screen'),
-            'lac-tchad-espace': ('Le lac Tchad photographié depuis l’orbite', 'Lake Chad photographed from orbit')})
+            'lac-tchad-espace': ('Le lac Tchad photographié depuis Apollo 7, en octobre 1968', 'Lake Chad photographed from Apollo 7, October 1968')})
 # pages metier (sous-pages des poles) : photographie du pole
 METIER = {'amont': 'chantier-ferraillage', 'intermediaire': 'pipeline', 'aval': 'raffinerie-jour',
           'petrochimie': 'unite-petrochimie', 'tchaditech': 'code-numerique', 'enerconseils': 'lac-tchad-espace'}
