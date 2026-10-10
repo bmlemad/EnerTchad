@@ -579,7 +579,7 @@ var P=[
  ['carburants','Fuels','⛽','Petrol RON 95','For light vehicles and two-wheelers — network down to the last km.','Litre · at the pump','ARSAT price',['NF EN 228 standard targeted','RON 95 octane rating','Batch control · Bureau Veritas targeted'],'b2c','pump',['Light vehicles','Two-wheelers','Small equipment'],['At the pump (litre)','200 L drum']],
  ['carburants','Fuels','🔥','Lamp kerosene','Lighting and household uses in rural areas.','Litre · jerrycan','ARSAT price',['Household lighting grade','Low sulphur content targeted'],'b2c','lamp',['Household lighting','Stoves','Off-grid areas'],['5 L jerrycan','20 L jerrycan','200 L drum']],
  ['carburants','Fuels','✈️','Jet A-1','Aviation jet fuel — on approval, airports and operators.','Litre · into-plane','On approval',['DEF STAN 91-091 spec targeted','Dedicated fuelling chain','Full batch traceability'],'b2b','plane',['Civil aviation','Humanitarian operators','Government missions'],['Into-plane fuelling (litre)']],
- ['gpl','LPG & gas','🫙','LPG cylinder 12.5 kg','Household gas — refill and deposit, an alternative to wood fuel.','Cylinder','ARSAT price',['NF EN 589 standard targeted','Deposit &amp; refill at Tchadium','Compatible 28-30 mbar regulator'],'b2c','bottle',['Household cooking','Small catering'],['6 kg cylinder','12.5 kg cylinder']],
+ ['gpl','LPG & gas','🫙','LPG cylinder','Household gas — refill and deposit, an alternative to wood fuel.','Cylinder','ARSAT price',['NF EN 589 standard targeted','Deposit &amp; refill at Tchadium','Compatible 28-30 mbar regulator'],'b2c','bottle',['Household cooking','Small catering'],['6 kg cylinder','12.5 kg cylinder']],
  ['gpl','LPG & gas','🛢️','Bulk LPG','For institutions, industry and distribution networks.','Tonne · bulk','On quote',['NF EN 589 standard targeted','Dedicated tanker delivery','Framework supply contract'],'b2b','tank',['Institutions','Agri-food industry','Resale networks'],['Bulk tanker (tonne)']],
  ['lubrifiants','Lubricants','🛢️','EnerLub™ engine oil','Engine lubricant suited to the Sahelian climate — range qualified with partner laboratories.','5 L can / 200 L drum','On quote',['15W-40 · 20W-50 grades','Partner-laboratory qualification','Built for high heat and dust'],'mix','oil',['Light vehicles','Heavy trucks','Power generators'],['1 L can','5 L can','200 L drum']],
  ['lubrifiants','Lubricants','⚙️','EnerLub™ hydraulic oil','For construction machinery and industrial equipment.','200 L drum','On quote',['ISO VG 46 · 68 grades','Anti-wear and anti-foam','Partner-laboratory qualification'],'b2b','gear',['Construction &amp; mining','Industrial equipment','Farm machinery'],['200 L drum','Bulk (m³)']],
@@ -591,6 +591,37 @@ var P=[
  ['derives','Derivatives','🕯️','Paraffin waxes','Technical waxes and varied applications.','Carton / bulk','On quote',['52-62 °C melting points','Candle and industrial grade'],'b2b','candle',['Candles','Coating','Cosmetics industry'],['25 kg carton','Bulk (tonne)']]
 ];
 var cart={},cur='tous';
+// Keep both product dialogs keyboard-accessible and restore their opener.
+var activeDialog=null,dialogOpener=null,dialogBackground=[],dialogOverflow='';
+function dialogControls(dialog){return Array.from(dialog.querySelectorAll('button:not([disabled]),a[href],input:not([disabled]),select:not([disabled]),textarea:not([disabled]),[tabindex="0"]')).filter(function(el){return !el.hidden&&el.getClientRects().length;});}
+function openDialog(id){
+ if(activeDialog)closeDialog(activeDialog.id);
+ var dialog=document.getElementById(id);
+ dialogOpener=document.activeElement;activeDialog=dialog;
+ dialog.classList.add('on');
+ dialogBackground=Array.from(document.body.children).filter(function(el){return el!==dialog;}).map(function(el){var state={el:el,inert:el.inert};el.inert=true;return state;});
+ dialogOverflow=document.body.style.overflow;document.body.style.overflow='hidden';
+ var controls=dialogControls(dialog);if(controls.length)controls[0].focus();
+}
+function closeDialog(id){
+ var dialog=document.getElementById(id);dialog.classList.remove('on');
+ if(activeDialog!==dialog)return;
+ activeDialog=null;
+ dialogBackground.forEach(function(state){state.el.inert=state.inert;});dialogBackground=[];
+ document.body.style.overflow=dialogOverflow;
+ var opener=dialogOpener;dialogOpener=null;if(opener&&opener.isConnected)opener.focus();
+}
+document.addEventListener('keydown',function(e){
+ if(!activeDialog)return;
+ if(e.key==='Escape'){e.preventDefault();e.stopPropagation();closeDialog(activeDialog.id);return;}
+ if(e.key!=='Tab')return;
+ var controls=dialogControls(activeDialog);if(!controls.length){e.preventDefault();return;}
+ var first=controls[0],last=controls[controls.length-1];
+ if(!activeDialog.contains(document.activeElement)||(e.shiftKey&&document.activeElement===first)){e.preventDefault();last.focus();}
+ else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}
+},true);
+document.addEventListener('focusin',function(){if(activeDialog&&!activeDialog.contains(document.activeElement)){var controls=dialogControls(activeDialog);if(controls.length)controls[0].focus();}});
+
 var CATC={};CATS.forEach(function(c){CATC[c[0]]=c[2]});
 function fmtCat(k){var m={carburants:'var(--gold)',gpl:'var(--blue)',lubrifiants:'var(--green)',bitume:'var(--amber)',derives:'var(--rose)'};return m[k]||'var(--gold)';}
 function renderFilters(){document.getElementById('filters').innerHTML=CATS.map(function(c){return '<button class="chip'+(c[0]===cur?' on':'')+'" onclick="setCat(\''+c[0]+'\')">'+c[1]+'</button>';}).join('');}
@@ -606,8 +637,8 @@ function openDetail(id){var p=P[id];
   +'<div class="dm-k">Packaging &amp; pricing</div><ul class="dm-list">'+(p[11]||[]).map(function(s){return '<li>'+s+'</li>';}).join('')+'<li>Pricing: <b>'+p[6]+'</b></li></ul>'
   +'<div class="dm-note"><svg><use href="#i-doc"/></svg><span>Technical and safety data sheets provided on request at commercial launch — <b>company in formation</b>, target specifications.</span></div>'
   +'<button class="pc-add" style="width:100%;margin-top:16px" onclick="closeDetail();add('+id+')">Add to my quote request</button>';
- document.getElementById('dmodal').classList.add('on');}
-function closeDetail(){document.getElementById('dmodal').classList.remove('on');}
+ openDialog('dmodal');}
+function closeDetail(){closeDialog('dmodal');}
 function renderGrid(){
  var g=document.getElementById('grid');
  var items=P.filter(function(p){return (cur==='tous'||p[0]===cur)&&(seg==='tous'||p[8]==='mix'||p[8]===seg);});
@@ -625,7 +656,7 @@ function renderGrid(){
    +'<button class="pc-add" onclick="add('+id+')">Add</button></div></div>';
  }).join('');
  }function bump(id,d){var el=document.getElementById('q'+id);var v=Math.max(1,(parseInt(el.value,10)||1)+d);el.value=v;}
-function add(id){var el=document.getElementById('q'+id);var q=Math.max(1,(el?parseInt(el.value,10):1)||1);var pk=document.getElementById('pk'+id);var lbl=pk?pk.value:((P[id][11]||[])[0]||P[id][5]);if(cart[id]){cart[id].q+=q;cart[id].pack=lbl;}else{cart[id]={q:q,pack:lbl};}renderCart();
+function add(id){var el=document.getElementById('q'+id);var q=Math.max(1,(el?parseInt(el.value,10):1)||1);var pk=document.getElementById('pk'+id);var lbl=pk?pk.value:((P[id][11]||[])[0]||P[id][5]);var variant=(P[id][11]||[]).indexOf(lbl);var key=id+':'+variant;if(cart[key]){cart[key].q+=q;}else{cart[key]={id:id,q:q,pack:lbl};}renderCart();
  var o=document.getElementById('order');if(window.innerWidth<900)o.scrollIntoView({behavior:'smooth'});}
 function rm(id){delete cart[id];renderCart();}
 function renderCart(){
@@ -636,21 +667,21 @@ function renderCart(){
  document.getElementById('oTotal').textContent=tot;
  document.getElementById('oCta').disabled=n===0;
  if(n===0){ol.innerHTML='<li class="oempty">Your order is empty.<br>Add products from the catalogue.</li>';return;}
- ol.innerHTML=keys.map(function(k){var p=P[k];return '<li class="oitem"><div class="oi-main"><div class="oi-n">'+p[3]+'</div><div class="oi-q">'+cart[k].q+' × '+cart[k].pack+' · '+p[6]+'</div></div><button class="oi-rm" onclick="rm('+k+')" aria-label="Remove">×</button></li>';}).join('');
+ ol.innerHTML=keys.map(function(k){var p=P[cart[k].id];return '<li class="oitem"><div class="oi-main"><div class="oi-n">'+p[3]+'</div><div class="oi-q">'+cart[k].q+' × '+cart[k].pack+' · '+p[6]+'</div></div><button class="oi-rm" data-cart-key="'+k+'" onclick="rm(this.dataset.cartKey)" aria-label="Remove">×</button></li>';}).join('');
 }
 function checkout(){
  var keys=Object.keys(cart);if(!keys.length)return;
- document.getElementById('msum').innerHTML=keys.map(function(k){var p=P[k];return '<div><span>'+p[3]+'</span><span>'+cart[k].q+' × '+cart[k].pack+' · '+p[6]+'</span></div>';}).join('');
- var txt='Quote request — EnerTchad online shop\n\n'+keys.map(function(k){var p=P[k];return '\u2022 '+cart[k].q+' \u00d7 '+cart[k].pack+' \u2014 '+p[3]+' \u00b7 '+p[6];}).join('\n')+'\n\nPlease get back to me with a quote at the ARSAT price.';
+ document.getElementById('msum').innerHTML=keys.map(function(k){var p=P[cart[k].id];return '<div><span>'+p[3]+'</span><span>'+cart[k].q+' × '+cart[k].pack+' · '+p[6]+'</span></div>';}).join('');
+ var txt='Quote request — EnerTchad online shop\n\n'+keys.map(function(k){var p=P[cart[k].id];return '\u2022 '+cart[k].q+' \u00d7 '+cart[k].pack+' \u2014 '+p[3]+' \u00b7 '+p[6];}).join('\n')+'\n\nPlease get back to me with a quote at the ARSAT price.';
  window.__qtxt=txt;
  document.getElementById('mWa').href='https://wa.me/23599298696?text='+encodeURIComponent(txt);
  document.getElementById('mMail').href='mailto:contact@enertchad.com?subject='+encodeURIComponent('Quote request \u2014 Online shop')+'&body='+encodeURIComponent(txt);
  var cb=document.getElementById('mCopy');if(cb)cb.textContent='Copy';
- document.getElementById('modal').classList.add('on');
+ openDialog('modal');
 }
-function closeModal(){document.getElementById('modal').classList.remove('on');}
+function closeModal(){closeDialog('modal');}
 document.getElementById('modal').addEventListener('click',function(e){if(e.target===this)closeModal();});
-document.addEventListener('keydown',function(e){if(e.key==='Escape')closeModal();});
+document.getElementById('dmodal').addEventListener('click',function(e){if(e.target===this)closeDetail();});
 renderFilters();renderGrid();renderCart();
 </script>
 <button type="button" id="toTop" aria-label="Back to top" title="Top of page"><svg class="ttr" viewBox="0 0 52 52" aria-hidden="true"><circle class="ttt" cx="26" cy="26" r="24"/><circle class="ttp" cx="26" cy="26" r="24"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button><script type="speculationrules">{"prerender":[{"where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":"/*.pptx"}},{"not":{"href_matches":"/*.pdf"}},{"not":{"href_matches":"/*.md"}},{"not":{"selector_matches":"[target=_blank]"}}]},"eagerness":"moderate"}]}</script><div id="lum-veil" aria-hidden="true"></div><div id="lum-ctl" class="lum-ctl"><button id="lum-btn" class="lum-btn" type="button" aria-label="Adjust display brightness" aria-expanded="false" aria-controls="lum-panel"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.2M12 19.8V22M2 12h2.2M19.8 12H22M4.9 4.9l1.6 1.6M17.5 17.5l1.6 1.6M19.1 4.9l-1.6 1.6M6.5 17.5l-1.6 1.6"/></svg></button><div id="lum-panel" class="lum-panel" role="group" aria-label="Display brightness" hidden><p class="lum-h">Brightness</p><input id="lum-range" class="lum-range" type="range" min="80" max="130" step="2" value="100" aria-label="Brightness level (per cent)"><div class="lum-presets"><button type="button" data-l="88">Dark</button><button type="button" data-l="100">Standard</button><button type="button" data-l="116">Light</button></div></div></div><div id="nezProg" aria-hidden="true"></div><script src="/assets/chrome/u_cd226c00eb4b.js"></script>
