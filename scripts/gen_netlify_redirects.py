@@ -21,55 +21,28 @@ def main():
     vj = json.load(open('vercel.json', encoding='utf-8'))
     # These files are built from the existing editorial sources by finalize.mjs.
     # Exact host rules precede generic legacy redirects, including /clients.
-    lines = ["# Sous-sites : alias Netlify actifs avec HTTPS."]
-    commercial = [('/', 'index.html'), ('/en/', 'en/index.html'),
-                  ('/boutique', 'boutique.html'), ('/en/boutique', 'en/boutique.html')]
-    atlas = [('/', 'index.html'), ('/en/', 'en/index.html')]
+    # Espaces Clients et Atlas : servis sous enertchad.com (/boutique/, /atlas/).
+    # L hebergement OVH gratuit n accepte que enertchad.com et www ; les sous-domaines
+    # ouverts le 9 octobre 2026 redirigent donc vers les chemins du site principal.
+    lines = ["# Anciens sous-domaines -> chemins du site principal (301)."]
+    group = 'https://enertchad.com'
+    clients = [('/', '/boutique/clients'), ('/en/', '/boutique/en/clients'), ('/en', '/boutique/en/clients'),
+               ('/boutique', '/boutique/'), ('/boutique/', '/boutique/'),
+               ('/boutique.html', '/boutique/'), ('/en/boutique', '/boutique/en/'),
+               ('/en/boutique/', '/boutique/en/'), ('/en/boutique.html', '/boutique/en/')]
+    atlas = [('/', '/atlas/'), ('/en/', '/atlas-en'), ('/en', '/atlas-en')]
     for slug in ['carte', 'bassins-champs', 'infrastructures', 'cadre-sectoriel', 'sources']:
-        atlas.extend([('/' + slug, slug + '.html'), ('/en/' + slug, 'en/' + slug + '.html')])
-    for host, space, pages in [('clients', 'boutique', commercial), ('atlas', 'atlas', atlas)]:
-        origin = 'https://' + host + '.enertchad.com'
-        # TLS is required; aliases must be included in the site's certificate.
-        lines.append('http://' + host + '.enertchad.com/* ' + origin + '/:splat 301!')
-        for route, file in pages:
-            lines.append(origin + route + ' /_subsites/' + space + '/' + file + ' 200!')
-            if route.endswith('/') and route != '/':
-                lines.append(origin + route.rstrip('/') + ' /_subsites/' + space + '/' + file + ' 200!')
-            elif not route.endswith('/'):
-                lines.append(origin + route + '/ /_subsites/' + space + '/' + file + ' 200!')
-                lines.append(origin + route + '.html ' + origin + route + ' 301!')
-        for name in ['sitemap.xml', 'robots.txt']:
-            lines.append(origin + '/' + name + ' /_subsites/' + space + '/' + name + ' 200!')
-    # Retain old paths on the new hosts, then land on the matching local page.
-    for old, target in [('/clients', '/'), ('/clients-en', '/en/'),
-                        ('/aval/boutique', '/boutique'), ('/aval/boutique-en', '/en/boutique'),
-                        ('/boutique-en', '/en/boutique')]:
-        lines.append('https://clients.enertchad.com' + old + ' https://clients.enertchad.com' + target + ' 301!')
-    for old, target in [('/atlas', '/'), ('/atlas/', '/'), ('/atlas-en', '/en/')]:
-        lines.append('https://atlas.enertchad.com' + old + ' https://atlas.enertchad.com' + target + ' 301!')
-    for slug in ['carte', 'bassins-champs', 'infrastructures', 'cadre-sectoriel', 'sources']:
-        for suffix, prefix in [('', ''), ('-en', '/en')]:
-            lines.append('https://atlas.enertchad.com/atlas/' + slug + suffix + ' https://atlas.enertchad.com' + prefix + '/' + slug + ' 301!')
-    # Optional boutique alias always lands on the catalogue, never the group home.
-    lines.extend(['https://boutique.enertchad.com/en/* https://clients.enertchad.com/en/boutique 301!',
-                  'https://boutique.enertchad.com/* https://clients.enertchad.com/boutique 301!',
-                  'http://boutique.enertchad.com/* https://clients.enertchad.com/boutique 301!', ''])
-    # Only production group hosts migrate; PR previews keep their test routes.
-    migrations = [('/boutique/', '/aval/boutique', 'clients', '/boutique'),
-                  ('/boutique/en/', '/aval/boutique-en', 'clients', '/en/boutique'),
-                  ('/boutique/clients', '/clients', 'clients', '/'),
-                  ('/boutique/en/clients', '/clients-en', 'clients', '/en/'),
-                  ('/atlas/', '/atlas/index', 'atlas', '/'),
-                  ('/atlas-en', '/atlas-en', 'atlas', '/en/')]
-    for slug in ['carte', 'bassins-champs', 'infrastructures', 'cadre-sectoriel', 'sources']:
-        migrations.extend([('/atlas/' + slug, '/atlas/' + slug, 'atlas', '/' + slug),
-                           ('/atlas/' + slug + '-en', '/atlas/' + slug + '-en', 'atlas', '/en/' + slug)])
-    for route, source, host, local in migrations:
-        for old in sorted({route, route.rstrip('/'), source, source + '.html'}):
-            for group_host in ['enertchad.com', 'www.enertchad.com']:
-                lines.append('https://' + group_host + old + ' https://' + host + '.enertchad.com' + local + ' 301!')
-    for group_host in ['enertchad.com', 'www.enertchad.com']:
-        lines.append('https://' + group_host + '/boutique-en https://clients.enertchad.com/en/boutique 301!')
+        atlas.extend([('/' + slug, '/atlas/' + slug), ('/' + slug + '.html', '/atlas/' + slug),
+                      ('/en/' + slug, '/atlas/' + slug + '-en'), ('/en/' + slug + '.html', '/atlas/' + slug + '-en')])
+    for host, pages, fallback, fallback_en in [('clients', clients, '/boutique/clients', '/boutique/en/clients'),
+                                               ('atlas', atlas, '/atlas/', '/atlas-en'),
+                                               ('boutique', [], '/boutique/', '/boutique/en/')]:
+        for scheme in ['https', 'http']:
+            origin = scheme + '://' + host + '.enertchad.com'
+            for route, target in pages:
+                lines.append(origin + route + ' ' + group + target + ' 301!')
+            lines.append(origin + '/en/* ' + group + fallback_en + ' 301!')
+            lines.append(origin + '/* ' + group + fallback + ' 301!')
     lines.append('')
     lines.extend(HEAD)
     lines.append('/boutique/ /boutique/index.html 200!')
