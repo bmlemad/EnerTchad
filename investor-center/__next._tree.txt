@@ -1,4 +1,4 @@
 :HL["/_next/static/css/455030d59d38f589.css","style"]
 :HL["/_next/static/css/60278a5cc0189a43.css","style"]
 :HL["/assets/chrome/clarity-20261005.css","style"]
-0:{"tree":{"name":"","param":null,"prefetchHints":4176,"slots":{"children":{"name":"(strategic-fr)","param":null,"prefetchHints":4208,"slots":{"children":{"name":"investor-center","param":null,"prefetchHints":4192,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}}}},"staleTime":300,"buildId":"6-SKk3xFe5xBpLvKWaCTE"}
+0:{"tree":{"name":"","param":null,"prefetchHints":4176,"slots":{"children":{"name":"(strategic-fr)","param":null,"prefetchHints":4208,"slots":{"children":{"name":"investor-center","param":null,"prefetchHints":4192,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}}}},"staleTime":300,"buildId":"QEPpg6pMoK90MGaur9Oep"}
