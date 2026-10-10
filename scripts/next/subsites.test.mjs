@@ -30,22 +30,18 @@ for (const [space, pages] of [['boutique', commercialPages], ['atlas', atlasPage
     });
   }
 }
-test('sitemap migrates exact commercial URLs without corrupting English paths', () => {
-  const result = commercialSitemap('<urlset><loc>https://enertchad.com/clients</loc><loc>https://enertchad.com/clients-en</loc><loc>https://enertchad.com/aval/boutique</loc></urlset>');
-  assert(result.includes('<loc>https://clients.enertchad.com/</loc>'));
-  assert(result.includes('<loc>https://clients.enertchad.com/en/</loc>'));
-  assert(result.includes('<loc>https://clients.enertchad.com/boutique</loc>'));
+test('sitemap keeps the group URLs of the dedicated spaces', () => {
+  const sitemap = '<urlset><loc>https://enertchad.com/boutique/clients</loc><loc>https://enertchad.com/atlas/carte</loc></urlset>';
+  assert.equal(commercialSitemap(sitemap), sitemap);
 });
-test('host routing mounts exact pages before generic legacy redirects', async () => {
+test('former dedicated hosts redirect to the group paths before legacy rules', async () => {
   const rules = await readFile('_redirects', 'utf8');
-  for (const [host, space, pages] of [['clients', 'boutique', commercialPages], ['atlas', 'atlas', atlasPages]]) {
-    for (const p of pages) {
-      const file = p.local.endsWith('/') ? p.local.slice(1) + 'index.html' : p.local.slice(1) + '.html';
-      assert(rules.includes(`https://${host}.enertchad.com${p.local} /_subsites/${space}/${file} 200!`));
-    }
-  }
+  assert(rules.includes('https://clients.enertchad.com/ https://enertchad.com/boutique/clients 301!'));
+  assert(rules.includes('https://clients.enertchad.com/en/boutique https://enertchad.com/boutique/en/ 301!'));
+  assert(rules.includes('https://atlas.enertchad.com/carte https://enertchad.com/atlas/carte 301!'));
+  assert(rules.includes('https://atlas.enertchad.com/en/sources https://enertchad.com/atlas/sources-en 301!'));
+  assert(rules.includes('https://boutique.enertchad.com/* https://enertchad.com/boutique/ 301!'));
+  assert(!rules.includes('/_subsites/'));
+  assert(!/^https:\/\/(?:www\.)?enertchad\.com\/\S* https:\/\/(?:clients|atlas)\./m.test(rules));
   assert(rules.indexOf('https://clients.enertchad.com/') < rules.indexOf('/clients /boutique/clients'));
-  assert(rules.includes('https://boutique.enertchad.com/* https://clients.enertchad.com/boutique 301!'));
-  assert(rules.includes('https://enertchad.com/clients https://clients.enertchad.com/ 301!'));
-  assert(rules.includes('https://enertchad.com/atlas/ https://atlas.enertchad.com/ 301!'));
 });
