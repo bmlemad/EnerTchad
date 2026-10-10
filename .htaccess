@@ -11,912 +11,467 @@ RewriteBase /
 
 RewriteRule "(^|/)\.(?!well-known(?:/|$))" - [F,END]
 
+# Netlify Forms do not exist on Apache: contact POSTs go to the PHP receiver,
+# which mails the request or fails visibly (the page then offers email/WhatsApp).
+RewriteCond %{REQUEST_METHOD} =POST
+RewriteRule ^contact-received(?:-en|-ar)?(?:\.html)?/?$ contact-handler.php [END]
+
 # Host-specific routing and legacy redirects, in their existing order.
-# http://clients.enertchad.com/* https://clients.enertchad.com/:splat 301!
+# https://clients.enertchad.com/ https://enertchad.com/boutique/clients 301!
+RewriteCond %{HTTP_HOST} ^clients\.enertchad\.com(?::[0-9]+)?$ [NC]
+RewriteCond %{HTTPS} =on [OR]
+RewriteCond %{ENV:HTTPS} =on
+RewriteRule ^$ https://enertchad.com/boutique/clients [R=301,END,NE]
+
+# https://clients.enertchad.com/en/ https://enertchad.com/boutique/en/clients 301!
+RewriteCond %{HTTP_HOST} ^clients\.enertchad\.com(?::[0-9]+)?$ [NC]
+RewriteCond %{HTTPS} =on [OR]
+RewriteCond %{ENV:HTTPS} =on
+RewriteRule ^en/$ https://enertchad.com/boutique/en/clients [R=301,END,NE]
+
+# https://clients.enertchad.com/en https://enertchad.com/boutique/en/clients 301!
+RewriteCond %{HTTP_HOST} ^clients\.enertchad\.com(?::[0-9]+)?$ [NC]
+RewriteCond %{HTTPS} =on [OR]
+RewriteCond %{ENV:HTTPS} =on
+RewriteRule ^en$ https://enertchad.com/boutique/en/clients [R=301,END,NE]
+
+# https://clients.enertchad.com/boutique https://enertchad.com/boutique/ 301!
+RewriteCond %{HTTP_HOST} ^clients\.enertchad\.com(?::[0-9]+)?$ [NC]
+RewriteCond %{HTTPS} =on [OR]
+RewriteCond %{ENV:HTTPS} =on
+RewriteRule ^boutique$ https://enertchad.com/boutique/ [R=301,END,NE]
+
+# https://clients.enertchad.com/boutique/ https://enertchad.com/boutique/ 301!
+RewriteCond %{HTTP_HOST} ^clients\.enertchad\.com(?::[0-9]+)?$ [NC]
+RewriteCond %{HTTPS} =on [OR]
+RewriteCond %{ENV:HTTPS} =on
+RewriteRule ^boutique/$ https://enertchad.com/boutique/ [R=301,END,NE]
+
+# https://clients.enertchad.com/boutique.html https://enertchad.com/boutique/ 301!
+RewriteCond %{HTTP_HOST} ^clients\.enertchad\.com(?::[0-9]+)?$ [NC]
+RewriteCond %{HTTPS} =on [OR]
+RewriteCond %{ENV:HTTPS} =on
+RewriteRule ^boutique\.html$ https://enertchad.com/boutique/ [R=301,END,NE]
+
+# https://clients.enertchad.com/en/boutique https://enertchad.com/boutique/en/ 301!
+RewriteCond %{HTTP_HOST} ^clients\.enertchad\.com(?::[0-9]+)?$ [NC]
+RewriteCond %{HTTPS} =on [OR]
+RewriteCond %{ENV:HTTPS} =on
+RewriteRule ^en/boutique$ https://enertchad.com/boutique/en/ [R=301,END,NE]
+
+# https://clients.enertchad.com/en/boutique/ https://enertchad.com/boutique/en/ 301!
+RewriteCond %{HTTP_HOST} ^clients\.enertchad\.com(?::[0-9]+)?$ [NC]
+RewriteCond %{HTTPS} =on [OR]
+RewriteCond %{ENV:HTTPS} =on
+RewriteRule ^en/boutique/$ https://enertchad.com/boutique/en/ [R=301,END,NE]
+
+# https://clients.enertchad.com/en/boutique.html https://enertchad.com/boutique/en/ 301!
+RewriteCond %{HTTP_HOST} ^clients\.enertchad\.com(?::[0-9]+)?$ [NC]
+RewriteCond %{HTTPS} =on [OR]
+RewriteCond %{ENV:HTTPS} =on
+RewriteRule ^en/boutique\.html$ https://enertchad.com/boutique/en/ [R=301,END,NE]
+
+# https://clients.enertchad.com/en/* https://enertchad.com/boutique/en/clients 301!
+RewriteCond %{HTTP_HOST} ^clients\.enertchad\.com(?::[0-9]+)?$ [NC]
+RewriteCond %{HTTPS} =on [OR]
+RewriteCond %{ENV:HTTPS} =on
+RewriteRule ^en/(.*)$ https://enertchad.com/boutique/en/clients [R=301,END,NE]
+
+# https://clients.enertchad.com/* https://enertchad.com/boutique/clients 301!
+RewriteCond %{HTTP_HOST} ^clients\.enertchad\.com(?::[0-9]+)?$ [NC]
+RewriteCond %{HTTPS} =on [OR]
+RewriteCond %{ENV:HTTPS} =on
+RewriteRule ^(.*)$ https://enertchad.com/boutique/clients [R=301,END,NE]
+
+# http://clients.enertchad.com/ https://enertchad.com/boutique/clients 301!
 RewriteCond %{HTTP_HOST} ^clients\.enertchad\.com(?::[0-9]+)?$ [NC]
 RewriteCond %{HTTPS} !=on
 RewriteCond %{ENV:HTTPS} !=on
-RewriteRule ^(.*)$ https://clients.enertchad.com/$1 [R=301,END,NE]
+RewriteRule ^$ https://enertchad.com/boutique/clients [R=301,END,NE]
 
-# https://clients.enertchad.com/ /_subsites/boutique/index.html 200!
+# http://clients.enertchad.com/en/ https://enertchad.com/boutique/en/clients 301!
 RewriteCond %{HTTP_HOST} ^clients\.enertchad\.com(?::[0-9]+)?$ [NC]
+RewriteCond %{HTTPS} !=on
+RewriteCond %{ENV:HTTPS} !=on
+RewriteRule ^en/$ https://enertchad.com/boutique/en/clients [R=301,END,NE]
+
+# http://clients.enertchad.com/en https://enertchad.com/boutique/en/clients 301!
+RewriteCond %{HTTP_HOST} ^clients\.enertchad\.com(?::[0-9]+)?$ [NC]
+RewriteCond %{HTTPS} !=on
+RewriteCond %{ENV:HTTPS} !=on
+RewriteRule ^en$ https://enertchad.com/boutique/en/clients [R=301,END,NE]
+
+# http://clients.enertchad.com/boutique https://enertchad.com/boutique/ 301!
+RewriteCond %{HTTP_HOST} ^clients\.enertchad\.com(?::[0-9]+)?$ [NC]
+RewriteCond %{HTTPS} !=on
+RewriteCond %{ENV:HTTPS} !=on
+RewriteRule ^boutique$ https://enertchad.com/boutique/ [R=301,END,NE]
+
+# http://clients.enertchad.com/boutique/ https://enertchad.com/boutique/ 301!
+RewriteCond %{HTTP_HOST} ^clients\.enertchad\.com(?::[0-9]+)?$ [NC]
+RewriteCond %{HTTPS} !=on
+RewriteCond %{ENV:HTTPS} !=on
+RewriteRule ^boutique/$ https://enertchad.com/boutique/ [R=301,END,NE]
+
+# http://clients.enertchad.com/boutique.html https://enertchad.com/boutique/ 301!
+RewriteCond %{HTTP_HOST} ^clients\.enertchad\.com(?::[0-9]+)?$ [NC]
+RewriteCond %{HTTPS} !=on
+RewriteCond %{ENV:HTTPS} !=on
+RewriteRule ^boutique\.html$ https://enertchad.com/boutique/ [R=301,END,NE]
+
+# http://clients.enertchad.com/en/boutique https://enertchad.com/boutique/en/ 301!
+RewriteCond %{HTTP_HOST} ^clients\.enertchad\.com(?::[0-9]+)?$ [NC]
+RewriteCond %{HTTPS} !=on
+RewriteCond %{ENV:HTTPS} !=on
+RewriteRule ^en/boutique$ https://enertchad.com/boutique/en/ [R=301,END,NE]
+
+# http://clients.enertchad.com/en/boutique/ https://enertchad.com/boutique/en/ 301!
+RewriteCond %{HTTP_HOST} ^clients\.enertchad\.com(?::[0-9]+)?$ [NC]
+RewriteCond %{HTTPS} !=on
+RewriteCond %{ENV:HTTPS} !=on
+RewriteRule ^en/boutique/$ https://enertchad.com/boutique/en/ [R=301,END,NE]
+
+# http://clients.enertchad.com/en/boutique.html https://enertchad.com/boutique/en/ 301!
+RewriteCond %{HTTP_HOST} ^clients\.enertchad\.com(?::[0-9]+)?$ [NC]
+RewriteCond %{HTTPS} !=on
+RewriteCond %{ENV:HTTPS} !=on
+RewriteRule ^en/boutique\.html$ https://enertchad.com/boutique/en/ [R=301,END,NE]
+
+# http://clients.enertchad.com/en/* https://enertchad.com/boutique/en/clients 301!
+RewriteCond %{HTTP_HOST} ^clients\.enertchad\.com(?::[0-9]+)?$ [NC]
+RewriteCond %{HTTPS} !=on
+RewriteCond %{ENV:HTTPS} !=on
+RewriteRule ^en/(.*)$ https://enertchad.com/boutique/en/clients [R=301,END,NE]
+
+# http://clients.enertchad.com/* https://enertchad.com/boutique/clients 301!
+RewriteCond %{HTTP_HOST} ^clients\.enertchad\.com(?::[0-9]+)?$ [NC]
+RewriteCond %{HTTPS} !=on
+RewriteCond %{ENV:HTTPS} !=on
+RewriteRule ^(.*)$ https://enertchad.com/boutique/clients [R=301,END,NE]
+
+# https://atlas.enertchad.com/ https://enertchad.com/atlas/ 301!
+RewriteCond %{HTTP_HOST} ^atlas\.enertchad\.com(?::[0-9]+)?$ [NC]
 RewriteCond %{HTTPS} =on [OR]
 RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^$ _subsites/boutique/index.html [END]
+RewriteRule ^$ https://enertchad.com/atlas/ [R=301,END,NE]
 
-# https://clients.enertchad.com/en/ /_subsites/boutique/en/index.html 200!
-RewriteCond %{HTTP_HOST} ^clients\.enertchad\.com(?::[0-9]+)?$ [NC]
+# https://atlas.enertchad.com/en/ https://enertchad.com/atlas-en 301!
+RewriteCond %{HTTP_HOST} ^atlas\.enertchad\.com(?::[0-9]+)?$ [NC]
 RewriteCond %{HTTPS} =on [OR]
 RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^en/$ _subsites/boutique/en/index.html [END]
+RewriteRule ^en/$ https://enertchad.com/atlas-en [R=301,END,NE]
 
-# https://clients.enertchad.com/en /_subsites/boutique/en/index.html 200!
-RewriteCond %{HTTP_HOST} ^clients\.enertchad\.com(?::[0-9]+)?$ [NC]
+# https://atlas.enertchad.com/en https://enertchad.com/atlas-en 301!
+RewriteCond %{HTTP_HOST} ^atlas\.enertchad\.com(?::[0-9]+)?$ [NC]
 RewriteCond %{HTTPS} =on [OR]
 RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^en$ _subsites/boutique/en/index.html [END]
+RewriteRule ^en$ https://enertchad.com/atlas-en [R=301,END,NE]
 
-# https://clients.enertchad.com/boutique /_subsites/boutique/boutique.html 200!
-RewriteCond %{HTTP_HOST} ^clients\.enertchad\.com(?::[0-9]+)?$ [NC]
+# https://atlas.enertchad.com/carte https://enertchad.com/atlas/carte 301!
+RewriteCond %{HTTP_HOST} ^atlas\.enertchad\.com(?::[0-9]+)?$ [NC]
 RewriteCond %{HTTPS} =on [OR]
 RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^boutique$ _subsites/boutique/boutique.html [END]
+RewriteRule ^carte$ https://enertchad.com/atlas/carte [R=301,END,NE]
 
-# https://clients.enertchad.com/boutique/ /_subsites/boutique/boutique.html 200!
-RewriteCond %{HTTP_HOST} ^clients\.enertchad\.com(?::[0-9]+)?$ [NC]
+# https://atlas.enertchad.com/carte.html https://enertchad.com/atlas/carte 301!
+RewriteCond %{HTTP_HOST} ^atlas\.enertchad\.com(?::[0-9]+)?$ [NC]
 RewriteCond %{HTTPS} =on [OR]
 RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^boutique/$ _subsites/boutique/boutique.html [END]
+RewriteRule ^carte\.html$ https://enertchad.com/atlas/carte [R=301,END,NE]
 
-# https://clients.enertchad.com/boutique.html https://clients.enertchad.com/boutique 301!
-RewriteCond %{HTTP_HOST} ^clients\.enertchad\.com(?::[0-9]+)?$ [NC]
+# https://atlas.enertchad.com/en/carte https://enertchad.com/atlas/carte-en 301!
+RewriteCond %{HTTP_HOST} ^atlas\.enertchad\.com(?::[0-9]+)?$ [NC]
 RewriteCond %{HTTPS} =on [OR]
 RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^boutique\.html$ https://clients.enertchad.com/boutique [R=301,END,NE]
+RewriteRule ^en/carte$ https://enertchad.com/atlas/carte-en [R=301,END,NE]
 
-# https://clients.enertchad.com/en/boutique /_subsites/boutique/en/boutique.html 200!
-RewriteCond %{HTTP_HOST} ^clients\.enertchad\.com(?::[0-9]+)?$ [NC]
+# https://atlas.enertchad.com/en/carte.html https://enertchad.com/atlas/carte-en 301!
+RewriteCond %{HTTP_HOST} ^atlas\.enertchad\.com(?::[0-9]+)?$ [NC]
 RewriteCond %{HTTPS} =on [OR]
 RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^en/boutique$ _subsites/boutique/en/boutique.html [END]
+RewriteRule ^en/carte\.html$ https://enertchad.com/atlas/carte-en [R=301,END,NE]
 
-# https://clients.enertchad.com/en/boutique/ /_subsites/boutique/en/boutique.html 200!
-RewriteCond %{HTTP_HOST} ^clients\.enertchad\.com(?::[0-9]+)?$ [NC]
+# https://atlas.enertchad.com/bassins-champs https://enertchad.com/atlas/bassins-champs 301!
+RewriteCond %{HTTP_HOST} ^atlas\.enertchad\.com(?::[0-9]+)?$ [NC]
 RewriteCond %{HTTPS} =on [OR]
 RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^en/boutique/$ _subsites/boutique/en/boutique.html [END]
+RewriteRule ^bassins\-champs$ https://enertchad.com/atlas/bassins-champs [R=301,END,NE]
 
-# https://clients.enertchad.com/en/boutique.html https://clients.enertchad.com/en/boutique 301!
-RewriteCond %{HTTP_HOST} ^clients\.enertchad\.com(?::[0-9]+)?$ [NC]
+# https://atlas.enertchad.com/bassins-champs.html https://enertchad.com/atlas/bassins-champs 301!
+RewriteCond %{HTTP_HOST} ^atlas\.enertchad\.com(?::[0-9]+)?$ [NC]
 RewriteCond %{HTTPS} =on [OR]
 RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^en/boutique\.html$ https://clients.enertchad.com/en/boutique [R=301,END,NE]
+RewriteRule ^bassins\-champs\.html$ https://enertchad.com/atlas/bassins-champs [R=301,END,NE]
 
-# https://clients.enertchad.com/sitemap.xml /_subsites/boutique/sitemap.xml 200!
-RewriteCond %{HTTP_HOST} ^clients\.enertchad\.com(?::[0-9]+)?$ [NC]
+# https://atlas.enertchad.com/en/bassins-champs https://enertchad.com/atlas/bassins-champs-en 301!
+RewriteCond %{HTTP_HOST} ^atlas\.enertchad\.com(?::[0-9]+)?$ [NC]
 RewriteCond %{HTTPS} =on [OR]
 RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^sitemap\.xml$ _subsites/boutique/sitemap.xml [END]
+RewriteRule ^en/bassins\-champs$ https://enertchad.com/atlas/bassins-champs-en [R=301,END,NE]
 
-# https://clients.enertchad.com/robots.txt /_subsites/boutique/robots.txt 200!
-RewriteCond %{HTTP_HOST} ^clients\.enertchad\.com(?::[0-9]+)?$ [NC]
+# https://atlas.enertchad.com/en/bassins-champs.html https://enertchad.com/atlas/bassins-champs-en 301!
+RewriteCond %{HTTP_HOST} ^atlas\.enertchad\.com(?::[0-9]+)?$ [NC]
 RewriteCond %{HTTPS} =on [OR]
 RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^robots\.txt$ _subsites/boutique/robots.txt [END]
+RewriteRule ^en/bassins\-champs\.html$ https://enertchad.com/atlas/bassins-champs-en [R=301,END,NE]
 
-# http://atlas.enertchad.com/* https://atlas.enertchad.com/:splat 301!
+# https://atlas.enertchad.com/infrastructures https://enertchad.com/atlas/infrastructures 301!
+RewriteCond %{HTTP_HOST} ^atlas\.enertchad\.com(?::[0-9]+)?$ [NC]
+RewriteCond %{HTTPS} =on [OR]
+RewriteCond %{ENV:HTTPS} =on
+RewriteRule ^infrastructures$ https://enertchad.com/atlas/infrastructures [R=301,END,NE]
+
+# https://atlas.enertchad.com/infrastructures.html https://enertchad.com/atlas/infrastructures 301!
+RewriteCond %{HTTP_HOST} ^atlas\.enertchad\.com(?::[0-9]+)?$ [NC]
+RewriteCond %{HTTPS} =on [OR]
+RewriteCond %{ENV:HTTPS} =on
+RewriteRule ^infrastructures\.html$ https://enertchad.com/atlas/infrastructures [R=301,END,NE]
+
+# https://atlas.enertchad.com/en/infrastructures https://enertchad.com/atlas/infrastructures-en 301!
+RewriteCond %{HTTP_HOST} ^atlas\.enertchad\.com(?::[0-9]+)?$ [NC]
+RewriteCond %{HTTPS} =on [OR]
+RewriteCond %{ENV:HTTPS} =on
+RewriteRule ^en/infrastructures$ https://enertchad.com/atlas/infrastructures-en [R=301,END,NE]
+
+# https://atlas.enertchad.com/en/infrastructures.html https://enertchad.com/atlas/infrastructures-en 301!
+RewriteCond %{HTTP_HOST} ^atlas\.enertchad\.com(?::[0-9]+)?$ [NC]
+RewriteCond %{HTTPS} =on [OR]
+RewriteCond %{ENV:HTTPS} =on
+RewriteRule ^en/infrastructures\.html$ https://enertchad.com/atlas/infrastructures-en [R=301,END,NE]
+
+# https://atlas.enertchad.com/cadre-sectoriel https://enertchad.com/atlas/cadre-sectoriel 301!
+RewriteCond %{HTTP_HOST} ^atlas\.enertchad\.com(?::[0-9]+)?$ [NC]
+RewriteCond %{HTTPS} =on [OR]
+RewriteCond %{ENV:HTTPS} =on
+RewriteRule ^cadre\-sectoriel$ https://enertchad.com/atlas/cadre-sectoriel [R=301,END,NE]
+
+# https://atlas.enertchad.com/cadre-sectoriel.html https://enertchad.com/atlas/cadre-sectoriel 301!
+RewriteCond %{HTTP_HOST} ^atlas\.enertchad\.com(?::[0-9]+)?$ [NC]
+RewriteCond %{HTTPS} =on [OR]
+RewriteCond %{ENV:HTTPS} =on
+RewriteRule ^cadre\-sectoriel\.html$ https://enertchad.com/atlas/cadre-sectoriel [R=301,END,NE]
+
+# https://atlas.enertchad.com/en/cadre-sectoriel https://enertchad.com/atlas/cadre-sectoriel-en 301!
+RewriteCond %{HTTP_HOST} ^atlas\.enertchad\.com(?::[0-9]+)?$ [NC]
+RewriteCond %{HTTPS} =on [OR]
+RewriteCond %{ENV:HTTPS} =on
+RewriteRule ^en/cadre\-sectoriel$ https://enertchad.com/atlas/cadre-sectoriel-en [R=301,END,NE]
+
+# https://atlas.enertchad.com/en/cadre-sectoriel.html https://enertchad.com/atlas/cadre-sectoriel-en 301!
+RewriteCond %{HTTP_HOST} ^atlas\.enertchad\.com(?::[0-9]+)?$ [NC]
+RewriteCond %{HTTPS} =on [OR]
+RewriteCond %{ENV:HTTPS} =on
+RewriteRule ^en/cadre\-sectoriel\.html$ https://enertchad.com/atlas/cadre-sectoriel-en [R=301,END,NE]
+
+# https://atlas.enertchad.com/sources https://enertchad.com/atlas/sources 301!
+RewriteCond %{HTTP_HOST} ^atlas\.enertchad\.com(?::[0-9]+)?$ [NC]
+RewriteCond %{HTTPS} =on [OR]
+RewriteCond %{ENV:HTTPS} =on
+RewriteRule ^sources$ https://enertchad.com/atlas/sources [R=301,END,NE]
+
+# https://atlas.enertchad.com/sources.html https://enertchad.com/atlas/sources 301!
+RewriteCond %{HTTP_HOST} ^atlas\.enertchad\.com(?::[0-9]+)?$ [NC]
+RewriteCond %{HTTPS} =on [OR]
+RewriteCond %{ENV:HTTPS} =on
+RewriteRule ^sources\.html$ https://enertchad.com/atlas/sources [R=301,END,NE]
+
+# https://atlas.enertchad.com/en/sources https://enertchad.com/atlas/sources-en 301!
+RewriteCond %{HTTP_HOST} ^atlas\.enertchad\.com(?::[0-9]+)?$ [NC]
+RewriteCond %{HTTPS} =on [OR]
+RewriteCond %{ENV:HTTPS} =on
+RewriteRule ^en/sources$ https://enertchad.com/atlas/sources-en [R=301,END,NE]
+
+# https://atlas.enertchad.com/en/sources.html https://enertchad.com/atlas/sources-en 301!
+RewriteCond %{HTTP_HOST} ^atlas\.enertchad\.com(?::[0-9]+)?$ [NC]
+RewriteCond %{HTTPS} =on [OR]
+RewriteCond %{ENV:HTTPS} =on
+RewriteRule ^en/sources\.html$ https://enertchad.com/atlas/sources-en [R=301,END,NE]
+
+# https://atlas.enertchad.com/en/* https://enertchad.com/atlas-en 301!
+RewriteCond %{HTTP_HOST} ^atlas\.enertchad\.com(?::[0-9]+)?$ [NC]
+RewriteCond %{HTTPS} =on [OR]
+RewriteCond %{ENV:HTTPS} =on
+RewriteRule ^en/(.*)$ https://enertchad.com/atlas-en [R=301,END,NE]
+
+# https://atlas.enertchad.com/* https://enertchad.com/atlas/ 301!
+RewriteCond %{HTTP_HOST} ^atlas\.enertchad\.com(?::[0-9]+)?$ [NC]
+RewriteCond %{HTTPS} =on [OR]
+RewriteCond %{ENV:HTTPS} =on
+RewriteRule ^(.*)$ https://enertchad.com/atlas/ [R=301,END,NE]
+
+# http://atlas.enertchad.com/ https://enertchad.com/atlas/ 301!
 RewriteCond %{HTTP_HOST} ^atlas\.enertchad\.com(?::[0-9]+)?$ [NC]
 RewriteCond %{HTTPS} !=on
 RewriteCond %{ENV:HTTPS} !=on
-RewriteRule ^(.*)$ https://atlas.enertchad.com/$1 [R=301,END,NE]
+RewriteRule ^$ https://enertchad.com/atlas/ [R=301,END,NE]
 
-# https://atlas.enertchad.com/ /_subsites/atlas/index.html 200!
+# http://atlas.enertchad.com/en/ https://enertchad.com/atlas-en 301!
 RewriteCond %{HTTP_HOST} ^atlas\.enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^$ _subsites/atlas/index.html [END]
+RewriteCond %{HTTPS} !=on
+RewriteCond %{ENV:HTTPS} !=on
+RewriteRule ^en/$ https://enertchad.com/atlas-en [R=301,END,NE]
 
-# https://atlas.enertchad.com/en/ /_subsites/atlas/en/index.html 200!
+# http://atlas.enertchad.com/en https://enertchad.com/atlas-en 301!
 RewriteCond %{HTTP_HOST} ^atlas\.enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^en/$ _subsites/atlas/en/index.html [END]
+RewriteCond %{HTTPS} !=on
+RewriteCond %{ENV:HTTPS} !=on
+RewriteRule ^en$ https://enertchad.com/atlas-en [R=301,END,NE]
 
-# https://atlas.enertchad.com/en /_subsites/atlas/en/index.html 200!
+# http://atlas.enertchad.com/carte https://enertchad.com/atlas/carte 301!
 RewriteCond %{HTTP_HOST} ^atlas\.enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^en$ _subsites/atlas/en/index.html [END]
+RewriteCond %{HTTPS} !=on
+RewriteCond %{ENV:HTTPS} !=on
+RewriteRule ^carte$ https://enertchad.com/atlas/carte [R=301,END,NE]
 
-# https://atlas.enertchad.com/carte /_subsites/atlas/carte.html 200!
+# http://atlas.enertchad.com/carte.html https://enertchad.com/atlas/carte 301!
 RewriteCond %{HTTP_HOST} ^atlas\.enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^carte$ _subsites/atlas/carte.html [END]
+RewriteCond %{HTTPS} !=on
+RewriteCond %{ENV:HTTPS} !=on
+RewriteRule ^carte\.html$ https://enertchad.com/atlas/carte [R=301,END,NE]
 
-# https://atlas.enertchad.com/carte/ /_subsites/atlas/carte.html 200!
+# http://atlas.enertchad.com/en/carte https://enertchad.com/atlas/carte-en 301!
 RewriteCond %{HTTP_HOST} ^atlas\.enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^carte/$ _subsites/atlas/carte.html [END]
+RewriteCond %{HTTPS} !=on
+RewriteCond %{ENV:HTTPS} !=on
+RewriteRule ^en/carte$ https://enertchad.com/atlas/carte-en [R=301,END,NE]
 
-# https://atlas.enertchad.com/carte.html https://atlas.enertchad.com/carte 301!
+# http://atlas.enertchad.com/en/carte.html https://enertchad.com/atlas/carte-en 301!
 RewriteCond %{HTTP_HOST} ^atlas\.enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^carte\.html$ https://atlas.enertchad.com/carte [R=301,END,NE]
+RewriteCond %{HTTPS} !=on
+RewriteCond %{ENV:HTTPS} !=on
+RewriteRule ^en/carte\.html$ https://enertchad.com/atlas/carte-en [R=301,END,NE]
 
-# https://atlas.enertchad.com/en/carte /_subsites/atlas/en/carte.html 200!
+# http://atlas.enertchad.com/bassins-champs https://enertchad.com/atlas/bassins-champs 301!
 RewriteCond %{HTTP_HOST} ^atlas\.enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^en/carte$ _subsites/atlas/en/carte.html [END]
+RewriteCond %{HTTPS} !=on
+RewriteCond %{ENV:HTTPS} !=on
+RewriteRule ^bassins\-champs$ https://enertchad.com/atlas/bassins-champs [R=301,END,NE]
 
-# https://atlas.enertchad.com/en/carte/ /_subsites/atlas/en/carte.html 200!
+# http://atlas.enertchad.com/bassins-champs.html https://enertchad.com/atlas/bassins-champs 301!
 RewriteCond %{HTTP_HOST} ^atlas\.enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^en/carte/$ _subsites/atlas/en/carte.html [END]
+RewriteCond %{HTTPS} !=on
+RewriteCond %{ENV:HTTPS} !=on
+RewriteRule ^bassins\-champs\.html$ https://enertchad.com/atlas/bassins-champs [R=301,END,NE]
 
-# https://atlas.enertchad.com/en/carte.html https://atlas.enertchad.com/en/carte 301!
+# http://atlas.enertchad.com/en/bassins-champs https://enertchad.com/atlas/bassins-champs-en 301!
 RewriteCond %{HTTP_HOST} ^atlas\.enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^en/carte\.html$ https://atlas.enertchad.com/en/carte [R=301,END,NE]
+RewriteCond %{HTTPS} !=on
+RewriteCond %{ENV:HTTPS} !=on
+RewriteRule ^en/bassins\-champs$ https://enertchad.com/atlas/bassins-champs-en [R=301,END,NE]
 
-# https://atlas.enertchad.com/bassins-champs /_subsites/atlas/bassins-champs.html 200!
+# http://atlas.enertchad.com/en/bassins-champs.html https://enertchad.com/atlas/bassins-champs-en 301!
 RewriteCond %{HTTP_HOST} ^atlas\.enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^bassins\-champs$ _subsites/atlas/bassins-champs.html [END]
+RewriteCond %{HTTPS} !=on
+RewriteCond %{ENV:HTTPS} !=on
+RewriteRule ^en/bassins\-champs\.html$ https://enertchad.com/atlas/bassins-champs-en [R=301,END,NE]
 
-# https://atlas.enertchad.com/bassins-champs/ /_subsites/atlas/bassins-champs.html 200!
+# http://atlas.enertchad.com/infrastructures https://enertchad.com/atlas/infrastructures 301!
 RewriteCond %{HTTP_HOST} ^atlas\.enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^bassins\-champs/$ _subsites/atlas/bassins-champs.html [END]
+RewriteCond %{HTTPS} !=on
+RewriteCond %{ENV:HTTPS} !=on
+RewriteRule ^infrastructures$ https://enertchad.com/atlas/infrastructures [R=301,END,NE]
 
-# https://atlas.enertchad.com/bassins-champs.html https://atlas.enertchad.com/bassins-champs 301!
+# http://atlas.enertchad.com/infrastructures.html https://enertchad.com/atlas/infrastructures 301!
 RewriteCond %{HTTP_HOST} ^atlas\.enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^bassins\-champs\.html$ https://atlas.enertchad.com/bassins-champs [R=301,END,NE]
+RewriteCond %{HTTPS} !=on
+RewriteCond %{ENV:HTTPS} !=on
+RewriteRule ^infrastructures\.html$ https://enertchad.com/atlas/infrastructures [R=301,END,NE]
 
-# https://atlas.enertchad.com/en/bassins-champs /_subsites/atlas/en/bassins-champs.html 200!
+# http://atlas.enertchad.com/en/infrastructures https://enertchad.com/atlas/infrastructures-en 301!
 RewriteCond %{HTTP_HOST} ^atlas\.enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^en/bassins\-champs$ _subsites/atlas/en/bassins-champs.html [END]
+RewriteCond %{HTTPS} !=on
+RewriteCond %{ENV:HTTPS} !=on
+RewriteRule ^en/infrastructures$ https://enertchad.com/atlas/infrastructures-en [R=301,END,NE]
 
-# https://atlas.enertchad.com/en/bassins-champs/ /_subsites/atlas/en/bassins-champs.html 200!
+# http://atlas.enertchad.com/en/infrastructures.html https://enertchad.com/atlas/infrastructures-en 301!
 RewriteCond %{HTTP_HOST} ^atlas\.enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^en/bassins\-champs/$ _subsites/atlas/en/bassins-champs.html [END]
+RewriteCond %{HTTPS} !=on
+RewriteCond %{ENV:HTTPS} !=on
+RewriteRule ^en/infrastructures\.html$ https://enertchad.com/atlas/infrastructures-en [R=301,END,NE]
 
-# https://atlas.enertchad.com/en/bassins-champs.html https://atlas.enertchad.com/en/bassins-champs 301!
+# http://atlas.enertchad.com/cadre-sectoriel https://enertchad.com/atlas/cadre-sectoriel 301!
 RewriteCond %{HTTP_HOST} ^atlas\.enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^en/bassins\-champs\.html$ https://atlas.enertchad.com/en/bassins-champs [R=301,END,NE]
+RewriteCond %{HTTPS} !=on
+RewriteCond %{ENV:HTTPS} !=on
+RewriteRule ^cadre\-sectoriel$ https://enertchad.com/atlas/cadre-sectoriel [R=301,END,NE]
 
-# https://atlas.enertchad.com/infrastructures /_subsites/atlas/infrastructures.html 200!
+# http://atlas.enertchad.com/cadre-sectoriel.html https://enertchad.com/atlas/cadre-sectoriel 301!
 RewriteCond %{HTTP_HOST} ^atlas\.enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^infrastructures$ _subsites/atlas/infrastructures.html [END]
+RewriteCond %{HTTPS} !=on
+RewriteCond %{ENV:HTTPS} !=on
+RewriteRule ^cadre\-sectoriel\.html$ https://enertchad.com/atlas/cadre-sectoriel [R=301,END,NE]
 
-# https://atlas.enertchad.com/infrastructures/ /_subsites/atlas/infrastructures.html 200!
+# http://atlas.enertchad.com/en/cadre-sectoriel https://enertchad.com/atlas/cadre-sectoriel-en 301!
 RewriteCond %{HTTP_HOST} ^atlas\.enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^infrastructures/$ _subsites/atlas/infrastructures.html [END]
+RewriteCond %{HTTPS} !=on
+RewriteCond %{ENV:HTTPS} !=on
+RewriteRule ^en/cadre\-sectoriel$ https://enertchad.com/atlas/cadre-sectoriel-en [R=301,END,NE]
 
-# https://atlas.enertchad.com/infrastructures.html https://atlas.enertchad.com/infrastructures 301!
+# http://atlas.enertchad.com/en/cadre-sectoriel.html https://enertchad.com/atlas/cadre-sectoriel-en 301!
 RewriteCond %{HTTP_HOST} ^atlas\.enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^infrastructures\.html$ https://atlas.enertchad.com/infrastructures [R=301,END,NE]
+RewriteCond %{HTTPS} !=on
+RewriteCond %{ENV:HTTPS} !=on
+RewriteRule ^en/cadre\-sectoriel\.html$ https://enertchad.com/atlas/cadre-sectoriel-en [R=301,END,NE]
 
-# https://atlas.enertchad.com/en/infrastructures /_subsites/atlas/en/infrastructures.html 200!
+# http://atlas.enertchad.com/sources https://enertchad.com/atlas/sources 301!
 RewriteCond %{HTTP_HOST} ^atlas\.enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^en/infrastructures$ _subsites/atlas/en/infrastructures.html [END]
+RewriteCond %{HTTPS} !=on
+RewriteCond %{ENV:HTTPS} !=on
+RewriteRule ^sources$ https://enertchad.com/atlas/sources [R=301,END,NE]
 
-# https://atlas.enertchad.com/en/infrastructures/ /_subsites/atlas/en/infrastructures.html 200!
+# http://atlas.enertchad.com/sources.html https://enertchad.com/atlas/sources 301!
 RewriteCond %{HTTP_HOST} ^atlas\.enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^en/infrastructures/$ _subsites/atlas/en/infrastructures.html [END]
+RewriteCond %{HTTPS} !=on
+RewriteCond %{ENV:HTTPS} !=on
+RewriteRule ^sources\.html$ https://enertchad.com/atlas/sources [R=301,END,NE]
 
-# https://atlas.enertchad.com/en/infrastructures.html https://atlas.enertchad.com/en/infrastructures 301!
+# http://atlas.enertchad.com/en/sources https://enertchad.com/atlas/sources-en 301!
 RewriteCond %{HTTP_HOST} ^atlas\.enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^en/infrastructures\.html$ https://atlas.enertchad.com/en/infrastructures [R=301,END,NE]
+RewriteCond %{HTTPS} !=on
+RewriteCond %{ENV:HTTPS} !=on
+RewriteRule ^en/sources$ https://enertchad.com/atlas/sources-en [R=301,END,NE]
 
-# https://atlas.enertchad.com/cadre-sectoriel /_subsites/atlas/cadre-sectoriel.html 200!
+# http://atlas.enertchad.com/en/sources.html https://enertchad.com/atlas/sources-en 301!
 RewriteCond %{HTTP_HOST} ^atlas\.enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^cadre\-sectoriel$ _subsites/atlas/cadre-sectoriel.html [END]
+RewriteCond %{HTTPS} !=on
+RewriteCond %{ENV:HTTPS} !=on
+RewriteRule ^en/sources\.html$ https://enertchad.com/atlas/sources-en [R=301,END,NE]
 
-# https://atlas.enertchad.com/cadre-sectoriel/ /_subsites/atlas/cadre-sectoriel.html 200!
+# http://atlas.enertchad.com/en/* https://enertchad.com/atlas-en 301!
 RewriteCond %{HTTP_HOST} ^atlas\.enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^cadre\-sectoriel/$ _subsites/atlas/cadre-sectoriel.html [END]
+RewriteCond %{HTTPS} !=on
+RewriteCond %{ENV:HTTPS} !=on
+RewriteRule ^en/(.*)$ https://enertchad.com/atlas-en [R=301,END,NE]
 
-# https://atlas.enertchad.com/cadre-sectoriel.html https://atlas.enertchad.com/cadre-sectoriel 301!
+# http://atlas.enertchad.com/* https://enertchad.com/atlas/ 301!
 RewriteCond %{HTTP_HOST} ^atlas\.enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^cadre\-sectoriel\.html$ https://atlas.enertchad.com/cadre-sectoriel [R=301,END,NE]
+RewriteCond %{HTTPS} !=on
+RewriteCond %{ENV:HTTPS} !=on
+RewriteRule ^(.*)$ https://enertchad.com/atlas/ [R=301,END,NE]
 
-# https://atlas.enertchad.com/en/cadre-sectoriel /_subsites/atlas/en/cadre-sectoriel.html 200!
-RewriteCond %{HTTP_HOST} ^atlas\.enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^en/cadre\-sectoriel$ _subsites/atlas/en/cadre-sectoriel.html [END]
-
-# https://atlas.enertchad.com/en/cadre-sectoriel/ /_subsites/atlas/en/cadre-sectoriel.html 200!
-RewriteCond %{HTTP_HOST} ^atlas\.enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^en/cadre\-sectoriel/$ _subsites/atlas/en/cadre-sectoriel.html [END]
-
-# https://atlas.enertchad.com/en/cadre-sectoriel.html https://atlas.enertchad.com/en/cadre-sectoriel 301!
-RewriteCond %{HTTP_HOST} ^atlas\.enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^en/cadre\-sectoriel\.html$ https://atlas.enertchad.com/en/cadre-sectoriel [R=301,END,NE]
-
-# https://atlas.enertchad.com/sources /_subsites/atlas/sources.html 200!
-RewriteCond %{HTTP_HOST} ^atlas\.enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^sources$ _subsites/atlas/sources.html [END]
-
-# https://atlas.enertchad.com/sources/ /_subsites/atlas/sources.html 200!
-RewriteCond %{HTTP_HOST} ^atlas\.enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^sources/$ _subsites/atlas/sources.html [END]
-
-# https://atlas.enertchad.com/sources.html https://atlas.enertchad.com/sources 301!
-RewriteCond %{HTTP_HOST} ^atlas\.enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^sources\.html$ https://atlas.enertchad.com/sources [R=301,END,NE]
-
-# https://atlas.enertchad.com/en/sources /_subsites/atlas/en/sources.html 200!
-RewriteCond %{HTTP_HOST} ^atlas\.enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^en/sources$ _subsites/atlas/en/sources.html [END]
-
-# https://atlas.enertchad.com/en/sources/ /_subsites/atlas/en/sources.html 200!
-RewriteCond %{HTTP_HOST} ^atlas\.enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^en/sources/$ _subsites/atlas/en/sources.html [END]
-
-# https://atlas.enertchad.com/en/sources.html https://atlas.enertchad.com/en/sources 301!
-RewriteCond %{HTTP_HOST} ^atlas\.enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^en/sources\.html$ https://atlas.enertchad.com/en/sources [R=301,END,NE]
-
-# https://atlas.enertchad.com/sitemap.xml /_subsites/atlas/sitemap.xml 200!
-RewriteCond %{HTTP_HOST} ^atlas\.enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^sitemap\.xml$ _subsites/atlas/sitemap.xml [END]
-
-# https://atlas.enertchad.com/robots.txt /_subsites/atlas/robots.txt 200!
-RewriteCond %{HTTP_HOST} ^atlas\.enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^robots\.txt$ _subsites/atlas/robots.txt [END]
-
-# https://clients.enertchad.com/clients https://clients.enertchad.com/ 301!
-RewriteCond %{HTTP_HOST} ^clients\.enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^clients$ https://clients.enertchad.com/ [R=301,END,NE]
-
-# https://clients.enertchad.com/clients-en https://clients.enertchad.com/en/ 301!
-RewriteCond %{HTTP_HOST} ^clients\.enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^clients\-en$ https://clients.enertchad.com/en/ [R=301,END,NE]
-
-# https://clients.enertchad.com/aval/boutique https://clients.enertchad.com/boutique 301!
-RewriteCond %{HTTP_HOST} ^clients\.enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^aval/boutique$ https://clients.enertchad.com/boutique [R=301,END,NE]
-
-# https://clients.enertchad.com/aval/boutique-en https://clients.enertchad.com/en/boutique 301!
-RewriteCond %{HTTP_HOST} ^clients\.enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^aval/boutique\-en$ https://clients.enertchad.com/en/boutique [R=301,END,NE]
-
-# https://clients.enertchad.com/boutique-en https://clients.enertchad.com/en/boutique 301!
-RewriteCond %{HTTP_HOST} ^clients\.enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^boutique\-en$ https://clients.enertchad.com/en/boutique [R=301,END,NE]
-
-# https://atlas.enertchad.com/atlas https://atlas.enertchad.com/ 301!
-RewriteCond %{HTTP_HOST} ^atlas\.enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^atlas$ https://atlas.enertchad.com/ [R=301,END,NE]
-
-# https://atlas.enertchad.com/atlas/ https://atlas.enertchad.com/ 301!
-RewriteCond %{HTTP_HOST} ^atlas\.enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^atlas/$ https://atlas.enertchad.com/ [R=301,END,NE]
-
-# https://atlas.enertchad.com/atlas-en https://atlas.enertchad.com/en/ 301!
-RewriteCond %{HTTP_HOST} ^atlas\.enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^atlas\-en$ https://atlas.enertchad.com/en/ [R=301,END,NE]
-
-# https://atlas.enertchad.com/atlas/carte https://atlas.enertchad.com/carte 301!
-RewriteCond %{HTTP_HOST} ^atlas\.enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^atlas/carte$ https://atlas.enertchad.com/carte [R=301,END,NE]
-
-# https://atlas.enertchad.com/atlas/carte-en https://atlas.enertchad.com/en/carte 301!
-RewriteCond %{HTTP_HOST} ^atlas\.enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^atlas/carte\-en$ https://atlas.enertchad.com/en/carte [R=301,END,NE]
-
-# https://atlas.enertchad.com/atlas/bassins-champs https://atlas.enertchad.com/bassins-champs 301!
-RewriteCond %{HTTP_HOST} ^atlas\.enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^atlas/bassins\-champs$ https://atlas.enertchad.com/bassins-champs [R=301,END,NE]
-
-# https://atlas.enertchad.com/atlas/bassins-champs-en https://atlas.enertchad.com/en/bassins-champs 301!
-RewriteCond %{HTTP_HOST} ^atlas\.enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^atlas/bassins\-champs\-en$ https://atlas.enertchad.com/en/bassins-champs [R=301,END,NE]
-
-# https://atlas.enertchad.com/atlas/infrastructures https://atlas.enertchad.com/infrastructures 301!
-RewriteCond %{HTTP_HOST} ^atlas\.enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^atlas/infrastructures$ https://atlas.enertchad.com/infrastructures [R=301,END,NE]
-
-# https://atlas.enertchad.com/atlas/infrastructures-en https://atlas.enertchad.com/en/infrastructures 301!
-RewriteCond %{HTTP_HOST} ^atlas\.enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^atlas/infrastructures\-en$ https://atlas.enertchad.com/en/infrastructures [R=301,END,NE]
-
-# https://atlas.enertchad.com/atlas/cadre-sectoriel https://atlas.enertchad.com/cadre-sectoriel 301!
-RewriteCond %{HTTP_HOST} ^atlas\.enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^atlas/cadre\-sectoriel$ https://atlas.enertchad.com/cadre-sectoriel [R=301,END,NE]
-
-# https://atlas.enertchad.com/atlas/cadre-sectoriel-en https://atlas.enertchad.com/en/cadre-sectoriel 301!
-RewriteCond %{HTTP_HOST} ^atlas\.enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^atlas/cadre\-sectoriel\-en$ https://atlas.enertchad.com/en/cadre-sectoriel [R=301,END,NE]
-
-# https://atlas.enertchad.com/atlas/sources https://atlas.enertchad.com/sources 301!
-RewriteCond %{HTTP_HOST} ^atlas\.enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^atlas/sources$ https://atlas.enertchad.com/sources [R=301,END,NE]
-
-# https://atlas.enertchad.com/atlas/sources-en https://atlas.enertchad.com/en/sources 301!
-RewriteCond %{HTTP_HOST} ^atlas\.enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^atlas/sources\-en$ https://atlas.enertchad.com/en/sources [R=301,END,NE]
-
-# https://boutique.enertchad.com/en/* https://clients.enertchad.com/en/boutique 301!
+# https://boutique.enertchad.com/en/* https://enertchad.com/boutique/en/ 301!
 RewriteCond %{HTTP_HOST} ^boutique\.enertchad\.com(?::[0-9]+)?$ [NC]
 RewriteCond %{HTTPS} =on [OR]
 RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^en/(.*)$ https://clients.enertchad.com/en/boutique [R=301,END,NE]
+RewriteRule ^en/(.*)$ https://enertchad.com/boutique/en/ [R=301,END,NE]
 
-# https://boutique.enertchad.com/* https://clients.enertchad.com/boutique 301!
+# https://boutique.enertchad.com/* https://enertchad.com/boutique/ 301!
 RewriteCond %{HTTP_HOST} ^boutique\.enertchad\.com(?::[0-9]+)?$ [NC]
 RewriteCond %{HTTPS} =on [OR]
 RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^(.*)$ https://clients.enertchad.com/boutique [R=301,END,NE]
+RewriteRule ^(.*)$ https://enertchad.com/boutique/ [R=301,END,NE]
 
-# http://boutique.enertchad.com/* https://clients.enertchad.com/boutique 301!
+# http://boutique.enertchad.com/en/* https://enertchad.com/boutique/en/ 301!
 RewriteCond %{HTTP_HOST} ^boutique\.enertchad\.com(?::[0-9]+)?$ [NC]
 RewriteCond %{HTTPS} !=on
 RewriteCond %{ENV:HTTPS} !=on
-RewriteRule ^(.*)$ https://clients.enertchad.com/boutique [R=301,END,NE]
-
-# https://enertchad.com/aval/boutique https://clients.enertchad.com/boutique 301!
-RewriteCond %{HTTP_HOST} ^enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^aval/boutique$ https://clients.enertchad.com/boutique [R=301,END,NE]
-
-# https://www.enertchad.com/aval/boutique https://clients.enertchad.com/boutique 301!
-RewriteCond %{HTTP_HOST} ^www\.enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^aval/boutique$ https://clients.enertchad.com/boutique [R=301,END,NE]
-
-# https://enertchad.com/aval/boutique.html https://clients.enertchad.com/boutique 301!
-RewriteCond %{HTTP_HOST} ^enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^aval/boutique\.html$ https://clients.enertchad.com/boutique [R=301,END,NE]
-
-# https://www.enertchad.com/aval/boutique.html https://clients.enertchad.com/boutique 301!
-RewriteCond %{HTTP_HOST} ^www\.enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^aval/boutique\.html$ https://clients.enertchad.com/boutique [R=301,END,NE]
-
-# https://enertchad.com/boutique https://clients.enertchad.com/boutique 301!
-RewriteCond %{HTTP_HOST} ^enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^boutique$ https://clients.enertchad.com/boutique [R=301,END,NE]
-
-# https://www.enertchad.com/boutique https://clients.enertchad.com/boutique 301!
-RewriteCond %{HTTP_HOST} ^www\.enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^boutique$ https://clients.enertchad.com/boutique [R=301,END,NE]
-
-# https://enertchad.com/boutique/ https://clients.enertchad.com/boutique 301!
-RewriteCond %{HTTP_HOST} ^enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^boutique/$ https://clients.enertchad.com/boutique [R=301,END,NE]
-
-# https://www.enertchad.com/boutique/ https://clients.enertchad.com/boutique 301!
-RewriteCond %{HTTP_HOST} ^www\.enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^boutique/$ https://clients.enertchad.com/boutique [R=301,END,NE]
-
-# https://enertchad.com/aval/boutique-en https://clients.enertchad.com/en/boutique 301!
-RewriteCond %{HTTP_HOST} ^enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^aval/boutique\-en$ https://clients.enertchad.com/en/boutique [R=301,END,NE]
-
-# https://www.enertchad.com/aval/boutique-en https://clients.enertchad.com/en/boutique 301!
-RewriteCond %{HTTP_HOST} ^www\.enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^aval/boutique\-en$ https://clients.enertchad.com/en/boutique [R=301,END,NE]
-
-# https://enertchad.com/aval/boutique-en.html https://clients.enertchad.com/en/boutique 301!
-RewriteCond %{HTTP_HOST} ^enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^aval/boutique\-en\.html$ https://clients.enertchad.com/en/boutique [R=301,END,NE]
-
-# https://www.enertchad.com/aval/boutique-en.html https://clients.enertchad.com/en/boutique 301!
-RewriteCond %{HTTP_HOST} ^www\.enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^aval/boutique\-en\.html$ https://clients.enertchad.com/en/boutique [R=301,END,NE]
-
-# https://enertchad.com/boutique/en https://clients.enertchad.com/en/boutique 301!
-RewriteCond %{HTTP_HOST} ^enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^boutique/en$ https://clients.enertchad.com/en/boutique [R=301,END,NE]
-
-# https://www.enertchad.com/boutique/en https://clients.enertchad.com/en/boutique 301!
-RewriteCond %{HTTP_HOST} ^www\.enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^boutique/en$ https://clients.enertchad.com/en/boutique [R=301,END,NE]
-
-# https://enertchad.com/boutique/en/ https://clients.enertchad.com/en/boutique 301!
-RewriteCond %{HTTP_HOST} ^enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^boutique/en/$ https://clients.enertchad.com/en/boutique [R=301,END,NE]
-
-# https://www.enertchad.com/boutique/en/ https://clients.enertchad.com/en/boutique 301!
-RewriteCond %{HTTP_HOST} ^www\.enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^boutique/en/$ https://clients.enertchad.com/en/boutique [R=301,END,NE]
-
-# https://enertchad.com/boutique/clients https://clients.enertchad.com/ 301!
-RewriteCond %{HTTP_HOST} ^enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^boutique/clients$ https://clients.enertchad.com/ [R=301,END,NE]
-
-# https://www.enertchad.com/boutique/clients https://clients.enertchad.com/ 301!
-RewriteCond %{HTTP_HOST} ^www\.enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^boutique/clients$ https://clients.enertchad.com/ [R=301,END,NE]
-
-# https://enertchad.com/clients https://clients.enertchad.com/ 301!
-RewriteCond %{HTTP_HOST} ^enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^clients$ https://clients.enertchad.com/ [R=301,END,NE]
-
-# https://www.enertchad.com/clients https://clients.enertchad.com/ 301!
-RewriteCond %{HTTP_HOST} ^www\.enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^clients$ https://clients.enertchad.com/ [R=301,END,NE]
-
-# https://enertchad.com/clients.html https://clients.enertchad.com/ 301!
-RewriteCond %{HTTP_HOST} ^enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^clients\.html$ https://clients.enertchad.com/ [R=301,END,NE]
-
-# https://www.enertchad.com/clients.html https://clients.enertchad.com/ 301!
-RewriteCond %{HTTP_HOST} ^www\.enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^clients\.html$ https://clients.enertchad.com/ [R=301,END,NE]
-
-# https://enertchad.com/boutique/en/clients https://clients.enertchad.com/en/ 301!
-RewriteCond %{HTTP_HOST} ^enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^boutique/en/clients$ https://clients.enertchad.com/en/ [R=301,END,NE]
-
-# https://www.enertchad.com/boutique/en/clients https://clients.enertchad.com/en/ 301!
-RewriteCond %{HTTP_HOST} ^www\.enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^boutique/en/clients$ https://clients.enertchad.com/en/ [R=301,END,NE]
-
-# https://enertchad.com/clients-en https://clients.enertchad.com/en/ 301!
-RewriteCond %{HTTP_HOST} ^enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^clients\-en$ https://clients.enertchad.com/en/ [R=301,END,NE]
-
-# https://www.enertchad.com/clients-en https://clients.enertchad.com/en/ 301!
-RewriteCond %{HTTP_HOST} ^www\.enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^clients\-en$ https://clients.enertchad.com/en/ [R=301,END,NE]
-
-# https://enertchad.com/clients-en.html https://clients.enertchad.com/en/ 301!
-RewriteCond %{HTTP_HOST} ^enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^clients\-en\.html$ https://clients.enertchad.com/en/ [R=301,END,NE]
-
-# https://www.enertchad.com/clients-en.html https://clients.enertchad.com/en/ 301!
-RewriteCond %{HTTP_HOST} ^www\.enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^clients\-en\.html$ https://clients.enertchad.com/en/ [R=301,END,NE]
-
-# https://enertchad.com/atlas https://atlas.enertchad.com/ 301!
-RewriteCond %{HTTP_HOST} ^enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^atlas$ https://atlas.enertchad.com/ [R=301,END,NE]
-
-# https://www.enertchad.com/atlas https://atlas.enertchad.com/ 301!
-RewriteCond %{HTTP_HOST} ^www\.enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^atlas$ https://atlas.enertchad.com/ [R=301,END,NE]
-
-# https://enertchad.com/atlas/ https://atlas.enertchad.com/ 301!
-RewriteCond %{HTTP_HOST} ^enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^atlas/$ https://atlas.enertchad.com/ [R=301,END,NE]
-
-# https://www.enertchad.com/atlas/ https://atlas.enertchad.com/ 301!
-RewriteCond %{HTTP_HOST} ^www\.enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^atlas/$ https://atlas.enertchad.com/ [R=301,END,NE]
-
-# https://enertchad.com/atlas/index https://atlas.enertchad.com/ 301!
-RewriteCond %{HTTP_HOST} ^enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^atlas/index$ https://atlas.enertchad.com/ [R=301,END,NE]
-
-# https://www.enertchad.com/atlas/index https://atlas.enertchad.com/ 301!
-RewriteCond %{HTTP_HOST} ^www\.enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^atlas/index$ https://atlas.enertchad.com/ [R=301,END,NE]
-
-# https://enertchad.com/atlas/index.html https://atlas.enertchad.com/ 301!
-RewriteCond %{HTTP_HOST} ^enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^atlas/index\.html$ https://atlas.enertchad.com/ [R=301,END,NE]
-
-# https://www.enertchad.com/atlas/index.html https://atlas.enertchad.com/ 301!
-RewriteCond %{HTTP_HOST} ^www\.enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^atlas/index\.html$ https://atlas.enertchad.com/ [R=301,END,NE]
-
-# https://enertchad.com/atlas-en https://atlas.enertchad.com/en/ 301!
-RewriteCond %{HTTP_HOST} ^enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^atlas\-en$ https://atlas.enertchad.com/en/ [R=301,END,NE]
-
-# https://www.enertchad.com/atlas-en https://atlas.enertchad.com/en/ 301!
-RewriteCond %{HTTP_HOST} ^www\.enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^atlas\-en$ https://atlas.enertchad.com/en/ [R=301,END,NE]
-
-# https://enertchad.com/atlas-en.html https://atlas.enertchad.com/en/ 301!
-RewriteCond %{HTTP_HOST} ^enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^atlas\-en\.html$ https://atlas.enertchad.com/en/ [R=301,END,NE]
-
-# https://www.enertchad.com/atlas-en.html https://atlas.enertchad.com/en/ 301!
-RewriteCond %{HTTP_HOST} ^www\.enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^atlas\-en\.html$ https://atlas.enertchad.com/en/ [R=301,END,NE]
-
-# https://enertchad.com/atlas/carte https://atlas.enertchad.com/carte 301!
-RewriteCond %{HTTP_HOST} ^enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^atlas/carte$ https://atlas.enertchad.com/carte [R=301,END,NE]
-
-# https://www.enertchad.com/atlas/carte https://atlas.enertchad.com/carte 301!
-RewriteCond %{HTTP_HOST} ^www\.enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^atlas/carte$ https://atlas.enertchad.com/carte [R=301,END,NE]
-
-# https://enertchad.com/atlas/carte.html https://atlas.enertchad.com/carte 301!
-RewriteCond %{HTTP_HOST} ^enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^atlas/carte\.html$ https://atlas.enertchad.com/carte [R=301,END,NE]
-
-# https://www.enertchad.com/atlas/carte.html https://atlas.enertchad.com/carte 301!
-RewriteCond %{HTTP_HOST} ^www\.enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^atlas/carte\.html$ https://atlas.enertchad.com/carte [R=301,END,NE]
-
-# https://enertchad.com/atlas/carte-en https://atlas.enertchad.com/en/carte 301!
-RewriteCond %{HTTP_HOST} ^enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^atlas/carte\-en$ https://atlas.enertchad.com/en/carte [R=301,END,NE]
-
-# https://www.enertchad.com/atlas/carte-en https://atlas.enertchad.com/en/carte 301!
-RewriteCond %{HTTP_HOST} ^www\.enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^atlas/carte\-en$ https://atlas.enertchad.com/en/carte [R=301,END,NE]
-
-# https://enertchad.com/atlas/carte-en.html https://atlas.enertchad.com/en/carte 301!
-RewriteCond %{HTTP_HOST} ^enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^atlas/carte\-en\.html$ https://atlas.enertchad.com/en/carte [R=301,END,NE]
-
-# https://www.enertchad.com/atlas/carte-en.html https://atlas.enertchad.com/en/carte 301!
-RewriteCond %{HTTP_HOST} ^www\.enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^atlas/carte\-en\.html$ https://atlas.enertchad.com/en/carte [R=301,END,NE]
-
-# https://enertchad.com/atlas/bassins-champs https://atlas.enertchad.com/bassins-champs 301!
-RewriteCond %{HTTP_HOST} ^enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^atlas/bassins\-champs$ https://atlas.enertchad.com/bassins-champs [R=301,END,NE]
-
-# https://www.enertchad.com/atlas/bassins-champs https://atlas.enertchad.com/bassins-champs 301!
-RewriteCond %{HTTP_HOST} ^www\.enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^atlas/bassins\-champs$ https://atlas.enertchad.com/bassins-champs [R=301,END,NE]
-
-# https://enertchad.com/atlas/bassins-champs.html https://atlas.enertchad.com/bassins-champs 301!
-RewriteCond %{HTTP_HOST} ^enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^atlas/bassins\-champs\.html$ https://atlas.enertchad.com/bassins-champs [R=301,END,NE]
-
-# https://www.enertchad.com/atlas/bassins-champs.html https://atlas.enertchad.com/bassins-champs 301!
-RewriteCond %{HTTP_HOST} ^www\.enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^atlas/bassins\-champs\.html$ https://atlas.enertchad.com/bassins-champs [R=301,END,NE]
-
-# https://enertchad.com/atlas/bassins-champs-en https://atlas.enertchad.com/en/bassins-champs 301!
-RewriteCond %{HTTP_HOST} ^enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^atlas/bassins\-champs\-en$ https://atlas.enertchad.com/en/bassins-champs [R=301,END,NE]
-
-# https://www.enertchad.com/atlas/bassins-champs-en https://atlas.enertchad.com/en/bassins-champs 301!
-RewriteCond %{HTTP_HOST} ^www\.enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^atlas/bassins\-champs\-en$ https://atlas.enertchad.com/en/bassins-champs [R=301,END,NE]
-
-# https://enertchad.com/atlas/bassins-champs-en.html https://atlas.enertchad.com/en/bassins-champs 301!
-RewriteCond %{HTTP_HOST} ^enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^atlas/bassins\-champs\-en\.html$ https://atlas.enertchad.com/en/bassins-champs [R=301,END,NE]
-
-# https://www.enertchad.com/atlas/bassins-champs-en.html https://atlas.enertchad.com/en/bassins-champs 301!
-RewriteCond %{HTTP_HOST} ^www\.enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^atlas/bassins\-champs\-en\.html$ https://atlas.enertchad.com/en/bassins-champs [R=301,END,NE]
-
-# https://enertchad.com/atlas/infrastructures https://atlas.enertchad.com/infrastructures 301!
-RewriteCond %{HTTP_HOST} ^enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^atlas/infrastructures$ https://atlas.enertchad.com/infrastructures [R=301,END,NE]
-
-# https://www.enertchad.com/atlas/infrastructures https://atlas.enertchad.com/infrastructures 301!
-RewriteCond %{HTTP_HOST} ^www\.enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^atlas/infrastructures$ https://atlas.enertchad.com/infrastructures [R=301,END,NE]
-
-# https://enertchad.com/atlas/infrastructures.html https://atlas.enertchad.com/infrastructures 301!
-RewriteCond %{HTTP_HOST} ^enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^atlas/infrastructures\.html$ https://atlas.enertchad.com/infrastructures [R=301,END,NE]
-
-# https://www.enertchad.com/atlas/infrastructures.html https://atlas.enertchad.com/infrastructures 301!
-RewriteCond %{HTTP_HOST} ^www\.enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^atlas/infrastructures\.html$ https://atlas.enertchad.com/infrastructures [R=301,END,NE]
-
-# https://enertchad.com/atlas/infrastructures-en https://atlas.enertchad.com/en/infrastructures 301!
-RewriteCond %{HTTP_HOST} ^enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^atlas/infrastructures\-en$ https://atlas.enertchad.com/en/infrastructures [R=301,END,NE]
-
-# https://www.enertchad.com/atlas/infrastructures-en https://atlas.enertchad.com/en/infrastructures 301!
-RewriteCond %{HTTP_HOST} ^www\.enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^atlas/infrastructures\-en$ https://atlas.enertchad.com/en/infrastructures [R=301,END,NE]
-
-# https://enertchad.com/atlas/infrastructures-en.html https://atlas.enertchad.com/en/infrastructures 301!
-RewriteCond %{HTTP_HOST} ^enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^atlas/infrastructures\-en\.html$ https://atlas.enertchad.com/en/infrastructures [R=301,END,NE]
-
-# https://www.enertchad.com/atlas/infrastructures-en.html https://atlas.enertchad.com/en/infrastructures 301!
-RewriteCond %{HTTP_HOST} ^www\.enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^atlas/infrastructures\-en\.html$ https://atlas.enertchad.com/en/infrastructures [R=301,END,NE]
-
-# https://enertchad.com/atlas/cadre-sectoriel https://atlas.enertchad.com/cadre-sectoriel 301!
-RewriteCond %{HTTP_HOST} ^enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^atlas/cadre\-sectoriel$ https://atlas.enertchad.com/cadre-sectoriel [R=301,END,NE]
-
-# https://www.enertchad.com/atlas/cadre-sectoriel https://atlas.enertchad.com/cadre-sectoriel 301!
-RewriteCond %{HTTP_HOST} ^www\.enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^atlas/cadre\-sectoriel$ https://atlas.enertchad.com/cadre-sectoriel [R=301,END,NE]
-
-# https://enertchad.com/atlas/cadre-sectoriel.html https://atlas.enertchad.com/cadre-sectoriel 301!
-RewriteCond %{HTTP_HOST} ^enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^atlas/cadre\-sectoriel\.html$ https://atlas.enertchad.com/cadre-sectoriel [R=301,END,NE]
-
-# https://www.enertchad.com/atlas/cadre-sectoriel.html https://atlas.enertchad.com/cadre-sectoriel 301!
-RewriteCond %{HTTP_HOST} ^www\.enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^atlas/cadre\-sectoriel\.html$ https://atlas.enertchad.com/cadre-sectoriel [R=301,END,NE]
-
-# https://enertchad.com/atlas/cadre-sectoriel-en https://atlas.enertchad.com/en/cadre-sectoriel 301!
-RewriteCond %{HTTP_HOST} ^enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^atlas/cadre\-sectoriel\-en$ https://atlas.enertchad.com/en/cadre-sectoriel [R=301,END,NE]
-
-# https://www.enertchad.com/atlas/cadre-sectoriel-en https://atlas.enertchad.com/en/cadre-sectoriel 301!
-RewriteCond %{HTTP_HOST} ^www\.enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^atlas/cadre\-sectoriel\-en$ https://atlas.enertchad.com/en/cadre-sectoriel [R=301,END,NE]
-
-# https://enertchad.com/atlas/cadre-sectoriel-en.html https://atlas.enertchad.com/en/cadre-sectoriel 301!
-RewriteCond %{HTTP_HOST} ^enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^atlas/cadre\-sectoriel\-en\.html$ https://atlas.enertchad.com/en/cadre-sectoriel [R=301,END,NE]
-
-# https://www.enertchad.com/atlas/cadre-sectoriel-en.html https://atlas.enertchad.com/en/cadre-sectoriel 301!
-RewriteCond %{HTTP_HOST} ^www\.enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^atlas/cadre\-sectoriel\-en\.html$ https://atlas.enertchad.com/en/cadre-sectoriel [R=301,END,NE]
-
-# https://enertchad.com/atlas/sources https://atlas.enertchad.com/sources 301!
-RewriteCond %{HTTP_HOST} ^enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^atlas/sources$ https://atlas.enertchad.com/sources [R=301,END,NE]
-
-# https://www.enertchad.com/atlas/sources https://atlas.enertchad.com/sources 301!
-RewriteCond %{HTTP_HOST} ^www\.enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^atlas/sources$ https://atlas.enertchad.com/sources [R=301,END,NE]
-
-# https://enertchad.com/atlas/sources.html https://atlas.enertchad.com/sources 301!
-RewriteCond %{HTTP_HOST} ^enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^atlas/sources\.html$ https://atlas.enertchad.com/sources [R=301,END,NE]
-
-# https://www.enertchad.com/atlas/sources.html https://atlas.enertchad.com/sources 301!
-RewriteCond %{HTTP_HOST} ^www\.enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^atlas/sources\.html$ https://atlas.enertchad.com/sources [R=301,END,NE]
-
-# https://enertchad.com/atlas/sources-en https://atlas.enertchad.com/en/sources 301!
-RewriteCond %{HTTP_HOST} ^enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^atlas/sources\-en$ https://atlas.enertchad.com/en/sources [R=301,END,NE]
-
-# https://www.enertchad.com/atlas/sources-en https://atlas.enertchad.com/en/sources 301!
-RewriteCond %{HTTP_HOST} ^www\.enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^atlas/sources\-en$ https://atlas.enertchad.com/en/sources [R=301,END,NE]
-
-# https://enertchad.com/atlas/sources-en.html https://atlas.enertchad.com/en/sources 301!
-RewriteCond %{HTTP_HOST} ^enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^atlas/sources\-en\.html$ https://atlas.enertchad.com/en/sources [R=301,END,NE]
-
-# https://www.enertchad.com/atlas/sources-en.html https://atlas.enertchad.com/en/sources 301!
-RewriteCond %{HTTP_HOST} ^www\.enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^atlas/sources\-en\.html$ https://atlas.enertchad.com/en/sources [R=301,END,NE]
-
-# https://enertchad.com/boutique-en https://clients.enertchad.com/en/boutique 301!
-RewriteCond %{HTTP_HOST} ^enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^boutique\-en$ https://clients.enertchad.com/en/boutique [R=301,END,NE]
-
-# https://www.enertchad.com/boutique-en https://clients.enertchad.com/en/boutique 301!
-RewriteCond %{HTTP_HOST} ^www\.enertchad\.com(?::[0-9]+)?$ [NC]
-RewriteCond %{HTTPS} =on [OR]
-RewriteCond %{ENV:HTTPS} =on
-RewriteRule ^boutique\-en$ https://clients.enertchad.com/en/boutique [R=301,END,NE]
+RewriteRule ^en/(.*)$ https://enertchad.com/boutique/en/ [R=301,END,NE]
+
+# http://boutique.enertchad.com/* https://enertchad.com/boutique/ 301!
+RewriteCond %{HTTP_HOST} ^boutique\.enertchad\.com(?::[0-9]+)?$ [NC]
+RewriteCond %{HTTPS} !=on
+RewriteCond %{ENV:HTTPS} !=on
+RewriteRule ^(.*)$ https://enertchad.com/boutique/ [R=301,END,NE]
 
 # https://enertchad.netlify.app/* https://enertchad.com/:splat 301!
 RewriteCond %{HTTP_HOST} ^enertchad\.netlify\.app(?::[0-9]+)?$ [NC]
@@ -1455,36 +1010,43 @@ RewriteRule ^presse\-en$ https://%{HTTP_HOST}/communiques-en#presse [R=308,END,N
 # /boutique /aval/boutique.html 200
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.html !-f
 RewriteRule ^boutique$ aval/boutique.html [END]
 
 # /boutique/en/clients /clients-en.html 200
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.html !-f
 RewriteRule ^boutique/en/clients$ clients-en.html [END]
 
 # /boutique/clients /clients.html 200
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.html !-f
 RewriteRule ^boutique/clients$ clients.html [END]
 
 # /boutique/en/ /aval/boutique-en.html 200
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.html !-f
 RewriteRule ^boutique/en/$ aval/boutique-en.html [END]
 
 # /boutique/ /aval/boutique.html 200
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.html !-f
 RewriteRule ^boutique/$ aval/boutique.html [END]
 
 # /configurateur-service-integre /Configurateur_Service_Integre_v2.html 200
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.html !-f
 RewriteRule ^configurateur\-service\-integre$ Configurateur_Service_Integre_v2.html [END]
 
 # /amont/calculateur-baril-additionnel /Calculateur_Baril_Additionnel.html 200
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.html !-f
 RewriteRule ^amont/calculateur\-baril\-additionnel$ Calculateur_Baril_Additionnel.html [END]
 
 # Use OVH's HTTPS environment signal as well as Apache's native one.
@@ -1524,6 +1086,7 @@ RewriteRule ^ - [END]
 </IfModule>
 
 <IfModule mod_headers.c>
+  Header always set Cache-Control "public, max-age=0, must-revalidate"
   Header always set X-Frame-Options "SAMEORIGIN"
   Header always set X-Content-Type-Options "nosniff"
   Header always set Referrer-Policy "strict-origin-when-cross-origin"
@@ -1541,4 +1104,13 @@ RewriteRule ^ - [END]
   <FilesMatch "\.html$">
     Header always set Cache-Control "public, max-age=0, must-revalidate"
   </FilesMatch>
+</IfModule>
+
+# UTF-8 for text files (fiche presse .md, agenda .ics, security.txt).
+AddDefaultCharset UTF-8
+<IfModule mod_mime.c>
+  AddCharset UTF-8 .css .js .mjs .json .md .ics .txt .xml .svg .webmanifest
+</IfModule>
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/plain text/markdown text/calendar text/xml application/xml application/javascript text/javascript application/json application/manifest+json image/svg+xml
 </IfModule>
