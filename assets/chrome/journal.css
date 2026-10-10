@@ -1,3 +1,10 @@
+/* Polices de secours calees sur Instrument Serif (largeur moyenne des titres du site) :
+   tant que la police n est pas chargee, les titres gardent le meme nombre de lignes.
+   Limitees aux caracteres d Instrument Serif : les autres gardent Georgia comme avant. */
+@font-face{font-family:"Instrument Serif Fallback G";src:local("Georgia");size-adjust:76.1%;ascent-override:130.09%;descent-override:40.74%;line-gap-override:0%;unicode-range:U+20-7E,U+A0-A3,U+A5,U+A7-AB,U+AE-B0,U+B4,U+B6-B8,U+BA-BB,U+BF-FF,U+131,U+152-153,U+2C6,U+2DA,U+2DC,U+2013-2014,U+2018-201A,U+201C-201E,U+2022,U+2026,U+2030,U+2039-203A,U+20AC,U+2122,U+2212}
+@font-face{font-family:"Instrument Serif Fallback T";src:local("Times New Roman"),local("TimesNewRomanPSMT"),local("Liberation Serif"),local("Tinos");size-adjust:83.13%;ascent-override:119.09%;descent-override:37.29%;line-gap-override:0%;unicode-range:U+20-7E,U+A0-A3,U+A5,U+A7-AB,U+AE-B0,U+B4,U+B6-B8,U+BA-BB,U+BF-FF,U+131,U+152-153,U+2C6,U+2DA,U+2DC,U+2013-2014,U+2018-201A,U+201C-201E,U+2022,U+2026,U+2030,U+2039-203A,U+20AC,U+2122,U+2212}
+@font-face{font-family:"Instrument Serif Fallback N";src:local("Noto Serif"),local("NotoSerif-Regular");size-adjust:70.55%;ascent-override:140.32%;descent-override:43.94%;line-gap-override:0%;unicode-range:U+20-7E,U+A0-A3,U+A5,U+A7-AB,U+AE-B0,U+B4,U+B6-B8,U+BA-BB,U+BF-FF,U+131,U+152-153,U+2C6,U+2DA,U+2DC,U+2013-2014,U+2018-201A,U+201C-201E,U+2022,U+2026,U+2030,U+2039-203A,U+20AC,U+2122,U+2212}
+@font-face{font-family:"Instrument Serif Fallback D";src:local("DejaVu Serif"),local("DejaVuSerif");size-adjust:65.42%;ascent-override:151.32%;descent-override:47.38%;line-gap-override:0%;unicode-range:U+20-7E,U+A0-A3,U+A5,U+A7-AB,U+AE-B0,U+B4,U+B6-B8,U+BA-BB,U+BF-FF,U+131,U+152-153,U+2C6,U+2DA,U+2DC,U+2013-2014,U+2018-201A,U+201C-201E,U+2022,U+2026,U+2030,U+2039-203A,U+20AC,U+2122,U+2212}
 /* ——————————————————————————————————————————————————————————————
    Les Carnets d EnerTchad — feuille du journal (Ch644).
    Une salle de redaction a son propre caractere : les titres passent a une
@@ -11,7 +18,7 @@
  font-weight:400;font-style:normal;font-display:swap;
  unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
 
-:root{--fj:'Instrument Serif',Georgia,'Times New Roman',serif}
+:root{--fj:'Instrument Serif',"Instrument Serif Fallback G","Instrument Serif Fallback T","Instrument Serif Fallback N","Instrument Serif Fallback D",Georgia,'Times New Roman',serif}
 
 /* ——— bandeau de titre ——— */
 .jn-mast{border-bottom:2px solid var(--hair,rgba(255,255,255,.18));padding:0 0 14px;margin:0 0 6px}
