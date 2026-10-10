@@ -118,16 +118,9 @@ export function renderSubsite(html, page, space, hosted = false) {
 const fileFor = route => route.endsWith('/') ? route.slice(1) + 'index.html' : route.slice(1) + '.html';
 async function save(path, content) { await mkdir(dirname(path), {recursive: true}); await writeFile(path, content); }
 
+// Since the OVH move (free hosting: enertchad.com and www only), the dedicated
+// spaces live under the group domain; the sitemap keeps its enertchad.com URLs.
 export function commercialSitemap(sitemap) {
-  for (const [host, pages] of [['clients', commercialPages], ['atlas', atlasPages]]) {
-    for (const page of pages) {
-      const target = `https://${host}.enertchad.com${page.local}`;
-      for (const old of new Set([corporate + page.route, corporate + '/' + page.source.replace(/\.html$/, '')])) {
-        sitemap = sitemap.replaceAll('<loc>' + old + '</loc>', '<loc>' + target + '</loc>')
-          .replaceAll('href="' + old + '"', 'href="' + target + '"');
-      }
-    }
-  }
   return sitemap;
 }
 

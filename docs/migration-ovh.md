@@ -24,22 +24,30 @@ Next.js. Les fichiers de configuration propres à Netlify ne sont pas inclus dan
 
 ## Hébergement et domaines
 
-L'export du commit `6992ed403f8ad4188c68efe33f2a6425e30951f9` contient 228 pages,
-250 ressources publiques et environ 40 Mo. L'offre Free 100M à 0 € couvre cette
-taille. La possibilité d'associer tous les alias et leurs certificats doit être
-confirmée dans l'hébergement provisionné avant tout changement DNS. Si cette
-offre ne les accepte pas, choisir une offre multisite avant le basculement.
+État au 10 octobre 2026 : l'hébergement **Free 100M** `enertcp.cluster129.hosting.ovh.net`
+est actif (PHP 8.4, 100 Mo), relié en Git à la branche `ovh-static` (dossier `www`).
+Cette offre n'accepte que `enertchad.com` et `www.enertchad.com` : OVH refuse
+d'attacher un autre domaine (« the attached domain must be enertchad.com or
+www.enertchad.com »).
 
-Déclarer ces domaines et sous-domaines avec **le même dossier racine**, par exemple
-`www/enertchad`, et un certificat HTTPS valide pour chacun :
+Les espaces dédiés sont donc servis sous le domaine du groupe, avec leur navigation
+propre : `/boutique/`, `/boutique/clients` (et `/boutique/en/…`), `/atlas/` et
+`/atlas/<chapitre>` (et `-en`). Les sous-domaines ouverts le 9 octobre redirigent
+(301) vers ces chemins tant qu'ils pointent encore vers Netlify :
 
 | Domaine | Rôle |
 | --- | --- |
-| `enertchad.com` | Site du groupe |
-| `www.enertchad.com` | Redirection vers le site du groupe |
-| `clients.enertchad.com` | Espace Clients et boutique |
-| `atlas.enertchad.com` | Atlas |
-| `boutique.enertchad.com` | Redirection vers l'espace Clients |
+| `enertchad.com` | Site du groupe, espaces Clients et Atlas (OVH) |
+| `www.enertchad.com` | Redirection vers `enertchad.com` (OVH) |
+| `clients.enertchad.com` | Redirection vers `/boutique/clients` (Netlify, transition) |
+| `atlas.enertchad.com` | Redirection vers `/atlas/` (Netlify, transition) |
+| `boutique.enertchad.com` | Redirection vers `/boutique/` (Netlify, transition) |
+
+Le formulaire de contact n'a plus Netlify Forms : `.htaccess` envoie les POST vers
+`contact-handler.php` (généré depuis `scripts/ovh/contact.php`, destinataire repris
+de `contact.html`), qui envoie le message par `mail()` puis redirige vers la page
+d'accusé de réception. En cas d'échec d'envoi, il répond 502 et la page propose
+l'e-mail et WhatsApp. Aucun message n'est conservé sur le serveur.
 
 La sélection « aucune modification DNS » est conservée dans la commande préparée.
 Le DNS web et les MX ne doivent pas être changés pendant le provisionnement.
