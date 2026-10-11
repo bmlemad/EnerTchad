@@ -479,6 +479,9 @@ RewriteCond %{HTTPS} =on [OR]
 RewriteCond %{ENV:HTTPS} =on
 RewriteRule ^(.*)$ https://enertchad.com/$1 [R=301,END,NE]
 
+# /boutique /boutique/ 308!
+RewriteRule ^boutique$ https://%{HTTP_HOST}/boutique/ [R=308,END,NE]
+
 # /boutique/ /boutique/index.html 200!
 RewriteRule ^boutique/$ boutique/index.html [END]
 
