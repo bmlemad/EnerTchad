@@ -760,3 +760,23 @@ html[data-et-space]:not(.et-plight):not(.et-jlight):not(#x1):not(#x2):not(#x3):n
 body:has(#nav) a.et-skip,body:has(#nav) a.skip-link{position:fixed!important;z-index:10000!important;top:10px!important;left:12px!important;right:auto!important;bottom:auto!important;display:inline-block!important;margin:0!important;padding:10px 16px!important;border-radius:10px!important;background:#E8C36A!important;color:#101B2E!important;font:700 15px/1.3 system-ui,-apple-system,"Segoe UI",sans-serif!important;text-decoration:none!important;box-shadow:0 8px 24px rgba(0,0,0,.28)!important;opacity:1!important;transform:translateY(calc(-100% - 24px))!important}
 body:has(#nav) a.et-skip:focus,body:has(#nav) a.et-skip:focus-visible,body:has(#nav) a.skip-link:focus,body:has(#nav) a.skip-link:focus-visible{transform:none!important;outline:3px solid #101B2E!important;outline-offset:2px!important}
 }
+
+/* Éléments encastrés (11 oct. 2026) : navigation, recherche, barre utilitaire et colonnes du pied de page en creux (ombres internes), thèmes clair et sombre */
+@layer verre{
+/* En-tête clair */
+html.et-plight body:has(#nav) #nav .nav-links{background:rgba(16,26,44,.05)!important;border-radius:999px!important;padding:4px 6px!important;box-shadow:inset 0 2px 5px rgba(16,26,44,.18),inset 0 -1px 0 rgba(255,255,255,.75),0 1px 0 rgba(255,255,255,.55)!important;gap:2px!important}
+html.et-plight body:has(#nav) #nav .nav-links .nav-trigger{border-radius:999px!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+html.et-plight body:has(#nav) #nav .nav-links .nav-trigger:hover,html.et-plight body:has(#nav) #nav .nav-links .nav-trigger.is-active,html.et-plight body:has(#nav) #nav .nav-links .nav-trigger[aria-expanded="true"]{background:rgba(16,26,44,.07)!important;box-shadow:inset 0 2px 4px rgba(16,26,44,.22),inset 0 -1px 0 rgba(255,255,255,.6)!important}
+html.et-plight body:has(#nav) #nav .nav-cta .nav-search,html.et-plight body:has(#nav) #nav .nav-cta .nav-tog{background:rgba(16,26,44,.05)!important;border:0!important;box-shadow:inset 0 2px 5px rgba(16,26,44,.2),inset 0 -1px 0 rgba(255,255,255,.75),0 1px 0 rgba(255,255,255,.55)!important}
+html.et-plight body:has(#nav) #nav .nx-util-in{width:max-content!important;max-width:100%!important;margin-left:auto!important;margin-right:calc(max(0px,(100% - 1240px)/2) + 52px)!important;background:rgba(16,26,44,.04)!important;border-radius:999px!important;padding:2px 4px 2px 12px!important;box-shadow:inset 0 1px 3px rgba(16,26,44,.16),inset 0 -1px 0 rgba(255,255,255,.7)!important}
+/* En-tête sombre */
+html:not(.et-plight) body:has(#nav) #nav .nav-links{background:rgba(0,0,0,.22)!important;border-radius:999px!important;padding:4px 6px!important;box-shadow:inset 0 2px 6px rgba(0,0,0,.6),inset 0 -1px 0 rgba(255,255,255,.07),0 1px 0 rgba(255,255,255,.05)!important;gap:2px!important}
+html:not(.et-plight) body:has(#nav) #nav .nav-links .nav-trigger{border-radius:999px!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+html:not(.et-plight) body:has(#nav) #nav .nav-links .nav-trigger:hover,html:not(.et-plight) body:has(#nav) #nav .nav-links .nav-trigger.is-active,html:not(.et-plight) body:has(#nav) #nav .nav-links .nav-trigger[aria-expanded="true"]{background:rgba(0,0,0,.25)!important;box-shadow:inset 0 2px 5px rgba(0,0,0,.65),inset 0 -1px 0 rgba(255,255,255,.06)!important}
+html:not(.et-plight) body:has(#nav) #nav .nav-cta .nav-search,html:not(.et-plight) body:has(#nav) #nav .nav-cta .nav-tog{background:rgba(0,0,0,.22)!important;border:0!important;box-shadow:inset 0 2px 6px rgba(0,0,0,.6),inset 0 -1px 0 rgba(255,255,255,.07)!important}
+html:not(.et-plight) body:has(#nav) #nav .nx-util-in{width:max-content!important;max-width:100%!important;margin-left:auto!important;margin-right:calc(max(0px,(100% - 1240px)/2) + 52px)!important;background:rgba(0,0,0,.18)!important;border-radius:999px!important;padding:2px 4px 2px 12px!important;box-shadow:inset 0 1px 4px rgba(0,0,0,.55),inset 0 -1px 0 rgba(255,255,255,.06)!important}
+/* Pied de page (sombre) */
+footer.pft .foot-col,footer.pft .foot-news{background:rgba(0,0,0,.2)!important;border-radius:16px!important;padding:18px 20px!important;box-shadow:inset 0 2px 8px rgba(0,0,0,.55),inset 0 -1px 0 rgba(255,255,255,.06),0 1px 0 rgba(255,255,255,.04)!important}
+@media (max-width:900px){footer.pft.pft-acc .foot-col{padding:0 16px!important;margin:0 0 8px!important;border-top:0!important;border-radius:14px!important}footer.pft .foot-news{padding:16px!important}}
+footer.pft .foot-social a{background:rgba(0,0,0,.25)!important;border:0!important;border-radius:50%!important;box-shadow:inset 0 2px 5px rgba(0,0,0,.6),inset 0 -1px 0 rgba(255,255,255,.08)!important}
+}
