@@ -11,10 +11,16 @@ try{(function(){
   function nu(item){var m=item&&item.querySelector('.nx-mega');
     if(m)PROPS.forEach(function(k){m.style.removeProperty(k)});}
   function closeAll(except){
-    links.querySelectorAll('.nav-item.open').forEach(function(i){
+    /* 11 oct. 2026 : on parcourt toutes les rubriques, pas seulement .open.
+       Sur certaines pages (carnets, pôles aval, crédits), un autre script pose
+       aussi les styles en ligne !important sans la classe .open : Échap
+       remettait aria-expanded à false mais le panneau restait peint. */
+    links.querySelectorAll('.nav-item').forEach(function(i){
       if(i===except)return;
-      i.classList.remove('open');
-      var b=i.querySelector('.nav-trigger');if(b)b.setAttribute('aria-expanded','false');
+      if(i.classList.contains('open')){
+        i.classList.remove('open');
+        var b=i.querySelector('.nav-trigger');if(b)b.setAttribute('aria-expanded','false');
+      }
       nu(i);
     });
   }
@@ -55,7 +61,24 @@ try{(function(){
     });
     /* synchronise aria-expanded avec l'ouverture au survol (desktop) */
     item.addEventListener('mouseenter',function(){if(mq.matches&&!item.classList.contains('kbesc'))btn.setAttribute('aria-expanded','true');});
-    item.addEventListener('mouseleave',function(){if(mq.matches&&!item.classList.contains('open'))btn.setAttribute('aria-expanded','false');});
+    item.addEventListener('mouseleave',function(){if(mq.matches&&!item.classList.contains('open')&&!item.matches(':focus-within'))btn.setAttribute('aria-expanded','false');});
+    /* 11 oct. 2026 : au clavier, :focus-within affiche le panneau dès que la
+       rubrique reçoit le focus ; aria-expanded suit désormais cet état. */
+    item.addEventListener('focusin',function(){
+      if(!mq.matches||item.classList.contains('kbesc'))return;
+      var m=item.querySelector('.nx-mega');
+      if(m&&getComputedStyle(m).visibility==='visible')btn.setAttribute('aria-expanded','true');
+    });
+    /* 11 oct. 2026 : quand le focus quitte la rubrique (Tab après le dernier
+       lien), on referme le panneau ouvert au clic ; sinon il restait ouvert
+       sous le panneau suivant, ouvert par :focus-within. */
+    item.addEventListener('focusout',function(e){
+      if(!mq.matches)return;
+      var to=e.relatedTarget;
+      if(!to||item.contains(to))return;
+      item.classList.remove('open');nu(item);
+      if(!item.matches(':hover'))btn.setAttribute('aria-expanded','false');
+    });
   });
   document.addEventListener('click',function(e){
     if(mq.matches&&!e.target.closest('.nav-item'))closeAll(null);
