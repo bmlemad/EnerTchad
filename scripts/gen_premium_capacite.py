@@ -39,7 +39,7 @@ CAPS = [
 ALT = {
     'solaire-champ': ('Champ de panneaux solaires', 'Solar panel field'),
     'code-numerique': ('Code informatique sur un écran', 'Computer code on a screen'),
-    'village-sahel': ('Village du Sahel', 'Sahel village'),
+    'village-sahel': ('Village de cases au toit de chaume', 'Village of thatched-roof huts'),
     'lac-tchad-espace': ('Le lac Tchad photographié depuis l’orbite', 'Lake Chad photographed from orbit'),
     'acacia-couchant': ('Acacia au soleil couchant', 'Acacia at sunset'),
     'datacenter': ('Salle de serveurs', 'Server room'),

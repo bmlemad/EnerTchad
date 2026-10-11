@@ -19,7 +19,7 @@ from bs4 import BeautifulSoup
 BUILD = '202610011900'
 POLES = [
     # page, langue, image du heros, image de la conviction (fichier, largeur, hauteur, alt fr, alt en)
-    ('amont/index.html', 'fr', 'chantier-ferraillage', ('drone-terrain', 1200, 659, 'Drone d’inspection au-dessus d’un champ', 'Inspection drone above a field')),
+    ('amont/index.html', 'fr', 'chantier-ferraillage', ('drone-terrain', 1200, 659, 'Drone quadrirotor en vol', 'Quadcopter drone in flight')),
     ('intermediaire/index.html', 'fr', 'pipeline', ('reservoirs', 700, 980, 'Bacs de stockage d’un dépôt pétrolier', 'Storage tanks at an oil depot')),
     ('aval/index.html', 'fr', 'raffinerie-jour', ('station-nuit', 700, 466, 'Station-service éclairée de nuit', 'Service station lit at night')),
     ('petrochimie/index.html', 'fr', 'unite-petrochimie', ('complexe-industriel', 800, 532, 'Complexe industriel de transformation', 'Industrial processing complex')),
@@ -35,7 +35,7 @@ HERO_ALT = {
     'unite-petrochimie': ('Unité pétrochimique', 'Petrochemical unit'),
 }
 FIG_ALT_EN = {
-    'drone-terrain': 'Inspection drone above a field', 'reservoirs': 'Storage tanks at an oil depot',
+    'drone-terrain': 'Quadcopter drone in flight', 'reservoirs': 'Storage tanks at an oil depot',
     'station-nuit': 'Service station lit at night', 'complexe-industriel': 'Industrial processing complex',
 }
 L = {

@@ -31,8 +31,8 @@ PAGES = [('ar.html', 'pompe-petrole'), ('ar-poles.html', 'complexe-industriel'),
          ('ar-intermediaire.html', 'pipeline'), ('ar-aval.html', 'raffinerie-jour'), ('ar-societe.html', 'dunes-sahara'),
          ('ar-investisseurs.html', 'flamme-gaz'), ('ar-contact.html', 'village-sahel')]
 ALT_AR = {'pompe-petrole': 'مضخة نفط', 'complexe-industriel': 'مجمع صناعي', 'chantier-ferraillage': 'فريق في موقع عمل',
-          'pipeline': 'خط أنابيب يعبر واديًا', 'raffinerie-jour': 'أعمدة مصفاة', 'dunes-sahara': 'كثبان الصحراء',
-          'flamme-gaz': 'شعلة غاز', 'village-sahel': 'قرية في الساحل'}
+          'pipeline': 'خط أنابيب يعبر واديًا', 'raffinerie-jour': 'أعمدة مصفاة', 'dunes-sahara': 'كثبان رملية',
+          'flamme-gaz': 'شعلة غاز', 'village-sahel': 'قرية من أكواخ ذات أسقف من القش'}
 CSS_LINKS = ('<link rel="preload" href="/assets/fonts/NotoNaskhArabic-500-arabic.woff2" as="font" type="font/woff2" crossorigin>\n'
              '<link rel="preload" href="/assets/fonts/NotoSansArabic-arabic.woff2" as="font" type="font/woff2" crossorigin>\n'
              f'<link rel="stylesheet" id="ar-premium" href="/assets/chrome/home-inline-ar-premium.css?b={BUILD}">\n'
