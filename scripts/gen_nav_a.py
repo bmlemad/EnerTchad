@@ -79,7 +79,7 @@ def nav_fr(brand, lang, act):
     ]
     return f'''<nav class="nav nx" id="nav" aria-label="Navigation principale">
   <div class="nx-util"><div class="nx-util-in">
-    <a href="/clients">Espace clients</a>
+    <a href="/boutique/clients">Espace clients</a>
     <a href="/carnets">Médias</a>
     <a href="/carrieres">Carrières</a>
     <a href="/contact">Contact</a>
@@ -94,7 +94,7 @@ def nav_fr(brand, lang, act):
     <div class="nav-links" id="navLinks">
       {chr(10).join(items)}
       <div class="nx-util-m">
-        <a href="/clients">Espace clients</a><a href="/carnets">Médias</a><a href="/carrieres">Carrières</a>
+        <a href="/boutique/clients">Espace clients</a><a href="/carnets">Médias</a><a href="/carrieres">Carrières</a>
         <a href="/contact">Contact</a><a href="{lang}">English</a>
         <a href="/investisseurs#souscrire" class="cta">Investir</a>
       </div>
@@ -158,7 +158,7 @@ def nav_en(brand, lang, act):
     ]
     return f'''<nav class="nav nx" id="nav" aria-label="Main navigation">
   <div class="nx-util"><div class="nx-util-in">
-    <a href="/clients-en">Client area</a>
+    <a href="/boutique/en/clients">Client area</a>
     <a href="/carnets-en">Media</a>
     <a href="/carrieres">Careers</a>
     <a href="/contact-en">Contact</a>
@@ -173,7 +173,7 @@ def nav_en(brand, lang, act):
     <div class="nav-links" id="navLinks">
       {chr(10).join(items)}
       <div class="nx-util-m">
-        <a href="/clients-en">Client area</a><a href="/carnets-en">Media</a><a href="/carrieres">Careers</a>
+        <a href="/boutique/en/clients">Client area</a><a href="/carnets-en">Media</a><a href="/carrieres">Careers</a>
         <a href="/contact-en">Contact</a><a href="{lang}">Français</a>
         <a href="/investisseurs-en" class="cta">Invest</a>
       </div>

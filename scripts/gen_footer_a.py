@@ -8,7 +8,7 @@ EN_OLD = re.compile(r'<div class="foot-col"><h3>Clients &amp; markets</h3>.*?Bar
 
 FR_NEW = (
     '<div class="foot-col"><h3>Clients &amp; innovation</h3>'
-    '<a href="/clients">Clients &amp; solutions</a>'
+    '<a href="/boutique/clients">Clients &amp; solutions</a>'
     '<a href="/boutique">Boutique en ligne</a>'
     '<a href="/innovation">Innovation</a>'
     '<a href="/atlas/bassins-champs#atl-geologie">Atlas du secteur</a>'
@@ -29,7 +29,7 @@ FR_NEW = (
 )
 EN_NEW = (
     '<div class="foot-col"><h3>Clients &amp; innovation</h3>'
-    '<a href="/clients-en">Clients &amp; solutions</a>'
+    '<a href="/boutique/en/clients">Clients &amp; solutions</a>'
     '<a href="/boutique">Online store</a>'
     '<a href="/innovation">Innovation</a>'
     '<a href="/atlas/bassins-champs#atl-geologie">Sector atlas</a>'

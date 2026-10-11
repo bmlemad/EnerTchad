@@ -44,7 +44,7 @@ def mobile_bar(block, en):
         tag = m.group(0)
         href = m.group(1)
         if 'services-ep' in href:
-            tag = tag.replace(href, '/clients' + suffix)
+            tag = tag.replace(href, '/boutique/en/clients' if en else '/boutique/clients')
             tag = re.sub(r'(?<=</svg>)[^<]+', labels[0], tag)
         elif '/aval/reseau' in href:
             tag = tag.replace(href, '/achats' + suffix)

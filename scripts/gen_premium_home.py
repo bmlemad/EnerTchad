@@ -84,7 +84,7 @@ T = {
   q_label='Accès directs',
   quick=[('Investisseurs', 'Thèse, feuille de route, documents et agenda.', '/investisseurs'),
          ('Carrières', 'Familles de métiers et académie Tchaditude.', '/carrieres'),
-         ('Clients', 'Carburants, services pétroliers, solutions intégrées.', '/clients'),
+         ('Clients', 'Carburants, services pétroliers, solutions intégrées.', '/boutique/clients'),
          ('Fournisseurs', 'Référencement et appels d’offres.', '/achats')],
   past='Les prochains rendez-vous seront publiés sur l’agenda investisseur.'),
  'en': dict(
@@ -147,7 +147,7 @@ T = {
   q_label='Quick access',
   quick=[('Investors', 'Investment case, roadmap, documents and calendar.', '/investisseurs-en'),
          ('Careers', 'Job families and the Tchaditude academy.', '/carrieres-en'),
-         ('Clients', 'Fuels, oilfield services, integrated solutions.', '/clients-en'),
+         ('Clients', 'Fuels, oilfield services, integrated solutions.', '/boutique/en/clients'),
          ('Suppliers', 'Vendor listing and tenders.', '/achats-en')],
   past='Upcoming events will be published in the investor calendar.'),
 }
