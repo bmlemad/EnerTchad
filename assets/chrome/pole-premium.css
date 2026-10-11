@@ -566,3 +566,21 @@ html:not(#q0):not(#q1):not(#q2):not(#q3):not(#q4):not(#q5):not(#q6):not(#q7):not
 /* Fil d'Ariane : zone de pointage d'au moins 24 px, soulignement conservé (2026-10-08) */
 html:not(#q0):not(#q1):not(#q2):not(#q3):not(#q4):not(#q5):not(#q6):not(#q7):not(#q8):not(#q9):not(#q10):not(#q11):not(#q12):not(#q13):not(#q14):not(#q15):not(#q16):not(#q17):not(#q18):not(#q19):not(#q20):not(#q21):not(#q22):not(#q23) body main.ppl .pp-crumb a{display:inline-block!important;padding:6px 0!important;margin:-6px 0!important;border-bottom:0!important;text-decoration:underline!important;text-decoration-color:rgba(255,255,255,.3)!important;text-decoration-thickness:1px!important;text-underline-offset:4px!important}
 html:not(#q0):not(#q1):not(#q2):not(#q3):not(#q4):not(#q5):not(#q6):not(#q7):not(#q8):not(#q9):not(#q10):not(#q11):not(#q12):not(#q13):not(#q14):not(#q15):not(#q16):not(#q17):not(#q18):not(#q19):not(#q20):not(#q21):not(#q22):not(#q23) body main.ppl .pp-crumb a:hover{text-decoration-color:#fff!important}
+
+/* Verre givré des pages premium (11 octobre 2026), même couche « verre » que les accueils.
+   En-tête givré qui laisse voir le héros photographique, bande de chiffres du héros en verre, sous-menu de page givré.
+   Un !important en couche l'emporte sur les !important hors couche ; navigateurs sans @layer : rendu inchangé.
+   Ajouté à la main au fichier publié (le générateur scripts/pole_premium_css.py n'est plus aligné sur ce fichier). */
+@layer verre{
+html.et-plight body:has(main.ppl) #nav.nav,html.et-plight body:has(main.ppl) #nav .nx-util{background:rgba(250,248,243,.66)!important;-webkit-backdrop-filter:blur(18px) saturate(1.5)!important;backdrop-filter:blur(18px) saturate(1.5)!important}
+html.et-plight body:has(main.ppl) #nav.nav{border-bottom:1px solid rgba(16,26,44,.08)!important;box-shadow:0 8px 28px -18px rgba(16,26,44,.35)!important}
+html.et-plight body:has(main.ppl) #nav .nx-util{border-bottom:1px solid rgba(16,26,44,.06)!important}
+html.et-plight body:has(main.ppl) .pp-sub{background:rgba(250,248,243,.7)!important;-webkit-backdrop-filter:blur(16px) saturate(1.4)!important;backdrop-filter:blur(16px) saturate(1.4)!important;border-bottom:1px solid rgba(16,26,44,.08)!important}
+html:not(.et-plight) body:has(main.ppl) #nav.nav,html:not(.et-plight) body:has(main.ppl) #nav .nx-util{background:rgba(13,22,38,.72)!important;-webkit-backdrop-filter:blur(18px) saturate(1.5)!important;backdrop-filter:blur(18px) saturate(1.5)!important}
+html:not(.et-plight) body:has(main.ppl) #nav.nav{border-bottom:1px solid rgba(255,255,255,.08)!important;box-shadow:0 10px 30px -18px rgba(0,0,0,.6)!important}
+html:not(.et-plight) body:has(main.ppl) #nav .nx-util{border-bottom:1px solid rgba(255,255,255,.06)!important}
+body:has(main.ppl) #nav .nav-in,body:has(main.ppl) #nav .nx-bar{background:transparent!important;box-shadow:none!important;border:0!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+body:has(main.ppl) #nav .nav-links>.nav-item,body:has(main.ppl) #nav .nav-links>.nav-item>a,body:has(main.ppl) #nav .nav-links>.nav-item>button{background:transparent!important;box-shadow:none!important;border-color:transparent!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+main.ppl .pp-hero .pp-figs{background:linear-gradient(180deg,rgba(255,255,255,.12),rgba(255,255,255,.05))!important;border:1px solid rgba(255,255,255,.18)!important;border-top-color:rgba(255,255,255,.3)!important;border-radius:18px!important;padding:6px 22px!important;-webkit-backdrop-filter:blur(14px) saturate(1.4)!important;backdrop-filter:blur(14px) saturate(1.4)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.22),0 18px 40px -24px rgba(0,0,0,.6)!important}
+@media (prefers-reduced-transparency:reduce){html.et-plight body:has(main.ppl) #nav.nav,html.et-plight body:has(main.ppl) #nav .nx-util,html.et-plight body:has(main.ppl) .pp-sub{background:#faf8f3!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}html:not(.et-plight) body:has(main.ppl) #nav.nav,html:not(.et-plight) body:has(main.ppl) #nav .nx-util{background:#0d1626!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}main.ppl .pp-hero .pp-figs{background:rgba(16,26,44,.86)!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}}
+}
