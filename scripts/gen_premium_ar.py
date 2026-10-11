@@ -32,7 +32,7 @@ PAGES = [('ar.html', 'pompe-petrole'), ('ar-poles.html', 'complexe-industriel'),
          ('ar-investisseurs.html', 'flamme-gaz'), ('ar-contact.html', 'village-sahel')]
 ALT_AR = {'pompe-petrole': 'مضخة نفط', 'complexe-industriel': 'مجمع صناعي', 'chantier-ferraillage': 'فريق في موقع عمل',
           'pipeline': 'مسار خط أنابيب في كومي، تشاد', 'raffinerie-jour': 'أعمدة مصفاة', 'dunes-sahara': 'كثبان رملية',
-          'flamme-gaz': 'شعلة غاز', 'village-sahel': 'قرية على طريق أم تيمان في تشاد'}
+          'flamme-gaz': 'رأس بئر في كومي، تشاد', 'village-sahel': 'قرية على طريق أم تيمان في تشاد'}
 CSS_LINKS = ('<link rel="preload" href="/assets/fonts/NotoNaskhArabic-500-arabic.woff2" as="font" type="font/woff2" crossorigin>\n'
              '<link rel="preload" href="/assets/fonts/NotoSansArabic-arabic.woff2" as="font" type="font/woff2" crossorigin>\n'
              f'<link rel="stylesheet" id="ar-premium" href="/assets/chrome/home-inline-ar-premium.css?b={BUILD}">\n'

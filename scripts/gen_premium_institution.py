@@ -32,8 +32,8 @@ PAGES = [
     ('carnets.html', 'fr', None), ('carnets-en.html', 'en', None),
     ('societe-en.html', 'en', 'dunes-sahara'), ('investisseurs-en.html', 'en', 'flamme-gaz'), ('carrieres-en.html', 'en', 'camion-route'),
 ]
-ALT = {'dunes-sahara': ('Dunes de sable sous un soleil voilé', 'Sand dunes under a hazy sun'), 'flamme-gaz': ('Flamme de gaz', 'Gas flame'),
-       'camion-route': ('Route de montagne entre des versants arides', 'Mountain road between arid slopes'),
+ALT = {'dunes-sahara': ('Dunes de sable sous un soleil voilé', 'Sand dunes under a hazy sun'), 'flamme-gaz': ('Tête de puits à Komé, au Tchad', 'Wellhead at Komé, Chad'),
+       'camion-route': ('Livraison de bouteilles de gaz, au Tchad', 'Gas cylinder delivery in Chad'),
        'complexe-industriel': ('Complexe industriel de transformation', 'Industrial processing complex')}
 ALT.update({'chantier-ferraillage': ('Équipe sur un chantier', 'Crew on a construction site'),
             'pipeline': ('Emprise de pipeline à Komé, au Tchad', 'Pipeline right of way at Komé, Chad'),
