@@ -4,7 +4,7 @@ const url = process.env.SITE_URL || 'https://enertchad.com/';
 
 
 test('site-wide consistency — canonical representative routes stay equivalent', async ({ request }) => {
-  const routes = ['/', '/index-en', '/ar', '/amont/', '/intermediaire/', '/aval/', '/greentech/', '/tchaditech/', '/tchaditude/', '/enerconseils/', '/societe', '/investisseurs', '/clients', '/carrieres', '/contact', '/faq'];
+  const routes = ['/', '/index-en', '/ar', '/amont/', '/intermediaire/', '/aval/', '/greentech/', '/tchaditech/', '/tchaditude/', '/enerconseils/', '/societe', '/investisseurs', '/boutique/clients', '/carrieres', '/contact', '/faq'];
   for (const route of routes) {
     const response = await request.get(new URL(route, url).href, { maxRedirects: 5, timeout: 30000 });
     expect(response.status(), route).toBe(200);
@@ -43,7 +43,7 @@ test('homepage keyboard accessibility', async ({ page }) => {
 });
 
 test('representative inner pages — desktop and mobile', async ({ browser }) => {
-  const paths = ['/amont/', '/intermediaire/', '/aval/', '/greentech/', '/societe', '/investisseurs', '/clients', '/carrieres', '/contact', '/faq'];
+  const paths = ['/amont/', '/intermediaire/', '/aval/', '/greentech/', '/societe', '/investisseurs', '/boutique/clients', '/carrieres', '/contact', '/faq'];
   for (const path of paths) {
     const page = await browser.newPage({ viewport: { width: 1280, height: 900 } });
     const errors = [];
@@ -118,7 +118,7 @@ test('language switch — equivalent FR/EN route', async ({ browser }) => {
   const cases = [
     ['/index-en', '/'],
     ['/contact-en', '/contact'],
-    ['/clients-en', '/clients'],
+    ['/boutique/en/clients', '/boutique/clients'],
     ['/investisseurs-en', '/investisseurs']
   ];
   for (const [enPath, frPath] of cases) {
@@ -126,7 +126,7 @@ test('language switch — equivalent FR/EN route', async ({ browser }) => {
     const response = await page.goto(new URL(enPath, url).href, { waitUntil: 'networkidle', timeout: 45000 });
     expect(response, enPath).not.toBeNull();
     expect(response.status(), enPath).toBeLessThan(400);
-    const langLink = page.locator('a.nx-lang').first();
+    const langLink = page.locator('a.nx-lang, #nav.et-space-header a[lang]').first();
     await expect(langLink, enPath).toHaveAttribute('href', frPath);
     await page.close();
   }
@@ -223,7 +223,7 @@ test('hubs — parcours métiers et institutionnels', async ({ browser }) => {
     ['/amont/', 'fr'], ['/intermediaire/', 'fr'], ['/aval/', 'fr'],
     ['/petrochimie/', 'fr'], ['/greentech/', 'fr'], ['/tchaditech/', 'fr'],
     ['/tchaditude/', 'fr'], ['/enerconseils/', 'fr'],
-    ['/societe', 'fr'], ['/investisseurs', 'fr'], ['/clients', 'fr'],
+    ['/societe', 'fr'], ['/investisseurs', 'fr'], ['/boutique/clients', 'fr'],
     ['/achats', 'fr'], ['/carrieres', 'fr'], ['/projets', 'fr'], ['/publications', 'fr'],
     ['/amont/activites-en', 'en'], ['/intermediaire/services-en', 'en'],
     ['/aval/distribution-en', 'en'], ['/petrochimie/produits-en', 'en'],
@@ -276,7 +276,7 @@ test('hubs — liens internes accessibles et sans 4xx/5xx', async ({ request }) 
   const hubs = [
     '/amont/', '/intermediaire/', '/aval/', '/petrochimie/',
     '/greentech/', '/tchaditech/', '/tchaditude/', '/enerconseils/',
-    '/societe', '/investisseurs', '/clients', '/achats', '/carrieres',
+    '/societe', '/investisseurs', '/boutique/clients', '/achats', '/carrieres',
     '/projets', '/publications'
   ];
 
@@ -395,7 +395,7 @@ test('semantic accessibility and document metadata — representative locales', 
 });
 
 test('forms, anchors and interactive controls — representative pages', async ({ browser }) => {
-  const paths = ['/', '/contact', '/clients', '/investisseurs', '/faq', '/tchaditech/'];
+  const paths = ['/', '/contact', '/boutique/clients', '/investisseurs', '/faq', '/tchaditech/'];
   for (const path of paths) {
     const page = await browser.newPage({ viewport: { width: 390, height: 844 } });
     const response = await page.goto(new URL(path, url).href, { waitUntil: 'domcontentloaded', timeout: 45000 });
@@ -492,7 +492,7 @@ test('SEO sitemap — every indexed URL resolves', async ({ request }) => {
 
 
 test('SEO representative pages — canonical matches requested route', async ({ request }) => {
-  const paths = ['/', '/index-en', '/ar', '/contact', '/contact-en', '/clients', '/clients-en', '/investisseurs', '/investisseurs-en', '/faq', '/faq-en', '/amont/', '/aval/', '/intermediaire/', '/greentech/', '/tchaditech/', '/tchaditude/', '/enerconseils/'];
+  const paths = ['/', '/index-en', '/ar', '/contact', '/contact-en', '/boutique/clients', '/boutique/en/clients', '/investisseurs', '/investisseurs-en', '/faq', '/faq-en', '/amont/', '/aval/', '/intermediaire/', '/greentech/', '/tchaditech/', '/tchaditude/', '/enerconseils/'];
   for (const path of paths) {
     const response = await request.get(new URL(path, url).href);
     expect(response.status(), path).toBe(200);
@@ -534,7 +534,7 @@ test('SEO hreflang — alternates resolve and are reciprocal', async ({ request 
 });
 
 test('SEO social metadata — Open Graph et Twitter card', async ({ request }) => {
-  const paths = ['/', '/index-en', '/ar', '/contact', '/contact-en', '/clients', '/clients-en', '/investisseurs', '/investisseurs-en', '/faq', '/faq-en'];
+  const paths = ['/', '/index-en', '/ar', '/contact', '/contact-en', '/boutique/clients', '/boutique/en/clients', '/investisseurs', '/investisseurs-en', '/faq', '/faq-en'];
   for (const path of paths) {
     const response = await request.get(new URL(path, url).href);
     expect(response.status(), path).toBe(200);
@@ -691,7 +691,7 @@ test('mobile interactions — nav search and primary form controls', async ({ br
   const cases = [
     { path: '/', search: true },
     { path: '/contact', form: true },
-    { path: '/clients', form: false },
+    { path: '/boutique/clients', form: false },
     { path: '/investisseurs', form: false }
   ];
   for (const item of cases) {
@@ -765,7 +765,7 @@ test('accessibility — reduced motion visual contract', async ({ browser }) => 
 
 
 test('performance — external scripts remain non-blocking', async ({ request }) => {
-  const paths = ['/', '/contact', '/clients', '/investisseurs', '/faq', '/greentech/', '/tchaditech/', '/tchaditude/', '/enerconseils/'];
+  const paths = ['/', '/contact', '/boutique/clients', '/investisseurs', '/faq', '/greentech/', '/tchaditech/', '/tchaditude/', '/enerconseils/'];
   for (const path of paths) {
     const response = await request.get(new URL(path, url).href, { timeout: 30000 });
     expect(response.status(), path).toBe(200);
@@ -784,7 +784,7 @@ test('performance — external scripts remain non-blocking', async ({ request })
 
 
 test('security — no mixed-content resource URLs', async ({ request }) => {
-  const paths = ['/', '/index-en', '/ar', '/contact', '/investisseurs', '/clients', '/faq', '/greentech/', '/tchaditech/', '/tchaditude/', '/enerconseils/'];
+  const paths = ['/', '/index-en', '/ar', '/contact', '/investisseurs', '/boutique/clients', '/faq', '/greentech/', '/tchaditech/', '/tchaditude/', '/enerconseils/'];
   for (const path of paths) {
     const response = await request.get(new URL(path, url).href, { timeout: 30000 });
     expect(response.status(), path).toBe(200);
@@ -808,7 +808,7 @@ test('performance — static assets expose cache directives', async ({ request }
 
 
 test('SEO — hreflang self-reference matches canonical route', async ({ request }) => {
-  const paths = ['/', '/index-en', '/ar', '/contact', '/contact-en', '/ar-contact', '/clients', '/clients-en', '/investisseurs', '/investisseurs-en', '/ar-investisseurs'];
+  const paths = ['/', '/index-en', '/ar', '/contact', '/contact-en', '/ar-contact', '/boutique/clients', '/boutique/en/clients', '/investisseurs', '/investisseurs-en', '/ar-investisseurs'];
   for (const path of paths) {
     const response = await request.get(new URL(path, url).href);
     expect(response.status(), path).toBe(200);
@@ -909,7 +909,7 @@ test('SEO hreflang — localized URLs use normalized paths', async ({ request })
 
 
 test('navigation — internal HTML links resolve directly without redirects', async ({ request }) => {
-  const paths = ['/', '/amont/', '/intermediaire/', '/aval/', '/greentech/', '/tchaditech/', '/tchaditude/', '/enerconseils/', '/clients', '/investisseurs', '/contact', '/faq'];
+  const paths = ['/', '/amont/', '/intermediaire/', '/aval/', '/greentech/', '/tchaditech/', '/tchaditude/', '/enerconseils/', '/boutique/clients', '/investisseurs', '/contact', '/faq'];
   const seen = new Set();
   for (const path of paths) {
     const response = await request.get(new URL(path, url).href, { maxRedirects: 5, timeout: 30000 });
@@ -933,7 +933,7 @@ test('navigation — internal HTML links resolve directly without redirects', as
 
 
 test('forms — explicit submission contract and safe autocomplete', async ({ request }) => {
-  const paths = ['/contact', '/clients', '/investisseurs'];
+  const paths = ['/contact', '/boutique/clients', '/investisseurs'];
   for (const path of paths) {
     const response = await request.get(new URL(path, url).href);
     expect(response.status(), path).toBe(200);
@@ -960,7 +960,7 @@ test('forms — explicit submission contract and safe autocomplete', async ({ re
 
 
 test('performance — internal CSS/JS resources resolve directly', async ({ request }) => {
-  const paths = ['/', '/index-en', '/ar', '/contact', '/clients', '/investisseurs', '/faq', '/greentech/', '/tchaditech/', '/tchaditude/', '/enerconseils/'];
+  const paths = ['/', '/index-en', '/ar', '/contact', '/boutique/clients', '/investisseurs', '/faq', '/greentech/', '/tchaditech/', '/tchaditude/', '/enerconseils/'];
   const seen = new Set();
   for (const path of paths) {
     const response = await request.get(new URL(path, url).href, { timeout: 30000 });
@@ -1006,7 +1006,7 @@ test('performance — referenced font assets resolve directly', async ({ request
 
 
 test('performance — referenced image assets resolve directly', async ({ request }) => {
-  const paths = ['/', '/index-en', '/ar', '/contact', '/clients', '/investisseurs', '/faq', '/greentech/', '/tchaditech/', '/tchaditude/', '/enerconseils/'];
+  const paths = ['/', '/index-en', '/ar', '/contact', '/boutique/clients', '/investisseurs', '/faq', '/greentech/', '/tchaditech/', '/tchaditude/', '/enerconseils/'];
   const seen = new Set();
   for (const path of paths) {
     const response = await request.get(new URL(path, url).href, { timeout: 30000 });
@@ -1062,7 +1062,7 @@ test('404 page — branded recovery and noindex', async ({ request }) => {
 
 
 test('accessibility — pages expose language, main landmark and skip navigation', async ({ request }) => {
-  const paths = ['/', '/index-en', '/ar', '/contact', '/clients', '/investisseurs', '/faq', '/greentech/', '/tchaditech/', '/tchaditude/', '/enerconseils/'];
+  const paths = ['/', '/index-en', '/ar', '/contact', '/boutique/clients', '/investisseurs', '/faq', '/greentech/', '/tchaditech/', '/tchaditude/', '/enerconseils/'];
   for (const path of paths) {
     const response = await request.get(new URL(path, url).href, { timeout: 30000 });
     expect(response.status(), path).toBe(200);
@@ -1074,7 +1074,7 @@ test('accessibility — pages expose language, main landmark and skip navigation
 });
 
 test('accessibility — images have alt text and interactive controls have names', async ({ browser }) => {
-  const paths = ['/', '/contact', '/clients', '/investisseurs', '/faq'];
+  const paths = ['/', '/contact', '/boutique/clients', '/investisseurs', '/faq'];
   for (const path of paths) {
     const page = await browser.newPage();
     await page.goto(new URL(path, url).href, { waitUntil: 'domcontentloaded', timeout: 45000 });
@@ -1217,7 +1217,7 @@ test('accessibility/performance — images expose stable dimensions and meaningf
 });
 
 test('forms — controls are explicitly labelled and autocomplete is safe', async ({ browser }) => {
-  const paths = ['/contact', '/investisseurs', '/carrieres', '/clients'];
+  const paths = ['/contact', '/investisseurs', '/carrieres', '/boutique/clients'];
   for (const path of paths) {
     const page = await browser.newPage({ viewport: { width: 1280, height: 900 } });
     const response = await page.goto(new URL(path, url).href, { waitUntil: 'domcontentloaded', timeout: 45000 });
@@ -1421,7 +1421,7 @@ test('HTML structure — exactly one main landmark and no duplicate element IDs'
 });
 
 test('forms — required controls are usable and submit targets are explicit', async ({ browser }) => {
-  const paths = ['/contact', '/investisseurs', '/carrieres', '/clients'];
+  const paths = ['/contact', '/investisseurs', '/carrieres', '/boutique/clients'];
   for (const path of paths) {
     const page = await browser.newPage();
     const response = await page.goto(new URL(path, url).href, { waitUntil: 'domcontentloaded', timeout: 45000 });

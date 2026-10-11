@@ -52,35 +52,39 @@ for (const width of [1440, 390]) {
   }
 }
 
-// Exercise the actual aliases as well as the PR preview: host routing, HTTPS
-// redirects and cross-space links cannot be verified on a preview host alone.
+// Spaces live under enertchad.com since the OVH migration (Clients under /boutique/, Atlas under /atlas/;
+// the former subdomains answer with permanent redirects): exercise the public journey on those paths.
 for (const width of [1440, 390]) {
   for (const language of ['fr', 'en']) {
     test(`dedicated spaces — public journey connects Clients, catalogue, Atlas and group: ${language} ${width}`, async ({browser}) => {
       const page = await browser.newPage({viewport:{width,height:900}});
       const errors = []; page.on('pageerror', e => errors.push(e.message));
-      const prefix = language === 'en' ? '/en' : '';
-      const clients = 'https://clients.enertchad.com';
-      const atlas = 'https://atlas.enertchad.com';
-      await page.goto(clients + prefix + '/', {waitUntil:'networkidle'});
+      const site = new URL(base).origin;
+      const en = language === 'en';
+      const clientsHome = site + (en ? '/boutique/en/clients' : '/boutique/clients');
+      const catalogue = en ? '/boutique/en/' : '/boutique/';
+      const atlasHome = site + (en ? '/atlas-en' : '/atlas/');
+      const map = en ? '/atlas/carte-en' : '/atlas/carte';
+      const otherMap = en ? '/atlas/carte' : '/atlas/carte-en';
+      await page.goto(clientsHome, {waitUntil:'networkidle'});
       await expect(page.locator('html')).toHaveAttribute('lang', language);
-      await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href',clients + prefix + '/');
-      await page.locator(`#nav .et-space-links a[href="${prefix}/boutique"]`).click();
-      await expect(page).toHaveURL(clients + prefix + '/boutique');
+      await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', clientsHome);
+      await page.locator(`#nav .et-space-links a[href="${catalogue}"]`).click();
+      await expect(page).toHaveURL(site + catalogue);
       await expect(page.locator('#grid .pc')).not.toHaveCount(0);
-      await page.locator(`#nav a[href="${atlas}${prefix}/"]`).click();
-      await expect(page).toHaveURL(atlas + prefix + '/');
-      await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href',atlas + prefix + '/');
-      await page.locator(`#nav .et-space-links a[href="${prefix}/carte"]`).click();
-      await expect(page).toHaveURL(atlas + prefix + '/carte');
+      await page.locator(`#nav a[href="${atlasHome}"]`).first().click();
+      await expect(page).toHaveURL(atlasHome);
+      await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', atlasHome);
+      await page.locator(`#nav .et-space-links a[href="${map}"]`).click();
+      await expect(page).toHaveURL(site + map);
       expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 2)).toBe(true);
       await page.locator('#nav a[lang]').click();
-      const alternatePrefix = language === 'en' ? '' : '/en';
-      await expect(page).toHaveURL(atlas + alternatePrefix + '/carte');
-      await expect(page.locator('html')).toHaveAttribute('lang', language === 'en' ? 'fr' : 'en');
-      await page.locator(`#nav a[href="${clients}${alternatePrefix}/"]`).click();
-      await expect(page).toHaveURL(clients + alternatePrefix + '/');
-      const group = 'https://enertchad.com' + (alternatePrefix ? '/index-en' : '/');
+      await expect(page).toHaveURL(site + otherMap);
+      await expect(page.locator('html')).toHaveAttribute('lang', en ? 'fr' : 'en');
+      const otherCatalogue = site + (en ? '/boutique/' : '/boutique/en/');
+      await page.locator(`#nav a[href="${otherCatalogue}"]`).first().click();
+      await expect(page).toHaveURL(otherCatalogue);
+      const group = site + (en ? '/' : '/index-en');
       await page.locator(`#nav .et-space-top a[href="${group}"]`).click();
       await expect(page).toHaveURL(group);
       await expect(page.locator('#nav.et-space-header')).toHaveCount(0);

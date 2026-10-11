@@ -2,10 +2,10 @@ const { test, expect } = require('@playwright/test');
 
 const base = process.env.SITE_URL || 'https://enertchad.com/';
 const journeys = [
-  ['/amont/', ['/amont/services-ep', '/clients', '/contact']],
-  ['/aval/', ['/aval/boutique', '/clients', '/contact']],
-  ['/intermediaire/', ['/configurateur-service-integre', '/clients', '/contact']],
-  ['/greentech/', ['/greentech/#transition', '/clients', '/contact']]
+  ['/amont/', ['/amont/services-ep', '/boutique/clients', '/contact']],
+  ['/aval/', ['/boutique/', '/boutique/clients', '/contact']],
+  ['/intermediaire/', ['/configurateur-service-integre', '/boutique/clients', '/contact']],
+  ['/greentech/', ['/greentech/#transition', '/boutique/clients', '/contact']]
 ];
 
 test('hub journeys — primary CTAs expose intentional destinations', async ({ page }) => {
