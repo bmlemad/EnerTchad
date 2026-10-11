@@ -34,7 +34,7 @@
 .sp-hero .sp-trust::before{content:"Fiche d’identité";display:block;font:600 11px/1.4 Inter,system-ui,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#e2b85c;margin-bottom:10px}
 .sp-hero .sp-trust .sp-badge{background:none!important;border:0!important;border-bottom:1px solid rgba(255,255,255,.12)!important;border-radius:0!important;padding:12px 0!important;font-size:14px!important;color:#f3eee2!important;white-space:normal}
 .sp-hero .sp-trust .sp-badge:last-child{border-bottom:0!important}}
-.sp-doc .meta{color:#9a7424!important;font-weight:700;letter-spacing:.08em}
+.sp-doc .meta{color:#85631c!important;font-weight:700;letter-spacing:.08em}
 .sp-doc h3::after{content:" ↓";color:#c9a24a;opacity:0;transition:opacity .2s}
 .sp-doc:hover h3::after{opacity:1}
 .sp-section,[id]{scroll-margin-top:84px}
