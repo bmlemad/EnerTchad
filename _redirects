@@ -87,6 +87,7 @@ http://boutique.enertchad.com/* https://enertchad.com/boutique/ 301!
 
 https://enertchad.netlify.app/* https://enertchad.com/:splat 301!
 
+/boutique /boutique/ 308!
 /boutique/ /boutique/index.html 200!
 /aval/boutique /boutique/ 308!
 /aval/boutique.html /boutique/ 308!
