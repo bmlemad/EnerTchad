@@ -196,6 +196,8 @@ def footer(old_footer, old_nav, motto, phone):
     contact = f'<a href="mailto:{mail_t}" dir="ltr">{mail_t}</a>' if mail_t else ''
     if phone is not None:
         contact += f'<a href="{escape(phone["href"])}" dir="ltr">{escape(sp(phone.get_text()))}</a>'
+    # Adresse courte du siège (icône de localisation en CSS, premium-chrome.css).
+    contact += '<a class="pft-addr" href="/ar-contact">راديسون بلو، المكتب 23، انجمينا</a>'
     soc = old_footer.select_one('.et-soc-foot')
     soc_h = ''
     if soc is not None:

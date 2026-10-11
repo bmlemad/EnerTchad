@@ -240,6 +240,13 @@ def build_nav(lang, page, old):
             + f'<div class="nx-util-m">{util_m}</div></div>\n    {cta}\n  </div>\n</nav>')
 
 
+# Adresse courte du siège au pied de page (icône de localisation en CSS, premium-chrome.css).
+ADDR = {
+    'fr': '<a class="pft-addr" href="/contact">Radisson Blu, bureau 23, N’Djamena</a>',
+    'en': '<a class="pft-addr" href="/contact-en">Radisson Blu, Office 23, N’Djamena</a>',
+}
+
+
 def build_footer(lang, src):
     ui = UI[lang]
     L = (lambda h: h) if lang == 'fr' else en_href
@@ -258,7 +265,7 @@ def build_footer(lang, src):
     return (f'<footer class="pft">\n  <div class="wrap">\n    <p class="pft-motto">{ui["motto"]}</p>\n    {news}\n'
             f'    <div class="foot-grid pft-grid">\n'
             f'      <div class="foot-brand">{brand}<p class="foot-desc">{ui["foot_desc"]}</p>'
-            f'<div class="pft-contact">{clean(mail)}{clean(tel)}</div>{social}</div>\n'
+            f'<div class="pft-contact">{clean(mail)}{clean(tel)}{ADDR[lang]}</div>{social}</div>\n'
             f'      <div class="foot-col"><h3>{ui["h_sections"]}</h3>{secs}</div>\n'
             f'      <div class="foot-col"><h3>{ui["h_access"]}</h3>{acc}</div>\n'
             f'      <div class="foot-col"><h3>{ui["h_info"]}</h3>{inf}</div>\n'
