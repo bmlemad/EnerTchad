@@ -24,7 +24,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import gen_premium_institution as G  # noqa: E402
 from gen_premium_pole import sp, inner, text, BeautifulSoup  # noqa: E402
 
-G.ALT.setdefault('village-sahel', ('Village de cases au toit de chaume', 'Village of thatched-roof huts'))
+G.ALT.setdefault('village-sahel', ('Village sur la route d’Am-Timan, au Tchad', 'Village on the road to Am Timan, Chad'))
 MAP = {'solutions': ('nos-activites', 'besoins'), 'presse': ('communiques', 'presse')}
 SUB = {'fr': 'Par besoin', 'en': 'By need'}
 TITLE = {'fr': ('Communiqués officiels', 'Communiqués et espace presse'),

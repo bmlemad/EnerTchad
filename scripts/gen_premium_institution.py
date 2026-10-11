@@ -36,7 +36,7 @@ ALT = {'dunes-sahara': ('Dunes de sable sous un soleil voilé', 'Sand dunes unde
        'camion-route': ('Route de montagne entre des versants arides', 'Mountain road between arid slopes'),
        'complexe-industriel': ('Complexe industriel de transformation', 'Industrial processing complex')}
 ALT.update({'chantier-ferraillage': ('Équipe sur un chantier', 'Crew on a construction site'),
-            'pipeline': ('Pipeline traversant une vallée', 'Pipeline crossing a valley'),
+            'pipeline': ('Emprise de pipeline à Komé, au Tchad', 'Pipeline right of way at Komé, Chad'),
             'raffinerie-jour': ('Colonnes de raffinerie', 'Refinery columns'),
             'unite-petrochimie': ('Unité pétrochimique', 'Petrochemical unit'),
             'code-numerique': ('Code informatique sur un écran', 'Computer code on a screen'),

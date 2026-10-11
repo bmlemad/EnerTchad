@@ -39,12 +39,12 @@ CAPS = [
 ALT = {
     'solaire-champ': ('Champ de panneaux solaires', 'Solar panel field'),
     'code-numerique': ('Code informatique sur un écran', 'Computer code on a screen'),
-    'village-sahel': ('Village de cases au toit de chaume', 'Village of thatched-roof huts'),
+    'village-sahel': ('Village sur la route d’Am-Timan, au Tchad', 'Village on the road to Am Timan, Chad'),
     'lac-tchad-espace': ('Le lac Tchad photographié depuis l’orbite', 'Lake Chad photographed from orbit'),
     'acacia-couchant': ('Acacia au soleil couchant', 'Acacia at sunset'),
     'datacenter': ('Salle de serveurs', 'Server room'),
     'casques-chantier': ('Casques de chantier', 'Hard hats on a site'),
-    'piste-desert': ('Piste dans le désert', 'Desert track'),
+    'piste-desert': ('Caravane sur une piste du Guéra, au Tchad', 'Caravan on a track in Guéra, Chad'),
 }
 KNOWN = {'pmani', 'ilede', 'psol', 'bizcases', 'pole-proj', 'lie558'}
 K_RX = re.compile(r'(^|-)k$|^(sec-k|kick)$')

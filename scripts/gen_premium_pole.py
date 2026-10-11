@@ -30,7 +30,7 @@ POLES = [
 ]
 HERO_ALT = {
     'chantier-ferraillage': ('Équipe sur un chantier', 'Crew on a construction site'),
-    'pipeline': ('Pipeline traversant une vallée', 'Pipeline crossing a valley'),
+    'pipeline': ('Emprise de pipeline à Komé, au Tchad', 'Pipeline right of way at Komé, Chad'),
     'raffinerie-jour': ('Colonnes de raffinerie', 'Refinery columns'),
     'unite-petrochimie': ('Unité pétrochimique', 'Petrochemical unit'),
 }

@@ -28,7 +28,7 @@ from gen_premium_pole import sp, inner, BeautifulSoup  # noqa: E402
 
 G.ALT.update({'pompe-petrole': ('Pompe à balancier au couchant', 'Pumpjack at sunset'),
               'solaire-champ': ('Champ de panneaux solaires', 'Solar panel field'),
-              'village-sahel': ('Village de cases au toit de chaume', 'Village of thatched-roof huts')})
+              'village-sahel': ('Village sur la route d’Am-Timan, au Tchad', 'Village on the road to Am Timan, Chad')})
 PHOTO = {'clients': 'pompe-petrole', 'contact': 'dunes-sahara', 'projets': 'chantier-ferraillage',
          'cibles-2030': 'lac-tchad-espace', 'engagements': 'solaire-champ', 'communautes': 'village-sahel',
          'achats': 'camion-route', 'innovation': 'code-numerique', 'brochure': 'complexe-industriel'}
