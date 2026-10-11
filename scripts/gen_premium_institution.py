@@ -33,7 +33,7 @@ PAGES = [
     ('societe-en.html', 'en', 'dunes-sahara'), ('investisseurs-en.html', 'en', 'flamme-gaz'), ('carrieres-en.html', 'en', 'camion-route'),
 ]
 ALT = {'dunes-sahara': ('Dunes de sable sous un soleil voilé', 'Sand dunes under a hazy sun'), 'flamme-gaz': ('Flamme de gaz', 'Gas flame'),
-       'camion-route': ('Camion sur une route de montagne', 'Truck on a mountain road'),
+       'camion-route': ('Route de montagne entre des versants arides', 'Mountain road between arid slopes'),
        'complexe-industriel': ('Complexe industriel de transformation', 'Industrial processing complex')}
 ALT.update({'chantier-ferraillage': ('Équipe sur un chantier', 'Crew on a construction site'),
             'pipeline': ('Pipeline traversant une vallée', 'Pipeline crossing a valley'),
