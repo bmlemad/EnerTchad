@@ -128,3 +128,5 @@ html[dir="rtl"]:not(#r0):not(#r1):not(#r2):not(#r3):not(#r4):not(#r5):not(#r6):n
 @media (prefers-reduced-motion:reduce){
   html[dir="rtl"]:not(#r0):not(#r1):not(#r2):not(#r3):not(#r4):not(#r5):not(#r6):not(#r7):not(#r8):not(#r9):not(#r10):not(#r11):not(#r12):not(#r13):not(#r14):not(#r15):not(#r16):not(#r17):not(#r18):not(#r19):not(#r20):not(#r21):not(#r22):not(#r23):not(#r24):not(#r25) body main.ppl .pp-link::after{transition:none!important}
 }
+/* Logo transparent (11 oct. 2026) : sans fond crème, plus grand */
+@layer verre{.arh-brand .bmk>rect{display:none!important}.arh-brand .bmk{width:40px!important;height:40px!important;border-radius:0!important;box-shadow:none!important;background:none!important;filter:drop-shadow(0 1px 1.5px rgba(10,20,34,.25))!important}}
