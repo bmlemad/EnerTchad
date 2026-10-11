@@ -1109,3 +1109,5 @@ html.et-plight #nav .logo-img{background-image:url("data:image/svg+xml,%3Csvg%20
 #nav .brand{gap:12px!important}
 @media (max-width:760px){#nav .brand-mk{width:38px!important;height:38px!important}}
 }
+/* Contraste AA (11 oct. 2026) : sous-titre du logo lisible sur l’en-tête clair en verre */
+@layer verre{html.et-plight #nav .brand-tx small{color:#2b3446!important}}
