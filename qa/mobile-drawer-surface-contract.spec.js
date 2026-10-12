@@ -5,6 +5,10 @@ const { test, expect } = require('@playwright/test');
 // s'appliquait aussi à #navLinks sous 1241 px ; le tiroir est devenu transparent
 // (fond à 5 %, coins arrondis) et le menu se superposait au contenu, sans qu'aucun
 // test ne le signale. Ce contrat ouvre le tiroir et vérifie ce que voit le visiteur.
+// Complète mobile-navigation-contract.spec.js (ouverture, aria-expanded, accordéon, Échap à 390 px) :
+// ici la surface du tiroir, les deux thèmes, 1024 px, le focus après Échap et le repli à la réouverture.
+// Les pages couvrent les deux scripts du tiroir : c_ac04328f0f47.js (/, /index-en, /amont/)
+// et u2_e8be195d19be.js (/carnets, /journal-criblage-eor, /contact).
 
 const base = process.env.SITE_URL || 'https://enertchad.com/';
 const paths = ['/', '/index-en', '/amont/', '/carnets', '/journal-criblage-eor', '/contact'];
@@ -34,7 +38,10 @@ test.describe('mobile drawer — opaque surface over the page', () => {
           await expect(toggle).toBeVisible();
           await toggle.click();
           await expect(page.locator('#navLinks')).toHaveClass(/(^|\s)open(\s|$)/);
-          await page.waitForTimeout(600); // fin de l'animation d'ouverture
+          // Attend la fin de l'animation d'ouverture (navDrop, 0,28 s), même sur une machine chargée.
+          await page.locator('#navLinks').evaluate(el => Promise.all(el.getAnimations()
+            .filter(a => a.effect && a.effect.getTiming().iterations !== Infinity)
+            .map(a => a.finished.catch(() => {}))));
 
           const report = await page.evaluate(() => {
             const links = document.getElementById('navLinks');
@@ -71,10 +78,17 @@ test.describe('mobile drawer — opaque surface over the page', () => {
           const firstLink = page.locator('#navLinks .nav-item').first().locator('.nx-mega a[href]').first();
           await expect(firstLink).toBeVisible();
 
-          // Échap referme le tiroir.
+          // Échap referme le tiroir et rend le focus au bouton du menu.
           await page.keyboard.press('Escape');
           await expect(page.locator('#navLinks')).not.toHaveClass(/(^|\s)open(\s|$)/);
           await expect(toggle).toHaveAttribute('aria-expanded', 'false');
+          await expect(toggle, `${path} ${theme.name} ${width}px : focus après Échap`).toBeFocused();
+
+          // Rouvert, le tiroir repart replié : aucune rubrique restée ouverte ni aria-expanded à vrai.
+          await toggle.click();
+          await expect(page.locator('#navLinks')).toHaveClass(/(^|\s)open(\s|$)/);
+          await expect(page.locator('#navLinks .nav-item.open'), `${path} ${theme.name} ${width}px : rubrique restée ouverte`).toHaveCount(0);
+          await expect(page.locator('#navLinks .nav-item > .nav-trigger[aria-expanded="true"]')).toHaveCount(0);
         });
       }
     }
