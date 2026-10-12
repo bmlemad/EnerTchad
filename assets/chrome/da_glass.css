@@ -2,8 +2,8 @@
    Petrole #003049 · or energetique #FFB703 · cyan #00B4D8 · verre 20 px.
    Pilote au 540 (accueil), etendue aux hubs au 542, au site entier ici.
    Le theme clair garde son sol creme : le petrole est une matiere du sombre. */
-:root{--gold-l:#FFB703;--blue-l:#00B4D8;--g-blur:saturate(170%) blur(20px);--g-brd:rgba(255,255,255,.20)}
-html:not(.et-plight):not(.et-jlight){background:#00243A!important}
+:root{--gold-l:var(--jl-gold,#FFB703);--blue-l:#00B4D8;--g-blur:saturate(170%) blur(20px);--g-brd:rgba(255,255,255,.20)}
+html:not(.et-plight):not(.et-jlight){background:var(--jl-page-dark,#00243A)!important}
 html:not(.et-plight):not(.et-jlight) .rootland::after{background:linear-gradient(180deg,rgba(0,28,45,.68) 0%,rgba(0,21,34,.78) 100%)}
 html:not(.et-plight):not(.et-jlight) .subland::after{background:linear-gradient(180deg,rgba(0,28,45,.50) 0%,rgba(0,21,34,.60) 100%)}
 .nav.nx:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5):not(#e6){background:rgba(0,48,73,.38)!important;background-color:rgba(0,48,73,.38)!important;background-image:none!important;-webkit-backdrop-filter:saturate(170%) blur(20px)!important;backdrop-filter:saturate(170%) blur(20px)!important;border-bottom:1px solid rgba(255,255,255,.13);box-shadow:0 12px 34px rgba(0,18,30,.35)}

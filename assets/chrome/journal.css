@@ -334,3 +334,11 @@ html:is(.et-plight,.et-jlight)[data-pl="colonne"] .jn-fig .jn-band{background-im
    Space Grotesk le ramenait a une : decalage de 35 px de toute la page (CLS 0,28). */
 @media (max-width:480px){.jn-mast-top{flex-wrap:nowrap;column-gap:10px;letter-spacing:.1em}.jn-mast-top>span{white-space:nowrap}}
 @media (max-width:359px){.jn-mast-top{letter-spacing:.04em}}
+
+/* Journal : palette commune (audit du design, étape 3, variante B choisie le 12 octobre 2026).
+   Variables lues par nav_a.css, bundle_core_a1.css, fond647.css et da_glass.css, qui gardent leur ancienne valeur
+   sur les pages qui ne chargent pas journal.css. Clair : fond blanc sans halos, en-tête blanc, pied #F4F5F7, surtitres #7A5A12.
+   Sombre : fond #0A1422 au lieu du pétrole #00243A et de #111A27, or #D9B567 au lieu de l'ambre #FFB703. */
+:root{--jl-body-bg:var(--et-white,#FFFFFF);--jl-halos:none;--jl-paper:var(--et-white,#FFFFFF);--jl-gold-ink:var(--et-gold-700,#7A5A12);--jl-page-dark:var(--et-night,#0A1422);--jl-root-dark:var(--et-night,#0A1422)}
+html:not(.et-plight):not(.et-jlight){--jl-gold:var(--et-gold-300,#D9B567)}
+.jfoot{--jl-foot:var(--et-mist,#F4F5F7);--jl-foot-img:none}
