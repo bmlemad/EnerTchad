@@ -12,6 +12,13 @@
 #main-content.et-home .et-seg-note{font-size:.8rem;margin-top:14px;opacity:.8}
 @media (max-width:760px){#main-content.et-home .et-segments .et-seg-img{aspect-ratio:16/8}}
 @media (min-width:761px){#main-content.et-home .et-hero-media figcaption{right:88px;max-width:min(62ch,calc(100% - 120px))}}
+/* Palette de l'accueil FR/EN (audit du design, étape 3, livraison 3) : surfaces, encre et cartes passent par des variables
+   posées par thème (sans !important) et appliquées par des règles communes aux deux thèmes.
+   Clair : fond blanc et bande #F4F5F7 de la palette commune. Sombre : vrai thème sombre (fond #0A1422, bande #0F1B2C, texte #F1F3F6),
+   au lieu du contenu resté clair. Les valeurs viennent des jetons --et-* (premium-chrome.css), avec repli. */
+html.et-plight #main-content.et-home{--hm-surface:var(--et-white,#FFFFFF);--hm-tint:var(--et-mist,#F4F5F7);--hm-ink:#142033;--hm-seg-bg:rgba(255,255,255,.52);--hm-path-bg:rgba(255,255,255,.6);--hm-card-solid:#fff;--hm-seg-line:rgba(255,255,255,.85);--hm-path-line:rgba(255,255,255,.9);--hm-seg-hi:rgba(255,255,255,.9);--hm-path-hi:#fff;--hm-seg-shadow:rgba(16,26,44,.45);--hm-path-shadow:rgba(16,26,44,.4)}
+html:not(.et-plight) #main-content.et-home{--hm-surface:var(--et-night,#0A1422);--hm-tint:var(--et-night-2,#0F1B2C);--hm-ink:var(--et-snow,#F1F3F6);--hm-seg-bg:var(--et-night-2,#0F1B2C);--hm-path-bg:var(--et-night-2,#0F1B2C);--hm-card-solid:var(--et-night-2,#0F1B2C);--hm-seg-line:var(--et-line-dark,#22314A);--hm-path-line:var(--et-line-dark,#22314A);--hm-seg-hi:rgba(255,255,255,.06);--hm-path-hi:rgba(255,255,255,.06);--hm-seg-shadow:rgba(0,0,0,.6);--hm-path-shadow:rgba(0,0,0,.55)}
+
 /* Verre givré sobre (variante A, choisie le 11 octobre 2026), thème clair des accueils FR/EN.
    Couche « verre » : dans une couche, un !important l'emporte sur les !important hors couche, sans surenchère de spécificité.
    Navigateurs sans @layer : la couche est ignorée, la page reste opaque comme avant. */
@@ -21,26 +28,37 @@ html.et-plight #nav.nav{border-bottom:1px solid rgba(16,26,44,.08)!important;box
 html.et-plight #nav .nx-util{border-bottom:1px solid rgba(16,26,44,.06)!important}
 html.et-plight #nav .nav-in,html.et-plight #nav .nx-bar{background:transparent!important;box-shadow:none!important;border:0!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
 html.et-plight #nav .nav-links>.nav-item,html.et-plight #nav .nav-links>.nav-item>a,html.et-plight #nav .nav-links>.nav-item>button{background:transparent!important;box-shadow:none!important;border-color:transparent!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
-html.et-plight #main-content.et-home .et-hero{margin-top:calc(-1 * var(--nav-h,138px))!important;padding-top:calc(var(--nav-h,138px) + 80px)!important}
 html.et-plight #main-content.et-home .et-hero .et-metrics{background:linear-gradient(180deg,rgba(255,255,255,.12),rgba(255,255,255,.05))!important;border:1px solid rgba(255,255,255,.18)!important;border-top-color:rgba(255,255,255,.3)!important;border-radius:18px!important;padding:22px 26px!important;-webkit-backdrop-filter:blur(14px) saturate(1.4)!important;backdrop-filter:blur(14px) saturate(1.4)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.22),0 18px 40px -24px rgba(0,0,0,.6)!important}
-html.et-plight #main-content.et-home #chaine.et-tinted{background:radial-gradient(60% 70% at 15% 20%,rgba(226,178,64,.18),transparent 70%),radial-gradient(55% 60% at 85% 75%,rgba(36,74,122,.16),transparent 70%),#eceee9!important}
-html.et-plight #main-content.et-home .et-segments>*{background:rgba(255,255,255,.52)!important;border:1px solid rgba(255,255,255,.85)!important;-webkit-backdrop-filter:blur(12px) saturate(1.3)!important;backdrop-filter:blur(12px) saturate(1.3)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.9),0 14px 34px -22px rgba(16,26,44,.45)!important}
-html.et-plight #main-content.et-home .et-paths>*{background:rgba(255,255,255,.6)!important;border:1px solid rgba(255,255,255,.9)!important;-webkit-backdrop-filter:blur(12px)!important;backdrop-filter:blur(12px)!important;box-shadow:inset 0 1px 0 #fff,0 12px 30px -22px rgba(16,26,44,.4)!important}
-@media (max-width:760px){html.et-plight #main-content.et-home .et-hero{padding-top:calc(var(--nav-h,77px) + 54px)!important}html.et-plight #main-content.et-home .et-hero .et-metrics{padding:18px 20px!important}}
-@media (prefers-reduced-transparency:reduce){html.et-plight #nav.nav,html.et-plight #nav .nx-util{background:#faf8f3!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}html.et-plight #main-content.et-home .et-hero .et-metrics{background:rgba(16,26,44,.86)!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}html.et-plight #main-content.et-home .et-segments>*,html.et-plight #main-content.et-home .et-paths>*{background:#fff!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}}
+@media (prefers-reduced-transparency:reduce){html.et-plight #nav.nav,html.et-plight #nav .nx-util{background:#faf8f3!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+html.et-plight #main-content.et-home .et-hero .et-metrics{background:rgba(16,26,44,.86)!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
 }
-/* Verre givré, thème sombre des accueils FR/EN (même couche « verre »). L’en-tête passe en verre fumé ; les sections de contenu restent claires comme dans le thème sombre actuel. */
+}
+
+/* Verre givré, thème sombre des accueils FR/EN (même couche « verre »). L’en-tête passe en verre fumé. */
 @layer verre{
 html:not(.et-plight) #nav.nav,html:not(.et-plight) #nav .nx-util{background:rgba(13,22,38,.72)!important;-webkit-backdrop-filter:blur(18px) saturate(1.5)!important;backdrop-filter:blur(18px) saturate(1.5)!important}
 html:not(.et-plight) #nav.nav{border-bottom:1px solid rgba(255,255,255,.08)!important;box-shadow:0 10px 30px -18px rgba(0,0,0,.6)!important}
 html:not(.et-plight) #nav .nx-util{border-bottom:1px solid rgba(255,255,255,.06)!important}
 html:not(.et-plight) #nav .nav-in,html:not(.et-plight) #nav .nx-bar{background:transparent!important;box-shadow:none!important;border:0!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
 html:not(.et-plight) #nav .nav-links>.nav-item,html:not(.et-plight) #nav .nav-links>.nav-item>a,html:not(.et-plight) #nav .nav-links>.nav-item>button{background:transparent!important;box-shadow:none!important;border-color:transparent!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
-html:not(.et-plight) #main-content.et-home .et-hero{margin-top:calc(-1 * var(--nav-h,138px))!important;padding-top:calc(var(--nav-h,138px) + 80px)!important}
 html:not(.et-plight) #main-content.et-home .et-hero .et-metrics{background:linear-gradient(180deg,rgba(255,255,255,.10),rgba(255,255,255,.04))!important;border:1px solid rgba(255,255,255,.14)!important;border-top-color:rgba(255,255,255,.24)!important;border-radius:18px!important;padding:22px 26px!important;-webkit-backdrop-filter:blur(14px) saturate(1.4)!important;backdrop-filter:blur(14px) saturate(1.4)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.16),0 18px 40px -24px rgba(0,0,0,.7)!important}
-html:not(.et-plight) #main-content.et-home #chaine.et-tinted{background:radial-gradient(60% 70% at 15% 20%,rgba(226,178,64,.18),transparent 70%),radial-gradient(55% 60% at 85% 75%,rgba(36,74,122,.16),transparent 70%),#eceee9!important}
-html:not(.et-plight) #main-content.et-home .et-segments>*{background:rgba(255,255,255,.52)!important;border:1px solid rgba(255,255,255,.85)!important;-webkit-backdrop-filter:blur(12px) saturate(1.3)!important;backdrop-filter:blur(12px) saturate(1.3)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.9),0 14px 34px -22px rgba(16,26,44,.45)!important}
-html:not(.et-plight) #main-content.et-home .et-paths>*{background:rgba(255,255,255,.6)!important;border:1px solid rgba(255,255,255,.9)!important;-webkit-backdrop-filter:blur(12px)!important;backdrop-filter:blur(12px)!important;box-shadow:inset 0 1px 0 #fff,0 12px 30px -22px rgba(16,26,44,.4)!important}
-@media (max-width:760px){html:not(.et-plight) #main-content.et-home .et-hero{padding-top:calc(var(--nav-h,77px) + 54px)!important}html:not(.et-plight) #main-content.et-home .et-hero .et-metrics{padding:18px 20px!important}}
-@media (prefers-reduced-transparency:reduce){html:not(.et-plight) #nav.nav,html:not(.et-plight) #nav .nx-util{background:#0d1626!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}html:not(.et-plight) #main-content.et-home .et-hero .et-metrics{background:rgba(16,26,44,.9)!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}html:not(.et-plight) #main-content.et-home .et-segments>*,html:not(.et-plight) #main-content.et-home .et-paths>*{background:#fff!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}}
+@media (prefers-reduced-transparency:reduce){html:not(.et-plight) #nav.nav,html:not(.et-plight) #nav .nx-util{background:#0d1626!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+html:not(.et-plight) #main-content.et-home .et-hero .et-metrics{background:rgba(16,26,44,.9)!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+}
+}
+
+/* Règles communes aux deux thèmes (même couche « verre ») : valeurs prises dans les variables --hm-* ci-dessus. */
+@layer verre{
+html:is(.et-plight,:not(.et-plight)) #main-content.et-home{color:var(--hm-ink)!important;background:var(--hm-surface)!important}
+html:is(.et-plight,:not(.et-plight)) #main-content.et-home section :is(h2,h3,p,b,span,a){color:var(--hm-ink)!important}
+html:is(.et-plight,:not(.et-plight)) #main-content.et-home .et-tinted{background-color:var(--hm-tint)!important}
+html:is(.et-plight,:not(.et-plight)) #main-content.et-home .et-hero{margin-top:calc(-1 * var(--nav-h,138px))!important;padding-top:calc(var(--nav-h,138px) + 80px)!important}
+html:is(.et-plight,:not(.et-plight)) #main-content.et-home #chaine.et-tinted{background:radial-gradient(60% 70% at 15% 20%,rgba(226,178,64,.18),transparent 70%),radial-gradient(55% 60% at 85% 75%,rgba(36,74,122,.16),transparent 70%),var(--hm-tint)!important}
+html:is(.et-plight,:not(.et-plight)) #main-content.et-home .et-segments>*{background:var(--hm-seg-bg)!important;border:1px solid var(--hm-seg-line)!important;-webkit-backdrop-filter:blur(12px) saturate(1.3)!important;backdrop-filter:blur(12px) saturate(1.3)!important;box-shadow:inset 0 1px 0 var(--hm-seg-hi),0 14px 34px -22px var(--hm-seg-shadow)!important}
+html:is(.et-plight,:not(.et-plight)) #main-content.et-home .et-paths>*{background:var(--hm-path-bg)!important;border:1px solid var(--hm-path-line)!important;-webkit-backdrop-filter:blur(12px)!important;backdrop-filter:blur(12px)!important;box-shadow:inset 0 1px 0 var(--hm-path-hi),0 12px 30px -22px var(--hm-path-shadow)!important}
+@media (max-width:760px){html:is(.et-plight,:not(.et-plight)) #main-content.et-home .et-hero{padding-top:calc(var(--nav-h,77px) + 54px)!important}
+html:is(.et-plight,:not(.et-plight)) #main-content.et-home .et-hero .et-metrics{padding:18px 20px!important}
+}
+@media (prefers-reduced-transparency:reduce){html:is(.et-plight,:not(.et-plight)) #main-content.et-home .et-segments>*,html:is(.et-plight,:not(.et-plight)) #main-content.et-home .et-paths>*{background:var(--hm-card-solid)!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+}
 }
