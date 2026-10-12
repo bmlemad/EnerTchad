@@ -409,7 +409,7 @@ html.et-jlight .jtop:not(#_),html.et-plight .jtop:not(#_){background:linear-grad
 
 /* jlight: le scrollcue et le bandeau cookies gardent leur fond sombre — leur or doit rester celui du theme sombre (contraste 5.6:1 et 10.9:1), pas l'or-sur-clair #4C380B que le bloc G4 en ligne des pages journal leur applique par erreur (il vise la titraille sur fond clair) et qui tombe a 1.6:1 (axe, 50 pages journal). Specificite: body ajoute pour passer devant ce bloc en ligne; .sc-lb vise directement car la regle G4 le cible directement et bat l'heritage via .scrollcue. */
 html.et-jlight body .scrollcue:not(#_),html.et-jlight body .sc-lb:not(#_){color:#E8C36A!important}
-html.et-jlight body .cb-k:not(#_){color:#6B500F!important}html.et-jlight a.skip-link:not(#_):not(#__){color:#fff!important}html.et-plight #cta-band h2 em:not(#_):not(#__),html.et-jlight #cta-band h2 em:not(#_):not(#__){background-image:linear-gradient(110deg,#6B500F 30%,#10406F)!important}
+html.et-jlight body .cb-k:not(#_){color:var(--jl-gold-ink,#6B500F)!important}html.et-jlight a.skip-link:not(#_):not(#__){color:#fff!important}html.et-plight #cta-band h2 em:not(#_):not(#__),html.et-jlight #cta-band h2 em:not(#_):not(#__){background-image:linear-gradient(110deg,#6B500F 30%,#10406F)!important}
 
 /* == Modernisation mobile (31/07/2026) — benchmark majors (TotalEnergies/Shell/bp) ==
    Mobile uniquement (<=760px). M1 echelle typo du heros (h1 34-40px, leads >=16px au
@@ -783,8 +783,8 @@ html:not(#_):not(#__){-webkit-tap-highlight-color:transparent}
 html.et-plight footer:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
 html.et-jlight footer:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
 html.et-jlight .jfoot:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
-  background:linear-gradient(180deg,#F7F3EC 0%,#EFE9DE 100%)!important;
-  background-color:#F3EEE5!important;
+  background:var(--jl-foot-img,linear-gradient(180deg,#F7F3EC 0%,#EFE9DE 100%))!important;
+  background-color:var(--jl-foot,#F3EEE5)!important;
   color:#2A3648!important;
   border-top:1px solid rgba(26,35,48,.10)!important;
   text-shadow:none!important}
@@ -1835,7 +1835,7 @@ html:is(.et-plight,.et-jlight) .nav-in .brand-tx small:not(#_):not(#__):not(#___
 html:is(.et-plight,.et-jlight) .share-k:not(#_):not(#__):not(#___){color:#454F62!important}
 
 /* 241.3 — sens de pagination des communiques et de la FAQ (3,88) */
-html:is(.et-plight,.et-jlight) .pgr .dir:not(#_):not(#__):not(#___){color:#55400C!important}
+html:is(.et-plight,.et-jlight) .pgr .dir:not(#_):not(#__):not(#___){color:var(--jl-gold-ink,#55400C)!important}
 
 /* 241.4 — note ESG et liens bleus des sections en theme sombre (3,53) */
 html:not(.et-plight):not(.et-jlight) .esg-note a:not(#_):not(#__):not(#___),

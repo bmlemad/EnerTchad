@@ -975,10 +975,10 @@ html:is(.et-plight,.et-jlight) :is(.to-top,.toTop,#toTop,.lum-ctl,.floating-acti
 }
 html:is(.et-plight,.et-jlight) body{
   background:
-    radial-gradient(70% 55% at 8% 0%,rgba(232,195,106,.18),transparent 62%),
+    var(--jl-halos,radial-gradient(70% 55% at 8% 0%,rgba(232,195,106,.18),transparent 62%),
     radial-gradient(58% 52% at 96% 8%,rgba(90,167,240,.14),transparent 64%),
-    radial-gradient(62% 58% at 78% 100%,rgba(31,164,150,.10),transparent 66%),
-    #f5f8fb !important;
+    radial-gradient(62% 58% at 78% 100%,rgba(31,164,150,.10),transparent 66%)),
+    var(--jl-body-bg,#f5f8fb) !important;
   color:#172337 !important;
 }
 html:is(.et-plight,.et-jlight) body:before{opacity:.18}
