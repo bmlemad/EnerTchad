@@ -47,7 +47,7 @@ html:is(.et-plight,.et-jlight) body:not(.hm):not(.et-modern-exclude) .ttg-t:hove
 @media(prefers-reduced-motion:reduce){body:not(.hm):not(.et-modern-exclude) .ttg-t{transition:none}body:not(.hm):not(.et-modern-exclude) .ttg-t:hover{transform:none}}
 
 /* Deep-page component harmonization — CTAs, data tables and traversal rails */
-body:not(.hm):not(.et-modern-exclude) :is(.ivt-cta,.btn,.cta,.cta-btn,.action-btn){border-radius:12px;min-height:42px;transition:transform .2s ease,box-shadow .2s ease,background .2s ease,border-color .2s ease}
+body:not(.hm):not(.et-modern-exclude) :is(.ivt-cta,.btn,.cta,.cta-btn,.action-btn){border-radius:10px;min-height:42px;transition:transform .2s ease,box-shadow .2s ease,background .2s ease,border-color .2s ease}
 body:not(.hm):not(.et-modern-exclude) :is(.ivt-cta,.btn,.cta,.cta-btn,.action-btn):hover{transform:translateY(-1px)}
 html:is(.et-plight,.et-jlight) body:not(.hm):not(.et-modern-exclude) :is(.ivt-cta,.btn,.cta,.cta-btn,.action-btn){box-shadow:0 10px 24px rgba(24,45,67,.07),inset 0 1px 0 rgba(255,255,255,.7)}
 body:not(.hm):not(.et-modern-exclude) :is(table,.data-table,.data-table-wrap,.table-wrap){border-radius:16px;overflow:auto}
