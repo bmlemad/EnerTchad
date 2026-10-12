@@ -1,3 +1,9 @@
+// PERIME (12 octobre 2026) : les 12 pages de l atlas ont ete corrigees apres leur generation et ce
+// script ne les reproduit plus. Le relancer annulerait ces corrections : modifier les pages directement.
+if (!process.argv.includes('--force')) {
+  console.error('build_atlas_space.cjs est perime : modifiez les pages de l atlas directement (relancer ce script annulerait les corrections faites depuis).');
+  process.exit(1);
+}
 const fs = require('node:fs');
 const { htmlToDOM } = require('html-react-parser');
 const pages = [

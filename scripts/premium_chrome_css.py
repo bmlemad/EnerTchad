@@ -9,6 +9,14 @@ la source lisible.
 
 Usage : python3 scripts/premium_chrome_css.py
 """
+# PERIME (12 octobre 2026) : ce script ne produit plus que 42 Ko des 112 Ko de
+# assets/chrome/premium-chrome.css. La feuille a ete corrigee a la main depuis le
+# 1er octobre (en-tete encastre, icones du pied de page, menu mobile, journal en theme
+# clair...). Le relancer effacerait ces corrections : modifier la feuille directement.
+import sys
+if '--force' not in sys.argv:
+    sys.exit('premium_chrome_css.py est perime : modifiez assets/chrome/premium-chrome.css '
+             'directement (relancer ce script effacerait les corrections faites depuis le 1er octobre 2026).')
 NOTS = ''.join(f':not(#p{i})' for i in range(24))
 P = f'html{NOTS} #nav.pn'          # navigation
 F = f'html{NOTS} footer.pft'       # pied de page
