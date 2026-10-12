@@ -1,3 +1,71 @@
+/* Jetons de design EnerTchad — référence unique (audit du design, étape 3, 12 octobre 2026).
+   Palette retenue : celle des pôles, déjà rendue sur la majorité des pages.
+   1. Palette brute : une couleur, un nom, indépendant du thème.
+   2. Jetons d'usage : ce que les nouvelles règles doivent employer ; ils suivent le thème.
+   Les anciennes variables (--pp-*, --pn-*, noms de l'or) renvoient à la palette brute,
+   avec la valeur d'origine en secours : la présence de ces jetons ne change rien à l'écran.
+   Placés en tête de premium-chrome.css (chargée par toutes les pages HTML statiques) plutôt que
+   dans un fichier à part : une feuille de plus ralentissait la première visite et dépassait le
+   plafond de 12 feuilles du test de performance.
+   Thème : clair si <html> porte .et-plight (ou .et-jlight sur le journal), sombre sinon. */
+:root{
+  /* 1. Palette brute */
+  --et-white:#FFFFFF;
+  --et-mist:#F4F5F7;
+  --et-night:#0A1422;
+  --et-night-2:#0F1B2C;
+  --et-abyss:#07111F;
+  --et-ink-900:#0A1A2F;
+  --et-ink-600:#4B5870;
+  --et-snow:#F1F3F6;
+  --et-slate-300:#A9B4C4;
+  --et-line-light:#E3E6EB;
+  --et-line-dark:#22314A;
+  --et-gold-500:#B8913A;
+  --et-gold-300:#D9B567;
+  --et-gold-700:#7A5A12;
+  --et-gold-brand:#E8C36A;
+
+  /* Typographie */
+  --et-font-sans:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --et-font-display:"Instrument Serif","Instrument Serif Fallback G","Instrument Serif Fallback T","Instrument Serif Fallback N","Instrument Serif Fallback D","Iowan Old Style",Georgia,serif;
+  --et-font-mark:"National Park","Inter",system-ui,sans-serif;
+  --et-font-data:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --et-font-ar:"Noto Sans Arabic",system-ui,sans-serif;
+  --et-font-ar-display:"Noto Naskh Arabic",Georgia,serif;
+  /* Échelle (rem) : tirée des tailles les plus rendues le 12 octobre 2026 */
+  --et-fs-1:.72rem;  --et-fs-2:.84rem;  --et-fs-3:.94rem;  --et-fs-4:1rem;   --et-fs-5:1.15rem;
+  --et-fs-6:1.3rem;  --et-fs-7:1.5rem;  --et-fs-8:2.4rem;  --et-fs-9:3.8rem; --et-fs-10:5.4rem;
+
+  /* Arrondis */
+  --et-radius-sm:6px;
+  --et-radius-md:10px;   /* boutons */
+  --et-radius-lg:16px;
+  --et-radius-pill:999px;
+
+  /* 2. Jetons d'usage — thème clair */
+  --et-surface:var(--et-white);
+  --et-surface-alt:var(--et-mist);
+  --et-surface-deep:var(--et-abyss);
+  --et-ink:var(--et-ink-900);
+  --et-ink-2:var(--et-ink-600);
+  --et-line:var(--et-line-light);
+  --et-gold:var(--et-gold-500);
+  --et-gold-ink:var(--et-gold-700);
+}
+/* Jetons d'usage — thème sombre */
+html:not(.et-plight,.et-jlight){
+  --et-surface:var(--et-night);
+  --et-surface-alt:var(--et-night-2);
+  --et-ink:var(--et-snow);
+  --et-ink-2:var(--et-slate-300);
+  --et-line:var(--et-line-dark);
+  --et-gold:var(--et-gold-300);
+  --et-gold-ink:var(--et-gold-300);
+}
+/* Points de rupture de référence (les media queries n'acceptent pas de variables) :
+   640px (mobile), 900px (tablette), 1240/1241px (bascule du menu). */
+
 /* Polices de secours calees sur Instrument Serif (largeur moyenne des titres du site) :
    tant que la police n est pas chargee, les titres gardent le meme nombre de lignes.
    Limitees aux caracteres d Instrument Serif : les autres gardent Georgia comme avant. */
@@ -9,9 +77,9 @@
 @font-face{font-family:"Instrument Serif";src:url("/assets/fonts/InstrumentSerif-latin.woff2") format("woff2");font-weight:400;font-display:swap}
 @font-face{font-family:"National Park";src:url("/assets/fonts/NationalPark-Bold-latin.woff2") format("woff2");font-weight:700;font-display:swap}
 
-html:not(#p0):not(#p1):not(#p2):not(#p3):not(#p4):not(#p5):not(#p6):not(#p7):not(#p8):not(#p9):not(#p10):not(#p11):not(#p12):not(#p13):not(#p14):not(#p15):not(#p16):not(#p17):not(#p18):not(#p19):not(#p20):not(#p21):not(#p22):not(#p23) #nav.pn{--pn-bg:#FFFFFF;--pn-ink:#0A1A2F;--pn-ink2:#4B5870;--pn-line:#E3E6EB;--pn-gold:#B8913A;--pn-gold-ink:#7A5A12;--pn-mist:#F4F5F7;
+html:not(#p0):not(#p1):not(#p2):not(#p3):not(#p4):not(#p5):not(#p6):not(#p7):not(#p8):not(#p9):not(#p10):not(#p11):not(#p12):not(#p13):not(#p14):not(#p15):not(#p16):not(#p17):not(#p18):not(#p19):not(#p20):not(#p21):not(#p22):not(#p23) #nav.pn{--pn-bg:var(--et-white,#FFFFFF);--pn-ink:var(--et-ink-900,#0A1A2F);--pn-ink2:var(--et-ink-600,#4B5870);--pn-line:var(--et-line-light,#E3E6EB);--pn-gold:var(--et-gold-500,#B8913A);--pn-gold-ink:var(--et-gold-700,#7A5A12);--pn-mist:var(--et-mist,#F4F5F7);
   --pn-serif:"Instrument Serif","Instrument Serif Fallback G","Instrument Serif Fallback T","Instrument Serif Fallback N","Instrument Serif Fallback D","Iowan Old Style",Georgia,serif;--pn-sans:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif}
-html:not(.et-plight,.et-jlight):not(#p0):not(#p1):not(#p2):not(#p3):not(#p4):not(#p5):not(#p6):not(#p7):not(#p8):not(#p9):not(#p10):not(#p11):not(#p12):not(#p13):not(#p14):not(#p15):not(#p16):not(#p17):not(#p18):not(#p19):not(#p20):not(#p21):not(#p22):not(#p23) #nav.pn{--pn-bg:#0A1422;--pn-ink:#F1F3F6;--pn-ink2:#A9B4C4;--pn-line:#22314A;--pn-gold:#D9B567;--pn-gold-ink:#D9B567;--pn-mist:#0F1B2C}
+html:not(.et-plight,.et-jlight):not(#p0):not(#p1):not(#p2):not(#p3):not(#p4):not(#p5):not(#p6):not(#p7):not(#p8):not(#p9):not(#p10):not(#p11):not(#p12):not(#p13):not(#p14):not(#p15):not(#p16):not(#p17):not(#p18):not(#p19):not(#p20):not(#p21):not(#p22):not(#p23) #nav.pn{--pn-bg:var(--et-night,#0A1422);--pn-ink:var(--et-snow,#F1F3F6);--pn-ink2:var(--et-slate-300,#A9B4C4);--pn-line:var(--et-line-dark,#22314A);--pn-gold:var(--et-gold-300,#D9B567);--pn-gold-ink:var(--et-gold-300,#D9B567);--pn-mist:var(--et-night-2,#0F1B2C)}
 
 html:not(#p0):not(#p1):not(#p2):not(#p3):not(#p4):not(#p5):not(#p6):not(#p7):not(#p8):not(#p9):not(#p10):not(#p11):not(#p12):not(#p13):not(#p14):not(#p15):not(#p16):not(#p17):not(#p18):not(#p19):not(#p20):not(#p21):not(#p22):not(#p23) #nav.pn{background:var(--pn-bg)!important;border:0!important;border-bottom:1px solid var(--pn-line)!important;box-shadow:none!important;
   -webkit-backdrop-filter:none!important;backdrop-filter:none!important;color:var(--pn-ink)!important;font-family:var(--pn-sans)!important}

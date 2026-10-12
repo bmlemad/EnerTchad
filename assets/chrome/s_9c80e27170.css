@@ -1,6 +1,6 @@
 
 :root{--bg:#060B14;--bg2:#0B1422;--ink:#F5F7FA;--mut:rgba(245,247,250,.66);--hair:rgba(245,247,250,.12);
-  --gold:#D9A84F;--gold-l:#E8C36A;--blue-l:#5AA7F0;
+  --gold:#D9A84F;--gold-l:var(--et-gold-brand,#E8C36A);--blue-l:#5AA7F0;
   --fd:'Space Grotesk','Inter',system-ui,sans-serif;
   --fm:'JetBrains Mono',ui-monospace,monospace;
   --fb:'Inter',system-ui,-apple-system,sans-serif}
