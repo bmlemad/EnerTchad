@@ -93,7 +93,7 @@ input[type=range]:not(#_):not(#__):focus-visible{
    adressee par le lien (l'!important est necessaire : l'accent est pose en
    style en ligne dans le gabarit). Pastille decorative : memes valeurs dans
    les deux themes. */
-footer .foot-pole[href^="/amont"],footer .foot-pole[href^="/pole-amont"]{--pc:#E8C36A!important}
+footer .foot-pole[href^="/amont"],footer .foot-pole[href^="/pole-amont"]{--pc:var(--et-gold-brand,#E8C36A)!important}
 footer .foot-pole[href^="/intermediaire"],footer .foot-pole[href^="/pole-intermediaire"]{--pc:#5AA7F0!important}
 footer .foot-pole[href^="/aval"],footer .foot-pole[href^="/pole-aval"]{--pc:#F09A4A!important}
 footer .foot-pole[href^="/petrochimie"],footer .foot-pole[href^="/pole-enerchimie"]{--pc:#D177B4!important}

@@ -163,7 +163,7 @@ html.et-jlight footer,
 html.et-jlight .jfoot,
 html.et-plight footer{
   --blue-l:#5AA7F0!important;
-  --gold-l:#E8C36A!important;
+  --gold-l:var(--et-gold-brand,#E8C36A)!important;
 }
 
 /* ---- I13 : bouton .pof-cta de la colonne or ----

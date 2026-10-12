@@ -795,8 +795,8 @@ html:is(.et-plight,.et-jlight) body.hm:not(#_):not(#__):not(#___) main:not(#a1):
   --ease:cubic-bezier(.22,.61,.36,1);
   --amber-l:#F2B45A;
   --green-l:#34D399;
-  --kac:#E8C36A; --pac:#E8C36A; --ac:#E8C36A; --tc:#E8C36A; --sac:#E8C36A;
-  --tile-accent:#E8C36A; --cstep:#E8C36A;
+  --kac:var(--et-gold-brand,#E8C36A); --pac:var(--et-gold-brand,#E8C36A); --ac:#E8C36A; --tc:var(--et-gold-brand,#E8C36A); --sac:var(--et-gold-brand,#E8C36A);
+  --tile-accent:var(--et-gold-brand,#E8C36A); --cstep:#E8C36A;
   --wi:0; --d:0;
 }
 @media(min-width:1241px){
