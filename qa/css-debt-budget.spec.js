@@ -2,26 +2,27 @@ const { test, expect } = require('@playwright/test');
 
 // Garde-fou de la dette CSS (audit de la structure du design, 12 octobre 2026, étape 6).
 // Pour chaque page représentative, mesure ce que la page charge réellement : feuilles liées
-// et blocs <style> écrits dans la page. Les plafonds sont les valeurs mesurées le 12 octobre
-// 2026 (version c67699d8) : la dette ne doit plus grossir. Quand une consolidation la réduit,
-// abaissez le plafond concerné dans le même commit.
+// et blocs <style> écrits dans la page. Plafonds posés le 12 octobre 2026 (version c67699d8), abaissés
+// le même jour aux valeurs mesurées après l'en-tête du journal, les jetons et la palette des accueils
+// (-40 :not(#…) partout, -14 !important sur les accueils) : la dette ne doit plus grossir.
+// Quand une consolidation la réduit, abaissez le plafond concerné dans le même commit.
 // Les budgets de modern-ui-2026.css, nav_a.css et modern-inner-2026.css restent dans site.spec.js.
 
 const base = process.env.SITE_URL || 'https://enertchad.com/';
 
 // [page, !important, :not(#…), CSS dans la page (octets), plus longue chaîne de :not(#…)]
 const budgets = [
-  ['/', 3273, 16605, 0, 44],
-  ['/index-en', 3272, 16605, 0, 44],
-  ['/amont/', 3790, 22913, 7336, 40],
-  ['/aval/raffinage', 3730, 22760, 55141, 40],
-  ['/carrieres', 3744, 22826, 65707, 40],
-  ['/contact', 3906, 24660, 72405, 40], // +1 octet le 12/10 : bouton du formulaire 8px -> 10px
-  ['/carnets', 3737, 22942, 60393, 40],
-  ['/journal-criblage-eor', 2417, 12288, 49241, 40],
-  ['/atlas/', 3929, 24179, 123830, 44],
-  ['/boutique/', 3646, 22695, 56782, 40],
-  ['/ar-societe', 2505, 20031, 0, 40],
+  ['/', 3259, 16565, 0, 44],
+  ['/index-en', 3258, 16565, 0, 44],
+  ['/amont/', 3790, 22873, 7336, 40],
+  ['/aval/raffinage', 3730, 22720, 55141, 40],
+  ['/carrieres', 3744, 22786, 65707, 40],
+  ['/contact', 3906, 24620, 72405, 40],
+  ['/carnets', 3737, 22902, 60393, 40],
+  ['/journal-criblage-eor', 2417, 12248, 49241, 40],
+  ['/atlas/', 3929, 24139, 123830, 44],
+  ['/boutique/', 3646, 22655, 56782, 40],
+  ['/ar-societe', 2505, 19991, 0, 40],
   ['/essentiel', 2, 2, 0, 2],
 ];
 
