@@ -16,7 +16,7 @@ const budgets = [
   ['/amont/', 3790, 22913, 7336, 40],
   ['/aval/raffinage', 3730, 22760, 55141, 40],
   ['/carrieres', 3744, 22826, 65707, 40],
-  ['/contact', 3906, 24660, 72404, 40],
+  ['/contact', 3906, 24660, 72405, 40], // +1 octet le 12/10 : bouton du formulaire 8px -> 10px
   ['/carnets', 3737, 22942, 60393, 40],
   ['/journal-criblage-eor', 2417, 12288, 49241, 40],
   ['/atlas/', 3929, 24179, 123830, 44],
