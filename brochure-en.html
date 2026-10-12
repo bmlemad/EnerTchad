@@ -608,6 +608,8 @@ function setMenu(open){
     document.body.style.overflow=open?'hidden':'';
     document.body.style.overflowX='hidden';
   }
+  // à la fermeture, replier les rubriques ouvertes (même comportement que u2_e8be195d19be.js)
+  if(!open){links.querySelectorAll('.nav-item.open').forEach(it=>{it.classList.remove('open');const t=it.querySelector('.nav-trigger');if(t)t.setAttribute('aria-expanded','false');});}
 }
 tog.setAttribute('aria-expanded','false');
 tog.setAttribute('aria-controls','navLinks');
@@ -624,7 +626,7 @@ links.querySelectorAll('.nav-trigger').forEach(btn=>{
   });
 });
 // fermeture à la touche Échap
-document.addEventListener('keydown',e=>{if(e.key==='Escape'&&links.classList.contains('open'))setMenu(false);});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&links.classList.contains('open')){setMenu(false);tog.focus({preventScroll:true});}});
 // fermeture au clic hors du menu
 document.addEventListener('click',e=>{
   if(links.classList.contains('open')&&!navEl.contains(e.target))setMenu(false);
