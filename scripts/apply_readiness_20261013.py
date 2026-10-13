@@ -290,3 +290,17 @@ if __name__ == '__main__':
         new = re.sub(r'/assets/chrome/cmdk_en\.js(?:\?b=\d+)?', '/assets/chrome/cmdk_en.js?b=2026101305', old)
         if new != old:
             page.write_text(new, encoding='utf-8')
+
+    for asset_name in ('c_abd9013c3955.js', 'c_df4f446df566.js'):
+        asset = ROOT / 'assets/chrome' / asset_name
+        old = asset.read_text(encoding='utf-8')
+        new = old.replace("url:'/#poles'", "url:'/#chaine'").replace("t:'Nos Pôles d’activité'", "t:'Programme pétrolier intégré'")
+        if new != old:
+            asset.write_text(new, encoding='utf-8')
+    for page in ROOT.rglob('*.html'):
+        if any(part in {'.git', '.next', 'out', 'node_modules', 'public', 'reports', 'qa'} for part in page.relative_to(ROOT).parts):
+            continue
+        old = page.read_text(encoding='utf-8')
+        new = re.sub(r'/assets/chrome/(c_abd9013c3955|c_df4f446df566)\.js(?:\?b=\d+)?', r'/assets/chrome/\1.js?b=2026101305', old)
+        if new != old:
+            page.write_text(new, encoding='utf-8')

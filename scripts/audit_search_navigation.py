@@ -1,6 +1,7 @@
 """Validate indexed search pages and fragments against the production export."""
 import argparse
 import json
+import re
 from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import unquote, urlsplit
@@ -67,10 +68,10 @@ def main():
     rules = read_rules(args.redirects)
     count = 0
     errors = []
-    for name in ('cmdk_en.js', 'cmdk_extra.js'):
+    for name in ('cmdk_en.js', 'cmdk_extra.js', 'c_abd9013c3955.js', 'c_df4f446df566.js'):
         path = args.root / 'assets/chrome' / name
         text = path.read_text(encoding='utf-8')
-        entries = json.loads(text.split('=', 1)[1].strip().rstrip(';'))
+        entries = (json.loads(text.split('=', 1)[1].strip().rstrip(';')) if name.startswith('cmdk_') else [{'url': url} for url in re.findall(r"\burl\s*:\s*'([^']+)'", text)])
         for entry in entries:
             count += 1
             try:
@@ -79,7 +80,7 @@ def main():
                 errors.append(str(error))
     if errors:
         raise SystemExit('\n'.join(errors))
-    print(f'Search navigation verified: {count} French and English destinations')
+    print(f'Search navigation verified: {count} French, English and fallback destinations')
 
 
 if __name__ == '__main__':
