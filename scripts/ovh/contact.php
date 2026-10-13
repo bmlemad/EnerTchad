@@ -22,7 +22,8 @@ if (($_SERVER['REQUEST_METHOD'] ?? '') !== 'POST') {
     header('Allow: POST');
     refuse(405);
 }
-if ((int)($_SERVER['CONTENT_LENGTH'] ?? 0) > 20000) {
+// URL encoding can use twelve bytes per Unicode character, plus field overhead.
+if ((int)($_SERVER['CONTENT_LENGTH'] ?? 0) > 100000) {
     refuse(413);
 }
 
@@ -32,7 +33,10 @@ $field = static function (string $name, int $max): string {
         return '';
     }
     $value = trim(str_replace("\0", '', $value));
-    return mb_substr($value, 0, $max, 'UTF-8');
+    if (!mb_check_encoding($value, 'UTF-8') || mb_strlen($value, 'UTF-8') > $max) {
+        refuse(422);
+    }
+    return $value;
 };
 
 $form = $field('form-name', 40);
@@ -46,10 +50,10 @@ if ($field('website', 200) !== '') {
     exit;
 }
 
-$name = $field('name', 120);
-$email = $field('email', 160);
+$name = $field('name', 100);
+$email = $field('email', 254);
 $type = $field('request_type', 80);
-$organization = $field('organization', 160);
+$organization = $field('organization', 200);
 $message = $field('message', 5000);
 if ($name === '' || $message === '' || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
     refuse(422);

@@ -1,5 +1,5 @@
 import { readFile, copyFile, mkdir, stat, rm, writeFile } from 'node:fs/promises';
-import { execFileSync } from 'node:child_process';
+import { deploymentRevision } from './revision.mjs';
 import { dirname } from 'node:path';
 import { buildSubsites } from './subsites.mjs';
 const manifest = JSON.parse(await readFile('.generated/site.json', 'utf8'));
@@ -19,5 +19,5 @@ for (const page of manifest.pages) {
 }
 console.log(`Normalized ${manifest.pages.length} Next.js exports for Netlify pretty URLs.`);
 await buildSubsites();
-const revision = process.env.COMMIT_REF || execFileSync('git', ['rev-parse', 'HEAD'], {encoding:'utf8'}).trim();
+const revision = await deploymentRevision(manifest);
 await writeFile('out/deploy-version.txt', revision + '\n');
