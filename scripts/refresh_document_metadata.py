@@ -61,6 +61,42 @@ def update_cards(text, documents, en):
     return re.sub(r'<a\b[^>]*>.*?</a>', card, text, flags=re.S)
 
 
+def disclose_download_language(text, documents, page_name):
+    if not re.search(r'<html\b[^>]*\blang=["\']en(?:-[^"\']*)?["\']', text):
+        return text
+    by_path = {doc['path']: doc for doc in documents}
+
+    def label_link(match):
+        anchor = match.group()
+        href = re.search(r'href=["\']([^"\']+)', anchor)
+        if not href:
+            return anchor
+        target = html.unescape(href[1])
+        # The English brochure landing page has an existing English PDF.
+        # The publication library intentionally offers both language versions.
+        if page_name == 'brochure-en.html' and target == '/Brochure_EnerTchad.pdf' and '/Brochure_EnerTchad_EN.pdf' in by_path:
+            return anchor.replace(href[1], '/Brochure_EnerTchad_EN.pdf', 1)
+        doc = by_path.get(target)
+        if not doc or doc['language'] not in ('fr', 'ar'):
+            return anchor
+        language = 'French' if doc['language'] == 'fr' else 'Arabic'
+        visible = html.unescape(re.sub(r'<[^>]+>', ' ', anchor))
+        if re.search(r'\b' + language + r'\b|\b' + doc['language'].upper() + r'\b', visible, re.I):
+            return anchor
+        suffix = ' — ' + language + ' ' + doc['format']
+        heading = re.search(r'<(h[1-6]|b|strong)\b[^>]*>.*?</\1>', anchor, re.S)
+        if heading:
+            end = '</' + heading[1] + '>'
+            updated = heading.group().replace(end, suffix + end)
+            anchor = anchor[:heading.start()] + updated + anchor[heading.end():]
+        else:
+            anchor = anchor.replace('</a>', suffix + '</a>')
+        anchor = re.sub(r'aria-label="([^"]+)"', lambda m: 'aria-label="' + m[1] + html.escape(suffix, quote=True) + '"', anchor, count=1)
+        return anchor
+
+    return re.sub(r'<a\b[^>]*>.*?</a>', label_link, text, flags=re.S)
+
+
 def main():
     path = ROOT / 'assets/data/document-registry.json'
     registry = json.loads(path.read_text(encoding='utf-8'))
@@ -87,6 +123,14 @@ def main():
             new = re.sub(r'/assets/chrome/document-room\.js(?:\?b=\d+)?', '/assets/chrome/document-room.js?b=2026101302', new)
             if new != old:
                 page.write_text(new, encoding='utf-8')
+    excluded = {'.git', '.next', 'out', 'node_modules', 'public', 'reports', 'qa'}
+    for page in ROOT.rglob('*.html'):
+        if any(part in excluded for part in page.relative_to(ROOT).parts):
+            continue
+        old = page.read_text(encoding='utf-8')
+        new = disclose_download_language(old, registry['documents'], page.name)
+        if new != old:
+            page.write_text(new, encoding='utf-8')
     print(f"Public document metadata verified: {len(seen)} files")
 
 

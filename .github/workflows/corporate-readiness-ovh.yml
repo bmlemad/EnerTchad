@@ -2,7 +2,7 @@ name: OVH — corporate readiness deployment
 
 on:
   push:
-    branches: [improve/search-navigation-20261013]
+    branches: [improve/download-languages-20261013]
   workflow_dispatch:
 
 concurrency:
@@ -45,6 +45,8 @@ jobs:
         env:
           NEXT_TELEMETRY_DISABLED: '1'
       - run: npm run check:migration
+      - name: Validate English download language disclosures
+        run: python3 scripts/audit_download_languages.py
       - name: Validate every indexed search destination
         run: python3 scripts/audit_search_navigation.py --root out --redirects _redirects
       - name: Check content, routes and language pairs

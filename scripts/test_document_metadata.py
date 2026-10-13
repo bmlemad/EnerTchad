@@ -10,6 +10,31 @@ import refresh_document_metadata as metadata
 
 
 class DocumentMetadataTests(unittest.TestCase):
+    def test_foreign_language_download_is_visible_and_announced(self):
+        doc = dict(path='/report.pdf', language='fr', format='PDF')
+        source = '<html lang="en"><a href="/report.pdf" aria-label="Download report">2026 update</a></html>'
+        result = metadata.disclose_download_language(source, [doc], 'projets-en.html')
+        self.assertIn('2026 update — French PDF</a>', result)
+        self.assertIn('aria-label="Download report — French PDF"', result)
+        self.assertEqual(result, metadata.disclose_download_language(result, [doc], 'projets-en.html'))
+
+    def test_document_card_title_discloses_language(self):
+        doc = dict(path='/deck.pptx', language='fr', format='PPTX')
+        source = '<html lang="en"><a href="/deck.pptx"><span>02</span><b>Investor presentation</b><span>PPTX · deck</span></a></html>'
+        result = metadata.disclose_download_language(source, [doc], 'investisseurs-en.html')
+        self.assertIn('<b>Investor presentation — French PPTX</b>', result)
+
+    def test_english_brochure_uses_existing_english_pdf_but_library_retains_both(self):
+        docs = [dict(path='/Brochure_EnerTchad.pdf', language='fr', format='PDF'), dict(path='/Brochure_EnerTchad_EN.pdf', language='en', format='PDF')]
+        source = '<html lang="en"><a href="/Brochure_EnerTchad.pdf">Download brochure</a></html>'
+        self.assertIn('href="/Brochure_EnerTchad_EN.pdf"', metadata.disclose_download_language(source, docs, 'brochure-en.html'))
+        self.assertIn('href="/Brochure_EnerTchad.pdf"', metadata.disclose_download_language(source, docs, 'publications-en.html'))
+
+    def test_disclosed_and_french_page_links_stay_unchanged(self):
+        docs = [dict(path='/report.pdf', language='fr', format='PDF')]
+        for source in ['<html lang="en"><a href="/report.pdf">Report — French PDF</a></html>', '<html lang="fr"><a href="/report.pdf">Rapport</a></html>']:
+            self.assertEqual(source, metadata.disclose_download_language(source, docs, 'page.html'))
+
     def test_refreshes_stale_integrity_without_inventing_document_version(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory).resolve()
