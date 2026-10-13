@@ -119,7 +119,8 @@ def header(old_header, old_nav, path):
     langs = ''.join(f'<a href="{escape(a["href"])}"' + (' aria-current="page"' if 'on' in (a.get('class') or []) else '')
                     + (f' lang="{a["lang"]}"' if a.get('lang') else '') + f'>{inner(a)}</a>' for a in lang.find_all('a'))
     inv = next((a for a in old_nav.find_all('a') if 'investisseurs' in a['href']), None)
-    cta = f'<a class="arh-cta" href="{escape(inv["href"])}">{inner(inv)}</a>' if inv is not None else ''
+    # Cohérence 2026-10-13 (audit, chantier 7) : libellé court « استثمر » (Investir), comme le CTA de la nav principale.
+    cta = f'<a class="arh-cta" href="{escape(inv["href"])}">{CTA_AR}</a>' if inv is not None else ''
     return (f'<header class="arh"><div class="arh-in"><a class="arh-brand" href="/ar">{str(svg) if svg else ""}'
             f'<span dir="ltr">Ener<b>Tchad</b></span></a>'
             f'<nav class="arh-nav" aria-label="{escape(old_nav.get("aria-label", "التنقل بالعربية"))}">{links}</nav>'
@@ -127,7 +128,41 @@ def header(old_header, old_nav, path):
             f'</div></header>')
 
 
-def hero(h, img, hi=None):
+CTA_AR = 'استثمر'
+
+
+def crumb_from_ld(html):
+    """Cohérence 2026-10-13 (audit, chantier 8) : fil d'Ariane visible repris du BreadcrumbList JSON-LD de la page.
+    Premier élément « الرئيسية » vers /ar, séparateur « ‹ » masqué aux lecteurs d'écran, page courante en aria-current.
+    Rien pour l'accueil arabe (une seule entrée)."""
+    import json
+    items = []
+    for m in re.finditer(r'<script type="application/ld\+json"[^>]*>([\s\S]*?)</script>', html):
+        try:
+            data = json.loads(m.group(1))
+        except ValueError:
+            continue
+        stack = [data]
+        while stack:
+            x = stack.pop()
+            if isinstance(x, list):
+                stack.extend(x)
+            elif isinstance(x, dict):
+                if x.get('@type') == 'BreadcrumbList':
+                    items = sorted(x.get('itemListElement', []), key=lambda e: e.get('position', 0))
+                stack.extend(v for v in x.values() if isinstance(v, (list, dict)))
+    if len(items) < 2:
+        return ''
+    parts = ['<a href="/ar">الرئيسية</a>']
+    for e in items[1:-1]:
+        url = e.get('item', '')
+        url = url['@id'] if isinstance(url, dict) else url
+        parts.append(f'<a href="{escape(re.sub(r"^https://enertchad.com", "", url))}">{escape(e.get("name", ""))}</a>')
+    parts.append(f'<span aria-current="page">{escape(items[-1].get("name", ""))}</span>')
+    return '<nav class="pp-crumb" aria-label="مسار التنقل">' + '<span aria-hidden="true">‹</span>'.join(parts) + '</nav>'
+
+
+def hero(h, img, hi=None, crumb=''):
     k = h.select_one('.kick')
     h1 = h.find('h1')
     lead = h.select_one('p.lead') or h.find('p')
@@ -146,7 +181,7 @@ def hero(h, img, hi=None):
               f'{text(a.find("time"))} — {text(a.find("span"))}</a></p>')
     himg = (f'<img class="pp-hero-img" src="/assets/img/p/{img}-1400.webp" srcset="/assets/img/p/{img}-800.webp 800w, '
             f'/assets/img/p/{img}-1400.webp 1400w" sizes="100vw" alt="{ALT_AR[img]}" width="1400" height="934" fetchpriority="high" decoding="async">')
-    return (f'<header class="pp-hero pp-hero-s" id="top-pole">{himg}<div class="pp-wrap">'
+    return (f'<header class="pp-hero pp-hero-s" id="top-pole">{himg}<div class="pp-wrap">' + crumb
             + (f'<p class="pp-k">{text(k)}</p>' if k is not None else '') + f'<h1>{inner(h1)}</h1>'
             + (f'<p class="pp-sublead">{inner(lead)}</p>' if lead is not None else '')
             + (f'<div class="pp-actions">{btns}</div>' if btns else '') + figs + hl + '</div></header>')
@@ -322,7 +357,7 @@ def rebuild(path, img, phone, nav):
         subnav = '<nav class="pp-sub" aria-label="أقسام هذه الصفحة"><div class="pp-wrap">' + ''.join(
             f'<a href="{escape(hh)}">{escape(lb)}</a>' for hh, lb in toc[:10]) + '</div></nav>'
     motto = 'من الصخر الأم إلى المضخة.'
-    main_h = (f'<main id="main-content" tabindex="-1" class="ppl" dir="rtl">\n{hero(old_hero, img, hi)}\n{subnav}\n' + '\n\n'.join(out)
+    main_h = (f'<main id="main-content" tabindex="-1" class="ppl" dir="rtl">\n{hero(old_hero, img, hi, crumb_from_ld(h))}\n{subnav}\n' + '\n\n'.join(out)
               + f'\n{SUBNAV_JS}\n</main>')
     # scripts de fin de page utiles (enregistrement du service worker, etc.)
     tail = ''.join(str(x) for x in body.find_all('script', recursive=False)
