@@ -43,3 +43,10 @@ html[lang="en"] .sp-hero .sp-trust::before{content:"Key facts"}
 
 /* Thème sombre (classe sp-dark posée par la mise en page, voir strategic-premium.css). */
 html.sp-dark{--ip-top:rgba(10,20,34,.72);--ip-band-a:#0F1B2C;--ip-band-b:#0A1422}
+
+/* Fil d'Ariane sur le héros sombre du Centre investisseurs (13 oct. 2026) : le héros reste sombre
+   en thème clair ; sans ces règles le fil prenait l'encre #0A1A2F et devenait illisible. */
+.sp .sp-hero .sp-crumb{color:rgba(243,238,226,.72)}
+.sp .sp-hero .sp-crumb a{color:#f3eee2;text-decoration-color:rgba(226,184,92,.7)}
+.sp .sp-hero .sp-crumb a:focus-visible{outline-color:#e2b85c}
+.sp .sp-hero .sp-crumb [aria-current=page]{color:#f6f1e4}
