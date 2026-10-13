@@ -3,8 +3,10 @@
    6. .et-theme-hdr : bascule clair/sombre d'en-tête, même bouton que #arh-theme.
       Dans la nav principale, le bouton porte aussi .nav-search et en reprend le style.
    7. .sp-top.et-al : en-tête des pages React aligné sur la nav principale
-      (37 px + 108 px = 146 px ; Contact, FR · EN, ع, Investir). L'en-tête des espaces
-      Atlas / Clients est dans subsites.css (mêmes jetons).
+      (37 px + 108 px = 146 px ; Contact, FR · EN, ع, Investir). Sur mobile (≤ 900 px) :
+      une seule barre de 64 px (marque, bascule, Menu) ; Contact, FR · EN, ع et Investir
+      passent en tête du menu (.et-al-mutil). L'en-tête des espaces Atlas / Clients est
+      dans subsites.css (mêmes jetons, même disposition).
    8. .sp-crumb : fil d'Ariane des pages React, même balisage que .pp-crumb. */
 
 /* ---------- 6. Bascule de thème ---------- */
@@ -42,10 +44,14 @@ html.sp-dark .sp-top.et-al{--al-bg:rgba(13,22,38,.94);--al-line:rgba(255,255,255
 .sp-top.et-al .et-theme-hdr{color:var(--al-ink);background:var(--al-links);box-shadow:var(--al-links-sh)}
 .sp-top.et-al .et-theme-hdr:hover{color:var(--al-gold)}
 .sp-top.et-al .sp-mobile-menu{display:none}
+.sp-top.et-al .et-al-mutil{display:flex;flex-wrap:wrap;gap:8px;padding:0 0 10px;margin:0 0 4px;border-bottom:1px solid var(--al-line)}
+.sp-top.et-al .et-al-mutil a{min-height:44px;padding:0 14px;border-radius:999px;background:var(--al-pill);font-size:14px;font-weight:500;color:var(--al-muted)}
+.sp-top.et-al .et-al-mutil a:hover{color:var(--al-ink)}
+.sp-top.et-al .et-al-mutil .et-al-lang b{color:var(--al-ink);margin:0 .1em}
+.sp-top.et-al .et-al-mutil a.et-al-invest{padding:0 18px;background:var(--al-cta-bg);color:var(--al-cta-ink);font-weight:600}
 @media(max-width:900px){
   .sp-top.et-al{position:relative}
-  .sp-top.et-al .et-al-pill{gap:14px;padding:2px 0 2px 8px;background:none}
-  .sp-top.et-al .et-al-util a.et-al-invest{padding:0 12px}
+  .sp-top.et-al .et-al-util{display:none}
   .sp-top.et-al .sp-topin{height:auto;min-height:64px;padding:10px 0;gap:12px}
   .sp-top.et-al .sp-nav.et-al-links{display:none}
   .sp-top.et-al .et-theme-hdr{width:44px;height:44px;margin-inline-start:auto}

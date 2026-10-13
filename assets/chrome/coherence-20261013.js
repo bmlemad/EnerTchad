@@ -40,6 +40,15 @@
     if(x.getAttribute('data-et-bound'))return;x.setAttribute('data-et-bound','1');
     x.addEventListener('click',function(){set(!dark())});
   });
+  // Chantier 7 — menus mobiles des en-têtes Atlas / Clients (details.et-al-tog) et React
+  // (details.sp-mobile-menu) : Échap le referme et rend le focus au bouton « Menu », un lien
+  // suivi le referme, comme le menu principal (c_ac04328f0f47.js).
+  var tog=document.querySelector('#nav details.et-al-tog,.sp-top details.sp-mobile-menu');
+  if(tog&&!tog.getAttribute('data-et-bound')){
+    tog.setAttribute('data-et-bound','1');
+    document.addEventListener('keydown',function(e){if(e.key==='Escape'&&tog.open){tog.open=false;tog.querySelector('summary').focus()}});
+    tog.parentNode.addEventListener('click',function(e){if(tog.open&&e.target.closest&&e.target.closest('a'))tog.open=false});
+  }
   sync();
   new MutationObserver(sync).observe(d,{attributes:true,attributeFilter:['class']});
 }catch(e){}})();
