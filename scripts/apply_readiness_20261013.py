@@ -271,3 +271,5 @@ def main():
 
 if __name__ == '__main__':
     main()
+    import runpy
+    runpy.run_path(str(ROOT / 'scripts/refresh_document_metadata.py'), run_name='__main__')
