@@ -59,7 +59,20 @@ export function renderSubsite(html, page, space, hosted = false) {
     [pathFor(catalogue) + '#boutique', en ? 'Prepare a quote' : 'Préparer un devis', false]
   ] : atlasPages.filter(p => p.language === page.language).map((p, i) => [pathFor(p), (en ? ['Atlas home', 'Map', 'Basins & fields', 'Infrastructure', 'Sector framework', 'Sources'] : ['Accueil Atlas', 'Carte', 'Bassins & champs', 'Infrastructures', 'Cadre sectoriel', 'Sources'])[i], page.kind === p.kind]);
   const label = space === 'boutique' ? en ? 'Customer space' : 'Espace Clients' : 'Atlas';
-  const header = `<nav id="nav" class="et-space-header" aria-label="${en ? 'Main navigation' : 'Navigation principale'}"><div class="et-space-top"><a href="${corporate}${en ? '/index-en' : '/'}">← ${en ? 'EnerTchad group' : 'Groupe EnerTchad'}</a><div><a href="${partnerUrl}">${partner === 'atlas' ? 'Atlas' : en ? 'Customer space' : 'Espace Clients'}</a><a href="${pathFor(sibling)}" lang="${en ? 'fr' : 'en'}">${en ? 'Français' : 'English'}</a></div></div><div class="et-space-brand"><a href="${pathFor(pages.find(p => p.language === page.language && (p.kind === 'home' || p.kind === 'clients')))}" aria-label="EnerTchad — ${label}"><img src="/icon-192.png" alt="" width="40" height="40"><span>EnerTchad <strong>${label}</strong></span></a><a class="et-space-contact" href="${corporate}/contact${en ? '-en' : ''}">${space === 'atlas' ? 'Contact EnerTchad' : en ? 'Contact sales' : 'Contact commercial'}</a></div><div class="et-space-links">${links.map(([href, text, active]) => `<a href="${href}"${active ? ' aria-current="page"' : ''}>${text}</a>`).join('')}</div></nav>`;
+  // Header aligned on the corporate navigation (audit, item 7): utility bar with
+  // Contact, FR · EN, Arabic and Invest — the same destinations as the source page's
+  // own #nav (nx-langx → /ar, nx-invest → /investisseurs#souscrire) — then brand,
+  // space links and the theme switch (item 6). Styles: assets/chrome/subsites.css;
+  // theme switch behaviour: assets/chrome/coherence-20261013.js.
+  const partnerLabel = partner === 'atlas' ? 'Atlas' : en ? 'Customer space' : 'Espace Clients';
+  const themeLabel = en ? 'Dark mode' : 'Mode sombre';
+  const themeButton = `<button type="button" class="et-theme-hdr" aria-pressed="false" aria-label="${themeLabel}" title="${themeLabel}"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="8.2"/><path d="M12 3.8a8.2 8.2 0 0 0 0 16.4z" fill="currentColor"/></svg></button>`;
+  // Exactly one a[lang] in #nav (the FR/EN switch, as before); the Arabic link carries
+  // lang on its letter only. Class names et-space-top / et-space-links are kept for QA.
+  const languageSwitch = `<a class="et-al-lang" href="${pathFor(sibling)}" lang="${en ? 'fr' : 'en'}" aria-label="${en ? 'Version française' : 'English version'}" title="${en ? 'Français' : 'English'}">${en ? '<b>FR</b>&nbsp;·&nbsp;EN' : 'FR&nbsp;·&nbsp;<b>EN</b>'}</a>`;
+  const arabic = `<a class="et-al-ar" href="${corporate}/ar" aria-label="${en ? 'Arabic version' : 'Version arabe'}"><span lang="ar">ع</span></a>`;
+  const contact = `${corporate}/contact${en ? '-en' : ''}`;
+  const header = `<nav id="nav" class="et-space-header et-al" aria-label="${en ? 'Main navigation' : 'Navigation principale'}"><div class="et-space-top et-al-util"><div class="et-al-utin"><a class="et-al-back" href="${corporate}${en ? '/index-en' : '/'}" aria-label="${en ? 'EnerTchad group' : 'Groupe EnerTchad'}">←&nbsp;<span class="et-al-long">${en ? 'EnerTchad group' : 'Groupe EnerTchad'}</span></a><span class="et-al-pill"><a class="et-al-partner" href="${partnerUrl}">${partnerLabel}</a><a class="et-al-contact" href="${contact}">Contact</a>${languageSwitch}${arabic}<a class="et-al-invest" href="${corporate}/investisseurs${en ? '-en' : ''}#souscrire">${en ? 'Invest' : 'Investir'}</a></span></div></div><div class="et-al-bar"><a class="et-al-brand" href="${pathFor(pages.find(p => p.language === page.language && (p.kind === 'home' || p.kind === 'clients')))}" aria-label="EnerTchad — ${label}"><svg class="et-al-mk" aria-hidden="true" focusable="false" viewBox="4 4 192 192" width="44" height="44"><defs><linearGradient id="etalg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#DBAE4A"/><stop offset="1" stop-color="#C2922E"/></linearGradient></defs><path d="M100 96L126.98 67.9A37.4 37.4 0 1 0 73.02 67.9Z" fill="url(#etalg)"/><path d="M96 100L67.9 73.02A37.4 37.4 0 1 0 67.9 126.98Z" fill="#1E6EC2"/><path d="M104 100L132.1 126.98A37.4 37.4 0 1 0 132.1 73.02Z" fill="#218A2C"/><path d="M100 104L73.02 132.1A37.4 37.4 0 1 0 126.98 132.1Z" fill="#E8CD7F"/></svg><span class="et-al-tx"><span>Ener<span>Tchad</span></span><small>${label}</small></span></a><div class="et-space-links et-al-links">${links.map(([href, text, active]) => `<a href="${href}"${active ? ' aria-current="page"' : ''}>${text}</a>`).join('')}<a class="et-al-m" href="${contact}">Contact</a></div>${themeButton}</div></nav>`;
   const all = nodes(output);
   const oldNav = all.find(n => n.attribs?.id === 'nav');
   if (!oldNav) throw Error('Missing main navigation in ' + page.source);
@@ -82,7 +95,8 @@ export function renderSubsite(html, page, space, hosted = false) {
   }
   for (const [start, end, text] of replacements.sort((a, b) => b[0] - a[0])) output = output.slice(0, start) + text + output.slice(end);
   output = output.replace('<html', `<html data-et-space="${space}"`)
-    .replace('</head>', '<link rel="stylesheet" href="/assets/chrome/subsites.css"></head>')
+    .replace('</head>', '<link rel="stylesheet" href="/assets/chrome/subsites.css"><link rel="stylesheet" href="/assets/chrome/coherence-20261013.css"></head>')
+    .replace(/<\/body>(?![\s\S]*<\/body>)/, '<script defer src="/assets/chrome/coherence-20261013.js"></script></body>')
     .replace(/src="\/assets\/chrome\/c_ac04328f0f47\.js[^\"]*"/g, 'src="/assets/chrome/subsites-core.js"');
   // The source Atlas stylesheet intentionally has very high specificity.
   // Inline spacing overrides its fixed-header offset without another CSS arms race.
