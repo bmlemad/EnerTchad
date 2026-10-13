@@ -4,15 +4,17 @@ import { readFileSync } from 'node:fs';
 import { runInNewContext } from 'node:vm';
 
 const script = readFileSync('assets/chrome/contact_profiles.js', 'utf8');
-function fixture(lang, search = '') {
+function fixture(lang, search = '', hash = '') {
   const english = lang === 'en';
   const names = english ? ['Supply / B2B contract', 'E&P operator — study / pilot / OFS', 'Industrial or technical partnership', 'Public contracts / Institutions (B2G)', 'Investment', 'Application / Talent', 'Press', 'Other'] : ['Approvisionnement / Contrat B2B', 'Opérateur E&P — étude / pilote / OFS', 'Partenariat industriel ou technique', 'Marchés publics / Institutions (B2G)', 'Investissement', 'Candidature / Talents', 'Presse', 'Autre'];
   const options = [{ value: '', dataset: {} }, ...names.map(value => ({ value, dataset: {} })), ...['particulier', 'fournisseur', 'centrale-achat', 'achats'].map(profile => ({ value: profile, dataset: { contactProfile: profile } }))];
   const listeners = {};
   const select = { options, value: '', addEventListener(name, callback) { listeners[name] = callback; } };
+  let focused = false;
+  const form = { querySelector() { return select; }, focus() { focused = true; } };
   const links = ['/contact?source=menu#formulaire', '/contact-en', 'https://other.example/contact', '/achats', 'mailto:', '/contact-en?profil=invest', '/contact-en?profil=fournisseur'].map(href => ({ href, textContent: '', attrs: {}, getAttribute(name) { return name === 'href' ? this.href : (this.attrs[name] || null); }, setAttribute(name, value) { if (name === 'href') this.href = value; else this.attrs[name] = value; } }));
-  runInNewContext(script, { URL, URLSearchParams, location: { search, origin: 'https://enertchad.com' }, document: { documentElement: { lang }, getElementById() { return { querySelector() { return select; } }; }, querySelectorAll() { return links; } } });
-  return { select, links, change(value) { select.value = value; listeners.change(); } };
+  runInNewContext(script, { URL, URLSearchParams, location: { search, hash, origin: 'https://enertchad.com' }, document: { documentElement: { lang }, getElementById() { return form; }, querySelectorAll() { return links; } } });
+  return { select, links, get focused() { return focused; }, change(value) { select.value = value; listeners.change(); } };
 }
 
 test('all supported request types preselect and survive language switching in both languages', () => {
@@ -76,4 +78,14 @@ test('mobile language labels and generic cloned links follow the current selecti
   f.change('fournisseur');
   assert.equal(language.href, '/contact-en?profil=fournisseur');
   assert.equal(new URL(clonedGeneric.href, 'https://enertchad.com').searchParams.get('profil'), 'fournisseur');
+});
+
+
+test('explicit form arrival focuses the form and keeps its language destination', () => {
+  const f = fixture('en', '?profil=invest', '#ctForm');
+  assert.equal(f.focused, true);
+  f.links[1].attrs['aria-label'] = 'Version française';
+  f.change('fournisseur');
+  assert.equal(f.links[1].href, '/contact-en?profil=fournisseur#ctForm');
+  assert.equal(f.links[5].href, '/contact-en?profil=invest');
 });

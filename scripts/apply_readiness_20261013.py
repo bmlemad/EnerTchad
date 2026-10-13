@@ -279,7 +279,7 @@ if __name__ == '__main__':
     for page_name in ('contact.html', 'contact-en.html'):
         page = ROOT / page_name
         old = page.read_text(encoding='utf-8')
-        new = re.sub(r'/assets/chrome/contact_profiles\.js(?:\?b=\d+)?', '/assets/chrome/contact_profiles.js?b=2026101307', old)
+        new = re.sub(r'/assets/chrome/contact_profiles\.js(?:\?b=\d+)?', '/assets/chrome/contact_profiles.js?b=2026101309', old)
         if new != old:
             page.write_text(new, encoding='utf-8')
 
@@ -306,3 +306,5 @@ if __name__ == '__main__':
             page.write_text(new, encoding='utf-8')
 
     runpy.run_path(str(ROOT / 'scripts/align_company_descriptions.py'), run_name='__main__')
+
+    runpy.run_path(str(ROOT / 'scripts/direct_enquiry_form.py'), run_name='__main__')
