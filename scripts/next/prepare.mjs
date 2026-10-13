@@ -1,7 +1,13 @@
 import { execFileSync } from 'node:child_process';
-import { readdirSync } from 'node:fs';
+import { readdirSync, existsSync } from 'node:fs';
 import { mkdir, copyFile, writeFile, rm } from 'node:fs/promises';
 import { dirname, extname, resolve } from 'node:path';
+
+// Apply the reviewed editorial migration locally in the build checkout. Existing
+// contact data remains in the source pages rather than being rewritten via APIs.
+if (existsSync('scripts/apply_readiness_20261013.py')) {
+  execFileSync('python3', ['scripts/apply_readiness_20261013.py'], { stdio: 'inherit' });
+}
 
 // Only tracked, explicitly public assets enter the generated public directory.
 const ignored = new Set(['.git','.github','node_modules','public','out','.next','.generated','reports','docs-sources','app','lib','scripts']);

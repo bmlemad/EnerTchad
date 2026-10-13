@@ -1,0 +1,70 @@
+name: OVH — corporate readiness deployment
+
+on:
+  push:
+    branches: [improve/corporate-readiness-20261013]
+  workflow_dispatch:
+
+concurrency:
+  group: ovh-corporate-readiness
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  publish-export:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+      - name: Check preparation and public asset boundaries
+        run: node --test scripts/next/prepare.test.mjs
+      - run: npm ci
+      - name: Preserve baseline for the performance check
+        run: |
+          git worktree add --detach ../readiness-baseline HEAD^
+          python3 scripts/bench/static_budget.py --root ../readiness-baseline --out /tmp/readiness-baseline.json
+      - name: Build reviewed pages
+        run: npm run build
+        env:
+          NEXT_TELEMETRY_DISABLED: '1'
+      - run: npm run check:migration
+      - name: Check content, routes and language pairs
+        run: |
+          python3 scripts/check_integrity.py
+          python3 scripts/audit_redirects.py
+          python3 scripts/audit_i18n_pairs.py
+          python3 scripts/audit_conversion.py
+      - name: Check the performance budget
+        run: |
+          python3 scripts/bench/static_budget.py --root . --out /tmp/readiness-current.json
+          python3 scripts/bench/static_budget.py --compare /tmp/readiness-baseline.json /tmp/readiness-current.json --md /tmp/readiness-budget.md
+      - name: Package for OVH Apache
+        run: python3 scripts/ovh/package.py --output /tmp/EnerTchad-OVH.zip
+      - name: Publish verified static files to the existing hosting branch
+        run: |
+          git fetch origin ovh-static
+          git worktree add --detach ../readiness-deploy origin/ovh-static
+          rsync -a --delete --exclude=.git --exclude=_headers --exclude=_redirects --exclude=CNAME out/ ../readiness-deploy/
+          git -C ../readiness-deploy add --all
+          if git -C ../readiness-deploy diff --cached --quiet; then
+            echo "Static hosting branch already matches this export."
+          else
+            git -C ../readiness-deploy -c user.name='github-actions[bot]' -c user.email='41898282+github-actions[bot]@users.noreply.github.com' commit -m "OVH: reviewed corporate readiness export from $GITHUB_SHA"
+            git -C ../readiness-deploy push origin HEAD:ovh-static
+          fi
+      - uses: actions/upload-artifact@v7
+        with:
+          name: enertchad-corporate-readiness-ovh
+          path: |
+            /tmp/EnerTchad-OVH.zip
+            /tmp/readiness-budget.md
+          if-no-files-found: error
