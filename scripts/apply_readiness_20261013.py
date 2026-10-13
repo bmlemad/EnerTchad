@@ -282,3 +282,11 @@ if __name__ == '__main__':
         new = re.sub(r'/assets/chrome/contact_profiles\.js(?:\?b=\d+)?', '/assets/chrome/contact_profiles.js?b=2026101304', old)
         if new != old:
             page.write_text(new, encoding='utf-8')
+
+    for page in ROOT.rglob('*.html'):
+        if any(part in {'.git', '.next', 'out', 'node_modules', 'public', 'reports', 'qa'} for part in page.relative_to(ROOT).parts):
+            continue
+        old = page.read_text(encoding='utf-8')
+        new = re.sub(r'/assets/chrome/cmdk_en\.js(?:\?b=\d+)?', '/assets/chrome/cmdk_en.js?b=2026101305', old)
+        if new != old:
+            page.write_text(new, encoding='utf-8')
