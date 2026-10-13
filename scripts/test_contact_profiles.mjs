@@ -89,3 +89,18 @@ test('explicit form arrival focuses the form and keeps its language destination'
   assert.equal(f.links[1].href, '/contact-en?profil=fournisseur#ctForm');
   assert.equal(f.links[5].href, '/contact-en?profil=invest');
 });
+
+test('Arabic request values retain investment and supplier context across all contact languages', () => {
+  const options = ['', 'Supply', 'Supplier', 'Partnership', 'Investment', 'Other'].map(value => ({value, dataset:{}}));
+  const listeners = {};
+  const select = {options, value:'', addEventListener(name,fn){listeners[name]=fn;}};
+  let focused = false;
+  const form = {querySelector(){return select;},focus(){focused=true;}};
+  const links = ['/contact', '/contact-en', '/ar-contact'].map(href => ({href,textContent:'',attrs:{},getAttribute(name){return name==='href'?this.href:(this.attrs[name]||null);},setAttribute(name,value){if(name==='href')this.href=value;else this.attrs[name]=value;}}));
+  runInNewContext(script,{URL,URLSearchParams,location:{search:'?profil=invest',hash:'#ctForm',origin:'https://enertchad.com'},document:{documentElement:{lang:'ar'},getElementById(){return form;},querySelectorAll(){return links;}}});
+  assert.equal(select.value,'Investment');
+  assert.equal(focused,true);
+  for(const link of links) assert.equal(new URL(link.href,'https://enertchad.com').searchParams.get('profil'),'invest');
+  select.value='Supplier';listeners.change();
+  for(const link of links) assert.equal(new URL(link.href,'https://enertchad.com').searchParams.get('profil'),'fournisseur');
+});

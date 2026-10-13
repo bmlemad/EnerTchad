@@ -7,6 +7,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 ORGANIZATION_ID = 'https://enertchad.com/#organization'
 DESCRIPTIONS = {
+    'ar': 'شركة قيد التأسيس. المشاريع والقدرات والتمويلات الموصوفة أهداف مشروطة بالدراسات والتراخيص والشراكات.',
     'fr': 'EnerTchad est une société en constitution qui prépare un programme pétrolier intégré au Tchad. Les projets et capacités sont des objectifs soumis aux études, autorisations, financements et partenariats nécessaires.',
     'en': 'EnerTchad is a company in formation developing a proposed integrated oil programme in Chad. Projects and capacities remain targets, subject to the necessary studies, approvals, financing and partnerships.',
 }
