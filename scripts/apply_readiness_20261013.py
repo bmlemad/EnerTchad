@@ -273,3 +273,5 @@ if __name__ == '__main__':
     main()
     import runpy
     runpy.run_path(str(ROOT / 'scripts/refresh_document_metadata.py'), run_name='__main__')
+
+    runpy.run_path(str(ROOT / 'scripts/align_investor_journeys.py'), run_name='__main__')
