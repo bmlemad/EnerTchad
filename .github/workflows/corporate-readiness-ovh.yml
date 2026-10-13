@@ -2,7 +2,7 @@ name: OVH — corporate readiness deployment
 
 on:
   push:
-    branches: [improve/corporate-readiness-20261013]
+    branches: [improve/document-reliability-20261013]
   workflow_dispatch:
 
 concurrency:
@@ -27,6 +27,8 @@ jobs:
           cache: npm
       - name: Check preparation and public asset boundaries
         run: node --test scripts/next/prepare.test.mjs
+      - name: Check public document metadata regressions
+        run: python3 scripts/test_document_metadata.py
       - run: npm ci
       - name: Preserve baseline for the performance check
         run: |
