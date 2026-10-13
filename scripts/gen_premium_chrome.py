@@ -83,7 +83,7 @@ FR = [
     ], ('Nous rejoindre', 'Les talents tchadiens d’abord', 'Familles de métiers ouvertes', '/carrieres')),
 ]
 EN = [
-    ('About us', 'An integrated oil company with Chadian capital, being incorporated in N’Djamena.', '/societe', [
+    ('About us', 'An integrated oil company with Chadian capital, in formation, based in N’Djamena.', '/societe', [
         ('The Company', 'Mission, vision, milestones', '/societe'),
         ('Governance', 'OHADA public limited company', '/gouvernance'),
         ('Ethics & compliance', 'Code of conduct, alert line', '/ethique'),
@@ -146,14 +146,14 @@ UI = {
                legal=[('Mentions légales', '/mentions-legales'), ('Confidentialité', '/confidentialite'), ('Cookies', '/cookies'), ('Signalement éthique', '/ethique#alerte')],
                motto='De la roche-mère à la pompe.'),
     'en': dict(all='Overview', util=[('Customers', '/boutique/clients'), ('Suppliers', '/achats'), ('Contact', '/contact'), ('Careers', '/carrieres')], search='Search',
-               invest='Invest', aria='Main navigation', foot_desc='An integrated oil company with Chadian capital, from source rock to pump.',
+               invest='Invest', aria='Main navigation', foot_desc='An integrated oil company with Chadian capital, from source rock to the pump.',
                h_sections='Sections', h_access='Quick access', h_info='Information', top='Back to top',
                access=[('Become a client', '/boutique/clients'), ('Suppliers', '/achats'), ('Press room', '/presse'),
                        ('FAQ', '/faq'), ('Contact', '/contact'), ('Site map', '/plan-du-site')],
                info=[('Legal notice', '/mentions-legales'), ('Privacy', '/confidentialite'), ('Cookies', '/cookies'),
                      ('Accessibility', '/accessibilite'), ('Disclaimers', '/avertissements'), ('Ethics alert line', '/ethique#alerte')],
                legal=[('Legal notice', '/mentions-legales'), ('Privacy', '/confidentialite'), ('Cookies', '/cookies'), ('Ethics alert line', '/ethique#alerte')],
-               motto='From source rock to pump.'),
+               motto='From source rock to the pump.'),
 }
 
 # Rubrique de chaque page (pour l etat actif du menu)
