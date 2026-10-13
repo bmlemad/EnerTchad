@@ -241,12 +241,22 @@ def transform(text, name):
         text = text.replace('>Souscrire au capital<', '>Contacter l’équipe investisseurs<').replace('>Investir</a>', '>Contact investisseurs</a>')
     text = text.replace('<link rel="stylesheet" href="/assets/chrome/readiness-20261013.css">', '')
     text = re.sub(r'<style id="et-readiness-style">.*?</style>\n?', '', text, flags=re.S)
-    if SHEET not in text:
+    if name in ('index.html', 'index-en.html'):
+        text = text.replace('href="/assets/chrome/home-photos.css"', 'href="/assets/chrome/home-photos.css?b=20261013"')
+    elif SHEET not in text:
         text = text.replace('</head>', SHEET + '\n</head>', 1)
     return text
 
 
 def main():
+    # Homepages prohibit inline styles. Extend their existing stylesheet, keeping
+    # the request count unchanged; its versioned URL refreshes cached copies.
+    home_sheet = ROOT / 'assets/chrome/home-photos.css'
+    marker = '\n/* Corporate readiness — 13 October 2026 */\n'
+    old_css = home_sheet.read_text(encoding='utf-8')
+    css = old_css.split(marker)[0] + marker + (ROOT / 'assets/chrome/readiness-20261013.css').read_text()
+    if css != old_css:
+        home_sheet.write_text(css, encoding='utf-8')
     files = [name + suffix + '.html' for name in ('index', 'gouvernance', 'projets', 'investor-center', 'achats', 'clients') for suffix in ('', '-en')]
     changed = []
     for name in files:

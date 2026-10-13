@@ -11,8 +11,9 @@ ahead of future targets, clarifies intended financial reporting and purchasing
 capabilities, adds project-specific evidence requirements and financing categories,
 simplifies the customer introduction, and labels French investor PDFs in English.
 
-Styles are embedded in edited pages from the shared CSS source. This adds no
-blocking stylesheet requests. The source pages in Git remain the regeneration
+Styles come from a shared CSS source. Homepages use their existing versioned
+stylesheet; other edited pages embed the relevant styles. This adds no blocking
+stylesheet requests. The source pages in Git remain the regeneration
 inputs; deployable pages contain the applied migration.
 
 The corporate-readiness workflow builds and verifies the export, checks the
