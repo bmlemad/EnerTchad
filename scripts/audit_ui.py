@@ -56,7 +56,7 @@ for p in pages:
     for m in re.finditer(r'<(?:a|button)\b([^>]*)>(.*?)</(?:a|button)>',s,re.I|re.S):
         tag, body = m.group(1), m.group(2)
         if re.search(r"""\baria-hidden\s*=\s*["']true["']""",tag,re.I): continue
-        named = re.search(r"""\baria-label\s*=\s*["'][^"']+[^"']["']""",tag,re.I) or re.search(r"""\baria-labelledby\s*=\s*["'][^"']+["']""",tag,re.I)
+        named = re.search(r"""\baria-label\s*=\s*["'][^"']+["']""",tag,re.I) or re.search(r"""\baria-labelledby\s*=\s*["'][^"']+["']""",tag,re.I)
         visible = re.sub(r'<[^>]+>', ' ', body)
         visible = re.sub(r'&(?:nbsp|#160);', ' ', visible, flags=re.I)
         if not named and not visible.strip() and not re.search(r"""<img\b[^>]*\balt\s*=\s*["'][^"']+["']""",body,re.I):

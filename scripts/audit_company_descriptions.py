@@ -41,5 +41,5 @@ for page in Path('out').rglob('*.html'):
                 previews[name[1]] = html.unescape(content[1])
         for name in ('description', 'og:description', 'twitter:description'):
             assert previews.get(name) == HOME_PREVIEWS[lang], str(page) + ': inconsistent ' + name
-assert count > 0, 'No full French or English company descriptions found'
+assert count > 0, 'No full company descriptions found'
 print(f'Formation-stage descriptions verified: {count} records and both homepage preview sets')

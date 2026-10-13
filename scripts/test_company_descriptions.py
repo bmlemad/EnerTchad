@@ -5,7 +5,7 @@ from align_company_descriptions import DESCRIPTIONS, HOME_PREVIEWS, ORGANIZATION
 
 class CompanyDescriptionTests(unittest.TestCase):
     def test_formation_stage_is_consistent_and_other_fields_are_preserved(self):
-        for lang in ('fr', 'en'):
+        for lang in ('fr', 'en', 'ar'):
             node = {'@type': 'Organization', '@id': ORGANIZATION_ID, 'description': 'Old company description', 'legalName': 'EnerTchad S.A.', 'identifier': {'value': 'Registration in progress'}}
             text = '<html lang="' + lang + '"><script type="application/ld+json">' + json.dumps(node) + '</script></html>'
             result = transform(text, 'societe.html')
@@ -21,8 +21,8 @@ class CompanyDescriptionTests(unittest.TestCase):
         self.assertEqual(result.count(HOME_PREVIEWS['en']), 4)
         self.assertNotIn('content="Old"', result)
 
-    def test_references_other_organizations_and_arabic_are_preserved(self):
-        for lang, node in [('en', {'@type': 'Organization', '@id': ORGANIZATION_ID}), ('en', {'@type': 'Organization', '@id': 'https://other.example/#organization', 'description': 'Other organization'}), ('ar', {'@type': 'Organization', '@id': ORGANIZATION_ID, 'description': 'Existing Arabic description'})]:
+    def test_references_and_other_organizations_are_preserved(self):
+        for lang, node in [('en', {'@type': 'Organization', '@id': ORGANIZATION_ID}), ('en', {'@type': 'Organization', '@id': 'https://other.example/#organization', 'description': 'Other organization'})]:
             text = '<html lang="' + lang + '"><script type="application/ld+json">' + json.dumps(node) + '</script></html>'
             self.assertEqual(transform(text, 'page.html'), text)
 
