@@ -275,3 +275,10 @@ if __name__ == '__main__':
     runpy.run_path(str(ROOT / 'scripts/refresh_document_metadata.py'), run_name='__main__')
 
     runpy.run_path(str(ROOT / 'scripts/align_investor_journeys.py'), run_name='__main__')
+
+    for page_name in ('contact.html', 'contact-en.html'):
+        page = ROOT / page_name
+        old = page.read_text(encoding='utf-8')
+        new = re.sub(r'/assets/chrome/contact_profiles\.js(?:\?b=\d+)?', '/assets/chrome/contact_profiles.js?b=2026101304', old)
+        if new != old:
+            page.write_text(new, encoding='utf-8')
