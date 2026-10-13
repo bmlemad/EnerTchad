@@ -4,12 +4,12 @@ const base = process.env.SITE_URL || 'https://enertchad.com/';
 
 const cases = [
   ['/', [
-    ['.et-hero a.et-primary[href="/projets#avancement"]', 'Voir les projets et leur statut'],
-    ['.et-hero a.et-secondary[href="/contact"]', 'Contacter EnerTchad'],
+    ['.et-hero a.et-primary[href="/projets#avancement"]', 'Consulter les projets et leur statut'],
+    ['.et-hero a.et-secondary[href="/contact"]', 'Contacter l’équipe'],
   ]],
   ['/index-en', [
-    ['.et-hero a.et-primary[href="/projets-en#avancement"]', 'Explore projects and their status'],
-    ['.et-hero a.et-secondary[href="/contact-en"]', 'Contact EnerTchad'],
+    ['.et-hero a.et-primary[href="/projets-en#avancement"]', 'View projects and their status'],
+    ['.et-hero a.et-secondary[href="/contact-en"]', 'Contact the team'],
   ]],
   ['/societe', [
     ['a[data-et-action="evidence"][href="/engagements"]', 'Voir nos engagements'],
