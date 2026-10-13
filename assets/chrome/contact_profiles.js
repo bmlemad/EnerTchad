@@ -28,6 +28,14 @@
     document.querySelectorAll('a[href]').forEach(function (link) {
       var url = new URL(link.getAttribute('href'), location.origin);
       if (url.origin !== location.origin || !/^\/contact(?:-en)?$/.test(url.pathname)) return;
+      var languageLink = /\bnx-lang\b/.test(link.getAttribute('class') || '') ||
+        /^(fr|en)$/.test(link.getAttribute('hreflang') || '') ||
+        /^(Version française|English version|Français|English)$/i.test(link.getAttribute('aria-label') || (link.textContent || '').trim());
+      var followsSelection = link.getAttribute('data-et-contact-context') === 'true';
+      // Keep explicit business routes (such as investor contact) independent
+      // from the current form selection. Only language and generic links follow it.
+      if (!languageLink && !followsSelection && url.searchParams.has('profil')) return;
+      link.setAttribute('data-et-contact-context', 'true');
       if (profile) url.searchParams.set('profil', profile);
       else url.searchParams.delete('profil');
       link.setAttribute('href', url.pathname + url.search + url.hash);

@@ -2,7 +2,7 @@ name: OVH — corporate readiness deployment
 
 on:
   push:
-    branches: [improve/download-languages-20261013]
+    branches: [improve/dedicated-contact-routes-20261013]
   workflow_dispatch:
 
 concurrency:
