@@ -10,7 +10,7 @@ function fixture(lang, search = '') {
   const options = [{ value: '', dataset: {} }, ...names.map(value => ({ value, dataset: {} })), ...['particulier', 'fournisseur', 'centrale-achat', 'achats'].map(profile => ({ value: profile, dataset: { contactProfile: profile } }))];
   const listeners = {};
   const select = { options, value: '', addEventListener(name, callback) { listeners[name] = callback; } };
-  const links = ['/contact?source=menu#formulaire', '/contact-en', 'https://other.example/contact', '/achats', 'mailto:'].map(href => ({ href, getAttribute() { return this.href; }, setAttribute(name, value) { this.href = value; } }));
+  const links = ['/contact?source=menu#formulaire', '/contact-en', 'https://other.example/contact', '/achats', 'mailto:', '/contact-en?profil=invest', '/contact-en?profil=fournisseur'].map(href => ({ href, textContent: '', attrs: {}, getAttribute(name) { return name === 'href' ? this.href : (this.attrs[name] || null); }, setAttribute(name, value) { if (name === 'href') this.href = value; else this.attrs[name] = value; } }));
   runInNewContext(script, { URL, URLSearchParams, location: { search, origin: 'https://enertchad.com' }, document: { documentElement: { lang }, getElementById() { return { querySelector() { return select; } }; }, querySelectorAll() { return links; } } });
   return { select, links, change(value) { select.value = value; listeners.change(); } };
 }
@@ -45,5 +45,35 @@ test('unknown context and unrelated destinations do not propagate', () => {
   assert.equal(f.select.value, '');
   assert.equal(f.links[1].href, '/contact-en');
   f.change('Investment');
-  assert.deepEqual(f.links.slice(2).map(link => link.href), ['https://other.example/contact', '/achats', 'mailto:']);
+  assert.deepEqual(f.links.slice(2).map(link => link.href), ['https://other.example/contact', '/achats', 'mailto:', '/contact-en?profil=invest', '/contact-en?profil=fournisseur']);
+});
+
+
+test('dedicated investor and supplier links keep their own profile after selection changes', () => {
+  const f = fixture('en', '?profil=achats');
+  assert.equal(f.links[5].href, '/contact-en?profil=invest');
+  assert.equal(f.links[6].href, '/contact-en?profil=fournisseur');
+  f.change('Investment');
+  f.change('');
+  assert.equal(f.links[5].href, '/contact-en?profil=invest');
+  assert.equal(f.links[6].href, '/contact-en?profil=fournisseur');
+});
+
+test('language links still follow selection when they already carry a profile', () => {
+  const f = fixture('en', '?profil=achats');
+  const language = f.links[5];
+  language.attrs['aria-label'] = 'Version française';
+  f.change('fournisseur');
+  assert.equal(language.href, '/contact-en?profil=fournisseur');
+});
+
+test('mobile language labels and generic cloned links follow the current selection', () => {
+  const f = fixture('en', '?profil=achats');
+  const language = f.links[5];
+  language.textContent = 'Français';
+  const clonedGeneric = { ...f.links[0], attrs: { ...f.links[0].attrs } };
+  f.links.push(clonedGeneric);
+  f.change('fournisseur');
+  assert.equal(language.href, '/contact-en?profil=fournisseur');
+  assert.equal(new URL(clonedGeneric.href, 'https://enertchad.com').searchParams.get('profil'), 'fournisseur');
 });

@@ -279,7 +279,7 @@ if __name__ == '__main__':
     for page_name in ('contact.html', 'contact-en.html'):
         page = ROOT / page_name
         old = page.read_text(encoding='utf-8')
-        new = re.sub(r'/assets/chrome/contact_profiles\.js(?:\?b=\d+)?', '/assets/chrome/contact_profiles.js?b=2026101304', old)
+        new = re.sub(r'/assets/chrome/contact_profiles\.js(?:\?b=\d+)?', '/assets/chrome/contact_profiles.js?b=2026101307', old)
         if new != old:
             page.write_text(new, encoding='utf-8')
 
