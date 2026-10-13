@@ -1,5 +1,7 @@
 const { test, expect } = require('@playwright/test');
 const base = process.env.SITE_URL || 'https://enertchad.com/';
+// Mobile (≤ 900 px): utility and space links sit in the header menu (details.et-al-tog); open it first.
+const openMenu = async page => { await page.waitForLoadState('domcontentloaded'); const s = page.locator('#nav details.et-al-tog:not([open]) > summary'); if (await s.isVisible()) await s.click(); };
 const routes = ['/boutique/', '/boutique/en/', '/boutique/clients', '/boutique/en/clients', '/atlas/', '/atlas/carte', '/atlas-en', '/atlas/carte-en'];
 for (const width of [1440, 390]) {
   for (const route of routes) {
@@ -11,6 +13,7 @@ for (const width of [1440, 390]) {
       await expect(page.locator('#nav.et-space-header')).toBeVisible();
       await expect(page.locator('h1')).toHaveCount(1);
       await expect(page.locator('#nav [aria-current="page"]')).toHaveCount(1);
+      await openMenu(page);
       await expect(page.locator('#nav a[lang]')).toBeVisible();
       if (route.startsWith('/atlas')) {
         expect(await page.evaluate(() => document.querySelector('main').getBoundingClientRect().top - document.querySelector('#nav').getBoundingClientRect().bottom)).toBeLessThan(40);
@@ -69,22 +72,28 @@ for (const width of [1440, 390]) {
       await page.goto(clientsHome, {waitUntil:'networkidle'});
       await expect(page.locator('html')).toHaveAttribute('lang', language);
       await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', clientsHome);
+      await openMenu(page);
       await page.locator(`#nav .et-space-links a[href="${catalogue}"]`).click();
       await expect(page).toHaveURL(site + catalogue);
       await expect(page.locator('#grid .pc')).not.toHaveCount(0);
+      await openMenu(page);
       await page.locator(`#nav a[href="${atlasHome}"]`).first().click();
       await expect(page).toHaveURL(atlasHome);
       await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', atlasHome);
+      await openMenu(page);
       await page.locator(`#nav .et-space-links a[href="${map}"]`).click();
       await expect(page).toHaveURL(site + map);
       expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 2)).toBe(true);
+      await openMenu(page);
       await page.locator('#nav a[lang]').click();
       await expect(page).toHaveURL(site + otherMap);
       await expect(page.locator('html')).toHaveAttribute('lang', en ? 'fr' : 'en');
       const otherCatalogue = site + (en ? '/boutique/' : '/boutique/en/');
+      await openMenu(page);
       await page.locator(`#nav a[href="${otherCatalogue}"]`).first().click();
       await expect(page).toHaveURL(otherCatalogue);
       const group = site + (en ? '/' : '/index-en');
+      await openMenu(page);
       await page.locator(`#nav .et-space-top a[href="${group}"]`).click();
       await expect(page).toHaveURL(group);
       await expect(page.locator('#nav.et-space-header')).toHaveCount(0);
