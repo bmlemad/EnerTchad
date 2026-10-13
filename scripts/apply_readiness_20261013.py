@@ -304,3 +304,5 @@ if __name__ == '__main__':
         new = re.sub(r'/assets/chrome/(c_abd9013c3955|c_df4f446df566)\.js(?:\?b=\d+)?', r'/assets/chrome/\1.js?b=2026101305', old)
         if new != old:
             page.write_text(new, encoding='utf-8')
+
+    runpy.run_path(str(ROOT / 'scripts/align_company_descriptions.py'), run_name='__main__')

@@ -2,7 +2,7 @@ name: OVH — corporate readiness deployment
 
 on:
   push:
-    branches: [improve/dedicated-contact-routes-20261013]
+    branches: [improve/company-descriptions-20261013]
   workflow_dispatch:
 
 concurrency:
@@ -35,6 +35,8 @@ jobs:
         run: node --test scripts/test_contact_profiles.mjs
       - name: Check search navigation regressions
         run: python3 scripts/test_search_navigation.py
+      - name: Check formation-stage company descriptions
+        run: python3 scripts/test_company_descriptions.py
       - run: npm ci
       - name: Preserve baseline for the performance check
         run: |
@@ -45,6 +47,8 @@ jobs:
         env:
           NEXT_TELEMETRY_DISABLED: '1'
       - run: npm run check:migration
+      - name: Validate exported company descriptions
+        run: python3 scripts/audit_company_descriptions.py
       - name: Validate English download language disclosures
         run: python3 scripts/audit_download_languages.py
       - name: Validate every indexed search destination
