@@ -36,6 +36,7 @@
       // from the current form selection. Only language and generic links follow it.
       if (!languageLink && !followsSelection && url.searchParams.has('profil')) return;
       link.setAttribute('data-et-contact-context', 'true');
+      if (languageLink && location.hash === '#ctForm') url.hash = 'ctForm';
       if (profile) url.searchParams.set('profil', profile);
       else url.searchParams.delete('profil');
       link.setAttribute('href', url.pathname + url.search + url.hash);
@@ -43,4 +44,5 @@
   }
   select.addEventListener('change', syncLanguageLinks);
   syncLanguageLinks();
+  if (location.hash === '#ctForm') form.focus({ preventScroll: true });
 })();
