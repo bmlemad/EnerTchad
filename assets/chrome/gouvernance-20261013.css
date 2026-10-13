@@ -1,0 +1,4 @@
+/* Titulaires nommés des organes (PCA, DG) — /gouvernance et /gouvernance-en. Sans !important : hérite de pole-premium.css (.pp-cell>p). */
+.pp-cell>.pp-holder{margin-top:10px;padding-top:10px;border-top:1px solid var(--pp-line,rgba(127,127,127,.3));line-height:1.5}
+.pp-cell>.pp-holder strong{color:var(--pp-ink);font-weight:600}
+.pp-cell>.pp-holder a.pp-link{display:inline;padding:0;margin:0;font-size:inherit}
