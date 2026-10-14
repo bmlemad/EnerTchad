@@ -79,5 +79,35 @@ class DocumentMetadataTests(unittest.TestCase):
         self.assertEqual(output, metadata.update_cards(output, [doc], True))
 
 
+class DocumentDateTests(unittest.TestCase):
+    def test_dates_are_applied_only_to_the_matching_file(self):
+        evidence = {'/report.pdf': {'git_blob_sha': 'known', 'document_date': '2026-08', 'document_updated': '2026-10', 'date_source': 'PDF page 1'}}
+        doc = {'path': '/report.pdf', 'git_blob_sha': 'known', 'version': '2026'}
+        metadata.apply_document_date(doc, evidence)
+        self.assertEqual(doc['document_date'], '2026-08')
+        self.assertEqual(doc['document_updated'], '2026-10')
+        self.assertEqual(doc['version'], '2026')
+        doc['git_blob_sha'] = 'replaced'
+        metadata.apply_document_date(doc, evidence)
+        self.assertNotIn('document_date', doc)
+        self.assertNotIn('document_updated', doc)
+        self.assertNotIn('date_source', doc)
+
+    def test_date_is_distinct_from_version_and_approval(self):
+        doc = dict(language='fr', status='published', document_date='2026-07')
+        fr = metadata.metadata(doc, False)[2]
+        en = metadata.metadata(doc, True)[2]
+        self.assertIn('Version non précisée', fr)
+        self.assertIn('Document daté 2026-07', fr)
+        self.assertIn('Version not specified', en)
+        self.assertIn('Document dated 2026-07', en)
+        self.assertNotIn('approv', en.lower())
+
+    def test_unreviewed_files_receive_no_new_metadata(self):
+        doc = {'path': '/other.pdf', 'git_blob_sha': 'other'}
+        metadata.apply_document_date(doc, {})
+        self.assertEqual(set(doc), {'path', 'git_blob_sha'})
+
+
 if __name__ == '__main__':
     unittest.main()

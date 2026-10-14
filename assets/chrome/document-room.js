@@ -20,7 +20,9 @@
       grid.innerHTML=docs.map(d=>{
         const role=lang==='en'?d.role_en:d.role_fr;
         const action=/^(PDF|PPTX|XLSX|CSV|ICS)$/.test(d.format)?labels.download:labels.open;
-        const version='<span>'+esc(versionLabel(d))+'</span>';
+        const date=d.document_date?'<span>'+esc((lang==='en'?'Document dated ':'Document daté ')+d.document_date)+'</span>':'';
+        const updated=d.document_updated?'<span>'+esc((lang==='en'?'Updated ':'Mis à jour ')+d.document_updated)+'</span>':'';
+        const version='<span>'+esc(versionLabel(d))+'</span>'+date+updated;
         return '<a class="et-dr-card" href="'+esc(d.path)+'" download>'+
           '<div class="et-dr-meta"><span>'+esc(d.format)+'</span><span>'+esc(languages[d.language]||d.language)+'</span><span>'+esc(statuses[d.status]||d.status)+'</span>'+version+'</div>'+
           '<h3>'+esc(role)+'</h3>'+
