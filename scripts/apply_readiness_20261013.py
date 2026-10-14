@@ -318,3 +318,7 @@ if __name__ == '__main__':
         new = re.sub(r'/assets/chrome/contact-delivery\.js(?:\?[^"\'<>\s]+)?', '/assets/chrome/contact-delivery.js?b=2026101401', old)
         if new != old:
             page.write_text(new, encoding='utf-8')
+
+    # Keep contact exports within their existing inline CSS budget after adding
+    # the direct-form focus styles; source templates retain the full explanations.
+    runpy.run_path(str(ROOT / 'scripts/compact_contact_css.py'), run_name='__main__')
