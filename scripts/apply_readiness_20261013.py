@@ -322,3 +322,5 @@ if __name__ == '__main__':
     # Keep contact exports within their existing inline CSS budget after adding
     # the direct-form focus styles; source templates retain the full explanations.
     runpy.run_path(str(ROOT / 'scripts/compact_contact_css.py'), run_name='__main__')
+
+    runpy.run_path(str(ROOT / 'scripts/align_mobile_quick_nav.py'), run_name='__main__')
