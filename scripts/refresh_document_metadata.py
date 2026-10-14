@@ -31,6 +31,10 @@ def metadata(doc, en):
         version = '2030 targets' if en else 'Cibles 2030'
     version = (('Version ' + version) if version else
                ('Version not specified' if en else 'Version non précisée'))
+    if doc.get('document_date'):
+        version += (' · Document dated ' if en else ' · Document daté ') + doc['document_date']
+    if doc.get('document_updated'):
+        version += (' · Updated ' if en else ' · Mis à jour ') + doc['document_updated']
     return language, status, version
 
 
@@ -97,9 +101,23 @@ def disclose_download_language(text, documents, page_name):
     return re.sub(r'<a\b[^>]*>.*?</a>', label_link, text, flags=re.S)
 
 
+def apply_document_date(doc, evidence):
+    record = evidence.get(doc['path'])
+    if not record:
+        return
+    for key in ('document_date', 'document_updated', 'date_source'):
+        doc.pop(key, None)
+    # A replaced file must not inherit a date from the previous document.
+    if record['git_blob_sha'] == doc['git_blob_sha']:
+        for key in ('document_date', 'document_updated', 'date_source'):
+            if key in record:
+                doc[key] = record[key]
+
+
 def main():
     path = ROOT / 'assets/data/document-registry.json'
     registry = json.loads(path.read_text(encoding='utf-8'))
+    evidence = json.loads((Path(__file__).with_name('document_date_evidence.json')).read_text(encoding='utf-8'))
     seen = set()
     for doc in registry['documents']:
         if doc['path'] in seen:
@@ -111,16 +129,17 @@ def main():
         content = source.read_bytes()
         doc['bytes'] = len(content)
         doc['git_blob_sha'] = blob_sha(content)
+        apply_document_date(doc, evidence)
     registry['generated'] = datetime.now(timezone.utc).date().isoformat()
-    registry['note_fr'] = "Inventaire vérifié à la date generated ; cette date n’est pas une date de version des documents. Les tailles et empreintes sont calculées sur les fichiers publiés. Une version n’est indiquée que si elle est explicite dans le nom ou le contenu."
-    registry['note_en'] = "Inventory checked on the generated date; this is not a document version date. Sizes and fingerprints are calculated from the published files. A version is stated only when explicit in the filename or content."
+    registry['note_fr'] = "Inventaire vérifié à la date generated ; cette date n’est pas une date de version des documents. Les dates documentaires indiquées sont celles inscrites dans les fichiers, sans attester une approbation. Les tailles et empreintes sont calculées sur les fichiers publiés. Une version n’est indiquée que si elle est explicite dans le nom ou le contenu."
+    registry['note_en'] = "Inventory checked on the generated date; this is not a document version date. Document dates shown are those printed in the files, not approval dates. Sizes and fingerprints are calculated from the published files. A version is stated only when explicit in the filename or content."
     path.write_text(json.dumps(registry, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
     for name in ('investor-center', 'publications'):
         for suffix in ('', '-en'):
             page = ROOT / (name + suffix + '.html')
             old = page.read_text(encoding='utf-8')
             new = update_cards(old, registry['documents'], bool(suffix))
-            new = re.sub(r'/assets/chrome/document-room\.js(?:\?b=\d+)?', '/assets/chrome/document-room.js?b=2026101302', new)
+            new = re.sub(r'/assets/chrome/document-room\.js(?:\?b=\d+)?', '/assets/chrome/document-room.js?b=2026101402', new)
             if new != old:
                 page.write_text(new, encoding='utf-8')
     excluded = {'.git', '.next', 'out', 'node_modules', 'public', 'reports', 'qa'}
