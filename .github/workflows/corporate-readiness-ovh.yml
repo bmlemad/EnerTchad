@@ -2,7 +2,7 @@ name: OVH — corporate readiness deployment
 
 on:
   push:
-    branches: [improve/all-language-readiness-20261013]
+    branches: [improve/contact-recovery-20261014]
   workflow_dispatch:
 
 concurrency:
@@ -31,6 +31,8 @@ jobs:
         run: python3 scripts/test_document_metadata.py
       - name: Check investor enquiry journeys
         run: python3 scripts/test_investor_journeys.py
+      - name: Check contact request recovery
+        run: node --test scripts/test_contact_delivery.mjs
       - name: Check contact language context
         run: node --test scripts/test_contact_profiles.mjs
       - name: Check search navigation regressions

@@ -312,3 +312,9 @@ if __name__ == '__main__':
     runpy.run_path(str(ROOT / 'scripts/align_arabic_readiness.py'), run_name='__main__')
 
     runpy.run_path(str(ROOT / 'scripts/align_auxiliary_access.py'), run_name='__main__')
+
+    for page in ROOT.glob('*.html'):
+        old = page.read_text(encoding='utf-8')
+        new = re.sub(r'/assets/chrome/contact-delivery\.js(?:\?[^"\'<>\s]+)?', '/assets/chrome/contact-delivery.js?b=2026101401', old)
+        if new != old:
+            page.write_text(new, encoding='utf-8')
