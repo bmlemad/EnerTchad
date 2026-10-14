@@ -1,8 +1,8 @@
 {
   "schema_version": "1.1",
   "generated": "2026-10-14",
-  "note_fr": "Inventaire vérifié à la date generated ; cette date n’est pas une date de version des documents. Les tailles et empreintes sont calculées sur les fichiers publiés. Une version n’est indiquée que si elle est explicite dans le nom ou le contenu.",
-  "note_en": "Inventory checked on the generated date; this is not a document version date. Sizes and fingerprints are calculated from the published files. A version is stated only when explicit in the filename or content.",
+  "note_fr": "Inventaire vérifié à la date generated ; cette date n’est pas une date de version des documents. Les dates documentaires indiquées sont celles inscrites dans les fichiers, sans attester une approbation. Les tailles et empreintes sont calculées sur les fichiers publiés. Une version n’est indiquée que si elle est explicite dans le nom ou le contenu.",
+  "note_en": "Inventory checked on the generated date; this is not a document version date. Document dates shown are those printed in the files, not approval dates. Sizes and fingerprints are calculated from the published files. A version is stated only when explicit in the filename or content.",
   "documents": [
     {
       "id": "investor-factsheet",
@@ -14,7 +14,9 @@
       "status": "published",
       "role_fr": "Synthèse investisseur",
       "role_en": "Investor summary",
-      "git_blob_sha": "b77f8f037554a2edff8a39c79b3c2b60d1a74238"
+      "git_blob_sha": "b77f8f037554a2edff8a39c79b3c2b60d1a74238",
+      "document_date": "2026-07",
+      "date_source": "PDF page 1"
     },
     {
       "id": "investor-deck",
@@ -51,7 +53,10 @@
       "version": "2026",
       "role_fr": "Point d’étape de constitution",
       "role_en": "Formation progress update",
-      "git_blob_sha": "5f78759802c9b2e5377d0faddf74a53993a5b980"
+      "git_blob_sha": "5f78759802c9b2e5377d0faddf74a53993a5b980",
+      "document_date": "2026-08",
+      "document_updated": "2026-10",
+      "date_source": "PDF page 1"
     },
     {
       "id": "investor-calendar-fr",
@@ -149,7 +154,9 @@
       "status": "published",
       "role_fr": "Brochure institutionnelle",
       "role_en": "Corporate brochure",
-      "git_blob_sha": "0177ef6ca8ad2e7e58880ce9d28ddcec454c6335"
+      "git_blob_sha": "0177ef6ca8ad2e7e58880ce9d28ddcec454c6335",
+      "document_date": "2026-09",
+      "date_source": "PDF page 1"
     },
     {
       "id": "brochure-en",
@@ -161,7 +168,9 @@
       "status": "published",
       "role_fr": "Brochure institutionnelle anglaise",
       "role_en": "English corporate brochure",
-      "git_blob_sha": "1cd6d448339ef859dcd63e1991f79d258d01f5dd"
+      "git_blob_sha": "1cd6d448339ef859dcd63e1991f79d258d01f5dd",
+      "document_date": "2026-09",
+      "date_source": "PDF page 1"
     },
     {
       "id": "factsheet-ar",
