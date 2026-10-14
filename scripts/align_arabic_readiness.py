@@ -21,6 +21,11 @@ def transform(text, name):
     if name == 'ar-investisseurs.html':
         text = re.sub(r'(<a\b[^>]*href=")/ar-contact("[^>]*>\s*تواصل معنا\s*</a>)', r'\1/ar-contact?profil=invest#ctForm\2', text)
     if name == 'ar-contact.html':
+        if 'class="et-contact-inner"' not in text:
+            text = re.sub(r'(<section\b[^>]*aria-labelledby="contact-form-title"[^>]*>)(.*?)(</section>)',
+                          r'\1<div class="et-contact-inner">\2</div>\3', text, count=1, flags=re.S)
+        if 'id="et-contact-gutters"' not in text:
+            text = text.replace('</head>', '<style id="et-contact-gutters">.et-contact-inner{padding-inline:24px}</style></head>', 1)
         def form(match):
             tag = match[0]
             if 'aria-labelledby=' not in tag:

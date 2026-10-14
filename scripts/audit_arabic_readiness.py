@@ -14,6 +14,8 @@ text = (root / 'ar-contact.html').read_text(encoding='utf-8')
 form = re.search(r'<form\b[^>]*id="ctForm"[^>]*>', text)[0]
 assert 'aria-labelledby="contact-form-title"' in form
 assert 'tabindex="-1"' in form
+assert 'class="et-contact-inner"' in text
+assert 'padding-inline:24px' in text
 assert 'contact_profiles.js?b=2026101310' in text
 assert '/ar-contact?profil=invest#ctForm' in (root / 'ar-investisseurs.html').read_text(encoding='utf-8')
 assert count == 2, count
