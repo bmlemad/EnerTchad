@@ -877,3 +877,20 @@ html.et-plight #nav .nav-cta .et-theme-hdr:focus-visible,html.et-jlight #nav .na
 .et-status li>a{display:inline-block;padding:3px 0}
 .et-proofline a{padding:2px 0}
 footer.pft .foot-news .fn-alt a{display:inline-block;padding:4px 0}
+
+/* et-mobile-quick-nav:start */
+/* Keep all five quick-navigation targets on small screens. */
+#nezBar .et-mobile-label-short{display:none}
+#nezBar a{min-width:0}
+#nezBar .et-mobile-label-long,#nezBar .et-mobile-label-short{white-space:nowrap}
+@media(max-width:768px){
+  #nezBar{display:grid;grid-template-columns:repeat(5,minmax(0,1fr))}
+  #nezBar a{padding-inline:0;min-height:48px;box-sizing:border-box}
+}
+@media(max-width:519px){
+  #nezBar a{letter-spacing:0}
+  #nezBar .et-mobile-label-long.et-has-short{display:none}
+  #nezBar .et-mobile-label-short{display:inline}
+}
+
+/* et-mobile-quick-nav:end */
