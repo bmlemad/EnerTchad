@@ -735,7 +735,7 @@ html:not(#k0):not(#k1):not(#k2):not(#k3):not(#k4):not(#k5):not(#k6):not(#k7):not
 html:not(#k0):not(#k1):not(#k2):not(#k3):not(#k4):not(#k5):not(#k6):not(#k7):not(#k8):not(#k9):not(#k10):not(#k11):not(#k12):not(#k13):not(#k14):not(#k15):not(#k16):not(#k17):not(#k18):not(#k19):not(#k20):not(#k21):not(#k22):not(#k23):not(#k24):not(#k25) footer.pft:not(.pft-ar) .foot-social a svg{width:16px!important;height:16px!important;opacity:1!important;color:inherit!important;fill:currentColor!important}
 html:not(#k0):not(#k1):not(#k2):not(#k3):not(#k4):not(#k5):not(#k6):not(#k7):not(#k8):not(#k9):not(#k10):not(#k11):not(#k12):not(#k13):not(#k14):not(#k15):not(#k16):not(#k17):not(#k18):not(#k19):not(#k20):not(#k21):not(#k22):not(#k23):not(#k24):not(#k25) footer.pft:not(.pft-ar) .foot-social a:hover{border-color:var(--pf-gold)!important;color:var(--pf-gold)!important}
 /* Boutons de rubrique : invisibles comme boutons sur ordinateur, ils gardent l allure du titre */
-html:not(#k0):not(#k1):not(#k2):not(#k3):not(#k4):not(#k5):not(#k6):not(#k7):not(#k8):not(#k9):not(#k10):not(#k11):not(#k12):not(#k13):not(#k14):not(#k15):not(#k16):not(#k17):not(#k18):not(#k19):not(#k20):not(#k21):not(#k22):not(#k23):not(#k24):not(#k25) footer.pft .pft-acc-btn{all:unset!important;display:flex!important;align-items:center!important;justify-content:space-between!important;width:100%!important;font:inherit!important;letter-spacing:inherit!important;text-transform:inherit!important;color:inherit!important;cursor:default!important}
+html:not(#k0):not(#k1):not(#k2):not(#k3):not(#k4):not(#k5):not(#k6):not(#k7):not(#k8):not(#k9):not(#k10):not(#k11):not(#k12):not(#k13):not(#k14):not(#k15):not(#k16):not(#k17):not(#k18):not(#k19):not(#k20):not(#k21):not(#k22):not(#k23):not(#k24):not(#k25) footer.pft .pft-acc-btn{all:unset!important;display:flex!important;min-height:24px!important;align-items:center!important;justify-content:space-between!important;width:100%!important;font:inherit!important;letter-spacing:inherit!important;text-transform:inherit!important;color:inherit!important;cursor:default!important}
 html:not(#k0):not(#k1):not(#k2):not(#k3):not(#k4):not(#k5):not(#k6):not(#k7):not(#k8):not(#k9):not(#k10):not(#k11):not(#k12):not(#k13):not(#k14):not(#k15):not(#k16):not(#k17):not(#k18):not(#k19):not(#k20):not(#k21):not(#k22):not(#k23):not(#k24):not(#k25) footer.pft .pft-acc-btn i{display:none!important}
 @media (max-width:900px){
 html:not(#k0):not(#k1):not(#k2):not(#k3):not(#k4):not(#k5):not(#k6):not(#k7):not(#k8):not(#k9):not(#k10):not(#k11):not(#k12):not(#k13):not(#k14):not(#k15):not(#k16):not(#k17):not(#k18):not(#k19):not(#k20):not(#k21):not(#k22):not(#k23):not(#k24):not(#k25) footer.pft .pft-motto{font-size:1.6rem!important;margin:0 0 18px!important}
@@ -873,3 +873,7 @@ a[href^="https://wa.me/"]+a[href^="mailto:"]::before{content:"";flex:none;width:
 #nav .nav-cta .et-theme-hdr:focus-visible{outline:3px solid #D9B567;outline-offset:3px}
 html.et-plight #nav .nav-cta .et-theme-hdr:focus-visible,html.et-jlight #nav .nav-cta .et-theme-hdr:focus-visible{outline-color:#0A1A2F}
 @media print{.et-theme-hdr{display:none}}
+/* Cibles tactiles d'au moins 24 px (WCAG 2.5.8), QA mobile du 14 octobre 2026 */
+.et-status li>a{display:inline-block;padding:3px 0}
+.et-proofline a{padding:2px 0}
+footer.pft .foot-news .fn-alt a{display:inline-block;padding:4px 0}
