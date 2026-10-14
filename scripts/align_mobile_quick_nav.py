@@ -26,8 +26,9 @@ def transform(text):
         return re.sub(r'(<a\b[^>]*>)(.*?)(</a>)',anchor,block,flags=re.S)
     text=re.sub(r'<link\b[^>]*href="/assets/chrome/mobile-quick-nav\.css[^"]*"[^>]*>', '', text)
     new=re.sub(r'<nav\b[^>]*\bid="nezBar"[^>]*>.*?</nav>',bar,text,flags=re.S)
-    if 'et-mobile-label-long' in new and 'id="et-mobile-quick-nav"' not in new:
-        new=new.replace('</head>','<style id="et-mobile-quick-nav">'+CSS+'</style></head>',1)
+    new=re.sub(r'<style\b[^>]*id="et-mobile-quick-nav"[^>]*>.*?</style>', '', new, flags=re.S)
+    if 'et-mobile-label-long' in new:
+        new=re.sub(r'/assets/chrome/premium-chrome\.css(?:\?[^"\'<>\s]+)?', '/assets/chrome/premium-chrome.css?b=2026101403', new)
     return new
 
 def main():
@@ -36,6 +37,14 @@ def main():
         if any(x in {'.git','.next','out','node_modules','public','reports','qa'} for x in p.relative_to(ROOT).parts):continue
         old=p.read_text();new=transform(old)
         if old!=new:p.write_text(new);count+=1
+    shared=ROOT/'assets/chrome/premium-chrome.css'
+    old=shared.read_text()
+    block='/* et-mobile-quick-nav:start */\n'+CSS+'\n/* et-mobile-quick-nav:end */'
+    if '/* et-mobile-quick-nav:start */' in old:
+        new=re.sub(r'/\* et-mobile-quick-nav:start \*/.*?/\* et-mobile-quick-nav:end \*/',block,old,flags=re.S)
+    else:
+        new=old+'\n'+block+'\n'
+    if old!=new:shared.write_text(new)
     print(f'Mobile quick navigation aligned: {count} source pages')
 
 if __name__=='__main__':main()
