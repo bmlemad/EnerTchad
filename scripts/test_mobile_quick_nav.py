@@ -17,7 +17,7 @@ class MobileNavigationTests(unittest.TestCase):
     def test_english_labels_do_not_gain_french_abbreviations(self):
         source='<html><head></head><nav id="nezBar">'+''.join('<a href="/">'+x+'</a>' for x in ['Home','Customers','Investors','Suppliers','Contact'])+'</nav></html>'
         result=transform(source)
-        self.assertNotIn('et-has-short',result)
+        self.assertNotIn('class="et-mobile-label-long et-has-short"',result)
         self.assertIn('aria-label="Suppliers"',result)
 
     def test_other_navigation_is_not_reformatted(self):

@@ -3,6 +3,7 @@ import html
 import re
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
+CSS=Path(__file__).with_name('mobile-quick-nav.css').read_text()
 SHORT={'Investisseurs':'Invest.', 'Fournisseurs':'Fourn.'}
 
 def transform(text):
@@ -23,9 +24,10 @@ def transform(text):
             if short:rendered+='<span class="et-mobile-label-short" aria-hidden="true">'+html.escape(short)+'</span>'
             return opening+rendered+closing
         return re.sub(r'(<a\b[^>]*>)(.*?)(</a>)',anchor,block,flags=re.S)
+    text=re.sub(r'<link\b[^>]*href="/assets/chrome/mobile-quick-nav\.css[^"]*"[^>]*>', '', text)
     new=re.sub(r'<nav\b[^>]*\bid="nezBar"[^>]*>.*?</nav>',bar,text,flags=re.S)
-    if 'et-mobile-label-long' in new and '/assets/chrome/mobile-quick-nav.css' not in new:
-        new=new.replace('</head>','<link rel="stylesheet" href="/assets/chrome/mobile-quick-nav.css?b=2026101403"></head>',1)
+    if 'et-mobile-label-long' in new and 'id="et-mobile-quick-nav"' not in new:
+        new=new.replace('</head>','<style id="et-mobile-quick-nav">'+CSS+'</style></head>',1)
     return new
 
 def main():
