@@ -24,6 +24,24 @@
     var group = button.parentElement;
     group.insertAdjacentElement('afterend', status);
     status.insertAdjacentElement('afterend', input);
+    // Match the adjacent social icon, including footers that stay dark in light mode.
+    function syncAppearance() {
+      var reference = group.querySelector('a');
+      if (!reference) return;
+      var appearance = getComputedStyle(reference);
+      ['color', 'backgroundColor', 'borderColor', 'borderRadius', 'width', 'height'].forEach(function (property) {
+        button.style[property] = appearance[property];
+      });
+      status.style.color = appearance.color;
+      input.style.color = appearance.color;
+    }
+    syncAppearance();
+    if (typeof MutationObserver === 'function') {
+      new MutationObserver(syncAppearance).observe(document.documentElement, { attributes: true, attributeFilter: ['class', 'style'] });
+    }
+    addEventListener('load', syncAppearance, { once: true });
+    addEventListener('resize', syncAppearance);
+    addEventListener('pageshow', syncAppearance);
     var busy = false;
     button.addEventListener('click', async function () {
       if (busy) return;
