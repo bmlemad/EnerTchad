@@ -69,7 +69,7 @@ SRC = r'''
   @P .pn-mega .nx-col{grid-column:auto!important;grid-row:auto!important;padding:0!important;margin:0!important;border:0!important;background:none!important;min-width:0!important}
   @P .pn-intro .nxh{font:400 2.4rem/1.02 var(--pn-serif)!important;color:var(--pn-ink)!important;text-transform:none!important;letter-spacing:-.01em!important;margin:0 0 16px!important;min-height:0!important;display:block!important;border:0!important;padding:0!important}
   @P .pn-intro .pn-d{color:var(--pn-ink2)!important;font-size:.98rem!important;line-height:1.6!important;margin:0 0 22px!important}
-  @P .pn-intro .pn-all{min-height:0!important;align-items:center!important;display:inline-flex!important;padding:0 0 6px!important;border-bottom:1px solid var(--pn-gold)!important;border-radius:0!important;background:none!important;transform:none!important}
+  @P .pn-intro .pn-all{min-height:24px!important;align-items:center!important;display:inline-flex!important;padding:0 0 6px!important;border-bottom:1px solid var(--pn-gold)!important;border-radius:0!important;background:none!important;transform:none!important}
   @P .pn-intro .pn-all strong{font:500 .95rem/1 var(--pn-sans)!important;color:var(--pn-ink)!important}
   @P .pn-intro .pn-all strong::after{content:" →"}
   @P .pn-intro .pn-all em{display:none!important}
