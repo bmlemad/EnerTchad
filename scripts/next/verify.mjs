@@ -17,6 +17,17 @@ let preserved=0, native=0;
 for (const page of manifest.pages) {
   const before = await readFile(page.source);
   const after = await readFile(`out/${page.source}`);
+  const exported = elements(after.toString());
+  if (/^en(?:-|$)/i.test(exported.find(el => el.name === 'html')?.attribs.lang || '')) {
+    const scripts = exported.filter(el => el.name === 'script').map(el => el.attribs.src || '');
+    const palette = scripts.findIndex(src => /\/c_(?:abd9013c3955|df4f446df566)\.js(?:\?|$)/.test(src));
+    if (palette >= 0) {
+      const english = scripts.findIndex(src => /\/cmdk_en\.js(?:\?|$)/.test(src));
+      assert(english >= 0 && english < palette, page.source+' must load the English index before search initializes');
+      assert(!scripts.some(src => /\/cmdk_extra\.js(?:\?|$)/.test(src)), page.source+' loads the French search index');
+      assert.equal(exported.find(el => el.attribs?.id === 'cmdk')?.attribs['aria-label'], 'Search', page.source+' search dialog language');
+    }
+  }
   if (!page.native) {
     let expected = withYouTubeBadge(withNewsletterStatus(before.toString()));
     const atlas = atlasPages.find(p => p.source === page.source);
@@ -26,7 +37,7 @@ for (const page of manifest.pages) {
   native++;
   assert(after.toString().includes('/assets/chrome/audience-consent.js') && after.toString().includes('et-audience-consent'), page.source+' missing consent loader');
   assert(!elements(after.toString()).some(el => el.name === 'script' && /googletagmanager\.com/.test(el.attribs.src || '')), page.source+' loads Google before visitor consent');
-  const original = elements(before.toString()), exported = elements(after.toString());
+  const original = elements(before.toString());
   for(const style of original.filter(el => el.name === 'style')) {
     assert(exported.some(el => el.name === 'style' && text(el) === text(style)),page.source+' lost editorial style');
   }

@@ -287,7 +287,13 @@ if __name__ == '__main__':
         if any(part in {'.git', '.next', 'out', 'node_modules', 'public', 'reports', 'qa'} for part in page.relative_to(ROOT).parts):
             continue
         old = page.read_text(encoding='utf-8')
-        new = re.sub(r'/assets/chrome/cmdk_en\.js(?:\?b=\d+)?', '/assets/chrome/cmdk_en.js?b=2026101305', old)
+        new = old
+        # Some generated English pages retain the French corpus. Load the
+        # English corpus before the deferred palette chooses its UI language.
+        if re.search(r'<html\b[^>]*\blang=["\']en(?:-[^"\']+)?["\']', new, re.I):
+            new = re.sub(r'/assets/chrome/cmdk_extra\.js(?:\?b=\d+)?', '/assets/chrome/cmdk_en.js?b=2026101305', new)
+            new = re.sub(r'<div\b[^>]*\bid="cmdk"[^>]*>', lambda m: m[0].replace('aria-label="Recherche"', 'aria-label="Search"'), new)
+        new = re.sub(r'/assets/chrome/cmdk_en\.js(?:\?b=\d+)?', '/assets/chrome/cmdk_en.js?b=2026101305', new)
         if new != old:
             page.write_text(new, encoding='utf-8')
 
