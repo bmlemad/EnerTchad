@@ -587,6 +587,13 @@ body #programme-cible .et-programme-metrics>div{border-top:1px solid currentColo
 body #programme-cible .et-programme-metrics strong{font-size:1.8rem}
 body #programme-cible .et-programme-metrics a{display:inline-block;padding:10px 0;min-height:44px;box-sizing:border-box}
 @media(max-width:760px){body .et-readiness{margin:24px 16px;padding:22px 18px}body .et-readiness-terms div,body .et-readiness-routes,body #programme-cible .et-programme-metrics{grid-template-columns:minmax(0,1fr)}body .et-readiness-terms div{gap:4px}}
+/* Thème sombre : les cartes de /clients restaient blanches sous un texte clair (contraste 1,1:1), signalé le 15 octobre 2026. */
+html:not(.et-plight):not(.et-jlight) body .et-readiness-routes a{background:rgba(255,255,255,.05);border-color:rgba(241,243,246,.22)}
+/* /clients : pole-premium.css aplatit les sections de main.ppl (marges, padding et bordure à 0, en !important) ; le contenu collait au bord gauche
+   de l'écran. Sans surenchère : la section prend toute la largeur et ses enfants reprennent l'alignement des autres blocs (1120 px, 16 px sur mobile). */
+body main.ppl #besoin-client{max-width:none}
+body main.ppl #besoin-client>*{box-sizing:border-box;max-width:none;padding-left:max(16px,calc((100% - 1120px)/2));padding-right:max(16px,calc((100% - 1120px)/2))}
+body main.ppl #besoin-client>p{padding-right:0}
 </style>
 </head>
 <body data-eh="eh1 eh8" id="top" class="et-inner-modern">
