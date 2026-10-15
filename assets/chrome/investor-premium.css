@@ -86,6 +86,10 @@ html.sp-dark{--ip-top:rgba(10,20,34,.72);--ip-band-a:#0F1B2C;--ip-band-b:#0A1422
     color:var(--et-glass-ink)!important;
     -webkit-text-fill-color:var(--et-glass-ink)!important;
   }
+  #nav .nav-cta button svg,#nav .nav-cta button svg *,
+  #nav .nav-trigger svg,#nav .nav-trigger svg * {
+    color:var(--et-glass-ink)!important;stroke:currentColor!important;
+  }
   #nezBar,#nav .nx-mega {
     background:var(--et-glass-dense)!important;
     color:var(--et-glass-ink)!important;

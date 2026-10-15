@@ -929,6 +929,10 @@ footer.pft .foot-news .fn-alt a{display:inline-block;padding:4px 0}
     color:var(--et-glass-ink)!important;
     -webkit-text-fill-color:var(--et-glass-ink)!important;
   }
+  #nav .nav-cta button svg,#nav .nav-cta button svg *,
+  #nav .nav-trigger svg,#nav .nav-trigger svg * {
+    color:var(--et-glass-ink)!important;stroke:currentColor!important;
+  }
   #nezBar,#nav .nx-mega {
     background:var(--et-glass-dense)!important;
     color:var(--et-glass-ink)!important;
