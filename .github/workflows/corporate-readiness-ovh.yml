@@ -2,7 +2,7 @@ name: OVH — corporate readiness deployment
 
 on:
   push:
-    branches: [improve/mobile-quick-navigation-20261014, fix/share-footer-contrast-20261015]
+    branches: [improve/mobile-quick-navigation-20261014, fix/share-footer-contrast-20261015, perf/compact-exported-css-20261015]
   workflow_dispatch:
 
 concurrency:
@@ -48,6 +48,8 @@ jobs:
       - name: Check narrow mobile navigation
         run: python3 scripts/test_mobile_quick_nav.py
       - run: npm ci
+      - name: Check CSS rule preservation across every stylesheet
+        run: node --test scripts/next/compact-css.test.mjs
       - name: Preserve baseline for the performance check
         run: |
           git worktree add --detach ../readiness-baseline HEAD^

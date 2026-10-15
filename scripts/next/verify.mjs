@@ -5,6 +5,7 @@ import { htmlToDOM } from 'html-react-parser';
 import { withYouTubeBadge } from '../../lib/youtube.js';
 import { withNewsletterStatus } from '../../lib/newsletter.js';
 import { atlasPages, renderSubsite, commercialSitemap } from './subsites.mjs';
+import { compactCss } from './compact-css.mjs';
 const manifest = JSON.parse(await readFile('.generated/site.json', 'utf8'));
 const hash = value => createHash('sha256').update(value).digest('hex');
 function elements(html) {
@@ -57,7 +58,7 @@ for (const page of manifest.pages) {
 }
 for(const asset of manifest.assets) {
   const original = await readFile(asset);
-  const expected = asset === 'sitemap.xml' ? commercialSitemap(original.toString()) : original;
+  const expected = asset === 'sitemap.xml' ? commercialSitemap(original.toString()) : asset.endsWith('.css') ? compactCss(original.toString()) : original;
   assert.equal(hash(await readFile('out/'+asset)),hash(expected),asset);
 }
 console.log(`PASS: ${preserved} HTML pages preserved with the YouTube footer badge; ${native} React pages verified; ${manifest.assets.length} assets preserved.`);
