@@ -18,12 +18,12 @@ for(const [lang,label] of [['fr','Partager cette page'],['en','Share this page']
 }
 function harness(navigator,lang='fr',canonical='https://enertchad.com/boutique/') {
   const nodes=[];
-  function element(){return {style:{},hidden:false,setAttribute(){},insertAdjacentElement(_,node){nodes.push(node)},focus(){this.focused=true},select(){this.selected=true}}}
+  function element(){return {style:{priorities:{},setProperty(name,value,priority){this[name]=value;this.priorities[name]=priority}},hidden:false,setAttribute(){},insertAdjacentElement(_,node){nodes.push(node)},focus(){this.focused=true},select(){this.selected=true}}}
   const appearance={color:'rgb(243, 241, 236)',backgroundColor:'rgba(0,0,0,.25)',borderColor:'rgb(243, 241, 236)',borderRadius:'50%',width:'38px',height:'38px'};let refreshAppearance;
-  const button=element();button.dataset={};button.disabled=true;button.parentElement=element();button.parentElement.querySelector=()=>({});button.addEventListener=(_,fn)=>{button.click=fn};
+  const icon=element();const button=element();button.querySelector=()=>icon;button.dataset={};button.disabled=true;button.parentElement=element();button.parentElement.querySelector=()=>({});button.addEventListener=(_,fn)=>{button.click=fn};
   const document={documentElement:{lang},title:'Boutique | EnerTchad',querySelectorAll:()=>[button],querySelector:()=>canonical?{href:canonical}:null,createElement:element};
   vm.runInNewContext(client,{document,navigator,getComputedStyle:()=>appearance,addEventListener(){},MutationObserver:class{constructor(callback){refreshAppearance=callback}observe(){}},location:{origin:'https://enertchad.com',pathname:'/boutique/',href:'https://enertchad.com/boutique/?utm_source=qa#order'},URL});
-  return {button,status:nodes[0],input:nodes[1],appearance,refreshAppearance};
+  return {button,icon,status:nodes[0],input:nodes[1],appearance,refreshAppearance};
 }
 test('native sharing passes the page title and canonical URL without tracking parameters',async()=>{
  let data,copied=0;const h=harness({share:async d=>{data=d},clipboard:{writeText:async()=>copied++}});
@@ -56,8 +56,14 @@ test('sharing and feedback match social icon contrast after a theme change',()=>
  const h=harness({});
  assert.equal(h.button.style.color,h.appearance.color);
  assert.equal(h.status.style.color,h.appearance.color);
+ assert.equal(h.icon.style.fill,h.appearance.color);
+ assert.equal(h.button.style.priorities.color,'important');
+ assert.equal(h.icon.style.priorities.fill,'important');
+ assert.equal(h.status.style.priorities.color,'important');
+ assert.equal(h.input.style.priorities['-webkit-text-fill-color'],'important');
  h.appearance.color='rgb(30, 40, 50)';h.appearance.width='44px';h.refreshAppearance();
  assert.equal(h.button.style.color,'rgb(30, 40, 50)');
  assert.equal(h.input.style.color,'rgb(30, 40, 50)');
+ assert.equal(h.icon.style.fill,'rgb(30, 40, 50)');
  assert.equal(h.button.style.width,'44px');
 });
