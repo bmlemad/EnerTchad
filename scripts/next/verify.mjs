@@ -25,7 +25,7 @@ for (const page of manifest.pages) {
       const english = scripts.findIndex(src => /\/cmdk_en\.js(?:\?|$)/.test(src));
       assert(english >= 0 && english < palette, page.source+' must load the English index before search initializes');
       assert(!scripts.some(src => /\/cmdk_extra\.js(?:\?|$)/.test(src)), page.source+' loads the French search index');
-      assert.equal(exported.find(el => el.attribs.id === 'cmdk')?.attribs['aria-label'], 'Search', page.source+' search dialog language');
+      assert.equal(exported.find(el => el.attribs?.id === 'cmdk')?.attribs['aria-label'], 'Search', page.source+' search dialog language');
     }
   }
   if (!page.native) {
