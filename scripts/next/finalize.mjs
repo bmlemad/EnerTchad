@@ -2,6 +2,7 @@ import { readFile, copyFile, mkdir, stat, rm, writeFile } from 'node:fs/promises
 import { execFileSync } from 'node:child_process';
 import { dirname } from 'node:path';
 import { buildSubsites } from './subsites.mjs';
+import { compactCss } from './compact-css.mjs';
 const manifest = JSON.parse(await readFile('.generated/site.json', 'utf8'));
 async function exists(path) { try { return (await stat(path)).isFile(); } catch { return false; } }
 for (const page of manifest.pages) {
@@ -19,5 +20,15 @@ for (const page of manifest.pages) {
 }
 console.log(`Normalized ${manifest.pages.length} Next.js exports for Netlify pretty URLs.`);
 await buildSubsites();
+let cssBefore = 0, cssAfter = 0;
+for (const asset of manifest.assets.filter(path => path.endsWith('.css'))) {
+  const target = 'out/' + asset;
+  const original = await readFile(target, 'utf8');
+  const compact = compactCss(original);
+  await writeFile(target, compact);
+  cssBefore += Buffer.byteLength(original);
+  cssAfter += Buffer.byteLength(compact);
+}
+console.log(`Compacted exported CSS: ${cssBefore} → ${cssAfter} bytes; source styles preserved.`);
 const revision = process.env.COMMIT_REF || execFileSync('git', ['rev-parse', 'HEAD'], {encoding:'utf8'}).trim();
 await writeFile('out/deploy-version.txt', revision + '\n');
