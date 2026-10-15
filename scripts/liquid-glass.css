@@ -1,0 +1,59 @@
+/* Important layer overrides legacy effects without selector escalation. */
+@layer et-glass {
+  :root {
+    --et-glass-light:rgba(12,22,38,.82)!important;
+    --et-glass-dense:rgba(12,22,38,.96)!important;
+    --et-glass-solid:#0c1626!important;
+    --et-glass-ink:#f8f5ea!important;
+    --et-glass-line:rgba(255,255,255,.14)!important;
+    --et-glass-reflect:rgba(255,255,255,.10)!important;
+  }
+  html:is(.et-plight,.et-jlight),html:not(.sp-dark):has(.sp-top) {
+    --et-glass-light:rgba(250,248,243,.82)!important;
+    --et-glass-dense:rgba(250,248,243,.96)!important;
+    --et-glass-solid:#faf8f3!important;
+    --et-glass-ink:#0a1a2f!important;
+    --et-glass-line:rgba(16,26,44,.14)!important;
+    --et-glass-reflect:rgba(255,255,255,.65)!important;
+  }
+  #nav.nx,.sp-top.et-al,.pp-sub {
+    background:var(--et-glass-light)!important;
+    color:var(--et-glass-ink)!important;
+    -webkit-backdrop-filter:blur(16px) saturate(1.15)!important;
+    backdrop-filter:blur(16px) saturate(1.15)!important;
+    border-bottom-color:var(--et-glass-line)!important;
+    box-shadow:inset 0 1px 0 var(--et-glass-reflect)!important;
+  }
+  #nav.nx.scrolled {background:var(--et-glass-dense)!important}
+  #nezBar,#nav .nx-mega {
+    background:var(--et-glass-dense)!important;
+    color:var(--et-glass-ink)!important;
+    -webkit-backdrop-filter:blur(10px) saturate(1.1)!important;
+    backdrop-filter:blur(10px) saturate(1.1)!important;
+    border-color:var(--et-glass-line)!important;
+  }
+  #nav .nav-search,#nav .nx-mega .nxg,.sp-top .sp-theme {
+    -webkit-backdrop-filter:none!important;backdrop-filter:none!important;
+  }
+  footer.pft {-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+  @media(max-width:1240px) {
+    #nav .nav-links.open,.sp-top details[open]>nav {
+      background:var(--et-glass-solid)!important;color:var(--et-glass-ink)!important;
+      -webkit-backdrop-filter:none!important;backdrop-filter:none!important;
+    }
+  }
+  @supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))) {
+    #nav.nx,.sp-top.et-al,.pp-sub,#nezBar,#nav .nx-mega {background:var(--et-glass-solid)!important}
+  }
+  @media(prefers-reduced-transparency:reduce) {
+    #nav.nx,.sp-top.et-al,.pp-sub,#nezBar,#nav .nx-mega,
+    #nav .nav-links.open,.sp-top details[open]>nav {
+      background:var(--et-glass-solid)!important;
+      -webkit-backdrop-filter:none!important;backdrop-filter:none!important;
+      box-shadow:none!important;
+    }
+  }
+  @media print {
+    #nav.nx,.sp-top.et-al,.pp-sub,#nezBar {box-shadow:none!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+  }
+}
