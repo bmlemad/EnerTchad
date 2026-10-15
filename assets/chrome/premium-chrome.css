@@ -906,7 +906,7 @@ footer.pft .foot-news .fn-alt a{display:inline-block;padding:4px 0}
     --et-glass-line:rgba(255,255,255,.14)!important;
     --et-glass-reflect:rgba(255,255,255,.10)!important;
   }
-  html:is(.et-plight,.et-jlight) {
+  html:is(.et-plight,.et-jlight),html:not(.sp-dark):has(.sp-top) {
     --et-glass-light:rgba(250,248,243,.82)!important;
     --et-glass-dense:rgba(250,248,243,.96)!important;
     --et-glass-solid:#faf8f3!important;
