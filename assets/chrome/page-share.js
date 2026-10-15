@@ -29,11 +29,16 @@
       var reference = group.querySelector('a');
       if (!reference) return;
       var appearance = getComputedStyle(reference);
-      ['color', 'backgroundColor', 'borderColor', 'borderRadius', 'width', 'height'].forEach(function (property) {
+      ['backgroundColor', 'borderColor', 'borderRadius', 'width', 'height'].forEach(function (property) {
         button.style[property] = appearance[property];
       });
-      status.style.color = appearance.color;
-      input.style.color = appearance.color;
+      // Existing light-theme rules use !important on every footer descendant.
+      button.style.setProperty('color', appearance.color, 'important');
+      button.querySelector('svg').style.setProperty('fill', appearance.color, 'important');
+      [status, input].forEach(function (feedback) {
+        feedback.style.setProperty('color', appearance.color, 'important');
+        feedback.style.setProperty('-webkit-text-fill-color', appearance.color, 'important');
+      });
     }
     syncAppearance();
     if (typeof MutationObserver === 'function') {
