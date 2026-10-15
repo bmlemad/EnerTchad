@@ -264,3 +264,33 @@ try{(function(){
 
 /* Optional audience measurement loads locally; Google waits for consent. */
 (function(){var s=document.createElement("script");s.src="/assets/chrome/audience-consent.js?v=20261008";s.defer=true;document.head.appendChild(s)})();
+
+/* 15 oct. 2026 : intention de survol du mega menu (ordinateur, souris).
+   Sans ce délai, aller en diagonale de l'intitulé vers les liens fait passer la souris sur l'intitulé
+   voisin et ouvre son menu. Quand un menu est déjà ouvert, le voisin ne s'ouvre qu'après 160 ms de pause
+   sur son intitulé ; le menu quitté reste affiché 280 ms. Premier menu ouvert sans délai ; clavier,
+   tactile et mobile inchangés. Styles posés en ligne (CSSOM), retirés dès que l'état est réglé. */
+;(function(){try{
+ var nav=document.getElementById('nav');if(!nav||!nav.classList.contains('nx'))return;
+ var mq=window.matchMedia('(min-width:1241px) and (hover:hover)');
+ var items=[].slice.call(nav.querySelectorAll('.nav-links > .nav-item'));if(!items.length)return;
+ var cur=null,tOpen=0,tClose=0,OPEN=160,CLOSE=280;
+ function mega(it){return it.querySelector('.nx-mega')}
+ function show(it){var m=mega(it);if(m){m.style.visibility='visible';m.style.opacity='1';m.style.transform='translateY(0)'}}
+ function hide(it){var m=mega(it);if(m){m.style.visibility='hidden';m.style.opacity='0';m.style.pointerEvents='none';m.style.transition='none'}}
+ function reset(it){var m=mega(it);if(m){['visibility','opacity','transform','pointer-events','transition'].forEach(function(k){m.style.removeProperty(k)})}}
+ function aria(it,v){var b=it.querySelector('.nav-trigger');if(b&&!it.classList.contains('open')&&!it.matches(':focus-within'))b.setAttribute('aria-expanded',v?'true':'false')}
+ function activate(it){if(cur&&cur!==it){reset(cur);aria(cur,false)}cur=it;reset(it);aria(it,true)}
+ items.forEach(function(it){
+  it.addEventListener('mouseenter',function(){if(!mq.matches)return;clearTimeout(tClose);clearTimeout(tOpen);
+   if(cur===it){reset(it);return}
+   if(!cur||!cur.matches(':hover')&&!cur.querySelector('.nx-mega[style*="visible"]')){activate(it);return}
+   hide(it);show(cur);aria(it,false);
+   tOpen=setTimeout(function(){if(it.matches(':hover'))activate(it);else reset(it)},OPEN)});
+  it.addEventListener('mouseleave',function(){if(!mq.matches)return;
+   if(cur===it){show(it);clearTimeout(tClose);tClose=setTimeout(function(){if(!it.matches(':hover')){reset(it);aria(it,false);if(cur===it)cur=null}},CLOSE)}
+   else reset(it)});
+  it.addEventListener('focusin',function(){reset(it)});
+ });
+ document.addEventListener('keydown',function(e){if(e.key==='Escape'&&cur){clearTimeout(tClose);clearTimeout(tOpen);items.forEach(reset);cur=null}});
+}catch(e){}})();
