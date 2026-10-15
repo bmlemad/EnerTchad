@@ -119,7 +119,7 @@ html:not(#p0):not(#p1):not(#p2):not(#p3):not(#p4):not(#p5):not(#p6):not(#p7):not
   html:not(#p0):not(#p1):not(#p2):not(#p3):not(#p4):not(#p5):not(#p6):not(#p7):not(#p8):not(#p9):not(#p10):not(#p11):not(#p12):not(#p13):not(#p14):not(#p15):not(#p16):not(#p17):not(#p18):not(#p19):not(#p20):not(#p21):not(#p22):not(#p23) #nav.pn .pn-mega .nx-col{grid-column:auto!important;grid-row:auto!important;padding:0!important;margin:0!important;border:0!important;background:none!important;min-width:0!important}
   html:not(#p0):not(#p1):not(#p2):not(#p3):not(#p4):not(#p5):not(#p6):not(#p7):not(#p8):not(#p9):not(#p10):not(#p11):not(#p12):not(#p13):not(#p14):not(#p15):not(#p16):not(#p17):not(#p18):not(#p19):not(#p20):not(#p21):not(#p22):not(#p23) #nav.pn .pn-intro .nxh{font:400 2.4rem/1.02 var(--pn-serif)!important;color:var(--pn-ink)!important;text-transform:none!important;letter-spacing:-.01em!important;margin:0 0 16px!important;min-height:0!important;display:block!important;border:0!important;padding:0!important}
   html:not(#p0):not(#p1):not(#p2):not(#p3):not(#p4):not(#p5):not(#p6):not(#p7):not(#p8):not(#p9):not(#p10):not(#p11):not(#p12):not(#p13):not(#p14):not(#p15):not(#p16):not(#p17):not(#p18):not(#p19):not(#p20):not(#p21):not(#p22):not(#p23) #nav.pn .pn-intro .pn-d{color:var(--pn-ink2)!important;font-size:.98rem!important;line-height:1.6!important;margin:0 0 22px!important}
-  html:not(#p0):not(#p1):not(#p2):not(#p3):not(#p4):not(#p5):not(#p6):not(#p7):not(#p8):not(#p9):not(#p10):not(#p11):not(#p12):not(#p13):not(#p14):not(#p15):not(#p16):not(#p17):not(#p18):not(#p19):not(#p20):not(#p21):not(#p22):not(#p23) #nav.pn .pn-intro .pn-all{min-height:24px!important;align-items:center!important;display:inline-flex!important;padding:0 0 6px!important;border-bottom:1px solid var(--pn-gold)!important;border-radius:0!important;background:none!important;transform:none!important}
+  html:not(#p0):not(#p1):not(#p2):not(#p3):not(#p4):not(#p5):not(#p6):not(#p7):not(#p8):not(#p9):not(#p10):not(#p11):not(#p12):not(#p13):not(#p14):not(#p15):not(#p16):not(#p17):not(#p18):not(#p19):not(#p20):not(#p21):not(#p22):not(#p23) #nav.pn .pn-intro .pn-all{min-height:0!important;align-items:center!important;display:inline-flex!important;padding:0 0 6px!important;border-bottom:1px solid var(--pn-gold)!important;border-radius:0!important;background:none!important;transform:none!important}
   html:not(#p0):not(#p1):not(#p2):not(#p3):not(#p4):not(#p5):not(#p6):not(#p7):not(#p8):not(#p9):not(#p10):not(#p11):not(#p12):not(#p13):not(#p14):not(#p15):not(#p16):not(#p17):not(#p18):not(#p19):not(#p20):not(#p21):not(#p22):not(#p23) #nav.pn .pn-intro .pn-all strong{font:500 .95rem/1 var(--pn-sans)!important;color:var(--pn-ink)!important}
   html:not(#p0):not(#p1):not(#p2):not(#p3):not(#p4):not(#p5):not(#p6):not(#p7):not(#p8):not(#p9):not(#p10):not(#p11):not(#p12):not(#p13):not(#p14):not(#p15):not(#p16):not(#p17):not(#p18):not(#p19):not(#p20):not(#p21):not(#p22):not(#p23) #nav.pn .pn-intro .pn-all strong::after{content:" →"}
   html:not(#p0):not(#p1):not(#p2):not(#p3):not(#p4):not(#p5):not(#p6):not(#p7):not(#p8):not(#p9):not(#p10):not(#p11):not(#p12):not(#p13):not(#p14):not(#p15):not(#p16):not(#p17):not(#p18):not(#p19):not(#p20):not(#p21):not(#p22):not(#p23) #nav.pn .pn-intro .pn-all em{display:none!important}
@@ -894,3 +894,66 @@ footer.pft .foot-news .fn-alt a{display:inline-block;padding:4px 0}
 }
 
 /* et-mobile-quick-nav:end */
+
+/* et-liquid-glass:start */
+/* Important layer overrides legacy effects without selector escalation. */
+@layer et-glass {
+  :root {
+    --et-glass-light:rgba(12,22,38,.82)!important;
+    --et-glass-dense:rgba(12,22,38,.96)!important;
+    --et-glass-solid:#0c1626!important;
+    --et-glass-ink:#f8f5ea!important;
+    --et-glass-line:rgba(255,255,255,.14)!important;
+    --et-glass-reflect:rgba(255,255,255,.10)!important;
+  }
+  html:is(.et-plight,.et-jlight) {
+    --et-glass-light:rgba(250,248,243,.82)!important;
+    --et-glass-dense:rgba(250,248,243,.96)!important;
+    --et-glass-solid:#faf8f3!important;
+    --et-glass-ink:#0a1a2f!important;
+    --et-glass-line:rgba(16,26,44,.14)!important;
+    --et-glass-reflect:rgba(255,255,255,.65)!important;
+  }
+  #nav.nx,.sp-top.et-al,.pp-sub {
+    background:var(--et-glass-light)!important;
+    color:var(--et-glass-ink)!important;
+    -webkit-backdrop-filter:blur(16px) saturate(1.15)!important;
+    backdrop-filter:blur(16px) saturate(1.15)!important;
+    border-bottom-color:var(--et-glass-line)!important;
+    box-shadow:inset 0 1px 0 var(--et-glass-reflect)!important;
+  }
+  #nav.nx.scrolled {background:var(--et-glass-dense)!important}
+  #nezBar,#nav .nx-mega {
+    background:var(--et-glass-dense)!important;
+    color:var(--et-glass-ink)!important;
+    -webkit-backdrop-filter:blur(10px) saturate(1.1)!important;
+    backdrop-filter:blur(10px) saturate(1.1)!important;
+    border-color:var(--et-glass-line)!important;
+  }
+  #nav .nav-search,#nav .nx-mega .nxg,.sp-top .sp-theme {
+    -webkit-backdrop-filter:none!important;backdrop-filter:none!important;
+  }
+  footer.pft {-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+  @media(max-width:1240px) {
+    #nav .nav-links.open,.sp-top details[open]>nav {
+      background:var(--et-glass-solid)!important;color:var(--et-glass-ink)!important;
+      -webkit-backdrop-filter:none!important;backdrop-filter:none!important;
+    }
+  }
+  @supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))) {
+    #nav.nx,.sp-top.et-al,.pp-sub,#nezBar,#nav .nx-mega {background:var(--et-glass-solid)!important}
+  }
+  @media(prefers-reduced-transparency:reduce) {
+    #nav.nx,.sp-top.et-al,.pp-sub,#nezBar,#nav .nx-mega,
+    #nav .nav-links.open,.sp-top details[open]>nav {
+      background:var(--et-glass-solid)!important;
+      -webkit-backdrop-filter:none!important;backdrop-filter:none!important;
+      box-shadow:none!important;
+    }
+  }
+  @media print {
+    #nav.nx,.sp-top.et-al,.pp-sub,#nezBar {box-shadow:none!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+  }
+}
+
+/* et-liquid-glass:end */

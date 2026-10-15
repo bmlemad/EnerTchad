@@ -294,21 +294,3 @@ try{(function(){
  });
  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&cur){clearTimeout(tClose);clearTimeout(tOpen);items.forEach(reset);cur=null}});
 }catch(e){}})();
-
-/* Menu mobile ouvert : la tabulation reste dans la navigation (piège du focus).
-   Les liens précèdent le bouton dans le DOM ; sans ce piège, Tab depuis le bouton
-   sortait vers le contenu de la page, menu toujours ouvert. */
-(function(){
-  var mq=window.matchMedia('(max-width:1240px)');
-  document.addEventListener('keydown',function(e){
-    if(e.key!=='Tab'||!mq.matches)return;
-    var t=document.getElementById('navTog'),n=document.getElementById('nav');
-    if(!t||!n||t.getAttribute('aria-expanded')!=='true')return;
-    var f=[].slice.call(n.querySelectorAll('a[href],button:not([disabled]),input:not([disabled]),[tabindex]:not([tabindex="-1"])')).filter(function(el){
-      var r=el.getBoundingClientRect();return r.width>0&&r.height>0&&getComputedStyle(el).visibility!=='hidden';});
-    if(!f.length)return;
-    var i=f.indexOf(document.activeElement);
-    if(e.shiftKey){if(i<=0){e.preventDefault();f[f.length-1].focus();}}
-    else if(i===-1||i===f.length-1){e.preventDefault();f[0].focus();}
-  });
-})();
