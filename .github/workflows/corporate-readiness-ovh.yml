@@ -2,7 +2,7 @@ name: OVH — corporate readiness deployment
 
 on:
   push:
-    branches: [improve/mobile-quick-navigation-20261014]
+    branches: [improve/mobile-quick-navigation-20261014, fix/share-footer-contrast-20261015]
   workflow_dispatch:
 
 concurrency:
@@ -31,6 +31,8 @@ jobs:
         run: python3 scripts/test_document_metadata.py
       - name: Check investor enquiry journeys
         run: python3 scripts/test_investor_journeys.py
+      - name: Check footer sharing and theme contrast
+        run: node --test scripts/test_page_share.mjs
       - name: Check contact request recovery
         run: node --test scripts/test_contact_delivery.mjs
       - name: Check contact language context
