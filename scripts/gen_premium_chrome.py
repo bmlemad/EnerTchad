@@ -58,7 +58,7 @@ FR = [
         ('Paiements aux États', 'Les sept catégories ITIE', '/paiements-etats'),
         ('Éthique & conformité', 'Anti-corruption, alerte', '/ethique'),
     ], ('Transition', '30 % et plus de renouvelables visés', 'Climat et énergie', '/greentech/#transition')),
-    ('Investisseurs', 'Un capital levé par paliers, de 100 M à 10 Md FCFA, avec des jalons datés.', '/investor-center', [
+    ('Investisseurs', 'Un capital levé par paliers, avec des jalons datés.', '/investor-center', [
         ('Thèse d’investissement', 'Pourquoi le Tchad, maintenant', '/investisseurs#these'),
         ('Modèle d’affaires', 'Chaque étage finance le suivant', '/investisseurs#modele'),
         ('Feuille de route', '8 chantiers phares datés', '/projets'),
@@ -67,7 +67,7 @@ FR = [
         ('Agenda investisseur', 'Prochains rendez-vous', '/investisseurs#agenda'),
         ('Gouvernance', 'Société anonyme OHADA', '/gouvernance'),
         ('Partenariats', 'GCIC · OT, État, académique visés', '/tchaditude/#partenariats'),
-    ], ('Passer à l’acte', 'Souscrire au capital', 'De 100 M à 10 Md FCFA, par paliers', '/investisseurs#souscrire')),
+    ], ('Échanger avec l’équipe', 'Contacter l’équipe investisseurs', 'Statut, conditions et prochaines étapes', '/contact?profil=invest#ctForm')),
     ('Actualités', 'Communiqués, enquêtes techniques et interviews métier, datés.', '/carnets', [
         ('Carnets', 'Articles et interviews', '/carnets'),
         ('Communiqués officiels', 'Annonces datées', '/communiques'),
@@ -111,7 +111,7 @@ EN = [
         ('Payments to governments', 'The seven EITI categories', '/paiements-etats'),
         ('Ethics & compliance', 'Anti-corruption, alert line', '/ethique'),
     ], ('Transition', '30%+ renewables targeted', 'Climate and energy', '/greentech/#transition')),
-    ('Investors', 'Capital raised in tiers, from FCFA 100 M to 10 bn, with dated milestones.', '/investor-center', [
+    ('Investors', 'Capital raised in tiers, with dated milestones.', '/investor-center', [
         ('Investment case', 'Why Chad, why now', '/investisseurs#these'),
         ('Business model', 'Each stage funds the next', '/investisseurs#modele'),
         ('Roadmap', '8 dated flagship projects', '/projets'),
@@ -120,7 +120,7 @@ EN = [
         ('Investor calendar', 'Upcoming events', '/investisseurs#agenda'),
         ('Governance', 'OHADA public limited company', '/gouvernance'),
         ('Partnerships', 'GCIC · OT, State, academia targeted', '/tchaditude/#partenariats'),
-    ], ('Take action', 'Subscribe to the capital', 'From FCFA 100 M to 10 bn, in tiers', '/investisseurs#souscrire')),
+    ], ('Speak with the team', 'Contact investor relations', 'Status, conditions and next steps', '/contact-en?profil=invest#ctForm')),
     ('News', 'Press releases, technical features and job interviews, all dated.', '/carnets', [
         ('Journal', 'Articles and interviews', '/carnets'),
         ('Press releases', 'Dated announcements', '/communiques'),
