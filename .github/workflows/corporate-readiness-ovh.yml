@@ -2,7 +2,7 @@ name: OVH — corporate readiness deployment
 
 on:
   push:
-    branches: [main, improve/mobile-quick-navigation-20261014, fix/share-footer-contrast-20261015, improve/liquid-glass-20261015, fix/navigation-accessibility-20261016]
+    branches: [main, improve/mobile-quick-navigation-20261014, fix/share-footer-contrast-20261015, improve/liquid-glass-20261015, fix/navigation-accessibility-20261016, fix/public-phone-20261016]
   workflow_dispatch:
 
 concurrency:
@@ -69,6 +69,8 @@ jobs:
         run: python3 scripts/audit_mobile_quick_nav.py
       - name: Validate verified document dates
         run: python3 scripts/audit_document_dates.py
+      - name: Validate current public contact number
+        run: python3 scripts/audit_public_phone.py
       - name: Validate English download language disclosures
         run: python3 scripts/audit_download_languages.py
       - name: Validate every indexed search destination
