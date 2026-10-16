@@ -979,3 +979,47 @@ footer.pft .foot-news .fn-alt a{display:inline-block;padding:4px 0}
 }
 
 /* et-liquid-glass:end */
+
+/* et-modern:start */
+@layer et-glass {
+  html[data-et-modern] #main-content {font-family:Inter,system-ui,sans-serif!important}
+  html[data-et-modern] #main-content h1 {font-family:Inter,system-ui,sans-serif!important;font-size:clamp(2.1rem,4.6vw,4rem)!important;line-height:1.12!important;font-weight:600!important;letter-spacing:-.045em!important;max-width:24ch!important}
+  html[data-et-modern] #main-content h2 {font-family:Inter,system-ui,sans-serif!important;font-size:clamp(1.6rem,3vw,2.3rem)!important;line-height:1.2!important;font-weight:600!important;letter-spacing:-.025em!important}
+  html[data-et-modern] #main-content h3 {font-family:Inter,system-ui,sans-serif!important;font-size:1.13rem!important;line-height:1.4!important;font-weight:650!important;letter-spacing:0!important}
+  html[data-et-modern] #main-content>section {padding-block:clamp(36px,5vw,72px)!important;background:var(--et-glass-solid)!important;color:var(--et-glass-ink)!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+  html[data-et-modern] #main-content.et-home>section :is(h2,h3,p,b,span,a) {color:var(--et-glass-ink)!important}
+  html[data-et-modern] #main-content .mod-signature {font:italic clamp(1.05rem,2vw,1.4rem)/1.5 Georgia,serif!important;margin:16px 0!important;color:#ead29b!important}
+  html[data-et-modern] #nav .nav-trigger {font-size:.86rem!important;min-height:44px!important}
+  html[data-et-modern] #nav .nx-mega .pn-links {max-height:min(65vh,560px)!important;overflow-y:auto!important;overscroll-behavior:contain!important}
+  html[data-et-modern] #nezBar {display:none!important;grid-template-columns:repeat(3,minmax(0,1fr))!important}
+  html[data-et-modern] #nezBar a {min-width:0!important;min-height:54px!important;display:flex!important;align-items:center!important;justify-content:center!important;flex-direction:column!important;gap:3px!important}
+  html[data-et-modern] #nezBar .et-mobile-label-long {display:block!important;white-space:normal!important;font-size:11px!important}
+  html[data-et-modern] #nezBar .et-mobile-label-short {display:none!important}
+  .mod-grid {display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:24px!important;margin:28px 0!important}
+  .mod-card {min-width:0!important;padding:24px!important;border:1px solid var(--et-glass-line)!important;border-radius:16px!important;background:var(--et-glass-dense)!important;color:var(--et-glass-ink)!important;box-shadow:none!important}
+  .mod-card a,.mod-doc-shell a {color:inherit!important;text-underline-offset:4px!important}
+  .mod-status {border-inline-start:3px solid #b98a35!important;padding-inline-start:12px!important}
+  .mod-button,.mod-preview,.mod-filters button {display:inline-flex!important;align-items:center!important;justify-content:center!important;min-height:44px!important;padding:10px 16px!important;border:1px solid var(--et-glass-ink)!important;border-radius:8px!important;color:var(--et-glass-ink)!important;background:transparent!important;font:600 .95rem/1.4 Inter,system-ui,sans-serif!important;text-decoration:none!important;cursor:pointer!important}
+  .mod-service-fields {display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:24px!important;margin:0!important}
+  .mod-service-fields dd {margin:0!important;line-height:1.7!important}
+  .mod-filters {display:grid!important;grid-template-columns:2fr repeat(3,1fr)!important;gap:16px!important;align-items:end!important}
+  .mod-filters label {font:600 .85rem/1.5 Inter,system-ui,sans-serif!important;display:block!important;min-width:0!important}
+  .mod-filters input,.mod-filters select {width:100%!important;box-sizing:border-box!important;margin-top:8px!important;min-height:48px!important;padding:10px!important;border:1px solid var(--et-glass-ink)!important;border-radius:8px!important;background:var(--et-glass-solid)!important;color:var(--et-glass-ink)!important;font:400 1rem/1.5 Inter,system-ui,sans-serif!important}
+  .mod-doc-shell {min-width:0!important;display:flex!important;flex-direction:column!important;gap:12px!important;height:100%!important}
+  .mod-context {padding:16px!important;border-inline-start:3px solid #b98a35!important;background:var(--et-glass-dense)!important;color:var(--et-glass-ink)!important}
+  .mod-preview-dialog {box-sizing:border-box!important;width:min(100% - 24px,1000px)!important;height:min(90vh,900px)!important;max-height:90svh!important;padding:20px!important;border:1px solid var(--et-glass-line)!important;border-radius:16px!important;background:var(--et-glass-solid)!important;color:var(--et-glass-ink)!important;overflow:auto!important}
+  .mod-preview-dialog iframe {width:100%!important;height:65vh!important;border:0!important;background:#fff!important}
+  html[data-et-modern] :is(.mod-card,.mod-filters,.mod-doc-shell,.mod-preview-dialog) :is(a,button,input,select,summary):focus-visible {outline:3px solid #b98a35!important;outline-offset:4px!important}
+  html[data-et-modern] [hidden] {display:none!important}
+  @media(max-width:900px) {html[data-et-modern] #nezBar {display:grid!important}}
+  @media(max-width:767px) {
+    .mod-grid,.mod-service-fields,.mod-filters {grid-template-columns:1fr!important}
+    .mod-card {padding:20px!important}
+    html[data-et-modern] #nav .nx-mega .pn-links {max-height:none!important;overflow:visible!important}
+    html[data-et-modern] #main-content h1 {font-size:clamp(2rem,8vw,3rem)!important}
+    html[data-et-modern] #main-content .et-actions {align-items:stretch!important;gap:12px!important}
+    html[data-et-modern] #main-content .et-actions a {min-height:44px!important;display:inline-flex!important;align-items:center!important}
+  }
+}
+
+/* et-modern:end */
