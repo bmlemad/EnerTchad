@@ -77,7 +77,7 @@ FR = [
     ], ('Carnet', 'Première du genre', 'Une chaîne intégrée pensée au Tchad', '/journal-premiere-du-genre')),
     ('Carrières', 'Du puits à la pompe, une chaîne entière à faire tourner, avec la relève tchadienne d’abord.', '/carrieres', [
         ('Métiers & candidatures', 'Géosciences, forage, HSE, digital', '/carrieres'),
-        ('Académie Tchaditude', 'Former avant d’extraire', '/tchaditude/'),
+        ('Académie Tchaditude', 'Transfert de compétences, relève', '/tchaditude/'),
         ('Former avant d’extraire', 'Carnet · l’académie', '/journal-former-avant-extraire'),
         ('Chef de chantier wellpads', 'Interview métier', '/journal-interview-wellpads'),
     ], ('Nous rejoindre', 'Les talents tchadiens d’abord', 'Familles de métiers ouvertes', '/carrieres')),
@@ -130,7 +130,7 @@ EN = [
     ], ('Journal', 'A first of its kind', 'An integrated chain designed in Chad', '/journal-premiere-du-genre')),
     ('Careers', 'From wellhead to pump, a whole chain to run, with Chad’s next generation first.', '/carrieres', [
         ('Jobs & applications', 'Geoscience, drilling, HSE, digital', '/carrieres'),
-        ('Tchaditude academy', 'Train before we extract', '/tchaditude/'),
+        ('Tchaditude academy', 'Skills transfer, next generation', '/tchaditude/'),
         ('Train before we extract', 'Journal · the academy', '/journal-former-avant-extraire'),
         ('Wellpad site manager', 'Job interview', '/journal-interview-wellpads'),
     ], ('Join us', 'Chadian talent first', 'Open job families', '/carrieres')),
