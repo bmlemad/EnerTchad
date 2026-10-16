@@ -50,6 +50,7 @@ def hub(text, en):
     text = text.replace(f'<span aria-current="page">{old}</span>', f'<span aria-current="page">{label}</span>')
     text = text.replace('Capacité intégrée · Au cœur des trois pôles', 'Capacité intégrée · Au service des quatre segments industriels')
     text = text.replace('Integrated capability · At the heart of the three hubs', 'Integrated capability · Supporting four industrial segments')
+    text = text.replace('Built-in capability · Inside the core hubs', 'Integrated capability · Supporting four industrial segments')
     lead = ('Studies, design, technical assistance and project monitoring: a planned capability to prepare robust decisions and projects suited to Chad.' if en else
             'Études, conception, assistance technique et suivi de projets : une capacité prévue pour préparer des décisions solides et des projets adaptés au Tchad.')
     text = re.sub(r'<p class="pp-sublead">.*?</p>', lambda _: f'<p class="pp-sublead">{lead}</p>', text, count=1, flags=re.S)
@@ -100,10 +101,12 @@ def navigation(text):
         label = 'Engineering &amp; Advisory' if en else 'Ingénierie &amp; Conseil'
         # French links occasionally occur in the English source menu. The
         # page language is corrected below; do not infer language from copy.
-        if re.search(r'\blang="en', text[:250]):
+        if re.search(r'<html\b[^>]*\blang="en(?:-[^"]*)?"', text) and re.search(r'>(Conseil|Advisory|EnerConseils|Conseil &amp; audits indépendants)<', tag):
             en = True
             label = 'Engineering &amp; Advisory'
             tag = tag.replace('href="/enerconseils/"', 'href="/pole-enerconseils-en"')
+        if 'Français</a>' in tag:
+            return tag.replace('href="/pole-enerconseils-en"', 'href="/enerconseils/"')
         tag = re.sub(r'>(Conseil|Advisory|EnerConseils|Conseil &amp; audits indépendants)<', lambda _: '>' + label + '<', tag)
         tag = re.sub(r'EnerConseils(?:\s|&nbsp;)*:\s*(?:études, audits|studies, audits)', 'EnerConseils: ' + ('studies, design, projects' if en else 'études, conception, projets'), tag)
         tag = tag.replace('Atlas du secteur, conseil, audits.', 'Ingénierie, conseil, atlas du secteur.')

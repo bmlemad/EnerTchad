@@ -41,6 +41,8 @@ jobs:
         run: python3 scripts/test_search_navigation.py
       - name: Check formation-stage company descriptions
         run: python3 scripts/test_company_descriptions.py
+      - name: Check engineering navigation language switches
+        run: python3 scripts/test_engineering_offer.py
       - name: Check direct enquiry-form access
         run: python3 scripts/test_direct_enquiry_form.py
       - name: Check Arabic readiness
