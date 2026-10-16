@@ -2,7 +2,7 @@ name: OVH — corporate readiness deployment
 
 on:
   push:
-    branches: [main, improve/mobile-quick-navigation-20261014, fix/share-footer-contrast-20261015, improve/liquid-glass-20261015, fix/navigation-accessibility-20261016, improve/engineering-offer-20261016, improve/industrial-modernisation-20261016]
+    branches: [main, improve/mobile-quick-navigation-20261014, fix/share-footer-contrast-20261015, improve/liquid-glass-20261015, fix/navigation-accessibility-20261016, improve/engineering-offer-20261016, improve/industrial-modernisation-20261016, fix/configurator-history-20261016]
   workflow_dispatch:
 
 concurrency:
@@ -47,6 +47,10 @@ jobs:
         run: |
           python3 scripts/test_modernisation.py
           node --test scripts/test_modernisation_ui.cjs
+      - name: Check configurator history navigation
+        run: |
+          node --test scripts/test_configurator_history.cjs
+          python3 scripts/test_configurator_history.py
       - name: Check direct enquiry-form access
         run: python3 scripts/test_direct_enquiry_form.py
       - name: Check Arabic readiness

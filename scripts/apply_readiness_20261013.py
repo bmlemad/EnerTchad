@@ -338,3 +338,5 @@ if __name__ == '__main__':
     runpy.run_path(str(ROOT / 'scripts/align_engineering_offer.py'), run_name='__main__')
 
     runpy.run_path(str(ROOT / 'scripts/modernise_site.py'), run_name='__main__')
+
+    runpy.run_path(str(ROOT / 'scripts/apply_configurator_history.py'), run_name='__main__')
