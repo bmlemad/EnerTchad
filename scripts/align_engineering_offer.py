@@ -115,6 +115,28 @@ def navigation(text):
     return re.sub(r'<a\b[^>]*href="/(?:enerconseils/(?:#[^"]*)?|pole-enerconseils-en(?:#[^"]*)?)"[^>]*>.*?</a>', link, text, flags=re.S)
 
 
+def homepage_access(text, en):
+    """Keep engineering visible beside the programme, outside its four segments."""
+    marker = 'id="engineering-home-access"'
+    if marker in text:
+        return text
+    label = 'Engineering &amp; Advisory' if en else 'Ingénierie &amp; Conseil'
+    href = '/pole-enerconseils-en#ingenierie' if en else '/enerconseils/#ingenierie'
+    note = ('Planned cross-cutting capability: studies, design, technical assistance and project monitoring.' if en else
+            'Capacité transversale prévue : études, conception, assistance technique et suivi de projets.')
+    block = (f'<div id="engineering-home-access"><p>{note}</p><div class="et-actions">'
+             f'<a class="et-secondary" href="{href}">{label} →</a></div></div>')
+    def insert(m):
+        boundary = '</div></div></section>'
+        if not m[0].endswith(boundary):
+            raise ValueError('Homepage programme boundary changed')
+        return m[0][:-len(boundary)] + '</div>' + block + '</div></section>'
+    text, count = re.subn(r'<section\b[^>]*\bid="chaine"[^>]*>.*?</section>', insert, text, count=1, flags=re.S)
+    if count != 1:
+        raise ValueError('Missing homepage programme section')
+    return text
+
+
 def main():
     count = 0
     for path in ROOT.rglob('*.html'):
@@ -125,6 +147,8 @@ def main():
         new = navigation(old)
         if rel.as_posix() in PAGES:
             new = hub(new, PAGES[rel.as_posix()])
+        if rel.as_posix() in ('index.html', 'index-en.html'):
+            new = homepage_access(new, rel.name == 'index-en.html')
         # Refresh the existing search assets without introducing requests.
         new = re.sub(r'/assets/chrome/(cmdk_en|cmdk_extra|c_abd9013c3955|c_df4f446df566)\.js(?:\?[^"\'<>\s]+)?', r'/assets/chrome/\1.js?b=2026101603', new)
         if old != new:

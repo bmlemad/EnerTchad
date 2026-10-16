@@ -1,6 +1,6 @@
 """Guard language switches while updating shared engineering navigation."""
 import unittest
-from align_engineering_offer import navigation
+from align_engineering_offer import navigation, homepage_access
 
 
 class EngineeringNavigation(unittest.TestCase):
@@ -23,6 +23,16 @@ class EngineeringNavigation(unittest.TestCase):
     def test_contextual_advisory_anchors_survive(self):
         html = '<html lang="fr"><a href="/enerconseils/#audits">Conseil</a></html>'
         self.assertIn('href="/enerconseils/#audits"', navigation(html))
+
+    def test_homepage_keeps_four_industrial_segments(self):
+        for en, href in [(False, '/enerconseils/#ingenierie'), (True, '/pole-enerconseils-en#ingenierie')]:
+            cards = '<article>Industrial segment</article>' * 4
+            html = '<section id="chaine"><div class="et-inner"><div class="et-segments">' + cards + '</div></div></section>'
+            result = homepage_access(html, en)
+            self.assertEqual(result.count('<article>'), 4)
+            self.assertIn('href="' + href + '"', result)
+            self.assertEqual(result.count('id="engineering-home-access"'), 1)
+            self.assertEqual(homepage_access(result, en), result)
 
 
 if __name__ == '__main__':
