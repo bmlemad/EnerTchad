@@ -1,4 +1,3 @@
-/* The early important material layer also outranks legacy presentation rules. */
 @layer et-glass {
   html[data-et-modern] #main-content {font-family:Inter,system-ui,sans-serif!important}
   html[data-et-modern] #main-content h1 {font-family:Inter,system-ui,sans-serif!important;font-size:clamp(2.1rem,4.6vw,4rem)!important;line-height:1.12!important;font-weight:600!important;letter-spacing:-.045em!important;max-width:24ch!important}
@@ -16,7 +15,6 @@
   .mod-grid {display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:24px!important;margin:28px 0!important}
   .mod-card {min-width:0!important;padding:24px!important;border:1px solid var(--et-glass-line)!important;border-radius:16px!important;background:var(--et-glass-dense)!important;color:var(--et-glass-ink)!important;box-shadow:none!important}
   .mod-card a,.mod-doc-shell a {color:inherit!important;text-underline-offset:4px!important}
-  .mod-eyebrow {font-weight:600!important}
   .mod-status {border-inline-start:3px solid #b98a35!important;padding-inline-start:12px!important}
   .mod-button,.mod-preview,.mod-filters button {display:inline-flex!important;align-items:center!important;justify-content:center!important;min-height:44px!important;padding:10px 16px!important;border:1px solid var(--et-glass-ink)!important;border-radius:8px!important;color:var(--et-glass-ink)!important;background:transparent!important;font:600 .95rem/1.4 Inter,system-ui,sans-serif!important;text-decoration:none!important;cursor:pointer!important}
   .mod-service-fields {display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:24px!important;margin:0!important}
@@ -27,7 +25,6 @@
   .mod-doc-shell {min-width:0!important;display:flex!important;flex-direction:column!important;gap:12px!important;height:100%!important}
   .mod-context {padding:16px!important;border-inline-start:3px solid #b98a35!important;background:var(--et-glass-dense)!important;color:var(--et-glass-ink)!important}
   .mod-preview-dialog {box-sizing:border-box!important;width:min(100% - 24px,1000px)!important;height:min(90vh,900px)!important;max-height:90svh!important;padding:20px!important;border:1px solid var(--et-glass-line)!important;border-radius:16px!important;background:var(--et-glass-solid)!important;color:var(--et-glass-ink)!important;overflow:auto!important}
-  .mod-preview-dialog::backdrop {background:rgba(0,10,24,.7)!important}
   .mod-preview-dialog iframe {width:100%!important;height:65vh!important;border:0!important;background:#fff!important}
   html[data-et-modern] :is(.mod-card,.mod-filters,.mod-doc-shell,.mod-preview-dialog) :is(a,button,input,select,summary):focus-visible {outline:3px solid #b98a35!important;outline-offset:4px!important}
   html[data-et-modern] [hidden] {display:none!important}
