@@ -8,7 +8,7 @@ for page in root.rglob('*.html'):
  for bar in re.findall(r'<nav\b[^>]*\bid="nezBar"[^>]*>.*?</nav>',text,re.S):
   links=re.findall(r'<a\b[^>]*>.*?</a>',bar,re.S)
   assert len(links)==5,str(page)+': wrong quick navigation count'
-  assert 'premium-chrome.css?b=2026101506' in text,str(page)+': shared stylesheet version missing'
+  assert 'premium-chrome.css?b=2026101601' in text,str(page)+': shared stylesheet version missing'
   assert 'id="et-mobile-quick-nav"' not in text,str(page)+': inline rules remain'
   assert '/assets/chrome/mobile-quick-nav.css' not in text,str(page)+': extra stylesheet request'
   for anchor in links:

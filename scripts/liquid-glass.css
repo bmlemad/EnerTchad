@@ -35,6 +35,18 @@
   #nav .nav-trigger svg,#nav .nav-trigger svg * {
     color:var(--et-glass-ink)!important;stroke:currentColor!important;
   }
+  #nav #navTog span {background:var(--et-glass-ink)!important}
+  #cmdk-input {min-width:0!important}
+  .et-search-close {flex:0 0 44px!important;width:44px!important;height:44px!important;background:#1d304d!important;color:#f8f5ea!important;border:1px solid #9fb0c9!important;border-radius:8px!important;font:28px/1 system-ui!important;cursor:pointer!important}
+  .et-search-close:focus-visible {outline:3px solid #e8c36a!important;outline-offset:2px!important}
+  .et-nav-live {position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip-path:inset(50%)!important;white-space:nowrap!important;border:0!important}
+  @media(max-width:360px) {
+    #nav #navSearch {display:inline-flex!important}
+  }
+  @media(max-width:767px) {
+    #nav .nav-links .nav-item .nx-mega {width:auto!important;min-width:0!important;max-width:100%!important;box-sizing:border-box!important}
+    .arh-nav {flex-wrap:wrap!important;overflow:visible!important;gap:4px 12px!important}
+  }
   #nezBar,#nav .nx-mega {
     background:var(--et-glass-dense)!important;
     color:var(--et-glass-ink)!important;
