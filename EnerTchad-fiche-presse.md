@@ -14,7 +14,7 @@
 - **Siège** : Radisson Blu, bureau 23, Quartier Sabangali, Cité du 1er Décembre, BP 6060, N'Djamena, Tchad
 - **RCCM** : immatriculation en cours
 - **Domaine** : enertchad.com
-- **Contact presse** : contact@enertchad.com · +235 99 29 86 96
+- **Contact presse** : contact@enertchad.com · +235 30 16 26 26
 
 ## Capital (trajectoire visée)
 - Capital fondateur : 100 000 000 FCFA
