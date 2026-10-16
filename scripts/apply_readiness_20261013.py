@@ -334,3 +334,5 @@ if __name__ == '__main__':
     runpy.run_path(str(ROOT / 'scripts/align_liquid_glass.py'), run_name='__main__')
 
     runpy.run_path(str(ROOT / 'scripts/align_navigation_accessibility.py'), run_name='__main__')
+
+    runpy.run_path(str(ROOT / 'scripts/replace_public_phone.py'), run_name='__main__')
