@@ -8,13 +8,15 @@
       "id": "investor-factsheet",
       "path": "/Fiche_Investisseur_EnerTchad.pdf",
       "format": "PDF",
-      "bytes": 77376,
+      "bytes": 23375,
       "language": "fr",
       "category": "investors",
       "status": "published",
       "role_fr": "Synthèse investisseur",
       "role_en": "Investor summary",
-      "git_blob_sha": "0b4b3859b1a7538601a94a129224ca4a7c5e7899"
+      "git_blob_sha": "3c6238c9b4bcb60b5c4534810d085471b7c80d4f",
+      "document_date": "2026-07",
+      "date_source": "PDF page 1"
     },
     {
       "id": "investor-deck",
@@ -44,14 +46,17 @@
       "id": "progress-2026",
       "path": "/Point_Etape_EnerTchad_2026.pdf",
       "format": "PDF",
-      "bytes": 532669,
+      "bytes": 127760,
       "language": "fr",
       "category": "investors",
       "status": "progress-update",
       "version": "2026",
       "role_fr": "Point d’étape de constitution",
       "role_en": "Formation progress update",
-      "git_blob_sha": "7ea750fd2704eb24eb99ed43b78d1f7d7bd15264"
+      "git_blob_sha": "89bde02af977e4be45055c5a32a34fea16281fd9",
+      "document_date": "2026-08",
+      "document_updated": "2026-10",
+      "date_source": "PDF page 1"
     },
     {
       "id": "investor-calendar-fr",
@@ -107,73 +112,77 @@
       "id": "technical-upstream",
       "path": "/Fiche_Technique_Amont_EnerTchad.pdf",
       "format": "PDF",
-      "bytes": 576403,
+      "bytes": 168426,
       "language": "fr",
       "category": "operations",
       "status": "published",
       "role_fr": "Fiche technique Exploration & Production",
       "role_en": "Exploration & Production technical factsheet",
-      "git_blob_sha": "374f0611c87c238f3f640cd2b4c03b05e65ba431"
+      "git_blob_sha": "12f65565398b8e1a6d01bf512b6465306b56f22b"
     },
     {
       "id": "technical-midstream",
       "path": "/Fiche_Technique_Intermediaire_EnerTchad.pdf",
       "format": "PDF",
-      "bytes": 521885,
+      "bytes": 114422,
       "language": "fr",
       "category": "operations",
       "status": "published",
       "role_fr": "Fiche technique Transport & stockage",
       "role_en": "Transport & Storage technical factsheet",
-      "git_blob_sha": "8eaa17d9a726c120b57e4bcc9147036e6cd37e81"
+      "git_blob_sha": "2c0b948cca3459ce7a785f749dacfa72035dbb85"
     },
     {
       "id": "technical-downstream",
       "path": "/Fiche_Technique_Aval_EnerTchad.pdf",
       "format": "PDF",
-      "bytes": 75599,
+      "bytes": 22144,
       "language": "fr",
       "category": "operations",
       "status": "published",
       "role_fr": "Fiche technique Raffinage & distribution",
       "role_en": "Refining & Distribution technical factsheet",
-      "git_blob_sha": "afb3f5328a1a0cf2766f734f72b50c29c5c5a745"
+      "git_blob_sha": "75bf24bb81fe1d5602ee71d6bb46a4aa0a8bb9eb"
     },
     {
       "id": "brochure-fr",
       "path": "/Brochure_EnerTchad.pdf",
       "format": "PDF",
-      "bytes": 1006094,
+      "bytes": 211086,
       "language": "fr",
       "category": "corporate",
       "status": "published",
       "role_fr": "Brochure institutionnelle",
       "role_en": "Corporate brochure",
-      "git_blob_sha": "d35fc46c65c44cd552723891010a0bb872998b5a"
+      "git_blob_sha": "4f7ed22887f66b2f4c29782db70c00cb42b81c0d",
+      "document_date": "2026-09",
+      "date_source": "PDF page 1"
     },
     {
       "id": "brochure-en",
       "path": "/Brochure_EnerTchad_EN.pdf",
       "format": "PDF",
-      "bytes": 1007110,
+      "bytes": 211981,
       "language": "en",
       "category": "corporate",
       "status": "published",
       "role_fr": "Brochure institutionnelle anglaise",
       "role_en": "English corporate brochure",
-      "git_blob_sha": "99d93eed8ecc6c7cc6dc0fa441f1a1446a40dc2a"
+      "git_blob_sha": "dbfd6e0a665d3ad7956a9b44004f0c6f6cc5395c",
+      "document_date": "2026-09",
+      "date_source": "PDF page 1"
     },
     {
       "id": "factsheet-ar",
       "path": "/Fiche_EnerTchad_AR.pdf",
       "format": "PDF",
-      "bytes": 572062,
+      "bytes": 232348,
       "language": "ar",
       "category": "corporate",
       "status": "published",
       "role_fr": "Fiche institutionnelle arabe",
       "role_en": "Arabic corporate factsheet",
-      "git_blob_sha": "63b4d0a9d5991138ac70c65b84636da4c8f04394"
+      "git_blob_sha": "61ecedb7b5c6fe4c13cd8a901c69fcd0dab9dc80"
     }
   ],
   "integrity": "git_blob_sha"
