@@ -54,9 +54,13 @@
     backdrop-filter:blur(10px) saturate(1.1)!important;
     border-color:var(--et-glass-line)!important;
   }
-  #nav .nav-search,#nav .nx-mega .nxg,.sp-top .sp-theme {
+  #nav .nav-search,#nav .nx-mega,#nav .nx-mega .nxg,.sp-top .sp-theme {
     -webkit-backdrop-filter:none!important;backdrop-filter:none!important;
   }
+  /* Mega menu: opaque panel (the 96% glass let the hero headline show through the links);
+     the feature card hugs its content instead of stretching into an empty block. */
+  #nav .nx-mega {background:var(--et-glass-solid)!important}
+  #nav .nx-mega .pn-feat {align-self:start!important}
   footer.pft {-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
   @media(max-width:1240px) {
     #nav .nav-links.open,.sp-top details[open]>nav {
