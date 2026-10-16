@@ -2,7 +2,7 @@ name: OVH — corporate readiness deployment
 
 on:
   push:
-    branches: [main, improve/mobile-quick-navigation-20261014, fix/share-footer-contrast-20261015, improve/liquid-glass-20261015]
+    branches: [main, improve/mobile-quick-navigation-20261014, fix/share-footer-contrast-20261015, improve/liquid-glass-20261015, fix/navigation-accessibility-20261016]
   workflow_dispatch:
 
 concurrency:
@@ -47,6 +47,8 @@ jobs:
         run: python3 scripts/test_arabic_readiness.py
       - name: Check narrow mobile navigation
         run: python3 scripts/test_mobile_quick_nav.py
+      - name: Check search focus, selection and background restoration
+        run: node --test scripts/test_search_accessibility.mjs
       - run: npm ci
       - name: Preserve baseline for the performance check
         run: |

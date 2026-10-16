@@ -27,9 +27,9 @@ def main():
     for page in ROOT.rglob('*.html'):
         if any(p in {'.git','.next','out','public','node_modules','reports','qa'} for p in page.relative_to(ROOT).parts):continue
         old=page.read_text()
-        new=re.sub(r'/assets/chrome/premium-chrome\.css(?:\?[^"\'<>\s]+)?','/assets/chrome/premium-chrome.css?b=2026101506',old)
-        new=re.sub(r'/assets/chrome/bundle_head_b2\.css(?:\?[^"\'<>\s]+)?','/assets/chrome/bundle_head_b2.css?b=2026101506',new)
-        new=re.sub(r'/assets/chrome/investor-premium\.css(?:\?[^"\'<>\s]+)?','/assets/chrome/investor-premium.css?b=2026101506',new)
+        new=re.sub(r'/assets/chrome/premium-chrome\.css(?:\?[^"\'<>\s]+)?','/assets/chrome/premium-chrome.css?b=2026101601',old)
+        new=re.sub(r'/assets/chrome/bundle_head_b2\.css(?:\?[^"\'<>\s]+)?','/assets/chrome/bundle_head_b2.css?b=2026101601',new)
+        new=re.sub(r'/assets/chrome/investor-premium\.css(?:\?[^"\'<>\s]+)?','/assets/chrome/investor-premium.css?b=2026101601',new)
         if old!=new:page.write_text(new);count+=1
     print(f'Glass materials aligned: {count} source pages')
 
