@@ -2,7 +2,7 @@ name: OVH — corporate readiness deployment
 
 on:
   push:
-    branches: [main, improve/mobile-quick-navigation-20261014, fix/share-footer-contrast-20261015, improve/liquid-glass-20261015, fix/navigation-accessibility-20261016, improve/engineering-offer-20261016, improve/industrial-modernisation-20261016, fix/configurator-history-20261016]
+    branches: [main, improve/mobile-quick-navigation-20261014, fix/share-footer-contrast-20261015, improve/liquid-glass-20261015, fix/navigation-accessibility-20261016, improve/engineering-offer-20261016, improve/industrial-modernisation-20261016, fix/configurator-history-20261016, fix/share-touch-target-20261016]
   workflow_dispatch:
 
 concurrency:
@@ -51,6 +51,8 @@ jobs:
         run: |
           node --test scripts/test_configurator_history.cjs
           python3 scripts/test_configurator_history.py
+      - name: Check configurator footer preservation
+        run: python3 scripts/test_configurator_footer.py
       - name: Check direct enquiry-form access
         run: python3 scripts/test_direct_enquiry_form.py
       - name: Check Arabic readiness
@@ -79,6 +81,8 @@ jobs:
         run: python3 scripts/audit_mobile_quick_nav.py
       - name: Validate industrial modernisation
         run: python3 scripts/audit_modernisation.py
+      - name: Validate footer and menu coherence
+        run: python3 scripts/audit_footer_menu_coherence.py
       - name: Validate verified document dates
         run: python3 scripts/audit_document_dates.py
       - name: Validate English download language disclosures
