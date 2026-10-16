@@ -67,7 +67,7 @@ test('mega-menu — visual geometry and surface coherence', async ({ browser }) 
         };
       });
 
-      expect(report.triggerCount, path + ' trigger count').toBeGreaterThanOrEqual(5);
+      expect(report.triggerCount, path + ' trigger count').toBe(4);
       expect(report.panels.length, path + ' panel count').toBe(report.triggerCount);
 
       const surfaces = report.panels.map(p => p.surface);

@@ -7,8 +7,9 @@ for page in root.rglob('*.html'):
  text=page.read_text()
  for bar in re.findall(r'<nav\b[^>]*\bid="nezBar"[^>]*>.*?</nav>',text,re.S):
   links=re.findall(r'<a\b[^>]*>.*?</a>',bar,re.S)
-  assert len(links)==5,str(page)+': wrong quick navigation count'
-  assert 'premium-chrome.css?b=2026101601' in text,str(page)+': shared stylesheet version missing'
+  modern = 'data-et-modern="industrial"' in text
+  assert len(links)==(3 if modern else 5),str(page)+': wrong quick navigation count'
+  assert ('premium-chrome.css?b=2026101701' if modern else 'premium-chrome.css?b=2026101601') in text,str(page)+': shared stylesheet version missing'
   assert 'id="et-mobile-quick-nav"' not in text,str(page)+': inline rules remain'
   assert '/assets/chrome/mobile-quick-nav.css' not in text,str(page)+': extra stylesheet request'
   for anchor in links:
@@ -16,4 +17,4 @@ for page in root.rglob('*.html'):
    assert 'et-mobile-label-long' in anchor,str(page)+': unreviewed label'
   count+=1
 assert count>0,'No quick navigation found'
-print(f'Mobile quick navigation verified: {count} delivered bars with five named targets and shared responsive rules')
+print(f'Mobile quick navigation verified: {count} delivered bars with reviewed named targets and shared responsive rules')
