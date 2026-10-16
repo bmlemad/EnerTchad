@@ -13,6 +13,24 @@ SKIP = {'.git', '.next', 'out', 'public', 'node_modules', 'reports', 'qa', 'docs
 PAGES = {'enerconseils/index.html': False, 'pole-enerconseils-en.html': True}
 START = '<!-- engineering-offer:start -->'
 END = '<!-- engineering-offer:end -->'
+ACTIVITIES = [
+    ('amont/index.html', 'pole-amont-en.html', '/amont/', '/pole-amont-en',
+     'Exploration & production', 'Exploration & production',
+     'Capacité prévue : études de réservoir, conception des installations, assistance au développement et suivi des projets.',
+     'Planned capability: reservoir studies, facility design, development assistance and project monitoring.'),
+    ('intermediaire/index.html', 'pole-intermediaire-en.html', '/intermediaire/', '/pole-intermediaire-en',
+     'Transport & stockage', 'Transport & storage',
+     'Capacité prévue : études de flux, conception des dépôts et réseaux, assistance technique et suivi des infrastructures.',
+     'Planned capability: flow studies, depot and network design, technical assistance and infrastructure monitoring.'),
+    ('aval/index.html', 'pole-aval-en.html', '/aval/', '/pole-aval-en',
+     'Raffinage & distribution', 'Refining & distribution',
+     'Capacité prévue : études de procédés, conception des unités et stations, assistance technique et suivi des projets.',
+     'Planned capability: process studies, plant and station design, technical assistance and project monitoring.'),
+    ('petrochimie/index.html', 'pole-enerchimie-en.html', '/petrochimie/', '/pole-enerchimie-en',
+     'Pétrochimie', 'Petrochemicals',
+     'Capacité prévue : études de faisabilité, choix des procédés, coordination de la conception et suivi des unités.',
+     'Planned capability: feasibility studies, process selection, design coordination and plant project monitoring.'),
+]
 
 
 def section(en):
@@ -36,9 +54,12 @@ def section(en):
     contact = '/contact-en#ctForm' if en else '/contact#ctForm'
     cta = 'Discuss an engineering project' if en else 'Échanger sur un projet d’ingénierie'
     items = ''.join(f'<article class="pp-cell"><h3>{escape(t)}</h3><p>{escape(d)}</p><p>{escape(o)}</p></article>' for t, d, o in cards)
+    activity_title = 'Engineering across four activities' if en else 'L’ingénierie au service de quatre activités'
+    applications = ''.join(f'<li><a href="{a[3] if en else a[2]}">{escape(a[5] if en else a[4])}</a> — {escape(a[7] if en else a[6])}</li>' for a in ACTIVITIES)
     return (f'{START}\n<section id="ingenierie" aria-labelledby="engineering-title"><div class="pp-wrap">'
             f'<div class="pp-head"><p class="pp-k">{escape(label)}</p><h2 id="engineering-title">{escape(title)}</h2>'
             f'<p class="pp-lead">{escape(intro)}</p></div><div class="pp-prose"><div class="pp-grid">{items}</div>'
+            f'<h3>{activity_title}</h3><ul>{applications}</ul>'
             f'<p class="pp-note">{escape(note)}</p><div class="pp-actions"><a class="pp-link" href="{contact}">{cta} →</a></div>'
             f'</div></div></section>\n{END}')
 
@@ -137,6 +158,23 @@ def homepage_access(text, en):
     return text
 
 
+def activity_access(text, page):
+    match = next(((a, page == a[1]) for a in ACTIVITIES if page in a[:2]), None)
+    if match is None:
+        return text
+    activity, en = match
+    route = '/pole-enerconseils-en' if en else '/enerconseils/'
+    description = activity[7] if en else activity[6]
+    def body(m):
+        def link(anchor):
+            tag = anchor[0].replace('href="' + route + '"', 'href="' + route + '#ingenierie"')
+            if '<b>' in tag:
+                tag = re.sub(r'<span>[^<]*</span>', lambda _: '<span>' + escape(description) + '</span>', tag)
+            return tag
+        return re.sub(r'<a\b[^>]*href="' + re.escape(route) + r'(?:#ingenierie)?"[^>]*>.*?</a>', link, m[0], flags=re.S)
+    return re.sub(r'<main\b[^>]*>.*?</main>', body, text, count=1, flags=re.S)
+
+
 def main():
     count = 0
     for path in ROOT.rglob('*.html'):
@@ -149,6 +187,7 @@ def main():
             new = hub(new, PAGES[rel.as_posix()])
         if rel.as_posix() in ('index.html', 'index-en.html'):
             new = homepage_access(new, rel.name == 'index-en.html')
+        new = activity_access(new, rel.as_posix())
         # Refresh the existing search assets without introducing requests.
         new = re.sub(r'/assets/chrome/(cmdk_en|cmdk_extra|c_abd9013c3955|c_df4f446df566)\.js(?:\?[^"\'<>\s]+)?', r'/assets/chrome/\1.js?b=2026101603', new)
         if old != new:
