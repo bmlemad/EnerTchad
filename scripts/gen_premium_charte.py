@@ -165,7 +165,7 @@ def sections(lang, gab):
             f'<div><span class="pp-ts pp-ts-k">{"Accès aux énergies" if fr else "Access to energy"}</span><span>{"Sur-titre · Inter 600 · 0,72 rem · capitales, interlettrage 0,22 em · or encre" if fr else "Eyebrow · Inter 600 · 0.72 rem · capitals, letter spacing 0.22 em · gold ink"}</span></div>'
             f'<div><span class="pp-ts pp-ts-l">{sp_l}</span><span>{"Chapeau · Inter 400 · 1,15 rem · encre seconde" if fr else "Lead · Inter 400 · 1.15 rem · second ink"}</span></div>'
             f'<div><span class="pp-ts pp-ts-b">{sp_b}</span><span>{"Texte · Inter 400 · 17 px" if fr else "Body · Inter 400 · 17 px"}</span></div>'
-            f'<div><span class="pp-ts pp-ts-f">100 M → 1 Md → 10 Md FCFA</span><span>{"Chiffre · Instrument Serif · chiffres tabulaires" if fr else "Figure · Instrument Serif · tabular figures"}</span></div></div>')
+            f'<div><span class="pp-ts pp-ts-f">144 → 250 kb/j</span><span>{"Chiffre · Instrument Serif · chiffres tabulaires" if fr else "Figure · Instrument Serif · tabular figures"}</span></div></div>')
     if fr:
         out.append(('typographies', head('03', 'ch-h3', T[lang]['nav'][2], 'Un serif pour la voix, un linéale pour le texte.',
                                          'Deux familles seulement. Instrument Serif, en graisse normale, porte les titres et les chiffres ; Inter porte le texte, les sur-titres et l’interface. Les titres ne sont jamais en gras.')
