@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
+import { createHash } from 'node:crypto';
 import { htmlToDOM } from 'html-react-parser';
 import { renderSubsite, commercialPages, atlasPages, commercialSitemap } from './subsites.mjs';
 
@@ -11,6 +12,9 @@ for (const [space, pages] of [['boutique', commercialPages], ['atlas', atlasPage
       const original = await readFile(page.source, 'utf8');
       const output = renderSubsite(original, page, space, true);
       const before = elements(original), after = elements(output);
+      const controls = await readFile('assets/chrome/coherence-20261013.js');
+      const version = createHash('sha256').update(controls).digest('hex').slice(0, 12);
+      assert(after.some(n => n.name === 'script' && n.attribs.src === `/assets/chrome/coherence-20261013.js?v=${version}`), 'shared controls must invalidate stale browser caches');
       const text = node => node.data || (node.children || []).map(text).join('');
       assert.equal(text(after.find(n => n.name === 'h1')), text(before.find(n => n.name === 'h1')));
       assert.equal(after.filter(n => n.attribs.id === 'nav').length, 1);

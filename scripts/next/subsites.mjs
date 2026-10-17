@@ -1,5 +1,7 @@
 import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import { dirname } from 'node:path';
+import { readFileSync } from 'node:fs';
+import { createHash } from 'node:crypto';
 import { htmlToDOM } from 'html-react-parser';
 
 export const corporate = 'https://enertchad.com';
@@ -29,6 +31,8 @@ const escape = value => value.replace(/&/g, '&amp;').replace(/"/g, '&quot;').rep
 // copies are only mounted on their assigned Netlify aliases after DNS activation.
 export function renderSubsite(html, page, space, hosted = false) {
   const pages = space === 'boutique' ? commercialPages : atlasPages;
+  // Read at render time: preparation may have just updated the shared controls.
+  const coherenceHash = createHash('sha256').update(readFileSync(new URL('../../assets/chrome/coherence-20261013.js', import.meta.url))).digest('hex').slice(0, 12);
   const en = page.language === 'en';
   const origin = hosted ? `https://${space === 'boutique' ? 'clients' : space}.enertchad.com` : corporate;
   const pathFor = p => hosted ? p.local : p.route;
@@ -100,7 +104,7 @@ export function renderSubsite(html, page, space, hosted = false) {
   for (const [start, end, text] of replacements.sort((a, b) => b[0] - a[0])) output = output.slice(0, start) + text + output.slice(end);
   output = output.replace('<html', `<html data-et-space="${space}"`)
     .replace('</head>', '<link rel="stylesheet" href="/assets/chrome/subsites.css"><link rel="stylesheet" href="/assets/chrome/coherence-20261013.css"></head>')
-    .replace(/<\/body>(?![\s\S]*<\/body>)/, '<script defer src="/assets/chrome/coherence-20261013.js"></script></body>')
+    .replace(/<\/body>(?![\s\S]*<\/body>)/, `<script defer src="/assets/chrome/coherence-20261013.js?v=${coherenceHash}"></script></body>`)
     .replace(/src="\/assets\/chrome\/c_ac04328f0f47\.js[^\"]*"/g, 'src="/assets/chrome/subsites-core.js"');
   // The source Atlas stylesheet intentionally has very high specificity.
   // Inline spacing overrides its fixed-header offset without another CSS arms race.
