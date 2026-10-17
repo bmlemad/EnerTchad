@@ -1095,9 +1095,10 @@ html:is(.et-plight,.et-jlight) footer{
   .nx .nx-col a:hover{transform:none}
 }
 
-/* En-tete mobile 361-413 px : la signature de marque poussait le bouton menu hors ecran
-   (marque 203 px + actions 162 px + marges = 393 px). On la masque sous 414 px, comme sur l accueil. */
-@media (max-width:413px){
+/* En-tete mobile : la signature de marque poussait le bouton menu hors ecran
+   (marque 197 px + langue, theme, recherche, menu 220 px + marges : ~455 px ; 414-430 px = iPhone Plus/Max).
+   On la masque jusqu a 480 px, comme sur l accueil. */
+@media (max-width:480px){
   html:not(#h1):not(#h2):not(#h3) .nav .brand-tx small:not(#_){display:none!important}
 }
 /* Logo transparent (11 oct. 2026) : sans tuile, plus grand, tourné de 45° dans le sens horaire ; pétale crème cerné d’or en thème clair */
