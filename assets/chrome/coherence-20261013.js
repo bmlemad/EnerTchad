@@ -58,9 +58,9 @@
 (function(){function init(){
  var ctl=document.getElementById('lum-ctl'),foot=document.querySelector('footer');
  if(!ctl||!foot||!document.querySelector('.et-theme-hdr'))return;
- var place=document.createComment('display-control-origin');ctl.parentNode.insertBefore(place,ctl);
+ var origin=ctl.classList.contains('lum-in-menu')?document.body:ctl.parentNode;
  var media=matchMedia('(max-width:900px)');
- function layout(){if(media.matches){foot.appendChild(ctl);ctl.classList.add('et-display-footer');}else{place.parentNode.insertBefore(ctl,place.nextSibling);ctl.classList.remove('et-display-footer');}}
- layout();media.addEventListener('change',layout);
+ function layout(){var target=media.matches?foot:origin;if(ctl.parentNode!==target){target.appendChild(ctl);var panel=document.getElementById('lum-panel');if(panel)panel.hidden=true;}ctl.classList.remove('lum-in-menu');ctl.classList.toggle('et-display-footer',media.matches);}
+ layout();media.addEventListener('change',layout);matchMedia('(max-width:760px)').addEventListener('change',layout);
 }if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();})();
 /* et-visual:end */
