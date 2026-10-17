@@ -109,9 +109,7 @@ html.sp-dark{--ip-top:rgba(10,20,34,.72);--ip-band-a:#0F1B2C;--ip-band-b:#0A1422
     backdrop-filter:blur(10px) saturate(1.1)!important;
     border-color:var(--et-glass-line)!important;
   }
-  #nav .nx-mega{background:var(--et-glass-solid)!important}
-  #nav .pn-feat{align-self:start!important}
-  #nav .nav-search,#nav .nx-mega,#nav .nx-mega .nxg,.sp-top .sp-theme {
+  #nav .nav-search,#nav .nx-mega .nxg,.sp-top .sp-theme {
     -webkit-backdrop-filter:none!important;backdrop-filter:none!important;
   }
   footer.pft {-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
