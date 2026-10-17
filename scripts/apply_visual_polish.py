@@ -11,7 +11,7 @@ def block(source, name, code):
 def page_patch(source, kind=None):
     if kind:
         source=re.sub(r'<html\b([^>]*)>',lambda m:'<html'+re.sub(r' data-et-visual="[^"]*"','',m[1])+f' data-et-visual="{kind}">',source,count=1)
-    source=re.sub(r'/assets/chrome/coherence-20261013\.js(?:\?[^"\'<>\s]+)?','/assets/chrome/coherence-20261013.js?b=2026101703',source)
+    source=re.sub(r'/assets/chrome/coherence-20261013\.js(?:\?[^"\'<>\s]+)?','/assets/chrome/coherence-20261013.js?b=2026101704',source)
     if kind=='config':
         source=re.sub(r'/\* Mode clair v2\. \*/.*?/\* v3 \*//\* v4 \*/', '', source, flags=re.S)
         source=re.sub(r'<style id="et-config-visual">.*?</style>\n?','',source,flags=re.S)
