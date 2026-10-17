@@ -494,7 +494,7 @@ html.et-plight main a:not(#_){color:#0E4172!important}html.et-plight body>sectio
 <div class="pp-cell"><div>Refining</div><div>Modular</div><div>Modern, movable mini-refineries designed in Chad — our trump card.</div></div>
 <div class="pp-cell"><div>Integrated company</div><div data-count="4" data-suffix=" industrial segments">4 industrial segments</div><div>One company, four industrial segments, one end-to-end chain.</div></div>
 <div class="pp-cell"><div>Capital &amp; talent</div><div data-count="100" data-suffix=" %">100%</div><div>100% Chadian capital and skills.</div></div>
-<div class="pp-cell"><div>Target capital</div><div data-count="10" data-suffix=" bn">10 bn</div><div>FCFA — trajectory 100 M → 1 Bn → 10 Bn, structured with GCIC.</div></div>
+<div class="pp-cell"><div>Target capital</div><div>In stages</div><div>Successive raises with dated milestones, structured with GCIC.</div></div>
 <div class="pp-cell"><div>Sustainability</div><div>0</div><div>Routine flaring eliminated — 2030 goal (Zero Routine Flaring).</div></div>
 <div class="pp-cell"><div>Site energy</div><div data-count="30" data-suffix=" %+">30%+</div><div>Targeted share of renewables in our operations’ mix.</div></div>
 <div class="pp-cell"><div>Network</div><div data-count="12" data-suffix=" stations">12 stations</div><div>Target · ultra-premium &amp; mobile, at the ARSAT price everywhere.</div></div>
@@ -502,7 +502,6 @@ html.et-plight main a:not(#_){color:#0E4172!important}html.et-plight body>sectio
 
 <section class="pp-mist pp-compact"><div class="pp-wrap"><div class="pp-prose pp-prose-w"><div>
 <div class="pp-grid">
-<div class="pp-cell"><h3>Capital trajectory</h3><p>A sequenced, 100% Chadian ramp-up (FCFA).</p><div><canvas id="capChart"></canvas></div></div>
 <div class="pp-cell"><h3>The core hubs, one chain</h3><p>Four industrial segments + four built-in capabilities.</p><div><canvas id="poleChart"></canvas></div></div>
 </div>
 </div></div></div></section>
@@ -563,7 +562,7 @@ html.et-plight .cops-lb.s{fill:#54657F}
 <tr><th scope="row">Renewables in site energy</th><td>Start-up — gas-solar hybrid by design</td><td><b>≥ 30%</b> of the site energy mix</td><td>Per-site energy metering</td></tr>
 <tr><th scope="row">Chadian workforce</th><td>National industry: approx. 1,240 direct jobs</td><td><b>80%</b> of the EnerTchad workforce</td><td>HR register · annual audit</td></tr>
 <tr><th scope="row">Procurement sourced in Chad</th><td>Baseline set at the first financial year</td><td><b>80%</b> of procurement</td><td>Supplier accounting · annual review</td></tr>
-<tr><th scope="row">Chadian ownership</th><td>FCFA 100 m at incorporation</td><td><b>100%</b> Chadian · FCFA 10 bn trajectory</td><td>Share register · GCIC · shareholder meetings</td></tr>
+<tr><th scope="row">Chadian ownership</th><td>FCFA 100 m at incorporation</td><td><b>100%</b> Chadian · staged trajectory</td><td>Share register · GCIC · shareholder meetings</td></tr>
 </tbody></table></div>
 <p class="pp-box">Indicators aligned with the five governance mechanisms above: annual trajectory, dated milestones, verifiable physical units, explained gaps. Details of the social and environmental commitments: <a href="/pole-greentech-en#impact">Impact &amp; local revenue</a> · <a href="/engagements-en">Our commitments</a>.</p>
 </div></div></div></section>
@@ -688,12 +687,6 @@ h.addEventListener("click",tg);
  }
  function drawCharts(){if(!window.Chart)return;
   Chart.defaults.color=MUT;Chart.defaults.font.family="ui-monospace,Menlo,monospace";Chart.defaults.font.size=11;
-  new Chart(document.getElementById('capChart'),{type:'bar',
-    data:{labels:['Founder','Short term','5 years \u00b7 2031'],datasets:[{label:'Capital (FCFA)',
-      data:[100,1000,10000],backgroundColor:[BLUE,GOLD,'#E8C36A'],borderRadius:8,maxBarThickness:84}]},
-    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},
-      tooltip:{callbacks:{label:function(c){var v=c.parsed.y;return v>=1000?(v/1000)+' bn FCFA':v+' M FCFA';}}}},
-      scales:{y:{type:'logarithmic',grid:{color:HAIR},ticks:{callback:function(v){var l=Math.log10(v);if(Math.abs(l-Math.round(l))>0.001)return null;return v>=1000?(v/1000)+' Bn':v+' M';}}},x:{grid:{display:false}}}}});
   new Chart(document.getElementById('poleChart'),{type:'doughnut',
     data:{labels:['Exploration & Production','Transport & Storage','Refining & Distribution','Petrochemicals','Sustainability','Technology','Human capital','Advisory'],
       datasets:[{data:[1,1,1,1,1,1,1,1],backgroundColor:[GOLD,BLUE,AMBER,'#D177B4',GREEN,'#7E8AD9','#C4B5FD','#1FA496'],borderColor:'#121D31',borderWidth:2}]},

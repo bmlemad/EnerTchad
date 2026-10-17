@@ -449,7 +449,7 @@ On replie le menu ici, avec le meme comportement qu'ailleurs. */
 <div class="pp-cell"><div>Raffinage</div><div>Modulaire</div><div>Mini-raffineries modernes, amovibles, pensées au Tchad — atout maître.</div></div>
 <div class="pp-cell"><div>Société intégrée</div><div data-count="4" data-suffix=" segments industriels">4 segments industriels</div><div>Une seule société, quatre segments industriels, une chaîne de bout en bout.</div></div>
 <div class="pp-cell"><div>Capital &amp; talents</div><div data-count="100" data-suffix=" %">100 %</div><div>Capitaux et compétences 100 % tchadiens.</div></div>
-<div class="pp-cell"><div>Capital cible</div><div data-count="10" data-suffix=" Md">10 Md</div><div>FCFA — trajectoire 100 M → 1 Md → 10 Md à cinq ans, structurée avec GCIC.</div></div>
+<div class="pp-cell"><div>Capital cible</div><div>Par paliers</div><div>Levées successives à jalons datés, structurées avec GCIC.</div></div>
 <div class="pp-cell"><div>Durabilité</div><div>0</div><div>Torchage de routine éliminé — objectif 2030 (Zero Routine Flaring).</div></div>
 <div class="pp-cell"><div>Énergie de site</div><div data-count="30" data-suffix=" %+">30 %+</div><div>Part de renouvelables visée dans le mix de nos opérations.</div></div>
 <div class="pp-cell"><div>Réseau</div><div data-count="12" data-suffix=" stations">12 stations</div><div>Cible · ultra-premium &amp; mobiles, au prix ARSAT partout.</div></div>
@@ -457,7 +457,6 @@ On replie le menu ici, avec le meme comportement qu'ailleurs. */
 
 <section class="pp-mist pp-compact"><div class="pp-wrap"><div class="pp-prose pp-prose-w"><div>
 <div class="pp-grid">
-<div class="pp-cell"><h3>Trajectoire de capital</h3><p>Une montée en puissance séquencée, 100 % tchadienne (FCFA).</p><div><canvas id="capChart"></canvas></div></div>
 <div class="pp-cell"><h3>Les pôles de cœur, une chaîne</h3><p>Quatre segments industriels, quatre capacités intégrées.</p><div><canvas id="poleChart"></canvas></div></div>
 </div>
 </div></div></div></section>
@@ -516,7 +515,7 @@ html.et-plight .cops-lb.s{fill:#54657F}
 <tr><th scope="row">Renouvelables dans l’énergie de site</th><td>Démarrage — hybride gaz-solaire dès la conception</td><td><b>≥ 30 %</b> du mix énergétique de site</td><td>Comptage énergie par site</td></tr>
 <tr><th scope="row">Effectifs tchadiens</th><td>Filière nationale : ≈ 1 240 emplois directs</td><td><b>80 %</b> des effectifs EnerTchad</td><td>Registre RH · audit annuel</td></tr>
 <tr><th scope="row">Achats sourcés au Tchad</th><td>Référence établie au premier exercice</td><td><b>80 %</b> des achats</td><td>Comptabilité fournisseurs · revue annuelle</td></tr>
-<tr><th scope="row">Capital tchadien</th><td>100 M FCFA à la constitution</td><td><b>100 %</b> tchadien · trajectoire 10 Md FCFA</td><td>Registre des actionnaires · GCIC · assemblées</td></tr>
+<tr><th scope="row">Capital tchadien</th><td>100 M FCFA à la constitution</td><td><b>100 %</b> tchadien · trajectoire par paliers</td><td>Registre des actionnaires · GCIC · assemblées</td></tr>
 </tbody></table></div>
 <p class="pp-box">Indicateurs alignés sur les cinq dispositifs de gouvernance ci-dessus : trajectoire annuelle, jalons datés, unités physiques vérifiables, écarts expliqués. Détail des engagements sociaux et environnementaux : <a href="/greentech/#impact">Impact &amp; rente locale</a> · <a href="/engagements">Nos engagements</a>.</p>
 </div></div></div></section>
@@ -561,12 +560,6 @@ html.et-plight .cops-lb.s{fill:#54657F}
  }
  function drawCharts(){if(!window.Chart)return;
   Chart.defaults.color=MUT;Chart.defaults.font.family="ui-monospace,Menlo,monospace";Chart.defaults.font.size=11;
-  new Chart(document.getElementById('capChart'),{type:'bar',
-    data:{labels:['Fondateur','Court terme','À 5 ans · 2031'],datasets:[{label:'Capital (FCFA)',
-      data:[100,1000,10000],backgroundColor:[BLUE,GOLD,'#E8C36A'],borderRadius:8,maxBarThickness:84}]},
-    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},
-      tooltip:{callbacks:{label:function(c){var v=c.parsed.y;return v>=1000?(v/1000)+' Md FCFA':v+' M FCFA';}}}},
-      scales:{y:{type:'logarithmic',grid:{color:HAIR},ticks:{callback:function(v){var l=Math.log10(v);if(Math.abs(l-Math.round(l))>0.001)return null;return v>=1000?(v/1000)+' Md':v+' M';}}},x:{grid:{display:false}}}}});
   new Chart(document.getElementById('poleChart'),{type:'doughnut',
     data:{labels:['Exploration & Production','Transport & stockage','Raffinage & distribution','Pétrochimie','Durabilité','Technologies','Capital humain','Conseil'],
       datasets:[{data:[1,1,1,1,1,1,1,1],backgroundColor:[GOLD,BLUE,AMBER,'#D177B4',GREEN,'#7E8AD9','#C4B5FD','#1FA496'],borderColor:'#121D31',borderWidth:2}]},
@@ -578,7 +571,7 @@ html.et-plight .cops-lb.s{fill:#54657F}
  var HZ=[
   {hz:'court',c:GREEN,k:'Horizon court · filières mûres',t:'Mise en route',items:['GPL domestique — substitution au bois-énergie','Engrais azotés (gaz→urée·NPK)','Intrants EOR (ASP) sur ressources locales','Hybridation gaz-solaire de nos sites']},
   {hz:'moyen',c:AMBER,k:'Horizon moyen · valorisation',t:'Montée en puissance',items:['Mini-raffineries modulaires déployées','Méthanol, soufre, bitumes & lubrifiants','Chimie de production & fluides','Maintenance industrielle 4.0','Fin du torchage de routine visée']},
-  {hz:'long',c:'#D177B4',k:'Horizon long · capitalistique',t:'Transformation',items:['Production nationale visée 250 kb/j (plan national)','Polymères (PP → PE, PVC)','Pétrochimie avancée (oléfines/aromatiques)','Capital porté à 10 Md FCFA']}
+  {hz:'long',c:'#D177B4',k:'Horizon long · capitalistique',t:'Transformation',items:['Production nationale visée 250 kb/j (plan national)','Polymères (PP → PE, PVC)','Pétrochimie avancée (oléfines/aromatiques)','Capital renforcé par paliers']}
  ];
  var grid=document.getElementById('hzGrid');
  function render(f){grid.innerHTML=HZ.map(function(h){
