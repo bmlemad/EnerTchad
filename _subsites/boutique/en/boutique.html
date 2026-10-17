@@ -692,11 +692,11 @@ function renderGrid(){
    +packSel
    +'<div class="pc-cond"><b>'+p[6]+'</b></div>'
    +'<button class="pc-more" onclick="openDetail('+id+')">Product sheet →</button>'
-   +'<div class="pc-foot"><div class="stepper"><button onclick="bump('+id+',-1)" aria-label="Less">−</button><input id="q'+id+'" type="number" min="1" value="1" inputmode="numeric" aria-label="Quantity"><button onclick="bump('+id+',1)" aria-label="More">+</button></div>'
+   +'<div class="pc-foot"><div class="stepper"><button onclick="bump('+id+',-1)" aria-label="Less">−</button><input id="q'+id+'" type="number" min="1" step="1" required value="1" inputmode="numeric" oninput="this.setCustomValidity(String())" aria-label="Quantity"><button onclick="bump('+id+',1)" aria-label="More">+</button></div>'
    +'<button class="pc-add" onclick="add('+id+')">Add</button></div></div>';
  }).join('');
  }function bump(id,d){var el=document.getElementById('q'+id);var v=Math.max(1,(parseInt(el.value,10)||1)+d);el.value=v;}
-function add(id){var el=document.getElementById('q'+id);var q=Math.max(1,(el?parseInt(el.value,10):1)||1);var pk=document.getElementById('pk'+id);var lbl=pk?pk.value:((P[id][11]||[])[0]||P[id][5]);var variant=(P[id][11]||[]).indexOf(lbl);var key=id+':'+variant;if(cart[key]){cart[key].q+=q;}else{cart[key]={id:id,q:q,pack:lbl};}renderCart();
+function add(id){var el=document.getElementById('q'+id);/* et-quantity-validation */if(!el)return;el.setCustomValidity('');var q=Number(el.value);if(!Number.isSafeInteger(q)||q<1){el.setCustomValidity('Enter a whole number greater than zero.');}if(!el.reportValidity())return;var pk=document.getElementById('pk'+id);var lbl=pk?pk.value:((P[id][11]||[])[0]||P[id][5]);var variant=(P[id][11]||[]).indexOf(lbl);var key=id+':'+variant;if(cart[key]){if(!Number.isSafeInteger(cart[key].q+q)){el.setCustomValidity('The total quantity is too large.');el.reportValidity();return;}cart[key].q+=q;}else{cart[key]={id:id,q:q,pack:lbl};}renderCart();
  var o=document.getElementById('order');if(window.innerWidth<900)o.scrollIntoView({behavior:'smooth'});}
 function rm(id){delete cart[id];renderCart();}
 function renderCart(){
