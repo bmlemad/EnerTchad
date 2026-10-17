@@ -1,4 +1,5 @@
 @layer et-glass {
+  [data-page-share] {min-width:44px!important;min-height:44px!important}
   html[data-et-modern] #main-content {font-family:Inter,system-ui,sans-serif!important}
   html[data-et-modern] #main-content h1 {font-family:Inter,system-ui,sans-serif!important;font-size:clamp(2.1rem,4.6vw,4rem)!important;line-height:1.12!important;font-weight:600!important;letter-spacing:-.045em!important;max-width:24ch!important}
   html[data-et-modern] #main-content h2 {font-family:Inter,system-ui,sans-serif!important;font-size:clamp(1.6rem,3vw,2.3rem)!important;line-height:1.2!important;font-weight:600!important;letter-spacing:-.025em!important}
