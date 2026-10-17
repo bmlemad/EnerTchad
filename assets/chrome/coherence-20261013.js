@@ -55,7 +55,7 @@
 }catch(e){}})();
 /* et-visual:start */
 /* Keep mobile display settings available without covering page content. */
-(function(){function init(){
+(function(){function localize(){
  var panel=document.getElementById('lum-panel');
  if((document.documentElement.lang||'').indexOf('en')===0&&panel){
   var labels={'88':'Dim','100':'Standard','116':'Bright'};
@@ -63,6 +63,9 @@
   ['etThemeBtn','jlightBtn','plightBtn'].forEach(function(id){var b=document.getElementById(id);if(b)b.title='Switch light / dark mode';});
  }
 
+}
+function init(){
+ localize();if(document.readyState!=='complete')document.addEventListener('DOMContentLoaded',localize,{once:true});
  var ctl=document.getElementById('lum-ctl'),foot=document.querySelector('footer');
  if(!ctl||!foot||!document.querySelector('.et-theme-hdr'))return;
  var origin=ctl.classList.contains('lum-in-menu')?document.body:ctl.parentNode;
