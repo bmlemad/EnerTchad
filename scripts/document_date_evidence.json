@@ -1,23 +1,26 @@
 {
   "/Fiche_Investisseur_EnerTchad.pdf": {
-    "git_blob_sha": "3c6238c9b4bcb60b5c4534810d085471b7c80d4f",
+    "git_blob_sha": "b9c2dc25b48442833bff7d14bcdc1df0f527efa3",
     "document_date": "2026-07",
-    "date_source": "PDF page 1"
+    "date_source": "PDF page 1",
+    "document_updated": "2026-10"
   },
   "/Point_Etape_EnerTchad_2026.pdf": {
-    "git_blob_sha": "89bde02af977e4be45055c5a32a34fea16281fd9",
+    "git_blob_sha": "c5e41bac160b95e36e82bc3f2846f93b0d910d0b",
     "document_date": "2026-08",
     "date_source": "PDF page 1",
     "document_updated": "2026-10"
   },
   "/Brochure_EnerTchad.pdf": {
-    "git_blob_sha": "4f7ed22887f66b2f4c29782db70c00cb42b81c0d",
+    "git_blob_sha": "3af1eb849683f2daa52ecf3ac6d1117a28418402",
     "document_date": "2026-09",
-    "date_source": "PDF page 1"
+    "date_source": "PDF page 1",
+    "document_updated": "2026-10"
   },
   "/Brochure_EnerTchad_EN.pdf": {
-    "git_blob_sha": "dbfd6e0a665d3ad7956a9b44004f0c6f6cc5395c",
+    "git_blob_sha": "7af4e5657387e9b58114040d7c5bbe4a7da8f656",
     "document_date": "2026-09",
-    "date_source": "PDF page 1"
+    "date_source": "PDF page 1",
+    "document_updated": "2026-10"
   }
 }
