@@ -604,6 +604,46 @@ var P=[
  ['derives','Derivatives','🕯️','Paraffin waxes','Technical waxes and varied applications.','Carton / bulk','On quote',['52-62 °C melting points','Candle and industrial grade'],'b2b','candle',['Candles','Coating','Cosmetics industry'],['25 kg carton','Bulk (tonne)']]
 ];
 var cart={},cur='tous';
+/* et-catalogue-session:start */var EnerTchadCatalogueSession = (function () {
+  'use strict';
+  var key = 'et-catalogue-selection-v1';
+  function valid(item, products) {
+    return item && Number.isSafeInteger(item.id) && item.id >= 0 && item.id < products.length &&
+      Number.isSafeInteger(item.variant) && item.variant >= 0 &&
+      Array.isArray(products[item.id][11]) && item.variant < products[item.id][11].length &&
+      Number.isSafeInteger(item.q) && item.q > 0;
+  }
+  function read(storage, products) {
+    var cart = {};
+    try {
+      var raw = storage.getItem(key);
+      if (!raw || raw.length > 65536) return cart;
+      var data = JSON.parse(raw);
+      if (data.version !== 1 || !Array.isArray(data.items)) return cart;
+      data.items.slice(0, 200).forEach(function (item) {
+        if (valid(item, products)) cart[item.id + ':' + item.variant] = {
+          id: item.id, q: item.q, pack: products[item.id][11][item.variant]
+        };
+      });
+    } catch (_) {}
+    return cart;
+  }
+  function save(storage, cart, products) {
+    try {
+      var items = Object.keys(cart).map(function (key) {
+        var item = cart[key];
+        return item && {id: item.id, q: item.q, variant: products[item.id]?.[11]?.indexOf(item.pack)};
+      }).filter(function (item) { return valid(item, products); });
+      storage.setItem(key, JSON.stringify({version: 1, items: items}));
+    } catch (_) {}
+  }
+  return {read: read, save: save};
+})();
+if (typeof module !== 'undefined') module.exports = EnerTchadCatalogueSession;
+
+try{cart=EnerTchadCatalogueSession.read(window.sessionStorage,P)}catch(_){}
+/* et-catalogue-session:end */
+
 // Keep both product dialogs keyboard-accessible and restore their opener.
 var activeDialog=null,dialogOpener=null,dialogBackground=[],dialogOverflow='';
 function dialogControls(dialog){return Array.from(dialog.querySelectorAll('button:not([disabled]),a[href],input:not([disabled]),select:not([disabled]),textarea:not([disabled]),[tabindex="0"]')).filter(function(el){return !el.hidden&&el.getClientRects().length;});}
@@ -673,6 +713,8 @@ function add(id){var el=document.getElementById('q'+id);var q=Math.max(1,(el?par
  var o=document.getElementById('order');if(window.innerWidth<900)o.scrollIntoView({behavior:'smooth'});}
 function rm(id){delete cart[id];renderCart();}
 function renderCart(){
+/* et-catalogue-save:start */try{EnerTchadCatalogueSession.save(window.sessionStorage,cart,P)}catch(_){}/* et-catalogue-save:end */
+
  var keys=Object.keys(cart);var ol=document.getElementById('olist');
  var n=keys.length,tot=0;keys.forEach(function(k){tot+=cart[k].q;});
  document.getElementById('cartCount').textContent=n;
