@@ -17,13 +17,14 @@
   var ICON='<svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="8.2"/><path d="M12 3.8a8.2 8.2 0 0 0 0 16.4z" fill="currentColor"/></svg>';
   function dark(){return react?d.classList.contains('sp-dark'):!d.classList.contains(K)}
   function sync(){
+    if(!react){var light=d.classList.contains(K);d.classList.toggle(K==='et-plight'?'et-jlight':'et-plight',light);}
     var on=dark();
     [].forEach.call(document.querySelectorAll('.et-theme-hdr'),function(x){x.setAttribute('aria-pressed',on?'true':'false')});
     // Commandes existantes du panneau Affichage : aria-pressed = mode clair actif.
     [].forEach.call(document.querySelectorAll('#etThemeBtn,#jlightBtn,#plightBtn'),function(x){x.setAttribute('aria-pressed',on?'false':'true')});
   }
   function set(on){
-    if(react)d.classList.toggle('sp-dark',on);else d.classList.toggle(K,!on);
+    if(react)d.classList.toggle('sp-dark',on);else{d.classList.toggle('et-plight',!on);d.classList.toggle('et-jlight',!on);}
     try{localStorage.setItem('et-plight',on?'0':'1');localStorage.setItem('et-jlight',on?'0':'1')}catch(e){}
     sync();
   }
@@ -52,3 +53,14 @@
   sync();
   new MutationObserver(sync).observe(d,{attributes:true,attributeFilter:['class']});
 }catch(e){}})();
+/* et-visual:start */
+/* Keep mobile display settings available without covering page content. */
+(function(){function init(){
+ var ctl=document.getElementById('lum-ctl'),foot=document.querySelector('footer');
+ if(!ctl||!foot||!document.querySelector('.et-theme-hdr'))return;
+ var place=document.createComment('display-control-origin');ctl.parentNode.insertBefore(place,ctl);
+ var media=matchMedia('(max-width:900px)');
+ function layout(){if(media.matches){foot.appendChild(ctl);ctl.classList.add('et-display-footer');}else{place.parentNode.insertBefore(ctl,place.nextSibling);ctl.classList.remove('et-display-footer');}}
+ layout();media.addEventListener('change',layout);
+}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();})();
+/* et-visual:end */
