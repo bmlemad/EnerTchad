@@ -56,6 +56,13 @@
 /* et-visual:start */
 /* Keep mobile display settings available without covering page content. */
 (function(){function init(){
+ var panel=document.getElementById('lum-panel');
+ if((document.documentElement.lang||'').indexOf('en')===0&&panel){
+  var labels={'88':'Dim','100':'Standard','116':'Bright'};
+  panel.querySelectorAll('button[data-l]').forEach(function(b){if(labels[b.dataset.l])b.textContent=labels[b.dataset.l];});
+  ['etThemeBtn','jlightBtn','plightBtn'].forEach(function(id){var b=document.getElementById(id);if(b)b.title='Switch light / dark mode';});
+ }
+
  var ctl=document.getElementById('lum-ctl'),foot=document.querySelector('footer');
  if(!ctl||!foot||!document.querySelector('.et-theme-hdr'))return;
  var origin=ctl.classList.contains('lum-in-menu')?document.body:ctl.parentNode;

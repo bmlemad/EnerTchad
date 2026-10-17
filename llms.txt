@@ -6,7 +6,7 @@
 
 - [Accueil](https://enertchad.com/) : mission, chaîne intégrée, chiffres cibles
 - [La Société](https://enertchad.com/societe) : identité, gouvernance OHADA
-- [Espace investisseurs](https://enertchad.com/investisseurs) : thèse, trajectoire de capital par paliers, jalons datés
+- [Espace investisseurs](https://enertchad.com/investisseurs) : thèse, trajectoire de capital 100 M → 1 Md → 10 Md FCFA, jalons datés
 - [Nos solutions par besoin](https://enertchad.com/nos-activites#besoins) : entrée par usage (produire, acheminer, transformer, distribuer, décider, financer)
 - [Publications & documents](https://enertchad.com/publications) : brochures PDF (FR/EN), fiche arabe, fiches techniques
 - [Paiements aux États](https://enertchad.com/paiements-etats) : format de déclaration engagé — sept catégories ITIE, maille par entité et par projet, date du premier rapport

@@ -932,8 +932,7 @@ footer.pft .foot-news .fn-alt a{display:inline-block;padding:4px 0}
   }
   footer.pft {-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
   @media(max-width:1240px) {
-    #nav.nx:has(.open){overflow:visible!important}
-    #nav.nx:has(.open),#nav .nav-links.open,.sp-top details[open]>nav {
+    #nav .nav-links.open,.sp-top details[open]>nav {
       background:var(--et-glass-solid)!important;color:var(--et-glass-ink)!important;
       -webkit-backdrop-filter:none!important;backdrop-filter:none!important;
     }
