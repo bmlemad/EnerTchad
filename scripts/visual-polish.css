@@ -1,0 +1,12 @@
+@layer et-glass {
+  #nav #mLang,#nav #mLang b {color:var(--et-glass-ink)!important;-webkit-text-fill-color:var(--et-glass-ink)!important}
+  body:has(.et-theme-hdr) #plightBtn {display:none!important}
+  footer #lum-ctl.et-display-footer {position:relative!important;inset:auto!important;margin:20px auto!important;width:fit-content!important;z-index:10!important}
+  footer .et-display-footer #lum-btn {position:static!important;inset:auto!important;min-width:44px!important;min-height:44px!important}
+  footer .et-display-footer #lum-panel {bottom:calc(100% + 8px)!important;top:auto!important;right:0!important;max-width:calc(100vw - 40px)!important}
+  @media(max-width:767px) {
+    html[data-et-visual="engineering"] .pp-hero-img {filter:brightness(.48)!important}
+    html[data-et-visual="contact"] .pp-hero {min-height:0!important;padding-block:calc(var(--nav-h,77px) + 32px) 40px!important}
+    html[data-et-visual="contact"] .pp-hero .pp-wrap {padding-top:0!important}
+  }
+}

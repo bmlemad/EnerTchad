@@ -7,7 +7,7 @@ from urllib.parse import urlencode
 
 ROOT = Path(__file__).resolve().parents[1]
 EXCLUDE = {'.git', '.next', 'out', 'public', 'node_modules', 'reports', 'qa', 'docs', 'docs-sources', 'scripts'}
-VERSION = '2026101702'
+VERSION = '2026101703'
 START, END = '<!-- et-modern:start -->', '<!-- et-modern:end -->'
 SERVICES = [
     ('amont/index.html', 'pole-amont-en.html', 'amont', 'Étude de développement amont', 'Upstream development study',

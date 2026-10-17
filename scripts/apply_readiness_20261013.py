@@ -346,3 +346,5 @@ if __name__ == '__main__':
     runpy.run_path(str(ROOT / 'scripts/align_catalogue_session.py'), run_name='__main__')
 
     runpy.run_path(str(ROOT / 'scripts/align_catalogue_quantity.py'), run_name='__main__')
+
+    runpy.run_path(str(ROOT / 'scripts/apply_visual_polish.py'), run_name='__main__')
