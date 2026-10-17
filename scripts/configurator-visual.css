@@ -18,6 +18,7 @@
   html[data-et-visual="config"] footer.pft .pft-acc-btn i::after {content:'+';font:24px/1 system-ui!important}
   html[data-et-visual="config"] footer.pft .pft-acc-btn[aria-expanded="true"] i::after {content:'−'}
   html[data-et-visual="config"] footer #et-consent-settings {background:#fff!important;color:#142138!important;-webkit-text-fill-color:#142138!important}
+  html[data-et-visual="config"] #root a.fixed.left-3.top-3 {display:none!important}
   @media(max-width:767px) {
     html[data-et-visual="config"] body {padding-top:0!important}
     html[data-et-visual="config"] #root {padding-top:24px!important}
