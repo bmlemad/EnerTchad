@@ -952,7 +952,9 @@ footer.pft .foot-news .fn-alt a{display:inline-block;padding:4px 0}
     backdrop-filter:blur(10px) saturate(1.1)!important;
     border-color:var(--et-glass-line)!important;
   }
-  #nav .nav-search,#nav .nx-mega .nxg,.sp-top .sp-theme {
+  #nav .nx-mega{background:var(--et-glass-solid)!important}
+  #nav .pn-feat{align-self:start!important}
+  #nav .nav-search,#nav .nx-mega,#nav .nx-mega .nxg,.sp-top .sp-theme {
     -webkit-backdrop-filter:none!important;backdrop-filter:none!important;
   }
   footer.pft {-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
