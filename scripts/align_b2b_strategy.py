@@ -212,7 +212,8 @@ def customers(source, en):
         'Ingénierie : périmètres techniques aval et amont distincts.',
         'Les acteurs publics suivent leur procédure de consultation ; les fournisseurs disposent du parcours de référencement achats.',
     ])
-    source = replace_node(source, 'comparer', block('comparer', title, 'EnerTchad · B2B', bullets))
+    # The three offers are already introduced in #besoin-client; drop the duplicate summary block.
+    source = replace_node(source, 'comparer', '')
     # Update directory and orientation cards without touching the retained anchors.
     for old, new in ([
         ('Un seul interlocuteur, tout le cycle du puits.', 'Ingénierie &amp; services techniques'),
