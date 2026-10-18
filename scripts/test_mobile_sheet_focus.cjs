@@ -1,0 +1,9 @@
+const {test}=require('node:test');const assert=require('node:assert/strict');
+const {cycle,bind}=require('./mobile-sheet-focus.js');
+function setup(){let focus=null,prevented=false;const item=name=>({name,getClientRects:()=>[{}],focus(){focus=name}});const first=item('close'),middle=item('link'),last=item('last');const sheet={hidden:false,querySelectorAll:()=>[first,middle,last],focus(){focus='sheet'}};return{sheet,first,middle,last,event(shiftKey=false,key='Tab'){return{key,shiftKey,preventDefault(){prevented=true}}},result:()=>({focus,prevented})}}
+test('Tab loops from the last link to Close',()=>{const s=setup();cycle(s.event(),s.sheet,s.last);assert.deepEqual(s.result(),{focus:'close',prevented:true})});
+test('Shift+Tab loops from Close to the last link',()=>{const s=setup();cycle(s.event(true),s.sheet,s.first);assert.deepEqual(s.result(),{focus:'last',prevented:true})});
+test('dialog container enters the loop in either direction',()=>{for(const backwards of [false,true]){const s=setup();cycle(s.event(backwards),s.sheet,s.sheet);assert.equal(s.result().focus,backwards?'last':'close')}});
+test('ordinary movement, hidden dialog and other keys remain native',()=>{for(const mode of ['middle','hidden','escape']){const s=setup();if(mode==='hidden')s.sheet.hidden=true;cycle(s.event(false,mode==='escape'?'Escape':'Tab'),s.sheet,mode==='middle'?s.middle:s.last);assert.deepEqual(s.result(),{focus:null,prevented:false})}});
+test('no focusable descendants retains focus in the dialog',()=>{const s=setup();s.sheet.querySelectorAll=()=>[];cycle(s.event(),s.sheet,s.sheet);assert.deepEqual(s.result(),{focus:'sheet',prevented:true})});
+test('backdrop click restores focus to the activities trigger',()=>{let restored=false,click;const sheet={addEventListener(){}};bind({getElementById:id=>id==='nezSheet'?sheet:{addEventListener(_,fn){click=fn}},querySelector:()=>({focus(){restored=true}})});click();assert.equal(restored,true)});
