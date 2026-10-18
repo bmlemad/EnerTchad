@@ -201,7 +201,7 @@ def context_note(path, en):
     inner_style = ' style="max-width:70ch;margin:24px auto;padding:20px;border:1px solid currentColor;border-radius:12px"' if journal else ''
     return ('<section class="pp-compact pp-mist" id="commercial-scope" aria-labelledby="commercial-scope-title">'
             f'<div class="pp-wrap"><div class="pp-prose pp-prose-w"{inner_style}><h2 id="commercial-scope-title">{title}</h2><p>{body}</p><div class="pp-actions">'
-            + ''.join(f'<a class="pp-link" style="display:inline-block;min-height:44px;margin-right:14px" href="{escape(href, quote=True)}">{label} →</a>' for href, label in links) + '</div></div></div></section>')
+            + ''.join(f'<a class="pp-link" style="display:inline-block;min-height:44px;margin-right:14px" href="{escape(href, quote=True)}">{label}</a>' for href, label in links) + '</div></div></div></section>')
 
 
 class EditorialBoundary(HTMLParser):

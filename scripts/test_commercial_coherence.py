@@ -3,6 +3,7 @@ import re
 import unittest
 from html.parser import HTMLParser
 from align_commercial_coherence import ROOT, PAIRS, transform, insert_note, outside_scripts
+from align_b2b_strategy import customers, introduction, customer_blocks
 
 
 class Identifiers(HTMLParser):
@@ -42,6 +43,13 @@ class CommercialCoherenceTests(unittest.TestCase):
     def test_missing_boundary_fails_without_guessing(self):
         with self.assertRaises(ValueError):
             insert_note('<style>/* <main> */</style><div>Other</div>', 'unknown.html', False)
+
+    def test_customer_preparation_keeps_the_removed_summary_optional(self):
+        for en in (False, True):
+            source = introduction(en) + ''.join(customer_blocks(en).values())
+            result = customers(source, en)
+            self.assertNotIn('id="comparer"', result)
+            self.assertEqual(customers(result, en), result)
 
     def test_reviewed_pages_keep_anchors_and_scripts_and_are_idempotent(self):
         for pair in PAIRS:
