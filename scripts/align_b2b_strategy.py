@@ -217,7 +217,7 @@ def customers(source, en):
         ('Du premier contact à la livraison.', 'Du besoin qualifié au contrat récurrent'),
         ('Cartes carburant, suivi de consommation et accès au réseau, partout au Tchad.', 'Gestion des consommations et périmètre d’acceptation à confirmer.'),
         ('Services parapétroliers intégrés, récupération assistée (EOR) et force d’intervention.', 'Études et missions techniques aval ou amont, selon les compétences mobilisées.'),
-        ('Pour les opérateurs et consortiums : une force d’intervention parapétrolière intégrée, de la sismique à la récupération…', 'Études et missions techniques aval ou amont, selon les compétences mobilisées.'),
+        ('Pour les opérateurs et consortiums\u00a0: une force d’intervention parapétrolière intégrée, de la sismique à la récupération…', 'Études et missions techniques aval ou amont, selon les compétences mobilisées.'),
         ('Cibles de service d’une société en constitution — affichées, datées, opposables à l’ouverture commerciale.', 'Périmètre, disponibilité et conditions à confirmer avant engagement.'),
         ('Un parcours simple, le même pour tous les profils. (processus cible · société en constitution)', 'Qualification, étude, offre et pilote adaptés à chaque besoin.'),
     ] if not en else [
@@ -265,7 +265,7 @@ def commercial(source, en):
 def distribution(source, en):
     replacements = ([
         ('Le cash-flow se gagne à la pompe.', 'L’approvisionnement professionnel avant l’extension du réseau'),
-        ('La distribution est le poumon financier visé de la société : pendant que l’amont construit les barils de demain, le réseau…', 'Une première phase B2B conditionnée aux volumes, aux moyens confirmés et aux encaissements.'),
+        ('La distribution est le poumon financier visé de la société\u00a0: pendant que l’amont construit les barils de demain, le réseau…', 'Une première phase B2B conditionnée aux volumes, aux moyens confirmés et aux encaissements.'),
         ('volumes garantis, cartes de gestion et logistique livrée sur site.', 'volumes planifiés, suivi de consommation et livraison sur site selon les moyens confirmés.'),
         ('Le modèle de lancement d’EnerTchad est donc l’<strong>import de produits finis</strong>, stockés dans trois hubs répartis sur le territoire et livrés à une clientèle professionnelle.', 'Le modèle de lancement envisagé repose sur l’<strong>approvisionnement professionnel en produits finis</strong>, avec stockage et livraison contractualisés selon les besoins qualifiés. Les trois hubs restent un réseau cible, à déployer progressivement selon les volumes, les autorisations et le financement.'),
         ('c’est elle qui doit produire le flux de trésorerie qui finance les suivants', 'son développement dépend de la marge après livraison et des encaissements ; ceux-ci pourront contribuer aux étapes suivantes'),
