@@ -441,7 +441,7 @@ Envoyé depuis enertchad.com / EnerTchad`;
      d:"Au lancement, l’approvisionnement repose sur l’import régional de produits finis\u00A0; nos mini-raffineries modulaires prendront le relais à terme. Le carburant est stocké dans des hubs-dépôts d’un hectare (N’Djamena, Moundou, Abéché)\u00A0: acheter au bon moment, lisser les ruptures, tenir un prix stable.",
      tags:['Import régional au lancement','Mini-raffineries à terme','Hubs-dépôts','Autonomie 30 j']},
     {c:'var(--blue)',cl:'var(--blue-l)',t:'Stations-hubs & satellites',
-     d:"Chaque hub-dépôt approvisionne en gros un réseau de stations satellites de sa zone. Vente au détail (essence, gasoil, GPL, lampant), services et lubrifiants, au prix homologué ARSAT identique sur tout le territoire. Modèle DODO pour une croissance capital-légère.",
+     d:"Chaque hub-dépôt approvisionne en gros un réseau de stations satellites de sa zone. Vente au détail (essence, gasoil, GPL, lampant), services et lubrifiants, au prix homologué ARSAT, selon le barème officiel. Modèle DODO pour une croissance capital-légère.",
      tags:['Prix ARSAT','Modèle DODO','GPL & services','Marque unique']},
     {c:'var(--amber)',cl:'var(--amber-l)',t:'Mobile Station™',
      d:"Là où une station fixe n’existe pas ou tombe en rupture, la Mobile Station™ conteneurisée se déploie en 24-48 h. Énergie de site autonome, télésurveillance IoT, certifiée ATEX — elle prolonge le réseau vers mines, chantiers, camps humanitaires et communautés rurales.",
