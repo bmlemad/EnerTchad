@@ -154,6 +154,14 @@ https://enertchad.netlify.app/* https://enertchad.com/:splat 301!
 /pole-aval-raffinage.html /aval/raffinage 308!
 /pole-aval-reseau /aval/reseau 308!
 /pole-aval-reseau.html /aval/reseau 308!
+/aval/gpl /aval/produits#gpl 308!
+/aval/gpl.html /aval/produits#gpl 308!
+/aval/gpl-en /aval/produits-en#gpl 308!
+/aval/gpl-en.html /aval/produits-en#gpl 308!
+/aval/lubrifiants /aval/produits#lubrifiants-bitumes 308!
+/aval/lubrifiants.html /aval/produits#lubrifiants-bitumes 308!
+/aval/lubrifiants-en /aval/produits-en#lubrifiants-bitumes 308!
+/aval/lubrifiants-en.html /aval/produits-en#lubrifiants-bitumes 308!
 /pole-petrochimie /petrochimie/ 308!
 /pole-petrochimie.html /petrochimie/ 308!
 /pole-petrochimie-chimie-eor /petrochimie/chimie-eor 308!
