@@ -20,8 +20,6 @@ PAIRS = [
     ('aval/produits.html', 'aval/produits-en.html'),
     ('aval/raffinage.html', 'aval/raffinage-en.html'),
     ('aval/boutique.html', 'aval/boutique-en.html'),
-    ('aval/gpl.html', 'aval/gpl-en.html'),
-    ('aval/lubrifiants.html', 'aval/lubrifiants-en.html'),
     ('intermediaire/index.html', 'pole-intermediaire-en.html'),
     ('intermediaire/logistique.html', 'intermediaire/logistique-en.html'),
     ('intermediaire/sites.html', 'intermediaire/sites-en.html'),
