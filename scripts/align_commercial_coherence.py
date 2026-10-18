@@ -299,6 +299,8 @@ def network(source, en):
             part = part.replace(old, new)
         # Fixed delivery windows and rapid-opening comparisons are not commitments.
         part = re.sub(r'(?<![\w])(?:24[-–]48|48[-–]72|24|48)\s*h\b', 'To confirm' if en else 'À confirmer', part)
+        if not en:
+            part = part.replace('en À confirmer', 'selon un calendrier à confirmer').replace('en <strong>À confirmer</strong>', 'selon un <strong>calendrier à confirmer</strong>')
         return part
     parts = re.split(r'(<(?:script|style)\b[^>]*>.*?</(?:script|style)>)', source, flags=re.S | re.I)
     return ''.join(p if re.match(r'<(?:script|style)\b', p, re.I) else apply(p) for p in parts)
