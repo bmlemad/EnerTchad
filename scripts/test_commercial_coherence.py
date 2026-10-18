@@ -2,7 +2,7 @@
 import re
 import unittest
 from html.parser import HTMLParser
-from align_commercial_coherence import ROOT, PAIRS, transform, insert_note, outside_scripts, brochure_script_copy
+from align_commercial_coherence import ROOT, PAIRS, transform, insert_note, outside_scripts, brochure_script_copy, compact_project_styles
 from align_b2b_strategy import customers, introduction, customer_blocks
 
 
@@ -51,6 +51,15 @@ class CommercialCoherenceTests(unittest.TestCase):
             self.assertNotIn('id="comparer"', result)
             self.assertEqual(customers(result, en), result)
 
+    def test_project_compaction_keeps_rules_strings_and_migration_markers(self):
+        source = '<style>\n/* Explanation */\na{content:"/* literal */"}\n/* et-copy:start */\nb{color:red}\n/* et-copy:end */\n</style>'
+        result = compact_project_styles(source)
+        self.assertNotIn('Explanation', result)
+        self.assertIn('a{content:"/* literal */"}', result)
+        self.assertIn('b{color:red}', result)
+        self.assertIn('/* et-copy:start */', result)
+        self.assertIn('/* et-copy:end */', result)
+
     def test_reviewed_pages_keep_anchors_and_scripts_and_are_idempotent(self):
         for pair in PAIRS:
             for en, path in enumerate(pair):
@@ -65,6 +74,8 @@ class CommercialCoherenceTests(unittest.TestCase):
                     before_scripts = re.findall(pattern, source, re.S | re.I)
                     if path.startswith('brochure'):
                         before_scripts = [brochure_script_copy(item, bool(en)) if item.lower().startswith('<script') else item for item in before_scripts]
+                    if path.startswith('projets'):
+                        before_scripts = [compact_project_styles(item) for item in before_scripts]
                     self.assertEqual(before_scripts, re.findall(pattern, result, re.S | re.I))
 
 

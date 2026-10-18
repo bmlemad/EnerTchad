@@ -192,6 +192,23 @@ def brochure_script_copy(script, en):
     return script
 
 
+def compact_project_styles(source):
+    """Remove standalone CSS explanations, retaining rules and migration markers."""
+    def style(match):
+        def comment(m):
+            if re.search(r':(?:start|end)|^\s*/\*\s*et-|copyright|@license', m[0], re.I):
+                return m[0]
+            return '\n'
+        css = match[2]
+        while True:
+            compacted = re.sub(r'(?m)^[ \t]*/\*.*?\*/', comment, css, flags=re.S)
+            if compacted == css:
+                break
+            css = compacted
+        return match[1] + css + match[3]
+    return re.sub(r'(<style\b[^>]*>)(.*?)(</style>)', style, source, flags=re.S | re.I)
+
+
 def context_note(path, en):
     suffix = '-en' if en else ''
     journal = path.startswith('journal-')
@@ -335,7 +352,10 @@ def transform(source, path, en):
         source = network(source, en)
     if path.startswith('aval/produits'):
         source = product_specs(source, en)
-    return insert_note(source, path, en)
+    source = insert_note(source, path, en)
+    if path.startswith('projets'):
+        source = compact_project_styles(source)
+    return source
 
 
 def main():
