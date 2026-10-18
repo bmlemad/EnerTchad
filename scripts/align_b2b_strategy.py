@@ -50,7 +50,8 @@ def replace_node(source, identifier, content):
 
 
 def link(url, label):
-    return f'<a class="pp-link" href="{escape(url, quote=True)}">{escape(label)} →</a>'
+    # The arrow is drawn by the shared .pp-link::after rule; a text arrow doubles it.
+    return f'<a class="pp-link" href="{escape(url, quote=True)}">{escape(label)}</a>'
 
 
 def block(identifier, title, intro, bullets, actions=()):
@@ -194,6 +195,10 @@ def customer_blocks(en):
 def customers(source, en):
     source = replace_node(source, 'besoin-client', introduction(en))
     for identifier, content in customer_blocks(en).items():
+        # Keep the numbered profile eyebrow (01 to 07) already present in the source block.
+        kicker = re.search(r'id="%s"><div class="pp-bh">(<p class="pp-k">[^<]*</p>)' % re.escape(identifier), source)
+        if kicker:
+            content = content.replace('<div class="pp-bh">', '<div class="pp-bh">' + kicker.group(1), 1)
         source = replace_node(source, identifier, content)
     title = 'Three B2B offers and dedicated pathways' if en else 'Trois offres B2B et des parcours dédiés'
     bullets = ([

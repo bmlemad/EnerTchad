@@ -60,7 +60,7 @@ def section(en):
             f'<div class="pp-head"><p class="pp-k">{escape(label)}</p><h2 id="engineering-title">{escape(title)}</h2>'
             f'<p class="pp-lead">{escape(intro)}</p></div><div class="pp-prose"><div class="pp-grid">{items}</div>'
             f'<h3>{activity_title}</h3><ul>{applications}</ul>'
-            f'<p class="pp-note">{escape(note)}</p><div class="pp-actions"><a class="pp-link" href="{contact}">{cta} →</a></div>'
+            f'<p class="pp-note">{escape(note)}</p><div class="pp-actions"><a class="pp-link" href="{contact}">{cta}</a></div>'
             f'</div></div></section>\n{END}')
 
 
