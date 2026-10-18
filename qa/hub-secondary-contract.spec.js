@@ -17,8 +17,6 @@ const pages = [
   ['/aval/commercialisation', 'fr'],
   ['/aval/reseau', 'fr'],
   ['/aval/produits', 'fr'],
-  ['/aval/gpl', 'fr'],
-  ['/aval/lubrifiants', 'fr'],
   ['/boutique/', 'fr'],
   ['/intermediaire/collecte', 'fr'],
   ['/intermediaire/logistique', 'fr'],
