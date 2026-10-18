@@ -82,7 +82,7 @@ def introduction(en):
     public = 'Public-sector requirements' if en else 'Besoins des acteurs publics'
     return (f'<section class="et-readiness" id="besoin-client" aria-labelledby="besoin-client-title">'
             f'<h2 id="besoin-client-title">{title}</h2><p>{note}</p><div class="et-readiness-routes">{cards}</div>'
-            f'<p>{link("/achats" + suffix, supplier)} · {link("#b2g", public)}</p></section>')
+            f'<p><a href="/achats{suffix}">{supplier}</a> · <a href="#b2g">{public}</a></p></section>')
 
 
 def customer_blocks(en):

@@ -71,6 +71,8 @@ jobs:
           python3 scripts/test_mobile_sheet_focus.py
       - name: Check direct enquiry-form access
         run: python3 scripts/test_direct_enquiry_form.py
+      - name: Check B2B offer boundaries and bilingual enquiry routes
+        run: python3 scripts/test_b2b_strategy.py
       - name: Check Arabic readiness
         run: python3 scripts/test_arabic_readiness.py
       - name: Check narrow mobile navigation
