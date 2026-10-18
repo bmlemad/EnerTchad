@@ -352,3 +352,5 @@ if __name__ == '__main__':
     runpy.run_path(str(ROOT / 'scripts/align_mobile_sheet_focus.py'), run_name='__main__')
 
     runpy.run_path(str(ROOT / 'scripts/align_b2b_strategy.py'), run_name='__main__')
+
+    runpy.run_path(str(ROOT / 'scripts/align_commercial_coherence.py'), run_name='__main__')
