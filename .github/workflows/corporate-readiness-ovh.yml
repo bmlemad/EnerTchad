@@ -2,7 +2,7 @@ name: OVH — corporate readiness deployment
 
 on:
   push:
-    branches: [main, improve/mobile-quick-navigation-20261014, fix/share-footer-contrast-20261015, improve/liquid-glass-20261015, fix/navigation-accessibility-20261016, improve/engineering-offer-20261016, improve/industrial-modernisation-20261016, fix/configurator-history-20261016, fix/share-touch-target-20261016, fix/catalogue-language-session-20261017, fix/catalogue-quantity-20261017, fix/visual-qa-20261017, fix/display-labels-en-20261017, fix/mobile-sheet-focus-20261018, improve/b2b-strategy-20261018]
+    branches: [main, improve/mobile-quick-navigation-20261014, fix/share-footer-contrast-20261015, improve/liquid-glass-20261015, fix/navigation-accessibility-20261016, improve/engineering-offer-20261016, improve/industrial-modernisation-20261016, fix/configurator-history-20261016, fix/share-touch-target-20261016, fix/catalogue-language-session-20261017, fix/catalogue-quantity-20261017, fix/visual-qa-20261017, fix/display-labels-en-20261017, fix/mobile-sheet-focus-20261018, improve/b2b-strategy-20261018, improve/commercial-coherence-20261018]
   workflow_dispatch:
 
 concurrency:
@@ -73,6 +73,8 @@ jobs:
         run: python3 scripts/test_direct_enquiry_form.py
       - name: Check B2B offer boundaries and bilingual enquiry routes
         run: python3 scripts/test_b2b_strategy.py
+      - name: Check commercial copy, scripts and anchor preservation
+        run: python3 scripts/test_commercial_coherence.py
       - name: Check Arabic readiness
         run: python3 scripts/test_arabic_readiness.py
       - name: Check narrow mobile navigation

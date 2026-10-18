@@ -213,7 +213,8 @@ def customers(source, en):
         'Les acteurs publics suivent leur procédure de consultation ; les fournisseurs disposent du parcours de référencement achats.',
     ])
     # The three offers are already introduced in #besoin-client; drop the duplicate summary block.
-    source = replace_node(source, 'comparer', '')
+    if re.search(r'\bid="comparer"', source):
+        source = replace_node(source, 'comparer', '')
     # Update directory and orientation cards without touching the retained anchors.
     for old, new in ([
         ('Un seul interlocuteur, tout le cycle du puits.', 'Ingénierie &amp; services techniques'),
