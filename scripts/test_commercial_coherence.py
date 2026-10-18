@@ -2,7 +2,7 @@
 import re
 import unittest
 from html.parser import HTMLParser
-from align_commercial_coherence import ROOT, PAIRS, transform, insert_note, outside_scripts
+from align_commercial_coherence import ROOT, PAIRS, transform, insert_note, outside_scripts, brochure_script_copy
 from align_b2b_strategy import customers, introduction, customer_blocks
 
 
@@ -62,7 +62,10 @@ class CommercialCoherenceTests(unittest.TestCase):
                     self.assertTrue(set(before).issubset(after), set(before) - set(after))
                     self.assertEqual(len(after), len(set(after)))
                     pattern = r'<(?:script|style)\b[^>]*>.*?</(?:script|style)>'
-                    self.assertEqual(re.findall(pattern, source, re.S | re.I), re.findall(pattern, result, re.S | re.I))
+                    before_scripts = re.findall(pattern, source, re.S | re.I)
+                    if path.startswith('brochure'):
+                        before_scripts = [brochure_script_copy(item, bool(en)) if item.lower().startswith('<script') else item for item in before_scripts]
+                    self.assertEqual(before_scripts, re.findall(pattern, result, re.S | re.I))
 
 
 if __name__ == '__main__':

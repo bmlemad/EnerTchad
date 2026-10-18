@@ -1,6 +1,6 @@
 """Harmonise commercial claims across the bilingual customer journey.
 
-Only reviewed pages are changed. Scripts, forms, contact data, illustrations,
+Only reviewed pages are changed. Interactive logic, forms, contact data, illustrations,
 dated documents and their original identifiers remain untouched.
 """
 import re
@@ -76,6 +76,7 @@ FR = [
     ('avec un devis au prix ARSAT.', 'pour confirmer disponibilité, prix applicable et conditions.'),
     ('Opérateur E&amp;P — étude / pilote / OFS', 'Ingénierie / services amont — étude / pilote'),
     ('Services parapétroliers, EOR, task force pour opérer vos sites.', 'Études aval et missions amont à cadrer selon les expertises, partenaires et moyens disponibles.'),
+    ('certifiée ATEX', 'conformité ATEX à valider'),
     ('Portefeuille carburant prépayé', 'Services de proximité envisagés'),
     ('rechargeable et transférable par mobile money', 'modalités et disponibilité à confirmer'),
     ('Facture réglée sous 30 jours après réception conforme, et performance fournisseur notée pour la consultation suivante.', 'Paiement selon les conditions convenues au contrat après réception conforme et facture complète ; évaluation de la prestation pour les consultations suivantes.'),
@@ -108,6 +109,7 @@ EN = [
     ('ARSAT quote', 'Indicative offer'),
     ('Confirm the order and your preferred delivery slot.', 'Confirm the proposed terms before placing a firm order.'),
     ('E&amp;P operator — study / pilot / OFS', 'Engineering / upstream services — study / pilot'),
+    ('ATEX-certified', 'ATEX conformity to validate'),
     ('Prepaid fuel wallet', 'Planned convenience services'),
     ('top-up and transferable by mobile money', 'terms and availability to confirm'),
     ('Invoice settled within 30 days of compliant receipt, and supplier performance scored for the next tender.', 'Payment under the agreed contract terms after compliant receipt and a complete invoice; supplier performance reviewed for future consultations.'),
@@ -172,6 +174,22 @@ def markup_copy(markup, en):
 def outside_scripts(source, en):
     parts = re.split(r'(<(?:script|style)\b[^>]*>.*?</(?:script|style)>)', source, flags=re.S | re.I)
     return ''.join(part if re.match(r'<(?:script|style)\b', part, re.I) else markup_copy(part, en) for part in parts)
+
+
+def brochure_script_copy(script, en):
+    """Change only approved display strings in the brochure's interactive data."""
+    pairs = ([
+        ('la Mobile Station™ conteneurisée se déploie en 24-48 h.', 'la mobilisation de la Mobile Station™ conteneurisée reste à confirmer selon le site, le transport et les autorisations.'),
+        ('certifiée ATEX', 'conformité ATEX à valider'),
+        ('Autonomie 30 j', 'Autonomie à dimensionner'),
+    ] if not en else [
+        ('the containerised Mobile Station™ deploys in 24-48 h.', 'mobilisation of the containerised Mobile Station™ depends on site conditions, transport and approvals.'),
+        ('ATEX-certified', 'ATEX conformity to validate'),
+        ('30-day autonomy', 'Autonomy to size'),
+    ])
+    for old, new in pairs:
+        script = script.replace(old, new)
+    return script
 
 
 def context_note(path, en):
@@ -311,6 +329,8 @@ def network(source, en):
 
 def transform(source, path, en):
     source = outside_scripts(source, en)
+    if path.startswith('brochure'):
+        source = re.sub(r'<script\b[^>]*>.*?</script>', lambda m: brochure_script_copy(m[0], en), source, flags=re.S)
     if path.startswith('aval/reseau'):
         source = network(source, en)
     if path.startswith('aval/produits'):
