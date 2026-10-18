@@ -7,6 +7,7 @@ START,END='/* et-mobile-focus:start */','/* et-mobile-focus:end */'
 def patch_js(source,code):
     source=re.sub(re.escape(START)+r'.*?'+re.escape(END)+r'\n?','',source,flags=re.S)
     if "s.id='nezSheet'" not in source:raise ValueError('Review activities dialog before applying focus handling')
+    source=re.sub(r'(?m)^[ \t]*/\*(?! et-).*?\*/','',source,flags=re.S)
     return source.rstrip()+'\n'+START+'\n'+code.rstrip()+'\n'+END+'\n'
 
 def main():
