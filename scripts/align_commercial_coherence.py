@@ -201,7 +201,7 @@ def context_note(path, en):
     inner_style = ' style="max-width:70ch;margin:24px auto;padding:20px;border:1px solid currentColor;border-radius:12px"' if journal else ''
     return ('<section class="pp-compact pp-mist" id="commercial-scope" aria-labelledby="commercial-scope-title">'
             f'<div class="pp-wrap"><div class="pp-prose pp-prose-w"{inner_style}><h2 id="commercial-scope-title">{title}</h2><p>{body}</p><div class="pp-actions">'
-            + ''.join(f'<a class="pp-link" style="display:inline-block;min-height:44px" href="{escape(href, quote=True)}">{label} →</a>' for href, label in links) + '</div></div></div></section>')
+            + ''.join(f'<a class="pp-link" style="display:inline-block;min-height:44px;margin-right:14px" href="{escape(href, quote=True)}">{label} →</a>' for href, label in links) + '</div></div></div></section>')
 
 
 class EditorialBoundary(HTMLParser):
@@ -211,6 +211,7 @@ class EditorialBoundary(HTMLParser):
         self.source = source
         self.lines = [0] + [m.end() for m in re.finditer('\n', source)]
         self.main = self.article = self.hero = None
+        self.article_body = None
         self.inside_main = False
 
     def position(self):
@@ -223,6 +224,8 @@ class EditorialBoundary(HTMLParser):
             self.inside_main = True
         if tag == 'article' and dict(attrs).get('role') == 'main' and self.article is None:
             self.article = self.source.index('>', self.position()) + 1
+        if tag == 'div' and self.article is not None and 'jbody' in dict(attrs).get('class', '').split() and self.article_body is None:
+            self.article_body = self.source.index('>', self.position()) + 1
 
     def handle_endtag(self, tag):
         if tag == 'header' and self.inside_main and self.hero is None:
@@ -236,10 +239,10 @@ def insert_note(source, path, en):
         return source
     note = context_note(path, en)
     if 'id="commercial-scope"' in source:
-        return replace_node(source, 'commercial-scope', note)
+        source = replace_node(source, 'commercial-scope', '')
     boundary = EditorialBoundary(source)
     boundary.feed(source)
-    at = boundary.hero or boundary.main or boundary.article
+    at = boundary.hero or boundary.main or boundary.article_body or boundary.article
     if at is None:
         raise ValueError(f'Missing editorial insertion boundary in {path}')
     return source[:at] + note + source[at:]

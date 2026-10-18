@@ -32,6 +32,13 @@ class CommercialCoherenceTests(unittest.TestCase):
         self.assertIn('<style>/* 0 fraud */</style>', result)
         self.assertIn('<p>Controls</p>', result)
 
+    def test_journal_preserves_title_and_date_before_the_update(self):
+        source = '<article role="main"><div class="jhero"><h1>Title</h1><p>Original date</p></div><div class="jbody"><p>Body</p></div></article>'
+        result = insert_note(source, 'journal-test.html', False)
+        self.assertLess(result.index('Original date'), result.index('id="commercial-scope"'))
+        self.assertLess(result.index('id="commercial-scope"'), result.index('<p>Body</p>'))
+        self.assertEqual(insert_note(result, 'journal-test.html', False), result)
+
     def test_missing_boundary_fails_without_guessing(self):
         with self.assertRaises(ValueError):
             insert_note('<style>/* <main> */</style><div>Other</div>', 'unknown.html', False)
