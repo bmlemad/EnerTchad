@@ -35,13 +35,13 @@
       "id": "data-book",
       "path": "/Data_Book_EnerTchad.xlsx",
       "format": "XLSX",
-      "bytes": 12277,
+      "bytes": 12510,
       "language": "multi",
       "category": "investors",
       "status": "published",
       "role_fr": "Données publiées et sourcées",
       "role_en": "Published sourced data",
-      "git_blob_sha": "765a8ecb2bba463b697eba44a9e28c8458310848"
+      "git_blob_sha": "dc61d50b1171f78611455364025920d553030636"
     },
     {
       "id": "progress-2026",
