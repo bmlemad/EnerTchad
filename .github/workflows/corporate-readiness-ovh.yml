@@ -2,7 +2,7 @@ name: OVH — corporate readiness deployment
 
 on:
   push:
-    branches: [main, improve/mobile-quick-navigation-20261014, fix/share-footer-contrast-20261015, improve/liquid-glass-20261015, fix/navigation-accessibility-20261016, improve/engineering-offer-20261016, improve/industrial-modernisation-20261016, fix/configurator-history-20261016, fix/share-touch-target-20261016, fix/catalogue-language-session-20261017, fix/catalogue-quantity-20261017, fix/visual-qa-20261017, fix/display-labels-en-20261017, fix/mobile-sheet-focus-20261018, improve/b2b-strategy-20261018, improve/commercial-coherence-20261018]
+    branches: [main, improve/mobile-quick-navigation-20261014, fix/share-footer-contrast-20261015, improve/liquid-glass-20261015, fix/navigation-accessibility-20261016, improve/engineering-offer-20261016, improve/industrial-modernisation-20261016, fix/configurator-history-20261016, fix/share-touch-target-20261016, fix/catalogue-language-session-20261017, fix/catalogue-quantity-20261017, fix/visual-qa-20261017, fix/display-labels-en-20261017, fix/mobile-sheet-focus-20261018, improve/b2b-strategy-20261018, improve/commercial-coherence-20261018, improve/customer-space-20261020]
   workflow_dispatch:
 
 concurrency:
