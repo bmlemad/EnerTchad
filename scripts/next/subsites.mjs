@@ -1,3 +1,4 @@
+import { moderniseClients } from './clients.mjs';
 import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import { dirname } from 'node:path';
 import { readFileSync } from 'node:fs';
@@ -31,6 +32,7 @@ const escape = value => value.replace(/&/g, '&amp;').replace(/"/g, '&quot;').rep
 // copies are only mounted on their assigned Netlify aliases after DNS activation.
 export function renderSubsite(html, page, space, hosted = false) {
   const pages = space === 'boutique' ? commercialPages : atlasPages;
+  if (page.kind === 'clients') html = moderniseClients(html, page.language === 'en');
   // Read at render time: preparation may have just updated the shared controls.
   const coherenceHash = createHash('sha256').update(readFileSync(new URL('../../assets/chrome/coherence-20261013.js', import.meta.url))).digest('hex').slice(0, 12);
   const en = page.language === 'en';
@@ -58,8 +60,8 @@ export function renderSubsite(html, page, space, hosted = false) {
   const catalogue = commercialPages.find(p => p.kind === 'catalogue' && p.language === page.language);
   const links = space === 'boutique' ? [
     [pathFor(catalogue), en ? 'Catalogue' : 'Catalogue', page.kind === 'catalogue'],
-    [pathFor(client), en ? 'Customers & services' : 'Clients & services', page.kind === 'clients'],
-    [pathFor(client) + '#programmes', en ? 'Fleet programmes' : 'Programmes flottes', false],
+    [pathFor(client), en ? 'Solutions & services' : 'Solutions & services', page.kind === 'clients'],
+    [pathFor(client) + '#operateurs', en ? 'Engineering' : 'Ingénierie', false],
     [pathFor(catalogue) + '#boutique', en ? 'Prepare a quote' : 'Préparer un devis', false]
   ] : atlasPages.filter(p => p.language === page.language).map((p, i) => [pathFor(p), (en ? ['Atlas home', 'Map', 'Basins & fields', 'Infrastructure', 'Sector framework', 'Sources'] : ['Accueil Atlas', 'Carte', 'Bassins & champs', 'Infrastructures', 'Cadre sectoriel', 'Sources'])[i], page.kind === p.kind]);
   const label = space === 'boutique' ? en ? 'Customer space' : 'Espace Clients' : 'Atlas';
@@ -80,14 +82,14 @@ export function renderSubsite(html, page, space, hosted = false) {
   const languageSwitch = `<a class="et-al-lang" href="${pathFor(sibling)}" lang="${en ? 'fr' : 'en'}" aria-label="${en ? 'Version française' : 'English version'}" title="${en ? 'Français' : 'English'}">${en ? '<b>FR</b>&nbsp;·&nbsp;EN' : 'FR&nbsp;·&nbsp;<b>EN</b>'}</a>`;
   const arabic = `<a class="et-al-ar" href="${corporate}/ar" aria-label="${en ? 'Arabic version' : 'Version arabe'}"><span lang="ar">ع</span></a>`;
   const contact = `${corporate}/contact${en ? '-en' : ''}`;
-  const header = `<nav id="nav" class="et-space-header et-al" aria-label="${en ? 'Main navigation' : 'Navigation principale'}">${menuToggle}<div class="et-space-top et-al-util"><div class="et-al-utin"><a class="et-al-back" href="${corporate}${en ? '/index-en' : '/'}" aria-label="${en ? 'EnerTchad group' : 'Groupe EnerTchad'}">←&nbsp;<span class="et-al-long">${en ? 'EnerTchad group' : 'Groupe EnerTchad'}</span></a><span class="et-al-pill"><a class="et-al-partner" href="${partnerUrl}">${partnerLabel}</a><a class="et-al-contact" href="${contact}">Contact</a>${languageSwitch}${arabic}<a class="et-al-invest" href="${corporate}/investisseurs${en ? '-en' : ''}#souscrire">${en ? 'Invest' : 'Investir'}</a></span></div></div><div class="et-al-bar"><a class="et-al-brand" href="${pathFor(pages.find(p => p.language === page.language && (p.kind === 'home' || p.kind === 'clients')))}" aria-label="EnerTchad — ${label}"><svg class="et-al-mk" aria-hidden="true" focusable="false" viewBox="4 4 192 192" width="44" height="44"><defs><linearGradient id="etalg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#DBAE4A"/><stop offset="1" stop-color="#C2922E"/></linearGradient></defs><path d="M100 96L126.98 67.9A37.4 37.4 0 1 0 73.02 67.9Z" fill="url(#etalg)"/><path d="M96 100L67.9 73.02A37.4 37.4 0 1 0 67.9 126.98Z" fill="#1E6EC2"/><path d="M104 100L132.1 126.98A37.4 37.4 0 1 0 132.1 73.02Z" fill="#218A2C"/><path d="M100 104L73.02 132.1A37.4 37.4 0 1 0 126.98 132.1Z" fill="#E8CD7F"/></svg><span class="et-al-tx"><span>Ener<span>Tchad</span></span><small>${label}</small></span></a><div class="et-space-links et-al-links">${links.map(([href, text, active]) => `<a href="${href}"${active ? ' aria-current="page"' : ''}>${text}</a>`).join('')}</div>${themeButton}</div></nav>`;
+  const header = `<nav id="nav" class="et-space-header et-al" aria-label="${en ? 'Main navigation' : 'Navigation principale'}">${menuToggle}<div class="et-space-top et-al-util"><div class="et-al-utin"><a class="et-al-back" href="${corporate}${en ? '/index-en' : '/'}" aria-label="${en ? 'EnerTchad group' : 'Groupe EnerTchad'}">←&nbsp;<span class="et-al-long">${en ? 'EnerTchad group' : 'Groupe EnerTchad'}</span></a><span class="et-al-pill"><a class="et-al-partner" href="${partnerUrl}">${partnerLabel}</a><a class="et-al-contact" href="${contact}">Contact</a>${languageSwitch}${arabic}<a class="et-al-invest" href="${corporate}/contact${en ? '-en' : ''}?profil=invest#ctForm">${en ? 'Investor contact' : 'Contact investisseurs'}</a></span></div></div><div class="et-al-bar"><a class="et-al-brand" href="${pathFor(pages.find(p => p.language === page.language && (p.kind === 'home' || p.kind === 'clients')))}" aria-label="EnerTchad — ${label}"><svg class="et-al-mk" aria-hidden="true" focusable="false" viewBox="4 4 192 192" width="44" height="44"><defs><linearGradient id="etalg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#DBAE4A"/><stop offset="1" stop-color="#C2922E"/></linearGradient></defs><path d="M100 96L126.98 67.9A37.4 37.4 0 1 0 73.02 67.9Z" fill="url(#etalg)"/><path d="M96 100L67.9 73.02A37.4 37.4 0 1 0 67.9 126.98Z" fill="#1E6EC2"/><path d="M104 100L132.1 126.98A37.4 37.4 0 1 0 132.1 73.02Z" fill="#218A2C"/><path d="M100 104L73.02 132.1A37.4 37.4 0 1 0 126.98 132.1Z" fill="#E8CD7F"/></svg><span class="et-al-tx"><span>Ener<span>Tchad</span></span><small>${label}</small></span></a><div class="et-space-links et-al-links">${links.map(([href, text, active]) => `<a href="${href}"${active ? ' aria-current="page"' : ''}>${text}</a>`).join('')}</div>${themeButton}</div></nav>`;
   const all = nodes(output);
   const oldNav = all.find(n => n.attribs?.id === 'nav');
   if (!oldNav) throw Error('Missing main navigation in ' + page.source);
   const mobileNav = all.find(n => n.attribs?.id === 'nezBar');
   const replacements = [[oldNav.startIndex, oldNav.endIndex + 1, header]];
   if (mobileNav) replacements.push([mobileNav.startIndex, mobileNav.endIndex + 1, '']);
-  if (space === 'boutique') {
+  if (space === 'boutique' && page.kind !== 'clients') {
     const hero = all.find(n => n.attribs?.id === 'top-pole' && /(?:^|\s)pp-hero(?:\s|$)/.test(n.attribs?.class || ''));
     const wrap = hero?.children?.find(n => /(?:^|\s)pp-wrap(?:\s|$)/.test(n.attribs?.class || ''));
     // The premium stylesheet has 24-ID specificity. Inline custom-property
