@@ -4,6 +4,10 @@
   'use strict';
   var form = document.getElementById('sfForm');
   if (!form) return;
+  var css = document.createElement('link');
+  css.rel = 'stylesheet';
+  css.href = '/assets/chrome/fournisseur-form.css?b=202610201800';
+  document.head.appendChild(css);
   var en = document.documentElement.lang === 'en';
   var status = document.getElementById('sfStatus');
   var button = form.querySelector('button[type=submit]');

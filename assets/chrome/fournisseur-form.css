@@ -1,0 +1,19 @@
+/* Formulaire de référencement fournisseur (achats.html, achats-en.html). */
+.sf{display:grid;gap:22px;max-width:920px}
+.sf fieldset{border:1px solid rgba(157,167,180,.45);border-radius:12px;padding:18px 20px 6px;margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));column-gap:18px;min-width:0}
+.sf legend{padding:0 8px;font-weight:700;font-size:.95rem;letter-spacing:.02em}
+.sf label{display:block;font-size:.875rem;font-weight:600;line-height:1.6}
+.sf .full{grid-column:1/-1}
+.sf input:not([type=checkbox]),.sf select,.sf textarea{box-sizing:border-box;width:100%;padding:12px;min-height:48px;border:1px solid #9da7b4;border-radius:8px;font:inherit;font-size:1rem;color:#142033;background:#fff;margin:6px 0 16px}
+.sf ::placeholder{color:#5f6b7a;opacity:1}
+.sf textarea{min-height:110px}
+.sf .chk{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:6px 18px;margin:6px 0 16px}
+.sf .chk label{font-weight:400;display:flex;gap:10px;align-items:flex-start}
+#sfForm input[type=checkbox]{-webkit-appearance:checkbox!important;appearance:auto!important;background:revert!important;border:revert!important;accent-color:#C9A227;color-scheme:light;width:20px;height:20px;min-height:0;margin:3px 0 0;flex:none}
+.sf .hint{font-weight:400;font-size:.82rem;opacity:.85;display:block}
+.sf .eng{display:flex;gap:12px;align-items:flex-start;font-weight:400;padding:14px 0 16px}
+.sf .eng a{color:inherit;text-decoration:underline}
+.sf button{justify-self:start;min-height:48px;min-width:200px;padding:12px 22px;background:#C9A227;color:#142033;border:0;border-radius:10px;font:700 1rem system-ui;cursor:pointer}
+.sf button:disabled{opacity:.6;cursor:default}
+.sf [role=status]{padding:16px;border:1px solid #8b9eae;border-radius:8px;line-height:1.6}
+.sf .sf-note{font-size:.9rem;line-height:1.6;opacity:.9}
