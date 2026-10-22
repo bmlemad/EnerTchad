@@ -20,6 +20,8 @@ const matrix = [
   ['/nos-activites-en', 'en', '/nos-activites-en'],
   ['/engagements', 'fr', '/engagements'],
   ['/engagements-en', 'en', '/engagements-en'],
+  ['/cadre-hse', 'fr', '/cadre-hse'],
+  ['/cadre-hse-en', 'en', '/cadre-hse-en'],
   ['/projets', 'fr', '/projets'],
   ['/projets-en', 'en', '/projets-en'],
   ['/gouvernance', 'fr', '/gouvernance'],
