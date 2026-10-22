@@ -129,7 +129,8 @@ def navigation(text):
         if 'Français</a>' in tag:
             return tag.replace('href="/pole-enerconseils-en"', 'href="/enerconseils/"')
         tag = re.sub(r'>(Conseil|Advisory|EnerConseils|Conseil &amp; audits indépendants)<', lambda _: '>' + label + '<', tag)
-        tag = re.sub(r'EnerConseils(?:\s|&nbsp;)*:\s*(?:études, audits|studies, audits)', 'EnerConseils: ' + ('studies, design, projects' if en else 'études, conception, projets'), tag)
+        # lot16 : typographie française (espace insécable avant les deux-points) ; réécrit aussi un libellé déjà migré.
+        tag = re.sub(r'EnerConseils(?:\s|&nbsp;)*:\s*(?:études, audits|studies, audits|études, conception, projets|studies, design, projects)', ('EnerConseils: studies, design, projects' if en else 'EnerConseils\u00a0: études, conception, projets'), tag)
         tag = tag.replace('Atlas du secteur, conseil, audits.', 'Ingénierie, conseil, atlas du secteur.')
         tag = tag.replace('Sector atlas, advisory, audits.', 'Engineering, advisory, sector atlas.')
         return tag
