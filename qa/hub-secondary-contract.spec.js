@@ -12,6 +12,7 @@ const pages = [
   ['/amont/reserves', 'fr'],
   ['/amont/eau', 'fr'],
   ['/amont/methane-torchage', 'fr'],
+  ['/amont/titulaire-droits-petroliers', 'fr'],
   ['/amont/parc', 'fr'],
   ['/aval/raffinage', 'fr'],
   ['/aval/distribution', 'fr'],
