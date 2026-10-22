@@ -17,18 +17,6 @@
       "status": "published"
     },
     {
-      "id": "investor-deck",
-      "title_fr": "Dossier de présentation investisseur",
-      "title_en": "Investor presentation deck",
-      "href": "/Dossier_Investisseur_EnerTchad.pptx",
-      "format": "PPTX",
-      "language": [
-        "fr",
-        "en"
-      ],
-      "status": "published"
-    },
-    {
       "id": "data-book",
       "title_fr": "Data Book",
       "title_en": "Data Book",
