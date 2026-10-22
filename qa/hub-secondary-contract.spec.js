@@ -11,6 +11,7 @@ const pages = [
   ['/amont/services-ep', 'fr'],
   ['/amont/reserves', 'fr'],
   ['/amont/eau', 'fr'],
+  ['/amont/methane-torchage', 'fr'],
   ['/amont/parc', 'fr'],
   ['/aval/raffinage', 'fr'],
   ['/aval/distribution', 'fr'],
