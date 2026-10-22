@@ -113,13 +113,15 @@
       "id": "technical-upstream",
       "path": "/Fiche_Technique_Amont_EnerTchad.pdf",
       "format": "PDF",
-      "bytes": 168426,
+      "bytes": 172539,
       "language": "fr",
       "category": "operations",
       "status": "published",
       "role_fr": "Fiche technique Exploration & Production",
       "role_en": "Exploration & Production technical factsheet",
-      "git_blob_sha": "12f65565398b8e1a6d01bf512b6465306b56f22b"
+      "git_blob_sha": "95b6930db3169cf144cb8f7eb04857a7b250f84b",
+      "document_date": "2026-10",
+      "date_source": "PDF page 1"
     },
     {
       "id": "technical-midstream",
