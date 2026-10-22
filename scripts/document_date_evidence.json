@@ -22,5 +22,10 @@
     "document_date": "2026-09",
     "date_source": "PDF page 1",
     "document_updated": "2026-10"
+  },
+  "/Fiche_Technique_Amont_EnerTchad.pdf": {
+    "git_blob_sha": "95b6930db3169cf144cb8f7eb04857a7b250f84b",
+    "document_date": "2026-10",
+    "date_source": "PDF page 1"
   }
 }
