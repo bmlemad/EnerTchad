@@ -78,6 +78,18 @@ def navigation(text, en):
             additions += f'<a href="{href}"><strong>{label}</strong></a>'
             existing.add(href)
         by_id[target] = re.sub(r'(<div class="nx-col pn-links">)(.*?)(</div>)', lambda m: m[1] + m[2] + additions + m[3], by_id[target], count=1, flags=re.S)
+    # lot13 : la rubrique courante d'un groupe fusionné reste signalée sur son groupe d'accueil
+    # (Durabilité -> Ressources, Carrières -> Entreprise).
+    def activate(m):
+        tag = m[0]
+        if 'is-active' not in tag:
+            tag = re.sub(r'class="nav-trigger', 'class="nav-trigger is-active', tag, count=1)
+        if 'aria-current=' not in tag:
+            tag = tag.replace('<button', '<button aria-current="true"', 1)
+        return tag
+    for merged, host in (('nxm-c', 'nxm-e'), ('nxm-f', 'nxm-a')):
+        if merged in by_id and host in by_id and re.search(r'class="nav-trigger is-active"', by_id[merged]):
+            by_id[host] = re.sub(r'<button\b[^>]*class="nav-trigger(?: [^"]*)?"[^>]*>', activate, by_id[host], count=1)
     labels = ['Company', 'Activities & Engineering', 'Projects & Investors', 'Resources'] if en else ['Entreprise', 'Activités & Ingénierie', 'Projets & Investisseurs', 'Ressources']
     ordered = []
     for ident, label in zip(['nxm-a', 'nxm-b', 'nxm-d', 'nxm-e'], labels):
@@ -98,6 +110,29 @@ def navigation(text, en):
     opening = new.index('>') + 1
     new = new[:opening] + ''.join(ordered) + new[opening:]
     return text[:nav.start()] + new + text[nav.end():]
+
+
+def footer_sections(text, en):
+    """lot13 : la colonne « Rubriques »/« Sections » du pied reprend les 4 rubriques de l'en-tête."""
+    col = re.compile(r'<div class="foot-col"><h3>(Rubriques|Sections)</h3>.*?</div>', re.S)
+    if not col.search(text):
+        return text
+    nav = re.search(r'<div\b[^>]*\bid="navLinks"[^>]*>.*?(?=<div class="nav-cta"|</nav>)', text, re.S)
+    if not nav:
+        return text
+    groups = []
+    for button in re.finditer(r'<button\b([^>]*)class="nav-trigger(?: [^"]*)?"([^>]*)>([^<]+)', nav[0]):
+        ident = re.search(r'aria-controls="(nxm-[a-f])"', button[1] + button[2])
+        if not ident:
+            continue
+        region = re.search(r'id="' + ident[1] + r'".*?class="pn-all" href="([^"]+)"', nav[0][button.end():], re.S)
+        if not region:
+            raise ValueError('Footer sections: overview link missing for ' + ident[1])
+        groups.append((region[1], button[3].strip()))
+    if len(groups) != 4:
+        return text
+    body = ''.join(f'<a href="{href}">{label}</a>' for href, label in groups)
+    return col.sub(lambda m: f'<div class="foot-col"><h3>{m[1]}</h3>' + body + '</div>', text, count=1)
 
 
 def mobile(text, en):
@@ -274,6 +309,7 @@ def main():
         en, name = language == 'en', relative.as_posix()
         new = navigation(old, en)
         new = mobile(new, en)
+        new = footer_sections(new, en)  # lot13
         new = re.sub(r'<html\b([^>]*)>', lambda m: '<html' + re.sub(r' data-et-modern="[^"]*"', '', m[1]) + ' data-et-modern="industrial">', new, count=1)
         if name in ('index.html', 'index-en.html'):
             new = home(new, en)

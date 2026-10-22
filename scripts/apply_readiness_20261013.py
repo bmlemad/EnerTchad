@@ -356,3 +356,5 @@ if __name__ == '__main__':
     runpy.run_path(str(ROOT / 'scripts/align_commercial_coherence.py'), run_name='__main__')
 
     runpy.run_path(str(ROOT / 'scripts/apply_qa_majors.py'), run_name='__main__')
+
+    runpy.run_path(str(ROOT / 'scripts/apply_nav_majors.py'), run_name='__main__')  # lot13
