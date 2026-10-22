@@ -360,3 +360,5 @@ if __name__ == '__main__':
     runpy.run_path(str(ROOT / 'scripts/apply_nav_majors.py'), run_name='__main__')  # lot13
 
     runpy.run_path(str(ROOT / 'scripts/apply_nav_minors.py'), run_name='__main__')  # lot16
+
+    runpy.run_path(str(ROOT / "scripts/apply_home_major_review.py"), run_name="__main__")
