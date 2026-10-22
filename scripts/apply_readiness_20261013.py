@@ -83,8 +83,8 @@ def home(text, en):
 
 
 def governance(text, en):
-    paragraph = ('EnerTchad aims to establish IFRS financial reporting and external audit arrangements. Implementation status, appointed responsible parties and the first available documents will be published here as they are formalised.' if en else
-                 'EnerTchad vise un reporting financier selon les normes IFRS et un audit externe. Le statut de mise en place, les responsables désignés et les premiers documents disponibles seront précisés ici à mesure de leur formalisation.')
+    paragraph = ('Accounts kept under revised SYSCOHADA; IFRS financial statements also prepared for investors (targeted); external audit targeted. Implementation status, appointed responsible parties and the first available documents will be published here as they are formalised.' if en else
+                 'Comptabilité tenue selon le SYSCOHADA révisé ; états financiers IFRS établis aussi pour les investisseurs (visé) ; audit externe visé. Le statut de mise en place, les responsables désignés et les premiers documents disponibles seront précisés ici à mesure de leur formalisation.')
     def accounts(s):
         s = re.sub(r'<p class="pp-lead">.*?</p>', '<p class="pp-lead">' + paragraph + '</p>', s, count=1, flags=re.S)
         pairs = ([('IFRS accounts', 'IFRS reporting targeted'),

@@ -174,7 +174,7 @@ def home(text, en):
         text = text[:chain.end()] + metrics[0] + text[chain.end():]
     suffix = '-en' if en else ''
     people = ('A published governance, identifiable responsibilities' if en else 'Une gouvernance publiée, des responsabilités identifiées')
-    context = ('Names and roles below are already published. Biographies and original portraits will be added when authorised and documented.' if en else 'Les noms et fonctions ci-dessous sont déjà publiés. Les parcours et portraits originaux seront ajoutés lorsqu’ils seront autorisés et documentés.')
+    context = ('The Chair and CEO below are designated by the founders, to be confirmed by the constitutive general meeting. Biographies and original portraits will be added when authorised and documented.' if en else 'Le PCA et le DG ci-dessous sont désignés par les fondateurs, à confirmer par l’assemblée constitutive. Les parcours et portraits originaux seront ajoutés lorsqu’ils seront autorisés et documentés.')
     source = (ROOT / 'gouvernance.html').read_text()
     published = []
     for role in ['Président du Conseil (PCA)', 'Directeur général (DG)']:
