@@ -6,8 +6,8 @@ import { runInNewContext } from 'node:vm';
 const script = readFileSync('assets/chrome/contact_profiles.js', 'utf8');
 function fixture(lang, search = '', hash = '') {
   const english = lang === 'en';
-  const names = english ? ['Supply / B2B contract', 'E&P operator — study / pilot / OFS', 'Industrial or technical partnership', 'Public contracts / Institutions (B2G)', 'Investment', 'Application / Talent', 'Press', 'Other'] : ['Approvisionnement / Contrat B2B', 'Opérateur E&P — étude / pilote / OFS', 'Partenariat industriel ou technique', 'Marchés publics / Institutions (B2G)', 'Investissement', 'Candidature / Talents', 'Presse', 'Autre'];
-  const options = [{ value: '', dataset: {} }, ...names.map(value => ({ value, dataset: {} })), ...['particulier', 'fournisseur', 'centrale-achat', 'achats'].map(profile => ({ value: profile, dataset: { contactProfile: profile } }))];
+  const names = english ? ['Supply / B2B contract', 'Engineering / upstream services — study / pilot', 'Industrial or technical partnership', 'Public contracts / Institutions (B2G)', 'Investment', 'Application / Talent', 'Press', 'Other'] : ['Approvisionnement / Contrat B2B', 'Ingénierie / services amont — étude / pilote', 'Partenariat industriel ou technique', 'Marchés publics / Institutions (B2G)', 'Investissement', 'Candidature / Talents', 'Presse', 'Autre'];
+  const options = [{ value: '', dataset: {} }, ...names.map((value, i) => ({ value, dataset: i === 1 ? { contactProfile: 'ep' } : {} })), ...['particulier', 'fournisseur', 'centrale-achat', 'achats'].map(profile => ({ value: profile, dataset: { contactProfile: profile } }))];
   const listeners = {};
   const select = { options, value: '', addEventListener(name, callback) { listeners[name] = callback; } };
   let focused = false;
