@@ -29,3 +29,4 @@ html:not(.et-plight) .svc-foot{border-color:#22314A}
 main.et-web .svc-links{font-size:.9rem;line-height:1.9;margin-top:22px}
 main.et-web .svc-links a{color:#0A1A2F;text-decoration-color:#E3E6EB;text-underline-offset:4px}
 html:not(.et-plight) main.et-web .svc-links a{color:#F1F3F6;text-decoration-color:#22314A}
+/* nav-majors:start */.svc-top{flex-wrap:wrap;row-gap:10px}.svc-top>a{min-width:0}.svc-top nav{flex-wrap:wrap;row-gap:8px;column-gap:16px;min-width:0}/* nav-majors:end */
