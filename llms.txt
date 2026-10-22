@@ -11,6 +11,7 @@
 - [Publications & documents](https://enertchad.com/publications) : brochures PDF (FR/EN), fiche arabe, fiches techniques
 - [Paiements aux États](https://enertchad.com/paiements-etats) : format de déclaration engagé — sept catégories ITIE, maille par entité et par projet, date du premier rapport
 - [Méthane & torchage](https://enertchad.com/amont/methane-torchage) : point de départ du torchage au Tchad, Zero Routine Flaring et OGMP 2.0 visés, indicateurs publiés dès les premières opérations
+- [Cadre HSE](https://enertchad.com/cadre-hse) : indicateurs mesurés dès le premier chantier (TRIR, LTIF, FAR, incidents de sécurité des procédés Tier 1 et 2, définitions IOGP et API RP 754), règles vitales IOGP visées, tableau de résultats vide tant qu’aucune heure n’est travaillée
 - [Travailler avec un titulaire de droits pétroliers](https://enertchad.com/amont/titulaire-droits-petroliers) : partenariat EOR proposé aux titulaires de champs matures, rémunéré au baril additionnel au-delà d’une ligne de base, cadre juridique tchadien sourcé
 - [Carnets — journal pédagogique](https://enertchad.com/carnets) : 33 articles bilingues sur le pétrole tchadien (flux RSS : /feed.xml, /feed-en.xml)
 - [Nos activités — la chaîne d’un seul tenant](https://enertchad.com/nos-activites) : les trois pôles racontés d’un seul tenant, explorateur interactif compris
