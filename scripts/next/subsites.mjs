@@ -48,7 +48,8 @@ export function renderSubsite(html, page, space, hosted = false) {
     const relative = href.startsWith(corporate) ? href.slice(corporate.length) : href;
     const match = relative.match(/^([^?#]*)([?#].*)?$/);
     const target = byRoute.get(match[1]);
-    return target ? pathFor(target) + (match[2] || '') : corporate + relative;
+    // lot16 : liens racine-relatifs sur enertchad.com ; absolus seulement pour les copies hébergées sur un autre domaine.
+    return target ? pathFor(target) + (match[2] || '') : (hosted ? corporate : '') + relative;
   };
   // Change anchor destinations only; preserve scripts, SVG use references,
   // resource URLs and fragment links used by catalogue and map widgets.
