@@ -71,7 +71,7 @@ SRC = r'''
   @P .pn-intro .pn-d{color:var(--pn-ink2)!important;font-size:.98rem!important;line-height:1.6!important;margin:0 0 22px!important}
   @P .pn-intro .pn-all{min-height:24px!important;align-items:center!important;display:inline-flex!important;padding:0 0 6px!important;border-bottom:1px solid var(--pn-gold)!important;border-radius:0!important;background:none!important;transform:none!important}
   @P .pn-intro .pn-all strong{font:500 .95rem/1 var(--pn-sans)!important;color:var(--pn-ink)!important}
-  @P .pn-intro .pn-all strong::after{content:" →"}
+  @P .pn-intro .pn-all strong::after{content:none}
   @P .pn-intro .pn-all em{display:none!important}
   @P .pn-links{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;column-gap:36px!important;align-content:start!important}
   @P .pn-links a{display:block!important;padding:13px 0!important;border-top:1px solid var(--pn-line)!important;border-radius:0!important;background:none!important;transform:none!important;box-shadow:none!important;min-height:0!important}

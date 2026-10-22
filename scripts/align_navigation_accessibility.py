@@ -18,7 +18,7 @@ def transform_search(text):
     text=replace_once(text,'role="option" data-i="${i}"','role="option" id="cmdk-option-${i}" tabindex="-1" data-i="${i}"')
     text=replace_once(text,'    res.innerHTML=html;','    res.innerHTML=html;searchSelection();')
     text=replace_once(text,'if(!current.length){res.innerHTML=',"if(!current.length){searchSelection();res.innerHTML=")
-    text=replace_once(text,"function open(){modal.style.display='flex';input.value='';current=idx.slice();active=0;render();setTimeout(()=>input.focus(),30);}","function open(){if(modal.style.display==='flex'){input.focus();return;}searchLock();modal.style.display='flex';input.value='';current=idx.slice();active=0;render();setTimeout(()=>{if(modal.style.display==='flex')input.focus();},30);}")
+    text=replace_once(text,"function open(){modal.style.display='flex';input.value='';current=priorityRoutes();active=0;render();setTimeout(()=>input.focus(),30);}","function open(){if(modal.style.display==='flex'){input.focus();return;}searchLock();modal.style.display='flex';input.value='';current=priorityRoutes();active=0;render();setTimeout(()=>{if(modal.style.display==='flex')input.focus();},30);}")
     text=replace_once(text,"function close(){modal.style.display='none';var b=document.getElementById('navSearch');if(b)b.focus({preventScroll:true});}","function close(){modal.style.display='none';ftxSeq++;searchUnlock();}")
     text=replace_once(text,"    if(e.key==='Escape')close();\n    else if(e.key==='ArrowDown')", "    if(e.key==='Tab'){searchTrap(e);return;}\n    if(e.key==='Escape'){e.preventDefault();close();return;}\n    if(e.target!==input)return;\n    if(e.key==='ArrowDown')")
     return text
