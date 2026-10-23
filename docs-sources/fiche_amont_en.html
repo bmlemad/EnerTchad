@@ -1,0 +1,162 @@
+<!doctype html><html lang="en"><head>
+<meta name="robots" content="noindex,nofollow"><script id="et-light-def">try{var d=document.documentElement,p=location.pathname,j=/^\/journal-/.test(p),k=j?"et-jlight":"et-plight",v=localStorage.getItem(k);if(v!=="0")d.classList.add(k)}catch(e){document.documentElement.classList.add("et-plight")}</script><meta charset="utf-8"><title>EnerTchad — Technical sheet · Exploration &amp; Production</title>
+<style>
+@page{size:A4;margin:0}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',system-ui,sans-serif;color:#1A2330;line-height:1.55}
+.pg{width:210mm;height:296mm;page-break-after:always;position:relative;overflow:hidden;padding:18mm 16mm}
+.dark{background:linear-gradient(160deg,#0E1A2E 0%,#0B1422 55%,#070D18 100%);color:#F5F7FA}
+.gold{color:#E8C36A}.goldd{color:#8A6210}
+.k{font-family:Consolas,monospace;font-size:8.5pt;letter-spacing:.22em;text-transform:uppercase;color:#8A6210}
+.dark .k{color:#E8C36A}
+h1{font-size:30pt;line-height:1.15;font-weight:800;margin:6mm 0 4mm}
+h2{font-size:17pt;font-weight:800;margin:0 0 4mm}
+h3{font-size:11.5pt;font-weight:700;margin:0 0 1.5mm}
+p{font-size:10pt;margin:0 0 3mm}
+.lead{font-size:11.5pt;color:#3A4657}.dark .lead{color:rgba(245,247,250,.85)}
+.rule{height:2px;background:linear-gradient(90deg,#E8C36A,transparent);margin:5mm 0;border:0}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:5mm}
+.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:4mm}
+.card{border:1px solid #D8D2C2;border-radius:3mm;padding:5mm;background:#FBF9F3}
+.dark .card{border-color:rgba(232,195,106,.25);background:rgba(255,255,255,.05)}
+.kpi b{display:block;font-size:19pt;font-weight:800;color:#0B1422}
+.dark .kpi b{color:#fff}
+.kpi span{font-size:8.5pt;color:#6B7688}.dark .kpi span{color:rgba(245,247,250,.6)}
+.foot{position:absolute;bottom:10mm;left:16mm;right:16mm;font-size:8pt;color:#8A93A3;display:flex;justify-content:space-between;border-top:1px solid #E4DFD2;padding-top:2.5mm}
+.dark .foot{color:rgba(245,247,250,.5);border-top-color:rgba(255,255,255,.15)}
+.logo{display:inline-flex;align-items:center;gap:3mm;font-weight:800;font-size:14pt}
+.logo svg{width:9mm;height:9mm}
+table{width:100%;border-collapse:collapse;font-size:9.5pt}
+th{text-align:left;font-size:8pt;letter-spacing:.12em;text-transform:uppercase;color:#8A6210;border-bottom:1.5px solid #E8C36A;padding:2mm 2mm 1.5mm}
+td{padding:2.2mm 2mm;border-bottom:1px solid #EAE5D8;vertical-align:top}
+.note{border-right:1.2mm solid #E8C36A;background:#F6F2E8;border-radius:2mm;padding:4mm 5mm;font-size:9pt;color:#4A5568}
+.chain{display:flex;gap:3mm;align-items:stretch;margin:4mm 0}
+.chain .st{flex:1;border-radius:2.5mm;padding:4mm;color:#fff;font-size:9pt}
+.chain b{display:block;font-size:10.5pt;margin-bottom:1mm}
+ul{padding-right:0;padding-left:5mm;font-size:10pt;margin:0 0 3mm}
+li{margin-bottom:1.6mm}
+.badge{display:inline-block;border:1px solid rgba(232,195,106,.5);border-radius:99px;padding:1.2mm 4mm;font-size:8.5pt;letter-spacing:.14em;text-transform:uppercase}
+
+/* compaction fiche amont EN */
+#p1 h1{font-size:24pt;margin:4mm 0 3mm}
+#p1 .lead{font-size:10.5pt}
+#p1 .rule{margin:3.5mm 0}
+#p1 ul{font-size:9pt}
+#p1 li{margin-bottom:1.1mm}
+#p1 h2{font-size:14pt;margin-bottom:2.5mm}
+#p1 .card{padding:3.2mm 4mm}
+#p1 .card p{font-size:8.4pt;margin:0}
+#p1 .card h3{font-size:10pt;margin-bottom:1mm}
+#p1 .kpi b{font-size:14pt;white-space:nowrap}
+#p1 .kpi span{font-size:7.8pt}
+#p2 ul{font-size:9.4pt}
+#p2 li{margin-bottom:1.3mm}
+#p4 .card{padding:3.2mm 4mm}
+#p4 .card p{margin:0}
+#p4 .card h3{font-size:9.6pt;margin-bottom:1mm}
+#p4 h2{font-size:15pt}
+#p4 .grid2{gap:2.6mm}
+</style>
+</head><body class="et-modern-exclude">
+
+<!-- PAGE 1 — sources : /pole-amont-en, /amont/eor-en, /amont/activites-en, /amont/services-ep-en (October 2026) -->
+<div class="pg dark" id="p1">
+  <div class="k">Technical sheet — Upstream | October 2026 | Company in formation</div>
+  <h1>Exploration &amp; Production: <span class="gold">EOR &amp; oilfield services</span></h1>
+  <p class="lead">Every field still has barrels to give. Enhanced oil recovery on mature fields, the revival of marginal blocks and an integrated oilfield-services (OFS) task force: we go and get them.</p>
+  <hr class="rule">
+  <div class="grid3" style="grid-template-columns:1fr 1fr 1fr 1fr">
+    <div class="card kpi"><b>+8–17%</b><span>Additional OOIP targeted (EOR)</span></div>
+    <div class="card kpi"><b>8 services</b><span>Integrated OFS, under a single contract</span></div>
+    <div class="card kpi"><b>4 materials</b><span>Chadian, for a sovereign EOR chemistry</span></div>
+    <div class="card kpi"><b>1 contact</b><span>Six phases, one point of contact</span></div>
+  </div>
+  <h2 style="margin-top:6mm">The EOR approach: data first</h2>
+  <ul>
+    <li><b>Screening:</b> the right EOR is chosen in the data, not in the catalogue. Every method has its application window — crude gravity, viscosity, depth, temperature, permeability; the reservoir study, then the pilot, are what decide.</li>
+    <li><b>Sovereign chemistry:</b> natron, gum arabic, cotton cellulose and neem — four Chadian materials qualified for the reservoir: less hard currency leaving the country, a Chadian agricultural supply chain that gets paid, and know-how that stays.</li>
+    <li><b>Pilot-based method:</b> screening, laboratory, a pilot on 3 to 5 wells of a partner mature field, payment tied to the verified additional barrel above an agreed decline baseline, then extension. First pilot targeted within 2 to 4 years; within that period, phase 1 (years 1-2 after access to a field) includes the pilot.</li>
+    <li><b>Target fields:</b> the declining mature fields and marginal blocks of the Doba and Bongor basins, subject to agreement with the petroleum rights holder and the State.</li>
+  </ul>
+  <h2 style="margin-top:4mm">Eight integrated OFS services</h2>
+  <div class="grid2">
+    <div class="card"><h3>Well interventions</h3><p>Twelve lines, from wireline to P&amp;A: diagnose, intervene, secure, bring back online — the whole well cycle.</p></div>
+    <div class="card"><h3>Production operations</h3><p>Well integrity, production chemistry, treatment and reinjection of produced water, shutdowns &amp; maintenance — the field’s operations, held daily.</p></div>
+    <div class="card"><h3>Sites &amp; logistics</h3><p>Civil works for sites and all-weather wellpads, landlocked logistics and specialised fleet — “the right tank, at the right well, at the right time”.</p></div>
+    <div class="card"><h3>Studies &amp; data</h3><p>Re-interpretation of public data, targeted seismic, reservoir modelling and digital twin: diagnose before committing a single piece of heavy equipment.</p></div>
+  </div>
+  <div class="foot"><span>EnerChad S.A. — Radisson Blu, office 23, Sabangali district, Cité du 1er Décembre, BP 6060, N’Djamena, Chad</span><span>p. 1/4</span></div>
+</div>
+
+<!-- PAGE 2 — sources : /amont/services-ep-en, /amont/activites-en, /pole-amont-en -->
+<div class="pg" id="p2">
+  <div class="k">Technical sheet — Upstream | EnerTchad S.A.</div>
+  <h2 style="margin-top:4mm">Contracting with EnerTchad</h2>
+  <p class="lead" style="font-size:10.5pt">Three contract models, one non-negotiable HSE-Q foundation.</p>
+  <hr class="rule">
+  <ul>
+    <li><b>Per-job or framework services:</b> one intervention, one work order, one price for one-off needs and well emergencies; or rates and SLAs agreed for the year, with mobilisation on demand — wireline, workover, maintenance, logistics.</li>
+    <li><b>Study &amp; pilot paid per additional barrel:</b> data access under NDA, process screening in your reservoir data, then a pilot on 3 to 5 wells. Payment tied to the verified additional barrel: above an agreed decline baseline, under joint measurement.</li>
+    <li><b>Consortium or equity stake:</b> local set-up with operators, oilfield-services companies and the academy for tenders and multi-well campaigns; a minority interest when the study demonstrates the potential. Any assignment of interests requires the prior authorisation of the Minister in charge of Hydrocarbons (art. 21, Law No. 006/PR/2007).</li>
+  </ul>
+  <h2 style="margin-top:5mm">The HSE-Q foundation</h2>
+  <ul>
+    <li><b>HSE-Q:</b> systematic work permits, LOTO lockout, stop-work authority for every worker, pre-task risk analyses; well barriers and kick control, IWCF/IADC certification targeted for all personnel on pressurised operations. Zero accidents: the HSE objective, from day one.</li>
+    <li><b>Local content:</b> 80% local content targeted — priority to Chadian companies and talent, inputs sourced in-country whenever possible, skills transfer through Tchaditude.</li>
+    <li><b>Standards &amp; reporting:</b> ISO 9001 · 14001 · 45001 approach targeted, HSE reporting shared with the client; TRIR, LTIF and Tier 1 and Tier 2 process safety events published from the first worksite, using IOGP definitions.</li>
+  </ul>
+  <div class="note" style="margin-top:5mm"><b>Start the conversation.</b> E&amp;P operator, block holder or technical partner: write to contact@enertchad.com (subject “E&amp;P operator”) — study, EOR pilot or OFS intervention. Online resources: /pole-amont-en, /amont/eor-en, /amont/services-ep-en, /amont/titulaire-droits-petroliers-en, the integrated service configurator and the additional-barrel calculator (in French).</div>
+  <h2 style="margin-top:5mm;font-size:13pt">Sourced reference points</h2>
+  <ul style="font-size:9pt">
+    <li><b>Chad’s proven reserves:</b> 1.5&nbsp;bn bbl (2018, trade.gov).</li>
+    <li><b>National production:</b> 55.48 million barrels of crude in 2023, of which 48.15 million exported (Chad EITI Report 2023).</li>
+    <li><b>Doba crude:</b> 20.5° API (2004 assay, Oil &amp; Gas Journal); water cut of about 86% in 2011 (Esso).</li>
+    <li><b>Methane &amp; flaring:</b> EnerTchad aims to endorse the World Bank’s Zero Routine Flaring by 2030 initiative and to report its methane emissions under the OGMP 2.0 framework from its first operations.</li>
+  </ul>
+  <p style="margin-top:3mm;font-size:9pt;color:#6B7688"><b>Company status.</b> EnerTchad S.A. is in formation. Petroleum titles held: none to date; no asset in operation to date. The capabilities described are targets.</p>
+  <div class="foot"><span>contact@enertchad.com · +235 30 16 26 26 · enertchad.com — Indicative document, not contractual.</span><span>p. 2/4</span></div>
+</div>
+
+<!-- PAGE 3 — source : /amont/services-ep-en, /amont/eor-en -->
+<div class="pg">
+  <div class="k">Technical sheet — Upstream | Annex · The extended E&amp;P offer</div>
+  <h2 style="margin-top:4mm">The extended E&amp;P offer</h2>
+  <p class="lead" style="font-size:10.5pt">Four specialised lines that complete the oilfield-services catalogue — from the laboratory to the control room — and five pre-assembled packs, one per field phase. Details: enertchad.com/amont/services-ep-en</p>
+  <hr class="rule">
+  <div class="grid2">
+    <div class="card"><h3>Geosciences &amp; laboratory</h3><p>Coring &amp; petrophysics, PVT and fluid analyses in Chad (target), reservoir modelling with P10/P50/P90 uncertainties, a phased Field Development Plan (FDP) and a 1P/2P/3P reserves file ready for certification — a marginal-field FDP in 6 to 10 weeks (target).</p></div>
+    <div class="card"><h3>Advanced interventions</h3><p>Sand control &amp; gravel pack for unconsolidated sandstones, extended well testing (multi-rate tests, PLT), NDT inspections (ultrasonics, magnetic-particle, radiography), downhole diagnostics by memory slickline.</p></div>
+    <div class="card"><h3>The digital field</h3><p>24/7 monitoring from a control centre in N’Djamena (target), SCADA &amp; hybrid gas-solar telemetry, digital twin and production allocation, operator reporting &amp; data room.</p></div>
+    <div class="card"><h3>Packs by field phase</h3><p>Five pre-assembled scopes, at target stage: EnerScope (explore &amp; de-risk) · EnerBuild (develop) · EnerRun (produce &amp; optimise) · EnerRevive (mature field) · EnerClose (P&amp;A). Each pack opens the configurator pre-set.</p></div>
+  </div>
+  <h2 style="margin-top:6mm">How these capabilities fit together</h2>
+  <ul>
+    <li><b>A single entry point:</b> start from your field phase (five packs), a family of services (eight integrated services) or a specific intervention (the catalogue line by line).</li>
+    <li><b>Immediate pricing:</b> the service configurator — profile, volumes, domains: an indicative envelope recalculated live, a shareable brief.</li>
+    <li><b>A dated roadmap:</b> milestones counted from access to a field — phase 1 (years 1-2) validation &amp; pilots, phase 2 (years 2-4) ramp-up, phase 3 (years 4-7) integration &amp; scale.</li>
+  </ul>
+  <div class="foot"><span>EnerTchad S.A. — company in formation — Indicative document, not contractual.</span><span>p. 3/4</span></div>
+</div>
+
+<!-- PAGE 4 — source : /pole-amont-en#expertises -->
+<div class="pg" id="p4">
+  <div class="k">Technical sheet — Upstream | Annex · The nine domains of expertise</div>
+  <h2 style="margin-top:4mm">Nine domains, from prospect to barrel</h2>
+  <p class="lead" style="font-size:10.5pt">The hub’s competency map, with artificial lift as the flagship expertise. Expertise targeted by a company in formation: built with Tchaditude, contracted through the oilfield services. Interactive detail: enertchad.com/pole-amont-en#expertises</p>
+  <hr class="rule">
+  <div class="card" style="border-color:#E8C36A;background:#FBF6E8;margin-bottom:4mm"><h3>★ Artificial Lift — flagship expertise</h3><p style="font-size:9pt">ESP (electrical submersible pumps) · Gas lift · PCP (progressing cavity pumps) · Rod pump · Lift system selection · Equipment surveillance · Rate optimisation · Performance analysis</p></div>
+  <div class="grid2" style="gap:3mm">
+    <div class="card"><h3>Exploration</h3><p style="font-size:8.6pt">Geology · Geophysics · 2D / 3D seismic acquisition · Seismic interpretation · Prospect evaluation · Resource estimation · Basin studies · Reserves management</p></div>
+    <div class="card"><h3>Drilling &amp; completion</h3><p style="font-size:8.6pt">Well design · Exploration drilling · Development drilling · Directional drilling · Geosteering · Cementing · Well completion · Workover</p></div>
+    <div class="card"><h3>Field development</h3><p style="font-size:8.6pt">Development studies · Field planning · Facilities construction · First oil &amp; start-up · Petroleum project management · Infrastructure development</p></div>
+    <div class="card"><h3>Production</h3><p style="font-size:8.6pt">Field operations · Well operations · Production management · Performance monitoring · Reservoir management · Production optimisation · Production allocation</p></div>
+    <div class="card"><h3>Production engineering</h3><p style="font-size:8.6pt">Production engineering · Well performance · Well testing · Nodal analysis · Production surveillance · Flow assurance · Debottlenecking · Asset optimisation</p></div>
+    <div class="card"><h3>Maintenance &amp; integrity</h3><p style="font-size:8.6pt">Preventive maintenance · Corrective maintenance · Asset integrity · Equipment inspection · Facilities reliability · Shutdown management · Corrosion &amp; inspection</p></div>
+    <div class="card"><h3>Exploration &amp; Production HSE</h3><p style="font-size:8.6pt">Occupational health · Operational safety · Risk management · Environmental protection · Waste management · Emergency plans · Regulatory compliance</p></div>
+    <div class="card"><h3>Digitalisation &amp; innovation</h3><p style="font-size:8.6pt">Oilfield digitalisation · Monitoring centre · Oilfield IoT · Data analytics · Artificial intelligence · Predictive maintenance · Digital twins</p></div>
+  </div>
+  <p style="margin-top:4mm;font-size:8.5pt;color:#6B7688">The nine domains and their 66 competencies are detailed on the /pole-amont-en hub, with links to the method pages.</p>
+  <div class="foot"><span>contact@enertchad.com · +235 30 16 26 26 · enertchad.com — Indicative document, not contractual.</span><span>p. 4/4</span></div>
+</div>
+
+</body></html>
