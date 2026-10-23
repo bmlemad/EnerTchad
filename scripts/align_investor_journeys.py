@@ -25,12 +25,14 @@ def transform(text):
                              '/contact-en?profil=invest' if en else '/contact?profil=invest', href[1])
         anchor = anchor.replace(href[1], destination, 1)
         phrases = {
-            'Investir': 'Contact investisseurs',
-            'Invest': 'Investor contact',
-            'Subscribe to the capital': 'Contact investor relations',
-            'Subscribe': 'Investor contact',
-            'Souscrire au capital': 'Contacter l’équipe investisseurs',
-            'Souscrire': 'Contact investisseurs',
+            # Lot 19 (décision DG) : aucune souscription ouverte — le bouton du menu
+            # invite à manifester son intérêt, vers le même formulaire.
+            'Investir': 'Manifester son intérêt',
+            'Invest': 'Register interest',
+            'Subscribe to the capital': 'Register interest',
+            'Subscribe': 'Register interest',
+            'Souscrire au capital': 'Manifester son intérêt',
+            'Souscrire': 'Manifester son intérêt',
             'Passer à l’acte': 'Échanger avec l’équipe',
             'Take action': 'Speak with the team',
             'De 100 M à 10 Md FCFA, par paliers': 'Statut, conditions et prochaines étapes',
@@ -60,7 +62,7 @@ def main():
         old = path.read_text(encoding='utf-8')
         new = old.replace('/investisseurs${suffix}#souscrire', '/contact${suffix}?profil=invest')
         new = new.replace("/investisseurs${en ? '-en' : ''}#souscrire", "/contact${en ? '-en' : ''}?profil=invest")
-        new = new.replace("en ? 'Invest' : 'Investir'", "en ? 'Investor contact' : 'Contact investisseurs'")
+        new = new.replace("en ? 'Invest' : 'Investir'", "en ? 'Register interest' : 'Manifester son intérêt'")
         if new != old:
             path.write_text(new, encoding='utf-8')
     print(f'Investor enquiry journeys aligned: {count} source pages and both header templates')

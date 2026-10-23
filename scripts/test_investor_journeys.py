@@ -10,6 +10,7 @@ class InvestorJourneyTests(unittest.TestCase):
         self.assertEqual(output.count('/contact?profil=invest'), 2)
         self.assertNotIn('#souscrire', output)
         self.assertIn('Statut, conditions et prochaines étapes', output)
+        self.assertEqual(output.count('>Manifester son intérêt<'), 2)
         self.assertEqual(output, transform(output))
 
     def test_same_page_subscription_action(self):
@@ -20,7 +21,7 @@ class InvestorJourneyTests(unittest.TestCase):
         text = '<html lang="en"><a href="https://enertchad.com/investisseurs-en#souscrire">Subscribe to the capital</a></html>'
         output = transform(text)
         self.assertIn('https://enertchad.com/contact-en?profil=invest', output)
-        self.assertIn('Contact investor relations', output)
+        self.assertIn('Register interest', output)
 
     def test_informational_links_and_other_languages_are_preserved(self):
         for text in ['<html lang="ar"><a href="/investisseurs#souscrire">Invest</a></html>', '<html lang="fr"><a href="/investisseurs#souscrire">Participation au capital</a><a href="/projets">Projets</a></html>']:

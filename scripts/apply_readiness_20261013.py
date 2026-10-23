@@ -235,10 +235,10 @@ def transform(text, name):
     # Match labels to contact outcomes; preserve the legacy subscription section URL.
     if en:
         text = text.replace('href="/investisseurs-en#souscrire"', 'href="/contact-en?profil=invest"')
-        text = text.replace('>Subscribe to the capital<', '>Contact investor relations<').replace('>Invest</a>', '>Investor contact</a>')
+        text = text.replace('>Subscribe to the capital<', '>Register interest<').replace('>Invest</a>', '>Register interest</a>')
     else:
         text = text.replace('href="/investisseurs#souscrire"', 'href="/contact?profil=invest"')
-        text = text.replace('>Souscrire au capital<', '>Contacter l’équipe investisseurs<').replace('>Investir</a>', '>Contact investisseurs</a>')
+        text = text.replace('>Souscrire au capital<', '>Manifester son intérêt<').replace('>Investir</a>', '>Manifester son intérêt</a>')
     text = text.replace('<link rel="stylesheet" href="/assets/chrome/readiness-20261013.css">', '')
     text = re.sub(r'<style id="et-readiness-style">.*?</style>\n?', '', text, flags=re.S)
     if name in ('index.html', 'index-en.html'):

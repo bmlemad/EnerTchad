@@ -67,7 +67,7 @@ FR = [
         ('Agenda investisseur', 'Prochains rendez-vous', '/investisseurs#agenda'),
         ('Gouvernance', 'Société anonyme OHADA', '/gouvernance'),
         ('Partenariats', 'GCIC · OT, État, académique visés', '/tchaditude/#partenariats'),
-    ], ('Échanger avec l’équipe', 'Contacter l’équipe investisseurs', 'Statut, conditions et prochaines étapes', '/contact?profil=invest#ctForm')),
+    ], ('Échanger avec l’équipe', 'Manifester son intérêt', 'Statut, conditions et prochaines étapes', '/contact?profil=invest#ctForm')),
     ('Actualités', 'Communiqués, enquêtes techniques et interviews métier, datés.', '/carnets', [
         ('Carnets', 'Articles et interviews', '/carnets'),
         ('Communiqués officiels', 'Annonces datées', '/communiques'),
@@ -120,7 +120,7 @@ EN = [
         ('Investor calendar', 'Upcoming events', '/investisseurs#agenda'),
         ('Governance', 'OHADA public limited company', '/gouvernance'),
         ('Partnerships', 'GCIC · OT, State, academia targeted', '/tchaditude/#partenariats'),
-    ], ('Speak with the team', 'Contact investor relations', 'Status, conditions and next steps', '/contact-en?profil=invest#ctForm')),
+    ], ('Speak with the team', 'Register interest', 'Status, conditions and next steps', '/contact-en?profil=invest#ctForm')),
     ('News', 'Press releases, technical features and job interviews, all dated.', '/carnets', [
         ('Journal', 'Articles and interviews', '/carnets'),
         ('Press releases', 'Dated announcements', '/communiques'),
@@ -137,7 +137,7 @@ EN = [
 ]
 UI = {
     'fr': dict(all='Vue d’ensemble', util=[('Clients', '/boutique/clients'), ('Fournisseurs', '/achats'), ('Contact', '/contact'), ('Carrières', '/carrieres')], search='Rechercher',
-               invest='Investir', aria='Navigation principale', foot_desc='Société pétrolière intégrée à capitaux tchadiens, de la roche-mère à la pompe.',
+               invest='Manifester son intérêt', aria='Navigation principale', foot_desc='Société pétrolière intégrée à capitaux tchadiens, de la roche-mère à la pompe.',
                h_sections='Rubriques', h_access='Accès directs', h_info='Informations', top='Haut de page',
                access=[('Devenir client', '/boutique/clients'), ('Fournisseurs', '/achats'), ('Espace presse', '/presse'),
                        ('Questions fréquentes', '/faq'), ('Contact', '/contact'), ('Plan du site', '/plan-du-site')],
@@ -146,7 +146,7 @@ UI = {
                legal=[('Mentions légales', '/mentions-legales'), ('Confidentialité', '/confidentialite'), ('Cookies', '/cookies'), ('Signalement éthique', '/ethique#alerte')],
                motto='De la roche-mère à la pompe.'),
     'en': dict(all='Overview', util=[('Customers', '/boutique/clients'), ('Suppliers', '/achats'), ('Contact', '/contact'), ('Careers', '/carrieres')], search='Search',
-               invest='Invest', aria='Main navigation', foot_desc='An integrated oil company with Chadian capital, from source rock to the pump.',
+               invest='Register interest', aria='Main navigation', foot_desc='An integrated oil company with Chadian capital, from source rock to the pump.',
                h_sections='Sections', h_access='Quick access', h_info='Information', top='Back to top',
                access=[('Become a client', '/boutique/clients'), ('Suppliers', '/achats'), ('Press room', '/presse'),
                        ('FAQ', '/faq'), ('Contact', '/contact'), ('Site map', '/plan-du-site')],

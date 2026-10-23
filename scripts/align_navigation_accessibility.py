@@ -31,7 +31,7 @@ def main():
     native=ROOT/'lib/strategic.jsx'
     old=native.read_text()
     pattern=r"\['mailto:[^']+', en \? 'Investor contact' : 'Contact investisseur', true\]"
-    replacement="[`/contact${suffix}?profil=invest#ctForm`, en ? 'Investor contact' : 'Contact investisseur', true]"
+    replacement="[`/contact${suffix}?profil=invest#ctForm`, en ? 'Register interest' : 'Manifester son intérêt', true]"
     new,count=re.subn(pattern,lambda _:replacement,old)
     if not count and replacement not in old:raise ValueError('Native investor navigation changed')
     if old!=new:native.write_text(new)
