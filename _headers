@@ -1,7 +1,9 @@
-# En-tetes Netlify -- ACTIFS : Netlify (enertchad.com, sous-domaine enertchad.netlify.app) est l hebergement
-# principal depuis le 1er octobre 2026 (Vercel suspendu). Les regles de securite
-# restent alignees sur le bloc "headers" de vercel.json ; toute modification se fait
-# dans les deux fichiers.
+# En-tetes du site. Hebergement reel (constat du 23 octobre 2026) : enertchad.com est servi par OVH
+# (Apache) ; scripts/ovh/package.py convertit ce fichier en .htaccess (voir docs/migration-ovh.md).
+# enertchad.netlify.app (Netlify) ne fait plus que rediriger (301) vers https://enertchad.com/ ;
+# les attributs data-netlify des formulaires y sont inoperants : les envois vont a contact-handler.php.
+# Les regles de securite restent alignees sur le bloc "headers" de vercel.json ; toute modification
+# se fait dans les deux fichiers.
 
 # CSP (lot 20) : l'en-tete fixe les hotes autorises pour toutes les reponses. Il admet les
 # scripts en ligne ('unsafe-inline') car leurs empreintes changent d'une page a l'autre ; le
