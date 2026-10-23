@@ -3,6 +3,11 @@
 # restent alignees sur le bloc "headers" de vercel.json ; toute modification se fait
 # dans les deux fichiers.
 
+# CSP (lot 20) : l'en-tete fixe les hotes autorises pour toutes les reponses. Il admet les
+# scripts en ligne ('unsafe-inline') car leurs empreintes changent d'une page a l'autre ; le
+# build (scripts/next/harden.mjs) pose dans chaque page une politique <meta> limitee aux
+# empreintes SHA-256 de SES scripts. Le navigateur applique les deux : seul le script
+# autorise par l'en-tete ET par la page s'execute.
 /*
   X-Frame-Options: SAMEORIGIN
   X-Content-Type-Options: nosniff
@@ -12,7 +17,7 @@
   Cross-Origin-Resource-Policy: same-origin
   X-Permitted-Cross-Domain-Policies: none
   Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
-  Content-Security-Policy: object-src 'none'; base-uri 'self'; frame-ancestors 'self'; form-action 'self'; upgrade-insecure-requests
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://*.googletagmanager.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com; font-src 'self'; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; manifest-src 'self'; worker-src 'self'; frame-src 'self'; media-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'self'; form-action 'self'; upgrade-insecure-requests
 /assets/*
   Cache-Control: public, max-age=31536000, immutable
 /assets/chrome/*
