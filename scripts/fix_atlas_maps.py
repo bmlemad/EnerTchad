@@ -74,11 +74,11 @@ T = {
         'b': {
             'aria': 'Carte de l’oléoduc d’export Doba–Kribi (TOTCO–COTCO), 1 081 km : champs de Doba, stations de pompage de Komé, Dompta et Belabo, station de réduction de pression de Kribi et terminal flottant au large',
             'tchad': 'TCHAD', 'cameroun': 'CAMEROUN', 'border': 'Frontière',
-            'kmT': '~170 km au Tchad', 'kmC': '~900 km au Cameroun',
+            'kmT': 'environ 177\u00a0km au Tchad', 'kmC': '903 à 904\u00a0km au Cameroun',  # COTCO : 1 081 km dont 903–904 au Cameroun
             'doba': 'Doba · Komé', 'doba_s': 'Champs & collecte', 'ps': 'Station de pompage',
             'kribi': 'Kribi', 'kribi_s1': 'Station de réduction de pression', 'kribi_s2': 'FSO Komé–Kribi 1 · 12 km au large',
             'spec_title': 'Doba → Kribi',
-            'spec': [('Longueur', '1 081 km'), ('Tronçon Tchad', '~170 km'), ('Diamètre', '30" (762 mm)'),
+            'spec': [('Longueur', '1 081 km'), ('Tronçon Tchad', 'environ 177\u00a0km'), ('Tronçon Cameroun', '903 à 904\u00a0km (COTCO)'), ('Diamètre', '30" (762 mm)'),
                      ('Capacité', '~225 kb/j'), ('Mise en service', '2003'), ('Exploitants', 'TOTCO · COTCO')],
             'key': [('Tchad', 'dot-t'), ('Cameroun', 'dot-c'), ('Oléoduc', 'line'), ('Station', 'node')],
             'region': 'Carte de l’oléoduc, défilement horizontal',
@@ -130,11 +130,11 @@ T = {
         'b': {
             'aria': 'Map of the Doba–Kribi export pipeline (TOTCO–COTCO), 1,081 km: Doba fields, Komé, Dompta and Belabo pumping stations, Kribi pressure-reduction station and offshore floating terminal',
             'tchad': 'CHAD', 'cameroun': 'CAMEROON', 'border': 'Border',
-            'kmT': '~170 km in Chad', 'kmC': '~900 km in Cameroon',
+            'kmT': 'about 177\u00a0km in Chad', 'kmC': '903–904\u00a0km in Cameroon',  # COTCO: 1,081 km of which 903–904 in Cameroon
             'doba': 'Doba · Komé', 'doba_s': 'Fields & gathering', 'ps': 'Pumping station',
             'kribi': 'Kribi', 'kribi_s1': 'Pressure-reduction station', 'kribi_s2': 'Komé–Kribi 1 FSO · 12 km offshore',
             'spec_title': 'Doba → Kribi',
-            'spec': [('Length', '1,081 km'), ('Chad section', '~170 km'), ('Diameter', '30" (762 mm)'),
+            'spec': [('Length', '1,081 km'), ('Chad section', 'about 177\u00a0km'), ('Cameroon section', '903–904\u00a0km (COTCO)'), ('Diameter', '30" (762 mm)'),
                      ('Capacity', '~225 kb/d'), ('Commissioned', '2003'), ('Operators', 'TOTCO · COTCO')],
             'key': [('Chad', 'dot-t'), ('Cameroon', 'dot-c'), ('Pipeline', 'line'), ('Station', 'node')],
             'region': 'Pipeline map, horizontal scrolling',
