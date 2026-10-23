@@ -272,6 +272,7 @@ https://enertchad.netlify.app/* https://enertchad.com/:splat 301!
 /solutions-en /nos-activites-en#besoins 308!
 /presse /communiques#presse 308!
 /presse-en /communiques-en#presse 308!
+/Dossier_Investisseur_EnerTchad.pptx /Fiche_Investisseur_EnerTchad.pdf 301!
 /boutique /aval/boutique.html 200
 /boutique/en/clients /clients-en.html 200
 /boutique/clients /clients.html 200
