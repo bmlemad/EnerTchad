@@ -22,13 +22,15 @@
       "id": "data-book",
       "path": "/Data_Book_EnerTchad.xlsx",
       "format": "XLSX",
-      "bytes": 11847,
+      "bytes": 12679,
       "language": "multi",
       "category": "investors",
       "status": "published",
       "role_fr": "Données publiées et sourcées",
       "role_en": "Published sourced data",
-      "git_blob_sha": "b47c621268c8976bd36dcea68d51e0d7983c2d1c"
+      "git_blob_sha": "a5a5a241ead84404427519c75a7dfde5211bdd29",
+      "document_date": "2026-10",
+      "date_source": "Onglet Lisez-moi"
     },
     {
       "id": "progress-2026",
@@ -138,43 +140,45 @@
       "id": "brochure-fr",
       "path": "/Brochure_EnerTchad.pdf",
       "format": "PDF",
-      "bytes": 188548,
+      "bytes": 215641,
       "language": "fr",
       "category": "corporate",
       "status": "published",
       "role_fr": "Brochure institutionnelle",
       "role_en": "Corporate brochure",
-      "git_blob_sha": "3af1eb849683f2daa52ecf3ac6d1117a28418402",
+      "git_blob_sha": "c70d5b507976b727784621e1258b9318903fa508",
       "document_date": "2026-09",
-      "document_updated": "2026-10",
-      "date_source": "PDF page 1"
+      "date_source": "PDF page 1",
+      "document_updated": "2026-10"
     },
     {
       "id": "brochure-en",
       "path": "/Brochure_EnerTchad_EN.pdf",
       "format": "PDF",
-      "bytes": 189715,
+      "bytes": 216962,
       "language": "en",
       "category": "corporate",
       "status": "published",
       "role_fr": "Brochure institutionnelle anglaise",
       "role_en": "English corporate brochure",
-      "git_blob_sha": "7af4e5657387e9b58114040d7c5bbe4a7da8f656",
+      "git_blob_sha": "bf989b48bbae3e63760733ac17ac3a7ae345760c",
       "document_date": "2026-09",
-      "document_updated": "2026-10",
-      "date_source": "PDF page 1"
+      "date_source": "PDF page 1",
+      "document_updated": "2026-10"
     },
     {
       "id": "factsheet-ar",
       "path": "/Fiche_EnerTchad_AR.pdf",
       "format": "PDF",
-      "bytes": 225063,
+      "bytes": 363997,
       "language": "ar",
       "category": "corporate",
       "status": "published",
       "role_fr": "Fiche institutionnelle arabe",
       "role_en": "Arabic corporate factsheet",
-      "git_blob_sha": "6411c55500b35d90c5c35215a660c7d0179ec4d5"
+      "git_blob_sha": "a4c591a2ec0e7fc4c82ffedd422515f9c605eb96",
+      "document_date": "2026-10",
+      "date_source": "PDF page 1"
     }
   ],
   "integrity": "git_blob_sha"
