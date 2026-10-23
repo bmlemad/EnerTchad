@@ -1,8 +1,9 @@
 """Verify delivered quick-navigation labels and shared responsive rules boundaries."""
 import re
 from pathlib import Path
-from modernise_site import VERSION as MODERN_VERSION
 root=Path('out');count=0
+import json
+VERSIONS=json.loads(Path('.generated/fingerprints.json').read_text())
 assert 'et-mobile-quick-nav:start' in (root/'assets/chrome/premium-chrome.css').read_text(), 'Responsive rules missing from shared stylesheet'
 for page in root.rglob('*.html'):
  text=page.read_text()
@@ -10,7 +11,8 @@ for page in root.rglob('*.html'):
   links=re.findall(r'<a\b[^>]*>.*?</a>',bar,re.S)
   modern = 'data-et-modern="industrial"' in text
   assert len(links)==(3 if modern else 5),str(page)+': wrong quick navigation count'
-  assert (f'premium-chrome.css?b={MODERN_VERSION}' if modern else 'premium-chrome.css?b=2026101601') in text,str(page)+': shared stylesheet version missing'
+  # Lot 26 : version de cache = empreinte du contenu publie (scripts/next/fingerprint.mjs).
+  assert f'premium-chrome.css?v={VERSIONS["premium-chrome.css"]}' in text,str(page)+': shared stylesheet version missing'
   assert 'id="et-mobile-quick-nav"' not in text,str(page)+': inline rules remain'
   assert '/assets/chrome/mobile-quick-nav.css' not in text,str(page)+': extra stylesheet request'
   for anchor in links:

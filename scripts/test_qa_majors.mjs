@@ -1,9 +1,14 @@
-import test from 'node:test';
+import test, {after} from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import vm from 'node:vm';
 import {execFileSync} from 'node:child_process';
+import {snapshotSources,recordTransformed,restoreSources} from './next/sources.mjs';
+// Lot 26 (m16) : la transformation est executee sur l'arbre, puis les sources sont restaurees.
+const pristine=await snapshotSources();
 execFileSync('python3',['scripts/apply_readiness_20261013.py']);
+await recordTransformed(pristine,{copies:false});
+after(()=>restoreSources());
 import {moderniseClients} from './next/clients.mjs';
 const read=p=>readFileSync(p,'utf8');
 test('priority search is short and bilingual without truncating the searchable index',()=>{

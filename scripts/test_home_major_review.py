@@ -8,7 +8,14 @@ from apply_home_major_review import ROOT, home, progress, plain
 class HomepageReview(unittest.TestCase):
  @classmethod
  def setUpClass(cls):
+  # Lot 26 (m16) : la transformation s'execute sur l'arbre ; les sources sont restaurees apres.
+  listed=subprocess.run(['git','ls-files','-z'],cwd=ROOT,capture_output=True,text=True).stdout.split('\0')
+  cls.pristine={ROOT/p:(ROOT/p).read_bytes() for p in listed if p.endswith(('.html','.css','.js','.jsx','.json')) and (ROOT/p).is_file()}
   subprocess.run([sys.executable,str(ROOT/"scripts/apply_readiness_20261013.py")],cwd=ROOT,check=True,stdout=subprocess.DEVNULL)
+ @classmethod
+ def tearDownClass(cls):
+  for path,body in cls.pristine.items():
+   if path.read_bytes()!=body: path.write_bytes(body)
  def test_bilingual_structure_and_idempotence(self):
   for en in (False,True):
    with self.subTest(en=en):

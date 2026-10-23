@@ -16,7 +16,9 @@ assert 'aria-labelledby="contact-form-title"' in form
 assert 'tabindex="-1"' in form
 assert 'class="et-contact-inner"' in text
 assert 'padding-inline:24px' in text
-assert 'contact_profiles.js?b=2026101310' in text
+# Lot 26 : version de cache = empreinte du contenu publie (scripts/next/fingerprint.mjs).
+import json
+assert 'contact_profiles.js?v=' + json.loads(Path('.generated/fingerprints.json').read_text())['contact_profiles.js'] in text
 assert '/ar-contact?profil=invest#ctForm' in (root / 'ar-investisseurs.html').read_text(encoding='utf-8')
 assert count == 2, count
 print(f'Arabic readiness verified: named contact form, investor destination, {count} foreign-document labels')
