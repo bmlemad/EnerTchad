@@ -35,6 +35,18 @@ $field = static function (string $name, int $max): string {
     return mb_substr($value, 0, $max, 'UTF-8');
 };
 
+// Limite de débit : 5 envois par adresse IP et par 10 minutes (empreinte de l'adresse, jamais l'adresse en clair).
+$rateFile = sys_get_temp_dir() . '/enertchad-contact-' . hash('sha256', 'enertchad|' . ($_SERVER['REMOTE_ADDR'] ?? '')) . '.json';
+$now = time();
+$hits = is_file($rateFile) ? json_decode((string)@file_get_contents($rateFile), true) : [];
+$hits = array_values(array_filter(is_array($hits) ? $hits : [], static fn($t): bool => is_int($t) && $t > $now - 600));
+if (count($hits) >= 5) {
+    header('Retry-After: 600');
+    refuse(429);
+}
+$hits[] = $now;
+@file_put_contents($rateFile, json_encode($hits), LOCK_EX);
+
 $form = $field('form-name', 40);
 $lang = FORMS[$form] ?? null;
 if ($lang === null) {

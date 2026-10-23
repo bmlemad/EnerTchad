@@ -192,7 +192,8 @@ try{(function(){
   if(lang==='en'){a.href='/essentiel-en';a.textContent='90 seconds';a.setAttribute('aria-label','EnerTchad in 90 seconds');}
   else if(lang==='ar'){a.href='/ar';a.textContent='لمحة';a.setAttribute('aria-label','لمحة عن EnerTchad');}
   else{a.href='/essentiel';a.textContent='90 secondes';a.setAttribute('aria-label','EnerTchad en 90 secondes');}
-  var first=u.querySelector('a');u.insertBefore(a,first||null);
+
+  var links=u.querySelectorAll('a');u.insertBefore(a,links[2]||null);
 })()}catch(e){}
 
 
@@ -294,6 +295,28 @@ try{document.addEventListener('focusin',function(e){
     p=p.parentElement;
   }
 },true);}catch(e){}
+
+
+
+try{(function(){
+ var u=document.querySelector('.nx-util-in');if(!u||u.getAttribute('role')==='toolbar')return;
+ var lang=(document.documentElement.getAttribute('lang')||'fr').slice(0,2);
+ u.setAttribute('role','toolbar');
+ u.setAttribute('aria-label',lang==='en'?'Quick links':(lang==='ar'?'روابط سريعة':'Accès rapides'));
+ function items(){return [].filter.call(u.querySelectorAll('a[href]'),function(a){return a.getClientRects().length>0})}
+ var cur=null;
+ function set(t){var l=items();if(!l.length)return;if(l.indexOf(t)<0)t=(cur&&l.indexOf(cur)>-1)?cur:l[0];cur=t;
+  [].forEach.call(u.querySelectorAll('a[href]'),function(a){a.tabIndex=(a===t)?0:-1})}
+ set(null);
+ u.addEventListener('focusin',function(e){var a=e.target.closest?e.target.closest('a[href]'):null;if(a&&u.contains(a))set(a)});
+ u.addEventListener('keydown',function(e){
+  var l=items(),i=l.indexOf(document.activeElement);if(i<0)return;
+  var rtl=getComputedStyle(u).direction==='rtl',k=e.key,j=-1;
+  if(k==='ArrowRight')j=rtl?i-1:i+1;else if(k==='ArrowLeft')j=rtl?i+1:i-1;else if(k==='Home')j=0;else if(k==='End')j=l.length-1;else return;
+  e.preventDefault();j=(j+l.length)%l.length;set(l[j]);l[j].focus();
+ });
+ var t=null;window.addEventListener('resize',function(){clearTimeout(t);t=setTimeout(function(){set(cur)},150)});
+})()}catch(e){}
 /* et-mobile-focus:start */
 (function(factory){var api=factory();if(typeof module==='object'&&module.exports)module.exports=api;else api.bind(document);})(function(){
  function cycle(event,sheet,active){
