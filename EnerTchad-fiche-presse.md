@@ -18,9 +18,8 @@
 
 ## Capital (trajectoire visée)
 - Capital fondateur : 100 000 000 FCFA
-- Levée court terme visée : ~1 Md FCFA
-- Horizon à cinq ans visé : ~10 Md FCFA
-- Partenaire investissement : GCIC
+- Levées suivantes : par paliers datés (cible), montants non publiés
+- Conseil pressenti : GCIC
 
 ## Organisation
 EnerTchad est une **société unique** (pas un groupe, pas de filiales), organisée sur **quatre segments industriels** — Exploration & Production, Transport & stockage, Raffinage & distribution et Pétrochimie. Quatre capacités sont intégrées à chacun de ces pôles : GreenTech (durabilité), TchadiTech (technologies), Tchaditude (capital humain), EnerConseils (conseil).
@@ -36,7 +35,7 @@ Le logo officiel est un trèfle à quatre pétales dans un anneau d'or, sur fond
 - **Ors d'interface (site)** : #D9A84F · #E8C36A · #F0CE82
 
 ## Engagements
-Contenu local visé (priorité aux compétences et emplois tchadiens), démarche HSE-Q, arc E-S-G et conformité OHADA/IFRS, normes ISO et standards ITIE visés.
+Contenu local visé (priorité aux compétences et emplois tchadiens), démarche HSE-Q, arc E-S-G et conformité OHADA, comptabilité SYSCOHADA révisé, IFRS visé, normes ISO et standards ITIE visés.
 
 ---
-*EnerTchad S.A. · N'Djamena · Mise à jour : juillet 2026.*
+*EnerTchad S.A. · N'Djamena · Mise à jour : octobre 2026.*
