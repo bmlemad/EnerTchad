@@ -128,13 +128,15 @@
       "id": "technical-downstream",
       "path": "/Fiche_Technique_Aval_EnerTchad.pdf",
       "format": "PDF",
-      "bytes": 22144,
+      "bytes": 150681,
       "language": "fr",
       "category": "operations",
       "status": "published",
       "role_fr": "Fiche technique Raffinage & distribution",
       "role_en": "Refining & Distribution technical factsheet",
-      "git_blob_sha": "75bf24bb81fe1d5602ee71d6bb46a4aa0a8bb9eb"
+      "git_blob_sha": "2a20715939838e3fb20b910364c5d5995f744c61",
+      "document_date": "2026-10",
+      "date_source": "PDF page 1"
     },
     {
       "id": "brochure-fr",
