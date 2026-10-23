@@ -1,0 +1,126 @@
+<!doctype html><html lang="fr"><head>
+<meta name="robots" content="noindex,nofollow"><script id="et-light-def">try{var d=document.documentElement,p=location.pathname,j=/^\/journal-/.test(p),k=j?"et-jlight":"et-plight",v=localStorage.getItem(k);if(v!=="0")d.classList.add(k)}catch(e){document.documentElement.classList.add("et-plight")}</script><meta charset="utf-8"><title>EnerTchad — Fiche technique · Raffinage &amp; distribution</title>
+<style>
+@page{size:A4;margin:0}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',system-ui,sans-serif;color:#1A2330;line-height:1.55}
+.pg{width:210mm;height:296mm;page-break-after:always;position:relative;overflow:hidden;padding:18mm 16mm}
+.dark{background:linear-gradient(160deg,#0E1A2E 0%,#0B1422 55%,#070D18 100%);color:#F5F7FA}
+.gold{color:#E8C36A}.goldd{color:#8A6210}
+.k{font-family:Consolas,monospace;font-size:8.5pt;letter-spacing:.22em;text-transform:uppercase;color:#8A6210}
+.dark .k{color:#E8C36A}
+h1{font-size:30pt;line-height:1.15;font-weight:800;margin:6mm 0 4mm}
+h2{font-size:17pt;font-weight:800;margin:0 0 4mm}
+h3{font-size:11.5pt;font-weight:700;margin:0 0 1.5mm}
+p{font-size:10pt;margin:0 0 3mm}
+.lead{font-size:11.5pt;color:#3A4657}.dark .lead{color:rgba(245,247,250,.85)}
+.rule{height:2px;background:linear-gradient(90deg,#E8C36A,transparent);margin:5mm 0;border:0}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:5mm}
+.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:4mm}
+.card{border:1px solid #D8D2C2;border-radius:3mm;padding:5mm;background:#FBF9F3}
+.dark .card{border-color:rgba(232,195,106,.25);background:rgba(255,255,255,.05)}
+.kpi b{display:block;font-size:19pt;font-weight:800;color:#0B1422}
+.dark .kpi b{color:#fff}
+.kpi span{font-size:8.5pt;color:#6B7688}.dark .kpi span{color:rgba(245,247,250,.6)}
+.foot{position:absolute;bottom:10mm;left:16mm;right:16mm;font-size:8pt;color:#8A93A3;display:flex;justify-content:space-between;border-top:1px solid #E4DFD2;padding-top:2.5mm}
+.dark .foot{color:rgba(245,247,250,.5);border-top-color:rgba(255,255,255,.15)}
+.logo{display:inline-flex;align-items:center;gap:3mm;font-weight:800;font-size:14pt}
+.logo svg{width:9mm;height:9mm}
+table{width:100%;border-collapse:collapse;font-size:9.5pt}
+th{text-align:left;font-size:8pt;letter-spacing:.12em;text-transform:uppercase;color:#8A6210;border-bottom:1.5px solid #E8C36A;padding:2mm 2mm 1.5mm}
+td{padding:2.2mm 2mm;border-bottom:1px solid #EAE5D8;vertical-align:top}
+.note{border-right:1.2mm solid #E8C36A;background:#F6F2E8;border-radius:2mm;padding:4mm 5mm;font-size:9pt;color:#4A5568}
+.chain{display:flex;gap:3mm;align-items:stretch;margin:4mm 0}
+.chain .st{flex:1;border-radius:2.5mm;padding:4mm;color:#fff;font-size:9pt}
+.chain b{display:block;font-size:10.5pt;margin-bottom:1mm}
+ul{padding-right:0;padding-left:5mm;font-size:10pt;margin:0 0 3mm}
+li{margin-bottom:1.6mm}
+.badge{display:inline-block;border:1px solid rgba(232,195,106,.5);border-radius:99px;padding:1.2mm 4mm;font-size:8.5pt;letter-spacing:.14em;text-transform:uppercase}
+
+/* compaction fiche Raffinage & distribution */
+#p1 h1{font-size:24pt;margin:4mm 0 3mm}
+#p1 .lead{font-size:10.5pt}
+#p1 .rule{margin:3.5mm 0}
+#p1 ul{font-size:9.2pt}
+#p1 li{margin-bottom:1.3mm}
+#p1 h2{font-size:14pt;margin:5mm 0 2.5mm}
+#p1 .kpi{padding:3.2mm 4mm}
+#p1 .kpi b{font-size:15pt}
+#p1 .kpi span{font-size:7.8pt}
+#p1 .statut{margin-top:4mm;padding:3.5mm 4.5mm;font-size:8.8pt;line-height:1.5}
+#p1 .statut b{color:#E8C36A}
+#p1 .chain .st{font-size:8.4pt;padding:3.2mm 3.5mm}
+#p1 .chain b{font-size:10pt}
+#p2 h2{font-size:14pt;margin:0 0 2.5mm}
+#p2 .lead{font-size:9.8pt;margin-bottom:2.5mm}
+#p2 table{font-size:8.8pt}
+#p2 td{padding:1.7mm 2mm}
+#p2 .grid2{gap:3mm;margin-top:4mm}
+#p2 .card{padding:3.2mm 4mm}
+#p2 .card h3{font-size:9.8pt;margin-bottom:1mm}
+#p2 .card p{font-size:8.5pt;margin:0}
+#p2 .note{margin-top:4mm;font-size:8.6pt}
+.small{font-size:8.3pt;color:#6B7688;margin-top:2mm}
+</style>
+</head><body class="et-modern-exclude">
+
+<!-- PAGE 1 — sources : /aval, /aval/raffinage (octobre 2026) -->
+<div class="pg dark" id="p1">
+  <div class="k">Fiche technique — Raffinage &amp; distribution | Octobre 2026 | Société en constitution</div>
+  <h1>Raffinage &amp; distribution&nbsp;: <span class="gold">l’énergie, au plus près du citoyen</span></h1>
+  <p class="lead">Mini-raffineries modulaires, réseau de stations, prix ARSAT — le plein, partout au Tchad. Transformer localement, distribuer au plus juste prix, jusqu’aux zones que les circuits d’import actuels délaissent.</p>
+  <hr class="rule">
+  <div class="grid3" style="grid-template-columns:1fr 1fr 1fr 1fr">
+    <div class="card kpi"><b>12</b><span>Stations fixes Tchadium · cible réseau</span></div>
+    <div class="card kpi"><b>8</b><span>Localités stratégiques · implantation ciblée</span></div>
+    <div class="card kpi"><b>23/23</b><span>Provinces · couverture visée, prix ARSAT</span></div>
+    <div class="card kpi"><b>500–2&nbsp;000</b><span>b/j par train de mini-raffinerie · par paliers</span></div>
+  </div>
+  <div class="card statut"><b>Fait</b> — capital fondateur de 100 M FCFA réuni, 100&nbsp;% tchadien. <b>En cours</b> — immatriculation OHADA (RCCM / NIF). <b>Visé</b> — tout le reste de cette fiche&nbsp;: sites, capacités, délais et chiffres sont des cibles. Aucun actif en exploitation à ce jour.</div>
+  <h2>La chaîne, dans l’ordre du marché</h2>
+  <div class="chain">
+    <div class="st" style="background:#5A3E12"><b>Raffinage</b>Mini-raffinerie modulaire, procédés, contrôle qualité.</div>
+    <div class="st" style="background:#6E4C16"><b>Distribution</b>Dépôts, logistique produits, réseau national.</div>
+    <div class="st" style="background:#82591A"><b>Commercialisation</b>Prix ARSAT, segments, marques, négoce et approvisionnement.</div>
+    <div class="st" style="background:#96661E"><b>Consommateur final</b>Stations, Mobile Stations, boutique&nbsp;: là où le Tchadien fait le plein.</div>
+  </div>
+  <h2>La mini-raffinerie modulaire &amp; amovible</h2>
+  <ul>
+    <li><b>Trains standardisés&nbsp;:</b> de 500 à 2&nbsp;000 b/j, préfabriqués et montés sur skid, 100&nbsp;% en pièces catalogue&nbsp;; capacité ajoutée par modules, au rythme de la demande. Trains déployés par paliers&nbsp;; capacité cumulée fixée après l’étude de faisabilité.</li>
+    <li><b>Amovible et redéployable&nbsp;:</b> l’unité se transporte, se pose et se relève sans génie civil lourd, puis se déplace vers les blocs satellites et les marchés selon la demande.</li>
+    <li><b>Maintenance par échange de module&nbsp;:</b> remplacement d’un module visé en moins de 24&nbsp;h, puisé sur un stock catalogue mutualisé.</li>
+    <li><b>Un premier palier assumé simple&nbsp;:</b> distillation atmosphérique, ni craquage ni hydrotraitement — les produits qui exigent ces unités restent importés à ce stade. La frugalité porte sur l’architecture, pas sur les aciers critiques, anticorrosion pour le brut acide de Doba.</li>
+  </ul>
+  <div class="foot"><span>EnerTchad S.A. — Radisson Blu, bureau 23, Quartier Sabangali, Cité du 1er Décembre, BP 6060, N’Djamena, Tchad</span><span>p. 1/2</span></div>
+</div>
+
+<!-- PAGE 2 — sources : /aval/produits, /aval/distribution, /aval/reseau, /aval/commercialisation -->
+<div class="pg" id="p2">
+  <div class="k">Fiche technique — Raffinage &amp; distribution | EnerTchad S.A.</div>
+  <h2 style="margin-top:4mm">Spécifications visées, produit par produit</h2>
+  <p class="lead">Produits visés des mini-raffineries modulaires (en projet), contrôlés lot par lot par un organisme tiers indépendant et distribués au prix ARSAT.</p>
+  <table>
+    <thead><tr><th>Produit</th><th>Norme / grade visé</th><th>Spécification clé</th><th>Usage</th></tr></thead>
+    <tbody>
+      <tr><td>Diesel</td><td>EN 590</td><td>Cétane ≥ 51 · soufre ≤ 50 ppm</td><td>Transport, groupes électrogènes</td></tr>
+      <tr><td>Essence SP95</td><td>EN 228</td><td>Indice d’octane RON 95</td><td>Véhicules légers &amp; deux-roues</td></tr>
+      <tr><td>Pétrole lampant</td><td>Qualité éclairage</td><td>Faible teneur en soufre</td><td>Éclairage &amp; usages domestiques</td></tr>
+      <tr><td>Jet A-1</td><td>DEF STAN 91-091</td><td>Point de congélation ≤ −47&nbsp;°C</td><td>Aviation</td></tr>
+      <tr><td>GPL</td><td>Spéc. commerciales</td><td>Mélange butane/propane homologué</td><td>Gaz de cuisson domestique &amp; industriel</td></tr>
+      <tr><td>Bitume</td><td>60/70 · 80/100</td><td>Grades de pénétration routiers</td><td>Revêtements &amp; travaux publics</td></tr>
+      <tr><td>Lubrifiants EnerLub</td><td>API / SAE</td><td>Huiles moteur, du bidon au fût</td><td>Automobile &amp; industrie</td></tr>
+    </tbody>
+  </table>
+  <p class="small">Spécifications indicatives visées, sans valeur contractuelle&nbsp;; confirmées au contrat.</p>
+  <div class="grid2">
+    <div class="card"><h3>Modèle de lancement · B2B</h3><p>La mini-raffinerie modulaire est une cible datée, pas une capacité du premier jour. Au lancement&nbsp;: import de produits finis (Niger, Nigeria, Cameroun, Angola, Algérie), stockés dans trois hubs — N’Djamena, Moundou, Abéché — et livrés aux professionnels&nbsp;: mines &amp; BTP, transporteurs &amp; flottes, agro-industrie, énergie de secours &amp; institutionnels.</p></div>
+    <div class="card"><h3>Réseau cible</h3><p>12 stations fixes Tchadium sur 8 localités stratégiques, adossées à 3 hubs-dépôts&nbsp;; les Mobile Stations étendent la couverture jusqu’aux zones enclavées — au prix ARSAT partout.</p></div>
+    <div class="card"><h3>Quatre segments</h3><p>La pompe · Industrie et flottes · Aviation (Jet A-1) · GPL (bouteille domestique et gaz industriel). Marques et programmes visés&nbsp;: EnerClub, Carte EnerPro, NRJ+, EnerLub.</p></div>
+    <div class="card"><h3>Prix ARSAT</h3><p>Les prix à la pompe sont fixés par l’ARSAT (Autorité de Régulation du Secteur pétrolier Aval). EnerTchad ne fixe pas les prix&nbsp;: son rôle d’opérateur est de les appliquer partout, ville comme zone isolée, sans rien ajouter au barème officiel.</p></div>
+  </div>
+  <div class="note"><b>Demander un devis.</b> Via la boutique en ligne ou par courriel à contact@enertchad.com (objet «&nbsp;Industriel / Acheteur&nbsp;»)&nbsp;: pas de paiement en ligne, un devis au prix ARSAT et un conseiller qui vous rappelle. Aucune commande n’est ouverte à ce jour&nbsp;; les demandes reçues avant l’ouverture commerciale donnent lieu à un devis indicatif. Ressources en ligne&nbsp;: /aval, /aval/raffinage, /aval/produits, /aval/distribution, /aval/commercialisation, /aval/reseau, /boutique.</div>
+  <p style="margin-top:4mm;font-size:9pt;color:#6B7688"><b>Statut de la société.</b> EnerTchad S.A. est en constitution&nbsp;: aucun actif en exploitation, aucun produit en distribution à ce jour. Les capacités, sites, délais et spécifications décrits sont des cibles.</p>
+  <div class="foot"><span>contact@enertchad.com · +235 30 16 26 26 · enertchad.com — Document indicatif, sans valeur contractuelle.</span><span>p. 2/2</span></div>
+</div>
+
+</body></html>
