@@ -27,6 +27,8 @@ jobs:
           cache: npm
       - name: Check preparation and public asset boundaries
         run: node --test scripts/next/prepare.test.mjs
+      - name: Check content-hashed asset versions and source restoration
+        run: node --test scripts/next/fingerprint.test.mjs
       - name: Check public document metadata regressions
         run: python3 scripts/test_document_metadata.py
       - name: Check investor enquiry journeys
