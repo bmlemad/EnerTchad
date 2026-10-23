@@ -478,9 +478,12 @@ html:not(.et-plight):not(.et-jlight) .et-proj-legend span,html:not(.et-plight):n
   object-position:center 46%;
 }
 
-/* Defer expensive below-the-fold rendering on long institutional pages. */
+/* Defer expensive below-the-fold rendering on long institutional pages.
+   Lot 26 (m9) : sauf les deux dernieres sections. Rendues au saut en bas de page (touche Fin,
+   ancre du pied), leur hauteur estimee (680 px, reelle de 300 a 9 300 px) changeait et
+   deplacait le pied de page : CLS jusqu'a 0,93 en mobile. */
 @supports(content-visibility:auto){
-  main.ppl>section:nth-of-type(n+3){
+  main.ppl>section:nth-of-type(n+3):not(:nth-last-of-type(-n+2)){
     content-visibility:auto;
     contain-intrinsic-size:auto 680px;
   }
