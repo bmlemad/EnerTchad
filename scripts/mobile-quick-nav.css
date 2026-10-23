@@ -11,3 +11,6 @@
   #nezBar .et-mobile-label-long.et-has-short{display:none}
   #nezBar .et-mobile-label-short{display:inline}
 }
+/* Lot 20 (WCAG 2.2 · 2.4.11) : la barre fixe #nezBar (67 px) ne recouvre plus l'element
+   qui recoit le focus ; le defilement automatique garde une marge basse equivalente. */
+@media(max-width:768px){html{scroll-padding-bottom:calc(84px + env(safe-area-inset-bottom,0px))}}
