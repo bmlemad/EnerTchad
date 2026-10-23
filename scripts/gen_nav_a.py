@@ -73,7 +73,7 @@ def nav_fr(brand, lang, act):
                            link('/enertalents/partenariats#partenaires', 'Partenariats', 'GCIC · OT · État · académique')]),
              ('Preuves &amp; outils', [link('/projets', 'Feuille de route', '8 chantiers phares datés'),
                                        link('/Calculateur_Baril_Additionnel', 'Calculateur du baril', 'Le baril additionnel, chiffré'),
-                                       link('/investisseurs#publications', 'Dossier &amp; publications', 'Mémorandum · notes · PPTX')]),
+                                       link('/investisseurs#publications', 'Dossier &amp; publications', 'Mémorandum · notes · fiche')]),
              feat('/investisseurs#souscrire', "Passer à l'acte", 'Souscrire au capital',
                   '10 M → 20 Md FCFA : rejoindre le tour de table.', 'Investir →', 'rgba(232,195,106,.2)')),
     ]
@@ -152,7 +152,7 @@ def nav_en(brand, lang, act):
                              link('/enertalents/partenariats#partenaires', 'Partnerships', 'GCIC · OT · State · academia')]),
              ('Proof &amp; tools', [link('/projets-en', 'Roadmap', '8 dated flagship projects'),
                                     link('/Calculateur_Baril_Additionnel', 'Barrel calculator', 'The additional barrel, quantified'),
-                                    link('/investisseurs-en', 'Deck &amp; publications', 'Memorandum · notes · PPTX')]),
+                                    link('/investisseurs-en', 'Fact sheet &amp; publications', 'Memorandum · notes · fact sheet')]),
              feat('/investisseurs-en', 'Take action', 'Subscribe to the capital',
                   'FCFA 10M → 20Bn: join the round.', 'Invest →', 'rgba(232,195,106,.2)')),
     ]

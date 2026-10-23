@@ -54,7 +54,9 @@ def main():
         path, frag = (dst.split('#', 1) + [''])[:2]
         if path and not path.endswith('/') and os.path.isfile(path.lstrip('/') + '/index.html'):
             dst = path + '/' + ('#' + frag if frag else '')
-        lines.append('%s %s %s' % (src, dst, '308!' if r.get('permanent', True) else '307!'))
+        # Code explicite (statusCode, ex. 301 pour un fichier retiré) ; sinon 308/307 comme Vercel.
+        code = '%d!' % r['statusCode'] if 'statusCode' in r else ('308!' if r.get('permanent', True) else '307!')
+        lines.append('%s %s %s' % (src, dst, code))
     for r in vj.get('rewrites', []):
         dst = r['destination']
         if not dst.endswith(('.html', '/')):
