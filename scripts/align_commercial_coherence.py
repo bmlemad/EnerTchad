@@ -228,9 +228,9 @@ def context_note(path, en):
         title = 'Professional supply · progressive development' if en else 'Approvisionnement professionnel · développement progressif'
         body = ('EnerTchad is a company in formation. The proposed launch prioritises qualified recurring professional demand in serviceable areas. Sourcing, stock, transport, approvals and financing must be confirmed. Hubs, mobile units and wider coverage depend on demonstrated demand and delivery economics.' if en else
                 'EnerTchad est une société en constitution. Le lancement envisagé privilégie les besoins professionnels récurrents qualifiés dans les zones desservables. Sourcing, stock, transport, autorisations et financement sont à confirmer. Hubs, unités mobiles et extension de couverture dépendent de la demande et de l’économie de desserte démontrées.')
-    links = [(f'/clients{suffix}#industriels', 'Professional supply' if en else 'Approvisionnement'),
-             (f'/clients{suffix}#flottes', 'Fleet management' if en else 'Gestion des flottes'),
-             (f'/clients{suffix}#operateurs', 'Engineering' if en else 'Ingénierie')]
+    links = [(f'/boutique{"/en" if en else ""}/clients#industriels', 'Professional supply' if en else 'Approvisionnement'),
+             (f'/boutique{"/en" if en else ""}/clients#flottes', 'Fleet management' if en else 'Gestion des flottes'),
+             (f'/boutique{"/en" if en else ""}/clients#operateurs', 'Engineering' if en else 'Ingénierie')]
     inner_style = ' style="max-width:70ch;margin:24px auto;padding:20px;border:1px solid currentColor;border-radius:12px"' if journal else ''
     return ('<section class="pp-compact pp-mist" id="commercial-scope" aria-labelledby="commercial-scope-title">'
             f'<div class="pp-wrap"><div class="pp-prose pp-prose-w"{inner_style}><h2 id="commercial-scope-title">{title}</h2><p>{body}</p><div class="pp-actions">'
