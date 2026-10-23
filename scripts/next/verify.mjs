@@ -6,6 +6,11 @@ import { withYouTubeBadge } from '../../lib/youtube.js';
 import { withNewsletterStatus } from '../../lib/newsletter.js';
 import { atlasPages, renderSubsite, commercialSitemap } from './subsites.mjs';
 import { hardenHtml, minifyCss } from './harden.mjs';
+import { FINGERPRINTS, rewriteRefs } from './fingerprint.mjs';
+import { builtSource } from './sources.mjs';
+// Lot 26 : l'export est compare a la source que le build a rendue (transformee, m16) et
+// porte des URL /assets/chrome versionnees par empreinte (m10).
+const versions = JSON.parse(await readFile(FINGERPRINTS, 'utf8'));
 const manifest = JSON.parse(await readFile('.generated/site.json', 'utf8'));
 const hash = value => createHash('sha256').update(value).digest('hex');
 function elements(html) {
@@ -16,7 +21,7 @@ function elements(html) {
 function text(node) { return node.data || (node.children || []).map(text).join(''); }
 let preserved=0, native=0;
 for (const page of manifest.pages) {
-  const before = await readFile(page.source);
+  const before = await readFile(builtSource(page.source));
   const after = await readFile(`out/${page.source}`);
   const exported = elements(after.toString());
   if (/^en(?:-|$)/i.test(exported.find(el => el.name === 'html')?.attribs.lang || '')) {
@@ -33,7 +38,7 @@ for (const page of manifest.pages) {
     let expected = withYouTubeBadge(withNewsletterStatus(before.toString()));
     const atlas = atlasPages.find(p => p.source === page.source);
     if (atlas) expected = renderSubsite(expected, atlas, 'atlas');
-    assert.equal(hash(after),hash(hardenHtml(expected)),page.source); preserved++; continue;
+    assert.equal(hash(after),hash(hardenHtml(rewriteRefs(expected, versions))),page.source); preserved++; continue;
   }
   native++;
   assert(after.toString().includes('/assets/chrome/audience-consent.js') && after.toString().includes('et-audience-consent'), page.source+' missing consent loader');
@@ -47,7 +52,7 @@ for (const page of manifest.pages) {
   const robots = original.find(el => el.name === 'meta' && el.attribs.name === 'robots');
   assert.equal(exported.find(el => el.name === 'meta' && el.attribs.name === 'robots')?.attribs.content, robots?.attribs.content, page.source+' robots directive changed');
   for (const stylesheet of original.filter(el => el.name === 'link' && el.attribs.rel === 'stylesheet' && !el.attribs.href?.split('?')[0].endsWith('/strategic-premium.css'))) {
-    assert(exported.some(el => el.name === 'link' && el.attribs.rel === 'stylesheet' && el.attribs.href === stylesheet.attribs.href), page.source+' lost stylesheet '+stylesheet.attribs.href);
+    assert(exported.some(el => el.name === 'link' && el.attribs.rel === 'stylesheet' && el.attribs.href === rewriteRefs(stylesheet.attribs.href, versions)), page.source+' lost stylesheet '+stylesheet.attribs.href);
   }
   const headings = exported.filter(el => el.name === 'h1');
   assert.equal(headings.length,1,page.source+' heading count');
@@ -68,7 +73,8 @@ for (const page of manifest.pages) {
   }
 }
 for(const asset of manifest.assets) {
-  const original = await readFile(asset);
+  let original = await readFile(builtSource(asset));
+  if (/^assets\/chrome\/[^/]+\.(?:css|js)$/.test(asset)) original = Buffer.from(rewriteRefs(original.toString(), versions));
   const expected = asset === 'sitemap.xml' ? commercialSitemap(original.toString()) : asset.endsWith('.css') ? minifyCss(original.toString()) : original;
   assert.equal(hash(await readFile('out/'+asset)),hash(expected),asset);
 }

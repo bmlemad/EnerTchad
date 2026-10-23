@@ -2,9 +2,13 @@ import { execFileSync } from 'node:child_process';
 import { readdirSync, existsSync } from 'node:fs';
 import { mkdir, copyFile, writeFile, rm } from 'node:fs/promises';
 import { dirname, extname, resolve } from 'node:path';
+import { snapshotSources, recordTransformed } from './sources.mjs';
+import { FINGERPRINTS, readChrome, fingerprintContents } from './fingerprint.mjs';
 
 // Apply the reviewed editorial migration locally in the build checkout. Existing
 // contact data remains in the source pages rather than being rewritten via APIs.
+// Lot 26 (m16) : contenu d'origine retenu, restaure en fin de build (scripts/next/sources.mjs).
+const pristine = await snapshotSources();
 if (existsSync('scripts/apply_readiness_20261013.py')) {
   execFileSync('python3', ['scripts/apply_readiness_20261013.py'], { stdio: 'inherit' });
 }
@@ -46,4 +50,13 @@ for (const path of assets) {
   await copyFile(path, 'public/' + path);
 }
 await writeFile('.generated/site.json', JSON.stringify({ pages, assets }, null, 2));
+// Lot 26 (m10) : empreintes de contenu des feuilles et scripts de /assets/chrome/.
+const chrome = existsSync('public/assets/chrome') ? await readChrome('public') : {};
+// Import differe : prepare.test.mjs s'execute avant `npm ci` (htmlparser2 absent), sans /assets/chrome.
+const { minifyCss } = Object.keys(chrome).length ? await import('./harden.mjs') : { minifyCss: css => css };
+const { versions, rewritten } = fingerprintContents(chrome, (name, text) => name.endsWith('.css') ? minifyCss(text) : text);
+for (const [name, text] of Object.entries(rewritten)) await writeFile('public/assets/chrome/' + name, text);
+await writeFile(FINGERPRINTS, JSON.stringify(versions, null, 1));
+const transformed = await recordTransformed(pristine);
+console.log(`Fingerprinted ${Object.keys(versions).length} /assets/chrome resources; ${transformed} source files transformed for this build (restored by finalize).`);
 console.log(`Prepared ${pages.length} pages (${native.length} native React pages) and ${assets.length} public resources.`);

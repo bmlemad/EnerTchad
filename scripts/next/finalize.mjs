@@ -24,3 +24,7 @@ const { hardenExport } = await import('./harden-export.mjs');
 console.log(await hardenExport('out'));
 const revision = process.env.COMMIT_REF || execFileSync('git', ['rev-parse', 'HEAD'], {encoding:'utf8'}).trim();
 await writeFile('out/deploy-version.txt', revision + '\n');
+// Lot 26 (m16) : sources remises dans leur etat d'avant le build (scripts/next/sources.mjs).
+const { restoreSources } = await import('./sources.mjs');
+const restored = await restoreSources();
+console.log(`Restored ${restored.restored} source files transformed for the build` + (restored.kept.length ? `; kept ${restored.kept.length} edited during the build: ${restored.kept.join(', ')}` : '') + '.');
