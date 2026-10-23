@@ -444,8 +444,8 @@ Envoyé depuis enertchad.com / EnerTchad`;
      d:"Chaque hub-dépôt approvisionne en gros un réseau de stations satellites de sa zone. Vente au détail (essence, gasoil, GPL, lampant), services et lubrifiants, au prix homologué ARSAT, selon le barème officiel. Modèle DODO pour une croissance capital-légère.",
      tags:['Prix ARSAT','Modèle DODO','GPL & services','Marque unique']},
     {c:'var(--amber)',cl:'var(--amber-l)',t:'Mobile Station',
-     d:"Là où une station fixe n’existe pas ou tombe en rupture, la Mobile Station conteneurisée se déploie en 24-48 h. Énergie de site autonome, télésurveillance IoT, certifiée ATEX — elle prolonge le réseau vers mines, chantiers, camps humanitaires et communautés rurales.",
-     tags:['Déploiement 24-48h','Énergie de site autonome','ATEX Zone 1','Anti-pénurie']},
+     d:"Là où une station fixe n’existe pas ou tombe en rupture, la Mobile Station conteneurisée prend le relais ; délai de mobilisation à confirmer. Énergie de site autonome, télésurveillance IoT, certifiée ATEX — elle prolonge le réseau vers mines, chantiers, camps humanitaires et communautés rurales.",
+     tags:['Délai de mobilisation à confirmer','Énergie de site autonome','ATEX Zone 1','Anti-pénurie']},
     {c:'var(--green)',cl:'var(--green-l)',t:'Client final & B2B',
      d:"Le dernier maillon\u00A0: particuliers et clients professionnels (flottes, mines, BTP, ONG, agro-industrie). La relation est digitalisée — carte de fidélité NRJ+, application Mon Espace, cartes flotte, livraison en vrac et eBoutique — pour fidéliser et simplifier l’achat.",
      tags:['Carte NRJ+','App Mon Espace','Cartes flotte B2B','eBoutique']}

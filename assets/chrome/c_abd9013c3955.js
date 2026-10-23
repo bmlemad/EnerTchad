@@ -107,8 +107,8 @@
      d:"Each hub-depot supplies a network of satellite stations in its area in bulk. Retail sales (petrol, diesel, LPG, kerosene), services and lubricants, at the same ARSAT-approved price nationwide. A DODO model for capital-light growth.",
      tags:['ARSAT-approved price','DODO model','LPG & services','Single brand']},
     {c:'var(--amber)',cl:'var(--amber-l)',t:'Mobile Station',
-     d:"Where a fixed station doesn’t exist, or runs dry, the containerised Mobile Station deploys in 24-48 h. Autonomous site power, IoT remote monitoring, ATEX-certified — it extends the network to mines, worksites, humanitarian camps and rural communities.",
-     tags:['24-48h deployment','Autonomous site power','ATEX Zone 1','Anti-shortage']},
+     d:"Where a fixed station doesn’t exist, or runs dry, the containerised Mobile Station takes over; mobilisation time to be confirmed. Autonomous site power, IoT remote monitoring, ATEX-certified — it extends the network to mines, worksites, humanitarian camps and rural communities.",
+     tags:['Mobilisation time to be confirmed','Autonomous site power','ATEX Zone 1','Anti-shortage']},
     {c:'var(--green)',cl:'var(--green-l)',t:'End customer & B2B',
      d:"The last link: households and professional customers (fleets, mines, construction, NGOs, agribusiness). The relationship is digitalised — the NRJ+ loyalty card, the Mon Espace app, fleet cards, bulk delivery and eBoutique — to build loyalty and simplify purchasing.",
      tags:['NRJ+ card','Mon Espace app','B2B fleet cards','eBoutique']}
