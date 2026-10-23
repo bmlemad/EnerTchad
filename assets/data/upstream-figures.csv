@@ -1,0 +1,25 @@
+﻿section;indicator;value;unit;period;status;source;url;accessed_on
+National context;National crude oil production;55.48;million barrels;2023;fact;Chad EITI Report 2023 (final version, 30 December 2025), p. 19;https://www.itie-tchad.com/wp-content/uploads/2026/07/Rapport-ITIE-Tchad-2023-version-finale-301225.pdf;2026-10-23
+National context;National crude oil production;51.55;million barrels;2022;fact;Chad EITI Report 2023 (final version, 30 December 2025), p. 19;https://www.itie-tchad.com/wp-content/uploads/2026/07/Rapport-ITIE-Tchad-2023-version-finale-301225.pdf;2026-10-23
+National context;Crude oil exports (volume);48.15;million barrels;2023;fact;Chad EITI Report 2023 (final version, 30 December 2025), p. 20;https://www.itie-tchad.com/wp-content/uploads/2026/07/Rapport-ITIE-Tchad-2023-version-finale-301225.pdf;2026-10-23
+National context;Crude oil exports (value);3,871.67;USD million;2023;fact;Chad EITI Report 2023 (final version, 30 December 2025), p. 20;https://www.itie-tchad.com/wp-content/uploads/2026/07/Rapport-ITIE-Tchad-2023-version-finale-301225.pdf;2026-10-23
+National context;Crude carried by the Doba–Kribi pipeline (TOTCO);45,883,126;barrels;2023;fact;Chad EITI Report 2023 (final version, 30 December 2025), p. 182;https://www.itie-tchad.com/wp-content/uploads/2026/07/Rapport-ITIE-Tchad-2023-version-finale-301225.pdf;2026-10-23
+National context;Chad–Cameroon pipeline transport capacity;250,000;barrels per day;nameplate;fact;COTCO — Cameroon Transportation System;https://cotco-sa.cm/en/cameroon-transportation-system/;2026-10-23
+National context;Named blocks in the petroleum cadastre;57;blocks;2025;estimate to be confirmed;"2025 petroleum cadastre map (Ministry of Petroleum, Mines and Geology), EnerTchad reading; to be confirmed on the petroleum mini-cadastre";https://observatoire.td/mini-cadastre-petrolier.php;2026-10-23
+National context;Open blocks in the petroleum cadastre;38;blocks;2025;estimate to be confirmed;"2025 petroleum cadastre map (Ministry of Petroleum, Mines and Geology), EnerTchad reading; to be confirmed on the petroleum mini-cadastre";https://observatoire.td/mini-cadastre-petrolier.php;2026-10-23
+National context;Concession contracts in force;3;contracts;2023;fact;Chad EITI Report 2023 (final version, 30 December 2025), p. 27;https://www.itie-tchad.com/wp-content/uploads/2026/07/Rapport-ITIE-Tchad-2023-version-finale-301225.pdf;2026-10-23
+National context;Production-sharing contracts (PSCs) in force;7;contracts;2023;fact;Chad EITI Report 2023 (final version, 30 December 2025), p. 27;https://www.itie-tchad.com/wp-content/uploads/2026/07/Rapport-ITIE-Tchad-2023-version-finale-301225.pdf;2026-10-23
+National context;Hydrocarbons law (PSC regime);No. 006/PR/2007 of 2 May 2007;statute;amended by Ordinance No. 10-001 of 30 September 2010;fact;Consolidated text (FAOLEX);https://faolex.fao.org/docs/pdf/cha119415.pdf;2026-10-23
+National context;Chad joins the EITI;2010-04-16;date;2010;fact;EITI — Chad;https://eiti.org/countries/chad;2026-10-23
+National context;Latest EITI Validation score;64.5;points out of 100;October 2022 Validation;fact;EITI — Chad;https://eiti.org/countries/chad;2026-10-23
+Hub figures;Chad’s proven reserves;1.5;billion barrels;2018;fact;U.S. International Trade Administration — Chad Country Commercial Guide, Oil and Gas (published 7 September 2020);https://www.trade.gov/country-commercial-guides/chad-oil-and-gas;2026-10-23
+Hub figures;Water cut at Doba;~86;%;2011;fact;Esso Chad, project report No. 30;;2026-10-23
+Hub figures;Additional OOIP targeted through enhanced oil recovery (EOR);+8 to +17;% of OOIP;mature fields;target;EnerTchad — hub objective;https://enertchad.com/amont/eor-en;2026-10-23
+Hub figures;First EOR pilot (3 to 5 wells);2 to 4;years, subject to access to a field;from access to a field;target;EnerTchad — hub objective;https://enertchad.com/amont/eor-en;2026-10-23
+Hub figures;Priority basins (Doba, Bongor);2;basins;—;target;EnerTchad — hub objective;https://enertchad.com/amont/activites-en;2026-10-23
+Hub figures;OFS services targeted;8;services;2026-2027;target;EnerTchad — hub objective;https://enertchad.com/amont/services-ep-en;2026-10-23
+Hub figures;Local inputs for EOR pilots;100;%;—;target;EnerTchad — hub objective;https://enertchad.com/amont/eor-en;2026-10-23
+Hub figures;Produced-water discharge;0;discharge;2030 horizon;target;EnerTchad — hub objective;https://enertchad.com/amont/eau-en;2026-10-23
+Hub figures;Accidents (HSE objective);0;accident;from the first worksite;target;EnerTchad — HSE framework;https://enertchad.com/cadre-hse-en;2026-10-23
+Actual status;Founding capital raised;100;FCFA million;at incorporation;fact;EnerTchad — published actual status;https://enertchad.com/pole-amont-en#statut-reel;2026-10-23
+Actual status;Chadian share of the founding capital;100;%;at incorporation;fact;EnerTchad — published actual status;https://enertchad.com/pole-amont-en#statut-reel;2026-10-23

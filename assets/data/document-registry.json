@@ -99,6 +99,30 @@
       "git_blob_sha": "88816a2e4ba75444cc9947800dbc42f7d5857d1e"
     },
     {
+      "id": "upstream-data-fr",
+      "path": "/assets/data/amont-chiffres.csv",
+      "format": "CSV",
+      "bytes": 5283,
+      "language": "fr",
+      "category": "operations",
+      "status": "published",
+      "role_fr": "Chiffres Amont — jeu de données (contexte national et cibles)",
+      "role_en": "Upstream figures — French dataset",
+      "git_blob_sha": "6a197936761ac86ab1d450e6ddc4be5cf691b41f"
+    },
+    {
+      "id": "upstream-data-en",
+      "path": "/assets/data/upstream-figures.csv",
+      "format": "CSV",
+      "bytes": 4974,
+      "language": "en",
+      "category": "operations",
+      "status": "published",
+      "role_fr": "Chiffres Amont — version anglaise",
+      "role_en": "Upstream figures — national context and targets",
+      "git_blob_sha": "215cfadc49c9bc6f018d1f0f58c1532f3c3fe95a"
+    },
+    {
       "id": "technical-upstream",
       "path": "/Fiche_Technique_Amont_EnerTchad.pdf",
       "format": "PDF",
@@ -109,6 +133,20 @@
       "role_fr": "Fiche technique Exploration & Production",
       "role_en": "Exploration & Production technical factsheet",
       "git_blob_sha": "95b6930db3169cf144cb8f7eb04857a7b250f84b",
+      "document_date": "2026-10",
+      "date_source": "PDF page 1"
+    },
+    {
+      "id": "technical-upstream-en",
+      "path": "/Fiche_Technique_Amont_EnerTchad_EN.pdf",
+      "format": "PDF",
+      "bytes": 170122,
+      "language": "en",
+      "category": "operations",
+      "status": "published",
+      "role_fr": "Fiche technique Exploration & Production — version anglaise",
+      "role_en": "Exploration & Production technical factsheet",
+      "git_blob_sha": "c9d3385c84300fb93884287d6dc4f2e473dd0331",
       "document_date": "2026-10",
       "date_source": "PDF page 1"
     },
