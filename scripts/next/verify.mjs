@@ -5,6 +5,7 @@ import { htmlToDOM } from 'html-react-parser';
 import { withYouTubeBadge } from '../../lib/youtube.js';
 import { withNewsletterStatus } from '../../lib/newsletter.js';
 import { atlasPages, renderSubsite, commercialSitemap } from './subsites.mjs';
+import { hardenHtml, minifyCss } from './harden.mjs';
 const manifest = JSON.parse(await readFile('.generated/site.json', 'utf8'));
 const hash = value => createHash('sha256').update(value).digest('hex');
 function elements(html) {
@@ -32,14 +33,14 @@ for (const page of manifest.pages) {
     let expected = withYouTubeBadge(withNewsletterStatus(before.toString()));
     const atlas = atlasPages.find(p => p.source === page.source);
     if (atlas) expected = renderSubsite(expected, atlas, 'atlas');
-    assert.equal(hash(after),hash(expected),page.source); preserved++; continue;
+    assert.equal(hash(after),hash(hardenHtml(expected)),page.source); preserved++; continue;
   }
   native++;
   assert(after.toString().includes('/assets/chrome/audience-consent.js') && after.toString().includes('et-audience-consent'), page.source+' missing consent loader');
   assert(!elements(after.toString()).some(el => el.name === 'script' && /googletagmanager\.com/.test(el.attribs.src || '')), page.source+' loads Google before visitor consent');
   const original = elements(before.toString());
   for(const style of original.filter(el => el.name === 'style')) {
-    assert(exported.some(el => el.name === 'style' && text(el) === text(style)),page.source+' lost editorial style');
+    assert(exported.some(el => el.name === 'style' && [text(style), minifyCss(text(style))].includes(text(el))),page.source+' lost editorial style');
   }
   assert.equal(text(exported.find(el => el.name === 'title')),text(original.find(el => el.name === 'title')));
   assert.equal(exported.find(el => el.name === 'meta' && el.attribs.name === 'description')?.attribs.content,original.find(el => el.name === 'meta' && el.attribs.name === 'description')?.attribs.content);
@@ -68,7 +69,7 @@ for (const page of manifest.pages) {
 }
 for(const asset of manifest.assets) {
   const original = await readFile(asset);
-  const expected = asset === 'sitemap.xml' ? commercialSitemap(original.toString()) : original;
+  const expected = asset === 'sitemap.xml' ? commercialSitemap(original.toString()) : asset.endsWith('.css') ? minifyCss(original.toString()) : original;
   assert.equal(hash(await readFile('out/'+asset)),hash(expected),asset);
 }
 console.log(`PASS: ${preserved} HTML pages preserved with the YouTube footer badge; ${native} React pages verified; ${manifest.assets.length} assets preserved.`);

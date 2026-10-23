@@ -19,5 +19,8 @@ for (const page of manifest.pages) {
 }
 console.log(`Normalized ${manifest.pages.length} Next.js exports for Netlify pretty URLs.`);
 await buildSubsites();
+// Lot 20 : CSS minifie et politique CSP par page, sur l'export final (sous-sites compris).
+const { hardenExport } = await import('./harden-export.mjs');
+console.log(await hardenExport('out'));
 const revision = process.env.COMMIT_REF || execFileSync('git', ['rev-parse', 'HEAD'], {encoding:'utf8'}).trim();
 await writeFile('out/deploy-version.txt', revision + '\n');
