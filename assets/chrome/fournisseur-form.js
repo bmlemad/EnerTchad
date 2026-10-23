@@ -6,7 +6,7 @@
   if (!form) return;
   var css = document.createElement('link');
   css.rel = 'stylesheet';
-  css.href = '/assets/chrome/fournisseur-form.css?b=202610201800';
+  css.href = '/assets/chrome/fournisseur-form.css?v=aba978bd2339';
   document.head.appendChild(css);
   var en = document.documentElement.lang === 'en';
   var status = document.getElementById('sfStatus');
