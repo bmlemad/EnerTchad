@@ -35,6 +35,18 @@ class HomepageReview(unittest.TestCase):
     self.assertIn('not a measured result' if en else 'pas un résultat mesuré',main)
     self.assertIn('Sources reviewed' if en else 'Sources consultées',main)
     self.assertIn('datetime="2026-10-22"',main)
+ def test_atlas_link_preserves_homepage_language(self):
+  for en in (False,True):
+   with self.subTest(en=en):
+    s=(ROOT/('index-en.html' if en else 'index.html')).read_text()
+    publications=re.search(r'<section id="home-publications".*?</section>',s,re.S)[0]
+    expected='/atlas-en' if en else '/atlas/'
+    self.assertIn(f'href="{expected}"',publications)
+    if en:self.assertNotIn('href="/atlas/"',publications)
+    target=ROOT/('atlas-en.html' if en else 'atlas/index.html')
+    self.assertTrue(target.is_file())
+    language='en' if en else 'fr'
+    self.assertRegex(target.read_text(),r'<html[^>]*lang="'+language+'"')
  def test_project_cards_preserve_source(self):
   for en in (False,True):
    s=(ROOT/('projets-en.html' if en else 'projets.html')).read_text()
