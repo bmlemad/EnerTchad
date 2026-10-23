@@ -119,7 +119,7 @@ def header(old_header, old_nav, path):
     langs = ''.join(f'<a href="{escape(a["href"])}"' + (' aria-current="page"' if 'on' in (a.get('class') or []) else '')
                     + (f' lang="{a["lang"]}"' if a.get('lang') else '') + f'>{inner(a)}</a>' for a in lang.find_all('a'))
     inv = next((a for a in old_nav.find_all('a') if 'investisseurs' in a['href']), None)
-    # Cohérence 2026-10-13 (audit, chantier 7) : libellé court « استثمر » (Investir), comme le CTA de la nav principale.
+    # Lot 21 (décision DG) : « إبداء الاهتمام » (Manifester son intérêt), comme le CTA de la nav principale ; aucun appel « Investir ».
     cta = f'<a class="arh-cta" href="{escape(inv["href"])}">{CTA_AR}</a>' if inv is not None else ''
     return (f'<header class="arh"><div class="arh-in"><a class="arh-brand" href="/ar">{str(svg) if svg else ""}'
             f'<span dir="ltr">Ener<b>Tchad</b></span></a>'
@@ -128,7 +128,7 @@ def header(old_header, old_nav, path):
             f'</div></header>')
 
 
-CTA_AR = 'استثمر'
+CTA_AR = 'إبداء الاهتمام'
 
 
 def crumb_from_ld(html):

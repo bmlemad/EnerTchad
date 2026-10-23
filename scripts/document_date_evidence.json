@@ -11,19 +11,29 @@
     "document_updated": "2026-10"
   },
   "/Brochure_EnerTchad.pdf": {
-    "git_blob_sha": "3af1eb849683f2daa52ecf3ac6d1117a28418402",
+    "git_blob_sha": "c70d5b507976b727784621e1258b9318903fa508",
     "document_date": "2026-09",
     "date_source": "PDF page 1",
     "document_updated": "2026-10"
   },
   "/Brochure_EnerTchad_EN.pdf": {
-    "git_blob_sha": "7af4e5657387e9b58114040d7c5bbe4a7da8f656",
+    "git_blob_sha": "bf989b48bbae3e63760733ac17ac3a7ae345760c",
     "document_date": "2026-09",
     "date_source": "PDF page 1",
     "document_updated": "2026-10"
   },
   "/Fiche_Technique_Amont_EnerTchad.pdf": {
     "git_blob_sha": "95b6930db3169cf144cb8f7eb04857a7b250f84b",
+    "document_date": "2026-10",
+    "date_source": "PDF page 1"
+  },
+  "/Data_Book_EnerTchad.xlsx": {
+    "git_blob_sha": "a5a5a241ead84404427519c75a7dfde5211bdd29",
+    "document_date": "2026-10",
+    "date_source": "Onglet Lisez-moi"
+  },
+  "/Fiche_EnerTchad_AR.pdf": {
+    "git_blob_sha": "a4c591a2ec0e7fc4c82ffedd422515f9c605eb96",
     "document_date": "2026-10",
     "date_source": "PDF page 1"
   }
