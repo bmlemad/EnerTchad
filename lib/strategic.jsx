@@ -1,6 +1,7 @@
 import { readFileSync } from 'node:fs';
 import parse, { htmlToDOM } from 'html-react-parser';
 import { withYouTubeBadge } from './youtube.js';
+import { fingerprintUrl } from './fingerprint.js';
 
 function source(name) {
   if (!['essentiel','essentiel-en','investor-center','investor-center-en'].includes(name)) throw new Error('Unknown strategic page');
@@ -53,7 +54,7 @@ export function StrategicPage({ name }) {
   const styles = html.match(/<head>([\s\S]*?)<\/head>/i)[1].match(/<style\b[^>]*>[\s\S]*?<\/style>/gi)?.join('') || '';
   // The shared strategic stylesheet is bundled by the layouts; retain page-specific stylesheets.
   const extraStylesheets = headElements(name).filter(el => el.name === 'link' && el.attribs.rel === 'stylesheet' && !el.attribs.href?.split('?')[0].endsWith('/strategic-premium.css'));
-  const pageStyles = extraStylesheets.map(el => <link key={el.attribs.href} rel="stylesheet" href={el.attribs.href} />);
+  const pageStyles = extraStylesheets.map(el => <link key={fingerprintUrl(el.attribs.href)} rel="stylesheet" href={fingerprintUrl(el.attribs.href)} />);
   // Trusted, repository-owned editorial HTML becomes server-rendered React elements.
   // Interactive navigation is a shared component; legacy browser scripts are absent here.
   return <>{structured && <script type="application/ld+json" dangerouslySetInnerHTML={{__html: structured.replace(/</g, '\\u003c')}} />}{pageStyles}{parse(styles)}{parse(body, { replace: node => node.name === 'header' && node.attribs?.class === 'sp-top' ? <StrategicHeader name={name} /> : undefined })}</>;
