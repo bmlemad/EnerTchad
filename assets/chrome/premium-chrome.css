@@ -1101,3 +1101,11 @@ html[lang=ar] .arh .arh-in{background:transparent!important;-webkit-backdrop-fil
 @media(max-width:768px){html[lang=ar] .arh{background:#0A1422!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}}
 }
 /* et-lot29-verre:end */
+
+/* et-lot33-champs:start */
+/* Lot 33 (R4) : tokens de champ et d'encart par theme. Les formulaires de contact (regle en
+   ligne .et-contact-form), le formulaire fournisseur (.sf) et l'encart .atlas-note les lisent ;
+   sans premium-chrome (repli var()) ils gardent leurs valeurs claires d'origine. */
+:root{--field-bg:#FFFFFF;--field-fg:#142033;--field-bd:#9DA7B4;--field-scheme:light;--note-bg:#EFF1F4;--note-fg:#172638;--status-bd:#8B9EAE}
+html:not(.et-plight,.et-jlight){--field-bg:rgba(8,14,26,.55);--field-fg:#F5F7FA;--field-bd:rgba(255,255,255,.22);--field-scheme:dark;--note-bg:rgba(255,255,255,.06);--note-fg:#E8EEF6;--status-bd:rgba(255,255,255,.28)}
+/* et-lot33-champs:end */
