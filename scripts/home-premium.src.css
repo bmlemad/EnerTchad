@@ -4,13 +4,13 @@
 @font-face{font-family:"Instrument Serif";src:url("/assets/fonts/InstrumentSerif-latin.woff2") format("woff2");font-weight:400;font-display:swap}
 
 @M{
-  --ph-paper:#FFFFFF;--ph-mist:#F4F5F7;--ph-ink:#0A1A2F;--ph-ink2:#4B5870;--ph-line:#E3E6EB;
-  --ph-gold:#B8913A;--ph-gold-ink:#7A5A12;--ph-night:#07111F;--ph-night-ink:#F3F1EC;--ph-night-2:#A7B1C2;--ph-gold-night:#D9B567;
+  --ph-paper:var(--et-white,#FFFFFF);--ph-mist:var(--et-mist,#F4F5F7);--ph-ink:var(--et-ink-900,#0A1A2F);--ph-ink2:var(--et-ink-600,#4B5870);--ph-line:var(--et-line-light,#E3E6EB);
+  --ph-gold:var(--et-gold-500,#B8913A);--ph-gold-ink:var(--et-gold-700,#7A5A12);--ph-night:var(--et-abyss,#07111F);--ph-night-ink:#F3F1EC;--ph-night-2:#A7B1C2;--ph-gold-night:var(--et-gold-300,#D9B567);
   --ph-serif:"Instrument Serif","Iowan Old Style",Georgia,serif;--ph-sans:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
   --ph-wrap:1200px;
   display:block;background:var(--ph-paper)!important;color:var(--ph-ink);font:400 17.5px/1.6 var(--ph-sans);
   padding:0!important;margin:0!important;max-width:none!important;position:relative;z-index:1}
-@MD{--ph-paper:#0A1422;--ph-mist:#0F1B2C;--ph-ink:#F1F3F6;--ph-ink2:#A9B4C4;--ph-line:#22314A;--ph-gold:#D9B567;--ph-gold-ink:#D9B567}
+@MD{--ph-paper:var(--et-night,#0A1422);--ph-mist:var(--et-night-2,#0F1B2C);--ph-ink:var(--et-snow,#F1F3F6);--ph-ink2:var(--et-slate-300,#A9B4C4);--ph-line:var(--et-line-dark,#22314A);--ph-gold:var(--et-gold-300,#D9B567);--ph-gold-ink:var(--et-gold-300,#D9B567)}
 @M *{box-sizing:border-box;-webkit-text-fill-color:currentColor}
 @M section{padding:clamp(80px,11vw,152px) 0;margin:0;border:0;background:none;position:relative}
 @M .ph-wrap{max-width:var(--ph-wrap);margin-inline:auto;padding-inline:clamp(16px,4vw,40px)}
