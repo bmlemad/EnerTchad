@@ -22,8 +22,18 @@
   Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://*.googletagmanager.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com; font-src 'self'; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; manifest-src 'self'; worker-src 'self'; frame-src 'self'; media-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'self'; form-action 'self'; upgrade-insecure-requests
 /assets/*
   Cache-Control: public, max-age=31536000, immutable
+# /assets/chrome : une heure pour ce qui est appele sans version (ftx_fr.json, ftx_en.json,
+# ener-symbols.svg, tout fichier autre que .css/.js).
 /assets/chrome/*
   Cache-Control: public, max-age=3600, stale-while-revalidate=86400
+# Lot 27 (m10) : feuilles et scripts de /assets/chrome toujours appeles avec ?v=<empreinte du
+# contenu publie> (lot 26 ; npm run check:migration echoue sur toute reference sans ?v=). La
+# regle porte sur l'extension, car Apache (scripts/ovh/package.py) ne voit pas la query string.
+# Elle suit la regle /assets/chrome/* : la derniere regle applicable l'emporte (.htaccess, serve.mjs).
+/assets/chrome/*.css
+  Cache-Control: public, max-age=31536000, immutable
+/assets/chrome/*.js
+  Cache-Control: public, max-age=31536000, immutable
 # Index de recherche et jeux de donnees : republies sous le meme nom, jamais figes un an.
 /assets/data/*
   Cache-Control: public, max-age=3600, stale-while-revalidate=86400
