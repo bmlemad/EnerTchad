@@ -365,33 +365,33 @@ def fix_skip(h):
 # Lot 28 (M5) : recadrage portrait des photos de heros lourdes pour les telephones. Le heros
 # (object-fit:cover, object-position 60 % 50 %) n en montre que la bande centrale : la variante
 # garde les memes pixels (meme resolution, x0 = (1400 - largeur) x 0,6), pour la moitie des octets.
-HERO_ART = {'chantier-ferraillage': ('m720', 720, 927)}
+HERO_ART = {x: ('m720', 720, 927) for x in ['chantier-ferraillage', 'raffinerie-jour', 'pipeline', 'unite-petrochimie', 'lac-tchad-espace', 'village-sahel', 'code-numerique', 'dunes-sahara', 'complexe-industriel', 'solaire-champ', 'camion-route', 'flamme-gaz', 'pompe-petrole']}  # lot 31 : tous les heros ont une source portrait
 HERO_ART_MEDIA = '(max-width:440px) and (orientation:portrait)'
 
 
 def hero_art(himg, hero):
-    """Enveloppe l <img> du heros dans un <picture> avec la source portrait (telephones)."""
+    """Enveloppe l <img> du heros dans un <picture> : AVIF portrait puis webp portrait (telephones),
+    puis l <img> webp paysage (lot 31 : AVIF q50 = -40 % d octets sur le chemin critique mobile)."""
     art = HERO_ART.get(hero)
     if not art or himg.startswith('<picture>'):
         return himg
     suf, w, h = art
-    return (f'<picture><source media="{HERO_ART_MEDIA}" srcset="/assets/img/p/{hero}-{suf}.webp" width="{w}" height="{h}">'
+    return (f'<picture><source type="image/avif" media="{HERO_ART_MEDIA}" srcset="/assets/img/p/{hero}-{suf}.avif" width="{w}" height="{h}">'
+            f'<source media="{HERO_ART_MEDIA}" srcset="/assets/img/p/{hero}-{suf}.webp" width="{w}" height="{h}">'
             f'{himg}</picture>')
 
 
 def hero_preload(h):
-    """Lot 28 (M5) : precharge la photo du heros avec les memes src, srcset et sizes que l <img>
-    (fetchpriority=high), avant la premiere feuille de l en-tete. Sans ce lien, Chromium ne
-    demande l image qu apres les feuilles bloquantes (LCP mobile mesure a 4,4-7 s en 4G lente).
-    Avec une source portrait (<picture>), deux liens complementaires par media."""
-    m = re.search(r'(<source media="([^"]+)" srcset="([^"]+)"[^>]*>)?<img class="pp-hero-img" src="([^"]+)"(?: srcset="([^"]+)")?(?: sizes="([^"]+)")?', h)
+    """Lot 28 (M5) / lot 31 : precharge la photo du heros avant la premiere feuille de l en-tete
+    (fetchpriority=high). Deux liens AVIF complementaires par media (portrait telephones / paysage) ;
+    un navigateur sans AVIF ignore un preload dont le type n est pas pris en charge et charge la
+    source webp du <picture>."""
+    m = re.search(r'<img class="pp-hero-img" src="/assets/img/p/([a-z-]+)-1400\.webp"', h)
     if not m or re.search(r'<link\b[^>]*rel="preload"[^>]*as="image"', h):
         return h
-    media = f' media="not all and {m[2]}"' if m[1] else ''
-    link = (f'<link rel="preload" as="image" href="{m[4]}"' + (f' imagesrcset="{m[5]}"' if m[5] else '')
-            + (f' imagesizes="{m[6]}"' if m[6] else '') + media + ' fetchpriority="high">\n')
-    if m[1]:
-        link = f'<link rel="preload" as="image" href="{m[3]}" media="{m[2]}" fetchpriority="high">\n' + link
+    x = m.group(1)
+    link = (f'<link rel="preload" as="image" type="image/avif" href="/assets/img/p/{x}-m720.avif" media="{HERO_ART_MEDIA}" fetchpriority="high">\n'
+            f'<link rel="preload" as="image" href="/assets/img/p/{x}-1400.webp" imagesrcset="/assets/img/p/{x}-800.webp 800w, /assets/img/p/{x}-1400.webp 1400w" imagesizes="100vw" media="not all and {HERO_ART_MEDIA}" fetchpriority="high">\n')
     end = h.find('</head>')
     i = h.find('<link rel="stylesheet"')
     if i < 0 or (end >= 0 and i > end):
