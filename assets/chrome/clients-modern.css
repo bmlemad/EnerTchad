@@ -1,8 +1,8 @@
 /* Scoped customer-space presentation. Important rules in this layer override the
    legacy unlayered premium rules without increasing selector specificity. */
 @layer ec-modern {
-.ec-page{--ec-bg:#faf8f3!important;--ec-card:#fff!important;--ec-ink:#0a1a2f!important;--ec-muted:#4b5870!important;--ec-line:#dfe2e6!important;--ec-gold:#80611e!important}
-html:not(.et-plight) .ec-page{--ec-bg:#101b2a!important;--ec-card:#172536!important;--ec-ink:#f1f3f6!important;--ec-muted:#b5c0d0!important;--ec-line:#354154!important;--ec-gold:#e0bd70!important}
+.ec-page{--ec-bg:var(--et-paper,#faf8f3)!important;--ec-card:var(--et-white,#fff)!important;--ec-ink:var(--et-ink-900,#0a1a2f)!important;--ec-muted:var(--et-ink-600,#4b5870)!important;--ec-line:#dfe2e6!important;--ec-gold:#80611e!important}
+html:not(.et-plight) .ec-page{--ec-bg:#101b2a!important;--ec-card:#172536!important;--ec-ink:var(--et-snow,#f1f3f6)!important;--ec-muted:#b5c0d0!important;--ec-line:#354154!important;--ec-gold:#e0bd70!important}
 .ec-page .ec-shell{width:100%!important;max-width:1200px!important;margin:0 auto!important;padding:0 clamp(20px,4vw,40px)!important;box-sizing:border-box!important}
 .ec-page .ec-hero{background:var(--ec-bg)!important;color:var(--ec-ink)!important;padding:clamp(40px,5vw,72px) 0 48px!important;border-bottom:1px solid var(--ec-line)!important;font:400 17px/1.6 Inter,system-ui,sans-serif!important}
 .ec-page .ec-kicker{font:600 11px/1.5 ui-monospace,monospace!important;letter-spacing:.13em!important;color:var(--ec-gold)!important;margin:0 0 20px!important}

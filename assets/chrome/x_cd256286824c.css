@@ -56,7 +56,7 @@ html{scrollbar-gutter:stable}
 /* Mode lecture claire des carnets */
 #jlightBtn{margin-left:10px;background:none;border:1px solid var(--hair);border-radius:999px;color:inherit;width:34px;height:34px;cursor:pointer;font-size:.95rem;line-height:1;flex:none}
 #jlightBtn:hover{border-color:var(--gold-l)}
-html.et-jlight{--bg:#FAF7F1;--bg2:#FFFFFF;--ink:#1A2330;--mut:rgba(26,35,48,.64);--hair:rgba(26,35,48,.16);--gold:#8A6A1E;--gold-l:#7A5C14;--blue-l:#155FA8}
+html.et-jlight{--bg:#FAF7F1;--bg2:var(--et-white,#FFFFFF);--ink:#1A2330;--mut:rgba(26,35,48,.64);--hair:rgba(26,35,48,.16);--gold:#8A6A1E;--gold-l:#7A5C14;--blue-l:#155FA8}
 html.et-jlight body{background:var(--bg)!important;color:var(--ink)!important}
 html.et-jlight body::before,html.et-jlight body::after{display:none!important}
 html.et-jlight #jlightBtn{border-color:rgba(26,35,48,.3)}

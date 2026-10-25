@@ -17,7 +17,7 @@
    posées par thème (sans !important) et appliquées par des règles communes aux deux thèmes.
    Clair : fond blanc et bande #F4F5F7 de la palette commune. Sombre : vrai thème sombre (fond #0A1422, bande #0F1B2C, texte #F1F3F6),
    au lieu du contenu resté clair. Les valeurs viennent des jetons --et-* (premium-chrome.css), avec repli. */
-html.et-plight #main-content.et-home{--hm-surface:var(--et-white,#FFFFFF);--hm-tint:var(--et-mist,#F4F5F7);--hm-ink:#142033;--hm-seg-bg:rgba(255,255,255,.52);--hm-path-bg:rgba(255,255,255,.6);--hm-card-solid:#fff;--hm-seg-line:rgba(255,255,255,.85);--hm-path-line:rgba(255,255,255,.9);--hm-seg-hi:rgba(255,255,255,.9);--hm-path-hi:#fff;--hm-seg-shadow:rgba(16,26,44,.45);--hm-path-shadow:rgba(16,26,44,.4)}
+html.et-plight #main-content.et-home{--hm-surface:var(--et-white,#FFFFFF);--hm-tint:var(--et-mist,#F4F5F7);--hm-ink:#142033;--hm-seg-bg:rgba(255,255,255,.52);--hm-path-bg:rgba(255,255,255,.6);--hm-card-solid:var(--et-white,#fff);--hm-seg-line:rgba(255,255,255,.85);--hm-path-line:rgba(255,255,255,.9);--hm-seg-hi:rgba(255,255,255,.9);--hm-path-hi:var(--et-white,#fff);--hm-seg-shadow:rgba(16,26,44,.45);--hm-path-shadow:rgba(16,26,44,.4)}
 html:not(.et-plight) #main-content.et-home{--hm-surface:var(--et-night,#0A1422);--hm-tint:var(--et-night-2,#0F1B2C);--hm-ink:var(--et-snow,#F1F3F6);--hm-seg-bg:var(--et-night-2,#0F1B2C);--hm-path-bg:var(--et-night-2,#0F1B2C);--hm-card-solid:var(--et-night-2,#0F1B2C);--hm-seg-line:var(--et-line-dark,#22314A);--hm-path-line:var(--et-line-dark,#22314A);--hm-seg-hi:rgba(255,255,255,.06);--hm-path-hi:rgba(255,255,255,.06);--hm-seg-shadow:rgba(0,0,0,.6);--hm-path-shadow:rgba(0,0,0,.55)}
 
 /* Verre givré sobre (variante A, choisie le 11 octobre 2026), thème clair des accueils FR/EN.

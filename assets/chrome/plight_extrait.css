@@ -1,5 +1,5 @@
 /* Regles et-plight/et-jlight extraites de bundle_core_a1.css - pages sans le bundle complet. */
-html.et-jlight { --bg: #FAF7F1; --bg2: #FFFFFF; --ink: #1A2330; --mut: rgba(26,35,48,.64); --hair: rgba(26,35,48,.16); --gold: #8A6A1E; --gold-l: #7A5C14; --blue-l: #155FA8; }
+html.et-jlight { --bg: #FAF7F1; --bg2: var(--et-white,#FFFFFF); --ink: #1A2330; --mut: rgba(26,35,48,.64); --hair: rgba(26,35,48,.16); --gold: #8A6A1E; --gold-l: #7A5C14; --blue-l: #155FA8; }
 html.et-jlight body { background: var(--bg) !important; color: var(--ink) !important; }
 html.et-jlight body::before, html.et-jlight body::after { display: none !important; }
 html.et-jlight #jlightBtn { border-color: rgba(26, 35, 48, 0.3); }

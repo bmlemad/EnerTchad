@@ -194,7 +194,7 @@ footer{border-top:1px solid var(--et-line);background:rgba(4,10,18,.62)!importan
 .et-command-head h2{font-family:var(--fd,Inter,sans-serif);font-size:clamp(1.65rem,3.2vw,2.65rem);line-height:1.08;letter-spacing:-.03em;margin:10px 0 12px}
 .et-command-head p{max-width:64ch;margin:0;line-height:1.65;color:var(--muted-l,#A9B8CC)}
 .et-command-grid{display:grid}
-.et-command-card{--ec:#E8C36A;position:relative;display:flex;flex-direction:column;text-decoration:none;color:inherit}
+.et-command-card{--ec:var(--et-gold-brand,#E8C36A);position:relative;display:flex;flex-direction:column;text-decoration:none;color:inherit}
 .et-command-card--blue{--ec:#5AA7F0}.et-command-card--green{--ec:#34D399}.et-command-card--rose{--ec:#D177B4}
 .et-command-card::before{content:"";position:absolute;top:0;left:18px;right:18px;height:2px;background:linear-gradient(90deg,transparent,var(--ec),transparent);opacity:.8}
 .et-command-card:focus-visible{outline:2px solid var(--ec);outline-offset:3px}

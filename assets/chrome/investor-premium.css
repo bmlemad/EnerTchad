@@ -44,7 +44,7 @@ html[lang="en"] .sp-hero .sp-trust::before{content:"Key facts"}
 @media (prefers-reduced-transparency:reduce){.sp-top{background:var(--sp-paper)!important;-webkit-backdrop-filter:none;backdrop-filter:none}.sp-hero .sp-trust,.sp-hero .et-reading a{-webkit-backdrop-filter:none!important;backdrop-filter:none!important;background:#16243b!important}}
 
 /* Thème sombre (classe sp-dark posée par la mise en page, voir strategic-premium.css). */
-html.sp-dark{--ip-top:rgba(10,20,34,.72);--ip-band-a:#0F1B2C;--ip-band-b:#0A1422}
+html.sp-dark{--ip-top:rgba(10,20,34,.72);--ip-band-a:var(--et-night-2,#0F1B2C);--ip-band-b:var(--et-night,#0A1422)}
 
 /* Fil d'Ariane sur le héros sombre du Centre investisseurs (13 oct. 2026) : le héros reste sombre
    en thème clair ; sans ces règles le fil prenait l'encre #0A1A2F et devenait illisible. */
