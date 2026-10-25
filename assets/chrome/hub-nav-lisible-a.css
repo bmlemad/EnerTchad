@@ -47,7 +47,7 @@ html.et-plight .wrap>a:not([class]):not(#_):not(#__){
   text-decoration:underline!important;color:#0E4172!important}
 html.et-jlight a:not(#_):not(.jback):not(.jlang){color:#0E4172}
 
-/* ---- G4 : or de titraille #6B500F -> #4C380B (4.63:1) ----
+/* ---- G4 : or de titraille var(--et-gold-800,#6B500F) -> #4C380B (4.63:1) ----
    Selecteurs d'origine, mot pour mot. */
 html.et-plight main .kick:not(#_),
 html.et-plight main [class*="kick"]:not(#_),
@@ -105,7 +105,7 @@ html.et-plight .fp-card :not(#_){
   color:#F5F7FA!important;-webkit-text-fill-color:#F5F7FA!important;
 }
 html.et-plight .fp-card .fp-badge:not(#_){
-  color:#FFFFFF!important;-webkit-text-fill-color:#FFFFFF!important;
+  color:var(--et-white,#FFFFFF)!important;-webkit-text-fill-color:var(--et-white,#FFFFFF)!important;
 }
 
 /* ---- I5 : cartes .adx code couleur par pole (17 echecs) ---- */
@@ -124,13 +124,13 @@ html.et-plight main .cp-ct a:not(#_):not(#__) span{
   color:#EAF0F8!important;-webkit-text-fill-color:#EAF0F8!important;
 }
 html.et-plight main .cp-ct a:not(#_):not(#__) b{
-  color:#FFFFFF!important;-webkit-text-fill-color:#FFFFFF!important;
+  color:var(--et-white,#FFFFFF)!important;-webkit-text-fill-color:var(--et-white,#FFFFFF)!important;
 }
 
 /* ---- I7 : bouton .fl-cta sur degrade bleu ---- */
 html.et-plight .fl-cta:not(#_),
 html.et-plight .fl-cta :not(#_){
-  color:#FFFFFF!important;-webkit-text-fill-color:#FFFFFF!important;
+  color:var(--et-white,#FFFFFF)!important;-webkit-text-fill-color:var(--et-white,#FFFFFF)!important;
 }
 
 /* ---- I8 : boutons fantomes .fcta-s, encre = fond (ratio 1.00) ----
@@ -205,7 +205,7 @@ html.et-plight .ppj-syn :not(#_){
    l'atteignent pas. Doit battre G2 [style*="E8C36A"]:not(#_) = (1,2,1). */
 html.et-plight .hchain a:not(#_):not(#__),
 html.et-plight .hchain a :not(#_):not(#__){
-  color:#FFFFFF!important;-webkit-text-fill-color:#FFFFFF!important;
+  color:var(--et-white,#FFFFFF)!important;-webkit-text-fill-color:var(--et-white,#FFFFFF)!important;
 }
 
 /* ---- I18 : mots-marques peints par un degrade clippe en style inline ----

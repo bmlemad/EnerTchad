@@ -184,7 +184,7 @@ html.et-plight footer .foot-vals-k:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
 html.et-plight footer .foot-social-k:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
 html.et-jlight footer .foot-vals-k:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
 html.et-jlight footer .foot-social-k:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
-  color:#6B500F!important}
+  color:var(--et-gold-800,#6B500F)!important}
 
 html.et-plight footer b:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
 html.et-plight footer strong:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
@@ -206,7 +206,7 @@ html.et-plight footer a:hover:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
 html.et-plight footer .foot-col a:not(.foot-pole):hover:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
 html.et-plight footer .foot-legal a:hover:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
 html.et-jlight footer a:hover:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
-  color:#6B500F!important;text-decoration:underline!important;text-underline-offset:3px}
+  color:var(--et-gold-800,#6B500F)!important;text-decoration:underline!important;text-underline-offset:3px}
 
 /* pastilles des poles */
 html.et-plight footer a.foot-pole:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
@@ -216,7 +216,7 @@ html.et-jlight footer a.foot-pole:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
   border:1px solid rgba(26,35,48,.16)!important;
   box-shadow:0 1px 2px rgba(26,35,48,.05)!important}
 html.et-plight footer a.foot-pole:hover:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
-  color:#6B500F!important;
+  color:var(--et-gold-800,#6B500F)!important;
   background:rgba(255,255,255,.9)!important;
   border-color:rgba(138,98,16,.42)!important}
 
@@ -234,7 +234,7 @@ html.et-jlight footer .foot-social a:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5
   background:rgba(255,255,255,.62)!important;
   border:1px solid rgba(26,35,48,.16)!important}
 html.et-plight footer .foot-social a:hover:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
-  color:#6B500F!important;
+  color:var(--et-gold-800,#6B500F)!important;
   background:rgba(184,138,42,.14)!important;
   border-color:rgba(138,98,16,.4)!important;
   box-shadow:0 6px 18px -8px rgba(138,98,16,.5)!important}
@@ -297,9 +297,9 @@ html.et-plight .nx-util-in>a:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
 html.et-jlight .nx-util-in>a:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
   color:#4A5668!important}
 html.et-plight .nx-util-in>a:hover:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
-  color:#6B500F!important}
+  color:var(--et-gold-800,#6B500F)!important}
 html.et-plight .nx-util-in>a[aria-current]:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
-  color:#6B500F!important;font-weight:600}
+  color:var(--et-gold-800,#6B500F)!important;font-weight:600}
 html.et-plight .nx-util-in .nx-lang:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
 html.et-plight .nx-util-in .nx-langx:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
 html.et-jlight .nx-util-in .nx-lang:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
@@ -307,12 +307,12 @@ html.et-jlight .nx-util-in .nx-lang:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5)
 html.et-plight .nx-util-in .nx-lang b:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
   color:#77530C!important}
 html.et-plight .nx-util-in .nx-lang:hover:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
-  border-color:rgba(138,98,16,.5)!important;color:#6B500F!important}
+  border-color:rgba(138,98,16,.5)!important;color:var(--et-gold-800,#6B500F)!important}
 html.et-plight .nx-util-in .nx-invest:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
 html.et-jlight .nx-util-in .nx-invest:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
   color:#77530C!important;border-color:rgba(138,98,16,.45)!important}
 html.et-plight .nx-util-in .nx-invest:hover:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
-  background:rgba(184,138,42,.13)!important;color:#6B500F!important}
+  background:rgba(184,138,42,.13)!important;color:var(--et-gold-800,#6B500F)!important}
 
 /* marque */
 html.et-plight .nav .brand-mk:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
@@ -371,7 +371,7 @@ html.et-jlight .nav-tog:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
 html.et-plight .nav-search:hover:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
 html.et-plight .nav-cta .nav-search:hover:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
 html.et-plight .nav-tog:hover:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
-  color:#6B500F!important;
+  color:var(--et-gold-800,#6B500F)!important;
   background:linear-gradient(160deg,rgba(184,138,42,.16),rgba(255,255,255,.5))!important;
   border-color:rgba(138,98,16,.5)!important}
 
@@ -393,7 +393,7 @@ html.et-plight .nx .nx-mega:not(#e1):not(#e2):not(#e3):not(#e4)::before{
   background:linear-gradient(90deg,transparent,rgba(138,98,16,.7),rgba(138,98,16,.28),transparent)!important}
 html.et-plight .nx-col .nxh:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
 html.et-plight .nx .nx-col .nxh:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
-  color:#6B500F!important;border-bottom-color:rgba(138,98,16,.25)!important}
+  color:var(--et-gold-800,#6B500F)!important;border-bottom-color:rgba(138,98,16,.25)!important}
 html.et-plight .nx-col a:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
 html.et-plight .nx .nx-col a:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
   color:#2A3648!important}
@@ -402,13 +402,13 @@ html.et-plight .nx-col a em:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){color:#
 html.et-plight .nx-col a:hover:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
 html.et-plight .nx .nx-col a:hover:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
   background:rgba(21,95,168,.09)!important}
-html.et-plight .nx .nx-col a:hover strong:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){color:#6B500F!important}
+html.et-plight .nx .nx-col a:hover strong:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){color:var(--et-gold-800,#6B500F)!important}
 html.et-plight .nx .nx-col a:not(#e1):not(#e2):not(#e3):not(#e4)::after{color:#8A6A1E!important}
 html.et-plight .nx-col a[aria-current="page"]:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
   background:linear-gradient(90deg,rgba(184,138,42,.20),transparent 80%)!important;
   box-shadow:inset 2px 0 0 #8A6A1E!important}
 html.et-plight .nx-col a[aria-current="page"] strong:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
-  color:#6B500F!important}
+  color:var(--et-gold-800,#6B500F)!important}
 
 /* carte mise en avant du mega-menu */
 html.et-plight .nx-feat:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
@@ -421,7 +421,7 @@ html.et-plight .nx-feat .tag:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
 html.et-plight .nx .nx-feat .tag:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
 html.et-plight .nx-feat .arr:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
 html.et-plight .nx .nx-feat .arr:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
-  color:#6B500F!important}
+  color:var(--et-gold-800,#6B500F)!important}
 html.et-plight .nx-feat em:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){color:#4A5668!important}
 html.et-plight .nx-feat strong:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){color:#10161F!important}
 
@@ -907,7 +907,7 @@ main .mseg:not(#_):not(#__){
 html.et-plight main .mseg:not(#_):not(#__):not(#___){
  color:color-mix(in srgb, var(--mc,#155FA8) 42%, #0B1422)!important}
 html:not(.et-plight) main .mseg:not(#_):not(#__):not(#___){
- color:color-mix(in srgb, var(--mc,#9FB4CE) 72%, #FFFFFF)!important}
+ color:color-mix(in srgb, var(--mc,#9FB4CE) 72%, var(--et-white,#FFFFFF))!important}
 
 /* ============================================================
    SECONDE PASSE : les familles a classe generique (.d .t .h .hp .pr .step)
@@ -996,7 +996,7 @@ html:not(.et-plight):not(.et-jlight):where([data-eh~=eh10]):not(.ehz) :is(.cmp-c
 /* le texte secondaire de ces tuiles suit la meme regle d'eclaircissement que la famille */
 html:not(.et-plight):not(.et-jlight):where([data-eh~=eh10]):not(.ehz) :is(.cmp-c,.ppj-kpi,.pgh-kpi,.fp-card,.ct-card,.dx-card,.epw-card,.app-card,.app-panel) :is(p,li,dd,span):not(#_):not(#__):not(#___):not(#____){
   color:#D9E2EE!important;-webkit-text-fill-color:#D9E2EE!important}
-@media print{ :is(.cmp-c,.ppj-kpi,.pgh-kpi,.fp-card,.ct-card,.dx-card,.epw-card,.app-card,.app-panel):not(#_):not(#__):not(#___):not(#____){background:#fff!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important;box-shadow:none!important;border-color:#bbb!important} }
+@media print{ :is(.cmp-c,.ppj-kpi,.pgh-kpi,.fp-card,.ct-card,.dx-card,.epw-card,.app-card,.app-panel):not(#_):not(#__):not(#___):not(#____){background:var(--et-white,#fff)!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important;box-shadow:none!important;border-color:#bbb!important} }
 
 /* Ch238 : etiquettes de la carte reseau (texte SVG). En theme clair, leur encre restait
    celle du theme sombre — blanc a 78 % sur une carte pale, 2,74:1 : les points s'affichaient,
@@ -1115,7 +1115,7 @@ html:not(.et-plight):not(.et-jlight) .sk:not(#_):not(#__){color:#9CC7F6!importan
 /* 239.10 — Le lien du chapeau de la FAQ, or fonce sur une texture de sable : 1,10 avant
    le renfort du voile, 1,68 apres. L'or clair du theme sombre, avec halo, le porte au-dela
    du seuil sans changer la couleur de la marque. */
-.hero .lead a:not(#_):not(#__){color:#F0CE82!important;-webkit-text-fill-color:#F0CE82!important;
+.hero .lead a:not(#_):not(#__){color:var(--et-gold-200,#F0CE82)!important;-webkit-text-fill-color:var(--et-gold-200,#F0CE82)!important;
   text-shadow:0 1px 2px rgba(4,8,16,.92),0 0 10px rgba(4,8,16,.75)!important;
   text-decoration-color:rgba(240,206,130,.6)!important}
 
@@ -1188,7 +1188,7 @@ html:is(.et-plight,.et-jlight) small:not(#_):not(#__):not(#___):not(#____){color
 html:not(.et-plight):not(.et-jlight) .brand-tx small:not(#_):not(#__):not(#___) { color: #A8B4C7 !important; }
 
 /* Ch257 - anneau de focus par defaut, specificite nulle */
-:where(a,button,[role="button"],[tabindex],select,summary):focus-visible{outline:2px solid var(--etfv,#E8C36A);outline-offset:2px}html.et-plight{--etfv:#74570B}html.et-jlight{--etfv:#74570B}
+:where(a,button,[role="button"],[tabindex],select,summary):focus-visible{outline:2px solid var(--etfv,var(--et-gold-brand,#E8C36A));outline-offset:2px}html.et-plight{--etfv:#74570B}html.et-jlight{--etfv:#74570B}
 
 /* Ch321 (theme clair) - le pied de page aplatit TOUS ses liens en !important
    (regle "html.et-plight footer a" heritee), ce qui defait aussi le souligne
@@ -1212,7 +1212,7 @@ html.et-plight footer :is(p,li,dd) a:not([class]):not(#e1):not(#e2):not(#e3):not
        focalise, sur un halo creme. */
 input[type=range]:not(#_):not(#__){min-height:28px;padding-block:10.5px;background-clip:content-box}
 input[type=range]:not(#_):not(#__):focus-visible{
-  outline:2px solid var(--etfv,#E8C36A)!important;
+  outline:2px solid var(--etfv,var(--et-gold-brand,#E8C36A))!important;
   outline-offset:3px!important;
   box-shadow:none!important}
 /* Ch323 — 1. Le minimum automatique d'un element de grille vaut son min-content :
@@ -1308,5 +1308,5 @@ html.et-jlight .ct-err:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5):not(#e6){col
    page imprimee. */
 @media print{#ckn:not(#e1):not(#e2):not(#e3),#aurail:not(#e1):not(#e2):not(#e3),#homeFab:not(#e1):not(#e2):not(#e3),#plightBtn:not(#e1):not(#e2):not(#e3),#jlightBtn:not(#e1):not(#e2):not(#e3),#toTop:not(#e1):not(#e2):not(#e3),#toTop-fix:not(#e1):not(#e2):not(#e3){display:none!important}}
 
-html.et-plight #cta-band h2 em:not(#_):not(#__){background-image:linear-gradient(110deg,#6B500F 30%,#10406F)!important}
-html.et-jlight a.skip-link:not(#_):not(#__){color:#fff!important}
+html.et-plight #cta-band h2 em:not(#_):not(#__){background-image:linear-gradient(110deg,var(--et-gold-800,#6B500F) 30%,#10406F)!important}
+html.et-jlight a.skip-link:not(#_):not(#__){color:var(--et-white,#fff)!important}

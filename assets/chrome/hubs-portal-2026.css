@@ -7,7 +7,7 @@
 .pgh h1{max-width:11ch;text-wrap:balance;letter-spacing:-.035em}
 .pgh .pgl{max-width:62ch;line-height:1.65}
 .pgh-kpis{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:clamp(24px,3vw,40px)}
-.pgh-kpi{min-height:86px;padding:16px 18px;border-radius:16px;border:1px solid color-mix(in srgb,currentColor 14%,transparent);background:color-mix(in srgb,#fff 7%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.pgh-kpi{min-height:86px;padding:16px 18px;border-radius:16px;border:1px solid color-mix(in srgb,currentColor 14%,transparent);background:color-mix(in srgb,var(--et-white,#fff) 7%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
 .pgh-kpi b,.pgh-kpi i{display:block}.pgh-kpi b{font-size:clamp(1.05rem,1.8vw,1.35rem);letter-spacing:-.02em}.pgh-kpi i{margin-top:6px;font-size:.78rem;line-height:1.4;opacity:.72;font-style:normal}
 .pgh-cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
 .pgh-btn,.pgh-btn2{min-height:46px;display:inline-flex;align-items:center;justify-content:center;border-radius:999px;padding:11px 18px}

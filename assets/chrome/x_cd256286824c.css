@@ -64,17 +64,17 @@ html.et-jlight b:not(#_),html.et-jlight strong:not(#_),html.et-jlight h1:not(#_)
 
 html.et-jlight .jtop a:not(#_){color:#F5F7FA!important}
 html.et-jlight .jtop #jlightBtn{color:#F5F7FA;border-color:rgba(245,247,250,.4)}
-html.et-jlight .jkey:not(#_),html.et-jlight blockquote:not(#_){background:#fff!important;border-color:rgba(26,35,48,.2)!important;color:#1A2330!important}
+html.et-jlight .jkey:not(#_),html.et-jlight blockquote:not(#_){background:var(--et-white,#fff)!important;border-color:rgba(26,35,48,.2)!important;color:#1A2330!important}
 html.et-jlight .jsig:not(#_),html.et-jlight .jdek:not(#_),html.et-jlight .jmeta:not(#_){color:rgba(26,35,48,.72)!important}
 html.et-jlight .jfoot:not(#_),html.et-jlight footer:not(#_){background:#F1ECE2!important;color:#1A2330!important}
 html.et-jlight a:not(#_):not(.jback):not(.jlang){color:#155FA8}
 html.et-jlight{background:#FAF7F1!important}
-html.et-jlight .jtop a b:not(#_){color:#E8C36A!important}
+html.et-jlight .jtop a b:not(#_){color:var(--et-gold-brand,#E8C36A)!important}
 html.et-jlight #secrail a:not(#_){background:rgba(11,20,34,.85)!important;color:rgba(245,247,250,.85)!important;border-color:rgba(255,255,255,.14)!important}
 
 /* Mode clair des pages editoriales : contenu principal seulement, chrome et heros restent sombres */
 #plightBtn{position:fixed;left:14px;bottom:14px;z-index:70;width:38px;height:38px;border-radius:999px;border:1px solid rgba(245,247,250,.28);background:rgba(11,20,34,.72);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);color:#F5F7FA;cursor:pointer;font-size:1rem;line-height:1}
-#plightBtn:hover{border-color:#E8C36A}
+#plightBtn:hover{border-color:var(--et-gold-brand,#E8C36A)}
 @media(max-width:720px){#plightBtn{bottom:74px}}
 html.et-plight main:not(#_){background:#FAF7F1!important;color:#1A2330!important}
 html.et-plight main section:not(#_),html.et-plight main article:not(#_),html.et-plight main div:not(#_){background-color:transparent!important;box-shadow:none!important;color:#1A2330}
@@ -83,19 +83,19 @@ html.et-plight main h1:not(#_),html.et-plight main h2:not(#_),html.et-plight mai
 html.et-plight main p:not(#_),html.et-plight main li:not(#_),html.et-plight main span:not(#_),html.et-plight main td:not(#_),html.et-plight main th:not(#_),html.et-plight main i:not(#_),html.et-plight main em:not(#_),html.et-plight main small:not(#_),html.et-plight main dd:not(#_),html.et-plight main figcaption:not(#_),html.et-plight main blockquote:not(#_),html.et-plight main label:not(#_){color:#2A3648!important;text-shadow:none!important}
 html.et-plight main h1 em:not(#_),html.et-plight main h2 em:not(#_),html.et-plight main .kick:not(#_),html.et-plight main [class*="kick"]:not(#_){color:#7A5C14!important}
 html.et-plight main a:not(#_){color:#155FA8!important}
-html.et-plight main .card:not(#_),html.et-plight main [class*="card"]:not(#_),html.et-plight main [class*="panel"]:not(#_){background:#FFFFFF!important;border:1px solid rgba(26,35,48,.16)!important;box-shadow:0 2px 10px rgba(26,35,48,.06)!important}
-html.et-plight main td:not(#_),html.et-plight main th:not(#_){border-color:rgba(26,35,48,.2)!important;background:#fff!important}
+html.et-plight main .card:not(#_),html.et-plight main [class*="card"]:not(#_),html.et-plight main [class*="panel"]:not(#_){background:var(--et-white,#FFFFFF)!important;border:1px solid rgba(26,35,48,.16)!important;box-shadow:0 2px 10px rgba(26,35,48,.06)!important}
+html.et-plight main td:not(#_),html.et-plight main th:not(#_){border-color:rgba(26,35,48,.2)!important;background:var(--et-white,#fff)!important}
 html.et-plight .subland{display:none!important}
 html.et-plight body{background:#FAF7F1!important}
 html.et-plight main .cp-ct a:not(#_) b{color:#10161F!important}
 html.et-plight main section:not(#_),html.et-plight main article:not(#_),html.et-plight main div:not(#_):not([role="img"]){background-image:none!important}
-html.et-plight main article:not(#_){background-color:#fff!important;border:1px solid rgba(26,35,48,.16)!important;box-shadow:0 2px 10px rgba(26,35,48,.06)!important}
+html.et-plight main article:not(#_){background-color:var(--et-white,#fff)!important;border:1px solid rgba(26,35,48,.16)!important;box-shadow:0 2px 10px rgba(26,35,48,.06)!important}
 html.et-plight #secrail a:not(#_){background:rgba(11,20,34,.85)!important;color:rgba(245,247,250,.85)!important;border-color:rgba(255,255,255,.14)!important}
 html.et-plight main button:not(#_):not(#plightBtn){color:#1A2330!important}
 html.et-plight main [role="tab"]:not(#_),html.et-plight main [role="button"]:not(#_){color:#1A2330!important}
 /* Exceptions heros photo : le texte y reste clair */
-html.et-plight main .pghero h1:not(#_),html.et-plight main .pghero h2:not(#_),html.et-plight main [class*="hero"] h1:not(#_),html.et-plight main .diapo h1:not(#_),html.et-plight main .diapo h2:not(#_),html.et-plight main .pghero b:not(#_),html.et-plight main [class*="hero"] h1 b:not(#_){color:#FFFFFF!important;-webkit-text-fill-color:#FFFFFF!important}
-html.et-plight main .pghero h1 em:not(#_),html.et-plight main [class*="hero"] h1 em:not(#_){color:#F0CE82!important;-webkit-text-fill-color:#F0CE82!important}
+html.et-plight main .pghero h1:not(#_),html.et-plight main .pghero h2:not(#_),html.et-plight main [class*="hero"] h1:not(#_),html.et-plight main .diapo h1:not(#_),html.et-plight main .diapo h2:not(#_),html.et-plight main .pghero b:not(#_),html.et-plight main [class*="hero"] h1 b:not(#_){color:var(--et-white,#FFFFFF)!important;-webkit-text-fill-color:var(--et-white,#FFFFFF)!important}
+html.et-plight main .pghero h1 em:not(#_),html.et-plight main [class*="hero"] h1 em:not(#_){color:var(--et-gold-200,#F0CE82)!important;-webkit-text-fill-color:var(--et-gold-200,#F0CE82)!important}
 html.et-plight main .pghero p:not(#_),html.et-plight main .pghero li:not(#_),html.et-plight main .pghero span:not(#_),html.et-plight main [class*="hero"] p:not(#_),html.et-plight main .diapo p:not(#_),html.et-plight main .diapo span:not(#_){color:rgba(245,247,250,.92)!important}
 html.et-plight main .pghero .pgk:not(#_),html.et-plight main .pghero .kick:not(#_){color:#F9E5B2!important}
 html.et-plight main .pghero a:not(#_){color:#F5F7FA!important}
@@ -105,12 +105,12 @@ html.et-plight main .pghero .crumb a:not(#_),html.et-plight main .pghero .crumb 
 html.et-plight footer:not(#_),html.et-jlight footer:not(#_){background:#0B1422!important}
 html.et-plight footer *:not(#_):not(a),html.et-jlight footer *:not(#_):not(a){color:rgba(245,247,250,.85)!important}
 html.et-plight footer a:not(#_),html.et-jlight footer a:not(#_){color:#EAD9A8!important}
-html.et-plight footer h3:not(#_),html.et-jlight footer h3:not(#_),html.et-plight footer b:not(#_),html.et-jlight footer b:not(#_){color:#FFFFFF!important}
+html.et-plight footer h3:not(#_),html.et-jlight footer h3:not(#_),html.et-plight footer b:not(#_),html.et-jlight footer b:not(#_){color:var(--et-white,#FFFFFF)!important}
 html.et-jlight .jfoot:not(#_){background:#0B1422!important;color:rgba(245,247,250,.85)!important}
 html.et-jlight .jfoot a:not(#_){color:#EAD9A8!important}
-html.et-plight main .kick:not(#_),html.et-plight main [class*="kick"]:not(#_),html.et-plight main h1 em:not(#_),html.et-plight main h2 em:not(#_){color:#6B500F!important}
-html.et-jlight h1 em:not(#_),html.et-jlight h2 em:not(#_),html.et-jlight .jkick:not(#_),html.et-jlight .sc-lb:not(#_),html.et-jlight .cb-k:not(#_){color:#6B500F!important}
-html.et-plight main .esg-t td:not(#_),html.et-plight main .esg-t th:not(#_),html.et-plight main .esg-t b:not(#_),html.et-plight main .epw-no:not(#_),html.et-plight main .epw-k:not(#_){color:#1A2330!important;background:#fff!important}
+html.et-plight main .kick:not(#_),html.et-plight main [class*="kick"]:not(#_),html.et-plight main h1 em:not(#_),html.et-plight main h2 em:not(#_){color:var(--et-gold-800,#6B500F)!important}
+html.et-jlight h1 em:not(#_),html.et-jlight h2 em:not(#_),html.et-jlight .jkick:not(#_),html.et-jlight .sc-lb:not(#_),html.et-jlight .cb-k:not(#_){color:var(--et-gold-800,#6B500F)!important}
+html.et-plight main .esg-t td:not(#_),html.et-plight main .esg-t th:not(#_),html.et-plight main .esg-t b:not(#_),html.et-plight main .epw-no:not(#_),html.et-plight main .epw-k:not(#_){color:#1A2330!important;background:var(--et-white,#fff)!important}
 
 /* Pages dont les sections vivent hors <main> (ex. cibles-2030) : miroir des regles d'encre */
 html.et-plight body>section:not(#_){background:#FAF7F1!important;background-image:none!important;box-shadow:none!important}
@@ -118,10 +118,10 @@ html.et-plight body>section div:not(#_){background-color:transparent!important;b
 html.et-plight body>section h1:not(#_),html.et-plight body>section h2:not(#_),html.et-plight body>section h3:not(#_),html.et-plight body>section h4:not(#_),html.et-plight body>section b:not(#_),html.et-plight body>section strong:not(#_),html.et-plight body>section dt:not(#_){color:#10161F!important;text-shadow:none!important;-webkit-text-fill-color:#10161F!important;background:none!important}
 html.et-plight body>section p:not(#_),html.et-plight body>section li:not(#_),html.et-plight body>section span:not(#_),html.et-plight body>section td:not(#_),html.et-plight body>section th:not(#_),html.et-plight body>section i:not(#_),html.et-plight body>section em:not(#_),html.et-plight body>section small:not(#_),html.et-plight body>section dd:not(#_),html.et-plight body>section caption:not(#_),html.et-plight body>section label:not(#_),html.et-plight body>section button:not(#_){color:#2A3648!important;text-shadow:none!important}
 html.et-plight body>section a:not(#_){color:#155FA8!important}
-html.et-plight body>section td:not(#_),html.et-plight body>section th:not(#_){background:#fff!important;border-color:rgba(26,35,48,.2)!important}
-html.et-plight body>section .card:not(#_),html.et-plight body>section [class*="card"]:not(#_){background:#FFFFFF!important;border:1px solid rgba(26,35,48,.16)!important}
-html.et-plight body>section [class*="kick"]:not(#_),html.et-plight body>section h2 em:not(#_),html.et-plight body>section [class*="-no"]:not(#_),html.et-plight body>section [class*="-k"]:not(#_){color:#6B500F!important}
-html.et-plight body>header.pghero h1:not(#_),html.et-plight body>header.pghero h2:not(#_){color:#fff!important}
+html.et-plight body>section td:not(#_),html.et-plight body>section th:not(#_){background:var(--et-white,#fff)!important;border-color:rgba(26,35,48,.2)!important}
+html.et-plight body>section .card:not(#_),html.et-plight body>section [class*="card"]:not(#_){background:var(--et-white,#FFFFFF)!important;border:1px solid rgba(26,35,48,.16)!important}
+html.et-plight body>section [class*="kick"]:not(#_),html.et-plight body>section h2 em:not(#_),html.et-plight body>section [class*="-no"]:not(#_),html.et-plight body>section [class*="-k"]:not(#_){color:var(--et-gold-800,#6B500F)!important}
+html.et-plight body>header.pghero h1:not(#_),html.et-plight body>header.pghero h2:not(#_){color:var(--et-white,#fff)!important}
 html.et-plight body>header.pghero p:not(#_),html.et-plight body>header.pghero span:not(#_){color:rgba(245,247,250,.92)!important}
 
 /* Finitions AA du mode clair */
@@ -130,15 +130,15 @@ html.et-plight [style*="E8C36A"]:not(#_),html.et-plight [style*="F0CE82"]:not(#_
 html.et-plight [style*="5AA7F0"]:not(#_),html.et-plight [style*="7FB8F5"]:not(#_){color:#1B4E8C!important}
 html.et-plight [style*="34D399"]:not(#_){color:#0E7A55!important}
 html.et-jlight .hero-cap:not(#_){color:rgba(245,247,250,.9)!important;background:rgba(8,13,22,.78)!important}
-html.et-jlight .sc-lb:not(#_){color:#F0CE82!important}
-html.et-jlight .more-k:not(#_){color:#6B500F!important}
-html.et-jlight .cb-k:not(#_){color:#F0CE82!important}
+html.et-jlight .sc-lb:not(#_){color:var(--et-gold-200,#F0CE82)!important}
+html.et-jlight .more-k:not(#_){color:var(--et-gold-800,#6B500F)!important}
+html.et-jlight .cb-k:not(#_){color:var(--et-gold-200,#F0CE82)!important}
 html.et-jlight .cb:not(#_),html.et-jlight [class*="cta-band"]:not(#_){background:#0B1422!important}
-html.et-jlight .cb-btn:not(#_){background:#E8C36A!important;color:#0B1422!important}
+html.et-jlight .cb-btn:not(#_){background:var(--et-gold-brand,#E8C36A)!important;color:#0B1422!important}
 html.et-jlight .jfoot *:not(#_):not(a){color:rgba(245,247,250,.85)!important}
 html.et-plight .share-k:not(#_),html.et-plight main [class*="share-k"]:not(#_){color:#55647C!important}
 html.et-plight [class^="pgr"] .pgr-t:not(#_),html.et-plight .pgr-t:not(#_){color:#10161F!important}
-html.et-plight .pgr-dir:not(#_){color:#6B500F!important}
+html.et-plight .pgr-dir:not(#_){color:var(--et-gold-800,#6B500F)!important}
 html.et-plight .back:not(#_){color:rgba(245,247,250,.88)!important}
 html.et-plight main summary:not(#_),html.et-plight body>section summary:not(#_){color:#10161F!important}
 
@@ -148,20 +148,20 @@ html.et-jlight footer a:not(#_):not(#__),html.et-jlight .jfoot a:not(#_):not(#__
 html.et-plight main section.hero h1:not(#_):not(#__),html.et-plight main section.hero h2:not(#_):not(#__){color:#10161F!important;-webkit-text-fill-color:#10161F!important}
 html.et-plight main section.hero p:not(#_):not(#__),html.et-plight main section.hero span:not(#_):not(#__){color:#2A3648!important}
 html.et-jlight section:where([data-eh~=eh3]):not(.ehz):not(#_){background:#0B1422!important}
-html.et-jlight section:where([data-eh~=eh3]):not(.ehz) h2:not(#_):not(#__),html.et-jlight section:where([data-eh~=eh3]):not(.ehz) h3:not(#_):not(#__){color:#FFFFFF!important}
+html.et-jlight section:where([data-eh~=eh3]):not(.ehz) h2:not(#_):not(#__),html.et-jlight section:where([data-eh~=eh3]):not(.ehz) h3:not(#_):not(#__){color:var(--et-white,#FFFFFF)!important}
 html.et-jlight section:where([data-eh~=eh3]):not(.ehz) p:not(#_):not(#__):not(.cb-k){color:rgba(245,247,250,.85)!important}
 html.et-plight #modele div:not([class]):not(#_){color:#2A3648!important}
 html.et-plight .cta div:not([class]):not(#_){color:#2A3648!important}
 html.et-plight .btn:not(#_):not(#plightBtn){background:#0B1422!important;color:#F5F7FA!important;border-color:#0B1422!important}
 html.et-plight #contact-rapide a:not(#_):not(#__){color:#0B1422!important}
-html.et-plight main section.hero h1 em:not(#_):not(#__){background:none!important;-webkit-text-fill-color:#6B500F!important;color:#6B500F!important}
+html.et-plight main section.hero h1 em:not(#_):not(#__){background:none!important;-webkit-text-fill-color:var(--et-gold-800,#6B500F)!important;color:var(--et-gold-800,#6B500F)!important}
 html.et-plight .corp-nav a:not(#_):not(#__){color:#EAD9A8!important}
 html.et-plight #kit-media div:not(#_):not(#__){color:#2A3648!important}
 
 /* QA mode clair : finitions passe B */
 html.et-plight body>header.hero:not(#_){background:#0B1422!important;background-image:none!important}
 html.et-plight a[style*="F59E0B"]:not(#_):not(#__),html.et-plight a[style*="f59e0b"]:not(#_):not(#__),html.et-plight body>section a[href$="#partenariats"]:not(#_):not(#__){color:#0B1422!important}
-html.et-plight main code:not(#_):not(#__),html.et-plight body>section code:not(#_):not(#__){color:#6B500F!important;background:rgba(138,98,16,.08)!important}
+html.et-plight main code:not(#_):not(#__),html.et-plight body>section code:not(#_):not(#__){color:var(--et-gold-800,#6B500F)!important;background:rgba(138,98,16,.08)!important}
 html.et-plight .pof-ct:not(#_):not(#__){color:#10161F!important}
 html.et-plight .ets-lv:not(#_):not(#__){color:#0B1422!important}
 html.et-plight .ets-lv:not(#_):not(#__){color:#0B1422!important;background:rgba(255,255,255,.88)!important;border-radius:6px;padding:0 6px}
@@ -182,7 +182,7 @@ html.et-plight .lang a:not(#_):not(#__){color:#0B1422!important}
 html.et-plight header .lang a:not(#_):not(#__):not(#___){color:#F5F7FA!important}
 html.et-plight .wrap>a:not([class]):not(#_):not(#__){text-decoration:underline!important;color:#155FA8!important}
 html.et-plight footer .wrap>a:not(#_):not(#__):not(#___){color:#EAD9A8!important;text-decoration:underline!important}
-html.et-plight header .lang a[aria-current="page"]:not(#_):not(#__):not(#___):not(#____),html.et-plight header .lang a.on:not(#_):not(#__):not(#___):not(#____){color:#0B1422!important;background:#E8C36A!important}
+html.et-plight header .lang a[aria-current="page"]:not(#_):not(#__):not(#___):not(#____),html.et-plight header .lang a.on:not(#_):not(#__):not(#___):not(#____){color:#0B1422!important;background:var(--et-gold-brand,#E8C36A)!important}
 
 html.et-plight main .pghero a.pgh-btn:not(#_){color:#0B1422!important}
 html.et-plight main a.ppt-cta:not(#_){color:#0B1422!important}
@@ -204,7 +204,7 @@ html.et-plight main .mkt-nav a:not(#_){color:rgba(245,247,250,.74)!important}
 @supports not ((-webkit-backdrop-filter:blur(1px)) or (backdrop-filter:blur(1px))){
 .nav:not(#_),.nav.scrolled:not(#_){background:rgba(8,13,24,.97)!important}
 #ckn:not(#_){background:#0B1422!important}
-.nx-mega:not(#_){background:linear-gradient(180deg,#0c1728,#0a1422)!important}
+.nx-mega:not(#_){background:linear-gradient(180deg,#0c1728,var(--et-night,#0a1422))!important}
 .pole-subnav:not(#_){background:#0B1422!important}
 }
 
@@ -295,7 +295,7 @@ html.et-plight footer .foot-vals-k:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
 html.et-plight footer .foot-social-k:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
 html.et-jlight footer .foot-vals-k:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
 html.et-jlight footer .foot-social-k:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
-  color:#6B500F!important}
+  color:var(--et-gold-800,#6B500F)!important}
 
 html.et-plight footer b:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
 html.et-plight footer strong:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
@@ -317,7 +317,7 @@ html.et-plight footer a:hover:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
 html.et-plight footer .foot-col a:not(.foot-pole):hover:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
 html.et-plight footer .foot-legal a:hover:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
 html.et-jlight footer a:hover:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
-  color:#6B500F!important;text-decoration:underline!important;text-underline-offset:3px}
+  color:var(--et-gold-800,#6B500F)!important;text-decoration:underline!important;text-underline-offset:3px}
 
 /* pastilles des poles */
 html.et-plight footer a.foot-pole:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
@@ -327,7 +327,7 @@ html.et-jlight footer a.foot-pole:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
   border:1px solid rgba(26,35,48,.16)!important;
   box-shadow:0 1px 2px rgba(26,35,48,.05)!important}
 html.et-plight footer a.foot-pole:hover:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
-  color:#6B500F!important;
+  color:var(--et-gold-800,#6B500F)!important;
   background:rgba(255,255,255,.9)!important;
   border-color:rgba(138,98,16,.42)!important}
 
@@ -345,7 +345,7 @@ html.et-jlight footer .foot-social a:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5
   background:rgba(255,255,255,.62)!important;
   border:1px solid rgba(26,35,48,.16)!important}
 html.et-plight footer .foot-social a:hover:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
-  color:#6B500F!important;
+  color:var(--et-gold-800,#6B500F)!important;
   background:rgba(184,138,42,.14)!important;
   border-color:rgba(138,98,16,.4)!important;
   box-shadow:0 6px 18px -8px rgba(138,98,16,.5)!important}
@@ -408,9 +408,9 @@ html.et-plight .nx-util-in>a:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
 html.et-jlight .nx-util-in>a:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
   color:#4A5668!important}
 html.et-plight .nx-util-in>a:hover:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
-  color:#6B500F!important}
+  color:var(--et-gold-800,#6B500F)!important}
 html.et-plight .nx-util-in>a[aria-current]:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
-  color:#6B500F!important;font-weight:600}
+  color:var(--et-gold-800,#6B500F)!important;font-weight:600}
 html.et-plight .nx-util-in .nx-lang:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
 html.et-plight .nx-util-in .nx-langx:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
 html.et-jlight .nx-util-in .nx-lang:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
@@ -418,12 +418,12 @@ html.et-jlight .nx-util-in .nx-lang:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5)
 html.et-plight .nx-util-in .nx-lang b:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
   color:#77530C!important}
 html.et-plight .nx-util-in .nx-lang:hover:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
-  border-color:rgba(138,98,16,.5)!important;color:#6B500F!important}
+  border-color:rgba(138,98,16,.5)!important;color:var(--et-gold-800,#6B500F)!important}
 html.et-plight .nx-util-in .nx-invest:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
 html.et-jlight .nx-util-in .nx-invest:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
   color:#77530C!important;border-color:rgba(138,98,16,.45)!important}
 html.et-plight .nx-util-in .nx-invest:hover:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
-  background:rgba(184,138,42,.13)!important;color:#6B500F!important}
+  background:rgba(184,138,42,.13)!important;color:var(--et-gold-800,#6B500F)!important}
 
 /* marque */
 html.et-plight .nav .brand-mk:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
@@ -482,7 +482,7 @@ html.et-jlight .nav-tog:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
 html.et-plight .nav-search:hover:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
 html.et-plight .nav-cta .nav-search:hover:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
 html.et-plight .nav-tog:hover:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
-  color:#6B500F!important;
+  color:var(--et-gold-800,#6B500F)!important;
   background:linear-gradient(160deg,rgba(184,138,42,.16),rgba(255,255,255,.5))!important;
   border-color:rgba(138,98,16,.5)!important}
 
@@ -504,7 +504,7 @@ html.et-plight .nx .nx-mega:not(#e1):not(#e2):not(#e3):not(#e4)::before{
   background:linear-gradient(90deg,transparent,rgba(138,98,16,.7),rgba(138,98,16,.28),transparent)!important}
 html.et-plight .nx-col .nxh:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
 html.et-plight .nx .nx-col .nxh:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
-  color:#6B500F!important;border-bottom-color:rgba(138,98,16,.25)!important}
+  color:var(--et-gold-800,#6B500F)!important;border-bottom-color:rgba(138,98,16,.25)!important}
 html.et-plight .nx-col a:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
 html.et-plight .nx .nx-col a:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
   color:#2A3648!important}
@@ -513,13 +513,13 @@ html.et-plight .nx-col a em:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){color:#
 html.et-plight .nx-col a:hover:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
 html.et-plight .nx .nx-col a:hover:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
   background:rgba(21,95,168,.09)!important}
-html.et-plight .nx .nx-col a:hover strong:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){color:#6B500F!important}
+html.et-plight .nx .nx-col a:hover strong:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){color:var(--et-gold-800,#6B500F)!important}
 html.et-plight .nx .nx-col a:not(#e1):not(#e2):not(#e3):not(#e4)::after{color:#8A6A1E!important}
 html.et-plight .nx-col a[aria-current="page"]:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
   background:linear-gradient(90deg,rgba(184,138,42,.20),transparent 80%)!important;
   box-shadow:inset 2px 0 0 #8A6A1E!important}
 html.et-plight .nx-col a[aria-current="page"] strong:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
-  color:#6B500F!important}
+  color:var(--et-gold-800,#6B500F)!important}
 
 /* carte mise en avant du mega-menu */
 html.et-plight .nx-feat:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
@@ -532,7 +532,7 @@ html.et-plight .nx-feat .tag:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
 html.et-plight .nx .nx-feat .tag:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
 html.et-plight .nx-feat .arr:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
 html.et-plight .nx .nx-feat .arr:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
-  color:#6B500F!important}
+  color:var(--et-gold-800,#6B500F)!important}
 html.et-plight .nx-feat em:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){color:#4A5668!important}
 html.et-plight .nx-feat strong:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){color:#10161F!important}
 
@@ -1018,7 +1018,7 @@ main .mseg:not(#_):not(#__){
 html.et-plight main .mseg:not(#_):not(#__):not(#___){
  color:color-mix(in srgb, var(--mc,#155FA8) 42%, #0B1422)!important}
 html:not(.et-plight) main .mseg:not(#_):not(#__):not(#___){
- color:color-mix(in srgb, var(--mc,#9FB4CE) 72%, #FFFFFF)!important}
+ color:color-mix(in srgb, var(--mc,#9FB4CE) 72%, var(--et-white,#FFFFFF))!important}
 
 /* ============================================================
    SECONDE PASSE : les familles a classe generique (.d .t .h .hp .pr .step)
@@ -1087,7 +1087,7 @@ box-shadow:0 18px 40px -24px rgba(26,35,48,.25)!important}
 html:not(.et-plight):not(.et-jlight) .brand-tx small:not(#_):not(#__):not(#___) { color: #A8B4C7 !important; }
 
 /* Ch257 - anneau de focus par defaut, specificite nulle */
-:where(a,button,[role="button"],[tabindex],select,summary):focus-visible{outline:2px solid var(--etfv,#E8C36A);outline-offset:2px}html.et-plight{--etfv:#74570B}html.et-jlight{--etfv:#74570B}
+:where(a,button,[role="button"],[tabindex],select,summary):focus-visible{outline:2px solid var(--etfv,var(--et-gold-brand,#E8C36A));outline-offset:2px}html.et-plight{--etfv:#74570B}html.et-jlight{--etfv:#74570B}
 
 /* Ch321 (theme clair) - le pied de page aplatit TOUS ses liens en !important
    (regle "html.et-plight footer a" heritee), ce qui defait aussi le souligne
@@ -1111,7 +1111,7 @@ html.et-plight footer :is(p,li,dd) a:not([class]):not(#e1):not(#e2):not(#e3):not
        focalise, sur un halo creme. */
 input[type=range]:not(#_):not(#__){min-height:28px;padding-block:10.5px;background-clip:content-box}
 input[type=range]:not(#_):not(#__):focus-visible{
-  outline:2px solid var(--etfv,#E8C36A)!important;
+  outline:2px solid var(--etfv,var(--et-gold-brand,#E8C36A))!important;
   outline-offset:3px!important;
   box-shadow:none!important}
 /* Ch323 — 1. Le minimum automatique d'un element de grille vaut son min-content :

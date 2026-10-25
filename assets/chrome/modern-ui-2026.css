@@ -54,7 +54,7 @@
 html{scroll-behavior:smooth}
 body{background:var(--et-bg)!important;color:var(--et-text);overflow-x:hidden}
 body:before{opacity:.45!important}
-::selection{background:rgba(232,195,106,.28);color:#fff}
+::selection{background:rgba(232,195,106,.28);color:var(--et-white,#fff)}
 :focus-visible{outline:2px solid var(--et-gold)!important;outline-offset:4px}
 
 /* navigation */
@@ -214,7 +214,7 @@ html.et-plight .et-command-card{background:linear-gradient(155deg,rgba(255,255,2
 html.et-plight .et-command-card small{color:#4B586A}
 
 /* keyboard navigation */
-.et-skip{position:fixed;z-index:10000;top:10px;left:10px;transform:translateY(-150%);padding:10px 14px;border-radius:10px;background:#E8C36A;color:#101B2E;font-weight:800;text-decoration:none;box-shadow:0 8px 24px rgba(0,0,0,.28)}.et-skip:focus{transform:none;outline:2px solid #fff;outline-offset:2px}
+.et-skip{position:fixed;z-index:10000;top:10px;left:10px;transform:translateY(-150%);padding:10px 14px;border-radius:10px;background:var(--et-gold-brand,#E8C36A);color:#101B2E;font-weight:800;text-decoration:none;box-shadow:0 8px 24px rgba(0,0,0,.28)}.et-skip:focus{transform:none;outline:2px solid var(--et-white,#fff);outline-offset:2px}
 #main-content:focus{outline:none}
 
 /* Render-budget: defer layout/paint work for below-the-fold homepage sections. */

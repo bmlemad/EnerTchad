@@ -89,7 +89,7 @@ html:not(.et-plight):not(.et-jlight):where([data-eh~=eh10]):not(.ehz) :is(.acq-c
 /* Immersion sans bandes (chapitre 142). Le decor photographique couvre la page ; les sections ne portent plus de panneau translucide, seules les tuiles font verre. Le voile global de .rootland::after est renforce a .68/.78 pour compenser la disparition des panneaux, valeur fixee par mesure du contraste au pixel peint. */.rootland{position:fixed;inset:0;z-index:-2;background:none center/cover no-repeat;pointer-events:none}.rootland::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,12,21,.68) 0%,rgba(7,12,21,.78) 100%)}html{background:#0d1524}body{background:transparent!important}main{background:transparent!important}/* plus aucun panneau de section : la photo court d'un bord a l'autre */html:not(.et-plight):not(.et-jlight) main>section,html:not(.et-plight):not(.et-jlight) body>section,html:not(.et-plight):not(.et-jlight) main>div>section{background:transparent!important;border-radius:0!important}html:not(.et-plight):not(.et-jlight) main,html:not(.et-plight):not(.et-jlight) footer{--muted:#C3D0E0}main h2,main h3,section h2,section h3{text-shadow:0 2px 18px rgba(0,0,0,.7)}html:not(.et-plight):not(.et-jlight) main>section>*>p,html:not(.et-plight):not(.et-jlight) main p.lead,html:not(.et-plight):not(.et-jlight) main .intro{text-shadow:0 1px 12px rgba(0,0,0,.55)}html:not(.et-plight):not(.et-jlight) footer{background:rgba(14,22,38,.72)!important;text-shadow:0 1px 10px rgba(0,0,0,.55)}footer a{text-shadow:none}/* pour qui demande plus de contraste, on rend les panneaux */@media(prefers-contrast:more){html:not(.et-plight):not(.et-jlight) main>section,html:not(.et-plight):not(.et-jlight) body>section,html:not(.et-plight):not(.et-jlight) main>div>section{background:rgba(14,22,38,.92)!important}}/* Theme clair : le voile doit etre clair, sinon la photo sombre transforme la page creme en champ gris. Contraste verifie : le texte sombre reste au-dessus de 6:1 sur les six pages temoins. */html.et-plight .rootland::after,html.et-jlight .rootland::after{background:linear-gradient(180deg,rgba(250,247,241,.82) 0%,rgba(250,247,241,.90) 100%)}
 /* ———— ex-bloc: hero-kick ———— */
 /* Chapeaux des heros (chapitre 143). Defaut anterieur a l'immersion, verifie
-   sur 99136d2 : dore #F0CE82 pose directement sur la photo du heros, mesure de
+   sur 99136d2 : dore var(--et-gold-200,#F0CE82) pose directement sur la photo du heros, mesure de
    1,96 a 3,28:1 sur 9 pages dans les deux themes. Le chapeau recoit une pastille
    au vocabulaire deja employe sur le site : fond sombre maitrise, filet dore,
    flou leger. Le texte est force au dore clair car sur certaines pages il etait
@@ -193,12 +193,12 @@ a.glm-c:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______){
   transition:border-color .2s,transform .25s var(--ease,ease),box-shadow .25s!important;
 }
 a.glm-c:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):hover{
-  border-color:var(--gold-l,#E8C36A)!important;
+  border-color:var(--gold-l,var(--et-gold-brand,#E8C36A))!important;
   transform:translateY(-3px);
   box-shadow:0 14px 30px -16px rgba(0,0,0,.5);
 }
 a.glm-c:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):focus-visible{
-  border-color:var(--gold-l,#E8C36A)!important;
+  border-color:var(--gold-l,var(--et-gold-brand,#E8C36A))!important;
 }
 @media (pointer:coarse){
   .flip-hint:not(#_):not(#__):not(#___):not(#____),
@@ -228,17 +228,17 @@ a.glm-c:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):focus-vis
 .fn-k{font-family:var(--fm,ui-monospace,monospace);font-size:0.6875rem;letter-spacing:.2em;
  text-transform:uppercase;color:#77530C;margin:0 0 6px;display:inline-flex;align-items:center;gap:9px}
 .fn-k::before{content:"";width:7px;height:7px;background:currentColor;transform:rotate(45deg)}
-html:not(.et-plight) .fn-k{color:var(--gold-l,#E8C36A)}
+html:not(.et-plight) .fn-k{color:var(--gold-l,var(--et-gold-brand,#E8C36A))}
 .fn-t{display:block;font-family:var(--fd,system-ui);font-weight:800;font-size:1.15rem;letter-spacing:-.01em}
 .fn-d{font-size:.86rem;opacity:.75;margin:5px 0 0;max-width:44ch}
 .fn-form{display:flex;gap:10px;flex-wrap:wrap}
 .fn-form input{min-width:240px;min-height:46px;padding:10px 16px;border-radius:999px;
  border:1px solid color-mix(in srgb,currentColor 26%,transparent);background:transparent;
  color:inherit;font-family:var(--fm,ui-monospace,monospace);font-size:.84rem}
-.fn-form input:focus-visible{outline:2px solid var(--gold-l,#E8C36A);outline-offset:2px}
+.fn-form input:focus-visible{outline:2px solid var(--gold-l,var(--et-gold-brand,#E8C36A));outline-offset:2px}
 .fn-form button{display:inline-flex;align-items:center;gap:9px;min-height:46px;padding:11px 22px;
  border:0;border-radius:999px;cursor:pointer;
- background:linear-gradient(120deg,#E8C36A,#D4A843);color:#121D31;
+ background:linear-gradient(120deg,var(--et-gold-brand,#E8C36A),#D4A843);color:#121D31;
  font-family:var(--fm,ui-monospace,monospace);font-weight:700;font-size:.84rem;letter-spacing:.03em;
  transition:transform .2s,filter .2s}
 .fn-form button:hover{transform:translateY(-2px);filter:brightness(1.06)}

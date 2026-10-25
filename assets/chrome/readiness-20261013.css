@@ -13,7 +13,7 @@ body .et-readiness caption{text-align:left;font-weight:700;padding-bottom:12px}
 body .et-readiness :is(th,td){padding:14px;vertical-align:top;border:1px solid #b8c2ce;min-width:150px}
 body .et-readiness thead{background:#e5eaf0}
 body .et-readiness-routes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:20px}
-body .et-readiness-routes a{display:flex;flex-direction:column;gap:10px;padding:18px;border:1px solid #b8c2ce;border-radius:12px;background:#fff;min-height:44px;text-decoration:none}
+body .et-readiness-routes a{display:flex;flex-direction:column;gap:10px;padding:18px;border:1px solid #b8c2ce;border-radius:12px;background:var(--et-white,#fff);min-height:44px;text-decoration:none}
 body .et-readiness-routes span{font-size:.95rem}
 body .et-project-evidence{margin:16px 0;border-top:1px solid currentColor;padding-top:12px}
 body :is(.et-project-evidence,.et-readiness-details)>summary{cursor:pointer;min-height:44px;line-height:1.5;font-weight:600;padding:10px 0}

@@ -1,19 +1,19 @@
-#lum-veil{position:fixed;inset:0;z-index:2147483000;pointer-events:none;-webkit-backdrop-filter:none;backdrop-filter:none}.lum-ctl{position:fixed;right:22px;bottom:84px;z-index:2147483600;font-family:var(--fm,system-ui)}.lum-btn{width:46px;height:46px;border-radius:50%;border:1px solid var(--hair,rgba(120,180,250,.18));background:rgba(14,26,44,.86);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);color:var(--gold-l,#F0CE82);cursor:pointer;display:grid;place-items:center;box-shadow:0 10px 30px rgba(0,0,0,.4);transition:transform .25s,border-color .2s}.lum-btn:hover{transform:translateY(-2px);border-color:var(--gold-l,#F0CE82)}.lum-btn:focus-visible{outline:2px solid var(--gold-l,#F0CE82);outline-offset:3px}.lum-panel{position:absolute;right:0;bottom:56px;width:214px;background:rgba(11,20,34,.97);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border:1px solid var(--hair,rgba(120,180,250,.18));border-radius:14px;padding:14px 16px;box-shadow:0 18px 48px rgba(0,0,0,.55)}.lum-panel[hidden]{display:none}.lum-h{font-size:0.6875rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-l,#F0CE82);margin:0 0 10px;font-weight:600}.lum-range{width:100%;accent-color:var(--gold-l,#F0CE82);cursor:pointer}.lum-presets{display:flex;gap:6px;margin-top:12px}.lum-presets button{flex:1;font-size:0.6875rem;padding:6px 4px;border-radius:8px;border:1px solid var(--hair,rgba(120,180,250,.18));background:transparent;color:rgba(245,247,250,.82);cursor:pointer;transition:background .2s,border-color .2s}.lum-presets button:hover{border-color:var(--gold-l,#F0CE82);background:rgba(240,206,130,.1)}@media (max-width:640px){.lum-ctl{bottom:96px;right:16px}}
+#lum-veil{position:fixed;inset:0;z-index:2147483000;pointer-events:none;-webkit-backdrop-filter:none;backdrop-filter:none}.lum-ctl{position:fixed;right:22px;bottom:84px;z-index:2147483600;font-family:var(--fm,system-ui)}.lum-btn{width:46px;height:46px;border-radius:50%;border:1px solid var(--hair,rgba(120,180,250,.18));background:rgba(14,26,44,.86);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);color:var(--gold-l,var(--et-gold-200,#F0CE82));cursor:pointer;display:grid;place-items:center;box-shadow:0 10px 30px rgba(0,0,0,.4);transition:transform .25s,border-color .2s}.lum-btn:hover{transform:translateY(-2px);border-color:var(--gold-l,var(--et-gold-200,#F0CE82))}.lum-btn:focus-visible{outline:2px solid var(--gold-l,var(--et-gold-200,#F0CE82));outline-offset:3px}.lum-panel{position:absolute;right:0;bottom:56px;width:214px;background:rgba(11,20,34,.97);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border:1px solid var(--hair,rgba(120,180,250,.18));border-radius:14px;padding:14px 16px;box-shadow:0 18px 48px rgba(0,0,0,.55)}.lum-panel[hidden]{display:none}.lum-h{font-size:0.6875rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-l,var(--et-gold-200,#F0CE82));margin:0 0 10px;font-weight:600}.lum-range{width:100%;accent-color:var(--gold-l,var(--et-gold-200,#F0CE82));cursor:pointer}.lum-presets{display:flex;gap:6px;margin-top:12px}.lum-presets button{flex:1;font-size:0.6875rem;padding:6px 4px;border-radius:8px;border:1px solid var(--hair,rgba(120,180,250,.18));background:transparent;color:rgba(245,247,250,.82);cursor:pointer;transition:background .2s,border-color .2s}.lum-presets button:hover{border-color:var(--gold-l,var(--et-gold-200,#F0CE82));background:rgba(240,206,130,.1)}@media (max-width:640px){.lum-ctl{bottom:96px;right:16px}}
 /* ============ Impression : lecture en pleine lumiere ============ */
 @media print{
-html,body{background:#fff!important;color:#111!important}
+html,body{background:var(--et-white,#fff)!important;color:#111!important}
 body::before,body::after{display:none!important}
 .subland,.grain,#preloader,#nav,.nav,.nav.nx,#nezBar,#secrail,#ckn,#cmdk,#homeFab,.lum-ctl,.scrollcue,.diapo,.pgh-art,.cart-btn,.nx-mega,.pole-subnav,.ttg i,.cta-band,#cta-band,.flip-hint{display:none!important}
-main:not(#_),section:not(#_),article:not(#_),footer:not(#_),header:not(#_){background:#fff!important;box-shadow:none!important;clip-path:none!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important;border-color:#ccc!important;text-shadow:none!important}
+main:not(#_),section:not(#_),article:not(#_),footer:not(#_),header:not(#_){background:var(--et-white,#fff)!important;box-shadow:none!important;clip-path:none!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important;border-color:#ccc!important;text-shadow:none!important}
 .reveal{opacity:1!important;transform:none!important;transition:none!important}
 h1:not(#_),h2:not(#_),h3:not(#_),h4:not(#_),h5:not(#_),b:not(#_),strong:not(#_),dt:not(#_){color:#000!important;text-shadow:none!important;-webkit-text-fill-color:#000!important;background:none!important}
 p:not(#_),li:not(#_),span:not(#_),td:not(#_),th:not(#_),i:not(#_),em:not(#_),small:not(#_),dd:not(#_),figcaption:not(#_),blockquote:not(#_),caption:not(#_),label:not(#_),div:not(#_){color:#222!important;text-shadow:none!important}
 h1 em:not(#_),h2 em:not(#_),h3 em:not(#_){color:#7a5c14!important}
 a:not(#_){color:#1B4E8C!important;text-decoration:underline}
 main a[href^="http"]::after{content:" (" attr(href) ")";font-size:.72em;color:#666!important}
-.card:not(#_),[class*="card"]:not(#_),[class*="panel"]:not(#_),.pgh-kpi:not(#_){background:#fff!important;border:1px solid #bbb!important;box-shadow:none!important}
+.card:not(#_),[class*="card"]:not(#_),[class*="panel"]:not(#_),.pgh-kpi:not(#_){background:var(--et-white,#fff)!important;border:1px solid #bbb!important;box-shadow:none!important}
 table{border-collapse:collapse!important}
-td:not(#_),th:not(#_){border:1px solid #999!important;background:#fff!important}
+td:not(#_),th:not(#_){border:1px solid #999!important;background:var(--et-white,#fff)!important}
 .foot-desc:not(#_):not(#__),footer p:not(#_):not(#__),footer a:not(#_):not(#__){color:#222!important}
 img{max-width:100%!important}
 *{animation:none!important}
@@ -25,7 +25,7 @@ img{max-width:100%!important}
 @supports(bottom:env(safe-area-inset-bottom)){.lum-ctl:not(#_){margin-bottom:env(safe-area-inset-bottom);margin-right:env(safe-area-inset-right)}}
 
 /* Ch231b : etat selectionne des prereglages du variateur — sans cette regle, seul l'anneau de focus distingue le niveau actif */
-.lum-presets button[aria-pressed="true"]{border-color:var(--gold-l,#F0CE82);background:rgba(240,206,130,.14);color:var(--gold-l,#F0CE82);font-weight:600}
+.lum-presets button[aria-pressed="true"]{border-color:var(--gold-l,var(--et-gold-200,#F0CE82));background:rgba(240,206,130,.14);color:var(--gold-l,var(--et-gold-200,#F0CE82));font-weight:600}
 
 /* ===== Ch234 : trois familles d'encre restee sombre-sur-sombre ou claire-sur-clair ======
    Mesure au pixel peint (le controle axe ne voit pas ces cas : il n'evalue pas le fond
@@ -41,7 +41,7 @@ html.et-plight #secrail b:not(#_):not(#__),html.et-plight #secrail .axl:not(#_):
    .pgr-t et .pgr-dir, deux classes qui n'existent pas dans ce balisage — les vraies
    sont .ttl et .dir. Le titre restait blanc sur carte claire (1,15:1). */
 html.et-plight .pgr .ttl:not(#_):not(#__),html.et-jlight .pgr .ttl:not(#_):not(#__){color:#10161F!important}
-html.et-plight .pgr .dir:not(#_):not(#__),html.et-jlight .pgr .dir:not(#_):not(#__){color:#6B500F!important}
+html.et-plight .pgr .dir:not(#_):not(#__),html.et-jlight .pgr .dir:not(#_):not(#__){color:var(--et-gold-800,#6B500F)!important}
 
 /* 3. Filtres de la boutique : seule la puce active (fond dore) avait une encre claire ;
    les puces inactives gardaient l'encre du theme sombre sur fond creme (1,24:1). */
@@ -98,7 +98,7 @@ html:not(.et-plight):not(.et-jlight):where([data-eh~=eh10]):not(.ehz) :is(.cmp-c
 /* le texte secondaire de ces tuiles suit la meme regle d'eclaircissement que la famille */
 html:not(.et-plight):not(.et-jlight):where([data-eh~=eh10]):not(.ehz) :is(.cmp-c,.ppj-kpi,.pgh-kpi,.fp-card,.ct-card,.dx-card,.epw-card,.app-card,.app-panel) :is(p,li,dd,span):not(#_):not(#__):not(#___):not(#____){
   color:#D9E2EE!important;-webkit-text-fill-color:#D9E2EE!important}
-@media print{ :is(.cmp-c,.ppj-kpi,.pgh-kpi,.fp-card,.ct-card,.dx-card,.epw-card,.app-card,.app-panel):not(#_):not(#__):not(#___):not(#____){background:#fff!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important;box-shadow:none!important;border-color:#bbb!important} }
+@media print{ :is(.cmp-c,.ppj-kpi,.pgh-kpi,.fp-card,.ct-card,.dx-card,.epw-card,.app-card,.app-panel):not(#_):not(#__):not(#___):not(#____){background:var(--et-white,#fff)!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important;box-shadow:none!important;border-color:#bbb!important} }
 
 /* Ch238 : etiquettes de la carte reseau (texte SVG). En theme clair, leur encre restait
    celle du theme sombre — blanc a 78 % sur une carte pale, 2,74:1 : les points s'affichaient,
@@ -217,7 +217,7 @@ html:not(.et-plight):not(.et-jlight) .sk:not(#_):not(#__){color:#9CC7F6!importan
 /* 239.10 — Le lien du chapeau de la FAQ, or fonce sur une texture de sable : 1,10 avant
    le renfort du voile, 1,68 apres. L'or clair du theme sombre, avec halo, le porte au-dela
    du seuil sans changer la couleur de la marque. */
-.hero .lead a:not(#_):not(#__){color:#F0CE82!important;-webkit-text-fill-color:#F0CE82!important;
+.hero .lead a:not(#_):not(#__){color:var(--et-gold-200,#F0CE82)!important;-webkit-text-fill-color:var(--et-gold-200,#F0CE82)!important;
   text-shadow:0 1px 2px rgba(4,8,16,.92),0 0 10px rgba(4,8,16,.75)!important;
   text-decoration-color:rgba(240,206,130,.6)!important}
 

@@ -66,7 +66,7 @@
 /* Homepage chrome search */
 .nx-search{display:inline-flex;align-items:center;gap:7px;color:#A8B6C9;text-decoration:none;padding-inline:2px}
 .nx-search::before{content:"";width:10px;height:10px;border:1.5px solid currentColor;border-radius:50%;display:inline-block;box-shadow:3px 3px 0 -2px currentColor;transform:translateY(-1px) rotate(-45deg)}
-.nx-search:hover{color:#E8C36A}
+.nx-search:hover{color:var(--et-gold-brand,#E8C36A)}
 @media(max-width:760px){
   .nx-search{width:30px;height:30px;padding:0;justify-content:center;font-size:0;border:1px solid rgba(255,255,255,.14);border-radius:999px}
   .nx-search::before{margin:0;width:9px;height:9px}
@@ -141,7 +141,7 @@
 }
 .et-intent:hover{transform:translateY(-2px)!important;background:rgba(18,35,54,.72)!important}
 html.et-plight .et-intent{background:linear-gradient(155deg,rgba(255,255,255,.84),rgba(247,244,236,.68))!important;border-color:rgba(11,20,34,.12)!important;box-shadow:0 14px 34px -28px rgba(24,45,67,.3)}
-html.et-plight .et-intent:hover{background:#FFFFFF!important;border-color:rgba(138,101,16,.34)!important}
+html.et-plight .et-intent:hover{background:var(--et-white,#FFFFFF)!important;border-color:rgba(138,101,16,.34)!important}
 html.et-plight .nh-proof{color:#4B586A}
 html.et-plight header.hero .nh-proof a:not(#_):not(#__):not(#___){color:#6B520D!important;text-decoration-color:rgba(107,82,13,.45)}
 @media(max-width:760px){
@@ -226,9 +226,9 @@ html.et-plight .et-intent{background:rgba(255,255,255,.82)!important}
   background:#111D33!important;color:#F7F3E8!important;border:1px solid rgba(232,195,106,.45)!important;
   box-shadow:0 12px 28px rgba(0,0,0,.35)!important;
 }
-.et-skip:focus{transform:translateY(0)!important;outline:2px solid #E8C36A!important;outline-offset:3px!important}
+.et-skip:focus{transform:translateY(0)!important;outline:2px solid var(--et-gold-brand,#E8C36A)!important;outline-offset:3px!important}
 .nav-trigger:focus-visible,.nav-links a:focus-visible,.nx-util a:focus-visible{
-  outline:2px solid #E8C36A!important;outline-offset:3px!important;border-radius:8px!important;
+  outline:2px solid var(--et-gold-brand,#E8C36A)!important;outline-offset:3px!important;border-radius:8px!important;
 }
 .nav-trigger{
   min-height:44px;

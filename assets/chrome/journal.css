@@ -37,7 +37,7 @@
 .jn-une>.jn-fil{border-left:1px solid var(--hair,rgba(255,255,255,.16));padding-left:26px}
 .jn-lead{display:block;text-decoration:none;color:inherit;padding:0 0 26px;border-bottom:1px solid var(--hair,rgba(255,255,255,.16))}
 .jn-lead .jn-kick,.jn-art .jn-kick{display:block;font-family:var(--fm,ui-monospace,monospace);font-size:.66rem;
- letter-spacing:.13em;text-transform:uppercase;color:var(--gold-l,#E8C36A);margin:0 0 9px}
+ letter-spacing:.13em;text-transform:uppercase;color:var(--gold-l,var(--et-gold-brand,#E8C36A));margin:0 0 9px}
 .jn-lead h2{font-family:var(--fj);font-weight:400;line-height:1.0;letter-spacing:-.008em;
  font-size:clamp(1.9rem,4.4vw,3.15rem);margin:0 0 14px;text-wrap:balance}
 .jn-lead p{margin:0 0 12px;font-size:1.02rem;line-height:1.58;color:var(--muted);max-width:56ch}
@@ -57,14 +57,14 @@
  color:var(--muted);opacity:.8;margin:0 0 4px;font-variant-numeric:tabular-nums}
 .jn-fil b{font-family:var(--fj);font-weight:400;font-size:1.06rem;line-height:1.18;display:block}
 .jn-fil .jn-all{display:inline-block;margin:4px 0 0;font-family:var(--fm,ui-monospace,monospace);font-size:.72rem;
- color:var(--gold-l,#E8C36A);text-decoration:none}
+ color:var(--gold-l,var(--et-gold-brand,#E8C36A));text-decoration:none}
 .jn-fil .jn-all:hover{text-decoration:underline}
 
 /* ——— les rubriques ——— */
 .jn-dep{margin:40px 0 0}
 .jn-dep-h{display:flex;align-items:baseline;gap:14px;border-bottom:1px solid var(--hair,rgba(255,255,255,.26));padding:0 0 8px;margin:0 0 20px}
 .jn-dep-h h2{font-family:var(--fm,ui-monospace,monospace);font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;
- margin:0;font-weight:700;color:var(--gold-l,#E8C36A)}
+ margin:0;font-weight:700;color:var(--gold-l,var(--et-gold-brand,#E8C36A))}
 .jn-dep-h span{font-family:var(--fm,ui-monospace,monospace);font-size:.66rem;color:var(--muted);opacity:.75;margin-left:auto}
 .jn-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(248px,1fr));gap:0 30px}
 .jn-cols>*{border-top:1px solid var(--hair,rgba(255,255,255,.10));padding:16px 0 18px}
@@ -89,7 +89,7 @@
 .jn-river b{font-family:var(--fj);font-weight:400;font-size:1.02rem;line-height:1.2}
 .jn-river a:hover b{text-decoration:underline;text-underline-offset:3px}
 .jn-river i{font-style:normal;font-family:var(--fm,ui-monospace,monospace);font-size:.6rem;letter-spacing:.1em;
- text-transform:uppercase;color:var(--gold-l,#E8C36A);opacity:.75;display:block;margin:3px 0 0}
+ text-transform:uppercase;color:var(--gold-l,var(--et-gold-brand,#E8C36A));opacity:.75;display:block;margin:3px 0 0}
 
 /* ——— page d article ——— */
 .jr-head h1,article h1.jr-t{font-family:var(--fj)!important;font-weight:400!important;letter-spacing:-.006em!important;line-height:1.02!important}
@@ -97,7 +97,7 @@
 .jn-sign{display:flex;align-items:baseline;gap:10px 18px;flex-wrap:wrap;margin:14px 0 0;padding:10px 0 0;
  border-top:1px solid var(--hair,rgba(255,255,255,.16));
  font-family:var(--fm,ui-monospace,monospace);font-size:.68rem;letter-spacing:.09em;color:var(--muted);text-transform:uppercase}
-.jn-sign b{color:var(--gold-l,#E8C36A);font-weight:700}
+.jn-sign b{color:var(--gold-l,var(--et-gold-brand,#E8C36A));font-weight:700}
 
 /* ——— le renvoi depuis les poles ——— */
 .jn-renvoi{border-top:1px solid var(--hair,rgba(255,255,255,.22));padding:20px 0 0;margin:8px 0 0;
@@ -105,7 +105,7 @@
 .jn-renvoi h3{font-family:var(--fj);font-weight:400;font-size:1.5rem;line-height:1.12;margin:0 0 6px}
 .jn-renvoi p{margin:0;font-size:.9rem;line-height:1.55;color:var(--muted);max-width:58ch}
 .jn-renvoi a.jn-go{font-family:var(--fm,ui-monospace,monospace);font-size:.76rem;letter-spacing:.06em;
- color:var(--gold-l,#E8C36A);text-decoration:none;white-space:nowrap}
+ color:var(--gold-l,var(--et-gold-brand,#E8C36A));text-decoration:none;white-space:nowrap}
 .jn-renvoi a.jn-go:hover{text-decoration:underline}
 @media(max-width:700px){.jn-renvoi{grid-template-columns:1fr}}
 
@@ -146,7 +146,7 @@ article[role="main"] h2{font-family:var(--fj);font-weight:400;letter-spacing:-.0
 article[role="main"] h3{font-family:var(--fj);font-weight:400;letter-spacing:-.002em}
 article[role="main"] blockquote,article[role="main"] .jpull{font-family:var(--fj);font-weight:400}
 .jbody>p:first-of-type::first-letter{font-family:var(--fj);float:left;font-size:3.45em;line-height:.78;
- padding:.06em .09em 0 0;color:var(--gold-l,#E8C36A)}
+ padding:.06em .09em 0 0;color:var(--gold-l,var(--et-gold-brand,#E8C36A))}
 html.et-plight .jbody>p:first-of-type::first-letter,
 html.et-jlight .jbody>p:first-of-type::first-letter{color:var(--pal,#8A6210)}
 
@@ -226,7 +226,7 @@ html body.jn-page main:not(#g0):not(#g1):not(#g2):not(#g3):not(#g4):not(#g5):not
  letter-spacing:-.005em;font-variant-numeric:tabular-nums}
 .jn-rep .jn-rd{display:block;font-size:.76rem;line-height:1.4;color:var(--muted);margin:4px 0 0}
 .jn-rep .jn-jal{font-size:.8rem;line-height:1.45}
-.jn-rep .jn-jal em{font-style:normal;color:var(--gold-l,#E8C36A)}
+.jn-rep .jn-jal em{font-style:normal;color:var(--gold-l,var(--et-gold-brand,#E8C36A))}
 
 /* ——— 3. le bandeau d article ——— */
 .jn-fig{max-width:760px;margin:20px auto 24px;padding:0 clamp(20px,5vw,28px)}
@@ -238,7 +238,7 @@ html body.jn-page main:not(#g0):not(#g1):not(#g2):not(#g3):not(#g4):not(#g5):not
 @media(max-width:700px){.jn-fig .jn-band{aspect-ratio:1200/420}}
 .jn-fig figcaption{margin:8px 0 0;font-size:.7rem;letter-spacing:.11em;text-transform:uppercase;
  color:var(--muted);opacity:.85;display:flex;gap:6px 14px;flex-wrap:wrap}
-.jn-fig figcaption b{font-weight:700;color:var(--gold-l,#E8C36A)}
+.jn-fig figcaption b{font-weight:700;color:var(--gold-l,var(--et-gold-brand,#E8C36A))}
 html[data-pl="coupe"] .jn-fig .jn-band{background-image:url(/assets/img/bande-coupe-sombre.webp)}
 html[data-pl="corridor"] .jn-fig .jn-band{background-image:url(/assets/img/bande-corridor-sombre.webp)}
 html[data-pl="colonne"] .jn-fig .jn-band{background-image:url(/assets/img/bande-colonne-sombre.webp)}
@@ -309,8 +309,8 @@ html.et-plight:not(#q0):not(#q1):not(#q2):not(#q3):not(#q4):not(#q5):not(#q6):no
    hauteur minimale 24px, aucune valeur inventee. */
 .jn-renvoi a.jn-go,.jn-all{display:inline-flex!important;align-items:center;min-height:24px}
 .jn-sujets .topic-chip{display:inline-flex;align-items:center;gap:8px;padding:8px 13px;border-radius:999px;border:1px solid var(--hair,rgba(120,170,220,.22));font-size:.82rem;font-weight:550;line-height:1.25}
-.jn-sujets .topic-chip b:not(#_){width:8px;height:8px;border-radius:50%;background:var(--tc,#E8C36A)!important;flex:none}
-.jn-sujets .topic-chip i{font-style:normal;color:var(--tc,#E8C36A)}
+.jn-sujets .topic-chip b:not(#_){width:8px;height:8px;border-radius:50%;background:var(--tc,var(--et-gold-brand,#E8C36A))!important;flex:none}
+.jn-sujets .topic-chip i{font-style:normal;color:var(--tc,var(--et-gold-brand,#E8C36A))}
 /* Hauteur de la barre de navigation connue des le premier affichage : le script ne fait plus que confirmer la valeur,
    la page ne descend plus de 72 px apres chargement (CLS). 77 px mobile, 93 px tablette, 144 px grand ecran. */
 :root{--nav-h:77px}@media(min-width:481px){:root{--nav-h:93px}}@media(min-width:1241px){:root{--nav-h:144px}}
@@ -337,8 +337,8 @@ html:is(.et-plight,.et-jlight)[data-pl="colonne"] .jn-fig .jn-band{background-im
 
 /* Journal : palette commune (audit du design, étape 3, variante B choisie le 12 octobre 2026).
    Variables lues par nav_a.css, bundle_core_a1.css, fond647.css et da_glass.css, qui gardent leur ancienne valeur
-   sur les pages qui ne chargent pas journal.css. Clair : fond blanc sans halos, en-tête blanc, pied #F4F5F7, surtitres #7A5A12.
-   Sombre : fond #0A1422 au lieu du pétrole #00243A et de #111A27, or #D9B567 au lieu de l'ambre #FFB703. */
+   sur les pages qui ne chargent pas journal.css. Clair : fond blanc sans halos, en-tête blanc, pied var(--et-mist,#F4F5F7), surtitres var(--et-gold-700,#7A5A12).
+   Sombre : fond var(--et-night,#0A1422) au lieu du pétrole #00243A et de #111A27, or var(--et-gold-300,#D9B567) au lieu de l'ambre #FFB703. */
 :root{--jl-body-bg:var(--et-white,#FFFFFF);--jl-halos:none;--jl-paper:var(--et-white,#FFFFFF);--jl-gold-ink:var(--et-gold-700,#7A5A12);--jl-page-dark:var(--et-night,#0A1422);--jl-root-dark:var(--et-night,#0A1422)}
 html:not(.et-plight):not(.et-jlight){--jl-gold:var(--et-gold-300,#D9B567)}
 .jfoot{--jl-foot:var(--et-mist,#F4F5F7);--jl-foot-img:none}

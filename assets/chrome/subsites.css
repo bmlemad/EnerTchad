@@ -69,6 +69,6 @@ html[data-et-space] #nav .et-al-tx.et-tag small{margin-top:0;font-size:10.5px;li
 
 /* et-lot29-focus:start */
 /* Lot 29 (B2) : un seul style de focus clavier — anneau or 2 px decale de 2 px, lisere 4 px. */
-:is(a,button,input,select,textarea,summary,[tabindex]:not([tabindex="-1"])):focus-visible{outline:2px solid #C9A24A;outline-offset:2px;box-shadow:0 0 0 4px #0A1A2F}
-html:not(.sp-dark) :is(a,button,input,select,textarea,summary,[tabindex]:not([tabindex="-1"])):focus-visible{box-shadow:0 0 0 4px #FAF8F3;outline-color:#7A5A12}
+:is(a,button,input,select,textarea,summary,[tabindex]:not([tabindex="-1"])):focus-visible{outline:2px solid #C9A24A;outline-offset:2px;box-shadow:0 0 0 4px var(--et-ink-900,#0A1A2F)}
+html:not(.sp-dark) :is(a,button,input,select,textarea,summary,[tabindex]:not([tabindex="-1"])):focus-visible{box-shadow:0 0 0 4px var(--et-paper,#FAF8F3);outline-color:var(--et-gold-700,#7A5A12)}
 /* et-lot29-focus:end */

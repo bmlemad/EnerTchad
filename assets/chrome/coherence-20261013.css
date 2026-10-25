@@ -12,8 +12,8 @@
 /* ---------- 6. Bascule de thème ---------- */
 .et-theme-hdr{display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;width:40px;height:40px;padding:0;margin:0;border:0;border-radius:999px;cursor:pointer;color:inherit;background:transparent;font:inherit}
 .et-theme-hdr svg{width:18px;height:18px;display:block}
-#nav .nav-cta .et-theme-hdr:focus-visible{outline:3px solid #D9B567;outline-offset:3px}
-html.et-plight #nav .nav-cta .et-theme-hdr:focus-visible,html.et-jlight #nav .nav-cta .et-theme-hdr:focus-visible{outline-color:#0A1A2F}
+#nav .nav-cta .et-theme-hdr:focus-visible{outline:3px solid var(--et-gold-300,#D9B567);outline-offset:3px}
+html.et-plight #nav .nav-cta .et-theme-hdr:focus-visible,html.et-jlight #nav .nav-cta .et-theme-hdr:focus-visible{outline-color:var(--et-ink-900,#0A1A2F)}
 @media print{.et-theme-hdr{display:none}}
 
 /* ---------- 7. En-tête des pages React ---------- */
@@ -69,11 +69,11 @@ html.sp-dark .sp-top.et-al{--al-bg:rgba(13,22,38,.94);--al-line:rgba(255,255,255
 @media print{.sp-top.et-al .et-al-util{display:none}}
 
 /* ---------- 8. Fil d'Ariane des pages React ---------- */
-.sp .sp-crumb{display:flex;flex-wrap:wrap;gap:8px 10px;margin:0 0 22px;padding:0;font:500 .84rem/1.4 Inter,system-ui,sans-serif;color:var(--sp-muted,#4B5870)}
-.sp .sp-crumb a{display:inline-block;padding:6px 0;margin:-6px 0;color:var(--sp-ink,#0A1A2F);text-decoration:underline;text-decoration-color:rgba(183,139,50,.6);text-decoration-thickness:1px;text-underline-offset:4px}
+.sp .sp-crumb{display:flex;flex-wrap:wrap;gap:8px 10px;margin:0 0 22px;padding:0;font:500 .84rem/1.4 Inter,system-ui,sans-serif;color:var(--sp-muted,var(--et-ink-600,#4B5870))}
+.sp .sp-crumb a{display:inline-block;padding:6px 0;margin:-6px 0;color:var(--sp-ink,var(--et-ink-900,#0A1A2F));text-decoration:underline;text-decoration-color:rgba(183,139,50,.6);text-decoration-thickness:1px;text-underline-offset:4px}
 .sp .sp-crumb a:hover{text-decoration-color:currentColor}
 .sp .sp-crumb a:focus-visible{outline:2px solid var(--sp-gold,#b78b32);outline-offset:3px}
-.sp .sp-crumb [aria-current=page]{color:var(--sp-ink,#0A1A2F);font-weight:600}
+.sp .sp-crumb [aria-current=page]{color:var(--sp-ink,var(--et-ink-900,#0A1A2F));font-weight:600}
 @media print{.sp .sp-crumb{display:none}}
 
 /* et-lot29-logo:start */
@@ -87,6 +87,6 @@ html.sp-dark .sp-top.et-al{--al-bg:rgba(13,22,38,.94);--al-line:rgba(255,255,255
 
 /* et-lot29-focus:start */
 /* Lot 29 (B2) : un seul style de focus clavier — anneau or 2 px decale de 2 px, lisere 4 px. */
-:is(a,button,input,select,textarea,summary,[tabindex]:not([tabindex="-1"])):focus-visible{outline:2px solid #C9A24A;outline-offset:2px;box-shadow:0 0 0 4px #0A1A2F}
-html:not(.sp-dark) :is(a,button,input,select,textarea,summary,[tabindex]:not([tabindex="-1"])):focus-visible{box-shadow:0 0 0 4px #FAF8F3;outline-color:#7A5A12}
+:is(a,button,input,select,textarea,summary,[tabindex]:not([tabindex="-1"])):focus-visible{outline:2px solid #C9A24A;outline-offset:2px;box-shadow:0 0 0 4px var(--et-ink-900,#0A1A2F)}
+html:not(.sp-dark) :is(a,button,input,select,textarea,summary,[tabindex]:not([tabindex="-1"])):focus-visible{box-shadow:0 0 0 4px var(--et-paper,#FAF8F3);outline-color:var(--et-gold-700,#7A5A12)}
 /* et-lot29-focus:end */
