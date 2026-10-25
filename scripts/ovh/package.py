@@ -102,6 +102,7 @@ def text_delivery():
             "  AddType text/markdown .md",
             "  AddType font/woff2 .woff2",
             "  AddType application/manifest+json .webmanifest",
+            "  AddType image/avif .avif",
             "  AddCharset UTF-8 .css .js .mjs .json .md .ics .txt .xml .svg .webmanifest .csv",
             "</IfModule>",
             "<IfModule mod_deflate.c>",

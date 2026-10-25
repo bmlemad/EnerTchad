@@ -30,10 +30,10 @@ def main():
         temp = Path(directory)
         config = temp / "httpd.conf"
         error_log = temp / "error.log"
-        # The OVH cluster's MIME table has no woff2, webmanifest or markdown entry: test without them.
+        # The OVH cluster's MIME table has no woff2, webmanifest, markdown or avif entry: test without them.
         (temp / "mime.types").write_text("".join(
             line for line in Path("/etc/mime.types").read_text().splitlines(keepends=True)
-            if not re.search(r"\b(woff2|webmanifest|markdown)\b", line)))
+            if not re.search(r"\b(woff2|webmanifest|markdown|avif)\b", line)))
         load = "\n".join(f"LoadModule {name}_module {modules / ('mod_' + name + '.so')}"
                          for name in ("mpm_event", "authz_core", "dir", "mime", "rewrite", "headers", "setenvif", "expires"))
         config.write_text(f'''ServerRoot "{temp}"
@@ -120,6 +120,8 @@ DocumentRoot "{OUT}"
                 ("enertchad.com", "/atlas-en", "atlas-en.html"),
                 ("enertchad.com", "/atlas/carte", "atlas/carte.html"),
                 ("enertchad.com", "/atlas/sources-en", "atlas/sources-en.html"),
+                # Lot 32 : the cluster has no avif entry; without AddType the file went out with no Content-Type.
+                ("enertchad.com", "/assets/img/p/chantier-ferraillage-m720.avif", "assets/img/p/chantier-ferraillage-m720.avif"),
             ]
             for case in cases:
                 content(*case)
