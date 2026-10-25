@@ -1,9 +1,0 @@
-/* Lot 20 (audit technique M4) : liens du bloc « commercial-scope » distinguables du texte
-   sans dependre de la couleur (WCAG 1.4.1). */
-#commercial-scope a.pp-link{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
-/* Lot 20 (audit technique M6, WCAG 2.2 · 2.5.8) : liens isoles de 17 a 20 px de haut portes a
-   24 px au moins (projets, investisseurs, centre investisseurs). Hauteur seule : la ligne de
-   texte reste en place, la zone active s'etend de quelques pixels vers le bas. */
-.mod-card details>p>a,.pp-cell>div>a,.pp-cell>span>a,.et-facts dd>a,.pp-progress .pp-wrap>p>a,
-.pp-box>a,#faq-inv .pp-prose>div>a{display:inline-block;min-height:24px}
-.et-quick-actions>a{min-height:24px}
