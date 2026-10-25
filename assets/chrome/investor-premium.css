@@ -1,3 +1,4 @@
+@layer verre,et-glass;
 @layer et-glass;
 /* Centre investisseurs premium (11 oct. 2026) : chargé par investor-center(-en) uniquement */
 .sp-top{background:var(--ip-top,rgba(244,245,247,.72))!important;-webkit-backdrop-filter:blur(18px) saturate(1.5);backdrop-filter:blur(18px) saturate(1.5);border-bottom:1px solid var(--sp-line)!important;position:sticky;top:0;z-index:50}

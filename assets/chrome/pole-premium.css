@@ -1,3 +1,4 @@
+@layer verre,et-glass;
 /* Polices de secours calees sur Instrument Serif (largeur moyenne des titres du site) :
    tant que la police n est pas chargee, les titres gardent le meme nombre de lignes.
    Limitees aux caracteres d Instrument Serif : les autres gardent Georgia comme avant. */

@@ -1,3 +1,4 @@
+@layer verre,et-glass;
 .nx-util{background:rgba(4,8,15,.40);-webkit-backdrop-filter:blur(14px) saturate(130%);backdrop-filter:blur(14px) saturate(130%);border-bottom:1px solid var(--hair);
   transition:margin-top .32s var(--ease),opacity .25s var(--ease)}
 .nx-util-in{display:flex;justify-content:flex-end;align-items:center;gap:20px;
@@ -1151,3 +1152,13 @@ html:not(.et-plight):not(.et-jlight) #nav .brand .et-logo{color:#F8F5EA;--et-log
 :is(a,button,input,select,textarea,summary,[tabindex]:not([tabindex="-1"])):focus-visible{outline:2px solid #C9A24A;outline-offset:2px;box-shadow:0 0 0 4px #0A1A2F}
 html:is(.et-plight,.et-jlight) :is(a,button,input,select,textarea,summary,[tabindex]:not([tabindex="-1"])):focus-visible{box-shadow:0 0 0 4px #FAF8F3;outline-color:#7A5A12}
 /* et-lot29-focus:end */
+
+/* et-lot29-verre:start */
+/* Lot 29 (A) : coque niveau 1 pour la page a #nav sans premium-chrome (configurateur) : une seule
+   epaisseur de verre, la barre interne ne floute pas. */
+html:not(:has(link#premium-chrome)) #nav.nx{background:rgba(250,248,243,.86);-webkit-backdrop-filter:blur(16px) saturate(1.15);backdrop-filter:blur(16px) saturate(1.15);box-shadow:inset 0 1px 0 rgba(255,255,255,.65),0 10px 30px -18px rgba(10,20,34,.45)}
+html:not(:has(link#premium-chrome)):not(.et-plight):not(.et-jlight) #nav.nx{background:rgba(12,22,38,.86);box-shadow:inset 0 1px 0 rgba(255,255,255,.10),0 10px 30px -18px rgba(0,0,0,.6)}
+html:not(:has(link#premium-chrome)) #nav.nx .nx-bar{background:transparent!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important;box-shadow:none!important}
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){html:not(:has(link#premium-chrome)) #nav.nx{background:#faf8f3}html:not(:has(link#premium-chrome)):not(.et-plight):not(.et-jlight) #nav.nx{background:#0c1626}}
+@media(prefers-reduced-transparency:reduce){html:not(:has(link#premium-chrome)) #nav.nx{background:#faf8f3;-webkit-backdrop-filter:none;backdrop-filter:none;box-shadow:none}html:not(:has(link#premium-chrome)):not(.et-plight):not(.et-jlight) #nav.nx{background:#0c1626}}
+/* et-lot29-verre:end */

@@ -1,3 +1,4 @@
+@layer verre,et-glass;
 
 :root{
 
@@ -942,15 +943,17 @@ footer.pft .foot-news .fn-alt a{display:inline-block;padding:4px 0}
     }
   }
   @supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))) {
-    #nav.nx,.sp-top.et-al,.pp-sub,#nezBar,#nav .nx-mega {background:var(--et-glass-solid)!important}
+    #nav.nx,.sp-top.et-al,.pp-sub,#nezBar,#nav .nx-mega,.svc-top {background:var(--et-glass-solid)!important}
+    html[lang=ar] .arh {background:#0A1422!important}
   }
   @media(prefers-reduced-transparency:reduce) {
-    #nav.nx,.sp-top.et-al,.pp-sub,#nezBar,#nav .nx-mega,
+    #nav.nx,.sp-top.et-al,.pp-sub,#nezBar,#nav .nx-mega,.svc-top,
     #nav .nav-links.open,.sp-top details[open]>nav {
       background:var(--et-glass-solid)!important;
       -webkit-backdrop-filter:none!important;backdrop-filter:none!important;
       box-shadow:none!important;
     }
+    html[lang=ar] .arh {background:#0A1422!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important;box-shadow:none!important}
   }
   @media print {
     #nav.nx,.sp-top.et-al,.pp-sub,#nezBar {box-shadow:none!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
@@ -1080,3 +1083,21 @@ html[lang=ar] #main-content h1{max-width:none!important}
 html[lang=ar] #main-content h3{font-family:"Noto Sans Arabic",Inter,sans-serif!important;font-weight:700!important;letter-spacing:0!important}
 }
 /* et-lot29-ar:end */
+
+/* et-lot29-verre:start */
+/* Lot 29 (A) : bareme du verre en trois niveaux (coque des navigations, cartes, dense) et coque
+   niveau 1 etendue a l'en-tete arabe, aux en-tetes de service et au configurateur. Rien ne floute
+   dans la coque : les surfaces internes restent sans backdrop-filter. */
+@layer et-glass{
+:root{--verre-1:var(--et-glass-light);--verre-2:var(--et-glass-dense);--verre-3:var(--et-glass-solid);--verre-blur:blur(16px) saturate(1.15);--verre-line:var(--et-glass-line);--verre-reflect:inset 0 1px 0 var(--et-glass-reflect);--verre-shadow:0 10px 30px -18px rgba(10,20,34,.45)}
+#nav.nx,.sp-top.et-al,.pp-sub{box-shadow:var(--verre-reflect),var(--verre-shadow)!important}
+#nav.nx .nx-bar,#nav.nx .nav-in{-webkit-backdrop-filter:none!important;backdrop-filter:none!important;background:transparent!important;box-shadow:none!important}
+/* contraste mesure sans flou (voile compose sur noir) : langue active « EN/FR » et libelles de .pp-sub en clair */
+html:is(.et-plight,.et-jlight) #nav .nx-util a.nx-lang,html:is(.et-plight,.et-jlight) #nav .nx-util a.nx-lang b{color:var(--et-glass-ink)!important}
+html:is(.et-plight,.et-jlight) .pp-sub a:not([aria-current]){color:#2B3446!important}
+/* en-tete arabe : coque collante, voile nuit 78 % sur le heros */
+html[lang=ar] .arh{position:sticky!important;top:0!important;z-index:60!important;background:rgba(10,20,34,.78)!important;-webkit-backdrop-filter:var(--verre-blur)!important;backdrop-filter:var(--verre-blur)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.10),inset 0 -1px 0 rgba(255,255,255,.08)!important;color:#fff!important}
+html[lang=ar] .arh .arh-in{background:transparent!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+@media(max-width:768px){html[lang=ar] .arh{background:#0A1422!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}}
+}
+/* et-lot29-verre:end */

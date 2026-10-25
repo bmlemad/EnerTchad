@@ -1,3 +1,4 @@
+@layer verre,et-glass;
 /* Maquette : photographies de l'accueil (en-tête et quatre maillons). Images d'illustration, budget < 250 Ko. */
 #main-content.et-home .et-hero{position:relative;isolation:isolate;overflow:hidden}
 #main-content.et-home .et-hero-media{position:absolute;inset:0;z-index:-1;margin:0}
