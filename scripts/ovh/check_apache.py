@@ -149,18 +149,44 @@ DocumentRoot "{OUT}"
                 if asset.is_file():
                     relative = asset.relative_to(OUT).as_posix()
                     content("enertchad.com", "/" + relative, relative)
-            core = "assets/chrome/c_ac04328f0f47.js"
             assert (OUT / "contact-handler.php").is_file(), "contact receiver missing"
             checks += 1
-            connection = http.client.HTTPConnection("127.0.0.1", port, timeout=10)
-            connection.request("GET", "/" + core, headers={"Host": "enertchad.com", "X-OVH-Test-HTTPS": "on"})
-            response = connection.getresponse()
-            response.read()
-            cache = response.msg.get_all("Cache-Control")
-            connection.close()
-            assert cache == ["public, max-age=3600, stale-while-revalidate=86400"], cache
-            assert response.getheader("Expires") is None, response.getheader("Expires")
-            checks += 1
+
+            def cache_control(path):
+                connection = http.client.HTTPConnection("127.0.0.1", port, timeout=10)
+                connection.request("GET", path, headers={"Host": "enertchad.com", "X-OVH-Test-HTTPS": "on"})
+                response = connection.getresponse()
+                response.read()
+                cache = response.msg.get_all("Cache-Control")
+                expires = response.getheader("Expires")
+                connection.close()
+                return cache, expires
+
+            # Lot 27 (m10) : les .css/.js de /assets/chrome sont toujours appeles avec ?v=<empreinte>
+            # (verify.mjs) et figes un an ; Apache ne voit pas la query string, la regle porte sur
+            # l'extension, avec ou sans ?v=. Le reste du dossier (appele sans version) garde une heure.
+            immutable = ["public, max-age=31536000, immutable"]
+            hour = ["public, max-age=3600, stale-while-revalidate=86400"]
+            chrome = sorted(p.name for p in (OUT / "assets/chrome").iterdir() if p.is_file())
+            versions = json.loads((ROOT / ".generated/fingerprints.json").read_text())
+            assert any(n.endswith(".css") for n in chrome) and any(n.endswith(".js") for n in chrome)
+            for name in chrome:
+                want = immutable if name.endswith((".css", ".js")) else hour
+                paths = ["/assets/chrome/" + name]
+                if name in versions:
+                    paths.append(paths[0] + "?v=" + versions[name])
+                for path in paths:
+                    cache, expires = cache_control(path)
+                    assert cache == want, (path, cache)
+                    assert expires is None, (path, expires)
+                    checks += 1
+            for name in ("ftx_fr.json", "ftx_en.json", "ener-symbols.svg"):
+                assert name in chrome, name + " missing"
+                assert cache_control("/assets/chrome/" + name)[0] == hour, name
+            # Les autres dossiers gardent leurs regles (police figee, donnees une heure, pages revalidees).
+            assert cache_control("/assets/data/document-registry.json")[0] == hour
+            assert cache_control("/")[0] == ["public, max-age=0, must-revalidate"]
+            checks += 2
             print(json.dumps({"status": "passed", "http_checks": checks, "server": "Apache 2.4"}))
         except Exception:
             if error_log.exists():
