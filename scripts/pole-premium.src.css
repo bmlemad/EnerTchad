@@ -38,7 +38,7 @@
 @M .pp-btn-light{background:#fff;color:#0A1A2F}
 @M .pp-btn-ink{background:var(--pp-ink);color:var(--pp-paper)}
 @M .pp-btn-gold{background:var(--pp-gold-night);color:#07111F}
-@M .pp-btn:hover{filter:brightness(1.08)}
+@M .pp-btn:hover{filter:none;background-image:linear-gradient(rgba(255,255,255,.09),rgba(255,255,255,.09));box-shadow:0 8px 22px rgba(10,26,47,.22);text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1.5px}
 @M .pp-link{display:inline-flex;gap:12px;align-items:center;text-decoration:none;font-weight:500;padding-bottom:6px;border-bottom:1px solid var(--pp-gold);color:var(--pp-ink);min-height:44px}
 @M .pp-link::after{content:"→";transition:transform .3s}
 @M .pp-link:hover::after{transform:translateX(5px)}

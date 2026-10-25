@@ -138,3 +138,6 @@
   @AM .pp-hero .pp-wrap{padding-top:32px}
 }
 /* Logo transparent (11 oct. 2026) : sans fond crème, plus grand, tourné de 45° dans le sens horaire */
+/* et-lot29-focus */
+@A :is(a,button,input,select,textarea,summary):focus-visible{outline:2px solid #C9A24A;outline-offset:2px;box-shadow:0 0 0 4px #0A1A2F}
+@A.et-plight :is(a,button,input,select,textarea,summary):focus-visible{box-shadow:0 0 0 4px #FAF8F3;outline-color:#7A5A12}
