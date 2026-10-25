@@ -3,7 +3,7 @@
    Complete pole-premium.css (contenu) et premium-chrome.css (pied de page nuit).
    @A = racine arabe, @AD = racine arabe en theme sombre, @AM = contenu premium arabe. */
 @font-face{font-family:"Noto Naskh Arabic";src:url("/assets/fonts/NotoNaskhArabic-500-arabic.woff2") format("woff2");font-weight:500;font-display:optional;unicode-range:U+0600-06FF,U+200C-200F,U+2010-2011}
-@font-face{font-family:"Noto Sans Arabic";src:url("/assets/fonts/NotoSansArabic-arabic.woff2") format("woff2");font-weight:100 900;font-display:optional;unicode-range:U+0600-06FF,U+200C-200F,U+2010-2011}
+@font-face{font-family:"Noto Sans Arabic";src:url("/assets/fonts/NotoSansArabic-arabic.woff2") format("woff2");font-weight:400 700;font-display:optional;unicode-range:U+0600-06FF,U+200C-200F,U+2010-2011}
 @font-face{font-family:"Inter";src:url("/assets/fonts/Inter-latin.woff2") format("woff2");font-weight:400 700;font-display:optional;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 @font-face{font-family:"National Park";src:url("/assets/fonts/NationalPark-Bold-latin.woff2") format("woff2");font-weight:700;font-display:optional}
 
@@ -128,3 +128,13 @@
 @media (prefers-reduced-motion:reduce){
   @AM .pp-link::after{transition:none}
 }
+/* Lot 28 (M2) : sous 768 px la navigation passe sur deux ou trois lignes (premium-chrome.css la replie
+   au lieu de la faire defiler) ; l en-tete absolu recouvrait le fil d Ariane et le surtitre. Il revient
+   dans le flux, sur le bleu nuit du heros, et les heros perdent la reserve fixe prevue pour lui. */
+@media (max-width:767px){
+  @A .arh{position:relative;background:#0A1422}
+  @A main.et-home[dir="rtl"]>.et-hero{padding-top:48px}
+  @AM .pp-hero .pp-wrap{padding-top:32px}
+}
+/* Logo transparent (11 oct. 2026) : sans fond crème, plus grand, tourné de 45° dans le sens horaire */
+@layer verre{.arh-brand .bmk>rect{display:none!important}.arh-brand .bmk{width:40px!important;height:40px!important;border-radius:0!important;box-shadow:none!important;background:none!important;filter:drop-shadow(.71px .71px 1.5px rgba(10,20,34,.25))!important;transform:rotate(45deg)!important}}

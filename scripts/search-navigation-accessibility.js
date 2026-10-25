@@ -1,5 +1,5 @@
   /* et-search-accessibility:start */
-  let searchOpener=null,searchInert=[],searchOverflow='',searchCount=-1,searchTimer;
+  let searchOpener=null,searchInert=[],searchOverflow='',searchRootOverflow='',searchCount=-1,searchTimer;
   input.setAttribute('role','combobox');
   input.setAttribute('aria-autocomplete','list');
   input.setAttribute('aria-haspopup','listbox');
@@ -35,6 +35,8 @@
   function searchLock(){
     searchOpener=document.activeElement;searchOverflow=document.body.style.overflow;
     document.body.style.overflow='hidden';
+    // Lot 28 (M1) : html porte overflow-x:clip, le verrou doit aussi porter sur la racine.
+    if(document.documentElement){searchRootOverflow=document.documentElement.style.overflow;document.documentElement.style.overflow='hidden';}
     let branch=modal;
     while(branch&&branch!==document.body){
       const parent=branch.parentElement;if(!parent)break;
@@ -49,6 +51,7 @@
   function searchUnlock(){
     searchInert.forEach(([element,wasInert])=>{element.inert=wasInert;});searchInert=[];
     document.body.style.overflow=searchOverflow;
+    if(document.documentElement)document.documentElement.style.overflow=searchRootOverflow;
     input.setAttribute('aria-expanded','false');input.removeAttribute('aria-activedescendant');
     clearTimeout(searchTimer);searchStatus.textContent='';searchCount=-1;
     const candidates=[searchOpener,document.getElementById('navSearch'),document.getElementById('navTog')];

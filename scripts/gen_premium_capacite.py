@@ -188,7 +188,8 @@ def build_cap(m, lang, hero, fig, crumb=None):
     if crumb:
         crumb_h = f'<a href="{crumb[li][1]}">{crumb[li][0]}</a><span aria-hidden="true">›</span>'
     himg = (f'<img class="pp-hero-img" src="/assets/img/p/{hero}-1400.webp" srcset="/assets/img/p/{hero}-800.webp 800w, '
-            f'/assets/img/p/{hero}-1400.webp 1400w" sizes="100vw" alt="{ALT[hero][li]}" width="1400" height="934" fetchpriority="high" decoding="async">')
+            f'/assets/img/p/{hero}-1400.webp 1400w" sizes="100vw" alt="{ALT[hero][li]}" width="1400" height="934" fetchpriority="high">')
+    himg = P.hero_art(himg, hero)  # Lot 28 (M5) : source portrait pour les telephones
     hero_h = (f'<header class="pp-hero" id="top-pole">{himg}<div class="pp-wrap">'
               f'<nav class="pp-crumb" aria-label="{"Fil d’Ariane" if lang == "fr" else "Breadcrumb"}">'
               f'<a href="{"/" if lang == "fr" else "/index-en"}">{t["home"]}</a><span aria-hidden="true">›</span>{crumb_h}'

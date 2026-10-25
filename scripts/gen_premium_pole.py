@@ -126,7 +126,8 @@ def build_main(m, lang, hero, fig):
         a2 = f'<a class="pp-link pp-link-l" href="{escape(h2ref)}">{escape(sp(btn2.get_text()).rstrip(" ↓→").strip())}</a>'
     halt = HERO_ALT[hero][0 if lang == "fr" else 1]
     himg = (f'<img class="pp-hero-img" src="/assets/img/p/{hero}-1400.webp" srcset="/assets/img/p/{hero}-800.webp 800w, '
-            f'/assets/img/p/{hero}-1400.webp 1400w" sizes="100vw" alt="{halt}" width="1400" height="934" fetchpriority="high" decoding="async">')
+            f'/assets/img/p/{hero}-1400.webp 1400w" sizes="100vw" alt="{halt}" width="1400" height="934" fetchpriority="high">')
+    himg = hero_art(himg, hero)  # Lot 28 (M5) : source portrait pour les telephones
     hero_h = (f'<header class="pp-hero" id="top-pole">{himg}'
               f'<div class="pp-wrap"><nav class="pp-crumb" aria-label="{"Fil d’Ariane" if lang == "fr" else "Breadcrumb"}">'
               f'<a href="{"/" if lang == "fr" else "/index-en"}">{t["home"]}</a><span aria-hidden="true">›</span>'
@@ -360,10 +361,48 @@ def fix_skip(h):
         if not re.search(r'<a [^>]*class="et-skip[^"]*"[^>]*href="#main-content"', h) else h
 
 
+
+# Lot 28 (M5) : recadrage portrait des photos de heros lourdes pour les telephones. Le heros
+# (object-fit:cover, object-position 60 % 50 %) n en montre que la bande centrale : la variante
+# garde les memes pixels (meme resolution, x0 = (1400 - largeur) x 0,6), pour la moitie des octets.
+HERO_ART = {'chantier-ferraillage': ('m720', 720, 927)}
+HERO_ART_MEDIA = '(max-width:440px) and (orientation:portrait)'
+
+
+def hero_art(himg, hero):
+    """Enveloppe l <img> du heros dans un <picture> avec la source portrait (telephones)."""
+    art = HERO_ART.get(hero)
+    if not art or himg.startswith('<picture>'):
+        return himg
+    suf, w, h = art
+    return (f'<picture><source media="{HERO_ART_MEDIA}" srcset="/assets/img/p/{hero}-{suf}.webp" width="{w}" height="{h}">'
+            f'{himg}</picture>')
+
+
+def hero_preload(h):
+    """Lot 28 (M5) : precharge la photo du heros avec les memes src, srcset et sizes que l <img>
+    (fetchpriority=high), avant la premiere feuille de l en-tete. Sans ce lien, Chromium ne
+    demande l image qu apres les feuilles bloquantes (LCP mobile mesure a 4,4-7 s en 4G lente).
+    Avec une source portrait (<picture>), deux liens complementaires par media."""
+    m = re.search(r'(<source media="([^"]+)" srcset="([^"]+)"[^>]*>)?<img class="pp-hero-img" src="([^"]+)"(?: srcset="([^"]+)")?(?: sizes="([^"]+)")?', h)
+    if not m or re.search(r'<link\b[^>]*rel="preload"[^>]*as="image"', h):
+        return h
+    media = f' media="not all and {m[2]}"' if m[1] else ''
+    link = (f'<link rel="preload" as="image" href="{m[4]}"' + (f' imagesrcset="{m[5]}"' if m[5] else '')
+            + (f' imagesizes="{m[6]}"' if m[6] else '') + media + ' fetchpriority="high">\n')
+    if m[1]:
+        link = f'<link rel="preload" as="image" href="{m[3]}" media="{m[2]}" fetchpriority="high">\n' + link
+    end = h.find('</head>')
+    i = h.find('<link rel="stylesheet"')
+    if i < 0 or (end >= 0 and i > end):
+        i = end
+    return h[:i] + link + h[i:]
+
+
 def rebuild(path, lang, hero, fig, builder=None):
     h = open(path, encoding='utf-8').read()
     if 'class="ppl"' in h:
-        h2 = re.sub(r'pole-premium\.css\?b=\d+', f'pole-premium.css?b={BUILD}', fix_skip(h))
+        h2 = hero_preload(re.sub(r'pole-premium\.css\?b=\d+', f'pole-premium.css?b={BUILD}', fix_skip(h)))
         if h2 != h:
             open(path, 'w', encoding='utf-8').write(h2)
             return 'deja migre, mis a jour (lien d evitement, version de la feuille)'
@@ -394,7 +433,7 @@ def rebuild(path, lang, hero, fig, builder=None):
     main = (builder or build_main)(soup.find('main'), lang, hero, fig)
     out = (head + body_tag + '\n' + skip + '\n<div id="readbar" aria-hidden="true"></div>\n' + nav + '\n' + navjs + '\n'
            + main + '\n' + footer + tail + '\n</body>\n</html>\n')
-    out = fix_skip(re.sub(r'\n{4,}', '\n\n\n', out))
+    out = hero_preload(fix_skip(re.sub(r'\n{4,}', '\n\n\n', out)))
     open(path, 'w', encoding='utf-8').write(out)
     return len(out)
 

@@ -303,5 +303,5 @@ def main():
 
 if __name__ == '__main__':
     main()
-    from apply_readiness_20261013 import main as apply_readiness
-    apply_readiness()
+    # Lot 27 : apply_readiness_20261013.py (relance ici auparavant) est retire ; ses effets
+    # sont dans les sources committees.

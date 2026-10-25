@@ -24,7 +24,7 @@ from html import escape
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import gen_premium_institution as G  # noqa: E402
-from gen_premium_pole import sp, inner, text, SUBNAV_JS, BeautifulSoup  # noqa: E402
+from gen_premium_pole import sp, inner, text, SUBNAV_JS, BeautifulSoup, hero_preload, hero_art  # noqa: E402
 
 BUILD = '202610012300'
 PAGES = [('ar.html', 'pompe-petrole'), ('ar-poles.html', 'complexe-industriel'), ('ar-amont.html', 'chantier-ferraillage'),
@@ -180,7 +180,8 @@ def hero(h, img, hi=None, crumb=''):
         hl = (f'<p class="pp-fignote">{text(hi.find("i"))} · <a href="{escape(a["href"])}">'
               f'{text(a.find("time"))} — {text(a.find("span"))}</a></p>')
     himg = (f'<img class="pp-hero-img" src="/assets/img/p/{img}-1400.webp" srcset="/assets/img/p/{img}-800.webp 800w, '
-            f'/assets/img/p/{img}-1400.webp 1400w" sizes="100vw" alt="{ALT_AR[img]}" width="1400" height="934" fetchpriority="high" decoding="async">')
+            f'/assets/img/p/{img}-1400.webp 1400w" sizes="100vw" alt="{ALT_AR[img]}" width="1400" height="934" fetchpriority="high">')
+    himg = hero_art(himg, img)  # Lot 28 (M5) : source portrait pour les telephones
     return (f'<header class="pp-hero pp-hero-s" id="top-pole">{himg}<div class="pp-wrap">' + crumb
             + (f'<p class="pp-k">{text(k)}</p>' if k is not None else '') + f'<h1>{inner(h1)}</h1>'
             + (f'<p class="pp-sublead">{inner(lead)}</p>' if lead is not None else '')
@@ -366,7 +367,7 @@ def rebuild(path, img, phone, nav):
     ratio = len(after) / max(1, len(before))
     out_h = (head_ + body_tag + '\n' + skip_h + '\n' + header(old_header, old_nav, path) + '\n' + main_h + '\n'
              + footer(old_footer, old_nav, motto, phone) + '\n' + tail + THEME_JS + '\n</body>\n</html>\n')
-    out_h = re.sub(r'[ \t]+\n', '\n', re.sub(r'\n{4,}', '\n\n\n', out_h))
+    out_h = hero_preload(re.sub(r'[ \t]+\n', '\n', re.sub(r'\n{4,}', '\n\n\n', out_h)))
     if ratio < 0.97:
         raise SystemExit(f'{path} : texte conserve a {ratio:.1%} seulement, page non ecrite')
     open(path, 'w', encoding='utf-8').write(out_h)

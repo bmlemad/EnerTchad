@@ -298,7 +298,8 @@ def hero_html(hero, lang, img, crumb=None):
     if defn is not None:
         trust_h = f'<p class="pp-fignote pp-def">{inner(defn)}</p>' + trust_h
     himg = (f'<img class="pp-hero-img" src="/assets/img/p/{img}-1400.webp" srcset="/assets/img/p/{img}-800.webp 800w, '
-            f'/assets/img/p/{img}-1400.webp 1400w" sizes="100vw" alt="{ALT[img][li]}" width="1400" height="934" fetchpriority="high" decoding="async">')
+            f'/assets/img/p/{img}-1400.webp 1400w" sizes="100vw" alt="{ALT[img][li]}" width="1400" height="934" fetchpriority="high">')
+    himg = P.hero_art(himg, img)  # Lot 28 (M5) : source portrait pour les telephones
     return (f'<header class="pp-hero pp-hero-s" id="top-pole">{himg}<div class="pp-wrap">{crumb_h}'
             + (f'<p class="pp-k">{text(kick)}</p>' if kick is not None else '') + f'<h1>{inner(h1)}</h1>'
             + (f'<p class="pp-sublead">{inner(lead)}</p>' if lead is not None else '')
@@ -448,7 +449,7 @@ def visible_text(html):
 def rebuild(path, lang, img):
     h = open(path, encoding='utf-8').read()
     if 'class="ppl"' in h:
-        h2 = P.fix_skip(h)
+        h2 = P.hero_preload(P.fix_skip(h))
         if h2 != h:
             open(path, 'w', encoding='utf-8').write(h2)
             return 'deja migre, mis a jour'
@@ -516,11 +517,7 @@ def rebuild(path, lang, img):
            + main + '\n' + footer + tail + '\n</body>\n</html>\n')
     out = P.fix_skip(re.sub(r'\n{4,}', '\n\n\n', out))
     out = re.sub(r'[ \t]+\n', '\n', out)  # sans espaces de fin de ligne (comme la normalisation du depot)
-    if path in PRELOAD_HERO and img:
-        out = out.replace('<link rel="stylesheet" href="/assets/chrome/bundle_head_b2.css">',
-                          f'<link rel="preload" as="image" href="/assets/img/p/{img}-1400.webp" imagesrcset="/assets/img/p/{img}-800.webp 800w, '
-                          f'/assets/img/p/{img}-1400.webp 1400w" imagesizes="100vw" fetchpriority="high">\n'
-                          '<link rel="stylesheet" href="/assets/chrome/bundle_head_b2.css">', 1)
+    out = P.hero_preload(out)  # Lot 28 (M5) : toutes les pages a photo de heros (remplace PRELOAD_HERO, meme position)
     if ratio < 0.97:
         raise SystemExit(f'{path} : texte conserve a {ratio:.1%} seulement, page non ecrite')
     open(path, 'w', encoding='utf-8').write(out)

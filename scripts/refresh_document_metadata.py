@@ -139,7 +139,7 @@ def main():
             page = ROOT / (name + suffix + '.html')
             old = page.read_text(encoding='utf-8')
             new = update_cards(old, registry['documents'], bool(suffix))
-            new = re.sub(r'/assets/chrome/document-room\.js(?:\?b=\d+)?', '/assets/chrome/document-room.js?b=2026101402', new)
+            # Lot 27 : plus de ?b= force sur document-room.js (version par empreinte, lot 26).
             if new != old:
                 page.write_text(new, encoding='utf-8')
     excluded = {'.git', '.next', 'out', 'node_modules', 'public', 'reports', 'qa'}
