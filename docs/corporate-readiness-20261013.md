@@ -1,8 +1,8 @@
 # Corporate readiness update — 13 October 2026
 
-The reviewed editorial changes are maintained in `scripts/apply_readiness_20261013.py`.
-The existing Next.js preparation step applies this idempotent migration before
-exporting pages. Existing contact information is preserved in the original pages;
+The reviewed editorial changes were maintained in `scripts/apply_readiness_20261013.py`,
+applied at each build until lot 26. Since lot 27 they are committed in the page sources and
+the script is retired (see `docs/migration-nextjs.md`). Existing contact information is preserved in the original pages;
 the migration does not replace it or introduce new corporate or project facts.
 
 The update covers the French and English homepage, governance, projects,
