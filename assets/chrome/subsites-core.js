@@ -40,15 +40,25 @@ const tog=document.getElementById('navTog'),links=document.getElementById('navLi
 })();
 function setNavH(){document.documentElement.style.setProperty('--nav-h',navEl.offsetHeight+'px');}
 setNavH();window.addEventListener('resize',setNavH);window.addEventListener('load',function(){setNavH();setTimeout(setNavH,400);setTimeout(setNavH,3200);});
+/* Lot 28 (M1) : verrou de defilement partage (menu mobile, recherche). html porte overflow-x:clip, donc
+   body{overflow:hidden} n'est pas propage au viewport : on fige la racine et on fixe body a sa position
+   (iOS/Android), puis on restaure exactement la position a la liberation. */
+var etScrollLock=window.etScrollLock||(window.etScrollLock=(function(){var owners={},n=0,y=0,keep=null;
+  return function(owner,on){var d=document.documentElement,b=document.body;if(!d||!b)return;
+    if(on){if(owners[owner])return;owners[owner]=1;if(n++)return;y=window.pageYOffset||d.scrollTop||0;
+      keep=[d.style.overflow,d.style.overscrollBehavior,b.style.position,b.style.top,b.style.left,b.style.right,b.style.width,b.style.overscrollBehavior];
+      d.style.overflow='hidden';d.style.overscrollBehavior='none';b.style.overscrollBehavior='none';
+      b.style.position='fixed';b.style.top=(-y)+'px';b.style.left='0';b.style.right='0';b.style.width='100%';}
+    else{if(!owners[owner])return;delete owners[owner];if(--n)return;
+      d.style.overflow=keep[0];d.style.overscrollBehavior=keep[1];b.style.position=keep[2];b.style.top=keep[3];b.style.left=keep[4];b.style.right=keep[5];b.style.width=keep[6];b.style.overscrollBehavior=keep[7];
+      var sb=d.style.scrollBehavior;d.style.scrollBehavior='auto';window.scrollTo(0,y);d.style.scrollBehavior=sb;}};})());
 if(tog && links){
 function setMenu(open){
   links.classList.toggle('open',open);
   tog.setAttribute('aria-expanded',open?'true':'false');
-  // verrou de défilement quand le menu mobile est ouvert
-  if(window.matchMedia('(max-width:1240px)').matches){
-    document.body.style.overflow=open?'hidden':'';
-    document.body.style.overflowX='hidden';
-  }
+  // verrou de défilement quand le menu mobile est ouvert (racine + body fixe, position restauree)
+  etScrollLock('menu',!!open&&window.matchMedia('(max-width:1240px)').matches);
+  if(window.matchMedia('(max-width:1240px)').matches)document.body.style.overflowX='hidden';
   // à la fermeture, replier les rubriques ouvertes (même comportement que u2_e8be195d19be.js)
   if(!open){links.querySelectorAll('.nav-item.open').forEach(it=>{it.classList.remove('open');const t=it.querySelector('.nav-trigger');if(t)t.setAttribute('aria-expanded','false');});}
 }
@@ -78,7 +88,7 @@ document.addEventListener('click',e=>{
   if(links.classList.contains('open')&&!navEl.contains(e.target))setMenu(false);
 });
 // réinitialise le verrou si on repasse en desktop
-addEventListener('resize',()=>{if(!window.matchMedia('(max-width:1240px)').matches){document.body.style.overflow='';}});
+addEventListener('resize',()=>{if(!window.matchMedia('(max-width:1240px)').matches){document.body.style.overflow='';etScrollLock('menu',false);}});
 
 }
 // reveal + count
