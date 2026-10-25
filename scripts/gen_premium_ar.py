@@ -369,6 +369,8 @@ def rebuild(path, img, phone, nav):
     out_h = (head_ + body_tag + '\n' + skip_h + '\n' + header(old_header, old_nav, path) + '\n' + main_h + '\n'
              + footer(old_footer, old_nav, motto, phone) + '\n' + tail + THEME_JS + '\n</body>\n</html>\n')
     out_h = hero_preload(re.sub(r'[ \t]+\n', '\n', re.sub(r'\n{4,}', '\n\n\n', out_h)))
+    # lot 29 (B1) : les pages arabes entrent dans le systeme commun (typographie, sections)
+    out_h = re.sub(r'<html ([^>]*lang="ar"[^>]*?)(?: data-et-modern="[^"]*")?>', r'<html \1 data-et-modern="industrial">', out_h, count=1)
     if ratio < 0.97:
         raise SystemExit(f'{path} : texte conserve a {ratio:.1%} seulement, page non ecrite')
     open(path, 'w', encoding='utf-8').write(out_h)
