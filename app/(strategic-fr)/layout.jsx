@@ -1,5 +1,6 @@
 import Script from 'next/script';
 import { fingerprintUrl } from '../../lib/fingerprint.js';
+import '../../assets/chrome/tokens.css';
 import '../../assets/chrome/strategic-premium.css';
 import '../../assets/chrome/coherence-20261013.css';
 // Thème : suit le choix fait ailleurs sur le site (et-plight = 0 : sombre), posé avant l’affichage.
