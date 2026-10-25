@@ -1,20 +1,13 @@
-/* EnerTchad — Navigation « Direction A » : ouverture des méga-menus
-   au clic/clavier sur desktop (tactile compris). Le mobile (accordéon,
-   tiroir, verrou de défilement) reste géré par le chrome commun. */
+
 try{(function(){
   var mq=window.matchMedia('(min-width:1241px)');
   var links=document.getElementById('navLinks');if(!links)return;
-  /*  : le gestionnaire de focus (plus bas) pose sur le panneau des styles
-     en ligne !important ; les retirer fait partie de la fermeture, sinon le
-     panneau reste peint alors que la classe .open a disparu. */
+
   var PROPS=['visibility','opacity','pointer-events','transform'];
   function nu(item){var m=item&&item.querySelector('.nx-mega');
     if(m)PROPS.forEach(function(k){m.style.removeProperty(k)});}
   function closeAll(except){
-    /* 11 oct. 2026 : on parcourt toutes les rubriques, pas seulement .open.
-       Sur certaines pages (carnets, pôles aval, crédits), un autre script pose
-       aussi les styles en ligne !important sans la classe .open : Échap
-       remettait aria-expanded à false mais le panneau restait peint. */
+
     links.querySelectorAll('.nav-item').forEach(function(i){
       if(i===except)return;
       if(i.classList.contains('open')){
@@ -33,19 +26,13 @@ try{(function(){
       closeAll(item);
       item.classList.toggle('open',!was);
       btn.setAttribute('aria-expanded',String(!was));
-      /*  : un declencheur de divulgation doit refermer au second appui.
-         Le clic donne le focus au bouton : le gestionnaire focusin vient de
-         poser visibility/opacity en ligne !important, et :focus-within garde
-         le panneau ouvert. On retire donc les styles en ligne et on pose
-         .kbesc (deja utilisee par Echap) qui neutralise :hover et
-         :focus-within jusqu'a ce que le focus ou la souris quitte l'element. */
+
       var m=item.querySelector('.nx-mega');
       if(was){
         nu(item);
         item.classList.add('kbesc');
         var clear=function(e){
-          /*  : un focusout qui reste dans l'element (le panneau rend la main
-             au declencheur) n'est pas une sortie : il ne doit pas lever .kbesc. */
+
           if(e&&e.type==='focusout'&&item.contains(e.relatedTarget))return;
           item.classList.remove('kbesc');
           item.removeEventListener('focusout',clear);
@@ -59,14 +46,11 @@ try{(function(){
         m.style.setProperty('pointer-events','auto','important');
       }
     });
-    /* synchronise aria-expanded avec l'ouverture au survol (desktop) */
+
     item.addEventListener('mouseenter',function(){if(mq.matches&&!item.classList.contains('kbesc'))btn.setAttribute('aria-expanded','true');});
     item.addEventListener('mouseleave',function(){if(mq.matches&&!item.classList.contains('open')&&!item.matches(':focus-within'))btn.setAttribute('aria-expanded','false');});
-    /* Lot 20 : le focus seul n'ouvre plus le panneau (motif « disclosure ») ;
-       aria-expanded ne change qu'au clic, a Entree/Espace, a la fleche bas ou a Echap. */
-    /* 11 oct. 2026 : quand le focus quitte la rubrique (Tab après le dernier
-       lien), on referme le panneau ouvert au clic ; sinon il restait ouvert
-       sous le panneau suivant, ouvert par :focus-within. */
+
+
     item.addEventListener('focusout',function(e){
       if(!mq.matches)return;
       var to=e.relatedTarget;
@@ -81,8 +65,7 @@ try{(function(){
   document.addEventListener('keydown',function(e){
     if(e.key==='Escape'&&mq.matches){
       closeAll(null);
-      /* referme le panneau mais rend le focus au declencheur (a11y) ;
-         .kbesc neutralise :focus-within le temps que le focus reparte */
+
       var it=document.activeElement&&document.activeElement.closest('.nav-item');
       if(it){
         var b=it.querySelector('.nav-trigger');
@@ -98,9 +81,7 @@ try{(function(){
   });
 })();}catch(_e){}
 
-/* Bascule linguistique directe : utilise l'equivalent hreflang de la page
-   courante. Ainsi FR -> EN et EN -> FR restent sur le meme contenu au lieu
-   de retomber sur un portail generique. */
+
 try{(function(){
   var lang=(document.documentElement.getAttribute('lang')||'').slice(0,2);
   var target=lang==='fr'?'en':(lang==='en'?'fr':'');
@@ -111,9 +92,7 @@ try{(function(){
   document.querySelectorAll('a.nx-lang').forEach(function(a){a.href=href;});
 })()}catch(e){}
 
-/* Orientation : surligner la page courante dans les megamenus.
-   Compare le pathname aux href des liens .nx-mega ; pose aria-current="page"
-   (stylé en CSS). Si aucun onglet n'est actif, allume aussi le déclencheur parent. */
+
 try{(function(){
   var norm=function(u){u=(u||'').replace(/^https?:\/\/[^\/]+/,'').split('#')[0].split('?')[0];
     u=u.replace(/index\.html$/,'').replace(/\.html$/,'');
@@ -133,22 +112,13 @@ try{(function(){
   }
 })()}catch(e){}
 
-/* Nav au scroll : repli universel (certaines pages ne chargent pas le script nav historique).
-   Idempotent avec le gestionnaire existant. */
+
 try{(function(){var nav=document.getElementById('nav')||document.querySelector('.nav.nx');if(!nav)return;
 var f=function(){nav.classList.toggle('scrolled',(window.scrollY||window.pageYOffset||0)>20)};
 addEventListener('scroll',f,{passive:true});f();})()}catch(e){}
 
 ;(function(){/* a11y: keyboard-operable mega-menu (desktop) + truthful aria-expanded */var mq=window.matchMedia("(max-width:1240px)");var items=[].slice.call(document.querySelectorAll(".nav-item.nx-item"));function setAria(it,v){var b=it.querySelector(".nav-trigger");if(b)b.setAttribute("aria-expanded",v?"true":"false");}function reveal(it,on){var m=it.querySelector(".nx-mega");if(!m)return;if(on){m.style.setProperty("visibility","visible","important");m.style.setProperty("opacity","1","important");m.style.setProperty("pointer-events","auto","important");m.style.setProperty("transform","translateY(0) scale(1)","important");}else{m.style.removeProperty("visibility");m.style.removeProperty("opacity");m.style.removeProperty("pointer-events");m.style.removeProperty("transform");}}function ariaFromVis(it){if(mq.matches)return;var m=it.querySelector(".nx-mega");if(!m)return;var cs=getComputedStyle(m);setAria(it,cs.visibility!=="hidden"&&parseFloat(cs.opacity)>0.5&&cs.display!=="none");}function closeOthers(except){items.forEach(function(it){if(it!==except){reveal(it,false);if(!it.matches(":hover"))setAria(it,false);}});}items.forEach(function(item){var btn=item.querySelector(".nav-trigger");if(!btn)return;var mega=item.querySelector(".nx-mega");item.addEventListener("focusin",function(){if(mq.matches)return;closeOthers(item);});item.addEventListener("focusout",function(){if(mq.matches)return;setTimeout(function(){if(!item.contains(document.activeElement)){reveal(item,false);ariaFromVis(item);}},10);});["mouseenter","mouseleave"].forEach(function(ev){item.addEventListener(ev,function(){setTimeout(function(){ariaFromVis(item);},20);setTimeout(function(){ariaFromVis(item);},340);});});if(mega)mega.addEventListener("transitionend",function(){ariaFromVis(item);});});document.addEventListener("keydown",function(e){if(e.key!=="Escape"||mq.matches)return;items.forEach(function(item){if(item.contains(document.activeElement)){reveal(item,false);setAria(item,false);item.classList.add("kbesc");/*  : le focusin declenche par le retour du focus au declencheur venait de retirer .kbesc ; sans elle, :focus-within rouvrait le panneau alors que aria-expanded disait false */var b=item.querySelector(".nav-trigger");if(b)b.focus();}});});})();
-/* EnerTchad — Cale d'ancre. La feuille posait scroll-padding-top:116px, une
-   constante qui ne correspond a aucun gabarit reel : la barre principale
-   mesure 77, 93 ou 132 px selon la largeur, et les sous-nav collantes
-   (corp-nav, nav.toc, #inv-toc, #cw-tabs) empilent 40 a 70 px de plus. Un
-   titre vise par une ancre finissait donc sous les barres. On mesure la pile
-   effective et on ecrit --et-anc sur la racine ; la feuille s'en sert et
-   garde une valeur de repli par palier pour les pages sans ce script.
-   Position collee = valeur de `top` calculee + hauteur : inutile de defiler
-   pour la connaitre. Chiffres et protocole dans MAINTENANCE 18. */
+
 try{(function(){
   var re=document.documentElement,dernier=-1,tid=0;
   function pile(){
@@ -156,9 +126,7 @@ try{(function(){
     var n=document.querySelectorAll('header,nav,div,section,aside'),i,e,c,h,t,r,cv=null;
     for(i=0;i<n.length;i++){
       e=n[i];
-      /* Sous un conteneur content-visibility:auto, seuls nav et header sont
-         examines : lire le style d un bloc quelconque de ce sous-arbre force
-         le rendu du contenu hors ecran que content-visibility economise. */
+
       if(cv&&cv.contains(e)){if(e.tagName!=='NAV'&&e.tagName!=='HEADER')continue;}else cv=null;
       c=getComputedStyle(e);
       if(!cv&&c.contentVisibility==='auto')cv=e;
@@ -187,20 +155,14 @@ try{(function(){
     var b=document.querySelector('#nav,header');if(b)ro.observe(b);}
   setTimeout(pose,600);setTimeout(pose,1800);
 })();}catch(e){}
-/*  - a l impression, deplier les <details> replies puis les refermer.
-   Complement au correctif CSS de nav_a.css pour les moteurs sans
-   ::details-content. Idempotent, silencieux, sans effet a l ecran. */
+
 try{(function(){var o=[];
  addEventListener('beforeprint',function(){try{o=[];
    Array.prototype.forEach.call(document.querySelectorAll('details:not([open])'),function(d){o.push(d);d.open=true});
  }catch(e){}});
  addEventListener('afterprint',function(){try{o.forEach(function(d){d.open=false});o=[];}catch(e){}});
 })();}catch(e){}
-/* Etat de l interface recopie sur <body data-etui> : menu mobile ouvert
-   (#navLinks.open) et avis cookies affiche (#ckn.show, statique ou insere
-   plus tard par script). Remplace des selecteurs body:has(...) qui faisaient
-   recalculer le style de toute la page a chaque insertion ou changement de
-   classe dans le document. */
+
 try{(function(){
  var b=document.body;if(!b||!window.MutationObserver)return;
  var n=document.getElementById('navLinks'),k=null;
@@ -220,7 +182,7 @@ try{(function(){
 })();}catch(e){}
 
 
-/* Strategic shortcut: 90-second institutional overview. */
+
 try{(function(){
   var u=document.querySelector('.nx-util-in');if(!u)return;
   if(u.querySelector('[data-et-short="essentiel"],a[href="/essentiel"],a[href="/essentiel-en"]'))return;
@@ -230,11 +192,11 @@ try{(function(){
   if(lang==='en'){a.href='/essentiel-en';a.textContent='90 seconds';a.setAttribute('aria-label','EnerTchad in 90 seconds');}
   else if(lang==='ar'){a.href='/ar';a.textContent='لمحة';a.setAttribute('aria-label','لمحة عن EnerTchad');}
   else{a.href='/essentiel';a.textContent='90 secondes';a.setAttribute('aria-label','EnerTchad en 90 secondes');}
-  /* Même place que dans les pages qui l'écrivent en dur : après Clients et Fournisseurs (audit m14). */
+
   var links=u.querySelectorAll('a');u.insertBefore(a,links[2]||null);
 })()}catch(e){}
 
-/* Pied de page : rubriques repliables sur mobile (boutons), toujours ouvertes sur ordinateur. */
+
 try{(function(){
  function go(){
   var f=document.querySelector('footer.pft');if(!f||f.classList.contains('pft-acc'))return;
@@ -258,14 +220,10 @@ try{(function(){
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',go);else go();
 })()}catch(e){}
 
-/* Optional audience measurement loads locally; Google waits for consent. */
+
 (function(){var s=document.createElement("script");s.src="/assets/chrome/audience-consent.js?v=20261008";s.defer=true;document.head.appendChild(s)})();
 
-/* 15 oct. 2026 : intention de survol du mega menu (ordinateur, souris).
-   Sans ce délai, aller en diagonale de l'intitulé vers les liens fait passer la souris sur l'intitulé
-   voisin et ouvre son menu. Quand un menu est déjà ouvert, le voisin ne s'ouvre qu'après 160 ms de pause
-   sur son intitulé ; le menu quitté reste affiché 280 ms. Premier menu ouvert sans délai ; clavier,
-   tactile et mobile inchangés. Styles posés en ligne (CSSOM), retirés dès que l'état est réglé. */
+
 ;(function(){try{
  var nav=document.getElementById('nav');if(!nav||!nav.classList.contains('nx'))return;
  var mq=window.matchMedia('(min-width:1241px) and (hover:hover)');
@@ -291,9 +249,7 @@ try{(function(){
  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&cur){clearTimeout(tClose);clearTimeout(tOpen);items.forEach(reset);cur=null}});
 }catch(e){}})();
 
-/* Menu mobile ouvert : la tabulation reste dans la navigation (piège du focus).
-   Les liens précèdent le bouton dans le DOM ; sans ce piège, Tab depuis le bouton
-   sortait vers le contenu de la page, menu toujours ouvert. */
+
 (function(){
   var mq=window.matchMedia('(max-width:1240px)');
   document.addEventListener('keydown',function(e){
@@ -311,10 +267,7 @@ try{(function(){
 
 (function(){var b=document.getElementById('nezBar'),m=document.getElementById('nxm-b'),t=b&&b.querySelector('a[href^="/nos-activites"]');if(!t||!m)return;var d=document.createElement('div'),s=document.createElement('div'),h=document.createElement('div'),q=document.createElement('button'),g=document.createElement('nav'),k={},n=m.querySelector('.nxh');d.id='nezDim';s.id='nezSheet';s.setAttribute('role','dialog');s.setAttribute('aria-modal','true');s.setAttribute('aria-labelledby','nezSheetT');h.className='nzs-h';h.innerHTML='<b id="nezSheetT"></b>';h.firstChild.textContent=n?n.textContent:t.textContent.trim();q.type='button';q.className='nzs-x';q.setAttribute('aria-label',document.documentElement.lang=='en'?'Close':'Fermer');q.textContent='✕';h.appendChild(q);s.appendChild(h);s.appendChild(g);[].forEach.call(m.querySelectorAll('a[href]:not(.pn-feat)'),function(a){var r=a.getAttribute('href'),x=a.querySelector('strong,b'),y=a.querySelector('em'),l=document.createElement('a');if(k[r])return;k[r]=1;l.href=r;l.textContent=(x||a).textContent.replace(/\s*→\s*$/,'').trim();a.classList.contains('pn-all')&&(l.className='nzs-all');if(y){x=document.createElement('small');x.textContent=y.textContent;l.appendChild(x)}g.appendChild(l)});d.hidden=s.hidden=true;document.body.appendChild(d);document.body.appendChild(s);t.setAttribute('aria-controls','nezSheet');function c(o){d.hidden=s.hidden=!o;t.setAttribute('aria-expanded',!!o);b.classList.toggle('nz-open',!!o);document.documentElement.classList.toggle('nz-lock',!!o)}function p(){var y=b.getBoundingClientRect().top;s.style.top=y/2+'px';s.style.maxHeight=y-32+'px'}c(0);t.addEventListener('click',function(e){if(getComputedStyle(b).display=='none')return;e.preventDefault();if(!s.hidden)return c(0);p();c(1);(e.detail?s:g.firstChild).focus()});s.tabIndex=-1;q.addEventListener('click',function(){c(0);t.focus()});d.addEventListener('click',function(){c(0)});addEventListener('keydown',function(e){e.key=='Escape'&&!s.hidden&&(c(0),t.focus())});var w=innerWidth;addEventListener('resize',function(){s.hidden||p();innerWidth!=w&&(w=innerWidth,c(0))})})();
 
-/* Lot 20 : mega-menu au clavier (ordinateur). Tab passe de rubrique en rubrique sans
-   ouvrir les panneaux ; Entree/Espace (clic natif du bouton) ou fleche bas ouvrent,
-   Echap ferme et rend le focus au declencheur. aria-haspopup est retire : le panneau
-   est une zone de liens, pas un menu ARIA. */
+
 try{(function(){
   var mq=window.matchMedia('(min-width:1241px)');
   [].forEach.call(document.querySelectorAll('#navLinks .nav-item>.nav-trigger'),function(btn){
@@ -328,9 +281,7 @@ try{(function(){
     });
   });
 })();}catch(e){}
-/* Lot 20 (WCAG 2.2 · 2.4.11) : un lien qui recoit le focus dans une barre a defilement
-   horizontal (sous-navigation .pp-sub sur mobile) est ramene dans la partie visible ;
-   Chrome ne la faisait pas defiler quand le lien commencait au bord droit. */
+
 try{document.addEventListener('focusin',function(e){
   var t=e.target,p=t&&t.parentElement;
   while(p&&p!==document.body){
@@ -346,9 +297,7 @@ try{document.addEventListener('focusin',function(e){
 },true);}catch(e){}
 
 
-/* Lot 24 : la barre utilitaire (Clients … Manifester son intérêt) est une barre d'outils.
-   Un seul arrêt de tabulation ; flèches gauche/droite, Début/Fin pour passer d'un lien à l'autre.
-   Sans JavaScript, chaque lien reste un arrêt de tabulation. */
+
 try{(function(){
  var u=document.querySelector('.nx-util-in');if(!u||u.getAttribute('role')==='toolbar')return;
  var lang=(document.documentElement.getAttribute('lang')||'fr').slice(0,2);
@@ -368,3 +317,22 @@ try{(function(){
  });
  var t=null;window.addEventListener('resize',function(){clearTimeout(t);t=setTimeout(function(){set(cur)},150)});
 })()}catch(e){}
+/* et-mobile-focus:start */
+(function(factory){var api=factory();if(typeof module==='object'&&module.exports)module.exports=api;else api.bind(document);})(function(){
+ function cycle(event,sheet,active){
+  if(sheet.hidden||event.key!=='Tab')return;
+  var items=Array.prototype.filter.call(sheet.querySelectorAll('a[href],button:not([disabled]),[tabindex]:not([tabindex="-1"])'),function(el){return el.getClientRects().length;});
+  if(!items.length){event.preventDefault();sheet.focus();return;}
+  var first=items[0],last=items[items.length-1];
+  if(event.shiftKey&&(active===first||active===sheet)){event.preventDefault();last.focus();}
+  else if(!event.shiftKey&&(active===last||active===sheet)){event.preventDefault();first.focus();}
+ }
+ function bind(doc){
+  var sheet=doc.getElementById('nezSheet'),dim=doc.getElementById('nezDim');
+  if(!sheet)return;
+  sheet.addEventListener('keydown',function(e){cycle(e,sheet,doc.activeElement);});
+  if(dim)dim.addEventListener('click',function(){var trigger=doc.querySelector('[aria-controls="nezSheet"]');if(trigger)trigger.focus();});
+ }
+ return {cycle:cycle,bind:bind};
+});
+/* et-mobile-focus:end */

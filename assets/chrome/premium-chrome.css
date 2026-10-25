@@ -1,15 +1,6 @@
-/* Jetons de design EnerTchad — référence unique (audit du design, étape 3, 12 octobre 2026).
-   Palette retenue : celle des pôles, déjà rendue sur la majorité des pages.
-   1. Palette brute : une couleur, un nom, indépendant du thème.
-   2. Jetons d'usage : ce que les nouvelles règles doivent employer ; ils suivent le thème.
-   Les anciennes variables (--pp-*, --pn-*, noms de l'or) renvoient à la palette brute,
-   avec la valeur d'origine en secours : la présence de ces jetons ne change rien à l'écran.
-   Placés en tête de premium-chrome.css (chargée par toutes les pages HTML statiques) plutôt que
-   dans un fichier à part : une feuille de plus ralentissait la première visite et dépassait le
-   plafond de 12 feuilles du test de performance.
-   Thème : clair si <html> porte .et-plight (ou .et-jlight sur le journal), sombre sinon. */
+
 :root{
-  /* 1. Palette brute */
+
   --et-white:#FFFFFF;
   --et-mist:#F4F5F7;
   --et-night:#0A1422;
@@ -26,24 +17,24 @@
   --et-gold-700:#7A5A12;
   --et-gold-brand:#E8C36A;
 
-  /* Typographie */
+
   --et-font-sans:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
   --et-font-display:"Instrument Serif","Instrument Serif Fallback G","Instrument Serif Fallback T","Instrument Serif Fallback N","Instrument Serif Fallback D","Iowan Old Style",Georgia,serif;
   --et-font-mark:"National Park","Inter",system-ui,sans-serif;
   --et-font-data:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
   --et-font-ar:"Noto Sans Arabic",system-ui,sans-serif;
   --et-font-ar-display:"Noto Naskh Arabic",Georgia,serif;
-  /* Échelle (rem) : tirée des tailles les plus rendues le 12 octobre 2026 */
+
   --et-fs-1:.72rem;  --et-fs-2:.84rem;  --et-fs-3:.94rem;  --et-fs-4:1rem;   --et-fs-5:1.15rem;
   --et-fs-6:1.3rem;  --et-fs-7:1.5rem;  --et-fs-8:2.4rem;  --et-fs-9:3.8rem; --et-fs-10:5.4rem;
 
-  /* Arrondis */
+
   --et-radius-sm:6px;
   --et-radius-md:10px;   /* boutons */
   --et-radius-lg:16px;
   --et-radius-pill:999px;
 
-  /* 2. Jetons d'usage — thème clair */
+
   --et-surface:var(--et-white);
   --et-surface-alt:var(--et-mist);
   --et-surface-deep:var(--et-abyss);
@@ -53,7 +44,7 @@
   --et-gold:var(--et-gold-500);
   --et-gold-ink:var(--et-gold-700);
 }
-/* Jetons d'usage — thème sombre */
+
 html:not(.et-plight,.et-jlight){
   --et-surface:var(--et-night);
   --et-surface-alt:var(--et-night-2);
@@ -63,17 +54,14 @@ html:not(.et-plight,.et-jlight){
   --et-gold:var(--et-gold-300);
   --et-gold-ink:var(--et-gold-300);
 }
-/* Points de rupture de référence (les media queries n'acceptent pas de variables) :
-   640px (mobile), 900px (tablette), 1240/1241px (bascule du menu). */
 
-/* Polices de secours calees sur Instrument Serif (largeur moyenne des titres du site) :
-   tant que la police n est pas chargee, les titres gardent le meme nombre de lignes.
-   Limitees aux caracteres d Instrument Serif : les autres gardent Georgia comme avant. */
+
+
 @font-face{font-family:"Instrument Serif Fallback G";src:local("Georgia");font-display:swap;size-adjust:76.1%;ascent-override:130.09%;descent-override:40.74%;line-gap-override:0%;unicode-range:U+20-7E,U+A0-A3,U+A5,U+A7-AB,U+AE-B0,U+B4,U+B6-B8,U+BA-BB,U+BF-FF,U+131,U+152-153,U+2C6,U+2DA,U+2DC,U+2013-2014,U+2018-201A,U+201C-201E,U+2022,U+2026,U+2030,U+2039-203A,U+20AC,U+2122,U+2212}
 @font-face{font-family:"Instrument Serif Fallback T";src:local("Times New Roman"),local("TimesNewRomanPSMT"),local("Liberation Serif"),local("Tinos");font-display:swap;size-adjust:83.13%;ascent-override:119.09%;descent-override:37.29%;line-gap-override:0%;unicode-range:U+20-7E,U+A0-A3,U+A5,U+A7-AB,U+AE-B0,U+B4,U+B6-B8,U+BA-BB,U+BF-FF,U+131,U+152-153,U+2C6,U+2DA,U+2DC,U+2013-2014,U+2018-201A,U+201C-201E,U+2022,U+2026,U+2030,U+2039-203A,U+20AC,U+2122,U+2212}
 @font-face{font-family:"Instrument Serif Fallback N";src:local("Noto Serif"),local("NotoSerif-Regular");font-display:swap;size-adjust:70.55%;ascent-override:140.32%;descent-override:43.94%;line-gap-override:0%;unicode-range:U+20-7E,U+A0-A3,U+A5,U+A7-AB,U+AE-B0,U+B4,U+B6-B8,U+BA-BB,U+BF-FF,U+131,U+152-153,U+2C6,U+2DA,U+2DC,U+2013-2014,U+2018-201A,U+201C-201E,U+2022,U+2026,U+2030,U+2039-203A,U+20AC,U+2122,U+2212}
 @font-face{font-family:"Instrument Serif Fallback D";src:local("DejaVu Serif"),local("DejaVuSerif");font-display:swap;size-adjust:65.42%;ascent-override:151.32%;descent-override:47.38%;line-gap-override:0%;unicode-range:U+20-7E,U+A0-A3,U+A5,U+A7-AB,U+AE-B0,U+B4,U+B6-B8,U+BA-BB,U+BF-FF,U+131,U+152-153,U+2C6,U+2DA,U+2DC,U+2013-2014,U+2018-201A,U+201C-201E,U+2022,U+2026,U+2030,U+2039-203A,U+20AC,U+2122,U+2212}
-/* En-tete et pied de page premium : marine, blanc, or en filet. Polices du site. */
+
 @font-face{font-family:"Instrument Serif";src:url("/assets/fonts/InstrumentSerif-latin.woff2") format("woff2");font-weight:400;font-display:swap}
 @font-face{font-family:"National Park";src:url("/assets/fonts/NationalPark-Bold-latin.woff2") format("woff2");font-weight:700;font-display:swap}
 
@@ -156,14 +144,14 @@ html:not(#p0):not(#p1):not(#p2):not(#p3):not(#p4):not(#p5):not(#p6):not(#p7):not
   html:not(#p0):not(#p1):not(#p2):not(#p3):not(#p4):not(#p5):not(#p6):not(#p7):not(#p8):not(#p9):not(#p10):not(#p11):not(#p12):not(#p13):not(#p14):not(#p15):not(#p16):not(#p17):not(#p18):not(#p19):not(#p20):not(#p21):not(#p22):not(#p23) #nav.pn .nx-util-m a.cta{background:var(--pn-ink)!important;color:var(--pn-bg)!important;border-radius:0!important}
 }
 
-/* Pied de page nuit, identique dans les deux themes */
+
 html:not(#p0):not(#p1):not(#p2):not(#p3):not(#p4):not(#p5):not(#p6):not(#p7):not(#p8):not(#p9):not(#p10):not(#p11):not(#p12):not(#p13):not(#p14):not(#p15):not(#p16):not(#p17):not(#p18):not(#p19):not(#p20):not(#p21):not(#p22):not(#p23) footer.pft{--pf-bg:#07111F;--pf-ink:#F3F1EC;--pf-ink2:#A7B1C2;--pf-line:rgba(255,255,255,.14);--pf-gold:#D9B567;
   background:var(--pf-bg)!important;color:var(--pf-ink2)!important;border:0!important;box-shadow:none!important;padding:0!important;margin-top:0!important}
 html:not(#p0):not(#p1):not(#p2):not(#p3):not(#p4):not(#p5):not(#p6):not(#p7):not(#p8):not(#p9):not(#p10):not(#p11):not(#p12):not(#p13):not(#p14):not(#p15):not(#p16):not(#p17):not(#p18):not(#p19):not(#p20):not(#p21):not(#p22):not(#p23) footer.pft::before,html:not(#p0):not(#p1):not(#p2):not(#p3):not(#p4):not(#p5):not(#p6):not(#p7):not(#p8):not(#p9):not(#p10):not(#p11):not(#p12):not(#p13):not(#p14):not(#p15):not(#p16):not(#p17):not(#p18):not(#p19):not(#p20):not(#p21):not(#p22):not(#p23) footer.pft::after{display:none!important}
 html:not(#p0):not(#p1):not(#p2):not(#p3):not(#p4):not(#p5):not(#p6):not(#p7):not(#p8):not(#p9):not(#p10):not(#p11):not(#p12):not(#p13):not(#p14):not(#p15):not(#p16):not(#p17):not(#p18):not(#p19):not(#p20):not(#p21):not(#p22):not(#p23) footer.pft .wrap{padding-top:88px!important;padding-bottom:36px!important}
 html:not(#p0):not(#p1):not(#p2):not(#p3):not(#p4):not(#p5):not(#p6):not(#p7):not(#p8):not(#p9):not(#p10):not(#p11):not(#p12):not(#p13):not(#p14):not(#p15):not(#p16):not(#p17):not(#p18):not(#p19):not(#p20):not(#p21):not(#p22):not(#p23) footer.pft .pft-motto{font:400 clamp(2.6rem,6vw,5.2rem)/.98 "Instrument Serif","Instrument Serif Fallback G","Instrument Serif Fallback T","Instrument Serif Fallback N","Instrument Serif Fallback D","Iowan Old Style",Georgia,serif!important;color:#fff!important;letter-spacing:-.015em!important;margin:0 0 56px!important;max-width:16ch}
 html:not(#p0):not(#p1):not(#p2):not(#p3):not(#p4):not(#p5):not(#p6):not(#p7):not(#p8):not(#p9):not(#p10):not(#p11):not(#p12):not(#p13):not(#p14):not(#p15):not(#p16):not(#p17):not(#p18):not(#p19):not(#p20):not(#p21):not(#p22):not(#p23) footer.pft .foot-news{background:none!important;border:0!important;border-top:1px solid var(--pf-line)!important;border-bottom:1px solid var(--pf-line)!important;border-radius:0!important;box-shadow:none!important;padding:28px 0!important;margin:0 0 56px!important}
-html:not(#p0):not(#p1):not(#p2):not(#p3):not(#p4):not(#p5):not(#p6):not(#p7):not(#p8):not(#p9):not(#p10):not(#p11):not(#p12):not(#p13):not(#p14):not(#p15):not(#p16):not(#p17):not(#p18):not(#p19):not(#p20):not(#p21):not(#p22):not(#p23) footer.pft .foot-news .fn-k{color:var(--pf-gold)!important;letter-spacing:.2em!important;font-size:.7rem!important}
+html:not(#p0):not(#p1):not(#p2):not(#p3):not(#p4):not(#p5):not(#p6):not(#p7):not(#p8):not(#p9):not(#p10):not(#p11):not(#p12):not(#p13):not(#p14):not(#p15):not(#p16):not(#p17):not(#p18):not(#p19):not(#p20):not(#p21):not(#p22):not(#p23) footer.pft .foot-news .fn-k{color:var(--pf-gold)!important;letter-spacing:.2em!important;font-size:.75rem!important}
 html:not(#p0):not(#p1):not(#p2):not(#p3):not(#p4):not(#p5):not(#p6):not(#p7):not(#p8):not(#p9):not(#p10):not(#p11):not(#p12):not(#p13):not(#p14):not(#p15):not(#p16):not(#p17):not(#p18):not(#p19):not(#p20):not(#p21):not(#p22):not(#p23) footer.pft .foot-news .fn-t{color:var(--pf-ink)!important;font:400 1.7rem/1.15 "Instrument Serif","Instrument Serif Fallback G","Instrument Serif Fallback T","Instrument Serif Fallback N","Instrument Serif Fallback D",Georgia,serif!important}
 html:not(#p0):not(#p1):not(#p2):not(#p3):not(#p4):not(#p5):not(#p6):not(#p7):not(#p8):not(#p9):not(#p10):not(#p11):not(#p12):not(#p13):not(#p14):not(#p15):not(#p16):not(#p17):not(#p18):not(#p19):not(#p20):not(#p21):not(#p22):not(#p23) footer.pft .foot-news .fn-d,html:not(#p0):not(#p1):not(#p2):not(#p3):not(#p4):not(#p5):not(#p6):not(#p7):not(#p8):not(#p9):not(#p10):not(#p11):not(#p12):not(#p13):not(#p14):not(#p15):not(#p16):not(#p17):not(#p18):not(#p19):not(#p20):not(#p21):not(#p22):not(#p23) footer.pft .foot-news .fn-alt{color:var(--pf-ink2)!important}
 html:not(#p0):not(#p1):not(#p2):not(#p3):not(#p4):not(#p5):not(#p6):not(#p7):not(#p8):not(#p9):not(#p10):not(#p11):not(#p12):not(#p13):not(#p14):not(#p15):not(#p16):not(#p17):not(#p18):not(#p19):not(#p20):not(#p21):not(#p22):not(#p23) footer.pft .foot-news .fn-alt a{color:var(--pf-ink)!important;text-decoration:underline!important;text-underline-offset:3px!important}
@@ -181,7 +169,7 @@ html:not(#p0):not(#p1):not(#p2):not(#p3):not(#p4):not(#p5):not(#p6):not(#p7):not
 html:not(#p0):not(#p1):not(#p2):not(#p3):not(#p4):not(#p5):not(#p6):not(#p7):not(#p8):not(#p9):not(#p10):not(#p11):not(#p12):not(#p13):not(#p14):not(#p15):not(#p16):not(#p17):not(#p18):not(#p19):not(#p20):not(#p21):not(#p22):not(#p23) footer.pft .foot-social a{opacity:1!important;color:var(--pf-ink)!important;border:1px solid var(--pf-line)!important;border-radius:0!important;background:none!important}
 html:not(#p0):not(#p1):not(#p2):not(#p3):not(#p4):not(#p5):not(#p6):not(#p7):not(#p8):not(#p9):not(#p10):not(#p11):not(#p12):not(#p13):not(#p14):not(#p15):not(#p16):not(#p17):not(#p18):not(#p19):not(#p20):not(#p21):not(#p22):not(#p23) footer.pft .foot-col{border:0!important;background:none!important;padding:0!important}
 html:not(#p0):not(#p1):not(#p2):not(#p3):not(#p4):not(#p5):not(#p6):not(#p7):not(#p8):not(#p9):not(#p10):not(#p11):not(#p12):not(#p13):not(#p14):not(#p15):not(#p16):not(#p17):not(#p18):not(#p19):not(#p20):not(#p21):not(#p22):not(#p23) footer.pft .foot-col h3::before,html:not(#p0):not(#p1):not(#p2):not(#p3):not(#p4):not(#p5):not(#p6):not(#p7):not(#p8):not(#p9):not(#p10):not(#p11):not(#p12):not(#p13):not(#p14):not(#p15):not(#p16):not(#p17):not(#p18):not(#p19):not(#p20):not(#p21):not(#p22):not(#p23) footer.pft .foot-col h3::after,html:not(#p0):not(#p1):not(#p2):not(#p3):not(#p4):not(#p5):not(#p6):not(#p7):not(#p8):not(#p9):not(#p10):not(#p11):not(#p12):not(#p13):not(#p14):not(#p15):not(#p16):not(#p17):not(#p18):not(#p19):not(#p20):not(#p21):not(#p22):not(#p23) footer.pft .foot-legal::before,html:not(#p0):not(#p1):not(#p2):not(#p3):not(#p4):not(#p5):not(#p6):not(#p7):not(#p8):not(#p9):not(#p10):not(#p11):not(#p12):not(#p13):not(#p14):not(#p15):not(#p16):not(#p17):not(#p18):not(#p19):not(#p20):not(#p21):not(#p22):not(#p23) footer.pft .foot-legal::after,html:not(#p0):not(#p1):not(#p2):not(#p3):not(#p4):not(#p5):not(#p6):not(#p7):not(#p8):not(#p9):not(#p10):not(#p11):not(#p12):not(#p13):not(#p14):not(#p15):not(#p16):not(#p17):not(#p18):not(#p19):not(#p20):not(#p21):not(#p22):not(#p23) footer.pft .foot-grid::before,html:not(#p0):not(#p1):not(#p2):not(#p3):not(#p4):not(#p5):not(#p6):not(#p7):not(#p8):not(#p9):not(#p10):not(#p11):not(#p12):not(#p13):not(#p14):not(#p15):not(#p16):not(#p17):not(#p18):not(#p19):not(#p20):not(#p21):not(#p22):not(#p23) footer.pft .foot-grid::after{display:none!important}
-html:not(#p0):not(#p1):not(#p2):not(#p3):not(#p4):not(#p5):not(#p6):not(#p7):not(#p8):not(#p9):not(#p10):not(#p11):not(#p12):not(#p13):not(#p14):not(#p15):not(#p16):not(#p17):not(#p18):not(#p19):not(#p20):not(#p21):not(#p22):not(#p23) footer.pft .foot-col h3{font:600 .7rem/1 "Inter",system-ui,sans-serif!important;letter-spacing:.22em!important;text-transform:uppercase!important;color:var(--pf-gold)!important;margin:0 0 18px!important;border:0!important;padding:0!important}
+html:not(#p0):not(#p1):not(#p2):not(#p3):not(#p4):not(#p5):not(#p6):not(#p7):not(#p8):not(#p9):not(#p10):not(#p11):not(#p12):not(#p13):not(#p14):not(#p15):not(#p16):not(#p17):not(#p18):not(#p19):not(#p20):not(#p21):not(#p22):not(#p23) footer.pft .foot-col h3{font:600 .75rem/1 "Inter",system-ui,sans-serif!important;letter-spacing:.22em!important;text-transform:uppercase!important;color:var(--pf-gold)!important;margin:0 0 18px!important;border:0!important;padding:0!important}
 html:not(#p0):not(#p1):not(#p2):not(#p3):not(#p4):not(#p5):not(#p6):not(#p7):not(#p8):not(#p9):not(#p10):not(#p11):not(#p12):not(#p13):not(#p14):not(#p15):not(#p16):not(#p17):not(#p18):not(#p19):not(#p20):not(#p21):not(#p22):not(#p23) footer.pft .foot-col h3 button{font:inherit!important;letter-spacing:inherit!important;text-transform:inherit!important;color:var(--pf-gold)!important;-webkit-text-fill-color:var(--pf-gold)!important;background:none!important;border:0!important;padding:10px 0!important;width:100%!important;text-align:left!important;min-height:44px!important}
 html:not(#p0):not(#p1):not(#p2):not(#p3):not(#p4):not(#p5):not(#p6):not(#p7):not(#p8):not(#p9):not(#p10):not(#p11):not(#p12):not(#p13):not(#p14):not(#p15):not(#p16):not(#p17):not(#p18):not(#p19):not(#p20):not(#p21):not(#p22):not(#p23) footer.pft .foot-col a{display:block!important;color:var(--pf-ink)!important;text-decoration:none!important;padding:7px 0!important;font-size:.95rem!important;background:none!important}
 html:not(#p0):not(#p1):not(#p2):not(#p3):not(#p4):not(#p5):not(#p6):not(#p7):not(#p8):not(#p9):not(#p10):not(#p11):not(#p12):not(#p13):not(#p14):not(#p15):not(#p16):not(#p17):not(#p18):not(#p19):not(#p20):not(#p21):not(#p22):not(#p23) footer.pft .foot-col a:hover,html:not(#p0):not(#p1):not(#p2):not(#p3):not(#p4):not(#p5):not(#p6):not(#p7):not(#p8):not(#p9):not(#p10):not(#p11):not(#p12):not(#p13):not(#p14):not(#p15):not(#p16):not(#p17):not(#p18):not(#p19):not(#p20):not(#p21):not(#p22):not(#p23) footer.pft .pft-contact a:hover,html:not(#p0):not(#p1):not(#p2):not(#p3):not(#p4):not(#p5):not(#p6):not(#p7):not(#p8):not(#p9):not(#p10):not(#p11):not(#p12):not(#p13):not(#p14):not(#p15):not(#p16):not(#p17):not(#p18):not(#p19):not(#p20):not(#p21):not(#p22):not(#p23) footer.pft .foot-legal a:hover{color:var(--pf-gold)!important}
@@ -198,7 +186,7 @@ html:not(#p0):not(#p1):not(#p2):not(#p3):not(#p4):not(#p5):not(#p6):not(#p7):not
   html:not(#p0):not(#p1):not(#p2):not(#p3):not(#p4):not(#p5):not(#p6):not(#p7):not(#p8):not(#p9):not(#p10):not(#p11):not(#p12):not(#p13):not(#p14):not(#p15):not(#p16):not(#p17):not(#p18):not(#p19):not(#p20):not(#p21):not(#p22):not(#p23) footer.pft .foot-grid{grid-template-columns:minmax(0,1fr)!important;gap:36px!important}
 }
 
-/* 2026 rich-page inline-style extraction */
+
 .inline-voie-link{display:inline-flex;align-items:center;gap:6px;font-family:var(--fm);font-size:.6875rem;letter-spacing:.1em;text-transform:uppercase;color:#34D399;border:1px solid var(--hair);padding:5px 12px;border-radius:999px;text-decoration:none;margin-bottom:14px}
 .inline-gold-badge{display:inline-block;font-family:var(--fm);font-size:.6875rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-l);background:rgba(217,168,79,.12);border:1px solid rgba(217,168,79,.3);padding:4px 11px;border-radius:999px;margin-bottom:14px}
 .gradient-kpi-title{flex:none;font-family:var(--fd);font-weight:800;font-size:clamp(1.5rem,3vw,2rem);line-height:1;background:linear-gradient(120deg,var(--blue-l),var(--gold-l));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
@@ -214,7 +202,7 @@ html:not(#p0):not(#p1):not(#p2):not(#p3):not(#p4):not(#p5):not(#p6):not(#p7):not
 @media(max-width:640px){.atlas-cover-card,.atlas-gold-panel,.atlas-blue-panel{padding:18px;gap:12px}.tool-feature-card{padding:24px 20px}.tool-card{padding:22px 20px}}
 
 
-/* ===== EnerTchad Ultra Premium Iconography & Schematics — 2026-10-04 ===== */
+
 :root{
   --et-ico-size:44px;
   --et-ico-radius:14px;
@@ -233,7 +221,7 @@ html:not(.et-plight):not(.et-jlight){
   --et-ico-shadow:0 1px 0 rgba(255,255,255,.08) inset,0 18px 34px -24px rgba(0,0,0,.72);
 }
 
-/* optical normalization: compact UI glyphs */
+
 :is(#nav,.pn,.pft,.prof,.divc,.ngs-p,.pp-docs,.pp-box,.svc-head,.hxi-card,.mfo-lever) svg{
   shape-rendering:geometricPrecision;
 }
@@ -246,7 +234,7 @@ html:not(.et-plight):not(.et-jlight){
   vector-effect:non-scaling-stroke;
 }
 
-/* signature icon wells */
+
 .prof>.ic,
 .divc>.ic,
 .ngs-p>.ic,
@@ -300,7 +288,7 @@ html:not(.et-plight):not(.et-jlight){
   box-shadow:var(--et-ico-shadow),0 10px 28px -18px color-mix(in srgb,currentColor 48%,transparent)!important;
 }
 
-/* premium technical symbols */
+
 .ngs-p>.ic span{
   width:9px!important;
   height:9px!important;
@@ -338,7 +326,7 @@ html:not(.et-plight):not(.et-jlight){
   box-shadow:0 8px 20px -16px currentColor;
 }
 
-/* document / utility glyphs */
+
 .pp-docs>a>span:first-child{
   width:42px!important;
   height:42px!important;
@@ -367,7 +355,7 @@ html:not(.et-plight):not(.et-jlight){
   color:var(--et-ico-gold);
 }
 
-/* navigation symbols: quieter, sharper, more deliberate */
+
 #nav.pn .pn-item>.nav-trigger svg{
   width:10px!important;
   height:10px!important;
@@ -395,7 +383,7 @@ html:not(.et-plight):not(.et-jlight){
   background:color-mix(in srgb,var(--pn-gold) 8%,transparent);
 }
 
-/* schematics / maps: one editorial technical frame */
+
 :is(.ngs-stage,.map-wrap,.cmap-frame,.atc-map,.cdm-frame,.avnet-panel){
   position:relative;
   isolation:isolate;
@@ -432,7 +420,7 @@ html:not(.et-plight):not(.et-jlight){
   font-size:.64rem!important;
 }
 
-/* social marks */
+
 footer.pft .foot-social a{
   width:36px!important;
   height:36px!important;
@@ -449,7 +437,7 @@ footer.pft .foot-social a:hover{
 }
 footer.pft .foot-social a svg{width:15px!important;height:15px!important}
 
-/* restrained motion and low-power safety */
+
 @media(prefers-reduced-motion:reduce){
   .prof>.ic,.divc>.ic,.ngs-p>.ic,.svc-head>.ic,.hxi-card>.ic,.mfo-lever>.ic,
   #nav.pn .pn-item>.nav-trigger svg,#nav.pn .pn-feat .arr,footer.pft .foot-social a{transition:none!important;transform:none!important}
@@ -461,7 +449,7 @@ footer.pft .foot-social a svg{width:15px!important;height:15px!important}
 }
 
 
-/* ===== EnerTchad Strategic integration links & statuses — 2026-10-04 ===== */
+
 .et-quick-entry{display:flex;align-items:center;gap:10px;margin:18px 0 0;padding:12px 14px;border:1px solid color-mix(in srgb,var(--pn-gold,#B8913A) 22%,rgba(128,128,128,.2));border-radius:14px;background:color-mix(in srgb,var(--pn-gold,#B8913A) 5%,transparent);font-size:.84rem;line-height:1.5}
 .et-quick-entry strong{font-weight:750}.et-quick-entry a{margin-left:auto;white-space:nowrap;font-weight:750;text-decoration:none}.et-quick-entry a:hover{text-decoration:underline;text-underline-offset:3px}
 .et-proj-legend{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 28px}.et-proj-legend span,.et-proj-state{display:inline-flex;align-items:center;gap:6px;width:max-content;border-radius:999px;border:1px solid rgba(184,145,58,.28);background:rgba(184,145,58,.06);color:#7A5A12;padding:6px 9px;font:700 .64rem/1.2 var(--fm,ui-monospace,monospace);letter-spacing:.04em;text-transform:uppercase}
@@ -471,17 +459,14 @@ html:not(.et-plight):not(.et-jlight) .et-proj-legend span,html:not(.et-plight):n
 @media(max-width:640px){.et-quick-entry{align-items:flex-start;flex-direction:column}.et-quick-entry a{margin-left:0}}
 
 
-/* ===== EnerTchad Editorial photo, print & render budget — 2026-10-04 ===== */
-/* One restrained photographic tone across institutional hero imagery. */
+
+
 .pp-hero-img{
   filter:saturate(.90) contrast(1.035) brightness(.96);
   object-position:center 46%;
 }
 
-/* Defer expensive below-the-fold rendering on long institutional pages.
-   Lot 26 (m9) : sauf les deux dernieres sections. Rendues au saut en bas de page (touche Fin,
-   ancre du pied), leur hauteur estimee (680 px, reelle de 300 a 9 300 px) changeait et
-   deplacait le pied de page : CLS jusqu'a 0,93 en mobile. */
+
 @supports(content-visibility:auto){
   main.ppl>section:nth-of-type(n+3):not(:nth-last-of-type(-n+2)){
     content-visibility:auto;
@@ -489,7 +474,7 @@ html:not(.et-plight):not(.et-jlight) .et-proj-legend span,html:not(.et-plight):n
   }
 }
 
-/* Clean meeting / board-pack print mode for strategic corporate pages. */
+
 @media print{
   #nav,.pp-sub,.nx-util,.pgr,.pft,footer.pft,.et-skip,#readbar{display:none!important}
   html,body{background:#fff!important;color:#111!important}
@@ -506,8 +491,8 @@ html:not(.et-plight):not(.et-jlight) .et-proj-legend span,html:not(.et-plight):n
 }
 
 
-/* ===== EnerTchad Evidence, CTA & Product Demo — 2026-10-04 ===== */
-/* Evidence ribbons for institutional pages */
+
+
 .et-evidence-strip{
   display:grid;
   grid-template-columns:repeat(4,minmax(0,1fr));
@@ -528,7 +513,7 @@ html:not(.et-plight):not(.et-jlight) .et-proj-legend span,html:not(.et-plight):n
 html:not(.et-plight):not(.et-jlight) .et-evidence-strip{background:rgba(255,255,255,.025)}
 html:not(.et-plight):not(.et-jlight) .et-evidence-strip span{color:#AEB9C9}
 
-/* Canonical action language: primary, evidence, contact */
+
 .pp-actions .pp-btn,.pp-actions .pp-link,.pp-prose .pp-link,.et-quick-entry a{
   transition:transform .2s ease,border-color .2s ease,background .2s ease,color .2s ease,box-shadow .2s ease;
 }
@@ -540,7 +525,7 @@ html:not(.et-plight):not(.et-jlight) .et-evidence-strip span{color:#AEB9C9}
   outline-offset:3px!important;
 }
 
-/* Product proof panel — designed for modular infrastructure / station pages */
+
 .et-product-proof{
   margin-top:24px;
   display:grid;
@@ -565,7 +550,7 @@ html:not(.et-plight):not(.et-jlight) .et-product-proof p,html:not(.et-plight):no
 html:not(.et-plight):not(.et-jlight) .et-product-specs div{background:rgba(8,17,29,.72)}
 html:not(.et-plight):not(.et-jlight) .et-product-proof>div+div{border-left-color:rgba(255,255,255,.11)}
 
-/* Explicit visual disclaimer for aspirational diagrams and products */
+
 .et-target-note{
   display:flex;align-items:flex-start;gap:10px;margin:14px 0 0;padding:10px 12px;
   border-radius:12px;border:1px solid rgba(184,145,58,.24);background:rgba(184,145,58,.055);
@@ -588,7 +573,7 @@ html:not(.et-plight):not(.et-jlight) .et-target-note{color:#DCCB9A;border-color:
 }
 
 
-/* ===== EnerTchad Public Data Room — 2026-10-04 ===== */
+
 .et-data-room{
   display:grid;
   grid-template-columns:repeat(4,minmax(0,1fr));
@@ -622,7 +607,7 @@ html:not(.et-plight):not(.et-jlight) .et-dr-meta span{color:#AAB5C6}
 @media(max-width:560px){.et-data-room{grid-template-columns:1fr}}
 
 
-/* ===== EnerTchad Document Explorer — 2026-10-04 ===== */
+
 .et-dr-explorer{margin-top:32px;padding-top:28px;border-top:1px solid var(--et-ico-line,rgba(20,32,46,.12))}
 .et-dr-explorer-h{display:flex;align-items:end;justify-content:space-between;gap:18px;flex-wrap:wrap}
 .et-dr-explorer-h h3{margin:0;font-size:1.2rem}
@@ -641,7 +626,7 @@ html:not(.et-plight):not(.et-jlight) .et-dr-filters button[aria-pressed="true"]{
 @media(max-width:560px){.et-data-room-full{grid-template-columns:1fr}}
 
 
-/* ===== EnerTchad Claim Proof Layer — 2026-10-04 ===== */
+
 .et-proofline{
   display:flex;flex-wrap:wrap;align-items:center;gap:8px 10px;
   margin-top:12px;padding-top:11px;border-top:1px dashed rgba(128,128,128,.18);
@@ -656,7 +641,7 @@ html:not(.et-plight):not(.et-jlight) .et-proofline{color:#AAB5C6}
 html:not(.et-plight):not(.et-jlight) .et-proofline::before{color:#E6C978}
 
 
-/* ===== EnerTchad Compact dual quick entry — 2026-10-04 ===== */
+
 .et-quick-entry.et-quick-dual{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:12px 18px}
 .et-quick-dual .et-quick-copy{min-width:0}
 .et-quick-dual .et-quick-copy span{display:block;margin-top:3px}
@@ -668,7 +653,7 @@ html:not(.et-plight):not(.et-jlight) .et-proofline::before{color:#E6C978}
 }
 
 
-/* ===== EnerTchad Collapsible Topic Index — 2026-10-04 ===== */
+
 .et-topic-index{border:1px solid var(--et-ico-line,rgba(20,32,46,.12));border-radius:18px;background:rgba(255,255,255,.42);overflow:hidden}
 .et-topic-index>summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:17px 19px;cursor:pointer}
 .et-topic-index>summary::-webkit-details-marker{display:none}
@@ -680,15 +665,12 @@ html:not(.et-plight):not(.et-jlight) .et-proofline::before{color:#E6C978}
 html:not(.et-plight):not(.et-jlight) .et-topic-index{background:rgba(255,255,255,.025)}
 html:not(.et-plight):not(.et-jlight) .et-topic-index>summary span{color:#AAB5C6}
 
-/* Contrastes QA du 7 octobre 2026 (mesures : 1,15 / 1,04 / 1,55 avant ; 12,8 / 16,5 / 14,9 apres).
-   1. Accueil, theme sombre : titres des cartes de la chaine sur carte claire.
-   2. Registre documentaire, theme clair : filtre actif, texte fonce sur pastille foncee.
-   3. Bandeau de preuve dans un hero, theme clair : pastille foncee sur fond fonce. */
+
 html:not(.et-plight):not(.et-jlight):not(#c1):not(#c2) .et-chain a b{color:#132033!important}
 html:is(.et-plight,.et-jlight):not(#c1):not(#c2):not(#c3):not(#c4):not(#c5) main .et-dr-filters button[aria-pressed="true"]{color:#fff!important}
 html:is(.et-plight,.et-jlight):not(#c1):not(#c2) main [class*="hero"] .et-proofline .et-proof-status{color:rgba(245,247,250,.92)!important;border-color:rgba(245,247,250,.34)!important}
-/* ===== EnerTchad Floating actions : affichage et haut de page — 2026-10-07 ===== */
-/* Deux boutons ronds de meme taille, surface de la page, filet fin, ombre courte. Or en accent. */
+
+
 html:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4) body{--fab-bg:#FFFFFF;--fab-ink:#0A1A2F;--fab-line:#E3E6EB;--fab-gold:#B8913A;--fab-ring:#E3E6EB;--fab-shadow:0 1px 2px rgba(10,26,47,.06),0 10px 24px -8px rgba(10,26,47,.22)}
 html:not(.et-plight):not(.et-jlight):not(#f0):not(#f1):not(#f2):not(#f3):not(#f4) body{--fab-bg:#0F1E33;--fab-ink:#F3F1EC;--fab-line:rgba(243,241,236,.16);--fab-gold:#D9B567;--fab-ring:rgba(243,241,236,.14);--fab-shadow:0 1px 2px rgba(0,0,0,.3),0 12px 28px -8px rgba(0,0,0,.65)}
 html:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4) .lum-ctl{background:none!important;border:0!important;border-radius:0!important;box-shadow:none!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important;padding:0!important;right:20px!important;bottom:76px!important}
@@ -715,9 +697,8 @@ html:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4) .lum-btn,html:not(#f0):not(#f1
 html:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4) .lum-btn:hover,html:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4) #toTop,html:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4) #toTop.show:hover{transform:none!important}
 }
 
-/* ===== EnerTchad Pied de page compact et harmonise — 2026-10-07 ===== */
-/* Devise plus sobre, lettre d information sur une ligne, liens resserres, doublons retires.
-   Sur mobile, les rubriques se replient derriere des boutons (script dans nav_a.js). */
+
+
 html:not(#k0):not(#k1):not(#k2):not(#k3):not(#k4):not(#k5):not(#k6):not(#k7):not(#k8):not(#k9):not(#k10):not(#k11):not(#k12):not(#k13):not(#k14):not(#k15):not(#k16):not(#k17):not(#k18):not(#k19):not(#k20):not(#k21):not(#k22):not(#k23):not(#k24):not(#k25) footer.pft .pft-motto{font-size:clamp(1.7rem,3.2vw,2.6rem)!important;line-height:1.08!important;margin:0 0 28px!important;max-width:none!important}
 html:not(#k0):not(#k1):not(#k2):not(#k3):not(#k4):not(#k5):not(#k6):not(#k7):not(#k8):not(#k9):not(#k10):not(#k11):not(#k12):not(#k13):not(#k14):not(#k15):not(#k16):not(#k17):not(#k18):not(#k19):not(#k20):not(#k21):not(#k22):not(#k23):not(#k24):not(#k25) footer.pft .foot-news{display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr)!important;gap:10px 48px!important;align-items:center!important;padding:26px 0!important}
 html:not(#k0):not(#k1):not(#k2):not(#k3):not(#k4):not(#k5):not(#k6):not(#k7):not(#k8):not(#k9):not(#k10):not(#k11):not(#k12):not(#k13):not(#k14):not(#k15):not(#k16):not(#k17):not(#k18):not(#k19):not(#k20):not(#k21):not(#k22):not(#k23):not(#k24):not(#k25) footer.pft .foot-news .fn-txt{grid-row:1/3!important;margin:0!important}
@@ -737,7 +718,7 @@ html:not(#k0):not(#k1):not(#k2):not(#k3):not(#k4):not(#k5):not(#k6):not(#k7):not
 html:not(#k0):not(#k1):not(#k2):not(#k3):not(#k4):not(#k5):not(#k6):not(#k7):not(#k8):not(#k9):not(#k10):not(#k11):not(#k12):not(#k13):not(#k14):not(#k15):not(#k16):not(#k17):not(#k18):not(#k19):not(#k20):not(#k21):not(#k22):not(#k23):not(#k24):not(#k25) footer.pft:not(.pft-ar) .foot-social a{width:38px!important;height:38px!important;display:inline-grid!important;place-items:center!important;border-radius:50%!important;border:1px solid var(--pf-line)!important;color:var(--pf-ink)!important;background:none!important;opacity:1!important;transition:border-color .2s,color .2s!important}
 html:not(#k0):not(#k1):not(#k2):not(#k3):not(#k4):not(#k5):not(#k6):not(#k7):not(#k8):not(#k9):not(#k10):not(#k11):not(#k12):not(#k13):not(#k14):not(#k15):not(#k16):not(#k17):not(#k18):not(#k19):not(#k20):not(#k21):not(#k22):not(#k23):not(#k24):not(#k25) footer.pft:not(.pft-ar) .foot-social a svg{width:16px!important;height:16px!important;opacity:1!important;color:inherit!important;fill:currentColor!important}
 html:not(#k0):not(#k1):not(#k2):not(#k3):not(#k4):not(#k5):not(#k6):not(#k7):not(#k8):not(#k9):not(#k10):not(#k11):not(#k12):not(#k13):not(#k14):not(#k15):not(#k16):not(#k17):not(#k18):not(#k19):not(#k20):not(#k21):not(#k22):not(#k23):not(#k24):not(#k25) footer.pft:not(.pft-ar) .foot-social a:hover{border-color:var(--pf-gold)!important;color:var(--pf-gold)!important}
-/* Boutons de rubrique : invisibles comme boutons sur ordinateur, ils gardent l allure du titre */
+
 html:not(#k0):not(#k1):not(#k2):not(#k3):not(#k4):not(#k5):not(#k6):not(#k7):not(#k8):not(#k9):not(#k10):not(#k11):not(#k12):not(#k13):not(#k14):not(#k15):not(#k16):not(#k17):not(#k18):not(#k19):not(#k20):not(#k21):not(#k22):not(#k23):not(#k24):not(#k25) footer.pft .pft-acc-btn{all:unset!important;display:flex!important;min-height:24px!important;align-items:center!important;justify-content:space-between!important;width:100%!important;font:inherit!important;letter-spacing:inherit!important;text-transform:inherit!important;color:inherit!important;cursor:default!important}
 html:not(#k0):not(#k1):not(#k2):not(#k3):not(#k4):not(#k5):not(#k6):not(#k7):not(#k8):not(#k9):not(#k10):not(#k11):not(#k12):not(#k13):not(#k14):not(#k15):not(#k16):not(#k17):not(#k18):not(#k19):not(#k20):not(#k21):not(#k22):not(#k23):not(#k24):not(#k25) footer.pft .pft-acc-btn i{display:none!important}
 @media (max-width:900px){
@@ -763,8 +744,8 @@ html:not(#k0):not(#k1):not(#k2):not(#k3):not(#k4):not(#k5):not(#k6):not(#k7):not
 }
 @media (prefers-reduced-motion:reduce){html:not(#k0):not(#k1):not(#k2):not(#k3):not(#k4):not(#k5):not(#k6):not(#k7):not(#k8):not(#k9):not(#k10):not(#k11):not(#k12):not(#k13):not(#k14):not(#k15):not(#k16):not(#k17):not(#k18):not(#k19):not(#k20):not(#k21):not(#k22):not(#k23):not(#k24):not(#k25) footer.pft.pft-acc .pft-acc-btn i{transition:none!important}}
 
-/* ===== EnerTchad Panneau d affichage aligne sur le theme — 2026-10-07 ===== */
-/* Meme surface que les boutons ronds : opaque, clair en lecture claire, marine en sombre. */
+
+
 html:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4) body{--lum-h:#7A5A12}
 html:not(.et-plight):not(.et-jlight):not(#f0):not(#f1):not(#f2):not(#f3):not(#f4) body{--lum-h:#D9B567}
 html:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4) .lum-panel{background:var(--fab-bg)!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important;border:1px solid var(--fab-line)!important;border-radius:16px!important;box-shadow:var(--fab-shadow)!important;color:var(--fab-ink)!important;padding:16px 18px!important}
@@ -775,58 +756,49 @@ html:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4) .lum-panel .lum-presets button
 html:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4) .lum-panel .lum-presets button[aria-pressed="true"],html:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4) .lum-panel #etThemeBtn.in-panel[aria-pressed="true"]{border-color:var(--fab-gold)!important;background:rgba(184,145,58,.14)!important;color:var(--lum-h)!important;font-weight:600!important}
 html:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4) .lum-panel button:focus-visible,html:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4) .lum-panel .lum-range:focus-visible{outline:2px solid var(--fab-gold)!important;outline-offset:2px!important}
 
-/* Page contact : les trois icones sociales s empilaient en colonne (liens de 544 x 27 px, icone de 19 px).
-   On les aligne en rangee, avec une cible de 44 px comme dans le pied de page. */
+
 html:not(#s1):not(#s2) .pp-cell:has(> a[href*="linkedin.com/company"]){flex-direction:row;flex-wrap:wrap;align-items:center;gap:10px}
 html:not(#s1):not(#s2) .pp-cell:has(> a[href*="linkedin.com/company"]) > a{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;flex:0 0 44px;border:1px solid currentColor;border-radius:50%;opacity:.86}
 html:not(#s1):not(#s2) .pp-cell:has(> a[href*="linkedin.com/company"]) > a:is(:hover,:focus-visible){opacity:1}
 
-/* Contact, icones sociales : la regle gagnante mesuree est a 24 identifiants + important (pole-premium.css) ; on la depasse avec 27. */
+
 html:not(#s0):not(#s1):not(#s2):not(#s3):not(#s4):not(#s5):not(#s6):not(#s7):not(#s8):not(#s9):not(#s10):not(#s11):not(#s12):not(#s13):not(#s14):not(#s15):not(#s16):not(#s17):not(#s18):not(#s19):not(#s20):not(#s21):not(#s22):not(#s23):not(#s24):not(#s25):not(#s26) body main .pp-cell:has(> a[href*="linkedin.com/company"]){flex-direction:row!important;flex-wrap:wrap!important;align-items:center!important;justify-content:flex-start!important;gap:10px!important}
 
-/* ===== Statut de page lisible en clair — 2026-10-07 ===== */
+
 html:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4) #et-status small,html.et-plight:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4) #et-status small,html.et-jlight:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4) #et-status small{color:#D9E5EE!important;-webkit-text-fill-color:#D9E5EE!important}
 
-/* ===== Focus clavier des champs de texte (audit clavier, 8 octobre 2026) =====
-   bundle_core_a1.css remplace l anneau des champs par une bordure doree et une
-   lueur. Sur le champ du pied de page (simple filet du bas) et sur le champ de
-   recherche (fond clair), le changement au focus etait a peine perceptible
-   (lueur a 20 % d opacite, bordure qui varie de 2 %) : WCAG 2.4.7. Anneau net,
-   dans la couleur du texte pour le pied (sombre ou clair selon le theme) et
-   dans la couleur de focus du site pour la recherche. */
+
 html:not(#q0):not(#q1):not(#q2):not(#q3):not(#q4):not(#q5):not(#q6):not(#q7):not(#q8):not(#q9):not(#q10):not(#q11):not(#q12):not(#q13):not(#q14):not(#q15):not(#q16):not(#q17):not(#q18):not(#q19):not(#q20):not(#q21):not(#q22):not(#q23):not(#q24):not(#q25) footer.pft .foot-news input:focus-visible{outline:2px solid currentColor!important;outline-offset:4px!important}
 html:not(#q0):not(#q1):not(#q2):not(#q3):not(#q4):not(#q5):not(#q6):not(#q7):not(#q8):not(#q9):not(#q10):not(#q11):not(#q12):not(#q13):not(#q14):not(#q15):not(#q16):not(#q17):not(#q18):not(#q19):not(#q20):not(#q21):not(#q22):not(#q23):not(#q24):not(#q25) #schQ:focus-visible{outline:2px solid var(--etfv,#E8C36A)!important;outline-offset:2px!important}
-/* Petits textes (8 octobre 2026, maquette validee) : etiquettes, dates et rubriques de 9,3 a 10,9 px portees a 11,5 px (0,72 rem) minimum, toutes largeurs. */
+
 html .et-dr-meta span,html .et-dr-card .et-dr-foot,html .et-proj-legend span,html .et-proj-state{font-size:.72rem}
 html .et-dr-filters button{font-size:.75rem}
 html .dash-stations>div>div[style*="font-size:.66rem"]{font-size:.72rem!important}
 html main :is(th,.pp-cell) small{font-size:inherit}
-/* Revue complete (9 octobre 2026). Logo sur fond sombre : degrade clair (bleu 5AA7F0 -> or E8C36A) dans le pied
-   (toujours marine) et dans l en-tete marine des Carnets, y compris en theme clair, ou « Tchad » tombait a 2,5:1.
-   Mobile : marge basse du pied pour que les boutons flottants ne recouvrent pas sa derniere ligne. */
-html:not(#rv0):not(#rv1):not(#rv2):not(#rv3):not(#rv4):not(#rv5):not(#rv6):not(#rv7):not(#rv8):not(#rv9):not(#rv10):not(#rv11):not(#rv12):not(#rv13):not(#rv14):not(#rv15):not(#rv16):not(#rv17):not(#rv18):not(#rv19):not(#rv20):not(#rv21):not(#rv22):not(#rv23):not(#rv24):not(#rv25):not(#rv26):not(#rv27):not(#rv28):not(#rv29):not(#rv30):not(#rv31):not(#rv32):not(#rv33):not(#rv34):not(#rv35):not(#rv36):not(#rv37):not(#rv38):not(#rv39) footer .brand-tx .s{background-image:linear-gradient(110deg,#5AA7F0,#E8C36A)!important;-webkit-background-clip:text!important;background-clip:text!important;-webkit-text-fill-color:transparent!important}
-@media (max-width:600px){html:not(#rv0):not(#rv1):not(#rv2):not(#rv3):not(#rv4):not(#rv5):not(#rv6):not(#rv7):not(#rv8):not(#rv9):not(#rv10):not(#rv11):not(#rv12):not(#rv13):not(#rv14):not(#rv15):not(#rv16):not(#rv17):not(#rv18):not(#rv19):not(#rv20):not(#rv21):not(#rv22):not(#rv23):not(#rv24):not(#rv25):not(#rv26):not(#rv27):not(#rv28):not(#rv29):not(#rv30):not(#rv31):not(#rv32):not(#rv33):not(#rv34):not(#rv35):not(#rv36):not(#rv37):not(#rv38):not(#rv39) footer.pft{padding-bottom:88px!important}}
 
-/* Pastille d’état des projets : ne déborde plus de la carte en colonne étroite (09/10/2026) */
+html:not(#rv0):not(#rv1):not(#rv2):not(#rv3):not(#rv4):not(#rv5):not(#rv6):not(#rv7):not(#rv8):not(#rv9):not(#rv10):not(#rv11):not(#rv12):not(#rv13):not(#rv14):not(#rv15):not(#rv16):not(#rv17):not(#rv18):not(#rv19):not(#rv20):not(#rv21):not(#rv22):not(#rv23):not(#rv24):not(#rv25):not(#rv26):not(#rv27):not(#rv28):not(#rv29):not(#rv30):not(#rv31):not(#rv32):not(#rv33):not(#rv34):not(#rv35):not(#rv36):not(#rv37):not(#rv38):not(#rv39) footer .brand-tx .s{background-image:linear-gradient(110deg,#5AA7F0,#E8C36A)!important;-webkit-background-clip:text!important;background-clip:text!important;-webkit-text-fill-color:transparent!important}
+/* Lot 28 (M3) : meme seuil que l affichage de #nezBar (premium : <= 900 px, sauf paysage bas) */
+@media (max-width:900px) and (orientation:portrait),(max-width:900px) and (min-height:451px){html:not(#rv0):not(#rv1):not(#rv2):not(#rv3):not(#rv4):not(#rv5):not(#rv6):not(#rv7):not(#rv8):not(#rv9):not(#rv10):not(#rv11):not(#rv12):not(#rv13):not(#rv14):not(#rv15):not(#rv16):not(#rv17):not(#rv18):not(#rv19):not(#rv20):not(#rv21):not(#rv22):not(#rv23):not(#rv24):not(#rv25):not(#rv26):not(#rv27):not(#rv28):not(#rv29):not(#rv30):not(#rv31):not(#rv32):not(#rv33):not(#rv34):not(#rv35):not(#rv36):not(#rv37):not(#rv38):not(#rv39) footer.pft{padding-bottom:calc(88px + env(safe-area-inset-bottom,0px))!important}}
+
+
 html body .et-proj-state{max-width:100%!important;box-sizing:border-box!important;white-space:normal!important}
 
-/* Finitions 09/10/2026 : recherche resserree ; ombre du lien d’évitement masquée hors focus */
+
 html:not(#ps0):not(#ps1):not(#ps2):not(#ps3):not(#ps4):not(#ps5):not(#ps6):not(#ps7):not(#ps8):not(#ps9):not(#ps10):not(#ps11):not(#ps12):not(#ps13):not(#ps14):not(#ps15):not(#ps16):not(#ps17):not(#ps18):not(#ps19):not(#ps20):not(#ps21):not(#ps22):not(#ps23):not(#ps24):not(#ps25):not(#ps26):not(#ps27):not(#ps28):not(#ps29):not(#ps30):not(#ps31):not(#ps32):not(#ps33):not(#ps34):not(#ps35):not(#ps36):not(#ps37):not(#ps38):not(#ps39) body main .pp-search{padding-top:44px!important}
 html body .et-skip:not(:focus):not(:focus-visible){box-shadow:none!important}
 html:not(#ps0):not(#ps1):not(#ps2):not(#ps3):not(#ps4):not(#ps5):not(#ps6):not(#ps7):not(#ps8):not(#ps9):not(#ps10):not(#ps11):not(#ps12):not(#ps13):not(#ps14):not(#ps15):not(#ps16):not(#ps17):not(#ps18):not(#ps19):not(#ps20):not(#ps21):not(#ps22):not(#ps23):not(#ps24):not(#ps25):not(#ps26):not(#ps27):not(#ps28):not(#ps29):not(#ps30):not(#ps31):not(#ps32):not(#ps33):not(#ps34):not(#ps35):not(#ps36):not(#ps37):not(#ps38):not(#ps39) body main .pp-search-h{position:absolute!important;width:1px!important;height:1px!important;margin:-1px!important;padding:0!important;overflow:hidden!important;clip:rect(0 0 0 0)!important;white-space:nowrap!important;border:0!important}
 
-/* Lot 826 (en-tete sombre des espaces Clients et Atlas) retire le 13 oct. 2026 : l en-tete
-   aligne sur la nav principale porte ses deux themes dans subsites.css (jetons --al-*). */
 
-/* Lien d’évitement (11 oct. 2026) : masqué hors focus clavier, même rendu sur tout le site (déplacé de nav_a.css pour son budget de !important) */
+
+
 @layer verre{
 body:has(#nav) a.et-skip,body:has(#nav) a.skip-link{position:fixed!important;z-index:10000!important;top:10px!important;left:12px!important;right:auto!important;bottom:auto!important;display:inline-block!important;margin:0!important;padding:10px 16px!important;border-radius:10px!important;background:#E8C36A!important;color:#101B2E!important;font:700 15px/1.3 system-ui,-apple-system,"Segoe UI",sans-serif!important;text-decoration:none!important;box-shadow:0 8px 24px rgba(0,0,0,.28)!important;opacity:1!important;transform:translateY(calc(-100% - 24px))!important}
 body:has(#nav) a.et-skip:focus,body:has(#nav) a.et-skip:focus-visible,body:has(#nav) a.skip-link:focus,body:has(#nav) a.skip-link:focus-visible{transform:none!important;outline:3px solid #101B2E!important;outline-offset:2px!important}
 }
 
-/* Éléments encastrés (11 oct. 2026) : navigation, recherche, barre utilitaire et colonnes du pied de page en creux (ombres internes), thèmes clair et sombre */
+
 @layer verre{
-/* Bac de navigation et barre utilitaire : bureau seulement (sous 1241 px, #navLinks est le tiroir mobile et doit rester opaque) */
+
 @media (min-width:1241px){
 html:is(.et-plight,.et-jlight) body:has(#nav) #nav .nav-links{background:rgba(16,26,44,.05)!important;border-radius:999px!important;padding:4px 6px!important;box-shadow:inset 0 2px 5px rgba(16,26,44,.18),inset 0 -1px 0 rgba(255,255,255,.75),0 1px 0 rgba(255,255,255,.55)!important;gap:2px!important}
 html:is(.et-plight,.et-jlight) body:has(#nav) #nav .nav-links .nav-trigger{border-radius:999px!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
@@ -837,17 +809,17 @@ html:not(.et-plight,.et-jlight) body:has(#nav) #nav .nav-links .nav-trigger{bord
 html:not(.et-plight,.et-jlight) body:has(#nav) #nav .nav-links .nav-trigger:hover,html:not(.et-plight,.et-jlight) body:has(#nav) #nav .nav-links .nav-trigger.is-active,html:not(.et-plight,.et-jlight) body:has(#nav) #nav .nav-links .nav-trigger[aria-expanded="true"]{background:rgba(0,0,0,.25)!important;box-shadow:inset 0 2px 5px rgba(0,0,0,.65),inset 0 -1px 0 rgba(255,255,255,.06)!important}
 html:not(.et-plight,.et-jlight) body:has(#nav) #nav .nx-util-in{width:max-content!important;max-width:100%!important;margin-left:auto!important;margin-right:calc(max(0px,(100% - 1240px)/2) + 52px)!important;background:rgba(0,0,0,.18)!important;border-radius:999px!important;padding:2px 4px 2px 12px!important;box-shadow:inset 0 1px 4px rgba(0,0,0,.55),inset 0 -1px 0 rgba(255,255,255,.06)!important}
 }
-/* En-tête clair */
+
 html:is(.et-plight,.et-jlight) body:has(#nav) #nav .nav-cta .nav-search,html:is(.et-plight,.et-jlight) body:has(#nav) #nav .nav-cta .nav-tog{background:rgba(16,26,44,.05)!important;border:0!important;box-shadow:inset 0 2px 5px rgba(16,26,44,.2),inset 0 -1px 0 rgba(255,255,255,.75),0 1px 0 rgba(255,255,255,.55)!important}
-/* En-tête sombre */
+
 html:not(.et-plight,.et-jlight) body:has(#nav) #nav .nav-cta .nav-search,html:not(.et-plight,.et-jlight) body:has(#nav) #nav .nav-cta .nav-tog{background:rgba(0,0,0,.22)!important;border:0!important;box-shadow:inset 0 2px 6px rgba(0,0,0,.6),inset 0 -1px 0 rgba(255,255,255,.07)!important}
-/* Pied de page (sombre) */
+
 footer.pft .foot-col,footer.pft .foot-news{background:rgba(0,0,0,.2)!important;border-radius:16px!important;padding:18px 20px!important;box-shadow:inset 0 2px 8px rgba(0,0,0,.55),inset 0 -1px 0 rgba(255,255,255,.06),0 1px 0 rgba(255,255,255,.04)!important}
 @media (max-width:900px){footer.pft.pft-acc .foot-col{padding:0 16px!important;margin:0 0 8px!important;border-top:0!important;border-radius:14px!important}footer.pft .foot-news{padding:16px!important}}
 footer.pft .foot-social a{background:rgba(0,0,0,.25)!important;border:0!important;border-radius:50%!important;box-shadow:inset 0 2px 5px rgba(0,0,0,.6),inset 0 -1px 0 rgba(255,255,255,.08)!important}
 }
 
-/* Icônes des coordonnées du pied de page (11 oct. 2026) : e-mail et téléphone dans des pastilles encastrées */
+
 @layer verre{
 footer .pft-contact a[href^="mailto:"],footer .pft-contact a[href^="tel:"]{display:inline-flex!important;align-items:center!important;gap:10px!important}
 footer .pft-contact a[href^="mailto:"]::before,footer .pft-contact a[href^="tel:"]::before{content:""!important;flex:none!important;width:30px!important;height:30px!important;border-radius:50%!important;background:rgba(0,0,0,.25) center/15px 15px no-repeat!important;box-shadow:inset 0 2px 5px rgba(0,0,0,.6),inset 0 -1px 0 rgba(255,255,255,.08)!important}
@@ -855,28 +827,218 @@ footer .pft-contact a[href^="mailto:"]::before{background-image:url("data:image/
 footer .pft-contact a[href^="tel:"]::before{background-image:url("data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%23E0B95B%22 stroke-width=%221.8%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22><path d=%22M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.4-1.2a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z%22/></svg>")!important}
 }
 
-/* Icônes des coordonnées, suite (11 oct. 2026) : adresse du siège au pied de page, enveloppe sur les boutons E-mail de la page contact */
+
 @layer verre{
 footer .pft-contact a.pft-addr{display:inline-flex!important;align-items:center!important;gap:10px!important}
 footer .pft-contact a.pft-addr::before{content:""!important;flex:none!important;width:30px!important;height:30px!important;border-radius:50%!important;background:rgba(0,0,0,.25) center/15px 15px no-repeat!important;background-image:url("data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%23E0B95B%22 stroke-width=%221.8%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22><path d=%22M12 21s-7-6-7-12a7 7 0 0 1 14 0c0 6-7 12-7 12z%22/><circle cx=%2212%22 cy=%229%22 r=%222.5%22/></svg>")!important;box-shadow:inset 0 2px 5px rgba(0,0,0,.6),inset 0 -1px 0 rgba(255,255,255,.08)!important}
 a[href^="https://wa.me/"]+a[href^="mailto:"]::before{content:"";flex:none;width:15px;height:15px;margin-right:7px;background:currentColor;-webkit-mask:url("data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22black%22 stroke-width=%222%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22><rect x=%223%22 y=%225%22 width=%2218%22 height=%2214%22 rx=%222%22/><path d=%22m3.5 7 8.5 6 8.5-6%22/></svg>") center/15px 15px no-repeat;mask:url("data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22black%22 stroke-width=%222%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22><rect x=%223%22 y=%225%22 width=%2218%22 height=%2214%22 rx=%222%22/><path d=%22m3.5 7 8.5 6 8.5-6%22/></svg>") center/15px 15px no-repeat}
 }
 
-/* Méga-menu (11 oct. 2026) : pont invisible entre la rubrique et son panneau. Le panneau commence 16 à 19 px sous la rubrique ; sans pont, la souris qui descend vers lui quitte .nav-item et le panneau se ferme aussitôt. */
+
 @layer verre{
 @media (min-width:1241px){
 #nav .nav-item>.nx-mega::after{content:""!important;display:block!important;position:absolute!important;left:0!important;right:0!important;top:auto!important;bottom:100%!important;width:auto!important;height:20px!important;margin:0!important;padding:0!important;border:0!important;background:transparent!important;box-shadow:none!important;opacity:1!important;transform:none!important;pointer-events:auto!important}
 }
 }
 
-/* Cohérence 2026-10-13 (chantier 6) : bascule clair/sombre d'en-tête (.et-theme-hdr, insérée par coherence-20261013.js
-   dans #nav .nav-cta). Règles reprises de coherence-20261013.css pour ne pas ajouter de feuille aux pages à nav principale. */
+
 .et-theme-hdr{display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;width:40px;height:40px;padding:0;margin:0;border:0;border-radius:999px;cursor:pointer;color:inherit;background:transparent;font:inherit}
 .et-theme-hdr svg{width:18px;height:18px;display:block}
 #nav .nav-cta .et-theme-hdr:focus-visible{outline:3px solid #D9B567;outline-offset:3px}
 html.et-plight #nav .nav-cta .et-theme-hdr:focus-visible,html.et-jlight #nav .nav-cta .et-theme-hdr:focus-visible{outline-color:#0A1A2F}
 @media print{.et-theme-hdr{display:none}}
-/* Cibles tactiles d'au moins 24 px (WCAG 2.5.8), QA mobile du 14 octobre 2026 */
+
 .et-status li>a{display:inline-block;padding:3px 0}
 .et-proofline a{padding:2px 0}
 footer.pft .foot-news .fn-alt a{display:inline-block;padding:4px 0}
+
+/* et-mobile-quick-nav:start */
+
+#nezBar .et-mobile-label-short{display:none}
+#nezBar a{min-width:0}
+#nezBar .et-mobile-label-long,#nezBar .et-mobile-label-short{white-space:nowrap}
+@media(max-width:768px){
+  #nezBar{display:grid;grid-template-columns:repeat(5,minmax(0,1fr))}
+  #nezBar a{padding-inline:0;min-height:48px;box-sizing:border-box}
+}
+@media(max-width:519px){
+  #nezBar a{letter-spacing:0}
+  #nezBar .et-mobile-label-long.et-has-short{display:none}
+  #nezBar .et-mobile-label-short{display:inline}
+}
+
+@media(max-width:768px){html{scroll-padding-bottom:calc(84px + env(safe-area-inset-bottom,0px))}}
+
+/* et-mobile-quick-nav:end */
+
+/* et-liquid-glass:start */
+
+@layer et-glass {
+  :root {
+    --et-glass-light:rgba(12,22,38,.82)!important;
+    --et-glass-dense:rgba(12,22,38,.96)!important;
+    --et-glass-solid:#0c1626!important;
+    --et-glass-ink:#f8f5ea!important;
+    --et-glass-line:rgba(255,255,255,.14)!important;
+    --et-glass-reflect:rgba(255,255,255,.10)!important;
+  }
+  html:is(.et-plight,.et-jlight),html:not(.sp-dark):has(.sp-top) {
+    --et-glass-light:rgba(250,248,243,.82)!important;
+    --et-glass-dense:rgba(250,248,243,.96)!important;
+    --et-glass-solid:#faf8f3!important;
+    --et-glass-ink:#0a1a2f!important;
+    --et-glass-line:rgba(16,26,44,.14)!important;
+    --et-glass-reflect:rgba(255,255,255,.65)!important;
+  }
+  #nav.nx,.sp-top.et-al,.pp-sub {
+    background:var(--et-glass-light)!important;
+    color:var(--et-glass-ink)!important;
+    -webkit-backdrop-filter:blur(16px) saturate(1.15)!important;
+    backdrop-filter:blur(16px) saturate(1.15)!important;
+    border-bottom-color:var(--et-glass-line)!important;
+    box-shadow:inset 0 1px 0 var(--et-glass-reflect)!important;
+  }
+  #nav.nx.scrolled {background:var(--et-glass-dense)!important}
+
+  #nav .nav-trigger,#nav .brand-tx,#nav .brand-tx span,#nav .brand-tx small,
+  #nav .nav-cta button,#nav .nx-util a:not(.nx-invest) {
+    color:var(--et-glass-ink)!important;
+    -webkit-text-fill-color:var(--et-glass-ink)!important;
+  }
+  #nav .nav-cta button svg,#nav .nav-cta button svg *,
+  #nav .nav-trigger svg,#nav .nav-trigger svg * {
+    color:var(--et-glass-ink)!important;stroke:currentColor!important;
+  }
+  #nav #navTog span {background:var(--et-glass-ink)!important}
+  #cmdk-input {min-width:0!important}
+  .et-search-close {flex:0 0 44px!important;width:44px!important;height:44px!important;background:#1d304d!important;color:#f8f5ea!important;border:1px solid #9fb0c9!important;border-radius:8px!important;font:28px/1 system-ui!important;cursor:pointer!important}
+  .et-search-close:focus-visible {outline:3px solid #e8c36a!important;outline-offset:2px!important}
+  .et-nav-live {position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip-path:inset(50%)!important;white-space:nowrap!important;border:0!important}
+  @media(max-width:360px) {
+    #nav #navSearch {display:inline-flex!important}
+  }
+  @media(max-width:767px) {
+    #nav .nav-links .nav-item .nx-mega {width:auto!important;min-width:0!important;max-width:100%!important;box-sizing:border-box!important}
+    .arh-nav {flex-wrap:wrap!important;overflow:visible!important;gap:4px 12px!important}
+  }
+  #nezBar,#nav .nx-mega {
+    background:var(--et-glass-dense)!important;
+    color:var(--et-glass-ink)!important;
+    -webkit-backdrop-filter:blur(10px) saturate(1.1)!important;
+    backdrop-filter:blur(10px) saturate(1.1)!important;
+    border-color:var(--et-glass-line)!important;
+  }
+  #nav .nx-mega{background:var(--et-glass-solid)!important}
+  #nav .pn-feat{align-self:start!important}
+  #nav .nav-search,#nav .nx-mega,#nav .nx-mega .nxg,.sp-top .sp-theme {
+    -webkit-backdrop-filter:none!important;backdrop-filter:none!important;
+  }
+  footer.pft {-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+  @media(max-width:1240px) {
+    #nav.nx:has(.open){overflow:visible!important}
+    #nav.nx:has(.open),#nav .nav-links.open,.sp-top details[open]>nav {
+      background:var(--et-glass-solid)!important;color:var(--et-glass-ink)!important;
+      -webkit-backdrop-filter:none!important;backdrop-filter:none!important;
+    }
+  }
+  @supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))) {
+    #nav.nx,.sp-top.et-al,.pp-sub,#nezBar,#nav .nx-mega {background:var(--et-glass-solid)!important}
+  }
+  @media(prefers-reduced-transparency:reduce) {
+    #nav.nx,.sp-top.et-al,.pp-sub,#nezBar,#nav .nx-mega,
+    #nav .nav-links.open,.sp-top details[open]>nav {
+      background:var(--et-glass-solid)!important;
+      -webkit-backdrop-filter:none!important;backdrop-filter:none!important;
+      box-shadow:none!important;
+    }
+  }
+  @media print {
+    #nav.nx,.sp-top.et-al,.pp-sub,#nezBar {box-shadow:none!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+  }
+}
+
+/* et-liquid-glass:end */
+
+/* et-modern:start */
+@layer et-glass {
+  [data-page-share] {min-width:44px!important;min-height:44px!important}
+  html[data-et-modern] #main-content {font-family:Inter,system-ui,sans-serif!important}
+  html[data-et-modern] #main-content h1 {font-family:Inter,system-ui,sans-serif!important;font-size:clamp(2.1rem,4.6vw,4rem)!important;line-height:1.12!important;font-weight:600!important;letter-spacing:-.045em!important;max-width:24ch!important}
+  html[data-et-modern] #main-content h2 {font-family:Inter,system-ui,sans-serif!important;font-size:clamp(1.6rem,3vw,2.3rem)!important;line-height:1.2!important;font-weight:600!important;letter-spacing:-.025em!important}
+  html[data-et-modern] #main-content h3 {font-family:Inter,system-ui,sans-serif!important;font-size:1.13rem!important;line-height:1.4!important;font-weight:650!important;letter-spacing:0!important}
+  html[data-et-modern] #main-content>section {padding-block:clamp(36px,5vw,72px)!important;background:var(--et-glass-solid)!important;color:var(--et-glass-ink)!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+  html[data-et-modern] #main-content.et-home>section :is(h2,h3,p,b,span,a) {color:var(--et-glass-ink)!important}
+  html[data-et-modern] #main-content .mod-signature {font:italic clamp(1.05rem,2vw,1.4rem)/1.5 Georgia,serif!important;margin:16px 0!important;color:#ead29b!important}
+  html[data-et-modern] #nav .nav-trigger {font-size:.86rem!important;min-height:44px!important}
+  html[data-et-modern] #nav .nx-mega .pn-links {max-height:min(65vh,560px)!important;overflow-y:auto!important;overscroll-behavior:contain!important}
+  html[data-et-modern] #nezBar {display:none!important;grid-template-columns:repeat(3,minmax(0,1fr))!important}
+  html[data-et-modern] #nezBar a {min-width:0!important;min-height:54px!important;display:flex!important;align-items:center!important;justify-content:center!important;flex-direction:column!important;gap:3px!important}
+  html[data-et-modern] #nezBar .et-mobile-label-long {display:block!important;white-space:normal!important;font-size:12px!important}
+  html[data-et-modern] #nezBar .et-mobile-label-short {display:none!important}
+  .mod-grid {display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:24px!important;margin:28px 0!important}
+  .mod-card {min-width:0!important;padding:24px!important;border:1px solid var(--et-glass-line)!important;border-radius:16px!important;background:var(--et-glass-dense)!important;color:var(--et-glass-ink)!important;box-shadow:none!important}
+  .mod-card a,.mod-doc-shell a {color:inherit!important;text-underline-offset:4px!important}
+  .mod-status {border-inline-start:3px solid #b98a35!important;padding-inline-start:12px!important}
+  .mod-button,.mod-preview,.mod-filters button {display:inline-flex!important;align-items:center!important;justify-content:center!important;min-height:44px!important;padding:10px 16px!important;border:1px solid var(--et-glass-ink)!important;border-radius:8px!important;color:var(--et-glass-ink)!important;background:transparent!important;font:600 .95rem/1.4 Inter,system-ui,sans-serif!important;text-decoration:none!important;cursor:pointer!important}
+  .mod-service-fields {display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:24px!important;margin:0!important}
+  .mod-service-fields dd {margin:0!important;line-height:1.7!important}
+  .mod-filters {display:grid!important;grid-template-columns:2fr repeat(3,1fr)!important;gap:16px!important;align-items:end!important}
+  .mod-filters label {font:600 .85rem/1.5 Inter,system-ui,sans-serif!important;display:block!important;min-width:0!important}
+  .mod-filters input,.mod-filters select {width:100%!important;box-sizing:border-box!important;margin-top:8px!important;min-height:48px!important;padding:10px!important;border:1px solid var(--et-glass-ink)!important;border-radius:8px!important;background:var(--et-glass-solid)!important;color:var(--et-glass-ink)!important;font:400 1rem/1.5 Inter,system-ui,sans-serif!important}
+  .mod-doc-shell {min-width:0!important;display:flex!important;flex-direction:column!important;gap:12px!important;height:100%!important}
+  .mod-context {padding:16px!important;border-inline-start:3px solid #b98a35!important;background:var(--et-glass-dense)!important;color:var(--et-glass-ink)!important}
+  .mod-preview-dialog {box-sizing:border-box!important;width:min(100% - 24px,1000px)!important;height:min(90vh,900px)!important;max-height:90svh!important;padding:20px!important;border:1px solid var(--et-glass-line)!important;border-radius:16px!important;background:var(--et-glass-solid)!important;color:var(--et-glass-ink)!important;overflow:auto!important}
+  .mod-preview-dialog iframe {width:100%!important;height:65vh!important;border:0!important;background:#fff!important}
+  html[data-et-modern] :is(.mod-card,.mod-filters,.mod-doc-shell,.mod-preview-dialog) :is(a,button,input,select,summary):focus-visible {outline:3px solid #b98a35!important;outline-offset:4px!important}
+  html[data-et-modern] [hidden] {display:none!important}
+  @media(max-width:900px) and (orientation:portrait),(max-width:900px) and (min-height:451px) {html[data-et-modern] #nezBar {display:grid!important}}
+  @media(max-width:767px) {
+    .mod-grid,.mod-service-fields,.mod-filters {grid-template-columns:1fr!important}
+    .mod-card {padding:20px!important}
+    html[data-et-modern] #nav .nx-mega .pn-links {max-height:none!important;overflow:visible!important}
+    html[data-et-modern] #main-content h1 {font-size:clamp(2rem,8vw,3rem)!important}
+    html[data-et-modern] #main-content .et-actions {align-items:stretch!important;gap:12px!important}
+    html[data-et-modern] #main-content .et-actions a {min-height:44px!important;display:inline-flex!important;align-items:center!important}
+  }
+}
+
+/* et-modern:end */
+/* et-visual:start */
+@layer et-glass {
+  #nav #mLang,#nav #mLang b {color:var(--et-glass-ink)!important;-webkit-text-fill-color:var(--et-glass-ink)!important}
+  body:has(.et-theme-hdr) #plightBtn {display:none!important}
+  footer #lum-ctl.et-display-footer {position:relative!important;inset:auto!important;margin:20px auto!important;width:fit-content!important;z-index:10!important}
+  footer .et-display-footer #lum-btn {position:static!important;inset:auto!important;min-width:44px!important;min-height:44px!important}
+  footer .et-display-footer #lum-panel {bottom:calc(100% + 8px)!important;top:auto!important;right:0!important;max-width:calc(100vw - 40px)!important}
+  @media(max-width:767px) {
+    html[data-et-visual="engineering"] .pp-hero-img {filter:brightness(.48)!important}
+    html[data-et-visual="contact"] .pp-hero {min-height:0!important;padding-block:calc(var(--nav-h,77px) + 32px) 40px!important}
+    html[data-et-visual="contact"] .pp-hero .pp-wrap {padding-top:0!important}
+  }
+}
+/* et-visual:end */
+/* nav-minors:start */@media (max-width:760px){html body footer .foot-col a:not(#n1):not(#n2):not(#n3):not(#n4):not(#n5):not(#n6),html body footer .pft-contact a:not(#n1):not(#n2):not(#n3):not(#n4):not(#n5):not(#n6),html body footer .pft-top:not(#n1):not(#n2):not(#n3):not(#n4):not(#n5):not(#n6){min-height:44px!important;min-width:44px!important;display:flex!important;align-items:center!important}#mLang:not(#n1):not(#n2):not(#n3):not(#n4):not(#n5):not(#n6){min-height:44px!important}html[dir="rtl"]:not(#q0):not(#q1):not(#q2):not(#q3):not(#q4):not(#q5):not(#q6):not(#q7):not(#q8):not(#q9):not(#q10):not(#q11):not(#q12):not(#q13):not(#q14):not(#q15):not(#q16):not(#q17):not(#q18):not(#q19):not(#q20):not(#q21):not(#q22):not(#q23):not(#q24):not(#q25):not(#q26) footer.pft .pft-contact a,html[dir="rtl"]:not(#q0):not(#q1):not(#q2):not(#q3):not(#q4):not(#q5):not(#q6):not(#q7):not(#q8):not(#q9):not(#q10):not(#q11):not(#q12):not(#q13):not(#q14):not(#q15):not(#q16):not(#q17):not(#q18):not(#q19):not(#q20):not(#q21):not(#q22):not(#q23):not(#q24):not(#q25):not(#q26) footer.pft .foot-legal a{min-height:44px!important}html[dir="rtl"]:not(#q0):not(#q1):not(#q2):not(#q3):not(#q4):not(#q5):not(#q6):not(#q7):not(#q8):not(#q9):not(#q10):not(#q11):not(#q12):not(#q13):not(#q14):not(#q15):not(#q16):not(#q17):not(#q18):not(#q19):not(#q20):not(#q21):not(#q22):not(#q23):not(#q24):not(#q25):not(#q26) nav.arh-nav a{min-width:44px!important;justify-content:center!important}}/* nav-minors:end */
+/* et-lot20:start */
+/* Lot 20 (audit technique M4) : liens du bloc « commercial-scope » distinguables du texte
+   sans dependre de la couleur (WCAG 1.4.1). */
+#commercial-scope a.pp-link{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
+/* Lot 20 (audit technique M6, WCAG 2.2 · 2.5.8) : liens isoles de 17 a 20 px de haut portes a
+   24 px au moins (projets, investisseurs, centre investisseurs). Hauteur seule : la ligne de
+   texte reste en place, la zone active s'etend de quelques pixels vers le bas. */
+.mod-card details>p>a,.pp-cell>div>a,.pp-cell>span>a,.et-facts dd>a,.pp-progress .pp-wrap>p>a,
+.pp-box>a,#faq-inv .pp-prose>div>a{display:inline-block;min-height:24px}
+.et-quick-actions>a{min-height:24px}
+/* et-lot20:end */
+/* et-lot24:start */
+/* Lot 24 (audit technique m11) : sur mobile, le degrade horizontal du heros photo laisse la droite
+   de l'image presque nue ; les lignes de confiance (.pp-trust) et le surtitre (.pp-k) y passaient
+   sous 4,5:1. Voile vertical uniforme, plus dense, limite a 760 px ; ordinateur inchange. */
+@media (max-width:760px){html:not(#q0):not(#q1):not(#q2):not(#q3):not(#q4):not(#q5):not(#q6):not(#q7):not(#q8):not(#q9):not(#q10):not(#q11):not(#q12):not(#q13):not(#q14):not(#q15):not(#q16):not(#q17):not(#q18):not(#q19):not(#q20):not(#q21):not(#q22):not(#q23):not(#q24) body main.ppl .pp-hero:not(.pp-hero-plain)::before{background:linear-gradient(180deg,rgba(7,17,31,.74) 0%,rgba(7,17,31,.66) 55%,rgba(7,17,31,.95) 100%)!important}}
+/* et-lot24:end */
+
+/* Lot 28 (M4) : en paysage telephone (hauteur <= 450 px), la sous-navigation des pages premium ne colle plus
+   sous l en-tete (77 + 51 px = 37 % de 343 px) ; #nezBar y est deja masque (bundle_core_a1.css). */
+@media (orientation:landscape) and (max-height:450px){html:not(#q0):not(#q1):not(#q2):not(#q3):not(#q4):not(#q5):not(#q6):not(#q7):not(#q8):not(#q9):not(#q10):not(#q11):not(#q12):not(#q13):not(#q14):not(#q15):not(#q16):not(#q17):not(#q18):not(#q19):not(#q20):not(#q21):not(#q22):not(#q23) body main.ppl .pp-sub{position:relative!important;top:auto!important}}
+/* Lot 28 (M5) : <picture> autour de la photo du heros (source portrait des telephones) : la boite
+   n entre pas dans la grille du heros, l image reste positionnee par rapport a lui. */
+.pp-hero>picture{display:contents}

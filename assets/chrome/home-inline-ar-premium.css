@@ -128,5 +128,13 @@ html[dir="rtl"]:not(#r0):not(#r1):not(#r2):not(#r3):not(#r4):not(#r5):not(#r6):n
 @media (prefers-reduced-motion:reduce){
   html[dir="rtl"]:not(#r0):not(#r1):not(#r2):not(#r3):not(#r4):not(#r5):not(#r6):not(#r7):not(#r8):not(#r9):not(#r10):not(#r11):not(#r12):not(#r13):not(#r14):not(#r15):not(#r16):not(#r17):not(#r18):not(#r19):not(#r20):not(#r21):not(#r22):not(#r23):not(#r24):not(#r25) body main.ppl .pp-link::after{transition:none!important}
 }
+/* Lot 28 (M2) : sous 768 px la navigation passe sur deux ou trois lignes (premium-chrome.css la replie
+   au lieu de la faire defiler) ; l en-tete absolu recouvrait le fil d Ariane et le surtitre. Il revient
+   dans le flux, sur le bleu nuit du heros, et les heros perdent la reserve fixe prevue pour lui. */
+@media (max-width:767px){
+  html[dir="rtl"]:not(#r0):not(#r1):not(#r2):not(#r3):not(#r4):not(#r5):not(#r6):not(#r7):not(#r8):not(#r9):not(#r10):not(#r11):not(#r12):not(#r13):not(#r14):not(#r15):not(#r16):not(#r17):not(#r18):not(#r19):not(#r20):not(#r21):not(#r22):not(#r23):not(#r24):not(#r25) .arh{position:relative!important;background:#0A1422!important}
+  html[dir="rtl"]:not(#r0):not(#r1):not(#r2):not(#r3):not(#r4):not(#r5):not(#r6):not(#r7):not(#r8):not(#r9):not(#r10):not(#r11):not(#r12):not(#r13):not(#r14):not(#r15):not(#r16):not(#r17):not(#r18):not(#r19):not(#r20):not(#r21):not(#r22):not(#r23):not(#r24):not(#r25) main.et-home[dir="rtl"]>.et-hero{padding-top:48px!important}
+  html[dir="rtl"]:not(#r0):not(#r1):not(#r2):not(#r3):not(#r4):not(#r5):not(#r6):not(#r7):not(#r8):not(#r9):not(#r10):not(#r11):not(#r12):not(#r13):not(#r14):not(#r15):not(#r16):not(#r17):not(#r18):not(#r19):not(#r20):not(#r21):not(#r22):not(#r23):not(#r24):not(#r25) body main.ppl .pp-hero .pp-wrap{padding-top:32px!important}
+}
 /* Logo transparent (11 oct. 2026) : sans fond crème, plus grand, tourné de 45° dans le sens horaire */
 @layer verre{.arh-brand .bmk>rect{display:none!important}.arh-brand .bmk{width:40px!important;height:40px!important;border-radius:0!important;box-shadow:none!important;background:none!important;filter:drop-shadow(.71px .71px 1.5px rgba(10,20,34,.25))!important;transform:rotate(45deg)!important}}
