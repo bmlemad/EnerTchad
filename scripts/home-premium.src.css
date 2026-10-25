@@ -26,8 +26,8 @@
 @M .ph-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:16px 40px;margin-bottom:clamp(40px,6vw,72px)}
 @M .ph-head>div{display:grid;gap:16px;max-width:760px}
 @M .ph-btn{display:inline-flex;align-items:center;gap:.5em;font:600 1rem/1 var(--ph-sans);padding:17px 26px;text-decoration:none;border:1px solid transparent;border-radius:0;min-height:48px}
-@M .ph-btn-light{background:#fff;color:#0A1A2F}
-@M .ph-btn-gold{background:var(--ph-gold-night);color:#07111F}
+@M .ph-btn-light{background:var(--et-white,#fff);color:var(--et-ink-900,#0A1A2F)}
+@M .ph-btn-gold{background:var(--ph-gold-night);color:var(--et-abyss,#07111F)}
 @M .ph-link{display:inline-flex;gap:12px;align-items:center;text-decoration:none;font-weight:500;padding-bottom:6px;border-bottom:1px solid var(--ph-gold);color:var(--ph-ink);min-height:44px}
 @M .ph-link::after{content:"→";transition:transform .3s}
 @M .ph-link:hover::after{transform:translateX(5px)}
@@ -35,20 +35,20 @@
 
 /* Heros */
 @M .ph-hero{position:relative;min-height:clamp(700px,100svh,940px);display:grid;align-items:end;padding:0;
-  background:#07111F url(/assets/img/p/pompe-petrole-1900.webp) 62% 72%/cover no-repeat;color:#fff;overflow:hidden}
+  background:var(--et-abyss,#07111F) url(/assets/img/p/pompe-petrole-1900.webp) 62% 72%/cover no-repeat;color:var(--et-white,#fff);overflow:hidden}
 @M .ph-hero::before{content:"";position:absolute;inset:0;background:
   linear-gradient(90deg,rgba(7,17,31,.82) 0%,rgba(7,17,31,.4) 45%,rgba(7,17,31,0) 72%),
   linear-gradient(180deg,rgba(7,17,31,.35) 0%,rgba(7,17,31,0) 30%,rgba(7,17,31,.2) 60%,rgba(7,17,31,.94) 100%)}
 @M .ph-hero .ph-wrap{position:relative;width:100%;display:grid;gap:22px;padding-top:200px}
 @M .ph-hero .ph-eyebrow{color:rgba(255,255,255,.86);font-variant-numeric:tabular-nums}
-@M .ph-hero h1{max-width:14ch;color:#fff}
+@M .ph-hero h1{max-width:14ch;color:var(--et-white,#fff)}
 @M .ph-hero .ph-sub{font-size:1.25rem;line-height:1.55;max-width:46ch;color:rgba(255,255,255,.88)}
 @M .ph-hero .ph-actions{display:flex;flex-wrap:wrap;gap:20px 34px;align-items:center;margin-top:6px}
-@M .ph-hero .ph-link{color:#fff;border-color:var(--ph-gold-night)}
+@M .ph-hero .ph-link{color:var(--et-white,#fff);border-color:var(--ph-gold-night)}
 @M .ph-figs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin-top:clamp(40px,6vw,80px);border-top:1px solid rgba(255,255,255,.22)}
 @M .ph-figs>div{padding:22px 24px 30px 0;display:grid;gap:6px}
 @M .ph-figs>div+div{padding-left:24px;border-left:1px solid rgba(255,255,255,.22)}
-@M .ph-figs b{font:400 clamp(1.7rem,3vw,2.6rem)/1 var(--ph-serif);color:#fff;font-variant-numeric:tabular-nums}
+@M .ph-figs b{font:400 clamp(1.7rem,3vw,2.6rem)/1 var(--ph-serif);color:var(--et-white,#fff);font-variant-numeric:tabular-nums}
 @M .ph-figs span{font-size:.88rem;color:rgba(255,255,255,.74)}
 @M .ph-note{font-size:.82rem;color:rgba(255,255,255,.62);padding-bottom:26px}
 @M .ph-note a{color:rgba(255,255,255,.86)}
@@ -87,19 +87,19 @@
 @M .ph-caps a:hover b{color:var(--ph-gold-ink)}
 
 /* Chapitre nuit */
-@M .ph-night{background:#07111F url(/assets/img/p/dunes-couchant-1900.webp) center/cover no-repeat;color:var(--ph-night-ink)}
+@M .ph-night{background:var(--et-abyss,#07111F) url(/assets/img/p/dunes-couchant-1900.webp) center/cover no-repeat;color:var(--ph-night-ink)}
 @M .ph-night::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(7,17,31,.96) 0%,rgba(7,17,31,.86) 55%,rgba(7,17,31,.62) 100%)}
 @M .ph-night .ph-wrap{position:relative;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:clamp(40px,7vw,110px)}
 @M .ph-night .ph-eyebrow{color:var(--ph-gold-night)}
-@M .ph-night h2{color:#fff}
+@M .ph-night h2{color:var(--et-white,#fff)}
 @M .ph-night .ph-lead,@M .ph-night p{color:var(--ph-night-2)}
-@M .ph-night .ph-link{color:#fff;border-color:var(--ph-gold-night)}
+@M .ph-night .ph-link{color:var(--et-white,#fff);border-color:var(--ph-gold-night)}
 @M .ph-night .ph-actions{display:flex;flex-wrap:wrap;gap:20px 30px;align-items:center;margin-top:10px}
 @M .ph-agenda{list-style:none;margin:0;padding:0;display:grid}
 @M .ph-agenda li{display:grid;grid-template-columns:8.5rem minmax(0,1fr);gap:20px;padding:22px 0;border-top:1px solid rgba(255,255,255,.16)}
 @M .ph-agenda li:last-child{border-bottom:1px solid rgba(255,255,255,.16)}
 @M .ph-agenda time{font:400 1.35rem/1.1 var(--ph-serif);color:var(--ph-gold-night);font-variant-numeric:tabular-nums}
-@M .ph-agenda b{color:#fff;font-weight:500}
+@M .ph-agenda b{color:var(--et-white,#fff);font-weight:500}
 @M .ph-agenda span{display:block;color:var(--ph-night-2);font-size:.92rem;margin-top:4px}
 
 /* Actualites */
