@@ -1042,3 +1042,21 @@ footer.pft .foot-news .fn-alt a{display:inline-block;padding:4px 0}
 /* Lot 28 (M5) : <picture> autour de la photo du heros (source portrait des telephones) : la boite
    n entre pas dans la grille du heros, l image reste positionnee par rapport a lui. */
 .pp-hero>picture{display:contents}
+
+/* et-lot29-logo:start */
+/* Lot 29 (B3) : logotype SVG (scripts/gen_logo.py). « Ener » en currentColor, « Tchad » en or du
+   theme (--et-logo-or). L'accroche reste en HTML (.brand-tx.et-tag) sous le mot. */
+@layer et-glass{
+:root{--et-logo-or:#E8C36A}
+html:is(.et-plight,.et-jlight),html:not(.sp-dark):has(.sp-top){--et-logo-or:#7A5A12}
+.et-logo{display:block!important;height:44px!important;width:auto!important;flex:none!important}
+#nav .brand .et-logo{color:var(--et-glass-ink)!important}
+img.et-logo{height:44px!important;width:auto!important}
+#nav .brand,footer .brand,.foot-brand .brand{position:relative!important;display:flex!important;align-items:flex-start!important;gap:0!important;min-height:44px!important;padding:0!important}
+#nav .brand{margin-right:10px!important}
+.brand .brand-tx.et-tag{position:absolute!important;left:54px!important;top:31px!important;margin:0!important;padding:0!important;line-height:1!important;font-size:0!important;white-space:nowrap!important}
+.brand .brand-tx.et-tag small{display:block!important;font:500 10px/1.2 "JetBrains Mono",ui-monospace,Menlo,Consolas,monospace!important;letter-spacing:.14em!important;text-transform:uppercase!important}
+#nav .brand .brand-tx.et-tag small{color:var(--et-glass-ink)!important;opacity:.78}
+@media(max-width:768px){.et-logo,img.et-logo{height:38px!important}#nav .brand .brand-tx.et-tag{display:none!important}}
+}
+/* et-lot29-logo:end */

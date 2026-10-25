@@ -57,3 +57,12 @@ html[data-et-space] #main-content{scroll-margin-top:20px}
 @media(prefers-reduced-transparency:reduce){html[data-et-space] #nav.et-al{backdrop-filter:none}}
 @media(max-width:700px){html[data-et-space="boutique"]{--et-space-hero-min-height:0px;--et-space-hero-top:32px}}
 @media print{html[data-et-space] #nav.et-al{position:static!important}html[data-et-space] #nav .et-al-util,html[data-et-space] #nav .et-theme-hdr,html[data-et-space] #nav .et-al-tog{display:none}}
+
+/* et-lot29-logo:start */
+/* Lot 29 (B3) : logotype SVG dans l'en-tete des sous-sites (atlas, boutique, clients). */
+html[data-et-space] #nav .et-al-brand{position:relative;align-items:flex-start;gap:0;min-height:44px}
+html[data-et-space] #nav .et-logo{display:block;height:44px;width:auto;flex-shrink:0;color:inherit;--et-logo-or:var(--al-gold)}
+html[data-et-space] #nav .et-al-tx.et-tag{position:absolute;left:54px;top:29px;margin:0;line-height:1}
+html[data-et-space] #nav .et-al-tx.et-tag small{margin-top:0;font-size:10.5px;line-height:1.2}
+@media(max-width:900px){html[data-et-space] #nav .et-logo{height:40px}html[data-et-space] #nav .et-al-tx.et-tag{top:27px;left:50px}}
+/* et-lot29-logo:end */

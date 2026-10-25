@@ -31,3 +31,10 @@ main.et-web .svc-links a{color:#0A1A2F;text-decoration-color:#E3E6EB;text-underl
 html:not(.et-plight) main.et-web .svc-links a{color:#F1F3F6;text-decoration-color:#22314A}
 /* nav-majors:start */.svc-top{flex-wrap:wrap;row-gap:10px}.svc-top>a{min-width:0}.svc-top nav{flex-wrap:wrap;row-gap:8px;column-gap:16px;min-width:0}/* nav-majors:end */
 /* nav-minors:start */@media (max-width:760px){.svc-top>a,.svc-top nav a,.svc-foot a{min-height:44px;display:inline-flex;align-items:center}.svc-top nav a{min-width:44px;justify-content:center}.svc-foot{row-gap:0}}/* nav-minors:end */
+
+/* et-lot29-logo:start */
+/* Lot 29 (B3) : logotype SVG dans l'en-tete de service. */
+.svc-top .svc-brand{min-width:0}
+.svc-top .et-logo{display:block;height:36px;width:auto;color:inherit;--et-logo-or:#7A5A12}
+html:not(.et-plight) .svc-top .et-logo{--et-logo-or:#E8C36A}
+/* et-lot29-logo:end */

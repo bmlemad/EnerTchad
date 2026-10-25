@@ -1135,3 +1135,13 @@ html.et-plight #nav .logo-img{background-image:url("data:image/svg+xml,%3Csvg%20
 #nezBar a[aria-expanded=true]{color:var(--gold-l,#f0ce82);background:rgba(217,168,79,.16)}
 #nezBar a[aria-expanded=true] svg{stroke:var(--gold-l,#f0ce82)}
 html.nz-lock,html.nz-lock body{overflow:hidden}
+
+/* et-lot29-logo:start */
+/* Lot 29 (B3) : logotype SVG, regles de base pour toute page a #nav (le configurateur ne charge
+   pas premium-chrome.css). */
+#nav .brand .et-logo,footer .brand .et-logo{display:block;height:44px;width:auto;flex:none;color:#0A1A2F;--et-logo-or:#7A5A12}
+html:not(.et-plight):not(.et-jlight) #nav .brand .et-logo{color:#F8F5EA;--et-logo-or:#E8C36A}
+#nav .brand{position:relative;align-items:flex-start;gap:0!important;min-height:44px}
+#nav .brand .brand-tx.et-tag{position:absolute;left:54px;top:31px;margin:0;line-height:1}
+@media (max-width:760px){#nav .brand .et-logo{height:38px}#nav .brand .brand-tx.et-tag{display:none}}
+/* et-lot29-logo:end */
