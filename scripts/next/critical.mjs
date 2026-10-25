@@ -2,8 +2,8 @@
 // Pour les pages listées dans scripts/critical/pole.json, chaque feuille bloquante du <head> est
 // remplacée, à sa place (la cascade est inchangée), par :
 //   <style data-et-crit>règles de cette feuille utiles au-dessus du pli</style>
-//   <link rel="preload" as="style" data-et-defer href="…">
-// puis un script en fin de <body> rebascule ces liens en rel="stylesheet" (empreinte posée
+//   <link rel="stylesheet" media="not all" data-et-defer href="…">
+// puis un script en fin de <body> leur rend leur media (empreinte posée
 // par la politique CSP de page, calculée ensuite par hardenHtml), avec un <noscript> de repli.
 // Garde-fous : la page doit porter exactement les feuilles attendues, dans l'ordre, et chaque
 // feuille publiée doit avoir l'empreinte (?v=) relevée lors de l'extraction ; sinon la page
@@ -12,7 +12,12 @@
 import { readFileSync } from 'node:fs';
 
 export const CRITICAL_FILES = ['scripts/critical/pole.json'];
-export const LOADER = '(function(){var l=document.querySelectorAll("link[data-et-defer]");for(var i=0;i<l.length;i++){l[i].rel="stylesheet"}})()';
+// Lot 38 : les feuilles différées sont téléchargées en priorité la plus basse (media="not all")
+// et ne s'appliquent qu'une fois l'image du héros chargée PUIS peinte (deux images d'animation :
+// le recalcul de style des feuilles complètes, ~200 ms à CPU ×4, ne retarde plus la peinture du
+// LCP), ou au plus tard à « load ». Pas de minuterie : sur réseau lent, une bascule à 2,5 s
+// tombait avant l'image et retardait sa peinture (mesuré).
+export const LOADER = '(function(){var l=document.querySelectorAll("link[data-et-defer]"),d=0;function late(){requestAnimationFrame(function(){requestAnimationFrame(function(){setTimeout(go,0)})})}function go(){if(d)return;d=1;for(var i=0;i<l.length;i++){l[i].media=l[i].getAttribute("data-media")||"all"}}var m=document.querySelector(".pp-hero-img");if(m&&!m.complete){m.addEventListener("load",late);m.addEventListener("error",late)}else go();addEventListener("load",go)})()';
 
 let sets = null;
 function load() {
@@ -46,7 +51,7 @@ export function inlineCritical(html, page, versions) {
     const media = (tag.match(/\bmedia="([^"]+)"/) || [])[1];
     const css = set.sheets[nameOf(hrefs[i])].css;
     const repl = (css ? `<style data-et-crit>${css}</style>` : '') +
-      `<link rel="preload" as="style" data-et-defer href="${hrefs[i]}"${media ? ` media="${media}"` : ''}>`;
+      `<link rel="stylesheet" media="not all" data-et-defer${media ? ` data-media="${media}"` : ''} href="${hrefs[i]}">`;
     out = out.slice(0, at) + repl + out.slice(at + tag.length);
   }
   const at = out.lastIndexOf('</body>');
