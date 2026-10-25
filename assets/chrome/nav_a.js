@@ -221,7 +221,7 @@ try{(function(){
 })()}catch(e){}
 
 
-(function(){var s=document.createElement("script");s.src="/assets/chrome/audience-consent.js?v=b74088fae3a5";s.defer=true;document.head.appendChild(s)})();
+(function(){var s=document.createElement("script");s.src="/assets/chrome/audience-consent.js?v=24433d83077c";s.defer=true;document.head.appendChild(s)})();
 
 
 ;(function(){try{
