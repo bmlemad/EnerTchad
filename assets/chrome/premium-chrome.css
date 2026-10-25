@@ -1068,3 +1068,15 @@ img.et-logo{height:44px!important;width:auto!important}
 html:is(.et-plight,.et-jlight) :is(a,button,input,select,textarea,summary,[tabindex]:not([tabindex="-1"])):focus-visible{box-shadow:0 0 0 4px #FAF8F3!important;outline-color:#7A5A12!important}
 }
 /* et-lot29-focus:end */
+
+/* et-lot29-ar:start */
+/* Lot 29 (B1) : pages arabes dans le systeme commun (data-et-modern="industrial") — titres en
+   Noto Naskh Arabic (H1/H2, 500), texte et H3 en Noto Sans Arabic, interlettrage nul. */
+@layer et-glass{
+html[lang=ar] #main-content,html[lang=ar] #main-content.et-home{font-family:"Noto Sans Arabic",Inter,system-ui,sans-serif!important}
+html[lang=ar] #main-content :is(h1,h2,h4),html[lang=ar] #main-content.et-home :is(h1,h2){font-family:"Noto Naskh Arabic","Noto Sans Arabic",Inter,sans-serif!important;letter-spacing:0!important;font-weight:500!important}
+html[lang=ar] #main-content :is(h1,h2){line-height:1.4!important}
+html[lang=ar] #main-content h1{max-width:none!important}
+html[lang=ar] #main-content h3{font-family:"Noto Sans Arabic",Inter,sans-serif!important;font-weight:700!important;letter-spacing:0!important}
+}
+/* et-lot29-ar:end */
