@@ -1,7 +1,8 @@
 import { readdir, readFile, writeFile } from 'node:fs/promises';
-import { join } from 'node:path';
+import { join, relative } from 'node:path';
 import { minifyCss, hardenHtml, CSP_MARK } from './harden.mjs';
 import { FINGERPRINTS, rewriteRefs, readChrome, digest } from './fingerprint.mjs';
+import { inlineCritical } from './critical.mjs';
 async function* walk(dir) {
   for (const entry of await readdir(dir, { withFileTypes: true })) {
     const path = join(dir, entry.name);
@@ -25,7 +26,8 @@ export async function hardenExport(root) {
       if (min !== text) await writeFile(path, min);
       css++;
     } else if (path.endsWith('.html')) {
-      const text = await readFile(path, 'utf8'), fp = rewriteRefs(text, versions), out = hardenHtml(fp);
+      // Lot 37 : CSS critique en ligne (gabarit de pôle) avant la politique CSP, qui empreinte le chargeur.
+      const text = await readFile(path, 'utf8'), fp = rewriteRefs(text, versions), out = hardenHtml(inlineCritical(fp, relative(root, path), versions));
       if (fp !== text) versioned++;
       if (out !== text) await writeFile(path, out);
       pages++; if (out.includes(CSP_MARK)) policies++;
