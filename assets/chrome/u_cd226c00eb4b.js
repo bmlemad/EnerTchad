@@ -9,36 +9,6 @@ b.setAttribute('aria-pressed',document.documentElement.classList.contains('et-jl
 b.addEventListener('click',function(){var on=!document.documentElement.classList.contains('et-jlight');apply(on);b.setAttribute('aria-pressed',on?'true':'false');try{localStorage.setItem('et-jlight',on?'1':'0');localStorage.setItem('et-plight',on?'1':'0')}catch(e){}});
 if(bar&&document.querySelector('.jback')){bar.appendChild(b)}else{b.classList.add('in-panel');b.id='jlightBtn';var en=(document.documentElement.lang||'').indexOf('en')===0;b.textContent=en?'\u2600 Light / dark':'\u2600 Clair / sombre';b.setAttribute('aria-label',en?'Light mode':'Mode clair');if(!document.getElementById('etOneCtl')){var st=document.createElement('style');st.id='etOneCtl';st.textContent='#jlightBtn.in-panel,#etThemeBtn.in-panel{position:static;display:block;width:100%;height:auto;min-height:32px;border-radius:8px;border:1px solid var(--hair,rgba(120,180,250,.18));background:transparent;color:rgba(245,247,250,.82);font-size:.6875rem;letter-spacing:.02em;padding:7px 8px;cursor:pointer;transition:border-color .2s,color .2s}#jlightBtn.in-panel[aria-pressed="true"],#etThemeBtn.in-panel[aria-pressed="true"]{border-color:var(--gold-l,#F0CE82);color:var(--gold-l,#F0CE82)}.lum-theme{margin:0 0 12px;padding:0 0 12px;border-bottom:1px solid rgba(245,247,250,.12)}';(document.head||document.documentElement).appendChild(st);}var row=document.createElement('div');row.className='lum-theme';var h=document.createElement('p');h.className='lum-h';h.textContent=en?'Theme':'Th\u00e8me';row.appendChild(h);row.appendChild(b);lp.insertBefore(row,lp.firstChild);}}
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init()})()}catch(e){}
-
-/* Mode clair des pages editoriales (liste blanche) : bouton fixe en bas a gauche, persistant. */
-try{(function(){var KEY='et-plight';
-var PAGES=['/communiques','/communiques-en','/faq','/faq-en','/glossaire-petrolier','/glossaire-petrolier-en','/avertissements','/mentions-legales','/cookies','/accessibilite','/publications','/carnets','/carnets-en','/ethique','/ethique-en','/societe','/societe-en','/engagements','/engagements-en','/communautes','/cibles-2030','/investisseurs','/investisseurs-en','/projets','/projets-en','/clients','/clients-en','/amont','/amont/activites','/amont/eor','/amont/services-ep','/aval','/aval/distribution','/aval/produits','/aval/raffinage','/aval/reseau','/enerconseils','/enerconseils/atlas','/enerconseils/conseil','/tchaditude','/tchaditude/academie','/tchaditude/partenariats','/tchaditude/rayonnement','/tchaditude/services','/tchaditech','/tchaditech/innovations','/tchaditech/outils','/tchaditech/rd','/tchaditech/recits','/tchaditech/socle','/greentech','/greentech/hseq','/greentech/impact','/greentech/patrimoine','/greentech/transition','/impact','/intermediaire','/intermediaire/logistique','/intermediaire/services','/intermediaire/sites','/petrochimie','/petrochimie/chimie-eor','/petrochimie/produits','/amont/activites-en','/brochure','/carrieres','/charte','/confidentialite-en','/confidentialite','/contact-en','/contact','/cookies-en','/aval/distribution-en','/amont/eor-en','/innovation','/mentions-legales-en','/plan-du-site','/pole-amont-en','/pole-aval-en','/pole-enerchimie-en','/pole-enerconseils-en','/pole-tchaditude-en','/pole-tchaditech-en','/pole-greentech-en','/pole-intermediaire-en','/aval/produits-en','/publications-en','/aval/raffinage-en','/aval/reseau-en','/amont/services-ep-en','/ar','/en','/','/index-en','/solutions','/solutions-en','/achats','/achats-en','/gouvernance','/boutique','/boutique-en','/amont/parc','/amont/parc-en','/enerconseils/audits','/enerconseils/audits-en','/404','/calculateur-baril-additionnel','/configurateur-service-integre',
-/* Coherence 2026-10-13 : URL publique reelle du calculateur (/amont/..., reecrite vers
-   Calculateur_Baril_Additionnel.html) et pages des espaces Atlas / Clients. */
-'/amont/calculateur-baril-additionnel','/boutique/en','/boutique/clients','/boutique/en/clients',
-'/atlas','/atlas-en','/atlas/carte','/atlas/carte-en','/atlas/bassins-champs','/atlas/bassins-champs-en','/atlas/infrastructures','/atlas/infrastructures-en','/atlas/cadre-sectoriel','/atlas/cadre-sectoriel-en','/atlas/sources','/atlas/sources-en'];
-var p=location.pathname.replace(/\.html$/,'').replace(/\/index$/,'').replace(/\/$/,'')||'/';
-if(PAGES.indexOf(p)<0)return;
-function apply(on){document.documentElement.classList.toggle('et-plight',on)}
-try{var _v=localStorage.getItem('et-jlight')||localStorage.getItem('et-plight');if(_v==='1'||(_v===null&&matchMedia('(prefers-color-scheme: light)').matches))apply(true)}catch(e){}
-function init(){if(document.getElementById('plightBtn'))return;
-var b=document.createElement('button');b.id='plightBtn';b.type='button';b.title='Basculer lecture claire / sombre';b.setAttribute('aria-label','Basculer lecture claire ou sombre');
-b.setAttribute('aria-pressed',document.documentElement.classList.contains('et-plight')?'true':'false');b.textContent='☀';
-b.addEventListener('click',function(){var on=!document.documentElement.classList.contains('et-plight');apply(on);b.setAttribute('aria-pressed',on?'true':'false');try{localStorage.setItem('et-jlight',on?'1':'0');localStorage.setItem('et-plight',on?'1':'0')}catch(e){}});
-var lp=document.getElementById('lum-panel');
-if(lp){/* Ch498 : une seule commande flottante — le basculeur de theme rejoint le panneau Affichage (pastille de droite), plus de bouton flottant a gauche. Repli : sans panneau, l ancien bouton flottant. */
-b.id='etThemeBtn';b.classList.add('in-panel');
-var en=(document.documentElement.lang||'').indexOf('en')===0;
-b.textContent=en?'\u2600 Light / dark':'\u2600 Clair / sombre';b.setAttribute('aria-label',en?'Light mode':'Mode clair');
-var row=document.createElement('div');row.className='lum-theme';
-var h=document.createElement('p');h.className='lum-h';h.textContent=en?'Theme':'Th\u00e8me';
-row.appendChild(h);row.appendChild(b);lp.insertBefore(row,lp.firstChild);
-var lb=document.getElementById('lum-btn');
-if(lb)lb.setAttribute('aria-label',en?'Display settings \u2014 brightness and theme':'R\u00e9glages d\u2019affichage \u2014 luminosit\u00e9 et th\u00e8me');
-if(!document.getElementById('etOneCtl')){var st=document.createElement('style');st.id='etOneCtl';st.textContent='#etThemeBtn.in-panel{position:static;display:block;width:100%;height:auto;min-height:32px;border-radius:8px;border:1px solid var(--hair,rgba(120,180,250,.18));background:transparent;color:rgba(245,247,250,.82);font-size:.6875rem;letter-spacing:.02em;padding:7px 8px;cursor:pointer;transition:border-color .2s,color .2s}#etThemeBtn.in-panel[aria-pressed=\"true\"]{border-color:var(--gold-l,#F0CE82);color:var(--gold-l,#F0CE82)}.lum-theme{margin:0 0 12px;padding:0 0 12px;border-bottom:1px solid rgba(245,247,250,.12)}';(document.head||document.documentElement).appendChild(st);}
-}else{document.body.appendChild(b);}}
-if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init()})()}catch(e){}
-
 ;(function(){try{var s=document.createElement('style');s.id='etFootClear';s.textContent='@media(max-width:520px){footer .foot-legal{padding-bottom:76px}}@media print{#plightBtn,#toTop,#nezBar,#oilticker,#readbar,#ckn{display:none!important}}';(document.head||document.documentElement).appendChild(s)}catch(e){}})();
 
 /* Carrousels mobiles (modernisation 31/07/2026) : acces clavier + libelle — sans quoi
@@ -251,45 +221,16 @@ els.forEach(function(el){
 });
 })()}catch(e){}
 
-/* Ch231 : le controle de luminosite (#lum-ctl, markup present sur les 207 pages)
-   n'avait AUCUN gestionnaire — bouton, curseur et preregles morts depuis leur pose.
-   Implementation par le voile #lum-veil prevu a cet effet (jamais de filter sur
-   html : il ferait defiler les elements fixed avec la page). */
+/* Lot 34 : le rond flottant ne porte plus que Mouvement (Ch450) ; ouverture et fermeture du panneau
+   (clic, Echap, clic ailleurs). Le voile de luminosite (Ch231) est retire. */
 try{(function(){
-var btn=document.getElementById('lum-btn'),panel=document.getElementById('lum-panel'),
-    rng=document.getElementById('lum-range'),veil=document.getElementById('lum-veil');
+var btn=document.getElementById('lum-btn'),panel=document.getElementById('lum-panel');
 if(!btn||!panel)return;
-if(veil)veil.style.opacity='0'; /* opacite par defaut = 1 (fond transparent) : sans cette mise a zero, la premiere application animerait 1 vers cible = eclair noir */
-function apply(v,save){
-  v=Math.max(80,Math.min(130,Math.round(v)));
-  if(rng)rng.value=v;
-  if(veil){
-    if(v===100){veil.style.opacity='0';}
-    else if(v<100){veil.style.background='#000';veil.style.opacity=String(((100-v)/20*0.42).toFixed(3));}
-    else{veil.style.background='#fff';veil.style.opacity=String(((v-100)/30*0.28).toFixed(3));}
-    veil.style.transition='opacity .25s ease';
-  }
-  panel.querySelectorAll('button[data-l]').forEach(function(b){
-    b.setAttribute('aria-pressed',(+b.dataset.l===v)?'true':'false');});
-  if(save!==false){try{localStorage.setItem('et-lum',String(v))}catch(e){}}
-}
-function toggle(open){
-  if(open===undefined)open=panel.hidden;
-  panel.hidden=!open;
-  btn.setAttribute('aria-expanded',open?'true':'false');
-  if(open&&rng)try{rng.focus({preventScroll:true})}catch(e){}
-}
+function toggle(open){if(open===undefined)open=panel.hidden;panel.hidden=!open;btn.setAttribute('aria-expanded',open?'true':'false');}
 btn.addEventListener('click',function(){toggle();});
-if(rng)rng.addEventListener('input',function(){apply(+rng.value);});
-panel.querySelectorAll('button[data-l]').forEach(function(b){
-  b.addEventListener('click',function(){apply(+b.dataset.l);});});
-document.addEventListener('keydown',function(e){
-  if(e.key==='Escape'&&!panel.hidden){toggle(false);try{btn.focus({preventScroll:true})}catch(_){}}});
-document.addEventListener('click',function(e){
-  if(!panel.hidden&&!(e.target.closest&&e.target.closest('#lum-ctl')))toggle(false);});
-try{var s=localStorage.getItem('et-lum');if(s!==null&&+s!==100)apply(+s,false);}catch(e){}
+document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!panel.hidden){toggle(false);try{btn.focus({preventScroll:true})}catch(_){}}});
+document.addEventListener('click',function(e){if(!panel.hidden&&!(e.target.closest&&e.target.closest('#lum-ctl')))toggle(false);});
 })()}catch(e){}
-
 /* Ch231c : barre d'application mobile (#nezBar) - etat actif inter-pages.
    L'IntersectionObserver existant ne marque que les liens d'ancre (#...) : sur toute
    page interieure, aucun des 5 onglets n'indiquait la position courante. Ici on marque
