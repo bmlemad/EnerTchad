@@ -21,7 +21,8 @@
 @A .arh{position:absolute;top:0;right:0;left:0;z-index:40;color:#FFFFFF;background:none;border:0;margin:0;padding:0}
 @A .arh-in{max-width:1200px;margin-inline:auto;padding:16px clamp(16px,4vw,40px);display:flex;flex-wrap:wrap;align-items:center;gap:10px 32px;border-bottom:1px solid rgba(255,255,255,.2)}
 @A .arh-brand{display:inline-flex;align-items:center;gap:10px;min-height:44px;color:#FFFFFF;text-decoration:none;font:700 1.2rem/1 "National Park","Inter",system-ui,sans-serif}
-@A .arh-brand svg{width:34px;height:34px;flex:none}
+@A .arh-brand .et-logo{display:block;height:40px;width:auto;flex:none;color:#FFFFFF;--et-logo-or:#E8C36A}
+@A footer .et-logo{display:block;height:44px;width:auto}
 @A .arh-brand b{color:#D9B567;font-weight:700}
 @A .arh-nav{display:flex;flex:1 1 auto;flex-wrap:wrap;gap:0 24px;margin:0;padding:0;background:none;border:0}
 @A .arh-nav a{display:inline-flex;align-items:center;min-height:44px;color:rgba(255,255,255,.88);text-decoration:none;font-size:.95rem;font-weight:500;border-bottom:2px solid transparent;white-space:nowrap}
@@ -137,4 +138,3 @@
   @AM .pp-hero .pp-wrap{padding-top:32px}
 }
 /* Logo transparent (11 oct. 2026) : sans fond crème, plus grand, tourné de 45° dans le sens horaire */
-@layer verre{.arh-brand .bmk>rect{display:none!important}.arh-brand .bmk{width:40px!important;height:40px!important;border-radius:0!important;box-shadow:none!important;background:none!important;filter:drop-shadow(.71px .71px 1.5px rgba(10,20,34,.25))!important;transform:rotate(45deg)!important}}

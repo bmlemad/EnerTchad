@@ -24,6 +24,7 @@ from html import escape
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import gen_premium_institution as G  # noqa: E402
+from logo_markup import logo_svg, logo_img  # noqa: E402  (lot 29, B3)
 from gen_premium_pole import sp, inner, text, SUBNAV_JS, BeautifulSoup, hero_preload, hero_art  # noqa: E402
 
 BUILD = '202610012300'
@@ -121,7 +122,7 @@ def header(old_header, old_nav, path):
     inv = next((a for a in old_nav.find_all('a') if 'investisseurs' in a['href']), None)
     # Lot 21 (décision DG) : « إبداء الاهتمام » (Manifester son intérêt), comme le CTA de la nav principale ; aucun appel « Investir ».
     cta = f'<a class="arh-cta" href="{escape(inv["href"])}">{CTA_AR}</a>' if inv is not None else ''
-    return (f'<header class="arh"><div class="arh-in"><a class="arh-brand" href="/ar">{str(svg) if svg else ""}'
+    return (f'<header class="arh"><div class="arh-in"><a class="arh-brand" href="/ar">{logo_svg()}'
             f'<span dir="ltr">Ener<b>Tchad</b></span></a>'
             f'<nav class="arh-nav" aria-label="{escape(old_nav.get("aria-label", "التنقل بالعربية"))}">{links}</nav>'
             f'<div class="arh-tools"><span class="arh-lang" role="navigation" aria-label="{escape(lang.get("aria-label", "اللغة"))}">{langs}</span>{THEME_BTN}{cta}</div>'
@@ -242,7 +243,7 @@ def footer(old_footer, old_nav, motto, phone):
     return (f'<footer class="pft pft-ar"><div class="wrap">'
             + (f'<p class="pft-motto">{motto}</p>' if motto else '')
             + '<div class="foot-grid pft-grid"><div class="foot-brand"><a class="brand" href="/ar">'
-            + '<span class="brand-tx" dir="ltr">Ener<span class="s">Tchad</span></span></a>'
+            + logo_img() + '</a>'
             + f'<p class="foot-desc">{escape(motto_desc)}</p><div class="pft-contact">{contact}</div>{soc_h}</div>'
             + f'<div class="foot-col"><h3>بالعربية</h3>{arl}</div>'
             + f'<div class="foot-col"><h3>الموقع الكامل (FR · EN)</h3>{full}</div></div>'

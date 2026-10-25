@@ -3,6 +3,9 @@
 chaque page (FR/EN) par la nouvelle structure : barre utilitaire + 5 rubriques.
 Usage : python3 scripts/gen_nav_a.py   (à la racine du dépôt)"""
 import re, glob, os, sys
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from logo_markup import logo_svg  # lot 29 (B3)
+LOGO = logo_svg()
 
 BUILD = "202607092100"
 CHEV = ('<svg aria-hidden="true" focusable="false" width="11" height="11" viewBox="0 0 12 12" '
@@ -88,8 +91,7 @@ def nav_fr(brand, lang, act):
   </div></div>
   <div class="nav-in nx-bar">
     <a href="{brand}" class="brand" aria-label="EnerTchad — Accueil" title="Accueil">
-      <span class="brand-mk"><span class="logo-img" role="img" aria-label="EnerTchad"></span></span>
-      <span class="brand-tx">Ener<span class="s">Tchad</span></span>
+      {LOGO}
     </a>
     <div class="nav-links" id="navLinks">
       {chr(10).join(items)}
@@ -167,8 +169,7 @@ def nav_en(brand, lang, act):
   </div></div>
   <div class="nav-in nx-bar">
     <a href="{brand}" class="brand" aria-label="EnerTchad — Home" title="Home">
-      <span class="brand-mk"><span class="logo-img" role="img" aria-label="EnerTchad"></span></span>
-      <span class="brand-tx">Ener<span class="s">Tchad</span></span>
+      {LOGO}
     </a>
     <div class="nav-links" id="navLinks">
       {chr(10).join(items)}
