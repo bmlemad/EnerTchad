@@ -49,7 +49,7 @@
   --et-gold-ink:var(--et-gold-700);
 }
 
-html:not(.et-plight,.et-jlight):not(:has(body.sp)),html.sp-dark{
+html:not(.et-plight,.et-jlight){
   --et-surface:var(--et-night);
   --et-surface-alt:var(--et-night-2);
   --et-ink:var(--et-snow);

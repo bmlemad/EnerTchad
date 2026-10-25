@@ -1,7 +1,7 @@
 /* EnerTchad — tokens de design (R5, lot 35). Source unique : cette feuille ; premium-chrome.css
    en porte une copie entre les marqueurs et-tokens (scripts : /root/work/l31/lot35.py).
    Couleurs : 3 ors d'interface + or de marque, 3 nuits, 2 papiers. Thème clair par défaut
-   (décision n° 752) ; sombre = html sans .et-plight/.et-jlight (pages React : html.sp-dark). */
+   (décision n° 752) ; sombre = html sans .et-plight/.et-jlight. */
 :root{
   --et-white:#FFFFFF;
   --et-paper:#FAF8F3;
@@ -50,7 +50,7 @@
   --et-gold-ink:var(--et-gold-700);
 }
 
-html:not(.et-plight,.et-jlight):not(:has(body.sp)),html.sp-dark{
+html:not(.et-plight,.et-jlight){
   --et-surface:var(--et-night);
   --et-surface-alt:var(--et-night-2);
   --et-ink:var(--et-snow);
