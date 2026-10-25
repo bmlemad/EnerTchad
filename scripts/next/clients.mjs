@@ -16,6 +16,9 @@ export function moderniseClients(html,en){
   const status=en?'Company in formation · offers in preparation':'Société en constitution · offres en préparation';
   const hero=`<header id="top-pole" class="ec-hero"><div class="ec-shell"><p class="ec-kicker">${en?'ENERTCHAD · CUSTOMER SPACE':'ENERTCHAD · ESPACE CLIENTS'}</p><div class="ec-hero-grid"><div><h1>${title}</h1><p class="ec-lead">${lead}</p><div class="ec-actions"><a class="ec-primary" href="#besoin-client">${en?'Find your solution':'Choisir votre solution'}<span aria-hidden="true"> ↗</span></a><a class="ec-text-link" href="/contact${suffix}?profil=b2b#ctForm">${en?'Discuss your requirements':'Présenter votre besoin'}<span aria-hidden="true"> →</span></a></div></div><aside class="ec-status"><span class="ec-status-dot" aria-hidden="true"></span><strong>${status}</strong><p>${en?'Scope, service area, capacity and commercial terms are confirmed for each request before commitment.':'Périmètre, zone desservie, capacités et conditions commerciales sont confirmés pour chaque demande avant engagement.'}</p><a href="#parcours">${en?'How to prepare your request':'Comment préparer votre demande'} <span aria-hidden="true">→</span></a></aside></div></div></header>`;
   html=replace(html,'top-pole',hero);
+  // Lot 30 : le heros editorial (image pompe-petrole) est remplace par ec-hero sans image ; retirer les
+  // preloads d'image dont la ressource n'apparait plus dans la page (14 Ko charges pour rien, fetchpriority=high).
+  html=html.replace(/<link rel="preload" as="image"[^>]*>\s*/g,tag=>{const href=tag.match(/href="([^"]+)"/)?.[1];return href&&html.replace(/<link rel="preload"[^>]*>/g,'').includes(href)?tag:'';});
   const intro=find(html,'besoin-client');
   const original=html.slice(intro.startIndex,intro.endIndex+1);
   const routes=original.match(/<div class="et-readiness-routes">([\s\S]*?)<\/div>/)?.[1];
