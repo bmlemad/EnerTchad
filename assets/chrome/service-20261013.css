@@ -38,3 +38,9 @@ html:not(.et-plight) main.et-web .svc-links a{color:#F1F3F6;text-decoration-colo
 .svc-top .et-logo{display:block;height:36px;width:auto;color:inherit;--et-logo-or:#7A5A12}
 html:not(.et-plight) .svc-top .et-logo{--et-logo-or:#E8C36A}
 /* et-lot29-logo:end */
+
+/* et-lot29-focus:start */
+/* Lot 29 (B2) : un seul style de focus clavier — anneau or 2 px decale de 2 px, lisere 4 px. */
+:is(a,button,input,select,textarea,summary,[tabindex]:not([tabindex="-1"])):focus-visible{outline:2px solid #C9A24A;outline-offset:2px;box-shadow:0 0 0 4px #0A1A2F}
+html.et-plight :is(a,button,input,select,textarea,summary,[tabindex]:not([tabindex="-1"])):focus-visible{box-shadow:0 0 0 4px #FAF8F3;outline-color:#7A5A12}
+/* et-lot29-focus:end */

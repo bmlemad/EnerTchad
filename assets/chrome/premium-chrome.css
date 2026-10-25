@@ -1060,3 +1060,11 @@ img.et-logo{height:44px!important;width:auto!important}
 @media(max-width:768px){.et-logo,img.et-logo{height:38px!important}#nav .brand .brand-tx.et-tag{display:none!important}}
 }
 /* et-lot29-logo:end */
+
+/* et-lot29-focus:start */
+/* Lot 29 (B2) : un seul style de focus clavier — anneau or 2 px decale de 2 px, lisere nuit 4 px. */
+@layer et-glass{
+:is(a,button,input,select,textarea,summary,[tabindex]:not([tabindex="-1"])):focus-visible{outline:2px solid #C9A24A!important;outline-offset:2px!important;box-shadow:0 0 0 4px #0A1A2F!important}
+html:is(.et-plight,.et-jlight) :is(a,button,input,select,textarea,summary,[tabindex]:not([tabindex="-1"])):focus-visible{box-shadow:0 0 0 4px #FAF8F3!important;outline-color:#7A5A12!important}
+}
+/* et-lot29-focus:end */
