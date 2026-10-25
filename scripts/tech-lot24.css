@@ -1,4 +1,0 @@
-/* Lot 24 (audit technique m11) : sur mobile, le degrade horizontal du heros photo laisse la droite
-   de l'image presque nue ; les lignes de confiance (.pp-trust) et le surtitre (.pp-k) y passaient
-   sous 4,5:1. Voile vertical uniforme, plus dense, limite a 760 px ; ordinateur inchange. */
-@media (max-width:760px){html:not(#q0):not(#q1):not(#q2):not(#q3):not(#q4):not(#q5):not(#q6):not(#q7):not(#q8):not(#q9):not(#q10):not(#q11):not(#q12):not(#q13):not(#q14):not(#q15):not(#q16):not(#q17):not(#q18):not(#q19):not(#q20):not(#q21):not(#q22):not(#q23):not(#q24) body main.ppl .pp-hero:not(.pp-hero-plain)::before{background:linear-gradient(180deg,rgba(7,17,31,.74) 0%,rgba(7,17,31,.66) 55%,rgba(7,17,31,.95) 100%)!important}}
