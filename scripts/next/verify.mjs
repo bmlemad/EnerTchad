@@ -78,4 +78,29 @@ for(const asset of manifest.assets) {
   const expected = asset === 'sitemap.xml' ? commercialSitemap(original.toString()) : asset.endsWith('.css') ? minifyCss(original.toString()) : original;
   assert.equal(hash(await readFile('out/'+asset)),hash(expected),asset);
 }
+// Lot 27 (m10) : _headers et le .htaccess OVH figent un an (immutable) /assets/chrome/*.css|js,
+// en ciblant l'extension (Apache ne voit pas la query string). Cela suppose qu'AUCUNE reference
+// publiee a une feuille ou un script de /assets/chrome ne soit sans ?v=<empreinte>, y compris
+// les URL construites en JavaScript ('/assets/chrome/'+nom).
+const { readdir } = await import('node:fs/promises');
+const scanned = /\.(?:html|js|css|json|txt|xml|webmanifest|svg)$/;
+let versionedRefs = 0;
+for (const entry of await readdir('out', { recursive: true, withFileTypes: true })) {
+  if (!entry.isFile() || !scanned.test(entry.name)) continue;
+  const file = (entry.parentPath || entry.path) + '/' + entry.name;
+  const body = (await readFile(file)).toString();
+  for (const m of body.matchAll(/assets\/chrome\/([^"'`\s<>)\\?#*]*)(\?[^"'`\s<>)\\]*)?/g)) {
+    const [, name, query = ''] = m;
+    if (/\.(?:css|js)$/.test(name)) {
+      assert.match(query, /^\?v=[0-9a-f]{12}$/, `${file}: /assets/chrome/${name} sans ?v= (cache immutable)`);
+      versionedRefs++;
+    } else if (!name) {
+      // URL construite : le reste de l'expression ne doit pas designer une feuille ou un script.
+      const tail = body.slice(m.index + m[0].length, m.index + m[0].length + 120).split(/[);]/)[0];
+      assert(!/\.(?:css|js)\b/.test(tail), `${file}: URL /assets/chrome/ construite vers une feuille ou un script`);
+    }
+  }
+}
+assert(versionedRefs > 0);
+console.log(`PASS: ${versionedRefs} /assets/chrome .css/.js references, all with ?v=<content hash>.`);
 console.log(`PASS: ${preserved} HTML pages preserved with the YouTube footer badge; ${native} React pages verified; ${manifest.assets.length} assets preserved.`);

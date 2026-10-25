@@ -42,7 +42,8 @@ test('the build restores the sources it transformed', async () => {
   try {
     await mkdir(join(root, 'scripts'));
     await writeFile(join(root, 'page.html'), '<!doctype html><title>Source</title>');
-    await writeFile(join(root, 'scripts/apply_readiness_20261013.py'),
+    // Etape de generation du build (registre des documents) simulee par un script factice.
+    await writeFile(join(root, 'scripts/refresh_document_metadata.py'),
       "from pathlib import Path\np=Path('page.html');p.write_text(p.read_text().replace('Source','Built'))\n");
     execFileSync('git', ['init', '--quiet'], { cwd: root });
     execFileSync('git', ['add', '.'], { cwd: root });

@@ -5,12 +5,14 @@ import { dirname, extname, resolve } from 'node:path';
 import { snapshotSources, recordTransformed } from './sources.mjs';
 import { FINGERPRINTS, readChrome, fingerprintContents } from './fingerprint.mjs';
 
-// Apply the reviewed editorial migration locally in the build checkout. Existing
-// contact data remains in the source pages rather than being rewritten via APIs.
+// Lot 27 (m16, voie B) : les sources suivies sont deja dans leur etat publie. La chaine
+// apply_readiness_20261013.py (27 scripts apply_*/align_*) a ete appliquee une fois et
+// committee, puis retiree du build. Seule etape restante : le registre des documents publics
+// (tailles, empreintes, date « generated » du jour), qui depend des fichiers et de la date.
 // Lot 26 (m16) : contenu d'origine retenu, restaure en fin de build (scripts/next/sources.mjs).
 const pristine = await snapshotSources();
-if (existsSync('scripts/apply_readiness_20261013.py')) {
-  execFileSync('python3', ['scripts/apply_readiness_20261013.py'], { stdio: 'inherit' });
+if (existsSync('scripts/refresh_document_metadata.py')) {
+  execFileSync('python3', ['scripts/refresh_document_metadata.py'], { stdio: 'inherit' });
 }
 
 // Only tracked, explicitly public assets enter the generated public directory.

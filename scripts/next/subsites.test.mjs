@@ -1,4 +1,3 @@
-import { execFileSync } from 'node:child_process';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
@@ -6,8 +5,7 @@ import { createHash } from 'node:crypto';
 import { htmlToDOM } from 'html-react-parser';
 import { renderSubsite, commercialPages, atlasPages, commercialSitemap } from './subsites.mjs';
 
-// Customer presentation is applied to the reviewed editorial output, as in finalize.
-execFileSync('python3', ['scripts/apply_readiness_20261013.py'], { stdio: 'ignore' });
+// Lot 27 (m16, voie B) : les sources committees sont deja la sortie editoriale revue.
 
 function elements(html) { const all = []; const walk = n => { if(n.name && n.attribs)all.push(n); (n.children || []).forEach(walk); }; htmlToDOM(html).forEach(walk); return all; }
 for (const [space, pages] of [['boutique', commercialPages], ['atlas', atlasPages]]) {

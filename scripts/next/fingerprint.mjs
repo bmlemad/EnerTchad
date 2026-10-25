@@ -14,7 +14,8 @@
 //    politique CSP de page (empreintes SHA-256 des scripts en ligne) : un script en ligne qui
 //    cite une URL versionnee est empreinte dans sa forme finale.
 //  - lib/fingerprint.js applique la meme table aux pages React (essentiel, investor-center).
-// Les noms de fichiers ne changent pas : regles de cache de _headers / .htaccess inchangees.
+// Les noms de fichiers ne changent pas. Lot 27 (m10) : _headers / .htaccess figent un an les
+// .css/.js de /assets/chrome (toutes les references portent ?v=, controle dans verify.mjs).
 import { createHash } from 'node:crypto';
 import { readdir, readFile } from 'node:fs/promises';
 import { join } from 'node:path';

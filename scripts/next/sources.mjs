@@ -1,6 +1,7 @@
 // Lot 26 (constat m16, partie sure) : le build ne laisse plus l'arbre de travail modifie.
-// prepare.mjs execute toujours scripts/apply_readiness_20261013.py sur les sources (Next.js,
-// lib/strategic.jsx et les sous-sites lisent l'arbre transforme pendant le build), mais :
+// Lot 27 (voie B) : la chaine apply_readiness_20261013.py est committee et retiree ; seule
+// l'etape scripts/refresh_document_metadata.py ecrit encore dans l'arbre (registre des
+// documents : date « generated » du jour). Le mecanisme reste donc utile :
 //  1. snapshotSources() retient le contenu des fichiers suivis AVANT la transformation ;
 //  2. recordTransformed() garde, pour chaque fichier que la transformation a modifie, la
 //     version d'origine (.generated/source-restore/) et la version transformee
