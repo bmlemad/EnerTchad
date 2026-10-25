@@ -1,6 +1,6 @@
 {
   "schema_version": "1.1",
-  "generated": "2026-10-17",
+  "generated": "2026-10-23",
   "note_fr": "Inventaire vérifié à la date generated ; cette date n’est pas une date de version des documents. Les dates documentaires indiquées sont celles inscrites dans les fichiers, sans attester une approbation. Les tailles et empreintes sont calculées sur les fichiers publiés. Une version n’est indiquée que si elle est explicite dans le nom ou le contenu.",
   "note_en": "Inventory checked on the generated date; this is not a document version date. Document dates shown are those printed in the files, not approval dates. Sizes and fingerprints are calculated from the published files. A version is stated only when explicit in the filename or content.",
   "documents": [
@@ -190,8 +190,8 @@
       "role_en": "Corporate brochure",
       "git_blob_sha": "96e810edb78e1bf26674c42e6b82ff776ab23644",
       "document_date": "2026-09",
-      "date_source": "PDF page 1",
-      "document_updated": "2026-10"
+      "document_updated": "2026-10",
+      "date_source": "PDF page 1"
     },
     {
       "id": "brochure-en",
@@ -205,8 +205,8 @@
       "role_en": "English corporate brochure",
       "git_blob_sha": "da1fed3cd27493aabd2bced3344133572ab7d678",
       "document_date": "2026-09",
-      "date_source": "PDF page 1",
-      "document_updated": "2026-10"
+      "document_updated": "2026-10",
+      "date_source": "PDF page 1"
     },
     {
       "id": "factsheet-ar",
