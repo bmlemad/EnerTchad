@@ -392,7 +392,7 @@ Envoyé depuis enertchad.com / EnerTchad`;
   const wrap=document.getElementById('dash-stations');
   if(wrap){
     wrap.innerHTML=stations.map(([n,p,s])=>{
-      const[t,c]=lbl[s];
+      const t=document.documentElement.lang==='en'?'Target site':'Implantation visée',c='var(--muted)';
       return `<div style="padding:14px 14px;border-radius:12px;background:rgba(255,255,255,.03);border:1px solid var(--hair)">
         <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:4px">
           <strong style="font-size:.84rem;color:#fff">${n}</strong>
@@ -407,7 +407,7 @@ Envoyé depuis enertchad.com / EnerTchad`;
   const tx=document.getElementById('kpi-tx'),vol=document.getElementById('kpi-vol'),wait=document.getElementById('kpi-wait'),pulse=document.getElementById('dash-pulse');
   let active=false;
   function jitter(){
-    if(!active)return;
+    return;
     if(tx)tx.textContent=330+Math.floor(Math.random()*40);
     if(vol)vol.textContent=(126+Math.random()*6).toFixed(1);
     if(wait)wait.textContent=(2.1+Math.random()*0.6).toFixed(1);
