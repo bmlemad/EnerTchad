@@ -319,7 +319,7 @@ var lang=(document.documentElement.lang||'fr').slice(0,2);
 var TXT=lang==='en'?{h:'Motion',on:'Animated',off:'Calm'}:
         (lang==='ar'?{h:'الحركة',on:'متحركة',off:'هادئة'}:{h:'Mouvement',on:'Animé',off:'Calme'});
 var st=document.createElement('style');st.id='et-calm-css';
-st.textContent='html.et-calm *,html.et-calm *::before,html.et-calm *::after{animation-iteration-count:1!important;animation-duration:.01ms!important;transition-duration:.12s!important}html.et-calm{scroll-behavior:auto!important}';
+st.textContent='html.et-calm,html.et-calm,html.et-calm,html.et-calm,html.et-calm *,html.et-calm *::before,html.et-calm *::after{animation-iteration-count:1!important;animation-duration:.01ms!important;transition-duration:.12s!important}html.et-calm{scroll-behavior:auto!important}';
 document.head.appendChild(st);
 var h=document.createElement('p');h.className='lum-h';h.style.marginTop='12px';h.textContent=TXT.h;
 var row=document.createElement('div');row.className='lum-presets lum-mov';
