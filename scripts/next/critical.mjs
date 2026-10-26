@@ -11,13 +11,17 @@
 // Mesure au prototype (/amont/, profil mobile Slow 4G, CPU ×4) : FCP 3,2 → 1,0 s, CLS 0,01.
 import { readFileSync } from 'node:fs';
 
-export const CRITICAL_FILES = ['scripts/critical/pole.json'];
+export const CRITICAL_FILES = ['scripts/critical/pole.json', 'scripts/critical/journal-a.json', 'scripts/critical/journal-b.json'];
 // Lot 38 : les feuilles différées sont téléchargées en priorité la plus basse (media="not all")
 // et ne s'appliquent qu'une fois l'image du héros chargée PUIS peinte (deux images d'animation :
 // le recalcul de style des feuilles complètes, ~200 ms à CPU ×4, ne retarde plus la peinture du
 // LCP), ou au plus tard à « load ». Pas de minuterie : sur réseau lent, une bascule à 2,5 s
 // tombait avant l'image et retardait sa peinture (mesuré).
-export const LOADER = '(function(){var l=document.querySelectorAll("link[data-et-defer]"),d=0;function late(){requestAnimationFrame(function(){requestAnimationFrame(function(){setTimeout(go,0)})})}function go(){if(d)return;d=1;for(var i=0;i<l.length;i++){l[i].media=l[i].getAttribute("data-media")||"all"}}var m=document.querySelector(".pp-hero-img");if(m&&!m.complete){m.addEventListener("load",late);m.addEventListener("error",late)}else go();addEventListener("load",go)})()';
+// Lot 39 : image de héros par gabarit (champ « hero » du fichier ; absent = bascule immédiate).
+export const loader = hero => '(function(){var l=document.querySelectorAll("link[data-et-defer]"),d=0;function late(){requestAnimationFrame(function(){requestAnimationFrame(function(){setTimeout(go,0)})})}function go(){if(d)return;d=1;for(var i=0;i<l.length;i++){l[i].media=l[i].getAttribute("data-media")||"all"}}' +
+  (hero ? 'var m=document.querySelector(' + JSON.stringify(hero) + ');if(m&&!m.complete){m.addEventListener("load",late);m.addEventListener("error",late)}else go();' : 'go();') +
+  'addEventListener("load",go)})()';
+export const LOADER = loader('.pp-hero-img');
 
 let sets = null;
 function load() {
@@ -55,6 +59,6 @@ export function inlineCritical(html, page, versions) {
     out = out.slice(0, at) + repl + out.slice(at + tag.length);
   }
   const at = out.lastIndexOf('</body>');
-  const tail = `<noscript>${links.map(m => m[0]).join('')}</noscript><script id="et-defer-css">${LOADER}</script>`;
+  const tail = `<noscript>${links.map(m => m[0]).join('')}</noscript><script id="et-defer-css">${loader(set.hero === undefined ? '.pp-hero-img' : set.hero)}</script>`;
   return out.slice(0, at) + tail + out.slice(at);
 }
