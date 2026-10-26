@@ -22,6 +22,11 @@ export const loader = hero => '(function(){var l=document.querySelectorAll("link
   (hero ? 'var m=document.querySelector(' + JSON.stringify(hero) + ');if(m&&!m.complete){m.addEventListener("load",late);m.addEventListener("error",late)}else go();' : 'go();') +
   'addEventListener("load",go)})()';
 export const LOADER = loader('.pp-hero-img');
+// Lot 41 : avant l'arrivée des feuilles différées, les icônes sociales du pied de page (SVG sans
+// taille propre) s'affichaient à 348 px puis retombaient à 16-18 px : décalage compté dans le CLS
+// (0,35 mesuré en ligne, 2 chargements sur 10). Règle de spécificité nulle : les règles des
+// feuilles complètes l'emportent, le rendu final est inchangé.
+export const FOOT_GUARD = ':where(.foot-social svg){width:18px;height:18px}';
 
 let sets = null;
 function load() {
@@ -54,7 +59,8 @@ export function inlineCritical(html, page, versions) {
     const tag = links[i][0], at = links[i].index;
     const media = (tag.match(/\bmedia="([^"]+)"/) || [])[1];
     const css = set.sheets[nameOf(hrefs[i])].css;
-    const repl = (css ? `<style data-et-crit>${css}</style>` : '') +
+    const first = i === 0;
+    const repl = (css || first ? `<style data-et-crit>${first ? FOOT_GUARD : ''}${css}</style>` : '') +
       `<link rel="stylesheet" media="not all" data-et-defer${media ? ` data-media="${media}"` : ''} href="${hrefs[i]}">`;
     out = out.slice(0, at) + repl + out.slice(at + tag.length);
   }
