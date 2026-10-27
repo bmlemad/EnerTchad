@@ -137,3 +137,6 @@ main > section, .sec, .hx-strip{background:transparent!important}
 .jbody,.jkey{background:rgba(12,18,30,.72)!important;-webkit-backdrop-filter:saturate(150%) blur(18px);backdrop-filter:saturate(150%) blur(18px);border:1px solid var(--g-brd)!important;border-radius:var(--g-radius)!important;box-shadow:var(--g-shadow)!important}
 /* command palette + lum panel frost */
 .cmdk-panel,.lum-panel{background:rgba(11,17,28,.7)!important;-webkit-backdrop-filter:saturate(200%) blur(30px);backdrop-filter:saturate(200%) blur(30px);border:1px solid var(--g-brd)!important;box-shadow:var(--g-shadow)!important}
+
+/* Lot 52 : bande de chiffres du héros indépendante de la police (CLS). */
+@layer et-glass{@media (max-width:760px){html:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4):not(#f5):not(#f6):not(#f7):not(#f8):not(#f9):not(#f10):not(#f11):not(#f12):not(#f13):not(#f14):not(#f15):not(#f16):not(#f17):not(#f18):not(#f19):not(#f20):not(#f21):not(#f22):not(#f23):not(#f24):not(#f25) body main.ppl #top-pole .pp-figs>div{align-items:center!important}}}
