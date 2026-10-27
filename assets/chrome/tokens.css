@@ -21,6 +21,13 @@
   --et-gold-700:#7A5A12;
   --et-gold-800:#6B500F;
   --et-gold-brand:#E8C36A;
+  --et-ink-800:#2A3648;
+  --et-slate-200:#C3D0E0;
+  --et-scrim:rgba(0,0,0,.25);
+  --et-blue-500:#2E86DE;
+  --et-blue-300:#7FB8F5;
+  --et-green-300:#4FDCAA;
+  --et-amber-400:#FBBF24;
 
   --et-font-sans:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
   --et-font-display:"Instrument Serif","Instrument Serif Fallback G","Instrument Serif Fallback T","Instrument Serif Fallback N","Instrument Serif Fallback D","Iowan Old Style",Georgia,serif;
