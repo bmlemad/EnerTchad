@@ -1,5 +1,5 @@
-:HL["/_next/static/css/2d528ad8cf0ec1bd.css","style"]
+:HL["/_next/static/css/3c19ef9930e6a4df.css","style"]
 :HL["/_next/static/css/2acffce1ad5ed451.css","style"]
 :HL["/assets/chrome/clarity-20261005.css?v=bd4f65292421","style"]
 :HL["/assets/chrome/investor-premium.css?v=40e84f7ef33c","style"]
-0:{"tree":{"name":"","param":null,"prefetchHints":4176,"slots":{"children":{"name":"(strategic-en)","param":null,"prefetchHints":4208,"slots":{"children":{"name":"investor-center-en","param":null,"prefetchHints":4192,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}}}},"staleTime":300,"buildId":"JsGhqLtPrshVNGNlRMW_q"}
+0:{"tree":{"name":"","param":null,"prefetchHints":4176,"slots":{"children":{"name":"(strategic-en)","param":null,"prefetchHints":4208,"slots":{"children":{"name":"investor-center-en","param":null,"prefetchHints":4192,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}}}},"staleTime":300,"buildId":"Rr8UJzJ3xs2sFdCOxdf0O"}
