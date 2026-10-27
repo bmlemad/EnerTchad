@@ -1113,3 +1113,6 @@ html[lang=ar] .arh .arh-in{background:transparent!important;-webkit-backdrop-fil
 :root{--field-bg:var(--et-white,#FFFFFF);--field-fg:#142033;--field-bd:#9DA7B4;--field-scheme:light;--note-bg:#EFF1F4;--note-fg:#172638;--status-bd:#8B9EAE}
 html:not(.et-plight,.et-jlight){--field-bg:rgba(8,14,26,.55);--field-fg:#F5F7FA;--field-bd:rgba(255,255,255,.22);--field-scheme:dark;--note-bg:rgba(255,255,255,.06);--note-fg:#E8EEF6;--status-bd:rgba(255,255,255,.28)}
 /* et-lot33-champs:end */
+
+/* Lot 50 : focus lisible sur le fond marine des héros (contraste ≥ 3:1). */
+@layer et-glass{html:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4):not(#f5):not(#f6):not(#f7):not(#f8):not(#f9):not(#f10):not(#f11):not(#f12):not(#f13):not(#f14):not(#f15):not(#f16):not(#f17):not(#f18):not(#f19):not(#f20):not(#f21):not(#f22):not(#f23):not(#f24):not(#f25) :is(.pp-hero,.pole-hero,header.hero) :is(a,button,summary,[tabindex]:not([tabindex="-1"])):focus-visible{outline:2px solid #E8C36A!important;outline-offset:3px!important}}
