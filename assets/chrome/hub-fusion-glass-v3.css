@@ -64,13 +64,13 @@ html:where([data-eh~=eh10]):not(.ehz) :is(section,.wrap>div):has(.card,.card-m,.
 html:where([data-eh~=eh10]):not(.ehz) :is(.acq-card,.atc-map,.atc-stat,.avk-card,.avnet-panel,.b111-c,.biz-card,.card,.card-m,.cdm-frame,.ce-card,.ckpi,.cmap-frame,.cp,.cp-note,.ct-cards,.dch-card,.divc,.duo-card,.epw-c,.esg-card,.esg-head,.eth-c,.f2f,.fam-card,.fid-card,.flip-b,.flip-f,.frm-c,.glm-c,.glow-card,.gov-c,.gtt-c,.hncard,.hxi-card,.innov-c,.isv-e,.isv-s,.it-card,.jkey,.kpi,.mad-card,.mfo-lever,.mrc-c,.ngs-t,.oeco-card,.orgc,.pcard,.pe-c,.plc-card,.pmore-card,.pof-col,.ppj-card,.ppl-tile,.ppt-card,.ppte-tile,.prc-card,.presse-card,.prof,.pub-c,.pubc,.px-card,.refc,.rh-card,.rhe-c,.rhl-c,.rhp-c,.sb-card,.sc-card,.scard,.secc,.sfam,.slac,.svc-head,.tri-c,.tri-kpi,.ttc-card,.ttg-t,.vb-card,.voie-card):not(#_):not(#__):not(#___):not(#____){
  background-color:transparent!important;
  background-image:linear-gradient(180deg,rgba(252,250,246,.56) 0%,rgba(252,250,246,.40) 100%)!important;
- border-color:rgba(26,35,48,.12)!important;
+ border-color:var(--et-hair-ink,rgba(26,35,48,.16))!important;
  box-shadow:0 1px 0 rgba(255,255,255,.55) inset,0 20px 40px -30px rgba(30,24,10,.42)!important;
  -webkit-backdrop-filter:blur(18px) saturate(1.35)!important;backdrop-filter:blur(18px) saturate(1.35)!important;
 }
 html:not(.et-plight):not(.et-jlight):where([data-eh~=eh10]):not(.ehz) :is(.acq-card,.atc-map,.atc-stat,.avk-card,.avnet-panel,.b111-c,.biz-card,.card,.card-m,.cdm-frame,.ce-card,.ckpi,.cmap-frame,.cp,.cp-note,.ct-cards,.dch-card,.divc,.duo-card,.epw-c,.esg-card,.esg-head,.eth-c,.f2f,.fam-card,.fid-card,.flip-b,.flip-f,.frm-c,.glm-c,.glow-card,.gov-c,.gtt-c,.hncard,.hxi-card,.innov-c,.isv-e,.isv-s,.it-card,.jkey,.kpi,.mad-card,.mfo-lever,.mrc-c,.ngs-t,.oeco-card,.orgc,.pcard,.pe-c,.plc-card,.pmore-card,.pof-col,.ppj-card,.ppl-tile,.ppt-card,.ppte-tile,.prc-card,.presse-card,.prof,.pub-c,.pubc,.px-card,.refc,.rh-card,.rhe-c,.rhl-c,.rhp-c,.sb-card,.sc-card,.scard,.secc,.sfam,.slac,.svc-head,.tri-c,.tri-kpi,.ttc-card,.ttg-t,.vb-card,.voie-card):not(#_):not(#__):not(#___):not(#____){
  background-image:linear-gradient(180deg,rgba(9,15,27,.66) 0%,rgba(9,15,27,.54) 100%)!important;
- border-color:rgba(255,255,255,.15)!important;
+ border-color:var(--et-hair-glow,var(--et-hair-glow,rgba(90,167,240,.12)))!important;
  box-shadow:0 1px 0 rgba(255,255,255,.08) inset,0 22px 46px -30px rgba(0,0,0,.6)!important;
 }
 
