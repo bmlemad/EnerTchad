@@ -11,7 +11,7 @@
 // Mesure au prototype (/amont/, profil mobile Slow 4G, CPU ×4) : FCP 3,2 → 1,0 s, CLS 0,01.
 import { readFileSync } from 'node:fs';
 
-export const CRITICAL_FILES = ['scripts/critical/pole.json', 'scripts/critical/journal-a.json', 'scripts/critical/journal-b.json', 'scripts/critical/aval-reseau.json', 'scripts/critical/boutique.json', 'scripts/critical/aval-hub.json', 'scripts/critical/home-fr.json', 'scripts/critical/home-en.json', 'scripts/critical/amont-hub.json'];
+export const CRITICAL_FILES = ['scripts/critical/pole.json', 'scripts/critical/journal-a.json', 'scripts/critical/journal-b.json', 'scripts/critical/aval-reseau.json', 'scripts/critical/boutique.json', 'scripts/critical/aval-hub.json', 'scripts/critical/home-fr.json', 'scripts/critical/home-en.json', 'scripts/critical/amont-hub.json', 'scripts/critical/atlas.json'];
 // Lot 38 : les feuilles différées sont téléchargées en priorité la plus basse (media="not all")
 // et ne s'appliquent qu'une fois l'image du héros chargée PUIS peinte (deux images d'animation :
 // le recalcul de style des feuilles complètes, ~200 ms à CPU ×4, ne retarde plus la peinture du
