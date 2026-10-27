@@ -32,7 +32,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     env:
-      SITE_URL: ${{ github.event_name == 'pull_request' && format('https://deploy-preview-{0}--enertchad.netlify.app/', github.event.pull_request.number) || inputs.site_url || 'https://enertchad.com/' }}
+      SITE_URL: ${{ github.event_name == 'pull_request' && format('https://deploy-preview-{0}--creative-tapioca-5830b6.netlify.app/', github.event.pull_request.number) || inputs.site_url || 'https://enertchad.com/' }}
     steps:
       - uses: actions/checkout@v7
       - uses: actions/setup-node@v7
@@ -56,7 +56,7 @@ jobs:
                 # Keep the head-SHA guard so QA never runs against an older build.
                 deploy_id=$(python -c 'import re; s=open("/tmp/site.html").read(); m=re.search(r"data-netlify-deploy-id=\"([a-f0-9]{24})\"",s); print(m.group(1) if m else "")')
                 if [ -n "$deploy_id" ]; then
-                  atomic_url="https://${deploy_id}--enertchad.netlify.app/"
+                  atomic_url="https://${deploy_id}--creative-tapioca-5830b6.netlify.app/"
                   atomic_sha=$(curl -L -s "$atomic_url/deploy-version.txt")
                   if [ "$atomic_sha" = "$EXPECTED_PREVIEW_SHA" ]; then
                     echo "SITE_URL=$atomic_url" >> "$GITHUB_ENV"
