@@ -64,7 +64,10 @@ for (const page of commercialPages.filter(p => p.kind === 'clients')) {
       assert.equal(all.filter(n=>n.attribs.class==='ec-offer').length,3);
       assert.equal(all.filter(n=>n.name==='h1').length,1);
       assert(output.includes('clients-modern.css'));
-      for(const n of before.filter(n=>n.name==='a' && /profil=.*#ctForm/.test(n.attribs.href||''))) {
+      const inMain = node => { for(let p=node.parent;p;p=p.parent) if(p.name==='main') return true; return false; };
+      // Business-specific enquiries in the page remain intact; the shared header
+      // now opens a generic requirement instead of preselecting investment.
+      for(const n of before.filter(n=>n.name==='a' && inMain(n) && /profil=.*#ctForm/.test(n.attribs.href||''))) {
         const target=n.attribs.href.replace('https://enertchad.com','');
         assert(all.some(a=>a.name==='a' && a.attribs.href.endsWith(target)), 'dedicated enquiry lost '+target);
       }
