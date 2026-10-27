@@ -49,7 +49,7 @@ html.et-plight :is(a,button,input,select,textarea,summary,[tabindex]:not([tabind
 /* Lot 29 (A) : en-tete de service en coque niveau 1 opaque (fond plein, lisere, ombre douce, sans flou :
    fond uni derriere). Ces pages ne chargent pas premium-chrome.css. */
 .svc-top{position:sticky;top:0;z-index:60;background:var(--et-paper,#faf8f3);border-bottom:1px solid rgba(16,26,44,.14);box-shadow:inset 0 1px 0 rgba(255,255,255,.65),0 10px 30px -18px rgba(10,20,34,.45)}
-html:not(.et-plight) .svc-top{background:#0c1626;border-color:rgba(255,255,255,.14);box-shadow:inset 0 1px 0 rgba(255,255,255,.10),0 10px 30px -18px rgba(0,0,0,.6)}
+html:not(.et-plight) .svc-top{background:#0c1626;border-color:var(--et-hair-glow,var(--et-hair-glow,rgba(90,167,240,.12)));box-shadow:inset 0 1px 0 rgba(255,255,255,.10),0 10px 30px -18px rgba(0,0,0,.6)}
 @media(prefers-reduced-transparency:reduce){.svc-top{background:var(--et-paper,#faf8f3);box-shadow:none}html:not(.et-plight) .svc-top{background:#0c1626}}
 @media print{.svc-top{position:static;box-shadow:none}}
 /* et-lot29-verre:end */

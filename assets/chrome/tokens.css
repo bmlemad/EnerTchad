@@ -28,6 +28,8 @@
   --et-blue-300:#7FB8F5;
   --et-green-300:#4FDCAA;
   --et-amber-400:#FBBF24;
+  --et-hair-ink:rgba(26,35,48,.16);
+  --et-hair-glow:rgba(90,167,240,.12);
 
   --et-font-sans:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
   --et-font-display:"Instrument Serif","Instrument Serif Fallback G","Instrument Serif Fallback T","Instrument Serif Fallback N","Instrument Serif Fallback D","Iowan Old Style",Georgia,serif;
