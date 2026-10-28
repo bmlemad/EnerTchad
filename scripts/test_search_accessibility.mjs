@@ -2,6 +2,21 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import vm from 'node:vm';
 import {readFileSync} from 'node:fs';
+import {createHash} from 'node:crypto';
+import {withSearchIndexVersion} from '../lib/search-index-version.js';
+
+test('search index cache version follows the published data in each language', () => {
+  for (const language of ['fr', 'en']) {
+    const path = `/assets/data/recherche-${language}.json`;
+    const data = readFileSync(new URL('../' + path.slice(1), import.meta.url));
+    const hash = createHash('sha256').update(data).digest('hex').slice(0, 12);
+    const html = `<script>fetch('${path}?v=202610061100')</script>`;
+    const output = withSearchIndexVersion(html);
+    assert.equal(output, `<script>fetch('${path}?v=${hash}')</script>`);
+    assert.equal(withSearchIndexVersion(output), output);
+  }
+  assert.equal(withSearchIndexVersion('<main>Unrelated content</main>'), '<main>Unrelated content</main>');
+});
 const source=readFileSync(new URL('./search-navigation-accessibility.js',import.meta.url),'utf8');
 
 // Small DOM fixture for focus and inert restoration; browser QA covers rendering.
