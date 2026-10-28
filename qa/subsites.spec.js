@@ -19,8 +19,11 @@ for (const width of [1440, 390]) {
         expect(await page.evaluate(() => document.querySelector('main').getBoundingClientRect().top - document.querySelector('#nav').getBoundingClientRect().bottom)).toBeLessThan(40);
         await expect(page.locator('.atlas-languages,.atlas-nav')).toHaveCount(0);
       }
-      if (width === 390 && route.startsWith('/boutique')) {
+      if (width === 390 && route.startsWith('/boutique') && !route.endsWith('/clients')) {
         expect(await page.locator('#top-pole > .pp-wrap').evaluate(el => parseFloat(getComputedStyle(el).paddingTop))).toBeLessThanOrEqual(40);
+      }
+      if (width === 390 && route.endsWith('/clients')) {
+        expect(await page.locator('#top-pole.ec-hero').evaluate(el => parseFloat(getComputedStyle(el).paddingTop))).toBeLessThanOrEqual(40);
       }
       expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 2)).toBe(true);
       expect(errors).toEqual([]);
@@ -71,15 +74,15 @@ for (const width of [1440, 390]) {
       const otherMap = en ? '/atlas/carte' : '/atlas/carte-en';
       await page.goto(clientsHome, {waitUntil:'networkidle'});
       await expect(page.locator('html')).toHaveAttribute('lang', language);
-      await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', clientsHome);
+      await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', 'https://enertchad.com' + new URL(clientsHome).pathname);
       await openMenu(page);
       await page.locator(`#nav .et-space-links a[href="${catalogue}"]`).click();
       await expect(page).toHaveURL(site + catalogue);
       await expect(page.locator('#grid .pc')).not.toHaveCount(0);
       await openMenu(page);
-      await page.locator(`#nav a[href="${atlasHome}"]`).first().click();
+      await page.locator(`#nav a[href="${new URL(atlasHome).pathname}"]`).first().click();
       await expect(page).toHaveURL(atlasHome);
-      await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', atlasHome);
+      await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', 'https://enertchad.com' + new URL(atlasHome).pathname);
       await openMenu(page);
       await page.locator(`#nav .et-space-links a[href="${map}"]`).click();
       await expect(page).toHaveURL(site + map);
@@ -90,11 +93,11 @@ for (const width of [1440, 390]) {
       await expect(page.locator('html')).toHaveAttribute('lang', en ? 'fr' : 'en');
       const otherCatalogue = site + (en ? '/boutique/' : '/boutique/en/');
       await openMenu(page);
-      await page.locator(`#nav a[href="${otherCatalogue}"]`).first().click();
+      await page.locator(`#nav a[href="${new URL(otherCatalogue).pathname}"]`).first().click();
       await expect(page).toHaveURL(otherCatalogue);
       const group = site + (en ? '/' : '/index-en');
       await openMenu(page);
-      await page.locator(`#nav .et-space-top a[href="${group}"]`).click();
+      await page.locator(`#nav .et-space-top a[href="${new URL(group).pathname}"]`).click();
       await expect(page).toHaveURL(group);
       await expect(page.locator('#nav.et-space-header')).toHaveCount(0);
       expect(errors).toEqual([]);

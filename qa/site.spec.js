@@ -1334,7 +1334,7 @@ test('performance — local assets avoid obvious cache-busting and oversized eag
       if (asset.origin !== new URL(url).origin) continue;
       for (const key of ['v', 'version', 'cb', 'cache']) {
         const version = asset.searchParams.get(key);
-        if (version !== null) expect(version, href + ' stable build version').toMatch(/^(?:[a-z]+-)?\d{8,12}(?:-\d+)?$/i);
+        if (version !== null) expect(version, href + ' stable build version').toMatch(/^(?:[a-f0-9]{12}|(?:[a-z]+-)?\d{8,12}(?:-\d+)?)$/i);
       }
     }
     await page.close();

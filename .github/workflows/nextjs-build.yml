@@ -19,6 +19,7 @@ jobs:
       - run: npm ci
       - run: node --test scripts/next/subsites.test.mjs
       - run: node --test scripts/test_page_share.mjs
+      - run: node --test scripts/test_navigation_review.mjs
       - run: npm run build
         env:
           NEXT_TELEMETRY_DISABLED: '1'

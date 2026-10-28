@@ -55,8 +55,9 @@ export function renderSubsite(html, page, space, hosted = false) {
   // Change anchor destinations only; preserve scripts, SVG use references,
   // resource URLs and fragment links used by catalogue and map widgets.
   let output = html.replace(/<a\b[^>]*>/g, tag => tag.replace(/\bhref="([^"]*)"/, (_, href) => `href="${ownLink(href)}"`));
+  const navOrigin = hosted ? corporate : '';
   const partner = space === 'boutique' ? 'atlas' : 'boutique';
-  const partnerUrl = hosted ? `https://${partner === 'boutique' ? 'clients' : partner}.enertchad.com${en ? '/en/' : '/'}` : corporate + (partner === 'atlas' ? en ? '/atlas-en' : '/atlas/' : en ? '/boutique/en/' : '/boutique/');
+  const partnerUrl = hosted ? `https://${partner === 'boutique' ? 'clients' : partner}.enertchad.com${en ? '/en/' : '/'}` : navOrigin + (partner === 'atlas' ? en ? '/atlas-en' : '/atlas/' : en ? '/boutique/en/' : '/boutique/');
   const sibling = pages.find(p => p.kind === page.kind && p.language !== page.language);
   const client = commercialPages.find(p => p.kind === 'clients' && p.language === page.language);
   const catalogue = commercialPages.find(p => p.kind === 'catalogue' && p.language === page.language);
@@ -82,9 +83,9 @@ export function renderSubsite(html, page, space, hosted = false) {
   // Exactly one a[lang] in #nav (the FR/EN switch, as before); the Arabic link carries
   // lang on its letter only. Class names et-space-top / et-space-links are kept for QA.
   const languageSwitch = `<a class="et-al-lang" href="${pathFor(sibling)}" lang="${en ? 'fr' : 'en'}" aria-label="${en ? 'Version française' : 'English version'}" title="${en ? 'Français' : 'English'}">${en ? '<b>FR</b>&nbsp;·&nbsp;EN' : 'FR&nbsp;·&nbsp;<b>EN</b>'}</a>`;
-  const arabic = `<a class="et-al-ar" href="${corporate}/ar" aria-label="${en ? 'Arabic version' : 'Version arabe'}"><span lang="ar">ع</span></a>`;
-  const contact = `${corporate}/contact${en ? '-en' : ''}`;
-  const header = `<nav id="nav" class="et-space-header et-al" aria-label="${en ? 'Main navigation' : 'Navigation principale'}">${menuToggle}<div class="et-space-top et-al-util"><div class="et-al-utin"><a class="et-al-back" href="${corporate}${en ? '/index-en' : '/'}" aria-label="${en ? 'EnerTchad group' : 'Groupe EnerTchad'}">←&nbsp;<span class="et-al-long">${en ? 'EnerTchad group' : 'Groupe EnerTchad'}</span></a><span class="et-al-pill"><a class="et-al-partner" href="${partnerUrl}">${partnerLabel}</a><a class="et-al-contact" href="${contact}">Contact</a>${languageSwitch}${arabic}<a class="et-al-invest" href="${corporate}/contact${en ? '-en' : ''}?profil=invest#ctForm">${en ? 'Register interest' : 'Manifester son intérêt'}</a></span></div></div><div class="et-al-bar"><a class="et-al-brand" href="${pathFor(pages.find(p => p.language === page.language && (p.kind === 'home' || p.kind === 'clients')))}" aria-label="EnerTchad — ${label}">${logoSvg()}<span class="et-al-tx et-tag"><small>${label}</small></span></a><div class="et-space-links et-al-links">${links.map(([href, text, active]) => `<a href="${href}"${active ? ' aria-current="page"' : ''}>${text}</a>`).join('')}</div>${themeButton}</div></nav>`;
+  const arabic = `<a class="et-al-ar" href="${navOrigin}/ar" aria-label="${en ? 'Arabic version' : 'Version arabe'}"><span lang="ar">ع</span></a>`;
+  const contact = `${navOrigin}/contact${en ? '-en' : ''}`;
+  const header = `<nav id="nav" class="et-space-header et-al" aria-label="${en ? 'Main navigation' : 'Navigation principale'}">${menuToggle}<div class="et-space-top et-al-util"><div class="et-al-utin"><a class="et-al-back" href="${navOrigin}${en ? '/index-en' : '/'}" aria-label="${en ? 'EnerTchad group' : 'Groupe EnerTchad'}">←&nbsp;<span class="et-al-long">${en ? 'EnerTchad group' : 'Groupe EnerTchad'}</span></a><span class="et-al-pill"><a class="et-al-partner" href="${partnerUrl}">${partnerLabel}</a><a class="et-al-contact" href="${contact}">Contact</a>${languageSwitch}${arabic}<a class="et-al-invest" href="${navOrigin}/contact${en ? '-en' : ''}#ctForm">${en ? 'Discuss your requirements' : 'Présenter un besoin'}</a></span></div></div><div class="et-al-bar"><a class="et-al-brand" href="${pathFor(pages.find(p => p.language === page.language && (p.kind === 'home' || p.kind === 'clients')))}" aria-label="EnerTchad — ${label}">${logoSvg()}<span class="et-al-tx et-tag"><small>${label}</small></span></a><div class="et-space-links et-al-links">${links.map(([href, text, active]) => `<a href="${href}"${active ? ' aria-current="page"' : ''}>${text}</a>`).join('')}</div>${themeButton}</div></nav>`;
   const all = nodes(output);
   const oldNav = all.find(n => n.attribs?.id === 'nav');
   if (!oldNav) throw Error('Missing main navigation in ' + page.source);
