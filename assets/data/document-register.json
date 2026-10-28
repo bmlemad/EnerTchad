@@ -1,45 +1,56 @@
 {
   "schema_version": "1.0",
-  "catalog_updated": "2026-10-04",
+  "catalog_updated": "2026-10-23",
   "publisher": "EnerTchad S.A.",
   "company_status": "in_formation",
+  "source_registry": "/assets/data/document-registry.json",
   "documents": [
     {
       "id": "investor-factsheet",
-      "title_fr": "Fiche investisseur",
-      "title_en": "Investor factsheet",
+      "title_fr": "Synthèse investisseur",
+      "title_en": "Investor summary",
       "href": "/Fiche_Investisseur_EnerTchad.pdf",
       "format": "PDF",
       "language": [
-        "fr",
-        "en"
+        "fr"
       ],
-      "status": "published"
+      "status": "published",
+      "evidence_status": "published",
+      "document_date": "2026-10",
+      "bytes": 143330,
+      "git_blob_sha": "4cc9040acf52169128b8d0a2b2f353657f32d6f4"
     },
     {
       "id": "data-book",
-      "title_fr": "Data Book",
-      "title_en": "Data Book",
+      "title_fr": "Données publiées et sourcées",
+      "title_en": "Published sourced data",
       "href": "/Data_Book_EnerTchad.xlsx",
       "format": "XLSX",
       "language": [
-        "fr",
-        "en"
+        "multi"
       ],
-      "status": "published"
+      "status": "published",
+      "evidence_status": "published",
+      "document_date": "2026-10",
+      "bytes": 12679,
+      "git_blob_sha": "a5a5a241ead84404427519c75a7dfde5211bdd29"
     },
     {
       "id": "progress-2026",
-      "title_fr": "Point d’étape 2026",
-      "title_en": "2026 progress report",
+      "title_fr": "Point d’étape de constitution",
+      "title_en": "Formation progress update",
       "href": "/Point_Etape_EnerTchad_2026.pdf",
       "format": "PDF",
       "language": [
-        "fr",
-        "en"
+        "fr"
       ],
       "status": "published",
-      "vintage": "2026"
+      "evidence_status": "progress-update",
+      "document_date": "2026-08",
+      "document_updated": "2026-10",
+      "version": "2026",
+      "bytes": 125139,
+      "git_blob_sha": "a0546c6ad40a9ddeab97eed840bd40b6ab54be54"
     },
     {
       "id": "investor-calendar-fr",
@@ -50,42 +61,189 @@
       "language": [
         "fr"
       ],
-      "status": "published"
+      "status": "published",
+      "evidence_status": "published",
+      "bytes": 2643,
+      "git_blob_sha": "a2ac84db334304f4d55be9d64bde21a93a139c0a"
     },
     {
       "id": "investor-calendar-en",
-      "title_fr": "Agenda investisseur — EN",
-      "title_en": "Investor calendar",
+      "title_fr": "Agenda investisseur anglais",
+      "title_en": "English investor calendar",
       "href": "/investor-calendar-en.ics",
       "format": "ICS",
       "language": [
         "en"
       ],
-      "status": "published"
+      "status": "published",
+      "evidence_status": "published",
+      "bytes": 2492,
+      "git_blob_sha": "498bc9f46b731bcba518f40cf38cb3c3b7d11eb2"
     },
     {
       "id": "esg-data-fr",
-      "title_fr": "Indicateurs ESG 2030",
-      "title_en": "2030 ESG indicators",
+      "title_fr": "Indicateurs ESG — références et cibles",
+      "title_en": "ESG indicators — baseline and targets",
       "href": "/assets/data/indicateurs-esg-2030.csv",
       "format": "CSV",
       "language": [
         "fr"
       ],
       "status": "published",
-      "vintage": "2030-targets"
+      "evidence_status": "target-data",
+      "version": "2030 targets",
+      "bytes": 962,
+      "git_blob_sha": "6f71f9c1807fd4878f915d9b6a1b039081fbca02"
     },
     {
       "id": "esg-data-en",
-      "title_fr": "Indicateurs ESG 2030 — EN",
-      "title_en": "2030 ESG indicators",
+      "title_fr": "Indicateurs ESG — version anglaise",
+      "title_en": "ESG indicators — English dataset",
       "href": "/assets/data/esg-indicators-2030.csv",
       "format": "CSV",
       "language": [
         "en"
       ],
       "status": "published",
-      "vintage": "2030-targets"
+      "evidence_status": "target-data",
+      "version": "2030 targets",
+      "bytes": 860,
+      "git_blob_sha": "88816a2e4ba75444cc9947800dbc42f7d5857d1e"
+    },
+    {
+      "id": "upstream-data-fr",
+      "title_fr": "Chiffres Amont — jeu de données (contexte national et cibles)",
+      "title_en": "Upstream figures — French dataset",
+      "href": "/assets/data/amont-chiffres.csv",
+      "format": "CSV",
+      "language": [
+        "fr"
+      ],
+      "status": "published",
+      "evidence_status": "published",
+      "bytes": 5602,
+      "git_blob_sha": "ddebcd8a51ba0c9c8c45a748a9219d9e8f74919a"
+    },
+    {
+      "id": "upstream-data-en",
+      "title_fr": "Chiffres Amont — version anglaise",
+      "title_en": "Upstream figures — national context and targets",
+      "href": "/assets/data/upstream-figures.csv",
+      "format": "CSV",
+      "language": [
+        "en"
+      ],
+      "status": "published",
+      "evidence_status": "published",
+      "bytes": 5291,
+      "git_blob_sha": "ed881af01659b11768bd81b868348afcb5968396"
+    },
+    {
+      "id": "technical-upstream",
+      "title_fr": "Fiche technique Exploration & Production",
+      "title_en": "Exploration & Production technical factsheet",
+      "href": "/Fiche_Technique_Amont_EnerTchad.pdf",
+      "format": "PDF",
+      "language": [
+        "fr"
+      ],
+      "status": "published",
+      "evidence_status": "published",
+      "document_date": "2026-10",
+      "bytes": 172243,
+      "git_blob_sha": "cb2303eaef2255e81c1f0bd0a42fe517f4555e3f"
+    },
+    {
+      "id": "technical-upstream-en",
+      "title_fr": "Fiche technique Exploration & Production — version anglaise",
+      "title_en": "Exploration & Production technical factsheet",
+      "href": "/Fiche_Technique_Amont_EnerTchad_EN.pdf",
+      "format": "PDF",
+      "language": [
+        "en"
+      ],
+      "status": "published",
+      "evidence_status": "published",
+      "document_date": "2026-10",
+      "bytes": 172244,
+      "git_blob_sha": "004738a30a006b3aef5bf8ea1cfd42863f237445"
+    },
+    {
+      "id": "technical-midstream",
+      "title_fr": "Fiche technique Transport & stockage",
+      "title_en": "Transport & Storage technical factsheet",
+      "href": "/Fiche_Technique_Intermediaire_EnerTchad.pdf",
+      "format": "PDF",
+      "language": [
+        "fr"
+      ],
+      "status": "published",
+      "evidence_status": "published",
+      "document_date": "2026-10",
+      "bytes": 116086,
+      "git_blob_sha": "f42d56f772baf139562ec70ef7f74a225af9e3c8"
+    },
+    {
+      "id": "technical-downstream",
+      "title_fr": "Fiche technique Raffinage & distribution",
+      "title_en": "Refining & Distribution technical factsheet",
+      "href": "/Fiche_Technique_Aval_EnerTchad.pdf",
+      "format": "PDF",
+      "language": [
+        "fr"
+      ],
+      "status": "published",
+      "evidence_status": "published",
+      "document_date": "2026-10",
+      "bytes": 150681,
+      "git_blob_sha": "2a20715939838e3fb20b910364c5d5995f744c61"
+    },
+    {
+      "id": "brochure-fr",
+      "title_fr": "Brochure institutionnelle",
+      "title_en": "Corporate brochure",
+      "href": "/Brochure_EnerTchad.pdf",
+      "format": "PDF",
+      "language": [
+        "fr"
+      ],
+      "status": "published",
+      "evidence_status": "published",
+      "document_date": "2026-09",
+      "document_updated": "2026-10",
+      "bytes": 215801,
+      "git_blob_sha": "96e810edb78e1bf26674c42e6b82ff776ab23644"
+    },
+    {
+      "id": "brochure-en",
+      "title_fr": "Brochure institutionnelle anglaise",
+      "title_en": "English corporate brochure",
+      "href": "/Brochure_EnerTchad_EN.pdf",
+      "format": "PDF",
+      "language": [
+        "en"
+      ],
+      "status": "published",
+      "evidence_status": "published",
+      "document_date": "2026-09",
+      "document_updated": "2026-10",
+      "bytes": 217060,
+      "git_blob_sha": "da1fed3cd27493aabd2bced3344133572ab7d678"
+    },
+    {
+      "id": "factsheet-ar",
+      "title_fr": "Fiche institutionnelle arabe",
+      "title_en": "Arabic corporate factsheet",
+      "href": "/Fiche_EnerTchad_AR.pdf",
+      "format": "PDF",
+      "language": [
+        "ar"
+      ],
+      "status": "published",
+      "evidence_status": "published",
+      "document_date": "2026-10",
+      "bytes": 363793,
+      "git_blob_sha": "7b5499282605d9395852048a5685c9c67b600fd7"
     }
   ]
 }

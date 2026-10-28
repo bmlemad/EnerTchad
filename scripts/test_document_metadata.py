@@ -10,6 +10,24 @@ import refresh_document_metadata as metadata
 
 
 class DocumentMetadataTests(unittest.TestCase):
+    def test_compatibility_inventory_tracks_current_files_and_actual_languages(self):
+        previous = dict(schema_version='1.0', company_status='in_formation', documents=[
+            dict(id='report', href='/report.pdf', language=['fr', 'en']),
+            dict(id='retired', href='/retired.pdf')])
+        registry = dict(generated='2026-10-28', documents=[
+            dict(id='report', path='/report.pdf', language='fr', format='PDF', status='progress-update', role_fr='Rapport', role_en='Report'),
+            dict(id='brochure-en', path='/brochure-en.pdf', language='en', format='PDF', status='published', bytes=123)])
+        result = metadata.compatibility_register(registry, previous)
+        self.assertEqual(result['schema_version'], '1.0')
+        self.assertEqual(result['company_status'], 'in_formation')
+        self.assertEqual(result['catalog_updated'], registry['generated'])
+        self.assertEqual([d['href'] for d in result['documents']], ['/report.pdf', '/brochure-en.pdf'])
+        self.assertEqual(result['documents'][0]['language'], ['fr'])
+        self.assertEqual(result['documents'][0]['evidence_status'], 'progress-update')
+        self.assertEqual(result['documents'][1]['bytes'], 123)
+        self.assertNotIn('version', result['documents'][0])
+        self.assertEqual(result, metadata.compatibility_register(registry, result))
+
     def test_foreign_language_download_is_visible_and_announced(self):
         doc = dict(path='/report.pdf', language='fr', format='PDF')
         source = '<html lang="en"><a href="/report.pdf" aria-label="Download report">2026 update</a></html>'

@@ -114,6 +114,24 @@ def apply_document_date(doc, evidence):
                 doc[key] = record[key]
 
 
+def compatibility_register(registry, previous):
+    """Keep the public v1 endpoint usable, with one authoritative inventory."""
+    result = {key: value for key, value in previous.items() if key != 'documents'}
+    result['catalog_updated'] = registry['generated']
+    result['source_registry'] = '/assets/data/document-registry.json'
+    result['documents'] = []
+    for doc in registry['documents']:
+        entry = dict(id=doc['id'], title_fr=doc.get('role_fr', doc['id']),
+                     title_en=doc.get('role_en', doc['id']), href=doc['path'],
+                     format=doc['format'], language=[doc['language']], status='published',
+                     evidence_status=doc['status'])
+        for key in ('document_date', 'document_updated', 'version', 'bytes', 'git_blob_sha'):
+            if key in doc:
+                entry[key] = doc[key]
+        result['documents'].append(entry)
+    return result
+
+
 def main():
     path = ROOT / 'assets/data/document-registry.json'
     registry = json.loads(path.read_text(encoding='utf-8'))
@@ -134,6 +152,10 @@ def main():
     registry['note_fr'] = "Inventaire vérifié à la date generated ; cette date n’est pas une date de version des documents. Les dates documentaires indiquées sont celles inscrites dans les fichiers, sans attester une approbation. Les tailles et empreintes sont calculées sur les fichiers publiés. Une version n’est indiquée que si elle est explicite dans le nom ou le contenu."
     registry['note_en'] = "Inventory checked on the generated date; this is not a document version date. Document dates shown are those printed in the files, not approval dates. Sizes and fingerprints are calculated from the published files. A version is stated only when explicit in the filename or content."
     path.write_text(json.dumps(registry, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+    compatibility_path = ROOT / 'assets/data/document-register.json'
+    if compatibility_path.exists():
+        previous = json.loads(compatibility_path.read_text(encoding='utf-8'))
+        compatibility_path.write_text(json.dumps(compatibility_register(registry, previous), ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
     for name in ('investor-center', 'publications'):
         for suffix in ('', '-en'):
             page = ROOT / (name + suffix + '.html')
