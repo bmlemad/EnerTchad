@@ -55,6 +55,15 @@
   --et-gold-700:#7A5A12;
   --et-gold-800:#6B500F;
   --et-gold-brand:#E8C36A;
+  --et-ink-800:#2A3648;
+  --et-slate-200:#C3D0E0;
+  --et-scrim:rgba(0,0,0,.25);
+  --et-blue-500:#2E86DE;
+  --et-blue-300:#7FB8F5;
+  --et-green-300:#4FDCAA;
+  --et-amber-400:#FBBF24;
+  --et-hair-ink:rgba(26,35,48,.16);
+  --et-hair-glow:rgba(90,167,240,.12);
 
   --et-font-sans:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
   --et-font-display:"Instrument Serif","Instrument Serif Fallback G","Instrument Serif Fallback T","Instrument Serif Fallback N","Instrument Serif Fallback D","Iowan Old Style",Georgia,serif;
@@ -536,7 +545,7 @@ html:not(.et-plight):not(.et-jlight) .et-proj-legend span,html:not(.et-plight):n
 .et-evidence-strip{
   display:grid;
   grid-template-columns:repeat(4,minmax(0,1fr));
-  border:1px solid var(--et-ico-line,rgba(20,32,46,.12));
+  border:1px solid var(--et-ico-line,var(--et-hair-ink,rgba(26,35,48,.16)));
   border-radius:18px;
   overflow:hidden;
   margin:18px 0 0;
@@ -545,7 +554,7 @@ html:not(.et-plight):not(.et-jlight) .et-proj-legend span,html:not(.et-plight):n
 .et-evidence-strip>div{
   min-height:94px;
   padding:18px;
-  border-right:1px solid var(--et-ico-line,rgba(20,32,46,.12));
+  border-right:1px solid var(--et-ico-line,var(--et-hair-ink,rgba(26,35,48,.16)));
 }
 .et-evidence-strip>div:last-child{border-right:0}
 .et-evidence-strip b{display:block;font-size:.92rem;letter-spacing:-.01em}
@@ -602,13 +611,13 @@ html:not(.et-plight):not(.et-jlight) .et-target-note{color:#DCCB9A;border-color:
 @media(max-width:820px){
   .et-evidence-strip{grid-template-columns:1fr 1fr}
   .et-evidence-strip>div:nth-child(2){border-right:0}
-  .et-evidence-strip>div:nth-child(-n+2){border-bottom:1px solid var(--et-ico-line,rgba(20,32,46,.12))}
+  .et-evidence-strip>div:nth-child(-n+2){border-bottom:1px solid var(--et-ico-line,var(--et-hair-ink,rgba(26,35,48,.16)))}
   .et-product-proof{grid-template-columns:1fr}
   .et-product-proof>div+div{border-left:0;border-top:1px solid rgba(128,128,128,.15)}
 }
 @media(max-width:520px){
   .et-evidence-strip{grid-template-columns:1fr}
-  .et-evidence-strip>div{border-right:0;border-bottom:1px solid var(--et-ico-line,rgba(20,32,46,.12))}
+  .et-evidence-strip>div{border-right:0;border-bottom:1px solid var(--et-ico-line,var(--et-hair-ink,rgba(26,35,48,.16)))}
   .et-evidence-strip>div:last-child{border-bottom:0}
 }
 
@@ -626,7 +635,7 @@ html:not(.et-plight):not(.et-jlight) .et-target-note{color:#DCCB9A;border-color:
   flex-direction:column;
   min-height:190px;
   padding:20px;
-  border:1px solid var(--et-ico-line,rgba(20,32,46,.12));
+  border:1px solid var(--et-ico-line,var(--et-hair-ink,rgba(26,35,48,.16)));
   border-radius:18px;
   background:rgba(255,255,255,.66);
   text-decoration:none;
@@ -648,7 +657,7 @@ html:not(.et-plight):not(.et-jlight) .et-dr-meta span{color:#AAB5C6}
 
 
 
-.et-dr-explorer{margin-top:32px;padding-top:28px;border-top:1px solid var(--et-ico-line,rgba(20,32,46,.12))}
+.et-dr-explorer{margin-top:32px;padding-top:28px;border-top:1px solid var(--et-ico-line,var(--et-hair-ink,rgba(26,35,48,.16)))}
 .et-dr-explorer-h{display:flex;align-items:end;justify-content:space-between;gap:18px;flex-wrap:wrap}
 .et-dr-explorer-h h3{margin:0;font-size:1.2rem}
 .et-dr-explorer-h p{margin:4px 0 0;color:#667184;font-size:.8rem;line-height:1.5}
@@ -694,7 +703,7 @@ html:not(.et-plight):not(.et-jlight) .et-proofline::before{color:#E6C978}
 
 
 
-.et-topic-index{border:1px solid var(--et-ico-line,rgba(20,32,46,.12));border-radius:18px;background:rgba(255,255,255,.42);overflow:hidden}
+.et-topic-index{border:1px solid var(--et-ico-line,var(--et-hair-ink,rgba(26,35,48,.16)));border-radius:18px;background:rgba(255,255,255,.42);overflow:hidden}
 .et-topic-index>summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:17px 19px;cursor:pointer}
 .et-topic-index>summary::-webkit-details-marker{display:none}
 .et-topic-index>summary::after{content:"+";flex:none;width:28px;height:28px;display:grid;place-items:center;border:1px solid rgba(128,128,128,.18);border-radius:50%;font:700 1rem/1 ui-monospace,SFMono-Regular,Menlo,monospace}
@@ -1148,3 +1157,6 @@ html[lang=ar] .arh .arh-in{background:transparent!important;-webkit-backdrop-fil
 :root{--field-bg:var(--et-white,#FFFFFF);--field-fg:#142033;--field-bd:#9DA7B4;--field-scheme:light;--note-bg:#EFF1F4;--note-fg:#172638;--status-bd:#8B9EAE}
 html:not(.et-plight,.et-jlight){--field-bg:rgba(8,14,26,.55);--field-fg:#F5F7FA;--field-bd:rgba(255,255,255,.22);--field-scheme:dark;--note-bg:rgba(255,255,255,.06);--note-fg:#E8EEF6;--status-bd:rgba(255,255,255,.28)}
 /* et-lot33-champs:end */
+
+/* Lot 50 : focus lisible sur le fond marine des héros (contraste ≥ 3:1). */
+@layer et-glass{html:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4):not(#f5):not(#f6):not(#f7):not(#f8):not(#f9):not(#f10):not(#f11):not(#f12):not(#f13):not(#f14):not(#f15):not(#f16):not(#f17):not(#f18):not(#f19):not(#f20):not(#f21):not(#f22):not(#f23):not(#f24):not(#f25) :is(.pp-hero,.pole-hero,header.hero) :is(a,button,summary,[tabindex]:not([tabindex="-1"])):focus-visible{outline:2px solid #E8C36A!important;outline-offset:3px!important}}

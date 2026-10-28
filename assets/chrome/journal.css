@@ -155,7 +155,7 @@ html.et-plight .jn-fil time,html.et-jlight .jn-fil time,
 html.et-plight .jn-river time,html.et-jlight .jn-river time,
 html.et-plight .jn-date,html.et-jlight .jn-date{color:#4A5568;opacity:1}
 html.et-plight .jn-fil li,html.et-jlight .jn-fil li,
-html.et-plight .jn-river li,html.et-jlight .jn-river li{border-bottom-color:rgba(26,35,48,.12)}
+html.et-plight .jn-river li,html.et-jlight .jn-river li{border-bottom-color:var(--et-hair-ink,rgba(26,35,48,.16))}
 html.et-plight .jn-dep-h,html.et-jlight .jn-dep-h,
 html.et-plight .jn-river,html.et-jlight .jn-river,
 html.et-plight .jn-cols>*,html.et-jlight .jn-cols>*,
@@ -267,7 +267,7 @@ html:is(.et-plight,.et-jlight) .jn-fig .jn-band{border-color:rgba(26,35,48,.18)}
 @media(max-width:640px){.jn-sous{grid-template-columns:1fr;gap:16px}
  .jn-sous>*+*{border-left:0;padding-left:0;border-top:1px solid var(--hair,rgba(255,255,255,.10));padding-top:16px}}
 html:is(.et-plight,.et-jlight) .jn-sous,
-html:is(.et-plight,.et-jlight) .jn-sous>*+*{border-color:rgba(26,35,48,.16)}
+html:is(.et-plight,.et-jlight) .jn-sous>*+*{border-color:var(--et-hair-ink,rgba(26,35,48,.16))}
 
 /* ——— Ch651 · QA — la bande morte au-dessus du bandeau ———
    Le 648 avait bien ecrase le calage du .hero lui-meme (8px / 0), mais le

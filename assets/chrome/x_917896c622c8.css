@@ -88,12 +88,12 @@ header.pghero .crumb span:not(#_),header.pghero .crumb a:not(#_){text-shadow:0 1
 html:where([data-eh~=eh10]):not(.ehz) :is(.cmp-c,.ppj-kpi,.pgh-kpi,.fp-card,.ct-card,.dx-card,.epw-card,.app-card,.app-panel):not(#_):not(#__):not(#___):not(#____){
   background-color:transparent!important;
   background-image:linear-gradient(180deg,rgba(252,250,246,.56) 0%,rgba(252,250,246,.40) 100%)!important;
-  border-color:rgba(26,35,48,.12)!important;
+  border-color:var(--et-hair-ink,rgba(26,35,48,.16))!important;
   box-shadow:0 1px 0 rgba(255,255,255,.55) inset,0 20px 40px -30px rgba(30,24,10,.42)!important;
   -webkit-backdrop-filter:blur(18px) saturate(1.35)!important;backdrop-filter:blur(18px) saturate(1.35)!important}
 html:not(.et-plight):not(.et-jlight):where([data-eh~=eh10]):not(.ehz) :is(.cmp-c,.ppj-kpi,.pgh-kpi,.fp-card,.ct-card,.dx-card,.epw-card,.app-card,.app-panel):not(#_):not(#__):not(#___):not(#____){
   background-image:linear-gradient(180deg,rgba(9,15,27,.66) 0%,rgba(9,15,27,.54) 100%)!important;
-  border-color:rgba(255,255,255,.15)!important;
+  border-color:var(--et-hair-glow,var(--et-hair-glow,rgba(90,167,240,.12)))!important;
   box-shadow:0 1px 0 rgba(255,255,255,.08) inset,0 22px 46px -30px rgba(0,0,0,.6)!important}
 /* le texte secondaire de ces tuiles suit la meme regle d'eclaircissement que la famille */
 html:not(.et-plight):not(.et-jlight):where([data-eh~=eh10]):not(.ehz) :is(.cmp-c,.ppj-kpi,.pgh-kpi,.fp-card,.ct-card,.dx-card,.epw-card,.app-card,.app-panel) :is(p,li,dd,span):not(#_):not(#__):not(#___):not(#____){

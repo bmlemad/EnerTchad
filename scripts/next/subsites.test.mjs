@@ -48,6 +48,7 @@ test('former dedicated hosts redirect to the group paths before legacy rules', a
   assert(rules.includes('https://atlas.enertchad.com/en/sources https://enertchad.com/atlas/sources-en 301!'));
   assert(rules.includes('https://boutique.enertchad.com/* https://enertchad.com/boutique/ 301!'));
   assert(!rules.includes('/_subsites/'));
+  assert(!/^\/boutique \/boutique\/ 30\d!?$/m.test(rules), 'Netlify treats both slash variants as the same route: this would loop');
   assert(!/^https:\/\/(?:www\.)?enertchad\.com\/\S* https:\/\/(?:clients|atlas)\./m.test(rules));
   assert(rules.indexOf('https://clients.enertchad.com/') < rules.indexOf('/clients /boutique/clients'));
 });

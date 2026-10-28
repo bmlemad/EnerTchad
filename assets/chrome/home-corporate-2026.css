@@ -68,7 +68,7 @@
 .nx-search::before{content:"";width:10px;height:10px;border:1.5px solid currentColor;border-radius:50%;display:inline-block;box-shadow:3px 3px 0 -2px currentColor;transform:translateY(-1px) rotate(-45deg)}
 .nx-search:hover{color:var(--et-gold-brand,#E8C36A)}
 @media(max-width:760px){
-  .nx-search{width:30px;height:30px;padding:0;justify-content:center;font-size:0;border:1px solid rgba(255,255,255,.14);border-radius:999px}
+  .nx-search{width:30px;height:30px;padding:0;justify-content:center;font-size:0;border:1px solid var(--et-hair-glow,var(--et-hair-glow,rgba(90,167,240,.12)));border-radius:999px}
   .nx-search::before{margin:0;width:9px;height:9px}
 }
 @media(forced-colors:active){.nx-search{color:CanvasText;border-color:CanvasText}}

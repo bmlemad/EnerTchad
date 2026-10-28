@@ -57,6 +57,9 @@ test('dedicated headers use generic requirements while retaining language pairs 
       assert(output.includes('/contact' + (page.language === 'en' ? '-en' : '') + '#ctForm'), page.source);
       assert.equal((output.match(/<footer\b/g) || []).length, 1);
       assert(output.includes('et-al-lang'), page.source);
+      const nav = nodes(output).find(n => n.attribs?.id === 'nav');
+      const links = nodes(output.slice(nav.startIndex,nav.endIndex+1)).filter(n => n.name === 'a');
+      assert(!links.some(n => n.attribs?.href?.startsWith('https://enertchad.com')), 'public space navigation must stay on the current host');
     }
   }
 });

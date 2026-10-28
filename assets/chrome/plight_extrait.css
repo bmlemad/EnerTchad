@@ -1,5 +1,5 @@
 /* Regles et-plight/et-jlight extraites de bundle_core_a1.css - pages sans le bundle complet. */
-html.et-jlight { --bg: #FAF7F1; --bg2: var(--et-white,#FFFFFF); --ink: #1A2330; --mut: rgba(26,35,48,.64); --hair: rgba(26,35,48,.16); --gold: #8A6A1E; --gold-l: #7A5C14; --blue-l: #155FA8; }
+html.et-jlight { --bg: #FAF7F1; --bg2: var(--et-white,#FFFFFF); --ink: #1A2330; --mut: rgba(26,35,48,.64); --hair: var(--et-hair-ink,rgba(26,35,48,.16)); --gold: #8A6A1E; --gold-l: #7A5C14; --blue-l: #155FA8; }
 html.et-jlight body { background: var(--bg) !important; color: var(--ink) !important; }
 html.et-jlight body::before, html.et-jlight body::after { display: none !important; }
 html.et-jlight #jlightBtn { border-color: rgba(26, 35, 48, 0.3); }
@@ -12,7 +12,7 @@ html.et-jlight .jfoot:not(#_), html.et-jlight footer:not(#_) { background: rgb(2
 html.et-jlight a:not(#_):not(.jback):not(.jlang) { color: rgb(21, 95, 168); }
 html.et-jlight { background: rgb(250, 247, 241) !important; }
 html.et-jlight .jtop a b:not(#_) { color: rgb(232, 195, 106) !important; }
-html.et-jlight #secrail a:not(#_) { background: rgba(11, 20, 34, 0.85) !important; color: rgba(245, 247, 250, 0.85) !important; border-color: rgba(255, 255, 255, 0.14) !important; }
+html.et-jlight #secrail a:not(#_) { background: rgba(11, 20, 34, 0.85) !important; color: rgba(245, 247, 250, 0.85) !important; border-color: var(--et-hair-glow,var(--et-hair-glow,rgba(90,167,240,.12))) !important; }
 html.et-plight main:not(#_) { background: rgb(250, 247, 241) !important; color: rgb(26, 35, 48) !important; }
 html.et-plight main section:not(#_), html.et-plight main article:not(#_), html.et-plight main div:not(#_) { color: rgb(26, 35, 48); background-color: transparent !important; box-shadow: none !important; }
 html.et-plight main .subland { display: none !important; }
@@ -20,15 +20,15 @@ html.et-plight main h1:not(#_), html.et-plight main h2:not(#_), html.et-plight m
 html.et-plight main p:not(#_), html.et-plight main li:not(#_), html.et-plight main span:not(#_), html.et-plight main td:not(#_), html.et-plight main th:not(#_), html.et-plight main i:not(#_), html.et-plight main em:not(#_), html.et-plight main small:not(#_), html.et-plight main dd:not(#_), html.et-plight main figcaption:not(#_), html.et-plight main blockquote:not(#_), html.et-plight main label:not(#_) { color: rgb(42, 54, 72) !important; text-shadow: none !important; }
 html.et-plight main h1 em:not(#_), html.et-plight main h2 em:not(#_), html.et-plight main .kick:not(#_), html.et-plight main [class*="kick"]:not(#_) { color: rgb(122, 92, 20) !important; }
 html.et-plight main a:not(#_) { color: rgb(21, 95, 168) !important; }
-html.et-plight main .card:not(#_), html.et-plight main [class*="card"]:not(#_), html.et-plight main [class*="panel"]:not(#_) { background: rgb(255, 255, 255) !important; border: 1px solid rgba(26, 35, 48, 0.16) !important; box-shadow: rgba(26, 35, 48, 0.06) 0px 2px 10px !important; }
+html.et-plight main .card:not(#_), html.et-plight main [class*="card"]:not(#_), html.et-plight main [class*="panel"]:not(#_) { background: rgb(255, 255, 255) !important; border: 1px solid var(--et-hair-ink,rgba(26,35,48,.16)) !important; box-shadow: rgba(26, 35, 48, 0.06) 0px 2px 10px !important; }
 html.et-plight main td:not(#_), html.et-plight main th:not(#_) { border-color: rgba(26, 35, 48, 0.2) !important; background: rgb(255, 255, 255) !important; }
 html.et-plight .subland { display: none !important; }
 html.et-plight:not(#_):not(#__) { background: radial-gradient(58% 46% at 10% 4%, rgba(226, 178, 64, 0.52), transparent 70%) fixed, radial-gradient(54% 44% at 92% 10%, rgba(59, 140, 231, 0.46), transparent 70%), radial-gradient(48% 40% at 14% 88%, rgba(28, 190, 130, 0.36), transparent 72%), radial-gradient(56% 46% at 86% 94%, rgba(206, 108, 170, 0.3), transparent 72%), linear-gradient(rgb(250, 248, 241) 0%, rgb(239, 237, 228) 100%) !important; }
 html.et-plight body { background: rgb(250, 247, 241) !important; }
 html.et-plight main .cp-ct a:not(#_) b { color: rgb(16, 22, 31) !important; }
 html.et-plight main section:not(#_), html.et-plight main article:not(#_), html.et-plight main div:not(#_):not([role="img"]) { background-image: none !important; }
-html.et-plight main article:not(#_) { background-color: rgb(255, 255, 255) !important; border: 1px solid rgba(26, 35, 48, 0.16) !important; box-shadow: rgba(26, 35, 48, 0.06) 0px 2px 10px !important; }
-html.et-plight #secrail a:not(#_) { background: rgba(11, 20, 34, 0.85) !important; color: rgba(245, 247, 250, 0.85) !important; border-color: rgba(255, 255, 255, 0.14) !important; }
+html.et-plight main article:not(#_) { background-color: rgb(255, 255, 255) !important; border: 1px solid var(--et-hair-ink,rgba(26,35,48,.16)) !important; box-shadow: rgba(26, 35, 48, 0.06) 0px 2px 10px !important; }
+html.et-plight #secrail a:not(#_) { background: rgba(11, 20, 34, 0.85) !important; color: rgba(245, 247, 250, 0.85) !important; border-color: var(--et-hair-glow,var(--et-hair-glow,rgba(90,167,240,.12))) !important; }
 html.et-plight main button:not(#_):not(#plightBtn) { color: rgb(26, 35, 48) !important; }
 html.et-plight main [role="tab"]:not(#_), html.et-plight main [role="button"]:not(#_) { color: rgb(26, 35, 48) !important; }
 html.et-plight main .pghero h1:not(#_), html.et-plight main .pghero h2:not(#_), html.et-plight main [class*="hero"] h1:not(#_), html.et-plight main .diapo h1:not(#_), html.et-plight main .diapo h2:not(#_), html.et-plight main .pghero b:not(#_), html.et-plight main [class*="hero"] h1 b:not(#_) { color: rgb(255, 255, 255) !important; -webkit-text-fill-color: rgb(255, 255, 255) !important; }
@@ -52,7 +52,7 @@ html.et-plight body > section h1:not(#_), html.et-plight body > section h2:not(#
 html.et-plight body > section p:not(#_), html.et-plight body > section li:not(#_), html.et-plight body > section span:not(#_), html.et-plight body > section td:not(#_), html.et-plight body > section th:not(#_), html.et-plight body > section i:not(#_), html.et-plight body > section em:not(#_), html.et-plight body > section small:not(#_), html.et-plight body > section dd:not(#_), html.et-plight body > section caption:not(#_), html.et-plight body > section label:not(#_), html.et-plight body > section button:not(#_) { color: rgb(42, 54, 72) !important; text-shadow: none !important; }
 html.et-plight body > section a:not(#_) { color: rgb(21, 95, 168) !important; }
 html.et-plight body > section td:not(#_), html.et-plight body > section th:not(#_) { background: rgb(255, 255, 255) !important; border-color: rgba(26, 35, 48, 0.2) !important; }
-html.et-plight body > section .card:not(#_), html.et-plight body > section [class*="card"]:not(#_) { background: rgb(255, 255, 255) !important; border: 1px solid rgba(26, 35, 48, 0.16) !important; }
+html.et-plight body > section .card:not(#_), html.et-plight body > section [class*="card"]:not(#_) { background: rgb(255, 255, 255) !important; border: 1px solid var(--et-hair-ink,rgba(26,35,48,.16)) !important; }
 html.et-plight body > section [class*="kick"]:not(#_), html.et-plight body > section h2 em:not(#_), html.et-plight body > section [class*="-no"]:not(#_), html.et-plight body > section [class*="-k"]:not(#_) { color: rgb(107, 80, 15) !important; }
 html.et-plight body > header.pghero h1:not(#_), html.et-plight body > header.pghero h2:not(#_) { color: rgb(255, 255, 255) !important; }
 html.et-plight body > header.pghero p:not(#_), html.et-plight body > header.pghero span:not(#_) { color: rgba(245, 247, 250, 0.92) !important; }
@@ -118,7 +118,7 @@ html.et-plight main a.hxi-cta:not(#_) { color: rgb(11, 20, 34) !important; }
 html.et-plight main a.iv-pivot:not(#_) { color: rgb(10, 19, 34) !important; }
 html.et-plight main .mkt-nav a:not(#_) { color: rgba(245, 247, 250, 0.74) !important; }
 html.et-plight main:not(#_), html.et-plight body > section:not(#_) { background: linear-gradient(162deg, rgb(245, 241, 234) 0%, rgb(237, 237, 241) 52%, rgb(243, 238, 230) 100%) !important; }
-html.et-plight main .card:not(#_), html.et-plight main [class*="card"]:not(#_), html.et-plight main [class*="panel"]:not(#_), html.et-plight main article:not(#_), html.et-plight body > section .card:not(#_), html.et-plight body > section [class*="card"]:not(#_) { background: rgba(255, 255, 255, 0.46) !important; -webkit-backdrop-filter: blur(20px) saturate(1.6) !important;backdrop-filter: blur(20px) saturate(1.6) !important; border: 1px solid rgba(26, 35, 48, 0.1) !important; box-shadow: rgba(26, 35, 48, 0.12) 0px 8px 30px, rgba(255, 255, 255, 0.65) 0px 1px 0px inset !important; }
+html.et-plight main .card:not(#_), html.et-plight main [class*="card"]:not(#_), html.et-plight main [class*="panel"]:not(#_), html.et-plight main article:not(#_), html.et-plight body > section .card:not(#_), html.et-plight body > section [class*="card"]:not(#_) { background: rgba(255, 255, 255, 0.46) !important; -webkit-backdrop-filter: blur(20px) saturate(1.6) !important;backdrop-filter: blur(20px) saturate(1.6) !important; border: 1px solid var(--et-hair-ink,rgba(26,35,48,.16)) !important; box-shadow: rgba(26, 35, 48, 0.12) 0px 8px 30px, rgba(255, 255, 255, 0.65) 0px 1px 0px inset !important; }
 html.et-plight a.cb-p:not(#_):not(#__) { color: rgb(11, 20, 34) !important; -webkit-text-fill-color: rgb(11, 20, 34) !important; }
 html.et-plight body { background: radial-gradient(58% 46% at 10% 4%, rgba(226, 178, 64, 0.52), transparent 70%) fixed, radial-gradient(54% 44% at 92% 10%, rgba(59, 140, 231, 0.46), transparent 70%), radial-gradient(48% 40% at 14% 88%, rgba(28, 190, 130, 0.36), transparent 72%), radial-gradient(56% 46% at 86% 94%, rgba(206, 108, 170, 0.3), transparent 72%), linear-gradient(rgb(250, 248, 241) 0%, rgb(239, 237, 228) 100%) !important; }
 html.et-plight .rootland:not(#_) { display: none !important; }
@@ -154,7 +154,7 @@ html.et-jlight .jfoot:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
   background:linear-gradient(180deg,#F7F3EC 0%,#EFE9DE 100%)!important;
   background-color:#F3EEE5!important;
   color:#2A3648!important;
-  border-top:1px solid rgba(26,35,48,.10)!important;
+  border-top:1px solid var(--et-hair-ink,rgba(26,35,48,.16))!important;
   text-shadow:none!important}
 
 /* le filet decoratif du haut, reaccorde sur fond clair */
@@ -213,7 +213,7 @@ html.et-plight footer a.foot-pole:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
 html.et-jlight footer a.foot-pole:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
   color:#2A3648!important;
   background:rgba(255,255,255,.62)!important;
-  border:1px solid rgba(26,35,48,.16)!important;
+  border:1px solid var(--et-hair-ink,rgba(26,35,48,.16))!important;
   box-shadow:0 1px 2px rgba(26,35,48,.05)!important}
 html.et-plight footer a.foot-pole:hover:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
   color:var(--et-gold-800,#6B500F)!important;
@@ -225,14 +225,14 @@ html.et-plight footer .foot-vals span:not(#e1):not(#e2):not(#e3):not(#e4):not(#e
 html.et-jlight footer .foot-vals span:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
   color:#3A4657!important;
   background:rgba(255,255,255,.58)!important;
-  border-color:rgba(26,35,48,.16)!important}
+  border-color:var(--et-hair-ink,rgba(26,35,48,.16))!important}
 
 /* reseaux sociaux */
 html.et-plight footer .foot-social a:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
 html.et-jlight footer .foot-social a:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
   color:#3A4657!important;
   background:rgba(255,255,255,.62)!important;
-  border:1px solid rgba(26,35,48,.16)!important}
+  border:1px solid var(--et-hair-ink,rgba(26,35,48,.16))!important}
 html.et-plight footer .foot-social a:hover:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
   color:var(--et-gold-800,#6B500F)!important;
   background:rgba(184,138,42,.14)!important;
@@ -272,7 +272,7 @@ html.et-jlight .nav:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
   background-color:rgba(250,247,241,.94)!important;
   -webkit-backdrop-filter:blur(16px) saturate(150%)!important;
   backdrop-filter:blur(16px) saturate(150%)!important;
-  border-bottom:1px solid rgba(26,35,48,.10)!important;
+  border-bottom:1px solid var(--et-hair-ink,rgba(26,35,48,.16))!important;
   color:#2A3648!important}
 
 html.et-plight .nav.scrolled:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
@@ -292,7 +292,7 @@ html.et-jlight .nav.scrolled:not(#e1):not(#e2):not(#e3):not(#e4)::after{
 html.et-plight .nx-util:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
 html.et-jlight .nx-util:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
   background:rgba(243,238,229,.58)!important;-webkit-backdrop-filter:blur(14px) saturate(120%)!important;backdrop-filter:blur(14px) saturate(120%)!important;
-  border-bottom:1px solid rgba(26,35,48,.10)!important}
+  border-bottom:1px solid var(--et-hair-ink,rgba(26,35,48,.16))!important}
 html.et-plight .nx-util-in>a:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
 html.et-jlight .nx-util-in>a:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
   color:#4A5668!important}
@@ -366,7 +366,7 @@ html.et-jlight .nav-search:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
 html.et-jlight .nav-tog:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
   color:#2A3648!important;
   background:linear-gradient(160deg,rgba(255,255,255,.78),rgba(255,255,255,.4))!important;
-  border:1px solid rgba(26,35,48,.16)!important;
+  border:1px solid var(--et-hair-ink,rgba(26,35,48,.16))!important;
   box-shadow:inset 0 1px 0 rgba(255,255,255,.75)!important}
 html.et-plight .nav-search:hover:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
 html.et-plight .nav-cta .nav-search:hover:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
@@ -385,7 +385,7 @@ html.et-jlight .nx-mega:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
   background:linear-gradient(180deg,rgba(255,255,255,.98),rgba(250,247,241,.99))!important;
   -webkit-backdrop-filter:blur(28px) saturate(170%)!important;
   backdrop-filter:blur(28px) saturate(170%)!important;
-  border:1px solid rgba(26,35,48,.12)!important;
+  border:1px solid var(--et-hair-ink,rgba(26,35,48,.16))!important;
   box-shadow:0 44px 90px -34px rgba(26,35,48,.38)!important;
   color:#2A3648!important}
 }
@@ -439,9 +439,9 @@ html.et-jlight .nav-links:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
   -webkit-backdrop-filter:blur(24px) saturate(155%)!important;
   backdrop-filter:blur(24px) saturate(155%)!important;
   box-shadow:0 34px 70px -22px rgba(26,35,48,.28)!important;
-  border-bottom-color:rgba(26,35,48,.12)!important}
+  border-bottom-color:var(--et-hair-ink,rgba(26,35,48,.16))!important}
 html.et-plight .nx .nav-item:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
-  border-bottom:1px solid rgba(26,35,48,.10)!important}
+  border-bottom:1px solid var(--et-hair-ink,rgba(26,35,48,.16))!important}
 html.et-plight .nav-links a.active:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){color:#10161F!important}
 html.et-plight .nx-util-m a:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){color:#4A5668!important}
 html.et-plight .nx-util-m a.cta:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
@@ -458,7 +458,7 @@ html.et-jlight #nezBar:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
   background-color:rgba(250,247,241,.96)!important;
   -webkit-backdrop-filter:blur(16px) saturate(150%)!important;
   backdrop-filter:blur(16px) saturate(150%)!important;
-  border-top:1px solid rgba(26,35,48,.12)!important;
+  border-top:1px solid var(--et-hair-ink,rgba(26,35,48,.16))!important;
   box-shadow:0 -8px 26px rgba(26,35,48,.10)!important;
   color:#2A3648!important}
 html.et-plight #nezBar a:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
@@ -968,7 +968,7 @@ html.et-plight .nx-mega:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
 html.et-plight .nx .nx-mega:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
 html.et-jlight .nx-mega:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
 background:rgba(250,247,241,.97)!important;
-border:1px solid rgba(26,35,48,.10)!important;
+border:1px solid var(--et-hair-ink,rgba(26,35,48,.16))!important;
 box-shadow:0 18px 40px -24px rgba(26,35,48,.25)!important}
 }
 
@@ -986,12 +986,12 @@ box-shadow:0 18px 40px -24px rgba(26,35,48,.25)!important}
 html:where([data-eh~=eh10]):not(.ehz) :is(.cmp-c,.ppj-kpi,.pgh-kpi,.fp-card,.ct-card,.dx-card,.epw-card,.app-card,.app-panel):not(#_):not(#__):not(#___):not(#____){
   background-color:transparent!important;
   background-image:linear-gradient(180deg,rgba(252,250,246,.56) 0%,rgba(252,250,246,.40) 100%)!important;
-  border-color:rgba(26,35,48,.12)!important;
+  border-color:var(--et-hair-ink,rgba(26,35,48,.16))!important;
   box-shadow:0 1px 0 rgba(255,255,255,.55) inset,0 20px 40px -30px rgba(30,24,10,.42)!important;
   -webkit-backdrop-filter:blur(18px) saturate(1.35)!important;backdrop-filter:blur(18px) saturate(1.35)!important}
 html:not(.et-plight):not(.et-jlight):where([data-eh~=eh10]):not(.ehz) :is(.cmp-c,.ppj-kpi,.pgh-kpi,.fp-card,.ct-card,.dx-card,.epw-card,.app-card,.app-panel):not(#_):not(#__):not(#___):not(#____){
   background-image:linear-gradient(180deg,rgba(9,15,27,.66) 0%,rgba(9,15,27,.54) 100%)!important;
-  border-color:rgba(255,255,255,.15)!important;
+  border-color:var(--et-hair-glow,var(--et-hair-glow,rgba(90,167,240,.12)))!important;
   box-shadow:0 1px 0 rgba(255,255,255,.08) inset,0 22px 46px -30px rgba(0,0,0,.6)!important}
 /* le texte secondaire de ces tuiles suit la meme regle d'eclaircissement que la famille */
 html:not(.et-plight):not(.et-jlight):where([data-eh~=eh10]):not(.ehz) :is(.cmp-c,.ppj-kpi,.pgh-kpi,.fp-card,.ct-card,.dx-card,.epw-card,.app-card,.app-panel) :is(p,li,dd,span):not(#_):not(#__):not(#___):not(#____){
