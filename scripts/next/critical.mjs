@@ -68,3 +68,18 @@ export function inlineCritical(html, page, versions) {
   const tail = `<noscript>${links.map(m => m[0]).join('')}</noscript><script id="et-defer-css">${loader(set.hero === undefined ? '.pp-hero-img' : set.hero)}</script>`;
   return out.slice(0, at) + tail + out.slice(at);
 }
+
+// Lot 66 : bandeau de consentement affiché plus tôt. audience-consent.js était chargé en deux
+// sauts (nav_a.js, différé et de basse priorité, l'injecte à son exécution) : pour un nouveau
+// visiteur, le bandeau, plus grand que le texte du héros sur mobile, devenait l'élément LCP
+// (Tchaditude 6,3 s, Espace clients 4,6 s, mesures en ligne). Le script est désormais aussi
+// déclaré en différé dans le <head> des pages qui chargent nav_a.js ; l'injection de nav_a.js
+// reste (repli) et ne fait rien grâce au garde « if(window.etAudienceConsent)return ».
+// Comportement inchangé : consentement préalable, aucune requête Google avant « Accepter ».
+export const CONSENT_TAG = '<script defer src="/assets/chrome/audience-consent.js"></script>';
+export function earlyConsent(html) {
+  const end = html.indexOf('</head>');
+  if (end < 0 || !html.includes('/assets/chrome/nav_a.js')) return html;
+  if (/<script\b[^>]*\/assets\/chrome\/audience-consent\.js/.test(html.slice(0, end))) return html;
+  return html.slice(0, end) + CONSENT_TAG + html.slice(end);
+}
