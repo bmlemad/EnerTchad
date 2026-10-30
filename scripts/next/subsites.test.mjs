@@ -49,6 +49,9 @@ test('former dedicated hosts redirect to the group paths before legacy rules', a
   assert(rules.includes('https://boutique.enertchad.com/* https://enertchad.com/boutique/ 301!'));
   assert(!rules.includes('/_subsites/'));
   assert(!/^\/boutique \/boutique\/ 30\d!?$/m.test(rules), 'Netlify treats both slash variants as the same route: this would loop');
+  assert(/^\/aval\/boutique \/boutique\/ 308!$/m.test(rules));
+  assert(/^\/aval\/boutique\.html \/boutique\/ 308!$/m.test(rules));
+  assert(!rules.includes('/aval/aval/boutique'), 'legacy catalogue aliases must not be concatenated');
   assert(!/^https:\/\/(?:www\.)?enertchad\.com\/\S* https:\/\/(?:clients|atlas)\./m.test(rules));
   assert(rules.indexOf('https://clients.enertchad.com/') < rules.indexOf('/clients /boutique/clients'));
 });

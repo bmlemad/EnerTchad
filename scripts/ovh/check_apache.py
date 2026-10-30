@@ -141,7 +141,7 @@ DocumentRoot "{OUT}"
             redirect("enertchad.com", "/pole-enertech-outils", "https://enertchad.com/tchaditech/outils", 308)
             redirect("enertchad.com", "/clients", "https://enertchad.com/boutique/clients", 308)
             redirect("enertchad.com", "/aval/boutique", "https://enertchad.com/boutique/", 308)
-            redirect("enertchad.com", "/boutique", "https://enertchad.com/boutique/", 308)
+            redirect("enertchad.com", "/boutique", "https://enertchad.com/boutique/")
             redirect("clients.enertchad.com", "/", "https://enertchad.com/boutique/clients")
             redirect("clients.enertchad.com", "/en/boutique", "https://enertchad.com/boutique/en/")
             redirect("atlas.enertchad.com", "/carte.html", "https://enertchad.com/atlas/carte")
