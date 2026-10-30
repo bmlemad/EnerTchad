@@ -11,15 +11,17 @@
 // Mesure au prototype (/amont/, profil mobile Slow 4G, CPU ×4) : FCP 3,2 → 1,0 s, CLS 0,01.
 import { readFileSync } from 'node:fs';
 
-export const CRITICAL_FILES = ['scripts/critical/pole.json', 'scripts/critical/journal-a.json', 'scripts/critical/journal-b.json', 'scripts/critical/aval-reseau.json', 'scripts/critical/boutique.json', 'scripts/critical/aval-hub.json', 'scripts/critical/home-fr.json', 'scripts/critical/home-en.json', 'scripts/critical/amont-hub.json', 'scripts/critical/atlas.json', 'scripts/critical/ar-pole.json', 'scripts/critical/ar-home.json', 'scripts/critical/hub-b.json', 'scripts/critical/hub-enerconseils.json', 'scripts/critical/hub-petrochimie.json', 'scripts/critical/hub-intermediaire.json', 'scripts/critical/hub-tchaditude.json', 'scripts/critical/boutique-clients.json', 'scripts/critical/contact.json', 'scripts/critical/services-ep.json', 'scripts/critical/projets.json', 'scripts/critical/gouvernance.json', 'scripts/critical/cibles-2030.json', 'scripts/critical/carnets.json', 'scripts/critical/nos-activites.json', 'scripts/critical/intermediaire-sites.json', 'scripts/critical/tchaditech-outils.json', 'scripts/critical/glossaire.json'];
+export const CRITICAL_FILES = ['scripts/critical/pole.json', 'scripts/critical/journal-a.json', 'scripts/critical/journal-b.json', 'scripts/critical/aval-reseau.json', 'scripts/critical/boutique.json', 'scripts/critical/aval-hub.json', 'scripts/critical/home-fr.json', 'scripts/critical/home-en.json', 'scripts/critical/amont-hub.json', 'scripts/critical/atlas.json', 'scripts/critical/ar-pole.json', 'scripts/critical/ar-home.json', 'scripts/critical/hub-b.json', 'scripts/critical/hub-enerconseils.json', 'scripts/critical/hub-petrochimie.json', 'scripts/critical/hub-intermediaire.json', 'scripts/critical/hub-tchaditude.json', 'scripts/critical/boutique-clients.json', 'scripts/critical/contact.json', 'scripts/critical/petrochimie-produits.json', 'scripts/critical/services-ep.json', 'scripts/critical/projets.json', 'scripts/critical/gouvernance.json', 'scripts/critical/cibles-2030.json', 'scripts/critical/carnets.json', 'scripts/critical/nos-activites.json', 'scripts/critical/intermediaire-sites.json', 'scripts/critical/tchaditech-outils.json', 'scripts/critical/glossaire.json'];
 // Lot 38 : les feuilles différées sont téléchargées en priorité la plus basse (media="not all")
 // et ne s'appliquent qu'une fois l'image du héros chargée PUIS peinte (deux images d'animation :
 // le recalcul de style des feuilles complètes, ~200 ms à CPU ×4, ne retarde plus la peinture du
 // LCP), ou au plus tard à « load ». Pas de minuterie : sur réseau lent, une bascule à 2,5 s
 // tombait avant l'image et retardait sa peinture (mesuré).
 // Lot 39 : image de héros par gabarit (champ « hero » du fichier ; absent = bascule immédiate).
+// Lot 69 : « hero »: "load" = bascule à l'événement load seulement (Carnets : l'image du bandeau est un
+// fond CSS ; sans attente, les feuilles différées lui prenaient la bande passante, LCP 2,6 → 3,8 s mesuré).
 export const loader = hero => '(function(){var l=document.querySelectorAll("link[data-et-defer]"),d=0;function late(){requestAnimationFrame(function(){requestAnimationFrame(function(){setTimeout(go,0)})})}function go(){if(d)return;d=1;for(var i=0;i<l.length;i++){l[i].media=l[i].getAttribute("data-media")||"all"}}' +
-  (hero ? 'var m=document.querySelector(' + JSON.stringify(hero) + ');if(m&&!m.complete){m.addEventListener("load",late);m.addEventListener("error",late)}else go();' : 'go();') +
+  (hero === 'load' ? '' : hero ? 'var m=document.querySelector(' + JSON.stringify(hero) + ');if(m&&!m.complete){m.addEventListener("load",late);m.addEventListener("error",late)}else go();' : 'go();') +
   'addEventListener("load",go)})()';
 export const LOADER = loader('.pp-hero-img');
 // Lot 41 : avant l'arrivée des feuilles différées, les icônes sociales du pied de page (SVG sans
@@ -83,3 +85,12 @@ export function earlyConsent(html) {
   if (/<script\b[^>]*\/assets\/chrome\/audience-consent\.js/.test(html.slice(0, end))) return html;
   return html.slice(0, end) + CONSENT_TAG + html.slice(end);
 }
+
+// Lot 69 (option A retenue par le DG) : trois scripts chargés sans « defer » vers la fin du <body>
+// de 197 pages bloquaient la lecture de la page jusqu'à leur arrivée, et donc tous les scripts
+// différés (dont le bandeau de consentement). Ils passent en « defer », dans le même ordre, comme
+// sur les 81 pages qui les chargent déjà ainsi. Leurs globales sont gardées par « || » (verrou de
+// défilement identique à celui de c_ac04328f0f47.js) ; aucun script en ligne ne les lit ensuite.
+export const DEFER_SCRIPTS = ['u_cd226c00eb4b.js', 'u2_881fcf8bc439.js', 'u2_e8be195d19be.js'];
+const DEFER_RX = new RegExp('<script src="(/assets/chrome/(?:' + DEFER_SCRIPTS.map(n => n.replace(/\./g, '\\.')).join('|') + ')[^"]*)"></script>', 'g');
+export const deferScripts = html => html.replace(DEFER_RX, '<script defer src="$1"></script>');

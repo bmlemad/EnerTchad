@@ -6,7 +6,7 @@ import { withYouTubeBadge } from '../../lib/youtube.js';
 import { withNewsletterStatus } from '../../lib/newsletter.js';
 import { atlasPages, renderSubsite, commercialSitemap } from './subsites.mjs';
 import { hardenHtml, minifyCss } from './harden.mjs';
-import { inlineCritical, earlyConsent } from './critical.mjs';
+import { inlineCritical, earlyConsent, deferScripts } from './critical.mjs';
 import { FINGERPRINTS, rewriteRefs } from './fingerprint.mjs';
 import { builtSource } from './sources.mjs';
 // Lot 26 : l'export est compare a la source que le build a rendue (transformee, m16) et
@@ -39,7 +39,7 @@ for (const page of manifest.pages) {
     let expected = withYouTubeBadge(withNewsletterStatus(before.toString()));
     const atlas = atlasPages.find(p => p.source === page.source);
     if (atlas) expected = renderSubsite(expected, atlas, 'atlas');
-    assert.equal(hash(after),hash(hardenHtml(inlineCritical(rewriteRefs(earlyConsent(expected), versions), page.source, versions))),page.source); preserved++; continue;
+    assert.equal(hash(after),hash(hardenHtml(inlineCritical(rewriteRefs(deferScripts(earlyConsent(expected)), versions), page.source, versions))),page.source); preserved++; continue;
   }
   native++;
   assert(after.toString().includes('/assets/chrome/audience-consent.js') && after.toString().includes('et-audience-consent'), page.source+' missing consent loader');
