@@ -27,8 +27,8 @@ export function moderniseClients(html,en){
   let cards=routes.replace(/<a href="/g,()=>`<a class="ec-offer" href="`).replace(/<b>/g,()=>`<span class="ec-number" aria-hidden="true">0${++count}</span><b>`).replace(/<\/a>/g,`<em>${en?'Explore this offer':'Découvrir cette offre'} <span aria-hidden="true">↗</span></em></a>`);
   let offerIndex=0;
   cards=cards.replace(/<a class="ec-offer"[\s\S]*?<\/a>/g,card=>{
-    const profile=['b2b','b2b','ep'][offerIndex++];
-    return `<article class="ec-offer-path">${card}<a class="ec-contact" href="/contact${suffix}?profil=${profile}#ctForm">${en?'Discuss this requirement':'Présenter ce besoin'} <span aria-hidden="true">→</span></a></article>`;
+    const index=offerIndex++, profile=['b2b','b2b','ep'][index];
+    return `<article class="ec-offer-path">${card}<a class="ec-contact" href="/contact${suffix}?profil=${profile}${index===1?'&amp;besoin=flotte':''}#ctForm">${en?'Discuss this requirement':'Présenter ce besoin'} <span aria-hidden="true">→</span></a></article>`;
   });
   html=replace(html,'besoin-client',`<section id="besoin-client" class="ec-entry" aria-labelledby="besoin-client-title"><div class="ec-shell"><div class="ec-heading"><div><p class="ec-kicker">${en?'FOR YOUR BUSINESS':'POUR VOTRE ACTIVITÉ'}</p><h2 id="besoin-client-title">${en?'Three offers. A clear starting point.':'Trois offres. Un point de départ clair.'}</h2></div><p>${en?'Choose your requirement to see the proposed scope and dedicated contact.':'Choisissez votre besoin pour découvrir le périmètre envisagé et le contact dédié.'}</p></div><div class="ec-offers">${cards}</div><div class="ec-other"><span>${en?'Other requirements':'Autres besoins'}</span><a href="#particuliers">${en?'Individuals':'Particuliers'}</a><a href="#b2g">${en?'Public sector':'Acteurs publics'}</a><a href="/achats${suffix}">${en?'Suppliers & contractors':'Fournisseurs & sous-traitants'}</a></div></div></section>`);
   // Keep the orientation anchor, without repeating the three offer cards.
