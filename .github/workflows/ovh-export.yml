@@ -24,7 +24,8 @@ jobs:
       - run: npm run check:migration
       - run: python3 scripts/ovh/package.py --output /tmp/EnerTchad-OVH.zip
       - run: sudo apt-get update -qq
-      - run: sudo apt-get install -y --no-install-recommends apache2-bin
+      - run: sudo apt-get install -y --no-install-recommends apache2-bin php-cli
+      - run: php -l scripts/ovh/contact.php
       - run: python3 scripts/ovh/check_apache.py
       - uses: actions/upload-artifact@v7
         with:
