@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {createRequire} from 'node:module';
+import {runInNewContext} from 'node:vm';
 import {htmlToDOM} from 'html-react-parser';
 import {withQualifiedEnquiries} from '../lib/qualified-enquiries.js';
 import {renderSubsite,commercialPages} from './next/subsites.mjs';
@@ -31,6 +32,7 @@ test('optional qualification keeps existing fields and contact routing intact in
     const descendants=[];const walk=n=>{descendants.push(n);(n.children||[]).forEach(walk);};walk(root);
     assert(!descendants.some(n=>n.attribs&&'required' in n.attribs));
     assert(after.includes('name="requirements"'));
+    assert(after.includes(p==='contact.html'?'Ingénierie / services techniques — étude / projet':'Engineering / technical services — study / project'));
     assert.equal((after.match(/qualified-enquiries\.js/g)||[]).length,1);
     assert.deepEqual(after.match(/href="(?:mailto:|tel:)[^"]*"/g),before.match(/href="(?:mailto:|tel:)[^"]*"/g));
   }
@@ -53,4 +55,48 @@ test('only the selected business context contributes to the receiver summary',()
   assert.equal(summary('fleet',{},false),'Besoin : Gestion de flottes');
   assert.equal(summary('',{'eq-product':'Diesel'},false),'');
   assert(read('scripts/ovh/contact.php').includes("$requirements = $field('requirements', 1600)"));
+});
+
+function formFixture(lang='fr',search='?profil=ep&service=faisabilite') {
+  const controls={},events={},capture={},links=[{href:'/contact-en?profil=ep#ctForm',getAttribute(){return this.href;},setAttribute(k,v){this.href=v;}}];
+  function field(id,value=''){return controls[id]={id,value,tagName:'INPUT',required:false};}
+  for(const id of ['eq-product','eq-volume','eq-frequency','eq-supply-location','eq-supply-date','eq-vehicles','eq-fleet-location','eq-fleet-needs','eq-fleet-date','eq-installation','eq-phase','eq-engineering-location','eq-deliverable','eq-engineering-date','et-enquiry-summary'])field(id);
+  field('et-enquiry-mode','supply');field('et-enquiry-business');
+  const service=field('eq-service');service.tagName='SELECT';service.options=[{value:'',textContent:'À définir'},...['faisabilite','conception','assistance','suivi'].map(value=>({value,textContent:value}))];
+  Object.defineProperty(service,'selectedIndex',{get(){return this.options.findIndex(o=>o.value===this.value);}});
+  const type=field('ctType',new URLSearchParams(search).get('profil')==='b2b'?'Approvisionnement':'Engineering');
+  type.options=[{value:'',dataset:{}},{value:'Approvisionnement',dataset:{}},{value:'Engineering',dataset:{contactProfile:'ep'}},{value:'Investment',dataset:{}}];type.dispatchEvent=()=>{};
+  const groups=['supply','fleet','engineering'].map(kind=>({hidden:false,disabled:false,getAttribute(){return kind;}}));
+  const help={hidden:false};controls['et-enquiry']={querySelectorAll(){return groups;},querySelector(){return help;}};
+  controls.ctForm={addEventListener(name,fn,phase){events[name]=fn;capture[name]=phase;}};
+  runInNewContext(read('assets/chrome/qualified-enquiries.js'),{module:{exports:{}},URL,URLSearchParams,Event:class{},location:{search,origin:'https://enertchad.com'},setTimeout(fn){fn();},document:{documentElement:{lang},getElementById(id){return controls[id];},querySelectorAll(){return links;}}});
+  return {controls,groups,links,capture,events,change(id,value){controls[id].value=value;events.change({target:controls[id]});},input(id,value){controls[id].value=value;events.input({target:controls[id]});}};
+}
+test('visible context prepares only its own fields and discards hidden groups from the receiver summary',()=>{
+  const f=formFixture();
+  assert.deepEqual(f.groups.map(g=>g.disabled),[true,true,false]);
+  f.input('eq-installation','QA engineering');f.input('eq-vehicles','99');
+  assert.match(f.controls['et-enquiry-summary'].value,/QA engineering/);
+  assert(!f.controls['et-enquiry-summary'].value.includes('99'));
+  f.change('ctType','Approvisionnement');f.change('et-enquiry-mode','fleet');
+  assert.deepEqual(f.groups.map(g=>g.disabled),[true,false,true]);
+  assert.match(f.controls['et-enquiry-summary'].value,/Véhicules: 99/);
+  assert(!f.controls['et-enquiry-summary'].value.includes('QA engineering'));
+  f.change('ctType','Investment');
+  assert(f.groups.every(g=>g.disabled&&g.hidden));assert.equal(f.controls['et-enquiry-summary'].value,'');
+});
+test('language links preserve the chosen service or fleet kind without including entered text',()=>{
+  const f=formFixture();
+  f.input('eq-installation','QA engineering');
+  assert(f.links[0].href.includes('service=faisabilite'));assert(!f.links[0].href.includes('QA'));
+  f.change('eq-service','');assert(!f.links[0].href.includes('service='));
+  f.change('ctType','Approvisionnement');f.change('et-enquiry-mode','fleet');assert(f.links[0].href.includes('besoin=flotte'));
+  const en=formFixture('en','?profil=b2b&besoin=flotte');assert.equal(en.controls['et-enquiry-mode'].value,'fleet');
+  assert.equal(en.controls['et-enquiry-summary'].value,'Requirement: Fleet management');
+});
+test('submit preparation precedes the receiver and reset clears context',()=>{
+  const f=formFixture();f.controls['eq-installation'].value='Last entered detail';
+  assert.equal(f.capture.submit,true);f.events.submit();assert.match(f.controls['et-enquiry-summary'].value,/Last entered detail/);
+  f.controls.ctType.value='';f.controls['eq-service'].value='';f.events.reset();
+  assert.equal(f.controls['et-enquiry-summary'].value,'');assert(f.groups.every(g=>g.disabled));
 });
