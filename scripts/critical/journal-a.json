@@ -130,5 +130,5 @@
    "css": ".et-theme-hdr{display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;width:40px;height:40px;padding:0;margin:0;border:0;border-radius:999px;cursor:pointer;color:inherit;background:transparent;font:inherit}.et-theme-hdr svg{width:18px;height:18px;display:block}"
   }
  },
- "hero": null
+ "hero": "load"
 }
