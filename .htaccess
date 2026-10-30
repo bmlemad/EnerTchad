@@ -482,8 +482,11 @@ RewriteRule ^(.*)$ https://enertchad.com/$1 [R=301,END,NE]
 # /boutique/ /boutique/index.html 200!
 RewriteRule ^boutique/$ boutique/index.html [END]
 
-# /aval/aval/boutique.html /boutique/ 308!
-RewriteRule ^aval/aval/boutique\.html$ https://%{HTTP_HOST}/boutique/ [R=308,END,NE]
+# /aval/boutique /boutique/ 308!
+RewriteRule ^aval/boutique$ https://%{HTTP_HOST}/boutique/ [R=308,END,NE]
+
+# /aval/boutique.html /boutique/ 308!
+RewriteRule ^aval/boutique\.html$ https://%{HTTP_HOST}/boutique/ [R=308,END,NE]
 
 # /aval/boutique-en /boutique/en/ 308!
 RewriteRule ^aval/boutique\-en$ https://%{HTTP_HOST}/boutique/en/ [R=308,END,NE]

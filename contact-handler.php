@@ -63,6 +63,7 @@ $email = $field('email', 160);
 $type = $field('request_type', 80);
 $organization = $field('organization', 160);
 $message = $field('message', 5000);
+$requirements = $field('requirements', 1600);
 if ($name === '' || $message === '' || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
     refuse(422);
 }
@@ -82,6 +83,9 @@ $body = implode("\n", [
     '',
     'Message :',
     $message,
+    '',
+    'Précisions sur le besoin / Requirement details :',
+    $requirements !== '' ? $requirements : 'Non renseignées / Not provided',
     '',
     '— Répondre directement à ce courriel écrit à l’expéditeur.',
 ]);
