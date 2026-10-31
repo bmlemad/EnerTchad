@@ -18,7 +18,7 @@ const read = path => readFileSync(path, 'utf8');
 const pages = execFileSync('git', ['ls-files', '-z'], {encoding:'utf8'}).split('\0').filter(p => p.endsWith('.html') && !/^(?:scripts|qa|docs-sources)\//.test(p));
 
 test('shared review preserves main content, scripts, contact data and remains idempotent', () => {
-  assert(pages.length > 230);
+  assert(pages.length > 220); // lot 78 : Investor Center fondu dans /investisseurs (229 pages)
   for (const page of pages) {
     const before = read(page), after = withNavigationReview(before);
     assert.equal(withNavigationReview(after), after, page + ' idempotence');
