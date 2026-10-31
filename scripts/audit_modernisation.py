@@ -9,7 +9,7 @@ for path in ROOT.rglob('*.html'):
     if 'data-et-modern="industrial"' not in text:
         continue
     if 'id="navLinks"' in text:
-        assert len(re.findall(r'class="nav-trigger(?: [^"]*)?"', text)) == 4, str(path)
+        assert len(re.findall(r'class="nav-trigger(?: [^"]*)?"', text)) == 6, str(path)  # lot 80 : six entrées du menu principal
     for bar in re.findall(r'<nav\b[^>]*id="nezBar"[^>]*>.*?</nav>', text, re.S):
         assert len(re.findall(r'<a\b', bar)) == 3, str(path)
     count += 1
@@ -30,4 +30,4 @@ for path in ['amont/index.html', 'intermediaire/index.html', 'aval/index.html', 
     assert 'id="offre-services"' in text, path
     assert re.search(r'service=\w+#ctForm', text), path
 assert count > 200
-print(f'Modernisation verified: {count} pages; 4 menus, 3 mobile actions, 8 service pages, 16 project cards and 2 document libraries')
+print(f'Modernisation verified: {count} pages; 6 menus, 3 mobile actions, 8 service pages, 16 project cards and 2 document libraries')
