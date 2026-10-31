@@ -1,0 +1,9 @@
+[data-project-reference]{scroll-margin-top:180px}
+[data-project-reference] .et-project-date{font-size:.85rem;line-height:1.6;opacity:.85}
+[data-project-reference] .et-project-proof{font-size:.9rem;line-height:1.6;border-inline-start:3px solid currentColor;padding-inline-start:12px}
+[data-project-reference] .et-project-contact{display:inline-flex;align-items:center;min-height:44px;text-decoration:underline;color:inherit;font-weight:600}
+[data-sector-journey] .et-sector-tag{font-weight:600;margin:0 0 16px}
+[data-sector-journey] .et-sector-resources{border-top:1px solid currentColor;padding-top:16px;margin-top:20px}
+[data-sector-journey] .et-sector-resources h4{font-size:1rem;line-height:1.5;margin:0 0 8px}
+[data-sector-journey] .et-sector-resources a{display:inline-block;min-height:44px;align-content:center;color:inherit;text-decoration:underline}
+@media(max-width:760px){[data-project-reference]{scroll-margin-top:110px}}
