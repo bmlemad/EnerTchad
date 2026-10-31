@@ -108,7 +108,7 @@ DocumentRoot "{OUT}"
                 ("enertchad.com", "/index-en", "index-en.html"),
                 ("enertchad.com", "/essentiel", "essentiel.html"),
                 ("enertchad.com", "/essentiel/", "essentiel.html"),
-                ("enertchad.com", "/investor-center-en", "investor-center-en.html"),
+                ("enertchad.com", "/investisseurs-en", "investisseurs-en.html"),
                 ("enertchad.com", "/amont/", "amont/index.html"),
                 ("enertchad.com", "/amont/calculateur-baril-additionnel", "Calculateur_Baril_Additionnel.html"),
                 ("enertchad.com", "/.well-known/security.txt", ".well-known/security.txt"),
