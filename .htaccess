@@ -506,6 +506,24 @@ RewriteRule ^clients\-en$ https://%{HTTP_HOST}/boutique/en/clients [R=308,END,NE
 # /clients-en.html /boutique/en/clients 308!
 RewriteRule ^clients\-en\.html$ https://%{HTTP_HOST}/boutique/en/clients [R=308,END,NE]
 
+# /investor-center /investisseurs 308!
+RewriteRule ^investor\-center$ https://%{HTTP_HOST}/investisseurs [R=308,END,NE]
+
+# /investor-center.html /investisseurs 308!
+RewriteRule ^investor\-center\.html$ https://%{HTTP_HOST}/investisseurs [R=308,END,NE]
+
+# /investor-center/ /investisseurs 308!
+RewriteRule ^investor\-center/$ https://%{HTTP_HOST}/investisseurs [R=308,END,NE]
+
+# /investor-center-en /investisseurs-en 308!
+RewriteRule ^investor\-center\-en$ https://%{HTTP_HOST}/investisseurs-en [R=308,END,NE]
+
+# /investor-center-en.html /investisseurs-en 308!
+RewriteRule ^investor\-center\-en\.html$ https://%{HTTP_HOST}/investisseurs-en [R=308,END,NE]
+
+# /investor-center-en/ /investisseurs-en 308!
+RewriteRule ^investor\-center\-en/$ https://%{HTTP_HOST}/investisseurs-en [R=308,END,NE]
+
 # /enerconseils/atlas /atlas/ 308!
 RewriteRule ^enerconseils/atlas$ https://%{HTTP_HOST}/atlas/ [R=308,END,NE]
 
