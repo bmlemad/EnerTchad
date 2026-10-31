@@ -18,7 +18,6 @@ const paths = [
   '/carrieres', '/carrieres-en',
   '/communiques', '/communiques-en',
   '/essentiel', '/essentiel-en',
-  '/investor-center', '/investor-center-en',
 ];
 
 for (const path of paths) {

@@ -4,9 +4,7 @@ const base = process.env.SITE_URL || 'https://enertchad.com/';
 
 const strategicPages = [
   ['/essentiel', 'https://enertchad.com/essentiel'],
-  ['/essentiel-en', 'https://enertchad.com/essentiel-en'],
-  ['/investor-center', 'https://enertchad.com/investor-center'],
-  ['/investor-center-en', 'https://enertchad.com/investor-center-en']
+  ['/essentiel-en', 'https://enertchad.com/essentiel-en']
 ];
 
 test('strategic pages — canonical, title and primary content are present', async ({ page }) => {
@@ -38,8 +36,8 @@ test('project roadmap — all eight flagship projects expose an explicit target 
   }
 });
 
-test('investor command center — evidence and risk exits remain visible', async ({ page }) => {
-  for (const path of ['/investor-center', '/investor-center-en']) {
+test('investor page — evidence and risk exits remain visible', async ({ page }) => {
+  for (const path of ['/investisseurs', '/investisseurs-en']) {
     await page.goto(new URL(path, base).href, { waitUntil: 'domcontentloaded', timeout: 45000 });
     const hrefs = await page.locator('a[href]').evaluateAll(nodes => nodes.map(a => a.getAttribute('href')));
     expect(hrefs).toContain('/Fiche_Investisseur_EnerTchad.pdf');

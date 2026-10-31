@@ -24,8 +24,6 @@ test('sitemap — canonical URL inventory is unique, same-origin and indexable',
   const requiredStrategic = [
     new URL('/essentiel', base).href,
     new URL('/essentiel-en', base).href,
-    new URL('/investor-center', base).href,
-    new URL('/investor-center-en', base).href,
   ];
   for (const href of requiredStrategic) {
     expect(urls, 'strategic sitemap URL ' + href).toContain(href);

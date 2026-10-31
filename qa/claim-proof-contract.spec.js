@@ -31,7 +31,7 @@ test('capital proof — investor pages connect target figures to assumptions and
     const proof = page.locator('[data-et-proof="capital"]');
     await expect(proof).toHaveCount(1);
     const hrefs = await proof.locator('a').evaluateAll(nodes => nodes.map(a => a.getAttribute('href')));
-    expect(hrefs.some(h => h && h.includes('investor-center')), path + ' investor center link').toBeTruthy();
+    expect(hrefs.some(h => h === '#hypotheses'), path + ' assumptions and risk link').toBeTruthy();
   }
 });
 
