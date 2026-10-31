@@ -78,6 +78,19 @@ def main():
                 destination(args.root, entry['url'], rules)
             except ValueError as error:
                 errors.append(str(error))
+    for language in ('fr', 'en'):
+        entries = json.loads((args.root / f'assets/data/recherche-{language}.json').read_text(encoding='utf-8'))
+        seen = set()
+        for entry in entries:
+            url = entry['u']
+            count += 1
+            if url in seen:
+                errors.append('Duplicate search destination: ' + url)
+            seen.add(url)
+            try:
+                destination(args.root, url, rules)
+            except ValueError as error:
+                errors.append(str(error))
     if errors:
         raise SystemExit('\n'.join(errors))
     print(f'Search navigation verified: {count} French, English and fallback destinations')
