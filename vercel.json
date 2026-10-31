@@ -3,6 +3,26 @@
   "cleanUrls": true,
   "redirects": [
     {
+      "source": "/investor-center",
+      "destination": "/investisseurs",
+      "permanent": true
+    },
+    {
+      "source": "/investor-center.html",
+      "destination": "/investisseurs",
+      "permanent": true
+    },
+    {
+      "source": "/investor-center-en",
+      "destination": "/investisseurs-en",
+      "permanent": true
+    },
+    {
+      "source": "/investor-center-en.html",
+      "destination": "/investisseurs-en",
+      "permanent": true
+    },
+    {
       "source": "/aval/boutique",
       "destination": "/boutique/",
       "permanent": true
