@@ -94,3 +94,25 @@ export function earlyConsent(html) {
 export const DEFER_SCRIPTS = ['u_cd226c00eb4b.js', 'u2_881fcf8bc439.js', 'u2_e8be195d19be.js'];
 const DEFER_RX = new RegExp('<script src="(/assets/chrome/(?:' + DEFER_SCRIPTS.map(n => n.replace(/\./g, '\\.')).join('|') + ')[^"]*)"></script>', 'g');
 export const deferScripts = html => html.replace(DEFER_RX, '<script defer src="$1"></script>');
+
+// Lot 73 (choix du DG) : le menu « Activités & Ingénierie » présente les quatre capacités intégrées, pas deux.
+// Les entrées Durabilité · GreenTech et Capital humain · Tchaditude sont insérées à l'export autour de
+// Technologies · TchadiTech, dans les 217 pages FR/EN qui portent ce menu (une seule règle au lieu de
+// 217 sources). Page courante marquée aria-current comme les autres entrées. Idempotent.
+const NAV_CAPS = {
+  fr: { tech: '/tchaditech/', green: ['/greentech/', 'Durabilité', 'GreenTech : eau, torchage, HSE-Q', 'greentech/index.html'],
+        human: ['/tchaditude/', 'Capital humain', 'Tchaditude : académie, relève', 'tchaditude/index.html'] },
+  en: { tech: '/pole-tchaditech-en', green: ['/pole-greentech-en', 'Sustainability', 'GreenTech: water, flaring, HSE-Q', 'pole-greentech-en.html'],
+        human: ['/pole-tchaditude-en', 'Human capital', 'Tchaditude: academy, next generation', 'pole-tchaditude-en.html'] },
+};
+export function navCapabilities(html, page = '') {
+  for (const lang of ['fr', 'en']) {
+    const c = NAV_CAPS[lang];
+    const rx = new RegExp('(<div class="nx-col pn-links">(?:(?!</div>).)*?)(<a href="' + c.tech.replace(/\//g, '\\/') + '"(?: aria-current="page")?><strong>Technologies</strong><em>[^<]*</em></a>)', 's');
+    const m = html.match(rx);
+    if (!m || m[1].includes('href="' + c.green[0] + '"')) continue;
+    const link = ([href, label, sub, src]) => `<a href="${href}"${page === src ? ' aria-current="page"' : ''}><strong>${label}</strong><em>${sub}</em></a>`;
+    html = html.replace(rx, (all, before, tech) => before + link(c.green) + tech + link(c.human));
+  }
+  return html;
+}
