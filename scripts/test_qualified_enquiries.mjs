@@ -58,7 +58,7 @@ test('only the selected business context contributes to the receiver summary',()
 });
 
 function formFixture(lang='fr',search='?profil=ep&service=faisabilite',contextData) {
-  const controls={},events={},capture={},links=[{href:'/contact-en?profil=ep#ctForm',getAttribute(){return this.href;},setAttribute(k,v){this.href=v;}}];
+  const controls={},events={},capture={},links=[{href:'/contact-en?profil=ep#ctForm',textContent:'English',attrs:{class:'nx-lang'},getAttribute(k){return k==='href'?this.href:this.attrs[k]||null;},setAttribute(k,v){if(k==='href')this.href=v;else this.attrs[k]=v;}}];
   function field(id,value=''){return controls[id]={id,value,tagName:'INPUT',required:false};}
   for(const id of ['eq-product','eq-volume','eq-frequency','eq-supply-location','eq-supply-date','eq-vehicles','eq-fleet-location','eq-fleet-needs','eq-fleet-date','eq-installation','eq-phase','eq-engineering-location','eq-deliverable','eq-engineering-date','et-enquiry-summary'])field(id);
   field('et-enquiry-mode','supply');field('et-enquiry-business');
@@ -110,6 +110,8 @@ test('project and sector context is localized, restricted to known references, a
   assert.equal(f.controls['et-enquiry-context'].hidden,false);
   assert(f.controls['et-enquiry-summary'].value.includes('Secteur : Transport & flottes'));
   assert(f.links[0].href.includes('secteur=transport-flottes'));
+  const mobile={...f.links[0],textContent:'English',attrs:{}};f.links.push(mobile);
   f.input('eq-vehicles','18');assert(f.controls['et-enquiry-summary'].value.includes('Véhicules: 18'));assert(!f.links[0].href.includes('18'));
+  assert(mobile.href.includes('secteur=transport-flottes'));assert(mobile.href.includes('besoin=flotte'));
   f.controls.ctType.value='';f.events.reset();assert.equal(f.controls['et-enquiry-context'].hidden,true);assert.equal(f.controls['et-enquiry-summary'].value,'');assert(!f.links[0].href.includes('secteur='));
 });

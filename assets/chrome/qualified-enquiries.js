@@ -58,7 +58,11 @@
     document.getElementById('et-enquiry-summary').value = [context.label,summary(kind, values, en)].filter(Boolean).join('\n');
     var contextNotice=document.getElementById('et-enquiry-context');
     if(contextNotice){contextNotice.textContent=context.label;contextNotice.hidden=!context.label;}
-    document.querySelectorAll('#nav a.nx-lang, #nav #mLang, #nav a[lang="fr"], #nav a[lang="en"]').forEach(function (link) {
+    document.querySelectorAll('#nav a[href]').forEach(function (link) {
+      var classes=link.getAttribute('class')||'',label=(link.getAttribute('aria-label')||link.textContent||'').trim();
+      var language=link.getAttribute('lang')||link.getAttribute('hreflang')||'';
+      var languageLink=/\bnx-lang\b/.test(classes)||link.id==='mLang'||/^(fr|en)$/.test(language)||/^(FR|EN|Français|English|Version française|English version)$/i.test(label);
+      if(!languageLink)return;
       var url = new URL(link.getAttribute('href'), location.origin);
       if (!/^\/contact(?:-en)?$/.test(url.pathname)) return;
       url.searchParams.delete('besoin'); url.searchParams.delete('service');

@@ -16,6 +16,7 @@ for(const language of ['fr','en'])for(const width of [320,1440]){
     await expect(page.locator('#et-enquiry-context')).toContainText(data.projects[key][language]);
     expect(await page.locator('#et-enquiry-summary').inputValue()).toContain(data.projects[key][language]);
     const other=await page.locator('#nav a.nx-lang').getAttribute('href');expect(other).toContain('projet='+key);
+    expect(await page.locator('#nav .nx-util-m a').filter({hasText:en?'Français':'English'}).first().getAttribute('href')).toContain('projet='+key);
     await page.goto(new URL(other,base).href,{waitUntil:'networkidle'});
     await expect(page.locator('#et-enquiry-context')).toContainText(data.projects[key][en?'fr':'en']);
     await page.close();
@@ -36,6 +37,7 @@ for(const language of ['fr','en'])for(const width of [320,1440]){
       await expect(page.locator(`[data-enquiry-kind="${kind}"]`)).toBeVisible();
       expect(await page.locator('#et-enquiry-summary').inputValue()).toContain(data.sectors[key][language]);
       expect(await page.locator('#nav a.nx-lang').getAttribute('href')).toContain('secteur='+key);
+      expect(await page.locator('#nav .nx-util-m a').filter({hasText:en?'Français':'English'}).first().getAttribute('href')).toContain('secteur='+key);
     }
     await page.close();
   });
