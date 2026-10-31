@@ -1,0 +1,17 @@
+{
+  "projects": {
+    "intervention-ep": {"fr":"Force d’intervention E&P & consortiums","en":"E&P intervention force & consortia"},
+    "pilotes-eor": {"fr":"Pilotes EOR · champs matures","en":"EOR pilots · mature fields"},
+    "corridor-doba-kribi": {"fr":"Corridor d’export Doba–Kribi","en":"Doba–Kribi export corridor"},
+    "tchadium-mobile": {"fr":"Tchadium + Mobile Stations","en":"Tchadium + Mobile Stations"},
+    "mini-raffineries": {"fr":"Mini-raffineries modulaires","en":"Modular mini-refineries"},
+    "water-to-value": {"fr":"Water-to-Value","en":"Water-to-Value"},
+    "engrais-sedigui": {"fr":"Engrais sur gaz de Sédigui","en":"Fertiliser from Sédigui gas"},
+    "micro-reseaux": {"fr":"Hybridation & micro-réseaux","en":"Hybridisation & micro-grids"}
+  },
+  "sectors": {
+    "industrie-chantiers": {"fr":"Industrie & chantiers","en":"Industry & worksites"},
+    "transport-flottes": {"fr":"Transport & flottes","en":"Transport & fleets"},
+    "operateurs-petroliers": {"fr":"Opérateurs pétroliers","en":"Oilfield operators"}
+  }
+}
