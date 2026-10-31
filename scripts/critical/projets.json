@@ -1,5 +1,5 @@
 {
- "gabarit": "projets (lot 67)",
+ "gabarit": "projets (lot 67, réextrait lot 70 après PR #135)",
  "source": "scripts/critical/extract.py (union 412×915 et 1440×900 × clair/sombre)",
  "order": [
   "bundle_head_b2.css",
@@ -7,7 +7,8 @@
   "nav_a.css",
   "pole-premium.css",
   "premium-chrome.css",
-  "clarity-20261005.css"
+  "clarity-20261005.css",
+  "business-journeys.css"
  ],
  "pages": [
   "projets-en.html",
@@ -37,6 +38,10 @@
   "clarity-20261005.css": {
    "v": "bd4f65292421",
    "css": "@font-face{font-family:\"Instrument Serif Fallback G\";src:local(\"Georgia\");font-display:swap;size-adjust:76.1%;ascent-override:130.09%;descent-override:40.74%;line-gap-override:0%;unicode-range:U+20-7E,U+A0-A3,U+A5,U+A7-AB,U+AE-B0,U+B4,U+B6-B8,U+BA-BB,U+BF-FF,U+131,U+152-153,U+2C6,U+2DA,U+2DC,U+2013-2014,U+2018-201A,U+201C-201E,U+2022,U+2026,U+2030,U+2039-203A,U+20AC,U+2122,U+2212}@font-face{font-family:\"Instrument Serif Fallback T\";src:local(\"Times New Roman\"),local(\"TimesNewRomanPSMT\"),local(\"Liberation Serif\"),local(\"Tinos\");font-display:swap;size-adjust:83.13%;ascent-override:119.09%;descent-override:37.29%;line-gap-override:0%;unicode-range:U+20-7E,U+A0-A3,U+A5,U+A7-AB,U+AE-B0,U+B4,U+B6-B8,U+BA-BB,U+BF-FF,U+131,U+152-153,U+2C6,U+2DA,U+2DC,U+2013-2014,U+2018-201A,U+201C-201E,U+2022,U+2026,U+2030,U+2039-203A,U+20AC,U+2122,U+2212}@font-face{font-family:\"Instrument Serif Fallback N\";src:local(\"Noto Serif\"),local(\"NotoSerif-Regular\");font-display:swap;size-adjust:70.55%;ascent-override:140.32%;descent-override:43.94%;line-gap-override:0%;unicode-range:U+20-7E,U+A0-A3,U+A5,U+A7-AB,U+AE-B0,U+B4,U+B6-B8,U+BA-BB,U+BF-FF,U+131,U+152-153,U+2C6,U+2DA,U+2DC,U+2013-2014,U+2018-201A,U+201C-201E,U+2022,U+2026,U+2030,U+2039-203A,U+20AC,U+2122,U+2212}@font-face{font-family:\"Instrument Serif Fallback D\";src:local(\"DejaVu Serif\"),local(\"DejaVuSerif\");font-display:swap;size-adjust:65.42%;ascent-override:151.32%;descent-override:47.38%;line-gap-override:0%;unicode-range:U+20-7E,U+A0-A3,U+A5,U+A7-AB,U+AE-B0,U+B4,U+B6-B8,U+BA-BB,U+BF-FF,U+131,U+152-153,U+2C6,U+2DA,U+2DC,U+2013-2014,U+2018-201A,U+201C-201E,U+2022,U+2026,U+2030,U+2039-203A,U+20AC,U+2122,U+2212}"
+  },
+  "business-journeys.css": {
+   "v": "3c30e9a30c50",
+   "css": ""
   }
  },
  "hero": ".pp-hero-img"
