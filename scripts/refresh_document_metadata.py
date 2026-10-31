@@ -156,7 +156,7 @@ def main():
     if compatibility_path.exists():
         previous = json.loads(compatibility_path.read_text(encoding='utf-8'))
         compatibility_path.write_text(json.dumps(compatibility_register(registry, previous), ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
-    for name in ('investor-center', 'publications'):
+    for name in ('publications',):  # lot 78 : Investor Center fondu dans /investisseurs
         for suffix in ('', '-en'):
             page = ROOT / (name + suffix + '.html')
             old = page.read_text(encoding='utf-8')

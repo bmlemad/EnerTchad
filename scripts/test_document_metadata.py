@@ -63,7 +63,7 @@ class DocumentMetadataTests(unittest.TestCase):
             doc = dict(id='report', path='/report.pdf', bytes=1, git_blob_sha='stale',
                        format='PDF', language='fr', status='published', category='investors')
             registry_path.write_text(json.dumps({'documents': [doc]}))
-            for name in ('investor-center', 'publications'):
+            for name in ('publications',):
                 for suffix in ('', '-en'):
                     (root / (name + suffix + '.html')).write_text('<a class="sp-doc" href="/report.pdf"><span class="meta">PDF</span><span class="date">Public</span></a>')
             with patch.object(metadata, 'ROOT', root):
@@ -74,8 +74,8 @@ class DocumentMetadataTests(unittest.TestCase):
             self.assertEqual(result['bytes'], len(content))
             self.assertEqual(result['git_blob_sha'], hashlib.sha1(b'blob 18\0' + content).hexdigest())
             self.assertNotIn('version', result)
-            self.assertIn(b'French', first['investor-center-en.html'])
-            self.assertIn(b'Version not specified', first['investor-center-en.html'])
+            self.assertIn(b'French', first['publications-en.html'])
+            self.assertIn(b'Version not specified', first['publications-en.html'])
             self.assertEqual(first, {p.name: p.read_bytes() for p in root.glob('*.html')})
 
     def test_missing_document_stops_release(self):

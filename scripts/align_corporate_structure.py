@@ -15,7 +15,7 @@ def replace_block(text, pattern, transform):
 
 def navigation(block, en):
     suffix = '-en' if en else ''
-    centre = '/investor-center' + suffix
+    centre = '/investisseurs' + suffix
     block = block.replace('Trois pôles de cœur et la pétrochimie, prolongés par quatre capacités intégrées.',
                           'Quatre segments industriels, soutenus par quatre capacités intégrées.')
     block = block.replace('Three core divisions and petrochemicals, extended by four integrated capabilities.',
@@ -38,7 +38,7 @@ def navigation(block, en):
 
 def mobile_bar(block, en):
     suffix = '-en' if en else ''
-    centre = '/investor-center' + suffix
+    centre = '/investisseurs' + suffix
     labels = ('Customers', 'Suppliers', 'Investors') if en else ('Clients', 'Fournisseurs', 'Investisseurs')
     def link(m):
         tag = m.group(0)
@@ -74,14 +74,14 @@ def homepage(text, en):
     # Put audience routes immediately after the hero, before the long story.
     quick = re.search(r'\n?<section aria-label="(?:Accès directs|Quick access)">.*?</section>\n?', text, re.S)
     if quick:
-        block = quick.group(0).strip().replace(f'href="/investisseurs{suffix}"', f'href="/investor-center{suffix}"')
+        block = quick.group(0).strip().replace(f'href="/investisseurs{suffix}"', f'href="/investisseurs{suffix}"')
         text = text[:quick.start()] + text[quick.end():]
         pos = text.index('</header>', text.index('<main')) + len('</header>')
         text = text[:pos] + '\n' + block + '\n' + text[pos:]
     def investor(section):
         pattern = r'<div class="ph-actions">.*?</div>'
         action = (f'<div class="ph-actions"><a class="ph-btn ph-btn-gold" data-et-action="invest" '
-                  f'href="/investor-center{suffix}">{label}</a></div>')
+                  f'href="/investisseurs{suffix}">{label}</a></div>')
         return re.sub(pattern, action, section, count=1, flags=re.S)
     text = replace_block(text, r'<section class="ph-night" aria-labelledby="ph-inv">.*?</section>', investor)
     def evidence(section):
@@ -233,7 +233,7 @@ def main():
         text = replace_block(text, r'<nav id="nezBar".*?</nav>', lambda b: mobile_bar(b, en))
         suffix = '-en' if en else ''
         def footer(block):
-            return block.replace(f'href="/investisseurs{suffix}"', f'href="/investor-center{suffix}"')
+            return block.replace(f'href="/investisseurs{suffix}"', f'href="/investisseurs{suffix}"')
         text = replace_block(text, r'<footer.*?</footer>', footer)
         institutional = {'societe.html', 'societe-en.html', 'faq.html', 'faq-en.html', 'essentiel.html', 'essentiel-en.html',
                          'presse.html', 'presse-en.html', 'brochure.html', 'brochure-en.html', 'charte.html', 'charte-en.html',
@@ -292,7 +292,7 @@ def main():
                 entry['d'] = ('Quatre segments industriels — exploration et production, transport et stockage, raffinage et distribution, pétrochimie — soutenus par quatre capacités intégrées.' if lang == 'fr' else
                               'Four industrial segments — exploration and production, transport and storage, refining and distribution, petrochemicals — supported by four integrated capabilities.')
                 entry['k'] = 'pétrochimie quatre segments quatre capacités' if lang == 'fr' else 'petrochemicals four segments four capabilities'
-        centre = '/investor-center' + ('-en' if lang == 'en' else '')
+        centre = '/investisseurs' + ('-en' if lang == 'en' else '')
         entry = dict(u=centre, t='Centre investisseurs' if lang == 'fr' else 'Investor Centre',
                      d='Synthèse, statut, thèse, hypothèses, risques, gouvernance et documents.' if lang == 'fr' else 'Overview, status, thesis, assumptions, risks, governance and documents.',
                      s='Site', k='investisseurs capital financement synthèse risques' if lang == 'fr' else 'investors capital financing overview risks')

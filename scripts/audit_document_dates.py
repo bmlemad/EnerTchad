@@ -11,7 +11,7 @@ for path,record in evidence.items():
     assert blob_sha((root/path.lstrip('/')).read_bytes())==record['git_blob_sha'],path+': date evidence requires review'
     for key in ('document_date','document_updated','date_source'):
         assert doc.get(key)==record.get(key),path+': incorrect '+key
-for name in ('publications.html','publications-en.html','investor-center.html','investor-center-en.html'):
+for name in ('publications.html','publications-en.html'):
     text=(root/name).read_text()
     for anchor in re.findall(r'<a\b[^>]*>.*?</a>',text,re.S):
         match=re.search(r'href="([^"]+)"',anchor)

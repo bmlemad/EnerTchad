@@ -22,8 +22,8 @@ pub = read(PUB)
 home_en = read(HOME_EN)
 home_ar = read(HOME_AR)
 pub_en = read(PUB_EN)
-centre = read(ROOT / "investor-center.html")
-centre_en = read(ROOT / "investor-center-en.html")
+centre = read(ROOT / "investisseurs.html")
+centre_en = read(ROOT / "investisseurs-en.html")
 
 def has_reporting_section(content, document_route):
     """Require a labelled section linking to public documents, independent of CSS."""
@@ -41,7 +41,7 @@ def has_reporting_section(content, document_route):
     return False
 
 home_requirements = {
-    "reporting investisseurs": r'href="/(?:publications#pub-inv|investor-center)"',
+    "reporting investisseurs": r'href="/(?:publications#pub-inv|investisseurs)"',
     "gouvernance": r'href="/ethique"',
     "newsroom": r'href="/communiques"',
     "portefeuille": r'href="/projets"',
@@ -54,8 +54,8 @@ for label, pattern in home_requirements.items():
 # The simplified homepages route visitors to the document centre rather than
 # duplicating its downloads. Keep the labelled gateway and the actual download.
 for filename, content, route, investor_route in [
-    ("index.html", home, "/publications", "/investor-center"),
-    ("index-en.html", home_en, "/publications-en", "/investor-center-en"),
+    ("index.html", home, "/publications", "/investisseurs"),
+    ("index-en.html", home_en, "/publications-en", "/investisseurs-en"),
     ("ar.html", home_ar, "/publications", "/ar-investisseurs"),
 ]:
     if not has_reporting_section(content, route):
@@ -100,8 +100,8 @@ for filename in ("publications-en.html", "ar-investisseurs.html"):
 # The consolidated homepage route must still lead to the published reporting
 # centre and the investor factsheet in each language.
 for filename, content, suffix in [
-    ("investor-center.html", centre, ""),
-    ("investor-center-en.html", centre_en, "-en"),
+    ("investisseurs.html", centre, ""),
+    ("investisseurs-en.html", centre_en, "-en"),
 ]:
     if not re.search(r'href="/publications' + suffix + r'(?:#[^"\s]+)?"', content):
         errors.append(f"{filename}: accès au reporting documentaire absent")

@@ -58,7 +58,7 @@ FR = [
         ('Paiements aux États', 'Les sept catégories ITIE', '/paiements-etats'),
         ('Éthique & conformité', 'Anti-corruption, alerte', '/ethique'),
     ], ('Transition', '30 % et plus de renouvelables visés', 'Climat et énergie', '/greentech/#transition')),
-    ('Investisseurs', 'Un capital levé par paliers, avec des jalons datés.', '/investor-center', [
+    ('Investisseurs', 'Un capital levé par paliers, avec des jalons datés.', '/investisseurs', [
         ('Thèse d’investissement', 'Pourquoi le Tchad, maintenant', '/investisseurs#these'),
         ('Modèle d’affaires', 'Chaque étage finance le suivant', '/investisseurs#modele'),
         ('Feuille de route', '8 chantiers phares datés', '/projets'),
@@ -111,7 +111,7 @@ EN = [
         ('Payments to governments', 'The seven EITI categories', '/paiements-etats'),
         ('Ethics & compliance', 'Anti-corruption, alert line', '/ethique'),
     ], ('Transition', '30%+ renewables targeted', 'Climate and energy', '/greentech/#transition')),
-    ('Investors', 'Capital raised in tiers, with dated milestones.', '/investor-center', [
+    ('Investors', 'Capital raised in tiers, with dated milestones.', '/investisseurs', [
         ('Investment case', 'Why Chad, why now', '/investisseurs#these'),
         ('Business model', 'Each stage funds the next', '/investisseurs#modele'),
         ('Roadmap', '8 dated flagship projects', '/projets'),
