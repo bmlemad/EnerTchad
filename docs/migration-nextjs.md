@@ -5,7 +5,7 @@ La construction du site utilise Next.js 16.3.8, React 19.3.0 et App Router. L'ex
 ## Périmètre
 
 - 214 pages publiques sont générées : 212 pages éditoriales et deux pages techniques.
-- `/essentiel`, `/essentiel-en`, `/investor-center` et `/investor-center-en` utilisent des Server Components React, un en-tête partagé et l'API Metadata Next.js.
+- `/essentiel` et `/essentiel-en` utilisent des Server Components React, un en-tête partagé et l'API Metadata Next.js. Investor Center a été fondu dans /investisseurs au lot 78 (redirections 308).
 - Les 210 autres pages passent par des Route Handlers statiques de compatibilité. Leur HTML reste identique, ce qui préserve les menus, les outils et les scripts existants. Elles ne sont pas encore réécrites en composants React.
 - Les documents, images, polices, données et règles Netlify sont copiés dans `public/` à partir d'une liste de fichiers suivis par Git. Aucun répertoire de dépendances ou de travail n'entre dans cet export.
 - Les fichiers HTML éditoriaux restent les sources de contenu, y compris pour les quatre pages React. Ils peuvent être modifiés sans éditer une copie générée.
