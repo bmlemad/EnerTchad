@@ -96,6 +96,12 @@ https://enertchad.netlify.app/* https://enertchad.com/:splat 301!
 /clients.html /boutique/clients 308!
 /clients-en /boutique/en/clients 308!
 /clients-en.html /boutique/en/clients 308!
+/investor-center /investisseurs 308!
+/investor-center.html /investisseurs 308!
+/investor-center/ /investisseurs 308!
+/investor-center-en /investisseurs-en 308!
+/investor-center-en.html /investisseurs-en 308!
+/investor-center-en/ /investisseurs-en 308!
 /enerconseils/atlas /atlas/ 308!
 /enerconseils/atlas.html /atlas/ 308!
 /enerconseils/atlas-en /atlas-en 308!
