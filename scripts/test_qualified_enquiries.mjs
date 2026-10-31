@@ -7,7 +7,7 @@ import {htmlToDOM} from 'html-react-parser';
 import {withQualifiedEnquiries} from '../lib/qualified-enquiries.js';
 import {renderSubsite,commercialPages} from './next/subsites.mjs';
 const require=createRequire(import.meta.url);
-const {kindFor,summary}=require('../assets/chrome/qualified-enquiries.js');
+const {kindFor,summary,contextFor}=require('../assets/chrome/qualified-enquiries.js');
 const read=p=>readFileSync(p,'utf8');
 function nodes(html){const all=[],walk=n=>{all.push(n);(n.children||[]).forEach(walk);};htmlToDOM(html).forEach(walk);return all;}
 
@@ -57,7 +57,7 @@ test('only the selected business context contributes to the receiver summary',()
   assert(read('scripts/ovh/contact.php').includes("$requirements = $field('requirements', 1600)"));
 });
 
-function formFixture(lang='fr',search='?profil=ep&service=faisabilite') {
+function formFixture(lang='fr',search='?profil=ep&service=faisabilite',contextData) {
   const controls={},events={},capture={},links=[{href:'/contact-en?profil=ep#ctForm',getAttribute(){return this.href;},setAttribute(k,v){this.href=v;}}];
   function field(id,value=''){return controls[id]={id,value,tagName:'INPUT',required:false};}
   for(const id of ['eq-product','eq-volume','eq-frequency','eq-supply-location','eq-supply-date','eq-vehicles','eq-fleet-location','eq-fleet-needs','eq-fleet-date','eq-installation','eq-phase','eq-engineering-location','eq-deliverable','eq-engineering-date','et-enquiry-summary'])field(id);
@@ -68,6 +68,7 @@ function formFixture(lang='fr',search='?profil=ep&service=faisabilite') {
   type.options=[{value:'',dataset:{}},{value:'Approvisionnement',dataset:{}},{value:'Engineering',dataset:{contactProfile:'ep'}},{value:'Investment',dataset:{}}];type.dispatchEvent=()=>{};
   const groups=['supply','fleet','engineering'].map(kind=>({hidden:false,disabled:false,getAttribute(){return kind;}}));
   const help={hidden:false};controls['et-enquiry']={querySelectorAll(){return groups;},querySelector(){return help;}};
+  if(contextData){controls['et-enquiry-context-data']={textContent:JSON.stringify(contextData)};controls['et-enquiry-context']={hidden:true,textContent:''};}
   controls.ctForm={addEventListener(name,fn,phase){events[name]=fn;capture[name]=phase;}};
   runInNewContext(read('assets/chrome/qualified-enquiries.js'),{module:{exports:{}},URL,URLSearchParams,Event:class{},location:{search,origin:'https://enertchad.com'},setTimeout(fn){fn();},document:{documentElement:{lang},getElementById(id){return controls[id];},querySelectorAll(){return links;}}});
   return {controls,groups,links,capture,events,change(id,value){controls[id].value=value;events.change({target:controls[id]});},input(id,value){controls[id].value=value;events.input({target:controls[id]});}};
@@ -99,4 +100,16 @@ test('submit preparation precedes the receiver and reset clears context',()=>{
   assert.equal(f.capture.submit,true);f.events.submit();assert.match(f.controls['et-enquiry-summary'].value,/Last entered detail/);
   f.controls.ctType.value='';f.controls['eq-service'].value='';f.events.reset();
   assert.equal(f.controls['et-enquiry-summary'].value,'');assert(f.groups.every(g=>g.disabled));
+});
+test('project and sector context is localized, restricted to known references, and sent with the active details',()=>{
+  const data=JSON.parse(read('assets/data/business-journeys.json'));
+  const project=contextFor('?projet=pilotes-eor&secteur=operateurs-petroliers',data,true);
+  assert(project.label.includes(data.projects['pilotes-eor'].en));assert(project.label.includes(data.sectors['operateurs-petroliers'].en));
+  for(const query of ['?projet=unknown','?secteur=__proto__','?projet=constructor'])assert.equal(contextFor(query,data,false).label,'');
+  const f=formFixture('fr','?profil=b2b&besoin=flotte&secteur=transport-flottes',data);
+  assert.equal(f.controls['et-enquiry-context'].hidden,false);
+  assert(f.controls['et-enquiry-summary'].value.includes('Secteur : Transport & flottes'));
+  assert(f.links[0].href.includes('secteur=transport-flottes'));
+  f.input('eq-vehicles','18');assert(f.controls['et-enquiry-summary'].value.includes('Véhicules: 18'));assert(!f.links[0].href.includes('18'));
+  f.controls.ctType.value='';f.events.reset();assert.equal(f.controls['et-enquiry-context'].hidden,true);assert.equal(f.controls['et-enquiry-summary'].value,'');assert(!f.links[0].href.includes('secteur='));
 });
