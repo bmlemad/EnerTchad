@@ -35,7 +35,7 @@ try {
 }
 const excluded = /^(?:\.github|scripts|qa|docs-sources|app|lib|reports)\//;
 const html = tracked.filter(p => p.endsWith('.html') && !excluded.test(p));
-const native = ['essentiel', 'essentiel-en', 'investor-center', 'investor-center-en'];
+const native = ['essentiel', 'essentiel-en'];
 const pages = html.map(source => ({ source, route: source === 'index.html' ? '/' : '/' + source.slice(0, -5), native: native.includes(source.slice(0, -5)) }));
 const extensions = new Set(['.css','.js','.webp','.woff2','.jpg','.pdf','.png','.svg','.xlsx','.pptx','.zip','.webmanifest','.ics','.csv','.xml','.txt']);
 const publicWellKnown = new Set(['.well-known/security.txt']);
