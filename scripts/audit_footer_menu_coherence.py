@@ -9,7 +9,7 @@ for path in Path('out').rglob('*.html'):
     source = path.read_text()
     assert len(re.findall(r'<footer\b', source)) == 1, f'{path}: expected one footer'
     if 'id="navLinks"' in source and 'data-et-modern="industrial"' in source:
-        assert len(re.findall(r'class="nav-trigger(?: [^"]*)?"', source)) == 4, f'{path}: corporate menu groups'
+        assert len(re.findall(r'class="nav-trigger(?: [^"]*)?"', source)) == 6, f'{path}: corporate menu groups'
         menus += 1
     if 'class="et-space-header' in source:
         assert 'et-al-back' in source and 'et-al-lang' in source, f'{path}: subsite return and language switch'

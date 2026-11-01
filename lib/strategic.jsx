@@ -3,6 +3,7 @@ import parse, { htmlToDOM } from 'html-react-parser';
 import { withYouTubeBadge } from './youtube.js';
 import { fingerprintUrl } from './fingerprint.js';
 import { logoSvg } from './logo.js'; // lot 29 (B3)
+import { corporateSections } from './corporate-architecture.js';
 
 function source(name) {
   if (!['essentiel','essentiel-en'].includes(name)) throw new Error('Unknown strategic page');
@@ -33,7 +34,7 @@ export function StrategicHeader({ name }) {
   const investor = name.startsWith('investor-center');
   const links = investor
     ? [[`/essentiel${suffix}`, en ? '90 seconds' : '90 secondes'], [`/investisseurs${suffix}`, en ? 'Investor page' : 'Page investisseurs'], [`/publications${suffix}`, 'Documents'], [`/contact${suffix}?profil=invest#ctForm`, en ? 'Register interest' : 'Manifester son intérêt', true]]
-    : [[`/nos-activites${suffix}`, en ? 'Activities' : 'Activités'], [`/projets${suffix}`, en ? 'Projects' : 'Projets'], [`/publications${suffix}`, 'Documents'], [`/investisseurs${suffix}`, en ? 'Investors' : 'Investisseurs', true]];
+    : corporateSections(en).map(section => [section.href, section.label, section.id === 'd']);
   // Header aligned on the corporate navigation (audit 2026-10-13, item 7): utility bar
   // (Contact, FR · EN, Arabic, Invest — the destinations of the corporate #nav), then
   // brand, page links and the theme switch (item 6, assets/chrome/coherence-20261013.js).
