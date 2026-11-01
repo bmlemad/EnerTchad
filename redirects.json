@@ -1,0 +1,1055 @@
+{
+  "cleanUrls": true,
+  "redirects": [
+    {
+      "source": "/investor-center",
+      "destination": "/investisseurs",
+      "permanent": true
+    },
+    {
+      "source": "/investor-center.html",
+      "destination": "/investisseurs",
+      "permanent": true
+    },
+    {
+      "source": "/investor-center/",
+      "destination": "/investisseurs",
+      "permanent": true
+    },
+    {
+      "source": "/investor-center-en",
+      "destination": "/investisseurs-en",
+      "permanent": true
+    },
+    {
+      "source": "/investor-center-en.html",
+      "destination": "/investisseurs-en",
+      "permanent": true
+    },
+    {
+      "source": "/investor-center-en/",
+      "destination": "/investisseurs-en",
+      "permanent": true
+    },
+    {
+      "source": "/aval/boutique",
+      "destination": "/boutique/",
+      "permanent": true
+    },
+    {
+      "source": "/aval/boutique.html",
+      "destination": "/boutique/",
+      "permanent": true
+    },
+    {
+      "source": "/aval/boutique-en",
+      "destination": "/boutique/en/",
+      "permanent": true
+    },
+    {
+      "source": "/aval/boutique-en.html",
+      "destination": "/boutique/en/",
+      "permanent": true
+    },
+    {
+      "source": "/aval/gpl",
+      "destination": "/aval/produits#gpl",
+      "permanent": true
+    },
+    {
+      "source": "/aval/gpl.html",
+      "destination": "/aval/produits#gpl",
+      "permanent": true
+    },
+    {
+      "source": "/aval/gpl-en",
+      "destination": "/aval/produits-en#gpl",
+      "permanent": true
+    },
+    {
+      "source": "/aval/gpl-en.html",
+      "destination": "/aval/produits-en#gpl",
+      "permanent": true
+    },
+    {
+      "source": "/aval/lubrifiants",
+      "destination": "/aval/produits#lubrifiants-bitumes",
+      "permanent": true
+    },
+    {
+      "source": "/aval/lubrifiants.html",
+      "destination": "/aval/produits#lubrifiants-bitumes",
+      "permanent": true
+    },
+    {
+      "source": "/aval/lubrifiants-en",
+      "destination": "/aval/produits-en#lubrifiants-bitumes",
+      "permanent": true
+    },
+    {
+      "source": "/aval/lubrifiants-en.html",
+      "destination": "/aval/produits-en#lubrifiants-bitumes",
+      "permanent": true
+    },
+    {
+      "source": "/clients",
+      "destination": "/boutique/clients",
+      "permanent": true
+    },
+    {
+      "source": "/clients.html",
+      "destination": "/boutique/clients",
+      "permanent": true
+    },
+    {
+      "source": "/clients-en",
+      "destination": "/boutique/en/clients",
+      "permanent": true
+    },
+    {
+      "source": "/clients-en.html",
+      "destination": "/boutique/en/clients",
+      "permanent": true
+    },
+    {
+      "source": "/enerconseils/atlas",
+      "destination": "/atlas/",
+      "permanent": true
+    },
+    {
+      "source": "/enerconseils/atlas.html",
+      "destination": "/atlas/",
+      "permanent": true
+    },
+    {
+      "source": "/enerconseils/atlas-en",
+      "destination": "/atlas-en",
+      "permanent": true
+    },
+    {
+      "source": "/enerconseils/atlas-en.html",
+      "destination": "/atlas-en",
+      "permanent": true
+    },
+    {
+      "source": "/reporting",
+      "destination": "/publications",
+      "permanent": true
+    },
+    {
+      "source": "/reporting-en",
+      "destination": "/publications-en",
+      "permanent": true
+    },
+    {
+      "source": "/activites-en",
+      "destination": "/amont/activites-en",
+      "permanent": true
+    },
+    {
+      "source": "/activites-en.html",
+      "destination": "/amont/activites-en",
+      "permanent": true
+    },
+    {
+      "source": "/eor-en",
+      "destination": "/amont/eor-en",
+      "permanent": true
+    },
+    {
+      "source": "/eor-en.html",
+      "destination": "/amont/eor-en",
+      "permanent": true
+    },
+    {
+      "source": "/parc-en",
+      "destination": "/amont/parc-en",
+      "permanent": true
+    },
+    {
+      "source": "/parc-en.html",
+      "destination": "/amont/parc-en",
+      "permanent": true
+    },
+    {
+      "source": "/services-ep-en",
+      "destination": "/amont/services-ep-en",
+      "permanent": true
+    },
+    {
+      "source": "/services-ep-en.html",
+      "destination": "/amont/services-ep-en",
+      "permanent": true
+    },
+    {
+      "source": "/distribution-en",
+      "destination": "/aval/distribution-en",
+      "permanent": true
+    },
+    {
+      "source": "/distribution-en.html",
+      "destination": "/aval/distribution-en",
+      "permanent": true
+    },
+    {
+      "source": "/produits-en",
+      "destination": "/aval/produits-en",
+      "permanent": true
+    },
+    {
+      "source": "/produits-en.html",
+      "destination": "/aval/produits-en",
+      "permanent": true
+    },
+    {
+      "source": "/raffinage-en",
+      "destination": "/aval/raffinage-en",
+      "permanent": true
+    },
+    {
+      "source": "/raffinage-en.html",
+      "destination": "/aval/raffinage-en",
+      "permanent": true
+    },
+    {
+      "source": "/reseau-en",
+      "destination": "/aval/reseau-en",
+      "permanent": true
+    },
+    {
+      "source": "/reseau-en.html",
+      "destination": "/aval/reseau-en",
+      "permanent": true
+    },
+    {
+      "source": "/hseq-en",
+      "destination": "/pole-greentech-en#hseq",
+      "permanent": true
+    },
+    {
+      "source": "/hseq-en.html",
+      "destination": "/pole-greentech-en#hseq",
+      "permanent": true
+    },
+    {
+      "source": "/impact-en",
+      "destination": "/pole-greentech-en#impact",
+      "permanent": true
+    },
+    {
+      "source": "/impact-en.html",
+      "destination": "/pole-greentech-en#impact",
+      "permanent": true
+    },
+    {
+      "source": "/patrimoine-en",
+      "destination": "/pole-greentech-en#patrimoine",
+      "permanent": true
+    },
+    {
+      "source": "/patrimoine-en.html",
+      "destination": "/pole-greentech-en#patrimoine",
+      "permanent": true
+    },
+    {
+      "source": "/transition-en",
+      "destination": "/pole-greentech-en#transition",
+      "permanent": true
+    },
+    {
+      "source": "/transition-en.html",
+      "destination": "/pole-greentech-en#transition",
+      "permanent": true
+    },
+    {
+      "source": "/Configurateur_Service_Integre",
+      "destination": "/configurateur-service-integre",
+      "permanent": true
+    },
+    {
+      "source": "/pole-amont",
+      "destination": "/amont/",
+      "permanent": true
+    },
+    {
+      "source": "/pole-amont.html",
+      "destination": "/amont/",
+      "permanent": true
+    },
+    {
+      "source": "/pole-amont-activites",
+      "destination": "/amont/activites",
+      "permanent": true
+    },
+    {
+      "source": "/pole-amont-activites.html",
+      "destination": "/amont/activites",
+      "permanent": true
+    },
+    {
+      "source": "/pole-amont-eor",
+      "destination": "/amont/eor",
+      "permanent": true
+    },
+    {
+      "source": "/pole-amont-eor.html",
+      "destination": "/amont/eor",
+      "permanent": true
+    },
+    {
+      "source": "/pole-amont-services-ep",
+      "destination": "/amont/services-ep",
+      "permanent": true
+    },
+    {
+      "source": "/pole-amont-services-ep.html",
+      "destination": "/amont/services-ep",
+      "permanent": true
+    },
+    {
+      "source": "/pole-intermediaire",
+      "destination": "/intermediaire/",
+      "permanent": true
+    },
+    {
+      "source": "/pole-intermediaire.html",
+      "destination": "/intermediaire/",
+      "permanent": true
+    },
+    {
+      "source": "/pole-intermediaire-logistique",
+      "destination": "/intermediaire/logistique",
+      "permanent": true
+    },
+    {
+      "source": "/pole-intermediaire-logistique.html",
+      "destination": "/intermediaire/logistique",
+      "permanent": true
+    },
+    {
+      "source": "/pole-intermediaire-services",
+      "destination": "/intermediaire/services",
+      "permanent": true
+    },
+    {
+      "source": "/pole-intermediaire-services.html",
+      "destination": "/intermediaire/services",
+      "permanent": true
+    },
+    {
+      "source": "/pole-intermediaire-sites",
+      "destination": "/intermediaire/sites",
+      "permanent": true
+    },
+    {
+      "source": "/pole-intermediaire-sites.html",
+      "destination": "/intermediaire/sites",
+      "permanent": true
+    },
+    {
+      "source": "/pole-aval",
+      "destination": "/aval/",
+      "permanent": true
+    },
+    {
+      "source": "/pole-aval.html",
+      "destination": "/aval/",
+      "permanent": true
+    },
+    {
+      "source": "/pole-aval-distribution",
+      "destination": "/aval/distribution",
+      "permanent": true
+    },
+    {
+      "source": "/pole-aval-distribution.html",
+      "destination": "/aval/distribution",
+      "permanent": true
+    },
+    {
+      "source": "/pole-aval-produits",
+      "destination": "/aval/produits",
+      "permanent": true
+    },
+    {
+      "source": "/pole-aval-produits.html",
+      "destination": "/aval/produits",
+      "permanent": true
+    },
+    {
+      "source": "/pole-aval-raffinage",
+      "destination": "/aval/raffinage",
+      "permanent": true
+    },
+    {
+      "source": "/pole-aval-raffinage.html",
+      "destination": "/aval/raffinage",
+      "permanent": true
+    },
+    {
+      "source": "/pole-aval-reseau",
+      "destination": "/aval/reseau",
+      "permanent": true
+    },
+    {
+      "source": "/pole-aval-reseau.html",
+      "destination": "/aval/reseau",
+      "permanent": true
+    },
+    {
+      "source": "/pole-petrochimie",
+      "destination": "/petrochimie/",
+      "permanent": true
+    },
+    {
+      "source": "/pole-petrochimie.html",
+      "destination": "/petrochimie/",
+      "permanent": true
+    },
+    {
+      "source": "/pole-petrochimie-chimie-eor",
+      "destination": "/petrochimie/chimie-eor",
+      "permanent": true
+    },
+    {
+      "source": "/pole-petrochimie-chimie-eor.html",
+      "destination": "/petrochimie/chimie-eor",
+      "permanent": true
+    },
+    {
+      "source": "/pole-petrochimie-produits",
+      "destination": "/petrochimie/produits",
+      "permanent": true
+    },
+    {
+      "source": "/pole-petrochimie-produits.html",
+      "destination": "/petrochimie/produits",
+      "permanent": true
+    },
+    {
+      "source": "/pole-greentech",
+      "destination": "/greentech/",
+      "permanent": true
+    },
+    {
+      "source": "/pole-greentech.html",
+      "destination": "/greentech/",
+      "permanent": true
+    },
+    {
+      "source": "/pole-greentech-hseq",
+      "destination": "/greentech/#hseq",
+      "permanent": true
+    },
+    {
+      "source": "/pole-greentech-hseq.html",
+      "destination": "/greentech/#hseq",
+      "permanent": true
+    },
+    {
+      "source": "/pole-greentech-impact",
+      "destination": "/greentech/#impact",
+      "permanent": true
+    },
+    {
+      "source": "/pole-greentech-impact.html",
+      "destination": "/greentech/#impact",
+      "permanent": true
+    },
+    {
+      "source": "/pole-greentech-patrimoine",
+      "destination": "/greentech/#patrimoine",
+      "permanent": true
+    },
+    {
+      "source": "/pole-greentech-patrimoine.html",
+      "destination": "/greentech/#patrimoine",
+      "permanent": true
+    },
+    {
+      "source": "/pole-greentech-transition",
+      "destination": "/greentech/#transition",
+      "permanent": true
+    },
+    {
+      "source": "/pole-greentech-transition.html",
+      "destination": "/greentech/#transition",
+      "permanent": true
+    },
+    {
+      "source": "/pole-enertech",
+      "destination": "/tchaditech/",
+      "permanent": true
+    },
+    {
+      "source": "/pole-enertech.html",
+      "destination": "/tchaditech/",
+      "permanent": true
+    },
+    {
+      "source": "/pole-enertech-innovations",
+      "destination": "/tchaditech/#innovations",
+      "permanent": true
+    },
+    {
+      "source": "/pole-enertech-innovations.html",
+      "destination": "/tchaditech/#innovations",
+      "permanent": true
+    },
+    {
+      "source": "/pole-enertech-outils",
+      "destination": "/tchaditech/outils",
+      "permanent": true
+    },
+    {
+      "source": "/pole-enertech-outils.html",
+      "destination": "/tchaditech/outils",
+      "permanent": true
+    },
+    {
+      "source": "/pole-enertech-rd",
+      "destination": "/tchaditech/#rd",
+      "permanent": true
+    },
+    {
+      "source": "/pole-enertech-rd.html",
+      "destination": "/tchaditech/#rd",
+      "permanent": true
+    },
+    {
+      "source": "/pole-enertech-recits",
+      "destination": "/tchaditech/#recits",
+      "permanent": true
+    },
+    {
+      "source": "/pole-enertech-recits.html",
+      "destination": "/tchaditech/#recits",
+      "permanent": true
+    },
+    {
+      "source": "/pole-enertech-socle",
+      "destination": "/tchaditech/#socle",
+      "permanent": true
+    },
+    {
+      "source": "/pole-enertech-socle.html",
+      "destination": "/tchaditech/#socle",
+      "permanent": true
+    },
+    {
+      "source": "/pole-enertalents",
+      "destination": "/tchaditude/",
+      "permanent": true
+    },
+    {
+      "source": "/pole-enertalents.html",
+      "destination": "/tchaditude/",
+      "permanent": true
+    },
+    {
+      "source": "/pole-enertalents-academie",
+      "destination": "/tchaditude/#academie",
+      "permanent": true
+    },
+    {
+      "source": "/pole-enertalents-academie.html",
+      "destination": "/tchaditude/#academie",
+      "permanent": true
+    },
+    {
+      "source": "/pole-enertalents-partenariats",
+      "destination": "/tchaditude/#partenariats",
+      "permanent": true
+    },
+    {
+      "source": "/pole-enertalents-partenariats.html",
+      "destination": "/tchaditude/#partenariats",
+      "permanent": true
+    },
+    {
+      "source": "/pole-enertalents-rayonnement",
+      "destination": "/tchaditude/#rayonnement",
+      "permanent": true
+    },
+    {
+      "source": "/pole-enertalents-rayonnement.html",
+      "destination": "/tchaditude/#rayonnement",
+      "permanent": true
+    },
+    {
+      "source": "/pole-enerconseils",
+      "destination": "/enerconseils/",
+      "permanent": true
+    },
+    {
+      "source": "/pole-enerconseils.html",
+      "destination": "/enerconseils/",
+      "permanent": true
+    },
+    {
+      "source": "/pole-enerconseils-atlas",
+      "destination": "/atlas/",
+      "permanent": true
+    },
+    {
+      "source": "/pole-enerconseils-atlas.html",
+      "destination": "/atlas/",
+      "permanent": true
+    },
+    {
+      "source": "/pole-enerconseils-conseil",
+      "destination": "/enerconseils/#conseil",
+      "permanent": true
+    },
+    {
+      "source": "/pole-enerconseils-conseil.html",
+      "destination": "/enerconseils/#conseil",
+      "permanent": true
+    },
+    {
+      "source": "/enerchimie",
+      "destination": "/petrochimie",
+      "permanent": true
+    },
+    {
+      "source": "/enerchimie/",
+      "destination": "/petrochimie/",
+      "permanent": true
+    },
+    {
+      "source": "/enerchimie/petrochimie",
+      "destination": "/petrochimie/produits",
+      "permanent": true
+    },
+    {
+      "source": "/enerchimie/petrochimie.html",
+      "destination": "/petrochimie/produits",
+      "permanent": true
+    },
+    {
+      "source": "/enerchimie/chimie-eor",
+      "destination": "/petrochimie/chimie-eor",
+      "permanent": true
+    },
+    {
+      "source": "/enerchimie/chimie-eor.html",
+      "destination": "/petrochimie/chimie-eor",
+      "permanent": true
+    },
+    {
+      "source": "/pole-enerchimie",
+      "destination": "/petrochimie/",
+      "permanent": true
+    },
+    {
+      "source": "/pole-enerchimie.html",
+      "destination": "/petrochimie/",
+      "permanent": true
+    },
+    {
+      "source": "/pole-enerchimie-petrochimie",
+      "destination": "/petrochimie/produits",
+      "permanent": true
+    },
+    {
+      "source": "/pole-enerchimie-petrochimie.html",
+      "destination": "/petrochimie/produits",
+      "permanent": true
+    },
+    {
+      "source": "/pole-enerchimie-chimie-eor",
+      "destination": "/petrochimie/chimie-eor",
+      "permanent": true
+    },
+    {
+      "source": "/pole-enerchimie-chimie-eor.html",
+      "destination": "/petrochimie/chimie-eor",
+      "permanent": true
+    },
+    {
+      "source": "/og-enerchimie.png",
+      "destination": "/og-petrochimie.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/impact",
+      "destination": "/greentech/#impact",
+      "permanent": true
+    },
+    {
+      "source": "/impact.html",
+      "destination": "/greentech/#impact",
+      "permanent": true
+    },
+    {
+      "source": "/en",
+      "destination": "/index-en",
+      "permanent": true
+    },
+    {
+      "source": "/en.html",
+      "destination": "/index-en",
+      "permanent": true
+    },
+    {
+      "source": "/enertalents",
+      "destination": "/tchaditude/",
+      "permanent": true
+    },
+    {
+      "source": "/enertalents/:path*",
+      "destination": "/tchaditude/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/pole-enertalents-en",
+      "destination": "/pole-tchaditude-en",
+      "permanent": true
+    },
+    {
+      "source": "/pole-enertalents-en.html",
+      "destination": "/pole-tchaditude-en",
+      "permanent": true
+    },
+    {
+      "source": "/og-enertalents.jpg",
+      "destination": "/og-tchaditude.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/enertech",
+      "destination": "/tchaditech/",
+      "permanent": true
+    },
+    {
+      "source": "/enertech/:path*",
+      "destination": "/tchaditech/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/pole-enertech-en",
+      "destination": "/pole-tchaditech-en",
+      "permanent": true
+    },
+    {
+      "source": "/pole-enertech-en.html",
+      "destination": "/pole-tchaditech-en",
+      "permanent": true
+    },
+    {
+      "source": "/enertech/",
+      "destination": "/tchaditech/",
+      "permanent": true
+    },
+    {
+      "source": "/enertalents/",
+      "destination": "/tchaditude/",
+      "permanent": true
+    },
+    {
+      "source": "/Configurateur_Service_Integre_v2",
+      "destination": "/configurateur-service-integre",
+      "permanent": true
+    },
+    {
+      "source": "/Calculateur_Baril_Additionnel",
+      "destination": "/amont/calculateur-baril-additionnel",
+      "permanent": true
+    },
+    {
+      "source": "/enerconseils/conseil",
+      "destination": "/enerconseils/#conseil",
+      "permanent": true
+    },
+    {
+      "source": "/enerconseils/audits",
+      "destination": "/enerconseils/#audits",
+      "permanent": true
+    },
+    {
+      "source": "/enerconseils/esg",
+      "destination": "/enerconseils/#esg",
+      "permanent": true
+    },
+    {
+      "source": "/enerconseils/conseil-en",
+      "destination": "/pole-enerconseils-en#conseil",
+      "permanent": true
+    },
+    {
+      "source": "/enerconseils/audits-en",
+      "destination": "/pole-enerconseils-en#audits",
+      "permanent": true
+    },
+    {
+      "source": "/enerconseils/esg-en",
+      "destination": "/pole-enerconseils-en#esg",
+      "permanent": true
+    },
+    {
+      "source": "/greentech/hseq-en",
+      "destination": "/pole-greentech-en#hseq",
+      "permanent": true
+    },
+    {
+      "source": "/greentech/impact-en",
+      "destination": "/pole-greentech-en#impact",
+      "permanent": true
+    },
+    {
+      "source": "/greentech/transition-en",
+      "destination": "/pole-greentech-en#transition",
+      "permanent": true
+    },
+    {
+      "source": "/greentech/patrimoine-en",
+      "destination": "/pole-greentech-en#patrimoine",
+      "permanent": true
+    },
+    {
+      "source": "/greentech/hseq",
+      "destination": "/greentech/#hseq",
+      "permanent": true
+    },
+    {
+      "source": "/greentech/impact",
+      "destination": "/greentech/#impact",
+      "permanent": true
+    },
+    {
+      "source": "/greentech/transition",
+      "destination": "/greentech/#transition",
+      "permanent": true
+    },
+    {
+      "source": "/greentech/patrimoine",
+      "destination": "/greentech/#patrimoine",
+      "permanent": true
+    },
+    {
+      "source": "/tchaditude/academie-en",
+      "destination": "/pole-tchaditude-en#academie",
+      "permanent": true
+    },
+    {
+      "source": "/tchaditude/services-en",
+      "destination": "/pole-tchaditude-en#services",
+      "permanent": true
+    },
+    {
+      "source": "/tchaditude/rayonnement-en",
+      "destination": "/pole-tchaditude-en#rayonnement",
+      "permanent": true
+    },
+    {
+      "source": "/tchaditude/partenariats-en",
+      "destination": "/pole-tchaditude-en#partenariats",
+      "permanent": true
+    },
+    {
+      "source": "/tchaditude/academie",
+      "destination": "/tchaditude/#academie",
+      "permanent": true
+    },
+    {
+      "source": "/tchaditude/services",
+      "destination": "/tchaditude/#services",
+      "permanent": true
+    },
+    {
+      "source": "/tchaditude/rayonnement",
+      "destination": "/tchaditude/#rayonnement",
+      "permanent": true
+    },
+    {
+      "source": "/tchaditude/partenariats",
+      "destination": "/tchaditude/#partenariats",
+      "permanent": true
+    },
+    {
+      "source": "/tchaditech/socle-en",
+      "destination": "/pole-tchaditech-en#socle",
+      "permanent": true
+    },
+    {
+      "source": "/tchaditech/rd-en",
+      "destination": "/pole-tchaditech-en#rd",
+      "permanent": true
+    },
+    {
+      "source": "/tchaditech/innovations-en",
+      "destination": "/pole-tchaditech-en#innovations",
+      "permanent": true
+    },
+    {
+      "source": "/tchaditech/recits-en",
+      "destination": "/pole-tchaditech-en#recits",
+      "permanent": true
+    },
+    {
+      "source": "/tchaditech/socle",
+      "destination": "/tchaditech/#socle",
+      "permanent": true
+    },
+    {
+      "source": "/tchaditech/rd",
+      "destination": "/tchaditech/#rd",
+      "permanent": true
+    },
+    {
+      "source": "/tchaditech/innovations",
+      "destination": "/tchaditech/#innovations",
+      "permanent": true
+    },
+    {
+      "source": "/tchaditech/recits",
+      "destination": "/tchaditech/#recits",
+      "permanent": true
+    },
+    {
+      "source": "/boutique-en",
+      "destination": "/boutique/en/",
+      "permanent": true
+    },
+    {
+      "source": "/calculateur-baril-additionnel",
+      "destination": "/amont/calculateur-baril-additionnel",
+      "permanent": true
+    },
+    {
+      "source": "/explorateur-chaine",
+      "destination": "/nos-activites",
+      "permanent": true
+    },
+    {
+      "source": "/explorateur-chaine-en",
+      "destination": "/nos-activites-en",
+      "permanent": true
+    },
+    {
+      "source": "/solutions",
+      "destination": "/nos-activites#besoins",
+      "permanent": true
+    },
+    {
+      "source": "/solutions-en",
+      "destination": "/nos-activites-en#besoins",
+      "permanent": true
+    },
+    {
+      "source": "/presse",
+      "destination": "/communiques#presse",
+      "permanent": true
+    },
+    {
+      "source": "/presse-en",
+      "destination": "/communiques-en#presse",
+      "permanent": true
+    },
+    {
+      "source": "/Dossier_Investisseur_EnerTchad.pptx",
+      "destination": "/Fiche_Investisseur_EnerTchad.pdf",
+      "statusCode": 301
+    }
+  ],
+  "headers": [
+    {
+      "source": "/assets/chrome/(.*)\\.(css|js)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/assets/chrome/((?!.*\\.(?:css|js)$).*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600, stale-while-revalidate=86400"
+        }
+      ]
+    },
+    {
+      "source": "/assets/fonts/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), microphone=(), geolocation=()"
+        },
+        {
+          "key": "Strict-Transport-Security",
+          "value": "max-age=63072000; includeSubDomains; preload"
+        },
+        {
+          "key": "Cross-Origin-Opener-Policy",
+          "value": "same-origin"
+        },
+        {
+          "key": "Cross-Origin-Resource-Policy",
+          "value": "same-origin"
+        },
+        {
+          "key": "X-Permitted-Cross-Domain-Policies",
+          "value": "none"
+        },
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self'; script-src 'self' 'unsafe-inline' https://*.googletagmanager.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com; font-src 'self'; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; manifest-src 'self'; worker-src 'self'; frame-src 'self'; media-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'self'; form-action 'self'; upgrade-insecure-requests"
+        }
+      ]
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/boutique",
+      "destination": "/aval/boutique.html"
+    },
+    {
+      "source": "/boutique/en/clients",
+      "destination": "/clients-en.html"
+    },
+    {
+      "source": "/boutique/clients",
+      "destination": "/clients.html"
+    },
+    {
+      "source": "/boutique/en/",
+      "destination": "/aval/boutique-en.html"
+    },
+    {
+      "source": "/boutique/",
+      "destination": "/aval/boutique.html"
+    },
+    {
+      "source": "/configurateur-service-integre",
+      "destination": "/Configurateur_Service_Integre_v2"
+    },
+    {
+      "source": "/amont/calculateur-baril-additionnel",
+      "destination": "/Calculateur_Baril_Additionnel"
+    }
+  ]
+}
