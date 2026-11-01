@@ -76,32 +76,39 @@ https://boutique.enertchad.com/* https://enertchad.com/boutique/ 301!
 http://boutique.enertchad.com/en/* https://enertchad.com/boutique/en/ 301!
 http://boutique.enertchad.com/* https://enertchad.com/boutique/ 301!
 
-# Regles Netlify generees depuis vercel.json (meme ordre, memes cibles).
-# Hebergement principal : Netlify (enertchad.com, sous-domaine enertchad.netlify.app) depuis le 1er octobre 2026,
-# Vercel etant suspendu. Toute redirection s ajoute d abord dans vercel.json, puis
-# ce fichier se regenere : python3 scripts/gen_netlify_redirects.py
-# Redirections : 308 forcees (!), comme Vercel qui les applique avant les fichiers.
-# Reecritures : 200 non forcees, comme Vercel qui sert d abord un fichier existant.
+# Regles generees depuis redirects.json (meme ordre, memes cibles) ; le .htaccess OVH en derive (scripts/ovh/package.py).
+# Hebergement principal : OVH (enertchad.com) ; Netlify ne sert plus que la redirection de l ancienne adresse.
+# Toute redirection s ajoute d abord dans redirects.json, puis ce fichier se regenere : python3 scripts/gen_netlify_redirects.py
+# Redirections : 308 forcees (!), appliquees avant les fichiers.
+# Reecritures : 200 non forcees, un fichier existant est servi d abord.
 # Domaine : l ancienne adresse enertchad.netlify.app redirige (301) vers enertchad.com,
 # pour qu une seule adresse soit indexee. Les apercus de deploiement ne sont pas touches.
 
 https://enertchad.netlify.app/* https://enertchad.com/:splat 301!
 
 /boutique/ /boutique/index.html 200!
-/aval/boutique /boutique/ 308!
-/aval/boutique.html /boutique/ 308!
-/aval/boutique-en /boutique/en/ 308!
-/aval/boutique-en.html /boutique/en/ 308!
-/clients /boutique/clients 308!
-/clients.html /boutique/clients 308!
-/clients-en /boutique/en/clients 308!
-/clients-en.html /boutique/en/clients 308!
 /investor-center /investisseurs 308!
 /investor-center.html /investisseurs 308!
 /investor-center/ /investisseurs 308!
 /investor-center-en /investisseurs-en 308!
 /investor-center-en.html /investisseurs-en 308!
 /investor-center-en/ /investisseurs-en 308!
+/aval/boutique /boutique/ 308!
+/aval/boutique.html /boutique/ 308!
+/aval/boutique-en /boutique/en/ 308!
+/aval/boutique-en.html /boutique/en/ 308!
+/aval/gpl /aval/produits#gpl 308!
+/aval/gpl.html /aval/produits#gpl 308!
+/aval/gpl-en /aval/produits-en#gpl 308!
+/aval/gpl-en.html /aval/produits-en#gpl 308!
+/aval/lubrifiants /aval/produits#lubrifiants-bitumes 308!
+/aval/lubrifiants.html /aval/produits#lubrifiants-bitumes 308!
+/aval/lubrifiants-en /aval/produits-en#lubrifiants-bitumes 308!
+/aval/lubrifiants-en.html /aval/produits-en#lubrifiants-bitumes 308!
+/clients /boutique/clients 308!
+/clients.html /boutique/clients 308!
+/clients-en /boutique/en/clients 308!
+/clients-en.html /boutique/en/clients 308!
 /enerconseils/atlas /atlas/ 308!
 /enerconseils/atlas.html /atlas/ 308!
 /enerconseils/atlas-en /atlas-en 308!
@@ -159,14 +166,6 @@ https://enertchad.netlify.app/* https://enertchad.com/:splat 301!
 /pole-aval-raffinage.html /aval/raffinage 308!
 /pole-aval-reseau /aval/reseau 308!
 /pole-aval-reseau.html /aval/reseau 308!
-/aval/gpl /aval/produits#gpl 308!
-/aval/gpl.html /aval/produits#gpl 308!
-/aval/gpl-en /aval/produits-en#gpl 308!
-/aval/gpl-en.html /aval/produits-en#gpl 308!
-/aval/lubrifiants /aval/produits#lubrifiants-bitumes 308!
-/aval/lubrifiants.html /aval/produits#lubrifiants-bitumes 308!
-/aval/lubrifiants-en /aval/produits-en#lubrifiants-bitumes 308!
-/aval/lubrifiants-en.html /aval/produits-en#lubrifiants-bitumes 308!
 /pole-petrochimie /petrochimie/ 308!
 /pole-petrochimie.html /petrochimie/ 308!
 /pole-petrochimie-chimie-eor /petrochimie/chimie-eor 308!
