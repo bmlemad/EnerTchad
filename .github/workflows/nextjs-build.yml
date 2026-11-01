@@ -34,6 +34,8 @@ jobs:
         run: python3 scripts/test_critical_applied.py
       - name: Check that repeated figures agree across surfaces (lot 98)
         run: python3 scripts/test_figures_consistency.py
+      - name: Check that the single glass rule leads every page (lot 90)
+        run: python3 scripts/test_glass_chrome.py
       - uses: actions/upload-artifact@v7
         with:
           name: enertchad-netlify-export
