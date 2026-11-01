@@ -33,6 +33,11 @@
        "Innovation & R&D",
        "Ingénierie frugale, IA",
        "/innovation"
+      ],
+      [
+       "Éthique & conformité",
+       "Code et signalement",
+       "/ethique"
       ]
      ]
     },
@@ -66,7 +71,7 @@
   },
   {
    "id": "b",
-   "label": "Activités",
+   "label": "Activités & Ingénierie",
    "description": "Quatre segments industriels, quatre capacités intégrées, des solutions par besoin.",
    "overview": [
     "Vue d’ensemble",
@@ -100,7 +105,7 @@
      ]
     },
     {
-     "title": "Capacités intégrées",
+     "title": "Capacités transversales",
      "links": [
       [
        "Durabilité · GreenTech",
@@ -108,12 +113,12 @@
        "/greentech/"
       ],
       [
-       "Technologies · TchadiTech",
+       "Technologies & données · TchadiTech",
        "Numérique, données",
        "/tchaditech/"
       ],
       [
-       "Capital humain · Tchaditude",
+       "Formation & compétences · Tchaditude",
        "Académie, relève",
        "/tchaditude/"
       ],
@@ -127,6 +132,21 @@
     {
      "title": "Solutions clients",
      "links": [
+      [
+       "Industrie & chantiers",
+       "Périmètre envisagé et contact",
+       "/boutique/clients#industriels"
+      ],
+      [
+       "Transport & flottes",
+       "Périmètre envisagé et contact",
+       "/boutique/clients#flottes"
+      ],
+      [
+       "Opérateurs pétroliers",
+       "Périmètre envisagé et contact",
+       "/boutique/clients#operateurs"
+      ],
       [
        "Solutions par besoin",
        "Produire, acheminer, transformer",
@@ -150,7 +170,7 @@
   {
    "id": "c",
    "label": "Projets",
-   "description": "Huit chantiers phares, datés et suivis, avec leurs conditions.",
+   "description": "Huit projets envisagés : état publié, prérequis et justificatifs.",
    "overview": [
     "Vue d’ensemble",
     "Feuille de route",
@@ -206,6 +226,11 @@
      "title": "Suivre l’avancement",
      "links": [
       [
+       "Avancement publié",
+       "État et justificatifs disponibles",
+       "/projets#avancement"
+      ],
+      [
        "Cibles 2030",
        "Tableau de bord",
        "/cibles-2030"
@@ -219,6 +244,117 @@
        "Proposer un partenariat",
        "Contact projet",
        "/contact?profil=partenariat#ctForm"
+      ]
+     ]
+    }
+   ],
+   "feature": null
+  },
+  {
+   "id": "e",
+   "label": "Engagements",
+   "description": "Des règles posées avant le premier baril : climat, territoires, transparence.",
+   "overview": [
+    "Vue d’ensemble",
+    "Engagements & indicateurs",
+    "/engagements"
+   ],
+   "groups": [
+    {
+     "title": "Mesurer",
+     "links": [
+      [
+       "Engagements & indicateurs",
+       "Base, réalisé, cible, échéance",
+       "/engagements"
+      ],
+      [
+       "Cibles 2030",
+       "Tableau de bord",
+       "/cibles-2030"
+      ],
+      [
+       "Transition énergétique",
+       "Climat et énergie",
+       "/greentech/#transition"
+      ]
+     ]
+    },
+    {
+     "title": "Rendre des comptes",
+     "links": [
+      [
+       "Communautés & territoires",
+       "Contenu local, désenclavement",
+       "/communautes"
+      ],
+      [
+       "Paiements aux États",
+       "Les sept catégories ITIE",
+       "/paiements-etats"
+      ],
+      [
+       "Éthique & conformité",
+       "Anti-corruption, alerte",
+       "/ethique"
+      ]
+     ]
+    }
+   ],
+   "feature": null
+  },
+  {
+   "id": "f",
+   "label": "Actualités & Documents",
+   "description": "Annonces, analyses et preuves, chacune avec son type et sa date.",
+   "overview": [
+    "Vue d’ensemble",
+    "Publications & documents",
+    "/publications"
+   ],
+   "groups": [
+    {
+     "title": "Actualités officielles",
+     "links": [
+      [
+       "Communiqués officiels",
+       "Annonce · datée",
+       "/communiques"
+      ],
+      [
+       "Espace presse",
+       "Contacts et ressources",
+       "/communiques#presse"
+      ]
+     ]
+    },
+    {
+     "title": "Analyses & Carnets",
+     "links": [
+      [
+       "Carnets",
+       "Analyse · articles et interviews",
+       "/carnets"
+      ]
+     ]
+    },
+    {
+     "title": "Documents & données",
+     "links": [
+      [
+       "Publications & documents",
+       "Preuve · brochures, fiches, data book",
+       "/publications"
+      ],
+      [
+       "Atlas du secteur",
+       "Référence · données du secteur",
+       "/atlas/"
+      ],
+      [
+       "Glossaire pétrolier",
+       "Référence · termes du métier",
+       "/glossaire-petrolier"
       ]
      ]
     }
@@ -287,112 +423,6 @@
     "Statut, conditions et prochaines étapes",
     "/contact?profil=invest#ctForm"
    ]
-  },
-  {
-   "id": "e",
-   "label": "Engagements",
-   "description": "Des règles posées avant le premier baril : climat, territoires, transparence.",
-   "overview": [
-    "Vue d’ensemble",
-    "Engagements & indicateurs",
-    "/engagements"
-   ],
-   "groups": [
-    {
-     "title": "Mesurer",
-     "links": [
-      [
-       "Engagements & indicateurs",
-       "Base, réalisé, cible, échéance",
-       "/engagements"
-      ],
-      [
-       "Cibles 2030",
-       "Tableau de bord",
-       "/cibles-2030"
-      ],
-      [
-       "Transition énergétique",
-       "Climat et énergie",
-       "/greentech/#transition"
-      ]
-     ]
-    },
-    {
-     "title": "Rendre des comptes",
-     "links": [
-      [
-       "Communautés & territoires",
-       "Contenu local, désenclavement",
-       "/communautes"
-      ],
-      [
-       "Paiements aux États",
-       "Les sept catégories ITIE",
-       "/paiements-etats"
-      ],
-      [
-       "Éthique & conformité",
-       "Anti-corruption, alerte",
-       "/ethique"
-      ]
-     ]
-    }
-   ],
-   "feature": null
-  },
-  {
-   "id": "f",
-   "label": "Actualités & Documents",
-   "description": "Annonces, analyses et preuves, chacune avec son type et sa date.",
-   "overview": [
-    "Vue d’ensemble",
-    "Publications & documents",
-    "/publications"
-   ],
-   "groups": [
-    {
-     "title": "Actualités",
-     "links": [
-      [
-       "Communiqués officiels",
-       "Annonce · datée",
-       "/communiques"
-      ],
-      [
-       "Carnets",
-       "Analyse · articles et interviews",
-       "/carnets"
-      ],
-      [
-       "Espace presse",
-       "Contacts et ressources",
-       "/communiques#presse"
-      ]
-     ]
-    },
-    {
-     "title": "Documents",
-     "links": [
-      [
-       "Publications & documents",
-       "Preuve · brochures, fiches, data book",
-       "/publications"
-      ],
-      [
-       "Atlas du secteur",
-       "Référence · données du secteur",
-       "/atlas/"
-      ],
-      [
-       "Glossaire pétrolier",
-       "Référence · termes du métier",
-       "/glossaire-petrolier"
-      ]
-     ]
-    }
-   ],
-   "feature": null
   }
  ],
  "en": [
@@ -428,6 +458,11 @@
        "Innovation & R&D",
        "Frugal engineering, AI",
        "/innovation-en"
+      ],
+      [
+       "Ethics & compliance",
+       "Code and reporting",
+       "/ethique-en"
       ]
      ]
     },
@@ -461,7 +496,7 @@
   },
   {
    "id": "b",
-   "label": "Activities",
+   "label": "Activities & Engineering",
    "description": "Four industrial segments, four integrated capabilities, solutions by need.",
    "overview": [
     "Overview",
@@ -495,7 +530,7 @@
      ]
     },
     {
-     "title": "Integrated capabilities",
+     "title": "Cross-functional capabilities",
      "links": [
       [
        "Sustainability · GreenTech",
@@ -503,12 +538,12 @@
        "/pole-greentech-en"
       ],
       [
-       "Technologies · TchadiTech",
+       "Technology & data · TchadiTech",
        "Digital, data",
        "/pole-tchaditech-en"
       ],
       [
-       "Human capital · Tchaditude",
+       "Training & skills · Tchaditude",
        "Academy, next generation",
        "/pole-tchaditude-en"
       ],
@@ -522,6 +557,21 @@
     {
      "title": "Client solutions",
      "links": [
+      [
+       "Industry & worksites",
+       "Proposed scope and enquiry",
+       "/boutique/en/clients#industriels"
+      ],
+      [
+       "Transport & fleets",
+       "Proposed scope and enquiry",
+       "/boutique/en/clients#flottes"
+      ],
+      [
+       "Oilfield operators",
+       "Proposed scope and enquiry",
+       "/boutique/en/clients#operateurs"
+      ],
       [
        "Solutions by need",
        "Produce, move, transform",
@@ -545,7 +595,7 @@
   {
    "id": "c",
    "label": "Projects",
-   "description": "Eight flagship projects, dated and tracked, with their conditions.",
+   "description": "Eight proposed projects: published status, prerequisites and evidence.",
    "overview": [
     "Overview",
     "Roadmap",
@@ -601,6 +651,11 @@
      "title": "Track progress",
      "links": [
       [
+       "Published progress",
+       "Status and available evidence",
+       "/projets-en#avancement"
+      ],
+      [
        "2030 targets",
        "Dashboard",
        "/cibles-2030-en"
@@ -614,6 +669,117 @@
        "Propose a partnership",
        "Project contact",
        "/contact-en?profil=partenariat#ctForm"
+      ]
+     ]
+    }
+   ],
+   "feature": null
+  },
+  {
+   "id": "e",
+   "label": "Commitments",
+   "description": "Rules set before the first barrel: climate, territories, transparency.",
+   "overview": [
+    "Overview",
+    "Commitments & indicators",
+    "/engagements-en"
+   ],
+   "groups": [
+    {
+     "title": "Measure",
+     "links": [
+      [
+       "Commitments & indicators",
+       "Baseline, actual, target, deadline",
+       "/engagements-en"
+      ],
+      [
+       "2030 targets",
+       "Dashboard",
+       "/cibles-2030-en"
+      ],
+      [
+       "Energy transition",
+       "Climate and energy",
+       "/pole-greentech-en#transition"
+      ]
+     ]
+    },
+    {
+     "title": "Account for",
+     "links": [
+      [
+       "Communities & territories",
+       "Local content, opening up regions",
+       "/communautes-en"
+      ],
+      [
+       "Payments to governments",
+       "The seven EITI categories",
+       "/paiements-etats-en"
+      ],
+      [
+       "Ethics & compliance",
+       "Anti-corruption, alert line",
+       "/ethique-en"
+      ]
+     ]
+    }
+   ],
+   "feature": null
+  },
+  {
+   "id": "f",
+   "label": "News & Documents",
+   "description": "Announcements, analysis and evidence, each with its type and date.",
+   "overview": [
+    "Overview",
+    "Publications & documents",
+    "/publications-en"
+   ],
+   "groups": [
+    {
+     "title": "Official news",
+     "links": [
+      [
+       "Press releases",
+       "Announcement · dated",
+       "/communiques-en"
+      ],
+      [
+       "Press room",
+       "Contacts and resources",
+       "/communiques-en#presse"
+      ]
+     ]
+    },
+    {
+     "title": "Analysis & Notebooks",
+     "links": [
+      [
+       "Journal",
+       "Analysis · articles and interviews",
+       "/carnets-en"
+      ]
+     ]
+    },
+    {
+     "title": "Documents & data",
+     "links": [
+      [
+       "Publications & documents",
+       "Evidence · brochures, fact sheets, data book",
+       "/publications-en"
+      ],
+      [
+       "Sector atlas",
+       "Reference · sector data",
+       "/atlas-en"
+      ],
+      [
+       "Oil glossary",
+       "Reference · terms of the trade",
+       "/glossaire-petrolier-en"
       ]
      ]
     }
@@ -682,112 +848,6 @@
     "Status, conditions and next steps",
     "/contact-en?profil=invest#ctForm"
    ]
-  },
-  {
-   "id": "e",
-   "label": "Commitments",
-   "description": "Rules set before the first barrel: climate, territories, transparency.",
-   "overview": [
-    "Overview",
-    "Commitments & indicators",
-    "/engagements-en"
-   ],
-   "groups": [
-    {
-     "title": "Measure",
-     "links": [
-      [
-       "Commitments & indicators",
-       "Baseline, actual, target, deadline",
-       "/engagements-en"
-      ],
-      [
-       "2030 targets",
-       "Dashboard",
-       "/cibles-2030-en"
-      ],
-      [
-       "Energy transition",
-       "Climate and energy",
-       "/pole-greentech-en#transition"
-      ]
-     ]
-    },
-    {
-     "title": "Account for",
-     "links": [
-      [
-       "Communities & territories",
-       "Local content, opening up regions",
-       "/communautes-en"
-      ],
-      [
-       "Payments to governments",
-       "The seven EITI categories",
-       "/paiements-etats-en"
-      ],
-      [
-       "Ethics & compliance",
-       "Anti-corruption, alert line",
-       "/ethique-en"
-      ]
-     ]
-    }
-   ],
-   "feature": null
-  },
-  {
-   "id": "f",
-   "label": "News & Documents",
-   "description": "Announcements, analysis and evidence, each with its type and date.",
-   "overview": [
-    "Overview",
-    "Publications & documents",
-    "/publications-en"
-   ],
-   "groups": [
-    {
-     "title": "News",
-     "links": [
-      [
-       "Press releases",
-       "Announcement · dated",
-       "/communiques-en"
-      ],
-      [
-       "Journal",
-       "Analysis · articles and interviews",
-       "/carnets-en"
-      ],
-      [
-       "Press room",
-       "Contacts and resources",
-       "/communiques-en#presse"
-      ]
-     ]
-    },
-    {
-     "title": "Documents",
-     "links": [
-      [
-       "Publications & documents",
-       "Evidence · brochures, fact sheets, data book",
-       "/publications-en"
-      ],
-      [
-       "Sector atlas",
-       "Reference · sector data",
-       "/atlas-en"
-      ],
-      [
-       "Oil glossary",
-       "Reference · terms of the trade",
-       "/glossaire-petrolier-en"
-      ]
-     ]
-    }
-   ],
-   "feature": null
   }
  ]
 }

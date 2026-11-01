@@ -1,0 +1,11 @@
+/* Shared corporate taxonomy. Keep the existing menu disclosure and surfaces. */
+#nav .et-architecture-panel{grid-template-columns:minmax(0,1fr) minmax(0,3fr)!important}
+#nav .et-architecture-panel .pn-links{grid-column:2 / -1!important}
+#nav .et-architecture-group{min-width:0;overflow-wrap:anywhere}
+#nav .et-architecture-group a{min-height:44px}
+#nav .et-architecture-group h3{font-size:12px;line-height:1.5;margin:0 0 12px;text-transform:uppercase;letter-spacing:.04em}
+.et-architecture-context{display:flex;align-items:center;flex-wrap:wrap;gap:12px 24px;max-width:1200px;margin:32px auto;padding:20px 24px;border-block:1px solid currentColor;font-size:.92rem;line-height:1.5}
+.et-architecture-context span{font-weight:700}
+.et-architecture-context a{display:inline-flex;align-items:center;min-height:44px;text-decoration:underline;text-underline-offset:4px;color:inherit}
+@media(min-width:1241px) and (max-width:1450px){#nav{--et-corporate-nav-size:12px;--et-corporate-nav-pad:6px}}
+@media(max-width:1240px){#nav{--et-architecture-columns:1fr;--et-architecture-panel-columns:1fr}#nav .et-architecture-groups{display:block!important}#nav .et-architecture-group+.et-architecture-group{margin-top:20px;padding-top:16px;border-top:1px solid currentColor}.et-architecture-context{margin:24px 16px;padding:16px 0}}
