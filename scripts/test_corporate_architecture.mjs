@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {htmlToDOM} from 'html-react-parser';
-import {corporateSections,withArchitectureWayfinding,withEditorialType} from '../lib/corporate-architecture.js';
+import {corporateSections,withArchitectureWayfinding,withEditorialType,withAccessibleBackToTop} from '../lib/corporate-architecture.js';
 import {withNavigationReview} from '../lib/navigation-review.js';
 function nodes(html){const out=[],walk=n=>{out.push(n);(n.children||[]).forEach(walk);};htmlToDOM(html).forEach(walk);return out;}
 test('six corporate sections have independent entry points and complete project and sector access',()=>{
@@ -36,4 +36,8 @@ test('editorial labels reuse only the actual publication date and remain separat
   const out=withEditorialType(source);assert(out.includes('data-et-content-kind="analysis"'));assert(out.includes('datetime="2025-03-08"'));assert.equal(withEditorialType(out),out);
   const undated=withEditorialType(source.replace('"2025-03-08"','null'));assert(!undated.includes('<time'));
   const official=withEditorialType(source.replace('/journal-test','/communiques'));assert(official.includes('data-et-content-kind="official"'));assert(!official.includes('<time'));
+});
+test('the named back-to-top button keeps its label while its decorative arrow is hidden from assistive technology',()=>{
+ const input='<button id="toTop" aria-label="Back to top"><svg viewBox="0 0 24 24"><path d="M1 2"/></svg></button><svg aria-label="Diagram"></svg>';
+ const out=withAccessibleBackToTop(input);assert(out.includes('aria-label="Back to top"'));assert(out.includes('<svg aria-hidden="true" focusable="false" viewBox='));assert(out.endsWith('<svg aria-label="Diagram"></svg>'));assert.equal(withAccessibleBackToTop(out),out);
 });
