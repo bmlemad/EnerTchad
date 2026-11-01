@@ -2,8 +2,8 @@
 from pathlib import Path
 import json, re, sys
 ROOT=Path(__file__).resolve().parents[1]
-cfg=ROOT/'vercel.json'
-if not cfg.exists(): sys.exit('vercel.json absent')
+cfg=ROOT/'redirects.json'
+if not cfg.exists(): sys.exit('redirects.json absent')
 v=json.loads(cfg.read_text(encoding='utf-8'))
 files={p.relative_to(ROOT).as_posix() for p in ROOT.rglob('*') if p.is_file() and not any(x in p.parts for x in {'.git','node_modules','public','out','.next','.generated'})}
 def exists(path):
