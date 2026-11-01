@@ -30,6 +30,8 @@ jobs:
       - name: Check audited bilingual journeys
         run: python3 scripts/test_site_audit.py
       - run: npm run check:migration
+      - name: Check that every critical CSS set is still applied
+        run: python3 scripts/test_critical_applied.py
       - uses: actions/upload-artifact@v7
         with:
           name: enertchad-netlify-export
