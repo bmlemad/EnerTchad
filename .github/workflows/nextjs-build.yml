@@ -32,6 +32,8 @@ jobs:
       - run: npm run check:migration
       - name: Check that every critical CSS set is still applied
         run: python3 scripts/test_critical_applied.py
+      - name: Check that repeated figures agree across surfaces (lot 98)
+        run: python3 scripts/test_figures_consistency.py
       - uses: actions/upload-artifact@v7
         with:
           name: enertchad-netlify-export
