@@ -14,16 +14,23 @@
   var counter = document.querySelector('[data-document-count]');
   var anchors = Array.from(document.querySelectorAll('a[data-document-format]'));
   var records = anchors.map(function (anchor) {
-    var shell = document.createElement('div'); shell.className = 'mod-doc-shell';
-    anchor.parentNode.insertBefore(shell, anchor); shell.appendChild(anchor);
+    // Lot 87 : enveloppe et bouton rendus au build dans publications(-en).html ; réutilisés s'ils existent.
+    var shell = anchor.parentNode;
+    if (!(shell && shell.classList && shell.classList.contains('mod-doc-shell'))) {
+      shell = document.createElement('div'); shell.className = 'mod-doc-shell';
+      anchor.parentNode.insertBefore(shell, anchor); shell.appendChild(anchor);
+    }
     var record = { anchor: anchor, shell: shell, text: anchor.textContent,
       format: anchor.dataset.documentFormat, language: anchor.dataset.documentLanguage, category: anchor.dataset.documentCategory };
     if (record.format === 'PDF') {
-      var button = document.createElement('button'); button.type = 'button'; button.className = 'mod-preview';
-      button.textContent = en ? 'Preview PDF' : 'Aperçu PDF';
-      button.setAttribute('aria-label', (en ? 'Preview: ' : 'Aperçu : ') + (anchor.querySelector('h3,b,strong') || anchor).textContent.trim());
+      var button = shell.querySelector('button.mod-preview');
+      if (!button) {
+        button = document.createElement('button'); button.type = 'button'; button.className = 'mod-preview';
+        button.textContent = en ? 'Preview PDF' : 'Aperçu PDF';
+        button.setAttribute('aria-label', (en ? 'Preview: ' : 'Aperçu : ') + (anchor.querySelector('h3,b,strong') || anchor).textContent.trim());
+      }
       button.addEventListener('click', function () { preview(anchor.getAttribute('href'), anchor.textContent.trim(), button); });
-      shell.appendChild(button);
+      if (button.parentNode !== shell) shell.appendChild(button);
     }
     return record;
   });
