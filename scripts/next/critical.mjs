@@ -90,6 +90,26 @@ export function earlyConsent(html) {
   return html.slice(0, end) + CONSENT_TAG + html.slice(end);
 }
 
+// Lot 90, étape 1 (choix du DG, 1er novembre 2026) : un seul verre sur le chrome. La feuille
+// assets/chrome/verre-2026.css (source unique, commentée) est mise en ligne EN TÊTE du <head> de chaque
+// page qui porte une des surfaces concernées : sa couche @layer et-verre est ainsi déclarée la première,
+// et ses déclarations !important l'emportent sur les couches et-glass (premium-chrome.css) et verre
+// (pole-premium.css) comme sur les règles hors couche — ordre des couches, pas spécificité (CSS Cascading 5,
+// § 6.4). En ligne plutôt que liée : 1,2 Ko, aucune requête, appliquée dès la première peinture, avant les
+// feuilles différées des jeux critiques. Idempotent. Mesure : 140 styles calculés conformes sur 6 pages,
+// 2 thèmes, 2 largeurs (verre_check.py).
+const VERRE_CSS = readFileSync(new URL('../../assets/chrome/verre-2026.css', import.meta.url), 'utf8').replace(/\/\*[\s\S]*?\*\//g, '').replace(/\n+/g, '\n').trim();
+export const VERRE_TAG = '<style data-et-verre>' + VERRE_CSS + '</style>';
+const VERRE_RX = /<nav\b[^>]*\bid="nav"|<header class="arh|<nav\b[^>]*\bet-space-header\b|id="nezBar"|<nav\b[^>]*\bpp-sub\b/;
+export function glassChrome(html) {
+  if (html.includes('data-et-verre') || !VERRE_RX.test(html)) return html;
+  // Une page (Configurateur) n'écrit pas <head> : la feuille suit alors la balise <html> (en-tête implicite).
+  const m = /<head>|<html\b[^>]*>/.exec(html);
+  if (!m) return html;
+  const at = m.index + m[0].length;
+  return html.slice(0, at) + VERRE_TAG + html.slice(at);
+}
+
 // Lot 69 (option A retenue par le DG) : trois scripts chargés sans « defer » vers la fin du <body>
 // de 197 pages bloquaient la lecture de la page jusqu'à leur arrivée, et donc tous les scripts
 // différés (dont le bandeau de consentement). Ils passent en « defer », dans le même ordre, comme
