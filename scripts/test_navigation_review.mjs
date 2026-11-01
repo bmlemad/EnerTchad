@@ -35,8 +35,8 @@ test('corporate resources expose documents and preserve investor-specific enquir
     assert.equal(cta.attribs.href, '/contact' + (en ? '-en' : '') + '#ctForm');
     assert(all.some(n => n.name === 'a' && n.attribs?.href === '/contact' + (en ? '-en' : '') + '?profil=invest#ctForm'));
     const groups = all.filter(n => n.name === 'section' && n.attribs?.class?.split(' ').includes('nx-resource-group'));
-    assert.equal(groups.length, 3);
-    const docs = groups[2].children.flatMap(n => [n, ...(n.children || [])]);
+    assert.equal(groups.length, 14);
+    const docs = groups.find(n => n.attribs['aria-label'] === (en ? 'Documents & data' : 'Documents & données')).children.flatMap(n => [n, ...(n.children || [])]);
     assert(docs.some(n => n.name === 'a' && n.attribs?.href === '/publications' + (en ? '-en' : '')));
     assert.match(output, /et-footer-pending/);
     assert(!output.includes('id="fnForm"'));

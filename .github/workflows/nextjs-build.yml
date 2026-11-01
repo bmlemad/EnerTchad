@@ -24,6 +24,7 @@ jobs:
       - run: node --test scripts/test_qualified_enquiries.mjs
       - run: node --test scripts/test_business_journeys.mjs
       - run: python3 scripts/test_capability_labels.py
+      - run: node --test scripts/test_main_nav.mjs
       - run: npm run build
         env:
           NEXT_TELEMETRY_DISABLED: '1'

@@ -1,0 +1,853 @@
+{
+ "note": "Menu principal (lot 80, structure validée par le DG le 31 octobre 2026). Appliqué au build par lib/main-nav.js.",
+ "fr": [
+  {
+   "id": "a",
+   "label": "Entreprise",
+   "description": "Société anonyme à capitaux tchadiens, en constitution à N’Djamena.",
+   "overview": [
+    "Vue d’ensemble",
+    "Qui sommes-nous",
+    "/societe"
+   ],
+   "groups": [
+    {
+     "title": "Qui nous sommes",
+     "links": [
+      [
+       "La Société",
+       "Mission, vision, repères",
+       "/societe"
+      ],
+      [
+       "La Voie EnerTchad",
+       "Bâtir et retenir la valeur",
+       "/societe#voie"
+      ],
+      [
+       "Gouvernance",
+       "Société anonyme OHADA",
+       "/gouvernance"
+      ],
+      [
+       "Innovation & R&D",
+       "Ingénierie frugale, IA",
+       "/innovation"
+      ],
+      [
+       "Éthique & conformité",
+       "Code et signalement",
+       "/ethique"
+      ]
+     ]
+    },
+    {
+     "title": "Travailler avec nous",
+     "links": [
+      [
+       "Carrières",
+       "Métiers & candidatures",
+       "/carrieres"
+      ],
+      [
+       "Achats & fournisseurs",
+       "Centrale d’achat, référencement",
+       "/achats"
+      ],
+      [
+       "Questions fréquentes",
+       "Centre d’aide",
+       "/faq"
+      ],
+      [
+       "Contact",
+       "Écrire, appeler, venir",
+       "/contact"
+      ]
+     ]
+    }
+   ],
+   "feature": null
+  },
+  {
+   "id": "b",
+   "label": "Activités & Ingénierie",
+   "description": "Quatre segments industriels, quatre capacités intégrées, des solutions par besoin.",
+   "overview": [
+    "Vue d’ensemble",
+    "Nos activités",
+    "/nos-activites"
+   ],
+   "groups": [
+    {
+     "title": "Segments industriels",
+     "links": [
+      [
+       "Exploration & Production",
+       "Extraire davantage de chaque gisement",
+       "/amont/"
+      ],
+      [
+       "Transport & stockage",
+       "Corridor d’export, réserve distribuée",
+       "/intermediaire/"
+      ],
+      [
+       "Raffinage & distribution",
+       "Mini-raffinerie, stations, dernier km",
+       "/aval/"
+      ],
+      [
+       "Pétrochimie",
+       "Méthanol, urée, bitume",
+       "/petrochimie/"
+      ]
+     ]
+    },
+    {
+     "title": "Capacités transversales",
+     "links": [
+      [
+       "Durabilité · GreenTech",
+       "Eau, torchage, HSE-Q",
+       "/greentech/"
+      ],
+      [
+       "Technologies & données · TchadiTech",
+       "Numérique, données",
+       "/tchaditech/"
+      ],
+      [
+       "Formation & compétences · Tchaditude",
+       "Académie, relève",
+       "/tchaditude/"
+      ],
+      [
+       "Ingénierie & Conseil · EnerConseils",
+       "Études, conception, projets",
+       "/enerconseils/"
+      ]
+     ]
+    },
+    {
+     "title": "Solutions clients",
+     "links": [
+      [
+       "Industrie & chantiers",
+       "Périmètre envisagé et contact",
+       "/boutique/clients#industriels"
+      ],
+      [
+       "Transport & flottes",
+       "Périmètre envisagé et contact",
+       "/boutique/clients#flottes"
+      ],
+      [
+       "Opérateurs pétroliers",
+       "Périmètre envisagé et contact",
+       "/boutique/clients#operateurs"
+      ],
+      [
+       "Solutions par besoin",
+       "Produire, acheminer, transformer",
+       "/nos-activites#besoins"
+      ],
+      [
+       "Espace clients",
+       "Carburants, services, boutique",
+       "/boutique/clients"
+      ],
+      [
+       "Calculateur du baril additionnel",
+       "Outil · récupération assistée",
+       "/amont/calculateur-baril-additionnel"
+      ]
+     ]
+    }
+   ],
+   "feature": null
+  },
+  {
+   "id": "c",
+   "label": "Projets",
+   "description": "Huit projets envisagés : état publié, prérequis et justificatifs.",
+   "overview": [
+    "Vue d’ensemble",
+    "Feuille de route",
+    "/projets"
+   ],
+   "groups": [
+    {
+     "title": "Chantiers phares",
+     "links": [
+      [
+       "Force d’intervention E&P",
+       "Consortiums",
+       "/projets#projet-intervention-ep"
+      ],
+      [
+       "Pilotes EOR",
+       "Champs matures",
+       "/projets#projet-pilotes-eor"
+      ],
+      [
+       "Corridor Doba–Kribi",
+       "Export",
+       "/projets#projet-corridor-doba-kribi"
+      ],
+      [
+       "Tchadium + Mobile Stations",
+       "Distribution",
+       "/projets#projet-tchadium-mobile"
+      ],
+      [
+       "Mini-raffineries modulaires",
+       "Raffinage",
+       "/projets#projet-mini-raffineries"
+      ],
+      [
+       "Water-to-Value",
+       "Eau de production",
+       "/projets#projet-water-to-value"
+      ],
+      [
+       "Engrais de Sédigui",
+       "Gaz et urée",
+       "/projets#projet-engrais-sedigui"
+      ],
+      [
+       "Hybridation & micro-réseaux",
+       "Énergie",
+       "/projets#projet-micro-reseaux"
+      ]
+     ]
+    },
+    {
+     "title": "Suivre l’avancement",
+     "links": [
+      [
+       "Avancement publié",
+       "État et justificatifs disponibles",
+       "/projets#avancement"
+      ],
+      [
+       "Cibles 2030",
+       "Tableau de bord",
+       "/cibles-2030"
+      ],
+      [
+       "Atlas du secteur",
+       "Le secteur pétrolier du Tchad",
+       "/atlas/"
+      ],
+      [
+       "Proposer un partenariat",
+       "Contact projet",
+       "/contact?profil=partenariat#ctForm"
+      ]
+     ]
+    }
+   ],
+   "feature": null
+  },
+  {
+   "id": "e",
+   "label": "Engagements",
+   "description": "Des règles posées avant le premier baril : climat, territoires, transparence.",
+   "overview": [
+    "Vue d’ensemble",
+    "Engagements & indicateurs",
+    "/engagements"
+   ],
+   "groups": [
+    {
+     "title": "Mesurer",
+     "links": [
+      [
+       "Engagements & indicateurs",
+       "Base, réalisé, cible, échéance",
+       "/engagements"
+      ],
+      [
+       "Cibles 2030",
+       "Tableau de bord",
+       "/cibles-2030"
+      ],
+      [
+       "Transition énergétique",
+       "Climat et énergie",
+       "/greentech/#transition"
+      ]
+     ]
+    },
+    {
+     "title": "Rendre des comptes",
+     "links": [
+      [
+       "Communautés & territoires",
+       "Contenu local, désenclavement",
+       "/communautes"
+      ],
+      [
+       "Paiements aux États",
+       "Les sept catégories ITIE",
+       "/paiements-etats"
+      ],
+      [
+       "Éthique & conformité",
+       "Anti-corruption, alerte",
+       "/ethique"
+      ]
+     ]
+    }
+   ],
+   "feature": null
+  },
+  {
+   "id": "f",
+   "label": "Actualités & Documents",
+   "description": "Annonces, analyses et preuves, chacune avec son type et sa date.",
+   "overview": [
+    "Vue d’ensemble",
+    "Publications & documents",
+    "/publications"
+   ],
+   "groups": [
+    {
+     "title": "Actualités officielles",
+     "links": [
+      [
+       "Communiqués officiels",
+       "Annonce · datée",
+       "/communiques"
+      ],
+      [
+       "Espace presse",
+       "Contacts et ressources",
+       "/communiques#presse"
+      ]
+     ]
+    },
+    {
+     "title": "Analyses & Carnets",
+     "links": [
+      [
+       "Carnets",
+       "Analyse · articles et interviews",
+       "/carnets"
+      ]
+     ]
+    },
+    {
+     "title": "Documents & données",
+     "links": [
+      [
+       "Publications & documents",
+       "Preuve · brochures, fiches, data book",
+       "/publications"
+      ],
+      [
+       "Atlas du secteur",
+       "Référence · données du secteur",
+       "/atlas/"
+      ],
+      [
+       "Glossaire pétrolier",
+       "Référence · termes du métier",
+       "/glossaire-petrolier"
+      ]
+     ]
+    }
+   ],
+   "feature": null
+  },
+  {
+   "id": "d",
+   "label": "Investisseurs",
+   "description": "Un capital levé par paliers, avec des jalons datés.",
+   "overview": [
+    "Vue d’ensemble",
+    "La page investisseurs",
+    "/investisseurs"
+   ],
+   "groups": [
+    {
+     "title": "Comprendre",
+     "links": [
+      [
+       "Thèse d’investissement",
+       "Pourquoi le Tchad, maintenant",
+       "/investisseurs#these"
+      ],
+      [
+       "Modèle d’affaires",
+       "Chaque étage finance le suivant",
+       "/investisseurs#modele"
+      ],
+      [
+       "Capital & financement",
+       "Paliers, affectation, projets",
+       "/investisseurs#financement-projets"
+      ],
+      [
+       "Hypothèses & risques",
+       "Ce sur quoi reposent les chiffres",
+       "/investisseurs#hypotheses"
+      ]
+     ]
+    },
+    {
+     "title": "Vérifier",
+     "links": [
+      [
+       "Agenda investisseur",
+       "Prochains rendez-vous",
+       "/investisseurs#agenda"
+      ],
+      [
+       "Documents investisseurs",
+       "Fiche, data book, point d’étape",
+       "/publications#pub-inv"
+      ],
+      [
+       "Gouvernance",
+       "Société anonyme OHADA",
+       "/gouvernance"
+      ]
+     ]
+    }
+   ],
+   "feature": [
+    "Échanger avec l’équipe",
+    "Manifester son intérêt",
+    "Statut, conditions et prochaines étapes",
+    "/contact?profil=invest#ctForm"
+   ]
+  }
+ ],
+ "en": [
+  {
+   "id": "a",
+   "label": "Company",
+   "description": "A public limited company with Chadian capital, in formation in N’Djamena.",
+   "overview": [
+    "Overview",
+    "About us",
+    "/societe-en"
+   ],
+   "groups": [
+    {
+     "title": "Who we are",
+     "links": [
+      [
+       "The Company",
+       "Mission, vision, milestones",
+       "/societe-en"
+      ],
+      [
+       "The EnerTchad Way",
+       "Building and keeping value",
+       "/societe-en#voie"
+      ],
+      [
+       "Governance",
+       "OHADA public limited company",
+       "/gouvernance-en"
+      ],
+      [
+       "Innovation & R&D",
+       "Frugal engineering, AI",
+       "/innovation-en"
+      ],
+      [
+       "Ethics & compliance",
+       "Code and reporting",
+       "/ethique-en"
+      ]
+     ]
+    },
+    {
+     "title": "Work with us",
+     "links": [
+      [
+       "Careers",
+       "Jobs & applications",
+       "/carrieres-en"
+      ],
+      [
+       "Procurement & suppliers",
+       "Central purchasing, vendor listing",
+       "/achats-en"
+      ],
+      [
+       "FAQ",
+       "Help centre",
+       "/faq-en"
+      ],
+      [
+       "Contact",
+       "Write, call, visit",
+       "/contact-en"
+      ]
+     ]
+    }
+   ],
+   "feature": null
+  },
+  {
+   "id": "b",
+   "label": "Activities & Engineering",
+   "description": "Four industrial segments, four integrated capabilities, solutions by need.",
+   "overview": [
+    "Overview",
+    "What we do",
+    "/nos-activites-en"
+   ],
+   "groups": [
+    {
+     "title": "Industrial segments",
+     "links": [
+      [
+       "Exploration & Production",
+       "More from every field",
+       "/pole-amont-en"
+      ],
+      [
+       "Transport & storage",
+       "Export corridor, distributed reserve",
+       "/pole-intermediaire-en"
+      ],
+      [
+       "Refining & distribution",
+       "Mini-refinery, stations, last mile",
+       "/pole-aval-en"
+      ],
+      [
+       "Petrochemicals",
+       "Methanol, urea, bitumen",
+       "/pole-enerchimie-en"
+      ]
+     ]
+    },
+    {
+     "title": "Cross-functional capabilities",
+     "links": [
+      [
+       "Sustainability · GreenTech",
+       "Water, flaring, HSE-Q",
+       "/pole-greentech-en"
+      ],
+      [
+       "Technology & data · TchadiTech",
+       "Digital, data",
+       "/pole-tchaditech-en"
+      ],
+      [
+       "Training & skills · Tchaditude",
+       "Academy, next generation",
+       "/pole-tchaditude-en"
+      ],
+      [
+       "Engineering & Advisory · EnerConseils",
+       "Studies, design, projects",
+       "/pole-enerconseils-en"
+      ]
+     ]
+    },
+    {
+     "title": "Client solutions",
+     "links": [
+      [
+       "Industry & worksites",
+       "Proposed scope and enquiry",
+       "/boutique/en/clients#industriels"
+      ],
+      [
+       "Transport & fleets",
+       "Proposed scope and enquiry",
+       "/boutique/en/clients#flottes"
+      ],
+      [
+       "Oilfield operators",
+       "Proposed scope and enquiry",
+       "/boutique/en/clients#operateurs"
+      ],
+      [
+       "Solutions by need",
+       "Produce, move, transform",
+       "/nos-activites-en#besoins"
+      ],
+      [
+       "Client area",
+       "Fuels, services, shop",
+       "/boutique/en/clients"
+      ],
+      [
+       "Additional barrel calculator",
+       "Tool · enhanced recovery (in French)",
+       "/amont/calculateur-baril-additionnel"
+      ]
+     ]
+    }
+   ],
+   "feature": null
+  },
+  {
+   "id": "c",
+   "label": "Projects",
+   "description": "Eight proposed projects: published status, prerequisites and evidence.",
+   "overview": [
+    "Overview",
+    "Roadmap",
+    "/projets-en"
+   ],
+   "groups": [
+    {
+     "title": "Flagship projects",
+     "links": [
+      [
+       "E&P intervention force",
+       "Consortia",
+       "/projets-en#projet-intervention-ep"
+      ],
+      [
+       "EOR pilots",
+       "Mature fields",
+       "/projets-en#projet-pilotes-eor"
+      ],
+      [
+       "Doba–Kribi corridor",
+       "Export",
+       "/projets-en#projet-corridor-doba-kribi"
+      ],
+      [
+       "Tchadium + Mobile Stations",
+       "Distribution",
+       "/projets-en#projet-tchadium-mobile"
+      ],
+      [
+       "Modular mini-refineries",
+       "Refining",
+       "/projets-en#projet-mini-raffineries"
+      ],
+      [
+       "Water-to-Value",
+       "Produced water",
+       "/projets-en#projet-water-to-value"
+      ],
+      [
+       "Sédigui fertiliser",
+       "Gas and urea",
+       "/projets-en#projet-engrais-sedigui"
+      ],
+      [
+       "Hybridisation & micro-grids",
+       "Energy",
+       "/projets-en#projet-micro-reseaux"
+      ]
+     ]
+    },
+    {
+     "title": "Track progress",
+     "links": [
+      [
+       "Published progress",
+       "Status and available evidence",
+       "/projets-en#avancement"
+      ],
+      [
+       "2030 targets",
+       "Dashboard",
+       "/cibles-2030-en"
+      ],
+      [
+       "Sector atlas",
+       "Chad’s oil sector",
+       "/atlas-en"
+      ],
+      [
+       "Propose a partnership",
+       "Project contact",
+       "/contact-en?profil=partenariat#ctForm"
+      ]
+     ]
+    }
+   ],
+   "feature": null
+  },
+  {
+   "id": "e",
+   "label": "Commitments",
+   "description": "Rules set before the first barrel: climate, territories, transparency.",
+   "overview": [
+    "Overview",
+    "Commitments & indicators",
+    "/engagements-en"
+   ],
+   "groups": [
+    {
+     "title": "Measure",
+     "links": [
+      [
+       "Commitments & indicators",
+       "Baseline, actual, target, deadline",
+       "/engagements-en"
+      ],
+      [
+       "2030 targets",
+       "Dashboard",
+       "/cibles-2030-en"
+      ],
+      [
+       "Energy transition",
+       "Climate and energy",
+       "/pole-greentech-en#transition"
+      ]
+     ]
+    },
+    {
+     "title": "Account for",
+     "links": [
+      [
+       "Communities & territories",
+       "Local content, opening up regions",
+       "/communautes-en"
+      ],
+      [
+       "Payments to governments",
+       "The seven EITI categories",
+       "/paiements-etats-en"
+      ],
+      [
+       "Ethics & compliance",
+       "Anti-corruption, alert line",
+       "/ethique-en"
+      ]
+     ]
+    }
+   ],
+   "feature": null
+  },
+  {
+   "id": "f",
+   "label": "News & Documents",
+   "description": "Announcements, analysis and evidence, each with its type and date.",
+   "overview": [
+    "Overview",
+    "Publications & documents",
+    "/publications-en"
+   ],
+   "groups": [
+    {
+     "title": "Official news",
+     "links": [
+      [
+       "Press releases",
+       "Announcement · dated",
+       "/communiques-en"
+      ],
+      [
+       "Press room",
+       "Contacts and resources",
+       "/communiques-en#presse"
+      ]
+     ]
+    },
+    {
+     "title": "Analysis & Notebooks",
+     "links": [
+      [
+       "Journal",
+       "Analysis · articles and interviews",
+       "/carnets-en"
+      ]
+     ]
+    },
+    {
+     "title": "Documents & data",
+     "links": [
+      [
+       "Publications & documents",
+       "Evidence · brochures, fact sheets, data book",
+       "/publications-en"
+      ],
+      [
+       "Sector atlas",
+       "Reference · sector data",
+       "/atlas-en"
+      ],
+      [
+       "Oil glossary",
+       "Reference · terms of the trade",
+       "/glossaire-petrolier-en"
+      ]
+     ]
+    }
+   ],
+   "feature": null
+  },
+  {
+   "id": "d",
+   "label": "Investors",
+   "description": "Capital raised in tiers, with dated milestones.",
+   "overview": [
+    "Overview",
+    "The investor page",
+    "/investisseurs-en"
+   ],
+   "groups": [
+    {
+     "title": "Understand",
+     "links": [
+      [
+       "Investment case",
+       "Why Chad, why now",
+       "/investisseurs-en#these"
+      ],
+      [
+       "Business model",
+       "Each stage funds the next",
+       "/investisseurs-en#modele"
+      ],
+      [
+       "Capital & funding",
+       "Tiers, allocation, projects",
+       "/investisseurs-en#financement-projets"
+      ],
+      [
+       "Assumptions & risk",
+       "What the figures rest on",
+       "/investisseurs-en#hypotheses"
+      ]
+     ]
+    },
+    {
+     "title": "Verify",
+     "links": [
+      [
+       "Investor calendar",
+       "Upcoming events",
+       "/investisseurs-en#agenda"
+      ],
+      [
+       "Investor documents",
+       "Fact sheet, data book, progress update",
+       "/publications-en#pub-inv"
+      ],
+      [
+       "Governance",
+       "OHADA public limited company",
+       "/gouvernance-en"
+      ]
+     ]
+    }
+   ],
+   "feature": [
+    "Speak with the team",
+    "Register interest",
+    "Status, conditions and next steps",
+    "/contact-en?profil=invest#ctForm"
+   ]
+  }
+ ]
+}

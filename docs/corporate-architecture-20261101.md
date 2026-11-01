@@ -2,7 +2,7 @@
 
 La navigation française et anglaise suit six rubriques : Entreprise ; Activités & Ingénierie ; Projets ; Engagements ; Actualités & Documents ; Investisseurs. Le portail investisseur et le portefeuille de projets ont chacun une entrée propre.
 
-La définition commune est dans `lib/corporate-architecture.js`. Les pages corporate sont rendues par `withNavigationReview`, les pages natives Essentiel réutilisent les mêmes destinations, et les pieds de page donnent accès aux six rubriques. Les espaces Atlas et Clients conservent leur navigation de service et un retour explicitement nommé « Site corporate EnerTchad ».
+La définition commune reste dans `assets/data/navigation.json`, rendue par `lib/main-nav.js` ; `lib/corporate-architecture.js` la réutilise pour les pieds de page et les liens associés. Les pages corporate sont rendues par `withNavigationReview`, les pages natives Essentiel réutilisent les mêmes destinations, et les pieds de page donnent accès aux six rubriques. Les espaces Atlas et Clients conservent leur navigation de service et un retour explicitement nommé « Site corporate EnerTchad ».
 
 Activités distingue les quatre segments industriels, les quatre capacités transversales et les trois parcours clients. Les huit fiches projets existantes restent les références uniques. Engagements réunit HSE, environnement, communautés, compétences et transparence. Actualités & Documents distingue les annonces officielles, les analyses et les références documentaires.
 

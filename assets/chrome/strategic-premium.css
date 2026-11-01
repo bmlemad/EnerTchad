@@ -87,4 +87,14 @@ html .sp-kpi em,html .sp-state,html .sp-doc .meta,html .sp-statusline span,html 
 /* Thème sombre des pages stratégiques (audit du design, étape 3, validé le 13 octobre 2026). La classe sp-dark est posée
    avant l’affichage par le script de la mise en page quand le visiteur a choisi le thème sombre ailleurs sur le site
    (localStorage et-plight = 0). Valeurs : jetons --et-* de premium-chrome.css. */
-html.sp-dark{color-scheme:dark;--sp-ink:var(--et-snow,#F1F3F6);--sp-muted:var(--et-slate-300,#A9B4C4);--sp-line:var(--et-line-dark,#22314A);--sp-gold:var(--et-gold-300,#D9B567);--sp-gold-ink:var(--et-gold-300,#D9B567);--sp-blue:#7FB8F5;--sp-green:#5FCB98;--sp-green-ink:#5FCB98;--sp-paper:var(--et-night,#0A1422);--sp-card:var(--et-night-2,#0F1B2C);--sp-card-glass:var(--et-night-2,#0F1B2C);--sp-shadow:0 22px 60px -42px rgba(0,0,0,.7);--sp-top:rgba(10,20,34,.93);--sp-glow:rgba(217,181,103,.10);--sp-hero-top:var(--et-night-2,#0F1B2C);--sp-btn:rgba(255,255,255,.04);--sp-primary:var(--et-gold-300,#D9B567);--sp-primary-ink:var(--et-night,#0A1422);--sp-icon-a:#16243A;--sp-icon-b:var(--et-night-2,#0F1B2C);--sp-map-a:var(--et-night-2,#0F1B2C);--sp-map-b:#13233A;--sp-note:rgba(10,20,34,.84)}
+html.sp-dark,html:not(.et-plight):not(.et-jlight) #main-content.sp{color-scheme:dark;--sp-ink:var(--et-snow,#F1F3F6);--sp-muted:var(--et-slate-300,#A9B4C4);--sp-line:var(--et-line-dark,#22314A);--sp-gold:var(--et-gold-300,#D9B567);--sp-gold-ink:var(--et-gold-300,#D9B567);--sp-blue:#7FB8F5;--sp-green:#5FCB98;--sp-green-ink:#5FCB98;--sp-paper:var(--et-night,#0A1422);--sp-card:var(--et-night-2,#0F1B2C);--sp-card-glass:var(--et-night-2,#0F1B2C);--sp-shadow:0 22px 60px -42px rgba(0,0,0,.7);--sp-top:rgba(10,20,34,.93);--sp-glow:rgba(217,181,103,.10);--sp-hero-top:var(--et-night-2,#0F1B2C);--sp-btn:rgba(255,255,255,.04);--sp-primary:var(--et-gold-300,#D9B567);--sp-primary-ink:var(--et-night,#0A1422);--sp-icon-a:#16243A;--sp-icon-b:var(--et-night-2,#0F1B2C);--sp-map-a:var(--et-night-2,#0F1B2C);--sp-map-b:#13233A;--sp-note:rgba(10,20,34,.84)}
+
+/* Lot 79 (refonte A) : Essentiel dans le gabarit commun du site (en-tête fixe, pied « pft »).
+   Le contenu garde ses styles ; on neutralise seulement ce que le gabarit pose sur tout h2
+   (losange, ombre) et sur les liens, et on dégage le haut de page sous l'en-tête fixe. */
+#main-content.sp .sp-hero{padding-top:calc(146px + 48px)}
+@media(max-width:900px){#main-content.sp .sp-hero{padding-top:calc(77px + 28px)}}
+#main-content.sp h2::before{content:none!important;display:none!important}
+#main-content.sp h1,#main-content.sp h2,#main-content.sp h3{text-shadow:none!important}
+html #main-content.sp a.sp-btn.primary:not(#_){color:var(--sp-primary-ink,#fff)!important;-webkit-text-fill-color:currentColor!important}
+#main-content.sp .sp-crumb{display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px}

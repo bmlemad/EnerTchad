@@ -10,8 +10,8 @@ test('six corporate sections have independent entry points and complete project 
     const sections=corporateSections(en),s=en?'-en':'';
     assert.equal(sections.length,6);assert.equal(new Set(sections.map(x=>x.href)).size,6);
     assert.equal(sections[2].href,'/projets'+s);assert.equal(sections[3].href,'/engagements'+s);assert.equal(sections[5].href,'/investisseurs'+s);
-    assert.deepEqual(sections[1].groups.map(x=>x.links.length),[4,4,3]);
-    assert.equal(sections[2].groups[1].links.length,8);
+    assert.deepEqual(sections[1].groups.map(x=>x.links.length),[4,4,6]);
+    assert.equal(sections[2].groups[0].links.length,8);
     for(const section of sections){const links=section.groups.flatMap(g=>g.links.map(x=>x[0]));assert.equal(new Set(links).size,links.length,section.id);}
   }
 });
