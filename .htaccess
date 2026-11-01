@@ -482,30 +482,6 @@ RewriteRule ^(.*)$ https://enertchad.com/$1 [R=301,END,NE]
 # /boutique/ /boutique/index.html 200!
 RewriteRule ^boutique/$ boutique/index.html [END]
 
-# /aval/boutique /boutique/ 308!
-RewriteRule ^aval/boutique$ https://%{HTTP_HOST}/boutique/ [R=308,END,NE]
-
-# /aval/boutique.html /boutique/ 308!
-RewriteRule ^aval/boutique\.html$ https://%{HTTP_HOST}/boutique/ [R=308,END,NE]
-
-# /aval/boutique-en /boutique/en/ 308!
-RewriteRule ^aval/boutique\-en$ https://%{HTTP_HOST}/boutique/en/ [R=308,END,NE]
-
-# /aval/boutique-en.html /boutique/en/ 308!
-RewriteRule ^aval/boutique\-en\.html$ https://%{HTTP_HOST}/boutique/en/ [R=308,END,NE]
-
-# /clients /boutique/clients 308!
-RewriteRule ^clients$ https://%{HTTP_HOST}/boutique/clients [R=308,END,NE]
-
-# /clients.html /boutique/clients 308!
-RewriteRule ^clients\.html$ https://%{HTTP_HOST}/boutique/clients [R=308,END,NE]
-
-# /clients-en /boutique/en/clients 308!
-RewriteRule ^clients\-en$ https://%{HTTP_HOST}/boutique/en/clients [R=308,END,NE]
-
-# /clients-en.html /boutique/en/clients 308!
-RewriteRule ^clients\-en\.html$ https://%{HTTP_HOST}/boutique/en/clients [R=308,END,NE]
-
 # /investor-center /investisseurs 308!
 RewriteRule ^investor\-center$ https://%{HTTP_HOST}/investisseurs [R=308,END,NE]
 
@@ -523,6 +499,54 @@ RewriteRule ^investor\-center\-en\.html$ https://%{HTTP_HOST}/investisseurs-en [
 
 # /investor-center-en/ /investisseurs-en 308!
 RewriteRule ^investor\-center\-en/$ https://%{HTTP_HOST}/investisseurs-en [R=308,END,NE]
+
+# /aval/boutique /boutique/ 308!
+RewriteRule ^aval/boutique$ https://%{HTTP_HOST}/boutique/ [R=308,END,NE]
+
+# /aval/boutique.html /boutique/ 308!
+RewriteRule ^aval/boutique\.html$ https://%{HTTP_HOST}/boutique/ [R=308,END,NE]
+
+# /aval/boutique-en /boutique/en/ 308!
+RewriteRule ^aval/boutique\-en$ https://%{HTTP_HOST}/boutique/en/ [R=308,END,NE]
+
+# /aval/boutique-en.html /boutique/en/ 308!
+RewriteRule ^aval/boutique\-en\.html$ https://%{HTTP_HOST}/boutique/en/ [R=308,END,NE]
+
+# /aval/gpl /aval/produits#gpl 308!
+RewriteRule ^aval/gpl$ https://%{HTTP_HOST}/aval/produits#gpl [R=308,END,NE]
+
+# /aval/gpl.html /aval/produits#gpl 308!
+RewriteRule ^aval/gpl\.html$ https://%{HTTP_HOST}/aval/produits#gpl [R=308,END,NE]
+
+# /aval/gpl-en /aval/produits-en#gpl 308!
+RewriteRule ^aval/gpl\-en$ https://%{HTTP_HOST}/aval/produits-en#gpl [R=308,END,NE]
+
+# /aval/gpl-en.html /aval/produits-en#gpl 308!
+RewriteRule ^aval/gpl\-en\.html$ https://%{HTTP_HOST}/aval/produits-en#gpl [R=308,END,NE]
+
+# /aval/lubrifiants /aval/produits#lubrifiants-bitumes 308!
+RewriteRule ^aval/lubrifiants$ https://%{HTTP_HOST}/aval/produits#lubrifiants-bitumes [R=308,END,NE]
+
+# /aval/lubrifiants.html /aval/produits#lubrifiants-bitumes 308!
+RewriteRule ^aval/lubrifiants\.html$ https://%{HTTP_HOST}/aval/produits#lubrifiants-bitumes [R=308,END,NE]
+
+# /aval/lubrifiants-en /aval/produits-en#lubrifiants-bitumes 308!
+RewriteRule ^aval/lubrifiants\-en$ https://%{HTTP_HOST}/aval/produits-en#lubrifiants-bitumes [R=308,END,NE]
+
+# /aval/lubrifiants-en.html /aval/produits-en#lubrifiants-bitumes 308!
+RewriteRule ^aval/lubrifiants\-en\.html$ https://%{HTTP_HOST}/aval/produits-en#lubrifiants-bitumes [R=308,END,NE]
+
+# /clients /boutique/clients 308!
+RewriteRule ^clients$ https://%{HTTP_HOST}/boutique/clients [R=308,END,NE]
+
+# /clients.html /boutique/clients 308!
+RewriteRule ^clients\.html$ https://%{HTTP_HOST}/boutique/clients [R=308,END,NE]
+
+# /clients-en /boutique/en/clients 308!
+RewriteRule ^clients\-en$ https://%{HTTP_HOST}/boutique/en/clients [R=308,END,NE]
+
+# /clients-en.html /boutique/en/clients 308!
+RewriteRule ^clients\-en\.html$ https://%{HTTP_HOST}/boutique/en/clients [R=308,END,NE]
 
 # /enerconseils/atlas /atlas/ 308!
 RewriteRule ^enerconseils/atlas$ https://%{HTTP_HOST}/atlas/ [R=308,END,NE]
@@ -694,30 +718,6 @@ RewriteRule ^pole\-aval\-reseau$ https://%{HTTP_HOST}/aval/reseau [R=308,END,NE]
 
 # /pole-aval-reseau.html /aval/reseau 308!
 RewriteRule ^pole\-aval\-reseau\.html$ https://%{HTTP_HOST}/aval/reseau [R=308,END,NE]
-
-# /aval/gpl /aval/produits#gpl 308!
-RewriteRule ^aval/gpl$ https://%{HTTP_HOST}/aval/produits#gpl [R=308,END,NE]
-
-# /aval/gpl.html /aval/produits#gpl 308!
-RewriteRule ^aval/gpl\.html$ https://%{HTTP_HOST}/aval/produits#gpl [R=308,END,NE]
-
-# /aval/gpl-en /aval/produits-en#gpl 308!
-RewriteRule ^aval/gpl\-en$ https://%{HTTP_HOST}/aval/produits-en#gpl [R=308,END,NE]
-
-# /aval/gpl-en.html /aval/produits-en#gpl 308!
-RewriteRule ^aval/gpl\-en\.html$ https://%{HTTP_HOST}/aval/produits-en#gpl [R=308,END,NE]
-
-# /aval/lubrifiants /aval/produits#lubrifiants-bitumes 308!
-RewriteRule ^aval/lubrifiants$ https://%{HTTP_HOST}/aval/produits#lubrifiants-bitumes [R=308,END,NE]
-
-# /aval/lubrifiants.html /aval/produits#lubrifiants-bitumes 308!
-RewriteRule ^aval/lubrifiants\.html$ https://%{HTTP_HOST}/aval/produits#lubrifiants-bitumes [R=308,END,NE]
-
-# /aval/lubrifiants-en /aval/produits-en#lubrifiants-bitumes 308!
-RewriteRule ^aval/lubrifiants\-en$ https://%{HTTP_HOST}/aval/produits-en#lubrifiants-bitumes [R=308,END,NE]
-
-# /aval/lubrifiants-en.html /aval/produits-en#lubrifiants-bitumes 308!
-RewriteRule ^aval/lubrifiants\-en\.html$ https://%{HTTP_HOST}/aval/produits-en#lubrifiants-bitumes [R=308,END,NE]
 
 # /pole-petrochimie /petrochimie/ 308!
 RewriteRule ^pole\-petrochimie$ https://%{HTTP_HOST}/petrochimie/ [R=308,END,NE]
