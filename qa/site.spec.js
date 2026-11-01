@@ -467,7 +467,7 @@ test('command search dialog — open, focus, Escape', async ({ page }) => {
 
 
 test('redirects — no redirect chains', async () => {
-  const config = JSON.parse(require('node:fs').readFileSync(require('node:path').join(__dirname, '..', 'vercel.json'), 'utf8')).redirects;
+  const config = JSON.parse(require('node:fs').readFileSync(require('node:path').join(__dirname, '..', 'redirects.json'), 'utf8')).redirects;
   const sources = new Set(config.map(r => r.source));
   for (const rule of config) {
     const path = String(rule.destination || '').split('#')[0];
@@ -828,7 +828,7 @@ test('SEO — hreflang self-reference matches canonical route', async ({ request
 
 test('security — redirect destinations stay internal', async () => {
   const fs = await import('node:fs/promises');
-  const config = JSON.parse(await fs.readFile(require('node:path').join(__dirname, '..', 'vercel.json'), 'utf8'));
+  const config = JSON.parse(await fs.readFile(require('node:path').join(__dirname, '..', 'redirects.json'), 'utf8'));
   expect(Array.isArray(config.redirects)).toBeTruthy();
   for (const rule of config.redirects) {
     expect(typeof rule.source).toBe('string');
@@ -840,7 +840,7 @@ test('security — redirect destinations stay internal', async () => {
 
 test('SEO redirects — permanent and chain-free', async () => {
   const fs = await import('node:fs/promises');
-  const config = JSON.parse(await fs.readFile(require('node:path').join(__dirname, '..', 'vercel.json'), 'utf8'));
+  const config = JSON.parse(await fs.readFile(require('node:path').join(__dirname, '..', 'redirects.json'), 'utf8'));
   const redirects = Array.isArray(config.redirects) ? config.redirects : [];
   const sources = new Set(redirects.map(r => String(r.source)));
   for (const rule of redirects) {
