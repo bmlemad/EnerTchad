@@ -1,15 +1,14 @@
 # -*- coding: utf-8 -*-
-"""Regenere _redirects (Netlify) depuis vercel.json, pour que les deux hebergeurs
-appliquent les memes redirections. Usage : python3 scripts/gen_netlify_redirects.py"""
+"""Regenere _redirects depuis redirects.json (source unique des redirections ; lot 84 : ancien vercel.json),
+pour que les hebergeurs appliquent les memes redirections. Usage : python3 scripts/gen_netlify_redirects.py"""
 import json, os, re
 
 HEAD = [
-    "# Regles Netlify generees depuis vercel.json (meme ordre, memes cibles).",
-    "# Hebergement principal : Netlify (enertchad.com, sous-domaine enertchad.netlify.app) depuis le 1er octobre 2026,",
-    "# Vercel etant suspendu. Toute redirection s ajoute d abord dans vercel.json, puis",
-    "# ce fichier se regenere : python3 scripts/gen_netlify_redirects.py",
-    "# Redirections : 308 forcees (!), comme Vercel qui les applique avant les fichiers.",
-    "# Reecritures : 200 non forcees, comme Vercel qui sert d abord un fichier existant.",
+    "# Regles generees depuis redirects.json (meme ordre, memes cibles) ; le .htaccess OVH en derive (scripts/ovh/package.py).",
+    "# Hebergement principal : OVH (enertchad.com) ; Netlify ne sert plus que la redirection de l ancienne adresse.",
+    "# Toute redirection s ajoute d abord dans redirects.json, puis ce fichier se regenere : python3 scripts/gen_netlify_redirects.py",
+    "# Redirections : 308 forcees (!), appliquees avant les fichiers.",
+    "# Reecritures : 200 non forcees, un fichier existant est servi d abord.",
     "# Domaine : l ancienne adresse enertchad.netlify.app redirige (301) vers enertchad.com,",
     "# pour qu une seule adresse soit indexee. Les apercus de deploiement ne sont pas touches.",
     "",
@@ -18,7 +17,7 @@ HEAD = [
 ]
 
 def main():
-    vj = json.load(open('vercel.json', encoding='utf-8'))
+    vj = json.load(open('redirects.json', encoding='utf-8'))
     # These files are built from the existing editorial sources by finalize.mjs.
     # Exact host rules precede generic legacy redirects, including /clients.
     # Espaces Clients et Atlas : servis sous enertchad.com (/boutique/, /atlas/).
