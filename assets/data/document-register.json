@@ -92,8 +92,8 @@
       "status": "published",
       "evidence_status": "target-data",
       "version": "2030 targets",
-      "bytes": 962,
-      "git_blob_sha": "6f71f9c1807fd4878f915d9b6a1b039081fbca02"
+      "bytes": 1028,
+      "git_blob_sha": "1b42aa112c84438da3e6b2c75ec9e46ac4bacf20"
     },
     {
       "id": "esg-data-en",

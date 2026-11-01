@@ -76,14 +76,14 @@
       "id": "esg-data-fr",
       "path": "/assets/data/indicateurs-esg-2030.csv",
       "format": "CSV",
-      "bytes": 962,
+      "bytes": 1028,
       "language": "fr",
       "category": "esg",
       "status": "target-data",
       "version": "2030 targets",
       "role_fr": "Indicateurs ESG — références et cibles",
       "role_en": "ESG indicators — baseline and targets",
-      "git_blob_sha": "6f71f9c1807fd4878f915d9b6a1b039081fbca02"
+      "git_blob_sha": "1b42aa112c84438da3e6b2c75ec9e46ac4bacf20"
     },
     {
       "id": "esg-data-en",
