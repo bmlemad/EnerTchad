@@ -25,7 +25,7 @@ for p in pages:
     rows.append((rel,hs,css,js,bool(title and title.group(1).strip()),len(h1),bool(canonical)))
 rows.sort(key=lambda x:-(x[1]+x[2]+x[3]))
 sitemap=ROOT/"sitemap.xml"; sitemap_urls=len(re.findall(r"<loc>",sitemap.read_text(encoding="utf-8",errors="ignore"),re.I)) if sitemap.exists() else 0
-redirects=0; v=ROOT/"vercel.json"
+redirects=0; v=ROOT/"redirects.json"
 if v.exists():
     try: redirects=len(json.loads(v.read_text(encoding="utf-8")).get("redirects",[]))
     except Exception: pass
