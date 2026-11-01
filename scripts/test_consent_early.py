@@ -1,5 +1,6 @@
-# Lot 66 : chaque page exportée qui charge nav_a.js déclare aussi audience-consent.js en différé
-# dans son <head>, une seule fois, à la même version que celle injectée par nav_a.js (repli conservé).
+# Lot 66 : chaque page exportée qui charge nav_a.js déclare aussi audience-consent.js dans son <head>
+# (lot 89 : en « async », pas « defer », pour que le bandeau soit peint sans attendre la file différée),
+# une seule fois, à la même version que celle injectée par nav_a.js (repli conservé).
 import glob
 import re
 import sys
@@ -15,7 +16,7 @@ for f in glob.glob('out/**/*.html', recursive=True):
         continue
     pages += 1
     head = h[:h.find('</head>')]
-    tags = re.findall(r'<script defer src="/assets/chrome/audience-consent\.js\?v=([0-9a-f]{12})"></script>', head)
+    tags = re.findall(r'<script async src="/assets/chrome/audience-consent\.js\?v=([0-9a-f]{12})"></script>', head)
     if tags != [ver]:
         bad += 1
         print('KO', f, tags)
