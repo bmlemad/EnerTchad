@@ -10,8 +10,8 @@ Site institutionnel d'**EnerTchad S.A.**, société pétrolière intégrée du T
 
 Dépôt = site (fichiers statiques à la racine). Aucune étape de build côté hôte.
 
-- **Vercel** : Framework *Other*, build command vide, output = racine. `vercel.json` applique en-têtes de sécurité + cleanUrls + trailingSlash.
-- **Cloudflare Pages** : build command vide, output `/`. `_redirects` + `_headers` natifs.
+- **OVH (hébergement principal)** : export `out/` publié sur la branche `ovh-static` par le workflow *corporate-readiness-ovh*, puis déployé depuis le manager. `redirects.json` est la source unique des redirections, réécritures et en-têtes (ancien `vercel.json`, lot 84) ; `python3 scripts/gen_netlify_redirects.py` en régénère `_redirects`, dont `scripts/ovh/package.py` dérive le `.htaccess`.
+- **Netlify** : ne sert plus que la redirection 301 de l'ancienne adresse `enertchad.netlify.app`.
 
 Domaine : `enertchad.com`.
 
