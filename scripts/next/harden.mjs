@@ -5,7 +5,7 @@
 //  2. hardenHtml : pose, en fin de <head>, une politique CSP par page
 //     (<meta http-equiv>) qui n'autorise que les scripts en ligne et attributs
 //     on*= presents dans CETTE page, par empreinte SHA-256. L'en-tete HTTP (_headers,
-//     vercel.json, .htaccess OVH) reste generique : hotes autorises et 'unsafe-inline'
+//     redirects.json, .htaccess OVH) reste generique : hotes autorises et 'unsafe-inline'
 //     que la politique de la page neutralise (une ressource doit satisfaire les deux).
 //     Les pages qui fabriquent des attributs on*= en JavaScript (boutique : produits
 //     generes a l'execution) ne recoivent pas de politique de page : leurs empreintes
