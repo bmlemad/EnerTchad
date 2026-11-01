@@ -78,7 +78,11 @@ export function inlineCritical(html, page, versions) {
 // déclaré en différé dans le <head> des pages qui chargent nav_a.js ; l'injection de nav_a.js
 // reste (repli) et ne fait rien grâce au garde « if(window.etAudienceConsent)return ».
 // Comportement inchangé : consentement préalable, aucune requête Google avant « Accepter ».
-export const CONSENT_TAG = '<script defer src="/assets/chrome/audience-consent.js"></script>';
+// Lot 89 : « async » au lieu de « defer ». En différé, le script arrivait à 2,5 s mais le bandeau n'était
+// peint qu'à 4,3–4,4 s (Slow 4G, CPU ×4) : la file des scripts différés et DOMContentLoaded occupaient
+// le fil principal. En asynchrone, le script s'exécute dès son arrivée (bandeau peint à 1,1–3,1 s mesuré).
+// Il est autonome (feuille en ligne, garde window.etAudienceConsent partagée avec l'injection de nav_a.js).
+export const CONSENT_TAG = '<script async src="/assets/chrome/audience-consent.js"></script>';
 export function earlyConsent(html) {
   const end = html.indexOf('</head>');
   if (end < 0 || !html.includes('/assets/chrome/nav_a.js')) return html;
