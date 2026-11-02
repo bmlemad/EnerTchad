@@ -196,6 +196,31 @@ try{(function(){
   var links=u.querySelectorAll('a');u.insertBefore(a,links[2]||null);
 })()}catch(e){}
 
+/* Lot 102 (choix du DG, 2 nov. 2026) : à partir de 1 536 px la barre utilitaire est masquée (allege-2026.css) et ses
+   liens de langue (FR · EN, ع), le raccourci « 90 secondes » et l'appel à l'action rejoignent la droite de la barre
+   principale (.nx-cta, avant le bouton du menu), classe nx-fused. En dessous, ils reprennent leur place d'origine
+   (voisin de droite mémorisé, remise dans l'ordre inverse). Un seul exemplaire de chaque lien dans la page. */
+try{(function(){
+  var mq=window.matchMedia&&matchMedia('(min-width:1536px)');if(!mq)return;
+  var moved=[];
+  function place(){
+    var u=document.querySelector('#nav .nx-util-in'),c=document.querySelector('#nav .nx-cta'),tog=document.getElementById('navTog');
+    if(!u||!c)return;
+    if(mq.matches){
+      if(moved.length)return;
+      ['[data-et-short="essentiel"],a[href="/essentiel"],a[href="/essentiel-en"]','.nx-lang','.nx-langx','.nx-invest'].forEach(function(sel){
+        var a=u.querySelector(sel);if(!a)return;
+        moved.push({a:a,next:a.nextSibling,tab:a.getAttribute('tabindex')});
+        a.removeAttribute('tabindex');a.classList.add('nx-fused');c.insertBefore(a,tog&&tog.parentNode===c?tog:null);
+      });
+    }else{
+      while(moved.length){var m=moved.pop();m.a.classList.remove('nx-fused');if(m.tab!==null)m.a.setAttribute('tabindex',m.tab);u.insertBefore(m.a,m.next&&m.next.parentNode===u?m.next:null)}
+    }
+  }
+  place();
+  if(mq.addEventListener)mq.addEventListener('change',place);else if(mq.addListener)mq.addListener(place);
+})()}catch(e){}
+
 
 try{(function(){
  function go(){
@@ -221,7 +246,7 @@ try{(function(){
 })()}catch(e){}
 
 
-(function(){var s=document.createElement("script");s.src="/assets/chrome/audience-consent.js?v=24433d83077c";s.defer=true;document.head.appendChild(s)})();
+(function(){var s=document.createElement("script");s.src="/assets/chrome/audience-consent.js?v=e5602d7a1c1b";s.defer=true;document.head.appendChild(s)})();
 
 
 ;(function(){try{
