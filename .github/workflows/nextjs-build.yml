@@ -26,6 +26,8 @@ jobs:
       - run: node --test scripts/test_main_nav.mjs
       - name: Check that every press release page is up to date with the list (lot 99)
         run: python3 scripts/gen_communique_pages.py --check
+      - name: Check that the press room pages are up to date with their sources (lot 99)
+        run: python3 scripts/gen_presse_pages.py --check
       - run: npm run build
         env:
           NEXT_TELEMETRY_DISABLED: '1'
