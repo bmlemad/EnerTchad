@@ -44,6 +44,8 @@ jobs:
         run: python3 scripts/test_home_latest.py
       - name: Check that the light chrome rule leads every page (lot 102)
         run: python3 scripts/test_light_chrome.py
+      - name: Check that the back-to-top icons are hidden from assistive technology (lot 103)
+        run: python3 scripts/test_decorative_icons.py
       - uses: actions/upload-artifact@v7
         with:
           name: enertchad-netlify-export
