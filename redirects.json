@@ -937,16 +937,6 @@
       "permanent": true
     },
     {
-      "source": "/presse",
-      "destination": "/communiques#presse",
-      "permanent": true
-    },
-    {
-      "source": "/presse-en",
-      "destination": "/communiques-en#presse",
-      "permanent": true
-    },
-    {
       "source": "/Dossier_Investisseur_EnerTchad.pptx",
       "destination": "/Fiche_Investisseur_EnerTchad.pdf",
       "statusCode": 301
