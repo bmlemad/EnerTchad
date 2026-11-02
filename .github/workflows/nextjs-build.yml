@@ -42,6 +42,8 @@ jobs:
         run: python3 scripts/test_glass_chrome.py
       - name: Check that the home page leads with the latest dated publication (lot 100)
         run: python3 scripts/test_home_latest.py
+      - name: Check that the light chrome rule leads every page (lot 102)
+        run: python3 scripts/test_light_chrome.py
       - uses: actions/upload-artifact@v7
         with:
           name: enertchad-netlify-export
