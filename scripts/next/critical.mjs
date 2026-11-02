@@ -116,6 +116,55 @@ export function glassChrome(html) {
 // capacités du menu par navCapabilities). L'ancre reste valable sur la page des communiqués. Idempotent.
 export const pressRoom = html => html.replace(/href="\/communiques#presse"/g, 'href="/presse"').replace(/href="\/communiques-en#presse"/g, 'href="/presse-en"');
 
+// Lot 100 (choix du DG, 2 novembre 2026) : « Dernière publication » sous le héros de l'accueil FR et EN.
+// Revue ExxonMobil, écart « accueil sans fil d'actualité en tête » : la pièce datée la plus récente arrivait en
+// 8e position, à 4 000 px. Une bande fine, calculée à l'export depuis les sources déjà datées au jour — les
+// communiqués (liste de communiques(-en).html) et les carnets (datePublished des journal-*.html) ; les documents
+// n'ont qu'un mois de date et ne concourent pas. Aucun chiffre ni texte nouveau : date, type, titre, lien.
+// Idempotent ; contrôle : scripts/test_home_latest.py.
+import { readdirSync } from 'node:fs';
+const SRC_ROOT = new URL('../../', import.meta.url);
+const MONTHS = { fr: ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'],
+                 en: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'] };
+const dateText = (iso, lang) => { const [y, m, d] = iso.split('-').map(Number); return `${d} ${MONTHS[lang][m - 1]} ${y}`; };
+function latestOf(lang) {
+  const en = lang === 'en';
+  const items = [];
+  try {
+    const list = readFileSync(new URL(`communiques${en ? '-en' : ''}.html`, SRC_ROOT), 'utf8');
+    for (const li of list.match(/<li id="cp-\d+">[\s\S]*?<\/li>/g) || []) {
+      const date = (li.match(/<time datetime="([^"]+)"/) || [])[1], ref = (li.match(/<span>(CP-\d{4}-\d{3})<\/span>/) || [])[1];
+      const title = ((li.match(/<h2>([\s\S]*?)<\/h2>/) || [])[1] || '').replace(/<[^>]+>/g, '').trim();
+      if (date && ref && title) items.push({ date, title, href: `/communique/${ref.toLowerCase()}${en ? '-en' : ''}`, type: en ? 'Press release' : 'Communiqué' });
+    }
+    for (const f of readdirSync(SRC_ROOT)) {
+      if (!/^journal-.*\.html$/.test(f) || f.endsWith('-en.html') !== en) continue;
+      const t = readFileSync(new URL(f, SRC_ROOT), 'utf8');
+      const date = (t.match(/"datePublished":"(\d{4}-\d{2}-\d{2})"/) || [])[1], title = (t.match(/"headline":"([^"]+)"/) || [])[1];
+      if (date && title) items.push({ date, title, href: '/' + f.slice(0, -5), type: en ? 'Notebook' : 'Carnet' });
+    }
+  } catch { return null; }
+  items.sort((a, b) => b.date.localeCompare(a.date) || a.href.localeCompare(b.href));
+  return items[0] || null;
+}
+const LATEST = { fr: latestOf('fr'), en: latestOf('en') };
+const esc = s => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
+const LATEST_CSS = '<style data-et-latest>.hm-latest{background:var(--et-paper,#faf8f3);color:var(--et-ink-900,#0A1A2F);border-bottom:1px solid rgba(16,26,44,.14);padding:10px 24px;font-size:.92rem;line-height:1.5}html:not(.et-plight) .hm-latest{background:var(--et-night-2,#0F1B2C);color:var(--et-snow,#F1F3F6);border-bottom-color:rgba(255,255,255,.14)}.hm-latest .hm-latest-row{margin:0;display:flex;flex-wrap:wrap;gap:6px 10px;align-items:baseline}.hm-latest strong{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase}.hm-latest .hm-latest-row>*{display:inline-block;max-width:100%}.hm-latest a{color:inherit;text-decoration:underline;text-underline-offset:.2em}.hm-latest .hm-latest-all{margin-left:auto;text-decoration:none;opacity:.85}.hm-latest .hm-latest-sep{opacity:.5}</style>';
+export function latestPublication(html, page = '') {
+  const lang = page === 'index.html' ? 'fr' : page === 'index-en.html' ? 'en' : null;
+  const it = lang && LATEST[lang];
+  if (!it || html.includes('hm-latest')) return html;
+  const hero = html.indexOf('<header class="et-hero"');
+  const end = hero < 0 ? -1 : html.indexOf('</header>', hero);
+  if (end < 0) return html;
+  const at = end + '</header>'.length;
+  const en = lang === 'en';
+  const band = `<aside class="hm-latest" aria-label="${en ? 'Latest publication' : 'Dernière publication'}"><div class="et-inner"><div class="hm-latest-row"><strong>${en ? 'Latest publication' : 'Dernière publication'}</strong>` +
+    `<span class="hm-latest-sep" aria-hidden="true">·</span><time datetime="${it.date}">${dateText(it.date, lang)}</time><span class="hm-latest-sep" aria-hidden="true">·</span><span>${it.type}</span>` +
+    `<span class="hm-latest-sep" aria-hidden="true">·</span><a href="${it.href}">${esc(it.title)}</a><a class="hm-latest-all" href="${en ? '/publications-en' : '/publications'}">${en ? 'All publications' : 'Toutes les publications'} <span aria-hidden="true">→</span></a></div></div></aside>` + LATEST_CSS;
+  return html.slice(0, at) + band + html.slice(at);
+}
+
 // Lot 69 (option A retenue par le DG) : trois scripts chargés sans « defer » vers la fin du <body>
 // de 197 pages bloquaient la lecture de la page jusqu'à leur arrivée, et donc tous les scripts
 // différés (dont le bandeau de consentement). Ils passent en « defer », dans le même ordre, comme
