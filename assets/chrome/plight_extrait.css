@@ -268,31 +268,13 @@ html.et-jlight footer .logo-img:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
 /* ---------- 4. BARRE DE NAVIGATION : verre clair ---------- */
 html.et-plight .nav:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
 html.et-jlight .nav:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
-  background:linear-gradient(180deg,rgba(250,247,241,.955),rgba(246,242,234,.925))!important;
-  background-color:rgba(250,247,241,.94)!important;
-  -webkit-backdrop-filter:blur(16px) saturate(150%)!important;
-  backdrop-filter:blur(16px) saturate(150%)!important;
-  border-bottom:1px solid var(--et-hair-ink,rgba(26,35,48,.16))!important;
   color:#2A3648!important}
-
-html.et-plight .nav.scrolled:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
-html.et-plight .nav.nx.scrolled:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
-html.et-jlight .nav.scrolled:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
-  background:rgba(250,247,241,.94)!important;
-  background-color:rgba(250,247,241,.94)!important;
-  -webkit-backdrop-filter:blur(22px) saturate(165%)!important;
-  backdrop-filter:blur(22px) saturate(165%)!important;
-  box-shadow:0 10px 34px rgba(26,35,48,.13)!important}
 
 html.et-plight .nav.scrolled:not(#e1):not(#e2):not(#e3):not(#e4)::after,
 html.et-jlight .nav.scrolled:not(#e1):not(#e2):not(#e3):not(#e4)::after{
   background:linear-gradient(90deg,transparent,rgba(138,98,16,.55),rgba(21,95,168,.5),transparent)!important}
 
 /* bandeau utilitaire du haut */
-html.et-plight .nx-util:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
-html.et-jlight .nx-util:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
-  background:rgba(243,238,229,.58)!important;-webkit-backdrop-filter:blur(14px) saturate(120%)!important;backdrop-filter:blur(14px) saturate(120%)!important;
-  border-bottom:1px solid var(--et-hair-ink,rgba(26,35,48,.16))!important}
 html.et-plight .nx-util-in>a:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
 html.et-jlight .nx-util-in>a:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
   color:#4A5668!important}
@@ -382,9 +364,6 @@ html.et-plight .nav-tog:hover:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
 html.et-plight .nx-mega:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
 html.et-plight .nx .nx-mega:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
 html.et-jlight .nx-mega:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
-  background:linear-gradient(180deg,rgba(255,255,255,.98),rgba(250,247,241,.99))!important;
-  -webkit-backdrop-filter:blur(28px) saturate(170%)!important;
-  backdrop-filter:blur(28px) saturate(170%)!important;
   border:1px solid var(--et-hair-ink,rgba(26,35,48,.16))!important;
   box-shadow:0 44px 90px -34px rgba(26,35,48,.38)!important;
   color:#2A3648!important}
@@ -454,12 +433,7 @@ html.et-plight .nx-util-m a.cta:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
    mobile, rgba(8,14,26,.94). Meme traitement verre clair que la barre haute. */
 html.et-plight #nezBar:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
 html.et-jlight #nezBar:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
-  background:linear-gradient(180deg,rgba(250,247,241,.955),rgba(245,241,234,.975))!important;
-  background-color:rgba(250,247,241,.96)!important;
-  -webkit-backdrop-filter:blur(16px) saturate(150%)!important;
-  backdrop-filter:blur(16px) saturate(150%)!important;
   border-top:1px solid var(--et-hair-ink,rgba(26,35,48,.16))!important;
-  box-shadow:0 -8px 26px rgba(26,35,48,.10)!important;
   color:#2A3648!important}
 html.et-plight #nezBar a:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
 html.et-plight #nezBar button:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
@@ -496,7 +470,7 @@ html.et-plight main .hubdrawer .hd-h:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5
 
    Portee stricte : @media(pointer:coarse) — aucun effet sur le bureau.
    Specificite : :not(#_):not(#__) comme la couche iOS, afin de rester au
-   meme niveau qu'elle et au-dessus des styles <style> en ligne des pages.
+   meme niveau qu'elle et au-dessus des styles \3c style> en ligne des pages.
    ====================================================================== */
 
 @media(pointer:coarse){
@@ -967,7 +941,6 @@ html:not(.et-plight) main .ppl-sel .ppl-f:not(#_):not(#__){
 html.et-plight .nx-mega:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
 html.et-plight .nx .nx-mega:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
 html.et-jlight .nx-mega:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
-background:rgba(250,247,241,.97)!important;
 border:1px solid var(--et-hair-ink,rgba(26,35,48,.16))!important;
 box-shadow:0 18px 40px -24px rgba(26,35,48,.25)!important}
 }

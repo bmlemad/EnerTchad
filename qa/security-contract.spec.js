@@ -22,7 +22,7 @@ test('security — external links opened in new contexts have safe opener semant
 });
 
 test('security — canonical transport and security headers are present in deployment config', async ({ request }) => {
-  const response = await request.get(new URL('/vercel.json', base).href);
+  const response = await request.get(new URL('/redirects.json', base).href);
   if (response.status() === 200) {
     const config = await response.json();
     const headers = JSON.stringify(config.headers || []);

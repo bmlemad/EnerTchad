@@ -80,11 +80,6 @@ body::after{
 }
 
 /* ---- frosted sticky nav / header ---- */
-.nav.nx,.nav,header.hero .nav,#nav{
-  background:rgba(9,14,23,.5)!important;
-  -webkit-backdrop-filter:saturate(190%) blur(26px);backdrop-filter:saturate(190%) blur(26px);
-  border-bottom:1px solid var(--g-brd)!important;
-}
 .nx-mega,.mega,.nx-panel{
   background:rgba(11,17,28,.68)!important;
   -webkit-backdrop-filter:saturate(200%) blur(32px);backdrop-filter:saturate(200%) blur(32px);

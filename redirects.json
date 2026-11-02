@@ -1,5 +1,4 @@
 {
-  "$schema": "https://openapi.vercel.sh/vercel.json",
   "cleanUrls": true,
   "redirects": [
     {
@@ -13,12 +12,22 @@
       "permanent": true
     },
     {
+      "source": "/investor-center/",
+      "destination": "/investisseurs",
+      "permanent": true
+    },
+    {
       "source": "/investor-center-en",
       "destination": "/investisseurs-en",
       "permanent": true
     },
     {
       "source": "/investor-center-en.html",
+      "destination": "/investisseurs-en",
+      "permanent": true
+    },
+    {
+      "source": "/investor-center-en/",
       "destination": "/investisseurs-en",
       "permanent": true
     },
@@ -40,6 +49,46 @@
     {
       "source": "/aval/boutique-en.html",
       "destination": "/boutique/en/",
+      "permanent": true
+    },
+    {
+      "source": "/aval/gpl",
+      "destination": "/aval/produits#gpl",
+      "permanent": true
+    },
+    {
+      "source": "/aval/gpl.html",
+      "destination": "/aval/produits#gpl",
+      "permanent": true
+    },
+    {
+      "source": "/aval/gpl-en",
+      "destination": "/aval/produits-en#gpl",
+      "permanent": true
+    },
+    {
+      "source": "/aval/gpl-en.html",
+      "destination": "/aval/produits-en#gpl",
+      "permanent": true
+    },
+    {
+      "source": "/aval/lubrifiants",
+      "destination": "/aval/produits#lubrifiants-bitumes",
+      "permanent": true
+    },
+    {
+      "source": "/aval/lubrifiants.html",
+      "destination": "/aval/produits#lubrifiants-bitumes",
+      "permanent": true
+    },
+    {
+      "source": "/aval/lubrifiants-en",
+      "destination": "/aval/produits-en#lubrifiants-bitumes",
+      "permanent": true
+    },
+    {
+      "source": "/aval/lubrifiants-en.html",
+      "destination": "/aval/produits-en#lubrifiants-bitumes",
       "permanent": true
     },
     {
@@ -888,18 +937,9 @@
       "permanent": true
     },
     {
-      "source": "/presse",
-      "destination": "/communiques#presse",
-      "permanent": true
-    },
-    {
-      "source": "/presse-en",
-      "destination": "/communiques-en#presse",
-      "permanent": true
-    },
-    {
       "source": "/Dossier_Investisseur_EnerTchad.pptx",
       "destination": "/Fiche_Investisseur_EnerTchad.pdf",
+      "permanent": true,
       "statusCode": 301
     }
   ],

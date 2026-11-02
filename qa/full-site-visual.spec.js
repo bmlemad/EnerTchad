@@ -92,7 +92,7 @@ async function auditViewport(page, url, label) {
 }
 
 test('full-site visual navigation audit — sitemap desktop + mobile', async ({ browser, request }) => {
-  test.setTimeout(14 * 60 * 1000);
+  test.setTimeout(30 * 60 * 1000); // lot 104 : 280 pages × 2 écrans dépassaient 14 min
   const sitemapResponse = await request.get(new URL('/sitemap.xml', base).href, { timeout: 30000 });
   expect(sitemapResponse.status()).toBe(200);
   const urls = sitemapUrls(await sitemapResponse.text());

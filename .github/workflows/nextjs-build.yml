@@ -25,12 +25,28 @@ jobs:
       - run: node --test scripts/test_business_journeys.mjs
       - run: python3 scripts/test_capability_labels.py
       - run: node --test scripts/test_main_nav.mjs
+      - name: Check that every press release page is up to date with the list (lot 99)
+        run: python3 scripts/gen_communique_pages.py --check
+      - name: Check that the press room pages are up to date with their sources (lot 99)
+        run: python3 scripts/gen_presse_pages.py --check
       - run: npm run build
         env:
           NEXT_TELEMETRY_DISABLED: '1'
       - name: Check audited bilingual journeys
         run: python3 scripts/test_site_audit.py
       - run: npm run check:migration
+      - name: Check that every critical CSS set is still applied
+        run: python3 scripts/test_critical_applied.py
+      - name: Check that repeated figures agree across surfaces (lot 98)
+        run: python3 scripts/test_figures_consistency.py
+      - name: Check that the single glass rule leads every page (lot 90)
+        run: python3 scripts/test_glass_chrome.py
+      - name: Check that the home page leads with the latest dated publication (lot 100)
+        run: python3 scripts/test_home_latest.py
+      - name: Check that the light chrome rule leads every page (lot 102)
+        run: python3 scripts/test_light_chrome.py
+      - name: Check that the back-to-top icons are hidden from assistive technology (lot 103)
+        run: python3 scripts/test_decorative_icons.py
       - uses: actions/upload-artifact@v7
         with:
           name: enertchad-netlify-export

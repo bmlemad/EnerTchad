@@ -1,0 +1,31 @@
+/* Lot 102 (choix du DG, 2 novembre 2026) : chrome allégé, règle hybride.
+   Mise en ligne par scripts/next/critical.mjs (glassChrome) juste après verre-2026.css, en tête du <head> :
+   la couche et-allege est déclarée la deuxième, ses !important l'emportent sur les couches des gabarits
+   (et-glass, verre) et sur les règles hors couche — ordre des couches, pas spécificité (lot 90).
+   Mesure (m76/mesure102.py, export du 2 nov.) : barre principale + 6 menus + icônes + « 90 secondes » + FR · EN +
+   ع + appel à l'action = 1 433 px de contenu ; la barre (max 1 360 px, marges et retraits compris) n'en offre que
+   1 312. D'où le seuil :
+   1. ≥ 1 536 px : fusion. La barre utilitaire (.nx-util, 37 px) est masquée ; nav_a.js (bloc « lot 102 ») déplace
+      ses liens de langue, le raccourci et l'appel à l'action à droite de la barre principale (classe nx-fused),
+      élargie à 1 536 px, retraits réduits. Les cinq accès rapides restent dans le méga-menu et le menu mobile.
+   2. 1 241 – 1 535 px : la barre utilitaire reste en haut de page et disparaît au défilement (#nav.scrolled) :
+      146 px en haut, 109 px défilé. Sous 1 241 px elle n'existait déjà pas (nav_a.css).
+   3. Sous-navigation de pôle (.pp-sub) : défile avec la page au lieu de rester collée sous la barre.
+   Le bouton « Mouvement » (pied de page) et le bandeau de consentement (bande fine) sont traités dans leurs
+   scripts : u_cd226c00eb4b.js, audience-consent.js. */
+@layer et-allege;
+@layer et-allege{
+  @media(min-width:1536px){
+    #nav .nx-util{display:none!important}
+    #nav .nav-in{max-width:1536px!important;margin-left:auto!important;margin-right:auto!important;padding-left:24px!important;padding-right:24px!important}
+    #navLinks .nav-trigger{padding-left:10px!important;padding-right:10px!important}
+    #nav .nx-cta{gap:6px!important}
+    #nav .nx-cta .nx-fused{display:inline-flex!important;align-items:center!important;font-size:.82rem!important;line-height:1!important;color:inherit!important;text-decoration:none!important;padding:8px 5px!important;white-space:nowrap!important;opacity:.92}
+    #nav .nx-cta .nx-fused:hover,#nav .nx-cta .nx-fused:focus-visible{opacity:1}
+    #nav .nx-cta .nx-invest.nx-fused{border:1px solid currentColor!important;border-radius:999px!important;padding:8px 14px!important;margin-left:4px!important}
+  }
+  @media(max-width:1535px){
+    #nav.nx.scrolled .nx-util{display:none!important}
+  }
+  nav.pp-sub{position:static!important;top:auto!important}
+}

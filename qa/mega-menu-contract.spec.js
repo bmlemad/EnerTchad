@@ -67,7 +67,7 @@ test('mega-menu — visual geometry and surface coherence', async ({ browser }) 
         };
       });
 
-      expect(report.triggerCount, path + ' trigger count').toBe(6);
+      expect(report.triggerCount, path + ' trigger count').toBe(6); // 6 rubriques depuis le lot 80 (lot 104, 2 nov. 2026)
       expect(report.panels.length, path + ' panel count').toBe(report.triggerCount);
 
       const surfaces = report.panels.map(p => p.surface);

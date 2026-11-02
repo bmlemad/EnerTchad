@@ -118,10 +118,8 @@ html:not(#p0):not(#p1):not(#p2):not(#p3):not(#p4):not(#p5):not(#p6):not(#p7):not
   --pn-serif:"Instrument Serif","Instrument Serif Fallback G","Instrument Serif Fallback T","Instrument Serif Fallback N","Instrument Serif Fallback D","Iowan Old Style",Georgia,serif;--pn-sans:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif}
 html:not(.et-plight,.et-jlight):not(#p0):not(#p1):not(#p2):not(#p3):not(#p4):not(#p5):not(#p6):not(#p7):not(#p8):not(#p9):not(#p10):not(#p11):not(#p12):not(#p13):not(#p14):not(#p15):not(#p16):not(#p17):not(#p18):not(#p19):not(#p20):not(#p21):not(#p22):not(#p23) #nav.pn{--pn-bg:var(--et-night,#0A1422);--pn-ink:var(--et-snow,#F1F3F6);--pn-ink2:var(--et-slate-300,#A9B4C4);--pn-line:var(--et-line-dark,#22314A);--pn-gold:var(--et-gold-300,#D9B567);--pn-gold-ink:var(--et-gold-300,#D9B567);--pn-mist:var(--et-night-2,#0F1B2C)}
 
-html:not(#p0):not(#p1):not(#p2):not(#p3):not(#p4):not(#p5):not(#p6):not(#p7):not(#p8):not(#p9):not(#p10):not(#p11):not(#p12):not(#p13):not(#p14):not(#p15):not(#p16):not(#p17):not(#p18):not(#p19):not(#p20):not(#p21):not(#p22):not(#p23) #nav.pn{background:var(--pn-bg)!important;border:0!important;border-bottom:1px solid var(--pn-line)!important;box-shadow:none!important;
-  -webkit-backdrop-filter:none!important;backdrop-filter:none!important;color:var(--pn-ink)!important;font-family:var(--pn-sans)!important}
+html:not(#p0):not(#p1):not(#p2):not(#p3):not(#p4):not(#p5):not(#p6):not(#p7):not(#p8):not(#p9):not(#p10):not(#p11):not(#p12):not(#p13):not(#p14):not(#p15):not(#p16):not(#p17):not(#p18):not(#p19):not(#p20):not(#p21):not(#p22):not(#p23) #nav.pn{border:0!important;color:var(--pn-ink)!important;font-family:var(--pn-sans)!important}
 html:not(#p0):not(#p1):not(#p2):not(#p3):not(#p4):not(#p5):not(#p6):not(#p7):not(#p8):not(#p9):not(#p10):not(#p11):not(#p12):not(#p13):not(#p14):not(#p15):not(#p16):not(#p17):not(#p18):not(#p19):not(#p20):not(#p21):not(#p22):not(#p23) #nav.pn::before,html:not(#p0):not(#p1):not(#p2):not(#p3):not(#p4):not(#p5):not(#p6):not(#p7):not(#p8):not(#p9):not(#p10):not(#p11):not(#p12):not(#p13):not(#p14):not(#p15):not(#p16):not(#p17):not(#p18):not(#p19):not(#p20):not(#p21):not(#p22):not(#p23) #nav.pn::after{display:none!important}
-html:not(#p0):not(#p1):not(#p2):not(#p3):not(#p4):not(#p5):not(#p6):not(#p7):not(#p8):not(#p9):not(#p10):not(#p11):not(#p12):not(#p13):not(#p14):not(#p15):not(#p16):not(#p17):not(#p18):not(#p19):not(#p20):not(#p21):not(#p22):not(#p23) #nav.pn .nx-util{background:var(--pn-bg)!important;border-bottom:1px solid var(--pn-line)!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
 html:not(#p0):not(#p1):not(#p2):not(#p3):not(#p4):not(#p5):not(#p6):not(#p7):not(#p8):not(#p9):not(#p10):not(#p11):not(#p12):not(#p13):not(#p14):not(#p15):not(#p16):not(#p17):not(#p18):not(#p19):not(#p20):not(#p21):not(#p22):not(#p23) #nav.pn .nx-util-in{gap:22px!important;height:36px!important;font-size:.8rem!important}
 html:not(#p0):not(#p1):not(#p2):not(#p3):not(#p4):not(#p5):not(#p6):not(#p7):not(#p8):not(#p9):not(#p10):not(#p11):not(#p12):not(#p13):not(#p14):not(#p15):not(#p16):not(#p17):not(#p18):not(#p19):not(#p20):not(#p21):not(#p22):not(#p23) #nav.pn .nx-util-in>a{color:var(--pn-ink2)!important;font-weight:500!important;letter-spacing:.01em!important;border:0!important;background:none!important;padding:0!important;min-height:0!important}
 html:not(#p0):not(#p1):not(#p2):not(#p3):not(#p4):not(#p5):not(#p6):not(#p7):not(#p8):not(#p9):not(#p10):not(#p11):not(#p12):not(#p13):not(#p14):not(#p15):not(#p16):not(#p17):not(#p18):not(#p19):not(#p20):not(#p21):not(#p22):not(#p23) #nav.pn .nx-util-in>a:hover{color:var(--pn-ink)!important}
@@ -146,9 +144,8 @@ html:not(#p0):not(#p1):not(#p2):not(#p3):not(#p4):not(#p5):not(#p6):not(#p7):not
   html:not(#p0):not(#p1):not(#p2):not(#p3):not(#p4):not(#p5):not(#p6):not(#p7):not(#p8):not(#p9):not(#p10):not(#p11):not(#p12):not(#p13):not(#p14):not(#p15):not(#p16):not(#p17):not(#p18):not(#p19):not(#p20):not(#p21):not(#p22):not(#p23) #nav.pn .pn-item>.nav-trigger:hover,html:not(#p0):not(#p1):not(#p2):not(#p3):not(#p4):not(#p5):not(#p6):not(#p7):not(#p8):not(#p9):not(#p10):not(#p11):not(#p12):not(#p13):not(#p14):not(#p15):not(#p16):not(#p17):not(#p18):not(#p19):not(#p20):not(#p21):not(#p22):not(#p23) #nav.pn .pn-item>.nav-trigger[aria-expanded="true"],html:not(#p0):not(#p1):not(#p2):not(#p3):not(#p4):not(#p5):not(#p6):not(#p7):not(#p8):not(#p9):not(#p10):not(#p11):not(#p12):not(#p13):not(#p14):not(#p15):not(#p16):not(#p17):not(#p18):not(#p19):not(#p20):not(#p21):not(#p22):not(#p23) #nav.pn .pn-item.open>.nav-trigger,html:not(#p0):not(#p1):not(#p2):not(#p3):not(#p4):not(#p5):not(#p6):not(#p7):not(#p8):not(#p9):not(#p10):not(#p11):not(#p12):not(#p13):not(#p14):not(#p15):not(#p16):not(#p17):not(#p18):not(#p19):not(#p20):not(#p21):not(#p22):not(#p23) #nav.pn .pn-item>.nav-trigger.is-active{box-shadow:inset 0 -2px 0 var(--pn-gold)!important;background:none!important;color:var(--pn-ink)!important}
 
   html:not(#p0):not(#p1):not(#p2):not(#p3):not(#p4):not(#p5):not(#p6):not(#p7):not(#p8):not(#p9):not(#p10):not(#p11):not(#p12):not(#p13):not(#p14):not(#p15):not(#p16):not(#p17):not(#p18):not(#p19):not(#p20):not(#p21):not(#p22):not(#p23) #nav.pn .pn-mega{position:absolute!important;top:100%!important;left:0!important;right:0!important;width:auto!important;min-width:0!important;max-width:none!important;max-height:none!important;
-    overflow:visible!important;translate:none!important;transform:none!important;border-radius:0!important;margin:0!important;
-    background:var(--pn-bg)!important;border:0!important;border-top:1px solid var(--pn-line)!important;border-bottom:1px solid var(--pn-line)!important;
-    box-shadow:0 40px 60px -40px rgba(10,26,47,.35)!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important;
+    overflow:visible!important;translate:none!important;transform:none!important;border-radius:0!important;margin:0!important;border:0!important;border-top:1px solid var(--pn-line)!important;border-bottom:1px solid var(--pn-line)!important;
+    box-shadow:0 40px 60px -40px rgba(10,26,47,.35)!important;
     display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,1.7fr) minmax(0,1fr)!important;gap:56px!important;
     padding:44px max(32px,calc((100vw - 1200px)/2)) 52px!important}
   html:not(#p0):not(#p1):not(#p2):not(#p3):not(#p4):not(#p5):not(#p6):not(#p7):not(#p8):not(#p9):not(#p10):not(#p11):not(#p12):not(#p13):not(#p14):not(#p15):not(#p16):not(#p17):not(#p18):not(#p19):not(#p20):not(#p21):not(#p22):not(#p23) #nav.pn .pn-mega::before,html:not(#p0):not(#p1):not(#p2):not(#p3):not(#p4):not(#p5):not(#p6):not(#p7):not(#p8):not(#p9):not(#p10):not(#p11):not(#p12):not(#p13):not(#p14):not(#p15):not(#p16):not(#p17):not(#p18):not(#p19):not(#p20):not(#p21):not(#p22):not(#p23) #nav.pn .pn-mega::after{display:none!important}
@@ -182,7 +179,7 @@ html:not(#p0):not(#p1):not(#p2):not(#p3):not(#p4):not(#p5):not(#p6):not(#p7):not
   html:not(#p0):not(#p1):not(#p2):not(#p3):not(#p4):not(#p5):not(#p6):not(#p7):not(#p8):not(#p9):not(#p10):not(#p11):not(#p12):not(#p13):not(#p14):not(#p15):not(#p16):not(#p17):not(#p18):not(#p19):not(#p20):not(#p21):not(#p22):not(#p23) #nav.pn .pn-item{border-bottom:1px solid var(--pn-line)!important;background:none!important;border-radius:0!important}
   html:not(#p0):not(#p1):not(#p2):not(#p3):not(#p4):not(#p5):not(#p6):not(#p7):not(#p8):not(#p9):not(#p10):not(#p11):not(#p12):not(#p13):not(#p14):not(#p15):not(#p16):not(#p17):not(#p18):not(#p19):not(#p20):not(#p21):not(#p22):not(#p23) #nav.pn .pn-item>.nav-trigger{font:500 1.05rem/1.2 var(--pn-sans)!important;color:var(--pn-ink)!important;background:none!important;padding:18px 4px!important;border:0!important;border-radius:0!important;box-shadow:none!important}
   html:not(#p0):not(#p1):not(#p2):not(#p3):not(#p4):not(#p5):not(#p6):not(#p7):not(#p8):not(#p9):not(#p10):not(#p11):not(#p12):not(#p13):not(#p14):not(#p15):not(#p16):not(#p17):not(#p18):not(#p19):not(#p20):not(#p21):not(#p22):not(#p23) #nav.pn .pn-item>.nav-trigger::after,html:not(#p0):not(#p1):not(#p2):not(#p3):not(#p4):not(#p5):not(#p6):not(#p7):not(#p8):not(#p9):not(#p10):not(#p11):not(#p12):not(#p13):not(#p14):not(#p15):not(#p16):not(#p17):not(#p18):not(#p19):not(#p20):not(#p21):not(#p22):not(#p23) #nav.pn .pn-item>.nav-trigger::before{display:none!important}
-  html:not(#p0):not(#p1):not(#p2):not(#p3):not(#p4):not(#p5):not(#p6):not(#p7):not(#p8):not(#p9):not(#p10):not(#p11):not(#p12):not(#p13):not(#p14):not(#p15):not(#p16):not(#p17):not(#p18):not(#p19):not(#p20):not(#p21):not(#p22):not(#p23) #nav.pn .pn-mega{background:none!important;border:0!important;box-shadow:none!important;padding:0 4px 14px!important}
+  html:not(#p0):not(#p1):not(#p2):not(#p3):not(#p4):not(#p5):not(#p6):not(#p7):not(#p8):not(#p9):not(#p10):not(#p11):not(#p12):not(#p13):not(#p14):not(#p15):not(#p16):not(#p17):not(#p18):not(#p19):not(#p20):not(#p21):not(#p22):not(#p23) #nav.pn .pn-mega{border:0!important;box-shadow:none!important;padding:0 4px 14px!important}
   html:not(#p0):not(#p1):not(#p2):not(#p3):not(#p4):not(#p5):not(#p6):not(#p7):not(#p8):not(#p9):not(#p10):not(#p11):not(#p12):not(#p13):not(#p14):not(#p15):not(#p16):not(#p17):not(#p18):not(#p19):not(#p20):not(#p21):not(#p22):not(#p23) #nav.pn .pn-intro .nxh,html:not(#p0):not(#p1):not(#p2):not(#p3):not(#p4):not(#p5):not(#p6):not(#p7):not(#p8):not(#p9):not(#p10):not(#p11):not(#p12):not(#p13):not(#p14):not(#p15):not(#p16):not(#p17):not(#p18):not(#p19):not(#p20):not(#p21):not(#p22):not(#p23) #nav.pn .pn-intro .pn-d,html:not(#p0):not(#p1):not(#p2):not(#p3):not(#p4):not(#p5):not(#p6):not(#p7):not(#p8):not(#p9):not(#p10):not(#p11):not(#p12):not(#p13):not(#p14):not(#p15):not(#p16):not(#p17):not(#p18):not(#p19):not(#p20):not(#p21):not(#p22):not(#p23) #nav.pn .pn-feat{display:none!important}
   html:not(#p0):not(#p1):not(#p2):not(#p3):not(#p4):not(#p5):not(#p6):not(#p7):not(#p8):not(#p9):not(#p10):not(#p11):not(#p12):not(#p13):not(#p14):not(#p15):not(#p16):not(#p17):not(#p18):not(#p19):not(#p20):not(#p21):not(#p22):not(#p23) #nav.pn .pn-mega a{padding:10px 0!important;background:none!important;border-radius:0!important}
   html:not(#p0):not(#p1):not(#p2):not(#p3):not(#p4):not(#p5):not(#p6):not(#p7):not(#p8):not(#p9):not(#p10):not(#p11):not(#p12):not(#p13):not(#p14):not(#p15):not(#p16):not(#p17):not(#p18):not(#p19):not(#p20):not(#p21):not(#p22):not(#p23) #nav.pn .pn-mega a strong{color:var(--pn-ink)!important;font-weight:500!important}
@@ -947,7 +944,6 @@ footer.pft .foot-news .fn-alt a{display:inline-block;padding:4px 0}
     border-bottom-color:var(--et-glass-line)!important;
     box-shadow:inset 0 1px 0 var(--et-glass-reflect)!important;
   }
-  #nav.nx.scrolled {background:var(--et-glass-dense)!important}
 
   #nav .nav-trigger,#nav .brand-tx,#nav .brand-tx span,#nav .brand-tx small,
   #nav .nav-cta button,#nav .nx-util a:not(.nx-invest) {
@@ -971,13 +967,9 @@ footer.pft .foot-news .fn-alt a{display:inline-block;padding:4px 0}
     .arh-nav {flex-wrap:wrap!important;overflow:visible!important;gap:4px 12px!important}
   }
   #nezBar,#nav .nx-mega {
-    background:var(--et-glass-dense)!important;
     color:var(--et-glass-ink)!important;
-    -webkit-backdrop-filter:blur(10px) saturate(1.1)!important;
-    backdrop-filter:blur(10px) saturate(1.1)!important;
     border-color:var(--et-glass-line)!important;
   }
-  #nav .nx-mega{background:var(--et-glass-solid)!important}
   #nav .pn-feat{align-self:start!important}
   #nav .nav-search,#nav .nx-mega,#nav .nx-mega .nxg,.sp-top .sp-theme {
     -webkit-backdrop-filter:none!important;backdrop-filter:none!important;
@@ -992,7 +984,6 @@ footer.pft .foot-news .fn-alt a{display:inline-block;padding:4px 0}
   }
   @supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))) {
     #nav.nx,.sp-top.et-al,.pp-sub,#nezBar,#nav .nx-mega,.svc-top {background:var(--et-glass-solid)!important}
-    html[lang=ar] .arh {background:var(--et-night,#0A1422)!important}
   }
   @media(prefers-reduced-transparency:reduce) {
     #nav.nx,.sp-top.et-al,.pp-sub,#nezBar,#nav .nx-mega,.svc-top,
@@ -1001,7 +992,6 @@ footer.pft .foot-news .fn-alt a{display:inline-block;padding:4px 0}
       -webkit-backdrop-filter:none!important;backdrop-filter:none!important;
       box-shadow:none!important;
     }
-    html[lang=ar] .arh {background:var(--et-night,#0A1422)!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important;box-shadow:none!important}
   }
   @media print {
     #nav.nx,.sp-top.et-al,.pp-sub,#nezBar {box-shadow:none!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
@@ -1144,9 +1134,8 @@ html[lang=ar] #main-content h3{font-family:"Noto Sans Arabic",Inter,sans-serif!i
 html:is(.et-plight,.et-jlight) #nav .nx-util a.nx-lang,html:is(.et-plight,.et-jlight) #nav .nx-util a.nx-lang b{color:var(--et-glass-ink)!important}
 html:is(.et-plight,.et-jlight) .pp-sub a:not([aria-current]){color:#2B3446!important}
 /* en-tete arabe : coque collante, voile nuit 78 % sur le heros */
-html[lang=ar] .arh{position:sticky!important;top:0!important;z-index:60!important;background:rgba(10,20,34,.78)!important;-webkit-backdrop-filter:var(--verre-blur)!important;backdrop-filter:var(--verre-blur)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.10),inset 0 -1px 0 rgba(255,255,255,.08)!important;color:var(--et-white,#fff)!important}
+html[lang=ar] .arh{position:sticky!important;top:0!important;z-index:60!important;color:var(--et-white,#fff)!important}
 html[lang=ar] .arh .arh-in{background:transparent!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
-@media(max-width:768px){html[lang=ar] .arh{background:var(--et-night,#0A1422)!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}}
 }
 /* et-lot29-verre:end */
 

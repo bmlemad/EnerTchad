@@ -8,7 +8,7 @@ import posixpath
 import re
 
 ROOT=Path(__file__).resolve().parents[1]
-CONFIG=ROOT/"vercel.json"
+CONFIG=ROOT/"redirects.json"
 CONFIG_ROUTES=set()
 if CONFIG.exists():
     try:

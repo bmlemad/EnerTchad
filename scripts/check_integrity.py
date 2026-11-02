@@ -9,10 +9,10 @@ allf = set()
 for r, d, fs in os.walk('.'):
     d[:] = [x for x in d if x not in {'.git','node_modules','public','out','.next','.generated'}]
     for f in fs: allf.add(os.path.normpath(os.path.join(r, f)).replace('\\', '/'))
-# Ch628 : les redirections et reecritures de vercel.json sont des destinations valides (cleanUrls : /x et /x.html)
+# Ch628 : les redirections et reecritures de redirects.json sont des destinations valides (cleanUrls : /x et /x.html)
 redir = set()
-if os.path.exists('vercel.json'):
-    vj = json.load(open('vercel.json', encoding='utf-8'))
+if os.path.exists('redirects.json'):
+    vj = json.load(open('redirects.json', encoding='utf-8'))
     for r in vj.get('redirects', []) + vj.get('rewrites', []):
         src = r.get('source', '')
         if src and not re.search(r'[:*(]', src): redir.add(src.lstrip('/'))
@@ -97,9 +97,9 @@ for p in pages:
                 errs.append(f'{p}: srcset cassé {u}')
 
 # Le sitemap ne doit jamais publier une URL qui fait elle-même l’objet d’une redirection permanente.
-if sm and os.path.exists('vercel.json'):
+if sm and os.path.exists('redirects.json'):
     try:
-        vj = json.load(open('vercel.json', encoding='utf-8'))
+        vj = json.load(open('redirects.json', encoding='utf-8'))
         redirected = {x.get('source','').rstrip('/') for x in vj.get('redirects', []) if x.get('permanent')}
         for u in re.findall(r'<loc>(.*?)</loc>', sm, re.S | re.I):
             path = re.sub(r'^https?://[^/]+', '', u).rstrip('/')
@@ -110,7 +110,7 @@ if sm and os.path.exists('vercel.json'):
             if path in redirected:
                 errs.append(f'sitemap.xml: hreflang redirigé {path}')
     except Exception as e:
-        errs.append(f'vercel.json: impossible de vérifier les redirections ({e})')
+        errs.append(f'redirects.json: impossible de vérifier les redirections ({e})')
 
 # Contrôles structurels supplémentaires : erreurs HTML introduites par des injections/transformations.
 for p in pages:
@@ -172,8 +172,8 @@ EXPECTED_EN_POLES = [
     '/pole-tchaditude-en', '/pole-enerconseils-en',
 ]
 redirect_sources = set()
-if os.path.exists('vercel.json'):
-    redirect_sources = {r.get('source', '').lstrip('/') for r in json.load(open('vercel.json', encoding='utf-8')).get('redirects', [])}
+if os.path.exists('redirects.json'):
+    redirect_sources = {r.get('source', '').lstrip('/') for r in json.load(open('redirects.json', encoding='utf-8')).get('redirects', [])}
 for route in EXPECTED_EN_POLES:
     name = route.lstrip('/')
     if name + '.html' not in allf:

@@ -78,12 +78,103 @@ export function inlineCritical(html, page, versions) {
 // déclaré en différé dans le <head> des pages qui chargent nav_a.js ; l'injection de nav_a.js
 // reste (repli) et ne fait rien grâce au garde « if(window.etAudienceConsent)return ».
 // Comportement inchangé : consentement préalable, aucune requête Google avant « Accepter ».
-export const CONSENT_TAG = '<script defer src="/assets/chrome/audience-consent.js"></script>';
+// Lot 89 : « async » au lieu de « defer ». En différé, le script arrivait à 2,5 s mais le bandeau n'était
+// peint qu'à 4,3–4,4 s (Slow 4G, CPU ×4) : la file des scripts différés et DOMContentLoaded occupaient
+// le fil principal. En asynchrone, le script s'exécute dès son arrivée (bandeau peint à 1,1–3,1 s mesuré).
+// Il est autonome (feuille en ligne, garde window.etAudienceConsent partagée avec l'injection de nav_a.js).
+export const CONSENT_TAG = '<script async src="/assets/chrome/audience-consent.js"></script>';
 export function earlyConsent(html) {
   const end = html.indexOf('</head>');
   if (end < 0 || !html.includes('/assets/chrome/nav_a.js')) return html;
   if (/<script\b[^>]*\/assets\/chrome\/audience-consent\.js/.test(html.slice(0, end))) return html;
   return html.slice(0, end) + CONSENT_TAG + html.slice(end);
+}
+
+// Lot 90, étape 1 (choix du DG, 1er novembre 2026) : un seul verre sur le chrome. La feuille
+// assets/chrome/verre-2026.css (source unique, commentée) est mise en ligne EN TÊTE du <head> de chaque
+// page qui porte une des surfaces concernées : sa couche @layer et-verre est ainsi déclarée la première,
+// et ses déclarations !important l'emportent sur les couches et-glass (premium-chrome.css) et verre
+// (pole-premium.css) comme sur les règles hors couche — ordre des couches, pas spécificité (CSS Cascading 5,
+// § 6.4). En ligne plutôt que liée : 1,2 Ko, aucune requête, appliquée dès la première peinture, avant les
+// feuilles différées des jeux critiques. Idempotent. Mesure : 140 styles calculés conformes sur 6 pages,
+// 2 thèmes, 2 largeurs (verre_check.py).
+const VERRE_CSS = readFileSync(new URL('../../assets/chrome/verre-2026.css', import.meta.url), 'utf8').replace(/\/\*[\s\S]*?\*\//g, '').replace(/\n+/g, '\n').trim();
+export const VERRE_TAG = '<style data-et-verre>' + VERRE_CSS + '</style>';
+const VERRE_RX = /<nav\b[^>]*\bid="nav"|<header class="arh|<nav\b[^>]*\bet-space-header\b|id="nezBar"|<nav\b[^>]*\bpp-sub\b/;
+// Lot 102 (choix du DG, 2 novembre 2026) : la feuille assets/chrome/allege-2026.css (chrome allégé : fusion de la
+// barre utilitaire à partir de 1 536 px, masquage au défilement en dessous, sous-navigation non collante) suit la
+// feuille de verre, en ligne elle aussi : sa couche et-allege est déclarée la deuxième.
+const ALLEGE_CSS = readFileSync(new URL('../../assets/chrome/allege-2026.css', import.meta.url), 'utf8').replace(/\/\*[\s\S]*?\*\//g, '').replace(/\n+/g, '\n').trim();
+export const ALLEGE_TAG = '<style data-et-allege>' + ALLEGE_CSS + '</style>';
+export function glassChrome(html) {
+  if (html.includes('data-et-verre') || !VERRE_RX.test(html)) return html;
+  // Une page (Configurateur) n'écrit pas <head> : la feuille suit alors la balise <html> (en-tête implicite).
+  const m = /<head>|<html\b[^>]*>/.exec(html);
+  if (!m) return html;
+  const at = m.index + m[0].length;
+  return html.slice(0, at) + VERRE_TAG + ALLEGE_TAG + html.slice(at);
+}
+
+
+// Lot 99, suite (choix du DG, 2 novembre 2026) : l'espace presse a sa page (/presse, /presse-en, /ar-presse,
+// scripts/gen_presse_pages.py). Les pieds de page de 243 sources pointent encore vers l'ancre /communiques#presse ;
+// ils sont réécrits à l'export (une règle au lieu de 243 sources, comme le menu par lib/main-nav.js et les
+// capacités du menu par navCapabilities). L'ancre reste valable sur la page des communiqués. Idempotent.
+// Lot 103 (2 novembre 2026) : l'icône fléchée du bouton « Haut de page » (#toTop) est le seul vecteur exposé sans
+// nom ni aria-hidden sur 237 sources (le bouton porte déjà son aria-label ; le premier <svg class="ttr"> est
+// masqué). qa/strategic-premium-contract.spec.js le signalait sur /essentiel. Masqué à l'export, une règle
+// plutôt que 237 sources. Idempotent.
+export const decorativeIcons = html => html.replace(/(<button\b[^>]*\bid="toTop"[^>]*>\s*<svg class="ttr"[^>]*>[\s\S]*?<\/svg>\s*)<svg (?![^>]*aria-hidden)/g, '$1<svg aria-hidden="true" focusable="false" ');
+
+export const pressRoom = html => html.replace(/href="\/communiques#presse"/g, 'href="/presse"').replace(/href="\/communiques-en#presse"/g, 'href="/presse-en"');
+
+// Lot 100 (choix du DG, 2 novembre 2026) : « Dernière publication » sous le héros de l'accueil FR et EN.
+// Revue ExxonMobil, écart « accueil sans fil d'actualité en tête » : la pièce datée la plus récente arrivait en
+// 8e position, à 4 000 px. Une bande fine, calculée à l'export depuis les sources déjà datées au jour — les
+// communiqués (liste de communiques(-en).html) et les carnets (datePublished des journal-*.html) ; les documents
+// n'ont qu'un mois de date et ne concourent pas. Aucun chiffre ni texte nouveau : date, type, titre, lien.
+// Idempotent ; contrôle : scripts/test_home_latest.py.
+import { readdirSync } from 'node:fs';
+const SRC_ROOT = new URL('../../', import.meta.url);
+const MONTHS = { fr: ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'],
+                 en: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'] };
+const dateText = (iso, lang) => { const [y, m, d] = iso.split('-').map(Number); return `${d} ${MONTHS[lang][m - 1]} ${y}`; };
+function latestOf(lang) {
+  const en = lang === 'en';
+  const items = [];
+  try {
+    const list = readFileSync(new URL(`communiques${en ? '-en' : ''}.html`, SRC_ROOT), 'utf8');
+    for (const li of list.match(/<li id="cp-\d+">[\s\S]*?<\/li>/g) || []) {
+      const date = (li.match(/<time datetime="([^"]+)"/) || [])[1], ref = (li.match(/<span>(CP-\d{4}-\d{3})<\/span>/) || [])[1];
+      const title = ((li.match(/<h2>([\s\S]*?)<\/h2>/) || [])[1] || '').replace(/<[^>]+>/g, '').trim();
+      if (date && ref && title) items.push({ date, title, href: `/communique/${ref.toLowerCase()}${en ? '-en' : ''}`, type: en ? 'Press release' : 'Communiqué' });
+    }
+    for (const f of readdirSync(SRC_ROOT)) {
+      if (!/^journal-.*\.html$/.test(f) || f.endsWith('-en.html') !== en) continue;
+      const t = readFileSync(new URL(f, SRC_ROOT), 'utf8');
+      const date = (t.match(/"datePublished":"(\d{4}-\d{2}-\d{2})"/) || [])[1], title = (t.match(/"headline":"([^"]+)"/) || [])[1];
+      if (date && title) items.push({ date, title, href: '/' + f.slice(0, -5), type: en ? 'Notebook' : 'Carnet' });
+    }
+  } catch { return null; }
+  items.sort((a, b) => b.date.localeCompare(a.date) || a.href.localeCompare(b.href));
+  return items[0] || null;
+}
+const LATEST = { fr: latestOf('fr'), en: latestOf('en') };
+const esc = s => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
+const LATEST_CSS = '<style data-et-latest>.hm-latest{background:var(--et-paper,#faf8f3);color:var(--et-ink-900,#0A1A2F);border-bottom:1px solid rgba(16,26,44,.14);padding:10px 24px;font-size:.92rem;line-height:1.5}html:not(.et-plight) .hm-latest{background:var(--et-night-2,#0F1B2C);color:var(--et-snow,#F1F3F6);border-bottom-color:rgba(255,255,255,.14)}.hm-latest .hm-latest-row{margin:0;display:flex;flex-wrap:wrap;gap:6px 10px;align-items:baseline}.hm-latest strong{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase}.hm-latest .hm-latest-row>*{display:inline-block;max-width:100%}.hm-latest a{color:inherit;text-decoration:underline;text-underline-offset:.2em}.hm-latest .hm-latest-all{margin-left:auto;text-decoration:none;opacity:.85}.hm-latest .hm-latest-sep{opacity:.5}</style>';
+export function latestPublication(html, page = '') {
+  const lang = page === 'index.html' ? 'fr' : page === 'index-en.html' ? 'en' : null;
+  const it = lang && LATEST[lang];
+  if (!it || html.includes('hm-latest')) return html;
+  const hero = html.indexOf('<header class="et-hero"');
+  const end = hero < 0 ? -1 : html.indexOf('</header>', hero);
+  if (end < 0) return html;
+  const at = end + '</header>'.length;
+  const en = lang === 'en';
+  const band = `<aside class="hm-latest" aria-label="${en ? 'Latest publication' : 'Dernière publication'}"><div class="et-inner"><div class="hm-latest-row"><strong>${en ? 'Latest publication' : 'Dernière publication'}</strong>` +
+    `<span class="hm-latest-sep" aria-hidden="true">·</span><time datetime="${it.date}">${dateText(it.date, lang)}</time><span class="hm-latest-sep" aria-hidden="true">·</span><span>${it.type}</span>` +
+    `<span class="hm-latest-sep" aria-hidden="true">·</span><a href="${it.href}">${esc(it.title)}</a><a class="hm-latest-all" href="${en ? '/publications-en' : '/publications'}">${en ? 'All publications' : 'Toutes les publications'} <span aria-hidden="true">→</span></a></div></div></aside>` + LATEST_CSS;
+  return html.slice(0, at) + band + html.slice(at);
 }
 
 // Lot 69 (option A retenue par le DG) : trois scripts chargés sans « defer » vers la fin du <body>

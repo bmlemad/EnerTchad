@@ -2,7 +2,7 @@ const { test, expect } = require('@playwright/test');
 const fs = require('fs');
 
 function loadConfig() {
-  return JSON.parse(fs.readFileSync('vercel.json', 'utf8'));
+  return JSON.parse(fs.readFileSync('redirects.json', 'utf8'));
 }
 
 test('redirects — legacy route map has no duplicate sources or direct self-loops', () => {

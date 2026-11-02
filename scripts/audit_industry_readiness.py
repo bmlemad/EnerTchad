@@ -109,15 +109,15 @@ for filename, content, suffix in [
         errors.append(f"{filename}: fiche investisseur absente")
 
 # Redirect aliases for the reporting center must remain canonical shortcuts.
-vercel = ROOT / "vercel.json"
+vercel = ROOT / "redirects.json"
 if vercel.exists():
     data = vercel.read_text(encoding="utf-8", errors="ignore")
     if not re.search(r'"source"\s*:\s*"/reporting"[^}]*"destination"\s*:\s*"/publications"[^}]*"permanent"\s*:\s*true', data, re.S):
-        errors.append("vercel.json: alias /reporting absent ou non permanent")
+        errors.append("redirects.json: alias /reporting absent ou non permanent")
     if not re.search(r'"source"\s*:\s*"/reporting-en"[^}]*"destination"\s*:\s*"/publications-en"[^}]*"permanent"\s*:\s*true', data, re.S):
-        errors.append("vercel.json: alias /reporting-en absent ou non permanent")
+        errors.append("redirects.json: alias /reporting-en absent ou non permanent")
 else:
-    errors.append("vercel.json: fichier absent")
+    errors.append("redirects.json: fichier absent")
 
 report = ROOT / "reports" / "industry-readiness-2026.md"
 report.parent.mkdir(exist_ok=True)

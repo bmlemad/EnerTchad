@@ -6,7 +6,7 @@
   var copied = ar ? 'تم نسخ الرابط' : en ? 'Link copied' : 'Lien copié';
   var manual = ar ? 'انسخ هذا الرابط لمشاركة الصفحة.' : en ? 'Copy this link to share the page.' : 'Copiez ce lien pour partager la page.';
   var linkLabel = ar ? 'رابط المشاركة' : en ? 'Sharing link' : 'Lien à partager';
-  document.querySelectorAll('[data-page-share]').forEach(function (button) {
+  document.querySelectorAll('[data-page-share]').forEach(function (button, index) {
     if (button.dataset.shareReady) return;
     button.dataset.shareReady = 'true';
     button.disabled = false;
@@ -18,6 +18,7 @@
     var input = document.createElement('input');
     input.type = 'text';
     input.readOnly = true;
+    input.id = 'et-share-link' + (index ? '-' + index : ''); input.name = 'share-link'; /* lot 104 : champ nommé (contrat formulaires), id unique par bouton */
     input.setAttribute('aria-label', linkLabel);
     input.hidden = true;
     input.style.cssText = 'box-sizing:border-box;max-width:100%;width:100%;padding:8px;font:inherit;color:inherit;background:transparent;border:1px solid currentColor';

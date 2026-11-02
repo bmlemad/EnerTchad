@@ -11,7 +11,7 @@
 @media(max-width:480px){.brand-mk{width:46px!important;height:46px!important;padding:5px!important;border-radius:12px!important}.brand{gap:9px}.brand-tx{font-size:.92rem;max-width:150px}#navSearch{width:36px!important;height:36px!important}.nav-in{padding-left:14px;padding-right:14px}}
 .brand,.brand-mk{flex:none}.brand-tx{max-width:210px}
 
-@media(max-width:768px){#toTop{bottom:calc(64px + env(safe-area-inset-bottom))!important;right:14px}}@media(max-width:1240px){}
+@media(max-width:768px){#toTop{bottom:calc(64px + env(safe-area-inset-bottom))!important;right:14px}}
 
 @media(max-width:560px){#oilticker{display:none!important}.brand small{display:none}}
 /* ponts de sortie harmonisés */
@@ -24,7 +24,7 @@ section[id]{scroll-margin-top:96px}
 
 
 
-#nezBar{position:fixed;left:0;right:0;bottom:0;z-index:95;display:none;background:rgba(8,14,26,.80);-webkit-backdrop-filter:blur(22px) saturate(140%);backdrop-filter:blur(22px) saturate(140%);border-top:1px solid var(--hair);padding:6px 4px calc(6px + env(safe-area-inset-bottom));pointer-events:none}#nezBar a{pointer-events:auto}
+#nezBar{position:fixed;left:0;right:0;bottom:0;z-index:95;display:none;border-top:1px solid var(--hair);padding:6px 4px calc(6px + env(safe-area-inset-bottom));pointer-events:none}#nezBar a{pointer-events:auto}
 #nezBar a{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;text-decoration:none;color:rgba(245,247,250,.65);font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;font-size:0.6875rem;letter-spacing:.04em;padding:4px 2px;border-radius:8px}
 #nezBar a svg{width:19px;height:19px}
 #nezBar a:active,#nezBar a:hover{color:var(--gold-l)}
@@ -32,7 +32,7 @@ section[id]{scroll-margin-top:96px}
 @media print{#nezProg,#nezBar{display:none!important}}
 @media(prefers-reduced-motion:reduce){#nezProg{transition:none}}
 
-@media (prefers-reduced-transparency:reduce){.nx-mega{background:#0A0F1A!important}.nav-links{background:rgba(6,11,20,.98)!important}#nezBar{background:rgba(8,14,26,.97)!important}}
+@media (prefers-reduced-transparency:reduce){.nav-links{background:rgba(6,11,20,.98)!important}}
 @media print{section,article,div{break-inside:auto!important;page-break-inside:auto!important}.reveal,.rv,.reveal-up,.reveal-blur,[data-d]{opacity:1!important;transform:none!important;filter:none!important;animation:none!important;transition:none!important}*{content-visibility:visible!important}header.hero{display:block!important}.diapo,#scrollcue,.lum-ctl,#homeFab,.share,#toTop,#lum-veil,.rootland,#preloader,#ckn,#cmdk{display:none!important}}
 
 html{scrollbar-gutter:stable}
@@ -196,15 +196,12 @@ html.et-plight main .mkt-nav a:not(#_){color:rgba(245,247,250,.74)!important}
 
 /* Verre liquide — repli opaque complet sous prefers-reduced-transparency (le reset universel perdait contre les blurs !important à spécificité id/classe) */
 @media (prefers-reduced-transparency:reduce){
-.nav:not(#_),.nav.scrolled:not(#_){-webkit-backdrop-filter:none!important;backdrop-filter:none!important;background:rgba(8,13,24,.97)!important}
 #ckn:not(#_){-webkit-backdrop-filter:none!important;backdrop-filter:none!important;background:#0B1422!important}
 }
 
 /* Verre liquide — meme repli pour navigateurs sans backdrop-filter */
 @supports not ((-webkit-backdrop-filter:blur(1px)) or (backdrop-filter:blur(1px))){
-.nav:not(#_),.nav.scrolled:not(#_){background:rgba(8,13,24,.97)!important}
 #ckn:not(#_){background:#0B1422!important}
-.nx-mega:not(#_){background:linear-gradient(180deg,#0c1728,var(--et-night,#0a1422))!important}
 .pole-subnav:not(#_){background:#0B1422!important}
 }
 
@@ -237,7 +234,7 @@ html.et-plight main .card:not(#_),html.et-plight main [class*="card"]:not(#_),ht
 /* --- polish 202607 : barre carnets, cue mobile, lisibilite nav mobile --- */
 header.jtop .hero-cap:not(#_),header.jtop .hero-halo:not(#_){display:none!important}
 @media(max-width:768px){.scrollcue:not(#_){bottom:calc(70px + env(safe-area-inset-bottom))!important}}
-#nezBar:not(#_){background:rgba(8,14,26,.94);-webkit-backdrop-filter:blur(14px) saturate(140%);backdrop-filter:blur(14px) saturate(140%);border-top:1px solid rgba(255,255,255,.12)}
+#nezBar:not(#_){border-top:1px solid rgba(255,255,255,.12)}
 
 /* iOS safe-area : les commandes flottantes remontent au-dessus de l'indicateur d'accueil et s'ecartent des bords arrondis. No-op sur les appareils sans zone sure. */
 @supports(bottom:env(safe-area-inset-bottom)){#plightBtn:not(#_){margin-bottom:env(safe-area-inset-bottom);margin-left:env(safe-area-inset-left)}}
@@ -379,31 +376,13 @@ html.et-jlight footer .logo-img:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
 /* ---------- 4. BARRE DE NAVIGATION : verre clair ---------- */
 html.et-plight .nav:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
 html.et-jlight .nav:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
-  background:linear-gradient(180deg,rgba(250,247,241,.955),rgba(246,242,234,.925))!important;
-  background-color:rgba(250,247,241,.94)!important;
-  -webkit-backdrop-filter:blur(16px) saturate(150%)!important;
-  backdrop-filter:blur(16px) saturate(150%)!important;
-  border-bottom:1px solid var(--et-hair-ink,rgba(26,35,48,.16))!important;
   color:#2A3648!important}
-
-html.et-plight .nav.scrolled:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
-html.et-plight .nav.nx.scrolled:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
-html.et-jlight .nav.scrolled:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
-  background:rgba(250,247,241,.94)!important;
-  background-color:rgba(250,247,241,.94)!important;
-  -webkit-backdrop-filter:blur(22px) saturate(165%)!important;
-  backdrop-filter:blur(22px) saturate(165%)!important;
-  box-shadow:0 10px 34px rgba(26,35,48,.13)!important}
 
 html.et-plight .nav.scrolled:not(#e1):not(#e2):not(#e3):not(#e4)::after,
 html.et-jlight .nav.scrolled:not(#e1):not(#e2):not(#e3):not(#e4)::after{
   background:linear-gradient(90deg,transparent,rgba(138,98,16,.55),rgba(21,95,168,.5),transparent)!important}
 
 /* bandeau utilitaire du haut */
-html.et-plight .nx-util:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
-html.et-jlight .nx-util:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
-  background:rgba(243,238,229,.58)!important;-webkit-backdrop-filter:blur(14px) saturate(120%)!important;backdrop-filter:blur(14px) saturate(120%)!important;
-  border-bottom:1px solid var(--et-hair-ink,rgba(26,35,48,.16))!important}
 html.et-plight .nx-util-in>a:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
 html.et-jlight .nx-util-in>a:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
   color:#4A5668!important}
@@ -493,9 +472,6 @@ html.et-plight .nav-tog:hover:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
 html.et-plight .nx-mega:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
 html.et-plight .nx .nx-mega:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
 html.et-jlight .nx-mega:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
-  background:linear-gradient(180deg,rgba(255,255,255,.98),rgba(250,247,241,.99))!important;
-  -webkit-backdrop-filter:blur(28px) saturate(170%)!important;
-  backdrop-filter:blur(28px) saturate(170%)!important;
   border:1px solid var(--et-hair-ink,rgba(26,35,48,.16))!important;
   box-shadow:0 44px 90px -34px rgba(26,35,48,.38)!important;
   color:#2A3648!important}
@@ -565,12 +541,7 @@ html.et-plight .nx-util-m a.cta:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
    mobile, rgba(8,14,26,.94). Meme traitement verre clair que la barre haute. */
 html.et-plight #nezBar:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
 html.et-jlight #nezBar:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
-  background:linear-gradient(180deg,rgba(250,247,241,.955),rgba(245,241,234,.975))!important;
-  background-color:rgba(250,247,241,.96)!important;
-  -webkit-backdrop-filter:blur(16px) saturate(150%)!important;
-  backdrop-filter:blur(16px) saturate(150%)!important;
   border-top:1px solid var(--et-hair-ink,rgba(26,35,48,.16))!important;
-  box-shadow:0 -8px 26px rgba(26,35,48,.10)!important;
   color:#2A3648!important}
 html.et-plight #nezBar a:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
 html.et-plight #nezBar button:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
@@ -607,7 +578,7 @@ html.et-plight main .hubdrawer .hd-h:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5
 
    Portee stricte : @media(pointer:coarse) — aucun effet sur le bureau.
    Specificite : :not(#_):not(#__) comme la couche iOS, afin de rester au
-   meme niveau qu'elle et au-dessus des styles <style> en ligne des pages.
+   meme niveau qu'elle et au-dessus des styles \3c style> en ligne des pages.
    ====================================================================== */
 
 @media(pointer:coarse){
@@ -1078,7 +1049,6 @@ html:not(.et-plight) main .ppl-sel .ppl-f:not(#_):not(#__){
 html.et-plight .nx-mega:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
 html.et-plight .nx .nx-mega:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
 html.et-jlight .nx-mega:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
-background:rgba(250,247,241,.97)!important;
 border:1px solid var(--et-hair-ink,rgba(26,35,48,.16))!important;
 box-shadow:0 18px 40px -24px rgba(26,35,48,.25)!important}
 }
@@ -1217,10 +1187,6 @@ html.et-plight main .note:not(#_):not(#__),html.et-plight body>section .note:not
    - conserve le fallback opaque et le comportement reduced-transparency
    ====================================================================== */
 @media (max-width:768px){
-  #nezBar:not(#_){
-    -webkit-backdrop-filter:blur(12px) saturate(125%);
-    backdrop-filter:blur(12px) saturate(125%);
-  }
   #plightBtn:not(#_){
     -webkit-backdrop-filter:blur(8px) saturate(120%);
     backdrop-filter:blur(8px) saturate(120%);

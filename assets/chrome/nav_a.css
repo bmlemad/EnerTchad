@@ -1,5 +1,5 @@
 @layer verre,et-glass;
-.nx-util{background:rgba(4,8,15,.40);-webkit-backdrop-filter:blur(14px) saturate(130%);backdrop-filter:blur(14px) saturate(130%);border-bottom:1px solid var(--hair);
+.nx-util{
   transition:margin-top .32s var(--ease),opacity .25s var(--ease)}
 .nx-util-in{display:flex;justify-content:flex-end;align-items:center;gap:20px;
   height:38px;padding:0 var(--gut);max-width:var(--max);margin:0 auto;font-size:.78rem}
@@ -15,8 +15,7 @@
 .nx .nav-links{flex:1;margin-left:14px}
 .nx .nav-trigger{font-size:.92rem;font-weight:600;padding:10px 14px}
 .nx .nav-trigger svg{width:11px;height:11px}
-.nx-mega{position:absolute;top:calc(100% + 10px);left:0;min-width:680px;max-width:min(90vw,780px);
-  background:linear-gradient(180deg,#0c1728,var(--et-night,#0a1422));border:1px solid var(--hair);border-radius:18px;
+.nx-mega{position:absolute;top:calc(100% + 10px);left:0;min-width:680px;max-width:min(90vw,780px);border:1px solid var(--hair);border-radius:18px;
   box-shadow:0 44px 90px -34px rgba(0,0,0,.9);padding:20px;z-index:60;
   opacity:0;visibility:hidden;transform:translateY(8px);
   transition:opacity .22s var(--ease),transform .22s var(--ease),visibility .22s;
@@ -63,7 +62,7 @@ body.nx-clear .hero{padding-top:72px}
   .nx .nav-item{border-bottom:1px solid var(--hair)}
   .nx .nav-trigger{font-family:var(--fd);font-weight:700;font-size:1.06rem;padding:16px 10px}
   .nx-mega{position:static;min-width:0;max-width:none;display:none;opacity:1;visibility:visible;
-    transform:none;background:none;border:0;border-radius:0;box-shadow:none;padding:2px 10px 16px}
+    transform:none;border:0;border-radius:0;box-shadow:none;padding:2px 10px 16px}
   .nav-item.open .nx-mega{display:block;animation:nxIn .28s var(--ease)}.nx-col .nxh{margin:12px 0 4px;padding-bottom:0;border-bottom:0;min-height:44px;display:flex;align-items:center}
   .nx-col a{padding:9px 0}
   .nx-col a strong{font-size:.98rem}
@@ -82,16 +81,12 @@ body.nx-clear .hero{padding-top:72px}
   .nx-util-in>a,.nx-util-m>a{padding:12px 8px!important;display:inline-block}
 }
 body[data-etui~=navopen]:not(#ehz) #ckn,body[data-etui~=navopen]:not(#ehz) .lum-ctl,body[data-etui~=navopen]:not(#ehz) .scrollcue,body[data-etui~=cknshow]:not(#ehz) .lum-ctl,body[data-etui~=cknshow]:not(#ehz) #plightBtn{display:none!important}
-@media(min-width:1241px){@supports((-webkit-backdrop-filter:blur(1px)) or (backdrop-filter:blur(1px))){.nx-mega{background:linear-gradient(180deg,rgba(12,23,40,.72),rgba(9,18,32,.80));-webkit-backdrop-filter:blur(26px) saturate(160%);backdrop-filter:blur(26px) saturate(160%);border-color:var(--et-hair-glow,var(--et-hair-glow,rgba(90,167,240,.12)))}}}
-@media(prefers-reduced-transparency:reduce){.nx-mega{background:linear-gradient(180deg,#0c1728,var(--et-night,#0a1422))!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}}
+@media(min-width:1241px){@supports((-webkit-backdrop-filter:blur(1px)) or (backdrop-filter:blur(1px))){.nx-mega{border-color:var(--et-hair-glow,var(--et-hair-glow,rgba(90,167,240,.12)))}}}
 .nx-col a[aria-current="page"]{background:linear-gradient(90deg,rgba(217,168,79,.14),transparent 80%);box-shadow:inset 2px 0 0 var(--gold-l,var(--et-gold-brand,#E8C36A));padding-left:10px;border-radius:6px}
 .nx-col a[aria-current="page"] strong{color:var(--gold-l,var(--et-gold-brand,#E8C36A))}
 .nx-util-in>a[aria-current]{color:var(--gold-l,var(--et-gold-brand,#E8C36A));font-weight:600}
-.nav.nx.scrolled{background:rgba(8,14,26,.82);-webkit-backdrop-filter:blur(20px) saturate(150%);backdrop-filter:blur(20px) saturate(150%);border-bottom:1px solid var(--hair);box-shadow:0 8px 32px rgba(0,0,0,.3)}
 @media(min-width:769px){
 .nx .nx-mega:not(#_x){min-width:720px;max-width:min(92vw,820px);
- background:linear-gradient(180deg,rgba(11,19,33,.975),rgba(7,13,23,.99))!important;
- -webkit-backdrop-filter:blur(28px) saturate(1.5);backdrop-filter:blur(28px) saturate(1.5);
  border:1px solid var(--et-hair-glow,var(--et-hair-glow,rgba(90,167,240,.12)));border-radius:20px;padding:22px 22px 18px;gap:8px 26px;
  box-shadow:0 24px 70px -18px rgba(0,0,0,.85),0 0 0 1px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.06);
  transform:translateY(14px) scale(.985)}
@@ -120,8 +115,6 @@ body[data-etui~=navopen]:not(#ehz) #ckn,body[data-etui~=navopen]:not(#ehz) .lum-
 @media(prefers-reduced-motion:reduce){
 .nx .nx-mega:not(#_x),.nx .nx-col a,.nx .nx-col a::after,.nx .nx-feat,.nx .nx-feat .arr{transition:none!important}
 .nx .nx-mega:not(#_x){transform:none}}
-@media(prefers-reduced-transparency:reduce){
-.nx .nx-mega:not(#_x){background:#0A1120!important;-webkit-backdrop-filter:none;backdrop-filter:none}}
 #nav{overflow-x:clip}
 @media (hover:hover) and (prefers-reduced-motion: no-preference){
 .nx-util-in .nx-invest,.cb-btn.cb-p{position:relative;overflow:hidden}
@@ -880,10 +873,6 @@ html:is(.et-plight,.et-jlight) body.hm:not(#a1):not(#a2):not(#a3):not(#a4):not(#
 .reveal:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6):not(#a7):not(#a8):not(#a9):not(#a10):not(#a11){filter:none!important}
 body.hm .reveal:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6):not(#a7):not(#a8):not(#a9):not(#a10):not(#a11){opacity:1!important;transform:none!important;transition:none!important}
 body.hm main *:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6):not(#a7):not(#a8):not(#a9):not(#a10):not(#a11),body.hm header.hero *:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6):not(#a7):not(#a8):not(#a9):not(#a10):not(#a11){text-shadow:none!important}
-html:not(.et-plight):not(.et-jlight) #nav.nx.scrolled:not(#z1):not(#z2):not(#z3):not(#z4):not(#z5):not(#z6):not(#z7):not(#z8){background:rgba(6,20,36,.93)!important;-webkit-backdrop-filter:blur(10px)!important;backdrop-filter:blur(10px)!important}
-html:not(.et-plight):not(.et-jlight) #nav.nx:not(#z1):not(#z2):not(#z3):not(#z4):not(#z5):not(#z6):not(#z7):not(#z8) .nx-util:not(#z1):not(#z2):not(#z3):not(#z4):not(#z5):not(#z6):not(#z7):not(#z8){background:rgba(4,10,20,.92)!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
-html:is(.et-plight,.et-jlight) #nav.nx.scrolled:not(#z1):not(#z2):not(#z3):not(#z4):not(#z5):not(#z6):not(#z7):not(#z8){background:rgba(251,248,242,.95)!important;-webkit-backdrop-filter:blur(10px)!important;backdrop-filter:blur(10px)!important}
-html:is(.et-plight,.et-jlight) #nav.nx:not(#z1):not(#z2):not(#z3):not(#z4):not(#z5):not(#z6):not(#z7):not(#z8) .nx-util:not(#z1):not(#z2):not(#z3):not(#z4):not(#z5):not(#z6):not(#z7):not(#z8){background:rgba(243,238,229,.96)!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
 html:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6):not(#a7):not(#a8):not(#a9):not(#a10):not(#a11) :is(main,header.pghero,header.hero) *:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6):not(#a7):not(#a8):not(#a9):not(#a10):not(#a11){-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
 html:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6):not(#a7):not(#a8):not(#a9):not(#a10):not(#a11) :is(main,header.pghero,header.hero) *:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6):not(#a7):not(#a8):not(#a9):not(#a10):not(#a11){text-shadow:none!important}
 .diapo:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6):not(#a7):not(#a8):not(#a9):not(#a10):not(#a11),#aurora i:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6):not(#a7):not(#a8):not(#a9):not(#a10):not(#a11),.prem-mesh:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6):not(#a7):not(#a8):not(#a9):not(#a10):not(#a11),.rootland:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6):not(#a7):not(#a8):not(#a9):not(#a10):not(#a11),.subland:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6):not(#a7):not(#a8):not(#a9):not(#a10):not(#a11){animation:none!important}
@@ -932,7 +921,6 @@ html:is(.et-plight,.et-jlight) nav.corp-nav a:is(.on,:hover):not(#_):not(#__):no
 :where(.nav-trigger,.nav-links a,.nx-util a,.nx-mega a):focus-visible{
   outline:2px solid var(--gold-l,var(--et-gold-brand,#E8C36A))!important;
   outline-offset:2px!important;
-  box-shadow:0 0 0 4px rgba(232,195,106,.18)!important;
 }
 @media(max-width:680px){
   .nav-links{max-width:100%;overflow-x:hidden}
@@ -942,16 +930,12 @@ html:is(.et-plight,.et-jlight) nav.corp-nav a:is(.on,:hover):not(#_):not(#__):no
 @media(forced-colors:active){
   :where(.nav-trigger,.nav-links a,.nx-util a,.nx-mega a):focus-visible{
     outline:2px solid CanvasText!important;
-    box-shadow:none!important;
   }
 }
 @media(max-width:680px){footer{scroll-margin-bottom:env(safe-area-inset-bottom);overflow-wrap:anywhere}footer a,footer button{min-height:44px}footer .wrap,footer .container{width:calc(100% - 28px);max-width:100%;box-sizing:border-box}}@media(max-width:390px){footer .wrap,footer .container{width:calc(100% - 24px)}footer{padding-top:28px!important;padding-bottom:calc(28px + env(safe-area-inset-bottom))!important}}
 html:is(.et-plight,.et-jlight) .nx-mega{
-  background:rgba(255,255,255,.68);
   border:1px solid rgba(255,255,255,.82);
   box-shadow:0 26px 70px rgba(24,45,67,.16),inset 0 1px 0 rgba(255,255,255,.82);
-  -webkit-backdrop-filter:blur(26px) saturate(145%);
-  backdrop-filter:blur(26px) saturate(145%);
 }
 html:is(.et-plight,.et-jlight) .nx-mega .nxg,
 html:is(.et-plight,.et-jlight) .nx-mega .nxc{
@@ -1156,9 +1140,5 @@ html:is(.et-plight,.et-jlight) :is(a,button,input,select,textarea,summary,[tabin
 /* et-lot29-verre:start */
 /* Lot 29 (A) : coque niveau 1 pour la page a #nav sans premium-chrome (configurateur) : une seule
    epaisseur de verre, la barre interne ne floute pas. */
-html:not(:has(link#premium-chrome)) #nav.nx{background:rgba(250,248,243,.86);-webkit-backdrop-filter:blur(16px) saturate(1.15);backdrop-filter:blur(16px) saturate(1.15);box-shadow:inset 0 1px 0 rgba(255,255,255,.65),0 10px 30px -18px rgba(10,20,34,.45)}
-html:not(:has(link#premium-chrome)):not(.et-plight):not(.et-jlight) #nav.nx{background:rgba(12,22,38,.86);box-shadow:inset 0 1px 0 rgba(255,255,255,.10),0 10px 30px -18px rgba(0,0,0,.6)}
 html:not(:has(link#premium-chrome)) #nav.nx .nx-bar{background:transparent!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important;box-shadow:none!important}
-@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){html:not(:has(link#premium-chrome)) #nav.nx{background:var(--et-paper,#faf8f3)}html:not(:has(link#premium-chrome)):not(.et-plight):not(.et-jlight) #nav.nx{background:#0c1626}}
-@media(prefers-reduced-transparency:reduce){html:not(:has(link#premium-chrome)) #nav.nx{background:var(--et-paper,#faf8f3);-webkit-backdrop-filter:none;backdrop-filter:none;box-shadow:none}html:not(:has(link#premium-chrome)):not(.et-plight):not(.et-jlight) #nav.nx{background:#0c1626}}
 /* et-lot29-verre:end */
