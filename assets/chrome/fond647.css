@@ -141,8 +141,6 @@ html body #par-pole:not(#k1):not(#k2) h2{font-size:clamp(1.35rem,3.4vw,2.35rem)!
    etre sur de gagner, quel que soit l ordre de chargement des feuilles. */
 html body footer:not(#k1):not(#k2):not(#k3):not(#k4):not(#k5):not(#k6):not(#k7):not(#k8):not(#k9):not(#k10):not(#k11):not(#k12){background:rgba(14,22,38,.5)!important;-webkit-backdrop-filter:blur(18px) saturate(140%)!important;backdrop-filter:blur(18px) saturate(140%)!important}
 html.et-plight body footer:not(#k1):not(#k2):not(#k3):not(#k4):not(#k5):not(#k6):not(#k7):not(#k8):not(#k9):not(#k10):not(#k11):not(#k12),html.et-jlight body footer:not(#k1):not(#k2):not(#k3):not(#k4):not(#k5):not(#k6):not(#k7):not(#k8):not(#k9):not(#k10):not(#k11):not(#k12){background:rgba(247,243,236,.58)!important;-webkit-backdrop-filter:blur(18px) saturate(120%)!important;backdrop-filter:blur(18px) saturate(120%)!important}
-html body .nav.scrolled:not(#z1):not(#z2):not(#z3):not(#z4):not(#z5):not(#z6):not(#z7):not(#z8):not(#z9):not(#z10):not(#z11):not(#z12):not(#z13):not(#z14):not(#z15):not(#z16):not(#z17):not(#z18):not(#z19):not(#z20):not(#z21):not(#z22):not(#z23):not(#z24){background:rgba(8,14,26,.5)!important;-webkit-backdrop-filter:blur(20px) saturate(150%)!important;backdrop-filter:blur(20px) saturate(150%)!important}
-html.et-plight body .nav.scrolled:not(#z1):not(#z2):not(#z3):not(#z4):not(#z5):not(#z6):not(#z7):not(#z8):not(#z9):not(#z10):not(#z11):not(#z12):not(#z13):not(#z14):not(#z15):not(#z16):not(#z17):not(#z18):not(#z19):not(#z20):not(#z21):not(#z22):not(#z23):not(#z24),html.et-jlight body .nav.scrolled:not(#z1):not(#z2):not(#z3):not(#z4):not(#z5):not(#z6):not(#z7):not(#z8):not(#z9):not(#z10):not(#z11):not(#z12):not(#z13):not(#z14):not(#z15):not(#z16):not(#z17):not(#z18):not(#z19):not(#z20):not(#z21):not(#z22):not(#z23):not(#z24){background:rgba(255,255,255,.5)!important;-webkit-backdrop-filter:blur(20px) saturate(150%)!important;backdrop-filter:blur(20px) saturate(150%)!important}
 /* Ch664 -- les tuiles en verre transparent, pour laisser le decor vivre sous le contenu pendant la
    navigation. Mesure : le systeme de tuiles (cartes de pole, cartes actualites/carnets, cartes de
    diversification, KPI...) porte plus de trente noms de classe differents a travers le site, mais
@@ -186,8 +184,6 @@ html body :is([class*="card"],.divc,.exp-c,.mfo-lever,.ppl-tile,.scard):not(.hnc
 html.et-plight body :is([class*="card"],.divc,.exp-c,.mfo-lever,.ppl-tile,.scard):not(.hncard-date):not(.hncard-go):not(.hncard-meta):not(.hncard-pole):not(.hncard-tag):not(.cards):not(.ct-cards):not(#g1):not(#g2):not(#g3):not(#g4):not(#g5):not(#g6):not(#g7):not(#g8):not(#g9):not(#g10):not(#g11):not(#g12):not(#g13):not(#g14):not(#g15):not(#g16):not(#g17):not(#g18):not(#g19):not(#g20):not(#g21):not(#g22):not(#g23):not(#g24),html.et-jlight body :is([class*="card"],.divc,.exp-c,.mfo-lever,.ppl-tile,.scard):not(.hncard-date):not(.hncard-go):not(.hncard-meta):not(.hncard-pole):not(.hncard-tag):not(.cards):not(.ct-cards):not(#g1):not(#g2):not(#g3):not(#g4):not(#g5):not(#g6):not(#g7):not(#g8):not(#g9):not(#g10):not(#g11):not(#g12):not(#g13):not(#g14):not(#g15):not(#g16):not(#g17):not(#g18):not(#g19):not(#g20):not(#g21):not(#g22):not(#g23):not(#g24){background:#F5F1E8!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
 html body footer:not(#k1):not(#k2):not(#k3):not(#k4):not(#k5):not(#k6):not(#k7):not(#k8):not(#k9):not(#k10):not(#k11):not(#k12){background:#0B1422!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
 html.et-plight body footer:not(#k1):not(#k2):not(#k3):not(#k4):not(#k5):not(#k6):not(#k7):not(#k8):not(#k9):not(#k10):not(#k11):not(#k12),html.et-jlight body footer:not(#k1):not(#k2):not(#k3):not(#k4):not(#k5):not(#k6):not(#k7):not(#k8):not(#k9):not(#k10):not(#k11):not(#k12){background:#F1ECE2!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
-html body .nav.scrolled:not(#z1):not(#z2):not(#z3):not(#z4):not(#z5):not(#z6):not(#z7):not(#z8):not(#z9):not(#z10):not(#z11):not(#z12):not(#z13):not(#z14):not(#z15):not(#z16):not(#z17):not(#z18):not(#z19):not(#z20):not(#z21):not(#z22):not(#z23):not(#z24){background:rgba(8,13,24,.97)!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
-html.et-plight body .nav.scrolled:not(#z1):not(#z2):not(#z3):not(#z4):not(#z5):not(#z6):not(#z7):not(#z8):not(#z9):not(#z10):not(#z11):not(#z12):not(#z13):not(#z14):not(#z15):not(#z16):not(#z17):not(#z18):not(#z19):not(#z20):not(#z21):not(#z22):not(#z23):not(#z24),html.et-jlight body .nav.scrolled:not(#z1):not(#z2):not(#z3):not(#z4):not(#z5):not(#z6):not(#z7):not(#z8):not(#z9):not(#z10):not(#z11):not(#z12):not(#z13):not(#z14):not(#z15):not(#z16):not(#z17):not(#z18):not(#z19):not(#z20):not(#z21):not(#z22):not(#z23):not(#z24){background:rgba(251,248,242,.95)!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
 }
 
 /* Ch680 -- les cartes "documents" des pages-pole rejoignent le systeme de verre du site.
@@ -399,15 +395,6 @@ html.et-jlight body footer:not(#k1):not(#k2):not(#k3):not(#k4):not(#k5):not(#k6)
    bandeau remesure par capture d ecran et echantillonnage de pixels : 5,1:1 en sombre, 5,8:1 en
    clair, tous deux au-dessus du minimum de 4,5:1. Repli prefers-reduced-transparency inchange,
    toujours net et opaque. */
-html body .nav.scrolled:not(#z1):not(#z2):not(#z3):not(#z4):not(#z5):not(#z6):not(#z7):not(#z8):not(#z9):not(#z10):not(#z11):not(#z12):not(#z13):not(#z14):not(#z15):not(#z16):not(#z17):not(#z18):not(#z19):not(#z20):not(#z21):not(#z22):not(#z23):not(#z24){
-  background:rgba(8,14,26,.16)!important;
-  -webkit-backdrop-filter:blur(4px) saturate(150%)!important;backdrop-filter:blur(4px) saturate(150%)!important;
-}
-html.et-plight body .nav.scrolled:not(#z1):not(#z2):not(#z3):not(#z4):not(#z5):not(#z6):not(#z7):not(#z8):not(#z9):not(#z10):not(#z11):not(#z12):not(#z13):not(#z14):not(#z15):not(#z16):not(#z17):not(#z18):not(#z19):not(#z20):not(#z21):not(#z22):not(#z23):not(#z24),
-html.et-jlight body .nav.scrolled:not(#z1):not(#z2):not(#z3):not(#z4):not(#z5):not(#z6):not(#z7):not(#z8):not(#z9):not(#z10):not(#z11):not(#z12):not(#z13):not(#z14):not(#z15):not(#z16):not(#z17):not(#z18):not(#z19):not(#z20):not(#z21):not(#z22):not(#z23):not(#z24){
-  background:rgba(255,255,255,.16)!important;
-  -webkit-backdrop-filter:blur(4px) saturate(150%)!important;backdrop-filter:blur(4px) saturate(150%)!important;
-}
 
 /* Ch704 - contraste au rendu reel, theme clair : les textes attenues par opacite remontent au seuil 4,5:1
    (encre calculee melangee au fond selon l opacite effective). Valeurs minimales, la hierarchie reste visible. */
