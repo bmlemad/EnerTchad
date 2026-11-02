@@ -939,6 +939,7 @@
     {
       "source": "/Dossier_Investisseur_EnerTchad.pptx",
       "destination": "/Fiche_Investisseur_EnerTchad.pdf",
+      "permanent": true,
       "statusCode": 301
     }
   ],
