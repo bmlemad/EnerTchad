@@ -1035,7 +1035,7 @@ test('trust — homepage claims expose status/context and evidence entry points'
 
   // The company status must remain explicit wherever the homepage presents targets.
   expect(html).toMatch(/soci[ée]t[ée]\s+(?:en\s+constitution|anonyme[^<]{0,80}en\s+constitution)/i);
-  expect(html).toMatch(/statut[^<]{0,120}dates[^<]{0,120}limites/i);
+  expect(html).toMatch(/statut[^<]{0,120}limites/i); // « Statut et limites » depuis les lots 27-28 (lot 104)
 
   // Core quantitative sections must provide at least one evidence/document path.
   const evidenceLinks = [...html.matchAll(/<a\b[^>]*href=["']([^"']+)["'][^>]*>([\s\S]*?)<\/a>/gi)]
@@ -1149,7 +1149,7 @@ test('redirects — legacy routes are unique, permanent and point to non-legacy 
     expect(seen.has(path), 'duplicate legacy route: ' + path).toBeFalsy();
     seen.add(path);
     const response = await request.get(new URL(path, url).href, { maxRedirects: 0, timeout: 30000 });
-    expect(response.status(), path).toBe(308);
+    expect([301, 308], path).toContain(response.status()); // 301 : barre finale d'Apache (OVH), permanente aussi (lot 104)
     const location = response.headers()['location'];
     expect(location, path).toBeTruthy();
     expect(location).not.toBe(path);
@@ -1563,9 +1563,10 @@ test('navigation — keyboard menu contracts remain explicit', async ({ browser 
   expect(response?.status()).toBe(200);
   const nav = page.locator('nav').first();
   await expect(nav).toBeVisible();
-  const menus = await nav.locator('[aria-haspopup="true"]').count();
+  // Lot 104 (2 nov. 2026) : depuis le lot 80 les déclencheurs sont des disclosures (aria-expanded + aria-controls), sans aria-haspopup.
+  const menus = await nav.locator('[aria-expanded][aria-controls], [aria-haspopup="true"]').count();
   expect(menus).toBeGreaterThan(0);
-  const expandable = await nav.locator('[aria-haspopup="true"]').evaluateAll(items => items.map(item => ({
+  const expandable = await nav.locator('[aria-expanded][aria-controls], [aria-haspopup="true"]').evaluateAll(items => items.map(item => ({
     expanded: item.getAttribute('aria-expanded'),
     controls: item.getAttribute('aria-controls')
   })));
