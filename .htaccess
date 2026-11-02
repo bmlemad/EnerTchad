@@ -1043,12 +1043,6 @@ RewriteRule ^solutions$ https://%{HTTP_HOST}/nos-activites#besoins [R=308,END,NE
 # /solutions-en /nos-activites-en#besoins 308!
 RewriteRule ^solutions\-en$ https://%{HTTP_HOST}/nos-activites-en#besoins [R=308,END,NE]
 
-# /presse /communiques#presse 308!
-RewriteRule ^presse$ https://%{HTTP_HOST}/communiques#presse [R=308,END,NE]
-
-# /presse-en /communiques-en#presse 308!
-RewriteRule ^presse\-en$ https://%{HTTP_HOST}/communiques-en#presse [R=308,END,NE]
-
 # /Dossier_Investisseur_EnerTchad.pptx /Fiche_Investisseur_EnerTchad.pdf 301!
 RewriteRule ^Dossier_Investisseur_EnerTchad\.pptx$ https://%{HTTP_HOST}/Fiche_Investisseur_EnerTchad.pdf [R=301,END,NE]
 
