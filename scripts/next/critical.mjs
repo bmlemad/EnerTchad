@@ -110,6 +110,12 @@ export function glassChrome(html) {
   return html.slice(0, at) + VERRE_TAG + html.slice(at);
 }
 
+// Lot 99, suite (choix du DG, 2 novembre 2026) : l'espace presse a sa page (/presse, /presse-en, /ar-presse,
+// scripts/gen_presse_pages.py). Les pieds de page de 243 sources pointent encore vers l'ancre /communiques#presse ;
+// ils sont réécrits à l'export (une règle au lieu de 243 sources, comme le menu par lib/main-nav.js et les
+// capacités du menu par navCapabilities). L'ancre reste valable sur la page des communiqués. Idempotent.
+export const pressRoom = html => html.replace(/href="\/communiques#presse"/g, 'href="/presse"').replace(/href="\/communiques-en#presse"/g, 'href="/presse-en"');
+
 // Lot 69 (option A retenue par le DG) : trois scripts chargés sans « defer » vers la fin du <body>
 // de 197 pages bloquaient la lecture de la page jusqu'à leur arrivée, et donc tous les scripts
 // différés (dont le bandeau de consentement). Ils passent en « defer », dans le même ordre, comme
