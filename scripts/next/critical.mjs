@@ -120,6 +120,12 @@ export function glassChrome(html) {
 // scripts/gen_presse_pages.py). Les pieds de page de 243 sources pointent encore vers l'ancre /communiques#presse ;
 // ils sont réécrits à l'export (une règle au lieu de 243 sources, comme le menu par lib/main-nav.js et les
 // capacités du menu par navCapabilities). L'ancre reste valable sur la page des communiqués. Idempotent.
+// Lot 103 (2 novembre 2026) : l'icône fléchée du bouton « Haut de page » (#toTop) est le seul vecteur exposé sans
+// nom ni aria-hidden sur 237 sources (le bouton porte déjà son aria-label ; le premier <svg class="ttr"> est
+// masqué). qa/strategic-premium-contract.spec.js le signalait sur /essentiel. Masqué à l'export, une règle
+// plutôt que 237 sources. Idempotent.
+export const decorativeIcons = html => html.replace(/(<button\b[^>]*\bid="toTop"[^>]*>\s*<svg class="ttr"[^>]*>[\s\S]*?<\/svg>\s*)<svg (?![^>]*aria-hidden)/g, '$1<svg aria-hidden="true" focusable="false" ');
+
 export const pressRoom = html => html.replace(/href="\/communiques#presse"/g, 'href="/presse"').replace(/href="\/communiques-en#presse"/g, 'href="/presse-en"');
 
 // Lot 100 (choix du DG, 2 novembre 2026) : « Dernière publication » sous le héros de l'accueil FR et EN.
