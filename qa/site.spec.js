@@ -1468,7 +1468,10 @@ test('resource integrity — stylesheet/script/image URLs are same-origin or exp
       continue;
     }
     expect(parsed.protocol).toMatch(/^https?:$/);
-    if (parsed.protocol === 'http:') expect(parsed.hostname).not.toBe(new URL(url).hostname);
+    if (parsed.protocol === 'http:') {
+      const localRunner = ['127.0.0.1', 'localhost', '[::1]'].includes(new URL(url).hostname);
+      expect(localRunner && parsed.origin === origin, 'HTTP is allowed only for same-origin resources on the local QA runner').toBe(true);
+    }
   }
   await page.close();
 });

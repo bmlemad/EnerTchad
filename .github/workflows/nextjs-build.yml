@@ -20,6 +20,7 @@ jobs:
       - run: node --test scripts/next/subsites.test.mjs
       - run: node --test scripts/test_page_share.mjs
       - run: node --test scripts/test_navigation_review.mjs
+      - run: node --test scripts/test_corporate_architecture.mjs
       - run: node --test scripts/test_qualified_enquiries.mjs
       - run: node --test scripts/test_business_journeys.mjs
       - run: python3 scripts/test_capability_labels.py

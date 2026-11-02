@@ -78,7 +78,7 @@ jobs:
 
       - name: Exécuter la QA fonctionnelle
         env:
-          TEST_GREP: ${{ github.event_name == 'pull_request' && 'dedicated spaces —|CTA vocabulary — core actions|CTA vocabulary — editorial|internationalization — language|navigation — representative pages contain|performance — critical pages|trust center|forms, anchors and interactive|mobile interactions|external scripts remain|images have alt text|controls are explicitly labelled|obvious cache-busting|disclosure controls keep|resource integrity|visual system budgets|localized pages declare|useful alternative text|canonical, title and primary|strategic SVGs|critical local resources use|consolidated tokens|legacy glass markers remain' || inputs.test_grep }}
+          TEST_GREP: ${{ github.event_name == 'pull_request' && 'dedicated spaces —|CTA vocabulary — core actions|CTA vocabulary — editorial|internationalization — language|navigation — representative pages contain|performance — critical pages|trust center|forms, anchors and interactive|mobile interactions|external scripts remain|images have alt text|controls are explicitly labelled|obvious cache-busting|disclosure controls keep|resource integrity|visual system budgets|localized pages declare|useful alternative text|canonical, title and primary|strategic SVGs|critical local resources use|consolidated tokens|legacy glass markers remain|mega-menu —|mobile navigation —' || inputs.test_grep }}
         run: |
           mkdir -p artifacts
           if [ -n "$TEST_GREP" ]; then
