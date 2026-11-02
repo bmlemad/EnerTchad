@@ -101,14 +101,20 @@ export function earlyConsent(html) {
 const VERRE_CSS = readFileSync(new URL('../../assets/chrome/verre-2026.css', import.meta.url), 'utf8').replace(/\/\*[\s\S]*?\*\//g, '').replace(/\n+/g, '\n').trim();
 export const VERRE_TAG = '<style data-et-verre>' + VERRE_CSS + '</style>';
 const VERRE_RX = /<nav\b[^>]*\bid="nav"|<header class="arh|<nav\b[^>]*\bet-space-header\b|id="nezBar"|<nav\b[^>]*\bpp-sub\b/;
+// Lot 102 (choix du DG, 2 novembre 2026) : la feuille assets/chrome/allege-2026.css (chrome allégé : fusion de la
+// barre utilitaire à partir de 1 536 px, masquage au défilement en dessous, sous-navigation non collante) suit la
+// feuille de verre, en ligne elle aussi : sa couche et-allege est déclarée la deuxième.
+const ALLEGE_CSS = readFileSync(new URL('../../assets/chrome/allege-2026.css', import.meta.url), 'utf8').replace(/\/\*[\s\S]*?\*\//g, '').replace(/\n+/g, '\n').trim();
+export const ALLEGE_TAG = '<style data-et-allege>' + ALLEGE_CSS + '</style>';
 export function glassChrome(html) {
   if (html.includes('data-et-verre') || !VERRE_RX.test(html)) return html;
   // Une page (Configurateur) n'écrit pas <head> : la feuille suit alors la balise <html> (en-tête implicite).
   const m = /<head>|<html\b[^>]*>/.exec(html);
   if (!m) return html;
   const at = m.index + m[0].length;
-  return html.slice(0, at) + VERRE_TAG + html.slice(at);
+  return html.slice(0, at) + VERRE_TAG + ALLEGE_TAG + html.slice(at);
 }
+
 
 // Lot 99, suite (choix du DG, 2 novembre 2026) : l'espace presse a sa page (/presse, /presse-en, /ar-presse,
 // scripts/gen_presse_pages.py). Les pieds de page de 243 sources pointent encore vers l'ancre /communiques#presse ;
