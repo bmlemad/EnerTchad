@@ -9,8 +9,9 @@ const { test, expect } = require('@playwright/test');
 // Causes mesurées, pas supposées : CSS critique écrite dans la page depuis les jeux critiques (scripts/critical,
 // 68 à 222 Ko par page, contre 0 à 124 Ko le 12 octobre) ; couches premium des lots 80 à 102 (+560 à
 // +1 450 !important par page) ; /essentiel dans le gabarit commun depuis le lot 79 (il n'avait que 2 !important).
-// Les plafonds sont reposés aux valeurs mesurées sur enertchad.com le 2 novembre 2026 (version 3ad36e4a7),
-// sans marge : la dette ne doit plus grossir à partir de là. Quand une consolidation la réduit, abaissez
+// Plafonds reposés le 2 novembre 2026 (version 3ad36e4a7) aux valeurs alors mesurées, puis abaissés par le lot 105
+// (refonte de la cascade, étape 1 : retrait des !important et des chaînes :not(#…) qu'aucun concurrent ne peut
+// reprendre, sur pole-premium.css, premium-chrome.css et bundle_core_a1.css) : -24 % de !important par page. Quand une consolidation la réduit, abaissez
 // le plafond concerné dans le même commit. Relevé : CSS_BUDGET_REPORT=1 SITE_URL=… npx playwright test qa/css-debt-budget.spec.js
 // Les budgets de modern-ui-2026.css, nav_a.css et modern-inner-2026.css restent dans site.spec.js.
 
@@ -18,18 +19,18 @@ const base = process.env.SITE_URL || 'https://enertchad.com/';
 
 // [page, !important, :not(#…), CSS dans la page (octets), plus longue chaîne de :not(#…)]
 const budgets = [
-  ['/', 4283, 19029, 121759, 44],
-  ['/index-en', 4282, 19031, 121084, 44],
-  ['/amont/', 4993, 26812, 143032, 40],
-  ['/aval/raffinage', 5181, 28609, 210911, 40],
-  ['/carrieres', 5196, 28675, 221790, 40],
-  ['/contact', 5105, 28433, 196057, 40],
-  ['/carnets', 4769, 25375, 168429, 40],
-  ['/journal-criblage-eor', 3380, 14484, 154434, 40],
-  ['/atlas/', 4493, 24638, 175355, 46],
-  ['/boutique/', 4324, 23969, 121467, 40],
-  ['/ar-societe', 3306, 24267, 67899, 40],
-  ['/essentiel', 4602, 24692, 137378, 40],
+  ['/', 3609, 16545, 118289, 44],
+  ['/index-en', 3608, 16547, 117614, 44],
+  ['/amont/', 3751, 21952, 138282, 40],
+  ['/aval/raffinage', 3886, 23591, 204127, 40],
+  ['/carrieres', 3901, 23657, 215006, 40],
+  ['/contact', 3850, 23549, 190947, 40],
+  ['/carnets', 3553, 20616, 164904, 40],
+  ['/journal-criblage-eor', 2708, 12002, 151004, 40],
+  ['/atlas/', 3347, 20246, 176045, 46],
+  ['/boutique/', 3144, 19512, 121188, 40],
+  ['/ar-societe', 2435, 20617, 67009, 40],
+  ['/essentiel', 3391, 19928, 133858, 40],
 ];
 
 const notIdPattern = /:not\(#[\w-]+\)/g;
@@ -45,7 +46,7 @@ function measure(css) {
   };
 }
 
-test.describe('css debt budget — pages do not load more cascade overrides than on 2 November 2026', () => {
+test.describe('css debt budget — pages do not load more cascade overrides than on 3 November 2026', () => {
   for (const [path, maxImportant, maxNotId, maxInlineBytes, maxChain] of budgets) {
     test(path, async ({ request }) => {
       const response = await request.get(new URL(path, base).href, { timeout: 45000 });
