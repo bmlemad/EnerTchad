@@ -66,17 +66,23 @@ const bySel = {}; // sheet -> normSel -> [decision]
 for (const [sheet, rules] of Object.entries(decisions)) {
   const path = 'assets/chrome/' + sheet;
   const root = postcss.parse(readFileSync(path, 'utf8'));
-  const stats = { chains: 0, important: 0 };
-  let ordinal = -1;
+  const stats = { chains: 0, important: 0, passes: 0 };
   bySel[sheet] = {};
-  root.walkRules(rule => {
-    if (inKeyframes(rule)) return;
-    ordinal++;
-    const dec = rules[ordinal] || { chain: false, imp: [], both: [] };
-    const key = normSel(rule.selector);
-    (bySel[sheet][key] = bySel[sheet][key] || []).push(JSON.stringify(dec));
-    editRule(rule, dec, stats);
-  });
+  // editRule ne converge pas toujours en une passe : un groupe de déclarations qui se recouvrent peut rester bloqué
+  // tant qu'une autre déclaration du groupe porte encore son !important. On répète jusqu'au point fixe.
+  for (let pass = 0; pass < 8; pass++) {
+    const before = stats.chains + stats.important;
+    let ordinal = -1;
+    root.walkRules(rule => {
+      if (inKeyframes(rule)) return;
+      ordinal++;
+      const dec = rules[ordinal] || { chain: false, imp: [], both: [] };
+      if (pass === 0) { const key = normSel(rule.selector); (bySel[sheet][key] = bySel[sheet][key] || []).push(JSON.stringify(dec)); }
+      editRule(rule, dec, stats);
+    });
+    stats.passes = pass + 1;
+    if (stats.chains + stats.important === before) break;
+  }
   total[sheet] = stats;
   if (apply) writeFileSync(path, root.toString());
 }
