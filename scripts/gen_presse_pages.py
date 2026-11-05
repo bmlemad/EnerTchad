@@ -195,6 +195,7 @@ def build_ar(items):
     head = head[:m.start(1)] + json.dumps(keep + [webpage, crumbs], ensure_ascii=False, separators=(',', ':')) + head[m.end(1):]
     # matière existante : héros (image) et cellules de contact d'ar-contact.html, premier paragraphe d'ar-societe.html
     cmain = page[page.find('<main id="main-content"'):page.find('</main>')]
+    hero_pic = re.search(r'<header class="pp-hero pp-hero-s" id="top-pole">(<picture>.*?</picture>)', cmain, re.S).group(1)
     cells = re.search(r'<section id="qanawat".*?<div class="pp-grid">(.*?)</div><p class="pp-chips">(.*?)</p>', cmain, re.S)
     grid, chips = cells.group(1), cells.group(2)
     presse_cell = re.search(r'<div class="pp-cell"><div>صحافة</div><div>(.*?)</div></div>', cmain, re.S).group(1)
@@ -207,7 +208,7 @@ def build_ar(items):
                   f'<div class="pp-rel-body"><h3 lang="fr" dir="ltr"><a href="{it["route"]}">{htmlmod.escape(it["title"])}</a></h3></div></li>' for it in items)
     sub = ''.join(f'<a href="{h}">{l}</a>' for h, l in a['nav'])
     main = ('<main id="main-content" tabindex="-1" class="ppl" dir="rtl">\n'
-            f'<header class="pp-hero pp-hero-s pp-hero-plain" id="top-pole" style="min-height:0!important"><div class="pp-wrap" style="padding-block:40px!important"><nav class="pp-crumb" aria-label="مسار التنقل"><a href="/ar">الرئيسية</a><span aria-hidden="true">‹</span><span aria-current="page">{a["crumb"]}</span></nav>'
+            f'<header class="pp-hero pp-hero-s" id="top-pole">{hero_pic}<div class="pp-wrap"><nav class="pp-crumb" aria-label="مسار التنقل"><a href="/ar">الرئيسية</a><span aria-hidden="true">‹</span><span aria-current="page">{a["crumb"]}</span></nav>'
             f'<p class="pp-k">{a["kicker"]}</p><h1>{a["h1"]}</h1><p class="pp-sublead">{presse_text}</p></div></header>\n'
             f'<nav class="pp-sub" aria-label="{a["inpage"]}"><div class="pp-wrap">{sub}</div></nav>\n'
             f'<section id="sharika" aria-labelledby="pp-h1"><div class="pp-wrap"><div class="pp-head"><p class="pp-k">{a["s1_k"]}</p><h2 id="pp-h1">{a["s1_h"]}</h2></div><div class="pp-prose pp-prose-w"><p>{about}</p>'

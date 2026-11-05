@@ -4,7 +4,7 @@ async function consent(page){const b=page.locator('#et-consent button').filter({
 for(const en of [false,true])for(const width of [320,1440]){
   test(`forms, anchors and interactive — home enquiry continuity ${en?'en':'fr'} ${width}`,async({browser})=>{
     const page=await browser.newPage({viewport:{width,height:900}});
-    await page.goto(new URL(en?'/index-en':'/',base));await consent(page);
+    await page.goto(new URL(en?'/index-en':'/',base).href);await consent(page);
     const links=page.locator('#besoin-client .hm-contact');await expect(links).toHaveCount(3);
     for(const [i,sector] of ['industrie-chantiers','transport-flottes','operateurs-petroliers'].entries()){
       const url=new URL(await links.nth(i).getAttribute('href'),base);
@@ -27,7 +27,7 @@ for(const en of [false,true])for(const width of [320,1440]){
 for(const width of [320,1440]){
   test(`forms, anchors and interactive — configurator slider names follow profile ${width}`,async({browser})=>{
     const page=await browser.newPage({viewport:{width,height:900}});
-    await page.goto(new URL('/configurateur-service-integre',base));await consent(page);
+    await page.goto(new URL('/configurateur-service-integre',base).href);await consent(page);
     for(const [profile,label] of [['Opérateur E&P','Nombre de puits'],['Industriel & flottes','Nombre de sites'],['État & collectivités','Nombre de sites'],['Opérateur E&P','Nombre de puits']]){
       await page.getByRole('button',{name:profile,exact:true}).click();
       const slider=page.getByRole('slider',{name:label,exact:true});await expect(slider).toHaveCount(1);
@@ -40,7 +40,7 @@ for(const width of [320,1440]){
 for(const width of [320,390]){
   test(`forms, anchors and interactive — Arabic press content starts in first viewport ${width}`,async({browser})=>{
     const page=await browser.newPage({viewport:{width,height:740}});
-    await page.goto(new URL('/ar-presse',base));await consent(page);
+    await page.goto(new URL('/ar-presse',base).href);await consent(page);
     await expect(page.locator('html')).toHaveAttribute('dir','rtl');
     const title=page.locator('h1');await expect(title).toBeVisible();
     expect((await title.boundingBox()).y).toBeLessThan(555);
