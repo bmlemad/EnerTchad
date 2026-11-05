@@ -4,7 +4,7 @@
 <link rel="alternate" hreflang="x-default" href="https://enertchad.com/configurateur-service-integre"><link rel="stylesheet" href="/assets/chrome/ios_hb1.css?v=6cd75e8d3d3a" id="ios-hb">
 <link rel="stylesheet" href="/assets/chrome/da_glass.css?v=cf3b5f01ad66"><script defer src="/assets/chrome/da_glass.js?v=2bd0e660144f"></script>
 <link rel="stylesheet" id="coherence-css" href="/assets/chrome/coherence-20261013.css?v=4cf1e8befa83">
-<meta http-equiv="Content-Security-Policy" data-et-csp content="script-src 'self' 'unsafe-hashes' 'sha256-7qFnDVO2AiEnurmVqdDTVCf8MEV1MVeP90Q1ZDyDhpA=' 'sha256-YAANDORiWp3xL2E61b4Hz38fvg9zDsEc6+POICQGpfQ=' 'sha256-b85sQpnFKAzNpQN8yjUINT2/Jz2AnORnD4HDWLDWsaY=' 'sha256-nuTeCp8z5hkej8tluCv/8uPSTKlRHAQmUjwMJJBEKXM=' 'sha256-OmsUhJ2+O+1jUvtNYbUKIEZjWXDB7CQaI45d8uUImbs=' https://*.googletagmanager.com; object-src 'none'; base-uri 'self'"><body id="top" class="et-inner-modern"><a href=#root class="et-skip skip-link">Aller au contenu principal</a><header>
+<meta http-equiv="Content-Security-Policy" data-et-csp content="script-src 'self' 'unsafe-hashes' 'sha256-7aHmBePR+SmsKxso9HHCU0GTNk3Kw0VWhddbrc1+ksI=' 'sha256-YAANDORiWp3xL2E61b4Hz38fvg9zDsEc6+POICQGpfQ=' 'sha256-b85sQpnFKAzNpQN8yjUINT2/Jz2AnORnD4HDWLDWsaY=' 'sha256-nuTeCp8z5hkej8tluCv/8uPSTKlRHAQmUjwMJJBEKXM=' 'sha256-OmsUhJ2+O+1jUvtNYbUKIEZjWXDB7CQaI45d8uUImbs=' https://*.googletagmanager.com; object-src 'none'; base-uri 'self'"><body id="top" class="et-inner-modern"><a href=#root class="et-skip skip-link">Aller au contenu principal</a><header>
 <nav class="nav nx pn" id="nav" aria-label="Navigation principale">
   <div class="nx-util"><div class="nx-util-in"><a href="/boutique/clients">Solutions clients</a><a href="/achats">Fournisseurs</a><a href="/contact">Contact</a><a href="/carrieres">Carrières</a><a href="/index-en" class="nx-lang" aria-label="FR · EN, English version" title="English">FR&nbsp;·&nbsp;<b>EN</b></a><a href="/ar" class="nx-langx" aria-label="النسخة العربية" title="العربية" lang="ar">ع</a><a href="/recherche" class="nx-search" aria-label="Rechercher">Rechercher</a><a href="/contact#ctForm" class="nx-invest">Présenter un besoin</a></div></div>
   <div class="nav-in nx-bar">
@@ -34,14 +34,17 @@
   function labelFor(s){
     var el=s;
     for(var i=0;i<6&&el;i++){el=el.parentElement; if(!el)break;
+      var explicit=el.getAttribute('aria-label');
+      if(explicit)return explicit;
       var l=el.querySelector('label,legend,[class*=label],.text-sm,.font-medium,.font-semibold');
       if(l&&l.textContent.trim().length>2){var c=clean(l.textContent); if(c.length>2)return c;}
     }
     return '';
   }
   function patch(){
-    document.querySelectorAll('[role="slider"]:not([aria-label]):not([aria-labelledby])').forEach(function(s){
-      s.setAttribute('aria-label', labelFor(s)||'Curseur de réglage');
+    document.querySelectorAll('[role="slider"]:not([aria-labelledby])').forEach(function(s){
+      var label=labelFor(s)||s.getAttribute('aria-label')||'Curseur de réglage';
+      if(s.getAttribute('aria-label')!==label)s.setAttribute('aria-label',label);
     });
     document.querySelectorAll('[aria-controls]').forEach(function(e){
       var t=e.getAttribute('aria-controls');
@@ -53,7 +56,7 @@
     try{
       var raf=0;
       var mo=new MutationObserver(function(){ if(raf)return; raf=requestAnimationFrame(function(){raf=0;patch();}); });
-      mo.observe(document.body,{childList:true,subtree:true,attributes:true,attributeFilter:['aria-controls','role']});
+      mo.observe(document.body,{childList:true,subtree:true,characterData:true,attributes:true,attributeFilter:['aria-controls','aria-label','role']});
     }catch(e){}
   }
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',function(){setTimeout(boot,300)});
