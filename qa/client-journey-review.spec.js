@@ -29,7 +29,7 @@ for(const width of [320,1440]){
     const page=await browser.newPage({viewport:{width,height:900}});
     await page.goto(new URL('/configurateur-service-integre',base).href);await consent(page);
     for(const [profile,label] of [['Opérateur E&P','Nombre de puits'],['Industriel & flottes','Nombre de sites'],['État & collectivités','Nombre de sites'],['Opérateur E&P','Nombre de puits']]){
-      await page.getByRole('button',{name:profile,exact:true}).click();
+      await page.getByRole('tab',{name:profile,exact:true}).click();
       const slider=page.getByRole('slider',{name:label,exact:true});await expect(slider).toHaveCount(1);
       const before=Number(await slider.getAttribute('aria-valuenow'));await slider.press('ArrowRight');
       await expect(slider).toHaveAttribute('aria-valuenow',String(before+1));
