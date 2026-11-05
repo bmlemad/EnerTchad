@@ -24,7 +24,8 @@ const budgets = [
   ['/amont/', 3751, 21952, 138282, 40],
   ['/aval/raffinage', 3886, 23591, 204127, 40],
   ['/carrieres', 3901, 23657, 215006, 40],
-  ['/contact', 3850, 23549, 190947, 40],
+  // PR #139 added the 480-byte after-enquiry block before this design change.
+  ['/contact', 3850, 23549, 191427, 40],
   ['/carnets', 3553, 20616, 164904, 40],
   ['/journal-criblage-eor', 2708, 12002, 151004, 40],
   ['/atlas/', 3347, 20246, 176045, 46],
