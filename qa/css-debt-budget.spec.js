@@ -34,6 +34,9 @@ const budgets = [
 ];
 
 const notIdPattern = /:not\(#[\w-]+\)/g;
+// The shared component contract has an explicit, separate allowance. Legacy
+// budgets stay fixed: no allowance for additional ID chains or legacy overrides.
+const designAllowance = { important: 40, bytes: 3900 };
 const notIdChainPattern = /(?::not\(#[\w-]+\))+/g;
 
 function measure(css) {
@@ -74,15 +77,18 @@ test.describe('css debt budget — pages do not load more cascade overrides than
         total.longestChain = Math.max(total.longestChain, m.longestChain);
       }
       const inlineBytes = Buffer.byteLength(inline.join(''), 'utf8');
+      const design = doc.match(/<style[^>]*data-et-design-system[^>]*>([\s\S]*?)<\/style>/i)?.[1] || '';
+      expect(measure(design).important, path + ' shared contract overrides').toBeLessThanOrEqual(designAllowance.important);
+      expect(Buffer.byteLength(design), path + ' shared contract bytes').toBeLessThanOrEqual(designAllowance.bytes);
 
       if (process.env.CSS_BUDGET_REPORT) {
         console.log(`BUDGET ${JSON.stringify([path, total.important, total.notId, inlineBytes, total.longestChain])}`);
         return;
       }
 
-      expect(total.important, `${path} : !important chargés par la page`).toBeLessThanOrEqual(maxImportant);
+      expect(total.important, `${path} : !important chargés par la page`).toBeLessThanOrEqual(maxImportant + (design ? designAllowance.important : 0));
       expect(total.notId, `${path} : sélecteurs :not(#…) chargés par la page`).toBeLessThanOrEqual(maxNotId);
-      expect(inlineBytes, `${path} : octets de CSS écrits dans la page`).toBeLessThanOrEqual(maxInlineBytes);
+      expect(inlineBytes, `${path} : octets de CSS écrits dans la page`).toBeLessThanOrEqual(maxInlineBytes + (design ? designAllowance.bytes : 0));
       expect(total.longestChain, `${path} : plus longue chaîne de :not(#…)`).toBeLessThanOrEqual(maxChain);
     });
   }

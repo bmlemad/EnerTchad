@@ -1,0 +1,109 @@
+/* EnerTchad component contract v1. See docs/design-system.md.
+   A named layer resolves legacy specificity without adding ID chains. Important
+   declarations are restricted to properties already locked by legacy templates.
+   Chrome keeps its existing dedicated glass layer; content cards use solid fills. */
+@layer et-design-system {
+  :root {
+    --et-ui-ink:#0a1a2f;
+    --et-ui-muted:#4b5870;
+    --et-ui-surface:#fff;
+    --et-ui-line:#dfe3e9;
+    --et-ui-action:#0a1a2f;
+    --et-ui-action-text:#fff;
+    --et-ui-focus:#80611e;
+    --et-ui-card-radius:16px;
+    --et-ui-control-radius:10px;
+    --et-ui-shadow:0 8px 24px rgba(10,26,47,.06);
+    --et-ui-font:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;
+    --et-ui-gutter:clamp(20px,4vw,48px);
+    --et-ui-section:clamp(48px,6vw,80px);
+    --et-ui-h1:clamp(2.125rem,4.2vw,3.625rem);
+    --et-ui-h2:clamp(1.625rem,2.8vw,2.25rem);
+    --et-ui-gap:24px;
+  }
+  html:not(.et-plight,.et-jlight) {
+    --et-ui-ink:#f1f3f6;
+    --et-ui-muted:#b5c0d0;
+    --et-ui-surface:#172536;
+    --et-ui-line:#354154;
+    --et-ui-action:#e0bd70;
+    --et-ui-action-text:#0a1a2f;
+    --et-ui-focus:#e0bd70;
+    --et-ui-shadow:0 8px 24px rgba(0,0,0,.12);
+  }
+  /* Arabic keeps its native font and natural tracking. */
+  html[lang^="ar"] {--et-ui-font:"Noto Sans Arabic",system-ui,sans-serif}
+  :is(.pp-hero,.ec-hero) h1 {
+    font-family:var(--et-ui-font)!important;
+    font-size:var(--et-ui-h1)!important;
+    font-weight:600!important;
+    line-height:1.12!important;
+    letter-spacing:-.035em!important;
+    text-wrap:balance;
+  }
+  .hm #ph-h1 {font-size:clamp(2.5rem,5.8vw,5rem)!important;line-height:1.05!important;letter-spacing:-.045em!important}
+  :is(.pp-head,.ec-heading) h2,.hm main h2:not(.hm-eyebrow) {
+    font-family:var(--et-ui-font)!important;
+    font-size:var(--et-ui-h2)!important;
+    font-weight:600!important;
+    line-height:1.2!important;
+    letter-spacing:-.025em!important;
+    text-wrap:balance;
+  }
+  html[lang^="ar"] :is(.pp-hero h1,.pp-head h2) {letter-spacing:normal!important;line-height:1.5!important}
+  :is(.pp-prose,.ec-lead,.hm-lead) {line-height:1.7!important}
+  :is(.pp-head,.ec-heading) {margin-bottom:var(--et-ui-gap)!important}
+  /* Match the editorial width without constraining maps, tables or applications. */
+  :is(.pp-wrap,.ec-shell,.hm .et-inner) {max-width:1240px!important;box-sizing:border-box}
+  .ec-page .ec-shell {padding-inline:var(--et-ui-gutter)!important}
+  :is(.pp-compact,.ec-entry) {padding-block:var(--et-ui-section)!important}
+  :is(.hm-card,.ec-offer,.ec-status,.pp-box,.et-sector-brief,#et-enquiry-next-steps) {
+    border-radius:var(--et-ui-card-radius)!important;
+    box-shadow:var(--et-ui-shadow)!important;
+    backdrop-filter:none!important;
+    -webkit-backdrop-filter:none!important;
+  }
+  :is(.ec-offer,.ec-status,.et-sector-brief,#et-enquiry-next-steps) {
+    background:var(--et-ui-surface)!important;
+    border:1px solid var(--et-ui-line)!important;
+    color:var(--et-ui-ink)!important;
+  }
+  .et-sector-brief {padding:20px}
+  .ec-page :is(#industriels,#flottes,#operateurs) {border-radius:var(--et-ui-card-radius)!important}
+  /* One geometry; primary fills and secondary links retain their semantic roles. */
+  :is(.pp-btn,.ec-primary,.et-actions>a:not(.et-text),.et-enquiry-submit) {
+    border-radius:var(--et-ui-control-radius)!important;
+    min-height:48px!important;
+    box-sizing:border-box;
+    line-height:1.35!important;
+    text-align:center;
+    white-space:normal;
+  }
+  .ec-page .ec-primary {
+    background:var(--et-ui-action)!important;
+    color:var(--et-ui-action-text)!important;
+    box-shadow:none!important;
+  }
+  :is(.pp-actions,.ec-actions,.et-actions) {gap:12px!important}
+  main :is(a,button,input,select,textarea,summary,[role="slider"]):focus-visible {
+    outline:3px solid var(--et-ui-focus)!important;
+    outline-offset:4px!important;
+  }
+  #ctForm :is(input:not([type="checkbox"]):not([type="radio"]):not([type="hidden"]),select,textarea) {
+    border-radius:var(--et-ui-control-radius)!important;
+    min-height:48px;
+    font:inherit;
+  }
+  :is(.pp-hero-img,.et-seg-img img) {object-fit:cover}
+  @media(max-width:760px) {
+    :root {--et-ui-section:40px;--et-ui-gap:20px;--et-ui-gutter:20px}
+    :is(.pp-actions,.ec-actions,.et-actions) {flex-wrap:wrap}
+    :is(.pp-btn,.ec-primary,.et-actions>a) {max-width:100%;overflow-wrap:anywhere}
+  }
+  @media(prefers-reduced-motion:reduce) {
+    :is(.hm-card,.ec-offer,.pp-btn,.ec-primary,.et-actions>a) {transition:none!important;transform:none!important}
+  }
+  @media(forced-colors:active) {
+    :root,html:not(.et-plight,.et-jlight) {--et-ui-ink:CanvasText;--et-ui-muted:CanvasText;--et-ui-surface:Canvas;--et-ui-line:CanvasText;--et-ui-action:ButtonFace;--et-ui-action-text:ButtonText;--et-ui-focus:Highlight}
+  }
+}
