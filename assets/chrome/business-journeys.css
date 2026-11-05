@@ -6,4 +6,9 @@
 [data-sector-journey] .et-sector-resources{border-top:1px solid currentColor;padding-top:16px;margin-top:20px}
 [data-sector-journey] .et-sector-resources h4{font-size:1rem;line-height:1.5;margin:0 0 8px}
 [data-sector-journey] .et-sector-resources a{display:inline-block;min-height:44px;align-content:center;color:inherit;text-decoration:underline}
+[data-sector-journey] .et-sector-brief{border-inline-start:3px solid currentColor;padding-inline-start:16px;margin-top:24px}
+[data-sector-journey] .et-sector-brief h4{font-size:1rem;line-height:1.5;margin:0 0 12px}
+[data-sector-journey] .et-sector-brief dl{margin:0;display:grid;gap:16px}
+[data-sector-journey] .et-sector-brief dt{font-weight:600;line-height:1.5}
+[data-sector-journey] .et-sector-brief dd{margin:4px 0 0;line-height:1.65}
 @media(max-width:760px){[data-project-reference]{scroll-margin-top:110px}}
