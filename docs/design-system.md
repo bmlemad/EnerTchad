@@ -1,0 +1,57 @@
+# EnerTchad — référentiel visuel v1
+
+Ce référentiel relie l’accueil, les activités, l’espace clients et les pages
+éditoriales. Source des règles : `assets/chrome/design-system.css`. Leur insertion
+au premier affichage est assurée par `lib/design-system.js`, avant les styles
+historiques. Les sous-sites héritent du même contrat lors de leur génération.
+
+## Règles communes
+
+| Élément | Règle | Usage |
+| --- | --- | --- |
+| Texte clair | Encre #0a1a2f, secondaire #4b5870 | Cartes et formulaires sur fond blanc |
+| Texte sombre | Encre #f1f3f6, secondaire #b5c0d0 | Cartes sur fond #172536 |
+| Accent | Or #80611e en clair, #e0bd70 en sombre | Focus et repères ; pas de texte doré pâle sur blanc |
+| Titres de pages | 34 à 58 px, graisse 600, interligne 1,12 | Activités et espace clients |
+| Titre d’accueil | 40 à 80 px, interligne 1,05 | Introduction institutionnelle |
+| Titres de sections | 26 à 36 px, interligne 1,2 | Sections comparables des modèles de référence |
+| Arabe | Noto Sans Arabic, espacement naturel, interligne 1,5 | Préserver la lecture RTL |
+| Lecture | Interligne 1,7 | Texte courant des introductions et blocs éditoriaux |
+| Conteneur | 1 240 px au maximum | Alignements éditoriaux ; cartes et applications gardent leur propre espace |
+| Sections | 48 à 80 px ; 40 px sur mobile | Sections compactes et offres clients |
+| Cartes | Arrondi 16 px, ombre légère, sans flou | Offres, fiches, informations utiles |
+| Contrôles | Arrondi 10 px ; hauteur d’action 48 px | Boutons et champs de contact |
+| Groupes d’actions | Écart 12 px, retour à la ligne | Éviter les boutons coupés sur mobile |
+| Focus | Contour visible 3 px, écart 4 px | Liens, boutons, champs, résumés, curseurs |
+
+## Hiérarchie et états
+
+Un bouton principal sert l’action de la section. Les liens secondaires conservent
+un traitement plus discret et un libellé explicite. Les cartes de lecture utilisent
+des fonds solides. Le verre reste réservé aux surfaces de navigation déjà gérées
+par `verre-2026.css`, dont le repli sans transparence est conservé. Aucun flou n’est
+ajouté aux blocs de texte. Les animations des composants harmonisés sont supprimées
+si le visiteur demande une réduction des mouvements. Les couleurs système restent
+disponibles en contraste forcé.
+
+Les photographies de couverture conservent leur cadrage adaptatif. Le choix de
+nouvelles photographies doit être validé sur des documents dont les droits et le
+lien avec l’activité sont établis ; ce lot ne change pas les images éditoriales.
+
+## Extension et validation
+
+Réutiliser les variables `--et-ui-*` pour les nouveaux composants ; éviter de
+recréer une échelle d’arrondis ou d’ombres par page. Les règles ciblent les composants
+éditoriaux connus plutôt que tous les `h1`, `section` ou `button`, afin de préserver
+les tableaux, les cartes, les petits libellés et les outils intégrés.
+
+La couche nommée résout les conflits des anciens styles sans augmenter la
+spécificité des sélecteurs. Les styles restent en ligne pour préserver les jeux
+CSS critiques existants et éviter une requête bloquante supplémentaire. Les règles
+marquées importantes ne concernent que les propriétés déjà verrouillées par les
+modèles historiques. La migration vers les variables communes peut ensuite retirer
+ces anciens verrouillages composant par composant.
+
+Contrôler les modèles de référence en français, anglais et arabe, en clair et en
+sombre, sur petit écran et ordinateur : hiérarchie, contraste, débordements, focus,
+navigation et formulaires sans envoi. Les captures de validation accompagnent la PR.
