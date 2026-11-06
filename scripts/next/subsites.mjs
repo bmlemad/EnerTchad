@@ -29,6 +29,22 @@ function nodes(html) {
 }
 const escape = value => value.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
 
+function sharedControlsOnce(html, version) {
+  const path = '/assets/chrome/coherence-20261013.js';
+  const src = `${path}?v=${version}`;
+  const scripts = nodes(html).filter(n => n.name === 'script' && (n.attribs?.src || '').split(/[?#]/)[0] === path);
+  if (!scripts.length) return html.replace(/<\/body>(?![\s\S]*<\/body>)/, `<script defer src="${src}"></script></body>`);
+  // Keep the original execution order and attributes, refreshing only its URL.
+  // Later copies would execute the same classic script again, even when cached.
+  for (let i = scripts.length - 1; i >= 0; i--) {
+    const n = scripts[i];
+    const tag = html.slice(n.startIndex, n.endIndex + 1);
+    const replacement = i === 0 ? tag.replace(/\bsrc\s*=\s*(?:"[^"]*"|'[^']*'|[^\s>]+)/i, `src="${src}"`) : '';
+    html = html.slice(0, n.startIndex) + replacement + html.slice(n.endIndex + 1);
+  }
+  return html;
+}
+
 // One editorial source per page. Public paths work immediately; domain-specific
 // copies are only mounted on their assigned Netlify aliases after DNS activation.
 export function renderSubsite(html, page, space, hosted = false) {
@@ -109,8 +125,8 @@ export function renderSubsite(html, page, space, hosted = false) {
   for (const [start, end, text] of replacements.sort((a, b) => b[0] - a[0])) output = output.slice(0, start) + text + output.slice(end);
   output = output.replace('<html', `<html data-et-space="${space}"`)
     .replace('</head>', '<link rel="stylesheet" href="/assets/chrome/subsites.css"><link rel="stylesheet" href="/assets/chrome/coherence-20261013.css"></head>')
-    .replace(/<\/body>(?![\s\S]*<\/body>)/, `<script defer src="/assets/chrome/coherence-20261013.js?v=${coherenceHash}"></script></body>`)
     .replace(/src="\/assets\/chrome\/c_ac04328f0f47\.js[^\"]*"/g, 'src="/assets/chrome/subsites-core.js"');
+  output = sharedControlsOnce(output, coherenceHash);
   // The source Atlas stylesheet intentionally has very high specificity.
   // Inline spacing overrides its fixed-header offset without another CSS arms race.
   if (space === 'atlas') output = output.replace(/(<main\b[^>]*class="atlas-space")/, '$1 style="padding-top:28px!important"');

@@ -11,6 +11,7 @@ for (const width of [1440, 390]) {
       const response = await page.goto(new URL(route, base).href, {waitUntil:'networkidle'});
       expect(response.status()).toBe(200);
       await expect(page.locator('#nav.et-space-header')).toBeVisible();
+      await expect(page.locator('script[src*="/assets/chrome/coherence-20261013.js"]')).toHaveCount(1);
       await expect(page.locator('h1')).toHaveCount(1);
       await expect(page.locator('#nav [aria-current="page"]')).toHaveCount(1);
       await openMenu(page);
