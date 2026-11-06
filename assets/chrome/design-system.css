@@ -71,7 +71,7 @@
   .et-sector-brief {padding:20px}
   .ec-page :is(#industriels,#flottes,#operateurs) {border-radius:var(--et-ui-card-radius)!important}
   /* One geometry; primary fills and secondary links retain their semantic roles. */
-  :is(.pp-btn,.ec-primary,.et-actions>a:not(.et-text),.et-enquiry-submit) {
+  :is(.pp-btn,.ec-primary,.et-actions>a:not(.et-text),.et-enquiry-submit,.atlas-gold-panel>a) {
     border-radius:var(--et-ui-control-radius)!important;
     min-height:48px!important;
     box-sizing:border-box;
@@ -79,7 +79,7 @@
     text-align:center;
     white-space:normal;
   }
-  .ec-page .ec-primary {
+  .ec-page .ec-primary,.atlas-gold-panel>a {
     background:var(--et-ui-action)!important;
     color:var(--et-ui-action-text)!important;
     box-shadow:none!important;
