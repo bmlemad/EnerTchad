@@ -37,7 +37,7 @@ for(const en of [false,true])for(const width of [320,1440])for(const light of [t
     await page.goto(new URL(en?'/atlas/carte-en':'/atlas/carte',base).href,{waitUntil:'networkidle'});
     await page.evaluate(light=>{document.documentElement.classList.toggle('et-plight',light);document.documentElement.classList.remove('et-jlight');},light);
     const details=page.locator('#atl-cadastre details').first();
-    await details.locator('summary').click();
+    await details.locator(':scope > summary').click();
     await expect(details).toHaveAttribute('open','');
     const action=details.locator('.atlas-gold-panel>a');
     await action.scrollIntoViewIfNeeded();await expect(action).toBeVisible();
