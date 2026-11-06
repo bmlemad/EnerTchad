@@ -41,6 +41,7 @@ for(const en of [false,true])for(const width of [320,1440])for(const light of [t
     await expect(details).toHaveAttribute('open','');
     const action=details.locator('.atlas-gold-panel>a');
     await action.scrollIntoViewIfNeeded();await expect(action).toBeVisible();
+    await expect(details.locator('.atlas-gold-panel')).toHaveCSS('opacity','1');
     const ratio=await action.evaluate(n=>{
       const s=getComputedStyle(n),rgb=c=>c.match(/[\d.]+/g).slice(0,3).map(Number);
       const luminance=c=>{const a=rgb(c).map(v=>{v/=255;return v<=.04045?v/12.92:((v+.055)/1.055)**2.4});return a[0]*.2126+a[1]*.7152+a[2]*.0722};
