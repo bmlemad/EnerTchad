@@ -16,7 +16,9 @@ for (const [space, pages] of [['boutique', commercialPages], ['atlas', atlasPage
       const before = elements(original), after = elements(output);
       const controls = await readFile('assets/chrome/coherence-20261013.js');
       const version = createHash('sha256').update(controls).digest('hex').slice(0, 12);
-      assert(after.some(n => n.name === 'script' && n.attribs.src === `/assets/chrome/coherence-20261013.js?v=${version}`), 'shared controls must invalidate stale browser caches');
+      const shared = after.filter(n => n.name === 'script' && /^\/assets\/chrome\/coherence-20261013\.js(?:[?#]|$)/.test(n.attribs.src || ''));
+      assert.equal(shared.length, 1, 'shared controls must execute only once');
+      assert.equal(shared[0].attribs.src, `/assets/chrome/coherence-20261013.js?v=${version}`, 'shared controls must invalidate stale browser caches');
       const text = node => node.data || (node.children || []).map(text).join('');
       assert.equal(text(after.find(n => n.name === 'h1')), page.kind === 'clients' ? page.language === 'en' ? 'Your business. Your energy needs.' : 'Votre activité. Vos besoins en énergie.' : text(before.find(n => n.name === 'h1')));
       assert.equal(after.filter(n => n.attribs.id === 'nav').length, 1);
@@ -36,6 +38,26 @@ for (const [space, pages] of [['boutique', commercialPages], ['atlas', atlasPage
     });
   }
 }
+test('shared controls retain their original position and attributes when deduplicated', async () => {
+  const page = atlasPages[0];
+  const original = (await readFile(page.source,'utf8')).replace(/<script\b[^>]*src="\/assets\/chrome\/coherence-20261013\.js[^\"]*"[^>]*>[\s\S]*?<\/script>/g,'');
+  const input = original.replace('</head>', '<script id="first-shared" defer src="/assets/chrome/coherence-20261013.js?v=old"></script><script id="widget-sentinel" src="/widget.js" defer></script></head>')
+    .replace('</body>', '<script src="/assets/chrome/coherence-20261013.js?v=another" defer></script></body>');
+  const output = renderSubsite(input,page,'atlas');
+  const scripts = elements(output).filter(n=>n.name==='script' && /^\/assets\/chrome\/coherence-20261013\.js(?:[?#]|$)/.test(n.attribs.src||''));
+  assert.equal(scripts.length,1);
+  assert.equal(scripts[0].attribs.id,'first-shared');
+  assert('defer' in scripts[0].attribs);
+  assert(output.indexOf('id="first-shared"')<output.indexOf('id="widget-sentinel"'));
+});
+test('shared controls are added once when absent from the source', async () => {
+  const page=atlasPages[0];
+  const input=(await readFile(page.source,'utf8')).replace(/<script\b[^>]*src="\/assets\/chrome\/coherence-20261013\.js[^\"]*"[^>]*>[\s\S]*?<\/script>/g,'');
+  const output=renderSubsite(input,page,'atlas');
+  const scripts=elements(output).filter(n=>n.name==='script' && /^\/assets\/chrome\/coherence-20261013\.js(?:[?#]|$)/.test(n.attribs.src||''));
+  assert.equal(scripts.length,1);
+  assert('defer' in scripts[0].attribs);
+});
 test('sitemap keeps the group URLs of the dedicated spaces', () => {
   const sitemap = '<urlset><loc>https://enertchad.com/boutique/clients</loc><loc>https://enertchad.com/atlas/carte</loc></urlset>';
   assert.equal(commercialSitemap(sitemap), sitemap);
