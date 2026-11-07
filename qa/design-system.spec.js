@@ -1,6 +1,26 @@
 const {test,expect}=require('@playwright/test');
 const base=process.env.SITE_URL||'https://enertchad.com/';
 const routes=['/','/index-en','/amont/','/aval/','/intermediaire/','/enerconseils/','/boutique/clients','/boutique/en/clients','/contact','/ar-presse'];
+for(const width of [320,360,390,1440])test(`forms, anchors and interactive — thematic keyboard theme switch ${width}`,async({browser})=>{
+  const page=await browser.newPage({viewport:{width,height:900}});
+  for(const route of ['/amont/','/pole-amont-en','/intermediaire/','/aval/','/petrochimie/','/enerconseils/','/greentech/']){
+    await page.goto(new URL(route,base).href,{waitUntil:'networkidle'});
+    const toggle=page.locator('#etThemeHdr');
+    await expect(toggle,route+' theme control').toBeVisible();
+    const before=await toggle.getAttribute('aria-pressed');
+    await toggle.focus();await expect(toggle).toBeFocused();await toggle.press('Space');
+    await expect(toggle).toHaveAttribute('aria-pressed',before==='true'?'false':'true');
+    const dark=before!=='true';
+    await expect(page.locator('html')).toHaveClass(dark?/^(?!.*et-plight).*$/:/et-plight/);
+    expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+2),route+' theme overflow').toBe(true);
+    await page.reload({waitUntil:'networkidle'});
+    await expect(page.locator('#etThemeHdr')).toBeVisible();
+    await expect(page.locator('#etThemeHdr')).toHaveAttribute('aria-pressed',dark?'true':'false');
+    await page.locator('#etThemeHdr').click();
+    await expect(page.locator('#etThemeHdr')).toHaveAttribute('aria-pressed',before);
+  }
+  await page.close();
+});
 for(const width of [320,1440])test(`forms, anchors and interactive — shared design contract ${width}`,async({browser})=>{
   const page=await browser.newPage({viewport:{width,height:900}});
   for(const route of routes){
