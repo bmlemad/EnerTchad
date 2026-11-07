@@ -2,7 +2,7 @@
    Même bouton que l'en-tête arabe (#arh-theme, gen_premium_ar.py) : demi-disque,
    aria-pressed="true" quand le mode sombre est actif, préférence dans localStorage.
    - Pages à nav principale (carnets, calculateur) : le bouton est inséré dans
-     #nav .nav-cta, avant la loupe, et reprend son style (.nav-search).
+     #nav .nav-cta, avant la loupe, avec son propre style (.et-theme-hdr).
    - Atlas, Espace Clients, pages React : le bouton est déjà dans le balisage de
      l'en-tête (.et-theme-hdr) ; ce script ne fait que le relier.
    Classe pilotée : et-jlight sur /journal-*, et-plight ailleurs, sp-dark (inverse)
@@ -32,7 +32,9 @@
     var cta=document.querySelector('#nav .nav-cta');
     if(cta){
       var t=document.createElement('button');
-      t.type='button';t.className='nav-search et-theme-hdr';t.id='etThemeHdr';
+      // La classe nav-search masque la recherche sous 360px : la bascule doit
+      // rester independante pour conserver le choix du theme sur petit ecran.
+      t.type='button';t.className='et-theme-hdr';t.id='etThemeHdr';
       t.setAttribute('aria-label',LABEL);t.title=LABEL;t.innerHTML=ICON;
       cta.insertBefore(t,document.getElementById('navSearch')||cta.firstChild);
     }
