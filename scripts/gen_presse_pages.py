@@ -217,7 +217,16 @@ def build_ar(items):
             f'<section id="bayanat" aria-labelledby="pp-h3"><div class="pp-wrap"><div class="pp-head"><p class="pp-k">{a["s3_k"]}</p><h2 id="pp-h3">{a["s3_h"]}</h2></div><div class="pp-prose pp-prose-w"><p>{a["s3_p"]}</p><ol class="pp-releases pp-releases-short">{lis}</ol></div></div></section>\n'
             f'<section id="ittisal" aria-labelledby="pp-h4" class="pp-mist"><div class="pp-wrap"><div class="pp-head"><p class="pp-k">{a["s4_k"]}</p><h2 id="pp-h4">{a["s4_h"]}</h2></div><div class="pp-prose pp-prose-w"><p>{presse_text}</p><div class="pp-grid">{grid}</div><p class="pp-chips">{chips}</p></div></div></section>\n'
             + sub_js + '\n</main>')
-    put('ar-presse.html', head + pre + main + post)
+    doc = head + pre + main + post
+    # pre/post viennent d'ar-contact.html : les liens de langue (en-tête et pied) y visent la page Contact ;
+    # sur la page presse ils doivent viser la page presse (hreflang fr/en de cette même page)
+    for src_a, dst_a in (('<a href="/contact">FR</a>', '<a href="/presse">FR</a>'),
+                         ('<a href="/contact-en">EN</a>', '<a href="/presse-en">EN</a>'),
+                         ('<a href="/contact">هذه الصفحة بالفرنسية</a>', '<a href="/presse">هذه الصفحة بالفرنسية</a>'),
+                         ('<a href="/contact-en" lang="en">This page in English</a>', '<a href="/presse-en" lang="en">This page in English</a>')):
+        assert doc.count(src_a) == 1, src_a
+        doc = doc.replace(src_a, dst_a)
+    put('ar-presse.html', doc)
     # la cellule « صحافة » de la page de contact renvoie à la page presse
     new = page.replace('<div class="pp-cell"><div>صحافة</div><div>' + presse_cell + '</div></div>',
                        '<div class="pp-cell"><div>صحافة</div><div>' + presse_text + ' <a class="pp-link" href="/ar-presse">فضاء الصحافة</a></div></div>', 1) if '/ar-presse' not in presse_cell else page
