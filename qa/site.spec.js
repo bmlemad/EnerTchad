@@ -856,6 +856,7 @@ test('performance/security — critical resources expose correct MIME types', as
     ['/', 'text/html'],
     ['/index-en', 'text/html'],
     ['/assets/chrome/home-corporate-2026.css', 'text/css'],
+    ['/assets/chrome/home-2026.css', 'text/css'],
     ['/assets/chrome/nav_a.js', 'javascript'],
   ];
   for (const [path, expected] of cases) {
