@@ -20,7 +20,7 @@ const base = process.env.SITE_URL || 'https://enertchad.com/';
 // [page, !important, :not(#…), CSS dans la page (octets), plus longue chaîne de :not(#…)]
 const budgets = [
   ['/', 3112, 12658, 112107, 44], // lot 106-A : accueil refondu (mesure du 8 novembre 2026, hors contrat de design)
-  ['/index-en', 3608, 16547, 117614, 44],
+  ['/index-en', 3152, 12660, 116211, 44], // lot 106-B : accueil EN refondu (mesure du 8 novembre 2026, hors contrat de design)
   ['/amont/', 3751, 21952, 138282, 40],
   ['/aval/raffinage', 3886, 23591, 204127, 40],
   ['/carrieres', 3901, 23657, 215006, 40],
