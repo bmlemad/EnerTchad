@@ -15,9 +15,12 @@ for path in ROOT.rglob('*.html'):
     count += 1
 for suffix in ('', '-en'):
     home = (ROOT / ('index' + suffix + '.html')).read_text()
-    assert 'id="mod-equipe"' in home
     assert home.count('class="et-seg-img"') == 4
-    assert home.index('id="chaine"') < home.index('id="programme-cible"')
+    if 'id="gouvernance-accueil"' in home:  # lot 106-A (8 nov. 2026) : accueil refondu, gouvernance après les repères
+        assert home.index('id="chaine"') < home.index('id="reperes"') < home.index('id="gouvernance-accueil"')
+    else:  # structure de la revue d'octobre (EN jusqu'au lot 106-B)
+        assert 'id="mod-equipe"' in home
+        assert home.index('id="chaine"') < home.index('id="programme-cible"')
     library = (ROOT / ('publications' + suffix + '.html')).read_text()
     assert 'data-document-filter' in library
     assert len(re.findall('data-document-format=', library)) >= 10

@@ -50,7 +50,8 @@ for p in pages:
     if p in ('index.html', 'index-en.html', 'ar.html'):
         if re.search(r'<style\b', h, re.I):
             errs.append(f'{p}: style inline restant sur une page d\'entrée')
-        if not re.search(r'<link\b[^>]*href=["\'][^"\']*home-inline-', h, re.I):
+        # lot 106-A (8 nov. 2026) : l'accueil FR charge home-2026.css ; l'accueil EN garde home-inline-premium.css jusqu'au lot 106-B
+        if not re.search(r'<link\b[^>]*href=["\'][^"\']*home-(?:inline-|2026\.css)', h, re.I):
             errs.append(f'{p}: feuille CSS homepage externalisée absente')
         if not re.search(r'<h1\b', h, re.I):
             errs.append(f'{p}: H1 absent')
