@@ -31,7 +31,9 @@ const budgets = [
   ['/journal-criblage-eor', 2526, 10288, 149912, 40],
   ['/atlas/', 3129, 18959, 175917, 46],
   ['/boutique/', 2926, 18236, 121161, 40],
-  ['/ar-societe', 2435, 20617, 67009, 40],
+  // Lot 108 (9 novembre 2026, décision du DG) : menu mobile arabe, en-tête mobile de 160 à 64 px ; le premier écran montre
+  // plus de contenu, la CSS critique écrite dans la page reprend donc plus de règles existantes (+15 !important, +486 :not(#…), +8 003 octets).
+  ['/ar-societe', 2450, 21103, 75112, 40],
   ['/essentiel', 3172, 18651, 133813, 40],
 ];
 
