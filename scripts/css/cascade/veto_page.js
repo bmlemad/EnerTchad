@@ -41,6 +41,9 @@
   // ---------- spécificité et dépouillement d'un sélecteur complexe ----------
   // walk renvoie { spec:[a,b,c], stripped, pe, chain } ; chainless=true calcule la spécificité sans les :not(#id)
   function analyse(sel, chainless) {
+    // sélecteur relatif (:has(> a)) : combinateur de tête conservé tel quel
+    const lead = sel.match(/^\s*([>+~])\s*/);
+    if (lead) { const r = analyse(sel.slice(lead[0].length), chainless); r.stripped = lead[1] + ' ' + r.stripped; return r; }
     let a = 0, b = 0, c = 0, out = '', pe = '', compoundEmpty = true, i = 0, touched = false;
     const s = sel;
     const flush = () => { if (compoundEmpty) out += '*'; compoundEmpty = true; };
@@ -146,6 +149,24 @@
   const csetCache = new Map(); const ALLSET = { has: () => true };
   const csets = C => { let v = csetCache.get(C.id); if (!v) { v = C.style.getPropertyValue('all') !== '' ? ALLSET : new Set([...C.style]); csetCache.set(C.id, v); } return v; };
   const ALL_LONGHANDS = [...getComputedStyle(document.documentElement)].filter(n => !n.startsWith('--'));
+  // familles logiques/physiques et alias : deux déclarations de la même famille se départagent par l'ORDRE d'apparition
+  // (groupes de propriétés logiques, CSS Cascade 5), pas par la spécificité : tout concurrent de la famille compte.
+  const FAM = {};
+  const group = (...members) => { for (const m of members) FAM[m] = members; };
+  for (const base of ['margin', 'padding', 'scroll-margin', 'scroll-padding']) {
+    group(base + '-left', base + '-right', base + '-inline-start', base + '-inline-end');
+    group(base + '-top', base + '-bottom', base + '-block-start', base + '-block-end');
+  }
+  for (const k of ['width', 'style', 'color']) {
+    group('border-left-' + k, 'border-right-' + k, 'border-inline-start-' + k, 'border-inline-end-' + k);
+    group('border-top-' + k, 'border-bottom-' + k, 'border-block-start-' + k, 'border-block-end-' + k);
+  }
+  group('left', 'right', 'inset-inline-start', 'inset-inline-end'); group('top', 'bottom', 'inset-block-start', 'inset-block-end');
+  group('width', 'height', 'inline-size', 'block-size'); group('min-width', 'min-height', 'min-inline-size', 'min-block-size'); group('max-width', 'max-height', 'max-inline-size', 'max-block-size');
+  group('row-gap', 'grid-row-gap'); group('column-gap', 'grid-column-gap'); group('overflow-wrap', 'word-wrap');
+  group('border-top-left-radius', 'border-top-right-radius', 'border-bottom-left-radius', 'border-bottom-right-radius', 'border-start-start-radius', 'border-start-end-radius', 'border-end-start-radius', 'border-end-end-radius');
+  const famCache = new Map();
+  const family = lh => { if (famCache.has(lh)) return famCache.get(lh); const r = FAM[lh] ? [lh].concat(FAM[lh].filter(m => m !== lh)) : [lh]; famCache.set(lh, r); return r; };
   const longhands = prop => { if (prop.toLowerCase() === 'all') return ALL_LONGHANDS; probe.removeAttribute('style'); try { probe.style.setProperty(prop, 'inherit'); } catch (e) {} const l = [...probe.style].filter(n => n !== 'all'); probe.removeAttribute('style'); return l.length ? l : [prop]; };
 
   // ---------- candidats : alignement des règles source (postcss) sur les règles CSSOM de la même feuille ----------
@@ -193,14 +214,20 @@
               if (cid === d.id) continue;
               const C = decls[cid], cit = C.items[ck];
               if (cit.pe !== it.pe) continue;
-              let cval = C.style.getPropertyValue(lh);
-              if (cval === '' && !csets(C).has(lh)) continue; // non posée par C
-              if (cval === '' && csets(C) === ALLSET) cval = C.style.getPropertyValue('all'); // all: unset/initial… vaut pour chaque propriété
-              if (cval !== '' && val !== null && cval === val) continue; // même valeur : pas un vrai concurrent
-              const cimp = C.style.getPropertyPriority(lh) === 'important' || (csets(C) === ALLSET && C.style.getPropertyPriority('all') === 'important');
-              const kC = key(cimp, C.layer, cit.spec, C.order);
-              if (!beats(kOrig, kC)) continue;
-              for (const v of variants) if (!veto[v] && beats(kC, kv[v])) veto[v] = lh + ' ← ' + C.sk + ' ' + cit.text.slice(0, 80);
+              for (const clh of family(lh)) {
+                let cval = C.style.getPropertyValue(clh);
+                if (cval === '' && !csets(C).has(clh)) continue; // non posée par C
+                if (cval === '' && csets(C) === ALLSET) cval = C.style.getPropertyValue('all'); // all: unset/initial… vaut pour chaque propriété
+                if (clh === lh && cval !== '' && val !== null && cval === val) continue; // même valeur : pas un vrai concurrent
+                const cimp = C.style.getPropertyPriority(clh) === 'important' || (csets(C) === ALLSET && C.style.getPropertyPriority('all') === 'important');
+                if (clh !== lh) { // famille logique/physique ou alias : l'ordre d'apparition décide, pas la spécificité → tout concurrent fait veto
+                  for (const v of variants) if (!veto[v]) veto[v] = lh + ' ~ ' + clh + ' ← ' + C.sk + ' ' + cit.text.slice(0, 80);
+                  continue;
+                }
+                const kC = key(cimp, C.layer, cit.spec, C.order);
+                if (!beats(kOrig, kC)) continue;
+                for (const v of variants) if (!veto[v] && beats(kC, kv[v])) veto[v] = lh + ' ← ' + C.sk + ' ' + cit.text.slice(0, 80);
+              }
             }
             if (variants.every(v => veto[v])) break;
           }

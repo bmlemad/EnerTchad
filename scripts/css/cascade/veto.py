@@ -83,7 +83,13 @@ def merge():
                 for o, props in ords.items():
                     for p, vs in props.items():
                         veto.setdefault(sheet, {}).setdefault(int(o), {}).setdefault(p, set()).update(vs.keys())
+    # règles non retrouvées dans le CSSOM d'une page qui charge pourtant la feuille (sérialisation différente, par ex.
+    # :nth-child(even) → 2n, ou règle écartée par le navigateur) : non évaluables, donc laissées telles quelles.
     absent = {tuple(x) for x in json.load(open(os.path.join(D, 'absent.json')))} if os.path.exists(os.path.join(D, 'absent.json')) else set()
+    for f in glob.glob(os.path.join(D, '*.html.json')):
+        for k, r in json.load(open(f)).items():
+            for x in r.get('absent', []): absent.add(tuple(x))
+    print('règles non évaluables, laissées intactes :', len(absent))
     decisions, stats = {}, {}
     for sheet, rules in cands.items():
         out = {}; st = {'rules': len(rules), 'chain_rules': 0, 'chain_ok': 0, 'imp': 0, 'imp_ok': 0, 'animated_kept': 0}

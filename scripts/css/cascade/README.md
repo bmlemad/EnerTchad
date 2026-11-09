@@ -28,3 +28,26 @@ vérification par styles calculés.
 
 `cascade_audit.py` (audit dynamique par CSS.getMatchedStylesForNode, première approche) reste dans m76 à titre
 d'archive : il ne suffisait pas (contextes non échantillonnés).
+
+## Étape 2 (8 novembre 2026, base bd731649e) : résultats et deux pièges corrigés
+
+Neuf feuilles traitées (`nav_a`, `bundle_head_b2`, `plight_extrait`, `x_cd256286824c`, `clients-modern`, `x_917896c622c8`,
+`fond647`, `hub-nav-lisible-a`, `hub-nav-lisible-b`) : 1 002 `!important` et 615 chaînes `:not(#…)` retirés, 5 435 copies
+critiques mises à jour, 265 laissées intactes parce qu'ambiguës. Décisions : `work2/decisions.json` (candidats :
+`work2/cands.json`). Les budgets de `qa/css-debt-budget.spec.js` ont été remesurés à la baisse.
+
+Deux pièges relevés pendant l'étape 2, corrigés dans `veto.py` et `veto_page.js` :
+
+- Propriétés logiques et physiques : `margin-left`, `margin-inline-start`, `inset-inline-end`, `width`/`inline-size`…
+  forment des familles dont les membres se départagent par l'ordre d'apparition, pas par la spécificité. Un concurrent
+  de la famille compte donc comme concurrent (`FAM` dans `veto_page.js`). Les sélecteurs relatifs (`:has(> a)`) gardent
+  leur combinateur de tête.
+- Règles non retrouvées dans le CSSOM d'une page qui charge pourtant la feuille (sérialisation différente, comme
+  `:nth-child(even)` → `2n`, ou règle écartée par le navigateur) : non évaluables, donc laissées intactes. `merge()`
+  les compte et les affiche (« règles non évaluables, laissées intactes »).
+
+Vérification : 652 chargements comparés (260 pages), 94 écarts apparents ; rejoués un par un sans charge, 88
+disparaissent et les 6 restants sont de la gigue de mesure (largeurs à 0,03–0,17 px, transitions figées à des instants
+différents). Ne pas lancer `cs_verify.py` en plusieurs processus sur une machine à deux cœurs sans rejouer les écarts
+en série : la charge fait apparaître des écarts de transition dans les deux sens. Un test qui épingle une chaîne
+littérale d'une feuille traitée doit être mis à jour (cas de `qa/site.spec.js`, règle `.fil552 ~ .pole-subnav`).
