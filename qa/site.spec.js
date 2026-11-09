@@ -2462,7 +2462,8 @@ test('visual css hygiene — historical override markers are absent and core chr
   const nav = await request.get(new URL('/assets/chrome/nav_a.css', url).href, { timeout: 30000 });
   expect((await nav.text()).length).toBeLessThan(125000);
   const navCss = await nav.text();
-  expect((navCss.match(/\.fil552:not\(#_\):not\(#__\) ~ \.pole-subnav:not\(#_\)\{margin-top:8px\}/g) || []).length).toBe(1);
+  // cascade étape 2 : la chaîne :not(#_) de cette règle a été retirée (styles calculés identiques sur 260 pages)
+  expect((navCss.match(/\.fil552 ~ \.pole-subnav\{margin-top:8px\}/g) || []).length).toBe(1);
 });
 
 test('visual css hygiene — responsive overrides are scoped by breakpoint context', async ({ browser }) => {

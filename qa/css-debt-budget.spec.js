@@ -18,20 +18,21 @@ const { test, expect } = require('@playwright/test');
 const base = process.env.SITE_URL || 'https://enertchad.com/';
 
 // [page, !important, :not(#…), CSS dans la page (octets), plus longue chaîne de :not(#…)]
+// Cascade étape 2 (8 novembre 2026) : 1 002 !important et 615 chaînes retirés de 9 feuilles ; budgets remesurés à la baisse (CSS_BUDGET_REPORT=1), /ar-societe inchangé (aucune des 9 feuilles n'y est chargée).
 const budgets = [
-  ['/', 3112, 12658, 112107, 44], // lot 106-A : accueil refondu (mesure du 8 novembre 2026, hors contrat de design)
-  ['/index-en', 3152, 12660, 116211, 44], // lot 106-B : accueil EN refondu (mesure du 8 novembre 2026, hors contrat de design)
-  ['/amont/', 3751, 21952, 138282, 40],
-  ['/aval/raffinage', 3886, 23591, 204127, 40],
-  ['/carrieres', 3901, 23657, 215006, 40],
+  ['/', 2576, 10254, 112054, 44], // lot 106-A : accueil refondu (mesure du 8 novembre 2026, hors contrat de design)
+  ['/index-en', 2616, 10256, 116158, 44], // lot 106-B : accueil EN refondu (mesure du 8 novembre 2026, hors contrat de design)
+  ['/amont/', 3475, 20608, 138229, 40],
+  ['/aval/raffinage', 3667, 22313, 204074, 40],
+  ['/carrieres', 3682, 22379, 214953, 40],
   // PR #139 added the 480-byte after-enquiry block before this design change.
-  ['/contact', 3850, 23549, 191427, 40],
-  ['/carnets', 3553, 20616, 164904, 40],
-  ['/journal-criblage-eor', 2708, 12002, 151004, 40],
-  ['/atlas/', 3347, 20246, 176045, 46],
-  ['/boutique/', 3144, 19512, 121188, 40],
+  ['/contact', 3584, 21712, 190290, 40],
+  ['/carnets', 3334, 19338, 164851, 40],
+  ['/journal-criblage-eor', 2526, 10288, 149912, 40],
+  ['/atlas/', 3129, 18959, 175917, 46],
+  ['/boutique/', 2926, 18236, 121161, 40],
   ['/ar-societe', 2435, 20617, 67009, 40],
-  ['/essentiel', 3391, 19928, 133858, 40],
+  ['/essentiel', 3172, 18651, 133813, 40],
 ];
 
 const notIdPattern = /:not\(#[\w-]+\)/g;
