@@ -1,0 +1,17 @@
+/* Lot 108 : menu mobile des pages arabes (bouton .arh-tog et tiroir #arh-drawer posés au build par lib/ar-nav.js).
+   Classes neuves, sans !important ni chaîne :not(#…) : aucune règle existante ne vise .arh-tog ni .arh-drawer.
+   Ordinateur : le tiroir est transparent à la mise en page (display:contents), le bouton est caché.
+   Sous 767 px : une ligne marque + bouton ; le tiroir s'ouvre dessous, opaque dans les deux thèmes.
+   Sans JavaScript (pas de html.arh-js), le tiroir reste ouvert, comme l'en-tête d'avant.
+   Les liens restent centrés : premium-chrome.css les centre par une chaîne de 27 identifiants qu'on ne reprend pas. */
+.arh-drawer{display:contents}
+.arh-tog{display:none}
+@media (max-width:767px){
+  .arh-tog{display:inline-flex;align-items:center;justify-content:center;flex:none;width:44px;height:44px;margin:0;margin-inline-start:auto;padding:0;background:none;color:inherit;border:1px solid color-mix(in srgb,currentColor 34%,transparent);border-radius:50%;cursor:pointer}
+  .arh-tog:focus-visible{outline:2px solid var(--et-gold-300,#D9B567);outline-offset:3px}
+  .arh-drawer{display:flex;flex-direction:column;align-items:stretch;gap:8px;flex:1 1 100%;min-width:0;padding:4px 0 12px;background:var(--et-night,#0A1422)}
+  html.et-plight .arh-drawer{background:var(--et-paper,#FAF8F3)}
+  html.arh-js .arh-drawer:not([data-open]){display:none}
+  .arh-drawer .arh-nav{flex-direction:column;align-items:stretch}
+  .arh-drawer .arh-tools{order:4;justify-content:center;padding-top:8px;border-top:1px solid color-mix(in srgb,currentColor 18%,transparent)}
+}
