@@ -42,32 +42,32 @@ html.et-plight [style*="B4700A"]:not(#_){color:#9E6209!important}
    Selecteurs d'origine, mot pour mot. */
 html.et-plight main a:not(#_){color:#0E4172!important}
 html.et-plight body>section a:not(#_){color:#0E4172!important}
-html.et-plight .wrap>a:not([class]):not(#_):not(#__){
-  text-decoration:underline!important;color:#0E4172!important}
+html.et-plight .wrap>a:not([class]){
+  text-decoration:underline;color:#0E4172}
 html.et-jlight a:not(#_):not(.jback):not(.jlang){color:#0E4172}
 
 /* ---- G4 : or de titraille var(--et-gold-800,#6B500F) -> #4C380B (4.63:1) ----
    Selecteurs d'origine, mot pour mot. */
-html.et-plight main .kick:not(#_),
-html.et-plight main [class*="kick"]:not(#_),
-html.et-plight main h1 em:not(#_),
-html.et-plight main h2 em:not(#_){color:#4C380B!important}
-html.et-jlight h1 em:not(#_),
-html.et-jlight h2 em:not(#_),
-html.et-jlight .jkick:not(#_),
-html.et-jlight .sc-lb:not(#_),
-html.et-jlight .cb-k:not(#_){color:#4C380B!important}
-html.et-plight body>section [class*="kick"]:not(#_),
-html.et-plight body>section h2 em:not(#_),
-html.et-plight body>section [class*="-no"]:not(#_),
-html.et-plight body>section [class*="-k"]:not(#_){color:#4C380B!important}
-html.et-jlight .more-k:not(#_){color:#4C380B!important}
-html.et-plight .pgr-dir:not(#_){color:#4C380B!important}
-html.et-plight main section.hero h1 em:not(#_):not(#__){
-  background:none!important;-webkit-text-fill-color:#4C380B!important;color:#4C380B!important}
-html.et-plight main code:not(#_):not(#__),
-html.et-plight body>section code:not(#_):not(#__){
-  color:#4C380B!important;background:rgba(76,56,11,.09)!important}
+html.et-plight main .kick,
+html.et-plight main [class*="kick"],
+html.et-plight main h1 em,
+html.et-plight main h2 em{color:#4C380B}
+html.et-jlight h1 em,
+html.et-jlight h2 em,
+html.et-jlight .jkick,
+html.et-jlight .sc-lb,
+html.et-jlight .cb-k{color:#4C380B}
+html.et-plight body>section [class*="kick"],
+html.et-plight body>section h2 em,
+html.et-plight body>section [class*="-no"],
+html.et-plight body>section [class*="-k"]{color:#4C380B}
+html.et-jlight .more-k{color:#4C380B}
+html.et-plight .pgr-dir{color:#4C380B}
+html.et-plight main section.hero h1 em{
+  background:none!important;-webkit-text-fill-color:#4C380B;color:#4C380B}
+html.et-plight main code,
+html.et-plight body>section code{
+  color:#4C380B;background:rgba(76,56,11,.09)!important}
 
 /* ==== ILOTS SOMBRES : rendre l'encre claire, garder la surface sombre ==== */
 
@@ -85,73 +85,73 @@ html.et-plight main .diapo :is(i,em,strong,b,small,dt,dd,td,th,label,figcaption,
   -webkit-background-clip:border-box!important;background-clip:border-box!important;
 }
 /* I2 : pastille or active du hero -> encre sombre restauree */
-html.et-plight main .pgc-node.is-on:not(#_),
-html.et-plight main .pgc-node.is-on :not(#_){
-  color:#121D31!important;-webkit-text-fill-color:#121D31!important;
+html.et-plight main .pgc-node.is-on,
+html.et-plight main .pgc-node.is-on {
+  color:#121D31;-webkit-text-fill-color:#121D31;
 }
 
 /* ---- I3 : sous-navigation de pole (37 echecs) ---- */
-html.et-plight .pole-subnav :not(#_){
-  color:#CBD5E3!important;-webkit-text-fill-color:#CBD5E3!important;
+html.et-plight .pole-subnav {
+  color:#CBD5E3;-webkit-text-fill-color:#CBD5E3;
 }
-html.et-plight .pole-subnav .psn-home:not(#_),
-html.et-plight .pole-subnav a:not(#_){
-  color:#EAD9A8!important;-webkit-text-fill-color:#EAD9A8!important;
+html.et-plight .pole-subnav .psn-home,
+html.et-plight .pole-subnav a{
+  color:#EAD9A8;-webkit-text-fill-color:#EAD9A8;
 }
 
 /* ---- I4 : cartes .fp-card a voile (32 echecs) ---- */
-html.et-plight .fp-card :not(#_){
-  color:#F5F7FA!important;-webkit-text-fill-color:#F5F7FA!important;
+html.et-plight .fp-card {
+  color:#F5F7FA;-webkit-text-fill-color:#F5F7FA;
 }
-html.et-plight .fp-card .fp-badge:not(#_){
-  color:var(--et-white,#FFFFFF)!important;-webkit-text-fill-color:var(--et-white,#FFFFFF)!important;
+html.et-plight .fp-card .fp-badge{
+  color:var(--et-white,#FFFFFF);-webkit-text-fill-color:var(--et-white,#FFFFFF);
 }
 
 /* ---- I5 : cartes .adx code couleur par pole (17 echecs) ---- */
-html.et-plight .adx:not(#_),
-html.et-plight .adx :not(#_){
-  color:#F5F7FA!important;-webkit-text-fill-color:#F5F7FA!important;
+html.et-plight .adx,
+html.et-plight .adx {
+  color:#F5F7FA;-webkit-text-fill-color:#F5F7FA;
 }
-html.et-plight .adx .eyebrow:not(#_){
-  color:var(--ac,#EAD9A8)!important;-webkit-text-fill-color:var(--ac,#EAD9A8)!important;
+html.et-plight .adx .eyebrow{
+  color:var(--ac,#EAD9A8);-webkit-text-fill-color:var(--ac,#EAD9A8);
 }
 
 /* ---- I6 : cartes contact presse .cp-ct (20 echecs) ----
    Doit battre html.et-plight main .cp-ct a:not(#_) b = (1,3,4). */
-html.et-plight main .cp-ct a:not(#_):not(#__),
-html.et-plight main .cp-ct a:not(#_):not(#__) span{
-  color:#EAF0F8!important;-webkit-text-fill-color:#EAF0F8!important;
+html.et-plight main .cp-ct a,
+html.et-plight main .cp-ct a span{
+  color:#EAF0F8;-webkit-text-fill-color:#EAF0F8;
 }
-html.et-plight main .cp-ct a:not(#_):not(#__) b{
-  color:var(--et-white,#FFFFFF)!important;-webkit-text-fill-color:var(--et-white,#FFFFFF)!important;
+html.et-plight main .cp-ct a b{
+  color:var(--et-white,#FFFFFF);-webkit-text-fill-color:var(--et-white,#FFFFFF);
 }
 
 /* ---- I7 : bouton .fl-cta sur degrade bleu ---- */
-html.et-plight .fl-cta:not(#_),
-html.et-plight .fl-cta :not(#_){
-  color:var(--et-white,#FFFFFF)!important;-webkit-text-fill-color:var(--et-white,#FFFFFF)!important;
+html.et-plight .fl-cta,
+html.et-plight .fl-cta {
+  color:var(--et-white,#FFFFFF);-webkit-text-fill-color:var(--et-white,#FFFFFF);
 }
 
 /* ---- I8 : boutons fantomes .fcta-s, encre = fond (ratio 1.00) ----
    Doit battre html.et-plight [class^="fcta"]:not(#_):not(#__):not(#___). */
-html.et-plight .fcta-s:not(#_):not(#__):not(#___):not(#____),
-html.et-plight .fcta-s :not(#_):not(#__):not(#___):not(#____){
-  color:#F5F7FA!important;-webkit-text-fill-color:#F5F7FA!important;
+html.et-plight .fcta-s,
+html.et-plight .fcta-s {
+  color:#F5F7FA;-webkit-text-fill-color:#F5F7FA;
 }
 
 /* ---- I9 : badge .dchg-badge (tchaditude) ---- */
-html.et-plight .dchg-badge:not(#_){
-  color:#EAF0F8!important;-webkit-text-fill-color:#EAF0F8!important;
+html.et-plight .dchg-badge{
+  color:#EAF0F8;-webkit-text-fill-color:#EAF0F8;
 }
 
 /* ---- I10 : pastilles .dkpi (aval/distribution) ---- */
-html.et-plight .dkpi span:not(#_){
-  color:#EAF0F8!important;-webkit-text-fill-color:#EAF0F8!important;
+html.et-plight .dkpi span{
+  color:#EAF0F8;-webkit-text-fill-color:#EAF0F8;
 }
 
 /* ---- I11 : legend de formulaire, blanc sur creme ---- */
-html.et-plight main legend:not(#_):not(#__){
-  color:#2A3648!important;-webkit-text-fill-color:#2A3648!important;
+html.et-plight main legend{
+  color:#2A3648;-webkit-text-fill-color:#2A3648;
 }
 
 /* ---- I12 : marque du pied de page des carnets (36 echecs, lecon 48) ----
@@ -161,8 +161,8 @@ html.et-plight main legend:not(#_):not(#__){
 html.et-jlight footer,
 html.et-jlight .jfoot,
 html.et-plight footer{
-  --blue-l:#5AA7F0!important;
-  --gold-l:var(--et-gold-brand,#E8C36A)!important;
+  --blue-l:#5AA7F0;
+  --gold-l:var(--et-gold-brand,#E8C36A);
 }
 
 /* ---- I13 : bouton .pof-cta de la colonne or ----
@@ -174,8 +174,8 @@ html.et-plight footer{
    sans corriger sa cible. Le vrai defaut est l'or #9A6D12 du bouton, a 3.36
    sur le fond de carte teinte a 8 %. On assombrit la seule encre du bouton,
    sans toucher a --c qui dessine aussi la bordure et le halo. */
-html.et-plight .pof-col .pof-cta a:not(#_):not(#__){
-  color:#6E4D0C!important;-webkit-text-fill-color:#6E4D0C!important;
+html.et-plight .pof-col .pof-cta a{
+  color:#6E4D0C;-webkit-text-fill-color:#6E4D0C;
 }
 
 /* ---- I14 : legendes du schema SVG de brochure.html ----
@@ -189,22 +189,22 @@ html.et-plight [style*="position:absolute"][style*="bottom:0"]:not(#_) > div[sty
 }
 
 /* ---- I15 : pastilles .dlnk (aval/distribution) ---- */
-html.et-plight .dlnk a:not(#_){
-  color:#F5F7FA!important;-webkit-text-fill-color:#F5F7FA!important;
+html.et-plight .dlnk a{
+  color:#F5F7FA;-webkit-text-fill-color:#F5F7FA;
 }
 
 /* ---- I16 : chips de synthese .ppj-syn (pages de pole) ---- */
-html.et-plight .ppj-syn:not(#_),
-html.et-plight .ppj-syn :not(#_){
-  color:#EAF0F8!important;-webkit-text-fill-color:#EAF0F8!important;
+html.et-plight .ppj-syn,
+html.et-plight .ppj-syn {
+  color:#EAF0F8;-webkit-text-fill-color:#EAF0F8;
 }
 
 /* ---- I17 : chaine de poles du hero de brochure.html ----
    Ce HEADER.hero n'est PAS dans <main> : les regles en `main ...` ne
    l'atteignent pas. Doit battre G2 [style*="E8C36A"]:not(#_) = (1,2,1). */
-html.et-plight .hchain a:not(#_):not(#__),
-html.et-plight .hchain a :not(#_):not(#__){
-  color:var(--et-white,#FFFFFF)!important;-webkit-text-fill-color:var(--et-white,#FFFFFF)!important;
+html.et-plight .hchain a,
+html.et-plight .hchain a {
+  color:var(--et-white,#FFFFFF);-webkit-text-fill-color:var(--et-white,#FFFFFF);
 }
 
 /* ---- I18 : mots-marques peints par un degrade clippe en style inline ----
@@ -249,11 +249,11 @@ html:not(.et-plight):not(.et-jlight) main>section:not(#_):not(#__){
 
 /* D2 — encres */
 html:not(.et-plight):not(.et-jlight){
-  --green:#2E9E6B!important;
-  --blue-l:#7FB8F5!important;
-  --amber-l:#FBBF24!important;
-  --inter-l:#5CC8FA!important;
-  --green-l:#4FDCAA!important;
+  --green:#2E9E6B;
+  --blue-l:#7FB8F5;
+  --amber-l:#FBBF24;
+  --inter-l:#5CC8FA;
+  --green-l:#4FDCAA;
 }
 html:not(.et-plight):not(.et-jlight) main [style*="color:#2F6FB0"],
 html:not(.et-plight):not(.et-jlight) main [style*="color: #2F6FB0"]{color:#7FB8F5!important}
@@ -265,10 +265,10 @@ html:not(.et-plight):not(.et-jlight) main [style*="color:#D177B4"],
 html:not(.et-plight):not(.et-jlight) main [style*="color: #D177B4"]{color:#E2A0CE!important}
 html:not(.et-plight):not(.et-jlight) main [style*="color:#1FA496"],
 html:not(.et-plight):not(.et-jlight) main [style*="color: #1FA496"]{color:#35C4B4!important}
-html:not(.et-plight):not(.et-jlight) .ec-tier.bronze{--tc:#C99A6E!important}
+html:not(.et-plight):not(.et-jlight) .ec-tier.bronze{--tc:#C99A6E}
 
 /* D3 — voile des heros photo */
-html:not(.et-plight):not(.et-jlight) .hero:not(#_){position:relative}
+html:not(.et-plight):not(.et-jlight) .hero{position:relative}
 html:not(.et-plight):not(.et-jlight) header.pghero,
 html:not(.et-plight):not(.et-jlight) header.jtop,
 html:not(.et-plight):not(.et-jlight) .hero{isolation:isolate}
@@ -288,7 +288,7 @@ html:not(.et-plight):not(.et-jlight) header.jtop .pgh-live,
 html:not(.et-plight):not(.et-jlight) .hero .pgh-live{background:rgba(6,11,20,.58)!important}
 html:not(.et-plight):not(.et-jlight) header.pghero :is(.pgc-lab,.pgc-tail,.pgc-arr,.pgh-flabel),
 html:not(.et-plight):not(.et-jlight) header.jtop :is(.pgc-lab,.pgc-tail,.pgc-arr,.pgh-flabel),
-html:not(.et-plight):not(.et-jlight) .hero :is(.pgc-lab,.pgc-tail,.pgc-arr,.pgh-flabel){color:rgba(245,247,250,.88)!important}
+html:not(.et-plight):not(.et-jlight) .hero :is(.pgc-lab,.pgc-tail,.pgc-arr,.pgh-flabel){color:rgba(245,247,250,.88)}
 /* ———— ex-bloc: et-mhf ———— */
 @media(max-width:760px){
 #mLang:not(#_):not(#__){display:inline-flex;align-items:center;font-family:var(--fm,ui-monospace,monospace);font-size:.7rem;letter-spacing:.04em;color:var(--cream,#E9EEF5);border:1px solid var(--hair,rgba(255,255,255,.22));border-radius:20px;padding:6px 11px;text-decoration:none;margin-right:9px;white-space:nowrap}
@@ -300,9 +300,9 @@ footer .foot-grid .foot-col>h3::before{content:"+";position:absolute;right:4px;t
 footer .foot-grid .foot-col.open>h3::before{content:"−"}
 footer .foot-grid .foot-col:not(.open)>*:not(h3){display:none!important}
 footer .foot-grid .foot-col.open{padding-bottom:12px!important}
-footer .foot-grid .foot-col>a{display:block;padding:9px 0!important;margin:0!important}
+footer .foot-grid .foot-col>a{display:block;padding:9px 0;margin:0}
 #toTop:not(#_):not(#__):not(#___){transform:scale(.82);transform-origin:bottom right;opacity:.68;transition:opacity .3s}
 #toTop:not(#_):not(#__):not(#___):active{opacity:1}
 footer .foot-legal{padding-bottom:10px!important}
 }
-@media(max-width:560px){.nav .brand-tx small:not(#_){display:block!important}}
+@media(max-width:560px){.nav .brand-tx small{display:block!important}}

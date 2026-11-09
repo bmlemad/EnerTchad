@@ -42,13 +42,13 @@ html[data-fond="papier"]:not(.et-plight):not(.et-jlight) body .rootland:not(#f0)
 html[data-fond="papier"]:is(.et-plight,.et-jlight) body .rootland:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4):not(#f5):not(#f6):not(#f7):not(#f8):not(#f9):not(#f10):not(#f11):not(#f12):not(#f13):not(#f14):not(#f15):not(#f16):not(#f17):not(#f18):not(#f19):not(#f20):not(#f21):not(#f22):not(#f23):not(#f24):not(#f25){background-color:var(--jl-paper,#FBF8F2)!important}
 
 /* tout ce qui s empilait par-dessus s eteint */
-html[data-fond] body .subland:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4):not(#f5):not(#f6):not(#f7):not(#f8):not(#f9):not(#f10):not(#f11):not(#f12):not(#f13):not(#f14):not(#f15):not(#f16):not(#f17):not(#f18):not(#f19):not(#f20):not(#f21):not(#f22):not(#f23):not(#f24):not(#f25),
-html[data-fond] body #aurora:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4):not(#f5):not(#f6):not(#f7):not(#f8):not(#f9):not(#f10):not(#f11):not(#f12):not(#f13):not(#f14):not(#f15):not(#f16):not(#f17):not(#f18):not(#f19):not(#f20):not(#f21):not(#f22):not(#f23):not(#f24):not(#f25),
-html[data-fond] body .prem-mesh:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4):not(#f5):not(#f6):not(#f7):not(#f8):not(#f9):not(#f10):not(#f11):not(#f12):not(#f13):not(#f14):not(#f15):not(#f16):not(#f17):not(#f18):not(#f19):not(#f20):not(#f21):not(#f22):not(#f23):not(#f24):not(#f25){display:none!important}
-html[data-fond] body:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4):not(#f5):not(#f6):not(#f7):not(#f8):not(#f9):not(#f10):not(#f11):not(#f12):not(#f13):not(#f14):not(#f15):not(#f16):not(#f17):not(#f18):not(#f19):not(#f20):not(#f21):not(#f22):not(#f23):not(#f24):not(#f25)::before,
-html[data-fond] body:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4):not(#f5):not(#f6):not(#f7):not(#f8):not(#f9):not(#f10):not(#f11):not(#f12):not(#f13):not(#f14):not(#f15):not(#f16):not(#f17):not(#f18):not(#f19):not(#f20):not(#f21):not(#f22):not(#f23):not(#f24):not(#f25)::after,
-html[data-fond]:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4):not(#f5):not(#f6):not(#f7):not(#f8):not(#f9):not(#f10):not(#f11):not(#f12):not(#f13):not(#f14):not(#f15):not(#f16):not(#f17):not(#f18):not(#f19):not(#f20):not(#f21):not(#f22):not(#f23):not(#f24):not(#f25)::before,
-html[data-fond]:not(#f0):not(#f1):not(#f2):not(#f3):not(#f4):not(#f5):not(#f6):not(#f7):not(#f8):not(#f9):not(#f10):not(#f11):not(#f12):not(#f13):not(#f14):not(#f15):not(#f16):not(#f17):not(#f18):not(#f19):not(#f20):not(#f21):not(#f22):not(#f23):not(#f24):not(#f25)::after{display:none!important;content:none!important;background-image:none!important}
+html[data-fond] body .subland,
+html[data-fond] body #aurora,
+html[data-fond] body .prem-mesh{display:none}
+html[data-fond] body::before,
+html[data-fond] body::after,
+html[data-fond]::before,
+html[data-fond]::after{display:none;content:none!important;background-image:none!important}
 
 /* ————— Ch650 — la police de titre —————
    La revue de design reprochait au site son trio par defaut : Space Grotesk
@@ -103,7 +103,7 @@ html:not(.et-plight):not(.et-jlight) .apps-creed:not(#k0):not(#k1):not(#k2):not(
 @media(min-width:1241px){
 .nx .nav-links:where([data-eh~=eh13]):not(.ehz){position:relative}
 .nx .nav-links > .nav-item.nxi616{position:static}
-.nx .nav-links > .nav-item.nx-item .nx-mega.nxm616:not(#_x):not(#_y){left:0;right:auto;translate:none}
+.nx .nav-links > .nav-item.nx-item .nx-mega.nxm616{left:0;right:auto;translate:none}
 }
 
 /* Ch661 — la police mono de la marque, declaree partout.
@@ -125,8 +125,8 @@ html:not(.et-plight):not(.et-jlight) .apps-creed:not(#k0):not(#k1):not(#k2):not(
    pole » (1240, titre 33,6px) et le fil date juste en dessous (1060, titre 37,6px) —
    un decrochement net de 58px au bord gauche, visible a l oeil sans avoir besoin de
    mesurer. */
-html body :is(#offre,#clients,#enjeux,#approche,#capacites,#expertises,#chiffres,#chantiers,#documents,#par-pole,#actualites,#presse):not(#k1):not(#k2):not(#k3) > .wrap{max-width:1200px!important}
-html body #par-pole:not(#k1):not(#k2) h2{font-size:clamp(1.35rem,3.4vw,2.35rem)!important;line-height:1.08!important}
+html body :is(#offre,#clients,#enjeux,#approche,#capacites,#expertises,#chiffres,#chantiers,#documents,#par-pole,#actualites,#presse) > .wrap{max-width:1200px}
+html body #par-pole h2{font-size:clamp(1.35rem,3.4vw,2.35rem);line-height:1.08}
 
 
 /* Ch663 — en-tete et pied de page transparents, pour laisser voir le decor en permanence.
@@ -139,8 +139,8 @@ html body #par-pole:not(#k1):not(#k2) h2{font-size:clamp(1.35rem,3.4vw,2.35rem)!
    repli opaque conserve pour qui demande moins de transparence (prefers-reduced-transparency).
    Specificite : la chaine :not() est poussee au-dela de celle des regles trouvees pour
    etre sur de gagner, quel que soit l ordre de chargement des feuilles. */
-html body footer:not(#k1):not(#k2):not(#k3):not(#k4):not(#k5):not(#k6):not(#k7):not(#k8):not(#k9):not(#k10):not(#k11):not(#k12){background:rgba(14,22,38,.5)!important;-webkit-backdrop-filter:blur(18px) saturate(140%)!important;backdrop-filter:blur(18px) saturate(140%)!important}
-html.et-plight body footer:not(#k1):not(#k2):not(#k3):not(#k4):not(#k5):not(#k6):not(#k7):not(#k8):not(#k9):not(#k10):not(#k11):not(#k12),html.et-jlight body footer:not(#k1):not(#k2):not(#k3):not(#k4):not(#k5):not(#k6):not(#k7):not(#k8):not(#k9):not(#k10):not(#k11):not(#k12){background:rgba(247,243,236,.58)!important;-webkit-backdrop-filter:blur(18px) saturate(120%)!important;backdrop-filter:blur(18px) saturate(120%)!important}
+html body footer:not(#k1):not(#k2):not(#k3):not(#k4):not(#k5):not(#k6):not(#k7):not(#k8):not(#k9):not(#k10):not(#k11):not(#k12){background:rgba(14,22,38,.5)!important;-webkit-backdrop-filter:blur(18px) saturate(140%);backdrop-filter:blur(18px) saturate(140%)!important}
+html.et-plight body footer:not(#k1):not(#k2):not(#k3):not(#k4):not(#k5):not(#k6):not(#k7):not(#k8):not(#k9):not(#k10):not(#k11):not(#k12),html.et-jlight body footer:not(#k1):not(#k2):not(#k3):not(#k4):not(#k5):not(#k6):not(#k7):not(#k8):not(#k9):not(#k10):not(#k11):not(#k12){background:rgba(247,243,236,.58)!important;-webkit-backdrop-filter:blur(18px) saturate(120%);backdrop-filter:blur(18px) saturate(120%)!important}
 /* Ch664 -- les tuiles en verre transparent, pour laisser le decor vivre sous le contenu pendant la
    navigation. Mesure : le systeme de tuiles (cartes de pole, cartes actualites/carnets, cartes de
    diversification, KPI...) porte plus de trente noms de classe differents a travers le site, mais
@@ -154,8 +154,8 @@ html.et-plight body footer:not(#k1):not(#k2):not(#k3):not(#k4):not(#k5):not(#k6)
    filet ci-dessous) ; partout ailleurs, les fonds figes du reste du site rendent le flou nouveau sans
    risque -- le meme qui tient deja sans accroc sur la barre de navigation depuis le 663. Specificite
    poussee a 24 :not() pour depasser la regle du 624 avec une marge de securite. */
-html body :is([class*="card"],.divc,.exp-c,.mfo-lever,.ppl-tile,.scard):not(.hncard-date):not(.hncard-go):not(.hncard-meta):not(.hncard-pole):not(.hncard-tag):not(.cards):not(.ct-cards):not(#g1):not(#g2):not(#g3):not(#g4):not(#g5):not(#g6):not(#g7):not(#g8):not(#g9):not(#g10):not(#g11):not(#g12):not(#g13):not(#g14):not(#g15):not(#g16):not(#g17):not(#g18):not(#g19):not(#g20):not(#g21):not(#g22):not(#g23):not(#g24){background:linear-gradient(160deg,rgba(16,24,40,.58),rgba(9,15,26,.42))!important;-webkit-backdrop-filter:blur(14px) saturate(150%)!important;backdrop-filter:blur(14px) saturate(150%)!important}
-html.et-plight body :is([class*="card"],.divc,.exp-c,.mfo-lever,.ppl-tile,.scard):not(.hncard-date):not(.hncard-go):not(.hncard-meta):not(.hncard-pole):not(.hncard-tag):not(.cards):not(.ct-cards):not(#g1):not(#g2):not(#g3):not(#g4):not(#g5):not(#g6):not(#g7):not(#g8):not(#g9):not(#g10):not(#g11):not(#g12):not(#g13):not(#g14):not(#g15):not(#g16):not(#g17):not(#g18):not(#g19):not(#g20):not(#g21):not(#g22):not(#g23):not(#g24),html.et-jlight body :is([class*="card"],.divc,.exp-c,.mfo-lever,.ppl-tile,.scard):not(.hncard-date):not(.hncard-go):not(.hncard-meta):not(.hncard-pole):not(.hncard-tag):not(.cards):not(.ct-cards):not(#g1):not(#g2):not(#g3):not(#g4):not(#g5):not(#g6):not(#g7):not(#g8):not(#g9):not(#g10):not(#g11):not(#g12):not(#g13):not(#g14):not(#g15):not(#g16):not(#g17):not(#g18):not(#g19):not(#g20):not(#g21):not(#g22):not(#g23):not(#g24){background:linear-gradient(160deg,rgba(255,255,255,.62),rgba(247,243,236,.42))!important;-webkit-backdrop-filter:blur(14px) saturate(135%)!important;backdrop-filter:blur(14px) saturate(135%)!important}
+html body :is([class*="card"],.divc,.exp-c,.mfo-lever,.ppl-tile,.scard):not(.hncard-date):not(.hncard-go):not(.hncard-meta):not(.hncard-pole):not(.hncard-tag):not(.cards):not(.ct-cards):not(#g1):not(#g2):not(#g3):not(#g4):not(#g5):not(#g6):not(#g7):not(#g8):not(#g9):not(#g10):not(#g11):not(#g12):not(#g13):not(#g14):not(#g15):not(#g16):not(#g17):not(#g18):not(#g19):not(#g20):not(#g21):not(#g22):not(#g23):not(#g24){background:linear-gradient(160deg,rgba(16,24,40,.58),rgba(9,15,26,.42))!important;-webkit-backdrop-filter:blur(14px) saturate(150%);backdrop-filter:blur(14px) saturate(150%)!important}
+html.et-plight body :is([class*="card"],.divc,.exp-c,.mfo-lever,.ppl-tile,.scard):not(.hncard-date):not(.hncard-go):not(.hncard-meta):not(.hncard-pole):not(.hncard-tag):not(.cards):not(.ct-cards):not(#g1):not(#g2):not(#g3):not(#g4):not(#g5):not(#g6):not(#g7):not(#g8):not(#g9):not(#g10):not(#g11):not(#g12):not(#g13):not(#g14):not(#g15):not(#g16):not(#g17):not(#g18):not(#g19):not(#g20):not(#g21):not(#g22):not(#g23):not(#g24),html.et-jlight body :is([class*="card"],.divc,.exp-c,.mfo-lever,.ppl-tile,.scard):not(.hncard-date):not(.hncard-go):not(.hncard-meta):not(.hncard-pole):not(.hncard-tag):not(.cards):not(.ct-cards):not(#g1):not(#g2):not(#g3):not(#g4):not(#g5):not(#g6):not(#g7):not(#g8):not(#g9):not(#g10):not(#g11):not(#g12):not(#g13):not(#g14):not(#g15):not(#g16):not(#g17):not(#g18):not(#g19):not(#g20):not(#g21):not(#g22):not(#g23):not(#g24){background:linear-gradient(160deg,rgba(255,255,255,.62),rgba(247,243,236,.42))!important;-webkit-backdrop-filter:blur(14px) saturate(135%);backdrop-filter:blur(14px) saturate(135%)!important}
 
 /* Ch665 -- adhesion parfaite au decor. Mesure : la tuile du 664 se voyait encore comme une plaque
    posee sur le fond -- un bord a 12-15% d opacite et une ombre portee nette la decoupaient du reste,
@@ -166,8 +166,8 @@ html.et-plight body :is([class*="card"],.divc,.exp-c,.mfo-lever,.ppl-tile,.scard
    remonte a 20px (18 en clair) pour que le motif qui traverse reste lisse plutot que granuleux, bordure
    et ombre adoucies pour que la carte se fonde dans le decor au lieu de s en detacher. Repli
    prefers-reduced-transparency du 664 inchange -- lui doit rester net, pas fondu. */
-html body :is([class*="card"],.divc,.exp-c,.mfo-lever,.ppl-tile,.scard):not(.hncard-date):not(.hncard-go):not(.hncard-meta):not(.hncard-pole):not(.hncard-tag):not(.cards):not(.ct-cards):not(#g1):not(#g2):not(#g3):not(#g4):not(#g5):not(#g6):not(#g7):not(#g8):not(#g9):not(#g10):not(#g11):not(#g12):not(#g13):not(#g14):not(#g15):not(#g16):not(#g17):not(#g18):not(#g19):not(#g20):not(#g21):not(#g22):not(#g23):not(#g24){background:linear-gradient(160deg,rgba(16,24,40,.38),rgba(9,15,26,.22))!important;-webkit-backdrop-filter:blur(20px) saturate(160%)!important;backdrop-filter:blur(20px) saturate(160%)!important;border-color:rgba(255,255,255,.09)!important;box-shadow:rgba(255,255,255,.06) 0 1px 0 0 inset,rgba(0,0,0,.42) 0 22px 46px -30px!important}
-html.et-plight body :is([class*="card"],.divc,.exp-c,.mfo-lever,.ppl-tile,.scard):not(.hncard-date):not(.hncard-go):not(.hncard-meta):not(.hncard-pole):not(.hncard-tag):not(.cards):not(.ct-cards):not(#g1):not(#g2):not(#g3):not(#g4):not(#g5):not(#g6):not(#g7):not(#g8):not(#g9):not(#g10):not(#g11):not(#g12):not(#g13):not(#g14):not(#g15):not(#g16):not(#g17):not(#g18):not(#g19):not(#g20):not(#g21):not(#g22):not(#g23):not(#g24),html.et-jlight body :is([class*="card"],.divc,.exp-c,.mfo-lever,.ppl-tile,.scard):not(.hncard-date):not(.hncard-go):not(.hncard-meta):not(.hncard-pole):not(.hncard-tag):not(.cards):not(.ct-cards):not(#g1):not(#g2):not(#g3):not(#g4):not(#g5):not(#g6):not(#g7):not(#g8):not(#g9):not(#g10):not(#g11):not(#g12):not(#g13):not(#g14):not(#g15):not(#g16):not(#g17):not(#g18):not(#g19):not(#g20):not(#g21):not(#g22):not(#g23):not(#g24){background:linear-gradient(160deg,rgba(255,255,255,.40),rgba(247,243,236,.22))!important;-webkit-backdrop-filter:blur(18px) saturate(130%)!important;backdrop-filter:blur(18px) saturate(130%)!important;border-color:rgba(26,35,48,.07)!important;box-shadow:rgba(255,255,255,.42) 0 1px 0 0 inset,rgba(30,24,10,.28) 0 20px 40px -30px!important}
+html body :is([class*="card"],.divc,.exp-c,.mfo-lever,.ppl-tile,.scard):not(.hncard-date):not(.hncard-go):not(.hncard-meta):not(.hncard-pole):not(.hncard-tag):not(.cards):not(.ct-cards):not(#g1):not(#g2):not(#g3):not(#g4):not(#g5):not(#g6):not(#g7):not(#g8):not(#g9):not(#g10):not(#g11):not(#g12):not(#g13):not(#g14):not(#g15):not(#g16):not(#g17):not(#g18):not(#g19):not(#g20):not(#g21):not(#g22):not(#g23):not(#g24){background:linear-gradient(160deg,rgba(16,24,40,.38),rgba(9,15,26,.22))!important;-webkit-backdrop-filter:blur(20px) saturate(160%);backdrop-filter:blur(20px) saturate(160%)!important;border-color:rgba(255,255,255,.09)!important;box-shadow:rgba(255,255,255,.06) 0 1px 0 0 inset,rgba(0,0,0,.42) 0 22px 46px -30px!important}
+html.et-plight body :is([class*="card"],.divc,.exp-c,.mfo-lever,.ppl-tile,.scard):not(.hncard-date):not(.hncard-go):not(.hncard-meta):not(.hncard-pole):not(.hncard-tag):not(.cards):not(.ct-cards):not(#g1):not(#g2):not(#g3):not(#g4):not(#g5):not(#g6):not(#g7):not(#g8):not(#g9):not(#g10):not(#g11):not(#g12):not(#g13):not(#g14):not(#g15):not(#g16):not(#g17):not(#g18):not(#g19):not(#g20):not(#g21):not(#g22):not(#g23):not(#g24),html.et-jlight body :is([class*="card"],.divc,.exp-c,.mfo-lever,.ppl-tile,.scard):not(.hncard-date):not(.hncard-go):not(.hncard-meta):not(.hncard-pole):not(.hncard-tag):not(.cards):not(.ct-cards):not(#g1):not(#g2):not(#g3):not(#g4):not(#g5):not(#g6):not(#g7):not(#g8):not(#g9):not(#g10):not(#g11):not(#g12):not(#g13):not(#g14):not(#g15):not(#g16):not(#g17):not(#g18):not(#g19):not(#g20):not(#g21):not(#g22):not(#g23):not(#g24){background:linear-gradient(160deg,rgba(255,255,255,.40),rgba(247,243,236,.22))!important;-webkit-backdrop-filter:blur(18px) saturate(130%);backdrop-filter:blur(18px) saturate(130%)!important;border-color:rgba(26,35,48,.07)!important;box-shadow:rgba(255,255,255,.42) 0 1px 0 0 inset,rgba(30,24,10,.28) 0 20px 40px -30px!important}
 
 /* Ch668 -- tuiles en theme clair, encore plus transparentes. Demande explicite : rendre toutes
    les tuiles du theme clair transparentes. Mesure : meme apres le 665, le degrade clair (40/22%
@@ -177,13 +177,13 @@ html.et-plight body :is([class*="card"],.divc,.exp-c,.mfo-lever,.ppl-tile,.scard
    ici, le sombre du 665 n est pas touche. Opacite du degrade quasiment divisee par deux (40->22%,
    22->10%), flou remonte de 18 a 24px pour eviter le grain a cette faible opacite, bordure et ombre
    encore adoucies. Repli prefers-reduced-transparency inchange, toujours net et opaque. */
-html.et-plight body :is([class*="card"],.divc,.exp-c,.mfo-lever,.ppl-tile,.scard):not(.hncard-date):not(.hncard-go):not(.hncard-meta):not(.hncard-pole):not(.hncard-tag):not(.cards):not(.ct-cards):not(#g1):not(#g2):not(#g3):not(#g4):not(#g5):not(#g6):not(#g7):not(#g8):not(#g9):not(#g10):not(#g11):not(#g12):not(#g13):not(#g14):not(#g15):not(#g16):not(#g17):not(#g18):not(#g19):not(#g20):not(#g21):not(#g22):not(#g23):not(#g24),html.et-jlight body :is([class*="card"],.divc,.exp-c,.mfo-lever,.ppl-tile,.scard):not(.hncard-date):not(.hncard-go):not(.hncard-meta):not(.hncard-pole):not(.hncard-tag):not(.cards):not(.ct-cards):not(#g1):not(#g2):not(#g3):not(#g4):not(#g5):not(#g6):not(#g7):not(#g8):not(#g9):not(#g10):not(#g11):not(#g12):not(#g13):not(#g14):not(#g15):not(#g16):not(#g17):not(#g18):not(#g19):not(#g20):not(#g21):not(#g22):not(#g23):not(#g24){background:linear-gradient(160deg,rgba(255,255,255,.22),rgba(247,243,236,.10))!important;-webkit-backdrop-filter:blur(24px) saturate(125%)!important;backdrop-filter:blur(24px) saturate(125%)!important;border-color:rgba(26,35,48,.05)!important;box-shadow:rgba(255,255,255,.30) 0 1px 0 0 inset,rgba(30,24,10,.18) 0 16px 32px -28px!important}
+html.et-plight body :is([class*="card"],.divc,.exp-c,.mfo-lever,.ppl-tile,.scard):not(.hncard-date):not(.hncard-go):not(.hncard-meta):not(.hncard-pole):not(.hncard-tag):not(.cards):not(.ct-cards):not(#g1):not(#g2):not(#g3):not(#g4):not(#g5):not(#g6):not(#g7):not(#g8):not(#g9):not(#g10):not(#g11):not(#g12):not(#g13):not(#g14):not(#g15):not(#g16):not(#g17):not(#g18):not(#g19):not(#g20):not(#g21):not(#g22):not(#g23):not(#g24),html.et-jlight body :is([class*="card"],.divc,.exp-c,.mfo-lever,.ppl-tile,.scard):not(.hncard-date):not(.hncard-go):not(.hncard-meta):not(.hncard-pole):not(.hncard-tag):not(.cards):not(.ct-cards):not(#g1):not(#g2):not(#g3):not(#g4):not(#g5):not(#g6):not(#g7):not(#g8):not(#g9):not(#g10):not(#g11):not(#g12):not(#g13):not(#g14):not(#g15):not(#g16):not(#g17):not(#g18):not(#g19):not(#g20):not(#g21):not(#g22):not(#g23):not(#g24){background:linear-gradient(160deg,rgba(255,255,255,.22),rgba(247,243,236,.10))!important;-webkit-backdrop-filter:blur(24px) saturate(125%);backdrop-filter:blur(24px) saturate(125%)!important;border-color:rgba(26,35,48,.05)!important;box-shadow:rgba(255,255,255,.30) 0 1px 0 0 inset,rgba(30,24,10,.18) 0 16px 32px -28px!important}
 
 @media (prefers-reduced-transparency:reduce){
-html body :is([class*="card"],.divc,.exp-c,.mfo-lever,.ppl-tile,.scard):not(.hncard-date):not(.hncard-go):not(.hncard-meta):not(.hncard-pole):not(.hncard-tag):not(.cards):not(.ct-cards):not(#g1):not(#g2):not(#g3):not(#g4):not(#g5):not(#g6):not(#g7):not(#g8):not(#g9):not(#g10):not(#g11):not(#g12):not(#g13):not(#g14):not(#g15):not(#g16):not(#g17):not(#g18):not(#g19):not(#g20):not(#g21):not(#g22):not(#g23):not(#g24){background:#101928!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
-html.et-plight body :is([class*="card"],.divc,.exp-c,.mfo-lever,.ppl-tile,.scard):not(.hncard-date):not(.hncard-go):not(.hncard-meta):not(.hncard-pole):not(.hncard-tag):not(.cards):not(.ct-cards):not(#g1):not(#g2):not(#g3):not(#g4):not(#g5):not(#g6):not(#g7):not(#g8):not(#g9):not(#g10):not(#g11):not(#g12):not(#g13):not(#g14):not(#g15):not(#g16):not(#g17):not(#g18):not(#g19):not(#g20):not(#g21):not(#g22):not(#g23):not(#g24),html.et-jlight body :is([class*="card"],.divc,.exp-c,.mfo-lever,.ppl-tile,.scard):not(.hncard-date):not(.hncard-go):not(.hncard-meta):not(.hncard-pole):not(.hncard-tag):not(.cards):not(.ct-cards):not(#g1):not(#g2):not(#g3):not(#g4):not(#g5):not(#g6):not(#g7):not(#g8):not(#g9):not(#g10):not(#g11):not(#g12):not(#g13):not(#g14):not(#g15):not(#g16):not(#g17):not(#g18):not(#g19):not(#g20):not(#g21):not(#g22):not(#g23):not(#g24){background:#F5F1E8!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
-html body footer:not(#k1):not(#k2):not(#k3):not(#k4):not(#k5):not(#k6):not(#k7):not(#k8):not(#k9):not(#k10):not(#k11):not(#k12){background:#0B1422!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
-html.et-plight body footer:not(#k1):not(#k2):not(#k3):not(#k4):not(#k5):not(#k6):not(#k7):not(#k8):not(#k9):not(#k10):not(#k11):not(#k12),html.et-jlight body footer:not(#k1):not(#k2):not(#k3):not(#k4):not(#k5):not(#k6):not(#k7):not(#k8):not(#k9):not(#k10):not(#k11):not(#k12){background:#F1ECE2!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+html body :is([class*="card"],.divc,.exp-c,.mfo-lever,.ppl-tile,.scard):not(.hncard-date):not(.hncard-go):not(.hncard-meta):not(.hncard-pole):not(.hncard-tag):not(.cards):not(.ct-cards):not(#g1):not(#g2):not(#g3):not(#g4):not(#g5):not(#g6):not(#g7):not(#g8):not(#g9):not(#g10):not(#g11):not(#g12):not(#g13):not(#g14):not(#g15):not(#g16):not(#g17):not(#g18):not(#g19):not(#g20):not(#g21):not(#g22):not(#g23):not(#g24){background:#101928!important;-webkit-backdrop-filter:none;backdrop-filter:none!important}
+html.et-plight body :is([class*="card"],.divc,.exp-c,.mfo-lever,.ppl-tile,.scard):not(.hncard-date):not(.hncard-go):not(.hncard-meta):not(.hncard-pole):not(.hncard-tag):not(.cards):not(.ct-cards):not(#g1):not(#g2):not(#g3):not(#g4):not(#g5):not(#g6):not(#g7):not(#g8):not(#g9):not(#g10):not(#g11):not(#g12):not(#g13):not(#g14):not(#g15):not(#g16):not(#g17):not(#g18):not(#g19):not(#g20):not(#g21):not(#g22):not(#g23):not(#g24),html.et-jlight body :is([class*="card"],.divc,.exp-c,.mfo-lever,.ppl-tile,.scard):not(.hncard-date):not(.hncard-go):not(.hncard-meta):not(.hncard-pole):not(.hncard-tag):not(.cards):not(.ct-cards):not(#g1):not(#g2):not(#g3):not(#g4):not(#g5):not(#g6):not(#g7):not(#g8):not(#g9):not(#g10):not(#g11):not(#g12):not(#g13):not(#g14):not(#g15):not(#g16):not(#g17):not(#g18):not(#g19):not(#g20):not(#g21):not(#g22):not(#g23):not(#g24){background:#F5F1E8!important;-webkit-backdrop-filter:none;backdrop-filter:none!important}
+html body footer:not(#k1):not(#k2):not(#k3):not(#k4):not(#k5):not(#k6):not(#k7):not(#k8):not(#k9):not(#k10):not(#k11):not(#k12){background:#0B1422!important;-webkit-backdrop-filter:none;backdrop-filter:none!important}
+html.et-plight body footer:not(#k1):not(#k2):not(#k3):not(#k4):not(#k5):not(#k6):not(#k7):not(#k8):not(#k9):not(#k10):not(#k11):not(#k12),html.et-jlight body footer:not(#k1):not(#k2):not(#k3):not(#k4):not(#k5):not(#k6):not(#k7):not(#k8):not(#k9):not(#k10):not(#k11):not(#k12){background:#F1ECE2!important;-webkit-backdrop-filter:none;backdrop-filter:none!important}
 }
 
 /* Ch680 -- les cartes "documents" des pages-pole rejoignent le systeme de verre du site.
@@ -196,21 +196,21 @@ html.et-plight body footer:not(#k1):not(#k2):not(#k3):not(#k4):not(#k5):not(#k6)
    limitee a #documents, absent de la home. Plutot qu'une nouvelle valeur, #documents .doc-c
    reprend exactement le rendu deja en vigueur pour les autres cartes du site (memes valeurs
    que le 665 en sombre, le 668 en clair) -- une seule apparence de carte en verre partout. */
-html body #documents .doc-c:not(#g1):not(#g2):not(#g3):not(#g4):not(#g5):not(#g6):not(#g7):not(#g8):not(#g9):not(#g10):not(#g11):not(#g12):not(#g13):not(#g14):not(#g15):not(#g16):not(#g17):not(#g18):not(#g19):not(#g20):not(#g21):not(#g22):not(#g23):not(#g24){
+html body #documents .doc-c{
   background:linear-gradient(160deg,rgba(16,24,40,.38),rgba(9,15,26,.22))!important;
-  -webkit-backdrop-filter:blur(20px) saturate(160%)!important;backdrop-filter:blur(20px) saturate(160%)!important;
-  border-color:rgba(255,255,255,.09)!important;
+  -webkit-backdrop-filter:blur(20px) saturate(160%);backdrop-filter:blur(20px) saturate(160%);
+  border-color:rgba(255,255,255,.09);
   box-shadow:rgba(255,255,255,.06) 0 1px 0 0 inset,rgba(0,0,0,.42) 0 22px 46px -30px!important;
 }
-html.et-plight body #documents .doc-c:not(#g1):not(#g2):not(#g3):not(#g4):not(#g5):not(#g6):not(#g7):not(#g8):not(#g9):not(#g10):not(#g11):not(#g12):not(#g13):not(#g14):not(#g15):not(#g16):not(#g17):not(#g18):not(#g19):not(#g20):not(#g21):not(#g22):not(#g23):not(#g24){
+html.et-plight body #documents .doc-c{
   background:linear-gradient(160deg,rgba(255,255,255,.22),rgba(247,243,236,.10))!important;
-  -webkit-backdrop-filter:blur(24px) saturate(125%)!important;backdrop-filter:blur(24px) saturate(125%)!important;
-  border-color:rgba(26,35,48,.05)!important;
+  -webkit-backdrop-filter:blur(24px) saturate(125%);backdrop-filter:blur(24px) saturate(125%);
+  border-color:rgba(26,35,48,.05);
   box-shadow:rgba(255,255,255,.30) 0 1px 0 0 inset,rgba(30,24,10,.18) 0 16px 32px -28px!important;
 }
 @media (prefers-reduced-transparency:reduce){
-  html body #documents .doc-c:not(#g1):not(#g2):not(#g3):not(#g4):not(#g5):not(#g6):not(#g7):not(#g8):not(#g9):not(#g10):not(#g11):not(#g12):not(#g13):not(#g14):not(#g15):not(#g16):not(#g17):not(#g18):not(#g19):not(#g20):not(#g21):not(#g22):not(#g23):not(#g24){background:#101928!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
-  html.et-plight body #documents .doc-c:not(#g1):not(#g2):not(#g3):not(#g4):not(#g5):not(#g6):not(#g7):not(#g8):not(#g9):not(#g10):not(#g11):not(#g12):not(#g13):not(#g14):not(#g15):not(#g16):not(#g17):not(#g18):not(#g19):not(#g20):not(#g21):not(#g22):not(#g23):not(#g24){background:#F5F1E8!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+  html body #documents .doc-c{background:#101928!important;-webkit-backdrop-filter:none;backdrop-filter:none}
+  html.et-plight body #documents .doc-c{background:#F5F1E8!important;-webkit-backdrop-filter:none;backdrop-filter:none}
 }
 
 /* Ch682 -- .otr-c et .capint-c (pages-pole, seize fichiers) recuperent le verre qu'elles
@@ -225,21 +225,21 @@ html.et-plight body #documents .doc-c:not(#g1):not(#g2):not(#g3):not(#g4):not(#g
    jumelle de meme specificite les reaffirme ci-dessous plutot que de s'en remettre a
    l'ordre de la cascade. */
 @media screen{
-html body .otr-c:not(#j1):not(#j2):not(#j3):not(#j4):not(#j5):not(#j6):not(#j7):not(#j8):not(#j9):not(#j10):not(#j11):not(#j12):not(#j13):not(#j14):not(#j15):not(#j16):not(#j17):not(#j18):not(#j19):not(#j20):not(#j21):not(#j22):not(#j23):not(#j24){
-  -webkit-backdrop-filter:blur(12px) saturate(1.3)!important;backdrop-filter:blur(12px) saturate(1.3)!important;
+html body .otr-c{
+  -webkit-backdrop-filter:blur(12px) saturate(1.3);backdrop-filter:blur(12px) saturate(1.3);
 }
-html body .capint-c:not(#j1):not(#j2):not(#j3):not(#j4):not(#j5):not(#j6):not(#j7):not(#j8):not(#j9):not(#j10):not(#j11):not(#j12):not(#j13):not(#j14):not(#j15):not(#j16):not(#j17):not(#j18):not(#j19):not(#j20):not(#j21):not(#j22):not(#j23):not(#j24){
-  -webkit-backdrop-filter:blur(8px) saturate(120%)!important;backdrop-filter:blur(8px) saturate(120%)!important;
+html body .capint-c{
+  -webkit-backdrop-filter:blur(8px) saturate(120%);backdrop-filter:blur(8px) saturate(120%);
 }
 }
 @media screen and (prefers-reduced-transparency:reduce){
-html body .otr-c:not(#j1):not(#j2):not(#j3):not(#j4):not(#j5):not(#j6):not(#j7):not(#j8):not(#j9):not(#j10):not(#j11):not(#j12):not(#j13):not(#j14):not(#j15):not(#j16):not(#j17):not(#j18):not(#j19):not(#j20):not(#j21):not(#j22):not(#j23):not(#j24){
-  -webkit-backdrop-filter:none!important;backdrop-filter:none!important;
+html body .otr-c{
+  -webkit-backdrop-filter:none;backdrop-filter:none;
 }
-html body .capint-c:not(#j1):not(#j2):not(#j3):not(#j4):not(#j5):not(#j6):not(#j7):not(#j8):not(#j9):not(#j10):not(#j11):not(#j12):not(#j13):not(#j14):not(#j15):not(#j16):not(#j17):not(#j18):not(#j19):not(#j20):not(#j21):not(#j22):not(#j23):not(#j24){
-  -webkit-backdrop-filter:none!important;backdrop-filter:none!important;background:#0E1626!important;
+html body .capint-c{
+  -webkit-backdrop-filter:none;backdrop-filter:none;background:#0E1626!important;
 }
-html.et-plight body .capint-c:not(#j1):not(#j2):not(#j3):not(#j4):not(#j5):not(#j6):not(#j7):not(#j8):not(#j9):not(#j10):not(#j11):not(#j12):not(#j13):not(#j14):not(#j15):not(#j16):not(#j17):not(#j18):not(#j19):not(#j20):not(#j21):not(#j22):not(#j23):not(#j24){
+html.et-plight body .capint-c{
   background:#F6F1E8!important;
 }
 }
@@ -262,25 +262,25 @@ html.et-plight body .capint-c:not(#j1):not(#j2):not(#j3):not(#j4):not(#j5):not(#
 @media screen{
 html body :is(.lie558-c,.lie560-c):not(#m1):not(#m2):not(#m3):not(#m4):not(#m5):not(#m6):not(#m7):not(#m8):not(#m9):not(#m10):not(#m11):not(#m12):not(#m13):not(#m14):not(#m15):not(#m16):not(#m17):not(#m18):not(#m19):not(#m20):not(#m21):not(#m22):not(#m23):not(#m24){
   background:linear-gradient(160deg,rgba(16,24,40,.38),rgba(9,15,26,.22))!important;
-  -webkit-backdrop-filter:blur(20px) saturate(160%)!important;backdrop-filter:blur(20px) saturate(160%)!important;
+  -webkit-backdrop-filter:blur(20px) saturate(160%);backdrop-filter:blur(20px) saturate(160%)!important;
   border-color:rgba(255,255,255,.09)!important;
   box-shadow:rgba(255,255,255,.06) 0 1px 0 0 inset,rgba(0,0,0,.42) 0 22px 46px -30px!important;
 }
 html.et-plight body :is(.lie558-c,.lie560-c):not(#m1):not(#m2):not(#m3):not(#m4):not(#m5):not(#m6):not(#m7):not(#m8):not(#m9):not(#m10):not(#m11):not(#m12):not(#m13):not(#m14):not(#m15):not(#m16):not(#m17):not(#m18):not(#m19):not(#m20):not(#m21):not(#m22):not(#m23):not(#m24),
 html.et-jlight body :is(.lie558-c,.lie560-c):not(#m1):not(#m2):not(#m3):not(#m4):not(#m5):not(#m6):not(#m7):not(#m8):not(#m9):not(#m10):not(#m11):not(#m12):not(#m13):not(#m14):not(#m15):not(#m16):not(#m17):not(#m18):not(#m19):not(#m20):not(#m21):not(#m22):not(#m23):not(#m24){
   background:linear-gradient(160deg,rgba(255,255,255,.22),rgba(247,243,236,.10))!important;
-  -webkit-backdrop-filter:blur(24px) saturate(125%)!important;backdrop-filter:blur(24px) saturate(125%)!important;
+  -webkit-backdrop-filter:blur(24px) saturate(125%);backdrop-filter:blur(24px) saturate(125%)!important;
   border-color:rgba(26,35,48,.05)!important;
   box-shadow:rgba(255,255,255,.30) 0 1px 0 0 inset,rgba(30,24,10,.18) 0 16px 32px -28px!important;
 }
 }
 @media screen and (prefers-reduced-transparency:reduce){
 html body :is(.lie558-c,.lie560-c):not(#m1):not(#m2):not(#m3):not(#m4):not(#m5):not(#m6):not(#m7):not(#m8):not(#m9):not(#m10):not(#m11):not(#m12):not(#m13):not(#m14):not(#m15):not(#m16):not(#m17):not(#m18):not(#m19):not(#m20):not(#m21):not(#m22):not(#m23):not(#m24){
-  background:#101928!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important;
+  background:#101928!important;-webkit-backdrop-filter:none;backdrop-filter:none!important;
 }
 html.et-plight body :is(.lie558-c,.lie560-c):not(#m1):not(#m2):not(#m3):not(#m4):not(#m5):not(#m6):not(#m7):not(#m8):not(#m9):not(#m10):not(#m11):not(#m12):not(#m13):not(#m14):not(#m15):not(#m16):not(#m17):not(#m18):not(#m19):not(#m20):not(#m21):not(#m22):not(#m23):not(#m24),
 html.et-jlight body :is(.lie558-c,.lie560-c):not(#m1):not(#m2):not(#m3):not(#m4):not(#m5):not(#m6):not(#m7):not(#m8):not(#m9):not(#m10):not(#m11):not(#m12):not(#m13):not(#m14):not(#m15):not(#m16):not(#m17):not(#m18):not(#m19):not(#m20):not(#m21):not(#m22):not(#m23):not(#m24){
-  background:#F5F1E8!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important;
+  background:#F5F1E8!important;-webkit-backdrop-filter:none;backdrop-filter:none!important;
 }
 }
 /* Ch684 -- le pied de page du theme clair devient transparent, pour l immersion avec le decor.
@@ -299,7 +299,7 @@ html.et-jlight body :is(.lie558-c,.lie560-c):not(#m1):not(#m2):not(#m3):not(#m4)
 html.et-plight body footer:not(#k1):not(#k2):not(#k3):not(#k4):not(#k5):not(#k6):not(#k7):not(#k8):not(#k9):not(#k10):not(#k11):not(#k12),
 html.et-jlight body footer:not(#k1):not(#k2):not(#k3):not(#k4):not(#k5):not(#k6):not(#k7):not(#k8):not(#k9):not(#k10):not(#k11):not(#k12){
   background:rgba(247,243,236,.22)!important;
-  -webkit-backdrop-filter:blur(24px) saturate(125%)!important;backdrop-filter:blur(24px) saturate(125%)!important;
+  -webkit-backdrop-filter:blur(24px) saturate(125%);backdrop-filter:blur(24px) saturate(125%)!important;
 }
 
 /* Ch685 -- le pied de page du theme sombre devient transparent a son tour, meme logique que le 684.
@@ -317,7 +317,7 @@ html.et-jlight body footer:not(#k1):not(#k2):not(#k3):not(#k4):not(#k5):not(#k6)
    prefers-reduced-transparency du 663 inchange, toujours net et opaque. */
 html body footer:not(#k1):not(#k2):not(#k3):not(#k4):not(#k5):not(#k6):not(#k7):not(#k8):not(#k9):not(#k10):not(#k11):not(#k12){
   background:rgba(14,22,38,.22)!important;
-  -webkit-backdrop-filter:blur(20px) saturate(160%)!important;backdrop-filter:blur(20px) saturate(160%)!important;
+  -webkit-backdrop-filter:blur(20px) saturate(160%);backdrop-filter:blur(20px) saturate(160%)!important;
 }
 
 /* Ch686 -- le pied de page rejoint la finition complete du verre du site, pas seulement son opacite.
@@ -336,13 +336,13 @@ html body footer:not(#k1):not(#k2):not(#k3):not(#k4):not(#k5):not(#k6):not(#k7):
    changent. Repli prefers-reduced-transparency du 663 inchange, toujours net, opaque et sans ombre. */
 html body footer:not(#k1):not(#k2):not(#k3):not(#k4):not(#k5):not(#k6):not(#k7):not(#k8):not(#k9):not(#k10):not(#k11):not(#k12){
   background:linear-gradient(160deg,rgba(14,22,38,.38),rgba(14,22,38,.22))!important;
-  -webkit-backdrop-filter:blur(20px) saturate(160%)!important;backdrop-filter:blur(20px) saturate(160%)!important;
+  -webkit-backdrop-filter:blur(20px) saturate(160%);backdrop-filter:blur(20px) saturate(160%)!important;
   box-shadow:rgba(255,255,255,.06) 0 1px 0 0 inset,rgba(0,0,0,.42) 0 22px 46px -30px!important;
 }
 html.et-plight body footer:not(#k1):not(#k2):not(#k3):not(#k4):not(#k5):not(#k6):not(#k7):not(#k8):not(#k9):not(#k10):not(#k11):not(#k12),
 html.et-jlight body footer:not(#k1):not(#k2):not(#k3):not(#k4):not(#k5):not(#k6):not(#k7):not(#k8):not(#k9):not(#k10):not(#k11):not(#k12){
   background:linear-gradient(160deg,rgba(247,243,236,.22),rgba(247,243,236,.10))!important;
-  -webkit-backdrop-filter:blur(24px) saturate(125%)!important;backdrop-filter:blur(24px) saturate(125%)!important;
+  -webkit-backdrop-filter:blur(24px) saturate(125%);backdrop-filter:blur(24px) saturate(125%)!important;
   box-shadow:rgba(255,255,255,.30) 0 1px 0 0 inset,rgba(30,24,10,.18) 0 16px 32px -28px!important;
 }
 
@@ -366,12 +366,12 @@ html.et-jlight body footer:not(#k1):not(#k2):not(#k3):not(#k4):not(#k5):not(#k6)
    opaque. */
 html body footer:not(#k1):not(#k2):not(#k3):not(#k4):not(#k5):not(#k6):not(#k7):not(#k8):not(#k9):not(#k10):not(#k11):not(#k12){
   background:linear-gradient(160deg,rgba(14,22,38,.06),rgba(14,22,38,.02))!important;
-  -webkit-backdrop-filter:blur(1px) saturate(160%)!important;backdrop-filter:blur(1px) saturate(160%)!important;
+  -webkit-backdrop-filter:blur(1px) saturate(160%);backdrop-filter:blur(1px) saturate(160%)!important;
 }
 html.et-plight body footer:not(#k1):not(#k2):not(#k3):not(#k4):not(#k5):not(#k6):not(#k7):not(#k8):not(#k9):not(#k10):not(#k11):not(#k12),
 html.et-jlight body footer:not(#k1):not(#k2):not(#k3):not(#k4):not(#k5):not(#k6):not(#k7):not(#k8):not(#k9):not(#k10):not(#k11):not(#k12){
   background:linear-gradient(160deg,rgba(247,243,236,.08),rgba(247,243,236,.03))!important;
-  -webkit-backdrop-filter:blur(0px) saturate(125%)!important;backdrop-filter:blur(0px) saturate(125%)!important;
+  -webkit-backdrop-filter:blur(0px) saturate(125%);backdrop-filter:blur(0px) saturate(125%)!important;
 }
 
 /* Ch688 -- meme demande que le 687, appliquee au bandeau de navigation : faire pareil pour le
@@ -398,34 +398,34 @@ html.et-jlight body footer:not(#k1):not(#k2):not(#k3):not(#k4):not(#k5):not(#k6)
 
 /* Ch704 - contraste au rendu reel, theme clair : les textes attenues par opacite remontent au seuil 4,5:1
    (encre calculee melangee au fond selon l opacite effective). Valeurs minimales, la hierarchie reste visible. */
-html.et-plight .sec-k[style*="opacity:.65"]:not(#z1):not(#z2){opacity:.8!important} /* Ch713 : limite aux accroches attenuees en ligne ; la regle nue baissait a .8 les .sec-k pleines (16 elements, 8 pages) */
-html.et-plight .fn-d:not(#z1):not(#z2){opacity:.95!important}
-html.et-plight .fn-alt:not(#z1):not(#z2){opacity:.95!important}
-html.et-plight .pr-k:not(#z1):not(#z2),html.et-plight .pr-card em:not(#z1):not(#z2){opacity:.8!important}
-html.et-plight .org604 .box li em:not(#z1):not(#z2){opacity:1!important}
-html.et-plight #histoire .he p:not(#z1):not(#z2){opacity:.95!important}
-html.et-plight #cadre-reporting .frm-off:not(#z1):not(#z2){opacity:.88!important}
-html.et-plight #comparer .cl-hint:not(#z1):not(#z2){opacity:.8!important}
-html.et-plight .jn-dep-h span:not(#z1):not(#z2){opacity:.85!important}
-html.et-plight label[for="schQ"]:not(#z1):not(#z2){opacity:.82!important}
-html.et-plight #schQ + p:not(#z1):not(#z2){opacity:.8!important}
-html.et-plight #schE:not(#z1):not(#z2){opacity:1!important}
+html.et-plight .sec-k[style*="opacity:.65"]{opacity:.8!important} /* Ch713 : limite aux accroches attenuees en ligne ; la regle nue baissait a .8 les .sec-k pleines (16 elements, 8 pages) */
+html.et-plight .fn-d{opacity:.95!important}
+html.et-plight .fn-alt{opacity:.95!important}
+html.et-plight .pr-k,html.et-plight .pr-card em{opacity:.8!important}
+html.et-plight .org604 .box li em{opacity:1!important}
+html.et-plight #histoire .he p{opacity:.95!important}
+html.et-plight #cadre-reporting .frm-off{opacity:.88!important}
+html.et-plight #comparer .cl-hint{opacity:.8!important}
+html.et-plight .jn-dep-h span{opacity:.85!important}
+html.et-plight label[for="schQ"]{opacity:.82!important}
+html.et-plight #schQ + p{opacity:.8!important}
+html.et-plight #schE{opacity:1!important}
 
 /* Ch708 - theme clair : le voile sombre de 40 px sous la barre de navigation non defilee (degrade rgba(6,11,20,.42) pose pour les heros sombres,
    129 pages) dessinait une bande grise sous la barre sur fond creme ; supprime dans les deux themes clairs, l ombre douce de la barre suffit. */
-html.et-plight #nav.nav:not(.scrolled):not(#z1):not(#z2):not(#z3)::after,
-html.et-jlight #nav.nav:not(.scrolled):not(#z1):not(#z2):not(#z3)::after{content:none!important}
+html.et-plight #nav.nav:not(.scrolled)::after,
+html.et-jlight #nav.nav:not(.scrolled)::after{content:none!important}
 
 /* Ch717 - QA de la page vitrine : trois commandes fixes restaient dans l ordre de tabulation une fois masquees (opacite 0 ou hors ecran) --
    le bandeau cookies une fois accepte (#ckn, 67 pages), le bouton Retour a l accueil avant 360 px de defilement (#homeFab, 67 pages)
    et le rail de sections avant son apparition (#secrail) : le clavier y tombait sur des liens invisibles. Masques pour le clavier et la souris
    tant qu ils sont caches ; la visibilite ne bascule qu a la fin de l animation de sortie, animations inchangees. */
-#ckn:not(.show):not(#z1):not(#z2){visibility:hidden}
-#homeFab:not(.show):not(#z1):not(#z2){visibility:hidden}
-#secrail:not(.show):not(#z1):not(#z2) a{visibility:hidden}
+#ckn:not(.show){visibility:hidden}
+#homeFab:not(.show){visibility:hidden}
+#secrail:not(.show) a{visibility:hidden}
 @media (prefers-reduced-motion:no-preference){
-#ckn:not(.show):not(#z1):not(#z2){transition:transform .45s var(--ease,ease),visibility 0s linear .45s}
-#homeFab:not(.show):not(#z1):not(#z2){transition:opacity .3s var(--ease,ease),transform .3s var(--ease,ease),border-color .2s,background .2s,visibility 0s linear .3s}
+#ckn:not(.show){transition:transform .45s var(--ease,ease),visibility 0s linear .45s}
+#homeFab:not(.show){transition:opacity .3s var(--ease,ease),transform .3s var(--ease,ease),border-color .2s,background .2s,visibility 0s linear .3s}
 #secrail:not(.show):not(#z1):not(#z2) a{transition:opacity .5s var(--ease,ease) calc(var(--d,0)*.07s),transform .5s var(--ease,ease) calc(var(--d,0)*.07s),border-color .25s,background .25s,box-shadow .25s,color .25s,visibility 0s linear calc(.5s + var(--d,0)*.07s)}
 }
 /* Ch717 - mobile : la barre d onglets fixe du bas (#nezBar, 61 px, jusqu a 768 px) et les boutons flottants poses au-dessus (theme, haut de page :
@@ -435,4 +435,4 @@ html.et-jlight #nav.nav:not(.scrolled):not(#z1):not(#z2):not(#z3)::after{content
 /* Ch720 - audit des tuiles : les pastilles des tuiles de pole (.plc-badge, 16 pages) etaient coupees par des points de suspension quand
    la carte retrecit (1024 px : « Criblage · chimie EO… ») ; la pastille passe a la ligne au lieu de perdre son texte, rayon 12 px
    (identique a la pilule sur une ligne, rectangle arrondi sur deux). */
-.plc-badge:not(#z1):not(#z2){white-space:normal;overflow:visible;text-overflow:clip;border-radius:12px;line-height:1.35}
+.plc-badge{white-space:normal;overflow:visible;text-overflow:clip;border-radius:12px;line-height:1.35}

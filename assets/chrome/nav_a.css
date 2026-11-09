@@ -24,7 +24,7 @@
   /* lot 20 : plus d'ouverture au simple focus (:focus-within) ; clic, Entree, Espace ou fleche bas */
   .nav-item:hover .nx-mega,.nav-item.open .nx-mega{
     opacity:1;visibility:visible;transform:translateY(0)}
-  .nav-item.kbesc .nx-mega{opacity:0!important;visibility:hidden!important}
+  .nav-item.kbesc .nx-mega{opacity:0!important;visibility:hidden}
   .nav-item:nth-last-child(-n+3) .nx-mega{left:auto;right:0}
 }.nx-col .nxh{font-family:var(--fm,ui-monospace,Menlo,monospace);font-size:0.6875rem;letter-spacing:.16em;
   text-transform:uppercase;color:var(--gold-l);margin:4px 10px 8px;padding-bottom:7px;
@@ -80,7 +80,7 @@ body.nx-clear .hero{padding-top:72px}
   .nav-tog:not(#_):not(#__){width:44px;height:44px}
   .nx-util-in>a,.nx-util-m>a{padding:12px 8px!important;display:inline-block}
 }
-body[data-etui~=navopen]:not(#ehz) #ckn,body[data-etui~=navopen]:not(#ehz) .lum-ctl,body[data-etui~=navopen]:not(#ehz) .scrollcue,body[data-etui~=cknshow]:not(#ehz) .lum-ctl,body[data-etui~=cknshow]:not(#ehz) #plightBtn{display:none!important}
+body[data-etui~=navopen] #ckn,body[data-etui~=navopen] .lum-ctl,body[data-etui~=navopen] .scrollcue,body[data-etui~=cknshow] .lum-ctl,body[data-etui~=cknshow] #plightBtn{display:none}
 @media(min-width:1241px){@supports((-webkit-backdrop-filter:blur(1px)) or (backdrop-filter:blur(1px))){.nx-mega{border-color:var(--et-hair-glow,var(--et-hair-glow,rgba(90,167,240,.12)))}}}
 .nx-col a[aria-current="page"]{background:linear-gradient(90deg,rgba(217,168,79,.14),transparent 80%);box-shadow:inset 2px 0 0 var(--gold-l,var(--et-gold-brand,#E8C36A));padding-left:10px;border-radius:6px}
 .nx-col a[aria-current="page"] strong{color:var(--gold-l,var(--et-gold-brand,#E8C36A))}
@@ -113,7 +113,7 @@ body[data-etui~=navopen]:not(#ehz) #ckn,body[data-etui~=navopen]:not(#ehz) .lum-
 .nx .nx-feat:hover .arr{letter-spacing:.04em}
 }
 @media(prefers-reduced-motion:reduce){
-.nx .nx-mega:not(#_x),.nx .nx-col a,.nx .nx-col a::after,.nx .nx-feat,.nx .nx-feat .arr{transition:none!important}
+.nx .nx-mega,.nx .nx-col a,.nx .nx-col a::after,.nx .nx-feat,.nx .nx-feat .arr{transition:none!important}
 .nx .nx-mega:not(#_x){transform:none}}
 #nav{overflow-x:clip}
 @media (hover:hover) and (prefers-reduced-motion: no-preference){
@@ -129,10 +129,10 @@ body[data-etui~=navopen]:not(#ehz) #ckn,body[data-etui~=navopen]:not(#ehz) .lum-
   .nav-cta .nav-search{width:38px!important;height:38px!important}
   .nav-tog{flex:0 0 auto}
   .brand-tx:not(#_){font-size:.98rem!important}
-  .brand-tx small:not(#_){font-size:.6rem!important;letter-spacing:.055em!important}
+  .brand-tx small{font-size:.6rem!important;letter-spacing:.055em!important}
 }
 @media(max-width:374px){
-  #mLang:not(#_):not(#__):not(#___){display:none!important}
+  #mLang{display:none!important}
 }
 .foot-legal-links:not(#_):not(#__) a{display:inline-flex;align-items:center;min-height:24px}
 .nx-util-in:not(#_):not(#__) a{display:inline-flex;align-items:center;min-height:24px}
@@ -170,11 +170,11 @@ html.et-jlight .rootland:not(#_):not(#__){
 html.et-plight .rootland:not(#_):not(#__)::after,
 html.et-jlight .rootland:not(#_):not(#__)::after{
   background:linear-gradient(180deg,rgba(250,247,241,.08) 0%,rgba(250,247,241,.22) 100%) !important}
-.diapo:not(#_):not(#__):not(#___){background:transparent !important}
-.diapo:not(#_):not(#__):not(#___) i{
-  background-image:none !important;background:transparent !important;animation:none !important}
-.diapo:not(#_):not(#__):not(#___)::before{display:none !important}
-.diapo:not(#_):not(#__):not(#___)::after{
+.diapo{background:transparent !important}
+.diapo i{
+  background-image:none !important;background:transparent !important;animation:none}
+.diapo::before{display:none}
+.diapo::after{
   background:linear-gradient(180deg,rgba(7,12,21,.04) 0%,rgba(7,12,21,.20) 74%,rgba(7,12,21,.32) 100%) !important}
 html.et-plight .diapo:not(#_):not(#__):not(#___)::after,
 html.et-jlight .diapo:not(#_):not(#__):not(#___)::after{
@@ -204,38 +204,38 @@ html.et-jlight .diapo:not(#_):not(#__):not(#___){
 @media(prefers-reduced-motion:reduce){
   .diapo:not(#_):not(#__):not(#___){animation:none !important}
 }
-html:not(.et-plight):not(.et-jlight) .t550-bg:not(#_):not(#__){
+html:not(.et-plight):not(.et-jlight) .t550-bg{
   background-image:
     radial-gradient(74% 128% at var(--fx,16%) 52%, color-mix(in srgb, var(--pa,#FFB703) 30%, transparent), transparent 72%),
     radial-gradient(58% 104% at 90% 16%, rgba(90,167,240,.16), transparent 68%),
-    radial-gradient(52% 96% at 78% 96%, rgba(31,164,150,.14), transparent 70%) !important;
-  background-color:#0A1220 !important;
-  background-size:auto !important;
+    radial-gradient(52% 96% at 78% 96%, rgba(31,164,150,.14), transparent 70%);
+  background-color:#0A1220;
+  background-size:auto;
 }
-html:not(.et-plight):not(.et-jlight) #maillon-amont:not(#_) .t550-bg{--fx:14%}
-html:not(.et-plight):not(.et-jlight) #maillon-intermediaire:not(#_) .t550-bg{--fx:50%}
-html:not(.et-plight):not(.et-jlight) #maillon-aval:not(#_) .t550-bg{--fx:86%}
-html:not(.et-plight):not(.et-jlight) .t550-seg:not(#_):not(#__)::before{
+html:not(.et-plight):not(.et-jlight) #maillon-amont .t550-bg{--fx:14%}
+html:not(.et-plight):not(.et-jlight) #maillon-intermediaire .t550-bg{--fx:50%}
+html:not(.et-plight):not(.et-jlight) #maillon-aval .t550-bg{--fx:86%}
+html:not(.et-plight):not(.et-jlight) .t550-seg::before{
   background:linear-gradient(165deg,rgba(0,28,45,.42) 0%,rgba(0,24,38,.22) 55%,rgba(0,21,34,.34) 100%) !important;
 }
-html:not(.et-plight):not(.et-jlight) .subland:not(#_):not(#__){
+html:not(.et-plight):not(.et-jlight) .subland{
   background-image:
     radial-gradient(46% 50% at 12% 16%, rgba(219,174,74,.40), transparent 64%),
     radial-gradient(42% 48% at 88% 10%, rgba(90,167,240,.34), transparent 62%),
     radial-gradient(56% 58% at 82% 88%, rgba(31,164,150,.32), transparent 64%),
     radial-gradient(50% 54% at 18% 92%, rgba(224,162,78,.26), transparent 62%),
-    radial-gradient(34% 38% at 52% 50%, rgba(120,90,220,.14), transparent 64%) !important;
-  background-color:#0A1220 !important;
-  background-size:auto !important;
-  animation:et573Derive 40s ease-in-out infinite alternate !important;
+    radial-gradient(34% 38% at 52% 50%, rgba(120,90,220,.14), transparent 64%);
+  background-color:#0A1220;
+  background-size:auto;
+  animation:et573Derive 40s ease-in-out infinite alternate;
 }
 @media(prefers-reduced-motion:reduce){
-  html:not(.et-plight):not(.et-jlight) .subland:not(#_):not(#__){animation:none !important}
+  html:not(.et-plight):not(.et-jlight) .subland{animation:none}
 }
-html:not(.et-plight):not(.et-jlight) .subland:not(#_):not(#__)::after{
+html:not(.et-plight):not(.et-jlight) .subland::after{
   background:linear-gradient(180deg,rgba(7,12,21,.06) 0%,rgba(7,12,21,.20) 100%) !important}
-.nh-une-all:not(#_):not(#__),
-.doc-all:not(#_):not(#__){
+.nh-une-all,
+.doc-all{
   display:inline-flex;align-items:center;min-height:24px}
 .nx-langx:not(#_):not(#__){min-width:24px;justify-content:center}
 .foot-legal-links:not(#_):not(#__) a{min-width:24px;justify-content:center}
@@ -258,25 +258,25 @@ nav.bcrumb:not(#_):not(#__) a,
 .isv-s:not(#_):not(#__) a.go,
 .card-m:not(#_):not(#__)>a{
   display:inline-flex;align-items:center;min-height:24px}
-.fil552:not(#_):not(#__){padding-top:122px}
-.fil552:not(#_):not(#__) ~ .pole-subnav:not(#_){margin-top:8px}
+.fil552{padding-top:122px}
+.fil552 ~ .pole-subnav{margin-top:8px}
 @media(max-width:1240px){
-  .fil552:not(#_):not(#__){padding-top:83px}
+  .fil552{padding-top:83px}
 }
-#dotnav:not(#_) a{min-width:24px;min-height:24px;align-items:center;justify-content:center}
-.std:not(#_):not(#__)>b>a{display:inline-flex;align-items:center;min-height:24px}
-.pe-note:not(#_):not(#__) a{text-decoration:underline;text-underline-offset:.18em}
-.anc578:not(#_){display:block;height:0;overflow:hidden;scroll-margin-top:96px}
+#dotnav a{min-width:24px;min-height:24px;align-items:center;justify-content:center}
+.std>b>a{display:inline-flex;align-items:center;min-height:24px}
+.pe-note a{text-decoration:underline;text-underline-offset:.18em}
+.anc578{display:block;height:0;overflow:hidden;scroll-margin-top:96px}
 @media print{
-  details:not(#_):not(#__)::details-content{
-    content-visibility:visible !important;display:block !important;block-size:auto !important}
-  details:not(#_):not(#__)>*{content-visibility:visible !important}
-  details:not(#_):not(#__){break-inside:avoid}
-  summary:not(#_) .chev,summary:not(#_)>svg{display:none !important}
-  summary:not(#_){list-style:none}
-  summary:not(#_)::-webkit-details-marker{display:none}
+  details::details-content{
+    content-visibility:visible;display:block;block-size:auto}
+  details>*{content-visibility:visible}
+  details{break-inside:avoid}
+  summary .chev,summary>svg{display:none}
+  summary{list-style:none}
+  summary::-webkit-details-marker{display:none}
 }
-header.hero .hx-shots[role="img"]:not(#_):not(#__)::after{
+header.hero .hx-shots[role="img"]::after{
   content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
   background:linear-gradient(180deg,
     rgba(6,11,20,0) 0%,
@@ -285,13 +285,13 @@ header.hero .hx-shots[role="img"]:not(#_):not(#__)::after{
     rgba(6,11,20,.32) 52%,
     rgba(6,11,20,.14) 66%,
     rgba(6,11,20,0) 82%)}
-header.hero:where([data-eh~=eh6]):not(.ehz):not(.ehz) h1:not(#_),
-header.hero:where([data-eh~=eh6]):not(.ehz):not(.ehz) h1 em:not(#_),
-header.hero:where([data-eh~=eh6]):not(.ehz):not(.ehz) .lead:not(#_),
-header.hero:where([data-eh~=eh6]):not(.ehz):not(.ehz) .lead strong:not(#_){
+header.hero:where([data-eh~=eh6]):not(.ehz):not(.ehz) h1,
+header.hero:where([data-eh~=eh6]):not(.ehz):not(.ehz) h1 em,
+header.hero:where([data-eh~=eh6]):not(.ehz):not(.ehz) .lead,
+header.hero:where([data-eh~=eh6]):not(.ehz):not(.ehz) .lead strong{
   text-shadow:0 1px 2px rgba(6,11,20,.92),0 2px 20px rgba(6,11,20,.85),0 0 42px rgba(6,11,20,.7)}
-html header.pghero:not(#_):not(#__),
-html body div.hero:not(#_):not(#__){
+html header.pghero,
+html body div.hero{
   --v5a:.58; --v5b:.50; --v5c:.72;
   background:
     linear-gradient(104deg,rgba(255,255,255,.115) 0%,rgba(255,255,255,.038) 24%,rgba(255,255,255,0) 47%),
@@ -300,31 +300,31 @@ html body div.hero:not(#_):not(#__){
     radial-gradient(88% 142% at 79% 114%, rgba(31,164,150,.16), transparent 64%),
     linear-gradient(180deg, rgba(7,12,21,var(--v5a)) 0%, rgba(7,12,21,var(--v5b)) 44%, rgba(7,12,21,var(--v5c)) 100%)
     !important;
-  -webkit-backdrop-filter:blur(26px) saturate(1.5) !important;
-  backdrop-filter:blur(26px) saturate(1.5) !important;
-  border-bottom:1px solid rgba(255,255,255,.11) !important;
+  -webkit-backdrop-filter:blur(26px) saturate(1.5);
+  backdrop-filter:blur(26px) saturate(1.5);
+  border-bottom:1px solid rgba(255,255,255,.11);
   box-shadow:
     inset 0 1px 0 rgba(255,255,255,.17),
     inset 0 -1px 0 rgba(7,12,21,.55),
     0 26px 64px -34px rgba(7,12,21,.75) !important;
 }
-html.et-plight header.pghero:not(#_):not(#__),
-html.et-jlight header.pghero:not(#_):not(#__),
-html.et-plight body div.hero:not(#_):not(#__),
-html.et-jlight body div.hero:not(#_):not(#__){
+html.et-plight header.pghero,
+html.et-jlight header.pghero,
+html.et-plight body div.hero,
+html.et-jlight body div.hero{
   --v5a:.86; --v5b:.80; --v5c:.93;
 }
-html header.pghero:not(#_):not(#__)::before{display:none !important}
+html header.pghero::before{display:none}
 @media(prefers-contrast:more){
-  html header.pghero:not(#_):not(#__),
-  html body div.hero:not(#_):not(#__){
+  html header.pghero,
+  html body div.hero{
     --v5a:.90; --v5b:.86; --v5c:.95;
-    -webkit-backdrop-filter:blur(30px) saturate(1.1) !important;
-    backdrop-filter:blur(30px) saturate(1.1) !important}
+    -webkit-backdrop-filter:blur(30px) saturate(1.1);
+    backdrop-filter:blur(30px) saturate(1.1)}
 }
-.gtt-c:not(#_) > i[aria-hidden="true"]:not(#_):not(#__):not(#___),
-.ttf-card:not(#_) > i[aria-hidden="true"]:not(#_):not(#__):not(#___),
-.tts:not(#_) > i[aria-hidden="true"]:not(#_):not(#__):not(#___){
+.gtt-c > i[aria-hidden="true"],
+.ttf-card > i[aria-hidden="true"],
+.tts > i[aria-hidden="true"]{
   position:relative;
   background:
     linear-gradient(112deg,rgba(255,255,255,.22) 0%,rgba(255,255,255,.06) 18%,rgba(255,255,255,0) 38%),
@@ -333,35 +333,35 @@ html header.pghero:not(#_):not(#__)::before{display:none !important}
     radial-gradient(96% 155% at 70% 124%, rgba(31,164,150,.44), transparent 64%),
     radial-gradient(60% 90% at 46% 54%, rgba(120,90,220,.20), transparent 66%),
     linear-gradient(180deg,#15243A 0%,#0B1424 100%) !important;
-  border-bottom:1px solid var(--et-hair-glow,var(--et-hair-glow,rgba(90,167,240,.12))) !important;
+  border-bottom:1px solid var(--et-hair-glow,var(--et-hair-glow,rgba(90,167,240,.12)));
   box-shadow:inset 0 1px 0 rgba(255,255,255,.20) !important;
 }
-.gtt-c:not(#_) > i[aria-hidden="true"]:not(#_):not(#__):not(#___)::after,
-.ttf-card:not(#_) > i[aria-hidden="true"]:not(#_):not(#__):not(#___)::after,
-.tts:not(#_) > i[aria-hidden="true"]:not(#_):not(#__):not(#___)::after{
+.gtt-c > i[aria-hidden="true"]::after,
+.ttf-card > i[aria-hidden="true"]::after,
+.tts > i[aria-hidden="true"]::after{
   content:"";position:absolute;inset:0;pointer-events:none;
   background:linear-gradient(118deg,
     transparent 0%, transparent 34%,
     rgba(255,255,255,.14) 41%, rgba(255,255,255,.02) 47%,
     transparent 54%, transparent 100%)}
-.gtt-c:not(#_):nth-of-type(2) > i[aria-hidden="true"]:not(#_):not(#__):not(#___),
-.ttf-card:not(#_):nth-of-type(2) > i[aria-hidden="true"]:not(#_):not(#__):not(#___){background-position:22% 0,22% 0,22% 0,22% 0,22% 0,0 0 !important}
-.gtt-c:not(#_):nth-of-type(3) > i[aria-hidden="true"]:not(#_):not(#__):not(#___),
-.ttf-card:not(#_):nth-of-type(3) > i[aria-hidden="true"]:not(#_):not(#__):not(#___){transform:scaleX(-1)}
-.gtt-c:not(#_):nth-of-type(4) > i[aria-hidden="true"]:not(#_):not(#__):not(#___){background-position:-18% 0,-18% 0,-18% 0,-18% 0,-18% 0,0 0 !important}
-html header.pghero:not(#_):not(#__) .lead:not(#_):not(#__),
-html body div.hero:not(#_):not(#__) .lead:not(#_):not(#__){
-  color:rgba(245,247,250,.92) !important}
-html header.pghero:not(#_):not(#__) > .hero-cap:not(#_),
-html body div.hero:not(#_):not(#__) > .hero-cap:not(#_),
-html header.hero:not(#_):not(#__) > .hero-cap:not(#_){display:none !important}
+.gtt-c:nth-of-type(2) > i[aria-hidden="true"],
+.ttf-card:nth-of-type(2) > i[aria-hidden="true"]{background-position:22% 0,22% 0,22% 0,22% 0,22% 0,0 0 !important}
+.gtt-c:nth-of-type(3) > i[aria-hidden="true"],
+.ttf-card:nth-of-type(3) > i[aria-hidden="true"]{transform:scaleX(-1)}
+.gtt-c:nth-of-type(4) > i[aria-hidden="true"]{background-position:-18% 0,-18% 0,-18% 0,-18% 0,-18% 0,0 0 !important}
+html header.pghero .lead,
+html body div.hero .lead{
+  color:rgba(245,247,250,.92)}
+html header.pghero > .hero-cap,
+html body div.hero > .hero-cap,
+html header.hero > .hero-cap{display:none}
 @media(max-width:768px){
-  html body:where([data-eh~=eh1]):not(#ehz) #ckn:not(#_):not(#__):not(#___){
-    bottom:calc(62px + env(safe-area-inset-bottom)) !important;
-    z-index:96 !important;
+  html body:where([data-eh~=eh1]) #ckn{
+    bottom:calc(62px + env(safe-area-inset-bottom));
+    z-index:96;
   }
-  html body:where([data-eh~=eh1]):not(#ehz) #ckn:not(#_):not(#__):not(#___) .ck-row:not(#_){
-    gap:14px !important;
+  html body:where([data-eh~=eh1]) #ckn .ck-row{
+    gap:14px;
   }
 }
 .rootland:not(#_):not(#__):not(#___),
@@ -400,25 +400,25 @@ html.et-jlight:not([lang="ar"]) .subland:not(#_):not(#__):not(#___){
     radial-gradient(42% 44% at 32% 60%, rgba(46,134,222,.09), transparent 66%),
     rgba(250,247,241,.72) !important;
 }
-html.et-plight:not([lang="ar"]) .b111-lead:not(#_):not(#__):not(#___),
-html.et-jlight:not([lang="ar"]) .b111-lead:not(#_):not(#__):not(#___),
-html.et-plight:not([lang="ar"]) .b111-c p:not(#_):not(#__):not(#___),
-html.et-jlight:not([lang="ar"]) .b111-c p:not(#_):not(#__):not(#___){
-  color:#4A5568 !important;
-  -webkit-text-fill-color:#4A5568 !important;
+html.et-plight:not([lang="ar"]) .b111-lead,
+html.et-jlight:not([lang="ar"]) .b111-lead,
+html.et-plight:not([lang="ar"]) .b111-c p,
+html.et-jlight:not([lang="ar"]) .b111-c p{
+  color:#4A5568;
+  -webkit-text-fill-color:#4A5568;
 }
-html:not(.et-plight):not(.et-jlight) .exp-c p:not(#_):not(#__),
-html:not(.et-plight):not(.et-jlight) .exp-items span:not(#_):not(#__),
-html:not(.et-plight):not(.et-jlight) .exp-note:not(#_):not(#__){
-  color:#ACB8CC !important;
-  -webkit-text-fill-color:#ACB8CC !important;
+html:not(.et-plight):not(.et-jlight) .exp-c p,
+html:not(.et-plight):not(.et-jlight) .exp-items span,
+html:not(.et-plight):not(.et-jlight) .exp-note{
+  color:#ACB8CC;
+  -webkit-text-fill-color:#ACB8CC;
 }
-html:not(.et-plight):not(.et-jlight) .exp-lede:not(#_):not(#__),
-html:not(.et-plight):not(.et-jlight) .avk-note:not(#_):not(#__),
-html:not(.et-plight):not(.et-jlight) .ppj-note:not(#_):not(#__),
-html:not(.et-plight):not(.et-jlight) .c7l:not(#_):not(#__){
-  color:#93A1B8 !important;
-  -webkit-text-fill-color:#93A1B8 !important;
+html:not(.et-plight):not(.et-jlight) .exp-lede,
+html:not(.et-plight):not(.et-jlight) .avk-note,
+html:not(.et-plight):not(.et-jlight) .ppj-note,
+html:not(.et-plight):not(.et-jlight) .c7l{
+  color:#93A1B8;
+  -webkit-text-fill-color:#93A1B8;
 }
 html.et-plight:not([lang="ar"]) .cmp-hint:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
 html.et-plight:not([lang="ar"]) table.cmpt td:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______),
@@ -453,10 +453,10 @@ html.et-jlight:not([lang="ar"]) .bcrumb a:not(#_):not(#__):not(#___):not(#____):
   color:#4A5568 !important;
   -webkit-text-fill-color:#4A5568 !important;
 }
-.plnav:not(#_):not(#__){
-  display:block !important;
+.plnav{
+  display:block;
   position:relative; z-index:2;
-  margin:0 !important; padding:18px 0 !important;
+  margin:0; padding:18px 0;
   border-top:1px solid rgba(255,255,255,.09);
   border-bottom:1px solid rgba(255,255,255,.09);
   background:linear-gradient(180deg,rgba(12,20,34,.52),rgba(9,15,26,.60)) !important;
@@ -480,22 +480,22 @@ html.et-jlight:not([lang="ar"]) .bcrumb a:not(#_):not(#__):not(#___):not(#____):
 .plnav-anc a:hover{border-color:var(--gold-l,var(--et-gold-brand,#E8C36A)); color:var(--et-white,#FFF);
   background:color-mix(in srgb, var(--gold-l,var(--et-gold-brand,#E8C36A)) 12%, transparent)}
 .plnav-anc a:focus-visible{outline:2px solid var(--blue-l,#5AA7F0); outline-offset:3px}
-html.et-plight:not([lang="ar"]) .plnav:not(#_):not(#__),
-html.et-jlight:not([lang="ar"]) .plnav:not(#_):not(#__){
+html.et-plight:not([lang="ar"]) .plnav,
+html.et-jlight:not([lang="ar"]) .plnav{
   border-top-color:rgba(11,20,34,.10); border-bottom-color:rgba(11,20,34,.10);
   background:linear-gradient(180deg,rgba(255,255,255,.74),rgba(252,250,246,.66)) !important;
 }
-html.et-plight:not([lang="ar"]) .plnav-nom:not(#_), html.et-jlight:not([lang="ar"]) .plnav-nom:not(#_),
-html.et-plight:not([lang="ar"]) .plnav-kpi b:not(#_), html.et-jlight:not([lang="ar"]) .plnav-kpi b:not(#_),
-html.et-plight:not([lang="ar"]) .plnav-kpi span:not(#_), html.et-jlight:not([lang="ar"]) .plnav-kpi span:not(#_),
-html.et-plight:not([lang="ar"]) .plnav-anc a:not(#_), html.et-jlight:not([lang="ar"]) .plnav-anc a:not(#_){
-  color:#26324A !important; -webkit-text-fill-color:#26324A !important;
-  border-color:rgba(11,20,34,.16) !important;
+html.et-plight:not([lang="ar"]) .plnav-nom, html.et-jlight:not([lang="ar"]) .plnav-nom,
+html.et-plight:not([lang="ar"]) .plnav-kpi b, html.et-jlight:not([lang="ar"]) .plnav-kpi b,
+html.et-plight:not([lang="ar"]) .plnav-kpi span, html.et-jlight:not([lang="ar"]) .plnav-kpi span,
+html.et-plight:not([lang="ar"]) .plnav-anc a, html.et-jlight:not([lang="ar"]) .plnav-anc a{
+  color:#26324A; -webkit-text-fill-color:#26324A;
+  border-color:rgba(11,20,34,.16);
 }
-html.et-plight:not([lang="ar"]) .plnav-no:not(#_), html.et-jlight:not([lang="ar"]) .plnav-no:not(#_),
-.plmap:not(#_):not(#__){
-  display:block !important; position:relative; z-index:2;
-  padding:34px 0 8px !important;
+html.et-plight:not([lang="ar"]) .plnav-no, html.et-jlight:not([lang="ar"]) .plnav-no,
+.plmap{
+  display:block; position:relative; z-index:2;
+  padding:34px 0 8px;
 }
 .plmap-h{font-family:var(--fd); font-weight:800; font-size:var(--ts-6,clamp(1.2rem,2.5vw,1.8rem));
   letter-spacing:-.01em; color:#F2F5F9; margin:0 0 6px}
@@ -534,15 +534,15 @@ html.et-plight:not([lang="ar"]) .plnav-no:not(#_), html.et-jlight:not([lang="ar"
   .plmap-p text{font-size:19px}
   .plmap-corr-t{font-size:17px}
 }
-html.et-plight:not([lang="ar"]) .plmap-h:not(#_), html.et-jlight:not([lang="ar"]) .plmap-h:not(#_),
-html.et-plight:not([lang="ar"]) .plmap-li b:not(#_), html.et-jlight:not([lang="ar"]) .plmap-li b:not(#_){
-  color:#16202E !important; -webkit-text-fill-color:#16202E !important}
-html.et-plight:not([lang="ar"]) .plmap-n:not(#_), html.et-jlight:not([lang="ar"]) .plmap-n:not(#_),
-html.et-plight:not([lang="ar"]) .plmap-h3:not(#_), html.et-jlight:not([lang="ar"]) .plmap-h3:not(#_),
-html.et-plight:not([lang="ar"]) .plmap-li span:not(#_), html.et-jlight:not([lang="ar"]) .plmap-li span:not(#_){
-  color:#4A5568 !important; -webkit-text-fill-color:#4A5568 !important}
-html.et-plight:not([lang="ar"]) .plmap-svg:not(#_), html.et-jlight:not([lang="ar"]) .plmap-svg:not(#_){
-  border-color:rgba(11,20,34,.13) !important;
+html.et-plight:not([lang="ar"]) .plmap-h, html.et-jlight:not([lang="ar"]) .plmap-h,
+html.et-plight:not([lang="ar"]) .plmap-li b, html.et-jlight:not([lang="ar"]) .plmap-li b{
+  color:#16202E; -webkit-text-fill-color:#16202E}
+html.et-plight:not([lang="ar"]) .plmap-n, html.et-jlight:not([lang="ar"]) .plmap-n,
+html.et-plight:not([lang="ar"]) .plmap-h3, html.et-jlight:not([lang="ar"]) .plmap-h3,
+html.et-plight:not([lang="ar"]) .plmap-li span, html.et-jlight:not([lang="ar"]) .plmap-li span{
+  color:#4A5568; -webkit-text-fill-color:#4A5568}
+html.et-plight:not([lang="ar"]) .plmap-svg, html.et-jlight:not([lang="ar"]) .plmap-svg{
+  border-color:rgba(11,20,34,.13);
   background:linear-gradient(165deg,rgba(255,255,255,.78),rgba(252,250,246,.70)) !important}
 html.et-plight:not([lang="ar"]) .plmap-gr line, html.et-jlight:not([lang="ar"]) .plmap-gr line{
   stroke:rgba(11,20,34,.10)}
@@ -643,11 +643,11 @@ html.et-plight:not([lang="ar"]) .plmap-li-raffinerie::before, html.et-jlight:not
     background-image:none !important;
     background-color:#0A1220 !important;
   }
-  html:is(.et-plight,.et-jlight):not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) .cl-hint:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______){
-    opacity:1 !important; color:#4A5568 !important; -webkit-text-fill-color:#4A5568 !important;
+  html:is(.et-plight,.et-jlight) .cl-hint{
+    opacity:1 !important; color:#4A5568; -webkit-text-fill-color:#4A5568;
   }
-  html:not(.et-plight):not(.et-jlight):not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) .cl-hint:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______){
-    opacity:1 !important; color:#A8B6C9 !important; -webkit-text-fill-color:#A8B6C9 !important;
+  html:not(.et-plight):not(.et-jlight) .cl-hint{
+    opacity:1 !important; color:#A8B6C9; -webkit-text-fill-color:#A8B6C9;
   }
   html.et-plight:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) .rootland:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
   html.et-jlight:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______) .rootland:not(#_):not(#__):not(#___):not(#____):not(#_____):not(#______):not(#_______),
@@ -658,12 +658,12 @@ html.et-plight:not([lang="ar"]) .plmap-li-raffinerie::before, html.et-jlight:not
     background-color:#FAF7F1 !important;
   }
 }
-.plc-card[data-plc]:not(#_) .plc-arr:not(#_){transform:none !important}
-.plc-card[data-plc]:not(#_):hover .plc-arr:not(#_){transform:translateX(5px) !important}
-.plc-card[href^="#"]:not(#_) .plc-arr:not(#_){transform:rotate(90deg) !important}
-.plc-card[href^="#"]:not(#_):hover .plc-arr:not(#_){transform:rotate(90deg) translateX(4px) !important}
+.plc-card[data-plc] .plc-arr{transform:none !important}
+.plc-card[data-plc]:hover .plc-arr{transform:translateX(5px) !important}
+.plc-card[href^="#"] .plc-arr{transform:rotate(90deg) !important}
+.plc-card[href^="#"]:hover .plc-arr{transform:rotate(90deg) translateX(4px) !important}
 @media(prefers-reduced-motion:reduce){
-  .plc-card:not(#_):hover .plc-arr:not(#_){transition:none !important}
+  .plc-card:hover .plc-arr{transition:none}
 }
 main p:not(#_):not(#__),
 main dd:not(#_):not(#__),
@@ -671,102 +671,102 @@ article p:not(#_):not(#__),
 body>section p:not(#_):not(#__){
   max-width:min(100%, 60ch) !important;
 }
-html body.hm:not(#_):not(#__):not(#___) header.hero:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6),
-html body.hm:not(#_):not(#__):not(#___) .nh:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6),
-html body.hm:not(#_):not(#__):not(#___) #coeurs:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6),
-html body.hm:not(#_):not(#__):not(#___) #chiffres:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6),
-html body.hm:not(#_):not(#__):not(#___) #carnets:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6),
-html body.hm:not(#_):not(#__):not(#___) #cta-band:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6){
-  border-top-width:0 !important; border-bottom-width:0 !important;
+html body.hm header.hero,
+html body.hm .nh,
+html body.hm #coeurs,
+html body.hm #chiffres,
+html body.hm #carnets,
+html body.hm #cta-band{
+  border-top-width:0; border-bottom-width:0;
 }
-html body.hm:not(#_):not(#__):not(#___) .nh:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6)::before,
-html body.hm:not(#_):not(#__):not(#___) #coeurs:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6)::before,
-html body.hm:not(#_):not(#__):not(#___) #cta-band:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6)::before{ content:none !important }
-html body.hm:not(#_):not(#__):not(#___) #coeurs:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6) .t550-bg:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6){ display:none !important }
-html body.hm:not(#_):not(#__):not(#___) #coeurs:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6) .t550-seg:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6)::before{ content:none !important }
-html body.hm:not(#_):not(#__):not(#___) #coeurs:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6) .t550-seg:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6){
-  min-height:0 !important; display:block !important;
-  overflow:visible !important; background:none !important;
+html body.hm .nh::before,
+html body.hm #coeurs::before,
+html body.hm #cta-band::before{ content:none }
+html body.hm #coeurs .t550-bg{ display:none }
+html body.hm #coeurs .t550-seg::before{ content:none }
+html body.hm #coeurs .t550-seg{
+  min-height:0; display:block;
+  overflow:visible; background:none !important;
 }
-html body.hm:not(#_):not(#__):not(#___) #coeurs:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6) .t550-in:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6){
-  display:block !important; padding:9px var(--gut,24px) !important;
+html body.hm #coeurs .t550-in{
+  display:block; padding:9px var(--gut,24px);
 }
-html body.hm:not(#_):not(#__):not(#___) #coeurs:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6) .t550-p:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6){
-  flex:none !important; max-width:none !important; width:auto !important;
-  border-radius:22px !important;
-  padding:clamp(24px,3vw,34px) clamp(22px,3vw,36px) !important;
-  display:grid !important;
-  grid-template-columns:minmax(0,1fr) minmax(250px,36%) !important;
-  grid-template-areas:"k k" "h f" "m f" "c f" !important;
-  column-gap:clamp(22px,3vw,40px) !important;
-  align-content:start !important;
+html body.hm #coeurs .t550-p{
+  flex:none; max-width:none; width:auto !important;
+  border-radius:22px;
+  padding:clamp(24px,3vw,34px) clamp(22px,3vw,36px);
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(250px,36%);
+  grid-template-areas:"k k" "h f" "m f" "c f";
+  column-gap:clamp(22px,3vw,40px);
+  align-content:start;
   background-image:radial-gradient(118% 150% at 2% 0%,
-    color-mix(in srgb, var(--pa,#FFB703) 16%, transparent), transparent 58%) !important;
+    color-mix(in srgb, var(--pa,#FFB703) 16%, transparent), transparent 58%);
 }
-html:not(.et-plight):not(.et-jlight) body.hm:not(#_):not(#__):not(#___) #coeurs:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6) .t550-p:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6){
-  background-color:rgba(0,45,69,.56) !important;
+html:not(.et-plight):not(.et-jlight) body.hm #coeurs .t550-p{
+  background-color:rgba(0,45,69,.56);
 }
-html:is(.et-plight,.et-jlight) body.hm:not(#_):not(#__):not(#___) #coeurs:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6) .t550-p:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6){
-  background-color:rgba(255,255,255,.74) !important;
-  border:1px solid rgba(0,48,73,.16) !important;
+html:is(.et-plight,.et-jlight) body.hm #coeurs .t550-p{
+  background-color:rgba(255,255,255,.74);
+  border:1px solid rgba(0,48,73,.16);
   box-shadow:0 12px 30px rgba(0,48,73,.10) !important;
 }
-html body.hm:not(#_):not(#__):not(#___) #coeurs:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6) .t550-k:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6){ grid-area:k !important }
-html body.hm:not(#_):not(#__):not(#___) #coeurs:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6) .t550-p:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6) h3:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6){ grid-area:h !important }
-html body.hm:not(#_):not(#__):not(#___) #coeurs:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6) .t550-m:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6){ grid-area:m !important }
-html body.hm:not(#_):not(#__):not(#___) #coeurs:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6) .t550-cta:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6){ grid-area:c !important; align-self:end !important }
-html body.hm:not(#_):not(#__):not(#___) #coeurs:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6) .t550-kpis:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6){
-  grid-area:f !important; grid-template-columns:minmax(0,1fr) !important;
-  align-content:start !important; margin:0 !important;
+html body.hm #coeurs .t550-k{ grid-area:k }
+html body.hm #coeurs .t550-p h3{ grid-area:h }
+html body.hm #coeurs .t550-m{ grid-area:m }
+html body.hm #coeurs .t550-cta{ grid-area:c; align-self:end }
+html body.hm #coeurs .t550-kpis{
+  grid-area:f; grid-template-columns:minmax(0,1fr);
+  align-content:start; margin:0;
 }
-html body.hm:not(#_):not(#__):not(#___) #cta-band:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6){
+html body.hm #cta-band{
   background:none !important;
-  -webkit-backdrop-filter:none !important; backdrop-filter:none !important;
-  padding:10px var(--gut,24px) 38px !important;
+  -webkit-backdrop-filter:none; backdrop-filter:none;
+  padding:10px var(--gut,24px) 38px;
 }
-html body.hm:not(#_):not(#__):not(#___) #cta-band:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6) .cb-in:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6){
-  max-width:1200px !important; margin:0 auto !important;
-  padding:clamp(28px,3.6vw,44px) clamp(24px,3vw,38px) !important;
-  border-radius:22px !important;
-  border:1px solid rgba(255,255,255,.2) !important;
+html body.hm #cta-band .cb-in{
+  max-width:1200px; margin:0 auto;
+  padding:clamp(28px,3.6vw,44px) clamp(24px,3vw,38px);
+  border-radius:22px;
+  border:1px solid rgba(255,255,255,.2);
 }
-html:not(.et-plight):not(.et-jlight) body.hm:not(#_):not(#__):not(#___) #cta-band:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6) .cb-in:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6){
-  background-color:rgba(0,45,69,.56) !important;
-  -webkit-backdrop-filter:blur(18px) saturate(1.2) !important;
-  backdrop-filter:blur(18px) saturate(1.2) !important;
+html:not(.et-plight):not(.et-jlight) body.hm #cta-band .cb-in{
+  background-color:rgba(0,45,69,.56);
+  -webkit-backdrop-filter:blur(18px) saturate(1.2);
+  backdrop-filter:blur(18px) saturate(1.2);
   box-shadow:0 16px 40px rgba(0,18,30,.30) !important;
 }
-html:is(.et-plight,.et-jlight) body.hm:not(#_):not(#__):not(#___) #cta-band:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6) .cb-in:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6){
-  background-color:rgba(255,255,255,.74) !important;
-  border:1px solid rgba(0,48,73,.16) !important;
+html:is(.et-plight,.et-jlight) body.hm #cta-band .cb-in{
+  background-color:rgba(255,255,255,.74);
+  border:1px solid rgba(0,48,73,.16);
   box-shadow:0 12px 30px rgba(0,48,73,.10) !important;
 }
 @media(max-width:880px){
-  html body.hm:not(#_):not(#__):not(#___) #coeurs:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6) .t550-p:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6){
-    grid-template-columns:minmax(0,1fr) !important;
-    grid-template-areas:"k" "h" "m" "f" "c" !important;
+  html body.hm #coeurs .t550-p{
+    grid-template-columns:minmax(0,1fr);
+    grid-template-areas:"k" "h" "m" "f" "c";
   }
-  html body.hm:not(#_):not(#__):not(#___) #coeurs:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6) .t550-kpis:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6){
-    grid-template-columns:repeat(3,minmax(0,1fr)) !important; margin:0 0 18px !important;
+  html body.hm #coeurs .t550-kpis{
+    grid-template-columns:repeat(3,minmax(0,1fr)); margin:0 0 18px;
   }
 }
 @media(max-width:560px){
-  html body.hm:not(#_):not(#__):not(#___) #coeurs:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6) .t550-kpis:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6){
-    grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+  html body.hm #coeurs .t550-kpis{
+    grid-template-columns:repeat(2,minmax(0,1fr));
   }
 }
 @media (prefers-reduced-transparency: reduce){
-  html body.hm:not(#_):not(#__):not(#___) #coeurs:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6) .t550-p:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6),
-  html body.hm:not(#_):not(#__):not(#___) #cta-band:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6) .cb-in:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6){
-    background-image:none !important;
-    -webkit-backdrop-filter:none !important; backdrop-filter:none !important;
+  html body.hm #coeurs .t550-p,
+  html body.hm #cta-band .cb-in{
+    background-image:none;
+    -webkit-backdrop-filter:none; backdrop-filter:none;
   }
-  html:not(.et-plight):not(.et-jlight) body.hm:not(#_):not(#__):not(#___) #coeurs:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6) .t550-p:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6),
-  html:not(.et-plight):not(.et-jlight) body.hm:not(#_):not(#__):not(#___) #cta-band:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6) .cb-in:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6){ background-color:#0D1626 !important;
-    -webkit-backdrop-filter:none !important; backdrop-filter:none !important }
-  html:is(.et-plight,.et-jlight) body.hm:not(#_):not(#__):not(#___) #coeurs:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6) .t550-p:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6),
-  html:is(.et-plight,.et-jlight) body.hm:not(#_):not(#__):not(#___) #cta-band:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6) .cb-in:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6){ background-color:#FAF7F1 !important;
-    -webkit-backdrop-filter:none !important; backdrop-filter:none !important }
+  html:not(.et-plight):not(.et-jlight) body.hm #coeurs .t550-p,
+  html:not(.et-plight):not(.et-jlight) body.hm #cta-band .cb-in{ background-color:#0D1626;
+    -webkit-backdrop-filter:none; backdrop-filter:none }
+  html:is(.et-plight,.et-jlight) body.hm #coeurs .t550-p,
+  html:is(.et-plight,.et-jlight) body.hm #cta-band .cb-in{ background-color:#FAF7F1;
+    -webkit-backdrop-filter:none; backdrop-filter:none }
 }
 html:is(.et-plight,.et-jlight) body.hm:not(#_):not(#__):not(#___) main:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6){
   background-image:none !important; background-color:transparent !important;
@@ -796,7 +796,7 @@ html:is(.et-plight,.et-jlight) body.hm:not(#_):not(#__):not(#___) main:not(#a1):
 }
 @media(min-width:1241px){
  .nav-item.nxi606{position:static}
- .nx .nx-mega.nxm606:not(#_x):not(#_y){left:50%;right:auto;top:calc(100% - 1px);translate:-50% 0;
+ .nx .nx-mega.nxm606{left:50%;right:auto;top:calc(100% - 1px);translate:-50% 0;
   width:min(1240px,calc(100vw - 32px));min-width:0;max-width:none;
   grid-template-columns:repeat(5,minmax(0,1fr));gap:8px 20px;align-items:start}
  .nxm606 .nxc-amont{grid-column:span 2}
@@ -813,41 +813,41 @@ html:is(.et-plight,.et-jlight) body.hm:not(#_):not(#__):not(#___) main:not(#a1):
 }
 @media(min-width:1241px){.nx .nxm606 .nx-feat em{display:none}}
 @media(max-width:1240px){
- #toTop:not(#_a):not(#_b){bottom:calc(72px + env(safe-area-inset-bottom))!important;right:14px!important;width:44px!important;height:44px!important}
+ #toTop:not(#_a):not(#_b){bottom:calc(72px + env(safe-area-inset-bottom))!important;right:14px;width:44px!important;height:44px!important}
  .lum-ctl:not(#_a):not(#_b){bottom:calc(72px + env(safe-area-inset-bottom))!important;right:68px!important}
- .nav-links .nx-mega:not(#_a):not(#_b){max-height:none!important;overflow:visible!important}
+ .nav-links .nx-mega:not(#_a):not(#_b){max-height:none!important;overflow:visible}
 }
 @media(min-width:1100px){
  .epw-g:not(#_g),.biz-grid:not(#_g),.rp-pts:not(#_g),.vt-grid:not(#_g),.plc-grid:not(#_g),.exp-g-in:not(#_g),.eth-g:not(#_g),.fam6:not(#_g),.profiles:not(#_g),.pubg:not(#_g),.tri-steps:not(#_g),.prix-grid:not(#_g),.htech-grid:not(#_g),.presse-grid:not(#_g),.secg:not(#_g),.docl:not(#_g),.cp-ct:not(#_g),.sw-grid:not(#_g),.tri-g:not(#_g),.d607-grid:not(#_g),.rtg:not(#_g),.atlas-grid:not(#_g),.glm-g:not(#_g),.fonctions-tete:not(#_g),.b111-dl:not(#_g),.docs:not(#_g),.ppl-grid:not(#_g),.sm-grid:not(#_g),.sw-row:not(#_g),.pj-grid:not(#_g),.fx2g:not(#_g){grid-template-columns:repeat(12,minmax(0,1fr))}
- .epw-g:not(#_g)>*,.biz-grid:not(#_g)>*,.rp-pts:not(#_g)>*,.vt-grid:not(#_g)>*,.plc-grid:not(#_g)>*,.exp-g-in:not(#_g)>*,.eth-g:not(#_g)>*,.fam6:not(#_g)>*,.profiles:not(#_g)>*,.pubg:not(#_g)>*,.tri-steps:not(#_g)>*,.prix-grid:not(#_g)>*,.htech-grid:not(#_g)>*,.presse-grid:not(#_g)>*,.secg:not(#_g)>*,.docl:not(#_g)>*,.cp-ct:not(#_g)>*,.sw-grid:not(#_g)>*,.tri-g:not(#_g)>*,.d607-grid:not(#_g)>*,.rtg:not(#_g)>*,.atlas-grid:not(#_g)>*,.glm-g:not(#_g)>*,.fonctions-tete:not(#_g)>*,.b111-dl:not(#_g)>*,.docs:not(#_g)>*,.ppl-grid:not(#_g)>*,.sm-grid:not(#_g)>*,.sw-row:not(#_g)>*,.pj-grid:not(#_g)>*,.fx2g:not(#_g)>*{grid-column:span 4}
- .epw-g:not(#_g):where([data-eh~=eh17]):not(.ehz):not(.ehz)>*,.biz-grid:not(#_g):where([data-eh~=eh17]):not(.ehz):not(.ehz)>*,.rp-pts:not(#_g):where([data-eh~=eh17]):not(.ehz):not(.ehz)>*,.vt-grid:not(#_g):where([data-eh~=eh17]):not(.ehz):not(.ehz)>*,.plc-grid:not(#_g):where([data-eh~=eh17]):not(.ehz):not(.ehz)>*,.exp-g-in:not(#_g):where([data-eh~=eh17]):not(.ehz):not(.ehz)>*,.eth-g:not(#_g):where([data-eh~=eh17]):not(.ehz):not(.ehz)>*,.fam6:not(#_g):where([data-eh~=eh17]):not(.ehz):not(.ehz)>*,.profiles:not(#_g):where([data-eh~=eh17]):not(.ehz):not(.ehz)>*,.pubg:not(#_g):where([data-eh~=eh17]):not(.ehz):not(.ehz)>*,.tri-steps:not(#_g):where([data-eh~=eh17]):not(.ehz):not(.ehz)>*,.prix-grid:not(#_g):where([data-eh~=eh17]):not(.ehz):not(.ehz)>*,.htech-grid:not(#_g):where([data-eh~=eh17]):not(.ehz):not(.ehz)>*,.presse-grid:not(#_g):where([data-eh~=eh17]):not(.ehz):not(.ehz)>*,.secg:not(#_g):where([data-eh~=eh17]):not(.ehz):not(.ehz)>*,.docl:not(#_g):where([data-eh~=eh17]):not(.ehz):not(.ehz)>*,.cp-ct:not(#_g):where([data-eh~=eh17]):not(.ehz):not(.ehz)>*,.sw-grid:not(#_g):where([data-eh~=eh17]):not(.ehz):not(.ehz)>*,.tri-g:not(#_g):where([data-eh~=eh17]):not(.ehz):not(.ehz)>*,.d607-grid:not(#_g):where([data-eh~=eh17]):not(.ehz):not(.ehz)>*,.rtg:not(#_g):where([data-eh~=eh17]):not(.ehz):not(.ehz)>*,.atlas-grid:not(#_g):where([data-eh~=eh17]):not(.ehz):not(.ehz)>*,.glm-g:not(#_g):where([data-eh~=eh17]):not(.ehz):not(.ehz)>*,.fonctions-tete:not(#_g):where([data-eh~=eh17]):not(.ehz):not(.ehz)>*,.b111-dl:not(#_g):where([data-eh~=eh17]):not(.ehz):not(.ehz)>*,.docs:not(#_g):where([data-eh~=eh17]):not(.ehz):not(.ehz)>*,.ppl-grid:not(#_g):where([data-eh~=eh17]):not(.ehz):not(.ehz)>*,.sm-grid:not(#_g):where([data-eh~=eh17]):not(.ehz):not(.ehz)>*,.sw-row:not(#_g):where([data-eh~=eh17]):not(.ehz):not(.ehz)>*,.pj-grid:not(#_g):where([data-eh~=eh17]):not(.ehz):not(.ehz)>*,.fx2g:not(#_g):where([data-eh~=eh17]):not(.ehz):not(.ehz)>*{grid-column:span 6}
- .epw-g:not(#_g):where([data-eh~=eh18]):not(.ehz):not(.ehz)>*,.biz-grid:not(#_g):where([data-eh~=eh18]):not(.ehz):not(.ehz)>*,.rp-pts:not(#_g):where([data-eh~=eh18]):not(.ehz):not(.ehz)>*,.vt-grid:not(#_g):where([data-eh~=eh18]):not(.ehz):not(.ehz)>*,.plc-grid:not(#_g):where([data-eh~=eh18]):not(.ehz):not(.ehz)>*,.exp-g-in:not(#_g):where([data-eh~=eh18]):not(.ehz):not(.ehz)>*,.eth-g:not(#_g):where([data-eh~=eh18]):not(.ehz):not(.ehz)>*,.fam6:not(#_g):where([data-eh~=eh18]):not(.ehz):not(.ehz)>*,.profiles:not(#_g):where([data-eh~=eh18]):not(.ehz):not(.ehz)>*,.pubg:not(#_g):where([data-eh~=eh18]):not(.ehz):not(.ehz)>*,.tri-steps:not(#_g):where([data-eh~=eh18]):not(.ehz):not(.ehz)>*,.prix-grid:not(#_g):where([data-eh~=eh18]):not(.ehz):not(.ehz)>*,.htech-grid:not(#_g):where([data-eh~=eh18]):not(.ehz):not(.ehz)>*,.presse-grid:not(#_g):where([data-eh~=eh18]):not(.ehz):not(.ehz)>*,.secg:not(#_g):where([data-eh~=eh18]):not(.ehz):not(.ehz)>*,.docl:not(#_g):where([data-eh~=eh18]):not(.ehz):not(.ehz)>*,.cp-ct:not(#_g):where([data-eh~=eh18]):not(.ehz):not(.ehz)>*,.sw-grid:not(#_g):where([data-eh~=eh18]):not(.ehz):not(.ehz)>*,.tri-g:not(#_g):where([data-eh~=eh18]):not(.ehz):not(.ehz)>*,.d607-grid:not(#_g):where([data-eh~=eh18]):not(.ehz):not(.ehz)>*,.rtg:not(#_g):where([data-eh~=eh18]):not(.ehz):not(.ehz)>*,.atlas-grid:not(#_g):where([data-eh~=eh18]):not(.ehz):not(.ehz)>*,.glm-g:not(#_g):where([data-eh~=eh18]):not(.ehz):not(.ehz)>*,.fonctions-tete:not(#_g):where([data-eh~=eh18]):not(.ehz):not(.ehz)>*,.b111-dl:not(#_g):where([data-eh~=eh18]):not(.ehz):not(.ehz)>*,.docs:not(#_g):where([data-eh~=eh18]):not(.ehz):not(.ehz)>*,.ppl-grid:not(#_g):where([data-eh~=eh18]):not(.ehz):not(.ehz)>*,.sm-grid:not(#_g):where([data-eh~=eh18]):not(.ehz):not(.ehz)>*,.sw-row:not(#_g):where([data-eh~=eh18]):not(.ehz):not(.ehz)>*,.pj-grid:not(#_g):where([data-eh~=eh18]):not(.ehz):not(.ehz)>*,.fx2g:not(#_g):where([data-eh~=eh18]):not(.ehz):not(.ehz)>*{grid-column:span 4}
+ .epw-g>*,.biz-grid>*,.rp-pts>*,.vt-grid>*,.plc-grid>*,.exp-g-in>*,.eth-g>*,.fam6>*,.profiles>*,.pubg>*,.tri-steps>*,.prix-grid>*,.htech-grid>*,.presse-grid>*,.secg>*,.docl>*,.cp-ct>*,.sw-grid>*,.tri-g>*,.d607-grid>*,.rtg>*,.atlas-grid>*,.glm-g>*,.fonctions-tete>*,.b111-dl>*,.docs>*,.ppl-grid>*,.sm-grid>*,.sw-row>*,.pj-grid>*,.fx2g>*{grid-column:span 4}
+ .epw-g:where([data-eh~=eh17]):not(.ehz):not(.ehz)>*,.biz-grid:where([data-eh~=eh17]):not(.ehz):not(.ehz)>*,.rp-pts:where([data-eh~=eh17]):not(.ehz):not(.ehz)>*,.vt-grid:where([data-eh~=eh17]):not(.ehz):not(.ehz)>*,.plc-grid:where([data-eh~=eh17]):not(.ehz):not(.ehz)>*,.exp-g-in:where([data-eh~=eh17]):not(.ehz):not(.ehz)>*,.eth-g:where([data-eh~=eh17]):not(.ehz):not(.ehz)>*,.fam6:where([data-eh~=eh17]):not(.ehz):not(.ehz)>*,.profiles:where([data-eh~=eh17]):not(.ehz):not(.ehz)>*,.pubg:where([data-eh~=eh17]):not(.ehz):not(.ehz)>*,.tri-steps:where([data-eh~=eh17]):not(.ehz):not(.ehz)>*,.prix-grid:where([data-eh~=eh17]):not(.ehz):not(.ehz)>*,.htech-grid:where([data-eh~=eh17]):not(.ehz):not(.ehz)>*,.presse-grid:where([data-eh~=eh17]):not(.ehz):not(.ehz)>*,.secg:where([data-eh~=eh17]):not(.ehz):not(.ehz)>*,.docl:where([data-eh~=eh17]):not(.ehz):not(.ehz)>*,.cp-ct:where([data-eh~=eh17]):not(.ehz):not(.ehz)>*,.sw-grid:where([data-eh~=eh17]):not(.ehz):not(.ehz)>*,.tri-g:where([data-eh~=eh17]):not(.ehz):not(.ehz)>*,.d607-grid:where([data-eh~=eh17]):not(.ehz):not(.ehz)>*,.rtg:where([data-eh~=eh17]):not(.ehz):not(.ehz)>*,.atlas-grid:where([data-eh~=eh17]):not(.ehz):not(.ehz)>*,.glm-g:where([data-eh~=eh17]):not(.ehz):not(.ehz)>*,.fonctions-tete:where([data-eh~=eh17]):not(.ehz):not(.ehz)>*,.b111-dl:where([data-eh~=eh17]):not(.ehz):not(.ehz)>*,.docs:where([data-eh~=eh17]):not(.ehz):not(.ehz)>*,.ppl-grid:where([data-eh~=eh17]):not(.ehz):not(.ehz)>*,.sm-grid:where([data-eh~=eh17]):not(.ehz):not(.ehz)>*,.sw-row:where([data-eh~=eh17]):not(.ehz):not(.ehz)>*,.pj-grid:where([data-eh~=eh17]):not(.ehz):not(.ehz)>*,.fx2g:where([data-eh~=eh17]):not(.ehz):not(.ehz)>*{grid-column:span 6}
+ .epw-g:where([data-eh~=eh18]):not(.ehz):not(.ehz)>*,.biz-grid:where([data-eh~=eh18]):not(.ehz):not(.ehz)>*,.rp-pts:where([data-eh~=eh18]):not(.ehz):not(.ehz)>*,.vt-grid:where([data-eh~=eh18]):not(.ehz):not(.ehz)>*,.plc-grid:where([data-eh~=eh18]):not(.ehz):not(.ehz)>*,.exp-g-in:where([data-eh~=eh18]):not(.ehz):not(.ehz)>*,.eth-g:where([data-eh~=eh18]):not(.ehz):not(.ehz)>*,.fam6:where([data-eh~=eh18]):not(.ehz):not(.ehz)>*,.profiles:where([data-eh~=eh18]):not(.ehz):not(.ehz)>*,.pubg:where([data-eh~=eh18]):not(.ehz):not(.ehz)>*,.tri-steps:where([data-eh~=eh18]):not(.ehz):not(.ehz)>*,.prix-grid:where([data-eh~=eh18]):not(.ehz):not(.ehz)>*,.htech-grid:where([data-eh~=eh18]):not(.ehz):not(.ehz)>*,.presse-grid:where([data-eh~=eh18]):not(.ehz):not(.ehz)>*,.secg:where([data-eh~=eh18]):not(.ehz):not(.ehz)>*,.docl:where([data-eh~=eh18]):not(.ehz):not(.ehz)>*,.cp-ct:where([data-eh~=eh18]):not(.ehz):not(.ehz)>*,.sw-grid:where([data-eh~=eh18]):not(.ehz):not(.ehz)>*,.tri-g:where([data-eh~=eh18]):not(.ehz):not(.ehz)>*,.d607-grid:where([data-eh~=eh18]):not(.ehz):not(.ehz)>*,.rtg:where([data-eh~=eh18]):not(.ehz):not(.ehz)>*,.atlas-grid:where([data-eh~=eh18]):not(.ehz):not(.ehz)>*,.glm-g:where([data-eh~=eh18]):not(.ehz):not(.ehz)>*,.fonctions-tete:where([data-eh~=eh18]):not(.ehz):not(.ehz)>*,.b111-dl:where([data-eh~=eh18]):not(.ehz):not(.ehz)>*,.docs:where([data-eh~=eh18]):not(.ehz):not(.ehz)>*,.ppl-grid:where([data-eh~=eh18]):not(.ehz):not(.ehz)>*,.sm-grid:where([data-eh~=eh18]):not(.ehz):not(.ehz)>*,.sw-row:where([data-eh~=eh18]):not(.ehz):not(.ehz)>*,.pj-grid:where([data-eh~=eh18]):not(.ehz):not(.ehz)>*,.fx2g:where([data-eh~=eh18]):not(.ehz):not(.ehz)>*{grid-column:span 4}
  .epw-g:not(#_g):where([data-eh~=eh19]):not(.ehz):not(.ehz)>*,.biz-grid:not(#_g):where([data-eh~=eh19]):not(.ehz):not(.ehz)>*,.rp-pts:not(#_g):where([data-eh~=eh19]):not(.ehz):not(.ehz)>*,.vt-grid:not(#_g):where([data-eh~=eh19]):not(.ehz):not(.ehz)>*,.plc-grid:not(#_g):where([data-eh~=eh19]):not(.ehz):not(.ehz)>*,.exp-g-in:not(#_g):where([data-eh~=eh19]):not(.ehz):not(.ehz)>*,.eth-g:not(#_g):where([data-eh~=eh19]):not(.ehz):not(.ehz)>*,.fam6:not(#_g):where([data-eh~=eh19]):not(.ehz):not(.ehz)>*,.profiles:not(#_g):where([data-eh~=eh19]):not(.ehz):not(.ehz)>*,.pubg:not(#_g):where([data-eh~=eh19]):not(.ehz):not(.ehz)>*,.tri-steps:not(#_g):where([data-eh~=eh19]):not(.ehz):not(.ehz)>*,.prix-grid:not(#_g):where([data-eh~=eh19]):not(.ehz):not(.ehz)>*,.htech-grid:not(#_g):where([data-eh~=eh19]):not(.ehz):not(.ehz)>*,.presse-grid:not(#_g):where([data-eh~=eh19]):not(.ehz):not(.ehz)>*,.secg:not(#_g):where([data-eh~=eh19]):not(.ehz):not(.ehz)>*,.docl:not(#_g):where([data-eh~=eh19]):not(.ehz):not(.ehz)>*,.cp-ct:not(#_g):where([data-eh~=eh19]):not(.ehz):not(.ehz)>*,.sw-grid:not(#_g):where([data-eh~=eh19]):not(.ehz):not(.ehz)>*,.tri-g:not(#_g):where([data-eh~=eh19]):not(.ehz):not(.ehz)>*,.d607-grid:not(#_g):where([data-eh~=eh19]):not(.ehz):not(.ehz)>*,.rtg:not(#_g):where([data-eh~=eh19]):not(.ehz):not(.ehz)>*,.atlas-grid:not(#_g):where([data-eh~=eh19]):not(.ehz):not(.ehz)>*,.glm-g:not(#_g):where([data-eh~=eh19]):not(.ehz):not(.ehz)>*,.fonctions-tete:not(#_g):where([data-eh~=eh19]):not(.ehz):not(.ehz)>*,.b111-dl:not(#_g):where([data-eh~=eh19]):not(.ehz):not(.ehz)>*,.docs:not(#_g):where([data-eh~=eh19]):not(.ehz):not(.ehz)>*,.ppl-grid:not(#_g):where([data-eh~=eh19]):not(.ehz):not(.ehz)>*,.sm-grid:not(#_g):where([data-eh~=eh19]):not(.ehz):not(.ehz)>*,.sw-row:not(#_g):where([data-eh~=eh19]):not(.ehz):not(.ehz)>*,.pj-grid:not(#_g):where([data-eh~=eh19]):not(.ehz):not(.ehz)>*,.fx2g:not(#_g):where([data-eh~=eh19]):not(.ehz):not(.ehz)>*{grid-column:span 3}
  .epw-g:not(#_g):where([data-eh~=eh20]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+3),.biz-grid:not(#_g):where([data-eh~=eh20]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+3),.rp-pts:not(#_g):where([data-eh~=eh20]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+3),.vt-grid:not(#_g):where([data-eh~=eh20]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+3),.plc-grid:not(#_g):where([data-eh~=eh20]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+3),.exp-g-in:not(#_g):where([data-eh~=eh20]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+3),.eth-g:not(#_g):where([data-eh~=eh20]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+3),.fam6:not(#_g):where([data-eh~=eh20]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+3),.profiles:not(#_g):where([data-eh~=eh20]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+3),.pubg:not(#_g):where([data-eh~=eh20]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+3),.tri-steps:not(#_g):where([data-eh~=eh20]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+3),.prix-grid:not(#_g):where([data-eh~=eh20]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+3),.htech-grid:not(#_g):where([data-eh~=eh20]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+3),.presse-grid:not(#_g):where([data-eh~=eh20]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+3),.secg:not(#_g):where([data-eh~=eh20]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+3),.docl:not(#_g):where([data-eh~=eh20]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+3),.cp-ct:not(#_g):where([data-eh~=eh20]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+3),.sw-grid:not(#_g):where([data-eh~=eh20]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+3),.tri-g:not(#_g):where([data-eh~=eh20]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+3),.d607-grid:not(#_g):where([data-eh~=eh20]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+3),.rtg:not(#_g):where([data-eh~=eh20]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+3),.atlas-grid:not(#_g):where([data-eh~=eh20]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+3),.glm-g:not(#_g):where([data-eh~=eh20]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+3),.fonctions-tete:not(#_g):where([data-eh~=eh20]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+3),.b111-dl:not(#_g):where([data-eh~=eh20]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+3),.docs:not(#_g):where([data-eh~=eh20]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+3),.ppl-grid:not(#_g):where([data-eh~=eh20]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+3),.sm-grid:not(#_g):where([data-eh~=eh20]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+3),.sw-row:not(#_g):where([data-eh~=eh20]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+3),.pj-grid:not(#_g):where([data-eh~=eh20]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+3),.fx2g:not(#_g):where([data-eh~=eh20]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+3){grid-column:span 4}
  .epw-g:not(#_g):where([data-eh~=eh20]):not(.ehz):not(.ehz)>*:nth-child(n+4):nth-child(-n+5),.biz-grid:not(#_g):where([data-eh~=eh20]):not(.ehz):not(.ehz)>*:nth-child(n+4):nth-child(-n+5),.rp-pts:not(#_g):where([data-eh~=eh20]):not(.ehz):not(.ehz)>*:nth-child(n+4):nth-child(-n+5),.vt-grid:not(#_g):where([data-eh~=eh20]):not(.ehz):not(.ehz)>*:nth-child(n+4):nth-child(-n+5),.plc-grid:not(#_g):where([data-eh~=eh20]):not(.ehz):not(.ehz)>*:nth-child(n+4):nth-child(-n+5),.exp-g-in:not(#_g):where([data-eh~=eh20]):not(.ehz):not(.ehz)>*:nth-child(n+4):nth-child(-n+5),.eth-g:not(#_g):where([data-eh~=eh20]):not(.ehz):not(.ehz)>*:nth-child(n+4):nth-child(-n+5),.fam6:not(#_g):where([data-eh~=eh20]):not(.ehz):not(.ehz)>*:nth-child(n+4):nth-child(-n+5),.profiles:not(#_g):where([data-eh~=eh20]):not(.ehz):not(.ehz)>*:nth-child(n+4):nth-child(-n+5),.pubg:not(#_g):where([data-eh~=eh20]):not(.ehz):not(.ehz)>*:nth-child(n+4):nth-child(-n+5),.tri-steps:not(#_g):where([data-eh~=eh20]):not(.ehz):not(.ehz)>*:nth-child(n+4):nth-child(-n+5),.prix-grid:not(#_g):where([data-eh~=eh20]):not(.ehz):not(.ehz)>*:nth-child(n+4):nth-child(-n+5),.htech-grid:not(#_g):where([data-eh~=eh20]):not(.ehz):not(.ehz)>*:nth-child(n+4):nth-child(-n+5),.presse-grid:not(#_g):where([data-eh~=eh20]):not(.ehz):not(.ehz)>*:nth-child(n+4):nth-child(-n+5),.secg:not(#_g):where([data-eh~=eh20]):not(.ehz):not(.ehz)>*:nth-child(n+4):nth-child(-n+5),.docl:not(#_g):where([data-eh~=eh20]):not(.ehz):not(.ehz)>*:nth-child(n+4):nth-child(-n+5),.cp-ct:not(#_g):where([data-eh~=eh20]):not(.ehz):not(.ehz)>*:nth-child(n+4):nth-child(-n+5),.sw-grid:not(#_g):where([data-eh~=eh20]):not(.ehz):not(.ehz)>*:nth-child(n+4):nth-child(-n+5),.tri-g:not(#_g):where([data-eh~=eh20]):not(.ehz):not(.ehz)>*:nth-child(n+4):nth-child(-n+5),.d607-grid:not(#_g):where([data-eh~=eh20]):not(.ehz):not(.ehz)>*:nth-child(n+4):nth-child(-n+5),.rtg:not(#_g):where([data-eh~=eh20]):not(.ehz):not(.ehz)>*:nth-child(n+4):nth-child(-n+5),.atlas-grid:not(#_g):where([data-eh~=eh20]):not(.ehz):not(.ehz)>*:nth-child(n+4):nth-child(-n+5),.glm-g:not(#_g):where([data-eh~=eh20]):not(.ehz):not(.ehz)>*:nth-child(n+4):nth-child(-n+5),.fonctions-tete:not(#_g):where([data-eh~=eh20]):not(.ehz):not(.ehz)>*:nth-child(n+4):nth-child(-n+5),.b111-dl:not(#_g):where([data-eh~=eh20]):not(.ehz):not(.ehz)>*:nth-child(n+4):nth-child(-n+5),.docs:not(#_g):where([data-eh~=eh20]):not(.ehz):not(.ehz)>*:nth-child(n+4):nth-child(-n+5),.ppl-grid:not(#_g):where([data-eh~=eh20]):not(.ehz):not(.ehz)>*:nth-child(n+4):nth-child(-n+5),.sm-grid:not(#_g):where([data-eh~=eh20]):not(.ehz):not(.ehz)>*:nth-child(n+4):nth-child(-n+5),.sw-row:not(#_g):where([data-eh~=eh20]):not(.ehz):not(.ehz)>*:nth-child(n+4):nth-child(-n+5),.pj-grid:not(#_g):where([data-eh~=eh20]):not(.ehz):not(.ehz)>*:nth-child(n+4):nth-child(-n+5),.fx2g:not(#_g):where([data-eh~=eh20]):not(.ehz):not(.ehz)>*:nth-child(n+4):nth-child(-n+5){grid-column:span 6}
- .epw-g:not(#_g):where([data-eh~=eh21]):not(.ehz):not(.ehz)>*,.biz-grid:not(#_g):where([data-eh~=eh21]):not(.ehz):not(.ehz)>*,.rp-pts:not(#_g):where([data-eh~=eh21]):not(.ehz):not(.ehz)>*,.vt-grid:not(#_g):where([data-eh~=eh21]):not(.ehz):not(.ehz)>*,.plc-grid:not(#_g):where([data-eh~=eh21]):not(.ehz):not(.ehz)>*,.exp-g-in:not(#_g):where([data-eh~=eh21]):not(.ehz):not(.ehz)>*,.eth-g:not(#_g):where([data-eh~=eh21]):not(.ehz):not(.ehz)>*,.fam6:not(#_g):where([data-eh~=eh21]):not(.ehz):not(.ehz)>*,.profiles:not(#_g):where([data-eh~=eh21]):not(.ehz):not(.ehz)>*,.pubg:not(#_g):where([data-eh~=eh21]):not(.ehz):not(.ehz)>*,.tri-steps:not(#_g):where([data-eh~=eh21]):not(.ehz):not(.ehz)>*,.prix-grid:not(#_g):where([data-eh~=eh21]):not(.ehz):not(.ehz)>*,.htech-grid:not(#_g):where([data-eh~=eh21]):not(.ehz):not(.ehz)>*,.presse-grid:not(#_g):where([data-eh~=eh21]):not(.ehz):not(.ehz)>*,.secg:not(#_g):where([data-eh~=eh21]):not(.ehz):not(.ehz)>*,.docl:not(#_g):where([data-eh~=eh21]):not(.ehz):not(.ehz)>*,.cp-ct:not(#_g):where([data-eh~=eh21]):not(.ehz):not(.ehz)>*,.sw-grid:not(#_g):where([data-eh~=eh21]):not(.ehz):not(.ehz)>*,.tri-g:not(#_g):where([data-eh~=eh21]):not(.ehz):not(.ehz)>*,.d607-grid:not(#_g):where([data-eh~=eh21]):not(.ehz):not(.ehz)>*,.rtg:not(#_g):where([data-eh~=eh21]):not(.ehz):not(.ehz)>*,.atlas-grid:not(#_g):where([data-eh~=eh21]):not(.ehz):not(.ehz)>*,.glm-g:not(#_g):where([data-eh~=eh21]):not(.ehz):not(.ehz)>*,.fonctions-tete:not(#_g):where([data-eh~=eh21]):not(.ehz):not(.ehz)>*,.b111-dl:not(#_g):where([data-eh~=eh21]):not(.ehz):not(.ehz)>*,.docs:not(#_g):where([data-eh~=eh21]):not(.ehz):not(.ehz)>*,.ppl-grid:not(#_g):where([data-eh~=eh21]):not(.ehz):not(.ehz)>*,.sm-grid:not(#_g):where([data-eh~=eh21]):not(.ehz):not(.ehz)>*,.sw-row:not(#_g):where([data-eh~=eh21]):not(.ehz):not(.ehz)>*,.pj-grid:not(#_g):where([data-eh~=eh21]):not(.ehz):not(.ehz)>*,.fx2g:not(#_g):where([data-eh~=eh21]):not(.ehz):not(.ehz)>*{grid-column:span 4}
+ .epw-g:where([data-eh~=eh21]):not(.ehz):not(.ehz)>*,.biz-grid:where([data-eh~=eh21]):not(.ehz):not(.ehz)>*,.rp-pts:where([data-eh~=eh21]):not(.ehz):not(.ehz)>*,.vt-grid:where([data-eh~=eh21]):not(.ehz):not(.ehz)>*,.plc-grid:where([data-eh~=eh21]):not(.ehz):not(.ehz)>*,.exp-g-in:where([data-eh~=eh21]):not(.ehz):not(.ehz)>*,.eth-g:where([data-eh~=eh21]):not(.ehz):not(.ehz)>*,.fam6:where([data-eh~=eh21]):not(.ehz):not(.ehz)>*,.profiles:where([data-eh~=eh21]):not(.ehz):not(.ehz)>*,.pubg:where([data-eh~=eh21]):not(.ehz):not(.ehz)>*,.tri-steps:where([data-eh~=eh21]):not(.ehz):not(.ehz)>*,.prix-grid:where([data-eh~=eh21]):not(.ehz):not(.ehz)>*,.htech-grid:where([data-eh~=eh21]):not(.ehz):not(.ehz)>*,.presse-grid:where([data-eh~=eh21]):not(.ehz):not(.ehz)>*,.secg:where([data-eh~=eh21]):not(.ehz):not(.ehz)>*,.docl:where([data-eh~=eh21]):not(.ehz):not(.ehz)>*,.cp-ct:where([data-eh~=eh21]):not(.ehz):not(.ehz)>*,.sw-grid:where([data-eh~=eh21]):not(.ehz):not(.ehz)>*,.tri-g:where([data-eh~=eh21]):not(.ehz):not(.ehz)>*,.d607-grid:where([data-eh~=eh21]):not(.ehz):not(.ehz)>*,.rtg:where([data-eh~=eh21]):not(.ehz):not(.ehz)>*,.atlas-grid:where([data-eh~=eh21]):not(.ehz):not(.ehz)>*,.glm-g:where([data-eh~=eh21]):not(.ehz):not(.ehz)>*,.fonctions-tete:where([data-eh~=eh21]):not(.ehz):not(.ehz)>*,.b111-dl:where([data-eh~=eh21]):not(.ehz):not(.ehz)>*,.docs:where([data-eh~=eh21]):not(.ehz):not(.ehz)>*,.ppl-grid:where([data-eh~=eh21]):not(.ehz):not(.ehz)>*,.sm-grid:where([data-eh~=eh21]):not(.ehz):not(.ehz)>*,.sw-row:where([data-eh~=eh21]):not(.ehz):not(.ehz)>*,.pj-grid:where([data-eh~=eh21]):not(.ehz):not(.ehz)>*,.fx2g:where([data-eh~=eh21]):not(.ehz):not(.ehz)>*{grid-column:span 4}
  .epw-g:not(#_g):where([data-eh~=eh22]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+4),.biz-grid:not(#_g):where([data-eh~=eh22]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+4),.rp-pts:not(#_g):where([data-eh~=eh22]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+4),.vt-grid:not(#_g):where([data-eh~=eh22]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+4),.plc-grid:not(#_g):where([data-eh~=eh22]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+4),.exp-g-in:not(#_g):where([data-eh~=eh22]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+4),.eth-g:not(#_g):where([data-eh~=eh22]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+4),.fam6:not(#_g):where([data-eh~=eh22]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+4),.profiles:not(#_g):where([data-eh~=eh22]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+4),.pubg:not(#_g):where([data-eh~=eh22]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+4),.tri-steps:not(#_g):where([data-eh~=eh22]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+4),.prix-grid:not(#_g):where([data-eh~=eh22]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+4),.htech-grid:not(#_g):where([data-eh~=eh22]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+4),.presse-grid:not(#_g):where([data-eh~=eh22]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+4),.secg:not(#_g):where([data-eh~=eh22]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+4),.docl:not(#_g):where([data-eh~=eh22]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+4),.cp-ct:not(#_g):where([data-eh~=eh22]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+4),.sw-grid:not(#_g):where([data-eh~=eh22]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+4),.tri-g:not(#_g):where([data-eh~=eh22]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+4),.d607-grid:not(#_g):where([data-eh~=eh22]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+4),.rtg:not(#_g):where([data-eh~=eh22]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+4),.atlas-grid:not(#_g):where([data-eh~=eh22]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+4),.glm-g:not(#_g):where([data-eh~=eh22]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+4),.fonctions-tete:not(#_g):where([data-eh~=eh22]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+4),.b111-dl:not(#_g):where([data-eh~=eh22]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+4),.docs:not(#_g):where([data-eh~=eh22]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+4),.ppl-grid:not(#_g):where([data-eh~=eh22]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+4),.sm-grid:not(#_g):where([data-eh~=eh22]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+4),.sw-row:not(#_g):where([data-eh~=eh22]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+4),.pj-grid:not(#_g):where([data-eh~=eh22]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+4),.fx2g:not(#_g):where([data-eh~=eh22]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+4){grid-column:span 3}
  .epw-g:not(#_g):where([data-eh~=eh22]):not(.ehz):not(.ehz)>*:nth-child(n+5):nth-child(-n+7),.biz-grid:not(#_g):where([data-eh~=eh22]):not(.ehz):not(.ehz)>*:nth-child(n+5):nth-child(-n+7),.rp-pts:not(#_g):where([data-eh~=eh22]):not(.ehz):not(.ehz)>*:nth-child(n+5):nth-child(-n+7),.vt-grid:not(#_g):where([data-eh~=eh22]):not(.ehz):not(.ehz)>*:nth-child(n+5):nth-child(-n+7),.plc-grid:not(#_g):where([data-eh~=eh22]):not(.ehz):not(.ehz)>*:nth-child(n+5):nth-child(-n+7),.exp-g-in:not(#_g):where([data-eh~=eh22]):not(.ehz):not(.ehz)>*:nth-child(n+5):nth-child(-n+7),.eth-g:not(#_g):where([data-eh~=eh22]):not(.ehz):not(.ehz)>*:nth-child(n+5):nth-child(-n+7),.fam6:not(#_g):where([data-eh~=eh22]):not(.ehz):not(.ehz)>*:nth-child(n+5):nth-child(-n+7),.profiles:not(#_g):where([data-eh~=eh22]):not(.ehz):not(.ehz)>*:nth-child(n+5):nth-child(-n+7),.pubg:not(#_g):where([data-eh~=eh22]):not(.ehz):not(.ehz)>*:nth-child(n+5):nth-child(-n+7),.tri-steps:not(#_g):where([data-eh~=eh22]):not(.ehz):not(.ehz)>*:nth-child(n+5):nth-child(-n+7),.prix-grid:not(#_g):where([data-eh~=eh22]):not(.ehz):not(.ehz)>*:nth-child(n+5):nth-child(-n+7),.htech-grid:not(#_g):where([data-eh~=eh22]):not(.ehz):not(.ehz)>*:nth-child(n+5):nth-child(-n+7),.presse-grid:not(#_g):where([data-eh~=eh22]):not(.ehz):not(.ehz)>*:nth-child(n+5):nth-child(-n+7),.secg:not(#_g):where([data-eh~=eh22]):not(.ehz):not(.ehz)>*:nth-child(n+5):nth-child(-n+7),.docl:not(#_g):where([data-eh~=eh22]):not(.ehz):not(.ehz)>*:nth-child(n+5):nth-child(-n+7),.cp-ct:not(#_g):where([data-eh~=eh22]):not(.ehz):not(.ehz)>*:nth-child(n+5):nth-child(-n+7),.sw-grid:not(#_g):where([data-eh~=eh22]):not(.ehz):not(.ehz)>*:nth-child(n+5):nth-child(-n+7),.tri-g:not(#_g):where([data-eh~=eh22]):not(.ehz):not(.ehz)>*:nth-child(n+5):nth-child(-n+7),.d607-grid:not(#_g):where([data-eh~=eh22]):not(.ehz):not(.ehz)>*:nth-child(n+5):nth-child(-n+7),.rtg:not(#_g):where([data-eh~=eh22]):not(.ehz):not(.ehz)>*:nth-child(n+5):nth-child(-n+7),.atlas-grid:not(#_g):where([data-eh~=eh22]):not(.ehz):not(.ehz)>*:nth-child(n+5):nth-child(-n+7),.glm-g:not(#_g):where([data-eh~=eh22]):not(.ehz):not(.ehz)>*:nth-child(n+5):nth-child(-n+7),.fonctions-tete:not(#_g):where([data-eh~=eh22]):not(.ehz):not(.ehz)>*:nth-child(n+5):nth-child(-n+7),.b111-dl:not(#_g):where([data-eh~=eh22]):not(.ehz):not(.ehz)>*:nth-child(n+5):nth-child(-n+7),.docs:not(#_g):where([data-eh~=eh22]):not(.ehz):not(.ehz)>*:nth-child(n+5):nth-child(-n+7),.ppl-grid:not(#_g):where([data-eh~=eh22]):not(.ehz):not(.ehz)>*:nth-child(n+5):nth-child(-n+7),.sm-grid:not(#_g):where([data-eh~=eh22]):not(.ehz):not(.ehz)>*:nth-child(n+5):nth-child(-n+7),.sw-row:not(#_g):where([data-eh~=eh22]):not(.ehz):not(.ehz)>*:nth-child(n+5):nth-child(-n+7),.pj-grid:not(#_g):where([data-eh~=eh22]):not(.ehz):not(.ehz)>*:nth-child(n+5):nth-child(-n+7),.fx2g:not(#_g):where([data-eh~=eh22]):not(.ehz):not(.ehz)>*:nth-child(n+5):nth-child(-n+7){grid-column:span 4}
- .epw-g:not(#_g):where([data-eh~=eh23]):not(.ehz):not(.ehz)>*,.biz-grid:not(#_g):where([data-eh~=eh23]):not(.ehz):not(.ehz)>*,.rp-pts:not(#_g):where([data-eh~=eh23]):not(.ehz):not(.ehz)>*,.vt-grid:not(#_g):where([data-eh~=eh23]):not(.ehz):not(.ehz)>*,.plc-grid:not(#_g):where([data-eh~=eh23]):not(.ehz):not(.ehz)>*,.exp-g-in:not(#_g):where([data-eh~=eh23]):not(.ehz):not(.ehz)>*,.eth-g:not(#_g):where([data-eh~=eh23]):not(.ehz):not(.ehz)>*,.fam6:not(#_g):where([data-eh~=eh23]):not(.ehz):not(.ehz)>*,.profiles:not(#_g):where([data-eh~=eh23]):not(.ehz):not(.ehz)>*,.pubg:not(#_g):where([data-eh~=eh23]):not(.ehz):not(.ehz)>*,.tri-steps:not(#_g):where([data-eh~=eh23]):not(.ehz):not(.ehz)>*,.prix-grid:not(#_g):where([data-eh~=eh23]):not(.ehz):not(.ehz)>*,.htech-grid:not(#_g):where([data-eh~=eh23]):not(.ehz):not(.ehz)>*,.presse-grid:not(#_g):where([data-eh~=eh23]):not(.ehz):not(.ehz)>*,.secg:not(#_g):where([data-eh~=eh23]):not(.ehz):not(.ehz)>*,.docl:not(#_g):where([data-eh~=eh23]):not(.ehz):not(.ehz)>*,.cp-ct:not(#_g):where([data-eh~=eh23]):not(.ehz):not(.ehz)>*,.sw-grid:not(#_g):where([data-eh~=eh23]):not(.ehz):not(.ehz)>*,.tri-g:not(#_g):where([data-eh~=eh23]):not(.ehz):not(.ehz)>*,.d607-grid:not(#_g):where([data-eh~=eh23]):not(.ehz):not(.ehz)>*,.rtg:not(#_g):where([data-eh~=eh23]):not(.ehz):not(.ehz)>*,.atlas-grid:not(#_g):where([data-eh~=eh23]):not(.ehz):not(.ehz)>*,.glm-g:not(#_g):where([data-eh~=eh23]):not(.ehz):not(.ehz)>*,.fonctions-tete:not(#_g):where([data-eh~=eh23]):not(.ehz):not(.ehz)>*,.b111-dl:not(#_g):where([data-eh~=eh23]):not(.ehz):not(.ehz)>*,.docs:not(#_g):where([data-eh~=eh23]):not(.ehz):not(.ehz)>*,.ppl-grid:not(#_g):where([data-eh~=eh23]):not(.ehz):not(.ehz)>*,.sm-grid:not(#_g):where([data-eh~=eh23]):not(.ehz):not(.ehz)>*,.sw-row:not(#_g):where([data-eh~=eh23]):not(.ehz):not(.ehz)>*,.pj-grid:not(#_g):where([data-eh~=eh23]):not(.ehz):not(.ehz)>*,.fx2g:not(#_g):where([data-eh~=eh23]):not(.ehz):not(.ehz)>*{grid-column:span 3}
- .epw-g:not(#_g):where([data-eh~=eh24]):not(.ehz):not(.ehz)>*,.biz-grid:not(#_g):where([data-eh~=eh24]):not(.ehz):not(.ehz)>*,.rp-pts:not(#_g):where([data-eh~=eh24]):not(.ehz):not(.ehz)>*,.vt-grid:not(#_g):where([data-eh~=eh24]):not(.ehz):not(.ehz)>*,.plc-grid:not(#_g):where([data-eh~=eh24]):not(.ehz):not(.ehz)>*,.exp-g-in:not(#_g):where([data-eh~=eh24]):not(.ehz):not(.ehz)>*,.eth-g:not(#_g):where([data-eh~=eh24]):not(.ehz):not(.ehz)>*,.fam6:not(#_g):where([data-eh~=eh24]):not(.ehz):not(.ehz)>*,.profiles:not(#_g):where([data-eh~=eh24]):not(.ehz):not(.ehz)>*,.pubg:not(#_g):where([data-eh~=eh24]):not(.ehz):not(.ehz)>*,.tri-steps:not(#_g):where([data-eh~=eh24]):not(.ehz):not(.ehz)>*,.prix-grid:not(#_g):where([data-eh~=eh24]):not(.ehz):not(.ehz)>*,.htech-grid:not(#_g):where([data-eh~=eh24]):not(.ehz):not(.ehz)>*,.presse-grid:not(#_g):where([data-eh~=eh24]):not(.ehz):not(.ehz)>*,.secg:not(#_g):where([data-eh~=eh24]):not(.ehz):not(.ehz)>*,.docl:not(#_g):where([data-eh~=eh24]):not(.ehz):not(.ehz)>*,.cp-ct:not(#_g):where([data-eh~=eh24]):not(.ehz):not(.ehz)>*,.sw-grid:not(#_g):where([data-eh~=eh24]):not(.ehz):not(.ehz)>*,.tri-g:not(#_g):where([data-eh~=eh24]):not(.ehz):not(.ehz)>*,.d607-grid:not(#_g):where([data-eh~=eh24]):not(.ehz):not(.ehz)>*,.rtg:not(#_g):where([data-eh~=eh24]):not(.ehz):not(.ehz)>*,.atlas-grid:not(#_g):where([data-eh~=eh24]):not(.ehz):not(.ehz)>*,.glm-g:not(#_g):where([data-eh~=eh24]):not(.ehz):not(.ehz)>*,.fonctions-tete:not(#_g):where([data-eh~=eh24]):not(.ehz):not(.ehz)>*,.b111-dl:not(#_g):where([data-eh~=eh24]):not(.ehz):not(.ehz)>*,.docs:not(#_g):where([data-eh~=eh24]):not(.ehz):not(.ehz)>*,.ppl-grid:not(#_g):where([data-eh~=eh24]):not(.ehz):not(.ehz)>*,.sm-grid:not(#_g):where([data-eh~=eh24]):not(.ehz):not(.ehz)>*,.sw-row:not(#_g):where([data-eh~=eh24]):not(.ehz):not(.ehz)>*,.pj-grid:not(#_g):where([data-eh~=eh24]):not(.ehz):not(.ehz)>*,.fx2g:not(#_g):where([data-eh~=eh24]):not(.ehz):not(.ehz)>*{grid-column:span 4}
+ .epw-g:where([data-eh~=eh23]):not(.ehz):not(.ehz)>*,.biz-grid:where([data-eh~=eh23]):not(.ehz):not(.ehz)>*,.rp-pts:where([data-eh~=eh23]):not(.ehz):not(.ehz)>*,.vt-grid:where([data-eh~=eh23]):not(.ehz):not(.ehz)>*,.plc-grid:where([data-eh~=eh23]):not(.ehz):not(.ehz)>*,.exp-g-in:where([data-eh~=eh23]):not(.ehz):not(.ehz)>*,.eth-g:where([data-eh~=eh23]):not(.ehz):not(.ehz)>*,.fam6:where([data-eh~=eh23]):not(.ehz):not(.ehz)>*,.profiles:where([data-eh~=eh23]):not(.ehz):not(.ehz)>*,.pubg:where([data-eh~=eh23]):not(.ehz):not(.ehz)>*,.tri-steps:where([data-eh~=eh23]):not(.ehz):not(.ehz)>*,.prix-grid:where([data-eh~=eh23]):not(.ehz):not(.ehz)>*,.htech-grid:where([data-eh~=eh23]):not(.ehz):not(.ehz)>*,.presse-grid:where([data-eh~=eh23]):not(.ehz):not(.ehz)>*,.secg:where([data-eh~=eh23]):not(.ehz):not(.ehz)>*,.docl:where([data-eh~=eh23]):not(.ehz):not(.ehz)>*,.cp-ct:where([data-eh~=eh23]):not(.ehz):not(.ehz)>*,.sw-grid:where([data-eh~=eh23]):not(.ehz):not(.ehz)>*,.tri-g:where([data-eh~=eh23]):not(.ehz):not(.ehz)>*,.d607-grid:where([data-eh~=eh23]):not(.ehz):not(.ehz)>*,.rtg:where([data-eh~=eh23]):not(.ehz):not(.ehz)>*,.atlas-grid:where([data-eh~=eh23]):not(.ehz):not(.ehz)>*,.glm-g:where([data-eh~=eh23]):not(.ehz):not(.ehz)>*,.fonctions-tete:where([data-eh~=eh23]):not(.ehz):not(.ehz)>*,.b111-dl:where([data-eh~=eh23]):not(.ehz):not(.ehz)>*,.docs:where([data-eh~=eh23]):not(.ehz):not(.ehz)>*,.ppl-grid:where([data-eh~=eh23]):not(.ehz):not(.ehz)>*,.sm-grid:where([data-eh~=eh23]):not(.ehz):not(.ehz)>*,.sw-row:where([data-eh~=eh23]):not(.ehz):not(.ehz)>*,.pj-grid:where([data-eh~=eh23]):not(.ehz):not(.ehz)>*,.fx2g:where([data-eh~=eh23]):not(.ehz):not(.ehz)>*{grid-column:span 3}
+ .epw-g:where([data-eh~=eh24]):not(.ehz):not(.ehz)>*,.biz-grid:where([data-eh~=eh24]):not(.ehz):not(.ehz)>*,.rp-pts:where([data-eh~=eh24]):not(.ehz):not(.ehz)>*,.vt-grid:where([data-eh~=eh24]):not(.ehz):not(.ehz)>*,.plc-grid:where([data-eh~=eh24]):not(.ehz):not(.ehz)>*,.exp-g-in:where([data-eh~=eh24]):not(.ehz):not(.ehz)>*,.eth-g:where([data-eh~=eh24]):not(.ehz):not(.ehz)>*,.fam6:where([data-eh~=eh24]):not(.ehz):not(.ehz)>*,.profiles:where([data-eh~=eh24]):not(.ehz):not(.ehz)>*,.pubg:where([data-eh~=eh24]):not(.ehz):not(.ehz)>*,.tri-steps:where([data-eh~=eh24]):not(.ehz):not(.ehz)>*,.prix-grid:where([data-eh~=eh24]):not(.ehz):not(.ehz)>*,.htech-grid:where([data-eh~=eh24]):not(.ehz):not(.ehz)>*,.presse-grid:where([data-eh~=eh24]):not(.ehz):not(.ehz)>*,.secg:where([data-eh~=eh24]):not(.ehz):not(.ehz)>*,.docl:where([data-eh~=eh24]):not(.ehz):not(.ehz)>*,.cp-ct:where([data-eh~=eh24]):not(.ehz):not(.ehz)>*,.sw-grid:where([data-eh~=eh24]):not(.ehz):not(.ehz)>*,.tri-g:where([data-eh~=eh24]):not(.ehz):not(.ehz)>*,.d607-grid:where([data-eh~=eh24]):not(.ehz):not(.ehz)>*,.rtg:where([data-eh~=eh24]):not(.ehz):not(.ehz)>*,.atlas-grid:where([data-eh~=eh24]):not(.ehz):not(.ehz)>*,.glm-g:where([data-eh~=eh24]):not(.ehz):not(.ehz)>*,.fonctions-tete:where([data-eh~=eh24]):not(.ehz):not(.ehz)>*,.b111-dl:where([data-eh~=eh24]):not(.ehz):not(.ehz)>*,.docs:where([data-eh~=eh24]):not(.ehz):not(.ehz)>*,.ppl-grid:where([data-eh~=eh24]):not(.ehz):not(.ehz)>*,.sm-grid:where([data-eh~=eh24]):not(.ehz):not(.ehz)>*,.sw-row:where([data-eh~=eh24]):not(.ehz):not(.ehz)>*,.pj-grid:where([data-eh~=eh24]):not(.ehz):not(.ehz)>*,.fx2g:where([data-eh~=eh24]):not(.ehz):not(.ehz)>*{grid-column:span 4}
  .epw-g:not(#_g):where([data-eh~=eh14]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+4),.biz-grid:not(#_g):where([data-eh~=eh14]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+4),.rp-pts:not(#_g):where([data-eh~=eh14]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+4),.vt-grid:not(#_g):where([data-eh~=eh14]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+4),.plc-grid:not(#_g):where([data-eh~=eh14]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+4),.exp-g-in:not(#_g):where([data-eh~=eh14]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+4),.eth-g:not(#_g):where([data-eh~=eh14]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+4),.fam6:not(#_g):where([data-eh~=eh14]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+4),.profiles:not(#_g):where([data-eh~=eh14]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+4),.pubg:not(#_g):where([data-eh~=eh14]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+4),.tri-steps:not(#_g):where([data-eh~=eh14]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+4),.prix-grid:not(#_g):where([data-eh~=eh14]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+4),.htech-grid:not(#_g):where([data-eh~=eh14]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+4),.presse-grid:not(#_g):where([data-eh~=eh14]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+4),.secg:not(#_g):where([data-eh~=eh14]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+4),.docl:not(#_g):where([data-eh~=eh14]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+4),.cp-ct:not(#_g):where([data-eh~=eh14]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+4),.sw-grid:not(#_g):where([data-eh~=eh14]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+4),.tri-g:not(#_g):where([data-eh~=eh14]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+4),.d607-grid:not(#_g):where([data-eh~=eh14]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+4),.rtg:not(#_g):where([data-eh~=eh14]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+4),.atlas-grid:not(#_g):where([data-eh~=eh14]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+4),.glm-g:not(#_g):where([data-eh~=eh14]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+4),.fonctions-tete:not(#_g):where([data-eh~=eh14]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+4),.b111-dl:not(#_g):where([data-eh~=eh14]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+4),.docs:not(#_g):where([data-eh~=eh14]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+4),.ppl-grid:not(#_g):where([data-eh~=eh14]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+4),.sm-grid:not(#_g):where([data-eh~=eh14]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+4),.sw-row:not(#_g):where([data-eh~=eh14]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+4),.pj-grid:not(#_g):where([data-eh~=eh14]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+4),.fx2g:not(#_g):where([data-eh~=eh14]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+4){grid-column:span 3}
  .epw-g:not(#_g):where([data-eh~=eh14]):not(.ehz):not(.ehz)>*:nth-child(n+5):nth-child(-n+10),.biz-grid:not(#_g):where([data-eh~=eh14]):not(.ehz):not(.ehz)>*:nth-child(n+5):nth-child(-n+10),.rp-pts:not(#_g):where([data-eh~=eh14]):not(.ehz):not(.ehz)>*:nth-child(n+5):nth-child(-n+10),.vt-grid:not(#_g):where([data-eh~=eh14]):not(.ehz):not(.ehz)>*:nth-child(n+5):nth-child(-n+10),.plc-grid:not(#_g):where([data-eh~=eh14]):not(.ehz):not(.ehz)>*:nth-child(n+5):nth-child(-n+10),.exp-g-in:not(#_g):where([data-eh~=eh14]):not(.ehz):not(.ehz)>*:nth-child(n+5):nth-child(-n+10),.eth-g:not(#_g):where([data-eh~=eh14]):not(.ehz):not(.ehz)>*:nth-child(n+5):nth-child(-n+10),.fam6:not(#_g):where([data-eh~=eh14]):not(.ehz):not(.ehz)>*:nth-child(n+5):nth-child(-n+10),.profiles:not(#_g):where([data-eh~=eh14]):not(.ehz):not(.ehz)>*:nth-child(n+5):nth-child(-n+10),.pubg:not(#_g):where([data-eh~=eh14]):not(.ehz):not(.ehz)>*:nth-child(n+5):nth-child(-n+10),.tri-steps:not(#_g):where([data-eh~=eh14]):not(.ehz):not(.ehz)>*:nth-child(n+5):nth-child(-n+10),.prix-grid:not(#_g):where([data-eh~=eh14]):not(.ehz):not(.ehz)>*:nth-child(n+5):nth-child(-n+10),.htech-grid:not(#_g):where([data-eh~=eh14]):not(.ehz):not(.ehz)>*:nth-child(n+5):nth-child(-n+10),.presse-grid:not(#_g):where([data-eh~=eh14]):not(.ehz):not(.ehz)>*:nth-child(n+5):nth-child(-n+10),.secg:not(#_g):where([data-eh~=eh14]):not(.ehz):not(.ehz)>*:nth-child(n+5):nth-child(-n+10),.docl:not(#_g):where([data-eh~=eh14]):not(.ehz):not(.ehz)>*:nth-child(n+5):nth-child(-n+10),.cp-ct:not(#_g):where([data-eh~=eh14]):not(.ehz):not(.ehz)>*:nth-child(n+5):nth-child(-n+10),.sw-grid:not(#_g):where([data-eh~=eh14]):not(.ehz):not(.ehz)>*:nth-child(n+5):nth-child(-n+10),.tri-g:not(#_g):where([data-eh~=eh14]):not(.ehz):not(.ehz)>*:nth-child(n+5):nth-child(-n+10),.d607-grid:not(#_g):where([data-eh~=eh14]):not(.ehz):not(.ehz)>*:nth-child(n+5):nth-child(-n+10),.rtg:not(#_g):where([data-eh~=eh14]):not(.ehz):not(.ehz)>*:nth-child(n+5):nth-child(-n+10),.atlas-grid:not(#_g):where([data-eh~=eh14]):not(.ehz):not(.ehz)>*:nth-child(n+5):nth-child(-n+10),.glm-g:not(#_g):where([data-eh~=eh14]):not(.ehz):not(.ehz)>*:nth-child(n+5):nth-child(-n+10),.fonctions-tete:not(#_g):where([data-eh~=eh14]):not(.ehz):not(.ehz)>*:nth-child(n+5):nth-child(-n+10),.b111-dl:not(#_g):where([data-eh~=eh14]):not(.ehz):not(.ehz)>*:nth-child(n+5):nth-child(-n+10),.docs:not(#_g):where([data-eh~=eh14]):not(.ehz):not(.ehz)>*:nth-child(n+5):nth-child(-n+10),.ppl-grid:not(#_g):where([data-eh~=eh14]):not(.ehz):not(.ehz)>*:nth-child(n+5):nth-child(-n+10),.sm-grid:not(#_g):where([data-eh~=eh14]):not(.ehz):not(.ehz)>*:nth-child(n+5):nth-child(-n+10),.sw-row:not(#_g):where([data-eh~=eh14]):not(.ehz):not(.ehz)>*:nth-child(n+5):nth-child(-n+10),.pj-grid:not(#_g):where([data-eh~=eh14]):not(.ehz):not(.ehz)>*:nth-child(n+5):nth-child(-n+10),.fx2g:not(#_g):where([data-eh~=eh14]):not(.ehz):not(.ehz)>*:nth-child(n+5):nth-child(-n+10){grid-column:span 4}
  .epw-g:not(#_g):where([data-eh~=eh15]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+8),.biz-grid:not(#_g):where([data-eh~=eh15]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+8),.rp-pts:not(#_g):where([data-eh~=eh15]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+8),.vt-grid:not(#_g):where([data-eh~=eh15]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+8),.plc-grid:not(#_g):where([data-eh~=eh15]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+8),.exp-g-in:not(#_g):where([data-eh~=eh15]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+8),.eth-g:not(#_g):where([data-eh~=eh15]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+8),.fam6:not(#_g):where([data-eh~=eh15]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+8),.profiles:not(#_g):where([data-eh~=eh15]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+8),.pubg:not(#_g):where([data-eh~=eh15]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+8),.tri-steps:not(#_g):where([data-eh~=eh15]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+8),.prix-grid:not(#_g):where([data-eh~=eh15]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+8),.htech-grid:not(#_g):where([data-eh~=eh15]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+8),.presse-grid:not(#_g):where([data-eh~=eh15]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+8),.secg:not(#_g):where([data-eh~=eh15]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+8),.docl:not(#_g):where([data-eh~=eh15]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+8),.cp-ct:not(#_g):where([data-eh~=eh15]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+8),.sw-grid:not(#_g):where([data-eh~=eh15]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+8),.tri-g:not(#_g):where([data-eh~=eh15]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+8),.d607-grid:not(#_g):where([data-eh~=eh15]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+8),.rtg:not(#_g):where([data-eh~=eh15]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+8),.atlas-grid:not(#_g):where([data-eh~=eh15]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+8),.glm-g:not(#_g):where([data-eh~=eh15]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+8),.fonctions-tete:not(#_g):where([data-eh~=eh15]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+8),.b111-dl:not(#_g):where([data-eh~=eh15]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+8),.docs:not(#_g):where([data-eh~=eh15]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+8),.ppl-grid:not(#_g):where([data-eh~=eh15]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+8),.sm-grid:not(#_g):where([data-eh~=eh15]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+8),.sw-row:not(#_g):where([data-eh~=eh15]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+8),.pj-grid:not(#_g):where([data-eh~=eh15]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+8),.fx2g:not(#_g):where([data-eh~=eh15]):not(.ehz):not(.ehz)>*:nth-child(n+1):nth-child(-n+8){grid-column:span 3}
  .epw-g:not(#_g):where([data-eh~=eh15]):not(.ehz):not(.ehz)>*:nth-child(n+9):nth-child(-n+11),.biz-grid:not(#_g):where([data-eh~=eh15]):not(.ehz):not(.ehz)>*:nth-child(n+9):nth-child(-n+11),.rp-pts:not(#_g):where([data-eh~=eh15]):not(.ehz):not(.ehz)>*:nth-child(n+9):nth-child(-n+11),.vt-grid:not(#_g):where([data-eh~=eh15]):not(.ehz):not(.ehz)>*:nth-child(n+9):nth-child(-n+11),.plc-grid:not(#_g):where([data-eh~=eh15]):not(.ehz):not(.ehz)>*:nth-child(n+9):nth-child(-n+11),.exp-g-in:not(#_g):where([data-eh~=eh15]):not(.ehz):not(.ehz)>*:nth-child(n+9):nth-child(-n+11),.eth-g:not(#_g):where([data-eh~=eh15]):not(.ehz):not(.ehz)>*:nth-child(n+9):nth-child(-n+11),.fam6:not(#_g):where([data-eh~=eh15]):not(.ehz):not(.ehz)>*:nth-child(n+9):nth-child(-n+11),.profiles:not(#_g):where([data-eh~=eh15]):not(.ehz):not(.ehz)>*:nth-child(n+9):nth-child(-n+11),.pubg:not(#_g):where([data-eh~=eh15]):not(.ehz):not(.ehz)>*:nth-child(n+9):nth-child(-n+11),.tri-steps:not(#_g):where([data-eh~=eh15]):not(.ehz):not(.ehz)>*:nth-child(n+9):nth-child(-n+11),.prix-grid:not(#_g):where([data-eh~=eh15]):not(.ehz):not(.ehz)>*:nth-child(n+9):nth-child(-n+11),.htech-grid:not(#_g):where([data-eh~=eh15]):not(.ehz):not(.ehz)>*:nth-child(n+9):nth-child(-n+11),.presse-grid:not(#_g):where([data-eh~=eh15]):not(.ehz):not(.ehz)>*:nth-child(n+9):nth-child(-n+11),.secg:not(#_g):where([data-eh~=eh15]):not(.ehz):not(.ehz)>*:nth-child(n+9):nth-child(-n+11),.docl:not(#_g):where([data-eh~=eh15]):not(.ehz):not(.ehz)>*:nth-child(n+9):nth-child(-n+11),.cp-ct:not(#_g):where([data-eh~=eh15]):not(.ehz):not(.ehz)>*:nth-child(n+9):nth-child(-n+11),.sw-grid:not(#_g):where([data-eh~=eh15]):not(.ehz):not(.ehz)>*:nth-child(n+9):nth-child(-n+11),.tri-g:not(#_g):where([data-eh~=eh15]):not(.ehz):not(.ehz)>*:nth-child(n+9):nth-child(-n+11),.d607-grid:not(#_g):where([data-eh~=eh15]):not(.ehz):not(.ehz)>*:nth-child(n+9):nth-child(-n+11),.rtg:not(#_g):where([data-eh~=eh15]):not(.ehz):not(.ehz)>*:nth-child(n+9):nth-child(-n+11),.atlas-grid:not(#_g):where([data-eh~=eh15]):not(.ehz):not(.ehz)>*:nth-child(n+9):nth-child(-n+11),.glm-g:not(#_g):where([data-eh~=eh15]):not(.ehz):not(.ehz)>*:nth-child(n+9):nth-child(-n+11),.fonctions-tete:not(#_g):where([data-eh~=eh15]):not(.ehz):not(.ehz)>*:nth-child(n+9):nth-child(-n+11),.b111-dl:not(#_g):where([data-eh~=eh15]):not(.ehz):not(.ehz)>*:nth-child(n+9):nth-child(-n+11),.docs:not(#_g):where([data-eh~=eh15]):not(.ehz):not(.ehz)>*:nth-child(n+9):nth-child(-n+11),.ppl-grid:not(#_g):where([data-eh~=eh15]):not(.ehz):not(.ehz)>*:nth-child(n+9):nth-child(-n+11),.sm-grid:not(#_g):where([data-eh~=eh15]):not(.ehz):not(.ehz)>*:nth-child(n+9):nth-child(-n+11),.sw-row:not(#_g):where([data-eh~=eh15]):not(.ehz):not(.ehz)>*:nth-child(n+9):nth-child(-n+11),.pj-grid:not(#_g):where([data-eh~=eh15]):not(.ehz):not(.ehz)>*:nth-child(n+9):nth-child(-n+11),.fx2g:not(#_g):where([data-eh~=eh15]):not(.ehz):not(.ehz)>*:nth-child(n+9):nth-child(-n+11){grid-column:span 4}
- .epw-g:not(#_g):where([data-eh~=eh16]):not(.ehz):not(.ehz)>*,.biz-grid:not(#_g):where([data-eh~=eh16]):not(.ehz):not(.ehz)>*,.rp-pts:not(#_g):where([data-eh~=eh16]):not(.ehz):not(.ehz)>*,.vt-grid:not(#_g):where([data-eh~=eh16]):not(.ehz):not(.ehz)>*,.plc-grid:not(#_g):where([data-eh~=eh16]):not(.ehz):not(.ehz)>*,.exp-g-in:not(#_g):where([data-eh~=eh16]):not(.ehz):not(.ehz)>*,.eth-g:not(#_g):where([data-eh~=eh16]):not(.ehz):not(.ehz)>*,.fam6:not(#_g):where([data-eh~=eh16]):not(.ehz):not(.ehz)>*,.profiles:not(#_g):where([data-eh~=eh16]):not(.ehz):not(.ehz)>*,.pubg:not(#_g):where([data-eh~=eh16]):not(.ehz):not(.ehz)>*,.tri-steps:not(#_g):where([data-eh~=eh16]):not(.ehz):not(.ehz)>*,.prix-grid:not(#_g):where([data-eh~=eh16]):not(.ehz):not(.ehz)>*,.htech-grid:not(#_g):where([data-eh~=eh16]):not(.ehz):not(.ehz)>*,.presse-grid:not(#_g):where([data-eh~=eh16]):not(.ehz):not(.ehz)>*,.secg:not(#_g):where([data-eh~=eh16]):not(.ehz):not(.ehz)>*,.docl:not(#_g):where([data-eh~=eh16]):not(.ehz):not(.ehz)>*,.cp-ct:not(#_g):where([data-eh~=eh16]):not(.ehz):not(.ehz)>*,.sw-grid:not(#_g):where([data-eh~=eh16]):not(.ehz):not(.ehz)>*,.tri-g:not(#_g):where([data-eh~=eh16]):not(.ehz):not(.ehz)>*,.d607-grid:not(#_g):where([data-eh~=eh16]):not(.ehz):not(.ehz)>*,.rtg:not(#_g):where([data-eh~=eh16]):not(.ehz):not(.ehz)>*,.atlas-grid:not(#_g):where([data-eh~=eh16]):not(.ehz):not(.ehz)>*,.glm-g:not(#_g):where([data-eh~=eh16]):not(.ehz):not(.ehz)>*,.fonctions-tete:not(#_g):where([data-eh~=eh16]):not(.ehz):not(.ehz)>*,.b111-dl:not(#_g):where([data-eh~=eh16]):not(.ehz):not(.ehz)>*,.docs:not(#_g):where([data-eh~=eh16]):not(.ehz):not(.ehz)>*,.ppl-grid:not(#_g):where([data-eh~=eh16]):not(.ehz):not(.ehz)>*,.sm-grid:not(#_g):where([data-eh~=eh16]):not(.ehz):not(.ehz)>*,.sw-row:not(#_g):where([data-eh~=eh16]):not(.ehz):not(.ehz)>*,.pj-grid:not(#_g):where([data-eh~=eh16]):not(.ehz):not(.ehz)>*,.fx2g:not(#_g):where([data-eh~=eh16]):not(.ehz):not(.ehz)>*{grid-column:span 3}
+ .epw-g:where([data-eh~=eh16]):not(.ehz):not(.ehz)>*,.biz-grid:where([data-eh~=eh16]):not(.ehz):not(.ehz)>*,.rp-pts:where([data-eh~=eh16]):not(.ehz):not(.ehz)>*,.vt-grid:where([data-eh~=eh16]):not(.ehz):not(.ehz)>*,.plc-grid:where([data-eh~=eh16]):not(.ehz):not(.ehz)>*,.exp-g-in:where([data-eh~=eh16]):not(.ehz):not(.ehz)>*,.eth-g:where([data-eh~=eh16]):not(.ehz):not(.ehz)>*,.fam6:where([data-eh~=eh16]):not(.ehz):not(.ehz)>*,.profiles:where([data-eh~=eh16]):not(.ehz):not(.ehz)>*,.pubg:where([data-eh~=eh16]):not(.ehz):not(.ehz)>*,.tri-steps:where([data-eh~=eh16]):not(.ehz):not(.ehz)>*,.prix-grid:where([data-eh~=eh16]):not(.ehz):not(.ehz)>*,.htech-grid:where([data-eh~=eh16]):not(.ehz):not(.ehz)>*,.presse-grid:where([data-eh~=eh16]):not(.ehz):not(.ehz)>*,.secg:where([data-eh~=eh16]):not(.ehz):not(.ehz)>*,.docl:where([data-eh~=eh16]):not(.ehz):not(.ehz)>*,.cp-ct:where([data-eh~=eh16]):not(.ehz):not(.ehz)>*,.sw-grid:where([data-eh~=eh16]):not(.ehz):not(.ehz)>*,.tri-g:where([data-eh~=eh16]):not(.ehz):not(.ehz)>*,.d607-grid:where([data-eh~=eh16]):not(.ehz):not(.ehz)>*,.rtg:where([data-eh~=eh16]):not(.ehz):not(.ehz)>*,.atlas-grid:where([data-eh~=eh16]):not(.ehz):not(.ehz)>*,.glm-g:where([data-eh~=eh16]):not(.ehz):not(.ehz)>*,.fonctions-tete:where([data-eh~=eh16]):not(.ehz):not(.ehz)>*,.b111-dl:where([data-eh~=eh16]):not(.ehz):not(.ehz)>*,.docs:where([data-eh~=eh16]):not(.ehz):not(.ehz)>*,.ppl-grid:where([data-eh~=eh16]):not(.ehz):not(.ehz)>*,.sm-grid:where([data-eh~=eh16]):not(.ehz):not(.ehz)>*,.sw-row:where([data-eh~=eh16]):not(.ehz):not(.ehz)>*,.pj-grid:where([data-eh~=eh16]):not(.ehz):not(.ehz)>*,.fx2g:where([data-eh~=eh16]):not(.ehz):not(.ehz)>*{grid-column:span 3}
 }
-.plc-card:not(#_g) .plc-b{display:flex;flex-direction:column;align-self:stretch}
-.plc-card:not(#_g) .plc-badge{margin-top:auto;align-self:flex-start}
+.plc-card .plc-b{display:flex;flex-direction:column;align-self:stretch}
+.plc-card .plc-badge{margin-top:auto;align-self:flex-start}
 :where(h2){font-size:var(--ts-4,clamp(1.55rem,3.4vw,2.35rem))}
 :where(h3){font-size:var(--ts-6,clamp(1.2rem,2.5vw,1.8rem))}
 :where(h4){font-size:var(--ts-8,clamp(1rem,1.8vw,1.25rem))}
 .nxdot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--c,var(--et-gold-brand,#E8C36A));margin-right:7px;vertical-align:1px}
 @media(min-width:1241px){
  .nav-item.nx-sec1{margin-left:auto}
- .nav-item.nx-sec .nav-trigger:not(#_a){font-weight:500;opacity:.86;font-size:.92em}
- .nav-item.nx-sec .nav-trigger:not(#_a):hover,.nav-item.nx-sec .nav-trigger.is-active:not(#_a){opacity:1}
- .nx .nx-mega.nxm616:not(#_x):not(#_y){left:0;right:auto;width:min(920px,calc(100vw - 32px));min-width:0;max-width:none;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px 22px;align-items:start}
- .nav-item.nx-item:nth-child(3) .nx-mega.nxm616:not(#_x):not(#_y){left:auto;right:auto;translate:-30% 0}
+ .nav-item.nx-sec .nav-trigger{font-weight:500;opacity:.86;font-size:.92em}
+ .nav-item.nx-sec .nav-trigger:hover,.nav-item.nx-sec .nav-trigger.is-active{opacity:1}
+ .nx .nx-mega.nxm616{left:0;right:auto;width:min(920px,calc(100vw - 32px));min-width:0;max-width:none;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px 22px;align-items:start}
+ .nav-item.nx-item:nth-child(3) .nx-mega.nxm616{left:auto;right:auto;translate:-30% 0}
  .nxm616 .nxc-caps{grid-column:1/-1;border-top:1px solid var(--hair,rgba(255,255,255,.12));margin-top:6px;padding-top:8px}
  .nxm616 .nxg6{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));column-gap:10px}
  .nx .nxm616 .nx-col a strong{font-size:.88rem;line-height:1.25}
@@ -859,33 +859,33 @@ html:is(.et-plight,.et-jlight) body.hm:not(#_):not(#__):not(#___) main:not(#a1):
 .foot-col .foot-sub{display:block;font-family:var(--fm);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(245,247,250,.55);margin:6px 0 8px}
 .foot-caps617{grid-column:1/-1;margin-top:6px}
 .foot-caps617 h3::after{background:linear-gradient(90deg,var(--green,#34D399),#96A2EC,#C4B5FD,#1FA496)!important;width:64px!important}
-.foot-col.fp617 a:not(.foot-pole):not(#_):not(#__){display:flex}
-footer .foot-caps617 .foot-poles:not(#_):not(#__){display:flex;flex-wrap:wrap;gap:8px 10px;margin-bottom:12px}
+.foot-col.fp617 a:not(.foot-pole){display:flex}
+footer .foot-caps617 .foot-poles{display:flex;flex-wrap:wrap;gap:8px 10px;margin-bottom:12px}
 .foot-caps617 .foot-svc617{display:flex;flex-wrap:wrap;gap:0 22px}
 .foot-caps617 .foot-svc617 a{margin-bottom:8px}
 html.et-plight .foot-col .foot-sub{color:rgba(18,29,49,.6)}
 html body.hm:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6):not(#a7):not(#a8):not(#a9):not(#a10):not(#a11) :is(main,header.hero) *:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6):not(#a7):not(#a8):not(#a9):not(#a10):not(#a11){-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
-body.hm .diapo:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6):not(#a7):not(#a8):not(#a9):not(#a10):not(#a11),body.hm #aurora i:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6):not(#a7):not(#a8):not(#a9):not(#a10):not(#a11),body.hm .prem-mesh:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6):not(#a7):not(#a8):not(#a9):not(#a10):not(#a11),body.hm .rootland:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6):not(#a7):not(#a8):not(#a9):not(#a10):not(#a11){animation:none!important}
-body.hm #aurora i:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6):not(#a7):not(#a8):not(#a9):not(#a10):not(#a11){filter:blur(48px);will-change:auto}
-html:not(.et-plight):not(.et-jlight) body.hm:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6):not(#a7):not(#a8):not(#a9):not(#a10):not(#a11) :is(main,header.hero) :is(.t550-p,.cb-in,.car546,#c540p,.hxf-face,.dur-c,.hncard,.hcp-i,.agir-c,.doc-c,.nh-kpi>div):not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6):not(#a7):not(#a8):not(#a9):not(#a10):not(#a11){background-color:rgba(6,22,38,.74)!important}
-html:is(.et-plight,.et-jlight) body.hm:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6):not(#a7):not(#a8):not(#a9):not(#a10):not(#a11) :is(main,header.hero) :is(.t550-p,.cb-in,.car546,#c540p,.hxf-face,.dur-c,.hncard,.hcp-i,.agir-c,.doc-c,.nh-kpi>div):not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6):not(#a7):not(#a8):not(#a9):not(#a10):not(#a11){background-color:rgba(255,255,255,.82)!important}html:is(.et-plight,.et-jlight) body.hm:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6):not(#a7):not(#a8):not(#a9):not(#a10):not(#a11) :is(main,header.hero) :is(.t550-p,.cb-in,.car546,#c540p,.hxf-face,.dur-c,.hncard,.hcp-i,.agir-c,.doc-c,.nh-kpi>div):not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6):not(#a7):not(#a8):not(#a9):not(#a10):not(#a11){background-image:linear-gradient(145deg,rgba(255,255,255,.78),rgba(247,249,252,.46))!important;border-color:rgba(255,255,255,.74)!important;box-shadow:0 14px 36px rgba(24,45,67,.07),inset 0 1px 0 rgba(255,255,255,.82);-webkit-backdrop-filter:blur(16px) saturate(128%);backdrop-filter:blur(16px) saturate(128%)}
+body.hm .diapo,body.hm #aurora i,body.hm .prem-mesh,body.hm .rootland{animation:none}
+body.hm #aurora i{filter:blur(48px);will-change:auto}
+html:not(.et-plight):not(.et-jlight) body.hm :is(main,header.hero) :is(.t550-p,.cb-in,.car546,#c540p,.hxf-face,.dur-c,.hncard,.hcp-i,.agir-c,.doc-c,.nh-kpi>div){background-color:rgba(6,22,38,.74)}
+html:is(.et-plight,.et-jlight) body.hm :is(main,header.hero) :is(.t550-p,.cb-in,.car546,#c540p,.hxf-face,.dur-c,.hncard,.hcp-i,.agir-c,.doc-c,.nh-kpi>div){background-color:rgba(255,255,255,.82)}html:is(.et-plight,.et-jlight) body.hm :is(main,header.hero) :is(.t550-p,.cb-in,.car546,#c540p,.hxf-face,.dur-c,.hncard,.hcp-i,.agir-c,.doc-c,.nh-kpi>div){background-image:linear-gradient(145deg,rgba(255,255,255,.78),rgba(247,249,252,.46));border-color:rgba(255,255,255,.74);box-shadow:0 14px 36px rgba(24,45,67,.07),inset 0 1px 0 rgba(255,255,255,.82);-webkit-backdrop-filter:blur(16px) saturate(128%);backdrop-filter:blur(16px) saturate(128%)}
 @media(prefers-reduced-transparency:reduce){html:is(.et-plight,.et-jlight) body.hm :is(.t550-p,.cb-in,.car546,#c540p,.hxf-face,.dur-c,.hncard,.hcp-i,.agir-c,.doc-c,.nh-kpi>div){background:#f7f9fc!important;background-image:none!important;-webkit-backdrop-filter:none;backdrop-filter:none;box-shadow:none!important}}
-.reveal:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6):not(#a7):not(#a8):not(#a9):not(#a10):not(#a11){filter:none!important}
-body.hm .reveal:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6):not(#a7):not(#a8):not(#a9):not(#a10):not(#a11){opacity:1!important;transform:none!important;transition:none!important}
+.reveal{filter:none!important}
+body.hm .reveal{opacity:1!important;transform:none!important;transition:none}
 body.hm main *:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6):not(#a7):not(#a8):not(#a9):not(#a10):not(#a11),body.hm header.hero *:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6):not(#a7):not(#a8):not(#a9):not(#a10):not(#a11){text-shadow:none!important}
 html:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6):not(#a7):not(#a8):not(#a9):not(#a10):not(#a11) :is(main,header.pghero,header.hero) *:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6):not(#a7):not(#a8):not(#a9):not(#a10):not(#a11){-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
 html:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6):not(#a7):not(#a8):not(#a9):not(#a10):not(#a11) :is(main,header.pghero,header.hero) *:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6):not(#a7):not(#a8):not(#a9):not(#a10):not(#a11){text-shadow:none!important}
 .diapo:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6):not(#a7):not(#a8):not(#a9):not(#a10):not(#a11),#aurora i:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6):not(#a7):not(#a8):not(#a9):not(#a10):not(#a11),.prem-mesh:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6):not(#a7):not(#a8):not(#a9):not(#a10):not(#a11),.rootland:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6):not(#a7):not(#a8):not(#a9):not(#a10):not(#a11),.subland:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6):not(#a7):not(#a8):not(#a9):not(#a10):not(#a11){animation:none!important}
-#aurora i:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6):not(#a7):not(#a8):not(#a9):not(#a10):not(#a11){filter:blur(48px);will-change:auto}
-html:not(.et-plight):not(.et-jlight) :is(nav.toc,nav.corp-nav,nav#inv-toc,nav.mkt-nav,nav.pole-subnav,nav.plnav,div#ckn):not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6):not(#a7):not(#a8):not(#a9):not(#a10):not(#a11){background:rgba(6,20,36,.95)!important}
-html:is(.et-plight,.et-jlight) :is(nav.toc,nav.corp-nav,nav#inv-toc,nav.mkt-nav,nav.pole-subnav,nav.plnav,div#ckn):not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6):not(#a7):not(#a8):not(#a9):not(#a10):not(#a11){background:rgba(251,248,242,.96)!important}
+#aurora i{filter:blur(48px);will-change:auto}
+html:not(.et-plight):not(.et-jlight) :is(nav.toc,nav.corp-nav,nav#inv-toc,nav.mkt-nav,nav.pole-subnav,nav.plnav,div#ckn){background:rgba(6,20,36,.95)!important}
+html:is(.et-plight,.et-jlight) :is(nav.toc,nav.corp-nav,nav#inv-toc,nav.mkt-nav,nav.pole-subnav,nav.plnav,div#ckn){background:rgba(251,248,242,.96)!important}
 @media(min-width:1241px){
-#navLinks .nxi616 .nav-trigger:not(#z1):not(#z2):not(#z3):not(#z4):not(#z5):not(#z6):not(#z7):not(#z8),#navLinks .nx-sec .nav-trigger:not(#z1):not(#z2):not(#z3):not(#z4):not(#z5):not(#z6):not(#z7):not(#z8){white-space:nowrap;font-size:13.5px;padding:6px 10px}
+#navLinks .nxi616 .nav-trigger,#navLinks .nx-sec .nav-trigger{white-space:nowrap;font-size:13.5px;padding:6px 10px}
 #navLinks:not(#z1):not(#z2):not(#z3):not(#z4):not(#z5):not(#z6):not(#z7):not(#z8){gap:5px}
 }
 @media(min-width:1241px) and (max-width:1420px){
 .nav-in.nx-bar:not(#z1):not(#z2):not(#z3):not(#z4):not(#z5):not(#z6):not(#z7):not(#z8){padding-left:18px!important;padding-right:18px!important}
-#navLinks .nxi616 .nav-trigger:not(#z1):not(#z2):not(#z3):not(#z4):not(#z5):not(#z6):not(#z7):not(#z8),#navLinks .nx-sec .nav-trigger:not(#z1):not(#z2):not(#z3):not(#z4):not(#z5):not(#z6):not(#z7):not(#z8){font-size:13px;padding:6px 8px}
+#navLinks .nxi616 .nav-trigger,#navLinks .nx-sec .nav-trigger{font-size:13px;padding:6px 8px}
 #navLinks:not(#z1):not(#z2):not(#z3):not(#z4):not(#z5):not(#z6):not(#z7):not(#z8){gap:3px}
 }
 .plmap-nb{fill:none;stroke:rgba(230,236,244,.16);stroke-width:1;stroke-linejoin:round}
@@ -897,8 +897,8 @@ html.et-plight:not([lang="ar"]) .plmap-land, html.et-jlight:not([lang="ar"]) .pl
 html.et-plight:not([lang="ar"]) .plmap-lake, html.et-jlight:not([lang="ar"]) .plmap-lake{fill:rgba(16,64,111,.20)}
 html.et-plight:not([lang="ar"]) .plmap-cty, html.et-jlight:not([lang="ar"]) .plmap-cty{fill:rgba(11,20,34,.42)}
 @media (min-width:1241px) and (max-width:1379px){.nav-links>.nav-item>.nav-trigger>.nxdot{display:none}}
-html:is(.et-plight,.et-jlight) nav.corp-nav a:not(#_):not(#__):not(#___){color:#2A3648!important}
-html:is(.et-plight,.et-jlight) nav.corp-nav a:is(.on,:hover):not(#_):not(#__):not(#___){color:#10161F!important}
+html:is(.et-plight,.et-jlight) nav.corp-nav a{color:#2A3648}
+html:is(.et-plight,.et-jlight) nav.corp-nav a:is(.on,:hover){color:#10161F}
 @media (max-width:1240px){.nav-links>.nav-item>.nav-trigger{justify-content:flex-start;text-align:start}.nav-links>.nav-item>.nav-trigger>svg{margin-inline-start:auto}}
 @font-face{font-family:'Inter';src:url('/assets/fonts/Inter-latin.woff2') format('woff2');font-weight:400 700;font-display:optional;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 @font-face{font-family:'Inter';src:url('/assets/fonts/Inter-latin-ext.woff2') format('woff2');font-weight:400 700;font-display:optional;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
@@ -906,17 +906,17 @@ html:is(.et-plight,.et-jlight) nav.corp-nav a:is(.on,:hover):not(#_):not(#__):no
   .nav-in{padding-inline:max(14px,env(safe-area-inset-left)) max(14px,env(safe-area-inset-right))!important}
   .brand-tx{max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
   .nav-trigger,.nav-links a,.nx-util a{min-height:46px}
-  .nx-mega{width:calc(100vw - 24px)!important;max-width:calc(100vw - 24px)!important;margin-inline:12px!important;box-sizing:border-box!important}
+  .nx-mega{width:calc(100vw - 24px)!important;max-width:calc(100vw - 24px)!important;margin-inline:12px!important;box-sizing:border-box}
   .nx-mega a{min-height:46px!important;padding-block:10px!important}
   .nav-links .nx-mega{border-radius:16px!important}
-  .nxm606,.nxm616{grid-template-columns:1fr!important;gap:8px!important}
-  .nxm606 .nxc-amont,.nxm606 .nxc-integ,.nxm616 .nxc-caps{grid-column:auto!important}
-  .nxm606 .nxg2,.nxm606 .nxg4,.nxm616 .nxg6{grid-template-columns:1fr!important;gap:6px!important}
+  .nxm606,.nxm616{grid-template-columns:1fr;gap:8px}
+  .nxm606 .nxc-amont,.nxm606 .nxc-integ,.nxm616 .nxc-caps{grid-column:auto}
+  .nxm606 .nxg2,.nxm606 .nxg4,.nxm616 .nxg6{grid-template-columns:1fr;gap:6px}
   footer{padding-bottom:calc(24px + env(safe-area-inset-bottom))!important}
 }
 @media(max-width:390px){
   .brand-tx{max-width:145px;font-size:.92rem!important}
-  .nav-in{min-height:60px!important}
+  .nav-in{min-height:60px}
 }
 :where(.nav-trigger,.nav-links a,.nx-util a,.nx-mega a):focus-visible{
   outline:2px solid var(--gold-l,var(--et-gold-brand,#E8C36A))!important;
@@ -1061,7 +1061,7 @@ html:is(.et-plight,.et-jlight) footer{
 
 @media(min-width:1241px){
   /* Les hubs gardent leur richesse éditoriale mais réduisent les vides structurels. */
-  main > section:not(.hero):not(.pghero):not(#_){
+  main > section:not(.hero):not(.pghero){
     scroll-margin-top:128px;
   }
   main > section:not(.hero):not(.pghero):not(#_)+section:not(#_){
@@ -1089,10 +1089,10 @@ html:is(.et-plight,.et-jlight) footer{
 }
 /* Logo transparent (11 oct. 2026) : sans tuile, plus grand, tourné de 45° dans le sens horaire ; pétale crème cerné d’or en thème clair */
 @layer verre{
-#nav .brand-mk,footer .brand-mk{background:none!important;border:0!important;box-shadow:none!important;padding:0!important;border-radius:0!important;width:44px!important;height:44px!important;transform:none}
+#nav .brand-mk,footer .brand-mk{background:none!important;border:0;box-shadow:none!important;padding:0;border-radius:0;width:44px!important;height:44px!important;transform:none}
 #nav .brand-mk::after,#nav .brand-mk::before,footer .brand-mk::after,footer .brand-mk::before{display:none}
 #nav .logo-img,footer .logo-img{background:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%224%204%20192%20192%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%220%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23DBAE4A%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23C2922E%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Cpath%20d%3D%22M100.00%2096.00%20L126.98%2067.90%20A37.4%2037.4%200%201%200%2073.02%2067.90%20Z%22%20fill%3D%22url%28%23g%29%22%2F%3E%3Cpath%20d%3D%22M96.00%20100.00%20L67.90%2073.02%20A37.4%2037.4%200%201%200%2067.90%20126.98%20Z%22%20fill%3D%22%231E6EC2%22%2F%3E%3Cpath%20d%3D%22M104.00%20100.00%20L132.10%20126.98%20A37.4%2037.4%200%201%200%20132.10%2073.02%20Z%22%20fill%3D%22%23218A2C%22%2F%3E%3Cpath%20d%3D%22M100.00%20104.00%20L73.02%20132.10%20A37.4%2037.4%200%201%200%20126.98%20132.10%20Z%22%20fill%3D%22%23F6E8BD%22%2F%3E%3C%2Fsvg%3E") center/contain no-repeat!important;filter:drop-shadow(.71px .71px 1.5px rgba(10,20,34,.25))!important;width:100%;height:100%;transform:rotate(45deg)}
-html.et-plight #nav .logo-img{background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%224%204%20192%20192%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%220%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23DBAE4A%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23C2922E%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Cpath%20d%3D%22M100.00%2096.00%20L126.98%2067.90%20A37.4%2037.4%200%201%200%2073.02%2067.90%20Z%22%20fill%3D%22url%28%23g%29%22%2F%3E%3Cpath%20d%3D%22M96.00%20100.00%20L67.90%2073.02%20A37.4%2037.4%200%201%200%2067.90%20126.98%20Z%22%20fill%3D%22%231E6EC2%22%2F%3E%3Cpath%20d%3D%22M104.00%20100.00%20L132.10%20126.98%20A37.4%2037.4%200%201%200%20132.10%2073.02%20Z%22%20fill%3D%22%23218A2C%22%2F%3E%3Cpath%20d%3D%22M100.00%20104.00%20L73.02%20132.10%20A37.4%2037.4%200%201%200%20126.98%20132.10%20Z%22%20fill%3D%22%23F6E8BD%22%20stroke%3D%22%23C9A24A%22%20stroke-width%3D%225%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E")!important}
+html.et-plight #nav .logo-img{background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%224%204%20192%20192%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%220%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23DBAE4A%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23C2922E%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Cpath%20d%3D%22M100.00%2096.00%20L126.98%2067.90%20A37.4%2037.4%200%201%200%2073.02%2067.90%20Z%22%20fill%3D%22url%28%23g%29%22%2F%3E%3Cpath%20d%3D%22M96.00%20100.00%20L67.90%2073.02%20A37.4%2037.4%200%201%200%2067.90%20126.98%20Z%22%20fill%3D%22%231E6EC2%22%2F%3E%3Cpath%20d%3D%22M104.00%20100.00%20L132.10%20126.98%20A37.4%2037.4%200%201%200%20132.10%2073.02%20Z%22%20fill%3D%22%23218A2C%22%2F%3E%3Cpath%20d%3D%22M100.00%20104.00%20L73.02%20132.10%20A37.4%2037.4%200%201%200%20126.98%20132.10%20Z%22%20fill%3D%22%23F6E8BD%22%20stroke%3D%22%23C9A24A%22%20stroke-width%3D%225%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E")}
 #nav .brand{gap:12px!important}
 @media (max-width:760px){#nav .brand-mk{width:38px!important;height:38px!important}}
 }
@@ -1114,7 +1114,7 @@ html.et-plight #nav .logo-img{background-image:url("data:image/svg+xml,%3Csvg%20
 #nezSheet nav a small{display:block;margin-top:2px;font-weight:400;font-size:13px;opacity:.72}
 #nezSheet nav a:hover,#nezSheet nav a:focus-visible{background:rgba(201,162,74,.14);outline:0}
 #nezSheet nav a.nzs-all{background:rgba(201,162,74,.12);margin-bottom:4px}
-#nezBar.nz-open:not(#_){z-index:10000}
+#nezBar.nz-open{z-index:10000}
 #nezBar.nz-open a.nz-on{background:none;color:rgba(245,247,250,.65)}
 #nezBar.nz-open a.nz-on svg{stroke:currentColor}
 #nezBar a[aria-expanded=true]{color:var(--gold-l,var(--et-gold-200,#f0ce82));background:rgba(217,168,79,.16)}
@@ -1140,5 +1140,5 @@ html:is(.et-plight,.et-jlight) :is(a,button,input,select,textarea,summary,[tabin
 /* et-lot29-verre:start */
 /* Lot 29 (A) : coque niveau 1 pour la page a #nav sans premium-chrome (configurateur) : une seule
    epaisseur de verre, la barre interne ne floute pas. */
-html:not(:has(link#premium-chrome)) #nav.nx .nx-bar{background:transparent!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important;box-shadow:none!important}
+html:not(:has(link#premium-chrome)) #nav.nx .nx-bar{background:transparent!important;-webkit-backdrop-filter:none;backdrop-filter:none;box-shadow:none!important}
 /* et-lot29-verre:end */
