@@ -14,7 +14,11 @@ const paths = ['/', '/amont/', '/investisseurs', '/boutique/clients', '/ar', '/p
 const widths = [390, 1440];
 const themes = [{ name: 'clair', value: '1' }, { name: 'sombre', value: '0' }];
 const CHROME = ['#nav.nx', '#nav.nx .nx-util', 'nav.pp-sub', 'header.arh', 'nav.et-space-header', '#nezBar'];
-const SOLID = ['#nav.nx .pn-mega', '.pp-figs', '#main-content.et-home .et-segments > *', '#main-content.et-home .et-paths > *'];
+// Lot 112 (10 novembre 2026, choix du DG : « verre sur images seulement ») : les cartes posées sur une photo (.im-scene .im-glass,
+// assets/chrome/immersif-2026.css) sont en verre de contenu : teinte à 58 % et flou 18 px à partir de 761 px, teinte à 88 % sans flou
+// en dessous. Les autres surfaces de contenu restent opaques.
+const SOLID = ['#nav.nx .pn-mega', '.pp-figs', '#main-content.et-home .et-paths > *', '#main-content.et-home .et-segments > *:not(.im-glass)'];
+const SCENE = '.im-scene .im-glass';
 
 function alphaOf(color) {
   const m = String(color).match(/rgba?\(([^)]+)\)/);
@@ -53,6 +57,19 @@ test.describe('glass chrome — one rule for every sliding surface', () => {
             }
           };
           check(await read(CHROME, SOLID));
+
+          const scene = await page.evaluate(sel => [...document.querySelectorAll(sel)].map(el => {
+            const cs = getComputedStyle(el); return { background: cs.backgroundColor, filter: cs.backdropFilter };
+          }), SCENE);
+          for (const s of scene) {
+            if (width < 760) {
+              expect(alphaOf(s.background), `${path} ${theme.name} ${width}px : verre de contenu sur mobile`).toBeCloseTo(0.88, 2);
+              expect(s.filter, `${path} ${theme.name} ${width}px : pas de flou de contenu sur mobile`).toBe('none');
+            } else {
+              expect(alphaOf(s.background), `${path} ${theme.name} ${width}px : teinte du verre de contenu`).toBeCloseTo(0.58, 2);
+              expect(s.filter, `${path} ${theme.name} ${width}px : flou du verre de contenu`).toBe('blur(18px) saturate(1.2)');
+            }
+          }
 
           // Après défilement, l'en-tête garde la même règle (pas d'état « scrolled » à part).
           await page.evaluate(() => window.scrollTo(0, 400));

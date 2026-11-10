@@ -20,7 +20,9 @@ const base = process.env.SITE_URL || 'https://enertchad.com/';
 // [page, !important, :not(#…), CSS dans la page (octets), plus longue chaîne de :not(#…)]
 // Cascade étape 2 (8 novembre 2026) : 1 002 !important et 615 chaînes retirés de 9 feuilles ; budgets remesurés à la baisse (CSS_BUDGET_REPORT=1), /ar-societe inchangé (aucune des 9 feuilles n'y est chargée).
 const budgets = [
-  ['/', 2576, 10254, 112054, 44], // lot 106-A : accueil refondu (mesure du 8 novembre 2026, hors contrat de design)
+  // Lot 112 (10 novembre 2026, décision du DG) : direction immersive ; +3 !important (verre des cartes posées sur photo, couche et-verre)
+  // et +238 octets de CSS critique dans la page (repères remontés sous le héros).
+  ['/', 2579, 10254, 112292, 44], // lot 106-A : accueil refondu (mesure du 8 novembre 2026, hors contrat de design)
   ['/index-en', 2616, 10256, 116158, 44], // lot 106-B : accueil EN refondu (mesure du 8 novembre 2026, hors contrat de design)
   ['/amont/', 3475, 20608, 138229, 40],
   ['/aval/raffinage', 3667, 22313, 204074, 40],
