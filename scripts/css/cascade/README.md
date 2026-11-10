@@ -70,5 +70,7 @@ bruit). Ce qui coûte : les sélecteurs dont la partie droite n'est pas triable 
    `?v=` des jeux critiques recalculées. nav_a.css : 484 sélecteurs, 14 règles, 113 → 79 Ko.
 4. Vérification : `cs_verify.py` (260 pages, base contre lot), rejeu en série des écarts, puis `selector_cost.py` avant/après.
 
-Les autres feuilles (bundle_core_a1, x_cd256286824c, bundle_head_b2) portent le reste des 588 sélecteurs : à traiter de la même
-façon. Levier plus fort, plus lourd : remplacer les chaînes de spécificité par des couches `@layer` (avis de l'advisor, registre n° 1329).
+Suite (lot 115, 10 novembre 2026, base 71a5e7f06) : les autres feuilles (bundle_core_a1, x_cd256286824c, bundle_head_b2) portaient le
+reste des 588 sélecteurs. Même commande, sur ces trois feuilles : 94 sélecteurs distincts (172 occurrences), 34 règles, −4,7 Ko ;
+28 jeux critiques mis à jour. Preuves refaites sur l'état du jour : aucune correspondance sur les 248 pages × 3 contextes ; aucune des
+70 classes en cause n'est posée par le code ajouté depuis. `cs_verify.py` sur 10 pages (64 contextes) : identique après rejeu en série. Levier plus fort, plus lourd : remplacer les chaînes de spécificité par des couches `@layer` (avis de l'advisor, registre n° 1329).
