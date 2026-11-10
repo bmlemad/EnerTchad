@@ -24,7 +24,8 @@ const base = process.env.SITE_URL || 'https://enertchad.com/';
 const budgets = [
   // Lot 112 (10 novembre 2026, décision du DG) : direction immersive ; +3 !important (verre des cartes posées sur photo, couche et-verre)
   // et +238 octets de CSS critique dans la page (repères remontés sous le héros).
-  ['/', 2579, 9981, 112292, 44], // lot 106-A : accueil refondu (mesure du 8 novembre 2026, hors contrat de design)
+  // Lot 117 (10 novembre 2026, décision du DG) : la ligne dorée du héros repose sur une pastille sombre (contraste) ; +117 octets de CSS critique.
+  ['/', 2579, 9981, 112409, 44], // lot 106-A : accueil refondu (mesure du 8 novembre 2026, hors contrat de design)
   ['/index-en', 2616, 9983, 116158, 44], // lot 106-B : accueil EN refondu (mesure du 8 novembre 2026, hors contrat de design)
   // Lot 113 (10 novembre 2026, décision du DG) : direction immersive, phase B ; scène « conviction » des pôles posée au build par
   // lib/immersif-poles.js : +7 !important (verre, texte clair, hauteur de la photo ; couche et-verre) et +1 943 octets de CSS en ligne.
