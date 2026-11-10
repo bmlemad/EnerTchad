@@ -19,24 +19,26 @@ const base = process.env.SITE_URL || 'https://enertchad.com/';
 
 // [page, !important, :not(#…), CSS dans la page (octets), plus longue chaîne de :not(#…)]
 // Cascade étape 2 (8 novembre 2026) : 1 002 !important et 615 chaînes retirés de 9 feuilles ; budgets remesurés à la baisse (CSS_BUDGET_REPORT=1), /ar-societe inchangé (aucune des 9 feuilles n'y est chargée).
+// Cascade étape 3 (lot 109, 10 novembre 2026) : 484 sélecteurs morts retirés de nav_a.css (sans correspondance sur les 248 pages et
+// dont une classe n'est posée par aucun code du dépôt) ; 273 sélecteurs :not(#…) de moins par page, plafonds abaissés d'autant.
 const budgets = [
   // Lot 112 (10 novembre 2026, décision du DG) : direction immersive ; +3 !important (verre des cartes posées sur photo, couche et-verre)
   // et +238 octets de CSS critique dans la page (repères remontés sous le héros).
-  ['/', 2579, 10254, 112292, 44], // lot 106-A : accueil refondu (mesure du 8 novembre 2026, hors contrat de design)
-  ['/index-en', 2616, 10256, 116158, 44], // lot 106-B : accueil EN refondu (mesure du 8 novembre 2026, hors contrat de design)
-  ['/amont/', 3475, 20608, 138229, 40],
-  ['/aval/raffinage', 3667, 22313, 204074, 40],
-  ['/carrieres', 3682, 22379, 214953, 40],
+  ['/', 2579, 9981, 112292, 44], // lot 106-A : accueil refondu (mesure du 8 novembre 2026, hors contrat de design)
+  ['/index-en', 2616, 9983, 116158, 44], // lot 106-B : accueil EN refondu (mesure du 8 novembre 2026, hors contrat de design)
+  ['/amont/', 3475, 20335, 138229, 40],
+  ['/aval/raffinage', 3667, 22040, 204074, 40],
+  ['/carrieres', 3682, 22106, 214953, 40],
   // PR #139 added the 480-byte after-enquiry block before this design change.
-  ['/contact', 3584, 21712, 190290, 40],
-  ['/carnets', 3334, 19338, 164851, 40],
-  ['/journal-criblage-eor', 2526, 10288, 149912, 40],
-  ['/atlas/', 3129, 18959, 175917, 46],
-  ['/boutique/', 2926, 18236, 121161, 40],
+  ['/contact', 3584, 21439, 190290, 40],
+  ['/carnets', 3334, 19065, 164851, 40],
+  ['/journal-criblage-eor', 2526, 10015, 149912, 40],
+  ['/atlas/', 3129, 18686, 175917, 46],
+  ['/boutique/', 2926, 17963, 121161, 40],
   // Lot 108 (9 novembre 2026, décision du DG) : menu mobile arabe, en-tête mobile de 160 à 64 px ; le premier écran montre
   // plus de contenu, la CSS critique écrite dans la page reprend donc plus de règles existantes (+15 !important, +486 :not(#…), +8 003 octets).
   ['/ar-societe', 2450, 21103, 75112, 40],
-  ['/essentiel', 3172, 18651, 133813, 40],
+  ['/essentiel', 3172, 18378, 133813, 40],
 ];
 
 const notIdPattern = /:not\(#[\w-]+\)/g;
