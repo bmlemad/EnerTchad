@@ -12,7 +12,7 @@ for(const language of ['fr','en'])for(const width of [320,1440]){
     await expect(cards.first().locator('time')).toHaveAttribute('datetime',/^\d{4}-\d{2}-\d{2}$/);
     expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+2)).toBe(true);
     await cards.first().locator('.et-project-contact').click();
-    const key='intervention-ep';
+    const key='mini-raffineries'; // lot 110 (9 novembre 2026) : la mini-raffinerie est le premier projet phare, première carte (décision du DG)
     await expect(page.locator('#et-enquiry-context')).toContainText(data.projects[key][language]);
     expect(await page.locator('#et-enquiry-summary').inputValue()).toContain(data.projects[key][language]);
     const other=await page.locator('#nav a.nx-lang').getAttribute('href');expect(other).toContain('projet='+key);
