@@ -26,7 +26,9 @@ const budgets = [
   // et +238 octets de CSS critique dans la page (repères remontés sous le héros).
   ['/', 2579, 9981, 112292, 44], // lot 106-A : accueil refondu (mesure du 8 novembre 2026, hors contrat de design)
   ['/index-en', 2616, 9983, 116158, 44], // lot 106-B : accueil EN refondu (mesure du 8 novembre 2026, hors contrat de design)
-  ['/amont/', 3475, 20335, 138229, 40],
+  // Lot 113 (10 novembre 2026, décision du DG) : direction immersive, phase B ; scène « conviction » des pôles posée au build par
+  // lib/immersif-poles.js : +7 !important (verre, texte clair, hauteur de la photo ; couche et-verre) et +1 943 octets de CSS en ligne.
+  ['/amont/', 3482, 20335, 140172, 40],
   ['/aval/raffinage', 3667, 22040, 204074, 40],
   ['/carrieres', 3682, 22106, 214953, 40],
   // PR #139 added the 480-byte after-enquiry block before this design change.

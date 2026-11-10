@@ -10,7 +10,7 @@ const { test, expect } = require('@playwright/test');
 // dans les deux thèmes, à 390 et 1440 px, en haut de page puis après défilement (état « scrolled »).
 
 const base = process.env.SITE_URL || 'https://enertchad.com/';
-const paths = ['/', '/amont/', '/investisseurs', '/boutique/clients', '/ar', '/publications'];
+const paths = ['/', '/amont/', '/pole-aval-en', '/investisseurs', '/boutique/clients', '/ar', '/publications']; // /pole-aval-en : lot 113, scène des pôles en EN
 const widths = [390, 1440];
 const themes = [{ name: 'clair', value: '1' }, { name: 'sombre', value: '0' }];
 const CHROME = ['#nav.nx', '#nav.nx .nx-util', 'nav.pp-sub', 'header.arh', 'nav.et-space-header', '#nezBar'];
