@@ -51,3 +51,24 @@ disparaissent et les 6 restants sont de la gigue de mesure (largeurs à 0,03–0
 différents). Ne pas lancer `cs_verify.py` en plusieurs processus sur une machine à deux cœurs sans rejouer les écarts
 en série : la charge fait apparaître des écarts de transition dans les deux sens. Un test qui épingle une chaîne
 littérale d'une feuille traitée doit être mis à jour (cas de `qa/site.spec.js`, règle `.fil552 ~ .pole-subnav`).
+
+## Étape 3 (10 novembre 2026, base c38bb6397) : coût des sélecteurs, sélecteurs morts de nav_a.css
+
+Mesure de laboratoire du 9 novembre (registre n° 1328) : 350 à 600 ms de calcul de style par chargement sur les pages FR. Ni la
+duplication critique ni la longueur des chaînes `:not(#…)` n'expliquent ce coût (essais au travers d'un proxy : gain noyé dans le
+bruit). Ce qui coûte : les sélecteurs dont la partie droite n'est pas triable par classe, testés contre tous les éléments.
+
+1. `python3 scripts/css/cascade/selector_cost.py <base> <sortie> [--runs 3] <page>…` — trace Chromium « SelectorStats » par page ×
+   390/1440 px × clair/sombre ; temps, essais et correspondances par sélecteur, rattachés à leur feuille ou bloc `<style>`.
+   Référence sur 14 pages : 25,3 s cumulées sur 112 contextes ; 1 020 sélecteurs sans correspondance sur ces pages.
+2. Deux preuves indépendantes pour déclarer un sélecteur mort : aucune correspondance sur les 248 pages du plan du site (1440 clair
+   et sombre, 390 clair ; pseudo-classes dynamiques retirées ; jetons d'état de `state_tokens.json` comptés vivants) ; et au moins
+   une classe requise que n'écrit aucun code du dépôt (attribut `class`, `className`, `classList`, `setAttribute`, générateurs
+   Python). 588 sélecteurs retenus : `work3/dead_proved.json`.
+3. `node scripts/css/prune_dead_selectors.mjs scripts/css/cascade/work3/dead_proved.json nav_a.css --apply` — retire ces sélecteurs
+   des listes (une règle dont tous les sélecteurs sont morts disparaît) ; comparaison dans la sérialisation de Chromium ; empreintes
+   `?v=` des jeux critiques recalculées. nav_a.css : 484 sélecteurs, 14 règles, 113 → 79 Ko.
+4. Vérification : `cs_verify.py` (260 pages, base contre lot), rejeu en série des écarts, puis `selector_cost.py` avant/après.
+
+Les autres feuilles (bundle_core_a1, x_cd256286824c, bundle_head_b2) portent le reste des 588 sélecteurs : à traiter de la même
+façon. Levier plus fort, plus lourd : remplacer les chaînes de spécificité par des couches `@layer` (avis de l'advisor, registre n° 1329).
