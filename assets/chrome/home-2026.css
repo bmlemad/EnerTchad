@@ -171,6 +171,23 @@ html:not(.et-plight,.et-jlight) #main-content.et-home{
   #main-content.et-home.hm-review .hm-route h3::after{transition:none}
 }
 
+/* Lot 116 (10 novembre 2026, décision du DG : accueil allégé de moitié) : bande finale, quatre sorties vers les pages internes. */
+#main-content.et-home.hm-review #aller-plus-loin h2{margin:0 0 28px;font-size:clamp(1.75rem,3vw,2.5rem)}
+#main-content.et-home.hm-review .hm-exits{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--hm-line)}
+#main-content.et-home.hm-review .hm-exits a{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:96px;padding:20px;font-size:1.1rem;font-weight:600;text-decoration:none;border-bottom:1px solid var(--hm-line)}
+#main-content.et-home.hm-review .hm-exits a:first-child{padding-left:0}
+#main-content.et-home.hm-review .hm-exits a+a{border-left:1px solid var(--hm-line)}
+#main-content.et-home.hm-review .hm-exits a:hover{text-decoration:underline;text-underline-offset:.3em}
+@media (max-width:900px){
+  #main-content.et-home.hm-review .hm-exits{grid-template-columns:repeat(2,minmax(0,1fr))}
+  #main-content.et-home.hm-review .hm-exits a:nth-child(odd){padding-left:0;border-left:0}
+}
+@media (max-width:560px){
+  #main-content.et-home.hm-review .hm-exits{grid-template-columns:1fr}
+  #main-content.et-home.hm-review .hm-exits a{min-height:64px;padding-left:0}
+  #main-content.et-home.hm-review .hm-exits a+a{border-left:0}
+}
+
 /* Largeurs intermédiaires et mobile. */
 @media (max-width:1100px){
   #main-content.et-home.hm-review .et-segments{grid-template-columns:repeat(2,minmax(0,1fr))}
@@ -192,8 +209,14 @@ html:not(.et-plight,.et-jlight) #main-content.et-home{
   #main-content.et-home.hm-review .et-hero-media figcaption{font-size:.62rem;right:16px}
   #main-content.et-home.hm-review .et-actions{align-items:stretch;flex-direction:column}
   #main-content.et-home.hm-review .et-actions a{justify-content:center;text-align:center}
-  #main-content.et-home.hm-review .et-segments{grid-template-columns:1fr}
-  #main-content.et-home.hm-review .et-segments .et-seg-img{aspect-ratio:16/8}
+  /* Lot 116 : sur mobile, chaque maillon tient sur une ligne — vignette à gauche, nom, chiffre visé et lien à droite. */
+  #main-content.et-home.hm-review .et-segments{grid-template-columns:1fr;gap:12px}
+  #main-content.et-home.hm-review .et-segments article{display:grid;grid-template-columns:108px minmax(0,1fr);grid-template-rows:auto auto 1fr;padding:0}
+  #main-content.et-home.hm-review .et-segments .et-seg-img{grid-column:1;grid-row:1/4;width:108px;height:100%;aspect-ratio:auto;margin:0}
+  #main-content.et-home.hm-review .et-segments :is(h3,p,a){grid-column:2;margin-inline:16px}
+  #main-content.et-home.hm-review .et-segments h3{margin-top:14px;font-size:1.05rem}
+  #main-content.et-home.hm-review .et-segments .hm-cible{margin-top:0;padding-top:8px}
+  #main-content.et-home.hm-review .et-segments article>a{margin-top:2px;margin-bottom:4px}
   #main-content.et-home.hm-review .hm-five,#main-content.et-home.hm-review .hm-route{grid-template-columns:1fr}
   #main-content.et-home.hm-review .hm-figures b{font-size:clamp(2.75rem,14vw,3.75rem)}
   #main-content.et-home.hm-review #vision h2{font-size:clamp(2rem,9vw,2.75rem)}
