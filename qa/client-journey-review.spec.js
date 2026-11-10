@@ -5,7 +5,10 @@ for(const en of [false,true])for(const width of [320,1440]){
   test(`forms, anchors and interactive — home enquiry continuity ${en?'en':'fr'} ${width}`,async({browser})=>{
     const page=await browser.newPage({viewport:{width,height:900}});
     await page.goto(new URL(en?'/index-en':'/',base).href);await consent(page);
-    const links=page.locator('#besoin-client .hm-contact');await expect(links).toHaveCount(3);
+    // Lot 116 (10 novembre 2026) : les trois besoins se lisent sur la page Clients ; le bouton du héros y mène.
+    await page.locator('.et-hero a.et-primary').click();
+    await expect(page).toHaveURL(en?/\/boutique\/en\/clients#besoin-client$/:/\/boutique\/clients#besoin-client$/);await consent(page);
+    const links=page.locator('#besoin-client .ec-contact');await expect(links).toHaveCount(3);
     for(const [i,sector] of ['industrie-chantiers','transport-flottes','operateurs-petroliers'].entries()){
       const url=new URL(await links.nth(i).getAttribute('href'),base);
       expect(url.searchParams.get('secteur')).toBe(sector);

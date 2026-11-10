@@ -21,8 +21,11 @@ test.describe('immersive pole hubs — conviction scene and status pills', () =>
       await page.setViewportSize({ width: 390, height: 844 });
       const response = await page.goto(new URL(path, base).href, { waitUntil: 'domcontentloaded', timeout: 45000 });
       expect(response && response.status(), path).toBe(200);
-      const report = await page.evaluate(() => {
+      const report = await page.evaluate(async () => {
         const scene = document.querySelector('#conviction.im-scene');
+        // La section est en content-visibility:auto : hors écran, son contenu n'est pas mis en page et la photo mesure 0.
+        // On l'amène à l'écran et on attend deux images avant de mesurer (contrat instable sinon, relevé au lot 116).
+        if (scene) { scene.scrollIntoView(); await new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r))); }
         const bg = scene && scene.querySelector(':scope > img.im-bg');
         const glass = scene && scene.querySelector('.pp-sig.im-glass');
         const text = glass && glass.querySelector('p');

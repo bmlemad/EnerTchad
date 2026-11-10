@@ -4,11 +4,11 @@ const base = process.env.SITE_URL || 'https://enertchad.com/';
 
 const cases = [
   ['/', [
-    ['.et-hero a.et-primary[href="#besoin-client"]', 'Présenter un besoin professionnel'],
+    ['.et-hero a.et-primary[href="/boutique/clients#besoin-client"]', 'Présenter un besoin professionnel'],
     ['.et-hero a.et-secondary[href="/projets#avancement"]', 'Projets et avancement'],
   ]],
   ['/index-en', [
-    ['.et-hero a.et-primary[href="#besoin-client"]', 'Discuss a business requirement'],
+    ['.et-hero a.et-primary[href="/boutique/en/clients#besoin-client"]', 'Discuss a business requirement'],
     ['.et-hero a.et-secondary[href="/projets-en#avancement"]', 'Projects and status'],
   ]],
   ['/societe', [

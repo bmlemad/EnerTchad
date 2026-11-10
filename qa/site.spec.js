@@ -304,12 +304,15 @@ test('hubs — liens internes accessibles et sans 4xx/5xx', async ({ request }) 
 
 
 test('trust center — FR / EN / AR', async ({ browser }) => {
+  // Lot 116 (10 novembre 2026) : sur les accueils FR et EN, les sorties vers les pages de confiance tiennent dans la bande finale
+  // (quatre liens) ; l'accueil arabe garde sa section « ph-trust » à cinq liens jusqu'au lot 106-C.
   const cases = [
-    ['/', 'fr'],
-    ['/index-en', 'en'],
-    ['/ar', 'ar'],
+    ['/', 'fr', 'plus-loin-title', 4],
+    ['/index-en', 'en', 'plus-loin-title', 4],
+    ['/ar', 'ar', 'ph-trust', 5],
   ];
-  for (const [path, lang] of cases) {
+  for (const [path, lang, label, count] of cases) {
+    const trust = `section[aria-labelledby="${label}"]`;
     const page = await browser.newPage({ viewport: { width: 390, height: 844 }, deviceScaleFactor: 1 });
     const errors = [];
     page.on('console', msg => { if (msg.type() === 'error') errors.push('console: ' + msg.text()); });
@@ -318,13 +321,13 @@ test('trust center — FR / EN / AR', async ({ browser }) => {
     expect(response, path).not.toBeNull();
     expect(response.status(), path).toBe(200);
     await expect(page.locator('html').first(), path).toHaveAttribute('lang', lang);
-    await expect(page.locator('section[aria-labelledby="ph-trust"]').first(), path).toBeVisible();
-    await expect(page.locator('section[aria-labelledby="ph-trust"] a[href]'), path).toHaveCount(5);
-    await expect(page.locator('section[aria-labelledby="ph-trust"] a[href]').first(), path).toHaveAttribute('href', /.+/);
-    const state = await page.evaluate(() => ({
+    await expect(page.locator(trust).first(), path).toBeVisible();
+    await expect(page.locator(trust + ' a[href]'), path).toHaveCount(count);
+    await expect(page.locator(trust + ' a[href]').first(), path).toHaveAttribute('href', /.+/);
+    const state = await page.evaluate(selector => ({
       overflow: document.documentElement.scrollWidth > document.documentElement.clientWidth + 1,
-      links: [...document.querySelectorAll('section[aria-labelledby="ph-trust"] a[href]')].map(a => a.getAttribute('href')),
-    }));
+      links: [...document.querySelectorAll(selector + ' a[href]')].map(a => a.getAttribute('href')),
+    }), trust);
     expect(state.overflow, path).toBeFalsy();
     expect(state.links.every(Boolean), path).toBeTruthy();
     expect(errors, path).toEqual([]);
