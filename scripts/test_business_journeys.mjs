@@ -17,7 +17,9 @@ test('eight project records preserve status, prerequisites and evidence while ex
     const cards=all.filter(n=>n.attribs?.['data-project-reference']);assert.equal(cards.length,8);
     assert.equal(all.filter(n=>n.attribs?.class==='et-project-date').length,8);
     assert.equal(all.filter(n=>n.attribs?.class==='et-project-proof').length,8);
-    assert.equal(all.filter(n=>n.name==='time'&&n.attribs.datetime==='2026-10-08').length,8);
+    // Lot 116 : la feuille de route, déplacée de l'accueil, porte aussi la date du 8 octobre 2026 ; le compte ne porte que sur les fiches de projet.
+    const inCard=n=>{for(let p=n.parent;p;p=p.parent)if(p.attribs?.['data-project-reference'])return true;return false;};
+    assert.equal(all.filter(n=>n.name==='time'&&n.attribs.datetime==='2026-10-08'&&inCard(n)).length,8);
     for(const key of Object.keys(data.projects)){
       assert(all.some(n=>n.attribs?.id==='projet-'+key));
       assert(all.some(n=>n.name==='a'&&n.attribs.href===`/contact${lang==='en'?'-en':''}?profil=partenariat&projet=${key}#ctForm`));
