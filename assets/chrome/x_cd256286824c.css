@@ -679,7 +679,6 @@ a.back{
    Voir MAINTENANCE.md section 24.
    ============================================================ */
 @media (max-width:640px){
-a.cp span,
 a.isv-l span,
 a.prof p,
 details.cm-more li,
@@ -688,24 +687,20 @@ div.atlas-timeline p,
 div.bit-grid p,
 div.bx263 p,
 div.bx291 span,
-div.bx325 p,
 div.bx339 p,
 div.bx344 p,
 div.bx359 p,
 div.bx365 p,
 div.bx374 p,
 div.bx410 p,
-div.bx416 div,
 div.bx482 p,
 div.bx95 p,
-div.carbon-grid div,
 div.card-m p,
 div.card div,
 div.ce-card span,
 div.comm-grid p,
 div.ct-grid p,
 div.eor-grid p,
-div.esg-card div,
 div.esg3-grid li,
 div.expand-grid li,
 div.fam6 span,
@@ -724,7 +719,6 @@ div.ppt-card span,
 div.prod-b2b p,
 div.qx3_54 p,
 div.reg-grid p,
-div.rh-card div,
 div.scard span,
 div.sect-row div,
 div.stp p,
@@ -796,12 +790,10 @@ div.glow-card:not(#_):not(#__) p,
 div.glow-card:not(#_):not(#__) span,
 div.gov-c:not(#_):not(#__) p,
 div.hp:not(#_):not(#__) li,
-div.mkt-brand:not(#_):not(#__) p,
 div.pj:not(#_):not(#__) p,
 div.term:not(#_):not(#__) dd,
 div.tri-biz:not(#_):not(#__) p,
 div.tri-c:not(#_):not(#__) p,
-li.bx194:not(#_):not(#__) span,
 table.esg-t:not(#_):not(#__) td{font-size:15.2px!important;line-height:1.6!important}
 div.hp p{font-size:14.8px;line-height:1.7}
 div.acq-card p{font-size:15.2px;line-height:1.64}
@@ -1087,16 +1079,9 @@ input[type=range]:focus-visible{
 /* Ch323 — 1. Le minimum automatique d'un element de grille vaut son min-content :
    un enfant indivisible (bouton insecable, champ, mot long) fait grossir la piste
    au-dela de la fenetre, et le contenu sort de l'ecran sans que la page defile. */
-.ep-models>*,.ms-usecases>*,.prod-synth>*,.modref-grid>*,.client-grid>*,.tech-grid>*,.prod-b2b>*,
-.truck-grid>*,.carbon-grid>*,.regime-grid>*,.rd-axes>*,.chain-grid>*,.fin-grid>*,.appfeat-grid>*,
-.maint-grid>*,.taskforce-grid>*,.htech-grid>*,.buy-grid>*,.univ-grid>*,.hub-grid>*,.recomp-grid>*,
-.welltype-grid>*,.bit-grid>*,.viz-grid>*,.vc-grid>*,.gt-grid>*,.flotte-grid>*,.compare-grid>*,
-.pole-grid>*,.plc-grid>*,.biz-grid>*,.ppt-grid>*,.pof-grid>*,.sb-grid>*,.ttg-g>*,.hxi-grid>*,
-.ce-grid>*,.zk-grid>*,.hnews-grid>*,.pipe-ops>*,.profiles>*,.ckpis>*,.steps>*,.fx2g>*,
-.cli-deep>*,.vb-grid>*,.mkt-brands>*{min-width:0}
+.ms-usecases>*,.modref-grid>*,.client-grid>*,.tech-grid>*,.truck-grid>*,.regime-grid>*,.appfeat-grid>*,.maint-grid>*,.hub-grid>*,.flotte-grid>*,.compare-grid>*,.pipe-ops>*{min-width:0}
 /* la grille ESG des brochures imbrique grille dans flex : le plancher doit tomber a chaque etage */
-.esg3-grid,.esg3-grid *{min-width:0}
-.esg3-grid :where(li,p,strong,span){overflow-wrap:break-word}
+.esg3-grid{min-width:0}
 /* 2. un bouton insecable ne doit jamais depasser son conteneur */
 .btn{max-width:100%}
 @media(max-width:1040px){.btn,.fcta{white-space:normal}}
