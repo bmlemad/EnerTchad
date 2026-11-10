@@ -7,7 +7,8 @@ import re
 import unittest
 from apply_home_major_review import ROOT, home, progress, plain
 
-NEW_ORDER=['id="besoin-client"','id="vision"','id="chaine"','id="reperes"','id="gouvernance-accueil"','id="feuille-de-route"','id="impact"','id="home-publications"']
+# Lot 112 (10 novembre 2026, direction immersive choisie par le DG) : repères en bande de données sous le héros, premier projet phare après les trois besoins.
+NEW_ORDER=['id="reperes"','id="besoin-client"','id="projet-phare"','id="vision"','id="chaine"','id="gouvernance-accueil"','id="feuille-de-route"','id="impact"','id="home-publications"']
 
 class HomepageReview(unittest.TestCase):
  def check_common(self,s,main,en):
