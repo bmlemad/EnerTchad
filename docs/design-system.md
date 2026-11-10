@@ -20,6 +20,7 @@ historiques. Les sous-sites héritent du même contrat lors de leur génération
 | Conteneur | 1 240 px au maximum | Alignements éditoriaux ; cartes et applications gardent leur propre espace |
 | Sections | 48 à 80 px ; 40 px sur mobile | Sections compactes et offres clients |
 | Cartes | Arrondi 16 px, ombre légère, sans flou | Offres, fiches, informations utiles |
+| Cartes sur photo | Verre de contenu : teinte 58 %, flou 18 px, filet 1 px ; sous 760 px, teinte 88 % sans flou ; opaque 96 % si transparence réduite | Seulement dans une scène à photo de fond (`.im-scene .im-glass`, lot 112) |
 | Contrôles | Arrondi 10 px ; hauteur d’action 48 px | Boutons et champs de contact |
 | Groupes d’actions | Écart 12 px, retour à la ligne | Éviter les boutons coupés sur mobile |
 | Focus | Contour visible 3 px, écart 4 px | Liens, boutons, champs, résumés, curseurs |
@@ -29,7 +30,9 @@ historiques. Les sous-sites héritent du même contrat lors de leur génération
 Un bouton principal sert l’action de la section. Les liens secondaires conservent
 un traitement plus discret et un libellé explicite. Les cartes de lecture utilisent
 des fonds solides. Le verre reste réservé aux surfaces de navigation déjà gérées
-par `verre-2026.css`, dont le repli sans transparence est conservé. Aucun flou n’est
+par `verre-2026.css`, dont le repli sans transparence est conservé, et, depuis le lot 112
+(choix du DG, 10 novembre 2026), aux cartes posées sur une photo de fond (`immersif-2026.css`) :
+une carte de lecture sur fond uni garde un fond solide. Aucun flou n’est
 ajouté aux blocs de texte. Les animations des composants harmonisés sont supprimées
 si le visiteur demande une réduction des mouvements. Les couleurs système restent
 disponibles en contraste forcé.
