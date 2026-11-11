@@ -577,20 +577,3 @@ body:has(main.ppl) #nav .nav-in,body:has(main.ppl) #nav .nx-bar{background:trans
 body:has(main.ppl) #nav .nav-links>.nav-item,body:has(main.ppl) #nav .nav-links>.nav-item>a,body:has(main.ppl) #nav .nav-links>.nav-item>button{background:transparent!important;box-shadow:none!important;border-color:transparent!important;-webkit-backdrop-filter:none;backdrop-filter:none!important}
 main.ppl .pp-hero .pp-figs{border:1px solid rgba(255,255,255,.18)!important;border-top-color:rgba(255,255,255,.3)!important;border-radius:18px!important;padding:6px 22px!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.22),0 18px 40px -24px rgba(0,0,0,.6)!important}
 }
-
-/* Surcharges ecrites dans @layer et-verre. Mesure : sur le site construit (npm run build, branche ovh-static), le
-   CSS en ligne declare et-verre en premier sur 275 pages sur 278 ; pour les !important, la premiere couche declaree
-   l'emporte. Sur les pages sources de main, c'est et-glass qui est declaree en premier (bundle_head_b2.css) : ces
-   surcharges n'y gagnent pas, le rendu de reference est celui du build. */
-/* Direction editoriale (DG, 10 novembre 2026) — gabarit .ppl : titres en Instrument Serif, actions a aretes vives,
-   action principale du heros en or. Sur le site construit, et-design-system et et-glass fixent la police, la graisse et la taille des h1 et h2 de
-   #main-content en !important ; et-verre prime sur les deux.
-   Pages arabes exclues des regles de titre : Instrument Serif n'a pas de glyphes arabes et un interlettrage
-   negatif casse les ligatures ; elles gardent Noto Naskh Arabic. */
-@layer et-verre{
-html[data-et-modern]:not([lang="ar"]) #main-content.ppl h1,html[data-et-modern]:not([lang="ar"]) #main-content.ppl h2:not(.pp-k){font-family:'Instrument Serif',"Instrument Serif Fallback G","Instrument Serif Fallback T","Instrument Serif Fallback N","Instrument Serif Fallback D",Georgia,'Times New Roman',serif!important;font-weight:400!important}
-html[data-et-modern]:not([lang="ar"]) #main-content.ppl h1{font-size:clamp(2.75rem,5.8vw,5.5rem)!important;letter-spacing:-.015em!important;line-height:1!important}
-html[data-et-modern]:not([lang="ar"]) #main-content.ppl h2:not(.pp-k){font-size:clamp(2rem,3.6vw,3rem)!important;letter-spacing:-.01em!important;line-height:1.06!important}
-main.ppl :is(.pp-btn,.pp-link){border-radius:0!important}
-main.ppl .pp-hero .pp-btn-light{background:#E3BC62!important;color:#0A1220!important;border-color:#E3BC62!important}
-}
