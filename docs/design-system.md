@@ -21,9 +21,25 @@ historiques. Les sous-sites héritent du même contrat lors de leur génération
 | Sections | 48 à 80 px ; 40 px sur mobile | Sections compactes et offres clients |
 | Cartes | Arrondi 16 px, ombre légère, sans flou | Offres, fiches, informations utiles |
 | Cartes sur photo | Verre de contenu : teinte 58 %, flou 18 px, filet 1 px ; sous 760 px, teinte 88 % sans flou ; opaque 96 % si transparence réduite | Seulement dans une scène à photo de fond (`.im-scene .im-glass`, lot 112) |
-| Contrôles | Arrondi 10 px ; hauteur d’action 48 px | Boutons et champs de contact |
+| Contrôles | Arêtes vives (rayon 0) ; hauteur d’action 48 px | Boutons et champs de contact (direction éditoriale, 11 novembre 2026) |
 | Groupes d’actions | Écart 12 px, retour à la ligne | Éviter les boutons coupés sur mobile |
 | Focus | Contour visible 3 px, écart 4 px | Liens, boutons, champs, résumés, curseurs |
+
+## Direction éditoriale (décision du DG, 10 novembre 2026)
+
+Elle remplace la direction immersive du lot 112 sur l’accueil et fixe l’allure des titres, de la barre de
+navigation et du pied de page sur le reste du site.
+
+| Élément | Règle | Source |
+| --- | --- | --- |
+| Accueil | Bandes pleines alternées : papier #F5F0E6 (papier nuit #101B2E en thème sombre) et encre #0A1220 ; plus de photo de fond ni de carte en verre dans « Quatre maillons » et « Direction et gouvernance » ; filets 1 px | `immersif-2026.css`, bloc « direction éditoriale » |
+| Titres | Instrument Serif, graisse 400 : `h1` et `h2` du gabarit `.ppl` (hors `.pp-k`), titres de l’accueil ; pages arabes exclues (Noto Sans Arabic) | `pole-premium.css`, `immersif-2026.css` |
+| Actions | Arêtes vives ; action principale des héros en or #E3BC62 sur encre #0A1220 | `design-system.css` (`--et-ui-control-radius`), `pole-premium.css` |
+| Barre de navigation | Rubriques à plat, sans pilule, à partir de 1241 px ; rubrique courante soulignée d’un filet or ; tiroir mobile inchangé | `premium-chrome.css` |
+| Pied de page | Devise en grand serif (hors pages arabes), colonnes à plat sur filets | `premium-chrome.css` |
+
+Ces surcharges sont écrites dans `@layer et-verre`, première couche déclarée des pages construites. Le verre de
+contenu reste la règle des scènes des pôles (`.im-scene .im-glass` hors accueil).
 
 ## Hiérarchie et états
 
