@@ -237,5 +237,5 @@ html body.hm:has(#nav) #nav.nav.nx:not(.scrolled):not(:focus-within):not(:has(.n
 html body.hm:has(#nav) #nav.nav.nx:not(.scrolled):not(:focus-within):not(:has(.nav-item:hover)):not(.open):not(:has([aria-expanded="true"],.open)) span.bz{background:#F3F1EC!important}
 html body.hm:has(#nav) #nav.nav.nx:not(.scrolled):not(:focus-within):not(:has(.nav-item:hover)):not(.open):not(:has([aria-expanded="true"],.open)) :is(#mLang,#mLang b){-webkit-text-fill-color:#F3F1EC!important}
 html body.hm:has(#nav) #nav.nav.nx:not(.scrolled):not(:focus-within):not(:has(.nav-item:hover)):not(.open):not(:has([aria-expanded="true"],.open)) .brand .s{background-image:linear-gradient(110deg,#F3F1EC 0%,#E9C77A 60%,var(--et-gold-300,#D9B567) 100%)!important}
-html body.hm:has(#nav) #nav.nav.nx:not(.scrolled):not(:focus-within):not(:has(.nav-item:hover)):not(.open):not(:has([aria-expanded="true"],.open)) :is(.nx-util-in,.nav-links,.nav-search,.nav-tog){ background:rgba(243,241,236,.08)!important;box-shadow:inset 0 0 0 1px rgba(243,241,236,.16)!important}
+html body.hm:has(#nav) #nav.nav.nx:not(.scrolled):not(:focus-within):not(:has(.nav-item:hover)):not(.open):not(:has([aria-expanded="true"],.open)) :is(.nx-util-in,.nav-search,.nav-tog){ background:rgba(243,241,236,.08)!important;box-shadow:inset 0 0 0 1px rgba(243,241,236,.16)!important}
 }

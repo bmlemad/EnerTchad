@@ -846,13 +846,14 @@ body:has(#nav) a.et-skip:focus,body:has(#nav) a.et-skip:focus-visible,body:has(#
 @layer verre{
 
 @media (min-width:1241px){
-html:is(.et-plight,.et-jlight) body:has(#nav) #nav .nav-links{background:rgba(16,26,44,.05)!important;border-radius:999px!important;padding:4px 6px!important;box-shadow:inset 0 2px 5px rgba(16,26,44,.18),inset 0 -1px 0 rgba(255,255,255,.75),0 1px 0 rgba(255,255,255,.55)!important;gap:2px!important}
-html:is(.et-plight,.et-jlight) body:has(#nav) #nav .nav-links .nav-trigger{border-radius:999px!important;-webkit-backdrop-filter:none;backdrop-filter:none!important}
-html:is(.et-plight,.et-jlight) body:has(#nav) #nav .nav-links .nav-trigger:hover,html:is(.et-plight,.et-jlight) body:has(#nav) #nav .nav-links .nav-trigger.is-active,html:is(.et-plight,.et-jlight) body:has(#nav) #nav .nav-links .nav-trigger[aria-expanded="true"]{background:rgba(16,26,44,.07)!important;box-shadow:inset 0 2px 4px rgba(16,26,44,.22),inset 0 -1px 0 rgba(255,255,255,.6)!important}
+html:is(.et-plight,.et-jlight) body:has(#nav) #nav .nav-links{background:transparent!important;border-radius:0!important;padding:4px 6px!important;box-shadow:none!important;gap:2px!important}
+html:is(.et-plight,.et-jlight) body:has(#nav) #nav .nav-links .nav-trigger{border-radius:0!important;-webkit-backdrop-filter:none;backdrop-filter:none!important}
+html:is(.et-plight,.et-jlight) body:has(#nav) #nav .nav-links .nav-trigger:hover,html:is(.et-plight,.et-jlight) body:has(#nav) #nav .nav-links .nav-trigger.is-active,html:is(.et-plight,.et-jlight) body:has(#nav) #nav .nav-links .nav-trigger[aria-expanded="true"]{background:transparent!important;box-shadow:inset 0 -2px 0 currentColor!important}html:is(.et-plight,.et-jlight) body:has(#nav) #nav .nav-links .nav-trigger.is-active{box-shadow:inset 0 -2px 0 #8A6410!important}
 html:is(.et-plight,.et-jlight) body:has(#nav) #nav .nx-util-in{width:max-content!important;max-width:100%!important;margin-left:auto!important;margin-right:calc(max(0px,(100% - 1240px)/2) + 52px)!important;background:rgba(16,26,44,.04)!important;border-radius:999px!important;padding:2px 4px 2px 12px!important;box-shadow:inset 0 1px 3px rgba(16,26,44,.16),inset 0 -1px 0 rgba(255,255,255,.7)!important}
-html:not(.et-plight,.et-jlight) body:has(#nav) #nav .nav-links{background:rgba(0,0,0,.22)!important;border-radius:999px!important;padding:4px 6px!important;box-shadow:inset 0 2px 6px rgba(0,0,0,.6),inset 0 -1px 0 rgba(255,255,255,.07),0 1px 0 rgba(255,255,255,.05)!important;gap:2px!important}
-html:not(.et-plight,.et-jlight) body:has(#nav) #nav .nav-links .nav-trigger{border-radius:999px!important;-webkit-backdrop-filter:none;backdrop-filter:none!important}
-html:not(.et-plight,.et-jlight) body:has(#nav) #nav .nav-links .nav-trigger:hover,html:not(.et-plight,.et-jlight) body:has(#nav) #nav .nav-links .nav-trigger.is-active,html:not(.et-plight,.et-jlight) body:has(#nav) #nav .nav-links .nav-trigger[aria-expanded="true"]{background:rgba(0,0,0,.25)!important;box-shadow:inset 0 2px 5px rgba(0,0,0,.65),inset 0 -1px 0 rgba(255,255,255,.06)!important}
+/* Direction editoriale (11 novembre 2026) : barre a plat, sans pilule ; rubrique survolee ou ouverte soulignee, rubrique courante soulignee d'or. Regles d'origine reecrites sur place, sans surcharge. */
+html:not(.et-plight,.et-jlight) body:has(#nav) #nav .nav-links{background:transparent!important;border-radius:0!important;padding:4px 6px!important;box-shadow:none!important;gap:2px!important}
+html:not(.et-plight,.et-jlight) body:has(#nav) #nav .nav-links .nav-trigger{border-radius:0!important;-webkit-backdrop-filter:none;backdrop-filter:none!important}
+html:not(.et-plight,.et-jlight) body:has(#nav) #nav .nav-links .nav-trigger:hover,html:not(.et-plight,.et-jlight) body:has(#nav) #nav .nav-links .nav-trigger.is-active,html:not(.et-plight,.et-jlight) body:has(#nav) #nav .nav-links .nav-trigger[aria-expanded="true"]{background:transparent!important;box-shadow:inset 0 -2px 0 currentColor!important}html:not(.et-plight,.et-jlight) body:has(#nav) #nav .nav-links .nav-trigger.is-active{box-shadow:inset 0 -2px 0 #E3BC62!important}
 html:not(.et-plight,.et-jlight) body:has(#nav) #nav .nx-util-in{width:max-content!important;max-width:100%!important;margin-left:auto!important;margin-right:calc(max(0px,(100% - 1240px)/2) + 52px)!important;background:rgba(0,0,0,.18)!important;border-radius:999px!important;padding:2px 4px 2px 12px!important;box-shadow:inset 0 1px 4px rgba(0,0,0,.55),inset 0 -1px 0 rgba(255,255,255,.06)!important}
 }
 
@@ -1154,14 +1155,6 @@ html:not(.et-plight,.et-jlight){--field-bg:rgba(8,14,26,.55);--field-fg:#F5F7FA;
    CSS en ligne declare et-verre en premier sur 275 pages sur 278 ; pour les !important, la premiere couche declaree
    l'emporte. Sur les pages sources de main, c'est et-glass qui est declaree en premier (bundle_head_b2.css) : ces
    surcharges n'y gagnent pas, le rendu de reference est celui du build. */
-/* Direction editoriale (DG, 10 novembre 2026) — barre de navigation : plus de pilule. Rubriques a plat, rubrique
-   courante soulignee d'un filet or. Limite a l'affichage en barre (a partir de 1241 px) : en dessous, .nav-links est le tiroir mobile, qui doit rester opaque. */
-@media (min-width:1241px){@layer et-verre{
-#nav .nav-links,#nav .nav-links .nav-trigger{background:transparent!important;border-radius:0!important;border-color:transparent!important;box-shadow:none!important}
-#nav .nav-links .nav-trigger:is(:hover,[aria-expanded="true"]){box-shadow:inset 0 -2px 0 currentColor!important}
-#nav .nav-links .nav-trigger.is-active{box-shadow:inset 0 -2px 0 #E3BC62!important}
-html:is(.et-plight,.et-jlight) #nav .nav-links .nav-trigger.is-active{box-shadow:inset 0 -2px 0 #8A6410!important}
-}}
 /* Direction editoriale (DG, 10 novembre 2026) — pied de page : devise en grand serif, colonnes a plat sur filets,
    plus de carte arrondie ; lettre d'information entre deux filets, champ et bouton a aretes vives. Meme couche que la barre de navigation ci-dessus. Le pied reste sombre dans les deux themes. */
 @layer et-verre{
