@@ -36,7 +36,8 @@ for(const width of [320,1440])test(`forms, anchors and interactive — shared de
       }
       const action=page.locator('main .pp-btn,main .ec-primary,.hm main .et-actions>a').first();
       if(await action.count()){
-        await expect(action).toHaveCSS('border-radius','10px');
+        await expect(action).toHaveCSS('border-radius','0px'); // direction editoriale (11 novembre 2026) : actions a aretes vives
+       
         expect((await action.boundingBox()).height,route+' action target').toBeGreaterThanOrEqual(48);
         await action.focus();await expect(action).toBeFocused();
       }
@@ -69,7 +70,7 @@ for(const en of [false,true])for(const width of [320,1440])for(const light of [t
     });
     expect(ratio,'CTA text contrast').toBeGreaterThanOrEqual(4.5);
     await action.focus();await expect(action).toBeFocused();
-    await expect(action).toHaveCSS('border-radius','10px');
+    await expect(action).toHaveCSS('border-radius','0px');
     expect((await action.boundingBox()).height).toBeGreaterThanOrEqual(48);
     expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+2)).toBe(true);
     const href=await action.getAttribute('href');

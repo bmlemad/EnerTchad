@@ -62,7 +62,12 @@ test.describe('glass chrome — one rule for every sliding surface', () => {
             const cs = getComputedStyle(el); return { background: cs.backgroundColor, filter: cs.backdropFilter };
           }), SCENE);
           for (const s of scene) {
-            if (width < 760) {
+            // Direction éditoriale (11 novembre 2026, décision du DG du 10 novembre) : sur l'accueil, plus de carte en verre ;
+            // les blocs sont posés à plat sur des bandes pleines. Le verre de contenu reste la règle des scènes des pôles.
+            if (path === '/') {
+              expect(alphaOf(s.background), `${path} ${theme.name} ${width}px : pas de verre de contenu sur l'accueil`).toBe(0);
+              expect(s.filter, `${path} ${theme.name} ${width}px : pas de flou de contenu sur l'accueil`).toBe('none');
+            } else if (width < 760) {
               expect(alphaOf(s.background), `${path} ${theme.name} ${width}px : verre de contenu sur mobile`).toBeCloseTo(0.88, 2);
               expect(s.filter, `${path} ${theme.name} ${width}px : pas de flou de contenu sur mobile`).toBe('none');
             } else {
