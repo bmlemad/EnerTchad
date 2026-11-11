@@ -12,7 +12,7 @@
     --et-ui-action-text:#fff;
     --et-ui-focus:#80611e;
     --et-ui-card-radius:16px;
-    --et-ui-control-radius:10px;
+    --et-ui-control-radius:0px; /* direction editoriale (11 novembre 2026) : actions et champs a aretes vives */
     --et-ui-shadow:0 8px 24px rgba(10,26,47,.06);
     --et-ui-font:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;
     --et-ui-gutter:clamp(20px,4vw,48px);
