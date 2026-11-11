@@ -57,3 +57,170 @@ html:not(.et-plight) .im-table thead th{color:#9AA7BA}
 html:not(.et-plight) .im-table a{color:#E0BD70}
 html:not(.et-plight) .im-statusboard :is(.im-lede,.im-note){color:#B5C0D0}
 .im-caption{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0}
+
+/* EnerTchad — accueil, direction editoriale (approuvee par le DG le 10 novembre 2026, en remplacement de la
+   direction immersive du lot 112 sur l'accueil). Bandes pleines alternees encre / papier, aretes vives, filets fins,
+   titres en Instrument Serif, donnees en JetBrains Mono, or en accent unique. Plus de carte en verre sur l'accueil.
+   Ecrite a la suite de immersif-2026.css (pas de feuille bloquante de plus sur l accueil) : meme prefixe (#main-content.et-home.hm-review), l'ordre suffit. Aucune chaine
+   :not(#…). Les seuls  sont dans la couche et-verre (voir plus bas). */
+
+/* Palette : bandes sombres identiques dans les deux themes ; bandes « papier » selon le theme. */
+#main-content.et-home.hm-review{
+  --ed-ink:#0A1220;--ed-ink-fg:#EEF1F6;--ed-ink-muted:#C9D2E0;--ed-ink-line:rgba(255,255,255,.16);--ed-ink-rule:rgba(255,255,255,.34);--ed-gold:#E3BC62;
+  --ed-serif:'Instrument Serif',"Instrument Serif Fallback G","Instrument Serif Fallback T","Instrument Serif Fallback N","Instrument Serif Fallback D",Georgia,'Times New Roman',serif;
+  --ed-mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+  --ed-gutter:clamp(20px,4vw,40px);--ed-pad:max(var(--ed-gutter),calc((100vw - 1280px)/2));--ed-band:clamp(72px,9vw,120px)}
+html:is(.et-plight,.et-jlight) #main-content.et-home.hm-review{
+  --ed-paper:#F5F0E6;--ed-paper-fg:#0A1220;--ed-paper-muted:#3F4A5C;--ed-paper-accent:#76550F;--ed-paper-line:rgba(10,18,32,.18);--ed-paper-rule:#0A1220}
+html:not(.et-plight,.et-jlight) #main-content.et-home.hm-review{
+  --ed-paper:#101B2E;--ed-paper-fg:#EEF1F6;--ed-paper-muted:#C9D2E0;--ed-paper-accent:#E3BC62;--ed-paper-line:rgba(255,255,255,.16);--ed-paper-rule:rgba(255,255,255,.34)}
+
+/* Bandes : fond plein, plus de photo de fond ni de voile. */
+#main-content.et-home.hm-review section{padding:var(--ed-band) var(--ed-pad);border-radius:0;box-shadow:none}
+#main-content.et-home.hm-review section>.et-inner{max-width:1280px;margin-inline:auto}
+#main-content.et-home.hm-review .im-scene::before{content:none}
+#main-content.et-home.hm-review :is(#chaine,#gouvernance-accueil)>.im-bg{display:none}
+#main-content.et-home.hm-review :is(#reperes,#projet-phare,#gouvernance-accueil){
+  background:var(--ed-paper);color:var(--ed-paper-fg);
+  --ed-fg:var(--ed-paper-fg);--ed-muted:var(--ed-paper-muted);--ed-accent:var(--ed-paper-accent);--ed-line:var(--ed-paper-line);--ed-rule:var(--ed-paper-rule);
+  --hm-band:var(--ed-paper);--hm-band-ink:var(--ed-paper-fg);--hm-band-muted:var(--ed-paper-muted);--hm-band-accent:var(--ed-paper-accent);--hm-band-line:var(--ed-paper-line);--hm-band-card:transparent;
+  --et-glass-solid:var(--ed-paper);--et-glass-ink:var(--ed-paper-fg)}
+#main-content.et-home.hm-review :is(#chaine,#aller-plus-loin){
+  background:var(--ed-ink);color:var(--ed-ink-fg);
+  --ed-fg:var(--ed-ink-fg);--ed-muted:var(--ed-ink-muted);--ed-accent:var(--ed-gold);--ed-line:var(--ed-ink-line);--ed-rule:var(--ed-ink-rule);
+  --hm-band:var(--ed-ink);--hm-band-ink:var(--ed-ink-fg);--hm-band-muted:var(--ed-ink-muted);--hm-band-accent:var(--ed-gold);--hm-band-line:var(--ed-ink-line);--hm-band-card:transparent;
+  --et-glass-solid:var(--ed-ink);--et-glass-ink:var(--ed-ink-fg)}
+
+/* Surcharges ecrites dans @layer et-verre. Mesure : sur le site construit (npm run build, branche ovh-static), le
+   CSS en ligne declare et-verre en premier sur 275 pages sur 278 ; pour les , la premiere couche declaree
+   l'emporte. Sur les pages sources de main, c'est et-glass qui est declaree en premier (bundle_head_b2.css) : ces
+   surcharges n'y gagnent pas, le rendu de reference est celui du build. */
+/* Les fonds et les couleurs des bandes passent par les variables que lisent deja les regles de l'accueil
+   (--hm-band*, --et-glass-solid, --et-glass-ink), posees ci-dessus par bande. Restent les flous, les polices, les tailles et quelques
+   couleurs d'exception, poses en  par les couches du site : ils sont surcharges dans et-verre. */
+@layer et-verre{
+#main-content.et-home.hm-review :is(.im-glass,.mod-card,.im-board,.hm-figures li,.hm-exits a){background:transparent!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important;box-shadow:none!important;border:0!important;border-radius:0!important}
+#main-content.et-home.hm-review :is(.im-feature,.et-segments>article,.im-board){padding:0!important}
+#main-content.et-home.hm-review #gouvernance-accueil .mod-card{padding:28px 0!important;border-bottom:1px solid var(--ed-line)!important}
+#main-content.et-home.hm-review .hm-figures li{border-bottom:1px solid var(--ed-line)!important}
+#main-content.et-home.hm-review .hm-exits a{border-bottom:1px solid var(--ed-line)!important}
+#main-content.et-home.hm-review :is(.et-hero h1,section h2,.et-segments h3,.mod-card h3,.hm-figures b,.hm-exits a){font-family:var(--ed-serif)!important;font-weight:400!important}
+#main-content.et-home.hm-review .et-hero h1{font-size:clamp(3.25rem,8.4vw,6.25rem)!important;letter-spacing:-.015em!important;line-height:.98!important;color:#fff!important}
+#main-content.et-home.hm-review .et-hero h1 em{color:var(--ed-gold)!important}
+#main-content.et-home.hm-review section h2{font-size:clamp(2.375rem,4.6vw,4rem)!important;letter-spacing:-.01em!important;line-height:1.04!important}
+#main-content.et-home.hm-review .et-segments h3{font-size:1.875rem!important;letter-spacing:0!important;line-height:1.1!important}
+#main-content.et-home.hm-review #gouvernance-accueil .mod-card h3{font-size:clamp(2rem,3vw,2.5rem)!important;letter-spacing:0!important;line-height:1.1!important}
+#main-content.et-home.hm-review :is(.im-data span,.mod-eyebrow,.im-board h3){font-family:var(--ed-mono)!important;font-weight:400!important;font-size:.75rem!important;letter-spacing:.1em!important;color:var(--ed-muted)!important}
+#main-content.et-home.hm-review section .hm-eyebrow{color:var(--ed-accent)!important}
+#main-content.et-home.hm-review .hm-band .hm-figures .hm-fign a{color:var(--ed-accent)!important}
+#main-content.et-home.hm-review .hm-band.im-scene .im-feature>a{background:var(--ed-fg)!important;color:var(--ed-paper)!important}
+#main-content.et-home.hm-review .hm-band.im-scene .im-feature>a span{color:inherit!important}
+#main-content.et-home.hm-review .hm-exits a span{color:var(--ed-gold)!important}
+#main-content.et-home.hm-review #aller-plus-loin :is(h2,.hm-exits a){color:var(--ed-ink-fg)!important;-webkit-text-fill-color:currentColor!important}
+#main-content.et-home.hm-review #gouvernance-accueil .mod-grid{border:0!important;border-top:1px solid var(--ed-rule)!important;padding:0!important;background:none!important}
+#main-content.et-home.hm-review .hm-band#chaine .hm-footnote{color:#A9B6C8!important}
+}
+#main-content.et-home.hm-review .im-glass{border:0;border-radius:0;box-shadow:none}
+
+/* Typographie commune. */
+#main-content.et-home.hm-review .hm-eyebrow{font-family:var(--ed-mono);font-size:.75rem;font-weight:400;letter-spacing:.16em;text-transform:uppercase;color:var(--ed-accent);margin:0 0 18px}
+#main-content.et-home.hm-review section h2{font-family:var(--ed-serif);font-weight:400;font-size:clamp(2.375rem,4.6vw,4rem);line-height:1.04;letter-spacing:-.01em;color:var(--ed-fg);margin:0;max-width:20ch;text-wrap:balance}
+#main-content.et-home.hm-review section .hm-lead{color:var(--ed-muted);font-size:clamp(1.0625rem,1.3vw,1.125rem);line-height:1.6;max-width:56ch}
+#main-content.et-home.hm-review section a{color:var(--ed-fg);text-underline-offset:.3em}
+#main-content.et-home.hm-review section a:hover{color:var(--ed-accent)}
+
+/* 1. Heros : voile lateral, titre serif, actions a aretes vives. */
+#main-content.et-home.hm-review .et-hero{background:var(--ed-ink);padding-inline:var(--ed-pad);padding-bottom:64px;min-height:min(92vh,900px)}
+#main-content.et-home.hm-review .et-hero>.et-inner{max-width:1280px;margin-inline:auto}
+#main-content.et-home.hm-review .et-hero-media::after{background:
+  linear-gradient(180deg,rgba(10,18,32,0) 62%,var(--ed-ink) 100%),
+  linear-gradient(90deg,rgba(10,18,32,.93) 0%,rgba(10,18,32,.68) 50%,rgba(10,18,32,.3) 100%)}
+#main-content.et-home.hm-review .et-hero .et-kicker{font-family:var(--ed-mono);font-size:.75rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ed-gold);margin:0 0 28px}
+#main-content.et-home.hm-review .et-hero h1{font-family:var(--ed-serif);font-weight:400;font-size:clamp(3.25rem,8.4vw,6.25rem);line-height:.98;letter-spacing:-.015em;color:#fff;max-width:11ch;margin:0 0 28px;text-wrap:balance}
+#main-content.et-home.hm-review .et-hero h1 em{font-style:italic;color:var(--ed-gold)}
+#main-content.et-home.hm-review .et-hero .mod-signature{font-family:var(--ed-serif);font-style:italic;font-size:clamp(1.375rem,2.2vw,1.875rem);color:#fff;margin:0 0 14px}
+#main-content.et-home.hm-review .et-hero .et-lead{font-size:clamp(1.0625rem,1.4vw,1.25rem);line-height:1.55;color:#DCE2EC;max-width:54ch}
+#main-content.et-home.hm-review .et-hero .et-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:36px}
+#main-content.et-home.hm-review .et-hero .et-primary{background:var(--ed-gold);color:var(--ed-ink);border-radius:0;padding:16px 30px;font-weight:600;min-height:48px;box-shadow:none}
+#main-content.et-home.hm-review .et-hero .et-secondary{border:1px solid rgba(255,255,255,.5);border-radius:0;padding:16px 30px;color:#fff;font-weight:600;text-decoration:none}
+#main-content.et-home.hm-review .et-hero .hm-note{margin:56px 0 0;padding-top:20px;border-top:1px solid rgba(255,255,255,.22);max-width:none;font-size:.85rem;color:var(--ed-ink-muted)}
+#main-content.et-home.hm-review .et-hero-media figcaption{font-family:var(--ed-mono);color:var(--ed-ink-muted)}
+
+/* 2. Reperes : trois grands chiffres serif sur filets. */
+#main-content.et-home.hm-review #reperes h2{margin-bottom:64px}
+#main-content.et-home.hm-review .hm-figures{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border-top:1px solid var(--ed-rule)}
+#main-content.et-home.hm-review .hm-figures li{margin:0;padding:36px 40px 32px 0;border:0;border-bottom:1px solid var(--ed-line);border-radius:0;background:none;box-shadow:none}
+#main-content.et-home.hm-review .hm-figures b{display:block;font-family:var(--ed-serif);font-weight:400;font-size:clamp(4.5rem,8vw,7rem);line-height:1;letter-spacing:-.02em;color:var(--ed-fg)}
+#main-content.et-home.hm-review .hm-figures b small{font-size:.5em;margin-left:.08em}
+#main-content.et-home.hm-review .hm-figures .hm-figl{font-family:inherit;text-transform:none;letter-spacing:0;font-weight:600;font-size:1.0625rem;color:var(--ed-fg);margin:14px 0 8px}
+#main-content.et-home.hm-review .hm-figures .hm-fign{color:var(--ed-muted);font-size:.9375rem;line-height:1.55;margin:0}
+#main-content.et-home.hm-review .hm-figures .hm-fign a{color:var(--ed-accent)}
+
+/* 3. Projet phare : photo a gauche, fiche a droite ; plus de carte posee sur la photo. */
+#main-content.et-home.hm-review #projet-phare{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(40px,5vw,72px);align-items:center;overflow:visible}
+#main-content.et-home.hm-review #projet-phare>.im-bg{position:static;z-index:auto;width:100%;height:auto;aspect-ratio:5/6;object-fit:cover}
+#main-content.et-home.hm-review #projet-phare>.et-inner{margin:0;max-width:none}
+#main-content.et-home.hm-review .im-feature{max-width:none;padding:0;gap:0;color:var(--ed-fg)}
+#main-content.et-home.hm-review .im-feature h2{margin:0 0 24px}
+#main-content.et-home.hm-review .im-feature .hm-lead{margin:0 0 40px;max-width:48ch}
+#main-content.et-home.hm-review .im-data{padding:0;gap:0;border-top:1px solid var(--ed-rule);font-family:inherit;font-size:1rem}
+#main-content.et-home.hm-review .im-data li{grid-template-columns:minmax(0,200px) minmax(0,1fr);gap:24px;padding:18px 0;border-bottom:1px solid var(--ed-line);align-items:baseline}
+#main-content.et-home.hm-review .im-data span{font-family:var(--ed-mono);font-size:.75rem;letter-spacing:.1em;color:var(--ed-muted)}
+#main-content.et-home.hm-review .im-data b{font-size:1.0625rem;color:var(--ed-fg)}
+#main-content.et-home.hm-review .im-feature>a{align-self:flex-start;margin-top:40px;padding:16px 30px;min-height:48px;display:inline-flex;align-items:center;gap:.5em;background:var(--ed-fg);color:var(--ed-paper);font-weight:600;text-decoration:none}
+#main-content.et-home.hm-review .im-feature>a:hover{background:var(--ed-accent);color:var(--ed-paper)}
+
+/* 4. Quatre maillons : colonnes numerotees, photo 4/5, sans cadre. */
+#main-content.et-home.hm-review #chaine h2{margin-bottom:64px}
+#main-content.et-home.hm-review .et-segments{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:48px 24px;counter-reset:ed-seg}
+#main-content.et-home.hm-review .et-segments>article{display:flex;flex-direction:column;padding:0;overflow:visible;counter-increment:ed-seg}
+#main-content.et-home.hm-review .et-segments>article::before{content:"0" counter(ed-seg);order:1;font-family:var(--ed-mono);font-size:.75rem;letter-spacing:.14em;color:var(--ed-gold);margin:18px 0 12px}
+#main-content.et-home.hm-review .et-segments .et-seg-img{order:0;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;border-radius:0;margin:0}
+#main-content.et-home.hm-review .et-segments h3{order:2;font-family:var(--ed-serif);font-weight:400;font-size:1.875rem;line-height:1.1;color:#fff;margin:0 0 18px;padding:0;border:0}
+#main-content.et-home.hm-review .et-segments .hm-cible{order:3;margin:0;padding:16px 0 0;border-top:1px solid var(--ed-line);color:var(--ed-muted);font-size:.9375rem;line-height:1.55}
+#main-content.et-home.hm-review .et-segments .hm-cible b{display:block;color:#fff;font-weight:600;font-size:1rem}
+#main-content.et-home.hm-review .et-segments article>a{order:4;margin:8px 0 0;padding:12px 0;min-height:44px;display:inline-flex;align-items:center;gap:.5em;font-weight:600;font-size:.9375rem;color:#fff}
+#main-content.et-home.hm-review #chaine .hm-footnote{margin:56px 0 0;padding-top:20px;border-top:1px solid var(--ed-line);max-width:76ch;font-size:.85rem;color:#A9B6C8}
+
+/* 5. Gouvernance : noms en serif sur filets, tableau d'etat a droite. */
+#main-content.et-home.hm-review #gouvernance-accueil>.et-inner{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0 clamp(40px,5vw,72px);align-items:start}
+#main-content.et-home.hm-review #gouvernance-accueil>.et-inner>:is(.hm-eyebrow,h2,.hm-lead,.et-actions){grid-column:1/-1}
+#main-content.et-home.hm-review #gouvernance-accueil h2{margin-bottom:20px}
+#main-content.et-home.hm-review #gouvernance-accueil .hm-lead{margin:0 0 64px}
+#main-content.et-home.hm-review #gouvernance-accueil .mod-grid{display:block;margin:0;border-top:1px solid var(--ed-rule)}
+#main-content.et-home.hm-review #gouvernance-accueil .mod-card{padding:28px 0;border-bottom:1px solid var(--ed-line);color:var(--ed-fg)}
+#main-content.et-home.hm-review #gouvernance-accueil .mod-eyebrow{font-family:var(--ed-mono);font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ed-muted);margin:0 0 10px}
+#main-content.et-home.hm-review #gouvernance-accueil .mod-card h3{font-family:var(--ed-serif);font-weight:400;font-size:clamp(2rem,3vw,2.5rem);line-height:1.1;color:var(--ed-fg);margin:0 0 6px}
+#main-content.et-home.hm-review #gouvernance-accueil .mod-card a{display:inline-flex;align-items:center;gap:.5em;min-height:44px;font-size:.9375rem;font-weight:600}
+#main-content.et-home.hm-review .im-board{padding:0;font-family:inherit;color:var(--ed-fg)}
+#main-content.et-home.hm-review .im-board h3{font-family:var(--ed-mono);font-weight:400;font-size:.75rem;letter-spacing:.1em;color:var(--ed-muted);margin:0;padding:0 0 14px;border-bottom:1px solid var(--ed-rule)}
+#main-content.et-home.hm-review .im-board li{padding:20px 0;border-top:0;border-bottom:1px solid var(--ed-line);font-size:1rem}
+#main-content.et-home.hm-review .im-board .im-status{border-radius:0;color:var(--ed-fg)}
+#main-content.et-home.hm-review #gouvernance-accueil .et-actions{margin-top:40px}
+#main-content.et-home.hm-review #gouvernance-accueil .et-actions a{display:inline-flex;align-items:center;gap:.5em;min-height:44px;font-weight:600}
+
+/* 6. Aller plus loin : sorties en grandes lignes serif. */
+#main-content.et-home.hm-review #aller-plus-loin>.et-inner{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px clamp(40px,5vw,72px);align-items:start}
+#main-content.et-home.hm-review .hm-exits{display:flex;flex-direction:column;gap:0;border-top:1px solid var(--ed-rule)}
+#main-content.et-home.hm-review .hm-exits a{display:flex;justify-content:space-between;align-items:center;gap:16px;min-height:44px;padding:22px 0;border:0;border-bottom:1px solid var(--ed-line);border-radius:0;background:none;font-family:var(--ed-serif);font-size:clamp(1.5rem,2.2vw,1.75rem);font-weight:400;color:#fff;text-decoration:none}
+#main-content.et-home.hm-review .hm-exits a span{color:var(--ed-gold)}
+
+/* Ecrans etroits : une colonne ; les maillons passent en deux colonnes puis une. */
+@media (max-width:900px){
+  #main-content.et-home.hm-review :is(#projet-phare,#gouvernance-accueil>.et-inner,#aller-plus-loin>.et-inner){grid-template-columns:minmax(0,1fr)}
+  #main-content.et-home.hm-review #projet-phare>.im-bg{aspect-ratio:4/3}
+  #main-content.et-home.hm-review .et-segments{grid-template-columns:repeat(2,minmax(0,1fr))}
+  #main-content.et-home.hm-review .hm-figures{grid-template-columns:minmax(0,1fr)}
+  #main-content.et-home.hm-review .hm-figures li{padding-right:0}
+  #main-content.et-home.hm-review #gouvernance-accueil .mod-grid{margin-bottom:48px}
+  #main-content.et-home.hm-review .im-data li{grid-template-columns:minmax(0,1fr);gap:4px}
+}
+@media (max-width:520px){
+  #main-content.et-home.hm-review .et-segments{grid-template-columns:minmax(0,1fr)}
+  #main-content.et-home.hm-review .et-segments .et-seg-img{aspect-ratio:3/2}
+  #main-content.et-home.hm-review .et-hero{padding-bottom:104px}
+  #main-content.et-home.hm-review .et-hero :is(.et-primary,.et-secondary){width:100%;justify-content:center;text-align:center;box-sizing:border-box}
+}
+@media (forced-colors:active){
+  #main-content.et-home.hm-review :is(.hm-figures li,.im-data li,.im-board li,.hm-exits a){border-color:CanvasText}
+}

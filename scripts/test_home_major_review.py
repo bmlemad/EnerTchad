@@ -47,7 +47,7 @@ class HomepageReview(unittest.TestCase):
   offsets=[main.index(x) for x in NEW_ORDER]
   self.assertEqual(offsets,sorted(offsets))
   # héros : titre du brief, libellés d'action du contrat CTA (qa/cta-vocabulary-contract.spec.js)
-  h1='<h1 id="ph-h1">Chad’s energy. Integrated.</h1>' if en else '<h1 id="ph-h1">L’énergie du Tchad. Intégrée.</h1>'
+  h1='<h1 id="ph-h1">Chad’s energy. <em>Integrated.</em></h1>' if en else '<h1 id="ph-h1">L’énergie du Tchad. <em>Intégrée.</em></h1>'
   self.assertIn(h1,main)
   primary='Discuss a business requirement' if en else 'Présenter un besoin professionnel'
   client='/boutique/en/clients' if en else '/boutique/clients'

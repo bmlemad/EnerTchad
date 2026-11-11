@@ -1149,3 +1149,29 @@ html:not(.et-plight,.et-jlight){--field-bg:rgba(8,14,26,.55);--field-fg:#F5F7FA;
 
 /* Lot 50 : focus lisible sur le fond marine des héros (contraste ≥ 3:1). */
 @layer et-glass{html :is(.pp-hero,.pole-hero,header.hero) :is(a,button,summary,[tabindex]:not([tabindex="-1"])):focus-visible{outline:2px solid #E8C36A!important;outline-offset:3px!important}}
+
+/* Surcharges ecrites dans @layer et-verre. Mesure : sur le site construit (npm run build, branche ovh-static), le
+   CSS en ligne declare et-verre en premier sur 275 pages sur 278 ; pour les !important, la premiere couche declaree
+   l'emporte. Sur les pages sources de main, c'est et-glass qui est declaree en premier (bundle_head_b2.css) : ces
+   surcharges n'y gagnent pas, le rendu de reference est celui du build. */
+/* Direction editoriale (DG, 10 novembre 2026) — barre de navigation : plus de pilule. Rubriques a plat, rubrique
+   courante soulignee d'un filet or. Limite a l'affichage en barre (a partir de 1241 px) : en dessous, .nav-links est le tiroir mobile, qui doit rester opaque. */
+@media (min-width:1241px){@layer et-verre{
+#nav .nav-links,#nav .nav-links .nav-trigger{background:transparent!important;border-radius:0!important;border-color:transparent!important;box-shadow:none!important}
+#nav .nav-links .nav-trigger:is(:hover,[aria-expanded="true"]){box-shadow:inset 0 -2px 0 currentColor!important}
+#nav .nav-links .nav-trigger.is-active{box-shadow:inset 0 -2px 0 #E3BC62!important}
+html:is(.et-plight,.et-jlight) #nav .nav-links .nav-trigger.is-active{box-shadow:inset 0 -2px 0 #8A6410!important}
+}}
+/* Direction editoriale (DG, 10 novembre 2026) — pied de page : devise en grand serif, colonnes a plat sur filets,
+   plus de carte arrondie ; lettre d'information entre deux filets, champ et bouton a aretes vives. Meme couche que la barre de navigation ci-dessus. Le pied reste sombre dans les deux themes. */
+@layer et-verre{
+footer.pft:not(.pft-ar) .pft-motto{font-family:'Instrument Serif',"Instrument Serif Fallback G","Instrument Serif Fallback T","Instrument Serif Fallback N","Instrument Serif Fallback D",Georgia,'Times New Roman',serif!important;font-weight:400!important;font-size:clamp(2.5rem,6vw,5.5rem)!important;line-height:1!important;letter-spacing:-.01em!important;color:#fff!important;margin:0 0 clamp(40px,6vw,72px)!important;max-width:none!important}
+footer.pft :is(.foot-news,.foot-col,.foot-brand){background:transparent!important;border-radius:0!important;box-shadow:none!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+footer.pft .foot-news{border:0!important;border-top:1px solid rgba(255,255,255,.34)!important;border-bottom:1px solid rgba(255,255,255,.16)!important;padding:28px 0!important}
+footer.pft .foot-col{border:0!important;border-top:1px solid rgba(255,255,255,.16)!important;padding:20px 0 0!important}
+footer.pft .foot-col h3{font-family:"JetBrains Mono",ui-monospace,Menlo,monospace!important;font-weight:400!important;font-size:.75rem!important;letter-spacing:.12em!important;text-transform:uppercase!important;color:#A9B6C8!important}
+footer.pft .fn-form :is(input,button),footer.pft .foot-social a{border-radius:0!important}
+}
+/* Pages arabes : elles ne chargent pas bundle_head_b2.css, donc @layer verre y est declaree avant et-glass et ses
+   !important priment. Les colonnes a plat s'ecrivent donc aussi dans verre. La devise arabe n'est pas touchee. */
+@layer verre{footer.pft.pft-ar .foot-col{background:transparent!important;border:0!important;border-top:1px solid rgba(255,255,255,.16)!important;border-radius:0!important;box-shadow:none!important;padding:20px 0 0!important}}

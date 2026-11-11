@@ -24,26 +24,30 @@ const base = process.env.SITE_URL || 'https://enertchad.com/';
 // Cascade étape 3, suite (lot 115, 10 novembre 2026) : les 94 sélecteurs prouvés morts restants sont retirés de bundle_core_a1.css,
 // x_cd256286824c.css et bundle_head_b2.css ; 8 à 12 sélecteurs :not(#…) de moins par page, plafonds abaissés d'autant.
 const budgets = [
+  // Direction editoriale (11 novembre 2026, decision du DG du 10 novembre) : bandes pleines, titres serif, barre de navigation et
+  // pied de page a plat, surcharges ecrites dans la couche et-verre et reprises dans la CSS critique des pages. Mesure contre
+  // l'export precedent : +71 !important et +1 392 octets de CSS en ligne par page du gabarit commun (+47 et +518 sur le journal) ;
+  // accueils : +90 !important, +2 762 octets, 77 selecteurs :not(#…) de moins (jeu critique re-extrait). Plafonds deplaces d'autant.
   // Lot 112 (10 novembre 2026, décision du DG) : direction immersive ; +3 !important (verre des cartes posées sur photo, couche et-verre)
   // et +238 octets de CSS critique dans la page (repères remontés sous le héros).
   // Lot 117 (10 novembre 2026, décision du DG) : la ligne dorée du héros repose sur une pastille sombre (contraste) ; +117 octets de CSS critique.
-  ['/', 2579, 9969, 112409, 44], // lot 106-A : accueil refondu (mesure du 8 novembre 2026, hors contrat de design)
-  ['/index-en', 2616, 9971, 116158, 44], // lot 106-B : accueil EN refondu (mesure du 8 novembre 2026, hors contrat de design)
+  ['/', 2669, 9892, 115171, 44], // lot 106-A : accueil refondu (mesure du 8 novembre 2026, hors contrat de design)
+  ['/index-en', 2706, 9894, 118920, 44], // lot 106-B : accueil EN refondu (mesure du 8 novembre 2026, hors contrat de design)
   // Lot 113 (10 novembre 2026, décision du DG) : direction immersive, phase B ; scène « conviction » des pôles posée au build par
   // lib/immersif-poles.js : +7 !important (verre, texte clair, hauteur de la photo ; couche et-verre) et +1 943 octets de CSS en ligne.
-  ['/amont/', 3482, 20327, 140172, 40],
-  ['/aval/raffinage', 3667, 22028, 204010, 40],
-  ['/carrieres', 3682, 22094, 214889, 40],
+  ['/amont/', 3553, 20327, 141564, 40],
+  ['/aval/raffinage', 3738, 22028, 205402, 40],
+  ['/carrieres', 3753, 22094, 216281, 40],
   // PR #139 added the 480-byte after-enquiry block before this design change.
-  ['/contact', 3584, 21431, 190290, 40],
-  ['/carnets', 3334, 19057, 164851, 40],
-  ['/journal-criblage-eor', 2526, 10007, 149912, 40],
-  ['/atlas/', 3129, 18678, 175417, 46],
-  ['/boutique/', 2926, 17955, 121161, 40],
+  ['/contact', 3655, 21431, 191682, 40],
+  ['/carnets', 3405, 19057, 166243, 40],
+  ['/journal-criblage-eor', 2573, 10007, 150430, 40],
+  ['/atlas/', 3200, 18678, 176809, 46],
+  ['/boutique/', 2997, 17955, 122553, 40],
   // Lot 108 (9 novembre 2026, décision du DG) : menu mobile arabe, en-tête mobile de 160 à 64 px ; le premier écran montre
   // plus de contenu, la CSS critique écrite dans la page reprend donc plus de règles existantes (+15 !important, +486 :not(#…), +8 003 octets).
-  ['/ar-societe', 2450, 21103, 75112, 40],
-  ['/essentiel', 3172, 18370, 133813, 40],
+  ['/ar-societe', 2521, 21103, 76504, 40],
+  ['/essentiel', 3243, 18370, 135205, 40],
 ];
 
 const notIdPattern = /:not\(#[\w-]+\)/g;
