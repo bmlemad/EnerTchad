@@ -77,6 +77,13 @@ for(const asset of manifest.assets) {
   let original = await readFile(builtSource(asset));
   if (/^assets\/chrome\/[^/]+\.(?:css|js)$/.test(asset)) original = Buffer.from(rewriteRefs(original.toString(), versions));
   const expected = asset === 'sitemap.xml' ? commercialSitemap(original.toString()) : asset.endsWith('.css') ? minifyCss(original.toString()) : original;
+  // sw.js : le nom du cache porte la version publiee (scripts/next/finalize.mjs) ; le reste doit etre identique.
+  if (asset === 'sw.js') {
+    const built = (await readFile('out/sw.js', 'utf8'));
+    assert.match(built, /const V='[^']+-[0-9a-f]{12}'/, 'sw.js cache name must carry the deploy revision');
+    assert.equal(built.replace(/(const V='[^']+)-[0-9a-f]{12}'/, "$1'"), original.toString(), asset);
+    continue;
+  }
   assert.equal(hash(await readFile('out/'+asset)),hash(expected),asset);
 }
 // Lot 27 (m10) : _headers et le .htaccess OVH figent un an (immutable) /assets/chrome/*.css|js,

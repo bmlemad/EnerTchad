@@ -21,7 +21,7 @@ test('FR and EN definitions have the same six menus and group shape', () => {
 });
 
 test('every internal destination of the menu exists', () => {
-  const routes = new Set(['/boutique/clients', '/boutique/en/clients', '/amont/calculateur-baril-additionnel', '/atlas/', '/atlas-en']);
+  const routes = new Set(['/boutique/clients', '/boutique/en/clients', '/amont/calculateur-baril-additionnel', '/configurateur-service-integre', '/atlas/', '/atlas-en']);
   for (const lang of ['fr', 'en']) for (const m of nav[lang]) {
     for (const l of [m.overview, ...m.groups.flatMap(g => g.links)]) {
       const p = l[2].split('#')[0].split('?')[0];
