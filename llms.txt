@@ -4,7 +4,7 @@
 
 ## Pages clés
 
-- [Accueil](https://enertchad.com/) : mission, chaîne intégrée, chiffres cibles
+- [Accueil](https://enertchad.com/) : vision, activités, impact, leadership, investisseurs, contact
 - [La Société](https://enertchad.com/societe) : identité, gouvernance OHADA
 - [Espace investisseurs](https://enertchad.com/investisseurs) : thèse, trajectoire de capital par paliers, jalons datés
 - [Nos solutions par besoin](https://enertchad.com/nos-activites#besoins) : entrée par usage (produire, acheminer, transformer, distribuer, décider, financer)

@@ -161,12 +161,16 @@ function latestOf(lang) {
 }
 const LATEST = { fr: latestOf('fr'), en: latestOf('en') };
 const esc = s => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
-const LATEST_CSS = '<style data-et-latest>.hm-latest{background:var(--et-paper,#faf8f3);color:var(--et-ink-900,#0A1A2F);border-bottom:1px solid rgba(16,26,44,.14);padding:10px 24px;font-size:.92rem;line-height:1.5}html:not(.et-plight) .hm-latest{background:var(--et-night-2,#0F1B2C);color:var(--et-snow,#F1F3F6);border-bottom-color:rgba(255,255,255,.14)}.hm-latest .hm-latest-row{margin:0;display:flex;flex-wrap:wrap;gap:6px 10px;align-items:baseline}.hm-latest strong{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase}.hm-latest .hm-latest-row>*{display:inline-block;max-width:100%}.hm-latest a{color:inherit;text-decoration:underline;text-underline-offset:.2em}.hm-latest .hm-latest-all{margin-left:auto;text-decoration:none}.hm-latest .hm-latest-sep{opacity:.5}</style>';
+const LATEST_CSS = '<style data-et-latest>.hm-latest{background:var(--et-paper,#faf8f3);color:var(--et-ink-900,#0A1A2F);border-bottom:1px solid rgba(16,26,44,.14);padding:10px 24px;font-size:.92rem;line-height:1.5}html:not(.et-plight) .hm-latest{background:var(--et-night-2,#0F1B2C);color:var(--et-snow,#F1F3F6);border-bottom-color:rgba(255,255,255,.14)}.hm-latest .hm-latest-row{margin:0;display:flex;flex-wrap:wrap;gap:6px 10px;align-items:baseline}.hm-latest strong{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase}.hm-latest .hm-latest-row>*{display:inline-block;max-width:100%}.hm-latest a{color:inherit;text-decoration:underline;text-underline-offset:.2em}.hm-latest .hm-latest-all{margin-left:auto;text-decoration:none}.hm-latest .hm-latest-sep{opacity:.5}.hm-latest .et-inner{max-width:1280px;margin-inline:auto}</style>';
+// Six blocs (décision du DG, 12 novembre 2026) : l'accueil ne garde que vision, activités, impact, leadership, investisseurs et
+// contact ; la bande « Dernière publication » passe sous le héros du Centre de connaissances (/savoirs, FR et EN), où mènent le
+// menu et le pied de page. Même calcul, mêmes sources, même gabarit ; contrôle : scripts/test_home_latest.py.
+const LATEST_PAGES = { 'savoirs.html': 'fr', 'savoirs-en.html': 'en' };
 export function latestPublication(html, page = '') {
-  const lang = page === 'index.html' ? 'fr' : page === 'index-en.html' ? 'en' : null;
+  const lang = LATEST_PAGES[page] || null;
   const it = lang && LATEST[lang];
   if (!it || html.includes('hm-latest')) return html;
-  const hero = html.indexOf('<header class="et-hero"');
+  const hero = html.indexOf('<header class="pp-hero');
   const end = hero < 0 ? -1 : html.indexOf('</header>', hero);
   if (end < 0) return html;
   const at = end + '</header>'.length;

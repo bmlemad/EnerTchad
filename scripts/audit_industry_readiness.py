@@ -54,14 +54,18 @@ for label, pattern in home_requirements.items():
 # The simplified homepages route visitors to the document centre rather than
 # duplicating its downloads. Keep the labelled gateway and the actual download.
 for filename, content, route, investor_route in [
-    ("index.html", home, "/publications", "/investisseurs"),
-    ("index-en.html", home_en, "/publications-en", "/investisseurs-en"),
+    # Six blocs (12 novembre 2026) : l'accueil FR/EN mène au Centre de connaissances, qui porte l'accès aux publications.
+    ("index.html", home, "/savoirs", "/investisseurs"),
+    ("index-en.html", home_en, "/savoirs-en", "/investisseurs-en"),
     ("ar.html", home_ar, "/publications", "/ar-investisseurs"),
 ]:
     if not has_reporting_section(content, route):
         errors.append(f"{filename}: section documentaire nommée ou accès aux publications absent")
     if not re.search(r'href="' + re.escape(investor_route) + r'"', content):
         errors.append(f"{filename}: reporting gateway absent")
+for hub, route in [("savoirs.html", "/publications"), ("savoirs-en.html", "/publications-en")]:
+    if not has_reporting_section(read(ROOT / hub), route):
+        errors.append(f"{hub}: section documentaire nommée ou accès aux publications absent")
 
 pub_requirements = {
     "reporting navigation": r'aria-label="Navigation du centre de reporting"',

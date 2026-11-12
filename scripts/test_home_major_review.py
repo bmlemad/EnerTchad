@@ -11,8 +11,11 @@ from apply_home_major_review import ROOT, home, progress, plain
 # Lot 116 (10 novembre 2026, décision du DG : accueil allégé de moitié) : six blocs. Les trois besoins restent sur la page Clients ;
 # la feuille de route et l'impact sont déplacés tels quels sur la page Projets, la vision sur la page Société ; une bande finale
 # de quatre liens mène aux pages internes.
-NEW_ORDER=['id="reperes"','id="projet-phare"','id="chaine"','id="gouvernance-accueil"','id="aller-plus-loin"']
-GONE=['id="besoin-client"','id="vision"','id="feuille-de-route"','id="impact"','id="home-publications"']
+# Six blocs (12 novembre 2026, décision du DG) : l'accueil ne garde que vision, activités, impact, leadership, investisseurs et
+# contact. Les repères, le projet phare, le tableau « Cadre · état publié » et la bande « Dernière publication » sont au Centre
+# de Connaissances (/savoirs) ou sur les pages qu'il indexe.
+NEW_ORDER=['id="vision"','id="chaine"','id="impact"','id="gouvernance-accueil"','id="investisseurs-accueil"','id="contact-accueil"']
+GONE=['id="besoin-client"','id="reperes"','id="projet-phare"','id="aller-plus-loin"','id="feuille-de-route"','id="home-publications"','class="im-glass im-board"','class="hm-latest"']
 
 class HomepageReview(unittest.TestCase):
  def check_common(self,s,main,en):
@@ -35,10 +38,19 @@ class HomepageReview(unittest.TestCase):
   self.assertNotIn('class="et-metrics"',main)
   self.assertIn('80%',main) if en else self.assertIn('80 %',main)
   self.assertIn('not a measured result' if en else 'pas un résultat mesuré',main)
-  # lot 116 : bande finale, exactement quatre sorties vers les pages internes
+  # six blocs : exactement six sections, dans l'ordre, et rien d'autre
+  self.assertEqual(re.findall(r'<section id="([^"]+)"',main),[x[4:-1] for x in NEW_ORDER])
+  # contact : quatre sorties, dont le besoin professionnel et le formulaire
   exits=re.search(r'<nav class="hm-exits".*?</nav>',main,re.S)[0]
   targets=re.findall(r'<a href="([^"]+)"',exits)
-  self.assertEqual(targets,[client,f'/investisseurs{suffix}',f'/projets{suffix}#feuille-de-route',f'/publications{suffix}'])
+  self.assertEqual(targets,[f'{client}#besoin-client',f'/contact{suffix}#ctForm',f'/contact{suffix}?profil=invest#ctForm',f'/presse{suffix}'])
+  # le reste est au Centre de Connaissances : la page existe dans les deux langues et l'accueil y mène
+  hub=f'/savoirs{suffix}'
+  self.assertIn(f'href="{hub}"',main)
+  self.assertIn(f'href="{hub}#savoirs-investisseurs"',main)
+  centre=(ROOT/f'savoirs{suffix}.html').read_text()
+  for identity in ('comprendre','outils','documents','gouvernance','investisseurs','conformite','hse'):
+   self.assertIn(f'<section id="savoirs-{identity}"',centre)
 
  def check_structure(self,en):
   s=(ROOT/('index-en.html' if en else 'index.html')).read_text()
@@ -53,9 +65,19 @@ class HomepageReview(unittest.TestCase):
   client='/boutique/en/clients' if en else '/boutique/clients'
   self.assertIn(f'<a class="et-primary" href="{client}#besoin-client">{primary}</a>',main)
   self.assertIn('href="/projets-en#avancement">Projects and status' if en else 'href="/projets#avancement">Projets et avancement',main)
-  # repères : trois chiffres, tous publiés ailleurs sur le site, aucun contenu « à fournir » en ligne
-  reperes=re.search(r'<section id="reperes".*?</section>',main,re.S)[0]
-  self.assertEqual(reperes.count('<li>'),3)
+  # vision : trois piliers ; impact : cinq cartes, chacune avec son état de publication ; investisseurs : trois lignes de repères
+  vision=re.search(r'<section id="vision".*?</section>',main,re.S)[0]
+  self.assertEqual(vision.count('<li>'),3)
+  home_impact=re.search(r'<section id="impact".*?</section>',main,re.S)[0]
+  self.assertEqual(home_impact.count('<li>'),5)
+  self.assertNotIn('class="hm-card"',main)  # les cartes .hm-card relèvent du contrat de design partagé (rayon 16 px) : l'accueil éditorial n'en porte pas
+  self.assertEqual(home_impact.count('class="hm-flag'),5)
+  investors=re.search(r'<section id="investisseurs-accueil".*?</section>',main,re.S)[0]
+  self.assertEqual(investors.count('<li>'),3)
+  self.assertIn('No subscription open to date' if en else 'Aucune souscription ouverte à ce jour',investors)
+  # leadership : les deux mandats désignés, sans autre carte
+  leadership=re.search(r'<section id="gouvernance-accueil".*?</section>',main,re.S)[0]
+  self.assertEqual(leadership.count('<article class="mod-card'),2)
   for banned in ('à fournir','À FOURNIR','to be provided','[NOM','Artificial Lift'):
    self.assertNotIn(banned,main)
   # feuille de route (page Projets depuis le lot 116) : cinq étapes, une seule datée ; impact : cinq cartes avec leur état
@@ -67,7 +89,8 @@ class HomepageReview(unittest.TestCase):
   impact=re.search(r'<section id="impact-pays".*?</section>',projects,re.S)[0]
   self.assertEqual(impact.count('<div class="pp-cell">'),5)
   self.assertLess(projects.index('id="feuille-de-route"'),projects.index('id="avancement"'))
-  # vision (page Société depuis le lot 116)
+  # vision : la page Société garde le texte long ; l'accueil en reprend le titre et y renvoie
+  self.assertIn('href="/societe-en#vision"' if en else 'href="/societe#vision"',main)
   company=(ROOT/('societe-en.html' if en else 'societe.html')).read_text()
   self.assertIn('<h4>A national ambition.</h4>' if en else '<h4>Une ambition nationale.</h4>',company)
   # feuilles : la nouvelle feuille remplace les feuilles propres à l'ancien accueil
