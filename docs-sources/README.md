@@ -13,6 +13,15 @@ Generation : Chromium headless -> PDF (printBackground, marges nulles).
 - fiche_amont.html -> /Fiche_Technique_Amont_EnerTchad.pdf (régénéré au lot 25, octobre 2026 ; source du taux d'eau)
 - point_etape_print.html -> /Point_Etape_EnerTchad_2026.pdf (régénéré au lot 98, novembre 2026 : titulaires nommés, 33 carnets)
 
+# Gabarit des biographies du conseil : hors du site publié (revue du 12 novembre 2026)
+
+Le gabarit ne figure plus dans gouvernance.html ni gouvernance-en.html : même masqué, son texte
+« À compléter » restait lisible dans le code de la page et par les moteurs de recherche. Il est conservé dans
+docs-sources/gabarit_biographies_conseil.html et docs-sources/gabarit_biographies_conseil_en.html (dossier non publié).
+Pour publier : remplir les champs comme décrit ci-dessous dans ces deux fichiers, retirer l'attribut hidden,
+puis coller la section dans chaque page juste avant <script id="pp-sub-js">.
+Le mode d'emploi d'origine suit, à lire avec cet emplacement.
+
 # Gabarit masqué : biographies du conseil (gouvernance, lot 25)
 
 gouvernance.html et gouvernance-en.html contiennent, après la section « Comités & documents », une section
