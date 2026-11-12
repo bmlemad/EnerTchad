@@ -15,10 +15,19 @@
     --et-ui-control-radius:0px; /* direction editoriale (11 novembre 2026) : actions et champs a aretes vives */
     --et-ui-shadow:0 8px 24px rgba(10,26,47,.06);
     --et-ui-font:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;
+    /* Titres : direction editoriale (11 novembre 2026). Une seule definition, ici ; les gabarits ne la surchargent plus. */
+    --et-ui-display:'Instrument Serif',"Instrument Serif Fallback G","Instrument Serif Fallback T","Instrument Serif Fallback N","Instrument Serif Fallback D",Georgia,'Times New Roman',serif;
+    --et-ui-heading-weight:400;
+    --et-ui-h1-leading:1;
+    --et-ui-h1-tracking:-.015em;
+    --et-ui-h2-leading:1.06;
+    --et-ui-h2-tracking:-.01em;
+    --et-ui-accent:#E3BC62;
+    --et-ui-accent-text:#0A1220;
     --et-ui-gutter:clamp(20px,4vw,48px);
     --et-ui-section:clamp(48px,6vw,80px);
-    --et-ui-h1:clamp(2.125rem,4.2vw,3.625rem);
-    --et-ui-h2:clamp(1.625rem,2.8vw,2.25rem);
+    --et-ui-h1:clamp(2.75rem,5.8vw,5.5rem);
+    --et-ui-h2:clamp(2rem,3.6vw,3rem);
     --et-ui-gap:24px;
   }
   html:not(.et-plight,.et-jlight) {
@@ -31,23 +40,30 @@
     --et-ui-focus:#e0bd70;
     --et-ui-shadow:0 8px 24px rgba(0,0,0,.12);
   }
-  /* Arabic keeps its native font and natural tracking. */
-  html[lang^="ar"] {--et-ui-font:"Noto Sans Arabic",system-ui,sans-serif}
-  :is(.pp-hero,.ec-hero) h1 {
-    font-family:var(--et-ui-font)!important;
+  /* Arabic keeps its native font, weight, scale and natural tracking: Instrument Serif has no Arabic glyphs. */
+  html[lang^="ar"] {
+    --et-ui-font:"Noto Sans Arabic",system-ui,sans-serif;
+    --et-ui-display:"Noto Sans Arabic",system-ui,sans-serif;
+    --et-ui-heading-weight:600;
+    --et-ui-h1:clamp(2.125rem,4.2vw,3.625rem);
+    --et-ui-h2:clamp(1.625rem,2.8vw,2.25rem);
+  }
+  /* Heading component. Every h1 and h2 of the shared .ppl template, not only those inside .pp-hero and .pp-head. */
+  :is(.pp-hero,.ec-hero) h1,html:not([lang^="ar"]) main.ppl h1 {
+    font-family:var(--et-ui-display)!important;
     font-size:var(--et-ui-h1)!important;
-    font-weight:600!important;
-    line-height:1.12!important;
-    letter-spacing:-.035em!important;
+    font-weight:var(--et-ui-heading-weight)!important;
+    line-height:var(--et-ui-h1-leading)!important;
+    letter-spacing:var(--et-ui-h1-tracking)!important;
     text-wrap:balance;
   }
   .hm #ph-h1 {font-size:clamp(2.5rem,5.8vw,5rem)!important;line-height:1.05!important;letter-spacing:-.045em!important}
-  :is(.pp-head,.ec-heading) h2,.hm main h2:not(.hm-eyebrow) {
-    font-family:var(--et-ui-font)!important;
+  :is(.pp-head,.ec-heading) h2,.hm main h2:not(.hm-eyebrow),html:not([lang^="ar"]) main.ppl h2:not(.pp-k) {
+    font-family:var(--et-ui-display)!important;
     font-size:var(--et-ui-h2)!important;
-    font-weight:600!important;
-    line-height:1.2!important;
-    letter-spacing:-.025em!important;
+    font-weight:var(--et-ui-heading-weight)!important;
+    line-height:var(--et-ui-h2-leading)!important;
+    letter-spacing:var(--et-ui-h2-tracking)!important;
     text-wrap:balance;
   }
   html[lang^="ar"] :is(.pp-hero h1,.pp-head h2) {letter-spacing:normal!important;line-height:1.5!important}
@@ -78,6 +94,12 @@
     line-height:1.35!important;
     text-align:center;
     white-space:normal;
+  }
+  /* Hero primary action: gold on ink, on the photograph of the hero in both themes. */
+  .pp-hero .pp-btn-light {
+    background:var(--et-ui-accent)!important;
+    color:var(--et-ui-accent-text)!important;
+    border-color:var(--et-ui-accent)!important;
   }
   .ec-page .ec-primary,.atlas-gold-panel>a {
     background:var(--et-ui-action)!important;

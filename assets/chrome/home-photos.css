@@ -62,7 +62,7 @@ html:is(.et-plight,:not(.et-plight)) #main-content.et-home .et-hero .et-metrics{
    (budget de dette CSS des accueils) : la barre utilitaire et la barre principale partagent le même voile. */
 @media (prefers-reduced-motion:no-preference){html body.hm:has(#nav) #nav.nav.nx{transition:background-color .3s ease,backdrop-filter .3s ease}}
 @layer verre{
-html body.hm:has(#nav) #nav.nav.nx:not(.scrolled):not(:focus-within):not(:has(.nav-item:hover)):not(.open):not(:has([aria-expanded="true"],.open)) :is(.nx-util-in,.nav-links,.nav-search,.nav-tog){
+html body.hm:has(#nav) #nav.nav.nx:not(.scrolled):not(:focus-within):not(:has(.nav-item:hover)):not(.open):not(:has([aria-expanded="true"],.open)) :is(.nx-util-in,.nav-search,.nav-tog){
   background:rgba(243,241,236,.08)!important;box-shadow:inset 0 0 0 1px rgba(243,241,236,.16)!important}
 html body.hm:has(#nav) #nav.nav.nx:not(.scrolled):not(:focus-within):not(:has(.nav-item:hover)):not(.open):not(:has([aria-expanded="true"],.open)) :is(a,button,span,small,strong,b,svg):not(.nx-invest):not(.nx-invest *):not(.nx-mega *){color:#F3F1EC!important}
 html body.hm:has(#nav) #nav.nav.nx:not(.scrolled):not(:focus-within):not(:has(.nav-item:hover)):not(.open):not(:has([aria-expanded="true"],.open)) span.bz{background:#F3F1EC!important}
