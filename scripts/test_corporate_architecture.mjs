@@ -10,7 +10,7 @@ test('six corporate sections have independent entry points and complete project 
     const sections=corporateSections(en),s=en?'-en':'';
     assert.equal(sections.length,6);assert.equal(new Set(sections.map(x=>x.href)).size,6);
     assert.equal(sections[2].href,'/projets'+s);assert.equal(sections[3].href,'/engagements'+s);assert.equal(sections[5].href,'/investisseurs'+s);
-    assert.deepEqual(sections[1].groups.map(x=>x.links.length),[4,4,6]);
+    assert.deepEqual(sections[1].groups.map(x=>x.links.length),[4,4,5]);
     assert.equal(sections[2].groups[0].links.length,8);
     for(const section of sections){const links=section.groups.flatMap(g=>g.links.map(x=>x[0]));assert.equal(new Set(links).size,links.length,section.id);}
   }
@@ -26,7 +26,7 @@ test('rendered navigation has six matching disclosure regions, a common footer a
   }
 });
 test('hub wayfinding preserves source content and connects related sections without adding claims',()=>{
-  for(const [file,href]of [['projets.html','/investisseurs'],['projets-en.html','/investisseurs-en'],['engagements.html','/communautes'],['publications-en.html','/communiques-en']]){
+  for(const [file,href]of [['projets.html','/investisseurs'],['projets-en.html','/investisseurs-en'],['engagements.html','/communautes'],['savoirs-en.html','/communiques-en']]){
     const source=readFileSync(file,'utf8'),out=withArchitectureWayfinding(source);assert(out.includes('id="et-architecture-context"'));assert(out.includes('href="'+href+'"'));assert.equal(withArchitectureWayfinding(out),out);
     assert.equal(out.replace(/<nav id="et-architecture-context"[\s\S]*?<\/nav>/,''),source);
   }
