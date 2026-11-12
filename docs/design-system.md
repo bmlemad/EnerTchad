@@ -50,7 +50,9 @@ un traitement plus discret et un libellé explicite. Les cartes de lecture utili
 des fonds solides. Le verre reste réservé aux surfaces de navigation déjà gérées
 par `verre-2026.css`, dont le repli sans transparence est conservé, et, depuis le lot 112
 (choix du DG, 10 novembre 2026), aux cartes posées sur une photo de fond (`immersif-2026.css`) :
-une carte de lecture sur fond uni garde un fond solide. Aucun flou n’est
+une carte de lecture sur fond uni garde un fond solide. L’immersif s’applique aux scènes « conviction » des 16 pages d’entrée
+des pôles (lot 113) et, depuis le lot 122 (12 novembre 2026, pilote), à la scène « Ce que nous mettons en œuvre » de dix
+pages sous `/amont` (`lib/immersif-amont.js`) ; les autres pages du gabarit de pôle n’en ont pas. Aucun flou n’est
 ajouté aux blocs de texte. Les animations des composants harmonisés sont supprimées
 si le visiteur demande une réduction des mouvements. Les couleurs système restent
 disponibles en contraste forcé.
