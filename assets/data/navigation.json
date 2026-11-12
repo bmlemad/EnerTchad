@@ -1,5 +1,5 @@
 {
- "note": "Menu principal (lot 80, structure validée par le DG le 31 octobre 2026). Appliqué au build par lib/main-nav.js.",
+ "note": "Menu principal (lot 80, structure validée par le DG le 31 octobre 2026). Appliqué au build par lib/main-nav.js. Revue du 12 novembre 2026 (décision du DG) : le menu « Actualités & Documents » devient le « Centre de connaissances » (/savoirs) ; glossaire, atlas, carnets, FAQ et outils y sont regroupés et retirés des autres menus.",
  "fr": [
   {
    "id": "a",
@@ -53,11 +53,6 @@
        "Achats & fournisseurs",
        "Centrale d’achat, référencement",
        "/achats"
-      ],
-      [
-       "Questions fréquentes",
-       "Centre d’aide",
-       "/faq"
       ],
       [
        "Contact",
@@ -156,11 +151,6 @@
        "Espace clients",
        "Carburants, services, boutique",
        "/boutique/clients"
-      ],
-      [
-       "Calculateur du baril additionnel",
-       "Outil · récupération assistée",
-       "/amont/calculateur-baril-additionnel"
       ]
      ]
     }
@@ -236,11 +226,6 @@
        "/cibles-2030"
       ],
       [
-       "Atlas du secteur",
-       "Le secteur pétrolier du Tchad",
-       "/atlas/"
-      ],
-      [
        "Proposer un partenariat",
        "Contact projet",
        "/contact?profil=partenariat#ctForm"
@@ -305,17 +290,62 @@
   },
   {
    "id": "f",
-   "label": "Actualités & Documents",
-   "description": "Annonces, analyses et preuves, chacune avec son type et sa date.",
+   "label": "Centre de connaissances",
+   "description": "Références, outils et documents pour comprendre le secteur et vérifier ce que nous publions.",
    "overview": [
     "Vue d’ensemble",
-    "Publications & documents",
-    "/publications"
+    "Centre de connaissances",
+    "/savoirs"
    ],
    "groups": [
     {
-     "title": "Actualités officielles",
+     "title": "Comprendre le secteur",
      "links": [
+      [
+       "Glossaire pétrolier",
+       "Référence · termes du métier",
+       "/glossaire-petrolier"
+      ],
+      [
+       "Atlas du secteur",
+       "Référence · données du secteur",
+       "/atlas/"
+      ],
+      [
+       "Carnets",
+       "Analyse · articles et interviews",
+       "/carnets"
+      ],
+      [
+       "Questions fréquentes",
+       "Centre d’aide",
+       "/faq"
+      ]
+     ]
+    },
+    {
+     "title": "Outils",
+     "links": [
+      [
+       "Calculateur du baril additionnel",
+       "Outil · récupération assistée",
+       "/amont/calculateur-baril-additionnel"
+      ],
+      [
+       "Configurateur de service intégré",
+       "Outil · structurer un besoin",
+       "/configurateur-service-integre"
+      ]
+     ]
+    },
+    {
+     "title": "Documents & actualités",
+     "links": [
+      [
+       "Publications & documents",
+       "Preuve · brochures, fiches, data book",
+       "/publications"
+      ],
       [
        "Communiqués officiels",
        "Annonce · datée",
@@ -325,36 +355,6 @@
        "Espace presse",
        "Contacts et ressources",
        "/presse"
-      ]
-     ]
-    },
-    {
-     "title": "Analyses & Carnets",
-     "links": [
-      [
-       "Carnets",
-       "Analyse · articles et interviews",
-       "/carnets"
-      ]
-     ]
-    },
-    {
-     "title": "Documents & données",
-     "links": [
-      [
-       "Publications & documents",
-       "Preuve · brochures, fiches, data book",
-       "/publications"
-      ],
-      [
-       "Atlas du secteur",
-       "Référence · données du secteur",
-       "/atlas/"
-      ],
-      [
-       "Glossaire pétrolier",
-       "Référence · termes du métier",
-       "/glossaire-petrolier"
       ]
      ]
     }
@@ -480,11 +480,6 @@
        "/achats-en"
       ],
       [
-       "FAQ",
-       "Help centre",
-       "/faq-en"
-      ],
-      [
        "Contact",
        "Write, call, visit",
        "/contact-en"
@@ -581,11 +576,6 @@
        "Client area",
        "Fuels, services, shop",
        "/boutique/en/clients"
-      ],
-      [
-       "Additional barrel calculator",
-       "Tool · enhanced recovery (in French)",
-       "/amont/calculateur-baril-additionnel"
       ]
      ]
     }
@@ -661,11 +651,6 @@
        "/cibles-2030-en"
       ],
       [
-       "Sector atlas",
-       "Chad’s oil sector",
-       "/atlas-en"
-      ],
-      [
        "Propose a partnership",
        "Project contact",
        "/contact-en?profil=partenariat#ctForm"
@@ -730,17 +715,62 @@
   },
   {
    "id": "f",
-   "label": "News & Documents",
-   "description": "Announcements, analysis and evidence, each with its type and date.",
+   "label": "Knowledge center",
+   "description": "References, tools and documents to understand the sector and check what we publish.",
    "overview": [
     "Overview",
-    "Publications & documents",
-    "/publications-en"
+    "Knowledge center",
+    "/savoirs-en"
    ],
    "groups": [
     {
-     "title": "Official news",
+     "title": "Understand the sector",
      "links": [
+      [
+       "Oil glossary",
+       "Reference · terms of the trade",
+       "/glossaire-petrolier-en"
+      ],
+      [
+       "Sector atlas",
+       "Reference · sector data",
+       "/atlas-en"
+      ],
+      [
+       "Journal",
+       "Analysis · articles and interviews",
+       "/carnets-en"
+      ],
+      [
+       "FAQ",
+       "Help centre",
+       "/faq-en"
+      ]
+     ]
+    },
+    {
+     "title": "Tools",
+     "links": [
+      [
+       "Additional barrel calculator",
+       "Tool · enhanced recovery (in French)",
+       "/amont/calculateur-baril-additionnel"
+      ],
+      [
+       "Integrated service configurator",
+       "Tool · structure a need (in French)",
+       "/configurateur-service-integre"
+      ]
+     ]
+    },
+    {
+     "title": "Documents & news",
+     "links": [
+      [
+       "Publications & documents",
+       "Evidence · brochures, fact sheets, data book",
+       "/publications-en"
+      ],
       [
        "Press releases",
        "Announcement · dated",
@@ -750,36 +780,6 @@
        "Press room",
        "Contacts and resources",
        "/presse-en"
-      ]
-     ]
-    },
-    {
-     "title": "Analysis & Notebooks",
-     "links": [
-      [
-       "Journal",
-       "Analysis · articles and interviews",
-       "/carnets-en"
-      ]
-     ]
-    },
-    {
-     "title": "Documents & data",
-     "links": [
-      [
-       "Publications & documents",
-       "Evidence · brochures, fact sheets, data book",
-       "/publications-en"
-      ],
-      [
-       "Sector atlas",
-       "Reference · sector data",
-       "/atlas-en"
-      ],
-      [
-       "Oil glossary",
-       "Reference · terms of the trade",
-       "/glossaire-petrolier-en"
       ]
      ]
     }
