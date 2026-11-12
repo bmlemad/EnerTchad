@@ -135,7 +135,9 @@ try{(function(){
       if(c.pointerEvents==='none')continue;
       r=e.getBoundingClientRect();
       if(r.width<vw*0.6)continue;              /* pas une barre pleine largeur */
-      h=r.height;if(h<12||h>vh*0.45)continue;  /* ni filet ni voile plein ecran */
+      /* Lot 120 (12 nov. 2026) : plafond 0,45 -> 0,25 de la hauteur. Un panneau colle de 25 a 45 % de l'ecran (boutique anglaise :
+         « Your request », 377 px sur 844) n'est pas une barre d'en-tete : il portait le decalage d'ancre a 475 px. */
+      h=r.height;if(h<12||h>vh*0.25)continue;  /* ni filet ni voile plein ecran, ni panneau colle */
       t=c.position==='fixed'?r.top:parseFloat(c.top);
       if(!isFinite(t)||t<-4||t>vh*0.4)continue;/* ne se colle pas en haut */
       if(t+h>bas)bas=t+h;
