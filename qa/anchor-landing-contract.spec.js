@@ -9,8 +9,12 @@ const { test, expect } = require('@playwright/test');
 // Ce contrat ouvre chaque ancre visée par un lien du site et vérifie que son titre arrive sous l'en-tête fixe et dans la moitié
 // haute de la fenêtre. La liste des couples page/ancre est celle du relevé du 11 novembre 2026 (833 ancres, 156 pages), ajoutée
 // à celles de Projets.
+// Lot 120 (12 novembre 2026) : /boutique/en/#boutique arrivait à 625 px sur mobile, sans rendu différé en cause. nav_a.js (pile())
+// prenait le panneau collant « Your request » (377 px sur 844) pour une barre d'en-tête et posait --et-anc à 475 px. Plafond de
+// hauteur d'une barre ramené à 25 % de la fenêtre. Le contrat vérifie aussi, sur mobile, que scroll-padding-top de <html> ne
+// dépasse pas 25 % de la fenêtre + 18 px (une barre légitime mesure au plus 77 px de bas de pile à 390 px).
 // Exclus : /contact#ctForm et /contact-en#ctForm sur ordinateur (452 px pour un seuil de 450 : le pied de page est atteint, la
-// page ne peut pas défiler plus) ; /boutique/en/#boutique sur mobile (cause distincte, sans rendu différé, consignée au registre).
+// page ne peut pas défiler plus).
 
 const base = process.env.SITE_URL || 'https://enertchad.com/';
 const viewports = [{ width: 390, height: 844 }, { width: 1440, height: 900 }];
@@ -47,6 +51,7 @@ const couples = [
   ['/engagements', ['esg', 'referentiels', 'rapport']],
   ['/engagements-en', ['hse', 'esg', 'referentiels', 'rapport']],
   ['/societe', ['organisation']],
+  ['/boutique/en/', ['boutique']],
 ];
 
 // Même définition de l'en-tête que le relevé : éléments fixes ou collants, collés en haut de la fenêtre.
@@ -60,7 +65,8 @@ function mesure(id) {
     const b = e.getBoundingClientRect();
     if (b.height > 0 && b.top <= header + 2 && b.bottom < innerHeight / 2 && c.visibility !== 'hidden' && c.display !== 'none') header = Math.max(header, b.bottom);
   }
-  return { top: Math.round(target.getBoundingClientRect().top), header: Math.round(header), height: innerHeight };
+  const padding = parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 0;
+  return { top: Math.round(target.getBoundingClientRect().top), header: Math.round(header), height: innerHeight, width: innerWidth, padding: Math.round(padding) };
 }
 
 async function arrive(context, path, anchor) {
@@ -77,6 +83,10 @@ function verifie(path, anchor, report, mode) {
   // 2 px de tolérance sous l'en-tête ; pas plus bas que la moitié de la fenêtre
   expect(report.top, `${mode} ${path}#${anchor} lands below the fixed header (${JSON.stringify(report)})`).toBeGreaterThanOrEqual(report.header - 2);
   expect(report.top, `${mode} ${path}#${anchor} lands in the upper half of the viewport (${JSON.stringify(report)})`).toBeLessThanOrEqual(report.height / 2);
+  // Lot 120 : sur mobile, le décalage d'ancre ne vient pas d'un panneau collant pris pour une barre d'en-tête.
+  if (report.width < 600) {
+    expect(report.padding, `${mode} ${path}#${anchor} scroll-padding-top stays that of a header bar (${JSON.stringify(report)})`).toBeLessThanOrEqual(report.height * 0.25 + 18);
+  }
 }
 
 for (const viewport of viewports) {
