@@ -38,8 +38,10 @@ const budgets = [
   // et +238 octets de CSS critique dans la page (repères remontés sous le héros).
   // Lot 117 (10 novembre 2026, décision du DG) : la ligne dorée du héros repose sur une pastille sombre (contraste) ; +117 octets de CSS critique.
   // Lot 119 (12 novembre 2026) : arrivée sur les ancres ; +1 !important par page (règle commune de premium-chrome.css, feuille chargée par toutes les pages) ; aucun octet de CSS en ligne.
-  ['/', 2661, 9892, 114712, 44], // lot 106-A : accueil refondu (mesure du 8 novembre 2026, hors contrat de design)
-  ['/index-en', 2698, 9894, 118461, 44], // lot 106-B : accueil EN refondu (mesure du 8 novembre 2026, hors contrat de design)
+  // 12 novembre 2026 (décision du DG) : la chaîne de valeur remplace la photo en héros de l’accueil. 13 !important dans la couche et-verre
+  // (liens et libellés de la chaîne, contre les règles de carte des liens de l’accueil), comptés dans la feuille et dans la CSS critique : +27 ; +4 227 octets de CSS en ligne.
+  ['/', 2688, 9892, 118939, 44], // lot 106-A : accueil refondu (mesure du 8 novembre 2026, hors contrat de design)
+  ['/index-en', 2698, 9894, 119143, 44], // lot 106-B : accueil EN refondu (mesure du 8 novembre 2026, hors contrat de design)
   // Lot 113 (10 novembre 2026, décision du DG) : direction immersive, phase B ; scène « conviction » des pôles posée au build par
   // lib/immersif-poles.js : +7 !important (verre, texte clair, hauteur de la photo ; couche et-verre) et +1 943 octets de CSS en ligne.
   ['/amont/', 3520, 20327, 140098, 40],
