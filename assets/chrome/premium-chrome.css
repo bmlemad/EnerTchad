@@ -520,6 +520,13 @@ html:not(.et-plight):not(.et-jlight) .et-proj-legend span,html:not(.et-plight):n
   }
 }
 
+/* Lot 119 (12 novembre 2026) : arrivee sur une ancre. Quand l'adresse vise un element (:target), la page est rendue en
+   entier avant le saut : sinon les sections differees au-dessus de la cible se mesurent apres coup et le titre vise glisse
+   (sous l'en-tete, ou en bas de l'ecran). Sans fragment, le rendu differe reste en place. Releve des ancres du 11 novembre 2026. */
+@supports(selector(:has(*))){
+  html:has(:target) main *{content-visibility:visible!important}
+}
+
 
 @media print{
   #nav,.pp-sub,.nx-util,.pgr,.pft,footer.pft,.et-skip,#readbar{display:none}
