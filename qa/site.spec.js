@@ -43,6 +43,7 @@ test('homepage keyboard accessibility', async ({ page }) => {
 });
 
 test('representative inner pages — desktop and mobile', async ({ browser }) => {
+  test.setTimeout(60000); // Lot 121 (12 novembre 2026) : 32 à 44 s mesurés en ligne, seul, contre 30 s par défaut
   const paths = ['/amont/', '/intermediaire/', '/aval/', '/greentech/', '/societe', '/investisseurs', '/boutique/clients', '/carrieres', '/contact', '/faq'];
   for (const path of paths) {
     const page = await browser.newPage({ viewport: { width: 1280, height: 900 } });
@@ -219,6 +220,7 @@ test('SEO infrastructure — robots, sitemap et hreflang', async ({ request }) =
 
 
 test('hubs — parcours métiers et institutionnels', async ({ browser }) => {
+  test.setTimeout(60000); // Lot 121 (12 novembre 2026) : 32 à 44 s mesurés en ligne, seul, contre 30 s par défaut
   const hubs = [
     ['/amont/', 'fr'], ['/intermediaire/', 'fr'], ['/aval/', 'fr'],
     ['/petrochimie/', 'fr'], ['/greentech/', 'fr'], ['/tchaditech/', 'fr'],
@@ -1587,6 +1589,7 @@ test('navigation — keyboard menu contracts remain explicit', async ({ browser 
 });
 
 test('responsive — key content remains readable across tablet and mobile widths', async ({ browser }) => {
+  test.setTimeout(60000); // Lot 121 (12 novembre 2026) : 32 à 44 s mesurés en ligne, seul, contre 30 s par défaut
   const paths = ['/', '/amont/', '/intermediaire/', '/aval/', '/greentech/', '/tchaditech/', '/contact'];
   const viewports = [{ width: 1024, height: 768 }, { width: 768, height: 1024 }, { width: 390, height: 844 }];
   for (const path of paths) {

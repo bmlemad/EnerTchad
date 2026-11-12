@@ -2,6 +2,7 @@ const {test,expect}=require('@playwright/test');
 const base=process.env.SITE_URL||'https://enertchad.com/';
 const routes=['/','/index-en','/amont/','/aval/','/intermediaire/','/enerconseils/','/boutique/clients','/boutique/en/clients','/contact','/ar-presse'];
 for(const width of [320,360,390,1440])test(`forms, anchors and interactive — thematic keyboard theme switch ${width}`,async({browser})=>{
+  test.setTimeout(60000); // Lot 121 (12 novembre 2026) : 27 à 44 s mesurés en ligne, contre 30 s par défaut
   const page=await browser.newPage({viewport:{width,height:900}});
   for(const route of ['/amont/','/pole-amont-en','/intermediaire/','/aval/','/petrochimie/','/enerconseils/','/greentech/']){
     await page.goto(new URL(route,base).href,{waitUntil:'networkidle'});
@@ -22,6 +23,7 @@ for(const width of [320,360,390,1440])test(`forms, anchors and interactive — t
   await page.close();
 });
 for(const width of [320,1440])test(`forms, anchors and interactive — shared design contract ${width}`,async({browser})=>{
+  test.setTimeout(60000); // Lot 121 (12 novembre 2026) : 27 à 44 s mesurés en ligne, contre 30 s par défaut
   const page=await browser.newPage({viewport:{width,height:900}});
   for(const route of routes){
     await page.goto(new URL(route,base).href,{waitUntil:'networkidle'});

@@ -23,6 +23,7 @@ const paths = [
 // (scripts/next/fingerprint.mjs), plus de ?b=AAAAMMJJ. Le contrat vérifie qu'une seule version de nav_a.js et de
 // premium-chrome.css est servie sur toutes les pages critiques, et qu'elle est bien l'empreinte du fichier publié.
 test('shared premium assets — critical pages use one current cache-buster', async ({ page, request }) => {
+  test.setTimeout(60000); // Lot 121 (12 novembre 2026) : 27 à 44 s mesurés en ligne, contre 30 s par défaut
   const seen = { nav: new Set(), premium: new Set() };
   for (const path of paths) {
     await page.goto(new URL(path, base).href, { waitUntil: 'domcontentloaded', timeout: 45000 });

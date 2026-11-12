@@ -17,6 +17,7 @@ const matrix = [
 ];
 
 test('hubs — FR/EN/AR canonical and available hreflang mappings stay reciprocal', async ({ browser }) => {
+  test.setTimeout(60000); // Lot 121 (12 novembre 2026) : 27 à 44 s mesurés en ligne, contre 30 s par défaut
   for (const [path, lang, canonicalPath, expected] of matrix) {
     const page = await browser.newPage();
     await page.goto(new URL(path, base).href, { waitUntil: 'domcontentloaded', timeout: 45000 });
