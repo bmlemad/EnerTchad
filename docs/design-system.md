@@ -33,12 +33,14 @@ navigation et du pied de page sur le reste du site.
 | Élément | Règle | Source |
 | --- | --- | --- |
 | Accueil | Bandes pleines alternées : papier #F5F0E6 (papier nuit #101B2E en thème sombre) et encre #0A1220 ; plus de photo de fond ni de carte en verre dans « Quatre maillons » et « Direction et gouvernance » ; filets 1 px | `immersif-2026.css`, bloc « direction éditoriale » |
-| Titres | Instrument Serif, graisse 400 : `h1` et `h2` du gabarit `.ppl` (hors `.pp-k`), titres de l’accueil ; pages arabes exclues (Noto Sans Arabic) | `pole-premium.css`, `immersif-2026.css` |
-| Actions | Arêtes vives ; action principale des héros en or #E3BC62 sur encre #0A1220 | `design-system.css` (`--et-ui-control-radius`), `pole-premium.css` |
-| Barre de navigation | Rubriques à plat, sans pilule, à partir de 1241 px ; rubrique courante soulignée d’un filet or ; tiroir mobile inchangé | `premium-chrome.css` |
+| Titres | Instrument Serif, graisse 400 : `h1` et `h2` du gabarit `.ppl` (hors `.pp-k`), titres de l’accueil ; pages arabes : Noto Sans Arabic, graisse 600, échelle antérieure | `design-system.css` (`--et-ui-display`, `--et-ui-h1`, `--et-ui-h2`, `--et-ui-heading-weight`) ; accueil : `immersif-2026.css` |
+| Actions | Arêtes vives ; action principale des héros en or #E3BC62 sur encre #0A1220 | `design-system.css` (`--et-ui-control-radius`, `--et-ui-accent`, `--et-ui-accent-text`) |
+| Barre de navigation | Rubriques à plat, sans pilule, à partir de 1241 px ; rubrique survolée ou ouverte soulignée, rubrique courante soulignée d’un filet or ; halo de focus clavier d’origine conservé ; tiroir mobile inchangé | `premium-chrome.css`, règles d’origine de `@layer verre` réécrites sur place (plus de surcharge) |
 | Pied de page | Devise en grand serif (hors pages arabes), colonnes à plat sur filets | `premium-chrome.css` |
 
-Ces surcharges sont écrites dans `@layer et-verre`, première couche déclarée des pages construites. Le verre de
+Titres et actions sont des composants du contrat (`@layer et-design-system`) : les gabarits ne les surchargent plus.
+L’accueil et le pied de page restent écrits dans `@layer et-verre`, première couche déclarée
+des pages construites, en attendant d’entrer à leur tour dans le contrat. Le verre de
 contenu reste la règle des scènes des pôles (`.im-scene .im-glass` hors accueil).
 
 ## Hiérarchie et états
