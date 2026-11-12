@@ -24,6 +24,14 @@ const { hardenExport } = await import('./harden-export.mjs');
 console.log(await hardenExport('out'));
 const revision = process.env.COMMIT_REF || execFileSync('git', ['rev-parse', 'HEAD'], {encoding:'utf8'}).trim();
 await writeFile('out/deploy-version.txt', revision + '\n');
+// Le cache du service worker change de nom a chaque version publiee : sans cela,
+// images, donnees JSON et pages lues par script restent servies depuis l'ancien cache.
+if (await exists('out/sw.js')) {
+  const sw = await readFile('out/sw.js', 'utf8');
+  const stamped = sw.replace(/const V='([^']+)'/, (_, name) => `const V='${name}-${revision.slice(0, 12)}'`);
+  if (stamped === sw) throw new Error('sw.js: cache name not found, cannot stamp the deploy revision');
+  await writeFile('out/sw.js', stamped);
+}
 // Lot 26 (m16) : sources remises dans leur etat d'avant le build (scripts/next/sources.mjs).
 const { restoreSources } = await import('./sources.mjs');
 const restored = await restoreSources();
