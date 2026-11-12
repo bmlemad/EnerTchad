@@ -31,23 +31,24 @@ const budgets = [
   // Lot 112 (10 novembre 2026, décision du DG) : direction immersive ; +3 !important (verre des cartes posées sur photo, couche et-verre)
   // et +238 octets de CSS critique dans la page (repères remontés sous le héros).
   // Lot 117 (10 novembre 2026, décision du DG) : la ligne dorée du héros repose sur une pastille sombre (contraste) ; +117 octets de CSS critique.
-  ['/', 2669, 9892, 115171, 44], // lot 106-A : accueil refondu (mesure du 8 novembre 2026, hors contrat de design)
-  ['/index-en', 2706, 9894, 118920, 44], // lot 106-B : accueil EN refondu (mesure du 8 novembre 2026, hors contrat de design)
+  // Lot 119 (12 novembre 2026) : arrivée sur les ancres ; +1 !important par page (règle commune de premium-chrome.css, feuille chargée par toutes les pages) ; aucun octet de CSS en ligne.
+  ['/', 2670, 9892, 115171, 44], // lot 106-A : accueil refondu (mesure du 8 novembre 2026, hors contrat de design)
+  ['/index-en', 2707, 9894, 118920, 44], // lot 106-B : accueil EN refondu (mesure du 8 novembre 2026, hors contrat de design)
   // Lot 113 (10 novembre 2026, décision du DG) : direction immersive, phase B ; scène « conviction » des pôles posée au build par
   // lib/immersif-poles.js : +7 !important (verre, texte clair, hauteur de la photo ; couche et-verre) et +1 943 octets de CSS en ligne.
-  ['/amont/', 3553, 20327, 141564, 40],
-  ['/aval/raffinage', 3738, 22028, 205402, 40],
-  ['/carrieres', 3753, 22094, 216281, 40],
+  ['/amont/', 3554, 20327, 141564, 40],
+  ['/aval/raffinage', 3739, 22028, 205402, 40],
+  ['/carrieres', 3754, 22094, 216281, 40],
   // PR #139 added the 480-byte after-enquiry block before this design change.
-  ['/contact', 3655, 21431, 191682, 40],
-  ['/carnets', 3405, 19057, 166243, 40],
-  ['/journal-criblage-eor', 2573, 10007, 150430, 40],
-  ['/atlas/', 3200, 18678, 176809, 46],
-  ['/boutique/', 2997, 17955, 122553, 40],
+  ['/contact', 3656, 21431, 191682, 40],
+  ['/carnets', 3406, 19057, 166243, 40],
+  ['/journal-criblage-eor', 2574, 10007, 150430, 40],
+  ['/atlas/', 3201, 18678, 176809, 46],
+  ['/boutique/', 2998, 17955, 122553, 40],
   // Lot 108 (9 novembre 2026, décision du DG) : menu mobile arabe, en-tête mobile de 160 à 64 px ; le premier écran montre
   // plus de contenu, la CSS critique écrite dans la page reprend donc plus de règles existantes (+15 !important, +486 :not(#…), +8 003 octets).
-  ['/ar-societe', 2521, 21103, 76504, 40],
-  ['/essentiel', 3243, 18370, 135205, 40],
+  ['/ar-societe', 2522, 21103, 76504, 40],
+  ['/essentiel', 3244, 18370, 135205, 40],
 ];
 
 const notIdPattern = /:not\(#[\w-]+\)/g;
