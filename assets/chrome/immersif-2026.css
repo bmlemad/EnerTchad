@@ -267,3 +267,5 @@ html:not(.et-plight,.et-jlight) #main-content.et-home.hm-review{
 #main-content.et-home.hm-review .et-chain-z{right:0;top:-34px}
 }
 @layer et-verre{#main-content.et-home.hm-review .et-chain{display:block!important;background:none!important}#main-content.et-home.hm-review .et-chain a{background:none!important;border:0!important;border-radius:0!important;box-shadow:none!important;padding:0!important;color:#fff!important}#main-content.et-home.hm-review .et-chain li{background:none!important}#main-content.et-home.hm-review .et-chain a{text-decoration:none!important}#main-content.et-home.hm-review .et-chain a strong{color:#fff!important}#main-content.et-home.hm-review .et-chain a em{color:#B9C2D0!important}#main-content.et-home.hm-review .et-chain a:is(:hover,:focus-visible) strong{text-decoration:underline!important}}
+/* Barre basse mobile, thème clair : libellé actif assombri, dans la couche et-verre pour passer la règle !important du thème clair (4,12:1 mesuré sur fond translucide -> >= 4,5:1) */
+@layer et-verre{html.et-plight #nezBar a.nz-on{color:#5c3f06!important}}
