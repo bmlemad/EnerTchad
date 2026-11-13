@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
-"""Lot 100 : la bande « Dernière publication » de l'accueil (FR et EN) montre bien la pièce datée la plus récente.
+"""Lot 100 : la bande « Dernière publication » montre bien la pièce datée la plus récente.
+Six blocs (12 novembre 2026) : la bande est sous le héros du Centre de connaissances (/savoirs, FR et EN) ; l'accueil n'en porte plus.
 Après « npm run build » : recalcule, depuis les sources, la dernière date au jour parmi les communiqués
-(communiques(-en).html) et les carnets (datePublished des journal-*.html), puis vérifie que out/index.html
-et out/index-en.html portent une seule bande .hm-latest, placée après le héros, avec cette date, le lien
+(communiques(-en).html) et les carnets (datePublished des journal-*.html), puis vérifie que out/savoirs.html
+et out/savoirs-en.html portent une seule bande .hm-latest, placée après le héros, avec cette date, le lien
 attendu et le titre attendu. Exit 1 au premier écart."""
 import glob
 import html as htmlmod
@@ -39,14 +40,14 @@ def latest(lang):
     return items[-1]
 
 
-for page, lang in (('index.html', 'fr'), ('index-en.html', 'en')):
+for page, lang in (('savoirs.html', 'fr'), ('savoirs-en.html', 'en')):
     date, href, title = latest(lang)
     out = rd(os.path.join('out', page))
     n = out.count('class="hm-latest"')
     if n != 1:
         errors.append(f'{page} : {n} bande(s) .hm-latest (1 attendue)')
         continue
-    hero = out.find('<header class="et-hero"')
+    hero = out.find('<header class="pp-hero')
     band = out.find('<aside class="hm-latest"')
     if hero < 0 or band < out.find('</header>', hero):
         errors.append(f'{page} : la bande n’est pas placée après le héros')
@@ -58,6 +59,9 @@ for page, lang in (('index.html', 'fr'), ('index-en.html', 'en')):
     if htmlmod.escape(title, quote=False).replace('&#x27;', '’') not in htmlmod.unescape(a) and title not in htmlmod.unescape(a):
         errors.append(f'{page} : titre « {title} » absent de la bande')
     print(f'{page} : {date} · {href}')
+for home in ('index.html', 'index-en.html'):
+    if 'class="hm-latest"' in rd(os.path.join('out', home)):
+        errors.append(f'{home} : la bande .hm-latest ne doit plus figurer sur l’accueil')
 for e in errors:
     print('KO', e)
 print(f'{len(errors)} écart(s)')

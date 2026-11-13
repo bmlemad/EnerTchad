@@ -78,3 +78,12 @@ ces anciens verrouillages composant par composant.
 Contrôler les modèles de référence en français, anglais et arabe, en clair et en
 sombre, sur petit écran et ordinateur : hiérarchie, contraste, débordements, focus,
 navigation et formulaires sans envoi. Les captures de validation accompagnent la PR.
+
+## Accueil en six blocs (12 novembre 2026)
+
+Décision du DG : sous le héros, l’accueil FR/EN ne garde que six blocs — vision, activités, impact, leadership,
+investisseurs, contact — en bandes papier et encre alternées (`home-2026.css`, bloc « Six blocs », sélecteurs `section#…`).
+Les repères, le projet phare, le tableau « Cadre · état publié » et la bande « Dernière publication » ne sont plus sur
+l’accueil : la bande est sous le héros du Centre de connaissances (`/savoirs`), qui gagne quatre entrées — gouvernance,
+investisseurs, conformité, HSE & durabilité — vers des pages et ancres déjà publiées. L’impact de l’accueil est une liste
+(`.hm-impact`), pas des cartes `.hm-card` : le rayon de 16 px du contrat partagé ne s’y applique donc pas.

@@ -16,7 +16,9 @@ for path in ROOT.rglob('*.html'):
 for suffix in ('', '-en'):
     home = (ROOT / ('index' + suffix + '.html')).read_text()
     assert home.count('class="et-seg-img"') == 4
-    if 'id="projet-phare"' in home:  # lot 112 (10 nov. 2026) : repères sous le héros, premier projet phare, puis la chaîne et la gouvernance
+    if 'id="contact-accueil"' in home:  # six blocs (12 nov. 2026) : vision, activités, impact, leadership, investisseurs, contact
+        assert home.index('id="vision"') < home.index('id="chaine"') < home.index('id="impact"') < home.index('id="gouvernance-accueil"') < home.index('id="investisseurs-accueil"') < home.index('id="contact-accueil"')
+    elif 'id="projet-phare"' in home:  # lot 112 (10 nov. 2026) : repères sous le héros, premier projet phare, puis la chaîne et la gouvernance
         assert home.index('id="reperes"') < home.index('id="projet-phare"') < home.index('id="chaine"') < home.index('id="gouvernance-accueil"')
     elif 'id="gouvernance-accueil"' in home:  # lot 106-A (8 nov. 2026) : accueil refondu, gouvernance après les repères
         assert home.index('id="chaine"') < home.index('id="reperes"') < home.index('id="gouvernance-accueil"')

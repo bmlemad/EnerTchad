@@ -239,3 +239,78 @@ html body.hm:has(#nav) #nav.nav.nx:not(.scrolled):not(:focus-within):not(:has(.n
 html body.hm:has(#nav) #nav.nav.nx:not(.scrolled):not(:focus-within):not(:has(.nav-item:hover)):not(.open):not(:has([aria-expanded="true"],.open)) .brand .s{background-image:linear-gradient(110deg,#F3F1EC 0%,#E9C77A 60%,var(--et-gold-300,#D9B567) 100%)!important}
 html body.hm:has(#nav) #nav.nav.nx:not(.scrolled):not(:focus-within):not(:has(.nav-item:hover)):not(.open):not(:has([aria-expanded="true"],.open)) :is(.nx-util-in,.nav-search,.nav-tog){ background:rgba(243,241,236,.08)!important;box-shadow:inset 0 0 0 1px rgba(243,241,236,.16)!important}
 }
+
+/* Six blocs (decision du DG, 12 novembre 2026) : vision, activites, impact, leadership, investisseurs, contact.
+   Le reste de l'accueil est au Centre de connaissances (/savoirs). Memes jetons --ed-* que la
+   direction editoriale (immersif-2026.css, chargee apres cette feuille) : d'ou « section#… » dans les selecteurs,
+   un cran de specificite au-dessus de ses regles par identifiant. Bandes « papier » et « encre » alternees. */
+#main-content.et-home.hm-review :is(section#vision,section#impact,section#investisseurs-accueil){
+  background:var(--ed-paper);color:var(--ed-paper-fg);
+  --ed-fg:var(--ed-paper-fg);--ed-muted:var(--ed-paper-muted);--ed-accent:var(--ed-paper-accent);--ed-line:var(--ed-paper-line);--ed-rule:var(--ed-paper-rule);
+  --hm-band:var(--ed-paper);--hm-band-ink:var(--ed-paper-fg);--hm-band-muted:var(--ed-paper-muted);--hm-band-accent:var(--ed-paper-accent);--hm-band-line:var(--ed-paper-line);--hm-band-card:transparent;
+  --et-glass-solid:var(--ed-paper);--et-glass-ink:var(--ed-paper-fg)}
+#main-content.et-home.hm-review :is(section#gouvernance-accueil,section#contact-accueil){
+  background:var(--ed-ink);color:var(--ed-ink-fg);
+  --ed-fg:var(--ed-ink-fg);--ed-muted:var(--ed-ink-muted);--ed-accent:var(--ed-gold);--ed-line:var(--ed-ink-line);--ed-rule:var(--ed-ink-rule);
+  --hm-band:var(--ed-ink);--hm-band-ink:var(--ed-ink-fg);--hm-band-muted:var(--ed-ink-muted);--hm-band-accent:var(--ed-gold);--hm-band-line:var(--ed-ink-line);--hm-band-card:transparent;
+  --et-glass-solid:var(--ed-ink);--et-glass-ink:var(--ed-ink-fg)}
+#main-content.et-home.hm-review section .et-actions{display:flex;flex-wrap:wrap;gap:8px 32px;margin-top:40px}
+#main-content.et-home.hm-review section .et-actions a{display:inline-flex;align-items:center;gap:.5em;min-height:44px;font-weight:600}
+
+/* 1. Vision : phrase d'intention, trois piliers sur filets. */
+#main-content.et-home.hm-review section#vision .et-inner{gap:0}
+#main-content.et-home.hm-review section#vision h2{max-width:20ch;margin-bottom:20px}
+#main-content.et-home.hm-review section#vision .hm-pillars{gap:0 clamp(32px,4vw,56px);margin-top:64px;padding:0;border-top:1px solid var(--ed-rule)}
+#main-content.et-home.hm-review section#vision .hm-pillars li{padding:28px 0 32px;border-bottom:1px solid var(--ed-line)}
+#main-content.et-home.hm-review section#vision .hm-pillars h3{font-family:var(--ed-serif);font-weight:400;font-size:1.875rem;line-height:1.1;color:var(--ed-fg);margin:0 0 12px}
+#main-content.et-home.hm-review section#vision .hm-pillars p{color:var(--ed-muted);font-size:1rem;line-height:1.55}
+
+/* 3. Impact : cinq colonnes sur filets, chacune avec son etat de publication (liste, pas des cartes). */
+#main-content.et-home.hm-review section#impact .hm-lead{margin-top:20px}
+#main-content.et-home.hm-review .hm-impact{list-style:none;margin:64px 0 0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0 24px;border-top:1px solid var(--ed-rule)}
+#main-content.et-home.hm-review .hm-impact li{min-width:0;margin:0;padding:28px 0 24px;border-bottom:1px solid var(--ed-line);display:flex;flex-direction:column;align-items:flex-start;gap:10px}
+#main-content.et-home.hm-review .hm-impact :is(h3,p){margin:0}
+#main-content.et-home.hm-review .hm-impact h3{font-family:var(--ed-serif);font-weight:400;font-size:1.625rem;line-height:1.1;color:var(--ed-fg)}
+#main-content.et-home.hm-review .hm-impact p{color:var(--ed-muted);font-size:.9375rem;line-height:1.55}
+#main-content.et-home.hm-review .hm-impact li>a{min-height:44px;display:inline-flex;align-items:center;gap:.5em;font-size:.9375rem;font-weight:600}
+#main-content.et-home.hm-review .hm-impact p.hm-flag{margin-top:auto;padding-top:12px;font-family:var(--ed-mono);font-size:.6875rem;letter-spacing:.1em;line-height:1.5;text-transform:uppercase;color:var(--ed-muted)}
+#main-content.et-home.hm-review .hm-impact p.hm-flag-ok{color:var(--ed-accent)}
+
+/* 4. Leadership : les deux mandats cote a cote (le tableau d'etat est sur /gouvernance#etat-publie). */
+#main-content.et-home.hm-review section#gouvernance-accueil .mod-grid{grid-column:1/-1;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 clamp(40px,5vw,72px)}
+#main-content.et-home.hm-review section#gouvernance-accueil .mod-card h3{color:#fff}
+
+/* 5. Investisseurs : la these a gauche, trois lignes de reperes a droite, trois acces dessous. */
+#main-content.et-home.hm-review section#investisseurs-accueil>.et-inner,
+#main-content.et-home.hm-review section#contact-accueil>.et-inner{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px clamp(40px,5vw,72px);align-items:start}
+#main-content.et-home.hm-review section#investisseurs-accueil h2{margin-bottom:20px}
+#main-content.et-home.hm-review section#investisseurs-accueil .et-inline-links{grid-column:1/-1;margin-top:8px;border-top:0;padding-top:0}
+
+/* 6. Contact : sorties en grandes lignes serif, sur bande encre. */
+#main-content.et-home.hm-review section#contact-accueil h2{margin-bottom:20px;color:var(--ed-ink-fg);-webkit-text-fill-color:currentColor}
+#main-content.et-home.hm-review section#contact-accueil .hm-exits a{color:var(--ed-ink-fg);-webkit-text-fill-color:currentColor}
+
+@media (max-width:1100px){
+  #main-content.et-home.hm-review .hm-impact{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media (max-width:900px){
+  #main-content.et-home.hm-review :is(section#investisseurs-accueil,section#contact-accueil)>.et-inner{grid-template-columns:minmax(0,1fr)}
+  #main-content.et-home.hm-review section#gouvernance-accueil .mod-grid{grid-template-columns:minmax(0,1fr);margin-bottom:0}
+  #main-content.et-home.hm-review section#vision .hm-pillars{grid-template-columns:minmax(0,1fr);margin-top:40px}
+  #main-content.et-home.hm-review .hm-impact{grid-template-columns:repeat(2,minmax(0,1fr));margin-top:40px}
+}
+@media (max-width:520px){
+  #main-content.et-home.hm-review .hm-impact{grid-template-columns:minmax(0,1fr)}
+}
+@media (forced-colors:active){
+  #main-content.et-home.hm-review :is(section#vision .hm-pillars li,.hm-impact li){border-color:CanvasText}
+}
+/* Polices, cadres et ombres poses en !important par les couches du site : surcharges ecrites, comme celles de la
+   direction editoriale, dans @layer et-verre (premiere couche declaree sur le site construit). */
+@layer et-verre{
+#main-content.et-home.hm-review :is(section#vision .hm-pillars h3,.hm-impact h3){font-family:var(--ed-serif)!important;font-weight:400!important;letter-spacing:0!important;line-height:1.1!important}
+#main-content.et-home.hm-review section#vision .hm-pillars h3{font-size:1.875rem!important}
+#main-content.et-home.hm-review .hm-impact h3{font-size:1.625rem!important}
+#main-content.et-home.hm-review section#gouvernance-accueil .mod-grid{max-width:none!important}
+#main-content.et-home.hm-review section#gouvernance-accueil .mod-card::before{content:none!important}
+}
