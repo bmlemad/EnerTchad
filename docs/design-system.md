@@ -52,7 +52,7 @@ par `verre-2026.css`, dont le repli sans transparence est conservé, et, depuis 
 (choix du DG, 10 novembre 2026), aux cartes posées sur une photo de fond (`immersif-2026.css`) :
 une carte de lecture sur fond uni garde un fond solide. L’immersif s’applique aux scènes « conviction » des 16 pages d’entrée
 des pôles (lot 113) et, depuis le lot 122 (12 novembre 2026, pilote), à la scène « Ce que nous mettons en œuvre » de dix
-pages sous `/amont` (`lib/immersif-amont.js`) ; les autres pages du gabarit de pôle n’en ont pas. Aucun flou n’est
+pages sous `/amont` puis, au lot 123, à une section choisie de chacune des douze autres (activités, EOR, parc, méthane et torchage, services E&P, titulaire de droits pétroliers ; `lib/immersif-amont.js`) ; les autres pages du gabarit de pôle n’en ont pas. Aucun flou n’est
 ajouté aux blocs de texte. Les animations des composants harmonisés sont supprimées
 si le visiteur demande une réduction des mouvements. Les couleurs système restent
 disponibles en contraste forcé.
