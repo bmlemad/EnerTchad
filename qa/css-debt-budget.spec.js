@@ -41,8 +41,8 @@ const budgets = [
   // 12 novembre 2026 (décision du DG) : la chaîne de valeur remplace la photo en héros de l’accueil. 13 !important dans la couche et-verre
   // (liens et libellés de la chaîne, contre les règles de carte des liens de l’accueil), comptés dans la feuille et dans la CSS critique : +27 ; +4 227 octets de CSS en ligne.
   // Six blocs (12 novembre 2026, décision du DG) : vision, impact, investisseurs et contact sur l’accueil ; +8 !important (polices serif des
-  // nouvelles bandes, couche et-verre) : l’accueil FR dépasse son plafond de 6, relevé d’autant ; l’accueil EN reste sous le sien.
-  ['/', 2694, 9892, 118939, 44], // lot 106-A : accueil refondu (mesure du 8 novembre 2026, hors contrat de design)
+  // nouvelles bandes, couche et-verre) : l’accueil FR dépasse son plafond de 8 (dont 2 venus des illustrations au trait, comptés dans la CSS critique), relevé d’autant ; l’accueil EN reste sous le sien.
+  ['/', 2696, 9892, 118939, 44], // lot 106-A : accueil refondu (mesure du 8 novembre 2026, hors contrat de design)
   ['/index-en', 2698, 9894, 119143, 44], // lot 106-B : accueil EN refondu (mesure du 8 novembre 2026, hors contrat de design)
   // Lot 113 (10 novembre 2026, décision du DG) : direction immersive, phase B ; scène « conviction » des pôles posée au build par
   // lib/immersif-poles.js : +7 !important (verre, texte clair, hauteur de la photo ; couche et-verre) et +1 943 octets de CSS en ligne.
