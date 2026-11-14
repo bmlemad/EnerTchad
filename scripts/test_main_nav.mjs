@@ -58,3 +58,19 @@ test('every corporate page gets the five links, keeps everything outside the nav
   }
   assert(count > 200, 'corporate pages: ' + count);
 });
+
+// Lot 125 : en-tête arabe à cinq liens (lib/ar-nav.js), sans « بحث (FR) », page courante conservée.
+import { withArNav } from '../lib/ar-nav.js';
+import { readFileSync as readAr } from 'node:fs';
+test('Arabic header: five plain links, current page marked, idempotent', () => {
+  for (const [file, current] of [['ar.html', '/ar'], ['ar-contact.html', '/ar-contact'], ['ar-amont.html', '/ar-poles'], ['ar-poles.html', '/ar-poles']]) {
+    const out = withArNav(readAr(new URL('../' + file, import.meta.url), 'utf8'));
+    const nav = out.match(/<nav class="arh-nav" data-et-header="minimal"[^>]*>([\s\S]*?)<\/nav>/)[1];
+    const hrefs = [...nav.matchAll(/href="([^"]+)"/g)].map(m => m[1]);
+    assert.deepEqual(hrefs, ['/ar', '/ar-societe', '/ar-poles', '/ar-investisseurs', '/ar-contact'], file);
+    assert.equal(nav.includes('/recherche'), false, file);
+    assert.equal(nav.match(/aria-current="page"/g).length, 1, file);
+    assert(nav.includes(`href="${current}" aria-current="page"`), file);
+    assert.equal(withArNav(out), out, file + ' idempotent');
+  }
+});
