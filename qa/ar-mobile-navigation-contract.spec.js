@@ -45,8 +45,9 @@ test.describe('arabic mobile navigation — menu button and drawer', () => {
         await toggle.click();
         await expect(toggle, path).toHaveAttribute('aria-expanded', 'true');
         await expect(drawer, path).toBeVisible();
-        expect(await links.count(), path + ' arabic links').toBe(6);
-        for (let i = 0; i < 6; i++) await expect(links.nth(i), path + ' link ' + i).toBeVisible();
+        // Lot 125 : cinq liens simples (الرئيسية، الرؤية، الأنشطة، المستثمرون، اتصل بنا), plus de « بحث (FR) » dans l'en-tête.
+        expect(await links.count(), path + ' arabic links').toBe(5);
+        for (let i = 0; i < 5; i++) await expect(links.nth(i), path + ' link ' + i).toBeVisible();
         const report = await page.evaluate(() => ({
           bg: getComputedStyle(document.getElementById('arh-drawer')).backgroundColor,
           viewport: document.documentElement.clientWidth,
@@ -62,13 +63,22 @@ test.describe('arabic mobile navigation — menu button and drawer', () => {
       });
     }
 
-    test(`${path} — 1280px — desktop header unchanged`, async ({ page }) => {
+    test(`${path} — 1280px — desktop header, five plain links`, async ({ page }) => {
       await page.setViewportSize({ width: 1280, height: 900 });
       await page.goto(new URL(path, base).href, { waitUntil: 'networkidle', timeout: 45000 });
       await expect(page.locator('header.arh #arh-tog'), path).toBeHidden();
       const links = page.locator('header.arh .arh-nav a');
-      expect(await links.count(), path).toBe(6);
-      for (let i = 0; i < 6; i++) await expect(links.nth(i), path + ' link ' + i).toBeVisible();
+      expect(await links.count(), path).toBe(5);
+      const expected = ['/ar', '/ar-societe', '/ar-poles', '/ar-investisseurs', '/ar-contact'];
+      const labels = ['الرئيسية', 'الرؤية', 'الأنشطة', 'المستثمرون', 'اتصل بنا'];
+      for (let i = 0; i < 5; i++) {
+        await expect(links.nth(i), path + ' link ' + i).toBeVisible();
+        await expect(links.nth(i), path + ' href ' + i).toHaveAttribute('href', expected[i]);
+        await expect(links.nth(i), path + ' label ' + i).toHaveText(labels[i]);
+      }
+      await expect(page.locator('header.arh .arh-cta'), path + ' investor button').toHaveAttribute('href', '/ar-investisseurs');
+      await expect(page.locator('header.arh a[href="/recherche"]'), path + ' no search link in the header').toHaveCount(0);
+      await expect(page.locator('footer a[href="/recherche"]').first(), path + ' search stays in the footer').toBeAttached();
     });
   }
 });
