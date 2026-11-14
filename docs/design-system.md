@@ -79,11 +79,6 @@ Contrôler les modèles de référence en français, anglais et arabe, en clair 
 sombre, sur petit écran et ordinateur : hiérarchie, contraste, débordements, focus,
 navigation et formulaires sans envoi. Les captures de validation accompagnent la PR.
 
-## Accueil en six blocs (12 novembre 2026)
+## En-tête minimaliste (lot 124, 14 novembre 2026)
 
-Décision du DG : sous le héros, l’accueil FR/EN ne garde que six blocs — vision, activités, impact, leadership,
-investisseurs, contact — en bandes papier et encre alternées (`home-2026.css`, bloc « Six blocs », sélecteurs `section#…`).
-Les repères, le projet phare, le tableau « Cadre · état publié » et la bande « Dernière publication » ne sont plus sur
-l’accueil : la bande est sous le héros du Centre de connaissances (`/savoirs`), qui gagne quatre entrées — gouvernance,
-investisseurs, conformité, HSE & durabilité — vers des pages et ancres déjà publiées. L’impact de l’accueil est une liste
-(`.hm-impact`), pas des cartes `.hm-card` : le rayon de 16 px du contrat partagé ne s’y applique donc pas.
+L’en-tête principal (`#nav`, 267 pages françaises et anglaises) se limite au logo, au slogan « L’énergie du Tchad. Intégrée. », à cinq liens simples (Vision, Activités, Impact, Investisseurs, Contact) et au bouton « Investisseurs » ; la barre d’outils garde les langues et la recherche. Sa définition vit dans la clé `header` de `assets/data/navigation.json` (posée par `lib/main-nav.js`) ; les six menus complets restent dans le même fichier pour le pied de page et le repérage. Gouvernance, Publications, Atlas, FAQ, Carrières et Communiqués passent dans la rangée « Ressources » du pied de page (`lib/navigation-review.js`). L’en-tête arabe n’est pas concerné.
