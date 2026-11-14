@@ -32,12 +32,17 @@ test('corporate resources expose documents and preserve investor-specific enquir
   for (const en of [false, true]) {
     const source = read(en ? 'index-en.html' : 'index.html'), output = withNavigationReview(source);
     const all = nodes(output), cta = all.find(n => n.name === 'a' && n.attribs?.class === 'nx-invest');
-    assert.equal(cta.attribs.href, '/contact' + (en ? '-en' : '') + '#ctForm');
-    assert(all.some(n => n.name === 'a' && n.attribs?.href === '/contact' + (en ? '-en' : '') + '?profil=invest#ctForm'));
+    assert.equal(cta.attribs.href, '/investisseurs' + (en ? '-en' : ''), 'lot 124 : le bouton de l’en-tête mène aux investisseurs');
+    // Lot 124 : la carte « investisseurs » du méga-menu a disparu avec le menu ; la demande propre aux investisseurs reste sur la page Investisseurs.
+    assert(read(en ? 'investisseurs-en.html' : 'investisseurs.html').includes('/contact' + (en ? '-en' : '') + '?profil=invest#ctForm'));
+    // Lot 124 : plus de panneaux de ressources dans l'en-tête ; Publications et les autres rubriques retirées vivent dans la rangée « Ressources » du pied de page.
     const groups = all.filter(n => n.name === 'section' && n.attribs?.class?.split(' ').includes('nx-resource-group'));
-    assert.equal(groups.length, 14);
-    const docs = groups.find(n => n.attribs['aria-label'] === (en ? 'Documents & news' : 'Documents & actualités')).children.flatMap(n => [n, ...(n.children || [])]);
-    assert(docs.some(n => n.name === 'a' && n.attribs?.href === '/publications' + (en ? '-en' : '')));
+    assert.equal(groups.length, 0);
+    const row = all.find(n => n.name === 'nav' && n.attribs?.class?.split(' ').includes('foot-resources'));
+    assert(row, 'footer Resources row');
+    const hrefs = (row.children || []).filter(n => n.name === 'a').map(n => n.attribs.href);
+    assert.equal(hrefs.length, 6);
+    assert(hrefs.includes('/publications' + (en ? '-en' : '')));
     assert.match(output, /et-footer-pending/);
     assert(!output.includes('id="fnForm"'));
   }
