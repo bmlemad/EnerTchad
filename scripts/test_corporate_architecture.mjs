@@ -15,11 +15,12 @@ test('six corporate sections have independent entry points and complete project 
     for(const section of sections){const links=section.groups.flatMap(g=>g.links.map(x=>x[0]));assert.equal(new Set(links).size,links.length,section.id);}
   }
 });
-test('rendered navigation has six matching disclosure regions, a common footer and no duplicate ids',()=>{
+test('rendered navigation has five plain header links (lot 124), a common footer and no duplicate ids',()=>{
   for(const en of [false,true]){
     const output=withNavigationReview(readFileSync(en?'index-en.html':'index.html','utf8')),all=nodes(output);
-    const buttons=all.filter(n=>n.name==='button'&&n.attribs.class==='nav-trigger');assert.equal(buttons.length,6);
-    for(const b of buttons){assert.equal(b.attribs['aria-expanded'],'false');assert.equal(all.filter(n=>n.attribs?.id===b.attribs['aria-controls']).length,1);}
+    const links=all.filter(n=>n.name==='a'&&n.attribs.class==='nav-trigger nx-direct');assert.equal(links.length,5);
+    assert.equal(all.filter(n=>n.name==='button'&&n.attribs.class==='nav-trigger').length,0);
+    assert.equal(all.filter(n=>n.attribs&&'aria-controls' in n.attribs&&/^nxm-/.test(n.attribs['aria-controls'])).length,0);
     const ids=all.filter(n=>n.attribs?.id).map(n=>n.attribs.id);assert.equal(ids.length,new Set(ids).size);
     assert.equal(all.filter(n=>'data-et-corporate-sections' in (n.attribs||{})).length,1);
     assert.equal(withNavigationReview(output),output);
