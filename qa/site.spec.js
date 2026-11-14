@@ -307,11 +307,11 @@ test('hubs — liens internes accessibles et sans 4xx/5xx', async ({ request }) 
 
 test('trust center — FR / EN / AR', async ({ browser }) => {
   // Six blocs (12 novembre 2026) : sur les accueils FR et EN, les sorties tiennent dans la bande Contact
-  // (quatre liens) ; l'accueil arabe garde sa section « ph-trust » à cinq liens jusqu'au lot 106-C.
+  // (quatre liens) ; l'accueil arabe suit depuis le 14 novembre 2026 (même bande Contact, quatre liens).
   const cases = [
     ['/', 'fr', 'contact-accueil-title', 4],
     ['/index-en', 'en', 'contact-accueil-title', 4],
-    ['/ar', 'ar', 'ph-trust', 5],
+    ['/ar', 'ar', 'contact-accueil-title', 4],
   ];
   for (const [path, lang, label, count] of cases) {
     const trust = `section[aria-labelledby="${label}"]`;

@@ -130,4 +130,20 @@ class HomepageReview(unittest.TestCase):
    self.assertIn('2026-10-08',cards)
    self.assertEqual(cards.count('milestone evidence not published' if en else 'Pièce spécifique au jalon non publiée'),3)
 
+ def test_arabic_home_has_the_same_six_blocks(self):
+  # 14 novembre 2026 : le mini-site arabe reprend les six blocs, avec ses propres composants (.et-segments, .et-paths).
+  page=(ROOT/'ar.html').read_text()
+  main=page[page.index('<main'):page.index('</main>')]
+  self.assertEqual(re.findall(r'<section id="([^"]+)"',main),[x[4:-1] for x in NEW_ORDER])
+  self.assertEqual(len(re.findall(r'<section\b',main)),6)
+  contact=re.search(r'<section id="contact-accueil".*?</section>',main,re.S)[0]
+  self.assertEqual(re.findall(r'<a href="([^"]+)"',contact),['/boutique/clients','/achats','/ar-presse','/ar-contact'])
+  impact=re.search(r'<section id="impact".*?</section>',main,re.S)[0]
+  self.assertEqual(impact.count('<article>'),5)
+  self.assertIn('لا نتيجة مَقيسة',impact)
+  investors=re.search(r'<section id="investisseurs-accueil".*?</section>',main,re.S)[0]
+  self.assertIn('لا يوجد أي اكتتاب مفتوح',investors)
+  for href in ('/ar-investisseurs','/publications','/savoirs#savoirs-investisseurs'):
+   self.assertIn(f'href="{href}"',investors)
+
 if __name__=='__main__':unittest.main()
