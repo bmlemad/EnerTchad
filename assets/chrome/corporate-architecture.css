@@ -9,3 +9,11 @@
 .et-architecture-context a{display:inline-flex;align-items:center;min-height:44px;text-decoration:underline;text-underline-offset:4px;color:inherit}
 @media(min-width:1241px) and (max-width:1450px){#nav{--et-corporate-nav-size:12px;--et-corporate-nav-pad:6px}}
 @media(max-width:1240px){#nav{--et-corporate-nav-size:17px;--et-corporate-nav-pad:10px;--et-architecture-columns:1fr;--et-architecture-panel-columns:1fr}#nav .et-architecture-groups{display:block!important}#nav .et-architecture-group+.et-architecture-group{margin-top:20px;padding-top:16px;border-top:1px solid currentColor}.et-architecture-context{margin:24px 16px;padding:16px 0}}
+.foot-resources{display:flex;align-items:center;flex-wrap:wrap;gap:4px 28px;margin-top:8px;padding:14px 0;border-top:1px solid rgba(255,255,255,.08);font-size:.92rem;color:var(--muted)}
+.foot-resources .foot-resources-t{font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+footer .foot-resources a{display:inline-flex;align-items:center;min-height:44px;color:var(--muted);text-decoration:underline;text-decoration-color:color-mix(in srgb,currentColor 35%,transparent);text-underline-offset:4px;transition:color .2s}
+footer .foot-resources a:hover,footer .foot-resources a:focus-visible{color:var(--gold-l)}
+/* Pied de page sombre (footer.pft) : la rangée reprend les teintes du pied, dans les deux thèmes (les règles du thème clair imposent sinon une encre sombre). */
+html footer.pft .foot-resources{border-top-color:var(--pf-line,rgba(255,255,255,.14))}
+html footer.pft .foot-resources .foot-resources-t:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5):not(#e6),html footer.pft .foot-resources a:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5):not(#e6){color:var(--pf-ink2,#A7B1C2)!important}
+html footer.pft .foot-resources a:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5):not(#e6):is(:hover,:focus-visible){color:var(--pf-ink,#F3F1EC)!important}
