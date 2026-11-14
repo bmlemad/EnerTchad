@@ -187,6 +187,8 @@ try{(function(){
 
 try{(function(){
   var u=document.querySelector('.nx-util-in');if(!u)return;
+  /* Lot 124 : en-tête minimaliste, pas de raccourci « 90 secondes » */
+  if(document.querySelector('#nav[data-et-header="minimal"]'))return;
   if(u.querySelector('[data-et-short="essentiel"],a[href="/essentiel"],a[href="/essentiel-en"]'))return;
   var lang=(document.documentElement.getAttribute('lang')||'fr').slice(0,2);
   var a=document.createElement('a');
