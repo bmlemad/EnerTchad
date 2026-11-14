@@ -71,12 +71,9 @@ test.describe('mobile drawer — opaque surface over the page', () => {
           expect(report.coverage, `${path} ${theme.name} ${width}px : largeur couverte`).toBeGreaterThanOrEqual(0.9);
           expect(report.probes.every(Boolean), `${path} ${theme.name} ${width}px : le contenu de la page passe au-dessus du tiroir`).toBeTruthy();
 
-          // Une rubrique dépliée reste lisible dans le tiroir.
-          const trigger = page.locator('#navLinks .nav-item > .nav-trigger').first();
-          await trigger.click();
-          await expect(trigger).toHaveAttribute('aria-expanded', 'true');
-          const firstLink = page.locator('#navLinks .nav-item').first().locator('.nx-mega a[href]').first();
-          await expect(firstLink).toBeVisible();
+          // Lot 124 : les cinq liens simples sont lisibles dans le tiroir (plus de rubrique à déplier).
+          await expect(page.locator('#navLinks .nav-item > a.nx-direct').first()).toBeVisible();
+          await expect(page.locator('#navLinks .nav-item > a.nx-direct').last()).toBeVisible();
 
           // Échap referme le tiroir et rend le focus au bouton du menu.
           await page.keyboard.press('Escape');

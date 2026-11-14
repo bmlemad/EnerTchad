@@ -38,22 +38,15 @@ test.describe('interactive states — hub controls and CTA integrity', () => {
         }
       }
 
-      const triggers = page.locator('#navLinks .nav-item > .nav-trigger');
-      const count = await triggers.count();
-      expect(count, path + ' nav trigger count').toBeGreaterThan(0);
-
-      for (let i = 0; i < count; i++) {
-        await triggers.nth(i).click();
-        await expect(triggers.nth(i)).toHaveAttribute('aria-expanded', 'true');
-        for (let j = 0; j < count; j++) {
-          if (j !== i) await expect(triggers.nth(j)).toHaveAttribute('aria-expanded', 'false');
-        }
+      // Lot 124 : cinq liens simples, sans déroulant ni aria-expanded ; chacun garde une cible valide.
+      const triggers = page.locator('#navLinks .nav-item > a.nx-direct');
+      await expect(triggers, path + ' nav link count').toHaveCount(5);
+      await expect(page.locator('#navLinks [aria-expanded]'), path + ' no expandable entry left').toHaveCount(0);
+      for (let i = 0; i < 5; i++) {
+        const href = await triggers.nth(i).getAttribute('href');
+        expect(href && href.startsWith('/'), path + ' nav link target ' + i).toBeTruthy();
       }
-
       await page.keyboard.press('Escape');
-      for (let i = 0; i < count; i++) {
-        await expect(triggers.nth(i)).toHaveAttribute('aria-expanded', 'false');
-      }
     });
   }
 });

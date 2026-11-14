@@ -1,6 +1,6 @@
 // Lot 102 (choix du DG, 2 novembre 2026) : chrome allégé — contrat mesuré dans le navigateur.
 // SITE_URL=http://localhost:8802/ npx playwright test qa/light-chrome-contract.spec.js
-//  - ≥ 1 536 px : barre utilitaire masquée, ses quatre liens (90 secondes, FR · EN, ع, appel à l'action) à droite de
+//  - ≥ 1 536 px : barre utilitaire masquée, ses trois liens (FR · EN, ع, bouton Investisseurs ; lot 124 : plus de « 90 secondes ») à droite de
 //    la barre principale, sans débordement ; barre de 109 px au plus, en haut comme défilée.
 //  - 1 241 – 1 535 px : barre utilitaire visible en haut de page, masquée au défilement (barre ≤ 110 px).
 //  - sous-navigation de pôle non collante ; bouton Mouvement dans le pied de page, jamais flottant ;
@@ -49,7 +49,7 @@ test.describe('chrome allégé — règle hybride du lot 102', () => {
         expect(top.consentParas, label + ' paragraphes du bandeau').toBe(2);
         if (width >= 1536) {
           expect(top.util, label + ' barre utilitaire').toBe(0);
-          expect(top.fused, label + ' liens fusionnés').toBe(4);
+          expect(top.fused, label + ' liens fusionnés').toBe(3);
           expect(top.overflow, label + ' débordement').toBeLessThanOrEqual(0);
           expect(top.nav, label + ' barre en haut').toBeLessThanOrEqual(110);
         } else if (width >= 1241) {

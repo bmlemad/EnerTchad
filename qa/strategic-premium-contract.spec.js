@@ -47,13 +47,14 @@ test('investor page — evidence and risk exits remain visible', async ({ page }
   }
 });
 
-test('shared navigation — strategic shortcut is available on representative internal pages', async ({ page }) => {
+test('shared navigation — lot 124: the header carries no 90-second shortcut, /essentiel stays reachable', async ({ page }) => {
   for (const path of ['/societe', '/gouvernance', '/aval/reseau']) {
     await page.goto(new URL(path, base).href, { waitUntil: 'domcontentloaded', timeout: 45000 });
-    await page.waitForTimeout(100);
-    const shortcut = page.locator('.nx-util-in a[href="/essentiel"]');
-    await expect(shortcut, path + ' 90-second shortcut').toHaveCount(1);
+    await page.waitForTimeout(300);
+    await expect(page.locator('#nav a[href="/essentiel"]'), path + ' header has no 90-second shortcut').toHaveCount(0);
   }
+  const response = await page.goto(new URL('/essentiel', base).href, { waitUntil: 'domcontentloaded', timeout: 45000 });
+  expect(response && response.status(), '/essentiel still exists').toBe(200);
 });
 
 test('strategic SVGs — exposed vectors have a semantic name or are hidden', async ({ page }) => {
