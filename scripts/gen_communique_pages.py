@@ -108,6 +108,20 @@ def parse_list(lang):
     return page, items, about, box, contact
 
 
+TITLE_MAX = 70  # au-delà, les moteurs tronquent la balise <title>
+
+
+def tab_title(it, suffix):
+    """Balise <title> seule : le titre officiel (h1, Open Graph, JSON-LD) reste entier.
+    On garde le titre complet s'il tient ; sinon sa première proposition, avant les deux-points."""
+    head, ref = it['title'], it['ref']
+    cut = re.split(r'\s?:\s', head, maxsplit=1)[0]
+    for cand in (f'{head} · {ref}{suffix}', f'{head} · {ref}', head, f'{cut} · {ref}{suffix}', f'{cut} · {ref}'):
+        if len(cand) <= TITLE_MAX:
+            return cand
+    return head[:TITLE_MAX - 1].rsplit(' ', 1)[0] + '…'
+
+
 def head_for(page, lang, it, desc):
     t = T[lang]
     head = page[:page.find('<body')]
@@ -117,7 +131,7 @@ def head_for(page, lang, it, desc):
     fr_url, en_url = (url, other) if lang == 'fr' else (other, url)
     title = f'{it["ref"]} — {it["title"]}'
     h = head
-    h = re.sub(r'<title>.*?</title>', '<title>' + htmlmod.escape(title) + t['title_suffix'] + '</title>', h, count=1, flags=re.S)
+    h = re.sub(r'<title>.*?</title>', '<title>' + htmlmod.escape(tab_title(it, t['title_suffix'])) + '</title>', h, count=1, flags=re.S)
     h = re.sub(r'<meta name="description" content="[^"]*">', '<meta name="description" content="' + htmlmod.escape(desc, quote=True) + '">', h, count=1)
     h = re.sub(r'<link rel="canonical" href="[^"]*">', f'<link rel="canonical" href="{url}">', h, count=1)
     h = re.sub(r'<link rel="alternate" hreflang="fr" href="[^"]*">', f'<link rel="alternate" hreflang="fr" href="{fr_url}">', h, count=1)
