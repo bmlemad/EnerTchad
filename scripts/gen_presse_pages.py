@@ -112,6 +112,11 @@ def build(lang):
     head = page[:page.find('<body')]
     pre = page[page.find('<body'):page.find('<main id="main-content"')]
     post = page[page.find('</main>') + len('</main>'):]
+    # La coquille vient de la liste des communiqués : ses deux liens de langue (pastille FR · EN et lien texte) visaient la liste
+    # de l'autre langue. Sur la page presse, ils mènent à la page presse de l'autre langue.
+    other_list, other_press = ('/communiques', '/presse') if lang == 'en' else ('/communiques-en', '/presse-en')
+    assert pre.count(f'<a href="{other_list}"') == 2, (lang, pre.count(f'<a href="{other_list}"'))
+    pre = pre.replace(f'<a href="{other_list}"', f'<a href="{other_press}"')
     sub_js = re.search(r'<script id="pp-sub-js">.*?</script>', page, re.S).group(0)
     url = BASE + t['route']
     fr_url, en_url = BASE + '/presse', BASE + '/presse-en'
