@@ -102,7 +102,7 @@ const VERRE_CSS = readFileSync(new URL('../../assets/chrome/verre-2026.css', imp
 export const VERRE_TAG = '<style data-et-verre>' + VERRE_CSS + '</style>';
 const VERRE_RX = /<nav\b[^>]*\bid="nav"|<header class="arh|<nav\b[^>]*\bet-space-header\b|id="nezBar"|<nav\b[^>]*\bpp-sub\b/;
 // Lot 102 (choix du DG, 2 novembre 2026) : la feuille assets/chrome/allege-2026.css (chrome allégé : fusion de la
-// barre utilitaire à partir de 1 536 px, masquage au défilement en dessous, sous-navigation non collante) suit la
+// barre utilitaire à partir de 1 241 px (1 536 px avant le lot 127), sous-navigation non collante) suit la
 // feuille de verre, en ligne elle aussi : sa couche et-allege est déclarée la deuxième.
 const ALLEGE_CSS = readFileSync(new URL('../../assets/chrome/allege-2026.css', import.meta.url), 'utf8').replace(/\/\*[\s\S]*?\*\//g, '').replace(/\n+/g, '\n').trim();
 export const ALLEGE_TAG = '<style data-et-allege>' + ALLEGE_CSS + '</style>';
