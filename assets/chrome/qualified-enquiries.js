@@ -16,10 +16,10 @@
     }).filter(Boolean)).join('\n');
   }
   function contextFor(search,data,en) {
-    var query=new URLSearchParams(search),project=query.get('projet'),sector=query.get('secteur'),language=en?'en':'fr';
+    var query=new URLSearchParams(search),project=query.get('projet'),sector=query.get('secteur'),activity=query.get('activite'),language=en?'en':'fr';
     function known(group,key){return !!(key&&data&&data[group]&&Object.prototype.hasOwnProperty.call(data[group],key)&&typeof data[group][key][language]==='string');}
-    project=known('projects',project)?project:'';sector=known('sectors',sector)?sector:'';
-    return {project:project,sector:sector,label:[project?(en?'Project: ':'Projet : ')+data.projects[project][language]:'',sector?(en?'Sector: ':'Secteur : ')+data.sectors[sector][language]:''].filter(Boolean).join('\n')};
+    project=known('projects',project)?project:'';sector=known('sectors',sector)?sector:'';activity=known('activities',activity)?activity:'';
+    return {project:project,sector:sector,activity:activity,label:[activity?(en?'Activity: ':'Rubrique : ')+data.activities[activity][language]:'',project?(en?'Project: ':'Projet : ')+data.projects[project][language]:'',sector?(en?'Sector: ':'Secteur : ')+data.sectors[sector][language]:''].filter(Boolean).join('\n')};
   }
   if (typeof module !== 'undefined') module.exports = { kindFor: kindFor, summary: summary, contextFor:contextFor };
   if (typeof document === 'undefined') return;
@@ -67,6 +67,8 @@
       if (!/^\/contact(?:-en)?$/.test(url.pathname)) return;
       url.searchParams.delete('besoin'); url.searchParams.delete('service');
       url.searchParams.delete('projet');url.searchParams.delete('secteur');
+      url.searchParams.delete('activite');
+      if(context.activity)url.searchParams.set('activite',context.activity);
       if(context.project)url.searchParams.set('projet',context.project);
       if(context.sector)url.searchParams.set('secteur',context.sector);
       if (kind === 'fleet') url.searchParams.set('besoin','flotte');
@@ -78,6 +80,6 @@
   form.addEventListener('input', update);
   form.addEventListener('change', function (event) { if (event.target === service) incomingService = ''; update(); });
   form.addEventListener('submit', update, true);
-  form.addEventListener('reset', function () { incomingService = ''; context={project:'',sector:'',label:''};setTimeout(update,0); });
+  form.addEventListener('reset', function () { incomingService = ''; context={project:'',sector:'',activity:'',label:''};setTimeout(update,0); });
   update();
 })();
