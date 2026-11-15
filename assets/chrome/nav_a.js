@@ -200,12 +200,12 @@ try{(function(){
   var links=u.querySelectorAll('a');u.insertBefore(a,links[2]||null);
 })()}catch(e){}
 
-/* Lot 102 (choix du DG, 2 nov. 2026) : à partir de 1 536 px la barre utilitaire est masquée (allege-2026.css) et ses
+/* Lot 102 (choix du DG, 2 nov. 2026) ; seuil ramené à 1 241 px au lot 127 (cinq liens) : à partir de 1 241 px la barre utilitaire est masquée (allege-2026.css) et ses
    liens de langue (FR · EN, ع), le raccourci « 90 secondes » et l'appel à l'action rejoignent la droite de la barre
    principale (.nx-cta, avant le bouton du menu), classe nx-fused. En dessous, ils reprennent leur place d'origine
    (voisin de droite mémorisé, remise dans l'ordre inverse). Un seul exemplaire de chaque lien dans la page. */
 try{(function(){
-  var mq=window.matchMedia&&matchMedia('(min-width:1536px)');if(!mq)return;
+  var mq=window.matchMedia&&matchMedia('(min-width:1241px)');if(!mq)return;
   var moved=[];
   function place(){
     var u=document.querySelector('#nav .nx-util-in'),c=document.querySelector('#nav .nx-cta'),tog=document.getElementById('navTog');
