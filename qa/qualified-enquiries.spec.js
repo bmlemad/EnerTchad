@@ -1,6 +1,40 @@
 const {test,expect}=require('@playwright/test');
 const base=process.env.SITE_URL||'https://enertchad.com/';
 async function refuseOptionalMeasurement(page){const button=page.locator('#et-consent button').filter({hasText:/Refuser|Refuse/});if(await button.isVisible())await button.click();}
+for(const en of [false,true])for(const width of [320,1440]){
+  test(`forms, anchors and interactive — pole contact continuity ${en?'en':'fr'} ${width}`,async({browser})=>{
+    test.setTimeout(90000);
+    const page=await browser.newPage({viewport:{width,height:900}});
+    for(const [fr,english,activity,profile,service]of [
+      ['/amont/','/pole-amont-en','amont','ep','faisabilite'],
+      ['/intermediaire/','/pole-intermediaire-en','intermediaire','',''],
+      ['/aval/','/pole-aval-en','aval','b2b',''],
+      ['/petrochimie/','/pole-enerchimie-en','petrochimie','',''],
+      ['/enerconseils/','/pole-enerconseils-en','ingenierie','ep',''],
+      ['/greentech/','/pole-greentech-en','transition','','']
+    ]){
+      await page.goto(new URL(en?english:fr,base).href,{waitUntil:'networkidle'});
+      await refuseOptionalMeasurement(page);
+      await page.locator('#top-pole a.pp-btn[href*="/contact"]').click();
+      await expect(page).toHaveURL(new RegExp('/contact'+(en?'-en':'')+'\\?'));
+      const url=new URL(page.url());expect(url.searchParams.get('activite')).toBe(activity);
+      await expect(page.locator('#et-enquiry-context')).toBeVisible();
+      await expect(page.locator('#et-enquiry-summary')).toHaveValue(en?/Activity: /:/Rubrique : /);
+      if(profile==='ep')await expect(page.locator('#ctType')).toHaveValue(/Engineering \/ technical services|Ingénierie \/ services techniques/);
+      else if(profile==='b2b')await expect(page.locator('#ctType')).toHaveValue(en?'Supply / B2B contract':'Approvisionnement / Contrat B2B');
+      else await expect(page.locator('#ctType')).toHaveValue('');
+      if(service)await expect(page.locator('#eq-service')).toHaveValue(service);
+      const language=page.locator('#nav a.nx-lang');
+      await expect(language).toHaveAttribute('href',new RegExp('activite='+activity));
+      await page.goto(new URL(await language.getAttribute('href'),base).href,{waitUntil:'networkidle'});
+      await expect(page.locator('#et-enquiry-context')).toContainText(en?'Rubrique :':'Activity:');
+      expect(new URL(page.url()).searchParams.get('activite')).toBe(activity);
+      if(service)await expect(page.locator('#eq-service')).toHaveValue(service);
+      expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+2)).toBe(true);
+    }
+    await page.close();
+  });
+}
 for(const language of ['fr','en'])for(const width of [320,390,1440]){
   test(`forms, anchors and interactive — qualified enquiries ${language} ${width}`,async({browser})=>{
     const page=await browser.newPage({viewport:{width,height:900}}),en=language==='en';

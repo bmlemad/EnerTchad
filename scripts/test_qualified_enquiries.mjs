@@ -11,6 +11,32 @@ const {kindFor,summary,contextFor}=require('../assets/chrome/qualified-enquiries
 const read=p=>readFileSync(p,'utf8');
 function nodes(html){const all=[],walk=n=>{all.push(n);(n.children||[]).forEach(walk);};htmlToDOM(html).forEach(walk);return all;}
 
+test('pole contact actions preserve their activity and select only an explicit enquiry intent',()=>{
+  for(const [fr,en,activity,profile,service] of [
+    ['amont/index.html','pole-amont-en.html','amont','ep','faisabilite'],
+    ['intermediaire/index.html','pole-intermediaire-en.html','intermediaire','',''],
+    ['aval/index.html','pole-aval-en.html','aval','b2b',''],
+    ['petrochimie/index.html','pole-enerchimie-en.html','petrochimie','',''],
+    ['enerconseils/index.html','pole-enerconseils-en.html','ingenierie','ep',''],
+    ['greentech/index.html','pole-greentech-en.html','transition','','']
+  ])for(const [source,lang]of [[fr,'fr'],[en,'en']]){
+    const before=read(source),after=withQualifiedEnquiries(before),all=nodes(after);
+    assert.equal(withQualifiedEnquiries(after),after,source+' remains idempotent');
+    const hero=all.find(n=>n.name==='header'&&n.attribs?.id==='top-pole');
+    const action=all.find(n=>n.name==='a'&&/pp-btn/.test(n.attribs?.class||'')&&/^\/contact/.test(n.attribs?.href||'')&&(()=>{for(let p=n.parent;p;p=p.parent)if(p===hero)return true;return false;})());
+    assert(action,source+' primary contact action');
+    const url=new URL(action.attribs.href,'https://enertchad.com');
+    assert.equal(url.pathname,lang==='en'?'/contact-en':'/contact');
+    assert.equal(url.searchParams.get('activite'),activity);
+    assert.equal(url.searchParams.get('profil')||'',profile);
+    assert.equal(url.searchParams.get('service')||'',service);
+    assert.equal(url.hash,'#ctForm');
+    assert.deepEqual(after.match(/href="(?:mailto:|tel:)[^"]*"/g),before.match(/href="(?:mailto:|tel:)[^"]*"/g));
+  }
+  const ordinary='<html lang="fr"><head><link rel="canonical" href="https://enertchad.com/contact"></head><body><header id="top-pole"><a class="pp-btn" href="/contact">Contact</a></header></body></html>';
+  assert.equal(withQualifiedEnquiries(ordinary),ordinary);
+});
+
 test('engineering assignments retain limits and outputs, add four scoping briefs, and use the engineering profile',()=>{
   for(const p of ['enerconseils/index.html','pole-enerconseils-en.html']){
     const before=read(p),after=withQualifiedEnquiries(before),all=nodes(after);
@@ -64,7 +90,8 @@ function formFixture(lang='fr',search='?profil=ep&service=faisabilite',contextDa
   field('et-enquiry-mode','supply');field('et-enquiry-business');
   const service=field('eq-service');service.tagName='SELECT';service.options=[{value:'',textContent:'À définir'},...['faisabilite','conception','assistance','suivi'].map(value=>({value,textContent:value}))];
   Object.defineProperty(service,'selectedIndex',{get(){return this.options.findIndex(o=>o.value===this.value);}});
-  const type=field('ctType',new URLSearchParams(search).get('profil')==='b2b'?'Approvisionnement':'Engineering');
+  const profile=new URLSearchParams(search).get('profil');
+  const type=field('ctType',profile==='b2b'?'Approvisionnement':profile==='ep'?'Engineering':'');
   type.options=[{value:'',dataset:{}},{value:'Approvisionnement',dataset:{}},{value:'Engineering',dataset:{contactProfile:'ep'}},{value:'Investment',dataset:{}}];type.dispatchEvent=()=>{};
   const groups=['supply','fleet','engineering'].map(kind=>({hidden:false,disabled:false,getAttribute(){return kind;}}));
   const help={hidden:false};controls['et-enquiry']={querySelectorAll(){return groups;},querySelector(){return help;}};
@@ -114,4 +141,25 @@ test('project and sector context is localized, restricted to known references, a
   f.input('eq-vehicles','18');assert(f.controls['et-enquiry-summary'].value.includes('Véhicules: 18'));assert(!f.links[0].href.includes('18'));
   assert(mobile.href.includes('secteur=transport-flottes'));assert(mobile.href.includes('besoin=flotte'));
   f.controls.ctType.value='';f.events.reset();assert.equal(f.controls['et-enquiry-context'].hidden,true);assert.equal(f.controls['et-enquiry-summary'].value,'');assert(!f.links[0].href.includes('secteur='));
+});
+
+test('activity context is localized, retained without forcing a profile, and cleared on reset',()=>{
+  const data=JSON.parse(read('assets/data/business-journeys.json'));
+  for(const [lang,label]of [['fr','Rubrique : Transition énergétique'],['en','Activity: Energy transition']]){
+    const f=formFixture(lang,'?activite=transition',data);
+    assert.equal(f.controls.ctType.value,'');assert(f.groups.every(g=>g.hidden&&g.disabled));
+    assert.equal(f.controls['et-enquiry-context'].textContent,label);
+    assert.equal(f.controls['et-enquiry-summary'].value,label);
+    assert(f.links[0].href.includes('activite=transition'));
+    f.events.reset();assert.equal(f.controls['et-enquiry-summary'].value,'');
+    assert(!f.links[0].href.includes('activite='));
+  }
+  for(const value of ['__proto__','constructor','unknown','<script>']){
+    const c=contextFor('?activite='+encodeURIComponent(value),data,false);
+    assert.equal(c.activity,'');assert.equal(c.label,'');
+  }
+  const f=formFixture('fr','?profil=ep&service=faisabilite&activite=amont',data);
+  f.input('eq-installation','Private site detail');
+  assert(f.links[0].href.includes('activite=amont'));assert(f.links[0].href.includes('service=faisabilite'));
+  assert(!f.links[0].href.includes('Private'));assert(f.controls['et-enquiry-summary'].value.includes('Private site detail'));
 });
