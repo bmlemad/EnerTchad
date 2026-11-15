@@ -2,8 +2,8 @@
   - chaque page exportée qui porte la barre principale ou une sous-navigation de pôle met en ligne la feuille
     assets/chrome/allege-2026.css (<style data-et-allege>) juste après la feuille de verre (couche et-allege
     déclarée la deuxième), une seule fois ;
-  - la feuille porte les trois règles du lot : fusion à partir de 1 536 px, barre utilitaire masquée au
-    défilement en dessous, sous-navigation non collante ;
+  - la feuille porte les deux règles du lot : fusion à partir de 1 241 px (lot 127 ; 1 536 px au lot 102, avec
+    six menus), barre utilitaire masquée, sous-navigation non collante ;
   - les scripts publiés portent leur part : nav_a.js (déplacement des liens fusionnés), audience-consent.js
     (bande fine, barre basse mobile visible, plus de second paragraphe), coherence-20261013.js (commande
     Mouvement au pied de page à toutes les largeurs — mécanisme de pause conservé, WCAG 2.2.2).
@@ -14,8 +14,8 @@ import sys
 
 OUT = pathlib.Path('out')
 SURFACE = re.compile(r'<nav\b[^>]*\bid="nav"|<nav\b[^>]*\bpp-sub\b')
-RULES = ['@layer et-allege;', '@media(min-width:1536px){', '#nav .nx-util{display:none!important}', '#nav .nx-cta .nx-fused{display:inline-flex!important',
-         '@media(max-width:1535px){', '#nav.nx.scrolled .nx-util{display:none!important}', 'nav.pp-sub{position:static!important;top:auto!important}']
+RULES = ['@layer et-allege;', '@media(min-width:1241px){', '#nav .nx-util{display:none!important}', '#nav .nx-cta .nx-fused{display:inline-flex!important',
+         'nav.pp-sub{position:static!important;top:auto!important}']
 failures = []
 pages = 0
 for path in sorted(OUT.rglob('*.html')):
@@ -45,7 +45,7 @@ def script(name, musts, bans=()):
         if b in src:
             failures.append(f'{name} : « {b} » encore présent')
 
-script('nav_a.js', ["matchMedia('(min-width:1536px)')", "classList.add('nx-fused')"])
+script('nav_a.js', ["matchMedia('(min-width:1241px)')", "classList.add('nx-fused')"])
 script('audience-consent.js', ['@media(max-width:768px){#et-consent{', 'bottom:var(--et-nez-h,68px)', 'display:flex;align-items:center;flex-wrap:wrap'],
        bans=['Tag Manager se charge', 'Tag Manager loads only', 'min-width:601px', '#nezBar{display:none!important}'])
 script('coherence-20261013.js', ['media={matches:true'])
