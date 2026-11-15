@@ -95,3 +95,7 @@ L’en-tête principal (`#nav`, 267 pages françaises et anglaises) se limite au
 ### Bande d'outils supprimée (lot 127, 14 novembre 2026)
 
 La bande d'outils au-dessus de l'en-tête (FR · EN, ع, Rechercher, bouton « Investisseurs ») n'existe plus à aucune largeur : avec cinq liens au lieu de six menus, la fusion du lot 102 tient dès 1 241 px (seuil ramené de 1 536 px dans `allege-2026.css` et `nav_a.js`), les liens de langue et le bouton rejoignent la droite de la barre principale, la recherche reste l'icône de la barre. Sous 1 241 px, le tiroir mobile est inchangé. En passant : le « EN » de FR · EN reprend la couleur du lien (il était presque blanc sur fond clair en thème clair).
+
+### Tiroir arabe : bouton « إبداء الاهتمام » (lot 128, 15 novembre 2026)
+
+Le tiroir mobile arabe (sous 768 px, lot 108) reprend le bouton « إبداء الاهتمام » vers `/ar-investisseurs`, comme le tiroir français son bouton « Investisseurs » : une ligne entière sous les langues et le thème (`ar-nav.css`). La règle qui le cachait sous 900 px (`home-inline-ar-premium.css`) ne vaut plus que de 768 à 900 px ; au-dessus de 900 px, le bouton reste dans l'en-tête comme avant. Les trois jeux critiques arabes (`ar-home`, `ar-pole`, `ar-investisseurs`) sont ré-extraits pour ces deux feuilles.
