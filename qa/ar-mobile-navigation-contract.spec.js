@@ -4,7 +4,7 @@ const { test, expect } = require('@playwright/test');
 // Avant : pas de bouton, six liens sur deux lignes, en-tête collant de 160 px à 390 px (19 % de l'écran).
 // Contrat : à 390 px, une ligne marque + bouton « القائمة » (en-tête fermé ≤ 80 px), tiroir opaque
 // dans les deux thèmes, aria-expanded fidèle, Échap ferme et rend le focus au bouton, aucun
-// débordement horizontal ; à 1280 px, bouton caché et six liens visibles comme avant.
+// débordement horizontal ; lot 128 : le bouton « إبداء الاهتمام » est dans le tiroir ; à 1280 px, bouton caché et six liens visibles comme avant.
 // Bouton et tiroir posés au build par lib/ar-nav.js ; styles dans assets/chrome/ar-nav.css.
 
 const base = process.env.SITE_URL || 'https://enertchad.com/';
@@ -48,6 +48,14 @@ test.describe('arabic mobile navigation — menu button and drawer', () => {
         // Lot 125 : cinq liens simples (الرئيسية، الرؤية، الأنشطة، المستثمرون، اتصل بنا), plus de « بحث (FR) » dans l'en-tête.
         expect(await links.count(), path + ' arabic links').toBe(5);
         for (let i = 0; i < 5; i++) await expect(links.nth(i), path + ' link ' + i).toBeVisible();
+        // Lot 128 : le tiroir porte le bouton « إبداء الاهتمام » (comme le tiroir français son bouton « Investisseurs »), sur une ligne entière.
+        const cta = page.locator('header.arh #arh-drawer .arh-cta');
+        await expect(cta, path + ' investor button in the drawer').toBeVisible();
+        await expect(cta, path + ' investor button target').toHaveAttribute('href', '/ar-investisseurs');
+        await expect(cta, path + ' investor button label').toHaveText('إبداء الاهتمام');
+        const ctaBox = await cta.boundingBox();
+        expect(ctaBox.height, path + ' investor button height').toBeGreaterThanOrEqual(44);
+        expect(ctaBox.width, path + ' investor button width').toBeGreaterThanOrEqual(240);
         const report = await page.evaluate(() => ({
           bg: getComputedStyle(document.getElementById('arh-drawer')).backgroundColor,
           viewport: document.documentElement.clientWidth,
