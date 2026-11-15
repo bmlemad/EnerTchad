@@ -1,8 +1,8 @@
 // Lot 102 (choix du DG, 2 novembre 2026) : chrome allégé — contrat mesuré dans le navigateur.
 // SITE_URL=http://localhost:8802/ npx playwright test qa/light-chrome-contract.spec.js
-//  - ≥ 1 536 px : barre utilitaire masquée, ses trois liens (FR · EN, ع, bouton Investisseurs ; lot 124 : plus de « 90 secondes ») à droite de
+//  - ≥ 1 241 px (lot 127 ; 1 536 px au lot 102) : barre utilitaire masquée, ses trois liens (FR · EN, ع, bouton Investisseurs ; lot 124 : plus de « 90 secondes ») à droite de
 //    la barre principale, sans débordement ; barre de 109 px au plus, en haut comme défilée.
-//  - 1 241 – 1 535 px : barre utilitaire visible en haut de page, masquée au défilement (barre ≤ 110 px).
+//  - sous 1 241 px : tiroir mobile, pas de barre utilitaire.
 //  - sous-navigation de pôle non collante ; bouton Mouvement dans le pied de page, jamais flottant ;
 //  - consentement : bande ≤ 80 px sur ordinateur ; sur mobile, au-dessus de la barre basse, qui reste visible.
 //  - chrome fixe au défilement (barre + sous-nav collée + consentement + barre basse) ≤ 200 px sur ordinateur.
@@ -30,7 +30,7 @@ const MEASURE = () => {
 
 test.describe('chrome allégé — règle hybride du lot 102', () => {
   for (const path of pages) {
-    for (const width of [1536, 1440, 412]) {
+    for (const width of [1536, 1440, 1280, 1241, 412]) {
       test(`${path} à ${width} px`, async ({ browser }) => {
         const context = await browser.newContext({ viewport: { width, height: 900 }, serviceWorkers: 'block' });
         const page = await context.newPage();
@@ -47,15 +47,11 @@ test.describe('chrome allégé — règle hybride du lot 102', () => {
         if (top.lumIn) expect(top.lumIn, label + ' bouton Mouvement').toBe('footer');
         expect(top.consent, label + ' consentement affiché').toBeGreaterThan(0);
         expect(top.consentParas, label + ' paragraphes du bandeau').toBe(2);
-        if (width >= 1536) {
+        if (width >= 1241) {
           expect(top.util, label + ' barre utilitaire').toBe(0);
           expect(top.fused, label + ' liens fusionnés').toBe(3);
           expect(top.overflow, label + ' débordement').toBeLessThanOrEqual(0);
           expect(top.nav, label + ' barre en haut').toBeLessThanOrEqual(110);
-        } else if (width >= 1241) {
-          expect(top.util, label + ' barre utilitaire en haut').toBeGreaterThan(0);
-          expect(top.fused, label + ' liens fusionnés').toBe(0);
-          expect(scrolled.util, label + ' barre utilitaire défilée').toBe(0);
         }
         if (width >= 1241) {
           expect(scrolled.nav, label + ' barre défilée').toBeLessThanOrEqual(110);

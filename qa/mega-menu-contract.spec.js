@@ -49,7 +49,7 @@ for (const [path, d] of Object.entries(defs)) {
       expect(report.short, 'no injected 90-second shortcut').toBe(false);
       expect(report.texts.filter(t => removed.test(t)), 'removed entries are not in the header').toEqual([]);
       expect(report.scrollWidth, 'no horizontal overflow').toBeLessThanOrEqual(report.viewport + 2);
-      // Langues et recherche conservées (petites), dans la barre d'outils ou, à partir de 1 536 px, à droite de la barre.
+      // Langues et recherche conservées (petites), à droite de la barre à partir de 1 241 px (lot 127), dans le tiroir en dessous.
       expect(await page.locator('#nav .nx-lang, #nav .nx-langx').count()).toBeGreaterThanOrEqual(2);
       expect(await page.locator('#nav .nx-search, #nav .nav-search').count()).toBeGreaterThanOrEqual(1);
     });
