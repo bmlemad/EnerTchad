@@ -24,6 +24,7 @@ for(const en of [false,true])for(const width of [320,1440]){
       else if(profile==='b2b')await expect(page.locator('#ctType')).toHaveValue(en?'Supply / B2B contract':'Approvisionnement / Contrat B2B');
       else await expect(page.locator('#ctType')).toHaveValue('');
       if(service)await expect(page.locator('#eq-service')).toHaveValue(service);
+      if(activity==='amont'||activity==='transition')await page.screenshot({path:`artifacts/pole-contact-${activity}-${en?'en':'fr'}-${width}.png`});
       const language=page.locator('#nav a.nx-lang');
       await expect(language).toHaveAttribute('href',new RegExp('activite='+activity));
       await page.goto(new URL(await language.getAttribute('href'),base).href,{waitUntil:'networkidle'});
