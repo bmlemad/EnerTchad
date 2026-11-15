@@ -22,7 +22,9 @@ if (($_SERVER['REQUEST_METHOD'] ?? '') !== 'POST') {
     header('Allow: POST');
     refuse(405);
 }
-if ((int)($_SERVER['CONTENT_LENGTH'] ?? 0) > 20000) {
+// Le formulaire autorise 5 000 caractères de message et 1 600 de précisions. Une fois encodé pour l'envoi, un caractère
+// arabe ou accentué pèse 6 octets (12 au plus) : à 20 000 octets, un long message arabe ou accentué était refusé (413).
+if ((int)($_SERVER['CONTENT_LENGTH'] ?? 0) > 100000) {
     refuse(413);
 }
 
@@ -58,10 +60,11 @@ if ($field('website', 200) !== '') {
     exit;
 }
 
+// Mêmes longueurs que les champs du formulaire (maxlength) : rien de ce qu'il accepte n'est tronqué ici.
 $name = $field('name', 120);
-$email = $field('email', 160);
+$email = $field('email', 254);
 $type = $field('request_type', 80);
-$organization = $field('organization', 160);
+$organization = $field('organization', 200);
 $message = $field('message', 5000);
 $requirements = $field('requirements', 1600);
 if ($name === '' || $message === '' || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
