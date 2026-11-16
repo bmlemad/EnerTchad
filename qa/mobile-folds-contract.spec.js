@@ -8,7 +8,31 @@ const base = process.env.SITE_URL || 'https://enertchad.com/';
 
 for (const en of [false, true]) {
   const lang = en ? 'en' : 'fr';
-  test(`amont ${lang}: mobile folds closed at 390, open without button at 1440`, async ({ browser }) => {
+  test(`mobile navigation — upstream folds remain reachable across resizing ${lang}`, async ({ browser }) => {
+    const page = await browser.newPage({ viewport: { width: 390, height: 900 } });
+    await page.goto(new URL(en ? '/pole-amont-en' : '/amont/', base).href, { waitUntil: 'networkidle' });
+    const folds = page.locator('details[data-mobile-fold]');
+    await expect(folds).toHaveCount(2);
+    for (let i = 0; i < 2; i++) await expect(folds.nth(i)).not.toHaveAttribute('open', '');
+    await folds.first().locator('> summary').press('Enter');
+    await expect(folds.first()).toHaveAttribute('open', '');
+    await page.setViewportSize({ width: 1440, height: 900 });
+    for (let i = 0; i < 2; i++) {
+      await expect(folds.nth(i)).toHaveAttribute('open', '');
+      await expect(folds.nth(i).locator('> summary')).toBeHidden();
+      await expect(folds.nth(i).locator('li, .pp-principles > div').first()).toBeVisible();
+    }
+    await page.screenshot({ path: `artifacts/upstream-after-mobile-${lang}-1440.png` });
+    await page.setViewportSize({ width: 390, height: 900 });
+    await expect(folds.first()).toHaveAttribute('open', '');
+    await folds.first().locator('> summary').press('Space');
+    await expect(folds.first()).not.toHaveAttribute('open', '');
+    await page.setViewportSize({ width: 761, height: 900 });
+    await expect(folds.first()).toHaveAttribute('open', '');
+    await expect(folds.first().locator('> summary')).toBeHidden();
+    await page.close();
+  });
+  test(`mobile navigation — amont ${lang}: mobile folds closed at 390, open without button at 1440`, async ({ browser }) => {
     const path = en ? '/pole-amont-en' : '/amont/';
     for (const [width, mobile] of [[390, true], [1440, false]]) {
       const page = await browser.newPage({ viewport: { width, height: 900 } });
@@ -34,7 +58,7 @@ for (const en of [false, true]) {
     }
   });
 
-  test(`contact ${lang}: quick contact folded, form closer, links kept`, async ({ browser }) => {
+  test(`mobile navigation — contact ${lang}: quick contact folded, form closer, links kept`, async ({ browser }) => {
     const path = en ? '/contact-en' : '/contact';
     const page = await browser.newPage({ viewport: { width: 390, height: 900 } });
     await page.goto(new URL(path, base).href, { waitUntil: 'domcontentloaded', timeout: 45000 });
