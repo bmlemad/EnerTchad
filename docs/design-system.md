@@ -99,3 +99,8 @@ La bande d'outils au-dessus de l'en-tête (FR · EN, ع, Rechercher, bouton « I
 ### Tiroir arabe : bouton « إبداء الاهتمام » (lot 128, 15 novembre 2026)
 
 Le tiroir mobile arabe (sous 768 px, lot 108) reprend le bouton « إبداء الاهتمام » vers `/ar-investisseurs`, comme le tiroir français son bouton « Investisseurs » : une ligne entière sous les langues et le thème (`ar-nav.css`). La règle qui le cachait sous 900 px (`home-inline-ar-premium.css`) ne vaut plus que de 768 à 900 px ; au-dessus de 900 px, le bouton reste dans l'en-tête comme avant. Les trois jeux critiques arabes (`ar-home`, `ar-pole`, `ar-investisseurs`) sont ré-extraits pour ces deux feuilles.
+
+
+### Repère d'ouverture du menu mobile commun (lot 131)
+
+Demande du DG (16 novembre 2026) : un même repère d'ouverture et de fermeture sur le site principal, l'espace Clients et l'Atlas. Le bouton « Menu + » de `details.et-al-tog` (Atlas, Clients ; `scripts/next/subsites.mjs`, `assets/chrome/subsites.css`) et de `details.sp-mobile-menu` (`lib/strategic.jsx`, `assets/chrome/strategic-premium.css`) prend la forme du bouton `#navTog` du site principal : trois barres de 18 × 2 px dans un carré de 44 × 44 px, qui deviennent une croix à l'ouverture (transition coupée si le visiteur réduit les mouvements). Le nom accessible reste « Menu » (`aria-label`) ; Échap referme le menu. Contrat : `qa/menu-icon-contract.spec.js`.
