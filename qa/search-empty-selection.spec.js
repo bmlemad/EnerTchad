@@ -19,6 +19,9 @@ for (const [language, route] of [['fr', '/'], ['en', '/index-en']]) {
       await expect(input).toHaveAttribute('aria-expanded', 'false');
       await expect(page.locator('#cmdk-results')).toHaveAttribute('role', 'region');
       await expect(page.locator('#cmdk [role="status"]')).toHaveText(language === 'en' ? '0 results' : '0 résultats');
+      for (const word of await page.locator('#cmdk-results b').all()) {
+        await expect(word).toHaveCSS('color', 'rgb(234, 240, 248)');
+      }
       await input.press('ArrowDown');
       await input.press('Enter');
       await expect(page.locator('#cmdk')).toBeVisible();
@@ -30,6 +33,14 @@ for (const [language, route] of [['fr', '/'], ['en', '/index-en']]) {
       await input.press('Escape');
       await expect(page.locator('#cmdk')).toBeHidden();
       await expect(trigger).toBeFocused();
+      await page.locator('#etThemeHdr').click();
+      await trigger.click();
+      await input.fill('zzqaaucunresultat');
+      await expect(page.locator('#cmdk-results [role="option"]')).toHaveCount(0);
+      for (const word of await page.locator('#cmdk-results b').all()) {
+        await expect(word).toHaveCSS('color', 'rgb(234, 240, 248)');
+      }
+      await page.screenshot({ path: `artifacts/search-empty-${language}-${width}.png` });
       await page.close();
     });
   }
