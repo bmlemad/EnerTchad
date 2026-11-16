@@ -35,7 +35,7 @@ try{
     res.setAttribute('role',current.length?'listbox':'region');
     input.setAttribute('aria-expanded',modal.style.display==='flex'&&current.length?'true':'false');
     const option=res.querySelector('.cmdk-item.on');
-    if(option&&modal.style.display==='flex')input.setAttribute('aria-activedescendant',option.id);
+    if(current.length&&option&&modal.style.display==='flex')input.setAttribute('aria-activedescendant',option.id);
     else input.removeAttribute('aria-activedescendant');
     searchAnnounce(current.length);
   }
