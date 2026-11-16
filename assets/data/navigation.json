@@ -1,13 +1,13 @@
 {
- "note": "Menu principal (lot 80, structure validée par le DG le 31 octobre 2026). Appliqué au build par lib/main-nav.js. Revue du 12 novembre 2026 (décision du DG) : le menu « Actualités & Documents » devient le « Centre de connaissances » (/savoirs) ; glossaire, atlas, carnets, FAQ et outils y sont regroupés et retirés des autres menus. Lot 124 (14 novembre 2026, décision du DG) : l'en-tête n'affiche plus que cinq liens simples (clé « header », lib/main-nav.js) ; les menus complets ci-dessous restent la source du pied de page et des liens de contexte (lib/corporate-architecture.js).",
+ "note": "Menu principal (lot 80, structure validée par le DG le 31 octobre 2026). Appliqué au build par lib/main-nav.js. Revue du 12 novembre 2026 (décision du DG) : le menu « Actualités & Documents » devient le « Centre de connaissances » (/savoirs) ; glossaire, atlas, carnets, FAQ et outils y sont regroupés et retirés des autres menus. Lot 124 (14 novembre 2026, décision du DG) : l'en-tête n'affiche plus que cinq liens simples (clé « header », lib/main-nav.js) ; les menus complets ci-dessous restent la source du pied de page et des liens de contexte (lib/corporate-architecture.js). 16 novembre 2026 (décision du DG, « épurer la navigation ») : l’en-tête porte un sixième lien, le Centre de connaissances, qui devient l’index de toutes les pages secondaires ; le pied de page reprend ces six liens et perd sa rangée « Ressources » et ses doublons.",
  "header": {
   "fr": {
-   "links": [["Vision", "/societe"], ["Activités", "/nos-activites"], ["Impact", "/engagements"], ["Investisseurs", "/investisseurs"], ["Contact", "/contact"]],
+   "links": [["Vision", "/societe"], ["Activités", "/nos-activites"], ["Impact", "/engagements"], ["Investisseurs", "/investisseurs"], ["Contact", "/contact"], ["Centre de connaissances", "/savoirs"]],
    "button": ["Investisseurs", "/investisseurs"],
    "slogan": "L’énergie du Tchad. Intégrée."
   },
   "en": {
-   "links": [["Vision", "/societe-en"], ["Activities", "/nos-activites-en"], ["Impact", "/engagements-en"], ["Investors", "/investisseurs-en"], ["Contact", "/contact-en"]],
+   "links": [["Vision", "/societe-en"], ["Activities", "/nos-activites-en"], ["Impact", "/engagements-en"], ["Investors", "/investisseurs-en"], ["Contact", "/contact-en"], ["Knowledge center", "/savoirs-en"]],
    "button": ["Investors", "/investisseurs-en"],
    "slogan": "Chad’s energy. Integrated."
   }

@@ -113,3 +113,16 @@ Choix du DG (16 novembre 2026, après relecture de la PR #159). Page Amont : sur
 ### FAQ de la page Clients (lot 135)
 
 La règle héritée `#reperes-clients,#faq-clients{max-width:1012px;margin:0 auto}` de `clients.html` et `clients-en.html` bornait la FAQ à 1012 px, collée à gauche, avec un bloc blanc à droite à 1440 px. `#faq-clients` n'y figure plus : la section prend la largeur de `<main>` et son contenu (`.pp-wrap`) s'aligne sur celui des sections voisines. Le contrat `qa/clients-faq-contract.spec.js` le vérifie à 390 et 1440 px, en FR et en EN, sur `/clients` et sur la copie `/boutique/clients` (il amène la FAQ à l'écran avant de mesurer, car `content-visibility:auto` laisse une section hors écran sans contenu mesurable).
+
+## Navigation épurée : le Centre de connaissances comme index (16 novembre 2026)
+
+Décision du DG : épurer la navigation sans supprimer de contenu. L’en-tête porte six liens simples — Vision, Activités,
+Impact, Investisseurs, Contact, Centre de connaissances (clé `header` de `assets/data/navigation.json`). Le pied de page
+reprend ces six liens, garde quatre accès par public (clients, fournisseurs, presse, carrières) et la colonne d’information ;
+la rangée « Ressources » du lot 124 disparaît.
+
+Le Centre (`/savoirs`, `/savoirs-en`) devient l’index de toutes les pages secondaires : ses sections de cartes restent, et
+la section `#savoirs-index` (« Toutes les pages, rubrique par rubrique », composant `.pp-smgrid` du plan du site) liste
+chaque pôle avec ses sous-pages, l’atlas, la société et les informations pratiques. Un champ de filtre
+(`[data-savoirs-filter]`, script en ligne `savoirs-filter-js`) réduit cartes et entrées à la frappe, sans accent ni
+casse ; sans résultat, il renvoie à la recherche du site. Sans JavaScript, le champ reste masqué et tout l’index s’affiche.

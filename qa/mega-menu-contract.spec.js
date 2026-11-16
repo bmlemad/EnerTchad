@@ -4,23 +4,25 @@ const { test, expect } = require('@playwright/test');
 // cinq liens simples (Vision, Activités, Impact, Investisseurs, Contact), aucun panneau déroulant, un bouton « Investisseurs »,
 // la barre d'outils réduite aux langues et à la recherche, le slogan sous le logo, et les six rubriques retirées du menu
 // (Gouvernance, Publications, Atlas, FAQ, Carrières, Communiqués) accessibles par la rangée « Ressources » du pied de page.
+// 16 novembre 2026 (décision du DG, « épurer la navigation ») : sixième lien, le Centre de connaissances (/savoirs), qui indexe toutes
+// les pages secondaires ; la rangée « Ressources » du pied de page disparaît, ses six pages sont dans le Centre.
 const base = process.env.SITE_URL || 'https://enertchad.com/';
 const widths = [1280, 1440];
 const defs = {
-  '/': { labels: ['Vision', 'Activités', 'Impact', 'Investisseurs', 'Contact'], hrefs: ['/societe', '/nos-activites', '/engagements', '/investisseurs', '/contact'], button: 'Investisseurs', slogan: 'L’énergie du Tchad. Intégrée.', resources: ['/gouvernance', '/publications', '/atlas/', '/faq', '/carrieres', '/communiques'] },
-  '/index-en': { labels: ['Vision', 'Activities', 'Impact', 'Investors', 'Contact'], hrefs: ['/societe-en', '/nos-activites-en', '/engagements-en', '/investisseurs-en', '/contact-en'], button: 'Investors', slogan: 'Chad’s energy. Integrated.', resources: ['/gouvernance-en', '/publications-en', '/atlas-en', '/faq-en', '/carrieres-en', '/communiques-en'] }
+  '/': { labels: ['Vision', 'Activités', 'Impact', 'Investisseurs', 'Contact', 'Centre de connaissances'], hrefs: ['/societe', '/nos-activites', '/engagements', '/investisseurs', '/contact', '/savoirs'], hub: '/savoirs', button: 'Investisseurs', slogan: 'L’énergie du Tchad. Intégrée.', resources: ['/gouvernance', '/publications', '/atlas/', '/faq', '/carrieres', '/communiques'] },
+  '/index-en': { labels: ['Vision', 'Activities', 'Impact', 'Investors', 'Contact', 'Knowledge center'], hrefs: ['/societe-en', '/nos-activites-en', '/engagements-en', '/investisseurs-en', '/contact-en', '/savoirs-en'], hub: '/savoirs-en', button: 'Investors', slogan: 'Chad’s energy. Integrated.', resources: ['/gouvernance-en', '/publications-en', '/atlas-en', '/faq-en', '/carrieres-en', '/communiques-en'] }
 };
 const removed = /Gouvernance|Governance|Publications|Atlas|FAQ|Carrières|Careers|Communiqués|Press releases/;
 
 for (const [path, d] of Object.entries(defs)) {
   for (const width of widths) {
-    test(`header — five plain links, one button, no dropdown (${path} at ${width}px)`, async ({ page }) => {
+    test(`header — six plain links, one button, no dropdown (${path} at ${width}px)`, async ({ page }) => {
       await page.setViewportSize({ width, height: 900 });
       const response = await page.goto(new URL(path, base).href, { waitUntil: 'domcontentloaded', timeout: 45000 });
       expect(response && response.status(), path).toBe(200);
       const links = page.locator('#navLinks > .nav-item > a.nx-direct');
-      await expect(links).toHaveCount(5);
-      for (let i = 0; i < 5; i++) {
+      await expect(links).toHaveCount(6);
+      for (let i = 0; i < 6; i++) {
         await expect(links.nth(i)).toHaveText(d.labels[i]);
         await expect(links.nth(i)).toHaveAttribute('href', d.hrefs[i]);
         await expect(links.nth(i)).toBeVisible();
@@ -55,11 +57,14 @@ for (const [path, d] of Object.entries(defs)) {
     });
   }
 
-  test(`header — footer keeps the six removed entries in a Resources row (${path})`, async ({ page }) => {
+  test(`header — the six removed entries are indexed by the knowledge centre, not repeated in the footer (${path})`, async ({ page }) => {
     await page.setViewportSize({ width: 1440, height: 900 });
     await page.goto(new URL(path, base).href, { waitUntil: 'domcontentloaded', timeout: 45000 });
-    const hrefs = await page.locator('footer .foot-resources a').evaluateAll(a => a.map(x => x.getAttribute('href')));
-    expect(hrefs).toEqual(d.resources);
+    await expect(page.locator('footer .foot-resources')).toHaveCount(0);
+    await expect(page.locator('footer [data-et-footer-access] a')).toHaveCount(4);
+    await page.goto(new URL(d.hub, base).href, { waitUntil: 'domcontentloaded', timeout: 45000 });
+    const hrefs = await page.locator('#main-content a[href]').evaluateAll(a => a.map(x => x.getAttribute('href').split('#')[0]));
+    for (const href of d.resources) expect(hrefs, d.hub + ' indexes ' + href).toContain(href);
   });
 }
 
