@@ -1,6 +1,6 @@
 const { test, expect } = require('@playwright/test');
 
-// Lot 130 (16 novembre 2026, plan validé par le DG) : direction immersive, phase C, treize pages de plus (FR et EN) sous /aval,
+// Lots 130 et 133 (16 novembre 2026, plan validé par le DG) : direction immersive, phase C, treize pages de plus (FR et EN) sous /aval,
 // /petrochimie, /intermediaire et /tchaditech. Posé au build par lib/immersif-amont.js (table PICK_130) : une section par page
 // devient une scène (photo de fond décorative chargée au défilement, contenu dans une carte en verre au texte clair).
 // Contrat : à 390 px et à 1440 px, une seule scène, l'ancre de la section est conservée, la scène contient un titre (h2 ou h3) dans la carte et, si elle porte aria-labelledby, il pointe vers un titre de la carte, la photo est décorative, publiée et couvre la scène, le texte, les titres, les liens et les tableaux de la carte restent
@@ -14,7 +14,12 @@ const picks = [
   ['/petrochimie/marches', 'substitution', 'camion-route'], ['/petrochimie/produits', 'petrochimie', 'flamme-gaz'],
   ['/intermediaire/collecte', 'engagements', 'pompe-petrole'], ['/intermediaire/logistique', 'corridor-flux', 'camion-route'],
   ['/intermediaire/services', 'inter-services', 'complexe-industriel'], ['/intermediaire/sites', 'sit-jalons', 'village-sahel'],
-  ['/tchaditech/outils', 'out-usages', 'lac-tchad-espace']
+  ['/tchaditech/outils', 'out-usages', 'lac-tchad-espace'],
+  // Lot 133 : pages racine
+  ['/societe', 'g568-z', 'pipeline'], ['/engagements', 'esg', 'lac-tchad-espace'], ['/innovation', 'inn-terrain', 'solaire-champ'],
+  ['/projets', 'feuille-de-route', 'unite-petrochimie'], ['/carrieres', 'metiers', 'chantier-ferraillage'],
+  ['/communautes', 'contenu-local', 'dunes-sahara'], ['/cibles-2030', 'cib-tenue', 'pompe-petrole'],
+  ['/savoirs', 'savoirs-comprendre', 'flamme-gaz'], ['/achats', 'orientation', 'raffinerie-jour']
 ];
 
 function luminance(color) {
@@ -83,7 +88,7 @@ test.describe('immersive phase C — aval, petrochimie, intermediaire, tchaditec
   }
 
   test('the excluded pages stay without a scene and the other sections are not changed', async ({ request }) => {
-    for (const path of ['/aval/boutique', '/aval/commercialisation', '/aval/boutique-en', '/aval/commercialisation-en']) {
+    for (const path of ['/aval/boutique', '/aval/commercialisation', '/aval/boutique-en', '/aval/commercialisation-en', '/mentions-legales', '/confidentialite', '/cookies', '/accessibilite', '/avertissements', '/communiques', '/gouvernance', '/ethique', '/contact', '/investisseurs', '/newsletter']) {
       const response = await request.get(new URL(path, base).href, { timeout: 30000 });
       expect(response.status(), path).toBe(200);
       const html = await response.text();
