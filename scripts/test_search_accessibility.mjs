@@ -73,7 +73,8 @@ test('active option is linked to input, then removed and zero results announced'
   const f=fixture();f.res.option=f.element('A','result-1');
   f.run('modal.style.display="flex";searchSelection()');
   assert.equal(f.input.getAttribute('aria-activedescendant'),'result-1');
-  f.res.option=null;f.run('current=[];searchSelection()');f.flush();
+  // render synchronizes selection before replacing the previous result markup.
+  f.run('current=[];searchSelection()');f.flush();
   assert.equal(f.input.getAttribute('aria-activedescendant'),null);
   assert.equal(f.input.getAttribute('aria-expanded'),'false');
   assert.equal(f.res.getAttribute('role'),'region');
