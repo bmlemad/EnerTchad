@@ -41,6 +41,10 @@ test('publications — data room and library expose registry and core evidence f
     await expect(page.locator('#data-room')).toHaveCount(1);
     const roomHrefs = await page.locator('#data-room a[href]').evaluateAll(nodes => nodes.map(a => a.getAttribute('href')));
     expect(roomHrefs, path + ' registre').toContain('/assets/data/document-registry.json');
+    // 16 nov. 2026 : un investisseur arrivant sur #data-room n'y trouvait que le registre JSON. Les trois pièces de premier examen
+    // y sont en accès direct, avec un renvoi vers la bibliothèque filtrable.
+    for (const core of ['/Fiche_Investisseur_EnerTchad.pdf', '/Data_Book_EnerTchad.xlsx', '/Point_Etape_EnerTchad_2026.pdf']) expect(roomHrefs, path + ' pièce essentielle ' + core).toContain(core);
+    expect(roomHrefs, path + ' renvoi vers la bibliothèque').toContain('#mod-library');
     const cards = await page.locator('#mod-library a[data-document-format]').evaluateAll(nodes => nodes.map(a => a.getAttribute('href')));
     expect(cards, path + ' fiche investisseur').toContain('/Fiche_Investisseur_EnerTchad.pdf');
     expect(cards, path + ' data book').toContain('/Data_Book_EnerTchad.xlsx');
