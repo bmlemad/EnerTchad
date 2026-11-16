@@ -15,11 +15,12 @@ const routeExists = p => {
   return existsSync(p.endsWith('/') ? p.slice(1) + 'index.html' : p.slice(1) + '.html');
 };
 
-test('FR and EN headers have the same five entries, in the DG order, and one button', () => {
-  assert.deepEqual(nav.header.fr.links.map(l => l[0]), ['Vision', 'Activités', 'Impact', 'Investisseurs', 'Contact']);
-  assert.deepEqual(nav.header.en.links.map(l => l[0]), ['Vision', 'Activities', 'Impact', 'Investors', 'Contact']);
-  assert.deepEqual(nav.header.fr.links.map(l => l[1]), ['/societe', '/nos-activites', '/engagements', '/investisseurs', '/contact']);
-  assert.deepEqual(nav.header.en.links.map(l => l[1]), ['/societe-en', '/nos-activites-en', '/engagements-en', '/investisseurs-en', '/contact-en']);
+// 16 novembre 2026 (décision du DG, « épurer la navigation ») : sixième entrée, le Centre de connaissances.
+test('FR and EN headers have the same six entries, in the DG order, and one button', () => {
+  assert.deepEqual(nav.header.fr.links.map(l => l[0]), ['Vision', 'Activités', 'Impact', 'Investisseurs', 'Contact', 'Centre de connaissances']);
+  assert.deepEqual(nav.header.en.links.map(l => l[0]), ['Vision', 'Activities', 'Impact', 'Investors', 'Contact', 'Knowledge center']);
+  assert.deepEqual(nav.header.fr.links.map(l => l[1]), ['/societe', '/nos-activites', '/engagements', '/investisseurs', '/contact', '/savoirs']);
+  assert.deepEqual(nav.header.en.links.map(l => l[1]), ['/societe-en', '/nos-activites-en', '/engagements-en', '/investisseurs-en', '/contact-en', '/savoirs-en']);
   assert.deepEqual(nav.header.fr.button, ['Investisseurs', '/investisseurs']);
   assert.deepEqual(nav.header.en.button, ['Investors', '/investisseurs-en']);
   assert.equal(nav.header.fr.slogan, 'L’énergie du Tchad. Intégrée.');
@@ -49,7 +50,7 @@ test('every corporate page gets the five links, keeps everything outside the nav
     assert.equal(withMainNav(after), after, page + ' idempotence');
     assert.equal(outside(after), outside(before), page + ' outside the nav');
     const n = navOf(after);
-    assert.equal((n.match(/class="nav-trigger nx-direct"/g) || []).length, 5, page + ' five links');
+    assert.equal((n.match(/class="nav-trigger nx-direct"/g) || []).length, 6, page + ' six links');
     assert.equal((n.match(/aria-controls="nxm-/g) || []).length, 0, page + ' no dropdown');
     assert(!n.includes('nx-mega'), page + ' no panel');
     assert.equal(n.includes('nx-util-m'), navOf(before).includes('nx-util-m'), page + ' mobile utility bar');

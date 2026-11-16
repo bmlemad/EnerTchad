@@ -109,3 +109,16 @@ Demande du DG (16 novembre 2026) : un même repère d'ouverture et de fermeture 
 ### Replis mobiles des pages Amont et Contact (lot 132)
 
 Choix du DG (16 novembre 2026, après relecture de la PR #159). Page Amont : sur mobile (≤ 760 px), les cinq cas d'usage et les cinq principes de la méthode se replient sous leur titre dans un `details[data-mobile-fold]` ; sur ordinateur ils restent ouverts, sans bouton, et sans JavaScript tout reste ouvert. Page Contact : « Contact rapide — choisissez votre sujet » devient un `details.ct-fold` replié sur tous les écrans (liens WhatsApp et e-mail conservés), et le bandeau est resserré sur mobile par des variables d'espacement (`--ct-pt`, `--ct-pb`). Mesures sur mobile : formulaire de Contact 3 610 → 2 747 px, page Amont 19 850 → 18 716 px. Source : `lib/visual-priorities.js` ; contrat : `qa/mobile-folds-contract.spec.js`.
+
+## Navigation épurée : le Centre de connaissances comme index (16 novembre 2026)
+
+Décision du DG : épurer la navigation sans supprimer de contenu. L’en-tête porte six liens simples — Vision, Activités,
+Impact, Investisseurs, Contact, Centre de connaissances (clé `header` de `assets/data/navigation.json`). Le pied de page
+reprend ces six liens, garde quatre accès par public (clients, fournisseurs, presse, carrières) et la colonne d’information ;
+la rangée « Ressources » du lot 124 disparaît.
+
+Le Centre (`/savoirs`, `/savoirs-en`) devient l’index de toutes les pages secondaires : ses sections de cartes restent, et
+la section `#savoirs-index` (« Toutes les pages, rubrique par rubrique », composant `.pp-smgrid` du plan du site) liste
+chaque pôle avec ses sous-pages, l’atlas, la société et les informations pratiques. Un champ de filtre
+(`[data-savoirs-filter]`, script en ligne `savoirs-filter-js`) réduit cartes et entrées à la frappe, sans accent ni
+casse ; sans résultat, il renvoie à la recherche du site. Sans JavaScript, le champ reste masqué et tout l’index s’affiche.

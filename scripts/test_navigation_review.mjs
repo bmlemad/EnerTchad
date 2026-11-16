@@ -38,11 +38,18 @@ test('corporate resources expose documents and preserve investor-specific enquir
     // Lot 124 : plus de panneaux de ressources dans l'en-tête ; Publications et les autres rubriques retirées vivent dans la rangée « Ressources » du pied de page.
     const groups = all.filter(n => n.name === 'section' && n.attribs?.class?.split(' ').includes('nx-resource-group'));
     assert.equal(groups.length, 0);
-    const row = all.find(n => n.name === 'nav' && n.attribs?.class?.split(' ').includes('foot-resources'));
-    assert(row, 'footer Resources row');
-    const hrefs = (row.children || []).filter(n => n.name === 'a').map(n => n.attribs.href);
-    assert.equal(hrefs.length, 6);
-    assert(hrefs.includes('/publications' + (en ? '-en' : '')));
+    // 16 novembre 2026 : la rangée « Ressources » a disparu ; ces pages sont indexées par le Centre de connaissances, que le
+    // pied de page et l'en-tête portent tous deux. La colonne d'accès garde quatre entrées, la ligne légale ne répète rien.
+    assert(!all.some(n => n.name === 'nav' && n.attribs?.class?.split(' ').includes('foot-resources')), 'no Resources row');
+    const sx = en ? '-en' : '', hub = read(en ? 'savoirs-en.html' : 'savoirs.html');
+    for (const href of ['/gouvernance' + sx, '/publications' + sx, en ? '/atlas-en' : '/atlas/', '/faq' + sx, '/carrieres' + sx, '/communiques' + sx]) assert(hub.includes('href="' + href + '"'), 'hub indexes ' + href);
+    const cols = all.filter(n => n.attribs?.class?.split(' ').includes('foot-col'));
+    assert.deepEqual((cols[0].children || []).filter(n => n.name === 'a').map(n => n.attribs.href).at(-1), '/savoirs' + sx);
+    assert.equal((cols[1].children || []).filter(n => n.name === 'a').length, 4);
+    assert.equal((cols[2].children || []).filter(n => n.name === 'a').at(-1).attribs.href, '/plan-du-site' + sx);
+    const hrefs = [];
+    for (const zone of cols) (function walk(n) { if (n.name === 'a' && n.attribs?.href?.startsWith('/')) hrefs.push(n.attribs.href); (n.children || []).forEach(walk); })(zone);
+    assert.equal(hrefs.length, new Set(hrefs).size, 'no link twice in the footer columns: ' + hrefs.filter((h, i) => hrefs.indexOf(h) !== i));
     assert.match(output, /et-footer-pending/);
     assert(!output.includes('id="fnForm"'));
   }
