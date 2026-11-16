@@ -104,3 +104,8 @@ Le tiroir mobile arabe (sous 768 px, lot 108) reprend le bouton « إبداء ا
 ### Repère d'ouverture du menu mobile commun (lot 131)
 
 Demande du DG (16 novembre 2026) : un même repère d'ouverture et de fermeture sur le site principal, l'espace Clients et l'Atlas. Le bouton « Menu + » de `details.et-al-tog` (Atlas, Clients ; `scripts/next/subsites.mjs`, `assets/chrome/subsites.css`) et de `details.sp-mobile-menu` (`lib/strategic.jsx`, `assets/chrome/strategic-premium.css`) prend la forme du bouton `#navTog` du site principal : trois barres de 18 × 2 px dans un carré de 44 × 44 px, qui deviennent une croix à l'ouverture (transition coupée si le visiteur réduit les mouvements). Le nom accessible reste « Menu » (`aria-label`) ; Échap referme le menu. Contrat : `qa/menu-icon-contract.spec.js`.
+
+
+### Replis mobiles des pages Amont et Contact (lot 132)
+
+Choix du DG (16 novembre 2026, après relecture de la PR #159). Page Amont : sur mobile (≤ 760 px), les cinq cas d'usage et les cinq principes de la méthode se replient sous leur titre dans un `details[data-mobile-fold]` ; sur ordinateur ils restent ouverts, sans bouton, et sans JavaScript tout reste ouvert. Page Contact : « Contact rapide — choisissez votre sujet » devient un `details.ct-fold` replié sur tous les écrans (liens WhatsApp et e-mail conservés), et le bandeau est resserré sur mobile par des variables d'espacement (`--ct-pt`, `--ct-pb`). Mesures sur mobile : formulaire de Contact 3 610 → 2 747 px, page Amont 19 850 → 18 716 px. Source : `lib/visual-priorities.js` ; contrat : `qa/mobile-folds-contract.spec.js`.
