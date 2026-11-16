@@ -1,6 +1,14 @@
 const {test,expect}=require('@playwright/test');
 const base=process.env.SITE_URL||'https://enertchad.com/';
 async function open(page,path){await page.goto(new URL(path,base).href,{waitUntil:'networkidle'});const refuse=page.locator('#et-consent button').filter({hasText:/Refuser|Refuse/});if(await refuse.isVisible())await refuse.click();}
+async function themes(page,name,lang,width){
+  for(const theme of ['light','dark']){
+    const toggle=page.locator('#etThemeHdr');
+    if((await toggle.getAttribute('aria-pressed'))!==(theme==='dark'?'true':'false'))await toggle.click();
+    expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBe(true);
+    await page.screenshot({path:`artifacts/visual-${name}-${lang}-${width}-${theme}.png`});
+  }
+}
 for(const en of [false,true])for(const width of [320,1440]){
   test(`mobile navigation — visual priorities ${en?'en':'fr'} ${width}`,async({browser})=>{
     test.setTimeout(120000);
@@ -37,13 +45,13 @@ for(const en of [false,true])for(const width of [320,1440]){
     }
     await page.locator('.pp-sub a[href="#offre"]').click();
     await page.locator('#offre').scrollIntoViewIfNeeded();
-    await page.screenshot({path:`artifacts/visual-upstream-${lang}-${width}.png`});
+    await themes(page,'upstream',lang,width);
     const enquiry=page.locator('#offre a[href*="activite=amont"]');
     await expect(enquiry).toHaveAttribute('href',new RegExp(`^/contact${suffix}\\?activite=amont.*#ctForm$`));
     await open(page,'/contact'+suffix);
     const hero=page.locator('#top-pole');expect((await hero.boundingBox()).height).toBeLessThan(700);
     await expect(hero.locator('a[href="#ctForm"]')).toBeVisible();
-    await page.screenshot({path:`artifacts/visual-contact-${lang}-${width}.png`});
+    await themes(page,'contact',lang,width);
     await hero.locator('a[href="#ctForm"]').click();
     await expect(page).toHaveURL(/#ctForm$/);
     await expect(page.locator('#ctForm')).toBeInViewport();
@@ -53,7 +61,7 @@ for(const en of [false,true])for(const width of [320,1440]){
     await expect(img).toHaveAttribute('src',/complexe-industriel-1400\.webp\?v=[a-f0-9]{12}$/);
     await expect(img).toHaveAttribute('alt',en?/industrial facilities/:/installations industrielles/);
     expect(await img.evaluate(e=>e.complete&&e.naturalWidth>0)).toBe(true);
-    await page.screenshot({path:`artifacts/visual-engineering-${lang}-${width}.png`});
+    await themes(page,'engineering',lang,width);
     expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBe(true);
     await page.close();
   });
