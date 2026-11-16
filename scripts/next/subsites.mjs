@@ -92,7 +92,7 @@ export function renderSubsite(html, page, space, hosted = false) {
   // Mobile (≤ 900 px): a single 64 px bar (brand, theme switch, Menu). The Menu toggle is a
   // <details> placed first, as on the React pages (.sp-mobile-menu); opening it reveals the
   // utility links and the space links in place (CSS sibling selector, no script needed).
-  const menuToggle = `<details class="et-al-tog"><summary>Menu</summary></details>`;
+  const menuToggle = `<details class="et-al-tog"><summary aria-label="Menu"><span class="bz" aria-hidden="true"></span><span class="bz" aria-hidden="true"></span><span class="bz" aria-hidden="true"></span></summary></details>`;
   const partnerLabel = partner === 'atlas' ? 'Atlas' : en ? 'Customer space' : 'Espace Clients';
   const themeLabel = en ? 'Dark mode' : 'Mode sombre';
   const themeButton = `<button type="button" class="et-theme-hdr" aria-pressed="false" aria-label="${themeLabel}" title="${themeLabel}"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="8.2"/><path d="M12 3.8a8.2 8.2 0 0 0 0 16.4z" fill="currentColor"/></svg></button>`;
