@@ -19,7 +19,9 @@ const picks = [
   ['/societe', 'g568-z', 'pipeline'], ['/engagements', 'esg', 'lac-tchad-espace'], ['/innovation', 'inn-terrain', 'solaire-champ'],
   ['/projets', 'feuille-de-route', 'unite-petrochimie'], ['/carrieres', 'metiers', 'chantier-ferraillage'],
   ['/communautes', 'contenu-local', 'dunes-sahara'], ['/cibles-2030', 'cib-tenue', 'pompe-petrole'],
-  ['/savoirs', 'savoirs-comprendre', 'flamme-gaz'], ['/achats', 'orientation', 'raffinerie-jour']
+  ['/savoirs', 'savoirs-comprendre', 'flamme-gaz'], ['/achats', 'orientation', 'raffinerie-jour'],
+  // Lot 134 : espace Clients (la page Clients seule)
+  ['/clients', 'g568-r', 'camion-route']
 ];
 
 function luminance(color) {
@@ -53,6 +55,7 @@ test.describe('immersive phase C — aval, petrochimie, intermediaire, tchaditec
             const tables = glass ? [...glass.querySelectorAll('table')] : [];
             return {
               scenes: document.querySelectorAll('.im-scene').length,
+              visibleHeight: scene && !scene.closest('details:not([open])') ? Math.round(scene.getBoundingClientRect().height) : 0,
               found: !!target, glass: !!glass, h2: h2 && h2.textContent.trim().length, h2Color: colour(h2),
               labelled: !labelId || (!!labelledBy && glass.contains(labelledBy)),
               bg: bg && { hidden: bg.getAttribute('aria-hidden'), alt: bg.getAttribute('alt'), loading: bg.getAttribute('loading'), src: bg.getAttribute('src') },
@@ -66,6 +69,7 @@ test.describe('immersive phase C — aval, petrochimie, intermediaire, tchaditec
           expect(report.found, path + ' #' + id + ' anchor kept').toBe(true);
           expect(report.scenes, path + ' one scene').toBe(1);
           expect(report.glass, path + ' glass card').toBe(true);
+          expect(report.visibleHeight, path + ' the scene is visible (not inside a closed fold) and tall enough').toBeGreaterThan(200);
           expect(report.inlineStyle, path + ' inline rules').toBe(true);
           expect(report.h2, path + ' title').toBeGreaterThan(5);
           expect(report.labelled, path + ' scene is labelled by a title inside the card').toBe(true);
@@ -88,7 +92,7 @@ test.describe('immersive phase C — aval, petrochimie, intermediaire, tchaditec
   }
 
   test('the excluded pages stay without a scene and the other sections are not changed', async ({ request }) => {
-    for (const path of ['/aval/boutique', '/aval/commercialisation', '/aval/boutique-en', '/aval/commercialisation-en', '/mentions-legales', '/confidentialite', '/cookies', '/accessibilite', '/avertissements', '/communiques', '/gouvernance', '/ethique', '/contact', '/investisseurs', '/newsletter']) {
+    for (const path of ['/atlas/', '/atlas/carte', '/atlas/bassins-champs', '/atlas/infrastructures', '/atlas/cadre-sectoriel', '/atlas/sources', '/atlas-en', '/boutique/', '/boutique/en/', '/aval/boutique', '/aval/commercialisation', '/aval/boutique-en', '/aval/commercialisation-en', '/mentions-legales', '/confidentialite', '/cookies', '/accessibilite', '/avertissements', '/communiques', '/gouvernance', '/ethique', '/contact', '/investisseurs', '/newsletter']) {
       const response = await request.get(new URL(path, base).href, { timeout: 30000 });
       expect(response.status(), path).toBe(200);
       const html = await response.text();
