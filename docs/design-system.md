@@ -110,6 +110,10 @@ Demande du DG (16 novembre 2026) : un même repère d'ouverture et de fermeture 
 
 Choix du DG (16 novembre 2026, après relecture de la PR #159). Page Amont : sur mobile (≤ 760 px), les cinq cas d'usage et les cinq principes de la méthode se replient sous leur titre dans un `details[data-mobile-fold]` ; sur ordinateur ils restent ouverts, sans bouton, et sans JavaScript tout reste ouvert. Page Contact : « Contact rapide — choisissez votre sujet » devient un `details.ct-fold` replié sur tous les écrans (liens WhatsApp et e-mail conservés), et le bandeau est resserré sur mobile par des variables d'espacement (`--ct-pt`, `--ct-pb`). Mesures sur mobile : formulaire de Contact 3 610 → 2 747 px, page Amont 19 850 → 18 716 px. Source : `lib/visual-priorities.js` ; contrat : `qa/mobile-folds-contract.spec.js`.
 
+### FAQ de la page Clients (lot 135)
+
+La règle héritée `#reperes-clients,#faq-clients{max-width:1012px;margin:0 auto}` de `clients.html` et `clients-en.html` bornait la FAQ à 1012 px, collée à gauche, avec un bloc blanc à droite à 1440 px. `#faq-clients` n'y figure plus : la section prend la largeur de `<main>` et son contenu (`.pp-wrap`) s'aligne sur celui des sections voisines. Le contrat `qa/clients-faq-contract.spec.js` le vérifie à 390 et 1440 px, en FR et en EN, sur `/clients` et sur la copie `/boutique/clients` (il amène la FAQ à l'écran avant de mesurer, car `content-visibility:auto` laisse une section hors écran sans contenu mesurable).
+
 ## Navigation épurée : le Centre de connaissances comme index (16 novembre 2026)
 
 Décision du DG : épurer la navigation sans supprimer de contenu. L’en-tête porte six liens simples — Vision, Activités,
