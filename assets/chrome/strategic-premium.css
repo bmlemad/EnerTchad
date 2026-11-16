@@ -36,10 +36,17 @@ html:not(#g1):not(#g2) :is(.sp-k,.sp-doc .meta,.sp-card .meta,.et-quick-entry a)
 
 /* Native mobile navigation keeps all strategic routes available without JavaScript. */
 .sp-mobile-menu{display:none}
-.sp-mobile-menu summary{min-height:44px;min-width:70px;display:flex;align-items:center;justify-content:center;gap:8px;cursor:pointer;border:1px solid var(--sp-line);border-radius:12px;font-size:.88rem;font-weight:700;list-style:none}
+.sp-mobile-menu summary{position:relative;display:block;width:44px;height:44px;min-width:44px;min-height:44px;box-sizing:border-box;cursor:pointer;border:1px solid var(--sp-line);border-radius:12px;list-style:none}
 .sp-mobile-menu summary::-webkit-details-marker{display:none}
-.sp-mobile-menu summary::after{content:"+";font-size:1.2rem}
-.sp-mobile-menu[open] summary::after{content:"−"}
+/* Lot 131 : même repère d'ouverture que le site principal (trois barres qui deviennent une croix) */
+.sp-mobile-menu summary .bz{position:absolute;left:12px;width:18px;height:2px;border-radius:2px;background:currentColor;transition:transform .3s ease,opacity .2s ease}
+.sp-mobile-menu summary .bz:nth-child(1){top:13px}
+.sp-mobile-menu summary .bz:nth-child(2){top:18px}
+.sp-mobile-menu summary .bz:nth-child(3){top:23px}
+.sp-mobile-menu[open] summary .bz:nth-child(1){transform:translateY(5px) rotate(45deg)}
+.sp-mobile-menu[open] summary .bz:nth-child(2){opacity:0}
+.sp-mobile-menu[open] summary .bz:nth-child(3){transform:translateY(-5px) rotate(-45deg)}
+@media(prefers-reduced-motion:reduce){.sp-mobile-menu summary .bz{transition:none}}
 .sp-mobile-menu nav{position:absolute;top:100%;left:0;right:0;display:grid;gap:4px;padding:14px;background:var(--sp-paper);border-bottom:1px solid var(--sp-line);box-shadow:0 12px 24px rgba(0,0,0,.12);max-height:calc(100svh - 90px);overflow:auto}
 .sp-mobile-menu nav a{display:flex;align-items:center;min-height:44px;padding:10px 14px;text-decoration:none;border-radius:10px;overflow-wrap:anywhere}
 .sp-mobile-menu nav a:hover{background:rgba(183,139,50,.1)}
