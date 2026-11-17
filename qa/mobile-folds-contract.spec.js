@@ -121,9 +121,12 @@ for (const path of ['/aval/distribution', '/aval/distribution-en']) {
     const page = await browser.newPage({ viewport: { width: 1440, height: 900 } });
     await page.goto(new URL(path, base).href, { waitUntil: 'networkidle' });
     await page.addStyleTag({ content: '*{content-visibility:visible!important}' });
+    // Lot 146 : les chapitres sont repliés ; hauteur mesurée fermée, colonnes mesurées une fois tout ouvert.
+    expect(await page.evaluate(() => document.querySelector('#distribution').getBoundingClientRect().height), 'folded section').toBeLessThan(3600);
+    await page.evaluate(() => document.querySelectorAll('#distribution details[data-block-fold]').forEach(fold => { fold.open = true; }));
     const report = await page.evaluate(() => {
       const section = document.querySelector('#distribution'), detail = document.querySelector('#dx'), grid = detail.parentElement;
-      const cards = [...detail.querySelectorAll(':scope > .pp-cell > .pp-grid')].map(list => new Set([...list.children].map(card => Math.round(card.getBoundingClientRect().left))).size);
+      const cards = [...detail.querySelectorAll(':scope > .pp-cell > .pp-grid, :scope > .pp-cell > details > .pp-bfold-b > .pp-grid')].map(list => new Set([...list.children].map(card => Math.round(card.getBoundingClientRect().left))).size);
       return { section: section.getBoundingClientRect().height, ratio: detail.getBoundingClientRect().width / grid.getBoundingClientRect().width, cards, overflow: document.documentElement.scrollWidth > innerWidth + 1 };
     });
     expect(report.ratio, 'detail chapter spans the grid').toBeGreaterThan(0.98);
@@ -143,6 +146,12 @@ for (const [path, id] of [['/amont/eor', 'eor'], ['/amont/eor-en', 'eor'], ['/av
       const page = await browser.newPage({ viewport: { width, height: 900 } });
       await page.goto(new URL(path, base).href, { waitUntil: 'networkidle' });
       await page.addStyleTag({ content: '*{content-visibility:visible!important}' });
+      // Lot 146 : chapitres fermés à l'arrivée, puis tous ouverts pour mesurer la grille complète.
+      const folds = page.locator(`#${id} details[data-block-fold]`);
+      expect(await folds.count(), 'chapter folds').toBe(id === 'eor' ? 3 : 5);
+      expect(await page.locator(`#${id} details[data-block-fold][open]`).count()).toBe(0);
+      if (width === 390) { await folds.first().locator('> summary').press('Enter'); await expect(folds.first()).toHaveAttribute('open', ''); }
+      await page.evaluate(id => document.querySelectorAll(`#${id} details[data-block-fold]`).forEach(fold => { fold.open = true; }), id);
       const report = await page.evaluate(id => ({
         squeezed: [...document.querySelectorAll(`#${id} .pp-cell`)].filter(cell => { const box = cell.getBoundingClientRect(); return box.width < 200 && box.height > 400; }).length,
         outside: [...document.querySelectorAll(`#${id} *`)].filter(node => node.getBoundingClientRect().right > innerWidth + 1).length,
