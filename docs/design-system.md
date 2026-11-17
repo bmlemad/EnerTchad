@@ -138,6 +138,11 @@ Chaque rubrique garde son identifiant : un lien d’ancre (sous-navigation, rech
 l’impression ouvre tout ; sans JavaScript le repli natif fonctionne. Sur la page Amont, l’offre technique condensée au
 lot 131 reste visible, et le repli mobile du lot 132 sur les cas et la méthode est remplacé par ce repli.
 
+Lot 141 (17 novembre 2026) : la même règle s’applique aux quatre pôles de service, FR et EN, soit cinq rubriques repliées chacun :
+GreenTech (`cas`, `hseq`, `impact`, `transition`, `patrimoine`), EnerConseils (`ingenierie`, `cas`, `conseil`, `audits`, `esg`),
+TchadiTech (`cas`, `socle`, `rd`, `innovations`, `recits`) et TchadiTude (`emplois-jeunesse`, `cas`, `academie`, `rayonnement`,
+`partenariats`). Le bloc replié se place avant le chapitre `carnets-…` ou, sur TchadiTech qui n’en a pas, avant `offre-tiers`.
+
 ## Articles du journal : une scène par article (lot 138, 17 novembre 2026)
 
 Phase C, articles du journal (33 en français, 33 en anglais). Un article est une colonne de lecture sans section pleine largeur :
