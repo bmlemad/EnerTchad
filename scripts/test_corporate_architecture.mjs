@@ -42,3 +42,18 @@ test('the named back-to-top button keeps its label while its decorative arrow is
  const input='<button id="toTop" aria-label="Back to top"><svg viewBox="0 0 24 24"><path d="M1 2"/></svg></button><svg aria-label="Diagram"></svg>';
  const out=withAccessibleBackToTop(input);assert(out.includes('aria-label="Back to top"'));assert(out.includes('<svg aria-hidden="true" focusable="false" viewBox='));assert(out.endsWith('<svg aria-label="Diagram"></svg>'));assert.equal(withAccessibleBackToTop(out),out);
 });
+// 17 novembre 2026 : ligne « Dernier communiqué » sous le héros de l'accueil, lue dans la liste officielle (lib/latest-release.js).
+import {withLatestRelease} from '../lib/latest-release.js';
+test('home shows the latest press release from the official list, once, and other pages are untouched',()=>{
+  for(const en of [false,true]){
+    const list=readFileSync(en?'communiques-en.html':'communiques.html','utf8');
+    const first=list.match(/<ol class="pp-releases">\s*<li id="cp-\d+">[\s\S]*?<\/li>/)[0];
+    const date=first.match(/<time datetime="([^"]+)">/)[1],ref=first.match(/<span>(CP-\d{4}-\d+)<\/span>/)[1],href=first.match(/<h2><a href="([^"]+)">/)[1];
+    const out=withLatestRelease(readFileSync(en?'index-en.html':'index.html','utf8'));
+    const line=out.match(/<aside class="et-cp"[\s\S]*?<\/aside>/)[0];
+    assert(line.includes('datetime="'+date+'"'));assert(line.includes(ref));assert(line.includes('href="'+href+'"'));
+    assert(out.indexOf('<aside class="et-cp"')>out.indexOf('<header class="et-hero"'));
+    assert.equal(out.match(/class="et-cp"/g).length,1);assert.equal(withLatestRelease(out),out);
+  }
+  for(const page of ['societe.html','communiques.html','ar.html']){const src=readFileSync(page,'utf8');assert.equal(withLatestRelease(src),src,page);}
+});
