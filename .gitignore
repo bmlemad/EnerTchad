@@ -7,3 +7,5 @@ out/
 public/
 .generated/
 __pycache__/
+artifacts/
+test-results/
