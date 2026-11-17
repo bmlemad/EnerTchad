@@ -48,19 +48,29 @@ const budgets = [
   ['/index-en', 2698, 9894, 119244, 44], // lot 106-B : accueil EN refondu (mesure du 8 novembre 2026, hors contrat de design)
   // Lot 113 (10 novembre 2026, décision du DG) : direction immersive, phase B ; scène « conviction » des pôles posée au build par
   // lib/immersif-poles.js : +7 !important (verre, texte clair, hauteur de la photo ; couche et-verre) et +1 943 octets de CSS en ligne.
-  ['/amont/', 3520, 20327, 140098, 40],
-  ['/aval/raffinage', 3705, 22028, 203936, 40],
-  ['/carrieres', 3720, 22094, 214815, 40],
+  // Lot 145 (17 novembre 2026, décision du DG après mesure, registre 1442) : les 9 pages ci-dessous dépassaient depuis les lots décidés
+  // après le 13 novembre (PR #148, dernière pose, où elles étaient exactement au plafond). Plafonds remis aux valeurs mesurées sur
+  // main ff1d625 (!important, :not(#…) et octets en ligne ; les :not(#…) baissés de 12 là où le menu allégé les a retirés). Causes :
+  // toutes : bloc #corporate-architecture-css écrit dans la page (lot 124, PR #162, PR #164, remarques du 17 novembre), +1 316 octets
+  // et +2 !important, en partie compensé par #et-main-nav (−526 octets, −5 !important) ;
+  // /aval/raffinage, /carrieres : scène #et-immersif-amont (lots 130 et 133), +2 774 octets, +15 !important ;
+  // /journal-criblage-eor : scène #et-immersif-journal (lot 138), +2 435 octets, +10 !important ;
+  // /amont/ : #pp-dfold-css (lot 136), +990 octets, et repli mobile (PR #159, lot 132), +559 octets ;
+  // /contact : repli « Contact rapide » (lot 132), +598 octets, +3 !important ;
+  // /atlas/, /boutique/ : jeux critiques ré-extraits (lot 131), +266 octets, +18 :not(#…).
+  ['/amont/', 3517, 20315, 142418, 40],
+  ['/aval/raffinage', 3717, 22016, 207449, 40],
+  ['/carrieres', 3732, 22082, 218328, 40],
   // PR #139 added the 480-byte after-enquiry block before this design change.
-  ['/contact', 3622, 21431, 190216, 40],
-  ['/carnets', 3372, 19057, 164777, 40],
-  ['/journal-criblage-eor', 2564, 10007, 149838, 40],
-  ['/atlas/', 3165, 18678, 175396, 46],
-  ['/boutique/', 2962, 17955, 121140, 40],
+  ['/contact', 3622, 21419, 191553, 40],
+  ['/carnets', 3369, 19045, 165516, 40],
+  ['/journal-criblage-eor', 2571, 9995, 153012, 40],
+  ['/atlas/', 3167, 18696, 176927, 46],
+  ['/boutique/', 2964, 17973, 122671, 40],
   // Lot 108 (9 novembre 2026, décision du DG) : menu mobile arabe, en-tête mobile de 160 à 64 px ; le premier écran montre
   // plus de contenu, la CSS critique écrite dans la page reprend donc plus de règles existantes (+15 !important, +486 :not(#…), +8 003 octets).
   ['/ar-societe', 2486, 21103, 75091, 40],
-  ['/essentiel', 3208, 18370, 133575, 40],
+  ['/essentiel', 3205, 18358, 134314, 40],
 ];
 
 const notIdPattern = /:not\(#[\w-]+\)/g;
