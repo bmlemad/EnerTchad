@@ -30,6 +30,6 @@ for(const en of [false,true])for(const width of [320,1440])test(`mobile navigati
   await expect(page.locator('.ec-hero h1')).toBeVisible();
   await page.goto(new URL('/credits-photos'+(en?'-en':''),base).href,{waitUntil:'networkidle'});
   await expect(page.locator('#collection-20261117 .cr-item')).toHaveCount(7);
-  await expect(page.locator('#collection-20261117')).toContainText(en?'AI-generated':'générés par IA');
+  await expect(page.locator('#collection-20261117')).toContainText(en?'AI-generated':'générées par IA');
   await page.close();
 });
