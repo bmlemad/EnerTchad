@@ -52,7 +52,7 @@ test('every corporate page gets the five links, keeps everything outside the nav
     assert.equal(withMainNav(after), after, page + ' idempotence');
     assert.equal(outside(after), outside(before), page + ' outside the nav');
     const n = navOf(after);
-    assert.equal((n.match(/class="nav-trigger nx-direct"/g) || []).length, 6, page + ' six links');
+    assert.equal((n.match(/class="nav-trigger nx-direct(?: is-active)?"/g) || []).length, 6, page + ' six links');
     assert.equal((n.match(/aria-controls="nxm-/g) || []).length, 0, page + ' no dropdown');
     assert(!n.includes('nx-mega'), page + ' no panel');
     assert.equal(n.includes('nx-util-m'), navOf(before).includes('nx-util-m'), page + ' mobile utility bar');
@@ -77,5 +77,30 @@ test('Arabic header: four plain links and a contact button, current page marked,
     const header = out.slice(out.indexOf('<header class="arh">'), out.indexOf('</header>'));
     assert(header.includes(`href="${current}" aria-current="page"`), file + ' current');
     assert.equal(withArNav(out), out, file + ' idempotent');
+  }
+});
+
+// 17 novembre 2026 (revue des menus) : une page secondaire met en évidence sa rubrique d'en-tête (aria-current="true"),
+// jamais en plus d'une entrée qui est la page elle-même ; la page de l'entrée garde aria-current="page".
+test('secondary pages mark their header section, and never two entries at once', () => {
+  const marks = (file) => {
+    const n = navOf(withMainNav(readFileSync(file, 'utf8')));
+    return [...n.matchAll(/<a class="nav-trigger nx-direct( is-active)?" href="([^"]+)"( aria-current="(true|page)")?/g)].map(m => { assert.equal(!!m[1], !!m[3], 'is-active suit aria-current : ' + m[2]); return m; }).filter(m => m[3]).map(m => `${m[2]}:${m[4]}`);
+  };
+  const expected = {
+    'gouvernance.html': ['/societe:true'], 'ethique.html': ['/societe:true'], 'achats.html': ['/societe:true'],
+    'cibles-2030.html': ['/engagements:true'], 'faq.html': ['/savoirs:true'], 'glossaire-petrolier.html': ['/savoirs:true'],
+    'publications.html': ['/savoirs:true'], 'communiques.html': ['/savoirs:true'], 'presse.html': ['/savoirs:true'],
+    'journal-prix-litre.html': ['/savoirs:true'], 'communique/cp-2026-010.html': ['/savoirs:true'],
+    'gouvernance-en.html': ['/societe-en:true'], 'cibles-2030-en.html': ['/engagements-en:true'], 'presse-en.html': ['/savoirs-en:true'],
+    'societe.html': ['/societe:page'], 'carrieres.html': ['/carrieres:page'], 'investisseurs.html': ['/investisseurs:page'],
+    'nos-activites.html': ['/nos-activites:page'], 'amont/index.html': ['/nos-activites:page'],
+    'contact.html': [], 'projets.html': [], 'index.html': [],
+  };
+  for (const [file, want] of Object.entries(expected)) assert.deepEqual(marks(file), want, file);
+  for (const file of pages.filter(p => /<nav\b[^>]*class="nav nx pn"/.test(readFileSync(p, 'utf8')))) {
+    const m = marks(file);
+    assert(m.length <= 1, file + ' : au plus une entrée marquée, trouvé ' + m.join(', '));
+    assert.equal(withMainNav(withMainNav(readFileSync(file, 'utf8'))), withMainNav(readFileSync(file, 'utf8')), file + ' idempotence');
   }
 });
