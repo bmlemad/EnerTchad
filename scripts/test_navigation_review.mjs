@@ -77,3 +77,13 @@ test('dedicated headers use generic requirements while retaining language pairs 
     }
   }
 });
+
+// Remarque de relecture (17 novembre 2026) : le pied de page reprend le slogan de l'en-tête, pas « Accès aux Énergies ».
+test('footer brand carries the header slogan', () => {
+  for (const [page, slogan, former] of [['societe.html', 'L’énergie du Tchad. Intégrée.', 'Accès aux Énergies'], ['societe-en.html', 'Chad’s energy. Integrated.', 'Access to Energy']]) {
+    const after = withNavigationReview(read(page));
+    const footer = after.slice(after.indexOf('<footer'));
+    assert.ok(footer.includes(`<small>${slogan}</small>`), page);
+    assert.ok(!footer.includes(`<small>${former}</small>`), page);
+  }
+});

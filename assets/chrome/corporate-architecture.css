@@ -19,3 +19,5 @@ html footer.pft .foot-resources .foot-resources-t:not(#e1):not(#e2):not(#e3):not
 html footer.pft .foot-resources a:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5):not(#e6):is(:hover,:focus-visible){color:var(--pf-ink,#F3F1EC)!important}
 /* 17 novembre 2026 : pied de page a deux colonnes (la colonne qui repetait le menu est retiree) ; le bloc de marque occupe la place liberee */
 @media(min-width:561px){footer.pft[data-et-footer-columns="2"] .foot-grid>:first-child{grid-column:span 2}}
+/* 17 novembre 2026 : dans le bloc de marque du pied de page, l'e-mail, le telephone et l'adresse sont chacun sur leur ligne (ils partageaient une ligne a l'ordinateur) */
+html footer.pft .foot-brand .pft-contact{display:flex;flex-direction:column;align-items:flex-start;gap:6px}
