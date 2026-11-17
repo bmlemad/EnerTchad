@@ -126,3 +126,14 @@ la section `#savoirs-index` (« Toutes les pages, rubrique par rubrique », comp
 chaque pôle avec ses sous-pages, l’atlas, la société et les informations pratiques. Un champ de filtre
 (`[data-savoirs-filter]`, script en ligne `savoirs-filter-js`) réduit cartes et entrées à la frappe, sans accent ni
 casse ; sans résultat, il renvoie à la recherche du site. Sans JavaScript, le champ reste masqué et tout l’index s’affiche.
+
+## Pages de pôle : le détail se replie (lot 136, 17 novembre 2026)
+
+Décision du DG : alléger les quatre pages d’entrée de pôle (FR et EN) sans rien supprimer. Restent visibles le statut, le
+métier, les offres, les enjeux, les projets et le contact. Le détail — offre détaillée, méthode, cas d’usage, chiffres,
+capacités, référentiel d’expertise, documents — est regroupé avant le chapitre de contact sous « Le détail, rubrique par
+rubrique » et chaque rubrique se replie sous son titre (`details.pp-dfold`, transformation d’export `lib/pole-folds.js`).
+
+Chaque rubrique garde son identifiant : un lien d’ancre (sous-navigation, recherche, lien profond) l’ouvre et s’y place ;
+l’impression ouvre tout ; sans JavaScript le repli natif fonctionne. Sur la page Amont, l’offre technique condensée au
+lot 131 reste visible, et le repli mobile du lot 132 sur les cas et la méthode est remplacé par ce repli.
