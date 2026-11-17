@@ -22,7 +22,7 @@ test('rendered navigation has six plain header links (lot 124, then 16 Nov. 2026
     assert.equal(all.filter(n=>n.name==='button'&&n.attribs.class==='nav-trigger').length,0);
     assert.equal(all.filter(n=>n.attribs&&'aria-controls' in n.attribs&&/^nxm-/.test(n.attribs['aria-controls'])).length,0);
     const ids=all.filter(n=>n.attribs?.id).map(n=>n.attribs.id);assert.equal(ids.length,new Set(ids).size);
-    assert.equal(all.filter(n=>'data-et-corporate-sections' in (n.attribs||{})).length,1);
+    assert.equal(all.filter(n=>'data-et-corporate-sections' in (n.attribs||{})).length,0);assert(output.includes('data-et-footer-columns="2"'));
     assert.equal(withNavigationReview(output),output);
   }
 });

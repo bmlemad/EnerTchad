@@ -46,13 +46,14 @@ test.describe('arabic mobile navigation — menu button and drawer', () => {
         await expect(toggle, path).toHaveAttribute('aria-expanded', 'true');
         await expect(drawer, path).toBeVisible();
         // Lot 125 : cinq liens simples (الرئيسية، الرؤية، الأنشطة، المستثمرون، اتصل بنا), plus de « بحث (FR) » dans l'en-tête.
-        expect(await links.count(), path + ' arabic links').toBe(5);
-        for (let i = 0; i < 5; i++) await expect(links.nth(i), path + ' link ' + i).toBeVisible();
+        // 17 novembre 2026 : quatre liens, « اتصل بنا » devient le bouton (il ne double plus « المستثمرون »).
+        expect(await links.count(), path + ' arabic links').toBe(4);
+        for (let i = 0; i < 4; i++) await expect(links.nth(i), path + ' link ' + i).toBeVisible();
         // Lot 128 : le tiroir porte le bouton « إبداء الاهتمام » (comme le tiroir français son bouton « Investisseurs »), sur une ligne entière.
         const cta = page.locator('header.arh #arh-drawer .arh-cta');
         await expect(cta, path + ' investor button in the drawer').toBeVisible();
-        await expect(cta, path + ' investor button target').toHaveAttribute('href', '/ar-investisseurs');
-        await expect(cta, path + ' investor button label').toHaveText('إبداء الاهتمام');
+        await expect(cta, path + ' investor button target').toHaveAttribute('href', '/ar-contact');
+        await expect(cta, path + ' investor button label').toHaveText('اتصل بنا');
         const ctaBox = await cta.boundingBox();
         expect(ctaBox.height, path + ' investor button height').toBeGreaterThanOrEqual(44);
         expect(ctaBox.width, path + ' investor button width').toBeGreaterThanOrEqual(240);
@@ -76,15 +77,15 @@ test.describe('arabic mobile navigation — menu button and drawer', () => {
       await page.goto(new URL(path, base).href, { waitUntil: 'networkidle', timeout: 45000 });
       await expect(page.locator('header.arh #arh-tog'), path).toBeHidden();
       const links = page.locator('header.arh .arh-nav a');
-      expect(await links.count(), path).toBe(5);
-      const expected = ['/ar', '/ar-societe', '/ar-poles', '/ar-investisseurs', '/ar-contact'];
-      const labels = ['الرئيسية', 'الرؤية', 'الأنشطة', 'المستثمرون', 'اتصل بنا'];
-      for (let i = 0; i < 5; i++) {
+      expect(await links.count(), path).toBe(4);
+      const expected = ['/ar', '/ar-societe', '/ar-poles', '/ar-investisseurs'];
+      const labels = ['الرئيسية', 'الرؤية', 'الأنشطة', 'المستثمرون'];
+      for (let i = 0; i < 4; i++) {
         await expect(links.nth(i), path + ' link ' + i).toBeVisible();
         await expect(links.nth(i), path + ' href ' + i).toHaveAttribute('href', expected[i]);
         await expect(links.nth(i), path + ' label ' + i).toHaveText(labels[i]);
       }
-      await expect(page.locator('header.arh .arh-cta'), path + ' investor button').toHaveAttribute('href', '/ar-investisseurs');
+      await expect(page.locator('header.arh .arh-cta'), path + ' contact button').toHaveAttribute('href', '/ar-contact');
       await expect(page.locator('header.arh a[href="/recherche"]'), path + ' no search link in the header').toHaveCount(0);
       await expect(page.locator('footer a[href="/recherche"]').first(), path + ' search stays in the footer').toBeAttached();
     });

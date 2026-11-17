@@ -6,13 +6,16 @@ const { test, expect } = require('@playwright/test');
 // (Gouvernance, Publications, Atlas, FAQ, Carrières, Communiqués) accessibles par la rangée « Ressources » du pied de page.
 // 16 novembre 2026 (décision du DG, « épurer la navigation ») : sixième lien, le Centre de connaissances (/savoirs), qui indexe toutes
 // les pages secondaires ; la rangée « Ressources » du pied de page disparaît, ses six pages sont dans le Centre.
+// 17 novembre 2026 (décision du DG, comparaison avec TotalEnergies, BP, ExxonMobil et Eni) : le bouton ne double plus l'entrée
+// « Investisseurs » ; il devient « Contact », qui quitte le menu ; « Carrières » entre dans le menu ; le pied de page ne répète plus
+// les entrées du menu (deux colonnes) et n'affiche plus les mentions « newsletter en préparation » et « YouTube bientôt disponible ».
 const base = process.env.SITE_URL || 'https://enertchad.com/';
 const widths = [1280, 1440];
 const defs = {
-  '/': { labels: ['Vision', 'Activités', 'Impact', 'Investisseurs', 'Contact', 'Centre de connaissances'], hrefs: ['/societe', '/nos-activites', '/engagements', '/investisseurs', '/contact', '/savoirs'], hub: '/savoirs', button: 'Investisseurs', slogan: 'L’énergie du Tchad. Intégrée.', resources: ['/gouvernance', '/publications', '/atlas/', '/faq', '/carrieres', '/communiques'] },
-  '/index-en': { labels: ['Vision', 'Activities', 'Impact', 'Investors', 'Contact', 'Knowledge center'], hrefs: ['/societe-en', '/nos-activites-en', '/engagements-en', '/investisseurs-en', '/contact-en', '/savoirs-en'], hub: '/savoirs-en', button: 'Investors', slogan: 'Chad’s energy. Integrated.', resources: ['/gouvernance-en', '/publications-en', '/atlas-en', '/faq-en', '/carrieres-en', '/communiques-en'] }
+  '/': { labels: ['Vision', 'Activités', 'Impact', 'Investisseurs', 'Carrières', 'Centre de connaissances'], hrefs: ['/societe', '/nos-activites', '/engagements', '/investisseurs', '/carrieres', '/savoirs'], hub: '/savoirs', button: 'Contact', slogan: 'L’énergie du Tchad. Intégrée.', resources: ['/gouvernance', '/publications', '/atlas/', '/faq', '/carrieres', '/communiques'] },
+  '/index-en': { labels: ['Vision', 'Activities', 'Impact', 'Investors', 'Careers', 'Knowledge center'], hrefs: ['/societe-en', '/nos-activites-en', '/engagements-en', '/investisseurs-en', '/carrieres-en', '/savoirs-en'], hub: '/savoirs-en', button: 'Contact', slogan: 'Chad’s energy. Integrated.', resources: ['/gouvernance-en', '/publications-en', '/atlas-en', '/faq-en', '/carrieres-en', '/communiques-en'] }
 };
-const removed = /Gouvernance|Governance|Publications|Atlas|FAQ|Carrières|Careers|Communiqués|Press releases/;
+const removed = /Gouvernance|Governance|Publications|Atlas|FAQ|Communiqués|Press releases/;
 
 for (const [path, d] of Object.entries(defs)) {
   for (const width of widths) {
@@ -47,7 +50,8 @@ for (const [path, d] of Object.entries(defs)) {
       expect(report.slogan, 'slogan under the logo').toBe(d.slogan);
       expect(report.button.length, 'one visible primary button').toBe(1);
       expect(report.button[0].text).toBe(d.button);
-      expect(report.button[0].href).toBe(d.hrefs[3]);
+      expect(report.button[0].href).toBe(path === '/' ? '/contact' : '/contact-en');
+      expect(d.hrefs, 'the button does not repeat a menu entry').not.toContain(report.button[0].href);
       expect(report.short, 'no injected 90-second shortcut').toBe(false);
       expect(report.texts.filter(t => removed.test(t)), 'removed entries are not in the header').toEqual([]);
       expect(report.scrollWidth, 'no horizontal overflow').toBeLessThanOrEqual(report.viewport + 2);
@@ -76,5 +80,5 @@ test('header — the current page is marked and keyboard focus reaches every lin
   await first.focus();
   for (let i = 0; i < 4; i++) await page.keyboard.press('Tab');
   const focused = await page.evaluate(() => document.activeElement && document.activeElement.textContent.trim());
-  expect(focused).toBe('Contact');
+  expect(focused).toBe('Carrières');
 });

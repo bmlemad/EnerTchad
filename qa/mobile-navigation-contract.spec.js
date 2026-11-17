@@ -25,7 +25,7 @@ test.describe('mobile navigation — drawer, five links and keyboard state', () 
       for (let i = 0; i < 5; i++) await expect(items.nth(i)).toBeVisible();
       await expect(page.locator('#navLinks .nav-trigger[aria-controls]')).toHaveCount(0);
       await expect(page.locator('#navLinks .nx-util-m a.cta')).toBeVisible();
-      await expect(page.locator('#navLinks .nx-util-m a.cta')).toHaveText(/^(Investisseurs|Investors)$/);
+      await expect(page.locator('#navLinks .nx-util-m a.cta')).toHaveText(/^Contact$/); // 17 nov. 2026 : le bouton ne double plus l'entrée Investisseurs
 
       await page.keyboard.press('Escape');
       await expect(links).not.toHaveClass(/open/);
