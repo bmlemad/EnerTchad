@@ -31,3 +31,11 @@ test('block folds — other pages are untouched', () => {
     assert.equal(withBlockFolds(html), html);
   }
 });
+
+// Remarque de relecture (17 novembre 2026) : les mêmes blocs se replient en français et en anglais (seuil de mots propre à chaque langue).
+test('block folds — same number of folds in French and English', () => {
+  for (const [fr, en] of [['investisseurs.html', 'investisseurs-en.html'], ['amont/services-ep.html', 'amont/services-ep-en.html']]) {
+    const count = file => (withBlockFolds(readFileSync(file, 'utf8')).match(/<details class="pp-bfold" data-block-fold>/g) || []).length;
+    assert.equal(count(en), count(fr), `${fr} / ${en}`);
+  }
+});
