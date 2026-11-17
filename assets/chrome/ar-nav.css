@@ -18,3 +18,5 @@
   /* Lot 128 : le bouton « إبداء الاهتمام » occupe une ligne entière sous les langues et le thème (couleurs : home-inline-ar-premium.css). */
   .arh-drawer .arh-cta{flex:1 1 100%;justify-content:center;margin-top:4px}
 }
+/* Lot 143 (17 novembre 2026) : pied de page arabe à deux colonnes, comme en français (la colonne qui répétait l'en-tête est retirée ; le bloc de marque occupe la place libérée). */
+@media(min-width:561px){footer.pft[data-et-footer-columns="2"] .foot-grid>:first-child{grid-column:span 2}}
