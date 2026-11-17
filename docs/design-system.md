@@ -121,6 +121,14 @@ Impact, Investisseurs, Contact, Centre de connaissances (clé `header` de `asset
 reprend ces six liens, garde quatre accès par public (clients, fournisseurs, presse, carrières) et la colonne d’information ;
 la rangée « Ressources » du lot 124 disparaît.
 
+Rubrique active (17 novembre 2026, revue des menus) : la page d’une entrée porte `aria-current="page"` ;
+une page secondaire marque l’entrée de sa rubrique avec `aria-current="true"`. Les deux reçoivent la classe `is-active`, que
+`premium-chrome.css` habille du filet d’or de la direction éditoriale (les règles `[aria-current]` du lot 124 ne s’appliquaient pas :
+elles sont hors couche `verre` et les règles `!important` de la couche `et-glass` les écrasent). La rubrique se déduit de
+`navigation.json` (Entreprise → Vision, Engagements → Impact, Centre de connaissances → Centre, Investisseurs), sans table à tenir
+à jour ; les carnets (`journal-…`) et les communiqués individuels relèvent du Centre. Jamais deux entrées marquées à la fois ; Projets,
+qui n’a pas d’entrée d’en-tête, ne marque rien.
+
 Le Centre (`/savoirs`, `/savoirs-en`) devient l’index de toutes les pages secondaires : ses sections de cartes restent, et
 la section `#savoirs-index` (« Toutes les pages, rubrique par rubrique », composant `.pp-smgrid` du plan du site) liste
 chaque pôle avec ses sous-pages, l’atlas, la société et les informations pratiques. Un champ de filtre
