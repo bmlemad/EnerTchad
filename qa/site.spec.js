@@ -2113,16 +2113,18 @@ test('accessibility — keyboard focus remains visually perceivable', async ({ b
 });
 
 test('navigation — current page exposes aria-current page state', async ({ browser }) => {
-  // Lot 124 : cinq liens simples ; les pages de pôle marquent « Activités », /contact marque « Contact ».
+  // Lot 124 : liens simples ; les pages de pôle marquent « Activités ». Lot 139 : depuis le 17 novembre 2026, « Contact » est le
+  // bouton de l'en-tête (#164) ; sur /contact c'est lui qui porte l'état courant, d'où le troisième compteur.
   const paths = ['/amont/', '/aval/', '/contact'];
   for (const path of paths) {
     const page = await browser.newPage({ viewport: { width: 1280, height: 900 } });
     await page.goto(new URL(path, url).href, { waitUntil: 'domcontentloaded', timeout: 45000 });
     const state = await page.evaluate(() => ({
       links: [...document.querySelectorAll('.nx-mega a[aria-current="page"]')].length,
-      triggers: [...document.querySelectorAll('.nav-trigger[aria-current="page"]')].length
+      triggers: [...document.querySelectorAll('.nav-trigger[aria-current="page"]')].length,
+      header: [...document.querySelectorAll('#nav a[aria-current="page"]')].length
     }));
-    expect(state.links + state.triggers, path + ' current navigation state').toBeGreaterThan(0);
+    expect(state.links + state.triggers + state.header, path + ' current navigation state').toBeGreaterThan(0);
     await page.close();
   }
 });
