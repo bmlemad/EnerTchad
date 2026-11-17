@@ -91,3 +91,36 @@ test.describe('arabic mobile navigation — menu button and drawer', () => {
     });
   }
 });
+
+// Lot 143 (17 novembre 2026, décision du DG) : le pied de page arabe n'a plus que deux colonnes, comme le français ; la colonne qui répétait
+// l'en-tête est retirée, « بحث (FR) » reste dans la colonne d'informations, le bloc de marque occupe la place libérée (lib/navigation-review.js).
+for (const path of ['/ar', '/ar-societe', '/ar-poles', '/ar-amont', '/ar-contact', '/ar-presse']) {
+  test(`arabic footer — two columns ${path}`, async ({ browser }) => {
+    for (const width of [390, 1440]) {
+      const page = await browser.newPage({ viewport: { width, height: 900 } });
+      await page.goto(new URL(path, base).href, { waitUntil: 'domcontentloaded', timeout: 45000 });
+      const footer = page.locator('footer.pft-ar');
+      await expect(footer).toHaveAttribute('data-et-footer-columns', '2');
+      await expect(footer.locator('.foot-col')).toHaveCount(2);
+      await expect(footer.locator('h3', { hasText: 'بالعربية' })).toHaveCount(0);
+      await expect(footer.locator('.foot-col:last-child a[href="/recherche"]')).toHaveCount(1);
+      for (const sel of ['a[href="/ar"]', 'a[href="/ar-contact"]', 'a[lang="en"]', 'a[href="/ar-cookies"]']) await expect(footer.locator(sel).first(), sel).toBeAttached();
+      const boxes = await page.evaluate(() => {
+        const f = document.querySelector('footer.pft-ar');
+        const r = e => { const b = e.getBoundingClientRect(); return [b.left, b.right, b.width]; };
+        return { dir: getComputedStyle(f).direction, brand: r(f.querySelector('.foot-brand')), cols: [...f.querySelectorAll('.foot-col')].map(r), overflow: document.documentElement.scrollWidth > innerWidth + 1,
+          shortLinks: [...f.querySelectorAll('a')].filter(a => a.offsetParent && a.getBoundingClientRect().height < 24).length };
+      });
+      expect(boxes.dir).toBe('rtl');
+      expect(boxes.overflow, `${path} ${width}`).toBe(false);
+      expect(boxes.shortLinks, 'footer links keep a 24 px target').toBe(0);
+      if (width === 1440) {
+        // Lecture de droite à gauche : le bloc de marque est le plus à droite et couvre deux colonnes ; les deux colonnes de liens sont à sa gauche.
+        expect(boxes.brand[1]).toBeGreaterThan(boxes.cols[0][1]);
+        expect(boxes.brand[2]).toBeGreaterThan(boxes.cols[0][2] * 2);
+        expect(boxes.cols[0][0]).toBeGreaterThan(boxes.cols[1][0]);
+      }
+      await page.close();
+    }
+  });
+}
