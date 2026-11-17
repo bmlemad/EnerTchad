@@ -1,0 +1,133 @@
+<!doctype html><html lang="en"><head>
+<meta name="robots" content="noindex,nofollow"><script id="et-light-def">try{var d=document.documentElement,p=location.pathname,j=/^\/journal-/.test(p),k=j?"et-jlight":"et-plight",v=localStorage.getItem(k);if(v!=="0")d.classList.add(k)}catch(e){document.documentElement.classList.add("et-plight")}</script><meta charset="utf-8"><title>EnerTchad — Technical sheet · Refining &amp; distribution</title>
+<style>
+@page{size:A4;margin:0}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',system-ui,sans-serif;color:#1A2330;line-height:1.55}
+.pg{width:210mm;height:296mm;page-break-after:always;position:relative;overflow:hidden;padding:18mm 16mm}
+.dark{background:linear-gradient(160deg,#0E1A2E 0%,#0B1422 55%,#070D18 100%);color:#F5F7FA}
+.gold{color:#E8C36A}.goldd{color:#8A6210}
+.k{font-family:Consolas,monospace;font-size:8.5pt;letter-spacing:.22em;text-transform:uppercase;color:#8A6210}
+.dark .k{color:#E8C36A}
+h1{font-size:30pt;line-height:1.15;font-weight:800;margin:6mm 0 4mm}
+h2{font-size:17pt;font-weight:800;margin:0 0 4mm}
+h3{font-size:11.5pt;font-weight:700;margin:0 0 1.5mm}
+p{font-size:10pt;margin:0 0 3mm}
+.lead{font-size:11.5pt;color:#3A4657}.dark .lead{color:rgba(245,247,250,.85)}
+.rule{height:2px;background:linear-gradient(90deg,#E8C36A,transparent);margin:5mm 0;border:0}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:5mm}
+.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:4mm}
+.card{border:1px solid #D8D2C2;border-radius:3mm;padding:5mm;background:#FBF9F3}
+.dark .card{border-color:rgba(232,195,106,.25);background:rgba(255,255,255,.05)}
+.kpi b{display:block;font-size:19pt;font-weight:800;color:#0B1422}
+.dark .kpi b{color:#fff}
+.kpi span{font-size:8.5pt;color:#6B7688}.dark .kpi span{color:rgba(245,247,250,.6)}
+.foot{position:absolute;bottom:10mm;left:16mm;right:16mm;font-size:8pt;color:#8A93A3;display:flex;justify-content:space-between;border-top:1px solid #E4DFD2;padding-top:2.5mm}
+.dark .foot{color:rgba(245,247,250,.5);border-top-color:rgba(255,255,255,.15)}
+.logo{display:inline-flex;align-items:center;gap:3mm;font-weight:800;font-size:14pt}
+.logo svg{width:9mm;height:9mm}
+table{width:100%;border-collapse:collapse;font-size:9.5pt}
+th{text-align:left;font-size:8pt;letter-spacing:.12em;text-transform:uppercase;color:#8A6210;border-bottom:1.5px solid #E8C36A;padding:2mm 2mm 1.5mm}
+td{padding:2.2mm 2mm;border-bottom:1px solid #EAE5D8;vertical-align:top}
+.note{border-right:1.2mm solid #E8C36A;background:#F6F2E8;border-radius:2mm;padding:4mm 5mm;font-size:9pt;color:#4A5568}
+.chain{display:flex;gap:3mm;align-items:stretch;margin:4mm 0}
+.chain .st{flex:1;border-radius:2.5mm;padding:4mm;color:#fff;font-size:9pt}
+.chain b{display:block;font-size:10.5pt;margin-bottom:1mm}
+ul{padding-right:0;padding-left:5mm;font-size:10pt;margin:0 0 3mm}
+li{margin-bottom:1.6mm}
+.badge{display:inline-block;border:1px solid rgba(232,195,106,.5);border-radius:99px;padding:1.2mm 4mm;font-size:8.5pt;letter-spacing:.14em;text-transform:uppercase}
+
+/* compaction — Refining & distribution sheet */
+#p1 h1{font-size:24pt;margin:4mm 0 3mm}
+#p1 .lead{font-size:10.5pt}
+#p1 .rule{margin:3.5mm 0}
+#p1 ul{font-size:9.2pt}
+#p1 li{margin-bottom:1.3mm}
+#p1 h2{font-size:14pt;margin:5mm 0 2.5mm}
+#p1 .kpi{padding:3.2mm 4mm}
+#p1 .kpi b{font-size:15pt}
+#p1 .kpi span{font-size:7.8pt}
+#p1 .statut{margin-top:4mm;padding:3.5mm 4.5mm;font-size:8.8pt;line-height:1.5}
+#p1 .statut b{color:#E8C36A}
+#p1 .chain .st{font-size:8.4pt;padding:3.2mm 3.5mm}
+#p1 .chain b{font-size:10pt}
+#p2 h2{font-size:14pt;margin:0 0 2.5mm}
+#p2 .lead{font-size:9.8pt;margin-bottom:2.5mm}
+#p2 table{font-size:8.8pt}
+#p2 td{padding:1.7mm 2mm}
+#p2 .grid2{gap:3mm;margin-top:4mm}
+#p2 .card{padding:3.2mm 4mm}
+#p2 .card h3{font-size:9.8pt;margin-bottom:1mm}
+#p2 .card p{font-size:8.5pt;margin:0}
+#p2 .note{margin-top:4mm;font-size:8.6pt}
+.small{font-size:8.3pt;color:#6B7688;margin-top:2mm}
+/* English edition: slightly tighter page 2, the text runs longer than the French */
+#p2 table{font-size:8.5pt}
+#p2 td{padding:1.4mm 2mm}
+#p2 .grid2{margin-top:3mm}
+#p2 .card{padding:2.8mm 3.6mm}
+#p2 .card p{font-size:8.2pt}
+#p2 .note{margin-top:3mm;font-size:8.3pt;padding:3.2mm 4.2mm}
+</style>
+</head><body class="et-modern-exclude">
+
+<!-- PAGE 1 — sources: /pole-aval-en, /aval/raffinage-en (translated from fiche_aval.html, November 2026) -->
+<div class="pg dark" id="p1">
+  <div class="k">Technical sheet — Refining &amp; distribution | October 2026 | Company in formation</div>
+  <h1>Refining &amp; distribution: <span class="gold">energy, as close as possible to the citizen</span></h1>
+  <p class="lead">Modular mini-refineries, a station network, the ARSAT price — the fill-up, everywhere in Chad. Process locally, distribute at the fairest price, out to the areas today’s import channels leave aside.</p>
+  <hr class="rule">
+  <div class="grid3" style="grid-template-columns:1fr 1fr 1fr 1fr">
+    <div class="card kpi"><b>12</b><span>Fixed Tchadium stations · network target</span></div>
+    <div class="card kpi"><b>8</b><span>Strategic localities · targeted locations</span></div>
+    <div class="card kpi"><b>23/23</b><span>Provinces · targeted coverage, ARSAT price</span></div>
+    <div class="card kpi"><b>500–2,000</b><span>b/d per mini-refinery train · in stages</span></div>
+  </div>
+  <div class="card statut"><b>Done</b> — founding capital of FCFA 100 M raised, 100% Chadian. <b>In progress</b> — OHADA registration (RCCM / NIF). <b>Targeted</b> — everything else in this sheet: sites, capacities, timelines and figures are targets. No asset in operation to date.</div>
+  <h2>The chain, in market order</h2>
+  <div class="chain">
+    <div class="st" style="background:#5A3E12"><b>Refining</b>Modular mini-refinery, processes, quality control.</div>
+    <div class="st" style="background:#6E4C16"><b>Distribution</b>Depots, product logistics, national network.</div>
+    <div class="st" style="background:#82591A"><b>Marketing &amp; sales</b>ARSAT pricing, segments, brands, trading and supply.</div>
+    <div class="st" style="background:#96661E"><b>End consumer</b>Stations, Mobile Stations, shop: where Chadians fill up.</div>
+  </div>
+  <h2>The modular, movable mini-refinery</h2>
+  <ul>
+    <li><b>Standardised trains:</b> from 500 to 2,000 b/d, prefabricated and skid-mounted, 100% catalogue parts; capacity added module by module, at the pace of demand. Trains deployed in stages; cumulative capacity set after the feasibility study.</li>
+    <li><b>Movable and redeployable:</b> the unit would be transported, set down and lifted again without heavy civil works, then moved towards satellite blocks and markets as demand requires.</li>
+    <li><b>Maintenance by module swap:</b> replacement of a module targeted in under 24 h, drawn from a shared catalogue stock.</li>
+    <li><b>A deliberately simple first stage:</b> atmospheric distillation, with neither cracking nor hydrotreating — products that require those units remain imported at this stage. Frugality applies to the architecture, not to the critical steels, which are corrosion-resistant for Doba’s acidic crude.</li>
+  </ul>
+  <div class="foot"><span>EnerTchad S.A. — Radisson Blu, office 23, Sabangali district, Cité du 1er Décembre, BP 6060, N’Djamena, Chad</span><span>p. 1/2</span></div>
+</div>
+
+<!-- PAGE 2 — sources: /aval/produits-en, /aval/distribution-en, /aval/reseau-en, /aval/commercialisation-en -->
+<div class="pg" id="p2">
+  <div class="k">Technical sheet — Refining &amp; distribution | EnerTchad S.A.</div>
+  <h2 style="margin-top:4mm">Targeted specifications, product by product</h2>
+  <p class="lead">Targeted products of the modular mini-refineries (planned), checked batch by batch by an independent third-party body and distributed at the ARSAT price.</p>
+  <table>
+    <thead><tr><th>Product</th><th>Targeted standard / grade</th><th>Key specification</th><th>Use</th></tr></thead>
+    <tbody>
+      <tr><td>Diesel</td><td>EN 590</td><td>Cetane ≥ 51 · sulphur ≤ 50 ppm</td><td>Transport, generators</td></tr>
+      <tr><td>Unleaded petrol 95</td><td>EN 228</td><td>Octane rating RON 95</td><td>Light vehicles &amp; two-wheelers</td></tr>
+      <tr><td>Lamp kerosene</td><td>Lighting grade</td><td>Low sulphur content</td><td>Lighting &amp; household uses</td></tr>
+      <tr><td>Jet A-1</td><td>DEF STAN 91-091</td><td>Freezing point ≤ −47&nbsp;°C</td><td>Aviation</td></tr>
+      <tr><td>LPG</td><td>Commercial specs</td><td>Approved butane/propane blend</td><td>Household &amp; industrial cooking gas</td></tr>
+      <tr><td>Bitumen</td><td>60/70 · 80/100</td><td>Road penetration grades</td><td>Surfacing &amp; public works</td></tr>
+      <tr><td>EnerLub lubricants</td><td>API / SAE</td><td>Engine oils, from can to drum</td><td>Automotive &amp; industry</td></tr>
+    </tbody>
+  </table>
+  <p class="small">Indicative targeted specifications, not contractual; confirmed in the contract.</p>
+  <div class="grid2">
+    <div class="card"><h3>Launch model · B2B</h3><p>The modular mini-refinery is a dated target, not a day-one capacity. At launch: import of finished products (Niger, Nigeria, Cameroon, Angola, Algeria), stored in three hubs — N’Djamena, Moundou, Abéché — and delivered to professionals: mining &amp; construction, hauliers &amp; fleets, agro-industry, backup power &amp; institutions.</p></div>
+    <div class="card"><h3>Target network</h3><p>12 fixed Tchadium stations across 8 strategic localities, backed by 3 depot hubs; the Mobile Stations would extend coverage to landlocked areas — at the ARSAT price everywhere.</p></div>
+    <div class="card"><h3>Four segments</h3><p>The pump · Industry and fleets · Aviation (Jet A-1) · LPG (household cylinder and industrial gas). Targeted brands and programmes: EnerClub, EnerPro Card, NRJ+, EnerLub.</p></div>
+    <div class="card"><h3>ARSAT price</h3><p>Pump prices are set by ARSAT (Autorité de Régulation du Secteur pétrolier Aval, the downstream petroleum regulator). EnerTchad does not set prices: its role as an operator is to apply them everywhere, in town and in remote areas alike, adding nothing to the official scale.</p></div>
+  </div>
+  <div class="note"><b>Request a quote.</b> Through the online shop or by email to contact@enertchad.com (subject “Industrial / Buyer”): no online payment, a quote at the ARSAT price and an adviser who calls you back. No orders are open to date; requests received before the commercial opening receive an indicative quote. Online resources: /pole-aval-en, /aval/raffinage-en, /aval/produits-en, /aval/distribution-en, /aval/commercialisation-en, /aval/reseau-en, /boutique/en/.</div>
+  <p style="margin-top:4mm;font-size:9pt;color:#6B7688"><b>Company status.</b> EnerTchad S.A. is in formation: no asset in operation, no product in distribution to date. The capacities, sites, timelines and specifications described are targets.</p>
+  <div class="foot"><span>contact@enertchad.com · +235 30 16 26 26 · enertchad.com — Indicative document, not contractual.</span><span>p. 2/2</span></div>
+</div>
+
+</body></html>
