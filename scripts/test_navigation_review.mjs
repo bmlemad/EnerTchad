@@ -39,14 +39,15 @@ test('corporate resources expose documents and preserve investor-specific enquir
     const groups = all.filter(n => n.name === 'section' && n.attribs?.class?.split(' ').includes('nx-resource-group'));
     assert.equal(groups.length, 0);
     // 16 novembre 2026 : la rangée « Ressources » a disparu ; ces pages sont indexées par le Centre de connaissances, que le
-    // pied de page et l'en-tête portent tous deux. La colonne d'accès garde quatre entrées, la ligne légale ne répète rien.
+    // pied de page et l'en-tête portent tous deux. La colonne d'accès garde les entrées propres à un public, la ligne légale ne répète rien.
     assert(!all.some(n => n.name === 'nav' && n.attribs?.class?.split(' ').includes('foot-resources')), 'no Resources row');
     const sx = en ? '-en' : '', hub = read(en ? 'savoirs-en.html' : 'savoirs.html');
     for (const href of ['/gouvernance' + sx, '/publications' + sx, en ? '/atlas-en' : '/atlas/', '/faq' + sx, '/carrieres' + sx, '/communiques' + sx]) assert(hub.includes('href="' + href + '"'), 'hub indexes ' + href);
     const cols = all.filter(n => n.attribs?.class?.split(' ').includes('foot-col'));
     // 17 novembre 2026 : la colonne qui répétait l'en-tête est retirée ; deux colonnes restent (accès, informations).
     assert.equal(cols.length, 2, 'two footer columns');
-    assert.equal((cols[0].children || []).filter(n => n.name === 'a').length, 4);
+    // Lot 139 : « Carrières », entré dans le menu, quitte la colonne d'accès ; aucune entrée du menu n'est répétée dans le pied de page.
+    assert.equal((cols[0].children || []).filter(n => n.name === 'a').length, 3);
     assert.equal((cols[1].children || []).filter(n => n.name === 'a').at(-1).attribs.href, '/plan-du-site' + sx);
     const hrefs = [];
     for (const zone of cols) (function walk(n) { if (n.name === 'a' && n.attribs?.href?.startsWith('/')) hrefs.push(n.attribs.href); (n.children || []).forEach(walk); })(zone);
