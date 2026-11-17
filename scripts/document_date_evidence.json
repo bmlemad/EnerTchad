@@ -42,12 +42,22 @@
     "date_source": "PDF page 1"
   },
   "/Fiche_Technique_Amont_EnerTchad_EN.pdf": {
-    "git_blob_sha": "004738a30a006b3aef5bf8ea1cfd42863f237445",
+    "git_blob_sha": "86f167cab8b0e7b18e1801c9cc67822e3fee75c2",
     "document_date": "2026-10",
     "date_source": "PDF page 1"
   },
   "/Fiche_Technique_Intermediaire_EnerTchad.pdf": {
     "git_blob_sha": "f42d56f772baf139562ec70ef7f74a225af9e3c8",
+    "document_date": "2026-10",
+    "date_source": "PDF page 1"
+  },
+  "/Fiche_Technique_Intermediaire_EnerTchad_EN.pdf": {
+    "git_blob_sha": "9c62661f4ea8ae61d246ab9e891a8137b4d4d73e",
+    "document_date": "2026-10",
+    "date_source": "PDF page 1"
+  },
+  "/Fiche_Technique_Aval_EnerTchad_EN.pdf": {
+    "git_blob_sha": "b64e51418f4afa5426b170f85c524494278ca067",
     "document_date": "2026-10",
     "date_source": "PDF page 1"
   }
