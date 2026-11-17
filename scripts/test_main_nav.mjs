@@ -16,13 +16,15 @@ const routeExists = p => {
 };
 
 // 16 novembre 2026 (décision du DG, « épurer la navigation ») : sixième entrée, le Centre de connaissances.
+// 17 novembre 2026 (décision du DG, comparaison avec les majors) : « Contact » devient le bouton et quitte le menu, « Carrières » y entre.
 test('FR and EN headers have the same six entries, in the DG order, and one button', () => {
-  assert.deepEqual(nav.header.fr.links.map(l => l[0]), ['Vision', 'Activités', 'Impact', 'Investisseurs', 'Contact', 'Centre de connaissances']);
-  assert.deepEqual(nav.header.en.links.map(l => l[0]), ['Vision', 'Activities', 'Impact', 'Investors', 'Contact', 'Knowledge center']);
-  assert.deepEqual(nav.header.fr.links.map(l => l[1]), ['/societe', '/nos-activites', '/engagements', '/investisseurs', '/contact', '/savoirs']);
-  assert.deepEqual(nav.header.en.links.map(l => l[1]), ['/societe-en', '/nos-activites-en', '/engagements-en', '/investisseurs-en', '/contact-en', '/savoirs-en']);
-  assert.deepEqual(nav.header.fr.button, ['Investisseurs', '/investisseurs']);
-  assert.deepEqual(nav.header.en.button, ['Investors', '/investisseurs-en']);
+  assert.deepEqual(nav.header.fr.links.map(l => l[0]), ['Vision', 'Activités', 'Impact', 'Investisseurs', 'Carrières', 'Centre de connaissances']);
+  assert.deepEqual(nav.header.en.links.map(l => l[0]), ['Vision', 'Activities', 'Impact', 'Investors', 'Careers', 'Knowledge center']);
+  assert.deepEqual(nav.header.fr.links.map(l => l[1]), ['/societe', '/nos-activites', '/engagements', '/investisseurs', '/carrieres', '/savoirs']);
+  assert.deepEqual(nav.header.en.links.map(l => l[1]), ['/societe-en', '/nos-activites-en', '/engagements-en', '/investisseurs-en', '/carrieres-en', '/savoirs-en']);
+  assert.deepEqual(nav.header.fr.button, ['Contact', '/contact']);
+  for (const lang of ['fr', 'en']) assert(!nav.header[lang].links.some(l => l[1] === nav.header[lang].button[1]), lang + ' : le bouton ne double aucune entrée du menu');
+  assert.deepEqual(nav.header.en.button, ['Contact', '/contact-en']);
   assert.equal(nav.header.fr.slogan, 'L’énergie du Tchad. Intégrée.');
   assert.equal(nav.header.en.slogan, 'Chad’s energy. Integrated.');
 });
@@ -54,7 +56,7 @@ test('every corporate page gets the five links, keeps everything outside the nav
     assert.equal((n.match(/aria-controls="nxm-/g) || []).length, 0, page + ' no dropdown');
     assert(!n.includes('nx-mega'), page + ' no panel');
     assert.equal(n.includes('nx-util-m'), navOf(before).includes('nx-util-m'), page + ' mobile utility bar');
-    assert(n.includes(`class="nx-invest">${nav.header[lang].button[0]}</a>`), page + ' button');
+    assert(n.includes(`class="nx-invest">${nav.header[lang].button[0]}</a>`) || n.includes(`class="nx-invest" aria-current="page">${nav.header[lang].button[0]}</a>`), page + ' button');
     assert(n.includes(`<small>${nav.header[lang].slogan}</small>`), page + ' slogan');
   }
   assert(count > 200, 'corporate pages: ' + count);
@@ -63,15 +65,17 @@ test('every corporate page gets the five links, keeps everything outside the nav
 // Lot 125 : en-tête arabe à cinq liens (lib/ar-nav.js), sans « بحث (FR) », page courante conservée.
 import { withArNav } from '../lib/ar-nav.js';
 import { readFileSync as readAr } from 'node:fs';
-test('Arabic header: five plain links, current page marked, idempotent', () => {
+// 17 novembre 2026 : quatre liens et le bouton « اتصل بنا » (il ne double plus « المستثمرون »).
+test('Arabic header: four plain links and a contact button, current page marked, idempotent', () => {
   for (const [file, current] of [['ar.html', '/ar'], ['ar-contact.html', '/ar-contact'], ['ar-amont.html', '/ar-poles'], ['ar-poles.html', '/ar-poles']]) {
     const out = withArNav(readAr(new URL('../' + file, import.meta.url), 'utf8'));
     const nav = out.match(/<nav class="arh-nav" data-et-header="minimal"[^>]*>([\s\S]*?)<\/nav>/)[1];
     const hrefs = [...nav.matchAll(/href="([^"]+)"/g)].map(m => m[1]);
-    assert.deepEqual(hrefs, ['/ar', '/ar-societe', '/ar-poles', '/ar-investisseurs', '/ar-contact'], file);
+    assert.deepEqual(hrefs, ['/ar', '/ar-societe', '/ar-poles', '/ar-investisseurs'], file);
+    assert(out.includes('<a class="arh-cta" href="/ar-contact"' + (current === '/ar-contact' ? ' aria-current="page"' : '') + '>اتصل بنا</a>'), file + ' button');
     assert.equal(nav.includes('/recherche'), false, file);
-    assert.equal(nav.match(/aria-current="page"/g).length, 1, file);
-    assert(nav.includes(`href="${current}" aria-current="page"`), file);
+    const header = out.slice(out.indexOf('<header class="arh">'), out.indexOf('</header>'));
+    assert(header.includes(`href="${current}" aria-current="page"`), file + ' current');
     assert.equal(withArNav(out), out, file + ' idempotent');
   }
 });

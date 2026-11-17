@@ -32,7 +32,7 @@ test('corporate resources expose documents and preserve investor-specific enquir
   for (const en of [false, true]) {
     const source = read(en ? 'index-en.html' : 'index.html'), output = withNavigationReview(source);
     const all = nodes(output), cta = all.find(n => n.name === 'a' && n.attribs?.class === 'nx-invest');
-    assert.equal(cta.attribs.href, '/investisseurs' + (en ? '-en' : ''), 'lot 124 : le bouton de l’en-tête mène aux investisseurs');
+    assert.equal(cta.attribs.href, '/contact' + (en ? '-en' : ''), '17 novembre 2026 : le bouton de l’en-tête mène au contact (il ne double plus l’entrée Investisseurs)');
     // Lot 124 : la carte « investisseurs » du méga-menu a disparu avec le menu ; la demande propre aux investisseurs reste sur la page Investisseurs.
     assert(read(en ? 'investisseurs-en.html' : 'investisseurs.html').includes('/contact' + (en ? '-en' : '') + '?profil=invest#ctForm'));
     // Lot 124 : plus de panneaux de ressources dans l'en-tête ; Publications et les autres rubriques retirées vivent dans la rangée « Ressources » du pied de page.
@@ -44,13 +44,14 @@ test('corporate resources expose documents and preserve investor-specific enquir
     const sx = en ? '-en' : '', hub = read(en ? 'savoirs-en.html' : 'savoirs.html');
     for (const href of ['/gouvernance' + sx, '/publications' + sx, en ? '/atlas-en' : '/atlas/', '/faq' + sx, '/carrieres' + sx, '/communiques' + sx]) assert(hub.includes('href="' + href + '"'), 'hub indexes ' + href);
     const cols = all.filter(n => n.attribs?.class?.split(' ').includes('foot-col'));
-    assert.deepEqual((cols[0].children || []).filter(n => n.name === 'a').map(n => n.attribs.href).at(-1), '/savoirs' + sx);
-    assert.equal((cols[1].children || []).filter(n => n.name === 'a').length, 4);
-    assert.equal((cols[2].children || []).filter(n => n.name === 'a').at(-1).attribs.href, '/plan-du-site' + sx);
+    // 17 novembre 2026 : la colonne qui répétait l'en-tête est retirée ; deux colonnes restent (accès, informations).
+    assert.equal(cols.length, 2, 'two footer columns');
+    assert.equal((cols[0].children || []).filter(n => n.name === 'a').length, 4);
+    assert.equal((cols[1].children || []).filter(n => n.name === 'a').at(-1).attribs.href, '/plan-du-site' + sx);
     const hrefs = [];
     for (const zone of cols) (function walk(n) { if (n.name === 'a' && n.attribs?.href?.startsWith('/')) hrefs.push(n.attribs.href); (n.children || []).forEach(walk); })(zone);
     assert.equal(hrefs.length, new Set(hrefs).size, 'no link twice in the footer columns: ' + hrefs.filter((h, i) => hrefs.indexOf(h) !== i));
-    assert.match(output, /et-footer-pending/);
+    assert.doesNotMatch(output, /et-footer-pending/, '17 novembre 2026 : plus de mention « en préparation » dans le pied de page');
     assert(!output.includes('id="fnForm"'));
   }
 });
