@@ -9,7 +9,10 @@ for (const en of [false, true]) {
   const lang = en ? 'en' : 'fr';
   // Lot 136 (17 novembre 2026, choix du DG) : le repli mobile des cas et de la méthode de la page Amont est remplacé par le repli
   // du détail de chaque page de pôle, valable à toutes les largeurs (voir lib/pole-folds.js).
-  for (const [path, count] of en ? [['/pole-amont-en', 6], ['/pole-aval-en', 7], ['/pole-intermediaire-en', 7], ['/pole-enerchimie-en', 4]] : [['/amont/', 6], ['/aval/', 7], ['/intermediaire/', 7], ['/petrochimie/', 4]]) {
+  // Lot 141 (17 novembre 2026, choix du DG) : GreenTech, EnerConseils, TchadiTech et TchadiTude s'ajoutent (cinq rubriques chacun).
+  for (const [path, count] of en
+    ? [['/pole-amont-en', 6], ['/pole-aval-en', 7], ['/pole-intermediaire-en', 7], ['/pole-enerchimie-en', 4], ['/pole-greentech-en', 5], ['/pole-enerconseils-en', 5], ['/pole-tchaditech-en', 5], ['/pole-tchaditude-en', 5]]
+    : [['/amont/', 6], ['/aval/', 7], ['/intermediaire/', 7], ['/petrochimie/', 4], ['/greentech/', 5], ['/enerconseils/', 5], ['/tchaditech/', 5], ['/tchaditude/', 5]]) {
     test(`mobile navigation — pole detail folds ${path}`, async ({ browser }) => {
       for (const width of [390, 1440]) {
         const page = await browser.newPage({ viewport: { width, height: 900 } });
@@ -28,9 +31,9 @@ for (const en of [false, true]) {
         await folds.first().locator('> summary').press('Space');
         await expect(folds.first()).not.toHaveAttribute('open', '');
         // Un lien d'ancre de la sous-navigation ouvre la rubrique visée.
-        const anchor = page.locator('.pp-sub a[href="#approche"], .pp-sub a[href="#documents"]').first();
-        const id = (await anchor.getAttribute('href')).slice(1);
-        await anchor.click();
+        const id = await page.evaluate(() => [...document.querySelectorAll('.pp-sub a[href^="#"]')].map(a => a.getAttribute('href').slice(1)).find(i => document.querySelector(`#${i} > details`)));
+        expect(id, 'a sub-navigation link leads to a folded section').toBeTruthy();
+        await page.locator(`.pp-sub a[href="#${id}"]`).first().click();
         await expect(page.locator(`#${id} > details`)).toHaveAttribute('open', '');
         await expect(page.locator(`#${id} h2`)).toBeInViewport();
         expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)).toBe(true);
@@ -38,14 +41,22 @@ for (const en of [false, true]) {
       }
     });
   }
-  test(`mobile navigation — pole detail opens from a deep link ${lang}`, async ({ browser }) => {
-    const page = await browser.newPage({ viewport: { width: 1440, height: 900 } });
-    await page.goto(new URL((en ? '/pole-aval-en' : '/aval/') + '#chiffres', base).href, { waitUntil: 'networkidle' });
-    await expect(page.locator('#chiffres > details')).toHaveAttribute('open', '');
-    await expect(page.locator('#chiffres h2')).toBeInViewport();
-    await expect(page.locator('#approche > details')).not.toHaveAttribute('open', '');
-    await page.close();
-  });
+  // Identifiants les plus liés depuis le reste du site (lot 141) : chacun ouvre sa rubrique, à 390 et 1440 px.
+  for (const [route, enRoute, id, other] of [['/aval/', '/pole-aval-en', 'chiffres', 'approche'], ['/greentech/', '/pole-greentech-en', 'hseq', 'impact'], ['/greentech/', '/pole-greentech-en', 'impact', 'hseq'],
+    ['/enerconseils/', '/pole-enerconseils-en', 'esg', 'cas'], ['/tchaditech/', '/pole-tchaditech-en', 'rd', 'socle'], ['/tchaditech/', '/pole-tchaditech-en', 'socle', 'rd'],
+    ['/tchaditech/', '/pole-tchaditech-en', 'recits', 'innovations'], ['/tchaditech/', '/pole-tchaditech-en', 'innovations', 'recits'],
+    ['/tchaditude/', '/pole-tchaditude-en', 'academie', 'partenariats'], ['/tchaditude/', '/pole-tchaditude-en', 'partenariats', 'academie']]) {
+    test(`mobile navigation — pole detail opens from a deep link ${lang} ${route}#${id}`, async ({ browser }) => {
+      for (const width of [390, 1440]) {
+        const page = await browser.newPage({ viewport: { width, height: 900 } });
+        await page.goto(new URL((en ? enRoute : route) + '#' + id, base).href, { waitUntil: 'networkidle' });
+        await expect(page.locator(`#${id} > details`)).toHaveAttribute('open', '');
+        await expect(page.locator(`#${id} h2`)).toBeInViewport();
+        if (await page.locator(`#${other} > details`).count()) await expect(page.locator(`#${other} > details`)).not.toHaveAttribute('open', '');
+        await page.close();
+      }
+    });
+  }
 
   test(`mobile navigation — contact ${lang}: quick contact folded, form closer, links kept`, async ({ browser }) => {
     const path = en ? '/contact-en' : '/contact';
