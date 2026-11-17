@@ -72,13 +72,14 @@ for (const en of [false, true]) {
 
 // Lot 137 (17 novembre 2026, choix du DG) : sur Investisseurs et Services parapétroliers, la suite de chaque bloc long se replie
 // sous « Lire la suite » ; le titre et le premier paragraphe restent visibles (voir lib/block-folds.js).
-for (const [path, anchor] of [['/investisseurs', 'jalons'], ['/investisseurs-en', 'jalons'], ['/amont/services-ep', 'ofs-pourquoi'], ['/amont/services-ep-en', 'ofs-pourquoi']]) {
+// Lot 140 : même règle sur Engagements, Société et Produits raffinés.
+for (const [path, anchor, least = 8] of [['/investisseurs', 'jalons'], ['/investisseurs-en', 'jalons'], ['/amont/services-ep', 'ofs-pourquoi'], ['/amont/services-ep-en', 'ofs-pourquoi'], ['/engagements', null, 4], ['/engagements-en', null, 4], ['/societe', null], ['/societe-en', null], ['/aval/produits', null], ['/aval/produits-en', null]]) {
   test(`mobile navigation — long block folds ${path}`, async ({ browser }) => {
     for (const width of [390, 1440]) {
       const page = await browser.newPage({ viewport: { width, height: 900 } });
       await page.goto(new URL(path, base).href, { waitUntil: 'domcontentloaded', timeout: 45000 });
       const folds = page.locator('details[data-block-fold]');
-      expect(await folds.count()).toBeGreaterThanOrEqual(8);
+      expect(await folds.count()).toBeGreaterThanOrEqual(least);
       expect(await page.locator('details[data-block-fold][open]').count()).toBe(0);
       const first = folds.first(), summary = first.locator('> summary');
       await summary.scrollIntoViewIfNeeded();
@@ -95,6 +96,7 @@ for (const [path, anchor] of [['/investisseurs', 'jalons'], ['/investisseurs-en'
       await page.close();
     }
     // Un lien profond vers un bloc l'ouvre.
+    if (!anchor) return;
     const page = await browser.newPage({ viewport: { width: 1440, height: 900 } });
     await page.goto(new URL(path + '#' + anchor, base).href, { waitUntil: 'networkidle' });
     await expect(page.locator(`#${anchor} details[data-block-fold]`)).toHaveAttribute('open', '');

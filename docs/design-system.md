@@ -157,3 +157,9 @@ Décision du DG, dans la suite du lot 136 : sur Investisseurs et Services parap�
 soixante mots, ou sans titre, reste ouvert. Aucun texte n’est supprimé : un lien d’ancre vers le bloc ou vers un élément
 replié l’ouvre, l’impression ouvre tout, le repli natif fonctionne sans JavaScript. Le style reprend l’accordéon existant de
 `.pp-prose details`.
+
+### Extension du repli des blocs (lot 140, 17 novembre 2026)
+
+La règle du lot 137 s’applique aussi à Engagements, Société et Produits raffinés (FR et EN). Le seuil de mots est propre à chaque langue (58 en français, 53 en anglais) pour que les
+deux versions d’un même bloc se replient ensemble ; un test le vérifie sur les dix pages. Clients n’est pas concerné
+(déjà replié par section au lot 134), ni Réseau de stations, dont douze rubriques sont déjà repliées (`details.rsx-more`).
