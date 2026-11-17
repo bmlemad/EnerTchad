@@ -138,6 +138,17 @@ Chaque rubrique garde son identifiant : un lien d’ancre (sous-navigation, rech
 l’impression ouvre tout ; sans JavaScript le repli natif fonctionne. Sur la page Amont, l’offre technique condensée au
 lot 131 reste visible, et le repli mobile du lot 132 sur les cas et la méthode est remplacé par ce repli.
 
+## Articles du journal : une scène par article (lot 138, 17 novembre 2026)
+
+Phase C, articles du journal (33 en français, 33 en anglais). Un article est une colonne de lecture sans section pleine largeur :
+`lib/immersif-journal.js` coupe la colonne (`div.jbody`) avant un intertitre et la rouvre après son passage, qui se pose dans la carte
+de verre (`section.im-scene.im-journal`) sur une illustration de fond déjà publiée, texte clair, liens dorés. Le passage est déjà dans
+l'article : aucun texte n'est ajouté ni retiré, les liens et identifiants sont conservés. Une seule scène par article ; le passage est
+le dernier intertitre, au plus l'avant-dernier, dont le contenu ne comporte que des paragraphes, listes ou citations (ni chiffre clé,
+tableau ni figure) et compte de 40 à 170 mots ; il est identique en français et en anglais. Illustration choisie par article
+(table `PHOTOS`), jamais la planche. La page Carnets (index) n'est pas concernée. Contrats : `scripts/test_immersif_journal.mjs`
+(66 pages) et `qa/immersif-journal-contract.spec.js` (390 et 1440 px, thèmes clair et sombre).
+
 ## Pages longues en blocs : la suite se replie (lot 137, 17 novembre 2026)
 
 Décision du DG, dans la suite du lot 136 : sur Investisseurs et Services parapétroliers (FR et EN), chaque bloc
