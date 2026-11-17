@@ -64,6 +64,28 @@ test('Arabic footers expose the ethical reporting destination with a language di
   }
 });
 
+test('Arabic footers have two columns like the French ones (lot 143), without losing a link beyond the repeated header entries', () => {
+  const hrefs = html => [...html.matchAll(/<a\b[^>]*\bhref="([^"]+)"/g)].map(m => m[1]);
+  const arabic = pages.filter(p => p.startsWith('ar') && /<footer class="pft pft-ar"/.test(read(p)));
+  assert(arabic.length >= 10, 'ten Arabic pages carry the premium footer');
+  for (const page of arabic) {
+    const source = read(page);
+    const output = withNavigationReview(source);
+    const foot = html => html.match(/<footer[\s\S]*?<\/footer>/)[0];
+    const before = foot(source), after = foot(output);
+    assert.match(after, /<footer data-et-footer-columns="2" class="pft pft-ar">/, page);
+    assert.equal((after.match(/class="foot-col"/g) || []).length, 2, page);
+    assert(!after.includes('<h3>بالعربية</h3>'), page);
+    const lost = hrefs(before).filter(h => !hrefs(after).includes(h));
+    assert.deepEqual([...new Set(lost)].sort(), ['/ar-investisseurs', '/ar-poles', '/ar-societe'].sort(), page + ' : seuls les liens de l’en-tête répétés disparaissent');
+    assert.equal(hrefs(after).filter(h => h === '/recherche').length, 1, page + ' : la recherche reste, en colonne d’informations');
+    assert(after.indexOf('/recherche') > after.indexOf('<h3>معلومات</h3>'), page);
+    assert.equal(withNavigationReview(output), output, page + ' : idempotent');
+  }
+  const odd = '<html lang="ar"><body><footer class="pft pft-ar"><div class="foot-col"><h3>x</h3><a href="/ar">a</a></div><div class="foot-col"><h3>y</h3></div></footer></body></html>';
+  assert(!withNavigationReview(odd).includes('data-et-footer-columns'), 'gabarit inattendu : inchangé');
+});
+
 test('dedicated headers use generic requirements while retaining language pairs and footer access', () => {
   for (const [space, set] of [['boutique', commercialPages], ['atlas', atlasPages]]) {
     for (const page of set) {
