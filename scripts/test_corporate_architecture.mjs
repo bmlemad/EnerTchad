@@ -52,6 +52,7 @@ test('home shows the latest press release from the official list, once, and othe
     const out=withLatestRelease(readFileSync(en?'index-en.html':'index.html','utf8'));
     const line=out.match(/<aside class="et-cp"[\s\S]*?<\/aside>/)[0];
     assert(line.includes('datetime="'+date+'"'));assert(line.includes(ref));assert(line.includes('href="'+href+'"'));
+    assert(line.includes('<span class="et-nw">'+ref+'</span>'),'lot 144 : la référence ne se coupe pas');
     assert(out.indexOf('<aside class="et-cp"')>out.indexOf('<header class="et-hero"'));
     assert.equal(out.match(/class="et-cp"/g).length,1);assert.equal(withLatestRelease(out),out);
   }

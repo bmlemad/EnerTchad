@@ -86,6 +86,25 @@ test('Arabic footers have two columns like the French ones (lot 143), without lo
   assert(!withNavigationReview(odd).includes('data-et-footer-columns'), 'gabarit inattendu : inchangé');
 });
 
+// Lot 144 (17 novembre 2026, remarque de relecture) : le JSON-LD Organization reprend le slogan de l'en-tête (lib/structured-slogan.js).
+test('structured data slogan matches the header slogan', () => {
+  const nav = JSON.parse(read('assets/data/navigation.json')).header;
+  let checked = 0;
+  for (const page of pages) {
+    const source = read(page);
+    if (!source.includes('"slogan":"')) continue;
+    const output = withYouTubeBadge(source);
+    assert(!output.includes('"slogan":"Accès aux Énergies"') && !output.includes('"slogan":"Access to Energy"'), page + ' : ancien slogan dans le JSON-LD');
+    const slogans = [...output.matchAll(/"slogan":("(?:[^"\\]|\\.)*")/g)].map(m => JSON.parse(m[1]));
+    assert(slogans.length && slogans.every(s => s === nav.fr.slogan || s === nav.en.slogan), page);
+    if (/<html\b[^>]*\blang="en/.test(source)) assert(slogans.every(s => s === nav.en.slogan), page + ' : slogan anglais');
+    for (const block of output.match(/<script type="application\/ld\+json">[\s\S]*?<\/script>/g) || []) JSON.parse(block.replace(/^<script[^>]*>|<\/script>$/g, ''));
+    assert.equal((source.match(/<title>[\s\S]*?<\/title>/) || [''])[0], (output.match(/<title>[\s\S]*?<\/title>/) || [''])[0], page + ' : titre inchangé');
+    checked++;
+  }
+  assert(checked >= 200, `pages vérifiées : ${checked}`);
+});
+
 test('dedicated headers use generic requirements while retaining language pairs and footer access', () => {
   for (const [space, set] of [['boutique', commercialPages], ['atlas', atlasPages]]) {
     for (const page of set) {
