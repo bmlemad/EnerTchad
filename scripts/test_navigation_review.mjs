@@ -109,3 +109,12 @@ test('footer brand carries the header slogan', () => {
     assert.ok(!footer.includes(`<small>${former}</small>`), page);
   }
 });
+
+// Lot 143 : l'Espace Clients et l'Atlas, qui n'ont pas le menu du site, reçoivent le Centre de connaissances dans leur pied de page.
+test('sub-site footers link to the knowledge centre', () => {
+  const page = (canonical, lang) => readFileSync(lang === 'en' ? 'index-en.html' : 'index.html', 'utf8').replace(/<link rel="canonical" href="[^"]*"/, `<link rel="canonical" href="https://enertchad.com${canonical}"`);
+  const footerOf = html => { const out = withNavigationReview(html); return out.slice(out.indexOf('<footer'), out.indexOf('</footer>')); };
+  for (const [canonical, lang, href] of [['/boutique/clients', 'fr', '/savoirs'], ['/atlas/', 'fr', '/savoirs'], ['/atlas-en', 'en', '/savoirs-en'], ['/boutique/en/clients', 'en', '/savoirs-en']]) assert.ok(footerOf(page(canonical, lang)).includes(`href="${href}"`), canonical);
+  for (const [canonical, lang] of [['/', 'fr'], ['/index-en', 'en'], ['/amont/', 'fr']]) assert.ok(!/href="\/savoirs(-en)?"/.test(footerOf(page(canonical, lang))), canonical + ' keeps the menu as its only entry');
+});
+

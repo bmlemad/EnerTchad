@@ -137,6 +137,10 @@ export function renderSubsite(html, page, space, hosted = false) {
     .replace(/<link\b[^>]*rel="alternate"[^>]*hreflang[^>]*>/g, '')
     .replace('</head>', `<link rel="alternate" hreflang="fr" href="${url(fr)}"><link rel="alternate" hreflang="en" href="${url(english)}"><link rel="alternate" hreflang="x-default" href="${url(fr)}"></head>`)
     .replace(/(<meta\b[^>]*property="og:url"[^>]*content=")[^"]*/, '$1' + canonical);
+  // Lot 143 : ces espaces ont leur propre barre de navigation, sans le menu du site ; leur pied de page donne donc accès au
+  // Centre de connaissances. L'Atlas le reçoit de lib/navigation-review.js (canonique /atlas) ; l'Espace Clients, dont la
+  // canonique n'est fixée qu'ici, le reçoit maintenant.
+  if (!/<footer[\s\S]*href="\/savoirs(?:-en)?"/.test(output)) output = output.replace(/(<footer[\s\S]*?)(<a href="\/plan-du-site(-en)?">)/, (_, before, link, suffix = '') => `${before}<a href="/savoirs${suffix}">${suffix ? 'Knowledge center' : 'Centre de connaissances'}</a>${link}`);
   // Preserve Organization metadata; update only page/breadcrumb references.
   output = output.replace(/<script\b[^>]*type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/g, (tag, json) => {
     const map = value => {

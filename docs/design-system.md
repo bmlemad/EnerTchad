@@ -175,3 +175,13 @@ La section principale de `/aval/distribution` rangeait quatre conteneurs entiers
 détail tenait dans une colonne de 266 px, haute de près de 10 000 px. `lib/legacy-grids.js` rend à chaque conteneur toute la
 largeur et aux listes de cartes leur grille (styles en ligne à l’export, aucun texte modifié). La section passe d’environ
 10 100 à 5 100 px à 1440 px ; sur mobile la mise en page reste sur une colonne.
+
+### Récupération assistée, même réparation (lot 143, 17 novembre 2026)
+
+`/amont/eor` (FR et EN) rejoint `lib/legacy-grids.js`. La page ne raccourcit presque pas — ses quatre colonnes de 266 px étaient
+remplies en parallèle — mais chaque chapitre se lit maintenant de haut en bas sur toute la largeur. Règles ajoutées : une
+carte fait au moins 240 px de large (quatre par ligne à 1440 px), et une carte seule à côté de blocs pleine largeur prend la
+ligne entière.
+
+L’Espace Clients et l’Atlas, qui ont leur propre barre de navigation, reçoivent un lien « Centre de connaissances » dans la
+colonne d’information de leur pied de page (lot 143) : c’est leur accès à Carrières et aux pages secondaires.

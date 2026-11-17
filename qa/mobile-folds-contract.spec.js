@@ -135,3 +135,21 @@ for (const path of ['/aval/distribution', '/aval/distribution-en']) {
     await page.close();
   });
 }
+
+// Lot 143 (17 novembre 2026) : même réparation sur Récupération assistée ; plus aucune carte étroite et haute dans les deux pages.
+for (const [path, id] of [['/amont/eor', 'eor'], ['/amont/eor-en', 'eor'], ['/aval/distribution', 'distribution'], ['/aval/distribution-en', 'distribution']]) {
+  test(`mobile navigation — legacy grid has no squeezed column ${path}`, async ({ browser }) => {
+    for (const width of [1440, 1024, 390]) {
+      const page = await browser.newPage({ viewport: { width, height: 900 } });
+      await page.goto(new URL(path, base).href, { waitUntil: 'networkidle' });
+      await page.addStyleTag({ content: '*{content-visibility:visible!important}' });
+      const report = await page.evaluate(id => ({
+        squeezed: [...document.querySelectorAll(`#${id} .pp-cell`)].filter(cell => { const box = cell.getBoundingClientRect(); return box.width < 200 && box.height > 400; }).length,
+        outside: [...document.querySelectorAll(`#${id} *`)].filter(node => node.getBoundingClientRect().right > innerWidth + 1).length,
+        overflow: document.documentElement.scrollWidth > innerWidth + 1
+      }), id);
+      expect(report, `${path} at ${width}px`).toEqual({ squeezed: 0, outside: 0, overflow: false });
+      await page.close();
+    }
+  });
+}
