@@ -58,8 +58,8 @@ for(const en of [false,true])for(const width of [320,1440]){
     expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBe(true);
     await open(page,en?'/pole-enerconseils-en':'/enerconseils/');
     const img=page.locator('#top-pole img.pp-hero-img');
-    await expect(img).toHaveAttribute('src',/complexe-industriel-1400\.webp\?v=[a-f0-9]{12}$/);
-    await expect(img).toHaveAttribute('alt',en?/industrial facilities/:/installations industrielles/);
+    await expect(img).toHaveAttribute('src',/collection-20261117\/engineering-1400\.webp$/);
+    await expect(img).toHaveAttribute('alt',en?/engineering drawings/:/plans d’ingénierie/);
     expect(await img.evaluate(e=>e.complete&&e.naturalWidth>0)).toBe(true);
     await themes(page,'engineering',lang,width);
     expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBe(true);
