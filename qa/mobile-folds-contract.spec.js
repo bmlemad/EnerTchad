@@ -114,3 +114,24 @@ for (const [path, anchor, least = 8] of [['/investisseurs', 'jalons'], ['/invest
     await page.close();
   });
 }
+
+// Lot 142 (17 novembre 2026) : la section principale de la page Distribution ne range plus ses conteneurs en colonnes de 266 px.
+for (const path of ['/aval/distribution', '/aval/distribution-en']) {
+  test(`mobile navigation — distribution grid uses the full width ${path}`, async ({ browser }) => {
+    const page = await browser.newPage({ viewport: { width: 1440, height: 900 } });
+    await page.goto(new URL(path, base).href, { waitUntil: 'networkidle' });
+    await page.addStyleTag({ content: '*{content-visibility:visible!important}' });
+    const report = await page.evaluate(() => {
+      const section = document.querySelector('#distribution'), detail = document.querySelector('#dx'), grid = detail.parentElement;
+      const cards = [...detail.querySelectorAll(':scope > .pp-cell > .pp-grid')].map(list => new Set([...list.children].map(card => Math.round(card.getBoundingClientRect().left))).size);
+      return { section: section.getBoundingClientRect().height, ratio: detail.getBoundingClientRect().width / grid.getBoundingClientRect().width, cards, overflow: document.documentElement.scrollWidth > innerWidth + 1 };
+    });
+    expect(report.ratio, 'detail chapter spans the grid').toBeGreaterThan(0.98);
+    expect(Math.min(...report.cards), 'every card list has several columns').toBeGreaterThanOrEqual(3);
+    expect(report.section, 'section height was about 10 100 px').toBeLessThan(6500);
+    expect(report.overflow).toBe(false);
+    await page.setViewportSize({ width: 390, height: 844 });
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)).toBe(true);
+    await page.close();
+  });
+}

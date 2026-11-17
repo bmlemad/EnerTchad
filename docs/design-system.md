@@ -168,3 +168,10 @@ replié l’ouvre, l’impression ouvre tout, le repli natif fonctionne sans Jav
 La règle du lot 137 s’applique aussi à Engagements, Société et Produits raffinés (FR et EN). Le seuil de mots est propre à chaque langue (58 en français, 53 en anglais) pour que les
 deux versions d’un même bloc se replient ensemble ; un test le vérifie sur les dix pages. Clients n’est pas concerné
 (déjà replié par section au lot 134), ni Réseau de stations, dont douze rubriques sont déjà repliées (`details.rsx-more`).
+
+## Page Distribution : grille réparée (lot 142, 17 novembre 2026)
+
+La section principale de `/aval/distribution` rangeait quatre conteneurs entiers comme quatre cartes d’une grille : tout le
+détail tenait dans une colonne de 266 px, haute de près de 10 000 px. `lib/legacy-grids.js` rend à chaque conteneur toute la
+largeur et aux listes de cartes leur grille (styles en ligne à l’export, aucun texte modifié). La section passe d’environ
+10 100 à 5 100 px à 1440 px ; sur mobile la mise en page reste sur une colonne.
