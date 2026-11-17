@@ -26,7 +26,10 @@
     group.insertAdjacentElement('afterend', status);
     status.insertAdjacentElement('afterend', input);
     // Match the adjacent social icon, including footers that stay dark in light mode.
+    // Reading the icon style forces a style pass over the whole page, so wait until the footer is near the screen.
+    var near = typeof IntersectionObserver !== 'function';
     function syncAppearance() {
+      if (!near) return;
       var reference = group.querySelector('a');
       if (!reference) return;
       var appearance = getComputedStyle(reference);
@@ -42,6 +45,15 @@
       });
     }
     syncAppearance();
+    if (!near) {
+      var watcher = new IntersectionObserver(function (entries) {
+        if (!entries.some(function (entry) { return entry.isIntersecting; })) return;
+        near = true;
+        watcher.disconnect();
+        syncAppearance();
+      }, { rootMargin: '800px 0px' });
+      watcher.observe(button);
+    }
     if (typeof MutationObserver === 'function') {
       new MutationObserver(syncAppearance).observe(document.documentElement, { attributes: true, attributeFilter: ['class', 'style'] });
     }

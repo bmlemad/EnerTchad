@@ -38,7 +38,8 @@ const tog=document.getElementById('navTog'),links=document.getElementById('navLi
   // filet de sécurité : masquer au bout de 6 s quoi qu'il arrive
   setTimeout(function(){if(pl&&!pl.classList.contains('done')){pl.classList.add('done');setTimeout(function(){if(pl)pl.remove();},800);}},6000);
 })();
-function setNavH(){document.documentElement.style.setProperty('--nav-h',navEl.offsetHeight+'px');}
+/* Ne pose la variable que si elle change : la feuille annonce deja la hauteur de barre, et une variable posee sur la racine fait recalculer les styles de toute la page. */
+function setNavH(){var re=document.documentElement,v=navEl.offsetHeight+'px',now=re.style.getPropertyValue('--nav-h')||getComputedStyle(re).getPropertyValue('--nav-h').trim();if(now!==v)re.style.setProperty('--nav-h',v);}
 setNavH();window.addEventListener('resize',setNavH);window.addEventListener('load',function(){setNavH();setTimeout(setNavH,400);setTimeout(setNavH,3200);});
 /* Lot 28 (M1) : verrou de defilement partage (menu mobile, recherche). html porte overflow-x:clip, donc
    body{overflow:hidden} n'est pas propage au viewport : on fige la racine et on fixe body a sa position
