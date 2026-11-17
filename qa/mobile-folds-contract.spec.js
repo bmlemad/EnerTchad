@@ -11,8 +11,8 @@ for (const en of [false, true]) {
   // du détail de chaque page de pôle, valable à toutes les largeurs (voir lib/pole-folds.js).
   // Lot 141 (17 novembre 2026, choix du DG) : GreenTech, EnerConseils, TchadiTech et TchadiTude s'ajoutent (cinq rubriques chacun).
   for (const [path, count] of en
-    ? [['/pole-amont-en', 6], ['/pole-aval-en', 7], ['/pole-intermediaire-en', 7], ['/pole-enerchimie-en', 4], ['/pole-greentech-en', 5], ['/pole-enerconseils-en', 5], ['/pole-tchaditech-en', 5], ['/pole-tchaditude-en', 5]]
-    : [['/amont/', 6], ['/aval/', 7], ['/intermediaire/', 7], ['/petrochimie/', 4], ['/greentech/', 5], ['/enerconseils/', 5], ['/tchaditech/', 5], ['/tchaditude/', 5]]) {
+    ? [['/pole-amont-en', 6], ['/pole-aval-en', 7], ['/pole-intermediaire-en', 7], ['/pole-enerchimie-en', 4], ['/pole-greentech-en', 5], ['/pole-enerconseils-en', 4], ['/pole-tchaditech-en', 5], ['/pole-tchaditude-en', 5]]
+    : [['/amont/', 6], ['/aval/', 7], ['/intermediaire/', 7], ['/petrochimie/', 4], ['/greentech/', 5], ['/enerconseils/', 4], ['/tchaditech/', 5], ['/tchaditude/', 5]]) {
     test(`mobile navigation — pole detail folds ${path}`, async ({ browser }) => {
       for (const width of [390, 1440]) {
         const page = await browser.newPage({ viewport: { width, height: 900 } });

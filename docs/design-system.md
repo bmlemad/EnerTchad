@@ -139,7 +139,7 @@ l’impression ouvre tout ; sans JavaScript le repli natif fonctionne. Sur la pa
 lot 131 reste visible, et le repli mobile du lot 132 sur les cas et la méthode est remplacé par ce repli.
 
 Lot 141 (17 novembre 2026) : la même règle s’applique aux quatre pôles de service, FR et EN, soit cinq rubriques repliées chacun :
-GreenTech (`cas`, `hseq`, `impact`, `transition`, `patrimoine`), EnerConseils (`ingenierie`, `cas`, `conseil`, `audits`, `esg`),
+GreenTech (`cas`, `hseq`, `impact`, `transition`, `patrimoine`), EnerConseils (`cas`, `conseil`, `audits`, `esg` ; « Ingénierie » reste ouverte, lot 142),
 TchadiTech (`cas`, `socle`, `rd`, `innovations`, `recits`) et TchadiTude (`emplois-jeunesse`, `cas`, `academie`, `rayonnement`,
 `partenariats`). Le bloc replié se place avant le chapitre `carnets-…` ou, sur TchadiTech qui n’en a pas, avant `offre-tiers`.
 
