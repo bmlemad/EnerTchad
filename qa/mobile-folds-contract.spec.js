@@ -162,3 +162,27 @@ for (const [path, id] of [['/amont/eor', 'eor'], ['/amont/eor-en', 'eor'], ['/av
     }
   });
 }
+
+// Lot 147 (17 novembre 2026) : chapitres repliés sur Produits raffinés (2) et Réseau de stations (5).
+for (const [path, count, anchor] of [['/aval/produits', 2, 'gpl'], ['/aval/produits-en', 2, 'gpl'], ['/aval/reseau', 5, 'modele-distribution'], ['/aval/reseau-en', 5, 'modele-distribution']]) {
+  test(`mobile navigation — page chapter folds ${path}`, async ({ browser }) => {
+    for (const width of [390, 1440]) {
+      const page = await browser.newPage({ viewport: { width, height: 900 } });
+      await page.goto(new URL(path, base).href, { waitUntil: 'domcontentloaded', timeout: 45000 });
+      const folds = page.locator('details[data-page-fold]');
+      await expect(folds).toHaveCount(count);
+      expect(await page.locator('details[data-page-fold][open]').count()).toBe(0);
+      const fold = page.locator(`#${anchor} details[data-page-fold]`), summary = fold.locator('> summary');
+      await summary.scrollIntoViewIfNeeded();
+      expect((await summary.boundingBox()).height).toBeGreaterThanOrEqual(44);
+      await expect(summary).toHaveAttribute('aria-label', / — /);
+      await summary.press('Enter');
+      await expect(fold).toHaveAttribute('open', '');
+      await expect(fold.locator('.pp-bfold-b > *').first()).toBeVisible();
+      expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)).toBe(true);
+      await summary.press('Space');
+      await expect(fold).not.toHaveAttribute('open', '');
+      await page.close();
+    }
+  });
+}
