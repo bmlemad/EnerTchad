@@ -137,3 +137,12 @@ rubrique » et chaque rubrique se replie sous son titre (`details.pp-dfold`, tra
 Chaque rubrique garde son identifiant : un lien d’ancre (sous-navigation, recherche, lien profond) l’ouvre et s’y place ;
 l’impression ouvre tout ; sans JavaScript le repli natif fonctionne. Sur la page Amont, l’offre technique condensée au
 lot 131 reste visible, et le repli mobile du lot 132 sur les cas et la méthode est remplacé par ce repli.
+
+## Pages longues en blocs : la suite se replie (lot 137, 17 novembre 2026)
+
+Décision du DG, dans la suite du lot 136 : sur Investisseurs et Services parapétroliers (FR et EN), chaque bloc
+`.pp-block` garde son titre (colonne de gauche) et son premier paragraphe ; la suite de la colonne de texte se replie sous
+« Lire la suite » (`details.pp-bfold`, transformation d’export `lib/block-folds.js`). Un bloc dont la suite fait moins de
+soixante mots, ou sans titre, reste ouvert. Aucun texte n’est supprimé : un lien d’ancre vers le bloc ou vers un élément
+replié l’ouvre, l’impression ouvre tout, le repli natif fonctionne sans JavaScript. Le style reprend l’accordéon existant de
+`.pp-prose details`.
