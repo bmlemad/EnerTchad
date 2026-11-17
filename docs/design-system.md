@@ -185,3 +185,10 @@ ligne entière.
 
 L’Espace Clients et l’Atlas, qui ont leur propre barre de navigation, reçoivent un lien « Centre de connaissances » dans la
 colonne d’information de leur pied de page (lot 143) : c’est leur accès à Carrières et aux pages secondaires.
+
+### Chapitres repliés sur Distribution et Récupération assistée (lot 146, 17 novembre 2026)
+
+Une fois en pleine largeur, les chapitres de ces deux pages se replient sous leur titre et leur premier paragraphe
+(« Afficher le détail », même composant `details.pp-bfold` que `lib/block-folds.js`). Deux formes sont reconnues : un bloc qui
+porte son titre puis son détail, ou un bloc de titre suivi de blocs frères. Le premier chapitre de la section reste ouvert,
+comme tout chapitre qui porte un lien d’action. Lien d’ancre, impression et navigation sans JavaScript : comme les autres replis.
