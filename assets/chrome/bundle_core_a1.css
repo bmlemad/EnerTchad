@@ -404,7 +404,7 @@ html.et-jlight .jtop,html.et-plight .jtop{background:linear-gradient(180deg,rgba
 
 /* jlight: le scrollcue et le bandeau cookies gardent leur fond sombre — leur or doit rester celui du theme sombre (contraste 5.6:1 et 10.9:1), pas l'or-sur-clair #4C380B que le bloc G4 en ligne des pages journal leur applique par erreur (il vise la titraille sur fond clair) et qui tombe a 1.6:1 (axe, 50 pages journal). Specificite: body ajoute pour passer devant ce bloc en ligne; .sc-lb vise directement car la regle G4 le cible directement et bat l'heritage via .scrollcue. */
 html.et-jlight body .scrollcue:not(#_),html.et-jlight body .sc-lb:not(#_){color:var(--et-gold-brand,#E8C36A)!important}
-html.et-jlight body .cb-k:not(#_){color:var(--jl-gold-ink,var(--et-gold-800,#6B500F))!important}html.et-jlight a.skip-link:not(#_):not(#__){color:var(--et-white,#fff)!important}html.et-plight #cta-band h2 em:not(#_):not(#__),html.et-jlight #cta-band h2 em:not(#_):not(#__){background-image:linear-gradient(110deg,var(--et-gold-800,#6B500F) 30%,#10406F)!important}
+html.et-jlight body .cb-k:not(#_){color:var(--jl-gold-ink,var(--et-gold-800,#6B500F))!important}html.et-jlight a.skip-link:not(#_):not(#__){color:var(--et-white,#fff)!important}html.et-plight #cta-band h2 em:not(#_):not(#__),html.et-jlight #cta-band h2 em:not(#_):not(#__){background-image:linear-gradient(110deg,var(--et-gold-800,#6B500F) 30%,#10406F)!important;-webkit-background-clip:text!important;background-clip:text!important;-webkit-text-fill-color:transparent!important}
 
 /* == Modernisation mobile (31/07/2026) — benchmark majors (TotalEnergies/Shell/bp) ==
    Mobile uniquement (<=760px). M1 echelle typo du heros (h1 34-40px, leads >=16px au
