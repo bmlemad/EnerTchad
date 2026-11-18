@@ -9,6 +9,10 @@
 - [Espace investisseurs](https://enertchad.com/investisseurs) : thèse, trajectoire de capital par paliers, jalons datés
 - [Nos solutions par besoin](https://enertchad.com/nos-activites#besoins) : entrée par usage (produire, acheminer, transformer, distribuer, décider, financer)
 - [Publications & documents](https://enertchad.com/publications) : brochures PDF (FR/EN), fiche arabe, fiches techniques
+- [Leadership](https://enertchad.com/leadership) : président du Conseil et directeur général désignés par les fondateurs (à confirmer par l’assemblée constitutive), organes de la SA OHADA, six fonctions de tête, quatre comités visés
+- [Rapports](https://enertchad.com/rapports) : documents publiés aujourd’hui et rapports à paraître (durabilité, paiements aux États, comptes), avec l’échéance de chacun ; aucun rapport annuel n’est encore publié
+- [Sources et méthode](https://enertchad.com/sources) : trois catégories de chiffres (secteur, cible, estimation à confirmer), pages de sources, fichiers de données, vérification visée
+- [Conformité](https://enertchad.com/conformite) : code de conduite, anti-corruption, canal d’alerte, paiements aux États, référentiels et leur statut (appliqué ou visé)
 - [Paiements aux États](https://enertchad.com/paiements-etats) : format de déclaration engagé — sept catégories ITIE, maille par entité et par projet, date du premier rapport
 - [Méthane & torchage](https://enertchad.com/amont/methane-torchage) : point de départ du torchage au Tchad, Zero Routine Flaring et OGMP 2.0 visés, indicateurs publiés dès les premières opérations
 - [Cadre HSE](https://enertchad.com/cadre-hse) : indicateurs mesurés dès le premier chantier (TRIR, LTIF, FAR, incidents de sécurité des procédés Tier 1 et 2, définitions IOGP et API RP 754), règles vitales IOGP visées, tableau de résultats vide tant qu’aucune heure n’est travaillée
