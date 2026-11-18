@@ -550,7 +550,7 @@ html.et-jlight #nezBar a:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
 html.et-plight #nezBar a[aria-current]:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
 html.et-plight #nezBar a.on:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5),
 html.et-plight #nezBar a.active:not(#e1):not(#e2):not(#e3):not(#e4):not(#e5){
-  color:#77530C!important}
+  color:#5C3F06!important}
 html.et-plight #nezBar a:active{
   background:rgba(184,138,42,.12)!important}
 
