@@ -42,6 +42,11 @@
        "/gouvernance"
       ],
       [
+       "Leadership",
+       "Direction et conseil",
+       "/leadership"
+      ],
+      [
        "Innovation & R&D",
        "Ingénierie frugale, IA",
        "/innovation"
@@ -369,6 +374,26 @@
        "/presse"
       ]
      ]
+    },
+    {
+     "title": "Preuves & conformité",
+     "links": [
+      [
+       "Rapports",
+       "Publiés et à paraître",
+       "/rapports"
+      ],
+      [
+       "Sources et méthode",
+       "Vérifier nos chiffres",
+       "/sources"
+      ],
+      [
+       "Conformité",
+       "Éthique, alerte, transparence",
+       "/conformite"
+      ]
+     ]
     }
    ],
    "feature": null
@@ -465,6 +490,11 @@
        "Governance",
        "OHADA public limited company",
        "/gouvernance-en"
+      ],
+      [
+       "Leadership",
+       "Management and board",
+       "/leadership-en"
       ],
       [
        "Innovation & R&D",
@@ -792,6 +822,26 @@
        "Press room",
        "Contacts and resources",
        "/presse-en"
+      ]
+     ]
+    },
+    {
+     "title": "Evidence & compliance",
+     "links": [
+      [
+       "Reports",
+       "Published and forthcoming",
+       "/rapports-en"
+      ],
+      [
+       "Sources and method",
+       "Checking our figures",
+       "/sources-en"
+      ],
+      [
+       "Compliance",
+       "Ethics, whistleblowing, transparency",
+       "/conformite-en"
       ]
      ]
     }
