@@ -4,6 +4,7 @@ Sources HTML paginees (A4) des documents publies a la racine du site.
 Generation : Chromium headless -> PDF (printBackground, marges nulles).
 
 - brochure_print.html -> /Brochure_EnerTchad.pdf (régénéré au lot 24, octobre 2026)
+  - 18 novembre 2026 : les deux brochures (FR et EN) passent de « 3 + 4 · trois pôles de cœur » à « 4 + 4 · quatre segments industriels », comme la fiche investisseur, le point d’étape et le site ; régénérées avec la police DejaVu Sans imposée au rendu (témoin : les sources d’avant modification redonnent un texte identique aux PDF publiés)
 - brochure_print_en.html -> /Brochure_EnerTchad_EN.pdf (régénéré au lot 24, octobre 2026)
 - fiche_ar.html -> /Fiche_EnerTchad_AR.pdf (régénéré au lot 24, octobre 2026)
 - fiche_intermediaire.html -> /Fiche_Technique_Intermediaire_EnerTchad.pdf (régénéré au lot 25, octobre 2026 ; date de la fiche corrigée)
