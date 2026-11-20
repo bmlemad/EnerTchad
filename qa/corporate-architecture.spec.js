@@ -6,9 +6,9 @@ for(const en of [false,true])for(const width of [320,390,1241,1440]){
   const consent=page.getByRole('button',{name:/Tout refuser|Reject all/});if(await consent.isVisible())await consent.click();
   // Lot 124 : en-tête minimaliste, cinq liens simples (voir mega-menu-contract.spec.js pour le détail).
   if(width<1241)await page.locator('#navTog').click();
-  const links=page.locator('#navLinks > .nav-item > a.nx-direct');await expect(links).toHaveCount(6);
-  const expected=en?['Vision','Activities','Impact','Investors','Careers','Knowledge center']:['Vision','Activités','Impact','Investisseurs','Carrières','Centre de connaissances']; // 17 nov. 2026 : Contact devient le bouton, Carrières entre dans le menu
-  for(let i=0;i<6;i++){await expect(links.nth(i)).toHaveText(expected[i]);await expect(links.nth(i)).toBeVisible();}
+  const links=page.locator('#navLinks > .nav-item > a.nx-direct');await expect(links).toHaveCount(5);
+  const expected=en?['Vision','Activities','Impact','Leadership','Investors']:['Vision','Activités','Impact','Leadership','Investisseurs']; // 20 nov. 2026 : deux espaces, Leadership entre, Carrières et le Centre passent au pied de page
+  for(let i=0;i<5;i++){await expect(links.nth(i)).toHaveText(expected[i]);await expect(links.nth(i)).toBeVisible();}
   await expect(page.locator('#nav .nx-mega')).toHaveCount(0);
   if(width<1241)await page.keyboard.press('Escape');
   expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+2)).toBe(true);
