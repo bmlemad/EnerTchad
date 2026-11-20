@@ -267,7 +267,7 @@ html body.hm:has(#nav) #nav.nav.nx:not(.scrolled):not(:focus-within):not(:has(.n
 
 /* 3. Impact : cinq colonnes sur filets, chacune avec son etat de publication (liste, pas des cartes). */
 #main-content.et-home.hm-review section#impact .hm-lead{margin-top:20px}
-#main-content.et-home.hm-review .hm-impact{list-style:none;margin:64px 0 0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0 24px;border-top:1px solid var(--ed-rule)}
+#main-content.et-home.hm-review .hm-impact{list-style:none;margin:64px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0 24px;border-top:1px solid var(--ed-rule)}
 #main-content.et-home.hm-review .hm-impact li{min-width:0;margin:0;padding:28px 0 24px;border-bottom:1px solid var(--ed-line);display:flex;flex-direction:column;align-items:flex-start;gap:10px}
 #main-content.et-home.hm-review .hm-impact :is(h3,p){margin:0}
 #main-content.et-home.hm-review .hm-impact h3{font-family:var(--ed-serif);font-weight:400;font-size:1.625rem;line-height:1.1;color:var(--ed-fg)}
@@ -291,7 +291,7 @@ html body.hm:has(#nav) #nav.nav.nx:not(.scrolled):not(:focus-within):not(:has(.n
 #main-content.et-home.hm-review section#contact-accueil .hm-exits a{color:var(--ed-ink-fg);-webkit-text-fill-color:currentColor}
 
 @media (max-width:1100px){
-  #main-content.et-home.hm-review .hm-impact{grid-template-columns:repeat(3,minmax(0,1fr))}
+  #main-content.et-home.hm-review .hm-impact{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 @media (max-width:900px){
   #main-content.et-home.hm-review :is(section#investisseurs-accueil,section#contact-accueil)>.et-inner{grid-template-columns:minmax(0,1fr)}

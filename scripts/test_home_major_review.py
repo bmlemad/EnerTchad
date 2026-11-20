@@ -74,9 +74,14 @@ class HomepageReview(unittest.TestCase):
   vision=re.search(r'<section id="vision".*?</section>',main,re.S)[0]
   self.assertEqual(vision.count('<li>'),3)
   home_impact=re.search(r'<section id="impact".*?</section>',main,re.S)[0]
-  self.assertEqual(home_impact.count('<li>'),5)
+  # 20 nov. 2026 (décision du DG, groupe intégré) : quatre volets — emploi, contenu local, formation, développement territorial
+  self.assertEqual(home_impact.count('<li>'),4)
   self.assertNotIn('class="hm-card"',main)  # les cartes .hm-card relèvent du contrat de design partagé (rayon 16 px) : l'accueil éditorial n'en porte pas
-  self.assertEqual(home_impact.count('class="hm-flag'),5)
+  self.assertEqual(home_impact.count('class="hm-flag'),4)
+  self.assertIn('Building an integrated energy group with Chadian capital.' if en else 'Construire un groupe énergétique intégré à capitaux tchadiens.',vision)
+  self.assertIn('company in formation' if en else 'société en constitution',vision)
+  chain=re.search(r'<nav class="et-chain".*?</nav>',main,re.S)[0]
+  self.assertEqual(re.findall(r'<strong>([^<]+)</strong>',chain),['Produce','Transport','Refine &amp; distribute','Transform'] if en else ['Produire','Transporter','Raffiner &amp; distribuer','Transformer'])
   investors=re.search(r'<section id="investisseurs-accueil".*?</section>',main,re.S)[0]
   self.assertEqual(investors.count('<li>'),3)
   self.assertIn('No subscription open to date' if en else 'Aucune souscription ouverte à ce jour',investors)
@@ -144,7 +149,7 @@ class HomepageReview(unittest.TestCase):
   contact=re.search(r'<section id="contact-accueil".*?</section>',main,re.S)[0]
   self.assertEqual(re.findall(r'<a href="([^"]+)"',contact),['/boutique/clients','/achats','/ar-presse','/ar-contact'])
   impact=re.search(r'<section id="impact".*?</section>',main,re.S)[0]
-  self.assertEqual(impact.count('<article>'),5)
+  self.assertEqual(impact.count('<article>'),4)
   self.assertIn('لا نتيجة مَقيسة',impact)
   investors=re.search(r'<section id="investisseurs-accueil".*?</section>',main,re.S)[0]
   self.assertIn('لا يوجد أي اكتتاب مفتوح',investors)
