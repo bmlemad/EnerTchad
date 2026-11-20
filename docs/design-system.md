@@ -228,3 +228,18 @@ Décision du DG. Les replis de texte ajoutés depuis le lot 137 (`details.pp-bfo
 Libellés et style sont définis une seule fois, dans `lib/block-folds.js` (`LABEL`, `CLOSE`, `SUMMARY_STYLE`, `STYLE`), et repris
 par `lib/legacy-grids.js` et `lib/page-folds.js`. Les replis dont le libellé nomme leur contenu — rubriques de pôle, FAQ,
 atlas, pièces d’un dossier — gardent ce libellé : c’est lui qui dit ce qu’on va ouvrir.
+
+## Défauts visibles sur mobile (audit design du 20 novembre 2026)
+
+Audit mesuré sur le site en ligne (18 pages types, 390 et 1440 px). Quatre défauts corrigés, sans règle ajoutée aux feuilles :
+les corrections sont des styles en ligne posés à l’export (`lib/mobile-fixes.js`, `lib/latest-release.js`), hors budget de dette CSS.
+
+- **Slogan du pied de page** : `.brand-tx{max-width:145px}` (mobile) coupait « L’énergie du Tchad. Intégrée. » après « Tchad. »
+  hors accueil. Le slogan du pied de page n’a plus de largeur maximale ; celui de l’en-tête n’est pas touché.
+- **Image des bandes immersives** (`.vi-band-img`) : une règle `height:auto!important` la ramenait à sa hauteur naturelle sur
+  mobile ; la bande, plus haute, montrait une couture au milieu du texte. L’image couvre de nouveau toute la bande.
+- **Ligne « Dernier communiqué » de l’accueil** : elle touchait le bord de l’écran sous 1 240 px. Elle reprend la gouttière des
+  sections voisines (`max(20px,4vw)`).
+- **Lien du bandeau de mesure d’audience** : 18 px de haut ; il passe à 25 px (cible tactile de 24 px au moins).
+
+Non traité, à décider : le bouton « retour en haut » recouvre du contenu sur mobile. Contrôle : `qa/mobile-audit-fixes.spec.js`.
