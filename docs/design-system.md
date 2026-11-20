@@ -207,3 +207,10 @@ comme tout chapitre qui porte un lien d’action. Lien d’ancre, impression et 
 les chapitres « GPL & gaz » et « Lubrifiants, bitumes & produits spéciaux » gardent leur titre et leurs repères chiffrés.
 Réseau de stations : cinq encadrés de la section principale gardent leur titre et leur introduction ; schémas et tableaux se
 replient avec le composant déjà présent sur cette page (`details.rsx-more`). L’en-tête de la section reste ouvert.
+
+### Liens d’action et replis des pages de pôle (correctif de recette, 20 novembre 2026)
+
+La règle des lots 137 et suivants — un lien d’action ne se cache pas dans un repli — s’applique aussi à `lib/pole-folds.js`.
+La rangée d’actions qui termine une rubrique (« La boutique », « Composer votre service intégré », « Tous les documents »…)
+sort du repli et reste visible sous le titre de sa rubrique (`.pp-dfold-a`). Une rubrique dont les actions sont réparties dans
+le texte reste ouverte, à sa place : c’est le cas de « Emplois & jeunesse » sur TchadiTude, qui passe de cinq à quatre replis.

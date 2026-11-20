@@ -11,8 +11,8 @@ for (const en of [false, true]) {
   // du détail de chaque page de pôle, valable à toutes les largeurs (voir lib/pole-folds.js).
   // Lot 141 (17 novembre 2026, choix du DG) : GreenTech, EnerConseils, TchadiTech et TchadiTude s'ajoutent (cinq rubriques chacun).
   for (const [path, count] of en
-    ? [['/pole-amont-en', 6], ['/pole-aval-en', 7], ['/pole-intermediaire-en', 7], ['/pole-enerchimie-en', 4], ['/pole-greentech-en', 5], ['/pole-enerconseils-en', 4], ['/pole-tchaditech-en', 5], ['/pole-tchaditude-en', 5]]
-    : [['/amont/', 6], ['/aval/', 7], ['/intermediaire/', 7], ['/petrochimie/', 4], ['/greentech/', 5], ['/enerconseils/', 4], ['/tchaditech/', 5], ['/tchaditude/', 5]]) {
+    ? [['/pole-amont-en', 6], ['/pole-aval-en', 7], ['/pole-intermediaire-en', 7], ['/pole-enerchimie-en', 4], ['/pole-greentech-en', 5], ['/pole-enerconseils-en', 4], ['/pole-tchaditech-en', 5], ['/pole-tchaditude-en', 4]]
+    : [['/amont/', 6], ['/aval/', 7], ['/intermediaire/', 7], ['/petrochimie/', 4], ['/greentech/', 5], ['/enerconseils/', 4], ['/tchaditech/', 5], ['/tchaditude/', 4]]) {
     test(`mobile navigation — pole detail folds ${path}`, async ({ browser }) => {
       for (const width of [390, 1440]) {
         const page = await browser.newPage({ viewport: { width, height: 900 } });
@@ -20,6 +20,9 @@ for (const en of [false, true]) {
         const folds = page.locator('details[data-detail-fold]');
         await expect(folds).toHaveCount(count);
         await expect(page.locator('details[data-mobile-fold]')).toHaveCount(0);
+        // Correctif de recette du 20 novembre 2026 : aucun lien d'action n'est caché dans un repli fermé.
+        expect(await page.locator('details[data-detail-fold] a.pp-link, details[data-detail-fold] a.pp-btn, details[data-detail-fold] a[data-et-action]').count(), 'action links inside folds').toBe(0);
+        for (const row of await page.locator('.pp-dfold-a a').all()) await expect(row).toBeVisible();
         for (let i = 0; i < count; i++) {
           await expect(folds.nth(i)).not.toHaveAttribute('open', '');
           expect((await folds.nth(i).locator('> summary').boundingBox()).height).toBeGreaterThanOrEqual(44);
