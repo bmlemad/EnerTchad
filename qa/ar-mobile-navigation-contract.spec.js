@@ -99,7 +99,9 @@ for (const path of ['/ar', '/ar-societe', '/ar-poles', '/ar-amont', '/ar-contact
   test(`arabic footer — two columns ${path}`, async ({ browser }) => {
     for (const width of [390, 1440]) {
       const page = await browser.newPage({ viewport: { width, height: 900 } });
-      await page.goto(new URL(path, base).href, { waitUntil: 'domcontentloaded', timeout: 45000 });
+      // 20 novembre 2026 : le test mesure des hauteurs de liens ; à « domcontentloaded » les feuilles de style n'étaient pas toujours
+      // appliquées sur le site en ligne (20 liens à 20 px, puis 0 une fois la page chargée). On attend l'événement « load ».
+      await page.goto(new URL(path, base).href, { waitUntil: 'load', timeout: 45000 });
       const footer = page.locator('footer.pft-ar');
       await expect(footer).toHaveAttribute('data-et-footer-columns', '2');
       await expect(footer.locator('.foot-col')).toHaveCount(2);
