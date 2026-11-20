@@ -16,9 +16,9 @@ const base = process.env.SITE_URL || 'https://enertchad.com/';
 // Centre sont au pied de chaque page.
 const widths = [1280, 1440];
 const defs = {
-  '/': { labels: ['Vision', 'Activités', 'Impact', 'Leadership', 'Investisseurs'], hrefs: ['/societe', '/nos-activites', '/engagements', '/leadership', '/investisseurs'], hub: '/savoirs', footer: ['/carrieres', '/savoirs'],
+  '/': { labels: ['Vision', 'Activités', 'Impact', 'Leadership', 'Investisseurs'], hrefs: ['/societe', '/nos-activites', '/communautes', '/leadership', '/investisseurs'], hub: '/savoirs', footer: ['/carrieres', '/savoirs'],
     centre: { labels: ['Gouvernance', 'Publications', 'HSE', 'Éthique', 'Atlas', 'FAQ', 'Documentation'], hrefs: ['/gouvernance', '/publications', '/cadre-hse', '/ethique', '/atlas/', '/faq', '/sources'], button: ['Site EnerTchad', '/'], slogan: 'Centre de Connaissances', pages: ['/savoirs', '/gouvernance', '/communiques', '/journal-prix-litre'] }, button: 'Contact', slogan: 'L’énergie du Tchad. Intégrée.', resources: ['/gouvernance', '/publications', '/atlas/', '/faq', '/carrieres', '/communiques'] },
-  '/index-en': { labels: ['Vision', 'Activities', 'Impact', 'Leadership', 'Investors'], hrefs: ['/societe-en', '/nos-activites-en', '/engagements-en', '/leadership-en', '/investisseurs-en'], hub: '/savoirs-en', footer: ['/carrieres-en', '/savoirs-en'],
+  '/index-en': { labels: ['Vision', 'Activities', 'Impact', 'Leadership', 'Investors'], hrefs: ['/societe-en', '/nos-activites-en', '/communautes-en', '/leadership-en', '/investisseurs-en'], hub: '/savoirs-en', footer: ['/carrieres-en', '/savoirs-en'],
     centre: { labels: ['Governance', 'Publications', 'HSE', 'Ethics', 'Atlas', 'FAQ', 'Documentation'], hrefs: ['/gouvernance-en', '/publications-en', '/cadre-hse-en', '/ethique-en', '/atlas-en', '/faq-en', '/sources-en'], button: ['EnerTchad site', '/index-en'], slogan: 'Knowledge Center', pages: ['/savoirs-en', '/ethique-en'] }, button: 'Contact', slogan: 'Chad’s energy. Integrated.', resources: ['/gouvernance-en', '/publications-en', '/atlas-en', '/faq-en', '/carrieres-en', '/communiques-en'] }
 };
 const removed = /Gouvernance|Governance|Publications|Atlas|FAQ|Communiqués|Press releases/;
