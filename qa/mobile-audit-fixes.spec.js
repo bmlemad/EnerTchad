@@ -66,3 +66,27 @@ test('mobile navigation — consent banner link is at least 24 px tall', async (
   expect((await link.boundingBox()).height).toBeGreaterThanOrEqual(24);
   await page.close();
 });
+
+// Décision du DG (20 novembre 2026) : le bouton « retour en haut » est masqué là où la barre du bas est affichée (≤ 768 px),
+// où il recouvrait du contenu ; il reste disponible au-delà.
+for (const path of ['/', '/gouvernance', '/aval/', '/index-en']) {
+  test(`mobile navigation — back-to-top button is hidden with the bottom bar ${path}`, async ({ browser }) => {
+    for (const [width, hidden] of [[390, true], [768, true], [769, false], [1440, false]]) {
+      const page = await at(browser, path, width);
+      await page.evaluate(() => { document.querySelector('#et-consent')?.remove(); scrollTo(0, document.documentElement.scrollHeight * 0.6); });
+      await page.waitForTimeout(500);
+      const state = await page.evaluate(() => ({
+        top: getComputedStyle(document.querySelector('#toTop')).display,
+        bar: getComputedStyle(document.querySelector('#nezBar')).display
+      }));
+      if (hidden) {
+        expect(state.bar, `${path} ${width} bottom bar shown`).not.toBe('none');
+        expect(state.top, `${path} ${width} button hidden`).toBe('none');
+      } else {
+        expect(state.top, `${path} ${width} button available`).not.toBe('none');
+        await expect(page.locator('#toTop'), `${path} ${width} button visible after scrolling`).toBeVisible();
+      }
+      await page.close();
+    }
+  });
+}

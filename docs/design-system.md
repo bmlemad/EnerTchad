@@ -242,4 +242,9 @@ les corrections sont des styles en ligne posés à l’export (`lib/mobile-fixes
   sections voisines (`max(20px,4vw)`).
 - **Lien du bandeau de mesure d’audience** : 18 px de haut ; il passe à 25 px (cible tactile de 24 px au moins).
 
-Non traité, à décider : le bouton « retour en haut » recouvre du contenu sur mobile. Contrôle : `qa/mobile-audit-fixes.spec.js`.
+- **Bouton « retour en haut »** : sur mobile il recouvrait du contenu au-dessus de la barre du bas. Décision du DG : il est masqué
+  là où cette barre est affichée (≤ 768 px) et reste disponible au-delà. Son `display` lit la variable `--et-totop`
+  (style en ligne), que la feuille posée par `assets/chrome/audience-consent.js` met à `none` sous 769 px — une règle sans
+  `!important` ni chaîne de sélecteurs, hors feuilles liées (leurs jeux de CSS critique ne bougent pas).
+
+Contrôle : `qa/mobile-audit-fixes.spec.js`.
