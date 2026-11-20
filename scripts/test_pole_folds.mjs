@@ -7,7 +7,7 @@ import { withPoleFolds } from '../lib/pole-folds.js';
 // Lot 136 : le détail des pages de pôle est regroupé avant le contact et replié ; aucun texte, lien ou identifiant ne disparaît.
 const pages = { 'amont/index.html': 6, 'pole-amont-en.html': 6, 'intermediaire/index.html': 7, 'pole-intermediaire-en.html': 7, 'aval/index.html': 7, 'pole-aval-en.html': 7, 'petrochimie/index.html': 4, 'pole-enerchimie-en.html': 4,
   // Lot 141 : les quatre pôles de service.
-  'greentech/index.html': 5, 'pole-greentech-en.html': 5, 'enerconseils/index.html': 4, 'pole-enerconseils-en.html': 4, 'tchaditech/index.html': 5, 'pole-tchaditech-en.html': 5, 'tchaditude/index.html': 5, 'pole-tchaditude-en.html': 5 };
+  'greentech/index.html': 5, 'pole-greentech-en.html': 5, 'enerconseils/index.html': 4, 'pole-enerconseils-en.html': 4, 'tchaditech/index.html': 5, 'pole-tchaditech-en.html': 5, 'tchaditude/index.html': 4, 'pole-tchaditude-en.html': 4 };
 const words = html => html.replace(/<(script|style)[\s\S]*?<\/\1>/g, '').replace(/<summary>[\s\S]*?<\/summary>/g, '').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ');
 const sorted = list => [...list].sort();
 
@@ -18,6 +18,9 @@ for (const [file, count] of Object.entries(pages)) test(`pole detail folds — $
   const folds = after.match(/<details class="pp-dfold" data-detail-fold>/g) || [];
   assert.equal(folds.length, count);
   assert.ok(!/<details class="pp-dfold" data-detail-fold open/.test(after), 'closed by default');
+  // Correctif de recette du 20 novembre 2026 : aucun lien d'action dans un repli ; une rangée d'actions sortie du repli reste dans sa rubrique.
+  for (const fold of after.split('<details class="pp-dfold" data-detail-fold>').slice(1)) assert.ok(!/<a\b[^>]*(?:class="[^"]*\bpp-(?:link|btn)\b|data-et-action=)/.test(fold.slice(0, fold.indexOf('</details>'))), 'no action link inside a fold');
+  for (const row of after.split('<div class="pp-wrap pp-dfold-a">').slice(1)) assert.ok(/^(?:<div class="pp-actions|<p>\s*<a\b)/.test(row) && row.indexOf('</section>') < row.indexOf('<section'), 'action row stays in its section');
   assert.deepEqual(sorted(after.match(/<section[^>]*\bid="[^"]+"/g).map(s => s.match(/id="([^"]+)"/)[1]).filter(id => id !== 'detail-pole')), sorted(before.match(/<section[^>]*\bid="[^"]+"/g).map(s => s.match(/id="([^"]+)"/)[1])), 'section ids kept');
   assert.deepEqual(sorted(after.match(/href="[^"]*"/g)), sorted(before.match(/href="[^"]*"/g)), 'links kept');
   // Hors libellés de repli, tous les mots d'origine restent présents.
