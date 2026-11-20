@@ -8,7 +8,7 @@ const { test, expect } = require('@playwright/test');
 // Bouton et tiroir posés au build par lib/ar-nav.js ; styles dans assets/chrome/ar-nav.css.
 
 const base = process.env.SITE_URL || 'https://enertchad.com/';
-const paths = ['/ar', '/ar-societe', '/ar-investisseurs', '/ar-presse'];
+const paths = ['/ar', '/ar-societe', '/ar-leadership', '/ar-investisseurs', '/ar-presse'];
 const themes = [{ name: 'clair', value: '1' }, { name: 'sombre', value: '0' }];
 
 function alphaOf(color) {
@@ -47,8 +47,8 @@ test.describe('arabic mobile navigation — menu button and drawer', () => {
         await expect(drawer, path).toBeVisible();
         // Lot 125 : cinq liens simples (الرئيسية، الرؤية، الأنشطة، المستثمرون، اتصل بنا), plus de « بحث (FR) » dans l'en-tête.
         // 17 novembre 2026 : quatre liens, « اتصل بنا » devient le bouton (il ne double plus « المستثمرون »).
-        expect(await links.count(), path + ' arabic links').toBe(4);
-        for (let i = 0; i < 4; i++) await expect(links.nth(i), path + ' link ' + i).toBeVisible();
+        expect(await links.count(), path + ' arabic links').toBe(5);
+        for (let i = 0; i < 5; i++) await expect(links.nth(i), path + ' link ' + i).toBeVisible();
         // Lot 128 : le tiroir porte le bouton « إبداء الاهتمام » (comme le tiroir français son bouton « Investisseurs »), sur une ligne entière.
         const cta = page.locator('header.arh #arh-drawer .arh-cta');
         await expect(cta, path + ' investor button in the drawer').toBeVisible();
@@ -77,10 +77,11 @@ test.describe('arabic mobile navigation — menu button and drawer', () => {
       await page.goto(new URL(path, base).href, { waitUntil: 'networkidle', timeout: 45000 });
       await expect(page.locator('header.arh #arh-tog'), path).toBeHidden();
       const links = page.locator('header.arh .arh-nav a');
-      expect(await links.count(), path).toBe(4);
-      const expected = ['/ar', '/ar-societe', '/ar-poles', '/ar-investisseurs'];
-      const labels = ['الرئيسية', 'الرؤية', 'الأنشطة', 'المستثمرون'];
-      for (let i = 0; i < 4; i++) {
+      // 20 novembre 2026 (décision du DG, deux espaces) : les cinq entrées du site principal ; le logo mène à l'accueil.
+      expect(await links.count(), path).toBe(5);
+      const expected = ['/ar-societe', '/ar-poles', '/ar#impact', '/ar-leadership', '/ar-investisseurs'];
+      const labels = ['الرؤية', 'الأنشطة', 'الأثر', 'القيادة', 'المستثمرون'];
+      for (let i = 0; i < 5; i++) {
         await expect(links.nth(i), path + ' link ' + i).toBeVisible();
         await expect(links.nth(i), path + ' href ' + i).toHaveAttribute('href', expected[i]);
         await expect(links.nth(i), path + ' label ' + i).toHaveText(labels[i]);
