@@ -7,7 +7,8 @@
 - **Forme** : société anonyme de droit OHADA (AUSCGIE)
 - **Statut** : société en constitution
 - **Objet** : société pétrolière intégrée — de l'exploration-production à la distribution
-- **Slogan** : Unité · Innovation · Durabilité
+- **Slogan** : « L'énergie du Tchad. Intégrée. »
+- **Valeurs** : Unité · Innovation · Durabilité
 - **Signature** : « De la roche-mère à la pompe. »
 
 ## Coordonnées
@@ -22,7 +23,7 @@
 - Conseil pressenti : GCIC
 
 ## Organisation
-EnerTchad est une **société unique** (pas un groupe, pas de filiales), organisée sur **quatre segments industriels** — Exploration & Production, Transport & stockage, Raffinage & distribution et Pétrochimie. Quatre capacités sont intégrées à chacun de ces pôles : GreenTech (durabilité), TchadiTech (technologies), Tchaditude (capital humain), EnerConseils (conseil).
+EnerTchad est une **société unique** (pas un groupe, pas de filiales), organisée sur **quatre segments industriels** — Exploration & Production, Transport & stockage, Raffinage & distribution et Pétrochimie. Quatre capacités sont intégrées à chacun de ces pôles : GreenTech (durabilité), TchadiTech (technologies), Tchaditude (capital humain), EnerConseils (conseil). Construire, à terme, un groupe énergétique intégré à capitaux tchadiens est une ambition, pas une description de la société actuelle.
 
 ## Palette officielle
 Le logo officiel est un trèfle à quatre pétales dans un anneau d'or, sur fond crème.
