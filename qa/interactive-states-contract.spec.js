@@ -40,7 +40,7 @@ test.describe('interactive states — hub controls and CTA integrity', () => {
 
       // Lot 124 : cinq liens simples, sans déroulant ni aria-expanded ; chacun garde une cible valide.
       const triggers = page.locator('#navLinks .nav-item > a.nx-direct');
-      await expect(triggers, path + ' nav link count').toHaveCount(6); // 16 nov. 2026 : sixième lien, le Centre de connaissances
+      await expect(triggers, path + ' nav link count').toHaveCount(await page.locator('#nav[data-et-space="centre"]').count() ? 7 : 5); // 20 nov. 2026 : deux espaces
       await expect(page.locator('#navLinks [aria-expanded]'), path + ' no expandable entry left').toHaveCount(0);
       for (let i = 0; i < 5; i++) {
         const href = await triggers.nth(i).getAttribute('href');

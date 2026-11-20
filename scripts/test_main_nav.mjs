@@ -3,7 +3,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync, existsSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
-import { withMainNav } from '../lib/main-nav.js';
+import { withMainNav, centreOf } from '../lib/main-nav.js';
 
 const nav = JSON.parse(readFileSync('assets/data/navigation.json', 'utf8'));
 const pages = execFileSync('git', ['ls-files', '-z'], { encoding: 'utf8' }).split('\0')
@@ -17,11 +17,26 @@ const routeExists = p => {
 
 // 16 novembre 2026 (décision du DG, « épurer la navigation ») : sixième entrée, le Centre de connaissances.
 // 17 novembre 2026 (décision du DG, comparaison avec les majors) : « Contact » devient le bouton et quitte le menu, « Carrières » y entre.
-test('FR and EN headers have the same six entries, in the DG order, and one button', () => {
-  assert.deepEqual(nav.header.fr.links.map(l => l[0]), ['Vision', 'Activités', 'Impact', 'Investisseurs', 'Carrières', 'Centre de connaissances']);
-  assert.deepEqual(nav.header.en.links.map(l => l[0]), ['Vision', 'Activities', 'Impact', 'Investors', 'Careers', 'Knowledge center']);
-  assert.deepEqual(nav.header.fr.links.map(l => l[1]), ['/societe', '/nos-activites', '/engagements', '/investisseurs', '/carrieres', '/savoirs']);
-  assert.deepEqual(nav.header.en.links.map(l => l[1]), ['/societe-en', '/nos-activites-en', '/engagements-en', '/investisseurs-en', '/carrieres-en', '/savoirs-en']);
+// 20 novembre 2026 (décision du DG) : deux espaces. Site principal : cinq entrées et le bouton Contact ; Centre de Connaissances : sept entrées et un bouton de retour.
+test('FR and EN headers have the same five entries, in the DG order, and one button', () => {
+  assert.deepEqual(nav.header.fr.links.map(l => l[0]), ['Vision', 'Activités', 'Impact', 'Leadership', 'Investisseurs']);
+  assert.deepEqual(nav.header.en.links.map(l => l[0]), ['Vision', 'Activities', 'Impact', 'Leadership', 'Investors']);
+  assert.deepEqual(nav.header.fr.links.map(l => l[1]), ['/societe', '/nos-activites', '/engagements', '/leadership', '/investisseurs']);
+  assert.deepEqual(nav.header.en.links.map(l => l[1]), ['/societe-en', '/nos-activites-en', '/engagements-en', '/leadership-en', '/investisseurs-en']);
+  assert.deepEqual(nav.centre.fr.links.map(l => l[0]), ['Gouvernance', 'Publications', 'HSE', 'Éthique', 'Atlas', 'FAQ', 'Documentation']);
+  assert.deepEqual(nav.centre.en.links.map(l => l[0]), ['Governance', 'Publications', 'HSE', 'Ethics', 'Atlas', 'FAQ', 'Documentation']);
+  assert.deepEqual(nav.centre.fr.button, ['Site EnerTchad', '/']);
+  assert.deepEqual(nav.centre.en.button, ['EnerTchad site', '/index-en']);
+  for (const lang of ['fr', 'en']) {
+    for (const [, href] of nav.centre[lang].links) assert(routeExists(href.split('#')[0]), lang + ' centre ' + href);
+    assert(routeExists(nav.centre[lang].home), lang + ' centre home');
+    for (const [from, to] of Object.entries(nav.centre[lang].sections)) {
+      assert(routeExists(from), lang + ' centre section ' + from);
+      assert(nav.centre[lang].links.some(l => l[1] === to), lang + ' centre section target ' + to);
+    }
+    // aucune page n'appartient aux deux en-têtes
+    for (const [, href] of nav.header[lang].links) assert.equal(centreOf(lang, href), null, lang + ' ' + href + ' reste sur le site principal');
+  }
   assert.deepEqual(nav.header.fr.button, ['Contact', '/contact']);
   for (const lang of ['fr', 'en']) assert(!nav.header[lang].links.some(l => l[1] === nav.header[lang].button[1]), lang + ' : le bouton ne double aucune entrée du menu');
   assert.deepEqual(nav.header.en.button, ['Contact', '/contact-en']);
@@ -52,12 +67,17 @@ test('every corporate page gets the five links, keeps everything outside the nav
     assert.equal(withMainNav(after), after, page + ' idempotence');
     assert.equal(outside(after), outside(before), page + ' outside the nav');
     const n = navOf(after);
-    assert.equal((n.match(/class="nav-trigger nx-direct(?: is-active)?"/g) || []).length, 6, page + ' six links');
+    const route = before.match(/<link rel="canonical" href="https:\/\/enertchad.com([^"]*)"/)?.[1];
+    const centre = centreOf(lang, route === undefined ? '' : (route || '/'));
+    const cfg = centre ? centre.cfg : nav.header[lang];
+    assert.equal(after.includes('data-et-space="centre"'), !!centre, page + ' espace');
+    assert.equal((n.match(/class="nav-trigger nx-direct(?: is-active)?"/g) || []).length, centre ? 7 : 5, page + ' number of links');
+    if (centre) assert(n.includes(`<a href="${cfg.home}" class="brand"`), page + ' logo du Centre');
     assert.equal((n.match(/aria-controls="nxm-/g) || []).length, 0, page + ' no dropdown');
     assert(!n.includes('nx-mega'), page + ' no panel');
     assert.equal(n.includes('nx-util-m'), navOf(before).includes('nx-util-m'), page + ' mobile utility bar');
-    assert(n.includes(`class="nx-invest">${nav.header[lang].button[0]}</a>`) || n.includes(`class="nx-invest" aria-current="page">${nav.header[lang].button[0]}</a>`), page + ' button');
-    assert(n.includes(`<small>${nav.header[lang].slogan}</small>`), page + ' slogan');
+    assert(n.includes(`class="nx-invest">${cfg.button[0]}</a>`) || n.includes(`class="nx-invest" aria-current="page">${cfg.button[0]}</a>`), page + ' button');
+    assert(n.includes(`<small>${cfg.slogan}</small>`), page + ' slogan');
   }
   assert(count > 200, 'corporate pages: ' + count);
 });
@@ -88,12 +108,13 @@ test('secondary pages mark their header section, and never two entries at once',
     return [...n.matchAll(/<a class="nav-trigger nx-direct( is-active)?" href="([^"]+)"( aria-current="(true|page)")?/g)].map(m => { assert.equal(!!m[1], !!m[3], 'is-active suit aria-current : ' + m[2]); return m; }).filter(m => m[3]).map(m => `${m[2]}:${m[4]}`);
   };
   const expected = {
-    'gouvernance.html': ['/societe:true'], 'ethique.html': ['/societe:true'], 'achats.html': ['/societe:true'],
-    'cibles-2030.html': ['/engagements:true'], 'faq.html': ['/savoirs:true'], 'glossaire-petrolier.html': ['/savoirs:true'],
-    'publications.html': ['/savoirs:true'], 'communiques.html': ['/savoirs:true'], 'presse.html': ['/savoirs:true'],
-    'journal-prix-litre.html': ['/savoirs:true'], 'communique/cp-2026-010.html': ['/savoirs:true'],
-    'gouvernance-en.html': ['/societe-en:true'], 'cibles-2030-en.html': ['/engagements-en:true'], 'presse-en.html': ['/savoirs-en:true'],
-    'societe.html': ['/societe:page'], 'carrieres.html': ['/carrieres:page'], 'investisseurs.html': ['/investisseurs:page'],
+    'gouvernance.html': ['/gouvernance:page'], 'ethique.html': ['/ethique:page'], 'achats.html': ['/societe:true'],
+    'cibles-2030.html': ['/engagements:true'], 'faq.html': ['/faq:page'], 'glossaire-petrolier.html': ['/sources:true'],
+    'publications.html': ['/publications:page'], 'communiques.html': ['/publications:true'], 'presse.html': ['/publications:true'],
+    'journal-prix-litre.html': ['/publications:true'], 'communique/cp-2026-010.html': ['/publications:true'],
+    'conformite.html': ['/ethique:true'], 'rapports.html': ['/sources:true'], 'cadre-hse.html': ['/cadre-hse:page'], 'savoirs.html': [],
+    'gouvernance-en.html': ['/gouvernance-en:page'], 'cibles-2030-en.html': ['/engagements-en:true'], 'presse-en.html': ['/publications-en:true'],
+    'societe.html': ['/societe:page'], 'carrieres.html': ['/societe:true'], 'leadership.html': ['/leadership:page'], 'investisseurs.html': ['/investisseurs:page'],
     'nos-activites.html': ['/nos-activites:page'], 'amont/index.html': ['/nos-activites:page'],
     'contact.html': [], 'projets.html': [], 'index.html': [],
   };

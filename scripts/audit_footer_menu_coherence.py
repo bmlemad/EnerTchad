@@ -9,7 +9,9 @@ for path in Path('out').rglob('*.html'):
     source = path.read_text()
     assert len(re.findall(r'<footer\b', source)) == 1, f'{path}: expected one footer'
     if 'id="navLinks"' in source and 'data-et-modern="industrial"' in source:
-        assert len(re.findall(r'class="nav-trigger(?: [^"]*)?"', source)) == 6, f'{path}: six header links (lot 124, then 16 Nov. 2026: Centre de connaissances)'
+        # 20 novembre 2026 (décision du DG) : deux espaces. Site principal : cinq liens ; Centre de Connaissances : sept.
+        expected = 7 if 'data-et-space="centre"' in source else 5
+        assert len(re.findall(r'class="nav-trigger(?: [^"]*)?"', source)) == expected, f'{path}: {expected} header links'
         menus += 1
     if 'class="et-space-header' in source:
         assert 'et-al-back' in source and 'et-al-lang' in source, f'{path}: subsite return and language switch'

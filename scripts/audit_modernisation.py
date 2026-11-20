@@ -9,7 +9,9 @@ for path in ROOT.rglob('*.html'):
     if 'data-et-modern="industrial"' not in text:
         continue
     if 'id="navLinks"' in text:
-        assert len(re.findall(r'class="nav-trigger(?: [^"]*)?"', text)) == 6, str(path)  # 16 nov. 2026 : sixième lien, le Centre de connaissances
+        # 20 novembre 2026 (décision du DG) : deux espaces. Site principal : cinq liens ; Centre de Connaissances : sept.
+        expected = 7 if 'data-et-space="centre"' in text else 5
+        assert len(re.findall(r'class="nav-trigger(?: [^"]*)?"', text)) == expected, f'{path}: {expected} header links'
     for bar in re.findall(r'<nav\b[^>]*id="nezBar"[^>]*>.*?</nav>', text, re.S):
         assert len(re.findall(r'<a\b', bar)) == 3, str(path)
     count += 1

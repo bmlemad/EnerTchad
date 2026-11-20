@@ -46,8 +46,9 @@ test('corporate resources expose documents and preserve investor-specific enquir
     const cols = all.filter(n => n.attribs?.class?.split(' ').includes('foot-col'));
     // 17 novembre 2026 : la colonne qui répétait l'en-tête est retirée ; deux colonnes restent (accès, informations).
     assert.equal(cols.length, 2, 'two footer columns');
-    // Lot 139 : « Carrières », entré dans le menu, quitte la colonne d'accès ; aucune entrée du menu n'est répétée dans le pied de page.
-    assert.equal((cols[0].children || []).filter(n => n.name === 'a').length, 3);
+    // 20 novembre 2026 (décision du DG) : « Carrières » quitte l'en-tête et revient dans la colonne d'accès (quatre liens).
+    assert.equal((cols[0].children || []).filter(n => n.name === 'a').length, 4);
+    assert((cols[0].children || []).some(n => n.name === 'a' && n.attribs.href === '/carrieres' + sx), 'Carrières au pied de page');
     assert.equal((cols[1].children || []).filter(n => n.name === 'a').at(-1).attribs.href, '/plan-du-site' + sx);
     const hrefs = [];
     for (const zone of cols) (function walk(n) { if (n.name === 'a' && n.attribs?.href?.startsWith('/')) hrefs.push(n.attribs.href); (n.children || []).forEach(walk); })(zone);
@@ -134,6 +135,7 @@ test('sub-site footers link to the knowledge centre', () => {
   const page = (canonical, lang) => readFileSync(lang === 'en' ? 'index-en.html' : 'index.html', 'utf8').replace(/<link rel="canonical" href="[^"]*"/, `<link rel="canonical" href="https://enertchad.com${canonical}"`);
   const footerOf = html => { const out = withNavigationReview(html); return out.slice(out.indexOf('<footer'), out.indexOf('</footer>')); };
   for (const [canonical, lang, href] of [['/boutique/clients', 'fr', '/savoirs'], ['/atlas/', 'fr', '/savoirs'], ['/atlas-en', 'en', '/savoirs-en'], ['/boutique/en/clients', 'en', '/savoirs-en']]) assert.ok(footerOf(page(canonical, lang)).includes(`href="${href}"`), canonical);
-  for (const [canonical, lang] of [['/', 'fr'], ['/index-en', 'en'], ['/amont/', 'fr']]) assert.ok(!/href="\/savoirs(-en)?"/.test(footerOf(page(canonical, lang))), canonical + ' keeps the menu as its only entry');
+  // 20 novembre 2026 (décision du DG) : le lien vers le Centre quitte l'en-tête du site principal ; tous les pieds de page le portent, une seule fois.
+  for (const [canonical, lang, href] of [['/', 'fr', '/savoirs'], ['/index-en', 'en', '/savoirs-en'], ['/amont/', 'fr', '/savoirs']]) assert.equal(footerOf(page(canonical, lang)).split(`href="${href}"`).length - 1, 1, canonical + ' : un lien vers le Centre');
 });
 

@@ -21,7 +21,7 @@ test.describe('mobile navigation — drawer, five links and keyboard state', () 
       await expect(toggle).toHaveAttribute('aria-expanded', 'true');
 
       const items = page.locator('#navLinks .nav-item > a.nx-direct');
-      await expect(items).toHaveCount(6); // 16 nov. 2026 : sixième lien, le Centre de connaissances
+      await expect(items).toHaveCount(5); // 20 nov. 2026 : deux espaces, cinq liens sur le site principal
       for (let i = 0; i < 5; i++) await expect(items.nth(i)).toBeVisible();
       await expect(page.locator('#navLinks .nav-trigger[aria-controls]')).toHaveCount(0);
       await expect(page.locator('#navLinks .nx-util-m a.cta')).toBeVisible();
