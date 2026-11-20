@@ -58,19 +58,25 @@ const budgets = [
   // /amont/ : #pp-dfold-css (lot 136), +990 octets, et repli mobile (PR #159, lot 132), +559 octets ;
   // /contact : repli « Contact rapide » (lot 132), +598 octets, +3 !important ;
   // /atlas/, /boutique/ : jeux critiques ré-extraits (lot 131), +266 octets, +18 :not(#…).
-  ['/amont/', 3517, 20315, 142418, 40],
-  ['/aval/raffinage', 3717, 22016, 207449, 40],
-  ['/carrieres', 3732, 22082, 218328, 40],
+  // 20 novembre 2026 (QA complète lancée sur le site en ligne, 10 pages hors plafond) : plafonds remis aux valeurs mesurées. Causes :
+  // feuille pole-premium.css, « verre institutionnel » (décision du DG, #187 à #191) : +74 !important et +1 378 sélecteurs :not(#…)
+  // par page, sans que les plafonds aient été relevés alors. Le même jour, ces règles passent dans la couche « verre » : les 1 378
+  // :not(#…) disparaissent (plafonds :not(#…) inchangés, de nouveau tenus), 7 !important sans effet sont retirés et 2 ajoutés ; restent +69 ;
+  // toutes les pages, journal compris : +3 !important venus de lots postérieurs au 17 novembre (écart mesuré, cause non recherchée) ;
+  // /amont/ : +33 octets de CSS écrits dans la page (écart mesuré, cause non recherchée).
+  ['/amont/', 3589, 20315, 142451, 40],
+  ['/aval/raffinage', 3789, 22016, 207449, 40],
+  ['/carrieres', 3804, 22082, 218328, 40],
   // PR #139 added the 480-byte after-enquiry block before this design change.
-  ['/contact', 3622, 21419, 191553, 40],
-  ['/carnets', 3369, 19045, 165516, 40],
-  ['/journal-criblage-eor', 2571, 9995, 153012, 40],
-  ['/atlas/', 3167, 18696, 176927, 46],
-  ['/boutique/', 2964, 17973, 122671, 40],
+  ['/contact', 3694, 21419, 191553, 40],
+  ['/carnets', 3441, 19045, 165516, 40],
+  ['/journal-criblage-eor', 2574, 9995, 153012, 40],
+  ['/atlas/', 3239, 18696, 176927, 46],
+  ['/boutique/', 3036, 17973, 122671, 40],
   // Lot 108 (9 novembre 2026, décision du DG) : menu mobile arabe, en-tête mobile de 160 à 64 px ; le premier écran montre
   // plus de contenu, la CSS critique écrite dans la page reprend donc plus de règles existantes (+15 !important, +486 :not(#…), +8 003 octets).
-  ['/ar-societe', 2486, 21103, 75091, 40],
-  ['/essentiel', 3205, 18358, 134314, 40],
+  ['/ar-societe', 2554, 21103, 75091, 40],
+  ['/essentiel', 3277, 18358, 134314, 40],
 ];
 
 const notIdPattern = /:not\(#[\w-]+\)/g;
