@@ -49,7 +49,7 @@ class HomepageReview(unittest.TestCase):
   self.assertIn(f'href="{hub}"',main)
   self.assertIn(f'href="{hub}#savoirs-investisseurs"',main)
   centre=(ROOT/f'savoirs{suffix}.html').read_text()
-  for identity in ('comprendre','outils','documents','gouvernance','investisseurs','conformite','hse'):
+  for identity in ('gouvernance','documents','hse','conformite','atlas','faq','outils','investisseurs'):  # 20 nov. 2026 : sept rubriques dans l'ordre de l'en-tête du Centre, puis Investisseurs
    self.assertIn(f'<section id="savoirs-{identity}"',centre)
 
  def check_structure(self,en):

@@ -19,7 +19,7 @@ const picks = [
   ['/societe', 'g568-z', 'pipeline'], ['/engagements', 'esg', 'lac-tchad-espace'], ['/innovation', 'inn-terrain', 'solaire-champ'],
   ['/projets', 'feuille-de-route', 'unite-petrochimie'], ['/carrieres', 'metiers', 'chantier-ferraillage'],
   ['/communautes', 'contenu-local', 'dunes-sahara'], ['/cibles-2030', 'cib-tenue', 'pompe-petrole'],
-  ['/savoirs', 'savoirs-comprendre', 'flamme-gaz'], ['/achats', 'orientation', 'raffinerie-jour'],
+  ['/savoirs', 'savoirs-gouvernance', 'flamme-gaz'], ['/achats', 'orientation', 'raffinerie-jour'],
   // Lot 134 : espace Clients (la page Clients seule)
   ['/clients', 'g568-r', 'camion-route']
 ];
