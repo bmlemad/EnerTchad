@@ -581,12 +581,16 @@ test('SEO English homepage — social titles match English metadata', async ({ r
   const ogTitle = (html.match(/<meta[^>]+property=["']og:title["'][^>]+content=["']([^"']+)["']/i) || [])[1] || '';
   const twitterTitle = (html.match(/<meta[^>]+name=["']twitter:title["'][^>]+content=["']([^"']+)["']/i) || [])[1] || '';
   const siteName = (html.match(/<meta[^>]+property=["']og:site_name["'][^>]+content=["']([^"']+)["']/i) || [])[1] || '';
-  expect(title).toContain('Energy Access');
-  expect(ogTitle).toContain('Energy Access');
-  expect(twitterTitle).toContain('Energy Access');
+  // 20 novembre 2026 : depuis le #201 (slogan « L’énergie du Tchad. Intégrée. »), les titres de l'accueil anglais portent le slogan
+  // anglais ; le nom du site, lui, n'a pas changé.
+  expect(title).toContain('Chad’s energy. Integrated.');
+  expect(ogTitle).toContain('Chad’s energy. Integrated.');
+  expect(twitterTitle).toContain('Chad’s energy. Integrated.');
   expect(siteName).toContain('Energy Access');
-  expect(ogTitle).not.toContain('Accès aux Énergies');
-  expect(twitterTitle).not.toContain('Accès aux Énergies');
+  for (const french of ['Accès aux Énergies', 'L’énergie du Tchad']) {
+    expect(ogTitle).not.toContain(french);
+    expect(twitterTitle).not.toContain(french);
+  }
 });
 
 test('SEO sitemap — indexed URLs are indexable', async ({ request }) => {

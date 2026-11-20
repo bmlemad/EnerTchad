@@ -39,9 +39,10 @@ test.describe('same menu marker on every space', () => {
       expect(closed.bz.every(b => b.w === 18 && b.h === 2), path + ' bar size 18x2').toBe(true);
       expect(await page.evaluate(() => /Menu\s*\+/.test(document.querySelector('#nav').innerText)), path + ' no "Menu +" text').toBe(false);
       await page.locator('#nav details.et-al-tog > summary').click();
-      await page.waitForTimeout(450);
+      // 20 novembre 2026 : une attente fixe de 450 ms mesurait parfois la barre en cours de transition (0,197) ou avant que la feuille
+      // de style soit appliquée (1) sur le site en ligne. On attend que l'état ouvert soit atteint, cinq secondes au plus.
+      await expect.poll(async () => (await bars(page, '#nav details.et-al-tog > summary')).bz[1].op, { timeout: 5000, message: path + ' middle bar hidden when open' }).toBe('0');
       const open = await bars(page, '#nav details.et-al-tog > summary');
-      expect(open.bz[1].op, path + ' middle bar hidden when open').toBe('0');
       expect(open.bz[0].tf, path + ' top bar rotated').not.toBe('none');
       expect(open.bz[2].tf, path + ' bottom bar rotated').not.toBe('none');
       await page.keyboard.press('Escape');
