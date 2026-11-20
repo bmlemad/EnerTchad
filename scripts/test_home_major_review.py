@@ -66,13 +66,18 @@ class HomepageReview(unittest.TestCase):
   # héros : titre du brief, libellés d'action du contrat CTA (qa/cta-vocabulary-contract.spec.js)
   h1='<h1 id="ph-h1">Chad’s energy. <em>Integrated.</em></h1>' if en else '<h1 id="ph-h1">L’énergie du Tchad. <em>Intégrée.</em></h1>'
   self.assertIn(h1,main)
+  # 20 nov. 2026 (audit face aux grands groupes, décision du DG) : le héros ouvre sur la vision ; le besoin professionnel reste dans le héros, en lien secondaire
   primary='Discuss a business requirement' if en else 'Présenter un besoin professionnel'
   client='/boutique/en/clients' if en else '/boutique/clients'
-  self.assertIn(f'<a class="et-primary" href="{client}#besoin-client">{primary}</a>',main)
+  hero=re.search(r'<header class="et-hero".*?</header>',main,re.S)[0]
+  self.assertIn('<a class="et-primary" href="/societe-en#vision">Discover the vision</a>' if en else '<a class="et-primary" href="/societe#vision">Découvrir la vision</a>',hero)
+  self.assertIn(f'<a class="et-secondary" href="{client}#besoin-client">{primary}',hero)
   self.assertIn('href="/projets-en#avancement">Projects and status' if en else 'href="/projets#avancement">Projets et avancement',main)
   # vision : trois piliers ; impact : cinq cartes, chacune avec son état de publication ; investisseurs : trois lignes de repères
   vision=re.search(r'<section id="vision".*?</section>',main,re.S)[0]
   self.assertEqual(vision.count('<li>'),3)
+  # « en bref » : quatre chiffres publiés, dont le zéro actif
+  self.assertEqual(re.findall(r'<dd>([^<]+)</dd>',vision),['100 M FCFA','4 + 4','0','80%' if en else '80 %'])
   home_impact=re.search(r'<section id="impact".*?</section>',main,re.S)[0]
   # 20 nov. 2026 (décision du DG, groupe intégré) : quatre volets — emploi, contenu local, formation, développement territorial
   self.assertEqual(home_impact.count('<li>'),4)
