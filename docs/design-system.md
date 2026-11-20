@@ -244,6 +244,7 @@ les corrections sont des styles en ligne posés à l’export (`lib/mobile-fixes
 
 - **Bouton « retour en haut »** : sur mobile il recouvrait du contenu au-dessus de la barre du bas. Décision du DG : il est masqué
   là où cette barre est affichée (≤ 768 px) et reste disponible au-delà. Son `display` lit la variable `--et-totop`
-  (style en ligne), que `premium-chrome.css` met à `none` sous 769 px — une règle sans `!important` ni chaîne de sélecteurs.
+  (style en ligne), que la feuille posée par `assets/chrome/audience-consent.js` met à `none` sous 769 px — une règle sans
+  `!important` ni chaîne de sélecteurs, hors feuilles liées (leurs jeux de CSS critique ne bougent pas).
 
 Contrôle : `qa/mobile-audit-fixes.spec.js`.

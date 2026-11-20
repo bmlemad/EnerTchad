@@ -31,7 +31,7 @@ test('mobile fixes — back-to-top button reads its display from --et-totop', ()
   const out = withMobileFixes(html);
   assert.equal(out, `<button style="${BACK_TO_TOP_STYLE}" type="button" id="toTop" aria-label="Retour en haut"><svg></svg></button><button id="other">x</button>`);
   assert.equal(withMobileFixes(out), out, 'idempotent');
-  const css = readFileSync(new URL('../assets/chrome/premium-chrome.css', import.meta.url), 'utf8');
+  const css = readFileSync(new URL('../assets/chrome/audience-consent.js', import.meta.url), 'utf8');
   assert.match(css, /@media\(max-width:768px\)\{:root\{--et-totop:none\}\}/);
 });
 
