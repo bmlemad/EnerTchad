@@ -86,12 +86,14 @@ test('every corporate page gets the five links, keeps everything outside the nav
 import { withArNav } from '../lib/ar-nav.js';
 import { readFileSync as readAr } from 'node:fs';
 // 17 novembre 2026 : quatre liens et le bouton « اتصل بنا » (il ne double plus « المستثمرون »).
-test('Arabic header: four plain links and a contact button, current page marked, idempotent', () => {
-  for (const [file, current] of [['ar.html', '/ar'], ['ar-contact.html', '/ar-contact'], ['ar-amont.html', '/ar-poles'], ['ar-poles.html', '/ar-poles']]) {
+// 20 novembre 2026 (décision du DG, deux espaces) : les cinq entrées du site principal — الرؤية، الأنشطة، الأثر، القيادة، المستثمرون.
+test('Arabic header: five plain links and a contact button, current page marked, idempotent', () => {
+  for (const [file, current] of [['ar.html', '/ar'], ['ar-contact.html', '/ar-contact'], ['ar-amont.html', '/ar-poles'], ['ar-poles.html', '/ar-poles'], ['ar-leadership.html', '/ar-leadership'], ['ar-societe.html', '/ar-societe']]) {
     const out = withArNav(readAr(new URL('../' + file, import.meta.url), 'utf8'));
     const nav = out.match(/<nav class="arh-nav" data-et-header="minimal"[^>]*>([\s\S]*?)<\/nav>/)[1];
     const hrefs = [...nav.matchAll(/href="([^"]+)"/g)].map(m => m[1]);
-    assert.deepEqual(hrefs, ['/ar', '/ar-societe', '/ar-poles', '/ar-investisseurs'], file);
+    assert.deepEqual(hrefs, ['/ar-societe', '/ar-poles', '/ar#impact', '/ar-leadership', '/ar-investisseurs'], file);
+    assert.equal((nav.match(/aria-current="page"/g) || []).length, ['/ar', '/ar-contact'].includes(current) ? 0 : 1, file + ' : une entrée marquée, sauf accueil et contact');
     assert(out.includes('<a class="arh-cta" href="/ar-contact"' + (current === '/ar-contact' ? ' aria-current="page"' : '') + '>اتصل بنا</a>'), file + ' button');
     assert.equal(nav.includes('/recherche'), false, file);
     const header = out.slice(out.indexOf('<header class="arh">'), out.indexOf('</header>'));
