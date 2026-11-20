@@ -47,9 +47,14 @@ class HomepageReview(unittest.TestCase):
   # le reste est au Centre de Connaissances : la page existe dans les deux langues et l'accueil y mène
   hub=f'/savoirs{suffix}'
   self.assertIn(f'href="{hub}"',main)
-  self.assertIn(f'href="{hub}#savoirs-investisseurs"',main)
+  # 20 nov. 2026 (décision du DG, deux espaces) : les investisseurs relèvent du site principal ; l'accueil mène aux documents
+  # investisseurs des Publications, plus à une rubrique du Centre, et le bloc Leadership mène à la page Leadership.
+  self.assertNotIn('savoirs-investisseurs',main)
+  self.assertIn(f'href="/publications{suffix}#pub-inv"',main)
+  self.assertIn(f'href="/leadership{suffix}"',main)
   centre=(ROOT/f'savoirs{suffix}.html').read_text()
-  for identity in ('gouvernance','documents','hse','conformite','atlas','faq','outils','investisseurs'):  # 20 nov. 2026 : sept rubriques dans l'ordre de l'en-tête du Centre, puis Investisseurs
+  self.assertNotIn('id="savoirs-investisseurs"',centre)
+  for identity in ('gouvernance','documents','hse','conformite','atlas','faq','outils'):  # 20 nov. 2026 : sept rubriques dans l'ordre de l'en-tête du Centre
    self.assertIn(f'<section id="savoirs-{identity}"',centre)
 
  def check_structure(self,en):
@@ -143,7 +148,7 @@ class HomepageReview(unittest.TestCase):
   self.assertIn('لا نتيجة مَقيسة',impact)
   investors=re.search(r'<section id="investisseurs-accueil".*?</section>',main,re.S)[0]
   self.assertIn('لا يوجد أي اكتتاب مفتوح',investors)
-  for href in ('/ar-investisseurs','/publications','/savoirs#savoirs-investisseurs'):
+  for href in ('/ar-investisseurs','/publications','/publications#pub-inv'):
    self.assertIn(f'href="{href}"',investors)
 
 if __name__=='__main__':unittest.main()
