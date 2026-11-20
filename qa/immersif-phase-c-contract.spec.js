@@ -21,7 +21,9 @@ const picks = [
   ['/communautes', 'contenu-local', 'dunes-sahara'], ['/cibles-2030', 'cib-tenue', 'pompe-petrole'],
   ['/savoirs', 'savoirs-gouvernance', 'flamme-gaz'], ['/achats', 'orientation', 'raffinerie-jour'],
   // Lot 134 : espace Clients (la page Clients seule)
-  ['/clients', 'g568-r', 'camion-route']
+  // 20 novembre 2026 : depuis le #172 (17 novembre, collection d'images sectorielles), lib/image-collection.js remplace la photo de
+  // cette scène par l'image « clients » de la collection ; qa/image-collection.spec.js le vérifie. Le contrat attend donc cette image.
+  ['/clients', 'g568-r', 'collection-20261117/clients']
 ];
 
 function luminance(color) {
@@ -77,7 +79,7 @@ test.describe('immersive phase C — aval, petrochimie, intermediaire, tchaditec
           expect(report.bg.hidden, path + ' decorative image').toBe('true');
           expect(report.bg.alt, path + ' decorative image alt').toBe('');
           expect(report.bg.loading, path + ' lazy image').toBe('lazy');
-          expect(report.bg.src, path + ' published photo').toBe(`/assets/img/p/${photo}-1400.webp`);
+          expect(report.bg.src, path + ' published photo').toBe(photo.includes('/') ? `/assets/img/${photo}-1400.webp` : `/assets/img/p/${photo}-1400.webp`);
           expect(report.cover[0], path + ' photo covers the scene').toBeGreaterThanOrEqual(report.cover[1] - 1);
           expect(report.dark, path + ' no dark text left on the glass card').toEqual([]);
           expect(luminance(report.h2Color), path + ' light title on the glass card').toBeGreaterThan(0.7);
