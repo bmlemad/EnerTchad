@@ -65,7 +65,14 @@ test('every corporate page gets the five links, keeps everything outside the nav
     if (!nav.header[lang]) { assert.equal(after, before, page + ' other languages untouched'); continue; }
     count++;
     assert.equal(withMainNav(after), after, page + ' idempotence');
-    assert.equal(outside(after), outside(before), page + ' outside the nav');
+    // 20 novembre 2026 (revue des en-têtes) : hors de l'en-tête, seule la barre mobile du bas change, et seulement dans le Centre.
+    const noBar = h => h.replace(/(<nav\b[^>]*\bid="nezBar"[^>]*>)[\s\S]*?(<\/nav>)/, '$1$2');
+    assert.equal(outside(noBar(after)), outside(noBar(before)), page + ' outside the nav and the bottom bar');
+    const barOf = h => [...(h.match(/<nav\b[^>]*\bid="nezBar"[^>]*>[\s\S]*?<\/nav>/)?.[0] || '').matchAll(/<a href="([^"]+)" aria-label="([^"]+)"/g)].map(m => m[1]);
+    const centreHere = after.includes('data-et-space="centre"');
+    if (!centreHere) assert.deepEqual(barOf(after), barOf(before), page + ' bottom bar untouched on the main site');
+    else if (barOf(before).length) assert.deepEqual(barOf(after), [nav.centre[lang].home, nav.centre[lang].links[1][1], nav.centre[lang].button[1]], page + ' bottom bar of the Centre');
+    if (centreHere) assert(after.includes(`class="brand" aria-label="EnerTchad — ${nav.centre[lang].slogan}"`), page + ' logo named after the Centre');
     const n = navOf(after);
     const route = before.match(/<link rel="canonical" href="https:\/\/enertchad.com([^"]*)"/)?.[1];
     const centre = centreOf(lang, route === undefined ? '' : (route || '/'));
