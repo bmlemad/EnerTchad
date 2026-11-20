@@ -1175,3 +1175,6 @@ footer.pft .fn-form :is(input,button),footer.pft .foot-social a{border-radius:0!
 /* Pages arabes : elles ne chargent pas bundle_head_b2.css, donc @layer verre y est declaree avant et-glass et ses
    !important priment. Les colonnes a plat s'ecrivent donc aussi dans verre. La devise arabe n'est pas touchee. */
 @layer verre{footer.pft.pft-ar .foot-col{background:transparent!important;border:0!important;border-top:1px solid rgba(255,255,255,.16)!important;border-radius:0!important;box-shadow:none!important;padding:20px 0 0!important}}
+/* Retour en haut masque sur mobile (decision du DG, 20 novembre 2026) : sous 769 px la barre du bas (#nezBar) est affichee et le
+   bouton recouvrait du contenu. Le display du bouton lit cette variable (style en ligne pose par lib/mobile-fixes.js). */
+@media(max-width:768px){:root{--et-totop:none}}
