@@ -44,3 +44,20 @@ test('block folds — same number of folds in French and English', () => {
     assert.equal(count(en), count(fr), `${fr} / ${en}`);
   }
 });
+
+// Harmonisation du 20 novembre 2026 : un seul libellé pour tous les replis de texte, dans les trois transformations.
+test('text folds share one label and one summary style', async () => {
+  const { withLegacyGrids } = await import('../lib/legacy-grids.js');
+  const { withPageFolds } = await import('../lib/page-folds.js');
+  const { LABEL, CLOSE, SUMMARY_STYLE } = await import('../lib/block-folds.js');
+  for (const [file, lang] of [['investisseurs.html', 'fr'], ['investisseurs-en.html', 'en'], ['societe.html', 'fr'], ['aval/produits.html', 'fr'], ['aval/produits-en.html', 'en'], ['aval/distribution.html', 'fr'], ['amont/eor-en.html', 'en'], ['aval/reseau.html', 'fr'], ['aval/reseau-en.html', 'en']]) {
+    const html = withPageFolds(withLegacyGrids(withBlockFolds(readFileSync(file, 'utf8'))));
+    const summaries = html.match(/<details class="pp-bfold[^>]*><summary[^>]*>[\s\S]*?<\/summary>/g) || [];
+    assert.ok(summaries.length >= 3, file);
+    for (const summary of summaries) {
+      assert.ok(summary.includes(`<span class="pp-bfold-o">${LABEL[lang]}</span><span class="pp-bfold-c">${CLOSE[lang]}</span>`), file + ' label');
+      assert.ok(summary.includes(`aria-label="${LABEL[lang]} — `) && summary.includes(`style="${SUMMARY_STYLE}"`), file + ' name and style');
+    }
+  }
+});
+
