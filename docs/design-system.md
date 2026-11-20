@@ -214,3 +214,17 @@ La règle des lots 137 et suivants — un lien d’action ne se cache pas dans u
 La rangée d’actions qui termine une rubrique (« La boutique », « Composer votre service intégré », « Tous les documents »…)
 sort du repli et reste visible sous le titre de sa rubrique (`.pp-dfold-a`). Une rubrique dont les actions sont réparties dans
 le texte reste ouverte, à sa place : c’est le cas de « Emplois & jeunesse » sur TchadiTude, qui passe de cinq à quatre replis.
+
+## Replis de texte : un seul vocabulaire (harmonisation du 20 novembre 2026)
+
+Décision du DG. Les replis de texte ajoutés depuis le lot 137 (`details.pp-bfold`, sur seize pages) utilisaient deux libellés
+— « Lire la suite » et « Afficher le détail » — et un signe « + » repoussé à droite, à côté du composant `.pp-more`
+(« En savoir plus », 70 blocs) qui existait déjà. Tous prennent désormais le libellé et l’apparence de `.pp-more` :
+
+- fermé : « En savoir plus + » (EN « Learn more + »), corps 500 à 0,92 rem, signe doré juste après le libellé ;
+- ouvert : « Replier − » (EN « Close − »), comme les rubriques des pages de pôle ;
+- sur fond sombre (sections nuit, scènes immersives, encadrés), le signe prend la couleur du texte.
+
+Libellés et style sont définis une seule fois, dans `lib/block-folds.js` (`LABEL`, `CLOSE`, `SUMMARY_STYLE`, `STYLE`), et repris
+par `lib/legacy-grids.js` et `lib/page-folds.js`. Les replis dont le libellé nomme leur contenu — rubriques de pôle, FAQ,
+atlas, pièces d’un dossier — gardent ce libellé : c’est lui qui dit ce qu’on va ouvrir.

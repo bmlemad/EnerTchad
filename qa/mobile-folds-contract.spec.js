@@ -85,7 +85,7 @@ for (const en of [false, true]) {
 }
 
 // Lot 137 (17 novembre 2026, choix du DG) : sur Investisseurs et Services parapétroliers, la suite de chaque bloc long se replie
-// sous « Lire la suite » ; le titre et le premier paragraphe restent visibles (voir lib/block-folds.js).
+// sous « En savoir plus » (libellé unique depuis l'harmonisation du 20 novembre 2026) ; le titre et le premier paragraphe restent visibles (voir lib/block-folds.js).
 // Lot 140 : même règle sur Engagements, Société et Produits raffinés.
 for (const [path, anchor, least = 8] of [['/investisseurs', 'jalons'], ['/investisseurs-en', 'jalons'], ['/amont/services-ep', 'ofs-pourquoi'], ['/amont/services-ep-en', 'ofs-pourquoi'], ['/engagements', null, 4], ['/engagements-en', null, 4], ['/societe', null], ['/societe-en', null], ['/aval/produits', null], ['/aval/produits-en', null]]) {
   test(`mobile navigation — long block folds ${path}`, async ({ browser }) => {
