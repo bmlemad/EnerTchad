@@ -71,7 +71,7 @@ html:not(.et-plight) .im-statusboard :is(.im-lede,.im-note){color:#B5C0D0}
   --ed-mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
   --ed-gutter:clamp(20px,4vw,40px);--ed-pad:max(var(--ed-gutter),calc((100vw - 1280px)/2));--ed-band:clamp(72px,9vw,120px)}
 html:is(.et-plight,.et-jlight) #main-content.et-home.hm-review{
-  --ed-paper:#F5F0E6;--ed-paper-fg:#0A1220;--ed-paper-muted:#3F4A5C;--ed-paper-accent:#76550F;--ed-paper-line:rgba(10,18,32,.18);--ed-paper-rule:#0A1220}
+  --ed-paper:#FAF8F3;--ed-paper-fg:#0A1220;--ed-paper-muted:#3F4A5C;--ed-paper-accent:#76550F;--ed-paper-line:rgba(10,18,32,.18);--ed-paper-rule:#0A1220}
 html:not(.et-plight,.et-jlight) #main-content.et-home.hm-review{
   --ed-paper:#101B2E;--ed-paper-fg:#EEF1F6;--ed-paper-muted:#C9D2E0;--ed-paper-accent:#E3BC62;--ed-paper-line:rgba(255,255,255,.16);--ed-paper-rule:rgba(255,255,255,.34)}
 

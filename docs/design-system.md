@@ -32,7 +32,7 @@ navigation et du pied de page sur le reste du site.
 
 | Élément | Règle | Source |
 | --- | --- | --- |
-| Accueil | Bandes pleines alternées : papier #F5F0E6 (papier nuit #101B2E en thème sombre) et encre #0A1220 ; plus de photo de fond ni de carte en verre dans « Quatre maillons » et « Direction et gouvernance » ; filets 1 px | `immersif-2026.css`, bloc « direction éditoriale » |
+| Accueil | Bandes pleines alternées : papier #FAF8F3, le crème des pages intérieures depuis le 21 novembre 2026 (papier nuit #101B2E en thème sombre) et encre #0A1220 ; plus de photo de fond ni de carte en verre dans « Quatre maillons » et « Direction et gouvernance » ; filets 1 px | `immersif-2026.css`, bloc « direction éditoriale » |
 | Titres | Instrument Serif, graisse 400 : `h1` et `h2` du gabarit `.ppl` (hors `.pp-k`), titres de l’accueil ; pages arabes : Noto Sans Arabic, graisse 600, échelle antérieure | `design-system.css` (`--et-ui-display`, `--et-ui-h1`, `--et-ui-h2`, `--et-ui-heading-weight`) ; accueil : `immersif-2026.css` |
 | Actions | Arêtes vives ; action principale des héros en or #E3BC62 sur encre #0A1220 | `design-system.css` (`--et-ui-control-radius`, `--et-ui-accent`, `--et-ui-accent-text`) |
 | Barre de navigation | Rubriques à plat, sans pilule, à partir de 1241 px ; rubrique survolée ou ouverte soulignée, rubrique courante soulignée d’un filet or ; halo de focus clavier d’origine conservé ; tiroir mobile inchangé | `premium-chrome.css`, règles d’origine de `@layer verre` réécrites sur place (plus de surcharge) |
@@ -301,3 +301,11 @@ ni les actifs qui justifient un méga-menu. Option retenue par le DG : **un seul
 
 Contrôles : `scripts/test_main_nav.mjs`, `qa/activities-panel.spec.js` (préfixe « mega-menu — », tourne sur chaque PR),
 `qa/mega-menu-contract.spec.js`.
+
+## Crème unique (21 novembre 2026)
+
+Les bandes papier des deux accueils (`#vision`, `#impact`, `#investisseurs-accueil`) passent de #F5F0E6 à #FAF8F3, le crème
+déjà peint sur les pages intérieures (Société, Amont, Contact mesurées). Une seule valeur change : `--ed-paper` du thème clair
+dans `immersif-2026.css` ; le thème sombre garde #101B2E. Les trois jeux de CSS critique qui embarquent cette feuille
+(`home-fr`, `home-en`, `gouvernance`) portent la nouvelle empreinte, et les deux accueils la nouvelle valeur. Contrastes
+mesurés sur #FAF8F3 : or #76550F 6,43:1, encre #0A1220 17,66:1, gris #3F4A5C 8,44:1 (tous au-dessus de 4,5:1).
