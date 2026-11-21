@@ -134,3 +134,39 @@ test('secondary pages mark their header section, and never two entries at once',
     assert.equal(withMainNav(withMainNav(readFileSync(file, 'utf8'))), withMainNav(readFileSync(file, 'utf8')), file + ' idempotence');
   }
 });
+
+// 21 novembre 2026 (décision du DG, comparaison avec les majors) : un seul panneau, sous « Activités » — les quatre métiers et la vue
+// d'ensemble, FR et EN, sur le site principal seulement ; le Centre de Connaissances n'en a pas.
+test('Activities panel — four business lines and the overview, main site only', () => {
+  const expect = {
+    fr: { file: 'societe.html', titles: ['Produire', 'Transporter', 'Raffiner & distribuer', 'Transformer'], hrefs: ['/amont/', '/intermediaire/', '/aval/', '/petrochimie/'], overview: '/nos-activites' },
+    en: { file: 'societe-en.html', titles: ['Produce', 'Transport', 'Refine & distribute', 'Transform'], hrefs: ['/pole-amont-en', '/pole-intermediaire-en', '/pole-aval-en', '/pole-enerchimie-en'], overview: '/nos-activites-en' }
+  };
+  for (const [lang, e] of Object.entries(expect)) {
+    assert.deepEqual(nav.header[lang].panel.links.map(l => l[0]), e.titles, lang);
+    assert.deepEqual(nav.header[lang].panel.links.map(l => l[2]), e.hrefs, lang);
+    for (const href of [...e.hrefs, e.overview]) assert.ok(routeExists(href), `${lang} ${href} exists`);
+    const html = withMainNav(readFileSync(e.file, 'utf8'));
+    const n = navOf(html);
+    assert.equal((n.match(/data-et-sub/g) || []).length, 1, `${lang} one panel`);
+    assert.match(n, new RegExp(`<div class="nav-item pn-item et-has-sub" data-et-sub><a class="nav-trigger nx-direct[^"]*" href="${e.overview}"`), `${lang} under Activities`);
+    assert.match(n, /<button type="button" class="et-sub-tog" aria-expanded="false" aria-controls="et-sub-activites" aria-label="[^"]+" hidden><\/button>/, `${lang} toggle hidden until the script runs`);
+    assert.match(n, /<div class="et-sub" id="et-sub-activites" hidden>/, `${lang} panel closed`);
+    assert.deepEqual([...n.matchAll(/<a class="et-sub-link" href="([^"]+)"/g)].map(m => m[1]), e.hrefs, `${lang} links`);
+    assert.match(n, new RegExp(`<a class="et-sub-all" href="${e.overview}">`), `${lang} overview link`);
+    assert.equal((html.match(/<style id="et-sub-css">/g) || []).length, 1, `${lang} styles once`);
+    assert.equal(withMainNav(html), html, `${lang} idempotent`);
+  }
+  for (const file of ['gouvernance.html', 'gouvernance-en.html', 'faq.html']) {
+    const html = withMainNav(readFileSync(file, 'utf8'));
+    assert.ok(!html.includes('data-et-sub') && !html.includes('et-sub-css'), `${file} (centre) has no panel`);
+  }
+});
+
+test('Activities panel — the current business line is marked on its pages', () => {
+  const marked = file => [...navOf(withMainNav(readFileSync(file, 'utf8'))).matchAll(/<a class="et-sub-link" href="([^"]+)" aria-current="page">/g)].map(m => m[1]);
+  assert.deepEqual(marked('amont/index.html'), ['/amont/']);
+  assert.deepEqual(marked('aval/produits.html'), ['/aval/']);
+  assert.deepEqual(marked('pole-aval-en.html'), ['/pole-aval-en']);
+  assert.deepEqual(marked('societe.html'), []);
+});

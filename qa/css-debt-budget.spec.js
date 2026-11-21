@@ -44,8 +44,11 @@ const budgets = [
   // nouvelles bandes, couche et-verre) : l’accueil FR dépasse son plafond de 8 (dont 2 venus des illustrations au trait, comptés dans la CSS critique), relevé d’autant ; l’accueil EN reste sous le sien.
   // Lot 144 (17 novembre 2026, remarque de relecture de la PR #173) : la ligne « Dernier communiqué » (décision du DG, audit face aux majors)
   // écrit 154 octets dans la page (bloc #et-latest-css) ; l'accueil n'avait plus que 53 octets de marge : plafond relevé de 101 octets, FR et EN.
-  ['/', 2696, 9892, 119040, 44], // lot 106-A : accueil refondu (mesure du 8 novembre 2026, hors contrat de design)
-  ['/index-en', 2698, 9894, 119244, 44], // lot 106-B : accueil EN refondu (mesure du 8 novembre 2026, hors contrat de design)
+  // Panneau « Activités » (21 novembre 2026, décision du DG, comparaison avec les majors) : bloc #et-sub-css écrit dans l'en-tête des
+  // pages du site principal (lib/main-nav.js), 2 541 octets, sans !important ni chaîne :not(#…). Les sept pages du site principal
+  // concernées (accueils, /amont/, /aval/raffinage, /carrieres, /contact, /essentiel) étaient exactement à leur plafond : relevé de 2 541 octets. Les pages du Centre de Connaissances n'ont pas de panneau.
+  ['/', 2696, 9892, 121581, 44], // lot 106-A : accueil refondu (mesure du 8 novembre 2026, hors contrat de design)
+  ['/index-en', 2698, 9894, 121785, 44], // lot 106-B : accueil EN refondu (mesure du 8 novembre 2026, hors contrat de design)
   // Lot 113 (10 novembre 2026, décision du DG) : direction immersive, phase B ; scène « conviction » des pôles posée au build par
   // lib/immersif-poles.js : +7 !important (verre, texte clair, hauteur de la photo ; couche et-verre) et +1 943 octets de CSS en ligne.
   // Lot 145 (17 novembre 2026, décision du DG après mesure, registre 1442) : les 9 pages ci-dessous dépassaient depuis les lots décidés
@@ -64,11 +67,11 @@ const budgets = [
   // :not(#…) disparaissent (plafonds :not(#…) inchangés, de nouveau tenus), 7 !important sans effet sont retirés et 2 ajoutés ; restent +69 ;
   // toutes les pages, journal compris : +3 !important venus de lots postérieurs au 17 novembre (écart mesuré, cause non recherchée) ;
   // /amont/ : +33 octets de CSS écrits dans la page (écart mesuré, cause non recherchée).
-  ['/amont/', 3589, 20315, 142451, 40],
-  ['/aval/raffinage', 3789, 22016, 207449, 40],
-  ['/carrieres', 3804, 22082, 218328, 40],
+  ['/amont/', 3589, 20315, 144992, 40],
+  ['/aval/raffinage', 3789, 22016, 209990, 40],
+  ['/carrieres', 3804, 22082, 220869, 40],
   // PR #139 added the 480-byte after-enquiry block before this design change.
-  ['/contact', 3694, 21419, 191553, 40],
+  ['/contact', 3694, 21419, 194094, 40],
   ['/carnets', 3441, 19045, 165516, 40],
   ['/journal-criblage-eor', 2574, 9995, 153012, 40],
   ['/atlas/', 3239, 18696, 176927, 46],
@@ -76,7 +79,7 @@ const budgets = [
   // Lot 108 (9 novembre 2026, décision du DG) : menu mobile arabe, en-tête mobile de 160 à 64 px ; le premier écran montre
   // plus de contenu, la CSS critique écrite dans la page reprend donc plus de règles existantes (+15 !important, +486 :not(#…), +8 003 octets).
   ['/ar-societe', 2554, 21103, 75091, 40],
-  ['/essentiel', 3277, 18358, 134314, 40],
+  ['/essentiel', 3277, 18358, 136855, 40],
 ];
 
 const notIdPattern = /:not\(#[\w-]+\)/g;

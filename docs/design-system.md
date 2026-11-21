@@ -277,3 +277,27 @@ Réseau de stations (84) et Nos activités (13), dans des styles écrits dans la
   jeux de CSS critique.
 
 Contrôles : `scripts/test_small_text.mjs`, `qa/mobile-audit-fixes.spec.js`.
+
+## Panneau « Activités » de l’en-tête (21 novembre 2026, décision du DG)
+
+Question posée : migrer vers un méga-menu comme les majors ? Relevé des en-têtes le 21 novembre (Eni ~400 liens, TotalEnergies
+~100 derrière 11 panneaux, BP six entrées à panneau, Shell et Equinor un bouton « Menu ») : réponse non, le site n’a ni le volume
+ni les actifs qui justifient un méga-menu. Option retenue par le DG : **un seul panneau, sous « Activités »**.
+
+- Contenu : les quatre métiers de l’accueil (Produire, Transporter, Raffiner & distribuer, Transformer, avec leur segment) et la
+  vue d’ensemble. Données : clé `panel` de l’en-tête dans `assets/data/navigation.json` (FR et EN). Site principal seulement :
+  le Centre de Connaissances garde son en-tête à sept liens.
+- Balisage (`lib/main-nav.js`) : « Activités » reste un lien ; un bouton voisin `button.et-sub-tog` (`aria-expanded`,
+  `aria-controls`, nom accessible) ouvre `div.et-sub` ; les deux portent `hidden` jusqu’à ce que `nav_a.js` révèle le bouton —
+  sans JavaScript, l’en-tête est celui d’avant. Classes neuves : la logique des méga-menus du lot 80, encore dans `nav_a.js`, ne
+  les voit pas. Le métier de la page courante est marqué `aria-current="page"`.
+- Comportement (`nav_a.js`) : à partir de 1 241 px, ouverture au survol (pointeur souris seulement, `pointerType`) et au clic, fermeture par Échap (focus rendu au bouton),
+  clic ailleurs ou sortie du focus ; le panneau part du bas de la barre, un pont invisible garde le survol. Dans le tiroir mobile :
+  accordéon, bouton de 44 px.
+- Styles : bloc `#et-sub-css` écrit dans l’en-tête (2 541 octets, aucun `!important`, aucune chaîne `:not(#…)`) ; spécificité
+  mesurée au-dessus des deux règles concurrentes (`html #nav.pn .pn-item`, liens `html.et-jlight a:not(#_)…`). Fond crème et
+  encre en thème clair, encre et textes clairs en thème sombre ; contrastes mesurés de 5,9:1 à 17:1. Plafonds de CSS dans la page
+  relevés d’autant sur les sept pages du site principal du budget.
+
+Contrôles : `scripts/test_main_nav.mjs`, `qa/activities-panel.spec.js` (préfixe « mega-menu — », tourne sur chaque PR),
+`qa/mega-menu-contract.spec.js`.

@@ -25,7 +25,7 @@ const removed = /Gouvernance|Governance|Publications|Atlas|FAQ|Communiqués|Pres
 
 for (const [path, d] of Object.entries(defs)) {
   for (const width of widths) {
-    test(`header — five plain links, one button, no dropdown (${path} at ${width}px)`, async ({ page }) => {
+    test(`header — five links, one button, one Activities panel (${path} at ${width}px)`, async ({ page }) => {
       await page.setViewportSize({ width, height: 900 });
       const response = await page.goto(new URL(path, base).href, { waitUntil: 'domcontentloaded', timeout: 45000 });
       expect(response && response.status(), path).toBe(200);
@@ -38,6 +38,9 @@ for (const [path, d] of Object.entries(defs)) {
       }
       await expect(page.locator('#navLinks .nav-trigger[aria-controls]')).toHaveCount(0);
       await expect(page.locator('#nav .nx-mega')).toHaveCount(0);
+      // 21 novembre 2026 (décision du DG) : un seul panneau, sous « Activités » (qa/activities-panel.spec.js).
+      await expect(page.locator('#nav [data-et-sub]')).toHaveCount(1);
+      await expect(page.locator('#navLinks > .nav-item').nth(1)).toHaveAttribute('data-et-sub', '');
       const report = await page.evaluate(() => {
         const nav = document.getElementById('nav');
         const bar = [...nav.querySelectorAll('.nav-in a[href], .nx-util a[href]')];
@@ -126,7 +129,8 @@ test('header — the current page is marked and keyboard focus reaches every lin
   await expect(page.locator('#navLinks a.nx-direct[aria-current="page"]')).toHaveText('Vision');
   const first = page.locator('#navLinks a.nx-direct').first();
   await first.focus();
-  for (let i = 0; i < 4; i++) await page.keyboard.press('Tab');
+  // 21 novembre 2026 : le bouton du panneau « Activités » est un arrêt de tabulation de plus, entre « Activités » et « Impact ».
+  for (let i = 0; i < 5; i++) await page.keyboard.press('Tab');
   const focused = await page.evaluate(() => document.activeElement && document.activeElement.textContent.trim());
   expect(focused).toBe('Investisseurs');
 });
