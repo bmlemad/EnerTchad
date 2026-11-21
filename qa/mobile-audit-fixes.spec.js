@@ -113,3 +113,22 @@ for (const path of ['/nos-activites', '/nos-activites-en']) {
     }
   });
 }
+
+// 21 novembre 2026 : l'accueil anglais ne chargeait pas modern-home-2026.js ; ses six sections, masquées jusqu'à leur apparition
+// à l'écran ([data-et-reveal], opacité 0), restaient invisibles. Sans JavaScript, les deux accueils restaient vides sous le héros.
+for (const path of ['/', '/index-en']) {
+  for (const js of [true, false]) {
+    test(`mobile navigation — home sections become visible ${path} ${js ? 'with' : 'without'} JavaScript`, async ({ browser }) => {
+      const context = await browser.newContext({ viewport: { width: 1440, height: 900 }, javaScriptEnabled: js });
+      const page = await context.newPage();
+      await page.goto(new URL(path, base).href, { waitUntil: 'load', timeout: 45000 });
+      const sections = page.locator('main > section[data-et-reveal]');
+      expect(await sections.count(), path + ' revealed sections').toBeGreaterThanOrEqual(5);
+      for (let i = 0; i < await sections.count(); i++) {
+        await sections.nth(i).scrollIntoViewIfNeeded();
+        await expect.poll(() => sections.nth(i).evaluate(s => Number(getComputedStyle(s).opacity)), { message: `${path} section ${i}`, timeout: 4000 }).toBeGreaterThan(0.95);
+      }
+      await context.close();
+    });
+  }
+}
