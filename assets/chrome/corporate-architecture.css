@@ -7,7 +7,7 @@
 .et-architecture-context{display:flex;align-items:center;flex-wrap:wrap;gap:12px 24px;max-width:1200px;margin:32px auto;padding:20px 24px;border-block:1px solid currentColor;font-size:.92rem;line-height:1.5}
 .et-architecture-context span{font-weight:700}
 .et-architecture-context a{display:inline-flex;align-items:center;min-height:44px;text-decoration:underline;text-underline-offset:4px;color:inherit}
-@media(min-width:1241px) and (max-width:1450px){#nav{--et-corporate-nav-size:12px;--et-corporate-nav-pad:6px}}
+/* 21 novembre 2026 (revue des en-têtes) : libellés du menu à 14 px sur ordinateur (12 px de 1241 à 1450 px, 13 px au-delà, auparavant ; au-delà de 1450 px, la taille vient de la valeur de repli écrite sur chaque lien par lib/main-nav.js). Mesuré à 1241 px, cas le plus serré : les sept liens du Centre tiennent sur une ligne avec 43 px de marge avant les outils. */@media(min-width:1241px) and (max-width:1450px){#nav{--et-corporate-nav-size:14px;--et-corporate-nav-pad:7px}}
 @media(max-width:1240px){#nav{--et-corporate-nav-size:17px;--et-corporate-nav-pad:10px;--et-architecture-columns:1fr;--et-architecture-panel-columns:1fr}#nav .et-architecture-groups{display:block!important}#nav .et-architecture-group+.et-architecture-group{margin-top:20px;padding-top:16px;border-top:1px solid currentColor}.et-architecture-context{margin:24px 16px;padding:16px 0}}
 .foot-resources{display:flex;align-items:center;flex-wrap:wrap;gap:4px 28px;margin-top:8px;padding:14px 0;border-top:1px solid rgba(255,255,255,.08);font-size:.92rem;color:var(--muted)}
 .foot-resources .foot-resources-t{font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
