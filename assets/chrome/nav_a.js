@@ -365,3 +365,37 @@ try{(function(){
  return {cycle:cycle,bind:bind};
 });
 /* et-mobile-focus:end */
+
+/* 21 novembre 2026 (décision du DG) : panneau « Activités » de l'en-tête (lib/main-nav.js). Le bouton voisin du lien est révélé ici :
+   sans JavaScript, « Activités » reste un simple lien. À partir de 1 241 px : ouverture au survol et au clic, fermeture par Échap, clic
+   ailleurs ou sortie du focus. Dans le tiroir mobile : accordéon au clic. */
+;(function(){try{
+  var items=document.querySelectorAll('#nav [data-et-sub]');if(!items.length)return;
+  var wide=window.matchMedia('(min-width:1241px)');
+  /* Survol : seuls les pointeurs souris ouvrent le panneau (pointerType), le toucher passe par le bouton. La requête (hover:hover)
+     n'est pas fiable (fausse en QA de CI, et sur des portables tactiles) : elle n'est pas utilisée. */
+  [].forEach.call(items,function(item){
+    var btn=item.querySelector('.et-sub-tog'),panel=item.querySelector('.et-sub'),timer=0,byHover=false;
+    if(!btn||!panel)return;
+    btn.hidden=false;
+    function set(open){btn.setAttribute('aria-expanded',open?'true':'false');panel.hidden=!open;if(!open)byHover=false;}
+    btn.addEventListener('click',function(){
+      if(!panel.hidden&&byHover){byHover=false;return;}
+      set(panel.hidden);
+    });
+    item.addEventListener('keydown',function(e){
+      if(e.key==='Escape'&&!panel.hidden){set(false);btn.focus();e.stopPropagation();}
+    });
+    item.addEventListener('focusout',function(e){if(wide.matches&&!item.contains(e.relatedTarget))set(false);});
+    document.addEventListener('click',function(e){if(wide.matches&&!panel.hidden&&!item.contains(e.target))set(false);});
+    item.addEventListener('pointerenter',function(e){
+      if(!wide.matches||e.pointerType!=='mouse')return;clearTimeout(timer);
+      if(panel.hidden){set(true);byHover=true;}
+    });
+    item.addEventListener('pointerleave',function(e){
+      if(!wide.matches||e.pointerType!=='mouse')return;clearTimeout(timer);
+      timer=setTimeout(function(){if(!item.contains(document.activeElement)||byHover)set(false);},180);
+    });
+    if(wide.addEventListener)wide.addEventListener('change',function(){set(false);});
+  });
+}catch(e){}})();
