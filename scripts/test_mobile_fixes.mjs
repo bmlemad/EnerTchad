@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { withMobileFixes, TAGLINE_STYLE, BAND_IMAGE_STYLE, BACK_TO_TOP_STYLE } from '../lib/mobile-fixes.js';
+import { withMobileFixes, TAGLINE_STYLE, BAND_IMAGE_STYLE, BACK_TO_TOP_STYLE, REVEAL_NOSCRIPT } from '../lib/mobile-fixes.js';
 
 // Audit design du 20 novembre 2026 : slogan du pied de page et image des bandes immersives sur mobile.
 test('mobile fixes — footer tagline is no longer capped, header tagline is untouched', () => {
@@ -33,6 +33,19 @@ test('mobile fixes — back-to-top button reads its display from --et-totop', ()
   assert.equal(withMobileFixes(out), out, 'idempotent');
   const css = readFileSync(new URL('../assets/chrome/audience-consent.js', import.meta.url), 'utf8');
   assert.match(css, /@media\(max-width:768px\)\{:root\{--et-totop:none\}\}/);
+});
+
+test('mobile fixes — home pages get the no-JavaScript reveal fallback, once', () => {
+  for (const file of ['index.html', 'index-en.html']) {
+    const html = readFileSync(new URL(`../${file}`, import.meta.url), 'utf8');
+    assert.ok(!/<style\b/i.test(html), `${file} source keeps no <style> (scripts/check_integrity.py)`);
+    const out = withMobileFixes(html);
+    assert.equal(out.split(REVEAL_NOSCRIPT).length - 1, 1, file);
+    assert.ok(out.indexOf(REVEAL_NOSCRIPT) < out.indexOf('</head>'), `${file} in the head`);
+    assert.equal(withMobileFixes(out), out, `${file} idempotent`);
+  }
+  const inner = readFileSync(new URL('../societe.html', import.meta.url), 'utf8');
+  assert.ok(!withMobileFixes(inner).includes('et-reveal-noscript'), 'inner pages untouched');
 });
 
 test('mobile fixes — non-string input is returned as is', () => {
