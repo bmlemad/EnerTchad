@@ -291,7 +291,7 @@ ni les actifs qui justifient un méga-menu. Option retenue par le DG : **un seul
   `aria-controls`, nom accessible) ouvre `div.et-sub` ; les deux portent `hidden` jusqu’à ce que `nav_a.js` révèle le bouton —
   sans JavaScript, l’en-tête est celui d’avant. Classes neuves : la logique des méga-menus du lot 80, encore dans `nav_a.js`, ne
   les voit pas. Le métier de la page courante est marqué `aria-current="page"`.
-- Comportement (`nav_a.js`) : à partir de 1 241 px, ouverture au survol et au clic, fermeture par Échap (focus rendu au bouton),
+- Comportement (`nav_a.js`) : à partir de 1 241 px, ouverture au survol (pointeur souris seulement, `pointerType`) et au clic, fermeture par Échap (focus rendu au bouton),
   clic ailleurs ou sortie du focus ; le panneau part du bas de la barre, un pont invisible garde le survol. Dans le tiroir mobile :
   accordéon, bouton de 44 px.
 - Styles : bloc `#et-sub-css` écrit dans l’en-tête (2 541 octets, aucun `!important`, aucune chaîne `:not(#…)`) ; spécificité
