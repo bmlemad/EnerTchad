@@ -1175,3 +1175,17 @@ footer.pft .fn-form :is(input,button),footer.pft .foot-social a{border-radius:0!
 /* Pages arabes : elles ne chargent pas bundle_head_b2.css, donc @layer verre y est declaree avant et-glass et ses
    !important priment. Les colonnes a plat s'ecrivent donc aussi dans verre. La devise arabe n'est pas touchee. */
 @layer verre{footer.pft.pft-ar .foot-col{background:transparent!important;border:0!important;border-top:1px solid rgba(255,255,255,.16)!important;border-radius:0!important;box-shadow:none!important;padding:20px 0 0!important}}
+
+/* Centre de Connaissances (21 novembre 2026, revue des en-têtes) : signes distinctifs de son en-tête. Classes neuves posées par
+   lib/main-nav.js ; aucune déclaration forcée, aucune règle du gabarit disputée. */
+.et-centre-line{position:absolute;left:0;right:0;top:0;height:3px;background:#C9A24A;z-index:3;pointer-events:none}
+.et-centre-name{display:none}
+#nav[data-et-space="centre"] .brand .et-tag small{opacity:1;scale:1.14;transform-origin:left center}
+#nav[data-et-space="centre"] .nx-invest::before{content:"\2190\00a0"}
+@media (max-width:768px){
+#nav[data-et-space="centre"] .brand{position:relative;translate:0 -6px}
+.et-centre-name{display:block;position:absolute;left:47px;top:calc(100% - 3px);font:600 9px/1 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap;pointer-events:none}
+}
+@media (max-width:400px){.et-centre-name{letter-spacing:.06em}}
+/* 360 px et moins : le nom passerait sous le bouton de thème (mesuré à 320 px) ; le filet doré reste seul. */
+@media (max-width:360px){.et-centre-name{display:none}#nav[data-et-space="centre"] .brand{translate:none}}
