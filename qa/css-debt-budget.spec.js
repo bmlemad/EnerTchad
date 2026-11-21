@@ -47,8 +47,11 @@ const budgets = [
   // Panneau « Activités » (21 novembre 2026, décision du DG, comparaison avec les majors) : bloc #et-sub-css écrit dans l'en-tête des
   // pages du site principal (lib/main-nav.js), 2 541 octets, sans !important ni chaîne :not(#…). Les sept pages du site principal
   // concernées (accueils, /amont/, /aval/raffinage, /carrieres, /contact, /essentiel) étaient exactement à leur plafond : relevé de 2 541 octets. Les pages du Centre de Connaissances n'ont pas de panneau.
-  ['/', 2696, 9892, 121581, 44], // lot 106-A : accueil refondu (mesure du 8 novembre 2026, hors contrat de design)
-  ['/index-en', 2698, 9894, 121785, 44], // lot 106-B : accueil EN refondu (mesure du 8 novembre 2026, hors contrat de design)
+  // Accueils (21 novembre 2026, correctif) : l'accueil anglais ne chargeait pas modern-home-2026.js et ses six sections restaient
+  // invisibles ; sans JavaScript, les deux accueils restaient vides sous le héros. Bloc <noscript><style id="et-reveal-noscript">,
+  // 90 octets, lu par ce budget dans le source mais appliqué seulement sans JavaScript : plafonds des deux accueils relevés de 90 octets.
+  ['/', 2696, 9892, 121671, 44], // lot 106-A : accueil refondu (mesure du 8 novembre 2026, hors contrat de design)
+  ['/index-en', 2698, 9894, 121875, 44], // lot 106-B : accueil EN refondu (mesure du 8 novembre 2026, hors contrat de design)
   // Lot 113 (10 novembre 2026, décision du DG) : direction immersive, phase B ; scène « conviction » des pôles posée au build par
   // lib/immersif-poles.js : +7 !important (verre, texte clair, hauteur de la photo ; couche et-verre) et +1 943 octets de CSS en ligne.
   // Lot 145 (17 novembre 2026, décision du DG après mesure, registre 1442) : les 9 pages ci-dessous dépassaient depuis les lots décidés
