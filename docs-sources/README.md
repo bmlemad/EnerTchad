@@ -8,7 +8,7 @@ Generation : Chromium headless -> PDF (printBackground, marges nulles).
 - brochure_print_en.html -> /Brochure_EnerTchad_EN.pdf (régénéré au lot 24, octobre 2026)
 - fiche_ar.html -> /Fiche_EnerTchad_AR.pdf (régénéré au lot 24, octobre 2026)
 - fiche_intermediaire.html -> /Fiche_Technique_Intermediaire_EnerTchad.pdf (régénéré au lot 25, octobre 2026 ; date de la fiche corrigée)
-- fiche_investisseur.html -> /Fiche_Investisseur_EnerTchad.pdf (lot 18 ; régénéré au lot 98, novembre 2026 : 4 + 4, millésime)
+- fiche_investisseur.html -> /Fiche_Investisseur_EnerTchad.pdf (lot 18 ; régénéré au lot 98, novembre 2026 : 4 + 4, millésime ; 21 novembre 2026 : phrase Monnaies)
 - fiche_aval.html -> /Fiche_Technique_Aval_EnerTchad.pdf (lot 22, octobre 2026 ; contenu repris des pages /aval)
 - fiche_amont_en.html -> /Fiche_Technique_Amont_EnerTchad_EN.pdf (lot 23, octobre 2026 ; contenu repris des pages Amont EN : /pole-amont-en, /amont/*-en ; régénéré au lot 25 : éthique, délai de réponse, source du taux d'eau)
 - fiche_aval_en.html -> /Fiche_Technique_Aval_EnerTchad_EN.pdf (17 novembre 2026 ; traduction de fiche_aval.html, même contenu, page 2 légèrement resserrée ; police DejaVu Sans imposée au rendu comme pour les fiches publiées)
