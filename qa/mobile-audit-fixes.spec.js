@@ -90,3 +90,26 @@ for (const path of ['/', '/gouvernance', '/aval/', '/index-en']) {
     }
   });
 }
+
+// Audit design du 20 novembre 2026 : hors étiquettes en capitales, aucun texte de ces pages ne se lit sous 12 px.
+for (const path of ['/nos-activites', '/nos-activites-en']) {
+  test(`mobile navigation — reading text is at least 12 px ${path}`, async ({ browser }) => {
+    for (const width of [390, 1440]) {
+      const page = await at(browser, path, width);
+      const small = await page.evaluate(() => {
+        const found = [], seen = new Set(), walker = document.createTreeWalker(document.querySelector('main'), NodeFilter.SHOW_TEXT);
+        for (let node; (node = walker.nextNode());) {
+          const el = node.parentElement, text = node.nodeValue.trim();
+          if (text.length < 2 || seen.has(el) || el.closest('svg,[aria-hidden="true"]')) continue;
+          seen.add(el);
+          const style = getComputedStyle(el), box = el.getBoundingClientRect();
+          if (!box.width || !box.height || style.visibility === 'hidden' || style.textTransform === 'uppercase') continue;
+          if (parseFloat(style.fontSize) < 12) found.push(`${style.fontSize} ${text.slice(0, 30)}`);
+        }
+        return found;
+      });
+      expect(small, `${path} ${width}`).toEqual([]);
+      await page.close();
+    }
+  });
+}

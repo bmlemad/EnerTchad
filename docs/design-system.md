@@ -264,3 +264,16 @@ intactes) :
 Seules des propriétés sans état de survol sont posées en ligne ; les couleurs restent aux feuilles. Ne sont pas des boutons
 d’action et gardent leur forme : les pastilles (filtres de la boutique, canaux de la page Contact) et les tuiles de liens.
 Contrôle : `qa/button-coherence.spec.js`.
+
+## Petits textes : 12 px au moins pour ce qui se lit (audit design du 20 novembre 2026)
+
+Mesure sur 24 pages : 863 textes sous 12 px à 390 px, dont 770 sont des étiquettes en capitales (`.pp-k` et libellés de
+cartes, 11,5 px) — un jeton du design system, conservé. Les 93 textes en minuscules se trouvaient presque tous sur deux pages :
+Réseau de stations (84) et Nos activités (13), dans des styles écrits dans la page (0,6875 à 0,74 rem).
+
+- `aval/reseau(-en).html` et `nos-activites(-en).html` : toute taille en rem sous 0,75 passe à 0,75 rem (12 px).
+- Nos activités : plus aucun texte en minuscules sous 12 px. Réseau de stations : 84 → 21 ; les 21 restants tiennent à des
+  feuilles liées (`premium-chrome.css`, `.et-product-specs span` à 0,72 rem…), non modifiées ici pour ne pas ré-extraire les
+  jeux de CSS critique.
+
+Contrôles : `scripts/test_small_text.mjs`, `qa/mobile-audit-fixes.spec.js`.
