@@ -139,8 +139,8 @@ test('secondary pages mark their header section, and never two entries at once',
 // d'ensemble, FR et EN, sur le site principal seulement ; le Centre de Connaissances n'en a pas.
 test('Activities panel — four business lines and the overview, main site only', () => {
   const expect = {
-    fr: { file: 'societe.html', titles: ['Produire', 'Transporter', 'Raffiner & distribuer', 'Transformer'], hrefs: ['/amont/', '/intermediaire/', '/aval/', '/petrochimie/'], overview: '/nos-activites' },
-    en: { file: 'societe-en.html', titles: ['Produce', 'Transport', 'Refine & distribute', 'Transform'], hrefs: ['/pole-amont-en', '/pole-intermediaire-en', '/pole-aval-en', '/pole-enerchimie-en'], overview: '/nos-activites-en' }
+    fr: { file: 'societe.html', titles: ['Produire', 'Transporter', 'Transformer', 'Distribuer'], hrefs: ['/amont/', '/intermediaire/', '/petrochimie/', '/aval/'], overview: '/nos-activites' },
+    en: { file: 'societe-en.html', titles: ['Produce', 'Transport', 'Transform', 'Distribute'], hrefs: ['/pole-amont-en', '/pole-intermediaire-en', '/pole-enerchimie-en', '/pole-aval-en'], overview: '/nos-activites-en' }
   };
   for (const [lang, e] of Object.entries(expect)) {
     assert.deepEqual(nav.header[lang].panel.links.map(l => l[0]), e.titles, lang);

@@ -1,6 +1,6 @@
 const {test,expect}=require('@playwright/test');
 const base=process.env.SITE_URL||'https://enertchad.com/';
-const routes=[['/amont/','/pole-amont-en','upstream'],['/intermediaire/','/pole-intermediaire-en','transport'],['/aval/','/pole-aval-en','refining'],['/petrochimie/','/pole-enerchimie-en','petrochemicals'],['/enerconseils/','/pole-enerconseils-en','engineering'],['/greentech/','/pole-greentech-en','transition']];
+const routes=[['/amont/','/pole-amont-en','upstream'],['/intermediaire/','/pole-intermediaire-en','transport'],['/aval/','/pole-aval-en','clients'],['/petrochimie/','/pole-enerchimie-en','petrochemicals'],['/enerconseils/','/pole-enerconseils-en','engineering'],['/greentech/','/pole-greentech-en','transition']];
 for(const en of [false,true])for(const width of [320,1440])test(`mobile navigation — conceptual image collection ${en?'en':'fr'} ${width}`,async({browser})=>{
   test.setTimeout(180000);
   const page=await browser.newPage({viewport:{width,height:900}});

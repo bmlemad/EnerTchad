@@ -7,8 +7,8 @@ const { test, expect } = require('@playwright/test');
 
 const base = process.env.SITE_URL || 'https://enertchad.com/';
 const sets = {
-  '/societe': { titles: ['Produire', 'Transporter', 'Raffiner & distribuer', 'Transformer'], hrefs: ['/amont/', '/intermediaire/', '/aval/', '/petrochimie/'], overview: '/nos-activites' },
-  '/index-en': { titles: ['Produce', 'Transport', 'Refine & distribute', 'Transform'], hrefs: ['/pole-amont-en', '/pole-intermediaire-en', '/pole-aval-en', '/pole-enerchimie-en'], overview: '/nos-activites-en' }
+  '/societe': { titles: ['Produire', 'Transporter', 'Transformer', 'Distribuer'], hrefs: ['/amont/', '/intermediaire/', '/petrochimie/', '/aval/'], overview: '/nos-activites' },
+  '/index-en': { titles: ['Produce', 'Transport', 'Transform', 'Distribute'], hrefs: ['/pole-amont-en', '/pole-intermediaire-en', '/pole-enerchimie-en', '/pole-aval-en'], overview: '/nos-activites-en' }
 };
 const open = async (browser, path, width, mobile = false) => {
   const context = await browser.newContext({ viewport: { width, height: 900 }, hasTouch: mobile, isMobile: mobile });
