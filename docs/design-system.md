@@ -248,3 +248,19 @@ les corrections sont des styles en ligne posés à l’export (`lib/mobile-fixes
   `!important` ni chaîne de sélecteurs, hors feuilles liées (leurs jeux de CSS critique ne bougent pas).
 
 Contrôle : `qa/mobile-audit-fixes.spec.js`.
+
+## Boutons d’action : un seul gabarit (audit design du 20 novembre 2026)
+
+Le bouton d’action maison est `.pp-btn` : angles vifs, 56 px de haut, Inter 16 px / 600 — or clair sur fond sombre
+(`.pp-btn-light`), or ou encre sur fond clair (`.pp-btn-gold`, `.pp-btn-ink`). Inventaire mesuré sur 25 pages : 115 boutons,
+19 variantes, dont trois écarts ramenés au gabarit par `lib/button-coherence.js` (styles en ligne à l’export, feuilles liées
+intactes) :
+
+- `.mod-button` (« Discuter de cette étude → ») : rayon de 8 px → angles vifs ;
+- `#ctSend` (envoi du formulaire de contact) : rayon de 10 px, police système, 48 px, collé au texte → angles vifs, Inter, 56 px,
+  16 px d’air au-dessus ;
+- `.et-primary` du héros de l’accueil : 54 px → 56 px, comme ses deux voisins.
+
+Seules des propriétés sans état de survol sont posées en ligne ; les couleurs restent aux feuilles. Ne sont pas des boutons
+d’action et gardent leur forme : les pastilles (filtres de la boutique, canaux de la page Contact) et les tuiles de liens.
+Contrôle : `qa/button-coherence.spec.js`.
