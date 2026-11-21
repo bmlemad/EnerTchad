@@ -86,7 +86,7 @@ class HomepageReview(unittest.TestCase):
   self.assertIn('Building an integrated energy group with Chadian capital.' if en else 'Construire un groupe énergétique intégré à capitaux tchadiens.',vision)
   self.assertIn('company in formation' if en else 'société en constitution',vision)
   chain=re.search(r'<nav class="et-chain".*?</nav>',main,re.S)[0]
-  self.assertEqual(re.findall(r'<strong>([^<]+)</strong>',chain),['Produce','Transport','Refine &amp; distribute','Transform'] if en else ['Produire','Transporter','Raffiner &amp; distribuer','Transformer'])
+  self.assertEqual(re.findall(r'<strong>([^<]+)</strong>',chain),['Produce','Transport','Transform','Distribute'] if en else ['Produire','Transporter','Transformer','Distribuer'])
   investors=re.search(r'<section id="investisseurs-accueil".*?</section>',main,re.S)[0]
   self.assertEqual(investors.count('<li>'),3)
   self.assertIn('No subscription open to date' if en else 'Aucune souscription ouverte à ce jour',investors)
