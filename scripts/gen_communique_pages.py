@@ -217,7 +217,14 @@ def build(lang):
         head = head_for(page, lang, it, desc)
         main = main_for(lang, it, items[i - 1] if i else None, items[i + 1] if i + 1 < len(items) else None, about, box, contact)
         main = main.replace('</main>', sub_js + '\n</main>')
-        put(f'communique/{it["slug"]}{t["suffix"]}.html', head + pre + main + post)
+        # 20 novembre 2026 : l'en-tête repris de la liste envoyait le sélecteur de langue vers la liste de l'autre langue ; un script
+        # corrigeait le lien après chargement. Il mène désormais au communiqué traduit dès le HTML (tous les liens de l'en-tête).
+        other_list = '/communiques' if lang == 'en' else '/communiques-en'
+        other_page = f'/communique/{it["slug"]}{"" if lang == "en" else "-en"}'
+        nav_end = pre.find('</nav>')
+        assert f'href="{other_list}"' in pre[:nav_end], 'sélecteur de langue introuvable dans l’en-tête'
+        pre_it = pre[:nav_end].replace(f'href="{other_list}"', f'href="{other_page}"') + pre[nav_end:]
+        put(f'communique/{it["slug"]}{t["suffix"]}.html', head + pre_it + main + post)
     # liste : titre cliquable + lien « lire le communiqué » (idempotent)
     new = page
     for it in items:
