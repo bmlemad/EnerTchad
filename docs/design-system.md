@@ -326,3 +326,21 @@ temps de mise en page identiques à l'erreur de mesure près, avec ou sans rendu
 - Jeux de CSS critique : empreintes mises à jour sur les 31 jeux. Aucun n'embarquait les règles retirées.
 
 Contrôle : `qa/page-length-stable.spec.js` (préfixe « mobile navigation — », tourne sur chaque PR).
+
+## QA Engagements (22 novembre 2026)
+
+Pages `/engagements` et `/engagements-en`, script `scripts/align_engagements_qa.py` (rejouable).
+
+- Doctrine : la « continuité du corridor Doba ↔ Kribi » quitte la matérialité financière, remplacée par l'approvisionnement
+  fiable du marché national (la stratégie exclut le pipeline d'export).
+- Référentiels : TCFD, dissoute en 2023, remplacée par IFRS S2 (ISSB) pour la note climat, ici et sur Rapports ; ajout du
+  décret tchadien n° 630/PR/PM/MEERH/2010 (études d'impact) et des Normes de performance de la SFI.
+- Tableau des indicateurs : base « 100 % (équipe fondatrice) », non vérifiée, devient « non publiée » ; base « 0 % »
+  renouvelables devient « Néant — aucun site ». Sous 640 px, chaque ligne devient une carte étiquetée (`data-label`).
+- Nouvelle section 06 « Plan environnemental » au conditionnel : étude d'impact, consultation publique, PGES, suivi et
+  publication ; eau, air, sols, biodiversité, urgence, fin de vie.
+- Structure : la grille « Parcourir cette page » doublait la barre de navigation et part ; numérotation 01 à 10 ; la section
+  « Preuve » passe avant l'appel final.
+- Petits textes : sous la règle du site (hors étiquettes en capitales), aucun texte de lecture sous 12 px ; rien changé.
+
+Contrôle : `qa/engagements-qa.spec.js` (préfixes « disclosure controls keep » et « mobile navigation — », sur chaque PR).
