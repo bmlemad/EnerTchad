@@ -513,12 +513,7 @@ html:not(.et-plight):not(.et-jlight) .et-proj-legend span,html:not(.et-plight):n
 }
 
 
-@supports(content-visibility:auto){
-  main.ppl>section:nth-of-type(n+3):not(:nth-last-of-type(-n+2)){
-    content-visibility:auto;
-    contain-intrinsic-size:auto 680px;
-  }
-}
+
 
 /* Lot 119 (12 novembre 2026) : arrivee sur une ancre. Quand l'adresse vise un element (:target), la page est rendue en
    entier avant le saut : sinon les sections differees au-dessus de la cible se mesurent apres coup et le titre vise glisse
