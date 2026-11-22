@@ -199,8 +199,8 @@
     },
     {
       "id": "technical-downstream",
-      "title_fr": "Fiche technique Raffinage & distribution",
-      "title_en": "Refining & Distribution technical factsheet",
+      "title_fr": "Fiche technique Produits raffinés",
+      "title_en": "Refined products technical factsheet",
       "href": "/Fiche_Technique_Aval_EnerTchad.pdf",
       "format": "PDF",
       "language": [
@@ -214,8 +214,8 @@
     },
     {
       "id": "technical-downstream-en",
-      "title_fr": "Fiche technique Raffinage & distribution — version anglaise",
-      "title_en": "Refining & Distribution technical factsheet",
+      "title_fr": "Fiche technique Produits raffinés — version anglaise",
+      "title_en": "Refined products technical factsheet",
       "href": "/Fiche_Technique_Aval_EnerTchad_EN.pdf",
       "format": "PDF",
       "language": [
