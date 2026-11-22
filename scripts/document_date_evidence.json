@@ -5,18 +5,18 @@
     "date_source": "PDF page 1"
   },
   "/Point_Etape_EnerTchad_2026.pdf": {
-    "git_blob_sha": "3218d766b60cfa9fee88e4ad754d5fd5a618e7a1",
+    "git_blob_sha": "26f2f4fb98da8a11898461d0ca4b04343de5de1e",
     "document_date": "2026-11",
     "date_source": "PDF page 1"
   },
   "/Brochure_EnerTchad.pdf": {
-    "git_blob_sha": "818ef6d8d368e6118f0cd8d71079d477212a35dc",
+    "git_blob_sha": "12457c9554bdc28a7ad073d1535329d6fa449e51",
     "document_date": "2026-09",
     "document_updated": "2026-11",
     "date_source": "PDF page 1"
   },
   "/Brochure_EnerTchad_EN.pdf": {
-    "git_blob_sha": "4620c2ce2355f393a10fc0749179d7cb60262e97",
+    "git_blob_sha": "662fd90d1bbe07ef8686d96cabe5d425b7081656",
     "document_date": "2026-09",
     "document_updated": "2026-11",
     "date_source": "PDF page 1"
@@ -37,8 +37,9 @@
     "date_source": "PDF page 1"
   },
   "/Fiche_Technique_Aval_EnerTchad.pdf": {
-    "git_blob_sha": "2a20715939838e3fb20b910364c5d5995f744c61",
+    "git_blob_sha": "64fff998343f16cbe625f7b2093d203bfd1ba99b",
     "document_date": "2026-10",
+    "document_updated": "2026-11",
     "date_source": "PDF page 1"
   },
   "/Fiche_Technique_Amont_EnerTchad_EN.pdf": {
@@ -59,8 +60,9 @@
     "date_source": "PDF page 1"
   },
   "/Fiche_Technique_Aval_EnerTchad_EN.pdf": {
-    "git_blob_sha": "b64e51418f4afa5426b170f85c524494278ca067",
+    "git_blob_sha": "0d32814acd852c682ba7a4b8113feb32b64fd5c1",
     "document_date": "2026-10",
+    "document_updated": "2026-11",
     "date_source": "PDF page 1"
   }
 }
