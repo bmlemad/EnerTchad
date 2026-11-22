@@ -15,12 +15,14 @@ for(const en of [false,true])for(const width of [320,1440]){
     const page=await browser.newPage({viewport:{width,height:900}});
     const lang=en?'en':'fr',suffix=en?'-en':'';
     await open(page,en?'/boutique/en/clients':'/boutique/clients');
-    // Both themes retain the arrow's contrast in the primary action.
+    // Both themes keep the primary action legible. Since the button audit of 22 November 2026 it carries no arrow
+    // (internal anchor): any remaining decoration must share the label colour.
     for(const theme of ['light','dark']){
       const toggle=page.locator('.et-theme-hdr');
       if((await toggle.getAttribute('aria-pressed'))!==(theme==='dark'?'true':'false'))await toggle.click();
-      const colors=await page.locator('.ec-primary').evaluate(e=>({label:getComputedStyle(e).color,arrow:getComputedStyle(e.querySelector('span')).color}));
+      const colors=await page.locator('.ec-primary').evaluate(e=>{const s=e.querySelector('span');return {label:getComputedStyle(e).color,arrow:s?getComputedStyle(s).color:getComputedStyle(e).color,bg:getComputedStyle(e).backgroundColor}});
       expect(colors.arrow).toBe(colors.label);
+      expect(colors.label).not.toBe(colors.bg);
       await page.screenshot({path:`artifacts/visual-clients-${lang}-${width}-${theme}.png`});
     }
     if(width===320){

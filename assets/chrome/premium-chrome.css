@@ -1023,7 +1023,7 @@ footer.pft .foot-news .fn-alt a{display:inline-block;padding:4px 0}
   .mod-card {min-width:0!important;padding:24px!important;border:1px solid var(--et-glass-line)!important;border-radius:16px!important;background:var(--et-glass-dense)!important;color:var(--et-glass-ink)!important;box-shadow:none!important}
   .mod-card a,.mod-doc-shell a {color:inherit!important;text-underline-offset:4px!important}
   .mod-status {border-inline-start:3px solid #b98a35!important;padding-inline-start:12px!important}
-  .mod-button,.mod-preview,.mod-filters button {display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:10px 16px!important;border:1px solid var(--et-glass-ink)!important;border-radius:8px!important;color:var(--et-glass-ink)!important;background:transparent!important;font:600 .95rem/1.4 Inter,system-ui,sans-serif;text-decoration:none!important;cursor:pointer}
+  .mod-button,.mod-preview,.mod-filters button {display:inline-flex;align-items:center;justify-content:center;min-height:56px;padding:10px 22px!important;border:1px solid var(--et-glass-ink)!important;border-radius:0!important;color:var(--et-glass-ink)!important;background:transparent!important;font:600 1rem/1.4 Inter,system-ui,sans-serif;text-decoration:none!important;cursor:pointer}
   .mod-service-fields {display:grid;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:24px;margin:0!important}
   .mod-service-fields dd {margin:0!important;line-height:1.7}
   .mod-filters {display:grid;grid-template-columns:2fr repeat(3,1fr)!important;gap:16px!important;align-items:end}
