@@ -16,6 +16,7 @@ Generation : Chromium headless -> PDF (printBackground, marges nulles).
 - fiche_amont_en.html : régénéré le 17 novembre 2026 pour corriger « EnerChad » en « EnerTchad » dans le pied de la page 1
 - fiche_amont.html -> /Fiche_Technique_Amont_EnerTchad.pdf (régénéré au lot 25, octobre 2026 ; source du taux d'eau)
 - point_etape_print.html -> /Point_Etape_EnerTchad_2026.pdf (régénéré au lot 98, novembre 2026 : titulaires nommés, 33 carnets)
+  - 22 novembre 2026 (redécoupage des segments : Raffinage & pétrochimie, Distribution) : brochures FR et EN, fiches techniques « Produits raffinés » (ex-Raffinage & distribution) FR et EN et point d’étape régénérés ; impression Chromium headless avec Segoe UI et Consolas rendus en DejaVu Sans et DejaVu Sans Mono (contrôle : la fiche EN inchangée réimprimée ainsi est identique au pixel près à la version publiée).
   - 21 novembre 2026 (doctrine du DG : priorité au marché national, aucun export tant que le Tchad importe ses carburants) : fiche investisseur, fiches Intermédiaire FR et EN et brochures FR et EN régénérées ; le corridor Doba–Kribi y est décrit comme exploité par des tiers et comme option pour un éventuel surplus. Témoin : les cinq sources d’avant modification redonnent des pages identiques au pixel près aux PDF publiés. Le kit presse reprend les deux brochures.
   - 20 novembre 2026 : la fiche investisseur et le point d’étape précisent que la société est unique aujourd’hui et que le groupe intégré est une ambition à terme, comme la page Société ; régénérés avec DejaVu Sans et DejaVu Sans Mono imposées au rendu (témoin : les sources d’avant modification redonnent des pages identiques au pixel près aux PDF publiés). Le kit presse reprend la fiche de presse mise à jour et les brochures publiées le 18 novembre.
 
@@ -47,3 +48,4 @@ Activation (FR et EN ensemble) :
    de la section « Comités & documents », l'index plein texte (assets/chrome/ftx_fr.json, ftx_en.json) et
    le lastmod des deux pages dans sitemap.xml.
 4. Relancer les contrôles (npm run build, audits, axe clair/sombre sur /gouvernance et /gouvernance-en).
+- 22 novembre 2026 : brochures FR et EN et fiches Intermédiaire FR et EN régénérées ; le corridor Doba–Kribi n’est plus une option pour un surplus : aucun brut d’EnerTchad n’y transiterait, un éventuel surplus partirait en produits finis.
