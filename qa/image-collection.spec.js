@@ -27,6 +27,17 @@ for(const en of [false,true])for(const width of [320,1440])test(`mobile navigati
   await clientImage.scrollIntoViewIfNeeded();
   await expect(clientImage).toBeVisible();
   await expect.poll(()=>clientImage.evaluate(e=>e.complete&&e.naturalWidth>0)).toBe(true);
+  // A contained landscape image left most of the tall mobile scene blank.
+  for(const dark of [false,true]){
+    const toggle=page.locator('.et-theme-hdr');
+    if((await toggle.getAttribute('aria-pressed'))!==(dark?'true':'false'))await toggle.click();
+    await expect(clientImage).toHaveCSS('object-fit','cover');
+    const frame=await clientImage.evaluate(e=>{const i=e.getBoundingClientRect(),s=e.closest('.im-scene').getBoundingClientRect();return{imageWidth:i.width,imageHeight:i.height,sceneWidth:s.width,sceneHeight:s.height};});
+    expect(Math.abs(frame.imageWidth-frame.sceneWidth)).toBeLessThanOrEqual(2);
+    expect(Math.abs(frame.imageHeight-frame.sceneHeight)).toBeLessThanOrEqual(2);
+    expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBe(true);
+    await page.screenshot({path:`artifacts/collection-clients-${en?'en':'fr'}-${width}-${dark?'dark':'light'}.png`,animations:'disabled'});
+  }
   await expect(page.locator('.ec-hero h1')).toBeVisible();
   await page.goto(new URL('/credits-photos'+(en?'-en':''),base).href,{waitUntil:'networkidle'});
   await expect(page.locator('#collection-20261117 .cr-item')).toHaveCount(7);
