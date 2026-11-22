@@ -97,23 +97,23 @@
 <circle cx="60" cy="60" fill="none" id="gaugeArc" r="48" stroke="url(#gg)" stroke-dasharray="0 999" stroke-linecap="round" stroke-width="13" transform="rotate(-90 60 60)"></circle>
 <defs><lineargradient id="gg" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#2E86DE"></stop><stop offset="1" stop-color="#B45309"></stop></lineargradient></defs>
 </svg>
-<div class="gauge-c" style="position:relative;margin-top:-160px;height:140px;display:grid;place-items:center;text-align:center"><div><div class="big" id="utilVal">0%</div><div class="lb">taux d’utilisation cible 2030</div></div></div>
+<div class="gauge-c" style="position:relative;margin-top:-160px;height:140px;display:grid;place-items:center;text-align:center"><div><div class="big" id="utilVal">0%</div><div class="lb">taux d’utilisation indicatif</div></div></div>
 </div>
 <div class="thr-bars" id="thrBars"></div>
 </div>
-<div class="thr-note"><strong>Cibles EnerTchad · 2030</strong> · raffinage modulaire déployé · valorisation locale de la molécule · contenu local renforcé.</div>
+<div class="thr-note"><strong>Repères sectoriels indicatifs, non sourcés.</strong> Ce ne sont pas des cibles d’EnerTchad, qui n’exporterait pas de brut : ses cibles sont sur la page <a href="/cibles-2030">Cibles 2030</a>.</div>
 </div>
 </div>
 <!-- APP 2 : REFINING CALCULATOR -->
 <div class="app-panel" data-app="refine">
 <div class="app-card reveal">
 <h3>Calculateur de rendement de raffinage</h3>
-<p class="sub">Estimez la répartition des produits raffinés selon le débit de brut traité dans nos mini-raffineries.</p>
+<p class="sub">Estimez la répartition des produits raffinés selon le débit de brut traité par une mini-raffinerie visée (trains de 500 à 2 000 b/j, jusqu’à quatre trains).</p>
 <div class="ref-grid">
 <div>
 <div class="field-row">
-<label>Brut traité — <span class="field-val" id="crudeVal">20 000</span> b/j</label>
-<input aria-label="Capacité de raffinage (barils par jour)" id="crude" max="40000" min="5000" step="1000" type="range" value="20000"/>
+<label>Brut traité — <span class="field-val" id="crudeVal">2 000</span> b/j</label>
+<input aria-label="Capacité de raffinage (barils par jour)" id="crude" max="8000" min="500" step="250" type="range" value="2000"/>
 </div>
 <div class="field-row">
 <label>Profil de raffinage</label>
