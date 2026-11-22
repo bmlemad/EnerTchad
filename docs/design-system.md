@@ -378,3 +378,19 @@ Contrôles : `qa/button-coherence.spec.js` (géométrie, couleurs, flèches et l
   « Enjeux » (`scripts/align_communautes_nav.py`).
 
 Contrôle : `qa/reseau-communautes.spec.js`.
+
+## Trois polices maison (22 novembre 2026)
+
+Inter (texte, étiquettes), Instrument Serif (titres), JetBrains Mono (données). Relevé avant correction sur 278 pages :
+l'ancienne police d'affichage (`Space Grotesk`, fichiers NationalPark) sur 81 pages (854 éléments : Carnets, planches des
+articles du journal, carte de l'Atlas) et téléchargée sur toutes les pages (1 à 3 fichiers, 11 à 16 Ko chacun) ; la signature
+des accueils en Georgia (une règle `!important` partagée écrasait `var(--ed-serif)`) ; le bouton des préférences d'audience en
+police système.
+
+- `--fd` (police d'affichage historique) vaut Inter dans `bundle_head_b2.css`, `c_ac3d961d5d38.css`, `fond647.css`,
+  `s_9c80e27170.css`, comme déjà dans `pole-premium.css` ; empreintes et valeur mises à jour dans 28 jeux critiques.
+- `lib/mobile-fixes.js` : signature des accueils en `var(--ed-serif)` (style en ligne).
+- `audience-consent.js` : bandeau et bouton des préférences en Inter, bouton à angles vifs.
+- Reste : des étiquettes en `ui-monospace` (police à chasse fixe du système) au lieu de JetBrains Mono sur 88 pages.
+
+Contrôles : `qa/typography-house.spec.js`, `scripts/test_mobile_fixes.mjs`.
