@@ -50,3 +50,4 @@ Activation (FR et EN ensemble) :
 4. Relancer les contrôles (npm run build, audits, axe clair/sombre sur /gouvernance et /gouvernance-en).
 - 22 novembre 2026 : brochures FR et EN et fiches Intermédiaire FR et EN régénérées ; le corridor Doba–Kribi n’est plus une option pour un surplus : aucun brut d’EnerTchad n’y transiterait, un éventuel surplus partirait en produits finis.
 - 22 novembre 2026 : fiches Intermédiaire FR et EN régénérées ; corridor Douala–N’Djamena à 1 842 km (Banque mondiale) au lieu de 1 700 km.
+- 22 novembre 2026 : point d’étape régénéré ; premier site de mini-raffinerie : Moussoro (Barh El Gazel), au lieu de « axe N’Djamena–Djermaya ».
