@@ -366,3 +366,15 @@ texte (lien). Flèche seulement vers l'extérieur (↗) ou pour un téléchargem
 
 Contrôles : `qa/button-coherence.spec.js` (géométrie, couleurs, flèches et libellés sur 12 pages, pilules), et
 `scripts/test_button_coherence.mjs`.
+
+## Réseau de stations et Communautés (22 novembre 2026)
+
+- Réseau de stations (FR, EN) : 11 arrondis différents dans le contenu (13 à 22 px) contre 1 ou 2 (18 px) sur les autres pages
+  de pôle. `scripts/align_reseau_cards.py` ramène à 18 px les arrondis de 12 à 22 px des styles en ligne et des blocs `<style>`
+  de la page (hors carte du réseau, navigation, bande image) ; le bloc `#reseau-cartes-18` couvre les grandes cartes stylées par
+  les feuilles partagées (`.card-m`, `.divc`, `.flagship`, `.ngs-stage`, tableau). Les éléments imbriqués gardent 14 px, les
+  pastilles et cercles ne changent pas. Après : 18 px sur 129 éléments, plus 14 px imbriqués.
+- Communautés (FR, EN) : la grille « Parcourir cette page » répétait 5 des 6 entrées de la barre ; elle part, la barre gagne
+  « Enjeux » (`scripts/align_communautes_nav.py`).
+
+Contrôle : `qa/reseau-communautes.spec.js`.
