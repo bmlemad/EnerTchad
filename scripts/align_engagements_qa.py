@@ -4,8 +4,7 @@
 - Double matérialité : le corridor d'export Doba–Kribi est remplacé par l'approvisionnement du marché
   national (doctrine #240 : EnerTchad n'emprunterait pas le pipeline d'export).
 - TCFD (dissoute en 2023, reprise dans IFRS S2) remplacée par IFRS S2 · ISSB ; idem sur la page Rapports.
-- Tableau des indicateurs : base « 100 % (équipe fondatrice) » non vérifiée → « non publiée » ;
-  base « 0 % » renouvelables → « Néant — aucun site » ; étiquettes data-label pour la lecture en cartes sur mobile.
+- Tableau des indicateurs : base « 0 % » renouvelables → « Néant — aucun site » ; étiquettes data-label pour la lecture en cartes sur mobile.
 - Nouvelle section « Plan environnemental » (étude d'impact, consultation, PGES, suivi), au conditionnel.
 - Structure : la grille « Parcourir cette page » double la barre de navigation et part ; numérotation 01 à 10 ;
   la section « Preuve » passe avant l'appel final.
@@ -74,8 +73,7 @@ def fix(f, lang):
     s = one(s, ('Cadre visé : <b>TCFD</b>' if fr else 'Framework targeted: <b>TCFD</b>'),
             ('Cadre visé : <b>IFRS S2 (ISSB)</b>' if fr else 'Framework targeted: <b>IFRS S2 (ISSB)</b>'), f)
     # 3. table bases
-    s = one(s, '<td>100 % (équipe fondatrice)</td>' if fr else '<td>100% (founding team)</td>',
-            '<td>Non publiée</td>' if fr else '<td>Not published</td>', f)
+    # base « 100 % (équipe fondatrice) » confirmée par le DG le 22 novembre 2026 : gardée.
     s = one(s, ('<td>Part de renouvelables · énergie de site</td><td>0 %</td>' if fr else '<td>Renewables share · site energy</td><td>0%</td>'),
             ('<td>Part de renouvelables · énergie de site</td><td>Néant — aucun site</td>' if fr else '<td>Renewables share · site energy</td><td>None — no site</td>'), f)
     # data-label on cells

@@ -9,7 +9,6 @@ for (const [path, proof] of [['/engagements', 'assurance-esg'], ['/engagements-e
     const text = await page.locator('main').innerText();
     expect(text, 'no export corridor among value drivers').not.toMatch(/Kribi/);
     expect(text, 'TCFD only named as the former framework').not.toMatch(/(Cadre visé|Framework targeted)\s*:\s*TCFD/);
-    expect(text, 'no unverified 100 % baseline').not.toMatch(/(équipe fondatrice|founding team)/);
     expect(await page.locator('#plan-environnemental .pp-grid').first().locator('.pp-cell').count(), 'four plan steps').toBe(4);
     const order = await page.evaluate(id => {
       const proof = document.getElementById(id);

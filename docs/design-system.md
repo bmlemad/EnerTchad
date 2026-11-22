@@ -335,7 +335,7 @@ Pages `/engagements` et `/engagements-en`, script `scripts/align_engagements_qa.
   fiable du marché national (la stratégie exclut le pipeline d'export).
 - Référentiels : TCFD, dissoute en 2023, remplacée par IFRS S2 (ISSB) pour la note climat, ici et sur Rapports ; ajout du
   décret tchadien n° 630/PR/PM/MEERH/2010 (études d'impact) et des Normes de performance de la SFI.
-- Tableau des indicateurs : base « 100 % (équipe fondatrice) », non vérifiée, devient « non publiée » ; base « 0 % »
+- Tableau des indicateurs : base « 100 % (équipe fondatrice) » confirmée par le DG et gardée ; base « 0 % »
   renouvelables devient « Néant — aucun site ». Sous 640 px, chaque ligne devient une carte étiquetée (`data-label`).
 - Nouvelle section 06 « Plan environnemental » au conditionnel : étude d'impact, consultation publique, PGES, suivi et
   publication ; eau, air, sols, biodiversité, urgence, fin de vie.
