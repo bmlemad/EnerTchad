@@ -48,3 +48,4 @@ Activation (FR et EN ensemble) :
    de la section « Comités & documents », l'index plein texte (assets/chrome/ftx_fr.json, ftx_en.json) et
    le lastmod des deux pages dans sitemap.xml.
 4. Relancer les contrôles (npm run build, audits, axe clair/sombre sur /gouvernance et /gouvernance-en).
+- 22 novembre 2026 : brochures FR et EN et fiches Intermédiaire FR et EN régénérées ; le corridor Doba–Kribi n’est plus une option pour un surplus : aucun brut d’EnerTchad n’y transiterait, un éventuel surplus partirait en produits finis.
