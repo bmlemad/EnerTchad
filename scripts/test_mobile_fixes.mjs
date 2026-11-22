@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { withMobileFixes, TAGLINE_STYLE, BAND_IMAGE_STYLE, BACK_TO_TOP_STYLE, REVEAL_NOSCRIPT } from '../lib/mobile-fixes.js';
+import { withMobileFixes, TAGLINE_STYLE, BAND_IMAGE_STYLE, BACK_TO_TOP_STYLE, REVEAL_NOSCRIPT, SIGNATURE_STYLE } from '../lib/mobile-fixes.js';
 
 // Audit design du 20 novembre 2026 : slogan du pied de page et image des bandes immersives sur mobile.
 test('mobile fixes — footer tagline is no longer capped, header tagline is untouched', () => {
@@ -50,4 +50,11 @@ test('mobile fixes — home pages get the no-JavaScript reveal fallback, once', 
 
 test('mobile fixes — non-string input is returned as is', () => {
   assert.equal(withMobileFixes(undefined), undefined);
+});
+
+test('mobile fixes — home signature takes the house serif', () => {
+  const html = '<main class="et-home"><p class="mod-signature">De la roche-mère à la pompe.</p></main>';
+  const out = withMobileFixes(html);
+  assert.equal(out, `<main class="et-home"><p class="mod-signature" style="${SIGNATURE_STYLE}">De la roche-mère à la pompe.</p></main>`);
+  assert.equal(withMobileFixes(out), out, 'idempotent');
 });
