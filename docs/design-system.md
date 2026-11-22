@@ -344,3 +344,25 @@ Pages `/engagements` et `/engagements-en`, script `scripts/align_engagements_qa.
 - Petits textes : sous la règle du site (hors étiquettes en capitales), aucun texte de lecture sous 12 px ; rien changé.
 
 Contrôle : `qa/engagements-qa.spec.js` (préfixes « disclosure controls keep » et « mobile navigation — », sur chaque PR).
+
+## Boutons face aux majors (22 novembre 2026)
+
+Mesure des pages d'accueil d'ExxonMobil, TotalEnergies, bp, Eni, Chevron et Shell : chacun une seule géométrie de bouton, une
+hauteur, au plus trois niveaux, des libellés de 2 à 5 mots. Relevé EnerTchad avant correction (293 pages, 1 440 et 390 px,
+hors Boutique et Atlas en sous-sites) : 48 styles de boutons d'action, arrondis 0, 8, 10 px, pilule ; hauteurs 40 à 56 px ;
+deux ors (#E3BC62, #D9B567), deux encres (#0A1A2F, #172638), un bleu, un or #C9A227 ; flèches sans règle.
+
+Règle : angles vifs, 56 px, Inter 16 px / 600 ; or plein #E3BC62 (action principale), encre pleine #0A1A2F (secondaire),
+texte (lien). Flèche seulement vers l'extérieur (↗) ou pour un téléchargement (↓). Libellés : « Nous contacter » /
+« Contact us », « Discuter de ce projet » / « Discuss this project ».
+
+- `lib/button-coherence.js` (styles en ligne et libellés posés à l'export) : `.pp-btn-gold`, héros de l'accueil, `.isv-cta`,
+  `.btn` (Atlas, Carnets, Outils), `.fl-cta` (Réseau), envois des formulaires Contact et Achats (or principal), accusé de
+  réception arabe, pilules E-mail / WhatsApp de Contact portées à 44 px.
+- `premium-chrome.css` : `.mod-button`, `.mod-preview`, boutons des filtres de Publications à angles vifs et 56 px ;
+  empreinte mise à jour dans les 31 jeux critiques, règle mise à jour dans le jeu `pole`.
+- `scripts/next/clients.mjs` : bouton principal de l'espace Clients, sans flèche ↗ (ancre interne).
+- Laissé tel quel : le configurateur de service intégré (outil à part), les pilules de contact (canaux, pas actions).
+
+Contrôles : `qa/button-coherence.spec.js` (géométrie, couleurs, flèches et libellés sur 12 pages, pilules), et
+`scripts/test_button_coherence.mjs`.
