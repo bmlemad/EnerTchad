@@ -309,3 +309,20 @@ déjà peint sur les pages intérieures (Société, Amont, Contact mesurées). U
 dans `immersif-2026.css` ; le thème sombre garde #101B2E. Les trois jeux de CSS critique qui embarquent cette feuille
 (`home-fr`, `home-en`, `gouvernance`) portent la nouvelle empreinte, et les deux accueils la nouvelle valeur. Contrastes
 mesurés sur #FAF8F3 : or #76550F 6,43:1, encre #0A1220 17,66:1, gris #3F4A5C 8,44:1 (tous au-dessus de 4,5:1).
+
+## Longueur de page stable (22 novembre 2026)
+
+Le rendu différé (`content-visibility:auto`) est retiré du site. Il réservait aux sections hors écran une hauteur estimée
+(680 px en bureau, 760 px sur mobile, ou des hauteurs relevées page par page en octobre) qui ne suivait plus le contenu, replié
+ou réécrit depuis. Relevé avant correction, à 1 440 et 390 px, sur les 293 pages exportées hors Centre : 89 pages
+annonçaient une longueur fausse de plus de 600 px. La barre de défilement mentait, puis sautait pendant la lecture (Réseau de
+stations : 43 620 px annoncés, 20 249 px réels sur mobile). Mesure avec processeur ralenti ×4 sur six pages longues : LCP et
+temps de mise en page identiques à l'erreur de mesure près, avec ou sans rendu différé. Aucun gain à garder.
+
+- Retiré : la règle commune de `premium-chrome.css` (bureau), celle de `modern-inner-2026.css` (mobile) et sa dérogation
+  Atlas, celle de `modern-ui-2026.css` (identifiants de l'ancien accueil, et `#cta-band`), et les blocs `cv506`, `cv579` et
+  `et-projets-rendu` de 36 pages sources.
+- Gardé : `html:has(:target) main *{content-visibility:visible!important}` et les règles d'impression, désormais sans effet.
+- Jeux de CSS critique : empreintes mises à jour sur les 31 jeux. Aucun n'embarquait les règles retirées.
+
+Contrôle : `qa/page-length-stable.spec.js` (préfixe « mobile navigation — », tourne sur chaque PR).
