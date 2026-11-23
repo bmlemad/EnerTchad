@@ -37,6 +37,10 @@ for suffix in ('', '-en'):
 for path in ['amont/index.html', 'intermediaire/index.html', 'aval/index.html', 'petrochimie/index.html', 'pole-amont-en.html', 'pole-intermediaire-en.html', 'pole-aval-en.html', 'pole-enerchimie-en.html']:
     text = (ROOT / path).read_text()
     assert 'id="offre-services"' in text, path
-    assert re.search(r'service=\w+#ctForm', text), path
+    # 23 novembre 2026 (décision du DG) : les études projet sont regroupées sur « Services aux tiers » ; le pôle y renvoie.
+    assert re.search(r'service=\w+#ctForm', text) or re.search(r'href="/services-tiers(?:-en)?"', text), path
+for path in ['services-tiers.html', 'services-tiers-en.html']:
+    text = (ROOT / path).read_text()
+    assert len(set(re.findall(r'service=(\w+)#ctForm', text))) == 4, path
 assert count > 200
 print(f'Modernisation verified: {count} pages; 6 menus, 3 mobile actions, 8 service pages, 16 project cards and 2 document libraries')
