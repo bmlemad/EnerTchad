@@ -14,6 +14,11 @@ import re
 import sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# Verre clair (23 novembre 2026) : les bornes de contraste du fond de lumières et du verre de contenu sont vérifiées
+# dans le même flux (scripts/test_verre_clair_contrast.py, calcul sans navigateur).
+import subprocess
+if subprocess.run([sys.executable, os.path.join(ROOT, 'scripts', 'test_verre_clair_contrast.py')]).returncode:
+    sys.exit(1)
 src = open(os.path.join(ROOT, 'assets/chrome/verre-2026.css'), encoding='utf-8').read()
 body = re.sub(r'/\*[\s\S]*?\*/', '', src).strip()
 errors = []
