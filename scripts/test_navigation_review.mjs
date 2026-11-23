@@ -47,7 +47,11 @@ test('corporate resources expose documents and preserve investor-specific enquir
     // 17 novembre 2026 : la colonne qui répétait l'en-tête est retirée ; deux colonnes restent (accès, informations).
     assert.equal(cols.length, 2, 'two footer columns');
     // 20 novembre 2026 (décision du DG) : « Carrières » quitte l'en-tête et revient dans la colonne d'accès (quatre liens).
-    assert.equal((cols[0].children || []).filter(n => n.name === 'a').length, 4);
+    // 24 novembre 2026 (décision du DG) : sur l'accueil, Projets et Atlas suivent les quatre accès communs (data-et-keep dans la source),
+    // car ils n'apparaissaient plus que dans l'ancien méga-menu retiré (#282).
+    assert.deepEqual((cols[0].children || []).filter(n => n.name === 'a').map(n => n.attribs.href),
+      en ? ['/boutique/en/clients', '/achats-en', '/carrieres-en', '/presse-en', '/projets-en', '/atlas-en']
+         : ['/boutique/clients', '/achats', '/carrieres', '/presse', '/projets', '/atlas/']);
     assert((cols[0].children || []).some(n => n.name === 'a' && n.attribs.href === '/carrieres' + sx), 'Carrières au pied de page');
     assert.equal((cols[1].children || []).filter(n => n.name === 'a').at(-1).attribs.href, '/plan-du-site' + sx);
     const hrefs = [];
