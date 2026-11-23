@@ -14,7 +14,7 @@ from apply_home_major_review import ROOT, home, progress, plain
 # Six blocs (12 novembre 2026, décision du DG) : l'accueil ne garde que vision, activités, impact, leadership, investisseurs et
 # contact. Les repères, le projet phare, le tableau « Cadre · état publié » et la bande « Dernière publication » sont au Centre
 # de Connaissances (/savoirs) ou sur les pages qu'il indexe.
-NEW_ORDER=['id="vision"','id="chaine"','id="impact"','id="gouvernance-accueil"','id="investisseurs-accueil"','id="contact-accueil"']
+NEW_ORDER=['id="vision"','id="chaine"','id="actualites-accueil"','id="impact"','id="gouvernance-accueil"','id="investisseurs-accueil"','id="contact-accueil"']
 GONE=['id="besoin-client"','id="reperes"','id="projet-phare"','id="aller-plus-loin"','id="feuille-de-route"','id="home-publications"','class="im-glass im-board"','class="hm-latest"']
 
 class HomepageReview(unittest.TestCase):
@@ -38,7 +38,7 @@ class HomepageReview(unittest.TestCase):
   self.assertNotIn('class="et-metrics"',main)
   self.assertIn('80%',main) if en else self.assertIn('80 %',main)
   self.assertIn('not a measured result' if en else 'pas un résultat mesuré',main)
-  # six blocs : exactement six sections, dans l'ordre, et rien d'autre
+  # refonte du 23 novembre 2026 (maquette validée par le DG) : sept sections — les six blocs plus « Actualités » —, dans l'ordre
   self.assertEqual(re.findall(r'<section id="([^"]+)"',main),[x[4:-1] for x in NEW_ORDER])
   # contact : quatre sorties, dont le besoin professionnel et le formulaire
   exits=re.search(r'<nav class="hm-exits".*?</nav>',main,re.S)[0]
@@ -73,20 +73,23 @@ class HomepageReview(unittest.TestCase):
   self.assertIn('<a class="et-primary" href="/societe-en#vision">Discover the vision</a>' if en else '<a class="et-primary" href="/societe#vision">Découvrir la vision</a>',hero)
   self.assertIn(f'<a class="et-secondary" href="{client}#besoin-client">{primary}',hero)
   self.assertIn('href="/projets-en#avancement">Projects and status' if en else 'href="/projets#avancement">Projets et avancement',main)
-  # vision : trois piliers ; impact : cinq cartes, chacune avec son état de publication ; investisseurs : trois lignes de repères
+  # vision (refonte du 23 novembre 2026) : bandeau de quatre chiffres clés, dont le zéro actif ; les trois piliers sont sur la page Société
   vision=re.search(r'<section id="vision".*?</section>',main,re.S)[0]
-  self.assertEqual(vision.count('<li>'),3)
-  # « en bref » : quatre chiffres publiés, dont le zéro actif
-  self.assertEqual(re.findall(r'<dd>([^<]+)</dd>',vision),['100 M FCFA','4 + 4','0','80%' if en else '80 %'])
+  self.assertEqual(vision.count('<li>'),0)
+  self.assertEqual(re.findall(r'<dd>([^<]+)</dd>',vision),['100 M FCFA','4','80%' if en else '80 %','0'])
+  # actualités : les cartes sont écrites au build depuis la liste officielle des communiqués (lib/latest-release.js)
+  self.assertIn('<ul class="hm-news" data-et-news></ul>',main)
   home_impact=re.search(r'<section id="impact".*?</section>',main,re.S)[0]
-  # 20 nov. 2026 (décision du DG, groupe intégré) : quatre volets — emploi, contenu local, formation, développement territorial
+  # refonte du 23 novembre 2026 : quatre volets — emploi, contenu local, environnement, développement territorial ; la formation passe au bloc Carrières
   self.assertEqual(home_impact.count('<li>'),4)
   self.assertNotIn('class="hm-card"',main)  # les cartes .hm-card relèvent du contrat de design partagé (rayon 16 px) : l'accueil éditorial n'en porte pas
   self.assertEqual(home_impact.count('class="hm-flag'),4)
   self.assertIn('Building an integrated energy group with Chadian capital.' if en else 'Construire un groupe énergétique intégré à capitaux tchadiens.',vision)
   self.assertIn('company in formation' if en else 'société en constitution',vision)
-  chain=re.search(r'<nav class="et-chain".*?</nav>',main,re.S)[0]
-  self.assertEqual(re.findall(r'<strong>([^<]+)</strong>',chain),['Produce','Transport','Transform','Distribute'] if en else ['Produire','Transporter','Transformer','Distribuer'])
+  # refonte du 23 novembre 2026 : la chaîne de valeur se lit dans les quatre grandes cartes des métiers, numérotées
+  chain=re.search(r'<section id="chaine".*?</section>',main,re.S)[0]
+  self.assertEqual(re.findall(r'<p class="hm-seg-k">([^<]+)</p>',chain),['01 · Produce','02 · Transport','03 · Transform','04 · Distribute'] if en else ['01 · Produire','02 · Transporter','03 · Transformer','04 · Distribuer'])
+  self.assertIn('id="carrieres-accueil"',main)
   investors=re.search(r'<section id="investisseurs-accueil".*?</section>',main,re.S)[0]
   self.assertEqual(investors.count('<li>'),3)
   self.assertIn('No subscription open to date' if en else 'Aucune souscription ouverte à ce jour',investors)
@@ -149,7 +152,8 @@ class HomepageReview(unittest.TestCase):
   # 14 novembre 2026 : le mini-site arabe reprend les six blocs, avec ses propres composants (.et-segments, .et-paths).
   page=(ROOT/'ar.html').read_text()
   main=page[page.index('<main'):page.index('</main>')]
-  self.assertEqual(re.findall(r'<section id="([^"]+)"',main),[x[4:-1] for x in NEW_ORDER])
+  # 23 novembre 2026 : la refonte touche d'abord les accueils FR et EN ; l'accueil arabe garde ses six blocs jusqu'à son lot.
+  self.assertEqual(re.findall(r'<section id="([^"]+)"',main),[x[4:-1] for x in NEW_ORDER if 'actualites' not in x])
   self.assertEqual(len(re.findall(r'<section\b',main)),6)
   contact=re.search(r'<section id="contact-accueil".*?</section>',main,re.S)[0]
   self.assertEqual(re.findall(r'<a href="([^"]+)"',contact),['/boutique/clients','/achats','/ar-presse','/ar-contact'])
