@@ -84,7 +84,7 @@
   {
    "id": "b",
    "label": "Activités & Ingénierie",
-   "description": "Quatre segments industriels, quatre capacités intégrées, des solutions par besoin.",
+   "description": "Quatre segments industriels, quatre fonctions techniques, des solutions par besoin.",
    "overview": [
     "Vue d’ensemble",
     "Nos activités",
@@ -117,7 +117,7 @@
      ]
     },
     {
-     "title": "Capacités transversales",
+     "title": "Fonctions techniques",
      "links": [
       [
        "Durabilité · GreenTech",
@@ -544,7 +544,7 @@
   {
    "id": "b",
    "label": "Activities & Engineering",
-   "description": "Four industrial segments, four integrated capabilities, solutions by need.",
+   "description": "Four industrial segments, four technical functions, solutions by need.",
    "overview": [
     "Overview",
     "What we do",
@@ -577,7 +577,7 @@
      ]
     },
     {
-     "title": "Cross-functional capabilities",
+     "title": "Technical functions",
      "links": [
       [
        "Sustainability · GreenTech",
