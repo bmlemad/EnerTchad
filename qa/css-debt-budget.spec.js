@@ -70,21 +70,24 @@ const budgets = [
   // :not(#…) disparaissent (plafonds :not(#…) inchangés, de nouveau tenus), 7 !important sans effet sont retirés et 2 ajoutés ; restent +69 ;
   // toutes les pages, journal compris : +3 !important venus de lots postérieurs au 17 novembre (écart mesuré, cause non recherchée) ;
   // /amont/ : +33 octets de CSS écrits dans la page (écart mesuré, cause non recherchée).
+  // 23 novembre 2026 (lot 254, PR #256, CLS du bouton « Mouvement ») : règle html:not([data-et-css]) #lum-ctl écrite dans la
+  // page par scripts/next/critical.mjs ; plafonds d'octets relevés de l'écart mesuré en ligne : /amont/ +51, /aval/raffinage +15,
+  // /carrieres +15, /carnets +19, /journal-criblage-eor +3, /boutique/ +19, /essentiel +19 ; !important et :not(#…) inchangés.
   // 23 novembre 2026 (refonte des segments, décision du DG) : /amont/ : bande éditoriale de la scène conviction écrite dans la page
   // (bloc et-immersif-poles, 8 pages segments), +1 031 octets, 0 !important (couleurs par variables, surtitres dans un span).
-  ['/amont/', 3589, 20315, 146023, 40],
-  ['/aval/raffinage', 3789, 22016, 209990, 40],
-  ['/carrieres', 3804, 22082, 220869, 40],
+  ['/amont/', 3589, 20315, 146074, 40],
+  ['/aval/raffinage', 3789, 22016, 210005, 40],
+  ['/carrieres', 3804, 22082, 220884, 40],
   // PR #139 added the 480-byte after-enquiry block before this design change.
   ['/contact', 3694, 21419, 194094, 40],
-  ['/carnets', 3441, 19045, 165516, 40],
-  ['/journal-criblage-eor', 2574, 9995, 153012, 40],
+  ['/carnets', 3441, 19045, 165535, 40],
+  ['/journal-criblage-eor', 2574, 9995, 153015, 40],
   ['/atlas/', 3239, 18696, 176927, 46],
-  ['/boutique/', 3036, 17973, 122671, 40],
+  ['/boutique/', 3036, 17973, 122690, 40],
   // Lot 108 (9 novembre 2026, décision du DG) : menu mobile arabe, en-tête mobile de 160 à 64 px ; le premier écran montre
   // plus de contenu, la CSS critique écrite dans la page reprend donc plus de règles existantes (+15 !important, +486 :not(#…), +8 003 octets).
   ['/ar-societe', 2554, 21103, 75091, 40],
-  ['/essentiel', 3277, 18358, 136855, 40],
+  ['/essentiel', 3277, 18358, 136874, 40],
 ];
 
 const notIdPattern = /:not\(#[\w-]+\)/g;
