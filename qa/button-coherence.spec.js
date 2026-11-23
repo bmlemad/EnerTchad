@@ -14,7 +14,8 @@ const box = locator => locator.evaluate(el => {
   return { radius: s.borderTopLeftRadius, height: Math.round(r.height), font: s.fontFamily.split(',')[0].replace(/["']/g, '').trim() };
 });
 
-for (const path of ['/aval/', '/amont/', '/enerconseils/', '/pole-aval-en']) {
+// Depuis #268 (pôles allégés), /aval/ et /amont/ n'ont plus de boutons de module : le contrôle porte sur les pages qui en ont.
+for (const path of ['/enerconseils/', '/pole-enerconseils-en']) {
   test(`mobile navigation — module buttons share the square house button ${path}`, async ({ browser }) => {
     const page = await open(browser, path);
     const buttons = page.locator('.mod-button');
