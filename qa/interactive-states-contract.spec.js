@@ -41,7 +41,9 @@ test.describe('interactive states — hub controls and CTA integrity', () => {
       // Lot 124 : cinq liens simples, sans déroulant ni aria-expanded ; chacun garde une cible valide.
       const triggers = page.locator('#navLinks .nav-item > a.nx-direct');
       await expect(triggers, path + ' nav link count').toHaveCount(await page.locator('#nav[data-et-space="centre"]').count() ? 7 : 5); // 20 nov. 2026 : deux espaces
-      await expect(page.locator('#navLinks [aria-expanded]'), path + ' no expandable entry left').toHaveCount(0);
+      // 21 nov. 2026 (décision du DG, #228) : un seul déroulant, le bouton du panneau « Activités » sur le site principal ; aucun dans le Centre.
+      await expect(page.locator('#navLinks [aria-expanded]'), path + ' only the Activities panel toggle expands').toHaveCount(await page.locator('#navLinks .et-has-sub > .et-sub-tog').count());
+      await expect(page.locator('#navLinks [aria-expanded]:not(.et-sub-tog)'), path + ' no other expandable entry').toHaveCount(0);
       for (let i = 0; i < 5; i++) {
         const href = await triggers.nth(i).getAttribute('href');
         expect(href && href.startsWith('/'), path + ' nav link target ' + i).toBeTruthy();
