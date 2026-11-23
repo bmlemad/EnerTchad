@@ -70,7 +70,9 @@ const budgets = [
   // :not(#…) disparaissent (plafonds :not(#…) inchangés, de nouveau tenus), 7 !important sans effet sont retirés et 2 ajoutés ; restent +69 ;
   // toutes les pages, journal compris : +3 !important venus de lots postérieurs au 17 novembre (écart mesuré, cause non recherchée) ;
   // /amont/ : +33 octets de CSS écrits dans la page (écart mesuré, cause non recherchée).
-  ['/amont/', 3589, 20315, 144992, 40],
+  // 23 novembre 2026 (refonte des segments, décision du DG) : /amont/ : bande éditoriale de la scène conviction écrite dans la page
+  // (bloc et-immersif-poles, 8 pages segments), +1 031 octets, 0 !important (couleurs par variables, surtitres dans un span).
+  ['/amont/', 3589, 20315, 146023, 40],
   ['/aval/raffinage', 3789, 22016, 209990, 40],
   ['/carrieres', 3804, 22082, 220869, 40],
   // PR #139 added the 480-byte after-enquiry block before this design change.

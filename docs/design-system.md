@@ -424,6 +424,10 @@ Décision du DG : « Continue sur les pages des segments », illustrations « De
   surtitre en JetBrains Mono, manifeste en Instrument Serif, plus de carte en verre.
 - Styles écrits en ligne seulement sur ces 8 pages (bloc `et-immersif-poles`) : `pole-premium.css`, chargée par 265 pages,
   n'est pas modifiée, pour ne pas augmenter le budget de surcharges des autres pages.
+- Correctif du même jour : aucun `!important` dans ce bloc. Couleurs de fond et de texte par les variables lues par la couche
+  et-glass (`--et-glass-solid`, `--et-glass-ink`) et par les règles existantes de la scène, sélecteur élargi ; surtitre (`h2`) et
+  intertitre (`h3`) dans un `span` en bloc (`.pp-kt`, `.pp-ht`), que les tailles imposées aux titres n'atteignent pas.
 
 Contrôles : `qa/image-collection.spec.js` (héros dessiné sur les 8 pages), `qa/glass-chrome-contract.spec.js` (pas de verre de
-contenu sur l'accueil ni sur les segments).
+contenu sur l'accueil ni sur les segments), `qa/immersif-poles-contract.spec.js` (bande éditoriale sur les segments),
+`qa/css-debt-budget.spec.js` (/amont/ : +1 031 octets écrits dans la page, 0 !important).

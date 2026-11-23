@@ -9,6 +9,7 @@ const base = process.env.SITE_URL || 'https://enertchad.com/';
 const hubs = ['/amont/', '/intermediaire/', '/aval/', '/petrochimie/', '/greentech/', '/tchaditech/', '/tchaditude/', '/enerconseils/',
   '/pole-amont-en', '/pole-intermediaire-en', '/pole-aval-en', '/pole-enerchimie-en', '/pole-greentech-en', '/pole-tchaditech-en', '/pole-tchaditude-en', '/pole-enerconseils-en'];
 const withStatus = new Set(['/amont/', '/intermediaire/', '/aval/', '/petrochimie/', '/pole-amont-en', '/pole-intermediaire-en', '/pole-aval-en', '/pole-enerchimie-en']);
+const SEGMENTS = ['/amont/', '/pole-amont-en', '/intermediaire/', '/pole-intermediaire-en', '/aval/', '/pole-aval-en', '/petrochimie/', '/pole-enerchimie-en'];
 
 function luminance(color) {
   const m = String(color).match(/[\d.]+/g).slice(0, 3).map(Number).map(v => { v /= 255; return v <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4; });
@@ -27,10 +28,13 @@ test.describe('immersive pole hubs — conviction scene and status pills', () =>
         // On l'amène à l'écran et on attend deux images avant de mesurer (contrat instable sinon, relevé au lot 116).
         if (scene) { scene.scrollIntoView(); await new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r))); }
         const bg = scene && scene.querySelector(':scope > img.im-bg');
-        const glass = scene && scene.querySelector('.pp-sig.im-glass');
+        // 23 novembre 2026 (refonte des segments, décision du DG) : sur les quatre segments, la scène est une bande éditoriale
+        // encre (.et-ed) et le bloc n'est plus une carte en verre ; les autres pôles gardent la carte.
+        const edito = !!scene && scene.classList.contains('et-ed');
+        const glass = scene && scene.querySelector(edito ? '.pp-sig:not(.im-glass)' : '.pp-sig.im-glass');
         const text = glass && glass.querySelector('p');
         return {
-          scene: !!scene, glass: !!glass,
+          scene: !!scene, glass: !!glass, edito,
           bg: bg && { hidden: bg.getAttribute('aria-hidden'), alt: bg.getAttribute('alt'), loading: bg.getAttribute('loading'), src: bg.getAttribute('src') },
           cover: bg && scene && [Math.round(bg.getBoundingClientRect().height), Math.round(scene.getBoundingClientRect().height)],
           textColor: text && getComputedStyle(text).color,
@@ -40,7 +44,8 @@ test.describe('immersive pole hubs — conviction scene and status pills', () =>
         };
       });
       expect(report.scene, path + ' scene').toBe(true);
-      expect(report.glass, path + ' glass card').toBe(true);
+      expect(report.edito, path + ' editorial band on the segments').toBe(SEGMENTS.includes(path));
+      expect(report.glass, path + ' text block (glass card, or flat block on the segments)').toBe(true);
       expect(report.inlineStyle, path + ' inline rules').toBe(true);
       expect(report.bg, path + ' background image').toBeTruthy();
       expect(report.bg.hidden, path + ' decorative image').toBe('true');
@@ -49,7 +54,7 @@ test.describe('immersive pole hubs — conviction scene and status pills', () =>
       expect(report.bg.alt, path + ' decorative image alt').toBe('');
       expect(report.bg.loading, path + ' lazy image').toBe('lazy');
       expect(report.bg.src, path + ' published photo').toMatch(/^\/assets\/img\/p\/[a-z-]+-1400\.webp$/);
-      expect(luminance(report.textColor), path + ' light text on the glass card').toBeGreaterThan(0.7);
+      expect(luminance(report.textColor), path + ' light text on the scene').toBeGreaterThan(0.7);
       if (withStatus.has(path)) expect(report.pills.length, path + ' status pills').toBeGreaterThanOrEqual(3);
       else expect(report.pills.length, path + ' no status section').toBe(0);
       expect(report.scrollWidth, path + ' no horizontal overflow').toBeLessThanOrEqual(report.viewport + 2);
