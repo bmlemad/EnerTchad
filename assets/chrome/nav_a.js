@@ -250,7 +250,7 @@ try{(function(){
 })()}catch(e){}
 
 
-(function(){if(document.querySelector('script[src*="/assets/chrome/audience-consent.js?v=ee5e1aac35d4"]'))return;/* lot 104 : déjà mis en tête de page à l'export (earlyConsent) */var s=document.createElement("script");s.src="/assets/chrome/audience-consent.js?v=ee5e1aac35d4";s.defer=true;document.head.appendChild(s)})();
+(function(){if(document.querySelector('script[src*="/assets/chrome/audience-consent.js?v=1694e82b91a1"]'))return;/* lot 104 : déjà mis en tête de page à l'export (earlyConsent) */var s=document.createElement("script");s.src="/assets/chrome/audience-consent.js?v=1694e82b91a1";s.defer=true;document.head.appendChild(s)})();
 
 
 ;(function(){try{
