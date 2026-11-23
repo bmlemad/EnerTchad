@@ -1,6 +1,7 @@
 const {test,expect}=require('@playwright/test');
 const base=process.env.SITE_URL||'https://enertchad.com/';
-const routes=[['/amont/','/pole-amont-en','upstream'],['/intermediaire/','/pole-intermediaire-en','transport'],['/aval/','/pole-aval-en','clients'],['/petrochimie/','/pole-enerchimie-en','petrochemicals'],['/enerconseils/','/pole-enerconseils-en','engineering'],['/greentech/','/pole-greentech-en','transition']];
+// 23 novembre 2026 (décision du DG) : les quatre segments reprennent les dessins au trait ; voir le test suivant.
+const routes=[['/enerconseils/','/pole-enerconseils-en','engineering'],['/greentech/','/pole-greentech-en','transition']];
 for(const en of [false,true])for(const width of [320,1440])test(`mobile navigation — conceptual image collection ${en?'en':'fr'} ${width}`,async({browser})=>{
   test.setTimeout(180000);
   const page=await browser.newPage({viewport:{width,height:900}});
@@ -43,4 +44,13 @@ for(const en of [false,true])for(const width of [320,1440])test(`mobile navigati
   await expect(page.locator('#collection-20261117 .cr-item')).toHaveCount(7);
   await expect(page.locator('#collection-20261117')).toContainText(en?'AI-generated':'générées par IA');
   await page.close();
+});
+
+// 23 novembre 2026 (refonte des segments, décision du DG) : les quatre segments ouvrent sur un dessin au trait, sans image de synthèse.
+for(const path of ['/amont/','/pole-amont-en','/intermediaire/','/pole-intermediaire-en','/petrochimie/','/pole-enerchimie-en','/aval/','/pole-aval-en'])test(`mobile navigation — segment hero uses the drawn illustration ${path}`,async({page})=>{
+  await page.goto(new URL(path,base).href,{waitUntil:'load'});
+  await expect(page.locator('#top-pole [data-et-collection]')).toHaveCount(0);
+  await expect(page.locator('[data-et-image-credit]')).toHaveCount(0);
+  const src=await page.locator('#top-pole img').first().evaluate(e=>e.currentSrc||e.src);
+  expect(src).toMatch(/\/assets\/img\/p\//);
 });

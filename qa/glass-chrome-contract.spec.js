@@ -19,6 +19,7 @@ const CHROME = ['#nav.nx', '#nav.nx .nx-util', 'nav.pp-sub', 'header.arh', 'nav.
 // en dessous. Les autres surfaces de contenu restent opaques.
 const SOLID = ['#nav.nx .pn-mega', '.pp-figs', '#main-content.et-home .et-paths > *', '#main-content.et-home .et-segments > *:not(.im-glass)'];
 const SCENE = '.im-scene .im-glass';
+const SEGMENTS = ['/amont/', '/pole-amont-en', '/intermediaire/', '/pole-intermediaire-en', '/petrochimie/', '/pole-enerchimie-en', '/aval/', '/pole-aval-en'];
 
 function alphaOf(color) {
   const m = String(color).match(/rgba?\(([^)]+)\)/);
@@ -64,9 +65,10 @@ test.describe('glass chrome — one rule for every sliding surface', () => {
           for (const s of scene) {
             // Direction éditoriale (11 novembre 2026, décision du DG du 10 novembre) : sur l'accueil, plus de carte en verre ;
             // les blocs sont posés à plat sur des bandes pleines. Le verre de contenu reste la règle des scènes des pôles.
-            if (path === '/') {
-              expect(alphaOf(s.background), `${path} ${theme.name} ${width}px : pas de verre de contenu sur l'accueil`).toBe(0);
-              expect(s.filter, `${path} ${theme.name} ${width}px : pas de flou de contenu sur l'accueil`).toBe('none');
+            // Refonte des segments (23 novembre 2026, décision du DG) : les quatre segments adoptent la bande éditoriale de l'accueil.
+            if (path === '/' || SEGMENTS.includes(path)) {
+              expect(alphaOf(s.background), `${path} ${theme.name} ${width}px : pas de verre de contenu (accueil, segments)`).toBe(0);
+              expect(s.filter, `${path} ${theme.name} ${width}px : pas de flou de contenu (accueil, segments)`).toBe('none');
             } else if (width < 760) {
               expect(alphaOf(s.background), `${path} ${theme.name} ${width}px : verre de contenu sur mobile`).toBeCloseTo(0.88, 2);
               expect(s.filter, `${path} ${theme.name} ${width}px : pas de flou de contenu sur mobile`).toBe('none');
