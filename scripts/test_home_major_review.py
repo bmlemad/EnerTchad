@@ -76,7 +76,8 @@ class HomepageReview(unittest.TestCase):
   # vision (refonte du 23 novembre 2026) : bandeau de quatre chiffres clés, dont le zéro actif ; les trois piliers sont sur la page Société
   vision=re.search(r'<section id="vision".*?</section>',main,re.S)[0]
   self.assertEqual(vision.count('<li>'),0)
-  self.assertEqual(re.findall(r'<dd>([^<]+)</dd>',vision),['100 M FCFA','4','80%' if en else '80 %','0'])
+  # 23 novembre 2026 (DG) : le prix à la pompe visé, environ la moitié du barème officiel 2026, remplace le nombre de segments.
+  self.assertEqual(re.findall(r'<dd>([^<]+)</dd>',vision),['100 M FCFA','≈\u00a0½','80%' if en else '80 %','0'])
   # actualités : les cartes sont écrites au build depuis la liste officielle des communiqués (lib/latest-release.js)
   self.assertIn('<ul class="hm-news" data-et-news></ul>',main)
   home_impact=re.search(r'<section id="impact".*?</section>',main,re.S)[0]
