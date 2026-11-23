@@ -32,7 +32,7 @@ jobs:
   browser:
     # Playwright 1.55 n'installe pas Chromium sur Ubuntu 26 (« does not support chromium on ubuntu26.04 ») : image épinglée.
     runs-on: ubuntu-24.04
-    timeout-minutes: 50  # 833 tests sur 2 workers : ~33 min le 23 nov. 2026 ; 30 coupait la QA hebdomadaire avant la fin
+    timeout-minutes: 50  # 23 nov. 2026 : 833 tests en 42 min sur 2 workers (30 coupait la QA avant la fin) ; 4 workers ci-dessous
     env:
       SITE_URL: ${{ github.event_name == 'pull_request' && 'http://127.0.0.1:8790/' || inputs.site_url || 'https://enertchad.com/' }}
     steps:
@@ -83,9 +83,9 @@ jobs:
         run: |
           mkdir -p artifacts
           if [ -n "$TEST_GREP" ]; then
-            npx --yes playwright@1.55.0 test qa --grep "$TEST_GREP" --reporter=line
+            npx --yes playwright@1.55.0 test qa --grep "$TEST_GREP" --reporter=line --workers=4
           else
-            npx --yes playwright@1.55.0 test qa --reporter=line
+            npx --yes playwright@1.55.0 test qa --reporter=line --workers=4
           fi
       # La suite qa inclut déjà full-site-visual.spec.js ; ne pas le lancer deux fois.
       - name: Publier les captures et rapports
