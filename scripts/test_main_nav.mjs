@@ -12,6 +12,10 @@ const navOf = html => { const i = html.indexOf('id="nav"'); return html.slice(i,
 const outside = html => { const i = html.indexOf('id="nav"'); return html.slice(0, html.lastIndexOf('<', i)) + html.slice(html.indexOf('</nav>', i)); };
 const routeExists = p => {
   if (['/atlas/', '/atlas-en'].includes(p)) return true;
+  // 23 novembre 2026 (DG, recentrage sur la vision) : les deux outils d'estimation passent au Centre (rubrique Documentation) ; leurs
+  // adresses publiques diffèrent du nom de leur fichier source.
+  const ALIAS = { '/amont/calculateur-baril-additionnel': 'Calculateur_Baril_Additionnel.html', '/configurateur-service-integre': 'Configurateur_Service_Integre_v2.html' };
+  if (ALIAS[p]) return existsSync(ALIAS[p]);
   return existsSync(p.endsWith('/') ? p.slice(1) + 'index.html' : p.slice(1) + '.html');
 };
 
