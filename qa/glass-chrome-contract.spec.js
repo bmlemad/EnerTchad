@@ -17,7 +17,11 @@ const CHROME = ['#nav.nx', '#nav.nx .nx-util', 'nav.pp-sub', 'header.arh', 'nav.
 // Lot 112 (10 novembre 2026, choix du DG : « verre sur images seulement ») : les cartes posées sur une photo (.im-scene .im-glass,
 // assets/chrome/immersif-2026.css) sont en verre de contenu : teinte à 58 % et flou 18 px à partir de 761 px, teinte à 88 % sans flou
 // en dessous. Les autres surfaces de contenu restent opaques.
-const SOLID = ['#nav.nx .pn-mega', '.pp-figs', '#main-content.et-home .et-paths > *', '#main-content.et-home .et-segments > *:not(.im-glass)'];
+// Verre clair (23 novembre 2026, choix du DG) : la bande de chiffres des héros devient du verre (72 % + flou 18 px dès 761 px,
+// 86 % sans flou en dessous) ; le reste du verre clair (fond de lumières, sections transparentes, cartes à 50 %) est borné
+// par scripts/test_verre_clair_contrast.py.
+const SOLID = ['#nav.nx .pn-mega', '#main-content.et-home .et-paths > *', '#main-content.et-home .et-segments > *:not(.im-glass)'];
+const FIGS = '.pp-figs';
 const SCENE = '.im-scene .im-glass';
 const SEGMENTS = ['/amont/', '/pole-amont-en', '/intermediaire/', '/pole-intermediaire-en', '/petrochimie/', '/pole-enerchimie-en', '/aval/', '/pole-aval-en'];
 
@@ -58,6 +62,12 @@ test.describe('glass chrome — one rule for every sliding surface', () => {
             }
           };
           check(await read(CHROME, SOLID));
+
+          const figs = await page.evaluate(sel => { const el = document.querySelector(sel); if (!el) return null; const cs = getComputedStyle(el); return { background: cs.backgroundColor, filter: cs.backdropFilter }; }, FIGS);
+          if (figs) {
+            expect(alphaOf(figs.background), `${path} ${theme.name} ${width}px : teinte de la bande de chiffres`).toBeCloseTo(width < 761 ? 0.86 : 0.72, 2);
+            expect(figs.filter, `${path} ${theme.name} ${width}px : flou de la bande de chiffres`).toBe(width < 761 ? 'none' : 'blur(18px) saturate(1.3)');
+          }
 
           const scene = await page.evaluate(sel => [...document.querySelectorAll(sel)].map(el => {
             const cs = getComputedStyle(el); return { background: cs.backgroundColor, filter: cs.backdropFilter };
