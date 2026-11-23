@@ -69,7 +69,9 @@ for (const [path, d] of Object.entries(sets)) {
       await expect(panel).toBeHidden();
       await expect(toggle).toBeFocused();
       await page.keyboard.press('Enter');
-      for (let i = 0; i < 6; i++) await page.keyboard.press('Tab');
+      // Autant de Tab que de liens du panneau (quatre segments, vue d'ensemble, services aux tiers depuis #268), plus un pour en sortir.
+      const stops = await panel.locator('a').count();
+      for (let i = 0; i <= stops; i++) await page.keyboard.press('Tab');
       await expect(panel).toBeHidden();
       // Un clic ailleurs ferme le panneau ouvert au clic.
       await toggle.click();
