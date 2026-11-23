@@ -7,8 +7,8 @@ const { test, expect } = require('@playwright/test');
 
 const base = process.env.SITE_URL || 'https://enertchad.com/';
 const sets = {
-  '/societe': { titles: ['Produire', 'Transporter', 'Transformer', 'Distribuer'], hrefs: ['/amont/', '/intermediaire/', '/petrochimie/', '/aval/'], overview: '/nos-activites' },
-  '/index-en': { titles: ['Produce', 'Transport', 'Transform', 'Distribute'], hrefs: ['/pole-amont-en', '/pole-intermediaire-en', '/pole-enerchimie-en', '/pole-aval-en'], overview: '/nos-activites-en' }
+  '/societe': { titles: ['Produire', 'Transporter', 'Transformer', 'Distribuer'], hrefs: ['/amont/', '/intermediaire/', '/petrochimie/', '/aval/'], overview: '/nos-activites', extra: '/services-tiers' },
+  '/index-en': { titles: ['Produce', 'Transport', 'Transform', 'Distribute'], hrefs: ['/pole-amont-en', '/pole-intermediaire-en', '/pole-enerchimie-en', '/pole-aval-en'], overview: '/nos-activites-en', extra: '/services-tiers-en' }
 };
 const open = async (browser, path, width, mobile = false) => {
   const context = await browser.newContext({ viewport: { width, height: 900 }, hasTouch: mobile, isMobile: mobile });
@@ -41,6 +41,7 @@ for (const [path, d] of Object.entries(sets)) {
         await expect(links.nth(i)).toHaveAttribute('href', d.hrefs[i]);
       }
       await expect(panel.locator('a.et-sub-all')).toHaveAttribute('href', d.overview);
+      await expect(panel.locator('a.et-sub-extra')).toHaveAttribute('href', d.extra);
       const box = await page.evaluate(() => {
         const p = document.querySelector('#et-sub-activites').getBoundingClientRect();
         return { top: p.top, left: p.left, right: p.right, nav: document.querySelector('#nav').getBoundingClientRect().bottom, vw: document.documentElement.clientWidth, sw: document.documentElement.scrollWidth };

@@ -139,13 +139,15 @@ test('secondary pages mark their header section, and never two entries at once',
 // d'ensemble, FR et EN, sur le site principal seulement ; le Centre de Connaissances n'en a pas.
 test('Activities panel — four business lines and the overview, main site only', () => {
   const expect = {
-    fr: { file: 'societe.html', titles: ['Produire', 'Transporter', 'Transformer', 'Distribuer'], hrefs: ['/amont/', '/intermediaire/', '/petrochimie/', '/aval/'], overview: '/nos-activites' },
-    en: { file: 'societe-en.html', titles: ['Produce', 'Transport', 'Transform', 'Distribute'], hrefs: ['/pole-amont-en', '/pole-intermediaire-en', '/pole-enerchimie-en', '/pole-aval-en'], overview: '/nos-activites-en' }
+    fr: { file: 'societe.html', titles: ['Produire', 'Transporter', 'Transformer', 'Distribuer'], hrefs: ['/amont/', '/intermediaire/', '/petrochimie/', '/aval/'], overview: '/nos-activites', extra: '/services-tiers' },
+    en: { file: 'societe-en.html', titles: ['Produce', 'Transport', 'Transform', 'Distribute'], hrefs: ['/pole-amont-en', '/pole-intermediaire-en', '/pole-enerchimie-en', '/pole-aval-en'], overview: '/nos-activites-en', extra: '/services-tiers-en' }
   };
   for (const [lang, e] of Object.entries(expect)) {
     assert.deepEqual(nav.header[lang].panel.links.map(l => l[0]), e.titles, lang);
     assert.deepEqual(nav.header[lang].panel.links.map(l => l[2]), e.hrefs, lang);
-    for (const href of [...e.hrefs, e.overview]) assert.ok(routeExists(href), `${lang} ${href} exists`);
+    for (const href of [...e.hrefs, e.overview, e.extra]) assert.ok(routeExists(href), `${lang} ${href} exists`);
+    // 23 novembre 2026 : « Services aux tiers », sous les quatre segments, avant la vue d'ensemble.
+    assert.equal(nav.header[lang].panel.extra[2], e.extra, `${lang} extra entry`);
     const html = withMainNav(readFileSync(e.file, 'utf8'));
     const n = navOf(html);
     assert.equal((n.match(/data-et-sub/g) || []).length, 1, `${lang} one panel`);
@@ -154,6 +156,7 @@ test('Activities panel — four business lines and the overview, main site only'
     assert.match(n, /<div class="et-sub" id="et-sub-activites" hidden>/, `${lang} panel closed`);
     assert.deepEqual([...n.matchAll(/<a class="et-sub-link" href="([^"]+)"/g)].map(m => m[1]), e.hrefs, `${lang} links`);
     assert.match(n, new RegExp(`<a class="et-sub-all" href="${e.overview}">`), `${lang} overview link`);
+    assert.match(n, new RegExp(`</ul><a class="et-sub-extra" href="${e.extra}"><b>`), `${lang} extra link after the four segments`);
     assert.equal((html.match(/<style id="et-sub-css">/g) || []).length, 1, `${lang} styles once`);
     assert.equal(withMainNav(html), html, `${lang} idempotent`);
   }
@@ -169,4 +172,5 @@ test('Activities panel — the current business line is marked on its pages', ()
   assert.deepEqual(marked('aval/produits.html'), ['/aval/']);
   assert.deepEqual(marked('pole-aval-en.html'), ['/pole-aval-en']);
   assert.deepEqual(marked('societe.html'), []);
+  assert.ok(navOf(withMainNav(readFileSync('services-tiers.html', 'utf8'))).includes('<a class="et-sub-extra" href="/services-tiers" aria-current="page">'), 'services page marked');
 });
