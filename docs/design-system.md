@@ -412,3 +412,18 @@ l'accueil arabe garde ses six blocs jusqu'à son lot.
 - Légende corrigée : « Illustrations dessinées », et non plus « Photographies d'illustration ».
 
 Contrôles : `scripts/test_home_major_review.py` (structure en sept sections), `qa/glass-chrome-contract.spec.js`.
+
+## Pages des segments — langage du nouvel accueil (23 novembre 2026)
+
+Décision du DG : « Continue sur les pages des segments », illustrations « Dessins au trait ».
+
+- Pages : Amont, Transport (intermédiaire), Raffinage et distribution (aval), EnerChimie — en français et en anglais (8 pages).
+- Les images générées sortent des segments : le héros reprend l'illustration au trait `/assets/img/p/` (entrées retirées de
+  `POLES`, `lib/image-collection.js`). Elles restent sur EnerConseils, GreenTech et Clients.
+- Scène « conviction » : bande éditoriale encre (classe `et-ed`, `lib/immersif-poles.js`) — illustration à droite sous un voile,
+  surtitre en JetBrains Mono, manifeste en Instrument Serif, plus de carte en verre.
+- Styles écrits en ligne seulement sur ces 8 pages (bloc `et-immersif-poles`) : `pole-premium.css`, chargée par 265 pages,
+  n'est pas modifiée, pour ne pas augmenter le budget de surcharges des autres pages.
+
+Contrôles : `qa/image-collection.spec.js` (héros dessiné sur les 8 pages), `qa/glass-chrome-contract.spec.js` (pas de verre de
+contenu sur l'accueil ni sur les segments).
