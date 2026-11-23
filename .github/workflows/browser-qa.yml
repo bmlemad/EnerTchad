@@ -32,7 +32,8 @@ jobs:
   browser:
     # Playwright 1.55 n'installe pas Chromium sur Ubuntu 26 (« does not support chromium on ubuntu26.04 ») : image épinglée.
     runs-on: ubuntu-24.04
-    timeout-minutes: 50  # 833 tests sur 2 workers : ~33 min le 23 nov. 2026 ; 30 coupait la QA hebdomadaire avant la fin
+    timeout-minutes: 60  # 23 nov. 2026 : 833 tests en 42 min sur 2 workers. 4 workers (28 min) ont fait renvoyer à la production
+    # des 404 parasites sur des pages existantes (OVH sous charge, aucun déploiement en cours) : on reste à 2 et on garde de la marge.
     env:
       SITE_URL: ${{ github.event_name == 'pull_request' && 'http://127.0.0.1:8790/' || inputs.site_url || 'https://enertchad.com/' }}
     steps:
