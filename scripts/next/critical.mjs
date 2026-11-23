@@ -20,15 +20,22 @@ export const CRITICAL_FILES = ['scripts/critical/pole.json', 'scripts/critical/j
 // Lot 39 : image de héros par gabarit (champ « hero » du fichier ; absent = bascule immédiate).
 // Lot 69 : « hero »: "load" = bascule à l'événement load seulement (Carnets : l'image du bandeau est un
 // fond CSS ; sans attente, les feuilles différées lui prenaient la bande passante, LCP 2,6 → 3,8 s mesuré).
-export const loader = hero => '(function(){var l=document.querySelectorAll("link[data-et-defer]"),d=0;function late(){requestAnimationFrame(function(){requestAnimationFrame(function(){setTimeout(go,0)})})}function go(){if(d)return;d=1;for(var i=0;i<l.length;i++){l[i].media=l[i].getAttribute("data-media")||"all"}}' +
+// Lot 254 : une fois les feuilles différées toutes chargées et appliquées, la racine reçoit
+// data-et-css (voir FOOT_GUARD). Repli : 5 s après « load », le marqueur est posé quoi qu'il arrive.
+export const loader = hero => '(function(){var l=document.querySelectorAll("link[data-et-defer]"),d=0,r=0;function late(){requestAnimationFrame(function(){requestAnimationFrame(function(){setTimeout(go,0)})})}function done(){if(r)return;r=1;requestAnimationFrame(function(){requestAnimationFrame(function(){document.documentElement.setAttribute("data-et-css","")})})}function chk(){if(!d)return;for(var i=0;i<l.length;i++){if(!l[i].sheet&&!l[i].etErr)return}done()}for(var j=0;j<l.length;j++){l[j].addEventListener("load",chk);l[j].addEventListener("error",function(){this.etErr=1;chk()})}function go(){if(d)return;d=1;for(var i=0;i<l.length;i++){l[i].media=l[i].getAttribute("data-media")||"all"}chk()}' +
   (hero === 'load' ? '' : hero ? 'var m=document.querySelector(' + JSON.stringify(hero) + ');if(m&&!m.complete){m.addEventListener("load",late);m.addEventListener("error",late)}else go();' : 'go();') +
-  'addEventListener("load",go)})()';
+  'addEventListener("load",function(){go();setTimeout(done,5000)})})()';
 export const LOADER = loader('.pp-hero-img');
 // Lot 41 : avant l'arrivée des feuilles différées, les icônes sociales du pied de page (SVG sans
 // taille propre) s'affichaient à 348 px puis retombaient à 16-18 px : décalage compté dans le CLS
 // (0,35 mesuré en ligne, 2 chargements sur 10). Règle de spécificité nulle : les règles des
 // feuilles complètes l'emportent, le rendu final est inchangé.
-export const FOOT_GUARD = ':where(.foot-social svg){width:18px;height:18px}';
+// Lot 254 : le bouton « Mouvement » (#lum-ctl, fixe) reçoit sa position de trois feuilles différées
+// (bundle_core_a1, nav_a, premium-chrome) qui arrivent dans un ordre variable : sur mobile il
+// passait de bottom 96 px / right 16 px à 72 px / 68 px après la première peinture, décalage compté
+// dans le CLS (0,085 mesuré en ligne, 5 à 9 chargements sur 40 à 390 px). Il reste invisible
+// jusqu'au marqueur data-et-css posé par le chargeur ; une apparition n'est pas un décalage.
+export const FOOT_GUARD = ':where(.foot-social svg){width:18px;height:18px}html:not([data-et-css]) #lum-ctl{visibility:hidden}';
 
 let sets = null;
 function load() {
