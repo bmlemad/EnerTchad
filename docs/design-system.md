@@ -394,3 +394,21 @@ police système.
 - Reste : des étiquettes en `ui-monospace` (police à chasse fixe du système) au lieu de JetBrains Mono sur 88 pages.
 
 Contrôles : `qa/typography-house.spec.js`, `scripts/test_mobile_fixes.mjs`.
+
+## Refonte de l'accueil « société pétrolière intégrée » (23 novembre 2026)
+
+Maquette validée par le DG (canevas « EnerTchad — refonte de l'accueil »), logo et en-tête inchangés. Accueils FR et EN ;
+l'accueil arabe garde ses six blocs jusqu'à son lot.
+
+- Ordre : héros pleine largeur sur l'illustration de la raffinerie → vision et quatre chiffres clés → quatre métiers en grandes
+  cartes illustrées, numérotées 01 à 04 (première implantation retenue : Moussoro) → Actualités (trois derniers communiqués,
+  écrits au build depuis la liste officielle par `withLatestNews`, `lib/latest-release.js`) → Impact et engagements (bande
+  illustrée ; Environnement remplace Formation) → Leadership (monogrammes, aucun portrait publié) → Investisseurs et Carrières
+  côte à côte → Contact.
+- Source : `scripts/apply_home_refonte.py` (rejouable). Styles : fin de `immersif-2026.css` ; les couleurs passent par les
+  variables lues par la couche et-glass, les surcharges `!important` sont écrites dans `@layer et-verre`. Cartes opaques
+  (contrat `glass-chrome`).
+- CSS critique des deux accueils ré-extrait (`scripts/critical/extract.py`) ; premier écran identique avec ou sans feuilles liées.
+- Légende corrigée : « Illustrations dessinées », et non plus « Photographies d'illustration ».
+
+Contrôles : `scripts/test_home_major_review.py` (structure en sept sections), `qa/glass-chrome-contract.spec.js`.
