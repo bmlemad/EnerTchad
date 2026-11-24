@@ -30,7 +30,7 @@ CHEV = ('<svg aria-hidden="true" focusable="false" width="11" height="11" viewBo
 # ---------------------------------------------------------------- contenu
 # (titre, intro, hub, [(libelle, sous-titre, lien)], (etiquette, titre, sous-titre, lien))
 FR = [
-    ('Qui sommes-nous', 'Une société pétrolière intégrée, à capitaux tchadiens, en constitution à N’Djamena.', '/societe', [
+    ('Qui sommes-nous', 'Un groupe énergétique intégré en construction, à capitaux tchadiens, société en constitution à N’Djamena.', '/societe', [
         ('La Société', 'Mission, vision, repères', '/societe'),
         ('Gouvernance', 'Société anonyme OHADA', '/gouvernance'),
         ('Éthique & conformité', 'Code de conduite, canal d’alerte', '/ethique'),
@@ -83,7 +83,7 @@ FR = [
     ], ('Nous rejoindre', 'Les talents tchadiens d’abord', 'Familles de métiers ouvertes', '/carrieres')),
 ]
 EN = [
-    ('About us', 'An integrated oil company with Chadian capital, in formation, based in N’Djamena.', '/societe', [
+    ('About us', 'An integrated energy group under construction, with Chadian capital, a company in formation, based in N’Djamena.', '/societe', [
         ('The Company', 'Mission, vision, milestones', '/societe'),
         ('Governance', 'OHADA public limited company', '/gouvernance'),
         ('Ethics & compliance', 'Code of conduct, alert line', '/ethique'),
@@ -137,7 +137,7 @@ EN = [
 ]
 UI = {
     'fr': dict(all='Vue d’ensemble', util=[('Clients', '/boutique/clients'), ('Fournisseurs', '/achats'), ('Contact', '/contact'), ('Carrières', '/carrieres')], search='Rechercher',
-               invest='Manifester son intérêt', aria='Navigation principale', foot_desc='Société pétrolière intégrée à capitaux tchadiens, de la roche-mère à la pompe.',
+               invest='Manifester son intérêt', aria='Navigation principale', foot_desc='Groupe énergétique intégré en construction, à capitaux tchadiens, de la roche-mère à la pompe.',
                h_sections='Rubriques', h_access='Accès directs', h_info='Informations', top='Haut de page',
                access=[('Devenir client', '/boutique/clients'), ('Fournisseurs', '/achats'), ('Espace presse', '/presse'),
                        ('Questions fréquentes', '/faq'), ('Contact', '/contact'), ('Plan du site', '/plan-du-site')],
@@ -146,7 +146,7 @@ UI = {
                legal=[('Mentions légales', '/mentions-legales'), ('Confidentialité', '/confidentialite'), ('Cookies', '/cookies'), ('Signalement éthique', '/ethique#alerte')],
                motto='De la roche-mère à la pompe.'),
     'en': dict(all='Overview', util=[('Customers', '/boutique/clients'), ('Suppliers', '/achats'), ('Contact', '/contact'), ('Careers', '/carrieres')], search='Search',
-               invest='Register interest', aria='Main navigation', foot_desc='An integrated oil company with Chadian capital, from source rock to the pump.',
+               invest='Register interest', aria='Main navigation', foot_desc='An integrated energy group under construction, with Chadian capital, from source rock to the pump.',
                h_sections='Sections', h_access='Quick access', h_info='Information', top='Back to top',
                access=[('Become a client', '/boutique/clients'), ('Suppliers', '/achats'), ('Press room', '/presse'),
                        ('FAQ', '/faq'), ('Contact', '/contact'), ('Site map', '/plan-du-site')],
