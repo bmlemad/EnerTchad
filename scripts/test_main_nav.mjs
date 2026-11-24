@@ -180,3 +180,13 @@ test('Activities panel — the current business line is marked on its pages', ()
   assert.deepEqual(marked('enerconseils/index.html'), ['/enerconseils/']);
   assert.ok(navOf(withMainNav(readFileSync('investisseurs.html', 'utf8'))).includes('<a class="et-sub-extra" href="/investisseurs" aria-current="page">'), 'investors page marked');
 });
+
+// 24 novembre 2026 (décision du DG, « Le Groupe ») : la barre mobile du site principal reprend le libellé de l'en-tête.
+test('mobile bar — the middle shortcut carries the header label of the Group entry', () => {
+  for (const [file, label, href] of [['societe.html', 'Le Groupe', '/nos-activites'], ['societe-en.html', 'The Group', '/nos-activites-en']]) {
+    const bar = withMainNav(readFileSync(file, 'utf8')).match(/<nav\b[^>]*\bid="nezBar"[\s\S]*?<\/nav>/)[0];
+    assert.ok(bar.includes(`<a href="${href}" aria-label="${label}">`), file + ' accessible name');
+    assert.ok(bar.includes(`aria-hidden="true">${label}</span>`), file + ' visible label');
+    assert.ok(!/Activit/.test(bar), file + ' no former label');
+  }
+});
