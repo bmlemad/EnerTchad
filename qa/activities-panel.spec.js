@@ -8,8 +8,8 @@ const { test, expect } = require('@playwright/test');
 const base = process.env.SITE_URL || 'https://enertchad.com/';
 const sets = {
   // 24 novembre 2026 (décision du DG) : « Le Groupe » — cinq métiers, puis l'entrée Investisseurs.
-  '/societe': { titles: ['Produire', 'Transporter', 'Raffiner, distribuer', 'Transformer', 'Développer'], hrefs: ['/amont/', '/intermediaire/', '/aval/', '/petrochimie/', '/enerconseils/'], overview: '/nos-activites', extra: '/investisseurs' },
-  '/index-en': { titles: ['Produce', 'Transport', 'Refine, distribute', 'Transform', 'Develop'], hrefs: ['/pole-amont-en', '/pole-intermediaire-en', '/pole-aval-en', '/pole-enerchimie-en', '/pole-enerconseils-en'], overview: '/nos-activites-en', extra: '/investisseurs-en' }
+  '/societe': { titles: ['Produire', 'Transporter', 'Raffiner, distribuer', 'Transformer', 'Développer'], hrefs: ['/amont/', '/intermediaire/', '/aval/', '/petrochimie/', '/enerconseils/'], group: '/groupe', overview: '/nos-activites', extra: '/investisseurs' },
+  '/index-en': { titles: ['Produce', 'Transport', 'Refine, distribute', 'Transform', 'Develop'], hrefs: ['/pole-amont-en', '/pole-intermediaire-en', '/pole-aval-en', '/pole-enerchimie-en', '/pole-enerconseils-en'], group: '/groupe-en', overview: '/nos-activites-en', extra: '/investisseurs-en' }
 };
 const open = async (browser, path, width, mobile = false) => {
   const context = await browser.newContext({ viewport: { width, height: 900 }, hasTouch: mobile, isMobile: mobile });
@@ -26,7 +26,7 @@ for (const [path, d] of Object.entries(sets)) {
       const toggle = page.locator('#navLinks .et-has-sub > .et-sub-tog');
       const panel = page.locator('#et-sub-activites');
       await expect(page.locator('#nav [data-et-sub]')).toHaveCount(1);
-      await expect(page.locator('#navLinks > .nav-item > a.nx-direct').nth(1)).toHaveAttribute('href', d.overview);
+      await expect(page.locator('#navLinks > .nav-item > a.nx-direct').nth(1)).toHaveAttribute('href', d.group); // 24 nov. 2026 : « Le Groupe » mène à la page /groupe
       await expect(toggle).toBeVisible();
       await expect(toggle).toHaveAttribute('aria-expanded', 'false');
       expect((await toggle.getAttribute('aria-label')).length).toBeGreaterThan(5);
