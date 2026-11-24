@@ -112,7 +112,8 @@ for (const [path, d] of Object.entries(defs)) {
     await page.setViewportSize({ width: 1440, height: 900 });
     await page.goto(new URL(path, base).href, { waitUntil: 'domcontentloaded', timeout: 45000 });
     await expect(page.locator('footer .foot-resources')).toHaveCount(0);
-    await expect(page.locator('footer [data-et-footer-access] a')).toHaveCount(4);
+    // #283 (24 novembre 2026) : sur l'accueil, Projets et Atlas (data-et-keep) suivent les quatre accès communs.
+    await expect(page.locator('footer [data-et-footer-access] a')).toHaveCount(['/', '/index-en'].includes(path) ? 6 : 4);
     for (const href of d.footer) await expect(page.locator(`footer .foot-col a[href="${href}"]`), 'footer carries ' + href).toHaveCount(1);
     // Lot 139 : aucune entrée du menu n'est répétée dans les colonnes du pied de page.
     const footer = await page.locator('footer .foot-col a[href]').evaluateAll(a => a.map(x => x.getAttribute('href')));

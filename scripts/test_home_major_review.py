@@ -14,7 +14,7 @@ from apply_home_major_review import ROOT, home, progress, plain
 # Six blocs (12 novembre 2026, décision du DG) : l'accueil ne garde que vision, activités, impact, leadership, investisseurs et
 # contact. Les repères, le projet phare, le tableau « Cadre · état publié » et la bande « Dernière publication » sont au Centre
 # de Connaissances (/savoirs) ou sur les pages qu'il indexe.
-NEW_ORDER=['id="vision"','id="chaine"','id="actualites-accueil"','id="impact"','id="gouvernance-accueil"','id="investisseurs-accueil"','id="contact-accueil"']
+NEW_ORDER=['id="vision"','id="chaine"','id="impact"','id="gouvernance-accueil"','id="investisseurs-accueil"','id="contact-accueil"']
 GONE=['id="besoin-client"','id="reperes"','id="projet-phare"','id="aller-plus-loin"','id="feuille-de-route"','id="home-publications"','class="im-glass im-board"','class="hm-latest"']
 
 class HomepageReview(unittest.TestCase):
@@ -78,8 +78,9 @@ class HomepageReview(unittest.TestCase):
   self.assertEqual(vision.count('<li>'),0)
   # 23 novembre 2026 (DG) : le prix à la pompe visé, environ la moitié du barème officiel 2026, remplace le nombre de segments.
   self.assertEqual(re.findall(r'<dd>([^<]+)</dd>',vision),['100 M FCFA','≈\u00a0½','80%' if en else '80 %','0'])
-  # actualités : les cartes sont écrites au build depuis la liste officielle des communiqués (lib/latest-release.js)
-  self.assertIn('<ul class="hm-news" data-et-news></ul>',main)
+  # 24 novembre 2026 (verre institutionnel) : les cartes de communiqués quittent l'accueil pour le Centre de connaissances ;
+  # seule la ligne « Dernier communiqué » sous le bandeau reste, écrite au build
+  self.assertNotIn('data-et-news',main)
   home_impact=re.search(r'<section id="impact".*?</section>',main,re.S)[0]
   # refonte du 23 novembre 2026 : quatre volets — emploi, contenu local, environnement, développement territorial ; la formation passe au bloc Carrières
   self.assertEqual(home_impact.count('<li>'),4)
@@ -90,7 +91,11 @@ class HomepageReview(unittest.TestCase):
   # refonte du 23 novembre 2026 : la chaîne de valeur se lit dans les quatre grandes cartes des métiers, numérotées
   chain=re.search(r'<section id="chaine".*?</section>',main,re.S)[0]
   self.assertEqual(re.findall(r'<p class="hm-seg-k">([^<]+)</p>',chain),['01 · Produce','02 · Transport','03 · Transform','04 · Distribute'] if en else ['01 · Produire','02 · Transporter','03 · Transformer','04 · Distribuer'])
-  self.assertIn('id="carrieres-accueil"',main)
+  # refonte « verre institutionnel » du 24 novembre 2026 : communiqués et carrières quittent le corps de l'accueil
+  # (communiqués → Centre de connaissances, carrières → barre utilitaire et pied de page)
+  self.assertNotIn('id="actualites-accueil"',main)
+  self.assertNotIn('id="carrieres-accueil"',main)
+  self.assertIn('href="/carrieres-en"' if en else 'href="/carrieres"',s)
   investors=re.search(r'<section id="investisseurs-accueil".*?</section>',main,re.S)[0]
   self.assertEqual(investors.count('<li>'),3)
   self.assertIn('No subscription open to date' if en else 'Aucune souscription ouverte à ce jour',investors)
