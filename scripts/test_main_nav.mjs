@@ -25,8 +25,8 @@ const routeExists = p => {
 test('FR and EN headers have the same five entries, in the DG order, and one button', () => {
   assert.deepEqual(nav.header.fr.links.map(l => l[0]), ['Vision', 'Le Groupe', 'Impact', 'Leadership', 'Investisseurs']);
   assert.deepEqual(nav.header.en.links.map(l => l[0]), ['Vision', 'The Group', 'Impact', 'Leadership', 'Investors']);
-  assert.deepEqual(nav.header.fr.links.map(l => l[1]), ['/societe', '/nos-activites', '/communautes', '/leadership', '/investisseurs']);
-  assert.deepEqual(nav.header.en.links.map(l => l[1]), ['/societe-en', '/nos-activites-en', '/communautes-en', '/leadership-en', '/investisseurs-en']);
+  assert.deepEqual(nav.header.fr.links.map(l => l[1]), ['/societe', '/nos-activites', '/impact', '/leadership', '/investisseurs']);
+  assert.deepEqual(nav.header.en.links.map(l => l[1]), ['/societe-en', '/nos-activites-en', '/impact-en', '/leadership-en', '/investisseurs-en']);
   assert.deepEqual(nav.centre.fr.links.map(l => l[0]), ['Gouvernance', 'Publications', 'HSE', 'Éthique', 'Atlas', 'FAQ', 'Documentation']);
   assert.deepEqual(nav.centre.en.links.map(l => l[0]), ['Governance', 'Publications', 'HSE', 'Ethics', 'Atlas', 'FAQ', 'Documentation']);
   assert.deepEqual(nav.centre.fr.button, ['Site EnerTchad', '/']);
@@ -122,11 +122,11 @@ test('secondary pages mark their header section, and never two entries at once',
   };
   const expected = {
     'gouvernance.html': ['/gouvernance:page'], 'ethique.html': ['/ethique:page'], 'achats.html': ['/societe:true'],
-    'cibles-2030.html': ['/communautes:true'], 'faq.html': ['/faq:page'], 'glossaire-petrolier.html': ['/sources:true'],
+    'cibles-2030.html': ['/impact:true'], 'communautes.html': ['/impact:true'], 'impact.html': ['/impact:page'], 'faq.html': ['/faq:page'], 'glossaire-petrolier.html': ['/sources:true'],
     'publications.html': ['/publications:page'], 'communiques.html': ['/publications:true'], 'presse.html': ['/publications:true'],
     'journal-prix-litre.html': ['/publications:true'], 'communique/cp-2026-010.html': ['/publications:true'],
     'conformite.html': ['/ethique:true'], 'rapports.html': ['/sources:true'], 'cadre-hse.html': ['/cadre-hse:page'], 'savoirs.html': [],
-    'gouvernance-en.html': ['/gouvernance-en:page'], 'cibles-2030-en.html': ['/communautes-en:true'], 'presse-en.html': ['/publications-en:true'],
+    'gouvernance-en.html': ['/gouvernance-en:page'], 'cibles-2030-en.html': ['/impact-en:true'], 'presse-en.html': ['/publications-en:true'],
     'societe.html': ['/societe:page'], 'carrieres.html': ['/societe:true'], 'leadership.html': ['/leadership:page'], 'investisseurs.html': ['/investisseurs:page'],
     'nos-activites.html': ['/nos-activites:page'], 'amont/index.html': ['/nos-activites:page'],
     'contact.html': [], 'projets.html': [], 'index.html': [],

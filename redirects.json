@@ -232,16 +232,6 @@
       "permanent": true
     },
     {
-      "source": "/impact-en",
-      "destination": "/pole-greentech-en#impact",
-      "permanent": true
-    },
-    {
-      "source": "/impact-en.html",
-      "destination": "/pole-greentech-en#impact",
-      "permanent": true
-    },
-    {
       "source": "/patrimoine-en",
       "destination": "/pole-greentech-en#patrimoine",
       "permanent": true
@@ -669,16 +659,6 @@
     {
       "source": "/og-enerchimie.png",
       "destination": "/og-petrochimie.jpg",
-      "permanent": true
-    },
-    {
-      "source": "/impact",
-      "destination": "/greentech/#impact",
-      "permanent": true
-    },
-    {
-      "source": "/impact.html",
-      "destination": "/greentech/#impact",
       "permanent": true
     },
     {
