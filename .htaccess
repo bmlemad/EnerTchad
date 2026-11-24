@@ -620,12 +620,6 @@ RewriteRule ^hseq\-en$ https://%{HTTP_HOST}/pole-greentech-en#hseq [R=308,END,NE
 # /hseq-en.html /pole-greentech-en#hseq 308!
 RewriteRule ^hseq\-en\.html$ https://%{HTTP_HOST}/pole-greentech-en#hseq [R=308,END,NE]
 
-# /impact-en /pole-greentech-en#impact 308!
-RewriteRule ^impact\-en$ https://%{HTTP_HOST}/pole-greentech-en#impact [R=308,END,NE]
-
-# /impact-en.html /pole-greentech-en#impact 308!
-RewriteRule ^impact\-en\.html$ https://%{HTTP_HOST}/pole-greentech-en#impact [R=308,END,NE]
-
 # /patrimoine-en /pole-greentech-en#patrimoine 308!
 RewriteRule ^patrimoine\-en$ https://%{HTTP_HOST}/pole-greentech-en#patrimoine [R=308,END,NE]
 
@@ -883,12 +877,6 @@ RewriteRule ^pole\-enerchimie\-chimie\-eor\.html$ https://%{HTTP_HOST}/petrochim
 
 # /og-enerchimie.png /og-petrochimie.jpg 308!
 RewriteRule ^og\-enerchimie\.png$ https://%{HTTP_HOST}/og-petrochimie.jpg [R=308,END,NE]
-
-# /impact /greentech/#impact 308!
-RewriteRule ^impact$ https://%{HTTP_HOST}/greentech/#impact [R=308,END,NE]
-
-# /impact.html /greentech/#impact 308!
-RewriteRule ^impact\.html$ https://%{HTTP_HOST}/greentech/#impact [R=308,END,NE]
 
 # /en /index-en 308!
 RewriteRule ^en$ https://%{HTTP_HOST}/index-en [R=308,END,NE]
