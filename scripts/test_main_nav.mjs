@@ -25,8 +25,8 @@ const routeExists = p => {
 test('FR and EN headers have the same five entries, in the DG order, and one button', () => {
   assert.deepEqual(nav.header.fr.links.map(l => l[0]), ['Vision', 'Le Groupe', 'Impact', 'Leadership', 'Investisseurs']);
   assert.deepEqual(nav.header.en.links.map(l => l[0]), ['Vision', 'The Group', 'Impact', 'Leadership', 'Investors']);
-  assert.deepEqual(nav.header.fr.links.map(l => l[1]), ['/societe', '/nos-activites', '/impact', '/leadership', '/investisseurs']);
-  assert.deepEqual(nav.header.en.links.map(l => l[1]), ['/societe-en', '/nos-activites-en', '/impact-en', '/leadership-en', '/investisseurs-en']);
+  assert.deepEqual(nav.header.fr.links.map(l => l[1]), ['/societe', '/groupe', '/impact', '/leadership', '/investisseurs']);
+  assert.deepEqual(nav.header.en.links.map(l => l[1]), ['/societe-en', '/groupe-en', '/impact-en', '/leadership-en', '/investisseurs-en']);
   assert.deepEqual(nav.centre.fr.links.map(l => l[0]), ['Gouvernance', 'Publications', 'HSE', 'Éthique', 'Atlas', 'FAQ', 'Documentation']);
   assert.deepEqual(nav.centre.en.links.map(l => l[0]), ['Governance', 'Publications', 'HSE', 'Ethics', 'Atlas', 'FAQ', 'Documentation']);
   assert.deepEqual(nav.centre.fr.button, ['Site EnerTchad', '/']);
@@ -74,7 +74,8 @@ test('every corporate page gets the five links, keeps everything outside the nav
     assert.equal(outside(noBar(after)), outside(noBar(before)), page + ' outside the nav and the bottom bar');
     const barOf = h => [...(h.match(/<nav\b[^>]*\bid="nezBar"[^>]*>[\s\S]*?<\/nav>/)?.[0] || '').matchAll(/<a href="([^"]+)" aria-label="([^"]+)"/g)].map(m => m[1]);
     const centreHere = after.includes('data-et-space="centre"');
-    if (!centreHere) assert.deepEqual(barOf(after), barOf(before), page + ' bottom bar untouched on the main site');
+    // 24 novembre 2026 : sur le site principal, seul le raccourci du milieu change — il mène à l'entrée « Le Groupe » de l'en-tête.
+    if (!centreHere) assert.deepEqual(barOf(after), barOf(before).map((h, i) => i === 1 ? nav.header[lang].links[1][1] : h), page + ' bottom bar: only the middle shortcut follows the header');
     else if (barOf(before).length) assert.deepEqual(barOf(after), [nav.centre[lang].home, nav.centre[lang].links[1][1], nav.centre[lang].button[1]], page + ' bottom bar of the Centre');
     if (centreHere) assert(after.includes(`class="brand" aria-label="EnerTchad — ${nav.centre[lang].slogan}"`), page + ' logo named after the Centre');
     const n = navOf(after);
@@ -128,7 +129,7 @@ test('secondary pages mark their header section, and never two entries at once',
     'conformite.html': ['/ethique:true'], 'rapports.html': ['/sources:true'], 'cadre-hse.html': ['/cadre-hse:page'], 'savoirs.html': [],
     'gouvernance-en.html': ['/gouvernance-en:page'], 'cibles-2030-en.html': ['/impact-en:true'], 'presse-en.html': ['/publications-en:true'],
     'societe.html': ['/societe:page'], 'carrieres.html': ['/societe:true'], 'leadership.html': ['/leadership:page'], 'investisseurs.html': ['/investisseurs:page'],
-    'nos-activites.html': ['/nos-activites:page'], 'amont/index.html': ['/nos-activites:page'],
+    'nos-activites.html': ['/groupe:page'], 'amont/index.html': ['/groupe:page'], 'groupe.html': ['/groupe:page'],
     'contact.html': [], 'projets.html': [], 'index.html': [],
   };
   for (const [file, want] of Object.entries(expected)) assert.deepEqual(marks(file), want, file);
@@ -144,8 +145,8 @@ test('secondary pages mark their header section, and never two entries at once',
 // 24 novembre 2026 (décision du DG) : « Activités » devient « Le Groupe » — cinq métiers, puis l'entrée Investisseurs.
 test('Group panel — five businesses, investors and the overview, main site only', () => {
   const expect = {
-    fr: { file: 'societe.html', titles: ['Produire', 'Transporter', 'Raffiner, distribuer', 'Transformer', 'Développer'], hrefs: ['/amont/', '/intermediaire/', '/aval/', '/petrochimie/', '/enerconseils/'], overview: '/nos-activites', extra: '/investisseurs' },
-    en: { file: 'societe-en.html', titles: ['Produce', 'Transport', 'Refine, distribute', 'Transform', 'Develop'], hrefs: ['/pole-amont-en', '/pole-intermediaire-en', '/pole-aval-en', '/pole-enerchimie-en', '/pole-enerconseils-en'], overview: '/nos-activites-en', extra: '/investisseurs-en' }
+    fr: { file: 'societe.html', titles: ['Produire', 'Transporter', 'Raffiner, distribuer', 'Transformer', 'Développer'], hrefs: ['/amont/', '/intermediaire/', '/aval/', '/petrochimie/', '/enerconseils/'], group: '/groupe', overview: '/nos-activites', extra: '/investisseurs' },
+    en: { file: 'societe-en.html', titles: ['Produce', 'Transport', 'Refine, distribute', 'Transform', 'Develop'], hrefs: ['/pole-amont-en', '/pole-intermediaire-en', '/pole-aval-en', '/pole-enerchimie-en', '/pole-enerconseils-en'], group: '/groupe-en', overview: '/nos-activites-en', extra: '/investisseurs-en' }
   };
   for (const [lang, e] of Object.entries(expect)) {
     assert.deepEqual(nav.header[lang].panel.links.map(l => l[0]), e.titles, lang);
@@ -156,7 +157,7 @@ test('Group panel — five businesses, investors and the overview, main site onl
     const html = withMainNav(readFileSync(e.file, 'utf8'));
     const n = navOf(html);
     assert.equal((n.match(/data-et-sub/g) || []).length, 1, `${lang} one panel`);
-    assert.match(n, new RegExp(`<div class="nav-item pn-item et-has-sub" data-et-sub><a class="nav-trigger nx-direct[^"]*" href="${e.overview}"`), `${lang} under Activities`);
+    assert.match(n, new RegExp(`<div class="nav-item pn-item et-has-sub" data-et-sub><a class="nav-trigger nx-direct[^"]*" href="${e.group}"`), `${lang} under the Group entry`);
     assert.match(n, /<button type="button" class="et-sub-tog" aria-expanded="false" aria-controls="et-sub-activites" aria-label="[^"]+" hidden><\/button>/, `${lang} toggle hidden until the script runs`);
     assert.match(n, /<div class="et-sub" id="et-sub-activites" hidden>/, `${lang} panel closed`);
     assert.deepEqual([...n.matchAll(/<a class="et-sub-link" href="([^"]+)"/g)].map(m => m[1]), e.hrefs, `${lang} links`);
@@ -183,7 +184,7 @@ test('Activities panel — the current business line is marked on its pages', ()
 
 // 24 novembre 2026 (décision du DG, « Le Groupe ») : la barre mobile du site principal reprend le libellé de l'en-tête.
 test('mobile bar — the middle shortcut carries the header label of the Group entry', () => {
-  for (const [file, label, href] of [['societe.html', 'Le Groupe', '/nos-activites'], ['societe-en.html', 'The Group', '/nos-activites-en']]) {
+  for (const [file, label, href] of [['societe.html', 'Le Groupe', '/groupe'], ['societe-en.html', 'The Group', '/groupe-en']]) {
     const bar = withMainNav(readFileSync(file, 'utf8')).match(/<nav\b[^>]*\bid="nezBar"[\s\S]*?<\/nav>/)[0];
     assert.ok(bar.includes(`<a href="${href}" aria-label="${label}">`), file + ' accessible name');
     assert.ok(bar.includes(`aria-hidden="true">${label}</span>`), file + ' visible label');
