@@ -133,8 +133,6 @@ https://enertchad.netlify.app/* https://enertchad.com/:splat 301!
 /reseau-en.html /aval/reseau-en 308!
 /hseq-en /pole-greentech-en#hseq 308!
 /hseq-en.html /pole-greentech-en#hseq 308!
-/impact-en /pole-greentech-en#impact 308!
-/impact-en.html /pole-greentech-en#impact 308!
 /patrimoine-en /pole-greentech-en#patrimoine 308!
 /patrimoine-en.html /pole-greentech-en#patrimoine 308!
 /transition-en /pole-greentech-en#transition 308!
@@ -221,8 +219,6 @@ https://enertchad.netlify.app/* https://enertchad.com/:splat 301!
 /pole-enerchimie-chimie-eor /petrochimie/chimie-eor 308!
 /pole-enerchimie-chimie-eor.html /petrochimie/chimie-eor 308!
 /og-enerchimie.png /og-petrochimie.jpg 308!
-/impact /greentech/#impact 308!
-/impact.html /greentech/#impact 308!
 /en /index-en 308!
 /en.html /index-en 308!
 /enertalents /tchaditude/ 308!

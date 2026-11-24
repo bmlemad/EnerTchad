@@ -1152,7 +1152,7 @@ test('redirects — legacy routes are unique, permanent and point to non-legacy 
   const legacy = [
     '/reporting', '/reporting-en', '/en', '/en.html', '/pole-amont', '/pole-intermediaire',
     '/pole-aval', '/pole-greentech', '/pole-enertech', '/pole-enertalents', '/pole-enerconseils',
-    '/enertech', '/enertalents', '/enerchimie', '/impact', '/boutique', '/calculateur-baril-additionnel'
+    '/enertech', '/enertalents', '/enerchimie', '/boutique', '/calculateur-baril-additionnel'
   ];
   const seen = new Set();
   for (const path of legacy) {
