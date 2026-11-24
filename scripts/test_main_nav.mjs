@@ -23,8 +23,8 @@ const routeExists = p => {
 // 17 novembre 2026 (décision du DG, comparaison avec les majors) : « Contact » devient le bouton et quitte le menu, « Carrières » y entre.
 // 20 novembre 2026 (décision du DG) : deux espaces. Site principal : cinq entrées et le bouton Contact ; Centre de Connaissances : sept entrées et un bouton de retour.
 test('FR and EN headers have the same five entries, in the DG order, and one button', () => {
-  assert.deepEqual(nav.header.fr.links.map(l => l[0]), ['Vision', 'Activités', 'Impact', 'Leadership', 'Investisseurs']);
-  assert.deepEqual(nav.header.en.links.map(l => l[0]), ['Vision', 'Activities', 'Impact', 'Leadership', 'Investors']);
+  assert.deepEqual(nav.header.fr.links.map(l => l[0]), ['Vision', 'Le Groupe', 'Impact', 'Leadership', 'Investisseurs']);
+  assert.deepEqual(nav.header.en.links.map(l => l[0]), ['Vision', 'The Group', 'Impact', 'Leadership', 'Investors']);
   assert.deepEqual(nav.header.fr.links.map(l => l[1]), ['/societe', '/nos-activites', '/communautes', '/leadership', '/investisseurs']);
   assert.deepEqual(nav.header.en.links.map(l => l[1]), ['/societe-en', '/nos-activites-en', '/communautes-en', '/leadership-en', '/investisseurs-en']);
   assert.deepEqual(nav.centre.fr.links.map(l => l[0]), ['Gouvernance', 'Publications', 'HSE', 'Éthique', 'Atlas', 'FAQ', 'Documentation']);
@@ -141,10 +141,11 @@ test('secondary pages mark their header section, and never two entries at once',
 
 // 21 novembre 2026 (décision du DG, comparaison avec les majors) : un seul panneau, sous « Activités » — les quatre métiers et la vue
 // d'ensemble, FR et EN, sur le site principal seulement ; le Centre de Connaissances n'en a pas.
-test('Activities panel — four business lines and the overview, main site only', () => {
+// 24 novembre 2026 (décision du DG) : « Activités » devient « Le Groupe » — cinq métiers, puis l'entrée Investisseurs.
+test('Group panel — five businesses, investors and the overview, main site only', () => {
   const expect = {
-    fr: { file: 'societe.html', titles: ['Produire', 'Transporter', 'Transformer', 'Distribuer'], hrefs: ['/amont/', '/intermediaire/', '/petrochimie/', '/aval/'], overview: '/nos-activites', extra: '/services-tiers' },
-    en: { file: 'societe-en.html', titles: ['Produce', 'Transport', 'Transform', 'Distribute'], hrefs: ['/pole-amont-en', '/pole-intermediaire-en', '/pole-enerchimie-en', '/pole-aval-en'], overview: '/nos-activites-en', extra: '/services-tiers-en' }
+    fr: { file: 'societe.html', titles: ['Produire', 'Transporter', 'Raffiner, distribuer', 'Transformer', 'Développer'], hrefs: ['/amont/', '/intermediaire/', '/aval/', '/petrochimie/', '/enerconseils/'], overview: '/nos-activites', extra: '/investisseurs' },
+    en: { file: 'societe-en.html', titles: ['Produce', 'Transport', 'Refine, distribute', 'Transform', 'Develop'], hrefs: ['/pole-amont-en', '/pole-intermediaire-en', '/pole-aval-en', '/pole-enerchimie-en', '/pole-enerconseils-en'], overview: '/nos-activites-en', extra: '/investisseurs-en' }
   };
   for (const [lang, e] of Object.entries(expect)) {
     assert.deepEqual(nav.header[lang].panel.links.map(l => l[0]), e.titles, lang);
@@ -176,5 +177,6 @@ test('Activities panel — the current business line is marked on its pages', ()
   assert.deepEqual(marked('aval/produits.html'), ['/aval/']);
   assert.deepEqual(marked('pole-aval-en.html'), ['/pole-aval-en']);
   assert.deepEqual(marked('societe.html'), []);
-  assert.ok(navOf(withMainNav(readFileSync('services-tiers.html', 'utf8'))).includes('<a class="et-sub-extra" href="/services-tiers" aria-current="page">'), 'services page marked');
+  assert.deepEqual(marked('enerconseils/index.html'), ['/enerconseils/']);
+  assert.ok(navOf(withMainNav(readFileSync('investisseurs.html', 'utf8'))).includes('<a class="et-sub-extra" href="/investisseurs" aria-current="page">'), 'investors page marked');
 });

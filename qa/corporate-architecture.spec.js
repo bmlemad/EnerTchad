@@ -7,7 +7,8 @@ for(const en of [false,true])for(const width of [320,390,1241,1440]){
   // Lot 124 : en-tête minimaliste, cinq liens simples (voir mega-menu-contract.spec.js pour le détail).
   if(width<1241)await page.locator('#navTog').click();
   const links=page.locator('#navLinks > .nav-item > a.nx-direct');await expect(links).toHaveCount(5);
-  const expected=en?['Vision','Activities','Impact','Leadership','Investors']:['Vision','Activités','Impact','Leadership','Investisseurs']; // 20 nov. 2026 : deux espaces, Leadership entre, Carrières et le Centre passent au pied de page
+  const expected=en?['Vision','The Group','Impact','Leadership','Investors']:['Vision','Le Groupe','Impact','Leadership','Investisseurs']; // 24 nov. 2026 : « Activités » devient « Le Groupe »
+  // 20 nov. 2026 : deux espaces, Leadership entre, Carrières et le Centre passent au pied de page
   for(let i=0;i<5;i++){await expect(links.nth(i)).toHaveText(expected[i]);await expect(links.nth(i)).toBeVisible();}
   await expect(page.locator('#nav .nx-mega')).toHaveCount(0);
   if(width<1241)await page.keyboard.press('Escape');

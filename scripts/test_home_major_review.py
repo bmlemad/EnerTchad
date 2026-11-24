@@ -22,7 +22,7 @@ class HomepageReview(unittest.TestCase):
   self.assertEqual(len(re.findall(r'<h1\b',main)),1)
   ids=re.findall(r'\bid="([^"]+)"',s)
   self.assertEqual(len(ids),len(set(ids)))
-  self.assertEqual(main.count('class="et-seg-img"'),4)
+  self.assertEqual(main.count('class="et-seg-img"'),5)  # 24 novembre 2026 : cinq métiers du groupe
   self.assertIn('<header class="et-hero"',main)  # crochet de la dernière publication (scripts/next/critical.mjs)
   suffix='-en' if en else ''
   client='/boutique/en/clients' if en else '/boutique/clients'
@@ -64,7 +64,8 @@ class HomepageReview(unittest.TestCase):
   offsets=[main.index(x) for x in NEW_ORDER]
   self.assertEqual(offsets,sorted(offsets))
   # héros : titre du brief, libellés d'action du contrat CTA (qa/cta-vocabulary-contract.spec.js)
-  h1='<h1 id="ph-h1">Chad’s energy. <em>Integrated.</em></h1>' if en else '<h1 id="ph-h1">L’énergie du Tchad. <em>Intégrée.</em></h1>'
+  # 24 novembre 2026 (DG, « Le Groupe ») : le visiteur doit voir le futur groupe énergétique intégré du Tchad
+  h1='<h1 id="ph-h1">Chad’s future <em>integrated energy group.</em></h1>' if en else '<h1 id="ph-h1">Le futur groupe <em>énergétique intégré</em> du Tchad.</h1>'
   self.assertIn(h1,main)
   # 20 nov. 2026 (audit face aux grands groupes, décision du DG) : le héros ouvre sur la vision ; le besoin professionnel reste dans le héros, en lien secondaire
   primary='Discuss a business requirement' if en else 'Présenter un besoin professionnel'
@@ -90,7 +91,7 @@ class HomepageReview(unittest.TestCase):
   self.assertIn('company in formation' if en else 'société en constitution',vision)
   # refonte du 23 novembre 2026 : la chaîne de valeur se lit dans les quatre grandes cartes des métiers, numérotées
   chain=re.search(r'<section id="chaine".*?</section>',main,re.S)[0]
-  self.assertEqual(re.findall(r'<p class="hm-seg-k">([^<]+)</p>',chain),['01 · Produce','02 · Transport','03 · Transform','04 · Distribute'] if en else ['01 · Produire','02 · Transporter','03 · Transformer','04 · Distribuer'])
+  self.assertEqual(re.findall(r'<p class="hm-seg-k">([^<]+)</p>',chain),['01 · Produce','02 · Transport','03 · Refine, distribute','04 · Transform','05 · Develop'] if en else ['01 · Produire','02 · Transporter','03 · Raffiner, distribuer','04 · Transformer','05 · Développer'])
   # refonte « verre institutionnel » du 24 novembre 2026 : communiqués et carrières quittent le corps de l'accueil
   # (communiqués → Centre de connaissances, carrières → barre utilitaire et pied de page)
   self.assertNotIn('id="actualites-accueil"',main)

@@ -7,8 +7,9 @@ const { test, expect } = require('@playwright/test');
 
 const base = process.env.SITE_URL || 'https://enertchad.com/';
 const sets = {
-  '/societe': { titles: ['Produire', 'Transporter', 'Transformer', 'Distribuer'], hrefs: ['/amont/', '/intermediaire/', '/petrochimie/', '/aval/'], overview: '/nos-activites', extra: '/services-tiers' },
-  '/index-en': { titles: ['Produce', 'Transport', 'Transform', 'Distribute'], hrefs: ['/pole-amont-en', '/pole-intermediaire-en', '/pole-enerchimie-en', '/pole-aval-en'], overview: '/nos-activites-en', extra: '/services-tiers-en' }
+  // 24 novembre 2026 (décision du DG) : « Le Groupe » — cinq métiers, puis l'entrée Investisseurs.
+  '/societe': { titles: ['Produire', 'Transporter', 'Raffiner, distribuer', 'Transformer', 'Développer'], hrefs: ['/amont/', '/intermediaire/', '/aval/', '/petrochimie/', '/enerconseils/'], overview: '/nos-activites', extra: '/investisseurs' },
+  '/index-en': { titles: ['Produce', 'Transport', 'Refine, distribute', 'Transform', 'Develop'], hrefs: ['/pole-amont-en', '/pole-intermediaire-en', '/pole-aval-en', '/pole-enerchimie-en', '/pole-enerconseils-en'], overview: '/nos-activites-en', extra: '/investisseurs-en' }
 };
 const open = async (browser, path, width, mobile = false) => {
   const context = await browser.newContext({ viewport: { width, height: 900 }, hasTouch: mobile, isMobile: mobile });
@@ -35,8 +36,8 @@ for (const [path, d] of Object.entries(sets)) {
       await expect(panel).toBeVisible();
       await expect(toggle).toHaveAttribute('aria-expanded', 'true');
       const links = panel.locator('a.et-sub-link');
-      await expect(links).toHaveCount(4);
-      for (let i = 0; i < 4; i++) {
+      await expect(links).toHaveCount(5);
+      for (let i = 0; i < 5; i++) {
         await expect(links.nth(i).locator('b')).toHaveText(d.titles[i]);
         await expect(links.nth(i)).toHaveAttribute('href', d.hrefs[i]);
       }
@@ -95,7 +96,7 @@ for (const [path, d] of Object.entries(sets)) {
     await toggle.tap();
     await expect(panel).toBeVisible();
     await expect(toggle).toHaveAttribute('aria-expanded', 'true');
-    await expect(panel.locator('a.et-sub-link')).toHaveCount(4);
+    await expect(panel.locator('a.et-sub-link')).toHaveCount(5);
     const report = await page.evaluate(() => {
       const p = document.querySelector('#et-sub-activites').getBoundingClientRect();
       const next = document.querySelectorAll('#navLinks > .nav-item')[2].getBoundingClientRect();
