@@ -1,22 +1,22 @@
 {
   "/Fiche_Investisseur_EnerTchad.pdf": {
-    "git_blob_sha": "8492f3410b249076b751e44f68baffad7c8f8056",
+    "git_blob_sha": "7532786f9b76c55b3d61343f8b83e8637813917f",
     "document_date": "2026-11",
     "date_source": "PDF page 1"
   },
   "/Point_Etape_EnerTchad_2026.pdf": {
-    "git_blob_sha": "228836c801d0f0c590751762570be013a382f099",
+    "git_blob_sha": "7ed21be3ea880202a6385b108163fedc53520d25",
     "document_date": "2026-11",
     "date_source": "PDF page 1"
   },
   "/Brochure_EnerTchad.pdf": {
-    "git_blob_sha": "d6957b40765e276d7567eca50109d1e2bb41c129",
+    "git_blob_sha": "4b4ce91f8567569c879572cf7697eac8a0e4219c",
     "document_date": "2026-09",
     "document_updated": "2026-11",
     "date_source": "PDF page 1"
   },
   "/Brochure_EnerTchad_EN.pdf": {
-    "git_blob_sha": "25c0cd4eb8900d173c8e06509a0d9e636bc35dda",
+    "git_blob_sha": "ab53b680d91e1107d79e8636a02cb2a633497d84",
     "document_date": "2026-09",
     "document_updated": "2026-11",
     "date_source": "PDF page 1"
@@ -27,7 +27,7 @@
     "date_source": "PDF page 1"
   },
   "/Data_Book_EnerTchad.xlsx": {
-    "git_blob_sha": "4fcf9681c13fa6c7c5920eb4170caf14a328b7f8",
+    "git_blob_sha": "0dc09d39282cbca5eec9f9407757ba43d70dfb15",
     "document_date": "2026-11",
     "date_source": "Onglet Lisez-moi"
   },
@@ -48,13 +48,13 @@
     "date_source": "PDF page 1"
   },
   "/Fiche_Technique_Intermediaire_EnerTchad.pdf": {
-    "git_blob_sha": "1cc28183a16280054dc6f38f02899d959a3e1233",
+    "git_blob_sha": "e69ac537422b4743bd16dae0f1ef278b674f2c95",
     "document_date": "2026-10",
     "document_updated": "2026-11",
     "date_source": "PDF page 1"
   },
   "/Fiche_Technique_Intermediaire_EnerTchad_EN.pdf": {
-    "git_blob_sha": "7f1dab7094b51cc7dd133857bbb712e3e18f5849",
+    "git_blob_sha": "11b6873973a5e909d53cd6b77d9ad6033bd4ecc0",
     "document_date": "2026-10",
     "document_updated": "2026-11",
     "date_source": "PDF page 1"
