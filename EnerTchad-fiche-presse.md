@@ -23,7 +23,7 @@
 - Conseil pressenti : GCIC
 
 ## Organisation
-EnerTchad est une **société unique** (pas un groupe, pas de filiales), organisée sur **quatre segments industriels** — Exploration & Production, Transport & stockage, Raffinage & pétrochimie et Distribution. Quatre capacités sont intégrées à chacun de ces pôles : GreenTech (durabilité), TchadiTech (technologies), Tchaditude (capital humain), EnerConseils (conseil). Construire, à terme, un groupe énergétique intégré à capitaux tchadiens est une ambition, pas une description de la société actuelle.
+EnerTchad est une **société unique** (pas un groupe, pas de filiales), organisée sur **quatre segments industriels** — Exploration & Production, Transport & stockage, Raffinage & pétrochimie et Distribution. Quatre fonctions techniques servent ces quatre segments : GreenTech (durabilité), TchadiTech (technologies), Tchaditude (capital humain), EnerConseils (conseil). Construire, à terme, un groupe énergétique intégré à capitaux tchadiens est une ambition, pas une description de la société actuelle.
 
 ## Palette officielle
 Le logo officiel est un trèfle à quatre pétales dans un anneau d'or, sur fond crème.
