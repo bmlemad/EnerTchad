@@ -17,7 +17,7 @@ for path in ROOT.rglob('*.html'):
     count += 1
 for suffix in ('', '-en'):
     home = (ROOT / ('index' + suffix + '.html')).read_text()
-    assert home.count('class="et-seg-img"') == 4
+    assert home.count('class="et-seg-img"') == 5  # 24 nov. 2026 : cinq métiers du groupe
     if 'id="contact-accueil"' in home:  # six blocs (12 nov. 2026) : vision, activités, impact, leadership, investisseurs, contact
         assert home.index('id="vision"') < home.index('id="chaine"') < home.index('id="impact"') < home.index('id="gouvernance-accueil"') < home.index('id="investisseurs-accueil"') < home.index('id="contact-accueil"')
     elif 'id="projet-phare"' in home:  # lot 112 (10 nov. 2026) : repères sous le héros, premier projet phare, puis la chaîne et la gouvernance

@@ -43,10 +43,14 @@ def has_reporting_section(content, document_route):
 home_requirements = {
     "reporting investisseurs": r'href="/(?:publications#pub-inv|investisseurs)"',
     "gouvernance": r'href="/ethique(?:#[^"]*)?"',  # 24 novembre 2026 : le lien visible du pied de page pointe sur /ethique#alerte
-    "newsroom": r'href="/communiques"',
+    # 24 novembre 2026 (verre institutionnel, DG) : les communiqués quittent l'accueil pour le Centre de connaissances ;
+    # l'accueil y mène, et la ligne « Dernier communiqué » (écrite au build) pointe sur /communiques.
+    "newsroom": r'href="/(?:communiques|savoirs)"',
     "portefeuille": r'href="/projets"',
     "limites des données": r'href="/avertissements"',
 }
+if not re.search(r'href="/communiques', read(ROOT / "savoirs.html")):
+    errors.append("savoirs.html: accès aux communiqués absent")
 for label, pattern in home_requirements.items():
     if not re.search(pattern, home, re.I | re.S):
         errors.append(f"index.html: élément corporate attendu absent ({label})")
