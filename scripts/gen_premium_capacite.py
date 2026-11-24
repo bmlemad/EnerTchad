@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Refonte premium (phase 4) : pages des quatre capacites integrees, FR et EN.
+"""Refonte premium (phase 4) : pages des quatre fonctions techniques, FR et EN.
 
 GreenTech (durabilite), TchadiTech (technologies), Tchaditude (capital humain) et
 EnerConseils (conseil & atlas) : meme gabarit que les pages de pole

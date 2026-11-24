@@ -260,7 +260,7 @@ def build_main(m, lang, hero, fig):
                  + head_block(text(pj.select_one('.ppj-k')), 'pp-proj', inner(pj.h2), inner(pj.select_one('.ppj-note')))
                  + f'<div class="pp-proj">{cards}</div>{sup}</div></section>'))
 
-    # Capacites integrees
+    # Fonctions techniques (section #capacites)
     ca = q('section#capacites')
     caps = ''.join(f'<a href="{escape(a["href"])}"><b>{inner(a.b)}</b><span>{inner(a.span)}</span></a>' for a in ca.select('a.capint-c'))
     secs.append(('capacites', t['caps'], 'mist' if ak else '',
