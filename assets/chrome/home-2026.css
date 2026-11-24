@@ -326,3 +326,67 @@ html body.hm:has(#nav) #nav.nav.nx:not(.scrolled):not(:focus-within):not(:has(.n
 #main-content.et-home.hm-review section#gouvernance-accueil .mod-grid{max-width:none!important}
 #main-content.et-home.hm-review section#gouvernance-accueil .mod-card::before{content:none!important}
 }
+
+/* ===== Verre institutionnel (24 novembre 2026, maquette validée par le DG) =====
+   Grandes scènes plein cadre sous des cartes de verre flottantes ; six blocs. Les scènes restent sombres dans les deux thèmes
+   (texte clair imposé) ; Vision, Leadership et Investisseurs prennent un verre clair en thème clair. */
+body.hm{--hv-ink:#070d18;--hv-gold:#e2c271;--hv-txt:#f2efe8;--hv-soft:#d6dde8;--hv-mute:#b9c4d4}
+body.hm #nav .nx-bar{max-width:1240px;margin:14px auto 0;border-radius:18px;background-image:linear-gradient(rgba(8,14,26,.46),rgba(8,14,26,.46));-webkit-backdrop-filter:blur(22px) saturate(140%);backdrop-filter:blur(22px) saturate(140%);border:1px solid rgba(255,255,255,.16);box-shadow:0 24px 60px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.12)}
+/* Héros : la raffinerie plein cadre, le texte dans une carte de verre sombre */
+body.hm #top#top.et-hero{background-image:linear-gradient(var(--hv-ink),var(--hv-ink));min-height:min(940px,100svh);display:flex;align-items:flex-end;color:var(--hv-txt)}
+body.hm #top#top.et-hero .et-hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:60% 40%;opacity:1;filter:none}
+body.hm #top#top.et-hero::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(7,13,24,.6) 0%,rgba(7,13,24,.12) 34%,rgba(7,13,24,.62) 78%,var(--hv-ink) 100%)}
+body.hm #top#top.et-hero .et-inner{position:relative;z-index:1;width:100%;padding-bottom:56px}
+body.hm #top#top .hm-verre{max-width:720px;border-radius:28px;padding:44px 48px;background-image:linear-gradient(rgba(8,14,26,.44),rgba(8,14,26,.44));-webkit-backdrop-filter:blur(26px) saturate(130%);backdrop-filter:blur(26px) saturate(130%);border:1px solid rgba(255,255,255,.15);box-shadow:0 30px 80px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.12)}
+body.hm #top#top .hm-verre h1{color:var(--hv-txt)}
+body.hm #top#top .hm-verre .et-lead{color:var(--hv-soft)}
+body.hm #top#top .hm-verre .hm-note{color:var(--hv-mute);border-top-color:rgba(255,255,255,.16)}
+body.hm #top#top .hm-verre .hm-note a{color:var(--hv-txt)}
+body.hm #top#top .hm-verre .et-secondary{background-image:linear-gradient(rgba(255,255,255,.08),rgba(255,255,255,.08));border:1px solid rgba(255,255,255,.22);border-radius:14px;color:var(--hv-txt)}
+body.hm #top#top .hm-verre .et-primary{border-radius:14px}
+/* Scènes de fond (Vision, Impact, Contact) */
+body.hm #vision#vision,body.hm #impact#impact,body.hm #contact-accueil#contact-accueil{position:relative;overflow:hidden;isolation:isolate}
+body.hm #vision#vision>.im-bg,body.hm #impact#impact>.im-bg,body.hm #contact-accueil#contact-accueil>.im-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;opacity:1}
+body.hm #vision#vision::before,body.hm #impact#impact::before,body.hm #contact-accueil#contact-accueil::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(180deg,var(--hv-ink) 0%,rgba(7,13,24,.58) 30%,rgba(7,13,24,.7) 100%)}
+/* Cartes de verre */
+body.hm #vision#vision .hm-head,body.hm #impact#impact .hm-verre-tete,body.hm #gouvernance-accueil#gouvernance-accueil .et-inner,body.hm #investisseurs-accueil#investisseurs-accueil .hm-inv,body.hm #contact-accueil#contact-accueil .et-inner>div:first-of-type{border-radius:28px;padding:40px 44px;background-image:linear-gradient(rgba(8,14,26,.46),rgba(8,14,26,.46));-webkit-backdrop-filter:blur(24px) saturate(135%);backdrop-filter:blur(24px) saturate(135%);border:1px solid rgba(255,255,255,.15);box-shadow:0 30px 80px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.12)}
+body.hm #vision#vision,body.hm #impact#impact,body.hm #contact-accueil#contact-accueil,body.hm #chaine#chaine{color:var(--hv-txt)}
+body.hm #vision#vision h2,body.hm #impact#impact h2,body.hm #impact#impact h3,body.hm #contact-accueil#contact-accueil h2,body.hm #chaine#chaine h2,body.hm #chaine#chaine h3{color:var(--hv-txt)}
+body.hm #vision#vision .hm-lead,body.hm #impact#impact .hm-lead,body.hm #contact-accueil#contact-accueil .hm-lead,body.hm #impact#impact li p{color:var(--hv-soft)}
+body.hm #vision#vision a,body.hm #impact#impact a,body.hm #contact-accueil#contact-accueil a,body.hm #chaine#chaine a{color:var(--hv-txt)}
+body.hm #vision#vision .hm-eyebrow,body.hm #impact#impact .hm-eyebrow,body.hm #contact-accueil#contact-accueil .hm-eyebrow,body.hm #chaine#chaine .hm-eyebrow,body.hm #chaine#chaine .hm-seg-k,body.hm #impact#impact .hm-flag{color:var(--hv-gold)}
+body.hm #vision#vision .hm-brief>div,body.hm #impact#impact .hm-impact>li{border-radius:22px;padding:26px;background-image:linear-gradient(rgba(255,255,255,.08),rgba(255,255,255,.08));-webkit-backdrop-filter:blur(20px) saturate(140%);backdrop-filter:blur(20px) saturate(140%);border:1px solid rgba(255,255,255,.18);box-shadow:0 24px 60px rgba(0,0,0,.3),inset 0 1px 0 rgba(255,255,255,.16);transition:transform .35s ease,border-color .35s ease}
+body.hm #vision#vision .hm-brief dd{color:var(--hv-gold)}
+body.hm #vision#vision .hm-brief dt{color:var(--hv-soft)}
+/* Activités : chaque segment sur sa scène, le texte dans un verre flottant */
+body.hm #chaine#chaine{background-image:linear-gradient(var(--hv-ink),var(--hv-ink))}
+body.hm #chaine#chaine .hm-seg{position:relative;min-height:520px;border-radius:26px;overflow:hidden;background-image:linear-gradient(var(--hv-ink),var(--hv-ink));border:1px solid rgba(255,255,255,.14);display:flex;flex-direction:column;justify-content:flex-end;transition:transform .35s ease,border-color .35s ease}
+body.hm #chaine#chaine .hm-seg .et-seg-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:1}
+body.hm #chaine#chaine .hm-seg::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(7,13,24,.05) 35%,rgba(7,13,24,.78) 100%)}
+body.hm #chaine#chaine .hm-seg .hm-seg-body{position:relative;z-index:1;margin:14px;border-radius:20px;padding:22px;background-image:linear-gradient(rgba(8,14,26,.5),rgba(8,14,26,.5));-webkit-backdrop-filter:blur(22px) saturate(130%);backdrop-filter:blur(22px) saturate(130%);border:1px solid rgba(255,255,255,.14)}
+body.hm #chaine#chaine .hm-cible{color:var(--hv-soft)}
+@media (hover:hover){body.hm #chaine#chaine .hm-seg:hover,body.hm #vision#vision .hm-brief>div:hover,body.hm #impact#impact .hm-impact>li:hover{transform:translateY(-6px);border-color:rgba(226,194,113,.55)}}
+@media (prefers-reduced-motion:reduce){body.hm #chaine#chaine .hm-seg,body.hm #vision#vision .hm-brief>div,body.hm #impact#impact .hm-impact>li{transition:none}}
+/* Leadership et Investisseurs : verre sur halos de couleur */
+body.hm #gouvernance-accueil#gouvernance-accueil,body.hm #investisseurs-accueil#investisseurs-accueil{background:radial-gradient(60% 60% at 15% 20%,rgba(30,110,194,.2),transparent 70%),radial-gradient(50% 50% at 85% 70%,rgba(219,174,74,.15),transparent 70%)}
+body.hm #gouvernance-accueil#gouvernance-accueil .mod-card{border-radius:18px;background-image:linear-gradient(rgba(255,255,255,.07),rgba(255,255,255,.07));border:1px solid rgba(255,255,255,.16)}
+body.hm.et-plight #gouvernance-accueil#gouvernance-accueil .et-inner,body.hm.et-plight #investisseurs-accueil#investisseurs-accueil .hm-inv,html.et-plight body.hm #gouvernance-accueil#gouvernance-accueil .et-inner,html.et-plight body.hm #investisseurs-accueil#investisseurs-accueil .hm-inv{background-image:linear-gradient(rgba(255,255,255,.62),rgba(255,255,255,.62));border-color:rgba(10,18,32,.1);box-shadow:0 30px 80px rgba(10,18,32,.12),inset 0 1px 0 rgba(255,255,255,.8)}
+html.et-plight body.hm #gouvernance-accueil#gouvernance-accueil .mod-card{background-image:linear-gradient(rgba(255,255,255,.6),rgba(255,255,255,.6));border-color:rgba(10,18,32,.1)}
+@media (max-width:820px){body.hm #top#top .hm-verre{padding:28px 24px;border-radius:22px}body.hm #vision#vision .hm-head,body.hm #impact#impact .hm-verre-tete,body.hm #gouvernance-accueil#gouvernance-accueil .et-inner,body.hm #investisseurs-accueil#investisseurs-accueil .hm-inv,body.hm #contact-accueil#contact-accueil .et-inner>div:first-of-type{padding:28px 24px;border-radius:22px}body.hm #chaine#chaine .hm-seg{min-height:420px}body.hm #nav .nx-bar{margin:8px 8px 0;border-radius:16px}}
+body.hm #impact#impact .hm-verre-tete{max-width:760px;margin-bottom:22px}
+body.hm #nav#nav{background:transparent;border-bottom-color:transparent;-webkit-backdrop-filter:none;backdrop-filter:none;box-shadow:none}
+body.hm #nav#nav .nx-bar{max-width:1240px;margin-left:auto;margin-right:auto;padding-left:20px;padding-right:12px}
+body.hm #nav#nav .nx-bar .nav-links a,body.hm #nav#nav .nx-bar .nav-links button{color:#f2efe8}
+body.hm #chaine#chaine .hm-seg .hm-seg-body{margin-top:auto}
+body.hm #chaine#chaine .hm-seg .hm-seg-body{flex:0 0 auto}
+/* Thème clair : la Vision passe en verre clair (le thème impose déjà un texte sombre) ; or assombri pour le contraste */
+html.et-plight body.hm #vision#vision .hm-head,html.et-plight body.hm #vision#vision .hm-brief>div{background-image:linear-gradient(rgba(255,255,255,.72),rgba(255,255,255,.72));border-color:rgba(10,18,32,.1);box-shadow:0 30px 80px rgba(0,0,0,.25),inset 0 1px 0 rgba(255,255,255,.9)}
+html.et-plight body.hm #vision#vision .hm-eyebrow,html.et-plight body.hm #vision#vision .hm-brief dd{color:#7a5a12}
+html.et-plight body.hm #vision#vision .hm-brief dt{color:#2a3446}
+html.et-plight body.hm #vision#vision>.et-inner>.et-actions a{color:#f2efe8}
+/* Thème clair : le thème efface fonds et flous des div de <main> ; le verre clair de la Vision passe par un pseudo-élément */
+html.et-plight body.hm #vision#vision .hm-head,html.et-plight body.hm #vision#vision .hm-brief>div{position:relative;isolation:isolate}
+html.et-plight body.hm #vision#vision .hm-head::before,html.et-plight body.hm #vision#vision .hm-brief>div::before{content:"";position:absolute;inset:0;z-index:-1;border-radius:inherit;background:rgba(255,255,255,.78);-webkit-backdrop-filter:blur(22px) saturate(140%);backdrop-filter:blur(22px) saturate(140%)}
+body.hm #vision#vision#vision .hm-brief>div{padding:22px 24px}
+/* contrat du chrome allégé (lot 102) : barre ≤ 110 px — pas de marge au-dessus de la pastille */
+body.hm #nav#nav .nx-bar{margin-top:0}
