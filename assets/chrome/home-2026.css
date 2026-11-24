@@ -395,3 +395,29 @@ body.hm #chaine#chaine .et-segments.hm-groupe{grid-template-columns:repeat(5,min
 body.hm #chaine#chaine .hm-groupe .hm-seg-body{padding:18px 18px 20px}
 @media (max-width:1180px){body.hm #chaine#chaine .et-segments.hm-groupe{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media (max-width:820px){body.hm #chaine#chaine .et-segments.hm-groupe{grid-template-columns:minmax(0,1fr)}}
+/* Le Tchad, personnage central (24 novembre 2026, décision du DG) : carte énergétique nationale */
+body.hm #tchad#tchad{position:relative;isolation:isolate;background-color:var(--hv-ink);background-image:radial-gradient(80% 60% at 20% 40%,rgba(226,194,113,.10),transparent 70%),linear-gradient(var(--hv-ink),var(--hv-ink))}
+body.hm #tchad#tchad :is(h2,h3){color:var(--hv-txt)}
+body.hm #tchad#tchad :is(p,li,figcaption){color:var(--hv-soft)}
+body.hm #tchad#tchad .hm-eyebrow{color:var(--hv-gold)}
+body.hm #tchad#tchad .tc-head{max-width:760px;margin-bottom:28px}
+body.hm #tchad#tchad .tc-grid{display:grid;grid-template-columns:minmax(320px,540px) minmax(0,1fr);gap:40px;align-items:start}
+body.hm #tchad#tchad .tc-map{margin:0;position:relative;isolation:isolate;border-radius:24px;padding:20px 16px 14px;border:1px solid rgba(255,255,255,.14)}
+body.hm #tchad#tchad .tc-map::before{content:"";position:absolute;inset:0;z-index:-1;border-radius:inherit;background:rgba(255,255,255,.05);-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px)}
+body.hm #tchad#tchad .tc-svg{display:block;width:100%;height:auto}
+body.hm #tchad#tchad .tc-legend{list-style:none;margin:10px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:8px 16px;justify-content:center;font-size:12.5px}
+body.hm #tchad#tchad .tc-legend li{display:inline-flex;align-items:center;gap:7px}
+body.hm #tchad#tchad .tc-legend li::before{content:"";width:12px;height:12px;border-radius:50%}
+body.hm #tchad#tchad .tc-legend .tc-k0::before{background:rgba(226,194,113,.35);border:1px dashed #e2c271}
+body.hm #tchad#tchad .tc-legend .tc-k1::before{height:0;width:18px;border-radius:0;border-top:3px dashed #e2c271}
+body.hm #tchad#tchad .tc-legend .tc-k2::before{background:#f2efe8;border-radius:2px}
+body.hm #tchad#tchad .tc-legend .tc-k3::before{background:#7cc99a}
+body.hm #tchad#tchad .tc-list{list-style:none;margin:0;padding:0;display:grid;gap:12px;counter-reset:tc}
+body.hm #tchad#tchad .tc-list>li{position:relative;isolation:isolate;border-radius:18px;padding:18px 20px 16px 58px;border:1px solid rgba(255,255,255,.12);counter-increment:tc}
+body.hm #tchad#tchad .tc-list>li::before{content:counter(tc,decimal-leading-zero);position:absolute;left:20px;top:20px;font:500 12px/1 ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--hv-gold);letter-spacing:.08em}
+body.hm #tchad#tchad .tc-list>li::after{content:"";position:absolute;inset:0;z-index:-1;border-radius:inherit;background:rgba(255,255,255,.05)}
+body.hm #tchad#tchad .tc-list h3{margin:0 0 6px;font-size:1.15rem}
+body.hm #tchad#tchad .tc-list p{margin:0;font-size:.92rem;line-height:1.55}
+body.hm #tchad#tchad .tc-list a{display:inline-flex;min-height:24px;align-items:center;margin-top:6px;color:var(--hv-gold);font-size:.86rem}
+body.hm #tchad#tchad .hm-footnote{margin-top:22px;font-size:.8rem;max-width:900px}
+@media (max-width:900px){body.hm #tchad#tchad .tc-grid{grid-template-columns:minmax(0,1fr);gap:24px}body.hm #tchad#tchad .tc-map{max-width:460px;margin:0 auto}}
