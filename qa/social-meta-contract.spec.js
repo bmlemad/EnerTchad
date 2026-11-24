@@ -30,3 +30,21 @@ test('social metadata — cards expose consistent title, description and image',
     await page.close();
   }
 });
+
+// 24 novembre 2026 : le renommage du pôle aval (#300) avait doublé un mot dans le titre (« Raffinage & Raffinage & Distribution »,
+// « Refining & Refining & Distribution »), repris tel quel par LinkedIn. Aucun titre de page ni carte de partage ne répète un mot
+// de part et d'autre d'une esperluette.
+const TITLE_PATHS = ['/amont/', '/pole-amont-en', '/intermediaire/', '/pole-intermediaire-en', '/aval/', '/pole-aval-en', '/petrochimie/', '/pole-enerchimie-en'];
+test('page and card titles never repeat a word around an ampersand', async ({ browser }) => {
+  for (const path of TITLE_PATHS) {
+    const page = await browser.newPage();
+    await page.goto(new URL(path, base).href, { waitUntil: 'domcontentloaded', timeout: 45000 });
+    const titles = await page.evaluate(() => [
+      document.title,
+      document.querySelector('meta[property="og:title"]')?.getAttribute('content') || '',
+      document.querySelector('meta[name="twitter:title"]')?.getAttribute('content') || ''
+    ]);
+    for (const t of titles) expect(t, path).not.toMatch(/(^|\s)(\p{L}+) & \2(\s|$)/u);
+    await page.close();
+  }
+});
