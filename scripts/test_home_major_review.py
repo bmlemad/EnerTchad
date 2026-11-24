@@ -15,7 +15,7 @@ from apply_home_major_review import ROOT, home, progress, plain
 # contact. Les repères, le projet phare, le tableau « Cadre · état publié » et la bande « Dernière publication » sont au Centre
 # de Connaissances (/savoirs) ou sur les pages qu'il indexe.
 # 24 novembre 2026 (DG) : le Tchad devient un personnage central — carte énergétique nationale entre la Vision et le Groupe
-NEW_ORDER=['id="vision"','id="tchad"','id="chaine"','id="impact"','id="gouvernance-accueil"','id="investisseurs-accueil"','id="contact-accueil"']
+NEW_ORDER=['id="vision"','id="tchad"','id="chaine"','id="impact"','id="equipes-accueil"','id="gouvernance-accueil"','id="investisseurs-accueil"','id="contact-accueil"']
 GONE=['id="besoin-client"','id="reperes"','id="projet-phare"','id="aller-plus-loin"','id="feuille-de-route"','id="home-publications"','class="im-glass im-board"','class="hm-latest"']
 
 class HomepageReview(unittest.TestCase):
@@ -161,7 +161,7 @@ class HomepageReview(unittest.TestCase):
   page=(ROOT/'ar.html').read_text()
   main=page[page.index('<main'):page.index('</main>')]
   # 23 novembre 2026 : la refonte touche d'abord les accueils FR et EN ; l'accueil arabe garde ses six blocs jusqu'à son lot.
-  self.assertEqual(re.findall(r'<section id="([^"]+)"',main),[x[4:-1] for x in NEW_ORDER if 'tchad' not in x])  # 24 nov. 2026 : la carte du Tchad, d'abord en FR et EN
+  self.assertEqual(re.findall(r'<section id="([^"]+)"',main),[x[4:-1] for x in NEW_ORDER if 'tchad' not in x and 'equipes' not in x])  # 24 nov. 2026 : la carte du Tchad, d'abord en FR et EN
   self.assertEqual(len(re.findall(r'<section\b',main)),6)
   contact=re.search(r'<section id="contact-accueil".*?</section>',main,re.S)[0]
   self.assertEqual(re.findall(r'<a href="([^"]+)"',contact),['/boutique/clients','/achats','/ar-presse','/ar-contact'])
