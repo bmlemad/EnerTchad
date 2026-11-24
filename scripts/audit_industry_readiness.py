@@ -42,7 +42,7 @@ def has_reporting_section(content, document_route):
 
 home_requirements = {
     "reporting investisseurs": r'href="/(?:publications#pub-inv|investisseurs)"',
-    "gouvernance": r'href="/ethique"',
+    "gouvernance": r'href="/ethique(?:#[^"]*)?"',  # 24 novembre 2026 : le lien visible du pied de page pointe sur /ethique#alerte
     "newsroom": r'href="/communiques"',
     "portefeuille": r'href="/projets"',
     "limites des données": r'href="/avertissements"',
