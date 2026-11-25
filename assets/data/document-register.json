@@ -17,8 +17,8 @@
       "status": "published",
       "evidence_status": "published",
       "document_date": "2026-11",
-      "bytes": 79206,
-      "git_blob_sha": "7532786f9b76c55b3d61343f8b83e8637813917f"
+      "bytes": 70388,
+      "git_blob_sha": "773cb120825eea217b6d81ce27898285b6916757"
     },
     {
       "id": "data-book",
@@ -32,8 +32,8 @@
       "status": "published",
       "evidence_status": "published",
       "document_date": "2026-11",
-      "bytes": 13085,
-      "git_blob_sha": "0dc09d39282cbca5eec9f9407757ba43d70dfb15"
+      "bytes": 13097,
+      "git_blob_sha": "30f0e40c2508d461b51e894d702ea8beadcb1898"
     },
     {
       "id": "progress-2026",
@@ -48,8 +48,8 @@
       "evidence_status": "progress-update",
       "document_date": "2026-11",
       "version": "2026",
-      "bytes": 66384,
-      "git_blob_sha": "7ed21be3ea880202a6385b108163fedc53520d25"
+      "bytes": 58422,
+      "git_blob_sha": "5f5e7a039c3ba13685c8fa9ee55725d553d986c2"
     },
     {
       "id": "investor-calendar-fr",
@@ -244,8 +244,8 @@
       "evidence_status": "published",
       "document_date": "2026-09",
       "document_updated": "2026-11",
-      "bytes": 102236,
-      "git_blob_sha": "4b4ce91f8567569c879572cf7697eac8a0e4219c"
+      "bytes": 93763,
+      "git_blob_sha": "63d512f2f9f36fdb7731e9784d3a9bc89e81defd"
     },
     {
       "id": "brochure-en",
@@ -260,8 +260,8 @@
       "evidence_status": "published",
       "document_date": "2026-09",
       "document_updated": "2026-11",
-      "bytes": 100216,
-      "git_blob_sha": "ab53b680d91e1107d79e8636a02cb2a633497d84"
+      "bytes": 91026,
+      "git_blob_sha": "d974ed6a98111808071f8dac06e86f57b203c3ae"
     },
     {
       "id": "factsheet-ar",
