@@ -24,4 +24,4 @@ Le site est généré depuis un canon unique par `build.py` (non inclus dans ce 
 
 ## Harmoniser la structure corporate
 
-Après toute régénération des pages FR/EN, exécuter `python3 scripts/align_corporate_structure.py`, puis `python3 scripts/check_integrity.py`. Cette migration conserve les routes et harmonise les quatre segments industriels, les capacités de soutien, les accès clients/fournisseurs et le Centre investisseurs.
+Historique : la migration d’octobre 2026 (`scripts/align_corporate_structure.py`) a harmonisé les pages sur l’organisation de l’époque. **Ne plus la relancer** : elle réécrirait l’ancienne organisation. L’organisation en vigueur depuis les 24 et 25 novembre 2026 compte cinq segments (Exploration & Production, Transport & Logistique, Raffinage & Distribution, Pétrochimie, Ingénierie & Services) et trois fonctions techniques ; `scripts/test_cinq_segments.py` la vérifie à chaque construction. Après toute régénération des pages FR/EN, exécuter `python3 scripts/check_integrity.py`.
