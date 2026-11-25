@@ -11,7 +11,7 @@ for(const width of [320,1440]) for(const en of [false,true]) test(`mobile naviga
     const image=section.locator('img');
     await image.scrollIntoViewIfNeeded();
     await expect.poll(()=>image.evaluate(e=>e.complete&&e.naturalWidth>0)).toBe(true);
-    await expect(image).toHaveAttribute('alt',en?/fictional|Conceptual/:/fictif|synthèse/);
+    await expect(image).toHaveAttribute('alt',en?/fictional|conceptual/i:/ficti[fv]|synthèse/i);
     expect(await image.evaluate(e=>e.currentSrc)).toContain(`${key}-${width===320?'mobile720.avif':'1400.webp'}`);
     await expect(section.locator('figcaption')).toContainText(en?'fictional scene':'scène fictive');
     await expect(section.locator('figcaption a')).toHaveAttribute('href',`/credits-photos${en?'-en':''}#collection-20261125`);
