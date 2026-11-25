@@ -8,7 +8,7 @@ Le site conserve ses URLs publiques stables pendant la phase de modernisation. L
 
 1. **Nos métiers**
    - Exploration & Production
-   - Transport & stockage
+   - Transport & Logistique
    - Raffinage & distribution
 2. **Nos capacités**
    - GreenTech
@@ -70,7 +70,7 @@ Les chemins déjà utilisés et référencés par le site restent les canoniques
 | Accueil EN | `/index-en` |
 | Accueil AR | `/ar` |
 | Exploration & Production | `/amont/` |
-| Transport & stockage | `/intermediaire/` |
+| Transport & Logistique | `/intermediaire/` |
 | Raffinage & distribution | `/aval/` |
 | GreenTech | `/greentech/` |
 | TchadiTech | `/tchaditech/` |

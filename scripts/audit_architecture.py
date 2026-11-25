@@ -21,7 +21,7 @@ def classify(path):
     p=path.lower().replace("\\","/")
     if p in {"index.html","index-en.html","ar.html"}: return "Accueil"
     if p.startswith("amont/") or p.startswith("pole-amont"): return "01 · Exploration & Production"
-    if p.startswith("intermediaire/") or p.startswith("pole-intermediaire"): return "01 · Transport & stockage"
+    if p.startswith("intermediaire/") or p.startswith("pole-intermediaire"): return "01 · Transport & Logistique"
     if p.startswith("aval/") or p.startswith("pole-aval"): return "01 · Raffinage & distribution"
     if p.startswith("greentech/") or p.startswith("pole-greentech"): return "02 · GreenTech"
     if p.startswith("tchaditech/") or p.startswith("pole-tchaditech"): return "02 · TchadiTech"
