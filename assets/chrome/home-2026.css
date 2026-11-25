@@ -383,7 +383,9 @@ body.hm #chaine#chaine .hm-seg .hm-seg-body{flex:0 0 auto}
 html.et-plight body.hm #vision#vision .hm-head,html.et-plight body.hm #vision#vision .hm-brief>div{background-image:linear-gradient(rgba(255,255,255,.72),rgba(255,255,255,.72));border-color:rgba(10,18,32,.1);box-shadow:0 30px 80px rgba(0,0,0,.25),inset 0 1px 0 rgba(255,255,255,.9)}
 html.et-plight body.hm #vision#vision .hm-eyebrow,html.et-plight body.hm #vision#vision .hm-brief dd{color:#7a5a12}
 html.et-plight body.hm #vision#vision .hm-brief dt{color:#2a3446}
-html.et-plight body.hm #vision#vision>.et-inner>.et-actions a{color:#f2efe8}
+/* Thème clair : le lien « La Société et sa vision » est posé sur la photo de nuit, hors du verre ; le thème lui impose l’encre sombre (clarity-20261005.css). Il reçoit donc le même verre clair que les cartes, par un pseudo-élément (25 novembre 2026 : contraste mesuré 1,1:1 avant). */
+html.et-plight body.hm #vision#vision>.et-inner>.et-actions a{position:relative;isolation:isolate;display:inline-flex;align-items:center;padding:10px 18px;border-radius:999px}
+html.et-plight body.hm #vision#vision>.et-inner>.et-actions a::before{content:"";position:absolute;inset:0;z-index:-1;border-radius:inherit;background:rgba(255,255,255,.82);-webkit-backdrop-filter:blur(14px) saturate(140%);backdrop-filter:blur(14px) saturate(140%);border:1px solid rgba(10,18,32,.1);box-shadow:0 10px 30px rgba(0,0,0,.25)}
 /* Thème clair : le thème efface fonds et flous des div de <main> ; le verre clair de la Vision passe par un pseudo-élément */
 html.et-plight body.hm #vision#vision .hm-head,html.et-plight body.hm #vision#vision .hm-brief>div{position:relative;isolation:isolate}
 html.et-plight body.hm #vision#vision .hm-head::before,html.et-plight body.hm #vision#vision .hm-brief>div::before{content:"";position:absolute;inset:0;z-index:-1;border-radius:inherit;background:rgba(255,255,255,.78);-webkit-backdrop-filter:blur(22px) saturate(140%);backdrop-filter:blur(22px) saturate(140%)}

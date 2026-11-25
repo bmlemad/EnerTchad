@@ -35,6 +35,8 @@ jobs:
         run: python3 scripts/test_vocabulaire_fonctions.py
       - name: Check the single-source main menu (24 November 2026)
         run: python3 scripts/test_menu_source_unique.py
+      - name: Check the five-segment organisation (25 November 2026)
+        run: python3 scripts/test_cinq_segments.py
       - run: npm run build
         env:
           NEXT_TELEMETRY_DISABLED: '1'
