@@ -6,7 +6,7 @@ Contrôle sur les sources (pas besoin de out/) :
  - CP-2026-007 : même nombre de carnets sur la page Communiqués et dans le flux RSS (FR, EN) ;
  - CSV ESG ouvert = tableau de /cibles-2030 (indicateur et cible 2030) ;
  - Data Book : taux d'utilisation de l'oléoduc égal à celui de /investisseurs, aucune « source a confirmer »,
-   organisation « 4 segments + 4 capacités » ; fiche investisseur et point d'étape (docs-sources) alignés.
+   organisation « 5 segments + 3 fonctions techniques » (depuis le 25 novembre 2026) ; fiche investisseur et point d'étape (docs-sources) alignés.
 Exit 1 au premier groupe d'écarts."""
 import glob
 import html
@@ -84,9 +84,10 @@ check(m, 'investisseurs.html : taux d’utilisation du pipeline introuvable')
 if m:
     check(f'~{m.group(1)}' in strings, f'Data Book : taux d’utilisation de l’oléoduc différent de ~{m.group(1)} % (/investisseurs)')
 check(not any('source a confirmer' in s or 'source à confirmer' in s for s in strings), 'Data Book : une ligne reste « source a confirmer »')
-check(any('4 segments industriels + 4' in s for s in strings), 'Data Book : organisation 4 + 4 absente')
+# 25 novembre 2026 (formule validée par le DG) : cinq segments et trois fonctions techniques
+check(any('5 segments + 3' in s for s in strings), 'Data Book : organisation 5 + 3 absente')
 fiche = rd('docs-sources/fiche_investisseur.html')
-check('8 pôles' not in fiche and '<b>4 + 4</b>' in fiche, 'fiche_investisseur.html : organisation ≠ 4 + 4')
+check('8 pôles' not in fiche and '<b>5 + 3</b>' in fiche, 'fiche_investisseur.html : organisation ≠ 5 + 3')
 pe = rd('docs-sources/point_etape_print.html')
 check('nommément' not in pe and 'Gag Pinabei' in pe, 'point_etape_print.html : titulaires non nommés')
 check(f'{n} carnets pédagogiques' in pe, f'point_etape_print.html : nombre de carnets ≠ {n}')
