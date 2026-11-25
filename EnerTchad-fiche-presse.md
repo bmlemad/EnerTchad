@@ -6,7 +6,7 @@
 - **Raison sociale** : EnerTchad S.A.
 - **Forme** : société anonyme de droit OHADA (AUSCGIE)
 - **Statut** : société en constitution
-- **Objet** : société pétrolière intégrée — de l'exploration-production à la distribution
+- **Objet** : groupe énergétique intégré en construction — de l'exploration-production à la distribution
 - **Slogan** : « L'énergie du Tchad. Intégrée. »
 - **Valeurs** : Unité · Innovation · Durabilité
 - **Signature** : « De la roche-mère à la pompe. »
@@ -23,7 +23,7 @@
 - Conseil pressenti : GCIC
 
 ## Organisation
-EnerTchad est une **société unique** (pas un groupe, pas de filiales), organisée sur **quatre segments industriels** — Exploration & Production, Transport & Logistique, Raffinage & pétrochimie et Distribution. Quatre fonctions techniques servent ces quatre segments : GreenTech (durabilité), TchadiTech (technologies), Tchaditude (capital humain), EnerConseils (conseil). Construire, à terme, un groupe énergétique intégré à capitaux tchadiens est une ambition, pas une description de la société actuelle.
+EnerTchad est une **société unique** (pas un groupe, pas de filiales), organisée en **cinq segments** — Exploration & Production, Transport & Logistique, Raffinage & Distribution, Pétrochimie, Ingénierie & Services. Trois fonctions techniques servent ces cinq segments : GreenTech (durabilité), TchadiTech (technologies), Tchaditude (capital humain). Construire, à terme, un groupe énergétique intégré à capitaux tchadiens est une ambition, pas une description de la société actuelle.
 
 ## Palette officielle
 Le logo officiel est un trèfle à quatre pétales dans un anneau d'or, sur fond crème.
@@ -39,4 +39,4 @@ Le logo officiel est un trèfle à quatre pétales dans un anneau d'or, sur fond
 Contenu local visé (priorité aux compétences et emplois tchadiens), démarche HSE-Q, arc E-S-G et conformité OHADA, comptabilité SYSCOHADA révisé, IFRS visé, normes ISO et standards ITIE visés.
 
 ---
-*EnerTchad S.A. · N'Djamena · Mise à jour : octobre 2026.*
+*EnerTchad S.A. · N'Djamena · Mise à jour : novembre 2026.*
