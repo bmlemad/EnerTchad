@@ -2,8 +2,8 @@
   "activities": {
     "amont": {"fr":"Exploration & production","en":"Exploration & production"},
     "intermediaire": {"fr":"Transport & Logistique","en":"Transport & Logistics"},
-    "aval": {"fr":"Distribution","en":"Distribution"},
-    "petrochimie": {"fr":"Raffinage & pétrochimie","en":"Refining & petrochemicals"},
+    "aval": {"fr":"Raffinage & Distribution","en":"Refining & Distribution"},
+    "petrochimie": {"fr":"Pétrochimie","en":"Petrochemicals"},
     "ingenierie": {"fr":"Ingénierie & conseil","en":"Engineering & advisory"},
     "transition": {"fr":"Transition énergétique","en":"Energy transition"}
   },
