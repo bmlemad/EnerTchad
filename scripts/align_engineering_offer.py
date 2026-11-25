@@ -19,7 +19,7 @@ ACTIVITIES = [
      'Capacité prévue : études de réservoir, conception des installations, assistance au développement et suivi des projets.',
      'Planned capability: reservoir studies, facility design, development assistance and project monitoring.'),
     ('intermediaire/index.html', 'pole-intermediaire-en.html', '/intermediaire/', '/pole-intermediaire-en',
-     'Transport & stockage', 'Transport & storage',
+     'Transport & Logistique', 'Transport & Logistics',
      'Capacité prévue : études de flux, conception des dépôts et réseaux, assistance technique et suivi des infrastructures.',
      'Planned capability: flow studies, depot and network design, technical assistance and infrastructure monitoring.'),
     ('aval/index.html', 'pole-aval-en.html', '/aval/', '/pole-aval-en',

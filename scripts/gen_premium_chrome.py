@@ -42,7 +42,7 @@ FR = [
     ], ('La Voie EnerTchad', 'Bâtir et retenir la valeur au pays', 'Mission, vision et cercle vertueux', '/societe#voie')),
     ('Nos activités', 'Quatre segments industriels, soutenus par quatre fonctions techniques.', '/nos-activites', [
         ('Exploration & Production', 'Extraire davantage de chaque gisement', '/amont/'),
-        ('Transport & stockage', 'Desserte du pays, réserve distribuée', '/intermediaire/'),
+        ('Transport & Logistique', 'Desserte du pays, réserve distribuée', '/intermediaire/'),
         ('Raffinage & distribution', 'Mini-raffinerie, stations, dernier km', '/aval/'),
         ('Pétrochimie', 'Méthanol, urée, bitume', '/petrochimie/'),
         ('Technologies', 'TchadiTech : numérique, données', '/tchaditech/'),
@@ -95,7 +95,7 @@ EN = [
     ], ('The EnerTchad Way', 'Building and keeping value in Chad', 'Mission, vision and virtuous circle', '/societe#voie')),
     ('What we do', 'Four industrial segments, supported by four technical functions.', '/nos-activites', [
         ('Exploration & Production', 'More from every field', '/amont/'),
-        ('Transport & storage', 'Supplying the country, distributed reserve', '/intermediaire/'),
+        ('Transport & Logistics', 'Supplying the country, distributed reserve', '/intermediaire/'),
         ('Refining & distribution', 'Mini-refinery, stations, last mile', '/aval/'),
         ('Petrochemicals', 'Methanol, urea, bitumen', '/petrochimie/'),
         ('Technologies', 'TchadiTech: digital, data', '/tchaditech/'),
