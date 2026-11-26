@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "catalog_updated": "2026-11-22",
+  "catalog_updated": "2026-11-26",
   "publisher": "EnerTchad S.A.",
   "company_status": "in_formation",
   "source_registry": "/assets/data/document-registry.json",
@@ -17,8 +17,8 @@
       "status": "published",
       "evidence_status": "published",
       "document_date": "2026-11",
-      "bytes": 79096,
-      "git_blob_sha": "8492f3410b249076b751e44f68baffad7c8f8056"
+      "bytes": 70388,
+      "git_blob_sha": "773cb120825eea217b6d81ce27898285b6916757"
     },
     {
       "id": "data-book",
@@ -32,8 +32,8 @@
       "status": "published",
       "evidence_status": "published",
       "document_date": "2026-11",
-      "bytes": 12970,
-      "git_blob_sha": "4fcf9681c13fa6c7c5920eb4170caf14a328b7f8"
+      "bytes": 13097,
+      "git_blob_sha": "30f0e40c2508d461b51e894d702ea8beadcb1898"
     },
     {
       "id": "progress-2026",
@@ -48,8 +48,8 @@
       "evidence_status": "progress-update",
       "document_date": "2026-11",
       "version": "2026",
-      "bytes": 58374,
-      "git_blob_sha": "26f2f4fb98da8a11898461d0ca4b04343de5de1e"
+      "bytes": 58422,
+      "git_blob_sha": "5f5e7a039c3ba13685c8fa9ee55725d553d986c2"
     },
     {
       "id": "investor-calendar-fr",
@@ -180,8 +180,8 @@
       "evidence_status": "published",
       "document_date": "2026-10",
       "document_updated": "2026-11",
-      "bytes": 73611,
-      "git_blob_sha": "e62bbb2e4df29a6f3d1a8c51a3d934d3500f9312"
+      "bytes": 65688,
+      "git_blob_sha": "ba50e60a5da4010106c493ed083c51550c77cb22"
     },
     {
       "id": "technical-midstream-en",
@@ -196,8 +196,8 @@
       "evidence_status": "published",
       "document_date": "2026-10",
       "document_updated": "2026-11",
-      "bytes": 71994,
-      "git_blob_sha": "706c3535317666f3f143b7eaca62b14a3c7c6082"
+      "bytes": 64861,
+      "git_blob_sha": "a6df6f3747cd3cab544fb3936f84b9df5bb99b8b"
     },
     {
       "id": "technical-downstream",
@@ -244,8 +244,8 @@
       "evidence_status": "published",
       "document_date": "2026-09",
       "document_updated": "2026-11",
-      "bytes": 93198,
-      "git_blob_sha": "12457c9554bdc28a7ad073d1535329d6fa449e51"
+      "bytes": 93763,
+      "git_blob_sha": "63d512f2f9f36fdb7731e9784d3a9bc89e81defd"
     },
     {
       "id": "brochure-en",
@@ -260,8 +260,8 @@
       "evidence_status": "published",
       "document_date": "2026-09",
       "document_updated": "2026-11",
-      "bytes": 90238,
-      "git_blob_sha": "662fd90d1bbe07ef8686d96cabe5d425b7081656"
+      "bytes": 91026,
+      "git_blob_sha": "d974ed6a98111808071f8dac06e86f57b203c3ae"
     },
     {
       "id": "factsheet-ar",
@@ -274,9 +274,9 @@
       ],
       "status": "published",
       "evidence_status": "published",
-      "document_date": "2026-10",
-      "bytes": 363793,
-      "git_blob_sha": "7b5499282605d9395852048a5685c9c67b600fd7"
+      "document_date": "2026-11",
+      "bytes": 171299,
+      "git_blob_sha": "4117a1c28f71c33cfc530f363811965245ca1bbf"
     }
   ]
 }
