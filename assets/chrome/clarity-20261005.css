@@ -57,3 +57,7 @@ html:not(#ef0):not(#ef1):not(#ef2):not(#ef3):not(#ef4):not(#ef5):not(#ef6):not(#
    l’accueil FR/EN pose les siennes dans home-photos.css. */
 html.et-plight main.et-home[dir="rtl"]{--hm-surface:var(--et-white,#FFFFFF);--hm-tint:var(--et-mist,#F4F5F7)}
 html:not(.et-plight) main.et-home[dir="rtl"]{--hm-surface:var(--et-night,#0A1422);--hm-tint:var(--et-night-2,#0F1B2C);--hm-ink:var(--et-snow,#F1F3F6);--hm-card:var(--et-night-2,#0F1B2C);--hm-card-line:var(--et-line-dark,#22314A)}
+
+/* Accueil arabe : chaîne en cinq segments sans carte orpheline (inspection du 25 novembre 2026, constat 11) ; mise en page seule. */
+@media (min-width:1181px){#main-content.et-home[dir="rtl"] #chaine .et-segments{grid-template-columns:repeat(5,minmax(0,1fr))}}
+@media (min-width:761px) and (max-width:1180px){#main-content.et-home[dir="rtl"] #chaine .et-segments{grid-template-columns:repeat(3,minmax(0,1fr))}}

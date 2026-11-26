@@ -438,3 +438,13 @@ body.hm #equipes-accueil#equipes-accueil .eq-list p{margin:0;font-size:.9rem;lin
 body.hm #equipes-accueil#equipes-accueil .eq-list a{display:inline-flex;min-height:24px;align-items:center;margin-top:8px;color:var(--hv-gold);font-size:.86rem}
 @media (max-width:1180px){body.hm #equipes-accueil#equipes-accueil .eq-list{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media (max-width:820px){body.hm #equipes-accueil#equipes-accueil .eq-list{grid-template-columns:minmax(0,1fr)}}
+/* Inspection du 25 novembre 2026, constat 6 : les quatre sorties de « Parlons de votre projet » étaient posées sur la photo
+   sans voile (« Nous contacter » sur la cabine blanche du camion). Même verre que le panneau de titre voisin. */
+body.hm #contact-accueil#contact-accueil .hm-exits{border-top:0;border-radius:28px;padding:6px 32px;background-image:linear-gradient(rgba(8,14,26,.58),rgba(8,14,26,.58));-webkit-backdrop-filter:blur(24px) saturate(135%);backdrop-filter:blur(24px) saturate(135%);border:1px solid rgba(255,255,255,.15);box-shadow:0 30px 80px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.12)}
+body.hm #contact-accueil#contact-accueil .hm-exits a:last-child{--ed-line:transparent;border-bottom-color:transparent}
+@media (max-width:820px){body.hm #contact-accueil#contact-accueil .hm-exits{padding:4px 24px;border-radius:22px}}
+/* Constat 7 : en thème sombre, les tuiles chiffrées de Vision n'avaient aucun flou effectif (backdrop-filter à « none » mesuré)
+   et leurs libellés se perdaient sur la photo. Voile sombre porté par un pseudo-élément, comme le voile clair du thème clair. */
+html:not(.et-plight) body.hm #vision#vision .hm-brief>div{position:relative;isolation:isolate}
+html:not(.et-plight) body.hm #vision#vision .hm-brief>div::before{content:"";position:absolute;inset:0;z-index:-1;border-radius:inherit;background:rgba(8,14,26,.62);-webkit-backdrop-filter:blur(20px) saturate(140%);backdrop-filter:blur(20px) saturate(140%)}
+html:not(.et-plight) body.hm #vision#vision .hm-brief dt{color:#e3e8f0}

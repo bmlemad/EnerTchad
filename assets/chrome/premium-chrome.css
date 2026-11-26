@@ -1052,6 +1052,8 @@ footer.pft .foot-news .fn-alt a{display:inline-block;padding:4px 0}
   #nav #mLang,#nav #mLang b {color:var(--et-glass-ink)!important;-webkit-text-fill-color:var(--et-glass-ink)!important}
   body:has(.et-theme-hdr) #plightBtn {display:none}
   footer #lum-ctl.et-display-footer {position:relative!important;inset:auto!important;margin:20px auto!important;width:fit-content!important;z-index:10!important}
+  /* La marge basse de ce bouton, dernier enfant du pied, traversait le pied et laissait une bande de 20 px sous la page (inspection du 25 novembre, constat 8) : le pied la contient désormais. */
+  footer.pft {display:flow-root}
   footer .et-display-footer #lum-btn {position:static!important;inset:auto!important;min-width:44px!important;min-height:44px}
   footer .et-display-footer #lum-panel {bottom:calc(100% + 8px)!important;top:auto!important;right:0;max-width:calc(100vw - 40px)!important}
   @media(max-width:767px) {
