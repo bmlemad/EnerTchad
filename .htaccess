@@ -1097,20 +1097,10 @@ RewriteCond %{THE_REQUEST} "\s/+[^?\s]+\.html(?:[?\s])" [NC]
 RewriteCond %{REQUEST_FILENAME} -f
 RewriteRule ^(.+)\.html$ https://%{HTTP_HOST}/$1 [R=301,END,NE]
 
-# Pre-compressed Brotli copies (scripts/ovh/precompress.mjs): served in place of
-# the file when the browser accepts br. OVH has no mod_brotli; others get gzip.
-RewriteCond %{HTTP:Accept-Encoding} \bbr\b
-RewriteCond %{REQUEST_FILENAME} -f
-RewriteCond %{REQUEST_FILENAME}.br -f
-RewriteRule ^(.+)$ $1.br [END]
-
 RewriteCond %{REQUEST_FILENAME} -f
 RewriteRule ^ - [END]
 
 # React exports also create RSC directories; prefer their public HTML.
-RewriteCond %{HTTP:Accept-Encoding} \bbr\b
-RewriteCond %{DOCUMENT_ROOT}/$1.html.br -f
-RewriteRule ^(.+?)/?$ $1.html.br [END]
 RewriteCond %{DOCUMENT_ROOT}/$1.html -f
 RewriteRule ^(.+?)/?$ $1.html [END]
 
@@ -1140,7 +1130,7 @@ RewriteRule ^ - [END]
   Header always set Cache-Control "public, max-age=3600, stale-while-revalidate=86400" "expr=%{REQUEST_URI} =~ m#^/assets/data/.*$#"
   Header always set Cache-Control "public, max-age=604800, stale-while-revalidate=86400" "expr=%{REQUEST_URI} =~ m#^/assets/images/.*$#"
   Header always set Cache-Control "public, max-age=604800, stale-while-revalidate=86400" "expr=%{REQUEST_URI} =~ m#^/assets/img/.*$#"
-  <FilesMatch "\.html(\.br)?$">
+  <FilesMatch "\.html$">
     Header always set Cache-Control "public, max-age=0, must-revalidate"
   </FilesMatch>
 </IfModule>
@@ -1156,47 +1146,6 @@ AddDefaultCharset UTF-8
   AddType image/avif .avif
   AddCharset UTF-8 .css .js .mjs .json .md .ics .txt .xml .svg .webmanifest .csv
 </IfModule>
-# Brotli copies: the original type, Content-Encoding br, never recompressed.
-<FilesMatch "\.br$">
-  SetEnv no-gzip 1
-  <IfModule mod_headers.c>
-    Header always set Content-Encoding br
-    Header always merge Vary Accept-Encoding
-  </IfModule>
-</FilesMatch>
-<FilesMatch "\.html\.br$">
-  ForceType "text/html; charset=UTF-8"
-</FilesMatch>
-<FilesMatch "\.css\.br$">
-  ForceType "text/css; charset=UTF-8"
-</FilesMatch>
-<FilesMatch "\.m?js\.br$">
-  ForceType "text/javascript; charset=UTF-8"
-</FilesMatch>
-<FilesMatch "\.json\.br$">
-  ForceType "application/json; charset=UTF-8"
-</FilesMatch>
-<FilesMatch "\.svg\.br$">
-  ForceType "image/svg+xml; charset=UTF-8"
-</FilesMatch>
-<FilesMatch "\.xml\.br$">
-  ForceType "application/xml; charset=UTF-8"
-</FilesMatch>
-<FilesMatch "\.txt\.br$">
-  ForceType "text/plain; charset=UTF-8"
-</FilesMatch>
-<FilesMatch "\.md\.br$">
-  ForceType "text/markdown; charset=UTF-8"
-</FilesMatch>
-<FilesMatch "\.webmanifest\.br$">
-  ForceType "application/manifest+json; charset=UTF-8"
-</FilesMatch>
-<FilesMatch "\.csv\.br$">
-  ForceType "text/csv; charset=UTF-8"
-</FilesMatch>
-<FilesMatch "\.ics\.br$">
-  ForceType "text/calendar; charset=UTF-8"
-</FilesMatch>
 <IfModule mod_deflate.c>
   AddOutputFilterByType DEFLATE text/html text/css text/plain text/markdown text/calendar text/xml application/xml application/javascript text/javascript application/json application/manifest+json image/svg+xml text/csv
 </IfModule>
