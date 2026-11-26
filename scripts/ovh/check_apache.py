@@ -154,36 +154,27 @@ DocumentRoot "{OUT}"
                 if asset.is_file():
                     relative = asset.relative_to(OUT).as_posix()
                     content("enertchad.com", "/" + relative, relative)
-            # Brotli copies (scripts/ovh/precompress.mjs): a browser that accepts br gets the .br file
-            # as is, with the original type and Content-Encoding br, never gzip on top; the others
-            # still get the original (gzip by mod_deflate), byte for byte once decompressed.
+            # Compression: gzip by mod_deflate, byte for byte once decompressed, even when the browser
+            # also offers br. Never Content-Encoding br and no .br file: the OVH load balancer answers
+            # such responses with 502 (x-block-reason: brotli_encoding_refused, tested 26 Nov 2026).
             import gzip
-            chrome_css = sorted(p.name for p in (OUT / "assets/chrome").glob("*.css") if (OUT / "assets/chrome" / (p.name + ".br")).is_file())[0]
-            chrome_js = sorted(p.name for p in (OUT / "assets/chrome").glob("*.js") if (OUT / "assets/chrome" / (p.name + ".br")).is_file())[0]
-            brotli_cases = [("/", "index.html", "text/html"), ("/investisseurs", "investisseurs.html", "text/html"),
-                            ("/amont/", "amont/index.html", "text/html"), ("/atlas/carte", "atlas/carte.html", "text/html"),
-                            ("/assets/chrome/" + chrome_css, "assets/chrome/" + chrome_css, "text/css"),
-                            ("/assets/chrome/" + chrome_js, "assets/chrome/" + chrome_js, "text/javascript")]
-            for path, file, kind in brotli_cases:
-                assert (OUT / (file + ".br")).is_file(), file + ".br missing"
-                status, headers, body = request("enertchad.com", path, encoding="gzip, deflate, br")
-                assert status == 200, (path, status)
-                assert headers.get("Content-Encoding") == "br", (path, headers)
+            assert not any(OUT.rglob("*.br")), "a .br file is in the export"
+            chrome_css = sorted(p.name for p in (OUT / "assets/chrome").glob("*.css"))[0]
+            chrome_js = sorted(p.name for p in (OUT / "assets/chrome").glob("*.js"))[0]
+            gzip_cases = [("/", "index.html", "text/html"), ("/investisseurs", "investisseurs.html", "text/html"),
+                          ("/amont/", "amont/index.html", "text/html"), ("/atlas/carte", "atlas/carte.html", "text/html"),
+                          ("/assets/chrome/" + chrome_css, "assets/chrome/" + chrome_css, "text/css"),
+                          ("/assets/chrome/" + chrome_js, "assets/chrome/" + chrome_js, "text/javascript")]
+            for path, file, kind in gzip_cases:
+                status, headers, body = request("enertchad.com", path, encoding="gzip, deflate, br, zstd")
+                assert status == 200 and headers.get("Content-Encoding") == "gzip", (path, headers)
                 assert headers.get("Content-Type", "").startswith(kind), (path, headers.get("Content-Type"))
                 assert "Accept-Encoding" in headers.get("Vary", ""), (path, headers)
-                assert headers.get("X-Content-Type-Options") == "nosniff", (path, headers)
-                assert body == (OUT / (file + ".br")).read_bytes(), (path, "brotli body differs")
-                status, headers, body = request("enertchad.com", path, encoding="gzip")
-                assert status == 200 and headers.get("Content-Encoding") == "gzip", (path, headers)
                 assert gzip.decompress(body) == (OUT / file).read_bytes(), (path, "gzip body differs")
+                status, headers, body = request("enertchad.com", path, encoding="br")
+                assert status == 200 and headers.get("Content-Encoding") is None, (path, headers)
+                assert body == (OUT / file).read_bytes(), (path, "identity body differs")
                 checks += 2
-            cache = request("enertchad.com", "/", encoding="br")[1].get("Cache-Control")
-            assert cache == "public, max-age=0, must-revalidate", cache
-            small = next(p for p in sorted((OUT / "assets").rglob("*")) if p.is_file() and p.suffix in (".json", ".svg", ".css", ".js", ".txt") and p.stat().st_size < 1024)
-            assert not Path(str(small) + ".br").exists()
-            status, headers, body = request("enertchad.com", "/" + small.relative_to(OUT).as_posix(), encoding="br")
-            assert status == 200 and headers.get("Content-Encoding") != "br" and body == small.read_bytes(), headers
-            checks += 2
             assert (OUT / "contact-handler.php").is_file(), "contact receiver missing"
             checks += 1
 
