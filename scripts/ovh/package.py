@@ -3,6 +3,7 @@
 import argparse
 import json
 import re
+import subprocess
 import zipfile
 from pathlib import Path
 from urllib.parse import urlsplit
@@ -86,10 +87,18 @@ def headers():
             pattern = re.escape(scope).replace(r"\*", ".*")
             condition = f' "expr=%{{REQUEST_URI}} =~ m#^{pattern}$#"'
         result.append(f'  Header always set {name} "{value}"{condition}')
-    result += ['  <FilesMatch "\\.html$">',
+    result += ['  <FilesMatch "\\.html(\\.br)?$">',
                '    Header always set Cache-Control "public, max-age=0, must-revalidate"',
                "  </FilesMatch>", "</IfModule>"]
     return result
+
+
+BROTLI_TYPES = (("html", "text/html; charset=UTF-8"), ("css", "text/css; charset=UTF-8"),
+                ("m?js", "text/javascript; charset=UTF-8"), ("json", "application/json; charset=UTF-8"),
+                ("svg", "image/svg+xml; charset=UTF-8"), ("xml", "application/xml; charset=UTF-8"),
+                ("txt", "text/plain; charset=UTF-8"), ("md", "text/markdown; charset=UTF-8"),
+                ("webmanifest", "application/manifest+json; charset=UTF-8"),
+                ("csv", "text/csv; charset=UTF-8"), ("ics", "text/calendar; charset=UTF-8"))
 
 
 def text_delivery():
@@ -105,6 +114,15 @@ def text_delivery():
             "  AddType image/avif .avif",
             "  AddCharset UTF-8 .css .js .mjs .json .md .ics .txt .xml .svg .webmanifest .csv",
             "</IfModule>",
+            "# Brotli copies: the original type, Content-Encoding br, never recompressed.",
+            "<FilesMatch \"\\.br$\">",
+            "  SetEnv no-gzip 1",
+            "  <IfModule mod_headers.c>",
+            "    Header always set Content-Encoding br",
+            "    Header always merge Vary Accept-Encoding",
+            "  </IfModule>",
+            "</FilesMatch>",
+            *[f'<FilesMatch "\\.{ext}\\.br$">\n  ForceType "{kind}"\n</FilesMatch>' for ext, kind in BROTLI_TYPES],
             "<IfModule mod_deflate.c>",
             "  AddOutputFilterByType DEFLATE text/html text/css text/plain text/markdown "
             "text/calendar text/xml application/xml application/javascript text/javascript "
@@ -148,8 +166,17 @@ def apache_config():
              'RewriteCond %{THE_REQUEST} "\\s/+[^?\\s]+\\.html(?:[?\\s])" [NC]',
              "RewriteCond %{REQUEST_FILENAME} -f",
              "RewriteRule ^(.+)\\.html$ https://%{HTTP_HOST}/$1 [R=301,END,NE]", "",
+             "# Pre-compressed Brotli copies (scripts/ovh/precompress.mjs): served in place of",
+             "# the file when the browser accepts br. OVH has no mod_brotli; others get gzip.",
+             "RewriteCond %{HTTP:Accept-Encoding} \\bbr\\b",
+             "RewriteCond %{REQUEST_FILENAME} -f",
+             "RewriteCond %{REQUEST_FILENAME}.br -f",
+             "RewriteRule ^(.+)$ $1.br [END]", "",
              "RewriteCond %{REQUEST_FILENAME} -f", "RewriteRule ^ - [END]", "",
              "# React exports also create RSC directories; prefer their public HTML.",
+             "RewriteCond %{HTTP:Accept-Encoding} \\bbr\\b",
+             "RewriteCond %{DOCUMENT_ROOT}/$1.html.br -f",
+             "RewriteRule ^(.+?)/?$ $1.html.br [END]",
              "RewriteCond %{DOCUMENT_ROOT}/$1.html -f",
              "RewriteRule ^(.+?)/?$ $1.html [END]", "",
              "# Add slashes only for actual index directories, after HTML resolution.",
@@ -180,6 +207,9 @@ def main():
     recipient = max(set(addresses), key=addresses.count)
     handler = (ROOT / "scripts/ovh/contact.php").read_text(encoding="utf-8")
     (export / "contact-handler.php").write_text(handler.replace("{{RECIPIENT}}", recipient), encoding="utf-8")
+    # Brotli copies of the text files, served by the rules above to browsers that accept br.
+    print(subprocess.run(["node", str(ROOT / "scripts/ovh/precompress.mjs"), str(export)],
+                         check=True, capture_output=True, text=True).stdout.strip())
     files = sorted(p for p in export.rglob("*") if p.is_file() and p.relative_to(export).as_posix() not in OMIT)
     args.output.parent.mkdir(parents=True, exist_ok=True)
     with zipfile.ZipFile(args.output, "w", zipfile.ZIP_DEFLATED) as archive:
