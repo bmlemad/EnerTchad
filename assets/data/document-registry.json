@@ -243,13 +243,13 @@
       "id": "factsheet-ar",
       "path": "/Fiche_EnerTchad_AR.pdf",
       "format": "PDF",
-      "bytes": 171299,
+      "bytes": 182632,
       "language": "ar",
       "category": "corporate",
       "status": "published",
       "role_fr": "Fiche institutionnelle arabe",
       "role_en": "Arabic corporate factsheet",
-      "git_blob_sha": "4117a1c28f71c33cfc530f363811965245ca1bbf",
+      "git_blob_sha": "6b07594dbecc477772bc441815d666a415937f90",
       "document_date": "2026-11",
       "date_source": "PDF page 1"
     }
