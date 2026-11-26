@@ -34,7 +34,7 @@ ACTIVITIES = [
 
 
 def section(en):
-    label = 'Engineering & Advisory' if en else 'Ingénierie & Conseil'
+    label = 'Engineering & Services' if en else 'Ingénierie & Services'
     title = 'From the study to project delivery' if en else 'De l’étude au suivi de projet'
     intro = ('A cross-cutting capability planned for exploration and production, transport and storage, refining and petrochemicals. The scope of each assignment will depend on the project, the expertise mobilised and the required approvals.' if en else
              'Une capacité transversale prévue pour l’exploration-production, le transport et le stockage, le raffinage et la pétrochimie. Le périmètre de chaque mission dépendra du projet, des expertises mobilisées et des autorisations nécessaires.')
@@ -65,7 +65,7 @@ def section(en):
 
 
 def hub(text, en):
-    label = 'Engineering &amp; Advisory' if en else 'Ingénierie &amp; Conseil'
+    label = 'Engineering &amp; Services' if en else 'Ingénierie &amp; Services'
     old = 'Advisory' if en else 'Conseil'
     text = text.replace(f'<h1>{old}</h1>', f'<h1>{label}</h1>')
     text = text.replace(f'<span aria-current="page">{old}</span>', f'<span aria-current="page">{label}</span>')
@@ -92,7 +92,7 @@ def hub(text, en):
     text = text.replace('href="#conseil">See the detail', 'href="#ingenierie">Explore engineering')
     text = text.replace('>Demander un conseil sectoriel</a>', '>Parler de votre projet</a>')
     text = text.replace('>Request sector advice</a>', '>Discuss your project</a>')
-    title = ('Engineering &amp; Advisory · EnerConseils | EnerTchad' if en else 'Ingénierie &amp; Conseil · EnerConseils | EnerTchad')
+    title = ('Engineering &amp; Services · EnerConseils | EnerTchad' if en else 'Ingénierie &amp; Services · EnerConseils | EnerTchad')
     desc = ('EnerConseils: planned engineering and advisory capabilities for energy projects in Chad. Studies, design, technical assistance and project monitoring.' if en else
             'EnerConseils : capacités prévues d’ingénierie et de conseil pour les projets énergétiques au Tchad. Études, conception, assistance technique et suivi de projets.')
     text = re.sub(r'<title>.*?</title>', lambda _: f'<title>{title}</title>', text, count=1)
@@ -119,12 +119,12 @@ def navigation(text):
     def link(m):
         tag = m[0]
         en = 'pole-enerconseils-en' in tag
-        label = 'Engineering &amp; Advisory' if en else 'Ingénierie &amp; Conseil'
+        label = 'Engineering &amp; Services' if en else 'Ingénierie &amp; Services'
         # French links occasionally occur in the English source menu. The
         # page language is corrected below; do not infer language from copy.
         if re.search(r'<html\b[^>]*\blang="en(?:-[^"]*)?"', text) and re.search(r'>(Conseil|Advisory|EnerConseils|Conseil &amp; audits indépendants)<', tag):
             en = True
-            label = 'Engineering &amp; Advisory'
+            label = 'Engineering &amp; Services'
             tag = tag.replace('href="/enerconseils/"', 'href="/pole-enerconseils-en"')
         if 'Français</a>' in tag:
             return tag.replace('href="/pole-enerconseils-en"', 'href="/enerconseils/"')
@@ -142,7 +142,7 @@ def homepage_access(text, en):
     marker = 'id="engineering-home-access"'
     if marker in text:
         return text
-    label = 'Engineering &amp; Advisory' if en else 'Ingénierie &amp; Conseil'
+    label = 'Engineering &amp; Services' if en else 'Ingénierie &amp; Services'
     href = '/pole-enerconseils-en#ingenierie' if en else '/enerconseils/#ingenierie'
     note = ('Planned cross-cutting capability: studies, design, technical assistance and project monitoring.' if en else
             'Capacité transversale prévue : études, conception, assistance technique et suivi de projets.')
@@ -202,7 +202,7 @@ def main():
         ident = 'engineering-offer-en' if en else 'engineering-offer-fr'
         entries = [e for e in entries if e.get('id') != ident]
         entries.append({'c': 'Advisory' if en else 'Conseil', 'id': ident,
-                        't': 'Engineering & Advisory' if en else 'Ingénierie & Conseil',
+                        't': 'Engineering & Services' if en else 'Ingénierie & Services',
                         'k': 'engineering ingénierie ingenierie études conception faisabilité feasibility design technical assistance assistance technique project monitoring suivi projets EnerConseils',
                         'url': '/pole-enerconseils-en#ingenierie' if en else '/enerconseils/#ingenierie'})
         new = prefix + '=' + json.dumps(entries, ensure_ascii=False) + ';\n'
@@ -211,7 +211,7 @@ def main():
     for name in ['c_abd9013c3955.js', 'c_df4f446df566.js']:
         path = ROOT / 'assets/chrome' / name
         old = path.read_text()
-        new = old.replace("t:'Conseil (EnerConseils) · données'", "t:'Ingénierie & Conseil (EnerConseils)'")
+        new = old.replace("t:'Conseil (EnerConseils) · données'", "t:'Ingénierie & Services (EnerConseils)'")
         new = new.replace("k:'enerconseils conseil conseil données atlas structuration secteur'", "k:'enerconseils ingénierie ingenierie engineering conseil études conception faisabilité assistance technique suivi projets données atlas structuration secteur'")
         if old != new:
             path.write_text(new)

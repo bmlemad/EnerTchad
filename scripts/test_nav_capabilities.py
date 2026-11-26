@@ -1,5 +1,5 @@
 # Lot 73 : dans les pages exportées, le menu « Activités & Ingénierie » (FR/EN) liste les quatre capacités
-# intégrées, une seule fois chacune, dans l'ordre Durabilité, Technologies, Capital humain, Ingénierie & Conseil.
+# intégrées, une seule fois chacune, dans l'ordre Durabilité, Technologies, Capital humain, Ingénierie & Services.
 import glob
 import re
 import sys
