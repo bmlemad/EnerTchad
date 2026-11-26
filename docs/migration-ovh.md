@@ -22,13 +22,11 @@ Le générateur convertit les règles existantes de `_redirects` et les en-tête
 Les chemins publics et les copies dédiées Clients/Atlas restent ceux de l'export
 Next.js. Les fichiers de configuration propres à Netlify ne sont pas inclus dans le ZIP.
 
-Compression Brotli (26 novembre 2026) : l'hébergement mutualisé OVH n'a pas de module Brotli.
-`package.py` lance donc `scripts/ovh/precompress.mjs`, qui écrit une copie `.br` de chaque
-fichier texte de plus de 1 Ko (HTML, CSS, JS, JSON, SVG, XML, TXT, MD, manifeste, CSV, ICS).
-Le `.htaccess` sert cette copie, avec le type d'origine et `Content-Encoding: br`, quand le
-navigateur accepte `br` ; sinon l'original part en gzip comme avant (mod_deflate). La copie
-n'est jamais recompressée (`no-gzip`). `scripts/ovh/check_apache.py` vérifie les deux cas sur
-un Apache 2.4 local, mod_deflate chargé.
+Compression : gzip par mod_deflate. Brotli a été essayé le 26 novembre 2026 (#318), par des
+copies `.br` pré-compressées, puis retiré : le répartiteur de charge OVH répond 502
+(`x-block-reason: brotli_encoding_refused`) à toute réponse `Content-Encoding: br` et retire
+`br` de l'`Accept-Encoding` des navigateurs. `scripts/ovh/check_apache.py` vérifie que l'export
+ne contient aucun fichier `.br` et que les pages et ressources partent en gzip.
 
 ## Hébergement et domaines
 
