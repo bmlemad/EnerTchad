@@ -32,8 +32,8 @@
       "status": "published",
       "evidence_status": "published",
       "document_date": "2026-11",
-      "bytes": 13098,
-      "git_blob_sha": "f668aa63d7d39c4d84ff99f794159c1d3aa14c41"
+      "bytes": 13223,
+      "git_blob_sha": "4a27db1a921dc91e8dc5472fd8a53d5748508f82"
     },
     {
       "id": "progress-2026",
@@ -48,8 +48,8 @@
       "evidence_status": "progress-update",
       "document_date": "2026-11",
       "version": "2026",
-      "bytes": 66412,
-      "git_blob_sha": "a025303f16c2266ed19ce1ad1050ae3f4ec17e71"
+      "bytes": 66316,
+      "git_blob_sha": "ee1a37d674f49cd41f2482de1dd4cefdb3291fa1"
     },
     {
       "id": "investor-calendar-fr",
