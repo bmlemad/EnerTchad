@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "catalog_updated": "2026-11-25",
+  "catalog_updated": "2026-11-26",
   "publisher": "EnerTchad S.A.",
   "company_status": "in_formation",
   "source_registry": "/assets/data/document-registry.json",
@@ -274,9 +274,9 @@
       ],
       "status": "published",
       "evidence_status": "published",
-      "document_date": "2026-10",
-      "bytes": 363793,
-      "git_blob_sha": "7b5499282605d9395852048a5685c9c67b600fd7"
+      "document_date": "2026-11",
+      "bytes": 171299,
+      "git_blob_sha": "4117a1c28f71c33cfc530f363811965245ca1bbf"
     }
   ]
 }
