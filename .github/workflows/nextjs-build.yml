@@ -47,6 +47,8 @@ jobs:
         run: python3 scripts/test_critical_applied.py
       - name: Check that repeated figures agree across surfaces (lot 98)
         run: python3 scripts/test_figures_consistency.py
+      - name: Check that the DG decisions stay applied everywhere (coherence audit, 27 Nov 2026)
+        run: python3 scripts/test_doctrine_coherence.py
       - name: Check that the single glass rule leads every page (lot 90)
         run: python3 scripts/test_glass_chrome.py
       - name: Check that the home page leads with the latest dated publication (lot 100)
