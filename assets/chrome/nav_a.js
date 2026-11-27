@@ -399,3 +399,19 @@ try{(function(){
     if(wide.addEventListener)wide.addEventListener('change',function(){set(false);});
   });
 }catch(e){}})();
+/* Barre mobile du bas (#nezBar) : masquée quand on descend, rendue quand on remonte, près du haut de page ou au focus
+   clavier ; masquée tant que le menu est ouvert (QA mobile du 27 novembre 2026, décision du DG). */
+;(function(){try{
+  var bar=document.getElementById('nezBar');if(!bar)return;
+  var tog=document.getElementById('navTog'),last=window.scrollY||0,hid=false,tick=false;
+  var open=function(){return !!tog&&tog.getAttribute('aria-expanded')==='true';};
+  var set=function(h){if(h===hid)return;hid=h;bar.classList.toggle('nez-cache',h);};
+  window.addEventListener('scroll',function(){
+    if(tick)return;tick=true;
+    requestAnimationFrame(function(){tick=false;var y=window.scrollY||0;
+      if(!open()){if(y<120||y<last-6)set(false);else if(y>last+6)set(true);}
+      last=y;});
+  },{passive:true});
+  if(tog&&window.MutationObserver)new MutationObserver(function(){set(open());last=window.scrollY||0;}).observe(tog,{attributes:true,attributeFilter:['aria-expanded']});
+  bar.addEventListener('focusin',function(){set(false);});
+}catch(e){}})();
