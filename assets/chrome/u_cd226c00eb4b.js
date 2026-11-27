@@ -346,7 +346,7 @@ apply(calm,false);
 /* Ch513 : la ligne de signalement ethique en acces direct au pied de page (benchmark majors — Aramco et consorts l affichent en liens rapides). Injectee ici pour couvrir les 190 pages sans toucher au HTML. */
 ;(function(){function go(){try{
 var row=document.querySelector('.foot-legal-links');if(!row)return;
-if(row.querySelector('a[href^="/ethique"]'))return;
+if((row.closest('footer')||row).querySelector('a[href^="/ethique"]'))return;
 var en=(document.documentElement.lang||'').indexOf('en')===0;
 var a=document.createElement('a');
 a.href=en?'/ethique-en#alerte':'/ethique#alerte';

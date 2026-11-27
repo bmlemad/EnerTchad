@@ -13,7 +13,7 @@ for(const path of ['/','/index-en','/savoirs','/publications-en']){
     await toggle.focus();await page.keyboard.press('Enter');
     await expect(panel).toBeVisible();await expect(toggle).toHaveAttribute('aria-expanded','true');
     await page.keyboard.press('Tab');await expect(panel.locator('a').first()).toBeFocused();
-    if(id==='activites')await expect(panel.locator('a.et-sub-link')).toHaveCount(5);
+    if(id==='activites'){await expect(panel.locator('a.et-sub-link')).toHaveCount(5);await expect(panel.locator('a.et-sub-extra')).toHaveAttribute('href',path.includes('-en')?'/projets-en':'/projets');}
     const box=await panel.boundingBox();expect(box.x).toBeGreaterThanOrEqual(0);expect(box.x+box.width).toBeLessThanOrEqual(width+1);
     if(width>=1241){const painted=await panel.evaluate(p=>{const r=p.getBoundingClientRect();return p.contains(document.elementFromPoint(r.x+30,r.y+30));});expect(painted,'expanded panel is painted above the page').toBe(true);}
     await page.keyboard.press('Escape');await expect(panel).toBeHidden();await expect(toggle).toBeFocused();
