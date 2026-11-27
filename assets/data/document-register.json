@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "catalog_updated": "2026-11-26",
+  "catalog_updated": "2026-11-27",
   "publisher": "EnerTchad S.A.",
   "company_status": "in_formation",
   "source_registry": "/assets/data/document-registry.json",
@@ -17,8 +17,8 @@
       "status": "published",
       "evidence_status": "published",
       "document_date": "2026-11",
-      "bytes": 70388,
-      "git_blob_sha": "773cb120825eea217b6d81ce27898285b6916757"
+      "bytes": 79471,
+      "git_blob_sha": "4fec9916383f6b4384657fe51092e7efbea433e6"
     },
     {
       "id": "data-book",
@@ -149,8 +149,8 @@
       "status": "published",
       "evidence_status": "published",
       "document_date": "2026-10",
-      "bytes": 172243,
-      "git_blob_sha": "cb2303eaef2255e81c1f0bd0a42fe517f4555e3f"
+      "bytes": 99564,
+      "git_blob_sha": "c8b04f7f7d1f508f6b4e0d2e0bfa3c98b8784d11"
     },
     {
       "id": "technical-upstream-en",
@@ -164,8 +164,8 @@
       "status": "published",
       "evidence_status": "published",
       "document_date": "2026-10",
-      "bytes": 100636,
-      "git_blob_sha": "86f167cab8b0e7b18e1801c9cc67822e3fee75c2"
+      "bytes": 100851,
+      "git_blob_sha": "acf5934c6d59fe3191179a3867954025806b0eb2"
     },
     {
       "id": "technical-midstream",
