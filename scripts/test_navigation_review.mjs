@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
+import { readFileSync, readdirSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
 import { htmlToDOM } from 'html-react-parser';
@@ -15,7 +15,7 @@ function nodes(html) {
 const digest = value => createHash('sha256').update(value).digest('hex');
 const fragments = (html, tag) => nodes(html).filter(n => n.name === tag).map(n => digest(html.slice(n.startIndex, n.endIndex + 1)));
 const read = path => readFileSync(path, 'utf8');
-const pages = execFileSync('git', ['ls-files', '-z'], {encoding:'utf8'}).split('\0').filter(p => p.endsWith('.html') && !/^(?:scripts|qa|docs-sources)\//.test(p));
+const pages = readdirSync('.', {recursive:true}).filter(p => p.endsWith('.html') && !/^(?:node_modules|out|public|\.next|\.generated|scripts|qa|docs-sources)\//.test(p));
 
 test('shared review preserves main content, scripts, contact data and remains idempotent', () => {
   assert(pages.length > 220); // lot 78 : Investor Center fondu dans /investisseurs (229 pages)

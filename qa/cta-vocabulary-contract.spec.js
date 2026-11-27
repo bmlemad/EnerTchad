@@ -6,12 +6,10 @@ const cases = [
   ['/', [
     ['.et-hero a.et-primary[href="/societe#vision"]', 'Découvrir la vision'],
     ['.et-hero a.et-secondary[href="/boutique/clients#besoin-client"]', 'Présenter un besoin professionnel'],
-    ['.et-hero a.et-secondary[href="/projets#avancement"]', 'Projets et avancement'],
   ]],
   ['/index-en', [
     ['.et-hero a.et-primary[href="/societe-en#vision"]', 'Discover the vision'],
     ['.et-hero a.et-secondary[href="/boutique/en/clients#besoin-client"]', 'Discuss a business requirement'],
-    ['.et-hero a.et-secondary[href="/projets-en#avancement"]', 'Projects and status'],
   ]],
   ['/societe', [
     ['a[data-et-action="evidence"][href="/engagements"]', 'Voir nos engagements'],

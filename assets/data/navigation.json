@@ -1,16 +1,516 @@
 {
- "note": "Menu principal (lot 80, structure validée par le DG le 31 octobre 2026). Appliqué au build par lib/main-nav.js. Revue du 12 novembre 2026 (décision du DG) : le menu « Actualités & Documents » devient le « Centre de connaissances » (/savoirs) ; glossaire, atlas, carnets, FAQ et outils y sont regroupés et retirés des autres menus. Lot 124 (14 novembre 2026, décision du DG) : l'en-tête n'affiche plus que cinq liens simples (clé « header », lib/main-nav.js) ; les menus complets ci-dessous restent la source du pied de page et des liens de contexte (lib/corporate-architecture.js). 16 novembre 2026 (décision du DG, « épurer la navigation ») : l’en-tête porte un sixième lien, le Centre de connaissances, qui devient l’index de toutes les pages secondaires ; le pied de page reprend ces six liens et perd sa rangée « Ressources » et ses doublons. 17 novembre 2026 (décision du DG après comparaison avec TotalEnergies, BP, ExxonMobil et Eni) : le bouton de l'en-tête ne double plus l'entrée « Investisseurs » ; il devient « Contact », qui quitte le menu ; « Carrières » entre dans le menu ; le pied de page ne répète plus les entrées du menu et n'affiche plus les mentions « newsletter en préparation » et « YouTube bientôt disponible ». 20 novembre 2026 (décision du DG, groupe intégré) : l'entrée « Impact » mène à la page Communautés (emploi, contenu local, formation, territoires) ; la page HSE et conformité (/engagements) reste en ligne, atteinte par le Centre de Connaissances. 24 novembre 2026 (décision du DG, « le futur groupe énergétique intégré du Tchad ») : l’entrée « Activités » devient « Le Groupe » ; son panneau présente cinq métiers (Exploration & Production, Transport & Logistique, Raffinage & Distribution, Pétrochimie, Ingénierie & Services) et l’entrée Investisseurs ; les pages pôles restent à leurs adresses (Raffinage & Distribution sur /aval/, Pétrochimie sur /petrochimie/ ; libellés alignés le 25 novembre 2026). 24 novembre 2026 (décision du DG) : l’entrée « Impact » mène à la page majeure « Impact pour le Tchad » (/impact), six axes ; la page Communautés reste en ligne et y est reliée. 24 novembre 2026 (décision du DG, « Groupe énergétique intégré en construction ») : l’entrée « Le Groupe » mène à la page institutionnelle /groupe (qui sommes-nous, modèle intégré, histoire, vision, gouvernance, chiffres clés) ; la vue d’ensemble des activités (/nos-activites) reste le lien de bas de panneau.",
- "header": {"fr": {"links": [["Vision", "/societe"], ["Le Groupe", "/groupe"], ["Impact", "/impact"], ["Leadership", "/leadership"], ["Investisseurs", "/investisseurs"]], "button": ["Contact", "/contact"], "slogan": "L’énergie du Tchad. Intégrée.", "panel": {"for": "/groupe", "label": "Afficher les cinq segments du groupe", "overview": ["Vue d’ensemble des activités", "/nos-activites"], "links": [["Produire", "Exploration & Production", "/amont/"], ["Transporter", "Transport & Logistique", "/intermediaire/"], ["Raffiner, distribuer", "Raffinage & Distribution", "/aval/"], ["Transformer", "Pétrochimie", "/petrochimie/"], ["Développer", "Ingénierie & Services", "/enerconseils/"]], "extra": ["Investisseurs", "Thèse, capital et jalons datés", "/investisseurs"]}}, "en": {"links": [["Vision", "/societe-en"], ["The Group", "/groupe-en"], ["Impact", "/impact-en"], ["Leadership", "/leadership-en"], ["Investors", "/investisseurs-en"]], "button": ["Contact", "/contact-en"], "slogan": "Chad’s energy. Integrated.", "panel": {"for": "/groupe-en", "label": "Show the group’s five segments", "overview": ["Overview of our activities", "/nos-activites-en"], "links": [["Produce", "Exploration & Production", "/pole-amont-en"], ["Transport", "Transport & Logistics", "/pole-intermediaire-en"], ["Refine, distribute", "Refining & Distribution", "/pole-aval-en"], ["Transform", "Petrochemicals", "/pole-enerchimie-en"], ["Develop", "Engineering & Services", "/pole-enerconseils-en"]], "extra": ["Investors", "Thesis, capital and dated milestones", "/investisseurs-en"]}}},
- "centre": {"fr": {"home": "/savoirs", "slogan": "Centre de Connaissances", "button": ["Site EnerTchad", "/"], "links": [["Gouvernance", "/gouvernance"], ["Publications", "/publications"], ["HSE", "/cadre-hse"], ["Éthique", "/ethique"], ["Atlas", "/atlas/"], ["FAQ", "/faq"], ["Documentation", "/sources"]], "sections": {"/communiques": "/publications", "/presse": "/publications", "/carnets": "/publications", "/conformite": "/ethique", "/rapports": "/sources", "/glossaire-petrolier": "/sources", "/amont/calculateur-baril-additionnel": "/sources", "/configurateur-service-integre": "/sources", "/plan-du-site": "/sources", "/recherche": "/faq", "/newsletter": "/publications"}}, "en": {"home": "/savoirs-en", "slogan": "Knowledge Center", "button": ["EnerTchad site", "/index-en"], "links": [["Governance", "/gouvernance-en"], ["Publications", "/publications-en"], ["HSE", "/cadre-hse-en"], ["Ethics", "/ethique-en"], ["Atlas", "/atlas-en"], ["FAQ", "/faq-en"], ["Documentation", "/sources-en"]], "sections": {"/communiques-en": "/publications-en", "/presse-en": "/publications-en", "/carnets-en": "/publications-en", "/conformite-en": "/ethique-en", "/rapports-en": "/sources-en", "/glossaire-petrolier-en": "/sources-en", "/plan-du-site-en": "/sources-en", "/recherche-en": "/faq-en", "/newsletter-en": "/publications-en"}}},
+ "note": "Navigation revue le 27 novembre 2026 : Groupe, Activités, Solutions clients, Impact, Investisseurs, Ressources ; Contact permanent. Adresses existantes conservées. Les cinq segments relèvent des Activités. Les ressources restent accessibles depuis le menu global.",
+ "header": {
+  "fr": {
+   "links": [
+    [
+     "Le Groupe",
+     "/groupe"
+    ],
+    [
+     "Activités",
+     "/nos-activites"
+    ],
+    [
+     "Solutions clients",
+     "/boutique/clients"
+    ],
+    [
+     "Impact",
+     "/impact"
+    ],
+    [
+     "Investisseurs",
+     "/investisseurs"
+    ],
+    [
+     "Ressources",
+     "/savoirs"
+    ]
+   ],
+   "button": [
+    "Contact",
+    "/contact"
+   ],
+   "slogan": "L’énergie du Tchad. Intégrée.",
+   "panels": [
+    {
+     "id": "groupe",
+     "for": "/groupe",
+     "label": "Explorer le Groupe",
+     "overview": [
+      "Présentation du Groupe",
+      "/groupe"
+     ],
+     "links": [
+      [
+       "Vision & mission",
+       "La raison d’être d’EnerTchad",
+       "/societe"
+      ],
+      [
+       "Stratégie",
+       "Servir le Tchad d’abord",
+       "/strategie"
+      ],
+      [
+       "Gouvernance",
+       "Responsabilités et cadre",
+       "/gouvernance"
+      ],
+      [
+       "Leadership",
+       "Direction et conseil",
+       "/leadership"
+      ],
+      [
+       "En bref",
+       "Le Groupe en une page",
+       "/en-bref"
+      ],
+      [
+       "Carrières",
+       "Métiers et candidatures",
+       "/carrieres"
+      ]
+     ]
+    },
+    {
+     "for": "/nos-activites",
+     "label": "Afficher les cinq segments d’activité",
+     "overview": [
+      "Vue d’ensemble des activités",
+      "/nos-activites"
+     ],
+     "links": [
+      [
+       "Exploration & Production",
+       "Produire",
+       "/amont/"
+      ],
+      [
+       "Transport & Logistique",
+       "Transporter",
+       "/intermediaire/"
+      ],
+      [
+       "Raffinage & Distribution",
+       "Raffiner, distribuer",
+       "/aval/"
+      ],
+      [
+       "Pétrochimie",
+       "Transformer",
+       "/petrochimie/"
+      ],
+      [
+       "Ingénierie & Services",
+       "Développer",
+       "/enerconseils/"
+      ]
+     ],
+     "extra": [
+      "Projets & jalons",
+      "État publié et prérequis",
+      "/projets"
+     ],
+     "id": "activites"
+    },
+    {
+     "id": "clients",
+     "for": "/boutique/clients",
+     "label": "Explorer les solutions clients",
+     "overview": [
+      "Espace clients",
+      "/boutique/clients"
+     ],
+     "links": [
+      [
+       "Industrie & chantiers",
+       "Périmètre et demande",
+       "/boutique/clients#industriels"
+      ],
+      [
+       "Transport & flottes",
+       "Périmètre et demande",
+       "/boutique/clients#flottes"
+      ],
+      [
+       "Opérateurs pétroliers",
+       "Périmètre et demande",
+       "/boutique/clients#operateurs"
+      ],
+      [
+       "Ingénierie & Services",
+       "Études, conception et suivi de projet",
+       "/enerconseils/"
+      ],
+      [
+       "Services aux tiers",
+       "Définir un besoin professionnel",
+       "/services-tiers"
+      ],
+      [
+       "Fournisseurs",
+       "Achats et référencement",
+       "/achats"
+      ]
+     ]
+    },
+    {
+     "id": "ressources",
+     "for": "/savoirs",
+     "label": "Explorer les ressources",
+     "overview": [
+      "Toutes les ressources",
+      "/savoirs"
+     ],
+     "links": [
+      [
+       "Publications",
+       "Documents officiels publics",
+       "/publications"
+      ],
+      [
+       "Rapports",
+       "Publiés et à paraître",
+       "/rapports"
+      ],
+      [
+       "Connaissances sectorielles",
+       "Atlas, glossaire et FAQ",
+       "/atlas/"
+      ],
+      [
+       "Sources & méthode",
+       "Vérifier les chiffres",
+       "/sources"
+      ],
+      [
+       "Actualités & analyses",
+       "Articles des Carnets, datés",
+       "/carnets"
+      ],
+      [
+       "Espace presse",
+       "Communiqués et ressources médias",
+       "/presse"
+      ]
+     ]
+    }
+   ]
+  },
+  "en": {
+   "links": [
+    [
+     "The Group",
+     "/groupe-en"
+    ],
+    [
+     "Activities",
+     "/nos-activites-en"
+    ],
+    [
+     "Client solutions",
+     "/boutique/en/clients"
+    ],
+    [
+     "Impact",
+     "/impact-en"
+    ],
+    [
+     "Investors",
+     "/investisseurs-en"
+    ],
+    [
+     "Resources",
+     "/savoirs-en"
+    ]
+   ],
+   "button": [
+    "Contact",
+    "/contact-en"
+   ],
+   "slogan": "Chad’s energy. Integrated.",
+   "panels": [
+    {
+     "id": "groupe",
+     "for": "/groupe-en",
+     "label": "Explore the Group",
+     "overview": [
+      "About the Group",
+      "/groupe-en"
+     ],
+     "links": [
+      [
+       "Vision & mission",
+       "Why EnerTchad",
+       "/societe-en"
+      ],
+      [
+       "Strategy",
+       "Serving Chad first",
+       "/strategie-en"
+      ],
+      [
+       "Governance",
+       "Responsibilities and framework",
+       "/gouvernance-en"
+      ],
+      [
+       "Leadership",
+       "Management and board",
+       "/leadership-en"
+      ],
+      [
+       "At a glance",
+       "The Group in one page",
+       "/en-bref-en"
+      ],
+      [
+       "Careers",
+       "Skills and applications",
+       "/carrieres-en"
+      ]
+     ]
+    },
+    {
+     "for": "/nos-activites-en",
+     "label": "Show the five business segments",
+     "overview": [
+      "Overview of our activities",
+      "/nos-activites-en"
+     ],
+     "links": [
+      [
+       "Exploration & Production",
+       "Produce",
+       "/pole-amont-en"
+      ],
+      [
+       "Transport & Logistics",
+       "Transport",
+       "/pole-intermediaire-en"
+      ],
+      [
+       "Refining & Distribution",
+       "Refine, distribute",
+       "/pole-aval-en"
+      ],
+      [
+       "Petrochemicals",
+       "Transform",
+       "/pole-enerchimie-en"
+      ],
+      [
+       "Engineering & Services",
+       "Develop",
+       "/pole-enerconseils-en"
+      ]
+     ],
+     "extra": [
+      "Projects & milestones",
+      "Published status and prerequisites",
+      "/projets-en"
+     ],
+     "id": "activites"
+    },
+    {
+     "id": "clients",
+     "for": "/boutique/en/clients",
+     "label": "Explore client solutions",
+     "overview": [
+      "Client area",
+      "/boutique/en/clients"
+     ],
+     "links": [
+      [
+       "Industry & worksites",
+       "Scope and enquiry",
+       "/boutique/en/clients#industriels"
+      ],
+      [
+       "Transport & fleets",
+       "Scope and enquiry",
+       "/boutique/en/clients#flottes"
+      ],
+      [
+       "Oilfield operators",
+       "Scope and enquiry",
+       "/boutique/en/clients#operateurs"
+      ],
+      [
+       "Engineering & Services",
+       "Studies, design and project monitoring",
+       "/pole-enerconseils-en"
+      ],
+      [
+       "Third-party services",
+       "Define a professional need",
+       "/services-tiers-en"
+      ],
+      [
+       "Suppliers",
+       "Procurement and registration",
+       "/achats-en"
+      ]
+     ]
+    },
+    {
+     "id": "ressources",
+     "for": "/savoirs-en",
+     "label": "Explore resources",
+     "overview": [
+      "All resources",
+      "/savoirs-en"
+     ],
+     "links": [
+      [
+       "Publications",
+       "Official public documents",
+       "/publications-en"
+      ],
+      [
+       "Reports",
+       "Published and forthcoming",
+       "/rapports-en"
+      ],
+      [
+       "Sector knowledge",
+       "Atlas, glossary and FAQ",
+       "/atlas-en"
+      ],
+      [
+       "Sources & method",
+       "Check the figures",
+       "/sources-en"
+      ],
+      [
+       "News & analysis",
+       "Dated journal articles",
+       "/carnets-en"
+      ],
+      [
+       "Press room",
+       "Press releases and media resources",
+       "/presse-en"
+      ]
+     ]
+    }
+   ]
+  }
+ },
+ "centre": {
+  "fr": {
+   "home": "/savoirs",
+   "slogan": "Centre de Connaissances",
+   "button": [
+    "Site EnerTchad",
+    "/"
+   ],
+   "links": [
+    [
+     "Gouvernance",
+     "/gouvernance"
+    ],
+    [
+     "Publications",
+     "/publications"
+    ],
+    [
+     "HSE",
+     "/cadre-hse"
+    ],
+    [
+     "Éthique",
+     "/ethique"
+    ],
+    [
+     "Atlas",
+     "/atlas/"
+    ],
+    [
+     "FAQ",
+     "/faq"
+    ],
+    [
+     "Documentation",
+     "/sources"
+    ]
+   ],
+   "sections": {
+    "/communiques": "/publications",
+    "/presse": "/publications",
+    "/carnets": "/publications",
+    "/conformite": "/ethique",
+    "/rapports": "/sources",
+    "/glossaire-petrolier": "/sources",
+    "/amont/calculateur-baril-additionnel": "/sources",
+    "/configurateur-service-integre": "/sources",
+    "/plan-du-site": "/sources",
+    "/recherche": "/faq",
+    "/newsletter": "/publications"
+   }
+  },
+  "en": {
+   "home": "/savoirs-en",
+   "slogan": "Knowledge Center",
+   "button": [
+    "EnerTchad site",
+    "/index-en"
+   ],
+   "links": [
+    [
+     "Governance",
+     "/gouvernance-en"
+    ],
+    [
+     "Publications",
+     "/publications-en"
+    ],
+    [
+     "HSE",
+     "/cadre-hse-en"
+    ],
+    [
+     "Ethics",
+     "/ethique-en"
+    ],
+    [
+     "Atlas",
+     "/atlas-en"
+    ],
+    [
+     "FAQ",
+     "/faq-en"
+    ],
+    [
+     "Documentation",
+     "/sources-en"
+    ]
+   ],
+   "sections": {
+    "/communiques-en": "/publications-en",
+    "/presse-en": "/publications-en",
+    "/carnets-en": "/publications-en",
+    "/conformite-en": "/ethique-en",
+    "/rapports-en": "/sources-en",
+    "/glossaire-petrolier-en": "/sources-en",
+    "/plan-du-site-en": "/sources-en",
+    "/recherche-en": "/faq-en",
+    "/newsletter-en": "/publications-en"
+   }
+  }
+ },
  "fr": [
   {
    "id": "a",
-   "label": "Entreprise",
+   "label": "Le Groupe",
    "description": "Société anonyme à capitaux tchadiens, en constitution à N’Djamena.",
    "overview": [
     "Vue d’ensemble",
     "Qui sommes-nous",
-    "/societe"
+    "/groupe"
    ],
    "groups": [
     {
@@ -83,7 +583,7 @@
   },
   {
    "id": "b",
-   "label": "Activités & Ingénierie",
+   "label": "Activités",
    "description": "Cinq segments, trois fonctions techniques, des solutions par besoin.",
    "overview": [
     "Vue d’ensemble",
@@ -96,27 +596,27 @@
      "links": [
       [
        "Exploration & Production",
-       "Extraire davantage de chaque gisement",
+       "Produire",
        "/amont/"
       ],
       [
        "Transport & Logistique",
-       "Desserte du pays, réserve distribuée",
+       "Transporter",
        "/intermediaire/"
       ],
       [
        "Raffinage & Distribution",
-       "Mini-raffinerie, stations, GPL, dernier km",
+       "Raffiner, distribuer",
        "/aval/"
       ],
       [
        "Pétrochimie",
-       "Engrais, méthanol, bitume",
+       "Transformer",
        "/petrochimie/"
       ],
       [
-       "Ingénierie & Services · EnerConseils",
-       "Études, conception, projets",
+       "Ingénierie & Services",
+       "Développer",
        "/enerconseils/"
       ]
      ]
@@ -307,7 +807,7 @@
   },
   {
    "id": "f",
-   "label": "Centre de connaissances",
+   "label": "Ressources",
    "description": "Références, outils et documents pour comprendre le secteur et vérifier ce que nous publions.",
    "overview": [
     "Vue d’ensemble",
@@ -465,12 +965,12 @@
  "en": [
   {
    "id": "a",
-   "label": "Company",
+   "label": "The Group",
    "description": "A public limited company with Chadian capital, in formation in N’Djamena.",
    "overview": [
     "Overview",
     "About us",
-    "/societe-en"
+    "/groupe-en"
    ],
    "groups": [
     {
@@ -543,7 +1043,7 @@
   },
   {
    "id": "b",
-   "label": "Activities & Engineering",
+   "label": "Activities",
    "description": "Five segments, three technical functions, solutions by need.",
    "overview": [
     "Overview",
@@ -556,27 +1056,27 @@
      "links": [
       [
        "Exploration & Production",
-       "More from every field",
+       "Produce",
        "/pole-amont-en"
       ],
       [
        "Transport & Logistics",
-       "Supplying the country, distributed reserve",
+       "Transport",
        "/pole-intermediaire-en"
       ],
       [
        "Refining & Distribution",
-       "Mini-refinery, stations, LPG, last mile",
+       "Refine, distribute",
        "/pole-aval-en"
       ],
       [
        "Petrochemicals",
-       "Fertiliser, methanol, bitumen",
+       "Transform",
        "/pole-enerchimie-en"
       ],
       [
-       "Engineering & Services · EnerConseils",
-       "Studies, design, projects",
+       "Engineering & Services",
+       "Develop",
        "/pole-enerconseils-en"
       ]
      ]
@@ -767,7 +1267,7 @@
   },
   {
    "id": "f",
-   "label": "Knowledge center",
+   "label": "Resources",
    "description": "References, tools and documents to understand the sector and check what we publish.",
    "overview": [
     "Overview",
