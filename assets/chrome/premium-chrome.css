@@ -1186,3 +1186,6 @@ footer.pft .fn-form :is(input,button),footer.pft .foot-social a{border-radius:0!
 @media (max-width:400px){.et-centre-name{letter-spacing:.06em}}
 /* 360 px et moins : le nom passerait sous le bouton de thème (mesuré à 320 px) ; le filet doré reste seul. */
 @media (max-width:360px){.et-centre-name{display:none}#nav[data-et-space="centre"] .brand{translate:none}}
+/* Barre mobile du bas : masquée au défilement vers le bas et quand le menu est ouvert (classe posée par nav_a.js) */
+html body #nezBar.nez-cache{transform:translateY(calc(100% + 2px))!important;pointer-events:none}
+@media (prefers-reduced-motion:no-preference){html body #nezBar{transition:transform .25s ease}}
