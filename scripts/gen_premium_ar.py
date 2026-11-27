@@ -251,7 +251,7 @@ def footer(old_footer, old_nav, motto, phone):
             + '<a class="pft-top" href="#top">أعلى الصفحة ↑</a></div></div></footer>')
 
 
-motto_desc = 'شركة نفط متكاملة تشادية 100٪، قيد التأسيس — من الصخر الأم إلى المضخة.'
+motto_desc = 'مجموعة طاقية متكاملة قيد البناء، برأسمال تشادي، شركة قيد التأسيس — من الصخر الأم إلى المضخة.'
 
 
 def phone_link():

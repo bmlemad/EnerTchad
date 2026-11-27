@@ -12,8 +12,8 @@ DESCRIPTIONS = {
     'en': 'EnerTchad is a company in formation developing a proposed integrated oil programme in Chad. Projects and capacities remain targets, subject to the necessary studies, approvals, financing and partnerships.',
 }
 HOME_PREVIEWS = {
-    'fr': 'EnerTchad, société en constitution, prépare un programme pétrolier intégré au Tchad. Projets, conditions et documents publics.',
-    'en': 'EnerTchad is a company in formation developing a proposed integrated oil programme in Chad. Explore project status, conditions and public documents.',
+    'fr': 'EnerTchad, groupe énergétique intégré en construction et société en constitution à capitaux tchadiens : projets, conditions et documents publics.',
+    'en': 'EnerTchad, an integrated energy group under construction and a company in formation with Chadian capital: project status, conditions and public documents.',
 }
 
 
