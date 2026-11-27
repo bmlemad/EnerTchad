@@ -180,8 +180,8 @@
       "evidence_status": "published",
       "document_date": "2026-10",
       "document_updated": "2026-11",
-      "bytes": 65688,
-      "git_blob_sha": "ba50e60a5da4010106c493ed083c51550c77cb22"
+      "bytes": 74600,
+      "git_blob_sha": "0b7dbe8000c6518e2de93e89c76638c2c23c4cde"
     },
     {
       "id": "technical-midstream-en",
@@ -196,8 +196,8 @@
       "evidence_status": "published",
       "document_date": "2026-10",
       "document_updated": "2026-11",
-      "bytes": 64861,
-      "git_blob_sha": "a6df6f3747cd3cab544fb3936f84b9df5bb99b8b"
+      "bytes": 72969,
+      "git_blob_sha": "a61893fabd20e605fac1ec2374d0209feb28eeef"
     },
     {
       "id": "technical-downstream",
@@ -260,8 +260,8 @@
       "evidence_status": "published",
       "document_date": "2026-09",
       "document_updated": "2026-11",
-      "bytes": 91026,
-      "git_blob_sha": "d974ed6a98111808071f8dac06e86f57b203c3ae"
+      "bytes": 101193,
+      "git_blob_sha": "570efeb0e1b3bb1c4e57c011e3e56c62fb91f233"
     },
     {
       "id": "factsheet-ar",
