@@ -285,6 +285,12 @@ html body.hm:has(#nav) #nav.nav.nx:not(.scrolled):not(:focus-within):not(:has(.n
 #main-content.et-home.hm-review section#contact-accueil>.et-inner{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px clamp(40px,5vw,72px);align-items:start}
 #main-content.et-home.hm-review section#investisseurs-accueil h2{margin-bottom:20px}
 #main-content.et-home.hm-review section#investisseurs-accueil .et-inline-links{grid-column:1/-1;margin-top:8px;border-top:0;padding-top:0}
+/* 27 novembre 2026 (QA face aux majors) : le panneau .hm-inv occupait la seule colonne de gauche et laissait la droite vide.
+   Il prend toute la largeur : these a gauche, reperes a droite, acces dessous. */
+#main-content.et-home.hm-review section#investisseurs-accueil .hm-inv{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:clamp(40px,5vw,72px);align-items:start}
+#main-content.et-home.hm-review section#investisseurs-accueil .hm-inv>:not(.im-data){grid-column:1}
+#main-content.et-home.hm-review section#investisseurs-accueil .hm-inv>.im-data{grid-column:2;grid-row:1/span 3;margin-top:0}
+#main-content.et-home.hm-review section#investisseurs-accueil .hm-inv>.et-inline-links{grid-column:1/-1}
 
 /* 6. Contact : sorties en grandes lignes serif, sur bande encre. */
 #main-content.et-home.hm-review section#contact-accueil h2{margin-bottom:20px;color:var(--ed-ink-fg);-webkit-text-fill-color:currentColor}
@@ -295,6 +301,8 @@ html body.hm:has(#nav) #nav.nav.nx:not(.scrolled):not(:focus-within):not(:has(.n
 }
 @media (max-width:900px){
   #main-content.et-home.hm-review :is(section#investisseurs-accueil,section#contact-accueil)>.et-inner{grid-template-columns:minmax(0,1fr)}
+  #main-content.et-home.hm-review section#investisseurs-accueil .hm-inv{grid-template-columns:minmax(0,1fr)}
+  #main-content.et-home.hm-review section#investisseurs-accueil .hm-inv>.im-data{grid-column:1;grid-row:auto}
   #main-content.et-home.hm-review section#gouvernance-accueil .mod-grid{grid-template-columns:minmax(0,1fr);margin-bottom:0}
   #main-content.et-home.hm-review section#vision .hm-pillars{grid-template-columns:minmax(0,1fr);margin-top:40px}
   #main-content.et-home.hm-review .hm-impact{grid-template-columns:repeat(2,minmax(0,1fr));margin-top:40px}
