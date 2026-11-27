@@ -378,7 +378,7 @@ try{(function(){
     var btn=item.querySelector('.et-sub-tog'),panel=item.querySelector('.et-sub'),timer=0,byHover=false;
     if(!btn||!panel)return;
     btn.hidden=false;
-    function set(open){btn.setAttribute('aria-expanded',open?'true':'false');panel.hidden=!open;if(!open)byHover=false;}
+    function set(open){if(open&&wide.matches){[].forEach.call(items,function(other){if(other===item)return;var b=other.querySelector('.et-sub-tog'),p=other.querySelector('.et-sub');if(b)b.setAttribute('aria-expanded','false');if(p)p.hidden=true;});}btn.setAttribute('aria-expanded',open?'true':'false');panel.hidden=!open;if(!open)byHover=false;}
     btn.addEventListener('click',function(){
       if(!panel.hidden&&byHover){byHover=false;return;}
       set(panel.hidden);
