@@ -384,7 +384,6 @@ html.et-plight body.hm #gouvernance-accueil#gouvernance-accueil .mod-card{backgr
 body.hm #impact#impact .hm-verre-tete{max-width:760px;margin-bottom:22px}
 body.hm #nav#nav{background:transparent;border-bottom-color:transparent;-webkit-backdrop-filter:none;backdrop-filter:none;box-shadow:none}
 body.hm #nav#nav .nx-bar{max-width:1240px;margin-left:auto;margin-right:auto;padding-left:20px;padding-right:12px}
-body.hm #nav#nav .nx-bar .nav-links a,body.hm #nav#nav .nx-bar .nav-links button{color:#f2efe8}
 body.hm #chaine#chaine .hm-seg .hm-seg-body{margin-top:auto}
 body.hm #chaine#chaine .hm-seg .hm-seg-body{flex:0 0 auto}
 /* Thème clair : la Vision passe en verre clair (le thème impose déjà un texte sombre) ; or assombri pour le contraste */

@@ -708,7 +708,7 @@ html:not(.et-plight):not(.et-jlight) .et-proofline::before{color:#E6C978}
 .et-topic-index>summary::after{content:"+";flex:none;width:28px;height:28px;display:grid;place-items:center;border:1px solid rgba(128,128,128,.18);border-radius:50%;font:700 1rem/1 ui-monospace,SFMono-Regular,Menlo,monospace}
 .et-topic-index[open]>summary::after{content:"−"}
 .et-topic-index>summary b{display:block;font-size:.92rem}
-.et-topic-index>summary span{display:block;margin-top:3px;color:#6A7585;font-size:.74rem}
+.et-topic-index>summary span{display:block;margin-top:3px;color:#6A7585;font-size:.75rem}
 .et-topic-index>.pp-grid{padding:0 18px 18px}
 html:not(.et-plight):not(.et-jlight) .et-topic-index{background:rgba(255,255,255,.025)}
 html:not(.et-plight):not(.et-jlight) .et-topic-index>summary span{color:#AAB5C6}
