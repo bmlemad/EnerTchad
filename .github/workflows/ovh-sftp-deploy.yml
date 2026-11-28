@@ -1,0 +1,114 @@
+# 28 novembre 2026 (décision du DG) : le Git d'OVH n'arrive plus à mettre à jour le site depuis le 25/11
+# (« git pull » refusé : « refusing to merge unrelated histories », déploiement 194070 bloqué, ticket CS17007358).
+# Ce workflow publie l'export vérifié (branche ovh-static) par SFTP dans www-git, le dossier servi par enertchad.com,
+# sans passer par le Git d'OVH. Ordre : ressources, puis pages et PHP, puis deploy-version.txt en dernier.
+# Rien n'est supprimé côté OVH (le dossier .git d'OVH n'est jamais touché).
+# Réglages : variable OVH_SSH_KNOWN_HOSTS (empreinte du serveur, épinglée au premier passage) et
+# secret OVH_SFTP_PASSWORD (mot de passe SFTP du compte enertcp, saisi par le DG lui-même).
+name: OVH — SFTP deployment
+
+on:
+  workflow_run:
+    workflows: ["OVH — corporate readiness deployment"]
+    types: [completed]
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: ovh-sftp-deploy
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      OVH_HOST: ssh.cluster129.hosting.ovh.net
+      OVH_USER: enertcp
+      OVH_DIR: www-git
+      SITE: https://enertchad.com
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ovh-static
+          path: site
+          persist-credentials: false
+
+      - name: Read and check the export
+        id: rev
+        run: |
+          rev=$(tr -d '[:space:]' < site/deploy-version.txt)
+          if ! [[ "$rev" =~ ^[0-9a-f]{40}$ ]]; then echo "::error::deploy-version.txt invalide"; exit 1; fi
+          count=$(find site -type f -not -path 'site/.git/*' | wc -l)
+          echo "Export $rev : $count fichiers"
+          if [ "$count" -lt 600 ]; then echo "::error::Export incomplet ($count fichiers)"; exit 1; fi
+          for f in index.html ar.html .htaccess; do [ -s "site/$f" ] || { echo "::error::$f manquant"; exit 1; }; done
+          echo "rev=$rev" >> "$GITHUB_OUTPUT"
+
+      - name: Check the OVH server identity
+        env:
+          KNOWN_HOSTS: ${{ vars.OVH_SSH_KNOWN_HOSTS }}
+        run: |
+          mkdir -p ~/.ssh && chmod 700 ~/.ssh
+          if [ -z "$KNOWN_HOSTS" ]; then
+            ssh-keyscan -t ed25519,ecdsa,rsa "$OVH_HOST" > /tmp/scan 2>/dev/null || true
+            echo "Empreintes présentées par $OVH_HOST :"
+            ssh-keygen -lf /tmp/scan || true
+            echo "Lignes à enregistrer dans la variable OVH_SSH_KNOWN_HOSTS :"
+            cat /tmp/scan
+            echo "::error::Variable OVH_SSH_KNOWN_HOSTS absente : arrêt avant tout envoi de mot de passe."
+            exit 1
+          fi
+          printf '%s\n' "$KNOWN_HOSTS" > ~/.ssh/known_hosts
+          chmod 600 ~/.ssh/known_hosts
+          ssh-keygen -lf ~/.ssh/known_hosts
+
+      - name: Check the SFTP password is set
+        env:
+          OVH_SFTP_PASSWORD: ${{ secrets.OVH_SFTP_PASSWORD }}
+        run: |
+          if [ -z "$OVH_SFTP_PASSWORD" ]; then echo "::error::Secret OVH_SFTP_PASSWORD absent"; exit 1; fi
+
+      - name: Install lftp
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq --no-install-recommends lftp
+
+      - name: Upload over SFTP (assets, then pages, then version marker)
+        env:
+          LFTP_PASSWORD: ${{ secrets.OVH_SFTP_PASSWORD }}
+        run: |
+          cat > /tmp/upload.lftp <<EOF
+          set cmd:fail-exit yes
+          set net:max-retries 3
+          set net:timeout 30
+          set net:reconnect-interval-base 5
+          set sftp:connect-program "ssh -a -x -o BatchMode=no -o StrictHostKeyChecking=yes -o UserKnownHostsFile=$HOME/.ssh/known_hosts"
+          open --env-password -u "$OVH_USER" "sftp://$OVH_HOST"
+          cd "$OVH_DIR"
+          mirror -R --no-perms --parallel=6 --exclude-glob .git/ --exclude-glob *.html --exclude-glob *.php --exclude-glob .htaccess --exclude-glob deploy-version.txt site/ ./
+          mirror -R --no-perms --parallel=6 --exclude-glob .git/ --exclude-glob deploy-version.txt site/ ./
+          put -O ./ site/deploy-version.txt
+          bye
+          EOF
+          lftp -f /tmp/upload.lftp
+
+      - name: Check the live site
+        env:
+          REV: ${{ steps.rev.outputs.rev }}
+        run: |
+          v=''
+          for i in $(seq 1 12); do
+            v=$(curl -fsS "$SITE/deploy-version.txt?run=$GITHUB_RUN_ID-$i" | tr -d '[:space:]') || true
+            [ "$v" = "$REV" ] && break
+            sleep 10
+          done
+          if [ "$v" != "$REV" ]; then echo "::error::enertchad.com sert « $v » au lieu de $REV"; exit 1; fi
+          for p in / /index-en /ar /communiques /aval/reseau /Brochure_EnerTchad.pdf; do
+            code=$(curl -s -o /dev/null -w '%{http_code}' -L "$SITE$p")
+            echo "$p → $code"
+            [ "$code" = 200 ] || { echo "::error::$p répond $code"; exit 1; }
+          done
+          echo "En ligne : $REV"
