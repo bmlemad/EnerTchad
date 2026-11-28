@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 """Audit de cohérence du 27 novembre 2026 (#327, #330) : les décisions du DG restent appliquées partout.
 
-Contrôle sur les sources (pas besoin de out/) : pages HTML publiées, sources des PDF (docs-sources) et index de
-recherche (assets/chrome/*.js). Sont exclus les textes figés : communiqués publiés (communique/*, listes Communiqués
+Contrôle sur les sources (pas besoin de out/) : pages HTML publiées, sources des PDF (docs-sources), index de
+recherche (assets/chrome/*.js) et textes ajoutés à la construction (lib/*.js). Sont exclus les textes figés : communiqués publiés (communique/*, listes Communiqués
 et Presse qui en reprennent les extraits) et carnets datés (journal-*, Carnets). Chaque règle rappelle la décision.
 Exit 1 si un écart réapparaît, avec le fichier et l'extrait."""
 import html
@@ -33,7 +33,8 @@ RULES = [
         r'80 ?% (?:de contenu local|local content)(?! by)|80 ?%</span><span>(?:de contenu local|Chadian local content)'
         r'|<b>80 ?%</b><span>De contenu local')),
     ('libellés des segments : Raffinage & Distribution, Ingénierie & Services (24-26/11)', re.compile(
-        r'P[ôo]le Distribution|EnerConseils — ing[ée]nierie & conseil|EnerConseils — engineering & advisory')),
+        r'P[ôo]le Distribution|EnerConseils — ing[ée]nierie & conseil|EnerConseils — engineering & advisory'
+        r'|[Ll]e segment Aval\b|[Tt]he Downstream segment')),
     ('7 chantiers phares : le corridor est retiré (22/11)', re.compile(
         r'\b8 (?:chantiers phares|dated flagship projects|flagship projects)|>8</b><span>(?:chantiers phares|dated flagship|flagship projects)')),
     ('corridor Doba–Kribi : pas un débouché d’EnerTchad (22/11)', re.compile(
@@ -48,7 +49,8 @@ def normalise(raw):
 
 
 def sources():
-    out = subprocess.check_output(['git', 'ls-files', '*.html', 'assets/chrome/*.js'], cwd=ROOT, text=True).split()
+    # lib/*.js : textes ajoutés à la construction (ex. bloc Tchadium, 28 novembre 2026).
+    out = subprocess.check_output(['git', 'ls-files', '*.html', 'assets/chrome/*.js', 'lib/*.js'], cwd=ROOT, text=True).split()
     return [p for p in out if not FROZEN.match(p) and not p.startswith(('out/', 'node_modules/', 'qa/', 'reports/'))]
 
 
